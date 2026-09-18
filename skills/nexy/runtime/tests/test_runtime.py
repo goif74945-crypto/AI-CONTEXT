@@ -4,7 +4,7 @@ from pathlib import Path
 from skills.nexy.runtime.runtime import SkillRuntime, REPOSITORY, BRANCH, UNIVERSAL_REQUIRED, UNIVERSAL_OUTPUT, sha256_hex, stable_id
 
 ROOT=Path(__file__).resolve().parents[4]
-REGISTRY=ROOT/"skills/nexy/registry/skills.json"
+REGISTRY=ROOT/"skills/registry/registry.json"
 HEAD="0123456789abcdef0123456789abcdef01234567"
 TARGETS={
 "GOV-001":{"data":{"sources":[{"source_id":"DOC-CMD-001","source_type":"CURRENT_USER_COMMAND","rank":1,"status":"VERIFIED"}]}},
@@ -25,14 +25,22 @@ class RuntimeTests(unittest.TestCase):
     def setUpClass(cls): cls.rt=SkillRuntime(REGISTRY)
 
     def test_registry_binding_7_of_7(self):
-        self.assertEqual(set(self.rt.registry["skills"]),set(TARGETS))
-        for sid,e in self.rt.registry["skills"].items():
-            self.assertEqual(sid,e["id"]); self.assertIn("SKILL.md",e["source_path"]); self.assertIn(":",e["runtime_entry"])
+        entries={e["id"]:e for e in self.rt.registry["skills"] if e.get("id") in TARGETS}
+        self.assertEqual(set(entries),set(TARGETS))
+        self.assertEqual(len(self.rt.registry["skills"]),228)
+        self.assertEqual(len([e for e in self.rt.registry["skills"] if e.get("id") not in TARGETS]),221)
+        for sid,e in entries.items():
+            self.assertEqual(sid,e["id"]); self.assertIn("SKILL.md",e["source_path"]); self.assertIn(":",e["locator"])
 
     def test_loader_and_resolver(self):
-        for sid,e in self.rt.registry["skills"].items():
-            mod,fn=e["runtime_entry"].split(":",1)
+        for e in self.rt.registry["skills"]:
+            if e.get("id") not in TARGETS: continue
+            mod,fn=e["locator"].split(":",1)
             loaded=getattr(__import__(mod,fromlist=[fn]),fn); self.assertTrue(callable(loaded))
+            vmod,vfn=e["validator"].split(":",1)
+            self.assertTrue(callable(getattr(__import__(vmod,fromlist=[vfn]),vfn)))
+            emod,efn=e["evidence_handler"].split(":",1)
+            self.assertTrue(callable(getattr(__import__(emod,fromlist=[efn]),efn)))
 
     def test_all_target_skills_execute(self):
         expected=["LOAD","RESOLVE","AUTHORIZE","EXECUTE","VALIDATE","EVIDENCE","RESULT"]
@@ -102,8 +110,16 @@ class RuntimeTests(unittest.TestCase):
         p=env("CTX-003"); p["data"]["files"][0]["content"]="x"; p["data"]["files"][0]["content_hash"]="sha256:"+"f"*64
         self.assertEqual(self.rt.run("CTX-003",p)["status"],"FREEZE")
 
+    def test_canonical_registry_regression(self):
+        registry=json.loads(REGISTRY.read_text(encoding="utf-8"))
+        self.assertEqual(registry["registry_id"],"AI-CONTEXT-SKILL-REGISTRY")
+        self.assertEqual(registry["counts"],{"cataloged":190,"materialized":38,"verified":0,"total":228})
+        self.assertEqual(len(registry["skills"]),228)
+        target_ids={e["id"] for e in registry["skills"] if e.get("id") in TARGETS}
+        self.assertEqual(target_ids,set(TARGETS))
+
     def test_runtime_source_is_self_contained(self):
         src=Path(__import__("skills.nexy.runtime.runtime",fromlist=["__file__"]).__file__).read_text(encoding="utf-8")
-        self.assertIn("class SkillRuntime",src); self.assertIn("def authorize",src); self.assertIn("def evidence_bind",src)
+        self.assertIn("class SkillRuntime",src); self.assertIn("def authorize",src); self.assertIn("def evidence_bind",src); self.assertIn("CANONICAL_REGISTRY_PATH",src)
 
 if __name__=="__main__": unittest.main()
