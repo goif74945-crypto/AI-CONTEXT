@@ -1,0 +1,16 @@
+{
+  "registry_id": "REG-NEXY-SKILL-001",
+  "schema_version": "1",
+  "runtime_root": "skills/nexy/runtime",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "branch": "main",
+  "skills": {
+    "GOV-001": {"id":"GOV-001","name":"nexy-authority","source_path":"skills/nexy/governance/GOV-001--nexy-authority/SKILL.md","runtime_entry":"skills.nexy.runtime.runtime:execute_gov_001","permissions":["READ","ANALYZE"],"validator":"skills.nexy.runtime.runtime:validate_output_contract","evidence_handler":"skills.nexy.runtime.runtime:evidence_bind","tests":["test_all_target_skills_execute","test_authority_conflict_freezes"]},
+    "GOV-002": {"id":"GOV-002","name":"nexy-scope-guard","source_path":"skills/nexy/governance/GOV-002--nexy-scope-guard/SKILL.md","runtime_entry":"skills.nexy.runtime.runtime:execute_gov_002","permissions":["READ","ANALYZE"],"validator":"skills.nexy.runtime.runtime:validate_output_contract","evidence_handler":"skills.nexy.runtime.runtime:evidence_bind","tests":["test_all_target_skills_execute","test_scope_violation"]},
+    "CTX-001": {"id":"CTX-001","name":"nexy-context","source_path":"skills/nexy/context/CTX-001--nexy-context/SKILL.md","runtime_entry":"skills.nexy.runtime.runtime:execute_ctx_001","permissions":["READ","ANALYZE"],"validator":"skills.nexy.runtime.runtime:validate_output_contract","evidence_handler":"skills.nexy.runtime.runtime:evidence_bind","tests":["test_all_target_skills_execute","test_validator_rejects_missing_universal_input"]},
+    "CTX-003": {"id":"CTX-003","name":"nexy-source-inspector","source_path":"skills/nexy/context/CTX-003--nexy-source-inspector/SKILL.md","runtime_entry":"skills.nexy.runtime.runtime:execute_ctx_003","permissions":["READ","ANALYZE"],"validator":"skills.nexy.runtime.runtime:validate_output_contract","evidence_handler":"skills.nexy.runtime.runtime:evidence_bind","tests":["test_all_target_skills_execute","test_integrity_mismatch","test_actual_integrity_mismatch_freezes"]},
+    "REQ-001": {"id":"REQ-001","name":"nexy-requirement","source_path":"skills/nexy/requirement/REQ-001--nexy-requirement/SKILL.md","runtime_entry":"skills.nexy.runtime.runtime:execute_req_001","permissions":["READ","ANALYZE"],"validator":"skills.nexy.runtime.runtime:validate_output_contract","evidence_handler":"skills.nexy.runtime.runtime:evidence_bind","tests":["test_all_target_skills_execute"]},
+    "ARC-001": {"id":"ARC-001","name":"nexy-architecture","source_path":"skills/nexy/architecture/ARC-001--nexy-architecture/SKILL.md","runtime_entry":"skills.nexy.runtime.runtime:execute_arc_001","permissions":["READ","ANALYZE"],"validator":"skills.nexy.runtime.runtime:validate_output_contract","evidence_handler":"skills.nexy.runtime.runtime:evidence_bind","tests":["test_all_target_skills_execute"]},
+    "ARC-004": {"id":"ARC-004","name":"nexy-architecture-impact","source_path":"skills/nexy/architecture/ARC-004--nexy-architecture-impact/SKILL.md","runtime_entry":"skills.nexy.runtime.runtime:execute_arc_004","permissions":["READ","ANALYZE"],"validator":"skills.nexy.runtime.runtime:validate_output_contract","evidence_handler":"skills.nexy.runtime.runtime:evidence_bind","tests":["test_all_target_skills_execute","test_invalid_execution_context"]}
+  }
+}
