@@ -85,6 +85,16 @@ class ValidationFailure(RuntimeFault):
         super().__init__(message, "VALIDATION_FAILURE", critical)
 
 
+class MissingRequiredInput(RuntimeFault):
+    def __init__(self, message: str):
+        super().__init__(message, "MISSING_REQUIRED_INPUT", False)
+
+
+class MissingSafetyCriticalInput(RuntimeFault):
+    def __init__(self, message: str):
+        super().__init__(message, "MISSING_SAFETY_CRITICAL_INPUT", False)
+
+
 @dataclass(frozen=True)
 class RegistryEntry:
     id: str
@@ -217,7 +227,15 @@ def validate_input_contract(envelope: dict[str, Any]) -> None:
         raise InvalidInput("context is required")
     missing = [field for field in UNIVERSAL_REQUIRED if field not in context]
     if missing:
-        raise InvalidInput("Missing required input fields: " + ", ".join(missing))
+        safety_missing = [field for field in missing if field in {
+            "authority", "scope", "repository", "branch", "head",
+            "source_of_truth", "constraints", "validation_requirements",
+        }]
+        if safety_missing:
+            raise MissingSafetyCriticalInput(
+                "Missing safety-critical input fields: " + ", ".join(safety_missing)
+            )
+        raise MissingRequiredInput("Missing required input fields: " + ", ".join(missing))
     if not isinstance(context["scope"], dict):
         raise InvalidInput("scope must be an object")
     if not isinstance(context["source_of_truth"], list) or not context["source_of_truth"]:
@@ -575,9 +593,13 @@ class SkillRuntime:
             return self._success(skill_id, execution_id, head, status, output, trace, result_id, evidence)
 
         except RuntimeFault as fault:
-            return self._failure(
-                skill_id, execution_id, head, "FREEZE" if fault.critical else "FAILURE", fault, trace, entry
-            )
+            if fault.code == "MISSING_REQUIRED_INPUT":
+                status = "UNKNOWN"
+            elif fault.code == "MISSING_SAFETY_CRITICAL_INPUT":
+                status = "BLOCKED"
+            else:
+                status = "FREEZE" if fault.critical else "FAILURE"
+            return self._failure(skill_id, execution_id, head, status, fault, trace, entry)
         except Exception as exc:
             unexpected = RuntimeFault(str(exc), "UNEXPECTED_RUNTIME_ERROR", True)
             return self._failure(skill_id, execution_id, head, "FREEZE", unexpected, trace, entry)
