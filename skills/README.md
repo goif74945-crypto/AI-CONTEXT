@@ -1,11 +1,18 @@
-# Skills
+# AI-CONTEXT Skills
 
-Imported skills are organized by capability:
+## Skill Registry
+`DISCOVER → SELECT → LOAD → COMPOSE → EXECUTE → VERIFY`
 
-- `programming/` — programming frameworks, frontend/mobile, browser automation.
-- `architecture/` — architecture, design systems, app/plugin/skill creation.
-- `github/` — GitHub review and CI workflows.
-- `verification/` — security, observability, and validation workflows.
-- `workflows/` — deployment, documentation, design, media, and productivity workflows.
+Machine-readable registry: `registry/registry.json`
+Schema: `registry/skill.schema.json`
+Runtime contract: `registry/RUNTIME-CONTRACT.md`
 
-See [`IMPORT-MANIFEST.md`](./IMPORT-MANIFEST.md) for provenance and import status.
+### Status
+- CATALOGED — registered capability; not executable.
+- MATERIALIZED — loadable Skill definition in a bundle.
+- VERIFIED — exact version has evidence-backed validation.
+- BLOCKED — unsafe or unresolved.
+
+Existing imported Skills are preserved and are not silently converted to VERIFIED.
+
+Phase-1 establishes a broad catalog plus independently addressable materialized Skills.

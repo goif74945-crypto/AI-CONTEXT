@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/goif74945-crypto/AI-CONTEXT/blob/main/skills/registry/skill.schema.json",
+  "title": "AI-CONTEXT Skill Registry Entry",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "category",
+    "status",
+    "implementation",
+    "permissions",
+    "dependencies",
+    "validation",
+    "source_basis"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "CATALOGED",
+        "MATERIALIZED",
+        "VERIFIED",
+        "BLOCKED"
+      ]
+    },
+    "implementation": {
+      "type": "string"
+    },
+    "load_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "locator": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_basis": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
