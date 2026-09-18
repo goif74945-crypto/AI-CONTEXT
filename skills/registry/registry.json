@@ -13,8 +13,8 @@
   ],
   "counts": {
     "cataloged": 190,
-    "materialized": 38,
-    "verified": 0,
+    "materialized": 31,
+    "verified": 7,
     "total": 228
   },
   "skills": [
@@ -5756,7 +5756,7 @@
         "nexy-authority",
         "nexy"
       ],
-      "status": "MATERIALIZED",
+      "status": "VERIFIED",
       "implementation": "PYTHON_RUNTIME",
       "load_path": "skills/nexy/runtime/runtime.py",
       "locator": "skills.nexy.runtime.runtime:execute_gov_001",
@@ -5783,7 +5783,11 @@
       "tests": [
         "skills/nexy/runtime/tests/test_runtime.py",
         "skills/nexy/runtime/completion_proof_v2.py"
-      ]
+      ],
+      "verified_by": "AUD-NEXY-SKILL-RUNTIME-002",
+      "verification_run_id": 35336880932,
+      "verification_commit": "e6f98a2cbc31818cd597d213e715bd90d35d7db3",
+      "evidence_id": "EVD-NEXY-RUNTIME-001"
     },
     {
       "id": "GOV-002",
@@ -5793,7 +5797,7 @@
         "nexy-scope-guard",
         "nexy"
       ],
-      "status": "MATERIALIZED",
+      "status": "VERIFIED",
       "implementation": "PYTHON_RUNTIME",
       "load_path": "skills/nexy/runtime/runtime.py",
       "locator": "skills.nexy.runtime.runtime:execute_gov_002",
@@ -5820,7 +5824,11 @@
       "tests": [
         "skills/nexy/runtime/tests/test_runtime.py",
         "skills/nexy/runtime/completion_proof_v2.py"
-      ]
+      ],
+      "verified_by": "AUD-NEXY-SKILL-RUNTIME-002",
+      "verification_run_id": 35336880932,
+      "verification_commit": "e6f98a2cbc31818cd597d213e715bd90d35d7db3",
+      "evidence_id": "EVD-NEXY-RUNTIME-001"
     },
     {
       "id": "CTX-001",
@@ -5830,7 +5838,7 @@
         "nexy-context",
         "nexy"
       ],
-      "status": "MATERIALIZED",
+      "status": "VERIFIED",
       "implementation": "PYTHON_RUNTIME",
       "load_path": "skills/nexy/runtime/runtime.py",
       "locator": "skills.nexy.runtime.runtime:execute_ctx_001",
@@ -5857,7 +5865,11 @@
       "tests": [
         "skills/nexy/runtime/tests/test_runtime.py",
         "skills/nexy/runtime/completion_proof_v2.py"
-      ]
+      ],
+      "verified_by": "AUD-NEXY-SKILL-RUNTIME-002",
+      "verification_run_id": 35336880932,
+      "verification_commit": "e6f98a2cbc31818cd597d213e715bd90d35d7db3",
+      "evidence_id": "EVD-NEXY-RUNTIME-001"
     },
     {
       "id": "CTX-003",
@@ -5867,7 +5879,7 @@
         "nexy-source-inspector",
         "nexy"
       ],
-      "status": "MATERIALIZED",
+      "status": "VERIFIED",
       "implementation": "PYTHON_RUNTIME",
       "load_path": "skills/nexy/runtime/runtime.py",
       "locator": "skills.nexy.runtime.runtime:execute_ctx_003",
@@ -5894,7 +5906,11 @@
       "tests": [
         "skills/nexy/runtime/tests/test_runtime.py",
         "skills/nexy/runtime/completion_proof_v2.py"
-      ]
+      ],
+      "verified_by": "AUD-NEXY-SKILL-RUNTIME-002",
+      "verification_run_id": 35336880932,
+      "verification_commit": "e6f98a2cbc31818cd597d213e715bd90d35d7db3",
+      "evidence_id": "EVD-NEXY-RUNTIME-001"
     },
     {
       "id": "REQ-001",
@@ -5904,7 +5920,7 @@
         "nexy-requirement",
         "nexy"
       ],
-      "status": "MATERIALIZED",
+      "status": "VERIFIED",
       "implementation": "PYTHON_RUNTIME",
       "load_path": "skills/nexy/runtime/runtime.py",
       "locator": "skills.nexy.runtime.runtime:execute_req_001",
@@ -5931,7 +5947,11 @@
       "tests": [
         "skills/nexy/runtime/tests/test_runtime.py",
         "skills/nexy/runtime/completion_proof_v2.py"
-      ]
+      ],
+      "verified_by": "AUD-NEXY-SKILL-RUNTIME-002",
+      "verification_run_id": 35336880932,
+      "verification_commit": "e6f98a2cbc31818cd597d213e715bd90d35d7db3",
+      "evidence_id": "EVD-NEXY-RUNTIME-001"
     },
     {
       "id": "ARC-001",
@@ -5941,7 +5961,7 @@
         "nexy-architecture",
         "nexy"
       ],
-      "status": "MATERIALIZED",
+      "status": "VERIFIED",
       "implementation": "PYTHON_RUNTIME",
       "load_path": "skills/nexy/runtime/runtime.py",
       "locator": "skills.nexy.runtime.runtime:execute_arc_001",
@@ -5968,7 +5988,11 @@
       "tests": [
         "skills/nexy/runtime/tests/test_runtime.py",
         "skills/nexy/runtime/completion_proof_v2.py"
-      ]
+      ],
+      "verified_by": "AUD-NEXY-SKILL-RUNTIME-002",
+      "verification_run_id": 35336880932,
+      "verification_commit": "e6f98a2cbc31818cd597d213e715bd90d35d7db3",
+      "evidence_id": "EVD-NEXY-RUNTIME-001"
     },
     {
       "id": "ARC-004",
@@ -5978,7 +6002,7 @@
         "nexy-architecture-impact",
         "nexy"
       ],
-      "status": "MATERIALIZED",
+      "status": "VERIFIED",
       "implementation": "PYTHON_RUNTIME",
       "load_path": "skills/nexy/runtime/runtime.py",
       "locator": "skills.nexy.runtime.runtime:execute_arc_004",
@@ -6005,7 +6029,11 @@
       "tests": [
         "skills/nexy/runtime/tests/test_runtime.py",
         "skills/nexy/runtime/completion_proof_v2.py"
-      ]
+      ],
+      "verified_by": "AUD-NEXY-SKILL-RUNTIME-002",
+      "verification_run_id": 35336880932,
+      "verification_commit": "e6f98a2cbc31818cd597d213e715bd90d35d7db3",
+      "evidence_id": "EVD-NEXY-RUNTIME-001"
     }
   ],
   "indexes": {
@@ -8959,5 +8987,5 @@
     "Load exact path and locator.",
     "Do not invent missing Skill content."
   ],
-  "last_change": "Replaced generic Skill bundle text with operational algorithms, edge cases, evidence contracts and validation gates."
+  "last_change": "Verified the seven scoped NEXY Skill runtime bindings with executable tests, registry audit and deterministic completion proof."
 }
