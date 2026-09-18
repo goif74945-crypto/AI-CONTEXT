@@ -22,4 +22,4 @@ jobs:
       - name: Run runtime audit
         run: PYTHONPATH=. python3 -m skills.nexy.runtime.audit
       - name: Run deterministic completion proof
-        run: PYTHONPATH=. python3 skills/nexy/runtime/completion_proof.py
+        run: PYTHONPATH=. python3 skills/nexy/runtime/completion_proof_v2.py
