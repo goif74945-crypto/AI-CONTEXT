@@ -4,7 +4,7 @@ from pathlib import Path
 from skills.nexy.runtime.runtime import SkillRuntime, REPOSITORY, BRANCH
 
 ROOT=Path(__file__).resolve().parents[3]
-REGISTRY=ROOT/"skills/nexy/registry/skills.json"
+REGISTRY=ROOT/"skills/registry/registry.json"
 HEAD="0123456789abcdef0123456789abcdef01234567"
 TARGETS=["GOV-001","GOV-002","CTX-001","CTX-003","REQ-001","ARC-001","ARC-004"]
 
@@ -23,9 +23,12 @@ def callable_ref(ref):
 
 def main():
     rt=SkillRuntime(REGISTRY)
-    assert set(rt.registry["skills"])==set(TARGETS)
-    for sid,e in rt.registry["skills"].items():
-        assert callable_ref(e["runtime_entry"]); assert callable_ref(e["validator"]); assert callable_ref(e["evidence_handler"])
+    entries={e["id"]:e for e in rt.registry["skills"] if e.get("id") in TARGETS}
+    assert set(entries)==set(TARGETS)
+    assert len(rt.registry["skills"])==228
+    assert len([e for e in rt.registry["skills"] if e.get("id") not in TARGETS])==221
+    for sid,e in entries.items():
+        assert callable_ref(e["locator"]); assert callable_ref(e["validator"]); assert callable_ref(e["evidence_handler"])
     success=rt.run("GOV-001",env("GOV-001"))
     assert success["status"]=="SUCCESS" and success["chain"]==["LOAD","RESOLVE","AUTHORIZE","EXECUTE","VALIDATE","EVIDENCE","RESULT"]
     failure=rt.run("GOV-001",env("GOV-001",action="WRITE"))
