@@ -2,6 +2,7 @@ name: nexy-skill-runtime
 on:
   push:
     branches:
+      - main
       - nexy-skill-runtime-canonical
   pull_request:
     paths:
@@ -20,3 +21,5 @@ jobs:
         run: PYTHONPATH=. python3 -m unittest discover -s skills/nexy/runtime/tests -p "test_*.py" -v
       - name: Run runtime audit
         run: PYTHONPATH=. python3 -m skills.nexy.runtime.audit
+      - name: Run deterministic completion proof
+        run: PYTHONPATH=. python3 skills/nexy/runtime/completion_proof.py
