@@ -1,11 +1,17 @@
 from __future__ import annotations
-import importlib, json
+import importlib, json, os, re, subprocess
 from pathlib import Path
 from skills.nexy.runtime.runtime import SkillRuntime, REPOSITORY, BRANCH
 
 ROOT=Path(__file__).resolve().parents[3]
 REGISTRY=ROOT/"skills/registry/registry.json"
-HEAD="0123456789abcdef0123456789abcdef01234567"
+def current_head():
+    value=os.environ.get("GITHUB_SHA")
+    if isinstance(value,str) and re.fullmatch(r"[0-9a-f]{40}",value):
+        return value
+    return subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
+
+HEAD=current_head()
 TARGETS=["GOV-001","GOV-002","CTX-001","CTX-003","REQ-001","ARC-001","ARC-004"]
 
 def env(sid, action="ANALYZE"):
