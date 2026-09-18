@@ -123,7 +123,7 @@ class RuntimeTests(unittest.TestCase):
     def test_canonical_registry_regression(self):
         registry=json.loads(REGISTRY.read_text(encoding="utf-8"))
         self.assertEqual(registry["registry_id"],"AI-CONTEXT-SKILL-REGISTRY")
-        self.assertEqual(registry["counts"],{"cataloged":190,"materialized":38,"verified":0,"total":228})
+        self.assertEqual(registry["counts"],{"cataloged":190,"materialized":31,"verified":7,"total":228})
         self.assertEqual(len(registry["skills"]),228)
         target_ids={e["id"] for e in registry["skills"] if e.get("id") in TARGETS}
         self.assertEqual(target_ids,set(TARGETS))
