@@ -99,8 +99,8 @@ class RuntimeTests(unittest.TestCase):
     def test_checkpoint_failure_and_freeze(self):
         f=self.rt.run("GOV-001",env("GOV-001",repo="bad/repo")); self.assertEqual(f["checkpoint"]["failed"],1)
         z=self.rt.run("GOV-001",env("GOV-001")); self.assertEqual(z["checkpoint"]["verified"],1)
-        z=self.rt.run("CTX-003",dict(env("CTX-003"))); z["data"]["files"][0]["content"]="x"; z["data"]["files"][0]["content_hash"]="sha256:"+"f"*64
-        self.assertEqual(self.rt.run("CTX-003",z)["status"],"FREEZE")
+        p=env("CTX-003"); p["data"]["files"][0]["content"]="x"; p["data"]["files"][0]["content_hash"]="sha256:"+"f"*64
+        self.assertEqual(self.rt.run("CTX-003",p)["status"],"FREEZE")
 
     def test_runtime_source_is_self_contained(self):
         src=Path(__import__("skills.nexy.runtime.runtime",fromlist=["__file__"]).__file__).read_text(encoding="utf-8")
