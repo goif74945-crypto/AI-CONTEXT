@@ -1,22 +1,20 @@
 # AI-CONTEXT Skill Bundle: architecture
 
-Each section is independently addressable by Registry locator. Version: 1.0.0.
+## Operational Definition
+These are executable Skill definitions, not capability names. The Registry uses each `SKILL:<ID>` locator to load the exact procedure.
 
 ## SKILL:ARCH-001
 ### Identity
 - id: ARCH-001
 - name: architect
-- category: architecture
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:ARCH-001
 
 ### Objective
 Analyze structure, boundaries, dependencies, constraints and impact.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -29,58 +27,80 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 - CORE-002
 - CORE-010
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Inventory components.
+2. Map boundaries.
+3. Map dependencies.
+4. Identify bottlenecks.
+5. Produce architecture findings.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:ARCH-002
 ### Identity
 - id: ARCH-002
 - name: system-design
-- category: architecture
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:ARCH-002
 
 ### Objective
 Design a coherent system from requirements through interfaces, data and boundaries.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -92,58 +112,80 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 - ARCH-001
 - CORE-003
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Convert requirements to architecture.
+2. Define components/contracts.
+3. Define data flow.
+4. Define failure modes.
+5. Define validation.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:ARCH-003
 ### Identity
 - id: ARCH-003
 - name: dependency-audit
-- category: architecture
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:ARCH-003
 
 ### Objective
 Resolve direct/transitive dependency and cycle impact.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -155,40 +197,65 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 - ARCH-001
 - CORE-010
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Build dependency graph.
+2. Detect cycles.
+3. Trace versions.
+4. Classify risk.
+5. Recommend bounded resolution.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
