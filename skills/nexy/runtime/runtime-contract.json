@@ -1,0 +1,61 @@
+{
+  "contract_id": "CTR-NEXY-SKILL-RUNTIME-002",
+  "canonical_registry": "skills/registry/registry.json",
+  "runtime_root": "skills/nexy/runtime",
+  "execution_backend": "skills/nexy/runtime/runtime.py",
+  "registry_lifecycle": [
+    "DISCOVER",
+    "SELECT",
+    "LOAD",
+    "COMPOSE",
+    "EXECUTE",
+    "VERIFY"
+  ],
+  "required_execution_fields": [
+    "execution_id",
+    "skill_id",
+    "action",
+    "context"
+  ],
+  "universal_context": [
+    "task",
+    "authority",
+    "scope",
+    "repository",
+    "branch",
+    "head",
+    "source_of_truth",
+    "constraints",
+    "expected_output",
+    "validation_requirements"
+  ],
+  "chain": [
+    "LOAD",
+    "RESOLVE",
+    "AUTHORIZE",
+    "EXECUTE",
+    "VALIDATE",
+    "EVIDENCE",
+    "RESULT"
+  ],
+  "failure_path": [
+    "EXECUTION_FAILURE",
+    "FAILURE"
+  ],
+  "safety_failure_path": [
+    "SAFETY_CRITICAL_FAILURE",
+    "FREEZE"
+  ],
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "branch": "main",
+  "external_dependencies": [],
+  "identifier_types": [
+    "REG",
+    "AUT",
+    "FILE",
+    "RES",
+    "EVD",
+    "ERR",
+    "CHK"
+  ]
+}
