@@ -13,9 +13,9 @@
   ],
   "counts": {
     "cataloged": 190,
-    "materialized": 31,
+    "materialized": 38,
     "verified": 0,
-    "total": 221
+    "total": 228
   },
   "skills": [
     {
@@ -5747,6 +5747,265 @@
       ],
       "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
       "skill_version": "1.1.0"
+    },
+    {
+      "id": "GOV-001",
+      "name": "nexy-authority",
+      "category": "governance",
+      "tags": [
+        "nexy-authority",
+        "nexy"
+      ],
+      "status": "MATERIALIZED",
+      "implementation": "PYTHON_RUNTIME",
+      "load_path": "skills/nexy/runtime/runtime.py",
+      "locator": "skills.nexy.runtime.runtime:execute_gov_001",
+      "permissions": [
+        "READ",
+        "ANALYZE"
+      ],
+      "dependencies": [],
+      "validation": [
+        "schema",
+        "identity",
+        "dependency-resolution",
+        "behavior",
+        "security",
+        "integration",
+        "evidence",
+        "regression"
+      ],
+      "source_basis": "NEXY สกิว.pdf + skills/nexy/MASTER-SPECIFICATION.md + current user command",
+      "skill_version": "1.0.0",
+      "source_path": "skills/nexy/governance/GOV-001--nexy-authority/SKILL.md",
+      "validator": "skills.nexy.runtime.runtime:validate_output_contract",
+      "evidence_handler": "skills.nexy.runtime.runtime:evidence_bind",
+      "tests": [
+        "skills/nexy/runtime/tests/test_runtime.py",
+        "skills/nexy/runtime/completion_proof_v2.py"
+      ]
+    },
+    {
+      "id": "GOV-002",
+      "name": "nexy-scope-guard",
+      "category": "governance",
+      "tags": [
+        "nexy-scope-guard",
+        "nexy"
+      ],
+      "status": "MATERIALIZED",
+      "implementation": "PYTHON_RUNTIME",
+      "load_path": "skills/nexy/runtime/runtime.py",
+      "locator": "skills.nexy.runtime.runtime:execute_gov_002",
+      "permissions": [
+        "READ",
+        "ANALYZE"
+      ],
+      "dependencies": [],
+      "validation": [
+        "schema",
+        "identity",
+        "dependency-resolution",
+        "behavior",
+        "security",
+        "integration",
+        "evidence",
+        "regression"
+      ],
+      "source_basis": "NEXY สกิว.pdf + skills/nexy/MASTER-SPECIFICATION.md + current user command",
+      "skill_version": "1.0.0",
+      "source_path": "skills/nexy/governance/GOV-002--nexy-scope-guard/SKILL.md",
+      "validator": "skills.nexy.runtime.runtime:validate_output_contract",
+      "evidence_handler": "skills.nexy.runtime.runtime:evidence_bind",
+      "tests": [
+        "skills/nexy/runtime/tests/test_runtime.py",
+        "skills/nexy/runtime/completion_proof_v2.py"
+      ]
+    },
+    {
+      "id": "CTX-001",
+      "name": "nexy-context",
+      "category": "context",
+      "tags": [
+        "nexy-context",
+        "nexy"
+      ],
+      "status": "MATERIALIZED",
+      "implementation": "PYTHON_RUNTIME",
+      "load_path": "skills/nexy/runtime/runtime.py",
+      "locator": "skills.nexy.runtime.runtime:execute_ctx_001",
+      "permissions": [
+        "READ",
+        "ANALYZE"
+      ],
+      "dependencies": [],
+      "validation": [
+        "schema",
+        "identity",
+        "dependency-resolution",
+        "behavior",
+        "security",
+        "integration",
+        "evidence",
+        "regression"
+      ],
+      "source_basis": "NEXY สกิว.pdf + skills/nexy/MASTER-SPECIFICATION.md + current user command",
+      "skill_version": "1.0.0",
+      "source_path": "skills/nexy/context/CTX-001--nexy-context/SKILL.md",
+      "validator": "skills.nexy.runtime.runtime:validate_output_contract",
+      "evidence_handler": "skills.nexy.runtime.runtime:evidence_bind",
+      "tests": [
+        "skills/nexy/runtime/tests/test_runtime.py",
+        "skills/nexy/runtime/completion_proof_v2.py"
+      ]
+    },
+    {
+      "id": "CTX-003",
+      "name": "nexy-source-inspector",
+      "category": "context",
+      "tags": [
+        "nexy-source-inspector",
+        "nexy"
+      ],
+      "status": "MATERIALIZED",
+      "implementation": "PYTHON_RUNTIME",
+      "load_path": "skills/nexy/runtime/runtime.py",
+      "locator": "skills.nexy.runtime.runtime:execute_ctx_003",
+      "permissions": [
+        "READ",
+        "ANALYZE"
+      ],
+      "dependencies": [],
+      "validation": [
+        "schema",
+        "identity",
+        "dependency-resolution",
+        "behavior",
+        "security",
+        "integration",
+        "evidence",
+        "regression"
+      ],
+      "source_basis": "NEXY สกิว.pdf + skills/nexy/MASTER-SPECIFICATION.md + current user command",
+      "skill_version": "1.0.0",
+      "source_path": "skills/nexy/context/CTX-003--nexy-source-inspector/SKILL.md",
+      "validator": "skills.nexy.runtime.runtime:validate_output_contract",
+      "evidence_handler": "skills.nexy.runtime.runtime:evidence_bind",
+      "tests": [
+        "skills/nexy/runtime/tests/test_runtime.py",
+        "skills/nexy/runtime/completion_proof_v2.py"
+      ]
+    },
+    {
+      "id": "REQ-001",
+      "name": "nexy-requirement",
+      "category": "requirement",
+      "tags": [
+        "nexy-requirement",
+        "nexy"
+      ],
+      "status": "MATERIALIZED",
+      "implementation": "PYTHON_RUNTIME",
+      "load_path": "skills/nexy/runtime/runtime.py",
+      "locator": "skills.nexy.runtime.runtime:execute_req_001",
+      "permissions": [
+        "READ",
+        "ANALYZE"
+      ],
+      "dependencies": [],
+      "validation": [
+        "schema",
+        "identity",
+        "dependency-resolution",
+        "behavior",
+        "security",
+        "integration",
+        "evidence",
+        "regression"
+      ],
+      "source_basis": "NEXY สกิว.pdf + skills/nexy/MASTER-SPECIFICATION.md + current user command",
+      "skill_version": "1.0.0",
+      "source_path": "skills/nexy/requirement/REQ-001--nexy-requirement/SKILL.md",
+      "validator": "skills.nexy.runtime.runtime:validate_output_contract",
+      "evidence_handler": "skills.nexy.runtime.runtime:evidence_bind",
+      "tests": [
+        "skills/nexy/runtime/tests/test_runtime.py",
+        "skills/nexy/runtime/completion_proof_v2.py"
+      ]
+    },
+    {
+      "id": "ARC-001",
+      "name": "nexy-architecture",
+      "category": "architecture",
+      "tags": [
+        "nexy-architecture",
+        "nexy"
+      ],
+      "status": "MATERIALIZED",
+      "implementation": "PYTHON_RUNTIME",
+      "load_path": "skills/nexy/runtime/runtime.py",
+      "locator": "skills.nexy.runtime.runtime:execute_arc_001",
+      "permissions": [
+        "READ",
+        "ANALYZE"
+      ],
+      "dependencies": [],
+      "validation": [
+        "schema",
+        "identity",
+        "dependency-resolution",
+        "behavior",
+        "security",
+        "integration",
+        "evidence",
+        "regression"
+      ],
+      "source_basis": "NEXY สกิว.pdf + skills/nexy/MASTER-SPECIFICATION.md + current user command",
+      "skill_version": "1.0.0",
+      "source_path": "skills/nexy/architecture/ARC-001--nexy-architecture/SKILL.md",
+      "validator": "skills.nexy.runtime.runtime:validate_output_contract",
+      "evidence_handler": "skills.nexy.runtime.runtime:evidence_bind",
+      "tests": [
+        "skills/nexy/runtime/tests/test_runtime.py",
+        "skills/nexy/runtime/completion_proof_v2.py"
+      ]
+    },
+    {
+      "id": "ARC-004",
+      "name": "nexy-architecture-impact",
+      "category": "architecture",
+      "tags": [
+        "nexy-architecture-impact",
+        "nexy"
+      ],
+      "status": "MATERIALIZED",
+      "implementation": "PYTHON_RUNTIME",
+      "load_path": "skills/nexy/runtime/runtime.py",
+      "locator": "skills.nexy.runtime.runtime:execute_arc_004",
+      "permissions": [
+        "READ",
+        "ANALYZE"
+      ],
+      "dependencies": [],
+      "validation": [
+        "schema",
+        "identity",
+        "dependency-resolution",
+        "behavior",
+        "security",
+        "integration",
+        "evidence",
+        "regression"
+      ],
+      "source_basis": "NEXY สกิว.pdf + skills/nexy/MASTER-SPECIFICATION.md + current user command",
+      "skill_version": "1.0.0",
+      "source_path": "skills/nexy/architecture/ARC-004--nexy-architecture-impact/SKILL.md",
+      "validator": "skills.nexy.runtime.runtime:validate_output_contract",
+      "evidence_handler": "skills.nexy.runtime.runtime:evidence_bind",
+      "tests": [
+        "skills/nexy/runtime/tests/test_runtime.py",
+        "skills/nexy/runtime/completion_proof_v2.py"
+      ]
     }
   ],
   "indexes": {
