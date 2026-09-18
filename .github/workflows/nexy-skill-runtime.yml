@@ -1,0 +1,27 @@
+name: nexy-skill-runtime
+on:
+  push:
+    branches:
+      - main
+      - nexy-skill-runtime-canonical-v2
+  pull_request:
+    paths:
+      - "skills/nexy/**"
+      - "skills/registry/registry.json"
+      - "skills/registry/skill.schema.json"
+      - ".github/workflows/nexy-skill-runtime.yml"
+
+jobs:
+  test-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run executable runtime tests
+        run: PYTHONPATH=. python3 -m unittest discover -s skills/nexy/runtime/tests -p "test_*.py" -v
+      - name: Run runtime audit
+        run: PYTHONPATH=. python3 -m skills.nexy.runtime.audit
+      - name: Run deterministic completion proof
+        run: PYTHONPATH=. python3 skills/nexy/runtime/completion_proof_v2.py
