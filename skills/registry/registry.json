@@ -1,5 +1,5 @@
 {
-  "registry_version": "1.0.0",
+  "registry_version": "1.1.0",
   "registry_id": "AI-CONTEXT-SKILL-REGISTRY",
   "source_of_truth": "goif74945-crypto/AI-CONTEXT",
   "branch": "main",
@@ -4783,7 +4783,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "CORE-002",
@@ -4812,7 +4813,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "CORE-003",
@@ -4842,7 +4844,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "CORE-004",
@@ -4871,7 +4874,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "CORE-005",
@@ -4901,7 +4905,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "CORE-006",
@@ -4931,7 +4936,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "CORE-007",
@@ -4961,7 +4967,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "CORE-008",
@@ -4990,7 +4997,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "CORE-009",
@@ -5020,7 +5028,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "CORE-010",
@@ -5049,7 +5058,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "RESEARCH-001",
@@ -5080,7 +5090,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "RESEARCH-002",
@@ -5110,7 +5121,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "RESEARCH-003",
@@ -5140,7 +5152,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "REDTEAM-001",
@@ -5171,7 +5184,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "ENG-001",
@@ -5205,7 +5219,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "ARCH-001",
@@ -5236,7 +5251,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "ARCH-002",
@@ -5266,7 +5282,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "ENG-002",
@@ -5300,7 +5317,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "ENG-003",
@@ -5334,7 +5352,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "ENG-004",
@@ -5370,7 +5389,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "ENG-005",
@@ -5403,7 +5423,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "QA-001",
@@ -5434,7 +5455,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "QA-002",
@@ -5465,7 +5487,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "SEC-001",
@@ -5497,7 +5520,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "ARCH-003",
@@ -5527,7 +5551,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "DATA-001",
@@ -5558,7 +5583,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "AI-001",
@@ -5589,7 +5615,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "AI-002",
@@ -5620,7 +5647,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "AI-003",
@@ -5651,7 +5679,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "AI-004",
@@ -5683,7 +5712,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     },
     {
       "id": "AI-005",
@@ -5715,7 +5745,8 @@
         "behavior",
         "evidence"
       ],
-      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline"
+      "source_basis": "AI-CONTEXT Skill Registry Phase-1 baseline",
+      "skill_version": "1.1.0"
     }
   ],
   "indexes": {
@@ -8668,5 +8699,6 @@
     "Reject BLOCKED, missing, cyclic or permission-incompatible dependencies.",
     "Load exact path and locator.",
     "Do not invent missing Skill content."
-  ]
+  ],
+  "last_change": "Replaced generic Skill bundle text with operational algorithms, edge cases, evidence contracts and validation gates."
 }
