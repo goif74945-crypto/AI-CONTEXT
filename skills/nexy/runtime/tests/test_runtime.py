@@ -1,11 +1,17 @@
 from __future__ import annotations
-import copy, json, re, unittest
+import copy, json, os, re, subprocess, unittest
 from pathlib import Path
 from skills.nexy.runtime.runtime import SkillRuntime, REPOSITORY, BRANCH, UNIVERSAL_REQUIRED, UNIVERSAL_OUTPUT, sha256_hex, stable_id
 
 ROOT=Path(__file__).resolve().parents[4]
 REGISTRY=ROOT/"skills/registry/registry.json"
-HEAD="0123456789abcdef0123456789abcdef01234567"
+def current_head():
+    value=os.environ.get("GITHUB_SHA")
+    if isinstance(value,str) and re.fullmatch(r"[0-9a-f]{40}",value):
+        return value
+    return subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
+
+HEAD=current_head()
 TARGETS={
 "GOV-001":{"data":{"sources":[{"source_id":"DOC-CMD-001","source_type":"CURRENT_USER_COMMAND","rank":1,"status":"VERIFIED"}]}},
 "GOV-002":{"data":{"request":{"target":"skills/nexy"}}},
@@ -74,11 +80,15 @@ class RuntimeTests(unittest.TestCase):
 
     def test_invalid_execution_context(self):
         p=env("ARC-004"); del p["context"]["head"]
-        r=self.rt.run("ARC-004",p); self.assertEqual(r["failure"]["code"],"INVALID_INPUT")
+        r=self.rt.run("ARC-004",p); self.assertEqual(r["status"],"BLOCKED"); self.assertEqual(r["failure"]["code"],"MISSING_SAFETY_CRITICAL_INPUT")
+
+    def test_missing_required_input_is_unknown(self):
+        p=env("GOV-001"); del p["context"]["task"]
+        r=self.rt.run("GOV-001",p); self.assertEqual(r["status"],"UNKNOWN"); self.assertEqual(r["failure"]["code"],"MISSING_REQUIRED_INPUT")
 
     def test_missing_universal_input(self):
         p=env("GOV-001"); del p["context"]["source_of_truth"]
-        r=self.rt.run("GOV-001",p); self.assertEqual(r["failure"]["code"],"INVALID_INPUT")
+        r=self.rt.run("GOV-001",p); self.assertEqual(r["status"],"BLOCKED"); self.assertEqual(r["failure"]["code"],"MISSING_SAFETY_CRITICAL_INPUT")
 
     def test_authority_conflict_freezes(self):
         p=env("GOV-001"); p["data"]["sources"]=[{"source_id":"A","source_type":"CURRENT_USER_COMMAND","rank":1},{"source_id":"B","source_type":"CURRENT_USER_COMMAND","rank":1}]
