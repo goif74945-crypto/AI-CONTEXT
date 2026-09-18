@@ -1,22 +1,20 @@
 # AI-CONTEXT Skill Bundle: core
 
-Each section is independently addressable by Registry locator. Version: 1.0.0.
+## Operational Definition
+These are executable Skill definitions, not capability names. The Registry uses each `SKILL:<ID>` locator to load the exact procedure.
 
 ## SKILL:CORE-001
 ### Identity
 - id: CORE-001
 - name: context-load
-- category: core
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-001
 
 ### Objective
 Load authoritative current context before execution.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -27,58 +25,79 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 ### Dependencies
 - none
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Read source-of-truth context.
+2. Resolve precedence.
+3. Record loaded sources.
+4. Reject stale/conflicting critical context.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:CORE-002
 ### Identity
 - id: CORE-002
 - name: requirement-audit
-- category: governance
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-002
 
 ### Objective
 Convert a task into explicit objective, scope, constraints, inputs, outputs and acceptance criteria.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -89,58 +108,80 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 ### Dependencies
 - CORE-001
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Extract explicit requirements.
+2. Separate in/out scope.
+3. Mark unknowns.
+4. Build acceptance matrix.
+5. Freeze on critical ambiguity.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:CORE-003
 ### Identity
 - id: CORE-003
 - name: scope-guard
-- category: governance
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-003
 
 ### Objective
 Prevent unauthorized scope expansion and destructive or unrelated changes.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -152,58 +193,79 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 - CORE-001
 - CORE-002
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Create scope boundary.
+2. Classify proposed changes.
+3. Reject unrelated work.
+4. Require explicit authorization for scope changes.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:CORE-004
 ### Identity
 - id: CORE-004
 - name: evidence-first
-- category: governance
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-004
 
 ### Objective
 Require traceable evidence for substantive claims and completion state.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -214,58 +276,79 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 ### Dependencies
 - CORE-001
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Attach evidence to claims.
+2. Record source/path/line or execution result.
+3. Classify evidence strength.
+4. Reject unsupported completion claims.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:CORE-005
 ### Identity
 - id: CORE-005
 - name: no-guess
-- category: governance
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-005
 
 ### Objective
 Block invented facts, unsupported assumptions, placeholders and fabricated mechanisms.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -277,58 +360,79 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 - CORE-001
 - CORE-004
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Detect missing facts.
+2. Label assumptions.
+3. Search authoritative sources.
+4. Freeze when safe resolution is impossible.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:CORE-006
 ### Identity
 - id: CORE-006
 - name: no-false-pass
-- category: verification
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-006
 
 ### Objective
 Prevent PASS/COMPLETE claims without satisfying gates and evidence.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -340,58 +444,79 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 - CORE-004
 - CORE-005
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Enumerate gates.
+2. Check each gate.
+3. Require evidence.
+4. Return NOT VERIFIED when any required gate is missing.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:CORE-007
 ### Identity
 - id: CORE-007
 - name: requirement-trace
-- category: governance
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-007
 
 ### Objective
 Trace requirement to design, implementation, tests and evidence.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -403,58 +528,79 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 - CORE-002
 - CORE-004
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Assign requirement IDs.
+2. Map implementation artifacts.
+3. Map validation.
+4. Report gaps.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:CORE-008
 ### Identity
 - id: CORE-008
 - name: contradiction-check
-- category: verification
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-008
 
 ### Objective
 Detect conflicting sources, requirements or outputs.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -465,58 +611,79 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 ### Dependencies
 - CORE-004
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Normalize statements.
+2. Compare authority.
+3. Locate conflicts.
+4. Escalate unresolved contradictions.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:CORE-009
 ### Identity
 - id: CORE-009
 - name: completeness-audit
-- category: verification
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-009
 
 ### Objective
 Check that required items are present and validated.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -528,58 +695,79 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 - CORE-007
 - CORE-006
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Build expected-item set.
+2. Check presence.
+3. Check validation state.
+4. Report missing/partial items.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
 ## SKILL:CORE-010
 ### Identity
 - id: CORE-010
 - name: compatibility-audit
-- category: verification
-- version: 1.0.0
+- version: 1.1.0
 - status: MATERIALIZED
+- locator: SKILL:CORE-010
 
 ### Objective
 Check contracts, dependencies and compatibility impact.
 
-### Authority
-Use caller authority and the AI-CONTEXT Registry. Never override higher-authority source material.
-
-### Inputs
+### Required Inputs
 - task
 - current_context
 - authority
@@ -590,40 +778,64 @@ Use caller authority and the AI-CONTEXT Registry. Never override higher-authorit
 ### Dependencies
 - CORE-007
 
-### Required Behavior
-- Validate authority and scope before execution.
-- Preserve evidence provenance.
-- Distinguish FACT / ASSUMPTION / UNKNOWN.
-- Preserve deterministic behavior for identical inputs and registry state.
-- Propagate BLOCKED / FAIL / UNKNOWN.
+### Execution Algorithm
+1. Inventory interfaces.
+2. Compare before/after contracts.
+3. Trace dependents.
+4. Classify breaking/non-breaking impact.
 
-### Forbidden Behavior
-- Guessing or inventing facts, tools, requirements or evidence.
-- Placeholder-based completion.
-- Silent scope expansion.
-- Skipping required validation.
-- Claiming VERIFIED without evidence.
+### Decision Rules
+- Authoritative current evidence outranks secondary summaries.
+- Missing evidence is UNKNOWN, not permission to infer.
+- Requirements and scope are immutable unless explicitly changed by authorized input.
+- Dependency failure blocks dependent execution unless a declared safe recovery exists.
+- Identical task/context/registry/authority must yield the same decision class.
 
-### Workflow
-1. Load current context.
-2. Validate authority and scope.
-3. Validate inputs and dependencies.
-4. Execute only this Skill's objective.
-5. Record actions, outputs, evidence, errors and unknowns.
-6. Run applicable validation.
-7. Return explicit status.
+### Edge Cases
+- Missing required input → BLOCKED and identify the field.
+- Critical source conflict → FREEZE and expose both sources.
+- Stale evidence → do not silently treat as current.
+- Partial result → PARTIAL or NOT VERIFIED.
+- Tool unavailable → UNKNOWN; never fabricate the result.
+- Mid-run scope change → stop and re-audit.
 
-### Failure / Freeze
-Freeze or block on critical unresolved uncertainty, dependency failure, authority conflict, scope expansion or insufficient evidence.
+### Evidence Contract
+For each material conclusion record:
+1. evidence type;
+2. source/artifact;
+3. exact locator when available;
+4. observed result;
+5. requirement/decision supported;
+6. limitations and unknowns.
 
-### Validation
+### Output Contract
+Return:
+- status: READY | RUNNING | PASS | PARTIAL | NOT VERIFIED | BLOCKED | FAIL | FREEZE
+- actions
+- outputs
+- evidence
+- errors
+- unknowns
+- remaining
+- next_gate
+
+### Validation Gates
 - Registry identity matches.
-- Dependencies resolve without cycles.
-- Scope is respected.
+- Dependencies resolve and are acyclic.
+- Authority and scope are valid.
+- Algorithm steps are completed or explicitly marked incomplete.
 - Output contract is satisfied.
-- Evidence is traceable.
-- No false PASS condition exists.
+- Evidence supports the claimed status.
+- No forbidden behavior occurred.
 
-### Output
-Return: status, objective, actions, outputs, evidence, errors, unknowns, remaining.
+### Forbidden
+- fabricated evidence;
+- invented repository/system state;
+- placeholder presented as implementation;
+- unsupported PASS/VERIFIED;
+- silent requirement change;
+- destructive action outside authority.
+
+### Stop Conditions
+Authority conflict, unresolved critical contradiction, missing dependency, permission violation, integrity failure, or impossible validation requirement.
 
