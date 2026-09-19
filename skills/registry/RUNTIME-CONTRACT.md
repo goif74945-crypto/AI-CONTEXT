@@ -25,3 +25,6 @@ Authority conflict; unresolved requirement conflict; missing dependency; cycle; 
 
 ## Runtime boundary
 The Registry routes and identifies Skills. It does not itself grant permissions or execute arbitrary code; an execution backend is required.
+
+## Current branch audit note
+The branch `nexy-skill-runtime-canonical-v2` contains a Python execution backend candidate, but the authoritative Master Specification explicitly leaves the concrete Skill runtime/loader implementation UNSPECIFIED. Therefore the branch candidate is NOT VERIFIED as the canonical runtime. No runtime architecture is being invented in this forensic round.
