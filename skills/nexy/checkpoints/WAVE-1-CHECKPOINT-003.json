@@ -1,0 +1,50 @@
+{
+  "checkpoint_id": "CHK-NEXY-W1-FORENSIC-003",
+  "round": 1,
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "expected": 7,
+  "processed": 7,
+  "verified": 0,
+  "failed": 0,
+  "skipped": 0,
+  "blocked": 7,
+  "unknown": 1,
+  "remaining": [
+    "GOV-001",
+    "GOV-002",
+    "CTX-001",
+    "CTX-003",
+    "REQ-001",
+    "ARC-001",
+    "ARC-004"
+  ],
+  "changed_files": [
+    "skills/registry/registry.json",
+    "skills/nexy/runtime/completion_proof_v2.py",
+    "skills/nexy/runtime/tests/test_runtime.py",
+    "skills/nexy/runtime/README.md",
+    "skills/registry/RUNTIME-CONTRACT.md",
+    "skills/nexy/runtime/runtime-contract.json",
+    "skills/nexy/evidence/WAVE-1-FORENSIC-EVIDENCE-003.md",
+    "skills/nexy/evidence/WAVE-1-FORENSIC-EVIDENCE-004.md"
+  ],
+  "tests_run": [
+    {
+      "workflow_run_id": 35435258668,
+      "head": "f82edbba13d936050d9f9cabdca7d3aa1fc7f31f",
+      "runtime_tests": "PASS",
+      "runtime_audit": "PASS",
+      "completion_proof": "NOT_VERIFIED / exit 1"
+    }
+  ],
+  "evidence_created": [
+    "EVD-NEXY-W1-FORENSIC-003",
+    "EVD-NEXY-W1-FORENSIC-004"
+  ],
+  "current_branch": "nexy-skill-runtime-canonical-v2",
+  "current_head": "f82edbba13d936050d9f9cabdca7d3aa1fc7f31f",
+  "last_verified_item": "NONE",
+  "next_resume_point": "AUTHORITATIVE_RUNTIME_CONTRACT_RESOLUTION",
+  "status": "BLOCKED / FREEZE",
+  "blocker": "Canonical Skill runtime/loader/permission execution mechanism is UNSPECIFIED by the authoritative Master Specification."
+}
