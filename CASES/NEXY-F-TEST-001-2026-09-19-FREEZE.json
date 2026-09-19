@@ -1,0 +1,76 @@
+{
+  "task_id": "NEXY-F-TEST-001-2026-09-19-FREEZE",
+  "title": "F-TEST-001 + F-BUILD-001 retest precondition freeze",
+  "mode": "ทำ",
+  "scope": "NEXY.AI PR #8 precondition validation only",
+  "inputs_summary": "User required TARGET_BRANCH codex/spec-audit-20260919-78df350 and EXPECTED_HEAD acd9800908433832b15374d7aa4f7de46541f1d3; any HEAD mismatch requires FREEZE and forbids reset/rebase/merge/cherry-pick.",
+  "sources": [
+    "GitHub repo goif74945-crypto/NEXY.AI-",
+    "PR #8",
+    "branch codex/spec-audit-20260919-78df350"
+  ],
+  "tools": [
+    "GitHub connector"
+  ],
+  "actions": [
+    "Fetched actual branch HEAD",
+    "Fetched PR #8 state",
+    "Compared EXPECTED_HEAD to actual HEAD",
+    "Compared cab542cdc7bd23161e940529945fee13a2f0c812 to actual HEAD",
+    "Performed no NEXY.AI write after new command arrived"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Actual HEAD differs from EXPECTED_HEAD",
+      "proof": "actual=2b95a7735430548352c357b2eb15090bc919f3b0; expected=acd9800908433832b15374d7aa4f7de46541f1d3"
+    },
+    {
+      "claim": "Actual HEAD is exactly one commit ahead of EXPECTED_HEAD",
+      "proof": "compare expected..actual status=ahead, ahead_by=1; only .github/workflows/deploy.yml changed"
+    },
+    {
+      "claim": "PR #8 remains open, draft, not merged",
+      "proof": "PR state=open, draft=true, merged=false"
+    },
+    {
+      "claim": "Parent chain includes cab542cdc7bd23161e940529945fee13a2f0c812",
+      "proof": "compare cab..actual status=ahead, ahead_by=2"
+    }
+  ],
+  "tests_results": "No F-TEST-001 test execution performed under this command because precondition failed before execution gate.",
+  "changes": "No NEXY.AI changes performed under this command after precondition check.",
+  "successes": [
+    "Precondition mismatch detected before any authorized F-TEST-001 write."
+  ],
+  "failures": [
+    "Required EXPECTED_HEAD identity did not match actual HEAD."
+  ],
+  "decisions": [
+    "FREEZE affected path; do not reset/rebase/merge/cherry-pick."
+  ],
+  "unresolved": [
+    "User must provide a new command whose EXPECTED_HEAD matches the actual branch tip, or otherwise explicitly authorize a different recovery action."
+  ],
+  "risks": [
+    "Continuing against a mismatched HEAD would violate the user's branch identity law."
+  ],
+  "limits": [
+    "No F-TEST-001 patch, targeted test, full integration retest, or release-attestation retest executed under this command."
+  ],
+  "rollback": "None required; no NEXY.AI mutation occurred under this command.",
+  "final_status": "FREEZE",
+  "next_actions": [
+    "Obtain a command aligned to actual HEAD 2b95a7735430548352c357b2eb15090bc919f3b0, or explicit authorized history action."
+  ],
+  "dependencies": [
+    "Branch identity lock"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "ChatGPT system date: 2026-09-19 (Asia/Bangkok)",
+  "trace_id": "NEXY-F-TEST-001-2026-09-19-FREEZE",
+  "hash": "HASH_UNAVAILABLE",
+  "case_type": "PRECONDITION_CONFLICT",
+  "cause": "HEAD mismatch against user-locked EXPECTED_HEAD",
+  "impact": "Execution path frozen before test repair",
+  "prevention": "Always re-read branch tip before write"
+}
