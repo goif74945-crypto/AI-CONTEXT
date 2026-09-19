@@ -1,0 +1,16 @@
+{
+  "registry_view_id": "VIEW-NEXY-TARGETS-001",
+  "status": "DERIVED_VIEW",
+  "authority": "NON-CANONICAL",
+  "canonical_registry": "skills/registry/registry.json",
+  "target_ids": [
+    "GOV-001",
+    "GOV-002",
+    "CTX-001",
+    "CTX-003",
+    "REQ-001",
+    "ARC-001",
+    "ARC-004"
+  ],
+  "note": "Compatibility view only. The authoritative machine-readable registry is skills/registry/registry.json."
+}
