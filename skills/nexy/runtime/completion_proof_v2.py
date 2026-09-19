@@ -31,6 +31,10 @@ def main():
     rt=SkillRuntime(REGISTRY)
     entries={e["id"]:e for e in rt.registry["skills"] if e.get("id") in TARGETS}
     assert set(entries)==set(TARGETS)
+    non_verified={sid:e.get("status") for sid,e in entries.items() if e.get("status")!="VERIFIED"}
+    if non_verified:
+        print(json.dumps({"proof_id":"PRF-NEXY-RUNTIME-001","status":"NOT_VERIFIED","reason":"Target registry entries are not VERIFIED","target_status":non_verified},ensure_ascii=False,sort_keys=True,indent=2))
+        raise SystemExit(1)
     assert len(rt.registry["skills"])==228
     assert len([e for e in rt.registry["skills"] if e.get("id") not in TARGETS])==221
     for sid,e in entries.items():
