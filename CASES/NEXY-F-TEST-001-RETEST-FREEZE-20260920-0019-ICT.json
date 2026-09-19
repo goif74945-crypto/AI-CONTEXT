@@ -1,0 +1,89 @@
+{
+  "task_id": "NEXY-F-TEST-001-RETEST-FREEZE-20260920-0019-ICT",
+  "title": "F-TEST-001 + F-BUILD-001 retest precondition freeze",
+  "mode": "ทำ / CROSS",
+  "scope": "goif74945-crypto/NEXY.AI- PR #8 precondition validation only",
+  "inputs_summary": "Required TARGET_BRANCH codex/spec-audit-20260919-78df350 at EXPECTED_HEAD acd9800908433832b15374d7aa4f7de46541f1d3; any mismatch mandates FREEZE and forbids reset/rebase/merge/cherry-pick.",
+  "sources": [
+    "GitHub branch endpoint for codex/spec-audit-20260919-78df350",
+    "GitHub PR #8",
+    "GitHub compare acd9800908433832b15374d7aa4f7de46541f1d3..2b95a7735430548352c357b2eb15090bc919f3b0",
+    "GitHub compare cab542cdc7bd23161e940529945fee13a2f0c812..2b95a7735430548352c357b2eb15090bc919f3b0",
+    "AI-CONTEXT prior freeze records"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "AI-CONTEXT repository read/write"
+  ],
+  "actions": [
+    "Read AI-CONTEXT prior task/case/failure/ledger records",
+    "Fetched actual target branch from GitHub",
+    "Fetched PR #8 state from GitHub",
+    "Compared expected head to actual branch head",
+    "Verified cab542cdc7bd23161e940529945fee13a2f0c812 remains in ancestry",
+    "Performed no writes to goif74945-crypto/NEXY.AI-"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Actual target branch HEAD differs from required EXPECTED_HEAD",
+      "proof": "actual=2b95a7735430548352c357b2eb15090bc919f3b0; expected=acd9800908433832b15374d7aa4f7de46541f1d3"
+    },
+    {
+      "claim": "Actual HEAD is exactly one commit ahead of EXPECTED_HEAD",
+      "proof": "GitHub compare status=ahead, ahead_by=1; changed file=.github/workflows/deploy.yml; actual commit parent is acd9800908433832b15374d7aa4f7de46541f1d3"
+    },
+    {
+      "claim": "PR #8 remains OPEN / DRAFT / NOT MERGED",
+      "proof": "state=open,draft=true,merged=false,head_sha=2b95a7735430548352c357b2eb15090bc919f3b0"
+    },
+    {
+      "claim": "Required ancestor is present",
+      "proof": "compare cab542cdc7bd23161e940529945fee13a2f0c812..actual status=ahead,ahead_by=2"
+    }
+  ],
+  "tests_results": "No targeted/full test or release-attestation retest executed because branch identity precondition failed before mutation/execution gate.",
+  "changes": "No NEXY.AI files changed. AI-CONTEXT closeout records only.",
+  "successes": [
+    "Detected branch drift before any target-repository write.",
+    "Verified PR state and ancestry."
+  ],
+  "failures": [
+    "EXPECTED_HEAD identity requirement is not satisfied."
+  ],
+  "decisions": [
+    "FREEZE affected path exactly as commanded; do not reset/rebase/merge/cherry-pick."
+  ],
+  "unresolved": [
+    "Need a new command whose EXPECTED_HEAD matches actual HEAD 2b95a7735430548352c357b2eb15090bc919f3b0, or an explicit separately authorized history operation."
+  ],
+  "risks": [
+    "Proceeding would violate the explicit branch identity lock and could validate/modify the wrong revision."
+  ],
+  "limits": [
+    "F-TEST-001 patch not applied.",
+    "F-BUILD-001 retest not executed.",
+    "F-EVID-001 retest not executed.",
+    "Workflow artifacts not fetched under this frozen command."
+  ],
+  "rollback": "None required for NEXY.AI because no target-repository mutation occurred.",
+  "final_status": "FREEZE",
+  "next_actions": [
+    "Obtain command aligned with actual branch head or explicit authorized recovery action."
+  ],
+  "dependencies": [
+    "Branch identity lock",
+    "PR #8 draft validation context"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "Conversation authoritative local timestamp: 2026-09-20T00:19+07:00",
+  "trace_id": "NEXY-F-TEST-001-RETEST-FREEZE-20260920-0019-ICT",
+  "hash": "HASH_UNAVAILABLE",
+  "case": {
+    "cause": "HEAD mismatch",
+    "violation": "Precondition 2 would be violated by continuing",
+    "impact": "All repair/test/release-attestation paths blocked",
+    "fix": "No fix applied under frozen scope",
+    "prevention": "Re-read branch HEAD immediately before every write",
+    "regression": "Not run due freeze"
+  }
+}
