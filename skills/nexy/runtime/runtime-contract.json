@@ -57,5 +57,10 @@
     "EVD",
     "ERR",
     "CHK"
-  ]
+  ],
+  "contract_status": "NOT_VERIFIED",
+  "execution_backend_status": "CANDIDATE_NOT_VERIFIED",
+  "runtime_canonicality": "UNSPECIFIED_BY_AUTHORITY",
+  "branch_note": "This branch contains a candidate Python executor retained for forensic testing; it is not established as the canonical runtime.",
+  "verification_blocker": "EVD-NEXY-W1-FORENSIC-003"
 }
