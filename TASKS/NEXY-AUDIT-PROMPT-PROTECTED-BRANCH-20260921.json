@@ -1,0 +1,61 @@
+{
+  "task_id": "NEXY-AUDIT-PROMPT-PROTECTED-BRANCH-20260921",
+  "title": "Add protected branch exclusion to NEXY audit-only prompt",
+  "mode": "ทำ/SOLO",
+  "scope": "Produce a full integrated audit-only NEXY prompt with an absolute prohibition on interacting with branch ai/nexy-24x7-autonomous-do-not-touch.",
+  "inputs_summary": "User requested a complete command set, not a fragment, and required the branch ai/nexy-24x7-autonomous-do-not-touch to be left completely untouched.",
+  "sources": [
+    "current user instruction",
+    "prior hardened audit-only prompt in this conversation"
+  ],
+  "tools_skills": [
+    "prompt architecture",
+    "GitHub branch exclusion policy",
+    "audit/executor separation"
+  ],
+  "actions": [
+    "integrated protected-branch law into the complete audit-only prompt",
+    "added branch exclusion prefilter and accidental-target handling",
+    "preserved prior F-01..F-17 hardening"
+  ],
+  "artifacts_paths": [],
+  "claims_proofs": [
+    {
+      "claim": "The protected branch must be excluded from target selection, reads, diffs, checkout, merge, rebase, cherry-pick, PR base/head use, writes, deletion, and ruleset changes.",
+      "proof": "Direct user instruction: do not touch ai/nexy-24x7-autonomous-do-not-touch under any circumstances."
+    }
+  ],
+  "tests_results": "Prompt semantic review only; no NEXY repository operations executed.",
+  "changes": "No NEXY.AI repository mutation performed.",
+  "successes": [
+    "Full prompt now includes a hard protected-branch exclusion boundary."
+  ],
+  "failures": [],
+  "decisions": [
+    "Repository-wide metadata may reveal the branch name, but no branch-specific operation may target it.",
+    "If the protected branch is accidentally selected as target/current branch, audit must exclude it and use another explicitly authorized branch; no mutation is allowed."
+  ],
+  "unresolved": [
+    "Actual target audit branch must be resolved at execution time from user authority and current repository state."
+  ],
+  "risks": [
+    "An overly broad repository-wide operation must still guarantee it cannot mutate or derive from the protected branch."
+  ],
+  "limits": [
+    "This task only produces the command prompt."
+  ],
+  "rollback": "No target repository changes; supersede this prompt version if needed.",
+  "final_status": "READY_WITH_LIMITS",
+  "next_actions": [
+    "Use this full prompt in the NEXY audit chat."
+  ],
+  "dependencies": [
+    "GitHub read access to non-protected branches",
+    "authoritative NEXY spec access"
+  ],
+  "version": "3.0.0",
+  "timestamp_source": "system conversation date 2026-09-21",
+  "trace_id": "NEXY-AUDIT-PROMPT-PROTECTED-BRANCH-20260921",
+  "hash": "HASH_UNAVAILABLE",
+  "record_type": "TASK"
+}
