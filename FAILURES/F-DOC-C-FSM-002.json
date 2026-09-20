@@ -1,0 +1,16 @@
+{
+  "FAILURE_ID": "F-DOC-C-FSM-002",
+  "context": "DOC-C §5 executable state machine",
+  "cause": "Implementation/tests treated unsupported lifecycle events as DOC-C requirements.",
+  "failed_approach": "Use a permissive/superset FSM and assert only presence rather than exact semantic closure.",
+  "recovery": "Re-read DOC-C §5.2/§5.4/§5.6; remove unsupported events/transitions; add exact-set gates.",
+  "boundary": "No vNEXT FSM event or transition outside DOC-C without explicit spec extension/version bump.",
+  "prevention": "Exact event-set and transition-set comparisons in contract tests and check-doc-c.",
+  "proof": {
+    "fixed_commit": "ad8f72da947841cbb0128cb97b1bbeadcf4787c1",
+    "workflow_run": 35528732242,
+    "result": "PASS"
+  },
+  "status": "RESOLVED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R2"
+}

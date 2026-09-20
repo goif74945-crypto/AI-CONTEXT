@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R2-DOC-C-FSM-20260921",
+  "entries": [
+    {
+      "id": "R2-L1",
+      "source": "Authoritative DOC-C §5.2/§5.4/§5.6",
+      "claim": "vNEXT FSM event/transition/ownership sets are explicitly specified.",
+      "proof": "Source literal tables.",
+      "deps": [],
+      "risk": "S3 correctness",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R2-L2",
+      "source": "Pre-fix branch @f428ff2f878e066cd361913eaba08d50fce91fa7",
+      "claim": "FSM included unsupported ready/freeze/stop/cancel/timeout events and non-canonical transitions.",
+      "proof": "vnext-state-matrix.ts + tests inspected.",
+      "deps": [
+        "R2-L1"
+      ],
+      "risk": "Spec drift",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R2-L3",
+      "source": "Branch @ad8f72da947841cbb0128cb97b1bbeadcf4787c1 + workflow 35528732242",
+      "claim": "F-DOC-C-FSM-002 fixed and regression-clean at this SHA.",
+      "proof": "All validation jobs success; deploy skipped.",
+      "deps": [
+        "R2-L1",
+        "R2-L2"
+      ],
+      "risk": "Unrelated gaps remain",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R2"
+}

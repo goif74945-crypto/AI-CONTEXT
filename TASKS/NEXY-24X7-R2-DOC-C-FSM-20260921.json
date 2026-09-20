@@ -1,0 +1,98 @@
+{
+  "TASK_ID": "NEXY-24X7-R2-DOC-C-FSM-20260921",
+  "title": "NEXY autonomous round 2 — exact DOC-C executable state machine",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §5 executable state machine on dedicated NEXY autonomous branch",
+  "inputs_summary": "Authoritative DOC-C §5.1–§5.9 plus live vnext-state-matrix implementation/tests.",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@ad8f72da947841cbb0128cb97b1bbeadcf4787c1",
+    "GitHub Actions run 35528732242"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "uploaded DOC-C source",
+    "GitHub Actions"
+  ],
+  "actions": [
+    "Proved DOC-C §5.2 event set contains boot/execute/agents_done/verified/accepted/rejected/error/recover/fatal only.",
+    "Proved DOC-C §5.4 permits fatal only FREEZE→STOP and error ANY except STOP→FREEZE.",
+    "Removed unsupported ready/freeze/stop/cancel/timeout FSM events and unsupported transitions.",
+    "Hardened contract/core tests and check-doc-c gate to exact event/transition sets.",
+    "Updated branch-local checkpoint as ROUND 2 pending validation, then validated candidate."
+  ],
+  "artifacts_paths": [
+    "packages/core/vnext-state-matrix.ts",
+    "tests/contract/state-matrix.test.ts",
+    "packages/core/__tests__/state-matrix.test.ts",
+    "tests/contract/fatal-state-law.test.ts",
+    "scripts/check-doc-c.ts",
+    ".nexy/AI_24X7_RUN_STATE.json"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Pre-fix FSM was a superset of DOC-C and allowed fatal→STOP from states not authorized by DOC-C.",
+      "proof": "Pre-fix source/test inspection versus authoritative DOC-C §5.2/§5.4."
+    },
+    {
+      "claim": "Round 2 implementation now exactly matches the DOC-C event and transition sets.",
+      "proof": "Exact-set tests/gate plus GitHub Actions run 35528732242 all validation jobs success."
+    }
+  ],
+  "tests_results": {
+    "github_actions_run": 35528732242,
+    "full_test_suite": "PASS",
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "doc_c_static_gate": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "commit": "ad8f72da947841cbb0128cb97b1bbeadcf4787c1",
+    "finding": "F-DOC-C-FSM-002",
+    "req_id": "DOC-C-5"
+  },
+  "successes": [
+    "Exact executable FSM restored.",
+    "False DOC-C-required test claims removed.",
+    "Semantic DOC-C gate now detects event/transition superset drift."
+  ],
+  "failures": [
+    "Previous implementation/tests added unsupported FSM events/transitions and mislabeled them as DOC-C requirements."
+  ],
+  "decisions": [
+    "DOC-C executable table is closed-world for vNEXT FSM unless spec extension/version bump exists.",
+    "Keep FREEZE recover→READY because DOC-C explicitly requires it; recover starts a new execution cycle rather than resuming old work."
+  ],
+  "unresolved": [
+    "Module boundary enforcement is not active in CI.",
+    "AUTH→CORE forbidden dependency exists in packages/auth/session.ts.",
+    "Continue full DOC-C matrix and DOC-E evidence audit."
+  ],
+  "risks": [
+    "Further architecture drift may exist outside state machine.",
+    "Branch remains advisory-exclusive only."
+  ],
+  "limits": [
+    "No merge/deploy authorization.",
+    "Persistent uninterrupted 24/7 execution not yet proven."
+  ],
+  "rollback": "Revert ad8f72da947841cbb0128cb97b1bbeadcf4787c1 only if a newer authoritative DOC-C version changes §5.",
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Repair DOC-C §4 module boundary violation and add CI build-fail gate.",
+    "Update branch checkpoint after round 3 validation."
+  ],
+  "dependencies": [
+    "DOC-C source snapshot",
+    "GitHub repository",
+    "GitHub Actions"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "GitHub Actions run 35528732242 and tested SHA ad8f72da947841cbb0128cb97b1bbeadcf4787c1",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R2",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}

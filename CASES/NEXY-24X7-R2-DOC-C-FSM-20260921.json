@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R2-DOC-C-FSM-20260921",
+  "cause": "FSM implementation/test drifted beyond DOC-C closed event/transition table.",
+  "violation": "Unsupported vNEXT events/transitions; fatal could transition non-FREEZE states directly to STOP.",
+  "impact": "Executable behavior exceeded build spec and tests could normalize the drift.",
+  "fix": "Reduce to exact DOC-C §5.2 event set and §5.4 transition table; exact-set regression tests and static gate.",
+  "prevention": "Treat executable FSM table as closed-world; spec extension/version bump required before adding event/transition.",
+  "regression": "Workflow 35528732242 all validation jobs PASS; deploy SKIPPED.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "commit": "ad8f72da947841cbb0128cb97b1bbeadcf4787c1",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "CLOSED_VERIFIED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R2"
+}
