@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R1-DOC-C-DEFAULTS-20260921",
+  "cause": "Authority inversion: implementation/tests followed older vision/V0 OTAC TTL prose instead of DOC-C build authority; static gate checked presence rather than exact values.",
+  "violation": "DOC-C §2.3 canonical default drift and inadequate semantic gate.",
+  "impact": "Runtime OTAC lifetime was 900000 ms instead of required 300000 ms; CI could report DOC-C gate success despite wrong canonical value.",
+  "fix": "Restore 300000 ms and add exact-value DOC-C gate checks including previously omitted consensus_timeout_ms and emit_timeout_ms.",
+  "prevention": "Treat DOC-C as build authority; semantic gates must compare required values/behavior, not merely token presence.",
+  "regression": "GitHub Actions run 35528492442 all validation jobs success; deploy skipped.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "commit": "f428ff2f878e066cd361913eaba08d50fce91fa7",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "CLOSED_VERIFIED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R1"
+}

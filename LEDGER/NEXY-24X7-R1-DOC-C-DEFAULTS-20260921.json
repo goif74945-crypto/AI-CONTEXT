@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R1-DOC-C-DEFAULTS-20260921",
+  "entries": [
+    {
+      "id": "R1-L1",
+      "source": "Authoritative DOC-C §2.3 / spec snapshot sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "claim": "VNEXT_DEFAULTS.auth.otac_ttl_ms must equal 300000.",
+      "proof": "Source literal canonical default.",
+      "deps": [],
+      "risk": "S3 correctness if drifted",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R1-L2",
+      "source": "NEXY branch pre-fix state @04cd41b3a5d0a3ef59f6d5d1a55654c2b8533441",
+      "claim": "Runtime/test used 900000 and static gate could not detect numeric drift.",
+      "proof": "vnext-config.ts + vnext-defaults.test.ts + scripts/check-doc-c.ts inspected before mutation.",
+      "deps": [
+        "R1-L1"
+      ],
+      "risk": "False green CI",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R1-L3",
+      "source": "NEXY branch @f428ff2f878e066cd361913eaba08d50fce91fa7 + workflow 35528492442",
+      "claim": "Finding F-DOC-C-DEFAULTS-001 is fixed and validation-clean at this commit.",
+      "proof": "Full suite/typecheck/contract/integration/DOC-C gate/evidence attestation all success; deploy skipped.",
+      "deps": [
+        "R1-L1",
+        "R1-L2"
+      ],
+      "risk": "Further unrelated gaps remain",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R1"
+}

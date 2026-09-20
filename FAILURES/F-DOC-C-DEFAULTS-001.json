@@ -1,0 +1,16 @@
+{
+  "FAILURE_ID": "F-DOC-C-DEFAULTS-001",
+  "context": "NEXY vNEXT canonical defaults validation",
+  "cause": "Lower-authority prose was encoded into runtime/test while static CI gate only checked field-name presence.",
+  "failed_approach": "Treat 10–15 minute V0/vision prose as canonical and alter tests to match 900000 ms.",
+  "recovery": "Re-read source hierarchy and DOC-C §2.3; restore 300000 ms; harden semantic gate.",
+  "boundary": "DOC-C build obligations override vision/V0 prose. Do not modify authoritative spec to fit implementation.",
+  "prevention": "Exact-value checks for every DOC-C §2.3 canonical default; source hierarchy review before changing tests.",
+  "proof": {
+    "fixed_commit": "f428ff2f878e066cd361913eaba08d50fce91fa7",
+    "workflow_run": 35528492442,
+    "result": "PASS"
+  },
+  "status": "RESOLVED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R1"
+}

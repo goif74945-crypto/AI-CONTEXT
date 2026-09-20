@@ -1,0 +1,106 @@
+{
+  "TASK_ID": "NEXY-24X7-R1-DOC-C-DEFAULTS-20260921",
+  "title": "NEXY autonomous round 1 — DOC-C canonical defaults convergence",
+  "mode": "EXECUTE/SOLO",
+  "scope": "goif74945-crypto/NEXY.AI- branch ai/nexy-24x7-autonomous-do-not-touch; DOC-C §2.3 canonical defaults only",
+  "inputs_summary": "Authoritative NEXY DOC-C source plus live repository state and GitHub Actions evidence.",
+  "sources": [
+    "NEXY spec snapshot sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@f428ff2f878e066cd361913eaba08d50fce91fa7",
+    "GitHub Actions run 35528492442"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "uploaded authoritative DOC-C source",
+    "GitHub Actions"
+  ],
+  "actions": [
+    "Proved DOC-C §2.3 requires auth.otac_ttl_ms=300000.",
+    "Found runtime config and contract test drifted to 900000.",
+    "Found scripts/check-doc-c.ts validated field presence rather than exact values and omitted consensus_timeout_ms/emit_timeout_ms from the presence list.",
+    "Restored runtime/test value to 300000.",
+    "Hardened DOC-C gate to compare exact canonical values and cover consensus/emit timeouts.",
+    "Created draft validation-only PR #9; no merge and no deploy authorization."
+  ],
+  "artifacts_paths": [
+    "packages/api/vnext-config.ts",
+    "tests/contract/vnext-defaults.test.ts",
+    "scripts/check-doc-c.ts",
+    ".nexy/ai-24x7-branch.json",
+    "docs/AI_24X7_BRANCH_POLICY.md",
+    ".nexy/AI_24X7_RUN_STATE.json"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "DOC-C §2.3 requires OTAC TTL 300000 ms.",
+      "proof": "Authoritative source snapshot explicitly defines VNEXT_DEFAULTS.auth.otac_ttl_ms: 300000."
+    },
+    {
+      "claim": "The prior branch state violated DOC-C and the gate could miss the drift.",
+      "proof": "Pre-fix vnext-config/test expected 900000; pre-fix check-doc-c used source-string presence checks rather than exact value checks."
+    },
+    {
+      "claim": "The fix passes current repository validation.",
+      "proof": "GitHub Actions run 35528492442: full test suite, typecheck, contract, integration, DOC-C static gate, and evidence/release attestation all success; deploy skipped."
+    }
+  ],
+  "tests_results": {
+    "github_actions_run": 35528492442,
+    "full_test_suite": "PASS",
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "doc_c_static_gate": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "commit": "f428ff2f878e066cd361913eaba08d50fce91fa7",
+    "finding": "F-DOC-C-DEFAULTS-001",
+    "req_id": "DOC-C-2.3"
+  },
+  "successes": [
+    "Canonical OTAC TTL restored to DOC-C value.",
+    "Static DOC-C gate now validates exact canonical values.",
+    "No production/deploy action performed."
+  ],
+  "failures": [
+    "Previous implementation/test encoded a lower-authority 10–15 minute prose rule over the authoritative DOC-C value.",
+    "Previous static gate allowed value drift to pass."
+  ],
+  "decisions": [
+    "Build obligation follows DOC-C; vision/V0 prose cannot override DOC-C.",
+    "Keep deployment NON_DEPLOYABLE until DOC-E proof is satisfied.",
+    "Branch exclusivity remains ADVISORY_ONLY; private-repo rulesets are unavailable on current GitHub plan."
+  ],
+  "unresolved": [
+    "Continue full DOC-C requirement matrix audit.",
+    "State-machine event-set drift candidate pending proof/fix.",
+    "DOC-E E1–E12 release evidence remains incomplete."
+  ],
+  "risks": [
+    "Draft PR compares a large active-development branch against stale main; it is validation-only and must not be merged.",
+    "Further latent spec drift may remain despite green CI."
+  ],
+  "limits": [
+    "No persistent uninterrupted compute proven yet.",
+    "No branch ruleset enforcement available for this private repository on current GitHub plan."
+  ],
+  "rollback": "Revert commit f428ff2f878e066cd361913eaba08d50fce91fa7 on the dedicated AI branch only if a newer authoritative DOC-C version explicitly changes the canonical defaults.",
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Audit DOC-C §5 executable state machine against vnext-state-matrix.ts.",
+    "Update branch-local run checkpoint.",
+    "Continue requirement matrix and next reproducible gap."
+  ],
+  "dependencies": [
+    "DOC-C source snapshot",
+    "GitHub repository",
+    "GitHub Actions"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "Git commit f428ff2f878e066cd361913eaba08d50fce91fa7 committer_date=2026-09-20T18:15:24Z",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R1",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}
