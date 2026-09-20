@@ -1,0 +1,74 @@
+{
+  "task_id": "NEXY-AUDIT-PROMPT-HARDENING-20260921",
+  "title": "Harden NEXY audit-only control-plane prompt",
+  "mode": "ทำ/SOLO",
+  "scope": "Revise the NEXY multi-plane audit prompt based on the supplied 17 findings, preserving audit-only separation and generating a one-pass repair package without executing mutations.",
+  "inputs_summary": "User supplied an audit review identifying S4/S3/S2 semantic contradictions in the prior prompt.",
+  "sources": [
+    "current user-supplied audit review",
+    "current project protocol"
+  ],
+  "tools_skills": [
+    "prompt architecture",
+    "evidence semantics",
+    "audit/executor separation",
+    "multi-plane state modeling"
+  ],
+  "actions": [
+    "incorporated findings F-01 through F-17",
+    "split normative authority from empirical evidence authority",
+    "added applicability matrix and audit closure manifest",
+    "redefined pass-lock as invariant-level",
+    "added logical snapshot bundle",
+    "restricted tests under audit embargo",
+    "changed final drift predicate",
+    "added repair package-only handoff"
+  ],
+  "artifacts_paths": [],
+  "claims_proofs": [
+    {
+      "claim": "Audit-only mode must not mutate product/runtime planes.",
+      "proof": "User-supplied finding F-01 and F-02 identify role-boundary violations."
+    },
+    {
+      "claim": "PASS_LOCK should bind to requirement/invariants, not physical files.",
+      "proof": "User-supplied finding F-04 identifies shared-file satisfiability risk."
+    }
+  ],
+  "tests_results": "Semantic prompt review only; no NEXY implementation tests executed.",
+  "changes": "No NEXY.AI repository mutation performed.",
+  "successes": [
+    "Produced revised audit-only architecture with one-pass repair package generation and explicit stop boundary."
+  ],
+  "failures": [],
+  "decisions": [
+    "All production mutations require explicit executor authorization.",
+    "Logical snapshots are per-source observations, not atomic cross-tool timepoints.",
+    "No-counterexample is supporting evidence only, never sufficient for PASS."
+  ],
+  "unresolved": [
+    "Actual executor prompt remains a separate artifact if requested."
+  ],
+  "risks": [
+    "Overly broad audit scope can still be expensive; coverage closure must remain explicit.",
+    "Source authority conflicts may require user resolution."
+  ],
+  "limits": [
+    "Prompt cannot guarantee zero bugs; it can target zero known regression within verified coverage."
+  ],
+  "rollback": "No target-repository changes; supersede prompt version if revised later.",
+  "final_status": "READY_WITH_LIMITS",
+  "next_actions": [
+    "Use revised prompt for audit-only NEXY chat.",
+    "Feed generated repair package to a separately authorized executor chat."
+  ],
+  "dependencies": [
+    "authoritative NEXY spec access",
+    "relevant connector permissions"
+  ],
+  "version": "2.0.0",
+  "timestamp_source": "system conversation date 2026-09-21",
+  "trace_id": "NEXY-AUDIT-PROMPT-HARDENING-20260921",
+  "hash": "HASH_UNAVAILABLE",
+  "record_type": "TASK"
+}
