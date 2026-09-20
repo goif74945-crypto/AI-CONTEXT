@@ -1,0 +1,77 @@
+{
+  "trace_id": "NEXY-HEAD-DRIFT-ADJ-20260920-0903-ICT",
+  "target_repository": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "codex/spec-audit-20260919-78df350",
+  "previous_expected_head": "acd9800908433832b15374d7aa4f7de46541f1d3",
+  "observed_head": "2b95a7735430548352c357b2eb15090bc919f3b0",
+  "parent_sha": "acd9800908433832b15374d7aa4f7de46541f1d3",
+  "ancestry": {
+    "status": "direct-parent",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "merge_base": "acd9800908433832b15374d7aa4f7de46541f1d3"
+  },
+  "drift": {
+    "commit": "2b95a7735430548352c357b2eb15090bc919f3b0",
+    "message": "ci: execute full Vitest suite in validation",
+    "files": [
+      {
+        "path": ".github/workflows/deploy.yml",
+        "additions": 12,
+        "deletions": 0,
+        "semantic_change": "Adds independent test-full GitHub Actions job running npm ci then npm test."
+      }
+    ]
+  },
+  "workflow_security": {
+    "critical_regression_found": false,
+    "notes": [
+      "New job uses actions/checkout@v4 and actions/setup-node@v4 major tags; mutable-tag supply-chain exposure is not new to the workflow but is repeated by the added job.",
+      "New test-full job is not included in release-attestation needs and does not gate deploy; therefore its success must not be treated as an attestation gate result.",
+      "No secrets usage or permission expansion was introduced by the 12-line drift."
+    ]
+  },
+  "observed_validation": {
+    "workflow_run_id": 35457336069,
+    "workflow_conclusion": "success",
+    "typecheck": "success",
+    "contract": "success",
+    "integration": "success",
+    "full_test": "success",
+    "full_test_summary": "89 files passed; 756 tests passed; 1 skipped",
+    "doc_c": "success",
+    "release_attestation": "success",
+    "deploy": "skipped",
+    "artifact": {
+      "id": 10588710562,
+      "name": "nexy-runtime-attestation-35457336069",
+      "digest": "sha256:e721d3d59c1594893e38c57e5873434161860f514f34639d562cc51a24b7c7d4",
+      "expired": false
+    },
+    "source_sha": "2b95a7735430548352c357b2eb15090bc919f3b0",
+    "source_branch": "codex/spec-audit-20260919-78df350"
+  },
+  "finding_impact": {
+    "F-TEST-001": "RELATED; full suite now executes and passed in run 35457336069, but prior finding semantics should be rechecked before closure.",
+    "F-BUILD-001": "POTENTIALLY_FIXES/RETEST_EVIDENCE; aggregate typecheck ran successfully, and package.json shows it runs backend then web typecheck.",
+    "F-EVID-001": "RELATED; runtime attestation generated/verified/uploaded successfully on current head, but test-full is not included in attestation/deploy needs."
+  },
+  "baseline_decision": "ACCEPT_CURRENT_HEAD_AS_NEW_BASELINE",
+  "rationale": "Repository/branch/head/ancestry/drift were independently verified; only one additive CI job changed; no critical security regression or semantic conflict was found in the drift.",
+  "open_findings": [
+    "F-TEST-001",
+    "F-BUILD-001",
+    "F-EVID-001"
+  ],
+  "next_action": "Reissue evidence-first retest/closure command at EXPECTED_HEAD 2b95a7735430548352c357b2eb15090bc919f3b0; do not patch unless the finding is reproduced.",
+  "limits": [
+    "Artifact metadata and upload success were verified, but the artifact ZIP contents were not independently extracted in this adjudication.",
+    "This task did not modify NEXY.AI-.",
+    "No deploy occurred; PR #8 remains validation-only/draft."
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "timestamp_source": "GitHub run 35457336069 created_at 2026-09-19T17:12:00Z; conversation local timestamp 2026-09-20T09:03+07:00",
+  "hash": "HASH_UNAVAILABLE",
+  "record_type": "TASK",
+  "objective": "Adjudicate branch-head drift and decide whether current head may become the new exact baseline."
+}
