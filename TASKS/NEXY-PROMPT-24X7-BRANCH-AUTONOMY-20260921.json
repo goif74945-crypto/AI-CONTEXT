@@ -1,0 +1,70 @@
+{
+  "task_id": "NEXY-PROMPT-24X7-BRANCH-AUTONOMY-20260921",
+  "title": "24x7 autonomous NEXY branch command prompt",
+  "mode": "ทำ/SOLO",
+  "scope": "Generate a copy-paste system command for a ChatGPT agent to work only on NEXY.AI in its own exclusive branch, continuously compare against real spec, self-repair, and preserve passed requirements.",
+  "inputs_summary": "User requested a dedicated AI-only branch, autonomous continuous operation, no mid-task escalation for ordinary bugs, spec-driven coding, and a branch-local do-not-touch notice for other agents.",
+  "sources": [
+    "current user instruction",
+    "current project protocol"
+  ],
+  "tools_skills": [
+    "prompt engineering",
+    "GitHub branch isolation model",
+    "spec-convergence workflow"
+  ],
+  "actions": [
+    "designed autonomous branch policy",
+    "added self-healing/continuation rules",
+    "added exclusive-branch marker and protection strategy",
+    "added spec-convergence loop and final gates"
+  ],
+  "artifacts_paths": [],
+  "claims_proofs": [
+    {
+      "claim": "A normal chat cannot literally run 24/7 without a persistent/scheduled execution environment.",
+      "proof": "product/runtime limitation; prompt can only mandate continuation while execution is active and durable checkpoints for resumption."
+    },
+    {
+      "claim": "GitHub branch exclusivity cannot be guaranteed solely by a branch name.",
+      "proof": "true enforcement requires branch/ruleset permissions and ideally a distinct bot/service identity."
+    }
+  ],
+  "tests_results": "Not applicable; prompt-generation task only.",
+  "changes": "No NEXY.AI repository mutation performed.",
+  "successes": [
+    "Produced design for dedicated branch ownership, no-touch notice, continuous spec audit/fix loop, drift handling, and resume checkpoints."
+  ],
+  "failures": [],
+  "decisions": [
+    "Use ASCII branch name for compatibility and put Thai exclusivity label in branch-local policy files.",
+    "Do not allow the agent to suppress real blockers; it must self-solve ordinary defects but truthfully report authorization/irreversible blockers.",
+    "Retain safety gates for destructive production writes, secrets, and history rewrites."
+  ],
+  "unresolved": [
+    "Actual branch protection/ruleset feasibility depends on GitHub permissions and actor identity.",
+    "Literal 24/7 requires a persistent runner/scheduler or Work/automation environment."
+  ],
+  "risks": [
+    "Foreign actors using the same GitHub identity cannot be reliably distinguished by branch protection alone.",
+    "Unbounded self-modification could create regressions without strict pass-lock and spec gates."
+  ],
+  "limits": [
+    "This task creates a command prompt, not the actual branch or 24/7 runner."
+  ],
+  "rollback": "Delete/deprecate this prompt record if superseded; no target-repository change exists to roll back.",
+  "final_status": "READY_WITH_LIMITS",
+  "next_actions": [
+    "Use the generated command in a connected ChatGPT agent with GitHub access.",
+    "If true continuous execution is required, attach a persistent scheduler/runner."
+  ],
+  "dependencies": [
+    "GitHub access for actual execution",
+    "authoritative NEXY spec sources"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "system conversation date 2026-09-21",
+  "trace_id": "NEXY-PROMPT-24X7-BRANCH-AUTONOMY-20260921",
+  "hash": "HASH_UNAVAILABLE",
+  "record_type": "TASK"
+}
