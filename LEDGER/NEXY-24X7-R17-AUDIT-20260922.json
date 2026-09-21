@@ -1,0 +1,18 @@
+{
+  "run_id":"NEXY-24X7-20260921-SOLO-001",
+  "round":17,
+  "nexy_branch_head":"791d0a3badb9c3f2fc5c22cba7281a04cb002c66",
+  "validated_implementation_head":"b28da97b002787fc23f4efd0ffa4ae35be8e4591",
+  "pr":9,
+  "pr_state":"OPEN_DRAFT_UNMERGED",
+  "spec_snapshot":"sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "application_code_changed":false,
+  "new_validation_run":false,
+  "status":"ACTIVE_WITH_BLOCKED_PATHS",
+  "evidence_summary":"Branch remained stable through pre-write refresh. Canonical auth cap=5 is present; implementation session creation has no proven complete cap/OWNER-confirmation path, but OWNER confirmation transport is unspecified, so repair remains frozen. State transitions durably persist OrchestrationEnvelope; exact EventLog/primary incident side effects remain an open authority-dependent path.",
+  "next_action":"Continue independent contract/storage audits; do not alter queue bridge, coverage threshold, OWNER overflow confirmation, or transition incident semantics without exact authority.",
+  "merge":false,
+  "deploy":false,
+  "force_reset":false,
+  "other_nexy_branch_touched":false
+}
