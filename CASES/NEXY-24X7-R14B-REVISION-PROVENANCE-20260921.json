@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R14B-REVISION-PROVENANCE-20260921",
+  "cause": "Revision storage retained deterministic createdTick but had no authoritative human timestamp or creator provenance required by DOC-C history responses.",
+  "violation": "DOC-C §4.2 artifact history requires created_at + created_by; DOC-C storage skeleton carries createdAt/createdBy.",
+  "impact": "Canonical revision history could not be emitted without guessing timestamp or actor.",
+  "fix": "Persist Revision.createdAt and createdBy; require caller-provided provenance; migration aborts if legacy rows exist rather than fabricating backfill.",
+  "prevention": "Migration round-trip gate, module-boundary gate, provenance integration tests and explicit caller-owned timestamp semantics.",
+  "regression": "Workflow 35624043991 passed typecheck/contract/integration/full/migration/boundary/DOC-C/browser/attestation; deploy skipped.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "tested_commit": "4697ec2f71e9f2a0126b775b99c5b0bde8db116c",
+  "checkpoint_commit": "c8103de60ef9f8049986ad8121cb252398ceb45d",
+  "status": "CLOSED_VERIFIED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14B"
+}
