@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R3-DOC-C-MODULE-BOUNDARIES-20260921",
+  "cause": "Forbidden dependency AUTH→CORE existed and architecture constraints were not build-failing.",
+  "violation": "DOC-C §4.3 forbidden edge plus §4.4 enforcement gap.",
+  "impact": "Architecture could drift while ordinary typecheck/tests stayed green; release evidence did not initially attest the new gate.",
+  "fix": "Dependency-inject AUTH session infrastructure; AST boundary scanner; CI gate; release-attestation schema and contract integration.",
+  "prevention": "Any required architecture gate must be in CI dependencies and revision-bound attestation required-gate schema.",
+  "regression": "Workflow 35529246145: all validation jobs PASS; deploy SKIPPED.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "commit": "fc7c47f0c46f819b7d0c4e025d0d3862d2c89dc6",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "CLOSED_VERIFIED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R3"
+}

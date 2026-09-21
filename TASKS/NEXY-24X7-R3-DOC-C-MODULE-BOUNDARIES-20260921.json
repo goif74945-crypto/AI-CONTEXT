@@ -1,0 +1,119 @@
+{
+  "TASK_ID": "NEXY-24X7-R3-DOC-C-MODULE-BOUNDARIES-20260921",
+  "title": "NEXY autonomous round 3 — DOC-C module-boundary enforcement",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §4.3/§4.4 forbidden dependency edges and CI build-fail enforcement on dedicated autonomous branch",
+  "inputs_summary": "Authoritative DOC-C module-boundary rules, live imports, CI workflow, release-attestation contract.",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@fc7c47f0c46f819b7d0c4e025d0d3862d2c89dc6",
+    "GitHub Actions run 35529246145"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "GitHub Actions",
+    "TypeScript AST boundary scanner"
+  ],
+  "actions": [
+    "Proved packages/auth/session.ts violated AUTH→CORE through core/db, core/tick, and core/ulid imports.",
+    "Refactored session helpers to dependency-injected infrastructure so AUTH no longer imports CORE.",
+    "Added scripts/check-module-boundaries.ts using the TypeScript parser for import/export/dynamic-import edges.",
+    "Added npm check:boundaries and a dedicated Module boundary gate to CI.",
+    "Bound module_boundaries into release-attestation generation, verification, deployment verification, and contract tests.",
+    "Observed and repaired two validation regressions: release-attestation contract expectation drift, then attestation gate-schema rejection."
+  ],
+  "artifacts_paths": [
+    "packages/auth/session.ts",
+    "scripts/check-module-boundaries.ts",
+    "package.json",
+    ".github/workflows/deploy.yml",
+    "scripts/evidence-attestation.ts",
+    "scripts/seal-evidence.ts",
+    "tests/contract/release-attestation.test.ts",
+    ".nexy/AI_24X7_RUN_STATE.json"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "AUTH→CORE existed before round 3.",
+      "proof": "Pre-fix packages/auth/session.ts imported ../core/db.js, ../core/tick.js, ../core/ulid.js."
+    },
+    {
+      "claim": "The forbidden dependency is removed and machine-enforced.",
+      "proof": "Current session.ts imports only @prisma/client type and ./otac.js; scripts/check-module-boundaries.ts encodes all DOC-C forbidden edges and CI Module boundary gate passed."
+    },
+    {
+      "claim": "Module-boundary result is included in release evidence rather than being an un-attested side check.",
+      "proof": "REQUIRED_GATE_COMMANDS includes module_boundaries, workflow passes the gate into generate/verify/deploy attestation, contract tests assert it."
+    },
+    {
+      "claim": "Round 3 is regression-clean at the fixed SHA.",
+      "proof": "Workflow 35529246145 passed Module boundary gate, full suite, typecheck, contract, integration, DOC-C static gate, evidence/release attestation; deploy skipped."
+    }
+  ],
+  "tests_results": {
+    "initial_candidate_run_35528994727": "FAIL — boundary gate PASS; full/contract failed due attestation contract expectation drift",
+    "repair_run_35529077486": "FAIL — boundary/full/typecheck/contract/integration/DOC-C PASS; evidence attestation failed on unknown gate id module_boundaries",
+    "final_run_35529246145": "PASS — all validation jobs PASS; deploy SKIPPED",
+    "module_boundary_gate": "PASS",
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "full_test_suite": "PASS",
+    "doc_c_static_gate": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "commits": [
+      "b2e3ab05ab9b51df507907db6f8ebede158badd9",
+      "13a969c51c6afaeb6c0e3d1121c56deff3f85315",
+      "fc7c47f0c46f819b7d0c4e025d0d3862d2c89dc6"
+    ],
+    "finding": "F-DOC-C-MODULE-003",
+    "req_id": "DOC-C-4.3-4.4"
+  },
+  "successes": [
+    "Forbidden module boundary is removed.",
+    "Boundary law is now executable and build-failing.",
+    "Boundary gate is revision-bound into release attestation."
+  ],
+  "failures": [
+    "First candidate exposed stale attestation contract assumptions.",
+    "Second candidate exposed closed attestation gate schema that rejected the newly required gate."
+  ],
+  "decisions": [
+    "Boundary enforcement must parse module syntax structurally, not grep text.",
+    "A new release-blocking CI gate is incomplete until the evidence schema and verification path require it.",
+    "Keep deploy blocked; validation success is not production authorization."
+  ],
+  "unresolved": [
+    "Branch-local checkpoint still describes the second round-3 failure and must be advanced on the next branch commit.",
+    "Continue full DOC-C matrix audit and DOC-E E1–E12 release evidence audit.",
+    "Persistent 24/7 execution remains unproven."
+  ],
+  "risks": [
+    "Other DOC-C obligations may still be absent from CI despite current green workflow.",
+    "Dedicated branch exclusivity remains advisory rather than GitHub-enforced."
+  ],
+  "limits": [
+    "No merge/deploy authorization.",
+    "No claim of complete DOC-C convergence."
+  ],
+  "rollback": "Revert round-3 commits through fc7c47f0c46f819b7d0c4e025d0d3862d2c89dc6 on the dedicated branch only if a newer authoritative DOC-C version changes §4.3/§4.4.",
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Advance branch checkpoint to mark round 3 PASS_LOCKED.",
+    "Audit next release-blocking DOC-C requirement not yet encoded in CI.",
+    "Continue source→claim→proof→negative-test cycle."
+  ],
+  "dependencies": [
+    "DOC-C source snapshot",
+    "GitHub repository",
+    "GitHub Actions"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "GitHub Actions run 35529246145 tested SHA fc7c47f0c46f819b7d0c4e025d0d3862d2c89dc6",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R3",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}

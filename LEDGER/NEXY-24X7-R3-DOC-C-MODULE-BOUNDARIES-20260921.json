@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R3-DOC-C-MODULE-BOUNDARIES-20260921",
+  "entries": [
+    {
+      "id": "R3-L1",
+      "source": "Authoritative DOC-C §4.3/§4.4",
+      "claim": "AUTH→CORE is forbidden and boundary violations must fail the build.",
+      "proof": "Source-defined forbidden edge and enforcement obligation.",
+      "deps": [],
+      "risk": "S4 release blocking",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R3-L2",
+      "source": "Pre-fix branch @ad8f72da947841cbb0128cb97b1bbeadcf4787c1",
+      "claim": "packages/auth/session.ts contained AUTH→CORE imports and no boundary gate existed in CI.",
+      "proof": "Direct source inspection and workflow/package inspection.",
+      "deps": [
+        "R3-L1"
+      ],
+      "risk": "Architecture drift",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R3-L3",
+      "source": "Branch @fc7c47f0c46f819b7d0c4e025d0d3862d2c89dc6 + workflow 35529246145",
+      "claim": "F-DOC-C-MODULE-003 is fixed, build-failing, and attested.",
+      "proof": "AST boundary gate PASS; required gate appears in evidence schema/workflow/contracts; all validation jobs PASS.",
+      "deps": [
+        "R3-L1",
+        "R3-L2"
+      ],
+      "risk": "Other requirements remain",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R3"
+}

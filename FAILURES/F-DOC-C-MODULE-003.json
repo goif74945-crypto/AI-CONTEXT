@@ -1,0 +1,16 @@
+{
+  "FAILURE_ID": "F-DOC-C-MODULE-003",
+  "context": "DOC-C §4.3/§4.4 module boundaries",
+  "cause": "AUTH imported CORE infrastructure directly and there was no machine-enforced build gate.",
+  "failed_approach": "Rely on architecture documentation/typecheck/tests without an exact forbidden-edge scanner and release-evidence binding.",
+  "recovery": "Refactor AUTH dependency direction, add AST scanner, wire CI gate, then add module_boundaries to attestation parser/schema/tests.",
+  "boundary": "Forbidden DOC-C edges must fail CI and must be represented in release attestation.",
+  "prevention": "Closed forbidden-edge set + required release-gate schema regression tests.",
+  "proof": {
+    "fixed_commit": "fc7c47f0c46f819b7d0c4e025d0d3862d2c89dc6",
+    "workflow_run": 35529246145,
+    "result": "PASS"
+  },
+  "status": "RESOLVED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R3"
+}
