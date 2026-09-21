@@ -1,0 +1,41 @@
+{
+  "TASK_ID": "NEXY-24X7-R14A-QUERY-TRANSPORT-20260921",
+  "title": "NEXY round 14A — canonical query transport",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §4.2 cursor/limit query propagation through Next adapter",
+  "sources": [
+    "NEXY.AI-@62f49a0915a0702a36c9b964a52a54fcce5c7a07",
+    "GitHub Actions 35623090967",
+    "uploaded NEXY-IGNIS GET /api/artifacts/:id/revisions contract"
+  ],
+  "actions": [
+    "Proved Next legacy adapter dropped URL query parameters.",
+    "Added lossless query propagation including repeated keys.",
+    "Added transport regression test for cursor, limit and repeated query keys."
+  ],
+  "tests": {
+    "workflow": 35623090967,
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "full": "PASS",
+    "migration": "PASS",
+    "boundaries": "PASS",
+    "doc_c": "PASS",
+    "browser": "PASS",
+    "attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "commits": [
+    "62f49a0915a0702a36c9b964a52a54fcce5c7a07",
+    "4c085eacba7109f3c49db6ad0e910f24419c7ac8"
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "unresolved": [
+    "Revision createdAt/createdBy provenance storage gap",
+    "vault commit bridge",
+    "incident/audit response authority",
+    "full spec re-audit"
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14A"
+}
