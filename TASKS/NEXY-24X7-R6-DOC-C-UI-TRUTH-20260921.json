@@ -1,0 +1,116 @@
+{
+  "TASK_ID": "NEXY-24X7-R6-DOC-C-UI-TRUTH-20260921",
+  "title": "NEXY autonomous round 6 — UI backend-truth fail-closed state/action gating",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §16.1/§16.5 UI truth contract and blocking-action state gating",
+  "inputs_summary": "Canonical SystemEnvelope/state contracts, health readiness handler, current SystemStateProvider and directive/recovery UI surfaces.",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@a2137eca5d891fb2f9c5c2f3f16bc5f9eaf3262e",
+    "GitHub Actions run 35553622340"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "GitHub Actions",
+    "TypeScript/React contract tests"
+  ],
+  "actions": [
+    "Proved frontend initialized READY without backend evidence, read nested data.state although canonical SystemEnvelope state is top-level, omitted canonical states INIT/VERIFYING/CONSENSUS, and silently retained false READY on health failure.",
+    "Added exact canonical state parser and nullable truth state with LOADING/READY/DEGRADED/UNAVAILABLE readiness.",
+    "Changed health fetch to /api/health/readiness and fail-closed null state on in-flight/missing/malformed/network failure.",
+    "Made UNKNOWN state visible globally and expanded state badge/status descriptions to canonical set.",
+    "Locked directive dispatch until backend readiness confirms current state and locked FREEZE/STOP.",
+    "Rendered recovery mutation form only when canonical backend state is FREEZE.",
+    "Added exact UI truth/action static contract tests and ran full current CI."
+  ],
+  "artifacts_paths": [
+    "apps/web/lib/system-state.ts",
+    "apps/web/components/SystemStateProvider.tsx",
+    "apps/web/components/StatusBadge.tsx",
+    "apps/web/components/FreezeStatusBar.tsx",
+    "apps/web/components/NavBar.tsx",
+    "apps/web/app/layout.tsx",
+    "apps/web/app/status/page.tsx",
+    "apps/web/app/directives/new/page.tsx",
+    "apps/web/app/freeze/recover/page.tsx",
+    "tests/contract/ui-system-state-truth.test.ts"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Pre-R6 UI could fabricate READY and mask backend unavailability.",
+      "proof": "Provider default/useState READY; fetch /api/health; read data.data.state; catch silently ignored errors."
+    },
+    {
+      "claim": "R6 UI now treats unknown/in-flight/failed health as unavailable rather than a canonical state.",
+      "proof": "Provider state is VNextState|null, parser accepts only canonical top-level envelope state, catch sets null/UNAVAILABLE, global UNKNOWN banner."
+    },
+    {
+      "claim": "Blocking UI actions are gated on confirmed backend truth.",
+      "proof": "Directive form disabled when state null/readiness not READY/FREEZE/STOP; recovery modal rendered only for confirmed FREEZE."
+    },
+    {
+      "claim": "R6 is regression-clean at tested SHA.",
+      "proof": "Workflow 35553622340 all validation gates passed; deploy skipped."
+    }
+  ],
+  "tests_results": {
+    "workflow_run": 35553622340,
+    "tested_sha": "a2137eca5d891fb2f9c5c2f3f16bc5f9eaf3262e",
+    "full_suite": "PASS",
+    "typecheck": "PASS",
+    "integration": "PASS",
+    "contract": "PASS",
+    "migration": "PASS",
+    "module_boundaries": "PASS",
+    "doc_c_static_gate": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "commits": [
+      "169baec543638631d879bf4454c008bac87dede8",
+      "a2137eca5d891fb2f9c5c2f3f16bc5f9eaf3262e"
+    ],
+    "finding": "F-DOC-C-UI-TRUTH-006",
+    "req_id": "DOC-C-16.1-16.5"
+  },
+  "successes": [
+    "Removed fake READY default.",
+    "Corrected canonical envelope state parsing.",
+    "Locked directive/recovery surfaces when backend truth is absent/incompatible."
+  ],
+  "failures": [],
+  "decisions": [
+    "Unknown/unreachable health is represented as no canonical state, never mapped to READY/FREEZE.",
+    "Recovery is permitted to render only from confirmed FREEZE; OWNER/recoverable presentation remains a separate evidence/wiring concern."
+  ],
+  "unresolved": [
+    "No proven Next HTTP binding exists for frontend /api/* requests.",
+    "UI OWNER/recoverable-specific recovery presentation remains unresolved.",
+    "Browser-level UI critical-flow E2E gate remains absent."
+  ],
+  "risks": [
+    "Fail-closed UI now correctly locks if route wiring is absent; this exposes rather than masks transport gap."
+  ],
+  "limits": [
+    "No merge/deploy authorization.",
+    "R6 does not claim API route wiring or browser E2E."
+  ],
+  "rollback": "Revert a2137eca5d891fb2f9c5c2f3f16bc5f9eaf3262e and 169baec543638631d879bf4454c008bac87dede8 only if authoritative DOC-C §16 changes.",
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Repair/implement verified frontend API transport wiring.",
+    "Then add browser E2E for critical UI flows.",
+    "Continue remaining §15/§16 convergence."
+  ],
+  "dependencies": [
+    "DOC-C/DOC-E source",
+    "GitHub Actions",
+    "Next.js web app"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "GitHub Actions run 35553622340",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R6",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}

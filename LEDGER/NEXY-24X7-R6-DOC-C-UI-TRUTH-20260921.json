@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R6-DOC-C-UI-TRUTH-20260921",
+  "entries": [
+    {
+      "id": "R6-L1",
+      "source": "Authoritative DOC-C §16.1/§16.5 + canonical SystemEnvelope/state contracts",
+      "claim": "UI may render backend truth only and blocking loading/disabled/error states must not fabricate success.",
+      "proof": "Source literal requirements + canonical top-level envelope state.",
+      "deps": [],
+      "risk": "S4 UI truth",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R6-L2",
+      "source": "Pre-R6 branch @6bc72ebe6de6ade6c21808f0e5ffd93d4772e5ad",
+      "claim": "UI defaulted READY, parsed nested data.state, silently swallowed health failure, and left action surfaces insufficiently gated.",
+      "proof": "Direct source inspection.",
+      "deps": [
+        "R6-L1"
+      ],
+      "risk": "False operational UI",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R6-L3",
+      "source": "Branch @a2137eca5d891fb2f9c5c2f3f16bc5f9eaf3262e + workflow 35553622340",
+      "claim": "F-DOC-C-UI-TRUTH-006 fixed at UI state/action layer.",
+      "proof": "Canonical parser/null state/action gates and all validation jobs PASS.",
+      "deps": [
+        "R6-L1",
+        "R6-L2"
+      ],
+      "risk": "Transport wiring/browser E2E remain separate",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R6"
+}

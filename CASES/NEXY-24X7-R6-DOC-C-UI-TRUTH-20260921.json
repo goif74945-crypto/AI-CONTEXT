@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R6-DOC-C-UI-TRUTH-20260921",
+  "cause": "Frontend state provider invented READY before backend confirmation and parsed the wrong envelope location; mutation UI remained available without confirmed truth.",
+  "violation": "DOC-C §16.1 UI renders truth only and §16.5 loading/disabled/error semantics.",
+  "impact": "UI could display operational state or enable blocking actions while backend state was unknown/unreachable.",
+  "fix": "Canonical top-level state parser, null/explicit readiness truth model, visible unknown state, directive/recovery action locks.",
+  "prevention": "UI truth contract tests reject READY defaults/nested state parsing and require action locks.",
+  "regression": "Workflow 35553622340 all validation jobs PASS; deploy SKIPPED.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "commit": "a2137eca5d891fb2f9c5c2f3f16bc5f9eaf3262e",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "CLOSED_VERIFIED_WITH_LIMITS",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R6"
+}

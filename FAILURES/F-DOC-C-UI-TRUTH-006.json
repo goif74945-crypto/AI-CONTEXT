@@ -1,0 +1,16 @@
+{
+  "FAILURE_ID": "F-DOC-C-UI-TRUTH-006",
+  "context": "DOC-C §16 UI truth contract",
+  "cause": "SystemStateProvider treated absence/failure of backend truth as READY and read data.state instead of top-level SystemEnvelope.state.",
+  "failed_approach": "Optimistic READY initialization plus silent error handling for a blocking state source.",
+  "recovery": "Use nullable canonical state, explicit readiness, exact top-level parser, visible UNKNOWN and fail-closed action gates.",
+  "boundary": "No blocking UI action may rely on an inferred/default system state.",
+  "prevention": "ui-system-state-truth contract tests + full web typecheck/CI.",
+  "proof": {
+    "fixed_commit": "a2137eca5d891fb2f9c5c2f3f16bc5f9eaf3262e",
+    "workflow_run": 35553622340,
+    "result": "PASS"
+  },
+  "status": "RESOLVED_WITH_LIMITS",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R6"
+}
