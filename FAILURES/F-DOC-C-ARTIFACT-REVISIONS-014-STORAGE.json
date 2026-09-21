@@ -1,0 +1,18 @@
+{
+  "FAILURE_ID": "F-DOC-C-ARTIFACT-REVISIONS-014-STORAGE",
+  "context": "DOC-C artifact revision history storage",
+  "cause": "Revision rows lacked authoritative createdAt/createdBy; initial repair also violated VAULT->CORE module boundary by importing the core clock.",
+  "failed_approach": "Derive created_at from deterministic createdTick, derive creator from commit authors, or let VAULT import CORE clock.",
+  "recovery": "Persist explicit createdAt/createdBy supplied by caller; migration refuses legacy-row backfill without authority; preserve VAULT boundary.",
+  "boundary": "This resolves storage provenance only; canonical history route remains open.",
+  "prevention": "Boundary gate, migration round-trip proof, provenance tests, no inferred historical provenance.",
+  "proof": {
+    "first_candidate": "77095e2836121e8b03b04bc9a7aeea9b8666b773",
+    "failed_workflow": 35623769603,
+    "fixed_commit": "4697ec2f71e9f2a0126b775b99c5b0bde8db116c",
+    "passing_workflow": 35624043991,
+    "result": "PASS"
+  },
+  "status": "RESOLVED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14B"
+}
