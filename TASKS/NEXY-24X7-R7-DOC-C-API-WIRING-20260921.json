@@ -1,0 +1,130 @@
+{
+  "TASK_ID": "NEXY-24X7-R7-DOC-C-API-WIRING-20260921",
+  "title": "NEXY autonomous round 7 — canonical Next API transport binding",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §4.1/§4.2 transport binding from Next UI routes to existing canonical API handlers",
+  "inputs_summary": "Authoritative DOC-C route matrix, live Next app routes, API handler files, adapter semantics and GitHub Actions evidence.",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@699d0497043362a1e2a44cd86230775d2b11b636",
+    "GitHub Actions run 35554155180"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "GitHub Actions",
+    "Next.js App Router",
+    "Vitest contract tests",
+    "uploaded DOC-C source"
+  ],
+  "actions": [
+    "Proved UI used same-origin /api/* calls while apps/web/app/api contained no route bindings and next.config.js had no proxy/rewrites.",
+    "Added shared Next-to-legacy API adapter preserving body, params, cookies, headers, status, response headers and Express cookie maxAge semantics.",
+    "Bound implemented canonical auth/health/directive/run/freeze routes to existing handlers.",
+    "Audited route matrix and found non-canonical /api/auth/me drift; added canonical /api/session/me and removed the alias.",
+    "Kept unimplemented canonical API pack routes unbound rather than inventing backend behavior.",
+    "Ran complete CI on the final route-binding head."
+  ],
+  "artifacts_paths": [
+    "apps/web/lib/api-adapter.ts",
+    "apps/web/lib/api-handlers.ts",
+    "apps/web/app/api/auth/request-otac/route.ts",
+    "apps/web/app/api/auth/verify-otac/route.ts",
+    "apps/web/app/api/session/me/route.ts",
+    "apps/web/app/api/auth/logout/route.ts",
+    "apps/web/app/api/directives/route.ts",
+    "apps/web/app/api/directives/[id]/route.ts",
+    "apps/web/app/api/runs/[id]/route.ts",
+    "apps/web/app/api/freeze/recover/route.ts",
+    "apps/web/app/api/health/liveness/route.ts",
+    "apps/web/app/api/health/readiness/route.ts",
+    "apps/web/app/api/health/freeze/route.ts",
+    "tests/contract/next-api-transport.test.ts",
+    "tests/contract/next-api-route-binding.test.ts"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Pre-R7 frontend API transport was absent.",
+      "proof": "No apps/web/app/api route files and no rewrite/proxy in apps/web/next.config.js while UI called /api/*."
+    },
+    {
+      "claim": "Implemented canonical handlers are now reachable through same-origin Next routes.",
+      "proof": "Route files bind auth, session/me, directives, runs, freeze recovery and health handlers through the shared adapter."
+    },
+    {
+      "claim": "R7 corrected a path-level spec drift rather than normalizing it.",
+      "proof": "DOC-C defines GET /api/session/me; non-canonical /api/auth/me route was removed and contract test now requires its absence."
+    },
+    {
+      "claim": "R7 is regression-clean at the tested SHA.",
+      "proof": "Workflow 35554155180 passed module-boundary, full suite, contract, typecheck, migration, integration, DOC-C static gate and evidence attestation; deploy skipped."
+    }
+  ],
+  "tests_results": {
+    "github_actions_run": 35554155180,
+    "tested_sha": "699d0497043362a1e2a44cd86230775d2b11b636",
+    "module_boundaries": "PASS",
+    "full_test_suite": "PASS",
+    "contract": "PASS",
+    "typecheck": "PASS",
+    "migration_apply_rollback": "PASS",
+    "integration": "PASS",
+    "doc_c_static_gate": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "commits": [
+      "dc06615c16675b7ba61af3e22351a54b5c412723",
+      "ca0b8a9955b655693057d7b6923a19ccb1c7c08a",
+      "275644dff42160bfbf0dc884dfc76f9b1a27e929",
+      "e143bce5d7040a960368062519ef59c4fc7e9971",
+      "699d0497043362a1e2a44cd86230775d2b11b636"
+    ],
+    "finding": "F-DOC-C-API-WIRING-007",
+    "req_id": "DOC-C-4.1-4.2"
+  },
+  "successes": [
+    "Same-origin Next transport exists for implemented canonical API handlers.",
+    "Cookie/status/header/param semantics are regression-tested.",
+    "Canonical session route restored and non-canonical alias removed."
+  ],
+  "failures": [
+    "Two local write attempts were aborted by branch drift before ref mutation because a concurrent execution chain had already advanced the same finding."
+  ],
+  "decisions": [
+    "Do not invent missing canonical API handlers to satisfy current UI calls.",
+    "Treat DOC-C route matrix as build authority over comments/tests/UI aliases.",
+    "Keep server handlers on Node runtime."
+  ],
+  "unresolved": [
+    "Canonical API pack still lacks POST /api/vault/commit, GET /api/artifacts/:id/revisions, GET /api/incidents/:id and GET /api/audit-logs.",
+    "Current UI contains non-canonical list calls /api/vault/artifacts, GET /api/directives, GET /api/runs and /api/audit.",
+    "Browser-level critical-flow E2E gate remains absent."
+  ],
+  "risks": [
+    "Unimplemented canonical routes remain release blockers.",
+    "UI pages depending on non-canonical list endpoints still cannot be considered wired."
+  ],
+  "limits": [
+    "No merge/deploy authorization.",
+    "R7 covers transport for existing handlers, not full canonical API-pack completeness."
+  ],
+  "rollback": "Revert R7 route/adapter commits on the dedicated branch only if authoritative DOC-C route matrix changes; do not reintroduce /api/auth/me without spec extension.",
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Implement missing canonical API pack routes with backend RBAC and audit semantics.",
+    "Then reconcile UI consumers to canonical routes or remove unsupported UI flows.",
+    "Add browser-level E2E gate after canonical API pack is complete."
+  ],
+  "dependencies": [
+    "DOC-C route matrix",
+    "Next.js",
+    "existing packages/api handlers",
+    "GitHub Actions"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "GitHub Actions run 35554155180",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R7",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}

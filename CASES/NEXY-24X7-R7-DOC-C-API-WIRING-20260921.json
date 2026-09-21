@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R7-DOC-C-API-WIRING-20260921",
+  "cause": "UI called same-origin API paths without Next route/proxy bindings; a non-canonical session path was also introduced during repair.",
+  "violation": "DOC-C §4.1/§4.2 transport binding gap and /api/auth/me route drift.",
+  "impact": "UI requests could resolve to missing routes; session route contract could be locked to an incorrect path.",
+  "fix": "Shared transport adapter, explicit Next route bindings to canonical handlers, canonical /api/session/me route, removal of /api/auth/me alias.",
+  "prevention": "Route-set contract tests must derive from authoritative DOC-C route matrix rather than implementation comments.",
+  "regression": "Workflow 35554155180 all validation jobs PASS; deploy SKIPPED.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "commit": "699d0497043362a1e2a44cd86230775d2b11b636",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "CLOSED_VERIFIED_WITH_LIMITS",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R7"
+}

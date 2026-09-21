@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R7-DOC-C-API-WIRING-20260921",
+  "entries": [
+    {
+      "id": "R7-L1",
+      "source": "Authoritative DOC-C §4.1/§4.2 route matrix",
+      "claim": "Frontend-facing API routes are canonical and include GET /api/session/me, not /api/auth/me.",
+      "proof": "Source route matrix.",
+      "deps": [],
+      "risk": "S4 API contract",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R7-L2",
+      "source": "Pre-R7 branch @a2137eca5d891fb2f9c5c2f3f16bc5f9eaf3262e",
+      "claim": "No Next API binding existed despite UI /api calls.",
+      "proof": "No apps/web/app/api route files; next.config.js had no rewrites/proxy.",
+      "deps": [
+        "R7-L1"
+      ],
+      "risk": "UI transport unavailable",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R7-L3",
+      "source": "Branch @699d0497043362a1e2a44cd86230775d2b11b636 + workflow 35554155180",
+      "claim": "Implemented canonical handlers are transport-bound and session path drift is repaired.",
+      "proof": "Route/adapter contract tests and all validation jobs PASS.",
+      "deps": [
+        "R7-L1",
+        "R7-L2"
+      ],
+      "risk": "Canonical API pack remains incomplete",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R7"
+}
