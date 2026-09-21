@@ -1,0 +1,12 @@
+{
+  "CASE_ID": "NEXY-24X7-R14C-ARTIFACT-REVISIONS-20260921",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14C",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "tested_commit": "680ac55c655d28efe3fe25db5b3ba29dfdeb51ce",
+  "workflow": 35625993305,
+  "result": "PASS",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "cause": "Canonical route absent while durable revision provenance had been established",
+  "fix": "Canonical route/contract/UI plus audit and pagination",
+  "status": "CLOSED_VERIFIED_COMPONENT"
+}
