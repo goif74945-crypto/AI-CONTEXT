@@ -1,0 +1,20 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R14C-ARTIFACT-REVISIONS-20260921",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14C",
+  "entries": [
+    {
+      "id": "R14C-L1",
+      "source": "final DOC-C §4.2",
+      "claim": "Artifact revision history requires cursor+limit, max100, canonical item fields, AUDITOR-only audit.",
+      "status": "VERIFIED",
+      "confidence": 1
+    },
+    {
+      "id": "R14C-L2",
+      "source": "NEXY.AI-@680ac55c655d28efe3fe25db5b3ba29dfdeb51ce + workflow 35625993305",
+      "claim": "Implementation is regression-clean.",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1
+    }
+  ]
+}
