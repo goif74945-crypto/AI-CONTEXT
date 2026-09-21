@@ -1,0 +1,13 @@
+{
+  "CASE_ID": "NEXY-24X7-R12B-API-READ-20260921",
+  "cause": "Legacy GET handlers exposed storage-shaped payloads instead of DOC-C read contracts; AUDITOR view audit was missing.",
+  "violation": "DOC-C §4.2 directive/run read responses and read-audit semantics.",
+  "impact": "UI consumed noncanonical payloads; product state risked being inferred from hardware-oriented fields.",
+  "fix": "Canonical payloads; durable OrchestrationEnvelope state lookup; proof-backed optionals only; AUDITOR view audit; canonical UI consumers.",
+  "prevention": "Contract schemas plus integration/browser regression tests; never map hardware bytes to product SystemState without authority.",
+  "regression": "GitHub Actions 35610606204 all validation jobs PASS; deploy SKIPPED.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "tested_commit": "2e80216f5d29a86272897e092754faf31cec101f",
+  "status": "CLOSED_VERIFIED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R12B"
+}
