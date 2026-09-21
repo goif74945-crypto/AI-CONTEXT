@@ -1,0 +1,18 @@
+{
+  "FAILURE_ID": "F-DOC-C-AUTH-LOGOUT-013",
+  "context": "DOC-C §4.2 POST /api/auth/logout",
+  "cause": "Duplicate handler-local LogoutBodySchema allowed missing idempotency_key and produced string|undefined type flow.",
+  "failed_approach": "Maintain a second logout schema in packages/api/auth.ts separate from canonical validation schema.",
+  "recovery": "Removed duplicate schema and imported canonical LogoutBodySchema; preserved canonical response/audit semantics.",
+  "boundary": "This closes logout only; remaining API-pack gaps stay open.",
+  "prevention": "Single schema authority plus missing-key integration regression and full CI gate.",
+  "proof": {
+    "failed_candidate": "ae60aed66303337bb5d5599f514104f36a908e97",
+    "failed_workflow": 35611588560,
+    "fixed_commit": "29b75c55f7bf61ed7bad20942b484706b9a78601",
+    "passing_workflow": 35622118937,
+    "result": "PASS"
+  },
+  "status": "RESOLVED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R13B"
+}
