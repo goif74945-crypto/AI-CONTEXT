@@ -1,0 +1,10 @@
+{
+  "FAILURE_ID": "F-DOC-C-API-PACK-008-AUTHORITY-BLOCK",
+  "parent_finding": "F-DOC-C-API-PACK-008",
+  "status": "BLOCKED_PATH",
+  "cause": "Exact authoritative DOC-C detail/read response contracts are unavailable in the authorized evidence set.",
+  "safety_rule": "Do not invent historical SystemState or response fields.",
+  "effect": "No application code changed and no tests/spec were weakened.",
+  "unblock_condition": "Exact authoritative DOC-C detail/read response-contract evidence becomes available.",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R12"
+}
