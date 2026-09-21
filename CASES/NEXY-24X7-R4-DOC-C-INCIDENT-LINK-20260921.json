@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R4-DOC-C-INCIDENT-LINK-20260921",
+  "cause": "Canonical incident graph contract/persistence was absent and runtime logs were not linked to incidents.",
+  "violation": "DOC-C §11.5–§11.6 and §20 incident-link enforcement gap.",
+  "impact": "Freeze/security post-mortem evidence could exist as disconnected records; orphan/mismatched incident references were not database-rejected.",
+  "fix": "First-class IncidentLink contract/model, log incidentId fields, integrity triggers/backfill/down migration, OBS helpers, worker/recovery runtime linkage, and regression gates.",
+  "prevention": "Keep IncidentLink exact-field contract in check-doc-c; keep database triggers authoritative for orphan/type/primary/request/trace/log ownership integrity.",
+  "regression": "Workflow 35552336462 all validation jobs PASS; deploy SKIPPED.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "commit": "a10380af8286dfe141c1d86bbc29f8e03af0ce50",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "CLOSED_VERIFIED_WITH_LIMITS",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R4"
+}

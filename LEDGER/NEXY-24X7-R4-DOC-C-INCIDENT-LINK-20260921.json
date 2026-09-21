@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R4-DOC-C-INCIDENT-LINK-20260921",
+  "entries": [
+    {
+      "id": "R4-L1",
+      "source": "Authoritative DOC-C §11.5–§11.6",
+      "claim": "IncidentLink must contain canonical incident identity/type/primary/request/trace and linked event/audit/secondary incident IDs; incident linking must be enforced.",
+      "proof": "Source-defined contract and graph rules.",
+      "deps": [],
+      "risk": "S4 release blocker",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R4-L2",
+      "source": "Pre-R4 branch @fc7c47f0c46f819b7d0c4e025d0d3862d2c89dc6",
+      "claim": "Canonical IncidentLink storage/contract/log references were missing and runtime evidence was disconnected.",
+      "proof": "Prisma schema, contracts, OBS helpers, worker and recovery path inspection.",
+      "deps": [
+        "R4-L1"
+      ],
+      "risk": "Orphan/disconnected post-mortem evidence",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R4-L3",
+      "source": "Branch @a10380af8286dfe141c1d86bbc29f8e03af0ce50 + workflow 35552336462",
+      "claim": "F-DOC-C-INCIDENT-LINK-004 is fixed at contract/schema/runtime/test layers.",
+      "proof": "All current validation gates success; deploy skipped.",
+      "deps": [
+        "R4-L1",
+        "R4-L2"
+      ],
+      "risk": "Real migration apply/rollback execution proof remains a separate unresolved release requirement.",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R4"
+}

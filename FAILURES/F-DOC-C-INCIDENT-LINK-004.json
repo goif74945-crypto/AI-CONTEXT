@@ -1,0 +1,20 @@
+{
+  "FAILURE_ID": "F-DOC-C-INCIDENT-LINK-004",
+  "context": "DOC-C §11.5–§11.6 incident linking",
+  "cause": "No canonical IncidentLink persistence/contract; logs lacked incidentId; worker and recovery evidence were disconnected.",
+  "failed_approach": "Treat SecurityIncident self-relation naming and payload-contained incident IDs as equivalent to the canonical IncidentLink graph.",
+  "recovery": "Add first-class contract/storage, DB integrity enforcement, runtime evidence linkage, and exact regression gates.",
+  "boundary": "An incident graph is not considered enforced unless orphan/mismatch states are rejected and runtime evidence carries the incident identity.",
+  "prevention": "DOC-C static contract + DB triggers + worker/recovery integration tests.",
+  "execution_failures": [
+    "Oversized tool batch exceeded connector call limit before branch mutation; branch ref was checked identical and work was split.",
+    "Second oversized batch repeated the connector limit; again no branch ref mutation occurred before retry."
+  ],
+  "proof": {
+    "fixed_commit": "a10380af8286dfe141c1d86bbc29f8e03af0ce50",
+    "workflow_run": 35552336462,
+    "result": "PASS"
+  },
+  "status": "RESOLVED_WITH_LIMITS",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R4"
+}

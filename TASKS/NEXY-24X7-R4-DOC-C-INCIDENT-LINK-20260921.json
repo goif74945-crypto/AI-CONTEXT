@@ -1,0 +1,132 @@
+{
+  "TASK_ID": "NEXY-24X7-R4-DOC-C-INCIDENT-LINK-20260921",
+  "title": "NEXY autonomous round 4 — DOC-C incident-link enforcement",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §11.5–§11.6 IncidentLink contract, persistence integrity, and runtime evidence linkage on dedicated autonomous branch",
+  "inputs_summary": "Authoritative DOC-C incident-link contract plus live Prisma schema, OBS helpers, worker freeze path, recovery path, and CI evidence.",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@a10380af8286dfe141c1d86bbc29f8e03af0ce50",
+    "GitHub Actions run 35552336462"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "GitHub Actions",
+    "Prisma schema/migrations",
+    "Vitest contract/integration suites"
+  ],
+  "actions": [
+    "Proved repo had no canonical IncidentLink model/contract and EventLog/AuditLog lacked incidentId despite DOC-C §11.5–§11.6.",
+    "Added canonical IncidentLink contract and Prisma model; renamed the unrelated SecurityIncident self-relation label to SecurityIncidentHierarchy.",
+    "Added event_log/audit_log incidentId columns and indexes.",
+    "Added migration up/down with backfill, orphan rejection, type/primary/request/trace integrity, linked log ownership checks, duplicate rejection, and secondary incident existence checks.",
+    "Added OBS helpers for creating IncidentLink and attaching event/audit/secondary evidence.",
+    "Wired worker FREEZE audit rows to primary FreezeIncident graph.",
+    "Wired freeze recovery EventLog/AuditLog rows to the primary incident and IncidentLink.",
+    "Added exact DOC-C static-gate checks, contract tests, and integration tests.",
+    "Large connector batches hit tool-call caps twice before ref mutation; branch was verified unchanged and work was safely split into atomic commits."
+  ],
+  "artifacts_paths": [
+    "prisma/schema.prisma",
+    "prisma/migrations/20260921000000_incident_link_contract/migration.sql",
+    "prisma/migrations/20260921000000_incident_link_contract/migration.down.sql",
+    "packages/contracts/incidents.ts",
+    "packages/obs/incidents.ts",
+    "packages/obs/event-log.ts",
+    "packages/obs/audit-log.ts",
+    "packages/queue/workers.ts",
+    "packages/api/directives.ts",
+    "tests/contract/incident-link-contract.test.ts",
+    "tests/integration/incident-linking.spec.ts",
+    "tests/integration/freeze-incident-link.spec.ts",
+    "tests/integration/freeze/recover.spec.ts",
+    "tests/e2e/freeze-recover.spec.ts",
+    "scripts/check-doc-c.ts"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Pre-R4 implementation did not satisfy DOC-C §11.5–§11.6 canonical incident-link contract.",
+      "proof": "No IncidentLink persistence model/contract; EventLog/AuditLog lacked incidentId; worker/recovery paths emitted logs without graph linkage."
+    },
+    {
+      "claim": "R4 adds database-level incident graph integrity rather than only application-level metadata.",
+      "proof": "Migration 20260921000000_incident_link_contract installs incident_log_ref_check and incident_link_integrity_check triggers and rollback SQL."
+    },
+    {
+      "claim": "Primary FreezeIncident evidence is linked in live worker/recovery paths.",
+      "proof": "Worker sets AuditLog.incidentId and IncidentLink.linkedAuditLogIds; recovery sets both EventLog/AuditLog incidentId and upserts linked evidence."
+    },
+    {
+      "claim": "R4 candidate is regression-clean at the tested SHA.",
+      "proof": "Workflow 35552336462 passed typecheck, contract, full suite, integration, module-boundary gate, DOC-C §20 static gate, and evidence/release attestation; deploy skipped."
+    }
+  ],
+  "tests_results": {
+    "github_actions_run": 35552336462,
+    "tested_sha": "a10380af8286dfe141c1d86bbc29f8e03af0ce50",
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "full_test_suite": "PASS",
+    "integration": "PASS",
+    "module_boundaries": "PASS",
+    "doc_c_static_gate": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "commits": [
+      "ed5b750f7f182a7e393d2fd3507d61cf746b6385",
+      "540cfd22731ab5641e3f457f631e75829c855a05",
+      "db6ce82d20e3449af4a5d721467b5ab1b0c2049b",
+      "a10380af8286dfe141c1d86bbc29f8e03af0ce50"
+    ],
+    "finding": "F-DOC-C-INCIDENT-LINK-004",
+    "req_id": "DOC-C-11.5-11.6"
+  },
+  "successes": [
+    "Canonical IncidentLink contract now exists.",
+    "DB rejects orphan/mismatched incident graph references.",
+    "Worker and recovery evidence are linked to primary incidents.",
+    "Current CI proves the complete R4 head."
+  ],
+  "failures": [
+    "Two oversized connector orchestration attempts exceeded tool-call limits; both aborted before branch ref mutation and branch integrity was re-verified before retry."
+  ],
+  "decisions": [
+    "IncidentLink is represented as a first-class graph table keyed by incident identity.",
+    "EventLog/AuditLog keep optional polymorphic incidentId fields; database triggers enforce existence without cross-tier foreign keys.",
+    "No production deployment authorization is inferred from validation success."
+  ],
+  "unresolved": [
+    "Branch-local checkpoint still marks R4 pending until a later metadata/candidate commit advances it.",
+    "DOC-C §15.2 migration apply/rollback build gate remains unproven.",
+    "DOC-E E3/E12 deployment evidence remains incomplete.",
+    "Full DOC-C convergence remains incomplete."
+  ],
+  "risks": [
+    "Migration SQL has not yet been proven by a real PostgreSQL apply→rollback CI job; current R4 validation proves schema/type/tests/static contract, not DOC-E migration execution evidence.",
+    "Other release-blocking obligations may remain despite green current CI."
+  ],
+  "limits": [
+    "R4 is VERIFIED_WITH_LIMITS, not DEPLOYABLE.",
+    "No merge or production deploy authorized."
+  ],
+  "rollback": "Use prisma/migrations/20260921000000_incident_link_contract/migration.down.sql on the dedicated release rollback path; execution proof is deferred to the next migration-gate finding.",
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Audit and implement DOC-C §15.2 migration apply/rollback build-fail gate and DOC-E E3/E12 proof.",
+    "Advance branch checkpoint with R4 PASS_LOCKED in the next branch commit.",
+    "Continue requirement-by-requirement convergence."
+  ],
+  "dependencies": [
+    "DOC-C source snapshot",
+    "GitHub repository",
+    "GitHub Actions",
+    "PostgreSQL migration semantics for next proof"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "GitHub Actions run 35552336462 tested SHA a10380af8286dfe141c1d86bbc29f8e03af0ce50",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R4",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}
