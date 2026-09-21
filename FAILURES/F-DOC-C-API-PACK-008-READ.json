@@ -1,0 +1,16 @@
+{
+  "FAILURE_ID": "F-DOC-C-API-PACK-008-READ",
+  "context": "DOC-C §4.2 directive/run detail reads",
+  "cause": "Storage-shaped read payloads, missing AUDITOR read audit, and an initial wrong state-schema import.",
+  "failed_approach": "Return flattened DB fields, infer product state from raw hardware state, or import VNextStateSchema from contracts/state.ts.",
+  "recovery": "Use durable OrchestrationEnvelope.systemState and contracts/SystemStateSchema; emit canonical payloads and AUDITOR audit.",
+  "boundary": "Unpersisted optional metrics are omitted; parent API pack remains open.",
+  "prevention": "Exact response contract tests + durable-state tests + browser consumer tests.",
+  "proof": {
+    "tested_commit": "2e80216f5d29a86272897e092754faf31cec101f",
+    "workflow": 35610606204,
+    "result": "PASS"
+  },
+  "status": "RESOLVED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R12B"
+}
