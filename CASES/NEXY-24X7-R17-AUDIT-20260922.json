@@ -1,0 +1,9 @@
+{
+  "round":17,
+  "cases":[
+    {"finding":"F-DOC-C-AUTH-HARDENING-018","result":"PARTIAL_BLOCKED_AUTHORITY","evidence":"VNEXT_DEFAULTS.concurrent_sessions_per_user=5; handleVerifyOtac creates a session after identity resolution; checkpoint states OWNER overflow explicit-confirmation transport/field is unspecified."},
+    {"finding":"F-DOC-C-STATE-SIDEFX-020","result":"DEFECT_SURFACE_CONFIRMED_REPAIR_NOT_AUTHORIZED","evidence":"transitionSystemState persists OrchestrationEnvelope only; open finding requires legal-transition EventLog and FREEZE/STOP primary incident side effects, but exact write/link semantics were not located in checked authority."},
+    {"finding":"F-DOC-C-CONTRACTS-022","result":"AUDIT_CONTINUES","evidence":"ConsensusResult and EvidenceBundle contracts inspected; no safe minimal repair proven in this pass."},
+    {"finding":"F-DOC-C-STORAGE-023","result":"AUDIT_CONTINUES","evidence":"Prisma schema and versioning-law surfaces inspected; no schema mutation made without exact drift proof."}
+  ]
+}
