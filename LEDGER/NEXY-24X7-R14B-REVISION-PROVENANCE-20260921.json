@@ -1,0 +1,73 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R14B-REVISION-PROVENANCE-20260921",
+  "entries": [
+    {
+      "id": "R14B-L1",
+      "source": "uploaded DOC-C §4.2/§9.6",
+      "claim": "Artifact revision history requires durable created_at and created_by provenance.",
+      "proof": "Revision-history response and storage skeleton explicitly include created_at/created_by.",
+      "deps": [],
+      "risk": "S3 correctness",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "current-source-snapshot"
+    },
+    {
+      "id": "R14B-L2",
+      "source": "pre-fix prisma/schema.prisma + packages/vault/versioning.ts",
+      "claim": "Revision storage had createdTick only and no actor provenance.",
+      "proof": "Schema and createRevision implementation inspected; no relevant runtime caller supplying provenance was found in scanned API/VAULT/ORCH paths.",
+      "deps": [
+        "R14B-L1"
+      ],
+      "risk": "historical provenance gap",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R14B-L3",
+      "source": "packages/core/tick.ts",
+      "claim": "createdTick cannot truthfully serve as created_at.",
+      "proof": "Tick law declares currentTick deterministic monotonic and currentInstantIso separate for human-facing timestamps.",
+      "deps": [
+        "R14B-L2"
+      ],
+      "risk": "fabricated wall-clock history",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "current"
+    },
+    {
+      "id": "R14B-L4",
+      "source": "workflow 35623769603",
+      "claim": "Initial storage candidate had a forbidden VAULT->CORE dependency and stale migration-proof contract pin.",
+      "proof": "Module boundary failure named packages/vault/versioning.ts import ../core/tick.js; contract expected prior migration.",
+      "deps": [
+        "R14B-L1",
+        "R14B-L2"
+      ],
+      "risk": "release blocker",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "historical-failure"
+    },
+    {
+      "id": "R14B-L5",
+      "source": "NEXY.AI-@4697ec2f71e9f2a0126b775b99c5b0bde8db116c + workflow 35624043991",
+      "claim": "Revision provenance storage and migration are regression-clean at tested SHA.",
+      "proof": "All required gates including migration round-trip and attestation passed; deploy skipped.",
+      "deps": [
+        "R14B-L1",
+        "R14B-L2",
+        "R14B-L3",
+        "R14B-L4"
+      ],
+      "risk": "route/legacy-remediation still open",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14B"
+}
