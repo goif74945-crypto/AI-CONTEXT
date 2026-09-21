@@ -1,0 +1,12 @@
+{
+  "round":17,
+  "failures":[
+    {"finding":"F-DOC-C-AUTH-HARDENING-018","status":"BLOCKED_MISSING_AUTHORITY","detail":"Canonical cap value 5 is present, but OWNER over-cap explicit confirmation transport/field remains unspecified; no guessed API contract introduced."},
+    {"finding":"F-DOC-C-STATE-SIDEFX-020","status":"BLOCKED_EXACT_SIDE_EFFECT_CONTRACT","detail":"Current state transition path persists durable orchestration state, but exact EventLog and primary incident creation/linking semantics for every legal transition/FREEZE/STOP require authoritative mapping before write."}
+  ],
+  "merge":false,
+  "deploy":false,
+  "force_reset":false,
+  "tests_weakened":false,
+  "spec_weakened":false
+}
