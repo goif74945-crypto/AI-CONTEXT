@@ -1,0 +1,126 @@
+{
+  "TASK_ID": "NEXY-24X7-R9-UI-E2E-20260921",
+  "title": "NEXY autonomous round 9 — real browser E2E gate convergence",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §15.2 UI critical browser E2E and Next runtime startup on dedicated autonomous branch",
+  "inputs_summary": "DOC-C UI/test laws, live Next 14.2.35 runtime, PostgreSQL migration proof, GitHub Actions logs.",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@53dcc7c75cc18f63d0d5102398b27c1f3ae6cd56",
+    "GitHub Actions run 35566363230",
+    "Next.js official instrumentation guidance"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "GitHub Actions",
+    "official Next.js docs",
+    "uploaded NEXY DOC-C source"
+  ],
+  "actions": [
+    "Diagnosed successive real UI-E2E failures from GitHub job logs rather than static inspection.",
+    "Fixed web→packages source resolution and retained backend Node16 source contracts.",
+    "Normalized Prisma DATABASE_URL query assembly so existing schema parameters are preserved.",
+    "Scoped Node-only bootstrap behind NEXT_RUNTIME=nodejs using a separate instrumentation.node.ts module.",
+    "Replaced bootstrap raw SQL occurred_tick assumption with Prisma mapped-field aggregate reads.",
+    "Aligned hydration fail-closed test doubles to the new aggregate interface without removing failure assertions.",
+    "Re-ran all required gates through final evidence attestation."
+  ],
+  "artifacts_paths": [
+    "apps/web/instrumentation.ts",
+    "apps/web/instrumentation.node.ts",
+    "apps/web/next.config.js",
+    "packages/core/database-url.ts",
+    "packages/core/db.ts",
+    "packages/api/bootstrap.ts",
+    "tests/contract/database-url.test.ts",
+    "tests/integration/bootstrap-tick.spec.ts",
+    "tests/contract/hydration-fail-closed.test.ts",
+    "scripts/check-doc-c.ts",
+    ".nexy/AI_24X7_RUN_STATE.json"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "UI E2E previously failed before browser assertions due Next/runtime integration defects.",
+      "proof": "Runs 35554993634, 35565359478, 35565578090, 35565888940 logs showed source-resolution, node builtin, DSN, and bootstrap mapping failures."
+    },
+    {
+      "claim": "Runtime startup and UI critical browser E2E are working at final SHA.",
+      "proof": "Run 35566363230: UI critical browser E2E success including migration preparation and browser tests."
+    },
+    {
+      "claim": "The browser fix is regression-clean across required repository gates.",
+      "proof": "Run 35566363230: typecheck, contract, integration, full suite, module-boundary, migration rollback, DOC-C static gate, UI E2E, and evidence attestation all success; deploy skipped."
+    }
+  ],
+  "tests_results": {
+    "github_actions_run": 35566363230,
+    "tested_sha": "53dcc7c75cc18f63d0d5102398b27c1f3ae6cd56",
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "full_test_suite": "PASS",
+    "module_boundaries": "PASS",
+    "migration_apply_rollback": "PASS",
+    "doc_c_static_gate": "PASS",
+    "ui_browser_e2e": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "commit": "53dcc7c75cc18f63d0d5102398b27c1f3ae6cd56",
+    "finding": "F-DOC-C-UI-E2E-010",
+    "req_id": "DOC-C-15.2"
+  },
+  "successes": [
+    "UI critical flows now execute in a real browser gate.",
+    "Next startup no longer traverses Node-only backend code in unsupported runtime.",
+    "Prisma DSN and bootstrap tick hydration no longer rely on malformed query/column assumptions."
+  ],
+  "failures": [
+    "Initial instrumentation imported backend source with unresolved .js source path.",
+    "Intermediate source alias exposed node:crypto bundling mismatch.",
+    "Prisma DSN assembly duplicated query delimiter.",
+    "Bootstrap raw SQL used a physical column spelling inconsistent with Prisma mapping.",
+    "Contract harness temporarily mocked a removed $queryRaw path."
+  ],
+  "decisions": [
+    "Use runtime-specific instrumentation per Next contract instead of masking Node schemes.",
+    "Use Prisma mapped aggregate API for persisted tick reads.",
+    "Keep deploy blocked; UI validation is not DOC-E release approval."
+  ],
+  "unresolved": [
+    "F-DOC-C-API-PACK-008 partial canonical API response/session gaps.",
+    "F-DOC-C-UI-DIRECTIVE-011 canonical submit/session context gap.",
+    "F-DOC-C-UI-RBAC-012 recovery UI role/recoverable truth gap.",
+    "F-DOC-C-UI-ROUTE-009 noncanonical list calls.",
+    "PENDING_FULL_SPEC_REAUDIT"
+  ],
+  "risks": [
+    "Current browser suite proves critical flows presently encoded but does not yet cover canonical directive submission or OWNER-only recovery.",
+    "Dedicated branch protection remains advisory-only."
+  ],
+  "limits": [
+    "No production deployment authorization.",
+    "No claim that all DOC-C requirements are closed."
+  ],
+  "rollback": "Revert round-9 commits on the dedicated branch if a later verified change regresses startup; never modify main automatically.",
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Repair canonical session/user contract.",
+    "Repair directive UI canonical request + CSRF/session role context.",
+    "Replace noncanonical list calls with canonical ID-based/detail flows.",
+    "Enforce owner+recoverable recovery UI truth."
+  ],
+  "dependencies": [
+    "DOC-C source",
+    "GitHub repository",
+    "GitHub Actions",
+    "PostgreSQL 16 browser test service",
+    "Next.js 14.2.35"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "commit 53dcc7c75cc18f63d0d5102398b27c1f3ae6cd56 committer_date=2026-09-21T05:55:05Z; workflow 35566363230",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R9",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}

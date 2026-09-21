@@ -1,0 +1,16 @@
+{
+  "FAILURE_ID": "F-DOC-C-UI-E2E-010",
+  "context": "DOC-C §15.2 UI critical flows required as browser E2E",
+  "cause": "Layered startup integration faults: web source resolution, runtime-specific Node imports, DSN query assembly, and bootstrap schema mapping.",
+  "failed_approach": "Rely on static/type tests and generic bundler aliasing without executing the Next server in a real browser gate.",
+  "recovery": "Drive fixes from GitHub browser job logs until startup, migration prep, Playwright assertions, and evidence attestation all pass on one SHA.",
+  "boundary": "Do not weaken/skip browser E2E, migration proof, or release-attestation dependencies to obtain green CI.",
+  "prevention": "Mandatory UI browser job; runtime-scoped instrumentation; DSN regression tests; mapped-field bootstrap tests.",
+  "proof": {
+    "fixed_commit": "53dcc7c75cc18f63d0d5102398b27c1f3ae6cd56",
+    "workflow_run": 35566363230,
+    "result": "PASS"
+  },
+  "status": "RESOLVED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R9"
+}

@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R9-UI-E2E-20260921",
+  "entries": [
+    {
+      "id": "R9-L1",
+      "source": "DOC-C §15.2",
+      "claim": "UI critical flows require E2E and failed UI E2E must block release evidence.",
+      "proof": "Authoritative build spec + workflow dependency.",
+      "deps": [],
+      "risk": "S4 release-blocking",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R9-L2",
+      "source": "GitHub Actions failure runs 35554993634/35565359478/35565578090/35565888940",
+      "claim": "Real Next startup defects existed despite other green gates.",
+      "proof": "Job logs showed source path, builtin runtime, DSN, and bootstrap mapping failures.",
+      "deps": [
+        "R9-L1"
+      ],
+      "risk": "False-green non-browser validation",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "historical failure evidence"
+    },
+    {
+      "id": "R9-L3",
+      "source": "NEXY @53dcc7c75cc18f63d0d5102398b27c1f3ae6cd56 + workflow 35566363230",
+      "claim": "F-DOC-C-UI-E2E-010 is fixed and regression-clean on the final SHA.",
+      "proof": "All required upstream gates and evidence attestation success; deploy skipped.",
+      "deps": [
+        "R9-L1",
+        "R9-L2"
+      ],
+      "risk": "Other DOC-C gaps remain",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R9"
+}

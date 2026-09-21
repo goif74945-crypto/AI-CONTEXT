@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R9-UI-E2E-20260921",
+  "cause": "UI critical browser gate exposed multiple integration defects hidden by unit/static green gates.",
+  "violation": "DOC-C §15.2 requires real UI critical E2E; Next startup could not reach those flows reliably.",
+  "impact": "CI could not produce UI E2E evidence or release attestation; server bootstrap failed before browser truth checks.",
+  "fix": "Runtime-scoped Node instrumentation, source extension handling, canonical DSN query assembly, Prisma-mapped tick hydration, and aligned fail-closed test harness.",
+  "prevention": "Keep browser E2E mandatory upstream of release attestation and retain static checks for instrumentation/runtime wiring.",
+  "regression": "GitHub Actions 35566363230 all required validation jobs PASS; deploy SKIPPED.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "commit": "53dcc7c75cc18f63d0d5102398b27c1f3ae6cd56",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "CLOSED_VERIFIED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R9"
+}
