@@ -1,0 +1,14 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R12-20260921",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R12",
+  "finding": "F-DOC-C-API-PACK-008",
+  "outcome": "BLOCKED_MISSING_AUTHORITY",
+  "validated_baseline": "37b2e7d8d6dbdbb538cd8e1de6e8f364d1b59aff",
+  "observed_checkpoint_head": "f1be8a36dafbf4883e0092e8a9a1de336285bbf4",
+  "new_checkpoint_commit": "c7f36e0a5f68a1eed5daa103c6e4d26d7873392a",
+  "application_code_changed": false,
+  "merge": false,
+  "deploy": false,
+  "force_reset": false,
+  "next": "PENDING_FULL_SPEC_REAUDIT; keep API pack frozen until exact DOC-C contracts are available"
+}
