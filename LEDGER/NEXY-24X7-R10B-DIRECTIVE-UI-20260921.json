@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R10B-DIRECTIVE-UI-20260921",
+  "entries": [
+    {
+      "id": "R10B-L1",
+      "source": "DOC-C §4.2/§16",
+      "claim": "Directive write requires full canonical request, OWNER/OPERATOR session, CSRF, and truth-only UI.",
+      "proof": "Authoritative source contract.",
+      "deps": [],
+      "risk": "S3 correctness/security",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R10B-L2",
+      "source": "Pre-fix UI source",
+      "claim": "Directive UI omitted required fields/session/CSRF and emitted noncanonical mode.",
+      "proof": "CommandMatrix + directives/new source inspection.",
+      "deps": [
+        "R10B-L1"
+      ],
+      "risk": "Canonical write path unusable",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R10B-L3",
+      "source": "NEXY@5f056715f3bc3607aaa967ef9d3c1eb25ebf2e75 + workflow 35590941198",
+      "claim": "Canonical browser submit fixed and regression-clean.",
+      "proof": "Browser request assertion plus all CI gates and evidence attestation success.",
+      "deps": [
+        "R10B-L1",
+        "R10B-L2"
+      ],
+      "risk": "Other API/UI gaps remain",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10B"
+}

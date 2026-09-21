@@ -1,0 +1,11 @@
+{
+  "CASE_ID": "NEXY-24X7-R10B-DIRECTIVE-UI-20260921",
+  "cause": "Directive UI emitted incomplete/noncanonical payload and lacked canonical session/CSRF context.",
+  "violation": "DOC-C §4.2 write contract and §16 UI truth drift.",
+  "impact": "A browser user could not successfully submit the canonical directive request even though backend validation existed.",
+  "fix": "Canonical session context + CSRF cookie wiring + explicit request fields + stable browser request identity + browser E2E assertion.",
+  "prevention": "Browser gate asserts exact request body/header; contract test checks state/auth/config fail-closed gating.",
+  "regression": "Workflow 35590941198 all required gates and evidence attestation PASS; deploy SKIPPED.",
+  "status": "CLOSED_VERIFIED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10B"
+}

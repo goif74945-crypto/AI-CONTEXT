@@ -1,0 +1,101 @@
+{
+  "TASK_ID": "NEXY-24X7-R10B-DIRECTIVE-UI-20260921",
+  "title": "NEXY autonomous round 10B — canonical directive UI submit",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §4.2 and §16 canonical directive submission UI on dedicated autonomous branch",
+  "inputs_summary": "Canonical session identity from round 10A, DOC-C directive API request contract, UI truth law, browser E2E.",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@5f056715f3bc3607aaa967ef9d3c1eb25ebf2e75",
+    "GitHub Actions run 35590941198"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "GitHub Actions",
+    "Playwright browser gate",
+    "uploaded DOC-C source"
+  ],
+  "actions": [
+    "Added fail-closed session context loader for /api/session/me.",
+    "Read double-submit CSRF token from the canonical CSRF cookie.",
+    "Removed noncanonical DETERMINISTIC mode payload from CommandMatrix.",
+    "Required explicit project/mode/priority/max_tokens/external/deterministic inputs instead of inventing defaults.",
+    "Generated stable browser ULID/idempotency identity per logical submit and preserved it across retries.",
+    "Sent full DOC-C POST /api/directives body with x-csrf-token.",
+    "Added real browser assertion for session identity, CSRF header, and complete canonical request body.",
+    "Strengthened UI truth contract test after a stale source-literal assertion failed."
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Directive UI emits the complete canonical DOC-C request shape and CSRF header.",
+      "proof": "Playwright route assertion passed in workflow 35590941198."
+    },
+    {
+      "claim": "Directive UI remains fail-closed until canonical READY state, OWNER/OPERATOR session, CSRF, and request configuration are present.",
+      "proof": "Updated contract test and browser suite pass in workflow 35590941198."
+    }
+  ],
+  "tests_results": {
+    "github_actions_run": 35590941198,
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "full_test_suite": "PASS",
+    "module_boundaries": "PASS",
+    "migration_apply_rollback": "PASS",
+    "doc_c_static_gate": "PASS",
+    "ui_browser_e2e": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "tested_commit": "5f056715f3bc3607aaa967ef9d3c1eb25ebf2e75",
+    "checkpoint_commit": "1146b4373104279a79360b2f56ad0f2c61430ade",
+    "finding": "F-DOC-C-UI-DIRECTIVE-011"
+  },
+  "successes": [
+    "Canonical directive submit is browser-proven.",
+    "No fabricated project/session/request metadata defaults.",
+    "CSRF double-submit header is wired from browser cookie."
+  ],
+  "failures": [
+    "Initial validation run failed a stale source-literal contract assertion; product browser E2E passed. Assertion was strengthened to current semantic lock and full rerun passed."
+  ],
+  "decisions": [
+    "Do not add noncanonical list APIs to support post-submit navigation.",
+    "Keep accepted directive/run IDs visible until canonical detail flows are repaired.",
+    "Backend remains authority for RBAC and state admission."
+  ],
+  "unresolved": [
+    "F-DOC-C-API-PACK-008 read response gaps.",
+    "F-DOC-C-UI-RBAC-012 recovery UI role/CSRF gap.",
+    "F-DOC-C-UI-ROUTE-009 noncanonical list calls.",
+    "PENDING_FULL_SPEC_REAUDIT"
+  ],
+  "risks": [
+    "Canonical read/detail response shapes still drift from DOC-C.",
+    "Recovery UI is not yet role/CSRF-aware."
+  ],
+  "limits": [
+    "No deploy authorization.",
+    "Parent API pack is still incomplete."
+  ],
+  "rollback": "Revert round 10B UI commits on dedicated branch if a later verified change proves contract incompatibility.",
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Repair recovery OWNER/CSRF UI and prove in browser.",
+    "Replace noncanonical list calls.",
+    "Repair canonical read response contracts after storage semantics proof."
+  ],
+  "dependencies": [
+    "Round 10A session identity",
+    "DOC-C source",
+    "GitHub Actions",
+    "browser E2E"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "GitHub Actions run 35590941198 and tested SHA 5f056715f3bc3607aaa967ef9d3c1eb25ebf2e75",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10B",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}

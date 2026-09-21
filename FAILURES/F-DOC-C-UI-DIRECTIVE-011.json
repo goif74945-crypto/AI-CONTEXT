@@ -1,0 +1,15 @@
+{
+  "FAILURE_ID": "F-DOC-C-UI-DIRECTIVE-011",
+  "context": "Canonical browser directive submission",
+  "cause": "UI constructed a shallow payload with noncanonical mode and had no session/CSRF source.",
+  "failed_approach": "Submit {input,input_type,mode:DETERMINISTIC} and navigate to a noncanonical list page.",
+  "recovery": "Use /api/session/me + CSRF cookie; require explicit canonical request inputs; assert full request in browser.",
+  "prevention": "Playwright request interception and semantic UI truth contract.",
+  "proof": {
+    "fixed_commit": "5f056715f3bc3607aaa967ef9d3c1eb25ebf2e75",
+    "workflow_run": 35590941198,
+    "result": "PASS"
+  },
+  "status": "RESOLVED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10B"
+}
