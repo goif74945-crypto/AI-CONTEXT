@@ -1,0 +1,47 @@
+{
+  "TASK_ID": "NEXY-24X7-R12B-API-READ-20260921",
+  "title": "NEXY round 12B canonical directive/run read contracts",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §4.2 read responses and §16 UI consumers",
+  "sources": [
+    "spec sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "NEXY.AI-@2e80216f5d29a86272897e092754faf31cec101f",
+    "GitHub Actions 35610606204",
+    "uploaded NEXY-IGNIS DOC-C §4.2"
+  ],
+  "actions": [
+    "Restored canonical GET directive/run payloads",
+    "Sourced per-run state from durable OrchestrationEnvelope",
+    "Omitted unproven optional metrics",
+    "Added AUDITOR view audit",
+    "Updated directive/run detail UI"
+  ],
+  "tests": {
+    "workflow": 35610606204,
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "full": "PASS",
+    "migration": "PASS",
+    "boundaries": "PASS",
+    "doc_c": "PASS",
+    "browser": "PASS",
+    "attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "commits": [
+    "53a1a76940a70bb1f2814de99e6560f643faeed6",
+    "58b4db41ffdc509360afc3360e7d918fb69f040e",
+    "2e80216f5d29a86272897e092754faf31cec101f",
+    "ca9ed9d5c6ca0d3e5fbac73fce11fb37e326c2ec"
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "unresolved": [
+    "logout API drift",
+    "vault commit bridge semantics",
+    "artifact revisions route",
+    "incident/audit exact response payloads",
+    "full spec re-audit"
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R12B"
+}
