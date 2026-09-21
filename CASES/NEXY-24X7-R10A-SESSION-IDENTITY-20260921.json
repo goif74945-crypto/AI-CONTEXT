@@ -1,0 +1,11 @@
+{
+  "CASE_ID": "NEXY-24X7-R10A-SESSION-IDENTITY-20260921",
+  "cause": "Successful first-login session could exist without durable User identity while canonical session API requires user_id:string.",
+  "violation": "DOC-C session identity contract drift.",
+  "impact": "UI/backend could not reliably bind operator identity; canonical session response was impossible for orphan sessions.",
+  "fix": "Transactionally upsert User during first-login verification, always bind Session.userId, exact session/me response, orphan-session revocation.",
+  "prevention": "Integration tests assert first-login user binding and exact session response keys.",
+  "regression": "Workflow 35590124349 all required gates PASS; deploy SKIPPED.",
+  "status": "CLOSED_VERIFIED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10A"
+}

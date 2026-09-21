@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R10A-SESSION-IDENTITY-20260921",
+  "entries": [
+    {
+      "id": "R10A-L1",
+      "source": "DOC-C §4.2 API pack",
+      "claim": "GET /api/session/me data must include user_id, role, session_id, expires_at.",
+      "proof": "Authoritative source literal response contract.",
+      "deps": [],
+      "risk": "S3 correctness",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R10A-L2",
+      "source": "Pre-fix auth.ts",
+      "claim": "First-login could create Session without userId and session/me omitted user_id.",
+      "proof": "Source inspection before mutation.",
+      "deps": [
+        "R10A-L1"
+      ],
+      "risk": "Canonical contract impossible",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R10A-L3",
+      "source": "NEXY@9da857a0528f2abbac80c6fd5c89424d9512d21f + workflow 35590124349",
+      "claim": "Session identity component fixed and regression-clean.",
+      "proof": "All validation jobs + evidence attestation success.",
+      "deps": [
+        "R10A-L1",
+        "R10A-L2"
+      ],
+      "risk": "Parent API pack has remaining gaps",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10A"
+}

@@ -1,0 +1,63 @@
+{
+  "TASK_ID": "NEXY-24X7-R10A-SESSION-IDENTITY-20260921",
+  "title": "NEXY autonomous round 10A — canonical session identity",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §4.2 GET /api/session/me and successful verify identity binding",
+  "inputs_summary": "Authoritative DOC-C API pack, live auth implementation, GitHub Actions evidence.",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@9da857a0528f2abbac80c6fd5c89424d9512d21f",
+    "GitHub Actions run 35590124349"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "GitHub Actions",
+    "uploaded DOC-C source"
+  ],
+  "actions": [
+    "Proved DOC-C requires GET /api/session/me to return user_id, role, session_id, expires_at.",
+    "Proved first-login sessions could be created without userId.",
+    "Materialized/bound User identity transactionally on successful first-login verify.",
+    "Made session/me response exact to canonical fields.",
+    "Revoked and rejected legacy orphan sessions with null userId.",
+    "Added integration tests for first-login identity and orphan fail-closed behavior."
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Canonical session identity is guaranteed for new successful logins.",
+      "proof": "Successful verify transaction upserts User and binds Session.userId; integration test passes."
+    },
+    {
+      "claim": "GET /api/session/me now matches canonical response shape.",
+      "proof": "Integration test asserts exact data keys; workflow 35590124349 all gates success."
+    }
+  ],
+  "tests_results": {
+    "github_actions_run": 35590124349,
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "full_test_suite": "PASS",
+    "module_boundaries": "PASS",
+    "migration_apply_rollback": "PASS",
+    "doc_c_static_gate": "PASS",
+    "ui_browser_e2e": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "commit": "9da857a0528f2abbac80c6fd5c89424d9512d21f",
+    "parent_finding": "F-DOC-C-API-PACK-008",
+    "component": "SESSION_IDENTITY"
+  },
+  "unresolved": [
+    "F-DOC-C-API-PACK-008 still open for remaining response/read-contract gaps.",
+    "F-DOC-C-UI-DIRECTIVE-011 canonical submit/session context gap.",
+    "F-DOC-C-UI-RBAC-012 recovery UI role truth gap.",
+    "F-DOC-C-UI-ROUTE-009 noncanonical list calls."
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10A",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}

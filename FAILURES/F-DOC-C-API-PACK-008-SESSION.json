@@ -1,0 +1,14 @@
+{
+  "FAILURE_ID": "F-DOC-C-API-PACK-008-SESSION",
+  "context": "Canonical auth/session API pack",
+  "cause": "Session.userId was optional in first-login flow and session/me exposed noncanonical fields.",
+  "recovery": "Create/bind User in successful verify transaction; reject orphan legacy sessions; exact response shape.",
+  "boundary": "Parent F-DOC-C-API-PACK-008 remains open for other API pack gaps.",
+  "proof": {
+    "fixed_commit": "9da857a0528f2abbac80c6fd5c89424d9512d21f",
+    "workflow_run": 35590124349,
+    "result": "PASS"
+  },
+  "status": "RESOLVED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10A"
+}
