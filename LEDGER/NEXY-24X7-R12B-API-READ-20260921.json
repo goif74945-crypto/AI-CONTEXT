@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R12B-API-READ-20260921",
+  "entries": [
+    {
+      "id": "R12B-L1",
+      "source": "uploaded DOC-C §4.2",
+      "claim": "Directive/run detail response shapes and AUDITOR read audit are explicitly specified.",
+      "proof": "Authoritative source retrieved during ROUND 12B.",
+      "deps": [],
+      "risk": "S3 correctness",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "current-source-snapshot"
+    },
+    {
+      "id": "R12B-L2",
+      "source": "NEXY.AI- pre-fix c7f36e0a5f68a1eed5daa103c6e4d26d7873392a",
+      "claim": "Handlers returned legacy flattened payloads and omitted required AUDITOR view audit.",
+      "proof": "packages/api/directives.ts inspected before mutation.",
+      "deps": [
+        "R12B-L1"
+      ],
+      "risk": "contract drift",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R12B-L3",
+      "source": "NEXY.AI-@2e80216f5d29a86272897e092754faf31cec101f + workflow 35610606204",
+      "claim": "Read-contract component is regression-clean.",
+      "proof": "typecheck, contract, integration, full, migration, boundaries, DOC-C gate, browser and attestation all PASS; deploy skipped.",
+      "deps": [
+        "R12B-L1",
+        "R12B-L2"
+      ],
+      "risk": "parent API pack remains open",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R12B"
+}
