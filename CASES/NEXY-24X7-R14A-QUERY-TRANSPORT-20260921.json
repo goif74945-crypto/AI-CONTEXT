@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R14A-QUERY-TRANSPORT-20260921",
+  "cause": "Next transport adapter omitted request.nextUrl.searchParams entirely.",
+  "violation": "DOC-C cursor/limit read contracts could not reach backend handlers through same-origin transport.",
+  "impact": "Any canonical pagination implementation would silently lose cursor and limit and could not be considered wired.",
+  "fix": "Add query field to LegacyRequest and preserve single/repeated URLSearchParams losslessly.",
+  "prevention": "Contract transport regression requires cursor/limit/repeated-key propagation.",
+  "regression": "Workflow 35623090967 all validation jobs PASS; deploy skipped.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "tested_commit": "62f49a0915a0702a36c9b964a52a54fcce5c7a07",
+  "checkpoint_commit": "4c085eacba7109f3c49db6ad0e910f24419c7ac8",
+  "status": "CLOSED_VERIFIED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14A"
+}
