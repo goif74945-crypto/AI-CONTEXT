@@ -1,0 +1,18 @@
+{
+  "TASK_ID": "NEXY-24X7-R14C-ARTIFACT-REVISIONS-20260921",
+  "title": "Canonical artifact revision history",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14C",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "tested_commit": "680ac55c655d28efe3fe25db5b3ba29dfdeb51ce",
+  "workflow": 35625993305,
+  "result": "PASS",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "actions": [
+    "Implemented GET /api/artifacts/:id/revisions",
+    "Added cursor/limit validation max100",
+    "Added AUDITOR-only ARTIFACT_HISTORY_VIEWED",
+    "Removed noncanonical vault artifact fetches from UI"
+  ],
+  "tests": "all required validation jobs passed; deploy skipped",
+  "status": "VERIFIED_WITH_LIMITS"
+}
