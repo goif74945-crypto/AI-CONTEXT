@@ -1,0 +1,16 @@
+{
+  "FAILURE_ID": "F-DOC-C-API-QUERY-015",
+  "context": "DOC-C cursor-based API transport",
+  "cause": "LegacyRequest carried params/body/cookies/headers but no query map.",
+  "failed_approach": "Treat path params as sufficient transport for GET APIs with cursor/limit.",
+  "recovery": "Preserve request.nextUrl.searchParams as query with repeated-key support.",
+  "boundary": "Closes transport only; artifact revision storage provenance remains separate.",
+  "prevention": "next-api-transport contract test covers cursor, limit and repeated keys.",
+  "proof": {
+    "fixed_commit": "62f49a0915a0702a36c9b964a52a54fcce5c7a07",
+    "workflow": 35623090967,
+    "result": "PASS"
+  },
+  "status": "RESOLVED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14A"
+}
