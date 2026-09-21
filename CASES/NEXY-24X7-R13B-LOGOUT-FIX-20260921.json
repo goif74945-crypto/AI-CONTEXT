@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R13B-LOGOUT-FIX-20260921",
+  "cause": "Duplicate local LogoutBodySchema in packages/api/auth.ts declared idempotency_key optional, conflicting with canonical validation schema.",
+  "violation": "DOC-C §4.2 requires idempotency_key for logout; canonical response is {revoked:true}; audit actions AUTH_LOGOUT/AUTH_LOGOUT_ALL.",
+  "impact": "Missing-key logout was accepted and TypeScript saw idempotency_key as possibly undefined; candidate ae60aed failed validation.",
+  "fix": "Bind logout handler to canonical packages/validation/api.schema.ts LogoutBodySchema and remove duplicate local schema.",
+  "prevention": "Single-source request schemas; direct schema regression tests; CI typecheck + integration + full-suite required before PASS_LOCK.",
+  "regression": "Workflow 35622118937 passed all required validation jobs; deploy skipped.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "tested_commit": "29b75c55f7bf61ed7bad20942b484706b9a78601",
+  "checkpoint_commit": "9521e63133a4dd3c29d961cb3abeb889c7b09c5d",
+  "status": "CLOSED_VERIFIED_COMPONENT",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R13B"
+}
