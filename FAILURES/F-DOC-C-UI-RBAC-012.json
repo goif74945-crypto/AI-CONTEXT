@@ -1,0 +1,14 @@
+{
+  "FAILURE_ID": "F-DOC-C-UI-RBAC-012",
+  "context": "Freeze recovery UI",
+  "cause": "UI did not consume canonical session role or CSRF token.",
+  "recovery": "Gate form on FREEZE+OWNER+CSRF and send x-csrf-token; leave recoverability decision to backend.",
+  "prevention": "Browser RBAC/CSRF assertions.",
+  "proof": {
+    "fixed_commit": "7a8f3638fd06ec6e955a74eb1589379444331cc9",
+    "workflow_run": 35591389612,
+    "result": "PASS"
+  },
+  "status": "RESOLVED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10C"
+}

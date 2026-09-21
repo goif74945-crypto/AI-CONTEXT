@@ -1,0 +1,11 @@
+{
+  "CASE_ID": "NEXY-24X7-R10C-RECOVERY-RBAC-20260921",
+  "cause": "Recovery UI exposed mutation form based only on FREEZE state and omitted CSRF header.",
+  "violation": "DOC-C RBAC/CSRF/UI truth boundary drift.",
+  "impact": "Frontend did not reflect OWNER-only control and browser request could fail CSRF despite backend enforcement.",
+  "fix": "Canonical session role + CSRF gating, CSRF request header, stable idempotency key, browser coverage.",
+  "prevention": "Browser tests for OPERATOR hidden control and OWNER canonical request.",
+  "regression": "Workflow 35591389612 all required gates and attestation PASS; deploy SKIPPED.",
+  "status": "CLOSED_VERIFIED",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10C"
+}

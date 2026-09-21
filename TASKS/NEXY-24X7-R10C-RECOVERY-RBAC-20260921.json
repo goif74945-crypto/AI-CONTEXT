@@ -1,0 +1,56 @@
+{
+  "TASK_ID": "NEXY-24X7-R10C-RECOVERY-RBAC-20260921",
+  "title": "NEXY autonomous round 10C — OWNER recovery UI boundary",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C recovery RBAC/CSRF/UI truth path",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@7a8f3638fd06ec6e955a74eb1589379444331cc9",
+    "GitHub Actions run 35591389612"
+  ],
+  "actions": [
+    "Required confirmed FREEZE plus canonical session role OWNER before rendering recovery mutation form.",
+    "Required CSRF cookie presence before rendering form.",
+    "Sent x-csrf-token on POST /api/freeze/recover.",
+    "Changed recovery idempotency identity to stable browser ULID across retries.",
+    "Kept incident recoverable truth at backend authority; UI explicitly states backend validates recoverable=true.",
+    "Added browser tests proving OPERATOR cannot see recovery control and OWNER request body/header are canonical."
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Recovery UI is OWNER-only and CSRF-bound without replacing backend authority.",
+      "proof": "Browser E2E + contract tests passed in workflow 35591389612."
+    },
+    {
+      "claim": "Non-owner UI control is hidden while backend still enforces OWNER/recoverability.",
+      "proof": "Playwright OPERATOR test passes; backend handler existing OWNER/recoverable checks preserved."
+    }
+  ],
+  "tests_results": {
+    "github_actions_run": 35591389612,
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "full_test_suite": "PASS",
+    "module_boundaries": "PASS",
+    "migration_apply_rollback": "PASS",
+    "doc_c_static_gate": "PASS",
+    "ui_browser_e2e": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "tested_commit": "7a8f3638fd06ec6e955a74eb1589379444331cc9",
+    "checkpoint_commit": "c61e994079ce948d74e838f64fc00adf4f540193",
+    "finding": "F-DOC-C-UI-RBAC-012"
+  },
+  "unresolved": [
+    "F-DOC-C-API-PACK-008 read response gaps.",
+    "F-DOC-C-UI-ROUTE-009 noncanonical list calls.",
+    "PENDING_FULL_SPEC_REAUDIT"
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10C",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}

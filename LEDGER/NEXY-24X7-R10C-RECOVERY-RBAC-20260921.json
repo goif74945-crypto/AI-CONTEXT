@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R10C-RECOVERY-RBAC-20260921",
+  "entries": [
+    {
+      "id": "R10C-L1",
+      "source": "DOC-C recovery endpoint + RBAC matrix + UI truth law",
+      "claim": "Recover freeze is OWNER-only, write requires CSRF, backend remains permission/recoverability authority.",
+      "proof": "Authoritative source contract.",
+      "deps": [],
+      "risk": "S4 authorization/UI truth",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot-current-for-run"
+    },
+    {
+      "id": "R10C-L2",
+      "source": "Pre-fix recovery page/modal",
+      "claim": "Form was rendered on FREEZE without session role and request omitted CSRF header.",
+      "proof": "Source inspection.",
+      "deps": [
+        "R10C-L1"
+      ],
+      "risk": "UI authorization drift",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R10C-L3",
+      "source": "NEXY@7a8f3638fd06ec6e955a74eb1589379444331cc9 + workflow 35591389612",
+      "claim": "Recovery UI boundary fixed and regression-clean.",
+      "proof": "All validation gates + attestation success including browser OWNER/OPERATOR cases.",
+      "deps": [
+        "R10C-L1",
+        "R10C-L2"
+      ],
+      "risk": "Other API/UI gaps remain",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R10C"
+}
