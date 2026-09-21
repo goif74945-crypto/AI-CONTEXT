@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "NEXY-24X7-R5-DOC-C-MIGRATION-GATE-20260921",
+  "cause": "Migration rollback existed as scripts/files but was not executed as a release-blocking CI proof.",
+  "violation": "DOC-C §15.1 migration tests + §15.2 rollback-failure build-fail rule; DOC-E E3/E12 proof gap.",
+  "impact": "A broken down migration could pass normal tests and reach release evidence without detection.",
+  "fix": "Ephemeral PostgreSQL round-trip proof with exact base/current schema diffs; required attestation/deploy migration_rollback gate.",
+  "prevention": "Latest migration manifest must pin pre-migration schema SHA and down SQL; CI refuses stale manifest or failed round-trip.",
+  "regression": "Workflow 35553033907 all validation gates PASS; deploy SKIPPED.",
+  "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+  "commit": "6bc72ebe6de6ade6c21808f0e5ffd93d4772e5ad",
+  "spec_snapshot": "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "CLOSED_VERIFIED_WITH_LIMITS",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R5"
+}

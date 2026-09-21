@@ -1,0 +1,120 @@
+{
+  "TASK_ID": "NEXY-24X7-R5-DOC-C-MIGRATION-GATE-20260921",
+  "title": "NEXY autonomous round 5 — migration apply/rollback build gate",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §15.1/§15.2 migration tests + rollback build-fail rule and DOC-E E3/E12 execution proof",
+  "inputs_summary": "Authoritative DOC-C test-gate contract, DOC-E evidence contract, current latest Prisma migration, CI workflow and release attestation.",
+  "sources": [
+    "sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "goif74945-crypto/NEXY.AI-@6bc72ebe6de6ade6c21808f0e5ffd93d4772e5ad",
+    "GitHub Actions run 35553033907",
+    "Migration job 106191224797"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "GitHub Actions",
+    "PostgreSQL 16 service",
+    "Prisma CLI",
+    "Vitest"
+  ],
+  "actions": [
+    "Verified authoritative DOC-C §15.1 requires migration tests and §15.2 requires any migration rollback failure to fail the build.",
+    "Verified DOC-E E3 requires migration applied + rollback tested and E12 requires rollback playbook execution proof.",
+    "Added .nexy/migration-proof.json pinning the latest migration and exact pre-migration schema SHA.",
+    "Added scripts/migration-proof.ts to materialize base schema from Git, push it to ephemeral PostgreSQL, apply latest migration, diff to current schema, rollback, diff to base schema, re-apply, and diff to current again.",
+    "Added real PostgreSQL 16 CI migration gate and uploaded per-run migration-proof artifact.",
+    "Added static contract tests for proof manifest/script/workflow.",
+    "Observed real migration round-trip PASS on run 35552884071 before making it release-blocking.",
+    "Added migration_rollback to runtime attestation required-gate schema, bumped attestation contract from v3 to v4, and bound the gate into integrity/deployment verification.",
+    "Ran final complete CI on SHA 6bc72ebe6de6ade6c21808f0e5ffd93d4772e5ad."
+  ],
+  "artifacts_paths": [
+    ".nexy/migration-proof.json",
+    "scripts/migration-proof.ts",
+    "tests/contract/migration-proof-contract.test.ts",
+    ".github/workflows/deploy.yml",
+    "scripts/evidence-attestation.ts",
+    "scripts/seal-evidence.ts",
+    "tests/contract/release-attestation.test.ts",
+    ".nexy/AI_24X7_RUN_STATE.json"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Pre-R5 CI did not execute a real migration apply/rollback test.",
+      "proof": "Workflow had no PostgreSQL migration job; rollback script existence alone was not execution evidence."
+    },
+    {
+      "claim": "Latest migration round-trip is proven on a real PostgreSQL service.",
+      "proof": "Workflow 35553033907 Migration apply / rollback gate passed; proof script performed base push → apply → current schema diff → rollback → base schema diff → re-apply → current schema diff."
+    },
+    {
+      "claim": "Migration rollback is now release-blocking and attested.",
+      "proof": "runtime attestation v4 requires migration_rollback; release-attestation/deploy workflow dependencies include migration-proof; negative contract test blocks failed migration_rollback."
+    }
+  ],
+  "tests_results": {
+    "workflow_run": 35553033907,
+    "tested_sha": "6bc72ebe6de6ade6c21808f0e5ffd93d4772e5ad",
+    "migration_job": 106191224797,
+    "migration_apply_rollback": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "typecheck": "PASS",
+    "module_boundaries": "PASS",
+    "full_test_suite": "PASS",
+    "doc_c_static_gate": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "changes": {
+    "branch": "ai/nexy-24x7-autonomous-do-not-touch",
+    "commits": [
+      "cc92af7bf6ca3af0b17026837235581f66eb02fb",
+      "6bc72ebe6de6ade6c21808f0e5ffd93d4772e5ad"
+    ],
+    "finding": "F-DOC-C-MIGRATION-005",
+    "req_id": "DOC-C-15.1-15.2 / DOC-E-E3-E12"
+  },
+  "successes": [
+    "Real database migration round-trip proof exists and is uploaded per CI run.",
+    "Rollback mismatch/failure now fails the migration job.",
+    "Release attestation cannot omit or ignore migration_rollback gate."
+  ],
+  "failures": [],
+  "decisions": [
+    "Rollback proof must compare database schema to explicit pre-migration schema SHA, not only rely on non-zero/zero SQL execution.",
+    "Migration proof artifact is per workflow run and records commit/run/operator/environment/result metadata.",
+    "Attestation schema was version-bumped because required gate set changed."
+  ],
+  "unresolved": [
+    "UI truth fail-closed behavior remains incorrect when health state is unknown/unreachable.",
+    "UI critical browser E2E gate remains absent.",
+    "Coverage requirement domain/core/law/judge=90% and API routes=85% remains unresolved; 'domain' package mapping requires authoritative interpretation before enforcement.",
+    "Full DOC-C/DOC-E convergence remains incomplete."
+  ],
+  "risks": [
+    "Migration proof currently targets the latest migration; future latest migration must update the manifest/base schema SHA or CI fails by design.",
+    "Deployment remains NON_DEPLOYABLE because remaining DOC-E evidence categories are not fully encoded/proven."
+  ],
+  "limits": [
+    "No merge/deploy authorization.",
+    "R5 proves migration gate, not all historical migration rollback paths."
+  ],
+  "rollback": "Revert R5 commits on the dedicated branch if the authoritative migration evidence contract changes; do not bypass the migration gate.",
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Fix UI truth fail-open READY default/silent health failure.",
+    "Add browser-level critical-flow E2E gate after UI truth behavior is corrected.",
+    "Continue remaining DOC-C §15.2 test-gate convergence."
+  ],
+  "dependencies": [
+    "DOC-C/DOC-E authoritative source",
+    "GitHub Actions",
+    "PostgreSQL 16",
+    "Prisma 5.22"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "GitHub Actions run 35553033907",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R5",
+  "hash": "spec_sha256:b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+}

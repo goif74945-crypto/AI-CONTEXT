@@ -1,0 +1,17 @@
+{
+  "FAILURE_ID": "F-DOC-C-MIGRATION-005",
+  "context": "DOC-C §15 migration gate / DOC-E E3 E12",
+  "cause": "No real DB apply→rollback proof was required by CI/release attestation.",
+  "failed_approach": "Treat presence of migration.down.sql or a rollback script as equivalent to executed rollback evidence.",
+  "recovery": "Create real PostgreSQL schema round-trip proof and make result mandatory in runtime attestation/deploy gate.",
+  "boundary": "Migration rollback is not PASS unless the real migration executes against a database and schema state returns to the pinned pre-migration model.",
+  "prevention": "migration-proof manifest + real CI service + exact schema diff + required migration_rollback attestation gate.",
+  "proof": {
+    "fixed_commit": "6bc72ebe6de6ade6c21808f0e5ffd93d4772e5ad",
+    "workflow_run": 35553033907,
+    "migration_job": 106191224797,
+    "result": "PASS"
+  },
+  "status": "RESOLVED_WITH_LIMITS",
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R5"
+}
