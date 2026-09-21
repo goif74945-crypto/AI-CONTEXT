@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R13B-LOGOUT-FIX-20260921",
+  "entries": [
+    {
+      "id": "R13B-L1",
+      "source": "GitHub Actions 35611588560",
+      "claim": "Logout candidate failed because idempotency_key flowed as string|undefined and missing-key request returned 200.",
+      "proof": "TypeScript errors at auth.ts lines 619/686/697 and failing logout integration assertion expected 422 received 200.",
+      "deps": [],
+      "risk": "S3 correctness",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "historical-failure"
+    },
+    {
+      "id": "R13B-L2",
+      "source": "packages/api/auth.ts + packages/validation/api.schema.ts",
+      "claim": "Root cause was duplicate local LogoutBodySchema with optional idempotency_key while canonical schema required it.",
+      "proof": "Both source definitions inspected on dedicated branch.",
+      "deps": [
+        "R13B-L1"
+      ],
+      "risk": "schema authority drift",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R13B-L3",
+      "source": "NEXY.AI-@29b75c55f7bf61ed7bad20942b484706b9a78601 + GitHub Actions 35622118937",
+      "claim": "Canonical logout repair is regression-clean at tested SHA.",
+      "proof": "Typecheck/integration/full/contract/boundary/migration/DOC-C/browser/attestation all success; deploy skipped.",
+      "deps": [
+        "R13B-L1",
+        "R13B-L2"
+      ],
+      "risk": "remaining API pack gaps",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R13B"
+}
