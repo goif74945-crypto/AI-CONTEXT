@@ -1,0 +1,46 @@
+{
+  "TASK_ID": "NEXY-24X7-R13B-LOGOUT-FIX-20260921",
+  "title": "NEXY round 13B — canonical logout contract repair",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §4.2 POST /api/auth/logout",
+  "sources": [
+    "NEXY.AI-@ae60aed66303337bb5d5599f514104f36a908e97",
+    "GitHub Actions 35611588560 failure diagnostics",
+    "NEXY.AI-@29b75c55f7bf61ed7bad20942b484706b9a78601",
+    "GitHub Actions 35622118937",
+    "uploaded NEXY-IGNIS DOC-C §4.2"
+  ],
+  "actions": [
+    "Read exact typecheck/integration/full-suite failure diagnostics from workflow 35611588560.",
+    "Proved auth.ts had a duplicate local LogoutBodySchema with optional idempotency_key that contradicted canonical validation schema.",
+    "Removed the duplicate local logout schema and imported packages/validation/api.schema.ts canonical LogoutBodySchema.",
+    "Kept canonical response {revoked:true}, AUTH_LOGOUT/AUTH_LOGOUT_ALL auditing, RBAC, CSRF and idempotent replay semantics.",
+    "Validated repaired candidate through full CI."
+  ],
+  "root_cause": "Duplicate local logout request schema made idempotency_key optional at runtime and typed it string|undefined, causing both handler behavior drift and TypeScript failures.",
+  "tests": {
+    "workflow": 35622118937,
+    "tested_sha": "29b75c55f7bf61ed7bad20942b484706b9a78601",
+    "typecheck": "PASS",
+    "integration": "PASS",
+    "full_test_suite": "PASS",
+    "contract": "PASS",
+    "module_boundaries": "PASS",
+    "migration": "PASS",
+    "doc_c_static_gate": "PASS",
+    "ui_browser_e2e": "PASS",
+    "evidence_release_attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "commits": [
+    "ae60aed66303337bb5d5599f514104f36a908e97",
+    "29b75c55f7bf61ed7bad20942b484706b9a78601",
+    "9521e63133a4dd3c29d961cb3abeb889c7b09c5d"
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "unresolved": [
+    "Remaining API pack gaps: vault commit, artifact revisions, incident detail, audit logs",
+    "Full spec re-audit"
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R13B"
+}
