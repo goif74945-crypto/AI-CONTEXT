@@ -1,0 +1,1 @@
+{"CASE_ID":"NEXY-24X7-R13-LOGOUT-CI-20260921","REQ_ID":"DOC-C-4.2","FINDING_ID":"F-DOC-C-AUTH-LOGOUT-013-CI","evidence":{"branch":"ai/nexy-24x7-autonomous-do-not-touch","pr":9,"pr_state":"OPEN_DRAFT_UNMERGED","workflow":35611588560,"typecheck":"FAIL","full_suite":"FAIL","contract":"PASS","ui_browser":"PASS"},"status":"OPEN_ROOT_CAUSE_UNPROVEN"}
