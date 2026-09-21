@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-24X7-R14A-QUERY-TRANSPORT-20260921",
+  "entries": [
+    {
+      "id": "R14A-L1",
+      "source": "apps/web/lib/api-adapter.ts pre-fix",
+      "claim": "URL query parameters were not represented in LegacyRequest.",
+      "proof": "dispatchLegacyHandler constructed body/params/cookies/headers/method/path only.",
+      "deps": [],
+      "risk": "pagination contract loss",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "pre-fix"
+    },
+    {
+      "id": "R14A-L2",
+      "source": "uploaded DOC-C artifact revisions contract",
+      "claim": "Canonical read APIs require cursor/limit query propagation.",
+      "proof": "GET /api/artifacts/:id/revisions query has cursor? and limit? max 100.",
+      "deps": [
+        "R14A-L1"
+      ],
+      "risk": "S3 correctness",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "current-source-snapshot"
+    },
+    {
+      "id": "R14A-L3",
+      "source": "NEXY.AI-@62f49a0915a0702a36c9b964a52a54fcce5c7a07 + workflow 35623090967",
+      "claim": "Query transport component is regression-clean.",
+      "proof": "all required validation jobs PASS; deploy skipped.",
+      "deps": [
+        "R14A-L1",
+        "R14A-L2"
+      ],
+      "risk": "storage/API gaps remain",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1,
+      "freshness": "current-at-workflow-run"
+    }
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14A"
+}
