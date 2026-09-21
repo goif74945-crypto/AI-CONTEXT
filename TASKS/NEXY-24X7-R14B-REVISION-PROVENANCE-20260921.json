@@ -1,0 +1,50 @@
+{
+  "TASK_ID": "NEXY-24X7-R14B-REVISION-PROVENANCE-20260921",
+  "title": "NEXY round 14B — revision provenance storage",
+  "mode": "EXECUTE/SOLO",
+  "scope": "DOC-C §4.2/§9.6 revision created_at + created_by storage and migration proof",
+  "sources": [
+    "uploaded NEXY-IGNIS revision history/storage contracts",
+    "NEXY.AI-@77095e2836121e8b03b04bc9a7aeea9b8666b773",
+    "NEXY.AI-@4697ec2f71e9f2a0126b775b99c5b0bde8db116c",
+    "GitHub Actions 35623769603 failure diagnostics",
+    "GitHub Actions 35624043991"
+  ],
+  "actions": [
+    "Proved Revision storage lacked createdAt/createdBy required by canonical artifact-history responses.",
+    "Proved createdTick is deterministic monotonic time and cannot serve as wall-clock created_at.",
+    "Added durable Revision.createdAt and Revision.createdBy.",
+    "Added fail-closed migration guard for legacy rows whose provenance cannot be reconstructed honestly.",
+    "Added rollback SQL and pinned the migration proof manifest to the pre-migration schema SHA.",
+    "Corrected an initial VAULT->CORE dependency violation by making createdAt caller-supplied.",
+    "Updated migration-proof contract to the new latest migration without weakening any gate."
+  ],
+  "tests": {
+    "failed_workflow": 35623769603,
+    "passing_workflow": 35624043991,
+    "tested_sha": "4697ec2f71e9f2a0126b775b99c5b0bde8db116c",
+    "typecheck": "PASS",
+    "contract": "PASS",
+    "integration": "PASS",
+    "full": "PASS",
+    "migration_roundtrip": "PASS",
+    "boundaries": "PASS",
+    "doc_c": "PASS",
+    "browser": "PASS",
+    "attestation": "PASS",
+    "deploy": "SKIPPED"
+  },
+  "commits": [
+    "77095e2836121e8b03b04bc9a7aeea9b8666b773",
+    "4697ec2f71e9f2a0126b775b99c5b0bde8db116c",
+    "c8103de60ef9f8049986ad8121cb252398ceb45d"
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "unresolved": [
+    "Canonical GET /api/artifacts/:id/revisions route not yet implemented.",
+    "Legacy environments containing revisions need authoritative provenance remediation before this migration can apply.",
+    "Vault commit bridge, incident detail, audit-log browsing remain open.",
+    "Full spec re-audit remains open."
+  ],
+  "trace_id": "NEXY-24X7-20260921-SOLO-001:R14B"
+}
