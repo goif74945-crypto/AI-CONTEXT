@@ -1,0 +1,72 @@
+{
+  "task_id": "NEXY-FULL-PROJECT-AUDIT-PROMPT-20260922",
+  "title": "Full-project GitHub-only NEXY spec audit prompt",
+  "mode": "ทำ/SOLO",
+  "scope": "Create a complete audit-only prompt that inventories every NEXY.AI system from the attached design/spec file, audits the whole GitHub repository against applicable requirements, emits detailed tables, loops through clean re-audits, and generates a repair command for a separate executor.",
+  "inputs_summary": "User requested exhaustive whole-project auditing against the real design/spec file, system-by-system tabulation, repeated re-audits until no new findings, and a fix command for the implementation chat.",
+  "sources": [
+    "current user instruction",
+    "attached NEXY-IGNIS design/spec document",
+    "prior protected-branch and GitHub-only audit constraints from this conversation"
+  ],
+  "tools_skills": [
+    "file search over attached design/spec",
+    "prompt architecture",
+    "GitHub audit model",
+    "spec authority classification"
+  ],
+  "actions": [
+    "Grounded prompt in the design file's DOC-A/B/C/D/E authority model",
+    "Added mandatory full system inventory and scope classification",
+    "Added system-by-system and cross-system audit tables",
+    "Added GitHub-only repository audit and protected branch exclusion",
+    "Added repeated clean-audit loop and separate master repair command generation"
+  ],
+  "artifacts_paths": [],
+  "claims_proofs": [
+    {
+      "claim": "Build obligation should come from DOC-C, while DOC-B constrains system law and DOC-D is product design.",
+      "proof": "Attached design/spec explicitly states DOC-A vision, DOC-B system law, DOC-C build spec, DOC-D product design, DOC-E deployment evidence, and build obligation comes from DOC-C."
+    },
+    {
+      "claim": "The audit must classify excluded/deferred systems instead of treating every historical/raw-canon mention as a build requirement.",
+      "proof": "Attached design/spec explicitly lists vNEXT includes, excluded capabilities, deferred capabilities, and a scope-creep law."
+    }
+  ],
+  "tests_results": "Prompt-generation task only; no NEXY implementation test/build/deploy executed.",
+  "changes": "No NEXY.AI repository mutation performed.",
+  "successes": [
+    "Created a design-file-driven, GitHub-only, audit-only control prompt with exhaustive system tables and iterative re-audit closure."
+  ],
+  "failures": [],
+  "decisions": [
+    "Allowed evidence sources are the attached authoritative design/spec file and the designated GitHub repository only.",
+    "The protected branch ai/nexy-24x7-autonomous-do-not-touch remains completely excluded.",
+    "Three consecutive clean full audits with changed traversal orders are required before audit closure, subject to stable spec and HEAD.",
+    "Audit chat only generates a repair package; it does not mutate the product."
+  ],
+  "unresolved": [
+    "Actual authoritative target branch must be resolved at execution time without using the protected branch."
+  ],
+  "risks": [
+    "A 293-page design file contains legacy/vision material, so scope classification is mandatory to avoid false requirements.",
+    "No audit can prove absence of all possible bugs; closure is limited to audited scope and evidence."
+  ],
+  "limits": [
+    "This task creates the audit command, not the audit results."
+  ],
+  "rollback": "No NEXY.AI changes; supersede this prompt if requirements change.",
+  "final_status": "READY_WITH_LIMITS",
+  "next_actions": [
+    "Run the generated prompt in the dedicated NEXY audit chat with the design file attached and GitHub connected."
+  ],
+  "dependencies": [
+    "access to attached design/spec file",
+    "GitHub read access to goif74945-crypto/NEXY.AI- excluding protected branch"
+  ],
+  "version": "4.0.0",
+  "timestamp_source": "system conversation date 2026-09-22",
+  "trace_id": "NEXY-FULL-PROJECT-AUDIT-PROMPT-20260922",
+  "hash": "HASH_UNAVAILABLE",
+  "record_type": "LEDGER"
+}
