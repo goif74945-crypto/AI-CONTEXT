@@ -1,0 +1,71 @@
+{
+  "task_id": "NEXY-FULL-DESIGN-SPEC-AUDIT-PROMPT-20260922-V7",
+  "title": "Full design-file NEXY audit and build-command prompt",
+  "mode": "ทำ/SOLO",
+  "scope": "Create a complete audit-only prompt grounded in the actual NEXY design file, covering every discovered system/entity, classifying authority/version/scope, auditing the full GitHub project, producing status tables, and generating create/fix commands for missing or failing systems.",
+  "inputs_summary": "User requires actual design-file inspection first, no protected branch, exhaustive whole-project audit, detailed status tables, repeated re-audits, and commands for executor to create missing systems.",
+  "sources": [
+    "current user instruction",
+    "attached NEXY-IGNIS design/spec document"
+  ],
+  "tools_skills": [
+    "local DOCX inspection",
+    "prompt architecture",
+    "spec graph extraction"
+  ],
+  "actions": [
+    "inspected full DOCX text",
+    "identified authoritative vNEXT Execution Pack and DOC-B/C/D/E rules",
+    "identified broader constitutional/game/capability/robot/Lo1-Lo2-Lo3 system families",
+    "designed recursive all-system discovery plus status and create/fix command generation"
+  ],
+  "artifacts_paths": [],
+  "claims_proofs": [
+    {
+      "claim": "The file contains an implementation-ready vNEXT execution pack with canonical types, defaults, runtime validation, module architecture, FSM, multi-AI contract, API, auth, storage, RBAC, observability, config, queue, retention, tests, UI truth, scope fence, repo structure and build order.",
+      "proof": "Direct inspection of attached DOCX around the Execution Pack and DOC-C sections."
+    },
+    {
+      "claim": "The file also contains larger constitutional, game fabric, capability registry, chaos, cognitive Lo1/Lo2/Lo3 and robotics architectures beyond DOC-A..E.",
+      "proof": "Direct inspection of attached DOCX across later/earlier architecture sections."
+    }
+  ],
+  "tests_results": "Prompt generation only; NEXY implementation audit not executed.",
+  "changes": "No NEXY.AI repository mutation performed.",
+  "successes": [
+    "Created design-file-first audit architecture with no protected branch exclusion and exact missing-system command generation."
+  ],
+  "failures": [],
+  "decisions": [
+    "Catalog every system/entity in the file, but only mark implementation missing when claim-level authority/version/scope says it is active/current.",
+    "Use DOC-C as current vNEXT build obligation where applicable, DOC-B as system law, DOC-D as product design, DOC-E as deployment evidence, while still inventorying all other design systems.",
+    "Generate CREATE command for MISSING/NOT_IMPLEMENTED and FIX command for FAIL/PARTIAL; never mutate from audit chat."
+  ],
+  "unresolved": [
+    "Actual target GitHub branch must be resolved at audit runtime.",
+    "Historical/future sections may need claim-level authority resolution when labels conflict."
+  ],
+  "risks": [
+    "Treating all historical/future concepts as current build obligations would create false findings.",
+    "No audit can guarantee absence of all bugs beyond verified scope."
+  ],
+  "limits": [
+    "This task creates the audit command, not the audit result."
+  ],
+  "rollback": "No NEXY.AI changes; supersede this prompt if spec authority changes.",
+  "final_status": "READY_WITH_LIMITS",
+  "next_actions": [
+    "Run generated prompt in the dedicated NEXY audit chat with the design file attached and GitHub connected."
+  ],
+  "dependencies": [
+    "attached design/spec file access",
+    "GitHub read access to NEXY.AI repository"
+  ],
+  "version": "7.0.0",
+  "timestamp_source": "system conversation date 2026-09-22",
+  "trace_id": "NEXY-FULL-DESIGN-SPEC-AUDIT-PROMPT-20260922-V7",
+  "hash": "HASH_UNAVAILABLE",
+  "record_type": "CASE",
+  "cause": "Prior prompt still underrepresented the full design universe and retained obsolete branch exclusions.",
+  "impact": "Could miss systems or generate false scope."
+}
