@@ -1,0 +1,71 @@
+{
+  "task_id": "NEXY-215-MANDATORY-REGISTRY-PROMPT-V9-20260922",
+  "title": "Mandatory 215-system NEXY audit registry prompt v9",
+  "mode": "ทำ/SOLO",
+  "scope": "Produce a standalone Thai audit-only system prompt embedding all 215 NEXY systems supplied by the user as a mandatory registry, requiring re-verification against the attached design file and current GitHub, status tables, repeated audits, and executor commands for missing/failing/current-required systems.",
+  "inputs_summary": "User supplied the definitive 215-system inventory spanning core/UI, DOC-C/vNEXT, vault/memory, sovereign/universe, constitutional layers, Game/NCF, L1o, Lo3/V-SWARM, Lo2, robotics/RCL, final 10-layer architecture, and cross-system mechanisms.",
+  "sources": [
+    "current user-provided 215-system inventory",
+    "current project operating rules"
+  ],
+  "tools_skills": [
+    "prompt architecture",
+    "audit registry normalization",
+    "executor command compilation"
+  ],
+  "actions": [
+    "Embedded all 215 system identifiers and names as mandatory minimum registry",
+    "Separated seed observations from current audit verdicts",
+    "Added scope/authority classification and governance conflict handling",
+    "Added command types CREATE/FIX/GOVERNANCE/EVIDENCE",
+    "Added exhaustive status tables and multi-pass clean audit closure"
+  ],
+  "artifacts_paths": [],
+  "claims_proofs": [
+    {
+      "claim": "The audit denominator must include all 215 supplied systems.",
+      "proof": "Direct user instruction in current message."
+    },
+    {
+      "claim": "Supplied statuses must be treated as seed observations, not immutable current truth.",
+      "proof": "Project truth law requires fresh verification against current spec and HEAD."
+    }
+  ],
+  "tests_results": "Prompt-generation only; no NEXY implementation audit performed.",
+  "changes": "No NEXY.AI repository mutation performed.",
+  "successes": [
+    "Created full standalone 215-system audit prompt architecture."
+  ],
+  "failures": [],
+  "decisions": [
+    "No protected branch rule included because user removed that constraint.",
+    "Only current-required/current-law/current-design systems may trigger CREATE/FIX; excluded/deferred/historical systems trigger governance review rather than automatic implementation.",
+    "Systems implemented outside DOC-C scope use GOVERNANCE_REQUIRED rather than PASS."
+  ],
+  "unresolved": [
+    "Actual current branch and HEAD must be resolved when the audit prompt runs.",
+    "Current authority of some broad architecture families must be re-resolved from the design file."
+  ],
+  "risks": [
+    "Blindly creating every missing named system would violate current scope where design marks systems out/deferred."
+  ],
+  "limits": [
+    "This task creates the audit prompt, not the actual audit results."
+  ],
+  "rollback": "No NEXY.AI changes.",
+  "final_status": "READY_WITH_LIMITS",
+  "next_actions": [
+    "Use the generated prompt in the dedicated NEXY audit chat with the design file attached and GitHub connected."
+  ],
+  "dependencies": [
+    "attached NEXY design file",
+    "GitHub read access to target NEXY repository"
+  ],
+  "version": "9.0.0",
+  "timestamp_source": "system conversation date 2026-09-22",
+  "trace_id": "NEXY-215-MANDATORY-REGISTRY-PROMPT-V9-20260922",
+  "hash": "HASH_UNAVAILABLE",
+  "record_type": "CASE",
+  "cause": "Need an explicit fixed minimum registry of all 215 supplied systems in addition to open-world discovery.",
+  "impact": "Prevents omission of known architecture systems."
+}
