@@ -1,0 +1,72 @@
+{
+  "task_id": "NEXY-215-SYSTEM-AUDIT-PROMPT-20260922",
+  "title": "NEXY 215-system exhaustive audit prompt",
+  "mode": "ทำ/SOLO",
+  "scope": "Integrate the user's complete 215-system NEXY inventory into a Thai-language audit-only prompt that re-verifies each system against the attached design/spec and current GitHub repository, produces detailed status tables, and generates create/fix commands for a separate executor.",
+  "inputs_summary": "User supplied 215 named systems with spec/code hints and seed statuses across Core/UI, DOC-C/vNEXT, Vault, Sovereign/Universe, constitutional layers, Game/NCF, L1o, Lo3, Lo2, Robotics, Final 10-Layer Architecture, and cross-system mechanisms.",
+  "sources": [
+    "current user-supplied 215-system inventory",
+    "prior project rules"
+  ],
+  "tools_skills": [
+    "prompt architecture",
+    "system inventory normalization",
+    "audit/executor separation"
+  ],
+  "actions": [
+    "Created mandatory 215-system registry",
+    "Marked user-provided statuses as seed observations requiring re-verification",
+    "Added per-system scope/authority resolution",
+    "Added detailed per-system and cross-system audit tables",
+    "Added CREATE command generation only for current-required missing systems",
+    "Added FIX command generation for fail/partial/conflict systems",
+    "Added repeated clean-audit loop and no-premature-completion rules"
+  ],
+  "artifacts_paths": [],
+  "claims_proofs": [
+    {
+      "claim": "All 215 user-listed systems must appear in the audit registry and final tables.",
+      "proof": "Direct user instruction and supplied inventory."
+    },
+    {
+      "claim": "Seed statuses must be re-verified against current evidence before treated as current truth.",
+      "proof": "Project truth law requires current evidence and prohibits stale/fake pass."
+    }
+  ],
+  "tests_results": "Prompt-generation task only; no implementation audit executed.",
+  "changes": "No NEXY.AI repository mutation performed.",
+  "successes": [
+    "Integrated all 215 systems into one audit prompt architecture."
+  ],
+  "failures": [],
+  "decisions": [
+    "No protected branch is defined in this version.",
+    "Historical/deferred/excluded/scope-conflict systems remain in inventory but only CURRENT_REQUIRED systems can trigger CREATE commands.",
+    "Use the user-supplied code/spec/status fields as audit seeds, not final verdicts."
+  ],
+  "unresolved": [
+    "Actual target GitHub branch and current HEAD must be resolved at audit runtime."
+  ],
+  "risks": [
+    "Hardcoding old statuses as truth would stale quickly; prompt explicitly forces re-verification."
+  ],
+  "limits": [
+    "This task creates the audit command, not audit results."
+  ],
+  "rollback": "No target repository changes.",
+  "final_status": "READY_WITH_LIMITS",
+  "next_actions": [
+    "Run the prompt in the dedicated NEXY audit chat with design file attached and GitHub connected."
+  ],
+  "dependencies": [
+    "attached design/spec file",
+    "GitHub read access to NEXY.AI repository"
+  ],
+  "version": "8.0.0",
+  "timestamp_source": "system conversation date 2026-09-22",
+  "trace_id": "NEXY-215-SYSTEM-AUDIT-PROMPT-20260922",
+  "hash": "HASH_UNAVAILABLE",
+  "record_type": "CASE",
+  "cause": "Need a complete denominator of all user-listed NEXY systems.",
+  "impact": "Prevents omission of large architecture families from audit scope."
+}
