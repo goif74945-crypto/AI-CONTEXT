@@ -1,0 +1,18 @@
+{
+  "ledger_id": "LEDGER-001",
+  "target": "Exact project/component",
+  "authority": [
+    "authoritative spec/context"
+  ],
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "requirement": "Concrete testable requirement.",
+      "authority": "source section/path",
+      "implementation_paths": [],
+      "evidence_refs": [],
+      "status": "NOT_VERIFIED",
+      "notes": []
+    }
+  ]
+}
