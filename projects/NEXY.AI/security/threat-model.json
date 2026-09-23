@@ -1,0 +1,219 @@
+{
+  "schema_version": "1.0.0",
+  "threats": [
+    {
+      "threat_id": "THR-001",
+      "name": "Prompt/instruction injection",
+      "vector": "External/user/model content attempts to become authority",
+      "targets": [
+        "UI",
+        "API",
+        "SWARM"
+      ],
+      "controls": [
+        "Sanitize/isolate/reframe",
+        "authority hierarchy",
+        "LAW gate"
+      ],
+      "response": "Reject candidate/instruction; incident if security relevant",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-002",
+      "name": "Correlated model hallucination/collusion",
+      "vector": "Multiple workers converge on same wrong answer",
+      "targets": [
+        "Lo3"
+      ],
+      "controls": [
+        "Context sharding",
+        "cognitive diversity",
+        "adversarial mutation",
+        "weighted proof"
+      ],
+      "response": "Reject/freeze if unresolved",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-003",
+      "name": "OTAC brute force/replay",
+      "vector": "Guess or reuse one-time code",
+      "targets": [
+        "AUTH"
+      ],
+      "controls": [
+        "attempt cap, TTL, cooldown, lock, consumed flag, hashed storage"
+      ],
+      "response": "AUTH_INVALID/OTAC_LOCKED + SecurityIncident",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-004",
+      "name": "Session theft/reuse/device mismatch",
+      "vector": "Use revoked/mismatched session",
+      "targets": [
+        "AUTH",
+        "API"
+      ],
+      "controls": [
+        "secure HttpOnly cookie, rotation, device binding, revoke paths"
+      ],
+      "response": "SESSION_REVOKED/DEVICE_MISMATCH",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-005",
+      "name": "CSRF",
+      "vector": "Cross-origin mutation without token",
+      "targets": [
+        "API",
+        "AUTH"
+      ],
+      "controls": [
+        "SameSite=Strict + CSRF token for mutations"
+      ],
+      "response": "CSRF_INVALID",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-006",
+      "name": "Duplicate/replayed mutation",
+      "vector": "Same directive/commit executes twice",
+      "targets": [
+        "API",
+        "QUEUE",
+        "VAULT"
+      ],
+      "controls": [
+        "idempotency keys + DB uniqueness + consumer checks"
+      ],
+      "response": "Suppress/reuse legal result or conflict",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-007",
+      "name": "Sandbox/tenant escape",
+      "vector": "Universe/worker crosses isolation boundary",
+      "targets": [
+        "Universe",
+        "Sandbox"
+      ],
+      "controls": [
+        "microVM/container/gVisor/capability limits/quarantine"
+      ],
+      "response": "Kill/quarantine; escalate only if Core integrity affected",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-008",
+      "name": "Secret exposure",
+      "vector": "Provider/API keys leak to frontend/log/context",
+      "targets": [
+        "API",
+        "Security"
+      ],
+      "controls": [
+        "server-side secret injection, secret scanning, minimum context"
+      ],
+      "response": "Contain/revoke as needed; never persist secret",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-009",
+      "name": "Supply-chain drift",
+      "vector": "Compiler/container/dependency differs from sealed build",
+      "targets": [
+        "Build",
+        "Deploy"
+      ],
+      "controls": [
+        "pinned toolchain/digest/build hash/reproducibility"
+      ],
+      "response": "Reject/freeze affected node",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-010",
+      "name": "Evidence forgery/staleness",
+      "vector": "Old or non-executed proof treated as current PASS",
+      "targets": [
+        "DOC-E",
+        "Release"
+      ],
+      "controls": [
+        "exact commit/environment binding + freshness validation"
+      ],
+      "response": "BLOCKED/NOT_VERIFIED",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-011",
+      "name": "Authority inversion",
+      "vector": "Lower-authority prose/UI/worker overrides Canon/DOC-C",
+      "targets": [
+        "Whole system"
+      ],
+      "controls": [
+        "authority/supersession graph + immutable boundaries"
+      ],
+      "response": "Reject change; conflict/freeze",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-012",
+      "name": "UI truth masking",
+      "vector": "UI shows READY/success while backend unknown/frozen",
+      "targets": [
+        "UI"
+      ],
+      "controls": [
+        "canonical SystemEnvelope state",
+        "fail-closed UI",
+        "sticky freeze"
+      ],
+      "response": "Disable action/show UNKNOWN/FREEZE",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-013",
+      "name": "Audit/incident orphaning",
+      "vector": "Failure cannot be traced to incident/log lineage",
+      "targets": [
+        "OBS"
+      ],
+      "controls": [
+        "request_id/trace_id + incident linkage + append-only logs"
+      ],
+      "response": "Treat observability integrity as failure",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-014",
+      "name": "Migration corruption",
+      "vector": "Schema migration/rollback changes state incompatibly",
+      "targets": [
+        "Persistence"
+      ],
+      "controls": [
+        "real DB roundtrip + schema diff + rollback evidence"
+      ],
+      "response": "Block release/rollback under controlled path",
+      "status": "THREAT_MODEL"
+    },
+    {
+      "threat_id": "THR-015",
+      "name": "Resource exhaustion",
+      "vector": "Queue/Universe/model workload exhausts host",
+      "targets": [
+        "Queue",
+        "Universe",
+        "HSP"
+      ],
+      "controls": [
+        "hard limits, concurrency caps, host guardian, local containment"
+      ],
+      "response": "expire/kill/quarantine; preserve Core",
+      "status": "THREAT_MODEL"
+    }
+  ]
+}
