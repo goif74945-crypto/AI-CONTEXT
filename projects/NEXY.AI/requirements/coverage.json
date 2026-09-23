@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "source_revision": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "parsed_nonempty_paragraphs": 10979
+  },
+  "requirement_count": 262,
+  "by_priority": {
+    "MUST": 239,
+    "SHOULD": 23
+  },
+  "by_authority": {
+    "CONSTITUTIONAL_SOURCE": 35,
+    "DOC-C": 80,
+    "DOC-D": 29,
+    "DOC-E": 15,
+    "FINAL_ARCHITECTURE_SOURCE": 15,
+    "GAME_FABRIC_SOURCE": 20,
+    "EARLY_LO3_VISION": 2,
+    "AUTH_V0_DIRECTION": 1,
+    "VNEXT_1_DRAFT": 1,
+    "EARLY_LO2_VISION": 1,
+    "EARLY_CANON": 2,
+    "L600_SOURCE": 38,
+    "CAPABILITY_GOVERNANCE_SOURCE": 14,
+    "RCL_L600_SOURCE": 11,
+    "DOC-B": 8
+  },
+  "by_scope": {
+    "FUTURE_ARCHITECTURE": 81,
+    "DOC_C_CURRENT_BUILD": 80,
+    "DOC_D_PRODUCT_DESIGN": 29,
+    "DOC_E_DEPLOYMENT_EVIDENCE": 15,
+    "CURRENT_ARCHITECTURE": 52,
+    "HISTORICAL": 7,
+    "DOC_B_SYSTEM_LAW": 8
+  },
+  "by_status": {
+    "UNKNOWN": 262
+  },
+  "most_referenced_systems": [
+    {
+      "system_id": "FSM-EXECUTION",
+      "count": 13
+    },
+    {
+      "system_id": "ENGINE-RELEASE-POLICY",
+      "count": 12
+    },
+    {
+      "system_id": "MODULE-AUTH",
+      "count": 11
+    },
+    {
+      "system_id": "GATEWAY-API",
+      "count": 9
+    },
+    {
+      "system_id": "ENGINE-JUDGE",
+      "count": 9
+    },
+    {
+      "system_id": "STORAGE-VAULT",
+      "count": 9
+    },
+    {
+      "system_id": "QUEUE-EXECUTION",
+      "count": 8
+    },
+    {
+      "system_id": "KERNEL-CORE",
+      "count": 8
+    },
+    {
+      "system_id": "LAW-SYSTEM",
+      "count": 8
+    },
+    {
+      "system_id": "SYS-NEXY",
+      "count": 8
+    },
+    {
+      "system_id": "FABRIC-SWARM",
+      "count": 7
+    },
+    {
+      "system_id": "SERVICE-SESSION",
+      "count": 6
+    },
+    {
+      "system_id": "STATE-EXEC-FREEZE",
+      "count": 6
+    },
+    {
+      "system_id": "SERVICE-OTAC",
+      "count": 5
+    },
+    {
+      "system_id": "CONFIG-AUTH-LIMITS",
+      "count": 5
+    },
+    {
+      "system_id": "DATA-AUDIT-LOG",
+      "count": 5
+    },
+    {
+      "system_id": "MODULE-OBS",
+      "count": 5
+    },
+    {
+      "system_id": "LAW-RUNTIME-DETERMINISM",
+      "count": 4
+    },
+    {
+      "system_id": "DATA-FREEZE-INCIDENT",
+      "count": 4
+    },
+    {
+      "system_id": "UI-FRONT",
+      "count": 4
+    },
+    {
+      "system_id": "MODULE-RBAC",
+      "count": 4
+    },
+    {
+      "system_id": "CONFIG-RELEASE-THRESHOLDS",
+      "count": 4
+    },
+    {
+      "system_id": "SYS-LO3",
+      "count": 4
+    },
+    {
+      "system_id": "ADAPTER-AGENT",
+      "count": 4
+    },
+    {
+      "system_id": "CONFIG-PIPELINE-TIMEOUTS",
+      "count": 4
+    },
+    {
+      "system_id": "RUNTIME-UNIVERSE",
+      "count": 3
+    },
+    {
+      "system_id": "ENGINE-IDEMPOTENCY",
+      "count": 3
+    },
+    {
+      "system_id": "DATA-SECURITY-INCIDENT",
+      "count": 3
+    },
+    {
+      "system_id": "CONFIG-VNEXT-DEFAULTS",
+      "count": 3
+    },
+    {
+      "system_id": "ROLE-DOC-C-OWNER",
+      "count": 3
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "01",
+      "domain": "System Law + DOC-C",
+      "count": 88
+    },
+    {
+      "id": "02",
+      "domain": "Constitutional + Game + Capability",
+      "count": 68
+    },
+    {
+      "id": "03",
+      "domain": "L1o + Lo3 + Lo2 + Robotics + Final",
+      "count": 60
+    },
+    {
+      "id": "04",
+      "domain": "DOC-D + Security + DOC-E",
+      "count": 39
+    },
+    {
+      "id": "05",
+      "domain": "Historical superseded requirements",
+      "count": 7
+    }
+  ],
+  "known_limits": [
+    "All implementation_refs/test_refs/evidence_refs are intentionally empty until dedicated mapping steps.",
+    "Status UNKNOWN is deliberate; source existence is not implementation proof.",
+    "Future architecture requirements are kept separate from current DOC-C build scope.",
+    "Historical requirements remain for claim-level supersession provenance."
+  ]
+}
