@@ -2,90 +2,20 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "NEXY Invariant Record",
   "type": "object",
-  "additionalProperties": false,
   "required": [
     "invariant_id",
     "statement",
-    "systems",
+    "system_ids",
     "authority",
     "scope",
+    "criticality",
     "severity",
     "violation_behavior",
-    "source_refs",
-    "code_refs",
+    "requirement_ids",
+    "source_ranges",
+    "implementation_refs",
     "test_refs",
     "evidence_refs",
     "status"
-  ],
-  "properties": {
-    "invariant_id": {
-      "type": "string"
-    },
-    "statement": {
-      "type": "string",
-      "minLength": 1
-    },
-    "systems": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "authority": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "scope": {
-      "type": "string"
-    },
-    "severity": {
-      "enum": [
-        "S0",
-        "S1",
-        "S2",
-        "S3",
-        "S4",
-        "S5"
-      ]
-    },
-    "violation_behavior": {
-      "type": "string"
-    },
-    "source_refs": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "code_refs": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "test_refs": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "evidence_refs": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "status": {
-      "enum": [
-        "SOURCE_REQUIREMENT",
-        "CURRENT_BUILD",
-        "IMPLEMENTATION_PRESENT_E0",
-        "VERIFIED",
-        "CONFLICT",
-        "HISTORICAL"
-      ]
-    }
-  }
+  ]
 }
