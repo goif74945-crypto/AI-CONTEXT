@@ -1,0 +1,573 @@
+{
+  "schema_version": "1.0.0",
+  "pinned_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "records": [
+    {
+      "config_id": "CFG-SYSTEM-VERSION",
+      "key": "system.version",
+      "value": "7.0.0",
+      "allowed_range": {
+        "min": null,
+        "max": null
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "IMMUTABLE_PER_BUILD",
+      "source": "BUILD/DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-REL-CONF",
+      "key": "release.confidence_min",
+      "value": 0.85,
+      "allowed_range": {
+        "min": 0,
+        "max": 1
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-REL-DET",
+      "key": "release.deterministic_match_min",
+      "value": 0.9,
+      "allowed_range": {
+        "min": 0,
+        "max": 1
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-REL-QUORUM",
+      "key": "release.quorum_min",
+      "value": 2,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-REL-EVIDENCE",
+      "key": "release.evidence_min",
+      "value": 2,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-PIPE-DECOMP",
+      "key": "pipeline.decompose_timeout_ms",
+      "value": 5000,
+      "allowed_range": {
+        "min": 0,
+        "max": 120000
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-PIPE-AGENT",
+      "key": "pipeline.agent_timeout_default_ms",
+      "value": 30000,
+      "allowed_range": {
+        "min": 10000,
+        "max": 60000
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-PIPE-AGENT-MIN",
+      "key": "pipeline.agent_timeout_min_ms",
+      "value": 10000,
+      "allowed_range": {
+        "min": 0,
+        "max": 60000
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-PIPE-AGENT-MAX",
+      "key": "pipeline.agent_timeout_max_ms",
+      "value": 60000,
+      "allowed_range": {
+        "min": 10000,
+        "max": 120000
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-PIPE-CRITICAL",
+      "key": "pipeline.critical_agent_timeout_ms",
+      "value": 30000,
+      "allowed_range": {
+        "min": 10000,
+        "max": 60000
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-PIPE-XVERIFY",
+      "key": "pipeline.cross_verify_timeout_ms",
+      "value": 15000,
+      "allowed_range": {
+        "min": 0,
+        "max": 120000
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-PIPE-CONSENSUS",
+      "key": "pipeline.consensus_timeout_ms",
+      "value": 10000,
+      "allowed_range": {
+        "min": 0,
+        "max": 120000
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-PIPE-EMIT",
+      "key": "pipeline.emit_timeout_ms",
+      "value": 5000,
+      "allowed_range": {
+        "min": 0,
+        "max": 120000
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-PIPE-CAP",
+      "key": "pipeline.pipeline_cap_ms",
+      "value": 120000,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-AUTH-OTAC-LEN",
+      "key": "auth.otac_length",
+      "value": 10,
+      "allowed_range": {
+        "min": 10,
+        "max": 10
+      },
+      "owner": "AUTH",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-AUTH-OTAC-TTL",
+      "key": "auth.otac_ttl_ms",
+      "value": 300000,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "AUTH",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-AUTH-ATTEMPTS",
+      "key": "auth.otac_max_attempts",
+      "value": 5,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "AUTH",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-AUTH-RESEND",
+      "key": "auth.otac_resend_cooldown_ms",
+      "value": 60000,
+      "allowed_range": {
+        "min": 0,
+        "max": null
+      },
+      "owner": "AUTH",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-AUTH-LOCK",
+      "key": "auth.otac_lock_window_ms",
+      "value": 900000,
+      "allowed_range": {
+        "min": 0,
+        "max": null
+      },
+      "owner": "AUTH",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-AUTH-SESSION",
+      "key": "auth.session_ttl_ms",
+      "value": 21600000,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "AUTH",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-AUTH-CONCURRENT",
+      "key": "auth.concurrent_sessions_per_user",
+      "value": 5,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "AUTH",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-RET-EVENT",
+      "key": "retention.event_log_days",
+      "value": 90,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-RET-AUDIT",
+      "key": "retention.audit_log_days",
+      "value": 365,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-RET-SEC",
+      "key": "retention.security_incident_days",
+      "value": 365,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-RET-FREEZE",
+      "key": "retention.freeze_incident_days",
+      "value": 365,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "CORE/CONFIG",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-QUEUE-STALE",
+      "key": "queue.stale_job_ttl_ms",
+      "value": 900000,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "QUEUE",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    },
+    {
+      "config_id": "CFG-QUEUE-CONC",
+      "key": "queue.max_concurrent_pipeline_runs",
+      "value": 10,
+      "allowed_range": {
+        "min": 1,
+        "max": null
+      },
+      "owner": "QUEUE",
+      "mutability": "AUDITED_VERSIONED",
+      "source": "DOC-C",
+      "version": "7.0.0",
+      "code_ref": "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/vnext-config.ts",
+      "change_requirements": [
+        "config version",
+        "actor",
+        "audit record",
+        "rollback target"
+      ],
+      "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0"
+    }
+  ]
+}
