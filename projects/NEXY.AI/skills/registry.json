@@ -1,0 +1,1315 @@
+{
+  "schema_version": "1.0.0",
+  "runtime_contract": "skills/registry/RUNTIME-CONTRACT.md",
+  "project": "NEXY.AI",
+  "status_semantics": {
+    "CATALOGED": "Known capability, not loadable.",
+    "MATERIALIZED": "Loadable project skill/playbook; not yet evidence-verified as a successfully executed skill version.",
+    "VERIFIED": "Exact skill version has evidence-backed successful validation.",
+    "BLOCKED": "Unsafe/unresolved/unusable."
+  },
+  "skills": [
+    {
+      "id": "NEXY-BUILD-BUILD_NEW_SYSTEM",
+      "name": "build-new-system",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/build-new-system.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/build-new-system.md"
+    },
+    {
+      "id": "NEXY-BUILD-MODIFY_EXISTING_SYSTEM",
+      "name": "modify-existing-system",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/modify-existing-system.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/modify-existing-system.md"
+    },
+    {
+      "id": "NEXY-BUILD-ADD_API_ROUTE",
+      "name": "add-api-route",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/add-api-route.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/add-api-route.md"
+    },
+    {
+      "id": "NEXY-BUILD-ADD_STATE_TRANSITION",
+      "name": "add-state-transition",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/add-state-transition.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/add-state-transition.md"
+    },
+    {
+      "id": "NEXY-BUILD-ADD_STORAGE_MODEL",
+      "name": "add-storage-model",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/add-storage-model.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/add-storage-model.md"
+    },
+    {
+      "id": "NEXY-BUILD-ADD_QUEUE_WORKER",
+      "name": "add-queue-worker",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/add-queue-worker.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/add-queue-worker.md"
+    },
+    {
+      "id": "NEXY-BUILD-ADD_LAW",
+      "name": "add-law",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/add-law.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/add-law.md"
+    },
+    {
+      "id": "NEXY-BUILD-ADD_UI_SURFACE",
+      "name": "add-ui-surface",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/add-ui-surface.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/add-ui-surface.md"
+    },
+    {
+      "id": "NEXY-BUILD-ADD_CAPABILITY",
+      "name": "add-capability",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/add-capability.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/add-capability.md"
+    },
+    {
+      "id": "NEXY-BUILD-ADD_AGENT",
+      "name": "add-agent",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/add-agent.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/add-agent.md"
+    },
+    {
+      "id": "NEXY-BUILD-ADD_EVENT_CONTRACT",
+      "name": "add-event-contract",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/add-event-contract.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/add-event-contract.md"
+    },
+    {
+      "id": "NEXY-BUILD-CHANGE_CONFIG",
+      "name": "change-config",
+      "category": "NEXY_BUILD",
+      "tags": [
+        "NEXY.AI",
+        "builder",
+        "project-specific"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/build/change-config.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "MUTATION_REQUIRES_TASK_AUTHORIZATION"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-VERIFICATION"
+      ],
+      "inputs": [
+        "task contract",
+        "current target state",
+        "authority/scope",
+        "requirements",
+        "implementation map"
+      ],
+      "outputs": [
+        "authorized change plan",
+        "implementation changes when authorized",
+        "verification results",
+        "context writeback"
+      ],
+      "preconditions": [
+        "current target resolved",
+        "scope authorized",
+        "stale implementation map refreshed when needed"
+      ],
+      "failure_modes": [
+        "authority conflict",
+        "stale HEAD",
+        "missing dependency",
+        "unverifiable evidence",
+        "protected scope conflict"
+      ],
+      "rollback": [
+        "use playbook-specific rollback section",
+        "restore last proven contract/state when mutation is reversible"
+      ],
+      "validation": [
+        "follow playbook DONE criteria",
+        "required evidence class must be satisfied before PASS"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/build/change-config.md"
+    },
+    {
+      "id": "NEXY-AUDIT-SYSTEM",
+      "name": "audit-system",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-system.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-system.md"
+    },
+    {
+      "id": "NEXY-AUDIT-CONTRACT",
+      "name": "audit-contract",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-contract.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-contract.md"
+    },
+    {
+      "id": "NEXY-AUDIT-AUTHORITY",
+      "name": "audit-authority",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-authority.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-authority.md"
+    },
+    {
+      "id": "NEXY-AUDIT-FSM",
+      "name": "audit-fsm",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-fsm.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-fsm.md"
+    },
+    {
+      "id": "NEXY-AUDIT-SECURITY",
+      "name": "audit-security",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-security.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-security.md"
+    },
+    {
+      "id": "NEXY-AUDIT-DETERMINISM",
+      "name": "audit-determinism",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-determinism.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-determinism.md"
+    },
+    {
+      "id": "NEXY-AUDIT-RECOVERY",
+      "name": "audit-recovery",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-recovery.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-recovery.md"
+    },
+    {
+      "id": "NEXY-AUDIT-PERSISTENCE",
+      "name": "audit-persistence",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-persistence.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-persistence.md"
+    },
+    {
+      "id": "NEXY-AUDIT-CROSS_SYSTEM",
+      "name": "audit-cross-system",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-cross-system.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-cross-system.md"
+    },
+    {
+      "id": "NEXY-AUDIT-RELEASE",
+      "name": "audit-release",
+      "category": "NEXY_AUDIT",
+      "tags": [
+        "NEXY.AI",
+        "auditor",
+        "project-specific",
+        "adversarial"
+      ],
+      "status": "MATERIALIZED",
+      "version": "1.0.0",
+      "implementation": "PLAYBOOK",
+      "load_path": "projects/NEXY.AI/playbooks/audit/audit-release.md",
+      "locator": null,
+      "permissions": [
+        "READ_PROJECT_INTELLIGENCE",
+        "READ_TARGET_REPOSITORY_WHEN_AUTHORIZED",
+        "NO_MUTATION_BY_DEFAULT"
+      ],
+      "dependencies": [
+        "AI-EXECUTION-KERNEL",
+        "NEXY-GOVERNANCE",
+        "NEXY-TRACEABILITY",
+        "NEXY-EVIDENCE"
+      ],
+      "inputs": [
+        "audit target",
+        "authority/scope",
+        "current state",
+        "requirements",
+        "evidence"
+      ],
+      "outputs": [
+        "evidence-backed findings",
+        "verdicts",
+        "proof gaps",
+        "root-cause/impact information"
+      ],
+      "preconditions": [
+        "exact target/version resolved for current-state claims"
+      ],
+      "failure_modes": [
+        "single-search false missing",
+        "stale evidence",
+        "scope mixing",
+        "authority inversion"
+      ],
+      "rollback": [],
+      "validation": [
+        "no PASS from presence",
+        "evidence class must match claim"
+      ],
+      "benchmark": "NOT_ESTABLISHED",
+      "last_verified": null,
+      "source_basis": "projects/NEXY.AI/playbooks/audit/audit-release.md"
+    }
+  ]
+}
