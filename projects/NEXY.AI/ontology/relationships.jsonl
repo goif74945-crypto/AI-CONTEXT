@@ -402,6 +402,8 @@
 {"from":"LAW-BOUNDED-INTELLIGENCE","to":"SYS-NEXY","type":"PART_OF","source":"ontology/checkpoint-03-trinity-robotics"}
 {"from":"LAW-BOUNDED-INTELLIGENCE","to":"SYSTEM-BTS","type":"REQUIRES","source":"ontology/checkpoint-03-trinity-robotics"}
 {"from":"LAW-CONSTITUTIONAL-LOCK","to":"FABRIC-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
+{"from":"LAW-CRASH-RECOVERY","type":"GOVERNS","to":"ENGINE-DETERMINISTIC-REPLAY","source":"ontology/semantic-compile-v1"}
+{"from":"LAW-CRASH-RECOVERY","type":"GOVERNS","to":"STORAGE-SNAPSHOT","source":"ontology/semantic-compile-v1"}
 {"from":"LAW-CRASH-RECOVERY","type":"GOVERNS","to":"STORAGE-WAL","source":"ontology/semantic-compile-v1"}
 {"from":"LAW-CRASH-RECOVERY","to":"LAW-CONSTITUTIONAL-LOCK","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-CRASH-RECOVERY","to":"ENGINE-DETERMINISTIC-REPLAY","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
@@ -410,9 +412,9 @@
 {"from":"LAW-CREATOR-FABRIC","to":"RUNTIME-CREATOR-APP","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-CREATOR-FABRIC","to":"LAW-CONSTITUTIONAL-LOCK","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-ECONOMIC-INVARIANTS","to":"LAW-CONSTITUTIONAL-LOCK","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
+{"from":"LAW-FSM-LOCK","type":"GOVERNS","to":"FSM-APP-LIFECYCLE","source":"ontology/semantic-compile-v1"}
+{"from":"LAW-FSM-LOCK","type":"GOVERNS","to":"FSM-GLOBAL-CONSTITUTIONAL","source":"ontology/semantic-compile-v1"}
 {"from":"LAW-FSM-LOCK","to":"LAW-CONSTITUTIONAL-LOCK","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
-{"from":"LAW-FSM-LOCK","to":"FSM-APP-LIFECYCLE","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
-{"from":"LAW-FSM-LOCK","to":"FSM-GLOBAL-CONSTITUTIONAL","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-GAME-ANTI-CHEAT","to":"FABRIC-GAME","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-GAME-ECONOMY","to":"FABRIC-GAME","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-GAME-ECONOMY","to":"LAW-ECONOMIC-INVARIANTS","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
@@ -520,7 +522,7 @@
 {"from":"MODULE-OBS","type":"OBSERVES","to":"QUEUE-EXECUTION","source":"ontology/semantic-compile-v1"}
 {"from":"MODULE-OBS","to":"SYS-NEXY","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"MODULE-RATE-LIMIT","to":"GATEWAY-API","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
-{"from":"MODULE-RATE-LIMIT","to":"GATEWAY-API","type":"REQUIRES","source":"ontology/checkpoint-01-core-product"}
+{"from":"MODULE-RATE-LIMIT","type":"SECURES","to":"GATEWAY-API","source":"ontology/semantic-compile-v1"}
 {"from":"MODULE-RBAC","to":"MODULE-AUTH","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"MODULE-RBAC","to":"MODULE-AUTH","type":"REQUIRES","source":"ontology/checkpoint-01-core-product"}
 {"from":"MODULE-TASK-OUTPUT","to":"SYS-NEXY","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
@@ -541,8 +543,8 @@
 {"from":"PLANE-CORE","to":"KERNEL-SOVEREIGN","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PLANE-QUARANTINE","to":"FABRIC-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PLANE-QUARANTINE","to":"RUNTIME-UNIVERSE","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
+{"from":"PLANE-UNIVERSE","type":"CONTAINS","to":"RUNTIME-UNIVERSE","source":"ontology/semantic-compile-v1"}
 {"from":"PLANE-UNIVERSE","to":"FABRIC-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
-{"from":"PLANE-UNIVERSE","to":"RUNTIME-UNIVERSE","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PROTOCOL-ANCHOR-PUBLICATION","to":"KERNEL-GLOBAL-ANCHOR","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PROTOCOL-ANCHOR-PUBLICATION","to":"SERVICE-TSA","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PROTOCOL-ARTIFACT-CANONICALIZE","to":"FABRIC-NCF","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
@@ -705,7 +707,6 @@
 {"from":"STORAGE-VAULT","to":"SYS-NEXY","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"STORAGE-VAULT","to":"KERNEL-CORE","type":"REQUIRES","source":"ontology/checkpoint-01-core-product"}
 {"from":"STORAGE-WAL","to":"KERNEL-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
-{"from":"STORAGE-WAL","to":"LAW-CRASH-RECOVERY","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"SYS-L1O","type":"CONSUMES","to":"LAW-USER-LAW","source":"ontology/semantic-compile-v1"}
 {"from":"SYS-L1O","type":"EMITS","to":"DATA-L1O-STATE-TRANSITION","source":"ontology/semantic-compile-v1"}
 {"from":"SYS-L1O","type":"FEEDS","to":"LAYER-DSL","source":"ontology/semantic-compile-v1"}
