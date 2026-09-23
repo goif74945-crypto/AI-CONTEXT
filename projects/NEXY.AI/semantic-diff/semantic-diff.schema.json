@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Semantic Diff Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "diff_id",
+    "target_before",
+    "target_after",
+    "change_class",
+    "subject",
+    "before",
+    "after",
+    "semantic_effects",
+    "affected_requirements",
+    "affected_invariants",
+    "affected_contracts",
+    "affected_fsms",
+    "affected_state",
+    "affected_security",
+    "affected_tests",
+    "required_evidence",
+    "release_impact",
+    "confidence",
+    "unknowns"
+  ],
+  "properties": {
+    "diff_id": {
+      "type": "string"
+    },
+    "target_before": {
+      "type": "object"
+    },
+    "target_after": {
+      "type": "object"
+    },
+    "change_class": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "object"
+    },
+    "before": {},
+    "after": {},
+    "semantic_effects": {
+      "type": "array"
+    },
+    "affected_requirements": {
+      "type": "array"
+    },
+    "affected_invariants": {
+      "type": "array"
+    },
+    "affected_contracts": {
+      "type": "array"
+    },
+    "affected_fsms": {
+      "type": "array"
+    },
+    "affected_state": {
+      "type": "array"
+    },
+    "affected_security": {
+      "type": "array"
+    },
+    "affected_tests": {
+      "type": "array"
+    },
+    "required_evidence": {
+      "type": "array"
+    },
+    "release_impact": {
+      "type": "string"
+    },
+    "confidence": {
+      "enum": [
+        "EXACT",
+        "DERIVED",
+        "CANDIDATE",
+        "UNKNOWN"
+      ]
+    },
+    "unknowns": {
+      "type": "array"
+    }
+  }
+}
