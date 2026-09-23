@@ -1,0 +1,17 @@
+{
+  "id": "DEC-001",
+  "title": "Decision title",
+  "status": "PROPOSED",
+  "decision": "Chosen decision.",
+  "authority": [
+    "governing source"
+  ],
+  "rationale": [
+    "reason grounded in constraints/evidence"
+  ],
+  "constraints": [],
+  "alternatives_rejected": [],
+  "evidence_refs": [],
+  "supersedes": [],
+  "date": null
+}
