@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Requirement Trace Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "requirement_id",
+    "system_ids",
+    "authority",
+    "scope",
+    "implementation_refs",
+    "implementation_mapping",
+    "test_refs",
+    "test_mapping",
+    "evidence_refs",
+    "verdict",
+    "notes"
+  ],
+  "properties": {
+    "requirement_id": {
+      "type": "string"
+    },
+    "system_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "implementation_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "implementation_mapping": {
+      "enum": [
+        "DIRECT_DOMAIN_MAPPING",
+        "CANDIDATE_DOMAIN_MAPPING",
+        "UNMAPPED"
+      ]
+    },
+    "test_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "test_mapping": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verdict": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PARTIAL",
+        "BLOCKED",
+        "NOT_VERIFIED",
+        "UNKNOWN",
+        "CONFLICT"
+      ]
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
