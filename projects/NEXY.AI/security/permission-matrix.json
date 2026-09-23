@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "authority": "DOC-C/D",
+  "matrix": [
+    {
+      "actor": "OWNER",
+      "create_directive": true,
+      "view_directive": true,
+      "recover_freeze": true,
+      "commit_vault": true,
+      "read_revisions": true,
+      "export_artifact": true,
+      "view_audit": true,
+      "revoke_session": "ANY",
+      "revoke_all": true,
+      "manage_roles": true
+    },
+    {
+      "actor": "OPERATOR",
+      "create_directive": true,
+      "view_directive": true,
+      "recover_freeze": false,
+      "commit_vault": false,
+      "read_revisions": true,
+      "export_artifact": true,
+      "view_audit": false,
+      "revoke_session": "SELF_ONLY",
+      "revoke_all": false,
+      "manage_roles": false
+    },
+    {
+      "actor": "AUDITOR",
+      "create_directive": false,
+      "view_directive": true,
+      "recover_freeze": false,
+      "commit_vault": false,
+      "read_revisions": true,
+      "export_artifact": true,
+      "view_audit": true,
+      "revoke_session": false,
+      "revoke_all": false,
+      "manage_roles": false
+    },
+    {
+      "actor": "SYSTEM",
+      "create_directive": true,
+      "view_directive": true,
+      "recover_freeze": true,
+      "commit_vault": true,
+      "read_revisions": true,
+      "export_artifact": true,
+      "view_audit": true,
+      "revoke_session": true,
+      "revoke_all": true,
+      "manage_roles": false
+    },
+    {
+      "actor": "PUBLIC_USER",
+      "create_directive": false,
+      "view_directive": false,
+      "recover_freeze": false,
+      "commit_vault": false,
+      "read_revisions": false,
+      "export_artifact": false,
+      "view_audit": false,
+      "revoke_session": false,
+      "revoke_all": false,
+      "manage_roles": false,
+      "note": "Role appears in design contracts; mutating anonymous access excluded from vNEXT."
+    }
+  ]
+}
