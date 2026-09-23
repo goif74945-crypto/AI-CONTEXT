@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Alias Record",
+  "type": "object",
+  "required": [
+    "canonical_id",
+    "canonical",
+    "alias",
+    "era",
+    "status",
+    "entity_status",
+    "scope",
+    "source_range"
+  ],
+  "properties": {
+    "canonical_id": {
+      "type": "string"
+    },
+    "canonical": {
+      "type": "string"
+    },
+    "alias": {
+      "type": "string"
+    },
+    "era": {
+      "type": "string"
+    },
+    "valid_from": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "valid_to": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "status": {
+      "type": "string"
+    },
+    "entity_status": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "array"
+    },
+    "source_range": {
+      "type": "array"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
