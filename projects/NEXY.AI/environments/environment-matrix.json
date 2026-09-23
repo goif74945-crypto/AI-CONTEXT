@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0.0",
+  "project": "NEXY.AI",
+  "principles": [
+    "Environment names are operational context; they do not override DOC-C/DOC-E authority.",
+    "No per-environment silent semantic/config drift.",
+    "Evidence is bound to exact commit/artifact/environment.",
+    "CI/infrastructure failure before test execution is BLOCKED_ENVIRONMENT, not product FAIL/PASS."
+  ],
+  "environments": [
+    {
+      "id": "ENV-LOCAL",
+      "name": "LOCAL",
+      "authority_class": "AI_CONTEXT_OPERATIONAL_ENV",
+      "purpose": "Developer/local execution and focused verification.",
+      "canonical_config_rule": "Must not silently diverge from canonical defaults; explicit local overrides are non-authoritative unless versioned/approved.",
+      "expected_evidence": [
+        "E1_STATIC",
+        "E2_UNIT",
+        "selected E3_INTEGRATION"
+      ],
+      "secrets": "Local runtime injection only; never commit.",
+      "deployment_authority": "NONE",
+      "current_observed_state": "NOT_PINNED",
+      "source_refs": [
+        "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md"
+      ]
+    },
+    {
+      "id": "ENV-TEST",
+      "name": "TEST",
+      "authority_class": "AI_CONTEXT_OPERATIONAL_ENV",
+      "purpose": "Automated integration/contract/FSM/RBAC/auth-abuse/queue/Vault verification.",
+      "canonical_config_rule": "Use declared test configuration; semantic defaults remain tied to canonical config version.",
+      "expected_evidence": [
+        "E1_STATIC",
+        "E2_UNIT",
+        "E3_INTEGRATION",
+        "E4_E2E_WHERE_REQUIRED"
+      ],
+      "secrets": "Test-scoped credentials only.",
+      "deployment_authority": "NONE",
+      "current_observed_state": "PARTIALLY_MAPPED",
+      "source_refs": [
+        "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md"
+      ]
+    },
+    {
+      "id": "ENV-CI",
+      "name": "CI",
+      "authority_class": "IMPLEMENTATION_ENV",
+      "purpose": "Hosted/reproducible automated verification and release-evidence generation.",
+      "canonical_config_rule": "Exact workflow/config must be pinned to target commit; environment failure must not be misclassified as code FAIL.",
+      "expected_evidence": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7 as applicable"
+      ],
+      "secrets": "CI secret store; no secret output.",
+      "deployment_authority": "NONE_UNLESS_EXPLICIT_RELEASE_JOB",
+      "current_observed_state": "BLOCKED_ENVIRONMENT_FOR_REGISTERED_DOC_E_CAMPAIGN",
+      "source_refs": [
+        "projects/NEXY.AI/evidence/validation-report.md",
+        "projects/NEXY.AI/failures/failure-library.jsonl"
+      ]
+    },
+    {
+      "id": "ENV-STAGING",
+      "name": "STAGING",
+      "authority_class": "AI_CONTEXT_OPERATIONAL_ENV",
+      "purpose": "Target-like pre-production validation.",
+      "canonical_config_rule": "Differences from production must be explicit/versioned; no silent semantic drift.",
+      "expected_evidence": [
+        "E3_INTEGRATION",
+        "E4_E2E",
+        "E5_RUNTIME",
+        "migration rollback",
+        "alarm verification",
+        "incident drill"
+      ],
+      "secrets": "Environment-scoped secret manager.",
+      "deployment_authority": "PRE_PROD_ONLY",
+      "current_observed_state": "NOT_ESTABLISHED_BY_CURRENT_EVIDENCE",
+      "source_refs": [
+        "projects/NEXY.AI/deep/doc-e-deployment-evidence.md"
+      ]
+    },
+    {
+      "id": "ENV-CANARY",
+      "name": "CANARY",
+      "authority_class": "AI_CONTEXT_OPERATIONAL_ENV",
+      "purpose": "Limited exact-artifact rollout for health/monitoring/rollback observation.",
+      "canonical_config_rule": "Must use exact release candidate artifact/config identity.",
+      "expected_evidence": [
+        "E6_DEPLOYMENT",
+        "health/smoke",
+        "monitoring",
+        "rollback readiness"
+      ],
+      "secrets": "Production-equivalent secret handling with least privilege.",
+      "deployment_authority": "LIMITED_RELEASE_ONLY",
+      "current_observed_state": "NOT_ESTABLISHED_BY_SOURCE_AS_CANONICAL_TOPOLOGY",
+      "source_refs": [
+        "projects/NEXY.AI/release/gates.json"
+      ]
+    },
+    {
+      "id": "ENV-PROD",
+      "name": "PRODUCTION",
+      "authority_class": "DOC_E_DEPLOYMENT_TARGET",
+      "purpose": "Authorized production runtime.",
+      "canonical_config_rule": "Only versioned/audited configuration; no environment-local silent drift.",
+      "expected_evidence": [
+        "DOC-E-E1",
+        "DOC-E-E2",
+        "DOC-E-E3",
+        "DOC-E-E4",
+        "DOC-E-E5",
+        "DOC-E-E6",
+        "DOC-E-E7",
+        "DOC-E-E8",
+        "DOC-E-E9",
+        "DOC-E-E10",
+        "DOC-E-E11",
+        "DOC-E-E12"
+      ],
+      "secrets": "Server-side/secret-manager only.",
+      "deployment_authority": "REQUIRES_DOC_E_AND_AUTHORIZED_SIGNOFF",
+      "current_observed_state": "NON_DEPLOYABLE_NOT_VERIFIED_AT_REGISTERED_CURRENT_HEAD",
+      "source_refs": [
+        "projects/NEXY.AI/release/current-gate-state.json",
+        "projects/NEXY.AI/evidence/validation-report.md"
+      ]
+    }
+  ],
+  "unknowns": [
+    "Exact canonical staging infrastructure/topology is not locked in the captured source.",
+    "Exact canonical canary topology/traffic percentage is not locked in the captured source.",
+    "Production cloud/provider/data-region topology is not established by current source/evidence."
+  ]
+}
