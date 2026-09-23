@@ -1,0 +1,123 @@
+{
+  "id": "FSM-CONSTITUTIONAL",
+  "name": "Constitutional FSM",
+  "scope": "FUTURE_ARCHITECTURE",
+  "authority": [
+    "CANON_LOCKED_SOURCE"
+  ],
+  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "states": [
+    "BOOT",
+    "CANON_LOADED",
+    "ANCHOR_SYNCED",
+    "ACTIVE",
+    "DEGRADED",
+    "FROZEN",
+    "TERMINATED"
+  ],
+  "transitions": [
+    {
+      "from": "BOOT",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required source-defined preconditions satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "CANON_LOADED",
+      "failure": [
+        "Reject illegal transition; apply enclosing freeze/failure law where specified"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "CANON_LOADED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required source-defined preconditions satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "ANCHOR_SYNCED",
+      "failure": [
+        "Reject illegal transition; apply enclosing freeze/failure law where specified"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "ANCHOR_SYNCED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required source-defined preconditions satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "ACTIVE",
+      "failure": [
+        "Reject illegal transition; apply enclosing freeze/failure law where specified"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "ACTIVE",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required source-defined preconditions satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "DEGRADED",
+      "failure": [
+        "Reject illegal transition; apply enclosing freeze/failure law where specified"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "DEGRADED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required source-defined preconditions satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "FROZEN",
+      "failure": [
+        "Reject illegal transition; apply enclosing freeze/failure law where specified"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "FROZEN",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required source-defined preconditions satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "TERMINATED",
+      "failure": [
+        "Reject illegal transition; apply enclosing freeze/failure law where specified"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    }
+  ],
+  "global_rules": [
+    "Invalid/illegal transition => immediate FREEZE.",
+    "Freeze exit is only through the defined Owner OR fixed 3/5 quorum path in the captured source branch.",
+    "DEGRADED maximum window is 24h in the captured locked source.",
+    "TERMINATED has no ordinary forward transition."
+  ],
+  "source_refs": [
+    "projects/NEXY.AI/deep/constitutional-locks.md"
+  ],
+  "code_refs": [
+    "goif74945-crypto/NEXY.AI-@9c9befd9:core-kernel/src/kernel/fsm_state.rs"
+  ],
+  "evidence_status": "NOT_VERIFIED_RUNTIME"
+}
