@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Observability Record",
+  "type": "object",
+  "required": [
+    "entity_id",
+    "name",
+    "logs",
+    "metrics",
+    "traces",
+    "alerts",
+    "health",
+    "slo",
+    "failure_signatures",
+    "observability_status"
+  ],
+  "properties": {
+    "entity_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "entity_type": {
+      "type": "string"
+    },
+    "scope": {},
+    "status": {},
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "traces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alerts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "health": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "slo": {
+      "type": "string"
+    },
+    "failure_signatures": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "implementation_refs": {
+      "type": "array"
+    },
+    "evidence_refs": {
+      "type": "array"
+    },
+    "observability_status": {
+      "type": "string"
+    }
+  }
+}
