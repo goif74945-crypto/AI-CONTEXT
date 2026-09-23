@@ -1,11 +1,21 @@
 {
-  "id": "FSM-CONSTITUTIONAL",
-  "name": "Constitutional FSM",
-  "scope": "FUTURE_ARCHITECTURE",
+  "fsm_id": "FSM-GLOBAL-CONSTITUTIONAL",
+  "name": "Global Constitutional FSM",
+  "kind": "SOURCE_DEFINED",
   "authority": [
-    "CANON_LOCKED_SOURCE"
+    "CONSTITUTIONAL_SOURCE"
   ],
-  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "scope": [
+    "FUTURE_ARCHITECTURE"
+  ],
+  "source_range": [
+    {
+      "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "start_paragraph": 4055,
+      "end_paragraph": 5154
+    }
+  ],
   "states": [
     "BOOT",
     "CANON_LOADED",
@@ -15,109 +25,110 @@
     "FROZEN",
     "TERMINATED"
   ],
+  "events": [],
+  "event_ownership": {},
   "transitions": [
     {
       "from": "BOOT",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "CANON_LOADED",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "CANON_LOADED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "ANCHOR_SYNCED",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "ANCHOR_SYNCED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "ACTIVE",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "ACTIVE",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "DEGRADED",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "DEGRADED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "FROZEN",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "FROZEN",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "TERMINATED",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     }
   ],
-  "global_rules": [
-    "Invalid/illegal transition => immediate FREEZE.",
-    "Freeze exit is only through the defined Owner OR fixed 3/5 quorum path in the captured source branch.",
-    "DEGRADED maximum window is 24h in the captured locked source.",
-    "TERMINATED has no ordinary forward transition."
+  "invalid_transition_behavior": "Illegal transition is prohibited; exact event/guard names are not established by captured source.",
+  "recovery_semantics": "UNKNOWN",
+  "audit_event_semantics": "UNKNOWN",
+  "implementation_mapping_status": "CANDIDATE",
+  "implementation_refs": [
+    {
+      "path": "prisma/schema.prisma",
+      "blob_sha": "bcaa4fd6347e719bb536706564994c77b5d60b3a",
+      "symbols": [
+        "AgentTrustLedger",
+        "Artifact",
+        "AuditLog",
+        "CSULedgerEntry",
+        "CageInvocation",
+        "Commit",
+        "ConstitutionalSettlementUnit",
+        "DirectiveDispatch",
+        "DirectiveIdempotency",
+        "DirectiveRecord",
+        "EventLog",
+        "FreezeIncident",
+        "GameAsset",
+        "GameMatch",
+        "IncidentType",
+        "JudgmentRecord",
+        "LegacyDirectiveRecord",
+        "LocalAppLedger",
+        "LogicQuantumRecord",
+        "OperatorActionLog",
+        "OrchestrationEnvelope",
+        "OtacPending",
+        "PipelineRun",
+        "Project",
+        "Revision",
+        "Role",
+        "SecurityIncident",
+        "Session",
+        "User",
+        "VoidArchitectVault"
+      ]
+    }
   ],
-  "source_refs": [
-    "projects/NEXY.AI/deep/constitutional-locks.md"
-  ],
-  "code_refs": [
-    "goif74945-crypto/NEXY.AI-@9c9befd9:core-kernel/src/kernel/fsm_state.rs"
-  ],
-  "evidence_status": "NOT_VERIFIED_RUNTIME"
+  "requirement_ids": [],
+  "test_refs": [],
+  "alignment_status": "SOURCE_SEQUENCE_ONLY",
+  "alignment_notes": [
+    "Invalid constitutional transitions freeze; detailed event/guard names remain for later contract extraction."
+  ]
 }
