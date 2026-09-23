@@ -1,13 +1,16 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.0.1",
   "source_revision": {
     "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
     "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "parsed_nonempty_paragraphs": 10979
   },
+  "registry_status": "ATOMIC_ONTOLOGY_V1_COMPLETE_FOR_MAJOR_SOURCE_DOMAINS",
   "entity_count": 516,
-  "relationship_count": 862,
+  "relationship_count": 863,
   "alias_count": 86,
+  "requires_graph_acyclic": true,
+  "parent_graph_acyclic": true,
   "by_entity_type": {
     "ADAPTER": 1,
     "CONCEPT": 7,
@@ -72,11 +75,11 @@
   },
   "by_relationship_type": {
     "PART_OF": 515,
-    "REQUIRES": 283,
-    "SECURES": 3,
+    "REQUIRES": 278,
+    "SECURES": 4,
     "PERSISTS_TO": 4,
     "VALIDATES": 4,
-    "GOVERNS": 16,
+    "GOVERNS": 20,
     "RECOVERS": 3,
     "FEEDS": 9,
     "IMPLEMENTS": 4,
@@ -85,6 +88,7 @@
     "OVERRIDES": 3,
     "PERSISTS": 3,
     "OBSERVES": 4,
+    "CONTAINS": 1,
     "CONSUMES": 4
   },
   "checkpoints": [
@@ -110,9 +114,9 @@
     }
   ],
   "known_limits": [
-    "This is a source ontology, not an implementation audit.",
-    "implementation_refs/test_refs/evidence_refs intentionally remain empty until mapped against current NEXY implementation repositories.",
-    "Exact object count is tied to ontology rules and this exact source revision; a new source revision requires incremental re-ingestion.",
-    "Some early vision objects remain HISTORICAL or CONFLICT rather than being silently removed."
+    "Registry is source-derived architecture ontology, not proof of implementation/runtime/deployment.",
+    "implementation_refs/test_refs/evidence_refs intentionally remain unpopulated until the dedicated Implementation Map/Test Matrix/Evidence Registry steps.",
+    "Source prose contains evolving eras; HISTORICAL and CONFLICT records are preserved instead of erased.",
+    "516 is the atomic count under ontology v1 rules for captured objects, not a permanent universal NEXY object count."
   ]
 }
