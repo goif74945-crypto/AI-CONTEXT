@@ -4,25 +4,37 @@
 - repository: `goif74945-crypto/NEXY.AI-`
 - branch: `codex/spec-audit-20260919-78df350`
 - HEAD: `9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
-- tree: `2eded220a441908753e0f4287e0c0fc6b2fb005e`
-- source symbol index records: **237**
-- repository blob files: **459**
-- detected test files: **108**
-- detected API route files: **19**
-- detected UI page files: **15**
+- PR #8: **OPEN / DRAFT / UNMERGED**
+- Git tree: `9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
+- repository blobs: **459**
+- symbol-index files: **237**
+- extracted symbols: **1762**
 
-## Result
-**PASS — repository navigation / implementation-presence map for the pinned HEAD.**
+## Atomic mapping
+- ontology entities: **516**
+- EXACT: **200**
+- GROUP: **10**
+- CANDIDATE: **63**
+- UNMAPPED: **243**
+- mapped total: **273**
 
-Checks performed:
-- target branch HEAD refreshed from GitHub;
-- recursive Git tree read from that exact HEAD;
-- existing symbol-index records were pinned to the same HEAD;
-- system mappings contain only observed paths;
-- no runtime/behavior PASS is inferred from presence;
-- NEXY.AI- remained read-only.
+## Structural result
+**PASS**
 
-## Boundary
-`PRESENT_E0` means implementation material is present/mapped. It does not mean the source requirement is satisfied.
+Checks:
+- all mapped paths exist at pinned HEAD: PASS
+- requirement references exist: PASS
+- all records bind repo/branch/HEAD: PASS
+- ontology entity count preserved: PASS
+- compliance verdict kept separate from location mapping: PASS
+- NEXY.AI implementation repository remained read-only during map construction: PASS
 
-The map must be considered stale when the target branch HEAD changes.
+## Semantics
+- `EXACT`: explicit file-level navigation mapping.
+- `GROUP`: explicit module/directory mapping.
+- `CANDIDATE`: heuristic name/symbol match only.
+- `UNMAPPED`: no safe mapping established in this pass.
+
+Presence is only **E0 implementation-location evidence**. It does not prove requirement satisfaction, runtime behavior, deployment readiness, or physical safety.
+
+The entire map becomes stale when branch HEAD changes.
