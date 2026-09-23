@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0.0",
+  "boundaries": [
+    {
+      "id": "TB-USER-UI",
+      "from": "USER",
+      "to": "UI",
+      "trust": "UNTRUSTED_INPUT",
+      "controls": [
+        "schema/form validation",
+        "no UI authority"
+      ],
+      "failure": "Reject/mark invalid; never infer authoritative state from presentation."
+    },
+    {
+      "id": "TB-UI-API",
+      "from": "UI",
+      "to": "API",
+      "trust": "ZERO_TRUST_BOUNDARY",
+      "controls": [
+        "secure session",
+        "CSRF for mutation",
+        "runtime schema validation",
+        "RBAC"
+      ],
+      "failure": "UNAUTHORIZED/FORBIDDEN/CSRF_INVALID/SCHEMA_VIOLATION"
+    },
+    {
+      "id": "TB-API-CORE",
+      "from": "API",
+      "to": "CORE",
+      "trust": "VALIDATE_AGAIN",
+      "controls": [
+        "directive schema",
+        "LAW precheck",
+        "state guards",
+        "idempotency"
+      ],
+      "failure": "Reject/freeze according to canonical error/state law"
+    },
+    {
+      "id": "TB-CORE-SWARM",
+      "from": "CORE",
+      "to": "SWARM",
+      "trust": "CONTROLLED_WORKER_BOUNDARY",
+      "controls": [
+        "decomposition",
+        "timeouts",
+        "agent adapter",
+        "context sharding"
+      ],
+      "failure": "AGENT_TIMEOUT/DEPENDENCY_FAILURE/SWARM_FREEZE"
+    },
+    {
+      "id": "TB-EXTERNAL-MODEL",
+      "from": "EXTERNAL_AI_MODEL",
+      "to": "SWARM",
+      "trust": "UNTRUSTED_CANDIDATE",
+      "controls": [
+        "prompt-law filter",
+        "adversarial review",
+        "cross verification",
+        "evidence"
+      ],
+      "failure": "Exclude/reject/freeze; never direct-authority release"
+    },
+    {
+      "id": "TB-SWARM-JUDGE",
+      "from": "SWARM",
+      "to": "JUDGE",
+      "trust": "UNTRUSTED_UNTIL_VERIFIED",
+      "controls": [
+        "weighted proof",
+        "evidence",
+        "quorum",
+        "deterministic match"
+      ],
+      "failure": "CONSENSUS_FAILED/EVIDENCE_MISSING/RELEASE_POLICY_FAILED"
+    },
+    {
+      "id": "TB-QUEUE",
+      "from": "QUEUE_PRODUCER",
+      "to": "QUEUE_WORKER",
+      "trust": "REVALIDATE_BOUNDARY",
+      "controls": [
+        "same canonical payload schema",
+        "idempotency key",
+        "stale TTL",
+        "consumer validation"
+      ],
+      "failure": "SCHEMA_VIOLATION/EXPIRED; no execution"
+    },
+    {
+      "id": "TB-VAULT",
+      "from": "CORE_API",
+      "to": "VAULT_DB_BLOB",
+      "trust": "PERSISTENCE_BOUNDARY",
+      "controls": [
+        "OCC",
+        "append-only revisions",
+        "hash/blob verification",
+        "FK/transaction"
+      ],
+      "failure": "VAULT_COMMIT_CONFLICT / rollback metadata transaction"
+    },
+    {
+      "id": "TB-OBS",
+      "from": "SYSTEM_MODULES",
+      "to": "OBS",
+      "trust": "APPEND_ONLY_EVIDENCE_BOUNDARY",
+      "controls": [
+        "EventLog append-only",
+        "AuditLog hash chain",
+        "incident linkage",
+        "request/trace IDs"
+      ],
+      "failure": "Integrity/incident linkage failure"
+    },
+    {
+      "id": "TB-UNIVERSE",
+      "from": "UNIVERSE_RUNTIME",
+      "to": "CORE_PLANE",
+      "trust": "ISOLATED_FUTURE_BOUNDARY",
+      "controls": [
+        "microVM/container/gVisor/WASM",
+        "no shared mutable memory",
+        "capabilities",
+        "quarantine"
+      ],
+      "failure": "kill/quarantine/freeze according to integrity scope"
+    },
+    {
+      "id": "TB-HARDWARE",
+      "from": "SENSORS_ACTUATORS",
+      "to": "RCL",
+      "trust": "PHYSICAL_UNCERTAINTY_BOUNDARY",
+      "controls": [
+        "sensor fusion",
+        "confidence",
+        "Fast/Safe split",
+        "independent Safety MCU"
+      ],
+      "failure": "safe default/STOP/emergency stop"
+    }
+  ]
+}
