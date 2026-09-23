@@ -1,0 +1,46 @@
+{
+  "handoff_id": "HANDOFF-NEXY-EXAMPLE-001",
+  "created_at": "2026-09-24",
+  "role": "BUILDER",
+  "task": "Example only: repair a current DOC-C subsystem",
+  "target": {
+    "repo": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
+  "scope": [
+    "DOC_C_CURRENT_BUILD"
+  ],
+  "inputs": [
+    "requirement IDs",
+    "impact record",
+    "relevant code/test paths"
+  ],
+  "outputs": [
+    "patch commit if authorized",
+    "test/evidence result"
+  ],
+  "claims": [
+    {
+      "class": "IMPLEMENTATION_E0",
+      "statement": "Example claim only; do not treat as real task state."
+    }
+  ],
+  "proof": [],
+  "tests": [],
+  "changes": [],
+  "findings": [],
+  "unresolved": [
+    "Example has no execution proof."
+  ],
+  "next_action": [
+    "Refresh target HEAD before real use."
+  ],
+  "authority": [
+    "DOC-C"
+  ],
+  "freshness": {
+    "status": "EXAMPLE_ONLY",
+    "checked_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  }
+}
