@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "purpose": "Canonical entity taxonomy for NEXY.AI atomic ontology. Type identifies what an object is; it must not be inferred from a name alone.",
+  "types": [
+    {
+      "id": "SYSTEM",
+      "description": "Top-level composed system with independent responsibilities and lifecycle."
+    },
+    {
+      "id": "SUBSYSTEM",
+      "description": "Major contained system below a parent system."
+    },
+    {
+      "id": "MODULE",
+      "description": "Implementation/architecture module with a defined interface."
+    },
+    {
+      "id": "ENGINE",
+      "description": "Active computation/decision/transformation component."
+    },
+    {
+      "id": "LAYER",
+      "description": "Architectural processing/authority layer."
+    },
+    {
+      "id": "SERVICE",
+      "description": "Runtime service or service boundary."
+    },
+    {
+      "id": "RUNTIME",
+      "description": "Execution environment/runtime fabric."
+    },
+    {
+      "id": "KERNEL",
+      "description": "Protected/central enforcement or execution kernel."
+    },
+    {
+      "id": "FABRIC",
+      "description": "Composed execution/orchestration fabric spanning multiple components."
+    },
+    {
+      "id": "PLANE",
+      "description": "Isolation/authority plane."
+    },
+    {
+      "id": "ZONE",
+      "description": "Isolation/resource/security zone."
+    },
+    {
+      "id": "LAW",
+      "description": "Normative rule with authority over behavior."
+    },
+    {
+      "id": "INVARIANT",
+      "description": "Property that must remain true across legal operation/change."
+    },
+    {
+      "id": "PROTOCOL",
+      "description": "Ordered multi-step interaction or recovery/transfer procedure."
+    },
+    {
+      "id": "FSM",
+      "description": "Named finite-state machine."
+    },
+    {
+      "id": "STATE",
+      "description": "State belonging to a specific FSM or state model."
+    },
+    {
+      "id": "EVENT",
+      "description": "Named state-transition/message/event trigger."
+    },
+    {
+      "id": "CONTRACT",
+      "description": "Machine/semantic interface contract with pre/postconditions."
+    },
+    {
+      "id": "SCHEMA",
+      "description": "Structured data/schema definition."
+    },
+    {
+      "id": "DATA_MODEL",
+      "description": "Persistent or logical data object model."
+    },
+    {
+      "id": "MEMORY",
+      "description": "Named memory class/store/behavior."
+    },
+    {
+      "id": "STORAGE",
+      "description": "Persistence/storage subsystem or medium abstraction."
+    },
+    {
+      "id": "LEDGER",
+      "description": "Append-only/traceable ledger or authoritative record structure."
+    },
+    {
+      "id": "REGISTRY",
+      "description": "Versioned registry/catalog with governance rules."
+    },
+    {
+      "id": "QUEUE",
+      "description": "Queued execution or event work subsystem."
+    },
+    {
+      "id": "ADAPTER",
+      "description": "Provider/tool/runtime adapter boundary."
+    },
+    {
+      "id": "GATEWAY",
+      "description": "Boundary gateway routing/validating external/internal requests."
+    },
+    {
+      "id": "CONTROLLER",
+      "description": "Control component coordinating actions/resources."
+    },
+    {
+      "id": "MONITOR",
+      "description": "Monitoring/inspection/health/visualization component."
+    },
+    {
+      "id": "DETECTOR",
+      "description": "Component that detects anomalies/conditions."
+    },
+    {
+      "id": "FILTER",
+      "description": "Component that accepts/rejects/transforms based on rules."
+    },
+    {
+      "id": "RESOLVER",
+      "description": "Component resolving ambiguity/conflicts/selection."
+    },
+    {
+      "id": "ORCHESTRATOR",
+      "description": "Component scheduling/routing coordinated work."
+    },
+    {
+      "id": "AUDITOR",
+      "description": "Component/process that independently checks work/state."
+    },
+    {
+      "id": "SYNTHESIZER",
+      "description": "Component combining verified inputs into a result/law."
+    },
+    {
+      "id": "EXTRACTOR",
+      "description": "Component extracting normalized/reusable structures."
+    },
+    {
+      "id": "UI_SURFACE",
+      "description": "Named human-facing interface/control surface."
+    },
+    {
+      "id": "ROLE",
+      "description": "Human/system actor role with defined permissions."
+    },
+    {
+      "id": "SECURITY_BOUNDARY",
+      "description": "Trust/isolation/authorization boundary."
+    },
+    {
+      "id": "HARDWARE_PATH",
+      "description": "Physical/real-time hardware execution or safety path."
+    },
+    {
+      "id": "TOOLCHAIN",
+      "description": "Build/asset/compiler toolchain with reproducibility semantics."
+    },
+    {
+      "id": "EVIDENCE_CLASS",
+      "description": "Evidence/proof artifact class or deployment evidence obligation."
+    },
+    {
+      "id": "CONFIG",
+      "description": "Named configuration/default/threshold set."
+    },
+    {
+      "id": "ERROR",
+      "description": "Named error/failure code or class."
+    },
+    {
+      "id": "WORKFLOW",
+      "description": "Defined reusable operational/build/audit workflow."
+    },
+    {
+      "id": "CONCEPT",
+      "description": "Source-defined concept not yet specific enough to classify as an executable component."
+    }
+  ],
+  "classification_rules": [
+    "Do not classify every source phrase containing Engine/System as an ENGINE/SYSTEM automatically.",
+    "A source claim can produce multiple entities only when responsibilities/boundaries are independently meaningful.",
+    "Historical/vision entities remain entities but must carry non-current scope/status.",
+    "Alias is not a second entity unless the source assigns different semantics.",
+    "FSM state names are scoped by FSM; identical labels in different FSMs are different STATE entities."
+  ]
+}
