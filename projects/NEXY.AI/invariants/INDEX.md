@@ -1,29 +1,21 @@
 # NEXY.AI Invariant Registry
 
-## Purpose
-Machine-readable list of properties that a patch, migration, runtime path, or design evolution must not violate.
+Canonical:
+- `invariants.jsonl`
+- `invariant.schema.json`
+- `validation-report.md`
 
-## Files
-- `invariants.jsonl` — 50 normalized invariants.
-- `invariant.schema.json` — record schema.
-- `INDEX.md` — semantics and severity.
+This registry answers:
 
-## Severity
-Severity here is **AI-CONTEXT engineering impact metadata**, unless a source explicitly provides its own severity:
-- S0 informational
-- S1 local/noncritical
-- S2 degraded feature
-- S3 major subsystem correctness
-- S4 release/reliability blocker
-- S5 authority/integrity/safety/data-corruption class
+> **What must remain true even when a subsystem is changed?**
 
-## Patch use
-`CHANGE → affected systems → invariants → required tests/evidence → legal status`
+Each invariant links to:
+- affected ontology entities;
+- source requirements;
+- source ranges;
+- observed implementation locations;
+- violation behavior.
 
-## Evidence boundary
-Empty `evidence_refs` means no proof has yet been registered. Code/test references do not automatically make an invariant VERIFIED.
+Status remains `NOT_EVALUATED` until tests/evidence establish compliance.
 
-## Count
-Total: **50**
-- S4: 8
-- S5: 42
+S0–S5 severity is intentionally deferred to the Error/Incident Taxonomy so this registry does not invent a severity scale prematurely.
