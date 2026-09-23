@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/schema/task-contract.schema.json",
+  "title": "AI-CONTEXT Task Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "objective",
+    "target",
+    "authorized_scope",
+    "protected_scope",
+    "authority_sources",
+    "preconditions",
+    "success_invariants",
+    "required_evidence",
+    "stop_conditions",
+    "deliverables"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "branch": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expected_head": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authorized_scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "protected_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "success_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_evidence": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "E0_PRESENCE",
+          "E1_STATIC",
+          "E2_UNIT",
+          "E3_INTEGRATION",
+          "E4_E2E",
+          "E5_RUNTIME",
+          "E6_DEPLOYMENT",
+          "E7_PHYSICAL"
+        ]
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "deliverables": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
