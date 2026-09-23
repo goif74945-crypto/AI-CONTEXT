@@ -1,0 +1,352 @@
+[
+  {
+    "canonical_id": "SYS-NEXY",
+    "canonical_name": "NEXY",
+    "alias": "Nexus of Execution",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 283,
+        "end_paragraph": 3219
+      }
+    ]
+  },
+  {
+    "canonical_id": "LAW-USER-LAW",
+    "canonical_name": "USER LAW",
+    "alias": "User Law",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 303,
+        "end_paragraph": 3219
+      }
+    ]
+  },
+  {
+    "canonical_id": "LAW-SYSTEM",
+    "canonical_name": "NEXY::LAW",
+    "alias": "LAW",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 562,
+        "end_paragraph": 8957
+      }
+    ]
+  },
+  {
+    "canonical_id": "LAW-SYSTEM",
+    "canonical_name": "NEXY::LAW",
+    "alias": "System Law",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 562,
+        "end_paragraph": 8957
+      }
+    ]
+  },
+  {
+    "canonical_id": "KERNEL-CORE",
+    "canonical_name": "NEXY::CORE",
+    "alias": "CORE",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 562,
+        "end_paragraph": 8957
+      }
+    ]
+  },
+  {
+    "canonical_id": "KERNEL-CORE",
+    "canonical_name": "NEXY::CORE",
+    "alias": "Core AI Control Hub",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 562,
+        "end_paragraph": 8957
+      }
+    ]
+  },
+  {
+    "canonical_id": "ENGINE-JUDGE",
+    "canonical_name": "NEXY::JUDGE",
+    "alias": "JUDGE",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 571,
+        "end_paragraph": 8957
+      }
+    ]
+  },
+  {
+    "canonical_id": "ENGINE-JUDGE",
+    "canonical_name": "NEXY::JUDGE",
+    "alias": "Deterministic Judge",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 571,
+        "end_paragraph": 8957
+      }
+    ]
+  },
+  {
+    "canonical_id": "FABRIC-SWARM",
+    "canonical_name": "NEXY::SWARM",
+    "alias": "SWARM",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 577,
+        "end_paragraph": 8957
+      }
+    ]
+  },
+  {
+    "canonical_id": "STORAGE-VAULT",
+    "canonical_name": "VAULT",
+    "alias": "Project Memory Vault",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 396,
+        "end_paragraph": 9371
+      }
+    ]
+  },
+  {
+    "canonical_id": "STORAGE-VAULT",
+    "canonical_name": "VAULT",
+    "alias": "NEXY Vault",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 396,
+        "end_paragraph": 9371
+      }
+    ]
+  },
+  {
+    "canonical_id": "LAYER-HUMAN-GRAVITY",
+    "canonical_name": "Human Gravity Layer",
+    "alias": "Human Layer",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 23,
+        "end_paragraph": 3219
+      }
+    ]
+  },
+  {
+    "canonical_id": "CONCEPT-CONVERSATION-CONTINUITY",
+    "canonical_name": "Conversation Continuity",
+    "alias": "Conversation Continuity Illusion",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 72,
+        "end_paragraph": 3219
+      }
+    ]
+  },
+  {
+    "canonical_id": "UI-FRONT",
+    "canonical_name": "NEXY::FRONT",
+    "alias": "FRONT",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 652,
+        "end_paragraph": 3219
+      }
+    ]
+  },
+  {
+    "canonical_id": "UI-PULSE",
+    "canonical_name": "NEXY::PULSE",
+    "alias": "PULSE",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 652,
+        "end_paragraph": 3219
+      }
+    ]
+  },
+  {
+    "canonical_id": "UI-DIALOG",
+    "canonical_name": "NEXY::DIALOG",
+    "alias": "DIALOG",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 652,
+        "end_paragraph": 3219
+      }
+    ]
+  },
+  {
+    "canonical_id": "UI-GUARD",
+    "canonical_name": "NEXY::GUARD",
+    "alias": "GUARD",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 682,
+        "end_paragraph": 3219
+      }
+    ]
+  },
+  {
+    "canonical_id": "UI-VIEW",
+    "canonical_name": "NEXY::VIEW",
+    "alias": "VIEW",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 500,
+        "end_paragraph": 9371
+      }
+    ]
+  },
+  {
+    "canonical_id": "UI-RUN",
+    "canonical_name": "NEXY::RUN",
+    "alias": "RUN",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 500,
+        "end_paragraph": 9371
+      }
+    ]
+  },
+  {
+    "canonical_id": "UI-FORGE",
+    "canonical_name": "NEXY::FORGE",
+    "alias": "FORGE",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 500,
+        "end_paragraph": 9371
+      }
+    ]
+  },
+  {
+    "canonical_id": "UI-COMPANION",
+    "canonical_name": "NEXY::COMPANION",
+    "alias": "COMPANION",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 652,
+        "end_paragraph": 3219
+      }
+    ]
+  },
+  {
+    "canonical_id": "MODULE-AUTH",
+    "canonical_name": "AUTH",
+    "alias": "Auth",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 7103,
+        "end_paragraph": 8957
+      }
+    ]
+  },
+  {
+    "canonical_id": "SERVICE-OTAC",
+    "canonical_name": "OTAC Service",
+    "alias": "One-Time Alphanumeric Code",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 7103,
+        "end_paragraph": 9371
+      }
+    ]
+  },
+  {
+    "canonical_id": "MODULE-OBS",
+    "canonical_name": "OBS",
+    "alias": "Observability",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 7103,
+        "end_paragraph": 8957
+      }
+    ]
+  },
+  {
+    "canonical_id": "QUEUE-EXECUTION",
+    "canonical_name": "Execution Queue",
+    "alias": "Queue",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 7103,
+        "end_paragraph": 8957
+      }
+    ]
+  }
+]
