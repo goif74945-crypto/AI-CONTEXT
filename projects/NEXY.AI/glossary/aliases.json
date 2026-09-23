@@ -1,0 +1,2178 @@
+{
+  "schema_version": "1.0.0",
+  "source_revision": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "aliases": [
+    {
+      "canonical_id": "ENGINE-LO3-AE",
+      "canonical": "Adversarial Engine",
+      "alias": "AE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10008
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10008,
+          "end_paragraph": 10030
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO3-AO",
+      "canonical": "Agent Orchestrator",
+      "alias": "AO",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9982
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9982,
+          "end_paragraph": 9997
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "MODULE-AUTH",
+      "canonical": "AUTH",
+      "alias": "Auth",
+      "era": "DOC_C_CURRENT_BUILD_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 7103
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_BUILD",
+      "scope": [
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 7103,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYSTEM-BTS",
+      "canonical": "Bounded Truth System",
+      "alias": "BTS",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9580
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9580,
+          "end_paragraph": 9631
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO3-CA",
+      "canonical": "Consensus Arbiter",
+      "alias": "CA",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10031
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10031,
+          "end_paragraph": 10042
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-L1O-CE",
+      "canonical": "Constraint Engine",
+      "alias": "CE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9758
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9758,
+          "end_paragraph": 9768
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "DATA-CIR",
+      "canonical": "Canonical Intermediate Representation",
+      "alias": "CIR",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 5155
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 5155,
+          "end_paragraph": 7102
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAYER-CIRL",
+      "canonical": "Context & Intent Resolution Layer",
+      "alias": "CIRL",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10840
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10840,
+          "end_paragraph": 10979
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-CLE",
+      "canonical": "Constraint Law Engine",
+      "alias": "CLE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10850
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10850,
+          "end_paragraph": 10979
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "UI-COMPANION",
+      "canonical": "NEXY::COMPANION",
+      "alias": "COMPANION",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 652
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 652,
+          "end_paragraph": 3219
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "CONCEPT-CONVERSATION-CONTINUITY",
+      "canonical": "Conversation Continuity",
+      "alias": "Conversation Continuity Illusion",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 72
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 72,
+          "end_paragraph": 3219
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "KERNEL-CORE",
+      "canonical": "NEXY::CORE",
+      "alias": "CORE",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 562
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 562,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "KERNEL-CORE",
+      "canonical": "NEXY::CORE",
+      "alias": "Core AI Control Hub",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 562
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 562,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "PLANE-CORE",
+      "canonical": "CORE PLANE",
+      "alias": "CORE PLANE / CORE ZONE",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 3220
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 3220,
+          "end_paragraph": 5154
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO2-CRE",
+      "canonical": "Conflict Resolution Engine",
+      "alias": "CRE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10207
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10207,
+          "end_paragraph": 10222
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO3-CSE",
+      "canonical": "Context Sharding Engine",
+      "alias": "CSE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9962
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9962,
+          "end_paragraph": 9981
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "DATA-CSU",
+      "canonical": "Constitutional Settlement Unit",
+      "alias": "CSU",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 4055
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 4055,
+          "end_paragraph": 5154
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "REGISTRY-CTS",
+      "canonical": "Certainty Tier System",
+      "alias": "CTS",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9588
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9588,
+          "end_paragraph": 9631
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO2-CVE",
+      "canonical": "Cross-Verification Engine",
+      "alias": "CVE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10197
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10197,
+          "end_paragraph": 10206
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO2-DE",
+      "canonical": "Lo2 Decomposition Engine",
+      "alias": "DE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10172
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10172,
+          "end_paragraph": 10184
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-JUDGE",
+      "canonical": "NEXY::JUDGE",
+      "alias": "Deterministic Judge",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 571
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 571,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-L1O",
+      "canonical": "NEXY.L1o",
+      "alias": "Deterministic Logic Core",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9472
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9472,
+          "end_paragraph": 99934
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-L1O-DGE",
+      "canonical": "Dependency Graph Engine",
+      "alias": "DGE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9769
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9769,
+          "end_paragraph": 9788
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "UI-DIALOG",
+      "canonical": "NEXY::DIALOG",
+      "alias": "DIALOG",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 652
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 652,
+          "end_paragraph": 3219
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-DIS",
+      "canonical": "Deterministic Instruction Set",
+      "alias": "DIS",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9494
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9494,
+          "end_paragraph": 9522
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAYER-DSL",
+      "canonical": "Decision Synthesis Layer",
+      "alias": "DSL",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10871
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10871,
+          "end_paragraph": 10979
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAYER-ECL",
+      "canonical": "Execution Control Layer",
+      "alias": "ECL",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10889
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10889,
+          "end_paragraph": 10979
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-L1O-EPE",
+      "canonical": "Entropy & Pruning Engine",
+      "alias": "EPE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9801
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9801,
+          "end_paragraph": 9818
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "PATH-FAST",
+      "canonical": "Fast Path",
+      "alias": "Fast Brain",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10423
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10423,
+          "end_paragraph": 10755
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "UI-FORGE",
+      "canonical": "NEXY::FORGE",
+      "alias": "FORGE",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 500
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 500,
+          "end_paragraph": 9371
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "UI-FRONT",
+      "canonical": "NEXY::FRONT",
+      "alias": "FRONT",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 652
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 652,
+          "end_paragraph": 3219
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LEDGER-USL",
+      "canonical": "Universal State Ledger",
+      "alias": "Global Ledger",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9523
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE",
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9523,
+          "end_paragraph": 10337
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "UI-GUARD",
+      "canonical": "NEXY::GUARD",
+      "alias": "GUARD",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 682
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 682,
+          "end_paragraph": 3219
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "CONTROLLER-HOST-GUARDIAN",
+      "canonical": "Guardian Daemon",
+      "alias": "Host Guardian",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 3220
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 3220,
+          "end_paragraph": 4054
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYSTEM-HSP",
+      "canonical": "Host Survival Protocol",
+      "alias": "HSP",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 3220
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 3220,
+          "end_paragraph": 4054
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAYER-HUMAN-GRAVITY",
+      "canonical": "Human Gravity Layer",
+      "alias": "Human Layer",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 23
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 23,
+          "end_paragraph": 3219
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAYER-L1O-ICL",
+      "canonical": "Input Canonicalization Layer",
+      "alias": "ICL",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9735
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9735,
+          "end_paragraph": 9757
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAYER-LO2-IIL",
+      "canonical": "Input Intake Layer",
+      "alias": "IIL",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10154
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10154,
+          "end_paragraph": 10171
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "KERNEL-SAFETY",
+      "canonical": "Safety Kernel",
+      "alias": "Immutable Safety Kernel",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10565
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10565,
+          "end_paragraph": 10814
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAYER-IRL",
+      "canonical": "Input Reality Layer",
+      "alias": "IRL",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10822
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10822,
+          "end_paragraph": 10979
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-JUDGE",
+      "canonical": "NEXY::JUDGE",
+      "alias": "JUDGE",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 571
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 571,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-L1O",
+      "canonical": "NEXY.L1o",
+      "alias": "L1o",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9472
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9472,
+          "end_paragraph": 99934
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-CODE-BRAIN",
+      "canonical": "Code-Brain L25 Engine",
+      "alias": "L25 Code-Brain",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9500
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9500,
+          "end_paragraph": 99934
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAW-SYSTEM",
+      "canonical": "NEXY::LAW",
+      "alias": "LAW",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 562
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 562,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO2-LEE",
+      "canonical": "Law Evolution Engine",
+      "alias": "LEE",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10232
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE",
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10232,
+          "end_paragraph": 10243
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-LO2",
+      "canonical": "NEXY.Lo2",
+      "alias": "Lo2",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9523
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE",
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9523,
+          "end_paragraph": 10337
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-LO3",
+      "canonical": "NEXY.Lo3",
+      "alias": "Lo3",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9503
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9503,
+          "end_paragraph": 10145
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYSTEM-ROBOT-REALTIME-LO3",
+      "canonical": "Real-Time Lo3",
+      "alias": "Lo3 mini-swarm",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10588
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10588,
+          "end_paragraph": 10600
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO2-LQE",
+      "canonical": "Logic Quanta Extractor",
+      "alias": "LQE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10185
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10185,
+          "end_paragraph": 10196
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO2-LSE",
+      "canonical": "Law Synthesis Engine",
+      "alias": "LSE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10223
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10223,
+          "end_paragraph": 10231
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-L1O-MPG",
+      "canonical": "Multi-Path Generator",
+      "alias": "MPG",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9789
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9789,
+          "end_paragraph": 9800
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "FABRIC-NCF",
+      "canonical": "NEXY Creative Fabric",
+      "alias": "NCF",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 5155
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 5155,
+          "end_paragraph": 7102
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-NEXY",
+      "canonical": "NEXY",
+      "alias": "Nexus of Execution",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 283
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 283,
+          "end_paragraph": 3219
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "STORAGE-VAULT",
+      "canonical": "VAULT",
+      "alias": "NEXY Vault",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 396
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 396,
+          "end_paragraph": 9371
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "MODULE-OBS",
+      "canonical": "OBS",
+      "alias": "Observability",
+      "era": "DOC_C_CURRENT_BUILD_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 7103
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_BUILD",
+      "scope": [
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 7103,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO3-OC",
+      "canonical": "Output Controller",
+      "alias": "OC",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10054
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10054,
+          "end_paragraph": 10059
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SERVICE-OTAC",
+      "canonical": "OTAC Service",
+      "alias": "One-Time Alphanumeric Code",
+      "era": "DOC_C_CURRENT_BUILD_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 7103
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_BUILD",
+      "scope": [
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 7103,
+          "end_paragraph": 9371
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-L1O-OS",
+      "canonical": "Output Synthesizer",
+      "alias": "OS",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9838
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9838,
+          "end_paragraph": 9851
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO3-PE",
+      "canonical": "Proposer Engine",
+      "alias": "PE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9998
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9998,
+          "end_paragraph": 10007
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "STORAGE-VAULT",
+      "canonical": "VAULT",
+      "alias": "Project Memory Vault",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 396
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 396,
+          "end_paragraph": 9371
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "UI-PULSE",
+      "canonical": "NEXY::PULSE",
+      "alias": "PULSE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 652
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 652,
+          "end_paragraph": 3219
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "QUEUE-EXECUTION",
+      "canonical": "Execution Queue",
+      "alias": "Queue",
+      "era": "DOC_C_CURRENT_BUILD_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 7103
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_BUILD",
+      "scope": [
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 7103,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYSTEM-RCL",
+      "canonical": "NEXY Robot Control Layer",
+      "alias": "RCL-L600",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10338
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10338,
+          "end_paragraph": 10814
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "REGISTRY-RCS",
+      "canonical": "Rejection Reason Code Registry",
+      "alias": "RCS",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 6530
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 6530,
+          "end_paragraph": 7102
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "PATH-FAST",
+      "canonical": "Fast Path",
+      "alias": "Reflex System",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10423
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10423,
+          "end_paragraph": 10755
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYSTEM-RCL",
+      "canonical": "NEXY Robot Control Layer",
+      "alias": "Robot Control Layer",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10338
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10338,
+          "end_paragraph": 10814
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-L1O-RSA",
+      "canonical": "Recursive Self-Auditor",
+      "alias": "RSA",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9819
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9819,
+          "end_paragraph": 9837
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAYER-RSEL",
+      "canonical": "Risk & Safety Evaluation Layer",
+      "alias": "RSEL",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10880
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10880,
+          "end_paragraph": 10979
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "UI-RUN",
+      "canonical": "NEXY::RUN",
+      "alias": "RUN",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 500
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 500,
+          "end_paragraph": 9371
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "PATH-SAFE",
+      "canonical": "Safe Path",
+      "alias": "Safe Brain",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10423
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10423,
+          "end_paragraph": 10755
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-LO2",
+      "canonical": "NEXY.Lo2",
+      "alias": "Singularity Core",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9523
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE",
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9523,
+          "end_paragraph": 10337
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-LO2",
+      "canonical": "NEXY.Lo2",
+      "alias": "Singularity Hub",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9523
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE",
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9523,
+          "end_paragraph": 10337
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-L1O",
+      "canonical": "NEXY.L1o",
+      "alias": "Sovereign Core",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9472
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9472,
+          "end_paragraph": 99934
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "FABRIC-SWARM",
+      "canonical": "NEXY::SWARM",
+      "alias": "SWARM",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 577
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 577,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-LO3",
+      "canonical": "NEXY.Lo3",
+      "alias": "Swarm Governor",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9503
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9503,
+          "end_paragraph": 10145
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "SYS-LO3",
+      "canonical": "NEXY.Lo3",
+      "alias": "Swarm Overlord Governor",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9503
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9503,
+          "end_paragraph": 10145
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO2-DISTRIBUTION",
+      "canonical": "Distribution Engine",
+      "alias": "Sync",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10255
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10255,
+          "end_paragraph": 10262
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAW-SYSTEM",
+      "canonical": "NEXY::LAW",
+      "alias": "System Law",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 562
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 562,
+          "end_paragraph": 8957
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO3-TDE",
+      "canonical": "Task Decomposition Engine",
+      "alias": "TDE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9942
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9942,
+          "end_paragraph": 9961
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "FABRIC-TRINITY",
+      "canonical": "NEXY Intelligence Trinity",
+      "alias": "The Trinity Integration",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9472
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE",
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9472,
+          "end_paragraph": 10337
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LEDGER-USL",
+      "canonical": "Universal State Ledger",
+      "alias": "Universal Truth Matrix",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9523
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE",
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9523,
+          "end_paragraph": 10337
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAW-USER-LAW",
+      "canonical": "USER LAW",
+      "alias": "User Law",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 303
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_B_SYSTEM_LAW"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 303,
+          "end_paragraph": 3219
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LEDGER-USL",
+      "canonical": "Universal State Ledger",
+      "alias": "USL",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 9523
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE",
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 9523,
+          "end_paragraph": 10337
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "ENGINE-LO3-VE",
+      "canonical": "Verification Engine",
+      "alias": "VE",
+      "era": "SOURCE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 10043
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 10043,
+          "end_paragraph": 10053
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "UI-VIEW",
+      "canonical": "NEXY::VIEW",
+      "alias": "VIEW",
+      "era": "CURRENT_CANON_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 500
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "CURRENT_CANON",
+      "scope": [
+        "DOC_D_PRODUCT_DESIGN"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 500,
+          "end_paragraph": 9371
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    },
+    {
+      "canonical_id": "LAYER-GAME-RENDER",
+      "canonical": "GPU Render Layer",
+      "alias": "WebGPU Render",
+      "era": "FUTURE_DESIGN_ERA",
+      "valid_from": {
+        "source_revision": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "paragraph": 5155
+      },
+      "valid_to": null,
+      "status": "SOURCE_ALIAS",
+      "entity_status": "SOURCE_DESIGN",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "source_range": [
+        {
+          "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+          "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+          "start_paragraph": 5155,
+          "end_paragraph": 6530
+        }
+      ],
+      "notes": "valid_from/valid_to are source-range navigation markers, not calendar dates or guaranteed semantic activation dates."
+    }
+  ]
+}
