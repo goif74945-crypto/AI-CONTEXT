@@ -1,0 +1,596 @@
+{
+  "schema_version": "1.0.0",
+  "semantics": {
+    "EXACT": "Explicit file-level implementation/navigation mapping.",
+    "GROUP": "Explicit directory/module-level implementation/navigation mapping.",
+    "CANDIDATE": "Heuristic name/symbol match only; must be read before mutation.",
+    "UNMAPPED": "No safe implementation location established."
+  },
+  "exact": {
+    "KERNEL-CORE": [
+      "packages/orch-core/orchestrator.ts",
+      "packages/orch-core/state-machine.ts",
+      "packages/orch-core/system-state.ts",
+      "core-kernel/src/kernel/mod.rs",
+      "core-kernel/src/lib.rs"
+    ],
+    "LAW-SYSTEM": [
+      "packages/law/index.ts",
+      "packages/law/precheck.ts",
+      "packages/law/prerelease.ts",
+      "core-kernel/src/engine/law_enforcer.rs"
+    ],
+    "LAW-USER-LAW": [
+      "packages/law/precheck.ts",
+      "core-kernel/src/engine/law_enforcer.rs"
+    ],
+    "ENGINE-JUDGE": [
+      "packages/judge/consensus.ts",
+      "packages/judge/scoring.ts",
+      "packages/judge/quorum.ts"
+    ],
+    "FABRIC-SWARM": [
+      "packages/swarm/pipeline.ts",
+      "packages/engine/swarm.ts",
+      "core-kernel/src/engine/v_swarm.rs",
+      "core-kernel/src/engine/debate_arena.rs"
+    ],
+    "STORAGE-VAULT": [
+      "prisma/schema.prisma",
+      "apps/web/app/api/vault/commit/route.ts",
+      "packages/vault/integrity.ts",
+      "packages/vault/versioning.ts"
+    ],
+    "MODULE-AUTH": [
+      "packages/api/auth.ts",
+      "packages/auth/otac.ts",
+      "packages/auth/session.ts"
+    ],
+    "SERVICE-OTAC": [
+      "packages/auth/otac.ts",
+      "apps/web/app/api/auth/request-otac/route.ts",
+      "apps/web/app/api/auth/verify-otac/route.ts"
+    ],
+    "SERVICE-SESSION": [
+      "packages/auth/session.ts",
+      "apps/web/app/api/session/me/route.ts",
+      "apps/web/app/api/auth/me/route.ts",
+      "apps/web/app/api/auth/logout/route.ts"
+    ],
+    "MODULE-CSRF": [
+      "packages/auth/csrf.ts",
+      "apps/web/lib/csrf.ts"
+    ],
+    "MODULE-RATE-LIMIT": [
+      "packages/api/middleware/rate-limit.ts"
+    ],
+    "MODULE-RBAC": [
+      "packages/api/auth.ts",
+      "apps/web/components/PermissionGate.tsx"
+    ],
+    "ENGINE-IDEMPOTENCY": [
+      "packages/queue/dispatch.ts",
+      "packages/queue/jobs.ts",
+      "apps/web/app/api/vault/commit/route.ts"
+    ],
+    "ENGINE-RELEASE-POLICY": [
+      "packages/orch-core/release-policy.ts",
+      "packages/contracts/release-policy.ts",
+      "packages/validation/release-policy.schema.ts",
+      "packages/law/prerelease.ts"
+    ],
+    "FSM-EXECUTION": [
+      "packages/orch-core/state-machine.ts",
+      "packages/core/vnext-state-matrix.ts",
+      "core-kernel/src/kernel/fsm_state.rs"
+    ],
+    "FSM-QUEUE-JOB": [
+      "packages/queue/jobs.ts",
+      "packages/queue/run-state.ts"
+    ],
+    "CONFIG-VNEXT-DEFAULTS": [
+      "packages/api/vnext-config.ts",
+      "core-kernel/src/kernel/vnext_matrix.rs"
+    ],
+    "CONFIG-RELEASE-THRESHOLDS": [
+      "packages/api/vnext-config.ts",
+      "packages/orch-core/release-policy.ts"
+    ],
+    "CONFIG-PIPELINE-TIMEOUTS": [
+      "packages/api/vnext-config.ts",
+      "packages/swarm/pipeline.ts"
+    ],
+    "CONFIG-AUTH-LIMITS": [
+      "packages/api/vnext-config.ts",
+      "packages/auth/otac.ts",
+      "packages/auth/session.ts"
+    ],
+    "CONFIG-RETENTION": [
+      "packages/api/vnext-config.ts",
+      "packages/obs/index.ts"
+    ],
+    "CONTRACT-SYSTEM-ENVELOPE": [
+      "packages/contracts/envelope.ts",
+      "packages/validation/api.schema.ts"
+    ],
+    "CONTRACT-DIRECTIVE": [
+      "packages/contracts/directive.ts",
+      "packages/validation/directive.schema.ts"
+    ],
+    "CONTRACT-EVIDENCE": [
+      "packages/contracts/evidence.ts",
+      "packages/validation/evidence.schema.ts"
+    ],
+    "CONTRACT-CONSENSUS-RESULT": [
+      "packages/contracts/consensus.ts"
+    ],
+    "CONTRACT-RELEASE-POLICY-RESULT": [
+      "packages/contracts/release-policy.ts",
+      "packages/validation/release-policy.schema.ts"
+    ],
+    "CONTRACT-API-REQUEST-OTAC": [
+      "apps/web/app/api/auth/request-otac/route.ts"
+    ],
+    "CONTRACT-API-VERIFY-OTAC": [
+      "apps/web/app/api/auth/verify-otac/route.ts"
+    ],
+    "CONTRACT-API-SESSION-ME": [
+      "apps/web/app/api/session/me/route.ts"
+    ],
+    "CONTRACT-API-LOGOUT": [
+      "apps/web/app/api/auth/logout/route.ts"
+    ],
+    "CONTRACT-API-DIRECTIVES": [
+      "apps/web/app/api/directives/route.ts"
+    ],
+    "CONTRACT-API-DIRECTIVE-GET": [
+      "apps/web/app/api/directives/[id]/route.ts"
+    ],
+    "CONTRACT-API-RUN-GET": [
+      "apps/web/app/api/runs/[id]/route.ts"
+    ],
+    "CONTRACT-API-FREEZE-RECOVER": [
+      "apps/web/app/api/freeze/recover/route.ts"
+    ],
+    "CONTRACT-API-VAULT-COMMIT": [
+      "apps/web/app/api/vault/commit/route.ts"
+    ],
+    "CONTRACT-API-ARTIFACT-REVISIONS": [
+      "apps/web/app/api/artifacts/[id]/revisions/route.ts"
+    ],
+    "CONTRACT-API-INCIDENT-GET": [
+      "apps/web/app/api/incidents/[id]/route.ts"
+    ],
+    "CONTRACT-API-AUDIT-LOGS": [
+      "apps/web/app/api/audit-logs/route.ts"
+    ],
+    "DATA-EVENT-LOG": [
+      "prisma/schema.prisma",
+      "packages/obs/event-log.ts"
+    ],
+    "DATA-AUDIT-LOG": [
+      "prisma/schema.prisma",
+      "packages/obs/audit-log.ts"
+    ],
+    "DATA-SECURITY-INCIDENT": [
+      "prisma/schema.prisma",
+      "packages/obs/incidents.ts"
+    ],
+    "DATA-FREEZE-INCIDENT": [
+      "prisma/schema.prisma",
+      "packages/obs/incidents.ts",
+      "packages/law/freeze.ts"
+    ],
+    "UI-FRONT": [
+      "apps/web/app/page.tsx"
+    ],
+    "UI-PULSE": [
+      "apps/web/app/status/page.tsx",
+      "apps/web/components/FreezeStatusBar.tsx",
+      "apps/web/components/StatusBadge.tsx"
+    ],
+    "UI-DIALOG": [
+      "apps/web/app/unknown/page.tsx"
+    ],
+    "UI-GUARD": [
+      "apps/web/components/ModeGuardPanel.tsx"
+    ],
+    "UI-VIEW": [
+      "apps/web/app/vault/page.tsx",
+      "apps/web/app/audit/page.tsx"
+    ],
+    "UI-RUN": [
+      "apps/web/app/directives/page.tsx",
+      "apps/web/app/runs/page.tsx"
+    ],
+    "UI-FORGE": [
+      "apps/web/app/settings/page.tsx",
+      "apps/web/app/owner/page.tsx"
+    ],
+    "UI-S1-FRONT-DOOR": [
+      "apps/web/app/page.tsx"
+    ],
+    "UI-S2-OTAC": [
+      "apps/web/app/login/page.tsx",
+      "apps/web/components/OtacLoginForm.tsx"
+    ],
+    "UI-S3-HOME": [
+      "apps/web/app/page.tsx"
+    ],
+    "UI-S4-DIRECTIVE-CREATE": [
+      "apps/web/app/directives/new/page.tsx"
+    ],
+    "UI-S5-DIRECTIVE-DETAIL": [
+      "apps/web/app/directives/[id]/page.tsx"
+    ],
+    "UI-S6-RUN-DETAIL": [
+      "apps/web/app/runs/[id]/page.tsx"
+    ],
+    "UI-S7-FREEZE-INCIDENT": [
+      "apps/web/app/freeze/recover/page.tsx",
+      "apps/web/components/FreezeRecoverModal.tsx",
+      "apps/web/components/FreezeStatusBar.tsx"
+    ],
+    "UI-S8-ARTIFACT-LIST": [
+      "apps/web/app/vault/page.tsx",
+      "apps/web/components/VaultArtifactCard.tsx"
+    ],
+    "UI-S9-REVISION-HISTORY": [
+      "apps/web/app/vault/[id]/page.tsx"
+    ],
+    "UI-S10-AUDIT": [
+      "apps/web/app/audit/page.tsx",
+      "apps/web/components/AuditLogTable.tsx"
+    ],
+    "UI-S11-OWNER-CONTROL": [
+      "apps/web/app/owner/page.tsx"
+    ],
+    "UI-S12-IDK": [
+      "apps/web/app/unknown/page.tsx"
+    ],
+    "UI-L1O-COMMAND-MATRIX": [
+      "apps/web/components/CommandMatrix.tsx"
+    ],
+    "UI-COMP-PERMISSION-GATE": [
+      "apps/web/components/PermissionGate.tsx"
+    ],
+    "UI-COMP-LOADING-SKELETON": [
+      "apps/web/components/LoadingSpinner.tsx"
+    ],
+    "SYS-L1O": [
+      "core-kernel/src/engine/l10_cognition.rs",
+      "core-kernel/src/icl.rs",
+      "core-kernel/src/engine/dag_engine.rs",
+      "packages/phase-f/l1o/void-architect.ts"
+    ],
+    "LAYER-L1O-ICL": [
+      "core-kernel/src/icl.rs"
+    ],
+    "ENGINE-L1O-DGE": [
+      "core-kernel/src/engine/dag_engine.rs"
+    ],
+    "ENGINE-ATOMIC-NODE-EXPANSION": [
+      "core-kernel/src/engine/dag_engine.rs"
+    ],
+    "ENGINE-CODE-BRAIN": [
+      "packages/phase-f/l1o/void-architect.ts"
+    ],
+    "ENGINE-PREDICTIVE-STRUCTURING": [
+      "packages/phase-f/l1o/predictive-structuring.ts"
+    ],
+    "MEMORY-ARCHITECT-RECALL": [
+      "packages/phase-f/l1o/recall.ts"
+    ],
+    "SYSTEM-EVIDENCE-PACK-GENERATOR": [
+      "packages/phase-f/l1o/evidence-pack.ts"
+    ],
+    "SECURITY-MASTER-KEY": [
+      "packages/phase-f/l1o/master-key.ts"
+    ],
+    "LAYER-IRL": [
+      "core-kernel/src/api/payload_parser.rs",
+      "core-kernel/src/icl.rs"
+    ],
+    "ENGINE-CLE": [
+      "core-kernel/src/engine/law_enforcer.rs"
+    ],
+    "LAYER-DSL": [
+      "core-kernel/src/engine/dsl.rs"
+    ],
+    "LAYER-RSEL": [
+      "core-kernel/src/engine/rsel.rs"
+    ],
+    "LAYER-ECL": [
+      "core-kernel/src/engine/ecl.rs"
+    ],
+    "LAW-RUNTIME-DETERMINISM": [
+      "packages/phase-f/sovereign/runtime-determinism.ts",
+      "core-kernel/src/engine/fixed128_math.rs",
+      "core-kernel/src/arch_lock.rs"
+    ],
+    "LAW-STORAGE-IO": [
+      "packages/phase-f/sovereign/storage-io-containment.ts",
+      "core-kernel/src/storage/io_law.rs"
+    ],
+    "SYS-LO2": [
+      "packages/engine/lo2.ts",
+      "packages/phase-f/lo2/refinement.ts",
+      "packages/phase-f/lo2/federation.ts"
+    ],
+    "ENGINE-LO2-LSE": [
+      "packages/phase-f/lo2/refinement.ts"
+    ],
+    "ENGINE-LO2-LEE": [
+      "packages/phase-f/lo2/refinement.ts"
+    ],
+    "ENGINE-LO2-DISTRIBUTION": [
+      "packages/phase-f/lo2/federation.ts"
+    ],
+    "SYS-LO3": [
+      "packages/engine/swarm.ts",
+      "packages/swarm/pipeline.ts",
+      "packages/phase-f/lo3/cage.ts",
+      "packages/phase-f/lo3/prompt-law-filter.ts",
+      "core-kernel/src/engine/v_swarm.rs"
+    ],
+    "SECURITY-CAGE": [
+      "packages/phase-f/lo3/cage.ts"
+    ],
+    "FILTER-PROMPT-LAW": [
+      "packages/phase-f/lo3/prompt-law-filter.ts"
+    ],
+    "ENGINE-LO3-AE": [
+      "core-kernel/src/engine/debate_arena.rs",
+      "packages/swarm/pipeline.ts"
+    ],
+    "ENGINE-LO3-AO": [
+      "packages/swarm/pipeline.ts"
+    ],
+    "CONTRACT-APPSPEC": [
+      "packages/phase-f/universe/appspec.ts"
+    ],
+    "REGISTRY-CROSS-UNIVERSE-PERMISSION": [
+      "packages/phase-f/universe/cross-app.ts"
+    ],
+    "LAW-VERSION-EVOLUTION": [
+      "packages/phase-f/sovereign/versioning-law.ts"
+    ],
+    "LAW-HUMAN-OPERATIONAL": [
+      "packages/phase-f/sovereign/operational-determinism.ts"
+    ],
+    "LAW-IMPLEMENTATION-VERIFICATION": [
+      "packages/phase-f/sovereign/impl-verify.ts"
+    ],
+    "SYSTEM-HSP": [
+      "packages/phase-f/resilience/guardian.ts",
+      "packages/phase-f/resilience/auto-recovery-controller.ts"
+    ],
+    "CONTROLLER-HOST-GUARDIAN": [
+      "packages/phase-f/resilience/guardian.ts"
+    ],
+    "PROTOCOL-HSR-A": [
+      "packages/phase-f/resilience/auto-recovery-controller.ts"
+    ],
+    "PROTOCOL-DETERMINISTIC-RESURRECTION": [
+      "packages/phase-f/resilience/pre-death-seal.ts",
+      "packages/phase-f/resilience/pre-kill-snapshot.ts"
+    ],
+    "STORAGE-WAL": [
+      "core-kernel/src/storage/shadow_wal.rs",
+      "packages/phase-f/sovereign/safe-write.ts"
+    ],
+    "PROTOCOL-WAL-FIRST": [
+      "packages/phase-f/sovereign/safe-write.ts"
+    ],
+    "LAW-CRASH-RECOVERY": [
+      "packages/phase-f/resilience/pre-death-seal.ts",
+      "packages/phase-f/resilience/pre-kill-snapshot.ts"
+    ],
+    "ZONE-TIER-0": [
+      "packages/phase-f/universe/sandbox-stack/tier0-firecracker.ts"
+    ],
+    "ZONE-TIER-1": [
+      "packages/phase-f/universe/sandbox-stack/tier1-kata.ts",
+      "packages/phase-f/universe/sandbox-stack/tier1-runc.ts"
+    ],
+    "ZONE-TIER-2": [
+      "packages/phase-f/universe/sandbox-stack/tier2-gvisor.ts"
+    ],
+    "ZONE-TIER-3": [
+      "packages/phase-f/universe/sandbox-stack/tier3-wasm.ts"
+    ],
+    "DETECTOR-CORE-INTEGRITY": [
+      "packages/phase-f/universe/sandbox-stack/escape-detector.ts"
+    ],
+    "RUNTIME-WASM-GAME": [
+      "packages/phase-f/game/runtime/wasm-runtime.ts",
+      "packages/phase-f/game/runtime/wasm.ts"
+    ],
+    "LAYER-GAME-RENDER": [
+      "packages/phase-f/game/runtime/webgpu-runtime.ts",
+      "packages/phase-f/game/runtime/webgpu.ts"
+    ],
+    "CONTRACT-GAMESPEC": [
+      "packages/phase-f/game/spec/game-spec.ts"
+    ],
+    "DATA-SPEC-HASH": [
+      "packages/phase-f/game/spec/spec-hash.ts"
+    ],
+    "LAW-GAME-STATE": [
+      "packages/phase-f/game/state/state-firewall.ts",
+      "packages/phase-f/game/state/firewall.ts"
+    ],
+    "DATA-GAMEPLAY-STATE": [
+      "packages/phase-f/game/state/gameplay-state.ts",
+      "packages/phase-f/game/state/gameplay.ts"
+    ],
+    "DATA-SOVEREIGN-GAME-STATE": [
+      "packages/phase-f/game/state/sovereign-state.ts",
+      "packages/phase-f/game/state/sovereign.ts"
+    ],
+    "PROTOCOL-CROSS-SHARD-TRANSFER": [
+      "packages/phase-f/game/cross-shard.ts",
+      "packages/phase-f/game/g12-transfer.ts"
+    ],
+    "TOOLCHAIN-AAA-DETERMINISTIC": [
+      "packages/phase-f/game/deterministic-toolchain.ts"
+    ],
+    "TOOLCHAIN-MESH": [
+      "packages/phase-f/game/mesh-canon.ts"
+    ],
+    "LAW-GAME-NUMERIC": [
+      "packages/phase-f/game/numeric-law.ts"
+    ],
+    "LAW-WORLD-TOPOLOGY": [
+      "packages/phase-f/game/world-partition.ts"
+    ],
+    "ENGINE-GAME-AI-CROWD": [
+      "packages/phase-f/game/crowd-budget.ts"
+    ],
+    "PROTOCOL-GAME-NETWORK": [
+      "packages/phase-f/game/netcode.ts"
+    ],
+    "LAW-GAME-ECONOMY": [
+      "packages/phase-f/game/csu-ledger.ts"
+    ],
+    "FABRIC-NCF": [
+      "packages/phase-f/game/ncf-registry.ts"
+    ],
+    "REGISTRY-CAPABILITY": [
+      "packages/phase-f/game/ncf-registry.ts"
+    ],
+    "DATA-CAPABILITY-NODE": [
+      "packages/phase-f/game/ncf-registry.ts"
+    ],
+    "FSM-CAPABILITY-REGISTRY": [
+      "packages/phase-f/game/ncf-registry.ts"
+    ],
+    "SYSTEM-DUAL-BRAIN": [
+      "packages/phase-f/robotics/rcl.ts"
+    ],
+    "LAYER-PERCEPTION": [
+      "packages/phase-f/robotics/safe-brain/perception.ts",
+      "packages/phase-f/robotics/safe-brain/sensor-fusion.ts"
+    ],
+    "ENGINE-SENSOR-FUSION": [
+      "packages/phase-f/robotics/safe-brain/sensor-fusion.ts"
+    ],
+    "LAYER-ROBOT-DECISION": [
+      "packages/phase-f/robotics/decision-layer.ts",
+      "packages/phase-f/robotics/safe-brain/planner.ts"
+    ],
+    "LAYER-ROBOT-CONTROL": [
+      "packages/phase-f/robotics/safe-brain/actuator-bridge.ts"
+    ],
+    "KERNEL-SAFETY": [
+      "packages/phase-f/robotics/safe-brain/safety-verifier.ts"
+    ],
+    "RUNTIME-ROS2": [
+      "packages/phase-f/robotics/ros2-bridge.ts"
+    ],
+    "HARDWARE-FAST-MCU": [
+      "packages/phase-f/robotics/firmware/fast_brain.c",
+      "packages/phase-f/robotics/firmware/fast_brain.h"
+    ],
+    "HARDWARE-SAFETY-MCU": [
+      "packages/phase-f/robotics/firmware/reflex_table.c"
+    ],
+    "ENGINE-DETERMINISTIC-ACTION": [
+      "packages/phase-f/robotics/decision-layer.ts"
+    ],
+    "SYSTEM-ROBOT-FAILURE-HANDLING": [
+      "packages/phase-f/robotics/self-debug.ts",
+      "packages/phase-f/robotics/zero-trust.ts"
+    ]
+  },
+  "group": {
+    "SYS-NEXY": [
+      "packages/",
+      "apps/web/",
+      "core-kernel/"
+    ],
+    "ENGINE-JUDGE": [
+      "packages/judge/"
+    ],
+    "FABRIC-SWARM": [
+      "packages/swarm/"
+    ],
+    "STORAGE-VAULT": [
+      "packages/vault/"
+    ],
+    "GATEWAY-API": [
+      "packages/api/",
+      "apps/web/app/api/"
+    ],
+    "MODULE-AUTH": [
+      "packages/auth/"
+    ],
+    "MODULE-OBS": [
+      "packages/obs/"
+    ],
+    "QUEUE-EXECUTION": [
+      "packages/queue/"
+    ],
+    "ADAPTER-AGENT": [
+      "packages/swarm/adapters/"
+    ],
+    "FABRIC-SOVEREIGN": [
+      "packages/phase-f/sovereign/",
+      "packages/phase-f/universe/",
+      "packages/phase-f/resilience/"
+    ],
+    "KERNEL-SOVEREIGN": [
+      "packages/phase-f/sovereign/"
+    ],
+    "RUNTIME-UNIVERSE": [
+      "packages/phase-f/universe/"
+    ],
+    "FABRIC-GAME": [
+      "packages/phase-f/game/"
+    ],
+    "SYSTEM-RCL": [
+      "packages/phase-f/robotics/"
+    ]
+  },
+  "family_rules": [
+    {
+      "id_prefix": "STATE-EXEC-",
+      "paths": [
+        "packages/orch-core/state-machine.ts",
+        "packages/core/vnext-state-matrix.ts"
+      ],
+      "status": "EXACT"
+    },
+    {
+      "id_prefix": "STATE-JOB-",
+      "paths": [
+        "packages/queue/jobs.ts",
+        "packages/queue/run-state.ts"
+      ],
+      "status": "EXACT"
+    },
+    {
+      "entity_type": "ERROR",
+      "paths": [
+        "packages/contracts/errors.ts"
+      ],
+      "status": "EXACT"
+    },
+    {
+      "ids": [
+        "DATA-USER",
+        "DATA-SESSION",
+        "DATA-PROJECT",
+        "DATA-ARTIFACT",
+        "DATA-REVISION",
+        "DATA-COMMIT",
+        "DATA-DIRECTIVE-RECORD",
+        "DATA-PIPELINE-RUN"
+      ],
+      "paths": [
+        "prisma/schema.prisma"
+      ],
+      "status": "EXACT"
+    }
+  ]
+}
