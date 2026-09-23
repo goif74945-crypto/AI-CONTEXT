@@ -1,0 +1,119 @@
+{
+  "id": "FSM-CREATOR-PUBLICATION",
+  "name": "Creator Publication FSM",
+  "scope": "FUTURE_ARCHITECTURE",
+  "authority": [
+    "SOURCE_DESIGN"
+  ],
+  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "states": [
+    "CREATED",
+    "BUILT",
+    "SEALED",
+    "VALIDATED",
+    "ANCHOR_QUEUED",
+    "FINALIZED",
+    "PUBLIC_ACTIVE"
+  ],
+  "transitions": [
+    {
+      "from": "CREATED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required validation/anchor condition for next state is satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "BUILT",
+      "failure": [
+        "Remain non-public; reject/freeze according to violated invariant"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "BUILT",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required validation/anchor condition for next state is satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "SEALED",
+      "failure": [
+        "Remain non-public; reject/freeze according to violated invariant"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "SEALED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required validation/anchor condition for next state is satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "VALIDATED",
+      "failure": [
+        "Remain non-public; reject/freeze according to violated invariant"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "VALIDATED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required validation/anchor condition for next state is satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "ANCHOR_QUEUED",
+      "failure": [
+        "Remain non-public; reject/freeze according to violated invariant"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "ANCHOR_QUEUED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required validation/anchor condition for next state is satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "FINALIZED",
+      "failure": [
+        "Remain non-public; reject/freeze according to violated invariant"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    },
+    {
+      "from": "FINALIZED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required validation/anchor condition for next state is satisfied"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "PUBLIC_ACTIVE",
+      "failure": [
+        "Remain non-public; reject/freeze according to violated invariant"
+      ],
+      "audit_event": "STATE_TRANSITION"
+    }
+  ],
+  "global_rules": [
+    "Not FINALIZED => not public.",
+    "Post-seal modification requires rebuild/new hash."
+  ],
+  "source_refs": [
+    "projects/NEXY.AI/deep/sovereign-fabric.md"
+  ],
+  "code_refs": [],
+  "evidence_status": "NOT_VERIFIED_RUNTIME"
+}
