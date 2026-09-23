@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Migration Record",
+  "type": "object",
+  "required": [
+    "migration_id",
+    "order",
+    "name",
+    "up_path",
+    "up_sha",
+    "down_script_present",
+    "purpose",
+    "affected_objects",
+    "change_classes",
+    "rollback_contract",
+    "rollback_verified",
+    "status"
+  ],
+  "properties": {
+    "migration_id": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "up_path": {
+      "type": "string"
+    },
+    "up_sha": {
+      "type": "string"
+    },
+    "down_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "down_sha": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "down_script_present": {
+      "type": "boolean"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "affected_objects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "change_classes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback_contract": {
+      "type": "string"
+    },
+    "rollback_verified": {
+      "type": "string"
+    },
+    "source_authority": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}
