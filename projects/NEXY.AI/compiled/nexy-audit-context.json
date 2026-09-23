@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "NEXY-AUDIT-CONTEXT",
+  "project": "NEXY.AI",
+  "compiled_at": "2026-09-24",
+  "target_snapshot": {
+    "repo": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
+  "load_first": [
+    "projects/NEXY.AI/traceability/requirement-trace.jsonl",
+    "projects/NEXY.AI/verification/requirement-test-matrix.jsonl",
+    "projects/NEXY.AI/evidence/evidence-ledger.jsonl",
+    "projects/NEXY.AI/failures/failure-library.jsonl",
+    "projects/NEXY.AI/regression/regressions.jsonl",
+    "projects/NEXY.AI/chaos/catalog.jsonl",
+    "projects/NEXY.AI/impact/system-impact.jsonl",
+    "projects/NEXY.AI/playbooks/audit/INDEX.md",
+    "rules/VERIFICATION.md"
+  ],
+  "current_evidence_truth": {
+    "doc_e_required": 12,
+    "pass": 0,
+    "blocked": 12,
+    "exact_current_head": 0,
+    "verdict": "NOT_VERIFIED / NON_DEPLOYABLE"
+  },
+  "audit_laws": [
+    "Presence is E0 only.",
+    "Absence from one search is not MISSING.",
+    "Evidence must match claim class and exact relevant revision/environment.",
+    "Historical PASS is historical only.",
+    "Preserve UNKNOWN/CONFLICT/BLOCKED instead of guessing."
+  ]
+}
