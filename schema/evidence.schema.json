@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/schema/evidence.schema.json",
+  "title": "AI-CONTEXT Evidence Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "claim",
+    "status",
+    "evidence_class",
+    "target",
+    "method",
+    "observed"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PARTIAL",
+        "BLOCKED",
+        "NOT_VERIFIED",
+        "UNKNOWN",
+        "CONFLICT"
+      ]
+    },
+    "evidence_class": {
+      "enum": [
+        "E0_PRESENCE",
+        "E1_STATIC",
+        "E2_UNIT",
+        "E3_INTEGRATION",
+        "E4_E2E",
+        "E5_RUNTIME",
+        "E6_DEPLOYMENT",
+        "E7_PHYSICAL"
+      ]
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "branch": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "environment": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "command_or_test": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expected": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "timestamp": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
