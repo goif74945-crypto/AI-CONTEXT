@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/schema/requirement-ledger.schema.json",
+  "title": "AI-CONTEXT Requirement Ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ledger_id",
+    "target",
+    "requirements"
+  ],
+  "properties": {
+    "ledger_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "requirement",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requirement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authority": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "implementation_paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "PARTIAL",
+              "BLOCKED",
+              "NOT_VERIFIED",
+              "UNKNOWN",
+              "CONFLICT",
+              "MISSING",
+              "SCOPE"
+            ]
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
