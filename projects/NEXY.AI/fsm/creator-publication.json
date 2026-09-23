@@ -1,11 +1,21 @@
 {
-  "id": "FSM-CREATOR-PUBLICATION",
+  "fsm_id": "FSM-CREATOR-PUBLICATION",
   "name": "Creator Publication FSM",
-  "scope": "FUTURE_ARCHITECTURE",
+  "kind": "SOURCE_DEFINED",
   "authority": [
-    "SOURCE_DESIGN"
+    "CONSTITUTIONAL_SOURCE"
   ],
-  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "scope": [
+    "FUTURE_ARCHITECTURE"
+  ],
+  "source_range": [
+    {
+      "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "start_paragraph": 4055,
+      "end_paragraph": 5154
+    }
+  ],
   "states": [
     "CREATED",
     "BUILT",
@@ -15,105 +25,75 @@
     "FINALIZED",
     "PUBLIC_ACTIVE"
   ],
+  "events": [],
+  "event_ownership": {},
   "transitions": [
     {
       "from": "CREATED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required validation/anchor condition for next state is satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "BUILT",
-      "failure": [
-        "Remain non-public; reject/freeze according to violated invariant"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "BUILT",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required validation/anchor condition for next state is satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "SEALED",
-      "failure": [
-        "Remain non-public; reject/freeze according to violated invariant"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "SEALED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required validation/anchor condition for next state is satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "VALIDATED",
-      "failure": [
-        "Remain non-public; reject/freeze according to violated invariant"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "VALIDATED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required validation/anchor condition for next state is satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "ANCHOR_QUEUED",
-      "failure": [
-        "Remain non-public; reject/freeze according to violated invariant"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "ANCHOR_QUEUED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required validation/anchor condition for next state is satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "FINALIZED",
-      "failure": [
-        "Remain non-public; reject/freeze according to violated invariant"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "FINALIZED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required validation/anchor condition for next state is satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "PUBLIC_ACTIVE",
-      "failure": [
-        "Remain non-public; reject/freeze according to violated invariant"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     }
   ],
-  "global_rules": [
-    "Not FINALIZED => not public.",
-    "Post-seal modification requires rebuild/new hash."
+  "invalid_transition_behavior": "Illegal transition is prohibited; exact event/guard names are not established by captured source.",
+  "recovery_semantics": "UNKNOWN",
+  "audit_event_semantics": "UNKNOWN",
+  "implementation_mapping_status": "UNMAPPED",
+  "implementation_refs": [],
+  "requirement_ids": [
+    "REQ-CONST-019"
   ],
-  "source_refs": [
-    "projects/NEXY.AI/deep/sovereign-fabric.md"
-  ],
-  "code_refs": [],
-  "evidence_status": "NOT_VERIFIED_RUNTIME"
+  "test_refs": [],
+  "alignment_status": "SOURCE_SEQUENCE_ONLY",
+  "alignment_notes": [
+    "PUBLIC_ACTIVE must not precede FINALIZED."
+  ]
 }
