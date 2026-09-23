@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "NEXY-BUILD-CONTEXT",
+  "project": "NEXY.AI",
+  "compiled_at": "2026-09-24",
+  "target_snapshot": {
+    "repo": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
+  "freshness_rule": "If target HEAD differs, refresh implementation/navigation/traceability before current implementation claims.",
+  "load_first": [
+    "projects/NEXY.AI/requirements/requirements.jsonl",
+    "projects/NEXY.AI/ontology/entities.jsonl",
+    "projects/NEXY.AI/graphs/dependency-graph.json",
+    "projects/NEXY.AI/implementation/system-to-code.jsonl",
+    "projects/NEXY.AI/repo/navigation-index.jsonl",
+    "projects/NEXY.AI/contracts/registry.json",
+    "projects/NEXY.AI/invariants/invariants.jsonl",
+    "projects/NEXY.AI/fsm/INDEX.md",
+    "projects/NEXY.AI/config/config-registry.json",
+    "projects/NEXY.AI/impact/system-impact.jsonl",
+    "projects/NEXY.AI/playbooks/build/INDEX.md"
+  ],
+  "current_defaults": {
+    "release": {
+      "confidence_min": 0.85,
+      "deterministic_match_min": 0.9,
+      "quorum_min": 2,
+      "evidence_min": 2
+    },
+    "pipeline_ms": {
+      "decompose": 5000,
+      "agent_default": 30000,
+      "agent_min": 10000,
+      "agent_max": 60000,
+      "critical_agent": 30000,
+      "cross_verify": 15000,
+      "consensus": 10000,
+      "emit": 5000,
+      "global_cap": 120000
+    },
+    "auth": {
+      "otac_length": 10,
+      "otac_ttl_ms": 300000,
+      "max_attempts": 5,
+      "resend_cooldown_ms": 60000,
+      "lock_window_ms": 900000,
+      "session_ttl_ms": 21600000,
+      "concurrent_sessions_per_user": 5
+    },
+    "queue": {
+      "stale_job_ttl_ms": 900000,
+      "max_concurrent_pipeline_runs": 10
+    }
+  },
+  "build_order": [
+    "Contract Lock",
+    "Core Engine",
+    "Law Engine",
+    "Swarm",
+    "Judge",
+    "Vault",
+    "Auth",
+    "Observability",
+    "API",
+    "UI"
+  ],
+  "forbidden_shortcuts": [
+    "UI before Core",
+    "Swarm before Law",
+    "storage before contracts",
+    "API without validation",
+    "deploy before tests"
+  ]
+}
