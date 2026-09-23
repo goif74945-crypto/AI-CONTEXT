@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0.0",
+  "stages": [
+    {
+      "stage": "DEV",
+      "authority_class": "AI_CONTEXT_OPERATIONAL_STAGE",
+      "purpose": "Local/branch development quality gate before shared integration.",
+      "required_evidence": [
+        "E1_STATIC",
+        "E2_UNIT"
+      ],
+      "required_checks": [
+        "schema/type/static validation",
+        "focused unit tests",
+        "contract snapshot consistency",
+        "forbidden dependency checks for touched modules"
+      ],
+      "source_basis": [
+        "DOC-C test gates"
+      ],
+      "notes": [
+        "Stage name/aggregation is AI-CONTEXT operational structure; individual checks are source-derived."
+      ]
+    },
+    {
+      "stage": "TEST",
+      "authority_class": "AI_CONTEXT_OPERATIONAL_STAGE",
+      "purpose": "Integrated test gate for current build semantics.",
+      "required_evidence": [
+        "E3_INTEGRATION"
+      ],
+      "required_checks": [
+        "API schema",
+        "FSM transitions",
+        "LAW/release policy",
+        "RBAC",
+        "auth abuse",
+        "queue idempotency",
+        "Vault append-only/migration integration"
+      ],
+      "source_basis": [
+        "DOC-C test gates",
+        "DOC-E E1-E7"
+      ],
+      "notes": [
+        "Requires executed evidence, not file presence."
+      ]
+    },
+    {
+      "stage": "STAGING",
+      "authority_class": "AI_CONTEXT_OPERATIONAL_STAGE",
+      "purpose": "Target-like environment proof before canary/production.",
+      "required_evidence": [
+        "E4_E2E",
+        "E5_RUNTIME"
+      ],
+      "required_checks": [
+        "critical UI E2E",
+        "migration apply+rollback",
+        "monitoring/alarm verification",
+        "incident/freeze drill",
+        "queue worker readiness"
+      ],
+      "source_basis": [
+        "DOC-C",
+        "DOC-D",
+        "DOC-E E3,E7,E8,E9"
+      ],
+      "notes": [
+        "Environment stage name is operational framework; proof obligations are source-derived."
+      ]
+    },
+    {
+      "stage": "CANARY",
+      "authority_class": "AI_CONTEXT_OPERATIONAL_STAGE",
+      "purpose": "Limited exact-artifact deployment and rollback observation.",
+      "required_evidence": [
+        "E6_DEPLOYMENT"
+      ],
+      "required_checks": [
+        "exact artifact identity",
+        "health/smoke",
+        "freeze path",
+        "monitoring active",
+        "rollback readiness",
+        "no unresolved S4/S5 blocker"
+      ],
+      "source_basis": [
+        "DOC-E runbook/signoff/rollback expectations"
+      ],
+      "notes": [
+        "Canary is an AI-CONTEXT operational stage; source does not define a canonical canary topology."
+      ]
+    },
+    {
+      "stage": "PROD",
+      "authority_class": "DOC_E_DEPLOYMENT_GATE",
+      "purpose": "Production deployment approval.",
+      "required_evidence": [
+        "DOC-E-E1",
+        "DOC-E-E2",
+        "DOC-E-E3",
+        "DOC-E-E4",
+        "DOC-E-E5",
+        "DOC-E-E6",
+        "DOC-E-E7",
+        "DOC-E-E8",
+        "DOC-E-E9",
+        "DOC-E-E10",
+        "DOC-E-E11",
+        "DOC-E-E12"
+      ],
+      "required_checks": [
+        "engineering signoff",
+        "security signoff",
+        "migration signoff",
+        "rollback verification",
+        "monitoring verification",
+        "exact commit/environment evidence freshness"
+      ],
+      "source_basis": [
+        "DOC-E"
+      ],
+      "notes": [
+        "Missing/stale required evidence => NON_DEPLOYABLE."
+      ]
+    }
+  ]
+}
