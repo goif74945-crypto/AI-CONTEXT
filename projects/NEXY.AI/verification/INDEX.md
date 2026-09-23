@@ -1,7 +1,14 @@
-# NEXY.AI Acceptance / Test Matrix
+# NEXY.AI Verification Registry
 
-One row per requirement. No test mapping and no executed evidence never equals PASS.
+Canonical:
+- `test-index.jsonl` — 108 indexed test files at pinned implementation HEAD.
+- `requirement-test-matrix.jsonl` — requirement → mapped tests.
+- `validation-report.md`
+- `checkpoints/` — streaming test extraction.
 
-Pinned HEAD: `9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
+Statuses:
+- `EXPLICIT` = mapping is directly implied by test/domain naming and requirement class.
+- `CANDIDATE` = useful likely test relation; inspect before relying on it.
+- `NONE` = no test safely mapped yet.
 
-Current status is deliberately `NOT_TESTED_CURRENT_HEAD` until exact-head execution evidence is ingested.
+Test existence never implies execution or PASS.
