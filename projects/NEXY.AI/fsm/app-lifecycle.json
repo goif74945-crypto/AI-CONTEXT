@@ -1,11 +1,21 @@
 {
-  "id": "FSM-APP-LIFECYCLE",
-  "name": "Application Lifecycle FSM",
-  "scope": "FUTURE_ARCHITECTURE",
+  "fsm_id": "FSM-APP-LIFECYCLE",
+  "name": "App Lifecycle FSM",
+  "kind": "SOURCE_DEFINED",
   "authority": [
-    "CANON_LOCKED_SOURCE"
+    "CONSTITUTIONAL_SOURCE"
   ],
-  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "scope": [
+    "FUTURE_ARCHITECTURE"
+  ],
+  "source_range": [
+    {
+      "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "start_paragraph": 4055,
+      "end_paragraph": 5154
+    }
+  ],
   "states": [
     "CREATED",
     "BUILT",
@@ -16,121 +26,135 @@
     "TERMINATED",
     "ARCHIVED"
   ],
+  "events": [],
+  "event_ownership": {},
   "transitions": [
     {
       "from": "CREATED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "BUILT",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "BUILT",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "SEALED",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "SEALED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "DEPLOYED",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "DEPLOYED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "ACTIVE",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "ACTIVE",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "FROZEN",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "FROZEN",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "TERMINATED",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "TERMINATED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required source-defined preconditions satisfied"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "ARCHIVED",
-      "failure": [
-        "Reject illegal transition; apply enclosing freeze/failure law where specified"
-      ],
-      "audit_event": "STATE_TRANSITION"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     }
   ],
-  "global_rules": [
-    "Spec mutation requires rebuild/new spec_hash.",
-    "Security/resource failure may enter FROZEN/TERMINATED according to containment law."
+  "invalid_transition_behavior": "Illegal transition is prohibited; exact event/guard names are not established by captured source.",
+  "recovery_semantics": "UNKNOWN",
+  "audit_event_semantics": "UNKNOWN",
+  "implementation_mapping_status": "CANDIDATE",
+  "implementation_refs": [
+    {
+      "path": "packages/phase-f/game/aaaa-fabric.ts",
+      "blob_sha": "ac94e52f94b25802cc8b2cf1e62c907485c8085f",
+      "symbols": [
+        "AdversarialChallenge",
+        "ChallengeKind",
+        "ChallengeLog",
+        "ConsensusResult",
+        "CycleBridge",
+        "CycleFrameResult",
+        "DeploymentGate",
+        "DeploymentGateRegistry",
+        "DeploymentStatus",
+        "GameEvent",
+        "GameEventLog",
+        "GameShard",
+        "GameSpec",
+        "GameSpecPatch",
+        "GpuPipelineConfig",
+        "LifecycleEvent",
+        "PlayerAction",
+        "RenderFrame",
+        "ShardStatus",
+        "SpecRegistry",
+        "SpecRegistryEntry",
+        "StateVote",
+        "WasmShardRuntime",
+        "WasmTickResult",
+        "WebGpuRenderer",
+        "WorldSnapshot"
+      ]
+    },
+    {
+      "path": "packages/phase-f/game/state/firewall.ts",
+      "blob_sha": "ee0e1fe77e4da349715292ce9ddbe450d8f9d3c8",
+      "symbols": [
+        "AdversarialChallenge",
+        "ChallengeKind",
+        "ChallengeLog",
+        "LifecycleEvent",
+        "all",
+        "createChallengeLog",
+        "createLifecycleAuditLog",
+        "entries",
+        "if",
+        "issue",
+        "issueChallenge",
+        "openChallenges",
+        "record",
+        "resolve",
+        "resolveChallenge",
+        "rollbackToSnapshot"
+      ]
+    }
   ],
-  "source_refs": [
-    "projects/NEXY.AI/deep/constitutional-locks.md",
-    "projects/NEXY.AI/deep/sovereign-fabric.md"
-  ],
-  "code_refs": [],
-  "evidence_status": "NOT_VERIFIED_RUNTIME"
+  "requirement_ids": [],
+  "test_refs": [],
+  "alignment_status": "SOURCE_SEQUENCE_ONLY",
+  "alignment_notes": []
 }
