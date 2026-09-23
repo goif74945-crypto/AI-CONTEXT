@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "source_revision": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "parsed_nonempty_paragraphs": 10979
+  },
+  "entity_count": 516,
+  "relationship_count": 862,
+  "alias_count": 86,
+  "by_entity_type": {
+    "ADAPTER": 1,
+    "CONCEPT": 7,
+    "CONFIG": 5,
+    "CONTRACT": 22,
+    "CONTROLLER": 2,
+    "DATA_MODEL": 38,
+    "DETECTOR": 4,
+    "ENGINE": 51,
+    "AUDITOR": 2,
+    "SYNTHESIZER": 2,
+    "RESOLVER": 2,
+    "EXTRACTOR": 1,
+    "ORCHESTRATOR": 1,
+    "FILTER": 4,
+    "ERROR": 30,
+    "EVENT": 9,
+    "EVIDENCE_CLASS": 12,
+    "FABRIC": 5,
+    "FSM": 8,
+    "GATEWAY": 1,
+    "HARDWARE_PATH": 7,
+    "INVARIANT": 6,
+    "KERNEL": 4,
+    "LAW": 29,
+    "LAYER": 14,
+    "LEDGER": 3,
+    "MEMORY": 14,
+    "MODULE": 7,
+    "MONITOR": 5,
+    "PLANE": 3,
+    "PROTOCOL": 18,
+    "QUEUE": 1,
+    "REGISTRY": 8,
+    "ROLE": 11,
+    "RUNTIME": 5,
+    "SECURITY_BOUNDARY": 4,
+    "SERVICE": 4,
+    "STATE": 61,
+    "STORAGE": 3,
+    "SYSTEM": 23,
+    "SUBSYSTEM": 1,
+    "TOOLCHAIN": 7,
+    "UI_SURFACE": 62,
+    "ZONE": 9
+  },
+  "by_status": {
+    "CURRENT_BUILD": 105,
+    "CONFLICT": 1,
+    "SOURCE_DESIGN": 334,
+    "CURRENT_CANON": 70,
+    "HISTORICAL": 6
+  },
+  "by_scope": {
+    "DOC_C_CURRENT_BUILD": 113,
+    "HISTORICAL": 6,
+    "FUTURE_ARCHITECTURE": 207,
+    "DOC_D_PRODUCT_DESIGN": 66,
+    "CURRENT_ARCHITECTURE": 119,
+    "DOC_B_SYSTEM_LAW": 8,
+    "DOC_E_DEPLOYMENT_EVIDENCE": 12
+  },
+  "by_relationship_type": {
+    "PART_OF": 515,
+    "REQUIRES": 283,
+    "SECURES": 3,
+    "PERSISTS_TO": 4,
+    "VALIDATES": 4,
+    "GOVERNS": 16,
+    "RECOVERS": 3,
+    "FEEDS": 9,
+    "IMPLEMENTS": 4,
+    "CALLS": 2,
+    "EMITS": 5,
+    "OVERRIDES": 3,
+    "PERSISTS": 3,
+    "OBSERVES": 4,
+    "CONSUMES": 4
+  },
+  "checkpoints": [
+    {
+      "id": "01",
+      "domain": "Core/Human/DOC-C/DOC-D/DOC-E",
+      "entity_count": 118
+    },
+    {
+      "id": "02",
+      "domain": "Sovereign/Constitutional/Game/NCF/Capability Governance",
+      "entity_count": 145
+    },
+    {
+      "id": "03",
+      "domain": "L1o/Lo3/Lo2/Robotics/Final Architecture",
+      "entity_count": 122
+    },
+    {
+      "id": "04",
+      "domain": "Atomic gaps: errors/routes/UI/economy/capability classes/vision/final subcomponents",
+      "entity_count": 131
+    }
+  ],
+  "known_limits": [
+    "This is a source ontology, not an implementation audit.",
+    "implementation_refs/test_refs/evidence_refs intentionally remain empty until mapped against current NEXY implementation repositories.",
+    "Exact object count is tied to ontology rules and this exact source revision; a new source revision requires incremental re-ingestion.",
+    "Some early vision objects remain HISTORICAL or CONFLICT rather than being silently removed."
+  ]
+}
