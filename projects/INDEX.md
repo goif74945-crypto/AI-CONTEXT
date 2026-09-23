@@ -17,3 +17,4 @@
     - [Capability Governance / Chaos](./NEXY.AI/deep/capability-registry-chaos.md)
     - [Robotics / RCL](./NEXY.AI/deep/robotics-rcl.md)
     - [Final Architecture](./NEXY.AI/deep/final-architecture-cross-system.md)
+  - [Atomic Ontology](./NEXY.AI/ontology/INDEX.md)
