@@ -1,0 +1,95 @@
+{
+  "snapshot_id": "NEXY-HEALTH-20260924",
+  "observed_at": "2026-09-24",
+  "ai_context": {
+    "repository": "goif74945-crypto/AI-CONTEXT",
+    "branch": "main",
+    "head": "a69bd3df773ced97f80287abf2e33c9b8fd3cba8"
+  },
+  "target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
+  "project_intelligence": {
+    "ontology": {
+      "entities": 516,
+      "relationships": 863,
+      "structural_validation": "PASS"
+    },
+    "requirements": {
+      "count": 262,
+      "structural_validation": "PASS"
+    },
+    "invariants": {
+      "count": 50
+    },
+    "failure_library": {
+      "count": 24,
+      "structural_validation": "PASS"
+    },
+    "regression_ledger": {
+      "count": 24
+    },
+    "known_good_baselines": {
+      "count": 18
+    },
+    "project_skills": {
+      "count": 22,
+      "status": "MATERIALIZED"
+    },
+    "golden_examples": {
+      "count": 10
+    },
+    "negative_examples": {
+      "count": 15
+    },
+    "performance_budgets": {
+      "count": 18
+    },
+    "fuzz_chaos_scenarios": {
+      "count": 21
+    },
+    "migrations": {
+      "count": 4,
+      "rollback_current_head": "NOT_VERIFIED"
+    }
+  },
+  "governance": {
+    "unresolved": [
+      "CONFLICT-RCL-LATENCY-001"
+    ],
+    "scope_status": "EXPLICIT_CURRENT/FUTURE/DEFERRED/EXCLUDED/EXPERIMENTAL/HISTORICAL/SUPERSEDED"
+  },
+  "implementation": {
+    "map_status": "PINNED_E0",
+    "target_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+    "warning": "Presence/navigation is not runtime proof."
+  },
+  "evidence": {
+    "doc_e_required": 12,
+    "pass": 0,
+    "blocked": 12,
+    "exact_current_head": 0,
+    "freshness": "STALE_FOR_CURRENT_HEAD"
+  },
+  "release": {
+    "verdict": "NON_DEPLOYABLE",
+    "verification": "NOT_VERIFIED",
+    "external_signoff": "BLOCKED"
+  },
+  "capabilities": {
+    "ai_context_write": "AVAILABLE_AND_AUTHORIZED",
+    "nexy_repo_technical_push": "AVAILABLE",
+    "nexy_repo_task_mutation": "REQUIRES_EXPLICIT_AUTHORIZATION",
+    "runtime_execution": "UNKNOWN",
+    "deployment": "UNKNOWN/NOT_AUTHORIZED"
+  },
+  "health_summary": {
+    "project_intelligence_structure": "STRONG_AND_EXPANDING",
+    "source_traceability": "STRUCTURALLY_ESTABLISHED",
+    "implementation_presence": "MAPPED_E0",
+    "runtime_confidence": "NOT_VERIFIED",
+    "deployment_readiness": "NON_DEPLOYABLE"
+  }
+}
