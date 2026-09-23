@@ -18,3 +18,5 @@
     - [Robotics / RCL](./NEXY.AI/deep/robotics-rcl.md)
     - [Final Architecture](./NEXY.AI/deep/final-architecture-cross-system.md)
   - [Atomic Ontology](./NEXY.AI/ontology/INDEX.md)
+  - [Requirement Registry](./NEXY.AI/requirements/INDEX.md)
+  - [Governance Intelligence](./NEXY.AI/governance/INDEX.md)
