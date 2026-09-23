@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/projects/NEXY.AI/ontology/relationship.schema.json",
+  "title": "NEXY Atomic Ontology Relationship",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "from",
+    "type",
+    "to",
+    "source"
+  ],
+  "properties": {
+    "from": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "enum": [
+        "CALLS",
+        "CONSUMES",
+        "CONTAINS",
+        "EMITS",
+        "FEEDS",
+        "GOVERNS",
+        "IMPLEMENTS",
+        "OBSERVES",
+        "OVERRIDES",
+        "PART_OF",
+        "PERSISTS",
+        "PERSISTS_TO",
+        "RECOVERS",
+        "REQUIRES",
+        "SECURES",
+        "VALIDATES"
+      ]
+    },
+    "to": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
