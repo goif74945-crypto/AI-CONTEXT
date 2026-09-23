@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "requirement_count": 262,
+  "test_file_count": 108,
+  "test_mapping_status": {
+    "CANDIDATE": 179,
+    "EXPLICIT": 75,
+    "NONE": 8
+  },
+  "code_mapped": 187,
+  "current_evidence_requirements": 0,
+  "stale_evidence_requirements": 14,
+  "verdicts": {
+    "NOT_VERIFIED": 255,
+    "NOT_APPLICABLE": 7
+  },
+  "combined_status_counts": {
+    "MAPPED|TEST_MAPPED_NOT_EXECUTION_VERIFIED|NO_EVIDENCE_MAPPED": 172,
+    "CANDIDATE_ONLY|TEST_MAPPED_NOT_EXECUTION_VERIFIED|NO_EVIDENCE_MAPPED": 15,
+    "UNMAPPED|TEST_MAPPED_NOT_EXECUTION_VERIFIED|NO_EVIDENCE_MAPPED": 59,
+    "MAPPED|NO_TEST_MAPPED|STALE_EVIDENCE_ONLY": 6,
+    "MAPPED|TEST_MAPPED_NOT_EXECUTION_VERIFIED|STALE_EVIDENCE_ONLY": 8,
+    "UNMAPPED|NO_TEST_MAPPED|NO_EVIDENCE_MAPPED": 1,
+    "MAPPED|NO_TEST_MAPPED|NO_EVIDENCE_MAPPED": 1
+  }
+}
