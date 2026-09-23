@@ -1,0 +1,57 @@
+{
+  "fsm_id": "FSM-IMPL-PIPELINE-RUN",
+  "name": "Observed PipelineRun State Model",
+  "kind": "IMPLEMENTATION_OBSERVED",
+  "authority": [
+    "AUTH-REPO-STATE"
+  ],
+  "scope": [
+    "IMPLEMENTATION_OBSERVED"
+  ],
+  "source_range": [],
+  "states": [
+    "READY",
+    "RUNNING",
+    "VERIFYING",
+    "CONSENSUS",
+    "STABLE",
+    "FREEZE"
+  ],
+  "events": [
+    "caller invokes setPipelineRunState"
+  ],
+  "event_ownership": {},
+  "transitions": [
+    {
+      "from": "ANY_OBSERVED_RUN_STATE",
+      "event": "setPipelineRunState(state)",
+      "guard": "state is RunState type + DB row exists",
+      "action": "persist state and emit EventLog FSM_TRANSITION",
+      "to": "CALLER_SUPPLIED_RUN_STATE",
+      "failure": "DB failure alarm + throw",
+      "audit_event": "EventLog FSM_TRANSITION"
+    }
+  ],
+  "invalid_transition_behavior": "Observed function does not itself validate previous→next transition topology; it writes any RunState supplied by caller.",
+  "recovery_semantics": "Failure recording forces runState=FREEZE; recovery behavior is handled elsewhere.",
+  "audit_event_semantics": "setPipelineRunState writes EventLog FSM_TRANSITION transactionally with PipelineRun update.",
+  "implementation_mapping_status": "EXACT",
+  "implementation_refs": [
+    {
+      "path": "packages/queue/run-state.ts",
+      "blob_sha": null,
+      "symbols": [
+        "RUN_STATE",
+        "setPipelineRunState",
+        "recordPipelineRunFailure",
+        "commitReleasedPipelineRun"
+      ]
+    }
+  ],
+  "requirement_ids": [],
+  "test_refs": [],
+  "alignment_status": "IMPLEMENTATION_ONLY_REVIEW_REQUIRED",
+  "alignment_notes": [
+    "Do not merge this state model with source Queue Job FSM or DOC-C global execution FSM."
+  ]
+}
