@@ -2,7 +2,7 @@
 
 AI-CONTEXT is a **model-agnostic execution context repository**.
 
-It is designed to help AI systems do more than remember information. It gives them a durable way to:
+It helps AI systems do more than remember information. It gives them a durable way to:
 
 - understand project truth;
 - resolve authority;
@@ -15,14 +15,16 @@ It is designed to help AI systems do more than remember information. It gives th
 
 ## Quick start
 
-Start at:
+For a new AI/session, start with:
 
-**[INDEX.md](./INDEX.md)**
+**[AI-BOOTSTRAP.md](./AI-BOOTSTRAP.md)**
 
-Then load:
-1. `AI-EXECUTION-KERNEL.md`;
-2. `WORK-ROUTER.md`;
-3. only the relevant rules/project/workflow/schema.
+Then:
+
+1. [INDEX.md](./INDEX.md)
+2. `AI-EXECUTION-KERNEL.md`
+3. `WORK-ROUTER.md`
+4. only the relevant rules/project/workflow/schema
 
 ## Core principle
 
@@ -39,7 +41,8 @@ Then load:
 - durable checkpoints;
 - provider/model independence;
 - protected mutation boundaries;
-- resumable work across sessions/models.
+- resumable work across sessions/models;
+- ready-to-fill machine-readable templates.
 
 ## Long work
 
