@@ -1,87 +1,21 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "NEXY Failure Intelligence Record",
+  "title": "NEXY Failure Library Record",
   "type": "object",
-  "additionalProperties": false,
   "required": [
     "failure_id",
-    "source_record",
+    "failure_type",
     "context",
     "symptom",
     "root_cause",
+    "root_cause_status",
     "failed_approach",
     "why_failed",
+    "declared_recovery",
     "successful_recovery",
     "affected_systems",
     "regression_test",
     "prevention",
-    "historical_status",
-    "proof",
-    "reusable_rule"
-  ],
-  "properties": {
-    "failure_id": {
-      "type": "string"
-    },
-    "source_record": {
-      "type": "string"
-    },
-    "context": {
-      "type": "string"
-    },
-    "symptom": {
-      "type": "string"
-    },
-    "root_cause": {
-      "type": "string"
-    },
-    "failed_approach": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "why_failed": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "successful_recovery": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "affected_systems": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "regression_test": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "prevention": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "historical_status": {
-      "type": "string"
-    },
-    "proof": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "reusable_rule": {
-      "type": "string"
-    }
-  }
+    "source_ref"
+  ]
 }
