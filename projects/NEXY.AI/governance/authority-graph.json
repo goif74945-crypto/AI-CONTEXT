@@ -1,0 +1,288 @@
+{
+  "schema_version": "1.0.0",
+  "project": "NEXY.AI",
+  "purpose": "Resolve which source governs which kind of claim without flattening vision, build, product, evidence, repository state, and runtime proof into one authority level.",
+  "nodes": [
+    {
+      "id": "AUTH-USER-DIRECTIVE",
+      "name": "Explicit Current User Directive",
+      "kind": "TASK_AUTHORITY",
+      "normative": true,
+      "description": "Controls the current task's scope and requested mutation. Does not silently rewrite persistent project canon unless the directive explicitly changes the governing source."
+    },
+    {
+      "id": "AUTH-DOC-A",
+      "name": "DOC-A Vision Canon",
+      "kind": "VISION_AUTHORITY",
+      "normative": false,
+      "description": "Future/product vision. Not current build obligation by itself."
+    },
+    {
+      "id": "AUTH-DOC-B",
+      "name": "DOC-B System Law",
+      "kind": "SYSTEM_LAW",
+      "normative": true,
+      "description": "Governs system identity, authority, output/freeze/imperfection laws."
+    },
+    {
+      "id": "AUTH-DOC-C",
+      "name": "DOC-C Build Spec",
+      "kind": "BUILD_AUTHORITY",
+      "normative": true,
+      "description": "Exclusive source of current vNEXT build obligation unless explicitly extended/versioned."
+    },
+    {
+      "id": "AUTH-DOC-D",
+      "name": "DOC-D Product Design Pack",
+      "kind": "PRODUCT_DESIGN_AUTHORITY",
+      "normative": true,
+      "description": "Concrete product/UI/storage/auth design subordinate to System Law and current Build Spec."
+    },
+    {
+      "id": "AUTH-DOC-E",
+      "name": "DOC-E Deployment Evidence Pack",
+      "kind": "DEPLOYMENT_APPROVAL_AUTHORITY",
+      "normative": true,
+      "description": "Defines required proof for deployment approval; does not make implementation claims true merely by being specified."
+    },
+    {
+      "id": "AUTH-CONSTITUTIONAL",
+      "name": "Constitutional / Sovereign Locked Source",
+      "kind": "FUTURE_CONSTITUTIONAL_AUTHORITY",
+      "normative": true,
+      "description": "Governs future Sovereign/Universe/constitutional fabric within its declared scope; not automatically a DOC-C obligation."
+    },
+    {
+      "id": "AUTH-GAME",
+      "name": "Game Fabric Source",
+      "kind": "FUTURE_DOMAIN_AUTHORITY",
+      "normative": true,
+      "description": "Governs deterministic AAAA/Game Fabric domain within future architecture scope."
+    },
+    {
+      "id": "AUTH-CAPABILITY",
+      "name": "Capability Governance Source",
+      "kind": "FUTURE_DOMAIN_AUTHORITY",
+      "normative": true,
+      "description": "Governs NCF capability registry/admission/public/chaos semantics in future scope."
+    },
+    {
+      "id": "AUTH-L600",
+      "name": "L600 Intelligence Architecture",
+      "kind": "ARCHITECTURE_AUTHORITY",
+      "normative": true,
+      "description": "Later concrete architecture for L1o/Lo3/Lo2. Subject to DOC-B/DOC-C governance where authority/build promotion is concerned."
+    },
+    {
+      "id": "AUTH-RCL-L600",
+      "name": "RCL-L600 Robotics Architecture",
+      "kind": "FUTURE_DOMAIN_AUTHORITY",
+      "normative": true,
+      "description": "Robotics design authority inside robotics scope; physical claims still require physical evidence."
+    },
+    {
+      "id": "AUTH-FINAL-ARCH",
+      "name": "Final Absolute Architecture Synthesis",
+      "kind": "ARCHITECTURE_SYNTHESIS",
+      "normative": true,
+      "description": "Late cross-system architectural synthesis (IRL/CIRL/CLE/...); not a substitute for DOC-C build inclusion."
+    },
+    {
+      "id": "AUTH-REPO-STATE",
+      "name": "Observed Repository State",
+      "kind": "DESCRIPTIVE_IMPLEMENTATION_TRUTH",
+      "normative": false,
+      "description": "Describes what code/config exists at an exact repository/ref/commit. Cannot supersede normative requirements merely by differing."
+    },
+    {
+      "id": "AUTH-RUNTIME-EVIDENCE",
+      "name": "Observed Runtime/Test Evidence",
+      "kind": "DESCRIPTIVE_BEHAVIOR_TRUTH",
+      "normative": false,
+      "description": "Describes what behavior was actually observed for exact build/environment. Used to prove or disprove compliance, not redefine requirement."
+    },
+    {
+      "id": "AUTH-PHYSICAL-EVIDENCE",
+      "name": "Physical / HIL Evidence",
+      "kind": "DESCRIPTIVE_PHYSICAL_TRUTH",
+      "normative": false,
+      "description": "Required for physical behavior/safety claims; source/code alone cannot substitute."
+    }
+  ],
+  "edges": [
+    {
+      "from": "AUTH-DOC-B",
+      "type": "GOVERNS",
+      "to": "AUTH-DOC-C",
+      "domain": "identity_and_system_law",
+      "meaning": "DOC-C implementation semantics must not violate DOC-B system law."
+    },
+    {
+      "from": "AUTH-DOC-C",
+      "type": "BUILD_AUTHORITY_OVER",
+      "to": "AUTH-DOC-D",
+      "domain": "current_build_scope",
+      "meaning": "DOC-D cannot create a current build obligation outside DOC-C without spec extension."
+    },
+    {
+      "from": "AUTH-DOC-B",
+      "type": "GOVERNS",
+      "to": "AUTH-DOC-D",
+      "domain": "product_authority",
+      "meaning": "Product UX cannot override System Law."
+    },
+    {
+      "from": "AUTH-DOC-E",
+      "type": "DEPLOY_APPROVAL_FOR",
+      "to": "AUTH-DOC-C",
+      "domain": "deployment",
+      "meaning": "DOC-E evidence determines whether a DOC-C implementation is deploy-approved."
+    },
+    {
+      "from": "AUTH-DOC-A",
+      "type": "VISION_INFORMS",
+      "to": "AUTH-DOC-C",
+      "domain": "future_evolution",
+      "meaning": "Vision may inform future specs but is not current build authority."
+    },
+    {
+      "from": "AUTH-CONSTITUTIONAL",
+      "type": "DOMAIN_GOVERNS",
+      "to": "AUTH-GAME",
+      "domain": "future_constitutional_boundaries",
+      "meaning": "Game Fabric cannot gain constitutional authority beyond Sovereign law."
+    },
+    {
+      "from": "AUTH-CONSTITUTIONAL",
+      "type": "DOMAIN_GOVERNS",
+      "to": "AUTH-CAPABILITY",
+      "domain": "future_constitutional_boundaries",
+      "meaning": "Capability governance remains beneath constitutional authority."
+    },
+    {
+      "from": "AUTH-DOC-B",
+      "type": "GOVERNS",
+      "to": "AUTH-L600",
+      "domain": "truth_authority",
+      "meaning": "Intelligence layers cannot become final constitutional truth authority."
+    },
+    {
+      "from": "AUTH-DOC-C",
+      "type": "LIMITS_BUILD_PROMOTION_OF",
+      "to": "AUTH-L600",
+      "domain": "current_build",
+      "meaning": "L600 design is not automatically a current DOC-C implementation obligation."
+    },
+    {
+      "from": "AUTH-CONSTITUTIONAL",
+      "type": "GOVERNS_PROMOTION_OF",
+      "to": "AUTH-L600",
+      "domain": "future_kernel_evolution",
+      "meaning": "Lo2/L1o/Lo3 evolution cannot silently bypass constitutional version/change law."
+    },
+    {
+      "from": "AUTH-FINAL-ARCH",
+      "type": "SYNTHESIZES",
+      "to": "AUTH-L600",
+      "domain": "whole_system_architecture",
+      "meaning": "Final architecture incorporates late Trinity semantics but does not erase source provenance."
+    },
+    {
+      "from": "AUTH-FINAL-ARCH",
+      "type": "SYNTHESIZES",
+      "to": "AUTH-RCL-L600",
+      "domain": "whole_system_architecture",
+      "meaning": "Final architecture generalizes fail-safe/uncertainty patterns from embodied domain."
+    },
+    {
+      "from": "AUTH-DOC-C",
+      "type": "CURRENT_SCOPE_EXCLUDES_UNLESS_PROMOTED",
+      "to": "AUTH-CONSTITUTIONAL",
+      "domain": "current_build",
+      "meaning": "Future Sovereign/anchor/Universe features are not vNEXT build obligations unless DOC-C changes."
+    },
+    {
+      "from": "AUTH-DOC-C",
+      "type": "CURRENT_SCOPE_EXCLUDES_UNLESS_PROMOTED",
+      "to": "AUTH-GAME",
+      "domain": "current_build",
+      "meaning": "AAAA Game Fabric is future architecture, not implicit vNEXT obligation."
+    },
+    {
+      "from": "AUTH-DOC-C",
+      "type": "CURRENT_SCOPE_EXCLUDES_UNLESS_PROMOTED",
+      "to": "AUTH-RCL-L600",
+      "domain": "current_build",
+      "meaning": "Robotics hardware/control is future architecture, not implicit vNEXT obligation."
+    },
+    {
+      "from": "AUTH-REPO-STATE",
+      "type": "IMPLEMENTS_OR_DEVIATES_FROM",
+      "to": "AUTH-DOC-C",
+      "domain": "implementation_compliance",
+      "meaning": "Observed code is compared against normative build spec; it does not redefine the spec."
+    },
+    {
+      "from": "AUTH-RUNTIME-EVIDENCE",
+      "type": "PROVES_OR_DISPROVES",
+      "to": "AUTH-REPO-STATE",
+      "domain": "behavior",
+      "meaning": "Execution evidence establishes behavior for exact code/environment."
+    },
+    {
+      "from": "AUTH-RUNTIME-EVIDENCE",
+      "type": "SUPPORTS_COMPLIANCE_VERDICT_AGAINST",
+      "to": "AUTH-DOC-C",
+      "domain": "current_build_compliance",
+      "meaning": "Tests/runtime evidence support compliance status."
+    },
+    {
+      "from": "AUTH-PHYSICAL-EVIDENCE",
+      "type": "PROVES_OR_DISPROVES",
+      "to": "AUTH-RCL-L600",
+      "domain": "physical_behavior",
+      "meaning": "Physical/HIL evidence is necessary for physical behavior claims."
+    },
+    {
+      "from": "AUTH-USER-DIRECTIVE",
+      "type": "CONTROLS_TASK_SCOPE_OVER",
+      "to": "AUTH-REPO-STATE",
+      "domain": "current_task",
+      "meaning": "Explicit task authorization controls which implementation state may be mutated."
+    }
+  ],
+  "resolution_rules": [
+    {
+      "id": "AR-001",
+      "rule": "For 'what should current vNEXT build do?', use DOC-C constrained by DOC-B; future/vision sources do not add obligations automatically."
+    },
+    {
+      "id": "AR-002",
+      "rule": "For 'is it implemented?', observe exact repository/ref/commit; do not answer from source design."
+    },
+    {
+      "id": "AR-003",
+      "rule": "For 'does it work?', require matching runtime/test evidence class for exact build/environment."
+    },
+    {
+      "id": "AR-004",
+      "rule": "For 'may it deploy?', require DOC-E evidence for exact build/environment in addition to implementation."
+    },
+    {
+      "id": "AR-005",
+      "rule": "For robotics physical behavior/safety, require physical/HIL evidence; software/source evidence is insufficient."
+    },
+    {
+      "id": "AR-006",
+      "rule": "A newer claim supersedes only the semantics it explicitly replaces; do not supersede an entire document from one changed constant."
+    },
+    {
+      "id": "AR-007",
+      "rule": "Scope/domain distinctions are not conflicts. Resolve by the object's declared scope before applying precedence."
+    },
+    {
+      "id": "AR-008",
+      "rule": "Descriptive truth (repo/runtime) may show noncompliance but cannot normatively authorize that noncompliance."
+    }
+  ]
+}
