@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Evidence Ledger Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "claim_id",
+    "requirement_ids",
+    "claim",
+    "proof_type",
+    "artifact",
+    "artifact_declared_revision",
+    "current_target_revision",
+    "observed_at",
+    "environment",
+    "test_id",
+    "result",
+    "status",
+    "freshness",
+    "limitations",
+    "source_revision",
+    "target",
+    "provenance"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string"
+    },
+    "claim_id": {
+      "type": "string"
+    },
+    "requirement_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "claim": {
+      "type": "string"
+    },
+    "proof_type": {
+      "type": "string"
+    },
+    "artifact": {
+      "type": "string"
+    },
+    "artifact_declared_revision": {
+      "type": "string"
+    },
+    "current_target_revision": {
+      "type": "string"
+    },
+    "observed_at": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string"
+    },
+    "test_id": {
+      "type": "string"
+    },
+    "result": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PARTIAL",
+        "BLOCKED",
+        "NOT_VERIFIED",
+        "UNKNOWN",
+        "CONFLICT"
+      ]
+    },
+    "freshness": {
+      "enum": [
+        "CURRENT",
+        "STALE_FOR_CURRENT_HEAD",
+        "UNKNOWN"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_revision": {
+      "type": "string"
+    },
+    "target": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
