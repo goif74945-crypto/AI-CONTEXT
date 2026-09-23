@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Cross-Chat / Cross-Agent Handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "handoff_id",
+    "created_at",
+    "role",
+    "task",
+    "target",
+    "scope",
+    "inputs",
+    "outputs",
+    "claims",
+    "proof",
+    "tests",
+    "changes",
+    "findings",
+    "unresolved",
+    "next_action",
+    "authority",
+    "freshness"
+  ],
+  "properties": {
+    "handoff_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "task": {
+      "type": "string"
+    },
+    "target": {
+      "type": "object"
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inputs": {
+      "type": "array"
+    },
+    "outputs": {
+      "type": "array"
+    },
+    "claims": {
+      "type": "array"
+    },
+    "proof": {
+      "type": "array"
+    },
+    "tests": {
+      "type": "array"
+    },
+    "changes": {
+      "type": "array"
+    },
+    "findings": {
+      "type": "array"
+    },
+    "unresolved": {
+      "type": "array"
+    },
+    "next_action": {
+      "type": "array"
+    },
+    "authority": {
+      "type": "array"
+    },
+    "freshness": {
+      "type": "object"
+    }
+  }
+}
