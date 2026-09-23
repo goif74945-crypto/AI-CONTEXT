@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0.0",
+  "project": "NEXY.AI",
+  "purpose": "AI planning model for compute/API/storage/evidence cost without inventing provider prices.",
+  "truth_rule": "Numeric monetary prices are UNKNOWN unless a current authorized source supplies them.",
+  "resource_classes": [
+    {
+      "id": "RC-MODEL-INFERENCE",
+      "name": "External model inference",
+      "cost_drivers": [
+        "model/provider tier",
+        "input/context size",
+        "output size",
+        "number of agents",
+        "adversarial rounds",
+        "cross-verification calls",
+        "retry policy"
+      ],
+      "optimization_rules": [
+        "Use heterogeneous agents; cheap model may perform preliminary work when authorized.",
+        "Kill failed candidates early.",
+        "Do not call every strongest model by default.",
+        "Critical verification may justify higher-capability models."
+      ],
+      "hard_constraints": [
+        "Model output remains untrusted.",
+        "Cost optimization may not bypass required proof/release gates."
+      ],
+      "numeric_cost": "UNKNOWN_PROVIDER_DEPENDENT",
+      "source_refs": [
+        "projects/NEXY.AI/deep/intelligence-trinity.md"
+      ]
+    },
+    {
+      "id": "RC-PIPELINE-COMPUTE",
+      "name": "DOC-C pipeline compute",
+      "cost_drivers": [
+        "max concurrent pipeline runs",
+        "stage deadlines",
+        "agent count",
+        "critical-agent participation",
+        "pipeline cap"
+      ],
+      "optimization_rules": [
+        "Bound work by pipeline timeouts.",
+        "No automatic retry by default.",
+        "Exclude noncritical timed-out worker only if quorum/release semantics remain legal."
+      ],
+      "hard_constraints": [
+        "max_concurrent_pipeline_runs=10 current default",
+        "pipeline_cap_ms=120000 current default"
+      ],
+      "numeric_cost": "NO_MONETARY_RATE_DEFINED",
+      "source_refs": [
+        "projects/NEXY.AI/performance/budgets.jsonl",
+        "projects/NEXY.AI/config/config-registry.json"
+      ]
+    },
+    {
+      "id": "RC-PERSISTENCE",
+      "name": "Metadata / blob / history storage",
+      "cost_drivers": [
+        "artifact size",
+        "revision count",
+        "audit/event retention",
+        "incident retention",
+        "blob duplication/deduplication",
+        "evidence artifacts"
+      ],
+      "optimization_rules": [
+        "Metadata in PostgreSQL; large payloads in object/blob storage per DOC-C direction.",
+        "Preserve immutable lineage; cost reduction cannot rewrite audit/history.",
+        "Archive may move older data to warm/cold classes when design permits."
+      ],
+      "hard_constraints": [
+        "event logs 90d",
+        "audit/security/freeze records 365d minimum",
+        "artifact/revision retention according to deletion policy"
+      ],
+      "numeric_cost": "UNKNOWN_INFRASTRUCTURE_DEPENDENT",
+      "source_refs": [
+        "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md",
+        "projects/NEXY.AI/deep/doc-d-product-design.md"
+      ]
+    },
+    {
+      "id": "RC-LO2-KNOWLEDGE",
+      "name": "Lo2 verified knowledge corpus",
+      "cost_drivers": [
+        "verified interaction volume",
+        "logic-quanta cardinality",
+        "law versions",
+        "provenance/evidence links",
+        "cross-verification/generalization jobs"
+      ],
+      "optimization_rules": [
+        "Compress verified solutions into reusable Logic Quanta/Laws.",
+        "Deduplicate/generalize rather than treating every raw conversation as permanent intelligence.",
+        "Keep raw artifacts/evidence separate from compressed knowledge where architecture permits."
+      ],
+      "hard_constraints": [
+        "Unverified raw user data must not become authoritative law.",
+        "Provenance must survive compression/evolution."
+      ],
+      "numeric_cost": "NO_CANONICAL_BYTES_PER_QUANTUM_DEFINED",
+      "source_refs": [
+        "projects/NEXY.AI/deep/intelligence-trinity.md"
+      ]
+    },
+    {
+      "id": "RC-GAME",
+      "name": "AAAA Game Fabric resources",
+      "cost_drivers": [
+        "active shards",
+        "tick rate",
+        "entity/agent density",
+        "asset streaming",
+        "world/chunk activation",
+        "network input volume",
+        "cross-shard transfers"
+      ],
+      "optimization_rules": [
+        "Render/GPU work may scale independently from authoritative simulation.",
+        "Use bounded world/chunk/agent budgets.",
+        "Cloud assist cannot write sovereign state directly."
+      ],
+      "hard_constraints": [
+        "authoritative state remains deterministic/hash-bound",
+        "resource overload must be locally contained"
+      ],
+      "numeric_cost": "FUTURE_ARCHITECTURE_NO_CANONICAL_CLOUD_PRICE",
+      "source_refs": [
+        "projects/NEXY.AI/deep/game-aaaa-ncf.md"
+      ]
+    },
+    {
+      "id": "RC-ROBOTICS",
+      "name": "Robotics compute/hardware",
+      "cost_drivers": [
+        "main compute class",
+        "sensor set",
+        "MCUs",
+        "actuator/control hardware",
+        "real-time verification load",
+        "HIL/physical testing"
+      ],
+      "optimization_rules": [
+        "Fast Path avoids expensive deep reasoning on immediate reflexes.",
+        "Use bounded mini-swarm for critical/non-reflex decisions."
+      ],
+      "hard_constraints": [
+        "Independent safety path cannot be removed for cost.",
+        "Physical proof cannot be replaced by simulation alone when physical claim is made."
+      ],
+      "numeric_cost": "SOURCE_HAS_HISTORICAL_PROTOTYPE_ESTIMATE_ONLY; CURRENT_PRICE_RESEARCH_REQUIRED",
+      "source_refs": [
+        "projects/NEXY.AI/deep/robotics-rcl.md"
+      ]
+    },
+    {
+      "id": "RC-EVIDENCE",
+      "name": "Verification / evidence generation",
+      "cost_drivers": [
+        "test suite breadth",
+        "E2E/browser runs",
+        "database services",
+        "fault/chaos runs",
+        "deployment environments",
+        "human signoff"
+      ],
+      "optimization_rules": [
+        "Run smallest decisive proof first, then impacted regression.",
+        "Reuse navigation/history, not stale proof.",
+        "Do not skip evidence to reduce cost."
+      ],
+      "hard_constraints": [
+        "Required evidence class must match claim.",
+        "DOC-E exact-current evidence required for deployability."
+      ],
+      "numeric_cost": "UNKNOWN_EXECUTION_ENVIRONMENT_DEPENDENT",
+      "source_refs": [
+        "rules/VERIFICATION.md",
+        "projects/NEXY.AI/deep/doc-e-deployment-evidence.md"
+      ]
+    }
+  ],
+  "decision_heuristic": [
+    "First satisfy authority/invariants/evidence obligations.",
+    "Then minimize external model calls, compute, storage and repeated exploration.",
+    "Prefer verified reusable context/skills over re-analysis.",
+    "Never trade correctness/integrity for cost without explicit policy allowing degraded behavior."
+  ],
+  "unknowns": [
+    "No canonical provider API price table is stored.",
+    "No current production cloud bill/capacity plan is established.",
+    "No canonical bytes-per-Logic-Quantum or Lo2 storage compression ratio is defined.",
+    "No current hardware procurement price should be inferred from historical source examples."
+  ]
+}
