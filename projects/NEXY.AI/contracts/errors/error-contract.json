@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "canonical_source": "packages/contracts/errors.ts @ 9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "error_payload": {
+    "code": "canonical ErrorCode",
+    "message": "string 1..1024",
+    "source": "string 1..128",
+    "recoverable": "boolean"
+  },
+  "canonical_codes": [
+    "INVALID_DIRECTIVE",
+    "EMPTY_INPUT",
+    "AMBIGUOUS_INPUT",
+    "UNVERIFIED_OUTPUT",
+    "CONSENSUS_FAILED",
+    "EVIDENCE_MISSING",
+    "SCHEMA_VIOLATION",
+    "STATE_TRANSITION_DENIED",
+    "INVALID_STATE",
+    "AUTH_INVALID",
+    "AUTH_EXPIRED",
+    "UNAUTHORIZED",
+    "FORBIDDEN",
+    "SESSION_REVOKED",
+    "DEVICE_MISMATCH",
+    "CSRF_INVALID",
+    "OTAC_LOCKED",
+    "RATE_LIMIT_EXCEEDED",
+    "SECURITY_BREACH_DETECTED",
+    "SYSTEM_IN_FREEZE",
+    "DEPENDENCY_FAILURE",
+    "DEPENDENCY_UNHEALTHY",
+    "TIMEOUT",
+    "AGENT_TIMEOUT",
+    "AGENT_SCHEMA_INVALID",
+    "FREEZE_RECOVERY_DENIED",
+    "VAULT_COMMIT_CONFLICT",
+    "REVISION_NOT_FOUND",
+    "RELEASE_POLICY_FAILED"
+  ],
+  "note": "This is the current wire-contract error set. Broader internal VNext error taxonomy is intentionally not collapsed into it."
+}
