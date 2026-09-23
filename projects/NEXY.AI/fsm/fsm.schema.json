@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY FSM Registry Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "scope",
+    "authority",
+    "status",
+    "states",
+    "transitions",
+    "global_rules",
+    "source_refs",
+    "code_refs",
+    "evidence_status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "authority": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string"
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "from",
+          "event",
+          "guard",
+          "action",
+          "to",
+          "failure",
+          "audit_event"
+        ],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "event": {
+            "type": "string"
+          },
+          "guard": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "action": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "to": {
+            "type": "string"
+          },
+          "failure": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "audit_event": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "global_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "code_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_status": {
+      "type": "string"
+    }
+  }
+}
