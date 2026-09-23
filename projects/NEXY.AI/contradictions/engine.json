@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "engine_id": "NEXY-CONTRADICTION-ENGINE-DATA",
+  "algorithm": [
+    "Normalize claims and aliases.",
+    "Resolve scope/domain/authority for each claim.",
+    "Detect semantic overlap.",
+    "Classify relation: TRUE_CONTRADICTION / SUPERSESSION / DOMAIN_SEPARATION / BOUNDARY_SEPARATION / CLASS_SEPARATION / AUTHORITY_SEPARATION / SCOPE_SEPARATION.",
+    "If true contradiction remains unresolved and affects task semantics: BLOCK coding/decision.",
+    "If superseded: select newer governing claim only within its applicable scope.",
+    "If domain/boundary separation: preserve both rules and prevent global merge.",
+    "Emit exact resolution and do_not_do guard."
+  ],
+  "blocking_relations": [
+    "UNRESOLVED_CONTRADICTION"
+  ],
+  "safe_relations": [
+    "SUPERSESSION",
+    "DOMAIN_SEPARATION",
+    "BOUNDARY_SEPARATION",
+    "CLASS_SEPARATION",
+    "AUTHORITY_SEPARATION",
+    "SCOPE_SEPARATION"
+  ],
+  "truth_rule": "Contradiction classification never invents precedence; it consumes governance/authority/supersession data."
+}
