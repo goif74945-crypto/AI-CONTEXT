@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "pinned_target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
+  "counts": {
+    "API": 19,
+    "SCHEMA": 13,
+    "MODULE": 8,
+    "EVENT": 11,
+    "STORAGE": 10,
+    "ERROR": 29
+  },
+  "total": 90,
+  "canonical_defaults": {
+    "release": {
+      "confidence_min": 0.85,
+      "deterministic_match_min": 0.9,
+      "quorum_min": 2,
+      "evidence_min": 2
+    },
+    "pipeline": {
+      "decompose_timeout_ms": 5000,
+      "agent_timeout_default_ms": 30000,
+      "agent_timeout_min_ms": 10000,
+      "agent_timeout_max_ms": 60000,
+      "critical_agent_timeout_ms": 30000,
+      "cross_verify_timeout_ms": 15000,
+      "consensus_timeout_ms": 10000,
+      "emit_timeout_ms": 5000,
+      "pipeline_cap_ms": 120000
+    },
+    "auth": {
+      "otac_length": 10,
+      "otac_ttl_ms": 300000,
+      "otac_max_attempts": 5,
+      "otac_resend_cooldown_ms": 60000,
+      "otac_lock_window_ms": 900000,
+      "session_ttl_ms": 21600000,
+      "concurrent_sessions_per_user": 5
+    },
+    "queue": {
+      "stale_job_ttl_ms": 900000,
+      "max_concurrent_pipeline_runs": 10
+    }
+  },
+  "note": "Presence mappings are E0 only; contract behavior still requires test/runtime evidence."
+}
