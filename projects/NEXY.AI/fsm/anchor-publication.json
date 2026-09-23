@@ -1,11 +1,21 @@
 {
-  "id": "FSM-ANCHOR-PUBLICATION",
+  "fsm_id": "FSM-ANCHOR-PUBLICATION",
   "name": "Anchor Publication FSM",
-  "scope": "FUTURE_ARCHITECTURE",
+  "kind": "SOURCE_DEFINED",
   "authority": [
-    "CANON_LOCKED_SOURCE"
+    "CONSTITUTIONAL_SOURCE"
   ],
-  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "scope": [
+    "FUTURE_ARCHITECTURE"
+  ],
+  "source_range": [
+    {
+      "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "start_paragraph": 3220,
+      "end_paragraph": 5154
+    }
+  ],
   "states": [
     "PROPOSED",
     "QUORUM_SIGNED",
@@ -15,107 +25,75 @@
     "MIRROR_REPLICATED",
     "FINALIZED"
   ],
+  "events": [],
+  "event_ownership": {},
   "transitions": [
     {
       "from": "PROPOSED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required publication leg succeeds and prior state valid"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "QUORUM_SIGNED",
-      "failure": [
-        "Publication invalid/incomplete; no FINALIZED state"
-      ],
-      "audit_event": "ANCHOR_PUBLICATION_STEP"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "QUORUM_SIGNED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required publication leg succeeds and prior state valid"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "MERKLE_UPDATED",
-      "failure": [
-        "Publication invalid/incomplete; no FINALIZED state"
-      ],
-      "audit_event": "ANCHOR_PUBLICATION_STEP"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "MERKLE_UPDATED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required publication leg succeeds and prior state valid"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "CHAIN_ANCHORED",
-      "failure": [
-        "Publication invalid/incomplete; no FINALIZED state"
-      ],
-      "audit_event": "ANCHOR_PUBLICATION_STEP"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "CHAIN_ANCHORED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required publication leg succeeds and prior state valid"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "IPFS_PINNED",
-      "failure": [
-        "Publication invalid/incomplete; no FINALIZED state"
-      ],
-      "audit_event": "ANCHOR_PUBLICATION_STEP"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "IPFS_PINNED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required publication leg succeeds and prior state valid"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "MIRROR_REPLICATED",
-      "failure": [
-        "Publication invalid/incomplete; no FINALIZED state"
-      ],
-      "audit_event": "ANCHOR_PUBLICATION_STEP"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     },
     {
       "from": "MIRROR_REPLICATED",
-      "event": "SOURCE_NOT_NAMED",
-      "guard": [
-        "Required publication leg succeeds and prior state valid"
-      ],
-      "action": [
-        "Advance lifecycle state"
-      ],
+      "event": null,
+      "guard": "UNSPECIFIED_BY_SOURCE",
+      "action": "UNSPECIFIED_BY_SOURCE",
       "to": "FINALIZED",
-      "failure": [
-        "Publication invalid/incomplete; no FINALIZED state"
-      ],
-      "audit_event": "ANCHOR_PUBLICATION_STEP"
+      "failure": "GOVERNING_LAW_APPLIES",
+      "audit_event": "UNSPECIFIED_BY_SOURCE"
     }
   ],
-  "global_rules": [
-    "Only FINALIZED is valid.",
-    "Partial publication is invalid.",
-    "Empty intervals still produce an anchored empty batch/root.",
-    "Reorg recovery uses deterministic re-anchor after confirmation rule."
+  "invalid_transition_behavior": "Illegal transition is prohibited; exact event/guard names are not established by captured source.",
+  "recovery_semantics": "UNKNOWN",
+  "audit_event_semantics": "UNKNOWN",
+  "implementation_mapping_status": "UNMAPPED",
+  "implementation_refs": [],
+  "requirement_ids": [
+    "REQ-CONST-005"
   ],
-  "source_refs": [
-    "projects/NEXY.AI/deep/sovereign-fabric.md"
-  ],
-  "code_refs": [],
-  "evidence_status": "NOT_VERIFIED_RUNTIME"
+  "test_refs": [],
+  "alignment_status": "SOURCE_SEQUENCE_ONLY",
+  "alignment_notes": [
+    "Only FINALIZED is valid anchor authority."
+  ]
 }
