@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Proof Obligation",
+  "type": "object",
+  "required": [
+    "obligation_id",
+    "action",
+    "scope",
+    "must_prove_before",
+    "evidence_class",
+    "on_missing",
+    "source_refs"
+  ],
+  "properties": {
+    "obligation_id": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "must_prove_before": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_class": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "on_missing": {
+      "type": "string"
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
