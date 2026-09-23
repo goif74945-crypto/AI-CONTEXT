@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "compiled_at": "2026-09-24",
+  "packs": [
+    {
+      "id": "NEXY-CANON",
+      "path": "projects/NEXY.AI/compiled/nexy-canon.json",
+      "use_for": [
+        "authority",
+        "scope",
+        "supersession",
+        "architecture decisions"
+      ]
+    },
+    {
+      "id": "NEXY-BUILD-CONTEXT",
+      "path": "projects/NEXY.AI/compiled/nexy-build-context.json",
+      "use_for": [
+        "implementation",
+        "repair",
+        "build planning"
+      ]
+    },
+    {
+      "id": "NEXY-AUDIT-CONTEXT",
+      "path": "projects/NEXY.AI/compiled/nexy-audit-context.json",
+      "use_for": [
+        "audit",
+        "verification",
+        "regression",
+        "release review"
+      ]
+    },
+    {
+      "id": "NEXY-RUNTIME-CONTEXT",
+      "path": "projects/NEXY.AI/compiled/nexy-runtime-context.json",
+      "use_for": [
+        "state",
+        "events",
+        "config",
+        "errors",
+        "runtime planning"
+      ]
+    }
+  ],
+  "compile_policy": [
+    "Compiled packs contain stable critical facts and registry pointers rather than duplicating every registry record.",
+    "Referenced source registries win on disagreement.",
+    "Recompile after governance/default/target/evidence state changes.",
+    "Implementation-bound packs become stale when target HEAD changes."
+  ]
+}
