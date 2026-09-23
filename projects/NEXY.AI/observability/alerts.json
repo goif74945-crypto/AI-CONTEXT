@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "alerts": [
+    {
+      "id": "ALERT-AUTH-ABUSE",
+      "systems": [
+        "MODULE-AUTH"
+      ],
+      "condition": "auth abuse / repeated lock / suspicious login",
+      "source": "DOC-E E8 / DOC-D auth hardening"
+    },
+    {
+      "id": "ALERT-FREEZE",
+      "systems": [
+        "KERNEL-CORE",
+        "ENGINE-LAW",
+        "ENGINE-JUDGE"
+      ],
+      "condition": "FreezeIncident / authoritative FREEZE",
+      "source": "DOC-E E8"
+    },
+    {
+      "id": "ALERT-WORKER-DOWN",
+      "systems": [
+        "QUEUE-PIPELINE",
+        "FABRIC-SWARM"
+      ],
+      "condition": "queue worker unavailable",
+      "source": "DOC-E E8"
+    },
+    {
+      "id": "ALERT-QUEUE-BACKLOG",
+      "systems": [
+        "QUEUE-PIPELINE"
+      ],
+      "condition": "queue backlog",
+      "source": "DOC-E E8"
+    },
+    {
+      "id": "ALERT-DB-FAILURE",
+      "systems": [
+        "MODULE-VAULT"
+      ],
+      "condition": "database failure",
+      "source": "DOC-E E8"
+    },
+    {
+      "id": "ALERT-RELEASE-POLICY",
+      "systems": [
+        "ENGINE-LAW",
+        "ENGINE-JUDGE"
+      ],
+      "condition": "release-policy failure",
+      "source": "DOC-E E8"
+    }
+  ]
+}
