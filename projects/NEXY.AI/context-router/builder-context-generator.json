@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "generator_id": "NEXY-BUILDER-CONTEXT-PACK-GENERATOR",
+  "input": {
+    "task": "required",
+    "target": "repo/branch/head",
+    "scope": "required",
+    "entity_ids": "optional; resolve from task/router",
+    "requirement_ids": "optional; resolve from entity/task",
+    "mutation_authorization": "required"
+  },
+  "pipeline": [
+    "Load NEXY-CANON governance pointers.",
+    "Route task through context-router.json.",
+    "Resolve canonical entities and aliases.",
+    "Resolve governing requirements.",
+    "Expand direct prerequisites/dependents from impact map; include transitive only when change crosses them.",
+    "Load contracts/FSM/invariants/security/state/events/config relevant to resolved entities.",
+    "Load exact implementation/navigation records pinned to target HEAD.",
+    "Load known failures/regression obligations.",
+    "Load relevant tests and evidence status.",
+    "Attach build playbook/task template.",
+    "Emit minimal pack and explicit omitted domains."
+  ],
+  "output_schema": {
+    "task": {},
+    "target": {},
+    "authority": [],
+    "scope": [],
+    "entities": [],
+    "requirements": [],
+    "dependencies": [],
+    "contracts": [],
+    "invariants": [],
+    "fsms": [],
+    "security": [],
+    "state": [],
+    "events": [],
+    "config": [],
+    "implementation": [],
+    "tests": [],
+    "evidence_status": [],
+    "failures": [],
+    "regressions": [],
+    "playbook_refs": [],
+    "omitted_domains": [],
+    "unresolved": [],
+    "freshness": {}
+  },
+  "stop_conditions": [
+    "Authority conflict.",
+    "Scope conflict.",
+    "Target HEAD differs from pinned implementation map and refresh cannot be performed.",
+    "Material unresolved requirement/conflict.",
+    "Mutation authorization absent for a mutation task."
+  ],
+  "truth_rule": "Generated context is navigation/working state; source registries and exact target remain authoritative."
+}
