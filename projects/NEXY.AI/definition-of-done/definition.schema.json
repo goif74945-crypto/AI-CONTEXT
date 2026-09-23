@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Definition of Done",
+  "type": "object",
+  "required": [
+    "task_type",
+    "done_requires",
+    "not_done_if",
+    "minimum_status_for_done"
+  ],
+  "properties": {
+    "task_type": {
+      "type": "string"
+    },
+    "done_requires": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "not_done_if": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "minimum_status_for_done": {
+      "type": "string"
+    }
+  }
+}
