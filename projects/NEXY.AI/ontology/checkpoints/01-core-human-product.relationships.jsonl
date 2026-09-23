@@ -82,7 +82,6 @@
 {"from":"MODULE-CSRF","to":"MODULE-AUTH","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"MODULE-CSRF","to":"MODULE-AUTH","type":"REQUIRES","source":"ontology/checkpoint-01-core-product"}
 {"from":"MODULE-RATE-LIMIT","to":"GATEWAY-API","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
-{"from":"MODULE-RATE-LIMIT","to":"GATEWAY-API","type":"REQUIRES","source":"ontology/checkpoint-01-core-product"}
 {"from":"MODULE-OBS","to":"SYS-NEXY","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"QUEUE-EXECUTION","to":"SYS-NEXY","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"QUEUE-EXECUTION","to":"KERNEL-CORE","type":"REQUIRES","source":"ontology/checkpoint-01-core-product"}
