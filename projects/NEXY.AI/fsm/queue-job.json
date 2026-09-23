@@ -1,0 +1,118 @@
+{
+  "id": "FSM-QUEUE-JOB",
+  "name": "Queue Job FSM",
+  "scope": "DOC_C_CURRENT_BUILD",
+  "authority": [
+    "DOC-C"
+  ],
+  "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0",
+  "states": [
+    "QUEUED",
+    "RUNNING",
+    "SUCCEEDED",
+    "FAILED",
+    "CANCELLED",
+    "EXPIRED"
+  ],
+  "transitions": [
+    {
+      "from": "QUEUED",
+      "event": "WORKER_CLAIM",
+      "guard": [
+        "payload validates",
+        "job not stale"
+      ],
+      "action": [
+        "Claim job"
+      ],
+      "to": "RUNNING",
+      "failure": [
+        "SCHEMA_VIOLATION or EXPIRED"
+      ],
+      "audit_event": "QUEUE_JOB_CLAIMED"
+    },
+    {
+      "from": "QUEUED",
+      "event": "STALE_TTL_REACHED",
+      "guard": [
+        "age >= stale_job_ttl_ms"
+      ],
+      "action": [
+        "Expire job"
+      ],
+      "to": "EXPIRED",
+      "failure": [],
+      "audit_event": "QUEUE_JOB_EXPIRED"
+    },
+    {
+      "from": "QUEUED",
+      "event": "CANCEL",
+      "guard": [
+        "FREEZE/STOP or authorized cancel"
+      ],
+      "action": [
+        "Cancel pending job"
+      ],
+      "to": "CANCELLED",
+      "failure": [],
+      "audit_event": "QUEUE_JOB_CANCELLED"
+    },
+    {
+      "from": "RUNNING",
+      "event": "COMPLETE",
+      "guard": [
+        "pipeline/release path completes successfully"
+      ],
+      "action": [
+        "Persist success"
+      ],
+      "to": "SUCCEEDED",
+      "failure": [],
+      "audit_event": "QUEUE_JOB_SUCCEEDED"
+    },
+    {
+      "from": "RUNNING",
+      "event": "FAIL",
+      "guard": [
+        "execution failure"
+      ],
+      "action": [
+        "Persist failure; no unsafe automatic retry"
+      ],
+      "to": "FAILED",
+      "failure": [
+        "canonical failure"
+      ],
+      "audit_event": "QUEUE_JOB_FAILED"
+    },
+    {
+      "from": "RUNNING",
+      "event": "CANCEL",
+      "guard": [
+        "authorized cancellation/STOP"
+      ],
+      "action": [
+        "Cancel running job when supported"
+      ],
+      "to": "CANCELLED",
+      "failure": [],
+      "audit_event": "QUEUE_JOB_CANCELLED"
+    }
+  ],
+  "global_rules": [
+    "Idempotency key suppresses duplicate execution.",
+    "Payload validates before enqueue and again before consume.",
+    "Failed job is not automatically retried unless explicitly safe.",
+    "STOP cancels all jobs; FREEZE cancels pending release jobs."
+  ],
+  "source_refs": [
+    "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md"
+  ],
+  "code_refs": [
+    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/queue/jobs.ts",
+    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/queue/payload.ts",
+    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/queue/workers.ts",
+    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/queue/run-state.ts"
+  ],
+  "evidence_status": "IMPLEMENTATION_PRESENT_E0"
+}
