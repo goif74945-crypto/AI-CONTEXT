@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Contradiction Pair",
+  "type": "object",
+  "required": [
+    "contradiction_id",
+    "relation",
+    "claim_a",
+    "claim_b",
+    "authority_a",
+    "authority_b",
+    "resolution",
+    "status",
+    "blocks_coding",
+    "source"
+  ],
+  "properties": {
+    "contradiction_id": {
+      "type": "string"
+    },
+    "relation": {
+      "type": "string"
+    },
+    "claim_a": {
+      "type": "string"
+    },
+    "claim_b": {
+      "type": "string"
+    },
+    "authority_a": {},
+    "authority_b": {},
+    "authorities": {
+      "type": "array"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "affected_entities": {
+      "type": "array"
+    },
+    "resolution": {
+      "type": "string"
+    },
+    "do_not_do": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "blocks_coding": {
+      "type": "boolean"
+    },
+    "source": {
+      "type": "string"
+    }
+  }
+}
