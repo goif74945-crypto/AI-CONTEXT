@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "scopes": [
+    {
+      "id": "DOC_B_SYSTEM_LAW",
+      "class": "CURRENT_NORMATIVE",
+      "build_obligation": false,
+      "description": "Current system-law identity/authority constraints."
+    },
+    {
+      "id": "DOC_C_CURRENT_BUILD",
+      "class": "CURRENT_BUILD",
+      "build_obligation": true,
+      "description": "Current vNEXT implementation obligation."
+    },
+    {
+      "id": "DOC_D_PRODUCT_DESIGN",
+      "class": "CURRENT_PRODUCT_DESIGN",
+      "build_obligation": "ONLY_WHERE_DOC_C_SUPPORTS",
+      "description": "Concrete product/UI design subordinate to DOC-B/C."
+    },
+    {
+      "id": "DOC_E_DEPLOYMENT_EVIDENCE",
+      "class": "CURRENT_DEPLOYMENT_PROOF",
+      "build_obligation": false,
+      "description": "Proof required to approve deployment of exact implementation."
+    },
+    {
+      "id": "CURRENT_ARCHITECTURE",
+      "class": "ARCHITECTURAL_DIRECTION",
+      "build_obligation": false,
+      "description": "Current whole-system architectural semantics; must not be assumed implemented."
+    },
+    {
+      "id": "FUTURE_ARCHITECTURE",
+      "class": "FUTURE",
+      "build_obligation": false,
+      "description": "Extended/future Sovereign/Game/NCF/Robotics architecture unless explicitly promoted."
+    },
+    {
+      "id": "EXPERIMENTAL",
+      "class": "EXPERIMENTAL",
+      "build_obligation": false,
+      "description": "Unverified proposal/experiment."
+    },
+    {
+      "id": "HISTORICAL",
+      "class": "HISTORICAL",
+      "build_obligation": false,
+      "description": "Superseded/older source retained for provenance."
+    },
+    {
+      "id": "SUPERSEDED",
+      "class": "SUPERSEDED",
+      "build_obligation": false,
+      "description": "Claim/object whose semantics have been explicitly replaced."
+    },
+    {
+      "id": "EXCLUDED",
+      "class": "CURRENT_EXCLUDED",
+      "build_obligation": false,
+      "description": "Explicitly excluded from current build scope."
+    },
+    {
+      "id": "DEFERRED",
+      "class": "DEFERRED",
+      "build_obligation": false,
+      "description": "Named future/deferred feature not required now."
+    }
+  ],
+  "current_doc_c_excluded": [
+    "voice orchestration",
+    "AR/VR/XR",
+    "holographic UI",
+    "blockchain",
+    "IoT",
+    "quantum-safe cryptography layer",
+    "self-patch / auto-heal runtime",
+    "public anonymous write access"
+  ],
+  "current_doc_c_deferred": [
+    "advanced policy simulation dashboard",
+    "multi-tenant org hierarchy",
+    "fine-grained per-project config policy",
+    "provider marketplace"
+  ],
+  "promotion_rules": [
+    "FUTURE/EXPERIMENTAL/DEFERRED does not become DOC_C_CURRENT_BUILD without explicit spec extension + dependency/test impact review + version bump.",
+    "DOC_D_PRODUCT_DESIGN does not create a build obligation that DOC-C explicitly excludes.",
+    "HISTORICAL/SUPERSEDED is never used as current authority except for provenance/migration analysis.",
+    "Implementation existence of an out-of-scope feature does not by itself promote it into current required scope."
+  ]
+}
