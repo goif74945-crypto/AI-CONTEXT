@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0.0",
+  "engine_id": "NEXY-SEMANTIC-DIFF",
+  "purpose": "Translate file/symbol/config/schema changes into behavior/authority/contract/invariant impact.",
+  "input": {
+    "before": {
+      "repo": "required",
+      "branch_or_ref": "required",
+      "head": "required"
+    },
+    "after": {
+      "repo": "required",
+      "branch_or_ref": "required",
+      "head": "required"
+    },
+    "git_changes": "file/path/symbol diff",
+    "optional_scope": "task-authorized scope"
+  },
+  "normalization": [
+    "Map changed paths/symbols to repository navigation + system-to-code.",
+    "Resolve impacted ontology entities.",
+    "Resolve requirements through traceability.",
+    "Resolve contracts/invariants/FSM/state/security/config through registries.",
+    "Compare source/authority version if governance files changed.",
+    "Derive change class and required regression/evidence."
+  ],
+  "semantic_dimensions": [
+    {
+      "dimension": "AUTHORITY",
+      "detects": [
+        "permission owner changed",
+        "precedence changed",
+        "actor may newly mutate/decide",
+        "bypass introduced/removed",
+        "source/supersession changed"
+      ],
+      "severity_default": "S5"
+    },
+    {
+      "dimension": "CONTRACT",
+      "detects": [
+        "API shape",
+        "event schema",
+        "module input/output",
+        "error semantics",
+        "storage contract",
+        "timeout/idempotency/auth changes"
+      ],
+      "severity_default": "S3-S5"
+    },
+    {
+      "dimension": "FSM",
+      "detects": [
+        "state added/removed",
+        "event added/removed",
+        "guard/action/target changed",
+        "illegal path newly reachable"
+      ],
+      "severity_default": "S4-S5"
+    },
+    {
+      "dimension": "INVARIANT",
+      "detects": [
+        "must-hold property affected",
+        "violation behavior changed",
+        "test proof invalidated"
+      ],
+      "severity_default": "S4-S5"
+    },
+    {
+      "dimension": "CONFIG",
+      "detects": [
+        "default/range/version/mutability/owner changed"
+      ],
+      "severity_default": "S2-S5"
+    },
+    {
+      "dimension": "PERSISTENCE",
+      "detects": [
+        "schema/lineage/OCC/retention/delete/migration/transaction behavior changed"
+      ],
+      "severity_default": "S3-S5"
+    },
+    {
+      "dimension": "CONCURRENCY",
+      "detects": [
+        "ordering/retry/locking/idempotency/concurrent-writer semantics changed"
+      ],
+      "severity_default": "S4-S5"
+    },
+    {
+      "dimension": "SECURITY",
+      "detects": [
+        "trust boundary/permission/session/CSRF/RBAC/secret/sandbox semantics changed"
+      ],
+      "severity_default": "S4-S5"
+    },
+    {
+      "dimension": "OBSERVABILITY",
+      "detects": [
+        "audit/incident/log/trace/alert identity or coverage changed"
+      ],
+      "severity_default": "S2-S4"
+    },
+    {
+      "dimension": "RELEASE",
+      "detects": [
+        "required evidence/gate/signoff/rollback/monitoring obligation changed or invalidated"
+      ],
+      "severity_default": "S4-S5"
+    },
+    {
+      "dimension": "SCOPE",
+      "detects": [
+        "CURRENT/FUTURE/DEFERRED/EXCLUDED/HISTORICAL/SUPERSEDED status changed"
+      ],
+      "severity_default": "S4-S5"
+    }
+  ],
+  "change_classes": [
+    "BEHAVIOR_PRESERVING_REFACTOR",
+    "BEHAVIOR_CHANGE",
+    "CONTRACT_CHANGE",
+    "AUTHORITY_CHANGE",
+    "FSM_CHANGE",
+    "SCHEMA_MIGRATION",
+    "CONFIG_CHANGE",
+    "SECURITY_CHANGE",
+    "OBSERVABILITY_CHANGE",
+    "TEST_ONLY_CHANGE",
+    "DOC_ONLY_CHANGE",
+    "SCOPE_GOVERNANCE_CHANGE",
+    "UNKNOWN_SEMANTIC_CHANGE"
+  ],
+  "algorithm": [
+    "1. Verify exact before/after refs.",
+    "2. Get changed files/symbols.",
+    "3. Map each changed artifact to entity/system IDs.",
+    "4. Expand direct impact from impact/system-impact.jsonl.",
+    "5. Compare registries/contracts/config/FSM when changed files correspond to governed semantics.",
+    "6. Detect semantic dimensions affected.",
+    "7. Pull known failures/regressions for impacted systems.",
+    "8. Derive required tests/evidence.",
+    "9. Classify release impact.",
+    "10. Emit UNKNOWN/CANDIDATE for unresolved semantic mapping instead of guessing."
+  ],
+  "release_impact_values": [
+    "NONE",
+    "RERUN_LOCAL_TESTS",
+    "INVALIDATES_CURRENT_EVIDENCE",
+    "REQUIRES_MIGRATION_PROOF",
+    "REQUIRES_SECURITY_REVIEW",
+    "REQUIRES_EXTERNAL_SIGNOFF_REFRESH",
+    "NON_DEPLOYABLE_UNTIL_REPROVEN"
+  ],
+  "sources": [
+    "projects/NEXY.AI/impact/system-impact.jsonl",
+    "projects/NEXY.AI/traceability/requirement-trace.jsonl",
+    "projects/NEXY.AI/contracts/",
+    "projects/NEXY.AI/invariants/invariants.jsonl",
+    "projects/NEXY.AI/fsm/",
+    "projects/NEXY.AI/config/config-registry.json",
+    "projects/NEXY.AI/state/",
+    "projects/NEXY.AI/security/",
+    "projects/NEXY.AI/regression/regressions.jsonl",
+    "projects/NEXY.AI/release/"
+  ]
+}
