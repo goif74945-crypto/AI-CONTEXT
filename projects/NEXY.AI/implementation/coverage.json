@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0.0",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "codex/spec-audit-20260919-78df350",
+  "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "ontology_entities": 516,
+  "mapped_entities": 273,
+  "unmapped_entities": 243,
+  "by_mapping_status": {
+    "GROUP": 10,
+    "UNMAPPED": 243,
+    "EXACT": 200,
+    "CANDIDATE": 63
+  },
+  "symbol_files_scanned": 237,
+  "symbols_indexed": 1762,
+  "rules": [
+    "EXACT does not mean requirement PASS.",
+    "GROUP is navigation ownership, not symbol-level proof.",
+    "CANDIDATE must be opened/read before mutation.",
+    "UNMAPPED does not automatically mean implementation is absent.",
+    "All mappings are stale if observed HEAD changes."
+  ]
+}
