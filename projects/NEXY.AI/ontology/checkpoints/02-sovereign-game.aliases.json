@@ -1,0 +1,100 @@
+[
+  {
+    "canonical_id": "PLANE-CORE",
+    "canonical_name": "CORE PLANE",
+    "alias": "CORE PLANE / CORE ZONE",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 3220,
+        "end_paragraph": 5154
+      }
+    ]
+  },
+  {
+    "canonical_id": "SYSTEM-HSP",
+    "canonical_name": "Host Survival Protocol",
+    "alias": "HSP",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 3220,
+        "end_paragraph": 4054
+      }
+    ]
+  },
+  {
+    "canonical_id": "CONTROLLER-HOST-GUARDIAN",
+    "canonical_name": "Guardian Daemon",
+    "alias": "Host Guardian",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 3220,
+        "end_paragraph": 4054
+      }
+    ]
+  },
+  {
+    "canonical_id": "LAYER-GAME-RENDER",
+    "canonical_name": "GPU Render Layer",
+    "alias": "WebGPU Render",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 5155,
+        "end_paragraph": 6530
+      }
+    ]
+  },
+  {
+    "canonical_id": "FABRIC-NCF",
+    "canonical_name": "NEXY Creative Fabric",
+    "alias": "NCF",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 5155,
+        "end_paragraph": 7102
+      }
+    ]
+  },
+  {
+    "canonical_id": "DATA-CIR",
+    "canonical_name": "Canonical Intermediate Representation",
+    "alias": "CIR",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 5155,
+        "end_paragraph": 7102
+      }
+    ]
+  },
+  {
+    "canonical_id": "REGISTRY-RCS",
+    "canonical_name": "Rejection Reason Code Registry",
+    "alias": "RCS",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 6530,
+        "end_paragraph": 7102
+      }
+    ]
+  }
+]
