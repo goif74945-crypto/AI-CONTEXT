@@ -1,0 +1,81 @@
+{
+  "TASK_ID": "NEXY-2026-09-23-GITHUB-AUTH-CHECK",
+  "title": "Validate GitHub authentication for local NEXY runtime validation",
+  "mode": "EXECUTE_FIX_VERIFY",
+  "scope": "SOLO",
+  "inputs_summary": "Check whether the Windows desktop runner is authenticated to GitHub for the NEXY work branch.",
+  "sources": [
+    "Remote Desktop Commander runtime evidence",
+    "GitHub connector"
+  ],
+  "skills_tools": [
+    "Remote Desktop Commander",
+    "GitHub connector",
+    "Git Credential Manager"
+  ],
+  "actions": [
+    "Verified device online and responsive.",
+    "Verified Git Credential Manager has the expected GitHub account.",
+    "Verified authenticated ls-remote access to the authorized work branch.",
+    "Cloned only the authorized work branch with --single-branch.",
+    "Verified local branch, HEAD, clean working tree, and origin."
+  ],
+  "artifacts_paths": [
+    "C:\\Users\\กอลฟ์\\Documents\\NEXY-OMEGA-VALIDATION"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "GitHub authentication works for the authorized NEXY work branch.",
+      "proof": "git ls-remote returned refs/heads/astra/omega-full-spec-convergence at 829f842e913f1f2168cc4d99c14c3c2dafe0ce18."
+    },
+    {
+      "claim": "Authorized work branch cloned successfully.",
+      "proof": "git clone --single-branch completed with exit code 0."
+    },
+    {
+      "claim": "Local validation tree is on the authorized work branch.",
+      "proof": "branch=astra/omega-full-spec-convergence; HEAD=829f842e913f1f2168cc4d99c14c3c2dafe0ce18; status clean."
+    }
+  ],
+  "tests_results": [
+    "Remote ping: PASS",
+    "Git credential account listing: PASS",
+    "Authenticated ls-remote: PASS",
+    "Single-branch clone: PASS",
+    "Local branch/HEAD/status/origin verification: PASS"
+  ],
+  "changes": "No source-code changes in NEXY repo for this subtask.",
+  "successes": [
+    "Desktop runner online",
+    "GitHub authentication validated",
+    "Authorized branch cloned"
+  ],
+  "failures": [
+    "Initial unauthenticated ls-remote failed before login; resolved with Git Credential Manager."
+  ],
+  "decisions": [
+    "Protected branch contents were not inspected or used."
+  ],
+  "unresolved": [
+    "Full NEXY validation remains in progress."
+  ],
+  "risks": [
+    "Dependency installation and full runtime validation not complete yet."
+  ],
+  "limits": [
+    "This record covers only authentication and branch acquisition evidence."
+  ],
+  "rollback": "Delete local validation clone if rollback is required.",
+  "final_status": "SUCCESS",
+  "next_actions": [
+    "Complete npm ci",
+    "Run typecheck, contract, integration, full tests, build, migrations and runtime validation."
+  ],
+  "dependencies": [
+    "Desktop Commander must remain online."
+  ],
+  "version": 1,
+  "timestamp_source": "Conversation system date 2026-09-23; runtime timestamps from tool evidence.",
+  "trace_id": "NEXY-GHAUTH-20260923-01",
+  "hash": "HASH_UNAVAILABLE"
+}
