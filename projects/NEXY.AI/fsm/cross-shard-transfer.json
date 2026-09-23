@@ -1,60 +1,93 @@
 {
-  "id": "FSM-CROSS-SHARD-TRANSFER",
-  "name": "Cross-Shard Transfer Protocol FSM",
-  "scope": "FUTURE_ARCHITECTURE",
+  "fsm_id": "FSM-CROSS-SHARD-TRANSFER",
+  "name": "Cross-Shard Transfer FSM",
+  "kind": "PROTOCOL_AS_FSM",
   "authority": [
-    "G12_SOURCE_DESIGN"
+    "GAME_FABRIC_SOURCE"
   ],
-  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "scope": [
+    "FUTURE_ARCHITECTURE"
+  ],
+  "source_range": [
+    {
+      "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "start_paragraph": 5155,
+      "end_paragraph": 6530
+    }
+  ],
   "states": [
     "EXPORT",
     "COMMIT",
     "IMPORT"
   ],
+  "events": [
+    "transfer request",
+    "commit finalized",
+    "import"
+  ],
+  "event_ownership": {},
   "transitions": [
     {
       "from": "EXPORT",
-      "event": "ORIGIN_FINALIZED",
-      "guard": [
-        "entity snapshot/hash committed to origin WAL/Merkle",
-        "region root finalized"
-      ],
-      "action": [
-        "Create signed transfer record; mark TRANSFER_PENDING"
-      ],
+      "event": "commit finalized",
+      "guard": "export sealed + required finalized root/signatures/economic state",
+      "action": "commit transfer authority",
       "to": "COMMIT",
-      "failure": [
-        "No transfer; deterministic replay/rollback"
-      ],
-      "audit_event": "TRANSFER_COMMITTED"
+      "failure": "rollback/freeze transfer; no duplicate authority",
+      "audit_event": "transfer evidence required"
     },
     {
       "from": "COMMIT",
-      "event": "DESTINATION_VALIDATE",
-      "guard": [
-        "root/signature/snapshot/economic hash valid"
-      ],
-      "action": [
-        "Append destination WAL; deterministically import entity"
-      ],
+      "event": "import",
+      "guard": "destination validates finalized commit",
+      "action": "import entity into destination shard",
       "to": "IMPORT",
-      "failure": [
-        "Freeze destination shard on mismatch"
-      ],
-      "audit_event": "TRANSFER_IMPORTED"
+      "failure": "rollback/replay without duplication",
+      "audit_event": "transfer evidence required"
     }
   ],
-  "global_rules": [
-    "No live shared state between shards.",
-    "No dual residency.",
-    "Transfer only at fixed boundaries/ticks.",
-    "Value-bearing entity requires economic-state commit before export."
+  "invalid_transition_behavior": "No entity may become authoritative in two shards simultaneously.",
+  "recovery_semantics": "Failed import must preserve/restore single-authority semantics.",
+  "audit_event_semantics": "UNKNOWN",
+  "implementation_mapping_status": "EXACT",
+  "implementation_refs": [
+    {
+      "path": "packages/phase-f/game/cross-shard.ts",
+      "blob_sha": "042bda8e9341add08d3e2c3cb08f9bab60f0a50a",
+      "symbols": [
+        "CrossShardLedger",
+        "ShardTransfer",
+        "TransferStatus",
+        "assertStatus",
+        "computeEnvelopeHash",
+        "computeSrcSignature",
+        "createCrossShardLedger",
+        "for",
+        "if",
+        "requireTransfer"
+      ]
+    },
+    {
+      "path": "packages/phase-f/game/g12-transfer.ts",
+      "blob_sha": "fa07bc49e98a9bea51ed9e3928c4eedb4786325d",
+      "symbols": [
+        "ImportResult",
+        "TransferRecord",
+        "TransferRecordSchema",
+        "exportEntity",
+        "importEntity"
+      ]
+    }
   ],
-  "source_refs": [
-    "projects/NEXY.AI/deep/game-aaaa-ncf.md"
+  "requirement_ids": [
+    "REQ-GAME-009",
+    "REQ-GAME-010"
   ],
-  "code_refs": [
-    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/phase-f/game/transfer.ts"
+  "test_refs": [
+    "tests/integration/g12-cross-shard.spec.ts",
+    "tests/integration/g12-transfer.spec.ts"
   ],
-  "evidence_status": "NOT_VERIFIED_RUNTIME"
+  "alignment_status": "SOURCE_PROTOCOL_WITH_IMPLEMENTATION_REFS",
+  "alignment_notes": []
 }
