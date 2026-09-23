@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/schema/execution-record.schema.json",
+  "title": "AI-CONTEXT Execution Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "final_status",
+    "observed_start_state",
+    "actions",
+    "verification",
+    "mutations",
+    "remaining"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "final_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PARTIAL",
+        "BLOCKED",
+        "NOT_VERIFIED",
+        "UNKNOWN",
+        "CONFLICT"
+      ]
+    },
+    "observed_start_state": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "action",
+          "result"
+        ],
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string"
+          },
+          "evidence_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mutations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "target",
+          "change"
+        ],
+        "properties": {
+          "target": {
+            "type": "string"
+          },
+          "change": {
+            "type": "string"
+          },
+          "commit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "remaining": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "context_updates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
