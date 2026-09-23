@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "generator_id": "NEXY-AUDIT-CONTEXT-PACK-GENERATOR",
+  "input": {
+    "audit_target": "system/workflow/contract/release",
+    "claim_set": "required",
+    "target": "repo/branch/head when implementation/current claim involved",
+    "scope": "required",
+    "required_evidence_class": "derive per claim"
+  },
+  "pipeline": [
+    "Load NEXY-CANON governance pointers.",
+    "Resolve target entities/requirements.",
+    "Load implementation map at exact HEAD.",
+    "Load acceptance/test matrix and traceability.",
+    "Load evidence ledger and freshness.",
+    "Load failures/regression/negative corpus.",
+    "Load relevant threat/chaos catalog.",
+    "Load invariants/FSM/contracts/state/config.",
+    "Generate expected behavior/proof obligations before inspecting verdict.",
+    "Emit adversarial pack with attack list and explicit proof gaps."
+  ],
+  "output_schema": {
+    "target": {},
+    "claims": [],
+    "authority": [],
+    "requirements": [],
+    "expected_behavior": [],
+    "implementation_refs": [],
+    "tests": [],
+    "evidence": [],
+    "evidence_freshness": [],
+    "invariants": [],
+    "attack_cases": [],
+    "known_failures": [],
+    "regression_obligations": [],
+    "proof_obligations": [],
+    "verdict_constraints": [],
+    "unresolved": []
+  },
+  "stop_conditions": [
+    "Target identity ambiguous.",
+    "Authority conflict prevents legal expectation.",
+    "Required evidence is unavailable: return NOT_VERIFIED/BLOCKED rather than infer.",
+    "Single search absence cannot establish MISSING."
+  ],
+  "truth_rule": "Audit pack is adversarial preparation, not verdict. Verdict requires evidence."
+}
