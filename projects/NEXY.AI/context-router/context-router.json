@@ -1,0 +1,379 @@
+{
+  "schema_version": "1.0.0",
+  "project": "NEXY.AI",
+  "routing_law": [
+    "Resolve task type before loading broad context.",
+    "Always load governance/canon first for authority-sensitive work.",
+    "Load exact target snapshot for current implementation claims.",
+    "Expand dependencies only from relevant system/requirement/impact records.",
+    "Do not load future architecture into DOC-C task unless dependency/scope requires it.",
+    "Evidence/audit context is mandatory before PASS/release claims."
+  ],
+  "routes": [
+    {
+      "task_type": "QUEUE_BUG",
+      "match": [
+        "queue",
+        "worker",
+        "job",
+        "idempotency",
+        "stale job",
+        "duplicate delivery"
+      ],
+      "base_pack": "NEXY-BUILD-CONTEXT",
+      "required": [
+        "governance",
+        "requirements:QUEUE",
+        "fsm:queue-job",
+        "contracts:events/modules/errors",
+        "invariants:queue/idempotency",
+        "state/persistence",
+        "events",
+        "implementation:QUEUE",
+        "impact:QUEUE",
+        "failures:QUEUE",
+        "regression:QUEUE",
+        "verification:QUEUE"
+      ],
+      "conditional": [
+        "observability if incident/trace/worker health involved",
+        "release if deployability claim involved"
+      ],
+      "exclude_by_default": [
+        "robotics",
+        "game",
+        "future sovereign fabric"
+      ]
+    },
+    {
+      "task_type": "AUTH_SECURITY",
+      "match": [
+        "auth",
+        "otac",
+        "session",
+        "csrf",
+        "rbac",
+        "device binding",
+        "revocation"
+      ],
+      "base_pack": "NEXY-BUILD-CONTEXT",
+      "required": [
+        "governance",
+        "requirements:AUTH",
+        "contracts:api/errors",
+        "security",
+        "config:auth",
+        "events",
+        "implementation:AUTH/API",
+        "impact:AUTH",
+        "failures:AUTH",
+        "regression:AUTH",
+        "verification:AUTH"
+      ],
+      "conditional": [
+        "UI truth if browser flow",
+        "release/evidence if deployment claim"
+      ],
+      "exclude_by_default": [
+        "game",
+        "robotics"
+      ]
+    },
+    {
+      "task_type": "FSM_CHANGE",
+      "match": [
+        "state",
+        "transition",
+        "fsm",
+        "freeze",
+        "stop",
+        "recover"
+      ],
+      "base_pack": "NEXY-BUILD-CONTEXT",
+      "required": [
+        "governance",
+        "target FSM",
+        "requirements by FSM",
+        "invariants",
+        "event registry",
+        "state ownership",
+        "implementation mapping",
+        "impact",
+        "failures",
+        "verification"
+      ],
+      "conditional": [
+        "security for privileged recovery",
+        "persistence for durable state",
+        "UI truth for state display"
+      ],
+      "exclude_by_default": []
+    },
+    {
+      "task_type": "API_CHANGE",
+      "match": [
+        "api",
+        "route",
+        "endpoint",
+        "request",
+        "response",
+        "SystemEnvelope"
+      ],
+      "base_pack": "NEXY-BUILD-CONTEXT",
+      "required": [
+        "governance",
+        "requirements:API",
+        "contracts:api/schemas/errors",
+        "security/RBAC/CSRF",
+        "config",
+        "implementation:API",
+        "impact",
+        "verification",
+        "failures"
+      ],
+      "conditional": [
+        "events/audit for mutation",
+        "UI if route consumer is browser",
+        "queue if async"
+      ],
+      "exclude_by_default": []
+    },
+    {
+      "task_type": "VAULT_PERSISTENCE",
+      "match": [
+        "vault",
+        "artifact",
+        "revision",
+        "commit",
+        "database",
+        "migration",
+        "storage"
+      ],
+      "base_pack": "NEXY-BUILD-CONTEXT",
+      "required": [
+        "governance",
+        "requirements:VAULT",
+        "contracts:storage/schemas",
+        "state ownership",
+        "persistence map",
+        "migrations",
+        "invariants",
+        "implementation:VAULT",
+        "impact",
+        "failures",
+        "regression",
+        "verification"
+      ],
+      "conditional": [
+        "release/DOC-E for migration deploy",
+        "events/audit for mutation"
+      ],
+      "exclude_by_default": []
+    },
+    {
+      "task_type": "L1O_REASONING",
+      "match": [
+        "L1o",
+        "cognition",
+        "constraint",
+        "multi-path",
+        "recursive self-auditor",
+        "BTS"
+      ],
+      "base_pack": "NEXY-CANON",
+      "required": [
+        "ontology:L1o subtree",
+        "requirements:L1o",
+        "invariants:L1o/bounded truth",
+        "dependency graph",
+        "intelligence-trinity source",
+        "implementation:L1o if current code asked",
+        "tests/evidence if verification asked"
+      ],
+      "conditional": [
+        "Lo3 when cross-verification boundary matters",
+        "Lo2 when learning/promotion matters"
+      ],
+      "exclude_by_default": [
+        "DOC-C UI detail",
+        "robotics unless embodied task"
+      ]
+    },
+    {
+      "task_type": "LO3_SWARM",
+      "match": [
+        "Lo3",
+        "swarm",
+        "agent",
+        "adversarial",
+        "cross-verify",
+        "consensus",
+        "agent adapter"
+      ],
+      "base_pack": "NEXY-CANON",
+      "required": [
+        "ontology:Lo3/SWARM",
+        "requirements:Lo3/SWARM",
+        "invariants:authority/Lo3",
+        "contracts:agent/consensus",
+        "dependency graph",
+        "failures",
+        "implementation if current build",
+        "verification"
+      ],
+      "conditional": [
+        "security for external model/tool boundary",
+        "cost model for model-call planning"
+      ],
+      "exclude_by_default": []
+    },
+    {
+      "task_type": "LO2_EVOLUTION",
+      "match": [
+        "Lo2",
+        "learning",
+        "logic quanta",
+        "law memory",
+        "generalization",
+        "promotion"
+      ],
+      "base_pack": "NEXY-CANON",
+      "required": [
+        "ontology:Lo2",
+        "requirements:Lo2",
+        "ADR-0005",
+        "supersession",
+        "invariants:Lo2",
+        "intelligence-trinity source",
+        "evidence/provenance rules"
+      ],
+      "conditional": [
+        "version/evolution law",
+        "release if promotion to runtime asked"
+      ],
+      "exclude_by_default": [
+        "raw conversation history as authority"
+      ]
+    },
+    {
+      "task_type": "RELEASE",
+      "match": [
+        "release",
+        "deploy",
+        "production",
+        "staging",
+        "canary",
+        "DOC-E",
+        "signoff"
+      ],
+      "base_pack": "NEXY-AUDIT-CONTEXT",
+      "required": [
+        "release gate matrix",
+        "current evidence ledger",
+        "evidence validation",
+        "current snapshot",
+        "migrations",
+        "observability",
+        "failures active blockers",
+        "audit-release playbook",
+        "capability registry"
+      ],
+      "conditional": [
+        "environment matrix",
+        "security audit",
+        "rollback proof"
+      ],
+      "exclude_by_default": [
+        "historical PASS as current proof"
+      ]
+    },
+    {
+      "task_type": "ROBOTICS_SAFETY",
+      "match": [
+        "robot",
+        "RCL",
+        "Safety Kernel",
+        "Fast Path",
+        "Safe Path",
+        "actuator",
+        "sensor"
+      ],
+      "base_pack": "NEXY-CANON",
+      "required": [
+        "scope registry",
+        "robotics-rcl source",
+        "final architecture",
+        "ontology:RCL",
+        "invariants:RCL/safety",
+        "performance:RCL",
+        "conflict:CONFLICT-RCL-LATENCY-001",
+        "security boundary",
+        "evidence class physical/HIL"
+      ],
+      "conditional": [
+        "implementation mapping when source code inspected",
+        "chaos/HIL scenarios"
+      ],
+      "exclude_by_default": [
+        "claiming physical proof from source/code"
+      ]
+    },
+    {
+      "task_type": "GAME_FABRIC",
+      "match": [
+        "game",
+        "AAAA",
+        "shard",
+        "cross-shard",
+        "NCF",
+        "WebGPU"
+      ],
+      "base_pack": "NEXY-CANON",
+      "required": [
+        "scope registry",
+        "game/NCF source",
+        "ontology:Game/NCF",
+        "invariants:game",
+        "FSM cross-shard/capability",
+        "concurrency:game",
+        "chaos:G25 relevant",
+        "implementation/evidence if current claim"
+      ],
+      "conditional": [
+        "capability governance",
+        "economic laws"
+      ],
+      "exclude_by_default": [
+        "DOC-C current build obligation unless explicitly promoted"
+      ]
+    },
+    {
+      "task_type": "PROJECT_AUDIT",
+      "match": [
+        "audit",
+        "full audit",
+        "system audit",
+        "verify project"
+      ],
+      "base_pack": "NEXY-AUDIT-CONTEXT",
+      "required": [
+        "governance",
+        "requirements",
+        "traceability",
+        "impact",
+        "failure library",
+        "regression",
+        "verification matrix",
+        "evidence",
+        "audit playbooks",
+        "current snapshot"
+      ],
+      "conditional": [
+        "chaos/security/release by scope"
+      ],
+      "exclude_by_default": [
+        "mutation unless separately authorized"
+      ]
+    }
+  ]
+}
