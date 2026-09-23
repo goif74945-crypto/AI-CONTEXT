@@ -1,0 +1,16 @@
+[
+  {
+    "canonical_id": "DATA-CSU",
+    "canonical_name": "Constitutional Settlement Unit",
+    "alias": "CSU",
+    "status": "SOURCE_ALIAS",
+    "source_range": [
+      {
+        "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+        "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+        "start_paragraph": 4055,
+        "end_paragraph": 5154
+      }
+    ]
+  }
+]
