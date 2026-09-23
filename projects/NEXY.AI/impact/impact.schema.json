@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Change Impact Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "entity_id",
+    "name",
+    "entity_type",
+    "direct_prerequisites",
+    "direct_dependents",
+    "transitive_prerequisites",
+    "transitive_dependents",
+    "requirement_ids",
+    "invariant_ids",
+    "known_failure_ids",
+    "required_regression_classes"
+  ],
+  "properties": {
+    "entity_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "entity_type": {
+      "type": "string"
+    },
+    "scope": {},
+    "status": {},
+    "direct_prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "direct_dependents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "transitive_prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "transitive_dependents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "semantic_neighbors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "requirement_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "invariant_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "known_failure_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "implementation_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "test_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_regression_classes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
