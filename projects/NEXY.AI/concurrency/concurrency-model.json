@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0.0",
+  "project": "NEXY.AI",
+  "models": [
+    {
+      "id": "CONC-DOC-C-PIPELINE",
+      "scope": "DOC_C_CURRENT_BUILD",
+      "domain": "Pipeline",
+      "semantics": [
+        "Multiple pipeline runs may exist subject to queue.max_concurrent_pipeline_runs=10 current default.",
+        "Within a run, multi-agent execution is parallel/concurrent by design.",
+        "Parallel worker results are untrusted until cross-verification/consensus/release.",
+        "No automatic retry by default."
+      ],
+      "ordering": [
+        "Execution FSM order remains INIT→READY→RUNNING→VERIFYING→CONSENSUS→STABLE with side FREEZE/STOP semantics.",
+        "Queue job lifecycle/order is governed by Queue FSM."
+      ],
+      "idempotency": [
+        "Mutating routes/jobs require idempotency semantics.",
+        "Duplicate job delivery must not duplicate authoritative mutation."
+      ],
+      "locks": "Implementation-specific locking primitives are not canonically specified by source.",
+      "race_requirements": [
+        "Race/duplicate execution is a named operational concern.",
+        "Critical writes use OCC/idempotency/transaction boundaries where defined."
+      ],
+      "source_refs": [
+        "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md",
+        "projects/NEXY.AI/fsm/execution.json",
+        "projects/NEXY.AI/fsm/queue-job.json"
+      ]
+    },
+    {
+      "id": "CONC-CORE-CANONICAL",
+      "scope": "FUTURE_ARCHITECTURE",
+      "domain": "Constitutional Core",
+      "semantics": [
+        "Exactly one deterministic canonical mutator/executor.",
+        "Workers may perform I/O isolation/non-authoritative computation but cannot mutate canonical state concurrently."
+      ],
+      "ordering": [
+        "Explicit FIFO canonical event queue.",
+        "Strict monotonic counter.",
+        "No unordered futures/dynamic priority determines canonical state."
+      ],
+      "idempotency": [
+        "WAL/event identity and deterministic replay guard against duplicate/invented history."
+      ],
+      "locks": "Conceptual single-writer law; specific synchronization primitive is implementation-dependent.",
+      "race_requirements": [
+        "Any state-hash divergence => freeze."
+      ],
+      "source_refs": [
+        "projects/NEXY.AI/deep/constitutional-locks.md"
+      ]
+    },
+    {
+      "id": "CONC-SWARM",
+      "scope": "CURRENT_ARCHITECTURE",
+      "domain": "Lo3/SWARM",
+      "semantics": [
+        "Agents may work in parallel while isolated/context-sharded.",
+        "Answers are not shared before intended comparison in strict model.",
+        "Consensus/adversarial stages are bounded."
+      ],
+      "ordering": [
+        "Task decomposition precedes agent work; adversarial/cross-verification precede release."
+      ],
+      "idempotency": [
+        "Provider calls are not authority mutations; any downstream mutation still requires canonical idempotency."
+      ],
+      "locks": "No canonical model-level lock primitive defined.",
+      "race_requirements": [
+        "Parallel timing must not change final authoritative semantics outside governed arbitration."
+      ],
+      "source_refs": [
+        "projects/NEXY.AI/deep/intelligence-trinity.md",
+        "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md"
+      ]
+    },
+    {
+      "id": "CONC-GAME-SHARD",
+      "scope": "FUTURE_ARCHITECTURE",
+      "domain": "Authoritative Game Simulation",
+      "semantics": [
+        "Per-shard authoritative simulation uses fixed tick and deterministic ordering.",
+        "Authoritative agent updates are ordered by agent_id; no parallel authoritative agent updates.",
+        "Background I/O may enqueue events but not mutate world state directly."
+      ],
+      "ordering": [
+        "Tick-indexed input; canonical entity/chunk/agent ordering.",
+        "Cross-shard movement only through EXPORT→COMMIT→IMPORT at fixed boundaries."
+      ],
+      "idempotency": [
+        "Transfer protocol prevents dual residency; failed import follows deterministic replay/rollback."
+      ],
+      "locks": "Fixed deterministic sequencing rather than nondeterministic shared-state locking.",
+      "race_requirements": [
+        "Same ordered input stream must yield identical shard/tick hash."
+      ],
+      "source_refs": [
+        "projects/NEXY.AI/deep/game-aaaa-ncf.md"
+      ]
+    },
+    {
+      "id": "CONC-PERSISTENCE",
+      "scope": "CURRENT_BUILD_AND_FUTURE_CORE",
+      "domain": "Persistence",
+      "semantics": [
+        "Vault writes use revision/OCC/idempotency/transactions in current DOC-C.",
+        "Future constitutional Core uses WAL-first single-writer mutation."
+      ],
+      "ordering": [
+        "Metadata/blob and revision/commit ordering must follow storage contracts.",
+        "Future Core ACK occurs only after durability boundary."
+      ],
+      "idempotency": [
+        "Directive/commit/job idempotency keys suppress duplicate mutation where specified."
+      ],
+      "locks": "Database transaction/OCC semantics current; future WAL serialization constitutional.",
+      "race_requirements": [
+        "Stale previous_version is rejected.",
+        "Partial write/replay behavior must be explicit."
+      ],
+      "source_refs": [
+        "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md",
+        "projects/NEXY.AI/deep/constitutional-locks.md"
+      ]
+    },
+    {
+      "id": "CONC-ROBOTICS",
+      "scope": "FUTURE_ARCHITECTURE",
+      "domain": "Robotics",
+      "semantics": [
+        "Fast reflex loop and slower Safe Brain run at different timing layers.",
+        "Independent Safety Kernel may override AI/control path."
+      ],
+      "ordering": [
+        "Safety authority dominates decision/intelligence.",
+        "Sensor fusion precedes authoritative reasoning."
+      ],
+      "idempotency": [
+        "Physical actions require domain-specific control semantics; generic retry is unsafe unless explicitly designed."
+      ],
+      "locks": "Hardware/RTOS/controller synchronization is implementation-specific and not fully defined by source.",
+      "race_requirements": [
+        "Time-critical hazards must not wait on full Lo3 reasoning."
+      ],
+      "source_refs": [
+        "projects/NEXY.AI/deep/robotics-rcl.md"
+      ]
+    }
+  ],
+  "global_invariants": [
+    "Parallelism may accelerate non-authoritative work but must not create multiple canonical state writers.",
+    "Ordering that affects authority must be explicit and replayable.",
+    "Retries/duplicate delivery may not duplicate authoritative effects.",
+    "Concurrency primitives not defined by source remain implementation choices subject to invariants/tests."
+  ]
+}
