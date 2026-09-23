@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Checkpoint / Resume State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "source_revision",
+    "target",
+    "last_completed_node",
+    "next_node",
+    "artifacts",
+    "findings",
+    "open_unknowns",
+    "dependencies",
+    "authorization",
+    "resume_instruction"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "source_revision": {
+      "type": "object"
+    },
+    "target": {
+      "type": "object"
+    },
+    "last_completed_node": {
+      "type": "string"
+    },
+    "next_node": {
+      "type": "string"
+    },
+    "artifacts": {
+      "type": "array"
+    },
+    "findings": {
+      "type": "array"
+    },
+    "open_unknowns": {
+      "type": "array"
+    },
+    "dependencies": {
+      "type": "array"
+    },
+    "authorization": {
+      "type": "object"
+    },
+    "resume_instruction": {
+      "type": "string"
+    }
+  }
+}
