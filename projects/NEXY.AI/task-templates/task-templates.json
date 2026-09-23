@@ -1,0 +1,334 @@
+{
+  "schema_version": "1.0.0",
+  "task_contract_schema": "schema/task-contract.schema.json",
+  "templates": [
+    {
+      "task_type": "FIX_BUG",
+      "title": "Fix a proven defect",
+      "default_workflows": [
+        "workflows/project-start.md",
+        "projects/NEXY.AI/playbooks/build/modify-existing-system.md",
+        "workflows/verification.md",
+        "workflows/memory-update.md"
+      ],
+      "required_fields": [
+        "target",
+        "repository",
+        "branch",
+        "expected_head_or_refresh",
+        "symptom",
+        "reproduction",
+        "authorized_scope",
+        "protected_scope",
+        "success_invariants",
+        "required_evidence"
+      ],
+      "required_context": [
+        "governance",
+        "ontology",
+        "requirements",
+        "impact",
+        "implementation",
+        "contracts",
+        "invariants",
+        "failures",
+        "verification",
+        "evidence"
+      ],
+      "stop_conditions": [
+        "target/HEAD ambiguity invalidates reproduction",
+        "authority conflict",
+        "protected scope required",
+        "root cause cannot be established safely"
+      ],
+      "done": [
+        "original defect no longer reproduces",
+        "root cause repaired",
+        "impacted regressions pass",
+        "evidence current to exact target"
+      ]
+    },
+    {
+      "task_type": "ADD_API",
+      "title": "Add or modify API route",
+      "default_workflows": [
+        "workflows/project-start.md",
+        "projects/NEXY.AI/playbooks/build/add-api-route.md",
+        "workflows/verification.md"
+      ],
+      "required_fields": [
+        "method",
+        "path",
+        "request_contract",
+        "response_contract",
+        "auth",
+        "rbac",
+        "csrf",
+        "idempotency",
+        "errors",
+        "audit",
+        "required_evidence"
+      ],
+      "required_context": [
+        "DOC-C",
+        "contracts/api",
+        "contracts/schemas",
+        "contracts/errors",
+        "security",
+        "events",
+        "config",
+        "implementation",
+        "traceability"
+      ],
+      "stop_conditions": [
+        "route not authorized",
+        "missing backend owner",
+        "security semantics undefined"
+      ],
+      "done": [
+        "contract/runtime validation/auth/idempotency/errors/audit proven",
+        "required integration/E2E evidence captured"
+      ]
+    },
+    {
+      "task_type": "ADD_SYSTEM",
+      "title": "Add NEXY subsystem/system",
+      "default_workflows": [
+        "workflows/project-start.md",
+        "projects/NEXY.AI/playbooks/build/build-new-system.md",
+        "workflows/verification.md",
+        "workflows/memory-update.md"
+      ],
+      "required_fields": [
+        "purpose",
+        "non_goals",
+        "authority",
+        "parent",
+        "requirements",
+        "dependencies",
+        "contracts",
+        "invariants",
+        "failure_recovery",
+        "security",
+        "acceptance"
+      ],
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency graph",
+        "contracts",
+        "invariants",
+        "fsm",
+        "security",
+        "state",
+        "events",
+        "observability"
+      ],
+      "stop_conditions": [
+        "scope not authorized",
+        "entity duplicates existing responsibility",
+        "authority unresolved",
+        "acceptance cannot be defined"
+      ],
+      "done": [
+        "system integrated into graph/contracts/tests",
+        "negative paths covered",
+        "evidence matches claims"
+      ]
+    },
+    {
+      "task_type": "MIGRATION",
+      "title": "Schema/config/state migration",
+      "default_workflows": [
+        "workflows/project-start.md",
+        "projects/NEXY.AI/playbooks/build/add-storage-model.md",
+        "workflows/verification.md"
+      ],
+      "required_fields": [
+        "source_version",
+        "target_version",
+        "affected_state",
+        "migration",
+        "rollback",
+        "compatibility",
+        "data_integrity",
+        "required_evidence"
+      ],
+      "required_context": [
+        "state",
+        "persistence",
+        "contracts/storage",
+        "config",
+        "invariants",
+        "release",
+        "failures"
+      ],
+      "stop_conditions": [
+        "rollback undefined where required",
+        "lineage/data-loss risk unresolved",
+        "target version ambiguous"
+      ],
+      "done": [
+        "apply proven",
+        "rollback executed/proven",
+        "schema/state integrity restored/verified",
+        "release evidence updated"
+      ]
+    },
+    {
+      "task_type": "SECURITY_FIX",
+      "title": "Repair security defect",
+      "default_workflows": [
+        "workflows/project-start.md",
+        "projects/NEXY.AI/playbooks/audit/audit-security.md",
+        "projects/NEXY.AI/playbooks/build/modify-existing-system.md",
+        "workflows/verification.md"
+      ],
+      "required_fields": [
+        "threat",
+        "asset",
+        "trust_boundary",
+        "attack_path",
+        "impact",
+        "authorized_scope",
+        "containment",
+        "repair",
+        "negative_tests",
+        "evidence"
+      ],
+      "required_context": [
+        "security",
+        "governance",
+        "contracts",
+        "state",
+        "events",
+        "errors",
+        "observability",
+        "failures",
+        "impact"
+      ],
+      "stop_conditions": [
+        "repair needs unauthorized destructive action",
+        "scope of exposure unknown and cannot be bounded",
+        "secret handling would be unsafe"
+      ],
+      "done": [
+        "attack path closed",
+        "abuse regression passes",
+        "incident/audit behavior correct",
+        "no authority bypass introduced"
+      ]
+    },
+    {
+      "task_type": "RELEASE",
+      "title": "Release/deployment readiness",
+      "default_workflows": [
+        "projects/NEXY.AI/playbooks/audit/audit-release.md",
+        "workflows/verification.md"
+      ],
+      "required_fields": [
+        "repo",
+        "branch",
+        "head",
+        "artifact",
+        "environment",
+        "doc_e_evidence",
+        "signoffs",
+        "rollback",
+        "monitoring"
+      ],
+      "required_context": [
+        "release",
+        "evidence",
+        "DOC-E",
+        "verification",
+        "failures",
+        "observability"
+      ],
+      "stop_conditions": [
+        "stale evidence",
+        "missing E1-E12 obligation",
+        "missing external signoff",
+        "unresolved S4/S5 blocker"
+      ],
+      "done": [
+        "exact-current evidence complete",
+        "all required gates pass",
+        "authorized signoffs present",
+        "rollback/monitoring verified"
+      ]
+    },
+    {
+      "task_type": "AUDIT_SYSTEM",
+      "title": "Audit a NEXY system",
+      "default_workflows": [
+        "workflows/project-start.md",
+        "projects/NEXY.AI/playbooks/audit/audit-system.md"
+      ],
+      "required_fields": [
+        "entity_id",
+        "scope",
+        "repo_branch_head_if_current",
+        "authority",
+        "claim_set",
+        "required_evidence"
+      ],
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency graph",
+        "implementation",
+        "contracts",
+        "invariants",
+        "fsm",
+        "verification",
+        "evidence",
+        "failures"
+      ],
+      "stop_conditions": [
+        "target not uniquely resolved",
+        "authority conflict prevents verdict"
+      ],
+      "done": [
+        "each claim/requirement has evidence-backed status",
+        "unknowns/omissions explicit",
+        "root causes grouped"
+      ]
+    },
+    {
+      "task_type": "INGEST_SOURCE",
+      "title": "Ingest large source into AI-CONTEXT",
+      "default_workflows": [
+        "workflows/long-context-ingestion.md",
+        "workflows/memory-update.md"
+      ],
+      "required_fields": [
+        "source_identity",
+        "revision_hash",
+        "size",
+        "domains",
+        "authority",
+        "destination",
+        "coverage_rule"
+      ],
+      "required_context": [
+        "existing source coverage",
+        "governance",
+        "ontology/requirements if target project exists"
+      ],
+      "stop_conditions": [
+        "source identity/version unknown",
+        "destination authority ambiguous"
+      ],
+      "done": [
+        "major domains covered",
+        "coverage map complete",
+        "contradictions preserved",
+        "index/navigation written",
+        "write verified"
+      ]
+    }
+  ]
+}
