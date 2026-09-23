@@ -1,0 +1,381 @@
+{
+  "id": "FSM-EXECUTION",
+  "name": "DOC-C Execution FSM",
+  "scope": "DOC_C_CURRENT_BUILD",
+  "authority": [
+    "DOC-C"
+  ],
+  "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0",
+  "states": [
+    "INIT",
+    "READY",
+    "RUNNING",
+    "VERIFYING",
+    "CONSENSUS",
+    "STABLE",
+    "FREEZE",
+    "STOP"
+  ],
+  "transitions": [
+    {
+      "from": "INIT",
+      "event": "boot",
+      "guard": [
+        "actor=CORE"
+      ],
+      "action": [
+        "Initialize/enter ready state"
+      ],
+      "to": "READY",
+      "failure": [
+        "STATE_TRANSITION_DENIED"
+      ],
+      "audit_event": "boot"
+    },
+    {
+      "from": "READY",
+      "event": "execute",
+      "guard": [
+        "actor=CORE",
+        "directive/precheck permitted"
+      ],
+      "action": [
+        "Start pipeline"
+      ],
+      "to": "RUNNING",
+      "failure": [
+        "STATE_TRANSITION_DENIED"
+      ],
+      "audit_event": "execute"
+    },
+    {
+      "from": "RUNNING",
+      "event": "agents_done",
+      "guard": [
+        "actor=SWARM"
+      ],
+      "action": [
+        "Enter verification"
+      ],
+      "to": "VERIFYING",
+      "failure": [
+        "STATE_TRANSITION_DENIED"
+      ],
+      "audit_event": "agents_done"
+    },
+    {
+      "from": "VERIFYING",
+      "event": "verified",
+      "guard": [
+        "actor=JUDGE"
+      ],
+      "action": [
+        "Enter consensus"
+      ],
+      "to": "CONSENSUS",
+      "failure": [
+        "STATE_TRANSITION_DENIED"
+      ],
+      "audit_event": "verified"
+    },
+    {
+      "from": "CONSENSUS",
+      "event": "accepted",
+      "guard": [
+        "actor=JUDGE",
+        "quorum/release guards pass"
+      ],
+      "action": [
+        "Release candidate may become stable"
+      ],
+      "to": "STABLE",
+      "failure": [
+        "RELEASE_POLICY_FAILED",
+        "STATE_TRANSITION_DENIED"
+      ],
+      "audit_event": "accepted"
+    },
+    {
+      "from": "CONSENSUS",
+      "event": "rejected",
+      "guard": [
+        "actor=JUDGE"
+      ],
+      "action": [
+        "Freeze rejected execution"
+      ],
+      "to": "FREEZE",
+      "failure": [],
+      "audit_event": "rejected"
+    },
+    {
+      "from": "FREEZE",
+      "event": "recover",
+      "guard": [
+        "actor=OWNER|SYSTEM",
+        "freeze reason recoverable",
+        "actor authorized for reason"
+      ],
+      "action": [
+        "Purge pending output; start new execution cycle"
+      ],
+      "to": "READY",
+      "failure": [
+        "FREEZE_RECOVERY_DENIED"
+      ],
+      "audit_event": "recover"
+    },
+    {
+      "from": "RUNNING",
+      "event": "timeout",
+      "guard": [
+        "actor=SYSTEM"
+      ],
+      "action": [
+        "Freeze timed-out execution"
+      ],
+      "to": "FREEZE",
+      "failure": [
+        "TIMEOUT"
+      ],
+      "audit_event": "timeout"
+    },
+    {
+      "from": "CONSENSUS",
+      "event": "timeout",
+      "guard": [
+        "actor=SYSTEM"
+      ],
+      "action": [
+        "Freeze timed-out consensus"
+      ],
+      "to": "FREEZE",
+      "failure": [
+        "TIMEOUT"
+      ],
+      "audit_event": "timeout"
+    },
+    {
+      "from": "INIT",
+      "event": "error",
+      "guard": [
+        "actor in LAW|CORE|AUTH|VAULT|SWARM|API"
+      ],
+      "action": [
+        "Record failure and freeze"
+      ],
+      "to": "FREEZE",
+      "failure": [
+        "canonical error"
+      ],
+      "audit_event": "error"
+    },
+    {
+      "from": "READY",
+      "event": "error",
+      "guard": [
+        "actor in LAW|CORE|AUTH|VAULT|SWARM|API"
+      ],
+      "action": [
+        "Record failure and freeze"
+      ],
+      "to": "FREEZE",
+      "failure": [
+        "canonical error"
+      ],
+      "audit_event": "error"
+    },
+    {
+      "from": "RUNNING",
+      "event": "error",
+      "guard": [
+        "actor in LAW|CORE|AUTH|VAULT|SWARM|API"
+      ],
+      "action": [
+        "Record failure and freeze"
+      ],
+      "to": "FREEZE",
+      "failure": [
+        "canonical error"
+      ],
+      "audit_event": "error"
+    },
+    {
+      "from": "VERIFYING",
+      "event": "error",
+      "guard": [
+        "actor in LAW|CORE|AUTH|VAULT|SWARM|API"
+      ],
+      "action": [
+        "Record failure and freeze"
+      ],
+      "to": "FREEZE",
+      "failure": [
+        "canonical error"
+      ],
+      "audit_event": "error"
+    },
+    {
+      "from": "CONSENSUS",
+      "event": "error",
+      "guard": [
+        "actor in LAW|CORE|AUTH|VAULT|SWARM|API"
+      ],
+      "action": [
+        "Record failure and freeze"
+      ],
+      "to": "FREEZE",
+      "failure": [
+        "canonical error"
+      ],
+      "audit_event": "error"
+    },
+    {
+      "from": "STABLE",
+      "event": "error",
+      "guard": [
+        "actor in LAW|CORE|AUTH|VAULT|SWARM|API"
+      ],
+      "action": [
+        "Record failure and freeze"
+      ],
+      "to": "FREEZE",
+      "failure": [
+        "canonical error"
+      ],
+      "audit_event": "error"
+    },
+    {
+      "from": "FREEZE",
+      "event": "error",
+      "guard": [
+        "actor in LAW|CORE|AUTH|VAULT|SWARM|API"
+      ],
+      "action": [
+        "Record failure and freeze"
+      ],
+      "to": "FREEZE",
+      "failure": [
+        "canonical error"
+      ],
+      "audit_event": "error"
+    },
+    {
+      "from": "INIT",
+      "event": "fatal",
+      "guard": [
+        "actor=LAW|AUTH"
+      ],
+      "action": [
+        "Enter irreversible STOP"
+      ],
+      "to": "STOP",
+      "failure": [
+        "fatal system/security condition"
+      ],
+      "audit_event": "fatal"
+    },
+    {
+      "from": "READY",
+      "event": "fatal",
+      "guard": [
+        "actor=LAW|AUTH"
+      ],
+      "action": [
+        "Enter irreversible STOP"
+      ],
+      "to": "STOP",
+      "failure": [
+        "fatal system/security condition"
+      ],
+      "audit_event": "fatal"
+    },
+    {
+      "from": "RUNNING",
+      "event": "fatal",
+      "guard": [
+        "actor=LAW|AUTH"
+      ],
+      "action": [
+        "Enter irreversible STOP"
+      ],
+      "to": "STOP",
+      "failure": [
+        "fatal system/security condition"
+      ],
+      "audit_event": "fatal"
+    },
+    {
+      "from": "VERIFYING",
+      "event": "fatal",
+      "guard": [
+        "actor=LAW|AUTH"
+      ],
+      "action": [
+        "Enter irreversible STOP"
+      ],
+      "to": "STOP",
+      "failure": [
+        "fatal system/security condition"
+      ],
+      "audit_event": "fatal"
+    },
+    {
+      "from": "CONSENSUS",
+      "event": "fatal",
+      "guard": [
+        "actor=LAW|AUTH"
+      ],
+      "action": [
+        "Enter irreversible STOP"
+      ],
+      "to": "STOP",
+      "failure": [
+        "fatal system/security condition"
+      ],
+      "audit_event": "fatal"
+    },
+    {
+      "from": "STABLE",
+      "event": "fatal",
+      "guard": [
+        "actor=LAW|AUTH"
+      ],
+      "action": [
+        "Enter irreversible STOP"
+      ],
+      "to": "STOP",
+      "failure": [
+        "fatal system/security condition"
+      ],
+      "audit_event": "fatal"
+    },
+    {
+      "from": "FREEZE",
+      "event": "fatal",
+      "guard": [
+        "actor=LAW|AUTH"
+      ],
+      "action": [
+        "Enter irreversible STOP"
+      ],
+      "to": "STOP",
+      "failure": [
+        "fatal system/security condition"
+      ],
+      "audit_event": "fatal"
+    }
+  ],
+  "global_rules": [
+    "STOP has no legal outgoing transition in current build model.",
+    "Illegal transition or wrong event owner => STATE_TRANSITION_DENIED."
+  ],
+  "source_refs": [
+    "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md"
+  ],
+  "code_refs": [
+    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/core/vnext-state-matrix.ts",
+    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/orch-core/system-state.ts"
+  ],
+  "evidence_status": "IMPLEMENTATION_PRESENT_E0"
+}
