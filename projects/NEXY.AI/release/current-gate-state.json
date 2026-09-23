@@ -1,0 +1,32 @@
+{
+  "target": {
+    "repo": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
+  "observed_at": "2026-09-24",
+  "evidence_summary": {
+    "required_doc_e": 12,
+    "pass": 0,
+    "blocked": 12,
+    "exact_current_head": 0
+  },
+  "evidence_pack_revisions": [
+    "9eaeec9b830471907f2f1f19ca5d76371caf22cb",
+    "db52f9f..."
+  ],
+  "freshness": "STALE_FOR_CURRENT_HEAD",
+  "release_verdict": "NON_DEPLOYABLE",
+  "verification_status": "NOT_VERIFIED",
+  "blockers": [
+    "No exact-current-HEAD DOC-E proof.",
+    "Hosted execution was blocked/not executed for required evidence artifacts.",
+    "E11 external authorized signoff is absent.",
+    "Evidence namespace contains mixed/stale revision identity."
+  ],
+  "source_refs": [
+    "projects/NEXY.AI/evidence/validation-report.md",
+    "projects/NEXY.AI/evidence/evidence-ledger.jsonl",
+    "projects/NEXY.AI/deep/doc-e-deployment-evidence.md"
+  ]
+}
