@@ -1,0 +1,109 @@
+{
+  "id": "FSM-RISK-INTELLIGENCE",
+  "name": "Risk / Intelligence State Model",
+  "scope": "CURRENT_ARCHITECTURE",
+  "authority": [
+    "FINAL_ARCHITECTURE_SOURCE"
+  ],
+  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "states": [
+    "NORMAL",
+    "CAUTION",
+    "UNCERTAIN",
+    "CRITICAL",
+    "FAILSAFE"
+  ],
+  "transitions": [
+    {
+      "from": "NORMAL",
+      "event": "UNCERTAINTY_RISES",
+      "guard": [
+        "uncertainty crosses caution criterion"
+      ],
+      "action": [
+        "Increase scrutiny/restrict action"
+      ],
+      "to": "CAUTION",
+      "failure": [
+        "Criterion calibration not locked in captured source"
+      ],
+      "audit_event": "RISK_STATE_CHANGE"
+    },
+    {
+      "from": "CAUTION",
+      "event": "UNCERTAINTY_UNRESOLVED",
+      "guard": [
+        "required proof remains insufficient"
+      ],
+      "action": [
+        "Block/limit authoritative action"
+      ],
+      "to": "UNCERTAIN",
+      "failure": [],
+      "audit_event": "RISK_STATE_CHANGE"
+    },
+    {
+      "from": "NORMAL",
+      "event": "RISK_RISES",
+      "guard": [
+        "risk exceeds critical criterion"
+      ],
+      "action": [
+        "Block unsafe action"
+      ],
+      "to": "CRITICAL",
+      "failure": [
+        "Risk formula is conceptual until calibrated"
+      ],
+      "audit_event": "RISK_STATE_CHANGE"
+    },
+    {
+      "from": "CAUTION",
+      "event": "RISK_RISES",
+      "guard": [
+        "risk exceeds critical criterion"
+      ],
+      "action": [
+        "Block unsafe action"
+      ],
+      "to": "CRITICAL",
+      "failure": [],
+      "audit_event": "RISK_STATE_CHANGE"
+    },
+    {
+      "from": "UNCERTAIN",
+      "event": "RISK_RISES",
+      "guard": [
+        "risk/uncertainty cannot be bounded"
+      ],
+      "action": [
+        "Escalate"
+      ],
+      "to": "CRITICAL",
+      "failure": [],
+      "audit_event": "RISK_STATE_CHANGE"
+    },
+    {
+      "from": "CRITICAL",
+      "event": "FAILURE",
+      "guard": [
+        "safety/integrity failure"
+      ],
+      "action": [
+        "Enter fail-safe behavior"
+      ],
+      "to": "FAILSAFE",
+      "failure": [],
+      "audit_event": "FAILSAFE_ENTERED"
+    }
+  ],
+  "global_rules": [
+    "This is distinct from DOC-C execution FSM and constitutional FSM.",
+    "Safety > Decision > Intelligence."
+  ],
+  "source_refs": [
+    "projects/NEXY.AI/deep/final-architecture-cross-system.md"
+  ],
+  "code_refs": [],
+  "evidence_status": "NOT_VERIFIED_RUNTIME"
+}
