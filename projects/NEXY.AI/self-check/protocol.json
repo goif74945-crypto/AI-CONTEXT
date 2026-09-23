@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_id": "NEXY-AI-SELF-CHECK",
+  "applies_before": [
+    "claiming DONE",
+    "claiming PASS/VERIFIED",
+    "claiming current implementation status",
+    "claiming release/deployability",
+    "committing high-impact AI-CONTEXT intelligence",
+    "handoff/checkpoint completion"
+  ],
+  "checks": [
+    {
+      "id": "SC-01",
+      "question": "Did I read the correct governing source/authority?",
+      "fail_action": "STOP verdict; load governance/source."
+    },
+    {
+      "id": "SC-02",
+      "question": "Is the target repo/branch/HEAD current and exact?",
+      "fail_action": "Refresh target before current-state claim."
+    },
+    {
+      "id": "SC-03",
+      "question": "Did I distinguish source/design, implementation presence, test, runtime, deployment and physical proof?",
+      "fail_action": "Downgrade claim to correct evidence class."
+    },
+    {
+      "id": "SC-04",
+      "question": "Did I infer any material semantic that source/code/evidence does not establish?",
+      "fail_action": "Mark UNKNOWN/CANDIDATE or resolve authority."
+    },
+    {
+      "id": "SC-05",
+      "question": "Did I resolve aliases/supersession/conflicts before choosing a rule/default?",
+      "fail_action": "Load glossary/governance/contradictions."
+    },
+    {
+      "id": "SC-06",
+      "question": "Is this work inside authorized scope, with mutation permission where applicable?",
+      "fail_action": "Do not mutate; return SCOPE/AUTHORITY blocker."
+    },
+    {
+      "id": "SC-07",
+      "question": "Did I calculate change impact before mutation?",
+      "fail_action": "Load impact record and affected dependencies/invariants/regressions."
+    },
+    {
+      "id": "SC-08",
+      "question": "Did I preserve all affected S4/S5 invariants?",
+      "fail_action": "Do not claim done; repair or explicitly FAIL/BLOCK."
+    },
+    {
+      "id": "SC-09",
+      "question": "Did I verify contracts/FSM/state/security semantics affected by the change?",
+      "fail_action": "Run/inspect required semantic checks."
+    },
+    {
+      "id": "SC-10",
+      "question": "Did I search known failures/regression ledger for this affected surface?",
+      "fail_action": "Load and include historical regressions/prevention."
+    },
+    {
+      "id": "SC-11",
+      "question": "Did I run or inspect the tests required by the Acceptance/Test Matrix?",
+      "fail_action": "Status NOT_TESTED/BLOCKED/NOT_VERIFIED."
+    },
+    {
+      "id": "SC-12",
+      "question": "Does the evidence class actually prove the claim I am making?",
+      "fail_action": "Downgrade claim; do not promote E0/E1 to runtime/deployment."
+    },
+    {
+      "id": "SC-13",
+      "question": "Is the evidence fresh for the exact target revision/environment?",
+      "fail_action": "Mark STALE; regenerate/rebind."
+    },
+    {
+      "id": "SC-14",
+      "question": "Did I inspect impacted regression rather than only focused tests?",
+      "fail_action": "Do not claim global/component completion beyond focused proof."
+    },
+    {
+      "id": "SC-15",
+      "question": "Did I inspect the final diff/output for scope creep or authority inversion?",
+      "fail_action": "Remove unauthorized changes or flag conflict."
+    },
+    {
+      "id": "SC-16",
+      "question": "Are there unresolved unknowns/conflicts/blockers relevant to the verdict?",
+      "fail_action": "Expose them; block/downgrade verdict where material."
+    },
+    {
+      "id": "SC-17",
+      "question": "Does the task-specific Definition of Done pass?",
+      "fail_action": "Return PARTIAL/BLOCKED/NOT_VERIFIED as appropriate."
+    },
+    {
+      "id": "SC-18",
+      "question": "Did I update checkpoint/handoff/context intelligence when the task materially changed project state?",
+      "fail_action": "Write/update resume state before ending large work."
+    }
+  ],
+  "verdict_gate": {
+    "all_material_checks_pass": "Eligible to emit task-specific DONE/PASS subject to Definition-of-Done and evidence.",
+    "any_material_check_fail": "Do not emit generic DONE/PASS.",
+    "unknown": "Use UNKNOWN/NOT_VERIFIED/BLOCKED/CONFLICT according to cause."
+  },
+  "anti_patterns": [
+    "I found the file, therefore implemented.",
+    "The test exists, therefore passed.",
+    "A historical workflow passed, therefore current HEAD passes.",
+    "The source says deterministic, therefore runtime is deterministic.",
+    "Push permission exists, therefore mutation is authorized.",
+    "No grep result, therefore MISSING.",
+    "Build passes, therefore deployable.",
+    "AI can write signoff, therefore E11 satisfied."
+  ]
+}
