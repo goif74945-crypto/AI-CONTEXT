@@ -1,0 +1,121 @@
+{
+  "id": "FSM-ANCHOR-PUBLICATION",
+  "name": "Anchor Publication FSM",
+  "scope": "FUTURE_ARCHITECTURE",
+  "authority": [
+    "CANON_LOCKED_SOURCE"
+  ],
+  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "states": [
+    "PROPOSED",
+    "QUORUM_SIGNED",
+    "MERKLE_UPDATED",
+    "CHAIN_ANCHORED",
+    "IPFS_PINNED",
+    "MIRROR_REPLICATED",
+    "FINALIZED"
+  ],
+  "transitions": [
+    {
+      "from": "PROPOSED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required publication leg succeeds and prior state valid"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "QUORUM_SIGNED",
+      "failure": [
+        "Publication invalid/incomplete; no FINALIZED state"
+      ],
+      "audit_event": "ANCHOR_PUBLICATION_STEP"
+    },
+    {
+      "from": "QUORUM_SIGNED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required publication leg succeeds and prior state valid"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "MERKLE_UPDATED",
+      "failure": [
+        "Publication invalid/incomplete; no FINALIZED state"
+      ],
+      "audit_event": "ANCHOR_PUBLICATION_STEP"
+    },
+    {
+      "from": "MERKLE_UPDATED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required publication leg succeeds and prior state valid"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "CHAIN_ANCHORED",
+      "failure": [
+        "Publication invalid/incomplete; no FINALIZED state"
+      ],
+      "audit_event": "ANCHOR_PUBLICATION_STEP"
+    },
+    {
+      "from": "CHAIN_ANCHORED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required publication leg succeeds and prior state valid"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "IPFS_PINNED",
+      "failure": [
+        "Publication invalid/incomplete; no FINALIZED state"
+      ],
+      "audit_event": "ANCHOR_PUBLICATION_STEP"
+    },
+    {
+      "from": "IPFS_PINNED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required publication leg succeeds and prior state valid"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "MIRROR_REPLICATED",
+      "failure": [
+        "Publication invalid/incomplete; no FINALIZED state"
+      ],
+      "audit_event": "ANCHOR_PUBLICATION_STEP"
+    },
+    {
+      "from": "MIRROR_REPLICATED",
+      "event": "SOURCE_NOT_NAMED",
+      "guard": [
+        "Required publication leg succeeds and prior state valid"
+      ],
+      "action": [
+        "Advance lifecycle state"
+      ],
+      "to": "FINALIZED",
+      "failure": [
+        "Publication invalid/incomplete; no FINALIZED state"
+      ],
+      "audit_event": "ANCHOR_PUBLICATION_STEP"
+    }
+  ],
+  "global_rules": [
+    "Only FINALIZED is valid.",
+    "Partial publication is invalid.",
+    "Empty intervals still produce an anchored empty batch/root.",
+    "Reorg recovery uses deterministic re-anchor after confirmation rule."
+  ],
+  "source_refs": [
+    "projects/NEXY.AI/deep/sovereign-fabric.md"
+  ],
+  "code_refs": [],
+  "evidence_status": "NOT_VERIFIED_RUNTIME"
+}
