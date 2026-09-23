@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0.0",
+  "claim_nodes": [
+    {
+      "id": "CLAIM-TRUTH-ABSOLUTE-OLD",
+      "text": "NEXY/L1o must achieve universal 100% truth/no hallucination in every domain.",
+      "era": "EARLY",
+      "scope": [
+        "HISTORICAL"
+      ],
+      "authority": "EARLY_CANON"
+    },
+    {
+      "id": "CLAIM-TRUTH-BOUNDED-NEW",
+      "text": "Truth is proven within constraint space using bounded truth/certainty tiers; open-world perfect truth is not assumed.",
+      "era": "LATE",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "authority": "L600_SOURCE"
+    },
+    {
+      "id": "CLAIM-LO3-VOTING-OLD",
+      "text": "Lo3 consensus can be based on weighted voting/trust-score majority.",
+      "era": "EARLY",
+      "scope": [
+        "HISTORICAL"
+      ],
+      "authority": "EARLY_LO3_VISION"
+    },
+    {
+      "id": "CLAIM-LO3-WEIGHTED-PROOF-NEW",
+      "text": "Ordinary voting is insufficient; Lo3 uses adversarial survival and Weighted Proof plus verification.",
+      "era": "LATE",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "authority": "L600_SOURCE"
+    },
+    {
+      "id": "CLAIM-LO2-SILENT-UPDATE-OLD",
+      "text": "Lo2 can silently update L1o/Lo3 kernels after evolving a law.",
+      "era": "EARLY",
+      "scope": [
+        "HISTORICAL"
+      ],
+      "authority": "EARLY_LO2_VISION"
+    },
+    {
+      "id": "CLAIM-LO2-GOVERNED-PROMOTION-NEW",
+      "text": "Lo2 evolution may propose/version intelligence; authoritative promotion requires governed/versioned/verified change and current vNEXT excludes self-patch.",
+      "era": "LATE",
+      "scope": [
+        "CURRENT_ARCHITECTURE",
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "authority": "CONSTITUTIONAL_SOURCE+DOC-C"
+    },
+    {
+      "id": "CLAIM-ARCHITECT-OVERRIDE-OLD",
+      "text": "Architect may inject a hard rule mid-debate as an immediate override.",
+      "era": "EARLY",
+      "scope": [
+        "HISTORICAL"
+      ],
+      "authority": "EARLY_LO3_VISION"
+    },
+    {
+      "id": "CLAIM-OPERATIONAL-DETERMINISM-NEW",
+      "text": "State-changing human action must use predefined finite signed/auditable Canon procedures; no generic ad-hoc force override.",
+      "era": "LATE",
+      "scope": [
+        "FUTURE_ARCHITECTURE"
+      ],
+      "authority": "CONSTITUTIONAL_SOURCE"
+    },
+    {
+      "id": "CLAIM-INTENT-INFERENCE-OLD",
+      "text": "Human/intent layer may infer/strip goals broadly to keep flow moving.",
+      "era": "EARLY",
+      "scope": [
+        "HISTORICAL"
+      ],
+      "authority": "EARLY_HUMAN_GRAVITY"
+    },
+    {
+      "id": "CLAIM-NO-GUESS-NEW",
+      "text": "Material missing intent/facts must not be guessed; ambiguity blocks or asks for clarity.",
+      "era": "LATE",
+      "scope": [
+        "DOC_B_SYSTEM_LAW",
+        "CURRENT_ARCHITECTURE"
+      ],
+      "authority": "DOC-B+FINAL_ARCHITECTURE_SOURCE"
+    },
+    {
+      "id": "CLAIM-AUTH-OTAC-TTL-OLD",
+      "text": "OTAC TTL is approximately 10–15 minutes.",
+      "era": "EARLY",
+      "scope": [
+        "HISTORICAL"
+      ],
+      "authority": "AUTH_V0_DIRECTION"
+    },
+    {
+      "id": "CLAIM-AUTH-OTAC-TTL-NEW",
+      "text": "Current canonical DOC-C OTAC TTL is 5 minutes.",
+      "era": "LATE",
+      "scope": [
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "authority": "DOC-C"
+    },
+    {
+      "id": "CLAIM-AUTH-SESSION-TTL-OLD",
+      "text": "vNEXT.1 session TTL is 30 days.",
+      "era": "EARLY",
+      "scope": [
+        "HISTORICAL"
+      ],
+      "authority": "VNEXT_1_DRAFT"
+    },
+    {
+      "id": "CLAIM-AUTH-SESSION-TTL-NEW",
+      "text": "Current canonical DOC-C session TTL is 6h with max 5 concurrent sessions/user.",
+      "era": "LATE",
+      "scope": [
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "authority": "DOC-C"
+    },
+    {
+      "id": "CLAIM-MEMORY-PURGE-OLD",
+      "text": "Contradicted knowledge may be aggressively purged to maintain zero entropy.",
+      "era": "EARLY",
+      "scope": [
+        "HISTORICAL"
+      ],
+      "authority": "EARLY_L1O_LO2_VISION"
+    },
+    {
+      "id": "CLAIM-MEMORY-BRANCH-NEW",
+      "text": "Conflicting memory/logic is forked/simulated/resolved while preserving provenance; unresolved branches remain explicit.",
+      "era": "LATE",
+      "scope": [
+        "CURRENT_ARCHITECTURE"
+      ],
+      "authority": "L600_SOURCE"
+    }
+  ],
+  "claim_edges": [
+    {
+      "from": "CLAIM-TRUTH-ABSOLUTE-OLD",
+      "to": "CLAIM-TRUTH-BOUNDED-NEW",
+      "type": "SUPERSEDED_BY",
+      "reason": "Later L600 explicitly rejects universal perfect truth and defines bounded certainty."
+    },
+    {
+      "from": "CLAIM-LO3-VOTING-OLD",
+      "to": "CLAIM-LO3-WEIGHTED-PROOF-NEW",
+      "type": "SUPERSEDED_BY",
+      "reason": "Later Lo3 L600 states ordinary voting is insufficient."
+    },
+    {
+      "from": "CLAIM-LO2-SILENT-UPDATE-OLD",
+      "to": "CLAIM-LO2-GOVERNED-PROMOTION-NEW",
+      "type": "SUPERSEDED_BY",
+      "reason": "Later constitutional change law and DOC-C current exclusion prohibit silent authoritative self-patch."
+    },
+    {
+      "from": "CLAIM-ARCHITECT-OVERRIDE-OLD",
+      "to": "CLAIM-OPERATIONAL-DETERMINISM-NEW",
+      "type": "SUPERSEDED_BY",
+      "reason": "Later operational determinism limits override to predefined governed procedures."
+    },
+    {
+      "from": "CLAIM-INTENT-INFERENCE-OLD",
+      "to": "CLAIM-NO-GUESS-NEW",
+      "type": "SUPERSEDED_BY",
+      "reason": "Later strict canon blocks guessing missing material intent/data."
+    },
+    {
+      "from": "CLAIM-AUTH-OTAC-TTL-OLD",
+      "to": "CLAIM-AUTH-OTAC-TTL-NEW",
+      "type": "SUPERSEDED_BY",
+      "reason": "Later canonical DOC-C changes TTL to 5 minutes."
+    },
+    {
+      "from": "CLAIM-AUTH-SESSION-TTL-OLD",
+      "to": "CLAIM-AUTH-SESSION-TTL-NEW",
+      "type": "SUPERSEDED_BY",
+      "reason": "Later canonical DOC-C changes session TTL to 6h and adds session cap."
+    },
+    {
+      "from": "CLAIM-MEMORY-PURGE-OLD",
+      "to": "CLAIM-MEMORY-BRANCH-NEW",
+      "type": "SUPERSEDED_BY",
+      "reason": "Later memory/conflict design preserves branches and provenance instead of destructive purge."
+    }
+  ],
+  "requirement_edges": [
+    {
+      "from": "REQ-HIST-ARCHITECT-OVERRIDE-001",
+      "to": "REQ-CONST-033",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    },
+    {
+      "from": "REQ-HIST-AUTH-OTAC-TTL-001",
+      "to": "REQ-DOC-C-AUTH-002",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    },
+    {
+      "from": "REQ-HIST-AUTH-SESSION-TTL-001",
+      "to": "REQ-DOC-C-AUTH-005",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    },
+    {
+      "from": "REQ-HIST-OUTPUT-ABSOLUTE-CONFIDENCE-001",
+      "to": "REQ-DOC-C-RELEASE-002",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    },
+    {
+      "from": "REQ-HIST-TRUTH-ABSOLUTE-001",
+      "to": "REQ-FINAL-009",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    },
+    {
+      "from": "REQ-HIST-TRUTH-ABSOLUTE-001",
+      "to": "REQ-L1O-001",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    },
+    {
+      "from": "REQ-HIST-OUTPUT-ABSOLUTE-CONFIDENCE-001",
+      "to": "REQ-L1O-001",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    },
+    {
+      "from": "REQ-HIST-LO2-SILENT-UPDATE-001",
+      "to": "REQ-LO2-006",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    },
+    {
+      "from": "REQ-HIST-LO2-SILENT-UPDATE-001",
+      "to": "REQ-LO2-008",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    },
+    {
+      "from": "REQ-HIST-LO3-VOTING-001",
+      "to": "REQ-LO3-006",
+      "type": "SUPERSEDED_BY",
+      "source": "requirements/requirements.jsonl"
+    }
+  ],
+  "rule": "Supersession is claim/requirement-level. A changed claim does not automatically supersede its entire source document."
+}
