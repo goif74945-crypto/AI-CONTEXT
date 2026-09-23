@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "examples": [
+    {
+      "example_id": "SEM-DIFF-EXAMPLE-QUEUE-TIMEOUT",
+      "before": "queue stale TTL = X",
+      "after": "queue stale TTL = Y",
+      "expected_effects": [
+        "CONFIG_CHANGE",
+        "queue expiry behavior changed",
+        "recovery/worker behavior may change",
+        "queue tests and stale-job regression must rerun"
+      ],
+      "note": "Illustrative only; not a statement that current canonical TTL changed."
+    },
+    {
+      "example_id": "SEM-DIFF-EXAMPLE-FSM",
+      "before": "VERIFYING + verified → CONSENSUS",
+      "after": "VERIFYING + verified → STABLE",
+      "expected_effects": [
+        "FSM_CHANGE",
+        "authority/release sequence changed",
+        "INV-TRUTH / release policy impact",
+        "must be rejected unless new authority explicitly supersedes DOC-C"
+      ],
+      "note": "Illustrative invalid change under current DOC-C."
+    },
+    {
+      "example_id": "SEM-DIFF-EXAMPLE-API-SCHEMA",
+      "before": "mutation request requires idempotency_key",
+      "after": "idempotency_key optional",
+      "expected_effects": [
+        "CONTRACT_CHANGE",
+        "IDEMPOTENCY invariant risk",
+        "duplicate mutation regression required",
+        "release evidence invalidated"
+      ],
+      "note": "Illustrative only."
+    }
+  ]
+}
