@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Contract Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id",
+    "category",
+    "name",
+    "producer",
+    "consumer",
+    "preconditions",
+    "postconditions",
+    "error_contract",
+    "version",
+    "authority",
+    "code_refs",
+    "source_refs",
+    "status"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string"
+    },
+    "category": {
+      "enum": [
+        "API",
+        "SCHEMA",
+        "MODULE",
+        "EVENT",
+        "STORAGE",
+        "ERROR"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "producer": {},
+    "consumer": {},
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "input_schema": {},
+    "output_schema": {},
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "postconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "error_contract": {
+      "type": "array"
+    },
+    "timeout_ms": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "idempotency": {},
+    "authorization": {},
+    "version": {
+      "type": "string"
+    },
+    "authority": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "code_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "IMPLEMENTATION_PRESENT_E0",
+        "SOURCE_ONLY",
+        "CONFLICT",
+        "NOT_MAPPED"
+      ]
+    }
+  }
+}
