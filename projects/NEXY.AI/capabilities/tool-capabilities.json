@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "observed_at": "2026-09-24",
+  "records": [
+    {
+      "capability_id": "CAP-GITHUB-AI-CONTEXT-READ",
+      "category": "REPOSITORY",
+      "description": "Read AI-CONTEXT repository files/trees/history through connected GitHub tooling.",
+      "technical_status": "AVAILABLE",
+      "task_authorization": "AVAILABLE",
+      "evidence": "Observed successful reads from goif74945-crypto/AI-CONTEXT in this session.",
+      "refresh_rule": "Recheck connector/repository access at task start."
+    },
+    {
+      "capability_id": "CAP-GITHUB-AI-CONTEXT-WRITE",
+      "category": "REPOSITORY",
+      "description": "Create/update files in AI-CONTEXT.",
+      "technical_status": "AVAILABLE",
+      "task_authorization": "AVAILABLE",
+      "evidence": "Observed successful commits to goif74945-crypto/AI-CONTEXT in this session.",
+      "refresh_rule": "Recheck permissions and target branch before mutation."
+    },
+    {
+      "capability_id": "CAP-GITHUB-NEXY-READ",
+      "category": "REPOSITORY",
+      "description": "Read private goif74945-crypto/NEXY.AI- repository.",
+      "technical_status": "AVAILABLE",
+      "task_authorization": "READ_ALLOWED_WHEN_NEEDED",
+      "evidence": "GitHub installation exposes private repository with pull permission.",
+      "refresh_rule": "Recheck repository/ref/HEAD before current-state claims."
+    },
+    {
+      "capability_id": "CAP-GITHUB-NEXY-WRITE",
+      "category": "REPOSITORY",
+      "description": "Push/create/update content in goif74945-crypto/NEXY.AI-.",
+      "technical_status": "AVAILABLE",
+      "task_authorization": "REQUIRES_EXPLICIT_USER_TASK_AUTHORIZATION",
+      "evidence": "Connector reports push permission; current AI-CONTEXT task does not authorize NEXY.AI mutation.",
+      "refresh_rule": "Never infer task authorization from technical push permission."
+    },
+    {
+      "capability_id": "CAP-SOURCE-FILE-SEARCH-READ",
+      "category": "SOURCE",
+      "description": "Search/read attached or library source files.",
+      "technical_status": "AVAILABLE",
+      "task_authorization": "AVAILABLE_FOR_USER_PROVIDED_SOURCES",
+      "evidence": "Used to read NEXY design source and derive deep context.",
+      "refresh_rule": "Use source file identity/version; do not substitute web knowledge when source is authoritative."
+    },
+    {
+      "capability_id": "CAP-LARGE-SOURCE-STREAMING-INGEST",
+      "category": "CONTEXT",
+      "description": "Process large sources by chunked read→normalize→checkpoint into AI-CONTEXT.",
+      "technical_status": "AVAILABLE",
+      "task_authorization": "AVAILABLE",
+      "evidence": "293-page NEXY source was captured into deep context/checkpoints.",
+      "refresh_rule": "Maintain coverage map and explicit source revision."
+    },
+    {
+      "capability_id": "CAP-WEB-RESEARCH",
+      "category": "RESEARCH",
+      "description": "Retrieve current public information when outside research is authorized/needed.",
+      "technical_status": "AVAILABLE",
+      "task_authorization": "CONTEXT_DEPENDENT",
+      "evidence": "Platform web capability available.",
+      "refresh_rule": "Do not mix web research into source-only tasks without labeling it."
+    },
+    {
+      "capability_id": "CAP-LOCAL-COMPUTE",
+      "category": "EXECUTION",
+      "description": "Run local/container computations for parsing, validation, generation, analysis.",
+      "technical_status": "AVAILABLE",
+      "task_authorization": "AVAILABLE_FOR_SAFE_TASK_WORK",
+      "evidence": "Current environment exposes container/Python execution tools.",
+      "refresh_rule": "Future agents must rediscover runtime tool availability."
+    },
+    {
+      "capability_id": "CAP-NEXY-RUNTIME-TEST",
+      "category": "EXECUTION",
+      "description": "Execute the actual NEXY.AI test/build stack in an environment equivalent to repository runtime.",
+      "technical_status": "UNKNOWN",
+      "task_authorization": "UNKNOWN_UNTIL_RUNTIME_CONNECTION_CONFIRMED",
+      "evidence": "GitHub repository access alone does not establish an executable NEXY runtime.",
+      "refresh_rule": "Discover runner/remote machine/CI capability before claiming execution."
+    },
+    {
+      "capability_id": "CAP-NEXY-DEPLOY",
+      "category": "DEPLOYMENT",
+      "description": "Deploy NEXY.AI to staging/canary/production.",
+      "technical_status": "UNKNOWN",
+      "task_authorization": "REQUIRES_EXPLICIT_DEPLOY_AUTHORIZATION_AND_DOC_E_GATES",
+      "evidence": "Current evidence registry marks deployment NON_DEPLOYABLE / NOT_VERIFIED.",
+      "refresh_rule": "Requires exact-current build, environment access, E1-E12 and external signoff."
+    },
+    {
+      "capability_id": "CAP-EXTERNAL-SIGNOFF",
+      "category": "GOVERNANCE",
+      "description": "Provide independent engineering/security/migration release authorization.",
+      "technical_status": "UNAVAILABLE_TO_AI_AS_SELF_AUTHORITY",
+      "task_authorization": "EXTERNAL_HUMAN_OR_AUTHORIZED_ACTOR_REQUIRED",
+      "evidence": "DOC-E E11 remains external governance; AI cannot self-authorize.",
+      "refresh_rule": "Never synthesize or impersonate external signoff."
+    }
+  ]
+}
