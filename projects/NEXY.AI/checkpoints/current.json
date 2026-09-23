@@ -1,0 +1,53 @@
+{
+  "task_id": "NEXY-PROJECT-INTELLIGENCE-BUILD-20260924",
+  "source_revision": {
+    "repository": "goif74945-crypto/AI-CONTEXT",
+    "branch": "main",
+    "head": "a69bd3df773ced97f80287abf2e33c9b8fd3cba8"
+  },
+  "target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
+  "last_completed_node": "P1/P2 #42 Machine-readable Canon Pack",
+  "next_node": "#43 Work Handoff / #44 Checkpoint / #45 Project Health completed in same continuation; then Semantic Diff and advanced intelligence layers",
+  "artifacts": [
+    "projects/NEXY.AI/ontology/",
+    "projects/NEXY.AI/requirements/",
+    "projects/NEXY.AI/governance/",
+    "projects/NEXY.AI/graphs/",
+    "projects/NEXY.AI/implementation/",
+    "projects/NEXY.AI/contracts/",
+    "projects/NEXY.AI/invariants/",
+    "projects/NEXY.AI/fsm/",
+    "projects/NEXY.AI/verification/",
+    "projects/NEXY.AI/evidence/",
+    "projects/NEXY.AI/playbooks/",
+    "projects/NEXY.AI/impact/",
+    "projects/NEXY.AI/compiled/"
+  ],
+  "findings": [
+    "Current implementation/navigation target is pinned to 9c9befd9....",
+    "Current DOC-E evidence has PASS 0 / BLOCKED 12 / exact-current-HEAD 0.",
+    "Current release verdict remains NON_DEPLOYABLE / NOT_VERIFIED.",
+    "CONFLICT-RCL-LATENCY-001 remains unresolved."
+  ],
+  "open_unknowns": [
+    "No current runtime execution proof for many source-level systems.",
+    "No current production deployment proof.",
+    "Robotics exact safe-path latency contract unresolved."
+  ],
+  "dependencies": [
+    "governance authority/scope",
+    "requirements and ontology",
+    "exact target HEAD",
+    "evidence freshness"
+  ],
+  "authorization": {
+    "ai_context_write": "AUTHORIZED_BY_CURRENT_TASK",
+    "nexy_ai_write": "NOT_AUTHORIZED_IN_CURRENT_TASK",
+    "deployment": "NOT_AUTHORIZED_AND_NON_DEPLOYABLE"
+  },
+  "resume_instruction": "Refresh both repo HEADs; if unchanged, continue advanced project-intelligence layers from this checkpoint. If NEXY target HEAD changes, refresh implementation/navigation/traceability/evidence before current-state claims."
+}
