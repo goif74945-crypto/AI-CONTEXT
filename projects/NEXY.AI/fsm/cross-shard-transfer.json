@@ -1,0 +1,60 @@
+{
+  "id": "FSM-CROSS-SHARD-TRANSFER",
+  "name": "Cross-Shard Transfer Protocol FSM",
+  "scope": "FUTURE_ARCHITECTURE",
+  "authority": [
+    "G12_SOURCE_DESIGN"
+  ],
+  "status": "SOURCE_DESIGN_NOT_VERIFIED",
+  "states": [
+    "EXPORT",
+    "COMMIT",
+    "IMPORT"
+  ],
+  "transitions": [
+    {
+      "from": "EXPORT",
+      "event": "ORIGIN_FINALIZED",
+      "guard": [
+        "entity snapshot/hash committed to origin WAL/Merkle",
+        "region root finalized"
+      ],
+      "action": [
+        "Create signed transfer record; mark TRANSFER_PENDING"
+      ],
+      "to": "COMMIT",
+      "failure": [
+        "No transfer; deterministic replay/rollback"
+      ],
+      "audit_event": "TRANSFER_COMMITTED"
+    },
+    {
+      "from": "COMMIT",
+      "event": "DESTINATION_VALIDATE",
+      "guard": [
+        "root/signature/snapshot/economic hash valid"
+      ],
+      "action": [
+        "Append destination WAL; deterministically import entity"
+      ],
+      "to": "IMPORT",
+      "failure": [
+        "Freeze destination shard on mismatch"
+      ],
+      "audit_event": "TRANSFER_IMPORTED"
+    }
+  ],
+  "global_rules": [
+    "No live shared state between shards.",
+    "No dual residency.",
+    "Transfer only at fixed boundaries/ticks.",
+    "Value-bearing entity requires economic-state commit before export."
+  ],
+  "source_refs": [
+    "projects/NEXY.AI/deep/game-aaaa-ncf.md"
+  ],
+  "code_refs": [
+    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/phase-f/game/transfer.ts"
+  ],
+  "evidence_status": "NOT_VERIFIED_RUNTIME"
+}
