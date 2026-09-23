@@ -1,11 +1,21 @@
 {
-  "id": "FSM-QUEUE-JOB",
+  "fsm_id": "FSM-QUEUE-JOB",
   "name": "Queue Job FSM",
-  "scope": "DOC_C_CURRENT_BUILD",
+  "kind": "SOURCE_DEFINED",
   "authority": [
     "DOC-C"
   ],
-  "status": "CURRENT_BUILD_IMPLEMENTATION_PRESENT_E0",
+  "scope": [
+    "DOC_C_CURRENT_BUILD"
+  ],
+  "source_range": [
+    {
+      "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "start_paragraph": 7103,
+      "end_paragraph": 8957
+    }
+  ],
   "states": [
     "QUEUED",
     "RUNNING",
@@ -14,105 +24,49 @@
     "CANCELLED",
     "EXPIRED"
   ],
-  "transitions": [
+  "events": [
+    "UNKNOWN"
+  ],
+  "event_ownership": {},
+  "transitions": [],
+  "invalid_transition_behavior": "Source requires only defined lifecycle states; exact transition table not established in captured source.",
+  "recovery_semantics": "UNKNOWN",
+  "audit_event_semantics": "UNKNOWN",
+  "implementation_mapping_status": "EXACT",
+  "implementation_refs": [
     {
-      "from": "QUEUED",
-      "event": "WORKER_CLAIM",
-      "guard": [
-        "payload validates",
-        "job not stale"
-      ],
-      "action": [
-        "Claim job"
-      ],
-      "to": "RUNNING",
-      "failure": [
-        "SCHEMA_VIOLATION or EXPIRED"
-      ],
-      "audit_event": "QUEUE_JOB_CLAIMED"
+      "path": "packages/queue/jobs.ts",
+      "blob_sha": "6a96cb1181b339481e66a1d5c13c7361718b1053",
+      "symbols": [
+        "DirectiveJobData",
+        "EnqueueResult",
+        "closePipelineQueue",
+        "enqueueDirective"
+      ]
     },
     {
-      "from": "QUEUED",
-      "event": "STALE_TTL_REACHED",
-      "guard": [
-        "age >= stale_job_ttl_ms"
-      ],
-      "action": [
-        "Expire job"
-      ],
-      "to": "EXPIRED",
-      "failure": [],
-      "audit_event": "QUEUE_JOB_EXPIRED"
-    },
-    {
-      "from": "QUEUED",
-      "event": "CANCEL",
-      "guard": [
-        "FREEZE/STOP or authorized cancel"
-      ],
-      "action": [
-        "Cancel pending job"
-      ],
-      "to": "CANCELLED",
-      "failure": [],
-      "audit_event": "QUEUE_JOB_CANCELLED"
-    },
-    {
-      "from": "RUNNING",
-      "event": "COMPLETE",
-      "guard": [
-        "pipeline/release path completes successfully"
-      ],
-      "action": [
-        "Persist success"
-      ],
-      "to": "SUCCEEDED",
-      "failure": [],
-      "audit_event": "QUEUE_JOB_SUCCEEDED"
-    },
-    {
-      "from": "RUNNING",
-      "event": "FAIL",
-      "guard": [
-        "execution failure"
-      ],
-      "action": [
-        "Persist failure; no unsafe automatic retry"
-      ],
-      "to": "FAILED",
-      "failure": [
-        "canonical failure"
-      ],
-      "audit_event": "QUEUE_JOB_FAILED"
-    },
-    {
-      "from": "RUNNING",
-      "event": "CANCEL",
-      "guard": [
-        "authorized cancellation/STOP"
-      ],
-      "action": [
-        "Cancel running job when supported"
-      ],
-      "to": "CANCELLED",
-      "failure": [],
-      "audit_event": "QUEUE_JOB_CANCELLED"
+      "path": "packages/queue/run-state.ts",
+      "blob_sha": "b3613ccb77b6611ffcc7a8087402d47337e5b846",
+      "symbols": [
+        "RUN_STATE",
+        "RunFailure",
+        "RunMetrics",
+        "RunState",
+        "commitReleasedPipelineRun",
+        "recordPipelineRunFailure",
+        "setPipelineRunState",
+        "toQ64"
+      ]
     }
   ],
-  "global_rules": [
-    "Idempotency key suppresses duplicate execution.",
-    "Payload validates before enqueue and again before consume.",
-    "Failed job is not automatically retried unless explicitly safe.",
-    "STOP cancels all jobs; FREEZE cancels pending release jobs."
+  "requirement_ids": [],
+  "test_refs": [
+    "tests/contract/queue-payload.test.ts",
+    "tests/integration/queue-boundary.spec.ts"
   ],
-  "source_refs": [
-    "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md"
-  ],
-  "code_refs": [
-    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/queue/jobs.ts",
-    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/queue/payload.ts",
-    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/queue/workers.ts",
-    "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/queue/run-state.ts"
-  ],
-  "evidence_status": "IMPLEMENTATION_PRESENT_E0"
+  "alignment_status": "REVIEW_REQUIRED",
+  "alignment_notes": [
+    "Observed packages/queue/run-state.ts defines PipelineRun states READY/RUNNING/VERIFYING/CONSENSUS/STABLE/FREEZE, which is a different state model from source Queue Job states QUEUED/RUNNING/SUCCEEDED/FAILED/CANCELLED/EXPIRED.",
+    "BullMQ owns queue-job runtime lifecycle; do not merge it with PipelineRun FSM."
+  ]
 }
