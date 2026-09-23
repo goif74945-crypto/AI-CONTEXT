@@ -1,0 +1,36 @@
+{
+  "task_id": "TASK-YYYYMMDD-001",
+  "objective": "Describe the exact desired outcome.",
+  "target": "Exact project/repository/artifact target.",
+  "repository": null,
+  "branch": null,
+  "expected_head": null,
+  "authorized_scope": [
+    "path/or/component allowed to change"
+  ],
+  "protected_scope": [
+    "path/branch/repository that must not change"
+  ],
+  "authority_sources": [
+    "spec/context/source controlling the task"
+  ],
+  "preconditions": [
+    "state that must be true before mutation"
+  ],
+  "success_invariants": [
+    "condition that must be true at completion"
+  ],
+  "forbidden_actions": [
+    "explicit forbidden mutation/action"
+  ],
+  "required_evidence": [
+    "E1_STATIC",
+    "E2_UNIT"
+  ],
+  "stop_conditions": [
+    "condition that invalidates execution"
+  ],
+  "deliverables": [
+    "requested artifact/change/report"
+  ]
+}
