@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "NEXY-RUNTIME-CONTEXT",
+  "project": "NEXY.AI",
+  "compiled_at": "2026-09-24",
+  "nature": "Registered operational model; not live telemetry.",
+  "load_first": [
+    "projects/NEXY.AI/state/state-ownership.json",
+    "projects/NEXY.AI/state/persistence-map.json",
+    "projects/NEXY.AI/events/events.jsonl",
+    "projects/NEXY.AI/config/config-registry.json",
+    "projects/NEXY.AI/errors/error-taxonomy.jsonl",
+    "projects/NEXY.AI/concurrency/concurrency-model.json",
+    "projects/NEXY.AI/observability/observability.jsonl",
+    "projects/NEXY.AI/performance/budgets.jsonl",
+    "projects/NEXY.AI/release/current-gate-state.json",
+    "projects/NEXY.AI/migrations/migrations.jsonl"
+  ],
+  "current_target": {
+    "repo": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
+  "current_release_truth": "NON_DEPLOYABLE / NOT_VERIFIED",
+  "failure_priority": [
+    "security breach",
+    "schema violation",
+    "illegal state transition",
+    "consensus failure",
+    "timeout"
+  ],
+  "note": "Refresh against real runtime/environment before making current operational claims."
+}
