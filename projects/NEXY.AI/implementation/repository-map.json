@@ -1,101 +1,373 @@
 {
-  "schema_version": "1.0.0",
-  "observed": {
-    "repository": "goif74945-crypto/NEXY.AI-",
-    "branch": "codex/spec-audit-20260919-78df350",
-    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-    "tree_sha": "2eded220a441908753e0f4287e0c0fc6b2fb005e",
-    "observation_basis": "GitHub branch/tree read",
-    "mutable_target": false
+  "schema_version": "2.0.0",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "observed_branch": "codex/spec-audit-20260919-78df350",
+  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "observed_pr": {
+    "number": 8,
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "base": "main",
+    "base_sha": "049d01b3436cc0f0f15134fdb2a2c83e9410cf19",
+    "title": "audit: validation runner for spec-audit branch"
   },
-  "totals": {
-    "blob_files": 459,
-    "directories": 127,
-    "bytes": 2634577,
-    "indexed_symbol_files": 237
+  "tree": {
+    "tree_sha": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+    "truncated": false,
+    "blob_count": 459
   },
-  "top_level": {
-    ".cargo": {
-      "files": 1,
-      "bytes": 707
+  "symbol_index": {
+    "files": 237,
+    "symbols": 1762
+  },
+  "directory_counts": [
+    {
+      "path": ".cargo/config.toml",
+      "count": 1
     },
-    "(root)": {
-      "files": 9,
-      "bytes": 306790
+    {
+      "path": ".eslintrc.json",
+      "count": 1
     },
-    ".github": {
-      "files": 2,
-      "bytes": 20829
+    {
+      "path": ".github/workflows",
+      "count": 2
     },
-    "apps": {
-      "files": 60,
-      "bytes": 92577
+    {
+      "path": ".gitignore",
+      "count": 1
     },
-    "core-kernel": {
-      "files": 32,
-      "bytes": 388522
+    {
+      "path": "apps/web",
+      "count": 60
     },
-    "docs": {
-      "files": 15,
-      "bytes": 27866
+    {
+      "path": "Cargo.lock",
+      "count": 1
     },
-    "evidence": {
-      "files": 26,
-      "bytes": 148182
+    {
+      "path": "Cargo.toml",
+      "count": 1
     },
-    "nexy-daemon": {
-      "files": 2,
-      "bytes": 39897
+    {
+      "path": "core-kernel/build.rs",
+      "count": 1
     },
-    "packages-experimental": {
-      "files": 19,
-      "bytes": 117122
+    {
+      "path": "core-kernel/Cargo.toml",
+      "count": 1
     },
-    "packages": {
-      "files": 169,
-      "bytes": 806787
+    {
+      "path": "core-kernel/src",
+      "count": 30
     },
-    "prisma": {
-      "files": 7,
-      "bytes": 69793
+    {
+      "path": "docs/deployment-runbook.md",
+      "count": 1
     },
-    "scripts": {
-      "files": 11,
-      "bytes": 108576
+    {
+      "path": "docs/evidence",
+      "count": 14
     },
-    "tests": {
-      "files": 103,
-      "bytes": 492618
+    {
+      "path": "evidence/.seal.json",
+      "count": 1
     },
-    "vault": {
-      "files": 3,
-      "bytes": 14311
+    {
+      "path": "evidence/E01-csprng-audit.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E02-csrf-protection.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E03-session-security.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E04-otac-no-leak.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E05-api-schema-validation.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E06-state-machine.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E07-vnext-defaults.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E08-error-codes.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E09-system-envelope.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E10-binary-wire-format-removed.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E11-scope-creep-isolation.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E12-contract-test-gate.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E13-l1o-completion.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E14-lo2-completion.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E15-game-fabric-completion.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E16-robotics-completion.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E17-user-universe-completion.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E18-resilience-completion.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E19-sovereign-locks.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E20-storage-operational-locks.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E21-cross-shard-crowd-budget.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E22-sandbox-stack-completion.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/E23-auto-recovery.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/PHASE_F_PLAN.md",
+      "count": 1
+    },
+    {
+      "path": "evidence/phase-f-audit.json",
+      "count": 1
+    },
+    {
+      "path": "nexy-daemon/Cargo.toml",
+      "count": 1
+    },
+    {
+      "path": "nexy-daemon/src",
+      "count": 1
+    },
+    {
+      "path": "package-lock.json",
+      "count": 1
+    },
+    {
+      "path": "package.json",
+      "count": 1
+    },
+    {
+      "path": "packages-experimental/core",
+      "count": 7
+    },
+    {
+      "path": "packages-experimental/engine",
+      "count": 5
+    },
+    {
+      "path": "packages-experimental/robotics",
+      "count": 7
+    },
+    {
+      "path": "packages/api",
+      "count": 9
+    },
+    {
+      "path": "packages/auth",
+      "count": 4
+    },
+    {
+      "path": "packages/contracts",
+      "count": 11
+    },
+    {
+      "path": "packages/core",
+      "count": 8
+    },
+    {
+      "path": "packages/core-binding",
+      "count": 4
+    },
+    {
+      "path": "packages/engine",
+      "count": 2
+    },
+    {
+      "path": "packages/judge",
+      "count": 5
+    },
+    {
+      "path": "packages/law",
+      "count": 4
+    },
+    {
+      "path": "packages/obs",
+      "count": 5
+    },
+    {
+      "path": "packages/orch-core",
+      "count": 6
+    },
+    {
+      "path": "packages/phase-f",
+      "count": 91
+    },
+    {
+      "path": "packages/queue",
+      "count": 5
+    },
+    {
+      "path": "packages/secrets",
+      "count": 1
+    },
+    {
+      "path": "packages/swarm",
+      "count": 6
+    },
+    {
+      "path": "packages/validation",
+      "count": 6
+    },
+    {
+      "path": "packages/vault",
+      "count": 2
+    },
+    {
+      "path": "prisma/migrations",
+      "count": 6
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "count": 1
+    },
+    {
+      "path": "README.md",
+      "count": 1
+    },
+    {
+      "path": "scripts/check-coverage.ts",
+      "count": 1
+    },
+    {
+      "path": "scripts/check-doc-c.ts",
+      "count": 1
+    },
+    {
+      "path": "scripts/check-phase-f.ts",
+      "count": 1
+    },
+    {
+      "path": "scripts/evidence-attestation.ts",
+      "count": 1
+    },
+    {
+      "path": "scripts/incident-drill.mjs",
+      "count": 1
+    },
+    {
+      "path": "scripts/phase-f-audit.ts",
+      "count": 1
+    },
+    {
+      "path": "scripts/prisma-rollback.ts",
+      "count": 1
+    },
+    {
+      "path": "scripts/queue-e7.mjs",
+      "count": 1
+    },
+    {
+      "path": "scripts/regen-evidence.ts",
+      "count": 1
+    },
+    {
+      "path": "scripts/seal-evidence.ts",
+      "count": 1
+    },
+    {
+      "path": "scripts/seed-browser-e2e.mjs",
+      "count": 1
+    },
+    {
+      "path": "tests/browser",
+      "count": 2
+    },
+    {
+      "path": "tests/contract",
+      "count": 18
+    },
+    {
+      "path": "tests/coverage",
+      "count": 6
+    },
+    {
+      "path": "tests/e2e",
+      "count": 3
+    },
+    {
+      "path": "tests/integration",
+      "count": 73
+    },
+    {
+      "path": "tests/setup",
+      "count": 1
+    },
+    {
+      "path": "tsconfig.json",
+      "count": 1
+    },
+    {
+      "path": "vault/package.json",
+      "count": 1
+    },
+    {
+      "path": "vault/repository.ts",
+      "count": 1
+    },
+    {
+      "path": "vault/tsconfig.json",
+      "count": 1
+    },
+    {
+      "path": "vitest.config.ts",
+      "count": 1
     }
-  },
-  "extensions": {
-    ".toml": 5,
-    ".json": 10,
-    ".yml": 2,
-    ".gitignore": 2,
-    ".lock": 1,
-    ".md": 40,
-    ".ts": 306,
-    ".tsx": 31,
-    ".css": 1,
-    ".js": 3,
-    ".rs": 34,
-    ".c": 4,
-    ".h": 2,
-    ".sh": 2,
-    "(none)": 1,
-    ".ld": 1,
-    ".base": 1,
-    ".yaml": 1,
-    ".sql": 6,
-    ".prisma": 1,
-    ".mjs": 5
-  },
-  "major_surfaces": {
+  ],
+  "navigation": {
     "api_routes": [
       "apps/web/app/api/artifacts/[id]/revisions/route.ts",
       "apps/web/app/api/artifacts/route.ts",
@@ -135,11 +407,6 @@
       "apps/web/app/vault/page.tsx"
     ],
     "tests": [
-      "packages/core/__tests__/db-url.test.ts",
-      "packages/core/__tests__/state-matrix.test.ts",
-      "packages/core/__tests__/tick.test.ts",
-      "packages/swarm/__tests__/adapters-use-canonical-keys.test.ts",
-      "packages/validation/__tests__/contract.test.ts",
       "tests/browser/critical-flows.spec.mjs",
       "tests/browser/directive-submit.spec.mjs",
       "tests/contract/alarms.test.ts",
@@ -244,30 +511,46 @@
       "tests/integration/vault/commit.spec.ts",
       "tests/setup/prisma-mock.ts"
     ],
-    "ci_workflows": [
-      ".github/workflows/deploy.yml",
-      ".github/workflows/e7-queue.yml"
-    ],
-    "manifests_and_build_config": [
-      "Cargo.lock",
-      "Cargo.toml",
-      "apps/web/next.config.js",
-      "apps/web/tsconfig.json",
-      "core-kernel/Cargo.toml",
-      "nexy-daemon/Cargo.toml",
-      "package.json",
-      "packages/contracts/package.json",
-      "packages/core-binding/Cargo.toml",
-      "prisma/schema.prisma",
-      "tsconfig.json",
-      "vault/package.json",
-      "vault/tsconfig.json",
-      "vitest.config.ts"
+    "major_roots": [
+      {
+        "name": "Current web/API/UI",
+        "path": "apps/web/"
+      },
+      {
+        "name": "Rust core kernel",
+        "path": "core-kernel/"
+      },
+      {
+        "name": "Current TypeScript packages",
+        "path": "packages/"
+      },
+      {
+        "name": "Future/domain Phase-F implementations",
+        "path": "packages/phase-f/"
+      },
+      {
+        "name": "Database schema and migrations",
+        "path": "prisma/"
+      },
+      {
+        "name": "Tests",
+        "path": "tests/"
+      },
+      {
+        "name": "Deployment evidence docs",
+        "path": "docs/evidence/current/"
+      }
     ]
   },
-  "rules": [
-    "This map is pinned to the observed branch HEAD and becomes stale when HEAD changes.",
-    "File presence is implementation evidence E0 only; behavior requires tests/runtime evidence.",
-    "No write was made to NEXY.AI- while building this map."
+  "entrypoints": [
+    "packages/orch-core/orchestrator.ts",
+    "packages/orch-core/state-machine.ts",
+    "packages/law/index.ts",
+    "packages/swarm/pipeline.ts",
+    "packages/judge/index.ts",
+    "packages/api/bootstrap.ts",
+    "apps/web/app/page.tsx",
+    "core-kernel/src/lib.rs",
+    "prisma/schema.prisma"
   ]
 }
