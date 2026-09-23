@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Error Taxonomy Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "error_id",
+    "name",
+    "contract_id",
+    "authority",
+    "source_severity",
+    "engineering_severity",
+    "severity_derivation",
+    "failure_priority_class",
+    "user_surface",
+    "incident_behavior",
+    "freeze_behavior",
+    "recovery",
+    "status"
+  ],
+  "properties": {
+    "error_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "contract_id": {
+      "type": "string"
+    },
+    "authority": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_severity": {
+      "type": "string"
+    },
+    "engineering_severity": {
+      "enum": [
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ]
+    },
+    "severity_derivation": {
+      "type": "string"
+    },
+    "failure_priority_class": {
+      "type": "string"
+    },
+    "user_surface": {
+      "type": "string"
+    },
+    "incident_behavior": {
+      "type": "string"
+    },
+    "freeze_behavior": {
+      "type": "string"
+    },
+    "recovery": {
+      "type": "string"
+    },
+    "recoverable_field": {
+      "type": "string"
+    },
+    "code_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}
