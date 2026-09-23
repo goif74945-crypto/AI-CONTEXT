@@ -1,0 +1,19 @@
+{
+  "id": "EVID-001",
+  "claim": "Exact claim being tested.",
+  "status": "NOT_VERIFIED",
+  "evidence_class": "E1_STATIC",
+  "target": "Exact target",
+  "repository": null,
+  "branch": null,
+  "commit": null,
+  "version": null,
+  "environment": null,
+  "method": "How the claim will be tested.",
+  "command_or_test": null,
+  "expected": null,
+  "observed": "Not run yet.",
+  "artifacts": [],
+  "limitations": [],
+  "timestamp": null
+}
