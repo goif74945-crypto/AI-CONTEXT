@@ -4,11 +4,12 @@
 
 For any substantial task, read in this order:
 
-1. [AI Execution Kernel](./AI-EXECUTION-KERNEL.md)
-2. [Work Router](./WORK-ROUTER.md)
-3. Relevant global rules under [rules/](./rules/)
-4. Target project/context entrypoint
-5. Only the workflows/schemas/evidence needed for the task
+1. [Portable AI Bootstrap](./AI-BOOTSTRAP.md) — smallest handoff for a new model/session
+2. [AI Execution Kernel](./AI-EXECUTION-KERNEL.md)
+3. [Work Router](./WORK-ROUTER.md)
+4. Relevant global rules under [rules/](./rules/)
+5. Target project/context entrypoint
+6. Only the workflows/schemas/evidence needed for the task
 
 **Do not load the whole repository by default.**
 Use progressive context loading.
@@ -52,6 +53,9 @@ Use progressive context loading.
 - [Execution Record](./schema/execution-record.schema.json)
 - [Requirement Ledger](./schema/requirement-ledger.schema.json)
 
+Ready-to-fill examples:
+- [Templates](./templates/README.md)
+
 ---
 
 ## Projects
@@ -76,7 +80,7 @@ Skills are capabilities, not automatic authority. Their output must still obey t
 
 ## Operational data planes
 
-These directories may contain historical/current operational records. Load them only when relevant:
+Load only when relevant:
 
 - `TASKS/` — task/execution records
 - `CASES/` — reusable cases
@@ -95,7 +99,7 @@ These directories may contain historical/current operational records. Load them 
 ```text
 REQUEST
   ↓
-AI-EXECUTION-KERNEL
+AI-BOOTSTRAP / AI-EXECUTION-KERNEL
   ↓
 WORK-ROUTER
   ↓
