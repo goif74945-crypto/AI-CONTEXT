@@ -16,7 +16,6 @@
 {"from":"PLANE-CORE","to":"FABRIC-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PLANE-CORE","to":"KERNEL-SOVEREIGN","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PLANE-UNIVERSE","to":"FABRIC-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
-{"from":"PLANE-UNIVERSE","to":"RUNTIME-UNIVERSE","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PLANE-QUARANTINE","to":"FABRIC-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PLANE-QUARANTINE","to":"RUNTIME-UNIVERSE","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"ZONE-CORE","to":"PLANE-CORE","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
@@ -83,8 +82,6 @@
 {"from":"ZONE-TIER-5","to":"LAW-RECURSIVE-SANDBOX","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-CONSTITUTIONAL-LOCK","to":"FABRIC-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-FSM-LOCK","to":"LAW-CONSTITUTIONAL-LOCK","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
-{"from":"LAW-FSM-LOCK","to":"FSM-GLOBAL-CONSTITUTIONAL","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
-{"from":"LAW-FSM-LOCK","to":"FSM-APP-LIFECYCLE","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-ECONOMIC-INVARIANTS","to":"LAW-CONSTITUTIONAL-LOCK","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-SOVEREIGN-CONTINUITY","to":"LAW-CONSTITUTIONAL-LOCK","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"LAW-SOVEREIGN-CONTINUITY","to":"KERNEL-GLOBAL-ANCHOR","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
@@ -135,7 +132,6 @@
 {"from":"DETECTOR-COMPROMISE-FLAG","to":"DETECTOR-CORE-INTEGRITY","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"TOOLCHAIN-REPRODUCIBLE-BUILD","to":"ENGINE-BUILDER","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"STORAGE-WAL","to":"KERNEL-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
-{"from":"STORAGE-WAL","to":"LAW-CRASH-RECOVERY","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PROTOCOL-WAL-FIRST","to":"STORAGE-WAL","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"PROTOCOL-WAL-FIRST","to":"STORAGE-WAL","type":"REQUIRES","source":"ontology/checkpoint-02-sovereign-game"}
 {"from":"STORAGE-SNAPSHOT","to":"KERNEL-SOVEREIGN","type":"PART_OF","source":"ontology/checkpoint-02-sovereign-game"}
