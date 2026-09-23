@@ -2,114 +2,24 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "NEXY FSM Registry Record",
   "type": "object",
-  "additionalProperties": false,
   "required": [
-    "id",
+    "fsm_id",
     "name",
-    "scope",
+    "kind",
     "authority",
-    "status",
+    "scope",
     "states",
+    "events",
+    "event_ownership",
     "transitions",
-    "global_rules",
-    "source_refs",
-    "code_refs",
-    "evidence_status"
-  ],
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "scope": {
-      "type": "string"
-    },
-    "authority": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "status": {
-      "type": "string"
-    },
-    "states": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "minItems": 1
-    },
-    "transitions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "from",
-          "event",
-          "guard",
-          "action",
-          "to",
-          "failure",
-          "audit_event"
-        ],
-        "properties": {
-          "from": {
-            "type": "string"
-          },
-          "event": {
-            "type": "string"
-          },
-          "guard": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "action": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "to": {
-            "type": "string"
-          },
-          "failure": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "audit_event": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "global_rules": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "source_refs": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "code_refs": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "evidence_status": {
-      "type": "string"
-    }
-  }
+    "invalid_transition_behavior",
+    "recovery_semantics",
+    "audit_event_semantics",
+    "implementation_mapping_status",
+    "implementation_refs",
+    "requirement_ids",
+    "test_refs",
+    "alignment_status",
+    "alignment_notes"
+  ]
 }
