@@ -1,12 +1,14 @@
 # NEXY.AI Evidence Registry
 
-Evidence is revision-bound. A document existing at current HEAD does not make the proof inside it current if that document declares an older source revision.
-
-Files:
-- `evidence-ledger.jsonl` — normalized E1–E12 proof records.
+Canonical:
+- `evidence-ledger.jsonl`
 - `evidence.schema.json`
 - `validation-report.md`
+- `checkpoints/doc-e-current.jsonl`
 
-Current summary: **0 PASS / 12 BLOCKED / all E1–E12 stale for current HEAD**.
+Key separation:
+- `artifact_declared_result` = what the evidence file says.
+- `verifier_result` = what can safely be concluded for the observed current HEAD.
+- `freshness` = whether the artifact proves the same revision.
 
-Historical/local evidence may be useful context but cannot be promoted to current release proof without rerun/rebinding.
+A stale PASS is not a current PASS.
