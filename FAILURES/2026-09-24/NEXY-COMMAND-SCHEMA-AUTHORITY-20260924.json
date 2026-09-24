@@ -1,0 +1,13 @@
+{
+  "failure_id": "FAIL-NEXY-COMMAND-SCHEMA-AUTHORITY-20260924",
+  "context": "First Closed-Loop Auditor command issuance for a proven control-plane runtime evidence defect.",
+  "cause": "Current user directive requires command fields the canonical command.schema.json cannot represent because additionalProperties=false.",
+  "failed_approach": "Immediate canonical queue emission would either omit mandatory directive fields or violate the existing schema.",
+  "recovery": "Freeze queue issuance only. Reconcile the existing command schema, then refresh HEAD and issue a superseding canonical command.",
+  "boundary": "Audit finding remains valid; no NEXY implementation mutation occurred.",
+  "prevention": "Run authority/schema compatibility gate before every command emission.",
+  "status": "OPEN",
+  "source_head": "9f070e6d0b85f4fb423e785d376a73374a3ff6db",
+  "trace_id": "AUDIT-NEXY-CLOSED-LOOP-01-20260924-1603",
+  "hash": "HASH_UNAVAILABLE"
+}
