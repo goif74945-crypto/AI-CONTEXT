@@ -1,0 +1,9 @@
+{
+  "case_id": "CASE-NEXY-L1O-REQ-004-ATOMIC-DAG-EXPANSION-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-004-ATOMIC-DAG-EXPANSION-20260925",
+  "issue": "DGE had graph/cycle support but no explicit bounded recursive atomic-node expansion primitive.",
+  "resolution": "Added expansion API and exact Rust tests for recursive layers, acyclicity and rollback-safe rejection.",
+  "status": "RESOLVED_AT_REQUIREMENT_BOUNDARY",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

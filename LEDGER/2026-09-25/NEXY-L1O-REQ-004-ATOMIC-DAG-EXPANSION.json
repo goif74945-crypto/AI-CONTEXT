@@ -1,0 +1,26 @@
+{
+  "ledger_id": "LEDGER-NEXY-L1O-REQ-004-ATOMIC-DAG-EXPANSION-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-004-ATOMIC-DAG-EXPANSION-20260925",
+  "source": [
+    "DOCX 11325-11344",
+    "canonical REQ-L1O-004"
+  ],
+  "claim": [
+    "DGE supports explicit recursive atomic node expansion with explicit edges.",
+    "Invalid expansion is rejected before mutation and existing cycle invariants remain enforced.",
+    "Exact-head Rust and broader regressions pass."
+  ],
+  "proof": [
+    "e503aa4520d3bab88f03e6a8b1397c5464a5cfa6",
+    "Railway 9d397574-9006-4945-97c6-3f13e0700dbb"
+  ],
+  "deps": [],
+  "risk": [
+    "No automatic decomposition semantics claimed."
+  ],
+  "status": "RECORDED_VERIFIED_WITH_LIMITS",
+  "confidence": 1,
+  "freshness": "EXACT_HEAD_E503AA45",
+  "trace": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-004",
+  "hash": "HASH_UNAVAILABLE"
+}

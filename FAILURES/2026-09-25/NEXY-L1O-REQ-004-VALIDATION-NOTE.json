@@ -1,0 +1,11 @@
+{
+  "failure_id": "FAIL-NEXY-L1O-REQ-004-VALIDATION-NOTE-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-004-ATOMIC-DAG-EXPANSION-20260925",
+  "status": "NO_INTRODUCED_EXECUTION_FAILURE",
+  "pre_existing": [
+    "Global npm run check:coverage remains exit=1 due judge branch coverage threshold/authority issue."
+  ],
+  "prevention": "Keep Rust core contract gate mandatory for DGE changes.",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

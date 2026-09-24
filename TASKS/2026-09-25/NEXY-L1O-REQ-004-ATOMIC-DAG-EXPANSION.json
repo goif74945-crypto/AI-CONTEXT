@@ -1,0 +1,96 @@
+{
+  "task_id": "TASK-NEXY-L1O-REQ-004-ATOMIC-DAG-EXPANSION-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "requirement_id": "REQ-L1O-004",
+  "title": "Implement recursive atomic node expansion in L1o Dependency Graph Engine",
+  "mode": "CROSS_EXECUTE_SERIAL",
+  "source": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "paragraph_ranges": [
+      [
+        11325,
+        11344
+      ]
+    ]
+  },
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "start_head": "189ee62fc2b2ef58cadc74d7d49fc647f64efbb9",
+  "end_head": "e503aa4520d3bab88f03e6a8b1397c5464a5cfa6",
+  "changed_files": [
+    "core-kernel/src/engine/dag_engine.rs"
+  ],
+  "actions": [
+    "Added bounded expand_atomic_node(parent, children, proof) API.",
+    "Added deterministic AtomicExpansion result with insertion-order child IDs.",
+    "Preflighted parent existence, empty expansion and capacity before mutation.",
+    "Proved repeated expansion yields recursive graph layers and preserves acyclicity.",
+    "Proved invalid empty/over-capacity expansion leaves graph unchanged."
+  ],
+  "tests_results": [
+    {
+      "check": "cargo test --locked -p core-kernel --lib via tests/contract/core-kernel-rust.test.ts",
+      "status": "PASS",
+      "head": "e503aa4520d3bab88f03e6a8b1397c5464a5cfa6"
+    },
+    {
+      "check": "npm run typecheck",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run typecheck:backend",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run lint",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:contract",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:integration",
+      "status": "PASS"
+    },
+    {
+      "check": "npm test",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run check:doc-c",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run build:web",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run check:coverage",
+      "status": "PRE_EXISTING_FAIL",
+      "detail": "judge branches=88.37% while other judge metrics exceed 90%; same global gate predates this unit"
+    }
+  ],
+  "proof": [
+    "NEXY commit e503aa4520d3bab88f03e6a8b1397c5464a5cfa6",
+    "Railway exact-head deployment 9d397574-9006-4945-97c6-3f13e0700dbb",
+    "core-kernel Rust contract PASS"
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "limits": [
+    "Automatic semantic decomposition policy is intentionally not invented; DGE exposes explicit recursive atomic expansion to callers.",
+    "Global coverage authority/gate remains release-level open."
+  ],
+  "next_actions": [
+    "Proceed to independent L1o unit REQ-L1O-007 while REQ-L1O-002/003 source-policy gaps remain frozen."
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25",
+  "trace_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-004",
+  "hash": "HASH_UNAVAILABLE"
+}
