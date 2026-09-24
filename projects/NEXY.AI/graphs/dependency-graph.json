@@ -26,8 +26,8 @@
     "FEEDS",
     "CONTAINS"
   ],
-  "node_count": 516,
-  "edge_count": 863,
+  "node_count": 518,
+  "edge_count": 865,
   "nodes": [
     {
       "id": "ADAPTER-AGENT",
@@ -2671,6 +2671,20 @@
       "requirement_ids": []
     },
     {
+      "id": "EVENT-EXEC-CANCEL",
+      "name": "cancel",
+      "entity_type": "EVENT",
+      "status": "CURRENT_BUILD",
+      "scope": [
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "authority": [
+        "DOC-C"
+      ],
+      "parent_id": "FSM-EXECUTION",
+      "requirement_ids": []
+    },
+    {
       "id": "EVENT-EXEC-ERROR",
       "name": "error",
       "entity_type": "EVENT",
@@ -2729,6 +2743,20 @@
     {
       "id": "EVENT-EXEC-REJECTED",
       "name": "rejected",
+      "entity_type": "EVENT",
+      "status": "CURRENT_BUILD",
+      "scope": [
+        "DOC_C_CURRENT_BUILD"
+      ],
+      "authority": [
+        "DOC-C"
+      ],
+      "parent_id": "FSM-EXECUTION",
+      "requirement_ids": []
+    },
+    {
+      "id": "EVENT-EXEC-TIMEOUT",
+      "name": "timeout",
       "entity_type": "EVENT",
       "status": "CURRENT_BUILD",
       "scope": [
@@ -9804,6 +9832,12 @@
       "source": "ontology/checkpoint-01-core-product"
     },
     {
+      "from": "EVENT-EXEC-CANCEL",
+      "to": "FSM-EXECUTION",
+      "type": "PART_OF",
+      "source": "ontology/checkpoint-01-core-product"
+    },
+    {
       "from": "EVENT-EXEC-ERROR",
       "to": "FSM-EXECUTION",
       "type": "PART_OF",
@@ -9829,6 +9863,12 @@
     },
     {
       "from": "EVENT-EXEC-REJECTED",
+      "to": "FSM-EXECUTION",
+      "type": "PART_OF",
+      "source": "ontology/checkpoint-01-core-product"
+    },
+    {
+      "from": "EVENT-EXEC-TIMEOUT",
       "to": "FSM-EXECUTION",
       "type": "PART_OF",
       "source": "ontology/checkpoint-01-core-product"
@@ -13220,11 +13260,13 @@
         "EVENT-EXEC-ACCEPTED",
         "EVENT-EXEC-AGENTS-DONE",
         "EVENT-EXEC-BOOT",
+        "EVENT-EXEC-CANCEL",
         "EVENT-EXEC-ERROR",
         "EVENT-EXEC-EXECUTE",
         "EVENT-EXEC-FATAL",
         "EVENT-EXEC-RECOVER",
         "EVENT-EXEC-REJECTED",
+        "EVENT-EXEC-TIMEOUT",
         "EVENT-EXEC-VERIFIED",
         "EVIDENCE-E1",
         "EVIDENCE-E10",
@@ -13757,11 +13799,13 @@
       "EVENT-EXEC-ACCEPTED",
       "EVENT-EXEC-AGENTS-DONE",
       "EVENT-EXEC-BOOT",
+      "EVENT-EXEC-CANCEL",
       "EVENT-EXEC-ERROR",
       "EVENT-EXEC-EXECUTE",
       "EVENT-EXEC-FATAL",
       "EVENT-EXEC-RECOVER",
       "EVENT-EXEC-REJECTED",
+      "EVENT-EXEC-TIMEOUT",
       "EVENT-EXEC-VERIFIED",
       "EVIDENCE-E1",
       "EVIDENCE-E10",
@@ -14206,7 +14250,7 @@
     ]
   },
   "current_doc_c_build_graph": {
-    "node_count": 116,
+    "node_count": 118,
     "node_ids": [
       "ADAPTER-AGENT",
       "CONFIG-AUTH-LIMITS",
@@ -14280,11 +14324,13 @@
       "EVENT-EXEC-ACCEPTED",
       "EVENT-EXEC-AGENTS-DONE",
       "EVENT-EXEC-BOOT",
+      "EVENT-EXEC-CANCEL",
       "EVENT-EXEC-ERROR",
       "EVENT-EXEC-EXECUTE",
       "EVENT-EXEC-FATAL",
       "EVENT-EXEC-RECOVER",
       "EVENT-EXEC-REJECTED",
+      "EVENT-EXEC-TIMEOUT",
       "EVENT-EXEC-VERIFIED",
       "FABRIC-SWARM",
       "FSM-EXECUTION",
@@ -14362,11 +14408,13 @@
         "EVENT-EXEC-ACCEPTED",
         "EVENT-EXEC-AGENTS-DONE",
         "EVENT-EXEC-BOOT",
+        "EVENT-EXEC-CANCEL",
         "EVENT-EXEC-ERROR",
         "EVENT-EXEC-EXECUTE",
         "EVENT-EXEC-FATAL",
         "EVENT-EXEC-RECOVER",
         "EVENT-EXEC-REJECTED",
+        "EVENT-EXEC-TIMEOUT",
         "EVENT-EXEC-VERIFIED",
         "LAW-USER-LAW",
         "MODULE-AUTH",
@@ -14497,11 +14545,13 @@
       "EVENT-EXEC-ACCEPTED",
       "EVENT-EXEC-AGENTS-DONE",
       "EVENT-EXEC-BOOT",
+      "EVENT-EXEC-CANCEL",
       "EVENT-EXEC-ERROR",
       "EVENT-EXEC-EXECUTE",
       "EVENT-EXEC-FATAL",
       "EVENT-EXEC-RECOVER",
       "EVENT-EXEC-REJECTED",
+      "EVENT-EXEC-TIMEOUT",
       "EVENT-EXEC-VERIFIED",
       "LAW-USER-LAW",
       "MODULE-AUTH",
