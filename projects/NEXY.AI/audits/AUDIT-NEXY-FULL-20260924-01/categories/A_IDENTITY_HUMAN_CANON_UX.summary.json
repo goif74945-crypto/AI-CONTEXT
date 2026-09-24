@@ -1,0 +1,30 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "A_IDENTITY_HUMAN_CANON_UX",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 15,
+  "counts": {
+    "OUT_OF_SCOPE": 11,
+    "PARTIAL": 4
+  },
+  "findings": [
+    "F-NEXY-FULL-A-TRACEABILITY-001",
+    "F-NEXY-FULL-A-TRACEABILITY-002"
+  ],
+  "source_proof": [
+    "DOCX 213-269 Human Gravity authority/output/friend-mode law",
+    "DOCX 761-829 confusion recovery + trust mechanics"
+  ],
+  "implementation_proof": [
+    "unknown/page.tsx",
+    "TrustExplainer.tsx",
+    "mode-guard.ts",
+    "law_enforcer.rs",
+    "vnext-state-matrix.ts"
+  ],
+  "test_proof": [
+    "Linked test files were inspected; no successful target-head test execution established."
+  ],
+  "next_category": "B_CORE_CONTROL_LAW",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
