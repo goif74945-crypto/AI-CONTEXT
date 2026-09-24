@@ -1,0 +1,20 @@
+{
+  "ledger_id": "NEXY-FULL-AUDIT-T_ROBOTICS_RCL-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "category": "T_ROBOTICS_RCL",
+  "claim": [
+    "32/32 units audited",
+    "32 FUTURE_SCOPE"
+  ],
+  "proof": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/T_ROBOTICS_RCL.units.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/T_ROBOTICS_RCL.summary.json",
+    "DOCX robotics/RCL source domain classified FUTURE_SCOPE by canonical governance"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "CURRENT_AT_TARGET_HEAD",
+  "trace": "AUDIT-NEXY-FULL-20260924-01",
+  "hash": "HASH_UNAVAILABLE"
+}
