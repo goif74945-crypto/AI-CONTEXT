@@ -1,249 +1,257 @@
 {
   "schema_version": "1.0.0",
-  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-  "boundaries": [
+  "repository_snapshot": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
+  "trust_boundaries": [
     {
-      "id": "TB-USER-UI",
+      "boundary_id": "TB-USER-UI",
       "from": "USER",
-      "to": "UI-FRONT",
+      "to": "UI",
       "trust": "UNTRUSTED_INPUT",
-      "controls": [
-        "schema validation downstream",
-        "no UI authority"
+      "allowed": [
+        "submit input",
+        "view authorized state"
       ],
-      "failure": "reject/clarify/freeze when material"
+      "forbidden": [
+        "direct truth authority",
+        "backend privilege"
+      ]
     },
     {
-      "id": "TB-UI-API",
-      "from": "UI-FRONT",
+      "boundary_id": "TB-UI-API",
+      "from": "UI",
       "to": "GATEWAY-API",
-      "trust": "UNTRUSTED_CROSS_BOUNDARY",
-      "controls": [
-        "secure session",
-        "CSRF on mutation",
-        "rate limit",
-        "runtime schema validation"
+      "trust": "AUTHENTICATED_OR_PUBLIC_BY_ROUTE",
+      "allowed": [
+        "contract-valid requests"
       ],
-      "failure": "401/403/429/503 or canonical error envelope"
+      "forbidden": [
+        "bypass session",
+        "bypass CSRF",
+        "bypass RBAC"
+      ]
     },
     {
-      "id": "TB-API-CORE",
+      "boundary_id": "TB-API-AUTH",
+      "from": "GATEWAY-API",
+      "to": "MODULE-AUTH",
+      "trust": "ZERO_TRUST_REQUEST",
+      "allowed": [
+        "session validation",
+        "OTAC validation",
+        "CSRF validation",
+        "rate validation"
+      ],
+      "forbidden": [
+        "trust role claimed in body alone"
+      ]
+    },
+    {
+      "boundary_id": "TB-API-CORE",
       "from": "GATEWAY-API",
       "to": "KERNEL-CORE",
-      "trust": "REVALIDATE",
-      "controls": [
-        "canonical contracts",
-        "RBAC",
-        "state/freeze checks"
+      "trust": "VALIDATE_AGAIN",
+      "allowed": [
+        "validated canonical directive"
       ],
-      "failure": "SCHEMA_VIOLATION/STATE_TRANSITION_DENIED/FREEZE"
+      "forbidden": [
+        "raw unvalidated mutation"
+      ]
     },
     {
-      "id": "TB-CORE-QUEUE",
+      "boundary_id": "TB-CORE-QUEUE",
       "from": "KERNEL-CORE",
       "to": "QUEUE-EXECUTION",
-      "trust": "REVALIDATE_PRODUCER_CONSUMER",
-      "controls": [
-        "DirectiveJobSchema",
-        "idempotency",
-        "stale TTL",
-        "durable Redis AOF"
+      "trust": "VALIDATE_AT_PRODUCER_AND_CONSUMER",
+      "allowed": [
+        "DirectiveJobSchema payload"
       ],
-      "failure": "SCHEMA_VIOLATION/STALE_JOB/DEPENDENCY_FAILURE"
+      "forbidden": [
+        "fabricated swarm or evidence fields"
+      ]
     },
     {
-      "id": "TB-QUEUE-SWARM",
+      "boundary_id": "TB-QUEUE-SWARM",
       "from": "QUEUE-EXECUTION",
       "to": "FABRIC-SWARM",
-      "trust": "CANDIDATE_ONLY",
-      "controls": [
-        "durable directive reload",
-        "adapter boundaries",
-        "criticality/timeouts"
+      "trust": "DURABLE_RUN_BOUNDARY",
+      "allowed": [
+        "load canonical directive then run swarm"
       ],
-      "failure": "AGENT_TIMEOUT/SWARM_FREEZE"
+      "forbidden": [
+        "promote queue metadata to evidence"
+      ]
     },
     {
-      "id": "TB-SWARM-JUDGE",
+      "boundary_id": "TB-SWARM-JUDGE",
       "from": "FABRIC-SWARM",
       "to": "ENGINE-JUDGE",
       "trust": "UNTRUSTED_CANDIDATES",
-      "controls": [
-        "recompute verification metrics",
-        "proof-weighted adjudication"
+      "allowed": [
+        "proposal and evidence verification"
       ],
-      "failure": "CONSENSUS_FAILED/UNVERIFIED_OUTPUT"
+      "forbidden": [
+        "direct release"
+      ]
     },
     {
-      "id": "TB-JUDGE-LAW",
+      "boundary_id": "TB-JUDGE-LAW",
       "from": "ENGINE-JUDGE",
       "to": "LAW-SYSTEM",
-      "trust": "NO_RELEASE_AUTHORITY",
-      "controls": [
-        "LAW prerelease",
-        "threshold snapshot",
-        "evidence/quorum checks"
+      "trust": "CANDIDATE_METRICS_ONLY",
+      "allowed": [
+        "prerelease evaluation"
       ],
-      "failure": "RELEASE_POLICY_FAILED/FREEZE"
+      "forbidden": [
+        "final output before LAW pass"
+      ]
     },
     {
-      "id": "TB-LAW-VAULT",
+      "boundary_id": "TB-LAW-VAULT",
       "from": "LAW-SYSTEM",
       "to": "STORAGE-VAULT",
-      "trust": "AUTHORIZED_MUTATION_ONLY",
-      "controls": [
-        "append-only revision",
-        "OCC",
-        "idempotency",
-        "transaction"
+      "trust": "AUTHORIZED_RELEASE_OR_COMMIT",
+      "allowed": [
+        "legal durable state transition"
       ],
-      "failure": "VAULT_COMMIT_CONFLICT/FREEZE"
+      "forbidden": [
+        "silent overwrite"
+      ]
     },
     {
-      "id": "TB-AUTH-SESSION",
-      "from": "MODULE-AUTH",
-      "to": "DATA-SESSION",
-      "trust": "SECURITY_CRITICAL",
-      "controls": [
-        "OTAC single-use/TTL/attempt/device",
-        "session TTL",
-        "concurrency cap",
-        "secure cookie"
+      "boundary_id": "TB-EXTERNAL-MODEL",
+      "from": "EXTERNAL_MODEL",
+      "to": "SYS-LO3",
+      "trust": "UNTRUSTED",
+      "allowed": [
+        "candidate proposal"
       ],
-      "failure": "AUTH_INVALID/AUTH_EXPIRED/SESSION_REVOKED/DEVICE_MISMATCH"
+      "forbidden": [
+        "USER LAW rewrite",
+        "Core authority",
+        "secret access"
+      ]
     },
     {
-      "id": "TB-OBS",
-      "from": "SYS-NEXY",
-      "to": "MODULE-OBS",
-      "trust": "MANDATORY_SAFETY_EVIDENCE",
-      "controls": [
-        "append-only EventLog/AuditLog",
-        "incident linkage",
-        "hash chain"
-      ],
-      "failure": "MANDATORY_AUDIT_PERSISTENCE_FAILURE"
-    },
-    {
-      "id": "TB-UNIVERSE-CORE",
+      "boundary_id": "TB-UNIVERSE-CORE",
       "from": "RUNTIME-UNIVERSE",
-      "to": "KERNEL-SOVEREIGN",
-      "trust": "HOSTILE_SANDBOX",
-      "controls": [
-        "tier isolation",
-        "capability declarations",
-        "no shared mutable memory",
-        "escape detection"
+      "to": "PLANE-CORE",
+      "trust": "ISOLATED",
+      "allowed": [
+        "explicit governed capability channel only"
       ],
-      "failure": "UNIVERSE_ESCAPE_DETECTED/quarantine/kill"
+      "forbidden": [
+        "mutable memory sharing",
+        "parent FS mount",
+        "privilege escalation"
+      ]
     },
     {
-      "id": "TB-CROSS-APP",
-      "from": "CREATOR_APP",
-      "to": "CREATOR_APP",
-      "trust": "EXPLICIT_CAPABILITY_ONLY",
-      "controls": [
-        "same-universe check",
-        "required capability both sides",
-        "HMAC message integrity"
-      ],
-      "failure": "deny channel/send"
-    },
-    {
-      "id": "TB-ROBOT-AI-SAFETY",
-      "from": "LAYER-ROBOT-DECISION",
+      "boundary_id": "TB-ROBOT-AI-SAFETY",
+      "from": "PATH-SAFE",
       "to": "KERNEL-SAFETY",
       "trust": "SAFETY_OVERRIDES_AI",
-      "controls": [
-        "independent safety kernel",
-        "watchdog",
-        "E-stop"
+      "allowed": [
+        "propose control"
       ],
-      "failure": "STOP/safe fallback"
+      "forbidden": [
+        "override HALT or safety MCU"
+      ]
     }
   ],
   "permission_matrix": [
     {
       "actor": "OWNER",
-      "resource": "DOC-C owner actions",
+      "resource": "privileged controls",
       "actions": [
-        "recover",
-        "revoke",
-        "config changes",
-        "privileged vault mutation"
+        "recover freeze where allowed",
+        "manage config and roles",
+        "owner-only vault operations"
       ],
-      "condition": "authenticated + RBAC + CSRF/idempotency where mutation"
+      "conditions": [
+        "backend RBAC",
+        "audit",
+        "session and CSRF where applicable"
+      ]
     },
     {
       "actor": "OPERATOR",
-      "resource": "ordinary directive/run operations",
+      "resource": "directives and runs",
       "actions": [
-        "create/read permitted operations"
+        "submit",
+        "run",
+        "read permitted operations"
       ],
-      "condition": "authenticated; owner-only endpoints denied"
+      "conditions": [
+        "session",
+        "CSRF for mutation",
+        "RBAC"
+      ]
     },
     {
       "actor": "AUDITOR",
-      "resource": "audit/incident/read views",
+      "resource": "audit incidents read surfaces",
       "actions": [
-        "read only"
+        "read-only audit access"
       ],
-      "condition": "authenticated; mutations denied"
+      "conditions": [
+        "backend RBAC"
+      ]
     },
     {
       "actor": "SYSTEM",
-      "resource": "internal lifecycle/recovery/event operations",
+      "resource": "automated legal operations",
       "actions": [
-        "defined machine actions only"
+        "system-owned transitions and recovery where explicitly permitted"
       ],
-      "condition": "predefined FSM/law ownership"
+      "conditions": [
+        "event ownership",
+        "LAW"
+      ]
     },
     {
-      "actor": "SWARM/AGENT",
-      "resource": "candidate reasoning",
+      "actor": "PUBLIC_USER",
+      "resource": "public read-limited surfaces",
       "actions": [
-        "propose/evidence"
+        "only explicitly public operations"
       ],
-      "condition": "no final truth/vault authority"
+      "conditions": [
+        "no implicit write authority"
+      ]
+    },
+    {
+      "actor": "SWARM_AGENT",
+      "resource": "candidate and evidence space",
+      "actions": [
+        "propose",
+        "challenge",
+        "verify"
+      ],
+      "conditions": [
+        "no final authority",
+        "no direct Vault write"
+      ]
     },
     {
       "actor": "CREATOR_APP",
-      "resource": "Universe APIs",
+      "resource": "Universe capabilities",
       "actions": [
-        "declared granted capability only"
+        "only declared and granted capabilities"
       ],
-      "condition": "active non-revoked grant + scope/expiry"
-    },
-    {
-      "actor": "UI",
-      "resource": "all backend state",
-      "actions": [
-        "present/request"
-      ],
-      "condition": "never authority"
+      "conditions": [
+        "tier limits",
+        "resource limits",
+        "capability envelope"
+      ]
     }
   ],
-  "secrets": [
-    {
-      "class": "provider/API secret",
-      "store": "server runtime environment",
-      "frontend": "FORBIDDEN",
-      "logging": "FORBIDDEN"
-    },
-    {
-      "class": "session token",
-      "store": "server DB + secure HttpOnly cookie",
-      "frontend_script_access": "FORBIDDEN"
-    },
-    {
-      "class": "CSRF token",
-      "store": "secure same-site cookie/header pairing",
-      "purpose": "mutation request binding"
-    },
-    {
-      "class": "cross-app/snapshot HMAC key",
-      "store": "runtime-local implementation memory in observed Phase-F code",
-      "status": "OBSERVED_IMPLEMENTATION_NOT_PRODUCTION_KEY_MANAGEMENT_PROOF"
-    }
-  ]
+  "secret_rules": [
+    "Provider and API secrets stay server-side and runtime-injected.",
+    "Frontend bundles must contain no real provider secret.",
+    "Logs and audit payloads store hashes or minimal metadata rather than unnecessary plaintext secrets or PII."
+  ],
+  "status": "SOURCE_AND_CODE_MAPPED_NOT_SECURITY_CERTIFIED"
 }
