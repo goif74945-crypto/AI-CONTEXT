@@ -501,6 +501,12 @@
     "SYSTEM-ROBOT-FAILURE-HANDLING": [
       "packages/phase-f/robotics/self-debug.ts",
       "packages/phase-f/robotics/zero-trust.ts"
+    ],
+    "EVENT-EXEC-CANCEL": [
+      "packages/core/vnext-state-matrix.ts"
+    ],
+    "EVENT-EXEC-TIMEOUT": [
+      "packages/core/vnext-state-matrix.ts"
     ]
   },
   "group": {
