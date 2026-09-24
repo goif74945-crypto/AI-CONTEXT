@@ -1,0 +1,39 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "G_RECOVERY_RESTART_RESUME",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "denominator_units": 0,
+  "cross_cut_review": {
+    "current_build_paths": [
+      "packages/orch-core/system-state.ts::hydrateSystemState",
+      "packages/api/owner-recovery.ts",
+      "packages/api/artifact-restore.ts",
+      "apps/web/app/api/freeze/recover/route.ts",
+      "apps/web/app/api/storage/reconcile/route.ts"
+    ],
+    "future_architecture_paths": [
+      "packages/phase-f/resilience/auto-recovery-controller.ts",
+      "packages/phase-f/resilience/playbooks/*",
+      "packages/phase-f/resilience/pre-death-seal.ts",
+      "packages/phase-f/resilience/pre-kill-snapshot.ts"
+    ],
+    "current_scope_rule": "REQ-DOC-C-SCOPE-002 keeps self-patch/auto-heal runtime outside current vNEXT scope unless explicitly extended.",
+    "future_source_rules": [
+      "REQ-CONST-013 deterministic resurrection verifies host/snapshot/state/build hashes before replay/restart.",
+      "REQ-CONST-014 future auto-recovery freezes/state-locks, releases resources, records recovery marker, then restarts only after checks/cooldown."
+    ]
+  },
+  "observations": [
+    "Current-build global state hydration reads durable OrchestrationEnvelope state and fails closed to FREEZE on hydration/parsing failure.",
+    "OWNER recovery does not auto-grant access; it records MANUAL_REVIEW_REQUIRED with incident/audit evidence and revokes active sessions in a SERIALIZABLE transaction.",
+    "Artifact restore is authorization/idempotency/lineage/storage-state gated in a SERIALIZABLE transaction.",
+    "AutoRecoveryController keeps attempts/history in memory and directly invokes playbook remediation, but its mapped authoritative requirements are FUTURE_ARCHITECTURE; it is not treated as a current-build obligation.",
+    "evidence/E23-auto-recovery.md is Status PARTIAL, generated 2026-05-25, embeds an old 630-test run, and is not accepted as exact-target-head evidence."
+  ],
+  "test_status": "TEST_PRESENT_NOT_EXECUTED_CURRENT_HEAD",
+  "evidence_status": "NOT_VERIFIED_CURRENT_HEAD",
+  "findings": [],
+  "denominator_note": "No atomic denominator units are assigned to category G. Recovery semantics are represented inside state/system/requirement units and will be cross-checked again in the full-project second pass; this category checkpoint does not change denominator total or audited count.",
+  "next_category": "E_QUEUE_WORKER_JOB",
+  "status": "CROSS_CUT_CATEGORY_REVIEWED"
+}
