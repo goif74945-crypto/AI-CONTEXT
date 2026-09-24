@@ -1,0 +1,10 @@
+{
+  "failure_id": "FAIL-NEXY-FULL-I-STALE-EVIDENCE-20260924",
+  "context": "Full-project category I audit at exact target 84484d...",
+  "cause": "Current evidence campaign revision db52f9f... differs from audit target.",
+  "failed_approach": "Treating existing docs/evidence/current artifacts as current simply because they are present in the target tree.",
+  "recovery": "Keep evidence NOT_VERIFIED_CURRENT_HEAD; refresh E1-E12 only from exact target execution/signoff evidence.",
+  "boundary": "No NEXY implementation mutation; no Builder command before full audit gate.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
