@@ -1,6 +1,15 @@
 {
   "queue_id": "NEXY-CLOSED-LOOP-01-LIVE-QUEUE",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "ordering_policy": "PRIORITY_THEN_ENQUEUE_SEQUENCE_THEN_COMMAND_ID",
-  "entries": []
+  "entries": [
+    {
+      "command_id": "CMD-NEXY-SEC-OTAC-LOG-001",
+      "priority": "CRITICAL",
+      "enqueue_sequence": 0,
+      "dependency_ids": [],
+      "queue_state": "READY",
+      "blocked_reasons": []
+    }
+  ]
 }
