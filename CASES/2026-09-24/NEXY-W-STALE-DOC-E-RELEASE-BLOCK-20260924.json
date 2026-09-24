@@ -1,0 +1,12 @@
+{
+  "case_id": "CASE-NEXY-W-STALE-DOC-E-RELEASE-BLOCK-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "finding_ids": [
+    "F-NEXY-FULL-W-STALE-DOC-E-001",
+    "F-NEXY-FULL-W-RELEASE-BLOCKED-002"
+  ],
+  "cause": "Release evidence and gates are bound to older revisions and blocked environments/external prerequisites.",
+  "impact": "Target HEAD is not deployable/prod-ready.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
