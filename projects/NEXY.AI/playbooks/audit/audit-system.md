@@ -1,34 +1,36 @@
-# NEXY Auditor Playbook
+# NEXY Audit Playbook Contract
 
-## Universal audit law
-1. Pin exact repository/branch/HEAD and observed environment.
-2. Resolve source authority and scope before reading code.
-3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
-4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
-5. File existence, docs, mocks, build success, or comments are never runtime proof.
-6. Search failure history and known conflicts before declaring a new root cause.
-7. Preserve evidence even when verdict is FAIL.
+Audit rules:
+- refresh exact repository/branch/HEAD before current-state claims;
+- source existence ≠ implementation;
+- implementation presence ≠ compliance;
+- test file presence ≠ execution;
+- test execution ≠ deployment proof;
+- deployment proof is revision/environment/claim specific;
+- future scope absence is not current DOC-C FAIL;
+- CANDIDATE code mappings must be opened before use;
+- unresolved authority/conflict may block verdict;
+- allowed verdicts: PASS / FAIL / PARTIAL / BLOCKED / NOT_TESTED / NOT_VERIFIED / SCOPE / CONFLICT.
 
-# Workflow: Audit System
+# Audit System
 
-## Sequence
-1. Resolve system + descendants from Ontology.
-2. Resolve all requirements, dependencies, contracts, FSMs and invariants.
-3. Resolve implementation refs; inspect EXACT/GROUP/CANDIDATE targets.
-4. Build requirement ledger: requirement → code → test → evidence.
-5. Classify each requirement independently.
-6. Attack negative/failure paths.
-7. Check cross-system effects and forbidden dependency edges.
-8. Re-audit after fixes from clean source state.
+## INPUT
+Target ontology entity/system ID.
 
-## Mandatory findings
-- missing implementation;
-- semantic mismatch;
-- stale/absent evidence;
-- scope error;
-- authority inversion;
-- hidden fallback;
-- untested critical path.
+## SEQUENCE
+1. resolve authority/scope;
+2. load requirements;
+3. load implementation map and read mapped code;
+4. load dependencies/dependents;
+5. load contracts/FSM/invariants;
+6. load test/evidence traceability;
+7. load failure history;
+8. compare expected vs observed behavior;
+9. classify each requirement independently;
+10. aggregate without hiding unknowns.
 
-## DONE
-No aggregate PASS without every mandatory requirement having adequate evidence.
+## ATTACKS
+missing path, stub-only code, hidden fallback, stale evidence, forbidden dependency, unhandled failure, UI masking, out-of-scope promotion.
+
+## OUTPUT
+Requirement-level ledger + system verdict with explicit proof class and limitations.
