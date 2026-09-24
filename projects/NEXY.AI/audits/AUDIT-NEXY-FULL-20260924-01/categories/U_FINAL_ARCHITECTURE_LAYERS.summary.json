@@ -1,0 +1,19 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "U_FINAL_ARCHITECTURE_LAYERS",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 18,
+  "audited_units": 18,
+  "counts": {
+    "PARTIAL": 18
+  },
+  "finding_ids": [
+    "F-NEXY-FULL-U-SEMANTIC-CONTRACT-001",
+    "F-NEXY-FULL-U-CURRENT-HEAD-EVIDENCE-002",
+    "F-NEXY-FULL-U-MAPPING-003"
+  ],
+  "verdict": "PARTIAL",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "next_category": "V_CROSS_SYSTEM_INTEGRATION",
+  "hash": "HASH_UNAVAILABLE"
+}
