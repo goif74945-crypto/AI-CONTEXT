@@ -87,7 +87,13 @@
     },
     "context_router": {
       "task_types": 14
-    }
+    },
+    "project_intelligence_graph": {
+      "nodes": 1315,
+      "edges": 8650,
+      "status": "STRUCTURAL_PASS"
+    },
+    "core_sequence_status": "15/15 COMPLETE"
   },
   "dynamic_truth": {
     "deployment_status": "NON_DEPLOYABLE / NOT_PROVEN_FOR_CURRENT_HEAD",
@@ -142,9 +148,9 @@
     }
   ],
   "next_project_intelligence_nodes": [
-    "STEP-14 Semantic Diff + Change Impact",
-    "STEP-15 Project Intelligence Graph",
-    "then optional expansion: Acceptance/Test Matrix execution verdicts, Evidence Registry deep validation, Skills/Capabilities, ADR/Alias/Environment/Migration/Performance/Cost/Concurrency/Threat/Fuzz/Release/Health registries"
+    "Remaining P1/P2 registries: Skills, Capability/Tool, ADR, Glossary/Alias, Environment, Migration, Performance, Cost, Concurrency, Threat, Fuzz/Chaos, Known-Good, Regression, Release Gates, Definition-of-Done, AI Self-Check",
+    "Machine-readable compiled canon/build/audit/runtime packs",
+    "Current-head executable Test/Evidence refresh when runtime environment is available"
   ],
   "stale_when": "implementation branch HEAD changes or source document revision changes"
 }
