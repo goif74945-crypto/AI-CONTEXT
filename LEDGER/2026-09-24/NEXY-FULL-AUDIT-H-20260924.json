@@ -1,0 +1,30 @@
+{
+  "ledger_id": "LEDGER-NEXY-FULL-AUDIT-H-20260924",
+  "source": [
+    "NEXY-IGNIS source",
+    "AI-CONTEXT security/requirements registries",
+    "NEXY.AI- target HEAD 84484d..."
+  ],
+  "claim": [
+    "H category 55 units have terminal audit states.",
+    "S5 plaintext OTAC/email stderr exposure is proven.",
+    "No current-head successful security test run is established."
+  ],
+  "proof": [
+    "categories/H_SECURITY_AUTH_PERMISSION_TENANT.units.jsonl",
+    "categories/H_SECURITY_AUTH_PERMISSION_TENANT.summary.json",
+    "findings.jsonl#F-NEXY-FULL-H-OTAC-LOG-001"
+  ],
+  "deps": [
+    "AUDIT-NEXY-FULL-20260924-01 denominator"
+  ],
+  "risk": [
+    "secret exposure",
+    "stale evidence"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "TARGET_HEAD_PINNED",
+  "trace": "AUDIT-NEXY-FULL-20260924-01/H",
+  "hash": "HASH_UNAVAILABLE"
+}
