@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "pass_id": "SECOND-PASS-N-INCIDENT-CONSISTENCY-001",
+  "status": "RECORDED",
+  "target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "84484d8108fe1dee186450c0d36c26d360b2596e"
+  },
+  "source": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "paragraphs": [
+      "7519-7527",
+      "8006-8016",
+      "8952-8956"
+    ]
+  },
+  "dimensions": [
+    "failure priority",
+    "incident linking",
+    "canonical error contract",
+    "persistence semantics",
+    "negative-test coverage"
+  ],
+  "observed": [
+    "Canonical wire ErrorCode surface remains exact at 29 values.",
+    "FreezeIncident persistence paths upsert and overwrite primaryErrorCode on the same pipelineRunId.",
+    "FreezeIncident storage/schema has no secondary_error_codes representation or equivalent FreezeIncident secondary-link structure.",
+    "Incident schemas and persistence arguments accept generic strings for primary error codes rather than ErrorCodeSchema.",
+    "Existing incident-linkage tests do not exercise competing failures or noncanonical incident error-code rejection."
+  ],
+  "findings": [
+    "F-NEXY-REAUDIT-N-INCIDENT-PRIORITY-001",
+    "F-NEXY-REAUDIT-N-INCIDENT-ERRORCODE-002"
+  ],
+  "verdict": "FAIL",
+  "severity_max": "S4",
+  "command_generation_allowed": false,
+  "reason": "Full-project gate is still in second-pass/matrix/reconciliation phase; normal Builder commands remain closed.",
+  "next_proof_required": [
+    "Reconcile both findings into the global finding dependency graph.",
+    "Add them to Master System / Requirement matrices where affected.",
+    "Generate remediation command only after the Full Audit command-generation gate is satisfied."
+  ],
+  "mutation": {
+    "nexy_implementation": "NONE",
+    "ai_context": "AUDIT_RECORDS_ONLY"
+  },
+  "timestamp_source": "session date 2026-09-24; target Git commit timestamp"
+}
