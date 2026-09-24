@@ -1,0 +1,27 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "E_QUEUE_WORKER_JOB",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 12,
+  "counts": {
+    "PARTIAL": 10,
+    "FAIL": 2
+  },
+  "source_proof": [
+    "DOC-C queue payload/lifecycle/retry obligations",
+    "REQ-DOC-C-QUEUE-001/002/004"
+  ],
+  "implementation_proof": [
+    "packages/queue/{payload,jobs,workers,dispatch,states,run-state}.ts",
+    "Redis AOF startup gate",
+    "PostgreSQL DirectiveDispatch reconciliation"
+  ],
+  "test_proof": [
+    "queue-payload and queue-boundary tests present; no successful exact-target-head execution established"
+  ],
+  "findings": [
+    "F-NEXY-FULL-E-RETRY-CLASSIFICATION-001"
+  ],
+  "next_category": "D_RUNTIME_EXECUTION",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
