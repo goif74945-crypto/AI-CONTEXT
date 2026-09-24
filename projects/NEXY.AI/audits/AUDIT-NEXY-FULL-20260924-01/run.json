@@ -149,7 +149,7 @@
   ],
   "checkpoint": {
     "phase_completed": "FULL_AUDIT_AND_FIRST_COMMAND_PUBLICATION",
-    "read_back_verified": false,
+    "read_back_verified": true,
     "atomic_coverage_complete": true,
     "second_pass_complete": true,
     "master_matrix_complete": true,
@@ -166,5 +166,8 @@
     "first_command": "CMD-NEXY-SEC-OTAC-LOG-001",
     "queue_state": "READY",
     "builder_claim": "NONE_OBSERVED"
-  }
+  },
+  "final_summary": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/final-summary.json",
+  "category_summary": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/category-summary.json",
+  "ai_context_write_readback": "VERIFIED"
 }
