@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-NEXY-U-FINAL-LAYER-SEMANTIC-GAPS-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "finding_ids": [
+    "F-NEXY-FULL-U-SEMANTIC-CONTRACT-001",
+    "F-NEXY-FULL-U-CURRENT-HEAD-EVIDENCE-002",
+    "F-NEXY-FULL-U-MAPPING-003"
+  ],
+  "cause": "Final architecture has partial/static implementations with source-contract mismatches and no exact-head successful execution evidence.",
+  "impact": "U category cannot be VERIFIED.",
+  "fix_class": "VERIFY/REPAIR/TEST after full audit gate",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
