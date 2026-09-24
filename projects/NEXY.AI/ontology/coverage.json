@@ -1,13 +1,13 @@
 {
-  "schema_version": "1.0.1",
+  "schema_version": "1.0.2",
   "source_revision": {
     "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
     "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "parsed_nonempty_paragraphs": 10979
   },
-  "registry_status": "ATOMIC_ONTOLOGY_V1_COMPLETE_FOR_MAJOR_SOURCE_DOMAINS",
-  "entity_count": 516,
-  "relationship_count": 863,
+  "registry_status": "ATOMIC_ONTOLOGY_V1_COMPLETE_FOR_MAJOR_SOURCE_DOMAINS_WITH_EVENT_OMISSION_PATCH",
+  "entity_count": 518,
+  "relationship_count": 865,
   "alias_count": 86,
   "requires_graph_acyclic": true,
   "parent_graph_acyclic": true,
@@ -27,7 +27,7 @@
     "ORCHESTRATOR": 1,
     "FILTER": 4,
     "ERROR": 30,
-    "EVENT": 9,
+    "EVENT": 11,
     "EVIDENCE_CLASS": 12,
     "FABRIC": 5,
     "FSM": 8,
@@ -58,14 +58,14 @@
     "ZONE": 9
   },
   "by_status": {
-    "CURRENT_BUILD": 105,
+    "CURRENT_BUILD": 107,
     "CONFLICT": 1,
     "SOURCE_DESIGN": 334,
     "CURRENT_CANON": 70,
     "HISTORICAL": 6
   },
   "by_scope": {
-    "DOC_C_CURRENT_BUILD": 113,
+    "DOC_C_CURRENT_BUILD": 115,
     "HISTORICAL": 6,
     "FUTURE_ARCHITECTURE": 207,
     "DOC_D_PRODUCT_DESIGN": 66,
@@ -74,7 +74,7 @@
     "DOC_E_DEPLOYMENT_EVIDENCE": 12
   },
   "by_relationship_type": {
-    "PART_OF": 515,
+    "PART_OF": 517,
     "REQUIRES": 278,
     "SECURES": 4,
     "PERSISTS_TO": 4,
@@ -95,7 +95,7 @@
     {
       "id": "01",
       "domain": "Core/Human/DOC-C/DOC-D/DOC-E",
-      "entity_count": 118
+      "entity_count": 120
     },
     {
       "id": "02",
@@ -117,6 +117,6 @@
     "Registry is source-derived architecture ontology, not proof of implementation/runtime/deployment.",
     "implementation_refs/test_refs/evidence_refs intentionally remain unpopulated until the dedicated Implementation Map/Test Matrix/Evidence Registry steps.",
     "Source prose contains evolving eras; HISTORICAL and CONFLICT records are preserved instead of erased.",
-    "516 is the atomic count under ontology v1 rules for captured objects, not a permanent universal NEXY object count."
+    "518 is the atomic count under ontology v1 rules after the cancel/timeout event omission patch; future source revisions may change it."
   ]
 }
