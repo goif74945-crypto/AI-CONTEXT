@@ -1,0 +1,13 @@
+{
+  "case_id": "CASE-NEXY-Z-MAPPING-EVIDENCE-GAPS-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "finding_ids": [
+    "F-NEXY-FULL-Z-MAPPING-001",
+    "F-NEXY-FULL-Z-CURRENT-HEAD-PROOF-002",
+    "F-NEXY-FULL-Z-DOC-E-SYSTEM-EVIDENCE-003"
+  ],
+  "cause": "Residual source-derived units have mixed unmapped/candidate/group traces and stale system-level deployment evidence.",
+  "impact": "Z category not verified.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
