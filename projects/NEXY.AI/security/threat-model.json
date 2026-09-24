@@ -2,218 +2,178 @@
   "schema_version": "1.0.0",
   "threats": [
     {
-      "threat_id": "THR-001",
-      "name": "Prompt/instruction injection",
-      "vector": "External/user/model content attempts to become authority",
-      "targets": [
-        "UI",
-        "API",
-        "SWARM"
-      ],
+      "id": "THREAT-PROMPT-INJECTION",
+      "scope": "CURRENT_ARCHITECTURE",
+      "boundary": "TB-SWARM-EXTERNAL",
+      "asset": "LAW/Core authority",
+      "vector": "external model/prompt output attempts instruction or context override",
       "controls": [
-        "Sanitize/isolate/reframe",
-        "authority hierarchy",
-        "LAW gate"
+        "SECURITY-CAGE",
+        "FILTER-PROMPT-LAW",
+        "context isolation",
+        "no external final authority"
       ],
-      "response": "Reject candidate/instruction; incident if security relevant",
-      "status": "THREAT_MODEL"
+      "failure": "reject/freeze",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-002",
-      "name": "Correlated model hallucination/collusion",
-      "vector": "Multiple workers converge on same wrong answer",
-      "targets": [
-        "Lo3"
-      ],
+      "id": "THREAT-SECRET-EXPOSURE",
+      "scope": "CURRENT",
+      "boundary": "TB-UI-API",
+      "asset": "provider/session secrets",
+      "vector": "secret embedded in client/source/log",
       "controls": [
-        "Context sharding",
-        "cognitive diversity",
-        "adversarial mutation",
-        "weighted proof"
+        "server-side runtime injection",
+        "secret scanning",
+        "HttpOnly session cookie"
       ],
-      "response": "Reject/freeze if unresolved",
-      "status": "THREAT_MODEL"
+      "failure": "security blocker/incident",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-003",
-      "name": "OTAC brute force/replay",
-      "vector": "Guess or reuse one-time code",
-      "targets": [
-        "AUTH"
-      ],
+      "id": "THREAT-SESSION-REPLAY",
+      "scope": "CURRENT",
+      "boundary": "TB-API-AUTH",
+      "asset": "session authority",
+      "vector": "revoked/expired/stolen session reused",
       "controls": [
-        "attempt cap, TTL, cooldown, lock, consumed flag, hashed storage"
+        "revocation",
+        "TTL",
+        "device/session checks",
+        "Secure/HttpOnly/SameSite=Strict"
       ],
-      "response": "AUTH_INVALID/OTAC_LOCKED + SecurityIncident",
-      "status": "THREAT_MODEL"
+      "failure": "deny + audit/incident as applicable",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-004",
-      "name": "Session theft/reuse/device mismatch",
-      "vector": "Use revoked/mismatched session",
-      "targets": [
-        "AUTH",
-        "API"
-      ],
+      "id": "THREAT-OTAC-REPLAY-BRUTEFORCE",
+      "scope": "CURRENT",
+      "boundary": "TB-API-AUTH",
+      "asset": "authentication",
+      "vector": "reused code/excess attempts/resend abuse",
       "controls": [
-        "secure HttpOnly cookie, rotation, device binding, revoke paths"
+        "single-use",
+        "hash storage",
+        "5 attempts",
+        "60s cooldown",
+        "15min lock",
+        "5min TTL"
       ],
-      "response": "SESSION_REVOKED/DEVICE_MISMATCH",
-      "status": "THREAT_MODEL"
+      "failure": "deny/lock/audit",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-005",
-      "name": "CSRF",
-      "vector": "Cross-origin mutation without token",
-      "targets": [
-        "API",
-        "AUTH"
-      ],
+      "id": "THREAT-CSRF",
+      "scope": "CURRENT",
+      "boundary": "TB-UI-API",
+      "asset": "mutating API",
+      "vector": "cross-site forged mutation",
       "controls": [
-        "SameSite=Strict + CSRF token for mutations"
+        "CSRF required for mutating routes except explicit auth exemptions"
       ],
-      "response": "CSRF_INVALID",
-      "status": "THREAT_MODEL"
+      "failure": "CSRF_INVALID",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-006",
-      "name": "Duplicate/replayed mutation",
-      "vector": "Same directive/commit executes twice",
-      "targets": [
-        "API",
-        "QUEUE",
-        "VAULT"
-      ],
+      "id": "THREAT-IDEMPOTENCY-REPLAY",
+      "scope": "CURRENT",
+      "boundary": "TB-CORE-QUEUE",
+      "asset": "mutation/exactly-once semantics",
+      "vector": "same mutation delivered repeatedly",
       "controls": [
-        "idempotency keys + DB uniqueness + consumer checks"
+        "idempotency key",
+        "jobId dedup",
+        "commit uniqueness"
       ],
-      "response": "Suppress/reuse legal result or conflict",
-      "status": "THREAT_MODEL"
+      "failure": "deduplicate/conflict",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-007",
-      "name": "Sandbox/tenant escape",
-      "vector": "Universe/worker crosses isolation boundary",
-      "targets": [
-        "Universe",
-        "Sandbox"
-      ],
+      "id": "THREAT-AUDIT-TAMPER",
+      "scope": "CURRENT",
+      "boundary": "TB-SYSTEM-OBS",
+      "asset": "audit truth",
+      "vector": "update/delete/reorder/forge audit rows",
       "controls": [
-        "microVM/container/gVisor/capability limits/quarantine"
+        "append-only DB enforcement",
+        "hash chain",
+        "previousEntryId",
+        "monotonic event sequence"
       ],
-      "response": "Kill/quarantine; escalate only if Core integrity affected",
-      "status": "THREAT_MODEL"
+      "failure": "detect/incident/freeze as required",
+      "status": "SOURCE_AND_IMPLEMENTATION"
     },
     {
-      "threat_id": "THR-008",
-      "name": "Secret exposure",
-      "vector": "Provider/API keys leak to frontend/log/context",
-      "targets": [
-        "API",
-        "Security"
-      ],
+      "id": "THREAT-UI-FAKE-SUCCESS",
+      "scope": "CURRENT",
+      "boundary": "TB-UI-AUTHORITY",
+      "asset": "user-visible truth",
+      "vector": "optimistic UI masks FREEZE/error/pending state",
       "controls": [
-        "server-side secret injection, secret scanning, minimum context"
+        "backend-confirmed UI state",
+        "Freeze banner",
+        "no UI authority"
       ],
-      "response": "Contain/revoke as needed; never persist secret",
-      "status": "THREAT_MODEL"
+      "failure": "product/system-law violation",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-009",
-      "name": "Supply-chain drift",
-      "vector": "Compiler/container/dependency differs from sealed build",
-      "targets": [
-        "Build",
-        "Deploy"
-      ],
+      "id": "THREAT-SANDBOX-ESCAPE",
+      "scope": "FUTURE",
+      "boundary": "TB-UNIVERSE-CORE",
+      "asset": "Core/Vault/host",
+      "vector": "Universe escapes sandbox or escalates capability/resources",
       "controls": [
-        "pinned toolchain/digest/build hash/reproducibility"
+        "Firecracker/Kata/runc/gVisor/WASM tiers",
+        "escape detector",
+        "host guardian",
+        "capability subset law"
       ],
-      "response": "Reject/freeze affected node",
-      "status": "THREAT_MODEL"
+      "failure": "kill/quarantine/freeze",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-010",
-      "name": "Evidence forgery/staleness",
-      "vector": "Old or non-executed proof treated as current PASS",
-      "targets": [
-        "DOC-E",
-        "Release"
-      ],
+      "id": "THREAT-SPEC-BUILD-DRIFT",
+      "scope": "FUTURE",
+      "boundary": "BUILD/DEPLOY",
+      "asset": "deterministic identity",
+      "vector": "compiler/environment/spec/build differs from sealed identity",
       "controls": [
-        "exact commit/environment binding + freshness validation"
+        "SpecHash",
+        "pinned toolchain/environment",
+        "implementation verification law"
       ],
-      "response": "BLOCKED/NOT_VERIFIED",
-      "status": "THREAT_MODEL"
+      "failure": "reject/freeze affected node",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-011",
-      "name": "Authority inversion",
-      "vector": "Lower-authority prose/UI/worker overrides Canon/DOC-C",
-      "targets": [
-        "Whole system"
-      ],
+      "id": "THREAT-CROSS-SHARD-DUPLICATION",
+      "scope": "FUTURE",
+      "boundary": "GAME_SHARDS",
+      "asset": "entity/economic state",
+      "vector": "entity/value becomes authoritative in multiple shards",
       "controls": [
-        "authority/supersession graph + immutable boundaries"
+        "EXPORT→COMMIT→IMPORT",
+        "root/hash/signature validation",
+        "economic state binding"
       ],
-      "response": "Reject change; conflict/freeze",
-      "status": "THREAT_MODEL"
+      "failure": "rollback/replay/freeze",
+      "status": "SOURCE_DEFINED"
     },
     {
-      "threat_id": "THR-012",
-      "name": "UI truth masking",
-      "vector": "UI shows READY/success while backend unknown/frozen",
-      "targets": [
-        "UI"
-      ],
+      "id": "THREAT-PHYSICAL-UNSAFE-COMMAND",
+      "scope": "FUTURE",
+      "boundary": "TB-ROBOT-SAFETY",
+      "asset": "physical safety",
+      "vector": "AI command violates force/collision/boundary/deadline constraints",
       "controls": [
-        "canonical SystemEnvelope state",
-        "fail-closed UI",
-        "sticky freeze"
+        "independent Safety Kernel",
+        "Safety MCU",
+        "watchdog/E-stop",
+        "bounded fallback"
       ],
-      "response": "Disable action/show UNKNOWN/FREEZE",
-      "status": "THREAT_MODEL"
-    },
-    {
-      "threat_id": "THR-013",
-      "name": "Audit/incident orphaning",
-      "vector": "Failure cannot be traced to incident/log lineage",
-      "targets": [
-        "OBS"
-      ],
-      "controls": [
-        "request_id/trace_id + incident linkage + append-only logs"
-      ],
-      "response": "Treat observability integrity as failure",
-      "status": "THREAT_MODEL"
-    },
-    {
-      "threat_id": "THR-014",
-      "name": "Migration corruption",
-      "vector": "Schema migration/rollback changes state incompatibly",
-      "targets": [
-        "Persistence"
-      ],
-      "controls": [
-        "real DB roundtrip + schema diff + rollback evidence"
-      ],
-      "response": "Block release/rollback under controlled path",
-      "status": "THREAT_MODEL"
-    },
-    {
-      "threat_id": "THR-015",
-      "name": "Resource exhaustion",
-      "vector": "Queue/Universe/model workload exhausts host",
-      "targets": [
-        "Queue",
-        "Universe",
-        "HSP"
-      ],
-      "controls": [
-        "hard limits, concurrency caps, host guardian, local containment"
-      ],
-      "response": "expire/kill/quarantine; preserve Core",
-      "status": "THREAT_MODEL"
+      "failure": "override/STOP/safe fallback",
+      "status": "SOURCE_DEFINED"
     }
   ]
 }
