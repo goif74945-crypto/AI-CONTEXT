@@ -1,0 +1,20 @@
+{
+  "ledger_id": "LEDGER-NEXY-CLOSED-LOOP-OPERATING-DIRECTIVE-20260924",
+  "pair_id": "NEXY-CLOSED-LOOP-01",
+  "source": "CURRENT_USER_DIRECTIVE",
+  "claim": "Auditor/Builder closed-loop execution cadence and silent-operation rule are authoritative for this project flow.",
+  "proof": [
+    "TASKS/2026-09-24/NEXY-CLOSED-LOOP-OPERATING-DIRECTIVE-20260924.md"
+  ],
+  "deps": [
+    "durable shared Git/control-plane state for CROSS coordination"
+  ],
+  "risk": [
+    "cross-chat state cannot be assumed without durable handoff/state"
+  ],
+  "status": "ACTIVE",
+  "confidence": 1,
+  "freshness": "CURRENT",
+  "trace": "USER-DIRECTIVE-20260924",
+  "hash": "HASH_UNAVAILABLE"
+}
