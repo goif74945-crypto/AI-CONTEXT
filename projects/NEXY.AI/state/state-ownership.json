@@ -1,238 +1,216 @@
 {
   "schema_version": "1.0.0",
-  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
   "states": [
     {
       "state": "PipelineRun",
-      "authoritative_owner": "CORE",
-      "writers": [
-        "packages/queue/run-state.ts",
-        "pipeline/orchestration paths"
+      "authority_owner": "KERNEL-CORE",
+      "writer": [
+        "API/CORE/QUEUE worker through Prisma transaction"
       ],
       "readers": [
-        "CORE",
         "API",
-        "OBS by correlation"
+        "OBS correlation"
       ],
-      "store": "PostgreSQL:pipeline_runs",
-      "lifetime": "per execution run",
-      "version": "schema-bound",
-      "recovery": "freeze incident/replay path as applicable",
-      "audit": "requestId/traceId + EventLog/AuditLog correlation",
-      "mutability": "mutable lifecycle fields under controlled transactions"
+      "store": "PostgreSQL pipeline_runs",
+      "lifetime": "per run durable",
+      "version": "schema migration-bound",
+      "recovery": "incident/replay/reconciliation",
+      "audit": "EventLog/AuditLog correlation",
+      "mutability": "state/output fields mutable only through legal lifecycle"
     },
     {
       "state": "DirectiveRecord",
-      "authoritative_owner": "CORE",
-      "writers": [
-        "directive API/ingestion"
+      "authority_owner": "KERNEL-CORE",
+      "writer": [
+        "directive create path"
       ],
       "readers": [
-        "CORE",
+        "queue worker",
         "API"
       ],
-      "store": "PostgreSQL:directive_records_v2",
-      "lifetime": "persistent",
-      "version": "schemaVersion + createdTick",
-      "recovery": "idempotency/linked PipelineRun",
-      "audit": "requestId/traceId via run/events",
-      "mutability": "created record; idempotency key unique"
-    },
-    {
-      "state": "FreezeIncident",
-      "authoritative_owner": "VAULT/INCIDENT",
-      "writers": [
-        "packages/queue/run-state.ts",
-        "packages/obs/incidents.ts",
-        "daemon/freeze path"
-      ],
-      "readers": [
-        "API/OBS/OWNER"
-      ],
-      "store": "PostgreSQL:freeze_incidents",
-      "lifetime": "retention policy",
-      "version": "createdTick",
-      "recovery": "recover only if recoverable + authorized actor",
-      "audit": "requestId/traceId/primary error/blocking layer",
-      "mutability": "incident evidence; source design treats as persistent evidence"
-    },
-    {
-      "state": "SecurityIncident",
-      "authoritative_owner": "OBS/SECURITY",
-      "writers": [
-        "packages/obs/incidents.ts",
-        "AUTH/security paths"
-      ],
-      "readers": [
-        "OBS/AUDIT/OWNER"
-      ],
-      "store": "PostgreSQL:security_incidents",
-      "lifetime": "365 days current default",
-      "version": "createdTick",
-      "recovery": "primary/secondary incident linkage",
-      "audit": "self-referential primaryIncidentId",
-      "mutability": "persistent incident record"
-    },
-    {
-      "state": "EventLog",
-      "authoritative_owner": "OBS",
-      "writers": [
-        "authorized subsystem emitters via insert"
-      ],
-      "readers": [
-        "OBS/AUDIT/JUDGE by allowed evidence path"
-      ],
-      "store": "PostgreSQL:event_log",
-      "lifetime": "90 days current default",
-      "version": "monotonic sequenceNum",
-      "recovery": "sequence gap is alert/data-loss signal",
-      "audit": "requestId/traceId",
-      "mutability": "APPEND_ONLY; no update/delete"
-    },
-    {
-      "state": "AuditLog",
-      "authoritative_owner": "OBS",
-      "writers": [
-        "authorized security/accountability paths via insert"
-      ],
-      "readers": [
-        "AUDITOR/OWNER/SYSTEM/JUDGE via OBS"
-      ],
-      "store": "PostgreSQL:audit_log",
-      "lifetime": "365 days current default",
-      "version": "chainHash + previousEntryId",
-      "recovery": "tamper requires incident; history not rewritten",
-      "audit": "itself is tamper-evident audit chain",
-      "mutability": "APPEND_ONLY; no update/delete"
+      "store": "PostgreSQL canonical directive relation",
+      "lifetime": "durable",
+      "version": "schema_version metadata",
+      "recovery": "reload durable boundary",
+      "audit": "request/trace correlation",
+      "mutability": "controlled"
     },
     {
       "state": "Project",
-      "authoritative_owner": "VAULT",
-      "writers": [
-        "Vault commit/project service"
-      ],
-      "readers": [
-        "authorized Vault/API"
-      ],
-      "store": "PostgreSQL:projects",
-      "lifetime": "persistent/soft-delete",
-      "version": "createdTick/deletedTick",
-      "recovery": "restore if lineage valid",
-      "audit": "Vault audit path",
-      "mutability": "soft-delete allowed"
-    },
-    {
-      "state": "Artifact",
-      "authoritative_owner": "VAULT",
-      "writers": [
+      "authority_owner": "STORAGE-VAULT",
+      "writer": [
         "Vault"
       ],
       "readers": [
-        "authorized Vault/API"
+        "Vault/API/UI"
       ],
-      "store": "PostgreSQL:artifacts",
-      "lifetime": "persistent/soft-delete",
-      "version": "createdTick/deletedTick",
-      "recovery": "restore if project/lineage/blob valid",
-      "audit": "Vault audit path",
-      "mutability": "soft-delete allowed"
+      "store": "PostgreSQL projects",
+      "lifetime": "durable",
+      "version": "canon/version through descendants",
+      "recovery": "soft-delete restore",
+      "audit": "AuditLog",
+      "mutability": "soft-delete only for lifecycle fields"
+    },
+    {
+      "state": "Artifact",
+      "authority_owner": "STORAGE-VAULT",
+      "writer": [
+        "Vault"
+      ],
+      "readers": [
+        "Vault/API/UI"
+      ],
+      "store": "PostgreSQL artifacts",
+      "lifetime": "durable",
+      "version": "revision lineage",
+      "recovery": "soft-delete restore with parent/lineage checks",
+      "audit": "AuditLog",
+      "mutability": "soft-delete + metadata under policy"
     },
     {
       "state": "Revision",
-      "authoritative_owner": "VAULT",
-      "writers": [
-        "Vault commit path"
+      "authority_owner": "STORAGE-VAULT",
+      "writer": [
+        "Vault"
       ],
       "readers": [
-        "authorized Vault/API"
+        "Vault/API/UI"
       ],
-      "store": "PostgreSQL:revisions",
-      "lifetime": "persistent",
-      "version": "revisionNo + canonVersion",
+      "store": "PostgreSQL revisions",
+      "lifetime": "durable immutable",
+      "version": "monotonic revisionNo + canonVersion",
       "recovery": "append new revision, never overwrite",
-      "audit": "commit lineage",
-      "mutability": "IMMUTABLE once created"
+      "audit": "AuditLog",
+      "mutability": "IMMUTABLE"
     },
     {
       "state": "Commit",
-      "authoritative_owner": "VAULT",
-      "writers": [
-        "Vault commit path"
+      "authority_owner": "STORAGE-VAULT",
+      "writer": [
+        "Vault commit transaction"
       ],
       "readers": [
-        "authorized Vault/API"
+        "Vault/API"
       ],
-      "store": "PostgreSQL:commits + blobRef object storage",
-      "lifetime": "persistent",
-      "version": "canonVersion + previousVersion",
-      "recovery": "OCC/idempotency prevents duplicate/stale overwrite",
-      "audit": "authorId/message/contentHash",
-      "mutability": "IMMUTABLE once created"
+      "store": "PostgreSQL commits + blobRef",
+      "lifetime": "durable immutable",
+      "version": "canonVersion/previousVersion",
+      "recovery": "new legal commit/revision",
+      "audit": "AuditLog",
+      "mutability": "IMMUTABLE; idempotencyKey unique"
     },
     {
-      "state": "User",
-      "authoritative_owner": "AUTH",
-      "writers": [
-        "AUTH/account authority"
+      "state": "EventLog",
+      "authority_owner": "MODULE-OBS",
+      "writer": [
+        "system subsystems"
       ],
       "readers": [
-        "AUTH/RBAC"
+        "OBS/JUDGE/audit tools"
       ],
-      "store": "PostgreSQL:users",
-      "lifetime": "persistent/deactivation",
-      "version": "createdTick/deactivatedTick",
-      "recovery": "governed account/role path",
-      "audit": "auth events/audit",
-      "mutability": "role/deactivation governed"
+      "store": "PostgreSQL event_log",
+      "lifetime": "retention 90 days current config",
+      "version": "schema-bound",
+      "recovery": "no update/delete; alert on sequence gap",
+      "audit": "self observational evidence",
+      "mutability": "APPEND_ONLY"
+    },
+    {
+      "state": "AuditLog",
+      "authority_owner": "MODULE-OBS",
+      "writer": [
+        "security/accountable operations"
+      ],
+      "readers": [
+        "AUDITOR/OWNER/JUDGE via OBS"
+      ],
+      "store": "PostgreSQL audit_log",
+      "lifetime": "retention 365 days current config",
+      "version": "hash-chain semantics",
+      "recovery": "no rewrite; verify chain",
+      "audit": "cryptographic audit chain",
+      "mutability": "APPEND_ONLY"
+    },
+    {
+      "state": "FreezeIncident",
+      "authority_owner": "LAW/CORE",
+      "writer": [
+        "failure transaction"
+      ],
+      "readers": [
+        "OWNER/AUDITOR/API"
+      ],
+      "store": "PostgreSQL freeze_incidents",
+      "lifetime": "retention 365 days",
+      "version": "schema-bound",
+      "recovery": "authorized recovery linked to cause",
+      "audit": "AuditLog/EventLog",
+      "mutability": "incident record immutable in semantics"
+    },
+    {
+      "state": "SecurityIncident",
+      "authority_owner": "MODULE-AUTH/MODULE-OBS",
+      "writer": [
+        "security incident path"
+      ],
+      "readers": [
+        "OWNER/AUDITOR"
+      ],
+      "store": "PostgreSQL security_incidents",
+      "lifetime": "retention 365 days",
+      "version": "schema-bound",
+      "recovery": "primary/secondary linkage",
+      "audit": "AuditLog",
+      "mutability": "append incident history"
     },
     {
       "state": "Session",
-      "authoritative_owner": "AUTH",
-      "writers": [
-        "packages/auth/session.ts",
-        "packages/api/auth.ts"
+      "authority_owner": "MODULE-AUTH",
+      "writer": [
+        "auth/session service"
       ],
       "readers": [
-        "AUTH/API"
+        "auth middleware/API"
       ],
-      "store": "PostgreSQL:sessions",
-      "lifetime": "6h current default unless revoked",
-      "version": "createdTick/lastSeenTick",
-      "recovery": "new authenticated session; revoked session never reactivates",
-      "audit": "requestId/traceId + auth events",
-      "mutability": "revocation/lastSeen updates allowed"
+      "store": "PostgreSQL sessions",
+      "lifetime": "6h current TTL",
+      "version": "config-bound",
+      "recovery": "re-authenticate; revoked sessions never reactivate",
+      "audit": "auth audit events",
+      "mutability": "revocation/lastSeen controlled"
     },
     {
-      "state": "JudgmentRecord",
-      "authoritative_owner": "JUDGE",
-      "writers": [
-        "JUDGE"
+      "state": "Queue job",
+      "authority_owner": "QUEUE-EXECUTION",
+      "writer": [
+        "BullMQ producer/worker"
       ],
       "readers": [
-        "JUDGE/AUDIT"
+        "worker/reconciler"
       ],
-      "store": "PostgreSQL:judgment_records",
-      "lifetime": "persistent",
-      "version": "createdTick",
-      "recovery": "derive from OBS audit evidence; no CORE/VAULT direct dependency",
-      "audit": "references AuditLog",
-      "mutability": "record-oriented"
+      "store": "Redis/BullMQ with AOF required",
+      "lifetime": "bounded by stale TTL",
+      "version": "DirectiveJobSchema",
+      "recovery": "dedupe/reconcile/new run, no unsafe retry",
+      "audit": "run/event/incident linkage",
+      "mutability": "queue lifecycle"
     },
     {
-      "state": "OrchestrationEnvelope",
-      "authoritative_owner": "ORCH",
-      "writers": [
-        "orchestration/API boundary"
+      "state": "Capability registry (future)",
+      "authority_owner": "REGISTRY-CAPABILITY",
+      "writer": [
+        "governed registry"
       ],
       "readers": [
-        "operators/OBS"
+        "Universe/NCF"
       ],
-      "store": "PostgreSQL:orchestration_envelopes",
-      "lifetime": "persistent evidence/history",
-      "version": "version + createdTick",
-      "recovery": "reconstruct via requestId/traceId/run links",
-      "audit": "requestId/traceId",
-      "mutability": "APPEND_ONLY per schema commentary"
+      "store": "observed in-memory Phase-F implementation",
+      "lifetime": "source expects durable/versioned append-only",
+      "version": "capability version",
+      "recovery": "deprecate/new version",
+      "audit": "future governance evidence",
+      "mutability": "source says append-only; current observed storage is implementation-only and not persistence proof"
     }
   ]
 }
