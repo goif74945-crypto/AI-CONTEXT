@@ -1,0 +1,59 @@
+{
+  "task_id": "TASK-NEXY-AGENT-ADAPTER-CONTRACT-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "work_unit_id": "CMD-NEXY-CONTRACT-AGENT-ADAPTER-001",
+  "finding_id": "F-NEXY-FULL-B-AGENT-ADAPTER-001",
+  "requirement_ids": [
+    "REQ-DOC-C-SWARM-001",
+    "REQ-DOC-C-SWARM-002"
+  ],
+  "start_head": "192af9234ba65ae3011db54389ca43b518d8608e",
+  "end_head": "67e22d9c74173e5641b2d29619d0472b1df99c38",
+  "changed_files": [
+    "packages/swarm/adapters/types.ts",
+    "packages/swarm/adapters/contract.ts",
+    "packages/swarm/adapters/base.ts",
+    "packages/swarm/adapters/openai.ts",
+    "packages/swarm/adapters/anthropic.ts",
+    "packages/swarm/adapters/gemini.ts",
+    "packages/swarm/adapters/index.ts",
+    "packages/swarm/pipeline.ts",
+    "tests/contract/agent-adapter-contract.test.ts",
+    "tests/contract/swarm-timeouts.test.ts"
+  ],
+  "actions": [
+    "Implemented the canonical AgentAdapter metadata/control/health interface.",
+    "Added fail-closed runtime adapter-shape validation.",
+    "Made live OpenAI, Anthropic and Gemini agents use canonical adapters.",
+    "Added execute, cancel and standardized health behavior with latency.",
+    "Preserved existing SwarmAgent compatibility for internal/test agents.",
+    "Added focused contract and timeout regression coverage."
+  ],
+  "validation": {
+    "deployment": "28c82c90-d0bc-4d44-bbbc-03a558fa916b",
+    "exact_head": "67e22d9c74173e5641b2d29619d0472b1df99c38",
+    "focused_agent_adapter": 0,
+    "typecheck": 0,
+    "typecheck_backend": 0,
+    "lint": 0,
+    "contract": 0,
+    "integration": 0,
+    "full": 0,
+    "coverage_generation": 0,
+    "coverage_check": "PRE_EXISTING_FAIL",
+    "doc_c": 0,
+    "web_build": 0,
+    "focused_tests": "agent-adapter-contract 6/6 plus swarm-timeouts passed"
+  },
+  "decisions": [
+    "max_context=8192 is bound to NEXY canonical Directive input admission, not claimed as a provider model context-window specification.",
+    "No latency thresholds were invented because DOC-C requires the health classes and latency field but does not state numeric thresholds.",
+    "Provider HTTP success maps to HEALTHY, transient rate/service-unavailable responses map to DEGRADED, and other probe failures map to UNHEALTHY."
+  ],
+  "final_status": "VERIFIED",
+  "next_actions": [
+    "Proceed to CMD-NEXY-CONTRACT-CONSENSUS-001."
+  ],
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}

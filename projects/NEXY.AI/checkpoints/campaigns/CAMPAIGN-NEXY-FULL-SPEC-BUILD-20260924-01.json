@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
-  "target_head": "192af9234ba65ae3011db54389ca43b518d8608e",
+  "target_head": "67e22d9c74173e5641b2d29619d0472b1df99c38",
   "ai_context_head_before_write": "e9afb3fd41982f8e20c867ede5a0eaaf56693775",
   "total_requirements": 262,
   "current_build_requirements": 80,
@@ -9,10 +9,10 @@
   "future_architecture_requirements": 81,
   "total_systems": 518,
   "full_audit_units": 1468,
-  "completed_work_units": 2,
-  "last_work_unit": "CMD-NEXY-EVIDENCE-E07-001",
+  "completed_work_units": 3,
+  "last_work_unit": "CMD-NEXY-CONTRACT-AGENT-ADAPTER-001",
   "last_work_unit_status": "VERIFIED",
-  "next_work_unit": "CMD-NEXY-CONTRACT-AGENT-ADAPTER-001",
+  "next_work_unit": "CMD-NEXY-CONTRACT-CONSENSUS-001",
   "release_status": "NOT_READY",
   "blockers": [
     "GLOBAL_COVERAGE_THRESHOLD_PREEXISTING"

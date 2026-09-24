@@ -1,0 +1,10 @@
+{
+  "case_id": "CASE-NEXY-AGENT-ADAPTER-CONTRACT-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "finding_id": "F-NEXY-FULL-B-AGENT-ADAPTER-001",
+  "start_head": "192af9234ba65ae3011db54389ca43b518d8608e",
+  "end_head": "67e22d9c74173e5641b2d29619d0472b1df99c38",
+  "validation_deployment": "28c82c90-d0bc-4d44-bbbc-03a558fa916b",
+  "status": "REPAIRED_VERIFIED",
+  "hash": "HASH_UNAVAILABLE"
+}

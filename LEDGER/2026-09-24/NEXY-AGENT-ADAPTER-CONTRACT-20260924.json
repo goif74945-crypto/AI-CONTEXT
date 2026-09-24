@@ -1,0 +1,31 @@
+{
+  "ledger_id": "LEDGER-NEXY-AGENT-ADAPTER-CONTRACT-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "source": [
+    "DOC-C AgentAdapter interface",
+    "REQ-DOC-C-SWARM-001",
+    "REQ-DOC-C-SWARM-002",
+    "exact NEXY implementation"
+  ],
+  "claim": [
+    "Live provider adapters now expose the mandatory stable AgentAdapter metadata and control surface.",
+    "Adapter registration rejects incomplete shapes.",
+    "Health exposes HEALTHY, DEGRADED or UNHEALTHY plus measured latency.",
+    "Focused and broad exact-head regression gates pass; global coverage threshold remains a pre-existing separate gate."
+  ],
+  "proof": [
+    "67e22d9c74173e5641b2d29619d0472b1df99c38",
+    "28c82c90-d0bc-4d44-bbbc-03a558fa916b",
+    "tests/contract/agent-adapter-contract.test.ts 6/6 pass"
+  ],
+  "deps": [
+    "FABRIC-SWARM"
+  ],
+  "risk": [
+    "Global coverage threshold remains below project gate."
+  ],
+  "status": "VERIFIED",
+  "confidence": 1,
+  "freshness": "EXACT_HEAD_PINNED",
+  "hash": "HASH_UNAVAILABLE"
+}
