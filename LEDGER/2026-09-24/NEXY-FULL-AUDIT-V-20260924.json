@@ -1,0 +1,19 @@
+{
+  "ledger_id": "NEXY-FULL-AUDIT-V-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "category": "V_CROSS_SYSTEM_INTEGRATION",
+  "claim": [
+    "139/139 units audited",
+    "34 FUTURE_SCOPE, 102 PARTIAL, 3 NOT_VERIFIED"
+  ],
+  "proof": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/V_CROSS_SYSTEM_INTEGRATION.units.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/V_CROSS_SYSTEM_INTEGRATION.summary.json"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "CURRENT_AT_TARGET_HEAD",
+  "trace": "AUDIT-NEXY-FULL-20260924-01",
+  "hash": "HASH_UNAVAILABLE"
+}
