@@ -1,21 +1,31 @@
 # FSM Registry Validation
 
 ## Result
-**PASS — namespace/source/implementation structural registry**
+**PASS — namespace/structure registry**
 
-- source ontology FSMs: **8**
-- implementation-only observed state models: **1**
-- total registry records: **9**
+FSM/state models: **8**
 
-Checks:
-- FSM namespaces remain separate: PASS
-- source state entities resolve to their owning FSM: PASS
-- current DOC-C Execution FSM includes observed event ownership/transition table: PASS
-- Risk/Intelligence FSM is kept separate from Execution FSM: PASS
-- PipelineRun implementation state model is not promoted into source canon: PASS
-- partial/unknown transition tables are explicitly marked: PASS
+Namespaces are intentionally separated:
+- DOC_C_EXECUTION
+- KERNEL_RISK
+- PIPELINE_RUN
+- QUEUE_JOB
+- CAPABILITY_GOVERNANCE
+- CREATOR_PUBLICATION
+- ANCHOR_PUBLICATION
+- APP_LIFECYCLE
 
-## Review points
-- Capability Registry source FSM includes `QUORUM_SIGNED` and `ACTIVE`; observed `ncf-registry.ts` status union currently omits both and includes `DEPRECATED`. This is **REVIEW_REQUIRED**, not silently reconciled.
-- App Lifecycle source contains FROZEN/TERMINATED/ARCHIVED states but current extracted transition table is incomplete.
-- Queue Job source state set is known, but full event/guard transition table is not inferred from BullMQ behavior.
+## Critical rule
+Identical state labels across namespaces are not aliases automatically.
+
+Examples:
+- `FREEZE` in DOC-C execution != `FAILSAFE` kernel state != per-run `FREEZE`.
+- `ACTIVE` in App lifecycle != capability `ACTIVE`.
+
+## Observed implementation review points
+1. DOC-C event set includes `cancel`, but current `VNEXT_TRANSITIONS` inspected has no cancel transition.
+2. Capability source FSM contains `QUORUM_SIGNED` and `ACTIVE`; observed `CapabilityNodeStatus` currently has only PROPOSED/REVIEWED/ANCHORED/DEPRECATED.
+3. App source lifecycle includes BUILT/SEALED; observed AppSpec status is DRAFT/ACTIVE/SUSPENDED/DEPRECATED and register() creates ACTIVE.
+4. PipelineRun model does not itself expose a legal transition table in the inspected file.
+
+These are **REVIEW points, not automatic final FAIL verdicts**.
