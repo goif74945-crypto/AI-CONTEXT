@@ -1,0 +1,28 @@
+{
+  "ledger_id": "NEXY-FULL-AUDIT-Q-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "category": "Q_GAME_AAAA_NCF",
+  "claim": [
+    "46/46 Q units audited",
+    "44 FUTURE_SCOPE",
+    "2 PARTIAL for ENGINE-LO3-CSE and REQ-LO3-002"
+  ],
+  "proof": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/Q_GAME_AAAA_NCF.units.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/Q_GAME_AAAA_NCF.summary.json",
+    "packages/swarm/pipeline.ts at exact target HEAD",
+    "DOCX paragraphs 5155-6530 and 9962-9981"
+  ],
+  "deps": [
+    "denominator locked at 1468 units"
+  ],
+  "risk": [
+    "CSE current-head executable invariant evidence missing"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "CURRENT_AT_TARGET_HEAD",
+  "trace": "AUDIT-NEXY-FULL-20260924-01",
+  "hash": "HASH_UNAVAILABLE"
+}
