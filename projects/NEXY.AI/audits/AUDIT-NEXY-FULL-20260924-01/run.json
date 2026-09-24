@@ -3,7 +3,7 @@
   "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
   "pair_id": "NEXY-CLOSED-LOOP-01",
   "mode": "AUDIT_ONLY_UNTIL_FULL_PROJECT_COVERAGE",
-  "status": "FULL_AUDIT_GATE_PASSED_COMMAND_GENERATION_ACTIVE",
+  "status": "FULL_AUDIT_COMPLETE",
   "project": "NEXY.AI / NEXY-IGNIS",
   "authoritative_source": {
     "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
@@ -103,9 +103,9 @@
     "remaining": 0,
     "percent": 100
   },
-  "current_category": "COMMAND_GENERATION",
-  "last_completed_unit": "CATEGORY:Z_OTHER_SOURCE_DERIVED",
-  "next_unit": "COMMAND:RC-SEC-SECRET-001",
+  "current_category": "CLOSED_LOOP_REMEDIATION",
+  "last_completed_unit": "FULL_AUDIT_GATE_AND_COMMAND_DAG",
+  "next_unit": "WAIT_BUILDER_RESULT:CMD-NEXY-SEC-OTAC-LOG-001",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
@@ -148,7 +148,7 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "phase_completed": "FULL_AUDIT_GATE",
+    "phase_completed": "FULL_AUDIT_AND_FIRST_COMMAND_PUBLICATION",
     "read_back_verified": false,
     "atomic_coverage_complete": true,
     "second_pass_complete": true,
@@ -156,6 +156,15 @@
     "requirement_matrix_complete": true,
     "findings_reconciled": true,
     "dependency_dag": true,
-    "next": "PUBLISH_FIRST_READY_BUILDER_COMMAND"
+    "command_dag": true,
+    "next": "WAIT_BUILDER_RESULT:CMD-NEXY-SEC-OTAC-LOG-001"
+  },
+  "remediation_campaign": {
+    "planned_commands": 13,
+    "ready_commands": 1,
+    "blocked_or_planned_commands": 12,
+    "first_command": "CMD-NEXY-SEC-OTAC-LOG-001",
+    "queue_state": "READY",
+    "builder_claim": "NONE_OBSERVED"
   }
 }
