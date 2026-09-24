@@ -1,0 +1,22 @@
+{
+  "task_id": "NEXY-FULL-AUDIT-W-RELEASE-DEPLOYMENT-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "W_RELEASE_DEPLOYMENT_DOC_E",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 41,
+  "audited_units": 41,
+  "counts": {
+    "FAIL": 31,
+    "PARTIAL": 2,
+    "BLOCKED": 7,
+    "NOT_VERIFIED": 1
+  },
+  "finding_ids": [
+    "F-NEXY-FULL-W-STALE-DOC-E-001",
+    "F-NEXY-FULL-W-RELEASE-BLOCKED-002"
+  ],
+  "status": "CATEGORY_AUDIT_RECORDED",
+  "next_category": "Z_OTHER_SOURCE_DERIVED",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "hash": "HASH_UNAVAILABLE"
+}
