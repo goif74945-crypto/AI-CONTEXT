@@ -1,0 +1,24 @@
+{
+  "pair_id": "NEXY-CLOSED-LOOP-01",
+  "version": "1.0.0",
+  "auditor_role": "AUDITOR_CHAT",
+  "builder_worker_id": "BUILDER-01",
+  "control_repo": "goif74945-crypto/AI-CONTEXT",
+  "implementation_repo": "goif74945-crypto/NEXY.AI-",
+  "state": "IDLE_SKILL_FORGE",
+  "user_communication_policy": "SILENT_EXCEPT_REQUIRED_HUMAN_GATE_OR_UNRESOLVABLE_BLOCKER",
+  "active_command_id": null,
+  "active_builder_claim_id": null,
+  "pending_builder_result": null,
+  "idle_work": {
+    "type": "NEXY_SKILL_MATERIALIZATION",
+    "source": "skills/nexy/MASTER-SPECIFICATION.md",
+    "priority_rule": "SUSPEND_IMMEDIATELY_WHEN_BUILDER_RESULT_OR_CRITICAL_CONTROL_CHANGE_APPEARS"
+  },
+  "background_execution_claimed": false,
+  "last_control_observation": {
+    "ai_context_head": "34205eccaeeffe57d28d9f1342528bdca09a9b97",
+    "ready_commands": 0,
+    "active_claims": 0
+  }
+}
