@@ -1,49 +1,42 @@
-# PLAYBOOK — Modify Existing System
+# NEXY Builder Playbook
 
-## PRECONDITIONS
-- Exact target entity/system resolved from ontology.
-- Current implementation location is observed at current HEAD.
-- Change objective maps to explicit requirements or an authorized new requirement.
-- Protected branches/files are known.
+## Universal preconditions
+1. Pin repository + branch + exact HEAD.
+2. Abort/freeze if the requested target branch/HEAD differs from task authority.
+3. Resolve target entity in `ontology/entities.jsonl`.
+4. Resolve governing requirements in `requirements/requirements.jsonl`.
+5. Resolve authority/scope/supersession/conflicts before implementation.
+6. Resolve `REQUIRES` predecessors from `graphs/dependency-graph.json`.
+7. Resolve code only through `implementation/system-to-code.jsonl`; CANDIDATE refs must be opened before use.
+8. Load linked contracts, FSM namespace, atomic invariants, trust boundaries, state ownership, events and config.
+9. Check `failures/failures.jsonl` for known failure classes.
+10. Never interpret file presence, build success, or prose as runtime/evidence PASS.
 
-## REQUIRED CONTEXT
-Load:
-- entity + dependents;
-- inbound/outbound dependency edges;
-- governing requirements;
-- contracts;
-- invariants;
-- FSM transitions;
-- state/persistence ownership;
-- events/config;
-- security boundaries;
-- known failures/regression history;
-- current tests/evidence.
+# Workflow: Modify Existing System
 
-## CHANGE IMPACT
-Before editing, construct:
-`CHANGE → affected entities → requirements → contracts → invariants → FSMs → state/events/config → tests/evidence`
+## Required context
+- exact target entity;
+- all dependents from Ontology/Dependency Graph;
+- linked atomic invariants;
+- contracts/FSM/state ownership;
+- historical failures and supersession records.
 
-Do not mutate until high-severity S4/S5 invariants in the impact set are known.
+## Sequence
+1. Calculate impact set: target + dependents + linked requirements + contracts + invariants + tests.
+2. Read every EXACT mapping and all relevant GROUP/CANDIDATE files before edit.
+3. Record intended semantic change: behavior, contract, authority, state or implementation-only.
+4. If behavior/contract/authority changes, update source/governance first; do not hide semantic change inside code.
+5. Apply smallest dependency-safe patch.
+6. Re-run required negative/regression tests.
+7. Compare semantic before/after, not only git diff.
+8. Refresh implementation map/snapshot/traceability.
 
-## IMPLEMENTATION SEQUENCE
-1. Reproduce current behavior/failure.
-2. Identify earliest incorrect state/root cause.
-3. Confirm whether behavior change is permitted by authority/supersession.
-4. Modify the smallest semantic surface.
-5. Update contracts/schema/migration/event definitions when semantics change.
-6. Update tests before claiming compatibility.
-7. Run focused proof.
-8. Run impacted regression set.
-9. Inspect final diff for scope creep.
-10. Update implementation/traceability only for observed current HEAD.
-
-## FORBIDDEN
-- weakening tests to make them pass;
-- bypassing LAW/FSM/authorization;
-- hidden fallback;
-- unversioned config/contract change;
-- changing unrelated architecture because it appears cleaner.
+## Stop conditions
+- unresolved authority conflict;
+- stale HEAD;
+- invariant impact cannot be bounded;
+- migration/rollback unspecified for persisted state;
+- source and requested behavior disagree without explicit supersession.
 
 ## DONE
-PASS only if changed behavior and impacted invariants are proven.
+No unresolved invariant/contract/FSM regression attributable to the patch; evidence class stated honestly.
