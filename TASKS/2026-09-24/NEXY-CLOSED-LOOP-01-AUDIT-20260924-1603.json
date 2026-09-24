@@ -1,0 +1,122 @@
+{
+  "task_id": "TASK-NEXY-CLOSED-LOOP-01-20260924-1603",
+  "pair_id": "NEXY-CLOSED-LOOP-01",
+  "mode": "AUDIT/CROSS",
+  "target_repo": "goif74945-crypto/AI-CONTEXT",
+  "target_branch": "nexy/closed-loop-control-plane-v1",
+  "audit_head": "9f070e6d0b85f4fb423e785d376a73374a3ff6db",
+  "refreshed_head": "9edfcdd94723f69eec5928ebc05ca1ab5353436f",
+  "findings": [
+    {
+      "finding_id": "F-NEXY-CP-RUNTIME-EVIDENCE-001",
+      "severity": "S5",
+      "root_cause_status": "PARTIAL",
+      "claim": "validation-report.md claims 12 unit tests PASS and py_compile PASS",
+      "proof": [
+        "loop_engine.py is 404 at refreshed head",
+        "test_loop_engine.py is 404 at refreshed head",
+        "commit 9f070e6d0b85f4fb423e785d376a73374a3ff6db added the PASS claims"
+      ],
+      "impact": "shared repository state cannot reproduce the claimed executable runtime validation",
+      "verdict": "PROVEN"
+    },
+    {
+      "finding_id": "F-NEXY-CP-COMMAND-SCHEMA-002",
+      "severity": "S4",
+      "root_cause_status": "PROVEN",
+      "claim": "current user command contract requires fields not representable by canonical command.schema.json",
+      "proof": [
+        "command.schema.json has additionalProperties=false",
+        "schema lacks pair_id, affected_systems, affected_requirements, affected_invariants and human_gate"
+      ],
+      "impact": "canonical queue command issuance would violate either schema or current user directive",
+      "verdict": "PROVEN"
+    }
+  ],
+  "proposed_builder_command": {
+    "command_id": "CMD-NEXY-CLOSED-LOOP-01-EVIDENCE-001",
+    "version": "1.0.0",
+    "pair_id": "NEXY-CLOSED-LOOP-01",
+    "audit_run_id": "AUDIT-NEXY-CLOSED-LOOP-01-20260924-1603",
+    "created_from_head": "9edfcdd94723f69eec5928ebc05ca1ab5353436f",
+    "expected_head": "9edfcdd94723f69eec5928ebc05ca1ab5353436f",
+    "target_repo": "goif74945-crypto/AI-CONTEXT",
+    "target_branch": "nexy/closed-loop-control-plane-v1",
+    "finding_ids": [
+      "F-NEXY-CP-RUNTIME-EVIDENCE-001"
+    ],
+    "affected_systems": [
+      "projects/NEXY.AI/control-plane/runtime"
+    ],
+    "affected_requirements": [
+      "NO_FAKE_EVIDENCE",
+      "PASS_REQUIRES_MATCHING_EXECUTED_EVIDENCE"
+    ],
+    "affected_invariants": [
+      "EVIDENCE_BINDS_EXACT_HEAD",
+      "NO_PLACEHOLDER_OR_RECONSTRUCTED_PROOF"
+    ],
+    "allowed_change_surface": [
+      "projects/NEXY.AI/control-plane/runtime/loop_engine.py",
+      "projects/NEXY.AI/control-plane/runtime/test_loop_engine.py",
+      "projects/NEXY.AI/control-plane/runtime/validation-report.md"
+    ],
+    "forbidden_change_surface": [
+      "goif74945-crypto/NEXY.AI-/**",
+      "projects/NEXY.AI/control-plane/command/**",
+      "secrets/**"
+    ],
+    "dependencies": [],
+    "exact_objectives": [
+      "Make runtime validation claims reproducible from the shared repository.",
+      "If exact tested source/test artifacts exist, commit those exact artifacts and rerun validation at END_HEAD.",
+      "If exact artifacts cannot be recovered, downgrade executable-runtime validation to NOT_VERIFIED and remove unsupported PASS claims."
+    ],
+    "acceptance_criteria": [
+      "No PASS claim depends on a repository-absent artifact.",
+      "Any claimed unit/compile PASS is rerun against committed END_HEAD files.",
+      "No file outside allowed change surface changes."
+    ],
+    "required_tests": [
+      "artifact presence check",
+      "conditional unittest test_loop_engine.py",
+      "conditional py_compile loop_engine.py"
+    ],
+    "negative_tests": [
+      "reject PASS with missing artifacts",
+      "reject reconstructed evidence without provenance"
+    ],
+    "regression_tests": [
+      "runtime-envelope schema remains valid"
+    ],
+    "security_checks": [
+      "no secrets",
+      "no NEXY.AI- mutation"
+    ],
+    "rollback": [
+      "revert only Builder repair commits if validation fails"
+    ],
+    "expected_evidence": [
+      "START_HEAD",
+      "END_HEAD",
+      "changed files",
+      "tree proof",
+      "test outputs",
+      "validation report diff"
+    ],
+    "stale_policy": "HEAD mismatch => STALE; semantic diff + change impact before reissue",
+    "retry_policy": "0 automatic retries; Auditor must reissue",
+    "human_gate": "NOT_REQUIRED_FOR_NON_DESTRUCTIVE_AI_CONTEXT_REPAIR",
+    "supersedes": [],
+    "status": "DRAFT_NOT_QUEUED_SCHEMA_CONFLICT"
+  },
+  "final_status": "FREEZE_QUEUE_ISSUANCE_FINDING_PROVEN",
+  "next_actions": [
+    "reconcile existing command schema with current user command contract",
+    "reissue command against refreshed HEAD",
+    "independently verify Builder result"
+  ],
+  "timestamp_source": "2026-09-24T16:03+07:00",
+  "trace_id": "AUDIT-NEXY-CLOSED-LOOP-01-20260924-1603",
+  "hash": "HASH_UNAVAILABLE"
+}
