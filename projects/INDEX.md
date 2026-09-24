@@ -27,3 +27,4 @@
   - [Verification Registry](./NEXY.AI/verification/INDEX.md)
   - [Evidence Registry](./NEXY.AI/evidence/INDEX.md)
   - [Traceability Spine](./NEXY.AI/traceability/INDEX.md)
+  - [Failure / Recovery Library](./NEXY.AI/failures/INDEX.md)
