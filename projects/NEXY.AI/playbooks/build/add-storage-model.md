@@ -1,43 +1,47 @@
-# PLAYBOOK — Add Storage Model
+# NEXY Builder Playbook
 
-## PRECONDITIONS
-- Authoritative owner/writer/readers identified.
-- Durability/retention/deletion semantics known.
-- New model does not break lineage/audit invariants.
+## Universal preconditions
+1. Pin repository + branch + exact HEAD.
+2. Abort/freeze if the requested target branch/HEAD differs from task authority.
+3. Resolve target entity in `ontology/entities.jsonl`.
+4. Resolve governing requirements in `requirements/requirements.jsonl`.
+5. Resolve authority/scope/supersession/conflicts before implementation.
+6. Resolve `REQUIRES` predecessors from `graphs/dependency-graph.json`.
+7. Resolve code only through `implementation/system-to-code.jsonl`; CANDIDATE refs must be opened before use.
+8. Load linked contracts, FSM namespace, atomic invariants, trust boundaries, state ownership, events and config.
+9. Check `failures/failures.jsonl` for known failure classes.
+10. Never interpret file presence, build success, or prose as runtime/evidence PASS.
 
-## REQUIRED CONTEXT
-- state ownership + persistence map;
-- storage contracts;
-- Vault requirements;
-- data models;
-- retention/redaction;
-- security/permission map;
-- migrations;
-- evidence/test matrix.
+# Workflow: Add Storage Model
 
-## IMPLEMENTATION SEQUENCE
-1. Define identity/key strategy.
-2. Define owner/writer/readers.
-3. Define schema and constraints.
+## Required context
+- authoritative state owner;
+- writer/readers;
+- persistence tier;
+- lifetime/retention;
+- version/migration policy;
+- immutability/OCC/idempotency;
+- audit/recovery obligations.
+
+## Sequence
+1. Add state-ownership entry before schema mutation.
+2. Verify dependency tier legality (e.g. no forbidden JUDGE→CORE/VAULT authority).
+3. Define keys, relationships, deletion behavior and version semantics.
 4. Define immutable vs mutable fields.
-5. Define revision/version semantics.
-6. Define FK/delete/restore behavior.
-7. Define transaction/atomicity.
-8. Define content/hash/blob linkage where applicable.
-9. Define migration and rollback.
-10. Define audit/event emissions.
-11. Implement persistence layer.
-12. Add migration/integration/constraint tests.
-13. Test rollback and corrupted/partial-write behavior where critical.
+5. Define migration and rollback.
+6. Define transaction boundary and failure behavior.
+7. Implement schema/repository layer.
+8. Add migration roundtrip, concurrency, failure-injection and restore/replay tests.
+9. Update persistence map and traceability.
 
-## NEGATIVE TESTS
-- duplicate identity;
-- stale previous_version/OCC;
-- broken FK/lineage;
-- unauthorized write/delete;
-- partial blob/metadata commit;
-- restore with broken parent/blob;
+## Negative tests
+- stale OCC write;
+- duplicate idempotency;
+- orphan lineage;
+- forbidden delete/update;
+- transaction partial failure;
+- missing blob/content hash;
 - rollback failure.
 
 ## DONE
-Migration, persistence semantics, lineage, authorization, rollback and required evidence are proven.
+State owner, schema, migration, recovery and audit path are explicit and tested.
