@@ -1,30 +1,15 @@
 # NEXY.AI Release Gate Matrix
 
-## Purpose
-Machine-readable release progression and exact current release truth.
+Canonical:
+- `gates.json`
 
-## Files
-- `gates.json` — DEV → TEST → STAGING → CANARY → PROD operational gate definitions.
-- `current-gate-state.json` — current target/evidence verdict.
-- `validation-report.md`.
+Stages:
+DEV → TEST → STAGING → CANARY → PROD
 
-## Authority distinction
-DOC-E defines production evidence obligations.
+Current observed status:
+**BLOCKED / NON_DEPLOYABLE for HEAD 9c9befd9fe255b0f9271e6e2b8c4bb2443a08089**
 
-DEV/TEST/STAGING/CANARY stage grouping is **AI-CONTEXT operational structure** used to organize those obligations. It must not be cited as if the source explicitly canonized those stage names/topology.
+Reason:
+DOC-E E1–E12 artifacts are not bound to current HEAD and several are explicitly BLOCKED/BLOCKED_EXTERNAL.
 
-## Absolute rule
-No stage can promote because a file exists.
-Required evidence must be executed, current, target-matching and successful.
-
-## Current truth
-Target HEAD:
-`9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
-
-Current DOC-E evidence:
-- PASS: 0
-- BLOCKED: 12
-- exact-current-HEAD: 0
-
-Verdict:
-**NON_DEPLOYABLE / NOT_VERIFIED**
+No automatic promotion is allowed from source/code presence.
