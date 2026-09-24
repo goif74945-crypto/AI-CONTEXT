@@ -1,47 +1,51 @@
-# NEXY Builder Playbook
+# NEXY Playbook Contract
 
-## Universal preconditions
-1. Pin repository + branch + exact HEAD.
-2. Abort/freeze if the requested target branch/HEAD differs from task authority.
-3. Resolve target entity in `ontology/entities.jsonl`.
-4. Resolve governing requirements in `requirements/requirements.jsonl`.
-5. Resolve authority/scope/supersession/conflicts before implementation.
-6. Resolve `REQUIRES` predecessors from `graphs/dependency-graph.json`.
-7. Resolve code only through `implementation/system-to-code.jsonl`; CANDIDATE refs must be opened before use.
-8. Load linked contracts, FSM namespace, atomic invariants, trust boundaries, state ownership, events and config.
-9. Check `failures/failures.jsonl` for known failure classes.
-10. Never interpret file presence, build success, or prose as runtime/evidence PASS.
+Every playbook follows:
 
-# Workflow: Add Storage Model
+1. PRECONDITIONS
+2. REQUIRED_CONTEXT
+3. AUTHORITY / SCOPE CHECK
+4. CHANGE IMPACT
+5. IMPLEMENTATION_SEQUENCE
+6. VALIDATION
+7. NEGATIVE_TESTS
+8. REGRESSION
+9. ROLLBACK
+10. DONE
 
-## Required context
-- authoritative state owner;
-- writer/readers;
-- persistence tier;
-- lifetime/retention;
-- version/migration policy;
-- immutability/OCC/idempotency;
-- audit/recovery obligations.
+Global rules:
+- refresh repository branch/HEAD before implementation claims or edits;
+- if HEAD differs from the task lock, STOP/FREEZE;
+- source design ≠ implementation ≠ test ≠ evidence ≠ deployment proof;
+- never patch a CANDIDATE implementation mapping without opening/confirming the file;
+- resolve Authority + Scope + Supersession + Conflict before coding;
+- preserve S5 invariants;
+- UI is not authority;
+- SWARM/model output is not final authority;
+- no test execution evidence = no PASS;
+- do not use stale evidence for current HEAD.
 
-## Sequence
-1. Add state-ownership entry before schema mutation.
-2. Verify dependency tier legality (e.g. no forbidden JUDGE→CORE/VAULT authority).
-3. Define keys, relationships, deletion behavior and version semantics.
-4. Define immutable vs mutable fields.
-5. Define migration and rollback.
-6. Define transaction boundary and failure behavior.
-7. Implement schema/repository layer.
-8. Add migration roundtrip, concurrency, failure-injection and restore/replay tests.
-9. Update persistence map and traceability.
+# Add Storage Model
 
-## Negative tests
-- stale OCC write;
-- duplicate idempotency;
-- orphan lineage;
-- forbidden delete/update;
-- transaction partial failure;
-- missing blob/content hash;
-- rollback failure.
+## PRECONDITIONS
+- authoritative owner/writer/readers/lifetime/recovery defined;
+- mutability classification explicit.
+
+## REQUIRED_CONTEXT
+State ownership, persistence map, Vault invariants, audit/event rules, migration obligations.
+
+## IMPLEMENTATION_SEQUENCE
+1. define schema + owner;
+2. define FK/delete/update policy;
+3. define version/idempotency/OCC;
+4. define transaction boundary;
+5. define audit/event correlation;
+6. create forward migration;
+7. create tested rollback or irreversible migration declaration;
+8. run concurrency/crash tests.
+
+## NEGATIVE_TESTS
+stale version, duplicate commit, partial blob/DB failure, FK violation, illegal delete/update, rollback interruption.
 
 ## DONE
-State owner, schema, migration, recovery and audit path are explicit and tested.
+Forward + rollback behavior proven in target-like DB for exact revision when deployment-bound.
