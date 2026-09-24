@@ -51,7 +51,8 @@
     "DOC-E current artifacts are stale for current HEAD.",
     "Five contracts require review against source requirements.",
     "RCL latency budget remains unresolved.",
-    "PipelineRun state model is implementation-only and intentionally separate from source FSMs."
+    "PipelineRun state model is implementation-only and intentionally separate from source FSMs.",
+    "Atomic ontology omission patch adds EVENT-EXEC-CANCEL and EVENT-EXEC-TIMEOUT; canonical count is now 518/865."
   ],
   "open_unknowns": [
     "current-head executed test results",
