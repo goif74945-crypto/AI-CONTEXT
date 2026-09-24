@@ -1,0 +1,63 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "I_EVIDENCE_VERIFICATION_AUDIT",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 233,
+  "counts": {
+    "VERIFIED": 75,
+    "PARTIAL": 154,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "UNKNOWN": 0,
+    "CONFLICT": 0,
+    "MISSING": 0,
+    "OUT_OF_SCOPE": 0,
+    "FUTURE_SCOPE": 3,
+    "SUPERSEDED": 1
+  },
+  "structural_checks": {
+    "exact_target_test_paths_present": 108,
+    "denominator_test_paths": 108,
+    "trace_evidence_records": 40,
+    "trace_evidence_paths_present_at_target": 40,
+    "trace_evidence_stale_head": 12,
+    "trace_evidence_historical_or_unclassified": 26,
+    "trace_evidence_unknown": 2
+  },
+  "source_proof": [
+    "DOC-C paragraphs 8089-8117 require critical test gates before merge/release.",
+    "DOC-C paragraphs 8293-8305 define missing test gates as NON-DEPLOYABLE and reserve deployment approval to DOC-E.",
+    "AI-CONTEXT verification law forbids substituting file presence or historical evidence for exact-head execution proof."
+  ],
+  "implementation_proof": [
+    "All 108 denominator test paths exist in the exact target tree.",
+    "All 40 trace-evidence registry paths exist in the target tree, but registry freshness marks 12 STALE_HEAD, 26 HISTORICAL_OR_UNCLASSIFIED and 2 UNKNOWN.",
+    "docs/evidence/current/README.md binds the current DOC-E campaign to db52f9f1870b302f36653268513251d010f9726e, not target HEAD 84484d8108fe1dee186450c0d36c26d360b2596e."
+  ],
+  "test_proof": [
+    "No successful exact-target-head GitHub Actions PR run was observed; run state records 0 PR workflow runs and a failing combined validation status.",
+    "Test-file presence is recorded separately from test execution and PASS."
+  ],
+  "linked_findings": [
+    "F-NEXY-FULL-I-CURRENT-EVIDENCE-STALE-001",
+    "F-NEXY-FULL-J-EVIDENCE-001"
+  ],
+  "new_findings": [
+    "F-NEXY-FULL-I-CURRENT-EVIDENCE-STALE-001"
+  ],
+  "gaps": [
+    "Exact-target-head test execution is not established for any denominator test solely by the traceability index.",
+    "DOC-E current namespace is revision-bound to an older commit and cannot approve the audit target.",
+    "Historical evidence namespace contains old PASS records and a NON_DEPLOYABLE seal; those records are history only."
+  ],
+  "verdict": "PARTIAL",
+  "next_proof_required": [
+    "Refresh required DOC-E evidence to exact target HEAD with environment/run/result bindings.",
+    "Execute applicable critical suites at exact target HEAD and preserve logs/artifact identity.",
+    "Keep historical/baseline evidence explicitly non-current during release readiness evaluation."
+  ],
+  "next_category": "X_UI_TRUTH_SURFACE",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
