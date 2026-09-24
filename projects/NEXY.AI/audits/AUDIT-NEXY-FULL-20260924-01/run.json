@@ -99,19 +99,19 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 271,
-    "remaining": 1197,
-    "percent": 18.4605
+    "audited": 283,
+    "remaining": 1185,
+    "percent": 19.2779
   },
-  "current_category": "E_QUEUE_WORKER_JOB",
-  "last_completed_unit": "CATEGORY:G_RECOVERY_RESTART_RESUME",
-  "next_unit": "CATEGORY:E_QUEUE_WORKER_JOB",
+  "current_category": "D_RUNTIME_EXECUTION",
+  "last_completed_unit": "CATEGORY:E_QUEUE_WORKER_JOB",
+  "next_unit": "CATEGORY:D_RUNTIME_EXECUTION",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
     "S2": 2,
     "S3": 4,
-    "S4": 3,
+    "S4": 4,
     "S5": 2
   },
   "blocked": 0,
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "G_RECOVERY_RESTART_RESUME",
+    "category_completed": "E_QUEUE_WORKER_JOB",
     "read_back_verified": true,
-    "category_units": 0
+    "category_units": 12
   }
 }
