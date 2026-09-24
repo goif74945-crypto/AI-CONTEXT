@@ -1,0 +1,32 @@
+{
+  "ledger_id": "LEDGER-NEXY-FULL-REAUDIT-SECOND-PASS-20260924",
+  "source": [
+    "authoritative NEXY-IGNIS source",
+    "AI-CONTEXT atomic category records",
+    "exact target 84484d..."
+  ],
+  "claim": [
+    "Atomic audit coverage is 1468/1468.",
+    "All 12 required second-pass audit dimensions are complete.",
+    "31 findings are reconciled into 14 root-cause groups and ordered in a remediation DAG.",
+    "Normal Builder commands remain gated by matrix completion verification."
+  ],
+  "proof": [
+    "second-pass/FULL_PROJECT_REAUDIT.json",
+    "findings-reconciliation.json",
+    "remediation/dependency-dag.json",
+    "run.json denominator coverage"
+  ],
+  "deps": [
+    "AUDIT-NEXY-FULL-20260924-01"
+  ],
+  "risk": [
+    "open S5/S4 findings",
+    "release not proven"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "TARGET_HEAD_PINNED",
+  "trace": "AUDIT-NEXY-FULL-20260924-01/SECOND-PASS",
+  "hash": "HASH_UNAVAILABLE"
+}
