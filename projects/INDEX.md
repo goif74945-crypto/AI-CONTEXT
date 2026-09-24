@@ -34,3 +34,7 @@
   - [Configuration Registry](./NEXY.AI/config/INDEX.md)
   - [Builder / Auditor Playbooks](./NEXY.AI/playbooks/INDEX.md)
   - [Contract Registry](./NEXY.AI/contracts/INDEX.md)
+  - [Golden + Negative Corpus](./NEXY.AI/examples/INDEX.md)
+  - [Context Router](./NEXY.AI/context/INDEX.md)
+  - [Semantic Diff + Change Impact](./NEXY.AI/change-impact/INDEX.md)
+  - [Project Intelligence Graph](./NEXY.AI/intelligence-graph/INDEX.md)
