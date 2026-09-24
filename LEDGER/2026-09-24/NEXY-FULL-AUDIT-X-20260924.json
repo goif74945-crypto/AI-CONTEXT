@@ -1,0 +1,23 @@
+{
+  "ledger_id": "LEDGER-NEXY-FULL-AUDIT-X-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "X_UI_TRUTH_SURFACE",
+  "claim": [
+    "68/68 category units reached terminal audit classification.",
+    "DOC-D product-design and future UI units were not converted into DOC-C build failures.",
+    "UI-L1O-COMMAND-MATRIX is statically present but lacks exact-target-head execution proof."
+  ],
+  "proof": [
+    "55 OUT_OF_SCOPE current-product-design",
+    "12 FUTURE_SCOPE",
+    "1 PARTIAL current-architecture"
+  ],
+  "status": "RECORDED",
+  "coverage_after": {
+    "audited": 820,
+    "total": 1468,
+    "percent": 55.8583
+  },
+  "next_unit": "CATEGORY:Y_TOOL_PLUGIN_SKILL_INTERFACES",
+  "hash": "HASH_UNAVAILABLE"
+}
