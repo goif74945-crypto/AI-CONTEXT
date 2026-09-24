@@ -1,0 +1,50 @@
+{
+  "case_id": "CASE-NEXY-10H-SPEC-AUDIT-20260925-0204",
+  "task_id": "TASK-NEXY-10H-SPEC-AUDIT-20260925-0204",
+  "title": "10-hour spec-conformance audit snapshot",
+  "mode": "AUDIT",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "audit_window_utc": {
+    "start": "2026-09-24T09:04:36Z",
+    "end": "2026-09-24T19:04:36Z"
+  },
+  "audit_window_asia_bangkok": {
+    "start": "2026-09-24T16:04:36+07:00",
+    "end": "2026-09-25T02:04:36+07:00"
+  },
+  "snapshot_head": "2003b5135e6b1be0f8741db961806cdcacf498d7",
+  "snapshot_head_message": "test(l1o): make race injection no_std-test compatible",
+  "cause": "User requested comparison of all systems changed in the prior 10 hours against the authoritative design/build source.",
+  "violations_or_gaps": [
+    {
+      "id": "CASE-GAP-INCIDENT-SECONDARY-LINK",
+      "severity": "S3",
+      "status": "PROVEN_PARTIAL_MISMATCH",
+      "summary": "Inspected run-bound FreezeIncident paths retain lower-priority failures as secondaryErrorCodes[] instead of separate linked secondary incident records as required by source wording."
+    },
+    {
+      "id": "CASE-GAP-AGENT-ADAPTER-EXTENSION",
+      "severity": "S3",
+      "status": "PROVEN_CONTRACT_SURFACE_DRIFT",
+      "summary": "Runtime AgentAdapter assertion requires call in addition to canonical execute/cancel/healthcheck contract, coupling strict registration to internal SwarmAgent compatibility."
+    }
+  ],
+  "impact": [
+    "Incident forensic representation is weaker/different than the source-level linkage model.",
+    "Strict external or future adapters that implement only the canonical AgentAdapter contract can fail runtime registration."
+  ],
+  "fix": "AUDIT ONLY: no implementation fix performed because user requested inspection and NEXY.AI- mutation was not authorized.",
+  "prevention": [
+    "Add source-derived contract tests that reject undocumented mandatory AgentAdapter requirements or promote them explicitly into the canonical contract.",
+    "Add incident tests that assert separate secondary incident records/primaryIncidentId linkage where the source requires linked secondary incidents."
+  ],
+  "regression": "Current exact-head broad tests pass, but they encode current implementation and therefore do not invalidate source-vs-implementation semantic findings.",
+  "limits": [
+    "No valid cross-chat handoff received.",
+    "Search absence was not used as proof of global nonexistence; findings are limited to inspected canonical run-bound paths."
+  ],
+  "final_status": "OPEN_AUDIT_FINDINGS",
+  "version": "1.0.0",
+  "timestamp_source": "repository snapshot and exact-head validation evidence"
+}
