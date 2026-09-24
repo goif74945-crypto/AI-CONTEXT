@@ -1,35 +1,52 @@
-# NEXY Builder Playbook
+# NEXY Playbook Contract
 
-## Universal preconditions
-1. Pin repository + branch + exact HEAD.
-2. Resolve ontology entity, requirements, authority/scope/supersession/conflicts.
-3. Resolve dependencies, implementation refs, contracts, FSM, atomic invariants, security/state/event/config.
-4. Check failure/recovery library.
-5. Do not infer PASS from file presence, build success, or docs.
+Every playbook follows:
 
-# Workflow: Add Capability
+1. PRECONDITIONS
+2. REQUIRED_CONTEXT
+3. AUTHORITY / SCOPE CHECK
+4. CHANGE IMPACT
+5. IMPLEMENTATION_SEQUENCE
+6. VALIDATION
+7. NEGATIVE_TESTS
+8. REGRESSION
+9. ROLLBACK
+10. DONE
 
-## Required context
-- CapabilityNode schema/version;
-- deterministic class;
-- dependency closure;
-- forbidden combinations;
-- resource/permission caps;
-- static verifier;
-- policy review/quorum;
-- registry FSM and public projection.
+Global rules:
+- refresh repository branch/HEAD before implementation claims or edits;
+- if HEAD differs from the task lock, STOP/FREEZE;
+- source design ≠ implementation ≠ test ≠ evidence ≠ deployment proof;
+- never patch a CANDIDATE implementation mapping without opening/confirming the file;
+- resolve Authority + Scope + Supersession + Conflict before coding;
+- preserve S5 invariants;
+- UI is not authority;
+- SWARM/model output is not final authority;
+- no test execution evidence = no PASS;
+- do not use stale evidence for current HEAD.
 
-## Sequence
-1. Create a new immutable version; never mutate an ACTIVE historical node.
-2. Canonicalize/hash node.
-3. Resolve dependency closure and conflicts.
-4. Assign deterministic class.
-5. Run static verification.
-6. Run human/policy review and required quorum.
-7. Advance only through legal registry FSM.
-8. Anchor/activate only when all gates pass.
-9. Add rejection reason code on failure.
-10. Run chaos/adversarial catalog applicable to the change.
+# Add Capability
+
+## PRECONDITIONS
+- correct capability governance scope;
+- append-only version semantics;
+- admission authority available.
+
+## REQUIRED_CONTEXT
+Capability Registry FSM, static verifier, rejection codes, dependency/conflict graph, chaos invariants.
+
+## IMPLEMENTATION_SEQUENCE
+1. create new immutable version;
+2. declare dependencies/resource caps/forbidden combinations/class;
+3. static verification;
+4. policy review;
+5. quorum/anchor stages;
+6. public projection;
+7. chaos test;
+8. activate only after legal FSM completion.
+
+## NEGATIVE_TESTS
+missing dependency, deprecated dependency, conflict, resource cap, authority escalation, bypass, duplicate version.
 
 ## DONE
-Capability is versioned, dependency-closed, policy-approved, chaos-tested and traceable.
+No in-place history rewrite and required admission gates/evidence exist.
