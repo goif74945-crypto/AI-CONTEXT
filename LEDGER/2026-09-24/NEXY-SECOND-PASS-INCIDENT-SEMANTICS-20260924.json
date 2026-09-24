@@ -1,0 +1,34 @@
+{
+  "ledger_id": "LEDGER-NEXY-SECOND-PASS-INCIDENT-SEMANTICS-20260924",
+  "source": [
+    "authoritative DOC-C",
+    "exact target source 84484d...",
+    "AI-CONTEXT audit run"
+  ],
+  "claim": [
+    "DOC-C requires deterministic multiple-failure priority with lower-priority failures retained as secondary evidence.",
+    "Exact target run-bound FreezeIncident persistence can overwrite primaryErrorCode on repeated failure.",
+    "Exact target incident boundary does not enforce canonical ErrorCode."
+  ],
+  "proof": [
+    "DOC-C 7519-7527, 8006-8016, 8952-8956",
+    "packages/orch-core/system-state.ts@84484d...",
+    "packages/queue/run-state.ts@84484d...",
+    "packages/contracts/incidents.ts@84484d...",
+    "prisma/schema.prisma@84484d...",
+    "findings.jsonl#F-NEXY-REAUDIT-N-INCIDENT-PRIORITY-001",
+    "findings.jsonl#F-NEXY-REAUDIT-N-INCIDENT-ERRORCODE-002"
+  ],
+  "deps": [
+    "AUDIT-NEXY-FULL-20260924-01"
+  ],
+  "risk": [
+    "forensic truth drift",
+    "schema deviation in authoritative incident evidence"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "TARGET_HEAD_PINNED",
+  "trace": "AUDIT-NEXY-FULL-20260924-01/SECOND-PASS-N-INCIDENT",
+  "hash": "HASH_UNAVAILABLE"
+}
