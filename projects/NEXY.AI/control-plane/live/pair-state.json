@@ -1,13 +1,13 @@
 {
   "pair_id": "NEXY-CLOSED-LOOP-01",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "auditor_role": "AUDITOR_CHAT",
   "builder_worker_id": "BUILDER-01",
   "control_repo": "goif74945-crypto/AI-CONTEXT",
   "implementation_repo": "goif74945-crypto/NEXY.AI-",
-  "state": "IDLE_SKILL_FORGE",
+  "state": "WAITING_FOR_BUILDER",
   "user_communication_policy": "SILENT_EXCEPT_REQUIRED_HUMAN_GATE_OR_UNRESOLVABLE_BLOCKER",
-  "active_command_id": null,
+  "active_command_id": "CMD-NEXY-SEC-OTAC-LOG-001",
   "active_builder_claim_id": null,
   "pending_builder_result": null,
   "idle_work": {
@@ -25,8 +25,8 @@
   },
   "background_execution_claimed": false,
   "last_control_observation": {
-    "ai_context_head": "ca686157ed27b298e087605be3684bd09e517cdc",
-    "ready_commands": 0,
+    "ai_context_head": "7f8db05fdeea575d03d7bd5c7f184b627a883cd5",
+    "ready_commands": 1,
     "active_claims": 0
   }
 }
