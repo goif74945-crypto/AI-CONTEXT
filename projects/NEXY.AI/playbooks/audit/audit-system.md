@@ -1,40 +1,34 @@
-# PLAYBOOK — Audit System
+# NEXY Auditor Playbook
 
-## PURPOSE
-Determine whether one NEXY system/subsystem satisfies its current governing requirements without hiding missing proof.
+## Universal audit law
+1. Pin exact repository/branch/HEAD and observed environment.
+2. Resolve source authority and scope before reading code.
+3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
+4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
+5. File existence, docs, mocks, build success, or comments are never runtime proof.
+6. Search failure history and known conflicts before declaring a new root cause.
+7. Preserve evidence even when verdict is FAIL.
 
-## INPUT
-- target ontology ID;
-- repo/branch/HEAD when implementation is in scope;
-- authority/scope context.
+# Workflow: Audit System
 
-## PROCEDURE
-1. Resolve canonical entity/aliases/parent/dependents.
-2. Resolve current vs future/historical scope.
-3. Collect governing requirements.
-4. Collect dependency edges.
-5. Collect contracts/invariants/FSM/security/state/events/config.
-6. Refresh code mapping if implementation snapshot is stale.
-7. Trace entry points and mutation owners.
-8. Compare expected behavior vs implementation semantics.
-9. Inspect failure/recovery paths.
-10. Inspect tests and evidence by required class.
-11. Search for bypass routes and duplicated alternative implementations.
-12. Produce requirement-level verdicts.
-13. Collapse shared defects into root causes.
+## Sequence
+1. Resolve system + descendants from Ontology.
+2. Resolve all requirements, dependencies, contracts, FSMs and invariants.
+3. Resolve implementation refs; inspect EXACT/GROUP/CANDIDATE targets.
+4. Build requirement ledger: requirement → code → test → evidence.
+5. Classify each requirement independently.
+6. Attack negative/failure paths.
+7. Check cross-system effects and forbidden dependency edges.
+8. Re-audit after fixes from clean source state.
 
-## ADVERSARIAL QUESTIONS
-- Can another module bypass this system?
-- Can stale/invalid state cross its boundary?
-- Can failure be masked as success?
-- Can an unauthorized actor mutate its state?
-- Are async/retry/idempotency semantics explicit?
-- Does evidence prove the claim at the current HEAD?
+## Mandatory findings
+- missing implementation;
+- semantic mismatch;
+- stale/absent evidence;
+- scope error;
+- authority inversion;
+- hidden fallback;
+- untested critical path.
 
-## OUTPUT
-- system verdict;
-- finding IDs;
-- requirement ledger deltas;
-- proof gaps;
-- change-impact neighborhood;
-- exact evidence limits.
+## DONE
+No aggregate PASS without every mandatory requirement having adequate evidence.
