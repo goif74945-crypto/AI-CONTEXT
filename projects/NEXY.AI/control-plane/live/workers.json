@@ -1,0 +1,41 @@
+{
+  "registry_id": "NEXY-CLOSED-LOOP-01-LIVE-WORKERS",
+  "version": "1.0.0",
+  "workers": [
+    {
+      "worker_id": "BUILDER-01",
+      "role": "BUILDER",
+      "capabilities": [
+        "IMPLEMENTATION_REPAIR_FROM_VERIFIED_COMMAND",
+        "TEST_EXECUTION",
+        "REGRESSION_VALIDATION",
+        "SECURITY_CHECKS",
+        "AI_CONTEXT_RESULT_WRITEBACK"
+      ],
+      "allowed_scopes": [
+        "goif74945-crypto/NEXY.AI-/**",
+        "goif74945-crypto/AI-CONTEXT/projects/NEXY.AI/**",
+        "goif74945-crypto/AI-CONTEXT/TASKS/**",
+        "goif74945-crypto/AI-CONTEXT/CASES/**",
+        "goif74945-crypto/AI-CONTEXT/FAILURES/**",
+        "goif74945-crypto/AI-CONTEXT/LEDGER/**"
+      ],
+      "forbidden_scopes": [
+        "PRODUCTION_WITHOUT_HUMAN_GATE",
+        "SECRETS_OR_CREDENTIALS",
+        "IRREVERSIBLE_DATA_WITHOUT_HUMAN_GATE",
+        "BRANCH_REWRITE_WITHOUT_HUMAN_GATE",
+        "SECURITY_AUTHORITY_EXPANSION_WITHOUT_HUMAN_GATE",
+        "CROSS_TENANT_OPERATION_WITHOUT_HUMAN_GATE"
+      ],
+      "status": "AVAILABLE",
+      "max_concurrent_claims": 1,
+      "active_claim_ids": [],
+      "trust_class": "STANDARD",
+      "human_gate_capability": false,
+      "metadata_refs": [
+        "projects/NEXY.AI/control-plane/CLOSED-LOOP-PAIR-PROTOCOL.md"
+      ]
+    }
+  ]
+}
