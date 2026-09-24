@@ -1,12 +1,48 @@
 {
   "fsm_id": "FSM-APP-LIFECYCLE",
   "name": "App Lifecycle FSM",
-  "kind": "SOURCE_DEFINED",
+  "namespace": "APP_LIFECYCLE",
+  "registry_kind": "SOURCE_DEFINED",
   "authority": [
     "CONSTITUTIONAL_SOURCE"
   ],
   "scope": [
     "FUTURE_ARCHITECTURE"
+  ],
+  "ontology_status": "CURRENT_CANON",
+  "states": [
+    {
+      "state_id": "STATE-APP-ACTIVE",
+      "name": "ACTIVE"
+    },
+    {
+      "state_id": "STATE-APP-ARCHIVED",
+      "name": "ARCHIVED"
+    },
+    {
+      "state_id": "STATE-APP-BUILT",
+      "name": "BUILT"
+    },
+    {
+      "state_id": "STATE-APP-CREATED",
+      "name": "CREATED"
+    },
+    {
+      "state_id": "STATE-APP-DEPLOYED",
+      "name": "DEPLOYED"
+    },
+    {
+      "state_id": "STATE-APP-FROZEN",
+      "name": "FROZEN"
+    },
+    {
+      "state_id": "STATE-APP-SEALED",
+      "name": "SEALED"
+    },
+    {
+      "state_id": "STATE-APP-TERMINATED",
+      "name": "TERMINATED"
+    }
   ],
   "source_range": [
     {
@@ -16,86 +52,7 @@
       "end_paragraph": 5154
     }
   ],
-  "states": [
-    "CREATED",
-    "BUILT",
-    "SEALED",
-    "DEPLOYED",
-    "ACTIVE",
-    "FROZEN",
-    "TERMINATED",
-    "ARCHIVED"
-  ],
-  "events": [],
-  "event_ownership": {},
-  "transitions": [
-    {
-      "from": "CREATED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "BUILT",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "BUILT",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "SEALED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "SEALED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "DEPLOYED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "DEPLOYED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "ACTIVE",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "ACTIVE",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "FROZEN",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "FROZEN",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "TERMINATED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "TERMINATED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "ARCHIVED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    }
-  ],
-  "invalid_transition_behavior": "Illegal transition is prohibited; exact event/guard names are not established by captured source.",
-  "recovery_semantics": "UNKNOWN",
-  "audit_event_semantics": "UNKNOWN",
+  "requirement_ids": [],
   "implementation_mapping_status": "CANDIDATE",
   "implementation_refs": [
     {
@@ -153,8 +110,102 @@
       ]
     }
   ],
-  "requirement_ids": [],
-  "test_refs": [],
-  "alignment_status": "SOURCE_SEQUENCE_ONLY",
-  "alignment_notes": []
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "transition_source": "SOURCE",
+  "transitions": [
+    {
+      "from": "CREATED",
+      "event": "build",
+      "guard": [
+        "build preconditions valid"
+      ],
+      "action": [
+        "build"
+      ],
+      "to": "BUILT",
+      "failure": "FROZEN/REJECTED by governing law"
+    },
+    {
+      "from": "BUILT",
+      "event": "seal",
+      "guard": [
+        "artifact/spec ready"
+      ],
+      "action": [
+        "seal"
+      ],
+      "to": "SEALED",
+      "failure": "FROZEN/REJECTED"
+    },
+    {
+      "from": "SEALED",
+      "event": "deploy",
+      "guard": [
+        "deployment preconditions valid"
+      ],
+      "action": [
+        "deploy"
+      ],
+      "to": "DEPLOYED",
+      "failure": "FROZEN/REJECTED"
+    },
+    {
+      "from": "DEPLOYED",
+      "event": "activate",
+      "guard": [
+        "activation legal"
+      ],
+      "action": [
+        "activate"
+      ],
+      "to": "ACTIVE",
+      "failure": "FROZEN"
+    },
+    {
+      "from": "ACTIVE",
+      "event": "freeze",
+      "guard": [
+        "violation/failure condition"
+      ],
+      "action": [
+        "freeze app"
+      ],
+      "to": "FROZEN",
+      "failure": "N/A"
+    },
+    {
+      "from": "FROZEN",
+      "event": "terminate",
+      "guard": [
+        "legal operator/system action"
+      ],
+      "action": [
+        "terminate"
+      ],
+      "to": "TERMINATED",
+      "failure": "FROZEN"
+    },
+    {
+      "from": "TERMINATED",
+      "event": "archive",
+      "guard": [
+        "archive preconditions"
+      ],
+      "action": [
+        "archive"
+      ],
+      "to": "ARCHIVED",
+      "failure": "TERMINATED"
+    }
+  ],
+  "global_rules": [
+    "State-changing actions are event-driven and auditable.",
+    "App cannot mutate Kernel/Anchor/constitutional authority through lifecycle transitions."
+  ],
+  "invalid_transition_behavior": "reject/freeze according to governing constitutional law",
+  "audit_event": "state-changing app lifecycle event",
+  "notes": [
+    "FSM namespace is isolated; equal state labels in other FSMs are not aliases.",
+    "Source gives lifecycle order; detailed guard names are descriptive placeholders tied to governing laws, not independent new authority."
+  ]
 }
