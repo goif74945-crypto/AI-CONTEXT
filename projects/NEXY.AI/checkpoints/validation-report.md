@@ -1,7 +1,7 @@
 # Checkpoint Validation Report
 
 ## Result
-**PASS — P4.4 remote read-back + checkpoint**
+**PASS — P4.5 remote read-back + checkpoint**
 
-Semantic HEAD: `ebbce1a52f5f509a9e10254652194ef7705b2bcd`
-Next: **P4.5 EXPECTED-HEAD GUARD**
+Semantic HEAD: `c852b10543b37d577ebf50478515a126f25c4d89`
+Next: **P4.6 SUPERSESSION**
