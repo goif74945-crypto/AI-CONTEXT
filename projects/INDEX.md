@@ -28,3 +28,7 @@
   - [Evidence Registry](./NEXY.AI/evidence/INDEX.md)
   - [Traceability Spine](./NEXY.AI/traceability/INDEX.md)
   - [Failure / Recovery Library](./NEXY.AI/failures/INDEX.md)
+  - [Security / Trust Map](./NEXY.AI/security/INDEX.md)
+  - [State / Persistence Map](./NEXY.AI/state/INDEX.md)
+  - [Event Registry](./NEXY.AI/events/INDEX.md)
+  - [Configuration Registry](./NEXY.AI/config/INDEX.md)
