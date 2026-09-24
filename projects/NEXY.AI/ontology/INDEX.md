@@ -9,8 +9,8 @@ Primary source:
 - parsed non-empty paragraph sequence: **10,979**
 
 Compiled result:
-- **516 entities**
-- **863 typed relationships**
+- **518 entities**
+- **865 typed relationships**
 - **86 aliases**
 - **46 entity types**
 - parent graph: acyclic
@@ -124,12 +124,12 @@ Current typed graph includes:
 Important: `REQUIRES` was validated as acyclic so it can later feed task/dependency DAG construction. Authority/control edges are kept as semantic relations rather than fake build dependencies.
 
 ## Streaming capture checkpoints
-1. **Core / Human / DOC-C / DOC-D / DOC-E** — 118 entities.
+1. **Core / Human / DOC-C / DOC-D / DOC-E** — 120 entities.
 2. **Sovereign / Constitutional / Game / NCF / Capability Governance** — 145 entities.
 3. **L1o / Lo3 / Lo2 / Robotics / Final Architecture** — 122 entities.
 4. **Atomic gap pass** — 131 entities covering errors, API routes, UI internals/components, constitutional economy, capability classes, Trinity visualization/control objects and final-layer subcomponents.
 
-Total: **516**.
+Total: **518**.
 
 ## What this solves
 AI no longer needs to interpret:
@@ -157,6 +157,9 @@ It does **not** yet answer:
 
 Those mappings are intentionally reserved for the next registries:
 Requirement Registry → Authority/Scope/Supersession → Dependency Graph → Implementation Map → Contract/FSM/Invariant → Test/Evidence.
+
+## Omission repair
+A later Event Registry cross-check found two DOC-C execution events absent from ontology v1: `cancel` and `timeout`. They were added as first-class EVENT entities; current count is 518.
 
 ## Validation
 See `validation-report.md`.
