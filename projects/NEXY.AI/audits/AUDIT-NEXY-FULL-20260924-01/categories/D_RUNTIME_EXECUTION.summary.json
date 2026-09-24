@@ -1,0 +1,35 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "D_RUNTIME_EXECUTION",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 35,
+  "counts": {
+    "PARTIAL": 22,
+    "FUTURE_SCOPE": 11,
+    "NOT_VERIFIED": 2
+  },
+  "source_proof": [
+    "DOC-C execution FSM requirements",
+    "FINAL_ARCHITECTURE risk-state requirement",
+    "canonical performance budget registry"
+  ],
+  "implementation_proof": [
+    "packages/core/vnext-state-matrix.ts",
+    "packages/orch-core/{state-machine,system-state}.ts",
+    "packages/queue/run-state.ts",
+    "core-kernel/src/kernel/fsm_state.rs",
+    "runtime config/VNEXT_DEFAULTS"
+  ],
+  "test_proof": [
+    "FSM/runtime/performance tests are present; no successful exact-target-head run or coverage report is established."
+  ],
+  "findings": [
+    "linked F-NEXY-FULL-E-RETRY-CLASSIFICATION-001"
+  ],
+  "notes": [
+    "Target PipelineRun implementation validates transition topology more strictly than the stale implementation-pipeline-run registry note.",
+    "Current-build core/API coverage minimum budgets remain NOT_VERIFIED because target validation status is failing and no exact-head coverage report is available."
+  ],
+  "next_category": "K_EVENT_MESSAGING_DELIVERY",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
