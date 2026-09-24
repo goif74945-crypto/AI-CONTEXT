@@ -1,0 +1,57 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "M_OBSERVABILITY_LOGS_METRICS_ALERTS",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 27,
+  "counts": {
+    "VERIFIED": 0,
+    "PARTIAL": 20,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "UNKNOWN": 0,
+    "CONFLICT": 0,
+    "MISSING": 0,
+    "OUT_OF_SCOPE": 3,
+    "FUTURE_SCOPE": 4,
+    "SUPERSEDED": 0
+  },
+  "source_proof": [
+    "DOC-C current build requires distinct EventLog/AuditLog/SecurityIncident/FreezeIncident classes with traceable links.",
+    "DOC-C requires primary FreezeIncident linkage for FREEZE and immutable/auditable traces for critical actions.",
+    "DOC-D monitor concepts ERROR_SIGNAL/HEALTH_INDICATOR/SYSTEM_PULSE are retained as product-design only and are not promoted to current DOC-C build obligations."
+  ],
+  "implementation_proof": [
+    "Prisma schema contains distinct EventLog, AuditLog, FreezeIncident and SecurityIncident models with request/trace correlation.",
+    "runtime_invariants migration forbids UPDATE/DELETE on event_log and audit_log and installs audit chain validation.",
+    "audit_chain_head migration serializes AuditLog chain insertion with a durable singleton head and validates previousEntryId/hash.",
+    "packages/orch-core/system-state.ts requires incident context on terminal transition and persists primary incident + AuditLog + EventLog transactionally.",
+    "packages/obs provides event, audit, incident and alarm interfaces; optional alarm transport is explicitly separated from mandatory safety evidence.",
+    "packages/api/health.ts exposes liveness/readiness/freeze truth surfaces, but current exact-head runtime proof is absent."
+  ],
+  "test_proof": [
+    "tests/contract/freeze-recovery-audit.test.ts covers recovery evidence ordering.",
+    "tests/integration/freeze-all-causes.spec.ts covers freeze-class error mapping and freeze transition behavior.",
+    "tests/e2e/audit-trail.spec.ts covers audit-chain shape/tamper simulation.",
+    "tests/contract/alarms.test.ts covers alarm classes and unavailable external sink behavior.",
+    "No successful exact-target-head execution for these tests is established; target combined validation status remains failure."
+  ],
+  "linked_findings": [
+    "F-NEXY-FULL-B-AGENT-ADAPTER-001"
+  ],
+  "new_findings": [],
+  "gaps": [
+    "No successful exact-target-head observability/audit/incident/alarm execution evidence is established.",
+    "FABRIC-SWARM observability health obligation remains impacted by the already-proven AgentAdapter contract gap: canonical healthcheck is absent from the current adapter interface.",
+    "External alarm delivery is not proven bound in a deployment environment; this does not replace mandatory database evidence and is evaluated again under DOC-E/release."
+  ],
+  "verdict": "PARTIAL",
+  "next_proof_required": [
+    "Execute exact-head audit/event/incident/alarm/health tests and bind results to 84484d8108fe1dee186450c0d36c26d360b2596e.",
+    "Re-evaluate deployment alarm sink and operational metrics under W_RELEASE_DEPLOYMENT_DOC_E.",
+    "Audit Lo2 observability lineage under S_L1O_LO3_LO2."
+  ],
+  "next_category": "N_FAILURE_ERROR_SEMANTICS",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
