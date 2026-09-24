@@ -1,0 +1,14 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "T_ROBOTICS_RCL",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 32,
+  "audited_units": 32,
+  "counts": {
+    "FUTURE_SCOPE": 32
+  },
+  "verdict": "FUTURE_SCOPE",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "next_category": "U_FINAL_ARCHITECTURE_LAYERS",
+  "hash": "HASH_UNAVAILABLE"
+}
