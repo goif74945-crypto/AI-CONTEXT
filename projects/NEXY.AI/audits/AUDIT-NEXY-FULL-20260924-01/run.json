@@ -99,19 +99,19 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 318,
-    "remaining": 1150,
-    "percent": 21.6621
+    "audited": 360,
+    "remaining": 1108,
+    "percent": 24.5232
   },
-  "current_category": "K_EVENT_MESSAGING_DELIVERY",
-  "last_completed_unit": "CATEGORY:D_RUNTIME_EXECUTION",
-  "next_unit": "CATEGORY:K_EVENT_MESSAGING_DELIVERY",
+  "current_category": "L_DETERMINISM_TIME_RANDOMNESS",
+  "last_completed_unit": "CATEGORY:K_EVENT_MESSAGING_DELIVERY",
+  "next_unit": "CATEGORY:L_DETERMINISM_TIME_RANDOMNESS",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
     "S2": 2,
     "S3": 4,
-    "S4": 4,
+    "S4": 5,
     "S5": 2
   },
   "blocked": 0,
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "D_RUNTIME_EXECUTION",
+    "category_completed": "K_EVENT_MESSAGING_DELIVERY",
     "read_back_verified": true,
-    "category_units": 35
+    "category_units": 42
   }
 }
