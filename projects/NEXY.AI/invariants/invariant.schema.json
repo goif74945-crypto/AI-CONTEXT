@@ -4,17 +4,17 @@
   "type": "object",
   "required": [
     "invariant_id",
-    "name",
-    "source_kind",
-    "governing_entity_ids",
-    "requirement_ids",
-    "severity",
-    "scope",
     "statement",
+    "system_ids",
+    "severity",
     "violation_behavior",
-    "required_regression",
+    "scope",
+    "authority",
+    "requirement_ids",
+    "source_range",
     "implementation_refs",
-    "source_ranges",
-    "status"
+    "verification_obligations",
+    "status",
+    "notes"
   ]
 }
