@@ -1,95 +1,150 @@
 {
-  "snapshot_id": "NEXY-HEALTH-20260924",
+  "schema_version": "1.0.0",
+  "project": "NEXY.AI",
   "observed_at": "2026-09-24",
-  "ai_context": {
-    "repository": "goif74945-crypto/AI-CONTEXT",
-    "branch": "main",
-    "head": "a69bd3df773ced97f80287abf2e33c9b8fd3cba8"
-  },
-  "target": {
+  "implementation": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "codex/spec-audit-20260919-78df350",
-    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+    "pr": {
+      "number": 8,
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "base": "main",
+      "base_sha": "049d01b3436cc0f0f15134fdb2a2c83e9410cf19"
+    }
   },
-  "project_intelligence": {
+  "intelligence_registry": {
     "ontology": {
       "entities": 516,
       "relationships": 863,
-      "structural_validation": "PASS"
+      "aliases": 86,
+      "status": "STRUCTURAL_PASS"
     },
     "requirements": {
       "count": 262,
-      "structural_validation": "PASS"
+      "status": "STRUCTURAL_PASS"
+    },
+    "governance": {
+      "authority_nodes": 15,
+      "conflict_records": 8,
+      "unresolved": [
+        "CONFLICT-RCL-LATENCY-001"
+      ]
+    },
+    "implementation_map": {
+      "entities": 516,
+      "exact": 200,
+      "group": 10,
+      "candidate": 63,
+      "unmapped": 243,
+      "status": "STRUCTURAL_PASS"
+    },
+    "contracts": {
+      "count": 22,
+      "review_required": [
+        "CONTRACT-APPSPEC",
+        "CONTRACT-CONSENSUS-RESULT",
+        "CONTRACT-EVIDENCE",
+        "CONTRACT-GAMESPEC",
+        "CONTRACT-SYSTEM-ENVELOPE"
+      ]
+    },
+    "fsms": {
+      "source": 8,
+      "implementation_only": 1,
+      "partial": [
+        "FSM-APP-LIFECYCLE",
+        "FSM-QUEUE-JOB",
+        "FSM-IMPL-PIPELINE-RUN"
+      ]
     },
     "invariants": {
-      "count": 50
+      "count": 28,
+      "s5": 22,
+      "s4": 6
     },
-    "failure_library": {
-      "count": 24,
-      "structural_validation": "PASS"
+    "traceability": {
+      "requirements": 262,
+      "code_mapped": 202,
+      "test_linked": 241,
+      "evidence_linked": 12,
+      "current_head_evidence": 0
     },
-    "regression_ledger": {
-      "count": 24
+    "failures": {
+      "records": 22,
+      "observed_campaign_failures": 6,
+      "source_runtime_failures": 16
     },
-    "known_good_baselines": {
-      "count": 18
+    "playbooks": {
+      "builder": 10,
+      "auditor": 10
     },
-    "project_skills": {
-      "count": 22,
-      "status": "MATERIALIZED"
+    "examples": {
+      "golden": 12,
+      "negative": 12
     },
-    "golden_examples": {
-      "count": 10
-    },
-    "negative_examples": {
-      "count": 15
-    },
-    "performance_budgets": {
-      "count": 18
-    },
-    "fuzz_chaos_scenarios": {
-      "count": 21
-    },
-    "migrations": {
-      "count": 4,
-      "rollback_current_head": "NOT_VERIFIED"
+    "context_router": {
+      "task_types": 14
     }
   },
-  "governance": {
-    "unresolved": [
-      "CONFLICT-RCL-LATENCY-001"
-    ],
-    "scope_status": "EXPLICIT_CURRENT/FUTURE/DEFERRED/EXCLUDED/EXPERIMENTAL/HISTORICAL/SUPERSEDED"
+  "dynamic_truth": {
+    "deployment_status": "NON_DEPLOYABLE / NOT_PROVEN_FOR_CURRENT_HEAD",
+    "current_doc_e_evidence_head_match": false,
+    "doc_e_artifact_commit": "db52f9f1870b302f36653268513251d010f9726e",
+    "current_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+    "current_head_test_execution_status": "NOT ESTABLISHED BY THIS PROJECT-INTELLIGENCE PASS",
+    "current_head_physical_robotics_proof": "NOT ESTABLISHED"
   },
-  "implementation": {
-    "map_status": "PINNED_E0",
-    "target_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-    "warning": "Presence/navigation is not runtime proof."
-  },
-  "evidence": {
-    "doc_e_required": 12,
-    "pass": 0,
-    "blocked": 12,
-    "exact_current_head": 0,
-    "freshness": "STALE_FOR_CURRENT_HEAD"
-  },
-  "release": {
-    "verdict": "NON_DEPLOYABLE",
-    "verification": "NOT_VERIFIED",
-    "external_signoff": "BLOCKED"
-  },
-  "capabilities": {
-    "ai_context_write": "AVAILABLE_AND_AUTHORIZED",
-    "nexy_repo_technical_push": "AVAILABLE",
-    "nexy_repo_task_mutation": "REQUIRES_EXPLICIT_AUTHORIZATION",
-    "runtime_execution": "UNKNOWN",
-    "deployment": "UNKNOWN/NOT_AUTHORIZED"
-  },
-  "health_summary": {
-    "project_intelligence_structure": "STRONG_AND_EXPANDING",
-    "source_traceability": "STRUCTURALLY_ESTABLISHED",
-    "implementation_presence": "MAPPED_E0",
-    "runtime_confidence": "NOT_VERIFIED",
-    "deployment_readiness": "NON_DEPLOYABLE"
-  }
+  "open_findings": [
+    {
+      "id": "OPEN-CONTRACT-001",
+      "kind": "CONTRACT_REVIEW",
+      "items": [
+        "CONTRACT-SYSTEM-ENVELOPE",
+        "CONTRACT-EVIDENCE",
+        "CONTRACT-CONSENSUS-RESULT",
+        "CONTRACT-APPSPEC",
+        "CONTRACT-GAMESPEC"
+      ]
+    },
+    {
+      "id": "OPEN-FSM-001",
+      "kind": "FSM_PARTIAL",
+      "items": [
+        "FSM-APP-LIFECYCLE",
+        "FSM-QUEUE-JOB",
+        "FSM-IMPL-PIPELINE-RUN"
+      ]
+    },
+    {
+      "id": "OPEN-GOV-001",
+      "kind": "UNRESOLVED_CONFLICT",
+      "items": [
+        "CONFLICT-RCL-LATENCY-001"
+      ]
+    },
+    {
+      "id": "OPEN-EVIDENCE-001",
+      "kind": "STALE_EVIDENCE",
+      "items": [
+        "DOC-E E1–E12 bind db52f9f... not current HEAD"
+      ]
+    },
+    {
+      "id": "OPEN-MAPPING-001",
+      "kind": "IMPLEMENTATION_MAPPING",
+      "items": [
+        "63 CANDIDATE mappings require confirmation before mutation",
+        "243 UNMAPPED entities are unknown, not automatically missing"
+      ]
+    }
+  ],
+  "next_project_intelligence_nodes": [
+    "STEP-14 Semantic Diff + Change Impact",
+    "STEP-15 Project Intelligence Graph",
+    "then optional expansion: Acceptance/Test Matrix execution verdicts, Evidence Registry deep validation, Skills/Capabilities, ADR/Alias/Environment/Migration/Performance/Cost/Concurrency/Threat/Fuzz/Release/Health registries"
+  ],
+  "stale_when": "implementation branch HEAD changes or source document revision changes"
 }
