@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/nexy/control-plane/queue/queue.schema.json",
+  "title": "NEXY Control Plane Command Queue Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "queue_id",
+    "version",
+    "ordering_policy",
+    "entries"
+  ],
+  "properties": {
+    "queue_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "ordering_policy": {
+      "const": "PRIORITY_THEN_ENQUEUE_SEQUENCE_THEN_COMMAND_ID"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command_id",
+        "priority",
+        "enqueue_sequence",
+        "dependency_ids",
+        "queue_state",
+        "blocked_reasons"
+      ],
+      "properties": {
+        "command_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "enum": [
+            "CRITICAL",
+            "HIGH",
+            "NORMAL",
+            "LOW"
+          ]
+        },
+        "enqueue_sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dependency_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "queue_state": {
+          "enum": [
+            "WAITING_DEPENDENCY",
+            "READY",
+            "CLAIMED",
+            "TERMINAL",
+            "QUARANTINED"
+          ]
+        },
+        "blocked_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

@@ -113,9 +113,11 @@
     "control_plane": {
       "status": "PARTIAL",
       "completed_parts": [
-        "P4.1_COMMAND_MODEL"
+        "P4.1_COMMAND_MODEL",
+        "P4.2_COMMAND_QUEUE"
       ],
-      "command_schema_version": "1.0.0"
+      "command_schema_version": "1.0.0",
+      "queue_schema_version": "1.0.0"
     }
   },
   "dynamic_truth": {

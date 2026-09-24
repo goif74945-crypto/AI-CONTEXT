@@ -1,0 +1,23 @@
+{
+  "queue_id": "QUEUE-NEGATIVE-DUPLICATE-001",
+  "version": "1.0.0",
+  "ordering_policy": "PRIORITY_THEN_ENQUEUE_SEQUENCE_THEN_COMMAND_ID",
+  "entries": [
+    {
+      "command_id": "CMD-D",
+      "priority": "NORMAL",
+      "enqueue_sequence": 1,
+      "dependency_ids": [],
+      "queue_state": "READY",
+      "blocked_reasons": []
+    },
+    {
+      "command_id": "CMD-D",
+      "priority": "LOW",
+      "enqueue_sequence": 2,
+      "dependency_ids": [],
+      "queue_state": "READY",
+      "blocked_reasons": []
+    }
+  ]
+}

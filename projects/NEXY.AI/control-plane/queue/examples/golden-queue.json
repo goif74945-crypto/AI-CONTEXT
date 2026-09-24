@@ -1,0 +1,35 @@
+{
+  "queue_id": "QUEUE-GOLDEN-001",
+  "version": "1.0.0",
+  "ordering_policy": "PRIORITY_THEN_ENQUEUE_SEQUENCE_THEN_COMMAND_ID",
+  "entries": [
+    {
+      "command_id": "CMD-A",
+      "priority": "NORMAL",
+      "enqueue_sequence": 1,
+      "dependency_ids": [],
+      "queue_state": "READY",
+      "blocked_reasons": []
+    },
+    {
+      "command_id": "CMD-B",
+      "priority": "HIGH",
+      "enqueue_sequence": 2,
+      "dependency_ids": [
+        "CMD-A"
+      ],
+      "queue_state": "WAITING_DEPENDENCY",
+      "blocked_reasons": [
+        "CMD-A_NOT_COMPLETED"
+      ]
+    },
+    {
+      "command_id": "CMD-C",
+      "priority": "HIGH",
+      "enqueue_sequence": 3,
+      "dependency_ids": [],
+      "queue_state": "READY",
+      "blocked_reasons": []
+    }
+  ]
+}

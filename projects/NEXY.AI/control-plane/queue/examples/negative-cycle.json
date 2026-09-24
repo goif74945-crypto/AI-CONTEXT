@@ -1,0 +1,31 @@
+{
+  "queue_id": "QUEUE-NEGATIVE-CYCLE-001",
+  "version": "1.0.0",
+  "ordering_policy": "PRIORITY_THEN_ENQUEUE_SEQUENCE_THEN_COMMAND_ID",
+  "entries": [
+    {
+      "command_id": "CMD-A",
+      "priority": "NORMAL",
+      "enqueue_sequence": 1,
+      "dependency_ids": [
+        "CMD-B"
+      ],
+      "queue_state": "WAITING_DEPENDENCY",
+      "blocked_reasons": [
+        "DEPENDENCY"
+      ]
+    },
+    {
+      "command_id": "CMD-B",
+      "priority": "NORMAL",
+      "enqueue_sequence": 2,
+      "dependency_ids": [
+        "CMD-A"
+      ],
+      "queue_state": "WAITING_DEPENDENCY",
+      "blocked_reasons": [
+        "DEPENDENCY"
+      ]
+    }
+  ]
+}

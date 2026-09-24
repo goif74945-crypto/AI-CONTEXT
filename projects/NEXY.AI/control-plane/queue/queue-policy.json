@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "priority_order": [
+    "CRITICAL",
+    "HIGH",
+    "NORMAL",
+    "LOW"
+  ],
+  "deterministic_order": [
+    "priority_rank ASC",
+    "enqueue_sequence ASC",
+    "command_id lexicographic ASC"
+  ],
+  "readiness_rules": [
+    "READY only when every dependency command exists and is COMPLETED.",
+    "Missing dependency keeps entry WAITING_DEPENDENCY and is a validation error for executable queue state.",
+    "A command MUST NOT depend on itself.",
+    "Command dependency graph MUST be acyclic.",
+    "A command_id may appear at most once in one queue snapshot.",
+    "Queue state CLAIMED is informational until P4.4 validates an active lease.",
+    "TERMINAL entries are not scheduler candidates."
+  ],
+  "mutation_rules": [
+    "Enqueue allocates a monotonic enqueue_sequence supplied by the queue authority; wall-clock time is not an ordering authority.",
+    "Queue reordering cannot bypass dependency readiness.",
+    "Priority changes are explicit queue mutations and do not alter command history.",
+    "Queue storage does not grant command execution permission."
+  ]
+}
