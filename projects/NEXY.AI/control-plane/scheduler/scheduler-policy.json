@@ -1,0 +1,13 @@
+{
+ "schema_version":"1.0.0",
+ "candidate_order":["priority_rank","enqueue_sequence","command_id"],
+ "worker_order":["availability","worker_id"],
+ "dispatch_requires":["queue_state=READY","dependencies=SATISFIED","head_guard=PASS","collision_state=CLEAR","eligible_worker=true"],
+ "rules":[
+  "No wall-clock timestamp or RNG may break candidate ties.",
+  "A scheduler decision does not create a claim; P4.4 claim/lease must still succeed before execution.",
+  "STALE or BLOCKED head guard forbids dispatch.",
+  "Any active path/resource/dependency-closure collision forbids dispatch.",
+  "Commands requiring a human gate are not automatically dispatched."
+ ]
+}
