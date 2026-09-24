@@ -1,0 +1,38 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "O_SOVEREIGN_UNIVERSE_HOST",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 47,
+  "counts": {
+    "VERIFIED": 0,
+    "PARTIAL": 0,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "UNKNOWN": 0,
+    "CONFLICT": 0,
+    "MISSING": 0,
+    "OUT_OF_SCOPE": 0,
+    "FUTURE_SCOPE": 47,
+    "SUPERSEDED": 0
+  },
+  "source_proof": [
+    "All 47 denominator units are explicitly FUTURE_SCOPE / FUTURE_ARCHITECTURE under constitutional source authority."
+  ],
+  "implementation_proof": [
+    "Implementation presence/absence is intentionally not promoted into current DOC-C compliance because these units are future architecture."
+  ],
+  "test_proof": [
+    "Current-build tests are not required solely by these future-scope units."
+  ],
+  "linked_findings": [],
+  "new_findings": [],
+  "gaps": [],
+  "verdict": "FUTURE_SCOPE",
+  "next_proof_required": [
+    "Re-audit if governance promotes any unit into current build scope."
+  ],
+  "next_category": "P_CONSTITUTIONAL_LAYERS",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
