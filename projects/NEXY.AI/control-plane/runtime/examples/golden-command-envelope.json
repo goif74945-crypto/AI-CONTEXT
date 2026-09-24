@@ -1,0 +1,27 @@
+{
+  "command": {
+    "command_id": "CMD-DEMO-001",
+    "expected_head": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "target_repo": "goif74945-crypto/NEXY.AI-",
+    "target_branch": "work",
+    "target_scope": ["src/core"],
+    "allowed_change_surface": ["src/core"],
+    "forbidden_change_surface": ["secrets"],
+    "dependencies": [],
+    "retry_policy": {
+      "max_attempts": 3,
+      "backoff_policy": "EXPONENTIAL_BOUNDED",
+      "retryable_states": ["FAILED"]
+    },
+    "status": "READY"
+  },
+  "runtime": {
+    "priority": "HIGH",
+    "enqueue_sequence": 1,
+    "target_role": "BUILDER",
+    "required_capabilities": ["code_write"],
+    "requires_human_gate": false,
+    "resource_claims": ["repo:NEXY.AI-"],
+    "dependency_claims": ["core:execution"]
+  }
+}
