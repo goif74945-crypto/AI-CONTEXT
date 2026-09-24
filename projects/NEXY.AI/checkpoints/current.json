@@ -24,10 +24,11 @@
     "10 Builder / Auditor Playbooks",
     "11 Golden + Negative Corpus",
     "12 Context Router + Context Pack Generator",
-    "13 Snapshot / Checkpoint / Cross-Chat Handoff"
+    "13 Snapshot / Checkpoint / Cross-Chat Handoff",
+    "14 Semantic Diff + Change Impact"
   ],
-  "last_completed_node": "13 Snapshot / Checkpoint / Cross-Chat Handoff",
-  "next_node": "14 Semantic Diff + Change Impact",
+  "last_completed_node": "14 Semantic Diff + Change Impact",
+  "next_node": "15 Project Intelligence Graph",
   "artifacts": [
     "ontology/",
     "requirements/",
