@@ -1,25 +1,20 @@
-# Failure / Recovery Library Validation Report
+# Failure / Recovery Library Validation
 
 ## Result
-**PASS — structural validation**
+**PASS — structural initial library**
 
-- records: **24**
-- JSONL parse errors: **0**
-- duplicate failure IDs: **0**
-- records missing required fields: **0**
+- canonical wire failure classes: **30**
+- observed internal VNext failure classes: **32**
+- source scenario failures: **10**
+- total failure records: **72**
+- recovery playbook records: **66**
 
-## Required fields checked
-`failure_id, source_record, context, symptom, root_cause, failed_approach, why_failed, successful_recovery, affected_systems, regression_test, prevention, historical_status, proof, reusable_rule`
+## Important semantics
+This initial library is not an incident-history database yet.
 
-## Semantics
-This validation proves the failure-intelligence records are structurally complete enough for AI lookup/reuse.
+Fields such as `root_cause`, `failed_approach`, and `successful_recovery` remain UNKNOWN/NOT_ESTABLISHED unless an actual incident/repair proves them.
 
-It does **not** make historical proof current. Every record remains bound to its source record/commit/evidence, and a recovery that worked historically must be reverified against the current target HEAD before it is treated as current PASS.
+Static test paths are regression candidates only; they were not executed in this library build.
 
-## Engineering use
-Before modifying an affected subsystem:
-1. search by `affected_systems`;
-2. inspect prior root causes and failed approaches;
-3. reuse prevention/regression obligations;
-4. refresh current implementation/evidence;
-5. never repeat an approach known to have failed without a new reason/evidence.
+## Namespace rule
+Canonical wire errors and internal VNext failure codes are separate layers even when a code string is identical.
