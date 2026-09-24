@@ -1,21 +1,13 @@
 # NEXY.AI Invariant Registry
 
-Canonical:
+Files:
 - `invariants.jsonl`
 - `invariant.schema.json`
 - `validation-report.md`
 
-This registry answers:
+Purpose: answer **“what must not break if this system changes?”**
 
-> **What must never break when AI changes NEXY?**
+Each invariant links:
+`INVARIANT → systems → requirements → source → implementation locations → verification obligations`.
 
-Records include:
-- governing law/entity;
-- requirement links;
-- severity;
-- violation behavior;
-- required regression classes;
-- implementation anchors;
-- source provenance.
-
-Status is deliberately `NOT_EVALUATED` until Test/Evidence traceability exists.
+Status remains `NOT_EVALUATED` until tests/evidence are attached.
