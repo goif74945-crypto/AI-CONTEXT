@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "routes": [
+    {"when":"RETRY_EXHAUSTED","terminal_class":"DEAD_LETTER","automatic_requeue":false},
+    {"when":"VALIDATION_FAILURE","terminal_class":"DEAD_LETTER","automatic_requeue":false},
+    {"when":"SECURITY_VIOLATION","terminal_class":"QUARANTINE","automatic_requeue":false},
+    {"when":"AUTHORITY_CONFLICT","terminal_class":"BLOCKED","automatic_requeue":false},
+    {"when":"DESTRUCTIVE_HUMAN_GATE","terminal_class":"BLOCKED","automatic_requeue":false},
+    {"when":"STALE_HEAD","terminal_class":"BLOCKED","automatic_requeue":false},
+    {"when":"UNKNOWN","terminal_class":"DEAD_LETTER","automatic_requeue":false}
+  ],
+  "release_rules": [
+    "Original terminal record is immutable.",
+    "No automatic transition from terminal record to READY.",
+    "Re-entry requires a new or superseding command after applicable HEAD, scope, authority, security and dependency revalidation.",
+    "QUARANTINE release requires authorized evidence-backed review.",
+    "Supersession history MUST remain acyclic."
+  ]
+}
