@@ -1,36 +1,26 @@
-# PLAYBOOK — Audit Security
+# NEXY Auditor Playbook
 
-## PURPOSE
-Audit trust boundaries, authorization, input isolation, secret handling and containment without claiming security from design prose.
+## Universal audit law
+1. Pin exact repository/branch/HEAD and observed environment.
+2. Resolve source authority and scope before reading code.
+3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
+4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
+5. File existence, docs, mocks, build success, or comments are never runtime proof.
+6. Search failure history and known conflicts before declaring a new root cause.
+7. Preserve evidence even when verdict is FAIL.
 
-## PROCEDURE
-1. Load trust-boundaries, permission matrix, threat model.
-2. Identify assets/actors/trust transitions.
-3. Inspect every external/untrusted input boundary.
-4. Inspect auth/session/role/CSRF/rate/idempotency where applicable.
-5. Inspect external model/tool/provider isolation.
-6. Inspect secrets handling and frontend exposure.
-7. Inspect sandbox/execution permissions.
-8. Inspect tenant/session/project isolation.
-9. Inspect security incident emission and freeze/containment.
-10. Test abuse paths appropriate to the target.
-11. Search for hidden admin/debug/force routes.
-12. Check current deployment evidence before making operational security claims.
+# Workflow: Audit Security / Trust Boundaries
 
-## ATTACK CLASSES
-- prompt/instruction injection;
-- replay/reuse;
-- privilege escalation;
-- IDOR/cross-project access;
-- session fixation/revoked-session reuse;
-- CSRF;
-- rate-limit bypass;
-- secret leakage;
-- unsafe RCE/tool invocation;
-- sandbox escape;
-- model output injection;
-- tenant/universe escape;
-- audit suppression.
+## Sequence
+1. Load trust-boundary and permission matrices.
+2. Enumerate external inputs, secrets, roles, sessions, cross-plane calls.
+3. Verify validation and authorization at each receiver.
+4. Attack auth replay, OTAC abuse, CSRF, rate-limit bypass and session misuse.
+5. Attack prompt/model injection and authority escalation.
+6. Attack sandbox/tenant/universe escape where in scope.
+7. Verify security incidents/audit evidence are fail-closed.
+8. Confirm UI visibility is never the authorization layer.
+9. Confirm secrets are absent from client/source/log surfaces where forbidden.
 
-## PASS
-Requires matching evidence; static code alone cannot prove runtime containment/security.
+## DONE
+No untrusted path crosses into authority without the required proof/control.
