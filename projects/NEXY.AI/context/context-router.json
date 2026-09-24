@@ -1,0 +1,456 @@
+{
+  "schema_version": "1.0.0",
+  "resolution_order": [
+    "classify task_type",
+    "resolve explicit ontology/system IDs from names/aliases",
+    "expand REQUIRED dependencies only",
+    "expand affected invariants and contracts",
+    "attach authority/scope/conflicts",
+    "attach implementation refs for pinned HEAD if task touches code",
+    "attach test/evidence/failure history",
+    "stop expansion when context budget reached; never drop authority/invariant/failure records before optional examples"
+  ],
+  "task_routes": [
+    {
+      "task_type": "QUEUE_BUG",
+      "match": [
+        "queue",
+        "worker",
+        "BullMQ",
+        "idempotency",
+        "stale job",
+        "dispatch"
+      ],
+      "root_entities": [
+        "QUEUE-EXECUTION",
+        "FSM-QUEUE-JOB",
+        "ENGINE-IDEMPOTENCY"
+      ],
+      "required_context": [
+        "requirements",
+        "dependency_graph",
+        "contracts",
+        "fsm",
+        "invariants",
+        "state",
+        "events",
+        "config",
+        "failures",
+        "implementation",
+        "tests",
+        "evidence"
+      ],
+      "priority_context": [
+        "INV-DOC-C-IDEMPOTENCY-001",
+        "FAIL-QUEUE-SCHEMA-001",
+        "FAIL-QUEUE-STALE-JOB-001",
+        "FAIL-QUEUE-REDIS-AOF-001",
+        "FAIL-DISPATCH-DUPLICATE-001"
+      ]
+    },
+    {
+      "task_type": "AUTH_BUG",
+      "match": [
+        "auth",
+        "OTAC",
+        "session",
+        "CSRF",
+        "RBAC",
+        "login",
+        "logout"
+      ],
+      "root_entities": [
+        "MODULE-AUTH",
+        "SERVICE-OTAC",
+        "SERVICE-SESSION",
+        "MODULE-CSRF",
+        "MODULE-RBAC"
+      ],
+      "required_context": [
+        "requirements",
+        "contracts",
+        "security",
+        "state",
+        "events",
+        "config",
+        "failures",
+        "implementation",
+        "tests",
+        "evidence"
+      ],
+      "priority_context": [
+        "INV-DOC-C-AUTH-BACKEND-001",
+        "FAIL-AUTH-OTAC-ABUSE-001",
+        "FAIL-AUTH-SESSION-CAP-001"
+      ]
+    },
+    {
+      "task_type": "VAULT_CHANGE",
+      "match": [
+        "vault",
+        "artifact",
+        "revision",
+        "commit",
+        "OCC",
+        "blob"
+      ],
+      "root_entities": [
+        "STORAGE-VAULT",
+        "DATA-ARTIFACT",
+        "DATA-REVISION",
+        "DATA-COMMIT"
+      ],
+      "required_context": [
+        "requirements",
+        "contracts",
+        "invariants",
+        "state",
+        "events",
+        "failures",
+        "implementation",
+        "tests",
+        "evidence"
+      ],
+      "priority_context": [
+        "INV-DOC-C-VAULT-IMMUTABLE-HISTORY-001",
+        "INV-DOC-C-IDEMPOTENCY-001",
+        "FAIL-VAULT-OCC-001"
+      ]
+    },
+    {
+      "task_type": "FSM_CHANGE",
+      "match": [
+        "state transition",
+        "FSM",
+        "FREEZE",
+        "STOP",
+        "recover"
+      ],
+      "root_entities": [
+        "FSM-EXECUTION",
+        "LAW-FSM-LOCK"
+      ],
+      "required_context": [
+        "requirements",
+        "fsm",
+        "invariants",
+        "authority",
+        "state",
+        "events",
+        "failures",
+        "implementation",
+        "tests",
+        "evidence"
+      ],
+      "priority_context": [
+        "INV-DOC-C-FSM-LEGAL-001",
+        "INV-DOC-C-FREEZE-001",
+        "FAIL-INVALID-FSM-001",
+        "FAIL-FREEZE-RECOVERY-DENIED-001"
+      ]
+    },
+    {
+      "task_type": "RELEASE_AUDIT",
+      "match": [
+        "release",
+        "deploy",
+        "DOC-E",
+        "production",
+        "signoff",
+        "rollback"
+      ],
+      "root_entities": [
+        "ENGINE-RELEASE-POLICY",
+        "LAW-VERIFIED-OUTPUT-ONLY",
+        "SYS-NEXY"
+      ],
+      "required_context": [
+        "requirements",
+        "contracts",
+        "invariants",
+        "failures",
+        "traceability",
+        "evidence",
+        "tests",
+        "snapshot"
+      ],
+      "priority_context": [
+        "INV-NEXY-UNVERIFIED-NO-RELEASE-001",
+        "FAIL-EVIDENCE-STALE-HEAD-001",
+        "FAIL-RELEASE-SIGNOFF-001"
+      ]
+    },
+    {
+      "task_type": "L1O_WORK",
+      "match": [
+        "L1o",
+        "Constraint Engine",
+        "DGE",
+        "self auditor",
+        "Code-Brain"
+      ],
+      "root_entities": [
+        "SYS-L1O"
+      ],
+      "required_context": [
+        "requirements",
+        "dependency_graph",
+        "contracts",
+        "invariants",
+        "authority",
+        "implementation",
+        "tests",
+        "failures"
+      ],
+      "priority_context": [
+        "REQ-L1O-001",
+        "REQ-L1O-007",
+        "REQ-L1O-012"
+      ]
+    },
+    {
+      "task_type": "LO2_WORK",
+      "match": [
+        "Lo2",
+        "law synthesis",
+        "quanta",
+        "learning",
+        "evolution"
+      ],
+      "root_entities": [
+        "SYS-LO2",
+        "LAW-ADAPTIVE-LEARNING-GOVERNED"
+      ],
+      "required_context": [
+        "requirements",
+        "authority",
+        "supersession",
+        "invariants",
+        "failures",
+        "implementation",
+        "tests"
+      ],
+      "priority_context": [
+        "INV-LO2-NO-SILENT-TRUTH-REWRITE-001",
+        "REQ-LO2-006",
+        "REQ-LO2-008"
+      ]
+    },
+    {
+      "task_type": "LO3_WORK",
+      "match": [
+        "Lo3",
+        "swarm",
+        "adversarial",
+        "weighted proof",
+        "agent"
+      ],
+      "root_entities": [
+        "SYS-LO3",
+        "FABRIC-SWARM"
+      ],
+      "required_context": [
+        "requirements",
+        "contracts",
+        "security",
+        "invariants",
+        "failures",
+        "implementation",
+        "tests"
+      ],
+      "priority_context": [
+        "INV-NEXY-SWARM-NOT-FINAL-001",
+        "REQ-LO3-006",
+        "REQ-LO3-012"
+      ]
+    },
+    {
+      "task_type": "GAME_DETERMINISM",
+      "match": [
+        "game",
+        "shard",
+        "cross-shard",
+        "netcode",
+        "Q64.64",
+        "crowd"
+      ],
+      "root_entities": [
+        "FABRIC-GAME",
+        "LAW-GAME-NUMERIC",
+        "PROTOCOL-CROSS-SHARD-TRANSFER"
+      ],
+      "required_context": [
+        "requirements",
+        "authority",
+        "invariants",
+        "fsm",
+        "state",
+        "failures",
+        "implementation",
+        "tests"
+      ],
+      "priority_context": [
+        "INV-GAME-CLIENT-NOT-AUTHORITY-001",
+        "INV-GAME-CROSS-SHARD-NO-DUP-001"
+      ]
+    },
+    {
+      "task_type": "ROBOTICS_SAFETY",
+      "match": [
+        "robot",
+        "RCL",
+        "safety kernel",
+        "ROS2",
+        "MCU",
+        "E-stop"
+      ],
+      "root_entities": [
+        "SYSTEM-RCL",
+        "KERNEL-SAFETY"
+      ],
+      "required_context": [
+        "requirements",
+        "authority",
+        "invariants",
+        "security",
+        "failures",
+        "implementation",
+        "tests",
+        "evidence"
+      ],
+      "priority_context": [
+        "INV-ROBOT-SAFETY-OVERRIDE-001",
+        "REQ-RCL-011",
+        "CONFLICT-RCL-LATENCY-001"
+      ]
+    },
+    {
+      "task_type": "UNIVERSE_SANDBOX",
+      "match": [
+        "Universe",
+        "sandbox",
+        "Firecracker",
+        "Kata",
+        "gVisor",
+        "WASM",
+        "capability"
+      ],
+      "root_entities": [
+        "RUNTIME-UNIVERSE",
+        "LAW-RECURSIVE-SANDBOX",
+        "REGISTRY-CAPABILITY"
+      ],
+      "required_context": [
+        "requirements",
+        "authority",
+        "fsm",
+        "invariants",
+        "security",
+        "failures",
+        "implementation",
+        "tests"
+      ],
+      "priority_context": [
+        "INV-CONST-NO-PRIVILEGE-ESCALATION-001",
+        "REQ-CONST-010",
+        "REQ-NCF-009"
+      ]
+    },
+    {
+      "task_type": "API_CHANGE",
+      "match": [
+        "API",
+        "route",
+        "endpoint",
+        "SystemEnvelope"
+      ],
+      "root_entities": [
+        "GATEWAY-API",
+        "CONTRACT-SYSTEM-ENVELOPE"
+      ],
+      "required_context": [
+        "requirements",
+        "contracts",
+        "security",
+        "config",
+        "failures",
+        "implementation",
+        "tests"
+      ],
+      "priority_context": [
+        "REQ-DOC-C-CONTRACT-001",
+        "REQ-DOC-C-API-001",
+        "REQ-DOC-C-API-002"
+      ]
+    },
+    {
+      "task_type": "UI_CHANGE",
+      "match": [
+        "UI",
+        "screen",
+        "component",
+        "frontend"
+      ],
+      "root_entities": [
+        "UI-FRONT",
+        "LAYER-HUMAN-GRAVITY"
+      ],
+      "required_context": [
+        "requirements",
+        "contracts",
+        "security",
+        "state",
+        "invariants",
+        "implementation",
+        "tests"
+      ],
+      "priority_context": [
+        "INV-NEXY-UI-NOT-AUTHORITY-001",
+        "REQ-DOC-C-UI-001"
+      ]
+    },
+    {
+      "task_type": "SPEC_CONFLICT",
+      "match": [
+        "conflict",
+        "which spec",
+        "supersede",
+        "old vs new",
+        "authority"
+      ],
+      "root_entities": [
+        "SYS-NEXY"
+      ],
+      "required_context": [
+        "authority",
+        "scope",
+        "supersession",
+        "conflicts",
+        "requirements",
+        "ontology"
+      ],
+      "priority_context": []
+    }
+  ],
+  "context_priority": [
+    "authority",
+    "scope",
+    "requirements",
+    "invariants",
+    "fsm",
+    "contracts",
+    "failures",
+    "dependencies",
+    "implementation",
+    "tests",
+    "evidence",
+    "examples"
+  ],
+  "hard_rules": [
+    "Never omit authority/scope for a task that could change semantics.",
+    "Never include stale evidence as current proof.",
+    "Never promote CANDIDATE implementation refs to exact without reading them.",
+    "For physical robotics claims, include physical-evidence requirement even if no physical evidence exists.",
+    "When unresolved conflict affects requested decision, pack must expose CONFLICT rather than choose silently."
+  ]
+}
