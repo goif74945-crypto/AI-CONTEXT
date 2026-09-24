@@ -1,0 +1,10 @@
+{
+  "case_id": "CASE-NEXY-INTELLIGENCE-SOURCE-ALIGNMENT-V2-20260925",
+  "task_id": "TASK-NEXY-INTELLIGENCE-SOURCE-ALIGNMENT-V2-20260925",
+  "issue": "Prior summaries mixed or compressed role terminology across multiple design stages.",
+  "resolution": "Canonical note now preserves early, L600, and Final Architecture lineage while separating design authority from implementation truth.",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "RESOLVED",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

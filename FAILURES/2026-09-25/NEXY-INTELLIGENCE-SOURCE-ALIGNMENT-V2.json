@@ -1,0 +1,9 @@
+{
+  "failure_id": "FAIL-NEXY-INTELLIGENCE-SOURCE-ALIGNMENT-V2-20260925",
+  "task_id": "TASK-NEXY-INTELLIGENCE-SOURCE-ALIGNMENT-V2-20260925",
+  "status": "NO_NEW_EXECUTION_FAILURE",
+  "prior_failure_ref": "FAIL-NEXY-L1O-ROLE-OVERCOMPRESSION-20260925",
+  "prevention": "Future NEXY role answers must read the source-bound terminology note and preserve design-stage lineage.",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

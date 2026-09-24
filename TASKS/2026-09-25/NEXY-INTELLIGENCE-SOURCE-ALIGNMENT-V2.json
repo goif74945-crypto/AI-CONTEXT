@@ -1,0 +1,58 @@
+{
+  "task_id": "TASK-NEXY-INTELLIGENCE-SOURCE-ALIGNMENT-V2-20260925",
+  "title": "Align NEXY intelligence role data with authoritative design source",
+  "mode": "CROSS_SOURCE_REVIEW",
+  "scope": "L1o/Lo3/Lo2 terminology and architecture lineage",
+  "inputs_summary": "User requested project data be updated to match the design file after identifying inaccurate prior explanations.",
+  "sources": [
+    {
+      "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "paragraph_ranges": [
+        [
+          11037,
+          11083
+        ],
+        [
+          11284,
+          11895
+        ],
+        [
+          12373,
+          12467
+        ]
+      ]
+    }
+  ],
+  "actions": [
+    "Parsed the attached DOCX directly.",
+    "Separated early Trinity definitions, L600 reframed specs, and Final Absolute Architecture.",
+    "Searched AI-CONTEXT for conflicting generic role phrases and found no additional direct matches.",
+    "Updated the canonical source-bound role note only; sealed audit artifacts and authoritative source were not modified."
+  ],
+  "changes": [
+    "projects/NEXY.AI/source-normalization/role-corrections/NEXY-INTELLIGENCE-ROLE-SOURCE-NOTE-20260925.json -> schema_version 1.1.0"
+  ],
+  "claims": [
+    "L1o must be represented as Sovereign Core / Deterministic Logic Core, not merely a reasoning layer and not the sole system controller.",
+    "Lo3 must be represented as Swarm Governor.",
+    "Lo2 must be represented as Singularity Core / Feedback & Learning Loop.",
+    "Final Architecture separately defines DSL, RSEL, ECL and immutable Safety Kernel, so those control/safety responsibilities must not be collapsed into L1o."
+  ],
+  "proofs": [
+    "Direct DOCX extraction at the recorded paragraph ranges and SHA-256 binding."
+  ],
+  "tests_results": [
+    "Source hash revalidated locally: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "Updated JSON will be parsed on read-back after commit."
+  ],
+  "final_status": "SUCCESS_SOURCE_ALIGNMENT_UPDATED",
+  "next_actions": [
+    "Use this canonical note for future NEXY role explanations and audits.",
+    "Do not treat design claims as implementation-complete without exact-head evidence."
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25",
+  "trace_id": "NEXY-SOURCE-ALIGNMENT-V2/L1O-LO3-LO2",
+  "hash": "HASH_UNAVAILABLE"
+}

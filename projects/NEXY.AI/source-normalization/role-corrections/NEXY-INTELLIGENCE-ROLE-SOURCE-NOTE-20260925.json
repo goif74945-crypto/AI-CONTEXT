@@ -1,52 +1,138 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "id": "NEXY-INTELLIGENCE-ROLE-SOURCE-NOTE-20260925",
   "source": {
     "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
     "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
   },
-  "authoritative_observations": [
+  "source_lineage": [
     {
-      "component": "L1o",
-      "early_name": "The Sovereign Core",
-      "later_final_name": "Deterministic Logic Core",
-      "relationship": "Foundation",
-      "not_equivalent_to": [
-        "whole-system controller",
-        "mere text-stream LLM"
-      ]
-    },
-    {
-      "component": "Lo3",
-      "name": "The Swarm Governor",
-      "relationship": "Power",
-      "purpose": "Force unreliable external AI systems to produce verifiable truth under control."
-    },
-    {
-      "component": "Lo2",
-      "names": [
-        "The Singularity Hub",
-        "Singularity Core"
+      "stage": "EARLY_TRINITY_DEFINITION",
+      "paragraph_ranges": [
+        [
+          11037,
+          11083
+        ]
       ],
-      "relationship": "Evolution",
-      "purpose": "Turn verified experience into synthesized/evolving logic laws."
+      "observations": {
+        "L1o": {
+          "name": "The Sovereign Core",
+          "relationship": "Foundation",
+          "goal": "Standalone intelligence with clean logic; deterministic/formally verified instruction set, SSOT memory, self-reflective success schemas, auto-audit."
+        },
+        "Lo3": {
+          "name": "The Swarm Governor",
+          "relationship": "Power",
+          "goal": "Control and extract value from external AI while preventing hallucination through decomposition, adversarial attack, judging, sandboxing and evidence."
+        },
+        "Lo2": {
+          "name": "The Singularity Hub",
+          "relationship": "Evolution",
+          "goal": "Synthesize verified success patterns/results into logic artifacts and laws, with traceability and distribution back to L1o/Lo3."
+        }
+      }
+    },
+    {
+      "stage": "L600_REFRAMED_SPEC",
+      "paragraph_ranges": [
+        [
+          11284,
+          11491
+        ],
+        [
+          11491,
+          11704
+        ],
+        [
+          11704,
+          11895
+        ]
+      ],
+      "observations": {
+        "L1o": {
+          "name": "Sovereign Core (L600)",
+          "core_goal": "Produce only provable, bounded-correct outputs under strict constraints.",
+          "heart": "Dependency Graph Engine",
+          "not_equivalent_to": [
+            "generic probabilistic chatbot",
+            "mere text-stream reasoning layer"
+          ]
+        },
+        "Lo3": {
+          "name": "Swarm Governor (L600)",
+          "core_goal": "Force unreliable AI systems to produce verifiable truth under control.",
+          "final_insight": "A system that destroys wrong answers until only survivors remain."
+        },
+        "Lo2": {
+          "name": "Singularity Core (L600)",
+          "core_goal": "Continuously synthesize, refine, and evolve provable logic laws from global verified interactions.",
+          "input_rule": "Reject unverified input; does not consume raw user data.",
+          "final_insight": "A machine that turns experience into laws."
+        }
+      }
+    },
+    {
+      "stage": "FINAL_ABSOLUTE_ARCHITECTURE",
+      "paragraph_ranges": [
+        [
+          12373,
+          12467
+        ]
+      ],
+      "core_principles": [
+        "Never output unverified action",
+        "Always quantify uncertainty",
+        "Always bound reasoning within domain"
+      ],
+      "stack": [
+        "INPUT REALITY LAYER (IRL)",
+        "CONTEXT & INTENT RESOLUTION LAYER (CIRL)",
+        "CONSTRAINT LAW ENGINE (CLE)",
+        "L1o — DETERMINISTIC LOGIC CORE",
+        "Lo3 — SWARM GOVERNOR",
+        "DECISION SYNTHESIS LAYER (DSL)",
+        "RISK & SAFETY EVALUATION LAYER (RSEL)",
+        "EXECUTION CONTROL LAYER (ECL)",
+        "SAFETY KERNEL (IMMUTABLE)",
+        "FEEDBACK & LEARNING LOOP (Lo2)"
+      ]
     }
   ],
-  "final_absolute_architecture": {
-    "stack": [
-      "INPUT REALITY LAYER",
-      "CONTEXT & INTENT RESOLUTION LAYER",
-      "CONSTRAINT LAW ENGINE",
-      "L1o DETERMINISTIC LOGIC CORE",
-      "Lo3 SWARM GOVERNOR",
-      "DECISION SYNTHESIS LAYER",
-      "RISK & SAFETY EVALUATION LAYER",
-      "EXECUTION CONTROL LAYER",
-      "SAFETY KERNEL",
-      "FEEDBACK & LEARNING LOOP (Lo2)"
-    ],
-    "implication": "Control authority is distributed across dedicated decision, risk, execution and immutable safety layers; L1o is core deterministic intelligence, not the sole controller."
+  "canonical_role_summary": {
+    "L1o": {
+      "role": "Deterministic Logic Core / Sovereign Core",
+      "responsibility": "Bounded, provable deterministic logic under constraints; canonicalization, constraints, dependency-graph reasoning, multi-path generation/pruning, recursive audit and verified-state flow.",
+      "not_the_same_as": [
+        "whole-system controller",
+        "generic LLM",
+        "mere reasoning layer"
+      ]
+    },
+    "Lo3": {
+      "role": "Swarm Governor",
+      "responsibility": "External-model orchestration, task decomposition, context sharding, adversarial attack, consensus/proof verification, trust evolution and controlled output."
+    },
+    "Lo2": {
+      "role": "Singularity Core / Feedback & Learning Loop",
+      "responsibility": "Consume verified success schemas/results, extract logic quanta, resolve conflicts, synthesize/evolve laws, maintain traceability, version and distribute validated updates."
+    }
   },
-  "status": "SOURCE_BOUND_NOTE",
-  "timestamp_source": "System date 2026-09-25"
+  "authority_and_interpretation_rules": [
+    "These observations describe architecture terminology from the authoritative design file.",
+    "Within the same design file, later L600 and FINAL ABSOLUTE ARCHITECTURE sections are treated as refinements of earlier terminology when wording differs.",
+    "Architecture terminology does not override higher-priority DOC-B/DOC-C current-build law, scope registry, verified implementation state, or current tests.",
+    "Statements in the design file are design requirements/claims unless separately proven in current implementation; do not promote them to implementation facts without repo/runtime evidence."
+  ],
+  "correction_history": [
+    {
+      "version": "1.0.0",
+      "change": "Corrected prior over-compression of L1o and recorded early/final role names."
+    },
+    {
+      "version": "1.1.0",
+      "change": "Added direct paragraph lineage, L600 reframed goals, Final Absolute Architecture stack, and authority rules separating design terminology from implementation truth."
+    }
+  ],
+  "status": "SOURCE_BOUND_CANONICAL_TERMINOLOGY_NOTE",
+  "timestamp_source": "2026-09-25"
 }

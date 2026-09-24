@@ -1,0 +1,31 @@
+{
+  "ledger_id": "LEDGER-NEXY-INTELLIGENCE-SOURCE-ALIGNMENT-V2-20260925",
+  "task_id": "TASK-NEXY-INTELLIGENCE-SOURCE-ALIGNMENT-V2-20260925",
+  "source": [
+    "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx sha256 b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  ],
+  "claim": [
+    "L1o early role is Sovereign Core; L600 reframes its goal to provable bounded-correct outputs; Final Architecture names it Deterministic Logic Core.",
+    "Lo3 is Swarm Governor across the refined design.",
+    "Lo2 evolves from Singularity Hub terminology to Singularity Core / Feedback & Learning Loop in the final stack.",
+    "Final control/safety is distributed across DSL, RSEL, ECL and immutable Safety Kernel rather than assigned solely to L1o."
+  ],
+  "proof": [
+    "DOCX paragraphs 11037-11083",
+    "DOCX paragraphs 11284-11895",
+    "DOCX paragraphs 12373-12467"
+  ],
+  "deps": [
+    "NEXY source hierarchy",
+    "current scope registry",
+    "exact implementation evidence"
+  ],
+  "risk": [
+    "Terminology drift if early design text or implementation facts are mixed without provenance."
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "DIRECT_SOURCE_REVALIDATED_2026-09-25",
+  "trace": "NEXY-SOURCE-ALIGNMENT-V2/L1O-LO3-LO2",
+  "hash": "HASH_UNAVAILABLE"
+}
