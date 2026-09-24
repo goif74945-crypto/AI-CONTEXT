@@ -1,0 +1,30 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "F_STATE_PERSISTENCE_STORAGE",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 43,
+  "counts": {
+    "PARTIAL": 43
+  },
+  "source_proof": [
+    "DOC-C/D vault/state requirements",
+    "AI-CONTEXT state ownership and persistence map",
+    "canonical requirements registry"
+  ],
+  "implementation_proof": [
+    "Prisma durable state models",
+    "packages/api/artifact-restore.ts",
+    "packages/vault/{integrity,versioning}.ts",
+    "vault/repository.ts",
+    "orchestration/freeze/auth state paths"
+  ],
+  "test_proof": [
+    "Persistence/vault/freeze tests present; no successful exact-target-head execution established."
+  ],
+  "findings": [
+    "F-NEXY-FULL-F-RESTORE-TRACE-001",
+    "linked registry-freshness risk: state ownership snapshot is pinned to older codex HEAD"
+  ],
+  "next_category": "G_RECOVERY_RESTART_RESUME",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
