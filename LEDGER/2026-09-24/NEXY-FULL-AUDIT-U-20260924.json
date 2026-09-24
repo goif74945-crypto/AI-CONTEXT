@@ -1,0 +1,21 @@
+{
+  "ledger_id": "NEXY-FULL-AUDIT-U-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "category": "U_FINAL_ARCHITECTURE_LAYERS",
+  "claim": [
+    "18/18 units audited",
+    "18 PARTIAL"
+  ],
+  "proof": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/U_FINAL_ARCHITECTURE_LAYERS.units.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/U_FINAL_ARCHITECTURE_LAYERS.summary.json",
+    "source nonempty paragraphs 10822-10979",
+    "exact target implementation files"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "CURRENT_AT_TARGET_HEAD",
+  "trace": "AUDIT-NEXY-FULL-20260924-01",
+  "hash": "HASH_UNAVAILABLE"
+}
