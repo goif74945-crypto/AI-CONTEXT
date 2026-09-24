@@ -1,0 +1,15 @@
+{
+  "ledger_id": "LEDGER-NEXY-SKILL-STRUCTURAL-20260924-2116",
+  "source_head": "f1ef2108455ede967008c420cefaf62118b1137c",
+  "claim": "All 89 formal NEXY Skill identities passed exact-head static identity and required-structure checks; no runtime verification is implied.",
+  "proof": [
+    "89 formal rows; 89 unique formal IDs; 0 duplicate formal IDs",
+    "89 skills/nexy/**/SKILL.md files",
+    "seven bounded validation batches totaling 89 with 0 structural or identity failures",
+    "projects/NEXY.AI/skills/evidence/2026-09-24-formal-inventory-structural-validation.md"
+  ],
+  "status": "CURRENT_STATIC_VALIDATION",
+  "risk": "MATERIALIZED must not be treated as VERIFIED",
+  "trace_id": "TRACE-NEXY-SKILL-STRUCTURAL-20260924-2116",
+  "hash": "HASH_UNAVAILABLE"
+}
