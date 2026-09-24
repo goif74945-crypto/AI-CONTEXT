@@ -1,0 +1,42 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "J_CONFIGURATION_GOVERNANCE",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 86,
+  "counts": {
+    "PARTIAL": 37,
+    "VERIFIED": 48,
+    "CONFLICT": 1
+  },
+  "source_proof": [
+    "DOCX paragraphs 8298-8305 define DOC-A/B/C/D/E authority separation and DOC-C-only build obligation.",
+    "DOCX paragraphs 8370-8409 define canonical VNEXT_DEFAULTS; paragraph 8392 sets auth.otac_ttl_ms=300000.",
+    "AI-CONTEXT governance authority/scope/supersession/conflict registries loaded from boot HEAD."
+  ],
+  "implementation_proof": [
+    "packages/api/vnext-config.ts at target HEAD contains all 31 registry values; static comparison matched 31/31.",
+    "packages/config/runtime-config.ts uses durable RuntimeConfigVersion snapshots and fail-closed reads.",
+    "packages/contracts/runtime-config.ts excludes structural immutable config and requires expected_version + idempotency_key for mutations."
+  ],
+  "test_proof": [
+    "tests/contract/vnext-defaults.test.ts exists and asserts DOC-C defaults including otac_ttl_ms=300000.",
+    "tests/contract/runtime-config.test.ts exists and asserts immutable fields/OCC/idempotency.",
+    "No GitHub Actions PR workflow run was returned for target HEAD; combined commit status is failure for NEXY Validation R2."
+  ],
+  "evidence_proof": [
+    "evidence/E07-vnext-defaults.md at target HEAD claims PASS but states otac_ttl_ms=900000 and therefore contradicts DOC-C + current code."
+  ],
+  "findings": [
+    "F-NEXY-FULL-J-EVIDENCE-001",
+    "F-NEXY-FULL-DENOM-CONTRACT-001",
+    "F-NEXY-FULL-J-REGISTRY-FRESHNESS-001"
+  ],
+  "containment": {
+    "frozen_for_release_evidence_use": [
+      "evidence/E07-vnext-defaults.md"
+    ],
+    "reason": "S5 evidence-integrity mismatch; do not use as current release proof until refreshed and independently verified."
+  },
+  "next_category": "A_IDENTITY_HUMAN_CANON_UX",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
