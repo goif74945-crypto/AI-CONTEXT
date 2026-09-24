@@ -1,32 +1,25 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "NEXY Cross-Chat / Cross-Agent Handoff",
+  "title": "NEXY Cross-Chat Handoff Package",
   "type": "object",
-  "additionalProperties": false,
   "required": [
-    "handoff_id",
-    "created_at",
+    "chat_id",
     "role",
     "task",
-    "target",
+    "implementation_snapshot",
     "scope",
-    "inputs",
-    "outputs",
+    "input",
+    "output",
     "claims",
     "proof",
     "tests",
     "changes",
     "findings",
     "unresolved",
-    "next_action",
-    "authority",
-    "freshness"
+    "next_action"
   ],
   "properties": {
-    "handoff_id": {
-      "type": "string"
-    },
-    "created_at": {
+    "chat_id": {
       "type": "string"
     },
     "role": {
@@ -35,7 +28,7 @@
     "task": {
       "type": "string"
     },
-    "target": {
+    "implementation_snapshot": {
       "type": "object"
     },
     "scope": {
@@ -44,38 +37,59 @@
         "type": "string"
       }
     },
-    "inputs": {
-      "type": "array"
+    "input": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
-    "outputs": {
-      "type": "array"
+    "output": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "claims": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
     },
     "proof": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
     },
     "tests": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
     },
     "changes": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
     },
     "findings": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
     },
     "unresolved": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
     },
     "next_action": {
-      "type": "array"
-    },
-    "authority": {
-      "type": "array"
-    },
-    "freshness": {
-      "type": "object"
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     }
   }
 }
