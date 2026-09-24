@@ -1,6 +1,6 @@
 {
   "pair_id": "NEXY-CLOSED-LOOP-01",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "auditor_role": "AUDITOR_CHAT",
   "builder_worker_id": "BUILDER-01",
   "control_repo": "goif74945-crypto/AI-CONTEXT",
@@ -40,17 +40,23 @@
       "CORE-003 nexy-law",
       "CORE-004 nexy-freeze",
       "CORE-005 nexy-determinism",
-      "CORE-006 nexy-recovery"
+      "CORE-006 nexy-recovery",
+      "AI-001 nexy-agent",
+      "AI-002 nexy-agent-adapter",
+      "AI-003 nexy-swarm",
+      "AI-004 nexy-consensus",
+      "AI-005 nexy-adversarial",
+      "AI-007 nexy-pipeline"
     ],
     "blocked_identity_gaps": [
       "nexy-integration: no separate formal numbered identity in source; do not invent ID"
     ],
-    "last_evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-wave4-core-materialization.md",
-    "next_wave": "WAVE_5_AI"
+    "last_evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-wave5-ai-materialization.md",
+    "next_wave": "WAVE_6_DATA"
   },
   "background_execution_claimed": false,
   "last_control_observation": {
-    "ai_context_head": "6c3e15935d06551e750fb01d49b05aa2473c0d89",
+    "ai_context_head": "b70e7d7a22f056c2a5cf1e0e8d18bff75d92304a",
     "ready_commands": 1,
     "active_claims": 0
   }
