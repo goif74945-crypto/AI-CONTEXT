@@ -1,0 +1,64 @@
+{
+  "query_id": "IMPACT-GOLDEN-CONFIG-001",
+  "source_change": {
+    "change_type": "CONFIG",
+    "target_repo": "goif74945-crypto/NEXY.AI-",
+    "target_branch": "example",
+    "before_head": "1111111111111111111111111111111111111111",
+    "after_head": "2222222222222222222222222222222222222222",
+    "changed_files": [
+      "example/config"
+    ],
+    "changed_symbols": [],
+    "declared_subject_ids": [
+      "CONFIG-EXAMPLE"
+    ]
+  },
+  "mapping": {
+    "exact": [
+      {
+        "certainty": "EXACT",
+        "subject_id": "CONFIG-EXAMPLE",
+        "basis": [
+          "explicit config registry ID supplied by caller"
+        ]
+      }
+    ],
+    "candidate": [],
+    "unknown": []
+  },
+  "recheck_before_pass": {
+    "requirements": [
+      "config-linked requirements"
+    ],
+    "contracts": [
+      "contracts consuming the config"
+    ],
+    "fsms": [],
+    "invariants": [
+      "threshold/timeout invariants"
+    ],
+    "state": [],
+    "security": [
+      "permission/security boundaries if value changes authority"
+    ],
+    "events": [],
+    "config": [
+      "CONFIG-EXAMPLE"
+    ],
+    "dependents": [
+      "typed dependents"
+    ],
+    "tests": [
+      "boundary tests"
+    ],
+    "regression": [
+      "config regression"
+    ],
+    "evidence_obligations": [
+      "invalidate/rerun evidence tied to changed behavior"
+    ]
+  },
+  "unknowns": [],
+  "status": "NOT_VERIFIED"
+}

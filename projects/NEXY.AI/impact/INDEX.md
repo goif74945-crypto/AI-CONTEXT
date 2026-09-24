@@ -1,37 +1,18 @@
 # NEXY.AI Change Impact Engine Data
 
 ## Purpose
-Pre-computed impact intelligence for AI builders/auditors.
-
-Query by `entity_id` before changing a system to obtain:
-- prerequisites/dependents;
-- transitive dependency blast radius;
-- semantic graph neighbors;
-- governing requirements;
-- affected invariants;
-- historical failure intelligence;
-- mapped implementation/tests/evidence;
-- required regression classes.
+Per-entity derived impact data consumed by the canonical `change-impact/` facade.
 
 ## Files
-- `system-impact.jsonl` — 516 entity impact records.
-- `impact.schema.json` — record schema.
-- `validation-report.md` — derivation/integrity report.
+- `system-impact.jsonl` — **518** entity impact records.
+- `impact.schema.json`
+- `validation-report.md`
 
-## Derivation
-Generated from current AI-CONTEXT:
-ontology + dependency graph + invariants + failure library + traceability spine.
+## Reconciliation
+The ontology additions `EVENT-EXEC-CANCEL` and `EVENT-EXEC-TIMEOUT` are now included. Both are CURRENT_BUILD EVENTs, PART_OF `FSM-EXECUTION`, with the established EVENT regression class `STATIC + STATE_TRANSITION`.
 
-No impact relationship is treated as runtime proof.
-
-## Direction
-For `REQUIRES`:
-`dependent → prerequisite`.
-
-Therefore:
-- `direct_prerequisites` = what this entity requires.
-- `direct_dependents` = what may be affected if this entity changes.
+## Canonical query boundary
+Do not answer impact questions from this dataset alone; use `projects/NEXY.AI/change-impact/`.
 
 ## Staleness
-Implementation/test/evidence references inherit the revision pin/freshness of their source registries.
-Refresh those registries when target HEAD changes.
+Implementation/test/evidence refs inherit their source revision pins and must be refreshed when target HEAD changes.

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "engine_id": "NEXY-SEMANTIC-DIFF",
   "purpose": "Translate file/symbol/config/schema changes into behavior/authority/contract/invariant impact.",
   "input": {
@@ -154,15 +154,23 @@
     "NON_DEPLOYABLE_UNTIL_REPROVEN"
   ],
   "sources": [
-    "projects/NEXY.AI/impact/system-impact.jsonl",
-    "projects/NEXY.AI/traceability/requirement-trace.jsonl",
-    "projects/NEXY.AI/contracts/",
-    "projects/NEXY.AI/invariants/invariants.jsonl",
-    "projects/NEXY.AI/fsm/",
+    "projects/NEXY.AI/change-impact/change-impact-index.jsonl",
     "projects/NEXY.AI/config/config-registry.json",
-    "projects/NEXY.AI/state/",
-    "projects/NEXY.AI/security/",
+    "projects/NEXY.AI/contracts/",
+    "projects/NEXY.AI/fsm/",
+    "projects/NEXY.AI/impact/system-impact.jsonl",
+    "projects/NEXY.AI/intelligence-graph/graph-meta.json",
+    "projects/NEXY.AI/invariants/invariants.jsonl",
     "projects/NEXY.AI/regression/regressions.jsonl",
-    "projects/NEXY.AI/release/"
+    "projects/NEXY.AI/release/",
+    "projects/NEXY.AI/security/",
+    "projects/NEXY.AI/state/",
+    "projects/NEXY.AI/traceability/requirement-trace.jsonl"
+  ],
+  "canonical_change_impact_output": "projects/NEXY.AI/change-impact/change-impact-query.schema.json",
+  "certainty_policy": [
+    "EXACT requires an explicit registry/entity/symbol/config/schema/contract mapping or authoritative declared subject ID that is revalidated.",
+    "CANDIDATE is a navigational hypothesis requiring inspection; filename similarity alone can never be EXACT.",
+    "UNKNOWN preserves unresolved impact instead of guessing."
   ]
 }

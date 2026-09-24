@@ -98,6 +98,17 @@
       "schema_version": "2.0.0",
       "package_types": 2,
       "status": "STRUCTURAL_PASS"
+    },
+    "change_impact": {
+      "entity_records": 518,
+      "impact_records": 518,
+      "query_schema_version": "1.0.0",
+      "certainty": [
+        "EXACT",
+        "CANDIDATE",
+        "UNKNOWN"
+      ],
+      "status": "STRUCTURAL_PASS"
     }
   },
   "dynamic_truth": {

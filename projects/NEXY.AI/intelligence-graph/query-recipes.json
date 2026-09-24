@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "recipes": [
+    {
+      "id": "CHANGE_IMPACT_BEFORE_PASS",
+      "question": "If X changes, what must be rechecked before PASS?",
+      "inputs": [
+        "exact/candidate/unknown subject mappings"
+      ],
+      "traversal": [
+        "ENTITY -> requirement edges -> REQUIREMENT",
+        "ENTITY -> GOVERNED_BY_CONTRACT -> CONTRACT",
+        "ENTITY -> GOVERNED_BY_FSM -> FSM",
+        "ENTITY -> PROTECTED_BY -> INVARIANT",
+        "ENTITY -> REQUIRES / reverse REQUIRES -> DEPENDENTS",
+        "REQUIREMENT -> TESTED_BY -> TEST",
+        "evidence links -> evidence freshness"
+      ],
+      "output_contract": "projects/NEXY.AI/change-impact/change-impact-query.schema.json"
+    },
+    {
+      "id": "STALE_EVIDENCE_BY_HEAD",
+      "question": "Which linked evidence cannot prove the current implementation HEAD?",
+      "inputs": [
+        "target HEAD"
+      ],
+      "traversal": [
+        "REQUIREMENT -> evidence",
+        "compare evidence revision binding to target HEAD"
+      ],
+      "output": [
+        "stale evidence IDs",
+        "affected requirements"
+      ]
+    },
+    {
+      "id": "AUTHORITY_CHANGE_IMPACT",
+      "question": "What authority/scope/supersession nodes are affected by a requirement/spec change?",
+      "inputs": [
+        "source/requirement IDs"
+      ],
+      "traversal": [
+        "SOURCE -> AUTHORITY -> REQUIREMENT -> ENTITY",
+        "SUPERSEDED_BY / GOVERNS edges"
+      ],
+      "output": [
+        "authority nodes",
+        "requirements",
+        "entities",
+        "conflicts",
+        "human review obligations"
+      ]
+    }
+  ]
+}

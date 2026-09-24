@@ -1,0 +1,70 @@
+{
+  "query_id": "IMPACT-GOLDEN-CODE-001",
+  "source_change": {
+    "change_type": "CODE",
+    "target_repo": "goif74945-crypto/NEXY.AI-",
+    "target_branch": "example",
+    "before_head": "1111111111111111111111111111111111111111",
+    "after_head": "2222222222222222222222222222222222222222",
+    "changed_files": [
+      "packages/core/vnext-state-matrix.ts"
+    ],
+    "changed_symbols": [
+      "PipelineRun.transition"
+    ],
+    "declared_subject_ids": [
+      "FSM-EXECUTION"
+    ]
+  },
+  "mapping": {
+    "exact": [
+      {
+        "certainty": "EXACT",
+        "subject_id": "FSM-EXECUTION",
+        "basis": [
+          "explicit declared_subject_ids",
+          "exact implementation map required at query time"
+        ]
+      }
+    ],
+    "candidate": [],
+    "unknown": []
+  },
+  "recheck_before_pass": {
+    "requirements": [
+      "linked requirement IDs"
+    ],
+    "contracts": [
+      "governing contracts"
+    ],
+    "fsms": [
+      "FSM-EXECUTION"
+    ],
+    "invariants": [
+      "affected invariant IDs"
+    ],
+    "state": [
+      "state ownership/transition records"
+    ],
+    "security": [],
+    "events": [
+      "EVENT-EXEC-CANCEL",
+      "EVENT-EXEC-TIMEOUT"
+    ],
+    "config": [],
+    "dependents": [
+      "typed dependency/intelligence-graph dependents"
+    ],
+    "tests": [
+      "linked focused tests"
+    ],
+    "regression": [
+      "state-transition regression"
+    ],
+    "evidence_obligations": [
+      "rerun exact-head evidence for affected claims"
+    ]
+  },
+  "unknowns": [],
+  "status": "NOT_VERIFIED"
+}

@@ -1,18 +1,20 @@
 # Semantic Diff + Change Impact Validation
 
 ## Result
-**PASS — derived impact index**
+**PASS — first-class structural/query integration**
 
-- entity impact records: **518**
-- each record includes direct prerequisites/dependents;
-- transitive REQUIRES dependents derived from acyclic dependency DAG;
-- requirement/contract/invariant/failure/test/evidence links attached where available;
-- implementation paths retain blob SHA.
+Observed AI-CONTEXT input HEAD: `7748e64c1a4d526f6fbde67277c1292a3e07b865`
 
-## Rule
-This index is predictive context, not proof that every dependent actually breaks.
+- ontology entities: **518**
+- canonical change-impact records: **518**
+- reconciled per-entity impact records: **518**
+- duplicate/missing entity IDs: **0**
+- dangling prerequisite/dependent references: **0**
+- reconciled records: `EVENT-EXEC-CANCEL`, `EVENT-EXEC-TIMEOUT`
+- change types CODE/CONFIG/SCHEMA/STATE/PERMISSION/CONTRACT/REQUIREMENT_SPEC: PASS
+- EXACT/CANDIDATE/UNKNOWN buckets: PASS
+- golden code/config examples: PASS
+- filename-only mapping remains non-EXACT: PASS
+- semantic-diff + intelligence-graph + invariants + traceability integration contract: PASS
 
-AI must use it to determine **what must be inspected/regressed**, not to invent a FAIL.
-
-## Semantic Diff
-The semantic diff spec covers behavior, contracts, authority, invariants, FSM, persistence, security, determinism, errors, observability, performance, scope and evidence freshness.
+Boundary: structural/derived validation only; no runtime breakage or runtime PASS is inferred.
