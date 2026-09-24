@@ -1,0 +1,72 @@
+{
+  "task_id": "TASK-NEXY-SECOND-PASS-INCIDENT-SEMANTICS-20260924",
+  "title": "NEXY second-pass incident semantics audit",
+  "mode": "AUDIT",
+  "scope": "DOC-C multiple-failure priority, FreezeIncident secondary linkage, canonical incident ErrorCode boundary at target HEAD 84484d...",
+  "inputs_summary": [
+    "authoritative NEXY-IGNIS source",
+    "AI-CONTEXT atomic audit",
+    "exact target repository source"
+  ],
+  "sources": [
+    "DOC-C paragraphs 7519-7527, 8006-8016, 8952-8956",
+    "packages/contracts/errors.ts",
+    "packages/contracts/incidents.ts",
+    "packages/orch-core/system-state.ts",
+    "packages/queue/run-state.ts",
+    "packages/obs/incidents.ts",
+    "prisma/schema.prisma",
+    "tests/contract/pipeline-failure-incident-linkage.test.ts"
+  ],
+  "tools": [
+    "GitHub connector",
+    "local DOCX paragraph extraction"
+  ],
+  "actions": [
+    "compared source failure-priority law to exact target incident persistence",
+    "checked canonical ErrorCode boundary",
+    "checked negative test coverage",
+    "recorded two proven findings"
+  ],
+  "artifacts": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/second-pass/N_FAILURE_INCIDENT_CONSISTENCY.json"
+  ],
+  "claims_proofs": [
+    "Primary incident can be overwritten because run-bound terminal/failure paths update existing FreezeIncident.primaryErrorCode without priority arbitration.",
+    "Incident boundary accepts generic error strings instead of canonical ErrorCode validation."
+  ],
+  "tests_results": "Static source/test inspection only; no exact-target executable test run was initiated or claimed.",
+  "changes": "AI-CONTEXT audit records only; NEXY.AI- implementation unchanged.",
+  "successes": [
+    "two cross-category semantic defects proven and recorded"
+  ],
+  "failures": [],
+  "decisions": [
+    "normal Builder command remains gated until full re-audit/matrix/reconciliation gates complete"
+  ],
+  "unresolved": [
+    "global findings reconciliation",
+    "dependency DAG",
+    "matrix propagation",
+    "runtime reproduction"
+  ],
+  "risks": [
+    "primary incident forensic drift",
+    "noncanonical error code in authoritative incident evidence"
+  ],
+  "limits": [
+    "no runtime execution proof in this pass"
+  ],
+  "rollback": "Revert AI-CONTEXT audit-record commits only if the recorded proofs are disproven; no implementation rollback applicable.",
+  "final_status": "PARTIAL",
+  "next_actions": [
+    "continue full-project second pass and findings reconciliation"
+  ],
+  "dependencies": [
+    "AUDIT-NEXY-FULL-20260924-01"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-24 session date",
+  "trace_id": "AUDIT-NEXY-FULL-20260924-01/SECOND-PASS-N-INCIDENT",
+  "hash": "HASH_UNAVAILABLE"
+}
