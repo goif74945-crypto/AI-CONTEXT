@@ -1,32 +1,51 @@
-# NEXY Builder Playbook
+# NEXY Playbook Contract
 
-## Universal preconditions
-1. Pin repository + branch + exact HEAD.
-2. Resolve ontology entity, requirements, authority/scope/supersession/conflicts.
-3. Resolve dependencies, implementation refs, contracts, FSM, atomic invariants, security/state/event/config.
-4. Check failure/recovery library.
-5. Do not infer PASS from file presence, build success, or docs.
+Every playbook follows:
 
-# Workflow: Add / Modify Law
+1. PRECONDITIONS
+2. REQUIRED_CONTEXT
+3. AUTHORITY / SCOPE CHECK
+4. CHANGE IMPACT
+5. IMPLEMENTATION_SEQUENCE
+6. VALIDATION
+7. NEGATIVE_TESTS
+8. REGRESSION
+9. ROLLBACK
+10. DONE
 
-## Required context
-- authority source;
-- supersession impact;
-- dependent systems;
-- atomic invariant decomposition;
-- enforcement point(s);
-- failure/freeze semantics.
+Global rules:
+- refresh repository branch/HEAD before implementation claims or edits;
+- if HEAD differs from the task lock, STOP/FREEZE;
+- source design ≠ implementation ≠ test ≠ evidence ≠ deployment proof;
+- never patch a CANDIDATE implementation mapping without opening/confirming the file;
+- resolve Authority + Scope + Supersession + Conflict before coding;
+- preserve S5 invariants;
+- UI is not authority;
+- SWARM/model output is not final authority;
+- no test execution evidence = no PASS;
+- do not use stale evidence for current HEAD.
 
-## Sequence
-1. Determine whether this is a new law, new version or supersession.
-2. Never edit historical law semantics in place.
-3. Add/modify governing source and requirement records first.
-4. Decompose law into atomic invariants.
-5. Identify enforcement boundaries and forbidden bypasses.
-6. Implement deterministic enforcement independent of UI.
-7. Add negative tests that deliberately violate each invariant.
-8. Verify no lower-authority subsystem can bypass the law.
-9. Update authority/supersession/invariant/traceability registries.
+# Add Law / Invariant
+
+## PRECONDITIONS
+- authority source explicitly permits new/changed law;
+- supersession relation to old claim/law is known.
+
+## REQUIRED_CONTEXT
+Authority graph, supersession graph, conflicts, invariant registry, impacted FSM/contracts.
+
+## IMPLEMENTATION_SEQUENCE
+1. write machine-testable statement;
+2. define scope and authority;
+3. define violation behavior;
+4. define proof obligations;
+5. wire law before release/mutation boundary;
+6. add violation tests;
+7. add regression links;
+8. preserve old law as historical/superseded when appropriate.
+
+## NEGATIVE_TESTS
+authority bypass, UI bypass, SWARM bypass, silent downgrade, conflicting older rule.
 
 ## DONE
-Law is versioned, enforceable, testable, and bypass-negative-tested.
+Law enforcement is executable and tested; prose existence is not enough.
