@@ -1,0 +1,14 @@
+{
+  "record_id":"DLQ-GOLDEN-001",
+  "command_id":"CMD-001",
+  "terminal_class":"DEAD_LETTER",
+  "source_status":"FAILED",
+  "failure_class":"RETRY_EXHAUSTED",
+  "attempt_number":4,
+  "expected_head":"1111111111111111111111111111111111111111",
+  "observed_head":"1111111111111111111111111111111111111111",
+  "reason":"Bounded retry budget exhausted.",
+  "evidence_refs":["retry:RETRY-NEG-EXHAUSTED-001"],
+  "supersedes":[],
+  "release_state":"LOCKED"
+}
