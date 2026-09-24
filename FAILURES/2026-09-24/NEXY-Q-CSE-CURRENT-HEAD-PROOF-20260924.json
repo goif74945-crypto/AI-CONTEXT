@@ -1,0 +1,12 @@
+{
+  "failure_id": "FAIL-NEXY-Q-CSE-CURRENT-HEAD-PROOF-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "context": "Q category evidence validation",
+  "cause": "No exact-target-head executed dedicated CSE invariant test evidence established.",
+  "failed_approach": "Do not infer TEST_PASS from source presence or nearby timeout tests.",
+  "recovery": "Classify PARTIAL and require focused exact-head execution proof after full-audit remediation gate.",
+  "boundary": "Not a proven functional defect; evidence/test gap only.",
+  "prevention": "Require test-to-requirement linkage and exact-head run evidence.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
