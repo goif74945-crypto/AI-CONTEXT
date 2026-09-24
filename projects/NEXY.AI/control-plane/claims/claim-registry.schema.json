@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/nexy/control-plane/claims/claim-registry.schema.json",
+  "title": "NEXY Control Plane Claim / Lease Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "registry_id",
+    "version",
+    "claims"
+  ],
+  "properties": {
+    "registry_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "command_id",
+        "worker_id",
+        "lease_epoch",
+        "lease_start",
+        "lease_expiry",
+        "heartbeat_deadline",
+        "path_claims",
+        "resource_claims",
+        "dependency_claims",
+        "state"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "command_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "worker_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lease_epoch": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lease_start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lease_expiry": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "heartbeat_deadline": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "path_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "resource_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "dependency_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "state": {
+          "enum": [
+            "ACTIVE",
+            "EXPIRED",
+            "RELEASED",
+            "REVOKED"
+          ]
+        }
+      }
+    }
+  }
+}

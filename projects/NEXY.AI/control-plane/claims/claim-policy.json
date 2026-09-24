@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "duplicate_execution_rule": "At most one ACTIVE claim may exist for one command_id.",
+  "lease_rules": [
+    "lease_start < heartbeat_deadline <= lease_expiry",
+    "ACTIVE claim becomes ineligible when observation time is after lease_expiry or heartbeat_deadline.",
+    "Lease recovery creates a new claim/lease_epoch; expired history is never rewritten.",
+    "A worker must not execute from an EXPIRED, RELEASED or REVOKED claim."
+  ],
+  "collision_rules": [
+    "Claims are normalized to canonical path/resource/dependency keys before comparison.",
+    "Two ACTIVE claims conflict when canonical path claims overlap, resource_claims intersect, or dependency_claims intersect in a mutation-exclusive dependency closure.",
+    "Path collision includes exact equality and ancestor/descendant prefix after canonical slash normalization.",
+    "Collision is evaluated before mutation; no global lock is required for unrelated claim closures.",
+    "Shared read-only resources should not be represented as mutation-exclusive claims."
+  ],
+  "acquisition_preconditions": [
+    "Command status is READY.",
+    "Worker is eligible under worker registry and has capacity.",
+    "CURRENT_HEAD == command.expected_head; P4.5 owns stale-head handling.",
+    "No conflicting ACTIVE claim exists."
+  ]
+}

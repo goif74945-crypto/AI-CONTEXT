@@ -1,0 +1,44 @@
+{
+  "registry_id": "CLAIMS-GOLDEN-001",
+  "version": "1.0.0",
+  "claims": [
+    {
+      "claim_id": "CLAIM-A",
+      "command_id": "CMD-A",
+      "worker_id": "WORKER-A",
+      "lease_epoch": 1,
+      "lease_start": "2026-09-24T07:00:00Z",
+      "lease_expiry": "2026-09-24T07:10:00Z",
+      "heartbeat_deadline": "2026-09-24T07:05:00Z",
+      "path_claims": [
+        "src/a"
+      ],
+      "resource_claims": [
+        "RES-A"
+      ],
+      "dependency_claims": [
+        "ENTITY-A"
+      ],
+      "state": "ACTIVE"
+    },
+    {
+      "claim_id": "CLAIM-B",
+      "command_id": "CMD-B",
+      "worker_id": "WORKER-B",
+      "lease_epoch": 1,
+      "lease_start": "2026-09-24T07:00:00Z",
+      "lease_expiry": "2026-09-24T07:10:00Z",
+      "heartbeat_deadline": "2026-09-24T07:05:00Z",
+      "path_claims": [
+        "src/b"
+      ],
+      "resource_claims": [
+        "RES-B"
+      ],
+      "dependency_claims": [
+        "ENTITY-B"
+      ],
+      "state": "ACTIVE"
+    }
+  ]
+}

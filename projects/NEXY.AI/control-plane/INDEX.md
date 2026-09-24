@@ -7,7 +7,7 @@ Foundation under construction in dependency order. Each component is versioned, 
 1. [Command Model](./command/INDEX.md) — implemented.
 2. [Command Queue](./queue/INDEX.md) — implemented.
 3. [Worker Registry](./workers/INDEX.md) — implemented.
-4. Claim / Lease — pending P4.4.
+4. [Claim / Lease](./claims/INDEX.md) — implemented.
 5. Expected-HEAD Guard — pending P4.5.
 6. Supersession — pending P4.6.
 7. Result Package — pending P4.7 (reuse handoff where equivalent).
