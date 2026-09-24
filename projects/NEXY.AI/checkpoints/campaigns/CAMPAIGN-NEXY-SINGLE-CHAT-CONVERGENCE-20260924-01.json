@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "CAMPAIGN-NEXY-SINGLE-CHAT-CONVERGENCE-20260924-01",
+  "mode": "EXECUTE_SINGLE_CHAT_SERIAL",
+  "ai_context_start_head": "a096ab6b0390bffd9903b4168cbb104aabb8d015",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "campaign_start_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "target_head": "5c8d9ee5209f714ea7c36632eccf2e82e009e6a7",
+  "source_revision": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "total_categories": 26,
+  "completed_categories": 0,
+  "active_category": "H_SECURITY_AUTH_PERMISSION_TENANT",
+  "active_category_state": "BLOCKED",
+  "remaining_categories": 26,
+  "total_current_required_units": null,
+  "completed_units": 0,
+  "partial_units": 1,
+  "blocked_units": 1,
+  "last_work_unit": "CMD-NEXY-SEC-OTAC-LOG-001",
+  "last_work_unit_status": "PARTIAL_BLOCKED_VALIDATION",
+  "next_unit": null,
+  "next_unit_reason": "CMD-NEXY-EVIDENCE-E07-001 depends on accepted completion of command #1; no independent READY command exists in the canonical serial DAG.",
+  "open_s5": 2,
+  "open_s4": 10,
+  "open_s3": 10,
+  "open_s2": 9,
+  "current_test_status": {
+    "exact_head": "5c8d9ee5209f714ea7c36632eccf2e82e009e6a7",
+    "passing": [
+      "npm ci",
+      "prisma_generate",
+      "npm run typecheck",
+      "npm run test:contract",
+      "npm run test:integration",
+      "npm test",
+      "npm run test:coverage",
+      "npm run check:doc-c",
+      "npm run build:web"
+    ],
+    "pre_existing_fail": [
+      "npm run check:coverage"
+    ],
+    "required_not_executed": [
+      "npm run lint"
+    ]
+  },
+  "current_evidence_status": "PARTIAL_EXACT_HEAD_EXECUTION_EVIDENCE",
+  "release_status": "NOT_READY",
+  "blockers": [
+    "REQUIRED_LINT_NOT_EXECUTED",
+    "SERIAL_DAG_PREDECESSOR_NOT_ACCEPTED"
+  ],
+  "protected_shared_state": [
+    "projects/NEXY.AI/checkpoints/current.json not overwritten because it belongs to another CROSS-mode workstream.",
+    "projects/NEXY.AI/snapshots/current.json not overwritten because it describes a different historical implementation branch."
+  ],
+  "timestamp_source": "GitHub/Railway evidence dated 2026-09-24",
+  "hash": "HASH_UNAVAILABLE"
+}

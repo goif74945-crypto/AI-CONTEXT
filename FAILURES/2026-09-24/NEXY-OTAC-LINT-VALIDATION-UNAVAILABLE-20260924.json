@@ -1,0 +1,25 @@
+{
+  "failure_id": "FAIL-NEXY-OTAC-LINT-VALIDATION-UNAVAILABLE-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-SINGLE-CHAT-CONVERGENCE-20260924-01",
+  "work_unit_id": "CMD-NEXY-SEC-OTAC-LOG-001",
+  "context": "Post-change verification of the S5 OTAC plaintext-log repair at exact END_HEAD 5c8d9ee5209f714ea7c36632eccf2e82e009e6a7.",
+  "cause": "The command-required npm run lint was not executed by any authorized exact-head runner.",
+  "failed_approach": [
+    "GitHub Actions run 36025453598 had zero job steps and no usable job logs.",
+    "Railway validation branch runner does not include lint in its build command.",
+    "Read-only Railway Sandbox path could not access the private repository."
+  ],
+  "recovery": [
+    "Execute npm run lint against exact END_HEAD using an authorized repository-capable runner.",
+    "Do not change product implementation merely to manufacture validation evidence."
+  ],
+  "boundary": [
+    "No production deployment.",
+    "No Railway service-config mutation without canonical authority.",
+    "No alternate-branch/workflow mutation outside the work-unit scope."
+  ],
+  "prevention": "Canonical exact-head validation infrastructure should include all command-required gates before future security units are accepted.",
+  "status": "OPEN_BLOCKS_WORK_UNIT_ACCEPTANCE",
+  "timestamp_source": "GitHub Actions and Railway execution evidence dated 2026-09-24",
+  "hash": "HASH_UNAVAILABLE"
+}

@@ -1,6 +1,6 @@
 {
   "queue_id": "NEXY-CLOSED-LOOP-01-LIVE-QUEUE",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "ordering_policy": "PRIORITY_THEN_ENQUEUE_SEQUENCE_THEN_COMMAND_ID",
   "entries": [
     {
@@ -8,8 +8,11 @@
       "priority": "CRITICAL",
       "enqueue_sequence": 0,
       "dependency_ids": [],
-      "queue_state": "READY",
-      "blocked_reasons": []
+      "queue_state": "TERMINAL",
+      "blocked_reasons": [
+        "COMMAND_BLOCKED_REQUIRED_LINT_NOT_EXECUTED",
+        "EXPECTED_HEAD_NO_LONGER_MATCHES_TARGET_AFTER_AUTHORIZED_EXECUTION"
+      ]
     }
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "case_id": "CASE-NEXY-OTAC-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-SINGLE-CHAT-CONVERGENCE-20260924-01",
+  "work_unit_id": "CMD-NEXY-SEC-OTAC-LOG-001",
+  "finding_id": "F-NEXY-FULL-H-OTAC-LOG-001",
+  "requirement_id": "REQ-SEC-003",
+  "start_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "end_head": "5c8d9ee5209f714ea7c36632eccf2e82e009e6a7",
+  "repair_commit": "5c8d9ee5209f714ea7c36632eccf2e82e009e6a7",
+  "evidence_ref": "TASK-NEXY-SINGLE-CHAT-CMD-NEXY-SEC-OTAC-LOG-001-20260924",
+  "blocker_ref": "FAIL-NEXY-OTAC-LINT-VALIDATION-UNAVAILABLE-20260924",
+  "status": "MITIGATED_PENDING_REQUIRED_VALIDATION",
+  "timestamp_source": "Repository/runner evidence dated 2026-09-24",
+  "hash": "HASH_UNAVAILABLE"
+}

@@ -61,7 +61,7 @@
   },
   "supersedes": [],
   "superseded_by": null,
-  "status": "READY",
+  "status": "BLOCKED",
   "command_type": "SECURITY_FIX",
   "root_cause_ids": [
     "RC-NEXY-OTAC-PLAINTEXT-LOGGING-001"

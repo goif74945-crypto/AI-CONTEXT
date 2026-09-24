@@ -1,0 +1,35 @@
+{
+  "ledger_id": "LEDGER-NEXY-SINGLE-CHAT-OTAC-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-SINGLE-CHAT-CONVERGENCE-20260924-01",
+  "work_unit_id": "CMD-NEXY-SEC-OTAC-LOG-001",
+  "source": [
+    "DOC-C / REQ-SEC-003",
+    "F-NEXY-FULL-H-OTAC-LOG-001",
+    "NEXY target exact-head diff",
+    "Railway exact-head validation logs"
+  ],
+  "claim": [
+    "The proven OTAC process-log exposure was repaired at END_HEAD.",
+    "Focused provider tests and broader exact-head validation passed except the pre-existing coverage threshold.",
+    "Required lint evidence is missing, so the command is not accepted or complete."
+  ],
+  "proof": [
+    "END_HEAD 5c8d9ee5209f714ea7c36632eccf2e82e009e6a7",
+    "Railway exact-head deployment a631bc81-9c3a-4046-bf8b-49128bb2cb8d",
+    "START_HEAD baseline deployment aedd277b-38b8-4811-875a-bba1468a0d5f"
+  ],
+  "deps": [
+    "CMD-NEXY-SEC-OTAC-LOG-001",
+    "NEXY-COMMAND-DAG-20260924-01"
+  ],
+  "risk": [
+    "required lint not executed",
+    "serial successor commands remain blocked"
+  ],
+  "status": "RECORDED_PARTIAL_BLOCKED_VALIDATION",
+  "confidence": 1,
+  "freshness": "END_HEAD_PINNED",
+  "trace": "CAMPAIGN-NEXY-SINGLE-CHAT-CONVERGENCE-20260924-01/CMD-NEXY-SEC-OTAC-LOG-001",
+  "timestamp_source": "GitHub/Railway evidence dated 2026-09-24",
+  "hash": "HASH_UNAVAILABLE"
+}
