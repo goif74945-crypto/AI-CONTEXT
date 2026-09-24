@@ -1,0 +1,9 @@
+{
+  "failure_id": "FAIL-NEXY-Z-NO-CURRENT-HEAD-PASS-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "cause": "No exact-head proof for several current source-derived obligations.",
+  "failed_approach": "Do not infer missing or pass from mapping absence/presence alone.",
+  "recovery": "Carry gaps into full-project re-audit and remediation DAG.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
