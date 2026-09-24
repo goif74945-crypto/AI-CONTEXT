@@ -1,0 +1,12 @@
+{
+ "schema_version":"1.0.0",
+ "rules":[
+  "Refresh current HEAD before resume.",
+  "HEAD mismatch requires revalidation before action.",
+  "Expired, released or revoked claims are never revived.",
+  "Superseded commands are never resumed.",
+  "Stale or incomplete required evidence prevents direct resume.",
+  "Recovery preserves immutable command and claim history.",
+  "A replacement action uses a new or superseding command."
+ ]
+}
