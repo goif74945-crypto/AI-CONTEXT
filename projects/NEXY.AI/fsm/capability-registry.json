@@ -1,12 +1,36 @@
 {
   "fsm_id": "FSM-CAPABILITY-REGISTRY",
   "name": "Capability Registry FSM",
-  "kind": "SOURCE_DEFINED",
+  "namespace": "CAPABILITY_REGISTRY",
+  "registry_kind": "SOURCE_DEFINED",
   "authority": [
     "CAPABILITY_GOVERNANCE_SOURCE"
   ],
   "scope": [
     "FUTURE_ARCHITECTURE"
+  ],
+  "ontology_status": "SOURCE_DESIGN",
+  "states": [
+    {
+      "state_id": "STATE-CAP-ACTIVE",
+      "name": "ACTIVE"
+    },
+    {
+      "state_id": "STATE-CAP-ANCHORED",
+      "name": "ANCHORED"
+    },
+    {
+      "state_id": "STATE-CAP-PROPOSED",
+      "name": "PROPOSED"
+    },
+    {
+      "state_id": "STATE-CAP-QUORUM-SIGNED",
+      "name": "QUORUM_SIGNED"
+    },
+    {
+      "state_id": "STATE-CAP-REVIEWED",
+      "name": "REVIEWED"
+    }
   ],
   "source_range": [
     {
@@ -16,56 +40,9 @@
       "end_paragraph": 7102
     }
   ],
-  "states": [
-    "PROPOSED",
-    "REVIEWED",
-    "QUORUM_SIGNED",
-    "ANCHORED",
-    "ACTIVE"
+  "requirement_ids": [
+    "REQ-NCF-006"
   ],
-  "events": [],
-  "event_ownership": {},
-  "transitions": [
-    {
-      "from": "PROPOSED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "REVIEWED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "REVIEWED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "QUORUM_SIGNED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "QUORUM_SIGNED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "ANCHORED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "ANCHORED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "ACTIVE",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    }
-  ],
-  "invalid_transition_behavior": "Illegal transition is prohibited; exact event/guard names are not established by captured source.",
-  "recovery_semantics": "UNKNOWN",
-  "audit_event_semantics": "UNKNOWN",
   "implementation_mapping_status": "EXACT",
   "implementation_refs": [
     {
@@ -102,15 +79,67 @@
       ]
     }
   ],
-  "requirement_ids": [
-    "REQ-NCF-006"
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "transition_source": "SOURCE",
+  "transitions": [
+    {
+      "from": "PROPOSED",
+      "event": "advance_reviewed",
+      "guard": [
+        "requirements for REVIEWED satisfied"
+      ],
+      "action": [
+        "enter REVIEWED"
+      ],
+      "to": "REVIEWED",
+      "failure": "admission rejected/not active"
+    },
+    {
+      "from": "REVIEWED",
+      "event": "advance_quorum_signed",
+      "guard": [
+        "static verification + policy review/quorum conditions satisfied"
+      ],
+      "action": [
+        "enter QUORUM_SIGNED"
+      ],
+      "to": "QUORUM_SIGNED",
+      "failure": "admission rejected/not active"
+    },
+    {
+      "from": "QUORUM_SIGNED",
+      "event": "advance_anchored",
+      "guard": [
+        "requirements for ANCHORED satisfied"
+      ],
+      "action": [
+        "enter ANCHORED"
+      ],
+      "to": "ANCHORED",
+      "failure": "admission rejected/not active"
+    },
+    {
+      "from": "ANCHORED",
+      "event": "advance_active",
+      "guard": [
+        "requirements for ACTIVE satisfied"
+      ],
+      "action": [
+        "enter ACTIVE"
+      ],
+      "to": "ACTIVE",
+      "failure": "admission rejected/not active"
+    }
   ],
-  "test_refs": [
-    "tests/integration/g20-ncf-registry.spec.ts"
+  "global_rules": [
+    "No retroactive activation.",
+    "Only ACTIVE nodes are selectable as active capabilities.",
+    "Active node/version is immutable; upgrade creates a new version."
   ],
-  "alignment_status": "REVIEW_REQUIRED",
-  "alignment_notes": [
-    "Source lifecycle includes QUORUM_SIGNED and ACTIVE.",
-    "Observed ncf-registry CapabilityNodeStatus is PROPOSED/REVIEWED/ANCHORED/DEPRECATED; source lifecycle additionally contains QUORUM_SIGNED and ACTIVE."
+  "invalid_transition_behavior": "reject admission",
+  "audit_event": "capability registry governance transition",
+  "notes": [
+    "FSM namespace is isolated; equal state labels in other FSMs are not aliases.",
+    "Observed packages/phase-f/game/ncf-registry.ts currently models PROPOSED/REVIEWED/ANCHORED/DEPRECATED and 3/5 quorum; source FSM additionally contains QUORUM_SIGNED and ACTIVE. This difference is retained for audit, not silently reconciled."
   ]
 }
