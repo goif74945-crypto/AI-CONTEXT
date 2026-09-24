@@ -1,22 +1,18 @@
 # NEXY.AI FSM Registry
 
-Canonical:
-- `fsm-registry.jsonl` — all source FSMs plus explicitly labeled implementation-only state models.
-- `execution.json`
-- `constitutional.json`
-- `app-lifecycle.json`
-- `creator-publication.json`
-- `anchor-publication.json`
-- `capability-registry.json`
-- `queue-job.json`
-- `risk-intelligence.json`
-- `pipeline-run.observed.json`
+Files:
+- `fsm-registry.jsonl`
+- `fsm.schema.json`
 - `validation-report.md`
 
-## Absolute rule
-**Never merge FSM namespaces because state names look similar.**
+Rule: **never merge state machines by matching state names.**
 
-A valid transition is identified by:
-`FSM namespace + FROM + EVENT + GUARD + ACTION + TO + FAILURE/AUDIT semantics`.
+Examples:
+- Execution `FREEZE`
+- Risk `FAILSAFE`
+- App `FROZEN`
+- Global `FROZEN`
 
-Implementation-only state models remain explicitly non-canonical until a governing source promotes them.
+are distinct states in distinct authority namespaces.
+
+Implementation-only state models remain labeled as observed implementation and do not become source canon automatically.
