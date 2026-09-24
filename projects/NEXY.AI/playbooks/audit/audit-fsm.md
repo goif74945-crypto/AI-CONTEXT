@@ -1,32 +1,29 @@
-# PLAYBOOK — Audit FSM
+# NEXY Auditor Playbook
 
-## PURPOSE
-Verify one FSM's states, transitions, guards, event ownership, persistence and illegal-path blocking.
+## Universal audit law
+1. Pin exact repository/branch/HEAD and observed environment.
+2. Resolve source authority and scope before reading code.
+3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
+4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
+5. File existence, docs, mocks, build success, or comments are never runtime proof.
+6. Search failure history and known conflicts before declaring a new root cause.
+7. Preserve evidence even when verdict is FAIL.
 
-## PROCEDURE
-1. Identify exact FSM; never merge same-named states across FSMs.
-2. Resolve source authority and registry JSON.
-3. Enumerate legal states and transitions.
-4. For each transition inspect:
-   FROM / EVENT / GUARD / ACTION / TO / FAILURE / AUDIT_EVENT.
-5. Verify event owner/actor permissions.
-6. Verify guard enforcement before side effect.
-7. Verify state persistence/atomicity.
-8. Test illegal transitions.
-9. Test duplicate/reordered events where relevant.
-10. Test crash/recovery/replay boundaries.
-11. Verify STOP/FREEZE terminal/side semantics.
-12. Compare implementation and tests against registry.
+# Workflow: Audit FSM
 
-## REQUIRED NEGATIVE CASES
-- illegal FROM→TO;
-- wrong event owner;
-- false guard;
-- duplicate event;
-- partial action/persist crash;
-- recovery bypass;
-- transition skipped through shortcut;
-- state display inconsistent with backend truth.
+## Sequence
+1. Identify namespace by FSM ID.
+2. Enumerate states/events/event owners.
+3. Compare source transition table to implementation table.
+4. Verify guards/actions/failure/audit semantics.
+5. Enumerate every illegal transition.
+6. Test terminal/freeze/recovery behavior.
+7. Test wrong actor/event ownership.
+8. Test concurrency/race where state is shared.
+9. Check same-named states in other FSMs are not conflated.
 
-## PASS
-All legal transitions behave correctly and illegal paths are blocked with required evidence.
+## Special rule
+Implementation-only state models must stay explicitly non-canonical until promoted.
+
+## DONE
+Legal transitions pass; every illegal transition fails deterministically with correct evidence.
