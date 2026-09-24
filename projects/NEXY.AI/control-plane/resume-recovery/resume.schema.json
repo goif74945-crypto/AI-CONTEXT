@@ -1,0 +1,17 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object","additionalProperties":false,
+ "required":["resume_id","command_id","checkpoint_ref","recorded_head","current_head","lease_state","supersession_state","evidence_state","decision","reason"],
+ "properties":{
+  "resume_id":{"type":"string","minLength":1},
+  "command_id":{"type":"string","minLength":1},
+  "checkpoint_ref":{"type":"string","minLength":1},
+  "recorded_head":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+  "current_head":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+  "lease_state":{"enum":["ACTIVE","EXPIRED","RELEASED","REVOKED","NONE"]},
+  "supersession_state":{"enum":["CURRENT","SUPERSEDED","UNKNOWN"]},
+  "evidence_state":{"enum":["CURRENT","STALE","INCOMPLETE"]},
+  "decision":{"enum":["RESUME","REVALIDATE","BLOCK","SUPERSEDE"]},
+  "reason":{"type":"string","minLength":1}
+ }
+}
