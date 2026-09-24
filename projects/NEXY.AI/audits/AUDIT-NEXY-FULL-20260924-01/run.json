@@ -99,13 +99,13 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 387,
-    "remaining": 1081,
-    "percent": 26.3624
+    "audited": 519,
+    "remaining": 949,
+    "percent": 35.3542
   },
-  "current_category": "N_FAILURE_ERROR_SEMANTICS",
-  "last_completed_unit": "CATEGORY:M_OBSERVABILITY_LOGS_METRICS_ALERTS",
-  "next_unit": "CATEGORY:N_FAILURE_ERROR_SEMANTICS",
+  "current_category": "I_EVIDENCE_VERIFICATION_AUDIT",
+  "last_completed_unit": "CATEGORY:N_FAILURE_ERROR_SEMANTICS",
+  "next_unit": "CATEGORY:I_EVIDENCE_VERIFICATION_AUDIT",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "M_OBSERVABILITY_LOGS_METRICS_ALERTS",
+    "category_completed": "N_FAILURE_ERROR_SEMANTICS",
     "read_back_verified": true,
-    "category_units": 27
+    "category_units": 132
   }
 }
