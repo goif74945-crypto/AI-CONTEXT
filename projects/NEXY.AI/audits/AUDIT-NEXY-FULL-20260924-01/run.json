@@ -3,7 +3,7 @@
   "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
   "pair_id": "NEXY-CLOSED-LOOP-01",
   "mode": "AUDIT_ONLY_UNTIL_FULL_PROJECT_COVERAGE",
-  "status": "AUDIT_ACTIVE_DENOMINATOR_LOCKED",
+  "status": "FULL_AUDIT_GATE_PASSED_COMMAND_GENERATION_ACTIVE",
   "project": "NEXY.AI / NEXY-IGNIS",
   "authoritative_source": {
     "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
@@ -103,9 +103,9 @@
     "remaining": 0,
     "percent": 100
   },
-  "current_category": "MATRIX_COMPLETION_VALIDATION",
+  "current_category": "COMMAND_GENERATION",
   "last_completed_unit": "CATEGORY:Z_OTHER_SOURCE_DERIVED",
-  "next_unit": "GATE:MASTER_MATRIX_518_AND_REQUIREMENT_MATRIX_262",
+  "next_unit": "COMMAND:RC-SEC-SECRET-001",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
@@ -120,11 +120,11 @@
   "full_audit_gate": {
     "full_atomic_coverage": true,
     "cross_system_reaudit": true,
-    "master_matrix": false,
-    "requirement_matrix": false,
+    "master_matrix": true,
+    "requirement_matrix": true,
     "findings_reconciled": true,
     "dependency_dag": true,
-    "normal_builder_commands_allowed": false
+    "normal_builder_commands_allowed": true
   },
   "mutation": {
     "nexy_implementation": "FORBIDDEN",
@@ -148,12 +148,14 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "phase_completed": "FULL_PROJECT_REAUDIT_FINDINGS_RECONCILIATION_DEPENDENCY_DAG",
+    "phase_completed": "FULL_AUDIT_GATE",
     "read_back_verified": false,
     "atomic_coverage_complete": true,
     "second_pass_complete": true,
+    "master_matrix_complete": true,
+    "requirement_matrix_complete": true,
     "findings_reconciled": true,
     "dependency_dag": true,
-    "next": "VERIFY_MASTER_AND_REQUIREMENT_MATRICES"
+    "next": "PUBLISH_FIRST_READY_BUILDER_COMMAND"
   }
 }
