@@ -1,30 +1,27 @@
-# PLAYBOOK — Audit Contract
+# NEXY Auditor Playbook
 
-## PURPOSE
-Verify that a declared API/module/event/storage/schema/error contract is consistent across source, code, consumers and tests.
+## Universal audit law
+1. Pin exact repository/branch/HEAD and observed environment.
+2. Resolve source authority and scope before reading code.
+3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
+4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
+5. File existence, docs, mocks, build success, or comments are never runtime proof.
+6. Search failure history and known conflicts before declaring a new root cause.
+7. Preserve evidence even when verdict is FAIL.
 
-## PROCEDURE
-1. Resolve canonical contract record/version.
-2. Resolve authority and requirement IDs.
-3. Identify producer/consumer.
-4. Inspect input/output runtime schemas.
-5. Inspect preconditions/postconditions.
-6. Inspect authorization/security boundary.
-7. Inspect timeout/retry/idempotency.
-8. Inspect error contract.
-9. Compare all producers/consumers for drift.
-10. Verify runtime validation exists at the boundary when required.
-11. Run/inspect contract and negative tests.
-12. Check evidence freshness.
+# Workflow: Audit Contract
 
-## FAILURE PATTERNS
-- TypeScript-only validation with no runtime enforcement.
-- Route returns non-SystemEnvelope shape.
-- Producer and consumer use different schema versions.
-- Mutation lacks idempotency/CSRF/auth.
-- Error path leaks hidden data.
-- timeout/retry semantics differ across layers.
-- docs updated without implementation or vice versa.
+## Sequence
+1. Identify exact producer/consumer and version.
+2. Compare source contract vs implementation schema field-by-field.
+3. Check preconditions/postconditions/error contract/timeout/idempotency/auth.
+4. Check runtime validation at both sides of trust boundary.
+5. Test malformed, missing, extra, boundary and version-drift payloads.
+6. Inspect compatibility and migration impact.
+7. Check downstream code does not rely on undocumented fields.
 
-## VERDICT
-PASS only when both sides of the boundary and the required runtime/static evidence agree.
+## Verdict rule
+Schema parse success is insufficient if semantics/authority/failure behavior differ.
+
+## DONE
+All contract fields and negative behaviors are traceable and version-safe.
