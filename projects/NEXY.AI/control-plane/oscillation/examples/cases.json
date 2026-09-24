@@ -1,0 +1,4 @@
+{
+ "golden":[{"case_id":"OSC-GOLDEN-001","signal":"FIX_REGRESSION_LOOP","occurrences":3,"net_critical_delta":0,"state":"OSCILLATING"}],
+ "negative":[{"case_id":"OSC-NEG-ONEOFF-001","condition":"single failure only","expected":"CLEAR"},{"case_id":"OSC-NEG-IMPROVING-001","condition":"repeats but unresolved critical count decreases","expected":"NOT_OSCILLATING"}]
+}
