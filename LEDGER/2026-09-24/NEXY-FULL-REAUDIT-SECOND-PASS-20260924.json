@@ -9,13 +9,21 @@
     "Atomic audit coverage is 1468/1468.",
     "All 12 required second-pass audit dimensions are complete.",
     "31 findings are reconciled into 14 root-cause groups and ordered in a remediation DAG.",
-    "Normal Builder commands remain gated by matrix completion verification."
+    "Normal Builder commands remain gated by matrix completion verification.",
+    "Master System Matrix is validated at 518 unique rows.",
+    "Requirement Matrix is validated at 262 unique rows.",
+    "Full audit gate passed and CMD-NEXY-SEC-OTAC-LOG-001 is published READY."
   ],
   "proof": [
     "second-pass/FULL_PROJECT_REAUDIT.json",
     "findings-reconciliation.json",
     "remediation/dependency-dag.json",
-    "run.json denominator coverage"
+    "run.json denominator coverage",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/master-system/manifest.json",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/requirements/manifest.json",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/final-summary.json",
+    "projects/NEXY.AI/control-plane/live/queue.json",
+    "projects/NEXY.AI/control-plane/live/commands/CMD-NEXY-SEC-OTAC-LOG-001.json"
   ],
   "deps": [
     "AUDIT-NEXY-FULL-20260924-01"
@@ -24,7 +32,7 @@
     "open S5/S4 findings",
     "release not proven"
   ],
-  "status": "RECORDED",
+  "status": "RECORDED_FULL_AUDIT_COMPLETE",
   "confidence": 1,
   "freshness": "TARGET_HEAD_PINNED",
   "trace": "AUDIT-NEXY-FULL-20260924-01/SECOND-PASS",
