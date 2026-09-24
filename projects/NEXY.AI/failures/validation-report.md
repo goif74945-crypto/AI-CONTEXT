@@ -1,20 +1,14 @@
 # Failure / Recovery Library Validation
 
 ## Result
-**PASS — structural initial library**
+**PASS — source-defined and observed failures separated**
 
-- canonical wire failure classes: **30**
-- observed internal VNext failure classes: **32**
-- source scenario failures: **10**
-- total failure records: **72**
-- recovery playbook records: **66**
+- records: **22**
+- by kind: {"OBSERVED_CAMPAIGN_FAILURE":6,"SOURCE_RUNTIME_FAILURE":16}
+- observed campaign blockers are explicitly distinguished from designed runtime failure modes.
 
-## Important semantics
-This initial library is not an incident-history database yet.
-
-Fields such as `root_cause`, `failed_approach`, and `successful_recovery` remain UNKNOWN/NOT_ESTABLISHED unless an actual incident/repair proves them.
-
-Static test paths are regression candidates only; they were not executed in this library build.
-
-## Namespace rule
-Canonical wire errors and internal VNext failure codes are separate layers even when a code string is identical.
+## Rules
+- Do not convert a SOURCE_RUNTIME_FAILURE into an observed historical incident unless evidence says it happened.
+- Do not convert an OBSERVED_CAMPAIGN_FAILURE into a permanent architecture law.
+- Every recovery must preserve governing invariants; recovery is not permission to bypass LAW/FSM/audit.
+- Failed approaches are retained deliberately so future AI searches them before repeating a repair strategy.
