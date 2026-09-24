@@ -1,93 +1,35 @@
-# NEXY.AI Work Handoff Protocol
+# NEXY.AI First-Class Handoff System
 
 ## Purpose
-Make Builder ↔ Auditor ↔ Fixer ↔ new chat transfers deterministic enough to resume without re-reading the entire project or trusting unsupported claims.
+Provide versioned, machine-readable, resumable packages for deterministic role transfer without trusting hidden reasoning or generic "done" claims.
 
-## Required handoff object
-Every handoff must contain:
+## Canonical artifacts
+- `handoff.schema.json` — package contract (v2.0.0).
+- `registry.json` — discoverable handoff types and semantic rules.
+- `examples/auditor-to-builder.json` — golden Auditor → Builder package.
+- `examples/builder-to-auditor.json` — golden Builder → Auditor result package.
+- `examples/negative-stale-head.json` — stale-head negative case.
+- `PROTOCOL.md` — lifecycle, freshness, supersession, resume and security law.
+- `validation-report.md` — current structural validation evidence.
+- `example.json` — compatibility alias to the canonical Auditor → Builder example.
 
-`HANDOFF_ID`
-`CREATED_AT`
-`ROLE`
-`TASK`
-`TARGET {repo, branch, head}`
-`SCOPE`
-`INPUTS`
-`OUTPUTS`
-`CLAIMS`
-`PROOF`
-`TESTS`
-`CHANGES`
-`FINDINGS`
-`UNRESOLVED`
-`NEXT_ACTION`
-`AUTHORITY`
-`FRESHNESS`
+## Directional contracts
+### AUDITOR → BUILDER
+Carries audit/finding identity, exact target HEAD, claims/proofs, affected requirements/entities/invariants, dependency closure, allowed/forbidden scope, acceptance/tests/security/evidence obligations, rollback and stop conditions.
 
-## Protocol
+### BUILDER → AUDITOR
+Carries command/handoff reference, exact start/end HEAD, changed files/commits/actions, executed tests/results/evidence, failures/residual risks/blockers, rollback state and status.
 
-### 1. Pin target identity
-The sender records exact repository, branch and HEAD.  
-If the receiver observes a different HEAD, implementation/test/evidence claims become stale until refreshed.
+## Freshness law
+Receiver MUST compare `CURRENT_HEAD == EXPECTED_HEAD` before executing an Auditor → Builder package.
+Mismatch ⇒ **STALE**; do not mutate from the original package. Revalidate semantic diff + impact, then issue a superseding package or block.
 
-### 2. Separate claim classes
-Every claim must be tagged as one of:
-- SOURCE
-- IMPLEMENTATION_E0
-- STATIC_E1
-- UNIT_E2
-- INTEGRATION_E3
-- E2E_E4
-- RUNTIME_E5
-- DEPLOYMENT_E6
-- PHYSICAL
-- INFERENCE
-- UNKNOWN
+## Supersession law
+Packages are immutable history. A new package may list prior `handoff_id` values in `supersedes`.
+Supersession cycles are invalid.
 
-### 3. Never hand off “done” without proof
-A sender may say:
-- `IMPLEMENTED_E0`
-- `TESTED_E3`
-- `BLOCKED`
-- `NOT_VERIFIED`
+## Security law
+Never embed secrets, tokens, credentials, private keys, recovery codes, or secret-bearing environment values.
 
-But not generic “done” if the required evidence class is missing.
-
-### 4. Preserve unresolved state
-Unknown/conflict/blocker items must be copied verbatim enough to remain actionable.
-Do not silently collapse them into assumptions.
-
-### 5. Preserve authority/scope
-The receiver must know:
-- which source governs;
-- what is current/future/excluded;
-- whether mutation was authorized;
-- which branches/files are protected.
-
-### 6. Changes are explicit
-For each change:
-- repository/path;
-- commit;
-- semantic purpose;
-- affected systems;
-- affected requirements/invariants;
-- regression obligations.
-
-### 7. Resume rule
-Receiver:
-`VALIDATE HANDOFF → REFRESH TARGET → LOAD MINIMAL CONTEXT PACK → CONTINUE FROM NEXT_ACTION`
-
-Do not restart discovery from zero unless handoff integrity fails.
-
-## Handoff statuses
-- VALID
-- STALE_HEAD
-- INCOMPLETE
-- AUTHORITY_CONFLICT
-- SCOPE_CONFLICT
-- EVIDENCE_STALE
-- BLOCKED
-
-## Source of truth
-A handoff is navigation state, not Canon.
-Governance/requirements/evidence registries still win.
+## Authority law
+Handoff packages are execution/navigation objects only. Current user directive, governance, canonical spec/requirements and current evidence retain authority.

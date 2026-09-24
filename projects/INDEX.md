@@ -44,3 +44,4 @@
   - [State Ownership](./NEXY.AI/state/state-ownership.json)
   - [Event Registry](./NEXY.AI/events/events.json)
   - [Configuration Registry](./NEXY.AI/config/config-registry.json)
+  - [Handoff System](./NEXY.AI/handoff/INDEX.md)

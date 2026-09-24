@@ -1,20 +1,18 @@
 {
-  "handoff_id": "HANDOFF-GOLDEN-A2B-001",
-  "type": "AUDITOR_TO_BUILDER",
+  "handoff_id": "HANDOFF-GOLDEN-B2A-001",
+  "type": "BUILDER_TO_AUDITOR",
   "version": "2.0.0",
-  "source_role": "AUDITOR",
-  "target_role": "BUILDER",
+  "source_role": "BUILDER",
+  "target_role": "AUDITOR",
   "task_id": "TASK-EXAMPLE-REPAIR-001",
-  "audit_run_id": "AUDIT-EXAMPLE-001",
-  "command_ref": null,
+  "audit_run_id": null,
+  "command_ref": "CMD-EXAMPLE-001",
   "target_repo": "goif74945-crypto/NEXY.AI-",
   "target_branch": "codex/spec-audit-20260919-78df350",
   "expected_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
   "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
   "source_context_version": "AI-CONTEXT@P2-EXAMPLE",
-  "finding_ids": [
-    "F-EXAMPLE-001"
-  ],
+  "finding_ids": [],
   "claims": [
     {
       "class": "NOT_VERIFIED",
@@ -72,26 +70,55 @@
     "destructive operation without human approval"
   ],
   "supersedes": [],
-  "start_head": null,
-  "end_head": null,
-  "changed_files": [],
-  "commits": [],
-  "actual_actions": [],
-  "tests_run": [],
-  "test_results": [],
-  "evidence": [],
+  "start_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "end_head": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "changed_files": [
+    "example/path"
+  ],
+  "commits": [
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  ],
+  "actual_actions": [
+    "Applied the authorized example repair only."
+  ],
+  "tests_run": [
+    "focused-example-test",
+    "example-regression"
+  ],
+  "test_results": [
+    {
+      "name": "focused-example-test",
+      "status": "PASS",
+      "evidence_refs": [
+        "EVIDENCE-EXAMPLE-001"
+      ]
+    },
+    {
+      "name": "example-regression",
+      "status": "PASS",
+      "evidence_refs": [
+        "EVIDENCE-EXAMPLE-002"
+      ]
+    }
+  ],
+  "evidence": [
+    "EVIDENCE-EXAMPLE-001",
+    "EVIDENCE-EXAMPLE-002"
+  ],
   "failures": [],
-  "residual_risks": [],
+  "residual_risks": [
+    "Runtime/deployment remain NOT_VERIFIED in this example."
+  ],
   "blockers": [],
-  "rollback_state": null,
-  "status": "READY",
+  "rollback_state": "NOT_USED",
+  "status": "DELIVERED",
   "resume": {
     "next_action": [
-      "Refresh target HEAD and validate this handoff."
+      "Auditor revalidates exact END_HEAD and evidence."
     ],
     "required_refresh": [
       "target HEAD",
-      "affected registries"
+      "evidence freshness"
     ],
     "context_refs": [
       "projects/NEXY.AI/handoff/INDEX.md"

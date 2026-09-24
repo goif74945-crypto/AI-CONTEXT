@@ -1,95 +1,548 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "NEXY Cross-Chat Handoff Package",
+  "$id": "https://ai-context.local/nexy/handoff/handoff.schema.json",
+  "title": "NEXY Builder/Auditor Handoff Package",
   "type": "object",
+  "additionalProperties": false,
   "required": [
-    "chat_id",
-    "role",
-    "task",
-    "implementation_snapshot",
-    "scope",
-    "input",
-    "output",
+    "handoff_id",
+    "type",
+    "version",
+    "source_role",
+    "target_role",
+    "task_id",
+    "target_repo",
+    "target_branch",
+    "expected_head",
+    "source_context_version",
     "claims",
-    "proof",
-    "tests",
-    "changes",
-    "findings",
-    "unresolved",
-    "next_action"
+    "proofs",
+    "allowed_scope",
+    "forbidden_scope",
+    "objectives",
+    "acceptance_criteria",
+    "expected_evidence",
+    "rollback",
+    "stop_conditions",
+    "supersedes",
+    "status",
+    "resume"
   ],
   "properties": {
-    "chat_id": {
-      "type": "string"
+    "handoff_id": {
+      "type": "string",
+      "minLength": 1
     },
-    "role": {
-      "type": "string"
+    "type": {
+      "enum": [
+        "AUDITOR_TO_BUILDER",
+        "BUILDER_TO_AUDITOR"
+      ]
     },
-    "task": {
-      "type": "string"
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
     },
-    "implementation_snapshot": {
-      "type": "object"
+    "source_role": {
+      "enum": [
+        "AUDITOR",
+        "BUILDER"
+      ]
     },
-    "scope": {
+    "target_role": {
+      "enum": [
+        "BUILDER",
+        "AUDITOR"
+      ]
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audit_run_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "command_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_repo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "observed_head": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source_context_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "finding_ids": {
       "type": "array",
       "items": {
-        "type": "string"
-      }
-    },
-    "input": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "output": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
     },
     "claims": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
+        "required": [
+          "class",
+          "statement"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "class": {
+            "enum": [
+              "SOURCE_FACT",
+              "REPO_FACT",
+              "RUNTIME_FACT",
+              "EXTERNAL_FACT",
+              "INFERENCE",
+              "ASSUMPTION",
+              "UNKNOWN",
+              "CONFLICT",
+              "NOT_VERIFIED"
+            ]
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          }
+        }
       }
     },
-    "proof": {
+    "proofs": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
+        "required": [
+          "ref",
+          "class"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "class": {
+            "enum": [
+              "E0_REPO",
+              "E1_STATIC",
+              "E2_UNIT",
+              "E3_INTEGRATION",
+              "E4_E2E",
+              "E5_RUNTIME",
+              "E6_DEPLOYMENT",
+              "PHYSICAL",
+              "SOURCE"
+            ]
+          },
+          "head": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{40}$"
+          }
+        }
       }
     },
-    "tests": {
+    "affected_requirements": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "affected_entities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "affected_invariants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "allowed_scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "forbidden_scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "required_tests": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "negative_tests": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "regression_tests": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "security_checks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "expected_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "rollback": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "start_head": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "end_head": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "commits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{40}$"
+      },
+      "uniqueItems": true
+    },
+    "actual_actions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "tests_run": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "test_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "PARTIAL",
+              "BLOCKED",
+              "NOT_VERIFIED",
+              "UNKNOWN"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          }
+        }
       }
     },
-    "changes": {
+    "evidence": {
       "type": "array",
       "items": {
-        "type": "object"
-      }
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
     },
-    "findings": {
+    "failures": {
       "type": "array",
       "items": {
-        "type": "object"
-      }
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
     },
-    "unresolved": {
+    "residual_risks": {
       "type": "array",
       "items": {
-        "type": "object"
-      }
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
     },
-    "next_action": {
+    "blockers": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "rollback_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "READY",
+        "DELIVERED",
+        "ACCEPTED",
+        "STALE",
+        "SUPERSEDED",
+        "BLOCKED",
+        "REJECTED",
+        "VERIFIED"
+      ]
+    },
+    "resume": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "next_action",
+        "required_refresh",
+        "context_refs"
+      ],
+      "properties": {
+        "next_action": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "required_refresh": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "context_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "AUDITOR_TO_BUILDER"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source_role": {
+            "const": "AUDITOR"
+          },
+          "target_role": {
+            "const": "BUILDER"
+          }
+        },
+        "required": [
+          "audit_run_id",
+          "finding_ids",
+          "affected_requirements",
+          "affected_entities",
+          "affected_invariants",
+          "dependencies",
+          "required_tests",
+          "negative_tests",
+          "regression_tests",
+          "security_checks"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "BUILDER_TO_AUDITOR"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source_role": {
+            "const": "BUILDER"
+          },
+          "target_role": {
+            "const": "AUDITOR"
+          }
+        },
+        "required": [
+          "command_ref",
+          "start_head",
+          "end_head",
+          "changed_files",
+          "commits",
+          "actual_actions",
+          "tests_run",
+          "test_results",
+          "evidence",
+          "failures",
+          "residual_risks",
+          "blockers",
+          "rollback_state"
+        ]
+      }
+    }
+  ]
 }

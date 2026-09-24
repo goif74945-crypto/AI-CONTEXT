@@ -1,5 +1,5 @@
 {
-  "handoff_id": "HANDOFF-GOLDEN-A2B-001",
+  "handoff_id": "HANDOFF-NEGATIVE-STALE-001",
   "type": "AUDITOR_TO_BUILDER",
   "version": "2.0.0",
   "source_role": "AUDITOR",
@@ -10,7 +10,7 @@
   "target_repo": "goif74945-crypto/NEXY.AI-",
   "target_branch": "codex/spec-audit-20260919-78df350",
   "expected_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "observed_head": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
   "source_context_version": "AI-CONTEXT@P2-EXAMPLE",
   "finding_ids": [
     "F-EXAMPLE-001"
@@ -67,9 +67,7 @@
     "Restore prior legal state if validation fails"
   ],
   "stop_conditions": [
-    "expected HEAD mismatch",
-    "authority conflict",
-    "destructive operation without human approval"
+    "CURRENT_HEAD != EXPECTED_HEAD; execution forbidden until revalidation/supersession."
   ],
   "supersedes": [],
   "start_head": null,
@@ -84,17 +82,19 @@
   "residual_risks": [],
   "blockers": [],
   "rollback_state": null,
-  "status": "READY",
+  "status": "STALE",
   "resume": {
     "next_action": [
-      "Refresh target HEAD and validate this handoff."
+      "Run semantic diff and impact analysis; issue a superseding handoff if still valid."
     ],
     "required_refresh": [
       "target HEAD",
-      "affected registries"
+      "semantic diff",
+      "impact analysis"
     ],
     "context_refs": [
-      "projects/NEXY.AI/handoff/INDEX.md"
+      "projects/NEXY.AI/change-impact/INDEX.md",
+      "projects/NEXY.AI/semantic-diff/INDEX.md"
     ]
   }
 }

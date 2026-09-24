@@ -93,7 +93,12 @@
       "edges": 8650,
       "status": "STRUCTURAL_PASS"
     },
-    "core_sequence_status": "15/15 COMPLETE"
+    "core_sequence_status": "15/15 COMPLETE",
+    "handoff": {
+      "schema_version": "2.0.0",
+      "package_types": 2,
+      "status": "STRUCTURAL_PASS"
+    }
   },
   "dynamic_truth": {
     "deployment_status": "NON_DEPLOYABLE / NOT_PROVEN_FOR_CURRENT_HEAD",

@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "package_schema": "projects/NEXY.AI/handoff/handoff.schema.json",
+  "package_version": "2.0.0",
+  "package_types": [
+    {
+      "type": "AUDITOR_TO_BUILDER",
+      "source_role": "AUDITOR",
+      "target_role": "BUILDER",
+      "example": "projects/NEXY.AI/handoff/examples/auditor-to-builder.json"
+    },
+    {
+      "type": "BUILDER_TO_AUDITOR",
+      "source_role": "BUILDER",
+      "target_role": "AUDITOR",
+      "example": "projects/NEXY.AI/handoff/examples/builder-to-auditor.json"
+    }
+  ],
+  "semantic_rules": [
+    "Receiver MUST compare current target HEAD with expected_head before mutation.",
+    "If current HEAD differs, the original package is immutable and MUST be marked STALE or superseded after revalidation.",
+    "supersedes MUST NOT form a cycle.",
+    "A handoff is navigation/execution input, not authority over governance/spec/requirements.",
+    "Secrets and credentials MUST NOT be embedded in a handoff package."
+  ]
+}
