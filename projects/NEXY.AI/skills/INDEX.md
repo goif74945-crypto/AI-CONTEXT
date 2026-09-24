@@ -1,28 +1,13 @@
-# NEXY.AI Project Skill Registry
+# NEXY.AI Skill Registry
 
-## Purpose
-Project-specific skills that let an AI reuse proven structure instead of inventing a workflow every time.
+Canonical:
+- `skills.jsonl`
+- `skill.schema.json`
 
-Runtime model:
-`DISCOVER → SELECT → LOAD → COMPOSE → EXECUTE → VERIFY`
+A skill is not just knowledge; it is a workflow that has a verified structure and known failure modes.
 
-Global runtime contract:
-`skills/registry/RUNTIME-CONTRACT.md`
+Statuses currently used:
+- VERIFIED_WORKFLOW
+- VERIFIED_DATA_WORKFLOW
 
-## Current set
-- Build skills: **12**
-- Audit skills: **10**
-- Total: **22**
-
-## Status
-All current NEXY project skills are **MATERIALIZED**.
-
-They are loadable and structurally defined, but they are **not automatically VERIFIED**. A skill may become VERIFIED only when the exact version has evidence-backed successful execution/validation.
-
-## Files
-- `registry.json`
-- `validation-report.md`
-
-## Critical rule
-Never promote MATERIALIZED → VERIFIED because the playbook looks complete.
-Verification must point to real execution evidence.
+`last_verified` and benchmark fields are revision/time-sensitive and must be refreshed when workflow semantics change.
