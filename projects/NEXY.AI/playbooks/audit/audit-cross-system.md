@@ -1,25 +1,30 @@
-# NEXY Auditor Playbook
+# NEXY Audit Playbook Contract
 
-## Universal audit law
-1. Pin exact repository/branch/HEAD and observed environment.
-2. Resolve source authority/scope before implementation.
-3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
-4. Never infer PASS from code/docs/build alone.
-5. Preserve failure evidence and unresolved UNKNOWN explicitly.
+Audit rules:
+- refresh exact repository/branch/HEAD before current-state claims;
+- source existence ≠ implementation;
+- implementation presence ≠ compliance;
+- test file presence ≠ execution;
+- test execution ≠ deployment proof;
+- deployment proof is revision/environment/claim specific;
+- future scope absence is not current DOC-C FAIL;
+- CANDIDATE code mappings must be opened before use;
+- unresolved authority/conflict may block verdict;
+- allowed verdicts: PASS / FAIL / PARTIAL / BLOCKED / NOT_TESTED / NOT_VERIFIED / SCOPE / CONFLICT.
 
-# Workflow: Audit Cross-System Composition
+# Audit Cross-System
 
-## Sequence
-1. Select target change/system.
-2. Expand dependencies + dependents from graph.
-3. Expand linked requirements/contracts/invariants/FSM/state/security/events/config.
-4. Inspect authority transitions between systems.
-5. Verify uncertainty/failure/state is propagated, not reset.
-6. Verify one subsystem cannot convert another subsystem's BLOCK/FREEZE into success.
-7. Verify namespaced states/contracts are not conflated.
-8. Test end-to-end failure paths across boundaries.
-9. Check observability and incident correlation through request/trace IDs.
-10. Re-audit all affected systems after any repair.
+Build impact subgraph:
+target → dependencies → dependents → contracts → invariants → state → events → security boundaries → tests/evidence.
 
-## DONE
-Composition preserves every higher-order invariant, not only local module tests.
+Look for:
+authority inversion;
+semantic mismatch between layers;
+duplicated state machines;
+different error taxonomies leaking across contracts;
+stale config constants;
+one subsystem bypassing another's guard;
+future/current scope contamination;
+failure propagation becoming false success.
+
+No local PASS may override a broken cross-system invariant.
