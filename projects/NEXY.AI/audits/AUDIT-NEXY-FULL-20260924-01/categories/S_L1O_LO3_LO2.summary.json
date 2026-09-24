@@ -1,0 +1,31 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "S_L1O_LO3_LO2",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 125,
+  "audited_units": 125,
+  "counts": {
+    "OUT_OF_SCOPE": 5,
+    "FUTURE_SCOPE": 7,
+    "NOT_VERIFIED": 69,
+    "PARTIAL": 44
+  },
+  "entity_mapping_stats": {
+    "current_exact": 15,
+    "current_candidate": 13,
+    "current_unmapped": 51,
+    "future": 6,
+    "historical": 1
+  },
+  "finding_ids": [
+    "F-NEXY-FULL-S-UNMAPPED-001",
+    "F-NEXY-FULL-S-CANDIDATE-MAPPING-001",
+    "F-NEXY-FULL-S-CURRENT-HEAD-EVIDENCE-002"
+  ],
+  "verdict": "PARTIAL",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "next_category": "U_FINAL_ARCHITECTURE_LAYERS",
+  "hash": "HASH_UNAVAILABLE"
+}
