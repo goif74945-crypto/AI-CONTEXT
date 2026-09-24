@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0.0",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "dag_id": "NEXY-REMEDIATION-DAG-20260924-01",
+  "status": "DEPENDENCY_DAG_DONE_COMMANDS_GATED",
+  "target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "expected_head": "84484d8108fe1dee186450c0d36c26d360b2596e"
+  },
+  "nodes": [
+    {
+      "node_id": "DAG-01",
+      "root_cause_id": "RC-SEC-SECRET-001",
+      "priority": 1,
+      "finding_ids": [
+        "F-NEXY-FULL-H-OTAC-LOG-001"
+      ],
+      "action_class": "SECURITY_FIX",
+      "dependencies": [],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "negative secret/log scan",
+        "auth regression"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-02",
+      "root_cause_id": "RC-EVIDENCE-TRUTH-001",
+      "priority": 1,
+      "finding_ids": [
+        "F-NEXY-FULL-J-EVIDENCE-001"
+      ],
+      "action_class": "EVIDENCE_REPAIR",
+      "dependencies": [],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "applicable unit/contract/integration regression tests"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-03",
+      "root_cause_id": "RC-CONTRACT-CURRENT-001",
+      "priority": 2,
+      "finding_ids": [
+        "F-NEXY-FULL-B-AGENT-ADAPTER-001",
+        "F-NEXY-FULL-C-CONSENSUS-CONTRACT-001",
+        "F-NEXY-FULL-C-EVIDENCE-CONTRACT-001",
+        "F-NEXY-REAUDIT-N-INCIDENT-ERRORCODE-002"
+      ],
+      "action_class": "CONTRACT_FIX",
+      "dependencies": [],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "applicable unit/contract/integration regression tests"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-04",
+      "root_cause_id": "RC-INCIDENT-SEMANTICS-001",
+      "priority": 2,
+      "finding_ids": [
+        "F-NEXY-REAUDIT-N-INCIDENT-PRIORITY-001"
+      ],
+      "action_class": "STATE_PERSISTENCE_FIX",
+      "dependencies": [
+        "RC-CONTRACT-CURRENT-001"
+      ],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "competing-failure priority test",
+        "secondary-link persistence test",
+        "rollback/replay test"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-05",
+      "root_cause_id": "RC-FSM-AUTHORITY-001",
+      "priority": 2,
+      "finding_ids": [
+        "F-NEXY-FULL-K-RECOVER-ACTOR-001"
+      ],
+      "action_class": "FSM_FIX",
+      "dependencies": [],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "OWNER recovery",
+        "SYSTEM recovery",
+        "unauthorized actor negative"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-06",
+      "root_cause_id": "RC-QUEUE-RETRY-001",
+      "priority": 2,
+      "finding_ids": [
+        "F-NEXY-FULL-E-RETRY-CLASSIFICATION-001"
+      ],
+      "action_class": "RECOVERY_FIX",
+      "dependencies": [],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "retryable/nonretryable classification",
+        "bounded retry cap",
+        "reconciler idempotency/replay"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-07",
+      "root_cause_id": "RC-REGISTRY-DENOM-001",
+      "priority": 3,
+      "finding_ids": [
+        "F-NEXY-FULL-DENOM-CONTRACT-001",
+        "F-NEXY-FULL-J-REGISTRY-FRESHNESS-001"
+      ],
+      "action_class": "REGISTRY_REPAIR",
+      "dependencies": [],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "applicable unit/contract/integration regression tests"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-08",
+      "root_cause_id": "RC-TRACE-SEMANTIC-001",
+      "priority": 3,
+      "finding_ids": [
+        "F-NEXY-FULL-A-TRACEABILITY-001",
+        "F-NEXY-FULL-A-TRACEABILITY-002",
+        "F-NEXY-FULL-F-RESTORE-TRACE-001"
+      ],
+      "action_class": "TEST_TRACEABILITY_FIX",
+      "dependencies": [],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "applicable unit/contract/integration regression tests"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-09",
+      "root_cause_id": "RC-MAPPING-001",
+      "priority": 3,
+      "finding_ids": [
+        "F-NEXY-FULL-S-UNMAPPED-001",
+        "F-NEXY-FULL-S-CANDIDATE-MAPPING-001",
+        "F-NEXY-FULL-U-MAPPING-003",
+        "F-NEXY-FULL-V-TRACEABILITY-001",
+        "F-NEXY-FULL-Z-MAPPING-001"
+      ],
+      "action_class": "VERIFY_MAPPING",
+      "dependencies": [],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "applicable unit/contract/integration regression tests"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-10",
+      "root_cause_id": "RC-SEMANTIC-ARCH-001",
+      "priority": 3,
+      "finding_ids": [
+        "F-NEXY-FULL-U-SEMANTIC-CONTRACT-001"
+      ],
+      "action_class": "VERIFY_SEMANTICS",
+      "dependencies": [
+        "RC-MAPPING-001"
+      ],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "applicable unit/contract/integration regression tests"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-11",
+      "root_cause_id": "RC-FOCUSED-TEST-001",
+      "priority": 4,
+      "finding_ids": [
+        "F-NEXY-FULL-Q-CSE-TEST-EVIDENCE-001"
+      ],
+      "action_class": "TEST",
+      "dependencies": [],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "applicable unit/contract/integration regression tests"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-12",
+      "root_cause_id": "RC-CURRENT-HEAD-PROOF-001",
+      "priority": 4,
+      "finding_ids": [
+        "F-NEXY-FULL-S-CURRENT-HEAD-EVIDENCE-002",
+        "F-NEXY-FULL-U-CURRENT-HEAD-EVIDENCE-002",
+        "F-NEXY-FULL-V-CURRENT-HEAD-INTEGRATION-EVIDENCE-002",
+        "F-NEXY-FULL-V-INVARIANT-PROOF-003",
+        "F-NEXY-FULL-V-CONCURRENCY-CHAOS-PROOF-004",
+        "F-NEXY-FULL-Z-CURRENT-HEAD-PROOF-002"
+      ],
+      "action_class": "TEST_AND_EVIDENCE_REFRESH",
+      "dependencies": [
+        "RC-CONTRACT-CURRENT-001",
+        "RC-INCIDENT-SEMANTICS-001",
+        "RC-FSM-AUTHORITY-001",
+        "RC-QUEUE-RETRY-001",
+        "RC-TRACE-SEMANTIC-001"
+      ],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "exact-head contract/integration/security/race/recovery/regression suites"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-13",
+      "root_cause_id": "RC-DOC-E-STALE-001",
+      "priority": 5,
+      "finding_ids": [
+        "F-NEXY-FULL-I-CURRENT-EVIDENCE-STALE-001",
+        "F-NEXY-FULL-W-STALE-DOC-E-001",
+        "F-NEXY-FULL-Z-DOC-E-SYSTEM-EVIDENCE-003"
+      ],
+      "action_class": "EVIDENCE_REFRESH",
+      "dependencies": [
+        "RC-CURRENT-HEAD-PROOF-001",
+        "RC-EVIDENCE-TRUTH-001"
+      ],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "applicable unit/contract/integration regression tests"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    },
+    {
+      "node_id": "DAG-14",
+      "root_cause_id": "RC-RELEASE-GATE-001",
+      "priority": 6,
+      "finding_ids": [
+        "F-NEXY-FULL-W-RELEASE-BLOCKED-002"
+      ],
+      "action_class": "RELEASE_FIX",
+      "dependencies": [
+        "RC-DOC-E-STALE-001",
+        "RC-SEC-SECRET-001"
+      ],
+      "state": "BLOCKED_BY_FULL_AUDIT_COMMAND_GATE",
+      "required_validation": [
+        "applicable unit/contract/integration regression tests"
+      ],
+      "rollback": "Per-command reversible source/config/evidence rollback; production mutation remains HUMAN_GATE."
+    }
+  ],
+  "ordering_policy": [
+    "S5 containment/security integrity first",
+    "S4 current-build root causes before proof refresh",
+    "contracts/state/FSM/recovery before dependent tests",
+    "mapping/traceability verification before claiming coverage",
+    "exact-head executable proof before DOC-E refresh",
+    "DOC-E before release progression"
+  ],
+  "normal_builder_commands_allowed": false,
+  "next_gate": "VERIFY_MASTER_MATRIX_518_AND_REQUIREMENT_MATRIX_262"
+}
