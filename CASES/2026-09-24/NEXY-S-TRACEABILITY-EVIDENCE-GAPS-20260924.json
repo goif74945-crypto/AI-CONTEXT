@@ -1,0 +1,15 @@
+{
+  "case_id": "CASE-NEXY-S-TRACEABILITY-EVIDENCE-GAPS-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "finding_ids": [
+    "F-NEXY-FULL-S-UNMAPPED-001",
+    "F-NEXY-FULL-S-CANDIDATE-MAPPING-001",
+    "F-NEXY-FULL-S-CURRENT-HEAD-EVIDENCE-002"
+  ],
+  "context": "L1o/Lo3/Lo2 current architecture audit",
+  "cause": "Mixed exact/candidate/unmapped traceability plus no successful exact-head execution evidence.",
+  "impact": "Cannot classify current architecture as VERIFIED.",
+  "fix_class": "VERIFY/TEST/EVIDENCE_REFRESH after full audit gate",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
