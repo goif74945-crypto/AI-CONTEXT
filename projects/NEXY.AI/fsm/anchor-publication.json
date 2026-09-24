@@ -1,12 +1,44 @@
 {
   "fsm_id": "FSM-ANCHOR-PUBLICATION",
   "name": "Anchor Publication FSM",
-  "kind": "SOURCE_DEFINED",
+  "namespace": "ANCHOR_PUBLICATION",
+  "registry_kind": "SOURCE_DEFINED",
   "authority": [
     "CONSTITUTIONAL_SOURCE"
   ],
   "scope": [
     "FUTURE_ARCHITECTURE"
+  ],
+  "ontology_status": "CURRENT_CANON",
+  "states": [
+    {
+      "state_id": "STATE-ANCHOR-CHAIN-ANCHORED",
+      "name": "CHAIN_ANCHORED"
+    },
+    {
+      "state_id": "STATE-ANCHOR-FINALIZED",
+      "name": "FINALIZED"
+    },
+    {
+      "state_id": "STATE-ANCHOR-IPFS-PINNED",
+      "name": "IPFS_PINNED"
+    },
+    {
+      "state_id": "STATE-ANCHOR-MERKLE-UPDATED",
+      "name": "MERKLE_UPDATED"
+    },
+    {
+      "state_id": "STATE-ANCHOR-MIRROR-REPLICATED",
+      "name": "MIRROR_REPLICATED"
+    },
+    {
+      "state_id": "STATE-ANCHOR-PROPOSED",
+      "name": "PROPOSED"
+    },
+    {
+      "state_id": "STATE-ANCHOR-QUORUM-SIGNED",
+      "name": "QUORUM_SIGNED"
+    }
   ],
   "source_range": [
     {
@@ -16,84 +48,94 @@
       "end_paragraph": 5154
     }
   ],
-  "states": [
-    "PROPOSED",
-    "QUORUM_SIGNED",
-    "MERKLE_UPDATED",
-    "CHAIN_ANCHORED",
-    "IPFS_PINNED",
-    "MIRROR_REPLICATED",
-    "FINALIZED"
-  ],
-  "events": [],
-  "event_ownership": {},
-  "transitions": [
-    {
-      "from": "PROPOSED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "QUORUM_SIGNED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "QUORUM_SIGNED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "MERKLE_UPDATED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "MERKLE_UPDATED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "CHAIN_ANCHORED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "CHAIN_ANCHORED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "IPFS_PINNED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "IPFS_PINNED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "MIRROR_REPLICATED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "MIRROR_REPLICATED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "FINALIZED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    }
-  ],
-  "invalid_transition_behavior": "Illegal transition is prohibited; exact event/guard names are not established by captured source.",
-  "recovery_semantics": "UNKNOWN",
-  "audit_event_semantics": "UNKNOWN",
-  "implementation_mapping_status": "UNMAPPED",
-  "implementation_refs": [],
   "requirement_ids": [
     "REQ-CONST-005"
   ],
-  "test_refs": [],
-  "alignment_status": "SOURCE_SEQUENCE_ONLY",
-  "alignment_notes": [
-    "Only FINALIZED is valid anchor authority."
+  "implementation_mapping_status": "UNMAPPED",
+  "implementation_refs": [],
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "transition_source": "SOURCE",
+  "transitions": [
+    {
+      "from": "PROPOSED",
+      "event": "advance_quorum_signed",
+      "guard": [
+        "requirements for QUORUM_SIGNED satisfied"
+      ],
+      "action": [
+        "enter QUORUM_SIGNED"
+      ],
+      "to": "QUORUM_SIGNED",
+      "failure": "anchor publication remains non-final"
+    },
+    {
+      "from": "QUORUM_SIGNED",
+      "event": "advance_merkle_updated",
+      "guard": [
+        "requirements for MERKLE_UPDATED satisfied"
+      ],
+      "action": [
+        "enter MERKLE_UPDATED"
+      ],
+      "to": "MERKLE_UPDATED",
+      "failure": "anchor publication remains non-final"
+    },
+    {
+      "from": "MERKLE_UPDATED",
+      "event": "advance_chain_anchored",
+      "guard": [
+        "requirements for CHAIN_ANCHORED satisfied"
+      ],
+      "action": [
+        "enter CHAIN_ANCHORED"
+      ],
+      "to": "CHAIN_ANCHORED",
+      "failure": "anchor publication remains non-final"
+    },
+    {
+      "from": "CHAIN_ANCHORED",
+      "event": "advance_ipfs_pinned",
+      "guard": [
+        "requirements for IPFS_PINNED satisfied"
+      ],
+      "action": [
+        "enter IPFS_PINNED"
+      ],
+      "to": "IPFS_PINNED",
+      "failure": "anchor publication remains non-final"
+    },
+    {
+      "from": "IPFS_PINNED",
+      "event": "advance_mirror_replicated",
+      "guard": [
+        "requirements for MIRROR_REPLICATED satisfied"
+      ],
+      "action": [
+        "enter MIRROR_REPLICATED"
+      ],
+      "to": "MIRROR_REPLICATED",
+      "failure": "anchor publication remains non-final"
+    },
+    {
+      "from": "MIRROR_REPLICATED",
+      "event": "advance_finalized",
+      "guard": [
+        "requirements for FINALIZED satisfied"
+      ],
+      "action": [
+        "enter FINALIZED"
+      ],
+      "to": "FINALIZED",
+      "failure": "anchor publication remains non-final"
+    }
+  ],
+  "global_rules": [
+    "Only FINALIZED is valid finalized publication authority.",
+    "Empty anchor intervals still produce an anchored empty batch/root under the source design."
+  ],
+  "invalid_transition_behavior": "invalid/non-final publication remains non-authoritative; governing law may freeze",
+  "audit_event": "anchor publication transition",
+  "notes": [
+    "FSM namespace is isolated; equal state labels in other FSMs are not aliases."
   ]
 }
