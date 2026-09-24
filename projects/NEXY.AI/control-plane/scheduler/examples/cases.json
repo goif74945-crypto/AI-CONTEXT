@@ -1,0 +1,12 @@
+{
+ "schema_version":"1.0.0",
+ "golden":[
+  {"case_id":"SCHED-GOLDEN-001","queue_state":"READY","dependency_state":"SATISFIED","head_guard":"PASS","collision_state":"CLEAR","worker_state":"ELIGIBLE","expected":"DISPATCH"}
+ ],
+ "negative":[
+  {"case_id":"SCHED-NEG-STALE-001","head_guard":"STALE","expected":"BLOCK"},
+  {"case_id":"SCHED-NEG-COLLISION-001","collision_state":"COLLISION","expected":"WAIT"},
+  {"case_id":"SCHED-NEG-NOWORKER-001","worker_state":"NONE","expected":"WAIT"},
+  {"case_id":"SCHED-NEG-DEPENDENCY-001","dependency_state":"UNSATISFIED","expected":"WAIT"}
+ ]
+}
