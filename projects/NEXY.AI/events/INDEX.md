@@ -1,5 +1,9 @@
-# NEXY.AI Event Registry
+# NEXY.AI Event / Message Registry
 
-Registered current DOC-C/FSM/queue events: **13**.
+`events.jsonl` contains:
+- source-defined execution FSM events;
+- implementation-observed operational EventLog/AuditLog event kinds.
 
-Fields: producer, consumer, schema, ordering, delivery, idempotency, timeout, retry and audit. Presence is E0 until runtime event tests prove behavior.
+Every event keeps producer/owner, consumer, schema, ordering, delivery, idempotency, timeout/retry semantics, audit behavior and failure semantics where established.
+
+Source FSM events and OBS operational events are different namespaces.
