@@ -1,0 +1,24 @@
+{
+  "case_id": "CASE-NEXY-OTAC-REPAIR-VERIFIED-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "finding_id": "F-NEXY-FULL-H-OTAC-LOG-001",
+  "requirement_id": "REQ-SEC-003",
+  "repair_commit": "5c8d9ee5209f714ea7c36632eccf2e82e009e6a7",
+  "validation_head": "d9991c925e23915448592a9e1ba78a3a80e5bb71",
+  "validation_deployment": "0448db96-038f-4e01-8af7-ff2bb9d26e4a",
+  "required_tests": {
+    "focused_auth_email": 0,
+    "typecheck_backend": 0,
+    "lint": 0,
+    "focused_auth_regression": 0
+  },
+  "broader_regression": {
+    "contract": 0,
+    "integration": 0,
+    "full": 0,
+    "doc_c": 0,
+    "web_build": 0
+  },
+  "status": "REPAIRED_VERIFIED",
+  "hash": "HASH_UNAVAILABLE"
+}

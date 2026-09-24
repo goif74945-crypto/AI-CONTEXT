@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "objective": "Build NEXY according to the authoritative specification without reducing, inventing, or collapsing scope.",
+  "target": {
+    "repo": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "d9991c925e23915448592a9e1ba78a3a80e5bb71"
+  },
+  "authority": [
+    {
+      "source": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+    },
+    {
+      "source": "projects/NEXY.AI/requirements/requirements.jsonl",
+      "requirements": 262
+    },
+    {
+      "source": "AUDIT-NEXY-FULL-20260924-01",
+      "audit_units": 1468,
+      "findings": 31
+    },
+    {
+      "source": "NEXY-COMMAND-DAG-20260924-01",
+      "nodes": 13
+    }
+  ],
+  "scope_counts": {
+    "all_requirements": 262,
+    "must_requirements": 239,
+    "doc_c_current_build": 80,
+    "doc_d_product_design": 29,
+    "future_architecture": 81
+  },
+  "execution_order": [
+    "Close proven S5/S4 current-build defects and truth/evidence defects.",
+    "Repair current-build contract/state/FSM/recovery findings in dependency order.",
+    "Revalidate all 80 DOC_C_CURRENT_BUILD requirements against exact HEAD.",
+    "Complete current-head tests, traceability, evidence, and release gates.",
+    "Implement/verify DOC_D_PRODUCT_DESIGN requirements according to their product-design scope.",
+    "Implement FUTURE_ARCHITECTURE only according to its explicit scope/dependencies; do not relabel it as current-build.",
+    "Run final full-spec audit against all 262 requirements and 518 systems."
+  ],
+  "immutable_rules": [
+    "Source/spec beats implementation.",
+    "No placeholder or fake evidence.",
+    "Every mutation is exact-head guarded and reversible.",
+    "No requirement is marked complete without applicable executed validation.",
+    "Production deployment remains a human gate."
+  ],
+  "completed_work_units": [
+    {
+      "id": "CMD-NEXY-SEC-OTAC-LOG-001",
+      "result": "VERIFIED",
+      "repair_commit": "5c8d9ee5209f714ea7c36632eccf2e82e009e6a7",
+      "validation_head": "d9991c925e23915448592a9e1ba78a3a80e5bb71",
+      "validation_deployment": "0448db96-038f-4e01-8af7-ff2bb9d26e4a"
+    }
+  ],
+  "next_work_unit": "CMD-NEXY-EVIDENCE-E07-001",
+  "status": "ACTIVE",
+  "hash": "HASH_UNAVAILABLE"
+}

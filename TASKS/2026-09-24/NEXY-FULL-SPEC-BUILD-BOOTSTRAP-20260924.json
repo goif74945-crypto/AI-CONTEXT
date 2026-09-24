@@ -1,0 +1,58 @@
+{
+  "task_id": "TASK-NEXY-FULL-SPEC-BUILD-BOOTSTRAP-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "title": "Start full NEXY specification build",
+  "mode": "EXECUTE",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "d9991c925e23915448592a9e1ba78a3a80e5bb71",
+  "source_revision": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "scope": "All 262 registered requirements, respecting each requirement's authoritative scope.",
+  "actions": [
+    "Pinned AI-CONTEXT and NEXY exact heads.",
+    "Established full-spec campaign scope from requirements registry and sealed audit.",
+    "Upgraded validation-only Railway runner to include command-required focused tests, backend typecheck, lint, and focused regression.",
+    "Created empty validation trigger commit d9991c925e23915448592a9e1ba78a3a80e5bb71.",
+    "Re-ran exact-head validation."
+  ],
+  "validation": {
+    "deployment": "0448db96-038f-4e01-8af7-ff2bb9d26e4a",
+    "exact_head": "d9991c925e23915448592a9e1ba78a3a80e5bb71",
+    "passed": [
+      "npm ci",
+      "prisma generate",
+      "npm run typecheck",
+      "focused auth-email test",
+      "npm run typecheck:backend",
+      "npm run lint",
+      "focused auth regression",
+      "contract suite",
+      "integration suite",
+      "full suite",
+      "coverage generation",
+      "DOC-C static gate",
+      "web build"
+    ],
+    "known_preexisting_failure": [
+      "npm run check:coverage"
+    ]
+  },
+  "work_unit_1": {
+    "id": "CMD-NEXY-SEC-OTAC-LOG-001",
+    "status": "VERIFIED",
+    "changed_files": [
+      "packages/auth/email.ts",
+      "tests/contract/auth-email-provider.test.ts"
+    ],
+    "security_readback": "No stdout/stderr/console OTAC delivery sink remains; fail-closed path present."
+  },
+  "final_status": "ACTIVE_CONTINUING",
+  "next_actions": [
+    "Repair E07 evidence truth at current exact head, then continue dependency-ordered remediation."
+  ],
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
