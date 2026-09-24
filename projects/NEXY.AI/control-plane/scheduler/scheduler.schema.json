@@ -1,0 +1,19 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://ai-context.local/nexy/control-plane/scheduler/scheduler.schema.json",
+ "title":"NEXY Scheduler Decision",
+ "type":"object","additionalProperties":false,
+ "required":["decision_id","command_id","queue_state","dependency_state","head_guard","collision_state","worker_state","worker_id","decision","reason"],
+ "properties":{
+  "decision_id":{"type":"string","minLength":1},
+  "command_id":{"type":"string","minLength":1},
+  "queue_state":{"enum":["READY","WAITING_DEPENDENCY","CLAIMED","TERMINAL","QUARANTINED"]},
+  "dependency_state":{"enum":["SATISFIED","UNSATISFIED"]},
+  "head_guard":{"enum":["PASS","STALE","BLOCKED"]},
+  "collision_state":{"enum":["CLEAR","COLLISION"]},
+  "worker_state":{"enum":["ELIGIBLE","NONE"]},
+  "worker_id":{"type":["string","null"]},
+  "decision":{"enum":["DISPATCH","WAIT","BLOCK","QUARANTINE"]},
+  "reason":{"type":"string","minLength":1}
+ }
+}
