@@ -1,0 +1,14 @@
+{
+  "record_id":"QUAR-GOLDEN-001",
+  "command_id":"CMD-SEC-001",
+  "terminal_class":"QUARANTINE",
+  "source_status":"QUARANTINED",
+  "failure_class":"SECURITY_VIOLATION",
+  "attempt_number":1,
+  "expected_head":"2222222222222222222222222222222222222222",
+  "observed_head":"2222222222222222222222222222222222222222",
+  "reason":"Security policy violation requires containment.",
+  "evidence_refs":["security:violation-001"],
+  "supersedes":[],
+  "release_state":"LOCKED"
+}
