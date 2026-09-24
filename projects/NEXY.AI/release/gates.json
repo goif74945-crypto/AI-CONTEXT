@@ -1,129 +1,205 @@
 {
   "schema_version": "1.0.0",
+  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
   "stages": [
     {
       "stage": "DEV",
-      "authority_class": "AI_CONTEXT_OPERATIONAL_STAGE",
-      "purpose": "Local/branch development quality gate before shared integration.",
-      "required_evidence": [
-        "E1_STATIC",
-        "E2_UNIT"
+      "entry": [
+        "source/requirement scope resolved",
+        "code builds/loads"
       ],
-      "required_checks": [
-        "schema/type/static validation",
-        "focused unit tests",
-        "contract snapshot consistency",
-        "forbidden dependency checks for touched modules"
+      "required": [
+        "static/type/build",
+        "local unit/contract tests for touched area",
+        "no S5 invariant knowingly broken"
       ],
-      "source_basis": [
-        "DOC-C test gates"
-      ],
-      "notes": [
-        "Stage name/aggregation is AI-CONTEXT operational structure; individual checks are source-derived."
-      ]
+      "exit_to": "TEST",
+      "current_status": "UNKNOWN"
     },
     {
       "stage": "TEST",
-      "authority_class": "AI_CONTEXT_OPERATIONAL_STAGE",
-      "purpose": "Integrated test gate for current build semantics.",
-      "required_evidence": [
-        "E3_INTEGRATION"
+      "entry": [
+        "DEV gates"
       ],
-      "required_checks": [
-        "API schema",
-        "FSM transitions",
-        "LAW/release policy",
-        "RBAC",
-        "auth abuse",
-        "queue idempotency",
-        "Vault append-only/migration integration"
+      "required": [
+        "required contract/API/FSM/dependency/LAW/release/freeze/auth/Vault/queue tests",
+        "negative tests",
+        "migration test if schema changes"
       ],
-      "source_basis": [
-        "DOC-C test gates",
-        "DOC-E E1-E7"
-      ],
-      "notes": [
-        "Requires executed evidence, not file presence."
-      ]
+      "exit_to": "STAGING",
+      "current_status": "NOT_PROVEN_FOR_CURRENT_HEAD"
     },
     {
       "stage": "STAGING",
-      "authority_class": "AI_CONTEXT_OPERATIONAL_STAGE",
-      "purpose": "Target-like environment proof before canary/production.",
-      "required_evidence": [
-        "E4_E2E",
-        "E5_RUNTIME"
+      "entry": [
+        "TEST gates"
       ],
-      "required_checks": [
-        "critical UI E2E",
-        "migration apply+rollback",
+      "required": [
+        "target-like PostgreSQL/Redis/services",
+        "real queue worker readiness",
+        "migration forward+rollback",
+        "incident drill",
         "monitoring/alarm verification",
-        "incident/freeze drill",
-        "queue worker readiness"
+        "smoke test"
       ],
-      "source_basis": [
-        "DOC-C",
-        "DOC-D",
-        "DOC-E E3,E7,E8,E9"
-      ],
-      "notes": [
-        "Environment stage name is operational framework; proof obligations are source-derived."
-      ]
+      "exit_to": "CANARY",
+      "current_status": "BLOCKED"
     },
     {
       "stage": "CANARY",
-      "authority_class": "AI_CONTEXT_OPERATIONAL_STAGE",
-      "purpose": "Limited exact-artifact deployment and rollback observation.",
-      "required_evidence": [
-        "E6_DEPLOYMENT"
+      "entry": [
+        "STAGING gates",
+        "deployable artifact identity"
       ],
-      "required_checks": [
-        "exact artifact identity",
-        "health/smoke",
-        "freeze path",
-        "monitoring active",
-        "rollback readiness",
-        "no unresolved S4/S5 blocker"
+      "required": [
+        "exact artifact hash",
+        "canary health/alarms",
+        "rollback trigger and tested path",
+        "no unresolved release-blocking incidents"
       ],
-      "source_basis": [
-        "DOC-E runbook/signoff/rollback expectations"
-      ],
-      "notes": [
-        "Canary is an AI-CONTEXT operational stage; source does not define a canonical canary topology."
-      ]
+      "exit_to": "PROD",
+      "current_status": "BLOCKED"
     },
     {
       "stage": "PROD",
-      "authority_class": "DOC_E_DEPLOYMENT_GATE",
-      "purpose": "Production deployment approval.",
-      "required_evidence": [
-        "DOC-E-E1",
-        "DOC-E-E2",
-        "DOC-E-E3",
-        "DOC-E-E4",
-        "DOC-E-E5",
-        "DOC-E-E6",
-        "DOC-E-E7",
-        "DOC-E-E8",
-        "DOC-E-E9",
-        "DOC-E-E10",
-        "DOC-E-E11",
-        "DOC-E-E12"
+      "entry": [
+        "CANARY gates"
       ],
-      "required_checks": [
-        "engineering signoff",
-        "security signoff",
-        "migration signoff",
-        "rollback verification",
-        "monitoring verification",
-        "exact commit/environment evidence freshness"
+      "required": [
+        "E1 contract report",
+        "E2 API schema snapshot",
+        "E3 migration roundtrip",
+        "E4 FSM report",
+        "E5 RBAC",
+        "E6 auth abuse",
+        "E7 queue worker readiness",
+        "E8 observability/alarm",
+        "E9 incident drill",
+        "E10 exact deploy runbook",
+        "E11 authorized signoff",
+        "E12 rollback execution",
+        "all bound to exact release HEAD/environment"
       ],
-      "source_basis": [
-        "DOC-E"
-      ],
-      "notes": [
-        "Missing/stale required evidence => NON_DEPLOYABLE."
-      ]
+      "exit_to": null,
+      "current_status": "BLOCKED_NON_DEPLOYABLE"
     }
+  ],
+  "doc_e": [
+    {
+      "evidence": "E1",
+      "requirement": "REQ-DOC-E-001",
+      "current_artifact": "docs/evidence/current/E01-contract-test-report.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED",
+      "head_match": false,
+      "gate_status": "BLOCKED_STALE"
+    },
+    {
+      "evidence": "E2",
+      "requirement": "REQ-DOC-E-002",
+      "current_artifact": "docs/evidence/current/E02-api-schema-snapshot.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED",
+      "head_match": false,
+      "gate_status": "BLOCKED_STALE"
+    },
+    {
+      "evidence": "E3",
+      "requirement": "REQ-DOC-E-003",
+      "current_artifact": "docs/evidence/current/E03-migration-roundtrip.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED",
+      "head_match": false,
+      "gate_status": "BLOCKED_STALE"
+    },
+    {
+      "evidence": "E4",
+      "requirement": "REQ-DOC-E-004",
+      "current_artifact": "docs/evidence/current/E04-state-machine.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED",
+      "head_match": false,
+      "gate_status": "BLOCKED_STALE"
+    },
+    {
+      "evidence": "E5",
+      "requirement": "REQ-DOC-E-005",
+      "current_artifact": "docs/evidence/current/E05-rbac-tests.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED",
+      "head_match": false,
+      "gate_status": "BLOCKED_STALE"
+    },
+    {
+      "evidence": "E6",
+      "requirement": "REQ-DOC-E-006",
+      "current_artifact": "docs/evidence/current/E06-auth-abuse.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED",
+      "head_match": false,
+      "gate_status": "BLOCKED_STALE"
+    },
+    {
+      "evidence": "E7",
+      "requirement": "REQ-DOC-E-007",
+      "current_artifact": "docs/evidence/current/E07-queue-worker-readiness.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED",
+      "head_match": false,
+      "gate_status": "BLOCKED_STALE"
+    },
+    {
+      "evidence": "E8",
+      "requirement": "REQ-DOC-E-008",
+      "current_artifact": "docs/evidence/current/E08-observability-alarm.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED_EXTERNAL",
+      "head_match": false,
+      "gate_status": "BLOCKED_EXTERNAL_STALE"
+    },
+    {
+      "evidence": "E9",
+      "requirement": "REQ-DOC-E-009",
+      "current_artifact": "docs/evidence/current/E09-incident-drill.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED",
+      "head_match": false,
+      "gate_status": "BLOCKED_STALE"
+    },
+    {
+      "evidence": "E10",
+      "requirement": "REQ-DOC-E-010",
+      "current_artifact": "docs/evidence/current/E10-deploy-runbook.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED_EXTERNAL",
+      "head_match": false,
+      "gate_status": "BLOCKED_EXTERNAL_STALE"
+    },
+    {
+      "evidence": "E11",
+      "requirement": "REQ-DOC-E-011",
+      "current_artifact": "docs/evidence/current/E11-release-signoff.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED_EXTERNAL",
+      "head_match": false,
+      "gate_status": "BLOCKED_EXTERNAL_STALE"
+    },
+    {
+      "evidence": "E12",
+      "requirement": "REQ-DOC-E-012",
+      "current_artifact": "docs/evidence/current/E12-rollback-execution.md",
+      "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+      "reported_result": "BLOCKED",
+      "head_match": false,
+      "gate_status": "BLOCKED_STALE"
+    }
+  ],
+  "global_rules": [
+    "No stage promotion on stale evidence.",
+    "No production promotion without authorized human signoff.",
+    "No test file presence may satisfy an execution gate.",
+    "Schema/migration changes invalidate prior migration/rollback evidence.",
+    "Any S5 invariant regression blocks release.",
+    "Physical robotics claims require physical/HIL evidence and are outside current DOC-C deployment proof unless explicitly promoted."
   ]
 }
