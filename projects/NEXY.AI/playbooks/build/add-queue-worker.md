@@ -1,33 +1,53 @@
-# NEXY Builder Playbook
+# NEXY Playbook Contract
 
-## Universal preconditions
-1. Pin repository + branch + exact HEAD.
-2. Resolve ontology entity, requirements, authority/scope/supersession/conflicts.
-3. Resolve dependencies, implementation refs, contracts, FSM, atomic invariants, security/state/event/config.
-4. Check failure/recovery library.
-5. Do not infer PASS from file presence, build success, or docs.
+Every playbook follows:
 
-# Workflow: Add Queue Worker
+1. PRECONDITIONS
+2. REQUIRED_CONTEXT
+3. AUTHORITY / SCOPE CHECK
+4. CHANGE IMPACT
+5. IMPLEMENTATION_SEQUENCE
+6. VALIDATION
+7. NEGATIVE_TESTS
+8. REGRESSION
+9. ROLLBACK
+10. DONE
 
-## Required context
-- queue payload contract;
-- job lifecycle FSM;
-- producer/consumer validation;
-- idempotency and stale-job policy;
-- concurrency limits;
-- failure/audit semantics.
+Global rules:
+- refresh repository branch/HEAD before implementation claims or edits;
+- if HEAD differs from the task lock, STOP/FREEZE;
+- source design ≠ implementation ≠ test ≠ evidence ≠ deployment proof;
+- never patch a CANDIDATE implementation mapping without opening/confirming the file;
+- resolve Authority + Scope + Supersession + Conflict before coding;
+- preserve S5 invariants;
+- UI is not authority;
+- SWARM/model output is not final authority;
+- no test execution evidence = no PASS;
+- do not use stale evidence for current HEAD.
 
-## Sequence
-1. Define/confirm payload schema.
-2. Validate before enqueue.
-3. Use canonical idempotency key/job identity.
-4. Enforce configured concurrency cap.
-5. Revalidate before consume.
-6. Enforce stale TTL before execution.
-7. Keep failed-job auto-retry disabled unless explicitly proven safe.
-8. Record run state/event/audit/incident atomically where required.
-9. Add duplicate, stale, malformed, worker-down and recovery tests.
-10. Update event/traceability/failure registries.
+# Add Queue Worker
+
+## PRECONDITIONS
+- queue payload contract canonical;
+- producer/consumer validation defined;
+- durability/idempotency/stale TTL/retry policy explicit.
+
+## REQUIRED_CONTEXT
+Queue contracts/FSM, Redis durability rule, dispatch/idempotency, release law, incident/audit behavior.
+
+## IMPLEMENTATION_SEQUENCE
+1. validate before enqueue;
+2. bind idempotency identity;
+3. assert durable queue backend;
+4. revalidate before consume;
+5. claim durable dispatch before side effects;
+6. load authoritative durable domain record;
+7. execute bounded work;
+8. handle failure through incident/audit;
+9. no automatic retry unless explicitly safe.
+
+## NEGATIVE_TESTS
+duplicate delivery, stale job, malformed payload, Redis non-durable/unavailable, worker crash, DB failure, release rejection.
 
 ## DONE
-No duplicate mutation, stale execution or silent retry path remains.
+Real service boundary exercised; mock-only success cannot satisfy runtime-readiness proof.
