@@ -1,0 +1,38 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "P_CONSTITUTIONAL_LAYERS",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 86,
+  "counts": {
+    "VERIFIED": 0,
+    "PARTIAL": 0,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "UNKNOWN": 0,
+    "CONFLICT": 0,
+    "MISSING": 0,
+    "OUT_OF_SCOPE": 0,
+    "FUTURE_SCOPE": 86,
+    "SUPERSEDED": 0
+  },
+  "source_proof": [
+    "All 86 denominator units are explicitly FUTURE_SCOPE."
+  ],
+  "implementation_proof": [
+    "No current-build defect inferred from future architecture."
+  ],
+  "test_proof": [
+    "Not applicable to current DOC-C build solely by this future scope."
+  ],
+  "linked_findings": [],
+  "new_findings": [],
+  "gaps": [],
+  "verdict": "FUTURE_SCOPE",
+  "next_proof_required": [
+    "Re-audit only if promoted into current scope."
+  ],
+  "next_category": "Q_GAME_AAAA_NCF",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
