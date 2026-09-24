@@ -99,18 +99,18 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 228,
-    "remaining": 1240,
-    "percent": 15.5313
+    "audited": 271,
+    "remaining": 1197,
+    "percent": 18.4605
   },
-  "current_category": "F_STATE_PERSISTENCE_STORAGE",
-  "last_completed_unit": "CATEGORY:C_API_ROUTES_CONTRACTS",
-  "next_unit": "CATEGORY:F_STATE_PERSISTENCE_STORAGE",
+  "current_category": "G_RECOVERY_RESTART_RESUME",
+  "last_completed_unit": "CATEGORY:F_STATE_PERSISTENCE_STORAGE",
+  "next_unit": "CATEGORY:G_RECOVERY_RESTART_RESUME",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
     "S2": 2,
-    "S3": 3,
+    "S3": 4,
     "S4": 3,
     "S5": 2
   },
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "C_API_ROUTES_CONTRACTS",
+    "category_completed": "F_STATE_PERSISTENCE_STORAGE",
     "read_back_verified": false,
-    "category_units": 44
+    "category_units": 43
   }
 }
