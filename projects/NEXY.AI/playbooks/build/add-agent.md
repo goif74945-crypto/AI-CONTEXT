@@ -1,45 +1,35 @@
-# PLAYBOOK — Add AI Agent / Model Adapter
+# NEXY Builder Playbook
 
-## PRECONDITIONS
-- Agent/model use is authorized.
-- Provider/tool data-sharing boundary is understood.
-- Agent cannot become final authority.
-- AgentAdapter contract exists or is intentionally versioned.
+## Universal preconditions
+1. Pin repository + branch + exact HEAD.
+2. Resolve ontology entity, requirements, authority/scope/supersession/conflicts.
+3. Resolve dependencies, implementation refs, contracts, FSM, atomic invariants, security/state/event/config.
+4. Check failure/recovery library.
+5. Do not infer PASS from file presence, build success, or docs.
 
-## REQUIRED CONTEXT
-- Lo3 Agent Orchestrator;
-- AgentAdapter contract;
-- context sharding;
-- trust/evaluation;
-- timeout/critical-agent policy;
-- data masking/security boundary;
-- release policy;
-- current provider adapter implementation/tests.
+# Workflow: Add Agent / Model Adapter
 
-## IMPLEMENTATION SEQUENCE
-1. Define stable adapter ID/provider/version.
-2. Declare supported modes/capabilities.
-3. Declare deterministic-capable truthfully.
-4. Declare critical vs noncritical role.
-5. Define timeout and context capacity.
-6. Implement execute/cancel/healthcheck contract.
-7. Normalize provider output into canonical untrusted result schema.
-8. Sanitize/provider-isolate data.
-9. Ensure provider result cannot write VAULT/authority directly.
-10. Integrate trust/health routing.
-11. Add timeout/schema/cancel/health degradation tests.
-12. Add cross-verification with at least one independent path when required.
-13. Verify release still passes through JUDGE/LAW/release policy.
+## Required context
+- provider/model identity;
+- schema version;
+- supported modes;
+- deterministic capability flag;
+- criticality;
+- timeout/context capacity;
+- health interface;
+- security/Cage rules;
+- cost/trust routing policy.
 
-## NEGATIVE TESTS
-- malformed provider response;
-- hallucinated tool/result fields;
-- timeout;
-- provider unavailable;
-- prompt injection in model output;
-- critical-agent failure;
-- data-leak boundary violation;
-- model disagreement.
+## Sequence
+1. Register adapter metadata and stable ID.
+2. Define execute/cancel/health contracts.
+3. Treat all model output as untrusted proposal.
+4. Enforce timeout bounds and cancellation.
+5. Define critical vs noncritical failure semantics.
+6. Route through Swarm→verification→Judge; never direct-release.
+7. Apply prompt-law/security boundary.
+8. Add malformed output, timeout, provider error, injection and disagreement tests.
+9. Update trust/cost metrics only from governed outcomes.
 
 ## DONE
-Adapter behavior is proven while authority remains outside the model.
+Adapter cannot bypass verification/release authority and all failure modes are explicit.
