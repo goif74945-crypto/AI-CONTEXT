@@ -1,7 +1,7 @@
 # Checkpoint Validation Report
 
 ## Result
-**PASS — P4.7 remote read-back + checkpoint**
+**PASS — P4.8 remote read-back + checkpoint**
 
-Semantic HEAD: `6d101f415fefb1098eea0f85f7a1211c40bcf331`
-Next: **P4.8 HEARTBEAT**
+Semantic HEAD: `7ad626c4cb76d6a4e10aa655413a648c7ac97555`
+Next: **P4.9 RETRY / BACKOFF**
