@@ -1,0 +1,9 @@
+{
+  "failure_id": "FAIL-NEXY-W-RELEASE-NOT-PROVEN-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "cause": "Required DOC-E evidence is stale/blocked for target HEAD.",
+  "failed_approach": "Do not reuse historical/local supplemental PASS as current release proof.",
+  "recovery": "Regenerate E1-E12 and ordered stage evidence at exact target HEAD/environment after remediation gate.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
