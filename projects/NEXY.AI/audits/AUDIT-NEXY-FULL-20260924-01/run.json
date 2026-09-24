@@ -3,7 +3,7 @@
   "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
   "pair_id": "NEXY-CLOSED-LOOP-01",
   "mode": "AUDIT_ONLY_UNTIL_FULL_PROJECT_COVERAGE",
-  "status": "AUDIT_ACTIVE",
+  "status": "AUDIT_ACTIVE_DENOMINATOR_LOCKED",
   "project": "NEXY.AI / NEXY-IGNIS",
   "authoritative_source": {
     "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
@@ -56,11 +56,11 @@
   ],
   "order_reason": "Resolve authority/scope before implementation verdicts; audit current law/security/contracts/state/recovery/runtime before future domains; perform cross-system and release gates after atomic coverage.",
   "denominator": {
-    "total": 1496,
+    "total": 1468,
     "counts_by_type": {
       "ENTITY": 518,
       "REQUIREMENT": 262,
-      "CONTRACT": 90,
+      "CONTRACT": 62,
       "FSM": 9,
       "INVARIANT": 40,
       "EVENT": 20,
@@ -98,9 +98,9 @@
     "requirement_count": 262
   },
   "coverage": {
-    "total": 1496,
+    "total": 1468,
     "audited": 0,
-    "remaining": 1496,
+    "remaining": 1468,
     "percent": 0
   },
   "current_category": "J_CONFIGURATION_GOVERNANCE",
@@ -139,5 +139,8 @@
       }
     ]
   },
-  "timestamp_source": "Git commit timestamps + session date 2026-09-24"
+  "timestamp_source": "Git commit timestamps + session date 2026-09-24",
+  "denominator_notes": [
+    "Contract registry declared 90 but exact unique union is 62; mismatch is an audit finding and denominator uses observed unique identities."
+  ]
 }
