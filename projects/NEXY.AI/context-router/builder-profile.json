@@ -1,0 +1,32 @@
+{
+  "profile": "BUILDER",
+  "objective": "Minimum sufficient context to safely modify/build without loading unrelated project history.",
+  "mandatory": [
+    "task authority",
+    "scope",
+    "entities",
+    "requirements",
+    "dependency predecessors",
+    "contracts",
+    "FSM namespace",
+    "atomic invariants",
+    "implementation refs",
+    "failure history",
+    "required regression tests"
+  ],
+  "optional": [
+    "evidence history",
+    "negative examples",
+    "state/security/config/events when relevant"
+  ],
+  "exclude_by_default": [
+    "unrelated future domains",
+    "historical prose already superseded unless needed for migration",
+    "full raw source document"
+  ],
+  "output_rules": [
+    "No CANDIDATE implementation ref may be patched without opening it.",
+    "Any unresolved authority/conflict becomes open_unknown and blocks affected mutation.",
+    "Pack records exact implementation HEAD."
+  ]
+}
