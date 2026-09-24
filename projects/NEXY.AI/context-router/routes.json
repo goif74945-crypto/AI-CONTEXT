@@ -1,0 +1,323 @@
+{
+  "schema_version": "1.0.0",
+  "resolution_order": [
+    "explicit requirement IDs",
+    "explicit ontology entity IDs",
+    "task-type seed entities",
+    "dependency expansion",
+    "governance/contract/FSM/invariant expansion",
+    "implementation/test/evidence/failure expansion"
+  ],
+  "routes": [
+    {
+      "task_type": "QUEUE_BUG",
+      "seed_entities": [
+        "QUEUE-EXECUTION",
+        "ENGINE-IDEMPOTENCY",
+        "FSM-QUEUE-JOB"
+      ],
+      "playbook": "MODIFY_SYSTEM",
+      "include": [
+        "requirements",
+        "dependencies",
+        "dependents",
+        "contracts",
+        "fsm",
+        "invariants",
+        "implementation",
+        "tests",
+        "failures",
+        "events",
+        "config",
+        "state"
+      ]
+    },
+    {
+      "task_type": "AUTH_CHANGE",
+      "seed_entities": [
+        "MODULE-AUTH",
+        "SERVICE-OTAC",
+        "SERVICE-SESSION",
+        "MODULE-RBAC",
+        "MODULE-CSRF"
+      ],
+      "playbook": "MODIFY_SYSTEM",
+      "include": [
+        "requirements",
+        "contracts",
+        "security",
+        "state",
+        "events",
+        "config",
+        "tests",
+        "failures"
+      ]
+    },
+    {
+      "task_type": "VAULT_CHANGE",
+      "seed_entities": [
+        "STORAGE-VAULT",
+        "DATA-PROJECT",
+        "DATA-ARTIFACT",
+        "DATA-REVISION",
+        "DATA-COMMIT"
+      ],
+      "playbook": "MODIFY_SYSTEM",
+      "include": [
+        "requirements",
+        "contracts",
+        "state",
+        "invariants",
+        "implementation",
+        "tests",
+        "failures",
+        "security"
+      ]
+    },
+    {
+      "task_type": "API_CHANGE",
+      "seed_entities": [
+        "GATEWAY-API"
+      ],
+      "playbook": "ADD_API_ROUTE",
+      "include": [
+        "requirements",
+        "contracts",
+        "security",
+        "config",
+        "events",
+        "implementation",
+        "tests",
+        "failures"
+      ]
+    },
+    {
+      "task_type": "FSM_CHANGE",
+      "seed_entities": [
+        "FSM-EXECUTION"
+      ],
+      "playbook": "ADD_STATE_TRANSITION",
+      "include": [
+        "requirements",
+        "fsm",
+        "events",
+        "invariants",
+        "implementation",
+        "tests",
+        "failures",
+        "authority"
+      ]
+    },
+    {
+      "task_type": "LAW_CHANGE",
+      "seed_entities": [
+        "LAW-SYSTEM",
+        "LAW-USER-LAW"
+      ],
+      "playbook": "ADD_LAW",
+      "include": [
+        "requirements",
+        "authority",
+        "supersession",
+        "invariants",
+        "dependencies",
+        "implementation",
+        "tests",
+        "failures"
+      ]
+    },
+    {
+      "task_type": "UI_CHANGE",
+      "seed_entities": [
+        "UI-FRONT",
+        "UI-PULSE"
+      ],
+      "playbook": "ADD_UI_SURFACE",
+      "include": [
+        "requirements",
+        "contracts",
+        "security",
+        "state",
+        "fsm",
+        "implementation",
+        "tests",
+        "negative_examples"
+      ]
+    },
+    {
+      "task_type": "L1O",
+      "seed_entities": [
+        "SYS-L1O"
+      ],
+      "playbook": "MODIFY_SYSTEM",
+      "include": [
+        "requirements",
+        "dependencies",
+        "invariants",
+        "implementation",
+        "tests",
+        "failures",
+        "authority",
+        "memory"
+      ]
+    },
+    {
+      "task_type": "LO2",
+      "seed_entities": [
+        "SYS-LO2"
+      ],
+      "playbook": "MODIFY_SYSTEM",
+      "include": [
+        "requirements",
+        "authority",
+        "supersession",
+        "invariants",
+        "implementation",
+        "tests",
+        "failures",
+        "state"
+      ]
+    },
+    {
+      "task_type": "LO3",
+      "seed_entities": [
+        "SYS-LO3"
+      ],
+      "playbook": "ADD_AGENT",
+      "include": [
+        "requirements",
+        "security",
+        "contracts",
+        "invariants",
+        "implementation",
+        "tests",
+        "failures",
+        "config"
+      ]
+    },
+    {
+      "task_type": "SOVEREIGN",
+      "seed_entities": [
+        "FABRIC-SOVEREIGN",
+        "LAW-CONSTITUTIONAL-LOCK"
+      ],
+      "playbook": "AUDIT_DETERMINISM",
+      "include": [
+        "requirements",
+        "authority",
+        "fsm",
+        "invariants",
+        "security",
+        "state",
+        "implementation",
+        "tests",
+        "failures"
+      ]
+    },
+    {
+      "task_type": "GAME",
+      "seed_entities": [
+        "FABRIC-GAME"
+      ],
+      "playbook": "AUDIT_DETERMINISM",
+      "include": [
+        "requirements",
+        "contracts",
+        "invariants",
+        "state",
+        "implementation",
+        "tests",
+        "failures",
+        "security"
+      ]
+    },
+    {
+      "task_type": "NCF_CAPABILITY",
+      "seed_entities": [
+        "FABRIC-NCF",
+        "REGISTRY-CAPABILITY",
+        "FSM-CAPABILITY-REGISTRY"
+      ],
+      "playbook": "ADD_CAPABILITY",
+      "include": [
+        "requirements",
+        "fsm",
+        "contracts",
+        "invariants",
+        "security",
+        "implementation",
+        "tests",
+        "failures",
+        "negative_examples"
+      ]
+    },
+    {
+      "task_type": "ROBOTICS_SAFETY",
+      "seed_entities": [
+        "SYSTEM-RCL",
+        "KERNEL-SAFETY"
+      ],
+      "playbook": "AUDIT_SECURITY",
+      "include": [
+        "requirements",
+        "security",
+        "invariants",
+        "fsm",
+        "implementation",
+        "tests",
+        "evidence",
+        "failures"
+      ]
+    },
+    {
+      "task_type": "RELEASE_AUDIT",
+      "seed_entities": [
+        "ENGINE-RELEASE-POLICY",
+        "LAW-VERIFIED-OUTPUT-ONLY"
+      ],
+      "playbook": "AUDIT_RELEASE",
+      "include": [
+        "requirements",
+        "contracts",
+        "invariants",
+        "tests",
+        "evidence",
+        "failures",
+        "config",
+        "snapshot"
+      ]
+    },
+    {
+      "task_type": "CROSS_SYSTEM_AUDIT",
+      "seed_entities": [
+        "SYS-NEXY"
+      ],
+      "playbook": "AUDIT_CROSS_SYSTEM",
+      "include": [
+        "requirements",
+        "dependencies",
+        "dependents",
+        "authority",
+        "contracts",
+        "fsm",
+        "invariants",
+        "security",
+        "state",
+        "events",
+        "config",
+        "implementation",
+        "tests",
+        "evidence",
+        "failures"
+      ]
+    }
+  ],
+  "rules": [
+    "Do not load entire project when a bounded seed can answer the task.",
+    "Always include governing authority/scope for any mutable task.",
+    "Always include linked atomic invariants before code mutation.",
+    "Builder packs prioritize implementation and regression targets.",
+    "Auditor packs prioritize source/requirements/evidence/negative examples/failure history.",
+    "If current implementation HEAD differs from the map/snapshot, mark implementation context stale and stop current-state claims."
+  ]
+}
