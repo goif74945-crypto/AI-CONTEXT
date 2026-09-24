@@ -3,6 +3,10 @@
 ## Purpose
 Allow large work to stop at any context boundary and continue from an exact semantic node.
 
+## Current checkpoint
+- `current.json` — latest resumable checkpoint.
+- Historical checkpoints use dated/task-specific filenames and are immutable after supersession.
+
 ## Required fields
 - TASK_ID
 - SOURCE_REVISION
@@ -24,14 +28,18 @@ Write a checkpoint:
 - before/after a high-impact mutation campaign;
 - whenever a blocker prevents continuation.
 
+## HEAD semantics
+A checkpoint records the exact semantic HEAD whose state it summarizes. The commit that writes the checkpoint is metadata-only and therefore necessarily newer than the recorded semantic HEAD. On resume, inspect newer commits before assuming semantic drift.
+
 ## Resume algorithm
 1. Read checkpoint only as navigation state.
 2. Refresh AI-CONTEXT and target repo HEAD.
 3. If target HEAD changed:
-   - mark implementation/evidence/navigation fields stale;
-   - refresh required maps;
+   - inspect the diff first;
+   - distinguish checkpoint/metadata-only writes from semantic change;
+   - mark implementation/evidence/navigation fields stale when semantics changed;
    - do not replay old PASS claims.
-4. Load the compiled pack appropriate to `NEXT_NODE`.
+4. Load the compiled pack appropriate to `NEXT_NODE` when available.
 5. Load only referenced registries/artifacts.
 6. Revalidate unresolved conflicts/blockers.
 7. Continue from `NEXT_NODE`, not from task zero.
