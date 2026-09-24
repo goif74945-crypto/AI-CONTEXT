@@ -304,11 +304,13 @@
 {"from":"EVENT-EXEC-ACCEPTED","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVENT-EXEC-AGENTS-DONE","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVENT-EXEC-BOOT","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
+{"from":"EVENT-EXEC-CANCEL","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVENT-EXEC-ERROR","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVENT-EXEC-EXECUTE","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVENT-EXEC-FATAL","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVENT-EXEC-RECOVER","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVENT-EXEC-REJECTED","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
+{"from":"EVENT-EXEC-TIMEOUT","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVENT-EXEC-VERIFIED","to":"FSM-EXECUTION","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVIDENCE-E1","to":"SYS-NEXY","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
 {"from":"EVIDENCE-E10","to":"SYS-NEXY","type":"PART_OF","source":"ontology/checkpoint-01-core-product"}
