@@ -1,146 +1,344 @@
 {
   "schema_version": "1.0.0",
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
   "boundaries": [
     {
       "id": "TB-USER-UI",
+      "scope": "CURRENT",
       "from": "USER",
       "to": "UI",
+      "resource": "user input / displayed state",
       "trust": "UNTRUSTED_INPUT",
-      "controls": [
-        "schema/form validation",
-        "no UI authority"
+      "allowed": [
+        "submit input through schema-constrained surfaces",
+        "view authorized backend-confirmed state"
       ],
-      "failure": "Reject/mark invalid; never infer authoritative state from presentation."
+      "proof": [
+        "client schema is not sufficient authority"
+      ],
+      "state_conditions": [
+        "UI must reflect backend truth"
+      ],
+      "failure": [
+        "invalid/ambiguous input remains blocked or clarified"
+      ]
     },
     {
       "id": "TB-UI-API",
+      "scope": "CURRENT",
       "from": "UI",
       "to": "API",
+      "resource": "HTTP requests",
       "trust": "ZERO_TRUST_BOUNDARY",
-      "controls": [
-        "secure session",
-        "CSRF for mutation",
-        "runtime schema validation",
-        "RBAC"
+      "allowed": [
+        "call documented routes"
       ],
-      "failure": "UNAUTHORIZED/FORBIDDEN/CSRF_INVALID/SCHEMA_VIOLATION"
+      "proof": [
+        "secure session where required",
+        "CSRF for mutating routes",
+        "RBAC at backend"
+      ],
+      "state_conditions": [
+        "FREEZE blocks prohibited actions"
+      ],
+      "failure": [
+        "UNAUTHORIZED/FORBIDDEN/CSRF_INVALID/SYSTEM_IN_FREEZE"
+      ]
+    },
+    {
+      "id": "TB-API-AUTH",
+      "scope": "CURRENT",
+      "from": "API",
+      "to": "AUTH",
+      "resource": "identity/session/OTAC",
+      "trust": "ZERO_TRUST_BOUNDARY",
+      "allowed": [
+        "request/verify OTAC",
+        "load/revoke sessions"
+      ],
+      "proof": [
+        "hashed identity",
+        "session token",
+        "device binding",
+        "anchored owner verification for OWNER promotion"
+      ],
+      "state_conditions": [
+        "revoked/expired sessions denied"
+      ],
+      "failure": [
+        "AUTH_INVALID",
+        "AUTH_EXPIRED",
+        "SESSION_REVOKED",
+        "DEVICE_MISMATCH",
+        "OTAC_LOCKED"
+      ]
     },
     {
       "id": "TB-API-CORE",
+      "scope": "CURRENT",
       "from": "API",
       "to": "CORE",
-      "trust": "VALIDATE_AGAIN",
-      "controls": [
-        "directive schema",
-        "LAW precheck",
-        "state guards",
+      "resource": "Directive/SystemEnvelope",
+      "trust": "VALIDATE_AT_RECEIVER",
+      "allowed": [
+        "validated directive submission"
+      ],
+      "proof": [
+        "runtime schema validation",
+        "authorization",
         "idempotency"
       ],
-      "failure": "Reject/freeze according to canonical error/state law"
+      "state_conditions": [
+        "legal FSM state required"
+      ],
+      "failure": [
+        "SCHEMA_VIOLATION",
+        "INVALID_DIRECTIVE",
+        "STATE_TRANSITION_DENIED"
+      ]
+    },
+    {
+      "id": "TB-CORE-QUEUE",
+      "scope": "CURRENT",
+      "from": "CORE",
+      "to": "QUEUE",
+      "resource": "DirectiveJobData",
+      "trust": "REVALIDATE",
+      "allowed": [
+        "enqueue validated job"
+      ],
+      "proof": [
+        "producer payload validation",
+        "idempotency key",
+        "concurrency cap"
+      ],
+      "state_conditions": [
+        "not globally blocked/frozen"
+      ],
+      "failure": [
+        "SCHEMA_VIOLATION",
+        "RATE_LIMIT_EXCEEDED"
+      ]
+    },
+    {
+      "id": "TB-QUEUE-CONSUMER",
+      "scope": "CURRENT",
+      "from": "QUEUE",
+      "to": "WORKER/CORE",
+      "resource": "queued job payload",
+      "trust": "REVALIDATE_AT_CONSUME",
+      "allowed": [
+        "consume non-stale valid job"
+      ],
+      "proof": [
+        "consumer validation",
+        "stale TTL"
+      ],
+      "state_conditions": [
+        "job lifecycle legal"
+      ],
+      "failure": [
+        "FAILED/EXPIRED/freeze as applicable"
+      ]
     },
     {
       "id": "TB-CORE-SWARM",
+      "scope": "CURRENT",
       "from": "CORE",
       "to": "SWARM",
-      "trust": "CONTROLLED_WORKER_BOUNDARY",
-      "controls": [
-        "decomposition",
-        "timeouts",
-        "agent adapter",
-        "context sharding"
+      "resource": "task/candidate work",
+      "trust": "NON_AUTHORITATIVE_WORKER",
+      "allowed": [
+        "generate candidate/evidence"
       ],
-      "failure": "AGENT_TIMEOUT/DEPENDENCY_FAILURE/SWARM_FREEZE"
+      "proof": [
+        "adapter schema/health/criticality"
+      ],
+      "state_conditions": [
+        "bounded pipeline timing"
+      ],
+      "failure": [
+        "AGENT_TIMEOUT",
+        "AGENT_SCHEMA_INVALID",
+        "SWARM_FREEZE"
+      ]
     },
     {
-      "id": "TB-EXTERNAL-MODEL",
-      "from": "EXTERNAL_AI_MODEL",
-      "to": "SWARM",
-      "trust": "UNTRUSTED_CANDIDATE",
-      "controls": [
-        "prompt-law filter",
-        "adversarial review",
-        "cross verification",
-        "evidence"
+      "id": "TB-SWARM-EXTERNAL",
+      "scope": "CURRENT_ARCHITECTURE",
+      "from": "SWARM/LO3",
+      "to": "EXTERNAL_MODEL",
+      "resource": "prompts/model outputs",
+      "trust": "UNTRUSTED_EXTERNAL_MODEL",
+      "allowed": [
+        "bounded external inference"
       ],
-      "failure": "Exclude/reject/freeze; never direct-authority release"
+      "proof": [
+        "Cage",
+        "Prompt Law filter",
+        "context isolation"
+      ],
+      "state_conditions": [
+        "external output has no final authority"
+      ],
+      "failure": [
+        "prompt injection/drift/malformed proposal → reject/freeze"
+      ]
     },
     {
       "id": "TB-SWARM-JUDGE",
+      "scope": "CURRENT",
       "from": "SWARM",
       "to": "JUDGE",
-      "trust": "UNTRUSTED_UNTIL_VERIFIED",
-      "controls": [
-        "weighted proof",
-        "evidence",
+      "resource": "candidate/evidence/consensus input",
+      "trust": "UNVERIFIED_CANDIDATE",
+      "allowed": [
+        "submit proposals/evidence"
+      ],
+      "proof": [
+        "evidence/consensus validation",
+        "weighted proof/adversarial verification"
+      ],
+      "state_conditions": [
+        "unresolved conflict blocks release"
+      ],
+      "failure": [
+        "CONSENSUS_FAILED",
+        "EVIDENCE_MISSING",
+        "UNVERIFIED_OUTPUT"
+      ]
+    },
+    {
+      "id": "TB-JUDGE-RELEASE",
+      "scope": "CURRENT",
+      "from": "JUDGE",
+      "to": "LAW/RELEASE_POLICY",
+      "resource": "release candidate",
+      "trust": "VERIFY_BEFORE_RELEASE",
+      "allowed": [
+        "request release evaluation"
+      ],
+      "proof": [
+        "accepted/releaseable",
+        "thresholds",
         "quorum",
-        "deterministic match"
+        "evidence",
+        "LAW pass",
+        "no critical agent block"
       ],
-      "failure": "CONSENSUS_FAILED/EVIDENCE_MISSING/RELEASE_POLICY_FAILED"
+      "state_conditions": [
+        "no authoritative FREEZE"
+      ],
+      "failure": [
+        "RELEASE_POLICY_FAILED"
+      ]
     },
     {
-      "id": "TB-QUEUE",
-      "from": "QUEUE_PRODUCER",
-      "to": "QUEUE_WORKER",
-      "trust": "REVALIDATE_BOUNDARY",
-      "controls": [
-        "same canonical payload schema",
-        "idempotency key",
-        "stale TTL",
-        "consumer validation"
+      "id": "TB-CORE-VAULT",
+      "scope": "CURRENT",
+      "from": "CORE",
+      "to": "VAULT",
+      "resource": "project/artifact/revision/commit state",
+      "trust": "TRANSACTIONAL_PERSISTENCE",
+      "allowed": [
+        "versioned/idempotent commit"
       ],
-      "failure": "SCHEMA_VIOLATION/EXPIRED; no execution"
+      "proof": [
+        "OCC previous_version",
+        "content hash",
+        "lineage"
+      ],
+      "state_conditions": [
+        "legal parent/revision state"
+      ],
+      "failure": [
+        "VAULT_COMMIT_CONFLICT",
+        "REVISION_NOT_FOUND"
+      ]
     },
     {
-      "id": "TB-VAULT",
-      "from": "CORE_API",
-      "to": "VAULT_DB_BLOB",
-      "trust": "PERSISTENCE_BOUNDARY",
-      "controls": [
-        "OCC",
-        "append-only revisions",
-        "hash/blob verification",
-        "FK/transaction"
-      ],
-      "failure": "VAULT_COMMIT_CONFLICT / rollback metadata transaction"
-    },
-    {
-      "id": "TB-OBS",
-      "from": "SYSTEM_MODULES",
+      "id": "TB-SYSTEM-OBS",
+      "scope": "CURRENT",
+      "from": "CORE/AUTH/API/VAULT/SWARM/LAW",
       "to": "OBS",
-      "trust": "APPEND_ONLY_EVIDENCE_BOUNDARY",
-      "controls": [
-        "EventLog append-only",
-        "AuditLog hash chain",
-        "incident linkage",
-        "request/trace IDs"
+      "resource": "EventLog/AuditLog/Incidents",
+      "trust": "APPEND_ONLY_EVIDENCE",
+      "allowed": [
+        "INSERT append-only records"
       ],
-      "failure": "Integrity/incident linkage failure"
+      "proof": [
+        "monotonic sequence",
+        "audit hash chain",
+        "DB enforcement where specified"
+      ],
+      "state_conditions": [
+        "critical audit evidence failure is blocking"
+      ],
+      "failure": [
+        "audit/integrity failure → security/freeze handling"
+      ]
     },
     {
-      "id": "TB-UNIVERSE",
-      "from": "UNIVERSE_RUNTIME",
+      "id": "TB-UI-AUTHORITY",
+      "scope": "CURRENT",
+      "from": "UI",
+      "to": "LAW/VAULT/CORE",
+      "resource": "authority",
+      "trust": "NO_DIRECT_AUTHORITY",
+      "allowed": [
+        "presentation only through approved API"
+      ],
+      "proof": [
+        "backend authorization"
+      ],
+      "state_conditions": [
+        "UI cannot override backend truth"
+      ],
+      "failure": [
+        "direct UI→LAW/VAULT dependency is build failure"
+      ]
+    },
+    {
+      "id": "TB-UNIVERSE-CORE",
+      "scope": "FUTURE",
+      "from": "USER_UNIVERSE",
       "to": "CORE_PLANE",
-      "trust": "ISOLATED_FUTURE_BOUNDARY",
-      "controls": [
-        "microVM/container/gVisor/WASM",
-        "no shared mutable memory",
-        "capabilities",
-        "quarantine"
+      "resource": "memory/filesystem/resources/authority",
+      "trust": "ISOLATED_UNTRUSTED_RUNTIME",
+      "allowed": [
+        "explicit capability-mediated interfaces only"
       ],
-      "failure": "kill/quarantine/freeze according to integrity scope"
+      "proof": [
+        "sandbox tier",
+        "capability grants",
+        "host guardian"
+      ],
+      "state_conditions": [
+        "no shared mutable Core memory/no parent Core FS/no self-escalation"
+      ],
+      "failure": [
+        "escape → quarantine/kill/freeze"
+      ]
     },
     {
-      "id": "TB-HARDWARE",
-      "from": "SENSORS_ACTUATORS",
-      "to": "RCL",
-      "trust": "PHYSICAL_UNCERTAINTY_BOUNDARY",
-      "controls": [
-        "sensor fusion",
-        "confidence",
-        "Fast/Safe split",
-        "independent Safety MCU"
+      "id": "TB-ROBOT-SAFETY",
+      "scope": "FUTURE",
+      "from": "AI/CONTROL",
+      "to": "SAFETY_KERNEL/MCU",
+      "resource": "physical actuation",
+      "trust": "SAFETY_DOMINATES",
+      "allowed": [
+        "commands only if safety checks pass"
       ],
-      "failure": "safe default/STOP/emergency stop"
+      "proof": [
+        "independent safety kernel/HIL/physical evidence"
+      ],
+      "state_conditions": [
+        "deadline/safety bounds"
+      ],
+      "failure": [
+        "unsafe/no-safe-action → STOP/safe fallback"
+      ]
     }
   ]
 }
