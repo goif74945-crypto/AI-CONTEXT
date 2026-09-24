@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "codex/spec-audit-20260919-78df350",
+  "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "requirement_count": 262,
+  "implementation_mapped": 202,
+  "tests_mapped": 125,
+  "tests_candidate": 124,
+  "tests_not_mapped": 13,
+  "stale_doc_e_evidence": 12,
+  "verdicts": {
+    "NOT_VERIFIED": 250,
+    "BLOCKED_STALE_EVIDENCE": 12
+  },
+  "rules": [
+    "Mapped test source is not test execution proof.",
+    "Evidence from another commit cannot establish PASS for current HEAD.",
+    "Heuristic test mappings are candidates only.",
+    "Current DOC-E evidence namespace is stale relative to HEAD 9c9befd9fe255b0f9271e6e2b8c4bb2443a08089."
+  ]
+}
