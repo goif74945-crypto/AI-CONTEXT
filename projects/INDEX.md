@@ -33,3 +33,4 @@
   - [Event Registry](./NEXY.AI/events/INDEX.md)
   - [Configuration Registry](./NEXY.AI/config/INDEX.md)
   - [Builder / Auditor Playbooks](./NEXY.AI/playbooks/INDEX.md)
+  - [Contract Registry](./NEXY.AI/contracts/INDEX.md)
