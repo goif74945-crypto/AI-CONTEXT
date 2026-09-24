@@ -99,26 +99,26 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 1444,
-    "remaining": 24,
-    "percent": 98.3651
+    "audited": 1468,
+    "remaining": 0,
+    "percent": 100
   },
-  "current_category": "Z_OTHER_SOURCE_DERIVED",
-  "last_completed_unit": "CATEGORY:W_RELEASE_DEPLOYMENT_DOC_E",
-  "next_unit": "CATEGORY:Z_OTHER_SOURCE_DERIVED",
+  "current_category": "FULL_PROJECT_REAUDIT",
+  "last_completed_unit": "CATEGORY:Z_OTHER_SOURCE_DERIVED",
+  "next_unit": "SECOND_PASS:CROSS_SYSTEM_INTEGRATION_AND_CONSISTENCY",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
-    "S2": 9,
-    "S3": 8,
-    "S4": 8,
+    "S2": 10,
+    "S3": 9,
+    "S4": 9,
     "S5": 2
   },
   "blocked": 0,
   "conflict": 1,
   "unknown": 0,
   "full_audit_gate": {
-    "full_atomic_coverage": false,
+    "full_atomic_coverage": true,
     "cross_system_reaudit": false,
     "master_matrix": false,
     "requirement_matrix": false,
@@ -148,8 +148,9 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "W_RELEASE_DEPLOYMENT_DOC_E",
+    "category_completed": "Z_OTHER_SOURCE_DERIVED",
     "read_back_verified": false,
-    "category_units": 41
+    "category_units": 24,
+    "atomic_coverage_complete": true
   }
 }
