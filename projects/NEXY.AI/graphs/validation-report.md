@@ -3,10 +3,10 @@
 ## Result
 **PASS — structural dependency graph**
 
-- nodes: **516**
-- edges: **863**
+- nodes: **518**
+- edges: **865**
 - full `REQUIRES` graph acyclic: **true**
-- current DOC-C relevant nodes (including transitive prerequisites): **116**
+- current DOC-C relevant nodes (including transitive prerequisites): **118**
 - current DOC-C `REQUIRES` graph acyclic: **true**
 - reserved TESTS edges: 0 (intentional; populated later)
 - reserved PROVES edges: 0 (intentional; populated later)
