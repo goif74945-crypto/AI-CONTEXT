@@ -1,24 +1,20 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "NEXY Atomic Invariant",
+  "title": "NEXY Invariant Registry Record",
   "type": "object",
   "required": [
     "invariant_id",
-    "registry_kind",
-    "statement",
+    "name",
+    "source_kind",
     "governing_entity_ids",
-    "authority",
-    "scope",
-    "source",
     "requirement_ids",
-    "required_behavior",
-    "violation_behavior",
-    "acceptance",
     "severity",
-    "change_guard",
+    "scope",
+    "statement",
+    "violation_behavior",
+    "required_regression",
     "implementation_refs",
-    "test_refs",
-    "evidence_refs",
+    "source_ranges",
     "status"
   ]
 }
