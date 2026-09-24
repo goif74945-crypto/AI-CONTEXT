@@ -1,0 +1,11 @@
+{
+ "schema_version":"1.0.0",
+ "rules":[
+  "Evidence class is preserved during ingestion.",
+  "HEAD-bound evidence is CURRENT only when its binding equals the required HEAD.",
+  "STALE evidence cannot satisfy current-head obligations.",
+  "UNBOUND evidence may support source-only claims but not implementation-current claims.",
+  "Missing or malformed evidence references are rejected.",
+  "Ingestion never converts file presence into runtime proof."
+ ]
+}
