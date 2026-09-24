@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
   "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
-  "total_audit_units": 1496,
+  "total_audit_units": 1468,
   "counts_by_type": {
     "ENTITY": 518,
     "REQUIREMENT": 262,
-    "CONTRACT": 90,
+    "CONTRACT": 62,
     "FSM": 9,
     "INVARIANT": 40,
     "EVENT": 20,
@@ -50,7 +50,10 @@
   "parts": [
     "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/denominator-systems.jsonl",
     "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/denominator-requirements.jsonl",
-    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/denominator-crosscutting.jsonl"
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/denominator-crosscutting-core.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/denominator-crosscutting-runtime-quality.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/denominator-crosscutting-tools-governance.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/denominator-crosscutting-evidence-history.jsonl"
   ],
   "source_registry_counts": {
     "ontology_entities": 518,
@@ -87,9 +90,19 @@
     "scope_classes": 11,
     "governance_conflicts": 8,
     "supersession_edges": 8,
-    "derived_registry_checks": 6
+    "derived_registry_checks": 6,
+    "contracts_unique_union": 62,
+    "contract_registry_declared_total": 90,
+    "contract_raw_records_across_master_and_subregistries": 86
   },
-  "initial_status": "DENOMINATOR_MANIFEST_CREATED_PENDING_PART_WRITE",
+  "initial_status": "DENOMINATOR_LOCKED_1468_UNITS",
   "command_generation_gate": "CLOSED",
-  "s5_exception": "EMERGENCY_CONTAINMENT_FREEZE_ONLY"
+  "s5_exception": "EMERGENCY_CONTAINMENT_FREEZE_ONLY",
+  "denominator_corrections": [
+    {
+      "id": "DENOM-CORRECTION-CONTRACT-001",
+      "reason": "contracts/registry.json declares total=90, but exact current files contain 86 raw records and 62 unique contract identities after deduplicating 22 master/subregistry duplicates.",
+      "impact": "Use 62 unique contract audit units; retain declared 90 as a registry consistency finding, not denominator truth."
+    }
+  ]
 }
