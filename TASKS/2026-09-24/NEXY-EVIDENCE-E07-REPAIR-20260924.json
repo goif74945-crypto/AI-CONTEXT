@@ -1,0 +1,31 @@
+{
+  "task_id": "TASK-NEXY-EVIDENCE-E07-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "work_unit_id": "CMD-NEXY-EVIDENCE-E07-001",
+  "finding_id": "F-NEXY-FULL-J-EVIDENCE-001",
+  "requirement_ids": [
+    "REQ-DOC-C-CONFIG-001"
+  ],
+  "start_head": "d9991c925e23915448592a9e1ba78a3a80e5bb71",
+  "end_head": "192af9234ba65ae3011db54389ca43b518d8608e",
+  "changed_files": [
+    "evidence/E07-vnext-defaults.md"
+  ],
+  "action": "Corrected PASS evidence so OTAC TTL is 300000 ms and separated from the 900000 ms lock window; pinned source/test Git blobs and executed validation.",
+  "validation": {
+    "deployment": "ab4a962d-8dd1-45b7-a267-ab6c65e58fc6",
+    "focused_vnext_defaults": 0,
+    "lint": 0,
+    "contract": 0,
+    "integration": 0,
+    "full": 0,
+    "doc_c": 0,
+    "web_build": 0,
+    "coverage_check": "PRE_EXISTING_FAIL"
+  },
+  "final_status": "VERIFIED",
+  "next_actions": [
+    "Proceed to CMD-NEXY-CONTRACT-AGENT-ADAPTER-001."
+  ],
+  "hash": "HASH_UNAVAILABLE"
+}

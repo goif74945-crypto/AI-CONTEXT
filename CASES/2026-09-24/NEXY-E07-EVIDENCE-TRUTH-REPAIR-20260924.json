@@ -1,0 +1,9 @@
+{
+  "case_id": "CASE-NEXY-E07-EVIDENCE-TRUTH-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "finding_id": "F-NEXY-FULL-J-EVIDENCE-001",
+  "start_head": "d9991c925e23915448592a9e1ba78a3a80e5bb71",
+  "end_head": "192af9234ba65ae3011db54389ca43b518d8608e",
+  "status": "REPAIRED_VERIFIED",
+  "hash": "HASH_UNAVAILABLE"
+}

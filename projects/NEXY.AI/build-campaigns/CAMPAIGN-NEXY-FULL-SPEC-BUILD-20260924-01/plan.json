@@ -5,7 +5,7 @@
   "target": {
     "repo": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head": "d9991c925e23915448592a9e1ba78a3a80e5bb71"
+    "head": "192af9234ba65ae3011db54389ca43b518d8608e"
   },
   "authority": [
     {
@@ -56,9 +56,15 @@
       "repair_commit": "5c8d9ee5209f714ea7c36632eccf2e82e009e6a7",
       "validation_head": "d9991c925e23915448592a9e1ba78a3a80e5bb71",
       "validation_deployment": "0448db96-038f-4e01-8af7-ff2bb9d26e4a"
+    },
+    {
+      "id": "CMD-NEXY-EVIDENCE-E07-001",
+      "result": "VERIFIED",
+      "commit": "192af9234ba65ae3011db54389ca43b518d8608e",
+      "validation_deployment": "ab4a962d-8dd1-45b7-a267-ab6c65e58fc6"
     }
   ],
-  "next_work_unit": "CMD-NEXY-EVIDENCE-E07-001",
+  "next_work_unit": "CMD-NEXY-CONTRACT-AGENT-ADAPTER-001",
   "status": "ACTIVE",
   "hash": "HASH_UNAVAILABLE"
 }

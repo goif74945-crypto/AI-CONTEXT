@@ -1,0 +1,23 @@
+{
+  "ledger_id": "LEDGER-NEXY-EVIDENCE-E07-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "source": [
+    "DOC-C §2.3",
+    "REQ-DOC-C-CONFIG-001",
+    "F-NEXY-FULL-J-EVIDENCE-001",
+    "NEXY exact-head source/test/evidence"
+  ],
+  "claim": [
+    "E07 no longer claims a 15-minute OTAC validity window.",
+    "E07 now reflects otac_ttl_ms=300000 and lock window=900000.",
+    "Focused defaults contract and broader regression gates pass at exact END_HEAD."
+  ],
+  "proof": [
+    "192af9234ba65ae3011db54389ca43b518d8608e",
+    "ab4a962d-8dd1-45b7-a267-ab6c65e58fc6",
+    "evidence/E07-vnext-defaults.md blob 59380d767d57c7de8c36bde0dd82ac85e24e044b"
+  ],
+  "status": "VERIFIED",
+  "confidence": 1,
+  "hash": "HASH_UNAVAILABLE"
+}
