@@ -1,0 +1,19 @@
+{
+  "failure_id": "FAIL-NEXY-FULL-AUDIT-MATRIX-GATE-PENDING-20260924",
+  "context": "Post-atomic full-audit completion gate",
+  "cause": "Second-pass/reconciliation/DAG can complete independently, but normal Builder commands require verified complete Master System and Requirement matrices.",
+  "failed_approach": [
+    "Treat partial per-category matrix materialization as equivalent to complete 518/262 matrices."
+  ],
+  "recovery": "Verify exact unique row coverage against denominators; fill only missing rows; propagate current findings; then read-back counts before opening command gate.",
+  "boundary": "AI-CONTEXT audit matrix/control-plane only",
+  "prevention": [
+    "Require exact 518 unique SYSTEM_ID rows",
+    "Require exact 262 unique REQUIREMENT_ID rows",
+    "Reject duplicate/missing IDs",
+    "Do not open command gate on directory/file presence alone"
+  ],
+  "status": "OPEN_GATE_NOT_IMPLEMENTATION_FAILURE",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "hash": "HASH_UNAVAILABLE"
+}
