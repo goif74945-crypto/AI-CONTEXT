@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0.0",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "pass_id": "FULL-PROJECT-REAUDIT-20260924-01",
+  "target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "84484d8108fe1dee186450c0d36c26d360b2596e"
+  },
+  "source_revision": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "atomic_coverage": {
+    "total": 1468,
+    "audited": 1468,
+    "remaining": 0,
+    "percent": 100
+  },
+  "checks": [
+    {
+      "id": "SP-01",
+      "name": "cross-system integration audit",
+      "audit_status": "DONE",
+      "verdict": "PARTIAL",
+      "proof": [
+        "V_CROSS_SYSTEM_INTEGRATION atomic audit: 139 units; 102 PARTIAL, 3 NOT_VERIFIED, 34 FUTURE_SCOPE.",
+        "Open findings F-NEXY-FULL-V-TRACEABILITY-001, -V-CURRENT-HEAD-INTEGRATION-EVIDENCE-002, -V-INVARIANT-PROOF-003, -V-CONCURRENCY-CHAOS-PROOF-004."
+      ],
+      "risk": "Current-scope boundaries and invariants are not fully proven at exact target HEAD."
+    },
+    {
+      "id": "SP-02",
+      "name": "dependency consistency",
+      "audit_status": "DONE",
+      "verdict": "PARTIAL",
+      "proof": [
+        "AgentAdapter mandatory health/control metadata contract is incomplete (F-NEXY-FULL-B-AGENT-ADAPTER-001).",
+        "Current architecture mapping gaps remain in S/U/V/Z categories; absence was not promoted to MISSING without proof."
+      ],
+      "risk": "Dependency consumers may rely on interfaces or mappings that are not semantically established."
+    },
+    {
+      "id": "SP-03",
+      "name": "authority consistency",
+      "audit_status": "DONE",
+      "verdict": "FAIL",
+      "proof": [
+        "DOC-C/REQ-DOC-C-FSM-008 permits OWNER or SYSTEM recovery.",
+        "Exact target EVENT_OWNERSHIP permits OWNER only; finding F-NEXY-FULL-K-RECOVER-ACTOR-001.",
+        "CONFLICT-RCL-LATENCY-001 remains a governance conflict in a future robotics domain and is not used to fail current DOC-C build."
+      ],
+      "risk": "Current execution authority rejects a source-authorized recovery actor."
+    },
+    {
+      "id": "SP-04",
+      "name": "contract consistency",
+      "audit_status": "DONE",
+      "verdict": "FAIL",
+      "proof": [
+        "ConsensusResult and EvidenceItem current-build contracts have proven schema omissions (F-NEXY-FULL-C-CONSENSUS-CONTRACT-001, F-NEXY-FULL-C-EVIDENCE-CONTRACT-001).",
+        "Incident primary error code boundary is not constrained to canonical ErrorCode (F-NEXY-REAUDIT-N-INCIDENT-ERRORCODE-002).",
+        "Contract registry declared total 90 differs from exact unique contract denominator 62 (F-NEXY-FULL-DENOM-CONTRACT-001)."
+      ],
+      "risk": "Cross-layer producer/consumer semantics and audit denominator can diverge from authority."
+    },
+    {
+      "id": "SP-05",
+      "name": "FSM/state consistency",
+      "audit_status": "DONE",
+      "verdict": "FAIL",
+      "proof": [
+        "SYSTEM recovery authority is inconsistent with DOC-C (F-NEXY-FULL-K-RECOVER-ACTOR-001).",
+        "Run-bound incident persistence does not preserve DOC-C multiple-failure priority/secondary semantics (F-NEXY-REAUDIT-N-INCIDENT-PRIORITY-001)."
+      ],
+      "risk": "Legal transitions and terminal-state evidence can diverge from source law."
+    },
+    {
+      "id": "SP-06",
+      "name": "security consistency",
+      "audit_status": "DONE",
+      "verdict": "FAIL",
+      "proof": [
+        "S5 finding F-NEXY-FULL-H-OTAC-LOG-001 proves plaintext OTAC plus destination email can be written to stderr by selectable console/development provider.",
+        "Affected release/non-isolated path remains frozen."
+      ],
+      "risk": "Authentication secret and PII disclosure."
+    },
+    {
+      "id": "SP-07",
+      "name": "persistence/recovery consistency",
+      "audit_status": "DONE",
+      "verdict": "FAIL",
+      "proof": [
+        "Durable dispatch reconciler lacks explicit safe-retry classification/bounded cap (F-NEXY-FULL-E-RETRY-CLASSIFICATION-001).",
+        "FreezeIncident repeated failure upsert can replace the primary failure instead of retaining secondary failures (F-NEXY-REAUDIT-N-INCIDENT-PRIORITY-001).",
+        "Artifact restore requirement has semantically mismatched test traceability (F-NEXY-FULL-F-RESTORE-TRACE-001)."
+      ],
+      "risk": "Recovery can replay unsafe failures or lose authoritative failure lineage."
+    },
+    {
+      "id": "SP-08",
+      "name": "determinism consistency",
+      "audit_status": "DONE",
+      "verdict": "PARTIAL",
+      "proof": [
+        "Static determinism pass found monotonic authoritative tick, canonical JSON, bounded deadlines, and no Math.random/randomUUID on audited active decision paths.",
+        "No successful exact-target-head determinism/replay execution evidence is established.",
+        "Incident multiple-failure priority is not transactionally enforced, so deterministic primary-error arbitration is defective."
+      ],
+      "risk": "Static deterministic mechanisms are not equivalent to exact-head reproducible proof."
+    },
+    {
+      "id": "SP-09",
+      "name": "evidence freshness",
+      "audit_status": "DONE",
+      "verdict": "FAIL",
+      "proof": [
+        "Current DOC-E namespace E1-E12 binds db52f9f... rather than target 84484d... (F-NEXY-FULL-I-CURRENT-EVIDENCE-STALE-001, F-NEXY-FULL-W-STALE-DOC-E-001).",
+        "E07 PASS artifact contradicts authoritative/current implementation OTAC TTL (F-NEXY-FULL-J-EVIDENCE-001)."
+      ],
+      "risk": "Stale or contradictory evidence can falsely authorize release."
+    },
+    {
+      "id": "SP-10",
+      "name": "release readiness",
+      "audit_status": "DONE",
+      "verdict": "FAIL",
+      "proof": [
+        "W_RELEASE_DEPLOYMENT_DOC_E: 31 FAIL, 7 BLOCKED, 2 PARTIAL, 1 NOT_VERIFIED.",
+        "F-NEXY-FULL-W-RELEASE-BLOCKED-002: staging/canary/prod progression not proven for target HEAD."
+      ],
+      "risk": "Target is not release/deployment approved."
+    },
+    {
+      "id": "SP-11",
+      "name": "semantic regression",
+      "audit_status": "DONE",
+      "verdict": "PARTIAL",
+      "proof": [
+        "Semantic test-link mismatches are proven for REQ-DOC-D-005, REQ-DOC-D-009 and REQ-DOC-D-STORAGE-002.",
+        "Current-head integration/invariant/concurrency/chaos executions are absent; static mapping cannot establish regression cleanliness."
+      ],
+      "risk": "Coverage links may overstate behavioral regression protection."
+    },
+    {
+      "id": "SP-12",
+      "name": "source coverage completeness",
+      "audit_status": "DONE",
+      "verdict": "PASS_FOR_AUDIT_COVERAGE_ONLY",
+      "proof": [
+        "Locked denominator has 1468 units and run records 1468 audited, 0 remaining.",
+        "System entity denominator=518; requirement denominator=262.",
+        "Future/historical/out-of-scope units remain explicitly classified rather than silently omitted."
+      ],
+      "risk": "This proves audit denominator coverage, not implementation correctness or release readiness."
+    }
+  ],
+  "new_second_pass_findings": [
+    "F-NEXY-REAUDIT-N-INCIDENT-PRIORITY-001",
+    "F-NEXY-REAUDIT-N-INCIDENT-ERRORCODE-002"
+  ],
+  "finding_population": {
+    "total": 31,
+    "severity": {
+      "S0": 0,
+      "S1": 0,
+      "S2": 9,
+      "S3": 10,
+      "S4": 10,
+      "S5": 2
+    }
+  },
+  "overall_verdict": "FAIL_WITH_COMPLETE_SECOND_PASS_AUDIT",
+  "cross_system_reaudit_complete": true,
+  "implementation_mutation": "NONE",
+  "next_gate": "MASTER_SYSTEM_MATRIX_AND_REQUIREMENT_MATRIX_COMPLETION_VALIDATION"
+}
