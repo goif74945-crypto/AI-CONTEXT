@@ -1,0 +1,6 @@
+{
+  "case_id":"DLQ-NEG-REQUEUE-001",
+  "invalid_condition":"terminal record is silently returned to READY without a new or superseding command",
+  "expected_result":"FAIL",
+  "reason":"Terminal history is immutable and automatic requeue is forbidden."
+}
