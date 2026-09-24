@@ -1,0 +1,14 @@
+{
+  "requirement_count": 262,
+  "mapped": 249,
+  "exact_mapped": 125,
+  "candidate_mapped": 124,
+  "not_mapped": 13,
+  "by_test_class": {
+    "CONTRACT_OR_UNIT": 141,
+    "INTEGRATION": 168,
+    "E2E": 24,
+    "COVERAGE": 59,
+    "OTHER": 0
+  }
+}
