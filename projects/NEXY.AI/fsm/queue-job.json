@@ -1,12 +1,40 @@
 {
   "fsm_id": "FSM-QUEUE-JOB",
   "name": "Queue Job FSM",
-  "kind": "SOURCE_DEFINED",
+  "namespace": "QUEUE_JOB",
+  "registry_kind": "SOURCE_DEFINED",
   "authority": [
     "DOC-C"
   ],
   "scope": [
     "DOC_C_CURRENT_BUILD"
+  ],
+  "ontology_status": "CURRENT_BUILD",
+  "states": [
+    {
+      "state_id": "STATE-JOB-CANCELLED",
+      "name": "CANCELLED"
+    },
+    {
+      "state_id": "STATE-JOB-EXPIRED",
+      "name": "EXPIRED"
+    },
+    {
+      "state_id": "STATE-JOB-FAILED",
+      "name": "FAILED"
+    },
+    {
+      "state_id": "STATE-JOB-QUEUED",
+      "name": "QUEUED"
+    },
+    {
+      "state_id": "STATE-JOB-RUNNING",
+      "name": "RUNNING"
+    },
+    {
+      "state_id": "STATE-JOB-SUCCEEDED",
+      "name": "SUCCEEDED"
+    }
   ],
   "source_range": [
     {
@@ -16,22 +44,7 @@
       "end_paragraph": 8957
     }
   ],
-  "states": [
-    "QUEUED",
-    "RUNNING",
-    "SUCCEEDED",
-    "FAILED",
-    "CANCELLED",
-    "EXPIRED"
-  ],
-  "events": [
-    "UNKNOWN"
-  ],
-  "event_ownership": {},
-  "transitions": [],
-  "invalid_transition_behavior": "Source requires only defined lifecycle states; exact transition table not established in captured source.",
-  "recovery_semantics": "UNKNOWN",
-  "audit_event_semantics": "UNKNOWN",
+  "requirement_ids": [],
   "implementation_mapping_status": "EXACT",
   "implementation_refs": [
     {
@@ -59,14 +72,76 @@
       ]
     }
   ],
-  "requirement_ids": [],
-  "test_refs": [
-    "tests/contract/queue-payload.test.ts",
-    "tests/integration/queue-boundary.spec.ts"
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "transition_source": "SOURCE",
+  "transitions": [
+    {
+      "from": "QUEUED",
+      "event": "worker_start",
+      "guard": [
+        "consumer validates payload"
+      ],
+      "action": [
+        "start job"
+      ],
+      "to": "RUNNING",
+      "failure": "FAILED/EXPIRED as applicable"
+    },
+    {
+      "from": "RUNNING",
+      "event": "success",
+      "guard": [
+        "job completes legally"
+      ],
+      "action": [
+        "complete"
+      ],
+      "to": "SUCCEEDED",
+      "failure": "FAILED"
+    },
+    {
+      "from": "RUNNING",
+      "event": "failure",
+      "guard": [],
+      "action": [
+        "record failure"
+      ],
+      "to": "FAILED",
+      "failure": "N/A"
+    },
+    {
+      "from": "QUEUED|RUNNING",
+      "event": "cancel",
+      "guard": [
+        "authorized cancellation"
+      ],
+      "action": [
+        "cancel"
+      ],
+      "to": "CANCELLED",
+      "failure": "state unchanged/rejected"
+    },
+    {
+      "from": "QUEUED|RUNNING",
+      "event": "stale_ttl",
+      "guard": [
+        "stale age exceeds configured TTL"
+      ],
+      "action": [
+        "expire"
+      ],
+      "to": "EXPIRED",
+      "failure": "N/A"
+    }
   ],
-  "alignment_status": "REVIEW_REQUIRED",
-  "alignment_notes": [
-    "Observed packages/queue/run-state.ts defines PipelineRun states READY/RUNNING/VERIFYING/CONSENSUS/STABLE/FREEZE, which is a different state model from source Queue Job states QUEUED/RUNNING/SUCCEEDED/FAILED/CANCELLED/EXPIRED.",
-    "BullMQ owns queue-job runtime lifecycle; do not merge it with PipelineRun FSM."
+  "global_rules": [
+    "Failed jobs do not automatically retry unless explicitly classified safe.",
+    "Producer validates before enqueue and consumer revalidates before consume."
+  ],
+  "invalid_transition_behavior": "reject/record failure according to queue policy",
+  "audit_event": "queue lifecycle / run event",
+  "notes": [
+    "FSM namespace is isolated; equal state labels in other FSMs are not aliases.",
+    "Source defines QUEUED/RUNNING/SUCCEEDED/FAILED/CANCELLED/EXPIRED. Exact BullMQ internal state names are not treated as canonical NEXY states."
   ]
 }
