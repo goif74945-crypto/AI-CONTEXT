@@ -99,19 +99,19 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 101,
-    "remaining": 1367,
-    "percent": 6.8801
+    "audited": 129,
+    "remaining": 1339,
+    "percent": 8.7875
   },
-  "current_category": "B_CORE_CONTROL_LAW",
-  "last_completed_unit": "CATEGORY:A_IDENTITY_HUMAN_CANON_UX",
-  "next_unit": "AUDIT-ENTITY-KERNEL-CORE",
+  "current_category": "H_SECURITY_AUTH_PERMISSION_TENANT",
+  "last_completed_unit": "CATEGORY:B_CORE_CONTROL_LAW",
+  "next_unit": "CATEGORY:H_SECURITY_AUTH_PERMISSION_TENANT",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
     "S2": 2,
     "S3": 3,
-    "S4": 0,
+    "S4": 1,
     "S5": 1
   },
   "blocked": 0,
@@ -147,8 +147,8 @@
     "evidence/E07-vnext-defaults.md"
   ],
   "checkpoint": {
-    "category_completed": "A_IDENTITY_HUMAN_CANON_UX",
+    "category_completed": "B_CORE_CONTROL_LAW",
     "read_back_verified": true,
-    "category_units": 15
+    "category_units": 28
   }
 }
