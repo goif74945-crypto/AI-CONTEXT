@@ -1,15 +1,18 @@
-# NEXY.AI Traceability Spine
+# NEXY.AI Requirement Traceability Spine
 
-Canonical:
-- `traceability.jsonl`
+Canonical trace:
+`SOURCE → REQUIREMENT → SYSTEM/ENTITY → IMPLEMENTATION → TEST → EVIDENCE → VERDICT`
+
+Files:
+- `requirement-trace.jsonl` — one trace record per canonical requirement.
+- `test-index.jsonl` — test-file inventory at pinned implementation HEAD.
+- `evidence-index.jsonl` — DOC-E evidence-file locations at pinned HEAD.
 - `coverage.json`
-- `validation-report.md`
 
-Trace:
-`SOURCE → REQUIREMENT → ENTITY → IMPLEMENTATION → TEST → EVIDENCE → VERDICT`
+## Status semantics
+- implementation ref = location/presence only.
+- `CURATED_CANDIDATE_STATIC` / `DOMAIN_CANDIDATE_STATIC` = test candidate, not proof the test covers or passes the requirement.
+- `EXACT_LOCATION_NOT_VALIDATED` = evidence document location is known; evidence validity/freshness has not yet been judged.
+- `NOT_EVALUATED` = no compliance verdict.
 
-Current pinned implementation HEAD:
-`9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
-
-Current evidence rule:
-Only evidence bound to the same exact revision/environment may support a current PASS.
+This prevents “test file exists = PASS” and “evidence markdown exists = deployment proven.”
