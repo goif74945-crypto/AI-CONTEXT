@@ -1,12 +1,48 @@
 {
   "fsm_id": "FSM-EXECUTION",
   "name": "DOC-C Execution FSM",
-  "kind": "SOURCE_DEFINED",
+  "namespace": "DOC_C_EXECUTION",
+  "registry_kind": "SOURCE_DEFINED",
   "authority": [
     "DOC-C"
   ],
   "scope": [
     "DOC_C_CURRENT_BUILD"
+  ],
+  "ontology_status": "CURRENT_BUILD",
+  "states": [
+    {
+      "state_id": "STATE-EXEC-CONSENSUS",
+      "name": "CONSENSUS"
+    },
+    {
+      "state_id": "STATE-EXEC-FREEZE",
+      "name": "FREEZE"
+    },
+    {
+      "state_id": "STATE-EXEC-INIT",
+      "name": "INIT"
+    },
+    {
+      "state_id": "STATE-EXEC-READY",
+      "name": "READY"
+    },
+    {
+      "state_id": "STATE-EXEC-RUNNING",
+      "name": "RUNNING"
+    },
+    {
+      "state_id": "STATE-EXEC-STABLE",
+      "name": "STABLE"
+    },
+    {
+      "state_id": "STATE-EXEC-STOP",
+      "name": "STOP"
+    },
+    {
+      "state_id": "STATE-EXEC-VERIFYING",
+      "name": "VERIFYING"
+    }
   ],
   "source_range": [
     {
@@ -16,283 +52,21 @@
       "end_paragraph": 8957
     }
   ],
-  "states": [
-    "INIT",
-    "READY",
-    "RUNNING",
-    "VERIFYING",
-    "CONSENSUS",
-    "STABLE",
-    "FREEZE",
-    "STOP"
+  "requirement_ids": [
+    "REQ-DOC-C-FREEZE-006",
+    "REQ-DOC-C-FSM-001",
+    "REQ-DOC-C-FSM-002",
+    "REQ-DOC-C-FSM-003",
+    "REQ-DOC-C-FSM-004",
+    "REQ-DOC-C-FSM-005",
+    "REQ-DOC-C-FSM-006",
+    "REQ-DOC-C-FSM-007",
+    "REQ-DOC-C-FSM-008",
+    "REQ-DOC-C-FSM-009",
+    "REQ-DOC-C-FSM-010",
+    "REQ-DOC-E-004",
+    "REQ-SLAW-006"
   ],
-  "events": [
-    "boot",
-    "execute",
-    "agents_done",
-    "verified",
-    "accepted",
-    "rejected",
-    "recover",
-    "cancel",
-    "error",
-    "timeout",
-    "fatal"
-  ],
-  "event_ownership": {
-    "boot": [
-      "CORE"
-    ],
-    "execute": [
-      "CORE"
-    ],
-    "agents_done": [
-      "SWARM"
-    ],
-    "verified": [
-      "JUDGE"
-    ],
-    "accepted": [
-      "JUDGE"
-    ],
-    "rejected": [
-      "JUDGE"
-    ],
-    "recover": [
-      "OWNER",
-      "SYSTEM"
-    ],
-    "cancel": [
-      "OWNER"
-    ],
-    "error": [
-      "LAW",
-      "CORE",
-      "AUTH",
-      "VAULT",
-      "SWARM",
-      "API"
-    ],
-    "timeout": [
-      "SYSTEM"
-    ],
-    "fatal": [
-      "LAW",
-      "AUTH"
-    ]
-  },
-  "transitions": [
-    {
-      "from": "INIT",
-      "event": "boot",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "READY",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "READY",
-      "event": "execute",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "RUNNING",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "RUNNING",
-      "event": "agents_done",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "VERIFYING",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "VERIFYING",
-      "event": "verified",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "CONSENSUS",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "CONSENSUS",
-      "event": "accepted",
-      "guard": "release guards also pass",
-      "action": "transition state",
-      "to": "STABLE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "CONSENSUS",
-      "event": "rejected",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "FREEZE",
-      "event": "recover",
-      "guard": "freeze reason recoverable and actor permitted",
-      "action": "begin new legal cycle",
-      "to": "READY",
-      "failure": "FREEZE_RECOVERY_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "RUNNING",
-      "event": "timeout",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "CONSENSUS",
-      "event": "timeout",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "INIT",
-      "event": "error",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "READY",
-      "event": "error",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "RUNNING",
-      "event": "error",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "VERIFYING",
-      "event": "error",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "CONSENSUS",
-      "event": "error",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "STABLE",
-      "event": "error",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "FREEZE",
-      "event": "error",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "FREEZE",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "INIT",
-      "event": "fatal",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "STOP",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "READY",
-      "event": "fatal",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "STOP",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "RUNNING",
-      "event": "fatal",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "STOP",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "VERIFYING",
-      "event": "fatal",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "STOP",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "CONSENSUS",
-      "event": "fatal",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "STOP",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "STABLE",
-      "event": "fatal",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "STOP",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    },
-    {
-      "from": "FREEZE",
-      "event": "fatal",
-      "guard": "event owner valid + transition row exists",
-      "action": "transition state",
-      "to": "STOP",
-      "failure": "STATE_TRANSITION_DENIED",
-      "audit_event": "transition must be traceable per DOC-C"
-    }
-  ],
-  "invalid_transition_behavior": "Throw VNextStateTransitionDeniedError; STOP has no outbound transition.",
-  "recovery_semantics": "FREEZE→READY only for explicitly recoverable reason and OWNER/SYSTEM actor allowed by freeze-reason catalog.",
-  "audit_event_semantics": "DOC-C requires every state transition traceable; PipelineRun persistence emits FSM_TRANSITION events separately.",
   "implementation_mapping_status": "EXACT",
   "implementation_refs": [
     {
@@ -345,27 +119,172 @@
       "symbols": []
     }
   ],
-  "requirement_ids": [
-    "REQ-DOC-C-FREEZE-006",
-    "REQ-DOC-C-FSM-001",
-    "REQ-DOC-C-FSM-002",
-    "REQ-DOC-C-FSM-003",
-    "REQ-DOC-C-FSM-004",
-    "REQ-DOC-C-FSM-005",
-    "REQ-DOC-C-FSM-006",
-    "REQ-DOC-C-FSM-007",
-    "REQ-DOC-C-FSM-008",
-    "REQ-DOC-C-FSM-009",
-    "REQ-DOC-C-FSM-010",
-    "REQ-DOC-E-004",
-    "REQ-SLAW-006"
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "transition_source": "SOURCE_AND_IMPLEMENTATION",
+  "transitions": [
+    {
+      "from": "INIT",
+      "event": "boot",
+      "guard": [
+        "actor=CORE"
+      ],
+      "action": [
+        "emit traceable transition metadata"
+      ],
+      "to": "READY",
+      "failure": "STATE_TRANSITION_DENIED"
+    },
+    {
+      "from": "READY",
+      "event": "execute",
+      "guard": [
+        "actor=CORE",
+        "directive/system guards pass"
+      ],
+      "action": [
+        "start execution"
+      ],
+      "to": "RUNNING",
+      "failure": "STATE_TRANSITION_DENIED"
+    },
+    {
+      "from": "RUNNING",
+      "event": "agents_done",
+      "guard": [
+        "actor=SWARM",
+        "results exist"
+      ],
+      "action": [
+        "advance verification"
+      ],
+      "to": "VERIFYING",
+      "failure": "STATE_TRANSITION_DENIED"
+    },
+    {
+      "from": "VERIFYING",
+      "event": "verified",
+      "guard": [
+        "actor=JUDGE",
+        "evidence valid"
+      ],
+      "action": [
+        "advance consensus"
+      ],
+      "to": "CONSENSUS",
+      "failure": "STATE_TRANSITION_DENIED"
+    },
+    {
+      "from": "CONSENSUS",
+      "event": "accepted",
+      "guard": [
+        "actor=JUDGE",
+        "release guards/quorum pass"
+      ],
+      "action": [
+        "mark stable candidate"
+      ],
+      "to": "STABLE",
+      "failure": "FREEZE/BLOCK"
+    },
+    {
+      "from": "CONSENSUS",
+      "event": "rejected",
+      "guard": [
+        "actor=JUDGE"
+      ],
+      "action": [
+        "create/link freeze incident"
+      ],
+      "to": "FREEZE",
+      "failure": "N/A"
+    },
+    {
+      "from": "FREEZE",
+      "event": "recover",
+      "guard": [
+        "actor in OWNER,SYSTEM",
+        "freeze reason recoverable"
+      ],
+      "action": [
+        "purge pending output",
+        "start new execution cycle"
+      ],
+      "to": "READY",
+      "failure": "FREEZE_RECOVERY_DENIED"
+    },
+    {
+      "from": "RUNNING",
+      "event": "timeout",
+      "guard": [
+        "actor=SYSTEM"
+      ],
+      "action": [
+        "freeze"
+      ],
+      "to": "FREEZE",
+      "failure": "N/A"
+    },
+    {
+      "from": "CONSENSUS",
+      "event": "timeout",
+      "guard": [
+        "actor=SYSTEM"
+      ],
+      "action": [
+        "freeze"
+      ],
+      "to": "FREEZE",
+      "failure": "N/A"
+    },
+    {
+      "from": "INIT|READY|RUNNING|VERIFYING|CONSENSUS|STABLE|FREEZE",
+      "event": "error",
+      "guard": [
+        "actor in LAW,CORE,AUTH,VAULT,SWARM,API as owned"
+      ],
+      "action": [
+        "freeze"
+      ],
+      "to": "FREEZE",
+      "failure": "N/A"
+    },
+    {
+      "from": "INIT|READY|RUNNING|VERIFYING|CONSENSUS|STABLE|FREEZE",
+      "event": "fatal",
+      "guard": [
+        "actor in LAW,AUTH as owned"
+      ],
+      "action": [
+        "stop"
+      ],
+      "to": "STOP",
+      "failure": "N/A"
+    }
   ],
-  "test_refs": [
-    "tests/contract/state-matrix.test.ts",
-    "packages/core/__tests__/state-matrix.test.ts"
+  "global_rules": [
+    "STOP has no operational outbound transition.",
+    "Every transition emits traceable event metadata.",
+    "Entering FREEZE blocks release and invalidates pending release authorization.",
+    "Event ownership is enforced in observed implementation."
   ],
-  "alignment_status": "IMPLEMENTED_STRUCTURE_OBSERVED",
-  "alignment_notes": [
-    "Event 'cancel' exists in VNEXT_EVENT and is OWNER-owned, but no cancel transition row exists in observed VNEXT_TRANSITIONS; review before treating cancel as executable FSM event."
-  ]
+  "invalid_transition_behavior": "throw STATE_TRANSITION_DENIED / block transition",
+  "audit_event": "FSM_TRANSITION",
+  "notes": [
+    "FSM namespace is isolated; equal state labels in other FSMs are not aliases."
+  ],
+  "observed_implementation": {
+    "paths": [
+      "packages/core/vnext-state-matrix.ts",
+      "packages/orch-core/state-machine.ts"
+    ],
+    "symbols": [
+      "VNEXT_STATE",
+      "VNEXT_EVENT",
+      "EVENT_OWNERSHIP",
+      "VNEXT_TRANSITIONS",
+      "vnextTransition",
+      "validateFreezeRecovery",
+      "evaluateRelease"
+    ]
+  }
 }
