@@ -13,11 +13,19 @@
   "idle_work": {
     "type": "NEXY_SKILL_MATERIALIZATION",
     "source": "skills/nexy/MASTER-SPECIFICATION.md",
-    "priority_rule": "SUSPEND_IMMEDIATELY_WHEN_BUILDER_RESULT_OR_CRITICAL_CONTROL_CHANGE_APPEARS"
+    "priority_rule": "SUSPEND_IMMEDIATELY_WHEN_BUILDER_RESULT_OR_CRITICAL_CONTROL_CHANGE_APPEARS",
+    "materialized_skills": [
+      "CTX-001 nexy-context",
+      "GOV-001 nexy-authority",
+      "REQ-001 nexy-requirement",
+      "GOV-002 nexy-scope-guard",
+      "CTX-003 nexy-source-inspector"
+    ],
+    "last_evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-wave1-foundation-materialization.md"
   },
   "background_execution_claimed": false,
   "last_control_observation": {
-    "ai_context_head": "34205eccaeeffe57d28d9f1342528bdca09a9b97",
+    "ai_context_head": "ca686157ed27b298e087605be3684bd09e517cdc",
     "ready_commands": 0,
     "active_claims": 0
   }
