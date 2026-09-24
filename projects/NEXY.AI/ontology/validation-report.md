@@ -9,10 +9,14 @@ Source revision:
 - parsed non-empty paragraphs: **10,979**
 
 Compiled registry:
-- entities: **516**
-- relationships: **863**
+- entities: **518**
+- relationships: **865**
 - aliases: **86**
 - root entity: `SYS-NEXY`
+
+## Omission patch
+- Cross-registry Event pass discovered missing DOC-C `cancel` and `timeout` event entities.
+- Both were added to checkpoint 01 and canonical ontology before Event Registry compilation.
 
 ## Structural checks
 - JSONL parse: PASS
@@ -44,13 +48,13 @@ Those are intentionally left for the later Implementation Map, Acceptance/Test M
 ## Ontology-count rule
 The earlier 215-entry registry is a top-level architecture tracking baseline.
 
-Ontology v1 identifies **516 source-derived objects** under the current classification rules. This count is versioned and may change after:
+Ontology v1 identifies **518 source-derived objects** under the current classification rules. This count is versioned and may change after:
 - new source revisions;
 - claim-level supersession normalization;
 - implementation mapping;
 - additional deduplication/semantic splits.
 
-Therefore do not state that “NEXY permanently has exactly 516 systems.” Many entities are laws, states, contracts, UI surfaces, protocols, memories, roles and other object types—not all are SYSTEM entities.
+Therefore do not state that “NEXY permanently has exactly 518 systems.” Many entities are laws, states, contracts, UI surfaces, protocols, memories, roles and other object types—not all are SYSTEM entities.
 
 ## Known source-evolution handling
 The registry preserves rather than hides examples such as:
