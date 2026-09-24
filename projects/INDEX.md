@@ -38,3 +38,5 @@
   - [Context Router](./NEXY.AI/context/INDEX.md)
   - [Semantic Diff + Change Impact](./NEXY.AI/change-impact/INDEX.md)
   - [Project Intelligence Graph](./NEXY.AI/intelligence-graph/INDEX.md)
+  - [Verification / Traceability](./NEXY.AI/verification/INDEX.md)
+  - [Evidence Ledger](./NEXY.AI/evidence/evidence-ledger.jsonl)
