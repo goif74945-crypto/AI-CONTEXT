@@ -99,23 +99,23 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 0,
-    "remaining": 1468,
-    "percent": 0
+    "audited": 86,
+    "remaining": 1382,
+    "percent": 5.8583
   },
-  "current_category": "J_CONFIGURATION_GOVERNANCE",
-  "last_completed_unit": null,
-  "next_unit": "AUDIT-AUTHORITY_NODE-AUTH-USER-DIRECTIVE",
+  "current_category": "A_IDENTITY_HUMAN_CANON_UX",
+  "last_completed_unit": "CATEGORY:J_CONFIGURATION_GOVERNANCE",
+  "next_unit": "AUDIT-ENTITY-LAYER-HUMAN-GRAVITY",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
-    "S2": 0,
-    "S3": 0,
+    "S2": 2,
+    "S3": 1,
     "S4": 0,
-    "S5": 0
+    "S5": 1
   },
   "blocked": 0,
-  "conflict": 0,
+  "conflict": 1,
   "unknown": 0,
   "full_audit_gate": {
     "full_atomic_coverage": false,
@@ -142,5 +142,13 @@
   "timestamp_source": "Git commit timestamps + session date 2026-09-24",
   "denominator_notes": [
     "Contract registry declared 90 but exact unique union is 62; mismatch is an audit finding and denominator uses observed unique identities."
-  ]
+  ],
+  "frozen_paths": [
+    "evidence/E07-vnext-defaults.md"
+  ],
+  "checkpoint": {
+    "category_completed": "J_CONFIGURATION_GOVERNANCE",
+    "read_back_verified": true,
+    "category_units": 86
+  }
 }
