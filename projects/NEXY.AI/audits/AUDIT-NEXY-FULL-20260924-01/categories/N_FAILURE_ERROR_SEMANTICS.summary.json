@@ -1,0 +1,60 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "N_FAILURE_ERROR_SEMANTICS",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 132,
+  "counts": {
+    "VERIFIED": 0,
+    "PARTIAL": 124,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "UNKNOWN": 0,
+    "CONFLICT": 0,
+    "MISSING": 0,
+    "OUT_OF_SCOPE": 0,
+    "FUTURE_SCOPE": 8,
+    "SUPERSEDED": 0
+  },
+  "structural_checks": {
+    "canonical_wire_error_codes": 29,
+    "canonical_error_contracts": 29,
+    "wire_taxonomy_contract_exact_name_match": true,
+    "total_error_taxonomy_codes": 56,
+    "taxonomy_codes_missing_from_exact_target_canonical_definitions": 0
+  },
+  "source_proof": [
+    "DOC-C canonical error surface requires explicit error outcomes and forbids silent failure/fake success.",
+    "AI-CONTEXT error taxonomy distinguishes WIRE_CANONICAL and INTERNAL_VNEXT classes and records recovery/incident expectations.",
+    "Known failure library is treated as regression history, not as proof that every historical failure is currently present."
+  ],
+  "implementation_proof": [
+    "Exact-target packages/contracts/errors.ts contains all 29 WIRE_CANONICAL taxonomy codes and ErrorPayloadSchema(code,message,source,recoverable).",
+    "Exact-target packages/core/vnext-state-matrix.ts contains every INTERNAL_VNEXT taxonomy code represented by the canonical derived registry.",
+    "Wire error-contract registry contains 29 contracts and its names exactly match the 29 WIRE_CANONICAL taxonomy codes.",
+    "Current negative/failure semantics remain impacted by previously proven queue retry-classification and recovery-actor findings where applicable."
+  ],
+  "test_proof": [
+    "Relevant contract/negative/error tests are referenced throughout error contracts and failure history, including release spine, queue boundary, freeze recovery, auth, vault and envelope tests.",
+    "No successful exact-target-head execution proving the complete error/failure matrix is established; target combined validation status remains failure."
+  ],
+  "linked_findings": [
+    "F-NEXY-FULL-E-RETRY-CLASSIFICATION-001",
+    "F-NEXY-FULL-K-RECOVER-ACTOR-001"
+  ],
+  "new_findings": [],
+  "gaps": [
+    "Static code-set equality does not prove each producer emits the correct error under every negative path.",
+    "Exact-target-head negative-path execution and incident/audit binding remain unverified.",
+    "Eight known failure-history entries belong to future/design domains and are retained as FUTURE_SCOPE rather than used to fail the current build."
+  ],
+  "verdict": "PARTIAL",
+  "next_proof_required": [
+    "Execute exact-head negative/error-path suites for current-build API/auth/queue/state/swarm/judge/law/vault boundaries.",
+    "Verify each failure class maps to the correct HTTP/SystemEnvelope/state transition/incident behavior and remains bound to exact target HEAD.",
+    "Reconcile error semantics with evidence/release gates in I and W."
+  ],
+  "next_category": "I_EVIDENCE_VERIFICATION_AUDIT",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
