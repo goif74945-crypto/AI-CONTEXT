@@ -1,6 +1,6 @@
 {
   "command_id": "CMD-GOLDEN-001",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "created_from_head": "1111111111111111111111111111111111111111",
   "expected_head": "1111111111111111111111111111111111111111",
   "audit_run_id": "AUDIT-GOLDEN-001",
@@ -20,12 +20,6 @@
     "protected/**"
   ],
   "dependencies": [],
-  "objectives": [
-    "Repair the proven example finding only."
-  ],
-  "acceptance": [
-    "Focused tests pass and required evidence is attached at resulting exact HEAD."
-  ],
   "required_tests": [
     "test:focused"
   ],
@@ -35,9 +29,6 @@
   "regression_tests": [
     "test:regression"
   ],
-  "security_checks": [
-    "scope boundary unchanged"
-  ],
   "rollback": [
     "Restore prior legal state if validation fails."
   ],
@@ -46,13 +37,6 @@
     "executed tests",
     "diff/read-back"
   ],
-  "stale_policy": {
-    "on_head_mismatch": "MARK_STALE_AND_DO_NOT_EXECUTE",
-    "revalidate_with": [
-      "semantic-diff",
-      "change-impact"
-    ]
-  },
   "retry_policy": {
     "max_attempts": 2,
     "backoff_policy": "EXPONENTIAL_BOUNDED",
@@ -63,5 +47,42 @@
   },
   "supersedes": [],
   "superseded_by": null,
-  "status": "READY"
+  "status": "READY",
+  "command_type": "REPAIR",
+  "root_cause_ids": [
+    "RC-GOLDEN-001"
+  ],
+  "affected_systems": [
+    "SYSTEM-GOLDEN-001"
+  ],
+  "affected_requirements": [
+    "REQ-GOLDEN-001"
+  ],
+  "affected_invariants": [],
+  "priority": "NORMAL",
+  "severity": "S2",
+  "objective": "Repair the proven example finding only.",
+  "exact_required_changes": [
+    "Modify only src/example/** to repair F-GOLDEN-001."
+  ],
+  "non_goals": [
+    "Do not modify protected/**."
+  ],
+  "acceptance_criteria": [
+    "Focused tests pass and required evidence is attached at resulting exact HEAD."
+  ],
+  "security_tests": [
+    "scope boundary unchanged"
+  ],
+  "stale_head_policy": {
+    "on_head_mismatch": "MARK_STALE_AND_DO_NOT_EXECUTE",
+    "revalidate_with": [
+      "semantic-diff",
+      "change-impact"
+    ]
+  },
+  "human_gate": {
+    "required": false,
+    "reason": "Illustrative fixture has no human gate."
+  }
 }
