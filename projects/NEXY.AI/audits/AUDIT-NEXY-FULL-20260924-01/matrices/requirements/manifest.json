@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "matrix": "REQUIREMENT_COVERAGE_MATRIX",
+  "denominator": 262,
+  "observed_rows": 262,
+  "unique_rows": 262,
+  "id_field": "REQUIREMENT_ID",
+  "category_counts": {
+    "B_CORE_CONTROL_LAW": 14,
+    "C_API_ROUTES_CONTRACTS": 3,
+    "D_RUNTIME_EXECUTION": 6,
+    "E_QUEUE_WORKER_JOB": 3,
+    "F_STATE_PERSISTENCE_STORAGE": 8,
+    "H_SECURITY_AUTH_PERMISSION_TENANT": 9,
+    "J_CONFIGURATION_GOVERNANCE": 1,
+    "M_OBSERVABILITY_LOGS_METRICS_ALERTS": 4,
+    "O_SOVEREIGN_UNIVERSE_HOST": 10,
+    "P_CONSTITUTIONAL_LAYERS": 23,
+    "Q_GAME_AAAA_NCF": 16,
+    "R_CAPABILITY_GOVERNANCE_REGISTRY": 18,
+    "S_L1O_LO3_LO2": 39,
+    "T_ROBOTICS_RCL": 11,
+    "U_FINAL_ARCHITECTURE_LAYERS": 3,
+    "V_CROSS_SYSTEM_INTEGRATION": 71,
+    "W_RELEASE_DEPLOYMENT_DOC_E": 6,
+    "X_UI_TRUTH_SURFACE": 6,
+    "Z_OTHER_SOURCE_DERIVED": 11
+  },
+  "validation": [
+    "Every category row count was read back and matched the canonical requirement denominator category count.",
+    "Every per-category file had unique nonempty REQUIREMENT_ID values.",
+    "Sum of category row counts is exactly 262, equal to the locked requirement denominator.",
+    "Rows are direct transforms of audited REQUIREMENT units; future/historical/current scope classifications are preserved."
+  ],
+  "status": "COMPLETE_VALIDATED",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e"
+}
