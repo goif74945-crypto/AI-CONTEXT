@@ -17,8 +17,8 @@
   },
   "intelligence_registry": {
     "ontology": {
-      "entities": 516,
-      "relationships": 863,
+      "entities": 518,
+      "relationships": 865,
       "aliases": 86,
       "status": "STRUCTURAL_PASS"
     },
@@ -34,7 +34,7 @@
       ]
     },
     "implementation_map": {
-      "entities": 516,
+      "entities": 518,
       "exact": 200,
       "group": 10,
       "candidate": 63,
