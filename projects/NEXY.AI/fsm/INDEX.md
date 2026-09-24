@@ -1,18 +1,12 @@
 # NEXY.AI FSM Registry
 
 Files:
-- `fsm-registry.jsonl`
+- `fsms.jsonl`
 - `fsm.schema.json`
 - `validation-report.md`
 
-Rule: **never merge state machines by matching state names.**
+Rule: never merge FSMs because state names look similar.
 
-Examples:
-- Execution `FREEZE`
-- Risk `FAILSAFE`
-- App `FROZEN`
-- Global `FROZEN`
+Each FSM has its own namespace, authority, scope, states, transitions/known transition semantics, failure behavior, source pointers, requirements and implementation refs.
 
-are distinct states in distinct authority namespaces.
-
-Implementation-only state models remain labeled as observed implementation and do not become source canon automatically.
+Implementation-only state models are retained separately rather than rewritten as source-defined FSMs.
