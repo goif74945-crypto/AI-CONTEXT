@@ -1,31 +1,32 @@
-# NEXY Auditor Playbook
+# NEXY Audit Playbook Contract
 
-## Universal audit law
-1. Pin exact repository/branch/HEAD and observed environment.
-2. Resolve source authority and scope before reading code.
-3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
-4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
-5. File existence, docs, mocks, build success, or comments are never runtime proof.
-6. Search failure history and known conflicts before declaring a new root cause.
-7. Preserve evidence even when verdict is FAIL.
+Audit rules:
+- refresh exact repository/branch/HEAD before current-state claims;
+- source existence ≠ implementation;
+- implementation presence ≠ compliance;
+- test file presence ≠ execution;
+- test execution ≠ deployment proof;
+- deployment proof is revision/environment/claim specific;
+- future scope absence is not current DOC-C FAIL;
+- CANDIDATE code mappings must be opened before use;
+- unresolved authority/conflict may block verdict;
+- allowed verdicts: PASS / FAIL / PARTIAL / BLOCKED / NOT_TESTED / NOT_VERIFIED / SCOPE / CONFLICT.
 
-# Workflow: Audit Authority / Supersession
+# Audit Authority
 
-## Sequence
-1. Classify question: current build, future domain, implementation truth, runtime truth, deployment or physical.
-2. Resolve scope first.
-3. Traverse authority graph.
-4. Traverse claim/requirement supersession.
-5. Inspect unresolved conflict records.
-6. Search implementation for lower-authority bypass.
-7. Verify descriptive code state is not being used to redefine normative source.
+## SEQUENCE
+1. identify claim/question type: normative build / implementation / runtime / deploy / physical;
+2. determine scope;
+3. load authority graph;
+4. inspect claim-level supersession;
+5. inspect conflict registry;
+6. reject authority inversion.
 
-## Attack cases
-- future feature treated as current MUST;
-- old claim overrides newer claim;
-- UI/storage/agent becomes decision authority;
-- Owner/Architect generic force path bypasses operational law;
-- source-only physical claim reported as proven.
+Critical checks:
+- DOC-D does not add obligations excluded by DOC-C;
+- implementation does not redefine spec;
+- older claim does not overwrite newer claim;
+- UI/SWARM/Lo2 does not become final truth authority;
+- OWNER actions stay within legal procedures.
 
-## DONE
-Every authority decision is explainable as source + scope + supersession path.
+Output unresolved authority as CONFLICT/BLOCKED, not guessed precedence.
