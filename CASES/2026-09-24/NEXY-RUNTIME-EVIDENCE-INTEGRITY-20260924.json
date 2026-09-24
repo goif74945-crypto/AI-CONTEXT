@@ -1,0 +1,18 @@
+{
+  "case_id": "CASE-NEXY-RUNTIME-EVIDENCE-INTEGRITY-20260924",
+  "finding_id": "F-NEXY-CP-RUNTIME-EVIDENCE-001",
+  "source_head": "9f070e6d0b85f4fb423e785d376a73374a3ff6db",
+  "cause": "validation-report.md records executable runtime PASS for artifacts absent from the shared branch",
+  "violation": [
+    "NO_FAKE_EVIDENCE",
+    "PASS_REQUIRES_MATCHING_EXECUTED_EVIDENCE",
+    "REPRODUCIBLE_EVIDENCE"
+  ],
+  "impact": "closed-loop runtime may be incorrectly consumed as executable-verified",
+  "fix_rule": "Either recover the exact tested artifacts and rerun at END_HEAD, or downgrade the report to NOT_VERIFIED. Do not reconstruct evidence from inference.",
+  "prevention": "Bind validation claims to exact HEAD plus committed artifact identities before PASS.",
+  "regression": "Auditor checks artifact existence at evidence HEAD and reruns applicable tests before acceptance.",
+  "status": "OPEN",
+  "trace_id": "AUDIT-NEXY-CLOSED-LOOP-01-20260924-1603",
+  "hash": "HASH_UNAVAILABLE"
+}
