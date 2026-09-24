@@ -1,0 +1,17 @@
+{
+  "task_id": "NEXY-FULL-AUDIT-X-UI-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "X_UI_TRUTH_SURFACE",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 68,
+  "audited_units": 68,
+  "counts": {
+    "PARTIAL": 1,
+    "OUT_OF_SCOPE": 55,
+    "FUTURE_SCOPE": 12
+  },
+  "status": "CATEGORY_AUDIT_RECORDED",
+  "next_category": "Y_TOOL_PLUGIN_SKILL_INTERFACES",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "hash": "HASH_UNAVAILABLE"
+}
