@@ -1,27 +1,33 @@
-# NEXY Auditor Playbook
+# NEXY Audit Playbook Contract
 
-## Universal audit law
-1. Pin exact repository/branch/HEAD and observed environment.
-2. Resolve source authority and scope before reading code.
-3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
-4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
-5. File existence, docs, mocks, build success, or comments are never runtime proof.
-6. Search failure history and known conflicts before declaring a new root cause.
-7. Preserve evidence even when verdict is FAIL.
+Audit rules:
+- refresh exact repository/branch/HEAD before current-state claims;
+- source existence ≠ implementation;
+- implementation presence ≠ compliance;
+- test file presence ≠ execution;
+- test execution ≠ deployment proof;
+- deployment proof is revision/environment/claim specific;
+- future scope absence is not current DOC-C FAIL;
+- CANDIDATE code mappings must be opened before use;
+- unresolved authority/conflict may block verdict;
+- allowed verdicts: PASS / FAIL / PARTIAL / BLOCKED / NOT_TESTED / NOT_VERIFIED / SCOPE / CONFLICT.
 
-# Workflow: Audit Contract
+# Audit Contract
 
-## Sequence
-1. Identify exact producer/consumer and version.
-2. Compare source contract vs implementation schema field-by-field.
-3. Check preconditions/postconditions/error contract/timeout/idempotency/auth.
-4. Check runtime validation at both sides of trust boundary.
-5. Test malformed, missing, extra, boundary and version-drift payloads.
-6. Inspect compatibility and migration impact.
-7. Check downstream code does not rely on undocumented fields.
+Check:
+- producer/consumer;
+- exact input/output schema;
+- pre/postconditions;
+- errors;
+- timeout;
+- idempotency;
+- authorization;
+- versioning;
+- runtime validation at every trust boundary.
 
-## Verdict rule
-Schema parse success is insufficient if semantics/authority/failure behavior differ.
+Compare Contract Registry to observed code; mark schema narrowing/widening explicitly.
 
-## DONE
-All contract fields and negative behaviors are traceable and version-safe.
+Negative tests:
+malformed input, missing field, extra/invalid field where strict, unauthorized actor, duplicate mutation, timeout, stale version.
+
+Do not call a contract PASS from TypeScript types alone.
