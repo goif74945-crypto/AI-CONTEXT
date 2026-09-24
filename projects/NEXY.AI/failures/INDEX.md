@@ -1,22 +1,16 @@
-# NEXY.AI Failure / Recovery Intelligence Library
+# NEXY.AI Failure / Recovery Library
 
-Normalized engineering experience for reuse before debugging/repair.
+Files:
+- `failures.jsonl` — canonical, internal and source-scenario failure records.
+- `recovery-playbooks.jsonl` — deterministic recovery skeletons.
+- `failure.schema.json`
+- `validation-report.md`
 
-## Stats
-- records: **24**
-- resolved/recovery examples: **17**
-- active/blocking findings: **7**
+Use before repair work:
+1. identify the exact failure layer/code;
+2. retrieve affected systems/invariants/contracts;
+3. inspect known recovery rule;
+4. run relevant regressions;
+5. only then add proven root cause / successful recovery back into this library.
 
-## Search rule
-Before changing a subsystem, search `failure-library.jsonl` by:
-- affected_systems
-- failure_id
-- root_cause
-- failed_approach
-- reusable_rule
-
-## Historical proof rule
-Historical PASS remains proof for its historical commit only. It contributes a recovery pattern, not current-HEAD status.
-
-## Streaming provenance
-`checkpoints/` preserves normalization batches so this library can be rebuilt without depending on one context window.
+Never convert UNKNOWN incident history into invented experience.
