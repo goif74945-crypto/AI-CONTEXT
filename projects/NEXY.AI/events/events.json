@@ -1,188 +1,232 @@
 {
   "schema_version": "1.0.0",
-  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "repository_snapshot": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
   "events": [
     {
-      "event_id": "EV-FSM-TRANSITION",
-      "name": "FSM_TRANSITION",
-      "producer": "CORE/queue run-state",
-      "consumers": [
-        "EventLog",
-        "OBS"
+      "event_id": "EVT-FSM-TRANSITION",
+      "producer": [
+        "KERNEL-CORE"
+      ],
+      "consumer": [
+        "MODULE-OBS",
+        "API and UI indirectly"
       ],
       "schema": {
-        "from_state": "string",
-        "to_state": "string",
-        "pipeline_run_id": "string"
+        "event": "VNextEvent",
+        "actor": "VNextActor",
+        "state_from": "VNextState",
+        "state_to": "VNextState",
+        "pipeline_run_id": "nullable"
       },
-      "ordering": "sequenceNum monotonic",
+      "ordering": "EventLog.sequenceNum monotonic",
       "delivery": "DB transaction",
-      "idempotency": "event identity/sequence",
-      "timeout": "DB transaction bound",
-      "retry": "do not duplicate blindly",
+      "idempotency": "transition legality plus durable state",
+      "timeout": "transaction-bound",
+      "retry": "no implicit transition retry",
       "audit": "EventLog",
-      "failure": "DB failure alarm/freeze semantics"
+      "failure": "persistence failure forces FREEZE",
+      "refs": [
+        "packages/orch-core/system-state.ts"
+      ]
     },
     {
-      "event_id": "EV-FREEZE-TRIGGERED",
-      "name": "FREEZE_TRIGGERED",
-      "producer": "LAW/CORE",
-      "consumers": [
-        "EventLog",
-        "AuditLog",
-        "FreezeIncident",
-        "UI"
+      "event_id": "EVT-FREEZE-TRIGGERED",
+      "producer": [
+        "LAW-SYSTEM",
+        "QUEUE-EXECUTION"
+      ],
+      "consumer": [
+        "MODULE-OBS",
+        "UI",
+        "recovery"
       ],
       "schema": {
         "error_code": "string",
         "blocking_layer": "string",
-        "run_id": "string"
+        "run_id": "string",
+        "recoverable": "boolean"
       },
-      "ordering": "incident/action transaction",
-      "delivery": "mandatory durable",
-      "idempotency": "one primary incident per PipelineRun",
+      "ordering": "correlated by tick request trace",
+      "delivery": "FreezeIncident plus EventLog and AuditLog",
+      "idempotency": "one FreezeIncident per PipelineRun where constrained",
       "timeout": "transaction-bound",
-      "retry": "reconcile carefully",
-      "audit": "MANDATORY",
-      "failure": "missing audit persistence is safety failure"
+      "retry": "must not create duplicate authoritative incident",
+      "audit": "mandatory",
+      "failure": "audit persistence failure remains visible",
+      "refs": [
+        "packages/law/freeze.ts",
+        "packages/queue/run-state.ts"
+      ]
     },
     {
-      "event_id": "EV-RELEASE-POLICY-FAILED",
-      "name": "RELEASE_POLICY_FAILED",
-      "producer": "LAW prerelease",
-      "consumers": [
-        "EventLog",
-        "AuditLog",
-        "Alarm"
+      "event_id": "EVT-QUEUE-DISPATCH",
+      "producer": [
+        "KERNEL-CORE",
+        "QUEUE-EXECUTION"
+      ],
+      "consumer": [
+        "BullMQ worker"
       ],
       "schema": {
-        "pipeline_run_id": "string",
-        "error_code": "string",
-        "blocking_layer": "LAW_PRERELEASE"
+        "directiveId": "string",
+        "pipelineRunId": "string",
+        "input": "string",
+        "mode": "string",
+        "priority": "string",
+        "idempotencyKey": "string"
       },
-      "ordering": "before any final durable release",
-      "delivery": "mandatory durable + optional alarm",
-      "idempotency": "run-scoped",
-      "timeout": "pipeline bound",
-      "retry": "new legal run after root cause",
-      "audit": "MANDATORY",
-      "failure": "FREEZE/REJECTED"
+      "ordering": "transport queue plus durable dispatch state",
+      "delivery": "DB record then BullMQ enqueue",
+      "idempotency": "BullMQ jobId equals idempotencyKey plus durable claim",
+      "timeout": "stale_job_ttl_ms",
+      "retry": "reconciler retries delivery not duplicate execution",
+      "audit": "queue alarms and run events",
+      "failure": "FAILED durable dispatch plus lastError",
+      "refs": [
+        "packages/queue/dispatch.ts",
+        "packages/queue/payload.ts"
+      ]
     },
     {
-      "event_id": "EV-OTAC-ISSUED",
-      "name": "OTAC_ISSUED",
-      "producer": "AUTH",
-      "consumers": [
-        "EventLog/Audit"
+      "event_id": "EVT-OTAC-ISSUED",
+      "producer": [
+        "MODULE-AUTH"
       ],
-      "schema": "auth metadata without secret leakage",
-      "ordering": "tick/sequence",
-      "delivery": "durable audit",
-      "idempotency": "request-specific",
-      "timeout": "auth request bound",
-      "retry": "cooldown governed",
-      "audit": "required auth lifecycle",
-      "failure": "deny/lock"
-    },
-    {
-      "event_id": "EV-OTAC-VALIDATED",
-      "name": "OTAC_VALIDATED",
-      "producer": "AUTH",
-      "consumers": [
-        "EventLog/Audit",
-        "Session service"
-      ],
-      "schema": "hashed/minimized auth metadata",
-      "ordering": "before session establishment completion",
-      "delivery": "durable audit",
-      "idempotency": "single-use OTAC",
-      "timeout": "auth bound",
-      "retry": "replay denied",
-      "audit": "required",
-      "failure": "security incident on suspicious reuse"
-    },
-    {
-      "event_id": "EV-AUTH-ABUSE",
-      "name": "AUTH_ABUSE",
-      "producer": "AUTH/rate-limit",
-      "consumers": [
-        "Alarm sink",
-        "SecurityIncident where applicable"
+      "consumer": [
+        "email delivery",
+        "auth verify"
       ],
       "schema": {
-        "limit": "number",
-        "window_ms": "number"
+        "email_hash": "hash",
+        "device_id": "bound id",
+        "expiry": "5m current"
       },
-      "ordering": "best-effort alarm secondary to mandatory evidence",
-      "delivery": "optional external / in-memory test",
+      "ordering": "per auth request",
+      "delivery": "durable hashed OTAC plus external email",
+      "idempotency": "resend cooldown and lock rules",
+      "timeout": "otac_ttl_ms",
+      "retry": "bounded by cooldown",
+      "audit": "auth event",
+      "failure": "delivery failure invalidates OTAC",
+      "refs": [
+        "packages/auth/otac.ts"
+      ]
+    },
+    {
+      "event_id": "EVT-OTAC-VERIFIED",
+      "producer": [
+        "MODULE-AUTH"
+      ],
+      "consumer": [
+        "SERVICE-SESSION"
+      ],
+      "schema": {
+        "user_or_email_hash": "identifier",
+        "device_id": "binding",
+        "role": "RBAC role"
+      },
+      "ordering": "single-use OTAC",
+      "delivery": "auth transaction",
+      "idempotency": "consumed OTAC cannot replay",
+      "timeout": "within TTL",
+      "retry": "attempt limited",
+      "audit": "auth event and security incident on abuse",
+      "failure": "AUTH_INVALID AUTH_EXPIRED OTAC_LOCKED or related code",
+      "refs": [
+        "packages/auth/otac.ts",
+        "packages/auth/session.ts"
+      ]
+    },
+    {
+      "event_id": "EVT-AUDIT-ACTION",
+      "producer": [
+        "authorized subsystems"
+      ],
+      "consumer": [
+        "MODULE-OBS",
+        "AUDITOR",
+        "JUDGE where permitted"
+      ],
+      "schema": {
+        "actor": "string",
+        "action": "string",
+        "resourceKind": "string",
+        "resourceId": "string",
+        "requestId": "string",
+        "traceId": "string",
+        "outcome": "string",
+        "chainHash": "sha256",
+        "previousEntryId": "nullable"
+      },
+      "ordering": "hash-linked chronological chain",
+      "delivery": "PostgreSQL INSERT only",
+      "idempotency": "action-specific",
+      "timeout": "transaction-bound",
+      "retry": "must preserve chain semantics",
+      "audit": "self",
+      "failure": "chain mismatch or insertion failure blocks critical operation",
+      "refs": [
+        "prisma/schema.prisma"
+      ]
+    },
+    {
+      "event_id": "EVT-ALARM",
+      "producer": [
+        "MODULE-OBS",
+        "QUEUE-EXECUTION",
+        "state and persistence failures"
+      ],
+      "consumer": [
+        "alarm sink",
+        "external monitoring when configured"
+      ],
+      "schema": {
+        "name": "alarm class",
+        "severity": "level",
+        "source": "string",
+        "dedupeKey": "string",
+        "payload": "structured"
+      },
+      "ordering": "source-defined",
+      "delivery": "internal sink or external provider",
       "idempotency": "dedupeKey",
-      "timeout": "nonblocking",
-      "retry": "sink-specific",
-      "audit": "alarm not substitute for audit",
-      "failure": "request denied/degraded"
+      "timeout": "provider-dependent",
+      "retry": "UNKNOWN",
+      "audit": "DOC-E E8",
+      "failure": "external delivery may be BLOCKED",
+      "refs": [
+        "packages/obs/alarms.ts"
+      ]
     },
     {
-      "event_id": "EV-WORKER-DOWN",
-      "name": "WORKER_DOWN",
-      "producer": "queue worker",
-      "consumers": [
-        "Alarm sink",
-        "operations"
+      "event_id": "EVT-ESCAPE-DETECTED",
+      "producer": [
+        "DETECTOR-CORE-INTEGRITY"
+      ],
+      "consumer": [
+        "containment or quarantine callback"
       ],
       "schema": {
-        "reason_or_error": "string"
+        "sandboxId": "string",
+        "kind": "EscapeKind",
+        "detail": "string",
+        "tick": "bigint",
+        "severity": "CRITICAL"
       },
-      "ordering": "runtime event",
-      "delivery": "optional alarm + stderr",
-      "idempotency": "dedupeKey",
-      "timeout": "nonblocking",
-      "retry": "ops/restart policy",
-      "audit": "mandatory run failures separate",
-      "failure": "queue unavailable/degraded"
-    },
-    {
-      "event_id": "EV-DB-FAILURE",
-      "name": "DB_FAILURE",
-      "producer": "persistence paths",
-      "consumers": [
-        "Alarm sink",
-        "operations"
-      ],
-      "schema": {
-        "operation": "string"
-      },
-      "ordering": "after caught DB failure",
-      "delivery": "alarm + propagated error",
-      "idempotency": "dedupeKey",
-      "timeout": "nonblocking",
-      "retry": "governed by operation/recovery",
-      "audit": "must not hide mandatory evidence failure",
-      "failure": "propagate/freeze"
-    },
-    {
-      "event_id": "EV-CROSS-APP-MESSAGE",
-      "name": "CrossAppMessage",
-      "producer": "CREATOR_APP",
-      "consumers": [
-        "target CREATOR_APP"
-      ],
-      "schema": {
-        "messageId": "ULID",
-        "channelId": "ULID",
-        "fromAppId": "string",
-        "toAppId": "string",
-        "payload": "JSON string",
-        "hmac": "SHA256 HMAC",
-        "sentTick": "bigint",
-        "deliveredAt": "bigint|null"
-      },
-      "ordering": "currentTick + router store",
-      "delivery": "pending→deliver",
-      "idempotency": "second delivery denied",
-      "timeout": "UNKNOWN",
-      "retry": "explicit pending delivery",
-      "audit": "future architecture not current DOC-C",
-      "failure": "missing channel/wrong sender/cross-universe/capability denial"
+      "ordering": "append in detector history",
+      "delivery": "callback plus stderr and any wired incident layer",
+      "idempotency": "UNKNOWN",
+      "timeout": "immediate",
+      "retry": "N/A",
+      "audit": "should be incident-linked by governing security layer",
+      "failure": "must not continue uncontained",
+      "refs": [
+        "packages/phase-f/universe/sandbox-stack/escape-detector.ts"
+      ]
     }
   ]
 }
