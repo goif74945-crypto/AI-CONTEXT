@@ -1,0 +1,9 @@
+{
+  "golden": [
+    {"case_id":"EVID-GOLDEN-001","freshness":"CURRENT","decision":"ACCEPT"}
+  ],
+  "negative": [
+    {"case_id":"EVID-NEG-STALE-001","freshness":"STALE","decision":"REJECT_STALE"},
+    {"case_id":"EVID-NEG-MISSING-001","freshness":"UNBOUND","decision":"REJECT_INVALID"}
+  ]
+}
