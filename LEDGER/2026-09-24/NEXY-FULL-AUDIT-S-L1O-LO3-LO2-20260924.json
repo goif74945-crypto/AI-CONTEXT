@@ -1,0 +1,21 @@
+{
+  "ledger_id": "NEXY-FULL-AUDIT-S-L1O-LO3-LO2-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "category": "S_L1O_LO3_LO2",
+  "claim": [
+    "125/125 units audited",
+    "{\"OUT_OF_SCOPE\":5,\"FUTURE_SCOPE\":7,\"NOT_VERIFIED\":69,\"PARTIAL\":44}"
+  ],
+  "proof": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/S_L1O_LO3_LO2.units.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/S_L1O_LO3_LO2.summary.json",
+    "exact target tree e5db1b88...",
+    "canonical system-to-code map used only as navigation"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "CURRENT_AT_TARGET_HEAD",
+  "trace": "AUDIT-NEXY-FULL-20260924-01",
+  "hash": "HASH_UNAVAILABLE"
+}
