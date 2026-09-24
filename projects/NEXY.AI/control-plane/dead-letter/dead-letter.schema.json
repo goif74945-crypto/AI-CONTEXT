@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/nexy/control-plane/dead-letter/dead-letter.schema.json",
+  "title": "NEXY Dead Letter / Quarantine Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id","command_id","terminal_class","source_status","failure_class",
+    "attempt_number","expected_head","observed_head","reason","evidence_refs",
+    "supersedes","release_state"
+  ],
+  "properties": {
+    "record_id": {"type":"string","minLength":1},
+    "command_id": {"type":"string","minLength":1},
+    "terminal_class": {"enum":["DEAD_LETTER","QUARANTINE","BLOCKED"]},
+    "source_status": {"enum":["FAILED","BLOCKED","QUARANTINED","STALE"]},
+    "failure_class": {"enum":["RETRY_EXHAUSTED","VALIDATION_FAILURE","AUTHORITY_CONFLICT","SECURITY_VIOLATION","DESTRUCTIVE_HUMAN_GATE","STALE_HEAD","UNKNOWN"]},
+    "attempt_number": {"type":"integer","minimum":0},
+    "expected_head": {"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "observed_head": {"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "reason": {"type":"string","minLength":1},
+    "evidence_refs": {"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "supersedes": {"type":"array","uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "release_state": {"enum":["LOCKED","ELIGIBLE_FOR_REVIEW","RELEASED_BY_SUPERSESSION"]}
+  }
+}
