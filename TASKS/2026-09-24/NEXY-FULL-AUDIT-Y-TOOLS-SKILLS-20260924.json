@@ -1,0 +1,17 @@
+{
+  "task_id": "NEXY-FULL-AUDIT-Y-TOOLS-SKILLS-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "Y_TOOL_PLUGIN_SKILL_INTERFACES",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 39,
+  "audited_units": 39,
+  "counts": {
+    "VERIFIED": 17,
+    "PARTIAL": 22
+  },
+  "status": "CATEGORY_AUDIT_RECORDED",
+  "key_result": "17 capability records reconcile with current registry/session truth; all 22 NEXY skills remain MATERIALIZED and unverified.",
+  "next_category": "O_SOVEREIGN_UNIVERSE_HOST",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "hash": "HASH_UNAVAILABLE"
+}
