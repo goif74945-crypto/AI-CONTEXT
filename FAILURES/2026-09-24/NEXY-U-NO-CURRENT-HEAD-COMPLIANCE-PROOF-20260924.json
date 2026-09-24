@@ -1,0 +1,9 @@
+{
+  "failure_id": "FAIL-NEXY-U-NO-CURRENT-HEAD-COMPLIANCE-PROOF-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "cause": "No successful exact-head final-architecture compliance execution.",
+  "failed_approach": "Do not equate named layers with semantic compliance.",
+  "recovery": "Keep category PARTIAL and retain exact source-contract gaps.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
