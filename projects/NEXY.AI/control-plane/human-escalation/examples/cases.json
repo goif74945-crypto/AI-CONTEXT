@@ -1,0 +1,7 @@
+{
+ "golden":[{"case_id":"ESC-GOLDEN-001","gate_type":"DESTRUCTIVE_MIGRATION","status":"OPEN"}],
+ "negative":[
+  {"case_id":"ESC-NEG-BYPASS-001","condition":"required decision absent","expected":"FAIL"},
+  {"case_id":"ESC-NEG-EVIDENCE-001","condition":"evidence_refs empty","expected":"FAIL"}
+ ]
+}
