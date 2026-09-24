@@ -1,0 +1,16 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://ai-context.local/nexy/control-plane/evidence-ingestion/evidence-ingestion.schema.json",
+ "type":"object","additionalProperties":false,
+ "required":["ingest_id","command_id","evidence_class","ref","head_binding","freshness","decision","reason"],
+ "properties":{
+  "ingest_id":{"type":"string","minLength":1},
+  "command_id":{"type":"string","minLength":1},
+  "evidence_class":{"enum":["E0_REPO","E1_STATIC","E2_UNIT","E3_INTEGRATION","E4_E2E","E5_RUNTIME","E6_DEPLOYMENT","PHYSICAL","SOURCE"]},
+  "ref":{"type":"string","minLength":1},
+  "head_binding":{"type":["string","null"],"pattern":"^[0-9a-f]{40}$"},
+  "freshness":{"enum":["CURRENT","STALE","UNBOUND"]},
+  "decision":{"enum":["ACCEPT","ACCEPT_WITH_LIMIT","REJECT_STALE","REJECT_INVALID"]},
+  "reason":{"type":"string","minLength":1}
+ }
+}
