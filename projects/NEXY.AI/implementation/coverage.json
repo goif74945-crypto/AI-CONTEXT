@@ -3,13 +3,13 @@
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "codex/spec-audit-20260919-78df350",
   "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-  "ontology_entities": 516,
-  "mapped_entities": 273,
+  "ontology_entities": 518,
+  "mapped_entities": 275,
   "unmapped_entities": 243,
   "by_mapping_status": {
     "GROUP": 10,
     "UNMAPPED": 243,
-    "EXACT": 200,
+    "EXACT": 202,
     "CANDIDATE": 63
   },
   "symbol_files_scanned": 237,
