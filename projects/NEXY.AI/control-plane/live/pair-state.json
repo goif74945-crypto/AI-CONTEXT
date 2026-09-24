@@ -1,6 +1,6 @@
 {
   "pair_id": "NEXY-CLOSED-LOOP-01",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "auditor_role": "AUDITOR_CHAT",
   "builder_worker_id": "BUILDER-01",
   "control_repo": "goif74945-crypto/AI-CONTEXT",
@@ -53,7 +53,15 @@
       "DATA-004 nexy-integrity",
       "DATA-005 nexy-evidence-verifier",
       "DATA-006 nexy-web-retrieval",
-      "DATA-007 nexy-data-transform"
+      "DATA-007 nexy-data-transform",
+      "SEC-001 nexy-auth",
+      "SEC-002 nexy-session",
+      "SEC-003 nexy-rbac",
+      "SEC-004 nexy-security",
+      "SEC-005 nexy-security-review",
+      "SEC-006 nexy-audit",
+      "SEC-007 nexy-incident",
+      "SEC-008 nexy-abuse-test"
     ],
     "blocked_identity_gaps": [
       "nexy-integration: no separate formal numbered identity in source; do not invent ID"
@@ -61,12 +69,12 @@
     "execution_gaps": [
       "DATA-006 nexy-web-retrieval: concrete retrieval mechanism not established by authoritative source"
     ],
-    "last_evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-wave6-data-materialization.md",
-    "next_wave": "WAVE_7_SECURITY"
+    "last_evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-wave7-security-materialization.md",
+    "next_wave": "WAVE_8_VAULT"
   },
   "background_execution_claimed": false,
   "last_control_observation": {
-    "ai_context_head": "4c9ec0c133446c63cc85ce9d5cfdb7c0ad468e71",
+    "ai_context_head": "3cfd7e4e20ccf0ee455e4d923c0e158596371ab1",
     "ready_commands": 1,
     "active_claims": 0
   }
