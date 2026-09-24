@@ -99,17 +99,17 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 992,
-    "remaining": 476,
-    "percent": 67.5749
+    "audited": 1038,
+    "remaining": 430,
+    "percent": 70.7084
   },
-  "current_category": "Q_GAME_AAAA_NCF",
-  "last_completed_unit": "CATEGORY:P_CONSTITUTIONAL_LAYERS",
-  "next_unit": "CATEGORY:Q_GAME_AAAA_NCF",
+  "current_category": "R_CAPABILITY_GOVERNANCE_REGISTRY",
+  "last_completed_unit": "CATEGORY:Q_GAME_AAAA_NCF",
+  "next_unit": "CATEGORY:R_CAPABILITY_GOVERNANCE_REGISTRY",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
-    "S2": 2,
+    "S2": 3,
     "S3": 4,
     "S4": 6,
     "S5": 2
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "P_CONSTITUTIONAL_LAYERS",
-    "read_back_verified": true,
-    "category_units": 86
+    "category_completed": "Q_GAME_AAAA_NCF",
+    "read_back_verified": false,
+    "category_units": 46
   }
 }
