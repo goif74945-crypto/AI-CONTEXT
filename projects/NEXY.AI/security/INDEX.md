@@ -1,3 +1,11 @@
 # NEXY.AI Security / Trust Map
 
-Trust boundaries, RBAC permissions and threat model. Source/design controls are not security certification; runtime claims require matching abuse/escape evidence.
+Files:
+- `trust-boundaries.json`
+- `permission-matrix.json`
+- `threat-model.json`
+
+Use this registry to answer:
+`WHO → CAN DO WHAT → TO WHICH RESOURCE → UNDER WHICH STATE → WITH WHICH PROOF`
+
+Current DOC-C and future Sovereign/Robotics boundaries remain scoped separately.
