@@ -1,0 +1,75 @@
+{
+  "task_id": "TASK-NEXY-FULL-REAUDIT-SECOND-PASS-20260924",
+  "title": "NEXY full-project second-pass re-audit",
+  "mode": "AUDIT",
+  "scope": "12 required post-atomic-coverage consistency passes and findings reconciliation; no NEXY implementation mutation.",
+  "inputs_summary": [
+    "1468/1468 atomic audit units",
+    "31 open findings including two second-pass incident findings",
+    "target HEAD 84484d..."
+  ],
+  "sources": [
+    "authoritative NEXY-IGNIS DOCX",
+    "AI-CONTEXT category audits/findings",
+    "exact target implementation"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "source-derived audit registries"
+  ],
+  "actions": [
+    "completed 12 second-pass dimensions",
+    "reconciled 31 findings into 14 root-cause groups",
+    "built dependency DAG"
+  ],
+  "artifacts": [
+    "second-pass/FULL_PROJECT_REAUDIT.json",
+    "findings-reconciliation.json",
+    "remediation/dependency-dag.json"
+  ],
+  "claims_proofs": [
+    "atomic coverage is 100%",
+    "second-pass audit is complete but implementation/release fail/partial in multiple dimensions",
+    "normal commands remain gated by matrix completion"
+  ],
+  "tests_results": "No new executable target tests claimed in this pass; existing exact-head execution evidence remains absent/failed as recorded.",
+  "changes": "AI-CONTEXT audit/control records only.",
+  "successes": [
+    "cross-system re-audit completed",
+    "findings reconciled",
+    "dependency order established"
+  ],
+  "failures": [
+    "master/requirement matrix completion still not verified"
+  ],
+  "decisions": [
+    "do not issue normal Builder commands until both matrix gates are verified"
+  ],
+  "unresolved": [
+    "Master System Matrix 518-row completion",
+    "Requirement Matrix 262-row completion",
+    "matrix propagation of latest incident findings"
+  ],
+  "risks": [
+    "S5 OTAC log exposure",
+    "stale/contradictory evidence",
+    "S4 contract/FSM/recovery/incident defects"
+  ],
+  "limits": [
+    "No implementation mutation or production validation."
+  ],
+  "rollback": "Revert AI-CONTEXT audit-record commits if disproven; no implementation rollback applicable.",
+  "final_status": "PARTIAL",
+  "next_actions": [
+    "verify/complete Master System Matrix",
+    "verify/complete Requirement Matrix",
+    "then open command-generation gate if all gates pass"
+  ],
+  "dependencies": [
+    "AUDIT-NEXY-FULL-20260924-01"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-24 + Git target head",
+  "trace_id": "AUDIT-NEXY-FULL-20260924-01/SECOND-PASS",
+  "hash": "HASH_UNAVAILABLE"
+}
