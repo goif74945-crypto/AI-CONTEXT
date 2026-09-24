@@ -1,0 +1,13 @@
+{
+  "retry_id": "RETRY-NEG-EXHAUSTED-001",
+  "command_id": "CMD-001",
+  "attempt_number": 4,
+  "max_attempts": 4,
+  "failure_class": "TRANSIENT_DEPENDENCY",
+  "retryable": true,
+  "base_delay_seconds": 5,
+  "max_delay_seconds": 60,
+  "computed_delay_seconds": 0,
+  "decision": "FAIL",
+  "reason": "Deterministic policy for TRANSIENT_DEPENDENCY."
+}

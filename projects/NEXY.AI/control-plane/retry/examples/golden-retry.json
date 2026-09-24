@@ -1,0 +1,13 @@
+{
+  "retry_id": "RETRY-GOLDEN-001",
+  "command_id": "CMD-001",
+  "attempt_number": 2,
+  "max_attempts": 4,
+  "failure_class": "TRANSIENT_DEPENDENCY",
+  "retryable": true,
+  "base_delay_seconds": 5,
+  "max_delay_seconds": 60,
+  "computed_delay_seconds": 10,
+  "decision": "RETRY",
+  "reason": "Deterministic policy for TRANSIENT_DEPENDENCY."
+}

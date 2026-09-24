@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/nexy/control-plane/retry/retry.schema.json",
+  "title": "NEXY Retry / Backoff Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "retry_id",
+    "command_id",
+    "attempt_number",
+    "max_attempts",
+    "failure_class",
+    "retryable",
+    "base_delay_seconds",
+    "max_delay_seconds",
+    "computed_delay_seconds",
+    "decision",
+    "reason"
+  ],
+  "properties": {
+    "retry_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "command_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attempt_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_attempts": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "failure_class": {
+      "enum": [
+        "TRANSIENT_DEPENDENCY",
+        "LEASE_LOST",
+        "RATE_LIMITED",
+        "VALIDATION_FAILURE",
+        "AUTHORITY_CONFLICT",
+        "SECURITY_VIOLATION",
+        "DESTRUCTIVE_HUMAN_GATE",
+        "UNKNOWN"
+      ]
+    },
+    "retryable": {
+      "type": "boolean"
+    },
+    "base_delay_seconds": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_delay_seconds": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "computed_delay_seconds": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "decision": {
+      "enum": [
+        "RETRY",
+        "FAIL",
+        "BLOCK",
+        "QUARANTINE"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

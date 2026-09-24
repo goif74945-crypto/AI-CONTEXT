@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "algorithm": "delay = min(max_delay_seconds, base_delay_seconds * 2^(attempt_number-1)); no RNG/jitter",
+  "retryable_classes": [
+    "TRANSIENT_DEPENDENCY",
+    "LEASE_LOST",
+    "RATE_LIMITED"
+  ],
+  "non_retryable_classes": [
+    "VALIDATION_FAILURE",
+    "AUTHORITY_CONFLICT",
+    "SECURITY_VIOLATION",
+    "DESTRUCTIVE_HUMAN_GATE",
+    "UNKNOWN"
+  ],
+  "rules": [
+    "Retry is permitted only when retryable=true, failure_class is retryable, and attempt_number < max_attempts.",
+    "At or beyond max_attempts, retry is forbidden.",
+    "AUTHORITY_CONFLICT and DESTRUCTIVE_HUMAN_GATE become BLOCK, never automated retry.",
+    "SECURITY_VIOLATION becomes QUARANTINE.",
+    "VALIDATION_FAILURE becomes FAIL until a new command/change is issued.",
+    "UNKNOWN is not automatically retryable.",
+    "Backoff is deterministic and bounded; no random jitter is used."
+  ]
+}

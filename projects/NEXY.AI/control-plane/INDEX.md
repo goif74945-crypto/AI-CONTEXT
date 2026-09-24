@@ -12,7 +12,7 @@ Foundation under construction in dependency order. Each component is versioned, 
 6. [Supersession](./supersession/INDEX.md) — implemented.
 7. [Result Package](./results/INDEX.md) — implemented by canonical handoff reuse.
 8. [Heartbeat](./heartbeat/INDEX.md) — implemented.
-9. Retry / Backoff — pending P4.9.
+9. [Retry / Backoff](./retry/INDEX.md) — implemented.
 10. Dead Letter / Quarantine — pending P4.10.
 11. Scheduler — pending P4.11.
 12. Evidence Ingestion — pending P4.12.

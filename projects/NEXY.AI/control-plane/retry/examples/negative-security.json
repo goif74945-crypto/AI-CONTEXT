@@ -1,0 +1,13 @@
+{
+  "retry_id": "RETRY-NEG-SECURITY-001",
+  "command_id": "CMD-001",
+  "attempt_number": 1,
+  "max_attempts": 4,
+  "failure_class": "SECURITY_VIOLATION",
+  "retryable": false,
+  "base_delay_seconds": 5,
+  "max_delay_seconds": 60,
+  "computed_delay_seconds": 0,
+  "decision": "QUARANTINE",
+  "reason": "Deterministic policy for SECURITY_VIOLATION."
+}
