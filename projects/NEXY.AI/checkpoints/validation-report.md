@@ -1,14 +1,11 @@
 # Checkpoint Validation Report
 
 ## Result
-**PASS — current checkpoint conforms**
+**PASS — P4.2 remote read-back + checkpoint**
 
-Latest semantic checkpointed HEAD: `2fb5f5e66ef6f9ab021ba0380f86f95080427c91`
-Last completed: **P4.1 COMMAND MODEL**
-Next: **P4.2 COMMAND QUEUE**
-
-- required fields: PASS
-- additional-properties prohibition: PASS
-- exact target repo/branch/semantic HEAD: PASS
-- authorization boundary: PASS
-- NEXY implementation mutation: false
+Semantic HEAD: `4d2fe59de360ce9a2544344d8aa7a24fd39eb4d7`
+- queue golden deterministic ordering: PASS
+- cycle negative: PASS
+- duplicate negative: PASS
+- snapshot integration: PASS
+Next: **P4.3 WORKER REGISTRY**
