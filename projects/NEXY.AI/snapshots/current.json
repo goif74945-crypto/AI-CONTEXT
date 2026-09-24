@@ -114,10 +114,12 @@
       "status": "PARTIAL",
       "completed_parts": [
         "P4.1_COMMAND_MODEL",
-        "P4.2_COMMAND_QUEUE"
+        "P4.2_COMMAND_QUEUE",
+        "P4.3_WORKER_REGISTRY"
       ],
       "command_schema_version": "1.0.0",
-      "queue_schema_version": "1.0.0"
+      "queue_schema_version": "1.0.0",
+      "worker_registry_schema_version": "1.0.0"
     }
   },
   "dynamic_truth": {

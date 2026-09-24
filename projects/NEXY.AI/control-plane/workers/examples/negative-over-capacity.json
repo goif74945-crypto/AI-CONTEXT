@@ -1,0 +1,31 @@
+{
+  "registry_id": "WORKERS-NEG-OVERCAP-001",
+  "version": "1.0.0",
+  "workers": [
+    {
+      "worker_id": "WORKER-OVER",
+      "role": "BUILDER",
+      "capabilities": [
+        "BUILD",
+        "STATIC_VALIDATION"
+      ],
+      "allowed_scopes": [
+        "projects/NEXY.AI/control-plane/**"
+      ],
+      "forbidden_scopes": [
+        "goif74945-crypto/NEXY.AI-/**"
+      ],
+      "status": "BUSY",
+      "max_concurrent_claims": 1,
+      "active_claim_ids": [
+        "CLAIM-A",
+        "CLAIM-B"
+      ],
+      "trust_class": "STANDARD",
+      "human_gate_capability": false,
+      "metadata_refs": [
+        "projects/NEXY.AI/playbooks/build/INDEX.md"
+      ]
+    }
+  ]
+}

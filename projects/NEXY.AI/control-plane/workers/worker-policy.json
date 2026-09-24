@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "assignment_rules": [
+    "Worker role/capability must satisfy the command's required execution role/capability before claim.",
+    "Command target scope must be contained by worker allowed_scopes and must not intersect forbidden_scopes.",
+    "active_claim_ids count MUST NOT exceed max_concurrent_claims.",
+    "OFFLINE, DRAINING or QUARANTINED workers cannot accept new claims.",
+    "Worker registry identity/capability never overrides command scope, governance, expected-head guard or human gates.",
+    "human_gate_capability=true means the worker can route/escalate to a human gate, not self-approve it."
+  ],
+  "uniqueness_rules": [
+    "worker_id unique in registry",
+    "active_claim_ids unique within a worker"
+  ]
+}
