@@ -8,13 +8,15 @@
     "namespace",
     "authority",
     "scope",
-    "initial_state",
+    "registry_class",
     "states",
     "transitions",
-    "transition_completeness",
+    "terminal_states",
+    "invalid_transition_behavior",
     "requirement_ids",
+    "source_range",
     "implementation_mapping_status",
     "implementation_refs",
-    "rule"
+    "notes"
   ]
 }
