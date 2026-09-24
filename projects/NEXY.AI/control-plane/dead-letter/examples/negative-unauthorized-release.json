@@ -1,0 +1,6 @@
+{
+  "case_id":"DLQ-NEG-RELEASE-001",
+  "invalid_condition":"QUARANTINE is released without authorized evidence-backed review",
+  "expected_result":"FAIL",
+  "reason":"Security quarantine requires an explicit human/authorized gate."
+}
