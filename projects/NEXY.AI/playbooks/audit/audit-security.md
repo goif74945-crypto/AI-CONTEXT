@@ -1,26 +1,32 @@
-# NEXY Auditor Playbook
+# NEXY Audit Playbook Contract
 
-## Universal audit law
-1. Pin exact repository/branch/HEAD and observed environment.
-2. Resolve source authority and scope before reading code.
-3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
-4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
-5. File existence, docs, mocks, build success, or comments are never runtime proof.
-6. Search failure history and known conflicts before declaring a new root cause.
-7. Preserve evidence even when verdict is FAIL.
+Audit rules:
+- refresh exact repository/branch/HEAD before current-state claims;
+- source existence ≠ implementation;
+- implementation presence ≠ compliance;
+- test file presence ≠ execution;
+- test execution ≠ deployment proof;
+- deployment proof is revision/environment/claim specific;
+- future scope absence is not current DOC-C FAIL;
+- CANDIDATE code mappings must be opened before use;
+- unresolved authority/conflict may block verdict;
+- allowed verdicts: PASS / FAIL / PARTIAL / BLOCKED / NOT_TESTED / NOT_VERIFIED / SCOPE / CONFLICT.
 
-# Workflow: Audit Security / Trust Boundaries
+# Audit Security
 
-## Sequence
-1. Load trust-boundary and permission matrices.
-2. Enumerate external inputs, secrets, roles, sessions, cross-plane calls.
-3. Verify validation and authorization at each receiver.
-4. Attack auth replay, OTAC abuse, CSRF, rate-limit bypass and session misuse.
-5. Attack prompt/model injection and authority escalation.
-6. Attack sandbox/tenant/universe escape where in scope.
-7. Verify security incidents/audit evidence are fail-closed.
-8. Confirm UI visibility is never the authorization layer.
-9. Confirm secrets are absent from client/source/log surfaces where forbidden.
+Load trust-boundary map + permission matrix + threat-relevant failures.
 
-## DONE
-No untrusted path crosses into authority without the required proof/control.
+Test:
+- user/UI/API/Core trust boundaries;
+- auth/session/OTAC/CSRF;
+- RBAC server-side;
+- rate limiting and dependency failure;
+- secret exposure;
+- prompt/provider injection;
+- queue boundary;
+- sandbox/capability escape;
+- tenant/universe crossing;
+- audit evidence persistence.
+
+Do not treat UI-hidden controls as authorization.
+Do not treat in-memory alarm emission as proof of external monitoring delivery.
