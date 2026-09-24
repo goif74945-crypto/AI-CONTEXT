@@ -5,7 +5,7 @@
   "failed_approach": [
     "Treat partial per-category matrix materialization as equivalent to complete 518/262 matrices."
   ],
-  "recovery": "Verify exact unique row coverage against denominators; fill only missing rows; propagate current findings; then read-back counts before opening command gate.",
+  "recovery": "Master System Matrix validated at exactly 518 unique rows; Requirement Matrix validated at exactly 262 unique rows; full audit command gate opened.",
   "boundary": "AI-CONTEXT audit matrix/control-plane only",
   "prevention": [
     "Require exact 518 unique SYSTEM_ID rows",
@@ -13,7 +13,12 @@
     "Reject duplicate/missing IDs",
     "Do not open command gate on directory/file presence alone"
   ],
-  "status": "OPEN_GATE_NOT_IMPLEMENTATION_FAILURE",
+  "status": "RESOLVED",
   "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
-  "hash": "HASH_UNAVAILABLE"
+  "hash": "HASH_UNAVAILABLE",
+  "resolved_evidence": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/master-system/manifest.json",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/requirements/manifest.json",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/run.json"
+  ]
 }
