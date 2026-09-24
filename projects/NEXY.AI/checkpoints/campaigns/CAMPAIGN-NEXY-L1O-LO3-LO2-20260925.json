@@ -5,24 +5,24 @@
   "target_repo": "goif74945-crypto/NEXY.AI-",
   "target_branch": "astra/omega-full-spec-convergence",
   "start_head": "b920140bc9e8a302ef86217b26ae5de2f3a07588",
-  "current_head": "e503aa4520d3bab88f03e6a8b1397c5464a5cfa6",
+  "current_head": "d8e72ea0b0d356c9f88f4dd125ed23a026a01e55",
   "ai_context_base_head": "85b0ca8d1052be0198ea965e333c9c4a3fcc66ff",
   "current_component": "L1o",
-  "current_requirement": "REQ-L1O-004",
+  "current_requirement": "REQ-L1O-007",
   "current_requirement_status": "VERIFIED_WITH_LIMITS",
   "current_architecture_requirement_count": 37,
   "historical_excluded_count": 4,
   "future_excluded_count": 1,
-  "completed_requirements": 1,
+  "completed_requirements": 2,
   "partial_verified_requirements": 1,
-  "remaining_current_requirements": 35,
+  "remaining_current_requirements": 34,
   "known_blockers": [
     "REQ-L1O-005 required for genuine multi-path certainty variation.",
     "REQ-L1O-014 certainty-tier semantic ordering requires separate source-authority resolution.",
     "Legacy audit matrix S_L1O_LO3_LO2 omits three canonical requirements; campaign denominator uses canonical registry."
   ],
   "release_status": "NOT_READY",
-  "next_action": "REQ-L1O-007: align double-entry mismatch behavior to source (reject candidate), unless a higher-authority conflict is discovered.",
+  "next_action": "REQ-L1O-008: add source-required null/extreme/race-style failure injection where applicable.",
   "timestamp_source": "2026-09-25",
   "hash": "HASH_UNAVAILABLE",
   "denominator_source": "projects/NEXY.AI/requirements/requirements.jsonl canonical registry",
@@ -36,5 +36,15 @@
     ],
     "current_architecture": 37,
     "future_architecture": 1
-  }
+  },
+  "frozen_requirements": [
+    {
+      "id": "REQ-L1O-002",
+      "reason": "ambiguity threshold/scoring source gap"
+    },
+    {
+      "id": "REQ-L1O-014",
+      "reason": "certainty tier numeric authority conflict"
+    }
+  ]
 }

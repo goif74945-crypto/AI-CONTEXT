@@ -1,0 +1,20 @@
+{
+  "failure_id": "FAIL-NEXY-L1O-SOURCE-GAPS-002-014-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "blocked_paths": [
+    {
+      "requirement_id": "REQ-L1O-002",
+      "cause": "L600 ambiguity threshold/scoring algorithm unspecified; conflicting older thresholds exist.",
+      "status": "FROZEN_SOURCE_GAP"
+    },
+    {
+      "requirement_id": "REQ-L1O-014",
+      "cause": "Tier semantics are authoritative but numeric threshold provenance in current code is invalid/misbound; no authoritative numeric CTS thresholds found.",
+      "status": "FROZEN_AUTHORITY_CONFLICT"
+    }
+  ],
+  "recovery": "Obtain authoritative current threshold/scoring policy or a source amendment; do not infer legacy numbers.",
+  "status": "OPEN_SCOPED_FREEZES",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

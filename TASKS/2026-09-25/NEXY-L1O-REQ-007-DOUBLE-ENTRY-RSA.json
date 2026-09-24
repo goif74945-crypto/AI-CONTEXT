@@ -1,0 +1,92 @@
+{
+  "task_id": "TASK-NEXY-L1O-REQ-007-DOUBLE-ENTRY-RSA-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "requirement_id": "REQ-L1O-007",
+  "title": "Align L1o Recursive Self-Auditor double-entry mismatch behavior to L600",
+  "mode": "CROSS_EXECUTE_SERIAL",
+  "source": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "paragraph_ranges": [
+      [
+        11375,
+        11390
+      ]
+    ]
+  },
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "start_head": "e503aa4520d3bab88f03e6a8b1397c5464a5cfa6",
+  "end_head": "d8e72ea0b0d356c9f88f4dd125ed23a026a01e55",
+  "changed_files": [
+    "core-kernel/src/engine/l10_cognition.rs"
+  ],
+  "actions": [
+    "Split RSA primary accumulation and independent elimination recomputation into distinct algorithms.",
+    "Changed double-entry disagreement from whole-kernel freeze to candidate rejection.",
+    "Added tests for matching independent recomputation, missing constraint rejection and deliberate primary/independent mismatch rejection."
+  ],
+  "tests_results": [
+    {
+      "check": "cargo test --locked -p core-kernel --lib via contract gate",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run typecheck",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run typecheck:backend",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run lint",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:contract",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:integration",
+      "status": "PASS"
+    },
+    {
+      "check": "npm test",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run check:doc-c",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run build:web",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run check:coverage",
+      "status": "PRE_EXISTING_FAIL"
+    }
+  ],
+  "proof": [
+    "NEXY d8e72ea0b0d356c9f88f4dd125ed23a026a01e55",
+    "Railway bc5fb53f-d8ed-4559-a8c8-53db8b308354",
+    "core-kernel Rust contract PASS"
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "limits": [
+    "Global judge coverage authority remains an unrelated release blocker."
+  ],
+  "next_actions": [
+    "Proceed to REQ-L1O-008 failure-injection coverage.",
+    "Keep REQ-L1O-002 and REQ-L1O-014 frozen until source authority is sufficient."
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25",
+  "trace_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-007",
+  "hash": "HASH_UNAVAILABLE"
+}

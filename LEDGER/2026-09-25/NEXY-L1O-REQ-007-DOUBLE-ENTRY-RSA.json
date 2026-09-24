@@ -1,0 +1,25 @@
+{
+  "ledger_id": "LEDGER-NEXY-L1O-REQ-007-DOUBLE-ENTRY-RSA-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-007-DOUBLE-ENTRY-RSA-20260925",
+  "source": [
+    "DOCX 11375-11390"
+  ],
+  "claim": [
+    "RSA performs two structurally independent recomputations.",
+    "Mismatch rejects the candidate as specified rather than freezing the whole kernel.",
+    "Exact-head regressions pass except pre-existing global coverage gate."
+  ],
+  "proof": [
+    "d8e72ea0b0d356c9f88f4dd125ed23a026a01e55",
+    "Railway bc5fb53f-d8ed-4559-a8c8-53db8b308354"
+  ],
+  "deps": [],
+  "risk": [
+    "Global coverage gate remains open."
+  ],
+  "status": "RECORDED_VERIFIED_WITH_LIMITS",
+  "confidence": 1,
+  "freshness": "EXACT_HEAD_D8E72EA0",
+  "trace": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-007",
+  "hash": "HASH_UNAVAILABLE"
+}
