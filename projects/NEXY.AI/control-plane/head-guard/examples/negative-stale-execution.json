@@ -1,0 +1,16 @@
+{
+  "guard_id": "HEAD-GUARD-NEGATIVE-SILENT-REWRITE-001",
+  "command_id": "CMD-OLD-001",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "example",
+  "expected_head": "1111111111111111111111111111111111111111",
+  "current_head": "2222222222222222222222222222222222222222",
+  "match": false,
+  "original_command_status": "READY",
+  "decision": "EXECUTION_ALLOWED",
+  "semantic_diff_ref": null,
+  "impact_ref": null,
+  "superseding_command_id": null,
+  "revalidation_status": "NOT_REQUIRED",
+  "evidence_refs": []
+}

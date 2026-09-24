@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "pre_execution_sequence": [
+    "Refresh target branch and obtain CURRENT_HEAD.",
+    "Compare CURRENT_HEAD to immutable command.expected_head.",
+    "If equal, record EXECUTION_ALLOWED and continue other preconditions.",
+    "If unequal, original command execution is forbidden.",
+    "Run semantic-diff between EXPECTED_HEAD and CURRENT_HEAD.",
+    "Run first-class change-impact for the original command scope and dependency closure.",
+    "If command remains valid, issue a new command that supersedes the original and pins CURRENT_HEAD.",
+    "Otherwise mark original command STALE or BLOCKED.",
+    "Never rewrite expected_head in the historical original command."
+  ],
+  "stale_rules": [
+    "A previously acquired claim cannot override HEAD mismatch.",
+    "A PASS from old evidence cannot clear HEAD mismatch.",
+    "SUPERSEDE requires explicit semantic_diff_ref + impact_ref + superseding_command_id.",
+    "Original command history remains immutable."
+  ]
+}

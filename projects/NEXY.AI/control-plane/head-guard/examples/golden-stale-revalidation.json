@@ -1,0 +1,20 @@
+{
+  "guard_id": "HEAD-GUARD-GOLDEN-STALE-001",
+  "command_id": "CMD-OLD-001",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "example",
+  "expected_head": "1111111111111111111111111111111111111111",
+  "current_head": "2222222222222222222222222222222222222222",
+  "match": false,
+  "original_command_status": "STALE",
+  "decision": "SUPERSEDE",
+  "semantic_diff_ref": "SEM-DIFF-001",
+  "impact_ref": "IMPACT-001",
+  "superseding_command_id": "CMD-NEW-001",
+  "revalidation_status": "PASS",
+  "evidence_refs": [
+    "HEAD-READ-002",
+    "SEM-DIFF-001",
+    "IMPACT-001"
+  ]
+}

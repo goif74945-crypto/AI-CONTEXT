@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/nexy/control-plane/head-guard/head-guard.schema.json",
+  "title": "NEXY Expected-HEAD Guard Evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "guard_id",
+    "command_id",
+    "target_repo",
+    "target_branch",
+    "expected_head",
+    "current_head",
+    "match",
+    "original_command_status",
+    "decision",
+    "semantic_diff_ref",
+    "impact_ref",
+    "superseding_command_id",
+    "revalidation_status",
+    "evidence_refs"
+  ],
+  "properties": {
+    "guard_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "command_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_repo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "current_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "match": {
+      "type": "boolean"
+    },
+    "original_command_status": {
+      "enum": [
+        "READY",
+        "CLAIMED",
+        "EXECUTING",
+        "VERIFYING",
+        "COMPLETED",
+        "FAILED",
+        "BLOCKED",
+        "STALE",
+        "CANCELLED",
+        "QUARANTINED"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "EXECUTION_ALLOWED",
+        "MARK_STALE",
+        "SUPERSEDE",
+        "BLOCKED"
+      ]
+    },
+    "semantic_diff_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "impact_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "superseding_command_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revalidation_status": {
+      "enum": [
+        "NOT_REQUIRED",
+        "REQUIRED",
+        "PASS",
+        "FAIL",
+        "BLOCKED",
+        "NOT_VERIFIED"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "match": {
+            "const": true
+          }
+        },
+        "required": [
+          "match"
+        ]
+      },
+      "then": {
+        "properties": {
+          "decision": {
+            "const": "EXECUTION_ALLOWED"
+          },
+          "revalidation_status": {
+            "const": "NOT_REQUIRED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "match": {
+            "const": false
+          }
+        },
+        "required": [
+          "match"
+        ]
+      },
+      "then": {
+        "properties": {
+          "decision": {
+            "enum": [
+              "MARK_STALE",
+              "SUPERSEDE",
+              "BLOCKED"
+            ]
+          },
+          "revalidation_status": {
+            "enum": [
+              "REQUIRED",
+              "PASS",
+              "FAIL",
+              "BLOCKED",
+              "NOT_VERIFIED"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
