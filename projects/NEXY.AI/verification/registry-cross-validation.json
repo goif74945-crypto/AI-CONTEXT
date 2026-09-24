@@ -1,0 +1,99 @@
+{
+  "coverage": {
+    "schema_version": "1.0.0",
+    "contracts": {
+      "count": 22,
+      "review_required": 5,
+      "not_evaluated": 15
+    },
+    "fsms": {
+      "count": 8,
+      "namespaces": [
+        "ANCHOR_PUBLICATION",
+        "APP_LIFECYCLE",
+        "CAPABILITY_GOVERNANCE",
+        "CREATOR_PUBLICATION",
+        "DOC_C_EXECUTION",
+        "KERNEL_RISK",
+        "PIPELINE_RUN",
+        "QUEUE_JOB"
+      ]
+    },
+    "invariants": {
+      "count": 40,
+      "S5": 39,
+      "S4": 1
+    },
+    "cross_reference_issues": 12,
+    "implementation_snapshot": {
+      "entity_records": 518,
+      "all_mapped_records_have_entity": true
+    },
+    "boundaries": [
+      "Registry structural PASS is not a compliance PASS.",
+      "REVIEW_REQUIRED identifies observed source/code shape differences for later audit.",
+      "Implementation-only FSMs remain separate from source-defined FSM namespaces."
+    ]
+  },
+  "issues": [
+    {
+      "kind": "fsm_entity_missing",
+      "id": "FSM-KERNEL-RISK-5"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-CAPABILITY-REGISTRY",
+      "target": "STATE-CAP-DEPRECATED"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-CREATOR-PUBLICATION",
+      "target": "STATE-CREATOR-CREATED"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-CREATOR-PUBLICATION",
+      "target": "STATE-CREATOR-BUILT"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-CREATOR-PUBLICATION",
+      "target": "STATE-CREATOR-SEALED"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-CREATOR-PUBLICATION",
+      "target": "STATE-CREATOR-VALIDATED"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-CREATOR-PUBLICATION",
+      "target": "STATE-CREATOR-ANCHOR-QUEUED"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-CREATOR-PUBLICATION",
+      "target": "STATE-CREATOR-FINALIZED"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-CREATOR-PUBLICATION",
+      "target": "STATE-CREATOR-PUBLIC-ACTIVE"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-APP-LIFECYCLE",
+      "target": "STATE-APP-DRAFT"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-APP-LIFECYCLE",
+      "target": "STATE-APP-SUSPENDED"
+    },
+    {
+      "kind": "fsm_state_missing",
+      "id": "FSM-APP-LIFECYCLE",
+      "target": "STATE-APP-DEPRECATED"
+    }
+  ]
+}
