@@ -1,14 +1,30 @@
 # Invariant Registry Validation
 
 ## Result
-**PASS — source/traceability structure; compliance NOT_EVALUATED**
+**PASS — atomic invariant structure**
 
-- invariants: **42**
-- all invariant requirement IDs resolve: PASS
-- source ranges inherited from canonical requirements: PASS
-- implementation refs are location-only and HEAD-bound through Implementation Map: PASS
-- severity intentionally left `UNASSIGNED_PENDING_ERROR_TAXONOMY`: PASS
+- LAW/INVARIANT ontology entities: **35**
+- requirement-backed MUST invariants: **39**
+- explicit source-only/collective invariants added: **3**
+- total atomic invariant records: **42**
 
-The registry does not invent S0–S5 severity before the Error Taxonomy step.
+Checks:
+- unique invariant IDs: PASS
+- governing ontology refs exist: PASS
+- requirement refs exist: PASS
+- every record has an explicit statement: PASS
 
-Criticality classes are engineering grouping only; they do not replace source authority.
+## Semantics
+The atomic registry is intentionally requirement-backed.
+
+A broad law such as `LAW-RUNTIME-DETERMINISM` is not one vague assertion. It expands into discrete protected assertions such as:
+- single canonical mutator;
+- FIFO/monotonic event ordering;
+- no floating point/system clock/RNG in canonical Core;
+- locked environment/build identity.
+
+## Severity
+`severity = UNKNOWN` unless the governing source explicitly assigns a severity. This registry does not invent S0–S5 classifications.
+
+## Change rule
+Before modifying mapped code, resolve every linked atomic invariant and required regression evidence. No test = no PASS.
