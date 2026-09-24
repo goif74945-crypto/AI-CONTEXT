@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0.0",
+  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "events": [
+    {
+      "event_id": "EV-FSM-TRANSITION",
+      "name": "FSM_TRANSITION",
+      "producer": "CORE/queue run-state",
+      "consumers": [
+        "EventLog",
+        "OBS"
+      ],
+      "schema": {
+        "from_state": "string",
+        "to_state": "string",
+        "pipeline_run_id": "string"
+      },
+      "ordering": "sequenceNum monotonic",
+      "delivery": "DB transaction",
+      "idempotency": "event identity/sequence",
+      "timeout": "DB transaction bound",
+      "retry": "do not duplicate blindly",
+      "audit": "EventLog",
+      "failure": "DB failure alarm/freeze semantics"
+    },
+    {
+      "event_id": "EV-FREEZE-TRIGGERED",
+      "name": "FREEZE_TRIGGERED",
+      "producer": "LAW/CORE",
+      "consumers": [
+        "EventLog",
+        "AuditLog",
+        "FreezeIncident",
+        "UI"
+      ],
+      "schema": {
+        "error_code": "string",
+        "blocking_layer": "string",
+        "run_id": "string"
+      },
+      "ordering": "incident/action transaction",
+      "delivery": "mandatory durable",
+      "idempotency": "one primary incident per PipelineRun",
+      "timeout": "transaction-bound",
+      "retry": "reconcile carefully",
+      "audit": "MANDATORY",
+      "failure": "missing audit persistence is safety failure"
+    },
+    {
+      "event_id": "EV-RELEASE-POLICY-FAILED",
+      "name": "RELEASE_POLICY_FAILED",
+      "producer": "LAW prerelease",
+      "consumers": [
+        "EventLog",
+        "AuditLog",
+        "Alarm"
+      ],
+      "schema": {
+        "pipeline_run_id": "string",
+        "error_code": "string",
+        "blocking_layer": "LAW_PRERELEASE"
+      },
+      "ordering": "before any final durable release",
+      "delivery": "mandatory durable + optional alarm",
+      "idempotency": "run-scoped",
+      "timeout": "pipeline bound",
+      "retry": "new legal run after root cause",
+      "audit": "MANDATORY",
+      "failure": "FREEZE/REJECTED"
+    },
+    {
+      "event_id": "EV-OTAC-ISSUED",
+      "name": "OTAC_ISSUED",
+      "producer": "AUTH",
+      "consumers": [
+        "EventLog/Audit"
+      ],
+      "schema": "auth metadata without secret leakage",
+      "ordering": "tick/sequence",
+      "delivery": "durable audit",
+      "idempotency": "request-specific",
+      "timeout": "auth request bound",
+      "retry": "cooldown governed",
+      "audit": "required auth lifecycle",
+      "failure": "deny/lock"
+    },
+    {
+      "event_id": "EV-OTAC-VALIDATED",
+      "name": "OTAC_VALIDATED",
+      "producer": "AUTH",
+      "consumers": [
+        "EventLog/Audit",
+        "Session service"
+      ],
+      "schema": "hashed/minimized auth metadata",
+      "ordering": "before session establishment completion",
+      "delivery": "durable audit",
+      "idempotency": "single-use OTAC",
+      "timeout": "auth bound",
+      "retry": "replay denied",
+      "audit": "required",
+      "failure": "security incident on suspicious reuse"
+    },
+    {
+      "event_id": "EV-AUTH-ABUSE",
+      "name": "AUTH_ABUSE",
+      "producer": "AUTH/rate-limit",
+      "consumers": [
+        "Alarm sink",
+        "SecurityIncident where applicable"
+      ],
+      "schema": {
+        "limit": "number",
+        "window_ms": "number"
+      },
+      "ordering": "best-effort alarm secondary to mandatory evidence",
+      "delivery": "optional external / in-memory test",
+      "idempotency": "dedupeKey",
+      "timeout": "nonblocking",
+      "retry": "sink-specific",
+      "audit": "alarm not substitute for audit",
+      "failure": "request denied/degraded"
+    },
+    {
+      "event_id": "EV-WORKER-DOWN",
+      "name": "WORKER_DOWN",
+      "producer": "queue worker",
+      "consumers": [
+        "Alarm sink",
+        "operations"
+      ],
+      "schema": {
+        "reason_or_error": "string"
+      },
+      "ordering": "runtime event",
+      "delivery": "optional alarm + stderr",
+      "idempotency": "dedupeKey",
+      "timeout": "nonblocking",
+      "retry": "ops/restart policy",
+      "audit": "mandatory run failures separate",
+      "failure": "queue unavailable/degraded"
+    },
+    {
+      "event_id": "EV-DB-FAILURE",
+      "name": "DB_FAILURE",
+      "producer": "persistence paths",
+      "consumers": [
+        "Alarm sink",
+        "operations"
+      ],
+      "schema": {
+        "operation": "string"
+      },
+      "ordering": "after caught DB failure",
+      "delivery": "alarm + propagated error",
+      "idempotency": "dedupeKey",
+      "timeout": "nonblocking",
+      "retry": "governed by operation/recovery",
+      "audit": "must not hide mandatory evidence failure",
+      "failure": "propagate/freeze"
+    },
+    {
+      "event_id": "EV-CROSS-APP-MESSAGE",
+      "name": "CrossAppMessage",
+      "producer": "CREATOR_APP",
+      "consumers": [
+        "target CREATOR_APP"
+      ],
+      "schema": {
+        "messageId": "ULID",
+        "channelId": "ULID",
+        "fromAppId": "string",
+        "toAppId": "string",
+        "payload": "JSON string",
+        "hmac": "SHA256 HMAC",
+        "sentTick": "bigint",
+        "deliveredAt": "bigint|null"
+      },
+      "ordering": "currentTick + router store",
+      "delivery": "pending→deliver",
+      "idempotency": "second delivery denied",
+      "timeout": "UNKNOWN",
+      "retry": "explicit pending delivery",
+      "audit": "future architecture not current DOC-C",
+      "failure": "missing channel/wrong sender/cross-universe/capability denial"
+    }
+  ]
+}
