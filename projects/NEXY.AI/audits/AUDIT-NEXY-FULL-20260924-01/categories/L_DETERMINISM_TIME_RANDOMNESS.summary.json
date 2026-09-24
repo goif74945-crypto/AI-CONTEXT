@@ -1,0 +1,55 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "L_DETERMINISM_TIME_RANDOMNESS",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 0,
+  "denominator_note": "No atomic denominator records are assigned directly to category L; this is a required cross-cutting audit pass and therefore does not increase atomic coverage.",
+  "counts": {},
+  "source_proof": [
+    "DOC-C current-build deterministic / verify-before-release / freeze-on-fail law",
+    "DOC-C deterministic merge rule: no averaging of outputs, no guessing, unresolved conflicting outputs FREEZE, deterministic_match_score threshold",
+    "DOC-C bounded timeout/no-auto-retry pipeline policy",
+    "Broader/future architecture deterministic-seed/replay rules were not used to fail current-build implementation."
+  ],
+  "implementation_proof": [
+    "packages/core/tick.ts uses monotonic process.hrtime.bigint with persisted epoch ratchet for authoritative ticks; wall-clock ISO is explicitly separated for human-facing timestamps.",
+    "packages/core/canonical-json.ts sorts object keys recursively and rejects non-JSON/non-finite values.",
+    "packages/core/ulid.ts uses currentTick plus node:crypto randomBytes; no Math.random/randomUUID observed in audited active backend paths.",
+    "packages/swarm/pipeline.ts uses bounded timeout timers and monotonic hrtime deadline budgets; context sharding uses SHA-256 input-derived assignment.",
+    "packages/queue/workers.ts uses Date.now only at the documented BullMQ enqueue-wall-clock TTL boundary while durable lifecycle/audit/event ordering uses currentTick.",
+    "Static target-tree scan of active TypeScript/Rust decision paths found no Math.random/randomUUID and no Rust SystemTime/rand/thread_rng in audited core-kernel decision files.",
+    "Root .eslintrc.json does not wire packages/phase-f/eslint-plugin-nexy/no-nondeterminism.js; the active current-build gate is instead tests/contract/determinism-boundary.test.ts."
+  ],
+  "test_proof": [
+    "tests/contract/determinism-boundary.test.ts statically rejects Math.random/randomUUID in active backend code and wall-clock use in judge/law/orch-core/selected queue+swarm/vault decision modules; it explicitly documents the queue wall-clock TTL exception.",
+    "tests/contract/canonical-json.test.ts covers canonical object-key ordering and fail-closed unsupported values.",
+    "packages/core/__tests__/tick.test.ts covers restart monotonicity, regression clamp, overflow and epoch sealing.",
+    "tests/contract/swarm-timeouts.test.ts covers monotonic DeadlineBudget and timeout classification.",
+    "Tests are present, but no successful exact-target-head test execution is established; combined target validation status remains failure."
+  ],
+  "crosscutting_checks": {
+    "noncryptographic_randomness_active_backend": "STATIC_PASS_FOR_AUDITED_PATHS",
+    "random_uuid_active_backend": "STATIC_PASS_FOR_AUDITED_PATHS",
+    "authoritative_tick_monotonicity": "STATIC_IMPLEMENTATION_PRESENT_TEST_PRESENT_NOT_EXECUTED_CURRENT_HEAD",
+    "wall_clock_decision_boundary": "STATIC_PASS_FOR_AUDITED_DECISION_PATHS_WITH_DOCUMENTED_QUEUE_TTL_EXCEPTION",
+    "canonical_serialization": "STATIC_IMPLEMENTATION_PRESENT_TEST_PRESENT_NOT_EXECUTED_CURRENT_HEAD",
+    "bounded_deadlines": "STATIC_IMPLEMENTATION_PRESENT_TEST_PRESENT_NOT_EXECUTED_CURRENT_HEAD",
+    "exact_head_runtime_evidence": "NOT_VERIFIED"
+  },
+  "findings": [],
+  "gaps": [
+    "No successful exact-target-head determinism test execution or replay evidence is established.",
+    "The standalone no-nondeterminism ESLint rule is not wired into the root lint configuration; current-build determinism scanning is provided by a contract test rather than lint enforcement.",
+    "DOC-C 'No averaging' is interpreted here as a merge/output rule; numeric confidence/trust aggregation in JUDGE/SWARM is reserved for later semantic integration review and is not classified as a defect without stronger source proof."
+  ],
+  "verdict": "PARTIAL",
+  "next_proof_required": [
+    "Execute exact-target-head determinism-boundary, canonical-json, tick and swarm timeout tests.",
+    "Bind successful execution evidence to target HEAD 84484d8108fe1dee186450c0d36c26d360b2596e.",
+    "Revisit numeric aggregation semantics during cross-system/evidence audit if it controls release authority."
+  ],
+  "next_category": "M_OBSERVABILITY_LOGS_METRICS_ALERTS",
+  "status": "CROSSCUTTING_CATEGORY_AUDIT_RECORDED"
+}
