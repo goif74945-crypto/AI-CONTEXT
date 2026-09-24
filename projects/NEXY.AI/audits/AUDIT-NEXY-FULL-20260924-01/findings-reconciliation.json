@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0.0",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "status": "RECONCILED_31_FINDINGS",
+  "total_findings": 31,
+  "severity_counts": {
+    "S0": 0,
+    "S1": 0,
+    "S2": 9,
+    "S3": 10,
+    "S4": 10,
+    "S5": 2
+  },
+  "rules": [
+    "No finding deleted merely because it shares a root cause.",
+    "Duplicate evidence-freshness findings are linked under one root-cause group while preserving distinct affected requirements/surfaces.",
+    "Dependent release findings remain separate from their upstream evidence defects.",
+    "Future-scope mapping gaps remain VERIFY/EVIDENCE work and are not promoted to current-build implementation defects."
+  ],
+  "root_cause_groups": [
+    {
+      "id": "RC-SEC-SECRET-001",
+      "priority": 1,
+      "findings": [
+        "F-NEXY-FULL-H-OTAC-LOG-001"
+      ],
+      "class": "SECURITY_FIX",
+      "root": "Selectable console/development OTAC transport logs live code and destination email in plaintext.",
+      "depends_on": []
+    },
+    {
+      "id": "RC-EVIDENCE-TRUTH-001",
+      "priority": 1,
+      "findings": [
+        "F-NEXY-FULL-J-EVIDENCE-001"
+      ],
+      "class": "EVIDENCE_REPAIR",
+      "root": "PASS-labeled E07 artifact contradicts authoritative/current configuration.",
+      "depends_on": []
+    },
+    {
+      "id": "RC-CONTRACT-CURRENT-001",
+      "priority": 2,
+      "findings": [
+        "F-NEXY-FULL-B-AGENT-ADAPTER-001",
+        "F-NEXY-FULL-C-CONSENSUS-CONTRACT-001",
+        "F-NEXY-FULL-C-EVIDENCE-CONTRACT-001",
+        "F-NEXY-REAUDIT-N-INCIDENT-ERRORCODE-002"
+      ],
+      "class": "CONTRACT_FIX",
+      "root": "Current-build interface/schema contracts are narrower or weaker than authoritative DOC-C obligations.",
+      "depends_on": []
+    },
+    {
+      "id": "RC-INCIDENT-SEMANTICS-001",
+      "priority": 2,
+      "findings": [
+        "F-NEXY-REAUDIT-N-INCIDENT-PRIORITY-001"
+      ],
+      "class": "STATE_PERSISTENCE_FIX",
+      "root": "FreezeIncident upsert has no transactional priority arbitration or secondary failure preservation.",
+      "depends_on": [
+        "RC-CONTRACT-CURRENT-001"
+      ]
+    },
+    {
+      "id": "RC-FSM-AUTHORITY-001",
+      "priority": 2,
+      "findings": [
+        "F-NEXY-FULL-K-RECOVER-ACTOR-001"
+      ],
+      "class": "FSM_FIX",
+      "root": "Execution FSM recovery ownership is narrower than DOC-C OWNER|SYSTEM authority.",
+      "depends_on": []
+    },
+    {
+      "id": "RC-QUEUE-RETRY-001",
+      "priority": 2,
+      "findings": [
+        "F-NEXY-FULL-E-RETRY-CLASSIFICATION-001"
+      ],
+      "class": "RECOVERY_FIX",
+      "root": "FAILED durable dispatches are replayed without explicit retryable classification/bounded cap.",
+      "depends_on": []
+    },
+    {
+      "id": "RC-REGISTRY-DENOM-001",
+      "priority": 3,
+      "findings": [
+        "F-NEXY-FULL-DENOM-CONTRACT-001",
+        "F-NEXY-FULL-J-REGISTRY-FRESHNESS-001"
+      ],
+      "class": "REGISTRY_REPAIR",
+      "root": "Derived registry counts/provenance are inconsistent or stale relative to exact target state.",
+      "depends_on": []
+    },
+    {
+      "id": "RC-TRACE-SEMANTIC-001",
+      "priority": 3,
+      "findings": [
+        "F-NEXY-FULL-A-TRACEABILITY-001",
+        "F-NEXY-FULL-A-TRACEABILITY-002",
+        "F-NEXY-FULL-F-RESTORE-TRACE-001"
+      ],
+      "class": "TEST_TRACEABILITY_FIX",
+      "root": "Linked tests do not semantically test the stated requirement.",
+      "depends_on": []
+    },
+    {
+      "id": "RC-MAPPING-001",
+      "priority": 3,
+      "findings": [
+        "F-NEXY-FULL-S-UNMAPPED-001",
+        "F-NEXY-FULL-S-CANDIDATE-MAPPING-001",
+        "F-NEXY-FULL-U-MAPPING-003",
+        "F-NEXY-FULL-V-TRACEABILITY-001",
+        "F-NEXY-FULL-Z-MAPPING-001"
+      ],
+      "class": "VERIFY_MAPPING",
+      "root": "Current/current-architecture systems or requirements lack exact semantically verified mapping.",
+      "depends_on": []
+    },
+    {
+      "id": "RC-SEMANTIC-ARCH-001",
+      "priority": 3,
+      "findings": [
+        "F-NEXY-FULL-U-SEMANTIC-CONTRACT-001"
+      ],
+      "class": "VERIFY_SEMANTICS",
+      "root": "Final-architecture named implementations only partially match source semantics.",
+      "depends_on": [
+        "RC-MAPPING-001"
+      ]
+    },
+    {
+      "id": "RC-FOCUSED-TEST-001",
+      "priority": 4,
+      "findings": [
+        "F-NEXY-FULL-Q-CSE-TEST-EVIDENCE-001"
+      ],
+      "class": "TEST",
+      "root": "Context-sharding behavior lacks focused exact-head executable proof.",
+      "depends_on": []
+    },
+    {
+      "id": "RC-CURRENT-HEAD-PROOF-001",
+      "priority": 4,
+      "findings": [
+        "F-NEXY-FULL-S-CURRENT-HEAD-EVIDENCE-002",
+        "F-NEXY-FULL-U-CURRENT-HEAD-EVIDENCE-002",
+        "F-NEXY-FULL-V-CURRENT-HEAD-INTEGRATION-EVIDENCE-002",
+        "F-NEXY-FULL-V-INVARIANT-PROOF-003",
+        "F-NEXY-FULL-V-CONCURRENCY-CHAOS-PROOF-004",
+        "F-NEXY-FULL-Z-CURRENT-HEAD-PROOF-002"
+      ],
+      "class": "TEST_AND_EVIDENCE_REFRESH",
+      "root": "Successful executable proof bound to exact target HEAD is absent.",
+      "depends_on": [
+        "RC-CONTRACT-CURRENT-001",
+        "RC-INCIDENT-SEMANTICS-001",
+        "RC-FSM-AUTHORITY-001",
+        "RC-QUEUE-RETRY-001",
+        "RC-TRACE-SEMANTIC-001"
+      ]
+    },
+    {
+      "id": "RC-DOC-E-STALE-001",
+      "priority": 5,
+      "findings": [
+        "F-NEXY-FULL-I-CURRENT-EVIDENCE-STALE-001",
+        "F-NEXY-FULL-W-STALE-DOC-E-001",
+        "F-NEXY-FULL-Z-DOC-E-SYSTEM-EVIDENCE-003"
+      ],
+      "class": "EVIDENCE_REFRESH",
+      "root": "DOC-E/current evidence is revision-bound to an older implementation or otherwise not exact-head proof.",
+      "depends_on": [
+        "RC-CURRENT-HEAD-PROOF-001",
+        "RC-EVIDENCE-TRUTH-001"
+      ]
+    },
+    {
+      "id": "RC-RELEASE-GATE-001",
+      "priority": 6,
+      "findings": [
+        "F-NEXY-FULL-W-RELEASE-BLOCKED-002"
+      ],
+      "class": "RELEASE_FIX",
+      "root": "Staging/canary/production promotion lacks exact-head evidence and upstream gates remain failed.",
+      "depends_on": [
+        "RC-DOC-E-STALE-001",
+        "RC-SEC-SECRET-001"
+      ]
+    }
+  ],
+  "reconciliation_verdict": "DONE",
+  "command_generation_eligible": false,
+  "blocker": "MASTER_SYSTEM_MATRIX_AND_REQUIREMENT_MATRIX_NOT_YET_VERIFIED_COMPLETE"
+}
