@@ -1,24 +1,22 @@
-# NEXY.AI State Machine Registry
+# NEXY.AI FSM Registry
 
 Canonical:
-- `fsms.jsonl`
-- `fsm.schema.json`
+- `fsm-registry.jsonl` — all source FSMs plus explicitly labeled implementation-only state models.
 - `execution.json`
-- `queue-job.json`
 - `constitutional.json`
 - `app-lifecycle.json`
 - `creator-publication.json`
-- `capability-registry.json`
 - `anchor-publication.json`
+- `capability-registry.json`
+- `queue-job.json`
 - `risk-intelligence.json`
-- `cross-shard-transfer.json`
-- `implementation-pipeline-run.json`
+- `pipeline-run.observed.json`
 - `validation-report.md`
 
-Every transition record has:
-`FROM / EVENT / GUARD / ACTION / TO / FAILURE / AUDIT_EVENT`.
+## Absolute rule
+**Never merge FSM namespaces because state names look similar.**
 
-When the source does not name an event/guard/action, the field remains explicit `null` or `UNSPECIFIED_BY_SOURCE`; it is never invented.
+A valid transition is identified by:
+`FSM namespace + FROM + EVENT + GUARD + ACTION + TO + FAILURE/AUDIT semantics`.
 
-## Namespace rule
-Never merge state labels merely because the names look similar. `FREEZE`, `ACTIVE`, `FINALIZED`, etc. belong to their specific FSM namespace.
+Implementation-only state models remain explicitly non-canonical until a governing source promotes them.
