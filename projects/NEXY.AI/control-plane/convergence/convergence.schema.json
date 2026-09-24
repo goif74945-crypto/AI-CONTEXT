@@ -1,0 +1,17 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object","additionalProperties":false,
+ "required":["run_id","state","critical_findings","stale_critical_evidence","regression_satisfied","active_conflicts","queue_state","checkpoint_current","exact_head_recorded","reason"],
+ "properties":{
+  "run_id":{"type":"string","minLength":1},
+  "state":{"enum":["ACTIVE","IMPROVING","STALLED","OSCILLATING","BLOCKED","CONVERGED"]},
+  "critical_findings":{"type":"integer","minimum":0},
+  "stale_critical_evidence":{"type":"integer","minimum":0},
+  "regression_satisfied":{"type":"boolean"},
+  "active_conflicts":{"type":"integer","minimum":0},
+  "queue_state":{"enum":["DRAINED","LEGITIMATELY_BLOCKED","ACTIVE"]},
+  "checkpoint_current":{"type":"boolean"},
+  "exact_head_recorded":{"type":"boolean"},
+  "reason":{"type":"string","minLength":1}
+ }
+}
