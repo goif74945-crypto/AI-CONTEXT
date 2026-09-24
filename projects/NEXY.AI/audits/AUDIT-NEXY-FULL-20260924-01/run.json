@@ -99,18 +99,18 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 1246,
-    "remaining": 222,
-    "percent": 84.8774
+    "audited": 1264,
+    "remaining": 204,
+    "percent": 86.1035
   },
-  "current_category": "U_FINAL_ARCHITECTURE_LAYERS",
-  "last_completed_unit": "CATEGORY:S_L1O_LO3_LO2",
-  "next_unit": "CATEGORY:U_FINAL_ARCHITECTURE_LAYERS",
+  "current_category": "V_CROSS_SYSTEM_INTEGRATION",
+  "last_completed_unit": "CATEGORY:U_FINAL_ARCHITECTURE_LAYERS",
+  "next_unit": "CATEGORY:V_CROSS_SYSTEM_INTEGRATION",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
-    "S2": 6,
-    "S3": 4,
+    "S2": 8,
+    "S3": 5,
     "S4": 6,
     "S5": 2
   },
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "S_L1O_LO3_LO2",
+    "category_completed": "U_FINAL_ARCHITECTURE_LAYERS",
     "read_back_verified": false,
-    "category_units": 125
+    "category_units": 18
   }
 }
