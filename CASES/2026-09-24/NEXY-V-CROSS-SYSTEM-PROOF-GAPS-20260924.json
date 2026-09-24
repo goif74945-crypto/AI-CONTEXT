@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-NEXY-V-CROSS-SYSTEM-PROOF-GAPS-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "finding_ids": [
+    "F-NEXY-FULL-V-TRACEABILITY-001",
+    "F-NEXY-FULL-V-CURRENT-HEAD-INTEGRATION-EVIDENCE-002",
+    "F-NEXY-FULL-V-INVARIANT-PROOF-003",
+    "F-NEXY-FULL-V-CONCURRENCY-CHAOS-PROOF-004"
+  ],
+  "cause": "Cross-system mappings/models exist but exact-head integration/invariant/concurrency/chaos proof is incomplete.",
+  "impact": "Cross-system category cannot be VERIFIED.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
