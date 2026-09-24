@@ -1,0 +1,84 @@
+{
+  "status": "FULL_AUDIT_COMPLETE",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "source_revision": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "total_categories": 26,
+  "total_systems": 518,
+  "total_requirements": 262,
+  "total_audit_units": 1468,
+  "terminal_states": {
+    "VERIFIED": 140,
+    "PARTIAL": 749,
+    "FAIL": 48,
+    "MISSING": 0,
+    "UNKNOWN": 0,
+    "CONFLICT": 1,
+    "BLOCKED": 7,
+    "NOT_VERIFIED": 91,
+    "OUT_OF_SCOPE": 77,
+    "FUTURE_SCOPE": 351,
+    "SUPERSEDED": 4
+  },
+  "findings": {
+    "S0": 0,
+    "S1": 0,
+    "S2": 9,
+    "S3": 10,
+    "S4": 10,
+    "S5": 2,
+    "total": 31
+  },
+  "test_coverage": {
+    "audited_test_paths": 108,
+    "successful_exact_target_head_execution": "NOT_ESTABLISHED",
+    "combined_target_validation_status": "failure"
+  },
+  "evidence_coverage": {
+    "trace_records": 40,
+    "current_head_success_records": 0,
+    "doc_e_claims": 12,
+    "doc_e_current_head_approved": 0,
+    "current_doc_e_binding": "db52f9f1870b302f36653268513251d010f9726e",
+    "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e"
+  },
+  "master_matrix_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/master-system/",
+  "master_matrix_manifest": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/master-system/manifest.json",
+  "requirement_matrix_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/requirements/",
+  "requirement_matrix_manifest": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/requirements/manifest.json",
+  "category_summary_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/category-summary.json",
+  "findings_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/findings.jsonl",
+  "findings_reconciliation_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/findings-reconciliation.json",
+  "dependency_dag_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/remediation/dependency-dag.json",
+  "command_dag_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/remediation/command-dag.json",
+  "command_count": 13,
+  "ready_commands": 1,
+  "blocked_or_planned_commands": 12,
+  "human_gate_commands": 1,
+  "first_command": "CMD-NEXY-SEC-OTAC-LOG-001",
+  "next_commands": [
+    "CMD-NEXY-EVIDENCE-E07-001",
+    "CMD-NEXY-CONTRACT-AGENT-ADAPTER-001",
+    "CMD-NEXY-CONTRACT-CONSENSUS-001",
+    "CMD-NEXY-CONTRACT-EVIDENCE-001",
+    "CMD-NEXY-INCIDENT-SEMANTICS-001",
+    "CMD-NEXY-FSM-RECOVER-AUTH-001",
+    "CMD-NEXY-QUEUE-RETRY-001"
+  ],
+  "full_audit_gate": {
+    "full_atomic_coverage": true,
+    "cross_system_reaudit": true,
+    "master_matrix": true,
+    "requirement_matrix": true,
+    "findings_reconciled": true,
+    "dependency_dag": true,
+    "command_dag": true,
+    "normal_builder_commands_allowed": true
+  },
+  "verdict": "AUDIT_COVERAGE_COMPLETE_REMEDIATION_REQUIRED_IMPLEMENTATION_NOT_VERIFIED_OR_RELEASE_READY",
+  "implementation_mutation_by_auditor": "NONE"
+}
