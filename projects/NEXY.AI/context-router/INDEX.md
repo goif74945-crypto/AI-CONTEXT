@@ -1,25 +1,15 @@
-# NEXY.AI Context Router
+# NEXY.AI Context Router / Context Pack
 
-## Purpose
-Route a task to the **smallest correct context slice** instead of loading the entire project.
+Goal: load **minimum sufficient engineering truth**, not the whole project.
 
-## Input
-- task text/type
-- target repo/branch/HEAD
-- scope
-- authority
-- requested claim class
+Files:
+- `routes.json` — TASK TYPE → seed entities/context dimensions/playbook.
+- `pack-schema.json` — canonical context-pack shape.
+- `builder-profile.json`
+- `auditor-profile.json`
+- generator scripts under `tools/`.
 
-## Output
-- base compiled pack
-- required registries
-- conditional registries
-- explicit default exclusions
+Resolution:
+`TASK → SEEDS → REQUIREMENTS → DEPENDENCIES → AUTHORITY → CONTRACT/FSM/INVARIANT → CODE → TEST/EVIDENCE → FAILURE/SECURITY/STATE/CONFIG → MINIMAL PACK`
 
-## Algorithm
-`TASK → CLASSIFY → GOVERNANCE CHECK → RESOLVE ENTITIES/REQS → IMPACT EXPANSION → LOAD REQUIRED CONTEXT → EXECUTE`
-
-If multiple routes match, union only the required slices and deduplicate by canonical ID/path.
-
-## Safety
-Context Router reduces context size; it does not reduce evidence obligations.
+The router must never use stale implementation context as current truth.
