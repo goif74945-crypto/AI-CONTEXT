@@ -32,3 +32,4 @@
   - [State / Persistence Map](./NEXY.AI/state/INDEX.md)
   - [Event Registry](./NEXY.AI/events/INDEX.md)
   - [Configuration Registry](./NEXY.AI/config/INDEX.md)
+  - [Builder / Auditor Playbooks](./NEXY.AI/playbooks/INDEX.md)
