@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0.0",
+  "revalidation_id": "AUDIT-NEXY-FULL-20260924-01-INTEGRITY-REVALIDATION-01",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "observed_at": "2026-09-24",
+  "truth_classes": {
+    "source": "SOURCE_FACT",
+    "repository_and_artifacts": "REPO_FACT",
+    "execution": "NOT_VERIFIED"
+  },
+  "source_verification": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "local_authorized_library_file": "libfile_aa422977c6048191a7cfe14c05a0077e",
+    "size_bytes": 2146350,
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "parsed_nonempty_paragraphs": 10979,
+    "matches_audit_provenance": true
+  },
+  "target_verification": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+    "branch_head_unchanged": true,
+    "recursive_tree_complete": true,
+    "files": 573,
+    "directories": 168,
+    "bytes": 3182580
+  },
+  "artifact_validation": {
+    "audit_json_and_jsonl_files_requested": 109,
+    "fetched": 109,
+    "blob_sha_mismatches": 0,
+    "parse_errors": 0,
+    "denominator": {
+      "rows": 1468,
+      "unique_audit_unit_ids": 1468
+    },
+    "category_units": {
+      "rows": 1468,
+      "unique_audit_unit_ids": 1468,
+      "exact_set_match_with_denominator": true
+    },
+    "actual_terminal_states": {
+      "VERIFIED": 140,
+      "PARTIAL": 748,
+      "FAIL": 48,
+      "MISSING": 0,
+      "UNKNOWN": 1,
+      "CONFLICT": 1,
+      "BLOCKED": 7,
+      "NOT_VERIFIED": 91,
+      "OUT_OF_SCOPE": 77,
+      "FUTURE_SCOPE": 351,
+      "SUPERSEDED": 4
+    },
+    "recorded_terminal_state_drift": {
+      "final_summary_recorded_partial": 749,
+      "final_summary_recorded_unknown": 0,
+      "actual_partial": 748,
+      "actual_unknown": 1,
+      "affected_unit": "AUDIT-ENTITY-ERROR-PIPELINE_CAP_EXCEEDED"
+    },
+    "master_system_matrix": {
+      "rows": 518,
+      "unique_system_ids": 518,
+      "required_columns_present_for_all_rows": true
+    },
+    "requirement_matrix": {
+      "rows": 262,
+      "unique_requirement_ids": 262,
+      "rows_with_required_SOURCE_field": 233,
+      "rows_missing_required_SOURCE_field": 29,
+      "affected_categories": [
+        "P_CONSTITUTIONAL_LAYERS",
+        "X_UI_TRUTH_SURFACE"
+      ]
+    },
+    "per_system_analysis": {
+      "systems": 518,
+      "rows_with_system_name": 439,
+      "rows_with_purpose_and_core_analysis_fields": 433,
+      "rows_with_state_owner": 303,
+      "rows_with_implementation_status": 507,
+      "rows_with_evidence_status": 512,
+      "conclusion": "85 system records lack the complete per-system analysis field set required by the active user directive; explicit UNKNOWN/NOT_APPLICABLE values were not normalized into those rows."
+    }
+  },
+  "control_plane_observation": {
+    "queue_state": "QUARANTINED",
+    "command_state": "QUARANTINED",
+    "handoff_state": "READY",
+    "pair_state": "WAITING_FOR_BUILDER",
+    "active_builder_claim": null,
+    "inconsistency": "Control-plane surfaces do not expose one consistent executable state. Quarantine remains the safe controlling state."
+  },
+  "release_observation": {
+    "current_gate_registry_target": "codex/spec-audit-20260919-78df350@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+    "audit_target": "astra/omega-full-spec-convergence@84484d8108fe1dee186450c0d36c26d360b2596e",
+    "exact_audit_target_release_evidence": "NOT_VERIFIED",
+    "release_verdict": "NON_DEPLOYABLE"
+  },
+  "integrity_findings": [
+    {
+      "id": "F-NEXY-AUDIT-INTEGRITY-COUNT-001",
+      "severity": "S3",
+      "claim": "Sealed terminal-state summary disagrees with exact category-unit records.",
+      "action": "REPAIR"
+    },
+    {
+      "id": "F-NEXY-AUDIT-INTEGRITY-REQ-SOURCE-002",
+      "severity": "S3",
+      "claim": "29 requirement-matrix rows omit the required SOURCE field.",
+      "action": "REPAIR"
+    },
+    {
+      "id": "F-NEXY-AUDIT-INTEGRITY-SYSTEM-FIELDS-003",
+      "severity": "S4",
+      "claim": "85 system audit records do not contain the complete per-system analysis field set required by the active audit directive.",
+      "action": "REPAIR"
+    },
+    {
+      "id": "F-NEXY-AUDIT-INTEGRITY-CONTROL-004",
+      "severity": "S4",
+      "claim": "Queue/command quarantine conflicts with READY handoff and WAITING_FOR_BUILDER pair state.",
+      "action": "FREEZE"
+    }
+  ],
+  "verdict": "PARTIAL",
+  "full_audit_gate": {
+    "record_denominator_coverage_percent": 100,
+    "semantic_per_system_coverage_complete": false,
+    "requirement_matrix_complete": false,
+    "findings_reconciled": false,
+    "dependency_dag_current": false,
+    "command_generation_allowed": false
+  },
+  "containment": [
+    "Keep CMD-NEXY-SEC-OTAC-LOG-001 quarantined.",
+    "Do not issue or execute normal Builder commands.",
+    "Do not mutate NEXY implementation."
+  ],
+  "next_actions": [
+    "Normalize all 518 system records to the complete required field contract using source-backed values or explicit UNKNOWN/NOT_APPLICABLE.",
+    "Populate SOURCE for all 262 requirement-matrix rows from the canonical requirement registry.",
+    "Recompute terminal-state summaries from atomic rows.",
+    "Reconcile queue, command, handoff and pair state to one control state.",
+    "Re-run read-back validation and reopen the Full Audit Gate only if every completion invariant passes."
+  ]
+}
