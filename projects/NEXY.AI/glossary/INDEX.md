@@ -1,19 +1,15 @@
 # NEXY.AI Glossary / Alias Registry
 
-## Purpose
-Resolve names across source eras without turning aliases into duplicate systems.
+Canonical:
+- `aliases.json` — enriched alias records with era/scope/status.
+- `canonical-terms.jsonl` — important canonical architecture terms.
+- `historical-terms.jsonl` — older/superseded terminology and claims retained for provenance.
 
-## Files
-- `aliases.json` — 86 alias records with canonical target, era, source-range validity and status.
-- `terms.jsonl` — 516 canonical ontology terms for fast lookup.
-- `alias.schema.json`.
-- `validation-report.md`.
+Fields:
+CANONICAL / ALIAS / ERA / VALID_FROM / VALID_TO / STATUS.
 
-## Validity semantics
-`valid_from` / `valid_to` are **source paragraph navigation markers for the pinned source revision**, not calendar dates and not guaranteed runtime activation versions.
-
-Canonical authority still comes from governance/supersession/scope registries.
-
-## Rule
-Alias != second entity unless source assigns distinct semantics.
-Identical labels in different FSMs remain disambiguated by entity ID/parent.
+Rules:
+- alias resolution never changes authority;
+- historical names remain searchable;
+- claim supersession is handled by Governance, not by name matching;
+- FSM state names are namespace-bound.
