@@ -1,0 +1,38 @@
+{
+  "case_id": "CASE-NEXY-INTELLIGENCE-ROLE-CORRECTION-20260925",
+  "task_id": "TASK-NEXY-L1O-LO3-LO2-SOURCE-CORRECTION-20260925",
+  "source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "correction_summary": {
+    "L1o": [
+      "The Sovereign Core",
+      "Deterministic Logic Core",
+      "Foundation"
+    ],
+    "Lo3": [
+      "The Swarm Governor",
+      "Power",
+      "external-AI control and adversarial verification"
+    ],
+    "Lo2": [
+      "The Singularity Hub/Core",
+      "Evolution",
+      "turn verified experience into laws"
+    ]
+  },
+  "final_architecture_order": [
+    "IRL",
+    "CIRL",
+    "CLE",
+    "L1o",
+    "Lo3",
+    "DSL",
+    "RSEL",
+    "ECL",
+    "SAFETY_KERNEL",
+    "Lo2_FEEDBACK"
+  ],
+  "status": "CORRECTED_FROM_AUTHORITATIVE_SOURCE",
+  "timestamp_source": "System date 2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

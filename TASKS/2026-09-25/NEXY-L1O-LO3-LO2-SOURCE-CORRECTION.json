@@ -1,0 +1,71 @@
+{
+  "task_id": "TASK-NEXY-L1O-LO3-LO2-SOURCE-CORRECTION-20260925",
+  "title": "Correct NEXY L1o Lo3 Lo2 roles from authoritative design document",
+  "mode": "CROSS_SOURCE_REVIEW",
+  "scope": "NEXY intelligence architecture terminology only",
+  "inputs_summary": "User reported prior L1o explanation did not match the design file; authoritative DOCX was read directly.",
+  "sources": [
+    {
+      "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "paragraphs": [
+        11017,
+        11018,
+        11019,
+        11020,
+        11021,
+        11037,
+        11038,
+        11040,
+        11047,
+        11048,
+        11049,
+        11060,
+        11071,
+        11072,
+        11073,
+        11074,
+        11077,
+        11284,
+        11289,
+        11326,
+        11491,
+        11497,
+        11700,
+        11703,
+        11704,
+        11710,
+        11729,
+        11895,
+        12373,
+        12416,
+        12423,
+        12429,
+        12438,
+        12447,
+        12454,
+        12461
+      ]
+    }
+  ],
+  "actions": [
+    "Read the attached DOCX directly because indexed file search returned no results.",
+    "Compared early detailed Trinity definitions with the later L600 reframing and Final Absolute Architecture.",
+    "Corrected the conceptual model without mutating the source specification or implementation."
+  ],
+  "corrected_claims": [
+    "L1o is not merely a reasoning layer and not the whole-system controller; the source names it The Sovereign Core and later finalizes it as the Deterministic Logic Core.",
+    "L1o's core purpose is bounded/provable deterministic logic under strict constraints, centered on dependency-graph reasoning, constraint processing, multi-path generation/pruning, recursive audit and verified-state flow.",
+    "Lo3 is The Swarm Governor: it controls external AI workers, decomposes tasks, shards context, orchestrates agents, attacks weak outputs and drives proof-based consensus.",
+    "Lo2 is The Singularity Hub/Core: it consumes verified success schemas/results, extracts logic quanta, cross-verifies them and synthesizes/evolves laws; it does not consume raw user input in the L600 design.",
+    "The Final Absolute Architecture separates L1o/Lo3 from Decision Synthesis, Risk & Safety Evaluation, Execution Control and the immutable Safety Kernel."
+  ],
+  "final_status": "SOURCE_CORRECTION_RECORDED",
+  "next_actions": [
+    "Use this source-bound role model in future NEXY discussions and audits; do not collapse L1o into generic 'reasoning layer' or call it the sole controller."
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "System date 2026-09-25",
+  "trace_id": "NEXY-SOURCE-CORRECTION/L1O-LO3-LO2",
+  "hash": "HASH_UNAVAILABLE"
+}

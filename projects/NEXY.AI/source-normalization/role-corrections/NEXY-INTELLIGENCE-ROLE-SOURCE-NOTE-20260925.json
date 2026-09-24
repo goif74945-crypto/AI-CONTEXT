@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "id": "NEXY-INTELLIGENCE-ROLE-SOURCE-NOTE-20260925",
+  "source": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "authoritative_observations": [
+    {
+      "component": "L1o",
+      "early_name": "The Sovereign Core",
+      "later_final_name": "Deterministic Logic Core",
+      "relationship": "Foundation",
+      "not_equivalent_to": [
+        "whole-system controller",
+        "mere text-stream LLM"
+      ]
+    },
+    {
+      "component": "Lo3",
+      "name": "The Swarm Governor",
+      "relationship": "Power",
+      "purpose": "Force unreliable external AI systems to produce verifiable truth under control."
+    },
+    {
+      "component": "Lo2",
+      "names": [
+        "The Singularity Hub",
+        "Singularity Core"
+      ],
+      "relationship": "Evolution",
+      "purpose": "Turn verified experience into synthesized/evolving logic laws."
+    }
+  ],
+  "final_absolute_architecture": {
+    "stack": [
+      "INPUT REALITY LAYER",
+      "CONTEXT & INTENT RESOLUTION LAYER",
+      "CONSTRAINT LAW ENGINE",
+      "L1o DETERMINISTIC LOGIC CORE",
+      "Lo3 SWARM GOVERNOR",
+      "DECISION SYNTHESIS LAYER",
+      "RISK & SAFETY EVALUATION LAYER",
+      "EXECUTION CONTROL LAYER",
+      "SAFETY KERNEL",
+      "FEEDBACK & LEARNING LOOP (Lo2)"
+    ],
+    "implication": "Control authority is distributed across dedicated decision, risk, execution and immutable safety layers; L1o is core deterministic intelligence, not the sole controller."
+  },
+  "status": "SOURCE_BOUND_NOTE",
+  "timestamp_source": "System date 2026-09-25"
+}

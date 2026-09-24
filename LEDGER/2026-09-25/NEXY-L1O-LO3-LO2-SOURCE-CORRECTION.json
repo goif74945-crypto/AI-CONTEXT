@@ -1,0 +1,28 @@
+{
+  "ledger_id": "LEDGER-NEXY-L1O-LO3-LO2-SOURCE-CORRECTION-20260925",
+  "source": [
+    "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx sha256 b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  ],
+  "claim": [
+    "P11037-P11047 define L1o as The Sovereign Core with deterministic/formally verified kernel, SSOT learning and self-audit.",
+    "P11284-P11491 reframe L1o L600 as bounded provable output, with Dependency Graph Engine identified as its real heart.",
+    "P11048-P11059 and P11491-P11704 define Lo3 as Swarm Governor focused on controlling external AI and destroying unverifiable/wrong outputs.",
+    "P11060-P11080 and P11704-P11895 define Lo2 as Singularity Hub/Core that synthesizes laws from verified experience rather than raw user data.",
+    "P12373-P12467 Final Absolute Architecture places L1o and Lo3 before separate Decision Synthesis, Risk/Safety, Execution Control and immutable Safety Kernel layers."
+  ],
+  "proof": [
+    "Direct DOCX paragraph extraction from the attached authoritative design file."
+  ],
+  "deps": [
+    "NEXY source hierarchy",
+    "source hash binding"
+  ],
+  "risk": [
+    "Future answers may drift if role names are compressed into generic AI terminology."
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "DIRECT_SOURCE_READ_2026-09-25",
+  "trace": "NEXY-SOURCE-CORRECTION/L1O-LO3-LO2",
+  "hash": "HASH_UNAVAILABLE"
+}

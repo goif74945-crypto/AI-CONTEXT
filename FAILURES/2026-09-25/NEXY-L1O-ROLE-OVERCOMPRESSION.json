@@ -1,0 +1,12 @@
+{
+  "failure_id": "FAIL-NEXY-L1O-ROLE-OVERCOMPRESSION-20260925",
+  "context": "Prior assistant explanation of NEXY intelligence architecture.",
+  "cause": "The explanation relied too heavily on normalized architecture summaries and compressed L1o into a generic reasoning layer instead of reading the authoritative DOCX role definitions directly.",
+  "failed_approach": "Describing L1o as merely a reasoning/deep-reasoning layer and loosely calling another layer the controlling brain.",
+  "recovery": "Use direct source wording plus the later L600/Final Absolute Architecture refinement.",
+  "boundary": "No source spec or implementation was changed by this correction.",
+  "prevention": "When discussing NEXY role semantics, read the authoritative DOCX role sections and distinguish early Trinity naming from later finalized architecture.",
+  "status": "CORRECTED",
+  "timestamp_source": "System date 2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}
