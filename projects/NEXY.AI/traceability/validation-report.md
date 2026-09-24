@@ -1,12 +1,29 @@
-# Traceability Spine Validation
+# Requirement Traceability Validation
 
-Canonical chain:
-`SOURCE → REQUIREMENT → ENTITY → IMPLEMENTATION → TEST → EVIDENCE → VERDICT`
+## Result
+**PASS**
 
-- requirements: **262**
-- exact/current HEAD: `9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
-- current-head evidence-linked requirements: **0**
-- stale-evidence-only requirements: **14**
-- final PASS verdicts created: **0**
+- canonical requirements: **262**
+- trace records: **262**
+- unique trace records: **262**
+- implementation HEAD: `9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
+- DOC-E requirement records: **15**
+- DOC-E exact evidence locations: **12**
 
-This registry is intentionally conservative: code/test presence is navigation evidence, not proof of successful execution.
+Checks:
+- every canonical requirement has exactly one trace: PASS
+- code paths exist at pinned HEAD: PASS
+- test paths exist at pinned HEAD: PASS
+- evidence paths exist at pinned HEAD: PASS
+- all verdicts remain NOT_EVALUATED: PASS
+- DOC-E E01–E12 location mapping: PASS
+
+## Current location coverage
+- code mapped: **202/262**
+- test candidate mapped: **214/262**
+- evidence located: **12/262**
+
+## Important
+Test refs are currently static candidates, not executed proof.
+Evidence refs are locations, not validated evidence.
+A later Acceptance/Test Matrix and Evidence Registry must convert these into typed proof obligations and current verdicts.
