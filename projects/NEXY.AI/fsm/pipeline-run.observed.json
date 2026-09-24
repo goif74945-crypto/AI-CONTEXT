@@ -1,0 +1,68 @@
+{
+  "fsm_id": "IMPL-FSM-PIPELINE-RUN",
+  "name": "PipelineRun State Model",
+  "namespace": "PIPELINE_RUN",
+  "registry_kind": "IMPLEMENTATION_OBSERVED_ONLY",
+  "authority": [
+    "OBSERVED_REPOSITORY_STATE"
+  ],
+  "scope": [
+    "DOC_C_CURRENT_BUILD"
+  ],
+  "ontology_status": "NOT_IN_SOURCE_ONTOLOGY_AS_SEPARATE_FSM",
+  "states": [
+    {
+      "state_id": "IMPL-PIPELINE-READY",
+      "name": "READY"
+    },
+    {
+      "state_id": "IMPL-PIPELINE-RUNNING",
+      "name": "RUNNING"
+    },
+    {
+      "state_id": "IMPL-PIPELINE-VERIFYING",
+      "name": "VERIFYING"
+    },
+    {
+      "state_id": "IMPL-PIPELINE-CONSENSUS",
+      "name": "CONSENSUS"
+    },
+    {
+      "state_id": "IMPL-PIPELINE-STABLE",
+      "name": "STABLE"
+    },
+    {
+      "state_id": "IMPL-PIPELINE-FREEZE",
+      "name": "FREEZE"
+    }
+  ],
+  "source_range": [],
+  "requirement_ids": [],
+  "implementation_mapping_status": "EXACT",
+  "implementation_refs": [
+    {
+      "path": "packages/queue/run-state.ts",
+      "blob_sha": "b3613ccb77b6611ffcc7a8087402d47337e5b846",
+      "symbols": [
+        "RUN_STATE",
+        "setPipelineRunState",
+        "commitReleasedPipelineRun",
+        "recordPipelineRunFailure"
+      ]
+    }
+  ],
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "transition_source": "IMPLEMENTATION_OBSERVED",
+  "transitions": [],
+  "global_rules": [
+    "Per-code comment: per-job run lifecycle is separate from the global orchestration FSM.",
+    "STABLE sets accepted/releaseable true; FREEZE sets both false.",
+    "State changes persist an FSM_TRANSITION EventLog entry inside a serializable DB transaction."
+  ],
+  "invalid_transition_behavior": "Observed setter does not itself validate a transition table; callers/control layers must provide legality.",
+  "audit_event": "FSM_TRANSITION",
+  "notes": [
+    "Do not promote this implementation-only model into source canon without authority review.",
+    "This model is registered to prevent accidental conflation with Queue Job FSM and DOC-C Execution FSM."
+  ]
+}
