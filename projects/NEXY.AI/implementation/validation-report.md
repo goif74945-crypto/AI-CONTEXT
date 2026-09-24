@@ -10,13 +10,16 @@
 - symbol-index files: **237**
 - extracted symbols: **1762**
 
+## Ontology event omission repair
+`EVENT-EXEC-CANCEL` and `EVENT-EXEC-TIMEOUT` were added after Event Registry cross-check and are now mapped exactly to `packages/core/vnext-state-matrix.ts`.
+
 ## Atomic mapping
-- ontology entities: **516**
-- EXACT: **200**
+- ontology entities: **518**
+- EXACT: **202**
 - GROUP: **10**
 - CANDIDATE: **63**
 - UNMAPPED: **243**
-- mapped total: **273**
+- mapped total: **275**
 
 ## Structural result
 **PASS**
