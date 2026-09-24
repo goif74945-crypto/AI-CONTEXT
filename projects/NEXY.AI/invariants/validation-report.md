@@ -1,22 +1,24 @@
 # Invariant Registry Validation
 
 ## Result
-**PASS — critical engineering invariant registry**
+**PASS**
 
-- invariant records: **28**
-- source ontology invariant entities represented: **6**
-- severity distribution: {"S5":22,"S4":6}
-- implementation evidence status: **NOT_EVALUATED**
+- invariants: **40**
+- invalid entity refs: **0**
+- S5 invariants: **39**
+- S4 invariants: **1**
 
-Checks:
-- every governing entity exists in Atomic Ontology: PASS
-- every linked requirement exists in Requirement Registry: PASS
-- implementation refs come from pinned Implementation Map: PASS
-- no invariant is marked PASS from source/code presence alone: PASS
+## Semantics
+These records are **change-preservation obligations**, not implementation PASS claims.
 
-## Use during changes
-Before patching an entity:
-1. resolve affected requirements/dependencies;
-2. resolve invariants whose governing entity or dependency path is affected;
-3. run the invariant's required regression classes;
-4. block completion if any S5 invariant remains unverified where the change could violate it.
+Before modifying a mapped system, a builder should:
+1. resolve invariants whose `system_ids` intersect the change;
+2. include their verification obligations in regression scope;
+3. preserve domain distinctions;
+4. freeze/stop if an S5 invariant cannot be proven preserved.
+
+## Domain distinctions retained
+- Core overflow FREEZE vs Game numeric saturation/clamping are not merged.
+- final one-output vs internal Top-K candidates are not merged.
+- runtime/system memory classes are not equated with uncontrolled model memory.
+- physical safety invariants require physical/HIL proof.
