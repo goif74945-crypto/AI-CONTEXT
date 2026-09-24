@@ -1,6 +1,6 @@
 {
   "pair_id": "NEXY-CLOSED-LOOP-01",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "auditor_role": "AUDITOR_CHAT",
   "builder_worker_id": "BUILDER-01",
   "control_repo": "goif74945-crypto/AI-CONTEXT",
@@ -87,7 +87,23 @@
       "REL-003 nexy-deploy",
       "REL-004 nexy-migration",
       "REL-005 nexy-release",
-      "REL-006 nexy-recovery"
+      "REL-006 nexy-recovery",
+      "GOV-003 nexy-change-control",
+      "GOV-004 nexy-risk-gate",
+      "CTX-002 nexy-repository-context",
+      "CTX-004 nexy-context-diff",
+      "REQ-002 nexy-requirement-decomposer",
+      "REQ-003 nexy-requirement-trace",
+      "REQ-004 nexy-conflict-resolution",
+      "ARC-002 nexy-boundary",
+      "ARC-003 nexy-dependency-analysis",
+      "ENG-006 nexy-migration",
+      "WEB-006 nexy-web-integration",
+      "WEB-007 nexy-web-validation",
+      "API-003 nexy-api-validation",
+      "API-004 nexy-api-integration",
+      "API-005 nexy-api-security",
+      "AI-006 nexy-agent-failure"
     ],
     "blocked_identity_gaps": [
       "nexy-integration: no separate formal numbered identity in source; do not invent ID"
@@ -95,12 +111,17 @@
     "execution_gaps": [
       "DATA-006 nexy-web-retrieval: concrete retrieval mechanism not established by authoritative source"
     ],
-    "last_evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-wave11-release-materialization.md",
-    "next_wave": "RECONCILE_FORMAL_SKILL_INVENTORY"
+    "last_evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-formal-inventory-reconciliation.md",
+    "next_wave": "FORMAL_INVENTORY_STRUCTURAL_VALIDATION",
+    "formal_inventory": {
+      "expected": 89,
+      "materialized_checkpoint": 89,
+      "unverified_runtime": true
+    }
   },
   "background_execution_claimed": false,
   "last_control_observation": {
-    "ai_context_head": "f8f0e14a3a6f24891999d82c008479a7979eb3c6",
+    "ai_context_head": "c2e17925a812fc33491b9a0a4bc6f046534b35ba",
     "ready_commands": 1,
     "active_claims": 0,
     "builder_results": 0,
