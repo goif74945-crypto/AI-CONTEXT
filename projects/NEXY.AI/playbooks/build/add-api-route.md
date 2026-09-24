@@ -1,44 +1,47 @@
-# PLAYBOOK — Add API Route
+# NEXY Builder Playbook
 
-## PRECONDITIONS
-- Route is authorized by DOC-C/current scope or explicit extension.
-- API boundary owner is resolved.
-- Authentication/RBAC/CSRF/idempotency semantics are known.
+## Universal preconditions
+1. Pin repository + branch + exact HEAD.
+2. Abort/freeze if the requested target branch/HEAD differs from task authority.
+3. Resolve target entity in `ontology/entities.jsonl`.
+4. Resolve governing requirements in `requirements/requirements.jsonl`.
+5. Resolve authority/scope/supersession/conflicts before implementation.
+6. Resolve `REQUIRES` predecessors from `graphs/dependency-graph.json`.
+7. Resolve code only through `implementation/system-to-code.jsonl`; CANDIDATE refs must be opened before use.
+8. Load linked contracts, FSM namespace, atomic invariants, trust boundaries, state ownership, events and config.
+9. Check `failures/failures.jsonl` for known failure classes.
+10. Never interpret file presence, build success, or prose as runtime/evidence PASS.
 
-## REQUIRED CONTEXT
-- DOC-C API law;
-- Contract Registry API/schema/error records;
-- RBAC/security trust map;
-- SystemEnvelope contract;
-- relevant requirements;
-- implementation route map;
-- tests/evidence matrix.
+# Workflow: Add API Route
 
-## IMPLEMENTATION SEQUENCE
-1. Define method/path and owner.
-2. Define request schema and runtime validation.
-3. Define response through canonical SystemEnvelope.
-4. Define auth/RBAC.
-5. Define CSRF requirement for mutation.
-6. Define idempotency key behavior for mutation unless exempt by authority.
-7. Define allowed errors/status codes.
-8. Define timeout/retry semantics.
-9. Define audit/security incident emission.
-10. Implement route → authorized service/core boundary.
-11. Prohibit direct UI→LAW/VAULT or other forbidden dependencies.
-12. Add contract tests + auth/RBAC negative tests + schema tests.
-13. Add integration/E2E if route crosses persistence/queue/UI boundaries.
+## Required context
+- route contract and SystemEnvelope;
+- auth/RBAC/CSRF/idempotency matrix;
+- input/output schemas;
+- state/FREEZE behavior;
+- audit/event requirements.
 
-## NEGATIVE TESTS
-- malformed body;
-- expired/revoked session;
+## Sequence
+1. Add/approve API contract record.
+2. Define request schema and response schema before route code.
+3. Determine mutating vs read-only.
+4. For mutation, enforce session + CSRF + idempotency unless explicitly exempted.
+5. Enforce backend RBAC independently of UI.
+6. Validate input at API boundary and again at the receiving trust boundary when required.
+7. Return canonical SystemEnvelope for success and failure.
+8. Emit required event/audit/incident evidence transactionally where critical.
+9. Add contract, auth, negative, rate-limit, freeze and idempotency tests.
+10. Update route traceability.
+
+## Negative tests
+- no session;
 - wrong role;
-- invalid CSRF;
+- missing/invalid CSRF;
 - duplicate idempotency key;
-- frozen system;
-- downstream dependency failure;
-- timeout;
-- information leakage in errors.
+- malformed body;
+- system FREEZE;
+- dependency unavailable;
+- audit persistence failure.
 
 ## DONE
-Route contract, auth, runtime validation, idempotency/audit behavior and required evidence must pass.
+Route cannot bypass auth/LAW/FSM/traceability and all error paths remain structured.
