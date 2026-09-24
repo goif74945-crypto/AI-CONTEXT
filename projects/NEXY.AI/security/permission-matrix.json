@@ -1,72 +1,152 @@
 {
   "schema_version": "1.0.0",
-  "authority": "DOC-C/D",
-  "matrix": [
+  "source": "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md#RBAC",
+  "roles": [
+    "OWNER",
+    "OPERATOR",
+    "AUDITOR",
+    "SYSTEM",
+    "PUBLIC_USER"
+  ],
+  "rules": [
     {
-      "actor": "OWNER",
-      "create_directive": true,
-      "view_directive": true,
-      "recover_freeze": true,
-      "commit_vault": true,
-      "read_revisions": true,
-      "export_artifact": true,
-      "view_audit": true,
-      "revoke_session": "ANY",
-      "revoke_all": true,
-      "manage_roles": true
+      "action": "CREATE_DIRECTIVE",
+      "allowed": [
+        "OWNER",
+        "OPERATOR",
+        "SYSTEM"
+      ],
+      "resource": "Directive",
+      "conditions": [
+        "backend authorization",
+        "valid session/CSRF/idempotency"
+      ]
     },
     {
-      "actor": "OPERATOR",
-      "create_directive": true,
-      "view_directive": true,
-      "recover_freeze": false,
-      "commit_vault": false,
-      "read_revisions": true,
-      "export_artifact": true,
-      "view_audit": false,
-      "revoke_session": "SELF_ONLY",
-      "revoke_all": false,
-      "manage_roles": false
+      "action": "VIEW_DIRECTIVE",
+      "allowed": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR",
+        "SYSTEM"
+      ],
+      "resource": "Directive",
+      "conditions": [
+        "authorized session"
+      ]
     },
     {
-      "actor": "AUDITOR",
-      "create_directive": false,
-      "view_directive": true,
-      "recover_freeze": false,
-      "commit_vault": false,
-      "read_revisions": true,
-      "export_artifact": true,
-      "view_audit": true,
-      "revoke_session": false,
-      "revoke_all": false,
-      "manage_roles": false
+      "action": "RECOVER_FREEZE",
+      "allowed": [
+        "OWNER",
+        "SYSTEM"
+      ],
+      "resource": "FreezeIncident/System",
+      "conditions": [
+        "freeze marked recoverable",
+        "recovery law passes"
+      ]
     },
     {
-      "actor": "SYSTEM",
-      "create_directive": true,
-      "view_directive": true,
-      "recover_freeze": true,
-      "commit_vault": true,
-      "read_revisions": true,
-      "export_artifact": true,
-      "view_audit": true,
-      "revoke_session": true,
-      "revoke_all": true,
-      "manage_roles": false
+      "action": "COMMIT_VAULT",
+      "allowed": [
+        "OWNER",
+        "SYSTEM"
+      ],
+      "resource": "Vault",
+      "conditions": [
+        "OCC/idempotency/lineage validation"
+      ]
     },
     {
-      "actor": "PUBLIC_USER",
-      "create_directive": false,
-      "view_directive": false,
-      "recover_freeze": false,
-      "commit_vault": false,
-      "read_revisions": false,
-      "export_artifact": false,
-      "view_audit": false,
-      "revoke_session": false,
-      "revoke_all": false,
-      "manage_roles": false,
-      "note": "Role appears in design contracts; mutating anonymous access excluded from vNEXT."
+      "action": "READ_REVISIONS",
+      "allowed": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR",
+        "SYSTEM"
+      ],
+      "resource": "Revision",
+      "conditions": [
+        "authorized session"
+      ]
+    },
+    {
+      "action": "EXPORT_ARTIFACT",
+      "allowed": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR",
+        "SYSTEM"
+      ],
+      "resource": "Artifact",
+      "conditions": [
+        "authorized session"
+      ]
+    },
+    {
+      "action": "VIEW_AUDIT_LOGS",
+      "allowed": [
+        "OWNER",
+        "AUDITOR",
+        "SYSTEM"
+      ],
+      "resource": "AuditLog",
+      "conditions": [
+        "authorized session"
+      ]
+    },
+    {
+      "action": "REVOKE_SESSION",
+      "allowed": [
+        "OWNER",
+        "SYSTEM"
+      ],
+      "conditional": [
+        {
+          "role": "OPERATOR",
+          "scope": "SELF_ONLY"
+        }
+      ],
+      "resource": "Session",
+      "conditions": [
+        "target permission check"
+      ]
+    },
+    {
+      "action": "REVOKE_ALL_SESSIONS",
+      "allowed": [
+        "OWNER",
+        "SYSTEM"
+      ],
+      "resource": "Session",
+      "conditions": [
+        "explicit action/audit"
+      ]
+    },
+    {
+      "action": "MANAGE_ROLES",
+      "allowed": [
+        "OWNER"
+      ],
+      "resource": "User Role",
+      "conditions": [
+        "owner authority must itself be valid"
+      ]
+    },
+    {
+      "action": "PUBLIC_USER_ACTIONS",
+      "allowed": [],
+      "resource": "UNSPECIFIED",
+      "conditions": [
+        "Source names PUBLIC_USER but the cited permission matrix does not assign explicit privileged actions; remain UNKNOWN rather than infer."
+      ]
     }
-  ]
+  ],
+  "implementation_observations": [
+    "Prisma Role enum currently contains OWNER/OPERATOR/AUDITOR/SYSTEM; PUBLIC_USER is not present in the observed DB enum.",
+    "Auth first-login OWNER promotion is observed to fail closed to AUDITOR unless the genesis-anchored owner set verifies.",
+    "UI PermissionGate is not treated as authorization authority."
+  ],
+  "verdict": "REVIEW_REQUIRED_FOR_SOURCE_VS_DB_PUBLIC_USER_DIFFERENCE"
 }
