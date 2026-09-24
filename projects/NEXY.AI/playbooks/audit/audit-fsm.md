@@ -1,29 +1,32 @@
-# NEXY Auditor Playbook
+# NEXY Audit Playbook Contract
 
-## Universal audit law
-1. Pin exact repository/branch/HEAD and observed environment.
-2. Resolve source authority and scope before reading code.
-3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
-4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
-5. File existence, docs, mocks, build success, or comments are never runtime proof.
-6. Search failure history and known conflicts before declaring a new root cause.
-7. Preserve evidence even when verdict is FAIL.
+Audit rules:
+- refresh exact repository/branch/HEAD before current-state claims;
+- source existence ≠ implementation;
+- implementation presence ≠ compliance;
+- test file presence ≠ execution;
+- test execution ≠ deployment proof;
+- deployment proof is revision/environment/claim specific;
+- future scope absence is not current DOC-C FAIL;
+- CANDIDATE code mappings must be opened before use;
+- unresolved authority/conflict may block verdict;
+- allowed verdicts: PASS / FAIL / PARTIAL / BLOCKED / NOT_TESTED / NOT_VERIFIED / SCOPE / CONFLICT.
 
-# Workflow: Audit FSM
+# Audit FSM
 
-## Sequence
-1. Identify namespace by FSM ID.
-2. Enumerate states/events/event owners.
-3. Compare source transition table to implementation table.
-4. Verify guards/actions/failure/audit semantics.
-5. Enumerate every illegal transition.
-6. Test terminal/freeze/recovery behavior.
-7. Test wrong actor/event ownership.
-8. Test concurrency/race where state is shared.
-9. Check same-named states in other FSMs are not conflated.
+Never merge FSMs by shared state names.
 
-## Special rule
-Implementation-only state models must stay explicitly non-canonical until promoted.
+For target namespace:
+1. enumerate states;
+2. enumerate events;
+3. enumerate event owners;
+4. enumerate FROM/EVENT/GUARD/ACTION/TO;
+5. enumerate terminal states;
+6. enumerate recovery edges;
+7. compare source table with implementation;
+8. attack illegal transitions.
 
-## DONE
-Legal transitions pass; every illegal transition fails deterministically with correct evidence.
+Required negatives:
+wrong actor, wrong from-state, STOP/terminal exit, duplicate event, timeout/error/fatal, recovery denial, persistence/audit failure.
+
+Any direct state mutation bypass must be reported.
