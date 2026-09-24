@@ -111,7 +111,7 @@
       "status": "STRUCTURAL_PASS"
     },
     "control_plane": {
-      "status": "PARTIAL",
+      "status": "STRUCTURAL_PASS_RUNTIME_NOT_VERIFIED",
       "completed_parts": [
         "P4.1_COMMAND_MODEL",
         "P4.2_COMMAND_QUEUE",
@@ -121,8 +121,17 @@
         "P4.6_SUPERSESSION",
         "P4.7_RESULT_PACKAGE",
         "P4.8_HEARTBEAT",
-        "P4.9_RETRY_BACKOFF"
+        "P4.9_RETRY_BACKOFF",
+        "P4.10_DEAD_LETTER_QUARANTINE",
+        "P4.11_SCHEDULER",
+        "P4.12_EVIDENCE_INGESTION",
+        "P4.13_CONVERGENCE",
+        "P4.14_OSCILLATION_DETECTOR",
+        "P4.15_HUMAN_ESCALATION",
+        "P4.16_RESUME_RECOVERY"
       ],
+      "runtime_status": "NOT_VERIFIED",
+      "next_layer": "EXECUTABLE_CLOSED_LOOP_RUNTIME",
       "command_schema_version": "1.0.0",
       "queue_schema_version": "1.0.0",
       "worker_registry_schema_version": "1.0.0",
@@ -190,8 +199,9 @@
     }
   ],
   "next_project_intelligence_nodes": [
-    "Remaining P1/P2 registries: Skills, Capability/Tool, ADR, Glossary/Alias, Environment, Migration, Performance, Cost, Concurrency, Threat, Fuzz/Chaos, Known-Good, Regression, Release Gates, Definition-of-Done, AI Self-Check",
-    "Machine-readable compiled canon/build/audit/runtime packs",
+    "Executable closed-loop runtime core with durable state/event log",
+    "Authorized worker adapter binding for real Auditor/Builder sessions",
+    "End-to-end runtime validation: audit→command→claim→execute→result→evidence→re-audit→convergence",
     "Current-head executable Test/Evidence refresh when runtime environment is available"
   ],
   "stale_when": "implementation branch HEAD changes or source document revision changes"
