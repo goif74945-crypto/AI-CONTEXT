@@ -99,19 +99,19 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 1403,
-    "remaining": 65,
-    "percent": 95.5722
+    "audited": 1444,
+    "remaining": 24,
+    "percent": 98.3651
   },
-  "current_category": "W_RELEASE_DEPLOYMENT_DOC_E",
-  "last_completed_unit": "CATEGORY:V_CROSS_SYSTEM_INTEGRATION",
-  "next_unit": "CATEGORY:W_RELEASE_DEPLOYMENT_DOC_E",
+  "current_category": "Z_OTHER_SOURCE_DERIVED",
+  "last_completed_unit": "CATEGORY:W_RELEASE_DEPLOYMENT_DOC_E",
+  "next_unit": "CATEGORY:Z_OTHER_SOURCE_DERIVED",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
     "S2": 9,
     "S3": 8,
-    "S4": 6,
+    "S4": 8,
     "S5": 2
   },
   "blocked": 0,
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "V_CROSS_SYSTEM_INTEGRATION",
+    "category_completed": "W_RELEASE_DEPLOYMENT_DOC_E",
     "read_back_verified": false,
-    "category_units": 139
+    "category_units": 41
   }
 }
