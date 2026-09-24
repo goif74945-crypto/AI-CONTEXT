@@ -1,0 +1,21 @@
+{
+  "task_id": "NEXY-FULL-AUDIT-Q-GAME-AAAA-NCF-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "Q_GAME_AAAA_NCF",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 46,
+  "audited_units": 46,
+  "status": "CATEGORY_AUDIT_RECORDED",
+  "counts": {
+    "PARTIAL": 2,
+    "FUTURE_SCOPE": 44
+  },
+  "finding_ids": [
+    "F-NEXY-FULL-Q-CSE-TEST-EVIDENCE-001"
+  ],
+  "next_category": "R_CAPABILITY_GOVERNANCE_REGISTRY",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "hash": "HASH_UNAVAILABLE"
+}
