@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "mode": "CROSS_EXECUTE_SERIAL",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "start_head": "b920140bc9e8a302ef86217b26ae5de2f3a07588",
+  "current_head": "189ee62fc2b2ef58cadc74d7d49fc647f64efbb9",
+  "ai_context_base_head": "85b0ca8d1052be0198ea965e333c9c4a3fcc66ff",
+  "current_component": "L1o",
+  "current_requirement": "REQ-L1O-001",
+  "current_requirement_status": "PARTIAL_VERIFIED_BOUNDARY",
+  "current_architecture_requirement_count": 34,
+  "historical_excluded_count": 4,
+  "future_excluded_count": 1,
+  "completed_requirements": 0,
+  "partial_verified_requirements": 1,
+  "remaining_current_requirements": 33,
+  "known_blockers": [
+    "REQ-L1O-005 required for genuine multi-path certainty variation.",
+    "REQ-L1O-014 certainty-tier semantic ordering requires separate source-authority resolution."
+  ],
+  "release_status": "NOT_READY",
+  "next_action": "Select next independent L1o current requirement with sufficient source authority; do not invent ambiguity thresholds or certainty numeric thresholds.",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

@@ -1,0 +1,40 @@
+{
+  "ledger_id": "LEDGER-NEXY-L1O-REQ-001-BOUNDED-CONTEXT-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "work_unit_id": "L1O-REQ-001-BOUNDED-CONTEXT",
+  "requirement_id": "REQ-L1O-001",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "start_head": "b920140bc9e8a302ef86217b26ae5de2f3a07588",
+  "implementation_head": "e39529da5c27b94ad14a99a0684170920b2ed252",
+  "validation_head": "189ee62fc2b2ef58cadc74d7d49fc647f64efbb9",
+  "source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "source": [
+    "DOCX paragraphs 11121-11140 Bounded Truth/CTS",
+    "DOCX paragraphs 11284-11289 L1o L600 goal",
+    "DOCX paragraphs 12373-12422 Final Absolute Architecture"
+  ],
+  "claim": [
+    "Bounded truth must be relative to an explicit constraint space rather than universal perfect truth.",
+    "At validation head, L1o outputs carry tier/support_ratio plus constraint_count and bounded_context_hash.",
+    "Exact-head Rust and broader regression gates passed except the known global coverage threshold.",
+    "Requirement remains PARTIAL because multi-path certainty variation is not yet established."
+  ],
+  "proof": [
+    "NEXY commits e39529da5c27b94ad14a99a0684170920b2ed252 and 189ee62fc2b2ef58cadc74d7d49fc647f64efbb9",
+    "Railway validation deployment 83fea600-9e57-4a8a-b48d-9f41894054b3"
+  ],
+  "deps": [
+    "REQ-L1O-005",
+    "REQ-L1O-014"
+  ],
+  "risk": [
+    "Premature completion claim would hide missing path diversity and unresolved certainty-tier semantics."
+  ],
+  "status": "RECORDED_PARTIAL_VERIFIED_BOUNDARY",
+  "confidence": 1,
+  "freshness": "EXACT_HEAD_189ee62f",
+  "trace": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-001",
+  "hash": "HASH_UNAVAILABLE"
+}

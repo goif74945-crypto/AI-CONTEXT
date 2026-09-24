@@ -1,0 +1,19 @@
+{
+  "failure_id": "FAIL-NEXY-L1O-REQ-001-VALIDATION-NOTE-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "work_unit_id": "L1O-REQ-001-BOUNDED-CONTEXT",
+  "requirement_id": "REQ-L1O-001",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "start_head": "b920140bc9e8a302ef86217b26ae5de2f3a07588",
+  "implementation_head": "e39529da5c27b94ad14a99a0684170920b2ed252",
+  "validation_head": "189ee62fc2b2ef58cadc74d7d49fc647f64efbb9",
+  "source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "status": "NO_INTRODUCED_EXECUTION_FAILURE",
+  "observed_pre_existing_failure": "Global npm run check:coverage exit=1 remains present and is not attributed to this work unit.",
+  "validation_infrastructure_change": "Added tests/contract/core-kernel-rust.test.ts so future npm contract runs execute locked Rust core tests.",
+  "prevention": "Do not accept Rust-core changes from npm-only evidence.",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

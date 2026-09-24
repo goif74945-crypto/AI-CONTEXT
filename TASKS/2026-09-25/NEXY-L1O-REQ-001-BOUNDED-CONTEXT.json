@@ -1,0 +1,129 @@
+{
+  "task_id": "TASK-NEXY-L1O-REQ-001-BOUNDED-CONTEXT-20260925",
+  "title": "Bind L1o outputs to explicit bounded constraint context",
+  "mode": "CROSS_EXECUTE_SERIAL",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "work_unit_id": "L1O-REQ-001-BOUNDED-CONTEXT",
+  "requirement_id": "REQ-L1O-001",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "start_head": "b920140bc9e8a302ef86217b26ae5de2f3a07588",
+  "implementation_head": "e39529da5c27b94ad14a99a0684170920b2ed252",
+  "validation_head": "189ee62fc2b2ef58cadc74d7d49fc647f64efbb9",
+  "source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "source_ranges": [
+    [
+      11121,
+      11140
+    ],
+    [
+      11284,
+      11289
+    ],
+    [
+      12373,
+      12422
+    ]
+  ],
+  "scope_class": "CURRENT_ARCHITECTURE",
+  "priority": "MUST",
+  "actions": [
+    "Corrected REQ-L1O-001 source provenance in AI-CONTEXT before implementation.",
+    "Added constraint_count and domain-separated bounded_context_hash to L10Output.",
+    "Bound each successful L1o output to canonical input plus ordered explicit constraint-marker positions.",
+    "Added Rust tests proving distinct constraint spaces produce distinct bounded-context identities.",
+    "Added an npm contract gate that executes cargo test --locked -p core-kernel --lib on exact-head validation infrastructure."
+  ],
+  "changed_files": [
+    "core-kernel/src/engine/l10_cognition.rs",
+    "tests/contract/core-kernel-rust.test.ts"
+  ],
+  "commits": [
+    "e39529da5c27b94ad14a99a0684170920b2ed252",
+    "189ee62fc2b2ef58cadc74d7d49fc647f64efbb9"
+  ],
+  "tests_results": [
+    {
+      "check": "tests/contract/core-kernel-rust.test.ts",
+      "execution": "EXECUTED",
+      "status": "PASS",
+      "head": "189ee62fc2b2ef58cadc74d7d49fc647f64efbb9",
+      "detail": "spawned cargo test --locked -p core-kernel --lib"
+    },
+    {
+      "check": "npm run typecheck",
+      "execution": "EXECUTED",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run typecheck:backend",
+      "execution": "EXECUTED",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run lint",
+      "execution": "EXECUTED",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:contract",
+      "execution": "EXECUTED",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:integration",
+      "execution": "EXECUTED",
+      "status": "PASS"
+    },
+    {
+      "check": "npm test",
+      "execution": "EXECUTED",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:coverage",
+      "execution": "EXECUTED",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run check:coverage",
+      "execution": "EXECUTED",
+      "status": "PRE_EXISTING_FAIL",
+      "exit_code": 1
+    },
+    {
+      "check": "npm run check:doc-c",
+      "execution": "EXECUTED",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run build:web",
+      "execution": "EXECUTED",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    "Railway deployment 83fea600-9e57-4a8a-b48d-9f41894054b3 exact commit 189ee62fc2b2ef58cadc74d7d49fc647f64efbb9",
+    "tests/contract/core-kernel-rust.test.ts PASS and locked core-kernel library tests executed",
+    "Commit readback shows implementation commit changes only core-kernel/src/engine/l10_cognition.rs"
+  ],
+  "success": [
+    "Every successful L1o result now exposes certainty plus an explicit deterministic identity for the constraint context used.",
+    "Different tested constraint spaces no longer collapse to the same context identity.",
+    "Rust core execution is now part of the standard contract suite."
+  ],
+  "unresolved": [
+    "REQ-L1O-005 Multi-Path Generator/EPE must establish genuine path diversity and certainty variation.",
+    "REQ-L1O-014 certainty-tier semantic ordering conflicts with current numeric implementation and needs separate source-authority resolution."
+  ],
+  "final_status": "PARTIAL_VERIFIED_BOUNDARY",
+  "next_actions": [
+    "Do not claim REQ-L1O-001 complete until multi-path/certainty-tier acceptance is satisfied.",
+    "Continue to next L1o requirement whose source is sufficiently determined."
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "Repository/Railway evidence dated 2026-09-24 UTC / project date 2026-09-25",
+  "trace_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-001",
+  "hash": "HASH_UNAVAILABLE"
+}
