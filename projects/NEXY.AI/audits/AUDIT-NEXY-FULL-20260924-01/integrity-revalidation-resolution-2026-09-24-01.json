@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0.0",
+  "resolution_id": "AUDIT-NEXY-FULL-20260924-01-INTEGRITY-RESOLUTION-01",
+  "revalidation_id": "AUDIT-NEXY-FULL-20260924-01-INTEGRITY-REVALIDATION-01",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "resolved_at": "2026-09-24",
+  "ai_context_base_head": "128a23499d3b299b8fb87c11756d611bb4b0b985",
+  "target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+    "branch_head_unchanged_before_command_publication": true
+  },
+  "repairs": [
+    {
+      "finding_id": "F-NEXY-AUDIT-INTEGRITY-COUNT-001",
+      "status": "RESOLVED",
+      "proof": "final-summary terminal states now equal the 1,468 atomic category-unit records: VERIFIED 140; PARTIAL 748; FAIL 48; MISSING 0; UNKNOWN 1; CONFLICT 1; BLOCKED 7; NOT_VERIFIED 91; OUT_OF_SCOPE 77; FUTURE_SCOPE 351; SUPERSEDED 4."
+    },
+    {
+      "finding_id": "F-NEXY-AUDIT-INTEGRITY-REQ-SOURCE-002",
+      "status": "RESOLVED",
+      "proof": [
+        "P constitutional requirement SOURCE fields restored at AI-CONTEXT commit b02bf7e1bc5a5b1869c13732599734bde2e6e05d.",
+        "X UI/product requirement SOURCE fields restored at AI-CONTEXT commit 128a23499d3b299b8fb87c11756d611bb4b0b985.",
+        "262/262 requirement rows now contain SOURCE."
+      ]
+    },
+    {
+      "finding_id": "F-NEXY-AUDIT-INTEGRITY-SYSTEM-FIELDS-003",
+      "status": "RESOLVED",
+      "proof": [
+        "433 original system records already contained the complete core analysis field set.",
+        "85 source/repository-backed normalized records were added in system-analysis-normalization.json at AI-CONTEXT commit 345a170a1a014e9bf816d6b1ffcfa7db773bd348.",
+        "Combined coverage is 518/518 unique system IDs; explicit UNKNOWN and NOT_VERIFIED values were preserved."
+      ]
+    },
+    {
+      "finding_id": "F-NEXY-AUDIT-INTEGRITY-CONTROL-004",
+      "status": "RESOLVED",
+      "proof": [
+        "Canonical command schema upgraded to revision 1.1.0 and structurally validated.",
+        "CMD-NEXY-SEC-OTAC-LOG-001 migrated to the mandated format and published READY.",
+        "Live queue migrated from QUARANTINED to READY with no blocked reason.",
+        "Existing handoff is READY and pair-state is WAITING_FOR_BUILDER with no active claim."
+      ]
+    }
+  ],
+  "root_causes": [
+    {
+      "root_cause_id": "RC-NEXY-OTAC-PLAINTEXT-LOGGING-001",
+      "status": "PROVEN",
+      "claim": "ConsoleEmailProvider writes raw destination email and raw OTAC to stderr and is selectable by console/development configuration.",
+      "proof_refs": [
+        "F-NEXY-FULL-H-OTAC-LOG-001",
+        "goif74945-crypto/NEXY.AI-@84484d8108fe1dee186450c0d36c26d360b2596e:packages/auth/email.ts"
+      ]
+    }
+  ],
+  "artifact_validation": {
+    "denominator": {
+      "rows": 1468,
+      "unique_audit_unit_ids": 1468,
+      "terminal_state_sum": 1468,
+      "coverage_percent": 100
+    },
+    "systems": {
+      "denominator": 518,
+      "complete_original": 433,
+      "complete_normalized": 85,
+      "complete_combined": 518
+    },
+    "requirements": {
+      "denominator": 262,
+      "rows_with_source": 262
+    },
+    "master_matrix": {
+      "rows": 518,
+      "unique_system_ids": 518
+    },
+    "cross_system_reaudit": "DONE",
+    "findings_reconciled": {
+      "status": "DONE",
+      "implementation_findings": 31
+    },
+    "dependency_dag": "DONE",
+    "command_dag": "DONE",
+    "command_schema_validation": {
+      "active_command": "PASS",
+      "golden_fixture": "PASS",
+      "queue": "PASS"
+    }
+  },
+  "control_plane": {
+    "command_id": "CMD-NEXY-SEC-OTAC-LOG-001",
+    "command_status": "READY",
+    "queue_status": "READY",
+    "handoff_status": "READY",
+    "pair_state": "WAITING_FOR_BUILDER",
+    "active_builder_claim": null,
+    "schema_revision": "1.1.0",
+    "write_commits": [
+      {
+        "path": "projects/NEXY.AI/control-plane/command/command.schema.json",
+        "commit": "869e5edbb2c63b0da4e9c6793e4294ec1b76dd83"
+      },
+      {
+        "path": "projects/NEXY.AI/control-plane/command/examples/golden-command.json",
+        "commit": "22be13065b83453cf6983b7634e6b108d19f2416"
+      },
+      {
+        "path": "projects/NEXY.AI/control-plane/live/commands/CMD-NEXY-SEC-OTAC-LOG-001.json",
+        "commit": "80e56df85494c42d95604bb501da5f77ea23c2de"
+      },
+      {
+        "path": "projects/NEXY.AI/control-plane/live/queue.json",
+        "commit": "10bf3e26b80babbb5fcad5117102105ed4b18bf1"
+      },
+      {
+        "path": "projects/NEXY.AI/control-plane/command/validation-report.md",
+        "commit": "a420e5307f20141903cebebeeba0390fe8563c36"
+      }
+    ]
+  },
+  "full_audit_gate": {
+    "full_atomic_coverage": true,
+    "cross_system_reaudit": true,
+    "master_matrix": true,
+    "requirement_matrix": true,
+    "findings_reconciled": true,
+    "dependency_dag": true,
+    "command_dag": true,
+    "normal_builder_commands_allowed": true
+  },
+  "truth_boundary": {
+    "audit_coverage": "FULL_AUDIT_COMPLETE",
+    "implementation_completion": "NOT_CLAIMED",
+    "exact_target_head_successful_test_execution": "NOT_ESTABLISHED",
+    "release": "NON_DEPLOYABLE",
+    "nexy_implementation_mutation_by_auditor": "NONE"
+  },
+  "verdict": "FULL_AUDIT_COMPLETE"
+}
