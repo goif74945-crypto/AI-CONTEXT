@@ -1,19 +1,21 @@
-# Builder / Auditor Playbook Validation
+# Playbook Validation
 
-**PASS**
+## Result
+**PASS — workflow coverage**
 
-- Builder playbooks: **10**
-- Auditor playbooks: **10**
-- Total registered workflows: **20**
+- builder playbooks: **10**
+- auditor playbooks: **10**
+- total: **20**
 
-Every playbook includes or inherits:
-- pinned HEAD precondition;
+Coverage includes:
+- new/modified systems;
+- API/FSM/storage/queue/law/UI/capability/agent work;
+- system/contract/authority/FSM/security/determinism/recovery/persistence/cross-system/release audits.
+
+All playbooks require:
+- exact HEAD freshness;
 - authority/scope resolution;
-- ontology/requirements/dependency context;
-- contracts/FSM/invariants;
-- security/state/event/config awareness;
-- failure/recovery lookup;
-- negative/regression expectations;
-- no fake PASS rule.
-
-These are workflow specifications, not evidence that any future task has been executed.
+- invariant/regression awareness;
+- negative tests;
+- rollback;
+- evidence discipline.
