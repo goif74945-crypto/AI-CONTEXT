@@ -1,0 +1,21 @@
+{
+  "ledger_id": "LEDGER-NEXY-COMMAND-QUARANTINE-20260924-2116",
+  "source": [
+    "current user directive BUILDER COMMAND FORMAT",
+    "projects/NEXY.AI/control-plane/command/command.schema.json",
+    "projects/NEXY.AI/control-plane/live/commands/CMD-NEXY-SEC-OTAC-LOG-001.json",
+    "projects/NEXY.AI/control-plane/live/queue.json"
+  ],
+  "claim": "The active READY command did not carry all fields mandated by the current user directive, while the canonical schema rejects those additional fields.",
+  "proof": [
+    "canonical command schema uses additionalProperties=false",
+    "current schema lacks root_cause_ids, affected_systems, affected_requirements, affected_invariants, priority, severity, objective, exact_required_changes, non_goals, acceptance_criteria, security_tests, stale_head_policy and human_gate",
+    "attempted backward-compatible schema extension was blocked by the connected tool safety layer",
+    "active command and queue entry were transitioned to QUARANTINED"
+  ],
+  "status": "CONTAINED_PENDING_SCHEMA_RECONCILIATION",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "nexy_implementation_mutation": "NONE",
+  "trace_id": "TRACE-NEXY-COMMAND-QUARANTINE-20260924-2116",
+  "hash": "HASH_UNAVAILABLE"
+}
