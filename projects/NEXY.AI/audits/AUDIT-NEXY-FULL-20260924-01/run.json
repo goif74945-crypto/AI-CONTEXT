@@ -99,18 +99,18 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 86,
-    "remaining": 1382,
-    "percent": 5.8583
+    "audited": 101,
+    "remaining": 1367,
+    "percent": 6.8801
   },
-  "current_category": "A_IDENTITY_HUMAN_CANON_UX",
-  "last_completed_unit": "CATEGORY:J_CONFIGURATION_GOVERNANCE",
-  "next_unit": "AUDIT-ENTITY-LAYER-HUMAN-GRAVITY",
+  "current_category": "B_CORE_CONTROL_LAW",
+  "last_completed_unit": "CATEGORY:A_IDENTITY_HUMAN_CANON_UX",
+  "next_unit": "AUDIT-ENTITY-KERNEL-CORE",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
     "S2": 2,
-    "S3": 1,
+    "S3": 3,
     "S4": 0,
     "S5": 1
   },
@@ -147,8 +147,8 @@
     "evidence/E07-vnext-defaults.md"
   ],
   "checkpoint": {
-    "category_completed": "J_CONFIGURATION_GOVERNANCE",
+    "category_completed": "A_IDENTITY_HUMAN_CANON_UX",
     "read_back_verified": true,
-    "category_units": 86
+    "category_units": 15
   }
 }
