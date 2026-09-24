@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0.0",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "pair_id": "NEXY-CLOSED-LOOP-01",
+  "mode": "AUDIT_ONLY_UNTIL_FULL_PROJECT_COVERAGE",
+  "status": "AUDIT_ACTIVE",
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "authoritative_source": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "parsed_nonempty_paragraphs": 10979
+  },
+  "ai_context": {
+    "repository": "goif74945-crypto/AI-CONTEXT",
+    "branch": "main",
+    "boot_head": "fc413b5665c622f9b56e0539882b3c2792a4c945"
+  },
+  "target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+    "tree": "e5db1b88c416f9c61643d6736fd418f28bd278c6"
+  },
+  "target_selection_proof": [
+    "astra/omega-full-spec-convergence is 264 commits ahead of codex/spec-audit-20260919-78df350 and 0 behind",
+    "codex/spec-audit-20260919-78df350 is the merge base of astra at 9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+    "latest astra observed commit timestamp is 2026-09-23T23:15:34Z"
+  ],
+  "audit_order": [
+    "J_CONFIGURATION_GOVERNANCE",
+    "A_IDENTITY_HUMAN_CANON_UX",
+    "B_CORE_CONTROL_LAW",
+    "H_SECURITY_AUTH_PERMISSION_TENANT",
+    "C_API_ROUTES_CONTRACTS",
+    "F_STATE_PERSISTENCE_STORAGE",
+    "G_RECOVERY_RESTART_RESUME",
+    "E_QUEUE_WORKER_JOB",
+    "D_RUNTIME_EXECUTION",
+    "K_EVENT_MESSAGING_DELIVERY",
+    "L_DETERMINISM_TIME_RANDOMNESS",
+    "M_OBSERVABILITY_LOGS_METRICS_ALERTS",
+    "N_FAILURE_ERROR_SEMANTICS",
+    "I_EVIDENCE_VERIFICATION_AUDIT",
+    "X_UI_TRUTH_SURFACE",
+    "Y_TOOL_PLUGIN_SKILL_INTERFACES",
+    "O_SOVEREIGN_UNIVERSE_HOST",
+    "P_CONSTITUTIONAL_LAYERS",
+    "Q_GAME_AAAA_NCF",
+    "R_CAPABILITY_GOVERNANCE_REGISTRY",
+    "S_L1O_LO3_LO2",
+    "T_ROBOTICS_RCL",
+    "U_FINAL_ARCHITECTURE_LAYERS",
+    "V_CROSS_SYSTEM_INTEGRATION",
+    "W_RELEASE_DEPLOYMENT_DOC_E",
+    "Z_OTHER_SOURCE_DERIVED"
+  ],
+  "order_reason": "Resolve authority/scope before implementation verdicts; audit current law/security/contracts/state/recovery/runtime before future domains; perform cross-system and release gates after atomic coverage.",
+  "denominator": {
+    "total": 1496,
+    "counts_by_type": {
+      "ENTITY": 518,
+      "REQUIREMENT": 262,
+      "CONTRACT": 90,
+      "FSM": 9,
+      "INVARIANT": 40,
+      "EVENT": 20,
+      "STATE_OWNER": 14,
+      "CONFIG": 31,
+      "TRUST_BOUNDARY": 12,
+      "PERMISSION_RULE": 11,
+      "THREAT": 12,
+      "ERROR": 56,
+      "OBSERVABILITY": 15,
+      "CONCURRENCY_MODEL": 6,
+      "PERFORMANCE_BUDGET": 18,
+      "RESOURCE_CLASS": 7,
+      "ENVIRONMENT": 6,
+      "TOOL_CAPABILITY": 17,
+      "SKILL": 22,
+      "CHAOS_SCENARIO": 22,
+      "FAILURE_HISTORY": 17,
+      "REGRESSION": 24,
+      "BASELINE": 18,
+      "PROOF_OBLIGATION": 10,
+      "DEFINITION_OF_DONE": 8,
+      "RELEASE_STAGE": 5,
+      "DOC_E_EVIDENCE_CLAIM": 12,
+      "TEST": 108,
+      "TRACE_EVIDENCE_RECORD": 40,
+      "AUDITOR_SELF_CHECK": 18,
+      "AUTHORITY_NODE": 15,
+      "SCOPE_CLASS": 11,
+      "GOVERNANCE_CONFLICT": 8,
+      "SUPERSESSION_EDGE": 8,
+      "DERIVED_REGISTRY_CHECK": 6
+    },
+    "system_entity_count": 518,
+    "requirement_count": 262
+  },
+  "coverage": {
+    "total": 1496,
+    "audited": 0,
+    "remaining": 1496,
+    "percent": 0
+  },
+  "current_category": "J_CONFIGURATION_GOVERNANCE",
+  "last_completed_unit": null,
+  "next_unit": "AUDIT-AUTHORITY_NODE-AUTH-USER-DIRECTIVE",
+  "findings_counts_by_severity": {
+    "S0": 0,
+    "S1": 0,
+    "S2": 0,
+    "S3": 0,
+    "S4": 0,
+    "S5": 0
+  },
+  "blocked": 0,
+  "conflict": 0,
+  "unknown": 0,
+  "full_audit_gate": {
+    "full_atomic_coverage": false,
+    "cross_system_reaudit": false,
+    "master_matrix": false,
+    "requirement_matrix": false,
+    "findings_reconciled": false,
+    "dependency_dag": false,
+    "normal_builder_commands_allowed": false
+  },
+  "mutation": {
+    "nexy_implementation": "FORBIDDEN",
+    "ai_context_audit_records": "ALLOWED"
+  },
+  "known_current_head_evidence": {
+    "github_actions_pr_runs": 0,
+    "combined_status": [
+      {
+        "context": "NEXY Validation R2 - nexy-validation-branch",
+        "state": "failure"
+      }
+    ]
+  },
+  "timestamp_source": "Git commit timestamps + session date 2026-09-24"
+}
