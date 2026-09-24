@@ -1,222 +1,72 @@
 {
   "schema_version": "1.0.0",
-  "pinned_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-  "records": [
+  "stores": [
     {
-      "persistence_id": "PERSIST-001",
-      "state": "Global DOC-C SystemState",
-      "owner": "CORE",
-      "store": "OrchestrationEnvelope / state layer",
-      "lifetime": "runtime + durable envelope history",
-      "mutation_authority": [
-        "CORE via legal FSM events"
+      "store": "PostgreSQL CORE",
+      "objects": [
+        "PipelineRun",
+        "DirectiveRecord",
+        "legacy directive/dispatch"
       ],
-      "recovery": "FREEZE recover path only when authorized",
-      "audit": "EventLog transition",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/core/vnext-state-matrix.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/orch-core/system-state.ts"
-      ]
+      "authority": "CORE",
+      "write_semantics": "transactional; per-run lifecycle separated from global FSM"
     },
     {
-      "persistence_id": "PERSIST-002",
-      "state": "PipelineRun.runState",
-      "owner": "CORE/QUEUE pipeline",
-      "store": "PostgreSQL PipelineRun",
-      "lifetime": "durable",
-      "mutation_authority": [
-        "pipeline execution path"
+      "store": "PostgreSQL VAULT",
+      "objects": [
+        "Project",
+        "Artifact",
+        "Revision",
+        "Commit",
+        "FreezeIncident"
       ],
-      "recovery": "reconciliation/new cycle; no fake resume",
-      "audit": "requestId/traceId correlation",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "authority": "VAULT",
+      "write_semantics": "versioned/OCC/idempotent; Revision/Commit immutable; Project/Artifact soft-delete"
     },
     {
-      "persistence_id": "PERSIST-003",
-      "state": "Session",
-      "owner": "AUTH",
-      "store": "PostgreSQL Session + secure cookie token",
-      "lifetime": "6h canonical session TTL unless revoked",
-      "mutation_authority": [
-        "AUTH"
+      "store": "PostgreSQL OBS",
+      "objects": [
+        "EventLog",
+        "AuditLog",
+        "SecurityIncident"
       ],
-      "recovery": "reverify/rotate/new session",
-      "audit": "auth audit/security events",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/auth.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "authority": "OBS",
+      "write_semantics": "Event/Audit append-only; sequence/hash-chain integrity"
     },
     {
-      "persistence_id": "PERSIST-004",
-      "state": "OTAC pending state",
-      "owner": "AUTH",
-      "store": "PostgreSQL OtacPending/hash only",
-      "lifetime": "5m validity + lock/cooldown state",
-      "mutation_authority": [
-        "AUTH"
+      "store": "PostgreSQL AUTH",
+      "objects": [
+        "User",
+        "Session",
+        "OTAC pending/auth state"
       ],
-      "recovery": "resend subject to cooldown/lock",
-      "audit": "request/verify failures/success",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/auth.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "authority": "AUTH",
+      "write_semantics": "transactional auth lifecycle; session revocation/TTL"
     },
     {
-      "persistence_id": "PERSIST-005",
-      "state": "Project",
-      "owner": "VAULT",
-      "store": "PostgreSQL Project",
-      "lifetime": "durable; soft delete allowed",
-      "mutation_authority": [
-        "OWNER/SYSTEM through authorized API"
+      "store": "Object/Blob Storage",
+      "objects": [
+        "artifact content"
       ],
-      "recovery": "restore only when lineage intact",
-      "audit": "AuditLog",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "authority": "VAULT",
+      "write_semantics": "content hash + blobRef linked from immutable Commit"
     },
     {
-      "persistence_id": "PERSIST-006",
-      "state": "Artifact",
-      "owner": "VAULT",
-      "store": "PostgreSQL Artifact + blob store",
-      "lifetime": "durable; soft delete allowed",
-      "mutation_authority": [
-        "OWNER/SYSTEM through authorized commit path"
+      "store": "Future WAL/Snapshot",
+      "objects": [
+        "canonical sovereign state"
       ],
-      "recovery": "restore if parent active + blob/lineage intact",
-      "audit": "AuditLog",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:vault/repository.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "persistence_id": "PERSIST-007",
-      "state": "Revision",
-      "owner": "VAULT",
-      "store": "PostgreSQL Revision",
-      "lifetime": "immutable durable",
-      "mutation_authority": [
-        "VAULT commit service"
-      ],
-      "recovery": "new revision/restore reference; no overwrite",
-      "audit": "AuditLog",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "persistence_id": "PERSIST-008",
-      "state": "Commit",
-      "owner": "VAULT",
-      "store": "PostgreSQL Commit + blobRef",
-      "lifetime": "immutable durable",
-      "mutation_authority": [
-        "VAULT commit service"
-      ],
-      "recovery": "new commit; OCC via previousVersion",
-      "audit": "AuditLog",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "persistence_id": "PERSIST-009",
-      "state": "EventLog",
-      "owner": "OBS",
-      "store": "PostgreSQL EventLog",
-      "lifetime": "90d canonical retention",
-      "mutation_authority": [
-        "system modules INSERT only"
-      ],
-      "recovery": "no mutation; detect sequence gaps",
-      "audit": "itself operational evidence",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "persistence_id": "PERSIST-010",
-      "state": "AuditLog",
-      "owner": "OBS",
-      "store": "PostgreSQL AuditLog hash chain",
-      "lifetime": "365d minimum",
-      "mutation_authority": [
-        "accountable action paths INSERT only"
-      ],
-      "recovery": "no rewrite; integrity scan",
-      "audit": "chainHash/previousEntryId",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "persistence_id": "PERSIST-011",
-      "state": "FreezeIncident",
-      "owner": "OBS/VAULT incident domain",
-      "store": "PostgreSQL FreezeIncident",
-      "lifetime": "365d minimum",
-      "mutation_authority": [
-        "failure/freeze path"
-      ],
-      "recovery": "only documented recoverable reason + authorized actor",
-      "audit": "requestId/traceId/primary linkage",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "persistence_id": "PERSIST-012",
-      "state": "SecurityIncident",
-      "owner": "OBS",
-      "store": "PostgreSQL SecurityIncident",
-      "lifetime": "365d minimum",
-      "mutation_authority": [
-        "AUTH/security detection"
-      ],
-      "recovery": "contain/revoke/recover by incident type",
-      "audit": "primary/secondary IncidentLink",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "persistence_id": "PERSIST-013",
-      "state": "Agent trust",
-      "owner": "SWARM governance",
-      "store": "PostgreSQL AgentTrustLedger",
-      "lifetime": "durable evolving score",
-      "mutation_authority": [
-        "SWARM pipeline"
-      ],
-      "recovery": "recompute/update under governed formula",
-      "audit": "should link to execution evidence",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/swarm/pipeline.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "persistence_id": "PERSIST-014",
-      "state": "LogicQuantum",
-      "owner": "Lo2",
-      "store": "PostgreSQL LogicQuantumRecord",
-      "lifetime": "durable/versioned intelligence",
-      "mutation_authority": [
-        "verified Lo2 intake/evolution path"
-      ],
-      "recovery": "conflict branch/version; no silent Canon rewrite",
-      "audit": "provenance/evidence required",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/engine/lo2.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "authority": "SOVEREIGN CORE",
+      "write_semantics": "WAL-first fsync and two-phase snapshot under future constitutional law"
     }
+  ],
+  "forbidden_patterns": [
+    "JUDGE → CORE foreign-key authority",
+    "JUDGE → VAULT direct dependency",
+    "OBS → CORE/VAULT foreign-key authority",
+    "UI → LAW/VAULT direct authority",
+    "SWARM → VAULT direct write",
+    "Revision/Commit overwrite",
+    "EventLog/AuditLog update/delete"
   ]
 }
