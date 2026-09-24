@@ -118,14 +118,19 @@
         "P4.3_WORKER_REGISTRY",
         "P4.4_CLAIM_LEASE",
         "P4.5_EXPECTED_HEAD_GUARD",
-        "P4.6_SUPERSESSION"
+        "P4.6_SUPERSESSION",
+        "P4.7_RESULT_PACKAGE"
       ],
       "command_schema_version": "1.0.0",
       "queue_schema_version": "1.0.0",
       "worker_registry_schema_version": "1.0.0",
       "claim_schema_version": "1.0.0",
       "head_guard_schema_version": "1.0.0",
-      "supersession_schema_version": "1.0.0"
+      "supersession_schema_version": "1.0.0",
+      "result_package": {
+        "canonical": "projects/NEXY.AI/handoff/handoff.schema.json#BUILDER_TO_AUDITOR",
+        "status": "STRUCTURAL_PASS"
+      }
     }
   },
   "dynamic_truth": {

@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "profile_id": "CONTROL_PLANE_RESULT_PACKAGE",
+  "canonical_schema": "projects/NEXY.AI/handoff/handoff.schema.json",
+  "canonical_type": "BUILDER_TO_AUDITOR",
+  "canonical_example": "projects/NEXY.AI/handoff/examples/builder-to-auditor.json",
+  "required_result_fields": [
+    "command_ref",
+    "start_head",
+    "end_head",
+    "changed_files",
+    "commits",
+    "actual_actions",
+    "tests_run",
+    "test_results",
+    "evidence",
+    "failures",
+    "residual_risks",
+    "blockers",
+    "rollback_state"
+  ],
+  "rules": [
+    "Do not define a second result-package schema; BUILDER_TO_AUDITOR handoff is canonical.",
+    "Result START_HEAD/END_HEAD must be exact and read back before verification.",
+    "Tests/evidence are claims only at their recorded evidence class; missing execution cannot be promoted to PASS.",
+    "Failures, residual risks and blockers must be preserved even when some tests pass.",
+    "Result package never grants mutation authority."
+  ]
+}
