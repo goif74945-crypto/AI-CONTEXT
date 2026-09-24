@@ -1,38 +1,49 @@
-# NEXY Builder Playbook
+# NEXY Playbook Contract
 
-## Universal preconditions
-1. Pin repository + branch + exact HEAD.
-2. Resolve ontology entity, requirements, authority/scope/supersession/conflicts.
-3. Resolve dependencies, implementation refs, contracts, FSM, atomic invariants, security/state/event/config.
-4. Check failure/recovery library.
-5. Do not infer PASS from file presence, build success, or docs.
+Every playbook follows:
 
-# Workflow: Add UI Surface
+1. PRECONDITIONS
+2. REQUIRED_CONTEXT
+3. AUTHORITY / SCOPE CHECK
+4. CHANGE IMPACT
+5. IMPLEMENTATION_SEQUENCE
+6. VALIDATION
+7. NEGATIVE_TESTS
+8. REGRESSION
+9. ROLLBACK
+10. DONE
 
-## Required context
-- backend truth source;
-- role visibility;
-- API contracts;
-- FREEZE/error/pending states;
-- Human Gravity boundary.
+Global rules:
+- refresh repository branch/HEAD before implementation claims or edits;
+- if HEAD differs from the task lock, STOP/FREEZE;
+- source design ≠ implementation ≠ test ≠ evidence ≠ deployment proof;
+- never patch a CANDIDATE implementation mapping without opening/confirming the file;
+- resolve Authority + Scope + Supersession + Conflict before coding;
+- preserve S5 invariants;
+- UI is not authority;
+- SWARM/model output is not final authority;
+- no test execution evidence = no PASS;
+- do not use stale evidence for current HEAD.
 
-## Sequence
-1. Define what authoritative backend state the surface renders.
-2. Define role visibility without treating it as authorization.
-3. Use approved API contracts; never read/write LAW/VAULT directly.
-4. Render loading only while backend is pending.
-5. Render FREEZE/error/blocking state explicitly.
-6. Never display partial/candidate output as released final output.
-7. Add mobile/desktop truth-state tests.
-8. Add direct-API RBAC tests separately from visibility tests.
-9. Update UI ontology/implementation/traceability map.
+# Add UI Surface
 
-## Negative tests
-- backend FREEZE while UI action is pending;
-- unauthorized role deep-links directly;
-- backend error after optimistic submit;
-- stale cached success;
-- missing data/empty state.
+## PRECONDITIONS
+- backend authority/state already exists or UI is explicitly prototype-only.
+
+## REQUIRED_CONTEXT
+DOC-D product design, UI truth invariant, RBAC, state ownership, API contracts.
+
+## IMPLEMENTATION_SEQUENCE
+1. identify backend source of truth;
+2. define loading/empty/error/freeze states;
+3. role-gate presentation but rely on backend authorization;
+4. never create optimistic success for blocking actions;
+5. preserve visible uncertainty/failure state;
+6. add mobile/desktop accessibility/responsive behavior;
+7. E2E against real API state.
+
+## NEGATIVE_TESTS
+backend FREEZE, 403, 409/OCC, timeout, stale response, unauthorized direct API call.
 
 ## DONE
-UI cannot invent authority or success and remains truthful under failure.
+UI cannot mask or create authority state.
