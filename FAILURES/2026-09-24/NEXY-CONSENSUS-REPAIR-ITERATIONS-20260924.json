@@ -1,0 +1,24 @@
+{
+  "failure_id": "FAIL-NEXY-CONSENSUS-REPAIR-ITERATIONS-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "work_unit_id": "CMD-NEXY-CONTRACT-CONSENSUS-001",
+  "context": "Two intermediate exact-head validations failed before the final verified consensus-contract repair.",
+  "failed_approach": [
+    "Initial mapping materialized an optional property with explicit undefined under exactOptionalPropertyTypes.",
+    "Generated focused-test source accidentally embedded a literal escaped newline in the import line.",
+    "First test-source correction did not remove that literal escaped newline."
+  ],
+  "recovery": [
+    "Conditionally spread optional evidenceHashes only when present.",
+    "Removed CommonJS residue.",
+    "Rewrote the malformed import line with a real newline and re-ran the complete exact-head gate set."
+  ],
+  "boundary": [
+    "No requirement was weakened.",
+    "No failing assertion was removed.",
+    "No product behavior was reverted to the legacy incomplete contract."
+  ],
+  "final_verified_head": "580f1dd3b2bfbb0a808c8ce0064df25ac16b982b",
+  "status": "RESOLVED",
+  "hash": "HASH_UNAVAILABLE"
+}

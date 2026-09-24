@@ -1,0 +1,73 @@
+{
+  "task_id": "TASK-NEXY-CONSENSUS-CONTRACT-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "work_unit_id": "CMD-NEXY-CONTRACT-CONSENSUS-001",
+  "finding_id": "F-NEXY-FULL-C-CONSENSUS-CONTRACT-001",
+  "requirement_ids": [
+    "REQ-DOC-C-CONTRACT-004"
+  ],
+  "start_head": "67e22d9c74173e5641b2d29619d0472b1df99c38",
+  "end_head": "580f1dd3b2bfbb0a808c8ce0064df25ac16b982b",
+  "commits": [
+    "fbb3218ad73b4a03c8e244147c7bd0ebaa57d825",
+    "58756d6ee4a8f3e542e1f1d09988850df07e66ac",
+    "580f1dd3b2bfbb0a808c8ce0064df25ac16b982b"
+  ],
+  "changed_files": [
+    "packages/contracts/consensus.ts",
+    "packages/judge/consensus.ts",
+    "packages/queue/workers.ts",
+    "tests/coverage/judge-law.test.ts",
+    "tests/contract/runtime-config-judge.test.ts",
+    "tests/contract/consensus-result-contract.test.ts"
+  ],
+  "actions": [
+    "Replaced legacy incomplete ConsensusResult with the complete DOC-C result shape.",
+    "Changed JUDGE consensus evaluation to return a complete decision artifact on acceptance and rejection.",
+    "Made unresolved non-matching proposals explicit conflicts that block acceptance.",
+    "Bound releaseable to accepted consensus, evidence, output and explicit LAW authorization.",
+    "Integrated canonical ConsensusResult into the queue worker before CONSENSUS/release commit.",
+    "Added focused consensus contract, rejection, conflict and LAW-bridge tests."
+  ],
+  "validation": {
+    "deployment": "ca2fca19-606f-46c9-9b26-bb8461ca5589",
+    "exact_head": "580f1dd3b2bfbb0a808c8ce0064df25ac16b982b",
+    "typecheck": 0,
+    "typecheck_backend": 0,
+    "lint": 0,
+    "focused_consensus_contract": 0,
+    "focused_consensus_tests": "5/5",
+    "judge_law_tests": "20/20",
+    "runtime_config_judge_tests": "2/2",
+    "contract": 0,
+    "contract_tests": "317/317",
+    "integration": 0,
+    "full": 0,
+    "coverage_generation": 0,
+    "coverage_check": "PRE_EXISTING_FAIL",
+    "doc_c": 0,
+    "web_build": 0
+  },
+  "failed_iterations": [
+    {
+      "head": "fbb3218ad73b4a03c8e244147c7bd0ebaa57d825",
+      "defects": [
+        "exactOptionalPropertyTypes rejected evidenceHashes: undefined in ConsensusProposal mapping",
+        "new focused test source contained a literal escaped newline and CommonJS residue"
+      ]
+    },
+    {
+      "head": "58756d6ee4a8f3e542e1f1d09988850df07e66ac",
+      "defects": [
+        "product/JUDGE typecheck defect fixed",
+        "focused test source still contained a literal escaped newline at line 1"
+      ]
+    }
+  ],
+  "final_status": "VERIFIED",
+  "next_actions": [
+    "Proceed to CMD-NEXY-CONTRACT-EVIDENCE-001."
+  ],
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}

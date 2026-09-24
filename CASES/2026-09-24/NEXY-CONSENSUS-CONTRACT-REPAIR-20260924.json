@@ -1,0 +1,10 @@
+{
+  "case_id": "CASE-NEXY-CONSENSUS-CONTRACT-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "finding_id": "F-NEXY-FULL-C-CONSENSUS-CONTRACT-001",
+  "start_head": "67e22d9c74173e5641b2d29619d0472b1df99c38",
+  "end_head": "580f1dd3b2bfbb0a808c8ce0064df25ac16b982b",
+  "validation_deployment": "ca2fca19-606f-46c9-9b26-bb8461ca5589",
+  "status": "REPAIRED_VERIFIED",
+  "hash": "HASH_UNAVAILABLE"
+}

@@ -1,0 +1,35 @@
+{
+  "ledger_id": "LEDGER-NEXY-CONSENSUS-CONTRACT-REPAIR-20260924",
+  "campaign_id": "CAMPAIGN-NEXY-FULL-SPEC-BUILD-20260924-01",
+  "source": [
+    "DOC-C ConsensusResult type",
+    "REQ-DOC-C-CONTRACT-004",
+    "F-NEXY-FULL-C-CONSENSUS-CONTRACT-001",
+    "exact NEXY implementation and validation logs"
+  ],
+  "claim": [
+    "Consensus evaluation now emits the complete required artifact instead of rejection strings or the legacy 4-field shape.",
+    "Unresolved output contradiction blocks acceptance and is represented by conflict_report.",
+    "Runtime release checks the canonical releaseable result after LAW evaluation.",
+    "All relevant exact-head validation gates pass except the pre-existing global coverage threshold."
+  ],
+  "proof": [
+    "580f1dd3b2bfbb0a808c8ce0064df25ac16b982b",
+    "ca2fca19-606f-46c9-9b26-bb8461ca5589",
+    "tests/contract/consensus-result-contract.test.ts 5/5",
+    "tests/coverage/judge-law.test.ts 20/20"
+  ],
+  "deps": [
+    "JUDGE",
+    "LAW",
+    "SWARM",
+    "QUEUE"
+  ],
+  "risk": [
+    "Evidence objects are still legacy/minimal until work unit #5."
+  ],
+  "status": "VERIFIED",
+  "confidence": 1,
+  "freshness": "EXACT_HEAD_PINNED",
+  "hash": "HASH_UNAVAILABLE"
+}
