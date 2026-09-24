@@ -149,7 +149,7 @@
   ],
   "checkpoint": {
     "category_completed": "H_SECURITY_AUTH_PERMISSION_TENANT",
-    "read_back_verified": false,
+    "read_back_verified": true,
     "category_units": 55
   }
 }
