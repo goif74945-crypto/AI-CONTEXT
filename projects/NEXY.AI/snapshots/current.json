@@ -78,7 +78,7 @@
       "source_runtime_failures": 16
     },
     "playbooks": {
-      "builder": 10,
+      "builder": 12,
       "auditor": 10
     },
     "examples": {

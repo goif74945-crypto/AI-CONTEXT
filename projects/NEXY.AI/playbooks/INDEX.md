@@ -1,28 +1,38 @@
 # NEXY.AI Builder / Auditor Playbooks
 
 ## Build
-- build-new-system.md
-- modify-existing-system.md
+- add-agent.md
 - add-api-route.md
+- add-capability.md
+- add-event-contract.md
+- add-law.md
+- add-queue-worker.md
 - add-state-transition.md
 - add-storage-model.md
-- add-queue-worker.md
-- add-law.md
 - add-ui-surface.md
-- add-capability.md
-- add-agent.md
+- build-new-system.md
+- change-config.md
+- modify-existing-system.md
 
 ## Audit
-- audit-system.md
-- audit-contract.md
 - audit-authority.md
-- audit-fsm.md
-- audit-security.md
-- audit-determinism.md
-- audit-recovery.md
-- audit-persistence.md
+- audit-contract.md
 - audit-cross-system.md
+- audit-determinism.md
+- audit-fsm.md
+- audit-persistence.md
+- audit-recovery.md
 - audit-release.md
+- audit-security.md
+- audit-system.md
+
+## Registry contract
+- `registry.json` is the machine-readable discovery registry.
+- `registry.schema.json` is the schema for the registry.
+- Registry paths MUST match the real filesystem; unregistered or dangling playbook paths are invalid.
+
+## Selection rule
+Choose the narrowest playbook matching the task. Compose playbooks only when the task crosses explicit boundaries. Selection is by registered `task_type` + `role`, not filename similarity.
 
 ## Global rule
 Every playbook must resolve authority/scope, current HEAD, affected invariants, tests, evidence freshness and rollback before completion.

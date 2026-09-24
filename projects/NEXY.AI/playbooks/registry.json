@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "playbooks": [
     {
-      "task_type": "BUILD_NEW_SYSTEM",
-      "role": "BUILDER",
-      "path": "projects/NEXY.AI/playbooks/build/build-new-system.md",
+      "task_type": "AUDIT_AUTHORITY",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-authority.md",
       "required_context": [
         "ontology",
         "requirements",
@@ -17,12 +17,174 @@
         "traceability",
         "failure_library"
       ],
-      "proof_policy": "No completion claim without task-appropriate test/evidence."
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
     },
     {
-      "task_type": "MODIFY_SYSTEM",
+      "task_type": "AUDIT_CONTRACT",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-contract.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
+    },
+    {
+      "task_type": "AUDIT_CROSS_SYSTEM",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-cross-system.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
+    },
+    {
+      "task_type": "AUDIT_DETERMINISM",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-determinism.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
+    },
+    {
+      "task_type": "AUDIT_FSM",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-fsm.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
+    },
+    {
+      "task_type": "AUDIT_PERSISTENCE",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-persistence.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
+    },
+    {
+      "task_type": "AUDIT_RECOVERY",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-recovery.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
+    },
+    {
+      "task_type": "AUDIT_RELEASE",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-release.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
+    },
+    {
+      "task_type": "AUDIT_SECURITY",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-security.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
+    },
+    {
+      "task_type": "AUDIT_SYSTEM",
+      "role": "AUDITOR",
+      "path": "projects/NEXY.AI/playbooks/audit/audit-system.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
+    },
+    {
+      "task_type": "ADD_AGENT",
       "role": "BUILDER",
-      "path": "projects/NEXY.AI/playbooks/build/modify-existing-system.md",
+      "path": "projects/NEXY.AI/playbooks/build/add-agent.md",
       "required_context": [
         "ontology",
         "requirements",
@@ -41,6 +203,81 @@
       "task_type": "ADD_API_ROUTE",
       "role": "BUILDER",
       "path": "projects/NEXY.AI/playbooks/build/add-api-route.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "No completion claim without task-appropriate test/evidence."
+    },
+    {
+      "task_type": "ADD_CAPABILITY",
+      "role": "BUILDER",
+      "path": "projects/NEXY.AI/playbooks/build/add-capability.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "No completion claim without task-appropriate test/evidence."
+    },
+    {
+      "task_type": "ADD_EVENT_CONTRACT",
+      "role": "BUILDER",
+      "path": "projects/NEXY.AI/playbooks/build/add-event-contract.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library",
+        "events",
+        "state",
+        "security"
+      ],
+      "proof_policy": "No completion claim without producer/consumer contract validation, duplicate/reorder/malformed/late-event negative tests, regression, and exact-head evidence."
+    },
+    {
+      "task_type": "ADD_LAW",
+      "role": "BUILDER",
+      "path": "projects/NEXY.AI/playbooks/build/add-law.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library"
+      ],
+      "proof_policy": "No completion claim without task-appropriate test/evidence."
+    },
+    {
+      "task_type": "ADD_QUEUE_WORKER",
+      "role": "BUILDER",
+      "path": "projects/NEXY.AI/playbooks/build/add-queue-worker.md",
       "required_context": [
         "ontology",
         "requirements",
@@ -92,42 +329,6 @@
       "proof_policy": "No completion claim without task-appropriate test/evidence."
     },
     {
-      "task_type": "ADD_QUEUE_WORKER",
-      "role": "BUILDER",
-      "path": "projects/NEXY.AI/playbooks/build/add-queue-worker.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "No completion claim without task-appropriate test/evidence."
-    },
-    {
-      "task_type": "ADD_LAW",
-      "role": "BUILDER",
-      "path": "projects/NEXY.AI/playbooks/build/add-law.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "No completion claim without task-appropriate test/evidence."
-    },
-    {
       "task_type": "ADD_UI_SURFACE",
       "role": "BUILDER",
       "path": "projects/NEXY.AI/playbooks/build/add-ui-surface.md",
@@ -146,9 +347,9 @@
       "proof_policy": "No completion claim without task-appropriate test/evidence."
     },
     {
-      "task_type": "ADD_CAPABILITY",
+      "task_type": "BUILD_NEW_SYSTEM",
       "role": "BUILDER",
-      "path": "projects/NEXY.AI/playbooks/build/add-capability.md",
+      "path": "projects/NEXY.AI/playbooks/build/build-new-system.md",
       "required_context": [
         "ontology",
         "requirements",
@@ -164,9 +365,29 @@
       "proof_policy": "No completion claim without task-appropriate test/evidence."
     },
     {
-      "task_type": "ADD_AGENT",
+      "task_type": "CHANGE_CONFIG",
       "role": "BUILDER",
-      "path": "projects/NEXY.AI/playbooks/build/add-agent.md",
+      "path": "projects/NEXY.AI/playbooks/build/change-config.md",
+      "required_context": [
+        "ontology",
+        "requirements",
+        "governance",
+        "dependency_graph",
+        "implementation_map",
+        "contracts",
+        "fsm",
+        "invariants",
+        "traceability",
+        "failure_library",
+        "config",
+        "security"
+      ],
+      "proof_policy": "No completion claim without boundary validation, drift detection, rollback evidence, impacted regression, and exact-head evidence."
+    },
+    {
+      "task_type": "MODIFY_SYSTEM",
+      "role": "BUILDER",
+      "path": "projects/NEXY.AI/playbooks/build/modify-existing-system.md",
       "required_context": [
         "ontology",
         "requirements",
@@ -180,186 +401,6 @@
         "failure_library"
       ],
       "proof_policy": "No completion claim without task-appropriate test/evidence."
-    },
-    {
-      "task_type": "AUDIT_SYSTEM",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-system.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
-    },
-    {
-      "task_type": "AUDIT_CONTRACT",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-contract.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
-    },
-    {
-      "task_type": "AUDIT_AUTHORITY",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-authority.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
-    },
-    {
-      "task_type": "AUDIT_FSM",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-fsm.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
-    },
-    {
-      "task_type": "AUDIT_SECURITY",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-security.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
-    },
-    {
-      "task_type": "AUDIT_DETERMINISM",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-determinism.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
-    },
-    {
-      "task_type": "AUDIT_RECOVERY",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-recovery.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
-    },
-    {
-      "task_type": "AUDIT_PERSISTENCE",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-persistence.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
-    },
-    {
-      "task_type": "AUDIT_CROSS_SYSTEM",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-cross-system.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
-    },
-    {
-      "task_type": "AUDIT_RELEASE",
-      "role": "AUDITOR",
-      "path": "projects/NEXY.AI/playbooks/audit/audit-release.md",
-      "required_context": [
-        "ontology",
-        "requirements",
-        "governance",
-        "dependency_graph",
-        "implementation_map",
-        "contracts",
-        "fsm",
-        "invariants",
-        "traceability",
-        "failure_library"
-      ],
-      "proof_policy": "Separate source/implementation/test/runtime/deployment/physical evidence."
     }
   ],
   "selection_rule": "Choose the narrowest playbook matching the task; combine only when the task crosses explicit boundaries.",
