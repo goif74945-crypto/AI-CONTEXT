@@ -1,12 +1,44 @@
 {
   "fsm_id": "FSM-GLOBAL-CONSTITUTIONAL",
   "name": "Global Constitutional FSM",
-  "kind": "SOURCE_DEFINED",
+  "namespace": "GLOBAL_CONSTITUTIONAL",
+  "registry_kind": "SOURCE_DEFINED",
   "authority": [
     "CONSTITUTIONAL_SOURCE"
   ],
   "scope": [
     "FUTURE_ARCHITECTURE"
+  ],
+  "ontology_status": "CURRENT_CANON",
+  "states": [
+    {
+      "state_id": "STATE-GLOBAL-ACTIVE",
+      "name": "ACTIVE"
+    },
+    {
+      "state_id": "STATE-GLOBAL-ANCHOR-SYNCED",
+      "name": "ANCHOR_SYNCED"
+    },
+    {
+      "state_id": "STATE-GLOBAL-BOOT",
+      "name": "BOOT"
+    },
+    {
+      "state_id": "STATE-GLOBAL-CANON-LOADED",
+      "name": "CANON_LOADED"
+    },
+    {
+      "state_id": "STATE-GLOBAL-DEGRADED",
+      "name": "DEGRADED"
+    },
+    {
+      "state_id": "STATE-GLOBAL-FROZEN",
+      "name": "FROZEN"
+    },
+    {
+      "state_id": "STATE-GLOBAL-TERMINATED",
+      "name": "TERMINATED"
+    }
   ],
   "source_range": [
     {
@@ -16,76 +48,7 @@
       "end_paragraph": 5154
     }
   ],
-  "states": [
-    "BOOT",
-    "CANON_LOADED",
-    "ANCHOR_SYNCED",
-    "ACTIVE",
-    "DEGRADED",
-    "FROZEN",
-    "TERMINATED"
-  ],
-  "events": [],
-  "event_ownership": {},
-  "transitions": [
-    {
-      "from": "BOOT",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "CANON_LOADED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "CANON_LOADED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "ANCHOR_SYNCED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "ANCHOR_SYNCED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "ACTIVE",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "ACTIVE",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "DEGRADED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "DEGRADED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "FROZEN",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "FROZEN",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "TERMINATED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    }
-  ],
-  "invalid_transition_behavior": "Illegal transition is prohibited; exact event/guard names are not established by captured source.",
-  "recovery_semantics": "UNKNOWN",
-  "audit_event_semantics": "UNKNOWN",
+  "requirement_ids": [],
   "implementation_mapping_status": "CANDIDATE",
   "implementation_refs": [
     {
@@ -125,10 +88,91 @@
       ]
     }
   ],
-  "requirement_ids": [],
-  "test_refs": [],
-  "alignment_status": "SOURCE_SEQUENCE_ONLY",
-  "alignment_notes": [
-    "Invalid constitutional transitions freeze; detailed event/guard names remain for later contract extraction."
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "transition_source": "SOURCE",
+  "transitions": [
+    {
+      "from": "BOOT",
+      "event": "canon_loaded",
+      "guard": [
+        "binary/build/environment verified"
+      ],
+      "action": [
+        "load canonical law/state"
+      ],
+      "to": "CANON_LOADED",
+      "failure": "FROZEN"
+    },
+    {
+      "from": "CANON_LOADED",
+      "event": "anchor_synced",
+      "guard": [
+        "anchor/time/quorum state valid"
+      ],
+      "action": [
+        "synchronize authority"
+      ],
+      "to": "ANCHOR_SYNCED",
+      "failure": "FROZEN"
+    },
+    {
+      "from": "ANCHOR_SYNCED",
+      "event": "activate",
+      "guard": [
+        "all activation proofs valid"
+      ],
+      "action": [
+        "activate"
+      ],
+      "to": "ACTIVE",
+      "failure": "FROZEN"
+    },
+    {
+      "from": "ACTIVE",
+      "event": "degrade",
+      "guard": [
+        "degraded condition detected"
+      ],
+      "action": [
+        "block affected mutation as required"
+      ],
+      "to": "DEGRADED",
+      "failure": "FROZEN"
+    },
+    {
+      "from": "DEGRADED",
+      "event": "freeze",
+      "guard": [
+        "integrity/continuity condition requires freeze"
+      ],
+      "action": [
+        "freeze"
+      ],
+      "to": "FROZEN",
+      "failure": "N/A"
+    },
+    {
+      "from": "FROZEN",
+      "event": "terminate",
+      "guard": [
+        "legal termination authority"
+      ],
+      "action": [
+        "terminate"
+      ],
+      "to": "TERMINATED",
+      "failure": "FROZEN"
+    }
+  ],
+  "global_rules": [
+    "Illegal transition → immediate FROZEN.",
+    "Freeze exit is Owner OR fixed 3/5 quorum in the locked source branch.",
+    "Root-authority loss resolves toward permanent freeze in the locked branch."
+  ],
+  "invalid_transition_behavior": "immediate FROZEN",
+  "audit_event": "anchored/auditable state-changing operation",
+  "notes": [
+    "FSM namespace is isolated; equal state labels in other FSMs are not aliases.",
+    "The linear chain is source-canonical. Recovery edges are authority-governed and are not expanded into an invented generic FROZEN→ACTIVE transition."
   ]
 }
