@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "rules": [
+    "Supersession edges are old_command_id -> new_command_id.",
+    "Self-supersession is forbidden.",
+    "The supersession graph MUST be acyclic.",
+    "An old command may have at most one direct superseding successor.",
+    "A new command may supersede multiple old commands when explicitly justified.",
+    "Old command content/history is immutable; supersession is appended as a new edge.",
+    "HEAD_STALE supersession requires expected-head revalidation evidence including semantic-diff + change-impact refs.",
+    "Superseded commands are not executable even if a stale claim survives."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "graph_id": "SUPERSESSION-NEG-FORK-001",
+  "version": "1.0.0",
+  "edges": [
+    {
+      "old_command_id": "CMD-A",
+      "new_command_id": "CMD-B",
+      "reason": "MANUAL_REPLACEMENT",
+      "evidence_refs": [
+        "E1"
+      ],
+      "old_status": "CANCELLED",
+      "new_expected_head": "2222222222222222222222222222222222222222"
+    },
+    {
+      "old_command_id": "CMD-A",
+      "new_command_id": "CMD-C",
+      "reason": "MANUAL_REPLACEMENT",
+      "evidence_refs": [
+        "E2"
+      ],
+      "old_status": "CANCELLED",
+      "new_expected_head": "3333333333333333333333333333333333333333"
+    }
+  ]
+}

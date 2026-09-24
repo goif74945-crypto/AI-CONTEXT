@@ -1,0 +1,28 @@
+{
+  "graph_id": "SUPERSESSION-GOLDEN-001",
+  "version": "1.0.0",
+  "edges": [
+    {
+      "old_command_id": "CMD-OLD-001",
+      "new_command_id": "CMD-NEW-001",
+      "reason": "HEAD_STALE",
+      "evidence_refs": [
+        "HEAD-GUARD-001",
+        "SEM-DIFF-001",
+        "IMPACT-001"
+      ],
+      "old_status": "STALE",
+      "new_expected_head": "2222222222222222222222222222222222222222"
+    },
+    {
+      "old_command_id": "CMD-NEW-001",
+      "new_command_id": "CMD-NEWER-001",
+      "reason": "DEPENDENCY_CHANGED",
+      "evidence_refs": [
+        "IMPACT-002"
+      ],
+      "old_status": "STALE",
+      "new_expected_head": "3333333333333333333333333333333333333333"
+    }
+  ]
+}
