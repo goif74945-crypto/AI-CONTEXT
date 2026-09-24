@@ -1,0 +1,4 @@
+{"task":"Fix Queue duplicate execution","resolved_task_type":"QUEUE_BUG","must_include":["QUEUE-EXECUTION","ENGINE-IDEMPOTENCY","FSM-QUEUE-JOB","INV-DOC-C-IDEMPOTENCY-001","FAIL-DISPATCH-DUPLICATE-001","tests/integration/queue-boundary.spec.ts"]}
+{"task":"Audit robot safety before physical deployment","resolved_task_type":"ROBOTICS_SAFETY","must_include":["SYSTEM-RCL","KERNEL-SAFETY","INV-ROBOT-SAFETY-OVERRIDE-001","REQ-RCL-011","CONFLICT-RCL-LATENCY-001","physical evidence requirement"]}
+{"task":"Change session TTL","resolved_task_type":"AUTH_BUG","must_include":["SERVICE-SESSION","CONFIG-AUTH-LIMITS","REQ-DOC-C-AUTH-005","REQ-HIST-AUTH-SESSION-TTL-001","authority/supersession","session tests"]}
+{"task":"Why does old Lo3 voting differ from current design?","resolved_task_type":"SPEC_CONFLICT","must_include":["CLAIM-LO3-VOTING-OLD","CLAIM-LO3-WEIGHTED-PROOF-NEW","REQ-LO3-006","supersession edge"]}
