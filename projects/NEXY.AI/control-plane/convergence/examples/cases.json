@@ -1,0 +1,4 @@
+{
+ "golden":[{"case_id":"CONV-GOLDEN-001","state":"CONVERGED","critical_findings":0,"stale_critical_evidence":0,"regression_satisfied":true,"active_conflicts":0,"queue_state":"DRAINED","checkpoint_current":true,"exact_head_recorded":true}],
+ "negative":[{"case_id":"CONV-NEG-STALE-001","condition":"stale critical evidence accepted","expected":"NOT_CONVERGED"},{"case_id":"CONV-NEG-QUEUE-001","condition":"active command queue remains","expected":"NOT_CONVERGED"}]
+}
