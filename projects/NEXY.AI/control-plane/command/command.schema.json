@@ -6,30 +6,40 @@
   "additionalProperties": false,
   "required": [
     "command_id",
+    "command_type",
     "version",
-    "created_from_head",
-    "expected_head",
     "audit_run_id",
-    "finding_ids",
-    "task_id",
+    "created_from_head",
     "target_repo",
     "target_branch",
-    "target_scope",
+    "expected_head",
+    "finding_ids",
+    "root_cause_ids",
+    "affected_systems",
+    "affected_requirements",
+    "affected_invariants",
+    "priority",
+    "severity",
+    "dependencies",
     "allowed_change_surface",
     "forbidden_change_surface",
-    "dependencies",
-    "objectives",
-    "acceptance",
+    "objective",
+    "exact_required_changes",
+    "non_goals",
+    "acceptance_criteria",
     "required_tests",
     "negative_tests",
     "regression_tests",
-    "security_checks",
-    "rollback",
+    "security_tests",
     "expected_evidence",
-    "stale_policy",
-    "retry_policy",
+    "rollback",
+    "stale_head_policy",
+    "human_gate",
     "supersedes",
-    "status"
+    "status",
+    "task_id",
+    "target_scope",
+    "retry_policy"
   ],
   "properties": {
     "command_id": {
@@ -49,10 +59,8 @@
       "pattern": "^[0-9a-f]{40}$"
     },
     "audit_run_id": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string",
+      "minLength": 1
     },
     "finding_ids": {
       "type": "array",
@@ -60,7 +68,8 @@
         "type": "string",
         "minLength": 1
       },
-      "uniqueItems": true
+      "uniqueItems": true,
+      "minItems": 1
     },
     "task_id": {
       "type": "string",
@@ -108,24 +117,6 @@
       },
       "uniqueItems": true
     },
-    "objectives": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "string",
-        "minLength": 1
-      },
-      "uniqueItems": true
-    },
-    "acceptance": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "string",
-        "minLength": 1
-      },
-      "uniqueItems": true
-    },
     "required_tests": {
       "type": "array",
       "items": {
@@ -150,14 +141,6 @@
       },
       "uniqueItems": true
     },
-    "security_checks": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1
-      },
-      "uniqueItems": true
-    },
     "rollback": {
       "type": "array",
       "minItems": 1,
@@ -175,28 +158,6 @@
         "minLength": 1
       },
       "uniqueItems": true
-    },
-    "stale_policy": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "on_head_mismatch",
-        "revalidate_with"
-      ],
-      "properties": {
-        "on_head_mismatch": {
-          "const": "MARK_STALE_AND_DO_NOT_EXECUTE"
-        },
-        "revalidate_with": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "uniqueItems": true
-        }
-      }
     },
     "retry_policy": {
       "type": "object",
@@ -254,6 +215,159 @@
         "CANCELLED",
         "QUARANTINED"
       ]
+    },
+    "command_type": {
+      "enum": [
+        "BUILD",
+        "REPAIR",
+        "MODIFY",
+        "DELETE",
+        "MIGRATE",
+        "TEST",
+        "EVIDENCE_REFRESH",
+        "SECURITY_FIX",
+        "RECOVERY_FIX",
+        "CONTRACT_FIX",
+        "FSM_FIX",
+        "STATE_FIX",
+        "INTEGRATION_FIX",
+        "RELEASE_FIX",
+        "HUMAN_DECISION"
+      ]
+    },
+    "root_cause_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "affected_systems": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "affected_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "affected_invariants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "priority": {
+      "enum": [
+        "CRITICAL",
+        "HIGH",
+        "NORMAL",
+        "LOW"
+      ]
+    },
+    "severity": {
+      "enum": [
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ]
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exact_required_changes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "non_goals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "security_tests": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "stale_head_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "on_head_mismatch",
+        "revalidate_with"
+      ],
+      "properties": {
+        "on_head_mismatch": {
+          "const": "MARK_STALE_AND_DO_NOT_EXECUTE"
+        },
+        "revalidate_with": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "human_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "reason"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
     }
-  }
+  },
+  "$comment": "Contract revision 1.1.0: represents every field mandated by SYSTEM:NEXY::FULL-PROJECT-SPEC-AUDITOR-AND-COMMAND-GENERATOR-V1 while retaining exact-head closed-loop controls."
 }
