@@ -1,5 +1,5 @@
 {
-  "status": "FULL_AUDIT_COMPLETE",
+  "status": "PARTIAL",
   "target_repo": "goif74945-crypto/NEXY.AI-",
   "target_branch": "astra/omega-full-spec-convergence",
   "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
@@ -13,10 +13,10 @@
   "total_audit_units": 1468,
   "terminal_states": {
     "VERIFIED": 140,
-    "PARTIAL": 749,
+    "PARTIAL": 748,
     "FAIL": 48,
     "MISSING": 0,
-    "UNKNOWN": 0,
+    "UNKNOWN": 1,
     "CONFLICT": 1,
     "BLOCKED": 7,
     "NOT_VERIFIED": 91,
@@ -56,10 +56,10 @@
   "dependency_dag_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/remediation/dependency-dag.json",
   "command_dag_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/remediation/command-dag.json",
   "command_count": 13,
-  "ready_commands": 1,
-  "blocked_or_planned_commands": 12,
+  "ready_commands": 0,
+  "blocked_or_planned_commands": 13,
   "human_gate_commands": 1,
-  "first_command": "CMD-NEXY-SEC-OTAC-LOG-001",
+  "first_command": "QUARANTINED:CMD-NEXY-SEC-OTAC-LOG-001",
   "next_commands": [
     "CMD-NEXY-EVIDENCE-E07-001",
     "CMD-NEXY-CONTRACT-AGENT-ADAPTER-001",
@@ -70,15 +70,16 @@
     "CMD-NEXY-QUEUE-RETRY-001"
   ],
   "full_audit_gate": {
-    "full_atomic_coverage": true,
+    "full_atomic_coverage": false,
     "cross_system_reaudit": true,
     "master_matrix": true,
-    "requirement_matrix": true,
-    "findings_reconciled": true,
-    "dependency_dag": true,
-    "command_dag": true,
-    "normal_builder_commands_allowed": true
+    "requirement_matrix": false,
+    "findings_reconciled": false,
+    "dependency_dag": false,
+    "command_dag": false,
+    "normal_builder_commands_allowed": false
   },
-  "verdict": "AUDIT_COVERAGE_COMPLETE_REMEDIATION_REQUIRED_IMPLEMENTATION_NOT_VERIFIED_OR_RELEASE_READY",
-  "implementation_mutation_by_auditor": "NONE"
+  "verdict": "AUDIT_RECORD_COVERAGE_100_BUT_COMPLETION_GATE_FAILED_INTEGRITY_REVALIDATION_REQUIRED",
+  "implementation_mutation_by_auditor": "NONE",
+  "integrity_revalidation_path": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/integrity-revalidation-2026-09-24-01.json"
 }
