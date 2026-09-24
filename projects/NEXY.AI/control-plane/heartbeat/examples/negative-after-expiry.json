@@ -1,0 +1,25 @@
+{
+  "active_claim": {
+    "claim_id": "CLAIM-A",
+    "command_id": "CMD-A",
+    "worker_id": "WORKER-A",
+    "lease_epoch": 2,
+    "lease_start": "2026-09-24T07:00:00Z",
+    "heartbeat_deadline": "2026-09-24T07:05:00Z",
+    "lease_expiry": "2026-09-24T07:10:00Z",
+    "state": "ACTIVE"
+  },
+  "heartbeat": {
+    "heartbeat_id": "HB-NEG-EXPIRED",
+    "worker_id": "WORKER-A",
+    "claim_id": "CLAIM-A",
+    "command_id": "CMD-A",
+    "lease_epoch": 2,
+    "heartbeat_sequence": 4,
+    "observed_at": "2026-09-24T07:11:00Z",
+    "worker_status": "BUSY",
+    "evidence_refs": [
+      "WORKER-LIVENESS-001"
+    ]
+  }
+}

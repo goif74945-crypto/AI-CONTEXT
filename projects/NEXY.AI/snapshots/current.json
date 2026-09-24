@@ -119,7 +119,8 @@
         "P4.4_CLAIM_LEASE",
         "P4.5_EXPECTED_HEAD_GUARD",
         "P4.6_SUPERSESSION",
-        "P4.7_RESULT_PACKAGE"
+        "P4.7_RESULT_PACKAGE",
+        "P4.8_HEARTBEAT"
       ],
       "command_schema_version": "1.0.0",
       "queue_schema_version": "1.0.0",
@@ -130,7 +131,8 @@
       "result_package": {
         "canonical": "projects/NEXY.AI/handoff/handoff.schema.json#BUILDER_TO_AUDITOR",
         "status": "STRUCTURAL_PASS"
-      }
+      },
+      "heartbeat_schema_version": "1.0.0"
     }
   },
   "dynamic_truth": {

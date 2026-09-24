@@ -11,7 +11,7 @@ Foundation under construction in dependency order. Each component is versioned, 
 5. [Expected-HEAD Guard](./head-guard/INDEX.md) — implemented.
 6. [Supersession](./supersession/INDEX.md) — implemented.
 7. [Result Package](./results/INDEX.md) — implemented by canonical handoff reuse.
-8. Heartbeat — pending P4.8.
+8. [Heartbeat](./heartbeat/INDEX.md) — implemented.
 9. Retry / Backoff — pending P4.9.
 10. Dead Letter / Quarantine — pending P4.10.
 11. Scheduler — pending P4.11.

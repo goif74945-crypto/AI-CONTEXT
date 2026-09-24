@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "validation_rules": [
+    "Heartbeat worker_id/claim_id/command_id/lease_epoch MUST exactly match one ACTIVE claim.",
+    "heartbeat_sequence MUST increase strictly for the same claim epoch.",
+    "observed_at MUST be >= lease_start and <= lease_expiry.",
+    "Heartbeat cannot revive EXPIRED/RELEASED/REVOKED claims.",
+    "Heartbeat from an older lease_epoch cannot extend or validate a replacement claim.",
+    "Heartbeat acceptance may advance the claim heartbeat deadline only within the existing lease_expiry; extending lease_expiry itself requires an explicit lease-renewal mutation.",
+    "A missing heartbeat after heartbeat_deadline makes the ACTIVE claim ineligible for execution until stale-lease recovery."
+  ]
+}
