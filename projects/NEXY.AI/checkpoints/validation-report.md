@@ -3,13 +3,12 @@
 ## Result
 **PASS — current checkpoint conforms**
 
-Latest semantic checkpointed HEAD: `eb43c1621193ea76441f3c992684cd5179ccc907`
-Last completed: **P2 FIRST-CLASS HANDOFF SYSTEM**
-Next: **P3 FIRST-CLASS CHANGE IMPACT**
+Latest semantic checkpointed HEAD: `0d725fea0403046ab618a7870a4996661486d679`
+Last completed: **P3 FIRST-CLASS CHANGE IMPACT**
+Next: **P4.1 COMMAND MODEL**
 
 - required fields: PASS
 - additional-properties prohibition: PASS
-- exact target repo/branch/semantic HEAD: PASS
+- target repo/branch/semantic HEAD: PASS
 - authorization boundary: PASS
-- NEXY implementation mutation remains false: PASS
-- resume node present: PASS
+- NEXY implementation mutation: false
