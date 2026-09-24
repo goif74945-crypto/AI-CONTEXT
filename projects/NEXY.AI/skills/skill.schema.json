@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Skill Registry Record",
+  "type": "object",
+  "required": [
+    "skill_id",
+    "name",
+    "version",
+    "inputs",
+    "outputs",
+    "permissions",
+    "tools",
+    "preconditions",
+    "failure_modes",
+    "rollback",
+    "benchmark",
+    "last_verified",
+    "status"
+  ]
+}
