@@ -1,0 +1,26 @@
+{
+  "task_id": "TASK-NEXY-SKILL-STRUCTURAL-VALIDATION-20260924-2116",
+  "mode": "AUDIT/CROSS/IDLE_SKILL_WORK",
+  "validated_head": "f1ef2108455ede967008c420cefaf62118b1137c",
+  "scope": "skills/nexy/**",
+  "result": {
+    "formal_ids": 89,
+    "skill_files": 89,
+    "duplicate_formal_ids": 0,
+    "structural_identity_failures": 0,
+    "v0_v1": "PASS",
+    "v3_v9": "NOT_PROVEN",
+    "status": "MATERIALIZED_NOT_VERIFIED"
+  },
+  "evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-formal-inventory-structural-validation.md",
+  "builder_observation": {
+    "command": "CMD-NEXY-SEC-OTAC-LOG-001",
+    "queue_state": "READY",
+    "active_claims": 0,
+    "builder_results": 0
+  },
+  "nexy_implementation_mutation": "NONE",
+  "next_action": "Suspend idle skill work on Builder result; otherwise continue bounded behavioral validation design.",
+  "timestamp_source": "2026-09-24T21:16+07:00",
+  "hash": "HASH_UNAVAILABLE"
+}
