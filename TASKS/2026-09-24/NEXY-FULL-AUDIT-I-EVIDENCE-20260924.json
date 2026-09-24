@@ -1,0 +1,24 @@
+{
+  "task_id": "NEXY-FULL-AUDIT-I-EVIDENCE-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "I_EVIDENCE_VERIFICATION_AUDIT",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 233,
+  "audited_units": 233,
+  "status": "CATEGORY_AUDIT_RECORDED",
+  "verdict": "PARTIAL",
+  "key_results": [
+    "108/108 denominator test paths exist at exact target tree; no successful exact-target-head execution is established.",
+    "40/40 trace evidence paths exist; freshness registry reports 12 STALE_HEAD, 26 HISTORICAL_OR_UNCLASSIFIED, 2 UNKNOWN.",
+    "Current DOC-E E1-E12 namespace is bound to db52f9f... rather than target 84484d...."
+  ],
+  "finding_ids": [
+    "F-NEXY-FULL-I-CURRENT-EVIDENCE-STALE-001",
+    "F-NEXY-FULL-J-EVIDENCE-001"
+  ],
+  "next_category": "X_UI_TRUTH_SURFACE",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "hash": "HASH_UNAVAILABLE"
+}
