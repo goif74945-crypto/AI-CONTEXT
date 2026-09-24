@@ -1,0 +1,8 @@
+{
+ "golden":[{"case_id":"RESUME-GOLDEN-001","head_match":true,"lease_state":"ACTIVE","supersession_state":"CURRENT","evidence_state":"CURRENT","decision":"RESUME"}],
+ "negative":[
+  {"case_id":"RESUME-NEG-HEAD-001","condition":"current_head differs from recorded_head","expected":"REVALIDATE"},
+  {"case_id":"RESUME-NEG-LEASE-001","lease_state":"EXPIRED","expected":"REVALIDATE"},
+  {"case_id":"RESUME-NEG-SUPERSEDED-001","supersession_state":"SUPERSEDED","expected":"BLOCK"}
+ ]
+}
