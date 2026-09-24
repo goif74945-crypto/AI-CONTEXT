@@ -1,59 +1,51 @@
-# PLAYBOOK — Build New System
+# NEXY Builder Playbook
 
-## PRECONDITIONS
-- New system is in authorized scope.
-- Authority/scope registry does not mark it EXCLUDED/SUPERSEDED.
-- No existing ontology entity already satisfies the requirement.
-- Parent/dependency placement is known.
-- Required contracts/invariants can be stated before implementation.
+## Universal preconditions
+1. Pin repository + branch + exact HEAD.
+2. Abort/freeze if the requested target branch/HEAD differs from task authority.
+3. Resolve target entity in `ontology/entities.jsonl`.
+4. Resolve governing requirements in `requirements/requirements.jsonl`.
+5. Resolve authority/scope/supersession/conflicts before implementation.
+6. Resolve `REQUIRES` predecessors from `graphs/dependency-graph.json`.
+7. Resolve code only through `implementation/system-to-code.jsonl`; CANDIDATE refs must be opened before use.
+8. Load linked contracts, FSM namespace, atomic invariants, trust boundaries, state ownership, events and config.
+9. Check `failures/failures.jsonl` for known failure classes.
+10. Never interpret file presence, build success, or prose as runtime/evidence PASS.
 
-## REQUIRED CONTEXT
-- ontology entity + parent;
-- requirement IDs;
-- dependency graph;
-- authority/scope/supersession/conflicts;
-- relevant contracts/invariants/FSMs;
-- implementation/repository map;
-- acceptance/test matrix;
-- security/trust boundaries;
-- persistence/state/event/config maps where applicable.
+# Workflow: Build New System
 
-## IMPLEMENTATION SEQUENCE
-1. Create/confirm requirement ledger entries.
-2. Define system responsibility and explicit non-goals.
-3. Define authority owner and mutation owner.
-4. Define inputs/outputs and contracts.
-5. Define state/FSM if stateful.
-6. Define persistence and event semantics if durable/asynchronous.
-7. Define failure and recovery behavior.
-8. Define security/trust boundary.
-9. Add dependency edges and validate acyclicity.
-10. Implement the smallest complete vertical slice.
-11. Add static/contract/unit/integration tests required by the acceptance matrix.
-12. Add observability for critical states/failures.
-13. Re-run dependency/invariant/security/FSM regression.
-14. Register implementation/test/evidence links only after observed proof.
+## Required context
+- parent ontology entity and entity type;
+- scope class and authority;
+- requirement IDs or explicit spec extension;
+- dependency DAG predecessors;
+- trust/state/event/config boundaries;
+- definition of proof required.
 
-## NEGATIVE TESTS
-At minimum test:
-- invalid input;
-- unauthorized actor;
-- dependency unavailable;
-- timeout;
-- duplicate/idempotency behavior where relevant;
-- illegal state transition if stateful;
-- persistence failure if durable;
-- freeze/block behavior when required.
+## Sequence
+1. Confirm the system is CURRENT-required; if FUTURE/DEFERRED/EXPERIMENTAL, do not silently promote it.
+2. Create/approve ontology entity before code when the object is not already registered.
+3. Add or link testable requirements.
+4. Define contracts before implementation.
+5. Define state ownership/persistence and FSM namespace if stateful.
+6. Define atomic invariants and failure behavior.
+7. Define security boundary and permissions.
+8. Implement in dependency order.
+9. Add tests for normal, negative, boundary, failure and recovery behavior.
+10. Update implementation map, traceability and evidence only after observed artifacts exist.
 
-## ROLLBACK
-Rollback must restore:
-- contracts;
-- state schema;
-- dependency graph;
-- configuration;
-- migrations;
-- events;
-to the last proven baseline.
+## Negative tests
+- bypass LAW/JUDGE;
+- hidden fallback;
+- missing validation;
+- stale/ambiguous state;
+- unauthorized mutation;
+- nondeterministic mutation;
+- retry/idempotency duplication;
+- missing audit/incident path.
+
+## Rollback
+Remove or disable the new implementation without rewriting prior source/history; preserve failure evidence and revert only through legal repository/version path.
 
 ## DONE
-PASS requires the requirement-specific evidence class. Code presence alone = NOT_VERIFIED.
+Not DONE until requirement→code→test→evidence path is explicit and all unresolved blockers are reported.
