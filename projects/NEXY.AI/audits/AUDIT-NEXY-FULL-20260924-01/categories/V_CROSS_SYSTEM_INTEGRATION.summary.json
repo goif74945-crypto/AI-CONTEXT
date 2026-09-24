@@ -1,0 +1,22 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "V_CROSS_SYSTEM_INTEGRATION",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 139,
+  "audited_units": 139,
+  "counts": {
+    "FUTURE_SCOPE": 34,
+    "PARTIAL": 102,
+    "NOT_VERIFIED": 3
+  },
+  "finding_ids": [
+    "F-NEXY-FULL-V-TRACEABILITY-001",
+    "F-NEXY-FULL-V-CURRENT-HEAD-INTEGRATION-EVIDENCE-002",
+    "F-NEXY-FULL-V-INVARIANT-PROOF-003",
+    "F-NEXY-FULL-V-CONCURRENCY-CHAOS-PROOF-004"
+  ],
+  "verdict": "PARTIAL",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "next_category": "W_RELEASE_DEPLOYMENT_DOC_E",
+  "hash": "HASH_UNAVAILABLE"
+}
