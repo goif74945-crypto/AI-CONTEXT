@@ -99,13 +99,13 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 859,
-    "remaining": 609,
-    "percent": 58.515
+    "audited": 906,
+    "remaining": 562,
+    "percent": 61.7166
   },
-  "current_category": "O_SOVEREIGN_UNIVERSE_HOST",
-  "last_completed_unit": "CATEGORY:Y_TOOL_PLUGIN_SKILL_INTERFACES",
-  "next_unit": "CATEGORY:O_SOVEREIGN_UNIVERSE_HOST",
+  "current_category": "P_CONSTITUTIONAL_LAYERS",
+  "last_completed_unit": "CATEGORY:O_SOVEREIGN_UNIVERSE_HOST",
+  "next_unit": "CATEGORY:P_CONSTITUTIONAL_LAYERS",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "Y_TOOL_PLUGIN_SKILL_INTERFACES",
+    "category_completed": "O_SOVEREIGN_UNIVERSE_HOST",
     "read_back_verified": true,
-    "category_units": 39
+    "category_units": 47
   }
 }
