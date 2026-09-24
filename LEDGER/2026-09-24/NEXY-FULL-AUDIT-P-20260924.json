@@ -1,0 +1,19 @@
+{
+  "ledger_id": "LEDGER-NEXY-FULL-AUDIT-P-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "P_CONSTITUTIONAL_LAYERS",
+  "claim": [
+    "86/86 units classified FUTURE_SCOPE."
+  ],
+  "proof": [
+    "Denominator scope metadata: FUTURE_SCOPE/FUTURE_ARCHITECTURE"
+  ],
+  "status": "RECORDED",
+  "coverage_after": {
+    "audited": 992,
+    "total": 1468,
+    "percent": 67.5749
+  },
+  "next_unit": "CATEGORY:Q_GAME_AAAA_NCF",
+  "hash": "HASH_UNAVAILABLE"
+}
