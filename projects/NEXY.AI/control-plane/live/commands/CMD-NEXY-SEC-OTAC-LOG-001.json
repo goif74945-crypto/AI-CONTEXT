@@ -1,6 +1,6 @@
 {
   "command_id": "CMD-NEXY-SEC-OTAC-LOG-001",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "created_from_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
   "expected_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
   "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
@@ -29,18 +29,6 @@
     "packages/core/**"
   ],
   "dependencies": [],
-  "objectives": [
-    "Eliminate plaintext OTAC codes and destination email addresses from stdout/stderr/log output on every ConsoleEmailProvider/development path.",
-    "Preserve SMTP OTAC delivery behavior.",
-    "If console/development mode has no real secure delivery mechanism, fail closed with a non-sensitive error instead of reporting a successful OTAC delivery after logging or discarding the code."
-  ],
-  "acceptance": [
-    "No execution path in packages/auth/email.ts writes, logs, throws, or otherwise exposes the raw OTAC code or raw destination email to stdout/stderr/log sinks.",
-    "Console/development mode cannot report successful delivery unless the code is actually delivered through a non-log delivery mechanism; otherwise sendOtac rejects without embedding the email/code in the error.",
-    "SMTP provider continues to send the OTAC to the destination through nodemailer and no HTTP-response behavior is changed by this command.",
-    "A focused regression test uses sentinel email/code values and proves they do not appear in stdout/stderr or thrown error text.",
-    "No files outside allowed_change_surface are modified."
-  ],
   "required_tests": [
     "npm test -- tests/contract/auth-email-provider.test.ts",
     "npm run typecheck:backend",
@@ -53,11 +41,6 @@
   "regression_tests": [
     "npm test -- tests/integration/auth/request-otac.spec.ts tests/contract/auth-security-incident.test.ts"
   ],
-  "security_checks": [
-    "Search the changed source/test diff for plaintext OTAC logging patterns and raw destination-email logging.",
-    "Confirm no secret/credential values are added to fixtures, snapshots, evidence or error messages.",
-    "Confirm auth/session/RBAC authority is unchanged."
-  ],
   "rollback": [
     "Revert only the command commit(s) if focused tests, typecheck, lint or security checks fail.",
     "Do not restore plaintext secret logging as an operational fallback."
@@ -69,14 +52,6 @@
     "request-otac and auth-security-incident regression results",
     "backend typecheck and lint results"
   ],
-  "stale_policy": {
-    "on_head_mismatch": "MARK_STALE_AND_DO_NOT_EXECUTE",
-    "revalidate_with": [
-      "F-NEXY-FULL-H-OTAC-LOG-001",
-      "semantic diff of packages/auth/email.ts",
-      "current target branch HEAD"
-    ]
-  },
   "retry_policy": {
     "max_attempts": 1,
     "backoff_policy": "NO_AUTOMATIC_REEXECUTION_AFTER_FAILED_SECURITY_MUTATION",
@@ -86,5 +61,54 @@
   },
   "supersedes": [],
   "superseded_by": null,
-  "status": "QUARANTINED"
+  "status": "READY",
+  "command_type": "SECURITY_FIX",
+  "root_cause_ids": [
+    "RC-NEXY-OTAC-PLAINTEXT-LOGGING-001"
+  ],
+  "affected_systems": [
+    "SERVICE-OTAC",
+    "MODULE-AUTH",
+    "THREAT-SECRET-EXPOSURE"
+  ],
+  "affected_requirements": [
+    "REQ-SEC-003"
+  ],
+  "affected_invariants": [],
+  "priority": "CRITICAL",
+  "severity": "S5",
+  "objective": "Remove plaintext OTAC and destination-email disclosure from every console/development delivery path, preserve SMTP delivery, and fail closed when no secure delivery mechanism exists.",
+  "exact_required_changes": [
+    "Remove every stdout/stderr/log write in packages/auth/email.ts that exposes a raw OTAC code or raw destination email.",
+    "Make ConsoleEmailProvider and development fallback reject with a non-sensitive error when no secure delivery mechanism exists; they must not report successful delivery after logging or discarding the code.",
+    "Add tests/contract/auth-email-provider.test.ts coverage with sentinel email/code values proving they are absent from captured stdout, stderr, and thrown error text while preserving SMTP behavior."
+  ],
+  "non_goals": [
+    "Do not change HTTP auth routes, OTAC generation/TTL, session policy, RBAC, incident policy, database schema, queue behavior, UI, or evidence artifacts.",
+    "Do not weaken, delete, or bypass existing tests."
+  ],
+  "acceptance_criteria": [
+    "No execution path in packages/auth/email.ts writes, logs, throws, or otherwise exposes the raw OTAC code or raw destination email to stdout/stderr/log sinks.",
+    "Console/development mode cannot report successful delivery unless the code is actually delivered through a non-log delivery mechanism; otherwise sendOtac rejects without embedding the email/code in the error.",
+    "SMTP provider continues to send the OTAC to the destination through nodemailer and no HTTP-response behavior is changed by this command.",
+    "A focused regression test uses sentinel email/code values and proves they do not appear in stdout/stderr or thrown error text.",
+    "No files outside allowed_change_surface are modified."
+  ],
+  "security_tests": [
+    "Search the changed source/test diff for plaintext OTAC logging patterns and raw destination-email logging.",
+    "Confirm no secret/credential values are added to fixtures, snapshots, evidence or error messages.",
+    "Confirm auth/session/RBAC authority is unchanged."
+  ],
+  "stale_head_policy": {
+    "on_head_mismatch": "MARK_STALE_AND_DO_NOT_EXECUTE",
+    "revalidate_with": [
+      "F-NEXY-FULL-H-OTAC-LOG-001",
+      "semantic diff of packages/auth/email.ts",
+      "current target branch HEAD"
+    ]
+  },
+  "human_gate": {
+    "required": false,
+    "reason": "No human decision is required for this scoped secret-removal repair; any forbidden-surface or security-boundary expansion stops execution and returns to the Auditor."
+  }
 }
