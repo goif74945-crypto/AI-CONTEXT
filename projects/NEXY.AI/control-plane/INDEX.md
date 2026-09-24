@@ -1,0 +1,25 @@
+# NEXY.AI Closed-Loop Control Plane
+
+## Status
+Foundation under construction in dependency order. Each component is versioned, schema-bound, evidence-aware and does not grant authority over NEXY implementation.
+
+## Components
+1. [Command Model](./command/INDEX.md) — implemented.
+2. Command Queue — pending P4.2.
+3. Worker Registry — pending P4.3.
+4. Claim / Lease — pending P4.4.
+5. Expected-HEAD Guard — pending P4.5.
+6. Supersession — pending P4.6.
+7. Result Package — pending P4.7 (reuse handoff where equivalent).
+8. Heartbeat — pending P4.8.
+9. Retry / Backoff — pending P4.9.
+10. Dead Letter / Quarantine — pending P4.10.
+11. Scheduler — pending P4.11.
+12. Evidence Ingestion — pending P4.12.
+13. Convergence — pending P4.13.
+14. Oscillation Detector — pending P4.14.
+15. Human Escalation — pending P4.15.
+16. Resume / Recovery — pending P4.16.
+
+## Authority boundary
+This control plane coordinates work descriptions and evidence. It cannot bypass governance, human gates, secrets policy, or NEXY implementation write authorization.

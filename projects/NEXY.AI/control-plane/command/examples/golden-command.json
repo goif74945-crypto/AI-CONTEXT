@@ -1,0 +1,67 @@
+{
+  "command_id": "CMD-GOLDEN-001",
+  "version": "1.0.0",
+  "created_from_head": "1111111111111111111111111111111111111111",
+  "expected_head": "1111111111111111111111111111111111111111",
+  "audit_run_id": "AUDIT-GOLDEN-001",
+  "finding_ids": [
+    "F-GOLDEN-001"
+  ],
+  "task_id": "TASK-GOLDEN-001",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "example",
+  "target_scope": [
+    "example/subsystem"
+  ],
+  "allowed_change_surface": [
+    "src/example/**"
+  ],
+  "forbidden_change_surface": [
+    "protected/**"
+  ],
+  "dependencies": [],
+  "objectives": [
+    "Repair the proven example finding only."
+  ],
+  "acceptance": [
+    "Focused tests pass and required evidence is attached at resulting exact HEAD."
+  ],
+  "required_tests": [
+    "test:focused"
+  ],
+  "negative_tests": [
+    "reject out-of-scope mutation"
+  ],
+  "regression_tests": [
+    "test:regression"
+  ],
+  "security_checks": [
+    "scope boundary unchanged"
+  ],
+  "rollback": [
+    "Restore prior legal state if validation fails."
+  ],
+  "expected_evidence": [
+    "start/end HEAD",
+    "executed tests",
+    "diff/read-back"
+  ],
+  "stale_policy": {
+    "on_head_mismatch": "MARK_STALE_AND_DO_NOT_EXECUTE",
+    "revalidate_with": [
+      "semantic-diff",
+      "change-impact"
+    ]
+  },
+  "retry_policy": {
+    "max_attempts": 2,
+    "backoff_policy": "EXPONENTIAL_BOUNDED",
+    "retryable_states": [
+      "FAILED",
+      "BLOCKED"
+    ]
+  },
+  "supersedes": [],
+  "superseded_by": null,
+  "status": "READY"
+}

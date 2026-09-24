@@ -1,0 +1,7 @@
+{
+  "example_id": "CMD-NEGATIVE-ILLEGAL-TRANSITION-001",
+  "from": "COMPLETED",
+  "to": "EXECUTING",
+  "expected": "REJECT",
+  "reason": "COMPLETED is terminal."
+}

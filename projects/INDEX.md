@@ -45,3 +45,4 @@
   - [Event Registry](./NEXY.AI/events/events.json)
   - [Configuration Registry](./NEXY.AI/config/config-registry.json)
   - [Handoff System](./NEXY.AI/handoff/INDEX.md)
+  - [Closed-Loop Control Plane](./NEXY.AI/control-plane/INDEX.md)

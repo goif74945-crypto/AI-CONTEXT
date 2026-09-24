@@ -109,6 +109,13 @@
         "UNKNOWN"
       ],
       "status": "STRUCTURAL_PASS"
+    },
+    "control_plane": {
+      "status": "PARTIAL",
+      "completed_parts": [
+        "P4.1_COMMAND_MODEL"
+      ],
+      "command_schema_version": "1.0.0"
     }
   },
   "dynamic_truth": {

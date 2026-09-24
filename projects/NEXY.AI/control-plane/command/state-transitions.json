@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "states": [
+    "READY",
+    "CLAIMED",
+    "EXECUTING",
+    "VERIFYING",
+    "COMPLETED",
+    "FAILED",
+    "BLOCKED",
+    "STALE",
+    "CANCELLED",
+    "QUARANTINED"
+  ],
+  "terminal_states": [
+    "COMPLETED",
+    "CANCELLED"
+  ],
+  "transitions": {
+    "READY": [
+      "CLAIMED",
+      "BLOCKED",
+      "STALE",
+      "CANCELLED",
+      "QUARANTINED"
+    ],
+    "CLAIMED": [
+      "READY",
+      "EXECUTING",
+      "BLOCKED",
+      "STALE",
+      "CANCELLED",
+      "QUARANTINED"
+    ],
+    "EXECUTING": [
+      "VERIFYING",
+      "FAILED",
+      "BLOCKED",
+      "STALE",
+      "QUARANTINED"
+    ],
+    "VERIFYING": [
+      "COMPLETED",
+      "FAILED",
+      "BLOCKED",
+      "STALE",
+      "QUARANTINED"
+    ],
+    "FAILED": [
+      "READY",
+      "CANCELLED",
+      "QUARANTINED"
+    ],
+    "BLOCKED": [
+      "READY",
+      "STALE",
+      "CANCELLED",
+      "QUARANTINED"
+    ],
+    "STALE": [
+      "CANCELLED"
+    ],
+    "QUARANTINED": [
+      "READY",
+      "CANCELLED"
+    ],
+    "COMPLETED": [],
+    "CANCELLED": []
+  },
+  "rules": [
+    "State transitions are explicit; unlisted transitions are illegal.",
+    "READY->CLAIMED requires a valid claim/lease in P4.4.",
+    "CLAIMED->READY is only stale/expired-lease recovery.",
+    "FAILED->READY requires retry policy allowance and attempt budget.",
+    "QUARANTINED->READY requires the quarantine release gate.",
+    "STALE commands are never executed; revalidation emits a new/superseding command."
+  ]
+}
