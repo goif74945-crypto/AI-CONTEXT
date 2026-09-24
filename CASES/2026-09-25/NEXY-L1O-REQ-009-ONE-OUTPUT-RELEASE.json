@@ -1,0 +1,13 @@
+{
+  "case_id": "CASE-NEXY-L1O-REQ-009-ONE-OUTPUT-RELEASE-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-009-ONE-OUTPUT-RELEASE-20260925",
+  "requirement_id": "REQ-L1O-009",
+  "cause": "One-output-or-freeze behavior existed across L1o/JUDGE/LAW surfaces but lacked explicit cross-boundary acceptance proof.",
+  "impact": "REQ-L1O-009 remained unverified despite compatible implementation.",
+  "fix": "Added contract tests binding L1o canonical winner semantics to final JUDGE/LAW release behavior and unresolved-candidate rejection.",
+  "prevention": "Retain explicit one-output-or-freeze release-spine regression tests.",
+  "regression": "Exact-head contract/integration/full/coverage generation/DOC-C/web build passed.",
+  "status": "MITIGATED_VERIFIED_WITH_LIMITS",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

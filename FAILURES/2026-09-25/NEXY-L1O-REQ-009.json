@@ -1,0 +1,9 @@
+{
+  "failure_id": "FAIL-NEXY-L1O-REQ-009-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-009-ONE-OUTPUT-RELEASE-20260925",
+  "status": "NO_NEW_EXECUTION_FAILURE",
+  "context": "REQ-L1O-009 exact-head implementation/test pass.",
+  "prevention": "Do not remove one-output-or-freeze release-spine tests or weaken unresolved-candidate rejection.",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

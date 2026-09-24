@@ -1,0 +1,29 @@
+{
+  "ledger_id": "LEDGER-NEXY-L1O-REQ-009-ONE-OUTPUT-RELEASE-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-009-ONE-OUTPUT-RELEASE-20260925",
+  "source": [
+    "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx sha256 b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7 paragraphs 11395-11408"
+  ],
+  "claim": [
+    "L1o may retain multiple internal candidates but canonical synthesis selects one winner.",
+    "A release candidate with multiple proposals but no resolved final commandResult is rejected.",
+    "A single selected final crosses the release boundary only after JUDGE verification and LAW prerelease acceptance."
+  ],
+  "proof": [
+    "Railway deployment 3d500ce4-1729-402e-bf27-2b28ad8a9741",
+    "NEXY 317e619f5331a2d1ce9aa0016a18bc1d3f143270"
+  ],
+  "deps": [
+    "L1o Output Synthesizer",
+    "JUDGE candidate verification",
+    "LAW prerelease gate"
+  ],
+  "risk": [
+    "Release still blocked globally by pre-existing coverage threshold."
+  ],
+  "status": "RECORDED_VERIFIED_WITH_LIMITS",
+  "confidence": 1,
+  "freshness": "EXACT_HEAD_2026-09-25",
+  "trace": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-009",
+  "hash": "HASH_UNAVAILABLE"
+}

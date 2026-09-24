@@ -1,0 +1,88 @@
+{
+  "task_id": "TASK-NEXY-L1O-REQ-009-ONE-OUTPUT-RELEASE-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "requirement_id": "REQ-L1O-009",
+  "title": "Prove L1o one-output-or-freeze release boundary",
+  "mode": "CROSS_EXECUTE_SERIAL",
+  "source": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "paragraph_ranges": [
+      [
+        11395,
+        11408
+      ]
+    ]
+  },
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "start_head": "2003b5135e6b1be0f8741db961806cdcacf498d7",
+  "end_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
+  "changed_files": [
+    "tests/contract/release-spine.test.ts"
+  ],
+  "actions": [
+    "Added source-bound assertion that L1o Output Synthesizer collapses survivors through pick_canonical into one winner.",
+    "Added executable release-boundary rejection test for unresolved multiple candidates with no final commandResult.",
+    "Added executable JUDGE + LAW path proving one selected commandResult may release only after verification and prerelease acceptance."
+  ],
+  "tests_results": [
+    {
+      "check": "npm run typecheck",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run typecheck:backend",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run lint",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:contract",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:integration",
+      "status": "PASS"
+    },
+    {
+      "check": "npm test",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run check:doc-c",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run build:web",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run check:coverage",
+      "status": "PRE_EXISTING_FAIL"
+    }
+  ],
+  "proof": [
+    "NEXY 317e619f5331a2d1ce9aa0016a18bc1d3f143270",
+    "Railway 3d500ce4-1729-402e-bf27-2b28ad8a9741",
+    "Release-spine contract passed at exact head."
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "limits": [
+    "Global coverage threshold remains a pre-existing release-level blocker."
+  ],
+  "next_actions": [
+    "Proceed serially to REQ-L1O-010.",
+    "Keep REQ-L1O-002 and REQ-L1O-014 frozen pending authoritative source resolution."
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25",
+  "trace_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-009",
+  "hash": "HASH_UNAVAILABLE"
+}
