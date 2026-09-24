@@ -1,0 +1,19 @@
+{
+  "ledger_id": "LEDGER-NEXY-FULL-AUDIT-O-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "O_SOVEREIGN_UNIVERSE_HOST",
+  "claim": [
+    "47/47 units classified FUTURE_SCOPE from constitutional future architecture."
+  ],
+  "proof": [
+    "Denominator scope metadata"
+  ],
+  "status": "RECORDED",
+  "coverage_after": {
+    "audited": 906,
+    "total": 1468,
+    "percent": 61.7166
+  },
+  "next_unit": "CATEGORY:P_CONSTITUTIONAL_LAYERS",
+  "hash": "HASH_UNAVAILABLE"
+}
