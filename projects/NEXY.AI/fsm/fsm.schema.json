@@ -5,21 +5,16 @@
   "required": [
     "fsm_id",
     "name",
-    "kind",
+    "namespace",
     "authority",
     "scope",
+    "initial_state",
     "states",
-    "events",
-    "event_ownership",
     "transitions",
-    "invalid_transition_behavior",
-    "recovery_semantics",
-    "audit_event_semantics",
+    "transition_completeness",
+    "requirement_ids",
     "implementation_mapping_status",
     "implementation_refs",
-    "requirement_ids",
-    "test_refs",
-    "alignment_status",
-    "alignment_notes"
+    "rule"
   ]
 }
