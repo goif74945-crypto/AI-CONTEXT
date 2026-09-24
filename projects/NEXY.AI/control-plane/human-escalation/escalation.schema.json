@@ -1,0 +1,14 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object","additionalProperties":false,
+ "required":["escalation_id","command_id","gate_type","reason","required_decision","status","evidence_refs"],
+ "properties":{
+  "escalation_id":{"type":"string","minLength":1},
+  "command_id":{"type":"string","minLength":1},
+  "gate_type":{"enum":["DESTRUCTIVE_MIGRATION","SECRET_CREDENTIAL","PRODUCTION_MUTATION","AUTHORITY_CONFLICT","IRREVERSIBLE_DATA","SECURITY_BOUNDARY_EXPANSION","BRANCH_HISTORY_REWRITE","AMBIGUOUS_DESTRUCTIVE_RECOVERY","CROSS_TENANT_EFFECT"]},
+  "reason":{"type":"string","minLength":1},
+  "required_decision":{"type":"string","minLength":1},
+  "status":{"enum":["OPEN","APPROVED","REJECTED","SUPERSEDED"]},
+  "evidence_refs":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}}
+ }
+}
