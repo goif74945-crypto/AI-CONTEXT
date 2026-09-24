@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "plan_id": "NEXY-COMMAND-DAG-20260924-01",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "status": "ACTIVE_SERIAL_HEAD_BOUND",
+  "rule": "Only the first command is READY. Every successor must be materialized after predecessor audit acceptance and rebound to the then-current exact target HEAD.",
+  "nodes": [
+    {
+      "order": 1,
+      "command_id": "CMD-NEXY-SEC-OTAC-LOG-001",
+      "findings": [
+        "F-NEXY-FULL-H-OTAC-LOG-001"
+      ],
+      "type": "SECURITY_FIX",
+      "priority": "CRITICAL",
+      "state": "READY",
+      "depends_on": []
+    },
+    {
+      "order": 2,
+      "command_id": "CMD-NEXY-EVIDENCE-E07-001",
+      "findings": [
+        "F-NEXY-FULL-J-EVIDENCE-001"
+      ],
+      "type": "EVIDENCE_REFRESH",
+      "priority": "CRITICAL",
+      "state": "PLANNED_REQUIRES_NEW_HEAD",
+      "depends_on": [
+        "CMD-NEXY-SEC-OTAC-LOG-001"
+      ]
+    },
+    {
+      "order": 3,
+      "command_id": "CMD-NEXY-CONTRACT-AGENT-ADAPTER-001",
+      "findings": [
+        "F-NEXY-FULL-B-AGENT-ADAPTER-001"
+      ],
+      "type": "CONTRACT_FIX",
+      "priority": "HIGH",
+      "state": "PLANNED_REQUIRES_NEW_HEAD",
+      "depends_on": [
+        "CMD-NEXY-EVIDENCE-E07-001"
+      ]
+    },
+    {
+      "order": 4,
+      "command_id": "CMD-NEXY-CONTRACT-CONSENSUS-001",
+      "findings": [
+        "F-NEXY-FULL-C-CONSENSUS-CONTRACT-001"
+      ],
+      "type": "CONTRACT_FIX",
+      "priority": "HIGH",
+      "state": "PLANNED_REQUIRES_NEW_HEAD",
+      "depends_on": [
+        "CMD-NEXY-CONTRACT-AGENT-ADAPTER-001"
+      ]
+    },
+    {
+      "order": 5,
+      "command_id": "CMD-NEXY-CONTRACT-EVIDENCE-001",
+      "findings": [
+        "F-NEXY-FULL-C-EVIDENCE-CONTRACT-001"
+      ],
+      "type": "CONTRACT_FIX",
+      "priority": "HIGH",
+      "state": "PLANNED_REQUIRES_NEW_HEAD",
+      "depends_on": [
+        "CMD-NEXY-CONTRACT-CONSENSUS-001"
+      ]
+    },
+    {
+      "order": 6,
+      "command_id": "CMD-NEXY-INCIDENT-SEMANTICS-001",
+      "findings": [
+        "F-NEXY-REAUDIT-N-INCIDENT-PRIORITY-001",
+        "F-NEXY-REAUDIT-N-INCIDENT-ERRORCODE-002"
+      ],
+      "type": "STATE_FIX",
+      "priority": "HIGH",
+      "state": "PLANNED_REQUIRES_NEW_HEAD",
+      "depends_on": [
+        "CMD-NEXY-CONTRACT-EVIDENCE-001"
+      ]
+    },
+    {
+      "order": 7,
+      "command_id": "CMD-NEXY-FSM-RECOVER-AUTH-001",
+      "findings": [
+        "F-NEXY-FULL-K-RECOVER-ACTOR-001"
+      ],
+      "type": "FSM_FIX",
+      "priority": "HIGH",
+      "state": "PLANNED_REQUIRES_NEW_HEAD",
+      "depends_on": [
+        "CMD-NEXY-INCIDENT-SEMANTICS-001"
+      ]
+    },
+    {
+      "order": 8,
+      "command_id": "CMD-NEXY-QUEUE-RETRY-001",
+      "findings": [
+        "F-NEXY-FULL-E-RETRY-CLASSIFICATION-001"
+      ],
+      "type": "RECOVERY_FIX",
+      "priority": "HIGH",
+      "state": "PLANNED_REQUIRES_NEW_HEAD",
+      "depends_on": [
+        "CMD-NEXY-FSM-RECOVER-AUTH-001"
+      ]
+    },
+    {
+      "order": 9,
+      "command_id": "CMD-NEXY-TRACE-SEMANTIC-TESTS-001",
+      "findings": [
+        "F-NEXY-FULL-A-TRACEABILITY-001",
+        "F-NEXY-FULL-A-TRACEABILITY-002",
+        "F-NEXY-FULL-F-RESTORE-TRACE-001",
+        "F-NEXY-FULL-Q-CSE-TEST-EVIDENCE-001"
+      ],
+      "type": "TEST",
+      "priority": "NORMAL",
+      "state": "PLANNED_REQUIRES_NEW_HEAD",
+      "depends_on": [
+        "CMD-NEXY-QUEUE-RETRY-001"
+      ]
+    },
+    {
+      "order": 10,
+      "command_id": "CMD-NEXY-MAPPING-VERIFY-001",
+      "findings": [
+        "F-NEXY-FULL-S-UNMAPPED-001",
+        "F-NEXY-FULL-S-CANDIDATE-MAPPING-001",
+        "F-NEXY-FULL-U-MAPPING-003",
+        "F-NEXY-FULL-V-TRACEABILITY-001",
+        "F-NEXY-FULL-Z-MAPPING-001",
+        "F-NEXY-FULL-U-SEMANTIC-CONTRACT-001"
+      ],
+      "type": "VERIFY",
+      "priority": "NORMAL",
+      "state": "PLANNED_REQUIRES_PROOF",
+      "depends_on": [
+        "CMD-NEXY-TRACE-SEMANTIC-TESTS-001"
+      ]
+    },
+    {
+      "order": 11,
+      "command_id": "CMD-NEXY-CURRENT-HEAD-TEST-EVIDENCE-001",
+      "findings": [
+        "F-NEXY-FULL-S-CURRENT-HEAD-EVIDENCE-002",
+        "F-NEXY-FULL-U-CURRENT-HEAD-EVIDENCE-002",
+        "F-NEXY-FULL-V-CURRENT-HEAD-INTEGRATION-EVIDENCE-002",
+        "F-NEXY-FULL-V-INVARIANT-PROOF-003",
+        "F-NEXY-FULL-V-CONCURRENCY-CHAOS-PROOF-004",
+        "F-NEXY-FULL-Z-CURRENT-HEAD-PROOF-002"
+      ],
+      "type": "TEST",
+      "priority": "NORMAL",
+      "state": "PLANNED_AFTER_IMPLEMENTATION_REPAIRS",
+      "depends_on": [
+        "CMD-NEXY-MAPPING-VERIFY-001"
+      ]
+    },
+    {
+      "order": 12,
+      "command_id": "CMD-NEXY-DOC-E-REFRESH-001",
+      "findings": [
+        "F-NEXY-FULL-I-CURRENT-EVIDENCE-STALE-001",
+        "F-NEXY-FULL-W-STALE-DOC-E-001",
+        "F-NEXY-FULL-Z-DOC-E-SYSTEM-EVIDENCE-003",
+        "F-NEXY-FULL-J-REGISTRY-FRESHNESS-001",
+        "F-NEXY-FULL-DENOM-CONTRACT-001"
+      ],
+      "type": "EVIDENCE_REFRESH",
+      "priority": "NORMAL",
+      "state": "PLANNED_AFTER_EXACT_HEAD_PROOF",
+      "depends_on": [
+        "CMD-NEXY-CURRENT-HEAD-TEST-EVIDENCE-001"
+      ]
+    },
+    {
+      "order": 13,
+      "command_id": "CMD-NEXY-RELEASE-GATES-001",
+      "findings": [
+        "F-NEXY-FULL-W-RELEASE-BLOCKED-002"
+      ],
+      "type": "RELEASE_FIX",
+      "priority": "NORMAL",
+      "state": "PLANNED_HUMAN_GATE_FOR_PRODUCTION",
+      "depends_on": [
+        "CMD-NEXY-DOC-E-REFRESH-001"
+      ]
+    }
+  ],
+  "batching": "SERIAL_BY_BUILDER_CAPACITY_AND_HEAD_BINDING; no later READY command is emitted before exact-head rebind after predecessor audit."
+}
