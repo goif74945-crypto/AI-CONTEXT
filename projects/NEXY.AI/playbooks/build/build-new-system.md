@@ -1,51 +1,79 @@
-# NEXY Builder Playbook
+# NEXY Playbook Contract
 
-## Universal preconditions
-1. Pin repository + branch + exact HEAD.
-2. Abort/freeze if the requested target branch/HEAD differs from task authority.
-3. Resolve target entity in `ontology/entities.jsonl`.
-4. Resolve governing requirements in `requirements/requirements.jsonl`.
-5. Resolve authority/scope/supersession/conflicts before implementation.
-6. Resolve `REQUIRES` predecessors from `graphs/dependency-graph.json`.
-7. Resolve code only through `implementation/system-to-code.jsonl`; CANDIDATE refs must be opened before use.
-8. Load linked contracts, FSM namespace, atomic invariants, trust boundaries, state ownership, events and config.
-9. Check `failures/failures.jsonl` for known failure classes.
-10. Never interpret file presence, build success, or prose as runtime/evidence PASS.
+Every playbook follows:
 
-# Workflow: Build New System
+1. PRECONDITIONS
+2. REQUIRED_CONTEXT
+3. AUTHORITY / SCOPE CHECK
+4. CHANGE IMPACT
+5. IMPLEMENTATION_SEQUENCE
+6. VALIDATION
+7. NEGATIVE_TESTS
+8. REGRESSION
+9. ROLLBACK
+10. DONE
 
-## Required context
-- parent ontology entity and entity type;
-- scope class and authority;
-- requirement IDs or explicit spec extension;
-- dependency DAG predecessors;
-- trust/state/event/config boundaries;
-- definition of proof required.
+Global rules:
+- refresh repository branch/HEAD before implementation claims or edits;
+- if HEAD differs from the task lock, STOP/FREEZE;
+- source design ≠ implementation ≠ test ≠ evidence ≠ deployment proof;
+- never patch a CANDIDATE implementation mapping without opening/confirming the file;
+- resolve Authority + Scope + Supersession + Conflict before coding;
+- preserve S5 invariants;
+- UI is not authority;
+- SWARM/model output is not final authority;
+- no test execution evidence = no PASS;
+- do not use stale evidence for current HEAD.
 
-## Sequence
-1. Confirm the system is CURRENT-required; if FUTURE/DEFERRED/EXPERIMENTAL, do not silently promote it.
-2. Create/approve ontology entity before code when the object is not already registered.
-3. Add or link testable requirements.
-4. Define contracts before implementation.
-5. Define state ownership/persistence and FSM namespace if stateful.
-6. Define atomic invariants and failure behavior.
-7. Define security boundary and permissions.
-8. Implement in dependency order.
-9. Add tests for normal, negative, boundary, failure and recovery behavior.
-10. Update implementation map, traceability and evidence only after observed artifacts exist.
+# Build New System
 
-## Negative tests
-- bypass LAW/JUDGE;
-- hidden fallback;
-- missing validation;
-- stale/ambiguous state;
-- unauthorized mutation;
-- nondeterministic mutation;
-- retry/idempotency duplication;
-- missing audit/incident path.
+## PRECONDITIONS
+- exact task scope and target ontology/system ID are known;
+- current source authority permits the system in this build scope;
+- no unresolved governance conflict blocks semantics;
+- repository/branch/HEAD is refreshed.
 
-## Rollback
-Remove or disable the new implementation without rewriting prior source/history; preserve failure evidence and revert only through legal repository/version path.
+## REQUIRED_CONTEXT
+Load:
+- ontology entity + parent/dependencies/dependents;
+- governing requirements;
+- authority/scope/supersession/conflicts;
+- dependency graph;
+- relevant contracts/invariants/FSM;
+- implementation map near parent/dependencies;
+- failure library;
+- test/evidence traceability.
+
+## CHANGE IMPACT
+Derive affected systems from dependency graph and all linked S4/S5 invariants.
+Do not infer “isolated change” from one directory.
+
+## IMPLEMENTATION_SEQUENCE
+1. lock contract/schema first;
+2. create module boundary with no forbidden reverse dependency;
+3. implement state/data ownership;
+4. implement failure behavior before happy-path release;
+5. add observability/audit;
+6. integrate through canonical authority path;
+7. add tests;
+8. update implementation/traceability registries only after code exists.
+
+## VALIDATION
+- type/build/static checks;
+- contract tests;
+- integration tests;
+- FSM/invariant tests;
+- security/negative tests;
+- exact-head evidence.
+
+## NEGATIVE_TESTS
+At minimum: malformed input, unauthorized actor, dependency unavailable, timeout, duplicate/idempotent replay, illegal state, proof/evidence shortage.
+
+## REGRESSION
+Run all tests tied to affected invariants and dependents.
+
+## ROLLBACK
+Revert implementation while preserving immutable history/migrations/evidence. If rollback itself changes schema/state, use migration registry.
 
 ## DONE
-Not DONE until requirement→code→test→evidence path is explicit and all unresolved blockers are reported.
+Done only when implementation + required tests + evidence obligations for the task type are satisfied. Build success alone is not DONE.
