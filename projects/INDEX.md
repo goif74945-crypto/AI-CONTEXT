@@ -40,3 +40,7 @@
   - [Project Intelligence Graph](./NEXY.AI/intelligence-graph/INDEX.md)
   - [Verification / Traceability](./NEXY.AI/verification/INDEX.md)
   - [Evidence Ledger](./NEXY.AI/evidence/evidence-ledger.jsonl)
+  - [Security Trust Boundaries](./NEXY.AI/security/trust-boundaries.json)
+  - [State Ownership](./NEXY.AI/state/state-ownership.json)
+  - [Event Registry](./NEXY.AI/events/events.json)
+  - [Configuration Registry](./NEXY.AI/config/config-registry.json)
