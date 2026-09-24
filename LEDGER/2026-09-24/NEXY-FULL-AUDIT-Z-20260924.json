@@ -1,0 +1,19 @@
+{
+  "ledger_id": "NEXY-FULL-AUDIT-Z-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "category": "Z_OTHER_SOURCE_DERIVED",
+  "claim": [
+    "24/24 Z units audited",
+    "8 PARTIAL,11 NOT_VERIFIED,3 OUT_OF_SCOPE,2 FAIL"
+  ],
+  "proof": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/Z_OTHER_SOURCE_DERIVED.units.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/Z_OTHER_SOURCE_DERIVED.summary.json"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "CURRENT_AT_TARGET_HEAD",
+  "trace": "AUDIT-NEXY-FULL-20260924-01",
+  "hash": "HASH_UNAVAILABLE"
+}
