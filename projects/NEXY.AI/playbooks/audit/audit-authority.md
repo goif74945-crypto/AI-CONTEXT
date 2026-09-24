@@ -1,28 +1,31 @@
-# PLAYBOOK — Audit Authority
+# NEXY Auditor Playbook
 
-## PURPOSE
-Detect authority inversion, stale Canon use, illegal override and scope leakage.
+## Universal audit law
+1. Pin exact repository/branch/HEAD and observed environment.
+2. Resolve source authority and scope before reading code.
+3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
+4. Use only: PASS / FAIL / PARTIAL / NOT IMPLEMENTED / NOT VERIFIED / UNKNOWN / BLOCKED / CONFLICT / SCOPE where applicable.
+5. File existence, docs, mocks, build success, or comments are never runtime proof.
+6. Search failure history and known conflicts before declaring a new root cause.
+7. Preserve evidence even when verdict is FAIL.
 
-## PROCEDURE
-1. Load authority graph.
-2. Load supersession graph.
-3. Load unresolved conflict registry.
-4. Load scope registry.
-5. Identify actor/module making the decision/mutation.
-6. Trace who may propose, validate, decide, enforce, freeze, recover and persist.
-7. Compare implementation permission paths with governance.
-8. Search for force/bypass/debug/maintenance shortcuts.
-9. Check UI visibility vs backend authorization.
-10. Check historical/vision rules are not promoted into current build accidentally.
-11. Check owner/system recovery paths against current Canon.
+# Workflow: Audit Authority / Supersession
 
-## RED FLAGS
-- SWARM/model output treated as truth authority.
-- UI directly mutates LAW/VAULT.
-- Architect/owner ad-hoc override bypasses deterministic operation law.
-- future Universe/Game/Robotics rules treated as current DOC-C build requirements without promotion.
-- superseded constants/rules still active.
-- authorization encoded only in presentation layer.
+## Sequence
+1. Classify question: current build, future domain, implementation truth, runtime truth, deployment or physical.
+2. Resolve scope first.
+3. Traverse authority graph.
+4. Traverse claim/requirement supersession.
+5. Inspect unresolved conflict records.
+6. Search implementation for lower-authority bypass.
+7. Verify descriptive code state is not being used to redefine normative source.
 
-## OUTPUT
-Authority path, inversion findings, stale-claim findings, and exact governing source.
+## Attack cases
+- future feature treated as current MUST;
+- old claim overrides newer claim;
+- UI/storage/agent becomes decision authority;
+- Owner/Architect generic force path bypasses operational law;
+- source-only physical claim reported as proven.
+
+## DONE
+Every authority decision is explainable as source + scope + supersession path.
