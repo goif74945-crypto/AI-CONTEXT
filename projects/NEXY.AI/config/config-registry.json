@@ -1,262 +1,271 @@
 {
   "schema_version": "1.0.0",
-  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-  "source_code": "packages/api/vnext-config.ts",
-  "system_version": "7.0.0",
-  "governance": {
-    "runtime_source": "VNEXT_DEFAULTS as const",
-    "change_rule": "Threshold/agent/timeout/quorum/auth-limit changes require config version, actor, audit record and rollback target under DOC-C requirements.",
-    "inline_magic_numbers": "Forbidden for endpoint timeout/TTL/limits where VNEXT_DEFAULTS governs.",
-    "verdict": "STATIC_VALUES_OBSERVED_NOT_RUNTIME_PROVEN"
-  },
-  "entries": [
+  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "source": "packages/api/vnext-config.ts",
+  "values": [
     {
       "key": "release.confidence_min",
       "value": 0.85,
-      "type": "number",
       "unit": "ratio",
-      "owner": "CONFIG-RELEASE-THRESHOLDS",
-      "source_requirement": "REQ-DOC-C-RELEASE-002"
+      "owner": "ENGINE-RELEASE-POLICY",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "release.deterministic_match_min",
       "value": 0.9,
-      "type": "number",
       "unit": "ratio",
-      "owner": "CONFIG-RELEASE-THRESHOLDS",
-      "source_requirement": "REQ-DOC-C-RELEASE-003"
+      "owner": "ENGINE-RELEASE-POLICY",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "release.quorum_min",
       "value": 2,
-      "type": "integer",
-      "unit": "participants/quorum units",
-      "owner": "CONFIG-RELEASE-THRESHOLDS",
-      "source_requirement": "REQ-DOC-C-RELEASE-004"
+      "unit": "count",
+      "owner": "ENGINE-RELEASE-POLICY",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "release.evidence_min",
       "value": 2,
-      "type": "integer",
-      "unit": "verified evidence items",
-      "owner": "CONFIG-RELEASE-THRESHOLDS",
-      "source_requirement": "REQ-DOC-C-RELEASE-005"
+      "unit": "count",
+      "owner": "ENGINE-RELEASE-POLICY",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "pipeline.decompose_timeout_ms",
       "value": 5000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-PIPELINE-TIMEOUTS",
-      "source_requirement": "REQ-DOC-C-SWARM-004"
+      "owner": "FABRIC-SWARM",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "pipeline.agent_timeout_default_ms",
       "value": 30000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-PIPELINE-TIMEOUTS",
-      "source_requirement": "REQ-DOC-C-SWARM-005"
+      "owner": "ADAPTER-AGENT",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "pipeline.agent_timeout_min_ms",
       "value": 10000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-PIPELINE-TIMEOUTS",
-      "source_requirement": "REQ-DOC-C-SWARM-005"
+      "owner": "ADAPTER-AGENT",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "pipeline.agent_timeout_max_ms",
       "value": 60000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-PIPELINE-TIMEOUTS",
-      "source_requirement": "REQ-DOC-C-SWARM-005"
+      "owner": "ADAPTER-AGENT",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "pipeline.critical_agent_timeout_ms",
       "value": 30000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-PIPELINE-TIMEOUTS",
-      "source_requirement": "REQ-DOC-C-SWARM-005"
+      "owner": "ADAPTER-AGENT",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "pipeline.cross_verify_timeout_ms",
       "value": 15000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-PIPELINE-TIMEOUTS",
-      "source_requirement": "REQ-DOC-C-SWARM-006"
+      "owner": "SYS-LO3",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "pipeline.consensus_timeout_ms",
       "value": 10000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-PIPELINE-TIMEOUTS",
-      "source_requirement": "REQ-DOC-C-SWARM-006"
+      "owner": "ENGINE-JUDGE",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "pipeline.emit_timeout_ms",
       "value": 5000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-PIPELINE-TIMEOUTS",
-      "source_requirement": null
+      "owner": "GATEWAY-API",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "pipeline.pipeline_cap_ms",
       "value": 120000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-PIPELINE-TIMEOUTS",
-      "source_requirement": "REQ-DOC-C-SWARM-007"
+      "owner": "KERNEL-CORE",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.otac_length",
       "value": 10,
-      "type": "integer",
-      "unit": "characters",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": "REQ-DOC-C-AUTH-001"
+      "unit": "chars",
+      "owner": "SERVICE-OTAC",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.otac_ttl_ms",
       "value": 300000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": "REQ-DOC-C-AUTH-002"
+      "owner": "SERVICE-OTAC",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.otac_max_attempts",
       "value": 5,
-      "type": "integer",
-      "unit": "attempts",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": "REQ-DOC-C-AUTH-004"
+      "unit": "count",
+      "owner": "SERVICE-OTAC",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.otac_resend_cooldown_ms",
       "value": 60000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": "REQ-DOC-C-AUTH-004"
+      "owner": "SERVICE-OTAC",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.otac_lock_window_ms",
       "value": 900000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": "REQ-DOC-C-AUTH-004"
+      "owner": "SERVICE-OTAC",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.session_ttl_ms",
       "value": 21600000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": "REQ-DOC-C-AUTH-005"
+      "owner": "SERVICE-SESSION",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.concurrent_sessions_per_user",
       "value": 5,
-      "type": "integer",
-      "unit": "sessions",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": "REQ-DOC-C-AUTH-005"
+      "unit": "count",
+      "owner": "SERVICE-SESSION",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.session_cookie_name",
       "value": "__Host-nexy-session",
-      "type": "string",
-      "unit": "cookie name",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": "REQ-DOC-C-AUTH-006"
+      "unit": "string",
+      "owner": "SERVICE-SESSION",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.csrf_cookie_name",
       "value": "__Host-nexy-csrf",
-      "type": "string",
-      "unit": "cookie name",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": "REQ-DOC-C-API-001"
+      "unit": "string",
+      "owner": "MODULE-CSRF",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "auth.salt_bytes",
       "value": 16,
-      "type": "integer",
       "unit": "bytes",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": null
+      "owner": "MODULE-AUTH",
+      "source_authority": "IMPLEMENTATION_INTERNAL",
+      "mutable_runtime": false
     },
     {
       "key": "auth.token_bytes",
       "value": 32,
-      "type": "integer",
       "unit": "bytes",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": null
+      "owner": "SERVICE-SESSION",
+      "source_authority": "IMPLEMENTATION_INTERNAL",
+      "mutable_runtime": false
     },
     {
       "key": "auth.session_slots",
       "value": 32,
-      "type": "integer",
-      "unit": "constant-time scan slots",
-      "owner": "CONFIG-AUTH-LIMITS",
-      "source_requirement": null
+      "unit": "count",
+      "owner": "MODULE-AUTH",
+      "source_authority": "IMPLEMENTATION_INTERNAL",
+      "mutable_runtime": false
     },
     {
       "key": "retention.event_log_days",
       "value": 90,
-      "type": "integer",
       "unit": "days",
-      "owner": "CONFIG-RETENTION",
-      "source_requirement": null
+      "owner": "MODULE-OBS",
+      "source_authority": "DOC-C",
+      "mutable_runtime": "versioned/audited config only"
     },
     {
       "key": "retention.audit_log_days",
       "value": 365,
-      "type": "integer",
       "unit": "days",
-      "owner": "CONFIG-RETENTION",
-      "source_requirement": null
+      "owner": "MODULE-OBS",
+      "source_authority": "DOC-C",
+      "mutable_runtime": "versioned/audited config only"
     },
     {
       "key": "retention.security_incident_days",
       "value": 365,
-      "type": "integer",
       "unit": "days",
-      "owner": "CONFIG-RETENTION",
-      "source_requirement": null
+      "owner": "MODULE-OBS",
+      "source_authority": "DOC-C",
+      "mutable_runtime": "versioned/audited config only"
     },
     {
       "key": "retention.freeze_incident_days",
       "value": 365,
-      "type": "integer",
       "unit": "days",
-      "owner": "CONFIG-RETENTION",
-      "source_requirement": null
+      "owner": "MODULE-OBS",
+      "source_authority": "DOC-C",
+      "mutable_runtime": "versioned/audited config only"
     },
     {
       "key": "queue.stale_job_ttl_ms",
       "value": 900000,
-      "type": "integer",
       "unit": "ms",
-      "owner": "CONFIG-VNEXT-DEFAULTS",
-      "source_requirement": "REQ-DOC-C-QUEUE-003"
+      "owner": "QUEUE-EXECUTION",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
     },
     {
       "key": "queue.max_concurrent_pipeline_runs",
       "value": 10,
-      "type": "integer",
-      "unit": "runs",
-      "owner": "CONFIG-VNEXT-DEFAULTS",
-      "source_requirement": "REQ-DOC-C-QUEUE-003"
+      "unit": "count",
+      "owner": "QUEUE-EXECUTION",
+      "source_authority": "DOC-C",
+      "mutable_runtime": false
+    },
+    {
+      "key": "SYSTEM_VERSION",
+      "value": "7.0.0",
+      "unit": "semver",
+      "owner": "SYS-NEXY",
+      "source_authority": "IMPLEMENTATION_CANONICAL_CONSTANT",
+      "mutable_runtime": false
+    },
+    {
+      "key": "rate_limit.mode",
+      "value": "fail-closed default; fail-open only when NEXY_RATE_LIMIT_MODE=fail-open",
+      "unit": "mode",
+      "owner": "MODULE-RATE-LIMIT",
+      "source_authority": "IMPLEMENTATION",
+      "mutable_runtime": "environment controlled; dev/test fail-open only"
     }
   ]
 }
