@@ -99,18 +99,18 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 1264,
-    "remaining": 204,
-    "percent": 86.1035
+    "audited": 1403,
+    "remaining": 65,
+    "percent": 95.5722
   },
-  "current_category": "V_CROSS_SYSTEM_INTEGRATION",
-  "last_completed_unit": "CATEGORY:U_FINAL_ARCHITECTURE_LAYERS",
-  "next_unit": "CATEGORY:V_CROSS_SYSTEM_INTEGRATION",
+  "current_category": "W_RELEASE_DEPLOYMENT_DOC_E",
+  "last_completed_unit": "CATEGORY:V_CROSS_SYSTEM_INTEGRATION",
+  "next_unit": "CATEGORY:W_RELEASE_DEPLOYMENT_DOC_E",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
-    "S2": 8,
-    "S3": 5,
+    "S2": 9,
+    "S3": 8,
     "S4": 6,
     "S5": 2
   },
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "U_FINAL_ARCHITECTURE_LAYERS",
+    "category_completed": "V_CROSS_SYSTEM_INTEGRATION",
     "read_back_verified": false,
-    "category_units": 18
+    "category_units": 139
   }
 }
