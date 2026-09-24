@@ -1,29 +1,37 @@
-# Requirement Traceability Validation
+# Requirement ↔ Code ↔ Test ↔ Evidence Traceability — Validation
 
-## Result
-**PASS**
+## Pinned implementation
+- repo: `goif74945-crypto/NEXY.AI-`
+- branch: `codex/spec-audit-20260919-78df350`
+- HEAD: `9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
 
-- canonical requirements: **262**
-- trace records: **262**
-- unique trace records: **262**
-- implementation HEAD: `9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
-- DOC-E requirement records: **15**
-- DOC-E exact evidence locations: **12**
+## Counts
+- requirements: **262**
+- code-mapped requirements: **202**
+- requirements with test candidates/declared coverage: **241**
+- requirements with explicit DOC-E evidence links: **12**
+- requirements with evidence usable for current HEAD: **0**
+- requirements with evidence present but non-current/stale: **12**
 
-Checks:
-- every canonical requirement has exactly one trace: PASS
-- code paths exist at pinned HEAD: PASS
-- test paths exist at pinned HEAD: PASS
-- evidence paths exist at pinned HEAD: PASS
-- all verdicts remain NOT_EVALUATED: PASS
-- DOC-E E01–E12 location mapping: PASS
+## Critical evidence finding
+Current DOC-E E1–E12 artifacts inspected in `docs/evidence/current/` declare commit:
 
-## Current location coverage
-- code mapped: **202/262**
-- test candidate mapped: **214/262**
-- evidence located: **12/262**
+`db52f9f1870b302f36653268513251d010f9726e`
 
-## Important
-Test refs are currently static candidates, not executed proof.
-Evidence refs are locations, not validated evidence.
-A later Acceptance/Test Matrix and Evidence Registry must convert these into typed proof obligations and current verdicts.
+Current observed branch HEAD is:
+
+`9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
+
+Therefore **none of E1–E12 is accepted as current-HEAD PASS evidence** in this registry.
+
+Several artifacts also explicitly report BLOCKED/BLOCKED_EXTERNAL for their own declared revision.
+
+## Test semantics
+A test file existing is not a PASS.
+
+Test links in this phase mean:
+- candidate/declared coverage location;
+- execution status remains UNKNOWN unless exact-head execution evidence is later attached.
+
+## Verdict rule
+Every requirement remains `NOT_EVALUATED` here. A later Acceptance/Test Matrix + Evidence Registry execution pass may produce PASS/FAIL/BLOCKED/NOT_TESTED.
