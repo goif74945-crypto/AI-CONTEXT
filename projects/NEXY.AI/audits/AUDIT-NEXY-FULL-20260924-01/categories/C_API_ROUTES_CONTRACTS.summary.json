@@ -1,0 +1,32 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "C_API_ROUTES_CONTRACTS",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 44,
+  "counts": {
+    "PARTIAL": 34,
+    "FAIL": 5,
+    "FUTURE_SCOPE": 5
+  },
+  "source_proof": [
+    "DOC-C canonical SystemEnvelope/directive/evidence/consensus/release-policy and API obligations.",
+    "Canonical requirements REQ-DOC-C-CONTRACT-001..005 where linked.",
+    "AI-CONTEXT contract registry + API/schema/module/storage contract subregistries."
+  ],
+  "implementation_proof": [
+    "Exact target API routes and mapped contract modules inspected via target-head blobs.",
+    "packages/contracts/{envelope,directive,evidence,consensus,release-policy}.ts inspected.",
+    "Current-build API contract mappings are present; current target execution evidence is absent."
+  ],
+  "test_proof": [
+    "Contract/API test files are present, including canonical-api, api-shapes, envelope, release-spine and directive coverage tests.",
+    "No successful exact-target-head execution established; combined target status remains failure."
+  ],
+  "findings": [
+    "F-NEXY-FULL-C-CONSENSUS-CONTRACT-001",
+    "F-NEXY-FULL-C-EVIDENCE-CONTRACT-001",
+    "F-NEXY-FULL-DENOM-CONTRACT-001"
+  ],
+  "next_category": "F_STATE_PERSISTENCE_STORAGE",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
