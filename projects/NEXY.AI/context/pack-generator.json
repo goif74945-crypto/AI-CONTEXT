@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "builder_pack": {
+    "output": "compiled/nexy-build-context.json",
+    "sections": [
+      "task_identity",
+      "repository_snapshot",
+      "authority_scope",
+      "root_entities",
+      "requirements",
+      "dependencies",
+      "contracts",
+      "fsms",
+      "invariants",
+      "security_boundaries",
+      "state_ownership",
+      "events",
+      "config",
+      "known_failures",
+      "implementation_refs",
+      "test_refs",
+      "evidence_refs",
+      "negative_examples",
+      "done_definition"
+    ],
+    "inclusion": {
+      "root_entities": "router roots + aliases resolved",
+      "requirements": "all requirements linked to roots; then requirements linked to direct REQUIRED dependencies",
+      "dependencies": "direct REQUIRES + dependents affected by change",
+      "invariants": "all linked S4/S5; S5 never dropped by budget trimming",
+      "implementation_refs": "EXACT/GROUP; CANDIDATE only with warning",
+      "tests": "linked candidate tests; execution status preserved",
+      "evidence": "only exact-revision evidence may support verdict",
+      "failures": "match by affected_systems/error/symptom"
+    },
+    "trimming_order": [
+      "golden_examples",
+      "low-priority tests",
+      "unrelated dependents",
+      "descriptive prose"
+    ],
+    "never_trim": [
+      "authority_scope",
+      "requirements",
+      "S5 invariants",
+      "unresolved conflicts",
+      "known critical failures",
+      "repository snapshot"
+    ]
+  },
+  "audit_pack": {
+    "output": "compiled/nexy-audit-context.json",
+    "sections": [
+      "audit_target",
+      "repository_snapshot",
+      "authority_scope",
+      "claims_requirements",
+      "implementation",
+      "contracts",
+      "fsms",
+      "invariants",
+      "security",
+      "persistence",
+      "events",
+      "tests",
+      "evidence",
+      "failure_history",
+      "negative_corpus",
+      "attack_catalog",
+      "verdict_rules"
+    ],
+    "extra_rules": [
+      "Include conflicting/older superseded claim only when needed to test drift.",
+      "Include all evidence freshness metadata.",
+      "Include test files separately from execution evidence.",
+      "Include known failed approaches from Failure Library."
+    ]
+  },
+  "query_contract": {
+    "input": {
+      "task_id": "string",
+      "task_type": "router task type or AUTO",
+      "query": "string",
+      "explicit_entity_ids": "string[]",
+      "repository_snapshot": "optional exact repo/branch/head",
+      "mode": [
+        "BUILD",
+        "AUDIT"
+      ]
+    },
+    "output": {
+      "context_pack_id": "string",
+      "resolved_task_type": "string",
+      "root_entity_ids": "string[]",
+      "included_record_ids": "string[]",
+      "warnings": "string[]",
+      "unresolved": "string[]",
+      "source_revisions": "object"
+    }
+  }
+}
