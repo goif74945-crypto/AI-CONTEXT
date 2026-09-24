@@ -1,21 +1,18 @@
 # NEXY.AI Invariant Registry
 
 Canonical:
-- `invariants.jsonl`
+- `invariants.jsonl` — atomic “must not break” assertions.
+- `law-groups.jsonl` — LAW/INVARIANT ontology entity → requirements → atomic invariants → code map.
 - `invariant.schema.json`
 - `validation-report.md`
 
-This registry answers:
+## Design
+Broad architecture laws are not treated as one prose blob.
 
-> **What must remain true even when a subsystem is changed?**
+Trace:
+`LAW / INVARIANT ENTITY → MUST REQUIREMENT → ATOMIC INVARIANT → IMPLEMENTATION REFS → TEST → EVIDENCE`
 
-Each invariant links to:
-- affected ontology entities;
-- source requirements;
-- source ranges;
-- observed implementation locations;
-- violation behavior.
+Test/Evidence links remain empty until their dedicated stages.
 
-Status remains `NOT_EVALUATED` until tests/evidence establish compliance.
-
-S0–S5 severity is intentionally deferred to the Error/Incident Taxonomy so this registry does not invent a severity scale prematurely.
+## Critical rule
+Do not weaken, reinterpret, or silently bypass an invariant to make a patch pass. If the source must change, change authority/supersession first.
