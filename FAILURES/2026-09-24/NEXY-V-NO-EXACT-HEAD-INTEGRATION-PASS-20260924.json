@@ -1,0 +1,9 @@
+{
+  "failure_id": "FAIL-NEXY-V-NO-EXACT-HEAD-INTEGRATION-PASS-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "cause": "No successful exact-target-head cross-system integration evidence.",
+  "failed_approach": "Do not treat mapping/catalog presence as executed integration proof.",
+  "recovery": "Retain PARTIAL/NOT_VERIFIED until full-gate remediation tests.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
