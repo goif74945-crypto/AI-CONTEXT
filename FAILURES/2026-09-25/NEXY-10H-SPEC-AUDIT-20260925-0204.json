@@ -1,0 +1,52 @@
+{
+  "task_id": "TASK-NEXY-10H-SPEC-AUDIT-20260925-0204",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "audit_window_utc": {
+    "start": "2026-09-24T09:04:36Z",
+    "end": "2026-09-24T19:04:36Z"
+  },
+  "audit_window_asia_bangkok": {
+    "start": "2026-09-24T16:04:36+07:00",
+    "end": "2026-09-25T02:04:36+07:00"
+  },
+  "snapshot_head": "2003b5135e6b1be0f8741db961806cdcacf498d7",
+  "snapshot_head_message": "test(l1o): make race injection no_std-test compatible",
+  "failures": [
+    {
+      "failure_id": "FAIL-NEXY-INCIDENT-SECONDARY-LINK-20260925",
+      "context": "DOC-C incident semantics vs run-bound FreezeIncident persistence",
+      "cause": "Implementation aggregates lower-priority failure codes on the primary FreezeIncident.",
+      "failed_approach": "Treating priority arbitration plus secondaryErrorCodes[] as equivalent to source-required secondary incident records/links.",
+      "recovery": "Implement or prove a source-authorized linked secondary-incident persistence path; then add exact-head regression coverage.",
+      "boundary": "packages/queue/run-state.ts; packages/orch-core/system-state.ts; prisma FreezeIncident/SecurityIncident model; packages/obs/incidents.ts",
+      "prevention": "Source-derived semantic contract test for linked secondary incidents.",
+      "severity": "S3",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-NEXY-AGENT-ADAPTER-SURFACE-20260925",
+      "context": "DOC-C AgentAdapter contract vs runtime registration",
+      "cause": "AgentAdapter extends SwarmAgent and runtime assertion additionally requires call; internal timeoutMs compatibility is also present.",
+      "failed_approach": "Calling the extended runtime surface canonical without source authority for the additional mandatory compatibility member.",
+      "recovery": "Either decouple internal compatibility from strict canonical adapter validation or promote the extension in authoritative spec.",
+      "boundary": "packages/swarm/adapters/types.ts; packages/swarm/adapters/contract.ts; packages/swarm/adapters/base.ts",
+      "prevention": "Spec-exact adapter fixture test with only canonical members.",
+      "severity": "S3",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-NEXY-RELEASE-COVERAGE-GATE-20260925",
+      "context": "Exact-head release validation",
+      "cause": "coverage_check exits 1 because api metrics straddle 85% and judge branch coverage is 88.37% below the all-metrics 90% gate interpretation.",
+      "failed_approach": "Treating broad test/build success as release authorization.",
+      "recovery": "Resolve authoritative coverage metric policy and/or raise measured coverage, then rerun exact-head release gates.",
+      "boundary": "release/coverage gate",
+      "prevention": "Keep release status separate from feature-level test status.",
+      "severity": "S4",
+      "status": "OPEN"
+    }
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "Railway deployment 42b5ddb6-804d-44d9-b3d1-bd6976b58c1d and repo snapshot"
+}
