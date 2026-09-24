@@ -1,0 +1,12 @@
+{
+  "case_id": "CASE-NEXY-CURRENT-EVIDENCE-REVISION-DRIFT-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "finding_id": "F-NEXY-FULL-I-CURRENT-EVIDENCE-STALE-001",
+  "cause": "DOC-E current namespace was generated for an older campaign revision and has not been refreshed to the exact full-audit target HEAD.",
+  "impact": "Release/evidence verification cannot use E1-E12 as current-head proof.",
+  "fix_class": "EVIDENCE_REFRESH_AFTER_FULL_AUDIT_GATE",
+  "prevention": "Require exact repo/branch/HEAD/environment/run/result binding before marking evidence current.",
+  "regression": "Any target HEAD change invalidates revision-bound deployment evidence until refreshed.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
