@@ -1,11 +1,23 @@
-# NEXY.AI Golden / Negative Corpus
+# NEXY.AI Golden + Negative Corpus
 
-- `golden/examples.jsonl` — correct behavior patterns.
-- `negative/examples.jsonl` — plausible-looking but prohibited patterns.
-- `example.schema.json`
-- `validation-report.md`
+Machine-readable examples:
+- `golden/examples.jsonl`
+- `negative/examples.jsonl`
 
-Use as few-shot context for Builder/Auditor/Context Pack generation.
+Golden examples show behavior that preserves NEXY authority/invariants.
 
-Priority negative patterns:
-fake success · hidden fallback · stale evidence · invalid FSM · scope creep · authority inversion · UI masking failure · unverified release · nondeterministic mutation.
+Negative examples are deliberately plausible-looking mistakes:
+- fake success;
+- stale evidence;
+- authority inversion;
+- invalid FSM;
+- scope creep;
+- UI masking;
+- hidden fallback;
+- nondeterministic mutation;
+- destructive learning rewrite;
+- test-file-as-PASS;
+- orphan FREEZE;
+- physical claims from code only.
+
+AI should query negative patterns before finalizing a patch/audit verdict.
