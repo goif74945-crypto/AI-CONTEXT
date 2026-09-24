@@ -1,14 +1,13 @@
-# NEXY.AI Verification Registry
+# NEXY.AI Verification / Traceability
 
-Canonical:
-- `test-index.jsonl` — 108 indexed test files at pinned implementation HEAD.
-- `requirement-test-matrix.jsonl` — requirement → mapped tests.
+Canonical files:
+- `requirement-traceability.jsonl` — requirement → code → test → evidence → verdict.
+- `requirement-test-matrix.jsonl` — acceptance obligations and mapped test sources.
+- `traceability-summary.json`
+- `test-matrix-coverage.json`
+- `registry-cross-validation.json`
+- `registry-cross-validation.md`
 - `validation-report.md`
-- `checkpoints/` — streaming test extraction.
 
-Statuses:
-- `EXPLICIT` = mapping is directly implied by test/domain naming and requirement class.
-- `CANDIDATE` = useful likely test relation; inspect before relying on it.
-- `NONE` = no test safely mapped yet.
-
-Test existence never implies execution or PASS.
+Critical rule:
+**test source exists ≠ test executed ≠ evidence current ≠ requirement PASS**.
