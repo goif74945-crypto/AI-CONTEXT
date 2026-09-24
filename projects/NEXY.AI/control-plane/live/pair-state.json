@@ -1,6 +1,6 @@
 {
   "pair_id": "NEXY-CLOSED-LOOP-01",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "auditor_role": "AUDITOR_CHAT",
   "builder_worker_id": "BUILDER-01",
   "control_repo": "goif74945-crypto/AI-CONTEXT",
@@ -81,7 +81,13 @@
       "VER-003 nexy-determinism-verify",
       "VER-004 nexy-consensus-verify",
       "VER-005 nexy-release-gate",
-      "VER-006 nexy-completion-proof"
+      "VER-006 nexy-completion-proof",
+      "REL-001 nexy-build",
+      "REL-002 nexy-ci",
+      "REL-003 nexy-deploy",
+      "REL-004 nexy-migration",
+      "REL-005 nexy-release",
+      "REL-006 nexy-recovery"
     ],
     "blocked_identity_gaps": [
       "nexy-integration: no separate formal numbered identity in source; do not invent ID"
@@ -89,12 +95,12 @@
     "execution_gaps": [
       "DATA-006 nexy-web-retrieval: concrete retrieval mechanism not established by authoritative source"
     ],
-    "last_evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-wave10-verification-materialization.md",
-    "next_wave": "WAVE_11_RELEASE"
+    "last_evidence": "projects/NEXY.AI/skills/evidence/2026-09-24-wave11-release-materialization.md",
+    "next_wave": "RECONCILE_FORMAL_SKILL_INVENTORY"
   },
   "background_execution_claimed": false,
   "last_control_observation": {
-    "ai_context_head": "fa36254cfd9e2a21b4a04975ae6ec8863de869d7",
+    "ai_context_head": "f8f0e14a3a6f24891999d82c008479a7979eb3c6",
     "ready_commands": 1,
     "active_claims": 0,
     "builder_results": 0,
