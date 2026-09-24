@@ -1,12 +1,44 @@
 {
   "fsm_id": "FSM-CREATOR-PUBLICATION",
   "name": "Creator Publication FSM",
-  "kind": "SOURCE_DEFINED",
+  "namespace": "CREATOR_PUBLICATION",
+  "registry_kind": "SOURCE_DEFINED",
   "authority": [
     "CONSTITUTIONAL_SOURCE"
   ],
   "scope": [
     "FUTURE_ARCHITECTURE"
+  ],
+  "ontology_status": "SOURCE_DESIGN",
+  "states": [
+    {
+      "state_id": "STATE-PUB-ANCHOR-QUEUED",
+      "name": "ANCHOR_QUEUED"
+    },
+    {
+      "state_id": "STATE-PUB-BUILT",
+      "name": "BUILT"
+    },
+    {
+      "state_id": "STATE-PUB-CREATED",
+      "name": "CREATED"
+    },
+    {
+      "state_id": "STATE-PUB-FINALIZED",
+      "name": "FINALIZED"
+    },
+    {
+      "state_id": "STATE-PUB-PUBLIC-ACTIVE",
+      "name": "PUBLIC_ACTIVE"
+    },
+    {
+      "state_id": "STATE-PUB-SEALED",
+      "name": "SEALED"
+    },
+    {
+      "state_id": "STATE-PUB-VALIDATED",
+      "name": "VALIDATED"
+    }
   ],
   "source_range": [
     {
@@ -16,84 +48,94 @@
       "end_paragraph": 5154
     }
   ],
-  "states": [
-    "CREATED",
-    "BUILT",
-    "SEALED",
-    "VALIDATED",
-    "ANCHOR_QUEUED",
-    "FINALIZED",
-    "PUBLIC_ACTIVE"
-  ],
-  "events": [],
-  "event_ownership": {},
-  "transitions": [
-    {
-      "from": "CREATED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "BUILT",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "BUILT",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "SEALED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "SEALED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "VALIDATED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "VALIDATED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "ANCHOR_QUEUED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "ANCHOR_QUEUED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "FINALIZED",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    },
-    {
-      "from": "FINALIZED",
-      "event": null,
-      "guard": "UNSPECIFIED_BY_SOURCE",
-      "action": "UNSPECIFIED_BY_SOURCE",
-      "to": "PUBLIC_ACTIVE",
-      "failure": "GOVERNING_LAW_APPLIES",
-      "audit_event": "UNSPECIFIED_BY_SOURCE"
-    }
-  ],
-  "invalid_transition_behavior": "Illegal transition is prohibited; exact event/guard names are not established by captured source.",
-  "recovery_semantics": "UNKNOWN",
-  "audit_event_semantics": "UNKNOWN",
-  "implementation_mapping_status": "UNMAPPED",
-  "implementation_refs": [],
   "requirement_ids": [
     "REQ-CONST-019"
   ],
-  "test_refs": [],
-  "alignment_status": "SOURCE_SEQUENCE_ONLY",
-  "alignment_notes": [
-    "PUBLIC_ACTIVE must not precede FINALIZED."
+  "implementation_mapping_status": "UNMAPPED",
+  "implementation_refs": [],
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "transition_source": "SOURCE",
+  "transitions": [
+    {
+      "from": "CREATED",
+      "event": "advance_built",
+      "guard": [
+        "requirements for BUILT satisfied"
+      ],
+      "action": [
+        "enter BUILT"
+      ],
+      "to": "BUILT",
+      "failure": "publication blocked"
+    },
+    {
+      "from": "BUILT",
+      "event": "advance_sealed",
+      "guard": [
+        "requirements for SEALED satisfied"
+      ],
+      "action": [
+        "enter SEALED"
+      ],
+      "to": "SEALED",
+      "failure": "publication blocked"
+    },
+    {
+      "from": "SEALED",
+      "event": "advance_validated",
+      "guard": [
+        "requirements for VALIDATED satisfied"
+      ],
+      "action": [
+        "enter VALIDATED"
+      ],
+      "to": "VALIDATED",
+      "failure": "publication blocked"
+    },
+    {
+      "from": "VALIDATED",
+      "event": "advance_anchor_queued",
+      "guard": [
+        "requirements for ANCHOR_QUEUED satisfied"
+      ],
+      "action": [
+        "enter ANCHOR_QUEUED"
+      ],
+      "to": "ANCHOR_QUEUED",
+      "failure": "publication blocked"
+    },
+    {
+      "from": "ANCHOR_QUEUED",
+      "event": "advance_finalized",
+      "guard": [
+        "requirements for FINALIZED satisfied"
+      ],
+      "action": [
+        "enter FINALIZED"
+      ],
+      "to": "FINALIZED",
+      "failure": "publication blocked"
+    },
+    {
+      "from": "FINALIZED",
+      "event": "advance_public_active",
+      "guard": [
+        "requirements for PUBLIC_ACTIVE satisfied"
+      ],
+      "action": [
+        "enter PUBLIC_ACTIVE"
+      ],
+      "to": "PUBLIC_ACTIVE",
+      "failure": "publication blocked"
+    }
+  ],
+  "global_rules": [
+    "Creator app must not become PUBLIC_ACTIVE before FINALIZED.",
+    "Publication is FSM-bound."
+  ],
+  "invalid_transition_behavior": "reject/freeze according to governing law",
+  "audit_event": "publication transition",
+  "notes": [
+    "FSM namespace is isolated; equal state labels in other FSMs are not aliases."
   ]
 }
