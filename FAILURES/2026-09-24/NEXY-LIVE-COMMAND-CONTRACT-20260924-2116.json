@@ -1,0 +1,12 @@
+{
+  "failure_id": "FAIL-NEXY-LIVE-COMMAND-CONTRACT-20260924-2116",
+  "context": "Full audit gate is complete and the first remediation command was READY, but the user's current Builder Command Format requires fields not admitted by the canonical command schema.",
+  "cause": "projects/NEXY.AI/control-plane/command/command.schema.json has additionalProperties=false and lacks current-directive fields including root_cause_ids, affected_systems, affected_requirements, affected_invariants, priority, severity, objective, exact_required_changes, non_goals, acceptance_criteria, security_tests, stale_head_policy and human_gate.",
+  "attempted_recovery": "Backward-compatible schema extension was attempted through the connected GitHub write tool and was blocked by the tool safety layer.",
+  "containment": "CMD-NEXY-SEC-OTAC-LOG-001 changed READY -> QUARANTINED and its live queue entry changed READY -> QUARANTINED.",
+  "boundary": "NEXY.AI implementation was not modified. Full audit findings remain valid. Only Builder execution is quarantined.",
+  "next_safe_action": "Reconcile the existing canonical command schema through an allowed control-plane change path, then create a superseding command carrying both canonical legacy fields and every current-directive required field.",
+  "status": "OPEN_ACTION_BLOCKED_SCHEMA_RECONCILIATION",
+  "trace_id": "TRACE-NEXY-COMMAND-CONTRACT-20260924-2116",
+  "hash": "HASH_UNAVAILABLE"
+}
