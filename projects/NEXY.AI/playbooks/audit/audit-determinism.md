@@ -1,44 +1,25 @@
-# PLAYBOOK — Audit Determinism
+# NEXY Auditor Playbook
 
-## PURPOSE
-Determine whether the claimed deterministic domain has hidden nondeterminism or evidence gaps.
+## Universal audit law
+1. Pin exact repository/branch/HEAD and observed environment.
+2. Resolve source authority/scope before implementation.
+3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
+4. Never infer PASS from code/docs/build alone.
+5. Preserve failure evidence and unresolved UNKNOWN explicitly.
 
-## SCOPE FIRST
-Identify the domain before applying rules:
-- Constitutional/Core canonical mutation;
-- DOC-C orchestration;
-- Game authoritative simulation;
-- non-authoritative rendering/sandbox;
-- robotics normalized decision path.
+# Workflow: Audit Determinism
 
-Do not incorrectly apply one domain's numeric/randomness law to another.
+## Sequence
+1. Identify authoritative vs presentation/nondeterministic domain.
+2. Enumerate all mutation points.
+3. Verify single canonical mutator where required.
+4. Verify event ordering, counters and tie-breaks.
+5. Scan authoritative math for float/RNG/system-clock/unordered iteration.
+6. Verify environment/toolchain/target identity inputs.
+7. Rebuild/replay same inputs across repeated runs/architectures where required.
+8. Compare state hash after each canonical replay step.
+9. Inject overflow, timing, ordering and crash faults.
+10. Verify divergence freezes rather than self-heals silently.
 
-## PROCEDURE
-1. Resolve governing determinism laws/invariants.
-2. Identify authoritative state mutator(s).
-3. Trace ordering/concurrency/async boundaries.
-4. Inspect time sources.
-5. Inspect RNG/entropy sources.
-6. Inspect numeric model/overflow behavior.
-7. Inspect environment/compiler/allocator/config dependencies.
-8. Inspect filesystem/directory/order iteration.
-9. Inspect replay/state-hash behavior.
-10. Inspect queue/event ordering and idempotency.
-11. Run repeatability tests on same input/state.
-12. Run cross-process/cross-build/cross-architecture tests where the claim requires them.
-13. Compare state/output hashes.
-
-## RED FLAGS
-- unordered map/directory iteration in authoritative path;
-- system clock read in Core;
-- hidden RNG;
-- floating point where prohibited;
-- scheduler timing affecting state;
-- concurrent canonical mutators;
-- retry that duplicates mutation;
-- environment-dependent branch;
-- replay that skips corrupted history;
-- game/render nondeterminism leaking into sovereign state.
-
-## PASS
-Requires repeatable observed evidence matching the claim scope. Design law/code inspection alone = NOT_VERIFIED.
+## DONE
+Same authorized inputs/environment produce the required identical authoritative state/hash, with divergence handled by law.
