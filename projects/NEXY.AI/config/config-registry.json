@@ -1,271 +1,296 @@
 {
   "schema_version": "1.0.0",
-  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "repository_snapshot": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
   "source": "packages/api/vnext-config.ts",
-  "values": [
+  "system_version": "7.0.0",
+  "entries": [
     {
       "key": "release.confidence_min",
       "value": 0.85,
-      "unit": "ratio",
+      "type": "number",
       "owner": "ENGINE-RELEASE-POLICY",
+      "range": "0..1",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "release.deterministic_match_min",
       "value": 0.9,
-      "unit": "ratio",
+      "type": "number",
       "owner": "ENGINE-RELEASE-POLICY",
+      "range": "0..1",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "release.quorum_min",
       "value": 2,
-      "unit": "count",
+      "type": "integer",
       "owner": "ENGINE-RELEASE-POLICY",
+      "range": ">=1",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "release.evidence_min",
       "value": 2,
-      "unit": "count",
+      "type": "integer",
       "owner": "ENGINE-RELEASE-POLICY",
+      "range": ">=1",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "pipeline.decompose_timeout_ms",
       "value": 5000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "FABRIC-SWARM",
+      "range": ">0",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "pipeline.agent_timeout_default_ms",
       "value": 30000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "ADAPTER-AGENT",
+      "range": "10000..60000",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "pipeline.agent_timeout_min_ms",
       "value": 10000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "ADAPTER-AGENT",
+      "range": ">0",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "pipeline.agent_timeout_max_ms",
       "value": 60000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "ADAPTER-AGENT",
+      "range": ">=min",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "pipeline.critical_agent_timeout_ms",
       "value": 30000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "ADAPTER-AGENT",
+      "range": "10000..60000",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "pipeline.cross_verify_timeout_ms",
       "value": 15000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "SYS-LO3",
+      "range": ">0",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "pipeline.consensus_timeout_ms",
       "value": 10000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "ENGINE-JUDGE",
+      "range": ">0",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "pipeline.emit_timeout_ms",
       "value": 5000,
-      "unit": "ms",
-      "owner": "GATEWAY-API",
+      "type": "integer_ms",
+      "owner": "KERNEL-CORE",
+      "range": ">0",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "pipeline.pipeline_cap_ms",
       "value": 120000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "KERNEL-CORE",
+      "range": ">0",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.otac_length",
       "value": 10,
-      "unit": "chars",
+      "type": "integer",
       "owner": "SERVICE-OTAC",
+      "range": "exact current default",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.otac_ttl_ms",
       "value": 300000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "SERVICE-OTAC",
+      "range": "exact current default",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.otac_max_attempts",
       "value": 5,
-      "unit": "count",
+      "type": "integer",
       "owner": "SERVICE-OTAC",
+      "range": "exact current default",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.otac_resend_cooldown_ms",
       "value": 60000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "SERVICE-OTAC",
+      "range": "exact current default",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.otac_lock_window_ms",
       "value": 900000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "SERVICE-OTAC",
+      "range": "exact current default",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.session_ttl_ms",
       "value": 21600000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "SERVICE-SESSION",
+      "range": "exact current default",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.concurrent_sessions_per_user",
       "value": 5,
-      "unit": "count",
+      "type": "integer",
       "owner": "SERVICE-SESSION",
+      "range": "exact current default",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.session_cookie_name",
       "value": "__Host-nexy-session",
-      "unit": "string",
+      "type": "string",
       "owner": "SERVICE-SESSION",
+      "range": "secure __Host- cookie",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.csrf_cookie_name",
       "value": "__Host-nexy-csrf",
-      "unit": "string",
+      "type": "string",
       "owner": "MODULE-CSRF",
+      "range": "secure __Host- cookie",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "auth.salt_bytes",
       "value": 16,
-      "unit": "bytes",
-      "owner": "MODULE-AUTH",
+      "type": "integer",
+      "owner": "SERVICE-OTAC",
+      "range": "security implementation parameter",
       "source_authority": "IMPLEMENTATION_INTERNAL",
-      "mutable_runtime": false
+      "mutable": "CODE_VERSION"
     },
     {
       "key": "auth.token_bytes",
       "value": 32,
-      "unit": "bytes",
+      "type": "integer",
       "owner": "SERVICE-SESSION",
+      "range": "security implementation parameter",
       "source_authority": "IMPLEMENTATION_INTERNAL",
-      "mutable_runtime": false
+      "mutable": "CODE_VERSION"
     },
     {
       "key": "auth.session_slots",
       "value": 32,
-      "unit": "count",
+      "type": "integer",
       "owner": "MODULE-AUTH",
+      "range": "must match kernel session ring size",
       "source_authority": "IMPLEMENTATION_INTERNAL",
-      "mutable_runtime": false
+      "mutable": "CODE_VERSION"
     },
     {
       "key": "retention.event_log_days",
       "value": 90,
-      "unit": "days",
+      "type": "integer_days",
       "owner": "MODULE-OBS",
+      "range": ">=0",
       "source_authority": "DOC-C",
-      "mutable_runtime": "versioned/audited config only"
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "retention.audit_log_days",
       "value": 365,
-      "unit": "days",
+      "type": "integer_days",
       "owner": "MODULE-OBS",
+      "range": ">=0",
       "source_authority": "DOC-C",
-      "mutable_runtime": "versioned/audited config only"
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "retention.security_incident_days",
       "value": 365,
-      "unit": "days",
+      "type": "integer_days",
       "owner": "MODULE-OBS",
+      "range": ">=0",
       "source_authority": "DOC-C",
-      "mutable_runtime": "versioned/audited config only"
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "retention.freeze_incident_days",
       "value": 365,
-      "unit": "days",
+      "type": "integer_days",
       "owner": "MODULE-OBS",
+      "range": ">=0",
       "source_authority": "DOC-C",
-      "mutable_runtime": "versioned/audited config only"
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "queue.stale_job_ttl_ms",
       "value": 900000,
-      "unit": "ms",
+      "type": "integer_ms",
       "owner": "QUEUE-EXECUTION",
+      "range": ">0",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     },
     {
       "key": "queue.max_concurrent_pipeline_runs",
       "value": 10,
-      "unit": "count",
+      "type": "integer",
       "owner": "QUEUE-EXECUTION",
+      "range": ">=1",
       "source_authority": "DOC-C",
-      "mutable_runtime": false
-    },
-    {
-      "key": "SYSTEM_VERSION",
-      "value": "7.0.0",
-      "unit": "semver",
-      "owner": "SYS-NEXY",
-      "source_authority": "IMPLEMENTATION_CANONICAL_CONSTANT",
-      "mutable_runtime": false
-    },
-    {
-      "key": "rate_limit.mode",
-      "value": "fail-closed default; fail-open only when NEXY_RATE_LIMIT_MODE=fail-open",
-      "unit": "mode",
-      "owner": "MODULE-RATE-LIMIT",
-      "source_authority": "IMPLEMENTATION",
-      "mutable_runtime": "environment controlled; dev/test fail-open only"
+      "mutable": "VERSIONED_GOVERNED_ONLY"
     }
+  ],
+  "rules": [
+    "Route handlers must derive current limits and defaults from VNEXT_DEFAULTS; no inline magic-number drift.",
+    "Structural schema, dependency rules and FSM definitions are runtime immutable.",
+    "Threshold, timeout, quorum and auth-limit changes require version, actor, audit record and rollback target."
   ]
 }
