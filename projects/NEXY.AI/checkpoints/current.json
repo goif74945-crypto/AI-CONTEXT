@@ -25,10 +25,11 @@
     "11 Golden + Negative Corpus",
     "12 Context Router + Context Pack Generator",
     "13 Snapshot / Checkpoint / Cross-Chat Handoff",
-    "14 Semantic Diff + Change Impact"
+    "14 Semantic Diff + Change Impact",
+    "15 Project Intelligence Graph"
   ],
-  "last_completed_node": "14 Semantic Diff + Change Impact",
-  "next_node": "15 Project Intelligence Graph",
+  "last_completed_node": "15 Project Intelligence Graph",
+  "next_node": "POST-CORE: remaining P1/P2 registries and executable context/canon compilation",
   "artifacts": [
     "ontology/",
     "requirements/",
