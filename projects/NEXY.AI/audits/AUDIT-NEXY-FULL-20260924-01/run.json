@@ -99,20 +99,20 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 129,
-    "remaining": 1339,
-    "percent": 8.7875
+    "audited": 184,
+    "remaining": 1284,
+    "percent": 12.5341
   },
-  "current_category": "H_SECURITY_AUTH_PERMISSION_TENANT",
-  "last_completed_unit": "CATEGORY:B_CORE_CONTROL_LAW",
-  "next_unit": "CATEGORY:H_SECURITY_AUTH_PERMISSION_TENANT",
+  "current_category": "C_API_ROUTES_CONTRACTS",
+  "last_completed_unit": "CATEGORY:H_SECURITY_AUTH_PERMISSION_TENANT",
+  "next_unit": "CATEGORY:C_API_ROUTES_CONTRACTS",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
     "S2": 2,
     "S3": 3,
     "S4": 1,
-    "S5": 1
+    "S5": 2
   },
   "blocked": 0,
   "conflict": 1,
@@ -144,11 +144,12 @@
     "Contract registry declared 90 but exact unique union is 62; mismatch is an audit finding and denominator uses observed unique identities."
   ],
   "frozen_paths": [
-    "evidence/E07-vnext-defaults.md"
+    "evidence/E07-vnext-defaults.md",
+    "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "B_CORE_CONTROL_LAW",
-    "read_back_verified": true,
-    "category_units": 28
+    "category_completed": "H_SECURITY_AUTH_PERMISSION_TENANT",
+    "read_back_verified": false,
+    "category_units": 55
   }
 }
