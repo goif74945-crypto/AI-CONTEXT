@@ -1,0 +1,11 @@
+{
+  "case_id": "CASE-NEXY-OTAC-PLAINTEXT-LOG-20260924",
+  "finding_id": "F-NEXY-FULL-H-OTAC-LOG-001",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "cause": "ConsoleEmailProvider emits destination email and live OTAC in plaintext to stderr.",
+  "impact": "Authentication secret and PII disclosure to log readers during console/development provider use.",
+  "containment": "Do not use the console provider as release/deployment evidence or outside isolated local development pending authorized remediation.",
+  "prevention": "Negative secret/PII log-sink tests and provider policy gate.",
+  "status": "OPEN_CONTAINED",
+  "hash": "HASH_UNAVAILABLE"
+}
