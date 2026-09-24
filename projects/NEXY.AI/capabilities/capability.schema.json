@@ -1,44 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "AI Capability Record",
+  "title": "NEXY Tool/Capability Registry Record",
   "type": "object",
-  "additionalProperties": false,
   "required": [
     "capability_id",
-    "category",
-    "description",
-    "technical_status",
-    "task_authorization",
-    "evidence",
-    "refresh_rule"
-  ],
-  "properties": {
-    "capability_id": {
-      "type": "string"
-    },
-    "category": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "technical_status": {
-      "enum": [
-        "AVAILABLE",
-        "READ_ONLY",
-        "BLOCKED",
-        "UNAVAILABLE",
-        "UNKNOWN"
-      ]
-    },
-    "task_authorization": {
-      "type": "string"
-    },
-    "evidence": {
-      "type": "string"
-    },
-    "refresh_rule": {
-      "type": "string"
-    }
-  }
+    "name",
+    "status",
+    "scope",
+    "permissions",
+    "proof",
+    "limitations"
+  ]
 }
