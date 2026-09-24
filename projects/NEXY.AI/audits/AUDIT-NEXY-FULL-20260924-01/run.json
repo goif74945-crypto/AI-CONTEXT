@@ -99,19 +99,19 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 184,
-    "remaining": 1284,
-    "percent": 12.5341
+    "audited": 228,
+    "remaining": 1240,
+    "percent": 15.5313
   },
-  "current_category": "C_API_ROUTES_CONTRACTS",
-  "last_completed_unit": "CATEGORY:H_SECURITY_AUTH_PERMISSION_TENANT",
-  "next_unit": "CATEGORY:C_API_ROUTES_CONTRACTS",
+  "current_category": "F_STATE_PERSISTENCE_STORAGE",
+  "last_completed_unit": "CATEGORY:C_API_ROUTES_CONTRACTS",
+  "next_unit": "CATEGORY:F_STATE_PERSISTENCE_STORAGE",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
     "S2": 2,
     "S3": 3,
-    "S4": 1,
+    "S4": 3,
     "S5": 2
   },
   "blocked": 0,
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "H_SECURITY_AUTH_PERMISSION_TENANT",
-    "read_back_verified": true,
-    "category_units": 55
+    "category_completed": "C_API_ROUTES_CONTRACTS",
+    "read_back_verified": false,
+    "category_units": 44
   }
 }
