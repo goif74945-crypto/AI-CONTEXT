@@ -1,0 +1,15 @@
+{
+  "task_id": "NEXY-FULL-AUDIT-P-CONSTITUTIONAL-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "P_CONSTITUTIONAL_LAYERS",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 86,
+  "audited_units": 86,
+  "counts": {
+    "FUTURE_SCOPE": 86
+  },
+  "status": "CATEGORY_AUDIT_RECORDED",
+  "next_category": "Q_GAME_AAAA_NCF",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "hash": "HASH_UNAVAILABLE"
+}
