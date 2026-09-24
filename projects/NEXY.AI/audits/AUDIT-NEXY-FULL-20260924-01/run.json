@@ -99,19 +99,19 @@
   },
   "coverage": {
     "total": 1468,
-    "audited": 519,
-    "remaining": 949,
-    "percent": 35.3542
+    "audited": 752,
+    "remaining": 716,
+    "percent": 51.2262
   },
-  "current_category": "I_EVIDENCE_VERIFICATION_AUDIT",
-  "last_completed_unit": "CATEGORY:N_FAILURE_ERROR_SEMANTICS",
-  "next_unit": "CATEGORY:I_EVIDENCE_VERIFICATION_AUDIT",
+  "current_category": "X_UI_TRUTH_SURFACE",
+  "last_completed_unit": "CATEGORY:I_EVIDENCE_VERIFICATION_AUDIT",
+  "next_unit": "CATEGORY:X_UI_TRUTH_SURFACE",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
     "S2": 2,
     "S3": 4,
-    "S4": 5,
+    "S4": 6,
     "S5": 2
   },
   "blocked": 0,
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "N_FAILURE_ERROR_SEMANTICS",
+    "category_completed": "I_EVIDENCE_VERIFICATION_AUDIT",
     "read_back_verified": true,
-    "category_units": 132
+    "category_units": 233
   }
 }
