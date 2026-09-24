@@ -1,46 +1,49 @@
-# NEXY Builder Playbook
+# NEXY Playbook Contract
 
-## Universal preconditions
-1. Pin repository + branch + exact HEAD.
-2. Abort/freeze if the requested target branch/HEAD differs from task authority.
-3. Resolve target entity in `ontology/entities.jsonl`.
-4. Resolve governing requirements in `requirements/requirements.jsonl`.
-5. Resolve authority/scope/supersession/conflicts before implementation.
-6. Resolve `REQUIRES` predecessors from `graphs/dependency-graph.json`.
-7. Resolve code only through `implementation/system-to-code.jsonl`; CANDIDATE refs must be opened before use.
-8. Load linked contracts, FSM namespace, atomic invariants, trust boundaries, state ownership, events and config.
-9. Check `failures/failures.jsonl` for known failure classes.
-10. Never interpret file presence, build success, or prose as runtime/evidence PASS.
+Every playbook follows:
 
-# Workflow: Add State Transition
+1. PRECONDITIONS
+2. REQUIRED_CONTEXT
+3. AUTHORITY / SCOPE CHECK
+4. CHANGE IMPACT
+5. IMPLEMENTATION_SEQUENCE
+6. VALIDATION
+7. NEGATIVE_TESTS
+8. REGRESSION
+9. ROLLBACK
+10. DONE
 
-## Required context
-- exact FSM namespace;
-- FROM/EVENT/GUARD/ACTION/TO;
-- event owner;
-- invalid-transition behavior;
-- incident/audit semantics;
-- all same-named states in other FSMs to avoid conflation.
+Global rules:
+- refresh repository branch/HEAD before implementation claims or edits;
+- if HEAD differs from the task lock, STOP/FREEZE;
+- source design ≠ implementation ≠ test ≠ evidence ≠ deployment proof;
+- never patch a CANDIDATE implementation mapping without opening/confirming the file;
+- resolve Authority + Scope + Supersession + Conflict before coding;
+- preserve S5 invariants;
+- UI is not authority;
+- SWARM/model output is not final authority;
+- no test execution evidence = no PASS;
+- do not use stale evidence for current HEAD.
 
-## Sequence
-1. Identify the FSM by ID + namespace; never use state name alone.
-2. Confirm transition is source-authorized. If absent, require source/governance change first.
-3. Define event owner and guard.
-4. Define action side effects and persistence transaction.
-5. Define failure/timeout behavior.
-6. Define audit event and incident linkage.
-7. Add transition; do not mutate another FSM with similar state labels.
-8. Add legal and illegal transition tests.
-9. Add concurrency/race tests if state is shared.
-10. Refresh FSM registry and traceability.
+# Add State Transition
 
-## Negative tests
-- wrong event owner;
-- wrong FROM state;
-- direct state jump;
-- STOP/terminal escape;
-- recovery without recoverable flag;
-- duplicated transition under race.
+## PRECONDITIONS
+- correct FSM namespace is identified;
+- transition is authorized by source, not inferred from matching state names.
+
+## REQUIRED_CONTEXT
+FSM registry, event ownership, invariant registry, failure library, state persistence map.
+
+## IMPLEMENTATION_SEQUENCE
+1. define FROM/EVENT/GUARD/ACTION/TO/FAILURE/AUDIT_EVENT;
+2. define actor ownership;
+3. reject all illegal edges;
+4. persist transition/audit atomically where required;
+5. add negative tests for wrong actor/wrong from-state;
+6. update FSM registry only after authoritative source/implementation change.
+
+## NEGATIVE_TESTS
+STOP/terminal exits, duplicate events, wrong actor, race, timeout, recovery denial.
 
 ## DONE
-Transition is source-bound, namespace-safe, testable and auditable.
+No cross-FSM conflation and all transition tests pass for exact code revision.
