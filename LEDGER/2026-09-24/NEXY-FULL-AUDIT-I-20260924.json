@@ -1,0 +1,28 @@
+{
+  "ledger_id": "LEDGER-NEXY-FULL-AUDIT-I-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "I_EVIDENCE_VERIFICATION_AUDIT",
+  "source": [
+    "Authoritative DOCX paragraphs 8089-8117, 8293-8305",
+    "AI-CONTEXT evidence/test registries",
+    "Exact target tree 84484d..."
+  ],
+  "claim": [
+    "Category I denominator contains 233 units and all reached terminal audit classification.",
+    "Current DOC-E E1-E12 evidence is stale to exact target HEAD."
+  ],
+  "proof": [
+    "108/108 test paths present",
+    "40/40 evidence paths present",
+    "12 trace evidence records STALE_HEAD",
+    "docs/evidence/current campaign revision db52f9f... != target 84484d..."
+  ],
+  "status": "RECORDED",
+  "coverage_after": {
+    "audited": 752,
+    "total": 1468,
+    "percent": 51.2262
+  },
+  "next_unit": "CATEGORY:X_UI_TRUTH_SURFACE",
+  "hash": "HASH_UNAVAILABLE"
+}
