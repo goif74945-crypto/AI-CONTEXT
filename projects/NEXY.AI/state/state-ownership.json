@@ -1,272 +1,238 @@
 {
   "schema_version": "1.0.0",
-  "pinned_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
   "states": [
     {
-      "state": "Global DOC-C SystemState",
+      "state": "PipelineRun",
       "authoritative_owner": "CORE",
-      "writer": [
-        "CORE via legal FSM events"
+      "writers": [
+        "packages/queue/run-state.ts",
+        "pipeline/orchestration paths"
       ],
       "readers": [
+        "CORE",
         "API",
-        "UI",
-        "LAW",
-        "OBS",
-        "JUDGE/SWARM as permitted"
+        "OBS by correlation"
       ],
-      "store": "OrchestrationEnvelope / state layer",
-      "lifetime": "runtime + durable envelope history",
-      "version": "7.0.0",
-      "recovery": "FREEZE recover path only when authorized",
-      "audit": "EventLog transition",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/core/vnext-state-matrix.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/orch-core/system-state.ts"
-      ]
+      "store": "PostgreSQL:pipeline_runs",
+      "lifetime": "per execution run",
+      "version": "schema-bound",
+      "recovery": "freeze incident/replay path as applicable",
+      "audit": "requestId/traceId + EventLog/AuditLog correlation",
+      "mutability": "mutable lifecycle fields under controlled transactions"
     },
     {
-      "state": "PipelineRun.runState",
-      "authoritative_owner": "CORE/QUEUE pipeline",
-      "writer": [
-        "pipeline execution path"
+      "state": "DirectiveRecord",
+      "authoritative_owner": "CORE",
+      "writers": [
+        "directive API/ingestion"
       ],
       "readers": [
-        "API",
-        "OBS",
-        "release path"
+        "CORE",
+        "API"
       ],
-      "store": "PostgreSQL PipelineRun",
-      "lifetime": "durable",
-      "version": "schema current at pinned HEAD",
-      "recovery": "reconciliation/new cycle; no fake resume",
-      "audit": "requestId/traceId correlation",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "store": "PostgreSQL:directive_records_v2",
+      "lifetime": "persistent",
+      "version": "schemaVersion + createdTick",
+      "recovery": "idempotency/linked PipelineRun",
+      "audit": "requestId/traceId via run/events",
+      "mutability": "created record; idempotency key unique"
     },
     {
-      "state": "Session",
-      "authoritative_owner": "AUTH",
-      "writer": [
-        "AUTH"
+      "state": "FreezeIncident",
+      "authoritative_owner": "VAULT/INCIDENT",
+      "writers": [
+        "packages/queue/run-state.ts",
+        "packages/obs/incidents.ts",
+        "daemon/freeze path"
       ],
       "readers": [
-        "API",
-        "UI session projection"
+        "API/OBS/OWNER"
       ],
-      "store": "PostgreSQL Session + secure cookie token",
-      "lifetime": "6h canonical session TTL unless revoked",
-      "version": "DOC-C",
-      "recovery": "reverify/rotate/new session",
-      "audit": "auth audit/security events",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/auth.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "store": "PostgreSQL:freeze_incidents",
+      "lifetime": "retention policy",
+      "version": "createdTick",
+      "recovery": "recover only if recoverable + authorized actor",
+      "audit": "requestId/traceId/primary error/blocking layer",
+      "mutability": "incident evidence; source design treats as persistent evidence"
     },
     {
-      "state": "OTAC pending state",
-      "authoritative_owner": "AUTH",
-      "writer": [
-        "AUTH"
+      "state": "SecurityIncident",
+      "authoritative_owner": "OBS/SECURITY",
+      "writers": [
+        "packages/obs/incidents.ts",
+        "AUTH/security paths"
       ],
       "readers": [
-        "AUTH only"
+        "OBS/AUDIT/OWNER"
       ],
-      "store": "PostgreSQL OtacPending/hash only",
-      "lifetime": "5m validity + lock/cooldown state",
-      "version": "DOC-C",
-      "recovery": "resend subject to cooldown/lock",
-      "audit": "request/verify failures/success",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/api/auth.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "state": "Project",
-      "authoritative_owner": "VAULT",
-      "writer": [
-        "OWNER/SYSTEM through authorized API"
-      ],
-      "readers": [
-        "authorized project actors"
-      ],
-      "store": "PostgreSQL Project",
-      "lifetime": "durable; soft delete allowed",
-      "version": "DOC-C/D",
-      "recovery": "restore only when lineage intact",
-      "audit": "AuditLog",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "state": "Artifact",
-      "authoritative_owner": "VAULT",
-      "writer": [
-        "OWNER/SYSTEM through authorized commit path"
-      ],
-      "readers": [
-        "OWNER/OPERATOR/AUDITOR/SYSTEM"
-      ],
-      "store": "PostgreSQL Artifact + blob store",
-      "lifetime": "durable; soft delete allowed",
-      "version": "DOC-C/D",
-      "recovery": "restore if parent active + blob/lineage intact",
-      "audit": "AuditLog",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:vault/repository.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "state": "Revision",
-      "authoritative_owner": "VAULT",
-      "writer": [
-        "VAULT commit service"
-      ],
-      "readers": [
-        "authorized actors"
-      ],
-      "store": "PostgreSQL Revision",
-      "lifetime": "immutable durable",
-      "version": "DOC-C/D",
-      "recovery": "new revision/restore reference; no overwrite",
-      "audit": "AuditLog",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
-    },
-    {
-      "state": "Commit",
-      "authoritative_owner": "VAULT",
-      "writer": [
-        "VAULT commit service"
-      ],
-      "readers": [
-        "authorized actors"
-      ],
-      "store": "PostgreSQL Commit + blobRef",
-      "lifetime": "immutable durable",
-      "version": "DOC-C/D",
-      "recovery": "new commit; OCC via previousVersion",
-      "audit": "AuditLog",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "store": "PostgreSQL:security_incidents",
+      "lifetime": "365 days current default",
+      "version": "createdTick",
+      "recovery": "primary/secondary incident linkage",
+      "audit": "self-referential primaryIncidentId",
+      "mutability": "persistent incident record"
     },
     {
       "state": "EventLog",
       "authoritative_owner": "OBS",
-      "writer": [
-        "system modules INSERT only"
+      "writers": [
+        "authorized subsystem emitters via insert"
       ],
       "readers": [
-        "OBS/AUDITOR/system"
+        "OBS/AUDIT/JUDGE by allowed evidence path"
       ],
-      "store": "PostgreSQL EventLog",
-      "lifetime": "90d canonical retention",
-      "version": "DOC-C",
-      "recovery": "no mutation; detect sequence gaps",
-      "audit": "itself operational evidence",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "store": "PostgreSQL:event_log",
+      "lifetime": "90 days current default",
+      "version": "monotonic sequenceNum",
+      "recovery": "sequence gap is alert/data-loss signal",
+      "audit": "requestId/traceId",
+      "mutability": "APPEND_ONLY; no update/delete"
     },
     {
       "state": "AuditLog",
       "authoritative_owner": "OBS",
-      "writer": [
-        "accountable action paths INSERT only"
+      "writers": [
+        "authorized security/accountability paths via insert"
       ],
       "readers": [
-        "OWNER/AUDITOR/SYSTEM",
-        "JUDGE may derive context"
+        "AUDITOR/OWNER/SYSTEM/JUDGE via OBS"
       ],
-      "store": "PostgreSQL AuditLog hash chain",
-      "lifetime": "365d minimum",
-      "version": "DOC-C",
-      "recovery": "no rewrite; integrity scan",
-      "audit": "chainHash/previousEntryId",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "store": "PostgreSQL:audit_log",
+      "lifetime": "365 days current default",
+      "version": "chainHash + previousEntryId",
+      "recovery": "tamper requires incident; history not rewritten",
+      "audit": "itself is tamper-evident audit chain",
+      "mutability": "APPEND_ONLY; no update/delete"
     },
     {
-      "state": "FreezeIncident",
-      "authoritative_owner": "OBS/VAULT incident domain",
-      "writer": [
-        "failure/freeze path"
+      "state": "Project",
+      "authoritative_owner": "VAULT",
+      "writers": [
+        "Vault commit/project service"
       ],
       "readers": [
-        "API/UI/OWNER/AUDITOR/system"
+        "authorized Vault/API"
       ],
-      "store": "PostgreSQL FreezeIncident",
-      "lifetime": "365d minimum",
-      "version": "DOC-C",
-      "recovery": "only documented recoverable reason + authorized actor",
-      "audit": "requestId/traceId/primary linkage",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "store": "PostgreSQL:projects",
+      "lifetime": "persistent/soft-delete",
+      "version": "createdTick/deletedTick",
+      "recovery": "restore if lineage valid",
+      "audit": "Vault audit path",
+      "mutability": "soft-delete allowed"
     },
     {
-      "state": "SecurityIncident",
-      "authoritative_owner": "OBS",
-      "writer": [
-        "AUTH/security detection"
+      "state": "Artifact",
+      "authoritative_owner": "VAULT",
+      "writers": [
+        "Vault"
       ],
       "readers": [
-        "authorized audit/security paths"
+        "authorized Vault/API"
       ],
-      "store": "PostgreSQL SecurityIncident",
-      "lifetime": "365d minimum",
-      "version": "DOC-C",
-      "recovery": "contain/revoke/recover by incident type",
-      "audit": "primary/secondary IncidentLink",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "store": "PostgreSQL:artifacts",
+      "lifetime": "persistent/soft-delete",
+      "version": "createdTick/deletedTick",
+      "recovery": "restore if project/lineage/blob valid",
+      "audit": "Vault audit path",
+      "mutability": "soft-delete allowed"
     },
     {
-      "state": "Agent trust",
-      "authoritative_owner": "SWARM governance",
-      "writer": [
-        "SWARM pipeline"
+      "state": "Revision",
+      "authoritative_owner": "VAULT",
+      "writers": [
+        "Vault commit path"
       ],
       "readers": [
-        "SWARM/JUDGE as permitted"
+        "authorized Vault/API"
       ],
-      "store": "PostgreSQL AgentTrustLedger",
-      "lifetime": "durable evolving score",
-      "version": "current implementation",
-      "recovery": "recompute/update under governed formula",
-      "audit": "should link to execution evidence",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/swarm/pipeline.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "store": "PostgreSQL:revisions",
+      "lifetime": "persistent",
+      "version": "revisionNo + canonVersion",
+      "recovery": "append new revision, never overwrite",
+      "audit": "commit lineage",
+      "mutability": "IMMUTABLE once created"
     },
     {
-      "state": "LogicQuantum",
-      "authoritative_owner": "Lo2",
-      "writer": [
-        "verified Lo2 intake/evolution path"
+      "state": "Commit",
+      "authoritative_owner": "VAULT",
+      "writers": [
+        "Vault commit path"
       ],
       "readers": [
-        "Lo2/authorized intelligence distribution"
+        "authorized Vault/API"
       ],
-      "store": "PostgreSQL LogicQuantumRecord",
-      "lifetime": "durable/versioned intelligence",
-      "version": "current implementation/future governance boundary",
-      "recovery": "conflict branch/version; no silent Canon rewrite",
-      "audit": "provenance/evidence required",
-      "refs": [
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:packages/engine/lo2.ts",
-        "goif74945-crypto/NEXY.AI-@9c9befd9fe255b0f9271e6e2b8c4bb2443a08089:prisma/schema.prisma"
-      ]
+      "store": "PostgreSQL:commits + blobRef object storage",
+      "lifetime": "persistent",
+      "version": "canonVersion + previousVersion",
+      "recovery": "OCC/idempotency prevents duplicate/stale overwrite",
+      "audit": "authorId/message/contentHash",
+      "mutability": "IMMUTABLE once created"
+    },
+    {
+      "state": "User",
+      "authoritative_owner": "AUTH",
+      "writers": [
+        "AUTH/account authority"
+      ],
+      "readers": [
+        "AUTH/RBAC"
+      ],
+      "store": "PostgreSQL:users",
+      "lifetime": "persistent/deactivation",
+      "version": "createdTick/deactivatedTick",
+      "recovery": "governed account/role path",
+      "audit": "auth events/audit",
+      "mutability": "role/deactivation governed"
+    },
+    {
+      "state": "Session",
+      "authoritative_owner": "AUTH",
+      "writers": [
+        "packages/auth/session.ts",
+        "packages/api/auth.ts"
+      ],
+      "readers": [
+        "AUTH/API"
+      ],
+      "store": "PostgreSQL:sessions",
+      "lifetime": "6h current default unless revoked",
+      "version": "createdTick/lastSeenTick",
+      "recovery": "new authenticated session; revoked session never reactivates",
+      "audit": "requestId/traceId + auth events",
+      "mutability": "revocation/lastSeen updates allowed"
+    },
+    {
+      "state": "JudgmentRecord",
+      "authoritative_owner": "JUDGE",
+      "writers": [
+        "JUDGE"
+      ],
+      "readers": [
+        "JUDGE/AUDIT"
+      ],
+      "store": "PostgreSQL:judgment_records",
+      "lifetime": "persistent",
+      "version": "createdTick",
+      "recovery": "derive from OBS audit evidence; no CORE/VAULT direct dependency",
+      "audit": "references AuditLog",
+      "mutability": "record-oriented"
+    },
+    {
+      "state": "OrchestrationEnvelope",
+      "authoritative_owner": "ORCH",
+      "writers": [
+        "orchestration/API boundary"
+      ],
+      "readers": [
+        "operators/OBS"
+      ],
+      "store": "PostgreSQL:orchestration_envelopes",
+      "lifetime": "persistent evidence/history",
+      "version": "version + createdTick",
+      "recovery": "reconstruct via requestId/traceId/run links",
+      "audit": "requestId/traceId",
+      "mutability": "APPEND_ONLY per schema commentary"
     }
   ]
 }
