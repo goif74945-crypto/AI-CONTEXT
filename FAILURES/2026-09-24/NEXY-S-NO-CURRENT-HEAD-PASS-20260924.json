@@ -1,0 +1,11 @@
+{
+  "failure_id": "FAIL-NEXY-S-NO-CURRENT-HEAD-PASS-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "context": "S-category validation",
+  "cause": "Successful exact-target-head test execution is not established.",
+  "failed_approach": "Do not infer PASS from implementation path/test file presence.",
+  "recovery": "Keep mapped units PARTIAL and unmapped units NOT_VERIFIED until focused evidence exists.",
+  "boundary": "No implementation mutation.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
