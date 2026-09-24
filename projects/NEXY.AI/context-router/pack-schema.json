@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXY Context Pack",
+  "type": "object",
+  "required": [
+    "pack_id",
+    "profile",
+    "task_type",
+    "generated_from",
+    "scope",
+    "entities",
+    "requirements",
+    "dependencies",
+    "authority",
+    "contracts",
+    "fsms",
+    "invariants",
+    "implementation",
+    "tests",
+    "evidence",
+    "failures",
+    "security",
+    "state",
+    "events",
+    "config",
+    "playbooks",
+    "examples",
+    "open_unknowns"
+  ],
+  "properties": {
+    "pack_id": {
+      "type": "string"
+    },
+    "profile": {
+      "enum": [
+        "BUILDER",
+        "AUDITOR"
+      ]
+    },
+    "task_type": {
+      "type": "string"
+    },
+    "generated_from": {
+      "type": "object"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "entities": {
+      "type": "array"
+    },
+    "requirements": {
+      "type": "array"
+    },
+    "dependencies": {
+      "type": "array"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "contracts": {
+      "type": "array"
+    },
+    "fsms": {
+      "type": "array"
+    },
+    "invariants": {
+      "type": "array"
+    },
+    "implementation": {
+      "type": "array"
+    },
+    "tests": {
+      "type": "array"
+    },
+    "evidence": {
+      "type": "array"
+    },
+    "failures": {
+      "type": "array"
+    },
+    "security": {
+      "type": "object"
+    },
+    "state": {
+      "type": "object"
+    },
+    "events": {
+      "type": "array"
+    },
+    "config": {
+      "type": "object"
+    },
+    "playbooks": {
+      "type": "array"
+    },
+    "examples": {
+      "type": "array"
+    },
+    "open_unknowns": {
+      "type": "array"
+    }
+  }
+}
