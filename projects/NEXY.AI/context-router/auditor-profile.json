@@ -1,0 +1,31 @@
+{
+  "profile": "AUDITOR",
+  "objective": "Adversarial context that compares source → implementation → test → evidence without accepting self-reported success.",
+  "mandatory": [
+    "authority",
+    "scope",
+    "requirements",
+    "entities",
+    "contracts",
+    "FSMs",
+    "invariants",
+    "implementation",
+    "tests",
+    "evidence",
+    "failure history",
+    "negative examples",
+    "known conflicts"
+  ],
+  "optional": [
+    "golden examples",
+    "config/state/events/security based on domain"
+  ],
+  "exclude_by_default": [
+    "irrelevant UI/product vision for low-level deterministic audit unless it defines authority"
+  ],
+  "output_rules": [
+    "Evidence class must remain explicit.",
+    "Missing test/evidence stays NOT_VERIFIED.",
+    "Include all relevant negative examples and attack surfaces."
+  ]
+}
