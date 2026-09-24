@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0.0",
+  "purpose": "Describe semantic change beyond file diff.",
+  "input": {
+    "before": {
+      "repository": "string",
+      "branch": "string",
+      "head": "string",
+      "records": "selected project-intelligence context"
+    },
+    "after": {
+      "repository": "string",
+      "branch": "string",
+      "head": "string",
+      "records": "same context types after change"
+    }
+  },
+  "dimensions": [
+    {
+      "id": "BEHAVIOR",
+      "questions": [
+        "What observable behavior changed?",
+        "What failure behavior changed?"
+      ]
+    },
+    {
+      "id": "CONTRACT",
+      "questions": [
+        "Did API/event/schema/module shape change?",
+        "Backward compatibility?"
+      ]
+    },
+    {
+      "id": "AUTHORITY",
+      "questions": [
+        "Did any actor gain/lose authority?",
+        "Did precedence/scope change?"
+      ]
+    },
+    {
+      "id": "INVARIANT",
+      "questions": [
+        "Which invariant can now be violated or newly enforced?"
+      ]
+    },
+    {
+      "id": "FSM",
+      "questions": [
+        "States/events/guards/actors/transitions changed?"
+      ]
+    },
+    {
+      "id": "PERSISTENCE",
+      "questions": [
+        "Owner/writer/store/version/recovery changed?",
+        "Migration required?"
+      ]
+    },
+    {
+      "id": "SECURITY",
+      "questions": [
+        "Trust boundary/permission/secret/tenant capability changed?"
+      ]
+    },
+    {
+      "id": "DETERMINISM",
+      "questions": [
+        "Ordering/time/RNG/FP/concurrency semantics changed?"
+      ]
+    },
+    {
+      "id": "ERROR",
+      "questions": [
+        "Error code/severity/user surface/recovery changed?"
+      ]
+    },
+    {
+      "id": "OBSERVABILITY",
+      "questions": [
+        "Events/logs/alerts/evidence changed?"
+      ]
+    },
+    {
+      "id": "PERFORMANCE",
+      "questions": [
+        "Latency/memory/throughput budget changed?"
+      ]
+    },
+    {
+      "id": "SCOPE",
+      "questions": [
+        "Current/future/deferred/excluded status changed?"
+      ]
+    },
+    {
+      "id": "EVIDENCE",
+      "questions": [
+        "Which prior evidence became stale? Which proof must rerun?"
+      ]
+    }
+  ],
+  "output": {
+    "changed_entities": "string[]",
+    "semantic_changes": "array of {dimension,before,after,impact}",
+    "affected_requirements": "string[]",
+    "affected_invariants": "string[]",
+    "affected_contracts": "string[]",
+    "required_tests": "string[]",
+    "invalidated_evidence": "string[]",
+    "rollback_obligations": "string[]",
+    "blockers": "string[]"
+  },
+  "rules": [
+    "A code-only diff with no semantic record is incomplete for governed NEXY changes.",
+    "Any behavior/contract/authority/invariant change invalidates prior evidence for affected claim until rerun on new HEAD.",
+    "Changing a prerequisite requires reviewing transitive dependents.",
+    "S5 invariants are mandatory impact edges.",
+    "Scope and authority changes require explicit governance review, not implementation-only acceptance."
+  ]
+}
