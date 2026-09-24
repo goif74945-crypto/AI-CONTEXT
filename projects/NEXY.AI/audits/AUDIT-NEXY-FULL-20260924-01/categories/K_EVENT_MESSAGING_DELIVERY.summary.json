@@ -1,0 +1,29 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "K_EVENT_MESSAGING_DELIVERY",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 42,
+  "counts": {
+    "PARTIAL": 39,
+    "FAIL": 3
+  },
+  "source_proof": [
+    "DOC-C execution event ownership/state-transition rules",
+    "canonical event registry",
+    "event contract registry"
+  ],
+  "implementation_proof": [
+    "packages/core/vnext-state-matrix.ts",
+    "packages/orch-core/system-state.ts",
+    "packages/queue/run-state.ts",
+    "packages/api/auth.ts"
+  ],
+  "test_proof": [
+    "Event/FSM/auth tests present; no successful exact-target-head execution established."
+  ],
+  "findings": [
+    "F-NEXY-FULL-K-RECOVER-ACTOR-001"
+  ],
+  "next_category": "L_DETERMINISM_TIME_RANDOMNESS",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
