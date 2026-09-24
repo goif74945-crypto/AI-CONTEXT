@@ -4,18 +4,20 @@
   "type": "object",
   "required": [
     "failure_id",
-    "failure_type",
+    "layer",
+    "code",
+    "category",
     "context",
     "symptom",
     "root_cause",
-    "root_cause_status",
     "failed_approach",
     "why_failed",
-    "declared_recovery",
+    "recovery_contract",
     "successful_recovery",
-    "affected_systems",
-    "regression_test",
+    "affected_system_ids",
+    "regression_test_refs",
     "prevention",
-    "source_ref"
+    "source_refs",
+    "record_status"
   ]
 }
