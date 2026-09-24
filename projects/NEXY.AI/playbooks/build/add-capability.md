@@ -1,47 +1,35 @@
-# PLAYBOOK — Add Capability
+# NEXY Builder Playbook
 
-## SCOPE WARNING
-Capability Registry / NCF admission belongs to future architecture unless explicitly promoted into current build scope. Do not implement into DOC-C merely because the design exists.
+## Universal preconditions
+1. Pin repository + branch + exact HEAD.
+2. Resolve ontology entity, requirements, authority/scope/supersession/conflicts.
+3. Resolve dependencies, implementation refs, contracts, FSM, atomic invariants, security/state/event/config.
+4. Check failure/recovery library.
+5. Do not infer PASS from file presence, build success, or docs.
 
-## PRECONDITIONS
-- Scope registry authorizes capability work.
-- Parent/root capability envelope identified.
-- No privilege escalation.
-- Admission/verifier/governance path selected.
+# Workflow: Add Capability
 
-## REQUIRED CONTEXT
-- CapabilityNode ontology/registry design;
-- G20/G21/G22 governance;
-- capability DAG;
+## Required context
+- CapabilityNode schema/version;
 - deterministic class;
-- resource/permission envelope;
-- rejection reason codes;
-- chaos/admission tests;
-- supersession/version law.
+- dependency closure;
+- forbidden combinations;
+- resource/permission caps;
+- static verifier;
+- policy review/quorum;
+- registry FSM and public projection.
 
-## IMPLEMENTATION SEQUENCE
-1. Define immutable capability ID/version/type.
-2. Define dependencies and forbidden combinations.
-3. Define max depth/resource profile/permission scope.
-4. Define deterministic class: STRICT / SANDBOXED / NONDET_RENDER where source-authorized.
-5. Canonicalize and hash the node.
-6. Run static admission checks:
-   schema, dependency closure, cycle, permission escalation, resource cap, syscall/network/dynamic-load rules.
-7. For STRICT, run additional deterministic/cross-build checks.
-8. Produce VerificationReport.
-9. Run policy-risk gate if governance stage requires it.
-10. Record ACCEPT/REJECT through governed reason codes.
-11. Activate only after the required finalized governance/anchor state in that architecture.
-12. Run relevant ChaosUniverse scenarios before promotion where required.
-
-## NEGATIVE TESTS
-- dependency cycle;
-- undeclared network;
-- dynamic code load;
-- privilege/resource escalation;
-- deterministic-class bypass;
-- duplicate rejected hash;
-- activation before governance/finalization.
+## Sequence
+1. Create a new immutable version; never mutate an ACTIVE historical node.
+2. Canonicalize/hash node.
+3. Resolve dependency closure and conflicts.
+4. Assign deterministic class.
+5. Run static verification.
+6. Run human/policy review and required quorum.
+7. Advance only through legal registry FSM.
+8. Anchor/activate only when all gates pass.
+9. Add rejection reason code on failure.
+10. Run chaos/adversarial catalog applicable to the change.
 
 ## DONE
-Capability is never considered ACTIVE merely because code exists; admission state and required evidence must be proven.
+Capability is versioned, dependency-closed, policy-approved, chaos-tested and traceable.
