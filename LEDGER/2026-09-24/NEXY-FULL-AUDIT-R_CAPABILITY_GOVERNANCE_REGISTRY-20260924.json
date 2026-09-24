@@ -1,0 +1,20 @@
+{
+  "ledger_id": "NEXY-FULL-AUDIT-R_CAPABILITY_GOVERNANCE_REGISTRY-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "category": "R_CAPABILITY_GOVERNANCE_REGISTRY",
+  "claim": [
+    "51/51 units audited",
+    "51 FUTURE_SCOPE"
+  ],
+  "proof": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/R_CAPABILITY_GOVERNANCE_REGISTRY.units.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/categories/R_CAPABILITY_GOVERNANCE_REGISTRY.summary.json",
+    "DOCX paragraphs 6530-7102 capability governance / NCF future architecture"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "CURRENT_AT_TARGET_HEAD",
+  "trace": "AUDIT-NEXY-FULL-20260924-01",
+  "hash": "HASH_UNAVAILABLE"
+}
