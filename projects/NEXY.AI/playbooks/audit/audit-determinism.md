@@ -1,25 +1,30 @@
-# NEXY Auditor Playbook
+# NEXY Audit Playbook Contract
 
-## Universal audit law
-1. Pin exact repository/branch/HEAD and observed environment.
-2. Resolve source authority/scope before implementation.
-3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
-4. Never infer PASS from code/docs/build alone.
-5. Preserve failure evidence and unresolved UNKNOWN explicitly.
+Audit rules:
+- refresh exact repository/branch/HEAD before current-state claims;
+- source existence ≠ implementation;
+- implementation presence ≠ compliance;
+- test file presence ≠ execution;
+- test execution ≠ deployment proof;
+- deployment proof is revision/environment/claim specific;
+- future scope absence is not current DOC-C FAIL;
+- CANDIDATE code mappings must be opened before use;
+- unresolved authority/conflict may block verdict;
+- allowed verdicts: PASS / FAIL / PARTIAL / BLOCKED / NOT_TESTED / NOT_VERIFIED / SCOPE / CONFLICT.
 
-# Workflow: Audit Determinism
+# Audit Determinism
 
-## Sequence
-1. Identify authoritative vs presentation/nondeterministic domain.
-2. Enumerate all mutation points.
-3. Verify single canonical mutator where required.
-4. Verify event ordering, counters and tie-breaks.
-5. Scan authoritative math for float/RNG/system-clock/unordered iteration.
-6. Verify environment/toolchain/target identity inputs.
-7. Rebuild/replay same inputs across repeated runs/architectures where required.
-8. Compare state hash after each canonical replay step.
-9. Inject overflow, timing, ordering and crash faults.
-10. Verify divergence freezes rather than self-heals silently.
+Check domain first: Core, Game, Queue, Recovery, Robotics have different numeric/time semantics.
 
-## DONE
-Same authorized inputs/environment produce the required identical authoritative state/hash, with divergence handled by law.
+Audit:
+- canonical mutator count;
+- event ordering;
+- FP/RNG/system-clock usage inside authoritative path;
+- environment/build identity;
+- WAL-before-mutation;
+- snapshot sequence;
+- replay/state hash;
+- concurrency/race behavior;
+- cross-architecture reproducibility where required.
+
+A deterministic-looking unit test is not cross-system proof.
