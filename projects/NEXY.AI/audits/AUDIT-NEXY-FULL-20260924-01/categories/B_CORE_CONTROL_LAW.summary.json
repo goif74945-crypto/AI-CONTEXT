@@ -1,0 +1,33 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "B_CORE_CONTROL_LAW",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 28,
+  "counts": {
+    "FAIL": 3,
+    "NOT_VERIFIED": 3,
+    "PARTIAL": 20,
+    "FUTURE_SCOPE": 1,
+    "SUPERSEDED": 1
+  },
+  "findings": [
+    "F-NEXY-FULL-B-AGENT-ADAPTER-001"
+  ],
+  "source_proof": [
+    "DOC-C 7535-7594 multi-AI execution/release contract",
+    "DOC-B 8318-8334 CORE/LAW/JUDGE/SWARM/output authority law"
+  ],
+  "implementation_proof": [
+    "judge/*",
+    "law/*",
+    "swarm/pipeline.ts",
+    "queue/workers.ts",
+    "queue/run-state.ts",
+    "core-kernel law_enforcer.rs"
+  ],
+  "test_proof": [
+    "release-spine and judge-law tests inspected; adapter contract test is incomplete; no successful current-head test execution established."
+  ],
+  "next_category": "H_SECURITY_AUTH_PERMISSION_TENANT",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
