@@ -1,0 +1,24 @@
+{
+  "failure_id": "FAIL-NEXY-INCIDENT-PRIMARY-PRIORITY-20260924",
+  "context": "DOC-C run-bound FREEZE/STOP incident persistence",
+  "cause": "Existing FreezeIncident is updated in place with the latest failure code without canonical priority arbitration or secondary failure persistence.",
+  "failed_approach": [
+    "single-row upsert treated as sufficient incident handling",
+    "generic string error code accepted at persistence boundary"
+  ],
+  "recovery": "Not executed. Required repair must preserve highest-priority primary error, persist/link lower-priority failures as secondary evidence, and validate canonical error codes.",
+  "boundary": "packages/orch-core/system-state.ts + packages/queue/run-state.ts + packages/contracts/incidents.ts + Prisma FreezeIncident",
+  "prevention": [
+    "ErrorCodeSchema at incident boundary",
+    "priority table enforced transactionally",
+    "secondary incident/error persistence",
+    "competing-failure regression tests"
+  ],
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "status": "PROVEN_NOT_REPAIRED",
+  "related_findings": [
+    "F-NEXY-REAUDIT-N-INCIDENT-PRIORITY-001",
+    "F-NEXY-REAUDIT-N-INCIDENT-ERRORCODE-002"
+  ],
+  "hash": "HASH_UNAVAILABLE"
+}
