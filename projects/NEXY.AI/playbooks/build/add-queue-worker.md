@@ -1,46 +1,33 @@
-# PLAYBOOK — Add Queue Worker
+# NEXY Builder Playbook
 
-## PRECONDITIONS
-- Queue/job requirement is in current authorized scope.
-- Job ownership, payload contract, idempotency semantics, stale behavior and failure policy are explicit.
-- Queue worker cannot bypass CORE/LAW/JUDGE/VAULT ownership boundaries.
+## Universal preconditions
+1. Pin repository + branch + exact HEAD.
+2. Resolve ontology entity, requirements, authority/scope/supersession/conflicts.
+3. Resolve dependencies, implementation refs, contracts, FSM, atomic invariants, security/state/event/config.
+4. Check failure/recovery library.
+5. Do not infer PASS from file presence, build success, or docs.
 
-## REQUIRED CONTEXT
-- DOC-C Queue Law;
-- queue-job FSM;
-- event/message contracts;
-- idempotency requirements;
-- incident/observability requirements;
-- state ownership/persistence maps;
-- current queue implementation mapping;
-- known failures/regressions.
+# Workflow: Add Queue Worker
 
-## IMPLEMENTATION SEQUENCE
-1. Define job type and producer.
-2. Define payload schema and runtime validation at enqueue.
-3. Define validation again at consume.
-4. Define stable idempotency key.
-5. Define QUEUED/RUNNING/SUCCEEDED/FAILED/CANCELLED/EXPIRED behavior.
-6. Define stale-job TTL and expiry action.
-7. Define retry policy. Default: no automatic retry unless explicitly proven safe.
-8. Define FREEZE/STOP cancellation behavior.
-9. Define worker concurrency/resource limits.
-10. Define trace/request/correlation propagation.
-11. Define audit/event/incident emission.
-12. Implement producer + worker without giving worker unauthorized state mutation.
-13. Add duplicate, stale, crash, timeout and cancellation tests.
-14. Verify no duplicate authoritative execution after restart/re-delivery.
+## Required context
+- queue payload contract;
+- job lifecycle FSM;
+- producer/consumer validation;
+- idempotency and stale-job policy;
+- concurrency limits;
+- failure/audit semantics.
 
-## NEGATIVE TESTS
-- invalid payload;
-- duplicate idempotency key;
-- worker crash after side effect/before ACK;
-- duplicate delivery;
-- stale job;
-- FREEZE while queued/running;
-- STOP;
-- dependency timeout;
-- retry of unsafe mutation.
+## Sequence
+1. Define/confirm payload schema.
+2. Validate before enqueue.
+3. Use canonical idempotency key/job identity.
+4. Enforce configured concurrency cap.
+5. Revalidate before consume.
+6. Enforce stale TTL before execution.
+7. Keep failed-job auto-retry disabled unless explicitly proven safe.
+8. Record run state/event/audit/incident atomically where required.
+9. Add duplicate, stale, malformed, worker-down and recovery tests.
+10. Update event/traceability/failure registries.
 
 ## DONE
-Queue semantics are proven to be idempotent at the required boundary and consistent with queue FSM/freeze/incident contracts.
+No duplicate mutation, stale execution or silent retry path remains.
