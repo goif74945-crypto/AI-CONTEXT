@@ -1,29 +1,30 @@
 {
-  "task_id": "AI-CONTEXT-CONTINUOUS-BUILD-CONVERGENCE-V10",
+  "task_id": "AI-CONTEXT-CLOSED-LOOP-CONTROL-PLANE-V1",
   "source_revision": {
-    "ai_context_start_head": "441f40f7445ea5c558b3170232d8939968e16b4d",
-    "prior_checkpoint_commit": "8583cb47e7b952b6c1cb1caa815c7555a9089db6",
+    "ai_context_base_head": "eb9ec4f3a42b96fd5197c4533c91ce117c448d65",
     "project_source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
     "project_source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
   },
   "target": {
     "repository": "goif74945-crypto/AI-CONTEXT",
-    "branch": "main",
-    "head": "7ad626c4cb76d6a4e10aa655413a648c7ac97555",
-    "head_semantics": "semantic state completed before checkpoint metadata commit"
+    "branch": "nexy/closed-loop-control-plane-v1",
+    "head_semantics": "branch-local closed-loop build checkpoint; refresh actual branch HEAD before mutation"
   },
-  "last_completed_node": "P4.8 HEARTBEAT",
-  "next_node": "P4.9 RETRY / BACKOFF",
+  "last_completed_node": "P4.16 RESUME / RECOVERY — STRUCTURAL_PASS",
+  "next_node": "RUNTIME CLOSED-LOOP ENGINE",
   "artifacts": [
-    "projects/NEXY.AI/control-plane/heartbeat/"
+    "projects/NEXY.AI/control-plane/",
+    "projects/NEXY.AI/handoff/",
+    "projects/NEXY.AI/change-impact/"
   ],
   "findings": [
-    "Heartbeat is bound to worker+claim+command+lease_epoch.",
-    "Stale epoch and out-of-window heartbeat examples are rejected.",
-    "Heartbeat sequence is monotonic and cannot silently extend lease expiry."
+    "P4.1-P4.16 artifacts are present with structural/policy validation reports.",
+    "Previous integration drift in control-plane INDEX/checkpoint/snapshot is being reconciled on an isolated branch.",
+    "No end-to-end live Auditor↔Builder execution has been proven yet."
   ],
   "open_unknowns": [
-    "Retry/backoff policy is not yet first-class."
+    "Worker transport/adapter for real ChatGPT/Work sessions is not yet bound.",
+    "Runtime durability/atomicity must be proven by executable tests before runtime PASS."
   ],
   "dependencies": [
     {
@@ -39,5 +40,5 @@
     "destructive_or_irreversible_operations": "HUMAN_GATE",
     "secrets": "FORBIDDEN"
   },
-  "resume_instruction": "Refresh AI-CONTEXT/main and implement P4.9 bounded deterministic retry/backoff with explicit retryable classes and no unbounded/random retry."
+  "resume_instruction": "Refresh this branch HEAD, build and test the executable runtime closed-loop core, then bind only an explicitly authorized worker adapter."
 }
