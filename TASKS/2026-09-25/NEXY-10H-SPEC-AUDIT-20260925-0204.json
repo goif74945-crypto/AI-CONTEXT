@@ -1,0 +1,187 @@
+{
+  "task_id": "TASK-NEXY-10H-SPEC-AUDIT-20260925-0204",
+  "title": "NEXY.AI- 10-hour update vs authoritative design audit",
+  "mode": "CROSS_AUDIT",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "audit_window_utc": {
+    "start": "2026-09-24T09:04:36Z",
+    "end": "2026-09-24T19:04:36Z"
+  },
+  "audit_window_asia_bangkok": {
+    "start": "2026-09-24T16:04:36+07:00",
+    "end": "2026-09-25T02:04:36+07:00"
+  },
+  "snapshot_head": "2003b5135e6b1be0f8741db961806cdcacf498d7",
+  "snapshot_head_message": "test(l1o): make race injection no_std-test compatible",
+  "scope": "All commits reachable from the active development branch within the 10-hour window, grouped into logical systems and compared against the attached NEXY-IGNIS design/build source. Read-only audit of NEXY.AI-.",
+  "inputs_summary": [
+    "Attached source: แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "Live GitHub repository state and commit/file contents",
+    "AI-CONTEXT bootstrap/project/task records used only as retrieval/history, not as higher authority than source/repo/runtime",
+    "Exact-head Railway validation evidence for snapshot head"
+  ],
+  "cross_chat_handoff": {
+    "requested": true,
+    "valid_handoff_received": false,
+    "status": "MISSING",
+    "effect": "No claims from other chats were admitted into SST; repo/spec/runtime audit proceeded independently."
+  },
+  "sources": [
+    "DOC-C current merged BUILD SPEC in attached NEXY-IGNIS source",
+    "L1o/L600 design sections in attached NEXY-IGNIS source",
+    "NEXY.AI- branch/commit/file evidence through GitHub connector",
+    "Railway deployment 42b5ddb6-804d-44d9-b3d1-bd6976b58c1d for exact head 2003b5135e6b1be0f8741db961806cdcacf498d7",
+    "AI-CONTEXT task history for prior validation provenance"
+  ],
+  "inventory": {
+    "commits_in_window": 19,
+    "unique_changed_files": 44,
+    "logical_system_groups": 10,
+    "validation_only_operations": 1
+  },
+  "systems": [
+    {
+      "system": "AUTH / OTAC secure delivery",
+      "commits": [
+        "5c8d9ee5209f714ea7c36632eccf2e82e009e6a7"
+      ],
+      "design_status": "MATCH",
+      "validation_status": "EXECUTED_PASS_WITH_GLOBAL_RELEASE_BLOCKER"
+    },
+    {
+      "system": "CONFIG / E07 vNEXT defaults evidence",
+      "commits": [
+        "192af9234ba65ae3011db54389ca43b518d8608e"
+      ],
+      "design_status": "MATCH_SCOPE_LIMITED",
+      "validation_status": "DOC_C_STATIC_PASS",
+      "note": "This file is configuration evidence; it is not canonical DOC-E E7 queue-readiness proof."
+    },
+    {
+      "system": "SWARM / AgentAdapter",
+      "commits": [
+        "67e22d9c74173e5641b2d29619d0472b1df99c38"
+      ],
+      "design_status": "PARTIAL_CONTRACT_SURFACE_DRIFT",
+      "validation_status": "TESTED",
+      "note": "Canonical fields/behaviors exist, but runtime registration additionally requires SwarmAgent compatibility call/timeoutMs not declared in canonical AgentAdapter source contract."
+    },
+    {
+      "system": "JUDGE / ConsensusResult",
+      "commits": [
+        "fbb3218ad73b4a03c8e244147c7bd0ebaa57d825",
+        "58756d6ee4a8f3e542e1f1d09988850df07e66ac",
+        "580f1dd3b2bfbb0a808c8ce0064df25ac16b982b"
+      ],
+      "design_status": "MATCH",
+      "validation_status": "EXECUTED_PASS_WITH_GLOBAL_RELEASE_BLOCKER"
+    },
+    {
+      "system": "EVIDENCE contract / agent evidence",
+      "commits": [
+        "e1f50b089c1d35e6c902226ba3d4e897ed1be053"
+      ],
+      "design_status": "MATCH",
+      "validation_status": "EXECUTED_PASS_WITH_GLOBAL_RELEASE_BLOCKER"
+    },
+    {
+      "system": "INCIDENT / OBS / QUEUE / ORCH incident semantics",
+      "commits": [
+        "96cc64b7be9b1dc44f8f82f78916c8293a370700",
+        "972292a2a5cfd952c4ef2791026bdba90004e46a",
+        "8d290daae0b0e6769e139cc377ec68ec07dad598"
+      ],
+      "design_status": "PARTIAL_MISMATCH",
+      "validation_status": "CURRENT_TESTS_PASS_CURRENT_IMPLEMENTATION",
+      "note": "Priority arbitration matches; inspected run-bound paths persist lower-priority failures as secondaryErrorCodes[] on one FreezeIncident rather than separate linked secondary incident records required by source wording."
+    },
+    {
+      "system": "FSM / FREEZE recovery authority",
+      "commits": [
+        "89f1f43265c01255f678e91f25e25bd630061c72",
+        "b920140bc9e8a302ef86217b26ae5de2f3a07588"
+      ],
+      "design_status": "MATCH",
+      "validation_status": "EXECUTED_PASS_WITH_GLOBAL_RELEASE_BLOCKER"
+    },
+    {
+      "system": "L1o bounded constraint context / Rust contract gate",
+      "commits": [
+        "e39529da5c27b94ad14a99a0684170920b2ed252",
+        "189ee62fc2b2ef58cadc74d7d49fc647f64efbb9"
+      ],
+      "design_status": "PARTIAL_VERIFIED_BOUNDARY",
+      "validation_status": "EXECUTED_PASS_WITH_GLOBAL_RELEASE_BLOCKER",
+      "note": "Bounded-context identity is implemented; this is not proof that the entire L600 constraint/reasoning stack is complete."
+    },
+    {
+      "system": "L1o DGE recursive atomic expansion",
+      "commits": [
+        "e503aa4520d3bab88f03e6a8b1397c5464a5cfa6"
+      ],
+      "design_status": "MATCH_WITH_LIMIT",
+      "validation_status": "EXECUTED_PASS_WITH_GLOBAL_RELEASE_BLOCKER",
+      "note": "Recursive deterministic expansion primitive and acyclicity are implemented; semantic decomposition policy remains caller/policy responsibility."
+    },
+    {
+      "system": "L1o RSA double-entry + failure injection",
+      "commits": [
+        "d8e72ea0b0d356c9f88f4dd125ed23a026a01e55",
+        "e15bff3e862d4173f16262d516d6dd1d8731b8f8",
+        "2003b5135e6b1be0f8741db961806cdcacf498d7"
+      ],
+      "design_status": "MATCH",
+      "validation_status": "VERIFIED_WITH_LIMITS",
+      "note": "Initial race-test attempt at e15bff3 failed no_std test compilation; 2003b513 repaired it and exact-head core-kernel contract executed successfully."
+    }
+  ],
+  "validation": {
+    "exact_head_railway_deployment": "42b5ddb6-804d-44d9-b3d1-bd6976b58c1d",
+    "full_suite": "95 files / 712 tests passed",
+    "core_kernel_rust_contract": "PASS",
+    "doc_c_static_gate": "PASS",
+    "production_web_build": "PASS",
+    "coverage_generation": "PASS",
+    "coverage_check": "FAIL",
+    "coverage_blockers": [
+      "api metrics straddle the configured 85% authority boundary: lines 82.00%, statements 80.38%, functions 91.26%, branches 71.98%",
+      "judge branches 88.37% while the other judge standard metrics exceed 90%"
+    ],
+    "overall_railway_status": "FAILED_DUE_TO_RELEASE_GATE",
+    "github_actions_note": "Exact-head GitHub Actions check jobs completed failure/skipped with no steps; not treated as code execution proof."
+  },
+  "proven_findings": [
+    "Run-bound secondary-failure persistence does not fully implement source wording requiring secondary incident records/links; inspected paths aggregate secondary error codes.",
+    "AgentAdapter canonical surface is extended by mandatory runtime compatibility fields/methods; strict spec-exact adapters without call would be rejected.",
+    "Global release remains blocked by coverage authority/gate despite broad exact-head tests, DOC-C static gate, and web build passing."
+  ],
+  "changes": "No NEXY.AI- files, commits, branches, settings, workflows, issues or PRs were modified. Only AI-CONTEXT audit records were created.",
+  "unresolved": [
+    "No valid CROSS handoff object was received from the other chat(s).",
+    "Full L600 completeness is outside the evidence established by the bounded-context slice.",
+    "Coverage authority/gate remains unresolved at snapshot head."
+  ],
+  "risks": [
+    "Secondary incident forensics may lose per-incident linkage/metadata when represented only as error-code arrays.",
+    "AgentAdapter internal compatibility requirements may reject a canonical-spec adapter implementation.",
+    "Release/deploy authorization cannot be claimed while coverage_check fails."
+  ],
+  "rollback": "If disproven by newer authoritative source or exact-head evidence, revert only these AI-CONTEXT audit-record commits. NEXY.AI- was not mutated.",
+  "final_status": "PARTIAL_VERIFIED_AUDIT",
+  "next_actions": [
+    "Re-audit incident secondary-link persistence against any newer canonical source before implementation changes.",
+    "Decide whether AgentAdapter compatibility surface belongs in the canonical contract or should be decoupled from strict registration.",
+    "Resolve coverage authority/gate before any release-ready claim.",
+    "Import a valid cross-chat handoff if cross-chat claims must be reconciled."
+  ],
+  "dependencies": [
+    "Authoritative NEXY-IGNIS source",
+    "NEXY.AI- exact branch state",
+    "Railway exact-head validation"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "snapshot head commit timestamp 2026-09-24T19:04:36Z plus exact-head Railway logs",
+  "trace_id": "NEXY-10H-SPEC-AUDIT/20260925-0204",
+  "hash": "HASH_UNAVAILABLE"
+}
