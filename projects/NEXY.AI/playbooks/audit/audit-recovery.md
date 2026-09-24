@@ -1,25 +1,33 @@
-# NEXY Auditor Playbook
+# NEXY Audit Playbook Contract
 
-## Universal audit law
-1. Pin exact repository/branch/HEAD and observed environment.
-2. Resolve source authority/scope before implementation.
-3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
-4. Never infer PASS from code/docs/build alone.
-5. Preserve failure evidence and unresolved UNKNOWN explicitly.
+Audit rules:
+- refresh exact repository/branch/HEAD before current-state claims;
+- source existence ≠ implementation;
+- implementation presence ≠ compliance;
+- test file presence ≠ execution;
+- test execution ≠ deployment proof;
+- deployment proof is revision/environment/claim specific;
+- future scope absence is not current DOC-C FAIL;
+- CANDIDATE code mappings must be opened before use;
+- unresolved authority/conflict may block verdict;
+- allowed verdicts: PASS / FAIL / PARTIAL / BLOCKED / NOT_TESTED / NOT_VERIFIED / SCOPE / CONFLICT.
 
-# Workflow: Audit Failure / Recovery
+# Audit Recovery
 
-## Sequence
-1. Identify failure code/layer and primary failure priority.
-2. Confirm containment/freeze occurs before unsafe continuation.
-3. Verify incident + event + audit linkage.
-4. Confirm recoverable flag and actor authorization.
-5. Confirm pending output is invalidated.
-6. Confirm failed/old job is not silently resumed when source requires a new cycle.
-7. Verify rollback/replay/snapshot/WAL checks where applicable.
-8. Inject repeated recovery failure/crash loops.
-9. Confirm nonrecoverable failures remain blocked.
-10. Record proven root cause/recovery into Failure Library only after evidence exists.
+Load Failure Library first.
 
-## DONE
-Recovery cannot fabricate history, bypass authority or report success without proof.
+For each failure:
+1. trigger;
+2. detected state;
+3. containment;
+4. mandatory evidence;
+5. recoverability;
+6. authorized actor;
+7. recovery sequence;
+8. new run/state identity;
+9. rollback/replay proof.
+
+Attack:
+crash loop, memory pressure, DB failure, audit persistence failure, stale snapshot, hash mismatch, repeated remediation, recovery of nonrecoverable freeze.
+
+Recovery must never erase the original failure history.
