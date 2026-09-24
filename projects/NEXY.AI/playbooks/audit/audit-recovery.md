@@ -1,40 +1,25 @@
-# PLAYBOOK — Audit Recovery
+# NEXY Auditor Playbook
 
-## PURPOSE
-Verify that failures recover through legal, deterministic, integrity-preserving paths rather than hidden state invention.
+## Universal audit law
+1. Pin exact repository/branch/HEAD and observed environment.
+2. Resolve source authority/scope before implementation.
+3. Separate SOURCE / IMPLEMENTATION / TEST / RUNTIME / DEPLOYMENT / PHYSICAL evidence.
+4. Never infer PASS from code/docs/build alone.
+5. Preserve failure evidence and unresolved UNKNOWN explicitly.
 
-## PROCEDURE
-1. Identify failure classes and recovery mechanism.
-2. Resolve exact authority allowed to recover.
-3. Resolve snapshot/WAL/queue/session/state dependencies.
-4. Identify last durable/verified state boundary.
-5. Test failure injection at each critical step.
-6. Verify recovery never resumes an illegal/stale execution path.
-7. Verify replay ordering and state-hash checks where applicable.
-8. Verify partial/incomplete writes are handled by explicit rules.
-9. Verify repeated recovery failure escalates to FREEZE/manual intervention where specified.
-10. Verify incident/audit evidence is preserved.
-11. Verify unrelated systems remain isolated when local containment is intended.
-12. Verify rollback itself is tested.
+# Workflow: Audit Failure / Recovery
 
-## FAILURE INJECTION
-- process crash before/after durable write;
-- queue worker crash around ACK/side effect;
-- partial snapshot;
-- corrupt WAL/event;
-- dependency outage;
-- invalid recovery actor;
-- stale build/spec hash;
-- repeated crash loop;
-- lost network/region;
-- storage read error.
+## Sequence
+1. Identify failure code/layer and primary failure priority.
+2. Confirm containment/freeze occurs before unsafe continuation.
+3. Verify incident + event + audit linkage.
+4. Confirm recoverable flag and actor authorization.
+5. Confirm pending output is invalidated.
+6. Confirm failed/old job is not silently resumed when source requires a new cycle.
+7. Verify rollback/replay/snapshot/WAL checks where applicable.
+8. Inject repeated recovery failure/crash loops.
+9. Confirm nonrecoverable failures remain blocked.
+10. Record proven root cause/recovery into Failure Library only after evidence exists.
 
-## FORBIDDEN RECOVERY
-- auto-heal by inventing missing history;
-- skip corrupted authoritative history;
-- resume old job after recovery when spec says new cycle;
-- bypass freeze guard;
-- recover against mismatched build/spec/state hashes.
-
-## PASS
-Recovery must reproduce a legal state with evidence; otherwise FAIL/NOT_VERIFIED/FREEZE-class finding.
+## DONE
+Recovery cannot fabricate history, bypass authority or report success without proof.
