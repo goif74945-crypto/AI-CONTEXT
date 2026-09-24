@@ -1,216 +1,326 @@
 {
   "schema_version": "1.0.0",
-  "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "repository_snapshot": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "codex/spec-audit-20260919-78df350",
+    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+  },
   "states": [
     {
-      "state": "PipelineRun",
-      "authority_owner": "KERNEL-CORE",
-      "writer": [
-        "API/CORE/QUEUE worker through Prisma transaction"
+      "state_id": "STATE-GLOBAL-EXECUTION",
+      "authoritative_owner": "KERNEL-CORE",
+      "writers": [
+        "transitionSystemState via FSM event ownership"
       ],
       "readers": [
         "API",
-        "OBS correlation"
+        "UI",
+        "LAW",
+        "OBS"
       ],
-      "store": "PostgreSQL pipeline_runs",
-      "lifetime": "per run durable",
-      "version": "schema migration-bound",
-      "recovery": "incident/replay/reconciliation",
-      "audit": "EventLog/AuditLog correlation",
-      "mutability": "state/output fields mutable only through legal lifecycle"
+      "store": "OrchestrationEnvelope plus process-global cache",
+      "lifetime": "process plus durable tail",
+      "version": "SYSTEM_VERSION 7.0.0",
+      "recovery": "hydrateSystemState from durable tail; hydration failure forces FREEZE",
+      "audit": [
+        "EventLog FSM_TRANSITION"
+      ],
+      "refs": [
+        "packages/orch-core/system-state.ts"
+      ]
     },
     {
-      "state": "DirectiveRecord",
-      "authority_owner": "KERNEL-CORE",
-      "writer": [
-        "directive create path"
+      "state_id": "STATE-PIPELINE-RUN",
+      "authoritative_owner": "KERNEL-CORE",
+      "writers": [
+        "queue worker and run-state transaction"
+      ],
+      "readers": [
+        "API",
+        "UI",
+        "OBS"
+      ],
+      "store": "PostgreSQL PipelineRun",
+      "lifetime": "durable per run",
+      "version": "schema-bound",
+      "recovery": "durable lookup and reconciliation",
+      "audit": [
+        "EventLog",
+        "FreezeIncident",
+        "AuditLog on failure"
+      ],
+      "refs": [
+        "prisma/schema.prisma",
+        "packages/queue/run-state.ts"
+      ]
+    },
+    {
+      "state_id": "STATE-DIRECTIVE",
+      "authoritative_owner": "KERNEL-CORE",
+      "writers": [
+        "directive API transaction"
       ],
       "readers": [
         "queue worker",
         "API"
       ],
-      "store": "PostgreSQL canonical directive relation",
+      "store": "PostgreSQL DirectiveRecord",
       "lifetime": "durable",
-      "version": "schema_version metadata",
-      "recovery": "reload durable boundary",
-      "audit": "request/trace correlation",
-      "mutability": "controlled"
+      "version": "directive metadata schema_version",
+      "recovery": "durable dispatch reconciler",
+      "audit": [
+        "request and trace correlated events"
+      ],
+      "refs": [
+        "prisma/schema.prisma",
+        "packages/queue/dispatch.ts"
+      ]
     },
     {
-      "state": "Project",
-      "authority_owner": "STORAGE-VAULT",
-      "writer": [
-        "Vault"
+      "state_id": "STATE-DISPATCH",
+      "authoritative_owner": "QUEUE-EXECUTION",
+      "writers": [
+        "dispatch reconciler and worker claim"
       ],
       "readers": [
-        "Vault/API/UI"
+        "queue worker",
+        "reconciler"
       ],
-      "store": "PostgreSQL projects",
-      "lifetime": "durable",
-      "version": "canon/version through descendants",
-      "recovery": "soft-delete restore",
-      "audit": "AuditLog",
-      "mutability": "soft-delete only for lifecycle fields"
-    },
-    {
-      "state": "Artifact",
-      "authority_owner": "STORAGE-VAULT",
-      "writer": [
-        "Vault"
-      ],
-      "readers": [
-        "Vault/API/UI"
-      ],
-      "store": "PostgreSQL artifacts",
-      "lifetime": "durable",
-      "version": "revision lineage",
-      "recovery": "soft-delete restore with parent/lineage checks",
-      "audit": "AuditLog",
-      "mutability": "soft-delete + metadata under policy"
-    },
-    {
-      "state": "Revision",
-      "authority_owner": "STORAGE-VAULT",
-      "writer": [
-        "Vault"
-      ],
-      "readers": [
-        "Vault/API/UI"
-      ],
-      "store": "PostgreSQL revisions",
-      "lifetime": "durable immutable",
-      "version": "monotonic revisionNo + canonVersion",
-      "recovery": "append new revision, never overwrite",
-      "audit": "AuditLog",
-      "mutability": "IMMUTABLE"
-    },
-    {
-      "state": "Commit",
-      "authority_owner": "STORAGE-VAULT",
-      "writer": [
-        "Vault commit transaction"
-      ],
-      "readers": [
-        "Vault/API"
-      ],
-      "store": "PostgreSQL commits + blobRef",
-      "lifetime": "durable immutable",
-      "version": "canonVersion/previousVersion",
-      "recovery": "new legal commit/revision",
-      "audit": "AuditLog",
-      "mutability": "IMMUTABLE; idempotencyKey unique"
-    },
-    {
-      "state": "EventLog",
-      "authority_owner": "MODULE-OBS",
-      "writer": [
-        "system subsystems"
-      ],
-      "readers": [
-        "OBS/JUDGE/audit tools"
-      ],
-      "store": "PostgreSQL event_log",
-      "lifetime": "retention 90 days current config",
+      "store": "PostgreSQL DirectiveDispatch",
+      "lifetime": "durable until terminal",
       "version": "schema-bound",
-      "recovery": "no update/delete; alert on sequence gap",
-      "audit": "self observational evidence",
-      "mutability": "APPEND_ONLY"
+      "recovery": "PENDING ENQUEUED FAILED reconciliation",
+      "audit": [
+        "QUEUE_BACKLOG alarm",
+        "run failure evidence"
+      ],
+      "refs": [
+        "packages/queue/dispatch.ts"
+      ]
     },
     {
-      "state": "AuditLog",
-      "authority_owner": "MODULE-OBS",
-      "writer": [
-        "security/accountable operations"
+      "state_id": "STATE-SESSION",
+      "authoritative_owner": "MODULE-AUTH",
+      "writers": [
+        "create revoke logout and session maintenance"
       ],
       "readers": [
-        "AUDITOR/OWNER/JUDGE via OBS"
+        "API auth middleware"
       ],
-      "store": "PostgreSQL audit_log",
-      "lifetime": "retention 365 days current config",
-      "version": "hash-chain semantics",
-      "recovery": "no rewrite; verify chain",
-      "audit": "cryptographic audit chain",
-      "mutability": "APPEND_ONLY"
+      "store": "PostgreSQL Session plus secure cookie token",
+      "lifetime": "6h current default unless revoked",
+      "version": "auth config",
+      "recovery": "explicit login or refresh path; revoked does not reactivate",
+      "audit": [
+        "auth events and incidents"
+      ],
+      "refs": [
+        "packages/auth/session.ts",
+        "prisma/schema.prisma"
+      ]
     },
     {
-      "state": "FreezeIncident",
-      "authority_owner": "LAW/CORE",
-      "writer": [
-        "failure transaction"
+      "state_id": "STATE-OTAC",
+      "authoritative_owner": "MODULE-AUTH",
+      "writers": [
+        "request verify consume auth flow"
       ],
       "readers": [
-        "OWNER/AUDITOR/API"
+        "auth verify"
       ],
-      "store": "PostgreSQL freeze_incidents",
-      "lifetime": "retention 365 days",
-      "version": "schema-bound",
-      "recovery": "authorized recovery linked to cause",
-      "audit": "AuditLog/EventLog",
-      "mutability": "incident record immutable in semantics"
+      "store": "PostgreSQL hashed OTAC state",
+      "lifetime": "5 min current TTL plus abuse windows",
+      "version": "auth config",
+      "recovery": "new OTAC after cooldown and lock rules",
+      "audit": [
+        "auth event",
+        "security incident"
+      ],
+      "refs": [
+        "packages/auth/otac.ts",
+        "packages/api/vnext-config.ts"
+      ]
     },
     {
-      "state": "SecurityIncident",
-      "authority_owner": "MODULE-AUTH/MODULE-OBS",
-      "writer": [
-        "security incident path"
+      "state_id": "STATE-VAULT-PROJECT",
+      "authoritative_owner": "STORAGE-VAULT",
+      "writers": [
+        "authorized Vault APIs"
       ],
       "readers": [
-        "OWNER/AUDITOR"
+        "API",
+        "UI",
+        "audit"
       ],
-      "store": "PostgreSQL security_incidents",
-      "lifetime": "retention 365 days",
-      "version": "schema-bound",
-      "recovery": "primary/secondary linkage",
-      "audit": "AuditLog",
-      "mutability": "append incident history"
+      "store": "PostgreSQL Project",
+      "lifetime": "durable soft-delete capable",
+      "version": "canon lineage downstream",
+      "recovery": "restore only with valid parent and lineage",
+      "audit": [
+        "AuditLog"
+      ],
+      "refs": [
+        "prisma/schema.prisma"
+      ]
     },
     {
-      "state": "Session",
-      "authority_owner": "MODULE-AUTH",
-      "writer": [
-        "auth/session service"
+      "state_id": "STATE-VAULT-ARTIFACT",
+      "authoritative_owner": "STORAGE-VAULT",
+      "writers": [
+        "authorized Vault APIs"
       ],
       "readers": [
-        "auth middleware/API"
+        "API",
+        "UI"
       ],
-      "store": "PostgreSQL sessions",
-      "lifetime": "6h current TTL",
-      "version": "config-bound",
-      "recovery": "re-authenticate; revoked sessions never reactivate",
-      "audit": "auth audit events",
-      "mutability": "revocation/lastSeen controlled"
+      "store": "PostgreSQL Artifact",
+      "lifetime": "durable soft-delete capable",
+      "version": "revision chain",
+      "recovery": "restore if lineage and blob valid",
+      "audit": [
+        "AuditLog"
+      ],
+      "refs": [
+        "prisma/schema.prisma"
+      ]
     },
     {
-      "state": "Queue job",
-      "authority_owner": "QUEUE-EXECUTION",
-      "writer": [
-        "BullMQ producer/worker"
+      "state_id": "STATE-VAULT-REVISION",
+      "authoritative_owner": "STORAGE-VAULT",
+      "writers": [
+        "append-only revision creation"
       ],
       "readers": [
-        "worker/reconciler"
+        "API",
+        "UI",
+        "audit"
       ],
-      "store": "Redis/BullMQ with AOF required",
-      "lifetime": "bounded by stale TTL",
-      "version": "DirectiveJobSchema",
-      "recovery": "dedupe/reconcile/new run, no unsafe retry",
-      "audit": "run/event/incident linkage",
-      "mutability": "queue lifecycle"
+      "store": "PostgreSQL Revision",
+      "lifetime": "immutable durable",
+      "version": "revisionNo plus canonVersion",
+      "recovery": "no in-place rollback; use new revision or legal restore path",
+      "audit": [
+        "AuditLog"
+      ],
+      "refs": [
+        "packages/vault/versioning.ts",
+        "prisma/schema.prisma"
+      ]
     },
     {
-      "state": "Capability registry (future)",
-      "authority_owner": "REGISTRY-CAPABILITY",
-      "writer": [
-        "governed registry"
+      "state_id": "STATE-VAULT-COMMIT",
+      "authoritative_owner": "STORAGE-VAULT",
+      "writers": [
+        "authorized commit transaction"
       ],
       "readers": [
-        "Universe/NCF"
+        "API",
+        "audit",
+        "integrity verifier"
       ],
-      "store": "observed in-memory Phase-F implementation",
-      "lifetime": "source expects durable/versioned append-only",
-      "version": "capability version",
-      "recovery": "deprecate/new version",
-      "audit": "future governance evidence",
-      "mutability": "source says append-only; current observed storage is implementation-only and not persistence proof"
+      "store": "PostgreSQL Commit plus blob and hash linkage",
+      "lifetime": "immutable durable",
+      "version": "previousVersion chain",
+      "recovery": "OCC conflict then retry as new legal commit",
+      "audit": [
+        "AuditLog"
+      ],
+      "refs": [
+        "packages/vault/integrity.ts",
+        "prisma/schema.prisma"
+      ]
+    },
+    {
+      "state_id": "STATE-EVENT-LOG",
+      "authoritative_owner": "MODULE-OBS",
+      "writers": [
+        "approved system modules INSERT only"
+      ],
+      "readers": [
+        "OBS",
+        "JUDGE where permitted",
+        "AUDITOR"
+      ],
+      "store": "PostgreSQL EventLog",
+      "lifetime": "90 days current default",
+      "version": "event schema by code and source",
+      "recovery": "sequence gaps alert; no rewrite",
+      "audit": [
+        "monotonic sequence"
+      ],
+      "refs": [
+        "prisma/schema.prisma",
+        "packages/obs/event-log.ts"
+      ]
+    },
+    {
+      "state_id": "STATE-AUDIT-LOG",
+      "authoritative_owner": "MODULE-OBS",
+      "writers": [
+        "approved critical actions INSERT only"
+      ],
+      "readers": [
+        "JUDGE where permitted",
+        "AUDITOR"
+      ],
+      "store": "PostgreSQL AuditLog hash chain",
+      "lifetime": "365 days current default",
+      "version": "hash-chain contract",
+      "recovery": "tamper or gap becomes integrity incident; no rewrite",
+      "audit": [
+        "self hash chain"
+      ],
+      "refs": [
+        "prisma/schema.prisma",
+        "packages/obs/audit-log.ts"
+      ]
+    },
+    {
+      "state_id": "STATE-FREEZE-INCIDENT",
+      "authoritative_owner": "STORAGE-VAULT",
+      "writers": [
+        "failure path in serializable transaction"
+      ],
+      "readers": [
+        "API",
+        "UI",
+        "AUDITOR",
+        "recovery"
+      ],
+      "store": "PostgreSQL FreezeIncident",
+      "lifetime": "365 days current default",
+      "version": "incident schema",
+      "recovery": "only if recoverable and authorized",
+      "audit": [
+        "linked AuditLog and EventLog"
+      ],
+      "refs": [
+        "packages/obs/incidents.ts",
+        "prisma/schema.prisma"
+      ]
+    },
+    {
+      "state_id": "STATE-SECURITY-INCIDENT",
+      "authoritative_owner": "MODULE-OBS",
+      "writers": [
+        "auth and security incident path"
+      ],
+      "readers": [
+        "AUDITOR",
+        "security",
+        "OWNER"
+      ],
+      "store": "PostgreSQL SecurityIncident",
+      "lifetime": "365 days current default",
+      "version": "incident schema",
+      "recovery": "secondary linkage plus governed remediation",
+      "audit": [
+        "primaryIncidentId linkage"
+      ],
+      "refs": [
+        "packages/obs/incidents.ts",
+        "prisma/schema.prisma"
+      ]
     }
   ]
 }
