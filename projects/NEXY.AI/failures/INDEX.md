@@ -1,16 +1,18 @@
 # NEXY.AI Failure / Recovery Library
 
-Files:
-- `failures.jsonl` — canonical, internal and source-scenario failure records.
-- `recovery-playbooks.jsonl` — deterministic recovery skeletons.
+Canonical:
+- `failures.jsonl`
 - `failure.schema.json`
 - `validation-report.md`
 
-Use before repair work:
-1. identify the exact failure layer/code;
-2. retrieve affected systems/invariants/contracts;
-3. inspect known recovery rule;
-4. run relevant regressions;
-5. only then add proven root cause / successful recovery back into this library.
+Before repair, AI should query this library by:
+- symptom/error code;
+- affected systems;
+- current state;
+- attempted recovery;
+- historical blocker.
 
-Never convert UNKNOWN incident history into invented experience.
+Each record preserves:
+`context → symptom → root cause → failed approach → why failed → successful recovery → regression → prevention`.
+
+Designed failure modes and actually observed failures are separate kinds.
