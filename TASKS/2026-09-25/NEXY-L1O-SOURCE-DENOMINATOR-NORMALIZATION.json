@@ -1,0 +1,116 @@
+{
+  "task_id": "TASK-NEXY-L1O-SOURCE-DENOMINATOR-NORMALIZATION-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "title": "Normalize L1o source provenance and intelligence-workstream denominator",
+  "mode": "CROSS_SOURCE_NORMALIZATION",
+  "sources": [
+    "authoritative DOCX direct paragraph extraction",
+    "projects/NEXY.AI/requirements/requirements.jsonl",
+    "sealed audit matrix S_L1O_LO3_LO2"
+  ],
+  "actions": [
+    "Rebound REQ-L1O-002 through REQ-L1O-014 to direct L600/Bounded-Truth source ranges.",
+    "Compared canonical registry IDs with legacy audit matrix IDs.",
+    "Did not invent missing sealed-audit rows; campaign now uses canonical registry as denominator."
+  ],
+  "source_ranges": {
+    "REQ-L1O-002": [
+      [
+        11291,
+        11313
+      ]
+    ],
+    "REQ-L1O-003": [
+      [
+        11314,
+        11324
+      ]
+    ],
+    "REQ-L1O-004": [
+      [
+        11325,
+        11344
+      ]
+    ],
+    "REQ-L1O-005": [
+      [
+        11345,
+        11369
+      ]
+    ],
+    "REQ-L1O-006": [
+      [
+        11370,
+        11374
+      ]
+    ],
+    "REQ-L1O-007": [
+      [
+        11375,
+        11390
+      ]
+    ],
+    "REQ-L1O-008": [
+      [
+        11391,
+        11394
+      ]
+    ],
+    "REQ-L1O-009": [
+      [
+        11395,
+        11408
+      ]
+    ],
+    "REQ-L1O-010": [
+      [
+        11409,
+        11419
+      ]
+    ],
+    "REQ-L1O-011": [
+      [
+        11420,
+        11432
+      ]
+    ],
+    "REQ-L1O-012": [
+      [
+        11165,
+        11179
+      ]
+    ],
+    "REQ-L1O-013": [
+      [
+        11433,
+        11455
+      ]
+    ],
+    "REQ-L1O-014": [
+      [
+        11134,
+        11140
+      ],
+      [
+        12416,
+        12422
+      ]
+    ]
+  },
+  "denominator": {
+    "canonical_l1o_lo3_lo2_requirements": 38,
+    "current_architecture": 37,
+    "future_architecture": 1,
+    "legacy_audit_matrix_component_requirements": 35,
+    "omitted": [
+      "REQ-L1O-009",
+      "REQ-LO2-006",
+      "REQ-LO3-002"
+    ]
+  },
+  "final_status": "SOURCE_AND_DENOMINATOR_NORMALIZED",
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25",
+  "trace_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/SOURCE-NORMALIZATION",
+  "hash": "HASH_UNAVAILABLE"
+}

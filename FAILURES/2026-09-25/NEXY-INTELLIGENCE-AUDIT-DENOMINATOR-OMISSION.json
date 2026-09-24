@@ -1,0 +1,16 @@
+{
+  "failure_id": "FAIL-NEXY-INTELLIGENCE-AUDIT-DENOMINATOR-OMISSION-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "context": "Legacy audit matrix S_L1O_LO3_LO2 compared against canonical requirements registry.",
+  "cause": "Three canonical component requirements are absent from the audit matrix.",
+  "omitted_requirement_ids": [
+    "REQ-L1O-009",
+    "REQ-LO2-006",
+    "REQ-LO3-002"
+  ],
+  "impact": "Using the audit matrix alone understates the intelligence workstream denominator by three requirements.",
+  "recovery": "Use canonical requirements registry as campaign denominator; do not synthesize sealed-audit rows without a re-audit.",
+  "status": "OPEN_LEGACY_AUDIT_MATRIX_GAP_CAMPAIGN_WORKAROUND_VERIFIED",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

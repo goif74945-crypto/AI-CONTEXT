@@ -10,18 +10,31 @@
   "current_component": "L1o",
   "current_requirement": "REQ-L1O-001",
   "current_requirement_status": "PARTIAL_VERIFIED_BOUNDARY",
-  "current_architecture_requirement_count": 34,
+  "current_architecture_requirement_count": 37,
   "historical_excluded_count": 4,
   "future_excluded_count": 1,
   "completed_requirements": 0,
   "partial_verified_requirements": 1,
-  "remaining_current_requirements": 33,
+  "remaining_current_requirements": 36,
   "known_blockers": [
     "REQ-L1O-005 required for genuine multi-path certainty variation.",
-    "REQ-L1O-014 certainty-tier semantic ordering requires separate source-authority resolution."
+    "REQ-L1O-014 certainty-tier semantic ordering requires separate source-authority resolution.",
+    "Legacy audit matrix S_L1O_LO3_LO2 omits three canonical requirements; campaign denominator uses canonical registry."
   ],
   "release_status": "NOT_READY",
   "next_action": "Select next independent L1o current requirement with sufficient source authority; do not invent ambiguity thresholds or certainty numeric thresholds.",
   "timestamp_source": "2026-09-25",
-  "hash": "HASH_UNAVAILABLE"
+  "hash": "HASH_UNAVAILABLE",
+  "denominator_source": "projects/NEXY.AI/requirements/requirements.jsonl canonical registry",
+  "denominator_correction": {
+    "previous_audit_matrix_component_count": 35,
+    "canonical_component_count": 38,
+    "missing_from_audit_matrix": [
+      "REQ-L1O-009",
+      "REQ-LO2-006",
+      "REQ-LO3-002"
+    ],
+    "current_architecture": 37,
+    "future_architecture": 1
+  }
 }

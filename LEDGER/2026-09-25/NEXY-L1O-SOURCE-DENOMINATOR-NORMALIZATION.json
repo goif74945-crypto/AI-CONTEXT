@@ -1,0 +1,19 @@
+{
+  "ledger_id": "LEDGER-NEXY-L1O-SOURCE-DENOMINATOR-NORMALIZATION-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "claim": [
+    "REQ-L1O-002..014 legacy source ranges were misbound to earlier document material and are now rebound to direct source ranges.",
+    "Canonical L1o/Lo3/Lo2 denominator is 38 requirements: 37 CURRENT_ARCHITECTURE + 1 FUTURE_ARCHITECTURE.",
+    "Legacy audit matrix contains 35 component requirements and omits L1O-009, LO2-006 and LO3-002."
+  ],
+  "proof": [
+    "direct DOCX extraction",
+    "canonical requirements registry ID comparison",
+    "audit matrix ID comparison"
+  ],
+  "status": "RECORDED",
+  "confidence": 1,
+  "freshness": "2026-09-25",
+  "trace": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/SOURCE-NORMALIZATION",
+  "hash": "HASH_UNAVAILABLE"
+}
