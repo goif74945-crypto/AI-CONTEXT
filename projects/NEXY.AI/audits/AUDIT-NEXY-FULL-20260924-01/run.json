@@ -103,9 +103,9 @@
     "remaining": 1108,
     "percent": 24.5232
   },
-  "current_category": "L_DETERMINISM_TIME_RANDOMNESS",
-  "last_completed_unit": "CATEGORY:K_EVENT_MESSAGING_DELIVERY",
-  "next_unit": "CATEGORY:L_DETERMINISM_TIME_RANDOMNESS",
+  "current_category": "M_OBSERVABILITY_LOGS_METRICS_ALERTS",
+  "last_completed_unit": "CATEGORY:L_DETERMINISM_TIME_RANDOMNESS",
+  "next_unit": "CATEGORY:M_OBSERVABILITY_LOGS_METRICS_ALERTS",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
@@ -148,8 +148,8 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "category_completed": "K_EVENT_MESSAGING_DELIVERY",
+    "category_completed": "L_DETERMINISM_TIME_RANDOMNESS",
     "read_back_verified": true,
-    "category_units": 42
+    "category_units": 0
   }
 }
