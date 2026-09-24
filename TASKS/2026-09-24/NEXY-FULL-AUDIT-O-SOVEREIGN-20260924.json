@@ -1,0 +1,14 @@
+{
+  "task_id": "NEXY-FULL-AUDIT-O-SOVEREIGN-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "O_SOVEREIGN_UNIVERSE_HOST",
+  "total_units": 47,
+  "audited_units": 47,
+  "counts": {
+    "FUTURE_SCOPE": 47
+  },
+  "status": "CATEGORY_AUDIT_RECORDED",
+  "next_category": "P_CONSTITUTIONAL_LAYERS",
+  "command_generation": "FORBIDDEN_UNTIL_FULL_AUDIT_GATE",
+  "hash": "HASH_UNAVAILABLE"
+}
