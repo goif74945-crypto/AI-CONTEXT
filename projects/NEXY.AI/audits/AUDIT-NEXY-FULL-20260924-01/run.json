@@ -3,7 +3,7 @@
   "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
   "pair_id": "NEXY-CLOSED-LOOP-01",
   "mode": "AUDIT_ONLY_UNTIL_FULL_PROJECT_COVERAGE",
-  "status": "PARTIAL",
+  "status": "FULL_AUDIT_COMPLETE",
   "project": "NEXY.AI / NEXY-IGNIS",
   "authoritative_source": {
     "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
@@ -103,9 +103,9 @@
     "remaining": 0,
     "percent": 100
   },
-  "current_category": "AUDIT_INTEGRITY_REPAIR",
-  "last_completed_unit": "INTEGRITY_REVALIDATION_DETECTED_COMPLETION_GAPS",
-  "next_unit": "NORMALIZE_SYSTEM_RECORDS_AND_REQUIREMENT_SOURCE",
+  "current_category": "CLOSED_LOOP_REMEDIATION",
+  "last_completed_unit": "FULL_AUDIT_GATE_REVALIDATED",
+  "next_unit": "WAIT_BUILDER_RESULT_FOR_CMD-NEXY-SEC-OTAC-LOG-001",
   "findings_counts_by_severity": {
     "S0": 0,
     "S1": 0,
@@ -114,17 +114,18 @@
     "S4": 10,
     "S5": 2
   },
-  "blocked": 0,
+  "blocked": 7,
   "conflict": 1,
-  "unknown": 0,
+  "unknown": 1,
   "full_audit_gate": {
-    "full_atomic_coverage": false,
+    "full_atomic_coverage": true,
     "cross_system_reaudit": true,
     "master_matrix": true,
-    "requirement_matrix": false,
-    "findings_reconciled": false,
-    "dependency_dag": false,
-    "normal_builder_commands_allowed": false
+    "requirement_matrix": true,
+    "findings_reconciled": true,
+    "dependency_dag": true,
+    "command_dag": true,
+    "normal_builder_commands_allowed": true
   },
   "mutation": {
     "nexy_implementation": "FORBIDDEN",
@@ -148,26 +149,29 @@
     "packages/auth/email.ts::ConsoleEmailProvider plaintext OTAC/email log path (release/non-isolated use)"
   ],
   "checkpoint": {
-    "phase_completed": "AUDIT_INTEGRITY_REVALIDATION",
+    "phase_completed": "FULL_AUDIT_GATE_REVALIDATION",
     "read_back_verified": true,
     "record_denominator_coverage_percent": 100,
-    "semantic_per_system_coverage_complete": false,
-    "requirement_matrix_complete": false,
-    "findings_reconciled": false,
-    "dependency_dag": false,
-    "command_dag": false,
-    "next": "NORMALIZE_SYSTEM_RECORDS_AND_REQUIREMENT_SOURCE"
+    "semantic_per_system_coverage_complete": true,
+    "requirement_matrix_complete": true,
+    "findings_reconciled": true,
+    "dependency_dag": true,
+    "command_dag": true,
+    "next": "WAIT_BUILDER_RESULT_FOR_CMD-NEXY-SEC-OTAC-LOG-001"
   },
   "remediation_campaign": {
     "planned_commands": 13,
-    "ready_commands": 0,
-    "blocked_or_planned_commands": 13,
+    "ready_commands": 1,
+    "blocked_or_planned_commands": 12,
     "first_command": "CMD-NEXY-SEC-OTAC-LOG-001",
-    "queue_state": "QUARANTINED",
+    "queue_state": "READY",
     "builder_claim": "NONE_OBSERVED"
   },
   "final_summary": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/final-summary.json",
   "category_summary": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/matrices/category-summary.json",
   "ai_context_write_readback": "VERIFIED",
-  "integrity_revalidation": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/integrity-revalidation-2026-09-24-01.json"
+  "integrity_revalidation": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/integrity-revalidation-2026-09-24-01.json",
+  "integrity_revalidation_resolution": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/integrity-revalidation-resolution-2026-09-24-01.json",
+  "system_analysis_normalization": "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260924-01/system-analysis-normalization.json",
+  "command_schema_revision": "1.1.0"
 }
