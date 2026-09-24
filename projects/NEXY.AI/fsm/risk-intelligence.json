@@ -1,12 +1,36 @@
 {
   "fsm_id": "FSM-RISK-INTELLIGENCE",
   "name": "Risk / Intelligence State Model",
-  "kind": "SOURCE_DEFINED",
+  "namespace": "RISK_INTELLIGENCE",
+  "registry_kind": "SOURCE_DEFINED",
   "authority": [
     "FINAL_ARCHITECTURE_SOURCE"
   ],
   "scope": [
     "CURRENT_ARCHITECTURE"
+  ],
+  "ontology_status": "SOURCE_DESIGN",
+  "states": [
+    {
+      "state_id": "STATE-RISK-CAUTION",
+      "name": "CAUTION"
+    },
+    {
+      "state_id": "STATE-RISK-CRITICAL",
+      "name": "CRITICAL"
+    },
+    {
+      "state_id": "STATE-RISK-FAILSAFE",
+      "name": "FAILSAFE"
+    },
+    {
+      "state_id": "STATE-RISK-NORMAL",
+      "name": "NORMAL"
+    },
+    {
+      "state_id": "STATE-RISK-UNCERTAIN",
+      "name": "UNCERTAIN"
+    }
   ],
   "source_range": [
     {
@@ -16,201 +40,90 @@
       "end_paragraph": 10979
     }
   ],
-  "states": [
-    "NORMAL",
-    "CAUTION",
-    "UNCERTAIN",
-    "CRITICAL",
-    "FAILSAFE"
-  ],
-  "events": [
-    "OverConstraint",
-    "UnderConstraint",
-    "LatencyOverflow",
-    "BadLearning",
-    "explicit transition"
-  ],
-  "event_ownership": {},
-  "transitions": [
-    {
-      "from": "NORMAL",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "CAUTION",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "NORMAL",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "UNCERTAIN",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "NORMAL",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "CRITICAL",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "NORMAL",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "FAILSAFE",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "CAUTION",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "NORMAL",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "CAUTION",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "UNCERTAIN",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "CAUTION",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "CRITICAL",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "CAUTION",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "FAILSAFE",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "UNCERTAIN",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "NORMAL",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "UNCERTAIN",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "CAUTION",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "UNCERTAIN",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "CRITICAL",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "UNCERTAIN",
-      "event": "explicit transition",
-      "guard": "target allowed by kernel transition table",
-      "action": "CAS state transition",
-      "to": "FAILSAFE",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "CRITICAL",
-      "event": "explicit transition",
-      "guard": "only allowed normal transition from CRITICAL",
-      "action": "CAS state transition",
-      "to": "FAILSAFE",
-      "failure": "Err(())",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "ANY_LESS_SEVERE",
-      "event": "BadLearning",
-      "guard": "failure severity greater than current",
-      "action": "monotonic escalation",
-      "to": "CAUTION",
-      "failure": "corrupt state forces FAILSAFE",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "ANY_LESS_SEVERE",
-      "event": "UnderConstraint",
-      "guard": "failure severity greater than current",
-      "action": "monotonic escalation",
-      "to": "UNCERTAIN",
-      "failure": "corrupt state forces FAILSAFE",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "ANY_LESS_SEVERE",
-      "event": "LatencyOverflow",
-      "guard": "failure severity greater than current",
-      "action": "monotonic escalation",
-      "to": "CRITICAL",
-      "failure": "corrupt state forces FAILSAFE",
-      "audit_event": "kernel diagnostics"
-    },
-    {
-      "from": "ANY_LESS_SEVERE",
-      "event": "OverConstraint",
-      "guard": "failure severity greater than current",
-      "action": "monotonic escalation",
-      "to": "FAILSAFE",
-      "failure": "corrupt state forces FAILSAFE",
-      "audit_event": "kernel diagnostics"
-    }
-  ],
-  "invalid_transition_behavior": "Rejected with Err(()); corrupted state on failure/integrity verification forces FAILSAFE.",
-  "recovery_semantics": "FAILSAFE has no outbound transition in this kernel instance; exit requires external/full restart path.",
-  "audit_event_semantics": "Kernel-level diagnostic semantics; no explicit persistent audit contract in the inspected Rust FSM file.",
-  "implementation_mapping_status": "EXACT",
-  "implementation_refs": [
-    {
-      "path": "core-kernel/src/kernel/fsm_state.rs",
-      "blob_sha": null,
-      "symbols": [
-        "SystemState",
-        "FailureMode",
-        "FsmState",
-        "KERNEL_STATE",
-        "freeze"
-      ]
-    }
-  ],
   "requirement_ids": [
     "REQ-FINAL-008"
   ],
-  "test_refs": [
-    "core-kernel/src/kernel/fsm_state.rs (inline unit tests)"
+  "implementation_mapping_status": "UNMAPPED",
+  "implementation_refs": [],
+  "implementation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "transition_source": "SOURCE_STATE_MODEL_PLUS_OBSERVED_KERNEL_IMPLEMENTATION",
+  "transitions": [
+    {
+      "from": "NORMAL",
+      "event": "degrade_or_failure",
+      "guard": [],
+      "action": [
+        "escalate"
+      ],
+      "to": "CAUTION|UNCERTAIN|CRITICAL|FAILSAFE",
+      "failure": "N/A"
+    },
+    {
+      "from": "CAUTION",
+      "event": "recover_or_escalate",
+      "guard": [],
+      "action": [
+        "validated CAS transition"
+      ],
+      "to": "NORMAL|UNCERTAIN|CRITICAL|FAILSAFE",
+      "failure": "transition rejected"
+    },
+    {
+      "from": "UNCERTAIN",
+      "event": "resolve_or_escalate",
+      "guard": [],
+      "action": [
+        "validated CAS transition"
+      ],
+      "to": "NORMAL|CAUTION|CRITICAL|FAILSAFE",
+      "failure": "transition rejected"
+    },
+    {
+      "from": "CRITICAL",
+      "event": "escalate",
+      "guard": [],
+      "action": [
+        "validated CAS transition"
+      ],
+      "to": "FAILSAFE",
+      "failure": "transition rejected"
+    },
+    {
+      "from": "FAILSAFE",
+      "event": "any_in_instance",
+      "guard": [],
+      "action": [
+        "no outbound transition"
+      ],
+      "to": "FAILSAFE",
+      "failure": "terminal"
+    }
   ],
-  "alignment_status": "IMPLEMENTED_STRUCTURE_OBSERVED",
-  "alignment_notes": [
-    "This 5-state kernel FSM is separate from DOC-C 8-state execution FSM."
-  ]
+  "global_rules": [
+    "Failure escalation is monotonic in observed kernel implementation.",
+    "Corrupt state byte forces FAILSAFE.",
+    "FAILSAFE has no outbound transition within a kernel instance.",
+    "Source final architecture says this FSM must remain separate from DOC-C execution FSM."
+  ],
+  "invalid_transition_behavior": "reject transition; integrity corruption forces FAILSAFE",
+  "audit_event": "UNKNOWN at kernel primitive layer",
+  "notes": [
+    "FSM namespace is isolated; equal state labels in other FSMs are not aliases."
+  ],
+  "observed_implementation": {
+    "path": "core-kernel/src/kernel/fsm_state.rs",
+    "symbols": [
+      "SystemState",
+      "FailureMode",
+      "FsmState",
+      "KERNEL_STATE",
+      "freeze"
+    ],
+    "failure_mapping": {
+      "OverConstraint": "FAILSAFE",
+      "UnderConstraint": "UNCERTAIN",
+      "LatencyOverflow": "CRITICAL",
+      "BadLearning": "CAUTION"
+    }
+  }
 }
