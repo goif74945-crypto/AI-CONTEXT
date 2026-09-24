@@ -1,23 +1,20 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "NEXY Failure Library Record",
+  "title": "NEXY Failure / Recovery Record",
   "type": "object",
   "required": [
     "failure_id",
-    "layer",
-    "code",
-    "category",
+    "kind",
     "context",
     "symptom",
     "root_cause",
     "failed_approach",
     "why_failed",
-    "recovery_contract",
     "successful_recovery",
-    "affected_system_ids",
-    "regression_test_refs",
+    "affected_systems",
+    "regression_test",
     "prevention",
-    "source_refs",
-    "record_status"
+    "status",
+    "evidence_refs"
   ]
 }
