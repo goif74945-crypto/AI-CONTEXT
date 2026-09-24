@@ -1,0 +1,47 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "category": "H_SECURITY_AUTH_PERMISSION_TENANT",
+  "target_head": "84484d8108fe1dee186450c0d36c26d360b2596e",
+  "total_units": 55,
+  "counts": {
+    "PARTIAL": 43,
+    "NOT_VERIFIED": 2,
+    "FAIL": 2,
+    "SUPERSEDED": 2,
+    "FUTURE_SCOPE": 6
+  },
+  "source_proof": [
+    "Authoritative source DOCX security/auth/RBAC segments including DOC-C current build and DOC-D product design.",
+    "Canonical requirements registry for auth/session/RBAC units.",
+    "projects/NEXY.AI/security/trust-boundaries.json, permission-matrix.json and threat-model.json."
+  ],
+  "implementation_proof": [
+    "packages/api/auth.ts; packages/auth/{otac,session,csrf,email,security-incident}.ts",
+    "packages/api/{owner-roles,owner-recovery,session-refresh}.ts and middleware/rate-limit.ts",
+    "prisma/schema.prisma and security-related migrations",
+    "packages/phase-f/lo3/{cage,prompt-law-filter}.ts",
+    "Target tree inspected at exact HEAD 84484d8108fe1dee186450c0d36c26d360b2596e."
+  ],
+  "test_proof": [
+    "Auth/RBAC/CSRF/abuse/prompt-law test files are present at target HEAD.",
+    "No successful exact-target-head test execution is established; combined target-head status NEXY Validation R2 is failure.",
+    "DOC-E E5/E6 are bound to db52f9f... and report current Actions execution BLOCKED_ENVIRONMENT."
+  ],
+  "evidence_proof": [
+    "Current security registry validation is structural only and explicitly not runtime/security certification.",
+    "Security registries retain stale repository_snapshot provenance to codex head 9c9bef...; existing J freshness finding remains applicable.",
+    "No stale or historical PASS was promoted to current-head PASS."
+  ],
+  "findings": [
+    "F-NEXY-FULL-H-OTAC-LOG-001",
+    "F-NEXY-FULL-J-REGISTRY-FRESHNESS-001"
+  ],
+  "containment": {
+    "frozen_for_release_or_nonisolated_use": [
+      "ConsoleEmailProvider plaintext OTAC/email stderr path"
+    ],
+    "reason": "S5 secret/PII log exposure at packages/auth/email.ts; do not use console provider as release/deployment evidence or outside isolated local development until remediation campaign is authorized."
+  },
+  "next_category": "C_API_ROUTES_CONTRACTS",
+  "status": "CATEGORY_AUDIT_RECORDED"
+}
