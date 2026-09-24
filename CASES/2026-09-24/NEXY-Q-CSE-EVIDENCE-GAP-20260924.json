@@ -1,0 +1,12 @@
+{
+  "case_id": "CASE-NEXY-Q-CSE-EVIDENCE-GAP-20260924",
+  "audit_run_id": "AUDIT-NEXY-FULL-20260924-01",
+  "finding_id": "F-NEXY-FULL-Q-CSE-TEST-EVIDENCE-001",
+  "context": "Current-architecture Context Sharding Engine under Q category.",
+  "cause": "Static implementation exists but focused executable proof for sharding invariants is absent at the pinned target HEAD.",
+  "impact": "Regression could silently restore identical/full-context delivery without focused detection.",
+  "fix_class": "TEST/VERIFY after full-audit command gate opens",
+  "prevention": "Bind CSE invariant tests and evidence to exact target HEAD.",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
