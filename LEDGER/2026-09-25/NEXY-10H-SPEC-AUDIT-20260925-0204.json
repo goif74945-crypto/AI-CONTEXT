@@ -1,0 +1,121 @@
+{
+  "task_id": "TASK-NEXY-10H-SPEC-AUDIT-20260925-0204",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "audit_window_utc": {
+    "start": "2026-09-24T09:04:36Z",
+    "end": "2026-09-24T19:04:36Z"
+  },
+  "audit_window_asia_bangkok": {
+    "start": "2026-09-24T16:04:36+07:00",
+    "end": "2026-09-25T02:04:36+07:00"
+  },
+  "snapshot_head": "2003b5135e6b1be0f8741db961806cdcacf498d7",
+  "snapshot_head_message": "test(l1o): make race injection no_std-test compatible",
+  "entries": [
+    {
+      "id": "L10H-001",
+      "source": "GitHub commits API",
+      "claim": "19 commits fall within the locked 10-hour window on astra/omega-full-spec-convergence.",
+      "proof": "Commit query since 2026-09-24T09:04:36Z until 2026-09-24T19:04:36Z returned 19 commits ending at 2003b513.",
+      "deps": [],
+      "risk": "low",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot"
+    },
+    {
+      "id": "L10H-002",
+      "source": "GitHub compare API",
+      "claim": "The audited update set touches 44 unique files before/including the final no_std test repair; the final repair re-touches l10_cognition.rs.",
+      "proof": "Compare base 84484d8 to e15bff3 listed 44 files; 2003b513 changes l10_cognition.rs already in that set.",
+      "deps": [
+        "L10H-001"
+      ],
+      "risk": "low",
+      "status": "VERIFIED",
+      "confidence": 0.99,
+      "freshness": "snapshot"
+    },
+    {
+      "id": "L10H-003",
+      "source": "Authoritative attached NEXY-IGNIS source + repo code",
+      "claim": "OTAC secure-delivery behavior matches DOC-C failure semantics.",
+      "proof": "email provider fails closed; request-otac invalidates undelivered OTAC and returns 503 DEPENDENCY_FAILURE; exact-head auth tests pass.",
+      "deps": [],
+      "risk": "medium",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 0.98,
+      "freshness": "snapshot"
+    },
+    {
+      "id": "L10H-004",
+      "source": "Authoritative DOC-C AgentAdapter contract + packages/swarm/adapters",
+      "claim": "Canonical AgentAdapter behavior exists but runtime registration mandates an undocumented compatibility method call.",
+      "proof": "Source contract lists execute/cancel/healthcheck; assertAgentAdapter requires execute/cancel/healthcheck/call and AgentAdapter extends SwarmAgent.",
+      "deps": [],
+      "risk": "medium",
+      "status": "PROVEN_DRIFT",
+      "confidence": 0.99,
+      "freshness": "snapshot"
+    },
+    {
+      "id": "L10H-005",
+      "source": "Authoritative DOC-C incident law + run-state/system-state/prisma code",
+      "claim": "Failure priority matches, but inspected run-bound secondary failures are persisted as code arrays rather than separate linked incident records.",
+      "proof": "incident-priority order matches source; run-state/system-state update FreezeIncident.secondaryErrorCodes; source requires all other failures as secondary incidents/links.",
+      "deps": [],
+      "risk": "high",
+      "status": "PROVEN_PARTIAL_MISMATCH",
+      "confidence": 0.98,
+      "freshness": "snapshot"
+    },
+    {
+      "id": "L10H-006",
+      "source": "Authoritative DOC-C event ownership + vnext-state-matrix + exact-head tests",
+      "claim": "SYSTEM freeze recovery authority is source-compatible while external recovery API remains OWNER-only.",
+      "proof": "Source allows recover OWNER or SYSTEM event; matrix catalog allows both; exact-head freeze recover tests pass.",
+      "deps": [],
+      "risk": "medium",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 0.99,
+      "freshness": "snapshot"
+    },
+    {
+      "id": "L10H-007",
+      "source": "L600 source + core-kernel + Railway",
+      "claim": "RSA double-entry and null/extreme/race failure injection match the audited L600 requirements after 2003b513.",
+      "proof": "Independent recompute mismatch rejects candidate; exact-head core-kernel Rust contract passes after no_std test repair.",
+      "deps": [],
+      "risk": "medium",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 0.99,
+      "freshness": "snapshot"
+    },
+    {
+      "id": "L10H-008",
+      "source": "Railway exact-head deployment",
+      "claim": "Broad tests and build pass, but release validation is not green.",
+      "proof": "95 files / 712 tests pass; DOC-C static pass; web build pass; coverage_check exit 1; deployment overall failed.",
+      "deps": [],
+      "risk": "high",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "exact-head"
+    },
+    {
+      "id": "L10H-009",
+      "source": "Conversation/CROSS protocol",
+      "claim": "Cross-chat reconciliation is not verified.",
+      "proof": "User confirmed other chat involvement but no valid handoff object was supplied.",
+      "deps": [],
+      "risk": "medium",
+      "status": "MISSING",
+      "confidence": 1,
+      "freshness": "current-task"
+    }
+  ],
+  "final_verdict": "PARTIAL_VERIFIED_AUDIT",
+  "version": "1.0.0",
+  "timestamp_source": "repo snapshot + exact-head validation"
+}
