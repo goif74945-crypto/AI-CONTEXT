@@ -23,10 +23,11 @@
     "09 Security + State + Event + Config Maps",
     "10 Builder / Auditor Playbooks",
     "11 Golden + Negative Corpus",
-    "12 Context Router + Context Pack Generator"
+    "12 Context Router + Context Pack Generator",
+    "13 Snapshot / Checkpoint / Cross-Chat Handoff"
   ],
-  "last_completed_node": "12 Context Router + Context Pack Generator",
-  "next_node": "13 Snapshot / Checkpoint / Cross-Chat Handoff",
+  "last_completed_node": "13 Snapshot / Checkpoint / Cross-Chat Handoff",
+  "next_node": "14 Semantic Diff + Change Impact",
   "artifacts": [
     "ontology/",
     "requirements/",
