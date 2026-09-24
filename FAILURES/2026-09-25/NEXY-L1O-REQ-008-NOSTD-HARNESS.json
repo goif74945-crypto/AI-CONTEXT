@@ -1,0 +1,13 @@
+{
+  "failure_id": "FAIL-NEXY-L1O-REQ-008-NOSTD-HARNESS-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-008-FAILURE-INJECTION-20260925",
+  "context": "First REQ-L1O-008 test-only patch at e15bff3e862d4173f16262d516d6dd1d8731b8f8.",
+  "cause": "Race-style unit test used std::thread and Vec inside a no_std crate without test-only std linkage.",
+  "failed_approach": "Direct std::thread::scope plus Vec handles in the no_std test module.",
+  "recovery": "Added `extern crate std` under #[cfg(test)] and replaced Vec-backed handles with fixed named scoped thread handles.",
+  "boundary": "Production code was unchanged; failure was confined to the test harness.",
+  "prevention": "For core-kernel no_std tests, declare test-only std explicitly and avoid unnecessary heap-backed collections.",
+  "status": "RESOLVED",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

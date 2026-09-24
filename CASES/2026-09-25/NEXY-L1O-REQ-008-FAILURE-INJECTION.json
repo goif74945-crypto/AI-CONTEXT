@@ -1,0 +1,13 @@
+{
+  "case_id": "CASE-NEXY-L1O-REQ-008-FAILURE-INJECTION-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-008-FAILURE-INJECTION-20260925",
+  "requirement_id": "REQ-L1O-008",
+  "cause": "L600 explicitly requires null/extreme/race-style failure injection, but L10 had no race-style coverage and no source-bound failure-injection suite.",
+  "impact": "Acceptance evidence for REQ-L1O-008 was incomplete.",
+  "fix": "Added source-bound NUL, extreme-input and concurrent deterministic failure-injection tests without changing production L10 behavior.",
+  "prevention": "Keep failure-injection coverage source-bound and executable through the Rust contract gate.",
+  "regression": "Exact-head contract/integration/full/coverage generation/DOC-C/web build passed.",
+  "status": "MITIGATED_VERIFIED_WITH_LIMITS",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

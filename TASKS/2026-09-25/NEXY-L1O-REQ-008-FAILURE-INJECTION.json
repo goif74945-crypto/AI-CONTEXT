@@ -1,0 +1,95 @@
+{
+  "task_id": "TASK-NEXY-L1O-REQ-008-FAILURE-INJECTION-20260925",
+  "campaign_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925",
+  "requirement_id": "REQ-L1O-008",
+  "title": "Add L1o L600 null/extreme/race failure-injection coverage",
+  "mode": "CROSS_EXECUTE_SERIAL",
+  "source": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "paragraph_ranges": [
+      [
+        11391,
+        11394
+      ]
+    ]
+  },
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "start_head": "d8e72ea0b0d356c9f88f4dd125ed23a026a01e55",
+  "failed_attempt_head": "e15bff3e862d4173f16262d516d6dd1d8731b8f8",
+  "end_head": "2003b5135e6b1be0f8741db961806cdcacf498d7",
+  "changed_files": [
+    "core-kernel/src/engine/l10_cognition.rs"
+  ],
+  "actions": [
+    "Added explicit NUL/null-like fail-closed test.",
+    "Added extreme oversized-input bounded/deterministic test.",
+    "Added concurrent race-style deterministic execution test.",
+    "After first attempt failed because no_std tests did not import std, added test-only `extern crate std` and removed Vec usage from the concurrent harness."
+  ],
+  "tests_results": [
+    {
+      "check": "cargo test --locked -p core-kernel --lib via tests/contract/core-kernel-rust.test.ts",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run typecheck",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run typecheck:backend",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run lint",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:contract",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:integration",
+      "status": "PASS"
+    },
+    {
+      "check": "npm test",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run test:coverage",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run check:doc-c",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run build:web",
+      "status": "PASS"
+    },
+    {
+      "check": "npm run check:coverage",
+      "status": "PRE_EXISTING_FAIL"
+    }
+  ],
+  "proof": [
+    "NEXY 2003b5135e6b1be0f8741db961806cdcacf498d7",
+    "Railway 42b5ddb6-804d-44d9-b3d1-bd6976b58c1d",
+    "Exact-head contract gate passed, proving the core-kernel Rust library tests compiled and executed successfully.",
+    "Exact-head full and coverage-generation suites passed."
+  ],
+  "final_status": "VERIFIED_WITH_LIMITS",
+  "limits": [
+    "Global coverage threshold remains a pre-existing release blocker unrelated to REQ-L1O-008."
+  ],
+  "next_actions": [
+    "Proceed serially to REQ-L1O-009.",
+    "Keep REQ-L1O-002 and REQ-L1O-014 frozen pending authoritative source resolution."
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25",
+  "trace_id": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-008",
+  "hash": "HASH_UNAVAILABLE"
+}

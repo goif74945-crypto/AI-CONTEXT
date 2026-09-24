@@ -1,0 +1,29 @@
+{
+  "ledger_id": "LEDGER-NEXY-L1O-REQ-008-FAILURE-INJECTION-20260925",
+  "task_id": "TASK-NEXY-L1O-REQ-008-FAILURE-INJECTION-20260925",
+  "source": [
+    "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx sha256 b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7 paragraphs 11391-11394"
+  ],
+  "claim": [
+    "REQ-L1O-008 requires null/extreme/race-style failure injection where applicable.",
+    "NEXY exact head 2003b513... contains explicit NUL, extreme oversized-input, and concurrent race-style deterministic L10 tests.",
+    "Exact-head Rust contract, integration, full and coverage-generation gates passed.",
+    "Global check:coverage still fails and is pre-existing."
+  ],
+  "proof": [
+    "Railway deployment 42b5ddb6-804d-44d9-b3d1-bd6976b58c1d",
+    "NEXY 2003b5135e6b1be0f8741db961806cdcacf498d7"
+  ],
+  "deps": [
+    "core-kernel Rust contract gate",
+    "L10 deterministic core"
+  ],
+  "risk": [
+    "Release remains blocked by unrelated global coverage threshold."
+  ],
+  "status": "RECORDED_VERIFIED_WITH_LIMITS",
+  "confidence": 1,
+  "freshness": "EXACT_HEAD_2026-09-25",
+  "trace": "CAMPAIGN-NEXY-L1O-LO3-LO2-20260925/REQ-L1O-008",
+  "hash": "HASH_UNAVAILABLE"
+}
