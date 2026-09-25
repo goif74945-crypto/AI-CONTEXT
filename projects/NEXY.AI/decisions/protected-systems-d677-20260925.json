@@ -1,0 +1,33 @@
+{
+  "lock_id": "NEXY-PROTECTED-SYSTEMS-D677-20260925",
+  "project": "NEXY.AI",
+  "source_audit": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "authority": "Explicit user instruction in current project conversation",
+  "policy": "DO_NOT_MODIFY",
+  "systems": [
+    "SystemEnvelope/API error model",
+    "Directive contract/schema",
+    "Core state machine",
+    "Incident primary/secondary linkage",
+    "Session/device binding",
+    "CSRF",
+    "Runtime config/version/rollback",
+    "IRL",
+    "CIRL",
+    "CLE",
+    "DSL",
+    "ECL"
+  ],
+  "rules": [
+    "Do not edit, refactor, replace, optimize, migrate, or behaviorally alter these systems in NEXY.AI-.",
+    "Read-only inspection, regression testing, and evidence collection are allowed.",
+    "A future task must not include these systems in an implementation patch unless the user explicitly overrides this lock.",
+    "If new evidence proves regression or a changed authoritative specification, report the conflict and freeze modification of the locked system until the user explicitly authorizes touching it.",
+    "Do not infer that adjacent files are locked unless changing them would behaviorally alter one of these protected systems."
+  ],
+  "proof_boundary": "Selected because their whole-project audit classification was exact MATCH, excluding all statuses with limits, partial, presence-only, not-executed, mismatch, or compile failure.",
+  "status": "ACTIVE",
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
