@@ -2,9 +2,12 @@
 
 ## Provenance and authority boundary
 
-This context is derived from the uploaded project document **แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx** and from the existing `AI-CONTEXT` repository structure.
+This context is derived from the NEXY-IGNIS source corpus and from the existing `AI-CONTEXT` repository structure.
 
-- Source document SHA-256: `b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7`.
+- Canonical content identity SHA-256: `b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7`.
+- Current conversation attachment observed on 2026-09-26: `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx`, detected as Microsoft Word / OOXML DOCX, 2,146,350 bytes, with 10,979 non-empty paragraphs in `word/document.xml`.
+- Prior audit metadata recorded an accessible Drive object named `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.txt` whose binary/container and SHA-256 matched the same DOCX content. That prior filename observation is retained as provenance metadata, not treated as a distinct source.
+- Canonical provenance record: `projects/NEXY.AI/source-normalization/source-provenance.json`.
 - DOC-B is current system law; DOC-C is the current vNEXT build specification; DOC-D is current product design only where DOC-C supports it.
 - The Final Architecture is conceptual architecture; DOC-E is deployment/runtime evidence only.
 - Design, implementation, runtime behavior and deployment evidence are separate truth domains. A design statement is not proof that the NEXY implementation has that behavior.
