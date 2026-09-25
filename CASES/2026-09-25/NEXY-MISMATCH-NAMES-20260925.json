@@ -1,0 +1,7 @@
+{
+  "case_id": "CASE-NEXY-MISMATCH-NAMES-20260925",
+  "task_id": "TASK-NEXY-MISMATCH-NAMES-20260925",
+  "cause": "User requested names only from verified mismatch matrix.",
+  "status": "CLOSED",
+  "version": "1.0.0"
+}
