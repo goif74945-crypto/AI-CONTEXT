@@ -1,0 +1,36 @@
+{
+  "task_id": "TASK-NEXY-AI-CONTEXT-DESIGN-ALIGNMENT-20260925",
+  "title": "Align NEXY.AI context summaries with authoritative design and evidence freshness",
+  "mode": "SOURCE_AND_EVIDENCE_ALIGNMENT",
+  "scope": "NEXY.AI overview, architecture, requirements, status, deep capture, control plane, checkpoints, snapshots and release gate",
+  "inputs_summary": "User requested that inaccurate NEXY.AI data in AI-CONTEXT be corrected to match the actual design file and current evidence.",
+  "sources": [
+    {
+      "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+    },
+    {
+      "repository": "goif74945-crypto/NEXY.AI-",
+      "branch": "astra/omega-full-spec-convergence",
+      "head": "136f68240b6540a523d89044937c906b4a7a97c3",
+      "access": "read_only"
+    }
+  ],
+  "corrections": [
+    "Replaced historical 10–15 minute auth wording with an explicitly historical label and current DOC-C canonical OTAC/session values.",
+    "Separated source design, conceptual architecture, implementation observation and DOC-E deployment proof.",
+    "Corrected L1o, Lo3 and Lo2 roles and kept DSL/RSEL/ECL/Safety Kernel as separate layers.",
+    "Separated conceptual risk/intelligence states from the current DOC-C execution FSM.",
+    "Marked unresolved L1o CTS and robotics latency conflicts without inventing values.",
+    "Reconciled stale current-looking status, checkpoint, snapshot, control-plane and release-gate summaries.",
+    "Corrected deep capture status to COMPLETE FOR THIS PASS."
+  ],
+  "non_changes": [
+    "NEXY.AI implementation repository was not modified.",
+    "Historical evidence records and pinned implementation reports were not rewritten as current."
+  ],
+  "validation_rule": "Current implementation truth must be bound to exact head and supported by runtime/DOC-E evidence.",
+  "final_status": "READY_FOR_READBACK_VALIDATION",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

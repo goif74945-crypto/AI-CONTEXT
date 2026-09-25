@@ -4,6 +4,10 @@
 
 This document consolidates requirements stated in the source project document. It does not turn design aspirations into verified implementation facts.
 
+- Source document SHA-256: `b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7`.
+- DOC-B is current system law; DOC-C is the current vNEXT build specification; DOC-D is current product design only where DOC-C supports it.
+- The Final Architecture is conceptual; DOC-E is deployment/runtime evidence only.
+
 ## Product identity requirements
 
 1. NEXY is a Core AI Control Hub, not merely a showcase website.
@@ -11,7 +15,8 @@ This document consolidates requirements stated in the source project document. I
 3. NEXY is explicitly not AGI.
 4. The human/user retains authority; User Law is a top-level user-defined constraint.
 5. Hidden core logic must remain behind the user-facing surface; the user primarily receives controlled outputs.
-6. The system must prefer freezing over guessing or silently forcing an unsafe/incorrect result.
+6. The system must prefer freezing/silence over guessing or silently forcing an unsafe/incorrect result.
+7. The release boundary is one legal verified output or freeze; it is not a promise that every request yields a result.
 
 ## Input and intent
 
@@ -31,19 +36,21 @@ This document consolidates requirements stated in the source project document. I
 
 ## Reasoning
 
-1. L1o is the deterministic logic core.
-2. Reasoning must be bounded by explicit domain/state/time constraints.
-3. The system should collapse or reject inconsistent candidate paths.
-4. The system should support state-transition reasoning.
-5. The system must not rely on perfect knowledge or infinite reasoning.
-6. Ambiguity should lead to a wait-for-clarity/blocking state rather than a guessed interpretation.
+1. L1o is the Sovereign / Deterministic Logic Core.
+2. L1o reasoning must be bounded by explicit domain/state/time constraints.
+3. L1o truth tiers are T0 Unknown, T1 Heuristic, T2 Empirical, T3 Formally Verified and T4 Immutable Law.
+4. Numeric CTS thresholds are not canonical in this context because the source contains an unresolved threshold conflict.
+5. The system should collapse or reject inconsistent candidate paths.
+6. The system should support state-transition reasoning.
+7. The system must not rely on perfect knowledge or infinite reasoning.
+8. Ambiguity should lead to a wait-for-clarity/blocking state rather than a guessed interpretation.
 
 ## Multi-AI / Swarm
 
 1. Support multiple AI/model slots.
 2. Support manual, semi-automatic and automatic routing modes as the design evolves.
 3. Support parallel debate/work.
-4. Support adversarial review.
+4. Support bounded adversarial review.
 5. Support cross-verification.
 6. Support proof-weighted consensus.
 7. Support final adjudication by a judge layer.
@@ -60,17 +67,7 @@ This document consolidates requirements stated in the source project document. I
 
 ## Freeze / failure requirements
 
-Freeze/block on conditions including:
-
-- unresolved ambiguity;
-- insufficient evidence;
-- AI/agent disagreement when no deterministic resolution exists;
-- policy conflict;
-- unsafe risk level;
-- integrity/security violation;
-- failed verification;
-- state corruption or invalid replay;
-- inability to maintain required deterministic behavior.
+Freeze/block on conditions including unresolved ambiguity, insufficient evidence, AI/agent disagreement when no deterministic resolution exists, policy conflict, unsafe risk level, integrity/security violation, failed verification, state corruption or invalid replay, and inability to maintain required deterministic behavior.
 
 Freeze is preferred to silent patching, silent fallback or forced execution.
 
@@ -94,17 +91,21 @@ Freeze is preferred to silent patching, silent fallback or forced execution.
 6. Boundary/schema validation is required at interfaces.
 7. External AI/provider output must be treated as untrusted input to the core.
 
-## Auth requirements (V0 direction)
+## Auth requirements
 
-1. Initial concept: email + one-time code.
-2. Code: alphanumeric, approximately 10 characters in the source.
+The early V0 source direction of roughly 10–15 minutes is historical. Current DOC-C canonical defaults are:
+
+1. Email + one-time alphanumeric code.
+2. Code length: `10` characters.
 3. Single-use.
-4. TTL approximately 10–15 minutes.
+4. TTL: `5 minutes` / `300000 ms`.
 5. Store a hash rather than the plaintext code.
-6. Limit guessing attempts; the source gives a target of five attempts with IP/email lockout.
-7. Temporary session with a bounded lifetime.
-8. API secrets/backend controls remain server-side.
-9. The source explicitly says this V0 is not MFA and not a complete zero-trust authentication system.
+6. Maximum verification attempts: `5`.
+7. Resend cooldown: `60 seconds`.
+8. Lock window: `15 minutes`.
+9. Session TTL: `6 hours` / `21600000 ms`.
+10. Maximum concurrent sessions: `5` per user.
+11. The source explicitly says this V0 is not MFA and not a complete zero-trust authentication system.
 
 ## UI / UX requirements
 
@@ -113,7 +114,7 @@ Freeze is preferred to silent patching, silent fallback or forced execution.
 3. Chat-centric control-room experience.
 4. Adaptive theme and multilingual direction.
 5. Fast load and low-RAM safe behavior.
-6. Command concepts include RUN, FREEZE, LOCK, EXPORT and KILL.
+6. RUN, FREEZE, LOCK, EXPORT and KILL are source command concepts; they must not be presented as current API routes without exact implementation evidence.
 7. Support text/code/files/links/images/video/3D/media concepts as the product expands.
 8. Separate user-facing views from deep control panels.
 9. UI labels must not redefine core authority.
@@ -138,14 +139,14 @@ Freeze is preferred to silent patching, silent fallback or forced execution.
 
 ## Backend / persistence requirements
 
-1. Serverless preferred.
-2. Database-agnostic architecture preferred.
-3. Temporary session store.
-4. Persistent Vault store.
-5. Policy separation.
-6. Immutable audit log.
-7. Critical writes should be idempotent.
-8. Recovery should be explicit and state-safe.
+The general source direction favors serverless and database-agnostic architecture. The current DOC-C reference target is Next.js + TypeScript, Route Handlers or Node API, Zod, PostgreSQL, Prisma, BullMQ + Redis, blob/object storage, structured JSON logs with trace IDs, and Vitest/Playwright/Prisma integration tests. These are build targets, not implementation proof.
+
+1. Temporary session store.
+2. Persistent Vault store.
+3. Policy separation.
+4. Immutable audit log.
+5. Critical writes should be idempotent.
+6. Recovery should be explicit and state-safe.
 
 ## Determinism requirements
 
@@ -158,7 +159,7 @@ The broader design constraints require avoiding implicit sources of nondetermini
 3. Evolve laws through test/compare/verification.
 4. Prevent poisoned inputs from becoming law.
 5. Maintain explicit old/new law state and rollback/rejection conditions.
-6. Do not silently drift core rules.
+6. Do not silently drift core rules or self-patch the current runtime.
 
 ## Monitoring / operations requirements
 
@@ -179,7 +180,7 @@ The broader design constraints require avoiding implicit sources of nondetermini
 7. Safety must continue to function if AI fails.
 8. Example stack: Jetson Orin-class main compute, STM32/Pico fast MCU, independent safety MCU, ROS2, FreeRTOS, ONNX/TensorRT, Gazebo/RViz.
 9. Main and MCU communications may use ROS2 DDS plus UART/CAN.
-10. Example target loop budgets in the source: fast path around 10 ms and slower AI loop around 100 ms, with one source section citing a critical total target under 100 ms.
+10. Source examples include a fast path around 10 ms and a slower AI loop around 100 ms. Safe Path sections conflict between roughly 50–200 ms and 50–500 ms, so no single physical latency budget is canonical yet.
 11. Robotics rollout is staged: simple prototype → added L1o/simple Lo3 → full dual-MCU safety/swarm design.
 
 ## Nonfunctional design goals

@@ -1,32 +1,33 @@
 {
+  "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
+  "observed_at": "2026-09-25",
   "target": {
-    "repo": "goif74945-crypto/NEXY.AI-",
-    "branch": "codex/spec-audit-20260919-78df350",
-    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "136f68240b6540a523d89044937c906b4a7a97c3",
+    "observation_mode": "READ_ONLY"
   },
-  "observed_at": "2026-09-24",
-  "evidence_summary": {
-    "required_doc_e": 12,
-    "pass": 0,
-    "blocked": 12,
-    "exact_current_head": 0
+  "status": "NON_DEPLOYABLE",
+  "evidence": {
+    "required_current_head_doc_e_records": 12,
+    "current_head_doc_e_pass": 0,
+    "current_head_doc_e_blocked": 12,
+    "exact_current_head_doc_e_proof": false,
+    "runtime_signoff": false,
+    "security_signoff": false
   },
-  "evidence_pack_revisions": [
-    "9eaeec9b830471907f2f1f19ca5d76371caf22cb",
-    "db52f9f..."
+  "freshness": {
+    "latest_available_mismatch_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
+    "latest_available_mismatch_status": "STALE_NOT_CURRENT_HEAD",
+    "historical_validation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+    "current_head_runtime_evidence": "NOT_AVAILABLE"
+  },
+  "blocking_reasons": [
+    "No exact-current-head DOC-E deployment evidence.",
+    "Available mismatch and validation artifacts target older implementation heads.",
+    "No current-head runtime/security sign-off.",
+    "Source-level unresolved CTS threshold and robotics latency conflicts remain labeled."
   ],
-  "freshness": "STALE_FOR_CURRENT_HEAD",
-  "release_verdict": "NON_DEPLOYABLE",
-  "verification_status": "NOT_VERIFIED",
-  "blockers": [
-    "No exact-current-HEAD DOC-E proof.",
-    "Hosted execution was blocked/not executed for required evidence artifacts.",
-    "E11 external authorized signoff is absent.",
-    "Evidence namespace contains mixed/stale revision identity."
-  ],
-  "source_refs": [
-    "projects/NEXY.AI/evidence/validation-report.md",
-    "projects/NEXY.AI/evidence/evidence-ledger.jsonl",
-    "projects/NEXY.AI/deep/doc-e-deployment-evidence.md"
-  ]
+  "rule": "A design document, context registry, stale matrix or file presence cannot satisfy this gate by itself.",
+  "hash": "HASH_UNAVAILABLE"
 }

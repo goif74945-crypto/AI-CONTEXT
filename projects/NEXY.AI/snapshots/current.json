@@ -1,198 +1,92 @@
 {
-  "schema_version": "1.0.0",
-  "project": "NEXY.AI",
-  "observed_at": "2026-09-24",
-  "implementation": {
-    "repository": "goif74945-crypto/NEXY.AI-",
-    "branch": "codex/spec-audit-20260919-78df350",
-    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-    "pr": {
-      "number": 8,
-      "state": "open",
-      "draft": true,
-      "merged": false,
-      "base": "main",
-      "base_sha": "049d01b3436cc0f0f15134fdb2a2c83e9410cf19"
-    }
+  "snapshot_kind": "NEXY.AI context truth snapshot",
+  "observed_at": "2026-09-25",
+  "context_repository": {
+    "repository": "goif74945-crypto/AI-CONTEXT",
+    "branch": "main",
+    "write_scope": "AI-CONTEXT only"
   },
-  "intelligence_registry": {
+  "source_authority": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "current_build_spec": "DOC-C",
+    "product_design": "DOC-D where supported by DOC-C",
+    "conceptual_architecture": "Final Architecture",
+    "proof_source": "DOC-E",
+    "rule": "Design, implementation, runtime and deployment evidence are separate truth domains."
+  },
+  "live_implementation_observation": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "136f68240b6540a523d89044937c906b4a7a97c3",
+    "observed_read_only": true,
+    "status": "NOT_VERIFIED_AT_CURRENT_HEAD",
+    "reason": "The available mismatch/validation evidence is pinned to older heads and was not promoted to current-head proof."
+  },
+  "context_registry_health": {
     "ontology": {
       "entities": 518,
       "relationships": 865,
       "aliases": 86,
-      "status": "STRUCTURAL_PASS"
+      "status": "STRUCTURAL_SOURCE_REGISTRY_PRESENT"
     },
     "requirements": {
-      "count": 262,
-      "status": "STRUCTURAL_PASS"
+      "records": 262,
+      "status": "SOURCE_ALIGNED_WITH_HISTORICAL_RECORDS_LABELED"
+    },
+    "contract_registry": {
+      "contracts_total": 22,
+      "api": 12,
+      "schema": 8,
+      "module": 2,
+      "status": "STRUCTURAL_REGISTRY_PRESENT"
     },
     "governance": {
       "authority_nodes": 15,
-      "conflict_records": 8,
-      "unresolved": [
-        "CONFLICT-RCL-LATENCY-001"
-      ]
+      "status": "SOURCE_HIERARCHY_PRESENT"
     },
-    "implementation_map": {
-      "entities": 518,
-      "exact": 200,
-      "group": 10,
-      "candidate": 63,
-      "unmapped": 243,
-      "status": "STRUCTURAL_PASS"
-    },
-    "contracts": {
-      "count": 22,
-      "review_required": [
-        "CONTRACT-APPSPEC",
-        "CONTRACT-CONSENSUS-RESULT",
-        "CONTRACT-EVIDENCE",
-        "CONTRACT-GAMESPEC",
-        "CONTRACT-SYSTEM-ENVELOPE"
-      ]
-    },
-    "fsms": {
-      "source": 8,
-      "implementation_only": 1,
-      "partial": [
-        "FSM-APP-LIFECYCLE",
-        "FSM-QUEUE-JOB",
-        "FSM-IMPL-PIPELINE-RUN"
-      ]
-    },
-    "invariants": {
-      "count": 28,
-      "s5": 22,
-      "s4": 6
-    },
-    "traceability": {
-      "requirements": 262,
-      "code_mapped": 202,
-      "test_linked": 241,
-      "evidence_linked": 12,
-      "current_head_evidence": 0
-    },
-    "failures": {
-      "records": 22,
-      "observed_campaign_failures": 6,
-      "source_runtime_failures": 16
-    },
-    "playbooks": {
-      "builder": 12,
-      "auditor": 10
-    },
-    "examples": {
-      "golden": 12,
-      "negative": 12
-    },
-    "context_router": {
-      "task_types": 14
-    },
-    "project_intelligence_graph": {
-      "nodes": 1315,
-      "edges": 8650,
-      "status": "STRUCTURAL_PASS"
-    },
-    "core_sequence_status": "15/15 COMPLETE",
-    "handoff": {
-      "schema_version": "2.0.0",
-      "package_types": 2,
-      "status": "STRUCTURAL_PASS"
-    },
-    "change_impact": {
-      "entity_records": 518,
-      "impact_records": 518,
-      "query_schema_version": "1.0.0",
-      "certainty": [
-        "EXACT",
-        "CANDIDATE",
-        "UNKNOWN"
-      ],
-      "status": "STRUCTURAL_PASS"
-    },
-    "control_plane": {
-      "status": "PARTIAL",
-      "completed_parts": [
-        "P4.1_COMMAND_MODEL",
-        "P4.2_COMMAND_QUEUE",
-        "P4.3_WORKER_REGISTRY",
-        "P4.4_CLAIM_LEASE",
-        "P4.5_EXPECTED_HEAD_GUARD",
-        "P4.6_SUPERSESSION",
-        "P4.7_RESULT_PACKAGE",
-        "P4.8_HEARTBEAT",
-        "P4.9_RETRY_BACKOFF"
-      ],
-      "command_schema_version": "1.0.0",
-      "queue_schema_version": "1.0.0",
-      "worker_registry_schema_version": "1.0.0",
-      "claim_schema_version": "1.0.0",
-      "head_guard_schema_version": "1.0.0",
-      "supersession_schema_version": "1.0.0",
-      "result_package": {
-        "canonical": "projects/NEXY.AI/handoff/handoff.schema.json#BUILDER_TO_AUDITOR",
-        "status": "STRUCTURAL_PASS"
-      },
-      "heartbeat_schema_version": "1.0.0",
-      "retry_schema_version": "1.0.0"
+    "deep_capture": "COMPLETE_FOR_THIS_PASS",
+    "unresolved": [
+      "L1o CTS numeric threshold conflict/source gap",
+      "Robotics Safe Path latency conflict and domain-specific physical budget"
+    ]
+  },
+  "control_plane": {
+    "milestones": "P4.1-P4.16",
+    "status": "MATERIALIZED_STRUCTURAL_ONLY",
+    "runtime_verified": false
+  },
+  "latest_available_mismatch_evidence": {
+    "matrix": "CASES/2026-09-25/NEXY-CURRENT-SPEC-MISMATCH-MATRIX-20260925-1215.json",
+    "implementation_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
+    "status": "STALE_NOT_CURRENT_HEAD",
+    "result": "PARTIAL_VERIFIED_CURRENT_MISMATCH_MATRIX",
+    "validation_observation": {
+      "files": 95,
+      "tests": 715,
+      "coverage_generation": "PASS",
+      "coverage_gate": "FAIL",
+      "note": "These figures describe the recorded older head only."
     }
   },
-  "dynamic_truth": {
-    "deployment_status": "NON_DEPLOYABLE / NOT_PROVEN_FOR_CURRENT_HEAD",
-    "current_doc_e_evidence_head_match": false,
-    "doc_e_artifact_commit": "db52f9f1870b302f36653268513251d010f9726e",
-    "current_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-    "current_head_test_execution_status": "NOT ESTABLISHED BY THIS PROJECT-INTELLIGENCE PASS",
-    "current_head_physical_robotics_proof": "NOT ESTABLISHED"
+  "historical_implementation_evidence": {
+    "target_branch": "codex/spec-audit-20260919-78df350",
+    "target_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+    "status": "HISTORICAL_NOT_CURRENT",
+    "use": "lineage/reference only"
+  },
+  "release_truth": {
+    "status": "NON_DEPLOYABLE",
+    "current_head_runtime_proof": false,
+    "current_head_doc_e_proof": false,
+    "signoff": false,
+    "rule": "Do not release from source prose, stale matrices or file presence alone."
   },
   "open_findings": [
-    {
-      "id": "OPEN-CONTRACT-001",
-      "kind": "CONTRACT_REVIEW",
-      "items": [
-        "CONTRACT-SYSTEM-ENVELOPE",
-        "CONTRACT-EVIDENCE",
-        "CONTRACT-CONSENSUS-RESULT",
-        "CONTRACT-APPSPEC",
-        "CONTRACT-GAMESPEC"
-      ]
-    },
-    {
-      "id": "OPEN-FSM-001",
-      "kind": "FSM_PARTIAL",
-      "items": [
-        "FSM-APP-LIFECYCLE",
-        "FSM-QUEUE-JOB",
-        "FSM-IMPL-PIPELINE-RUN"
-      ]
-    },
-    {
-      "id": "OPEN-GOV-001",
-      "kind": "UNRESOLVED_CONFLICT",
-      "items": [
-        "CONFLICT-RCL-LATENCY-001"
-      ]
-    },
-    {
-      "id": "OPEN-EVIDENCE-001",
-      "kind": "STALE_EVIDENCE",
-      "items": [
-        "DOC-E E1–E12 bind db52f9f... not current HEAD"
-      ]
-    },
-    {
-      "id": "OPEN-MAPPING-001",
-      "kind": "IMPLEMENTATION_MAPPING",
-      "items": [
-        "63 CANDIDATE mappings require confirmation before mutation",
-        "243 UNMAPPED entities are unknown, not automatically missing"
-      ]
-    }
+    "Current implementation head 136f requires a fresh exact-head audit.",
+    "Latest mismatch matrix is stale because it targets 317e.",
+    "L1o numeric CTS threshold remains unresolved by authority/source evidence.",
+    "Robotics latency values remain conflicting and unprofiled."
   ],
-  "next_project_intelligence_nodes": [
-    "Remaining P1/P2 registries: Skills, Capability/Tool, ADR, Glossary/Alias, Environment, Migration, Performance, Cost, Concurrency, Threat, Fuzz/Chaos, Known-Good, Regression, Release Gates, Definition-of-Done, AI Self-Check",
-    "Machine-readable compiled canon/build/audit/runtime packs",
-    "Current-head executable Test/Evidence refresh when runtime environment is available"
-  ],
-  "stale_when": "implementation branch HEAD changes or source document revision changes"
+  "hash": "HASH_UNAVAILABLE"
 }

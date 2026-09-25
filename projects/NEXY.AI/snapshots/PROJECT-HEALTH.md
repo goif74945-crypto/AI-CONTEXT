@@ -1,37 +1,35 @@
-# NEXY.AI Project Health Snapshot
+# NEXY.AI — Project Health Snapshot
 
-**Observed:** 2026-09-24
+## Observation
 
-## Exact identities
-- AI-CONTEXT/main: `a69bd3df773ced97f80287abf2e33c9b8fd3cba8`
-- NEXY target: `goif74945-crypto/NEXY.AI-`
-- branch: `codex/spec-audit-20260919-78df350`
-- HEAD: `9c9befd9fe255b0f9271e6e2b8c4bb2443a08089`
+- Observed: `2026-09-25`.
+- Context repository: `goif74945-crypto/AI-CONTEXT`, `main`.
+- Source: `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx`.
+- Source SHA-256: `b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7`.
 
-## Health
-Project-intelligence structure: **STRONG / STRUCTURALLY VALIDATED**  
-Implementation navigation: **MAPPED E0**  
-Runtime behavior: **NOT VERIFIED**  
-DOC-E current proof: **0/12 PASS; 12 BLOCKED; 0 exact-current-HEAD**  
-Release: **NON_DEPLOYABLE**  
-Unresolved governance conflict: **CONFLICT-RCL-LATENCY-001**
+## Overall status
 
-## Counts
-- ontology entities: 516
-- ontology relationships: 863
-- requirements: 262
-- invariants: 50
-- failures: 24
-- regressions: 24
-- known-good historical/context baselines: 18
-- NEXY project skills: 22 MATERIALIZED
-- golden examples: 10
-- negative examples: 15
-- performance budgets: 18
-- fuzz/chaos scenarios: 21
-- observed migrations: 4
+**SOURCE-ALIGNED CONTEXT / RUNTIME NOT VERIFIED / RELEASE NON_DEPLOYABLE**
 
-## Interpretation
-The knowledge/control layer is now much stronger than the runtime-evidence layer.
+## Health by truth domain
 
-That is intentional: structure is being made machine-readable without converting design/code presence into fake verification.
+| Domain | Status | Evidence boundary |
+|---|---|---|
+| Source capture | COMPLETE FOR THIS PASS | Deep capture and coverage records are present. |
+| Authority/governance | STRUCTURAL PASS | DOC-B/DOC-C/DOC-D/DOC-E split is recorded; conceptual architecture is not implementation proof. |
+| Requirements registry | SOURCE-ALIGNED | 262 records are present; historical values remain labeled. |
+| Ontology registry | STRUCTURAL PRESENT | 518 entities, 865 relationships and 86 aliases are recorded. |
+| Contract registry | STRUCTURAL PRESENT | 22 contracts: 12 API, 8 schema and 2 module records. |
+| Control plane | P4.1–P4.16 STRUCTURAL ONLY | Artifacts and policy checks are present; runtime is not established. |
+| Separate NEXY implementation | NOT VERIFIED AT CURRENT HEAD | Read-only observation: `astra/omega-full-spec-convergence` at `136f68240b6540a523d89044937c906b4a7a97c3`. |
+| Mismatch evidence | STALE | Latest matrix targets `317e619f5331a2d1ce9aa0016a18bc1d3f143270`, not the current head. |
+| Deployment gate | NON_DEPLOYABLE | No current-head DOC-E evidence or sign-off. |
+
+## Unresolved source findings
+
+- L1o numeric CTS threshold remains an authority conflict/source gap; no threshold is asserted here.
+- Robotics Safe Path timing is conflicting in the source; physical latency must be profiled by domain and hardware.
+
+## Safety of interpretation
+
+Do not use this file to claim that the NEXY implementation is complete, secure, deterministic, deployed, or physically safe. It reports the state of the AI-CONTEXT record and the freshness boundary of the evidence available to it.

@@ -1,43 +1,41 @@
 {
-  "task_id": "AI-CONTEXT-CONTINUOUS-BUILD-CONVERGENCE-V10",
-  "source_revision": {
-    "ai_context_start_head": "441f40f7445ea5c558b3170232d8939968e16b4d",
-    "prior_checkpoint_commit": "8583cb47e7b952b6c1cb1caa815c7555a9089db6",
-    "project_source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
-    "project_source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  "checkpoint_id": "AI-CONTEXT-CONTINUOUS-BUILD-CONVERGENCE-V10",
+  "observed_at": "2026-09-25",
+  "status": "PARTIAL",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "ai_context_head_at_task_start": "3f81aecc1684e91e4308400ad2d90e6b741a8ad7",
+  "last_structural_milestone": "P4.16",
+  "materialized_milestones": [
+    "P4.1",
+    "P4.2",
+    "P4.3",
+    "P4.4",
+    "P4.5",
+    "P4.6",
+    "P4.7",
+    "P4.8",
+    "P4.9",
+    "P4.10",
+    "P4.11",
+    "P4.12",
+    "P4.13",
+    "P4.14",
+    "P4.15",
+    "P4.16"
+  ],
+  "next_action": "Re-audit the separate NEXY implementation at its current exact head and refresh runtime/DOC-E evidence before calling the project verified.",
+  "open_boundaries": [
+    "No current-head runtime scheduler evidence is established.",
+    "No current-head DOC-E deployment proof is established.",
+    "L1o numeric CTS threshold remains an authority conflict/source gap.",
+    "Robotics physical latency budget remains unresolved in the design source."
+  ],
+  "implementation_dependency": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head_observed_read_only": "136f68240b6540a523d89044937c906b4a7a97c3",
+    "write_authority": "not granted; implementation repository was not modified"
   },
-  "target": {
-    "repository": "goif74945-crypto/AI-CONTEXT",
-    "branch": "main",
-    "head": "7ad626c4cb76d6a4e10aa655413a648c7ac97555",
-    "head_semantics": "semantic state completed before checkpoint metadata commit"
-  },
-  "last_completed_node": "P4.8 HEARTBEAT",
-  "next_node": "P4.9 RETRY / BACKOFF",
-  "artifacts": [
-    "projects/NEXY.AI/control-plane/heartbeat/"
-  ],
-  "findings": [
-    "Heartbeat is bound to worker+claim+command+lease_epoch.",
-    "Stale epoch and out-of-window heartbeat examples are rejected.",
-    "Heartbeat sequence is monotonic and cannot silently extend lease expiry."
-  ],
-  "open_unknowns": [
-    "Retry/backoff policy is not yet first-class."
-  ],
-  "dependencies": [
-    {
-      "repository": "goif74945-crypto/NEXY.AI-",
-      "branch": "codex/spec-audit-20260919-78df350",
-      "observed_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-      "access": "READ_ONLY_BY_DEFAULT"
-    }
-  ],
-  "authorization": {
-    "ai_context_repository_mutation": true,
-    "nexy_implementation_mutation": false,
-    "destructive_or_irreversible_operations": "HUMAN_GATE",
-    "secrets": "FORBIDDEN"
-  },
-  "resume_instruction": "Refresh AI-CONTEXT/main and implement P4.9 bounded deterministic retry/backoff with explicit retryable classes and no unbounded/random retry."
+  "resume_instruction": "Use source hierarchy first, then exact-head implementation evidence, then DOC-E/runtime proof. Do not promote stale mismatch matrices or historical validation reports to current truth.",
+  "hash": "HASH_UNAVAILABLE"
 }

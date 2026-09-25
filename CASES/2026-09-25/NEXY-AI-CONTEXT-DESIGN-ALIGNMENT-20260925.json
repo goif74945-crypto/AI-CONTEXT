@@ -1,0 +1,16 @@
+{
+  "case_id": "CASE-NEXY-AI-CONTEXT-DESIGN-ALIGNMENT-20260925",
+  "task_id": "TASK-NEXY-AI-CONTEXT-DESIGN-ALIGNMENT-20260925",
+  "issue": "Several AI-CONTEXT summary surfaces used historical values or implementation-looking language without clearly labeling source authority and evidence freshness.",
+  "resolution": "Summary surfaces now use current source hierarchy, current DOC-C auth/build values, explicit conceptual/runtime boundaries, and exact-head freshness labels.",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "implementation_observation": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "136f68240b6540a523d89044937c906b4a7a97c3",
+    "status": "READ_ONLY_NOT_VERIFIED"
+  },
+  "status": "READY_FOR_READBACK_VALIDATION",
+  "timestamp_source": "2026-09-25",
+  "hash": "HASH_UNAVAILABLE"
+}

@@ -1,14 +1,19 @@
 # NEXY.AI — Project Overview
 
-## Provenance
+## Provenance and authority boundary
 
-This context is derived from the uploaded project document **แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx** and from the existing `AI-CONTEXT` repository structure. It is a project-context record, not proof that the described system has been implemented or verified.
+This context is derived from the uploaded project document **แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx** and from the existing `AI-CONTEXT` repository structure.
+
+- Source document SHA-256: `b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7`.
+- DOC-B is current system law; DOC-C is the current vNEXT build specification; DOC-D is current product design only where DOC-C supports it.
+- The Final Architecture is conceptual architecture; DOC-E is deployment/runtime evidence only.
+- Design, implementation, runtime behavior and deployment evidence are separate truth domains. A design statement is not proof that the NEXY implementation has that behavior.
 
 ## Identity
 
 NEXY is described as a deterministic AI control system / Core AI Control Hub, not a presentation-only website and not AGI. The central idea is architect-first, zero-guess, verify-only execution: external AI models may generate candidate work, but NEXY remains the authority that scopes, checks, routes, verifies, freezes, and exposes outputs.
 
-A repeated canonical identity in the source is: **NEXY = a deterministic AI control system that produces a single verified result under explicit law/constraints.**
+The source's stable behavioral rule is: **one legal, verified output or freeze/silence**. This is a release boundary, not a guarantee that every request will produce a result.
 
 The source also uses the conceptual expansion **NEXY = Nexus of Execution** and defines the human-facing role as the interface between a human authority and AI while preserving human authority.
 
@@ -20,7 +25,7 @@ The source also uses the conceptual expansion **NEXY = Nexus of Execution** and 
 - Safety dominates decision, and decision dominates intelligence.
 - When an error, contradiction, unsafe state, policy conflict, or insufficient evidence is detected, the system freezes rather than silently patching, guessing, or continuing.
 - Deterministic behavior is a design target: the same relevant input, state, policy and constraints should produce the same structural result.
-- The user should see the useful result, not the hidden core machinery.
+- The user should see the useful result or an explicit freeze state, not the hidden core machinery.
 - Complexity should scale behind a small user-facing surface.
 
 ## Intended role of the product
@@ -69,11 +74,25 @@ The design calls for zero-trust input handling, server-side secrets, API gateway
 
 ## Auth direction
 
-The initial auth model in the source is intentionally described as a temporary/simple V0 mechanism: email + one-time alphanumeric code, roughly 10 characters, TTL around 10–15 minutes, single-use, hash storage, limited guessing attempts and temporary sessions. The source explicitly says this is not MFA and not a full zero-trust identity system; later hardening is expected.
+The source contains an early V0 direction of roughly a 10-character one-time code with a TTL around 10–15 minutes. That value is historical and must not be used as the current build contract.
+
+The current DOC-C canonical auth defaults are:
+
+- OTAC length: `10` characters.
+- OTAC TTL: `5 minutes` / `300000 ms`.
+- Maximum verification attempts: `5`.
+- Resend cooldown: `60 seconds`.
+- Lock window: `15 minutes`.
+- Session TTL: `6 hours` / `21600000 ms`.
+- Concurrent sessions: `5` per user.
+
+The design explicitly says this is not MFA and not a complete zero-trust identity system; later hardening remains a design direction.
 
 ## Backend and data direction
 
-The preferred backend direction is serverless and database-agnostic, with a temporary session store, persistent Vault store, policy separation and immutable audit logging. API architecture is described as Frontend → API Gateway → Core Logic → External APIs, with real provider details and keys hidden from the frontend.
+The general source direction favors serverless and database-agnostic deployment, with a temporary session store, persistent Vault store, policy separation and immutable audit logging. The current DOC-C reference implementation target is more specific: Next.js + TypeScript, Next.js Route Handlers or a Node API, Zod, PostgreSQL, Prisma, BullMQ + Redis, email OTAC with secure cookies, blob/object storage, structured JSON logs with trace IDs, and Vitest/Playwright/Prisma integration testing.
+
+The API architecture is Frontend → API Gateway → Core Logic → External APIs, with real provider details and keys hidden from the frontend. These are build targets, not proof of the live implementation.
 
 ## Deployment direction
 
@@ -92,4 +111,4 @@ The hardware direction includes a main AI computer such as Jetson Orin NX/AGX Or
 
 ## Current interpretation
 
-This repository entry should be treated as a structured, source-derived project context. Claims about implementation, production readiness, security, performance, deterministic guarantees, or deployment remain unverified until supported by repository artifacts, tests, logs, and reproducible evidence.
+This repository entry is a structured, source-derived project context. It is aligned to the recorded design hierarchy, but it does not establish implementation, runtime, deployment, physical robotics, performance, security or deterministic guarantees. The latest read-only observation of the separate NEXY implementation repository is tracked in the project snapshot; it is not treated as current proof until exact-head validation and DOC-E evidence exist.
