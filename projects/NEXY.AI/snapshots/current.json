@@ -1,6 +1,6 @@
 {
   "snapshot_kind": "NEXY.AI context truth snapshot",
-  "observed_at": "2026-09-25",
+  "observed_at": "2026-09-26",
   "context_repository": {
     "repository": "goif74945-crypto/AI-CONTEXT",
     "branch": "main",
@@ -18,11 +18,11 @@
   "live_implementation_observation": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head": "96b895ff471d0907d78f316d74fecc09205b8701",
-    "previously_observed_head": "136f68240b6540a523d89044937c906b4a7a97c3",
+    "head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "previously_observed_head": "96b895ff471d0907d78f316d74fecc09205b8701",
     "observed_read_only": true,
     "status": "NOT_VERIFIED_AT_CURRENT_HEAD",
-    "reason": "The available mismatch/validation evidence is pinned to older heads and was not promoted to current-head proof."
+    "reason": "Exact-head GitHub Actions runs were observed at db960dd, but the inspected primary jobs show no runner assignment and no executed steps; runtime/code behavior remains unverified."
   },
   "context_registry_health": {
     "ontology": {
@@ -84,7 +84,7 @@
     "rule": "Do not release from source prose, stale matrices or file presence alone."
   },
   "open_findings": [
-    "Current implementation head 136f requires a fresh exact-head audit.",
+    "Current implementation head db960dd163a9f50373b747ac922d735d1250cf3a requires executable exact-head validation; observed GitHub Actions runs failed before any job step was observed executing.",
     "Latest mismatch matrix is stale because it targets 317e.",
     "L1o numeric CTS threshold remains unresolved by authority/source evidence.",
     "Robotics latency values remain conflicting and unprofiled."
