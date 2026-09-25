@@ -1,6 +1,6 @@
 {
   "checkpoint_id": "AI-CONTEXT-CONTINUOUS-BUILD-CONVERGENCE-V10",
-  "observed_at": "2026-09-25",
+  "observed_at": "2026-09-26",
   "status": "PARTIAL",
   "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "ai_context_head_at_task_start": "3f81aecc1684e91e4308400ad2d90e6b741a8ad7",
@@ -23,9 +23,9 @@
     "P4.15",
     "P4.16"
   ],
-  "next_action": "Re-audit the separate NEXY implementation at its current exact head and refresh runtime/DOC-E evidence before calling the project verified.",
+  "next_action": "Restore an executable validation path, then run the required suite at exact head db960dd163a9f50373b747ac922d735d1250cf3a before regenerating runtime/DOC-E and implementation traceability truth.",
   "open_boundaries": [
-    "No current-head runtime scheduler evidence is established.",
+    "Exact-head CI attempts exist, but no inspected job step executed; runtime scheduler evidence is not established.",
     "No current-head DOC-E deployment proof is established.",
     "L1o numeric CTS threshold remains an authority conflict/source gap.",
     "Robotics physical latency budget remains unresolved in the design source."
@@ -33,9 +33,9 @@
   "implementation_dependency": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head_observed_read_only": "96b895ff471d0907d78f316d74fecc09205b8701",
-    "previous_head_observed": "136f68240b6540a523d89044937c906b4a7a97c3",
-    "write_authority": "not granted; implementation repository was not modified"
+    "head_observed_read_only": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "previous_head_observed": "96b895ff471d0907d78f316d74fecc09205b8701",
+    "write_authority": "granted by explicit user repair directive; no implementation write in this batch because current-head validation commands were not observed executing and no code defect was proven"
   },
   "resume_instruction": "Use source hierarchy first, then exact-head implementation evidence, then DOC-E/runtime proof. Do not promote stale mismatch matrices or historical validation reports to current truth.",
   "hash": "HASH_UNAVAILABLE"
