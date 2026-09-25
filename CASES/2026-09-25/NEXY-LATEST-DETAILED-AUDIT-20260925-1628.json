@@ -1,0 +1,29 @@
+{
+  "case_id": "CASE-NEXY-LATEST-DETAILED-AUDIT-20260925-1628",
+  "task_id": "TASK-NEXY-LATEST-DETAILED-AUDIT-20260925-1628",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "cause": "Latest branch advanced 49 commits after prior audit and required full revalidation against authoritative source.",
+  "findings": [
+    {
+      "id": "LATEST-COMPILE-001",
+      "severity": "S4",
+      "status": "OPEN",
+      "summary": "Exact-head TypeScript gates fail on RuntimeAgentAdapter interface composition and RSEL narrowing."
+    },
+    {
+      "id": "LATEST-MPG-002",
+      "severity": "S3",
+      "status": "OPEN_PARTIAL",
+      "summary": "BFS/DFS and EPE signals exist, but L600 MPG heuristic-bias generation strategy was not observed."
+    },
+    {
+      "id": "LATEST-TEST-003",
+      "severity": "S3",
+      "status": "OPEN_TEST_DRIFT",
+      "summary": "Three exact-head regression assertions are stale/source-inconsistent: two secondaryErrorCodes assertions and one RSEL CAUTION expectation."
+    }
+  ],
+  "impact": "Release gate remains red although many prior semantic mismatches are repaired.",
+  "status": "OPEN",
+  "version": "1.0.0"
+}
