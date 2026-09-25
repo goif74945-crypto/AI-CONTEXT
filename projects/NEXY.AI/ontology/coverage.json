@@ -55,7 +55,9 @@
     "SUBSYSTEM": 1,
     "TOOLCHAIN": 7,
     "UI_SURFACE": 62,
-    "ZONE": 9
+    "ZONE": 9,
+    "SCHEMA": 0,
+    "WORKFLOW": 0
   },
   "by_status": {
     "CURRENT_BUILD": 107,
@@ -117,6 +119,7 @@
     "Registry is source-derived architecture ontology, not proof of implementation/runtime/deployment.",
     "implementation_refs/test_refs/evidence_refs intentionally remain unpopulated until the dedicated Implementation Map/Test Matrix/Evidence Registry steps.",
     "Source prose contains evolving eras; HISTORICAL and CONFLICT records are preserved instead of erased.",
-    "518 is the atomic count under ontology v1 rules after the cancel/timeout event omission patch; future source revisions may change it."
+    "518 is the atomic count under ontology v1 rules after the cancel/timeout event omission patch; future source revisions may change it.",
+    "Coverage emits every canonical taxonomy key; zero-population types remain explicit (SCHEMA=0, WORKFLOW=0 for this source revision)."
   ]
 }
