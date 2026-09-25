@@ -1,0 +1,56 @@
+{
+  "task_id": "TASK-NEXY-LATEST-DETAILED-AUDIT-20260925-1628",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "entries": [
+    {
+      "id": "LATEST-001",
+      "claim": "Current head is d677ba05e3a144950240805c25a393b572df8eb1 and is 49 commits ahead of prior audit snapshot.",
+      "proof": "GitHub compare",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "LATEST-002",
+      "claim": "AgentAdapter canonical contract drift is repaired, but the runtime bridge does not typecheck.",
+      "proof": "current types/contract source + focused PASS + TS2320",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "LATEST-003",
+      "claim": "Secondary incident linkage now uses separate linked records.",
+      "proof": "current run-state/system-state/incidents source + linkage contract PASS",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "LATEST-004",
+      "claim": "L1o CTS semantics and explicit ambiguity handling are repaired without inventing numeric authority.",
+      "proof": "current Rust L1o/ICL source + core-kernel Rust contract PASS",
+      "status": "VERIFIED_WITH_LIMITS"
+    },
+    {
+      "id": "LATEST-005",
+      "claim": "MPG/EPE remains partial because heuristic-bias generation was not observed.",
+      "proof": "current l10_cognition has BFS+DFS+EPE signals but no MPG heuristic-bias implementation found",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "LATEST-006",
+      "claim": "IRL/CIRL/CLE/DSL/RSEL/ECL source shapes are substantially aligned at current head.",
+      "proof": "current packages/intelligence source + focused contract cases",
+      "status": "VERIFIED_WITH_LIMITS"
+    },
+    {
+      "id": "LATEST-007",
+      "claim": "Three current test failures are regression-test drift rather than demonstrated source violations.",
+      "proof": "source risk formula/secondary incident law vs exact failing assertions",
+      "status": "VERIFIED_WITH_LIMITS"
+    },
+    {
+      "id": "LATEST-008",
+      "claim": "Current release is not authorized.",
+      "proof": "Railway exact-head typecheck/contract/full/coverage gates fail; integration/DOC-C/web build pass",
+      "status": "VERIFIED"
+    }
+  ],
+  "final_verdict": "PARTIAL_VERIFIED_LATEST_AUDIT",
+  "version": "1.0.0"
+}
