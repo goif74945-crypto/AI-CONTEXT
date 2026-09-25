@@ -1,0 +1,57 @@
+{
+  "task_id": "TASK-NEXY-CURRENT-SPEC-MISMATCH-MATRIX-20260925-1215",
+  "snapshot_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
+  "entries": [
+    {
+      "id": "CUR-MATRIX-001",
+      "claim": "AgentAdapter still has mandatory runtime `call` beyond canonical source contract.",
+      "status": "VERIFIED",
+      "proof": "Current types.ts extends SwarmAgent; contract.ts requires call; DOC-C §6.1 does not list call."
+    },
+    {
+      "id": "CUR-MATRIX-002",
+      "claim": "Run-bound secondary incident linkage remains semantically incomplete.",
+      "status": "VERIFIED",
+      "proof": "Current run-state/system-state persist secondaryErrorCodes[]; source requires secondary incidents/secondary incident links."
+    },
+    {
+      "id": "CUR-MATRIX-003",
+      "claim": "Durable FAILED dispatches are automatically reprocessed without safe-retry classification/cap.",
+      "status": "VERIFIED",
+      "proof": "dispatch.ts includes FAILED in reconciler and runs every 5 seconds; jobs.ts BullMQ attempts=1 does not prevent durable redispatch."
+    },
+    {
+      "id": "CUR-MATRIX-004",
+      "claim": "L1o CTS tier semantics are reversed relative to authoritative source.",
+      "status": "VERIFIED",
+      "proof": "Source T0 Unknown→T4 Immutable Law; current l10_cognition maps T0=1.00 strongest, T4=0.25 weakest."
+    },
+    {
+      "id": "CUR-MATRIX-005",
+      "claim": "REQ-L1O-002 cannot be finalized.",
+      "status": "FROZEN",
+      "proof": "Current code lacks ambiguity_score/WAIT_FOR_DATA_CLARITY and authoritative threshold/scoring policy is unspecified."
+    },
+    {
+      "id": "CUR-MATRIX-006",
+      "claim": "Current MPG/EPE semantics do not fully implement L600 generation/entropy design.",
+      "status": "VERIFIED_WITH_LIMITS",
+      "proof": "Current code uses deterministic DFS and distinct-token/path-length entropy proxy; source specifies BFS+DFS+heuristic bias and ambiguity/missing-constraint/probabilistic entropy dimensions."
+    },
+    {
+      "id": "CUR-MATRIX-007",
+      "claim": "Final architecture IRL/CIRL/CLE/DSL/RSEL/ECL remains partial at current HEAD.",
+      "status": "VERIFIED_WITH_LIMITS",
+      "proof": "Current exact file checks confirm missing confidence/uncertainty IRL contract, risk_level CIRL contract, four CLE law outputs, scored DSL action set, and ECL Fast/Safe/Timeout modes; RSEL hard-block chain remains unproven."
+    },
+    {
+      "id": "CUR-MATRIX-008",
+      "claim": "Current HEAD is not release-authorized.",
+      "status": "VERIFIED",
+      "proof": "Railway exact-head deployment 3d500ce4... has coverage_check exit 1 despite 95 files/715 tests, DOC-C static and web build passing."
+    }
+  ],
+  "final_verdict": "PARTIAL_VERIFIED_CURRENT_MISMATCH_MATRIX",
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25T12:15:00+07:00"
+}
