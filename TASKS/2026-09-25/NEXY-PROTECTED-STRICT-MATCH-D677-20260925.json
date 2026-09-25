@@ -1,0 +1,57 @@
+{
+  "task_id": "TASK-NEXY-PROTECTED-STRICT-MATCH-D677-20260925",
+  "title": "Protect strict-match NEXY systems from unrelated changes",
+  "mode": "CROSS_AUDIT_GOVERNANCE",
+  "scope": "Record the previously strict-match subsystem set as protected in AI-CONTEXT.",
+  "inputs_summary": "Derived from TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925 at snapshot d677ba05e3a144950240805c25a393b572df8eb1.",
+  "sources": [
+    "projects/NEXY.AI/constraints/protected-strict-match-d677.json",
+    "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "AI-CONTEXT"
+  ],
+  "actions": [
+    "Created project constraint record",
+    "Prepared task/case/failure/ledger records",
+    "Read-back verification required"
+  ],
+  "artifacts_paths": [
+    "projects/NEXY.AI/constraints/protected-strict-match-d677.json"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "12 strict-match systems are protected from unrelated modification.",
+      "proof": "Protection record created at commit 5c9b8333bc2e5a5615dc5e2ca30f777b5743a4b6"
+    }
+  ],
+  "tests_results": "No NEXY.AI source tests executed; governance-only AI-CONTEXT write.",
+  "changes": "AI-CONTEXT governance record only. NEXY.AI source repository unchanged.",
+  "successes": [
+    "Protection record created."
+  ],
+  "failures": [],
+  "decisions": [
+    "Protected systems may only change after authoritative spec change, proven regression, or unavoidable dependency/security need with impact/regression verification."
+  ],
+  "unresolved": [],
+  "risks": [
+    "Protection must not be interpreted as permanent truth across future HEADs without revalidation."
+  ],
+  "limits": [
+    "Protection is snapshot-scoped and subsystem-scoped, not whole-repository release approval."
+  ],
+  "rollback": "Revert the AI-CONTEXT commit(s) if the governance record is invalidated.",
+  "final_status": "SUCCESS_PENDING_READBACK",
+  "next_actions": [
+    "Read back all records and verify version/content."
+  ],
+  "dependencies": [
+    "AI-CONTEXT repository"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25 project session",
+  "trace_id": "NEXY-PROTECTED-STRICT-MATCH-D677/20260925",
+  "hash": "HASH_UNAVAILABLE"
+}
