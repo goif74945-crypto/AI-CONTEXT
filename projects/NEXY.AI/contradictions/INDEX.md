@@ -22,5 +22,6 @@ Detect spec/architecture contradictions **before coding** and distinguish real c
 Only unresolved material contradictions block a task automatically.
 Resolved distinctions remain stored so future AI does not repeatedly “rediscover” them and incorrectly merge semantics.
 
-## Current blocker
-`CONFLICT-RCL-LATENCY-001`
+## Current blockers
+- `CONFLICT-RCL-LATENCY-001`
+- `CONFLICT-L1O-CTS-THRESHOLD-001`
