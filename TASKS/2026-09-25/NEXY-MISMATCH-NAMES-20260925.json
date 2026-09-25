@@ -1,0 +1,9 @@
+{
+  "task_id": "TASK-NEXY-MISMATCH-NAMES-20260925",
+  "title": "Return names of current NEXY systems not aligned to spec",
+  "mode": "CROSS_AUDIT",
+  "source_task": "TASK-NEXY-CURRENT-SPEC-MISMATCH-MATRIX-20260925-1215",
+  "final_status": "SUCCESS",
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
