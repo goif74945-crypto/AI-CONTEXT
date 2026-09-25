@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-09-26",
+  "identity": {
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "logical_filename": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "detected_container": "OOXML_DOCX",
+    "non_empty_paragraphs": 10979,
+    "identity_rule": "Content SHA-256 is the canonical identity; display filename is provenance metadata."
+  },
+  "observations": [
+    {
+      "source": "current_conversation_attachment",
+      "observed_filename": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "byte_size": 2146350,
+      "detected_file_type": "Microsoft Word 2007+ / OOXML DOCX",
+      "package_members_verified": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "word/document.xml",
+        "word/styles.xml"
+      ],
+      "verification": "sha256sum + file signature/type + ZIP/OpenXML inspection + word/document.xml paragraph parse",
+      "status": "VERIFIED"
+    },
+    {
+      "source": "prior_audit_report",
+      "observed_filename": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.txt",
+      "detected_container": "OOXML_DOCX",
+      "reported_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "status": "RETAINED_AS_REPORTED_PROVENANCE",
+      "limitation": "The prior Drive-object filename observation was not independently re-read from Drive in this repair pass."
+    }
+  ],
+  "source_contract_status": "CONTENT_IDENTITY_VERIFIED_CURRENT_ATTACHMENT",
+  "hash": "HASH_UNAVAILABLE"
+}
