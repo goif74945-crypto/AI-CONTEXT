@@ -1,0 +1,37 @@
+{
+  "task_id": "TASK-NEXY-4H-DELTA-20260925-2126",
+  "snapshot_head": "e857fca48673dba94065b4bc1643c0ab62c32ae3",
+  "failures": [
+    {
+      "id": "4H-REL-001",
+      "severity": "S4",
+      "cause": "Production deploy provider still intentionally unconfigured.",
+      "status": "OPEN"
+    },
+    {
+      "id": "4H-EVID-002",
+      "severity": "S4",
+      "cause": "Exact-head release attestation/DOC-E production evidence not closed.",
+      "status": "OPEN"
+    },
+    {
+      "id": "4H-BROWSER-003",
+      "severity": "S3",
+      "cause": "GitHub exact-head browser E2E did not execute; workflow jobs show failure with zero steps.",
+      "status": "OPEN"
+    },
+    {
+      "id": "4H-RSEL-004",
+      "severity": "S3",
+      "cause": "RSEL compile fixed but CAUTION mapping requires authoritative semantic re-audit.",
+      "status": "OPEN_REVIEW"
+    },
+    {
+      "id": "4H-PHASEF-005",
+      "severity": "S3",
+      "cause": "Phase-F gates pass but full 82-module spec-completeness is not yet re-audited.",
+      "status": "OPEN_REVIEW"
+    }
+  ],
+  "version": "1.0.0"
+}
