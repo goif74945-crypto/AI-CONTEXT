@@ -20,5 +20,17 @@
     "CANDIDATE must be opened/read before mutation.",
     "UNMAPPED does not automatically mean implementation is absent.",
     "All mappings are stale if observed HEAD changes."
-  ]
+  ],
+  "current_head_validation": {
+    "observed_at": "2026-09-26",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "path_validation_artifact": "projects/NEXY.AI/implementation/current-head-path-validation.json",
+    "mapped_refs_present": 864,
+    "mapped_refs_missing": 0,
+    "unique_changed_mapped_paths": 107,
+    "affected_entities": 164,
+    "status": "PATH_EXISTENCE_VERIFIED_SEMANTICS_STALE",
+    "rule": "Baseline mapping counts remain pinned to 9c9bef and must not be promoted to current semantic truth without reinspection."
+  }
 }
