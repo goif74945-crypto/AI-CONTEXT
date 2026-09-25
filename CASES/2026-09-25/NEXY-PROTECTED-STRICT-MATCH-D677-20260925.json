@@ -1,0 +1,12 @@
+{
+  "case_id": "CASE-NEXY-PROTECTED-STRICT-MATCH-D677-20260925",
+  "task_id": "TASK-NEXY-PROTECTED-STRICT-MATCH-D677-20260925",
+  "cause": "User explicitly requested preserving the strict-match systems and preventing unnecessary changes.",
+  "violation": "NONE",
+  "impact": "Creates a governance guardrail against unrelated edits to already-proven subsystem surfaces.",
+  "fix": "Created explicit protected-system constraint.",
+  "prevention": "Require authority/impact/regression/rollback evidence before modifying a protected subsystem.",
+  "regression": "No NEXY.AI code changed.",
+  "status": "CLOSED",
+  "version": "1.0.0"
+}
