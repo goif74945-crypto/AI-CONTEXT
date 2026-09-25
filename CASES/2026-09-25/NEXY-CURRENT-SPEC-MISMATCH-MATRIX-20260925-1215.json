@@ -10,7 +10,10 @@
     "Remove old findings that are repaired at current HEAD.",
     "Keep source-vs-code semantic findings even when current tests encode and pass the current implementation."
   ],
-  "status": "OPEN_CURRENT_FINDINGS",
+  "status": "SUPERSEDED_STALE",
+  "superseded_by_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+  "superseded_observed_at": "2026-09-26",
+  "supersession_rule": "Retain as historical evidence only; revalidate before use against the superseding head.",
   "version": "1.0.0",
   "timestamp_source": "2026-09-25T12:15:00+07:00"
 }
