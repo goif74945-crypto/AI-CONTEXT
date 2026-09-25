@@ -1,0 +1,19 @@
+{
+  "task_id": "TASK-NEXY-NONFULL-MASTER-WORKLIST-DOCX-20260925",
+  "title": "Create DOCX master worklist for all non-full-pass NEXY systems",
+  "mode": "AUDIT_ARTIFACT",
+  "source_audit": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "protected_lock": "NEXY-PROTECTED-SYSTEMS-D677-20260925",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "artifact_name": "NEXY_AI_NonFull_Master_Worklist_D677.docx",
+  "tracking_rows": 45,
+  "protected_systems_excluded": 12,
+  "visual_qa": {
+    "pages": 5,
+    "status": "PASS"
+  },
+  "source_repo_mutation": false,
+  "final_status": "SUCCESS",
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
