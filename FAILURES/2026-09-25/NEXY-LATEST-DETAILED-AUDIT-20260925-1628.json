@@ -1,0 +1,39 @@
+{
+  "task_id": "TASK-NEXY-LATEST-DETAILED-AUDIT-20260925-1628",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "failures": [
+    {
+      "failure_id": "FAIL-NEXY-LATEST-TSC-ADAPTER-20260925",
+      "severity": "S4",
+      "context": "TypeScript release gate",
+      "cause": "RuntimeAgentAdapter cannot simultaneously extend AgentAdapter and SwarmAgent",
+      "boundary": "packages/swarm/adapters/types.ts:45",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-NEXY-LATEST-TSC-RSEL-20260925",
+      "severity": "S4",
+      "context": "TypeScript release gate",
+      "cause": "Object possibly undefined under strict narrowing",
+      "boundary": "packages/intelligence/rsel.ts:86",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-NEXY-LATEST-MPG-HEURISTIC-20260925",
+      "severity": "S3",
+      "context": "L600 MPG semantic contract",
+      "cause": "Heuristic-bias generation strategy not observed while BFS/DFS are implemented",
+      "boundary": "core-kernel/src/engine/l10_cognition.rs",
+      "status": "OPEN_PARTIAL"
+    },
+    {
+      "failure_id": "FAIL-NEXY-LATEST-TEST-DRIFT-20260925",
+      "severity": "S3",
+      "context": "Exact-head contract/full tests",
+      "cause": "Three regression assertions no longer match authoritative/current contracts",
+      "boundary": "tests/contract/system-state-persistence.test.ts; tests/contract/intelligence-layer-contract.test.ts",
+      "status": "OPEN"
+    }
+  ],
+  "version": "1.0.0"
+}
