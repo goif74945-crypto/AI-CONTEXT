@@ -30,6 +30,10 @@ Compiled registry:
 - parent graph cycles: PASS (none)
 - `REQUIRES` graph cycles: PASS (none)
 - reverse `dependents` vs dependency set: PASS
+- taxonomy definition keys: **46**
+- populated taxonomy keys: **44**
+- explicit zero-count taxonomy keys: `SCHEMA=0`, `WORKFLOW=0`
+- coverage taxonomy key set equals canonical taxonomy definition set: **PASS**
 
 ## Important interpretation
 This PASS proves the **ontology registry structure and internal reference integrity**.
