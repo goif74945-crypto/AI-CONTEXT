@@ -1,0 +1,74 @@
+{
+  "task_id": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "entries": [
+    {
+      "id": "WHOLE-L001",
+      "claim": "Exact audit snapshot head remained d677ba05e3a144950240805c25a393b572df8eb1 through final recheck.",
+      "proof": "GitHub branch compare",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "WHOLE-L002",
+      "claim": "All 12 canonical API route files and all 12 canonical product screens are present.",
+      "proof": "Recursive tree inventory at exact head",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "WHOLE-L003",
+      "claim": "Canonical source requires NON-DEPLOYABLE if any implementation-ready condition is missing.",
+      "proof": "Authoritative DOC-C final system law",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "WHOLE-L004",
+      "claim": "Canonical exact-head validation is red due typecheck, contract/full and coverage failures.",
+      "proof": "Railway exact-head deployment logs",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "WHOLE-L005",
+      "claim": "Standard validation is not whole-project validation because advanced source/tests are explicitly excluded.",
+      "proof": "tsconfig.json, package.json, vitest.config.ts, config/experimental-scope.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "WHOLE-L006",
+      "claim": "Production secret boundary does not satisfy source Secret-manager-only requirement.",
+      "proof": "Authoritative source + packages/secrets/provider.ts + packages/auth/email.ts",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "WHOLE-L007",
+      "claim": "Blob storage defaults fail-closed UNBOUND and no production binding was proven.",
+      "proof": "packages/storage/blob-provider.ts + no binding evidence retrieved",
+      "status": "VERIFIED_WITH_LIMITS"
+    },
+    {
+      "id": "WHOLE-L008",
+      "claim": "Alarm model implements all six required types but external delivery/current proof is not established.",
+      "proof": "packages/obs/alarms.ts + DOC-E alarm requirement",
+      "status": "VERIFIED_WITH_LIMITS"
+    },
+    {
+      "id": "WHOLE-L009",
+      "claim": "Production deployment is intentionally unconfigured in workflow.",
+      "proof": ".github/workflows/deploy.yml DEPLOYMENT_PROVIDER_NOT_CONFIGURED exit 1",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "WHOLE-L010",
+      "claim": "Phase-F self-audit is stale, signoffReady=false, and current exact-head experimental gates were not executed.",
+      "proof": "evidence/phase-f-audit.json + standard/expt config + Railway/GitHub workflow scope",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "WHOLE-L011",
+      "claim": "Whole-project final verdict is NON-DEPLOYABLE / PARTIAL rather than verified.",
+      "proof": "DOC-C/DOC-E authority + open S4 blockers + incomplete validation coverage",
+      "status": "VERIFIED"
+    }
+  ],
+  "final_verdict": "PARTIAL_NON_DEPLOYABLE",
+  "version": "1.0.0"
+}
