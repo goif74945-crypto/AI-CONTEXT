@@ -1,11 +1,11 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
-  "observed_at": "2026-09-25",
+  "observed_at": "2026-09-26",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head": "96b895ff471d0907d78f316d74fecc09205b8701",
-    "previously_observed_head": "136f68240b6540a523d89044937c906b4a7a97c3",
+    "head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "previously_observed_head": "96b895ff471d0907d78f316d74fecc09205b8701",
     "observation_mode": "READ_ONLY"
   },
   "status": "NON_DEPLOYABLE",
@@ -21,10 +21,10 @@
     "latest_available_mismatch_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
     "latest_available_mismatch_status": "STALE_NOT_CURRENT_HEAD",
     "historical_validation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-    "current_head_runtime_evidence": "NOT_AVAILABLE"
+    "current_head_runtime_evidence": "CI_ATTEMPT_PRESENT_NO_OBSERVED_JOB_STEP_EXECUTION"
   },
   "blocking_reasons": [
-    "No exact-current-head DOC-E deployment evidence.",
+    "No exact-current-head executed DOC-E/runtime validation evidence; observed CI jobs did not execute steps.",
     "Available mismatch and validation artifacts target older implementation heads.",
     "No current-head runtime/security sign-off.",
     "Source-level unresolved CTS threshold and robotics latency conflicts remain labeled."
