@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "observed_at": "2026-09-26",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "astra/omega-full-spec-convergence",
+  "current_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+  "baseline_traceability_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "requirements": 262,
+  "path_validation": {
+    "implementation_refs_total": 3218,
+    "implementation_refs_present_at_current_head": 3218,
+    "implementation_refs_missing_at_current_head": 0,
+    "test_refs_total": 1149,
+    "test_refs_present_at_current_head": 1149,
+    "test_refs_missing_at_current_head": 0
+  },
+  "semantic_delta": {
+    "requirements_with_changed_implementation_refs": 166,
+    "requirements_with_changed_test_refs": 166,
+    "unique_changed_mapped_implementation_paths": 107,
+    "unique_changed_mapped_test_paths": 38,
+    "status": "SEMANTIC_REVALIDATION_REQUIRED"
+  },
+  "execution_evidence": {
+    "github_actions_runs": [36148606104, 36148606030],
+    "rerun_attempt_observation": "failed jobs retriggered successfully, but resulting primary jobs still completed failure with zero observed steps",
+    "executed_test_result": "NOT_AVAILABLE",
+    "runtime_verdict": "NOT_VERIFIED"
+  },
+  "rules": [
+    "All mapped code/test locations exist at the exact current head.",
+    "Existence is not PASS.",
+    "Changed implementation/test content invalidates old semantic and execution assertions until re-inspected/re-executed.",
+    "Requirement verdicts remain NOT_EVALUATED unless supported by exact-head execution evidence."
+  ],
+  "hash": "HASH_UNAVAILABLE"
+}
