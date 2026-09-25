@@ -1,0 +1,137 @@
+{
+  "TASK_ID": "TASK-NEXY-EXACT-HEAD-REPAIR-20260926",
+  "title": "NEXY exact-head evidence-bound repair pass",
+  "mode": "SOLO_EXEC",
+  "scope": [
+    "P-01 source provenance",
+    "P-02 exact-head snapshot freshness",
+    "P-03 truth-domain status surfaces",
+    "P-04 implementation-map current-head validation",
+    "P-05 traceability current-head validation",
+    "P-06 stale case supersession",
+    "P-07 DOC-E freshness",
+    "P-08 taxonomy zero counts",
+    "P-09 CANCEL/TIMEOUT regression lock verification",
+    "P-10 CTS numeric threshold freeze",
+    "P-11 robotics latency domain split",
+    "P-12 exact-head release evidence gate"
+  ],
+  "inputs": {
+    "user_report": "Maximum-depth audit and patch plan supplied in conversation",
+    "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "target_repository": "goif74945-crypto/NEXY.AI-",
+    "target_branch": "astra/omega-full-spec-convergence"
+  },
+  "sources": [
+    "current attached NEXY-IGNIS DOCX binary",
+    "goif74945-crypto/AI-CONTEXT main",
+    "goif74945-crypto/NEXY.AI- exact Git tree and source files",
+    "GitHub Actions metadata for runs 36148606104 and 36148606030"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "Remote Desktop Commander availability check",
+    "local OOXML binary/XML inspection"
+  ],
+  "actions": [
+    "re-verified source SHA/container/non-empty paragraph count",
+    "resolved exact implementation HEAD",
+    "refreshed AI-CONTEXT freshness surfaces",
+    "reran exact-head failed GitHub Actions jobs",
+    "validated historical implementation/traceability paths against exact current tree",
+    "classified semantic deltas without promoting them to PASS",
+    "structured CTS and robotics unresolved domains fail-closed",
+    "inspected DOC-E E1-E12 freshness"
+  ],
+  "artifacts_paths": [
+    "projects/NEXY.AI/source-normalization/source-provenance.json",
+    "projects/NEXY.AI/snapshots/current.json",
+    "projects/NEXY.AI/status.md",
+    "projects/NEXY.AI/snapshots/PROJECT-HEALTH.md",
+    "projects/NEXY.AI/release/current-gate-state.json",
+    "projects/NEXY.AI/checkpoints/current.json",
+    "projects/NEXY.AI/ontology/coverage.json",
+    "projects/NEXY.AI/ontology/validation-report.md",
+    "projects/NEXY.AI/contradictions/pairs.jsonl",
+    "projects/NEXY.AI/performance/robotics-latency-domains.json",
+    "projects/NEXY.AI/implementation/current-head-path-validation.json",
+    "projects/NEXY.AI/traceability/current-head-path-validation.json",
+    "projects/NEXY.AI/release/exact-head-state.json",
+    "projects/NEXY.AI/evidence/current-head-doc-e.json"
+  ],
+  "claims_proofs": {
+    "source_identity": "SHA-256 exact match; OOXML/DOCX detected; 10,979 non-empty paragraphs",
+    "current_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "implementation_path_validation": "864/864 mapped refs exist; 107 unique mapped paths changed; 164 mapped entities affected",
+    "traceability_path_validation": "3218/3218 implementation refs and 1149/1149 test refs exist; 166 requirements touch changed implementation refs and 166 touch changed test refs",
+    "doc_e_freshness": "0/12 E1-E12 artifacts match current head; all report db52f9f1870b302f36653268513251d010f9726e",
+    "ci_execution": "failed jobs rerun; observed primary jobs still had zero executed steps"
+  },
+  "tests_results": {
+    "source_binary_verification": "PASS",
+    "AI_CONTEXT_static_schema_and_path_repairs": "PASS_READBACK_PENDING_TASK_CLOSE",
+    "GitHub_Actions_exact_head_execution": "BLOCKED_ZERO_OBSERVED_STEPS",
+    "runtime_test_typecheck_build": "NOT_VERIFIED",
+    "DOC_E_current_head": "NOT_VERIFIED"
+  },
+  "changes": [
+    "normalized source provenance",
+    "refreshed current-head metadata",
+    "made zero-count ontology types explicit",
+    "marked stale audit cases superseded",
+    "added CTS authority conflict",
+    "added path-separated robotics latency registry",
+    "added exact-head implementation/traceability/release/DOC-E state artifacts"
+  ],
+  "successes": [
+    "stale current head no longer represented as current in primary snapshot/status surfaces",
+    "stale evidence cannot silently satisfy current release truth",
+    "current tree path continuity is quantified without claiming semantic equivalence"
+  ],
+  "failures": [
+    "current GitHub Actions execution path did not execute observed job steps after rerun",
+    "connected desktop executor is offline",
+    "some large whole-file connector rewrites were blocked; safe overlay/minimal-diff alternatives were used"
+  ],
+  "decisions": [
+    "do not modify implementation source without a proven code defect",
+    "do not rewrite baseline mapping records to current head when mapped file content changed",
+    "keep current release NON_DEPLOYABLE",
+    "keep CTS and robotics unresolved values fail-closed"
+  ],
+  "unresolved": [
+    "semantic revalidation for 164 entities and affected requirements",
+    "executed current-head tests/typecheck/build",
+    "fresh E1-E12 DOC-E generation",
+    "root cause of GitHub runner non-execution",
+    "L1o numeric CTS threshold authority",
+    "physical robotics latency contract"
+  ],
+  "risks": [
+    "changed paths may invalidate historical semantic mapping even when paths still exist",
+    "runtime defects may remain hidden until an executor actually runs validation"
+  ],
+  "limits": [
+    "no current-head runtime suite executed",
+    "no physical robotics/HIL evidence",
+    "GitHub job logs unavailable for zero-step jobs"
+  ],
+  "rollback": "AI-CONTEXT changes are individual Git commits and can be reverted per commit; no implementation source commit was made in this pass.",
+  "final_status": "PARTIAL",
+  "next_actions": [
+    "restore a working GitHub runner or connected execution host",
+    "execute exact-head test/typecheck/build/coverage/DOC-E suite",
+    "reinspect the 107 changed mapped implementation paths and 38 changed mapped test paths",
+    "regenerate semantic implementation/traceability records only after reinspection",
+    "produce E1-E12 bound to the exact tested head"
+  ],
+  "dependencies": [
+    "working execution environment",
+    "PostgreSQL/Redis and other workflow services where required",
+    "authorized deployment/signoff environment for DOC-E"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "conversation date 2026-09-26 Asia/Bangkok plus GitHub-observed repository state",
+  "trace_id": "NEXY-EXACT-HEAD-REPAIR-20260926",
+  "hash": "HASH_UNAVAILABLE"
+}
