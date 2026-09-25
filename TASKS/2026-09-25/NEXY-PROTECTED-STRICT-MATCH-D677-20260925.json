@@ -43,9 +43,9 @@
     "Protection is snapshot-scoped and subsystem-scoped, not whole-repository release approval."
   ],
   "rollback": "Revert the AI-CONTEXT commit(s) if the governance record is invalidated.",
-  "final_status": "SUCCESS_PENDING_READBACK",
+  "final_status": "SUCCESS",
   "next_actions": [
-    "Read back all records and verify version/content."
+    "Keep protected systems unchanged unless an allowed-change condition in the project constraint is proven."
   ],
   "dependencies": [
     "AI-CONTEXT repository"
