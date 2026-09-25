@@ -1,0 +1,345 @@
+{
+  "task_id": "TASK-NEXY-CURRENT-SPEC-MISMATCH-MATRIX-20260925-1215",
+  "title": "Current full-system spec mismatch and unusable-boundary matrix",
+  "mode": "CROSS_AUDIT",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "snapshot_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
+  "timestamp_source": "2026-09-25T12:15:00+07:00 user-local task time; GitHub/Railway exact-head evidence",
+  "source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "scope": "Reconcile the prior 31-finding full audit against current HEAD and authoritative source, then list only currently proven spec mismatches, partial semantic implementations, source-blocked requirements, and actual release blockers. NOT_MAPPED/NOT_VERIFIED are not promoted to broken/missing without proof.",
+  "systems": [
+    {
+      "id": "SWARM-AGENT-ADAPTER",
+      "status": "PROVEN_CONTRACT_DRIFT",
+      "severity": "S3",
+      "spec": "DOC-C §6.1 AgentAdapter requires execute/cancel/healthcheck plus canonical metadata; `call` is not part of the canonical interface.",
+      "current": "AgentAdapter extends SwarmAgent and assertAgentAdapter rejects adapters without `call`.",
+      "files": [
+        "packages/swarm/adapters/types.ts",
+        "packages/swarm/adapters/contract.ts",
+        "packages/swarm/adapters/base.ts",
+        "packages/swarm/adapters/openai.ts",
+        "packages/swarm/adapters/anthropic.ts",
+        "packages/swarm/adapters/gemini.ts",
+        "packages/swarm/adapters/index.ts",
+        "packages/swarm/pipeline.ts",
+        "tests/contract/agent-adapter-contract.test.ts",
+        "tests/contract/swarm-timeouts.test.ts"
+      ],
+      "usability": "Internal adapters work, but a spec-exact external/future adapter implementing only the canonical surface is not registrable."
+    },
+    {
+      "id": "INCIDENT-SECONDARY-LINKAGE",
+      "status": "PROVEN_PARTIAL_MISMATCH",
+      "severity": "S3",
+      "spec": "DOC-C §5.8 and incident law require lower-priority failures to be recorded as secondary incidents / secondary incident links.",
+      "current": "Run-bound FreezeIncident paths preserve lower-priority error codes in `secondaryErrorCodes[]` on the primary record instead of creating separate linked secondary incident records.",
+      "files": [
+        "packages/queue/run-state.ts",
+        "packages/orch-core/system-state.ts",
+        "packages/obs/incident-priority.ts",
+        "packages/obs/incidents.ts",
+        "packages/contracts/incidents.ts",
+        "prisma/schema.prisma",
+        "prisma/migrations/20260925002000_freeze_incident_secondary_errors/migration.sql",
+        "tests/contract/incident-semantics.test.ts",
+        "tests/contract/pipeline-failure-incident-linkage.test.ts"
+      ],
+      "usability": "Priority ordering is usable; source-level linked secondary-incident forensic model is not fully implemented."
+    },
+    {
+      "id": "QUEUE-FAILED-RETRY",
+      "status": "PROVEN_MISMATCH",
+      "severity": "S4",
+      "spec": "DOC-C §13.2: failed job is NOT auto retried unless explicitly configured and non-deterministic risk = none.",
+      "current": "BullMQ attempts=1, but the durable reconciler repeatedly selects FAILED rows and redispatches them every reconciliation cycle without a safe-retry allowlist or bounded cap.",
+      "files": [
+        "packages/queue/dispatch.ts",
+        "packages/queue/jobs.ts",
+        "packages/queue/workers.ts",
+        "prisma/schema.prisma"
+      ],
+      "usability": "FAILED durable dispatch behavior is not spec-safe for persistent failures; release-blocking until retry authority/classification is closed."
+    },
+    {
+      "id": "L1O-CTS",
+      "status": "PROVEN_SEMANTIC_MISMATCH_AND_AUTHORITY_FREEZE",
+      "severity": "S4",
+      "spec": "Authoritative source defines T0=Unknown, T1=Heuristic, T2=Empirical, T3=Formally Verified, T4=Immutable Law.",
+      "current": "l10_cognition maps T0 to 1.00 strongest and T4 to 0.25 weakest and tests assert T0>T1>T2>T3>T4.",
+      "files": [
+        "core-kernel/src/engine/l10_cognition.rs",
+        "tests/contract/core-kernel-rust.test.ts",
+        "apps/web/app/unknown/page.tsx"
+      ],
+      "usability": "CTS cannot be certified against the source. Numeric threshold values also remain authority-frozen; do not invent replacements."
+    },
+    {
+      "id": "L1O-ICL-AMBIGUITY",
+      "status": "PARTIAL_SOURCE_BLOCKED",
+      "severity": "S4",
+      "spec": "L600 ICL requires semantic parsing/intent graph/constraint extraction, ambiguity_score, and WAIT_FOR_DATA_CLARITY when score exceeds threshold.",
+      "current": "Current canonical ICL/L1o path does not expose `ambiguity_score` or `WAIT_FOR_DATA_CLARITY`; authoritative threshold/scoring algorithm is itself unspecified.",
+      "files": [
+        "core-kernel/src/icl.rs",
+        "core-kernel/src/engine/l10_cognition.rs"
+      ],
+      "usability": "Not usable as final REQ-L1O-002 compliance; implementation path must remain frozen until threshold/scoring authority is supplied."
+    },
+    {
+      "id": "L1O-MPG-EPE",
+      "status": "PROVEN_PARTIAL_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "spec": "L600 MPG calls for breadth-first coverage, depth-first precision and heuristic bias; EPE entropy is tied to ambiguity/missing constraints/probabilistic inference with soft-pruning behavior.",
+      "current": "Current path generation is deterministic DFS root→leaf; entropy proxy is distinct-token-count/path-length and pruning is based on that proxy rather than the source entropy dimensions.",
+      "files": [
+        "core-kernel/src/engine/l10_cognition.rs",
+        "core-kernel/src/engine/dag_engine.rs",
+        "tests/contract/core-kernel-rust.test.ts"
+      ],
+      "usability": "DAG path enumeration works, but it is not a complete source-semantic MPG/EPE implementation."
+    },
+    {
+      "id": "FINAL-IRL",
+      "status": "PARTIAL_SEMANTIC_IMPLEMENTATION",
+      "severity": "S3",
+      "spec": "IRL output must be structured truth candidates containing state, confidence and uncertainty; raw input must not enter reasoning.",
+      "current": "Canonical parser/ICL normalize input but do not expose the required confidence+uncertainty IRL output contract.",
+      "files": [
+        "core-kernel/src/api/payload_parser.rs",
+        "core-kernel/src/icl.rs"
+      ],
+      "usability": "Cannot claim final-architecture IRL compliance."
+    },
+    {
+      "id": "FINAL-IRL-CONFIDENCE",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "spec": "IRL includes a canonical Confidence Estimator.",
+      "current": "Robotics sensor-fusion computes confidence, but is domain-specific and does not provide the full canonical IRL uncertainty contract.",
+      "files": [
+        "packages/phase-f/robotics/safe-brain/sensor-fusion.ts"
+      ],
+      "usability": "Candidate implementation only; not a canonical generic IRL component."
+    },
+    {
+      "id": "FINAL-IRL-DATA-NORMALIZER",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "spec": "IRL includes a canonical Data Normalizer.",
+      "current": "Text ICL and robotics sensor fusion contain normalization behavior, but no single final-architecture Data Normalizer binding exists.",
+      "files": [
+        "core-kernel/src/icl.rs",
+        "packages/phase-f/robotics/safe-brain/sensor-fusion.ts"
+      ],
+      "usability": "Candidate/partial only."
+    },
+    {
+      "id": "FINAL-IRL-NOISE-FILTER",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "spec": "IRL includes a canonical Noise Filter.",
+      "current": "ICL textual cleanup and robotics smoothing exist but are not bound as the canonical generic IRL Noise Filter.",
+      "files": [
+        "core-kernel/src/icl.rs",
+        "packages/phase-f/robotics/safe-brain/sensor-fusion.ts"
+      ],
+      "usability": "Candidate/partial only."
+    },
+    {
+      "id": "FINAL-IRL-SENSOR-INTERFACE",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "spec": "IRL includes a generic Sensor Interface.",
+      "current": "RawSensorReading/SensorReading exist only in the robotics sensor-fusion candidate mapping.",
+      "files": [
+        "packages/phase-f/robotics/safe-brain/sensor-fusion.ts"
+      ],
+      "usability": "Not established as canonical generic IRL input boundary."
+    },
+    {
+      "id": "FINAL-CIRL",
+      "status": "PROVEN_PARTIAL_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "spec": "CIRL output is `{intent, constraints, risk_level}`.",
+      "current": "Mapped ICL/law-enforcer derive intent/constraints but no canonical `risk_level` output contract is present.",
+      "files": [
+        "core-kernel/src/icl.rs",
+        "core-kernel/src/engine/law_enforcer.rs"
+      ],
+      "usability": "Cannot claim final CIRL compliance."
+    },
+    {
+      "id": "FINAL-CLE",
+      "status": "PROVEN_PARTIAL_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "spec": "CLE converts intent into explicit Safety Law, Logical Law, Resource Law and Temporal Law.",
+      "current": "LawEnforcer applies invariants and proofs but does not expose those four canonical law types as CLE outputs.",
+      "files": [
+        "core-kernel/src/engine/law_enforcer.rs"
+      ],
+      "usability": "Partial law enforcement exists; final CLE contract is incomplete."
+    },
+    {
+      "id": "FINAL-LOGICAL-LAW",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "spec": "CLE Logical Law is an explicit canonical law type.",
+      "current": "Logical invariant enforcement exists but no canonical Logical Law object/type is established.",
+      "files": [
+        "core-kernel/src/engine/law_enforcer.rs"
+      ],
+      "usability": "Partial only."
+    },
+    {
+      "id": "FINAL-RESOURCE-LAW",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "spec": "CLE Resource Law is an explicit canonical law type.",
+      "current": "Resource controls exist in game/WebGPU and Lo3 cage paths but are not bound as canonical CLE Resource Law.",
+      "files": [
+        "packages/phase-f/game/runtime/webgpu-runtime.ts",
+        "packages/phase-f/lo3/cage.ts"
+      ],
+      "usability": "Candidate/partial only."
+    },
+    {
+      "id": "FINAL-SAFETY-LAW",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "spec": "CLE Safety Law is an explicit canonical law type.",
+      "current": "Robotics safety implementations exist, but mapping is domain-specific and not a proven canonical CLE Safety Law binding.",
+      "files": [
+        "packages/phase-f/robotics/decision-layer.ts",
+        "packages/phase-f/robotics/index.ts",
+        "packages/phase-f/robotics/rcl.ts",
+        "packages/phase-f/robotics/safe-brain/safety-verifier.ts"
+      ],
+      "usability": "Candidate/partial only."
+    },
+    {
+      "id": "FINAL-TEMPORAL-LAW",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "spec": "CLE Temporal Law is an explicit canonical law type.",
+      "current": "Temporal behavior exists in sandbox runtime but no canonical CLE Temporal Law binding is established.",
+      "files": [
+        "packages/phase-f/universe/sandbox-runtime.ts"
+      ],
+      "usability": "Candidate/partial only."
+    },
+    {
+      "id": "FINAL-DSL",
+      "status": "PROVEN_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "spec": "DSL combines L1o+Lo3 into an action set such as `[{action, score}, ...]`.",
+      "current": "DecisionSynthesizer returns fused decision metadata rather than a scored action-set contract.",
+      "files": [
+        "core-kernel/src/engine/dsl.rs"
+      ],
+      "usability": "Current DSL cannot be treated as final source-semantic DSL."
+    },
+    {
+      "id": "FINAL-RSEL",
+      "status": "PARTIAL_BOUNDARY_NOT_PROVEN",
+      "severity": "S3",
+      "spec": "Risk = Impact × Probability × Uncertainty and risk above threshold must block action.",
+      "current": "Risk formula exists, but complete execution-boundary proof that threshold violation always blocks action is not established.",
+      "files": [
+        "core-kernel/src/engine/rsel.rs",
+        "core-kernel/src/engine/ecl.rs"
+      ],
+      "usability": "Risk evaluator exists; hard-block final contract is not certified."
+    },
+    {
+      "id": "FINAL-ECL",
+      "status": "PROVEN_PARTIAL_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "spec": "ECL includes Fast Path, Safe Path and Timeout fallback.",
+      "current": "ExecutionGate exists but current source contains none of those three required execution modes/fallbacks.",
+      "files": [
+        "core-kernel/src/engine/ecl.rs"
+      ],
+      "usability": "Not a complete final-architecture ECL."
+    },
+    {
+      "id": "FINAL-TRINITY-INTEGRATION",
+      "status": "PARTIAL_INTEGRATION",
+      "severity": "S3",
+      "spec": "L1o/Lo3/Lo2 are distinct finalized intelligence roles connected into the larger final architecture.",
+      "current": "Individual implementations exist, but no single canonical integration binding proves the complete Trinity contract.",
+      "files": [
+        "core-kernel/src/engine/l10_cognition.rs",
+        "packages/swarm/pipeline.ts",
+        "packages/engine/lo2.ts"
+      ],
+      "usability": "Components are usable individually in covered paths; final integrated contract is not certified."
+    },
+    {
+      "id": "RELEASE-COVERAGE-GATE",
+      "status": "PROVEN_RELEASE_BLOCKER",
+      "severity": "S4",
+      "spec": "Minimum coverage: core/law/judge 90%, API 85%; critical suites must pass.",
+      "current": "At exact current head, API coverage straddles/falls below 85 on lines/statements/branches and JUDGE branch coverage is 88.37%; coverage_check exits 1.",
+      "files": [
+        "scripts/check-coverage.ts",
+        "tests/coverage/judge-law.test.ts"
+      ],
+      "usability": "Production/release authorization is blocked even though 95 test files / 715 tests, DOC-C static gate and web build pass."
+    }
+  ],
+  "exact_head_validation": {
+    "deployment": "3d500ce4-1729-402e-bf27-2b28ad8a9741",
+    "tests": "95 files / 715 tests passed",
+    "coverage_generation": "PASS",
+    "coverage_check": "FAIL",
+    "doc_c_static": "PASS",
+    "web_build": "PASS",
+    "overall": "FAILED_DUE_TO_RELEASE_GATE",
+    "api_coverage": {
+      "lines": 82,
+      "statements": 80.38,
+      "functions": 91.26,
+      "branches": 71.98,
+      "threshold": 85
+    },
+    "core_coverage": {
+      "lines": 95.65,
+      "statements": 95.87,
+      "functions": 93.75,
+      "branches": 93.22,
+      "threshold": 90
+    },
+    "law_coverage": {
+      "lines": 100,
+      "statements": 100,
+      "functions": 100,
+      "branches": 100,
+      "threshold": 90
+    },
+    "judge_coverage": {
+      "lines": 98.63,
+      "statements": 95.56,
+      "functions": 100,
+      "branches": 88.37,
+      "threshold": 90
+    }
+  },
+  "excluded_as_not_proven_broken": [
+    "Unmapped S/Z category entities where the audit explicitly says NOT_MAPPED, not proven MISSING.",
+    "Context Sharding Engine focused-evidence gap: implementation exists; lack of focused invariant proof is not proof of runtime unusability.",
+    "UI Unknown/TrustExplainer/artifact-restore traceability findings: wrong or missing test mapping is an evidence defect, not proof that the code path itself is unusable."
+  ],
+  "changes": "No NEXY.AI- mutation. AI-CONTEXT records only.",
+  "final_status": "PARTIAL_VERIFIED_CURRENT_MISMATCH_MATRIX",
+  "unresolved": [
+    "REQ-L1O-002 ambiguity threshold/scoring authority is missing.",
+    "REQ-L1O-014 numeric CTS thresholds lack authoritative provenance.",
+    "No valid cross-chat handoff object was supplied."
+  ],
+  "version": "1.0.0",
+  "trace_id": "NEXY-CURRENT-SPEC-MISMATCH-MATRIX/20260925-1215",
+  "hash": "HASH_UNAVAILABLE"
+}
