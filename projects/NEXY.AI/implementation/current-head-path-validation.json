@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "observed_at": "2026-09-26",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "astra/omega-full-spec-convergence",
+  "current_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+  "current_tree": "77e9b6d0cb696f693c6db433445f034c4d658f7c",
+  "baseline_mapping_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "baseline_tree": "2eded220a441908753e0f4287e0c0fc6b2fb005e",
+  "repository_delta": {
+    "baseline_blobs": 459,
+    "current_blobs": 613,
+    "added_paths": 154,
+    "deleted_paths": 0,
+    "changed_paths": 175
+  },
+  "implementation_mapping_path_validation": {
+    "entity_records": 518,
+    "entities_with_refs": 275,
+    "implementation_refs_total": 864,
+    "implementation_refs_present_at_current_head": 864,
+    "implementation_refs_missing_at_current_head": 0,
+    "refs_with_same_blob_sha": 475,
+    "refs_with_changed_blob_sha": 389,
+    "unique_mapped_paths_with_changed_blob_sha": 107,
+    "entities_with_at_least_one_changed_mapped_path": 164,
+    "status": "PATH_EXISTENCE_VERIFIED_SEMANTICS_REQUIRE_REVALIDATION"
+  },
+  "interpretation": [
+    "All previously mapped implementation paths still exist at the exact current head.",
+    "Path existence does not prove that an old semantic mapping is still correct after content changes.",
+    "107 mapped implementation paths changed content since the baseline mapping head; 164 ontology entities touch at least one changed mapped path.",
+    "Do not rewrite the 518 mapping records to the new head without semantic reinspection."
+  ],
+  "runtime_boundary": {
+    "github_actions_runs": [36148606104, 36148606030],
+    "latest_rerun_result": "FAILURE_WITH_ZERO_OBSERVED_JOB_STEPS",
+    "remote_desktop": "OFFLINE",
+    "runtime_verification": "NOT_VERIFIED"
+  },
+  "hash": "HASH_UNAVAILABLE"
+}
