@@ -1,0 +1,12 @@
+{
+  "case_id": "CASE-NEXY-WHOLE-DESIGN-COMPLETION-AUDIT-DB960DD-20260925",
+  "cause": "User needed a non-memory-derived whole-design completion ledger that could continue after another chat hit limits.",
+  "violation": "None. Scope limitation is evidence availability, not an execution violation.",
+  "impact": "Without a persistent table, cross-chat continuation risks inconsistent denominators and guessed percentages.",
+  "fix": "Created source-grounded XLSX with 518 entities, 262 requirements, strict percentage formulas, gaps and ceiling matrix.",
+  "prevention": "Future chats should retrieve this task and recompute only changed rows against the new HEAD.",
+  "regression": "Spreadsheet formula error scan clean; target HEAD confirmed db960dd.",
+  "final_status": "OPEN_LIMITS_DOCUMENTED",
+  "version": "1.0.0",
+  "trace_id": "NEXY-WHOLE-DESIGN-COMPLETION-AUDIT-DB960DD-20260925"
+}
