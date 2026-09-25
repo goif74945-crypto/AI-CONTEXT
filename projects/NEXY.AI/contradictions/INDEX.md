@@ -4,7 +4,7 @@
 Detect spec/architecture contradictions **before coding** and distinguish real contradictions from legitimate domain/boundary differences.
 
 ## Files
-- `pairs.jsonl` — 16 machine-readable claim pairs.
+- `pairs.jsonl` — 17 machine-readable claim pairs.
 - `engine.json` — classification/blocking algorithm.
 - `pair.schema.json`
 - `validation-report.md`
