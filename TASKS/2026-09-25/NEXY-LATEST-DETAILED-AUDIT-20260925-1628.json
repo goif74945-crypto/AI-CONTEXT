@@ -1,0 +1,147 @@
+{
+  "task_id": "TASK-NEXY-LATEST-DETAILED-AUDIT-20260925-1628",
+  "title": "Latest detailed NEXY.AI spec and validation audit",
+  "mode": "CROSS_AUDIT",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "user_local_time": "2026-09-25T16:28:49+07:00",
+  "source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "prior_snapshot": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
+  "delta": {
+    "commits": 49
+  },
+  "conclusions": [
+    {
+      "system": "AgentAdapter",
+      "spec_alignment": "MATCH",
+      "validation": "BLOCKED",
+      "evidence": "canonical external adapter no longer requires call; focused tests pass; TypeScript fails at packages/swarm/adapters/types.ts:45 TS2320 RuntimeAgentAdapter multiple-interface conflict"
+    },
+    {
+      "system": "Incident secondary linkage",
+      "spec_alignment": "MATCH",
+      "validation": "TEST_DRIFT",
+      "evidence": "separate linked FreezeIncidentSecondary records implemented; pipeline linkage test passes; two old system-state tests still expect removed secondaryErrorCodes array"
+    },
+    {
+      "system": "Queue FAILED retry",
+      "spec_alignment": "MATCH_WITH_LIMIT",
+      "validation": "FOCUSED_PASS",
+      "evidence": "default retries disabled, safe-error allowlist and max attempt cap enforced; explicit standalone nondeterministic-risk-none field not observed"
+    },
+    {
+      "system": "L1o CTS",
+      "spec_alignment": "MATCH_WITH_AUTHORITY_GAP",
+      "validation": "RUST_CONTRACT_PASS",
+      "evidence": "T0 Unknown through T4 Immutable Law restored; numeric promotion thresholds require explicit external policy"
+    },
+    {
+      "system": "L1o ICL ambiguity",
+      "spec_alignment": "MATCH_WITH_AUTHORITY_GAP",
+      "validation": "RUST_CONTRACT_PASS",
+      "evidence": "ambiguity score and WAIT_FOR_DATA_CLARITY behavior implemented; no unauthorized default threshold"
+    },
+    {
+      "system": "L1o MPG/EPE",
+      "spec_alignment": "PARTIAL",
+      "validation": "RUST_CONTRACT_PASS",
+      "evidence": "BFS+DFS and EPE ambiguity/missing-constraint/probabilistic signals implemented; MPG heuristic-bias generation strategy not observed"
+    },
+    {
+      "system": "IRL",
+      "spec_alignment": "MATCH",
+      "validation": "CONTRACT_PASS",
+      "evidence": "Sensor/Normalizer/Noise/Confidence boundaries; state/confidence/uncertainty; raw excluded"
+    },
+    {
+      "system": "CIRL",
+      "spec_alignment": "MATCH",
+      "validation": "CONTRACT_PASS",
+      "evidence": "intent/constraints/risk_level/ambiguity/resolution implemented and malformed input fails closed"
+    },
+    {
+      "system": "CLE",
+      "spec_alignment": "MATCH",
+      "validation": "CONTRACT_PASS",
+      "evidence": "Safety/Logical/Resource/Temporal law types implemented and unsupported authority blocks"
+    },
+    {
+      "system": "DSL",
+      "spec_alignment": "MATCH",
+      "validation": "CONTRACT_PASS",
+      "evidence": "scored action set, deterministic ordering, invalid/tie freeze"
+    },
+    {
+      "system": "RSEL",
+      "spec_alignment": "MATCH",
+      "validation": "BLOCKED",
+      "evidence": "Risk=Impact*Probability*Uncertainty and threshold block implemented; TypeScript TS2532 at rsel.ts:86; one current test has source-inconsistent CAUTION expectation for zero computed risk"
+    },
+    {
+      "system": "ECL",
+      "spec_alignment": "MATCH",
+      "validation": "CONTRACT_PASS",
+      "evidence": "FAST_PATH SAFE_PATH TIMEOUT_FALLBACK implemented with risk blocking"
+    },
+    {
+      "system": "L1o+Lo3+Lo2 Trinity / Lo2 governance",
+      "spec_alignment": "MATCH_WITH_LIMITS",
+      "validation": "FOCUSED_PASS",
+      "evidence": "verified-output-only Lo2 ingress, law synthesis/evolution/anti-poison/provenance/ledger and JUDGE_PENDING-or-FREEZE integration present; Lo2 governance tests pass"
+    }
+  ],
+  "exact_head_validation": {
+    "railway_deployment": "941b5bc5-9076-4931-b07b-781c92fefb5e",
+    "npm_ci": "PASS",
+    "prisma_generate": "PASS",
+    "typecheck": "FAIL",
+    "typecheck_backend": "FAIL",
+    "lint": "PASS",
+    "focused_auth_email": "PASS",
+    "focused_auth_regression": "PASS",
+    "focused_vnext_defaults": "PASS",
+    "focused_agent_adapter": "PASS",
+    "focused_consensus_contract": "PASS",
+    "contract": "FAIL",
+    "integration": "PASS",
+    "full": "FAIL",
+    "coverage_generation": "FAIL",
+    "coverage_check": "FAIL_NO_CURRENT_SUMMARY",
+    "doc_c_static": "PASS",
+    "web_build": "PASS",
+    "full_test_counts": "96/98 files passed; 736/739 tests passed",
+    "current_test_failures": [
+      "tests/contract/intelligence-layer-contract.test.ts: expected CAUTION but implementation returns NORMAL for risk=0; source formula supports implementation, so classified TEST_DRIFT",
+      "tests/contract/system-state-persistence.test.ts FREEZE case expects removed secondaryErrorCodes array; classified TEST_DRIFT",
+      "tests/contract/system-state-persistence.test.ts STOP case expects removed secondaryErrorCodes array; classified TEST_DRIFT"
+    ],
+    "type_errors": [
+      "packages/intelligence/rsel.ts(86,7) TS2532 Object is possibly undefined",
+      "packages/swarm/adapters/types.ts(45,18) TS2320 RuntimeAgentAdapter cannot simultaneously extend AgentAdapter and SwarmAgent"
+    ]
+  },
+  "cross_chat_handoff": {
+    "requested": true,
+    "valid_handoff_received": false,
+    "status": "MISSING"
+  },
+  "changes": "No mutation to NEXY.AI-. AI-CONTEXT audit records only.",
+  "final_status": "PARTIAL_VERIFIED_LATEST_AUDIT",
+  "risks": [
+    "Release cannot be authorized while typecheck/contract/full/coverage gates fail.",
+    "MPG heuristic-bias requirement remains unproven/absent in inspected implementation.",
+    "Regression test drift can obscure otherwise source-aligned incident/RSEL behavior."
+  ],
+  "next_actions": [
+    "Repair the two TypeScript compile errors without changing canonical contracts.",
+    "Reconcile stale tests with source-authorized secondary incident model and risk formula.",
+    "Implement or prove L600 MPG heuristic-bias strategy.",
+    "Rerun exact-head contract/full/coverage/release gates."
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "genui local time + exact GitHub head + Railway exact-head logs",
+  "trace_id": "NEXY-LATEST-DETAILED-AUDIT/20260925-1628",
+  "hash": "HASH_UNAVAILABLE"
+}
