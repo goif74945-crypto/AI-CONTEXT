@@ -1,0 +1,27 @@
+{
+  "ledger_id": "LEDGER-NEXY-WHOLE-DESIGN-COMPLETION-AUDIT-DB960DD-20260925",
+  "source": "Authoritative design + normalized registries + exact-head repo/runtime evidence",
+  "claim": "NEXY whole-design strict evidence completion at db960dd is 174/262 = 66.4%; current-relevant is 114/154 = 74.0%.",
+  "proof": {
+    "artifact": "NEXY_whole_design_completion_audit_db960dd.xlsx",
+    "sha256": "37d900c0f552447d82aab2459704ac47fa3defae8c51987a2e0e4fda48c0d422",
+    "denominator_requirements": 262,
+    "design_entities": 518,
+    "strict_verified": 174,
+    "current_relevant_requirements": 154,
+    "current_relevant_verified": 114,
+    "formula_scan": "PASS"
+  },
+  "deps": [
+    "requirements.jsonl",
+    "entities.jsonl",
+    "scope-registry.json",
+    "exact-head validation evidence"
+  ],
+  "risk": "Conservative undercount possible where implementation exists but registry mapping/evidence has not been refreshed.",
+  "status": "PARTIAL_VERIFIED_WITH_LIMITS",
+  "confidence": 0.96,
+  "freshness": "HEAD db960dd163a9f50373b747ac922d735d1250cf3a",
+  "trace": "NEXY-WHOLE-DESIGN-COMPLETION-AUDIT-DB960DD-20260925",
+  "version": "1.0.0"
+}
