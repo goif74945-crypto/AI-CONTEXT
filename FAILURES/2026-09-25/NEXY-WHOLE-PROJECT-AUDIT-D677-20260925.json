@@ -1,0 +1,84 @@
+{
+  "task_id": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "failures": [
+    {
+      "failure_id": "FAIL-WHOLE-S4-COMPILE-20260925",
+      "severity": "S4",
+      "cause": "Canonical TypeScript typecheck fails at AgentAdapter bridge and RSEL narrowing.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S4-SECRETS-20260925",
+      "severity": "S4",
+      "cause": "Production secret-manager requirement is not met by env-only SecretProvider; SMTP reads secrets directly from process.env.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S4-STORAGE-20260925",
+      "severity": "S4",
+      "cause": "Blob storage authority is fail-closed UNBOUND and no production binding was proven.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S4-OBS-20260925",
+      "severity": "S4",
+      "cause": "Required alarm types exist but external delivery binding/current DOC-E proof not proven.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S4-EVIDENCE-20260925",
+      "severity": "S4",
+      "cause": "No exact-head complete DOC-E E1-E12 release authorization pack.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S4-DEPLOY-20260925",
+      "severity": "S4",
+      "cause": "Workflow explicitly blocks deployment with DEPLOYMENT_PROVIDER_NOT_CONFIGURED.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S3-UI-20260925",
+      "severity": "S3",
+      "cause": "Directive submit is not disabled until full schema validity as DOC-D requires.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S3-MPG-20260925",
+      "severity": "S3",
+      "cause": "Explicit L600 MPG heuristic-bias generation strategy not observed.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S3-TESTDRIFT-20260925",
+      "severity": "S3",
+      "cause": "Three standard regression assertions are stale/source-inconsistent and keep contract/full/coverage red.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S3-ADV-GATES-20260925",
+      "severity": "S3",
+      "cause": "Phase-F/experimental systems are excluded from standard typecheck/lint/tests/coverage and were not exact-head executed.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    },
+    {
+      "failure_id": "FAIL-WHOLE-S2-DOC-20260925",
+      "severity": "S2",
+      "cause": "README/current documentation contains authority/path/threshold drift relative to final DOC-C and current tree.",
+      "recovery": "See task next_actions",
+      "status": "OPEN"
+    }
+  ],
+  "version": "1.0.0"
+}
