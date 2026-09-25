@@ -1,0 +1,9 @@
+{
+  "task_id": "TASK-NEXY-NONFULL-MASTER-WORKLIST-20260925",
+  "source_audit": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "artifact": "projects/NEXY.AI/decisions/nonfull-master-worklist-d677-20260925-rows.json",
+  "row_count": 45,
+  "final_status": "SUCCESS",
+  "version": "1.0.0"
+}
