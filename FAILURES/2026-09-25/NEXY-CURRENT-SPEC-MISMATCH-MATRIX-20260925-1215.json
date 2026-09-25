@@ -1,0 +1,228 @@
+{
+  "task_id": "TASK-NEXY-CURRENT-SPEC-MISMATCH-MATRIX-20260925-1215",
+  "snapshot_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
+  "failures": [
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-01-20260925",
+      "system_id": "SWARM-AGENT-ADAPTER",
+      "status": "PROVEN_CONTRACT_DRIFT",
+      "severity": "S3",
+      "cause": "AgentAdapter extends SwarmAgent and assertAgentAdapter rejects adapters without `call`.",
+      "boundary": "packages/swarm/adapters/types.ts; packages/swarm/adapters/contract.ts; packages/swarm/adapters/base.ts; packages/swarm/adapters/openai.ts; packages/swarm/adapters/anthropic.ts; packages/swarm/adapters/gemini.ts; packages/swarm/adapters/index.ts; packages/swarm/pipeline.ts; tests/contract/agent-adapter-contract.test.ts; tests/contract/swarm-timeouts.test.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-02-20260925",
+      "system_id": "INCIDENT-SECONDARY-LINKAGE",
+      "status": "PROVEN_PARTIAL_MISMATCH",
+      "severity": "S3",
+      "cause": "Run-bound FreezeIncident paths preserve lower-priority error codes in `secondaryErrorCodes[]` on the primary record instead of creating separate linked secondary incident records.",
+      "boundary": "packages/queue/run-state.ts; packages/orch-core/system-state.ts; packages/obs/incident-priority.ts; packages/obs/incidents.ts; packages/contracts/incidents.ts; prisma/schema.prisma; prisma/migrations/20260925002000_freeze_incident_secondary_errors/migration.sql; tests/contract/incident-semantics.test.ts; tests/contract/pipeline-failure-incident-linkage.test.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-03-20260925",
+      "system_id": "QUEUE-FAILED-RETRY",
+      "status": "PROVEN_MISMATCH",
+      "severity": "S4",
+      "cause": "BullMQ attempts=1, but the durable reconciler repeatedly selects FAILED rows and redispatches them every reconciliation cycle without a safe-retry allowlist or bounded cap.",
+      "boundary": "packages/queue/dispatch.ts; packages/queue/jobs.ts; packages/queue/workers.ts; prisma/schema.prisma",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-04-20260925",
+      "system_id": "L1O-CTS",
+      "status": "PROVEN_SEMANTIC_MISMATCH_AND_AUTHORITY_FREEZE",
+      "severity": "S4",
+      "cause": "l10_cognition maps T0 to 1.00 strongest and T4 to 0.25 weakest and tests assert T0>T1>T2>T3>T4.",
+      "boundary": "core-kernel/src/engine/l10_cognition.rs; tests/contract/core-kernel-rust.test.ts; apps/web/app/unknown/page.tsx",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-05-20260925",
+      "system_id": "L1O-ICL-AMBIGUITY",
+      "status": "PARTIAL_SOURCE_BLOCKED",
+      "severity": "S4",
+      "cause": "Current canonical ICL/L1o path does not expose `ambiguity_score` or `WAIT_FOR_DATA_CLARITY`; authoritative threshold/scoring algorithm is itself unspecified.",
+      "boundary": "core-kernel/src/icl.rs; core-kernel/src/engine/l10_cognition.rs",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-06-20260925",
+      "system_id": "L1O-MPG-EPE",
+      "status": "PROVEN_PARTIAL_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "cause": "Current path generation is deterministic DFS root→leaf; entropy proxy is distinct-token-count/path-length and pruning is based on that proxy rather than the source entropy dimensions.",
+      "boundary": "core-kernel/src/engine/l10_cognition.rs; core-kernel/src/engine/dag_engine.rs; tests/contract/core-kernel-rust.test.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-07-20260925",
+      "system_id": "FINAL-IRL",
+      "status": "PARTIAL_SEMANTIC_IMPLEMENTATION",
+      "severity": "S3",
+      "cause": "Canonical parser/ICL normalize input but do not expose the required confidence+uncertainty IRL output contract.",
+      "boundary": "core-kernel/src/api/payload_parser.rs; core-kernel/src/icl.rs",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-08-20260925",
+      "system_id": "FINAL-IRL-CONFIDENCE",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "cause": "Robotics sensor-fusion computes confidence, but is domain-specific and does not provide the full canonical IRL uncertainty contract.",
+      "boundary": "packages/phase-f/robotics/safe-brain/sensor-fusion.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-09-20260925",
+      "system_id": "FINAL-IRL-DATA-NORMALIZER",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "cause": "Text ICL and robotics sensor fusion contain normalization behavior, but no single final-architecture Data Normalizer binding exists.",
+      "boundary": "core-kernel/src/icl.rs; packages/phase-f/robotics/safe-brain/sensor-fusion.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-10-20260925",
+      "system_id": "FINAL-IRL-NOISE-FILTER",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "cause": "ICL textual cleanup and robotics smoothing exist but are not bound as the canonical generic IRL Noise Filter.",
+      "boundary": "core-kernel/src/icl.rs; packages/phase-f/robotics/safe-brain/sensor-fusion.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-11-20260925",
+      "system_id": "FINAL-IRL-SENSOR-INTERFACE",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "cause": "RawSensorReading/SensorReading exist only in the robotics sensor-fusion candidate mapping.",
+      "boundary": "packages/phase-f/robotics/safe-brain/sensor-fusion.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-12-20260925",
+      "system_id": "FINAL-CIRL",
+      "status": "PROVEN_PARTIAL_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "cause": "Mapped ICL/law-enforcer derive intent/constraints but no canonical `risk_level` output contract is present.",
+      "boundary": "core-kernel/src/icl.rs; core-kernel/src/engine/law_enforcer.rs",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-13-20260925",
+      "system_id": "FINAL-CLE",
+      "status": "PROVEN_PARTIAL_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "cause": "LawEnforcer applies invariants and proofs but does not expose those four canonical law types as CLE outputs.",
+      "boundary": "core-kernel/src/engine/law_enforcer.rs",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-14-20260925",
+      "system_id": "FINAL-LOGICAL-LAW",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "cause": "Logical invariant enforcement exists but no canonical Logical Law object/type is established.",
+      "boundary": "core-kernel/src/engine/law_enforcer.rs",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-15-20260925",
+      "system_id": "FINAL-RESOURCE-LAW",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "cause": "Resource controls exist in game/WebGPU and Lo3 cage paths but are not bound as canonical CLE Resource Law.",
+      "boundary": "packages/phase-f/game/runtime/webgpu-runtime.ts; packages/phase-f/lo3/cage.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-16-20260925",
+      "system_id": "FINAL-SAFETY-LAW",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "cause": "Robotics safety implementations exist, but mapping is domain-specific and not a proven canonical CLE Safety Law binding.",
+      "boundary": "packages/phase-f/robotics/decision-layer.ts; packages/phase-f/robotics/index.ts; packages/phase-f/robotics/rcl.ts; packages/phase-f/robotics/safe-brain/safety-verifier.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-17-20260925",
+      "system_id": "FINAL-TEMPORAL-LAW",
+      "status": "PARTIAL_NONCANONICAL_BINDING",
+      "severity": "S3",
+      "cause": "Temporal behavior exists in sandbox runtime but no canonical CLE Temporal Law binding is established.",
+      "boundary": "packages/phase-f/universe/sandbox-runtime.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-18-20260925",
+      "system_id": "FINAL-DSL",
+      "status": "PROVEN_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "cause": "DecisionSynthesizer returns fused decision metadata rather than a scored action-set contract.",
+      "boundary": "core-kernel/src/engine/dsl.rs",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-19-20260925",
+      "system_id": "FINAL-RSEL",
+      "status": "PARTIAL_BOUNDARY_NOT_PROVEN",
+      "severity": "S3",
+      "cause": "Risk formula exists, but complete execution-boundary proof that threshold violation always blocks action is not established.",
+      "boundary": "core-kernel/src/engine/rsel.rs; core-kernel/src/engine/ecl.rs",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-20-20260925",
+      "system_id": "FINAL-ECL",
+      "status": "PROVEN_PARTIAL_SEMANTIC_MISMATCH",
+      "severity": "S3",
+      "cause": "ExecutionGate exists but current source contains none of those three required execution modes/fallbacks.",
+      "boundary": "core-kernel/src/engine/ecl.rs",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-21-20260925",
+      "system_id": "FINAL-TRINITY-INTEGRATION",
+      "status": "PARTIAL_INTEGRATION",
+      "severity": "S3",
+      "cause": "Individual implementations exist, but no single canonical integration binding proves the complete Trinity contract.",
+      "boundary": "core-kernel/src/engine/l10_cognition.rs; packages/swarm/pipeline.ts; packages/engine/lo2.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    },
+    {
+      "failure_id": "FAIL-NEXY-CURRENT-MATRIX-22-20260925",
+      "system_id": "RELEASE-COVERAGE-GATE",
+      "status": "PROVEN_RELEASE_BLOCKER",
+      "severity": "S4",
+      "cause": "At exact current head, API coverage straddles/falls below 85 on lines/statements/branches and JUDGE branch coverage is 88.37%; coverage_check exits 1.",
+      "boundary": "scripts/check-coverage.ts; tests/coverage/judge-law.test.ts",
+      "recovery": "Align implementation/contract to the authoritative source or, where authority is missing, keep the path frozen until an authoritative amendment is supplied.",
+      "prevention": "Add source-derived semantic contract/regression evidence at the exact implementation HEAD."
+    }
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25T12:15:00+07:00"
+}
