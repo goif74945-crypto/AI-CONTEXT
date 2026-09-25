@@ -1,0 +1,28 @@
+{
+  "task_id": "TASK-NEXY-PROTECT-FULL-PASS-SYSTEMS-20260925",
+  "title": "Protect fully passed NEXY systems from modification",
+  "mode": "AI_CONTEXT_WRITE",
+  "inputs": {
+    "source_audit": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+    "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1"
+  },
+  "action": "Persist explicit protected-system lock for the 12 exact-MATCH systems.",
+  "systems": [
+    "SystemEnvelope/API error model",
+    "Directive contract/schema",
+    "Core state machine",
+    "Incident primary/secondary linkage",
+    "Session/device binding",
+    "CSRF",
+    "Runtime config/version/rollback",
+    "IRL",
+    "CIRL",
+    "CLE",
+    "DSL",
+    "ECL"
+  ],
+  "artifact": "projects/NEXY.AI/decisions/protected-systems-d677-20260925.json",
+  "final_status": "SUCCESS",
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
