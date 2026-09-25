@@ -13,7 +13,7 @@
 - Final Architecture is conceptual architecture.
 - DOC-E is evidence/proof only; file presence or design prose is not deployment proof.
 
-## Context state observed on 2026-09-25
+## Context state observed on 2026-09-26
 
 The source normalization and governance records are present in `projects/NEXY.AI/`. The deep capture is complete for this pass, while implementation/runtime/deployment evidence remains a separate and incomplete truth domain.
 
@@ -21,10 +21,18 @@ The latest read-only observation of the separate implementation repository is:
 
 - repository: `goif74945-crypto/NEXY.AI-`
 - branch: `astra/omega-full-spec-convergence`
-- head: `96b895ff471d0907d78f316d74fecc09205b8701`
+- head: `db960dd163a9f50373b747ac922d735d1250cf3a`
 - status: **NOT VERIFIED AT CURRENT HEAD**
 
-The available mismatch matrix is pinned to older implementation head `317e619f5331a2d1ce9aa0016a18bc1d3f143270`; it is retained as historical/stale evidence, not current-head proof. The prior read-only observation `136f68240b6540a523d89044937c906b4a7a97c3` is now its parent, not the current head.
+The available mismatch matrix is pinned to older implementation head `317e619f5331a2d1ce9aa0016a18bc1d3f143270`; it is retained as historical/stale evidence, not current-head proof. The previous context snapshot head `96b895ff471d0907d78f316d74fecc09205b8701` is now superseded by the exact observed head above.
+
+## Exact-head validation-path observation
+
+At exact head `db960dd163a9f50373b747ac922d735d1250cf3a`, GitHub Actions recorded:
+- `NEXY CI / Deploy Gate` run `36148606104` → `failure`.
+- `NEXY DOC-E E7 Queue and Rollback` run `36148606030` → `failure`.
+
+The inspected primary jobs report empty/null runner assignment and no executed steps. This is evidence that the validation path did not execute those job commands; it is **not** evidence that the source code itself failed test/typecheck/build commands. Runtime remains `NOT_VERIFIED`.
 
 ## Context written or corrected in this pass
 
@@ -53,4 +61,4 @@ The available mismatch matrix is pinned to older implementation head `317e619f53
 
 ## Decision
 
-The project context is corrected to match the recorded design source and to label implementation evidence by exact head. No implementation repository was modified. Current release truth remains **NON_DEPLOYABLE / NOT VERIFIED** until current-head runtime evidence and required DOC-E records exist.
+The project context is corrected to match the recorded design source and the exact implementation head. No implementation repository file was modified in this repair batch because no code defect was proven by executed current-head validation. Current release truth remains **NON_DEPLOYABLE / NOT VERIFIED** until an executable exact-head validation path and required DOC-E evidence exist.
