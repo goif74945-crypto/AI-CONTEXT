@@ -1,0 +1,19 @@
+{
+  "task_id": "TASK-NEXY-PROTECT-FULL-PASS-SYSTEMS-20260925",
+  "entries": [
+    {
+      "id": "LOCK-001",
+      "claim": "The 12 exact-MATCH systems are under an active DO_NOT_MODIFY policy.",
+      "proof": "Explicit user instruction plus protected-system decision artifact.",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "LOCK-002",
+      "claim": "Read-only audit and regression verification remain allowed; implementation changes require explicit user override.",
+      "proof": "Protected-system decision rules.",
+      "status": "VERIFIED"
+    }
+  ],
+  "final_verdict": "PROTECTED_LOCK_ACTIVE",
+  "version": "1.0.0"
+}
