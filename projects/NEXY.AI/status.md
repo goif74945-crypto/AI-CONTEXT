@@ -21,10 +21,10 @@ The latest read-only observation of the separate implementation repository is:
 
 - repository: `goif74945-crypto/NEXY.AI-`
 - branch: `astra/omega-full-spec-convergence`
-- head: `136f68240b6540a523d89044937c906b4a7a97c3`
+- head: `96b895ff471d0907d78f316d74fecc09205b8701`
 - status: **NOT VERIFIED AT CURRENT HEAD**
 
-The available mismatch matrix is pinned to an older implementation head `317e619f5331a2d1ce9aa0016a18bc1d3f143270`; it is retained as historical/stale evidence, not current-head proof.
+The available mismatch matrix is pinned to older implementation head `317e619f5331a2d1ce9aa0016a18bc1d3f143270`; it is retained as historical/stale evidence, not current-head proof. The prior read-only observation `136f68240b6540a523d89044937c906b4a7a97c3` is now its parent, not the current head.
 
 ## Context written or corrected in this pass
 

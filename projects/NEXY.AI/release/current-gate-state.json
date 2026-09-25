@@ -4,7 +4,8 @@
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head": "136f68240b6540a523d89044937c906b4a7a97c3",
+    "head": "96b895ff471d0907d78f316d74fecc09205b8701",
+    "previously_observed_head": "136f68240b6540a523d89044937c906b4a7a97c3",
     "observation_mode": "READ_ONLY"
   },
   "status": "NON_DEPLOYABLE",

@@ -21,7 +21,7 @@
 | Ontology registry | STRUCTURAL PRESENT | 518 entities, 865 relationships and 86 aliases are recorded. |
 | Contract registry | STRUCTURAL PRESENT | 22 contracts: 12 API, 8 schema and 2 module records. |
 | Control plane | P4.1–P4.16 STRUCTURAL ONLY | Artifacts and policy checks are present; runtime is not established. |
-| Separate NEXY implementation | NOT VERIFIED AT CURRENT HEAD | Read-only observation: `astra/omega-full-spec-convergence` at `136f68240b6540a523d89044937c906b4a7a97c3`. |
+| Separate NEXY implementation | NOT VERIFIED AT CURRENT HEAD | Read-only observation: `astra/omega-full-spec-convergence` at `96b895ff471d0907d78f316d74fecc09205b8701`; its parent was `136f68240b6540a523d89044937c906b4a7a97c3`. |
 | Mismatch evidence | STALE | Latest matrix targets `317e619f5331a2d1ce9aa0016a18bc1d3f143270`, not the current head. |
 | Deployment gate | NON_DEPLOYABLE | No current-head DOC-E evidence or sign-off. |
 
