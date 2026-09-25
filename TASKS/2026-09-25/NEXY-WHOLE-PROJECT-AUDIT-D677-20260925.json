@@ -1,0 +1,468 @@
+{
+  "task_id": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "title": "Whole-project NEXY.AI system-by-system audit",
+  "mode": "AUDIT_READ_ONLY",
+  "scope": "Entire private repository, authoritative DOC-C/DOC-D/DOC-E and Final Absolute Architecture, current vNEXT plus advanced/experimental systems",
+  "target_repo": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "astra/omega-full-spec-convergence",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "repository_inventory": {
+    "tree_entries": 776,
+    "tree_truncated": false,
+    "canonical_api_routes_present": "12/12",
+    "canonical_screens_present": "12/12",
+    "experimental_test_files_excluded_from_standard_suite": 56
+  },
+  "sources": [
+    "Authoritative project source: แอป [NEXY-IGNIS] ที่กำลังพัฒนา(4).docx / DOC-C,D,E + Final Absolute Architecture",
+    "GitHub exact source tree at d677ba05e3a144950240805c25a393b572df8eb1",
+    "Railway deployment 941b5bc5-9076-4931-b07b-781c92fefb5e exact head",
+    "GitHub Actions run 36111643219 exact head",
+    "evidence/phase-f-audit.json used only as stale May 25 self-report inventory, not current proof"
+  ],
+  "source_authority": {
+    "build": "DOC-C only",
+    "deploy": "DOC-E only",
+    "precedence_note": "Later final merged DOC-C text used over earlier conflicting values in same source"
+  },
+  "current_scope_systems": [
+    [
+      "Contracts + runtime validation",
+      "MATCH_WITH_BLOCKERS",
+      "contracts/validation exist; canonical compile gate currently fails elsewhere",
+      "S4"
+    ],
+    [
+      "SystemEnvelope/API error model",
+      "MATCH",
+      "canonical response envelope and error/state/request/trace/version model present",
+      "S0"
+    ],
+    [
+      "Directive contract/schema",
+      "MATCH",
+      "canonical directive fields and runtime validation present",
+      "S0"
+    ],
+    [
+      "Core state machine",
+      "MATCH",
+      "INIT/READY/RUNNING/VERIFYING/CONSENSUS/STABLE/FREEZE/STOP enforced",
+      "S0"
+    ],
+    [
+      "LAW/JUDGE/release policy",
+      "MATCH_WITH_LIMITS",
+      "canonical thresholds/evidence/quorum/release fail-closed logic present; release still blocked by global gates",
+      "S4"
+    ],
+    [
+      "SWARM pipeline",
+      "MATCH_WITH_LIMITS",
+      "decompose/debate/adversarial/cross-verify/consensus/emit-or-freeze implemented",
+      "S0"
+    ],
+    [
+      "AgentAdapter",
+      "SEMANTIC_MATCH_COMPILE_FAIL",
+      "external contract separated from SwarmAgent; RuntimeAgentAdapter TS2320 blocks typecheck",
+      "S4"
+    ],
+    [
+      "Incident primary/secondary linkage",
+      "MATCH",
+      "separate linked secondary records implemented",
+      "S0"
+    ],
+    [
+      "API canonical routes",
+      "MATCH_PRESENCE",
+      "12/12 canonical route files present; exact browser E2E not executed at current head",
+      "S3"
+    ],
+    [
+      "OTAC auth",
+      "MATCH_WITH_RUNTIME_LIMITS",
+      "10-char CSPRNG/hash/TTL/attempt/lock behavior present",
+      "S0"
+    ],
+    [
+      "Session/device binding",
+      "MATCH",
+      "final merged DOC-C 6h TTL and max 5 sessions reflected in current implementation",
+      "S0"
+    ],
+    [
+      "CSRF",
+      "MATCH",
+      "secure SameSite=strict double-submit + timingSafeEqual",
+      "S0"
+    ],
+    [
+      "Rate limiting/abuse",
+      "MATCH_WITH_DEV_ESCAPE",
+      "Redis primary; production default fail-closed; explicit fail-open only dev/test",
+      "S0"
+    ],
+    [
+      "RBAC/owner controls",
+      "MATCH_WITH_BROWSER_UNVERIFIED",
+      "backend permissions and owner routes present",
+      "S2"
+    ],
+    [
+      "Queue/idempotency/stale jobs",
+      "MATCH_WITH_LIMIT",
+      "default no retry; explicit bounded safe-error failed retry; stale/idempotency validation present",
+      "S1"
+    ],
+    [
+      "Vault revisioning/integrity",
+      "MATCH_WITH_RUNTIME_LIMITS",
+      "revision/commit/integrity/restore lifecycle code and schema present",
+      "S1"
+    ],
+    [
+      "Storage lifecycle",
+      "PARTIAL",
+      "lifecycle code exists but blob provider defaults UNBOUND; production binding not proven",
+      "S4"
+    ],
+    [
+      "Secrets boundary",
+      "MISMATCH",
+      "only EnvSecretProvider implemented; unknown backend falls back to env; source requires Secret manager only",
+      "S4"
+    ],
+    [
+      "Email OTAC secret handling",
+      "MISMATCH",
+      "SMTP credentials read directly from process.env rather than SecretProvider",
+      "S4"
+    ],
+    [
+      "Runtime config/version/rollback",
+      "MATCH",
+      "durable version/head/diff/rollback-target model implemented",
+      "S0"
+    ],
+    [
+      "Event/Audit logs",
+      "MATCH_WITH_RUNTIME_LIMITS",
+      "durable audit/event paths exist; exact-head release evidence incomplete",
+      "S2"
+    ],
+    [
+      "Alarm/monitoring",
+      "PARTIAL",
+      "all six alarm types exist; default sink is in-memory-test; external sink binding/proof not observed",
+      "S4"
+    ],
+    [
+      "UI canonical screens",
+      "MATCH_PRESENCE",
+      "12/12 canonical screens present",
+      "S1"
+    ],
+    [
+      "UI truth/FREEZE behavior",
+      "MATCH_WITH_BROWSER_UNVERIFIED",
+      "truth/freeze/permission components present; current exact-head browser job did not execute",
+      "S3"
+    ],
+    [
+      "Directive-create schema-valid disabling",
+      "MISMATCH",
+      "submit disabled for empty input/project and submission, but not full schema validity before click",
+      "S3"
+    ],
+    [
+      "Database/Prisma schema",
+      "MATCH_WITH_DEPLOY_EVIDENCE_GAP",
+      "major canonical models/FKs/constraints exist; exact-head migration+rollback execution proof missing",
+      "S4"
+    ],
+    [
+      "DOC-E deployment evidence",
+      "MISSING_CURRENT_EXACT_HEAD",
+      "required E1-E12 exact-head pack/signoff/rollback proof not current",
+      "S4"
+    ],
+    [
+      "Production deploy provider",
+      "MISSING",
+      "workflow explicitly exits DEPLOYMENT_PROVIDER_NOT_CONFIGURED",
+      "S4"
+    ]
+  ],
+  "intelligence_systems": [
+    [
+      "IRL",
+      "MATCH",
+      "sensor/normalizer/noise/confidence; state/confidence/uncertainty; raw excluded",
+      "canonical tests"
+    ],
+    [
+      "CIRL",
+      "MATCH",
+      "intent/constraints/risk/ambiguity/WAIT_FOR_DATA_CLARITY fail-closed",
+      "canonical tests"
+    ],
+    [
+      "CLE",
+      "MATCH",
+      "logical/resource/safety/temporal laws and authority gates",
+      "canonical tests"
+    ],
+    [
+      "L1o CTS",
+      "MATCH_WITH_AUTHORITY_BOUNDARY",
+      "T0 Unknown..T4 ImmutableLaw; numeric promotion requires explicit policy",
+      "Rust contract"
+    ],
+    [
+      "L1o MPG/EPE",
+      "PARTIAL",
+      "real DAG BFS+DFS and EPE signals/soft ordering present; explicit heuristic-bias MPG strategy not observed",
+      "Rust contract only for implemented surface"
+    ],
+    [
+      "Lo3 canonical swarm",
+      "MATCH_WITH_LIMITS",
+      "context sharding/adversarial/consensus/trust mechanisms present",
+      "focused/canonical tests"
+    ],
+    [
+      "DSL",
+      "MATCH",
+      "scored action set; deterministic order; malformed/duplicate/tie freeze",
+      "canonical tests"
+    ],
+    [
+      "RSEL",
+      "SEMANTIC_MATCH_COMPILE_FAIL",
+      "risk formula and threshold boundary match source; TS2532 blocks typecheck",
+      "canonical test has one stale expectation"
+    ],
+    [
+      "ECL",
+      "MATCH",
+      "FAST_PATH/SAFE_PATH/TIMEOUT_FALLBACK with risk blocking",
+      "canonical tests"
+    ],
+    [
+      "Safety Kernel",
+      "EXPERIMENTAL_NOT_EXACT_HEAD_VALIDATED",
+      "source implementations exist in Phase-F/experimental; standard CI excludes them",
+      "NOT_EXECUTED current head"
+    ],
+    [
+      "Lo2 learning/governance",
+      "EXPERIMENTAL_NOT_EXACT_HEAD_VALIDATED",
+      "verified-output/quanta/law synthesis/evolution/anti-poison/ledger code exists; standard CI excludes packages/engine/lo2.ts",
+      "NOT_EXECUTED current head"
+    ],
+    [
+      "Trinity binding",
+      "MATCH_WITH_LIMITS",
+      "L1o+Lo3+Lo2 boundary returns JUDGE_PENDING or FREEZE",
+      "canonical focused tests for binding surface"
+    ]
+  ],
+  "phase_f_self_report_groups": [
+    [
+      "L1o advanced",
+      7,
+      2,
+      3,
+      2,
+      0,
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Lo2 Phase-F",
+      2,
+      1,
+      1,
+      0,
+      0,
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Lo3 Phase-F",
+      2,
+      2,
+      0,
+      0,
+      0,
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Game fabric",
+      26,
+      4,
+      11,
+      11,
+      0,
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Robotics",
+      11,
+      0,
+      6,
+      5,
+      0,
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Universe/Sandbox",
+      14,
+      3,
+      2,
+      9,
+      0,
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Resilience",
+      12,
+      3,
+      3,
+      6,
+      0,
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Sovereign/Determinism",
+      8,
+      0,
+      5,
+      3,
+      0,
+      "NOT_EXECUTED_EXACT_HEAD"
+    ]
+  ],
+  "quality_gate_findings": {
+    "standard_typecheck_excludes": [
+      "packages/phase-f/**",
+      "packages-experimental/**",
+      "packages/engine/lo2.ts"
+    ],
+    "standard_lint_excludes": [
+      "packages/phase-f/**",
+      "packages/engine/lo2.ts"
+    ],
+    "standard_tests_exclude": [
+      "56 explicitly enumerated experimental integration tests",
+      "experimental source globs"
+    ],
+    "standard_coverage_excludes": [
+      "packages/phase-f/**",
+      "packages-experimental/**",
+      "packages/engine/lo2.ts"
+    ],
+    "coverage_gate_domains": [
+      "api >=85",
+      "core >=90",
+      "law >=90",
+      "judge >=90"
+    ],
+    "consequence": "Standard PASS labels cannot establish whole-project validation."
+  },
+  "exact_head_validation": {
+    "railway": {
+      "deployment": "941b5bc5-9076-4931-b07b-781c92fefb5e",
+      "status": "FAILED",
+      "npm_ci": "PASS",
+      "prisma_generate": "PASS",
+      "typecheck": "FAIL",
+      "typecheck_backend": "FAIL",
+      "lint": "PASS_PARTIAL_SCOPE",
+      "focused_auth_email": "PASS",
+      "focused_auth_regression": "PASS",
+      "focused_vnext_defaults": "PASS",
+      "focused_agent_adapter": "PASS",
+      "focused_consensus_contract": "PASS",
+      "contract": "FAIL",
+      "integration": "PASS_CANONICAL_SCOPE_ONLY",
+      "full": "FAIL",
+      "coverage": "FAIL",
+      "coverage_check": "FAIL",
+      "doc_c": "PASS",
+      "web_build": "PASS",
+      "overall": "FAIL",
+      "full_counts": "96/98 files; 736/739 tests"
+    },
+    "github_actions": {
+      "run_id": 36111643219,
+      "conclusion": "failure",
+      "browser_e2e": "NOT_EXECUTED",
+      "release_attestation": "SKIPPED",
+      "deploy": "SKIPPED"
+    },
+    "current_type_errors": [
+      "packages/intelligence/rsel.ts(86,7) TS2532 Object is possibly undefined",
+      "packages/swarm/adapters/types.ts(45,18) TS2320 RuntimeAgentAdapter cannot simultaneously extend AgentAdapter and SwarmAgent"
+    ],
+    "stale_regression_failures": [
+      "2 system-state-persistence assertions expect removed packed secondaryErrorCodes array",
+      "1 RSEL assertion expects CAUTION when source risk formula evaluates to zero"
+    ]
+  },
+  "production_blockers": [
+    "Two canonical TypeScript compile failures",
+    "Secret manager boundary not implemented: env-only backend and fallback; direct SMTP env reads",
+    "Blob storage provider defaults UNBOUND; production binding not proven",
+    "External alarm sink/proof not current",
+    "Exact-head DOC-E E1-E12 release evidence/signoff/rollback proof missing",
+    "Production deployment provider explicitly unconfigured",
+    "Contract/full/coverage gates red at exact head"
+  ],
+  "phase_f_validation_status": {
+    "exact_head": "NOT_EXECUTED",
+    "standard_ci_excluded": true,
+    "stale_self_audit_generated_at": "2026-05-25T14:17:26.351Z",
+    "stale_self_audit_summary": {
+      "complete": 15,
+      "substantial": 31,
+      "partial": 36,
+      "stubs": 0,
+      "evidencePass": 11,
+      "signoffReady": false
+    },
+    "note": "Self-report statuses are inventory only and not current verification."
+  },
+  "excluded_vnext": [
+    "voice orchestration",
+    "blockchain integration",
+    "real-time 3D UI",
+    "public anonymous write access",
+    "AR/VR/XR",
+    "IoT device control",
+    "quantum-safe cryptography layer",
+    "holographic UI"
+  ],
+  "deferred": [
+    "advanced policy simulation dashboard",
+    "multi-tenant org hierarchy",
+    "fine-grained per-project config policy",
+    "provider marketplace layer"
+  ],
+  "changes": "No mutation to NEXY.AI-. AI-CONTEXT records only.",
+  "final_status": "PARTIAL_NON_DEPLOYABLE",
+  "next_actions": [
+    "Fix TS2320 AgentAdapter runtime bridge and TS2532 RSEL without weakening canonical contracts.",
+    "Replace production env-only secrets path with an actual SecretProvider backend; route SMTP and advanced paths through it.",
+    "Bind/prove production blob storage and external alarm sinks.",
+    "Reconcile 3 stale regression tests with authoritative current contracts.",
+    "Add exact-head experimental/Phase-F typecheck, lint, test, and coverage gates if those systems are to be promoted.",
+    "Produce current DOC-E E1-E12 exact-head evidence and configure a production deployment provider.",
+    "Rerun exact-head canonical + browser + advanced gates."
+  ],
+  "rollback": "Audit only; no NEXY.AI- changes to roll back. AI-CONTEXT records can be reverted by their commits if required.",
+  "version": "1.0.0",
+  "timestamp_source": "System date 2026-09-25; exact repository/runtime source timestamps retained in evidence",
+  "trace_id": "NEXY-WHOLE-PROJECT-AUDIT/D677/20260925",
+  "hash": "HASH_UNAVAILABLE"
+}
