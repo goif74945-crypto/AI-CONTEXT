@@ -1,0 +1,67 @@
+{
+  "task_id": "TASK-NEXY-4H-DELTA-20260925-2126",
+  "title": "NEXY.AI four-hour status delta audit",
+  "mode": "CROSS_AUDIT_READ_ONLY",
+  "window_local": "2026-09-25T17:26:00+07:00..2026-09-25T21:26:00+07:00",
+  "baseline_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "snapshot_head": "e857fca48673dba94065b4bc1643c0ab62c32ae3",
+  "delta_commits": 53,
+  "major_changes": [
+    "AgentAdapter runtime bridge compile defect repaired",
+    "RSEL compile defect repaired; semantic CAUTION mapping requires re-audit",
+    "Directive create now checks canonical schema before enabling submission",
+    "Production secrets boundary now supports Vault and rejects env fallback in production",
+    "SMTP secrets now flow through SecretProvider",
+    "HTTP blob provider and bootstrap binding added",
+    "HTTP alarm sink and bootstrap binding added",
+    "L1o MPG deterministic heuristic bias added; EPE/CTS policy-bound work expanded",
+    "Phase-F added to release validation and exact-head experimental gates pass",
+    "Coverage threshold now passes all canonical domains"
+  ],
+  "exact_head_validation": {
+    "railway_deployment": "1c769a90-a4bd-4482-80ca-194b2a51ef5a",
+    "status": "SUCCESS",
+    "combined_commit_status": "success",
+    "gates": {
+      "npm_ci": "PASS",
+      "prisma_generate": "PASS",
+      "typecheck": "PASS",
+      "typecheck_backend": "PASS",
+      "lint": "PASS",
+      "focused_auth_email": "PASS",
+      "focused_auth_regression": "PASS",
+      "focused_vnext_defaults": "PASS",
+      "focused_agent_adapter": "PASS",
+      "focused_consensus_contract": "PASS",
+      "contract": "PASS",
+      "integration": "PASS",
+      "full": "PASS",
+      "coverage": "PASS",
+      "coverage_check": "PASS",
+      "phase_f_experimental": "PASS",
+      "phase_f_check": "PASS",
+      "doc_c": "PASS",
+      "web_build": "PASS"
+    },
+    "coverage": {
+      "api": "lines 93.38 / statements 91.97 / functions 97.61 / branches 85.06",
+      "core": "95.65 / 95.87 / 93.75 / 93.22",
+      "law": "100.00 / 94.87 / 100.00 / 96.83",
+      "judge": "97.39 / 96.27 / 100.00 / 94.01"
+    }
+  },
+  "remaining_open": [
+    "GitHub Actions exact-head run 36147446134 failed with zero recorded steps for failed jobs; browser E2E did not execute there.",
+    "Release attestation is skipped at exact head.",
+    "Production deploy remains intentionally blocked by DEPLOYMENT_PROVIDER_NOT_CONFIGURED.",
+    "Actual external production bindings/configuration for Vault/blob/alarm endpoints are implemented but not proven live by this validation run.",
+    "DOC-E exact-head production evidence/signoff/rollback pack is not closed.",
+    "RSEL CAUTION-state mapping should be re-audited against authoritative state semantics.",
+    "Phase-F exact-head validation now passes, but 82-module spec-completeness has not been fully re-audited system-by-system."
+  ],
+  "protected_lock": "NEXY-PROTECTED-SYSTEMS-D677-20260925 remains active",
+  "changes_to_target_repo": "NONE_BY_THIS_AUDIT",
+  "final_status": "VALIDATION_GREEN_RELEASE_STILL_BLOCKED",
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
