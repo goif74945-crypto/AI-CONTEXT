@@ -7,10 +7,7 @@
     {
       "id": "LATEST-COMPILE-001",
       "severity": "S4",
-      "status": "SUPERSEDED_STALE",
-  "superseded_by_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
-  "superseded_observed_at": "2026-09-26",
-  "supersession_rule": "Retain as historical evidence only; revalidate before use against the superseding head.",
+      "status": "OPEN",
       "summary": "Exact-head TypeScript gates fail on RuntimeAgentAdapter interface composition and RSEL narrowing."
     },
     {
@@ -27,6 +24,9 @@
     }
   ],
   "impact": "Release gate remains red although many prior semantic mismatches are repaired.",
-  "status": "OPEN",
-  "version": "1.0.0"
+  "status": "SUPERSEDED_STALE",
+  "version": "1.0.0",
+  "superseded_by_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+  "superseded_observed_at": "2026-09-26",
+  "supersession_rule": "Retain as historical evidence only; revalidate before use against the superseding head."
 }
