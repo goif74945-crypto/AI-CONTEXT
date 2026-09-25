@@ -1,0 +1,67 @@
+{
+  "case_id": "CASE-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "task_id": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "cause": "User requested exhaustive system-by-system comparison across entire repository rather than recent-change audit.",
+  "violations": [
+    {
+      "id": "WHOLE-S4-COMPILE",
+      "severity": "S4",
+      "summary": "Canonical TypeScript typecheck fails at AgentAdapter bridge and RSEL narrowing."
+    },
+    {
+      "id": "WHOLE-S4-SECRETS",
+      "severity": "S4",
+      "summary": "Production secret-manager requirement is not met by env-only SecretProvider; SMTP reads secrets directly from process.env."
+    },
+    {
+      "id": "WHOLE-S4-STORAGE",
+      "severity": "S4",
+      "summary": "Blob storage authority is fail-closed UNBOUND and no production binding was proven."
+    },
+    {
+      "id": "WHOLE-S4-OBS",
+      "severity": "S4",
+      "summary": "Required alarm types exist but external delivery binding/current DOC-E proof not proven."
+    },
+    {
+      "id": "WHOLE-S4-EVIDENCE",
+      "severity": "S4",
+      "summary": "No exact-head complete DOC-E E1-E12 release authorization pack."
+    },
+    {
+      "id": "WHOLE-S4-DEPLOY",
+      "severity": "S4",
+      "summary": "Workflow explicitly blocks deployment with DEPLOYMENT_PROVIDER_NOT_CONFIGURED."
+    },
+    {
+      "id": "WHOLE-S3-UI",
+      "severity": "S3",
+      "summary": "Directive submit is not disabled until full schema validity as DOC-D requires."
+    },
+    {
+      "id": "WHOLE-S3-MPG",
+      "severity": "S3",
+      "summary": "Explicit L600 MPG heuristic-bias generation strategy not observed."
+    },
+    {
+      "id": "WHOLE-S3-TESTDRIFT",
+      "severity": "S3",
+      "summary": "Three standard regression assertions are stale/source-inconsistent and keep contract/full/coverage red."
+    },
+    {
+      "id": "WHOLE-S3-ADV-GATES",
+      "severity": "S3",
+      "summary": "Phase-F/experimental systems are excluded from standard typecheck/lint/tests/coverage and were not exact-head executed."
+    },
+    {
+      "id": "WHOLE-S2-DOC",
+      "severity": "S2",
+      "summary": "README/current documentation contains authority/path/threshold drift relative to final DOC-C and current tree."
+    }
+  ],
+  "impact": "Project cannot be classified implementation-ready or deployable under DOC-C/DOC-E final laws.",
+  "remediation_boundary": "Audit only; no source changes performed.",
+  "final_status": "OPEN_NON_DEPLOYABLE",
+  "version": "1.0.0"
+}
