@@ -1,0 +1,16 @@
+{
+  "observed_at": "2026-09-26",
+  "current_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+  "doc_e_required": 12,
+  "doc_e_observed": 12,
+  "reported_commit": "db52f9f1870b302f36653268513251d010f9726e",
+  "head_match": 0,
+  "head_mismatch": 12,
+  "current_head_pass": 0,
+  "status": "STALE_FOR_CURRENT_HEAD",
+  "deploy_run": 36148606104,
+  "e7_run": 36148606030,
+  "executed_steps_observed": 0,
+  "rule": "Historical DOC-E evidence cannot satisfy a different exact HEAD.",
+  "hash": "HASH_UNAVAILABLE"
+}
