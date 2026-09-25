@@ -1,0 +1,17 @@
+{
+  "worklist_id": "NEXY-NONFULL-MASTER-WORKLIST-D677-20260925",
+  "source_audit": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "protected_lock": "NEXY-PROTECTED-SYSTEMS-D677-20260925",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "protected_systems_excluded": 12,
+  "scope_rule": "All audited rows not exact MATCH, plus exact-head gates not passing. OUT_OF_SCOPE and DEFERRED excluded.",
+  "groups": {
+    "core_current": 21,
+    "intelligence": 7,
+    "phase_f_groups": 8,
+    "validation_release_gates": 9
+  },
+  "total_tracking_rows": 45,
+  "status": "ACTIVE_MASTER_WORKLIST",
+  "version": "1.0.0"
+}
