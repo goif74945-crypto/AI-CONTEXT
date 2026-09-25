@@ -1,0 +1,106 @@
+{
+  "task_id": "TASK-NEXY-WHOLE-DESIGN-COMPLETION-AUDIT-DB960DD-20260925",
+  "title": "Whole-design completion percentage and 518-system/262-requirement workbook",
+  "mode": "CROSS_AUDIT_READ_ONLY",
+  "scope": "Authoritative NEXY design inventory, 518 ontology entities, 262 atomic requirements, exact target HEAD db960dd163a9f50373b747ac922d735d1250cf3a",
+  "inputs_summary": "User requested evidence-grounded percentage vs whole design and a system-by-system table, continued incrementally without memory-derived scoring.",
+  "sources": [
+    "Authoritative design SHA256 b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "AI-CONTEXT requirements/requirements.jsonl",
+    "AI-CONTEXT ontology/entities.jsonl",
+    "AI-CONTEXT governance/scope-registry.json",
+    "TASK-NEXY-4H-DELTA-20260925-2126",
+    "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+    "GitHub exact HEAD db960dd163a9f50373b747ac922d735d1250cf3a"
+  ],
+  "skills_tools": [
+    "artifact_tool spreadsheet skill",
+    "GitHub connector",
+    "Files connector",
+    "Railway evidence from current conversation"
+  ],
+  "actions": [
+    "Locked denominator at 262 atomic requirements and 518 ontology entities",
+    "Classified each requirement with strict binary completion using implementation mapping, exact-head test proof, source conflict/gap, and deployment evidence rules",
+    "Aggregated entity completion from linked atomic requirements; entities without atomic requirement linkage remain N/A",
+    "Created workbook sheets Overview, Systems_518, Requirements_262, Scope_Summary, Validation_Gates, Protected_Lock, Methodology, Open_Gaps, Ceiling_Blocked",
+    "Scanned formulas for spreadsheet errors and exported XLSX"
+  ],
+  "artifacts_paths": [
+    "/mnt/data/NEXY_whole_design_completion_audit_db960dd.xlsx",
+    "/mnt/data/NEXY_whole_design_audit_preview.png"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Whole-design strict completion is 174/262 = 66.4%.",
+      "proof": "Workbook Overview formulas over Requirements_262 strict-complete flags."
+    },
+    {
+      "claim": "Current-relevant strict completion is 114/154 = 74.0%.",
+      "proof": "Workbook Overview formulas over DOC_C/DOC_D/CURRENT_ARCHITECTURE membership flags."
+    },
+    {
+      "claim": "DOC-C strict completion is 77/80 = 96.3%.",
+      "proof": "Scope_Summary formula aggregation."
+    },
+    {
+      "claim": "DOC-E exact-head completion remains 0/15.",
+      "proof": "Exact-head evidence/signoff/rollback pack remains open; deployment is not proven."
+    },
+    {
+      "claim": "Workbook formula scan has no REF/DIV0/VALUE/NAME/N/A errors.",
+      "proof": "artifact_tool match scan returned zero entries."
+    }
+  ],
+  "tests_results": {
+    "spreadsheet_formula_scan": "PASS",
+    "exact_head_validation": "Railway canonical + Phase-F gates green as captured in workbook",
+    "browser_e2e": "NOT_EXECUTED exact-head",
+    "release_attestation": "SKIPPED",
+    "production_deploy": "BLOCKED_BY_PROVIDER_CONFIGURATION"
+  },
+  "changes": "No mutation to NEXY.AI-. AI-CONTEXT task-close records only.",
+  "successes": [
+    "518 entity rows populated",
+    "262 requirement rows populated",
+    "88 open strict requirement gaps surfaced",
+    "ceiling/blocked paths separated from completed work"
+  ],
+  "failures": [
+    "Whole-project semantic completeness above registry-linked proof is not claimed; some entities have no atomic requirement linkage.",
+    "Exact-head browser E2E, DOC-E pack, release attestation and production deployment remain unclosed."
+  ],
+  "decisions": [
+    "Use strict binary requirement completion; do not award arbitrary partial percentages.",
+    "Use N/A for entities with no atomic requirement mapping.",
+    "Do not let successful Phase-F gate imply every advanced entity is fully spec-complete."
+  ],
+  "unresolved": [
+    "Browser exact-head execution",
+    "DOC-E E1-E12 exact-head pack",
+    "Release attestation",
+    "Production deploy provider/live bindings",
+    "L1o authority gaps where canonical numeric policy is absent"
+  ],
+  "risks": [
+    "Registry mappings can lag newer implementation; 66.4% is a conservative evidence ratio, not an optimistic code-estimate."
+  ],
+  "limits": [
+    "No claim that only 88 semantic defects remain; 88 is the count of requirements not strict-complete under the defined evidence rule."
+  ],
+  "rollback": "Delete/revert AI-CONTEXT close records if invalidated; workbook is an external generated artifact.",
+  "final_status": "PARTIAL_VERIFIED_WITH_LIMITS",
+  "next_actions": [
+    "Use Open_Gaps and Ceiling_Blocked sheets as the incremental work queue; re-audit and close one requirement at a time.",
+    "Recompute percentages only after new exact-head evidence."
+  ],
+  "dependencies": [
+    "Authoritative design source",
+    "AI-CONTEXT normalized registries",
+    "Exact-head repository/runtime evidence"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "System date 2026-09-25; no invented wall-clock time",
+  "trace_id": "NEXY-WHOLE-DESIGN-COMPLETION-AUDIT-DB960DD-20260925",
+  "hash": "37d900c0f552447d82aab2459704ac47fa3defae8c51987a2e0e4fda48c0d422"
+}
