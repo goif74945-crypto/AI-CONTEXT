@@ -1,0 +1,16 @@
+{
+  "case_id": "CASE-NEXY-CURRENT-SPEC-MISMATCH-MATRIX-20260925-1215",
+  "task_id": "TASK-NEXY-CURRENT-SPEC-MISMATCH-MATRIX-20260925-1215",
+  "snapshot_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
+  "cause": "User requested an exhaustive table of current systems that do not match spec and code paths that cannot be treated as usable/final.",
+  "impact": "22 current system/boundary rows are proven as mismatch, partial semantics, source-blocked, or release-blocked under the stated truth boundary.",
+  "decisions": [
+    "Do not classify NOT_MAPPED as missing.",
+    "Do not classify NOT_VERIFIED as unusable.",
+    "Remove old findings that are repaired at current HEAD.",
+    "Keep source-vs-code semantic findings even when current tests encode and pass the current implementation."
+  ],
+  "status": "OPEN_CURRENT_FINDINGS",
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-25T12:15:00+07:00"
+}
