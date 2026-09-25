@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "authority": "RCL_L600_SOURCE",
+  "scope": "FUTURE_ARCHITECTURE",
+  "conflict_id": "CONFLICT-RCL-LATENCY-001",
+  "rule": "Latency values from different physical/control paths must never be collapsed into one canonical number. An authoritative value remains null until target hardware/domain profiling plus a newer locked performance contract resolves it.",
+  "metrics": {
+    "sensor_to_actuator": {
+      "authoritative_value_ms": null,
+      "source_candidates": [
+        {
+          "value": "<100",
+          "meaning": "critical-loop total target",
+          "source_context": "Sensors -> Fusion -> critical route -> Fast Path or L1o+Lo3 -> Safety Kernel -> Execute"
+        }
+      ],
+      "status": "UNRESOLVED_PATH_DEPENDENT",
+      "do_not_do": "Do not apply the critical-loop total target to every Safe Path or Lo3 deliberative action."
+    },
+    "mcu_fast_path": {
+      "authoritative_value_ms": null,
+      "source_candidates": [
+        {
+          "value": "~5",
+          "meaning": "Fast Path row in one timing table"
+        },
+        {
+          "value": "~10",
+          "meaning": "Fast Loop design statement: sensor -> MCU -> reflex action"
+        }
+      ],
+      "status": "SOURCE_VARIANTS_NOT_CANONICALIZED",
+      "do_not_do": "Do not choose 5 ms or 10 ms as production truth without hardware profiling and an authoritative contract."
+    },
+    "lo3_cycle": {
+      "authoritative_value_ms": null,
+      "source_candidates": [
+        {
+          "value": "~100",
+          "meaning": "Slow Loop: sensor -> L1o -> Lo3 -> decision"
+        },
+        {
+          "value": "50-200",
+          "meaning": "Safe Path range in one timing table"
+        },
+        {
+          "value": "50-500",
+          "meaning": "Safe Path range in another source passage"
+        }
+      ],
+      "status": "UNRESOLVED_SOURCE_CONFLICT",
+      "do_not_do": "Do not collapse Safe Path and Lo3-cycle values or use them as a physical safety guarantee."
+    }
+  },
+  "runtime_evidence_required": [
+    "target hardware identity",
+    "sensor timestamp origin",
+    "MCU ingress and egress timestamps",
+    "main-compute L1o/Lo3 cycle timestamps",
+    "Safety Kernel decision timestamp",
+    "actuator command timestamp",
+    "units and clock synchronization method"
+  ],
+  "hash": "HASH_UNAVAILABLE"
+}
