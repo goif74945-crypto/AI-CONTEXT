@@ -1,0 +1,44 @@
+{
+  "task_id": "TASK-NEXY-PROTECTED-STRICT-MATCH-D677-20260925",
+  "entries": [
+    {
+      "id": "LOCK-001",
+      "source": "User instruction",
+      "claim": "Strict-match systems should not be modified casually.",
+      "proof": "Current user request",
+      "deps": [],
+      "risk": "medium",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "current"
+    },
+    {
+      "id": "LOCK-002",
+      "source": "AI-CONTEXT whole-project audit",
+      "claim": "12 systems were classified exact MATCH in the locked D677 audit.",
+      "proof": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+      "deps": [
+        "LOCK-001"
+      ],
+      "risk": "medium",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "snapshot"
+    },
+    {
+      "id": "LOCK-003",
+      "source": "AI-CONTEXT constraint write",
+      "claim": "Protection rule was persisted.",
+      "proof": "projects/NEXY.AI/constraints/protected-strict-match-d677.json @ 5c9b8333bc2e5a5615dc5e2ca30f777b5743a4b6",
+      "deps": [
+        "LOCK-002"
+      ],
+      "risk": "low",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "current"
+    }
+  ],
+  "final_verdict": "PROTECTED_STRICT_MATCH",
+  "version": "1.0.0"
+}
