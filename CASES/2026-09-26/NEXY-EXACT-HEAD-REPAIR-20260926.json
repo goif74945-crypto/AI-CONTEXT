@@ -1,0 +1,47 @@
+{
+  "CASE_ID": "CASE-NEXY-EXACT-HEAD-REPAIR-20260926",
+  "task_id": "TASK-NEXY-EXACT-HEAD-REPAIR-20260926",
+  "cause": "AI-CONTEXT implementation/runtime freshness was behind the exact NEXY branch head, while release/runtime evidence was not exact-head verified.",
+  "scope": "P-01 through P-12 from the user-supplied repair plan.",
+  "exact_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "impact": "Stale snapshots, mappings, audits, and DOC-E records could otherwise be misread as current implementation/release proof.",
+  "fix": [
+    "normalized source provenance",
+    "refreshed primary current-head status surfaces",
+    "marked stale historical CASE artifacts superseded",
+    "made SCHEMA=0 and WORKFLOW=0 explicit",
+    "added fail-closed CTS and robotics latency governance records",
+    "added exact-head implementation and traceability path validation",
+    "recorded exact-head release and DOC-E freshness state"
+  ],
+  "proof": {
+    "mapped_refs_current": "864/864",
+    "requirement_impl_refs_current": "3218/3218",
+    "test_refs_current": "1149/1149",
+    "changed_mapped_paths": 107,
+    "affected_entities": 164,
+    "requirements_with_changed_impl_refs": 166,
+    "requirements_with_changed_test_refs": 166,
+    "doc_e_current_head": "0/12",
+    "github_actions": "exact-head rerun performed; primary jobs still had zero observed steps"
+  },
+  "prevention": [
+    "use exact-head freshness overlays before consuming baseline artifacts",
+    "invalidate semantic/runtime claims when referenced blob content or HEAD changes",
+    "require actual executed evidence before PASS/release"
+  ],
+  "regression": "No implementation source was changed; AI-CONTEXT read-back validation is required before closure.",
+  "unresolved": [
+    "runtime validation path",
+    "semantic reinspection of changed mappings",
+    "fresh DOC-E E1-E12",
+    "CTS numeric authority",
+    "physical robotics timing contract"
+  ],
+  "final_status": "PARTIAL_NON_DEPLOYABLE",
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-26 Asia/Bangkok conversation date and GitHub state",
+  "trace_id": "NEXY-EXACT-HEAD-REPAIR-20260926",
+  "hash": "HASH_UNAVAILABLE"
+}
