@@ -1,0 +1,8 @@
+{
+  "case_id": "CASE-NEXY-4H-DELTA-20260925-2126",
+  "task_id": "TASK-NEXY-4H-DELTA-20260925-2126",
+  "snapshot_head": "e857fca48673dba94065b4bc1643c0ab62c32ae3",
+  "status": "OPEN_RELEASE_BOUNDARY",
+  "summary": "Canonical and Phase-F validation became green within the four-hour window, while production release evidence/provider/browser GitHub path remains unresolved.",
+  "version": "1.0.0"
+}
