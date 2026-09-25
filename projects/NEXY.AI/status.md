@@ -62,3 +62,18 @@ The inspected primary jobs report empty/null runner assignment and no executed s
 ## Decision
 
 The project context is corrected to match the recorded design source and the exact implementation head. No implementation repository file was modified in this repair batch because no code defect was proven by executed current-head validation. Current release truth remains **NON_DEPLOYABLE / NOT VERIFIED** until an executable exact-head validation path and required DOC-E evidence exist.
+## Repair pass — 2026-09-26
+
+- P-01 source provenance: repaired; canonical SHA identity is separated from observed filename/container metadata.
+- P-02/P-03 freshness surfaces: refreshed to exact implementation head `db960dd163a9f50373b747ac922d735d1250cf3a`.
+- P-04 implementation map: all 864 historical mapped refs still exist at current HEAD; 107 unique mapped paths changed content and 164 entities require semantic revalidation.
+- P-05 traceability: all 3,218 implementation refs and 1,149 test refs still exist; 166/262 requirements touch changed implementation refs and 166/262 touch changed test refs. Verdicts remain NOT_EVALUATED.
+- P-06 stale CASE artifacts: preserved and marked `SUPERSEDED_STALE`.
+- P-07 DOC-E: E1–E12 inspected; all 12 report `db52f9f1870b302f36653268513251d010f9726e`, so current-head match is 0/12.
+- P-08 taxonomy coverage: `SCHEMA=0` and `WORKFLOW=0` are now emitted explicitly.
+- P-09 event regression: current code and tests already assert the exact event set including `cancel` and `timeout`; execution is not verified.
+- P-10 CTS: structured authority conflict added; numeric CTS threshold is frozen until authoritative definition exists.
+- P-11 robotics latency: path-separated registry added for `sensor_to_actuator`, `mcu_fast_path`, and `lo3_cycle`; no unresolved value was promoted to production truth.
+- P-12 release evidence: current-head overlay records that stale evidence cannot satisfy a different HEAD; workflow structure binds release evidence to commit identity, but current execution remains blocked.
+- Exact-head failed jobs were rerun. The rerun again produced primary jobs with zero observed steps, so no test/typecheck/build/DOC-E PASS is claimed.
+
