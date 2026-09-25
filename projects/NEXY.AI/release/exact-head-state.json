@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "observed_at": "2026-09-26",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "astra/omega-full-spec-convergence",
+  "head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+  "base_gate_path": "projects/NEXY.AI/release/gates.json",
+  "base_gate_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
+  "base_gate_status": "STALE_FOR_CURRENT_HEAD",
+  "deploy_gate_run_id": 36148606104,
+  "doc_e_e7_run_id": 36148606030,
+  "executed_steps_observed": 0,
+  "current_head_runtime_status": "NOT_VERIFIED",
+  "release_status": "NON_DEPLOYABLE",
+  "exact_head_rule": "Evidence from a different commit cannot satisfy a current-head release gate.",
+  "hash": "HASH_UNAVAILABLE"
+}
