@@ -1,0 +1,48 @@
+{
+  "constraint_id": "NEXY-PROTECTED-STRICT-MATCH-D677",
+  "project": "NEXY.AI",
+  "source_audit": "TASK-NEXY-WHOLE-PROJECT-AUDIT-D677-20260925",
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "status": "PROTECTED_STRICT_MATCH",
+  "systems": [
+    "SystemEnvelope/API error model",
+    "Directive contract/schema",
+    "Core state machine",
+    "Incident primary/secondary linkage",
+    "Session/device binding",
+    "CSRF",
+    "Runtime config/version/rollback",
+    "IRL",
+    "CIRL",
+    "CLE",
+    "DSL",
+    "ECL"
+  ],
+  "rule": {
+    "default_action": "DO_NOT_MODIFY",
+    "allowed_only_when": [
+      "an authoritative DOC-B/DOC-C/DOC-D requirement affecting the system changes",
+      "fresh reproducible regression evidence proves the current implementation is defective",
+      "an unavoidable dependency or security fix requires a change and impact/regression verification is completed"
+    ],
+    "prohibited": [
+      "unrelated refactor",
+      "speculative cleanup",
+      "style-only rewrite",
+      "changing contracts to make other failing tests pass",
+      "weakening tests or assertions",
+      "using another subsystem failure as justification to alter a protected system"
+    ],
+    "before_any_allowed_change": [
+      "revalidate authority and scope",
+      "record impact analysis",
+      "capture pre-change evidence",
+      "run affected regression tests",
+      "preserve rollback target",
+      "update this protection record with new proof"
+    ]
+  },
+  "truth_boundary": "Protection is tied to the audited subsystem/spec match at snapshot d677ba05e3a144950240805c25a393b572df8eb1. It is not proof that the whole repository is release-ready.",
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
