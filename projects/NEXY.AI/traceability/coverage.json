@@ -15,5 +15,25 @@
     "tests": "Candidate static mapping only; not executed in this pass.",
     "evidence": "Document location only; not validated in this pass.",
     "verdict": "All trace records remain NOT_EVALUATED."
+  },
+  "current_head_validation": {
+    "observed_at": "2026-09-26",
+    "branch": "astra/omega-full-spec-convergence",
+    "head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "artifact": "projects/NEXY.AI/traceability/current-head-path-validation.json",
+    "implementation_refs": {
+      "total": 3218,
+      "present": 3218,
+      "missing": 0
+    },
+    "test_refs": {
+      "total": 1149,
+      "present": 1149,
+      "missing": 0
+    },
+    "requirements_with_changed_implementation_refs": 166,
+    "requirements_with_changed_test_refs": 166,
+    "status": "LOCATIONS_CURRENT_SEMANTICS_AND_EXECUTION_NOT_VERIFIED",
+    "verdict_rule": "All requirement verdicts remain NOT_EVALUATED without exact-head semantic inspection and executed evidence."
   }
 }
