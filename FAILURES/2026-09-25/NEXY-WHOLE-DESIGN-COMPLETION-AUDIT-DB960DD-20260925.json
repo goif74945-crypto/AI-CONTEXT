@@ -1,0 +1,11 @@
+{
+  "failure_id": "FAIL-NEXY-WHOLE-DESIGN-COMPLETION-AUDIT-DB960DD-20260925",
+  "context": "Whole-design completion audit at db960dd.",
+  "cause": "Some proof paths are still unavailable or not executed: exact-head browser E2E, DOC-E production evidence/signoff/rollback, release attestation, production deploy provider/live bindings; some ontology entities also have no atomic requirement linkage.",
+  "failed_approach": "Do not infer completion from file presence, stale self-report, successful subset gates, or conversational memory.",
+  "recovery": "Close gaps one requirement at a time with exact-head implementation/test/evidence proof, then recompute workbook formulas.",
+  "boundary": "66.4% is strict evidence completion; entities with no atomic requirement are N/A.",
+  "prevention": "Preserve denominator and evidence rule across chats; never convert UNKNOWN/NOT_MAPPED into completed.",
+  "version": "1.0.0",
+  "trace_id": "NEXY-WHOLE-DESIGN-COMPLETION-AUDIT-DB960DD-20260925"
+}
