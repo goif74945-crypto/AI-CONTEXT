@@ -1,0 +1,188 @@
+{
+  "snapshot_head": "d677ba05e3a144950240805c25a393b572df8eb1",
+  "rows": [
+    [
+      "Contracts + runtime validation",
+      "MATCH_WITH_BLOCKERS"
+    ],
+    [
+      "LAW/JUDGE/release policy",
+      "MATCH_WITH_LIMITS"
+    ],
+    [
+      "SWARM pipeline",
+      "MATCH_WITH_LIMITS"
+    ],
+    [
+      "AgentAdapter / RuntimeAgentAdapter bridge",
+      "SEMANTIC_MATCH_COMPILE_FAIL"
+    ],
+    [
+      "API canonical routes",
+      "MATCH_PRESENCE"
+    ],
+    [
+      "OTAC auth",
+      "MATCH_WITH_RUNTIME_LIMITS"
+    ],
+    [
+      "Rate limiting / abuse protection",
+      "MATCH_WITH_DEV_ESCAPE"
+    ],
+    [
+      "RBAC / owner controls",
+      "MATCH_WITH_BROWSER_UNVERIFIED"
+    ],
+    [
+      "Queue / idempotency / stale jobs",
+      "MATCH_WITH_LIMIT"
+    ],
+    [
+      "Vault revisioning / integrity",
+      "MATCH_WITH_RUNTIME_LIMITS"
+    ],
+    [
+      "Storage lifecycle / blob provider binding",
+      "PARTIAL"
+    ],
+    [
+      "Secrets boundary / production secret manager",
+      "MISMATCH"
+    ],
+    [
+      "Email OTAC secret handling",
+      "MISMATCH"
+    ],
+    [
+      "Event / Audit logs",
+      "MATCH_WITH_RUNTIME_LIMITS"
+    ],
+    [
+      "Alarm / monitoring delivery",
+      "PARTIAL"
+    ],
+    [
+      "UI canonical screens",
+      "MATCH_PRESENCE"
+    ],
+    [
+      "UI truth / FREEZE behavior",
+      "MATCH_WITH_BROWSER_UNVERIFIED"
+    ],
+    [
+      "Directive-create schema-valid disabling",
+      "MISMATCH"
+    ],
+    [
+      "Database / Prisma schema + migration proof",
+      "MATCH_WITH_DEPLOY_EVIDENCE_GAP"
+    ],
+    [
+      "DOC-E deployment evidence E1-E12",
+      "MISSING_CURRENT_EXACT_HEAD"
+    ],
+    [
+      "Production deploy provider",
+      "MISSING"
+    ],
+    [
+      "L1o CTS numeric authority boundary",
+      "MATCH_WITH_AUTHORITY_BOUNDARY"
+    ],
+    [
+      "L1o MPG / EPE",
+      "PARTIAL"
+    ],
+    [
+      "Lo3 canonical swarm",
+      "MATCH_WITH_LIMITS"
+    ],
+    [
+      "RSEL",
+      "SEMANTIC_MATCH_COMPILE_FAIL"
+    ],
+    [
+      "Safety Kernel",
+      "EXPERIMENTAL_NOT_EXACT_HEAD_VALIDATED"
+    ],
+    [
+      "Lo2 learning / governance",
+      "EXPERIMENTAL_NOT_EXACT_HEAD_VALIDATED"
+    ],
+    [
+      "Trinity binding",
+      "MATCH_WITH_LIMITS"
+    ],
+    [
+      "L1o advanced (7 modules)",
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Lo2 Phase-F (2 modules)",
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Lo3 Phase-F (2 modules)",
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Game fabric (26 modules)",
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Robotics (11 modules)",
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Universe / Sandbox (14 modules)",
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Resilience (12 modules)",
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "Sovereign / Determinism (8 modules)",
+      "NOT_EXECUTED_EXACT_HEAD"
+    ],
+    [
+      "TypeScript typecheck",
+      "FAIL"
+    ],
+    [
+      "Backend typecheck",
+      "FAIL"
+    ],
+    [
+      "Contract suite",
+      "FAIL"
+    ],
+    [
+      "Full standard suite",
+      "FAIL"
+    ],
+    [
+      "Coverage generation / threshold",
+      "FAIL"
+    ],
+    [
+      "Browser E2E exact-head",
+      "NOT_EXECUTED"
+    ],
+    [
+      "Phase-F experimental validation",
+      "NOT_EXECUTED"
+    ],
+    [
+      "Release attestation",
+      "SKIPPED"
+    ],
+    [
+      "Production deployment",
+      "SKIPPED_BLOCKED"
+    ]
+  ],
+  "count": 45,
+  "status": "ACTIVE",
+  "version": "1.0.0"
+}
