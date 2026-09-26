@@ -1,0 +1,22 @@
+{
+  "source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "raw_paragraph_lines": 12537,
+  "nonempty_segments": 10979,
+  "segments_read_start_to_eof": 10979,
+  "source_segment_ledger_local_sha256": "6841cd058f4d5a7173a700193edbb523ba9c9cf9e977ddccde0e3add808835d8",
+  "source_segment_csv_local_sha256": "6fcfa4e3f7970b7ae7d78a95f571dbb02163688bb5ae3ec8525ccb691ce0d402",
+  "authority_boundaries_raw_lines": {
+    "authority_map": 9837,
+    "doc_b": 9846,
+    "doc_c": 9886,
+    "doc_d": 10500,
+    "doc_e": 10917
+  },
+  "requirement_denominator": {
+    "rows": 262,
+    "doc_c": 80,
+    "source_sha_matches": true
+  },
+  "note": "All paragraphs read. Local per-segment disposition labels are deterministic structural/keyword labels; semantic verdicts come from registry+manual evidence audit."
+}

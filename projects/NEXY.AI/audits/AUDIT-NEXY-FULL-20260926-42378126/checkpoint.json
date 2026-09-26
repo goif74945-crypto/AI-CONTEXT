@@ -1,0 +1,30 @@
+{
+  "AUDIT_RUN_ID": "AUDIT-NEXY-FULL-20260926-42378126",
+  "SPEC_CURSOR": "EOF",
+  "FILE_CURSOR": "EOF",
+  "SOURCE_TOTAL": 10979,
+  "SOURCE_DONE": 10979,
+  "FILES_TOTAL": 613,
+  "FILES_DONE": 613,
+  "SYSTEMS_TOTAL": "REGISTRY_DERIVED",
+  "SYSTEMS_DONE": "STATIC_HIGH_RISK_AND_CROSS_SYSTEM_COMPLETE",
+  "REQ_TOTAL": 262,
+  "REQ_DONE": 262,
+  "FINDINGS": [
+    "F-001",
+    "F-002",
+    "F-003",
+    "F-004",
+    "F-005",
+    "F-006",
+    "F-007",
+    "F-008",
+    "F-009"
+  ],
+  "BLOCKERS": [
+    "Exact-head test execution unavailable",
+    "Canonical branch CI trigger excludes NEXY.ai",
+    "DOC-E exact-head evidence stale/absent"
+  ],
+  "NEXT_BATCH": "Builder executes CMD-001..CMD-008 in dependency order; CMD-009 repairs traceability after browser repair."
+}

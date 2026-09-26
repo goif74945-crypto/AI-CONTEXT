@@ -1,0 +1,733 @@
+[
+  {
+    "TARGET_REPO": "goif74945-crypto/NEXY.AI-",
+    "TARGET_BRANCH": "NEXY.ai",
+    "EXPECTED_HEAD": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "STALE_HEAD_POLICY": "ABORT_AND_REAUDIT_IF_TARGET_HEAD_DIFFERS",
+    "HUMAN_GATE": "Required before merge/deploy; generated command does not authorize NEXY mutation.",
+    "STATUS": "READY",
+    "COMMAND_ID": "CMD-001",
+    "ORDER": 1,
+    "PRIORITY": "P0",
+    "SEVERITY": "S4",
+    "SOURCE_REQUIREMENTS": [
+      "REQ-DOC-C-TEST-001",
+      "REQ-DOC-C-TEST-002"
+    ],
+    "SOURCE_REFS": [
+      "DOC-C test gates",
+      "DOC-E exact-build evidence"
+    ],
+    "FINDING_IDS": [
+      "F-004",
+      "F-008"
+    ],
+    "AFFECTED_SYSTEMS": [
+      "CI",
+      "RELEASE",
+      "DOC-E"
+    ],
+    "AFFECTED_FILES": [
+      ".github/workflows/deploy.yml",
+      ".github/workflows/e7-queue.yml"
+    ],
+    "AFFECTED_SYMBOLS": [
+      "workflow triggers"
+    ],
+    "DEPENDENCIES": [],
+    "BLOCKED_BY": [],
+    "UNBLOCKS": [
+      "CMD-007",
+      "CMD-008"
+    ],
+    "CURRENT_STATE": "NEXY.ai absent from automatic main validation trigger sets.",
+    "EXPECTED_STATE": "Every canonical change generates validation and exact-SHA evidence.",
+    "EXACT_CHANGES_REQUIRED": [
+      "Add NEXY.ai to main CI push and PR target triggers without removing intentional existing branches.",
+      "Add NEXY.ai to E7/rollback trigger where DOC-E exact-head evidence requires it.",
+      "Preserve gate dependencies/concurrency."
+    ],
+    "FILES_ALLOWED_TO_CHANGE": [
+      ".github/workflows/deploy.yml",
+      ".github/workflows/e7-queue.yml"
+    ],
+    "FILES_FORBIDDEN_TO_CHANGE": [
+      "runtime source",
+      "spec"
+    ],
+    "NON_GOALS": [
+      "Do not weaken tests/coverage/evidence."
+    ],
+    "ACCEPTANCE_CRITERIA": [
+      "New NEXY.ai commit starts required workflows.",
+      "Exact tested SHA has run/status evidence."
+    ],
+    "REQUIRED_TESTS": [
+      "workflow syntax",
+      "canonical trigger"
+    ],
+    "NEGATIVE_TESTS": [
+      "existing intentional branch filters preserved"
+    ],
+    "REGRESSION_TESTS": [
+      "all existing jobs remain"
+    ],
+    "SECURITY_TESTS": [
+      "no secrets added"
+    ],
+    "EXPECTED_EVIDENCE": [
+      "run IDs",
+      "job logs",
+      "commit statuses"
+    ],
+    "ROLLBACK": "Revert workflow-only commit."
+  },
+  {
+    "TARGET_REPO": "goif74945-crypto/NEXY.AI-",
+    "TARGET_BRANCH": "NEXY.ai",
+    "EXPECTED_HEAD": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "STALE_HEAD_POLICY": "ABORT_AND_REAUDIT_IF_TARGET_HEAD_DIFFERS",
+    "HUMAN_GATE": "Required before merge/deploy; generated command does not authorize NEXY mutation.",
+    "STATUS": "READY",
+    "COMMAND_ID": "CMD-002",
+    "ORDER": 2,
+    "PRIORITY": "P0",
+    "SEVERITY": "S3",
+    "SOURCE_REQUIREMENTS": [
+      "REQ-DOC-C-MOD-001"
+    ],
+    "SOURCE_REFS": [
+      "DOC-C module dependency law"
+    ],
+    "FINDING_IDS": [
+      "F-001"
+    ],
+    "AFFECTED_SYSTEMS": [
+      "AUTH",
+      "CORE"
+    ],
+    "AFFECTED_FILES": [
+      "packages/auth/session.ts",
+      "packages/auth/security-incident.ts",
+      "minimal lawful neutral/injected dependencies"
+    ],
+    "AFFECTED_SYMBOLS": [
+      "AUTH db/tick/ULID boundary"
+    ],
+    "DEPENDENCIES": [],
+    "BLOCKED_BY": [],
+    "UNBLOCKS": [
+      "CMD-007"
+    ],
+    "CURRENT_STATE": "AUTH imports CORE infrastructure directly.",
+    "EXPECTED_STATE": "Zero AUTH→CORE imports; semantics unchanged.",
+    "EXACT_CHANGES_REQUIRED": [
+      "Remove ../core/* imports from AUTH.",
+      "Use an existing lawful neutral boundary or explicit dependency injection; do not introduce reverse authority.",
+      "Preserve transaction/tick/ULID/security semantics."
+    ],
+    "FILES_ALLOWED_TO_CHANGE": [
+      "packages/auth/**",
+      "minimal neutral adapter/call sites/tests"
+    ],
+    "FILES_FORBIDDEN_TO_CHANGE": [
+      "DOC-C",
+      "release thresholds"
+    ],
+    "NON_GOALS": [
+      "No unrelated refactor or auth weakening."
+    ],
+    "ACCEPTANCE_CRITERIA": [
+      "Static dependency scan finds zero AUTH→CORE.",
+      "Auth/security tests pass exact head."
+    ],
+    "REQUIRED_TESTS": [
+      "auth request/verify/logout/session",
+      "dependency law"
+    ],
+    "NEGATIVE_TESTS": [
+      "device mismatch/revoked/replay denied"
+    ],
+    "REGRESSION_TESTS": [
+      "canonical auth/API"
+    ],
+    "SECURITY_TESTS": [
+      "session binding/OTAC abuse"
+    ],
+    "EXPECTED_EVIDENCE": [
+      "dependency graph diff",
+      "test logs"
+    ],
+    "ROLLBACK": "Revert boundary commit."
+  },
+  {
+    "TARGET_REPO": "goif74945-crypto/NEXY.AI-",
+    "TARGET_BRANCH": "NEXY.ai",
+    "EXPECTED_HEAD": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "STALE_HEAD_POLICY": "ABORT_AND_REAUDIT_IF_TARGET_HEAD_DIFFERS",
+    "HUMAN_GATE": "Required before merge/deploy; generated command does not authorize NEXY mutation.",
+    "STATUS": "READY",
+    "COMMAND_ID": "CMD-003",
+    "ORDER": 3,
+    "PRIORITY": "P0",
+    "SEVERITY": "S3",
+    "SOURCE_REQUIREMENTS": [
+      "REQ-DOC-C-API-002"
+    ],
+    "SOURCE_REFS": [
+      "global mutation idempotency"
+    ],
+    "FINDING_IDS": [
+      "F-002"
+    ],
+    "AFFECTED_SYSTEMS": [
+      "API",
+      "STORAGE",
+      "IDEMPOTENCY"
+    ],
+    "AFFECTED_FILES": [
+      "packages/validation/api.schema.ts",
+      "packages/api/storage-control.ts",
+      "minimal reusable idempotency persistence/tests"
+    ],
+    "AFFECTED_SYMBOLS": [
+      "StorageReconcileBodySchema",
+      "handleStorageReconcile"
+    ],
+    "DEPENDENCIES": [],
+    "BLOCKED_BY": [],
+    "UNBLOCKS": [
+      "CMD-007"
+    ],
+    "CURRENT_STATE": "Storage reconcile accepts operation_id only.",
+    "EXPECTED_STATE": "Reconcile requires durable idempotency and safe replay semantics.",
+    "EXACT_CHANGES_REQUIRED": [
+      "Require idempotency_key.",
+      "Use canonical durable dedupe before provider side effect.",
+      "Reject conflicting same-key payload; no new exemption without spec change."
+    ],
+    "FILES_ALLOWED_TO_CHANGE": [
+      "packages/validation/api.schema.ts",
+      "packages/api/storage-control.ts",
+      "existing idempotency helper/schema/migration if needed",
+      "tests"
+    ],
+    "FILES_FORBIDDEN_TO_CHANGE": [
+      "OTAC exemption",
+      "unrelated storage"
+    ],
+    "NON_GOALS": [
+      "No memory-only dedupe."
+    ],
+    "ACCEPTANCE_CRITERIA": [
+      "Identical replay does not repeat side effect.",
+      "conflicting replay rejected",
+      "missing key rejected"
+    ],
+    "REQUIRED_TESTS": [
+      "success",
+      "duplicate",
+      "conflict"
+    ],
+    "NEGATIVE_TESTS": [
+      "missing key",
+      "provider failure replay"
+    ],
+    "REGRESSION_TESTS": [
+      "storage archive/hard-delete"
+    ],
+    "SECURITY_TESTS": [
+      "owner/tenant before replay disclosure"
+    ],
+    "EXPECTED_EVIDENCE": [
+      "integration logs",
+      "DB assertions"
+    ],
+    "ROLLBACK": "Revert handler/contract/migration."
+  },
+  {
+    "TARGET_REPO": "goif74945-crypto/NEXY.AI-",
+    "TARGET_BRANCH": "NEXY.ai",
+    "EXPECTED_HEAD": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "STALE_HEAD_POLICY": "ABORT_AND_REAUDIT_IF_TARGET_HEAD_DIFFERS",
+    "HUMAN_GATE": "Required before merge/deploy; generated command does not authorize NEXY mutation.",
+    "STATUS": "READY",
+    "COMMAND_ID": "CMD-004",
+    "ORDER": 4,
+    "PRIORITY": "P0",
+    "SEVERITY": "S4",
+    "SOURCE_REQUIREMENTS": [
+      "REQ-DOC-C-FREEZE-004"
+    ],
+    "SOURCE_REFS": [
+      "STOP semantics"
+    ],
+    "FINDING_IDS": [
+      "F-003"
+    ],
+    "AFFECTED_SYSTEMS": [
+      "FSM",
+      "QUEUE",
+      "RECOVERY"
+    ],
+    "AFFECTED_FILES": [
+      "packages/orch-core/system-state.ts",
+      "packages/queue/dispatch.ts",
+      "minimal lawful queue abstraction/tests"
+    ],
+    "AFFECTED_SYMBOLS": [
+      "STOP transition",
+      "DirectiveDispatch cancellation"
+    ],
+    "DEPENDENCIES": [],
+    "BLOCKED_BY": [],
+    "UNBLOCKS": [
+      "CMD-007"
+    ],
+    "CURRENT_STATE": "STOP persists terminal state; cancel function is per-run.",
+    "EXPECTED_STATE": "STOP durably cancels every nonterminal dispatch before further claim.",
+    "EXACT_CHANGES_REQUIRED": [
+      "Atomically mark all nonterminal durable dispatches CANCELLED on STOP.",
+      "Worker claim/restart/replay must respect cancellation.",
+      "Keep FREEZE distinct from STOP."
+    ],
+    "FILES_ALLOWED_TO_CHANGE": [
+      "packages/orch-core/system-state.ts",
+      "packages/queue/dispatch.ts",
+      "minimal queue helper/tests"
+    ],
+    "FILES_FORBIDDEN_TO_CHANGE": [
+      "state names",
+      "STOP law"
+    ],
+    "NON_GOALS": [
+      "No auto restart/continue after STOP."
+    ],
+    "ACCEPTANCE_CRITERIA": [
+      "No nonterminal dispatch claimable after STOP.",
+      "claim-vs-STOP race fails safe",
+      "restart cannot resurrect"
+    ],
+    "REQUIRED_TESTS": [
+      "STOP cancel-all",
+      "claim after STOP",
+      "restart"
+    ],
+    "NEGATIVE_TESTS": [
+      "FREEZE semantics remain distinct"
+    ],
+    "REGRESSION_TESTS": [
+      "normal queue lifecycle"
+    ],
+    "SECURITY_TESTS": [
+      "unauthorized recovery denied"
+    ],
+    "EXPECTED_EVIDENCE": [
+      "transaction/race logs"
+    ],
+    "ROLLBACK": "Revert STOP cancellation commit."
+  },
+  {
+    "TARGET_REPO": "goif74945-crypto/NEXY.AI-",
+    "TARGET_BRANCH": "NEXY.ai",
+    "EXPECTED_HEAD": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "STALE_HEAD_POLICY": "ABORT_AND_REAUDIT_IF_TARGET_HEAD_DIFFERS",
+    "HUMAN_GATE": "Required before merge/deploy; generated command does not authorize NEXY mutation.",
+    "STATUS": "READY",
+    "COMMAND_ID": "CMD-005",
+    "ORDER": 5,
+    "PRIORITY": "P1",
+    "SEVERITY": "S3",
+    "SOURCE_REQUIREMENTS": [
+      "REQ-DOC-D-006"
+    ],
+    "SOURCE_REFS": [
+      "DOC-D responsive UI"
+    ],
+    "FINDING_IDS": [
+      "F-005",
+      "F-006"
+    ],
+    "AFFECTED_SYSTEMS": [
+      "UI-S9-REVISION",
+      "UI-PULSE"
+    ],
+    "AFFECTED_FILES": [
+      "apps/web/app/vault/[id]/page.tsx",
+      "apps/web/app/globals.css"
+    ],
+    "AFFECTED_SYMBOLS": [
+      "revision-card-list",
+      "freeze-banner"
+    ],
+    "DEPENDENCIES": [],
+    "BLOCKED_BY": [],
+    "UNBLOCKS": [
+      "CMD-006",
+      "CMD-007"
+    ],
+    "CURRENT_STATE": "No revision-card DOM; sticky freeze depends on undeclared utility tooling.",
+    "EXPECTED_STATE": "Mobile cards exist; sticky behavior explicit and canonical.",
+    "EXACT_CHANGES_REQUIRED": [
+      "Render revision-card-list from same backend revision data.",
+      "Add explicit .freeze-banner sticky/top/z CSS fallback; do not silently add toolchain unless authorized.",
+      "Preserve desktop table/mobile breakpoint behavior."
+    ],
+    "FILES_ALLOWED_TO_CHANGE": [
+      "apps/web/app/vault/[id]/page.tsx",
+      "apps/web/app/globals.css",
+      "targeted UI tests"
+    ],
+    "FILES_FORBIDDEN_TO_CHANGE": [
+      "backend revision semantics",
+      "RBAC"
+    ],
+    "NON_GOALS": [
+      "No visual redesign."
+    ],
+    "ACCEPTANCE_CRITERIA": [
+      "390px cards visible/table hidden",
+      "desktop table visible/cards hidden",
+      "freeze computed sticky"
+    ],
+    "REQUIRED_TESTS": [
+      "critical browser responsive"
+    ],
+    "NEGATIVE_TESTS": [
+      "empty state truthful"
+    ],
+    "REGRESSION_TESTS": [
+      "audit cards/owner/front door"
+    ],
+    "SECURITY_TESTS": [
+      "restore authorization unchanged"
+    ],
+    "EXPECTED_EVIDENCE": [
+      "Playwright assertions/screenshots"
+    ],
+    "ROLLBACK": "Revert UI-only repair."
+  },
+  {
+    "TARGET_REPO": "goif74945-crypto/NEXY.AI-",
+    "TARGET_BRANCH": "NEXY.ai",
+    "EXPECTED_HEAD": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "STALE_HEAD_POLICY": "ABORT_AND_REAUDIT_IF_TARGET_HEAD_DIFFERS",
+    "HUMAN_GATE": "Required before merge/deploy; generated command does not authorize NEXY mutation.",
+    "STATUS": "READY",
+    "COMMAND_ID": "CMD-006",
+    "ORDER": 6,
+    "PRIORITY": "P0",
+    "SEVERITY": "S4",
+    "SOURCE_REQUIREMENTS": [
+      "REQ-DOC-C-TEST-002",
+      "REQ-DOC-D-006"
+    ],
+    "SOURCE_REFS": [
+      "critical UI E2E + secure session"
+    ],
+    "FINDING_IDS": [
+      "F-007"
+    ],
+    "AFFECTED_SYSTEMS": [
+      "BROWSER-E2E",
+      "AUTH"
+    ],
+    "AFFECTED_FILES": [
+      "scripts/seed-browser-e2e.mjs",
+      "tests/browser/critical-flows.spec.mjs",
+      "tests/browser/directive-submit.spec.mjs",
+      "minimal test-only HTTPS/Playwright config"
+    ],
+    "AFFECTED_SYMBOLS": [
+      "browser Session seed",
+      "asRole",
+      "baseURL/cookieOrigin"
+    ],
+    "DEPENDENCIES": [
+      "CMD-005"
+    ],
+    "BLOCKED_BY": [
+      "CMD-005"
+    ],
+    "UNBLOCKS": [
+      "CMD-007"
+    ],
+    "CURRENT_STATE": "HTTP navigation + Secure HTTPS cookie fixture + missing binding token/hash.",
+    "EXPECTED_STATE": "E2E authenticates through production-equivalent secure cookie/device binding.",
+    "EXACT_CHANGES_REQUIRED": [
+      "Seed deviceBindingHash and matching token.",
+      "Set binding cookie with session/CSRF.",
+      "Serve/navigate browser E2E over HTTPS; do not disable Secure."
+    ],
+    "FILES_ALLOWED_TO_CHANGE": [
+      "scripts/seed-browser-e2e.mjs",
+      "tests/browser/*.spec.mjs",
+      "minimal test-only HTTPS/proxy/Playwright files"
+    ],
+    "FILES_FORBIDDEN_TO_CHANGE": [
+      "production cookie flags",
+      "loadSession binding enforcement"
+    ],
+    "NON_GOALS": [
+      "No auth weakening."
+    ],
+    "ACCEPTANCE_CRITERIA": [
+      "role fixtures authenticate canonically",
+      "wrong/missing binding denied"
+    ],
+    "REQUIRED_TESTS": [
+      "critical-flows",
+      "directive-submit"
+    ],
+    "NEGATIVE_TESTS": [
+      "binding mismatch"
+    ],
+    "REGRESSION_TESTS": [
+      "auth integration"
+    ],
+    "SECURITY_TESTS": [
+      "Secure/HttpOnly/SameSite/Path unchanged"
+    ],
+    "EXPECTED_EVIDENCE": [
+      "browser logs/screenshots exact SHA"
+    ],
+    "ROLLBACK": "Revert test-infra repair."
+  },
+  {
+    "TARGET_REPO": "goif74945-crypto/NEXY.AI-",
+    "TARGET_BRANCH": "NEXY.ai",
+    "EXPECTED_HEAD": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "STALE_HEAD_POLICY": "ABORT_AND_REAUDIT_IF_TARGET_HEAD_DIFFERS",
+    "HUMAN_GATE": "Required before merge/deploy; generated command does not authorize NEXY mutation.",
+    "STATUS": "READY",
+    "COMMAND_ID": "CMD-007",
+    "ORDER": 7,
+    "PRIORITY": "P0",
+    "SEVERITY": "S4",
+    "SOURCE_REQUIREMENTS": [
+      "REQ-DOC-C-TEST-001",
+      "REQ-DOC-C-TEST-002"
+    ],
+    "SOURCE_REFS": [
+      "DOC-C validation gates"
+    ],
+    "FINDING_IDS": [
+      "F-004",
+      "F-007",
+      "F-008"
+    ],
+    "AFFECTED_SYSTEMS": [
+      "ALL_CURRENT_BUILD_GATES"
+    ],
+    "AFFECTED_FILES": [
+      "NO_PRODUCTION_SOURCE_CHANGES_EXPECTED"
+    ],
+    "AFFECTED_SYMBOLS": [],
+    "DEPENDENCIES": [
+      "CMD-001",
+      "CMD-002",
+      "CMD-003",
+      "CMD-004",
+      "CMD-005",
+      "CMD-006"
+    ],
+    "BLOCKED_BY": [
+      "CMD-001",
+      "CMD-002",
+      "CMD-003",
+      "CMD-004",
+      "CMD-005",
+      "CMD-006"
+    ],
+    "UNBLOCKS": [
+      "CMD-008"
+    ],
+    "CURRENT_STATE": "No valid exact-head execution proof; local npm DNS blocked; local Rust unavailable.",
+    "EXPECTED_STATE": "All applicable exact-head gates execute cleanly in supported environment.",
+    "EXACT_CHANGES_REQUIRED": [
+      "Execute existing gates without weakening tests.",
+      "Record exact SHA/environment/commands/exit/logs.",
+      "Meet >=90% core/domain/law/judge, >=85% API, critical UI E2E."
+    ],
+    "FILES_ALLOWED_TO_CHANGE": [
+      "test/evidence outputs only unless separate defect repair"
+    ],
+    "FILES_FORBIDDEN_TO_CHANGE": [
+      "tests/thresholds solely to force pass"
+    ],
+    "NON_GOALS": [
+      "No PASS from source presence/stale logs."
+    ],
+    "ACCEPTANCE_CRITERIA": [
+      "Every current gate has exact-head result.",
+      "No hidden skipped required gate."
+    ],
+    "REQUIRED_TESTS": [
+      "all declared DOC-C gates"
+    ],
+    "NEGATIVE_TESTS": [
+      "auth abuse",
+      "replay",
+      "race",
+      "rollback",
+      "freeze/stop"
+    ],
+    "REGRESSION_TESTS": [
+      "full suite"
+    ],
+    "SECURITY_TESTS": [
+      "RBAC/tenant/CSRF/CORS/session/device binding"
+    ],
+    "EXPECTED_EVIDENCE": [
+      "run IDs/logs/coverage/build/browser artifacts"
+    ],
+    "ROLLBACK": "Failed validation keeps release blocked."
+  },
+  {
+    "TARGET_REPO": "goif74945-crypto/NEXY.AI-",
+    "TARGET_BRANCH": "NEXY.ai",
+    "EXPECTED_HEAD": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "STALE_HEAD_POLICY": "ABORT_AND_REAUDIT_IF_TARGET_HEAD_DIFFERS",
+    "HUMAN_GATE": "Required before merge/deploy; generated command does not authorize NEXY mutation.",
+    "STATUS": "READY",
+    "COMMAND_ID": "CMD-008",
+    "ORDER": 8,
+    "PRIORITY": "P0",
+    "SEVERITY": "S4",
+    "SOURCE_REQUIREMENTS": [],
+    "SOURCE_REFS": [
+      "DOC-E deployment evidence authority"
+    ],
+    "FINDING_IDS": [
+      "F-008"
+    ],
+    "AFFECTED_SYSTEMS": [
+      "DOC-E",
+      "RELEASE"
+    ],
+    "AFFECTED_FILES": [
+      "docs/evidence/current/**",
+      "attestation outputs"
+    ],
+    "AFFECTED_SYMBOLS": [],
+    "DEPENDENCIES": [
+      "CMD-007"
+    ],
+    "BLOCKED_BY": [
+      "CMD-007"
+    ],
+    "UNBLOCKS": [],
+    "CURRENT_STATE": "DOC-E stale/non-executed relative to canonical head.",
+    "EXPECTED_STATE": "E1-E12 regenerated for exact tested SHA/environment with required human signoff.",
+    "EXACT_CHANGES_REQUIRED": [
+      "Generate each E item from CMD-007 artifacts.",
+      "Bind SHA/environment/operator/test/result/log.",
+      "Keep blocked items blocked; no stale PASS.",
+      "Obtain required human signoff before deploy approval."
+    ],
+    "FILES_ALLOWED_TO_CHANGE": [
+      "docs/evidence/current/**",
+      "release evidence"
+    ],
+    "FILES_FORBIDDEN_TO_CHANGE": [
+      "implementation/spec to fabricate evidence"
+    ],
+    "NON_GOALS": [
+      "No production deployment before approval."
+    ],
+    "ACCEPTANCE_CRITERIA": [
+      "Every E item exact-SHA bound",
+      "no stale evidence promoted"
+    ],
+    "REQUIRED_TESTS": [
+      "evidence consistency/seal"
+    ],
+    "NEGATIVE_TESTS": [
+      "reject stale SHA"
+    ],
+    "REGRESSION_TESTS": [
+      "evidence index checks"
+    ],
+    "SECURITY_TESTS": [
+      "no secret leakage"
+    ],
+    "EXPECTED_EVIDENCE": [
+      "E1-E12 pack",
+      "signoff refs"
+    ],
+    "ROLLBACK": "Revert invalid evidence; release blocked."
+  },
+  {
+    "COMMAND_ID": "CMD-009",
+    "ORDER": 9,
+    "PRIORITY": "P2",
+    "SEVERITY": "S2",
+    "TARGET_REPO": "goif74945-crypto/AI-CONTEXT",
+    "TARGET_BRANCH": "main",
+    "EXPECTED_HEAD": "92eefcc8e4326221400a506544d6a9bdac268ef5",
+    "SOURCE_REQUIREMENTS": [
+      "REQ-DOC-D-006"
+    ],
+    "SOURCE_REFS": [
+      "AI-CONTEXT traceability"
+    ],
+    "FINDING_IDS": [
+      "F-009"
+    ],
+    "AFFECTED_SYSTEMS": [
+      "AI-CONTEXT-TRACEABILITY"
+    ],
+    "AFFECTED_FILES": [
+      "projects/NEXY.AI/requirements/requirements.jsonl",
+      "derived traceability indexes"
+    ],
+    "AFFECTED_SYMBOLS": [
+      "REQ-DOC-D-006.test_refs"
+    ],
+    "DEPENDENCIES": [
+      "CMD-006"
+    ],
+    "BLOCKED_BY": [
+      "CMD-006"
+    ],
+    "UNBLOCKS": [],
+    "CURRENT_STATE": "Direct browser responsive test omitted from mapping.",
+    "EXPECTED_STATE": "Direct verified browser test mapped while source authority/status rules preserved.",
+    "EXACT_CHANGES_REQUIRED": [
+      "Map tests/browser/critical-flows.spec.mjs to REQ-DOC-D-006 after test repair.",
+      "Regenerate dependent indexes via canonical compiler/workflow."
+    ],
+    "FILES_ALLOWED_TO_CHANGE": [
+      "AI-CONTEXT NEXY traceability generated outputs"
+    ],
+    "FILES_FORBIDDEN_TO_CHANGE": [
+      "authoritative source semantics"
+    ],
+    "NON_GOALS": [
+      "Do not mark PASS from mapping."
+    ],
+    "ACCEPTANCE_CRITERIA": [
+      "registry/derived indexes agree",
+      "semantic mapping validation passes"
+    ],
+    "REQUIRED_TESTS": [
+      "registry/trace validation"
+    ],
+    "NEGATIVE_TESTS": [
+      "no duplicate IDs/broken refs"
+    ],
+    "REGRESSION_TESTS": [
+      "262 denominator preserved"
+    ],
+    "SECURITY_TESTS": [
+      "repository integrity"
+    ],
+    "EXPECTED_EVIDENCE": [
+      "read-back of regenerated registry/index"
+    ],
+    "ROLLBACK": "Revert traceability commit.",
+    "STALE_HEAD_POLICY": "ABORT_AND_REAUDIT_IF_TARGET_HEAD_DIFFERS",
+    "HUMAN_GATE": "Required before canonical registry modification.",
+    "STATUS": "READY"
+  }
+]

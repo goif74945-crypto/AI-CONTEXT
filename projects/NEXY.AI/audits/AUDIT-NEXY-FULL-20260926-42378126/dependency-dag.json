@@ -1,0 +1,112 @@
+[
+  {
+    "id": "DAG-01",
+    "goal": "Restore canonical-branch validation trigger",
+    "deps": [],
+    "unlocks": [
+      "DAG-07",
+      "DAG-08"
+    ],
+    "commands": [
+      "CMD-001"
+    ]
+  },
+  {
+    "id": "DAG-02",
+    "goal": "Repair AUTH→CORE dependency inversion",
+    "deps": [],
+    "unlocks": [
+      "DAG-07"
+    ],
+    "commands": [
+      "CMD-002"
+    ]
+  },
+  {
+    "id": "DAG-03",
+    "goal": "Add idempotency to storage reconcile",
+    "deps": [],
+    "unlocks": [
+      "DAG-07"
+    ],
+    "commands": [
+      "CMD-003"
+    ]
+  },
+  {
+    "id": "DAG-04",
+    "goal": "Bind STOP to queue-wide durable cancellation",
+    "deps": [],
+    "unlocks": [
+      "DAG-07"
+    ],
+    "commands": [
+      "CMD-004"
+    ]
+  },
+  {
+    "id": "DAG-05",
+    "goal": "Repair responsive UI/sticky freeze",
+    "deps": [],
+    "unlocks": [
+      "DAG-06",
+      "DAG-07"
+    ],
+    "commands": [
+      "CMD-005"
+    ]
+  },
+  {
+    "id": "DAG-06",
+    "goal": "Repair browser E2E auth/HTTPS fixture",
+    "deps": [
+      "DAG-05"
+    ],
+    "unlocks": [
+      "DAG-07"
+    ],
+    "commands": [
+      "CMD-006"
+    ]
+  },
+  {
+    "id": "DAG-07",
+    "goal": "Run exact-head current-build validation",
+    "deps": [
+      "DAG-01",
+      "DAG-02",
+      "DAG-03",
+      "DAG-04",
+      "DAG-05",
+      "DAG-06"
+    ],
+    "unlocks": [
+      "DAG-08"
+    ],
+    "commands": [
+      "CMD-007"
+    ]
+  },
+  {
+    "id": "DAG-08",
+    "goal": "Regenerate exact-head DOC-E",
+    "deps": [
+      "DAG-07"
+    ],
+    "unlocks": [],
+    "commands": [
+      "CMD-008"
+    ]
+  },
+  {
+    "id": "DAG-09",
+    "goal": "Repair traceability mapping",
+    "deps": [
+      "DAG-06"
+    ],
+    "unlocks": [],
+    "commands": [
+      "CMD-009"
+    ]
+  }
+]

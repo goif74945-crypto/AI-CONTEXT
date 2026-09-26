@@ -1,0 +1,89 @@
+{
+  "CASE_ID": "CASE-AUDIT-NEXY-FULL-20260926-42378126",
+  "cause": "Canonical implementation/evidence diverges from selected current obligations in proven areas while exact-head execution evidence is unavailable.",
+  "violations": [
+    {
+      "id": "F-001",
+      "severity": "S3",
+      "req_ids": [
+        "REQ-DOC-C-MOD-001"
+      ],
+      "observed": "AUTH imports CORE DB/tick/ULID utilities directly."
+    },
+    {
+      "id": "F-002",
+      "severity": "S3",
+      "req_ids": [
+        "REQ-DOC-C-API-002"
+      ],
+      "observed": "POST /api/storage/reconcile mutates storage/provider state without idempotency key; no explicit exemption found."
+    },
+    {
+      "id": "F-003",
+      "severity": "S4",
+      "req_ids": [
+        "REQ-DOC-C-FREEZE-004"
+      ],
+      "observed": "STOP persists terminal state/incident but no queue-wide cancellation occurs; cancellation implementation is per-run only."
+    },
+    {
+      "id": "F-004",
+      "severity": "S4",
+      "req_ids": [
+        "REQ-DOC-C-TEST-001",
+        "REQ-DOC-C-TEST-002"
+      ],
+      "observed": "Canonical default branch NEXY.ai is excluded from main automatic CI push/pull_request triggers."
+    },
+    {
+      "id": "F-005",
+      "severity": "S3",
+      "req_ids": [
+        "REQ-DOC-D-006"
+      ],
+      "observed": "CSS expects .revision-card-list, but canonical revision page renders no revision-card-list DOM."
+    },
+    {
+      "id": "F-006",
+      "severity": "S3",
+      "req_ids": [
+        "REQ-DOC-D-006"
+      ],
+      "observed": "FreezeStatusBar uses sticky/top/z utility classes, but canonical package has no tailwindcss dependency and globals.css has no explicit .freeze-banner position rule."
+    },
+    {
+      "id": "F-007",
+      "severity": "S4",
+      "req_ids": [
+        "REQ-DOC-C-TEST-002",
+        "REQ-DOC-D-006"
+      ],
+      "observed": "Browser fixture seeds session without deviceBindingHash/token and sets Secure cookies for https://localhost while navigating http://localhost:3000."
+    },
+    {
+      "id": "F-008",
+      "severity": "S4",
+      "req_ids": [],
+      "observed": "Evidence files are bound to older revisions and record blocked/non-executed runs; canonical exact HEAD has no attached workflow/status evidence."
+    },
+    {
+      "id": "F-009",
+      "severity": "S2",
+      "req_ids": [
+        "REQ-DOC-D-006"
+      ],
+      "observed": "REQ-DOC-D-006 test_refs omit tests/browser/critical-flows.spec.mjs although that test directly asserts sticky freeze and revision-card behavior."
+    }
+  ],
+  "impact": "Canonical build cannot be certified fully compliant or deploy-approved.",
+  "fix": "Execute builder commands in dependency order; rerun exact-head validation; regenerate DOC-E.",
+  "prevention": [
+    "canonical branch auto validation",
+    "dependency/idempotency/STOP direct regression gates",
+    "browser fixture follows security contract",
+    "semantic traceability validation"
+  ],
+  "regression": "No NEXY implementation changed by audit.",
+  "final_status": "PARTIAL",
+  "trace_id": "AUDIT-NEXY-FULL-20260926-42378126"
+}

@@ -1,0 +1,217 @@
+[
+  {
+    "finding_id": "F-001",
+    "severity": "S3",
+    "system_id": "MODULE-AUTH",
+    "req_ids": [
+      "REQ-DOC-C-MOD-001"
+    ],
+    "source_expected": "AUTH shall not depend on CORE.",
+    "code_observed": "AUTH imports CORE DB/tick/ULID utilities directly.",
+    "proof": [
+      "packages/auth/session.ts:4-8 imports ../core/db.js, ../core/tick.js, ../core/ulid.js",
+      "packages/auth/security-incident.ts:3-5 imports ../core/db.js, ../core/tick.js, ../core/ulid.js"
+    ],
+    "root_cause": "Infrastructure utilities are owned by CORE and consumed directly by AUTH, violating canonical dependency direction.",
+    "dependencies": [
+      "module dependency law"
+    ],
+    "impact": "Architecture authority inversion and CORE coupling.",
+    "test_gap": "No exact-head dependency-law execution evidence observed.",
+    "evidence_gap": "Exact canonical HEAD has no attached workflow/status evidence.",
+    "fix_class": "DEPENDENCY_BOUNDARY_REPAIR"
+  },
+  {
+    "finding_id": "F-002",
+    "severity": "S3",
+    "system_id": "GATEWAY-API",
+    "req_ids": [
+      "REQ-DOC-C-API-002"
+    ],
+    "source_expected": "Every mutating route requires an idempotency key unless explicitly exempted.",
+    "code_observed": "POST /api/storage/reconcile mutates storage/provider state without idempotency key; no explicit exemption found.",
+    "proof": [
+      "packages/api/storage-control.ts:1466-1515 validates CSRF/schema/OWNER then executes storage operation",
+      "packages/validation/api.schema.ts:60-62 StorageReconcileBodySchema contains only operation_id",
+      "Broad source/repository search found explicit OTAC exemptions but no storage-reconcile exemption"
+    ],
+    "root_cause": "Reconcile endpoint contract omitted global mutation-idempotency law.",
+    "dependencies": [
+      "API mutation law",
+      "storage operation state"
+    ],
+    "impact": "Replay/duplicate reconcile can re-invoke provider side effects without canonical dedupe.",
+    "test_gap": "No exact-head replay test executed.",
+    "evidence_gap": "No current exact-head CI evidence.",
+    "fix_class": "API_CONTRACT_AND_IDEMPOTENCY_REPAIR"
+  },
+  {
+    "finding_id": "F-003",
+    "severity": "S4",
+    "system_id": "STATE-EXEC-STOP",
+    "req_ids": [
+      "REQ-DOC-C-FREEZE-004"
+    ],
+    "source_expected": "STOP cancels all queue jobs and requires manual/admin intervention.",
+    "code_observed": "STOP persists terminal state/incident but no queue-wide cancellation occurs; cancellation implementation is per-run only.",
+    "proof": [
+      "packages/orch-core/system-state.ts:94-255 handles FREEZE/STOP persistence without queue-wide cancellation",
+      "packages/queue/dispatch.ts:290-308 cancelDirectiveDispatch(pipelineRunId) cancels one run only",
+      "Broad production search found no STOP-triggered cancel-all dispatch path"
+    ],
+    "root_cause": "Terminal state transition and durable queue cancellation are not linked.",
+    "dependencies": [
+      "FSM",
+      "queue persistence",
+      "worker claim semantics"
+    ],
+    "impact": "Queued/running work may remain eligible after authoritative STOP.",
+    "test_gap": "No exact-head STOP/queue race-restart test executed.",
+    "evidence_gap": "No current exact-head runtime proof.",
+    "fix_class": "TERMINAL_STATE_QUEUE_CANCELLATION"
+  },
+  {
+    "finding_id": "F-004",
+    "severity": "S4",
+    "system_id": "RELEASE-CI",
+    "req_ids": [
+      "REQ-DOC-C-TEST-001",
+      "REQ-DOC-C-TEST-002"
+    ],
+    "source_expected": "Required test/coverage/UI-E2E gates must be demonstrable for exact build.",
+    "code_observed": "Canonical default branch NEXY.ai is excluded from main automatic CI push/pull_request triggers.",
+    "proof": [
+      ".github/workflows/deploy.yml:3-7 triggers push on main/claude/codex/astra and pull_request on main; NEXY.ai absent",
+      "Exact-head GitHub workflow/status query for 42378126aed29a668f9f294a9100c62a66ff3753 returned no workflow runs and no statuses"
+    ],
+    "root_cause": "Workflow trigger configuration does not follow canonical default branch.",
+    "dependencies": [
+      "GitHub Actions trigger",
+      "exact-head evidence"
+    ],
+    "impact": "Canonical branch can advance without required validation/evidence.",
+    "test_gap": "No canonical trigger regression test.",
+    "evidence_gap": "Exact canonical HEAD has no CI status/run evidence.",
+    "fix_class": "CI_TRIGGER_AND_RELEASE_GATE_REPAIR"
+  },
+  {
+    "finding_id": "F-005",
+    "severity": "S3",
+    "system_id": "UI-S9-REVISION",
+    "req_ids": [
+      "REQ-DOC-D-006"
+    ],
+    "source_expected": "Mobile tables may collapse to cards while desktop retains readable tables.",
+    "code_observed": "CSS expects .revision-card-list, but canonical revision page renders no revision-card-list DOM.",
+    "proof": [
+      "apps/web/app/vault/[id]/page.tsx:129-147 renders only revision-table-wrap/table",
+      "apps/web/app/globals.css:219-226 declares revision-card-list; 299-302 shows it on mobile",
+      "tests/browser/critical-flows.spec.mjs:75-78 expects revision-card-list visible on mobile"
+    ],
+    "root_cause": "Responsive CSS/test contract was added without card markup in canonical page.",
+    "dependencies": [
+      "DOC-D responsive surface"
+    ],
+    "impact": "Mobile revision history cannot satisfy card presentation contract.",
+    "test_gap": "Browser test source exists but not exact-head executed.",
+    "evidence_gap": "No current browser E2E evidence.",
+    "fix_class": "UI_RESPONSIVE_MARKUP_REPAIR"
+  },
+  {
+    "finding_id": "F-006",
+    "severity": "S3",
+    "system_id": "UI-PULSE",
+    "req_ids": [
+      "REQ-DOC-D-006"
+    ],
+    "source_expected": "Freeze banner remains sticky on mobile.",
+    "code_observed": "FreezeStatusBar uses sticky/top/z utility classes, but canonical package has no tailwindcss dependency and globals.css has no explicit .freeze-banner position rule.",
+    "proof": [
+      "apps/web/components/FreezeStatusBar.tsx:11,19 uses freeze-banner sticky top-0 z-50",
+      "apps/web/app/globals.css contains no .freeze-banner position rule",
+      "package.json/package-lock.json contain no tailwindcss dependency",
+      "tests/browser/critical-flows.spec.mjs:55-56 asserts computed sticky position"
+    ],
+    "root_cause": "CSS semantics rely on utilities not proven to be generated in canonical build.",
+    "dependencies": [
+      "web CSS build",
+      "DOC-D responsive surface"
+    ],
+    "impact": "Freeze warning may scroll away.",
+    "test_gap": "Computed-style assertion not exact-head executed.",
+    "evidence_gap": "No current browser E2E evidence.",
+    "fix_class": "UI_STICKY_STYLE_REPAIR"
+  },
+  {
+    "finding_id": "F-007",
+    "severity": "S4",
+    "system_id": "TEST-BROWSER-AUTH",
+    "req_ids": [
+      "REQ-DOC-C-TEST-002",
+      "REQ-DOC-D-006"
+    ],
+    "source_expected": "Critical UI E2E must execute under authoritative secure session/device-binding behavior.",
+    "code_observed": "Browser fixture seeds session without deviceBindingHash/token and sets Secure cookies for https://localhost while navigating http://localhost:3000.",
+    "proof": [
+      "scripts/seed-browser-e2e.mjs:27-51 creates sessions without deviceBindingHash",
+      "tests/browser/critical-flows.spec.mjs:3-4 uses HTTP baseURL and HTTPS cookie origin",
+      "tests/browser/critical-flows.spec.mjs:11-28 sets session/CSRF cookies but no device-binding cookie",
+      "packages/auth/session.ts:120-124 rejects session on binding mismatch"
+    ],
+    "root_cause": "Browser fixture/protocol did not follow hardened session binding/secure-cookie contract.",
+    "dependencies": [
+      "auth session binding",
+      "browser transport",
+      "E2E fixture"
+    ],
+    "impact": "Critical browser gate cannot authenticate canonically without repair.",
+    "test_gap": "Test source is structurally stale/incompatible; execution unavailable.",
+    "evidence_gap": "Critical UI E2E proof absent.",
+    "fix_class": "BROWSER_E2E_AUTH_FIXTURE_REPAIR"
+  },
+  {
+    "finding_id": "F-008",
+    "severity": "S4",
+    "system_id": "DOC-E",
+    "req_ids": [],
+    "source_expected": "Deployment approval requires DOC-E evidence bound to exact build/environment.",
+    "code_observed": "Evidence files are bound to older revisions and record blocked/non-executed runs; canonical exact HEAD has no attached workflow/status evidence.",
+    "proof": [
+      "docs/evidence/current/README.md:5-15 binds campaign to db52f9f... and records BLOCKED_ENVIRONMENT",
+      "docs/evidence/current/DOC-E-9eaeec9b8304-pack.md:3-13 binds evidence to 9eaeec9... and records NOT_EXECUTED",
+      "Canonical HEAD 42378126aed29a668f9f294a9100c62a66ff3753 has no observed workflow/status evidence"
+    ],
+    "root_cause": "Evidence was not regenerated after canonical-head changes and canonical branch CI is not automatically triggered.",
+    "dependencies": [
+      "F-004",
+      "DOC-E evidence production"
+    ],
+    "impact": "Deployment approval cannot be established for canonical HEAD.",
+    "test_gap": "Exact-head gates not executed/observed.",
+    "evidence_gap": "E1-E12 exact-head evidence absent/stale.",
+    "fix_class": "EXACT_HEAD_EVIDENCE_REGENERATION"
+  },
+  {
+    "finding_id": "F-009",
+    "severity": "S2",
+    "system_id": "AI-CONTEXT-TRACEABILITY",
+    "req_ids": [
+      "REQ-DOC-D-006"
+    ],
+    "source_expected": "Requirement→test traceability should include direct test verifying the responsive requirement.",
+    "code_observed": "REQ-DOC-D-006 test_refs omit tests/browser/critical-flows.spec.mjs although that test directly asserts sticky freeze and revision-card behavior.",
+    "proof": [
+      "AI-CONTEXT REQ-DOC-D-006 test_refs omit tests/browser/critical-flows.spec.mjs",
+      "tests/browser/critical-flows.spec.mjs:55-56,75-78,102-104 directly asserts responsive requirement"
+    ],
+    "root_cause": "Traceability mapping lagged browser-test evolution.",
+    "dependencies": [
+      "requirement registry",
+      "test index"
+    ],
+    "impact": "Coverage intelligence understates direct test relationship.",
+    "test_gap": "Traceability validation does not catch semantic omission.",
+    "evidence_gap": "Mapping completeness not semantically proven.",
+    "fix_class": "TRACEABILITY_MAPPING_REPAIR"
+  }
+]

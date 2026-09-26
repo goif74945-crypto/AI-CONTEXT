@@ -1,0 +1,14 @@
+{
+  "FAILURE_ID": "FAILURE-AUDIT-NEXY-FULL-20260926-42378126-EXECUTION",
+  "context": "Exact canonical current-head test execution",
+  "cause": "Local npm fetch blocked by DNS EAI_AGAIN; Rust toolchain unavailable; canonical GitHub exact head has no observed workflow/status evidence.",
+  "failed_approach": [
+    "npm ci --ignore-scripts did not complete reliably",
+    "local Rust unavailable"
+  ],
+  "recovery": "Repair canonical CI trigger; execute all exact-head gates in supported environment; bind artifacts to exact SHA.",
+  "boundary": "Static/path/blob proofs remain valid; runtime PASS not established.",
+  "prevention": "Never promote source/test presence or stale evidence to current PASS.",
+  "final_status": "BLOCKED_SUBSYSTEM",
+  "trace_id": "AUDIT-NEXY-FULL-20260926-42378126"
+}

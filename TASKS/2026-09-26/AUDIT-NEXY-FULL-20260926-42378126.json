@@ -1,0 +1,213 @@
+{
+  "TASK_ID": "TASK-AUDIT-NEXY-FULL-20260926-42378126",
+  "title": "NEXY full spec-code audit to builder command package",
+  "mode": "AUDIT_SOLO",
+  "scope": "Authoritative source + canonical NEXY.ai + dev delta + tests/evidence + AI-CONTEXT traceability",
+  "inputs_summary": {
+    "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "canonical_head": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "canonical_tree": "804eaee54caca49b4d5451d8666994276617f226",
+    "requirement_rows": 262,
+    "tracked_files": 613
+  },
+  "sources": [
+    "authoritative DOCX",
+    "GitHub NEXY.ai/dev",
+    "AI-CONTEXT registries",
+    "official external docs supplementary"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "local container byte/blob verification",
+    "static cross-system/security/route scans"
+  ],
+  "actions": [
+    "source identity",
+    "canonical snapshot identity",
+    "all tracked blob read",
+    "requirements/path reconciliation",
+    "high-risk audit",
+    "findings/DAG/commands"
+  ],
+  "artifacts_paths": [
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260926-42378126/source-coverage.json",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260926-42378126/file-ledger.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260926-42378126/requirement-matrix.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260926-42378126/findings.json",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260926-42378126/unknown-ledger.jsonl",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260926-42378126/dependency-dag.json",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260926-42378126/builder-commands.json",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260926-42378126/audit-summary.json",
+    "projects/NEXY.AI/audits/AUDIT-NEXY-FULL-20260926-42378126/checkpoint.json"
+  ],
+  "claims_proofs": [
+    "source SHA matched",
+    "canonical tree matched",
+    "613/613 read",
+    "262/262 matrix",
+    "9 proof-backed findings"
+  ],
+  "tests_results": [
+    "node --check tracked JS/MJS: zero syntax failures",
+    "npm exact-head test install blocked by DNS",
+    "Rust blocked by missing toolchain",
+    "canonical GitHub exact-head run/status absent"
+  ],
+  "changes": "No NEXY.AI- mutation; AI-CONTEXT audit package only.",
+  "successes": [
+    "source/file/requirement coverage",
+    "builder package"
+  ],
+  "failures": [
+    "runtime/execution evidence unavailable"
+  ],
+  "decisions": [
+    "No static/path evidence promoted to PASS."
+  ],
+  "unresolved": [
+    "75 current-build requirements remain UNKNOWN_NOT_PROVEN",
+    "DOC-E blocked",
+    "branch protection unreadable"
+  ],
+  "risks": [
+    "S4 STOP queue gap",
+    "S4 CI trigger gap",
+    "S4 browser fixture gap",
+    "S4 stale DOC-E"
+  ],
+  "limits": [
+    "No exact-head executed JS/TS/Rust/browser proof in audit environment.",
+    "Branch protection UNKNOWN: GitHub integration returned 403.",
+    "No row promoted to BUILT_MATCHED_100 from static/path evidence.",
+    "Official external docs are supplementary only."
+  ],
+  "rollback": "Revert this AI-CONTEXT audit commit only.",
+  "final_status": "PARTIAL",
+  "next_actions": [
+    "CMD-001",
+    "CMD-002",
+    "CMD-003",
+    "CMD-004",
+    "CMD-005",
+    "CMD-006",
+    "CMD-007",
+    "CMD-008",
+    "CMD-009"
+  ],
+  "dependencies": [
+    {
+      "id": "DAG-01",
+      "goal": "Restore canonical-branch validation trigger",
+      "deps": [],
+      "unlocks": [
+        "DAG-07",
+        "DAG-08"
+      ],
+      "commands": [
+        "CMD-001"
+      ]
+    },
+    {
+      "id": "DAG-02",
+      "goal": "Repair AUTH→CORE dependency inversion",
+      "deps": [],
+      "unlocks": [
+        "DAG-07"
+      ],
+      "commands": [
+        "CMD-002"
+      ]
+    },
+    {
+      "id": "DAG-03",
+      "goal": "Add idempotency to storage reconcile",
+      "deps": [],
+      "unlocks": [
+        "DAG-07"
+      ],
+      "commands": [
+        "CMD-003"
+      ]
+    },
+    {
+      "id": "DAG-04",
+      "goal": "Bind STOP to queue-wide durable cancellation",
+      "deps": [],
+      "unlocks": [
+        "DAG-07"
+      ],
+      "commands": [
+        "CMD-004"
+      ]
+    },
+    {
+      "id": "DAG-05",
+      "goal": "Repair responsive UI/sticky freeze",
+      "deps": [],
+      "unlocks": [
+        "DAG-06",
+        "DAG-07"
+      ],
+      "commands": [
+        "CMD-005"
+      ]
+    },
+    {
+      "id": "DAG-06",
+      "goal": "Repair browser E2E auth/HTTPS fixture",
+      "deps": [
+        "DAG-05"
+      ],
+      "unlocks": [
+        "DAG-07"
+      ],
+      "commands": [
+        "CMD-006"
+      ]
+    },
+    {
+      "id": "DAG-07",
+      "goal": "Run exact-head current-build validation",
+      "deps": [
+        "DAG-01",
+        "DAG-02",
+        "DAG-03",
+        "DAG-04",
+        "DAG-05",
+        "DAG-06"
+      ],
+      "unlocks": [
+        "DAG-08"
+      ],
+      "commands": [
+        "CMD-007"
+      ]
+    },
+    {
+      "id": "DAG-08",
+      "goal": "Regenerate exact-head DOC-E",
+      "deps": [
+        "DAG-07"
+      ],
+      "unlocks": [],
+      "commands": [
+        "CMD-008"
+      ]
+    },
+    {
+      "id": "DAG-09",
+      "goal": "Repair traceability mapping",
+      "deps": [
+        "DAG-06"
+      ],
+      "unlocks": [],
+      "commands": [
+        "CMD-009"
+      ]
+    }
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "System date 2026-09-26 + exact tool-observed SHAs",
+  "trace_id": "AUDIT-NEXY-FULL-20260926-42378126",
+  "hash": "HASH_UNAVAILABLE"
+}

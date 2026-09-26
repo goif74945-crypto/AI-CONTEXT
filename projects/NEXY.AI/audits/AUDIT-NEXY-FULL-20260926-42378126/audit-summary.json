@@ -1,0 +1,104 @@
+{
+  "audit_run_id": "AUDIT-NEXY-FULL-20260926-42378126",
+  "mode": "AUDIT_SOLO",
+  "date": "2026-09-26",
+  "source": {
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "coverage": {
+      "source_document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "raw_paragraph_lines": 12537,
+      "nonempty_segments": 10979,
+      "segments_read_start_to_eof": 10979,
+      "source_segment_ledger_local_sha256": "6841cd058f4d5a7173a700193edbb523ba9c9cf9e977ddccde0e3add808835d8",
+      "source_segment_csv_local_sha256": "6fcfa4e3f7970b7ae7d78a95f571dbb02163688bb5ae3ec8525ccb691ce0d402",
+      "authority_boundaries_raw_lines": {
+        "authority_map": 9837,
+        "doc_b": 9846,
+        "doc_c": 9886,
+        "doc_d": 10500,
+        "doc_e": 10917
+      },
+      "requirement_denominator": {
+        "rows": 262,
+        "doc_c": 80,
+        "source_sha_matches": true
+      },
+      "note": "All paragraphs read. Local per-segment disposition labels are deterministic structural/keyword labels; semantic verdicts come from registry+manual evidence audit."
+    }
+  },
+  "target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "head": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "tree": "804eaee54caca49b4d5451d8666994276617f226"
+  },
+  "ai_context": {
+    "repository": "goif74945-crypto/AI-CONTEXT",
+    "input_head": "92eefcc8e4326221400a506544d6a9bdac268ef5",
+    "requirements_blob": "06f1c25ca24ec3bb71c2de6ee1525ead962f9aa0"
+  },
+  "requirement_coverage": {
+    "total": 262,
+    "status_counts": {
+      "FUTURE_SCOPE": 80,
+      "UNKNOWN_NOT_PROVEN": 133,
+      "BUILT_PARTIAL_MISMATCH": 6,
+      "DESIGN_ONLY": 21,
+      "BLOCKED": 15,
+      "HISTORICAL": 7
+    },
+    "current_build_total": 80,
+    "current_build_status_counts": {
+      "UNKNOWN_NOT_PROVEN": 75,
+      "BUILT_PARTIAL_MISMATCH": 5
+    },
+    "built_matched_100": 0,
+    "missing_required_proven": 0
+  },
+  "repository_coverage": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "head": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "tree": "804eaee54caca49b4d5451d8666994276617f226",
+    "tracked_files": 613,
+    "read_complete": 611,
+    "lockfile_inspected": 2,
+    "bytes_read_locally": 3560066,
+    "local_file_ledger_sha256": "f2f93d7e4507521b70967c55a9b480087a32bb6535cb4b8b44dc64fc1fcc3552",
+    "invariant": "READ_COMPLETE + LOCKFILE_INSPECTED = TOTAL_FILES",
+    "tree_truncated": false
+  },
+  "findings": {
+    "count": 9,
+    "severity_counts": {
+      "S3": 4,
+      "S4": 4,
+      "S2": 1
+    }
+  },
+  "execution": {
+    "local_node": "v22.16.0",
+    "local_npm": "10.9.2",
+    "local_typescript": "5.8.3",
+    "npm_ci": "BLOCKED_ENVIRONMENT: DNS EAI_AGAIN registry.npmjs.org; partial install discarded/not trusted",
+    "rust": "BLOCKED_ENVIRONMENT: cargo/rustc unavailable",
+    "github_exact_head_workflow_status": "NO_OBSERVED_RUN_OR_STATUS",
+    "exact_head_test_verdict": "NOT_VERIFIED"
+  },
+  "verified_static": [
+    "Source SHA identity matched.",
+    "Canonical local snapshot tree matched exact GitHub canonical tree.",
+    "613/613 tracked blobs fully read and Git blob identities verified.",
+    "262/262 requirement rows reconciled; all registered implementation/test paths exist.",
+    "High-risk boundaries and current-build paths statically inspected."
+  ],
+  "limits": [
+    "No exact-head executed JS/TS/Rust/browser proof in audit environment.",
+    "Branch protection UNKNOWN: GitHub integration returned 403.",
+    "No row promoted to BUILT_MATCHED_100 from static/path evidence.",
+    "Official external docs are supplementary only."
+  ],
+  "final_status": "PARTIAL",
+  "final_verdict": "PARTIAL"
+}
