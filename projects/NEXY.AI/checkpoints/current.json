@@ -23,27 +23,34 @@
     "P4.15",
     "P4.16"
   ],
-  "next_action": "Execute runtime/DOC-E validation at exact repaired head ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b before regenerating release evidence and current-head traceability truth.",
+  "next_action": "Execute and encode DOC-E E1-E12 plus independent security/CI evidence at exact current head before changing release truth from NON_DEPLOYABLE.",
   "open_boundaries": [
-    "Source test suite and coverage gate pass at the repaired exact head, but runtime scheduler evidence is not established.",
-    "No current-head DOC-E deployment proof is established.",
+    "Application deterministic gate chain and Railway normal runtime health are proven at current head.",
+    "Browser E2E is proven at the immediately preceding application-equivalent head; the only delta is one Dockerfile label commit.",
+    "No current-head DOC-E E1-E12 authorization proof is established.",
+    "No current-head security sign-off or GitHub runner execution record is established.",
+    "Literal source-wide coverage is not 100%; configured coverage domains pass.",
     "L1o numeric CTS threshold remains an authority conflict/source gap.",
     "Robotics physical latency budget remains unresolved in the design source."
   ],
   "implementation_dependency": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head_observed_read_only": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
-    "previous_head_observed": "db960dd163a9f50373b747ac922d735d1250cf3a",
-    "write_authority": "Granted by explicit user repair directive; source-only coverage repair committed at ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b; runtime validation remains blocked."
+    "head_observed_read_only": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
+    "previous_head_observed": "454362eb4afce40fafe106eae5241a5f154eef8b",
+    "write_authority": "Granted by explicit user repair directive; source/runtime validation and reversible Railway validation were executed on the authorized branch."
   },
-  "resume_instruction": "Use source hierarchy first, then exact-head implementation evidence, then DOC-E/runtime proof. Do not promote stale mismatch matrices or historical validation reports to current truth.",
+  "resume_instruction": "Use source hierarchy first, then exact-head implementation evidence, then DOC-E/runtime proof. Do not promote stale mismatch matrices or historical validation reports to current truth. Do not mint RELEASE_ELIGIBLE without DOC-E E1-E12 authorization.",
   "hash": "HASH_UNAVAILABLE",
   "last_repair": {
-    "base_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
-    "repaired_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
-    "source_diff": "tests/coverage/api-health-middleware.test.ts only",
-    "validation_deployment": "b5d37906-c67a-4e15-b94d-73b9b0eb0ae5",
-    "source_validation": "104 test files / 796 tests passed; all configured coverage domains PASS"
+    "base_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
+    "browser_proof_head": "454362eb4afce40fafe106eae5241a5f154eef8b",
+    "repaired_head": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
+    "source_diff": "application fixes plus Dockerfile validation/runtime envelope labels; final compare from browser proof to runtime head is Dockerfile label only",
+    "runtime_deployment": "1141cd57-ab78-40c7-97a4-aaba7593f1cf",
+    "browser_deployment": "92ebdc7d-bd73-4e26-a28f-24603d870afb",
+    "source_validation": "configured deterministic gate chain PASS; experimental 56 files / 566 passed / 1 skipped; Phase F PASS; Next 36 routes",
+    "runtime_validation": "migrations PASS; Next Ready; bootstrap hydration PASS; healthcheck PASS",
+    "browser_validation": "directive 1/1 PASS; critical flows 8/8 PASS; browser E2E PASS"
   }
 }
