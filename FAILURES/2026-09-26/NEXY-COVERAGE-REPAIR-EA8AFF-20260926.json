@@ -1,0 +1,16 @@
+{
+  "failure_id": "FAIL-NEXY-COVERAGE-REPAIR-EA8AFF-20260926",
+  "status": "CLOSED_BY_REPAIR",
+  "context": "Exact-head source validation for goif74945-crypto/NEXY.AI- at db960dd163a9f50373b747ac922d735d1250cf3a.",
+  "symptom": "check:coverage failed API branches at 84.92% against 85%.",
+  "root_cause": "Two executable API branches were not represented by the coverage suite: non-HSTS security header policy and non-string CORS Origin header handling.",
+  "repair_commit": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
+  "evidence": {
+    "intermediate": "84.99%",
+    "final": "85.06%",
+    "deployment": "b5d37906-c67a-4e15-b94d-73b9b0eb0ae5"
+  },
+  "boundary": "This closes the source coverage gate only; it does not prove runtime, DOC-E, security signoff or production deployability.",
+  "rollback": "Revert the three linear source commits; no rollback performed.",
+  "version": "1.0.0"
+}

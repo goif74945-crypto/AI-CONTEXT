@@ -4,9 +4,9 @@
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head": "db960dd163a9f50373b747ac922d735d1250cf3a",
-    "previously_observed_head": "96b895ff471d0907d78f316d74fecc09205b8701",
-    "observation_mode": "READ_ONLY"
+    "head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
+    "previously_observed_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "observation_mode": "REPAIR_VALIDATION"
   },
   "status": "NON_DEPLOYABLE",
   "evidence": {
@@ -15,17 +15,25 @@
     "current_head_doc_e_blocked": 12,
     "exact_current_head_doc_e_proof": false,
     "runtime_signoff": false,
-    "security_signoff": false
+    "security_signoff": false,
+    "current_head_source_validation": {
+      "validation_deployment": "b5d37906-c67a-4e15-b94d-73b9b0eb0ae5",
+      "test_files": 104,
+      "tests_passed": 796,
+      "coverage_gate": "PASS",
+      "api_branch_coverage": "85.06%",
+      "exact_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b"
+    }
   },
   "freshness": {
     "latest_available_mismatch_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
     "latest_available_mismatch_status": "STALE_NOT_CURRENT_HEAD",
     "historical_validation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-    "current_head_runtime_evidence": "CI_ATTEMPT_PRESENT_NO_OBSERVED_JOB_STEP_EXECUTION"
+    "current_head_runtime_evidence": "SOURCE_GATES_PASS_RUNTIME_DOCUS_E_UNVERIFIED"
   },
   "blocking_reasons": [
-    "No exact-current-head executed DOC-E/runtime validation evidence; observed CI jobs did not execute steps.",
-    "Available mismatch and validation artifacts target older implementation heads.",
+    "Source test and coverage gates pass at the repaired head, but no exact-current-head runtime/DOC-E execution proof exists.",
+    "Available mismatch matrix remains stale because it targets an older implementation head.",
     "No current-head runtime/security sign-off.",
     "Source-level unresolved CTS threshold and robotics latency conflicts remain labeled."
   ],

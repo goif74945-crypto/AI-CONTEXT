@@ -1,0 +1,30 @@
+{
+  "LEDGER_ID": "NEXY-COVERAGE-REPAIR-EA8AFF-20260926",
+  "subject": "Exact-head API coverage gate repair",
+  "source_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
+  "entries": [
+    {
+      "claim": "Only the coverage test file changed from the frozen base.",
+      "proof": "GitHub compare db960dd..ea8aff8 reports one modified file, 18 additions and 1 deletion.",
+      "status": "VERIFIED"
+    },
+    {
+      "claim": "The targeted repaired behavior tests execute.",
+      "proof": "Local Vitest run reports 23/23 PASS for tests/coverage/api-health-middleware.test.ts.",
+      "status": "VERIFIED"
+    },
+    {
+      "claim": "The exact-head source test and coverage gate passes.",
+      "proof": "Railway deployment b5d37906-c67a-4e15-b94d-73b9b0eb0ae5 at ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b reports 104 test files / 796 tests passed and API branch coverage 85.06%; all configured coverage domains PASS.",
+      "status": "VERIFIED"
+    },
+    {
+      "claim": "Runtime/DOC-E release proof is complete.",
+      "proof": "No exact-current-head runtime/DOC-E execution proof; prior runtime image and zero-step CI blockers remain.",
+      "status": "NOT_VERIFIED"
+    }
+  ],
+  "verdict": "PARTIAL_NON_DEPLOYABLE",
+  "trace_id": "NEXY-COVERAGE-REPAIR-EA8AFF-20260926",
+  "version": "1.0.0"
+}

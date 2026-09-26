@@ -23,9 +23,9 @@
     "P4.15",
     "P4.16"
   ],
-  "next_action": "Restore an executable validation path, then run the required suite at exact head db960dd163a9f50373b747ac922d735d1250cf3a before regenerating runtime/DOC-E and implementation traceability truth.",
+  "next_action": "Execute runtime/DOC-E validation at exact repaired head ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b before regenerating release evidence and current-head traceability truth.",
   "open_boundaries": [
-    "Exact-head CI attempts exist, but no inspected job step executed; runtime scheduler evidence is not established.",
+    "Source test suite and coverage gate pass at the repaired exact head, but runtime scheduler evidence is not established.",
     "No current-head DOC-E deployment proof is established.",
     "L1o numeric CTS threshold remains an authority conflict/source gap.",
     "Robotics physical latency budget remains unresolved in the design source."
@@ -33,10 +33,17 @@
   "implementation_dependency": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head_observed_read_only": "db960dd163a9f50373b747ac922d735d1250cf3a",
-    "previous_head_observed": "96b895ff471d0907d78f316d74fecc09205b8701",
-    "write_authority": "granted by explicit user repair directive; no implementation write in this batch because current-head validation commands were not observed executing and no code defect was proven"
+    "head_observed_read_only": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
+    "previous_head_observed": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "write_authority": "Granted by explicit user repair directive; source-only coverage repair committed at ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b; runtime validation remains blocked."
   },
   "resume_instruction": "Use source hierarchy first, then exact-head implementation evidence, then DOC-E/runtime proof. Do not promote stale mismatch matrices or historical validation reports to current truth.",
-  "hash": "HASH_UNAVAILABLE"
+  "hash": "HASH_UNAVAILABLE",
+  "last_repair": {
+    "base_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "repaired_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
+    "source_diff": "tests/coverage/api-health-middleware.test.ts only",
+    "validation_deployment": "b5d37906-c67a-4e15-b94d-73b9b0eb0ae5",
+    "source_validation": "104 test files / 796 tests passed; all configured coverage domains PASS"
+  }
 }

@@ -1,0 +1,71 @@
+{
+  "TASK_ID": "TASK-NEXY-COVERAGE-REPAIR-EA8AFF-20260926",
+  "title": "NEXY exact-head API coverage gate repair",
+  "mode": "EXPLICIT_USER_REPAIR",
+  "source_authority": {
+    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "rule": "Do not change design or claim release from unexecuted evidence."
+  },
+  "target": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "astra/omega-full-spec-convergence",
+    "base_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "repaired_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b"
+  },
+  "finding": {
+    "initial_gate": "API branch coverage 84.92% < 85%",
+    "intermediate_gate": "API branch coverage 84.99% after the CSP false-branch test",
+    "proven_missing_paths": [
+      "securityHeaders(..., includeHsts=false)",
+      "corsMiddleware with a non-string Origin header"
+    ]
+  },
+  "repair": {
+    "commits": [
+      "d839ee6a0958be18173005d1356ccc738142523e",
+      "74c6f15c0f40743fb94ca080af37d5e74ddec89e",
+      "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b"
+    ],
+    "files": [
+      "tests/coverage/api-health-middleware.test.ts"
+    ],
+    "runtime_source_changed": false,
+    "diff_summary": "18 additions, 1 deletion from the frozen base"
+  },
+  "validation": {
+    "targeted_local": {
+      "test_file": "tests/coverage/api-health-middleware.test.ts",
+      "tests": "23/23 PASS"
+    },
+    "exact_head_railway": {
+      "deployment": "b5d37906-c67a-4e15-b94d-73b9b0eb0ae5",
+      "commit": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
+      "test_files": 104,
+      "tests_passed": 796,
+      "coverage": {
+        "api_branch": "85.06%",
+        "core_branch": "93.22%",
+        "law_branch": "96.83%",
+        "judge_branch": "94.01%"
+      },
+      "coverage_gate": "PASS"
+    }
+  },
+  "dependencies": [
+    "Working source builder with Node 22",
+    "Existing repository coverage gate"
+  ],
+  "rollback": {
+    "safe_action": "Revert the three linear repair commits",
+    "base_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "performed": false
+  },
+  "verdict": "SOURCE_GATE_REPAIRED_RUNTIME_NOT_VERIFIED_NON_DEPLOYABLE",
+  "unresolved": [
+    "Runtime Node/npm/npx availability in the provider runtime image",
+    "Current-head browser/E7/auth/incident/release evidence",
+    "Stale mismatch matrix",
+    "CTS and robotics source-boundary conflicts"
+  ]
+}

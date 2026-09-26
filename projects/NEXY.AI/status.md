@@ -2,7 +2,7 @@
 
 ## Status
 
-**SOURCE-ALIGNED CONTEXT / IMPLEMENTATION NOT VERIFIED AT CURRENT HEAD**
+**SOURCE-ALIGNED CONTEXT / SOURCE GATE VALIDATED / RUNTIME NOT VERIFIED AT CURRENT HEAD**
 
 ## Authority snapshot
 
@@ -17,12 +17,12 @@
 
 The source normalization and governance records are present in `projects/NEXY.AI/`. The deep capture is complete for this pass, while implementation/runtime/deployment evidence remains a separate and incomplete truth domain.
 
-The latest read-only observation of the separate implementation repository is:
+The latest implementation observation after the explicit repair directive is:
 
 - repository: `goif74945-crypto/NEXY.AI-`
 - branch: `astra/omega-full-spec-convergence`
-- head: `db960dd163a9f50373b747ac922d735d1250cf3a`
-- status: **NOT VERIFIED AT CURRENT HEAD**
+- head: `ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b`
+- status: **SOURCE GATE VALIDATED / RUNTIME NOT VERIFIED**
 
 The available mismatch matrix is pinned to older implementation head `317e619f5331a2d1ce9aa0016a18bc1d3f143270`; it is retained as historical/stale evidence, not current-head proof. The previous context snapshot head `96b895ff471d0907d78f316d74fecc09205b8701` is now superseded by the exact observed head above.
 
@@ -61,7 +61,7 @@ The inspected primary jobs report empty/null runner assignment and no executed s
 
 ## Decision
 
-The project context is corrected to match the recorded design source and the exact implementation head. No implementation repository file was modified in this repair batch because no code defect was proven by executed current-head validation. Current release truth remains **NON_DEPLOYABLE / NOT VERIFIED** until an executable exact-head validation path and required DOC-E evidence exist.
+The project context is corrected to match the recorded design source and the exact implementation head. A source-only validation-gate repair was applied after exact-head execution proved the API coverage defect. Current release truth remains **NON_DEPLOYABLE / NOT VERIFIED** until an executable exact-head validation path and required DOC-E evidence exist.
 ## Repair pass — 2026-09-26
 
 - P-01 source provenance: repaired; canonical SHA identity is separated from observed filename/container metadata.
@@ -77,3 +77,14 @@ The project context is corrected to match the recorded design source and the exa
 - P-12 release evidence: current-head overlay records that stale evidence cannot satisfy a different HEAD; workflow structure binds release evidence to commit identity, but current execution remains blocked.
 - Exact-head failed jobs were rerun. The rerun again produced primary jobs with zero observed steps, so no test/typecheck/build/DOC-E PASS is claimed.
 
+
+
+## Repair pass — exact-head API coverage gate — 2026-09-26
+
+- The requested branch ref was absent when the first fast-forward write was attempted; it was recreated from the frozen base db960dd163a9f50373b747ac922d735d1250cf3a and advanced only by three linear commits to ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b.
+- The complete source diff from the frozen base contains exactly one modified file: tests/coverage/api-health-middleware.test.ts (18 additions, 1 deletion). Runtime/application source was not changed.
+- The proven initial gate failure was API branch coverage 84.92% against the repository's existing 85% threshold. After the CSP false-branch test it was 84.99%; after the non-string CORS-origin test it was 85.06%.
+- Exact-head validation deployment b5d37906-c67a-4e15-b94d-73b9b0eb0ae5 at ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b reported 104 test files and 796 tests passed; API, core, law, and judge coverage checks all passed.
+- A targeted local run also passed 23/23 tests for tests/coverage/api-health-middleware.test.ts.
+- Rollback: revert the three repair commits, or move the branch back to the recorded base only with explicit authorization. No destructive rollback was performed.
+- Runtime/DOC-E/security/release proof remains unverified; release truth remains **NON_DEPLOYABLE**.
