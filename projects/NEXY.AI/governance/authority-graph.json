@@ -107,6 +107,20 @@
       "kind": "DESCRIPTIVE_PHYSICAL_TRUTH",
       "normative": false,
       "description": "Required for physical behavior/safety claims; source/code alone cannot substitute."
+    },
+    {
+      "id": "AUTH-ANNEX-T-ABSOLUTE-SSOT",
+      "name": "ANNEX-T Absolute SSOT Uploaded Legal/Governance Canon",
+      "kind": "LEGAL_GOVERNANCE_CANON_SOURCE",
+      "normative": true,
+      "description": "Uploaded ANNEX-T source captured on 2026-09-26. It self-declares sole/absolute SSOT status for its legal, operational and evidentiary canon. AI-CONTEXT preserves that claim within the source's declared legal-governance scope; it does not silently supersede DOC-B/DOC-C current build obligations without an explicit scope/authority bridge."
+    },
+    {
+      "id": "AUTH-GUARDIAN-PACK-THAILAND",
+      "name": "NEXY Guardian Pack (Thailand)",
+      "kind": "LEGAL_COMMERCIAL_SOURCE",
+      "normative": false,
+      "description": "Uploaded licensing/guardian framework captured on 2026-09-26. Preserved as a source/template for licensing, payment, IP, guardian and counterparty terms. Independent enforceability and execution status are not established by ingestion."
     }
   ],
   "edges": [
@@ -249,6 +263,27 @@
       "to": "AUTH-REPO-STATE",
       "domain": "current_task",
       "meaning": "Explicit task authorization controls which implementation state may be mutated."
+    },
+    {
+      "from": "AUTH-ANNEX-T-ABSOLUTE-SSOT",
+      "type": "LEGAL_CANON_SOURCE_FOR",
+      "to": "AUTH-CONSTITUTIONAL",
+      "domain": "annex_t_legal_governance",
+      "meaning": "ANNEX-T is the uploaded detailed legal/governance canon source for its declared ANNEX-T scope."
+    },
+    {
+      "from": "AUTH-DOC-C",
+      "type": "CURRENT_SCOPE_EXCLUDES_UNLESS_PROMOTED",
+      "to": "AUTH-ANNEX-T-ABSOLUTE-SSOT",
+      "domain": "current_build",
+      "meaning": "ANNEX-T legal/governance canon does not automatically become a current implementation obligation unless the governing build spec or explicit user directive promotes it."
+    },
+    {
+      "from": "AUTH-GUARDIAN-PACK-THAILAND",
+      "type": "LICENSES_OR_REFERENCES",
+      "to": "AUTH-ANNEX-T-ABSOLUTE-SSOT",
+      "domain": "commercial_licensing",
+      "meaning": "Guardian Pack source grants/reference terms around NEXY and ANNEX-T but does not itself establish adoption or enforceability."
     }
   ],
   "resolution_rules": [
@@ -283,6 +318,18 @@
     {
       "id": "AR-008",
       "rule": "Descriptive truth (repo/runtime) may show noncompliance but cannot normatively authorize that noncompliance."
+    },
+    {
+      "id": "AR-009",
+      "rule": "For ANNEX-T source questions, preserve the document's declared authority and wording, but do not treat self-declared labels such as court-sealed, court-executable, absolute SSOT, zero-gap or zero-drift as independently verified facts without the matching legal/adoption/evidence class."
+    },
+    {
+      "id": "AR-010",
+      "rule": "For the Guardian Pack, distinguish source/template terms from executed legal effect. Enforceability, guardian authority, payment rights, sovereign-immunity waiver, majority transfer and counterparty obligations require jurisdiction-specific legal validation and/or executed evidence."
+    },
+    {
+      "id": "AR-011",
+      "rule": "ANNEX-T legal/governance authority and DOC-B/DOC-C build authority are separate domains. Do not silently use one to rewrite the other; freeze and require explicit authority resolution when a cross-domain contradiction affects the requested task."
     }
   ]
 }

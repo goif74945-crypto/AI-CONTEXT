@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "project": "NEXY.AI",
+  "source_set_id": "NEXY-LEGAL-GOVERNANCE-20260926",
+  "ingested_at": "2026-09-26",
+  "ingestion_mode": "FULL_TEXT_SOURCE_CAPTURE_WITH_AUTHORITY_BOUNDARY",
+  "completeness_policy": {
+    "objective": "Preserve all extractable textual information from the supplied PDFs while keeping source claims distinct from independent validation.",
+    "binary_pdf_committed": false,
+    "reason": "This ingestion records full extracted text plus cryptographic source identity. Original uploaded PDF bytes remain represented by SHA-256 and byte count, not duplicated as repository binaries in this commit.",
+    "source_claim_rule": "Labels such as court-safe, court-sealed, absolute SSOT, zero-gap, state-contract-ready and similar are stored as source claims unless separately validated."
+  },
+  "sources": [
+    {
+      "source_id": "SRC-NEXY-GUARDIAN-PACK-THAILAND",
+      "original_filename": "NEXY — GUARDIAN PACK (THAILAND .pdf",
+      "sha256": "c7809bd04309e30717bb8b37a57dfa569e00da945e3428f1e789015eff78eb6c",
+      "byte_size": 98773,
+      "pages": 5,
+      "authority_node": "AUTH-GUARDIAN-PACK-THAILAND",
+      "classification": "LEGAL_COMMERCIAL_SOURCE",
+      "text_status": "FULL_EXTRACTED_TEXT_CAPTURED",
+      "files": [
+        "sources/NEXY-GUARDIAN-PACK-THAILAND.fulltext.md"
+      ],
+      "declared_scope": [
+        "minor/guardian licensing framework",
+        "IP ownership lock",
+        "license grant",
+        "payment structure",
+        "audit and transparency",
+        "government-client clause",
+        "termination",
+        "liability",
+        "dispute resolution",
+        "majority transfer",
+        "non-exploitation",
+        "sales/outreach playbook"
+      ],
+      "independent_legal_validation": "NOT_PERFORMED"
+    },
+    {
+      "source_id": "SRC-NEXY-ANNEX-T-ABSOLUTE-SSOT",
+      "original_filename": "NEXY - ANNEX-T — ABSOLUTE SSOT.pdf",
+      "sha256": "6ec54767e0b1e899b551ef8b3b3a2c7ce264b1cbc42fbfe3f933d2b390ee8b6e",
+      "byte_size": 281652,
+      "pages": 27,
+      "authority_node": "AUTH-ANNEX-T-ABSOLUTE-SSOT",
+      "classification": "LEGAL_GOVERNANCE_CANON_SOURCE",
+      "text_status": "FULL_EXTRACTED_TEXT_CAPTURED_SPLIT_3_PARTS",
+      "files": [
+        "sources/NEXY-ANNEX-T-ABSOLUTE-SSOT.part-01.md",
+        "sources/NEXY-ANNEX-T-ABSOLUTE-SSOT.part-02.md",
+        "sources/NEXY-ANNEX-T-ABSOLUTE-SSOT.part-03.md"
+      ],
+      "reconstruction_order": [
+        1,
+        2,
+        3
+      ],
+      "declared_scope": [
+        "legal operating system",
+        "state-executable treaty architecture",
+        "judicial OS",
+        "physical enforcement bridge",
+        "civilization continuity architecture",
+        "registry/evidence",
+        "escrow/assets",
+        "economic/cyber/AI governance",
+        "species-level failsafe",
+        "global adoption tracks",
+        "CTID materialization and trace"
+      ],
+      "independent_legal_validation": "NOT_PERFORMED"
+    }
+  ]
+}

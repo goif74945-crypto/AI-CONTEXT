@@ -20,6 +20,7 @@
   - [Atomic Ontology](./NEXY.AI/ontology/INDEX.md)
   - [Requirement Registry](./NEXY.AI/requirements/INDEX.md)
   - [Governance Intelligence](./NEXY.AI/governance/INDEX.md)
+  - [Legal / ANNEX-T Source Intake](./NEXY.AI/legal/INDEX.md)
   - [Implementation / Repository Map](./NEXY.AI/implementation/INDEX.md)
   - [Contracts](./NEXY.AI/contracts/INDEX.md)
   - [FSM Registry](./NEXY.AI/fsm/INDEX.md)
