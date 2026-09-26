@@ -18,11 +18,11 @@
   "live_implementation_observation": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
-    "previously_observed_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "head": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
+    "previously_observed_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
     "observed_read_only": false,
-    "status": "SOURCE_GATE_VALIDATED_RUNTIME_NOT_VERIFIED",
-    "reason": "Source coverage and full test gate passed at the repaired exact head; Railway runtime/DOC-E evidence remains unavailable because the runtime image and prior CI jobs did not execute the required runtime steps."
+    "status": "SOURCE_AND_RUNTIME_GATES_VALIDATED_RELEASE_AUTHORIZATION_BLOCKED",
+    "reason": "Exact-head Railway build/runtime gates and normal runtime healthcheck passed. Browser proof passed at the immediately preceding application-equivalent head; the only intervening change is one Dockerfile label commit. DOC-E authorization, independent security sign-off, and CI runner execution remain unproven."
   },
   "context_registry_health": {
     "ontology": {
@@ -78,32 +78,61 @@
   },
   "release_truth": {
     "status": "NON_DEPLOYABLE",
-    "current_head_runtime_proof": false,
+    "current_head_runtime_proof": true,
     "current_head_doc_e_proof": false,
     "signoff": false,
-    "rule": "Do not release from source prose, stale matrices or file presence alone."
+    "rule": "Do not release from source prose, stale matrices or file presence alone; runtime success does not mint release authorization."
   },
   "open_findings": [
-    "Current repaired head has source test and coverage PASS, but exact-head runtime/DOC-E execution is still unavailable.",
-    "Latest mismatch matrix is stale because it targets 317e619f5331a2d1ce9aa0016a18bc1d3f143270.",
-    "L1o numeric CTS threshold remains unresolved by authority/source evidence.",
-    "Robotics latency values remain conflicting and unprofiled."
+    "Configured source/runtime gate chain passed at current head; literal source-wide coverage is not 100%.",
+    "Browser E2E proof is recorded at 454362eb4afce40fafe106eae5241a5f154eef8b; compare to current head shows only one Dockerfile label change.",
+    "DOC-E E1-E12 current-head authorization evidence is not encoded and independently replayed.",
+    "Security sign-off and GitHub runner execution are not established.",
+    "Latest mismatch matrix remains stale because it targets 317e619f5331a2d1ce9aa0016a18bc1d3f143270.",
+    "L1o numeric CTS threshold remains an authority conflict/source gap.",
+    "Robotics physical latency budget remains unresolved in the design source."
   ],
   "hash": "HASH_UNAVAILABLE",
   "current_head_source_validation": {
-    "base_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
-    "repaired_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
-    "validation_deployment": "b5d37906-c67a-4e15-b94d-73b9b0eb0ae5",
-    "test_files": 104,
-    "tests_passed": 796,
-    "coverage": {
-      "api_branch": "85.06%",
-      "core_branch": "93.22%",
-      "law_branch": "96.83%",
-      "judge_branch": "94.01%",
+    "base_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
+    "current_head": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
+    "runtime_deployment": "1141cd57-ab78-40c7-97a4-aaba7593f1cf",
+    "deterministic_gate_execution": "PASS",
+    "configured_gate_sequence": [
+      "lint",
+      "typecheck backend + web",
+      "test:contract",
+      "test:integration",
+      "npm test",
+      "test:coverage",
+      "check:coverage",
+      "check:doc-c",
+      "test:experimental",
+      "check:experimental",
+      "build:web"
+    ],
+    "experimental": {
+      "test_files": 56,
+      "tests_passed": 566,
+      "skipped": 1,
       "gate": "PASS"
     },
-    "targeted_test": "23/23 PASS",
-    "source_only_diff": "tests/coverage/api-health-middleware.test.ts"
+    "phase_f_gate": "PASS",
+    "next_static_routes": 36,
+    "runtime": {
+      "migrations": "PASS / no pending",
+      "next_ready": "PASS",
+      "bootstrap_hydration": "PASS",
+      "healthcheck": "PASS /api/health/liveness"
+    },
+    "browser": {
+      "proof_head": "454362eb4afce40fafe106eae5241a5f154eef8b",
+      "deployment": "92ebdc7d-bd73-4e26-a28f-24603d870afb",
+      "directive": "1/1 PASS",
+      "critical_flows": "8/8 PASS",
+      "e2e": "PASS",
+      "exact_current_head": false,
+      "head_delta": "one Dockerfile label-only commit"
+    }
   }
 }
