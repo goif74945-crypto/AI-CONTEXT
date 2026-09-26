@@ -1,0 +1,89 @@
+{
+  "CASE_ID": "CASE-AUDIT-NEXY-STRICT-STATIC-20260927-42378126",
+  "task_ref": "AUDIT-NEXY-STRICT-STATIC-20260927-42378126",
+  "type": "STATIC_SPEC_CONFORMANCE_AUDIT",
+  "canonical_head": "42378126aed29a668f9f294a9100c62a66ff3753",
+  "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "coverage": {
+    "design_segments": 10979,
+    "repo_files": 613,
+    "pending": 0,
+    "tests_executed": 0
+  },
+  "current_findings": [
+    {
+      "id": "F-CUR-001",
+      "severity": "S4",
+      "claim": "Canonical CI/deploy gate omits NEXY.ai auto-trigger and makes isolated experimental Phase-F success mandatory for release."
+    },
+    {
+      "id": "F-CUR-002",
+      "severity": "S3",
+      "claim": "POST owner-recovery mutates sessions/incidents/audit without authenticated secure session; final DOC-C exemption only covers OTAC request/verify."
+    },
+    {
+      "id": "F-CUR-003",
+      "severity": "S3",
+      "claim": "POST storage reconcile mutation uses operation_id but lacks required idempotency_key and no final DOC-C exemption was found."
+    },
+    {
+      "id": "F-CUR-004",
+      "severity": "S3",
+      "claim": "Canonical mobile revision history hides table at mobile width but renders no revision-card-list DOM."
+    },
+    {
+      "id": "F-CUR-005",
+      "severity": "S3",
+      "claim": "Sticky freeze banner is not statically backed by canonical CSS/build dependencies."
+    },
+    {
+      "id": "F-CUR-006",
+      "severity": "S1",
+      "claim": "DOC-D exact empty-state copy is not implemented consistently."
+    },
+    {
+      "id": "F-CUR-007",
+      "severity": "S4",
+      "claim": "DOC-E deployment evidence is stale/blocked and not bound to exact canonical HEAD."
+    },
+    {
+      "id": "F-QUAL-001",
+      "severity": "S2",
+      "claim": "Canonical browser validation fixtures are internally inconsistent with secure cookie/device-binding requirements; not executed."
+    },
+    {
+      "id": "F-QUAL-002",
+      "severity": "S2",
+      "claim": "E7 evidence workflow auto-trigger omits canonical NEXY.ai branch; manual dispatch still exists."
+    }
+  ],
+  "legacy_not_current_blockers": [
+    "AUTH→CORE dependency rule from earlier EXECUTION PACK not carried by final DOC-C",
+    "VAULT→CORE dependency rule from earlier EXECUTION PACK not carried by final DOC-C",
+    "STOP-cancels-all-jobs rule from earlier EXECUTION PACK not carried by final DOC-C"
+  ],
+  "verdict_counts": {
+    "STATIC_NO_CONTRADICTION_FOUND": 174,
+    "OUT_OF_CURRENT_BUILD_SCOPE": 111,
+    "TEST_SOURCE_NOT_EXECUTED": 105,
+    "SUPPORTING_NO_CONTRADICTION_FOUND": 63,
+    "TEST_SOURCE_OUT_OF_CURRENT_SCOPE_NOT_EXECUTED": 56,
+    "NO_DIRECT_CURRENT_OBLIGATION": 45,
+    "HISTORICAL_EVIDENCE_NOT_CURRENT_PROOF": 25,
+    "EVIDENCE_STALE_OR_BLOCKED": 15,
+    "STATIC_MISMATCH": 11,
+    "STATIC_PARTIAL": 5,
+    "TEST_SOURCE_STATIC_MISMATCH_NOT_EXECUTED": 2,
+    "TEST_FIXTURE_STATIC_MISMATCH_NOT_EXECUTED": 1
+  },
+  "final_status": "PARTIAL_STATIC_AUDIT_COMPLETE_WITH_LIMITS",
+  "limits": [
+    "No tests",
+    "No build",
+    "No deploy",
+    "No browser runtime",
+    "No mutation of NEXY.AI-"
+  ],
+  "trace_id": "TRACE-AUDIT-NEXY-STRICT-STATIC-20260927-42378126",
+  "version": "1.0.0"
+}
