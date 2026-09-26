@@ -1,0 +1,13 @@
+{
+  "FAILURE_ID": "FAIL-AUDIT-NEXY-STRICT-STATIC-20260927-42378126-RUNTIME-NOT-EXECUTED",
+  "task_ref": "AUDIT-NEXY-STRICT-STATIC-20260927-42378126",
+  "context": "User explicitly required reasoning/static audit only and prohibited running tests.",
+  "cause": "Execution intentionally not performed by scope constraint, not an observed test failure.",
+  "failed_approach": "NONE — no runtime/test attempt was made.",
+  "recovery": "If later authorized, run build/tests/browser/runtime against exact canonical HEAD and regenerate DOC-E evidence.",
+  "boundary": "Do not interpret static no-contradiction verdicts as runtime PASS, secure, deployable, or complete.",
+  "prevention": "Keep static and runtime evidence classes separate in future NEXY audit records.",
+  "status": "LIMITATION_RECORDED",
+  "trace_id": "TRACE-AUDIT-NEXY-STRICT-STATIC-20260927-42378126",
+  "version": "1.0.0"
+}
