@@ -1,0 +1,35 @@
+{
+  "LEDGER_ID": "NEXY-RUNTIME-VALIDATION-DB960DD-20260926",
+  "subject": "Exact-head source/runtime validation closure",
+  "source_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+  "entries": [
+    {
+      "claim": "Source build and test subset executes at the target head.",
+      "proof": "Railway deployment b13a73cc-32a9-4aaa-a1ca-535007afa096 observed 104 test files and 794 passing tests, with typecheck, lint, contract, integration, phase-f, DOC-C, and web-build markers passing.",
+      "status": "VERIFIED_PARTIAL"
+    },
+    {
+      "claim": "Source coverage gate is release-ready.",
+      "proof": "Coverage check reported API branches 84.92% against an 85% threshold.",
+      "status": "FAILED"
+    },
+    {
+      "claim": "Redis validation dependency is available.",
+      "proof": "Redis deployment 05b146fc-3148-4396-8bc9-bb0d59b1b817 succeeded and redis_prepare exited 0 in deployment 768d7c5a-bc99-4599-b211-6a2dbae74385.",
+      "status": "VERIFIED"
+    },
+    {
+      "claim": "Railway runtime can execute Node gates.",
+      "proof": "Fresh diagnostic deployment 69718a63-2b50-42d0-a59c-1f4554087250 reported PATH /mise/shims plus system paths, but no node/npm/npx command paths and no checked Node installation directory.",
+      "status": "FAILED_PROVIDER_DEPENDENCY"
+    },
+    {
+      "claim": "Browser, E7, auth-abuse, incident-drill, and production-release proof is complete.",
+      "proof": "No exact-head pass markers exist; prior runtime attempts ended with command-not-found failures.",
+      "status": "NOT_VERIFIED"
+    }
+  ],
+  "verdict": "PARTIAL_NON_DEPLOYABLE",
+  "trace_id": "NEXY-RUNTIME-VALIDATION-DB960DD-20260926",
+  "version": "1.0.0"
+}

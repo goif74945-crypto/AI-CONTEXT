@@ -1,0 +1,16 @@
+{
+  "failure_id": "FAIL-NEXY-RUNTIME-VALIDATION-DB960DD-20260926",
+  "context": "Exact-head runtime validation for goif74945-crypto/NEXY.AI- at db960dd163a9f50373b747ac922d735d1250cf3a.",
+  "cause": "Railpack installed Node 22.23.2 in the builder and completed npm build, but the fresh runtime diagnostic exposed /mise/shims without node/npm/npx and without the checked Node installation directory. Runtime gates therefore failed with command-not-found exit 127.",
+  "failed_approach": "Treating builder-installed tooling as deploy-runtime tooling, then attempting common Mise and Node PATH additions in pre-deploy without a Node runtime installation.",
+  "recovery": "Use a provider-supported Railway runtime image/configuration that includes Node 22, npm, and npx at deploy time; rerun migrations, web, worker, browser, E7, auth-abuse, and incident-drill gates at the same exact head.",
+  "boundary": "The source build/test subset and Redis preparation are separate evidence domains. They do not satisfy runtime, browser, E7, incident, release-attestation, or production-deploy proof.",
+  "prevention": "Require an explicit runtime availability probe before executing runtime gates and preserve separate source, runtime, deployment, and release-attestation statuses.",
+  "observed_deployments": [
+    "69718a63-2b50-42d0-a59c-1f4554087250",
+    "768d7c5a-bc99-4599-b211-6a2dbae74385",
+    "cba16012-6a48-4635-8f4a-7450dca7403f"
+  ],
+  "version": "1.0.0",
+  "trace_id": "NEXY-RUNTIME-VALIDATION-DB960DD-20260926"
+}

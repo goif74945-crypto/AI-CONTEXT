@@ -1,0 +1,113 @@
+{
+  "TASK_ID": "TASK-NEXY-RUNTIME-VALIDATION-DB960DD-20260926",
+  "title": "NEXY exact-head source/runtime validation closure",
+  "mode": "SOLO_EXEC",
+  "scope": [
+    "exact current-head source gates",
+    "isolated Railway builder/runtime validation",
+    "runtime dependency classification",
+    "fail-closed release decision"
+  ],
+  "inputs": {
+    "target_repository": "goif74945-crypto/NEXY.AI-",
+    "target_branch": "astra/omega-full-spec-convergence",
+    "target_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
+    "validation_project": "NEXY Validation R2 (isolated)",
+    "validation_service": "nexy-validation-branch"
+  },
+  "sources": [
+    "exact-head GitHub repository and workflow metadata",
+    "isolated Railway build/deploy logs",
+    "isolated Railway Postgres and Redis services",
+    "AI-CONTEXT main at parent commit 4fed1570e68093771f71087e81ecddd08c46dc5f"
+  ],
+  "actions": [
+    "reconfirmed exact source HEAD on every Railway validation deployment",
+    "observed source gate markers and separated coverage failure from runtime evidence",
+    "provisioned isolated Postgres and Redis dependencies for validation",
+    "moved runtime gates through build and pre-deploy paths to identify execution boundary",
+    "ran a fresh runtime diagnostic after forcing a current service-config snapshot",
+    "recorded the provider runtime dependency blocker without changing implementation source"
+  ],
+  "artifacts_paths": [
+    "TASKS/2026-09-26/NEXY-RUNTIME-VALIDATION-DB960DD-20260926.json",
+    "FAILURES/2026-09-26/NEXY-RUNTIME-VALIDATION-DB960DD-20260926.json",
+    "LEDGER/2026-09-26/NEXY-RUNTIME-VALIDATION-DB960DD-20260926.json",
+    "CASES/NEXY-RUNTIME-VALIDATION-DB960DD-20260926.md"
+  ],
+  "claims_proofs": {
+    "source_head": "Railway deployments b13a73cc-32a9-4aaa-a1ca-535007afa096, 768d7c5a-bc99-4599-b211-6a2dbae74385, and 69718a63-2b50-42d0-a59c-1f4554087250 report branch astra/omega-full-spec-convergence and commit db960dd163a9f50373b747ac922d735d1250cf3a.",
+    "source_gates": "Deployment b13a73cc observed full 104 files/794 tests and successful typecheck, lint, contract, integration, phase-f, DOC-C, and web-build markers; coverage check failed because API branches were 84.92% against an 85% threshold; overall source validation remained 1.",
+    "redis_dependency": "Redis deployment 05b146fc-3148-4396-8bc9-bb0d59b1b817 succeeded; runtime redis_prepare reached exit 0 in deployment 768d7c5a-bc99-4599-b211-6a2dbae74385.",
+    "runtime_dependency": "Fresh diagnostic deployment 69718a63-2b50-42d0-a59c-1f4554087250 succeeded as a diagnostic, reported PATH beginning with /mise/shims, emitted no node/npm/npx command paths, and listed only /usr/local/bin among the checked runtime directories; the Node installation directory was absent.",
+    "runtime_gates": "Pre-deploy deployments cba16012-6a48-4635-8f4a-7450dca7403f and 768d7c5a-bc99-4599-b211-6a2dbae74385 recorded npx/npm/node command-not-found failures with exit 127; no browser, E7, auth-abuse, or incident-drill pass was claimed.",
+    "ci_execution": "GitHub Actions runs 36148606104 and 36148606030 for the exact head had completed jobs with zero executed steps/log evidence, so they remain runner-infrastructure evidence failures."
+  },
+  "tests_results": {
+    "source_build_and_tests": "PARTIAL_SOURCE_PASS",
+    "source_coverage_threshold": "FAIL_API_BRANCHES_84_92_PERCENT_BELOW_85_PERCENT",
+    "redis_prepare": "PASS",
+    "runtime_node_npm_npx_availability": "FAIL_PROVIDER_RUNTIME_IMAGE",
+    "browser_e2e": "NOT_EXECUTED",
+    "e7_queue": "NOT_EXECUTED",
+    "auth_abuse_and_incident_drill": "NOT_EXECUTED",
+    "production_release": "BLOCKED"
+  },
+  "changes": [
+    "changed only the isolated Railway validation service configuration and dependency services",
+    "forced a fresh validation snapshot for the final runtime diagnostic",
+    "made no source-repository or production-application change"
+  ],
+  "successes": [
+    "source and runtime domains were kept separate",
+    "Redis and Postgres validation dependencies were made available",
+    "the final fresh-snapshot diagnostic proved the runtime-image boundary",
+    "no secret values were written into this record"
+  ],
+  "failures": [
+    "API branch coverage remained 84.92%, below the 85% gate",
+    "Railpack builder had Node 22.23.2 but the runtime image exposed no node/npm/npx",
+    "exact-head browser, E7, auth-abuse, incident-drill, and release-attestation evidence remains unavailable",
+    "GitHub Actions runner evidence remains zero-step/non-executed"
+  ],
+  "decisions": [
+    "do not infer runtime PASS from a successful builder build",
+    "do not add a Dockerfile or modify implementation source without explicit next-step authorization",
+    "keep production deploy blocked",
+    "classify the current result as PARTIAL_NON_DEPLOYABLE"
+  ],
+  "unresolved": [
+    "provider-supported way to place Node/npm/npx in the Railway runtime layer",
+    "API branch coverage repair to reach at least 85%",
+    "fresh exact-head browser/E7/auth/incident evidence after runtime repair",
+    "working GitHub runner or alternate authorized execution host"
+  ],
+  "risks": [
+    "runtime defects remain hidden until a Node-capable runtime executes the gates",
+    "source subset success could be mistaken for release readiness if the domain boundary is not preserved"
+  ],
+  "limits": [
+    "no production deployment was attempted",
+    "no secret values are reproduced",
+    "the diagnostic deployment intentionally exited after reporting runtime availability"
+  ],
+  "rollback": "Validation-service configuration changes are isolated and reversible through Railway service configuration; no implementation source commit was created.",
+  "final_status": "PARTIAL",
+  "verdict": "PARTIAL_NON_DEPLOYABLE",
+  "next_actions": [
+    "use a provider-supported runtime image/configuration that includes Node 22, npm, and npx, then rerun the exact-head runtime gates",
+    "repair API branch coverage to at least 85% and rerun source validation",
+    "rerun browser E2E, E7 queue, auth-abuse, incident-drill, and release-attestation evidence at the same head",
+    "restore a working GitHub runner or authorized execution host"
+  ],
+  "dependencies": [
+    "Railway/Railpack runtime layer with Node 22 available at deploy time",
+    "Postgres and Redis services for runtime validation",
+    "working exact-head CI or execution host",
+    "authorized production signoff environment"
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "conversation date 2026-09-26 UTC plus observed GitHub/Railway state",
+  "trace_id": "NEXY-RUNTIME-VALIDATION-DB960DD-20260926",
+  "hash": "HASH_UNAVAILABLE"
+}
