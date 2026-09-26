@@ -4,9 +4,9 @@
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "astra/omega-full-spec-convergence",
-    "head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
-    "previously_observed_head": "db960dd163a9f50373b747ac922d735d1250cf3a",
-    "observation_mode": "REPAIR_VALIDATION"
+    "head": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
+    "previously_observed_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
+    "observation_mode": "EXACT_HEAD_RUNTIME_AND_BROWSER_VALIDATION"
   },
   "status": "NON_DEPLOYABLE",
   "evidence": {
@@ -16,27 +16,34 @@
     "exact_current_head_doc_e_proof": false,
     "runtime_signoff": false,
     "security_signoff": false,
-    "current_head_source_validation": {
-      "validation_deployment": "b5d37906-c67a-4e15-b94d-73b9b0eb0ae5",
-      "test_files": 104,
-      "tests_passed": 796,
-      "coverage_gate": "PASS",
-      "api_branch_coverage": "85.06%",
-      "exact_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b"
+    "source_runtime_gate_chain": "PASS",
+    "runtime_deployment": "1141cd57-ab78-40c7-97a4-aaba7593f1cf",
+    "runtime_healthcheck": "PASS",
+    "browser_validation": {
+      "proof_head": "454362eb4afce40fafe106eae5241a5f154eef8b",
+      "deployment": "92ebdc7d-bd73-4e26-a28f-24603d870afb",
+      "directive": "1/1 PASS",
+      "critical_flows": "8/8 PASS",
+      "e2e": "PASS",
+      "exact_current_head": false,
+      "boundary": "one Dockerfile label-only commit between browser proof and runtime head"
     }
   },
   "freshness": {
     "latest_available_mismatch_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
     "latest_available_mismatch_status": "STALE_NOT_CURRENT_HEAD",
     "historical_validation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-    "current_head_runtime_evidence": "SOURCE_GATES_PASS_RUNTIME_DOCUS_E_UNVERIFIED"
+    "current_head_runtime_evidence": "PASS",
+    "current_head_doc_e_evidence": "UNPROVEN"
   },
   "blocking_reasons": [
-    "Source test and coverage gates pass at the repaired head, but no exact-current-head runtime/DOC-E execution proof exists.",
-    "Available mismatch matrix remains stale because it targets an older implementation head.",
-    "No current-head runtime/security sign-off.",
-    "Source-level unresolved CTS threshold and robotics latency conflicts remain labeled."
+    "Runtime/build/browser validation passed, but DOC-E E1-E12 current-head authorization evidence is not independently replayed.",
+    "No current-head security sign-off is present.",
+    "The configured GitHub runner path has not provided an observed execution record.",
+    "The latest mismatch matrix is stale because it targets an older implementation head.",
+    "Literal source-wide coverage is not 100%; only the repository's configured area-specific coverage gate passes.",
+    "Source-level CTS and robotics latency conflicts remain explicitly unresolved."
   ],
-  "rule": "A design document, context registry, stale matrix or file presence cannot satisfy this gate by itself.",
+  "rule": "Runtime success and passing configured gates do not mint RELEASE_ELIGIBLE; preserve fail-closed release authorization.",
   "hash": "HASH_UNAVAILABLE"
 }
