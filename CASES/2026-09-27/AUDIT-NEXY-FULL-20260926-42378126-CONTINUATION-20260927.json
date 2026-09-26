@@ -1,0 +1,42 @@
+{
+  "task_id": "AUDIT-NEXY-FULL-20260926-42378126-CONTINUATION-20260927",
+  "parent_audit_run": "AUDIT-NEXY-FULL-20260926-42378126",
+  "mode": "AUDIT_SOLO",
+  "scope": "Continuation verification only; no NEXY.AI- mutation.",
+  "sources": [
+    "goif74945-crypto/NEXY.AI- NEXY.ai",
+    "AI-CONTEXT audit package at ecc92c01e861c6243e967b21468cce22c5fed9ee"
+  ],
+  "verified": {
+    "nexy_canonical_head": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "nexy_head_freshness": "IDENTICAL",
+    "ai_context_parent_commit": "ecc92c01e861c6243e967b21468cce22c5fed9ee",
+    "requirement_matrix_rows": 262,
+    "requirement_matrix_unique_ids": 262,
+    "current_doc_c_rows": 80,
+    "current_doc_c_status_counts": {
+      "UNKNOWN_NOT_PROVEN": 75,
+      "BUILT_PARTIAL_MISMATCH": 5
+    },
+    "findings_count": 9,
+    "builder_commands_count": 9
+  },
+  "limits": [
+    "Exact-head executed JS/TS/Rust/browser validation remains unavailable in this audit environment.",
+    "No finding was promoted to BUILT_MATCHED_100 from static evidence."
+  ],
+  "final_status": "PARTIAL",
+  "next_actions": [
+    "Execute CMD-001 through CMD-008 in dependency order under explicit NEXY mutation authorization.",
+    "Execute CMD-009 for traceability after browser repair."
+  ],
+  "version": "1.0.0",
+  "timestamp_source": "2026-09-27 Asia/Bangkok conversation local time",
+  "trace_id": "AUDIT-NEXY-FULL-20260926-42378126-CONTINUATION-20260927",
+  "hash": "HASH_UNAVAILABLE",
+  "cause": "User requested continuation after full audit package generation.",
+  "decision": "Audit remains PARTIAL because execution/evidence blockers are unchanged; canonical HEAD is still identical to the audited HEAD.",
+  "risks": [
+    "Release remains unproven for exact canonical HEAD."
+  ]
+}
