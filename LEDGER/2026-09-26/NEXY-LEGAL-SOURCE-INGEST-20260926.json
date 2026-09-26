@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "SOURCE_INGESTION",
+  "record_id": "NEXY-LEGAL-SOURCE-INGEST-20260926",
+  "project": "NEXY.AI",
+  "date": "2026-09-26",
+  "source_set_id": "NEXY-LEGAL-GOVERNANCE-20260926",
+  "source_commit": "020fef4e3340590e16bd43a829b440b53316a3e6",
+  "sources": [
+    {
+      "source_id": "SRC-NEXY-GUARDIAN-PACK-THAILAND",
+      "sha256": "c7809bd04309e30717bb8b37a57dfa569e00da945e3428f1e789015eff78eb6c",
+      "pages": 5,
+      "bytes": 98773,
+      "captured_path": "projects/NEXY.AI/legal/sources/NEXY-GUARDIAN-PACK-THAILAND.fulltext.md"
+    },
+    {
+      "source_id": "SRC-NEXY-ANNEX-T-ABSOLUTE-SSOT",
+      "sha256": "6ec54767e0b1e899b551ef8b3b3a2c7ce264b1cbc42fbfe3f933d2b390ee8b6e",
+      "pages": 27,
+      "bytes": 281652,
+      "captured_paths": [
+        "projects/NEXY.AI/legal/sources/NEXY-ANNEX-T-ABSOLUTE-SSOT.part-01.md",
+        "projects/NEXY.AI/legal/sources/NEXY-ANNEX-T-ABSOLUTE-SSOT.part-02.md",
+        "projects/NEXY.AI/legal/sources/NEXY-ANNEX-T-ABSOLUTE-SSOT.part-03.md"
+      ]
+    }
+  ],
+  "integration": [
+    "projects/NEXY.AI/legal/INDEX.md",
+    "projects/NEXY.AI/legal/source-manifest.json",
+    "projects/NEXY.AI/governance/authority-graph.json",
+    "projects/INDEX.md"
+  ],
+  "verification": {
+    "main_head_after_source_commit": "020fef4e3340590e16bd43a829b440b53316a3e6",
+    "guardian_sections_1_through_14": true,
+    "guardian_appendices_a_b_and_final_verdict": true,
+    "annex_parts_i_through_lxxvii_boundaries_verified": true,
+    "annex_corpus_a_through_e_verified": true,
+    "annex_verbatim_certification_verified": true,
+    "authority_nodes_verified": [
+      "AUTH-ANNEX-T-ABSOLUTE-SSOT",
+      "AUTH-GUARDIAN-PACK-THAILAND"
+    ],
+    "authority_rules_verified": [
+      "AR-009",
+      "AR-010",
+      "AR-011"
+    ],
+    "project_index_link_verified": true
+  },
+  "evidence_class": "REPOSITORY_READBACK",
+  "legal_validation": "NOT_PERFORMED",
+  "note": "This record verifies ingestion and repository organization, not the legal validity or enforceability of source claims."
+}
