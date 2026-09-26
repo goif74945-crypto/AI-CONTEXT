@@ -2,7 +2,7 @@
 
 ## Status
 
-**SOURCE-ALIGNED CONTEXT / SOURCE GATE VALIDATED / RUNTIME NOT VERIFIED AT CURRENT HEAD**
+**SOURCE-ALIGNED CONTEXT / SOURCE + RUNTIME GATES VALIDATED / RELEASE AUTHORIZATION BLOCKED**
 
 ## Authority snapshot
 
@@ -21,8 +21,8 @@ The latest implementation observation after the explicit repair directive is:
 
 - repository: `goif74945-crypto/NEXY.AI-`
 - branch: `astra/omega-full-spec-convergence`
-- head: `ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b`
-- status: **SOURCE GATE VALIDATED / RUNTIME NOT VERIFIED**
+- head: `1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32`
+- status: **SOURCE + RUNTIME GATES VALIDATED / RELEASE AUTHORIZATION BLOCKED**
 
 The available mismatch matrix is pinned to older implementation head `317e619f5331a2d1ce9aa0016a18bc1d3f143270`; it is retained as historical/stale evidence, not current-head proof. The previous context snapshot head `96b895ff471d0907d78f316d74fecc09205b8701` is now superseded by the exact observed head above.
 
@@ -45,8 +45,7 @@ The inspected primary jobs report empty/null runner assignment and no executed s
 
 ## Not established by the inspected evidence
 
-- Production implementation status at the current NEXY head.
-- Passing current-head test suite or coverage gate.
+- Formal current-head release authorization (DOC-E E1-E12, security sign-off, and CI-runner proof).
 - Security audit/sign-off.
 - Real deterministic guarantee.
 - Real zero-trust guarantee.
@@ -61,7 +60,7 @@ The inspected primary jobs report empty/null runner assignment and no executed s
 
 ## Decision
 
-The project context is corrected to match the recorded design source and the exact implementation head. A source-only validation-gate repair was applied after exact-head execution proved the API coverage defect. Current release truth remains **NON_DEPLOYABLE / NOT VERIFIED** until an executable exact-head validation path and required DOC-E evidence exist.
+The project context is corrected to match the recorded design source and the exact implementation head. A source-only validation-gate repair was applied after exact-head execution proved the API coverage defect. Current release truth remains **NON_DEPLOYABLE / RELEASE AUTHORIZATION BLOCKED** because runtime gates are now proven but required DOC-E E1-E12 authorization evidence and independent security/CI proof are not.
 ## Repair pass — 2026-09-26
 
 - P-01 source provenance: repaired; canonical SHA identity is separated from observed filename/container metadata.
@@ -88,3 +87,12 @@ The project context is corrected to match the recorded design source and the exa
 - A targeted local run also passed 23/23 tests for tests/coverage/api-health-middleware.test.ts.
 - Rollback: revert the three repair commits, or move the branch back to the recorded base only with explicit authorization. No destructive rollback was performed.
 - Runtime/DOC-E/security/release proof remains unverified; release truth remains **NON_DEPLOYABLE**.
+
+
+## Repair pass — exact-head deterministic/runtime/browser evidence — 2026-09-26
+
+- Current implementation: repository `goif74945-crypto/NEXY.AI-`, branch `astra/omega-full-spec-convergence`, head `1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32`.
+- Runtime proof: Railway deployment `1141cd57-ab78-40c7-97a4-aaba7593f1cf` finished `SUCCESS` from the normal `Dockerfile` and `scripts/runtime-entrypoint.sh`. The image build executed the repository's deterministic gate chain (lint, backend/web typecheck, contract, integration, full test, coverage, coverage check, DOC-C, experimental/check-experimental, and web build). The build completed Next static generation for 36 routes; deployment logs show Prisma migrations complete, Next `Ready`, bootstrap hydration complete, and Railway `/api/health/liveness` healthcheck success.
+- Browser proof: isolated validation deployment `92ebdc7d-bd73-4e26-a28f-24603d870afb` at `454362eb4afce40fafe106eae5241a5f154eef8b` completed Redis AOF validation, real queue worker startup, directive browser test `1/1 PASS`, critical-flow browser tests `8/8 PASS`, and `[browser-validation] browser E2E PASS`.
+- Head boundary: GitHub compare shows `454362eb4afce40fafe106eae5241a5f154eef8b` → `1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32` is one commit changing only `Dockerfile` by one label value; no application/runtime logic file changed between browser proof and final runtime head. This is recorded as a proof boundary, not promoted to an exact-current-head browser claim.
+- Release boundary: literal source-wide coverage is not 100%; the repository's configured area-specific coverage gate passes. DOC-E E1-E12 current-head authorization, security sign-off, and GitHub runner execution are not independently proven. Release truth therefore remains **NON_DEPLOYABLE / RELEASE AUTHORIZATION BLOCKED**.
