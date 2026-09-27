@@ -1,6 +1,6 @@
 {
   "snapshot_kind": "NEXY.AI context truth snapshot",
-  "observed_at": "2026-09-26",
+  "observed_at": "2026-09-27",
   "context_repository": {
     "repository": "goif74945-crypto/AI-CONTEXT",
     "branch": "main",
@@ -17,122 +17,85 @@
   },
   "live_implementation_observation": {
     "repository": "goif74945-crypto/NEXY.AI-",
-    "branch": "astra/omega-full-spec-convergence",
-    "head": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
-    "previously_observed_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
-    "observed_read_only": false,
-    "status": "SOURCE_AND_RUNTIME_GATES_VALIDATED_RELEASE_AUTHORIZATION_BLOCKED",
-    "reason": "Exact-head Railway build/runtime gates and normal runtime healthcheck passed. Browser proof passed at the immediately preceding application-equivalent head; the only intervening change is one Dockerfile label commit. DOC-E authorization, independent security sign-off, and CI runner execution remain unproven."
+    "branch": "NEXY.ai",
+    "head": "a583e67da8b0374960a87d72ff6d48d728232451",
+    "tree": "6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2",
+    "parent": "48db6e642563c51224a9a7a9c3ff201203937a27",
+    "commit_message": "fix: fail closed on blocking auth persistence failures",
+    "commit_at": "2026-09-27T02:20:06Z",
+    "observation_mode": "READ_ONLY_CODE_AND_CI_INSPECTION",
+    "status": "PARTIAL_SOURCE_ALIGNMENT_CI_VALIDATION_BLOCKED_RELEASE_NON_DEPLOYABLE",
+    "local_tests_run": false
   },
-  "context_registry_health": {
-    "ontology": {
-      "entities": 518,
-      "relationships": 865,
-      "aliases": 86,
-      "status": "STRUCTURAL_SOURCE_REGISTRY_PRESENT"
-    },
-    "requirements": {
-      "records": 262,
-      "status": "SOURCE_ALIGNED_WITH_HISTORICAL_RECORDS_LABELED"
-    },
-    "contract_registry": {
-      "contracts_total": 22,
-      "api": 12,
-      "schema": 8,
-      "module": 2,
-      "status": "STRUCTURAL_REGISTRY_PRESENT"
-    },
-    "governance": {
-      "authority_nodes": 15,
-      "status": "SOURCE_HIERARCHY_PRESENT"
-    },
-    "deep_capture": "COMPLETE_FOR_THIS_PASS",
-    "unresolved": [
-      "L1o CTS numeric threshold conflict/source gap",
-      "Robotics Safe Path latency conflict and domain-specific physical budget"
+  "repository_delta_against_previous_static_audit": {
+    "reference_tree": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "current_tree": "6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2",
+    "current_entries": 786,
+    "current_blobs": 613,
+    "added_paths": 0,
+    "deleted_paths": 0,
+    "changed_blob_paths": 8,
+    "unchanged_blob_paths": 605,
+    "changed_paths": [
+      ".github/workflows/deploy.yml",
+      "README.md",
+      "packages/api/auth.ts",
+      "scripts/evidence-attestation.ts",
+      "tests/contract/auth-security-incident.test.ts",
+      "tests/contract/release-attestation.test.ts",
+      "tests/contract/state-matrix.test.ts",
+      "tests/integration/auth/logout.spec.ts"
     ]
   },
-  "control_plane": {
-    "milestones": "P4.1-P4.16",
-    "status": "MATERIALIZED_STRUCTURAL_ONLY",
-    "runtime_verified": false
+  "current_ci_observation": {
+    "workflow": "NEXY CI / Deploy Gate",
+    "run_id": 36288215659,
+    "head_sha": "a583e67da8b0374960a87d72ff6d48d728232451",
+    "status": "completed",
+    "conclusion": "failure",
+    "executed_steps_observed": 0,
+    "code_level_result": "NOT_VERIFIED",
+    "validation_path": "BLOCKED",
+    "doc_c_static_gate": "SKIPPED",
+    "evidence_attestation": "SKIPPED",
+    "deploy": "SKIPPED",
+    "deploy_provider": "NOT_CONFIGURED"
   },
-  "latest_available_mismatch_evidence": {
-    "matrix": "CASES/2026-09-25/NEXY-CURRENT-SPEC-MISMATCH-MATRIX-20260925-1215.json",
-    "implementation_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
-    "status": "STALE_NOT_CURRENT_HEAD",
-    "result": "PARTIAL_VERIFIED_CURRENT_MISMATCH_MATRIX",
-    "validation_observation": {
-      "files": 95,
-      "tests": 715,
-      "coverage_generation": "PASS",
-      "coverage_gate": "FAIL",
-      "note": "These figures describe the recorded older head only."
-    }
+  "static_code_observation": {
+    "auth_persistence": "IMPROVED_FAIL_CLOSED_BUT_NOT_RUNTIME_VERIFIED",
+    "phase_f_release_dependency": "RESOLVED_AS_ADVISORY_IN_CURRENT_WORKFLOW",
+    "evidence_attestation_source_checks": "PRESENT_NOT_EXECUTED",
+    "dependency_boundary": "BLOCKED",
+    "rollback_completeness": "BLOCKED",
+    "product_fsm": "PARTIAL",
+    "rust_vnext_parity_and_wiring": "BLOCKED",
+    "release_law_binding": "PARTIAL",
+    "swarm_malformed_provider_path": "BLOCKED",
+    "api_ui_schema_state_truth": "BLOCKED"
   },
-  "historical_implementation_evidence": {
-    "target_branch": "codex/spec-audit-20260919-78df350",
-    "target_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-    "status": "HISTORICAL_NOT_CURRENT",
-    "use": "lineage/reference only"
+  "evidence_freshness": {
+    "current_head_doc_e_required": 12,
+    "current_head_doc_e_match": 0,
+    "current_head_doc_e_pass": 0,
+    "historical_records_are_not_current_proof": true,
+    "runtime_current_head_proof": false,
+    "security_signoff": false
   },
   "release_truth": {
     "status": "NON_DEPLOYABLE",
-    "current_head_runtime_proof": true,
-    "current_head_doc_e_proof": false,
-    "signoff": false,
-    "rule": "Do not release from source prose, stale matrices or file presence alone; runtime success does not mint release authorization."
+    "authorization": "BLOCKED",
+    "runtime": "NOT_VERIFIED",
+    "rule": "Do not release from source prose, stale matrices, file presence or a CI run with zero observed steps."
   },
   "open_findings": [
-    "Configured source/runtime gate chain passed at current head; literal source-wide coverage is not 100%.",
-    "Browser E2E proof is recorded at 454362eb4afce40fafe106eae5241a5f154eef8b; compare to current head shows only one Dockerfile label change.",
-    "DOC-E E1-E12 current-head authorization evidence is not encoded and independently replayed.",
-    "Security sign-off and GitHub runner execution are not established.",
-    "Latest mismatch matrix remains stale because it targets 317e619f5331a2d1ce9aa0016a18bc1d3f143270.",
-    "L1o numeric CTS threshold remains an authority conflict/source gap.",
-    "Robotics physical latency budget remains unresolved in the design source."
+    "Four forbidden core imports remain outside the allowed dependency boundary.",
+    "Six Prisma migration directories lack migration.down.sql.",
+    "TypeScript and Rust product-level state matrices are not parity-equivalent or proven as one wired authority.",
+    "Release/Law evaluation is not proven to bind global state, evidence integrity and authorization end-to-end.",
+    "Malformed swarm-provider fallback still needs a fail-closed semantic repair/revalidation.",
+    "Canonical API envelopes, central API error containment, UI FREEZE gates and Prisma state vocabulary still drift from the current vNEXT contract.",
+    "Current CI run failed with zero observed steps; tests/build/runtime remain NOT_VERIFIED.",
+    "Historical DOC-E records match 0/12 to current HEAD."
   ],
-  "hash": "HASH_UNAVAILABLE",
-  "current_head_source_validation": {
-    "base_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
-    "current_head": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
-    "runtime_deployment": "1141cd57-ab78-40c7-97a4-aaba7593f1cf",
-    "deterministic_gate_execution": "PASS",
-    "configured_gate_sequence": [
-      "lint",
-      "typecheck backend + web",
-      "test:contract",
-      "test:integration",
-      "npm test",
-      "test:coverage",
-      "check:coverage",
-      "check:doc-c",
-      "test:experimental",
-      "check:experimental",
-      "build:web"
-    ],
-    "experimental": {
-      "test_files": 56,
-      "tests_passed": 566,
-      "skipped": 1,
-      "gate": "PASS"
-    },
-    "phase_f_gate": "PASS",
-    "next_static_routes": 36,
-    "runtime": {
-      "migrations": "PASS / no pending",
-      "next_ready": "PASS",
-      "bootstrap_hydration": "PASS",
-      "healthcheck": "PASS /api/health/liveness"
-    },
-    "browser": {
-      "proof_head": "454362eb4afce40fafe106eae5241a5f154eef8b",
-      "deployment": "92ebdc7d-bd73-4e26-a28f-24603d870afb",
-      "directive": "1/1 PASS",
-      "critical_flows": "8/8 PASS",
-      "e2e": "PASS",
-      "exact_current_head": false,
-      "head_delta": "one Dockerfile label-only commit"
-    }
-  }
+  "hash": "HASH_UNAVAILABLE"
 }

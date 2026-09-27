@@ -1,49 +1,61 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
-  "observed_at": "2026-09-26",
+  "observed_at": "2026-09-27",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
-    "branch": "astra/omega-full-spec-convergence",
-    "head": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
-    "previously_observed_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
-    "observation_mode": "EXACT_HEAD_RUNTIME_AND_BROWSER_VALIDATION"
+    "branch": "NEXY.ai",
+    "head": "a583e67da8b0374960a87d72ff6d48d728232451",
+    "tree": "6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2",
+    "parent": "48db6e642563c51224a9a7a9c3ff201203937a27",
+    "observation_mode": "CURRENT_HEAD_STATIC_REVIEW_AND_CI_STATUS"
   },
   "status": "NON_DEPLOYABLE",
   "evidence": {
-    "required_current_head_doc_e_records": 12,
-    "current_head_doc_e_pass": 0,
-    "current_head_doc_e_blocked": 12,
+    "source_static_review": "PARTIAL",
+    "auth_fail_closed_delta": "PRESENT_NOT_EXECUTED",
+    "current_head_doc_e_required": 12,
+    "current_head_doc_e_match": 0,
     "exact_current_head_doc_e_proof": false,
-    "runtime_signoff": false,
+    "current_head_runtime_proof": false,
     "security_signoff": false,
-    "source_runtime_gate_chain": "PASS",
-    "runtime_deployment": "1141cd57-ab78-40c7-97a4-aaba7593f1cf",
-    "runtime_healthcheck": "PASS",
-    "browser_validation": {
-      "proof_head": "454362eb4afce40fafe106eae5241a5f154eef8b",
-      "deployment": "92ebdc7d-bd73-4e26-a28f-24603d870afb",
-      "directive": "1/1 PASS",
-      "critical_flows": "8/8 PASS",
-      "e2e": "PASS",
-      "exact_current_head": false,
-      "boundary": "one Dockerfile label-only commit between browser proof and runtime head"
+    "ci": {
+      "run_id": 36288215659,
+      "conclusion": "failure",
+      "executed_steps_observed": 0,
+      "code_level_result": "NOT_VERIFIED"
+    },
+    "phase_f": {
+      "release_dependency": false,
+      "mode": "ADVISORY",
+      "current_workflow_structure": "CONTINUE_ON_ERROR_AND_EXCLUDED_FROM_RELEASE_ATTESTATION"
+    },
+    "deploy": {
+      "status": "BLOCKED_PROVIDER_NOT_CONFIGURED",
+      "executed": false
     }
   },
   "freshness": {
-    "latest_available_mismatch_head": "317e619f5331a2d1ce9aa0016a18bc1d3f143270",
-    "latest_available_mismatch_status": "STALE_NOT_CURRENT_HEAD",
-    "historical_validation_head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089",
-    "current_head_runtime_evidence": "PASS",
-    "current_head_doc_e_evidence": "UNPROVEN"
+    "previous_static_audit_tree": "42378126aed29a668f9f294a9100c62a66ff3753",
+    "current_tree": "6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2",
+    "changed_blob_paths": 8,
+    "unchanged_blob_paths": 605,
+    "latest_mismatch_matrix": "STALE_NOT_CURRENT_HEAD",
+    "historical_evidence": "STALE_NOT_CURRENT_HEAD"
   },
-  "blocking_reasons": [
-    "Runtime/build/browser validation passed, but DOC-E E1-E12 current-head authorization evidence is not independently replayed.",
-    "No current-head security sign-off is present.",
-    "The configured GitHub runner path has not provided an observed execution record.",
-    "The latest mismatch matrix is stale because it targets an older implementation head.",
-    "Literal source-wide coverage is not 100%; only the repository's configured area-specific coverage gate passes.",
-    "Source-level CTS and robotics latency conflicts remain explicitly unresolved."
+  "static_blockers": [
+    "Forbidden core imports remain in four files.",
+    "Six Prisma migration directories lack migration.down.sql.",
+    "TS/Rust vNEXT matrix parity and one wired authority are not established.",
+    "Release/Law binding to global state, evidence integrity and authorization is not established.",
+    "Malformed swarm-provider fallback requires fail-closed semantic repair/revalidation.",
+    "Canonical API/UI/schema state truth still contains READY/legacy-state drift and incomplete global FREEZE enforcement."
   ],
-  "rule": "Runtime success and passing configured gates do not mint RELEASE_ELIGIBLE; preserve fail-closed release authorization.",
+  "blocking_reasons": [
+    "Current CI run has zero observed job steps; tests, build and runtime are NOT_VERIFIED.",
+    "Historical DOC-E E1-E12 records match 0/12 to the current HEAD.",
+    "Static specification blockers remain in source.",
+    "Deployment provider is not configured and the deploy workflow fails closed."
+  ],
+  "rule": "Runtime success, source prose or passing-looking historical artifacts do not mint RELEASE_ELIGIBLE; preserve fail-closed release authorization.",
   "hash": "HASH_UNAVAILABLE"
 }

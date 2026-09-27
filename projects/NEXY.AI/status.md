@@ -2,97 +2,73 @@
 
 ## Status
 
-**SOURCE-ALIGNED CONTEXT / SOURCE + RUNTIME GATES VALIDATED / RELEASE AUTHORIZATION BLOCKED**
+**PARTIAL / FREEZE — CI VALIDATION BLOCKED / RELEASE NON_DEPLOYABLE**
+
+This file is the current-head overlay. It supersedes stale current-looking claims that point to another branch or commit. Historical audits remain historical and are not deleted.
 
 ## Authority snapshot
 
-- Source: `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx`.
-- Source SHA-256: `b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7`.
+- Source: แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx.
+- Source SHA-256: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7.
 - DOC-C is the current vNEXT build specification.
-- DOC-D is product design where DOC-C supports it.
+- DOC-D is product design only where DOC-C supports it.
 - Final Architecture is conceptual architecture.
-- DOC-E is evidence/proof only; file presence or design prose is not deployment proof.
+- DOC-E is evidence/proof only; source prose or file presence is not deployment proof.
 
-## Context state observed on 2026-09-26
+## Exact implementation observation — 2026-09-27
 
-The source normalization and governance records are present in `projects/NEXY.AI/`. The deep capture is complete for this pass, while implementation/runtime/deployment evidence remains a separate and incomplete truth domain.
+- repository: goif74945-crypto/NEXY.AI-
+- branch: NEXY.ai
+- HEAD: a583e67da8b0374960a87d72ff6d48d728232451
+- tree: 6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2
+- parent: 48db6e642563c51224a9a7a9c3ff201203937a27
+- commit: fix: fail closed on blocking auth persistence failures
+- commit time: 2026-09-27T02:20:06Z
+- observation mode: read-only repository and CI inspection; no local tests were run.
 
-The latest implementation observation after the explicit repair directive is:
+The current tree contains 786 entries and 613 blobs. Compared with the previous static-audit tree 42378126aed29a668f9f294a9100c62a66ff3753, there are 8 changed blob paths, 0 added paths, 0 deleted paths, and 605 unchanged blob paths. Unchanged-path findings from the previous audit remain applicable; changed paths require current-head interpretation.
 
-- repository: `goif74945-crypto/NEXY.AI-`
-- branch: `astra/omega-full-spec-convergence`
-- head: `1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32`
-- status: **SOURCE + RUNTIME GATES VALIDATED / RELEASE AUTHORIZATION BLOCKED**
+## Current CI/runtime truth
 
-The available mismatch matrix is pinned to older implementation head `317e619f5331a2d1ce9aa0016a18bc1d3f143270`; it is retained as historical/stale evidence, not current-head proof. The previous context snapshot head `96b895ff471d0907d78f316d74fecc09205b8701` is now superseded by the exact observed head above.
+- GitHub Actions run: 36288215659 (NEXY CI / Deploy Gate)
+- recorded conclusion: failure
+- observed executed job steps: 0.
+- TypeScript, contract, integration, full-test, coverage, web-build, browser-E2E and Phase-F jobs did not provide executed command steps in this run.
+- DOC-C static gate, evidence/release attestation and deploy were skipped.
+- Therefore this run does not establish a code-level test/typecheck/build PASS or FAIL; runtime is NOT_VERIFIED and the validation path is BLOCKED.
+- The deploy workflow still fails closed when no deployment provider is configured; deployment is not authorized.
+- No local test command was run for this context refresh.
 
-## Exact-head validation-path observation
+## What changed in the current code
 
-At exact head `db960dd163a9f50373b747ac922d735d1250cf3a`, GitHub Actions recorded:
-- `NEXY CI / Deploy Gate` run `36148606104` → `failure`.
-- `NEXY DOC-E E7 Queue and Rollback` run `36148606030` → `failure`.
+- Auth persistence failure handling was improved: packages/api/auth.ts now routes blocking persistence failures through respondAuthPersistenceFailure and returns a freeze-oriented envelope instead of silently treating the failure as READY/DEGRADED.
+- The changed auth contract/integration tests encode the fail-closed behavior, but the current CI run did not execute them.
+- Phase-F is now structurally advisory: its workflow job is continue-on-error and is excluded from release-attestation needs. The old finding that Phase-F gates release is not a current workflow finding.
+- scripts/evidence-attestation.ts contains exact source/tested-SHA binding and DOC-E E1–E12 checks, but the current run skipped the attestation job, so no current-head proof was minted.
 
-The inspected primary jobs report empty/null runner assignment and no executed steps. This is evidence that the validation path did not execute those job commands; it is **not** evidence that the source code itself failed test/typecheck/build commands. Runtime remains `NOT_VERIFIED`.
+## Static findings still blocking full specification alignment
 
-## Context written or corrected in this pass
+| Area | Current fact | Status |
+|---|---|---|
+| Dependency boundary | Forbidden core imports remain in packages/auth/security-incident.ts, packages/auth/session.ts, vault/repository.ts and packages/storage/lifecycle.ts; .eslintrc.json has no matching boundary rule. | BLOCKER |
+| Rollback | 23 Prisma migrations exist; 6 migration directories have no migration.down.sql, including the baseline, runtime-invariants and four 20260925 migrations. | BLOCKER |
+| Product FSM | TypeScript has the expanded vNEXT event rows, but vnextTransition accepts only current state/event/actor and a central global guard is not proven at the current-head source boundary. | PARTIAL |
+| Rust parity/wiring | core-kernel/src/kernel/vnext_matrix.rs still exposes the older event/owner/transition surface and treats FREEZE/STOP as terminal; packages/core-binding/src/lib.rs wires the hardware FSM, not the TypeScript-equivalent vNEXT matrix. | BLOCKER |
+| Release/Law | The release evaluator consumes accepted, determinism, quorum, critical-agent and LAW results; end-to-end binding to current global state, evidence integrity and release authorization is not proven. | PARTIAL |
+| Swarm parsing | packages/swarm/agent-response.ts still has a malformed-provider fallback with confidence 0; semantic fail-closed behavior requires repair/revalidation. | BLOCKER |
+| API/UI/schema truth | packages/api/canonical.ts still contains hard-coded READY envelopes; apps/web/lib/api-handler.ts has no central handler catch; primary UI actions are not uniformly tied to global FREEZE; Prisma comments still describe the old 7-state vocabulary. | BLOCKER |
+| Verification/evidence | Current CI has zero observed steps and historical DOC-E records target other revisions. | BLOCKED |
 
-- `overview.md` — source hierarchy, one-output-or-freeze semantics, current auth defaults and current DOC-C backend target.
-- `architecture.md` — final conceptual layer order, L1o/Lo3/Lo2 role boundaries, separate execution/risk state machines and unresolved robotics timing.
-- `requirements.md` — current auth values, current DOC-C target stack, command-vocabulary boundary and unresolved timing/threshold notes.
-- `deep/README.md` — capture status corrected to match `capture-status.md`.
-- `control-plane/INDEX.md` — P4.1–P4.16 materialized structurally; runtime not implied.
-- `checkpoints/current.json`, `snapshots/current.json`, `snapshots/PROJECT-HEALTH.md`, `release/current-gate-state.json` — stale current-looking integration summaries reconciled with current source/evidence boundaries.
+## Evidence freshness
 
-## Not established by the inspected evidence
-
-- Formal current-head release authorization (DOC-E E1-E12, security sign-off, and CI-runner proof).
-- Security audit/sign-off.
-- Real deterministic guarantee.
-- Real zero-trust guarantee.
-- Real post-quantum security.
-- Real 24/7 operation.
-- Real automatic self-healing/self-upgrade.
-- Real global/multi-cloud availability.
-- Real robotics implementation.
-- Actual API provider integrations.
-- Actual performance/latency under load or physical hardware profiling.
-- Actual recovery/rollback verification.
+- Indexed DOC-E/E1–E12 records are historical and do not match current HEAD a583e67da8b0374960a87d72ff6d48d728232451; current-head match is 0/12.
+- The previous implementation map and repository navigation reports are retained as lineage/reference records, not current semantic proof.
+- Current-head static identity is updated in snapshots/current.json, release/current-gate-state.json and implementation/current-head-path-validation.json.
 
 ## Decision
 
-The project context is corrected to match the recorded design source and the exact implementation head. A source-only validation-gate repair was applied after exact-head execution proved the API coverage defect. Current release truth remains **NON_DEPLOYABLE / RELEASE AUTHORIZATION BLOCKED** because runtime gates are now proven but required DOC-E E1-E12 authorization evidence and independent security/CI proof are not.
-## Repair pass — 2026-09-26
+Source alignment is PARTIAL. Current CI/runtime validation is BLOCKED/NOT_VERIFIED. Release authorization remains BLOCKED and the project is NON_DEPLOYABLE. Do not promote, deploy or call the implementation complete until the static blockers are repaired and exact-current-head test, runtime, DOC-E and security evidence is independently observed.
 
-- P-01 source provenance: repaired; canonical SHA identity is separated from observed filename/container metadata.
-- P-02/P-03 freshness surfaces: refreshed to exact implementation head `db960dd163a9f50373b747ac922d735d1250cf3a`.
-- P-04 implementation map: all 864 historical mapped refs still exist at current HEAD; 107 unique mapped paths changed content and 164 entities require semantic revalidation.
-- P-05 traceability: all 3,218 implementation refs and 1,149 test refs still exist; 166/262 requirements touch changed implementation refs and 166/262 touch changed test refs. Verdicts remain NOT_EVALUATED.
-- P-06 stale CASE artifacts: preserved and marked `SUPERSEDED_STALE`.
-- P-07 DOC-E: E1–E12 inspected; all 12 report `db52f9f1870b302f36653268513251d010f9726e`, so current-head match is 0/12.
-- P-08 taxonomy coverage: `SCHEMA=0` and `WORKFLOW=0` are now emitted explicitly.
-- P-09 event regression: current code and tests already assert the exact event set including `cancel` and `timeout`; execution is not verified.
-- P-10 CTS: structured authority conflict added; numeric CTS threshold is frozen until authoritative definition exists.
-- P-11 robotics latency: path-separated registry added for `sensor_to_actuator`, `mcu_fast_path`, and `lo3_cycle`; no unresolved value was promoted to production truth.
-- P-12 release evidence: current-head overlay records that stale evidence cannot satisfy a different HEAD; workflow structure binds release evidence to commit identity, but current execution remains blocked.
-- Exact-head failed jobs were rerun. The rerun again produced primary jobs with zero observed steps, so no test/typecheck/build/DOC-E PASS is claimed.
+## Historical boundary
 
-
-
-## Repair pass — exact-head API coverage gate — 2026-09-26
-
-- The requested branch ref was absent when the first fast-forward write was attempted; it was recreated from the frozen base db960dd163a9f50373b747ac922d735d1250cf3a and advanced only by three linear commits to ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b.
-- The complete source diff from the frozen base contains exactly one modified file: tests/coverage/api-health-middleware.test.ts (18 additions, 1 deletion). Runtime/application source was not changed.
-- The proven initial gate failure was API branch coverage 84.92% against the repository's existing 85% threshold. After the CSP false-branch test it was 84.99%; after the non-string CORS-origin test it was 85.06%.
-- Exact-head validation deployment b5d37906-c67a-4e15-b94d-73b9b0eb0ae5 at ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b reported 104 test files and 796 tests passed; API, core, law, and judge coverage checks all passed.
-- A targeted local run also passed 23/23 tests for tests/coverage/api-health-middleware.test.ts.
-- Rollback: revert the three repair commits, or move the branch back to the recorded base only with explicit authorization. No destructive rollback was performed.
-- Runtime/DOC-E/security/release proof remains unverified; release truth remains **NON_DEPLOYABLE**.
-
-
-## Repair pass — exact-head deterministic/runtime/browser evidence — 2026-09-26
-
-- Current implementation: repository `goif74945-crypto/NEXY.AI-`, branch `astra/omega-full-spec-convergence`, head `1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32`.
-- Runtime proof: Railway deployment `1141cd57-ab78-40c7-97a4-aaba7593f1cf` finished `SUCCESS` from the normal `Dockerfile` and `scripts/runtime-entrypoint.sh`. The image build executed the repository's deterministic gate chain (lint, backend/web typecheck, contract, integration, full test, coverage, coverage check, DOC-C, experimental/check-experimental, and web build). The build completed Next static generation for 36 routes; deployment logs show Prisma migrations complete, Next `Ready`, bootstrap hydration complete, and Railway `/api/health/liveness` healthcheck success.
-- Browser proof: isolated validation deployment `92ebdc7d-bd73-4e26-a28f-24603d870afb` at `454362eb4afce40fafe106eae5241a5f154eef8b` completed Redis AOF validation, real queue worker startup, directive browser test `1/1 PASS`, critical-flow browser tests `8/8 PASS`, and `[browser-validation] browser E2E PASS`.
-- Head boundary: GitHub compare shows `454362eb4afce40fafe106eae5241a5f154eef8b` → `1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32` is one commit changing only `Dockerfile` by one label value; no application/runtime logic file changed between browser proof and final runtime head. This is recorded as a proof boundary, not promoted to an exact-current-head browser claim.
-- Release boundary: literal source-wide coverage is not 100%; the repository's configured area-specific coverage gate passes. DOC-E E1-E12 current-head authorization, security sign-off, and GitHub runner execution are not independently proven. Release truth therefore remains **NON_DEPLOYABLE / RELEASE AUTHORIZATION BLOCKED**.
+Older branch/head, Railway/browser, coverage and repair-pass claims remain preserved in historical audit and evidence files. They must not be read as proof for the current NEXY.ai head.
