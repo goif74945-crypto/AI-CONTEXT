@@ -1,0 +1,29 @@
+{
+  "LEDGER_ID": "NEXY-DOC-E-BLOCKED-REFRESH-e0d1fd87",
+  "task_id": "NEXY-DOC-C-EXACT-CONVERGENCE-REPAIR-20260927",
+  "mode": "EXEC_SOLO",
+  "source_revision": "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d",
+  "evidence_carrier_commit": "e0d1fd876accf1030eb5a42954c0a027f57a9348",
+  "workflow_run": {
+    "id": 36334496300,
+    "source_revision": "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d",
+    "conclusion": "failure",
+    "executable_jobs_observed": 8,
+    "executable_jobs_with_steps": 0,
+    "interpretation": "BLOCKED_ENVIRONMENT_NOT_CODE_FAILURE"
+  },
+  "changes": {
+    "namespace": "docs/evidence/current",
+    "artifacts": "README + E01-E12 + DOC-E-0d0d82bdc7d0-pack.md",
+    "policy": "All evidence remains BLOCKED/NOT_EXECUTED; no PASS, deployability, rollback-success, or production claim."
+  },
+  "validation": {
+    "github_readback": "PASS",
+    "remote_desktop": "OFFLINE",
+    "runtime_tests": "NOT_EXECUTED"
+  },
+  "note": "Evidence carrier necessarily follows the source revision it documents; source_revision and evidence_carrier_commit are intentionally distinct to avoid self-referential HEAD claims.",
+  "status": "DOC_E_REFRESHED_BLOCKED_NON_DEPLOYABLE",
+  "timestamp_source": "2026-09-27 Asia/Bangkok conversation time",
+  "hash": "HASH_UNAVAILABLE"
+}
