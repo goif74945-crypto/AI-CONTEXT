@@ -1,0 +1,44 @@
+{
+  "LEDGER_ID": "NEXY-DOC-C-CONVERGENCE-REPAIR-STORAGE-IDEMPOTENCY-b2073bab",
+  "task_id": "NEXY-DOC-C-EXACT-CONVERGENCE-REPAIR-20260927",
+  "mode": "EXEC_SOLO",
+  "source_authority": {
+    "file": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "requirement": "DOC-C Global API Law: all mutating routes require idempotency_key unless explicitly exempt",
+    "source_lines": "9377-9378"
+  },
+  "pre_state": {
+    "repo": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "head": "4b723d81a5dc87a0dbcf9f02c15a22c9e748603f",
+    "claim": "StorageReconcileBodySchema accepted operation_id only; handler lacked request-level durable idempotency binding."
+  },
+  "action": {
+    "commit": "b2073babcd43f3a90ee06abddd3460941c0a8e4a",
+    "files": [
+      "packages/validation/api.schema.ts",
+      "packages/api/storage-control.ts",
+      "tests/coverage/storage-control-plane.test.ts"
+    ],
+    "changes": [
+      "Added required idempotency_key to StorageReconcileBodySchema.",
+      "Bound reconcile replay to operation_id + authenticated session hash + request hash using OwnerControlIdempotency.",
+      "Added PENDING→COMPLETED durable replay state without introducing a new persistence model.",
+      "Added regression coverage for missing idempotency key and key/request conflicts."
+    ]
+  },
+  "validation": {
+    "static_write": "APPLIED",
+    "runtime_tests": "NOT_YET_EXECUTED",
+    "ci": "NOT_YET_OBSERVED",
+    "release_proof": "NOT_CLAIMED"
+  },
+  "risk": [
+    "Exact-head typecheck/tests remain required.",
+    "Provider reconciliation behavior must be regression-tested in CI before VERIFIED."
+  ],
+  "status": "IMPLEMENTED_AWAITING_VALIDATION",
+  "timestamp_source": "2026-09-27 Asia/Bangkok conversation time",
+  "hash": "HASH_UNAVAILABLE"
+}
