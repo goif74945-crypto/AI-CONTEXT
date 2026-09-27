@@ -1,0 +1,30 @@
+{
+  "LEDGER_ID": "NEXY-DOC-D-S2-ACTION-CONVERGENCE-7c13889c",
+  "task_id": "NEXY-DOC-C-EXACT-CONVERGENCE-REPAIR-20260927",
+  "mode": "EXEC_SOLO",
+  "authority": {
+    "design_file": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "requirement": "DOC-D S2 OTAC Verify: Primary CTA Verify Code; Secondary CTA Resend Code"
+  },
+  "repo": {
+    "name": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "before": "c463352107c15750d8a2a72e9b2ffd7394dda872",
+    "after": "7c13889c4f55e1c63de14df8116d1e2b2914d9fc"
+  },
+  "changes": [
+    "Changed verify action label from VERIFY & LOGIN to VERIFY CODE.",
+    "Changed resend action label to RESEND CODE.",
+    "Auth request/verification behavior and security semantics unchanged.",
+    "Static DOC-D action contract updated."
+  ],
+  "validation": {
+    "github_readback_pending": true,
+    "runtime_tests": "NOT_EXECUTED",
+    "ci_environment": "KNOWN_ZERO_STEP_FAILURE_MODE"
+  },
+  "status": "IMPLEMENTED_AWAITING_READBACK_AND_RUNTIME",
+  "timestamp_source": "2026-09-27 Asia/Bangkok conversation time",
+  "hash": "HASH_UNAVAILABLE"
+}
