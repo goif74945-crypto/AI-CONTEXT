@@ -1,0 +1,32 @@
+{
+  "LEDGER_ID": "NEXY-DOC-C-CONVERGENCE-REPAIR-E7-63be2f52",
+  "task_id": "NEXY-DOC-C-EXACT-CONVERGENCE-REPAIR-20260927",
+  "mode": "EXEC_SOLO",
+  "pre_state": {
+    "nexy_head": "b2073babcd43f3a90ee06abddd3460941c0a8e4a",
+    "finding": "DOC-E E7 workflow did not trigger on canonical NEXY.ai push."
+  },
+  "action": {
+    "nexy_commit": "63be2f52c21bf74aa504c0972b672b030c06ebf1",
+    "files": [
+      ".github/workflows/e7-queue.yml",
+      "tests/contract/release-attestation.test.ts"
+    ],
+    "changes": [
+      "Added NEXY.ai to E7 push branches.",
+      "Added regression assertion that E7 is wired to canonical branch and real queue proof paths."
+    ]
+  },
+  "evidence_basis": [
+    "DOC-E requires E7 queue worker readiness proof.",
+    "NEXY.ai is repository default/canonical implementation branch."
+  ],
+  "validation": {
+    "static_write": "APPLIED",
+    "runtime_ci": "PENDING_OBSERVATION",
+    "release_authorization": "NOT_CLAIMED"
+  },
+  "status": "IMPLEMENTED_AWAITING_CI",
+  "timestamp_source": "2026-09-27 Asia/Bangkok conversation time",
+  "hash": "HASH_UNAVAILABLE"
+}
