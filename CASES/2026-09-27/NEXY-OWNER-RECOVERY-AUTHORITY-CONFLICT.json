@@ -1,0 +1,34 @@
+{
+  "CASE_ID": "NEXY-OWNER-RECOVERY-AUTHORITY-CONFLICT",
+  "type": "SPEC_AUTHORITY_CONFLICT",
+  "task_id": "NEXY-DOC-C-EXACT-CONVERGENCE-REPAIR-20260927",
+  "design_source": {
+    "file": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "conflict": {
+    "global_api_law": "All mutating routes require secure session + CSRF, except OTAC request/verify.",
+    "owner_escalation_law": "If OWNER session lost and suspicious lock active: manual owner recovery path required; emit security incident + audit trail; no hidden bypass.",
+    "proof_locations": [
+      "design lines 9377-9378",
+      "design lines 10264-10269"
+    ],
+    "consequence": "A lost-session recovery mutation cannot simultaneously require an already-valid secure session unless an additional explicit recovery authority mechanism/exemption is specified."
+  },
+  "current_implementation": {
+    "path": "packages/api/owner-recovery.ts",
+    "behavior": "No automatic OWNER access restoration; CSRF + idempotency + suspicious OWNER lock eligibility; revokes active sessions and emits security/audit evidence; no authenticated secure session required on lost-session path.",
+    "assessment": "Satisfies owner escalation intent but conflicts with literal global mutation-session law."
+  },
+  "decision": "FREEZE_THIS_PATH_FROM_FURTHER_SPEC_INVENTION",
+  "prohibited_fixes": [
+    "Do not invent recovery secret/key.",
+    "Do not silently exempt owner-recovery from Global API Law.",
+    "Do not require an impossible active session and claim lost-session recovery works.",
+    "Do not weaken CSRF/idempotency/security evidence."
+  ],
+  "required_authority_change": "DOC-C must explicitly define the recovery authentication/exemption mechanism or precedence rule.",
+  "status": "UNRESOLVED_AUTHORITY_CONFLICT",
+  "timestamp_source": "2026-09-27 Asia/Bangkok conversation time",
+  "hash": "HASH_UNAVAILABLE"
+}
