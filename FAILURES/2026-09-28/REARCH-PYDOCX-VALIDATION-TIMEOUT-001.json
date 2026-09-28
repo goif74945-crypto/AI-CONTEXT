@@ -1,0 +1,12 @@
+{
+  "FAILURE_ID": "FAIL-20260928-REARCH-PYDOCX-VALIDATION-TIMEOUT-001",
+  "task_id": "TASK-20260928-NEXY-IGNIS-REARCH-001",
+  "context": "Validation after building >10k-paragraph DOCX.",
+  "cause": "Repeated access through python-docx paragraph proxy list in a hot loop caused the user-visible Python step to exceed its execution window.",
+  "failed_approach": "Build + full validation + artifact writes in one user-visible Python execution.",
+  "recovery": "Continued from generated artifacts; used container-side linear verification; canonical render; pixel-by-pixel regression; audit finalized only after verification.",
+  "boundary": "Tool/runtime efficiency issue only; no source or output semantic data loss.",
+  "prevention": "Use cached paragraph text/index arrays and split build/validate/render phases for very large DOCX jobs.",
+  "final_status": "RECOVERED",
+  "trace_id": "TRACE-20260928-NEXY-IGNIS-REARCH-001"
+}
