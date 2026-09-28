@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "CASE-20260928-NEXY-IGNIS-REARCH-001",
+  "task_id": "TASK-20260928-NEXY-IGNIS-REARCH-001",
+  "cause": "Source was large, repetitive, versioned, and mixed canon/build/design/history; required lossless re-architecture with explicit authority/conflict handling.",
+  "violation": "NONE_FINAL",
+  "impact": "A cleaner standalone document was produced without overwriting source.",
+  "fix": "Exact-source preservation, conservative atomization, exact duplicate consolidation, source-driven authority routing, explicit conflict registry, full traceability and render QA.",
+  "prevention": "Future rewrites should use source hash gate + atom ledger + reverse audit + visual render gate.",
+  "regression": "198/198 re-rendered pages pixel-identical to inspected render.",
+  "final_status": "CLOSED_COMPLETE",
+  "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "output_sha256": "f57157744135ddf24283cad1be72eeb878fd035c43b0fc08aa590d73d62c6e33",
+  "trace_id": "TRACE-20260928-NEXY-IGNIS-REARCH-001"
+}
