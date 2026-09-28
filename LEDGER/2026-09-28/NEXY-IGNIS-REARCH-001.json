@@ -1,0 +1,98 @@
+{
+  "LEDGER_ID": "LEDGER-20260928-NEXY-IGNIS-REARCH-001",
+  "task_id": "TASK-20260928-NEXY-IGNIS-REARCH-001",
+  "trace_id": "TRACE-20260928-NEXY-IGNIS-REARCH-001",
+  "claims": [
+    {
+      "id": "L1",
+      "source": "source file bytes",
+      "claim": "Source identity matches command-locked SHA-256.",
+      "proof": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+      "deps": [],
+      "risk": "LOW",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "2026-09-28"
+    },
+    {
+      "id": "L2",
+      "source": "DOCX body traversal",
+      "claim": "12,537 body paragraphs traversed; 10,979 non-empty atoms.",
+      "proof": "source_total_paragraphs=12537; source_nonempty_atoms=10979",
+      "deps": [
+        "L1"
+      ],
+      "risk": "LOW",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "2026-09-28"
+    },
+    {
+      "id": "L3",
+      "source": "traceability matrix",
+      "claim": "All 10,979 source atoms mapped.",
+      "proof": "mapped=10979; coverage=1.0000; orphans=0",
+      "deps": [
+        "L2"
+      ],
+      "risk": "LOW",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "2026-09-28"
+    },
+    {
+      "id": "L4",
+      "source": "output re-read",
+      "claim": "Preserved source paragraphs re-read exactly; reverse source support failures 0.",
+      "proof": "output_reread_complete=true",
+      "deps": [
+        "L3"
+      ],
+      "risk": "LOW",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "2026-09-28"
+    },
+    {
+      "id": "L5",
+      "source": "render_docx.py + visual inspection",
+      "claim": "198-page output visually passed layout QA.",
+      "proof": "198/198 pages inspected; clipping=0; overlap=0",
+      "deps": [
+        "L4"
+      ],
+      "risk": "LOW",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "2026-09-28"
+    },
+    {
+      "id": "L6",
+      "source": "pixel regression",
+      "claim": "Canonical final re-render is identical to inspected render.",
+      "proof": "198/198 pixel-identical",
+      "deps": [
+        "L5"
+      ],
+      "risk": "LOW",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "2026-09-28"
+    },
+    {
+      "id": "L7",
+      "source": "source text scan",
+      "claim": "274 literal U+FFFD replacement characters exist in source and were not invented by rewrite.",
+      "proof": "U+FFFD count=274",
+      "deps": [
+        "L1"
+      ],
+      "risk": "MEDIUM",
+      "status": "VERIFIED_SOURCE_AMBIGUITY",
+      "confidence": 1,
+      "freshness": "2026-09-28"
+    }
+  ],
+  "final_verdict": "COMPLETE_WITH_PRESERVED_SOURCE_CONFLICTS",
+  "hash": "f57157744135ddf24283cad1be72eeb878fd035c43b0fc08aa590d73d62c6e33"
+}
