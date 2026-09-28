@@ -1,0 +1,14 @@
+{
+  "CASE_ID": "CASE-20260928-NEXY-CURRENT-GAP-FILE-001",
+  "task_id": "TASK-20260928-NEXY-CURRENT-GAP-FILE-001",
+  "type": "CURRENT_HEAD_SPEC_GAP_EXTRACTION",
+  "cause": "Prior static audit was stale after 28 additional commits, so old findings could not be forwarded unchanged.",
+  "impact": "Current gap file excludes repaired systems and contains six source-backed outstanding static gaps/mismatches.",
+  "fix": "Exact-head revalidation against authoritative source requirements.",
+  "prevention": "Always compare audit HEAD to current canonical HEAD and recheck repaired candidates before reporting.",
+  "regression": "Old finding carry-forward prevented; implementation presence searches rerun at exact HEAD.",
+  "final_status": "CLOSED_WITH_STATIC_LIMITS",
+  "trace_id": "TRACE-20260928-NEXY-CURRENT-GAP-FILE-001",
+  "head": "7eb83a88eee1eb9d6357577ad937a82248933091",
+  "artifact_sha256": "c38d369f7729c41fa1e7dbef912b3ccfcce8278d65aab1350549a97b2527f5e9"
+}
