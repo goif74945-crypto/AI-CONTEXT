@@ -4,7 +4,7 @@ Read in this order when the task needs full-system context.
 
 1. [Capture method](./README.md)
 2. [Source coverage map](./source-coverage-map.md)
-3. [Extended system map — why 215 is not total atomic count](./extended-system-map.md)
+3. [Extended system map + legacy 215-registry deprecation](./extended-system-map.md)
 4. [Human / UX / control surface](./human-control-surface.md)
 5. [Sovereign fabric / Universe / recovery](./sovereign-fabric.md)
 6. [Constitutional deterministic locks](./constitutional-locks.md)
@@ -29,4 +29,11 @@ Priority depends on the question:
 - implementation/runtime status → actual repository + tests/evidence, not these context notes.
 
 ## Critical counting reminder
-The 215-system inventory is a **top-level registry baseline**. The deep architecture contains substantially more atomic mechanisms. Do not answer “NEXY has exactly 215 systems” unless explicitly referring to that registry version.
+The historical 215-entry inventory is **DEPRECATED_UNRELIABLE_DO_NOT_USE** for current NEXY facts. Do not use it as a system count, atomic count, audit/build/completeness denominator, or requirement inventory.
+
+For exhaustive source enumeration, use the current normalized matrix:
+- [Current Full System / Feature Build Matrix](../source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md)
+- **837 normalized requirement rows**
+- explicit authority/scope classification
+
+Historical 215 records may be mentioned only as provenance and must be labeled deprecated/unreliable.
