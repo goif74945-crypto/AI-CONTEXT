@@ -29,7 +29,7 @@ Parsed source used:
 - [x] physical hardware/software robotics direction
 - [x] final 10-layer architecture
 - [x] cross-system mechanisms
-- [x] clarification that 215 is not the total atomic system count
+- [x] legacy 215-entry registry classified `DEPRECATED_UNRELIABLE_DO_NOT_USE`; retained only for provenance and forbidden as a current count/denominator
 
 ## What “complete” means here
 The important architecture, authority, system boundaries, protocols, failure behavior, state machines and later source corrections have been normalized into AI-CONTEXT.
