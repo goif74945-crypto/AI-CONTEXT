@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This directory is a source-derived capture of the full design document `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx`. It exists because the source is much larger than a single model context window and the earlier 215-system inventory compresses many laws, protocols, state machines, invariants and execution planes into single labels.
+This directory is a source-derived capture of the full design document `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx`. It exists because the source is much larger than a single model context window. The earlier 215-entry inventory is now `DEPRECATED_UNRELIABLE_DO_NOT_USE`: it used mixed granularity and compressed/omitted source objects, so it must not be used for current counts, audit/build denominators or completeness. Current exhaustive source enumeration starts from the 837-row normalized system/feature build matrix.
 
 ## Method
 
