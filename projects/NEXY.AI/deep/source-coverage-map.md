@@ -10,6 +10,15 @@ Parsed capture used for this pass:
 
 Paragraph numbers below refer to the local extraction sequence used during this capture. They are resume/navigation anchors, not permanent source line IDs.
 
+## Current normalized matrix
+A newer source-normalization artifact is the current enumeration reference:
+- `NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.xlsx`
+- matrix SHA-256: `7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622`
+- normalized requirement rows: **837**
+- current record: `projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md`
+
+The historical 215-entry registry is `DEPRECATED_UNRELIABLE_DO_NOT_USE` and must not be used as a current source denominator.
+
 ## Coverage
 
 ### 1–3219 — Identity / Human / Canon / UX evolution
