@@ -84,3 +84,24 @@ Source alignment and release readiness remain PARTIAL/BLOCKED. The exact tested 
 ## Historical boundary
 
 Older branch/head, Railway/browser, coverage and repair-pass claims remain preserved in historical audit and evidence files. They must not be read as proof for the current NEXY.ai head.
+
+
+## Latest direct repository inspection — 2026-09-29 (Asia/Bangkok)
+
+This addendum records a read-only inspection of the Codespaces checkout after the exact-head evidence commit. It does not replace the exact-head test record above.
+
+- observed repository HEAD: ba33c8fdcd0ea56729835bf06b43500ec5b21f4e
+- observed tree: 8a3ae328c1956c661bc2b1561de1a791a7856a7e
+- observed branch: NEXY.ai
+- observed worktree: CLEAN
+- tracked API route files under apps/web/app/api: 37
+- DOC-D required component files found: 14/14; grep also found references from the web app/pages/components
+- migration rollback files found: 23
+- static migration check found event_log_append_only in the up/down migration pair and audit_log_append_only in the up/down migration pair
+- the trigger result is static repository evidence only; live database rollback/trigger execution remains NOT VERIFIED because the validation host has no psql
+
+### Open implementation finding
+
+- DOC-D S4 lists a SAVE DRAFT action. In the current apps/web/app/directives/new/page.tsx, the button currently only navigates to /directives; no draft persistence or draft endpoint is implemented. This is an OPEN UI-behavior gap, not a passing claim.
+- The current DOC-C/D crosswalk is therefore still NOT PROVEN. The 100% parity claim remains withheld until the open behavior is implemented and re-tested on a new exact target SHA.
+- The existing local test/evidence numbers above are bound to tested SHA ab471d1e2705d6010afdcdbb0a7baf08132de47d, not to an untested application-code change at the newer evidence HEAD.
