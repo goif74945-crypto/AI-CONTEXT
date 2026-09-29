@@ -192,6 +192,16 @@
     "All implementation_refs/test_refs/evidence_refs are intentionally empty until dedicated mapping steps.",
     "Status UNKNOWN is deliberate; source existence is not implementation proof.",
     "Future architecture requirements are kept separate from current DOC-C build scope.",
-    "Historical requirements remain for claim-level supersession provenance."
-  ]
+    "Historical requirements remain for claim-level supersession provenance.",
+    "This 262-record registry is a prior partial extraction and must not be used as the exhaustive current NEXY source denominator.",
+    "The current normalized source matrix contains 837 requirement rows and supersedes the legacy 215-entry inventory for exhaustive enumeration.",
+    "The historical 215-entry registry is DEPRECATED_UNRELIABLE_DO_NOT_USE; retain only as provenance."
+  ],
+  "registry_status": "LEGACY_PARTIAL_SUPERSEDED_FOR_EXHAUSTIVE_DENOMINATOR",
+  "completeness_authority": {
+    "current_normalized_matrix": "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md",
+    "normalized_requirement_rows": 837,
+    "matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+    "legacy_registry_215": "DEPRECATED_UNRELIABLE_DO_NOT_USE"
+  }
 }
