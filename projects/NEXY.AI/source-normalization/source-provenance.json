@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-09-26",
+  "observed_at": "2026-09-30",
   "identity": {
     "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "logical_filename": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
@@ -32,6 +32,42 @@
       "limitation": "The prior Drive-object filename observation was not independently re-read from Drive in this repair pass."
     }
   ],
-  "source_contract_status": "CONTENT_IDENTITY_VERIFIED_CURRENT_ATTACHMENT",
-  "hash": "HASH_UNAVAILABLE"
+  "source_contract_status": "CONTENT_IDENTITY_VERIFIED_CURRENT_ATTACHMENT_AND_MATRIX_NORMALIZATION_REGISTERED",
+  "hash": "HASH_UNAVAILABLE",
+  "current_normalized_matrix": {
+    "filename": "NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.xlsx",
+    "sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+    "byte_size": 176681,
+    "normalized_requirement_rows": 837,
+    "source_document_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "implementation_audit": "NOT_PERFORMED",
+    "implementation_status_default": "NOT_VERIFIED",
+    "scope_counts": {
+      "CURRENT_GOVERNING_LAW": 12,
+      "CURRENT_BUILD": 547,
+      "CURRENT_BUILD_SUPPLEMENT": 127,
+      "SUPPORTED_PRODUCT_DESIGN": 87,
+      "DEPLOYMENT_EVIDENCE": 52,
+      "EXCLUDED_CURRENT": 8,
+      "DEFERRED_FUTURE": 4
+    },
+    "context_record": "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md",
+    "status": "CURRENT_SOURCE_NORMALIZATION_REFERENCE"
+  },
+  "legacy_215_registry_policy": {
+    "status": "DEPRECATED_UNRELIABLE_DO_NOT_USE",
+    "retained_for": "HISTORICAL_PROVENANCE_ONLY",
+    "prohibited_uses": [
+      "current_system_count",
+      "atomic_system_count",
+      "audit_denominator",
+      "build_denominator",
+      "completeness_denominator",
+      "requirement_denominator",
+      "source_of_truth_inventory",
+      "create_delete_authority"
+    ],
+    "superseded_by": "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md",
+    "decision": "projects/NEXY.AI/decisions/ADR-0013.md"
+  }
 }
