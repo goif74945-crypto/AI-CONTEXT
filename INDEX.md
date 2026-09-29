@@ -64,7 +64,7 @@ Ready-to-fill examples:
 - [NEXY.AI context](./projects/NEXY.AI/overview.md)
 - [NEXY.AI deep source context](./projects/NEXY.AI/deep/INDEX.md)
 
-When working on NEXY.AI, do not treat the 215-entry registry as the total atomic system count. Use the deep context and authority boundaries.
+When working on NEXY.AI, **do not use the legacy 215-entry registry as current truth**. It is `DEPRECATED_UNRELIABLE_DO_NOT_USE` for counts, audit/build denominators, completeness, or requirement enumeration. Use the [current full system/feature build matrix](./projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md), the deep context, and the authority boundaries.
 
 ---
 
