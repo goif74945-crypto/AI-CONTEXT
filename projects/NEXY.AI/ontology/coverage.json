@@ -120,6 +120,14 @@
     "implementation_refs/test_refs/evidence_refs intentionally remain unpopulated until the dedicated Implementation Map/Test Matrix/Evidence Registry steps.",
     "Source prose contains evolving eras; HISTORICAL and CONFLICT records are preserved instead of erased.",
     "518 is the atomic count under ontology v1 rules after the cancel/timeout event omission patch; future source revisions may change it.",
-    "Coverage emits every canonical taxonomy key; zero-population types remain explicit (SCHEMA=0, WORKFLOW=0 for this source revision)."
-  ]
+    "Coverage emits every canonical taxonomy key; zero-population types remain explicit (SCHEMA=0, WORKFLOW=0 for this source revision).",
+    "The historical 215-entry registry is DEPRECATED_UNRELIABLE_DO_NOT_USE and must not be used for current counts or denominators.",
+    "Ontology entity_count=518 is a versioned typed-object count, not a NEXY system count and not the 837-row requirement denominator."
+  ],
+  "legacy_215_registry": "DEPRECATED_UNRELIABLE_DO_NOT_USE",
+  "current_source_matrix": {
+    "record": "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md",
+    "normalized_requirement_rows": 837,
+    "note": "Requirement rows and ontology entities are different counting units."
+  }
 }
