@@ -8,6 +8,9 @@ This context is derived from the NEXY-IGNIS source corpus and from the existing 
 - Current conversation attachment observed on 2026-09-26: `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx`, detected as Microsoft Word / OOXML DOCX, 2,146,350 bytes, with 10,979 non-empty paragraphs in `word/document.xml`.
 - Prior audit metadata recorded an accessible Drive object named `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.txt` whose binary/container and SHA-256 matched the same DOCX content. That prior filename observation is retained as provenance metadata, not treated as a distinct source.
 - Canonical provenance record: `projects/NEXY.AI/source-normalization/source-provenance.json`.
+- Current normalized source-enumeration record: `projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md`.
+- Current matrix: `NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.xlsx`, SHA-256 `7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622`, containing **837 normalized requirement rows** derived from the same canonical source SHA.
+- The historical **215-entry registry is deprecated and unreliable for current use**. It must not be used for system counts, atomic counts, audit/build/completeness denominators, requirement enumeration, or create/delete decisions. Historical 215 records remain provenance only.
 - DOC-B is current system law; DOC-C is the current vNEXT build specification; DOC-D is current product design only where DOC-C supports it.
 - The Final Architecture is conceptual architecture; DOC-E is deployment/runtime evidence only.
 - Design, implementation, runtime behavior and deployment evidence are separate truth domains. A design statement is not proof that the NEXY implementation has that behavior.
