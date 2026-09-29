@@ -66,5 +66,10 @@
   "timestamp_source": "system conversation date 2026-09-22",
   "trace_id": "NEXY-215-SYSTEM-AUDIT-PROMPT-20260922",
   "hash": "HASH_UNAVAILABLE",
-  "record_type": "LEDGER"
+  "record_type": "LEDGER",
+  "current_authority_status": "DEPRECATED_UNRELIABLE_DO_NOT_USE",
+  "historical_record_preserved": true,
+  "current_warning": "This historical 215-entry registry is not reliable current NEXY source truth. Do not use it for current system counts, atomic counts, audit/build/completeness denominators, requirement enumeration, or create/delete decisions.",
+  "superseded_by": "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md",
+  "supersession_decision": "projects/NEXY.AI/decisions/ADR-0013.md"
 }
