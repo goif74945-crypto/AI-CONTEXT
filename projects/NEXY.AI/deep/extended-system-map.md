@@ -1,31 +1,34 @@
-# NEXY.AI — Extended System Map Beyond the 215-ID Registry
+# NEXY.AI — Extended System Map / Legacy Registry Deprecation
 
 ## Critical interpretation
-The previously produced **215-system architecture is a tracking registry, not the atomic size of NEXY**.
 
-The full source shows that a single registry ID often expands into many independent engineering objects:
-- module;
-- sub-engine;
-- protocol;
-- law;
-- invariant;
-- state machine;
-- data contract;
-- storage object;
-- execution plane;
-- recovery procedure;
-- security boundary;
-- UI truth contract;
-- evidence artifact;
-- hardware loop.
+### Legacy 215-entry registry
+**STATUS: DEPRECATED_UNRELIABLE_DO_NOT_USE**
 
-Therefore:
-**215 IDs must never be used as “NEXY has exactly 215 systems.”**
+The previously produced 215-entry inventory is retained only as historical provenance. It is not a trustworthy current inventory because its entries use mixed granularity and compress systems, engines, laws, protocols, FSMs, contracts, UI surfaces and other objects into one numbering scheme.
 
-It is more accurate to say:
-**NEXY currently has a 215-entry top-level registry, while the full architecture contains many more lower-level mechanisms and contracts.**
+It must not be used as:
+- current NEXY system count;
+- atomic-system count;
+- source-of-truth inventory;
+- audit/build/completeness denominator;
+- requirement denominator;
+- create/delete authority.
 
-No exact atomic total is locked yet because the source contains evolving/repeated designs and some concepts intentionally share implementation.
+### Current source-enumeration reference
+Use `../source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md`.
+
+The current matrix records:
+- **837 normalized requirement rows**;
+- 12 current governing-law rows;
+- 547 direct current-build rows;
+- 127 current-build-supplement rows;
+- 87 supported product-design rows;
+- 52 deployment-evidence rows;
+- 8 explicitly excluded-current rows;
+- 4 deferred-future rows.
+
+The full source also contains many typed architecture objects and mechanisms. A requirement row, ontology entity, subsystem and deploy-evidence item are different counting units and must not be silently collapsed into a single “system total.”
 
 # 1. Example: one L1o registry entry expands into many mechanisms
 L1o alone includes:
@@ -58,7 +61,7 @@ L1o alone includes:
 - deadlock/fallback handling;
 - memoization/graph reuse.
 
-Calling all of that “System 126: L1o” is useful for registry tracking but massively compresses the real implementation surface.
+Calling all of that “System 126: L1o” is a historical registry artifact and massively compresses the real implementation surface. The legacy numeric ID must not be used as current source authority.
 
 # 2. Lo3 expansion
 Lo3 top-level registry entries expand into:
@@ -289,6 +292,6 @@ Future normalized inventory should assign every object:
 Only after deduplication and ontology normalization should NEXY publish an atomic count.
 
 ## Final rule
-**215 = top-level registry baseline.  
-215 ≠ total implementation surface.  
-The full NEXY architecture is materially larger.**
+**The legacy 215-entry registry is deprecated and unreliable for current use.  
+Do not use 215 as a system count, atomic count, requirement count, audit denominator, build denominator or completeness claim.  
+Use the current 837-row normalized source matrix for exhaustive source requirement/feature enumeration, with authority and scope preserved.**
