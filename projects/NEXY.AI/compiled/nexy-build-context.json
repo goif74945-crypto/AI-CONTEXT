@@ -1,25 +1,41 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "pack_id": "NEXY-BUILD-CONTEXT",
   "project": "NEXY.AI",
-  "compiled_at": "2026-09-24",
+  "compiled_at": "2026-09-29",
   "target_snapshot": {
     "repo": "goif74945-crypto/NEXY.AI-",
-    "branch": "codex/spec-audit-20260919-78df350",
-    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+    "branch": "NEXY.ai",
+    "head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
+    "tree": "8a3ae328c1956c661bc2b1561de1a791a7856a7e"
   },
   "freshness_rule": "If target HEAD differs, refresh implementation/navigation/traceability before current implementation claims.",
+  "implementation_snapshot": {
+    "doc_c_static_percent": 99.03,
+    "doc_d_percent": 98.08,
+    "canonical_product_percent": 98.9,
+    "full_file_percent": 82.08,
+    "api_route_files": 37,
+    "doc_d_named_components": "14/14",
+    "prisma_forward_migrations": 23,
+    "prisma_rollback_files": 23,
+    "event_log_append_only_trigger": true,
+    "audit_log_append_only_trigger": true,
+    "audit_log_chain_integrity_trigger": true
+  },
+  "remaining_canonical_gaps": [
+    "Vault/storage archival-query lifecycle remains PARTIAL.",
+    "DOC-D validation copy remains PARTIAL.",
+    "Current exact-head CI execution exists but is failing; successful exact-head gate proof is absent."
+  ],
   "load_first": [
     "projects/NEXY.AI/requirements/requirements.jsonl",
-    "projects/NEXY.AI/ontology/entities.jsonl",
-    "projects/NEXY.AI/graphs/dependency-graph.json",
     "projects/NEXY.AI/implementation/system-to-code.jsonl",
     "projects/NEXY.AI/repo/navigation-index.jsonl",
     "projects/NEXY.AI/contracts/registry.json",
     "projects/NEXY.AI/invariants/invariants.jsonl",
     "projects/NEXY.AI/fsm/INDEX.md",
     "projects/NEXY.AI/config/config-registry.json",
-    "projects/NEXY.AI/impact/system-impact.jsonl",
     "projects/NEXY.AI/playbooks/build/INDEX.md"
   ],
   "current_defaults": {
