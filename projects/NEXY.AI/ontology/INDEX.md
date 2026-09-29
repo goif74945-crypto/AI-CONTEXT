@@ -16,7 +16,7 @@ Compiled result:
 - parent graph: acyclic
 - `REQUIRES` graph: acyclic
 
-The earlier **215-system registry is a top-level tracking baseline, not the atomic object count**.
+The historical **215-entry registry is `DEPRECATED_UNRELIABLE_DO_NOT_USE`**. It is retained only for provenance and must not be used as a current system count, atomic count, audit/build denominator, completeness denominator or requirement inventory.
 
 ## Canonical files
 
