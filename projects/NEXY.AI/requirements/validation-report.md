@@ -1,7 +1,9 @@
 # Requirement Registry Validation Report
 
 ## Result
-**PASS — source/ontology structural validation**
+**PASS — structural validation of this legacy 262-record registry only**
+
+> **Completeness warning:** this PASS does not mean the registry is exhaustive. The current normalized source matrix contains **837 requirement rows**. Use `projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md` for the current denominator. The historical 215-entry registry is `DEPRECATED_UNRELIABLE_DO_NOT_USE`.
 
 - requirements: **262**
 - duplicate requirement IDs: none
