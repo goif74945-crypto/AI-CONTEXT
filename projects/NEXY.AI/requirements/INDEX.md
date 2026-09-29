@@ -1,5 +1,17 @@
 # NEXY.AI Requirement Registry
 
+## Current completeness warning
+**The existing `requirements.jsonl` is a prior partial registry and is not the exhaustive current denominator.**
+
+Current exhaustive source enumeration is recorded in:
+`projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md`
+
+Current normalized matrix: **837 rows**.
+
+The historical 215-entry registry is `DEPRECATED_UNRELIABLE_DO_NOT_USE` and must not be used to fill gaps or define the denominator.
+
+The existing 262 requirement records remain useful for historical traceability and their own internal links, but **262 must not be presented as the complete NEXY source requirement count**.
+
 ## Purpose
 Convert source prose into discrete, traceable, testable requirements.
 
