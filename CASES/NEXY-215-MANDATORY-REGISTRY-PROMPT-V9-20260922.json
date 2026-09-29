@@ -67,5 +67,10 @@
   "hash": "HASH_UNAVAILABLE",
   "record_type": "CASE",
   "cause": "Need an explicit fixed minimum registry of all 215 supplied systems in addition to open-world discovery.",
-  "impact": "Prevents omission of known architecture systems."
+  "impact": "Prevents omission of known architecture systems.",
+  "current_authority_status": "DEPRECATED_UNRELIABLE_DO_NOT_USE",
+  "historical_record_preserved": true,
+  "current_warning": "This historical 215-entry registry is not reliable current NEXY source truth. Do not use it for current system counts, atomic counts, audit/build/completeness denominators, requirement enumeration, or create/delete decisions.",
+  "superseded_by": "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md",
+  "supersession_decision": "projects/NEXY.AI/decisions/ADR-0013.md"
 }
