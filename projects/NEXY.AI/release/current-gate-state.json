@@ -1,28 +1,42 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
-  "observed_at": "2026-09-27",
+  "observed_at": "2026-09-29",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "a583e67da8b0374960a87d72ff6d48d728232451",
-    "tree": "6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2",
-    "parent": "48db6e642563c51224a9a7a9c3ff201203937a27",
-    "observation_mode": "CURRENT_HEAD_STATIC_REVIEW_AND_CI_STATUS"
+    "head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
+    "tree": "8a3ae328c1956c661bc2b1561de1a791a7856a7e",
+    "parent": "10985349e33c1aa0fed8ce20be557ee3509b1509",
+    "observation_mode": "CURRENT_HEAD_STATIC_REVALIDATION_AND_GITHUB_ACTIONS_STATUS"
   },
   "status": "NON_DEPLOYABLE",
+  "static_alignment": {
+    "doc_c_percent": 99.03,
+    "doc_d_percent": 98.08,
+    "canonical_product_percent": 98.9,
+    "full_file_percent": 82.08
+  },
   "evidence": {
-    "source_static_review": "PARTIAL",
-    "auth_fail_closed_delta": "PRESENT_NOT_EXECUTED",
     "current_head_doc_e_required": 12,
     "current_head_doc_e_match": 0,
     "exact_current_head_doc_e_proof": false,
     "current_head_runtime_proof": false,
     "security_signoff": false,
     "ci": {
-      "run_id": 36288215659,
+      "run_id": 36525568766,
+      "workflow": ".github/workflows/deploy.yml",
       "conclusion": "failure",
-      "executed_steps_observed": 0,
-      "code_level_result": "NOT_VERIFIED"
+      "jobs_returned": 0,
+      "code_level_result": "NOT_VERIFIED",
+      "evidence_class": "CONTRADICTED"
+    },
+    "prior_head_local_attestation": {
+      "tested_sha": "ab471d1e2705d6010afdcdbb0a7baf08132de47d",
+      "tested_tree": "298468ca539306c2c581248331f082b908400605",
+      "test_files_passed": 113,
+      "tests_passed": 835,
+      "recorded_gate_exit_codes_all_zero": true,
+      "current_head_applicability": false
     },
     "phase_f": {
       "release_dependency": false,
@@ -30,32 +44,40 @@
       "current_workflow_structure": "CONTINUE_ON_ERROR_AND_EXCLUDED_FROM_RELEASE_ATTESTATION"
     },
     "deploy": {
-      "status": "BLOCKED_PROVIDER_NOT_CONFIGURED",
-      "executed": false
+      "status": "NOT_AUTHORIZED",
+      "executed": false,
+      "provider_configuration_currently_proven": false
     }
   },
-  "freshness": {
-    "previous_static_audit_tree": "42378126aed29a668f9f294a9100c62a66ff3753",
-    "current_tree": "6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2",
-    "changed_blob_paths": 8,
-    "unchanged_blob_paths": 605,
-    "latest_mismatch_matrix": "STALE_NOT_CURRENT_HEAD",
-    "historical_evidence": "STALE_NOT_CURRENT_HEAD"
+  "current_static_inventory": {
+    "tree_entries": 852,
+    "blobs": 676,
+    "api_route_files": 37,
+    "doc_d_named_components": "14/14",
+    "prisma_forward_migrations": 23,
+    "prisma_rollback_files": 23,
+    "db_triggers": [
+      "event_log_append_only",
+      "audit_log_append_only",
+      "audit_log_chain_integrity"
+    ]
   },
-  "static_blockers": [
-    "Forbidden core imports remain in four files.",
-    "Six Prisma migration directories lack migration.down.sql.",
-    "TS/Rust vNEXT matrix parity and one wired authority are not established.",
-    "Release/Law binding to global state, evidence integrity and authorization is not established.",
-    "Malformed swarm-provider fallback requires fail-closed semantic repair/revalidation.",
-    "Canonical API/UI/schema state truth still contains READY/legacy-state drift and incomplete global FREEZE enforcement."
+  "current_static_gaps": [
+    "DOC-C Vault/storage archival-query lifecycle remains PARTIAL.",
+    "DOC-D validation-copy contract remains PARTIAL.",
+    "Successful exact-current-head CI/runtime proof is absent; run 36525568766 concluded failure.",
+    "DOC-E E1-E12 are not bound to the current HEAD."
   ],
   "blocking_reasons": [
-    "Current CI run has zero observed job steps; tests, build and runtime are NOT_VERIFIED.",
-    "Historical DOC-E E1-E12 records match 0/12 to the current HEAD.",
-    "Static specification blockers remain in source.",
-    "Deployment provider is not configured and the deploy workflow fails closed."
+    "Current GitHub Actions run 36525568766 concluded failure and returned no jobs, so current-head test/build/runtime success is not proven.",
+    "Prior local attestation is bound to ab471d1, not ba33c8f.",
+    "DOC-E E1-E12 current-head proof remains 0/12.",
+    "Release signoff/authorization must not be inferred from static compliance."
   ],
-  "rule": "Runtime success, source prose or passing-looking historical artifacts do not mint RELEASE_ELIGIBLE; preserve fail-closed release authorization.",
+  "worktree_claim": {
+    "user_reported_clean": true,
+    "independently_observable_from_remote_github": false
+  },
+  "rule": "Runtime success, source prose, or historical PASS do not mint RELEASE_ELIGIBLE for a different HEAD; preserve fail-closed release authorization.",
   "hash": "HASH_UNAVAILABLE"
 }
