@@ -2,9 +2,9 @@
 
 ## Status
 
-**PARTIAL / FREEZE — CI VALIDATION BLOCKED / RELEASE NON_DEPLOYABLE**
+**PARTIAL / FREEZE — EXACT-HEAD LOCAL GATES PASS; GITHUB RUNNER BLOCKED / RELEASE NON_DEPLOYABLE**
 
-This file is the current-head overlay. It supersedes stale current-looking claims that point to another branch or commit. Historical audits remain historical and are not deleted.
+This is the current-head overlay. It supersedes stale current-looking claims that point to another branch, commit, or CI run. Historical audits remain historical and are not deleted.
 
 ## Authority snapshot
 
@@ -15,59 +15,71 @@ This file is the current-head overlay. It supersedes stale current-looking claim
 - Final Architecture is conceptual architecture.
 - DOC-E is evidence/proof only; source prose or file presence is not deployment proof.
 
-## Exact implementation observation — 2026-09-27
+## Exact implementation and evidence observation — 2026-09-29
 
 - repository: goif74945-crypto/NEXY.AI-
 - branch: NEXY.ai
-- HEAD: a583e67da8b0374960a87d72ff6d48d728232451
-- tree: 6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2
-- parent: 48db6e642563c51224a9a7a9c3ff201203937a27
-- commit: fix: fail closed on blocking auth persistence failures
-- commit time: 2026-09-27T02:20:06Z
-- observation mode: read-only repository and CI inspection; no local tests were run.
+- tested SHA: ab471d1e2705d6010afdcdbb0a7baf08132de47d
+- tested tree: 298468ca539306c2c581248331f082b908400605
+- current branch HEAD after evidence commit: ba33c8fdcd0ea56729835bf06b43500ec5b21f4e
+- evidence commit: test: add exact-head evidence for ab471d1
+- workflow commit: 10985349e33c1aa0fed8ce20be557ee3509b1509
+- exact-head evidence directory: evidence/exact-head/ab471d1e2705d6010afdcdbb0a7baf08132de47d/
+- the local run checked out the tested SHA in a detached worktree and recorded a clean checkout before dependency setup.
+- attestation.json binds the tested SHA/tree, gate results, log paths and SHA-256 manifest; the remote copy reports overall_pass=true.
 
-The current tree contains 786 entries and 613 blobs. Compared with the previous static-audit tree 42378126aed29a668f9f294a9100c62a66ff3753, there are 8 changed blob paths, 0 added paths, 0 deleted paths, and 605 unchanged blob paths. Unchanged-path findings from the previous audit remain applicable; changed paths require current-head interpretation.
+## Current validation truth
 
-## Current CI/runtime truth
+The exact-head local evidence run completed with all recorded gate exit codes equal to 0:
 
-- GitHub Actions run: 36288215659 (NEXY CI / Deploy Gate)
-- recorded conclusion: failure
-- observed executed job steps: 0.
-- TypeScript, contract, integration, full-test, coverage, web-build, browser-E2E and Phase-F jobs did not provide executed command steps in this run.
-- DOC-C static gate, evidence/release attestation and deploy were skipped.
-- Therefore this run does not establish a code-level test/typecheck/build PASS or FAIL; runtime is NOT_VERIFIED and the validation path is BLOCKED.
-- The deploy workflow still fails closed when no deployment provider is configured; deployment is not authorized.
-- No local test command was run for this context refresh.
+- npm test: 113 test files passed; 835 tests passed.
+- typecheck, lint and DOC-C check: PASS.
+- coverage run and coverage check: PASS.
+- coverage snapshot (lines / statements / functions / branches): API 93.44 / 92.09 / 97.20 / 85.01; core 95.73 / 95.93 / 94.44 / 91.23; law 100 / 94.87 / 100 / 96.83; judge 97.39 / 96.27 / 100 / 94.01.
+- web build: PASS; the only recorded caveat is an optional @valkey/valkey-glide resolution warning.
+- Phase-F check: PASS, with the recorded release seal remaining NON_DEPLOYABLE.
+- experimental suite: 59 files; 574 passed and 1 skipped.
+- Rust core-kernel tests: 243 passed, 0 failed, 1 ignored documentation test.
+- production dependency audit: 0 vulnerabilities at high-or-higher severity.
 
-## What changed in the current code
+The repo-traceable evidence can be independently checked from the evidence directory with sha256sum -c sha256sums.txt. The committed README, exit-codes.tsv, logs/, attestation.json, tested-sha.txt and tested-tree.txt are the proof record for this exact SHA.
 
-- Auth persistence failure handling was improved: packages/api/auth.ts now routes blocking persistence failures through respondAuthPersistenceFailure and returns a freeze-oriented envelope instead of silently treating the failure as READY/DEGRADED.
-- The changed auth contract/integration tests encode the fail-closed behavior, but the current CI run did not execute them.
-- Phase-F is now structurally advisory: its workflow job is continue-on-error and is excluded from release-attestation needs. The old finding that Phase-F gates release is not a current workflow finding.
-- scripts/evidence-attestation.ts contains exact source/tested-SHA binding and DOC-E E1–E12 checks, but the current run skipped the attestation job, so no current-head proof was minted.
+## GitHub Actions truth
 
-## Static findings still blocking full specification alignment
+- workflow: .github/workflows/exact-head-evidence.yml
+- run: 36524026445 (https://github.com/goif74945-crypto/NEXY.AI-/actions/runs/36524026445)
+- run head/workflow commit: 10985349e33c1aa0fed8ce20be557ee3509b1509
+- event/branch: push / NEXY.ai
+- conclusion: failure before job start.
+- blocker: GitHub account billing/spending-limit guard prevented the runner from starting; this is not a code-level test failure.
+- observed steps: 0; GitHub runner logs: none; GitHub artifact: none.
+
+The workflow is intentionally retained and asserts the checkout SHA, tree and clean checkout before running the same gates. It can be rerun after the billing blocker is cleared. Until then, the committed local exact-head evidence is the available reproducible proof, not a GitHub runner attestation.
+
+## Current code changes represented by this validation
+
+- PostgreSQL advisory-lock callers use executeRaw for lock statements, avoiding Prisma result deserialization failures during clean boot.
+- The web layout separates server nonce/CSP handling from the client system-state/navigation wrapper; production browser loading was revalidated.
+- Directive UI labels and browser route assertions use the canonical directive identifier path.
+- A system-state persistence contract test and the required raw-SQL test mocks are included.
+- The exact-head workflow and committed evidence package make the tested SHA/tree explicit and independently checkable.
+
+## Specification and release boundary
 
 | Area | Current fact | Status |
 |---|---|---|
-| Dependency boundary | Forbidden core imports remain in packages/auth/security-incident.ts, packages/auth/session.ts, vault/repository.ts and packages/storage/lifecycle.ts; .eslintrc.json has no matching boundary rule. | BLOCKER |
-| Rollback | 23 Prisma migrations exist; 6 migration directories have no migration.down.sql, including the baseline, runtime-invariants and four 20260925 migrations. | BLOCKER |
-| Product FSM | TypeScript has the expanded vNEXT event rows, but vnextTransition accepts only current state/event/actor and a central global guard is not proven at the current-head source boundary. | PARTIAL |
-| Rust parity/wiring | core-kernel/src/kernel/vnext_matrix.rs still exposes the older event/owner/transition surface and treats FREEZE/STOP as terminal; packages/core-binding/src/lib.rs wires the hardware FSM, not the TypeScript-equivalent vNEXT matrix. | BLOCKER |
-| Release/Law | The release evaluator consumes accepted, determinism, quorum, critical-agent and LAW results; end-to-end binding to current global state, evidence integrity and release authorization is not proven. | PARTIAL |
-| Swarm parsing | packages/swarm/agent-response.ts still has a malformed-provider fallback with confidence 0; semantic fail-closed behavior requires repair/revalidation. | BLOCKER |
-| API/UI/schema truth | packages/api/canonical.ts still contains hard-coded READY envelopes; apps/web/lib/api-handler.ts has no central handler catch; primary UI actions are not uniformly tied to global FREEZE; Prisma comments still describe the old 7-state vocabulary. | BLOCKER |
-| Verification/evidence | Current CI has zero observed steps and historical DOC-E records target other revisions. | BLOCKED |
+| Exact-head automated gates | Local checkout of ab471d1e2705d6010afdcdbb0a7baf08132de47d passed every recorded gate. | PASS (local) |
+| Repo traceability | Evidence, logs, manifest and attestation are committed on origin/NEXY.ai at ba33c8fdcd0ea56729835bf06b43500ec5b21f4e. | PASS |
+| GitHub runner proof | Run 36524026445 was blocked before the first job step by billing; no artifact was produced. | BLOCKED |
+| Rollback/database proof | The validation host did not have psql, so rollback was not independently executed or proven. | NOT VERIFIED |
+| DOC-C/D full parity | These gates do not constitute a complete design/specification crosswalk. No 100% parity claim is made by this file. | NOT PROVEN |
+| Release/deploy authorization | Phase-F records NON_DEPLOYABLE and GitHub attestation is unavailable. | BLOCKED |
 
-## Evidence freshness
-
-- Indexed DOC-E/E1–E12 records are historical and do not match current HEAD a583e67da8b0374960a87d72ff6d48d728232451; current-head match is 0/12.
-- The previous implementation map and repository navigation reports are retained as lineage/reference records, not current semantic proof.
-- Current-head static identity is updated in snapshots/current.json, release/current-gate-state.json and implementation/current-head-path-validation.json.
+Previous static findings and historical DOC-E records are retained as lineage. They must be revalidated against the tested SHA before being called resolved or current. Passing local tests does not, by itself, prove full DOC-C/D design alignment or authorize deployment.
 
 ## Decision
 
-Source alignment is PARTIAL. Current CI/runtime validation is BLOCKED/NOT_VERIFIED. Release authorization remains BLOCKED and the project is NON_DEPLOYABLE. Do not promote, deploy or call the implementation complete until the static blockers are repaired and exact-current-head test, runtime, DOC-E and security evidence is independently observed.
+Source alignment and release readiness remain PARTIAL/BLOCKED. The exact tested SHA has strong local, repo-traceable gate evidence, but GitHub runner attestation is blocked by account billing, rollback is not verified, and full specification parity is not established. Do not promote or deploy until the billing blocker is cleared and the remaining current-head DOC-C/D, rollback, security and release-authority checks are independently observed.
 
 ## Historical boundary
 
