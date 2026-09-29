@@ -1,0 +1,80 @@
+{
+  "LEDGER_ID": "LEDGER-20260929-NEXY-BA33C8F-SPEC-CODE-REVALIDATION",
+  "task_id": "TASK-20260929-NEXY-BA33C8F-SPEC-CODE-REVALIDATION",
+  "trace_id": "TRACE-20260929-NEXY-BA33C8F-SPEC-CODE-REVALIDATION",
+  "claims": [
+    {
+      "id": "L1",
+      "claim": "Current NEXY.ai HEAD/tree verified",
+      "proof": {
+        "head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
+        "tree": "8a3ae328c1956c661bc2b1561de1a791a7856a7e"
+      },
+      "status": "VERIFIED",
+      "risk": "LOW"
+    },
+    {
+      "id": "L2",
+      "claim": "Current inventory: 37 API routes, DOC-D 14/14, 23 forward + 23 rollback migrations",
+      "proof": "Git tree 8a3ae328...",
+      "status": "VERIFIED_STATIC",
+      "risk": "LOW"
+    },
+    {
+      "id": "L3",
+      "claim": "EventLog/AuditLog append-only and AuditLog chain-integrity DB triggers exist",
+      "proof": "prisma/migrations/20260921000001_runtime_invariants/migration.sql + 20260922222000_audit_chain_head/migration.sql",
+      "status": "VERIFIED_STATIC",
+      "risk": "LOW"
+    },
+    {
+      "id": "L4",
+      "claim": "First-session walkthrough satisfies source five-step flow",
+      "proof": "apps/web/components/TrustExplainer.tsx",
+      "status": "VERIFIED_STATIC",
+      "risk": "LOW"
+    },
+    {
+      "id": "L5",
+      "claim": "Prior HEAD ab471d1 local evidence records 113 test files / 835 tests passed and all recorded gate exit codes 0",
+      "proof": "evidence/exact-head/ab471d1e2705d6010afdcdbb0a7baf08132de47d/attestation.json",
+      "status": "VERIFIED_HISTORICAL",
+      "risk": "LOW"
+    },
+    {
+      "id": "L6",
+      "claim": "Current HEAD exact GitHub CI is not passing",
+      "proof": {
+        "run_id": 36525568766,
+        "conclusion": "failure",
+        "jobs_returned": 0
+      },
+      "status": "CONTRADICTED_CURRENT_HEAD",
+      "risk": "HIGH"
+    },
+    {
+      "id": "L7",
+      "claim": "Current DOC-E proof coverage is 0/12",
+      "proof": "No complete E1-E12 artifact set bound to ba33c8f; current CI failed",
+      "status": "VERIFIED_GAP",
+      "risk": "HIGH"
+    },
+    {
+      "id": "L8",
+      "claim": "Updated audit metrics",
+      "proof": {
+        "doc_c": 99.03,
+        "doc_d": 98.08,
+        "canonical": 98.9,
+        "full_file": 82.08
+      },
+      "status": "VERIFIED_FROM_301_ROW_MATRIX",
+      "risk": "LOW"
+    }
+  ],
+  "final_verdict": "STATIC_NEAR_COMPLETE__CURRENT_HEAD_RELEASE_NOT_VERIFIED",
+  "artifacts": {
+    "markdown_sha256": "f7a638c17085423294e1f372116b0d1f35fb98c3e51952f0387bed4b9ab6bd32",
+    "csv_sha256": "da3d363327ae124abe66bd8ecc4eb7c194d6918e9c08c7de3eb63583c5d18ba2"
+  }
+}
