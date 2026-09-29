@@ -1,0 +1,49 @@
+{
+  "CASE_ID": "CASE-20260929-NEXY-BA33C8F-SPEC-CODE-REVALIDATION",
+  "task_id": "TASK-20260929-NEXY-BA33C8F-SPEC-CODE-REVALIDATION",
+  "type": "CURRENT_HEAD_SPEC_CODE_REVALIDATION_AND_CONTEXT_REFRESH",
+  "source_authority": {
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "rule": "DOC-C build obligation; DOC-D product design where permitted; DOC-E deployment evidence authority"
+  },
+  "implementation": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
+    "tree": "8a3ae328c1956c661bc2b1561de1a791a7856a7e",
+    "delta_from_previous_audit_head": "2 commits ahead of ab471d1"
+  },
+  "findings": {
+    "metrics": {
+      "doc_c_static_percent": 99.03,
+      "doc_d_percent": 98.08,
+      "canonical_product_percent": 98.9,
+      "full_file_percent": 82.08,
+      "doc_e_current_head_percent": 0
+    },
+    "inventory": {
+      "api_route_files": 37,
+      "doc_d_named_components": "14/14",
+      "migrations_forward": 23,
+      "migrations_rollback": 23
+    },
+    "corrections": [
+      "First-session walkthrough PARTIAL -> PASS.",
+      "Exact-head CI evidence MISSING -> CONTRADICTED because current run exists and failed.",
+      "EventLog/AuditLog database append-only triggers and AuditLog chain-integrity trigger verified statically."
+    ]
+  },
+  "evidence_boundary": {
+    "prior_head_local_pass": "ab471d1e2705d6010afdcdbb0a7baf08132de47d",
+    "current_head_ci_run_id": 36525568766,
+    "current_head_ci_conclusion": "failure",
+    "current_head_doc_e": "0/12",
+    "release": "NOT_VERIFIED / NOT_AUTHORIZED"
+  },
+  "artifacts": {
+    "markdown_sha256": "f7a638c17085423294e1f372116b0d1f35fb98c3e51952f0387bed4b9ab6bd32",
+    "csv_sha256": "da3d363327ae124abe66bd8ecc4eb7c194d6918e9c08c7de3eb63583c5d18ba2"
+  },
+  "final_status": "COMPLETE_WITH_CURRENT_HEAD_EVIDENCE_BLOCK",
+  "trace_id": "TRACE-20260929-NEXY-BA33C8F-SPEC-CODE-REVALIDATION"
+}
