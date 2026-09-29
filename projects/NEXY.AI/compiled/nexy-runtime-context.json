@@ -1,27 +1,32 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "pack_id": "NEXY-RUNTIME-CONTEXT",
   "project": "NEXY.AI",
-  "compiled_at": "2026-09-24",
-  "nature": "Registered operational model; not live telemetry.",
-  "load_first": [
-    "projects/NEXY.AI/state/state-ownership.json",
-    "projects/NEXY.AI/state/persistence-map.json",
-    "projects/NEXY.AI/events/events.jsonl",
-    "projects/NEXY.AI/config/config-registry.json",
-    "projects/NEXY.AI/errors/error-taxonomy.jsonl",
-    "projects/NEXY.AI/concurrency/concurrency-model.json",
-    "projects/NEXY.AI/observability/observability.jsonl",
-    "projects/NEXY.AI/performance/budgets.jsonl",
-    "projects/NEXY.AI/release/current-gate-state.json",
-    "projects/NEXY.AI/migrations/migrations.jsonl"
-  ],
+  "compiled_at": "2026-09-29",
+  "nature": "Registered operational model plus exact-head evidence status; not live production telemetry.",
   "current_target": {
     "repo": "goif74945-crypto/NEXY.AI-",
-    "branch": "codex/spec-audit-20260919-78df350",
-    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+    "branch": "NEXY.ai",
+    "head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
+    "tree": "8a3ae328c1956c661bc2b1561de1a791a7856a7e"
   },
   "current_release_truth": "NON_DEPLOYABLE / NOT_VERIFIED",
+  "runtime_evidence": {
+    "current_head": {
+      "github_actions_run_id": 36525568766,
+      "conclusion": "failure",
+      "jobs_returned": 0,
+      "runtime_pass_proven": false
+    },
+    "prior_head": {
+      "head": "ab471d1e2705d6010afdcdbb0a7baf08132de47d",
+      "tree": "298468ca539306c2c581248331f082b908400605",
+      "local_attestation_overall_pass": true,
+      "test_files_passed": 113,
+      "tests_passed": 835,
+      "applicability": "HISTORICAL_ONLY"
+    }
+  },
   "failure_priority": [
     "security breach",
     "schema violation",
@@ -29,5 +34,5 @@
     "consensus failure",
     "timeout"
   ],
-  "note": "Refresh against real runtime/environment before making current operational claims."
+  "note": "Do not inherit prior-head runtime PASS into ba33c8f. Re-run exact-current-head gates and bind DOC-E before release claims."
 }
