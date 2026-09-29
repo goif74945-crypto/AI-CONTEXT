@@ -1,56 +1,64 @@
 {
-  "checkpoint_id": "AI-CONTEXT-CONTINUOUS-BUILD-CONVERGENCE-V10",
-  "observed_at": "2026-09-26",
+  "checkpoint_id": "NEXY-BA33C8F-SPEC-CODE-REVALIDATION-20260929",
+  "observed_at": "2026-09-29",
   "status": "PARTIAL",
   "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
-  "ai_context_head_at_task_start": "3f81aecc1684e91e4308400ad2d90e6b741a8ad7",
-  "last_structural_milestone": "P4.16",
-  "materialized_milestones": [
-    "P4.1",
-    "P4.2",
-    "P4.3",
-    "P4.4",
-    "P4.5",
-    "P4.6",
-    "P4.7",
-    "P4.8",
-    "P4.9",
-    "P4.10",
-    "P4.11",
-    "P4.12",
-    "P4.13",
-    "P4.14",
-    "P4.15",
-    "P4.16"
-  ],
-  "next_action": "Execute and encode DOC-E E1-E12 plus independent security/CI evidence at exact current head before changing release truth from NON_DEPLOYABLE.",
+  "last_structural_milestone": "SPEC_CODE_REVALIDATED_BA33C8F",
+  "next_action": "Obtain a successful exact-current-head CI/runtime evidence set and bind DOC-E E1-E12 to ba33c8f before changing release truth from NON_DEPLOYABLE.",
   "open_boundaries": [
-    "Application deterministic gate chain and Railway normal runtime health are proven at current head.",
-    "Browser E2E is proven at the immediately preceding application-equivalent head; the only delta is one Dockerfile label commit.",
-    "No current-head DOC-E E1-E12 authorization proof is established.",
-    "No current-head security sign-off or GitHub runner execution record is established.",
-    "Literal source-wide coverage is not 100%; configured coverage domains pass.",
-    "L1o numeric CTS threshold remains an authority conflict/source gap.",
-    "Robotics physical latency budget remains unresolved in the design source."
+    "Canonical DOC-C static alignment is 99.03% at ba33c8f.",
+    "DOC-D product/UI coverage is 98.08%; the stateful five-step first-session walkthrough is now verified PASS.",
+    "Canonical DOC-C+DOC-D implementation coverage is 98.90%.",
+    "Full-file implementation-design coverage is 82.08%; experimental/unpromoted extensions remain partial by authority.",
+    "Current HEAD has 37 API route files, DOC-D named components 14/14, and 23 forward plus 23 rollback migration files.",
+    "EventLog and AuditLog have database-level append-only triggers; AuditLog also has chain-integrity enforcement.",
+    "Prior HEAD ab471d1 has repository-contained local evidence for 113 test files / 835 tests passed and all recorded gate commands exit 0.",
+    "That prior-head PASS is historical only. Current HEAD ba33c8f has GitHub Actions run 36525568766 with conclusion failure and no jobs returned.",
+    "Current-head DOC-E E1-E12 match remains 0/12.",
+    "Local/cloud worktree cleanliness for current HEAD was reported by the user; remote GitHub state cannot independently prove a worktree."
   ],
   "implementation_dependency": {
     "repository": "goif74945-crypto/NEXY.AI-",
-    "branch": "astra/omega-full-spec-convergence",
-    "head_observed_read_only": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
-    "previous_head_observed": "454362eb4afce40fafe106eae5241a5f154eef8b",
-    "write_authority": "Granted by explicit user repair directive; source/runtime validation and reversible Railway validation were executed on the authorized branch."
+    "branch": "NEXY.ai",
+    "head_observed_read_only": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
+    "tree_observed_read_only": "8a3ae328c1956c661bc2b1561de1a791a7856a7e",
+    "parent": "10985349e33c1aa0fed8ce20be557ee3509b1509",
+    "previous_audit_head": "ab471d1e2705d6010afdcdbb0a7baf08132de47d",
+    "previous_audit_tree": "298468ca539306c2c581248331f082b908400605",
+    "mutation": "No NEXY.AI- code mutation in this revalidation; AI-CONTEXT only is being refreshed."
   },
-  "resume_instruction": "Use source hierarchy first, then exact-head implementation evidence, then DOC-E/runtime proof. Do not promote stale mismatch matrices or historical validation reports to current truth. Do not mint RELEASE_ELIGIBLE without DOC-E E1-E12 authorization.",
-  "hash": "HASH_UNAVAILABLE",
-  "last_repair": {
-    "base_head": "ea8aff8c799d1fd264b5a577a6fda2e815fe1c2b",
-    "browser_proof_head": "454362eb4afce40fafe106eae5241a5f154eef8b",
-    "repaired_head": "1714d8fbb78372e6bd5ddd9bcd8d58599d13dc32",
-    "source_diff": "application fixes plus Dockerfile validation/runtime envelope labels; final compare from browser proof to runtime head is Dockerfile label only",
-    "runtime_deployment": "1141cd57-ab78-40c7-97a4-aaba7593f1cf",
-    "browser_deployment": "92ebdc7d-bd73-4e26-a28f-24603d870afb",
-    "source_validation": "configured deterministic gate chain PASS; experimental 56 files / 566 passed / 1 skipped; Phase F PASS; Next 36 routes",
-    "runtime_validation": "migrations PASS; Next Ready; bootstrap hydration PASS; healthcheck PASS",
-    "browser_validation": "directive 1/1 PASS; critical flows 8/8 PASS; browser E2E PASS"
+  "current_metrics": {
+    "doc_c_static_percent": 99.03,
+    "doc_d_percent": 98.08,
+    "canonical_product_percent": 98.9,
+    "full_file_percent": 82.08,
+    "doc_e_exact_current_head_percent": 0,
+    "requirement_rows": 301
+  },
+  "inventory": {
+    "tree_entries": 852,
+    "blobs": 676,
+    "api_route_files": 37,
+    "doc_d_named_components": "14/14",
+    "component_ts_tsx_files": 29,
+    "prisma_forward_migrations": 23,
+    "prisma_rollback_files": 23
+  },
+  "evidence_state": {
+    "current_head_ci_run_id": 36525568766,
+    "current_head_ci_conclusion": "failure",
+    "current_head_ci_jobs_returned": 0,
+    "prior_head_local_attestation": {
+      "tested_sha": "ab471d1e2705d6010afdcdbb0a7baf08132de47d",
+      "tested_tree": "298468ca539306c2c581248331f082b908400605",
+      "test_files_passed": 113,
+      "tests_passed": 835,
+      "recorded_gate_exit_codes_all_zero": true
+    }
+  },
+  "resume_instruction": "Use design-source authority first, then exact-head implementation evidence. Historical PASS never upgrades the current HEAD. Preserve UNKNOWN/PARTIAL/CONTRADICTED rather than guessing; do not mint RELEASE_ELIGIBLE without current-head DOC-E authorization.",
+  "artifact_hashes": {
+    "updated_markdown_sha256": "f7a638c17085423294e1f372116b0d1f35fb98c3e51952f0387bed4b9ab6bd32",
+    "updated_csv_sha256": "da3d363327ae124abe66bd8ecc4eb7c194d6918e9c08c7de3eb63583c5d18ba2"
   }
 }
