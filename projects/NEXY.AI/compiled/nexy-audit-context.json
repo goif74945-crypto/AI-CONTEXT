@@ -1,36 +1,97 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "pack_id": "NEXY-AUDIT-CONTEXT",
   "project": "NEXY.AI",
-  "compiled_at": "2026-09-24",
+  "compiled_at": "2026-09-29",
   "target_snapshot": {
     "repo": "goif74945-crypto/NEXY.AI-",
-    "branch": "codex/spec-audit-20260919-78df350",
-    "head": "9c9befd9fe255b0f9271e6e2b8c4bb2443a08089"
+    "branch": "NEXY.ai",
+    "head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
+    "tree": "8a3ae328c1956c661bc2b1561de1a791a7856a7e"
   },
+  "source_authority": {
+    "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "build_obligation": "DOC-C",
+    "product_design": "DOC-D where permitted",
+    "deploy_authority": "DOC-E"
+  },
+  "headline_metrics": {
+    "doc_c_static_percent": 99.03,
+    "doc_d_percent": 98.08,
+    "canonical_product_percent": 98.9,
+    "full_file_percent": 82.08,
+    "doc_e_exact_current_head_percent": 0,
+    "requirement_rows": 301
+  },
+  "inventory": {
+    "tree_entries": 852,
+    "blobs": 676,
+    "api_route_files": 37,
+    "doc_d_named_components": "14/14",
+    "component_ts_tsx_files": 29,
+    "prisma_forward_migrations": 23,
+    "prisma_rollback_files": 23,
+    "db_integrity_triggers": [
+      "event_log_append_only",
+      "audit_log_append_only",
+      "audit_log_chain_integrity"
+    ]
+  },
+  "current_evidence_truth": {
+    "doc_e_required": 12,
+    "pass": 0,
+    "exact_current_head": 0,
+    "current_head_ci": {
+      "run_id": 36525568766,
+      "workflow": ".github/workflows/deploy.yml",
+      "conclusion": "failure",
+      "jobs_returned": 0,
+      "status": "CONTRADICTED"
+    },
+    "prior_head_local_attestation": {
+      "tested_sha": "ab471d1e2705d6010afdcdbb0a7baf08132de47d",
+      "tested_tree": "298468ca539306c2c581248331f082b908400605",
+      "test_files_passed": 113,
+      "tests_passed": 835,
+      "recorded_gate_exit_codes_all_zero": true,
+      "applicability": "HISTORICAL_ONLY"
+    },
+    "verdict": "NOT_VERIFIED / NON_DEPLOYABLE"
+  },
+  "corrected_findings": [
+    {
+      "item": "DOC-D First-session walkthrough",
+      "previous": "PARTIAL",
+      "current": "PASS",
+      "proof": "apps/web/components/TrustExplainer.tsx implements five source-matching steps plus persistent first-session seen state"
+    },
+    {
+      "item": "DOC-D Validation copy",
+      "current": "PARTIAL",
+      "proof": "Input required/schema invalid, Permission denied, and System frozen are present; exact Recovery not allowed copy was not found"
+    },
+    {
+      "item": "DOC-C Exact-head CI gate execution evidence",
+      "previous": "MISSING",
+      "current": "CONTRADICTED",
+      "proof": "GitHub Actions run 36525568766 exists for ba33c8f and concluded failure"
+    }
+  ],
   "load_first": [
+    "projects/NEXY.AI/release/current-gate-state.json",
+    "projects/NEXY.AI/checkpoints/current.json",
     "projects/NEXY.AI/traceability/requirement-trace.jsonl",
     "projects/NEXY.AI/verification/requirement-test-matrix.jsonl",
     "projects/NEXY.AI/evidence/evidence-ledger.jsonl",
     "projects/NEXY.AI/failures/failure-library.jsonl",
-    "projects/NEXY.AI/regression/regressions.jsonl",
-    "projects/NEXY.AI/chaos/catalog.jsonl",
-    "projects/NEXY.AI/impact/system-impact.jsonl",
-    "projects/NEXY.AI/playbooks/audit/INDEX.md",
     "rules/VERIFICATION.md"
   ],
-  "current_evidence_truth": {
-    "doc_e_required": 12,
-    "pass": 0,
-    "blocked": 12,
-    "exact_current_head": 0,
-    "verdict": "NOT_VERIFIED / NON_DEPLOYABLE"
-  },
   "audit_laws": [
     "Presence is E0 only.",
     "Absence from one search is not MISSING.",
     "Evidence must match claim class and exact relevant revision/environment.",
     "Historical PASS is historical only.",
-    "Preserve UNKNOWN/CONFLICT/BLOCKED instead of guessing."
+    "A failing exact-head CI record is CONTRADICTED, not PASS and not absent evidence.",
+    "Preserve UNKNOWN/CONFLICT/BLOCKED/PARTIAL instead of guessing."
   ]
 }
