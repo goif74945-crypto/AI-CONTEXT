@@ -72,3 +72,21 @@ Coverage thresholds:
 - no force push used
 - no production deployment performed
 - source changes remain ordinary fast-forward commits reversible by inverse commits
+
+## DOC-E progress — verifier + E2
+- verifier commit: fe6e8cac21397a09d070ea05acc01f2c985be0e7
+- verifier Railway proof: tests/contract/doc-e-verifier.test.ts 6/6 PASS; all base gates exit=0
+- E2 initial commit 99ba261fa36f1a3265588a504b7e8b5c1b6639e6 failed because Railway snapshot has no .git; classified execution-environment identity integration defect, not schema proof
+- E2 repair commit: f813ac608600db82d1f0ebf24b74b6dcb9630183
+- E2 repair tree: e6e87d2b3591d4170b45bf1ef365fff37236c8fa
+- E2 Railway deployment: 454546aa-81e7-4e12-96d9-a88b2cd367fd
+- E2 source contract tests: 6/6 PASS
+- E2 generated + verified exact-head snapshot: schemas=20
+- E2 snapshot_sha256: ca25857bfacca27f35ab75dff9baff2ab060ec1fb2aeba0edabf471d8fea842b
+- E2 artifact file sha256: 36dae757365aac9ab2586b9638d97448de1330f19fa630abf58f9597917de552
+- E2 log sha256: 6a4b81b394d2ceff6886cd8fdbd966409b9fdc2fd65a64288e8663dc013c64c5
+- E2 exact identity: sha=f813ac608600db82d1f0ebf24b74b6dcb9630183 tree=e6e87d2b3591d4170b45bf1ef365fff37236c8fa
+- E2 proof gates: e2_generate=0, e2_verify=0
+- regression after E2: integration=0 full=0 coverage=0 coverage_check=0 doc_c=0 web_build=0; NEXY_VALIDATION_OVERALL=0
+- E2 verdict: VERIFIED_EXACT_HEAD
+- release/deploy still NOT AUTHORIZED; E3-E12 incomplete and E11 external signoff absent
