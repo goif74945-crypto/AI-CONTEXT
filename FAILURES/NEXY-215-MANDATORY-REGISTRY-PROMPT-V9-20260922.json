@@ -67,5 +67,10 @@
   "hash": "HASH_UNAVAILABLE",
   "record_type": "FAILURE",
   "failure_status": "NO_EXECUTION_FAILURE",
-  "note": "No target implementation audit executed."
+  "note": "No target implementation audit executed.",
+  "current_authority_status": "DEPRECATED_UNRELIABLE_DO_NOT_USE",
+  "historical_record_preserved": true,
+  "current_warning": "This historical 215-entry registry is not reliable current NEXY source truth. Do not use it for current system counts, atomic counts, audit/build/completeness denominators, requirement enumeration, or create/delete decisions.",
+  "superseded_by": "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md",
+  "supersession_decision": "projects/NEXY.AI/decisions/ADR-0013.md"
 }
