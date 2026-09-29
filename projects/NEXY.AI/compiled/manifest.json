@@ -1,6 +1,12 @@
 {
   "schema_version": "1.0.0",
-  "compiled_at": "2026-09-24",
+  "compiled_at": "2026-09-29",
+  "target_snapshot": {
+    "repo": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
+    "tree": "8a3ae328c1956c661bc2b1561de1a791a7856a7e"
+  },
   "packs": [
     {
       "id": "NEXY-CANON",
@@ -47,6 +53,7 @@
     "Compiled packs contain stable critical facts and registry pointers rather than duplicating every registry record.",
     "Referenced source registries win on disagreement.",
     "Recompile after governance/default/target/evidence state changes.",
-    "Implementation-bound packs become stale when target HEAD changes."
+    "Implementation-bound packs become stale when target HEAD changes.",
+    "Historical exact-head PASS remains bound to its tested SHA and must not be promoted to a newer HEAD."
   ]
 }
