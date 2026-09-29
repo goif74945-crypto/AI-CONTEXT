@@ -106,3 +106,24 @@ Coverage thresholds:
 - log sha256=6a4b81b394d2ceff6886cd8fdbd966409b9fdc2fd65a64288e8663dc013c64c5
 - validation overall=0 after E2 proof
 - release remains NOT AUTHORIZED; E3-E12 incomplete and E11 remains external
+
+
+## CROSS drift + E3 mechanism proof
+- branch drift observed while E3 campaign was running; current branch later moved beyond 941dd80a37d85e44e075658cee8e59e1103a1fbf
+- E3 exact-head mechanism proof commit: 941dd80a37d85e44e075658cee8e59e1103a1fbf
+- E3 exact tree: ba923be00c879893e10bd6f6875f773a15249285
+- Railway deployment: 64d41f28-7377-4363-aa2e-3e9bc0aae5e0
+- build validation overall=0 before pre-deploy
+- pre-deploy private-network migration roundtrip executed against isolated temporary DB nexy_doc_e_e3_941dd80a
+- 23 migrations applied
+- latest migration rolled back: 20260925005000_freeze_incident_secondary_backfill
+- latest migration re-applied successfully
+- migration-rollback-contract + storage-fk-contract passed
+- DOC_E_E3_ROUNDTRIP=PASS
+- E3 log sha256=3ac26fff3300eb6f1b2129b1334032bb830046deba94b15fda91175bd693b01f
+- verdict: VERIFIED_MECHANISM / HISTORICAL_EXACT_HEAD only; NOT current-release evidence after branch drift
+
+### Invalid E3 attempt retained as failure evidence
+- prior build-phase E3 attempt was INVALID_EVIDENCE
+- causes: Railway private DNS unavailable in build phase; psql rejected Prisma-style ?schema=public URI; harness inherited set +e and could falsely reach PASS marker
+- correction: moved E3 to pre-deploy private-network plane; separated psql URL without schema query; set -e fail-fast

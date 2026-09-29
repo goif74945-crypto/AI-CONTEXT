@@ -34,3 +34,8 @@
 | L20 | Railway raw build log | E2 snapshot verification passed | e2_verify exit=0 on same SHA/tree | E2 generator | high | VERIFIED | 1.00 | current |
 | L21 | Railway raw build log | E2 artifact integrity hashes captured | artifact sha256 36dae757365aac9ab2586b9638d97448de1330f19fa630abf58f9597917de552; log sha256 6a4b81b394d2ceff6886cd8fdbd966409b9fdc2fd65a64288e8663dc013c64c5 | sha256sum | high | VERIFIED | 1.00 | current |
 | L22 | DOC-E truth boundary | release still unauthorized after E2 | E3-E12 incomplete; E11 authorized external signoff absent | design authority | S4 | VERIFIED | 1.00 | current |
+
+| L23 | Railway pre-deploy on 941dd80a | E3 migration roundtrip mechanism executed on private network | deployment 64d41f28-7377-4363-aa2e-3e9bc0aae5e0; 23 migrations; rollback/reapply latest migration; DOC_E_E3_ROUNDTRIP=PASS | isolated temp DB | high | VERIFIED_MECHANISM_HISTORICAL | 1.00 | exact-head historical |
+| L24 | Railway pre-deploy | E3 proof log integrity | sha256 3ac26fff3300eb6f1b2129b1334032bb830046deba94b15fda91175bd693b01f | E3 log | high | VERIFIED | 1.00 | exact-head historical |
+| L25 | Railway build-phase invalid attempt | earlier E3 PASS marker was false-positive and must not be used | private DNS unavailable + Prisma schema URI incompatible with psql + set +e allowed continuation | harness | S4 | INVALID_EVIDENCE | 1.00 | historical |
+| L26 | GitHub branch | CROSS chat moved branch after E3 exact-head campaign | branch no longer equals 941dd80a after campaign | GitHub ref | high | VERIFIED_DRIFT | 1.00 | current |
