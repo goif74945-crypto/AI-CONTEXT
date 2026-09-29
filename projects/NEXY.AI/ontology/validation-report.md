@@ -50,9 +50,11 @@ It does **not** prove:
 Those are intentionally left for the later Implementation Map, Acceptance/Test Matrix and Evidence Registry.
 
 ## Ontology-count rule
-The earlier 215-entry registry is a top-level architecture tracking baseline.
+The historical 215-entry registry is **DEPRECATED_UNRELIABLE_DO_NOT_USE**. It is retained only for provenance and must not be used for current counts, denominators or completeness.
 
-Ontology v1 identifies **518 source-derived objects** under the current classification rules. This count is versioned and may change after:
+The current exhaustive source requirement/feature enumeration is the **837-row normalized matrix** in `projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md`.
+
+Ontology v1 identifies **518 source-derived typed objects** under its own classification rules. 518 is not a NEXY “system count” and is not interchangeable with the 837 requirement rows. This count is versioned and may change after:
 - new source revisions;
 - claim-level supersession normalization;
 - implementation mapping;
