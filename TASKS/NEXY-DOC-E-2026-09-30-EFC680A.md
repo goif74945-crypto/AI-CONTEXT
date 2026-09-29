@@ -5,14 +5,14 @@ title: DOC-E exact-head execution and repair
 mode: EXEC
 scope: NEXY.AI- DOC-E implementation/evidence only
 source_authority: NEXY design DOCX + current NEXY.ai repo state; AI-CONTEXT not used as requirement source
-current_status: ACTIVE / EXACT_HEAD_BASE_GATES_PASS
+current_status: ACTIVE / E2_VERIFIED
 timestamp_source: ChatGPT session date 2026-09-30
 
 ## Current canonical repository state
 - repository: goif74945-crypto/NEXY.AI-
 - branch: NEXY.ai
-- HEAD: efc680a5846dcd6a49ad5e49bc53ec6e8cdd4e98
-- tree: f9c5f68ac2d5bf85c2a3199deea09e457d2cba29
+- HEAD: f813ac608600db82d1f0ebf24b74b6dcb9630183
+- tree: e6e87d2b3591d4170b45bf1ef365fff37236c8fa
 
 ## Changes completed
 - repaired corrupted packages/contracts/doc-e-evidence.ts
@@ -90,3 +90,19 @@ Coverage thresholds:
 - regression after E2: integration=0 full=0 coverage=0 coverage_check=0 doc_c=0 web_build=0; NEXY_VALIDATION_OVERALL=0
 - E2 verdict: VERIFIED_EXACT_HEAD
 - release/deploy still NOT AUTHORIZED; E3-E12 incomplete and E11 external signoff absent
+
+
+## DOC-E implementation progress
+- fail-closed attestation verifier added and verified on exact-head campaign
+- E2 deterministic API schema snapshot added and verified
+- E2 source commit: 99ba261fa36f1a3265588a504b7e8b5c1b6639e6
+- E2 runner-portable identity fix: f813ac608600db82d1f0ebf24b74b6dcb9630183
+- Railway proof deployment: 454546aa-81e7-4e12-96d9-a88b2cd367fd
+- E2 generate exit=0
+- E2 verify exit=0
+- schemas=20
+- snapshot internal sha256=ca25857bfacca27f35ab75dff9baff2ab060ec1fb2aeba0edabf471d8fea842b
+- artifact file sha256=36dae757365aac9ab2586b9638d97448de1330f19fa630abf58f9597917de552
+- log sha256=6a4b81b394d2ceff6886cd8fdbd966409b9fdc2fd65a64288e8663dc013c64c5
+- validation overall=0 after E2 proof
+- release remains NOT AUTHORIZED; E3-E12 incomplete and E11 remains external

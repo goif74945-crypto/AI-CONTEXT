@@ -28,3 +28,9 @@
 | L23 | Railway raw build log | E2 snapshot integrity hashes recorded | snapshot_sha256=ca25857b...; artifact_sha256=36dae757...; log_sha256=6a4b81b3... | Railway build | high | VERIFIED | 1.00 | current-at-campaign |
 | L24 | Railway raw build log | regression remained clean after E2 proof | integration/full/coverage/coverage_check/doc_c/web_build all exit=0; NEXY_VALIDATION_OVERALL=0 | Railway build | high | VERIFIED_REGRESSION | 1.00 | current-at-campaign |
 | L25 | DOC-E state | E2 is complete for exact HEAD f813ac6086... | L21-L24 | E2 generator + verifier + Railway | high | VERIFIED_E2 | 1.00 | current |
+
+| L18 | Railway + GitHub | E2 source implementation passes on exact HEAD f813ac608600db82d1f0ebf24b74b6dcb9630183 / tree e6e87d2b3591d4170b45bf1ef365fff37236c8fa | doc-e-api-schema-snapshot.test.ts 6/6 PASS + full validation overall=0 | E2 source | high | VERIFIED | 1.00 | current |
+| L19 | Railway raw build log | E2 snapshot generation passed | e2_generate exit=0; schemas=20; snapshot sha256 ca25857bfacca27f35ab75dff9baff2ab060ec1fb2aeba0edabf471d8fea842b | E2 generator | high | VERIFIED | 1.00 | current |
+| L20 | Railway raw build log | E2 snapshot verification passed | e2_verify exit=0 on same SHA/tree | E2 generator | high | VERIFIED | 1.00 | current |
+| L21 | Railway raw build log | E2 artifact integrity hashes captured | artifact sha256 36dae757365aac9ab2586b9638d97448de1330f19fa630abf58f9597917de552; log sha256 6a4b81b394d2ceff6886cd8fdbd966409b9fdc2fd65a64288e8663dc013c64c5 | sha256sum | high | VERIFIED | 1.00 | current |
+| L22 | DOC-E truth boundary | release still unauthorized after E2 | E3-E12 incomplete; E11 authorized external signoff absent | design authority | S4 | VERIFIED | 1.00 | current |
