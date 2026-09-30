@@ -1,97 +1,104 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "pack_id": "NEXY-AUDIT-CONTEXT",
   "project": "NEXY.AI",
-  "compiled_at": "2026-09-29",
+  "compiled_at": "2026-09-30",
   "target_snapshot": {
     "repo": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
-    "tree": "8a3ae328c1956c661bc2b1561de1a791a7856a7e"
+    "head": "d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e",
+    "tree": "4cf698ed37f87d68df1c30a3e55bd4bd80a36c5e"
   },
   "source_authority": {
     "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "build_obligation": "DOC-C",
-    "product_design": "DOC-D where permitted",
-    "deploy_authority": "DOC-E"
+    "deploy_authority": "DOC-E",
+    "kernel_laws": [
+      "Creator depth law",
+      "Layer 8 implementation verification",
+      "Layer 9 runtime determinism",
+      "Layer 10 crash and recovery",
+      "Layer 11 storage and I/O determinism",
+      "Layer 12 human and operational determinism",
+      "G19 hardware and microcode verification",
+      "Final DOC-C state/event matrix",
+      "L1o/Lo3 L600",
+      "Final absolute architecture"
+    ]
   },
-  "headline_metrics": {
+  "current_core_kernel_truth": {
+    "requirements_audited": 146,
+    "status_counts": {
+      "PASS": 16,
+      "CONTRADICTED": 22,
+      "PARTIAL": 45,
+      "MISSING": 42,
+      "PROOF_GAP": 9,
+      "OUTSIDE_CRATE_UNPROVEN": 12
+    },
+    "verdict": "FULL_SPEC_BLOCKED",
+    "proven": [
+      "no_std kernel crate",
+      "no f32/f64 found in core-kernel",
+      "no SystemTime/Instant found in core-kernel",
+      "fixed128 deterministic arithmetic exists",
+      "x86_64/aarch64 target triple compile gate exists",
+      "DAG cycle protection exists",
+      "ShadowWal O_DSYNC + fsync primitive exists",
+      "exact-head Railway contract validation succeeded including Rust wrapper"
+    ],
+    "contradicted_or_blocking": [
+      "Final VNext matrix mismatch",
+      "Tier 5/build-time-only depth mismatch",
+      "release-path XorShift64 RNG",
+      "no-wrap/no-saturating literal law violation",
+      "system allocator fallback feature",
+      "raw ShadowWal daemon integration bypasses canonical WalRecord path",
+      "WAL sequence restart at zero",
+      "no canonical state replay from snapshot+WAL",
+      "fail-open clean-start branches for unprovable WAL/anchor state",
+      "binary hash WARN-and-continue path",
+      "local /tmp TOFU anchors instead of TPM/HSM remote attestation",
+      "Layer 11 hardware/storage enforcement gaps",
+      "L1o memory law gap",
+      "hardening proof gaps"
+    ]
+  },
+  "exact_head_execution": {
+    "railway_deployment_id": "09da96e1-f989-43d4-9e5e-3001b5e36335",
+    "railway_status": "SUCCESS",
+    "github_doc_e_run": {
+      "id": 36693582979,
+      "conclusion": "failure",
+      "steps_executed": 0
+    },
+    "github_deploy_gate_run": {
+      "id": 36693583122,
+      "conclusion": "failure",
+      "steps_executed": 0
+    },
+    "interpretation": "GitHub failures occurred before steps/runner execution and are not code-test failures."
+  },
+  "historical_global_metrics": {
+    "status": "STALE_AT_NEW_HEAD",
+    "source_head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
     "doc_c_static_percent": 99.03,
     "doc_d_percent": 98.08,
     "canonical_product_percent": 98.9,
-    "full_file_percent": 82.08,
-    "doc_e_exact_current_head_percent": 0,
-    "requirement_rows": 301
+    "full_file_percent": 82.08
   },
-  "inventory": {
-    "tree_entries": 852,
-    "blobs": 676,
-    "api_route_files": 37,
-    "doc_d_named_components": "14/14",
-    "component_ts_tsx_files": 29,
-    "prisma_forward_migrations": 23,
-    "prisma_rollback_files": 23,
-    "db_integrity_triggers": [
-      "event_log_append_only",
-      "audit_log_append_only",
-      "audit_log_chain_integrity"
-    ]
-  },
-  "current_evidence_truth": {
-    "doc_e_required": 12,
-    "pass": 0,
-    "exact_current_head": 0,
-    "current_head_ci": {
-      "run_id": 36525568766,
-      "workflow": ".github/workflows/deploy.yml",
-      "conclusion": "failure",
-      "jobs_returned": 0,
-      "status": "CONTRADICTED"
-    },
-    "prior_head_local_attestation": {
-      "tested_sha": "ab471d1e2705d6010afdcdbb0a7baf08132de47d",
-      "tested_tree": "298468ca539306c2c581248331f082b908400605",
-      "test_files_passed": 113,
-      "tests_passed": 835,
-      "recorded_gate_exit_codes_all_zero": true,
-      "applicability": "HISTORICAL_ONLY"
-    },
-    "verdict": "NOT_VERIFIED / NON_DEPLOYABLE"
-  },
-  "corrected_findings": [
-    {
-      "item": "DOC-D First-session walkthrough",
-      "previous": "PARTIAL",
-      "current": "PASS",
-      "proof": "apps/web/components/TrustExplainer.tsx implements five source-matching steps plus persistent first-session seen state"
-    },
-    {
-      "item": "DOC-D Validation copy",
-      "current": "PARTIAL",
-      "proof": "Input required/schema invalid, Permission denied, and System frozen are present; exact Recovery not allowed copy was not found"
-    },
-    {
-      "item": "DOC-C Exact-head CI gate execution evidence",
-      "previous": "MISSING",
-      "current": "CONTRADICTED",
-      "proof": "GitHub Actions run 36525568766 exists for ba33c8f and concluded failure"
-    }
-  ],
   "load_first": [
-    "projects/NEXY.AI/release/current-gate-state.json",
     "projects/NEXY.AI/checkpoints/current.json",
-    "projects/NEXY.AI/traceability/requirement-trace.jsonl",
-    "projects/NEXY.AI/verification/requirement-test-matrix.jsonl",
-    "projects/NEXY.AI/evidence/evidence-ledger.jsonl",
-    "projects/NEXY.AI/failures/failure-library.jsonl",
+    "CASES/2026-09-30/NEXY-CORE-KERNEL-FULL-SPEC-AUDIT-D7F824E.json",
+    "LEDGER/2026-09-30/NEXY-CORE-KERNEL-FULL-SPEC-AUDIT-D7F824E.json",
+    "projects/NEXY.AI/release/current-gate-state.json",
     "rules/VERIFICATION.md"
   ],
   "audit_laws": [
-    "Presence is E0 only.",
-    "Absence from one search is not MISSING.",
-    "Evidence must match claim class and exact relevant revision/environment.",
-    "Historical PASS is historical only.",
-    "A failing exact-head CI record is CONTRADICTED, not PASS and not absent evidence.",
-    "Preserve UNKNOWN/CONFLICT/BLOCKED/PARTIAL instead of guessing."
+    "Passing tests do not override a source contradiction.",
+    "Unprovable identity/recovery must fail closed.",
+    "Historical evidence does not promote a new HEAD.",
+    "Runner failure before steps is not code-test failure.",
+    "Do not mint 100% from weighted averages when constitutional blockers remain."
   ]
 }
