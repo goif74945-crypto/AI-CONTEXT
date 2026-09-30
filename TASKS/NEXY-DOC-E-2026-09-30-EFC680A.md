@@ -1,179 +1,111 @@
 # NEXY-DOC-E-2026-09-30-EFC680A
 
 TASK_ID: NEXY-DOC-E-2026-09-30-EFC680A
-title: DOC-E exact-head execution and repair
-mode: EXEC
-scope: NEXY.AI- DOC-E implementation/evidence only
-source_authority: NEXY design DOCX + current NEXY.ai repo state; AI-CONTEXT not used as requirement source
-current_status: ACTIVE / E2_VERIFIED
+title: DOC-E exact-head execution, evidence convergence, and release gate
+mode: EXEC / CROSS
+scope: NEXY.AI- DOC-E implementation + exact-head evidence only
+source_authority: NEXY design DOCX + live NEXY.AI- repository/runtime evidence; AI-CONTEXT was not used as a requirement source
+final_status: PARTIAL / BLOCKED_EXTERNAL_E11
 timestamp_source: ChatGPT session date 2026-09-30
+trace_id: railway:46542beb-fefb-4745-a217-42f546a103ab
 
-## Current canonical repository state
+## Source read gate
+- design source SHA-256: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
+- normalized logical lines: 12,537
+- coverage: 32/32 ranges, 1..12537, no gaps
+- DOC-E authority extracted from design: E1..E12 evidence pack; deploy approval comes from DOC-E, build obligation from DOC-C
+
+## Repository state
 - repository: goif74945-crypto/NEXY.AI-
-- branch: NEXY.ai
-- HEAD: f813ac608600db82d1f0ebf24b74b6dcb9630183
-- tree: e6e87d2b3591d4170b45bf1ef365fff37236c8fa
+- implementation branch used for this task: work/doc-e-exact-head-20260930
+- exact validated HEAD: e82edcd9e6ab1322526499a45ecb72ff9a487e4a
+- exact validated tree: 5cc36e3b85e775c462c4a2baf6a05abe7150f049
+- protected branch ai/nexy-24x7-autonomous-do-not-touch: untouched
+- NEXY.ai: not modified by this DOC-E isolated-branch batch
 
-## Changes completed
-- repaired corrupted packages/contracts/doc-e-evidence.ts
-- repaired contradictory provider-gate contract test
-- added NEXY.ai runner smoke diagnostic
-- commits:
-  - bd817650267acea64f21aa631d49076c5e7d201a — fix(doc-e): repair evidence contract corruption
-  - efc680a5846dcd6a49ad5e49bc53ec6e8cdd4e98 — ci: add NEXY.ai runner smoke diagnostic
+## Implemented DOC-E mechanisms
+- E1 full contract-suite evidence generator
+- E2 deterministic API-schema snapshot + exact-head evidence builder
+- E3 isolated PostgreSQL forward -> rollback -> forward migration proof
+- E4/E5/E6 exact-head functional-test evidence runner
+- E7 real producer -> Redis/BullMQ -> worker readiness proof + validator
+- E8 canonical six-alarm verification + external provider-log receipt gate
+- E9 production-path FREEZE -> audited OWNER recovery -> READY -> idempotent replay drill
+- E10 runbook/provider-command receipt validator
+- E11 external engineering/security/migration signoff verifier; AI/placeholder approvals rejected
+- E12 application/release rollback receipt verifier, explicitly separate from migration rollback
+- canonical E1-E12 aggregator: one SHA/tree/execution identity + evidence-root SHA-256
+- exact-head Railway/GitHub campaign tooling, provider-native execution IDs, secret-redacted diagnostics
+- Railway validation image: Node 22, Prisma generation, Rust stable, typecheck, contract suite, web build, BUILD_ID proof
 
-## GitHub Actions diagnostic
-- run 36602718686 instantiated jobs but exposed no executed steps/logs
-- smoke run 36602881913 / job 109524417528 had steps=null and logs_url=null
-- therefore GitHub-hosted runner failures were environment-plane failures, not source-test evidence
+## Verified Railway evidence
+Primary final campaign:
+- project: NEXY Validation R2
+- service: nexy-validation-branch
+- deployment: 46542beb-fefb-4745-a217-42f546a103ab
+- tested SHA: e82edcd9e6ab1322526499a45ecb72ff9a487e4a
+- tested tree: 5cc36e3b85e775c462c4a2baf6a05abe7150f049
+- item statuses:
+  - E1 PASS
+  - E2 PASS
+  - E3 PASS
+  - E4 PASS
+  - E5 PASS
+  - E6 PASS
+  - E7 PASS
+  - E8 PASS
+  - E9 PASS
+  - E10 PASS
+  - E11 BLOCKED_EXTERNAL
+  - E12 PASS
+- release_authorized: false
+- deploy_authorized: false
+- blocking_reasons: E11:BLOCKED_EXTERNAL
+- evidence_root_sha256: 3da765cb2c0123c9b718dc1f38bd16273bb03f1eba20ea9ab015cb06c774ad85
+- attestation_sha256: d816e1053143e373b71b6e921ebb6b2378b3dacbff5d480cd61913972033b3a1
 
-## Alternate execution plane established
-- Railway project: NEXY Validation R2
-- service: nexy-validation
-- deployment: 7ad09354-83a2-4ef7-a084-c6404c675d7e
-- source branch: NEXY.ai
-- exact tested SHA: efc680a5846dcd6a49ad5e49bc53ec6e8cdd4e98
-- runtime toolchain in build: Node v22.23.2 / npm 10.9.8
+## Rollback proof used by E10/E12
+Rollback target campaign:
+- rollback deployment: 367ffe4d-794d-4d10-8c2d-e4573c6afb8a
+- target SHA: 45ec2284e4f8fc1062917a355152216f4b2e132e
+- target tree: 510887d7697d0781599056d7ff0ee497bf99d955
+- status: SUCCESS
+- E1-E9 including E8 monitoring: PASS
+- rollback target attestation_sha256: 89bc3bea9473e97adc9c6a2fa56f8ddea948b01e379d73e2c05747d15b99c12a
 
-## Exact-head base validation — RAW MARKERS VERIFIED
-- node_setup: exit=0
-- npm_ci: exit=0; 405 packages; 0 vulnerabilities
-- typecheck: exit=0
-- contract: exit=0
-- integration: exit=0
-- full: exit=0
-- coverage: exit=0
-- coverage_check: exit=0
-- doc_c: exit=0
-- web_build: exit=0
-- NEXY_VALIDATION_OVERALL=0
+Restore campaign:
+- restore deployment: db54cf4f-55ae-4218-acdb-840225a2fd05
+- restored SHA/tree: e82edcd9e6ab1322526499a45ecb72ff9a487e4a / 5cc36e3b85e775c462c4a2baf6a05abe7150f049
+- status: SUCCESS
+- E1-E9 including E8 monitoring: PASS
+- restore attestation_sha256: d48906d0bfe07bd29176e0427e9ee8b847485f265b7c2489f9fd3fc1d8c55a79
 
-Coverage thresholds:
-- API lines=93.44% >=85%
-- Core lines=95.73% >=90%
-- Law lines=100.00% >=90%
-- Judge lines=97.39% >=90%
+## Important repaired failures
+- GitHub hosted runner had jobs with no executed steps/logs; not classified as source-test failure
+- Railway builder initially ignored custom Dockerfile path; validation alias used a root Dockerfile workaround
+- Prisma client generation was missing before typecheck; fixed
+- Rust toolchain missing for Rust contract; validation image now installs Rust stable
+- runtime build:web was SIGKILLed; moved web build to image build phase and verified apps/web/.next/BUILD_ID
+- E7 harness used non-canonical pseudo IDs; fixed to canonical ULIDs + seeded OWNER/project/device binding
+- E9 diagnostics were hardened with labelled assertions
+- stale E10/E12 receipts were removed rather than rebinding/fabricating; fresh provider rollback/restore actions generated current evidence
 
-## Truth boundary
-- this proves the base validation campaign for the exact SHA above
-- it does NOT yet prove DOC-E E1-E12 evidence completion
-- it does NOT provide E11 real external authorization
-- it does NOT authorize release or production deployment
-- historical docs/evidence/current is stale and bound to 0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d
+## Remaining blocker
+E11 is intentionally BLOCKED_EXTERNAL.
+Required before release authorization:
+- real engineering approval
+- real security approval
+- real migration approval
+- rollback_verified=true
+- monitoring_verified=true
+- decision=APPROVE
+The verifier rejects AI/self/placeholder authorization. No assistant-generated substitute is acceptable.
 
-## Next actions
-1. implement fail-closed DOC-E verifier / exact-head foundation as an atomic source change
-2. because source change creates a new HEAD, restart base validation on the new exact SHA
-3. then implement/prove E2, E9, E10, E12, E11 and evidence aggregation in source order
-4. generate current E1-E12 outside the tested source branch or as immutable CI artifacts
-5. keep E11 BLOCKED_EXTERNAL until authorized identities actually sign
+## Release boundary
+- current source/evidence status: E1-E10 PASS, E12 PASS, E11 BLOCKED_EXTERNAL
+- release: NOT AUTHORIZED
+- production deploy: NOT AUTHORIZED
+- branch merge to NEXY.ai: not performed by this task
 
 ## Rollback
-- no force push used
-- no production deployment performed
-- source changes remain ordinary fast-forward commits reversible by inverse commits
-
-## DOC-E progress — verifier + E2
-- verifier commit: fe6e8cac21397a09d070ea05acc01f2c985be0e7
-- verifier Railway proof: tests/contract/doc-e-verifier.test.ts 6/6 PASS; all base gates exit=0
-- E2 initial commit 99ba261fa36f1a3265588a504b7e8b5c1b6639e6 failed because Railway snapshot has no .git; classified execution-environment identity integration defect, not schema proof
-- E2 repair commit: f813ac608600db82d1f0ebf24b74b6dcb9630183
-- E2 repair tree: e6e87d2b3591d4170b45bf1ef365fff37236c8fa
-- E2 Railway deployment: 454546aa-81e7-4e12-96d9-a88b2cd367fd
-- E2 source contract tests: 6/6 PASS
-- E2 generated + verified exact-head snapshot: schemas=20
-- E2 snapshot_sha256: ca25857bfacca27f35ab75dff9baff2ab060ec1fb2aeba0edabf471d8fea842b
-- E2 artifact file sha256: 36dae757365aac9ab2586b9638d97448de1330f19fa630abf58f9597917de552
-- E2 log sha256: 6a4b81b394d2ceff6886cd8fdbd966409b9fdc2fd65a64288e8663dc013c64c5
-- E2 exact identity: sha=f813ac608600db82d1f0ebf24b74b6dcb9630183 tree=e6e87d2b3591d4170b45bf1ef365fff37236c8fa
-- E2 proof gates: e2_generate=0, e2_verify=0
-- regression after E2: integration=0 full=0 coverage=0 coverage_check=0 doc_c=0 web_build=0; NEXY_VALIDATION_OVERALL=0
-- E2 verdict: VERIFIED_EXACT_HEAD
-- release/deploy still NOT AUTHORIZED; E3-E12 incomplete and E11 external signoff absent
-
-
-## DOC-E implementation progress
-- fail-closed attestation verifier added and verified on exact-head campaign
-- E2 deterministic API schema snapshot added and verified
-- E2 source commit: 99ba261fa36f1a3265588a504b7e8b5c1b6639e6
-- E2 runner-portable identity fix: f813ac608600db82d1f0ebf24b74b6dcb9630183
-- Railway proof deployment: 454546aa-81e7-4e12-96d9-a88b2cd367fd
-- E2 generate exit=0
-- E2 verify exit=0
-- schemas=20
-- snapshot internal sha256=ca25857bfacca27f35ab75dff9baff2ab060ec1fb2aeba0edabf471d8fea842b
-- artifact file sha256=36dae757365aac9ab2586b9638d97448de1330f19fa630abf58f9597917de552
-- log sha256=6a4b81b394d2ceff6886cd8fdbd966409b9fdc2fd65a64288e8663dc013c64c5
-- validation overall=0 after E2 proof
-- release remains NOT AUTHORIZED; E3-E12 incomplete and E11 remains external
-
-
-## CROSS drift + E3 mechanism proof
-- branch drift observed while E3 campaign was running; current branch later moved beyond 941dd80a37d85e44e075658cee8e59e1103a1fbf
-- E3 exact-head mechanism proof commit: 941dd80a37d85e44e075658cee8e59e1103a1fbf
-- E3 exact tree: ba923be00c879893e10bd6f6875f773a15249285
-- Railway deployment: 64d41f28-7377-4363-aa2e-3e9bc0aae5e0
-- build validation overall=0 before pre-deploy
-- pre-deploy private-network migration roundtrip executed against isolated temporary DB nexy_doc_e_e3_941dd80a
-- 23 migrations applied
-- latest migration rolled back: 20260925005000_freeze_incident_secondary_backfill
-- latest migration re-applied successfully
-- migration-rollback-contract + storage-fk-contract passed
-- DOC_E_E3_ROUNDTRIP=PASS
-- E3 log sha256=3ac26fff3300eb6f1b2129b1334032bb830046deba94b15fda91175bd693b01f
-- verdict: VERIFIED_MECHANISM / HISTORICAL_EXACT_HEAD only; NOT current-release evidence after branch drift
-
-### Invalid E3 attempt retained as failure evidence
-- prior build-phase E3 attempt was INVALID_EVIDENCE
-- causes: Railway private DNS unavailable in build phase; psql rejected Prisma-style ?schema=public URI; harness inherited set +e and could falsely reach PASS marker
-- correction: moved E3 to pre-deploy private-network plane; separated psql URL without schema query; set -e fail-fast
-
-
-## Isolated DOC-E branch implementation — current milestone
-- branch: work/doc-e-exact-head-20260930
-- branch base: 0f9c8c65e2ab7b959f03264569430afc256f268a
-- current branch HEAD: 5f9880ce7b602926f8af678290d94acdfbae2096
-- current branch tree: bfd7bd4a09e4b7bc6b4730333d8639f7c7e94a2d
-- no force push used; NEXY.ai was not modified by this DOC-E batch
-
-Implemented on isolated branch:
-- E1 full contract-suite report generator
-- E2 exact-head snapshot evidence record builder
-- E3 canonical isolated forward -> rollback -> forward migration runner
-- E4/E5/E6 exact-head test evidence runner
-- E7 real queue-runtime log validator
-- E8 six-alarm local proof + external-monitoring receipt gate
-- E9 production-path incident lifecycle drill + evidence validator
-- E10 runbook/provider-command validator
-- E11 authorized external signoff verifier plus honest BLOCKED_EXTERNAL record
-- E12 application/release rollback receipt verifier plus honest BLOCKED_EXTERNAL record
-- canonical E1-E12 aggregator with one-SHA/tree/run enforcement and evidence-root SHA-256
-- exact-head campaign runner with secret redaction for database administration commands
-- thin GitHub workflow .github/workflows/doc-e-exact-head.yml
-
-Key isolated-branch commits:
-- e7a27219a5971c509c0c0e8e02350ec599ee6e36 E4-E6 evidence runner
-- 9fa2bb29523b33c95e2328232fe601ae90a1ed49 E7/E8 evidence validators
-- cb42f2bd3a1e0aa571df4d36c8479b3dbc285937 E9 real lifecycle drill
-- bab3afb961070b020bc8d4abe644caf134095567 E10-E12 external release gates
-- b74ca913244868bcaadd56ddfe00e362e6081a1a E1 report + aggregator
-- 46905829af7d4f9a2ee9cf988e8e3397eeb7db2b E3 canonical runner + E11/E12 blocker records
-- 37077eb5bc489c626e8a1aa218f62bb7f8742d83 E9 evidence validator
-- 6a2194f67fbc1ab0d6566dc507653b9fbe6cf747 E2 evidence builder
-- 78a201667069926a90c1a6ba03357a1267f4ba6b campaign runner
-- 839922aa671e6bcb7e6bc03d7948d12c71981824 thin workflow
-- 5f9880ce7b602926f8af678290d94acdfbae2096 isolated-branch parser-probe trigger
-
-Validation status:
-- all referenced campaign/workflow paths were read back from the isolated branch and exist
-- GitHub Actions did not create a workflow run for the isolated-branch push probe; this is NOT evidence that workflow parsing passed or failed
-- new isolated-branch scripts/tests have NOT yet received a real TypeScript/test/runtime campaign because GitHub-hosted runner execution remains unavailable and Railway service source is still NEXY.ai
-- E3 historical mechanism proof remains valid only as historical mechanism evidence, not current-release evidence
-- final exact-head campaign must execute after merge window or after a runner can target the isolated branch
-
-External truth:
-- E8 remains BLOCKED_EXTERNAL without a verified monitoring sink receipt
-- E10 remains BLOCKED_EXTERNAL without authoritative provider deploy/rollback command receipt
-- E11 remains BLOCKED_EXTERNAL without real engineering/security/migration approvals plus rollback/monitoring verification
-- E12 remains BLOCKED_EXTERNAL without real application/release rollback execution receipt
-- release/deploy remain NOT AUTHORIZED
+All DOC-E source changes are ordinary Git commits on the isolated branch. Validation alias movement is reversible and the validation service was restored to the current exact HEAD after rollback proof.
