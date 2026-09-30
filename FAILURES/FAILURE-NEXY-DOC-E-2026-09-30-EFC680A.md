@@ -2,7 +2,7 @@
 
 FAILURE_ID: FAILURE-NEXY-DOC-E-2026-09-30-EFC680A
 status: RESOLVED_EXECUTION_PATH / E11_EXTERNAL_BLOCK_ACTIVE
-version: 2
+version: 3
 
 ## Historical failed approaches
 - GitHub Actions hosted runner: jobs instantiated but executable steps/logs unavailable
@@ -49,3 +49,12 @@ Only E11 remains unresolved. Missing authorized engineering/security/migration s
 - blank/reject stale receipts instead of adapting them
 - keep validation diagnostics secret-redacted
 - keep application rollback evidence separate from migration rollback evidence
+
+
+## Branch consolidation recovery
+- Previous isolated DOC-E branch was not force-pushed over NEXY.ai.
+- Live comparison proved NEXY.ai and DOC-E had diverged from 0f9c8c65... with no changed-path intersection.
+- A two-parent merge preserved both histories and produced NEXY.ai merge commit 6c53f51aa734c39d4e98176f7718e9597d4c59fa.
+- Follow-up canonical cleanup d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e replaced temporary branch names in DOC-E workflow/runtime evidence with NEXY.ai.
+- Temporary refs were synchronized to the canonical commit; they must not be treated as source-of-truth.
+- Fresh post-merge validation 09da96e1-f989-43d4-9e5e-3001b5e36335 is not yet terminal in this record version.

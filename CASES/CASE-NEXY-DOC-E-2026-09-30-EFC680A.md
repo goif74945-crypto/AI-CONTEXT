@@ -4,7 +4,7 @@ CASE_ID: CASE-NEXY-DOC-E-2026-09-30-EFC680A
 status: MITIGATED / EXTERNAL_RELEASE_BLOCK_REMAINS
 severity: S4 release blocker
 scope: DOC-E evidence convergence
-version: 2
+version: 3
 
 ## Cause
 The original GitHub-hosted Actions plane instantiated jobs without executable steps/logs. An alternate real execution plane was required. Railway validation then exposed harness defects that were repaired without weakening production contracts.
@@ -52,3 +52,16 @@ Only E11 remains unresolved. It requires authorized external engineering/securit
 - E3 migration rollback never substitutes for E12 application rollback
 - provider execution and monitoring receipts must be real
 - missing human authorization stays BLOCKED_EXTERNAL
+
+
+## Canonical branch consolidation update
+- NEXY.ai is verified as repository default/canonical branch.
+- DOC-E and NEXY.ai diverged from merge base 0f9c8c65e2ab7b959f03264569430afc256f268a.
+- NEXY.ai side changed 7 files; DOC-E side changed 41 files; changed-file intersection was empty.
+- merged tree preserved the NEXY.ai-side blobs byte-for-byte and overlaid all DOC-E blobs byte-for-byte.
+- merge commit: 6c53f51aa734c39d4e98176f7718e9597d4c59fa
+- canonical cleanup commit: d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e
+- canonical tree: 4cf698ed37f87d68df1c30a3e55bd4bd80a36c5e
+- temporary refs are synchronized to canonical HEAD; they are not authority.
+- post-merge Railway deployment 09da96e1-f989-43d4-9e5e-3001b5e36335 is BUILDING at this record version.
+- release remains NOT AUTHORIZED until current-head validation and E11 are complete.

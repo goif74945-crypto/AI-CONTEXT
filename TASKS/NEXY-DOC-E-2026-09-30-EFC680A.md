@@ -8,7 +8,7 @@ source_authority: NEXY design DOCX + live NEXY.AI- repository/runtime evidence; 
 final_status: PARTIAL / BLOCKED_EXTERNAL_E11
 timestamp_source: ChatGPT session date 2026-09-30
 trace_id: railway:8d6180ec-1a6e-4fab-9c3d-19da8daf1ba6
-version: 2
+version: 3
 supersedes_runtime_trace: railway:46542beb-fefb-4745-a217-42f546a103ab
 
 ## Source read gate
@@ -19,12 +19,12 @@ supersedes_runtime_trace: railway:46542beb-fefb-4745-a217-42f546a103ab
 
 ## Repository state
 - repository: goif74945-crypto/NEXY.AI-
-- implementation branch: work/doc-e-exact-head-20260930
-- exact validated HEAD: e82edcd9e6ab1322526499a45ecb72ff9a487e4a
-- exact validated tree: 5cc36e3b85e775c462c4a2baf6a05abe7150f049
-- validation alias: astra/omega-full-spec-convergence
+- canonical/default branch: NEXY.ai
+- last fully validated pre-merge DOC-E HEAD: e82edcd9e6ab1322526499a45ecb72ff9a487e4a
+- last fully validated pre-merge DOC-E tree: 5cc36e3b85e775c462c4a2baf6a05abe7150f049
+- temporary validation refs work/doc-e-exact-head-20260930 and astra/omega-full-spec-convergence are synchronized to canonical NEXY.ai HEAD and are not source-of-truth
 - protected branch ai/nexy-24x7-autonomous-do-not-touch: untouched
-- NEXY.ai: not modified by this isolated DOC-E batch
+- NEXY.ai: DOC-E integrated with concurrent main work using a two-parent merge; no force overwrite
 
 ## Implemented mechanisms
 - E1 full contract-suite evidence generator
@@ -118,10 +118,29 @@ The verifier rejects AI/self/placeholder authorization. No assistant-generated s
 - source/runtime evidence: E1-E10 PASS, E12 PASS, E11 BLOCKED_EXTERNAL
 - release: NOT AUTHORIZED
 - production deploy: NOT AUTHORIZED
-- merge to NEXY.ai: not performed by this task
+- merge to NEXY.ai: PERFORMED; current canonical HEAD requires fresh post-merge exact-head validation before release evidence may be promoted
 
 ## Next actions
 1. obtain authorized E11 engineering/security/migration signoff bound to exact SHA/tree
 2. rerun full campaign on the same exact head or a newly locked head if source changes
 3. require E1-E12 PASS and zero blockers before release authorization
 4. only then consider integration/merge with concurrent NEXY.ai work after a fresh conflict/drift check
+
+
+## Canonical branch consolidation — superseding repository state
+- repository default branch verified: NEXY.ai
+- pre-merge NEXY.ai HEAD: 0c552f4039c4208a0bade6e609c6e9c39a6e84e8
+- DOC-E branch HEAD merged: e82edcd9e6ab1322526499a45ecb72ff9a487e4a
+- merge base: 0f9c8c65e2ab7b959f03264569430afc256f268a
+- branch histories were diverged but changed-file intersection was empty
+- merge tree: a7e98a1f78c67c0daf880afbed79745440894979
+- merge commit on NEXY.ai: 6c53f51aa734c39d4e98176f7718e9597d4c59fa
+- canonical-branch cleanup commit: d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e
+- current canonical NEXY.ai tree: 4cf698ed37f87d68df1c30a3e55bd4bd80a36c5e
+- DOC-E runtime entrypoint now records branch NEXY.ai
+- DOC-E workflow push trigger now targets NEXY.ai
+- temporary refs were fast-forwarded to the same canonical HEAD; no divergent code truth remains
+- Railway post-merge validation deployment: 09da96e1-f989-43d4-9e5e-3001b5e36335
+- Railway post-merge validation status at this write: BUILDING
+- therefore previous E1-E10/E12 PASS proof remains historical evidence for e82edcd9..., not current-head release proof for d7f824ed...
+- current NEXY.ai release/deploy authorization: NOT VERIFIED / NOT AUTHORIZED pending fresh exact-head validation and E11

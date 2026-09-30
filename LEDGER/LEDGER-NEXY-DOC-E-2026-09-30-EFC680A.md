@@ -18,5 +18,10 @@
 | L14 | final attestation | attestation artifact integrity | a8082bc1386cd5cb8f8c62fcf10fdd8a2082b02d13b05578d42f97e6437e5d8a | final campaign | high | VERIFIED | 1.00 | current |
 | L15 | E11 verifier | authorized external signoff missing | no valid engineering/security/migration approval receipt supplied | external actors | S4 | BLOCKED_EXTERNAL | 1.00 | current |
 | L16 | release gate | release/deploy remain unauthorized | release_authorized=false; deploy_authorized=false; blocker E11 only | E11 | S4 | VERIFIED_BLOCK | 1.00 | current |
-| L17 | branch boundary | NEXY.ai was not modified by this isolated DOC-E batch | source remains on work/doc-e-exact-head-20260930 | concurrent-work isolation | medium | VERIFIED | 1.00 | current |
+| L17 | canonical branch | NEXY.ai is the sole source-of-truth/default branch | default_branch=NEXY.ai; merge 6c53f51a...; cleanup d7f824ed... | GitHub refs | high | VERIFIED | 1.00 | current |
 | L18 | supersession | older DOC-E campaign IDs/hashes in v1 are historical, not latest truth | latest final deployment 8d6180ec... and hashes L13-L14 supersede conflicting v1 current-state fields | AI-CONTEXT v2 | medium | VERIFIED | 1.00 | current |
+
+| L19 | merge analysis | concurrent NEXY.ai and DOC-E edits did not overlap paths | 7 main-side files vs 41 DOC-E files; intersection=[] | merge base 0f9c8c65... | high | VERIFIED | 1.00 | current |
+| L20 | merged tree | main-side blobs and DOC-E blobs preserved byte-for-byte | merged tree a7e98a1f...; both mismatch sets empty | Git trees | high | VERIFIED | 1.00 | current |
+| L21 | canonical cleanup | workflow/runtime evidence now names NEXY.ai | cleanup commit d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e / tree 4cf698ed... | NEXY.ai | high | VERIFIED | 1.00 | current |
+| L22 | post-merge validation | fresh current-head validation is executing | Railway deployment 09da96e1-f989-43d4-9e5e-3001b5e36335 status BUILDING at write time | Railway | high | PENDING | 1.00 | current |
