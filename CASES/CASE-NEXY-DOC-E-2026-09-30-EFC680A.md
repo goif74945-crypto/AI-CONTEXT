@@ -4,7 +4,7 @@ CASE_ID: CASE-NEXY-DOC-E-2026-09-30-EFC680A
 status: MITIGATED / EXTERNAL_RELEASE_BLOCK_REMAINS
 severity: S4 release blocker
 scope: DOC-E evidence convergence
-version: 3
+version: 4
 
 ## Cause
 The original GitHub-hosted Actions plane instantiated jobs without executable steps/logs. An alternate real execution plane was required. Railway validation then exposed harness defects that were repaired without weakening production contracts.
@@ -63,5 +63,16 @@ Only E11 remains unresolved. It requires authorized external engineering/securit
 - canonical cleanup commit: d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e
 - canonical tree: 4cf698ed37f87d68df1c30a3e55bd4bd80a36c5e
 - temporary refs are synchronized to canonical HEAD; they are not authority.
-- post-merge Railway deployment 09da96e1-f989-43d4-9e5e-3001b5e36335 is BUILDING at this record version.
+- post-merge Railway deployment 09da96e1-f989-43d4-9e5e-3001b5e36335 completed SUCCESS.
 - release remains NOT AUTHORIZED until current-head validation and E11 are complete.
+
+
+## Current canonical-head evidence
+- NEXY.ai HEAD d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e / tree 4cf698ed37f87d68df1c30a3e55bd4bd80a36c5e
+- Railway 09da96e1-f989-43d4-9e5e-3001b5e36335 SUCCESS
+- 97/97 contract files, 524/524 tests PASS
+- E1-E9 PASS
+- E10/E11/E12 BLOCKED_EXTERNAL
+- evidence root d294059cc1b80fd68879cd368a53237a96f27e302422b1b171053a0fa85e6c74
+- attestation SHA-256 4f9c4b2ff881e86bfe2be73ac73441af5298629b7700ca26bf1c770bdc1a31d0
+- release/deploy remain blocked by exact-head external receipts/signoff only; no current-head source/test blocker was observed through E9.

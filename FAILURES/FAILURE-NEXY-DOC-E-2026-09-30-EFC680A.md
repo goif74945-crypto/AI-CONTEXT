@@ -2,7 +2,7 @@
 
 FAILURE_ID: FAILURE-NEXY-DOC-E-2026-09-30-EFC680A
 status: RESOLVED_EXECUTION_PATH / E11_EXTERNAL_BLOCK_ACTIVE
-version: 3
+version: 4
 
 ## Historical failed approaches
 - GitHub Actions hosted runner: jobs instantiated but executable steps/logs unavailable
@@ -57,4 +57,11 @@ Only E11 remains unresolved. Missing authorized engineering/security/migration s
 - A two-parent merge preserved both histories and produced NEXY.ai merge commit 6c53f51aa734c39d4e98176f7718e9597d4c59fa.
 - Follow-up canonical cleanup d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e replaced temporary branch names in DOC-E workflow/runtime evidence with NEXY.ai.
 - Temporary refs were synchronized to the canonical commit; they must not be treated as source-of-truth.
-- Fresh post-merge validation 09da96e1-f989-43d4-9e5e-3001b5e36335 is not yet terminal in this record version.
+- Fresh post-merge validation 09da96e1-f989-43d4-9e5e-3001b5e36335 completed SUCCESS.
+
+
+## Current canonical-head boundary
+- NEXY.ai HEAD d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e passed static/contract/runtime evidence E1-E9.
+- E10 and E12 are blocked because previous provider receipts were exact-head-bound to e82edcd9... and were intentionally invalidated after merge.
+- E11 remains independently blocked on authorized external signoff.
+- This is not a regression of E1-E9 and must not be repaired by weakening identity checks.

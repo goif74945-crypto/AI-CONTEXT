@@ -24,4 +24,7 @@
 | L19 | merge analysis | concurrent NEXY.ai and DOC-E edits did not overlap paths | 7 main-side files vs 41 DOC-E files; intersection=[] | merge base 0f9c8c65... | high | VERIFIED | 1.00 | current |
 | L20 | merged tree | main-side blobs and DOC-E blobs preserved byte-for-byte | merged tree a7e98a1f...; both mismatch sets empty | Git trees | high | VERIFIED | 1.00 | current |
 | L21 | canonical cleanup | workflow/runtime evidence now names NEXY.ai | cleanup commit d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e / tree 4cf698ed... | NEXY.ai | high | VERIFIED | 1.00 | current |
-| L22 | post-merge validation | fresh current-head validation is executing | Railway deployment 09da96e1-f989-43d4-9e5e-3001b5e36335 status BUILDING at write time | Railway | high | PENDING | 1.00 | current |
+| L22 | post-merge validation | fresh canonical-head validation completed | Railway 09da96e1-f989-43d4-9e5e-3001b5e36335 SUCCESS; 97/97 files and 524/524 tests PASS; E1-E9 PASS | Railway | high | VERIFIED | 1.00 | current |
+
+| L23 | current-head attestation | canonical NEXY.ai evidence is blocked only at external gates E10/E11/E12 | release=false; deploy=false; root d294059c...; attestation 4f9c4b2f... | exact SHA/tree d7f824ed.../4cf698ed... | S4 | VERIFIED_BLOCK | 1.00 | current |
+| L24 | stale-proof isolation | pre-merge E10/E12 receipts were not reused after HEAD changed | current campaign emits E10/E12 BLOCKED_EXTERNAL instead of stale PASS | exact-head law | high | VERIFIED | 1.00 | current |

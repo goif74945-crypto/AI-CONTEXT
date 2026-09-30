@@ -5,10 +5,10 @@ title: DOC-E exact-head execution, evidence convergence, provider rollback proof
 mode: EXEC / CROSS
 scope: NEXY.AI- DOC-E implementation + exact-head evidence only
 source_authority: NEXY design DOCX + live NEXY.AI- repository/runtime evidence; AI-CONTEXT was not used as a requirement source
-final_status: PARTIAL / BLOCKED_EXTERNAL_E11
+final_status: PARTIAL / CURRENT_HEAD_BLOCKED_EXTERNAL_E10_E11_E12
 timestamp_source: ChatGPT session date 2026-09-30
 trace_id: railway:8d6180ec-1a6e-4fab-9c3d-19da8daf1ba6
-version: 3
+version: 4
 supersedes_runtime_trace: railway:46542beb-fefb-4745-a217-42f546a103ab
 
 ## Source read gate
@@ -141,6 +141,36 @@ The verifier rejects AI/self/placeholder authorization. No assistant-generated s
 - DOC-E workflow push trigger now targets NEXY.ai
 - temporary refs were fast-forwarded to the same canonical HEAD; no divergent code truth remains
 - Railway post-merge validation deployment: 09da96e1-f989-43d4-9e5e-3001b5e36335
-- Railway post-merge validation status at this write: BUILDING
+- Railway post-merge validation status: SUCCESS
 - therefore previous E1-E10/E12 PASS proof remains historical evidence for e82edcd9..., not current-head release proof for d7f824ed...
-- current NEXY.ai release/deploy authorization: NOT VERIFIED / NOT AUTHORIZED pending fresh exact-head validation and E11
+- current NEXY.ai release/deploy authorization: NOT AUTHORIZED; fresh exact-head validation completed with E10/E11/E12 external blockers
+
+
+## Fresh canonical NEXY.ai validation result
+- canonical branch: NEXY.ai
+- tested SHA: d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e
+- tested tree: 4cf698ed37f87d68df1c30a3e55bd4bd80a36c5e
+- Railway deployment: 09da96e1-f989-43d4-9e5e-3001b5e36335
+- Railway terminal status: SUCCESS
+- static contract gate: 97/97 test files PASS
+- contract tests: 524/524 PASS
+- apps/web/.next/BUILD_ID: PASS
+- E1 PASS
+- E2 PASS
+- E3 PASS
+- E4 PASS
+- E5 PASS
+- E6 PASS
+- E7 PASS
+- E8 PASS
+- E9 PASS
+- E10 BLOCKED_EXTERNAL
+- E11 BLOCKED_EXTERNAL
+- E12 BLOCKED_EXTERNAL
+- release_authorized=false
+- deploy_authorized=false
+- blocking_reasons=[E10:BLOCKED_EXTERNAL,E11:BLOCKED_EXTERNAL,E12:BLOCKED_EXTERNAL]
+- evidence_root_sha256=d294059cc1b80fd68879cd368a53237a96f27e302422b1b171053a0fa85e6c74
+- attestation_sha256=4f9c4b2ff881e86bfe2be73ac73441af5298629b7700ca26bf1c770bdc1a31d0
+- reason E10/E12 are blocked: exact-head changed after merge, so receipts from e82edcd9... were intentionally not reused
+- reason E11 is blocked: authorized external engineering/security/migration signoff remains absent
