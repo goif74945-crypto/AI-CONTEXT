@@ -1,83 +1,71 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
-  "observed_at": "2026-09-29",
+  "observed_at": "2026-09-30",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
-    "tree": "8a3ae328c1956c661bc2b1561de1a791a7856a7e",
-    "parent": "10985349e33c1aa0fed8ce20be557ee3509b1509",
-    "observation_mode": "CURRENT_HEAD_STATIC_REVALIDATION_AND_GITHUB_ACTIONS_STATUS"
+    "head": "d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e",
+    "tree": "4cf698ed37f87d68df1c30a3e55bd4bd80a36c5e",
+    "observation_mode": "CORE_KERNEL_FULL_SPEC_AUDIT_PLUS_EXACT_HEAD_EXECUTION_STATUS"
   },
   "status": "NON_DEPLOYABLE",
-  "static_alignment": {
-    "doc_c_percent": 99.03,
+  "exact_head_execution": {
+    "railway": {
+      "deployment_id": "09da96e1-f989-43d4-9e5e-3001b5e36335",
+      "conclusion": "SUCCESS",
+      "scope": "source identity + TypeScript typecheck + contract tests + production web build; contract suite includes core-kernel Rust wrapper"
+    },
+    "github_actions": {
+      "doc_e_run_id": 36693582979,
+      "deploy_gate_run_id": 36693583122,
+      "conclusion": "failure",
+      "steps_executed": 0,
+      "runner_name": "",
+      "interpretation": "FAILED_BEFORE_RUNNER_STEPS; NOT CODE_TEST_FAILURE_EVIDENCE"
+    }
+  },
+  "doc_e": {
+    "required_items": 12,
+    "exact_current_head_status": "NOT_VERIFIED",
+    "exact_current_head_pass_count": null,
+    "release_authorized": false,
+    "deploy_authorized": false,
+    "reason": "No complete verified E1-E12 exact-current-head attestation was established in this core-kernel audit."
+  },
+  "core_kernel": {
+    "requirements_audited": 146,
+    "counts": {
+      "PASS": 16,
+      "CONTRADICTED": 22,
+      "PARTIAL": 45,
+      "MISSING": 42,
+      "PROOF_GAP": 9,
+      "OUTSIDE_CRATE_UNPROVEN": 12
+    },
+    "full_spec_alignment": "BLOCKED",
+    "sovereign_production_readiness": "BLOCKED"
+  },
+  "blocking_reasons": [
+    "Final Rust VNext matrix contradicts the final DOC-C event/actor/transition matrix.",
+    "Tier 5 recursion/build-time-only law is contradicted.",
+    "Release-path RNG remains in authoritative core gatekeeper.",
+    "Strict integer/no-wrap/no-saturating law is not satisfied.",
+    "Canonical crash-recovery replay is not wired end-to-end.",
+    "WAL sequence restarts at zero after process restart.",
+    "Unreadable/missing WAL or anchor can be accepted as clean start.",
+    "Binary hash failure warns and continues.",
+    "Root-of-trust uses local mutable /tmp anchors and is not TPM/HSM remote attestation.",
+    "Layer 11 storage/hardware determinism enforcement is incomplete.",
+    "L1o immutable Verified / decaying Experimental memory law is incomplete.",
+    "Cross-arch/hardware/crash hardening evidence is incomplete."
+  ],
+  "historical_metrics": {
+    "prior_head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
+    "status": "HISTORICAL_ONLY_NOT_RECALCULATED",
+    "doc_c_static_percent": 99.03,
     "doc_d_percent": 98.08,
     "canonical_product_percent": 98.9,
     "full_file_percent": 82.08
   },
-  "evidence": {
-    "current_head_doc_e_required": 12,
-    "current_head_doc_e_match": 0,
-    "exact_current_head_doc_e_proof": false,
-    "current_head_runtime_proof": false,
-    "security_signoff": false,
-    "ci": {
-      "run_id": 36525568766,
-      "workflow": ".github/workflows/deploy.yml",
-      "conclusion": "failure",
-      "jobs_returned": 0,
-      "code_level_result": "NOT_VERIFIED",
-      "evidence_class": "CONTRADICTED"
-    },
-    "prior_head_local_attestation": {
-      "tested_sha": "ab471d1e2705d6010afdcdbb0a7baf08132de47d",
-      "tested_tree": "298468ca539306c2c581248331f082b908400605",
-      "test_files_passed": 113,
-      "tests_passed": 835,
-      "recorded_gate_exit_codes_all_zero": true,
-      "current_head_applicability": false
-    },
-    "phase_f": {
-      "release_dependency": false,
-      "mode": "ADVISORY",
-      "current_workflow_structure": "CONTINUE_ON_ERROR_AND_EXCLUDED_FROM_RELEASE_ATTESTATION"
-    },
-    "deploy": {
-      "status": "NOT_AUTHORIZED",
-      "executed": false,
-      "provider_configuration_currently_proven": false
-    }
-  },
-  "current_static_inventory": {
-    "tree_entries": 852,
-    "blobs": 676,
-    "api_route_files": 37,
-    "doc_d_named_components": "14/14",
-    "prisma_forward_migrations": 23,
-    "prisma_rollback_files": 23,
-    "db_triggers": [
-      "event_log_append_only",
-      "audit_log_append_only",
-      "audit_log_chain_integrity"
-    ]
-  },
-  "current_static_gaps": [
-    "DOC-C Vault/storage archival-query lifecycle remains PARTIAL.",
-    "DOC-D validation-copy contract remains PARTIAL.",
-    "Successful exact-current-head CI/runtime proof is absent; run 36525568766 concluded failure.",
-    "DOC-E E1-E12 are not bound to the current HEAD."
-  ],
-  "blocking_reasons": [
-    "Current GitHub Actions run 36525568766 concluded failure and returned no jobs, so current-head test/build/runtime success is not proven.",
-    "Prior local attestation is bound to ab471d1, not ba33c8f.",
-    "DOC-E E1-E12 current-head proof remains 0/12.",
-    "Release signoff/authorization must not be inferred from static compliance."
-  ],
-  "worktree_claim": {
-    "user_reported_clean": true,
-    "independently_observable_from_remote_github": false
-  },
-  "rule": "Runtime success, source prose, or historical PASS do not mint RELEASE_ELIGIBLE for a different HEAD; preserve fail-closed release authorization.",
-  "hash": "HASH_UNAVAILABLE"
+  "rule": "A successful subset of exact-head execution cannot authorize release while constitutional contradictions, current-head DOC-E gaps, or unprovable recovery/root-of-trust remain."
 }
