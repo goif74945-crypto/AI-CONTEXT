@@ -15,6 +15,8 @@ version: 1.0.0
 | L7 | Railway logs | contract suite 97 files / 524 tests PASS | build log summary | ce1bf3c1-f3d3-4170-9a7c-46c3aaa929a2 | S3 if misreported | VERIFIED | 1.00 | 2026-09-30 |
 | L8 | available evidence | exact post-build/pre-deploy failing substep is unknown | no attributable error in exposed log; diagnostic agent unavailable | provider observability | S4 | UNRESOLVED | 0.98 | 2026-09-30 |
 | L9 | current evidence | E11 cannot truthfully be APPROVE yet | E12 missing + E10 blocked + anti-fabrication contract | human/provider evidence | S5 if forced | VERIFIED_BLOCK | 1.00 | current |
+| L10 | GitHub Actions exact HEAD | 4 workflows at d7f824ed... are completed failure; release/deploy downstream skipped where present | run IDs 36693582979, 36693583122, 36693652842, 36693652996 | GitHub runner/log availability | S4 | VERIFIED | 1.00 | 2026-09-30 |
+| L11 | GitHub job-log endpoint | requested exact-head job log is unavailable | 404 BlobNotFound from job log retrieval | GitHub artifact/log retention/provider | S3 evidence | VERIFIED_LIMIT | 1.00 | 2026-09-30 |
 
 verdict: FREEZE_RELEASE
 release_authorized: false
