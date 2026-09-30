@@ -1,0 +1,30 @@
+{
+  "trace_id": "TRACE-DOC-C-20261001-0133-BKK",
+  "claims": [
+    {
+      "id": "L1",
+      "claim": "Canonical branch HEAD after workflow trigger repair is 3e9411de76d259f23b14990fa3ce1f3a162b510a.",
+      "proof": "GitHub branch API NEXY.ai",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L2",
+      "claim": "Exact HEAD workflow run 36759818637 is bound to that SHA.",
+      "proof": "GitHub Actions run metadata head_sha",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3",
+      "claim": "No test step executed in the exact-head job.",
+      "proof": "GitHub Actions job 110039211590 has steps=[] and runner_id=0",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L4",
+      "claim": "DOC-C is 100% verified at current HEAD.",
+      "proof": "No executable evidence exists",
+      "status": "REJECTED"
+    }
+  ],
+  "verdict": "PARTIAL"
+}
