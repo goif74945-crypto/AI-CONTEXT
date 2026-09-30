@@ -1,0 +1,83 @@
+{
+  "case_id": "NEXY-CORE-KERNEL-FULL-SPEC-AUDIT-D7F824E",
+  "observed_at": "2026-09-30",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "head": "d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e",
+  "tree": "4cf698ed37f87d68df1c30a3e55bd4bd80a36c5e",
+  "scope": "core-kernel full spec audit + daemon integration truth",
+  "mutation": "read-only against NEXY.AI-",
+  "source_authority": {
+    "design_file": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา",
+    "critical_ranges": [
+      "L5300-L5339 creator depth",
+      "L5360-L5412 implementation verification",
+      "L5413-L5537 runtime determinism",
+      "L5538-L5668 crash/recovery",
+      "L5669-L5814 storage/I-O",
+      "L5815-L5939 human/operational determinism",
+      "L7067-L7156 hardware/microcode",
+      "L9722-L9871 final DOC-C state/event matrix",
+      "L10770-L10980 L1o L600",
+      "L10981-L11196 Lo3 L600",
+      "L11886-L11995 final absolute architecture"
+    ]
+  },
+  "matrix": {
+    "rows": 146,
+    "status_counts": {
+      "PASS": 16,
+      "CONTRADICTED": 22,
+      "PARTIAL": 45,
+      "MISSING": 42,
+      "PROOF_GAP": 9,
+      "OUTSIDE_CRATE_UNPROVEN": 12
+    },
+    "markdown_sha256": "403b963d951bd429a83e2fbd68a7ef9855c44b92853f544d032b2ed165e43e90",
+    "json_sha256": "76a729f2d6aa1c523f9fcfc21d6be2c9dd7a3b26167c8f2f9a536f56410a1c88"
+  },
+  "proven": {
+    "rust_unit_wrapper_exact_head": "Railway deployment 09da96e1-f989-43d4-9e5e-3001b5e36335 succeeded and contract suite includes cargo test --locked -p core-kernel --lib",
+    "no_float_types_in_core": true,
+    "no_systemtime_or_instant_in_core": true,
+    "allowed_target_triples": [
+      "x86_64-unknown-linux-gnu",
+      "aarch64-unknown-linux-gnu"
+    ],
+    "fixed128_present": true,
+    "dag_cycle_detection": true,
+    "wal_odsync_and_fsync_primitive": true
+  },
+  "blockers": [
+    "Rust VNext matrix contradicts final DOC-C event/actor/transition authority.",
+    "Tier 5 is incorrectly rejected and runtime depth enforcement contradicts build-time-only law.",
+    "Release-path XorShift64 remains in core-kernel/auth/gatekeeper.rs.",
+    "Strict no-wrap/no-saturating law is not met; allocator uses wrapping address arithmetic.",
+    "no_global_alloc feature permits system allocator fallback for std consumers.",
+    "Daemon writes raw ShadowWal payloads instead of enforcing canonical DurableWal<WalRecord> for all authoritative mutations.",
+    "ShadowWal sequence resets to zero on restart while appending to existing WAL.",
+    "Boot hashes WAL file bytes instead of reconstructing canonical state from snapshot+records.",
+    "Unreadable/empty/missing WAL collapse to None and are treated as clean start.",
+    "Existing WAL without anchor is accepted as clean start.",
+    "Binary hash failure warns and continues.",
+    "Attestation/binary/WAL anchors are mutable local /tmp files; attestation is TOFU rather than TPM/HSM remote attestation.",
+    "Anchor write failure can still be followed by success-looking 'updated' log output.",
+    "Production partial-WAL recovery, durable snapshot backend, crash-loop SAFE MODE and Layer-11 hardware/storage enforcement are incomplete or missing.",
+    "L1o memory law is incomplete: no immutable VerifiedMemory or decaying ExperimentalMemory; WorkingMemory allows overwrite/silent drop.",
+    "No Miri/fuzz/property/sanitizer/model-checking/cross-arch equivalence proof campaign."
+  ],
+  "truth_labels": {
+    "CORE_KERNEL_COMPILES_AND_UNIT_TESTS": "PROVEN",
+    "CORE_KERNEL_FULL_SPEC_ALIGNMENT": "BLOCKED",
+    "BOOT_ROOT_OF_TRUST": "BLOCKED",
+    "CRASH_RECOVERY_IDENTITY": "BLOCKED",
+    "DURABLE_ANCHOR_TRUST": "BLOCKED",
+    "L1O_MEMORY_LAW": "BLOCKED",
+    "SOVEREIGN_PRODUCTION_READINESS": "BLOCKED"
+  },
+  "notes": [
+    "GitHub Actions runs 36693582979 and 36693583122 fail before steps execute (empty runner/steps); do not classify as code-test failures.",
+    "Daemon O_DIRECT log text is stale/misleading: ShadowWal implementation uses O_DSYNC and not O_DIRECT, which matches the storage law.",
+    "Do not derive a global project completion percentage from this core-kernel-specific matrix."
+  ]
+}
