@@ -127,3 +127,53 @@ Coverage thresholds:
 - prior build-phase E3 attempt was INVALID_EVIDENCE
 - causes: Railway private DNS unavailable in build phase; psql rejected Prisma-style ?schema=public URI; harness inherited set +e and could falsely reach PASS marker
 - correction: moved E3 to pre-deploy private-network plane; separated psql URL without schema query; set -e fail-fast
+
+
+## Isolated DOC-E branch implementation — current milestone
+- branch: work/doc-e-exact-head-20260930
+- branch base: 0f9c8c65e2ab7b959f03264569430afc256f268a
+- current branch HEAD: 5f9880ce7b602926f8af678290d94acdfbae2096
+- current branch tree: bfd7bd4a09e4b7bc6b4730333d8639f7c7e94a2d
+- no force push used; NEXY.ai was not modified by this DOC-E batch
+
+Implemented on isolated branch:
+- E1 full contract-suite report generator
+- E2 exact-head snapshot evidence record builder
+- E3 canonical isolated forward -> rollback -> forward migration runner
+- E4/E5/E6 exact-head test evidence runner
+- E7 real queue-runtime log validator
+- E8 six-alarm local proof + external-monitoring receipt gate
+- E9 production-path incident lifecycle drill + evidence validator
+- E10 runbook/provider-command validator
+- E11 authorized external signoff verifier plus honest BLOCKED_EXTERNAL record
+- E12 application/release rollback receipt verifier plus honest BLOCKED_EXTERNAL record
+- canonical E1-E12 aggregator with one-SHA/tree/run enforcement and evidence-root SHA-256
+- exact-head campaign runner with secret redaction for database administration commands
+- thin GitHub workflow .github/workflows/doc-e-exact-head.yml
+
+Key isolated-branch commits:
+- e7a27219a5971c509c0c0e8e02350ec599ee6e36 E4-E6 evidence runner
+- 9fa2bb29523b33c95e2328232fe601ae90a1ed49 E7/E8 evidence validators
+- cb42f2bd3a1e0aa571df4d36c8479b3dbc285937 E9 real lifecycle drill
+- bab3afb961070b020bc8d4abe644caf134095567 E10-E12 external release gates
+- b74ca913244868bcaadd56ddfe00e362e6081a1a E1 report + aggregator
+- 46905829af7d4f9a2ee9cf988e8e3397eeb7db2b E3 canonical runner + E11/E12 blocker records
+- 37077eb5bc489c626e8a1aa218f62bb7f8742d83 E9 evidence validator
+- 6a2194f67fbc1ab0d6566dc507653b9fbe6cf747 E2 evidence builder
+- 78a201667069926a90c1a6ba03357a1267f4ba6b campaign runner
+- 839922aa671e6bcb7e6bc03d7948d12c71981824 thin workflow
+- 5f9880ce7b602926f8af678290d94acdfbae2096 isolated-branch parser-probe trigger
+
+Validation status:
+- all referenced campaign/workflow paths were read back from the isolated branch and exist
+- GitHub Actions did not create a workflow run for the isolated-branch push probe; this is NOT evidence that workflow parsing passed or failed
+- new isolated-branch scripts/tests have NOT yet received a real TypeScript/test/runtime campaign because GitHub-hosted runner execution remains unavailable and Railway service source is still NEXY.ai
+- E3 historical mechanism proof remains valid only as historical mechanism evidence, not current-release evidence
+- final exact-head campaign must execute after merge window or after a runner can target the isolated branch
+
+External truth:
+- E8 remains BLOCKED_EXTERNAL without a verified monitoring sink receipt
+- E10 remains BLOCKED_EXTERNAL without authoritative provider deploy/rollback command receipt
+- E11 remains BLOCKED_EXTERNAL without real engineering/security/migration approvals plus rollback/monitoring verification
+- E12 remains BLOCKED_EXTERNAL without real application/release rollback execution receipt
+- release/deploy remain NOT AUTHORIZED

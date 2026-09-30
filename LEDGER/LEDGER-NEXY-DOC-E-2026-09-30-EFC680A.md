@@ -39,3 +39,10 @@
 | L24 | Railway pre-deploy | E3 proof log integrity | sha256 3ac26fff3300eb6f1b2129b1334032bb830046deba94b15fda91175bd693b01f | E3 log | high | VERIFIED | 1.00 | exact-head historical |
 | L25 | Railway build-phase invalid attempt | earlier E3 PASS marker was false-positive and must not be used | private DNS unavailable + Prisma schema URI incompatible with psql + set +e allowed continuation | harness | S4 | INVALID_EVIDENCE | 1.00 | historical |
 | L26 | GitHub branch | CROSS chat moved branch after E3 exact-head campaign | branch no longer equals 941dd80a after campaign | GitHub ref | high | VERIFIED_DRIFT | 1.00 | current |
+
+| L27 | GitHub isolated branch | DOC-E work isolated from concurrent NEXY.ai writes | branch work/doc-e-exact-head-20260930 created from 0f9c8c65e2ab7b959f03264569430afc256f268a | GitHub ref | high | VERIFIED | 1.00 | current |
+| L28 | GitHub isolated branch | E1-E12 evidence tooling is source-implemented through exact-head campaign orchestration | branch HEAD 5f9880ce7b602926f8af678290d94acdfbae2096 and commits listed in TASK | source read-back | high | VERIFIED_SOURCE_IMPLEMENTATION | 1.00 | current |
+| L29 | GitHub isolated branch | campaign path closure has no missing referenced source files | read-back of DOC-E scripts/workflow/runbook/queue/incident/state paths all returned existing blobs | GitHub contents | medium | VERIFIED_STATIC_CLOSURE | 1.00 | current |
+| L30 | GitHub Actions | isolated-branch parser probe did not produce a workflow run | actions/runs?head_sha=5f9880ce... returned total_count=0 | Actions API | medium | UNKNOWN_PARSE_STATE | 1.00 | current |
+| L31 | DOC-E external boundary | E8/E10/E11/E12 are intentionally fail-closed without external receipts | validators emit BLOCKED_EXTERNAL and aggregator keeps release_authorized=false | design authority + source implementation | S4 | VERIFIED_DESIGN_BEHAVIOR | 1.00 | current |
+| L32 | DOC-E validation boundary | new isolated-branch code is not yet runtime-verified | GitHub runner unavailable; Railway validation service still targets NEXY.ai | execution plane | S4 | UNVERIFIED_CURRENT_BRANCH | 1.00 | current |
