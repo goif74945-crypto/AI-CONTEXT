@@ -74,6 +74,14 @@ E12: BLOCKED_EXTERNAL
 release_authorized: false
 deploy_authorized: false
 
+## GitHub Actions exact-head evidence
+- HEAD d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e has 4 workflow runs observed live.
+- Run 36693582979 (NEXY DOC-E Exact Head Evidence): failure; campaign job failure; no downloadable job log available (404 BlobNotFound).
+- Run 36693583122 (NEXY CI / Deploy Gate): typecheck/contract/full/integration/coverage/web/E2E jobs reported failure; downstream static gate/release/deploy skipped; job step payloads absent.
+- Run 36693652842 (NEXY DOC-E E7 Queue and Rollback): all listed E7/supply-chain/lint/incident jobs failure.
+- Run 36693652996 (NEXY CI / Deploy Gate, attempt 2): validation jobs failure; release/deploy skipped; job step payloads absent.
+- These GitHub Action statuses do not override the independently observed Railway build-stage contract PASS; they remain separate evidence planes.
+
 ## Changes
 - NEXY source code: NO CHANGE.
 - NEXY tests/workflows: NO CHANGE.
