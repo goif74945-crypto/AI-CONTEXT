@@ -1,0 +1,45 @@
+{
+  "task_id": "NEXY-DOC-C-EXACT-HEAD-EVIDENCE-20261001",
+  "trace_id": "TRACE-DOC-C-20261001-0133-BKK",
+  "mode": "EXEC",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "previous_head": "7237863fcd09209d7dbcaf3f0f56bf70b83be5e2",
+  "current_head": "3e9411de76d259f23b14990fa3ce1f3a162b510a",
+  "current_tree": "febcdd7695e66928ebe0303bcb6beac71c8c4a18",
+  "workflow_run_id": 36759818637,
+  "workflow_job_id": 110039211590,
+  "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T01:33+07:00",
+  "title": "Enable exact-HEAD DOC-C evidence and verify current HEAD",
+  "scope": [
+    "exact-head evidence workflow trigger",
+    "HEAD/run binding",
+    "AI-CONTEXT synchronization"
+  ],
+  "actions": [
+    "Verified NEXY.ai HEAD was 7237863f... before change.",
+    "Verified no workflow runs were bound to 7237863f via exact head query.",
+    "Found exact-head-evidence workflow push trigger only matched changes to itself.",
+    "Changed trigger to every push on NEXY.ai.",
+    "Created commit 3e9411de... on NEXY.ai.",
+    "Verified workflow run 36759818637 is bound to head_sha 3e9411de...."
+  ],
+  "tests_results": {
+    "exact_head_workflow": "FAIL_BEFORE_STEPS",
+    "job_steps_count": 0,
+    "runner_id": 0,
+    "runner_name": "",
+    "code_test_result": "NOT_EXECUTED",
+    "reason_classification": "RUNNER_OR_SCHEDULING_LAYER_FAILURE"
+  },
+  "risks": [
+    "No exact-head test logs or attestation were produced because the runner never executed a step.",
+    "DOC-C cannot be claimed 100% verified at current HEAD."
+  ],
+  "final_status": "PARTIAL",
+  "next_actions": [
+    "Resolve GitHub Actions runner/scheduling availability, then re-run exact-head workflow for current HEAD.",
+    "After real checks pass, bind logs/artifact/attestation to the tested SHA and update DOC-C audit percentage."
+  ],
+  "version": "1.0.0"
+}
