@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "053929cb275f4014c0f2d15ef407fa5b6aeb4ebf",
+  "observed_head": "5c771cf02d4f928f8b0a38f86e664b0812e8488e",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -14,10 +14,10 @@
     "context": "AI-CONTEXT is coordination/state only"
   },
   "ownership": {
-    "fixed_arithmetic": "PARTIAL_THIS_TASK: G15 saturation aligned; real Rust execution still blocked",
+    "fixed_arithmetic": "ACTIVE_OWNER_THIS_TASK: batch=documentation semantics must match G15 saturation implementation",
     "sandbox": "BLOCKED_BY_ACTIVE_OWNER: fresh Sandbox commits through HEAD 4ce7394d... from another chat",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
-    "robotics": "ACTIVE_OWNER_THIS_TASK: batch=decision timeout uses caller-provided deadline and falls back to HOLD_POSITION before planned actuation"
+    "robotics": "PARTIAL_BLOCKED: sensor backup, HALT barrier, no-safe-action alert, decision-timeout fallback implemented; exact-head execution blocked; ONNX/ROS2 contracts and physical HIL authority/evidence missing"
   },
   "rules": [
     "Refresh NEXY.ai HEAD immediately before every mutation batch.",
@@ -25,7 +25,7 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_ROBOTICS_DECISION_TIMEOUT_BATCH",
+  "status": "RUNNING_FIXED128_DOC_ALIGNMENT_BATCH",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
@@ -50,9 +50,17 @@
     "Decision layer already HALTs for missing/rejected Q64 safety proof or missing plan, but emits no explicit alert directive. Spec requires no safe action -> STOP + alert.",
     "No-safe-action alert commits: d21d251647d73482714f153b8b02a4d43ae3e099 + 053929cb275f4014c0f2d15ef407fa5b6aeb4ebf.",
     "Fresh HEAD 053929cb275f4014c0f2d15ef407fa5b6aeb4ebf before decision-timeout batch.",
-    "No authoritative fixed timeout constant inferred; deadline will be explicit caller/policy input."
+    "No authoritative fixed timeout constant inferred; deadline will be explicit caller/policy input.",
+    "Robotics decision-timeout evidence recorded at commit 5c771cf02d4f928f8b0a38f86e664b0812e8488e.",
+    "Robotics remaining paths frozen where authoritative ONNX tensor contract, ROS2 DDS topic/QoS contract, or physical HIL evidence are absent.",
+    "Claimed Fixed128 documentation-only batch after fresh HEAD 5c771cf02d4f928f8b0a38f86e664b0812e8488e."
   ],
   "unresolved": [
-    "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL."
+    "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL.",
+    "Robotics exact-head test execution remains blocked by provider state.",
+    "Robotics ONNX runtime integration lacks authoritative tensor/model contract.",
+    "Robotics ROS2 DDS integration lacks authoritative topic/QoS/message contract.",
+    "Robotics physical cross-compile/flash/HIL proof requires external hardware evidence.",
+    "Sovereign remains FROZEN by authoritative spec unresolved items and external gates."
   ]
 }
