@@ -1,0 +1,43 @@
+{
+  "task_id": "NEXY-ROOT-P4-NEXT-SECURITY-20261001",
+  "title": "Root-of-trust, Layer 8 reproducible-build, and Next.js security convergence",
+  "mode": "ทำ",
+  "scope": [
+    "root-of-trust durable-anchor software gate",
+    "Layer 8 reproducible-build envelope gate",
+    "Next.js critical dependency remediation verification"
+  ],
+  "implementation_repo": "goif74945-crypto/NEXY.AI-",
+  "verified_sha": "013d28a2ce13ce6721c3ae2367abc7d641c8b924",
+  "exact_head_run_id": 36828860609,
+  "exact_head_job_id": 110260610848,
+  "exact_head_conclusion": "success",
+  "next_security_commit": "5ad59f5864ca1a24a1509e12c70d86c4df8ca061",
+  "timestamp_source": "GitHub Actions exact-head logs, latest cited evidence 2026-10-01T07:13:43Z",
+  "version": "1.0.0",
+  "failure_id": "NEXY-FAIL-ROOT-P4-RED-RECOVERED-20261001",
+  "context": "Earlier convergence runs before verified SHA",
+  "cause": [
+    "Root-of-trust source used fail-open/self-TOFU/non-durable patterns before repair",
+    "Layer 8 lacked exact toolchain/container/env/path/build-hash controls before repair",
+    "Next.js 16.3.5 was reported by npm audit with a critical advisory"
+  ],
+  "failed_approach": [
+    "A root gate regex was initially over-constrained and produced one false-negative after source repair",
+    "A prepared atomic P4 commit was rejected because branch HEAD moved concurrently"
+  ],
+  "recovery": [
+    "Replaced brittle root regex with structural ordering assertions",
+    "Used fast-forward guard and reconciled with concurrent P4 work instead of force-pushing",
+    "Upgraded Next.js family to registry-verified 16.3.8"
+  ],
+  "boundary": "Failure record is historical; do not infer current failure at later HEADs",
+  "prevention": [
+    "Exact-head immutable SHA evidence",
+    "Fast-forward-only branch updates",
+    "Registry-backed integrity verification",
+    "Separate software proof from hardware proof"
+  ],
+  "status": "RECOVERED_AT_VERIFIED_SHA",
+  "trace_id": "NEXY-TRACE-ROOT-P4-NEXT-20261001"
+}
