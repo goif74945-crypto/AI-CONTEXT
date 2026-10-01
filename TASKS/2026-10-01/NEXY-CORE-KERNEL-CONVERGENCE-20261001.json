@@ -4,8 +4,8 @@
   "mode": "EXEC",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "current_head": "d89bcb1ad307258e46d7e4b1a34fc4d685c7c3a9",
-  "current_tree": "aa2e150fec8466c162e8ee765376f59bb90bb8d6",
+  "current_head": "772e1be4f145b75b43d7f417715b0433750b2394",
+  "current_tree": "6349f7810134159312df9205c60dfb194e52e012",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T07:49+07:00",
   "title": "Core-kernel deterministic convergence continuation",
   "scope": [
@@ -33,6 +33,12 @@
       "tested_sha": "d89bcb1ad307258e46d7e4b1a34fc4d685c7c3a9",
       "tested_tree": "aa2e150fec8466c162e8ee765376f59bb90bb8d6",
       "evidence": "Railway exact-head build bb9385ad-1556-43b7-b171-c623cba3a8b8: WAL gate 4/4 passed; core-kernel Rust contract passed; daemon compile-check passed; 102 contract files passed, 549 tests passed; web image sha256:e52b7b2c2c6a043f0500b044aa8738e0e909c8a399064818262e2adf059b10ad"
+    },
+    {
+      "area": "Layer 10 canonical WalRecord and DurableWal routing",
+      "tested_sha": "772e1be4f145b75b43d7f417715b0433750b2394",
+      "tested_tree": "6349f7810134159312df9205c60dfb194e52e012",
+      "evidence": "Railway exact redeploy 450519f0-71fc-4037-8ceb-44d9e0438757: 103/103 contract files and 554/554 tests passed; Rust core and daemon compile-check passed; image sha256:0d856a6a58699cef013f04fa524b0817a675335621b6ff71deb1aaadbe023f03"
     }
   ],
   "changes": [
@@ -41,21 +47,23 @@
     "Added WAL page scanner for checksum/data-length/strict sequence validation.",
     "Preserved WAL sequence across restart via open_with_sequence and checked increment.",
     "Separated Missing/Empty/Unreadable/Corrupt/Present boot states and fail-closed on ambiguous identity.",
-    "Existing WAL without trusted anchor no longer passes as clean start."
+    "Existing WAL without trusted anchor no longer passes as clean start.",
+    "WalRecord now explicitly carries schema_version, monotonic_counter, prev_state_hash, event_hash, spec_hash, signature_set_hash and checksum.",
+    "Added strict canonical frame decode and validated physical-page payload reassembly.",
+    "Daemon authoritative writes now use DurableWal plus WalRecord instead of raw ShadowWal payload writes."
   ],
   "unresolved": [
-    "Canonical WalRecord fields and full chain semantics are not yet implemented in the current shadow WAL page format.",
-    "All authoritative mutation paths are not yet proven to route exclusively through one canonical DurableWal boundary.",
+    "P3 remains partial: fixed-size segmentation, exact partial-tail recovery, durable snapshots, replay state/Merkle comparison, crash-loop SAFE MODE and durability fault injection remain unresolved.",
     "Fixed-size WAL segmentation, snapshot replay root comparison, partial-tail repair policy, crash-loop protection, and explicit recovery/genesis decision flow remain to be verified or implemented.",
     "Allocator isolation/no-system-fallback boundary remains unresolved for std/napi consumers.",
     "Railway deployment plane may report FAILED after successful build/image push; runtime deployment success is not claimed."
   ],
   "final_status": "PARTIAL",
   "next_actions": [
-    "Add red contract for canonical WalRecord fields and mutation routing.",
-    "Implement canonical record/chain semantics and regression test exact HEAD.",
-    "Continue snapshot/replay/crash-loop and allocator convergence.",
-    "Keep exact-head evidence synchronized after each verified repair."
+    "Add red contract for deterministic WAL segmentation and exact partial-tail recovery.",
+    "Implement and exact-head test segment rollover plus recovery audit semantics.",
+    "Continue snapshot/replay state-root/crash-loop implementation.",
+    "Continue allocator/integer/environment/root-of-trust hardening after P3."
   ],
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
