@@ -1,0 +1,66 @@
+{
+  "task_id": "NEXY-CROSS-PHASEF-CONTINUATION-20261001-2027",
+  "mode": "CROSS/DO",
+  "scope": [
+    "Game Fabric",
+    "Universe",
+    "Robotics",
+    "Sovereign",
+    "Lo2"
+  ],
+  "implementation_repo": "goif74945-crypto/NEXY.AI-",
+  "implementation_branch": "NEXY.ai",
+  "ai_context_repo": "goif74945-crypto/AI-CONTEXT",
+  "timestamp_source": "user-local-context 2026-10-01T20:27+07:00",
+  "trace_id": "trace-nexy-phasef-20261001-2027",
+  "version": "1.0.0",
+  "ledger_id": "LEDGER-NEXY-PHASEF-CONTINUATION-20261001-2027",
+  "entries": [
+    {
+      "claim": "G20/G21 legacy capability mutation bypass and weak anchor/review bindings were closed",
+      "proof": "implementation commit 45dbe682f0e615621425ad545521394b0b1814fd",
+      "deps": [
+        "exact-SHA regression still required for latest descendant"
+      ],
+      "risk": "medium",
+      "status": "IMPLEMENTED_NOT_FULLY_VERIFIED",
+      "confidence": 0.98,
+      "freshness": "2026-10-01"
+    },
+    {
+      "claim": "GameSpec runtime drift now freezes and forged spec hashes are rejected",
+      "proof": "implementation commit d765e60f076220d3fe2522d825c6a5ea4ede1624; Railway contract 105/570 pass and BUILD_ID on deployment 4cbc9605",
+      "deps": [
+        "captured evidence did not prove entire full campaign"
+      ],
+      "risk": "medium",
+      "status": "PARTIALLY_VERIFIED",
+      "confidence": 0.97,
+      "freshness": "2026-10-01"
+    },
+    {
+      "claim": "Creator publish path now recomputes CreatorAppSpec integrity before use",
+      "proof": "implementation commit 5c14d856c9e6d6557a1bc26844ebc530f53c5857",
+      "deps": [
+        "exact-SHA passing validation missing"
+      ],
+      "risk": "medium",
+      "status": "IMPLEMENTED_NOT_VERIFIED",
+      "confidence": 0.99,
+      "freshness": "2026-10-01"
+    },
+    {
+      "claim": "Lo2 federation no longer generates hidden random HMAC authority and stale eviction stays bigint-only",
+      "proof": "implementation commit 5310aa9b1c6abb90f758609343e04f48aa61dc56",
+      "deps": [
+        "exact-SHA passing validation missing"
+      ],
+      "risk": "medium",
+      "status": "IMPLEMENTED_NOT_VERIFIED",
+      "confidence": 0.99,
+      "freshness": "2026-10-01"
+    }
+  ],
+  "overall_status": "PARTIAL",
+  "hash": "HASH_UNAVAILABLE"
+}

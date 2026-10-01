@@ -1,0 +1,32 @@
+{
+  "task_id": "NEXY-CROSS-PHASEF-CONTINUATION-20261001-2027",
+  "mode": "CROSS/DO",
+  "scope": [
+    "Game Fabric",
+    "Universe",
+    "Robotics",
+    "Sovereign",
+    "Lo2"
+  ],
+  "implementation_repo": "goif74945-crypto/NEXY.AI-",
+  "implementation_branch": "NEXY.ai",
+  "ai_context_repo": "goif74945-crypto/AI-CONTEXT",
+  "timestamp_source": "user-local-context 2026-10-01T20:27+07:00",
+  "trace_id": "trace-nexy-phasef-20261001-2027",
+  "version": "1.0.0",
+  "case_id": "CASE-NEXY-PHASEF-CONCURRENT-VALIDATION-20261001-2027",
+  "cause": "NEXY.ai advanced repeatedly by cooperating chats while Railway source identity variables referenced prior SHA/tree snapshots",
+  "violation_prevented": "No stale validation result was promoted as proof for a newer HEAD",
+  "impact": "Latest fixes committed but not all have exact-SHA full validation evidence yet",
+  "fixes": [
+    "used fast-forward-only commits",
+    "checked live HEAD/tree before writes",
+    "updated DOC_E_TESTED_SHA/DOC_E_TESTED_TREE/EXPERIMENTAL_TESTED_SHA to live identities",
+    "treated identity-gate failure as infrastructure/config drift, not code failure"
+  ],
+  "prevention": [
+    "pin validation to immutable commit/branch or dedicated service when resource limits permit",
+    "never attribute an older passing run to a newer commit"
+  ],
+  "regression_status": "OPEN_UNTIL_EXACT_SHA_PASS"
+}

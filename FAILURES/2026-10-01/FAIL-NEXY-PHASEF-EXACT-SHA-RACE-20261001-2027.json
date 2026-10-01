@@ -1,0 +1,27 @@
+{
+  "task_id": "NEXY-CROSS-PHASEF-CONTINUATION-20261001-2027",
+  "mode": "CROSS/DO",
+  "scope": [
+    "Game Fabric",
+    "Universe",
+    "Robotics",
+    "Sovereign",
+    "Lo2"
+  ],
+  "implementation_repo": "goif74945-crypto/NEXY.AI-",
+  "implementation_branch": "NEXY.ai",
+  "ai_context_repo": "goif74945-crypto/AI-CONTEXT",
+  "timestamp_source": "user-local-context 2026-10-01T20:27+07:00",
+  "trace_id": "trace-nexy-phasef-20261001-2027",
+  "version": "1.0.0",
+  "failure_id": "FAIL-NEXY-PHASEF-EXACT-SHA-RACE-20261001-2027",
+  "context": "Railway exact-head validation during concurrent cross-chat repository mutation",
+  "cause": "deployment snapshot and proof variables became stale relative to RAILWAY_GIT_COMMIT_SHA",
+  "failed_approach": "relying on auto-deploy of a moving branch as exact-head evidence",
+  "recovery": "rebind SHA/tree and redeploy only when source snapshot and proof identity match",
+  "boundary": "This failure does not prove application tests failed because builds stopped at source-identity gate before test execution",
+  "prevention": "use immutable validation ref/service or atomic identity binding",
+  "severity": "S3 evidence correctness blocker",
+  "status": "OPEN",
+  "hash": "HASH_UNAVAILABLE"
+}
