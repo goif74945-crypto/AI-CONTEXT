@@ -21,6 +21,10 @@
     {
       "claim": "Canonical WAL records now expose the required integrity fields, decode and validate framed records, enforce contiguous logical counters, and production daemon mutations route through DurableWal rather than raw ShadowWal writes.",
       "proof": "exact SHA 772e1be4f145b75b43d7f417715b0433750b2394 tree 6349f7810134159312df9205c60dfb194e52e012; Railway exact redeploy 450519f0-71fc-4037-8ceb-44d9e0438757; 103/103 contract files and 554/554 tests pass; image sha256:0d856a6a58699cef013f04fa524b0817a675335621b6ff71deb1aaadbe023f03"
+    },
+    {
+      "claim": "Canonical WAL records now expose the required integrity fields, decode and validate framed records, enforce contiguous logical counters, and production daemon mutations route through DurableWal rather than raw ShadowWal writes.",
+      "proof": "exact SHA 772e1be4f145b75b43d7f417715b0433750b2394 tree 6349f7810134159312df9205c60dfb194e52e012; Railway exact redeploy 450519f0-71fc-4037-8ceb-44d9e0438757; 103/103 contract files and 554/554 tests pass; image sha256:0d856a6a58699cef013f04fa524b0817a675335621b6ff71deb1aaadbe023f03"
     }
   ],
   "risks": [
