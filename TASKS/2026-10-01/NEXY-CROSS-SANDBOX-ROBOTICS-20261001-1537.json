@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "e2ee35d8991e5c144127ca666e5d0b2018debf10",
+  "observed_head": "f8c288939b90d4d067a32b68ad2ef689ca24789c",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -14,7 +14,7 @@
     "context": "AI-CONTEXT is coordination/state only"
   },
   "ownership": {
-    "fixed_arithmetic": "ACTIVE_OWNER_THIS_TASK: batch=signed Q64.64 negative truncation + MIN division boundary",
+    "fixed_arithmetic": "PARTIAL_THIS_TASK: signed truncation + exact negative MIN division repaired; committed regression tests; Rust execution blocked by GitHub billing, Railway identity/resource limits, and local no-Rust/no-network",
     "sandbox": "PARTIAL_THIS_TASK: WASM hard containment implemented + focused proof; Firecracker/runc/Kata/gVisor real isolation execution remains unverified",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
     "robotics": "PARTIAL_THIS_TASK: HALT pre-actuation barrier repaired + focused proof; E7/HIL remains unverified"
@@ -25,13 +25,23 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_FIXED_ARITHMETIC_BATCH",
+  "status": "RUNNING_NEXT_ACTIONABLE_BATCH",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
     "Re-read AI-CONTEXT after economy/Q64 cross-chat task closed PARTIAL_FREEZE_UNRESOLVED_PATHS; released stale fixed-arithmetic ownership block.",
     "Fresh HEAD e2ee35d8991e5c144127ca666e5d0b2018debf10 before Fixed128 audit.",
     "Proven defect: Fixed128::to_i64_truncated uses arithmetic shift and rounds negative fractions toward -infinity instead of truncating toward zero.",
-    "Proven defect: div_raw rejects representable negative minimum quotient magnitude 2^63 even when exact."
+    "Proven defect: div_raw rejects representable negative minimum quotient magnitude 2^63 even when exact.",
+    "Fixed128 repair commits: eb05ab9805540549f7ac8dea0fb871711e8b491d and f24175905cfff8bff300897959e74180d1f2b261.",
+    "Created immutable validation branch validation/fixed128-f2417590 at f24175905cfff8bff300897959e74180d1f2b261.",
+    "GitHub Actions job UI proved provider billing/spending-limit block before runner execution.",
+    "Railway exact-source deployment fa3e885e-302f-4c68-81fb-fc5fdcebe8ea rejected f241 because shared DOC_E_TESTED_SHA still pointed to e2ee35d; shared variables left untouched due active concurrent owner.",
+    "Attempt to provision isolated Railway service failed due Free plan resource provision limit.",
+    "Local container lacks rustc/cargo and cannot resolve rustup host.",
+    "Recorded repo evidence at evidence/fixed128/SIGNED_EDGE_REPAIR_EXECUTION_BLOCKED_f2417590.json commit f8c288939b90d4d067a32b68ad2ef689ca24789c."
+  ],
+  "unresolved": [
+    "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL."
   ]
 }
