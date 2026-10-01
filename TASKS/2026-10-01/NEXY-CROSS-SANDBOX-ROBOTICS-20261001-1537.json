@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "f8c288939b90d4d067a32b68ad2ef689ca24789c",
+  "observed_head": "4ce7394d781bc6938a88d8a0477bbaf237cb60c0",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -14,8 +14,8 @@
     "context": "AI-CONTEXT is coordination/state only"
   },
   "ownership": {
-    "fixed_arithmetic": "PARTIAL_THIS_TASK: signed truncation + exact negative MIN division repaired; committed regression tests; Rust execution blocked by GitHub billing, Railway identity/resource limits, and local no-Rust/no-network",
-    "sandbox": "PARTIAL_THIS_TASK: WASM hard containment implemented + focused proof; Firecracker/runc/Kata/gVisor real isolation execution remains unverified",
+    "fixed_arithmetic": "ACTIVE_OWNER_THIS_TASK: batch=G15 Fixed128 overflow must saturate deterministically; divide-by-zero remains FREEZE",
+    "sandbox": "BLOCKED_BY_ACTIVE_OWNER: fresh Sandbox commits through HEAD 4ce7394d... from another chat",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
     "robotics": "PARTIAL_THIS_TASK: HALT pre-actuation barrier repaired + focused proof; E7/HIL remains unverified"
   },
@@ -25,7 +25,7 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_NEXT_ACTIONABLE_BATCH",
+  "status": "RUNNING_FIXED128_SATURATION_BATCH",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
@@ -39,7 +39,10 @@
     "Railway exact-source deployment fa3e885e-302f-4c68-81fb-fc5fdcebe8ea rejected f241 because shared DOC_E_TESTED_SHA still pointed to e2ee35d; shared variables left untouched due active concurrent owner.",
     "Attempt to provision isolated Railway service failed due Free plan resource provision limit.",
     "Local container lacks rustc/cargo and cannot resolve rustup host.",
-    "Recorded repo evidence at evidence/fixed128/SIGNED_EDGE_REPAIR_EXECUTION_BLOCKED_f2417590.json commit f8c288939b90d4d067a32b68ad2ef689ca24789c."
+    "Recorded repo evidence at evidence/fixed128/SIGNED_EDGE_REPAIR_EXECUTION_BLOCKED_f2417590.json commit f8c288939b90d4d067a32b68ad2ef689ca24789c.",
+    "Fresh HEAD 4ce7394d781bc6938a88d8a0477bbaf237cb60c0 re-read before Fixed128 saturation batch.",
+    "Authoritative NEXY-IGNIS G15 specifies signed Q64.64 fixed128 and NUMERIC OVERFLOW POLICY=B Saturating arithmetic, deterministic clamp, no wrap-around/UB.",
+    "Current core-kernel fixed128_math.rs instead freezes on arithmetic overflow; claimed batch to align overflow semantics only."
   ],
   "unresolved": [
     "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL."
