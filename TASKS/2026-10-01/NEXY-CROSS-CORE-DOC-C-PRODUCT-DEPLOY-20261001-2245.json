@@ -1,0 +1,143 @@
+{
+  "task_id": "NEXY-CROSS-CORE-DOC-C-PRODUCT-DEPLOY-20261001-2245",
+  "trace_id": "TRACE-NEXY-CROSS-CORE-DOC-C-PRODUCT-DEPLOY-20261001",
+  "title": "Core / DOC-C / Product / Deployment exact-evidence convergence",
+  "mode": "EXEC_CROSS",
+  "scope": [
+    "Core deterministic runtime and Layer 9/10",
+    "DOC-C implementation/build authority",
+    "DOC-D supported Product surface",
+    "DOC-E deployment evidence",
+    "Q64.64 fixed-point proof path"
+  ],
+  "authoritative_source": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "implementation_repo": "goif74945-crypto/NEXY.AI-",
+  "implementation_branch": "NEXY.ai",
+  "start_head": "754b2cabd134e006fd490de22df7fa10c5fb9113",
+  "commits_created": [
+    {
+      "sha": "e0cc622c37d5905cd8684d38a8f5d519fd5defe9",
+      "purpose": "consume NEXY_VALIDATION_RERUN before validation layers so BuildKit cache cannot be misrepresented as fresh proof"
+    },
+    {
+      "sha": "120dfaeaa0504f30a276ccfbcce61a37116aba2d",
+      "tree": "23cc737d292e4fde57bb3c4d70883d5fa61bd894",
+      "purpose": "add Rust Core/Q64.64, coverage, DOC-C and Product build gates to validation image"
+    }
+  ],
+  "verified_snapshots": [
+    {
+      "sha": "120dfaeaa0504f30a276ccfbcce61a37116aba2d",
+      "tree": "23cc737d292e4fde57bb3c4d70883d5fa61bd894",
+      "railway_deployment_id": "aa8aa11b-61b9-41af-82c8-ad0082571a2b",
+      "terminal_status": "SUCCESS",
+      "rust_core_tests": "257 + 9 passed, 0 failed",
+      "coverage_tests": "149 files, 1020 tests passed",
+      "coverage": {
+        "api": "lines 93.61 statements 92.30 functions 97.66 branches 85.17",
+        "core": "lines 95.73 statements 95.93 functions 94.44 branches 91.23",
+        "law": "lines 100.00 statements 94.87 functions 100.00 branches 96.83",
+        "judge": "lines 97.39 statements 96.27 functions 100.00 branches 94.01"
+      },
+      "doc_c_static": "ALL PASS; explicitly NOT RELEASE AUTHORIZATION",
+      "web_build": "23/23 static pages + BUILD_ID",
+      "doc_e": "E1-E9 PASS; E10-E12 BLOCKED_EXTERNAL; release_authorized=false; deploy_authorized=false"
+    },
+    {
+      "sha": "3f25022451ae07f65d881cf4b8b0fc1df84cc482",
+      "tree": "1eabf014b2350052c9413dfc83b7161f7740755b",
+      "railway_deployment_id": "6ec39a8b-099c-4941-b5c2-8705e6b57342",
+      "observed_status_at_record_time": "BUILDING",
+      "observed_gates": [
+        "source identity exact SHA/tree/nonce accepted",
+        "Rust core 257 passed + 9 passed, 0 failed",
+        "cargo check nexy-daemon completed",
+        "contract 106 files / 572 tests passed",
+        "coverage 149 files / 1020 tests passed",
+        "coverage thresholds PASS for API/Core/Law/Judge",
+        "DOC-C static check ALL PASS (not release authorization)",
+        "web production build generated 23/23 static pages"
+      ],
+      "note": "Not used as terminal deployment proof because branch changed again during CROSS work."
+    }
+  ],
+  "q64_64": {
+    "interpretation": "signed 128-bit fixed-point Q64.64 numeric model, not a programming language",
+    "core_law": "Layer 9 overflow => immediate FREEZE; no wrap/saturating/truncation",
+    "simulation_exception": "G15 simulation law uses deterministic saturation; does not override authoritative core",
+    "proof": "Rust fixed128 and authoritative L1o tests passed in fresh Railway execution; TS Q64.64 economy/simulation integration tests also observed passing"
+  },
+  "current_head_at_record_time": {
+    "sha": "69c6adde41df931d6c0d2239cf8228275d42f062",
+    "tree": "d659e2866ab7b6273565855ed8c1feb395c5dd13",
+    "drift_from_3f250224": "3 commits; evidence file + packages/phase-f/universe/sandbox-stack/router.ts + tests/integration/sandbox-escape-detection.spec.ts",
+    "exact_validation_status": "NOT VERIFIED by this task due concurrent CROSS mutation"
+  },
+  "core_findings": {
+    "status": "PARTIAL",
+    "proven_gap": "daemon boot compares SHA-256 of entire WAL file to wal.anchor written only on clean shutdown. A crash after a complete fsynced WAL append but before clean shutdown changes the WAL hash while leaving the anchor stale, causing the next boot to FREEZE even if the appended WAL is complete and valid.",
+    "unresolved": [
+      "actual fixed-size deterministic WAL segmentation/rollover",
+      "controlled partial-tail truncation with explicit audit event",
+      "daemon integration of latest committed SnapshotStore snapshot",
+      "replay state/Merkle comparison to anchored root after each/final entry",
+      "crash-loop counter to SAFE MODE plus immutable recovery package",
+      "full Layer 10 storage-medium/environment recovery integration"
+    ]
+  },
+  "product_findings": {
+    "status": "PARTIAL",
+    "resolved_historical_gaps": [
+      "Save Draft route/behavior exists",
+      "exact copy 'Recovery not allowed' exists",
+      "DOC-C §7.11 storage query patterns implemented with contract tests"
+    ],
+    "remaining_evidence_gap": "Current-head browser E2E did not execute on GitHub Actions; current GitHub jobs fail before any step. Railway validation image does not substitute for the full provider-backed Playwright job."
+  },
+  "github_actions": {
+    "current_pattern": "push workflows fail with zero executed steps; fetched exact-head job steps returned []",
+    "cause": "UNKNOWN",
+    "rule": "Do not infer source-code test failure from zero-step workflow failure",
+    "sample_current_runs": [
+      36886262486,
+      36886262560,
+      36886262962,
+      36886262373
+    ]
+  },
+  "deployment": {
+    "terminal_verified_snapshot": "120dfaeaa0504f30a276ccfbcce61a37116aba2d",
+    "doc_e_e1_to_e9": "PASS",
+    "e10": "BLOCKED_EXTERNAL: real provider deploy+rollback command receipt not yet proven",
+    "e11": "BLOCKED_EXTERNAL: human/release-authority signoff required; AI must not fabricate",
+    "e12": "BLOCKED_EXTERNAL: real application rollback execution + post-rollback health/smoke/monitoring proof required",
+    "release_authorized": false,
+    "deploy_authorized": false
+  },
+  "denominator": {
+    "current_implementation_rows": 773,
+    "composition": "12 CURRENT_GOVERNING_LAW + 547 CURRENT_BUILD + 127 CURRENT_BUILD_SUPPLEMENT + 87 SUPPORTED_PRODUCT_DESIGN",
+    "deployment_evidence_rows": 52,
+    "legacy_215_registry": "DEPRECATED / not authoritative denominator",
+    "audit_status": "773-row one-to-one implementation audit NOT COMPLETED in this task"
+  },
+  "failures": [
+    "Core Layer 10 recovery is not specification-complete",
+    "DOC-E E10-E12 not closed",
+    "GitHub Actions exact-head path zero-step failure cause unknown",
+    "Concurrent CROSS commits moved branch during validation",
+    "773-row exact one-to-one spec-code audit not completed"
+  ],
+  "next_actions": [
+    "Freeze Layer 10 release claim and design/implement correct anchored-replay semantics before patching tail behavior",
+    "Implement/verify WAL segmentation, partial-tail logged repair, snapshot boot replay and crash-loop SAFE MODE",
+    "Run full 773-row current matrix against a frozen SHA",
+    "Execute provider-backed browser E2E on a functioning executor",
+    "Close E10 with real provider command receipt, E11 with legitimate human/release-authority signoff, E12 with real rollback execution proof",
+    "Re-run all exact-head gates after CROSS writes stop or an immutable validation SHA is selected"
+  ],
+  "final_status": "PARTIAL",
+  "timestamp_source": "GitHub/Railway event timestamps on 2026-10-01; user timezone Asia/Bangkok",
+  "hash": "HASH_UNAVAILABLE",
+  "version": "1.0.0"
+}
