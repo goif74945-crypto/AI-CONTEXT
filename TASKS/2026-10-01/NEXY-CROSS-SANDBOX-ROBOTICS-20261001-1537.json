@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "07f5cd69ba0c9289334388b1d88a207e10c65ad7",
+  "observed_head": "462c4a6a064d14f31064c00913d5ee19cf23d22f",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -15,7 +15,7 @@
   },
   "ownership": {
     "fixed_arithmetic": "PARTIAL_CORRECTED: Core Layer9 overflow FREEZE restored; Game G15 saturation retained; exact-head execution blocked",
-    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: runc HSP containment contract seccomp+PID namespace+network namespace+FD ceiling",
+    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: Kata HSP containment contract seccomp+PID namespace+network namespace+FD ceiling",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
     "robotics": "PARTIAL_BLOCKED: sensor backup, HALT barrier, no-safe-action alert, decision-timeout fallback implemented; exact-head execution blocked; ONNX/ROS2 contracts and physical HIL authority/evidence missing"
   },
@@ -25,7 +25,7 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_SANDBOX_RUNC_HSP_CONTAINMENT",
+  "status": "RUNNING_SANDBOX_KATA_HSP_CONTAINMENT",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
@@ -79,7 +79,12 @@
     "Focused Kata proof passed 8/8 on exact blob 38911160c3bad99ebc0162bbd90915273f9fa53d; proof log sha256 83ed38e59cfcc3ca1b1fb7ecbe5b0fc634dc3d45c5fcd80a4569d072758ff69f.",
     "Exact-head Kata run 36887638124 job 110454908176 failed before any step (steps=[]); runtimeVerified remains false.",
     "Authoritative HSP clarification: no per-user quota does not remove the required system hard ceiling; isolation additionally requires seccomp, PID namespace, network namespace, and max FD ceiling.",
-    "Claimed runc-only HSP containment contract batch; numeric FD ceiling remains caller-supplied because source gives no constant."
+    "Claimed runc-only HSP containment contract batch; numeric FD ceiling remains caller-supplied because source gives no constant.",
+    "runc HSP containment code/test/evidence commits: f9e35374c42452e9fce55985a5834cde9ee1a0f3, 53ddaad3fe81588a80f43ae37a1300f47376e249, 462c4a6a064d14f31064c00913d5ee19cf23d22f.",
+    "Focused runc HSP proof passed 8/8 on exact blob b2216675b1b98fb34bc22ff3e0acadddc05c3e21; proof log sha256 e7273c5d1176dfbe01b1fd83cdd6aa38cd59fbcb9eaf3cb888203c41ea20ac05.",
+    "Exact-head run 36888097254 job 110456472159 failed before step 1 (steps=[]); runtimeVerified remains false.",
+    "Interleaved f291a43d9bb967ddc49a15181381366586a803a6 is Lo2-only and does not collide with sandbox ownership.",
+    "Claimed Kata-only HSP containment batch."
   ],
   "unresolved": [
     "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL.",
