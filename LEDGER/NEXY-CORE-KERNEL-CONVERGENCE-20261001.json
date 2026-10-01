@@ -1,0 +1,30 @@
+{
+  "ledger_id": "LEDGER-NEXY-CORE-20261001-01",
+  "source": [
+    "authoritative DOCX: แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "goif74945-crypto/NEXY.AI- branch NEXY.ai",
+    "Railway exact-head build logs"
+  ],
+  "claims": [
+    {
+      "claim": "Tier 5 is legal final depth and Tier 6 is compile-rejected; runtime depth enforcement removed.",
+      "proof": "exact SHA 6c2a27692919cfe13e4bbcde76ba5cbf4431523a; 100 contract files / 539 tests pass"
+    },
+    {
+      "claim": "Production authoritative Rust core no longer generates OTAC entropy via XorShift/time-derived RNG.",
+      "proof": "exact SHA 5322142c872835597c879da7191338e5fe83bb53; RNG gate + daemon compile-check; 101 contract files / 545 tests pass"
+    },
+    {
+      "claim": "WAL boot identity now distinguishes failure states, rejects missing anchor for an existing WAL, validates page integrity/sequence, and continues the durable sequence across restart.",
+      "proof": "exact SHA d89bcb1ad307258e46d7e4b1a34fc4d685c7c3a9 tree aa2e150fec8466c162e8ee765376f59bb90bb8d6; Railway build bb9385ad-1556-43b7-b171-c623cba3a8b8; 102 contract files / 549 tests pass; image sha256:e52b7b2c2c6a043f0500b044aa8738e0e909c8a399064818262e2adf059b10ad"
+    }
+  ],
+  "risks": [
+    "Current WAL page format is not yet the full canonical record schema required by the design.",
+    "Provider deployment status is separate from code/build validation and is not treated as runtime proof."
+  ],
+  "status": "OPEN",
+  "confidence": "VERIFIED_FOR_LISTED_CLAIMS_ONLY",
+  "freshness": "2026-10-01",
+  "version": "1.0.0"
+}
