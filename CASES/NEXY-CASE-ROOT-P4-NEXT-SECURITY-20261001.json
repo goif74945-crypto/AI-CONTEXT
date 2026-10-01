@@ -1,0 +1,40 @@
+{
+  "task_id": "NEXY-ROOT-P4-NEXT-SECURITY-20261001",
+  "title": "Root-of-trust, Layer 8 reproducible-build, and Next.js security convergence",
+  "mode": "ทำ",
+  "scope": [
+    "root-of-trust durable-anchor software gate",
+    "Layer 8 reproducible-build envelope gate",
+    "Next.js critical dependency remediation verification"
+  ],
+  "implementation_repo": "goif74945-crypto/NEXY.AI-",
+  "verified_sha": "013d28a2ce13ce6721c3ae2367abc7d641c8b924",
+  "exact_head_run_id": 36828860609,
+  "exact_head_job_id": 110260610848,
+  "exact_head_conclusion": "success",
+  "next_security_commit": "5ad59f5864ca1a24a1509e12c70d86c4df8ca061",
+  "timestamp_source": "GitHub Actions exact-head logs, latest cited evidence 2026-10-01T07:13:43Z",
+  "version": "1.0.0",
+  "case_id": "NEXY-CASE-ROOT-P4-NEXT-SECURITY-20261001",
+  "cause": "Convergence audit found root-of-trust, reproducible-build, and dependency-security blockers",
+  "violation": [
+    "Earlier fail-open/self-TOFU/durability gaps",
+    "Earlier floating build inputs",
+    "Critical Next.js dependency advisory"
+  ],
+  "impact": "Release evidence could not be considered closed before exact-head repair verification",
+  "fix": [
+    "Root-of-trust durable-anchor software repairs",
+    "Layer 8 deterministic build-envelope repairs",
+    "Next.js 16.3.8 security upgrade"
+  ],
+  "prevention": [
+    "Exact-head evidence workflow",
+    "Layer8 Cargo lock evidence workflow",
+    "npm audit gate",
+    "Fast-forward-only concurrent writes"
+  ],
+  "regression": "Run 36828860609 success; contract/integration/Rust/audit green at verified SHA",
+  "status": "CLOSED_WITH_EXTERNAL_LIMITS",
+  "trace_id": "NEXY-TRACE-ROOT-P4-NEXT-20261001"
+}
