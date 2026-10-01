@@ -72,3 +72,10 @@ LEDGER:
   risk: exact-head test execution will not be valid until repaired
   status: VERIFIED_DEFECT
   confidence: 1.0
+
+- id: L-80fb8fb0-ACTOR-ATTRIBUTION
+  source: GitHub commit metadata and audit searches
+  claim: the commit is associated with the repository account and GitHub web-flow, but available evidence does not identify a specific AI/model/chat as the actor
+  proof: commit metadata + no matching provenance record found
+  risk: do not attribute the defect to a named AI without direct provenance evidence
+  status: ATTRIBUTION_UNKNOWN
