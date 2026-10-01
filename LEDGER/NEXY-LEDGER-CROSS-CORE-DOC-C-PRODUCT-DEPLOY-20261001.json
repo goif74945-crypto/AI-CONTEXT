@@ -1,0 +1,120 @@
+{
+  "ledger_id": "NEXY-LEDGER-CROSS-CORE-DOC-C-PRODUCT-DEPLOY-20261001",
+  "trace_id": "TRACE-NEXY-CROSS-CORE-DOC-C-PRODUCT-DEPLOY-20261001",
+  "entries": [
+    {
+      "id": "L-Q64-001",
+      "source": "Railway fresh execution at 120dfaea and 3f250224 snapshot",
+      "claim": "authoritative Core Q64.64 paths compile/test",
+      "proof": "core-kernel 257+9 tests pass, 0 fail; nexy-daemon cargo check completes; economy Q64.64 integration paths observed green",
+      "deps": [
+        "Dockerfile fresh-run nonce",
+        "exact SHA/tree identity"
+      ],
+      "risk": "does not prove all Layer 9/10 requirements",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1
+    },
+    {
+      "id": "L-DOCC-001",
+      "source": "Railway validation logs",
+      "claim": "DOC-C static gate passes on tested snapshots",
+      "proof": "[DOC-C STATIC CHECK] ALL PASS — STATIC CHECK PASS (NOT RELEASE AUTHORIZATION)",
+      "deps": [
+        "tested snapshot"
+      ],
+      "risk": "static gate is not 773-row spec audit and not release authorization",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1
+    },
+    {
+      "id": "L-TEST-001",
+      "source": "Railway exact validation",
+      "claim": "coverage/test suite green on tested snapshot",
+      "proof": "149 files / 1020 tests; threshold gates pass for API/Core/Law/Judge",
+      "deps": [
+        "exact source identity"
+      ],
+      "risk": "browser E2E provider path not included",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1
+    },
+    {
+      "id": "L-DE-001",
+      "source": "Railway DOC-E runtime campaign at 120dfaea",
+      "claim": "E1-E9 pass",
+      "proof": "campaign outputs E1 through E9 PASS",
+      "deps": [
+        "Railway production environment"
+      ],
+      "risk": "E10-E12 unresolved",
+      "status": "VERIFIED",
+      "confidence": 1
+    },
+    {
+      "id": "L-DE-002",
+      "source": "DOC-E attestation",
+      "claim": "release/deploy authorization remains false",
+      "proof": "E10/E11/E12 BLOCKED_EXTERNAL; release_authorized=false; deploy_authorized=false",
+      "deps": [
+        "external receipts/signoff/rollback"
+      ],
+      "risk": "release blocked",
+      "status": "VERIFIED",
+      "confidence": 1
+    },
+    {
+      "id": "L-CORE-REC-001",
+      "source": "authoritative Layer 10 spec + nexy-daemon source inspection",
+      "claim": "current daemon clean-shutdown whole-WAL anchor cannot satisfy required crash replay semantics for a valid append before crash",
+      "proof": "daemon compares current whole-file WAL SHA to anchor at boot while anchor is updated on clean shutdown; Layer 10 requires strict crash replay from valid WAL/snapshot rather than treating valid post-anchor data as corruption",
+      "deps": [
+        "nexy-daemon/src/main.rs",
+        "core-kernel storage code"
+      ],
+      "risk": "crash recovery may FREEZE valid durable history",
+      "status": "PROVEN_GAP",
+      "confidence": 1
+    },
+    {
+      "id": "L-GHA-001",
+      "source": "GitHub Actions runs for 3f250224",
+      "claim": "GitHub current workflow failures are zero-step execution failures, not proven source test failures",
+      "proof": "runs 36886262486/36886262560/36886262962/36886262373 failed; inspected exact-head job step list was []",
+      "deps": [
+        "GitHub Actions execution plane"
+      ],
+      "risk": "cause UNKNOWN",
+      "status": "VERIFIED_WITH_LIMITS",
+      "confidence": 1
+    },
+    {
+      "id": "L-DRIFT-001",
+      "source": "GitHub compare",
+      "claim": "current branch moved during validation and contains source/test changes after tested 3f250224",
+      "proof": "at record time HEAD 69c6adde; compare from 3f250224 shows evidence plus router.ts and sandbox-escape-detection.spec.ts changes",
+      "deps": [
+        "CROSS concurrent writers"
+      ],
+      "risk": "current HEAD unverified by this task",
+      "status": "VERIFIED",
+      "confidence": 1
+    },
+    {
+      "id": "L-MATRIX-001",
+      "source": "CURRENT-SYSTEM-FEATURE-BUILD-MATRIX normalization",
+      "claim": "authoritative current implementation denominator is 773 rows and full one-to-one audit is not closed",
+      "proof": "12 + 547 + 127 + 87 = 773; legacy 215 registry deprecated",
+      "deps": [
+        "matrix/source-normalization"
+      ],
+      "risk": "cannot claim 100% implementation coverage",
+      "status": "VERIFIED",
+      "confidence": 1
+    }
+  ],
+  "final_verdict": "PARTIAL",
+  "release_authorized": false,
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
