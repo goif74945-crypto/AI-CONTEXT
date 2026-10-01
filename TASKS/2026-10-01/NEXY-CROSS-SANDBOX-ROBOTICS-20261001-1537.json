@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "70ffebdb670ff0182f923abcbd41ab7c7d796109",
+  "observed_head": "1965ea2e118a83026a2c7ce58ae7f50eb0c701ae",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -15,7 +15,7 @@
   },
   "ownership": {
     "fixed_arithmetic": "PARTIAL_CORRECTED: Core Layer9 overflow FREEZE restored; Game G15 saturation retained; exact-head execution blocked",
-    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: escape violation must orchestrate seal->snapshot->hard kill->revoke->archive->redeploy lock",
+    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: router admission must validate AppSpec before selecting any runtime",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
     "robotics": "PARTIAL_BLOCKED: sensor backup, HALT barrier, no-safe-action alert, decision-timeout fallback implemented; exact-head execution blocked; ONNX/ROS2 contracts and physical HIL authority/evidence missing"
   },
@@ -25,7 +25,7 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_SANDBOX_ESCAPE_HARD_KILL_BATCH",
+  "status": "RUNNING_SANDBOX_ROUTER_ADMISSION_BATCH",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
@@ -60,7 +60,11 @@
     "No recent gVisor implementation commits since May; current spawnGvisor reports RUNNING in stub mode without runtime receipt, unlike corrected Firecracker/runc/Kata adapters.",
     "gVisor truth-state repair commits 22f0c3237bf87925be20a9a52439ab950751d1eb + fb664a36935d64c3c37a513765f3d76fd0f0acc9; evidence 70ffebdb670ff0182f923abcbd41ab7c7d796109.",
     "Fresh HEAD 70ffebdb670ff0182f923abcbd41ab7c7d796109 before escape hard-kill orchestration batch.",
-    "Proven gap: createEscapeDetector only records/logs/callbacks; authoritative violation flow additionally requires evidence seal, snapshot hash, immediate hard kill, token revocation, log archive, redeploy lock."
+    "Proven gap: createEscapeDetector only records/logs/callbacks; authoritative violation flow additionally requires evidence seal, snapshot hash, immediate hard kill, token revocation, log archive, redeploy lock.",
+    "Sandbox escape hard-kill implementation/test/evidence commits: 754b2cabd134e006fd490de22df7fa10c5fb9113, 3f25022451ae07f65d881cf4b8b0fc1df84cc482, 1965ea2e118a83026a2c7ce58ae7f50eb0c701ae.",
+    "Focused escape proof passed on exact source blob 3ef6a8a934c8c1cfbe7e1285ad1e4cd63bafff5e; GitHub exact-head run 36886262962 failed before step 1 (steps=[]).",
+    "Fresh HEAD 1965ea2e118a83026a2c7ce58ae7f50eb0c701ae before router admission audit.",
+    "Proven defect: routeSandbox() bypasses validateAppSpec(), so invalid appId/userTier can be routed through the primary entrypoint."
   ],
   "unresolved": [
     "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL.",
