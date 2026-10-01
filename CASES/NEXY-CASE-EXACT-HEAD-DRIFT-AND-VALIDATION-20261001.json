@@ -1,0 +1,32 @@
+{
+  "case_id": "NEXY-CASE-EXACT-HEAD-DRIFT-AND-VALIDATION-20261001",
+  "title": "Concurrent CROSS HEAD drift during exact-head validation",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "cause": "Other authorized CROSS chats committed while this execution was validating fixed snapshots.",
+  "observed_sequence": [
+    "754b2cab -> e0cc622c -> 120dfaea (this task)",
+    "120dfaea -> 3f250224 (sandbox test change from CROSS)",
+    "3f250224 -> 1965ea2e (evidence-only change)",
+    "then source/test changes advanced branch to 69c6adde by record time"
+  ],
+  "impact": [
+    "A passing exact-head run is valid only for its tested SHA/tree.",
+    "Evidence from 120dfaea cannot be relabeled as proof for 69c6adde.",
+    "Moving-head validation can be perpetually invalidated by concurrent source commits."
+  ],
+  "proven": [
+    "Railway deployment aa8aa11b succeeded for 120dfaea exact source identity.",
+    "Railway 6ec39a8b accepted exact 3f250224 identity and executed fresh gates, but branch advanced while it was running.",
+    "GitHub Actions current push runs failed before executing steps; one inspected exact-head job returned an empty step list."
+  ],
+  "mitigation": [
+    "Bind all evidence to SHA+tree+deployment ID.",
+    "Use immutable validation snapshot or stop concurrent writes for final 100% gate.",
+    "Record HEAD drift as a blocker rather than merging evidence across SHAs."
+  ],
+  "status": "OPEN",
+  "severity": "S4_RELEASE_BLOCKING",
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
