@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "a45c27410a97ef124726fc1c0cc3619aefc538ce",
+  "observed_head": "570d91e7f2aa1d0a718ccf7584364b9e873cf7a7",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -15,7 +15,7 @@
   },
   "ownership": {
     "fixed_arithmetic": "PARTIAL_CORRECTED: Core Layer9 overflow FREEZE restored; Game G15 saturation retained; exact-head execution blocked",
-    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: runc isolation contract must require namespace+cgroup isolation and forbid shared PID/shared memory/host FS",
+    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: Kata isolation contract must require namespace+cgroup isolation and forbid shared PID/shared memory/host FS",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
     "robotics": "PARTIAL_BLOCKED: sensor backup, HALT barrier, no-safe-action alert, decision-timeout fallback implemented; exact-head execution blocked; ONNX/ROS2 contracts and physical HIL authority/evidence missing"
   },
@@ -25,7 +25,7 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_SANDBOX_RUNC_ISOLATION_CONTRACT",
+  "status": "RUNNING_SANDBOX_KATA_ISOLATION_CONTRACT",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
@@ -69,7 +69,12 @@
     "Focused router proof passed on exact source blob 02e0f05db2f222dd375ac33cb6a8001e2133b60a; exact-head run 36886699610 remained queued with steps=[] at evidence time.",
     "Fresh authority read lines 4200-4269: container namespace separated, cgroup isolation enabled, no shared memory, no shared PID, no host FS access.",
     "Code search found no sandbox-stack enforcement fields for sharedPid/sharedMemory/hostFs/namespaceIsolation/syscallFilter; only runc readOnlyRootfs exists.",
-    "Claimed small runc-only isolation contract batch; Kata will be separate."
+    "Claimed small runc-only isolation contract batch; Kata will be separate.",
+    "runc isolation code/test/evidence commits: 3db301fa94bcad17b77d7a4d4d946c1e2a49a1db, 92e014946caacf7ae8b300b73a7a0ea2fc77260c, 570d91e7f2aa1d0a718ccf7584364b9e873cf7a7.",
+    "Focused runc proof passed 8/8 on exact blob 7ed6b47591959360db774bc9f9e82f83c6161252; proof log sha256 f7a3acffcb160ff51dc457e8bf669ff8a21b6c7a75560ecd6c12ec577cbadd95.",
+    "GitHub exact-head run 36887210546 job 110453472116 failed before any step (steps=[]); runc remains PARTIAL and runtimeVerified=false.",
+    "Interleaved commit 5c0dbe3b89a3c0f68eb76f7d9e31aa97534e1029 touched only __nexy_manual_validation_only__, so no Sandbox ownership collision.",
+    "Claimed Kata-only isolation contract batch; real Kata runtime execution remains separate evidence."
   ],
   "unresolved": [
     "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL.",
