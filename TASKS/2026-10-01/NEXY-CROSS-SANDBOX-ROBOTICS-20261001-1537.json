@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "5c771cf02d4f928f8b0a38f86e664b0812e8488e",
+  "observed_head": "7cc38d764a400197cd686c9da8f4edee74707a71",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -14,8 +14,8 @@
     "context": "AI-CONTEXT is coordination/state only"
   },
   "ownership": {
-    "fixed_arithmetic": "ACTIVE_OWNER_THIS_TASK: batch=documentation semantics must match G15 saturation implementation",
-    "sandbox": "BLOCKED_BY_ACTIVE_OWNER: fresh Sandbox commits through HEAD 4ce7394d... from another chat",
+    "fixed_arithmetic": "PARTIAL_CORRECTED: Core Layer9 overflow FREEZE restored; Game G15 saturation retained; exact-head execution blocked",
+    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: gVisor must not claim RUNNING without real runtime execution evidence",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
     "robotics": "PARTIAL_BLOCKED: sensor backup, HALT barrier, no-safe-action alert, decision-timeout fallback implemented; exact-head execution blocked; ONNX/ROS2 contracts and physical HIL authority/evidence missing"
   },
@@ -25,7 +25,7 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_FIXED128_DOC_ALIGNMENT_BATCH",
+  "status": "RUNNING_SANDBOX_GVISOR_TRUTH_STATE_BATCH",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
@@ -53,7 +53,11 @@
     "No authoritative fixed timeout constant inferred; deadline will be explicit caller/policy input.",
     "Robotics decision-timeout evidence recorded at commit 5c771cf02d4f928f8b0a38f86e664b0812e8488e.",
     "Robotics remaining paths frozen where authoritative ONNX tensor contract, ROS2 DDS topic/QoS contract, or physical HIL evidence are absent.",
-    "Claimed Fixed128 documentation-only batch after fresh HEAD 5c771cf02d4f928f8b0a38f86e664b0812e8488e."
+    "Claimed Fixed128 documentation-only batch after fresh HEAD 5c771cf02d4f928f8b0a38f86e664b0812e8488e.",
+    "Discovered authoritative scope split: Layer9 Core overflow FREEZE vs G15 Game saturation; corrected prior wrong-scope change.",
+    "Fixed correction commits: de26aebb8202c1fb2e4cee69655659884a4342f9, f293f8c9da2c3b0b1b5f40d59b9a311a7ed7c658, 9425076c4361a524db1559ca43690e3c6c24ec49, 7cc38d764a400197cd686c9da8f4edee74707a71.",
+    "Fresh HEAD 7cc38d764a400197cd686c9da8f4edee74707a71 before gVisor truth-state batch.",
+    "No recent gVisor implementation commits since May; current spawnGvisor reports RUNNING in stub mode without runtime receipt, unlike corrected Firecracker/runc/Kata adapters."
   ],
   "unresolved": [
     "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL.",
