@@ -54,3 +54,12 @@ LEDGER:
   risk: status must be recomputed after a new exact-head run
   status: PARTIAL
   confidence: 1.0
+
+- id: L-80fb8fb0-BRANCH-ENFORCEMENT
+  source: GitHub branch/rules API
+  claim: only NEXY.ai exists at audit close, but provider-side prevention of future branch creation is not verified
+  proof: branches endpoint returned only NEXY.ai with protected=false; rulesets unavailable on current private-repo tier; branch-protection endpoint inaccessible to integration
+  deps: GitHub account/repository capabilities
+  risk: AGENTS.md policy is advisory unless another provider mechanism enforces it
+  status: VERIFIED_LIMITATION
+  confidence: 1.0
