@@ -1,0 +1,126 @@
+{
+  "TASK_ID": "NEXY-CROSS-PHASEF-CONVERGENCE-20261001",
+  "title": "Game Fabric / Universe / Robotics / Sovereign / Lo2 exact-spec convergence",
+  "mode": "EXEC/CROSS",
+  "scope": [
+    "Game Fabric G1-G25",
+    "Universe/Creator Fabric",
+    "Robotics/RCL",
+    "Sovereign gates",
+    "Lo2",
+    "Q64.64 authoritative arithmetic",
+    "exact-SHA Railway validation"
+  ],
+  "inputs": [
+    "authoritative NEXY design source turn1file0",
+    "live repo goif74945-crypto/NEXY.AI- branch NEXY.ai",
+    "live AI-CONTEXT main",
+    "Railway project NEXY Validation R2"
+  ],
+  "sources": [
+    "NEXY design: GameSpec drift FREEZE; G15 signed Q64.64; G20/G21 capability governance",
+    "NEXY design: UniverseSeal = Sign(KernelKey, SpecHash + ArtifactRootHash)",
+    "NEXY design: WebAppSpec requires framework/runtime/allowed API/resource cap/network model/no dynamic dependency resolution/dependency hash locks"
+  ],
+  "skills_tools": [
+    "GitHub connector",
+    "Railway connector",
+    "Files authoritative-source retrieval"
+  ],
+  "actions": [
+    "hardened G20/G21 capability governance and removed mutable runtime capability definition bypass",
+    "added GameSpec runtime-drift FREEZE verifier",
+    "added cryptographic KernelKey UniverseSeal verification with Ed25519 adapter",
+    "fixed Phase-F targeted Vitest config in validation Dockerfile",
+    "added immutable WebAppSpec exact dependency-lock module and tests",
+    "added full npm run test:experimental gate to validation Dockerfile"
+  ],
+  "artifacts_paths": [
+    "packages/phase-f/game/ncf-governance.ts",
+    "packages/phase-f/universe/capability-declaration.ts",
+    "packages/phase-f/game/spec/game-spec.ts",
+    "packages/phase-f/universe/creator-fabric.ts",
+    "packages/phase-f/universe/web-app-spec.ts",
+    "tests/integration/web-app-spec.spec.ts",
+    "Dockerfile",
+    "config/experimental-scope.ts"
+  ],
+  "commits": [
+    "45dbe682f0e615621425ad545521394b0b1814fd",
+    "d765e60f076220d3fe2522d825c6a5ea4ede1624",
+    "577a7dc6390e0fa19773c772f6468768a79f4b9b",
+    "4905c87b84873dfc735958e937145276a13271b8",
+    "823680c09499498d0104e8a6c1137e853982e750",
+    "079386a0d2a26e6c759b243b5c15d876c5b2d18e"
+  ],
+  "claims_proofs": [
+    {
+      "claim": "Historical Phase-F suite passed on SHA 6ef9360baed355092d622dc5f8b594b21e2bb3ca",
+      "proof": "Railway logs: 69 files passed, 680 tests passed, 1 skipped, 0 failed",
+      "status": "VERIFIED_FOR_SHA_ONLY"
+    },
+    {
+      "claim": "Exact-SHA validation on 4905c87b reached real targeted Phase-F execution",
+      "proof": "Railway deployment 86d2e911-689c-41a6-bea9-443adf458751: source identity matched; typecheck passed; contract 105 files/570 tests passed; targeted experimental 28 passed/5 failed",
+      "status": "VERIFIED_FAILURE"
+    },
+    {
+      "claim": "The five targeted failures were caused by Creator fixtures missing the newly required Template SDK registry",
+      "proof": "All five failures emitted CREATOR_TEMPLATE_SDK_REGISTRY_REQUIRED; live descendant tests now construct and bind createTemplateSdkRegistry",
+      "status": "PROVEN_AND_REPAIRED_IN_DESCENDANT"
+    },
+    {
+      "claim": "Validation formerly used the wrong Vitest config for Phase-F",
+      "proof": "Railway emitted No test files found because primary config excluded experimental files; commit 4905c87b changed targeted run to vitest.experimental.config.ts",
+      "status": "RESOLVED"
+    }
+  ],
+  "tests_results": [
+    "6ef9360b: full experimental 69/69 files pass; 680 pass; 1 skip",
+    "d765e60f: typecheck pass; contract 105/105 files, 570/570 tests pass; web BUILD_ID produced",
+    "4905c87b exact run: typecheck pass; contract 105/570 pass; targeted Phase-F 28 pass, 5 fail (SDK registry fixture mismatch)"
+  ],
+  "changes": "Real code and validation-gate changes committed by fast-forward only; protected branch untouched.",
+  "successes": [
+    "No fake pass claimed",
+    "source-identity mismatches separated from code failures",
+    "UniverseSeal state can no longer advance without verified signature",
+    "current validation Dockerfile now includes full experimental Phase-F suite gate"
+  ],
+  "failures": [
+    "GitHub Actions jobs often terminate before meaningful steps",
+    "shared Railway service races moving NEXY.ai HEAD and staged tested SHA",
+    "Creator ArtifactRootHash general CIR Merkle dialect remains underspecified in source"
+  ],
+  "decisions": [
+    "Do not invent Creator-wide Merkle leaf encoding/odd-node rule",
+    "Do not weaken SDK registry gate; update fixtures to real version-locked registry",
+    "Use exact SHA/tree evidence only"
+  ],
+  "unresolved": [
+    "exact full experimental rerun on latest moving descendant HEAD",
+    "Creator ArtifactRoot proof/canonicalizer contract for all CIR asset classes",
+    "remaining source-to-code audit across all requested systems"
+  ],
+  "risks": [
+    "CROSS chats continue to move NEXY.ai while validation is running",
+    "historical green tests are not evidence for a newer SHA"
+  ],
+  "limits": "NOT 100%; NOT release-ready; no claim of complete spec convergence.",
+  "rollback": "Every code change is an isolated Git commit and can be reverted by commit; no force push used.",
+  "final_status": "PARTIAL",
+  "next_actions": [
+    "run full exact-SHA Railway validation on a stable descendant including 079386a0",
+    "repair only failures proven by that run",
+    "continue source-by-source gaps and update ledger"
+  ],
+  "dependencies": [
+    "Railway runner availability",
+    "stable exact source identity for validation window"
+  ],
+  "version": "1.0-interim",
+  "timestamp_source": "Railway UTC build logs + GitHub commit metadata",
+  "timestamp": "2026-10-01T13:01:36Z",
+  "trace_id": "NEXY-CROSS-PHASEF-20261001-TRACE-01",
+  "hash": "HASH_UNAVAILABLE"
+}
