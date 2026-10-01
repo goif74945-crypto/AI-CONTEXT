@@ -90,7 +90,7 @@ dependencies:
 - live Railway validation environment
 - authorized external release actors
 - stable canonical HEAD during the evidence run
-version: 2
+version: 3
 hash: HASH_UNAVAILABLE (record content hash not independently computed in connector path)
 
 addendum_branch_enforcement:
@@ -99,3 +99,12 @@ addendum_branch_enforcement:
 - branch-protection endpoint returned 403 to the integration, so provider-side prohibition on creating new branches is NOT VERIFIED
 - AGENTS.md policy forbids branch creation, but policy text alone is not an enforcement proof
 - audit did not attempt branch creation because the user explicitly forbids it
+
+addendum_current_source_defect:
+- path: tests/integration/sandbox-tier1-runc.spec.ts
+- current import: import { describe, expect, it } from "viteหำดำst";
+- immediate-parent import: import { describe, expect, it } from "vitest";
+- repo search shows the corrupted token only in this file
+- package.json declares vitest and does not declare the corrupted module name
+- verdict: PROVEN_CURRENT_HEAD_TEST_SOURCE_CORRUPTION; sandbox current-head gate fails static dependency resolution until restored to vitest
+- required_fix: restore the import module specifier exactly to "vitest", then rerun exact-head validation under a new commit/SHA; historical evidence cannot be reused for that repaired SHA
