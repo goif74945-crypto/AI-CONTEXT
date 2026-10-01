@@ -1,0 +1,29 @@
+{
+  "task_id": "NEXY-CROSS-SANDBOX-ROBOTICS-20261001-1537",
+  "trace_id": "TRACE-NEXY-CROSS-20261001-1537-BKK",
+  "mode": "EXEC_CROSS",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "observed_head": "62c646121ab49437946981ce635503fb8dcac48c",
+  "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
+  "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
+  "truth_sources": {
+    "code": "Git HEAD",
+    "spec": "NEXY-IGNIS latest attached source",
+    "tests": "exact-head execution evidence",
+    "context": "AI-CONTEXT is coordination/state only"
+  },
+  "ownership": {
+    "fixed_arithmetic": "BLOCKED_BY_ACTIVE_OWNER: fresh HEAD commit 62c646... feat(phase-f): add Q64 economy lifecycle product expansion",
+    "sandbox": "ACTIVE_OWNER_THIS_TASK",
+    "sovereign": "PENDING_OWNERSHIP_RECHECK",
+    "robotics": "PENDING_AFTER_SANDBOX_BATCH"
+  },
+  "rules": [
+    "Refresh NEXY.ai HEAD immediately before every mutation batch.",
+    "Do not mutate any system/path with evidence of an active owner.",
+    "Use small single-purpose commits.",
+    "Do not claim PASS without exact-head evidence matching required class."
+  ],
+  "status": "RUNNING"
+}
