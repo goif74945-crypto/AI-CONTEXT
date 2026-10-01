@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "62c646121ab49437946981ce635503fb8dcac48c",
+  "observed_head": "3a8b4793bfbd2d025192521e88dec4c795f3cef1",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -15,9 +15,9 @@
   },
   "ownership": {
     "fixed_arithmetic": "BLOCKED_BY_ACTIVE_OWNER: fresh HEAD commit 62c646... feat(phase-f): add Q64 economy lifecycle product expansion",
-    "sandbox": "ACTIVE_OWNER_THIS_TASK",
+    "sandbox": "PARTIAL_THIS_TASK: WASM hard containment implemented and focused runtime proof recorded; microVM/container E5 still unavailable",
     "sovereign": "PENDING_OWNERSHIP_RECHECK",
-    "robotics": "PENDING_AFTER_SANDBOX_BATCH"
+    "robotics": "ACTIVE_OWNER_THIS_TASK: batch=fast-brain HALT must block downstream safe-brain/actuation side effects"
   },
   "rules": [
     "Refresh NEXY.ai HEAD immediately before every mutation batch.",
@@ -25,5 +25,9 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING"
+  "status": "RUNNING_ROBOTICS_BATCH",
+  "actions": [
+    "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
+    "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect."
+  ]
 }
