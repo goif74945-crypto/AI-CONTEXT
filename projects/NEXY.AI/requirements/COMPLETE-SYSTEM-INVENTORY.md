@@ -47,8 +47,23 @@ Source workbook contained 74 system groups and 935 requirement/system-feature re
 ### DOC-E
 - Exact-head deployment evidence — deployment evidence; DOC-E DEPLOYMENT EVIDENCE.
 
-### EXTENSION / FUTURE SOURCE-DESIGN SYSTEMS
-Authority for the following groups in the source matrix: NEXY-IGNIS SOURCE DESIGN / FUTURE OR EXTENSION. Build scope: EXTENSION_FUTURE.
+### SOURCE-DESIGN SYSTEMS
+
+Unless explicitly overridden below, source-design classification must be read from the authoritative source evidence and must not be guessed.
+
+### CURRENT REQUIRED FULL-PROJECT SCOPE — OVERRIDE
+
+The following systems are **CURRENT REQUIRED FULL-PROJECT SCOPE**. AI MUST NOT label, classify, defer, exclude, or describe them as Future, Extension, optional future work, or out-of-current-project scope:
+
+- Game Fabric, including G1–G10 and its required supporting game/runtime fabric.
+- Universe, including Universe isolation and required cross-universe capability/permission mechanisms.
+- Robotics, including Fast Brain, Safe Brain, sensor/control/safety integration and required robotics runtime components.
+- Sovereign systems, including Sovereign continuity and the required constitutional/authority/continuity mechanisms.
+- Lo2, including verified learning, Logic Quantum provenance, governed law synthesis/evolution, USL ledger and federation-law mechanisms.
+
+This scope classification is authoritative for project planning and completeness evaluation. **Required does not mean implemented or verified.** Implementation/verification status still requires repository artifacts, tests, logs, or reproducible evidence.
+
+Other source-design systems listed below retain their source-evidence classification unless separately overridden by authoritative project instructions.
 
 - Auto recovery — playbook controller.
 - Build reproducibility — compiler/container/locale/path/build-environment reproducibility lock.
