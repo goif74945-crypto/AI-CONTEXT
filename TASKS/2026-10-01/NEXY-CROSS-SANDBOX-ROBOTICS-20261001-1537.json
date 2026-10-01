@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "462c4a6a064d14f31064c00913d5ee19cf23d22f",
+  "observed_head": "b1c4e7eaab5362bf3a28620378afe9662ec2c360",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -15,7 +15,7 @@
   },
   "ownership": {
     "fixed_arithmetic": "PARTIAL_CORRECTED: Core Layer9 overflow FREEZE restored; Game G15 saturation retained; exact-head execution blocked",
-    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: Kata HSP containment contract seccomp+PID namespace+network namespace+FD ceiling",
+    "sandbox": "PARTIAL_ACTIVE_REAUDIT: runc+Kata isolation/HSP contracts proven by focused exact-blob execution; real runtime receipts and exact-head runner execution still missing",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
     "robotics": "PARTIAL_BLOCKED: sensor backup, HALT barrier, no-safe-action alert, decision-timeout fallback implemented; exact-head execution blocked; ONNX/ROS2 contracts and physical HIL authority/evidence missing"
   },
@@ -25,7 +25,7 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_SANDBOX_KATA_HSP_CONTAINMENT",
+  "status": "RUNNING_SANDBOX_REAUDIT_AFTER_KATA_HSP",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
@@ -84,7 +84,11 @@
     "Focused runc HSP proof passed 8/8 on exact blob b2216675b1b98fb34bc22ff3e0acadddc05c3e21; proof log sha256 e7273c5d1176dfbe01b1fd83cdd6aa38cd59fbcb9eaf3cb888203c41ea20ac05.",
     "Exact-head run 36888097254 job 110456472159 failed before step 1 (steps=[]); runtimeVerified remains false.",
     "Interleaved f291a43d9bb967ddc49a15181381366586a803a6 is Lo2-only and does not collide with sandbox ownership.",
-    "Claimed Kata-only HSP containment batch."
+    "Claimed Kata-only HSP containment batch.",
+    "Kata HSP containment code/test/evidence commits: 99bd15dd17e8016ed9f6f772d0cb55ebeacb4545, f5ac6fedd7b1bfb7741f2534e6dcc7ff7b50fffc, b1c4e7eaab5362bf3a28620378afe9662ec2c360.",
+    "Focused Kata HSP proof passed 8/8 on exact blob 34188cc085b922f96bb704deb2ebff49f43dc315; proof log sha256 dd46e9613308c2cca5d844c85df8ca1e14b544c5c58d4bd29378ec023d1ccf19.",
+    "Exact-head Kata HSP run 36888341893 job 110457304134 failed before any step (steps=[]); runtimeVerified remains false.",
+    "Interleaved ec69a15d1f003d4ba98f303d047c1d5d1df7f6ce is Sovereign-only and does not collide with Sandbox ownership."
   ],
   "unresolved": [
     "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL.",
@@ -92,6 +96,8 @@
     "Robotics ONNX runtime integration lacks authoritative tensor/model contract.",
     "Robotics ROS2 DDS integration lacks authoritative topic/QoS/message contract.",
     "Robotics physical cross-compile/flash/HIL proof requires external hardware evidence.",
-    "Sovereign remains FROZEN by authoritative spec unresolved items and external gates."
+    "Sovereign remains FROZEN by authoritative spec unresolved items and external gates.",
+    "Sandbox runc/Kata isolation contracts are software-policy proofs only; actual runtime receipts are still missing.",
+    "GitHub exact-head provider repeatedly creates zero-step jobs, so exact-head execution remains blocked."
   ]
 }
