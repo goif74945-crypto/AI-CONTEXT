@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "1965ea2e118a83026a2c7ce58ae7f50eb0c701ae",
+  "observed_head": "a45c27410a97ef124726fc1c0cc3619aefc538ce",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -15,7 +15,7 @@
   },
   "ownership": {
     "fixed_arithmetic": "PARTIAL_CORRECTED: Core Layer9 overflow FREEZE restored; Game G15 saturation retained; exact-head execution blocked",
-    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: router admission must validate AppSpec before selecting any runtime",
+    "sandbox": "ACTIVE_OWNER_THIS_TASK_SUBBATCH: runc isolation contract must require namespace+cgroup isolation and forbid shared PID/shared memory/host FS",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
     "robotics": "PARTIAL_BLOCKED: sensor backup, HALT barrier, no-safe-action alert, decision-timeout fallback implemented; exact-head execution blocked; ONNX/ROS2 contracts and physical HIL authority/evidence missing"
   },
@@ -25,7 +25,7 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_SANDBOX_ROUTER_ADMISSION_BATCH",
+  "status": "RUNNING_SANDBOX_RUNC_ISOLATION_CONTRACT",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
@@ -64,7 +64,12 @@
     "Sandbox escape hard-kill implementation/test/evidence commits: 754b2cabd134e006fd490de22df7fa10c5fb9113, 3f25022451ae07f65d881cf4b8b0fc1df84cc482, 1965ea2e118a83026a2c7ce58ae7f50eb0c701ae.",
     "Focused escape proof passed on exact source blob 3ef6a8a934c8c1cfbe7e1285ad1e4cd63bafff5e; GitHub exact-head run 36886262962 failed before step 1 (steps=[]).",
     "Fresh HEAD 1965ea2e118a83026a2c7ce58ae7f50eb0c701ae before router admission audit.",
-    "Proven defect: routeSandbox() bypasses validateAppSpec(), so invalid appId/userTier can be routed through the primary entrypoint."
+    "Proven defect: routeSandbox() bypasses validateAppSpec(), so invalid appId/userTier can be routed through the primary entrypoint.",
+    "Sandbox router admission commits: e5449f20595f94d6bdd15ce11196c324929cdcdf + 69c6adde41df931d6c0d2239cf8228275d42f062; evidence a45c27410a97ef124726fc1c0cc3619aefc538ce.",
+    "Focused router proof passed on exact source blob 02e0f05db2f222dd375ac33cb6a8001e2133b60a; exact-head run 36886699610 remained queued with steps=[] at evidence time.",
+    "Fresh authority read lines 4200-4269: container namespace separated, cgroup isolation enabled, no shared memory, no shared PID, no host FS access.",
+    "Code search found no sandbox-stack enforcement fields for sharedPid/sharedMemory/hostFs/namespaceIsolation/syscallFilter; only runc readOnlyRootfs exists.",
+    "Claimed small runc-only isolation contract batch; Kata will be separate."
   ],
   "unresolved": [
     "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL.",
