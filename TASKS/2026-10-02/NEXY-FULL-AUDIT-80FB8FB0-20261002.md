@@ -90,5 +90,12 @@ dependencies:
 - live Railway validation environment
 - authorized external release actors
 - stable canonical HEAD during the evidence run
-version: 1
+version: 2
 hash: HASH_UNAVAILABLE (record content hash not independently computed in connector path)
+
+addendum_branch_enforcement:
+- live GitHub branch API reports only NEXY.ai and reports protected=false for that branch
+- repository rulesets API returned 403 with provider message that this private repository/account tier must upgrade or become public to enable that feature
+- branch-protection endpoint returned 403 to the integration, so provider-side prohibition on creating new branches is NOT VERIFIED
+- AGENTS.md policy forbids branch creation, but policy text alone is not an enforcement proof
+- audit did not attempt branch creation because the user explicitly forbids it
