@@ -14,6 +14,10 @@ This document consolidates requirements stated in the source project document. I
 
 That file is the complete system-level inventory derived from `NEXY_FULL_PROJECT_SYSTEM_FEATURE_PERCENT_MATRIX.xlsx`. When determining which NEXY systems exist, use that inventory before guessing or inferring. It intentionally contains no percentage values. If it conflicts with a newer authoritative specification, FREEZE the conflicting conclusion and verify the newer source.
 
+### Current full-project scope lock
+
+Game Fabric, Universe, Robotics, Sovereign systems, and Lo2 are **CURRENT REQUIRED FULL-PROJECT SCOPE**. AI MUST NOT classify these domains as Future, Extension, optional future work, or outside current project completeness. This is a scope requirement only; implementation and verification claims still require evidence.
+
 ## Product identity requirements
 
 1. NEXY is a Core AI Control Hub, not merely a showcase website.
