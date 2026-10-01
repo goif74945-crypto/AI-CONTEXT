@@ -4,7 +4,7 @@
   "mode": "EXEC_CROSS",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "observed_head": "45b90614805f3bd63f3f20cc81d55411a7f4be1d",
+  "observed_head": "1042c9bbbe999cf009b264054791a10bc030390e",
   "timestamp_source": "conversation local time Asia/Bangkok 2026-10-01T15:37+07:00",
   "title": "Spec-exact Fixed arithmetic, Sandbox, Sovereign, Robotics convergence",
   "truth_sources": {
@@ -17,7 +17,7 @@
     "fixed_arithmetic": "PARTIAL_THIS_TASK: G15 saturation aligned; real Rust execution still blocked",
     "sandbox": "BLOCKED_BY_ACTIVE_OWNER: fresh Sandbox commits through HEAD 4ce7394d... from another chat",
     "sovereign": "FROZEN_BY_AUTHORITATIVE_SPEC: readiness gate correctly blocks mutation/deploy while 9 source items + 5 external gates remain unresolved",
-    "robotics": "ACTIVE_OWNER_THIS_TASK: batch=sensor failure must switch to explicit backup without inventing sensor topology"
+    "robotics": "ACTIVE_OWNER_THIS_TASK: batch=no-safe-action must HALT and emit deterministic safety alert directive"
   },
   "rules": [
     "Refresh NEXY.ai HEAD immediately before every mutation batch.",
@@ -25,7 +25,7 @@
     "Use small single-purpose commits.",
     "Do not claim PASS without exact-head evidence matching required class."
   ],
-  "status": "RUNNING_ROBOTICS_SENSOR_BACKUP_BATCH",
+  "status": "RUNNING_ROBOTICS_NO_SAFE_ACTION_ALERT_BATCH",
   "actions": [
     "Claimed robotics batch after fresh repo HEAD and AI-CONTEXT ownership checks.",
     "Observed RCL deliberate() executes downstream perception/planning/verification/actuation even when Fast Brain verdict is HALT; repairing only this proven defect.",
@@ -45,7 +45,9 @@
     "Current core-kernel fixed128_math.rs instead freezes on arithmetic overflow; claimed batch to align overflow semantics only.",
     "Fresh HEAD 45b90614805f3bd63f3f20cc81d55411a7f4be1d before Robotics sensor-failure batch.",
     "Spec requires sensor loss -> switch to backup. Current authoritative SensorFusionState has fuse(readings) only and no backup switching mechanism.",
-    "Batch constrained to additive explicit primary/backup selection; no inferred sensor topology or timeout constant."
+    "Batch constrained to additive explicit primary/backup selection; no inferred sensor topology or timeout constant.",
+    "Fresh HEAD 1042c9bbbe999cf009b264054791a10bc030390e before Robotics no-safe-action alert batch.",
+    "Decision layer already HALTs for missing/rejected Q64 safety proof or missing plan, but emits no explicit alert directive. Spec requires no safe action -> STOP + alert."
   ],
   "unresolved": [
     "Fixed128 regression tests are committed but not executed by a real Rust runner; verification remains PARTIAL."
