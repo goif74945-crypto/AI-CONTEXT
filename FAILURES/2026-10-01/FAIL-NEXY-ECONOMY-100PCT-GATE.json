@@ -1,0 +1,44 @@
+{
+  "failure_id": "FAIL-NEXY-ECONOMY-100PCT-GATE-20261001",
+  "task_id": "NEXY-CROSS-ECONOMY-LIFECYCLE-PRODUCT-20261001",
+  "trace_id": "TRACE-NEXY-ECONOMY-LIFECYCLE-PRODUCT-20261001",
+  "context": "100% spec-compliance and exact-test gate",
+  "failures": [
+    {
+      "area": "GitHub Actions",
+      "observed": "current exact-head jobs have runner_id=0 and steps=[]",
+      "classification": "EXECUTION_INFRASTRUCTURE"
+    },
+    {
+      "area": "Railway focused integration",
+      "observed": "focused preDeploy command did not start before deployment failure/container stop",
+      "classification": "EXECUTION_INFRASTRUCTURE"
+    },
+    {
+      "area": "Cross-app rate limiting",
+      "observed": "signed rateLimit exists but authorize/send/deliver do not consume/enforce it",
+      "classification": "IMPLEMENTATION_GAP"
+    },
+    {
+      "area": "Cross-app determinism",
+      "observed": "router creates HMAC key with randomBytes(32)",
+      "classification": "SPEC_CONFLICT_UNRESOLVED"
+    },
+    {
+      "area": "Global lifecycle",
+      "observed": "complete required state law and DEGRADED 24h enforcement not proven from inspected current sources",
+      "classification": "EVIDENCE_GAP"
+    }
+  ],
+  "failed_approaches": [
+    "GitHub-hosted exact-head workflows",
+    "Railway focused integration via temporary preDeploy"
+  ],
+  "recovery": [
+    "Use an execution provider that actually starts the target integration command.",
+    "Resolve rate-limit semantics from authoritative source before coding.",
+    "Verify or implement global lifecycle law only after exact source location is established."
+  ],
+  "prevention": "No VERIFIED/100% claim until implementation and execution evidence close every critical gap.",
+  "final_status": "BLOCKS_100_PERCENT_VERDICT"
+}
