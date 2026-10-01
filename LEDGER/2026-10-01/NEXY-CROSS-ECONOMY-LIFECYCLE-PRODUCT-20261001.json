@@ -1,0 +1,82 @@
+{
+  "trace_id": "TRACE-NEXY-ECONOMY-LIFECYCLE-PRODUCT-20261001",
+  "head": "e2ee35d8991e5c144127ca666e5d0b2018debf10",
+  "tree": "273ea026329c9736d3a8f91bb54e62fe1e0149f3",
+  "claims": [
+    {
+      "id": "L1",
+      "source": "attached spec + economy source",
+      "claim": "DEGRADED finality must remain queued while settlement may continue.",
+      "proof": "code defect repaired in eb596cac047545b3bdef825aa0fb1c0ee5ddfa51",
+      "deps": [],
+      "risk": "high",
+      "status": "CODE_FIXED",
+      "confidence": 1,
+      "freshness": "2026-10-01"
+    },
+    {
+      "id": "L2",
+      "source": "Railway exact-revision logs",
+      "claim": "Contract suite executed at exact revision e2ee35d8991e5c144127ca666e5d0b2018debf10.",
+      "proof": "105 test files / 570 tests PASS",
+      "deps": [
+        "Railway deployment 1281be41-73aa-415f-8a76-192162feac46"
+      ],
+      "risk": "medium",
+      "status": "VERIFIED",
+      "confidence": 1,
+      "freshness": "2026-10-01"
+    },
+    {
+      "id": "L3",
+      "source": "Railway logs",
+      "claim": "Focused Economy/Lifecycle/Product Expansion integration tests passed.",
+      "proof": "No preDeploy execution marker or target test output exists.",
+      "deps": [
+        "deployment 7b1793a2-42b2-44eb-8753-6697471543e3"
+      ],
+      "risk": "critical",
+      "status": "REJECTED",
+      "confidence": 1,
+      "freshness": "2026-10-01"
+    },
+    {
+      "id": "L4",
+      "source": "packages/phase-f/universe/cross-app.ts",
+      "claim": "PermissionGrant rateLimit is enforced at runtime.",
+      "proof": "rateLimit is validated and signed, but authorize/send/deliver contain no enforcement counter/window.",
+      "deps": [],
+      "risk": "high",
+      "status": "REJECTED",
+      "confidence": 1,
+      "freshness": "2026-10-01"
+    },
+    {
+      "id": "L5",
+      "source": "packages/phase-f/universe/cross-app.ts",
+      "claim": "Cross-app router is deterministic.",
+      "proof": "runtime hmacKey=randomBytes(32)",
+      "deps": [],
+      "risk": "high",
+      "status": "UNRESOLVED_CONFLICT",
+      "confidence": 1,
+      "freshness": "2026-10-01"
+    },
+    {
+      "id": "L6",
+      "source": "current inspection",
+      "claim": "Economy / Lifecycle / Product Expansion is 100% spec verified.",
+      "proof": "Critical implementation/evidence gaps remain.",
+      "deps": [
+        "L3",
+        "L4",
+        "L5"
+      ],
+      "risk": "critical",
+      "status": "REJECTED",
+      "confidence": 1,
+      "freshness": "2026-10-01"
+    }
+  ],
+  "verdict": "PARTIAL_FREEZE_UNRESOLVED_PATHS"
+}
