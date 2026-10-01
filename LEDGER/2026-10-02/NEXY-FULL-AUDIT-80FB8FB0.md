@@ -63,3 +63,12 @@ LEDGER:
   risk: AGENTS.md policy is advisory unless another provider mechanism enforces it
   status: VERIFIED_LIMITATION
   confidence: 1.0
+
+- id: L-80fb8fb0-SANDBOX-IMPORT-CORRUPTION
+  source: live GitHub current/parent file read + repo search + package.json
+  claim: current HEAD corrupts the runc integration-test import from vitest to viteหำดำst
+  proof: exact current file contains the corrupted module specifier; immediate parent contains vitest; repo search finds the corrupted token only there
+  deps: none beyond current source snapshot
+  risk: exact-head test execution will not be valid until repaired
+  status: VERIFIED_DEFECT
+  confidence: 1.0
