@@ -1,0 +1,41 @@
+{
+  "ledger_id": "LEDGER-NEXY-FIXED128-SCOPE-CORRECTION-20261001",
+  "trace_id": "TRACE-NEXY-CROSS-20261001-1537-BKK",
+  "source": [
+    "NEXY-IGNIS lines 5410-5539 Layer9 Core integer precision",
+    "NEXY-IGNIS lines 6580-6679 G15 game simulation numeric law",
+    "Git HEAD correction/evidence commits"
+  ],
+  "claims": [
+    {
+      "claim": "Core Layer9 signed-i128 overflow must FREEZE and must not saturate.",
+      "proof": [
+        "DOCX 5410-5539",
+        "de26aebb8202c1fb2e4cee69655659884a4342f9"
+      ],
+      "status": "SOURCE_AND_CODE_ALIGNED"
+    },
+    {
+      "claim": "Game G15 Q64.64 overflow saturates deterministically.",
+      "proof": [
+        "DOCX 6580-6679",
+        "packages/phase-f/game/numeric-law.ts blob 62ec68ae19ec5554c7c357d5f9cae2838d1dba01"
+      ],
+      "status": "SOURCE_AND_CODE_ALIGNED"
+    },
+    {
+      "claim": "Cross-scope contract test exists but exact-head execution has not run.",
+      "proof": [
+        "f293f8c9da2c3b0b1b5f40d59b9a311a7ed7c658",
+        "GitHub runs 36872114991 and 36872115126 steps=[]"
+      ],
+      "status": "PARTIAL_EXECUTION_BLOCKED"
+    }
+  ],
+  "risk": "Reapplying subsystem saturation to Core would violate Layer9 runtime determinism law.",
+  "verdict": "CORRECTED_WITH_EXECUTION_LIMIT",
+  "confidence": "HIGH_SOURCE_ALIGNMENT_LOW_EXECUTION_EVIDENCE",
+  "freshness": "2026-10-01 current task",
+  "version": "1.0.0",
+  "hash": "HASH_UNAVAILABLE"
+}
