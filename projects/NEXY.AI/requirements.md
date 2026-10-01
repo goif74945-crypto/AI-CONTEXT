@@ -8,6 +8,12 @@ This document consolidates requirements stated in the source project document. I
 - DOC-B is current system law; DOC-C is the current vNEXT build specification; DOC-D is current product design only where DOC-C supports it.
 - The Final Architecture is conceptual; DOC-E is deployment/runtime evidence only.
 
+## Complete system inventory authority
+
+**AI MUST READ:** `projects/NEXY.AI/requirements/COMPLETE-SYSTEM-INVENTORY.md`
+
+That file is the complete system-level inventory derived from `NEXY_FULL_PROJECT_SYSTEM_FEATURE_PERCENT_MATRIX.xlsx`. When determining which NEXY systems exist, use that inventory before guessing or inferring. It intentionally contains no percentage values. If it conflicts with a newer authoritative specification, FREEZE the conflicting conclusion and verify the newer source.
+
 ## Product identity requirements
 
 1. NEXY is a Core AI Control Hub, not merely a showcase website.
