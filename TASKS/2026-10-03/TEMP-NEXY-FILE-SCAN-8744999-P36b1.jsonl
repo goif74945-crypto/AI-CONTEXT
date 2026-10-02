@@ -136,3 +136,11 @@
 {"path":"tests/integration/runtime-integrity.spec.ts","tree_sha":"b396f94621af7333872a5ccbe72077d019e449bd","blob_sha":"b396f94621af7333872a5ccbe72077d019e449bd","read":"OK","lines":105,"chars":4287,"flags":[]}
 {"path":"tests/integration/safety-kernel-b4-hard.spec.ts","tree_sha":"fc84bccd0eca7a9d956924d36f092548af886454","blob_sha":"fc84bccd0eca7a9d956924d36f092548af886454","read":"OK","lines":155,"chars":6241,"flags":["DATE_NOW","TS_EXPECT_ERROR"]}
 {"path":"tests/integration/safety-kernel-b4.spec.ts","tree_sha":"970bf49ef9013d421452ab2dc9a8d129f6ecdf3f","blob_sha":"970bf49ef9013d421452ab2dc9a8d129f6ecdf3f","read":"OK","lines":126,"chars":5472,"flags":["DATE_NOW","TS_EXPECT_ERROR"]}
+{"index":810,"tree_sha":"034f8a92bd9d14e498b7001de1fc3ea5ff5a9252","blob_sha":"034f8a92bd9d14e498b7001de1fc3ea5ff5a9252","read":"OK"}
+{"index":811,"tree_sha":"6515a672a23c245aa7e45f95ec1a4c800ab7b395","blob_sha":"6515a672a23c245aa7e45f95ec1a4c800ab7b395","read":"OK"}
+{"index":812,"tree_sha":"42c0c6720fff5e225879ed85de598fb887b954c1","blob_sha":"42c0c6720fff5e225879ed85de598fb887b954c1","read":"OK"}
+{"index":813,"tree_sha":"804d934ca2f8530859a128959c88b8a1e67660e2","blob_sha":"804d934ca2f8530859a128959c88b8a1e67660e2","read":"OK"}
+{"index":814,"tree_sha":"174a3957d40515142d5006ea953dad65220b6cef","blob_sha":"174a3957d40515142d5006ea953dad65220b6cef","read":"OK"}
+{"index":815,"tree_sha":"e559487d1a61569a98cd211049c5cd3dc9cd6223","blob_sha":"e559487d1a61569a98cd211049c5cd3dc9cd6223","read":"OK"}
+{"index":816,"tree_sha":"c8d3ae93805dfcf88a401c8ccd23cc535a7d887a","blob_sha":"c8d3ae93805dfcf88a401c8ccd23cc535a7d887a","read":"OK"}
+{"index":817,"tree_sha":"1baa9fe9fd379045f719b17353bee84a389da10c","blob_sha":"1baa9fe9fd379045f719b17353bee84a389da10c","read":"OK"}
