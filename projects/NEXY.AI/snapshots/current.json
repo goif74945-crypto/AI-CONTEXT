@@ -1,10 +1,10 @@
 {
   "snapshot_kind": "NEXY.AI context truth snapshot",
-  "observed_at": "2026-10-02T22:50:05.299Z",
+  "observed_at": "2026-10-02T23:18:58.617Z",
   "context_repository": {
     "repository": "goif74945-crypto/AI-CONTEXT",
     "branch": "main",
-    "parent_commit": "8e1b311eca58d1a0d39d7520019361e222e18865",
+    "parent_commit": "fe55255b4f6d5ce04ab0e859cc1f44eb4f993d98",
     "write_scope": "AI-CONTEXT current-state synchronization"
   },
   "source_authority": {
@@ -42,7 +42,7 @@
   },
   "current_ci_observation": {
     "primary_run_id": 37065947069,
-    "attempt": 3,
+    "attempt": 4,
     "workflow": "NEXY CI / Deploy Gate",
     "status": "completed",
     "conclusion": "failure",
@@ -56,9 +56,9 @@
     "doc_c_static_gate": "SKIPPED",
     "evidence_attestation": "SKIPPED",
     "deploy": "SKIPPED",
-    "run_started_at": "2026-10-02T22:47:30Z",
-    "run_updated_at": "2026-10-02T22:47:34Z",
-    "blocker_probe": "RERUN_ACCEPTED_ATTEMPT_3_BLOCKER_PERSISTS"
+    "run_started_at": "2026-10-02T23:17:19Z",
+    "run_updated_at": "2026-10-02T23:17:24Z",
+    "blocker_probe": "RERUN_ACCEPTED_ATTEMPT_4_BLOCKER_PERSISTS"
   },
   "corroborating_ci_observation": {
     "runs": [
@@ -102,8 +102,8 @@
   "supersedes_snapshot_head": "a583e67da8b0374960a87d72ff6d48d728232451",
   "hash": "HASH_UNAVAILABLE",
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T055005+0700-f6953f86-a3",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T055005+0700-f6953f86-a3.md",
+    "cycle_id": "NEXY-HOURLY-20261003T061616+0700-f6953f86-a4",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T061616+0700-f6953f86-a4.md",
     "status": "BLOCKED"
   }
 }
