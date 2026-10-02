@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "trace_id": "NEXY-E54ABD31-3F9C4730-20261002",
+  "observed_at": "2026-10-02T15:00:12.355896441Z",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "tested_sha": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
+  "tested_tree": "0ad78e8f8fcdbbeb3141e483fa31e70172e2a08c",
+  "deployment_id": "3f9c4730-0681-454f-bba8-0fde2484bdfe",
+  "deployment_status": "SUCCESS",
+  "execution_nonce": "e54abd3122427dcfc27f81cc725ec0f43ff00837-full-20261002-post-rollback-receipts",
+  "image_digest": "sha256:2ebdc7710c9a1d005afb2afbf0a1b88a1b205f83b26462cbe4dc421a514b4b15",
+  "image_config_digest": "sha256:52cb4c03f0409aa97fbce3aaf17c3017a81fb696eb96e833901007374fec390d",
+  "build_evidence": {
+    "combined_suite": {
+      "files": 152,
+      "tests": 1040,
+      "status": "PASS"
+    },
+    "coverage": {
+      "api_branches": 85.39,
+      "core_branches": 91.23,
+      "law_branches": 96.83,
+      "judge_branches": 94.01
+    },
+    "doc_c_static": "PASS",
+    "module_boundary": "PASS",
+    "web_build": "PASS",
+    "build_id": "PASS",
+    "routes": [
+      "/api/dialog",
+      "/dialog"
+    ]
+  },
+  "dialog_evidence": {
+    "api_tests": {
+      "count": 10,
+      "status": "PASS"
+    },
+    "sandbox_tests": {
+      "count": 6,
+      "status": "PASS"
+    },
+    "validation_copy_tests": {
+      "count": 2,
+      "status": "PASS"
+    },
+    "authority": "PRESENTATION_ONLY",
+    "persistence": "REQUEST_ONLY",
+    "task_intent_route": "CORE_HUMAN_SAFETY_HANDOFF"
+  },
+  "rollback_evidence": {
+    "from_deployment": "55280ac3-495c-415f-bfc8-413efc26111e",
+    "rollback_deployment_id": "0f710de0-a24f-4331-b976-f0e2f871c96c",
+    "target_deployment_id": "8ec411af-170b-412f-8647-4c75e4515cf3",
+    "status": "SUCCESS",
+    "post_rollback_monitoring_alarm_count": 6
+  },
+  "doc_e": {
+    "E1": "PASS",
+    "E2": "PASS",
+    "E3": "PASS",
+    "E4": "PASS",
+    "E5": "PASS",
+    "E6": "PASS",
+    "E7": "PASS",
+    "E8": "PASS",
+    "E9": "PASS",
+    "E10": "PASS",
+    "E11": "BLOCKED_EXTERNAL",
+    "E12": "PASS",
+    "evidence_root_sha256": "81b445a9b5703dcb4215861e57e77e01bb38e226b965c67e826fe3660263b33d",
+    "attestation_sha256": "dce37ba1d5a9598d6f394431a4307a71239797f4ebaf8bc79f6d0c36d32509cf"
+  },
+  "limits": [
+    "E11 authorized external engineering/security/migration human signoff is not supplied.",
+    "AI self-approval is explicitly forbidden by the current E11 validator."
+  ]
+}

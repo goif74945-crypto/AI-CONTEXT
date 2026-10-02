@@ -1,93 +1,87 @@
 {
-  "schema_version": "2.0.0",
-  "observed_at": "2026-10-02T07:53:35Z",
+  "schema_version": "2.1.0",
+  "observed_at": "2026-10-02T15:00:12.355896441Z",
   "timestamp_source": "Railway provider deployment/log timestamps",
-  "trace_id": "NEXY-A93C7809-8EB145B3-20261002",
+  "trace_id": "NEXY-E54ABD31-3F9C4730-20261002",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "head": "a93c780972ed7464bfc5f182d54129c54d0393cc",
-  "tree": "07b19ad2e0ffb63ffdc958197d8e7d1bfd9654f9",
+  "head": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
+  "tree": "0ad78e8f8fcdbbeb3141e483fa31e70172e2a08c",
   "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "branch_state": {
-    "count": 1,
     "provider_protected": false,
     "provider_preventive_branch_enforcement": "NOT_VERIFIED"
   },
   "exact_head_execution": {
     "provider": "railway",
     "service": "nexy-validation-branch",
-    "deployment_id": "8eb145b3-54c1-49f6-b375-3cf94d7e553e",
+    "deployment_id": "3f9c4730-0681-454f-bba8-0fde2484bdfe",
     "status": "SUCCESS",
     "region": "sfo",
-    "execution_nonce": "a93c780972ed7464bfc5f182d54129c54d0393cc-full-68c1916437d44741a2f57c0d9c082b8a",
+    "execution_nonce": "e54abd3122427dcfc27f81cc725ec0f43ff00837-full-20261002-post-rollback-receipts",
     "source_identity": {
-      "tested_sha": "a93c780972ed7464bfc5f182d54129c54d0393cc",
-      "tested_tree": "07b19ad2e0ffb63ffdc958197d8e7d1bfd9654f9"
+      "tested_sha": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
+      "tested_tree": "0ad78e8f8fcdbbeb3141e483fa31e70172e2a08c"
     },
-    "image_digest": "sha256:54ba24bda47007c9cbc9eb31f510305004b784914144e3f1c01e6f7188b30fad",
-    "image_config_digest": "sha256:e03a3b9ef5f6b9884d0febad58693eb25f97452c26c78c30b13af2f87a38b7c4",
+    "image_digest": "sha256:2ebdc7710c9a1d005afb2afbf0a1b88a1b205f83b26462cbe4dc421a514b4b15",
+    "image_config_digest": "sha256:52cb4c03f0409aa97fbce3aaf17c3017a81fb696eb96e833901007374fec390d",
     "gates": {
-      "prisma_generate": "PASS",
       "rust_core_check_test": "PASS",
       "rust_daemon_check": "PASS",
       "typecheck_backend_web": "PASS",
-      "contract": {
-        "files": 106,
-        "tests": 572,
-        "status": "PASS"
-      },
-      "focused_experimental": {
-        "files": 3,
-        "tests": 45,
-        "status": "PASS"
-      },
-      "experimental": {
-        "files": 76,
-        "tests": 751,
-        "status": "PASS"
-      },
-      "integration": {
-        "files": 19,
-        "tests": 159,
-        "status": "PASS"
-      },
+      "contract": "PASS",
+      "focused_product_tests": "PASS",
+      "experimental": "PASS",
+      "integration": "PASS",
       "phase_f": "PASS",
       "six_system_static_execution": "PASS_WITH_EXTERNAL_PROOF_BOUNDARY",
-      "coverage": {
-        "files": 149,
-        "tests": 1020,
-        "status": "PASS",
-        "thresholds": {
-          "api": {
-            "lines": 93.61,
-            "statements": 92.3,
-            "functions": 97.66,
-            "branches": 85.17
-          },
-          "core": {
-            "lines": 95.73,
-            "statements": 95.93,
-            "functions": 94.44,
-            "branches": 91.23
-          },
-          "law": {
-            "lines": 100,
-            "statements": 94.87,
-            "functions": 100,
-            "branches": 96.83
-          },
-          "judge": {
-            "lines": 97.39,
-            "statements": 96.27,
-            "functions": 100,
-            "branches": 94.01
-          }
-        }
-      },
+      "coverage": "PASS",
       "doc_c_static": "PASS_NOT_RELEASE_AUTHORIZATION",
       "module_boundary": "PASS",
       "web_production_build": "PASS",
-      "build_id": "PASS"
+      "build_id": "PASS",
+      "dialog_api": "PASS",
+      "dialog_sandbox": "PASS",
+      "doc_d_validation_copy": "PASS"
+    },
+    "test_counts": {
+      "coverage_suite": {
+        "files": 152,
+        "tests": 1040
+      },
+      "dialog_api": 10,
+      "dialog_sandbox": 6,
+      "doc_d_validation_copy": 2
+    },
+    "coverage_thresholds": {
+      "api": {
+        "lines": 93.68,
+        "statements": 92.38,
+        "functions": 97.69,
+        "branches": 85.39,
+        "minimum": 85
+      },
+      "core": {
+        "lines": 95.73,
+        "statements": 95.93,
+        "functions": 94.44,
+        "branches": 91.23,
+        "minimum": 90
+      },
+      "law": {
+        "lines": 100,
+        "statements": 94.87,
+        "functions": 100,
+        "branches": 96.83,
+        "minimum": 90
+      },
+      "judge": {
+        "lines": 97.39,
+        "statements": 96.27,
+        "functions": 100,
+        "branches": 94.01,
+        "minimum": 90
+      }
     }
   },
   "doc_e": {
@@ -101,47 +95,25 @@
     "E7": "PASS",
     "E8": "PASS",
     "E9": "PASS",
-    "E10": "BLOCKED_EXTERNAL",
+    "E10": "PASS",
     "E11": "BLOCKED_EXTERNAL",
-    "E12": "BLOCKED_EXTERNAL",
+    "E12": "PASS",
     "release_authorized": false,
     "deploy_authorized": false,
     "blocking_reasons": [
-      "E10:BLOCKED_EXTERNAL",
-      "E11:BLOCKED_EXTERNAL",
-      "E12:BLOCKED_EXTERNAL"
+      "E11:BLOCKED_EXTERNAL"
     ],
-    "evidence_root_sha256": "a278d2e6b8f2b9f352f43f2973d5fe56fc8cf8ae35f736e9b18f26906ef21d97",
-    "attestation_sha256": "e23a16b0572439f71bf9bff7e0b3882304d3d36e3887a632f0abaf3866e19f1d"
+    "evidence_root_sha256": "81b445a9b5703dcb4215861e57e77e01bb38e226b965c67e826fe3660263b33d",
+    "attestation_sha256": "dce37ba1d5a9598d6f394431a4307a71239797f4ebaf8bc79f6d0c36d32509cf"
   },
-  "full_spec_convergence": {
-    "status": "PARTIAL_SOURCE_BLOCKED",
-    "normalized_requirement_denominator": 837,
-    "current_build_rows": 773,
-    "system_groups": 74,
-    "full_project_records": 935,
-    "available_source": "summary/provenance records",
-    "unavailable_required_detail": [
-      "NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.xlsx row-level workbook",
-      "NEXY_FULL_PROJECT_SYSTEM_FEATURE_PERCENT_MATRIX.xlsx 935-record row detail"
-    ],
-    "rule": "Do not claim exhaustive row-by-row convergence or MISSING_PROVEN from summary-only artifacts."
-  },
-  "external_proof": {
-    "host_operational": "BLOCKED_EXTERNAL",
-    "runtime_physical_provider_extensions": "PARTIAL",
-    "hardware": "BLOCKED_EXTERNAL",
-    "global_anchor": "BLOCKED_EXTERNAL",
-    "time_authority": "BLOCKED_EXTERNAL",
-    "public_mode": "BLOCKED_EXTERNAL",
-    "robotics_physical_provider": "BLOCKED_EXTERNAL"
-  },
-  "github_actions_rerun": {
-    "exact_head_run_id": 36922189903,
-    "six_system_run_id": 36922189722,
-    "cargo_lock_run_id": 36922189551,
-    "interpretation": "BLOCKED_PROVIDER_PREEXECUTION",
-    "executed_steps": 0
+  "rollback": {
+    "from_current_release": "55280ac3-495c-415f-bfc8-413efc26111e",
+    "action_deployment_id": "0f710de0-a24f-4331-b976-f0e2f871c96c",
+    "target_deployment_id": "8ec411af-170b-412f-8647-4c75e4515cf3",
+    "status": "SUCCESS",
+    "provider_reason": "rollback",
+    "target_commit": "e1b2aed46c24ea1386f0c5b7c1d4c5a8f63bd5c7",
+    "monitoring_alarm_classes_verified": 6
   },
   "release_status": "BLOCKED_EXTERNAL",
   "final_status": "PARTIAL",
