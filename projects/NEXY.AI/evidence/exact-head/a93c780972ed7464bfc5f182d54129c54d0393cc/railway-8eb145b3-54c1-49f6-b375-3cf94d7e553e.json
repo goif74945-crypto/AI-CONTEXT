@@ -1,0 +1,57 @@
+{
+  "kind": "NEXY_AI_CONTEXT_EXTERNAL_EXACT_HEAD_EVIDENCE",
+  "schema_version": "1.0.0",
+  "trace_id": "NEXY-A93C7809-8EB145B3-20261002",
+  "observed_at": "2026-10-02T07:53:35Z",
+  "source": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "sha": "a93c780972ed7464bfc5f182d54129c54d0393cc",
+    "tree": "07b19ad2e0ffb63ffdc958197d8e7d1bfd9654f9"
+  },
+  "execution": {
+    "provider": "railway",
+    "deployment_id": "8eb145b3-54c1-49f6-b375-3cf94d7e553e",
+    "status": "SUCCESS",
+    "execution_nonce": "a93c780972ed7464bfc5f182d54129c54d0393cc-full-68c1916437d44741a2f57c0d9c082b8a",
+    "region": "sfo",
+    "image_digest": "sha256:54ba24bda47007c9cbc9eb31f510305004b784914144e3f1c01e6f7188b30fad",
+    "image_config_digest": "sha256:e03a3b9ef5f6b9884d0febad58693eb25f97452c26c78c30b13af2f87a38b7c4"
+  },
+  "results": {
+    "rust": "PASS",
+    "typecheck": "PASS",
+    "contract": "106 files / 572 tests PASS",
+    "experimental": "76 files / 751 tests PASS",
+    "integration": "19 files / 159 tests PASS",
+    "phase_f": "PASS",
+    "six_system": "PASS_WITH_EXTERNAL_PROOF_BOUNDARY",
+    "coverage": "149 files / 1020 tests PASS; thresholds PASS",
+    "doc_c": "PASS_NOT_RELEASE_AUTHORIZATION",
+    "web_build": "PASS",
+    "build_id": "PASS"
+  },
+  "doc_e": {
+    "E1": "PASS",
+    "E2": "PASS",
+    "E3": "PASS",
+    "E4": "PASS",
+    "E5": "PASS",
+    "E6": "PASS",
+    "E7": "PASS",
+    "E8": "PASS",
+    "E9": "PASS",
+    "E10": "BLOCKED_EXTERNAL",
+    "E11": "BLOCKED_EXTERNAL",
+    "E12": "BLOCKED_EXTERNAL",
+    "evidence_root_sha256": "a278d2e6b8f2b9f352f43f2973d5fe56fc8cf8ae35f736e9b18f26906ef21d97",
+    "attestation_sha256": "e23a16b0572439f71bf9bff7e0b3882304d3d36e3887a632f0abaf3866e19f1d",
+    "release_authorized": false,
+    "deploy_authorized": false
+  },
+  "limitations": [
+    "Raw runtime evidence directory existed inside provider runtime /tmp and is represented here by provider logs plus cryptographic roots, not claimed as a repository artifact copy.",
+    "No human approval or physical/provider proof was synthesized.",
+    "No exact-current rollback execution was performed through the available Railway connector."
+  ]
+}

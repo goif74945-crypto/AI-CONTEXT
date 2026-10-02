@@ -1,22 +1,149 @@
 {
-  "schema_version": "1.0.0",
-  "observed_at": "2026-09-27",
+  "schema_version": "2.0.0",
+  "observed_at": "2026-10-02T07:53:35Z",
+  "timestamp_source": "Railway provider deployment/log timestamps",
+  "trace_id": "NEXY-A93C7809-8EB145B3-20261002",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "head": "a583e67da8b0374960a87d72ff6d48d728232451",
-  "tree": "6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2",
-  "parent": "48db6e642563c51224a9a7a9c3ff201203937a27",
-  "commit_message": "fix: fail closed on blocking auth persistence failures",
-  "commit_at": "2026-09-27T02:20:06Z",
-  "current_ci_run_id": 36288215659,
-  "current_ci_conclusion": "failure",
-  "executed_steps_observed": 0,
-  "local_tests_run": false,
-  "current_head_static_status": "PARTIAL",
-  "current_head_runtime_status": "NOT_VERIFIED",
-  "current_head_doc_e_status": "STALE_FOR_CURRENT_HEAD",
-  "release_status": "NON_DEPLOYABLE",
-  "deploy_status": "BLOCKED_PROVIDER_NOT_CONFIGURED",
-  "exact_head_rule": "Evidence from a different commit cannot satisfy a current-head release gate.",
-  "hash": "HASH_UNAVAILABLE"
+  "head": "a93c780972ed7464bfc5f182d54129c54d0393cc",
+  "tree": "07b19ad2e0ffb63ffdc958197d8e7d1bfd9654f9",
+  "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "branch_state": {
+    "count": 1,
+    "provider_protected": false,
+    "provider_preventive_branch_enforcement": "NOT_VERIFIED"
+  },
+  "exact_head_execution": {
+    "provider": "railway",
+    "service": "nexy-validation-branch",
+    "deployment_id": "8eb145b3-54c1-49f6-b375-3cf94d7e553e",
+    "status": "SUCCESS",
+    "region": "sfo",
+    "execution_nonce": "a93c780972ed7464bfc5f182d54129c54d0393cc-full-68c1916437d44741a2f57c0d9c082b8a",
+    "source_identity": {
+      "tested_sha": "a93c780972ed7464bfc5f182d54129c54d0393cc",
+      "tested_tree": "07b19ad2e0ffb63ffdc958197d8e7d1bfd9654f9"
+    },
+    "image_digest": "sha256:54ba24bda47007c9cbc9eb31f510305004b784914144e3f1c01e6f7188b30fad",
+    "image_config_digest": "sha256:e03a3b9ef5f6b9884d0febad58693eb25f97452c26c78c30b13af2f87a38b7c4",
+    "gates": {
+      "prisma_generate": "PASS",
+      "rust_core_check_test": "PASS",
+      "rust_daemon_check": "PASS",
+      "typecheck_backend_web": "PASS",
+      "contract": {
+        "files": 106,
+        "tests": 572,
+        "status": "PASS"
+      },
+      "focused_experimental": {
+        "files": 3,
+        "tests": 45,
+        "status": "PASS"
+      },
+      "experimental": {
+        "files": 76,
+        "tests": 751,
+        "status": "PASS"
+      },
+      "integration": {
+        "files": 19,
+        "tests": 159,
+        "status": "PASS"
+      },
+      "phase_f": "PASS",
+      "six_system_static_execution": "PASS_WITH_EXTERNAL_PROOF_BOUNDARY",
+      "coverage": {
+        "files": 149,
+        "tests": 1020,
+        "status": "PASS",
+        "thresholds": {
+          "api": {
+            "lines": 93.61,
+            "statements": 92.3,
+            "functions": 97.66,
+            "branches": 85.17
+          },
+          "core": {
+            "lines": 95.73,
+            "statements": 95.93,
+            "functions": 94.44,
+            "branches": 91.23
+          },
+          "law": {
+            "lines": 100,
+            "statements": 94.87,
+            "functions": 100,
+            "branches": 96.83
+          },
+          "judge": {
+            "lines": 97.39,
+            "statements": 96.27,
+            "functions": 100,
+            "branches": 94.01
+          }
+        }
+      },
+      "doc_c_static": "PASS_NOT_RELEASE_AUTHORIZATION",
+      "module_boundary": "PASS",
+      "web_production_build": "PASS",
+      "build_id": "PASS"
+    }
+  },
+  "doc_e": {
+    "campaign_status": "PASS_WITH_RELEASE_BLOCKED",
+    "E1": "PASS",
+    "E2": "PASS",
+    "E3": "PASS",
+    "E4": "PASS",
+    "E5": "PASS",
+    "E6": "PASS",
+    "E7": "PASS",
+    "E8": "PASS",
+    "E9": "PASS",
+    "E10": "BLOCKED_EXTERNAL",
+    "E11": "BLOCKED_EXTERNAL",
+    "E12": "BLOCKED_EXTERNAL",
+    "release_authorized": false,
+    "deploy_authorized": false,
+    "blocking_reasons": [
+      "E10:BLOCKED_EXTERNAL",
+      "E11:BLOCKED_EXTERNAL",
+      "E12:BLOCKED_EXTERNAL"
+    ],
+    "evidence_root_sha256": "a278d2e6b8f2b9f352f43f2973d5fe56fc8cf8ae35f736e9b18f26906ef21d97",
+    "attestation_sha256": "e23a16b0572439f71bf9bff7e0b3882304d3d36e3887a632f0abaf3866e19f1d"
+  },
+  "full_spec_convergence": {
+    "status": "PARTIAL_SOURCE_BLOCKED",
+    "normalized_requirement_denominator": 837,
+    "current_build_rows": 773,
+    "system_groups": 74,
+    "full_project_records": 935,
+    "available_source": "summary/provenance records",
+    "unavailable_required_detail": [
+      "NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.xlsx row-level workbook",
+      "NEXY_FULL_PROJECT_SYSTEM_FEATURE_PERCENT_MATRIX.xlsx 935-record row detail"
+    ],
+    "rule": "Do not claim exhaustive row-by-row convergence or MISSING_PROVEN from summary-only artifacts."
+  },
+  "external_proof": {
+    "host_operational": "BLOCKED_EXTERNAL",
+    "runtime_physical_provider_extensions": "PARTIAL",
+    "hardware": "BLOCKED_EXTERNAL",
+    "global_anchor": "BLOCKED_EXTERNAL",
+    "time_authority": "BLOCKED_EXTERNAL",
+    "public_mode": "BLOCKED_EXTERNAL",
+    "robotics_physical_provider": "BLOCKED_EXTERNAL"
+  },
+  "github_actions_rerun": {
+    "exact_head_run_id": 36922189903,
+    "six_system_run_id": 36922189722,
+    "cargo_lock_run_id": 36922189551,
+    "interpretation": "BLOCKED_PROVIDER_PREEXECUTION",
+    "executed_steps": 0
+  },
+  "release_status": "BLOCKED_EXTERNAL",
+  "final_status": "PARTIAL",
+  "hash": "HASH_UNAVAILABLE_FOR_THIS_AI_CONTEXT_RECORD"
 }

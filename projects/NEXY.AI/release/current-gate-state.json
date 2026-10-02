@@ -1,71 +1,68 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
-  "observed_at": "2026-09-30",
+  "schema_version": "2.0.0",
+  "observed_at": "2026-10-02T07:53:35Z",
+  "timestamp_source": "Railway provider deployment/log timestamps",
+  "trace_id": "NEXY-A93C7809-8EB145B3-20261002",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "d7f824ed7f4b70e5308f3b8bb6a31fbf1ad0a61e",
-    "tree": "4cf698ed37f87d68df1c30a3e55bd4bd80a36c5e",
-    "observation_mode": "CORE_KERNEL_FULL_SPEC_AUDIT_PLUS_EXACT_HEAD_EXECUTION_STATUS"
+    "head": "a93c780972ed7464bfc5f182d54129c54d0393cc",
+    "tree": "07b19ad2e0ffb63ffdc958197d8e7d1bfd9654f9"
   },
-  "status": "NON_DEPLOYABLE",
+  "status": "BLOCKED_EXTERNAL",
   "exact_head_execution": {
-    "railway": {
-      "deployment_id": "09da96e1-f989-43d4-9e5e-3001b5e36335",
-      "conclusion": "SUCCESS",
-      "scope": "source identity + TypeScript typecheck + contract tests + production web build; contract suite includes core-kernel Rust wrapper"
-    },
-    "github_actions": {
-      "doc_e_run_id": 36693582979,
-      "deploy_gate_run_id": 36693583122,
-      "conclusion": "failure",
-      "steps_executed": 0,
-      "runner_name": "",
-      "interpretation": "FAILED_BEFORE_RUNNER_STEPS; NOT CODE_TEST_FAILURE_EVIDENCE"
-    }
+    "status": "VERIFIED_FOR_SOFTWARE_EXECUTION",
+    "provider": "railway",
+    "deployment_id": "8eb145b3-54c1-49f6-b375-3cf94d7e553e",
+    "deployment_conclusion": "SUCCESS",
+    "execution_nonce": "a93c780972ed7464bfc5f182d54129c54d0393cc-full-68c1916437d44741a2f57c0d9c082b8a",
+    "source_identity_match": true,
+    "source_tree_match": true
+  },
+  "software_gates": {
+    "dependency_and_generation": "PASS",
+    "rust_core_and_daemon": "PASS",
+    "typecheck_backend_and_web": "PASS",
+    "module_boundaries": "PASS",
+    "contract_tests": "PASS",
+    "experimental_tests": "PASS",
+    "integration_tests": "PASS",
+    "phase_f": "PASS",
+    "six_system_code_static_gate": "PASS_WITH_EXTERNAL_PROOF_BOUNDARY",
+    "coverage_and_thresholds": "PASS",
+    "doc_c_static": "PASS_NOT_RELEASE_AUTHORIZATION",
+    "web_production_build": "PASS",
+    "build_id": "PASS"
   },
   "doc_e": {
-    "required_items": 12,
-    "exact_current_head_status": "NOT_VERIFIED",
-    "exact_current_head_pass_count": null,
-    "release_authorized": false,
-    "deploy_authorized": false,
-    "reason": "No complete verified E1-E12 exact-current-head attestation was established in this core-kernel audit."
-  },
-  "core_kernel": {
-    "requirements_audited": 146,
-    "counts": {
-      "PASS": 16,
-      "CONTRADICTED": 22,
-      "PARTIAL": 45,
-      "MISSING": 42,
-      "PROOF_GAP": 9,
-      "OUTSIDE_CRATE_UNPROVEN": 12
+    "statuses": {
+      "E1": "PASS",
+      "E2": "PASS",
+      "E3": "PASS",
+      "E4": "PASS",
+      "E5": "PASS",
+      "E6": "PASS",
+      "E7": "PASS",
+      "E8": "PASS",
+      "E9": "PASS",
+      "E10": "BLOCKED_EXTERNAL",
+      "E11": "BLOCKED_EXTERNAL",
+      "E12": "BLOCKED_EXTERNAL"
     },
-    "full_spec_alignment": "BLOCKED",
-    "sovereign_production_readiness": "BLOCKED"
+    "evidence_root_sha256": "a278d2e6b8f2b9f352f43f2973d5fe56fc8cf8ae35f736e9b18f26906ef21d97",
+    "attestation_sha256": "e23a16b0572439f71bf9bff7e0b3882304d3d36e3887a632f0abaf3866e19f1d",
+    "release_authorized": false,
+    "deploy_authorized": false
   },
-  "blocking_reasons": [
-    "Final Rust VNext matrix contradicts the final DOC-C event/actor/transition matrix.",
-    "Tier 5 recursion/build-time-only law is contradicted.",
-    "Release-path RNG remains in authoritative core gatekeeper.",
-    "Strict integer/no-wrap/no-saturating law is not satisfied.",
-    "Canonical crash-recovery replay is not wired end-to-end.",
-    "WAL sequence restarts at zero after process restart.",
-    "Unreadable/missing WAL or anchor can be accepted as clean start.",
-    "Binary hash failure warns and continues.",
-    "Root-of-trust uses local mutable /tmp anchors and is not TPM/HSM remote attestation.",
-    "Layer 11 storage/hardware determinism enforcement is incomplete.",
-    "L1o immutable Verified / decaying Experimental memory law is incomplete.",
-    "Cross-arch/hardware/crash hardening evidence is incomplete."
+  "blockers": [
+    "E10 authoritative provider deploy+rollback command receipt is absent for this exact campaign.",
+    "E11 authorized engineering/security/migration human signoff is absent; AI signoff is forbidden.",
+    "E12 real current rollback execution receipt with post-rollback health/smoke/monitoring proof is absent.",
+    "Critical host/hardware/global-anchor/TSA/public-mode/physical-robotics external proof is incomplete or unavailable.",
+    "The detailed 837-row and 935-record workbooks are unavailable in current Files/Library/Google Drive/repository evidence, so exhaustive row-by-row full-spec convergence remains UNKNOWN for those unobserved rows.",
+    "GitHub provider-side branch-creation prevention is not verified; branch reports protected=false."
   ],
-  "historical_metrics": {
-    "prior_head": "ba33c8fdcd0ea56729835bf06b43500ec5b21f4e",
-    "status": "HISTORICAL_ONLY_NOT_RECALCULATED",
-    "doc_c_static_percent": 99.03,
-    "doc_d_percent": 98.08,
-    "canonical_product_percent": 98.9,
-    "full_file_percent": 82.08
-  },
-  "rule": "A successful subset of exact-head execution cannot authorize release while constitutional contradictions, current-head DOC-E gaps, or unprovable recovery/root-of-trust remain."
+  "negative_claim_rule": "Unavailable evidence is UNKNOWN/BLOCKED_EXTERNAL, not MISSING_PROVEN.",
+  "verdict": "NOT_RELEASE_READY"
 }
