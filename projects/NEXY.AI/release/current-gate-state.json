@@ -1,152 +1,100 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
-  "schema_version": "2.1.0",
-  "observed_at": "2026-10-02T15:00:12.355896441Z",
-  "timestamp_source": "Railway provider deployment/log timestamps",
-  "trace_id": "NEXY-E54ABD31-3F9C4730-20261002",
+  "schema_version": "3.0.0",
+  "observed_at": "2026-10-02T22:28:21.005Z",
+  "timestamp_source": "GitHub repository, commit-status, workflow-run, job, step and artifact APIs",
+  "trace_id": "NEXY-F6953F86-GHA-37065947069-ATTEMPT2",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
-    "tree": "0ad78e8f8fcdbbeb3141e483fa31e70172e2a08c"
+    "head": "f6953f86e54b0df3ae545c44e123725f1403263a",
+    "tree": "63c3aeba2f4be22bc718123b921ab1d20ed7cdd3",
+    "commit_time": "2026-10-02T21:17:30Z",
+    "commit_message": "fix: make navigation fit mobile viewport"
   },
-  "status": "BLOCKED_EXTERNAL",
+  "status": "BLOCKED_EXECUTION",
   "exact_head_execution": {
-    "status": "VERIFIED_FOR_SOFTWARE_EXECUTION",
-    "provider": "railway",
-    "deployment_id": "3f9c4730-0681-454f-bba8-0fde2484bdfe",
-    "deployment_conclusion": "SUCCESS",
-    "execution_nonce": "e54abd3122427dcfc27f81cc725ec0f43ff00837-full-20261002-post-rollback-receipts",
-    "source_identity_match": true,
-    "source_tree_match": true,
-    "image_digest": "sha256:2ebdc7710c9a1d005afb2afbf0a1b88a1b205f83b26462cbe4dc421a514b4b15",
-    "image_config_digest": "sha256:52cb4c03f0409aa97fbce3aaf17c3017a81fb696eb96e833901007374fec390d"
+    "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
+    "provider": "github-actions",
+    "workflow": "NEXY CI / Deploy Gate",
+    "workflow_path": ".github/workflows/deploy.yml",
+    "workflow_blob_sha": "0b92d3ec8226d2631cb0e32cd3c3e05124dfc21a",
+    "run_id": 37065947069,
+    "run_attempt": 2,
+    "event": "push",
+    "run_status": "completed",
+    "run_conclusion": "failure",
+    "run_url": "https://github.com/goif74945-crypto/NEXY.AI-/actions/runs/37065947069",
+    "failed_jobs": 8,
+    "skipped_jobs": 3,
+    "failed_jobs_with_executable_steps": 0,
+    "artifacts": 0,
+    "sampled_log_download_result": "404 BlobNotFound",
+    "code_level_result": "NOT_VERIFIED"
   },
   "software_gates": {
-    "dependency_and_generation": "PASS",
-    "rust_core_and_daemon": "PASS",
-    "typecheck_backend_and_web": "PASS",
-    "module_boundaries": "PASS",
-    "contract_tests": "PASS",
-    "experimental_tests": "PASS",
-    "integration_tests": "PASS",
-    "phase_f": "PASS",
-    "six_system_code_static_gate": "PASS_WITH_EXTERNAL_PROOF_BOUNDARY",
-    "coverage_and_thresholds": "PASS",
-    "doc_c_static": "PASS_NOT_RELEASE_AUTHORIZATION",
-    "web_production_build": "PASS",
-    "build_id": "PASS",
-    "dialog_sandbox": "PASS",
-    "dialog_api": "PASS",
-    "doc_d_validation_copy": "PASS"
+    "typecheck_backend_and_web": "NOT_VERIFIED_RUNNER_PRE_STEP",
+    "contract_tests": "NOT_VERIFIED_RUNNER_PRE_STEP",
+    "integration_tests": "NOT_VERIFIED_RUNNER_PRE_STEP",
+    "full_test_suite": "NOT_VERIFIED_RUNNER_PRE_STEP",
+    "coverage_and_thresholds": "NOT_VERIFIED_RUNNER_PRE_STEP",
+    "web_production_build": "NOT_VERIFIED_RUNNER_PRE_STEP",
+    "browser_e2e": "NOT_VERIFIED_RUNNER_PRE_STEP",
+    "phase_f_experimental": "NOT_VERIFIED_RUNNER_PRE_STEP",
+    "doc_c_static": "SKIPPED_UPSTREAM_BLOCK",
+    "release_attestation": "SKIPPED_UPSTREAM_BLOCK",
+    "deploy": "SKIPPED_UPSTREAM_BLOCK"
   },
   "test_counts": {
-    "combined_coverage_suite": {
-      "files": 152,
-      "tests": 1040,
-      "status": "PASS"
-    },
-    "dialog_api": {
-      "tests": 10,
-      "status": "PASS"
-    },
-    "dialog_sandbox": {
-      "tests": 6,
-      "status": "PASS"
-    },
-    "doc_d_validation_copy": {
-      "tests": 2,
-      "status": "PASS"
-    }
+    "current_head_executed_tests": null,
+    "status": "UNKNOWN_NO_EXECUTABLE_TEST_STEP"
   },
   "coverage": {
-    "api": {
-      "lines": 93.68,
-      "statements": 92.38,
-      "functions": 97.69,
-      "branches": 85.39,
-      "threshold": 85,
-      "status": "PASS"
-    },
-    "core": {
-      "lines": 95.73,
-      "statements": 95.93,
-      "functions": 94.44,
-      "branches": 91.23,
-      "threshold": 90,
-      "status": "PASS"
-    },
-    "law": {
-      "lines": 100,
-      "statements": 94.87,
-      "functions": 100,
-      "branches": 96.83,
-      "threshold": 90,
-      "status": "PASS"
-    },
-    "judge": {
-      "lines": 97.39,
-      "statements": 96.27,
-      "functions": 100,
-      "branches": 94.01,
-      "threshold": 90,
-      "status": "PASS"
-    }
+    "current_head_measurement": null,
+    "status": "UNKNOWN_NO_EXECUTABLE_COVERAGE_STEP"
+  },
+  "combined_external_status": {
+    "classification": "CONFLICT",
+    "contexts": [
+      {
+        "context": "NEXY Validation R2 - nexy-validation",
+        "state": "success"
+      },
+      {
+        "context": "NEXY Validation R2 - nexy-validation-branch",
+        "state": "failure"
+      }
+    ]
   },
   "doc_e": {
-    "statuses": {
-      "E1": "PASS",
-      "E2": "PASS",
-      "E3": "PASS",
-      "E4": "PASS",
-      "E5": "PASS",
-      "E6": "PASS",
-      "E7": "PASS",
-      "E8": "PASS",
-      "E9": "PASS",
-      "E10": "PASS",
-      "E11": "BLOCKED_EXTERNAL",
-      "E12": "PASS"
-    },
-    "evidence_root_sha256": "81b445a9b5703dcb4215861e57e77e01bb38e226b965c67e826fe3660263b33d",
-    "attestation_sha256": "dce37ba1d5a9598d6f394431a4307a71239797f4ebaf8bc79f6d0c36d32509cf",
+    "current_head_status": "NOT_VERIFIED",
     "release_authorized": false,
     "deploy_authorized": false,
     "blocking_reasons": [
-      "E11:BLOCKED_EXTERNAL"
+      "GitHub Actions jobs ended before executable steps were recorded",
+      "No current-head runtime attestation artifact exists",
+      "External validation contexts conflict",
+      "Exhaustive 837-row spec-code-test crosswalk is not proven"
     ]
   },
-  "rollback_proof": {
-    "source_deployment": "55280ac3-495c-415f-bfc8-413efc26111e",
-    "provider_rollback_deployment": "0f710de0-a24f-4331-b976-f0e2f871c96c",
-    "rollback_target_deployment": "8ec411af-170b-412f-8647-4c75e4515cf3",
-    "rollback_status": "SUCCESS",
-    "post_rollback_campaign": {
-      "source_head": "e1b2aed46c24ea1386f0c5b7c1d4c5a8f63bd5c7",
-      "source_tree": "959d4703a5d5df8cf85a4fc8d9448b37be7a3296",
-      "E1_E10": "PASS",
-      "E11": "BLOCKED_EXTERNAL",
-      "E12": "PASS",
-      "monitoring_alarm_classes": [
-        "AUTH_ABUSE",
-        "FREEZE_INCIDENT",
-        "WORKER_DOWN",
-        "QUEUE_BACKLOG",
-        "DB_FAILURE",
-        "RELEASE_POLICY_FAILURE"
-      ]
-    }
-  },
   "branch_provider_state": {
-    "protected": false,
-    "protection_enforcement": "off",
+    "observed_branches": [
+      "NEXY.ai"
+    ],
+    "provider_protected": false,
     "preventive_branch_creation_enforcement": "NOT_VERIFIED"
   },
-  "external_or_unresolved": {
-    "e11_human_signoff": "BLOCKED_EXTERNAL",
-    "host_hardware_anchor_tsa_public_robotics": "NOT_REVALIDATED_IN_THIS_TASK",
-    "exhaustive_837_935_row_convergence": "NOT_REVALIDATED_IN_THIS_TASK"
+  "historical_evidence_boundary": {
+    "prior_target_head": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
+    "prior_target_tree": "0ad78e8f8fcdbbeb3141e483fa31e70172e2a08c",
+    "classification": "HISTORICAL_NOT_CURRENT_HEAD_PROOF"
   },
-  "negative_claim_rule": "Unavailable or not revalidated evidence is UNKNOWN/BLOCKED_EXTERNAL, never MISSING_PROVEN.",
+  "external_or_unresolved": {
+    "exhaustive_837_row_convergence": "UNKNOWN",
+    "code_level_failure_root_cause": "UNKNOWN_NO_EXECUTION",
+    "runner_account_or_billing_root_cause": "NOT_PROVEN_BY_AVAILABLE_API",
+    "release_and_deploy": "BLOCKED"
+  },
+  "negative_claim_rule": "No absence or pre-step workflow failure may be promoted to a code defect or MISSING implementation claim.",
   "verdict": "NOT_RELEASE_READY"
 }

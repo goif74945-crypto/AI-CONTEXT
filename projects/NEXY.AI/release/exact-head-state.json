@@ -1,121 +1,162 @@
 {
-  "schema_version": "2.1.0",
-  "observed_at": "2026-10-02T15:00:12.355896441Z",
-  "timestamp_source": "Railway provider deployment/log timestamps",
-  "trace_id": "NEXY-E54ABD31-3F9C4730-20261002",
+  "schema_version": "3.0.0",
+  "observed_at": "2026-10-02T22:28:21.005Z",
+  "timestamp_source": "GitHub APIs",
+  "trace_id": "NEXY-F6953F86-GHA-37065947069-ATTEMPT2",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "head": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
-  "tree": "0ad78e8f8fcdbbeb3141e483fa31e70172e2a08c",
+  "head": "f6953f86e54b0df3ae545c44e123725f1403263a",
+  "tree": "63c3aeba2f4be22bc718123b921ab1d20ed7cdd3",
+  "commit_time": "2026-10-02T21:17:30Z",
+  "commit_message": "fix: make navigation fit mobile viewport",
   "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+  "normalized_requirement_rows": 837,
   "branch_state": {
+    "observed_branches": [
+      "NEXY.ai"
+    ],
     "provider_protected": false,
     "provider_preventive_branch_enforcement": "NOT_VERIFIED"
   },
   "exact_head_execution": {
-    "provider": "railway",
-    "service": "nexy-validation-branch",
-    "deployment_id": "3f9c4730-0681-454f-bba8-0fde2484bdfe",
-    "status": "SUCCESS",
-    "region": "sfo",
-    "execution_nonce": "e54abd3122427dcfc27f81cc725ec0f43ff00837-full-20261002-post-rollback-receipts",
-    "source_identity": {
-      "tested_sha": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
-      "tested_tree": "0ad78e8f8fcdbbeb3141e483fa31e70172e2a08c"
+    "provider": "github-actions",
+    "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
+    "primary_run": {
+      "id": 37065947069,
+      "attempt": 2,
+      "workflow": "NEXY CI / Deploy Gate",
+      "workflow_path": ".github/workflows/deploy.yml",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "name": "TypeScript typecheck",
+          "id": 111053137145,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Contract tests",
+          "id": 111053138460,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Browser E2E",
+          "id": 111053138811,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Phase-F experimental validation (advisory)",
+          "id": 111053138978,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Integration tests",
+          "id": 111053139027,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Full test suite",
+          "id": 111053139174,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "DOC-C §20 static gate",
+          "id": 111053140298,
+          "conclusion": "skipped",
+          "steps_observed": 0
+        },
+        {
+          "name": "Evidence / release attestation",
+          "id": 111053154854,
+          "conclusion": "skipped",
+          "steps_observed": 0
+        },
+        {
+          "name": "Deploy",
+          "id": 111053155346,
+          "conclusion": "skipped",
+          "steps_observed": 0
+        },
+        {
+          "name": "Coverage measurement",
+          "id": 111053172624,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Production web build",
+          "id": 111053181344,
+          "conclusion": "failure",
+          "steps_observed": 0
+        }
+      ],
+      "artifacts": 0
     },
-    "image_digest": "sha256:2ebdc7710c9a1d005afb2afbf0a1b88a1b205f83b26462cbe4dc421a514b4b15",
-    "image_config_digest": "sha256:52cb4c03f0409aa97fbce3aaf17c3017a81fb696eb96e833901007374fec390d",
-    "gates": {
-      "rust_core_check_test": "PASS",
-      "rust_daemon_check": "PASS",
-      "typecheck_backend_web": "PASS",
-      "contract": "PASS",
-      "focused_product_tests": "PASS",
-      "experimental": "PASS",
-      "integration": "PASS",
-      "phase_f": "PASS",
-      "six_system_static_execution": "PASS_WITH_EXTERNAL_PROOF_BOUNDARY",
-      "coverage": "PASS",
-      "doc_c_static": "PASS_NOT_RELEASE_AUTHORIZATION",
-      "module_boundary": "PASS",
-      "web_production_build": "PASS",
-      "build_id": "PASS",
-      "dialog_api": "PASS",
-      "dialog_sandbox": "PASS",
-      "doc_d_validation_copy": "PASS"
-    },
-    "test_counts": {
-      "coverage_suite": {
-        "files": 152,
-        "tests": 1040
+    "corroborating_runs": [
+      {
+        "id": 37065946999,
+        "workflow": "Six-system exact HEAD evidence",
+        "job_id": 111033642356,
+        "conclusion": "failure",
+        "steps_observed": 0
       },
-      "dialog_api": 10,
-      "dialog_sandbox": 6,
-      "doc_d_validation_copy": 2
-    },
-    "coverage_thresholds": {
-      "api": {
-        "lines": 93.68,
-        "statements": 92.38,
-        "functions": 97.69,
-        "branches": 85.39,
-        "minimum": 85
+      {
+        "id": 37065946990,
+        "workflow": "Layer8 Cargo lock evidence",
+        "job_id": 111033642352,
+        "conclusion": "failure",
+        "steps_observed": 0
       },
-      "core": {
-        "lines": 95.73,
-        "statements": 95.93,
-        "functions": 94.44,
-        "branches": 91.23,
-        "minimum": 90
-      },
-      "law": {
-        "lines": 100,
-        "statements": 94.87,
-        "functions": 100,
-        "branches": 96.83,
-        "minimum": 90
-      },
-      "judge": {
-        "lines": 97.39,
-        "statements": 96.27,
-        "functions": 100,
-        "branches": 94.01,
-        "minimum": 90
+      {
+        "id": 37065946971,
+        "workflow": "Exact HEAD test evidence",
+        "job_id": 111033642311,
+        "conclusion": "failure",
+        "steps_observed": 0
       }
-    }
+    ],
+    "code_level_result": "NOT_VERIFIED",
+    "local_execution_fallback": "BLOCKED_AUTHENTICATED_CLONE_UNAVAILABLE"
+  },
+  "current_head_code_delta": {
+    "changed_paths": [
+      "apps/web/components/NavBar.tsx"
+    ],
+    "nav_bar_blob_sha": "a590d1aaffd9afe12f58a3a04b57abf86194247c",
+    "classification": "SOURCE_PRESENT_EXECUTION_NOT_VERIFIED"
+  },
+  "software_gates": {
+    "typecheck": "NOT_VERIFIED",
+    "contract": "NOT_VERIFIED",
+    "integration": "NOT_VERIFIED",
+    "full_suite": "NOT_VERIFIED",
+    "coverage": "NOT_VERIFIED",
+    "web_build": "NOT_VERIFIED",
+    "browser_e2e": "NOT_VERIFIED",
+    "doc_c": "NOT_VERIFIED",
+    "release_attestation": "NOT_VERIFIED",
+    "deploy": "BLOCKED"
   },
   "doc_e": {
-    "campaign_status": "PASS_WITH_RELEASE_BLOCKED",
-    "E1": "PASS",
-    "E2": "PASS",
-    "E3": "PASS",
-    "E4": "PASS",
-    "E5": "PASS",
-    "E6": "PASS",
-    "E7": "PASS",
-    "E8": "PASS",
-    "E9": "PASS",
-    "E10": "PASS",
-    "E11": "BLOCKED_EXTERNAL",
-    "E12": "PASS",
+    "campaign_status": "NOT_EXECUTED_FOR_CURRENT_HEAD",
     "release_authorized": false,
     "deploy_authorized": false,
     "blocking_reasons": [
-      "E11:BLOCKED_EXTERNAL"
-    ],
-    "evidence_root_sha256": "81b445a9b5703dcb4215861e57e77e01bb38e226b965c67e826fe3660263b33d",
-    "attestation_sha256": "dce37ba1d5a9598d6f394431a4307a71239797f4ebaf8bc79f6d0c36d32509cf"
+      "No executable current-head validation step was recorded",
+      "No current-head attestation artifact was produced"
+    ]
   },
-  "rollback": {
-    "from_current_release": "55280ac3-495c-415f-bfc8-413efc26111e",
-    "action_deployment_id": "0f710de0-a24f-4331-b976-f0e2f871c96c",
-    "target_deployment_id": "8ec411af-170b-412f-8647-4c75e4515cf3",
-    "status": "SUCCESS",
-    "provider_reason": "rollback",
-    "target_commit": "e1b2aed46c24ea1386f0c5b7c1d4c5a8f63bd5c7",
-    "monitoring_alarm_classes_verified": 6
+  "historical_exact_head_state": {
+    "head": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
+    "classification": "SUPERSEDED_HISTORICAL"
   },
-  "release_status": "BLOCKED_EXTERNAL",
+  "release_status": "BLOCKED",
   "final_status": "PARTIAL",
   "hash": "HASH_UNAVAILABLE_FOR_THIS_AI_CONTEXT_RECORD"
 }

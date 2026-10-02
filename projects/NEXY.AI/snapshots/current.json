@@ -1,101 +1,101 @@
 {
   "snapshot_kind": "NEXY.AI context truth snapshot",
-  "observed_at": "2026-09-27",
+  "observed_at": "2026-10-02T22:28:21.005Z",
   "context_repository": {
     "repository": "goif74945-crypto/AI-CONTEXT",
     "branch": "main",
-    "write_scope": "AI-CONTEXT only"
+    "parent_commit": "89794a6e750e57c5f862d0589f45d4184c5e0149",
+    "write_scope": "AI-CONTEXT current-state synchronization"
   },
   "source_authority": {
     "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
     "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+    "normalized_rows": 837,
     "current_build_spec": "DOC-C",
     "product_design": "DOC-D where supported by DOC-C",
-    "conceptual_architecture": "Final Architecture",
     "proof_source": "DOC-E",
     "rule": "Design, implementation, runtime and deployment evidence are separate truth domains."
   },
   "live_implementation_observation": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "a583e67da8b0374960a87d72ff6d48d728232451",
-    "tree": "6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2",
-    "parent": "48db6e642563c51224a9a7a9c3ff201203937a27",
-    "commit_message": "fix: fail closed on blocking auth persistence failures",
-    "commit_at": "2026-09-27T02:20:06Z",
-    "observation_mode": "READ_ONLY_CODE_AND_CI_INSPECTION",
-    "status": "PARTIAL_SOURCE_ALIGNMENT_CI_VALIDATION_BLOCKED_RELEASE_NON_DEPLOYABLE",
-    "local_tests_run": false
+    "head": "f6953f86e54b0df3ae545c44e123725f1403263a",
+    "tree": "63c3aeba2f4be22bc718123b921ab1d20ed7cdd3",
+    "commit_time": "2026-10-02T21:17:30Z",
+    "commit_message": "fix: make navigation fit mobile viewport",
+    "branches_observed": [
+      "NEXY.ai"
+    ],
+    "observation_mode": "READ_ONLY_GITHUB_CODE_AND_CI_INSPECTION",
+    "status": "PARTIAL_BLOCKED_CURRENT_HEAD_EXECUTION_NOT_VERIFIED",
+    "implementation_files_changed_by_this_cycle": false
   },
-  "repository_delta_against_previous_static_audit": {
-    "reference_tree": "42378126aed29a668f9f294a9100c62a66ff3753",
-    "current_tree": "6205f4f21f4607e8eee0ce0eb2a9f2731ac8a9b2",
-    "current_entries": 786,
-    "current_blobs": 613,
-    "added_paths": 0,
-    "deleted_paths": 0,
-    "changed_blob_paths": 8,
-    "unchanged_blob_paths": 605,
+  "current_head_delta": {
+    "parent": "f94eb1f0cc04f5003abc7e1d8663aa40d940ca66",
     "changed_paths": [
-      ".github/workflows/deploy.yml",
-      "README.md",
-      "packages/api/auth.ts",
-      "scripts/evidence-attestation.ts",
-      "tests/contract/auth-security-incident.test.ts",
-      "tests/contract/release-attestation.test.ts",
-      "tests/contract/state-matrix.test.ts",
-      "tests/integration/auth/logout.spec.ts"
-    ]
+      "apps/web/components/NavBar.tsx"
+    ],
+    "changed_blob_sha": "a590d1aaffd9afe12f58a3a04b57abf86194247c",
+    "semantic_summary": "responsive navigation layout classes changed",
+    "execution_status": "NOT_VERIFIED"
   },
   "current_ci_observation": {
+    "primary_run_id": 37065947069,
+    "attempt": 2,
     "workflow": "NEXY CI / Deploy Gate",
-    "run_id": 36288215659,
-    "head_sha": "a583e67da8b0374960a87d72ff6d48d728232451",
     "status": "completed",
     "conclusion": "failure",
+    "failed_jobs": 8,
+    "skipped_jobs": 3,
     "executed_steps_observed": 0,
+    "artifacts_observed": 0,
+    "sampled_job_logs": "404 BlobNotFound",
     "code_level_result": "NOT_VERIFIED",
-    "validation_path": "BLOCKED",
+    "validation_path": "BLOCKED_PRE_STEP",
     "doc_c_static_gate": "SKIPPED",
     "evidence_attestation": "SKIPPED",
-    "deploy": "SKIPPED",
-    "deploy_provider": "NOT_CONFIGURED"
+    "deploy": "SKIPPED"
   },
-  "static_code_observation": {
-    "auth_persistence": "IMPROVED_FAIL_CLOSED_BUT_NOT_RUNTIME_VERIFIED",
-    "phase_f_release_dependency": "RESOLVED_AS_ADVISORY_IN_CURRENT_WORKFLOW",
-    "evidence_attestation_source_checks": "PRESENT_NOT_EXECUTED",
-    "dependency_boundary": "BLOCKED",
-    "rollback_completeness": "BLOCKED",
-    "product_fsm": "PARTIAL",
-    "rust_vnext_parity_and_wiring": "BLOCKED",
-    "release_law_binding": "PARTIAL",
-    "swarm_malformed_provider_path": "BLOCKED",
-    "api_ui_schema_state_truth": "BLOCKED"
+  "corroborating_ci_observation": {
+    "runs": [
+      37065946999,
+      37065946990,
+      37065946971
+    ],
+    "failed_jobs": 3,
+    "executed_steps_observed": 0,
+    "classification": "BLOCKED_PRE_STEP"
+  },
+  "combined_external_status": {
+    "classification": "CONFLICT",
+    "success_contexts": [
+      "NEXY Validation R2 - nexy-validation"
+    ],
+    "failure_contexts": [
+      "NEXY Validation R2 - nexy-validation-branch"
+    ]
   },
   "evidence_freshness": {
     "current_head_doc_e_required": 12,
-    "current_head_doc_e_match": 0,
-    "current_head_doc_e_pass": 0,
-    "historical_records_are_not_current_proof": true,
+    "current_head_doc_e_verified_pass": null,
     "runtime_current_head_proof": false,
-    "security_signoff": false
+    "release_attestation_artifact": false,
+    "historical_records_are_not_current_proof": true
   },
   "release_truth": {
     "status": "NON_DEPLOYABLE",
     "authorization": "BLOCKED",
     "runtime": "NOT_VERIFIED",
-    "rule": "Do not release from source prose, stale matrices, file presence or a CI run with zero observed steps."
+    "rule": "Do not release from source presence, stale evidence or a CI workflow with zero recorded executable steps."
   },
   "open_findings": [
-    "Four forbidden core imports remain outside the allowed dependency boundary.",
-    "Six Prisma migration directories lack migration.down.sql.",
-    "TypeScript and Rust product-level state matrices are not parity-equivalent or proven as one wired authority.",
-    "Release/Law evaluation is not proven to bind global state, evidence integrity and authorization end-to-end.",
-    "Malformed swarm-provider fallback still needs a fail-closed semantic repair/revalidation.",
-    "Canonical API envelopes, central API error containment, UI FREEZE gates and Prisma state vocabulary still drift from the current vNEXT contract.",
-    "Current CI run failed with zero observed steps; tests/build/runtime remain NOT_VERIFIED.",
-    "Historical DOC-E records match 0/12 to current HEAD."
+    "Restore an executable CI runner path and obtain step logs for the exact current HEAD.",
+    "Run typecheck, tests, coverage, production build, browser E2E and DOC-C gate for the exact current HEAD.",
+    "Complete the exhaustive 837-row spec-code-test crosswalk before claiming full compliance.",
+    "Resolve conflicting external validation contexts.",
+    "Generate exact-head DOC-E/release evidence only after executable gates pass."
   ],
+  "supersedes_snapshot_head": "a583e67da8b0374960a87d72ff6d48d728232451",
   "hash": "HASH_UNAVAILABLE"
 }
