@@ -1,0 +1,10 @@
+{"path":"tests/contract/doc-e-test-evidence-runner.test.ts","tree_sha":"1f9ac822a4bafe7d21b57c1aba2f4682f5bdead0","blob_sha":"1f9ac822a4bafe7d21b57c1aba2f4682f5bdead0","read":"OK","lines":97,"chars":3286,"flags":["NEW_DATE"]}
+{"path":"tests/contract/doc-e-validation-dockerfile.test.ts","tree_sha":"83bb653be06c8986281f489ef59a8ffa4577306e","blob_sha":"83bb653be06c8986281f489ef59a8ffa4577306e","read":"OK","lines":56,"chars":2236,"flags":[]}
+{"path":"tests/contract/doc-e-verifier.test.ts","tree_sha":"ca4bf106af9b94e6e604de66887a58edc756a42f","blob_sha":"ca4bf106af9b94e6e604de66887a58edc756a42f","read":"OK","lines":182,"chars":5889,"flags":[]}
+{"path":"tests/contract/envelope.test.ts","tree_sha":"c8caec95b430dfdd454691bdf68378f422c48785","blob_sha":"c8caec95b430dfdd454691bdf68378f422c48785","read":"OK","lines":65,"chars":2436,"flags":["NEW_DATE"]}
+{"path":"tests/contract/error-codes.test.ts","tree_sha":"1a433e7a3e6e1825bcaaabf3e2c4aa5be66b3670","blob_sha":"1a433e7a3e6e1825bcaaabf3e2c4aa5be66b3670","read":"OK","lines":28,"chars":1174,"flags":[]}
+{"path":"tests/contract/evidence-contract.test.ts","tree_sha":"cec54eb83c10cee917c13ed62a303459d3eb5def","blob_sha":"cec54eb83c10cee917c13ed62a303459d3eb5def","read":"OK","lines":75,"chars":2724,"flags":[]}
+{"path":"tests/contract/failed-dispatch-retry.test.ts","tree_sha":"e555aa85cc90dc80d4b8670317f39c90ba15715d","blob_sha":"e555aa85cc90dc80d4b8670317f39c90ba15715d","read":"OK","lines":51,"chars":1676,"flags":[]}
+{"path":"tests/contract/fatal-state-law.test.ts","tree_sha":"04a1b683e84b66b99d960247f99bc82e47b3f7cc","blob_sha":"04a1b683e84b66b99d960247f99bc82e47b3f7cc","read":"OK","lines":21,"chars":1120,"flags":[]}
+{"path":"tests/contract/fixed128-overflow-scope-law.test.ts","tree_sha":"83ff7cbe53988c4fb49f2ff2f251928955cf1abb","blob_sha":"83ff7cbe53988c4fb49f2ff2f251928955cf1abb","read":"OK","lines":46,"chars":1448,"flags":[]}
+{"path":"tests/contract/freeze-only-via-builder.spec.ts","tree_sha":"c81599aea770cb48173b054c83bb9ffc03b2018f","blob_sha":"c81599aea770cb48173b054c83bb9ffc03b2018f","read":"OK","lines":48,"chars":1616,"flags":[]}
