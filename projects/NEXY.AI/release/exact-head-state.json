@@ -1,8 +1,8 @@
 {
   "schema_version": "3.0.0",
-  "observed_at": "2026-10-02T22:28:21.005Z",
+  "observed_at": "2026-10-02T22:50:05.299Z",
   "timestamp_source": "GitHub APIs",
-  "trace_id": "NEXY-F6953F86-GHA-37065947069-ATTEMPT2",
+  "trace_id": "NEXY-F6953F86-GHA-37065947069-ATTEMPT3",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
   "head": "f6953f86e54b0df3ae545c44e123725f1403263a",
@@ -24,75 +24,75 @@
     "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
     "primary_run": {
       "id": 37065947069,
-      "attempt": 2,
+      "attempt": 3,
       "workflow": "NEXY CI / Deploy Gate",
       "workflow_path": ".github/workflows/deploy.yml",
       "conclusion": "failure",
       "jobs": [
         {
           "name": "TypeScript typecheck",
-          "id": 111053137145,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "Contract tests",
-          "id": 111053138460,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "Browser E2E",
-          "id": 111053138811,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "Phase-F experimental validation (advisory)",
-          "id": 111053138978,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "Integration tests",
-          "id": 111053139027,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "Full test suite",
-          "id": 111053139174,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "DOC-C §20 static gate",
-          "id": 111053140298,
-          "conclusion": "skipped",
-          "steps_observed": 0
-        },
-        {
-          "name": "Evidence / release attestation",
-          "id": 111053154854,
-          "conclusion": "skipped",
-          "steps_observed": 0
-        },
-        {
-          "name": "Deploy",
-          "id": 111053155346,
-          "conclusion": "skipped",
-          "steps_observed": 0
-        },
-        {
-          "name": "Coverage measurement",
-          "id": 111053172624,
+          "id": 111060782716,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
           "name": "Production web build",
-          "id": 111053181344,
+          "id": 111060783817,
           "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Full test suite",
+          "id": 111060783905,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Contract tests",
+          "id": 111060783948,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Browser E2E",
+          "id": 111060784020,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Integration tests",
+          "id": 111060784059,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Coverage measurement",
+          "id": 111060784364,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "DOC-C §20 static gate",
+          "id": 111060784729,
+          "conclusion": "skipped",
+          "steps_observed": 0
+        },
+        {
+          "name": "Phase-F experimental validation (advisory)",
+          "id": 111060785903,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Evidence / release attestation",
+          "id": 111060795653,
+          "conclusion": "skipped",
+          "steps_observed": 0
+        },
+        {
+          "name": "Deploy",
+          "id": 111060795726,
+          "conclusion": "skipped",
           "steps_observed": 0
         }
       ],
@@ -122,7 +122,19 @@
       }
     ],
     "code_level_result": "NOT_VERIFIED",
-    "local_execution_fallback": "BLOCKED_AUTHENTICATED_CLONE_UNAVAILABLE"
+    "local_execution_fallback": "BLOCKED_AUTHENTICATED_CLONE_UNAVAILABLE",
+    "latest_probe": {
+      "requested_job_id": 111053137145,
+      "rerun_api_accepted": true,
+      "attempt": 3,
+      "started_at": "2026-10-02T22:47:30Z",
+      "updated_at": "2026-10-02T22:47:34Z",
+      "duration_seconds": 4,
+      "typecheck_job_id": 111060782716,
+      "typecheck_steps_observed": 0,
+      "typecheck_log_result": "404 BlobNotFound",
+      "blocker_cleared": false
+    }
   },
   "current_head_code_delta": {
     "changed_paths": [
@@ -158,5 +170,10 @@
   },
   "release_status": "BLOCKED",
   "final_status": "PARTIAL",
-  "hash": "HASH_UNAVAILABLE_FOR_THIS_AI_CONTEXT_RECORD"
+  "hash": "HASH_UNAVAILABLE_FOR_THIS_AI_CONTEXT_RECORD",
+  "latest_cycle": {
+    "cycle_id": "NEXY-HOURLY-20261003T055005+0700-f6953f86-a3",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T055005+0700-f6953f86-a3.md",
+    "status": "BLOCKED"
+  }
 }

@@ -1,10 +1,10 @@
 {
   "snapshot_kind": "NEXY.AI context truth snapshot",
-  "observed_at": "2026-10-02T22:28:21.005Z",
+  "observed_at": "2026-10-02T22:50:05.299Z",
   "context_repository": {
     "repository": "goif74945-crypto/AI-CONTEXT",
     "branch": "main",
-    "parent_commit": "89794a6e750e57c5f862d0589f45d4184c5e0149",
+    "parent_commit": "8e1b311eca58d1a0d39d7520019361e222e18865",
     "write_scope": "AI-CONTEXT current-state synchronization"
   },
   "source_authority": {
@@ -42,7 +42,7 @@
   },
   "current_ci_observation": {
     "primary_run_id": 37065947069,
-    "attempt": 2,
+    "attempt": 3,
     "workflow": "NEXY CI / Deploy Gate",
     "status": "completed",
     "conclusion": "failure",
@@ -55,7 +55,10 @@
     "validation_path": "BLOCKED_PRE_STEP",
     "doc_c_static_gate": "SKIPPED",
     "evidence_attestation": "SKIPPED",
-    "deploy": "SKIPPED"
+    "deploy": "SKIPPED",
+    "run_started_at": "2026-10-02T22:47:30Z",
+    "run_updated_at": "2026-10-02T22:47:34Z",
+    "blocker_probe": "RERUN_ACCEPTED_ATTEMPT_3_BLOCKER_PERSISTS"
   },
   "corroborating_ci_observation": {
     "runs": [
@@ -97,5 +100,10 @@
     "Generate exact-head DOC-E/release evidence only after executable gates pass."
   ],
   "supersedes_snapshot_head": "a583e67da8b0374960a87d72ff6d48d728232451",
-  "hash": "HASH_UNAVAILABLE"
+  "hash": "HASH_UNAVAILABLE",
+  "latest_cycle": {
+    "cycle_id": "NEXY-HOURLY-20261003T055005+0700-f6953f86-a3",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T055005+0700-f6953f86-a3.md",
+    "status": "BLOCKED"
+  }
 }

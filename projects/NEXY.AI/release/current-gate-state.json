@@ -1,9 +1,9 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
   "schema_version": "3.0.0",
-  "observed_at": "2026-10-02T22:28:21.005Z",
+  "observed_at": "2026-10-02T22:50:05.299Z",
   "timestamp_source": "GitHub repository, commit-status, workflow-run, job, step and artifact APIs",
-  "trace_id": "NEXY-F6953F86-GHA-37065947069-ATTEMPT2",
+  "trace_id": "NEXY-F6953F86-GHA-37065947069-ATTEMPT3",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
@@ -20,7 +20,7 @@
     "workflow_path": ".github/workflows/deploy.yml",
     "workflow_blob_sha": "0b92d3ec8226d2631cb0e32cd3c3e05124dfc21a",
     "run_id": 37065947069,
-    "run_attempt": 2,
+    "run_attempt": 3,
     "event": "push",
     "run_status": "completed",
     "run_conclusion": "failure",
@@ -30,7 +30,19 @@
     "failed_jobs_with_executable_steps": 0,
     "artifacts": 0,
     "sampled_log_download_result": "404 BlobNotFound",
-    "code_level_result": "NOT_VERIFIED"
+    "code_level_result": "NOT_VERIFIED",
+    "run_started_at": "2026-10-02T22:47:30Z",
+    "run_updated_at": "2026-10-02T22:47:34Z",
+    "blocker_probe": {
+      "requested_job_id": 111053137145,
+      "rerun_api_accepted": true,
+      "fresh_attempt": 3,
+      "fresh_typecheck_job_id": 111060782716,
+      "fresh_typecheck_conclusion": "failure",
+      "fresh_typecheck_steps_observed": 0,
+      "fresh_typecheck_log_result": "404 BlobNotFound",
+      "blocker_cleared": false
+    }
   },
   "software_gates": {
     "typecheck_backend_and_web": "NOT_VERIFIED_RUNNER_PRE_STEP",
@@ -96,5 +108,10 @@
     "release_and_deploy": "BLOCKED"
   },
   "negative_claim_rule": "No absence or pre-step workflow failure may be promoted to a code defect or MISSING implementation claim.",
-  "verdict": "NOT_RELEASE_READY"
+  "verdict": "NOT_RELEASE_READY",
+  "latest_cycle": {
+    "cycle_id": "NEXY-HOURLY-20261003T055005+0700-f6953f86-a3",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T055005+0700-f6953f86-a3.md",
+    "status": "BLOCKED"
+  }
 }

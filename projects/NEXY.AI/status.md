@@ -1,27 +1,26 @@
 # NEXY.AI — Current Context Status
 
 <!-- HOURLY_CYCLE_LATEST:START -->
-## Latest verified hourly-cycle overlay — 2026-10-03 05:17 ICT
+## Latest verified hourly-cycle overlay — 2026-10-03 05:50 ICT
 
-This overlay supersedes older current-looking HEAD statements below. Older sections remain historical evidence and must not be read as the latest snapshot.
+This overlay supersedes older current-looking HEAD statements below. Older sections remain historical evidence.
 
 - implementation repository: `goif74945-crypto/NEXY.AI-`
 - canonical/default branch: `NEXY.ai`
-- exact HEAD: `f6953f86e54b0df3ae545c44e123725f1403263a`
-- exact tree: `63c3aeba2f4be22bc718123b921ab1d20ed7cdd3`
-- HEAD commit time: `2026-10-02T21:17:30Z`
+- exact HEAD/tree: `f6953f86e54b0df3ae545c44e123725f1403263a` / `63c3aeba2f4be22bc718123b921ab1d20ed7cdd3`
 - branch inventory: only `NEXY.ai` was returned
-- project status: `PARTIAL / BLOCKED`
-- code mutation in this cycle: none
-- reason: GitHub Actions attempt 2 failed before recording any executable job step; job logs returned `404 BlobNotFound`, so no code root cause was proven
-- current gate truth: typecheck/tests/coverage/build/browser/DOC-C/release/deploy are `NOT_VERIFIED` or `BLOCKED`, not PASS
-- combined external status remains conflicting: one success and one failure context
-- release/deploy authorization: `BLOCKED`
+- fresh blocker probe: GitHub Actions run `37065947069`, attempt `3`
+- attempt-3 result: 8 failed jobs, 3 skipped jobs, 0 recorded executable steps, 0 artifacts
+- TypeScript attempt-3 job: `111060782716`; log retrieval: `404 BlobNotFound`
+- blocker state: `BLOCKED_BEFORE_EXECUTABLE_STEPS` (still active)
+- code mutation in this cycle: none; no code-level root cause was proven
+- typecheck/tests/coverage/build/browser/DOC-C/release/deploy: `NOT_VERIFIED` or `BLOCKED`
+- combined external status: `CONFLICT` (one success context, one failure context)
 - exhaustive 837-row implementation status: `UNKNOWN`
-- cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T051755+0700-f6953f86.md`
-- GitHub Actions run: `37065947069`, rerun attempt `2`
+- release/deploy authorization: `BLOCKED`
+- cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T055005+0700-f6953f86-a3.md`
 
-The prior `f94eb1f0...` audit snapshot below is historical relative to this overlay.
+The prior attempt-2 overlay is historical relative to this record.
 <!-- HOURLY_CYCLE_LATEST:END -->
 
 ## Status
