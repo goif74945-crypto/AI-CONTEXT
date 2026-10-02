@@ -8,3 +8,11 @@
 {"path":"tests/contract/fatal-state-law.test.ts","tree_sha":"04a1b683e84b66b99d960247f99bc82e47b3f7cc","blob_sha":"04a1b683e84b66b99d960247f99bc82e47b3f7cc","read":"OK","lines":21,"chars":1120,"flags":[]}
 {"path":"tests/contract/fixed128-overflow-scope-law.test.ts","tree_sha":"83ff7cbe53988c4fb49f2ff2f251928955cf1abb","blob_sha":"83ff7cbe53988c4fb49f2ff2f251928955cf1abb","read":"OK","lines":46,"chars":1448,"flags":[]}
 {"path":"tests/contract/freeze-only-via-builder.spec.ts","tree_sha":"c81599aea770cb48173b054c83bb9ffc03b2018f","blob_sha":"c81599aea770cb48173b054c83bb9ffc03b2018f","read":"OK","lines":48,"chars":1616,"flags":[]}
+{"path":"tests/contract/runtime-config-judge.test.ts","tree_sha":"3eaa6362acc898e05536c3be2ef1f5326557f8fc","blob_sha":"3eaa6362acc898e05536c3be2ef1f5326557f8fc","read":"OK","lines":37,"chars":1159,"flags":[]}
+{"path":"tests/contract/runtime-config-release-atomicity.test.ts","tree_sha":"14b9ad5b8fa798bfc1fa035e7ed4a6b48da68d11","blob_sha":"14b9ad5b8fa798bfc1fa035e7ed4a6b48da68d11","read":"OK","lines":14,"chars":609,"flags":[]}
+{"path":"tests/contract/runtime-config.test.ts","tree_sha":"3999fa98ecc896e90c12a97c93eb75301d42ecdb","blob_sha":"3999fa98ecc896e90c12a97c93eb75301d42ecdb","read":"OK","lines":88,"chars":2855,"flags":[]}
+{"path":"tests/contract/sandbox-depth-buildtime-law.test.ts","tree_sha":"13c52ab19edb8def28e34217298c4452ffa4f5c5","blob_sha":"13c52ab19edb8def28e34217298c4452ffa4f5c5","read":"OK","lines":157,"chars":4445,"flags":["CHILD_PROCESS"]}
+{"path":"tests/contract/scope-boundary.test.ts","tree_sha":"ef793fbcf01e00fb06610950737309ce4cb56cdd","blob_sha":"ef793fbcf01e00fb06610950737309ce4cb56cdd","read":"OK","lines":74,"chars":3099,"flags":[]}
+{"path":"tests/contract/secrets-provider-boundary.test.ts","tree_sha":"f644da3922e252363dbba7e818d50181c6566d15","blob_sha":"f644da3922e252363dbba7e818d50181c6566d15","read":"OK","lines":66,"chars":2056,"flags":["DATE_NOW","PROCESS_ENV"]}
+{"path":"tests/contract/state-matrix.test.ts","tree_sha":"9459dbee70b75631b1d0204110116aa2e4be6239","blob_sha":"9459dbee70b75631b1d0204110116aa2e4be6239","read":"OK","lines":110,"chars":4520,"flags":[]}
+{"path":"tests/contract/storage-fk-contract.test.ts","tree_sha":"0f08c026b2fa22a7673d3094f6326125a296c5ee","blob_sha":"0f08c026b2fa22a7673d3094f6326125a296c5ee","read":"OK","lines":54,"chars":2761,"flags":[]}
