@@ -1,0 +1,91 @@
+{
+  "checkpoint_id": "NEXY-LO2-DIAGNOSTIC-030",
+  "date": "2026-10-03",
+  "source": {
+    "path": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "relevant_sections": [
+      "DOC-C Lo2 durable feedback/runtime obligations (source extraction lines 20955-21090)",
+      "DOC-C feedback loop and uncertainty propagation (source extraction lines 22473-22583)"
+    ]
+  },
+  "repository": {
+    "name": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "head_before": "895c8009b4e2ed59f009e3ad7203f0d5a963cf63",
+    "tree_before": "661f7aaa7439ed5399a97470cab32842ef2ac376",
+    "head_after": "8eba7da7869023b5086ea340cf3bc97dacda6c39",
+    "tree_after": "ab3fe52d6031a8e5245cf4e97948666d05f7d94e",
+    "head_drift": false
+  },
+  "batch": {
+    "system": "Lo2 verified learning / durable ledger anchor",
+    "requirement": "Verified-only Lo2 output must persist through USL and durable ledger anchor; stage failures must remain fail-closed, safe-coded, and attributable without raw database details.",
+    "files_changed": [
+      "packages/lo2/engine.ts",
+      "tests/contract/lo2-durable-anchor.test.ts"
+    ],
+    "change_summary": [
+      "Added bounded diagnostic codes around USL read/write, singularity, and ledger-anchor stages.",
+      "Preserved typed conflict/freeze codes and existing integration order/math.",
+      "Added static contract assertions for all bounded stage codes."
+    ]
+  },
+  "evidence": {
+    "exact_deployment_id": "3a9d4c59-21cc-4600-add6-bcd5e56988da",
+    "exact_deployment_status": "CRASHED",
+    "exact_identity": {
+      "branch": "NEXY.ai",
+      "commit": "8eba7da7869023b5086ea340cf3bc97dacda6c39",
+      "tree": "ab3fe52d6031a8e5245cf4e97948666d05f7d94e"
+    },
+    "stale_deployment_excluded": {
+      "id": "225b9126-42a7-42c1-9424-01b8e2de4e0d",
+      "reason": "source gate used previous DOC_E_TESTED_SHA/tree and previous rerun nonce"
+    },
+    "build": {
+      "status": "SUCCESS",
+      "commands": [
+        "cargo check -p core-kernel",
+        "cargo test -p core-kernel -- --nocapture",
+        "cargo check -p nexy-daemon",
+        "npm run typecheck",
+        "npm run test:contract",
+        "npm run test:experimental",
+        "npm run test:integration",
+        "npm run check:phase-f",
+        "npm run check:six-system-spec",
+        "npm run test:coverage",
+        "npm run check:coverage",
+        "npm run check:doc-c",
+        "npm run build:web",
+        "test -s apps/web/.next/BUILD_ID"
+      ],
+      "contract": "112 files / 608 tests passed",
+      "coverage": "157 files / 1074 tests passed",
+      "phase_f": "PASS",
+      "doc_c_and_boundaries": "PASS",
+      "web_build": "PASS"
+    },
+    "runtime": {
+      "browser_directive": "1 passed",
+      "browser_critical": "7 passed / 3 failed",
+      "browser_gate": "NEXY_BROWSER_E2E=FAIL code=CRITICAL_FLOWS",
+      "lo2_feedback": [
+        "pipelineRunId=01JGFJK57J7HDKVPKHBA8VMB4G status=FAILED processed=true error=LO2_USL_WRITE_FAILED",
+        "pipelineRunId=01JGFJKKQH7X5NGQVHQD2X0AB7 status=FAILED processed=true error=LO2_USL_WRITE_FAILED"
+      ],
+      "downstream_jobs": "both emitted COMPLETED status=SUCCEEDED after fail-closed Lo2 feedback persistence",
+      "audit_api": "3 reads emitted AUDIT_ROLE_ATTRIBUTION_MISSING; AUDITOR critical flow failed",
+      "infrastructure_noise": "socat TLS certificate-unknown/reset messages occurred during local HTTPS proxy; not treated as Lo2 root cause"
+    }
+  },
+  "truth_status": "PARTIAL",
+  "blockers": [
+    "Exact runtime identifies USL write stage but safe evidence does not yet identify the underlying Prisma/Postgres operation or error code.",
+    "Read-only Railway Agent diagnosis was unavailable due agent usage limit; no mutation was attempted.",
+    "Persistent Railway audit data contains unverifiable null roles; API remains fail-closed and browser audit flows are not green.",
+    "Full-project requirement denominator and percentages remain NOT_RECONSTRUCTED."
+  ],
+  "next_task": "Re-read NEXY.ai HEAD, then run one atomic diagnostic/repair batch to distinguish USL transaction, advisory-lock, read, and upsert failure; do not change audit role semantics or delete/backfill immutable history without source proof."
+}
