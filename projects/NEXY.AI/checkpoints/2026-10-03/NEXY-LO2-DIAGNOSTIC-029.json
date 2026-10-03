@@ -1,0 +1,76 @@
+{
+  "checkpoint_id": "NEXY-LO2-DIAGNOSTIC-029",
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "source": {
+    "file": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "head_before": "fcc3814be7ca1433b857cb248a298d57ac5d9999",
+  "tree_before": "48cfce034dd75aa4f1169ac708dab8b6bd5c11ec",
+  "head_after": "895c8009b4e2ed59f009e3ad7203f0d5a963cf63",
+  "tree_after": "661f7aaa7439ed5399a97470cab32842ef2ac376",
+  "commit_message": "fix(lo2): classify feedback failure stages safely",
+  "system": "Lo2 durable feedback / USL learning boundary",
+  "source_location": [
+    "DOC-C Lo2 durable feedback/runtime section, source extraction lines 20955-21090",
+    "DOC-C feedback loop / uncertainty propagation section, source extraction lines 22473-22583"
+  ],
+  "files_changed": [
+    "packages/lo2/feedback-dispatch.ts",
+    "tests/contract/lo2-feedback-dispatch.test.ts"
+  ],
+  "proven_gap_before": [
+    "The exact runtime reported processed=true with only LO2_FEEDBACK_PROCESSING_FAILED.",
+    "Learning and final success persistence shared one catch boundary, so the runtime stage was not attributable."
+  ],
+  "change": [
+    "Unknown errors from processVerifiedLo2Output are now classified as LO2_LEARNING_PROCESSING_FAILED.",
+    "Unknown errors from the final success-state persistence update are now classified as LO2_FEEDBACK_PERSISTENCE_FAILED.",
+    "Existing safe error codes remain preserved; raw messages remain excluded."
+  ],
+  "tests": {
+    "exact_head": "895c8009b4e2ed59f009e3ad7203f0d5a963cf63",
+    "exact_tree": "661f7aaa7439ed5399a97470cab32842ef2ac376",
+    "stale_deployment": {
+      "id": "9380179d-81b5-4ad7-b1b1-1876e9b329d4",
+      "status": "FAILED",
+      "reason": "Used previous DOC_E_TESTED_SHA=fcc3814... and tree=48cfce...; source identity gate failed before tests.",
+      "valid_for_current_head": false
+    },
+    "exact_deployment": {
+      "id": "890d0c07-6845-48f4-9cce-e8af09ffba3c",
+      "status": "CRASHED",
+      "source_identity": "NEXY.ai/895c8009b4e2ed59f009e3ad7203f0d5a963cf63 and tree 661f7aaa7439ed5399a97470cab32842ef2ac376",
+      "contract": "112 files / 608 tests passed",
+      "coverage": "157 files / 1073 tests passed",
+      "rust_typecheck_phase_f_six_system_doc_c_web_build": "PASS",
+      "browser_directive_smoke": "1 passed",
+      "browser_critical_flows": "7 passed, 3 failed"
+    }
+  },
+  "runtime_evidence": {
+    "browser_gate": "NEXY_BROWSER_E2E=FAIL code=CRITICAL_FLOWS tested_sha=895c8009b4e2ed59f009e3ad7203f0d5a963cf63 tested_tree=661f7aaa7439ed5399a97470cab32842ef2ac376 deployment_id=890d0c07-6845-48f4-9cce-e8af09ffba3c",
+    "lo2": "[LO2_FEEDBACK] pipelineRunId=01JGFJK5FCJQDXFZ1EKEXY8V59 status=FAILED processed=true error=LO2_LEARNING_PROCESSING_FAILED",
+    "worker": "[COMPLETED] ... pipelineRunId=01JGFJK5FCJQDXFZ1EKEXY8V59 status=SUCCEEDED",
+    "audit": "[AUDIT_API] read failure code=AUDIT_ROLE_ATTRIBUTION_MISSING"
+  },
+  "status": {
+    "targeted_batch": "PASS",
+    "exact_head_build_and_tests": "PASS",
+    "exact_head_runtime": "FAIL_WITH_BOUNDED_LEARNING_STAGE_EVIDENCE",
+    "browser_critical_flow": "FAIL",
+    "audit_api": "BLOCKED_ENVIRONMENT",
+    "lo2_substage_root_cause": "NOT_VERIFIED",
+    "project_release": "BLOCKED",
+    "full_project_percentage": "NOT_RECONSTRUCTED"
+  },
+  "blockers": [
+    "The exact runtime learning path still fails; substage is not yet identified.",
+    "Browser mobile audit-card and desktop audit-table selectors remain absent because the audit read route fails closed on legacy NULL role attribution.",
+    "AUDITOR audit read remains 500 with AUDIT_ROLE_ATTRIBUTION_MISSING.",
+    "Exact-head browser gate fails; release/deploy authorization is not proven."
+  ],
+  "next_task": "Add bounded, source-compatible substage classification around USL write, singularity enforcement, and durable ledger-anchor operations; preserve existing typed freeze/conflict codes and fail-closed behavior."
+}
