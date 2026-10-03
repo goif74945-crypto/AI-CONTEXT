@@ -1,0 +1,61 @@
+{
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "source_design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "recorded_at": "2026-10-03T21:32:34.407Z",
+  "truth_status": "NOT_COMPLETE",
+  "release_authorized": false,
+  "deployable": false,
+  "checkpoint_id": "NEXY-DOC-E12-039",
+  "head_before": "cd839376d8e443b80f94e3f4821917129c8356ab",
+  "tree_before": "2b942a131fb35c67115bb45b9fb2a3dd33b88fd9",
+  "head_after": "6dd32d55f2a0e7b45b61510c45a0f85d8c950349",
+  "tree_after": "eb0988b359654a9711c1dadff04837342dfbd440",
+  "system": "DOC-E / E12 application rollback evidence gate",
+  "requirements": [
+    "E12 exact-head application rollback evidence",
+    "stale rollback receipt must remain BLOCKED_EXTERNAL"
+  ],
+  "files_changed": [
+    "scripts/doc-e/e12-rollback-verify.ts",
+    "tests/contract/doc-e-e10-e12-external-gates.test.ts"
+  ],
+  "tests_run": [
+    {
+      "command": "Dockerfile exact-head build: npm run test:contract",
+      "deployment_id": "8f004be1-6065-4be5-87b0-98bd96b84f2f",
+      "result": "PASS",
+      "output_excerpt": "Test Files 158 passed (158); Tests 1082 passed (1082); coverage, DOC-C and web build completed."
+    },
+    {
+      "command": "Railway exact-head browser validation",
+      "deployment_id": "8f004be1-6065-4be5-87b0-98bd96b84f2f",
+      "result": "PASS",
+      "output_excerpt": "NEXY_BROWSER_E2E=PASS ... suites=2; directive 1/1 and critical 10/10."
+    },
+    {
+      "command": "Full DOC-E campaign",
+      "deployment_id": "8f004be1-6065-4be5-87b0-98bd96b84f2f",
+      "result": "BLOCKED_EXTERNAL",
+      "output_excerpt": "Campaign progressed beyond E12 and stopped at aggregate provider receipt identity mismatch."
+    }
+  ],
+  "evidence": [
+    {
+      "artifact_name": "E12 stale-receipt classification exact-head build",
+      "commit_hash": "6dd32d55f2a0e7b45b61510c45a0f85d8c950349",
+      "tree_hash": "eb0988b359654a9711c1dadff04837342dfbd440",
+      "environment": "Railway production / nexy-validation-branch",
+      "command_or_test_id": "doc-e:E12:application-rollback-receipt",
+      "result": "stale receipt classified externally; no PASS granted",
+      "log_reference": "railway://deployment/8f004be1-6065-4be5-87b0-98bd96b84f2f",
+      "output_excerpt": "The campaign did not fail at E12; subsequent aggregate gate reported the next blocker.",
+      "pass_fail": "BLOCKED_EXTERNAL"
+    }
+  ],
+  "blockers": [
+    "No exact-head provider application rollback execution receipt was available."
+  ],
+  "next_task": "Repair the next proven aggregate provider-evidence failure without weakening release authorization."
+}
