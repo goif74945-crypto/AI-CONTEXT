@@ -1,0 +1,127 @@
+{
+  "checkpoint_id": "NEXY-LO2-DIAGNOSTIC-032",
+  "recorded_at_utc": "2026-10-03T19:38:26.503Z",
+  "truth_status": "PARTIAL",
+  "source": {
+    "name": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "relevant_locations": [
+      "DOC-C lines 20955–21090",
+      "DOC-C lines 22473–22583"
+    ]
+  },
+  "implementation": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "head_before": "24f0642a50a172ce7d88f76cd30a5dfa19ccc216",
+    "tree_before": "7e96b0fadf8aa2a7ce76e8c46cbbed68bd4ccc1f",
+    "head_after": "c45c8fe076da33e8a8ab05bda5f690b07b30791a",
+    "tree_after": "02bc5e3e44f81a443dc32e3268addf5d7f6993f6",
+    "head_reread_after_deployment": true,
+    "head_drift_during_batch": false,
+    "commits": [
+      {
+        "sha": "e62de4fbc0ac4d24250f660e1eedc3dd867ec6dd",
+        "message": "diag(lo2): preserve safe nested persistence codes",
+        "files": [
+          "packages/lo2/engine.ts"
+        ]
+      },
+      {
+        "sha": "c45c8fe076da33e8a8ab05bda5f690b07b30791a",
+        "message": "test(lo2): cover safe nested persistence diagnostics",
+        "files": [
+          "tests/contract/lo2-durable-anchor.test.ts"
+        ]
+      }
+    ]
+  },
+  "requirement": {
+    "system": "Lo2 verified learning / durable USL write boundary",
+    "requirement_summary": "Durable write failure must fail closed and expose bounded safe diagnostics that identify the operation without raw database detail.",
+    "proven_gap_before": [
+      "Exact deployment 684b09a8-309c-4d77-bd77-933ede24c3a6 exposed only LO2_USL_WRITE_FAILED for two durable write failures.",
+      "The existing classifier did not inspect bounded nested causes or allowlisted Prisma error names."
+    ],
+    "change_summary": [
+      "Added a bounded cause-chain walk with MAX_SAFE_CAUSE_DEPTH = 3.",
+      "Added allowlisted Prisma error-name mapping to safe codes.",
+      "Preserved existing LO2 and safe non-Prisma codes.",
+      "Prefixes bounded Prisma P-codes with the Lo2 operation stage.",
+      "Added static contract assertions; no raw message/meta/database detail is emitted."
+    ],
+    "target_files": [
+      "packages/lo2/engine.ts",
+      "tests/contract/lo2-durable-anchor.test.ts"
+    ]
+  },
+  "evidence": {
+    "deployment_id": "80a5c1bc-1f74-4b68-952f-d9911fc34ac0",
+    "status": "SUCCESS",
+    "branch": "NEXY.ai",
+    "commit_hash": "c45c8fe076da33e8a8ab05bda5f690b07b30791a",
+    "tree_hash": "02bc5e3e44f81a443dc32e3268addf5d7f6993f6",
+    "environment": {
+      "platform": "Railway",
+      "project_id": "01537473-6a6d-42a0-856f-40d8a4e6a712",
+      "environment_id": "776c1d3d-20f2-4b9f-9f07-8387ea9e63b8",
+      "service_id": "3c290782-e2f0-4e5b-87d9-58bae4d4dba8",
+      "region": "sfo"
+    },
+    "build_and_static_gates": [
+      "Rust/core checks completed with warnings only in the captured build log.",
+      "npm run check:phase-f passed.",
+      "npm run check:six-system-spec passed with the locked design SHA.",
+      "Test Files 157 passed (157); Tests 1074 passed (1074); Duration 5.00s.",
+      "tests/contract/lo2-durable-anchor.test.ts: 5 tests passed.",
+      "npm run check:coverage passed: api lines 93.68/statements 92.38/functions 97.66/branches 85.49; core lines 95.73/statements 95.93/functions 94.44/branches 91.23; law lines 100.00/statements 94.87/functions 100.00/branches 96.83; judge lines 96.52/statements 95.52/functions 100.00/branches 93.41.",
+      "DOC-C static check passed; explicitly not release authorization.",
+      "Module boundary check passed.",
+      "npm run build:web passed and apps/web/.next/BUILD_ID was non-empty."
+    ],
+    "runtime_and_browser": [
+      "Prisma boot reported 26 migrations found and no pending migrations.",
+      "Directive browser test: 1 passed.",
+      "Critical browser tests: 7 passed, 3 failed.",
+      "NEXY_BROWSER_E2E=FAIL code=CRITICAL_FLOWS tested_sha=c45c8fe076da33e8a8ab05bda5f690b07b30791a tested_tree=02bc5e3e44f81a443dc32e3268addf5d7f6993f6 deployment_id=80a5c1bc-1f74-4b68-952f-d9911fc34ac0.",
+      "Critical failures: mobile .audit-card-list absent; desktop .audit-table-wrap > table absent; AUDITOR audit API returned 500.",
+      "Audit failure code: AUDIT_ROLE_ATTRIBUTION_MISSING.",
+      "Lo2 feedback logs: two pipeline runs failed closed with error PRISMA_UNKNOWN_REQUEST; both downstream jobs completed with status SUCCEEDED.",
+      "The diagnostic boundary is improved, but the underlying durable persistence cause is not proven by this evidence."
+    ],
+    "stale_evidence_excluded": [
+      {
+        "deployment_id": "13c64afe-3350-4618-82b2-aa551d0c2c50",
+        "commit_hash": "e62de4fbc0ac4d24250f660e1eedc3dd867ec6dd",
+        "reason": "stale source identity gate; started before refreshed exact-head variables"
+      },
+      {
+        "deployment_id": "7db806fd-d6f7-42fc-9773-4e269d0d23f9",
+        "commit_hash": "c45c8fe076da33e8a8ab05bda5f690b07b30791a",
+        "reason": "stale source identity gate; tested against prior DOC_E_TESTED_SHA/tree"
+      }
+    ],
+    "browser_tooling": {
+      "github_tab": "GitHub repo page showed private repository on branch NEXY.ai.",
+      "vscode_web": "Opened vscode.dev/github/... but private repository contents were blocked by GitHub sign-in; no VS Code terminal command is claimed as evidence.",
+      "chrome_direct_control": "BLOCKED_DEVICE_OFFLINE; Remote Desktop Commander device DESKTOP-FOB7IK8 was offline."
+    }
+  },
+  "classification": {
+    "implementation": "PARTIAL",
+    "tests": "PASS for captured static/unit/integration gates; browser critical flow FAIL",
+    "exact_head_binding": "PASS",
+    "runtime": "PARTIAL",
+    "evidence": "PASS for exact deployment identity; release authorization not proven",
+    "full_project_completion": "NOT_VERIFIED",
+    "full_project_denominator": "NOT_RECONSTRUCTED"
+  },
+  "blockers": [
+    "Underlying Prisma durable-write cause remains unresolved; do not perform an identical blind retry.",
+    "Audit API remains 500 with AUDIT_ROLE_ATTRIBUTION_MISSING; existing historical null-role data must not be guessed or backfilled without proof.",
+    "Three critical browser failures remain.",
+    "VS Code Web terminal evidence is blocked by private-repository sign-in.",
+    "Full-project requirement denominator and complete source inventory are not reconstructed in this checkpoint."
+  ],
+  "next_task": "Inspect the exact Prisma persistence path and schema/data contract using source-bound evidence, then select one atomic Lo2 repair only if a concrete implementation gap is proven; otherwise classify as NOT_VERIFIED/BLOCKED and move to the next highest-priority proven gap."
+}
