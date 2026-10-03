@@ -1,0 +1,156 @@
+{
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "source_design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "recorded_at": "2026-10-03T22:13:36.445Z",
+  "truth_status": "NOT_COMPLETE",
+  "release_authorized": false,
+  "deployable": false,
+  "checkpoint_id": "NEXY-G15-ORDER-043",
+  "head_before": "e37c12597c481895abe0a4fb9087b4848a7f5099",
+  "tree_before": "feeb29be8a5437642d50e827f78e21a464590683",
+  "head_after": "cde969ea2d16626a60ad5571e9308ea294289d15",
+  "tree_after": "a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1",
+  "head_drift": false,
+  "post_test_head_recheck": {
+    "status": "PASS",
+    "endpoint": "GET /repos/goif74945-crypto/NEXY.AI-/branches/NEXY.ai",
+    "observed_sha": "cde969ea2d16626a60ad5571e9308ea294289d15",
+    "observed_tree": "a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1",
+    "branch": "NEXY.ai"
+  },
+  "system": "Game Fabric / G15 Deterministic Numeric Law",
+  "requirements": [
+    "Authoritative ordering must be stable lexicographic ordering for entity, feature, contact, constraint, accumulation, and AI tie-break paths.",
+    "Ordering and final invariant identity must not depend on host locale or ICU behavior."
+  ],
+  "source_refs": [
+    {
+      "paragraph_range": "6781-6786",
+      "requirement": "integer-grid tie-break is lexicographic; feature pairs and contact manifold use canonical ordering; unordered iteration is forbidden."
+    },
+    {
+      "paragraph_range": "6791-6798",
+      "requirement": "constraint order is fixed by entity/constraint/index and accumulation is sequential with no unordered/hash-table iteration."
+    },
+    {
+      "paragraph_range": "6812-6815",
+      "requirement": "AI priority ties use priority_value, entity_id, deterministic_sequence_id and costs remain fixed128."
+    },
+    {
+      "paragraph_range": "6846-6852",
+      "requirement": "authoritative state hash is bit-identical across CPU, OS, compiler, and time."
+    }
+  ],
+  "implementation": [
+    {
+      "path": "packages/phase-f/game/g15-simulation-law.ts",
+      "symbols": [
+        "compareCanonicalText",
+        "canonicalBroadphasePairs",
+        "deterministicSatCollision",
+        "canonicalFeaturePairs",
+        "canonicalContactManifold",
+        "runFixedConstraintSolver",
+        "sequentialAccumulate",
+        "canonicalAiQueue"
+      ],
+      "change": "Replaced all 14 authoritative localeCompare() calls with an explicit ECMAScript code-unit lexicographic comparator using < and >."
+    },
+    {
+      "path": "tests/integration/g15-simulation-law.spec.ts",
+      "change": "Added a regression with z and ä identifiers proving non-ASCII ordering is stable and not locale-derived."
+    }
+  ],
+  "files_changed": [
+    "packages/phase-f/game/g15-simulation-law.ts",
+    "tests/integration/g15-simulation-law.spec.ts"
+  ],
+  "status_before": "PARTIAL",
+  "status_after": "PASS_FOR_G15_ORDERING_REQUIREMENT_CLUSTER",
+  "tests_run": [
+    {
+      "command": "Railway exact-head npm run test:coverage",
+      "deployment_id": "0d404848-3a69-43cc-aabd-faaa7c78dc8a",
+      "commit_hash": "cde969ea2d16626a60ad5571e9308ea294289d15",
+      "tree_hash": "a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1",
+      "result": "PASS",
+      "output_excerpt": "Test Files 158 passed (158); Tests 1082 passed (1082); Duration 4.84s."
+    },
+    {
+      "command": "Exact-head G15 file-level evidence from the full test run",
+      "deployment_id": "0d404848-3a69-43cc-aabd-faaa7c78dc8a",
+      "commit_hash": "cde969ea2d16626a60ad5571e9308ea294289d15",
+      "tree_hash": "a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1",
+      "result": "PASS",
+      "output_excerpt": "g15-simulation-law.spec.ts exports=18 assertions=32; new stable code-unit ordering test passed. g15-numeric-law.spec.ts exports=22 assertions=29; fixed128-overflow-scope-law.test.ts passed."
+    },
+    {
+      "command": "Railway exact-head typecheck",
+      "deployment_id": "0d404848-3a69-43cc-aabd-faaa7c78dc8a",
+      "commit_hash": "cde969ea2d16626a60ad5571e9308ea294289d15",
+      "tree_hash": "a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1",
+      "result": "PASS",
+      "output_excerpt": "npm run typecheck:backend (tsc --noEmit -p tsconfig.json) and npm run typecheck:web (tsc --noEmit -p apps/web/tsconfig.json) completed."
+    },
+    {
+      "command": "Railway exact-head Phase-F/static/build gates",
+      "deployment_id": "0d404848-3a69-43cc-aabd-faaa7c78dc8a",
+      "commit_hash": "cde969ea2d16626a60ad5571e9308ea294289d15",
+      "tree_hash": "a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1",
+      "result": "PASS",
+      "output_excerpt": "Phase F gate PASSED; G15 coverage and determinism contract checks passed; build completed successfully."
+    },
+    {
+      "command": "Railway exact-head browser suites",
+      "deployment_id": "0d404848-3a69-43cc-aabd-faaa7c78dc8a",
+      "commit_hash": "cde969ea2d16626a60ad5571e9308ea294289d15",
+      "tree_hash": "a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1",
+      "result": "PASS",
+      "output_excerpt": "NEXY_BROWSER_E2E=PASS tested_sha=cde969ea2d16626a60ad5571e9308ea294289d15 tested_tree=a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1 deployment_id=0d404848-3a69-43cc-aabd-faaa7c78dc8a suites=2; directive 1/1 and critical 10/10."
+    }
+  ],
+  "evidence": [
+    {
+      "artifact_name": "Railway exact-head G15 ordering build/test/browser evidence",
+      "commit_hash": "cde969ea2d16626a60ad5571e9308ea294289d15",
+      "tree_hash": "a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1",
+      "branch": "NEXY.ai",
+      "environment": "Railway production / nexy-validation-branch",
+      "date": "2026-10-03",
+      "operator": "railway-variable-rerun",
+      "command_or_test_id": "deployment 0d404848-3a69-43cc-aabd-faaa7c78dc8a",
+      "result": "source identity, targeted file evidence, full suite, typecheck, Phase-F/static/build gates and browser suites passed",
+      "log_reference": "railway://deployment/0d404848-3a69-43cc-aabd-faaa7c78dc8a",
+      "output_excerpt": "Exact source guard matched cde969ea2d16626a60ad5571e9308ea294289d15 and a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1; NEXY_BROWSER_E2E carried the same identity.",
+      "pass_fail": "PASS"
+    },
+    {
+      "artifact_name": "Railway stale snapshot diagnostic",
+      "commit_hash": "cde969ea2d16626a60ad5571e9308ea294289d15",
+      "tree_hash": "a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1",
+      "branch": "NEXY.ai",
+      "environment": "Railway production / nexy-validation-branch",
+      "date": "2026-10-03",
+      "operator": "railway-auto-deploy",
+      "command_or_test_id": "deployment 6a268721-aa98-4a0f-a0ef-3ccf72a7423c",
+      "result": "blocked before tests because deployment snapshot contained previous DOC_E_TESTED_SHA=e37c125... and previous validation nonce",
+      "log_reference": "railway://deployment/6a268721-aa98-4a0f-a0ef-3ccf72a7423c",
+      "output_excerpt": "source identity comparison failed at Dockerfile guard; no application test executed. Corrected with deployment 0d404848...",
+      "pass_fail": "BLOCKED_ENVIRONMENT"
+    }
+  ],
+  "blockers": [
+    "GitHub Actions status for current cde969ea2d16626a60ad5571e9308ea294289d15 was not reverified in this batch; Railway exact-head evidence is separate and successful.",
+    "DOC-E E10/E11/E12 provider/signoff/rollback evidence remains BLOCKED_EXTERNAL or NOT_VERIFIED; release authorization remains false.",
+    "VS Code Web cannot open this private repository without GitHub sign-in; browser editor terminal execution remains BLOCKED_EXTERNAL/NOT_VERIFIED.",
+    "Full-project requirement denominator and all-source audit coverage are not reconstructed; no full-project percentage or 100% claim is valid."
+  ],
+  "percentage_status": {
+    "system_completion": "NOT_RECALCULATED",
+    "full_project_completion": "NOT_PROVEN",
+    "reason": "This batch proves one G15 ordering cluster only; file coverage percentages are not requirement completion percentages."
+  },
+  "next_task": "Re-read NEXY.ai HEAD/tree, then select the next dependency-highest source-verified unresolved requirement. Preserve exact-head binding and do not treat file coverage percentages as project completion."
+}
