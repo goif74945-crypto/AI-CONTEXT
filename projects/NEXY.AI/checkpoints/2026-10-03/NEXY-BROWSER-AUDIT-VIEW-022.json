@@ -1,0 +1,129 @@
+{
+  "checkpoint_id": "NEXY-BROWSER-AUDIT-VIEW-022",
+  "recorded_at": "2026-10-03T16:15:00Z",
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "source": {
+    "path": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "source_location": "DOC-D §6, extracted lines 18440-18865; S10 Audit Viewer, component inventory, §6.8 Mobile/Desktop Law, §6.10 Empty State Wording"
+  },
+  "implementation_repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "head_before": "01dd12b86062d9833bf8552b427757eccee85e52",
+  "tree_before": "d30e45f178ecdf4ddad747b121f869794589e108",
+  "head_after": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+  "tree_after": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+  "system": "Product/UI — S10 Audit Viewer",
+  "requirements": [
+    "Mobile audit tables collapse into cards.",
+    "Desktop audit tables remain full width.",
+    "Empty audit state must remain truthful and must not fabricate audit records."
+  ],
+  "files_changed": [
+    "apps/web/components/AuditLogTable.tsx"
+  ],
+  "change_summary": "Removed the empty-array early return. The component now keeps the responsive table/card shells and renders the truthful 'No audit entries found.' state inside both shells; no fake audit row or authority data was added.",
+  "file_change_explanation": {
+    "file": "apps/web/components/AuditLogTable.tsx",
+    "why": "The old empty branch omitted both responsive selectors entirely.",
+    "spec_requirement": "DOC-D §6.8 mobile cards / desktop full-width tables and §6.10 truthful empty-state copy.",
+    "old_behavior": "entries=[] returned a standalone empty div before audit-table-wrap, table, and audit-card-list existed.",
+    "new_behavior": "entries=[] renders an empty table row and an empty card state within the canonical responsive shells.",
+    "security_impact": "None intended; no authorization, API, audit data, or security boundary changed.",
+    "determinism_impact": "None; no clock, randomness, ordering, or authoritative state changed.",
+    "test_impact": "Build/typecheck passed; browser suite still exposed the upstream audit API failure, so runtime UI improvement is not promoted to PASS."
+  },
+  "tests_run": [
+    {
+      "command": "Railway validation pipeline for exact head",
+      "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+      "head": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+      "tree": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+      "result": "FAIL",
+      "output_excerpt": "Build/typecheck/static/contract gates reached PASS; browser critical flows: 7 passed, 3 failed. Mobile audit selector line 121 and desktop audit selector line 142 remained not visible because /api/audit-logs did not provide renderable page truth; AUDITOR audit API assertion line 242 failed. NEXY_BROWSER_E2E=FAIL code=CRITICAL_FLOWS.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run typecheck",
+      "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+      "head": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+      "tree": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+      "result": "PASS",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run test:coverage",
+      "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+      "head": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+      "tree": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+      "result": "PASS",
+      "output_excerpt": "157 test files passed; 1066 tests passed.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run test:contract",
+      "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+      "head": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+      "tree": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+      "result": "PASS",
+      "output_excerpt": "112 test files passed; 602 tests passed.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run test:experimental",
+      "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+      "head": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+      "tree": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+      "result": "PASS",
+      "output_excerpt": "81 test files passed; 770 tests passed.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "cargo check -p core-kernel && cargo test -p core-kernel -- --nocapture",
+      "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+      "head": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+      "tree": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+      "result": "PASS",
+      "output_excerpt": "core-kernel: 263 passed; 0 failed.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run build:web",
+      "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+      "head": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+      "tree": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+      "result": "PASS",
+      "output_excerpt": "Next.js production build completed; generated 25/25 static pages and BUILD_ID.",
+      "exact_head_binding": true
+    }
+  ],
+  "evidence": {
+    "provider": "Railway",
+    "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+    "commit_hash": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+    "tree_hash": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+    "branch": "NEXY.ai",
+    "environment": "Railway production / sfo",
+    "date": "2026-10-03",
+    "operator": "Codex",
+    "command_or_test_id": "NEXY Validation R2 / NEXY_BROWSER_E2E",
+    "result": "FAIL",
+    "source_identity": {
+      "kind": "NEXY_DOC_E_PROVIDER_SOURCE_IDENTITY",
+      "tested_sha": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+      "tested_tree": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+      "rerun_nonce": "2026-10-03T18:22:00Z-NEXY-BROWSER-AUDIT-VIEW-022",
+      "source_identity_result": "PASS"
+    },
+    "pass_fail": "FAIL"
+  },
+  "blockers": [
+    "Exact-head browser critical flows remain red: 3 failures; the two Audit layout assertions are downstream of /api/audit-logs failure.",
+    "AUDITOR /api/audit-logs response assertion remains failing; API/auth/persistence is a separate atomic batch.",
+    "Runtime emitted RSEL_UNCERTAINTY_PROPAGATION_MISMATCH and RELEASE_POLICY_FAILED; RSEL is a separate subsystem and was not modified.",
+    "GitHub combined status for c060851 is failure because Railway deployment 34e8fddc crashed.",
+    "Full 837-row requirement-weighted completion remains NOT_RECONSTRUCTED."
+  ],
+  "next_task": "Re-read NEXY.ai HEAD and source/API route/test/evidence, then isolate the proven /api/audit-logs failure without changing RSEL or UI in the same batch.",
+  "truth_status": "PARTIAL_UI_IMPLEMENTATION; EXACT_HEAD_RUNTIME_NOT_VERIFIED; PROJECT_RELEASE_BLOCKED"
+}
