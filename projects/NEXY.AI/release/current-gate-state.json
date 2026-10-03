@@ -1,9 +1,9 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
   "schema_version": "4.0.0",
-  "observed_at": "2026-10-03T04:50:13Z",
-  "timestamp_source": "GitHub repository/actions APIs and Railway exact-deployment build/runtime logs",
-  "trace_id": "NEXY-9CEDBBD9-RAILWAY-b5f4902d-f5c5-4c22-a419-cdfd03b53699",
+  "observed_at": "2026-10-03T08:23:08.742Z",
+  "timestamp_source": "GitHub repository/actions APIs plus preserved Railway exact-deployment evidence",
+  "trace_id": "NEXY-9CEDBBD9-GHA-37097611233-ATTEMPT2",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
@@ -48,23 +48,44 @@
     "url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=b5f4902d-f5c5-4c22-a419-cdfd03b53699&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
   },
   "github_actions": {
-    "run_id": 37096933700,
-    "status": "BLOCKED",
-    "reason": "8 failed jobs and 3 skipped jobs with zero executable steps; zero artifacts"
+    "run_id": 37097611233,
+    "run_attempt": 2,
+    "workflow": "NEXY CI / Deploy Gate",
+    "workflow_path": ".github/workflows/deploy.yml",
+    "head_sha": "9cedbbd94af495199ca10f96e747689b0c19ddb1",
+    "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
+    "conclusion": "failure",
+    "run_started_at": "2026-10-03T08:22:42Z",
+    "run_updated_at": "2026-10-03T08:22:47Z",
+    "failed_jobs": 8,
+    "skipped_jobs": 3,
+    "executable_steps_observed": 0,
+    "artifacts_observed": 0,
+    "requested_job_id": 111130645942,
+    "resulting_typecheck_job_id": 111164487979,
+    "typecheck_runner_id": 0,
+    "typecheck_runner_name": "",
+    "typecheck_steps_observed": 0,
+    "typecheck_log_result": "404 BlobNotFound",
+    "typecheck_log_observed_at": "2026-10-03T08:23:08.742Z",
+    "provider_metadata_note": "Several dependent jobs returned completed_at timestamps inherited from attempt 1; no code-level conclusion is inferred.",
+    "reason": "GitHub Actions jobs completed before any executable step; this does not override exact-head Railway code-level evidence."
   },
   "release": {
     "status": "BLOCKED",
     "authorized": false,
     "deploy_authorized": false,
     "blocking_reasons": [
-      "E10 provider command receipt identity does not match the exact current head/tree",
-      "Current exact-head E11/E12 external authorization evidence is not proven",
+      "DOC-E E10 provider command receipt identity does not match the exact current SHA/tree",
+      "Current exact-head E11 signoff is not proven",
+      "Current exact-head E12 rollback/provider receipt is not proven",
+      "GitHub Actions runner path still records zero executable steps",
       "Exhaustive 837-row spec-code-test crosswalk remains UNKNOWN"
     ]
   },
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T111817+0700-9cedbbd9",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T111817+0700-9cedbbd9.md",
+    "cycle_id": "NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2.md",
     "status": "PARTIAL"
   },
   "software_gates": {

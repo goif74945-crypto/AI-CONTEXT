@@ -1,21 +1,24 @@
 # NEXY.AI — Current Context Status
 
 <!-- HOURLY_CYCLE_LATEST:START -->
-## Latest verified hourly-cycle overlay — 2026-10-03 11:50 ICT
+## Latest verified hourly-cycle overlay — 2026-10-03 15:23 ICT
 
 - implementation repository/branch: `goif74945-crypto/NEXY.AI-` / `NEXY.ai`
 - exact HEAD/tree: `9cedbbd94af495199ca10f96e747689b0c19ddb1` / `205c038c85f2c18c0a42d391c212fe367e2aab7d`
-- exact-head Railway build: `VERIFIED_PASS`
-- typecheck, Rust/core, contract/integration/full suite, coverage, DOC-C/static boundaries and production web build: `VERIFIED_PASS`
-- full suite: 153 files / 1046 tests; browser E2E: 11 tests
-- DOC-E E1-E9 sequential path: `VERIFIED_PASS`
+- branch inventory: only `NEXY.ai`
+- source mutation by this cycle: none
+- latest executable evidence remains Railway deployment `b5f4902d-f5c5-4c22-a419-cdfd03b53699`
+- Railway build/typecheck/tests/coverage/DOC-C/web build/browser E2E and DOC-E E1-E9: `VERIFIED_PASS` according to the preserved exact-head execution record
 - DOC-E E10: `FAILED` — `DOC_E_E10_PROVIDER_RECEIPT_IDENTITY_MISMATCH`
-- GitHub Actions run `37096933700`: `BLOCKED` before executable steps
+- code inspection confirms E10 strictly requires provider receipt `tested_sha` and `tested_tree` to equal the exact target; weakening this check is forbidden
+- GitHub Actions run `37097611233`, attempt 2: 8 failed, 3 skipped, 0 executable steps, 0 artifacts
+- TypeScript job `111164487979`: runner_id 0, empty runner name, 0 steps; log `404 BlobNotFound`
+- external commit statuses: one success plus one failure; overall failure
 - exhaustive 837-row implementation status: `UNKNOWN`
 - release/deploy authorization: `BLOCKED`
-- cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T111817+0700-9cedbbd9.md`
+- cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2.md`
 
-Overall status: **PARTIAL / BLOCKED — implementation slice verified; external release evidence stale.**
+Overall status: **PARTIAL / BLOCKED — implementation slice verified by prior exact-head Railway execution; E10 external receipt and release evidence unresolved.**
 <!-- HOURLY_CYCLE_LATEST:END -->
 
 ## Status
