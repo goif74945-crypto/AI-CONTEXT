@@ -1,0 +1,156 @@
+{
+  "checkpoint_id": "NEXY-LO2-DIAGNOSTIC-034",
+  "recorded_at_utc": "2026-10-03T20:00:36Z",
+  "truth_status": "PARTIAL",
+  "source": {
+    "name": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "relevant_locations": [
+      "DOCX paragraphs 11713-11729: verified-only Lo2 ingress",
+      "DOCX paragraphs 11802-11812: USL stores traceability for every logic item",
+      "Prior DOC-C Lo2 durable feedback extraction recorded in NEXY-LO2-DIAGNOSTIC-032"
+    ]
+  },
+  "repository": {
+    "name": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "head_before": "2469e4bea887ee876c6d02a193de9b9c233fc551",
+    "tree_before": "068c1b62a722d0857ea7f7972a947dde7fa13c05",
+    "head_after": "0994ef6edd1f13be0058152d42971cfc7fd47e81",
+    "tree_after": "396c4cf2d6a14855b780b8c7a28fa6eb727bbe0d",
+    "head_reread_after_batch": true,
+    "head_drift_during_batch": false,
+    "commits": [
+      {
+        "sha": "444ee03a86b6aa4fdae940b09876222316dfe89c",
+        "message": "fix(lo2): retain durable stage in Prisma diagnostics",
+        "files": [
+          "packages/lo2/engine.ts"
+        ],
+        "status": "SUPERSEDED_INVALID_TRANSPORT",
+        "note": "The update payload was truncated at 1200 lines and was not used as valid implementation evidence."
+      },
+      {
+        "sha": "ebf541b0764f1d31e6d53c5e2052a5dbb11ec208",
+        "message": "test(lo2): lock Prisma stage diagnostics",
+        "files": [
+          "tests/contract/lo2-durable-anchor.test.ts"
+        ]
+      },
+      {
+        "sha": "0994ef6edd1f13be0058152d42971cfc7fd47e81",
+        "message": "fix(lo2): restore complete engine after diagnostic patch",
+        "files": [
+          "packages/lo2/engine.ts"
+        ],
+        "note": "Restored the complete 1648-line parent blob and applied the classifier patch."
+      }
+    ]
+  },
+  "batch": {
+    "system": "Lo2 / Universal State Ledger durable write boundary",
+    "requirement": "Durable Lo2 failures must identify the bounded operation stage without exposing raw database details.",
+    "source_summary": "Lo2 accepts only verified output and every stored logic item must retain origin/proof traceability.",
+    "proven_gap_before": [
+      "Exact runtime emitted only PRISMA_UNKNOWN_REQUEST.",
+      "learningStageCode preserved non-P#### safe codes without retaining the Lo2 stage, so a Prisma unknown request did not identify whether lock/read/write/transaction failed."
+    ],
+    "change_summary": [
+      "Preserved explicit LO2_* codes unchanged.",
+      "Prefixed PRISMA_* and bounded P#### codes with the fallback Lo2 stage.",
+      "Added a contract assertion for the PRISMA_* branch.",
+      "No persistence schema, transaction, data, or backend API behavior was changed."
+    ],
+    "target_files": [
+      "packages/lo2/engine.ts",
+      "tests/contract/lo2-durable-anchor.test.ts"
+    ]
+  },
+  "evidence": {
+    "exact_deployment_id": "1b706a41-4eeb-4868-940d-810bc1eeac9e",
+    "deployment_status": "SUCCESS",
+    "environment": {
+      "platform": "Railway",
+      "project_id": "01537473-6a6d-42a0-856f-40d8a4e6a712",
+      "environment_id": "776c1d3d-20f2-4b9f-9f07-8387ea9e63b8",
+      "service_id": "3c290782-e2f0-4e5b-87d9-58bae4d4dba8",
+      "name": "production"
+    },
+    "identity": {
+      "branch": "NEXY.ai",
+      "commit_hash": "0994ef6edd1f13be0058152d42971cfc7fd47e81",
+      "tree_hash": "396c4cf2d6a14855b780b8c7a28fa6eb727bbe0d",
+      "rerun_nonce": "NEXY-LO2-DIAGNOSTIC-034-R2-20261003"
+    },
+    "build": {
+      "result": "PASS",
+      "gates": [
+        "source identity exact-head gate passed",
+        "cargo/core checks reached completion",
+        "npm run typecheck passed",
+        "Phase F gate passed",
+        "six-system spec lock passed",
+        "tests/contract/lo2-durable-anchor.test.ts: 5 passed",
+        "tests/contract/doc-d-component-inventory.test.ts: 3 passed",
+        "Test Files 157 passed (157)",
+        "Tests 1075 passed (1075)",
+        "coverage thresholds passed",
+        "DOC-C static check passed",
+        "module boundary check passed",
+        "web build passed and BUILD_ID exists"
+      ]
+    },
+    "runtime": {
+      "migrations": "26 found; no pending migrations",
+      "directive_browser": "1 passed",
+      "critical_browser": "7 passed / 3 failed",
+      "browser_gate": "NEXY_BROWSER_E2E=FAIL code=CRITICAL_FLOWS tested_sha=0994ef6edd1f13be0058152d42971cfc7fd47e81 tested_tree=396c4cf2d6a14855b780b8c7a28fa6eb727bbe0d deployment_id=1b706a41-4eeb-4868-940d-810bc1eeac9e",
+      "lo2_feedback": [
+        "pipelineRunId=01JGFJK5HSA86GXM7DX1BXV3HT status=FAILED processed=true error=LO2_USL_WRITE_FAILED_PRISMA_UNKNOWN_REQUEST",
+        "pipelineRunId=01JGFJKMB33M5RNERMBY2PGMAS status=FAILED processed=true error=LO2_USL_WRITE_FAILED_PRISMA_UNKNOWN_REQUEST"
+      ],
+      "downstream_jobs": "Both emitted COMPLETED status=SUCCEEDED after fail-closed Lo2 handling.",
+      "diagnostic_conclusion": "The runtime failure is now proven to occur at the USL durable write/upsert stage and is safely classified as a Prisma unknown request. The underlying database reason remains NOT_VERIFIED.",
+      "audit_api": "Still returns 500 with AUDIT_ROLE_ATTRIBUTION_MISSING; this is independent of the Lo2 classifier batch.",
+      "browser_failures": [
+        "mobile .audit-card-list absent because audit API failed",
+        "desktop .audit-table-wrap > table absent because audit API failed",
+        "AUDITOR audit read expected HTTP 200 but received HTTP 500"
+      ]
+    }
+  },
+  "excluded_evidence": [
+    {
+      "deployment_id": "34f077fd-382c-44ab-9a95-f05997c5d117",
+      "commit_hash": "ebf541b0764f1d31e6d53c5e2052a5dbb11ec208",
+      "reason": "typecheck failed because the first engine update payload was truncated; not a valid runtime result for the corrected tree"
+    },
+    {
+      "deployment_id": "b81678cb-efe4-43b4-af77-3e6b5817b9ec",
+      "commit_hash": "0994ef6edd1f13be0058152d42971cfc7fd47e81",
+      "reason": "stale source identity gate used DOC_E_TESTED_SHA=ebf541... and tree=4529...; no tests ran"
+    },
+    {
+      "deployment_id": "acbf9051-4a13-4b43-94d6-0ebd2c2f3be3",
+      "commit_hash": "ebf541b0764f1d31e6d53c5e2052a5dbb11ec208",
+      "reason": "stale source identity gate used the previous 033 SHA/tree/nonce; no tests ran"
+    }
+  ],
+  "blockers": [
+    "Underlying Prisma/Postgres cause at the durable upsert remains NOT_VERIFIED; only the write stage and safe Prisma class are proven.",
+    "Audit API remains fail-closed with AUDIT_ROLE_ATTRIBUTION_MISSING on legacy rows whose role cannot be proven; do not guess/backfill.",
+    "Browser critical flow remains 7/10, so runtime/release is not green.",
+    "Full-project requirement denominator and exact full audit remain NOT_RECONSTRUCTED.",
+    "VS Code Web terminal remains unavailable because the private repository requires GitHub sign-in; no browser terminal evidence is claimed."
+  ],
+  "classification": {
+    "implementation": "PARTIAL",
+    "diagnostic_behavior": "IMPROVED_AND_EXACT_HEAD_VERIFIED",
+    "static_tests": "PASS",
+    "runtime": "PARTIAL",
+    "release_authorized": false,
+    "deployable": false,
+    "full_project_completion": "NOT_VERIFIED"
+  },
+  "next_task": "Use the new write-stage evidence to inspect the Prisma upsert/schema/data contract with a bounded read-only diagnostic. Only change persistence behavior if a concrete source-aligned cause is proven; otherwise classify the remaining root cause as NOT_VERIFIED/BLOCKED and move to the next proven requirement."
+}
