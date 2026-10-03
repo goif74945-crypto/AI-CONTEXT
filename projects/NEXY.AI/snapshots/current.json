@@ -10,7 +10,9 @@
   "source_authority": {
     "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
-    "normalized_rows": 837
+    "normalized_rows": 837,
+    "primary_source_content_access": "BLOCKED",
+    "numbered_section_mapping": "CONFLICT_UNKNOWN"
   },
   "live_implementation_observation": {
     "repository": "goif74945-crypto/NEXY.AI-",
@@ -92,11 +94,22 @@
     "Issue a new authoritative E10 provider command receipt whose tested_sha/tested_tree equal 9cedbbd94af495199ca10f96e747689b0c19ddb1 / 205c038c85f2c18c0a42d391c212fe367e2aab7d.",
     "Obtain current exact-head E11 signoff and E12 rollback/provider receipts.",
     "Restore a GitHub Actions runner path that records executable steps and logs.",
-    "Complete the exhaustive 837-row spec-code-test crosswalk."
+    "Complete the exhaustive 837-row spec-code-test crosswalk.",
+    "Inspect and pin the canonical DOC-C/DOC-E source text before assigning numbered-section compliance to the recent changed slice."
   ],
   "latest_cycle": {
     "cycle_id": "NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2",
     "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2.md",
     "status": "PARTIAL"
+  },
+  "spec_alignment": {
+    "status": "PARTIAL_UNKNOWN",
+    "affected_slice": [
+      "queue_completed_job_retention",
+      "doc_e_execution_scoped_databases",
+      "browser_listener_lifecycle"
+    ],
+    "reason": "Exact numbered-section mapping cannot be verified because primary DOC-C/DOC-E text is not readable through the current repository connector and secondary repository citations conflict.",
+    "execution_evidence_separate": true
   }
 }
