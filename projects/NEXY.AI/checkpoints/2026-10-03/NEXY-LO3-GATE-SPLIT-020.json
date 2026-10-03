@@ -1,0 +1,89 @@
+{
+  "checkpoint_id": "NEXY-LO3-GATE-SPLIT-020",
+  "recorded_at": "2026-10-03T16:12:00Z",
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "source": {
+    "path": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "source_location": "Lo3 Swarm Governor paragraph 11047"
+  },
+  "implementation_repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "head_before": "080e9693ffb09407bfecf4b16123cee934d98daf",
+  "tree_before": "5670fcf7577dc6ebac7ef6f9646144dbb8926922",
+  "head_after": "67b734ec08bb8ef0a41e4f971cac89c2290c9409",
+  "tree_after": "df1971ad76aca4938d0f89de03620b64bf37a0eb",
+  "system": "Lo3 / Phase-F implementation-depth gate",
+  "requirements": [
+    "Lo3 prompt-law authority must have a substantial implementation path.",
+    "Phase-F depth gate must measure the canonical implementation without weakening the 50% threshold.",
+    "The legacy Phase-F surface remains present and compatibility-scoped."
+  ],
+  "files_changed": [
+    "scripts/check-phase-f.ts"
+  ],
+  "change_summary": "Kept Gate 1 presence checking on packages/phase-f/lo3/prompt-law-filter.ts, excluded only that compatibility facade from the Gate 2 LoC denominator, and added a separate 50% depth check against packages/lo3/prompt-law-filter.ts (234/100). No threshold was lowered.",
+  "tests_run": [
+    {
+      "command": "npm run check:phase-f",
+      "deployment_id": "824228b9-62e0-4ca8-b6d2-81acafdb193f",
+      "head": "67b734ec08bb8ef0a41e4f971cac89c2290c9409",
+      "tree": "df1971ad76aca4938d0f89de03620b64bf37a0eb",
+      "result": "PASS",
+      "output_excerpt": "Lo3 canonical prompt-law authority 234/100 (234%); Phase-F Gate 3 and Gate 4 completed and the build proceeded beyond the gate.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run test:experimental",
+      "deployment_id": "824228b9-62e0-4ca8-b6d2-81acafdb193f",
+      "head": "67b734ec08bb8ef0a41e4f971cac89c2290c9409",
+      "tree": "df1971ad76aca4938d0f89de03620b64bf37a0eb",
+      "result": "PASS",
+      "output_excerpt": "81 test files passed; 770 tests passed.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run typecheck",
+      "deployment_id": "824228b9-62e0-4ca8-b6d2-81acafdb193f",
+      "head": "67b734ec08bb8ef0a41e4f971cac89c2290c9409",
+      "result": "PASS",
+      "exact_head_binding": true
+    },
+    {
+      "command": "cargo check -p core-kernel && cargo test -p core-kernel -- --nocapture",
+      "deployment_id": "824228b9-62e0-4ca8-b6d2-81acafdb193f",
+      "head": "67b734ec08bb8ef0a41e4f971cac89c2290c9409",
+      "result": "PASS",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run test:coverage",
+      "deployment_id": "824228b9-62e0-4ca8-b6d2-81acafdb193f",
+      "head": "67b734ec08bb8ef0a41e4f971cac89c2290c9409",
+      "tree": "df1971ad76aca4938d0f89de03620b64bf37a0eb",
+      "result": "FAIL",
+      "output_excerpt": "tests/coverage/judge-law.test.ts had 2 schema-fixture failures at AGENT_SCHEMA_INVALID:reasoning_hash; 156 files passed and 1064 tests passed.",
+      "exact_head_binding": true
+    }
+  ],
+  "evidence": {
+    "provider": "Railway",
+    "deployment_id": "824228b9-62e0-4ca8-b6d2-81acafdb193f",
+    "commit_hash": "67b734ec08bb8ef0a41e4f971cac89c2290c9409",
+    "tree_hash": "df1971ad76aca4938d0f89de03620b64bf37a0eb",
+    "source_identity": {
+      "kind": "NEXY_DOC_E_PROVIDER_SOURCE_IDENTITY",
+      "tested_sha": "67b734ec08bb8ef0a41e4f971cac89c2290c9409",
+      "tested_tree": "df1971ad76aca4938d0f89de03620b64bf37a0eb",
+      "rerun_nonce": "2026-10-03T17:20:00Z-NEXY-LO3-GATE-SPLIT-020"
+    },
+    "source_identity_result": "PASS"
+  },
+  "blockers": [
+    "The Lo3 depth-gate failure is repaired without lowering the 50% floor.",
+    "The exact-head build remained blocked by the separate Judge coverage fixture mismatch, repaired in successor HEAD 01dd12b86062d9833bf8552b427757eccee85e52.",
+    "Project release/deploy authorization remains BLOCKED."
+  ],
+  "next_task": "NEXY-JUDGE-FIXTURE-021 exact-head validation",
+  "truth_status": "PASS_FOR_LO3_GATE_PARTIAL_PROJECT"
+}
