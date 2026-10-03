@@ -111,5 +111,11 @@
     ],
     "reason": "Exact numbered-section mapping cannot be verified because primary DOC-C/DOC-E text is not readable through the current repository connector and secondary repository citations conflict.",
     "execution_evidence_separate": true
+  },
+  "context_correction": {
+    "preserves_execution_observed_at": true,
+    "corrected_at": "2026-10-03T09:20:25Z",
+    "ai_context_commit": "914357218de9355efdd68eefeecc26d2940c3a4e",
+    "scope": "Checkpointed blocked primary-source access and conflicting numbered-section mapping."
   }
 }
