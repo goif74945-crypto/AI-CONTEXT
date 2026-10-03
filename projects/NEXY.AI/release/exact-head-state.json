@@ -1,14 +1,14 @@
 {
   "schema_version": "3.0.0",
-  "observed_at": "2026-10-03T00:17:18.130Z",
+  "observed_at": "2026-10-03T01:29:36.640Z",
   "timestamp_source": "GitHub APIs",
-  "trace_id": "NEXY-F6953F86-GHA-37065947069-ATTEMPT5",
+  "trace_id": "NEXY-AC366E2C-GHA-37086033681-ATTEMPT1",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "head": "f6953f86e54b0df3ae545c44e123725f1403263a",
-  "tree": "63c3aeba2f4be22bc718123b921ab1d20ed7cdd3",
-  "commit_time": "2026-10-02T21:17:30Z",
-  "commit_message": "fix: make navigation fit mobile viewport",
+  "head": "ac366e2c36a326e02724bba10ddb336bf4f22543",
+  "tree": "6bc17372379d81dcf69a919685ef395d2244cfe9",
+  "commit_time": "2026-10-03T01:25:23Z",
+  "commit_message": "fix: disambiguate run truth heading",
   "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
   "normalized_requirement_rows": 837,
@@ -23,76 +23,76 @@
     "provider": "github-actions",
     "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
     "primary_run": {
-      "id": 37065947069,
-      "attempt": 5,
+      "id": 37086033681,
+      "attempt": 1,
       "workflow": "NEXY CI / Deploy Gate",
       "workflow_path": ".github/workflows/deploy.yml",
       "conclusion": "failure",
       "jobs": [
         {
-          "name": "TypeScript typecheck",
-          "id": 111082286155,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "Phase-F experimental validation (advisory)",
-          "id": 111082286839,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "Contract tests",
-          "id": 111082286925,
+          "name": "Coverage measurement",
+          "id": 111096420792,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
           "name": "Full test suite",
-          "id": 111082287057,
+          "id": 111096420836,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Phase-F experimental validation (advisory)",
+          "id": 111096420844,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
           "name": "Production web build",
-          "id": 111082287122,
+          "id": 111096420886,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Integration tests",
+          "id": 111096420903,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Contract tests",
+          "id": 111096420906,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
           "name": "Browser E2E",
-          "id": 111082287155,
+          "id": 111096420938,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
-          "name": "Coverage measurement",
-          "id": 111082287164,
+          "name": "TypeScript typecheck",
+          "id": 111096420945,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
           "name": "DOC-C §20 static gate",
-          "id": 111082287809,
+          "id": 111096433477,
           "conclusion": "skipped",
           "steps_observed": 0
         },
         {
           "name": "Evidence / release attestation",
-          "id": 111082298149,
+          "id": 111096433483,
           "conclusion": "skipped",
           "steps_observed": 0
         },
         {
           "name": "Deploy",
-          "id": 111082298214,
+          "id": 111096434252,
           "conclusion": "skipped",
-          "steps_observed": 0
-        },
-        {
-          "name": "Integration tests",
-          "id": 111082318151,
-          "conclusion": "failure",
           "steps_observed": 0
         }
       ],
@@ -100,23 +100,23 @@
     },
     "corroborating_runs": [
       {
-        "id": 37065946999,
-        "workflow": "Six-system exact HEAD evidence",
-        "job_id": 111033642356,
-        "conclusion": "failure",
-        "steps_observed": 0
-      },
-      {
-        "id": 37065946990,
-        "workflow": "Layer8 Cargo lock evidence",
-        "job_id": 111033642352,
-        "conclusion": "failure",
-        "steps_observed": 0
-      },
-      {
-        "id": 37065946971,
+        "id": 37086033683,
         "workflow": "Exact HEAD test evidence",
-        "job_id": 111033642311,
+        "job_id": 111096420350,
+        "conclusion": "failure",
+        "steps_observed": 0
+      },
+      {
+        "id": 37086033637,
+        "workflow": "Six-system exact HEAD evidence",
+        "job_id": 111096420314,
+        "conclusion": "failure",
+        "steps_observed": 0
+      },
+      {
+        "id": 37086033640,
+        "workflow": "Layer8 Cargo lock evidence",
+        "job_id": 111096420355,
         "conclusion": "failure",
         "steps_observed": 0
       }
@@ -124,24 +124,48 @@
     "code_level_result": "NOT_VERIFIED",
     "local_execution_fallback": "BLOCKED_AUTHENTICATED_CLONE_UNAVAILABLE",
     "latest_probe": {
-      "requested_job_id": 111068581763,
-      "rerun_api_accepted": true,
-      "attempt": 5,
-      "started_at": "2026-10-03T00:15:59Z",
-      "updated_at": "2026-10-03T00:16:05Z",
-      "duration_seconds": 6,
-      "typecheck_job_id": 111082286155,
+      "source": "fresh push-triggered exact-head run",
+      "started_at": "2026-10-03T01:25:26Z",
+      "updated_at": "2026-10-03T01:25:31Z",
+      "duration_seconds": 5,
+      "typecheck_job_id": 111096420945,
       "typecheck_steps_observed": 0,
       "typecheck_log_result": "404 BlobNotFound",
+      "artifacts_observed": 0,
       "blocker_cleared": false
     }
   },
   "current_head_code_delta": {
-    "changed_paths": [
-      "apps/web/components/NavBar.tsx"
+    "base_head": "f6953f86e54b0df3ae545c44e123725f1403263a",
+    "commits": [
+      {
+        "sha": "52530e63c24df256f1bbba67c0b5691f6878f1bd",
+        "path": "apps/web/app/globals.css",
+        "summary": "add max-width:100% and overflow-x:clip to html/body"
+      },
+      {
+        "sha": "ac366e2c36a326e02724bba10ddb336bf4f22543",
+        "path": "apps/web/app/runs/[id]/page.tsx",
+        "summary": "replace duplicate run-truth text with canonical release-data text"
+      }
     ],
-    "nav_bar_blob_sha": "a590d1aaffd9afe12f58a3a04b57abf86194247c",
-    "classification": "SOURCE_PRESENT_EXECUTION_NOT_VERIFIED"
+    "classification": "SOURCE_PRESENT_EXECUTION_NOT_VERIFIED",
+    "origin": "CONCURRENT_EXTERNAL_MUTATION_OBSERVED_DURING_CYCLE"
+  },
+  "combined_external_status": {
+    "classification": "SUCCESS_SIGNAL_ONLY",
+    "contexts": [
+      {
+        "context": "NEXY Validation R2 - nexy-validation",
+        "state": "success",
+        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/e5137d7c-ca34-4161-8ffa-d9c4e252f44a"
+      },
+      {
+        "context": "NEXY Validation R2 - nexy-validation-branch",
+        "state": "success",
+        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=9a91bded-4086-4607-9343-46ca1f9610e3&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
+      }
+    ]
   },
   "software_gates": {
     "typecheck": "NOT_VERIFIED",
@@ -165,15 +189,15 @@
     ]
   },
   "historical_exact_head_state": {
-    "head": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
+    "head": "f6953f86e54b0df3ae545c44e123725f1403263a",
     "classification": "SUPERSEDED_HISTORICAL"
   },
   "release_status": "BLOCKED",
   "final_status": "PARTIAL",
   "hash": "HASH_UNAVAILABLE_FOR_THIS_AI_CONTEXT_RECORD",
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T071453+0700-f6953f86-a5",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T071453+0700-f6953f86-a5.md",
+    "cycle_id": "NEXY-HOURLY-20261003T082338+0700-ac366e2c",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T082338+0700-ac366e2c.md",
     "status": "BLOCKED"
   }
 }

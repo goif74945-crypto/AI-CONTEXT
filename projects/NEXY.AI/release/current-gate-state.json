@@ -1,16 +1,16 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
   "schema_version": "3.0.0",
-  "observed_at": "2026-10-03T00:17:18.130Z",
+  "observed_at": "2026-10-03T01:29:36.640Z",
   "timestamp_source": "GitHub repository, commit-status, workflow-run, job, step and artifact APIs",
-  "trace_id": "NEXY-F6953F86-GHA-37065947069-ATTEMPT5",
+  "trace_id": "NEXY-AC366E2C-GHA-37086033681-ATTEMPT1",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "f6953f86e54b0df3ae545c44e123725f1403263a",
-    "tree": "63c3aeba2f4be22bc718123b921ab1d20ed7cdd3",
-    "commit_time": "2026-10-02T21:17:30Z",
-    "commit_message": "fix: make navigation fit mobile viewport"
+    "head": "ac366e2c36a326e02724bba10ddb336bf4f22543",
+    "tree": "6bc17372379d81dcf69a919685ef395d2244cfe9",
+    "commit_time": "2026-10-03T01:25:23Z",
+    "commit_message": "fix: disambiguate run truth heading"
   },
   "status": "BLOCKED_EXECUTION",
   "exact_head_execution": {
@@ -18,32 +18,52 @@
     "provider": "github-actions",
     "workflow": "NEXY CI / Deploy Gate",
     "workflow_path": ".github/workflows/deploy.yml",
-    "workflow_blob_sha": "0b92d3ec8226d2631cb0e32cd3c3e05124dfc21a",
-    "run_id": 37065947069,
-    "run_attempt": 5,
+    "run_id": 37086033681,
+    "run_attempt": 1,
     "event": "push",
     "run_status": "completed",
     "run_conclusion": "failure",
-    "run_url": "https://github.com/goif74945-crypto/NEXY.AI-/actions/runs/37065947069",
+    "run_url": "https://github.com/goif74945-crypto/NEXY.AI-/actions/runs/37086033681",
     "failed_jobs": 8,
     "skipped_jobs": 3,
     "failed_jobs_with_executable_steps": 0,
     "artifacts": 0,
     "sampled_log_download_result": "404 BlobNotFound",
     "code_level_result": "NOT_VERIFIED",
-    "run_started_at": "2026-10-03T00:15:59Z",
-    "run_updated_at": "2026-10-03T00:16:05Z",
+    "run_started_at": "2026-10-03T01:25:26Z",
+    "run_updated_at": "2026-10-03T01:25:31Z",
     "blocker_probe": {
-      "requested_job_id": 111068581763,
-      "rerun_api_accepted": true,
-      "fresh_attempt": 5,
-      "fresh_typecheck_job_id": 111082286155,
-      "fresh_typecheck_conclusion": "failure",
-      "fresh_typecheck_steps_observed": 0,
-      "fresh_typecheck_log_result": "404 BlobNotFound",
+      "source": "fresh push-triggered exact-head run",
+      "typecheck_job_id": 111096420945,
+      "typecheck_conclusion": "failure",
+      "typecheck_steps_observed": 0,
+      "typecheck_log_result": "404 BlobNotFound",
       "blocker_cleared": false
     }
   },
+  "corroborating_exact_head_runs": [
+    {
+      "id": 37086033683,
+      "workflow": "Exact HEAD test evidence",
+      "job_id": 111096420350,
+      "conclusion": "failure",
+      "steps_observed": 0
+    },
+    {
+      "id": 37086033637,
+      "workflow": "Six-system exact HEAD evidence",
+      "job_id": 111096420314,
+      "conclusion": "failure",
+      "steps_observed": 0
+    },
+    {
+      "id": 37086033640,
+      "workflow": "Layer8 Cargo lock evidence",
+      "job_id": 111096420355,
+      "conclusion": "failure",
+      "steps_observed": 0
+    }
+  ],
   "software_gates": {
     "typecheck_backend_and_web": "NOT_VERIFIED_RUNNER_PRE_STEP",
     "contract_tests": "NOT_VERIFIED_RUNNER_PRE_STEP",
@@ -66,15 +86,17 @@
     "status": "UNKNOWN_NO_EXECUTABLE_COVERAGE_STEP"
   },
   "combined_external_status": {
-    "classification": "CONFLICT",
+    "classification": "SUCCESS_SIGNAL_ONLY",
     "contexts": [
       {
         "context": "NEXY Validation R2 - nexy-validation",
-        "state": "success"
+        "state": "success",
+        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/e5137d7c-ca34-4161-8ffa-d9c4e252f44a"
       },
       {
         "context": "NEXY Validation R2 - nexy-validation-branch",
-        "state": "failure"
+        "state": "success",
+        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=9a91bded-4086-4607-9343-46ca1f9610e3&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
       }
     ]
   },
@@ -85,7 +107,7 @@
     "blocking_reasons": [
       "GitHub Actions jobs ended before executable steps were recorded",
       "No current-head runtime attestation artifact exists",
-      "External validation contexts conflict",
+      "External validation is not a completed unanimous success signal",
       "Exhaustive 837-row spec-code-test crosswalk is not proven"
     ]
   },
@@ -97,8 +119,10 @@
     "preventive_branch_creation_enforcement": "NOT_VERIFIED"
   },
   "historical_evidence_boundary": {
-    "prior_target_head": "e54abd3122427dcfc27f81cc725ec0f43ff00837",
-    "prior_target_tree": "0ad78e8f8fcdbbeb3141e483fa31e70172e2a08c",
+    "prior_target_head": "f6953f86e54b0df3ae545c44e123725f1403263a",
+    "prior_target_tree": "63c3aeba2f4be22bc718123b921ab1d20ed7cdd3",
+    "prior_probe_run_id": 37065947069,
+    "prior_probe_attempt": 6,
     "classification": "HISTORICAL_NOT_CURRENT_HEAD_PROOF"
   },
   "external_or_unresolved": {
@@ -110,8 +134,8 @@
   "negative_claim_rule": "No absence or pre-step workflow failure may be promoted to a code defect or MISSING implementation claim.",
   "verdict": "NOT_RELEASE_READY",
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T071453+0700-f6953f86-a5",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T071453+0700-f6953f86-a5.md",
+    "cycle_id": "NEXY-HOURLY-20261003T082338+0700-ac366e2c",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T082338+0700-ac366e2c.md",
     "status": "BLOCKED"
   }
 }

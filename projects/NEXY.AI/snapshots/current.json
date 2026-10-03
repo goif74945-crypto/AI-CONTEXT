@@ -1,10 +1,10 @@
 {
   "snapshot_kind": "NEXY.AI context truth snapshot",
-  "observed_at": "2026-10-03T00:17:18.130Z",
+  "observed_at": "2026-10-03T01:29:36.640Z",
   "context_repository": {
     "repository": "goif74945-crypto/AI-CONTEXT",
     "branch": "main",
-    "parent_commit": "e306f4b65a3f0cabea9d969c7fd4fe0e25cfff36",
+    "parent_commit": "eb3296b46d7abea24371014ee4def9763dc7f41f",
     "write_scope": "AI-CONTEXT current-state synchronization"
   },
   "source_authority": {
@@ -20,29 +20,29 @@
   "live_implementation_observation": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "f6953f86e54b0df3ae545c44e123725f1403263a",
-    "tree": "63c3aeba2f4be22bc718123b921ab1d20ed7cdd3",
-    "commit_time": "2026-10-02T21:17:30Z",
-    "commit_message": "fix: make navigation fit mobile viewport",
+    "head": "ac366e2c36a326e02724bba10ddb336bf4f22543",
+    "tree": "6bc17372379d81dcf69a919685ef395d2244cfe9",
+    "commit_time": "2026-10-03T01:25:23Z",
+    "commit_message": "fix: disambiguate run truth heading",
     "branches_observed": [
       "NEXY.ai"
     ],
     "observation_mode": "READ_ONLY_GITHUB_CODE_AND_CI_INSPECTION",
     "status": "PARTIAL_BLOCKED_CURRENT_HEAD_EXECUTION_NOT_VERIFIED",
-    "implementation_files_changed_by_this_cycle": false
+    "implementation_files_changed_by_this_cycle": false,
+    "concurrent_external_changes_observed": true
   },
   "current_head_delta": {
-    "parent": "f94eb1f0cc04f5003abc7e1d8663aa40d940ca66",
+    "base_head": "f6953f86e54b0df3ae545c44e123725f1403263a",
     "changed_paths": [
-      "apps/web/components/NavBar.tsx"
+      "apps/web/app/globals.css",
+      "apps/web/app/runs/[id]/page.tsx"
     ],
-    "changed_blob_sha": "a590d1aaffd9afe12f58a3a04b57abf86194247c",
-    "semantic_summary": "responsive navigation layout classes changed",
     "execution_status": "NOT_VERIFIED"
   },
   "current_ci_observation": {
-    "primary_run_id": 37065947069,
-    "attempt": 5,
+    "primary_run_id": 37086033681,
+    "attempt": 1,
     "workflow": "NEXY CI / Deploy Gate",
     "status": "completed",
     "conclusion": "failure",
@@ -56,27 +56,32 @@
     "doc_c_static_gate": "SKIPPED",
     "evidence_attestation": "SKIPPED",
     "deploy": "SKIPPED",
-    "run_started_at": "2026-10-03T00:15:59Z",
-    "run_updated_at": "2026-10-03T00:16:05Z",
-    "blocker_probe": "RERUN_ACCEPTED_ATTEMPT_5_BLOCKER_PERSISTS"
+    "run_started_at": "2026-10-03T01:25:26Z",
+    "run_updated_at": "2026-10-03T01:25:31Z"
   },
   "corroborating_ci_observation": {
     "runs": [
-      37065946999,
-      37065946990,
-      37065946971
+      37086033683,
+      37086033637,
+      37086033640
     ],
     "failed_jobs": 3,
     "executed_steps_observed": 0,
     "classification": "BLOCKED_PRE_STEP"
   },
   "combined_external_status": {
-    "classification": "CONFLICT",
-    "success_contexts": [
-      "NEXY Validation R2 - nexy-validation"
-    ],
-    "failure_contexts": [
-      "NEXY Validation R2 - nexy-validation-branch"
+    "classification": "SUCCESS_SIGNAL_ONLY",
+    "contexts": [
+      {
+        "context": "NEXY Validation R2 - nexy-validation",
+        "state": "success",
+        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/e5137d7c-ca34-4161-8ffa-d9c4e252f44a"
+      },
+      {
+        "context": "NEXY Validation R2 - nexy-validation-branch",
+        "state": "success",
+        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=9a91bded-4086-4607-9343-46ca1f9610e3&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
+      }
     ]
   },
   "evidence_freshness": {
@@ -96,14 +101,14 @@
     "Restore an executable CI runner path and obtain step logs for the exact current HEAD.",
     "Run typecheck, tests, coverage, production build, browser E2E and DOC-C gate for the exact current HEAD.",
     "Complete the exhaustive 837-row spec-code-test crosswalk before claiming full compliance.",
-    "Resolve conflicting external validation contexts.",
+    "Wait for the pending external validation context and resolve any failure.",
     "Generate exact-head DOC-E/release evidence only after executable gates pass."
   ],
-  "supersedes_snapshot_head": "a583e67da8b0374960a87d72ff6d48d728232451",
+  "supersedes_snapshot_head": "f6953f86e54b0df3ae545c44e123725f1403263a",
   "hash": "HASH_UNAVAILABLE",
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T071453+0700-f6953f86-a5",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T071453+0700-f6953f86-a5.md",
+    "cycle_id": "NEXY-HOURLY-20261003T082338+0700-ac366e2c",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T082338+0700-ac366e2c.md",
     "status": "BLOCKED"
   }
 }
