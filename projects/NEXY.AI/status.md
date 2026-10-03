@@ -8,12 +8,13 @@
 - branch inventory: only `NEXY.ai`
 - source mutation by this cycle: none
 - latest executable evidence remains Railway deployment `b5f4902d-f5c5-4c22-a419-cdfd03b53699`
-- Railway build/typecheck/tests/coverage/DOC-C/web build/browser E2E and DOC-E E1-E9: `VERIFIED_PASS` according to the preserved exact-head execution record
+- Railway build/typecheck/tests/coverage/DOC-C static checks and module boundaries/web build/browser E2E and DOC-E E1-E9: `VERIFIED_PASS` according to the preserved exact-head execution record
 - DOC-E E10: `FAILED` — `DOC_E_E10_PROVIDER_RECEIPT_IDENTITY_MISMATCH`
 - code inspection confirms E10 strictly requires provider receipt `tested_sha` and `tested_tree` to equal the exact target; weakening this check is forbidden
 - GitHub Actions run `37097611233`, attempt 2: 8 failed, 3 skipped, 0 executable steps, 0 artifacts
 - TypeScript job `111164487979`: runner_id 0, empty runner name, 0 steps; log `404 BlobNotFound`
 - external commit statuses: one success plus one failure; overall failure
+- recent queue retention, DOC-E database isolation and browser-listener changes: execution evidence exists, but direct numbered spec-section alignment is `PARTIAL / UNKNOWN`; the primary DOC-C/DOC-E source text was not readable through the current repository connector and repository comments conflict on queue section mapping
 - exhaustive 837-row implementation status: `UNKNOWN`
 - release/deploy authorization: `BLOCKED`
 - cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2.md`
@@ -21,9 +22,11 @@
 Overall status: **PARTIAL / BLOCKED — implementation slice verified by prior exact-head Railway execution; E10 external receipt and release evidence unresolved.**
 <!-- HOURLY_CYCLE_LATEST:END -->
 
-## Status
+## Historical / superseded audit body — target `f94eb1f0cc04f5003abc7e1d8663aa40d940ca66`
 
-**PARTIAL / BLOCKED — CURRENT HEAD IDENTIFIED; EXACT-HEAD FULL VALIDATION NOT PROVEN / RELEASE NOT AUTHORIZED**
+The sections below preserve an earlier audit and must not be read as current-head truth. The latest overlay above is authoritative for current status.
+
+**HISTORICAL / SUPERSEDED — RELEASE WAS NOT AUTHORIZED FOR THAT AUDIT TARGET**
 
 This file is the current-head overlay for NEXY.AI. Historical audits and evidence remain useful lineage, but evidence from another commit/ref/environment must not be promoted to current-head proof.
 
