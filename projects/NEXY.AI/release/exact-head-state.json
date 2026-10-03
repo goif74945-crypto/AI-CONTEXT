@@ -14,7 +14,9 @@
   "authority": {
     "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
-    "normalized_rows": 837
+    "normalized_rows": 837,
+    "primary_source_content_access": "BLOCKED",
+    "numbered_section_mapping": "CONFLICT_UNKNOWN"
   },
   "exact_head_execution": {
     "provider": "railway",
@@ -101,7 +103,12 @@
       "scripts/doc-e/railway-browser-e2e.sh",
       "tests/contract/railway-browser-e2e-gate.test.ts"
     ],
-    "classification": "VERIFIED_PASS_FOR_IMPLEMENTED_SLICE"
+    "classification": "VERIFIED_EXECUTION_PASS_FOR_CHANGED_SLICE",
+    "spec_alignment": {
+      "status": "PARTIAL_UNKNOWN",
+      "direct_numbered_section_mapping": "BLOCKED",
+      "reason": "Primary DOC-C/DOC-E text was not readable through the current repository connector; secondary repository citations conflict. Execution success does not prove canonical requirement alignment."
+    }
   },
   "exhaustive_scope": {
     "normalized_rows": 837,
