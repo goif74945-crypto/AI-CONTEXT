@@ -1,0 +1,58 @@
+{
+  "CHECKPOINT_ID": "NEXY-SWARM-SCHEMA-009",
+  "HEAD_BEFORE": "b55b81b809e209b3f811c09c03f4aa73cc2d800f",
+  "HEAD_AFTER": "e4b6e580612e5fb2b84eca756059564a22ac1629",
+  "TREE_AFTER": "481e8d8f4c07c52d33764ec61a94b15705a745cf",
+  "BRANCH": "NEXY.ai",
+  "SYSTEM": [
+    "FABRIC-SWARM",
+    "ENGINE-JUDGE",
+    "CONTRACT-CONSENSUS-RESULT"
+  ],
+  "REQUIREMENTS": [
+    "REQ-DOC-C-SWARM-003",
+    "REQ-DOC-C-CONTRACT-003",
+    "REQ-DOC-C-CONTRACT-004",
+    "REQ-DOC-C-RELEASE-006",
+    "REQ-DOC-C-RELEASE-007"
+  ],
+  "FILES_CHANGED": [
+    "tests/contract/agent-adapter-contract.test.ts",
+    "tests/contract/release-spine.test.ts",
+    "tests/contract/consensus-result-contract.test.ts",
+    "tests/contract/swarm-timeouts.test.ts"
+  ],
+  "TESTS_RUN": [
+    {
+      "command": "Railway canonical build gate: cargo test -p core-kernel -- --nocapture && cargo check -p nexy-daemon && npm run typecheck && npm run test:contract",
+      "provider": "railway",
+      "deployment_id": "aa8be413-8983-4e9a-985c-ca08c01c5721",
+      "commit_hash": "e4b6e580612e5fb2b84eca756059564a22ac1629",
+      "tree_hash": "481e8d8f4c07c52d33764ec61a94b15705a745cf",
+      "source_identity": "PASS",
+      "core_tests": "263 passed; 0 failed",
+      "typecheck": "PASS",
+      "contract": "596 passed; 6 failed; 112 files",
+      "exit_code": 1,
+      "duration_observed": "2.79s contract test phase",
+      "output_excerpt": "Test Files 4 failed | 108 passed (112); Tests 6 failed | 596 passed (602); build stopped at [15/25] npm run test:contract"
+    }
+  ],
+  "RESULT": "Canonical agent schema fixture cluster is repaired; production validation remains strict. The exact-head contract gate remains FAIL due to six unrelated failures.",
+  "EVIDENCE": {
+    "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "commit_url": "https://github.com/goif74945-crypto/NEXY.AI-/commit/e4b6e580612e5fb2b84eca756059564a22ac1629",
+    "exact_head_identity": "PASS",
+    "stale_duplicate_excluded": "50cd281d-fe06-486c-839e-bc6f5a081a0a failed source identity against b55b81b809e209b3f811c09c03f4aa73cc2d800f"
+  },
+  "BLOCKERS": [
+    "canonical-api.test.ts: expected vault commit call omits newly enforced authorRole OWNER",
+    "migration-rollback-contract.test.ts: 20261003112000_lo2_feedback_dispatch has no non-empty migration.down.sql",
+    "scope-boundary.test.ts: authority-time Phase-F integration test is not in experimental manifest",
+    "scope-boundary.test.ts: packages/queue/workers.ts imports packages/phase-f",
+    "scope-boundary.test.ts: packages/swarm/pipeline.ts imports packages/phase-f",
+    "swarm-prompt-law-boundary.test.ts: fixture policy fails current canonical policy validation"
+  ],
+  "NEXT_TASK": "Inspect and repair the prompt-law policy/schema cluster or scope-boundary cluster after current-head/source re-read; keep each as a separate atomic batch.",
+  "TRUTH_STATUS": "PARTIAL / exact-head contract gate FAILED / NOT deployable / NOT release authorized"
+}
