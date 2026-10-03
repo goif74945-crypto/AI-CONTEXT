@@ -15,7 +15,10 @@
   "authority": {
     "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
-    "normalized_rows": 837
+    "normalized_rows": 837,
+    "primary_source_content_access": "BLOCKED",
+    "numbered_section_mapping": "CONFLICT_UNKNOWN",
+    "citation_note": "Primary DOC-C/DOC-E text was not readable through the current repository connector; secondary repository citations conflict and cannot establish numbered-section compliance."
   },
   "exact_head_execution": {
     "provider": "railway",
@@ -91,16 +94,18 @@
   "software_gates": {
     "typecheck": "VERIFIED_PASS",
     "contract": "VERIFIED_PASS",
-    "integration": "VERIFIED_PASS",
+    "integration": "NOT_SEPARATELY_PROVEN",
     "full_suite": "VERIFIED_PASS",
     "coverage": "VERIFIED_PASS",
     "web_build": "VERIFIED_PASS",
     "browser_e2e": "VERIFIED_PASS",
-    "doc_c": "VERIFIED_PASS",
+    "doc_c": "VERIFIED_PASS_STATIC_CHECK_ONLY",
     "doc_e_e1_e9": "VERIFIED_PASS",
     "doc_e_e10": "FAILED",
     "release_attestation": "BLOCKED",
-    "deploy": "BLOCKED"
+    "deploy": "BLOCKED",
+    "doc_c_scope": "STATIC_CHECK_AND_MODULE_BOUNDARIES_NOT_FULL_SPEC_ALIGNMENT",
+    "changed_slice_spec_alignment": "PARTIAL_UNKNOWN"
   },
   "verdict": "NOT_RELEASE_READY",
   "final_status": "PARTIAL"
