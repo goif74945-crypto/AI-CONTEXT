@@ -1,0 +1,53 @@
+{
+  "CHECKPOINT_ID": "NEXY-LO2-Q64-036",
+  "CHECKPOINT_TIME": "2026-10-03T20:41:53Z",
+  "PROJECT": "NEXY.AI / NEXY-IGNIS",
+  "SOURCE_SHA256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BRANCH": "NEXY.ai",
+  "HEAD_BEFORE": "faf643f974d69ff80269a67c6edb1acea09caa87",
+  "HEAD_AFTER": "2adaae3cec69a14d999e1f561842d8196354ac73",
+  "TREE_AFTER": "c0afb56bd7987ab8ffa22abaca737b72d57684bd",
+  "SYSTEM": "Lo2 / Universal State Ledger durable confidence storage",
+  "REQUIREMENTS": [
+    "DOCX paragraphs 6766-6774: authoritative math is signed 128-bit fixed-point Q64.64, no mixed precision",
+    "Persist Q64.64 confidence without signed-BIGINT overflow or IEEE-754 conversion"
+  ],
+  "FILES_CHANGED": [
+    "prisma/schema.prisma",
+    "prisma/migrations/20261003160000_logic_quantum_confidence_numeric/migration.sql",
+    "prisma/migrations/20261003160000_logic_quantum_confidence_numeric/migration.down.sql",
+    "packages/lo2/engine.ts",
+    "tests/contract/lo2-durable-anchor.test.ts"
+  ],
+  "CHANGE_SUMMARY": {
+    "OLD_BEHAVIOR": "logic_quanta.confidence was BigInt; runtime Lo2 upsert failed for Q64.64 values reaching 2^64 with LO2_USL_WRITE_FAILED_PRISMA_UNKNOWN_REQUEST.",
+    "NEW_BEHAVIOR": "logic_quanta.confidence is NUMERIC(20,0); Lo2 marshals bigint to Prisma.Decimal and back with an exact integer check; rollback casts to BIGINT and fails closed if out of range."
+  },
+  "TESTS_RUN": {
+    "exact_deployment": "d8567349-9f11-4a6f-8f19-c5a5d36a9000",
+    "build_static": "PASS: Phase-F, six-system, coverage, DOC-C static/boundary, Web build/BUILD_ID",
+    "full_vitest": "PASS: 157 test files, 1078 tests",
+    "migration_apply": "PASS: 20261003160000_logic_quantum_confidence_numeric applied; all migrations successful",
+    "browser_directive": "PASS: 1/1",
+    "browser_critical": "FAIL: 7/10 passed, 3 failed",
+    "lo2_runtime_observation": "Two feedback jobs completed with status=SUCCEEDED; exact deploy logs contain no LO2_USL_WRITE_FAILED, PRISMA_UNKNOWN_REQUEST, or LO2_FEEDBACK status=FAILED"
+  },
+  "EVIDENCE": [
+    "Railway deployment d8567349-9f11-4a6f-8f19-c5a5d36a9000",
+    "NEXY_BROWSER_E2E=FAIL code=CRITICAL_FLOWS tested_sha=2adaae3cec69a14d999e1f561842d8196354ac73 tested_tree=c0afb56bd7987ab8ffa22abaca737b72d57684bd deployment_id=d8567349-9f11-4a6f-8f19-c5a5d36a9000"
+  ],
+  "BLOCKERS": [
+    "Browser critical flow: mobile .audit-card-list missing",
+    "Browser critical flow: desktop .audit-table-wrap > table missing",
+    "AUDITOR audit API returns failure with AUDIT_ROLE_ATTRIBUTION_MISSING",
+    "Deployment service is CRASHED after the critical browser gate failed"
+  ],
+  "BOOTSTRAP_FAILURES": [
+    "Auto-deploy 08d96fad-32b9-41d7-bdc4-84685fedfed0 failed before tests because stale DOC_E_TESTED_SHA/tree/nonce were snapshotted; not classified as a code failure.",
+    "Exact redeploy used corrected source identity."
+  ],
+  "NEXT_TASK": "Atomic batch NEXY-AUDIT-API-UI-037: inspect audit API role attribution and AuditLogTable responsive selectors; read source DOC-C/D and run targeted browser tests.",
+  "TRUTH_STATUS": "PARTIAL",
+  "DEPLOYABLE": "NO",
+  "RELEASE_AUTHORIZED": "NO"
+}
