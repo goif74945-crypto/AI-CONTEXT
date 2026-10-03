@@ -1,0 +1,99 @@
+{
+  "checkpoint_id": "NEXY-LO2-DIAGNOSTIC-028",
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "source": {
+    "file": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "head_before": "6748873242a7f81f3a13ec9dceaa59ecfc6a143c",
+  "tree_before": "10fd819c6fdeac11efa28416537dda9411984be2",
+  "head_after": "fcc3814be7ca1433b857cb248a298d57ac5d9999",
+  "tree_after": "48cfce034dd75aa4f1169ac708dab8b6bd5c11ec",
+  "commit_message": "chore(lo2): expose feedback processing discriminator",
+  "system": "Lo2 feedback dispatch / queue worker boundary",
+  "requirements": [
+    "The feedback processing outcome must distinguish a processed failure from an already-failed or non-processed record.",
+    "The worker must expose the durable feedback result without exposing raw error text.",
+    "A failed Lo2 feedback result must remain fail-closed and must not be represented as an unqualified successful feedback outcome."
+  ],
+  "source_location": [
+    "DOC-C Lo2 durable feedback/runtime section, source extraction lines 20955-21090",
+    "DOC-C feedback loop / uncertainty propagation section, source extraction lines 22473-22583"
+  ],
+  "files_changed": [
+    "packages/queue/workers.ts",
+    "tests/contract/lo2-durable-anchor.test.ts"
+  ],
+  "proven_gap_before": [
+    "The runtime worker log emitted status and error code but did not expose the processLo2FeedbackDispatch processed discriminator.",
+    "The exact-head runtime had a failed Lo2 feedback result whose processing state could not be distinguished from a previously persisted failure using the existing log."
+  ],
+  "change": [
+    "Added processed=${lo2Feedback.processed} to the bounded [LO2_FEEDBACK] worker log.",
+    "Added a static contract assertion that the worker log contains the discriminator."
+  ],
+  "security_impact": "Preserves fail-closed behavior and emits only the allow-listed error code plus boolean processing discriminator; no raw error text was added.",
+  "determinism_impact": "No authoritative state or ordering behavior changed; only bounded diagnostic output changed.",
+  "tests": {
+    "exact_head": "fcc3814be7ca1433b857cb248a298d57ac5d9999",
+    "exact_tree": "48cfce034dd75aa4f1169ac708dab8b6bd5c11ec",
+    "deployment_id": "b8a22762-be8e-4e00-b9de-c64feed1dcf2",
+    "deployment_status": "SUCCESS",
+    "source_identity": "Matched NEXY.ai/fcc3814be7ca1433b857cb248a298d57ac5d9999 and tree 48cfce034dd75aa4f1169ac708dab8b6bd5c11ec",
+    "commands": [
+      "npm run test:coverage",
+      "DOC-C static and boundary checks",
+      "Rust/typecheck/static gates",
+      "web build / BUILD_ID gate",
+      "browser directive smoke",
+      "browser critical flows"
+    ],
+    "unit_contract_result": {
+      "test_files": 157,
+      "passed": 1071,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    "browser_result": {
+      "directive_smoke": "1 passed",
+      "critical_flows": "7 passed, 3 failed",
+      "result": "FAIL"
+    }
+  },
+  "runtime_evidence": {
+    "deployment_id": "b8a22762-be8e-4e00-b9de-c64feed1dcf2",
+    "source_identity": "tested_sha=fcc3814be7ca1433b857cb248a298d57ac5d9999 tested_tree=48cfce034dd75aa4f1169ac708dab8b6bd5c11ec",
+    "lo2_log": "[LO2_FEEDBACK] pipelineRunId=01JGFJK6K61Z61X70ZE0ECGDC9 status=FAILED processed=true error=LO2_FEEDBACK_PROCESSING_FAILED",
+    "worker_log": "[COMPLETED] ... pipelineRunId=01JGFJK6K61Z61X70ZE0ECGDC9 status=SUCCEEDED",
+    "audit_log": "[AUDIT_API] read failure code=AUDIT_ROLE_ATTRIBUTION_MISSING",
+    "browser_gate": "NEXY_BROWSER_E2E=FAIL code=CRITICAL_FLOWS tested_sha=fcc3814be7ca1433b857cb248a298d57ac5d9999 tested_tree=48cfce034dd75aa4f1169ac708dab8b6bd5c11ec deployment_id=b8a22762-be8e-4e00-b9de-c64feed1dcf2"
+  },
+  "stale_or_invalid_evidence": [
+    {
+      "deployment_id": "0b4e650a-9f06-4670-ac11-692a968037ad",
+      "reason": "Used previous DOC_E_TESTED_SHA/tree and previous validation nonce; source gate failed before current tests.",
+      "use_for_current_head": false
+    }
+  ],
+  "truth_status": {
+    "targeted_batch": "PASS",
+    "exact_head_build_and_test": "PASS",
+    "exact_head_runtime": "PASS_WITH_RUNTIME_FAILURE_EVIDENCE",
+    "browser_critical_flow": "FAIL",
+    "audit_api": "BLOCKED_ENVIRONMENT",
+    "lo2_root_cause": "NOT_VERIFIED",
+    "project_release": "BLOCKED",
+    "full_project_percentage": "NOT_RECONSTRUCTED",
+    "requirement_denominator": "837 normalized rows are not a reconstructed full-project denominator in this checkpoint"
+  },
+  "blockers": [
+    "Browser mobile audit card and desktop audit table selectors are still absent in exact-head runtime.",
+    "AUDITOR audit read route still fails closed with AUDIT_ROLE_ATTRIBUTION_MISSING because persisted audit rows lack required role attribution.",
+    "The observed Lo2 failure is processed=true but remains classified only as LO2_FEEDBACK_PROCESSING_FAILED; the underlying runtime cause is not exposed by current bounded diagnostics.",
+    "Exact-head browser gate is failing, so deployment/release authorization is not proven."
+  ],
+  "next_task": "Inspect the exact source path that creates the processed=true Lo2 failure and add only a source-backed, bounded diagnostic classification if the underlying cause can be proven; otherwise freeze rather than guessing or weakening fail-closed behavior."
+}
