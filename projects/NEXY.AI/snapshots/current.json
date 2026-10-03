@@ -1,116 +1,81 @@
 {
   "snapshot_kind": "NEXY.AI context truth snapshot",
-  "observed_at": "2026-10-03T03:22:55.837Z",
+  "observed_at": "2026-10-03T04:50:13Z",
   "context_repository": {
     "repository": "goif74945-crypto/AI-CONTEXT",
     "branch": "main",
-    "parent_commit": "2bc5856f352d5ed1c9bed07245c26583a6137912",
+    "observed_parent_commit": "b2a7947c3d9e696525fd07bd414da9aae67b8e0d",
     "write_scope": "AI-CONTEXT current-state synchronization"
   },
   "source_authority": {
-    "document": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
-    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
-    "normalized_rows": 837,
-    "current_build_spec": "DOC-C",
-    "product_design": "DOC-D where supported by DOC-C",
-    "proof_source": "DOC-E",
-    "rule": "Design, implementation, runtime and deployment evidence are separate truth domains."
+    "normalized_rows": 837
   },
   "live_implementation_observation": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "ac366e2c36a326e02724bba10ddb336bf4f22543",
-    "tree": "6bc17372379d81dcf69a919685ef395d2244cfe9",
-    "commit_time": "2026-10-03T01:25:23Z",
-    "commit_message": "fix: disambiguate run truth heading",
-    "branches_observed": [
-      "NEXY.ai"
-    ],
-    "observation_mode": "READ_ONLY_GITHUB_CODE_AND_CI_INSPECTION",
-    "status": "PARTIAL_BLOCKED_CURRENT_HEAD_EXECUTION_NOT_VERIFIED",
-    "implementation_files_changed_by_this_cycle": false,
-    "concurrent_external_changes_observed": true
+    "head": "9cedbbd94af495199ca10f96e747689b0c19ddb1",
+    "tree": "205c038c85f2c18c0a42d391c212fe367e2aab7d",
+    "commit_time": "2026-10-03T04:45:39Z",
+    "commit_message": "fix: keep listener contract source-unambiguous",
+    "status": "PARTIAL",
+    "implementation_files_changed_by_this_cycle": true
   },
-  "current_head_delta": {
-    "base_head": "f6953f86e54b0df3ae545c44e123725f1403263a",
-    "changed_paths": [
-      "apps/web/app/globals.css",
-      "apps/web/app/runs/[id]/page.tsx"
-    ],
-    "execution_status": "NOT_VERIFIED"
+  "validation": {
+    "provider": "railway",
+    "deployment_id": "b5f4902d-f5c5-4c22-a419-cdfd03b53699",
+    "status": "PARTIAL",
+    "deployment_status": "CRASHED_AFTER_E10_FAILURE",
+    "build": "VERIFIED_PASS",
+    "typecheck": "VERIFIED_PASS",
+    "contract_test_files": 108,
+    "full_test_files": 153,
+    "full_tests": 1046,
+    "coverage": {
+      "status": "VERIFIED_PASS",
+      "statements": 80.68,
+      "branches": 74.8,
+      "functions": 79.58,
+      "lines": 82.35
+    },
+    "doc_c_static": "VERIFIED_PASS",
+    "module_boundaries": "VERIFIED_PASS",
+    "web_build": "VERIFIED_PASS",
+    "browser_e2e": {
+      "status": "VERIFIED_PASS",
+      "tests": 11,
+      "suites": 2
+    },
+    "doc_e_internal_e1_e9": "VERIFIED_PASS",
+    "doc_e_e10": "FAILED",
+    "failure_code": "DOC_E_E10_PROVIDER_RECEIPT_IDENTITY_MISMATCH",
+    "url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=b5f4902d-f5c5-4c22-a419-cdfd03b53699&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
   },
-  "current_ci_observation": {
-    "primary_run_id": 37086033681,
-    "attempt": 2,
-    "workflow": "NEXY CI / Deploy Gate",
-    "status": "completed",
-    "conclusion": "failure",
-    "failed_jobs": 8,
-    "skipped_jobs": 3,
-    "executed_steps_observed": 0,
-    "artifacts_observed": 0,
-    "sampled_job_logs": "TypeScript job 111117081947: 404 BlobNotFound",
-    "code_level_result": "NOT_VERIFIED",
-    "validation_path": "BLOCKED_PRE_STEP",
-    "doc_c_static_gate": "SKIPPED",
-    "evidence_attestation": "SKIPPED",
-    "deploy": "SKIPPED",
-    "run_started_at": "2026-10-03T03:22:34Z",
-    "run_updated_at": "2026-10-03T03:22:39Z"
-  },
-  "corroborating_ci_observation": {
-    "runs": [
-      37086033683,
-      37086033637,
-      37086033640
-    ],
-    "failed_jobs": 3,
-    "executed_steps_observed": 0,
-    "classification": "BLOCKED_PRE_STEP"
-  },
-  "combined_external_status": {
-    "classification": "CONFLICT_PARTIAL_SIGNAL",
-    "contexts": [
-      {
-        "context": "NEXY Validation R2 - nexy-validation",
-        "state": "success",
-        "description": "No deployment needed - watched paths not modified",
-        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/e5137d7c-ca34-4161-8ffa-d9c4e252f44a"
-      },
-      {
-        "context": "NEXY Validation R2 - nexy-validation-branch",
-        "state": "failure",
-        "description": "Deployment failed",
-        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=9a91bded-4086-4607-9343-46ca1f9610e3&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
-      }
-    ]
-  },
-  "evidence_freshness": {
-    "current_head_doc_e_required": 12,
-    "current_head_doc_e_verified_pass": null,
-    "runtime_current_head_proof": false,
-    "release_attestation_artifact": false,
-    "historical_records_are_not_current_proof": true
+  "github_actions": {
+    "run_id": 37096933700,
+    "status": "BLOCKED",
+    "reason": "8 failed jobs and 3 skipped jobs with zero executable steps; zero artifacts"
   },
   "release_truth": {
-    "status": "NON_DEPLOYABLE",
-    "authorization": "BLOCKED",
-    "runtime": "NOT_VERIFIED",
-    "rule": "Do not release from source presence, stale evidence or a CI workflow with zero recorded executable steps."
+    "status": "BLOCKED",
+    "authorized": false,
+    "deploy_authorized": false,
+    "blocking_reasons": [
+      "E10 provider command receipt identity does not match the exact current head/tree",
+      "Current exact-head E11/E12 external authorization evidence is not proven",
+      "Exhaustive 837-row spec-code-test crosswalk remains UNKNOWN"
+    ]
   },
   "open_findings": [
-    "Restore an executable CI runner path and obtain step logs for the exact current HEAD.",
-    "Run typecheck, tests, coverage, production build, browser E2E and DOC-C gate for the exact current HEAD.",
-    "Complete the exhaustive 837-row spec-code-test crosswalk before claiming full compliance.",
-    "Resolve the conflicting external validation contexts (one success and one failure).",
-    "Generate exact-head DOC-E/release evidence only after executable gates pass."
+    "Refresh the E10 provider command receipt for the exact current SHA/tree.",
+    "Obtain exact-head E11/E12 external authorization evidence.",
+    "Restore GitHub Actions executable-step evidence.",
+    "Complete the exhaustive 837-row spec-code-test crosswalk."
   ],
-  "supersedes_snapshot_head": "f6953f86e54b0df3ae545c44e123725f1403263a",
-  "hash": "HASH_UNAVAILABLE",
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2.md",
-    "status": "BLOCKED"
+    "cycle_id": "NEXY-HOURLY-20261003T111817+0700-9cedbbd9",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T111817+0700-9cedbbd9.md",
+    "status": "PARTIAL"
   }
 }
