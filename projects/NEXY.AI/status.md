@@ -1,27 +1,21 @@
 # NEXY.AI — Current Context Status
 
 <!-- HOURLY_CYCLE_LATEST:START -->
-## Latest verified hourly-cycle overlay — 2026-10-03 10:23 ICT
+## Latest verified hourly-cycle overlay — 2026-10-03 11:50 ICT
 
-This overlay supersedes older current-looking HEAD statements below. Older sections remain historical evidence.
-
-- implementation repository: `goif74945-crypto/NEXY.AI-`
-- canonical/default branch: `NEXY.ai`
-- exact HEAD/tree: `ac366e2c36a326e02724bba10ddb336bf4f22543` / `6bc17372379d81dcf69a919685ef395d2244cfe9`
-- branch inventory: only `NEXY.ai` was returned
-- source changes at current HEAD were authored outside this cycle; this cycle made no NEXY.AI source mutation
-- changed paths since `f6953f86...`: `apps/web/app/globals.css`, `apps/web/app/runs/[id]/page.tsx`
-- exact-head CI: run `37086033681`, rerun attempt `2`
-- rerun action: TypeScript job `111096420945` accepted; resulting attempt started `2026-10-03T03:22:34Z`
-- CI result: 8 failed jobs, 3 skipped jobs, 0 recorded executable steps, 0 artifacts
-- TypeScript attempt-2 job: `111117081947`; steps: 0; log retrieval: `404 BlobNotFound`
-- blocker state: `BLOCKED_BEFORE_EXECUTABLE_STEPS`; code-level result: `NOT_VERIFIED`
-- external statuses: `nexy-validation=success`; `nexy-validation-branch=failure`; classification `CONFLICT / PARTIAL_SIGNAL`
+- implementation repository/branch: `goif74945-crypto/NEXY.AI-` / `NEXY.ai`
+- exact HEAD/tree: `9cedbbd94af495199ca10f96e747689b0c19ddb1` / `205c038c85f2c18c0a42d391c212fe367e2aab7d`
+- exact-head Railway build: `VERIFIED_PASS`
+- typecheck, Rust/core, contract/integration/full suite, coverage, DOC-C/static boundaries and production web build: `VERIFIED_PASS`
+- full suite: 153 files / 1046 tests; browser E2E: 11 tests
+- DOC-E E1-E9 sequential path: `VERIFIED_PASS`
+- DOC-E E10: `FAILED` — `DOC_E_E10_PROVIDER_RECEIPT_IDENTITY_MISMATCH`
+- GitHub Actions run `37096933700`: `BLOCKED` before executable steps
 - exhaustive 837-row implementation status: `UNKNOWN`
 - release/deploy authorization: `BLOCKED`
-- cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2.md`
+- cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T111817+0700-9cedbbd9.md`
 
-The prior attempt-1 state is historical relative to this record.
+Overall status: **PARTIAL / BLOCKED — implementation slice verified; external release evidence stale.**
 <!-- HOURLY_CYCLE_LATEST:END -->
 
 ## Status
