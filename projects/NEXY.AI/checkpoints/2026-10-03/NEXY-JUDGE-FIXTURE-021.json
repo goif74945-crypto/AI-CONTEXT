@@ -1,0 +1,99 @@
+{
+  "checkpoint_id": "NEXY-JUDGE-FIXTURE-021",
+  "recorded_at": "2026-10-03T16:18:00Z",
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "source": {
+    "path": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "source_location": "Core/JUDGE section, extracted lines 1309-1324"
+  },
+  "implementation_repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "head_before": "67b734ec08bb8ef0a41e4f971cac89c2290c9409",
+  "tree_before": "df1971ad76aca4938d0f89de03620b64bf37a0eb",
+  "head_after": "01dd12b86062d9833bf8552b427757eccee85e52",
+  "tree_after": "d30e45f178ecdf4ddad747b121f869794589e108",
+  "system": "JUDGE / SWARM proposal boundary",
+  "requirements": [
+    "JUDGE receives results from multiple AI agents and decides by deterministic rules without personal opinion.",
+    "A valid proposal entering the JUDGE boundary must carry the canonical reasoning identity required by the current AgentProposal validator.",
+    "Coverage must exercise both matching and non-matching multi-agent proposal decisions."
+  ],
+  "files_changed": [
+    "tests/coverage/judge-law.test.ts"
+  ],
+  "change_summary": "Aligned the valid Judge coverage fixtures with the existing strict AgentProposal boundary by adding deterministic 64-hex reasoningHash values. Production JUDGE and validator code were not changed; malformed-proposal assertions remain fail-closed.",
+  "tests_run": [
+    {
+      "command": "npm run test:coverage",
+      "deployment_id": "861a14c4-8fb3-430a-84cf-76440b575e3a",
+      "head": "01dd12b86062d9833bf8552b427757eccee85e52",
+      "tree": "d30e45f178ecdf4ddad747b121f869794589e108",
+      "result": "PASS",
+      "output_excerpt": "157 test files passed; 1066 tests passed. tests/coverage/judge-law.test.ts: 25 tests passed.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run test:contract",
+      "deployment_id": "861a14c4-8fb3-430a-84cf-76440b575e3a",
+      "head": "01dd12b86062d9833bf8552b427757eccee85e52",
+      "tree": "d30e45f178ecdf4ddad747b121f869794589e108",
+      "result": "PASS",
+      "output_excerpt": "112 test files passed; 602 tests passed.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run test:experimental",
+      "deployment_id": "861a14c4-8fb3-430a-84cf-76440b575e3a",
+      "head": "01dd12b86062d9833bf8552b427757eccee85e52",
+      "tree": "d30e45f178ecdf4ddad747b121f869794589e108",
+      "result": "PASS",
+      "output_excerpt": "81 test files passed; 770 tests passed.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run check:phase-f",
+      "deployment_id": "861a14c4-8fb3-430a-84cf-76440b575e3a",
+      "head": "01dd12b86062d9833bf8552b427757eccee85e52",
+      "tree": "d30e45f178ecdf4ddad747b121f869794589e108",
+      "result": "PASS",
+      "output_excerpt": "Phase F gate PASSED; Lo3 canonical prompt-law authority 234/100 (234%).",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run typecheck",
+      "deployment_id": "861a14c4-8fb3-430a-84cf-76440b575e3a",
+      "head": "01dd12b86062d9833bf8552b427757eccee85e52",
+      "result": "PASS",
+      "exact_head_binding": true
+    },
+    {
+      "command": "cargo check -p core-kernel && cargo test -p core-kernel -- --nocapture",
+      "deployment_id": "861a14c4-8fb3-430a-84cf-76440b575e3a",
+      "head": "01dd12b86062d9833bf8552b427757eccee85e52",
+      "result": "PASS",
+      "output_excerpt": "core-kernel: 263 passed; 0 failed.",
+      "exact_head_binding": true
+    }
+  ],
+  "evidence": {
+    "provider": "Railway",
+    "deployment_id": "861a14c4-8fb3-430a-84cf-76440b575e3a",
+    "commit_hash": "01dd12b86062d9833bf8552b427757eccee85e52",
+    "tree_hash": "d30e45f178ecdf4ddad747b121f869794589e108",
+    "source_identity": {
+      "kind": "NEXY_DOC_E_PROVIDER_SOURCE_IDENTITY",
+      "tested_sha": "01dd12b86062d9833bf8552b427757eccee85e52",
+      "tested_tree": "d30e45f178ecdf4ddad747b121f869794589e108",
+      "rerun_nonce": "2026-10-03T18:05:00Z-NEXY-JUDGE-FIXTURE-021"
+    },
+    "source_identity_result": "PASS"
+  },
+  "blockers": [
+    "This batch repairs the Judge coverage gate only; it is not full-project spec completion.",
+    "Release/deploy authorization remains BLOCKED by the separate DOC-E external/runtime approval boundary and unresolved full-project requirement coverage.",
+    "No full 837-row requirement-weighted completion percentage has been reconstructed in this batch."
+  ],
+  "next_task": "Re-read current HEAD and select the next proven exact-head blocker; do not promote the Railway validation success to release authorization.",
+  "truth_status": "PASS_FOR_JUDGE_FIXTURE_PARTIAL_PROJECT"
+}
