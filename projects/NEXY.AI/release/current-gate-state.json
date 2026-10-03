@@ -1,145 +1,86 @@
 {
   "gate_id": "NEXY-AI-CURRENT-RELEASE-GATE",
-  "schema_version": "3.0.0",
-  "observed_at": "2026-10-03T03:22:55.837Z",
-  "timestamp_source": "GitHub repository, commit-status, workflow-run, job, step and artifact APIs",
-  "trace_id": "NEXY-AC366E2C-GHA-37086033681-ATTEMPT2",
+  "schema_version": "4.0.0",
+  "observed_at": "2026-10-03T04:50:13Z",
+  "timestamp_source": "GitHub repository/actions APIs and Railway exact-deployment build/runtime logs",
+  "trace_id": "NEXY-9CEDBBD9-RAILWAY-b5f4902d-f5c5-4c22-a419-cdfd03b53699",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "ac366e2c36a326e02724bba10ddb336bf4f22543",
-    "tree": "6bc17372379d81dcf69a919685ef395d2244cfe9",
-    "commit_time": "2026-10-03T01:25:23Z",
-    "commit_message": "fix: disambiguate run truth heading"
+    "head": "9cedbbd94af495199ca10f96e747689b0c19ddb1",
+    "tree": "205c038c85f2c18c0a42d391c212fe367e2aab7d",
+    "commit_time": "2026-10-03T04:45:39Z",
+    "commit_message": "fix: keep listener contract source-unambiguous"
   },
-  "status": "BLOCKED_EXECUTION",
+  "authority": {
+    "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+    "normalized_rows": 837
+  },
   "exact_head_execution": {
-    "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
-    "provider": "github-actions",
-    "workflow": "NEXY CI / Deploy Gate",
-    "workflow_path": ".github/workflows/deploy.yml",
-    "run_id": 37086033681,
-    "run_attempt": 2,
-    "event": "push",
-    "run_status": "completed",
-    "run_conclusion": "failure",
-    "run_url": "https://github.com/goif74945-crypto/NEXY.AI-/actions/runs/37086033681/attempts/2",
-    "failed_jobs": 8,
-    "skipped_jobs": 3,
-    "failed_jobs_with_executable_steps": 0,
-    "artifacts": 0,
-    "sampled_log_download_result": "404 BlobNotFound",
-    "code_level_result": "NOT_VERIFIED",
-    "run_started_at": "2026-10-03T03:22:34Z",
-    "run_updated_at": "2026-10-03T03:22:39Z",
-    "blocker_probe": {
-      "source": "authorized rerun of exact-head TypeScript job and dependent workflow graph",
-      "requested_job_id": 111096420945,
-      "resulting_typecheck_job_id": 111117081947,
-      "typecheck_conclusion": "failure",
-      "typecheck_steps_observed": 0,
-      "typecheck_log_result": "404 BlobNotFound",
-      "artifacts_observed": 0,
-      "blocker_cleared": false
-    }
-  },
-  "corroborating_exact_head_runs": [
-    {
-      "id": 37086033683,
-      "workflow": "Exact HEAD test evidence",
-      "job_id": 111096420350,
-      "conclusion": "failure",
-      "steps_observed": 0
+    "provider": "railway",
+    "deployment_id": "b5f4902d-f5c5-4c22-a419-cdfd03b53699",
+    "status": "PARTIAL",
+    "deployment_status": "CRASHED_AFTER_E10_FAILURE",
+    "build": "VERIFIED_PASS",
+    "typecheck": "VERIFIED_PASS",
+    "contract_test_files": 108,
+    "full_test_files": 153,
+    "full_tests": 1046,
+    "coverage": {
+      "status": "VERIFIED_PASS",
+      "statements": 80.68,
+      "branches": 74.8,
+      "functions": 79.58,
+      "lines": 82.35
     },
-    {
-      "id": 37086033637,
-      "workflow": "Six-system exact HEAD evidence",
-      "job_id": 111096420314,
-      "conclusion": "failure",
-      "steps_observed": 0
+    "doc_c_static": "VERIFIED_PASS",
+    "module_boundaries": "VERIFIED_PASS",
+    "web_build": "VERIFIED_PASS",
+    "browser_e2e": {
+      "status": "VERIFIED_PASS",
+      "tests": 11,
+      "suites": 2
     },
-    {
-      "id": 37086033640,
-      "workflow": "Layer8 Cargo lock evidence",
-      "job_id": 111096420355,
-      "conclusion": "failure",
-      "steps_observed": 0
-    }
-  ],
-  "software_gates": {
-    "typecheck_backend_and_web": "NOT_VERIFIED_RUNNER_PRE_STEP",
-    "contract_tests": "NOT_VERIFIED_RUNNER_PRE_STEP",
-    "integration_tests": "NOT_VERIFIED_RUNNER_PRE_STEP",
-    "full_test_suite": "NOT_VERIFIED_RUNNER_PRE_STEP",
-    "coverage_and_thresholds": "NOT_VERIFIED_RUNNER_PRE_STEP",
-    "web_production_build": "NOT_VERIFIED_RUNNER_PRE_STEP",
-    "browser_e2e": "NOT_VERIFIED_RUNNER_PRE_STEP",
-    "phase_f_experimental": "NOT_VERIFIED_RUNNER_PRE_STEP",
-    "doc_c_static": "SKIPPED_UPSTREAM_BLOCK",
-    "release_attestation": "SKIPPED_UPSTREAM_BLOCK",
-    "deploy": "SKIPPED_UPSTREAM_BLOCK"
+    "doc_e_internal_e1_e9": "VERIFIED_PASS",
+    "doc_e_e10": "FAILED",
+    "failure_code": "DOC_E_E10_PROVIDER_RECEIPT_IDENTITY_MISMATCH",
+    "url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=b5f4902d-f5c5-4c22-a419-cdfd03b53699&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
   },
-  "test_counts": {
-    "current_head_executed_tests": null,
-    "status": "UNKNOWN_NO_EXECUTABLE_TEST_STEP"
+  "github_actions": {
+    "run_id": 37096933700,
+    "status": "BLOCKED",
+    "reason": "8 failed jobs and 3 skipped jobs with zero executable steps; zero artifacts"
   },
-  "coverage": {
-    "current_head_measurement": null,
-    "status": "UNKNOWN_NO_EXECUTABLE_COVERAGE_STEP"
-  },
-  "combined_external_status": {
-    "classification": "CONFLICT_PARTIAL_SIGNAL",
-    "contexts": [
-      {
-        "context": "NEXY Validation R2 - nexy-validation",
-        "state": "success",
-        "description": "No deployment needed - watched paths not modified",
-        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/e5137d7c-ca34-4161-8ffa-d9c4e252f44a"
-      },
-      {
-        "context": "NEXY Validation R2 - nexy-validation-branch",
-        "state": "failure",
-        "description": "Deployment failed",
-        "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=9a91bded-4086-4607-9343-46ca1f9610e3&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
-      }
-    ]
-  },
-  "doc_e": {
-    "current_head_status": "NOT_VERIFIED",
-    "release_authorized": false,
+  "release": {
+    "status": "BLOCKED",
+    "authorized": false,
     "deploy_authorized": false,
     "blocking_reasons": [
-      "GitHub Actions attempt 2 ended before executable steps were recorded",
-      "No current-head runtime attestation artifact exists",
-      "External validation contexts conflict: one success and one failure",
-      "Exhaustive 837-row spec-code-test crosswalk is not proven"
+      "E10 provider command receipt identity does not match the exact current head/tree",
+      "Current exact-head E11/E12 external authorization evidence is not proven",
+      "Exhaustive 837-row spec-code-test crosswalk remains UNKNOWN"
     ]
   },
-  "branch_provider_state": {
-    "observed_branches": [
-      "NEXY.ai"
-    ],
-    "provider_protected": false,
-    "preventive_branch_creation_enforcement": "NOT_VERIFIED"
-  },
-  "historical_evidence_boundary": {
-    "prior_target_head": "f6953f86e54b0df3ae545c44e123725f1403263a",
-    "prior_target_tree": "63c3aeba2f4be22bc718123b921ab1d20ed7cdd3",
-    "prior_probe_run_id": 37065947069,
-    "prior_probe_attempt": 6,
-    "classification": "HISTORICAL_NOT_CURRENT_HEAD_PROOF"
-  },
-  "external_or_unresolved": {
-    "exhaustive_837_row_convergence": "UNKNOWN",
-    "code_level_failure_root_cause": "UNKNOWN_NO_EXECUTION",
-    "runner_account_or_billing_root_cause": "NOT_PROVEN_BY_AVAILABLE_API",
-    "release_and_deploy": "BLOCKED"
-  },
-  "negative_claim_rule": "No absence or pre-step workflow failure may be promoted to a code defect or MISSING implementation claim.",
-  "verdict": "NOT_RELEASE_READY",
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2.md",
-    "status": "BLOCKED"
-  }
+    "cycle_id": "NEXY-HOURLY-20261003T111817+0700-9cedbbd9",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T111817+0700-9cedbbd9.md",
+    "status": "PARTIAL"
+  },
+  "software_gates": {
+    "typecheck": "VERIFIED_PASS",
+    "contract": "VERIFIED_PASS",
+    "integration": "VERIFIED_PASS",
+    "full_suite": "VERIFIED_PASS",
+    "coverage": "VERIFIED_PASS",
+    "web_build": "VERIFIED_PASS",
+    "browser_e2e": "VERIFIED_PASS",
+    "doc_c": "VERIFIED_PASS",
+    "doc_e_e1_e9": "VERIFIED_PASS",
+    "doc_e_e10": "FAILED",
+    "release_attestation": "BLOCKED",
+    "deploy": "BLOCKED"
+  },
+  "verdict": "NOT_RELEASE_READY",
+  "final_status": "PARTIAL"
 }
