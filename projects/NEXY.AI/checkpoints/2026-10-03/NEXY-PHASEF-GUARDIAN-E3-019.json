@@ -1,0 +1,87 @@
+{
+  "checkpoint_id": "NEXY-PHASEF-GUARDIAN-E3-019",
+  "recorded_at": "2026-10-03T16:10:00Z",
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "source": {
+    "path": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "source_location": "paragraphs 4703-4710"
+  },
+  "implementation_repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "head_before": "86f5f5a2bfafd053751b79c468426328330ccbb7",
+  "tree_before": "940078b3016cbbe92eb87c437cb914e3cde6781d",
+  "head_after": "080e9693ffb09407bfecf4b16123cee934d98daf",
+  "tree_after": "5670fcf7577dc6ebac7ef6f9646144dbb8926922",
+  "system": "Layer 9 Runtime Determinism / Guardian E3",
+  "requirements": [
+    "Guardian must normalize the runtime environment and include its environment identity in the build hash.",
+    "Restart integrity must verify the pre-death seal before resurrection.",
+    "Phase-F test-depth gate must exercise the required Guardian surface."
+  ],
+  "files_changed": [
+    "tests/integration/guardian-e3-buildhash-env.spec.ts"
+  ],
+  "change_summary": "Added the already-exported verifyRestartIntegrity surface to the Guardian E3 integration test and asserted the generated seal hash, raising the measured test surface from 4 exports/4 assertions to 5 exports/5 assertions. Production Guardian behavior was not weakened.",
+  "tests_run": [
+    {
+      "command": "npm run test:experimental",
+      "deployment_id": "f4ce1e41-1edf-477f-948f-ac4e02c9849a",
+      "head": "080e9693ffb09407bfecf4b16123cee934d98daf",
+      "tree": "5670fcf7577dc6ebac7ef6f9646144dbb8926922",
+      "result": "PASS",
+      "output_excerpt": "81 test files passed; 770 tests passed.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "tests/integration/guardian-e3-buildhash-env.spec.ts",
+      "deployment_id": "f4ce1e41-1edf-477f-948f-ac4e02c9849a",
+      "head": "080e9693ffb09407bfecf4b16123cee934d98daf",
+      "tree": "5670fcf7577dc6ebac7ef6f9646144dbb8926922",
+      "result": "PASS",
+      "output_excerpt": "Guardian E3 test passed; check-phase-f reported exports=5 assertions=5.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run typecheck",
+      "deployment_id": "f4ce1e41-1edf-477f-948f-ac4e02c9849a",
+      "head": "080e9693ffb09407bfecf4b16123cee934d98daf",
+      "result": "PASS",
+      "exact_head_binding": true
+    },
+    {
+      "command": "cargo check -p core-kernel && cargo test -p core-kernel -- --nocapture",
+      "deployment_id": "f4ce1e41-1edf-477f-948f-ac4e02c9849a",
+      "head": "080e9693ffb09407bfecf4b16123cee934d98daf",
+      "result": "PASS",
+      "exact_head_binding": true
+    },
+    {
+      "command": "npm run check:phase-f",
+      "deployment_id": "f4ce1e41-1edf-477f-948f-ac4e02c9849a",
+      "head": "080e9693ffb09407bfecf4b16123cee934d98daf",
+      "result": "FAIL",
+      "output_excerpt": "Gate 2 measured packages/phase-f/lo3/prompt-law-filter.ts at 1/100 (1%), below the required 50% floor because the canonical implementation had moved to packages/lo3/prompt-law-filter.ts.",
+      "exact_head_binding": true
+    }
+  ],
+  "evidence": {
+    "provider": "Railway",
+    "deployment_id": "f4ce1e41-1edf-477f-948f-ac4e02c9849a",
+    "commit_hash": "080e9693ffb09407bfecf4b16123cee934d98daf",
+    "tree_hash": "5670fcf7577dc6ebac7ef6f9646144dbb8926922",
+    "source_identity": {
+      "kind": "NEXY_DOC_E_PROVIDER_SOURCE_IDENTITY",
+      "tested_sha": "080e9693ffb09407bfecf4b16123cee934d98daf",
+      "tested_tree": "5670fcf7577dc6ebac7ef6f9646144dbb8926922",
+      "rerun_nonce": "2026-10-03T17:00:00Z-NEXY-PHASEF-GUARDIAN-E3-019"
+    },
+    "source_identity_result": "PASS"
+  },
+  "blockers": [
+    "The Guardian test-depth gap is repaired; the successor Lo3 gate split was required to measure canonical authority without lowering the 50% floor.",
+    "Project release/deploy authorization remains BLOCKED."
+  ],
+  "next_task": "NEXY-LO3-GATE-SPLIT-020 exact-head validation",
+  "truth_status": "PASS_FOR_GUARDIAN_E3_PARTIAL_PROJECT"
+}
