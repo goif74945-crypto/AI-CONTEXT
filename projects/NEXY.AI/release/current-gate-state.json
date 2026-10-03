@@ -108,5 +108,11 @@
     "changed_slice_spec_alignment": "PARTIAL_UNKNOWN"
   },
   "verdict": "NOT_RELEASE_READY",
-  "final_status": "PARTIAL"
+  "final_status": "PARTIAL",
+  "context_correction": {
+    "preserves_execution_observed_at": true,
+    "corrected_at": "2026-10-03T09:19:17Z",
+    "ai_context_commit": "e5a7b85f04d4029b3c6661df70e0fcbaebc5cb86",
+    "scope": "Scoped integration and DOC-C claims; recorded primary-source access blocker and numbered-section conflict."
+  }
 }
