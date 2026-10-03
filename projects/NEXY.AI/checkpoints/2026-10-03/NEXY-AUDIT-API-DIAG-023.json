@@ -1,0 +1,78 @@
+{
+  "checkpoint_id": "NEXY-AUDIT-API-DIAG-023",
+  "recorded_at": "2026-10-03T16:22:00Z",
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "source": {
+    "path": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "source_location": "DOC-B/Observability §11 extracted lines 16451-16555; DOC-D S10/Audit Viewer lines 16780-16820 and 18440-18865"
+  },
+  "implementation_repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "head_before": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+  "tree_before": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+  "head_after": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+  "tree_after": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+  "system": "OBSERVABILITY / API — GET /api/audit-logs",
+  "requirements": [
+    "Audit Log is the accountable user/system action record with actor, role, action, target, request/trace and outcome.",
+    "Audit Viewer is a readonly screen and backend permissions must be enforced independently of UI.",
+    "Audit evidence write failure must fail closed; no success response may bypass immutable audit evidence."
+  ],
+  "implementation_paths": [
+    "apps/web/app/api/audit-logs/route.ts",
+    "packages/api/canonical.ts",
+    "packages/api/directives.ts",
+    "packages/obs/audit-log.ts",
+    "prisma/migrations/20260922222000_audit_chain_head/migration.sql"
+  ],
+  "proven_behavior": [
+    "route delegates GET to runApiHandler(request, handleAuditLogs)",
+    "handleAuditLogs authorizes OWNER/AUDITOR, reads prisma.auditLog, then calls recordCanonicalRead in a SERIALIZABLE transaction",
+    "recordCanonicalRead allocates event sequence and writes EventLog + AuditLog; callers are documented to fail closed if it rejects",
+    "exact-head browser evidence on deployment 34e8fddc reports audit response non-200 at critical-flows.spec.mjs line 242; mobile/desktop audit selectors also fail because page does not render success content",
+    "Railway deploy logs show Prisma datasource at nexy-e7-postgres:5432, 26 migrations found, and no pending migrations; Postgres service deployment 85aa85de is SUCCESS"
+  ],
+  "files_changed": [],
+  "tests_and_evidence": [
+    {
+      "command": "Railway exact-head validation / NEXY_BROWSER_E2E",
+      "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+      "head": "c0608514257ebb75c52ab5e836863f1b4c1e761a",
+      "tree": "eabcdf28f3332d61157f23108dceab7a8d7ca6e4",
+      "result": "FAIL",
+      "output_excerpt": "7 browser tests passed; 3 failed. Audit mobile selector line 121, desktop selector line 142, and AUDITOR audit response assertion line 242. NEXY_BROWSER_E2E=FAIL code=CRITICAL_FLOWS.",
+      "exact_head_binding": true
+    },
+    {
+      "command": "Railway migration startup log",
+      "deployment_id": "34e8fddc-5339-4460-ac0a-645f7890c8ab",
+      "result": "OBSERVED",
+      "output_excerpt": "Datasource PostgreSQL at nexy-e7-postgres:5432; 26 migrations found; No pending migrations to apply."
+    },
+    {
+      "command": "Railway Postgres deployment status",
+      "deployment_id": "85aa85de-aa72-4119-9118-4d242d66fdf3",
+      "result": "SUCCESS",
+      "output_excerpt": "Postgres service nexy-e7-postgres in production/sfo is SUCCESS."
+    }
+  ],
+  "diagnosis": {
+    "code_truth": "The application intentionally returns 500 on persistence failure; changing this to return audit data without canonical read evidence would violate fail-closed audit law.",
+    "runtime_truth": "The exact internal database error or response body is not exposed by current deployment logs; the available log only proves non-200 and redacted persistence/freeze messages.",
+    "not_proven": [
+      "audit_chain_head singleton state",
+      "event_log_sequence_num_seq availability",
+      "transaction/trigger error detail",
+      "runtime database connection health at the failing request"
+    ]
+  },
+  "blockers": [
+    "BLOCKED_ENVIRONMENT: required direct runtime/database diagnostic is unavailable through current connector; Railway read-only diagnostic agent also returned usage-limit error.",
+    "NOT_VERIFIED: exact cause of /api/audit-logs non-200 cannot be identified without response body or safe server-side error classification.",
+    "RSEL_UNCERTAINTY_PROPAGATION_MISMATCH remains a separate runtime blocker and was not changed.",
+    "No safe implementation edit is justified; bypassing recordCanonicalRead would weaken security/audit guarantees."
+  ],
+  "next_task": "Obtain a non-secret, read-only runtime diagnostic for the audit request (response error code plus database/chain-head/sequence health), then choose either infrastructure repair or a narrowly proven code batch.",
+  "truth_status": "BLOCKED_ENVIRONMENT; NOT_VERIFIED; NO_CODE_CHANGE"
+}
