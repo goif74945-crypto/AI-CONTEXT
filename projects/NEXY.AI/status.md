@@ -1,7 +1,7 @@
 # NEXY.AI — Current Context Status
 
 <!-- HOURLY_CYCLE_LATEST:START -->
-## Latest verified hourly-cycle overlay — 2026-10-03 08:29 ICT
+## Latest verified hourly-cycle overlay — 2026-10-03 10:18 ICT
 
 This overlay supersedes older current-looking HEAD statements below. Older sections remain historical evidence.
 
@@ -17,7 +17,7 @@ This overlay supersedes older current-looking HEAD statements below. Older secti
 - three corroborating exact-head workflows also failed with 0 recorded steps
 - blocker state: `BLOCKED_BEFORE_EXECUTABLE_STEPS`
 - code-level validation of the two new changes: `NOT_VERIFIED`
-- external statuses at observation: `SUCCESS_SIGNAL_ONLY`
+- external statuses rechecked at 2026-10-03 10:18 ICT: `NEXY Validation R2 - nexy-validation=success`; `NEXY Validation R2 - nexy-validation-branch=failure`; classification `CONFLICT / PARTIAL_SIGNAL`
 - exhaustive 837-row implementation status: `UNKNOWN`
 - release/deploy authorization: `BLOCKED`
 - cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T082338+0700-ac366e2c.md`
