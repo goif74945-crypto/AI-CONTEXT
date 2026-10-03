@@ -1,0 +1,52 @@
+{
+  "CHECKPOINT_ID": "NEXY-LO3-POLICY-Q64-010",
+  "HEAD_BEFORE": "e4b6e580612e5fb2b84eca756059564a22ac1629",
+  "HEAD_AFTER": "54572cf7d6505d55fadcb66a677f0bd7b20c2361",
+  "TREE_AFTER": "cfe96e54c81d4c24fa330d37f10ad90172d0d979",
+  "BRANCH": "NEXY.ai",
+  "SYSTEM": [
+    "LO3-PROMPT-LAW",
+    "FABRIC-SWARM",
+    "QUEUE-EXECUTION"
+  ],
+  "REQUIREMENTS": [
+    "REQ-DOC-C-RELEASE-006",
+    "REQ-DOC-C-RELEASE-007",
+    "REQ-DOC-C-SWARM-003"
+  ],
+  "FILES_CHANGED": [
+    "packages/queue/workers.ts",
+    "tests/contract/swarm-prompt-law-boundary.test.ts",
+    "tests/integration/lo3-prompt-law-filter.spec.ts"
+  ],
+  "TESTS_RUN": [
+    {
+      "command": "Railway canonical build gate through npm run test:contract",
+      "provider": "railway",
+      "deployment_id": "63f457ed-a174-46c5-b5ec-582fe84df909",
+      "commit_hash": "54572cf7d6505d55fadcb66a677f0bd7b20c2361",
+      "tree_hash": "cfe96e54c81d4c24fa330d37f10ad90172d0d979",
+      "source_identity": "PASS",
+      "core_tests": "263 passed; 0 failed",
+      "typecheck": "PASS",
+      "contract": "598 passed; 4 failed; 112 files",
+      "exit_code": 1,
+      "output_excerpt": "Test Files 3 failed | 109 passed (112); Tests 4 failed | 598 passed (602); build stopped at [15/25] npm run test:contract"
+    }
+  ],
+  "RESULT": "Exact Q64.64 complement removed both prompt-law contract failures while preserving exact-sum validation and fail-closed security behavior.",
+  "EVIDENCE": {
+    "source_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "commit_url": "https://github.com/goif74945-crypto/NEXY.AI-/commit/54572cf7d6505d55fadcb66a677f0bd7b20c2361",
+    "railway_log_window": "2026-10-03T15:10:50Z–2026-10-03T15:12:19.100Z",
+    "source_identity_excerpt": "tested_sha=54572cf7d6505d55fadcb66a677f0bd7b20c2361; tested_tree=cfe96e54c81d4c24fa330d37f10ad90172d0d979"
+  },
+  "BLOCKERS": [
+    "canonical-api.test.ts: expected vault commit call omits newly enforced authorRole OWNER",
+    "migration-rollback-contract.test.ts: 20261003112000_lo2_feedback_dispatch has no non-empty migration.down.sql",
+    "scope-boundary.test.ts: authority-time Phase-F integration test is not in experimental manifest",
+    "scope-boundary.test.ts: packages/queue/workers.ts and packages/swarm/pipeline.ts import packages/phase-f"
+  ],
+  "NEXT_TASK": "Repair the canonical API authorRole fixture as a separate RBAC/Vault contract batch, after current-head/source re-read.",
+  "TRUTH_STATUS": "PARTIAL / exact-head contract gate FAILED / NOT deployable / NOT release authorized"
+}
