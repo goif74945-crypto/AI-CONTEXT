@@ -1,0 +1,107 @@
+{
+  "checkpoint_id": "NEXY-DOC-D-UI-033",
+  "recorded_at_utc": "2026-10-03T19:47:54Z",
+  "source": {
+    "file": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "authority": "DOC-D supported by DOC-C; no source change"
+  },
+  "repository": {
+    "implementation": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "head_before": "c45c8fe076da33e8a8ab05bda5f690b07b30791a",
+    "tree_before": "02bc5e3e44f81a443dc32e3268addf5d7f6993f6",
+    "head_after": "2469e4bea887ee876c6d02a193de9b9c233fc551",
+    "tree_after": "068c1b62a722d0857ea7f7972a947dde7fa13c05",
+    "head_drift": false,
+    "commits": [
+      "66c7c2949e4da0702ea5ec30889b99fc88401ace",
+      "2469e4bea887ee876c6d02a193de9b9c233fc551"
+    ]
+  },
+  "system": "Product Surfaces / UI Truth Layer",
+  "requirements": [
+    {
+      "id": "REQ-0825",
+      "source_location": "DOC-D paragraphs 10607-10616",
+      "requirement": "AuditTable exposes timestamp, actor, role, action, target_type, target_id, success, incident_link"
+    },
+    {
+      "id": "REQ-0654",
+      "source_location": "DOC-D paragraphs 10685-10696",
+      "requirement": "Responsive audit presentation uses cards on mobile and a full-width table on desktop"
+    }
+  ],
+  "files_changed": [
+    {
+      "path": "apps/web/components/AuditLogTable.tsx",
+      "commit": "66c7c2949e4da0702ea5ec30889b99fc88401ace",
+      "change": "aligned desktop and mobile labels/cells with the eight DOC-D audit fields; target_type and target_id are separate"
+    },
+    {
+      "path": "tests/contract/doc-d-component-inventory.test.ts",
+      "commit": "2469e4bea887ee876c6d02a193de9b9c233fc551",
+      "change": "added static contract assertions for the eight labels and bound fields"
+    }
+  ],
+  "proven_gap_before": "The component used TICK and a combined TARGET cell, so the source field contract was not represented literally. Existing responsive CSS was present, but the API failure prevented runtime rendering.",
+  "behavior_after": "The component now renders TIMESTAMP, ACTOR, ROLE, ACTION, TARGET TYPE, TARGET ID, SUCCESS, INCIDENT on desktop and separates target fields in mobile cards; no backend fallback or role guessing was added.",
+  "safety_boundary": "packages/api/canonical.ts was intentionally not changed because legacy audit rows with null role must fail closed under the no-guess law.",
+  "evidence": {
+    "environment": "Railway production / service nexy-validation-branch",
+    "deployment_id": "3d4a648e-6004-4fbc-9484-d609d5c34978",
+    "branch": "NEXY.ai",
+    "commit_hash": "2469e4bea887ee876c6d02a193de9b9c233fc551",
+    "tree_hash": "068c1b62a722d0857ea7f7972a947dde7fa13c05",
+    "source_identity_nonce": "NEXY-DOC-D-UI-033-R2-20261003",
+    "build_result": "PASS",
+    "build_tests": {
+      "targeted": "tests/contract/doc-d-component-inventory.test.ts: 3 passed",
+      "full": "157 test files passed; 1075 tests passed; duration 4.88s for coverage run"
+    },
+    "static_gates": [
+      "Phase F gate passed",
+      "six-system spec lock passed",
+      "coverage passed: api lines 93.68%, statements 92.38%, functions 97.66%, branches 85.49%",
+      "DOC-C static check passed",
+      "module boundary check passed",
+      "web build completed and apps/web/.next/BUILD_ID exists",
+      "26 migrations found; no pending migrations"
+    ],
+    "runtime_result": "FAIL / deployment CRASHED after release gate",
+    "browser_result": "directive 1/1 passed; critical flows 7/10 passed, 3/10 failed",
+    "runtime_failures": [
+      "mobile audit card locator absent because /api/audit-logs failed",
+      "desktop audit table locator absent because /api/audit-logs failed",
+      "AUDITOR audit API expected 200 but received 500"
+    ],
+    "runtime_failure_code": "AUDIT_ROLE_ATTRIBUTION_MISSING",
+    "lo2_observation": "LO2 feedback remains PRISMA_UNKNOWN_REQUEST while downstream jobs report SUCCEEDED; underlying Prisma/Postgres cause remains NOT_VERIFIED"
+  },
+  "stale_evidence_excluded": [
+    {
+      "deployment_id": "3251a68c-2fb9-442b-be54-1314baae2ee7",
+      "reason": "failed before tests because its environment variables still contained the previous SHA/tree/nonce"
+    },
+    {
+      "deployment_id": "33db82cf-33bd-4491-bb47-f7efb475cc2b",
+      "reason": "built commit 66c7c2949e4da0702ea5ec30889b99fc88401ace, not current exact HEAD"
+    }
+  ],
+  "status_before": "PARTIAL / NOT_VERIFIED",
+  "status_after": "PARTIAL",
+  "completion": "NOT_CALCULATED — full requirement denominator not reconstructed",
+  "blockers": [
+    "runtime audit API 500 due to legacy rows without provable role; safe repair requires source/data provenance evidence",
+    "3 browser critical-flow failures and release gate crash",
+    "LO2 persistence failure remains PRISMA_UNKNOWN_REQUEST",
+    "full-project requirement denominator and complete exact-head audit remain unreconstructed"
+  ],
+  "environment_notes": [
+    "GitHub branch view confirmed NEXY.ai and current HEAD",
+    "VS Code Web opened but private repository contents were blocked by GitHub sign-in; no VS Code terminal evidence claimed",
+    "Chrome Direct device was offline; no local Chrome evidence claimed"
+  ],
+  "next_task": "Select the next highest-dependency proven gap only after rereading NEXY.ai HEAD and current AI-CONTEXT; do not change audit API role semantics without provenance proof.",
+  "truth_status": "PARTIAL; not release authorized; not deployable"
+}
