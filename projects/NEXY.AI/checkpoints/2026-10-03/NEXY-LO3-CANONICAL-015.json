@@ -1,0 +1,121 @@
+{
+  "checkpoint_id": "NEXY-LO3-CANONICAL-015",
+  "timestamp": "2026-10-03T15:45:50Z",
+  "source": {
+    "file": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+    "sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "locations": [
+      "source paragraph 11047 (NEXY.Lo3 Swarm Governor)",
+      "REQ-0118: Runtime Validation — SWARM results → validate",
+      "REQ-0130: SWARM — multi-agent execution",
+      "full-project scope override: Lo3 is required"
+    ]
+  },
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "head_before": "abb190f733ffdfc63a5ac27f57d60f42a30032a6",
+  "head_after": "617682a7b5ece78e9da1e79d324d13c91e2ebfb0",
+  "tree_after": "e525f9c2e97a8351623eddeb26962fb1283232d8",
+  "system": "Lo3 prompt-law boundary / SWARM production path",
+  "requirements": [
+    "Active SWARM must not import the experimental Phase-F implementation surface.",
+    "Prompt-law behavior remains deterministic, Q64.64 policy-bound, sanitize/isolate/reframe, and fail-closed."
+  ],
+  "files_changed": [
+    {
+      "path": "packages/lo3/prompt-law-filter.ts",
+      "change": "added canonical copy of the verified 12,487-byte implementation"
+    },
+    {
+      "path": "packages/phase-f/lo3/prompt-law-filter.ts",
+      "change": "replaced implementation body with compatibility re-export wrapper"
+    },
+    {
+      "path": "packages/swarm/pipeline.ts",
+      "change": "active import changed to ../lo3/prompt-law-filter.js"
+    },
+    {
+      "path": "tests/integration/lo3-prompt-law-filter.spec.ts",
+      "change": "direct integration import changed to canonical surface"
+    },
+    {
+      "path": "tests/contract/swarm-prompt-law-boundary.test.ts",
+      "change": "policy type import changed to canonical surface"
+    },
+    {
+      "path": "scripts/check-six-system-spec-lock.ts",
+      "change": "static six-system inspection changed to canonical surface"
+    }
+  ],
+  "tests": {
+    "exact_head": true,
+    "deployment_id": "c723e5ed-64ad-45ae-9651-e99daebed9e1",
+    "environment": "Railway production / nexy-validation-branch",
+    "operator": "NEXY",
+    "source_identity": {
+      "result": "PASS",
+      "timestamp": "2026-10-03T15:45:12.695296502Z",
+      "tested_sha": "617682a7b5ece78e9da1e79d324d13c91e2ebfb0",
+      "tested_tree": "e525f9c2e97a8351623eddeb26962fb1283232d8",
+      "rerun_nonce": "2026-10-03T15:47:00Z-NEXY-LO3-CANONICAL-015"
+    },
+    "commands": [
+      {
+        "command": "cargo check -p core-kernel",
+        "result": "PASS"
+      },
+      {
+        "command": "cargo test -p core-kernel -- --nocapture",
+        "result": "PASS",
+        "passed": 263,
+        "failed": 0
+      },
+      {
+        "command": "npm run typecheck",
+        "result": "PASS"
+      },
+      {
+        "command": "npm run test:contract",
+        "result": "PASS",
+        "test_files_passed": 112,
+        "test_files_failed": 0,
+        "tests_passed": 602,
+        "tests_failed": 0
+      },
+      {
+        "command": "npx vitest run --config vitest.experimental.config.ts tests/integration/economy-lifecycle-product-expansion.spec.ts tests/integration/universe-extensions.spec.ts tests/integration/web-app-spec.spec.ts --reporter=verbose",
+        "result": "PASS",
+        "test_files_passed": 3,
+        "tests_passed": 45,
+        "tests_failed": 0
+      },
+      {
+        "command": "npm run test:experimental",
+        "result": "FAIL",
+        "test_files_passed": 78,
+        "test_files_failed": 3,
+        "tests_passed": 766,
+        "tests_failed": 4,
+        "failures": [
+          "tests/integration/authority-time.spec.ts: two failures with ANCHOR_3_OF_5_REQUIRED:CORE_SIGNATURE_FAILURE",
+          "tests/integration/guardian.spec.ts: verifyRestartIntegrity('some-hash') returned false without prior seal",
+          "tests/integration/layer9-runtime-determinism.spec.ts: Phase-F nondeterminism scan found 2 violations"
+        ]
+      }
+    ],
+    "subsystem_results": {
+      "Lo3 prompt-law integration": "PASS in exact-head experimental run",
+      "SWARM prompt-law boundary": "PASS",
+      "scope-boundary": "PASS",
+      "six-system static gate": "not reached as a standalone PASS artifact; canonical source path was updated and full test contract passed"
+    }
+  },
+  "blockers": [
+    "Authority-Time/Global Anchor signature verification failures in tests/integration/authority-time.spec.ts",
+    "Guardian restart-integrity behavior/test mismatch in tests/integration/guardian.spec.ts",
+    "Layer9 nondeterminism scan reports two exact violations in tests/integration/layer9-runtime-determinism.spec.ts",
+    "Full-project 837-row requirement coverage and physical/external proofs are not reconstructed."
+  ],
+  "next_task": "NEXY-AUTHORITY-TIME-016 (inspect exact signature fixture/verification root cause before edit)",
+  "truth_status": "PARTIAL"
+}
