@@ -1,10 +1,10 @@
 {
   "snapshot_kind": "NEXY.AI context truth snapshot",
-  "observed_at": "2026-10-03T01:29:36.640Z",
+  "observed_at": "2026-10-03T03:22:55.837Z",
   "context_repository": {
     "repository": "goif74945-crypto/AI-CONTEXT",
     "branch": "main",
-    "parent_commit": "eb3296b46d7abea24371014ee4def9763dc7f41f",
+    "parent_commit": "2bc5856f352d5ed1c9bed07245c26583a6137912",
     "write_scope": "AI-CONTEXT current-state synchronization"
   },
   "source_authority": {
@@ -42,7 +42,7 @@
   },
   "current_ci_observation": {
     "primary_run_id": 37086033681,
-    "attempt": 1,
+    "attempt": 2,
     "workflow": "NEXY CI / Deploy Gate",
     "status": "completed",
     "conclusion": "failure",
@@ -50,14 +50,14 @@
     "skipped_jobs": 3,
     "executed_steps_observed": 0,
     "artifacts_observed": 0,
-    "sampled_job_logs": "404 BlobNotFound",
+    "sampled_job_logs": "TypeScript job 111117081947: 404 BlobNotFound",
     "code_level_result": "NOT_VERIFIED",
     "validation_path": "BLOCKED_PRE_STEP",
     "doc_c_static_gate": "SKIPPED",
     "evidence_attestation": "SKIPPED",
     "deploy": "SKIPPED",
-    "run_started_at": "2026-10-03T01:25:26Z",
-    "run_updated_at": "2026-10-03T01:25:31Z"
+    "run_started_at": "2026-10-03T03:22:34Z",
+    "run_updated_at": "2026-10-03T03:22:39Z"
   },
   "corroborating_ci_observation": {
     "runs": [
@@ -70,16 +70,18 @@
     "classification": "BLOCKED_PRE_STEP"
   },
   "combined_external_status": {
-    "classification": "SUCCESS_SIGNAL_ONLY",
+    "classification": "CONFLICT_PARTIAL_SIGNAL",
     "contexts": [
       {
         "context": "NEXY Validation R2 - nexy-validation",
         "state": "success",
+        "description": "No deployment needed - watched paths not modified",
         "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/e5137d7c-ca34-4161-8ffa-d9c4e252f44a"
       },
       {
         "context": "NEXY Validation R2 - nexy-validation-branch",
-        "state": "success",
+        "state": "failure",
+        "description": "Deployment failed",
         "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=9a91bded-4086-4607-9343-46ca1f9610e3&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
       }
     ]
@@ -101,14 +103,14 @@
     "Restore an executable CI runner path and obtain step logs for the exact current HEAD.",
     "Run typecheck, tests, coverage, production build, browser E2E and DOC-C gate for the exact current HEAD.",
     "Complete the exhaustive 837-row spec-code-test crosswalk before claiming full compliance.",
-    "Wait for the pending external validation context and resolve any failure.",
+    "Resolve the conflicting external validation contexts (one success and one failure).",
     "Generate exact-head DOC-E/release evidence only after executable gates pass."
   ],
   "supersedes_snapshot_head": "f6953f86e54b0df3ae545c44e123725f1403263a",
   "hash": "HASH_UNAVAILABLE",
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T082338+0700-ac366e2c",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T082338+0700-ac366e2c.md",
+    "cycle_id": "NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2.md",
     "status": "BLOCKED"
   }
 }

@@ -1,8 +1,8 @@
 {
   "schema_version": "3.0.0",
-  "observed_at": "2026-10-03T01:29:36.640Z",
+  "observed_at": "2026-10-03T03:22:55.837Z",
   "timestamp_source": "GitHub APIs",
-  "trace_id": "NEXY-AC366E2C-GHA-37086033681-ATTEMPT1",
+  "trace_id": "NEXY-AC366E2C-GHA-37086033681-ATTEMPT2",
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
   "head": "ac366e2c36a326e02724bba10ddb336bf4f22543",
@@ -24,78 +24,82 @@
     "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
     "primary_run": {
       "id": 37086033681,
-      "attempt": 1,
+      "attempt": 2,
       "workflow": "NEXY CI / Deploy Gate",
       "workflow_path": ".github/workflows/deploy.yml",
       "conclusion": "failure",
+      "started_at": "2026-10-03T03:22:34Z",
+      "updated_at": "2026-10-03T03:22:39Z",
       "jobs": [
         {
-          "name": "Coverage measurement",
-          "id": 111096420792,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "Full test suite",
-          "id": 111096420836,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "Phase-F experimental validation (advisory)",
-          "id": 111096420844,
+          "name": "TypeScript typecheck",
+          "id": 111117081947,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
           "name": "Production web build",
-          "id": 111096420886,
+          "id": 111117082567,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Full test suite",
+          "id": 111117082637,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
           "name": "Integration tests",
-          "id": 111096420903,
+          "id": 111117082710,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
           "name": "Contract tests",
-          "id": 111096420906,
+          "id": 111117082731,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
-          "name": "Browser E2E",
-          "id": 111096420938,
-          "conclusion": "failure",
-          "steps_observed": 0
-        },
-        {
-          "name": "TypeScript typecheck",
-          "id": 111096420945,
+          "name": "Phase-F experimental validation (advisory)",
+          "id": 111117082939,
           "conclusion": "failure",
           "steps_observed": 0
         },
         {
           "name": "DOC-C §20 static gate",
-          "id": 111096433477,
+          "id": 111117083178,
           "conclusion": "skipped",
           "steps_observed": 0
         },
         {
           "name": "Evidence / release attestation",
-          "id": 111096433483,
+          "id": 111117089481,
           "conclusion": "skipped",
           "steps_observed": 0
         },
         {
           "name": "Deploy",
-          "id": 111096434252,
+          "id": 111117089596,
           "conclusion": "skipped",
+          "steps_observed": 0
+        },
+        {
+          "name": "Browser E2E",
+          "id": 111117099204,
+          "conclusion": "failure",
+          "steps_observed": 0
+        },
+        {
+          "name": "Coverage measurement",
+          "id": 111117102177,
+          "conclusion": "failure",
           "steps_observed": 0
         }
       ],
+      "failed_jobs": 8,
+      "skipped_jobs": 3,
       "artifacts": 0
     },
     "corroborating_runs": [
@@ -124,13 +128,15 @@
     "code_level_result": "NOT_VERIFIED",
     "local_execution_fallback": "BLOCKED_AUTHENTICATED_CLONE_UNAVAILABLE",
     "latest_probe": {
-      "source": "fresh push-triggered exact-head run",
-      "started_at": "2026-10-03T01:25:26Z",
-      "updated_at": "2026-10-03T01:25:31Z",
-      "duration_seconds": 5,
-      "typecheck_job_id": 111096420945,
+      "source": "authorized TypeScript job rerun on exact HEAD",
+      "requested_job_id": 111096420945,
+      "resulting_typecheck_job_id": 111117081947,
+      "started_at": "2026-10-03T03:22:34Z",
+      "updated_at": "2026-10-03T03:22:39Z",
       "typecheck_steps_observed": 0,
       "typecheck_log_result": "404 BlobNotFound",
+      "failed_jobs": 8,
+      "skipped_jobs": 3,
       "artifacts_observed": 0,
       "blocker_cleared": false
     }
@@ -153,16 +159,18 @@
     "origin": "CONCURRENT_EXTERNAL_MUTATION_OBSERVED_DURING_CYCLE"
   },
   "combined_external_status": {
-    "classification": "SUCCESS_SIGNAL_ONLY",
+    "classification": "CONFLICT_PARTIAL_SIGNAL",
     "contexts": [
       {
         "context": "NEXY Validation R2 - nexy-validation",
         "state": "success",
+        "description": "No deployment needed - watched paths not modified",
         "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/e5137d7c-ca34-4161-8ffa-d9c4e252f44a"
       },
       {
         "context": "NEXY Validation R2 - nexy-validation-branch",
-        "state": "success",
+        "state": "failure",
+        "description": "Deployment failed",
         "target_url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=9a91bded-4086-4607-9343-46ca1f9610e3&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
       }
     ]
@@ -196,8 +204,8 @@
   "final_status": "PARTIAL",
   "hash": "HASH_UNAVAILABLE_FOR_THIS_AI_CONTEXT_RECORD",
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T082338+0700-ac366e2c",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T082338+0700-ac366e2c.md",
+    "cycle_id": "NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2",
+    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2.md",
     "status": "BLOCKED"
   }
 }

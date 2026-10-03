@@ -1,7 +1,7 @@
 # NEXY.AI — Current Context Status
 
 <!-- HOURLY_CYCLE_LATEST:START -->
-## Latest verified hourly-cycle overlay — 2026-10-03 10:18 ICT
+## Latest verified hourly-cycle overlay — 2026-10-03 10:23 ICT
 
 This overlay supersedes older current-looking HEAD statements below. Older sections remain historical evidence.
 
@@ -9,20 +9,19 @@ This overlay supersedes older current-looking HEAD statements below. Older secti
 - canonical/default branch: `NEXY.ai`
 - exact HEAD/tree: `ac366e2c36a326e02724bba10ddb336bf4f22543` / `6bc17372379d81dcf69a919685ef395d2244cfe9`
 - branch inventory: only `NEXY.ai` was returned
-- concurrent external changes observed: `52530e63...` and `ac366e2c...`; this cycle did not author them
-- changed paths: `apps/web/app/globals.css`, `apps/web/app/runs/[id]/page.tsx`
-- exact-head CI: run `37086033681`, attempt `1`
+- source changes at current HEAD were authored outside this cycle; this cycle made no NEXY.AI source mutation
+- changed paths since `f6953f86...`: `apps/web/app/globals.css`, `apps/web/app/runs/[id]/page.tsx`
+- exact-head CI: run `37086033681`, rerun attempt `2`
+- rerun action: TypeScript job `111096420945` accepted; resulting attempt started `2026-10-03T03:22:34Z`
 - CI result: 8 failed jobs, 3 skipped jobs, 0 recorded executable steps, 0 artifacts
-- TypeScript job: `111096420945`; log retrieval: `404 BlobNotFound`
-- three corroborating exact-head workflows also failed with 0 recorded steps
-- blocker state: `BLOCKED_BEFORE_EXECUTABLE_STEPS`
-- code-level validation of the two new changes: `NOT_VERIFIED`
-- external statuses rechecked at 2026-10-03 10:18 ICT: `NEXY Validation R2 - nexy-validation=success`; `NEXY Validation R2 - nexy-validation-branch=failure`; classification `CONFLICT / PARTIAL_SIGNAL`
+- TypeScript attempt-2 job: `111117081947`; steps: 0; log retrieval: `404 BlobNotFound`
+- blocker state: `BLOCKED_BEFORE_EXECUTABLE_STEPS`; code-level result: `NOT_VERIFIED`
+- external statuses: `nexy-validation=success`; `nexy-validation-branch=failure`; classification `CONFLICT / PARTIAL_SIGNAL`
 - exhaustive 837-row implementation status: `UNKNOWN`
 - release/deploy authorization: `BLOCKED`
-- cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T082338+0700-ac366e2c.md`
+- cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T102102+0700-ac366e2c-a2.md`
 
-The prior `f6953f86...` / attempt-6 state is historical relative to this record.
+The prior attempt-1 state is historical relative to this record.
 <!-- HOURLY_CYCLE_LATEST:END -->
 
 ## Status
