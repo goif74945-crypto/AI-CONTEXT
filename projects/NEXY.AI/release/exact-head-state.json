@@ -115,5 +115,11 @@
     "status": "UNKNOWN"
   },
   "release_status": "BLOCKED",
-  "final_status": "PARTIAL"
+  "final_status": "PARTIAL",
+  "context_correction": {
+    "preserves_execution_observed_at": true,
+    "corrected_at": "2026-10-03T09:19:31Z",
+    "ai_context_commit": "a137a531e30afcdb961625673778242a42a3314f",
+    "scope": "Separated exact-head execution success from canonical specification alignment."
+  }
 }
