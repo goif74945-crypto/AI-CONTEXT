@@ -1,0 +1,142 @@
+{
+  "project": "NEXY.AI / NEXY-IGNIS",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "branch": "NEXY.ai",
+  "source_design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "recorded_at": "2026-10-03T22:04:32.430Z",
+  "truth_status": "NOT_COMPLETE",
+  "release_authorized": false,
+  "deployable": false,
+  "checkpoint_id": "NEXY-G18-SHARD-042",
+  "head_before": "99dfd7a1c5c0927049ec4b53286d20f4628d6cd7",
+  "tree_before": "8812ecf9043ef322752b4a5c0f6e5dee58423630",
+  "head_after_pre_test_verified": "e37c12597c481895abe0a4fb9087b4848a7f5099",
+  "tree_after_pre_test_verified": "feeb29be8a5437642d50e827f78e21a464590683",
+  "head_drift": "NOT_VERIFIED_AFTER_TEST",
+  "post_test_head_recheck": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "evidence": [
+      "GitHub API branch reread timed out twice after the exact-head test/deployment.",
+      "GitHub browser page confirmed branch NEXY.ai but rendered a stale unrelated latest commit; it cannot prove the post-test SHA."
+    ],
+    "rule": "Do not mix the stale browser page with exact deployment evidence; re-read exact branch SHA before the next edit."
+  },
+  "system": "Game Fabric / G18 Deterministic Networking & Packet Canonicalization",
+  "requirements": [
+    "Authoritative input is applied at a fixed tick boundary with canonical packet fields and deterministic ordering.",
+    "Every tick binds InputMerkleRoot = Merkle(sorted client_input_hashes) into ShardHash; network input has no hidden influence.",
+    "State broadcast verification must fail closed on shard-state hash mismatch and deterministic replay world-hash mismatch."
+  ],
+  "source_refs": [
+    {
+      "paragraph_range": "7080-7110",
+      "requirement": "G18 canonical networking law: authoritative relay, canonical binary packets, fixed byte order/length-prefixing, SHA-256 digest, and pinned schema."
+    },
+    {
+      "paragraph_range": "7111-7180",
+      "requirement": "fixed tick/input sequencing, jitter buffer, broadcast verification, no authoritative rollback, canonical relay and fixed rate."
+    },
+    {
+      "paragraph_range": "7181-7186",
+      "requirement": "InputMerkleRoot is the Merkle root of sorted client input hashes and is included in ShardHash."
+    }
+  ],
+  "implementation": [
+    {
+      "path": "packages/phase-f/game/netcode.ts",
+      "symbols": [
+        "computeShardStateHash",
+        "createStateBroadcast",
+        "verifyStateBroadcast",
+        "StateBroadcast"
+      ],
+      "change": "Added canonical shard-state hash domain and fixed-field hash binding for tick, world hash, entity delta hash, and input Merkle root; extended broadcasts and fail-closed verification."
+    },
+    {
+      "path": "tests/integration/g18-netcode.spec.ts",
+      "change": "Added regression coverage proving InputMerkleRoot changes ShardHash and mismatched shard-state broadcasts are rejected; updated world-hash verification to use the authoritative broadcast constructor."
+    }
+  ],
+  "files_changed": [
+    "packages/phase-f/game/netcode.ts",
+    "tests/integration/g18-netcode.spec.ts"
+  ],
+  "status_after": "PASS_FOR_G18_REQUIREMENT_CLUSTER",
+  "tests_run": [
+    {
+      "command": "Railway exact-head targeted G18 integration test",
+      "deployment_id": "d1b8c4fc-4ecc-4cb8-816c-1463aaa62b98",
+      "commit_hash": "e37c12597c481895abe0a4fb9087b4848a7f5099",
+      "tree_hash": "feeb29be8a5437642d50e827f78e21a464590683",
+      "result": "PASS",
+      "output_excerpt": "tests/integration/g18-netcode.spec.ts passed; exports=26 assertions=38; the new shard-state hash binding test passed."
+    },
+    {
+      "command": "npm run test:coverage",
+      "deployment_id": "d1b8c4fc-4ecc-4cb8-816c-1463aaa62b98",
+      "commit_hash": "e37c12597c481895abe0a4fb9087b4848a7f5099",
+      "tree_hash": "feeb29be8a5437642d50e827f78e21a464590683",
+      "result": "PASS",
+      "output_excerpt": "Test Files 158 passed (158); Tests 1082 passed (1082); Duration 5.39s."
+    },
+    {
+      "command": "Railway exact-head phase/static/build gates",
+      "deployment_id": "d1b8c4fc-4ecc-4cb8-816c-1463aaa62b98",
+      "commit_hash": "e37c12597c481895abe0a4fb9087b4848a7f5099",
+      "tree_hash": "feeb29be8a5437642d50e827f78e21a464590683",
+      "result": "PASS",
+      "output_excerpt": "Phase F gate PASSED; check:six-system-spec, check:coverage, DOC-C/boundary checks, and build:web passed; locked design SHA matched."
+    },
+    {
+      "command": "Railway exact-head browser suites",
+      "deployment_id": "d1b8c4fc-4ecc-4cb8-816c-1463aaa62b98",
+      "commit_hash": "e37c12597c481895abe0a4fb9087b4848a7f5099",
+      "tree_hash": "feeb29be8a5437642d50e827f78e21a464590683",
+      "result": "PASS",
+      "output_excerpt": "NEXY_BROWSER_E2E=PASS tested_sha=e37c12597c481895abe0a4fb9087b4848a7f5099 tested_tree=feeb29be8a5437642d50e827f78e21a464590683 deployment_id=d1b8c4fc-4ecc-4cb8-816c-1463aaa62b98 suites=2; directive 1/1 and critical 10/10."
+    }
+  ],
+  "evidence": [
+    {
+      "artifact_name": "Railway exact-head G18 build/test/browser evidence",
+      "commit_hash": "e37c12597c481895abe0a4fb9087b4848a7f5099",
+      "tree_hash": "feeb29be8a5437642d50e827f78e21a464590683",
+      "branch": "NEXY.ai",
+      "environment": "Railway production / nexy-validation-branch",
+      "date": "2026-10-03",
+      "operator": "railway-redeploy",
+      "command_or_test_id": "deployment d1b8c4fc-4ecc-4cb8-816c-1463aaa62b98",
+      "result": "exact commit/tree deployment succeeded; targeted G18 tests, full suite, static/build gates and browser suites passed",
+      "log_reference": "railway://deployment/d1b8c4fc-4ecc-4cb8-816c-1463aaa62b98",
+      "output_excerpt": "Exact source guard matched RAILWAY_GIT_COMMIT_SHA, DOC_E_TESTED_SHA, and DOC_E_TESTED_TREE; full suite and browser evidence carried the same commit/tree.",
+      "pass_fail": "PASS"
+    },
+    {
+      "artifact_name": "Railway stale auto-deploy diagnostic",
+      "commit_hash": "e37c12597c481895abe0a4fb9087b4848a7f5099",
+      "tree_hash": "feeb29be8a5437642d50e827f78e21a464590683",
+      "branch": "NEXY.ai",
+      "environment": "Railway production / nexy-validation-branch",
+      "date": "2026-10-03",
+      "operator": "railway-auto-deploy",
+      "command_or_test_id": "deployment 136786cb-164e-43c7-b89d-118c1be42e3b",
+      "result": "failed before tests because the provider snapshot retained the previous source identity; corrected by exact redeploy",
+      "log_reference": "railway://deployment/136786cb-164e-43c7-b89d-118c1be42e3b",
+      "output_excerpt": "source guard saw old DOC_E_TESTED_SHA=99df.../tree=8812... and old validation rerun; no code test ran in this deployment.",
+      "pass_fail": "BLOCKED_ENVIRONMENT"
+    }
+  ],
+  "blockers": [
+    "Post-test GitHub API reread of NEXY.ai timed out twice; current post-test ref is NOT_VERIFIED. The next edit is frozen until a fresh exact branch SHA/tree read succeeds.",
+    "The GitHub browser page is authenticated for branch NEXY.ai but displayed stale unrelated commit metadata; it is not evidence for e37c125/feeb29be.",
+    "GitHub Actions exact-head status for e37c125/feeb29be was not reverified in this batch. Earlier head 99dfd7a had bootstrap failures with zero steps/no logs; that historical result cannot be transferred to the new head.",
+    "DOC-E E10/E11/E12 provider/signoff/rollback evidence remains BLOCKED_EXTERNAL or NOT_VERIFIED; no release authorization.",
+    "VS Code Web cannot open this private repository without GitHub sign-in; editor terminal execution is BLOCKED_EXTERNAL/NOT_VERIFIED."
+  ],
+  "percentage_status": {
+    "system_completion": "NOT_RECALCULATED",
+    "full_project_completion": "NOT_PROVEN",
+    "reason": "This atomic batch did not reconstruct the complete source requirement denominator or all-system audit coverage."
+  },
+  "next_task": "Freshly re-read NEXY.ai branch HEAD/tree. If it matches e37c125/feeb29be, inspect the next dependency-highest source-verified gap. Do not start another edit while the exact-head reread remains blocked."
+}
