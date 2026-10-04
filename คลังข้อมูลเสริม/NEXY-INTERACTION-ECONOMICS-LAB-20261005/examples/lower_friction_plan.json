@@ -1,0 +1,16 @@
+{
+  "name": "example-lower-friction",
+  "budget": {
+    "max_friction_score": 40,
+    "max_blocking_touches": 2,
+    "max_choice_bits": 3,
+    "max_context_switches": 2,
+    "max_wait_ms": 5000
+  },
+  "steps": [
+    {"id": "combined-required-input", "kind": "clarification", "blocking": true, "user_effort": 2, "justification": "Two independent required fields presented in one interaction"},
+    {"id": "choose-mode", "kind": "selection", "blocking": true, "choice_count": 4, "context_switches": 1, "user_effort": 1, "justification": "Hierarchical top-level mode selection"},
+    {"id": "reversible-save", "kind": "automatic", "reversible": true},
+    {"id": "background-progress", "kind": "information", "estimated_wait_ms": 0}
+  ]
+}
