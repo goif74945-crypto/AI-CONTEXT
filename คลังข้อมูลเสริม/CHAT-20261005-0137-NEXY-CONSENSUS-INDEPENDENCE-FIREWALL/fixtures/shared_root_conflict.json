@@ -1,0 +1,12 @@
+{
+  "claim_id": "attack-shared-root-conflict",
+  "evidence": [
+    {"evidence_id": "root-a", "kind": "runtime", "source_identity": "run:a", "parents": [], "correlation_keys": []},
+    {"evidence_id": "root-b", "kind": "runtime", "source_identity": "run:b", "parents": [], "correlation_keys": []}
+  ],
+  "votes": [
+    {"actor_id": "support-a", "stance": "SUPPORT", "evidence_ids": ["root-a"], "correlation_keys": []},
+    {"actor_id": "support-b", "stance": "SUPPORT", "evidence_ids": ["root-b"], "correlation_keys": []},
+    {"actor_id": "oppose-a", "stance": "OPPOSE", "evidence_ids": ["root-a"], "correlation_keys": []}
+  ]
+}
