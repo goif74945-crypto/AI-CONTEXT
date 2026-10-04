@@ -3,35 +3,33 @@
 - execution_id: `ACX-NPF-20261005T0122+0700-01`
 - platform_chat_id: `UNKNOWN_NOT_EXPOSED_TO_ASSISTANT`
 - started_at: `2026-10-05T01:22:00+07:00`
-- status: `IN_PROGRESS`
+- status: `VERIFYING_PERSISTENCE`
 - target_repository: `goif74945-crypto/AI-CONTEXT`
 - writable_scope: `คลังข้อมูลเสริม/NEXY-PROPOSAL-FORGE/**`
 - protected_repository: `goif74945-crypto/NEXY.AI-`
 - protected_repository_mode: `READ_ONLY`
 
-## Current state
+## COMPLETED
 
-### COMPLETED
-- Loaded AI-CONTEXT bootstrap, index, execution kernel, work router.
-- Loaded NEXY.AI authority/orientation context.
-- Confirmed current source denominator is 837 normalized requirement rows.
-- Confirmed legacy 215 registry is deprecated/unreliable.
-- Searched AI-CONTEXT for an existing feature-proposal/admission/novelty system; no matching indexed implementation found.
-- Selected a new isolated supplemental project: NEXY Proposal Forge.
+- Loaded AI-CONTEXT bootstrap, index, execution kernel, work router, NEXY overview, deep index, and current 837-row source matrix.
+- Read NEXY.AI branch governance and orientation in read-only mode.
+- Searched AI-CONTEXT for indexed proposal/admission/novelty systems before implementation; no matching implementation was returned.
+- Built NEXY Proposal Forge v0.1.0 locally.
+- Added deterministic candidate fingerprints, typed evidence roles, overlap analysis, fail-closed evaluation, and work-scope collision guard.
+- Ran compile/JSON validation and 29 automated tests successfully.
+- Ran a synthetic 837-entry catalog determinism/scale observation successfully.
 
-### IN PROGRESS
-- Formal specification.
-- Deterministic candidate capsule schema.
-- Duplicate/overlap detector.
-- Fail-closed admission evaluator.
-- CLI.
-- Tests and evidence.
+## IN PROGRESS
 
-### BLOCKED
-- None.
+- Persist exact tested files to GitHub.
+- Re-read committed files and compare Git blob SHAs against the local integrity manifest.
+- Mark final state COMPLETE only if persistence verification passes.
 
-### NEXT ACTION
-Implement locally, execute tests, then persist exact tested files and verification evidence here.
+## BLOCKED
 
-### VERIFICATION STATUS
-`NOT_VERIFIED` until local test execution succeeds and committed files are re-read.
+None.
+
+## VERIFICATION STATUS
+
+Local implementation: `PASS`.
+GitHub persistence: `NOT_VERIFIED` until post-write re-read/hash comparison completes.
