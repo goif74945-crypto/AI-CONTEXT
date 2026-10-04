@@ -1,0 +1,70 @@
+{
+  "task_id": "NEXY-MBC-20261005-0121-ICT",
+  "objective": "Design, implement, test, and persist a distinct future-useful NEXY supplemental tool that computes deterministic freeze explanations and inclusion-minimal repair sets without modifying NEXY.AI repositories.",
+  "target": "goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-MINIMAL-BLOCKER-CORE",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "branch": "main",
+  "expected_head": null,
+  "authorized_scope": [
+    "Create new additive files only inside the isolated target folder",
+    "Use current AI-CONTEXT canonical NEXY context as read-only design input",
+    "Execute the standalone tool/tests in a local sandbox"
+  ],
+  "protected_scope": [
+    "Any repository whose name contains NEXY.AI",
+    "All existing sibling files outside the isolated target folder",
+    "Secrets, credentials, private tokens, production systems"
+  ],
+  "authority_sources": [
+    "Current user directive",
+    "AI-CONTEXT/AI-EXECUTION-KERNEL.md",
+    "AI-CONTEXT/rules/GLOBAL.md",
+    "AI-CONTEXT/rules/SECURITY.md",
+    "AI-CONTEXT/rules/VERIFICATION.md",
+    "AI-CONTEXT/projects/NEXY.AI/overview.md",
+    "AI-CONTEXT/projects/NEXY.AI/status.md"
+  ],
+  "preconditions": [
+    "AI-CONTEXT repository identity and write permission are verified",
+    "Target folder is isolated/additive",
+    "NEXY.AI repositories remain protected from mutation",
+    "Proposed architecture remains explicitly labeled experimental"
+  ],
+  "success_invariants": [
+    "No NEXY.AI repository mutation occurs",
+    "Engine result is deterministic for identical semantic input",
+    "Declared PASS cannot survive stale revision or insufficient evidence class",
+    "Repair sets are inclusion-minimal within the enumerated search",
+    "Repair-set truncation is disclosed and weakens recommendation optimality claims",
+    "Invalid input fails explicitly instead of being guessed",
+    "Local static/unit verification passes before completion is claimed"
+  ],
+  "forbidden_actions": [
+    "Modify, delete, rename, commit to, merge, branch, configure, or otherwise mutate a NEXY.AI repository",
+    "Promote this experimental tool to canonical NEXY law",
+    "Claim release authorization from the example fixture",
+    "Persist secrets",
+    "Claim E3-E7 evidence that was not executed"
+  ],
+  "required_evidence": [
+    "E0_PRESENCE",
+    "E1_STATIC",
+    "E2_UNIT"
+  ],
+  "stop_conditions": [
+    "Target repository identity becomes ambiguous",
+    "A write would require touching protected scope",
+    "Concurrent repository change would require force overwrite",
+    "Validation exposes an unresolved correctness defect in the standalone tool"
+  ],
+  "deliverables": [
+    "Session memory and design rationale",
+    "Architecture and freeze-certificate contracts",
+    "Standalone Python engine and CLI",
+    "Machine-readable input/output schemas",
+    "Revision-locked example fixture",
+    "Unit/regression tests and validation runner",
+    "Validation evidence",
+    "Future adoption gates and final audit"
+  ]
+}
