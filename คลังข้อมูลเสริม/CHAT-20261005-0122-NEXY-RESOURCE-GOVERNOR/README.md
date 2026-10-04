@@ -30,9 +30,11 @@ The existing supplemental Verification Economy work schedules proof jobs. This l
 - `01_TASK_CONTRACT.md` — objective, scope, acceptance criteria.
 - `02_ARCHITECTURE.md` — modules, authority, state and deterministic ordering.
 - `03_REQUIREMENT_LEDGER.md` — requirement-to-evidence map.
+- `04_CONTRACTS.md` — human-readable contract semantics.
 - `contracts/resource-governor.schema.json` — machine-readable proposal contract.
 - `src/models.py`, `src/governor.py`, `src/serde.py` — deterministic Python reference implementation split into contracts, planner and mapping boundary.
 - `tests/test_governor.py` — unit/adversarial tests.
+- `tests/test_properties.py` — fixed-seed property-style invariant regression.
 - `fixtures/scenarios.json` — reusable scenario corpus.
 - `benchmarks/benchmark_governor.py` — reproducible synthetic scale benchmark.
 - `05_FAILURE_MODEL.md` — fail/freeze semantics.
