@@ -1,0 +1,14 @@
+{
+  "operation": "compile",
+  "spec": {
+    "objective_id": "example.release",
+    "objective": "Release without availability regression or data loss",
+    "criteria": [
+      {"id": "availability", "path": "metrics.availability", "op": "min", "value": 99.9, "hard": true, "weight": 0, "regression_guard": true, "max_regression": 0},
+      {"id": "latency", "path": "metrics.latency_ms", "op": "max", "value": 200, "hard": false, "weight": 1, "regression_guard": true, "max_regression": 10}
+    ],
+    "forbidden_effects": [
+      {"id": "no_data_loss", "path": "effects.data_loss", "op": "eq", "value": true}
+    ]
+  }
+}
