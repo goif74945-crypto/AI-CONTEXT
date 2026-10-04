@@ -19,7 +19,7 @@ python - <<PY  # jsonschema Draft202012Validator.check_schema + validate all fix
 PY
 ```
 
-Observed: PASS. Python sources compiled, both JSON artifacts parsed, the Draft 2020-12 schema passed `check_schema`, and all 4 fixture task/agent payloads validated against it using jsonschema 4.26.0.
+Observed: PASS. Python sources compiled, both JSON artifacts parsed, the Draft 2020-12 schema passed `check_schema`, all 4 fixture task/agent payloads validated against it using jsonschema 4.26.0, and a negative payload with zero worker input+output tokens was correctly rejected.
 
 ## E2 — unit/adversarial evidence
 Command executed:
