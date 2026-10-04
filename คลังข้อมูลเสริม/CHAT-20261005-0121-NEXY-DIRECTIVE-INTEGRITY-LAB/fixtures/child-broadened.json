@@ -1,0 +1,17 @@
+{
+  "schema_version": "nexy.directive-integrity.v1",
+  "stage": "CLE",
+  "action": "ACTION_RUN",
+  "target": "project:alpha",
+  "constraints": ["deterministic_required", "max_tokens=4096"],
+  "scope_in": ["project:alpha", "repo:unexpected"],
+  "scope_out": ["repo:NEXY.AI-"],
+  "side_effects": ["write:repo:unexpected"],
+  "authority_refs": ["USER_DIRECTIVE:1"],
+  "ambiguity": "RESOLVED",
+  "clarification_refs": [],
+  "mutation_class": "REVERSIBLE_MUTATION",
+  "impact_class": "MEDIUM",
+  "risk_reassessment_refs": [],
+  "parent_digest": "b026d594fb62d0060dff9d3adbe945d1668e738d2d54c8e3bd69330caf12f3c8"
+}
