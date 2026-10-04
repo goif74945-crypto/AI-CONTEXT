@@ -1,0 +1,8 @@
+[project]
+name = "nexy-q64-constitutional-physics"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Lo4 advisory Q64.64 reference engines for future NEXY evaluation"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

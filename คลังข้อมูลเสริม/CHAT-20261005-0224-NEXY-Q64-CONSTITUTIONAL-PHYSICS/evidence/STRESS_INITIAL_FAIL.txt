@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/mnt/data/q64_constitutional_physics/tests/stress_properties.py", line 1, in <module>
+    from qcp.fixed import Q64
+ModuleNotFoundError: No module named 'qcp'
