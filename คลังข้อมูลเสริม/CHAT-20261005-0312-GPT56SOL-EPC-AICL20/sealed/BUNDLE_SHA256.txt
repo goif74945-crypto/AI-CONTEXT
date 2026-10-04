@@ -1,0 +1,5 @@
+MMCRC20-BUNDLE.tar.gz SHA-256:
+b7995646e9a3147e033bbadd49f0436e1b0297b52a074d21e150ba5d40174c4c
+
+The base64 transport file is stored at sealed/MMCRC20-BUNDLE.tar.gz.b64.
+Decode base64 first; verify this SHA-256 on the resulting gzip tar before extraction.
