@@ -5,8 +5,8 @@ MODE: EXECUTE
 SCOPE: INTELLIGENCE / LOGIC / CERTAINTY / TRINITY
 TARGET_REPOSITORY: goif74945-crypto/NEXY.AI-
 TARGET_BRANCH: NEXY.ai
-BOUND_HEAD: 4fdddfe3aa93faa8b50086a189f0cab507a8abef
-PREVIOUS_BOUND_HEAD: 929c1de4a015a87a1da7e57e4667ecf2bce9eedc
+BOUND_HEAD: 4dab852af1ffe0a84e3fc6d389e177db5cb0f551
+PREVIOUS_BOUND_HEAD: 4fdddfe3aa93faa8b50086a189f0cab507a8abef
 AI_CONTEXT_BASE_HEAD: 9daf245c11d8728c52fb6c69034b2e054024d4f1
 AUTHORITATIVE_DESIGN: แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx
 AUTHORITATIVE_DESIGN_SHA256: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
@@ -53,3 +53,14 @@ SELF_REBIND_AFTER_INTELLIGENCE_COMMIT:
 - reason: own INT-01..INT-10 mutation commit
 - next targeted repair: packages/intelligence/cirl.ts Q64 ambiguity-score schema drift
 - collision: NONE
+
+SHARED_PATH_LOCK_EXTENSION:
+- packages/swarm/pipeline.ts
+- targeted contract tests for Lo3 verification / CTS evidence propagation
+REASON:
+- INT-10 production Trinity currently hard-codes lo3.verified=true.
+- Lo3 crossVerify currently preserves evidence-less model assertions by reducing model confidence instead of rejecting unverifiable candidates.
+- This conflicts with authoritative Lo3 unverifiable-result rejection and the task's prohibition on model assertion as certainty.
+SCOPE_LIMIT:
+- only Cross Verify evidence admissibility, CTS evidence propagation, and Trinity verified binding.
+- no API/security/UI/CI/release/core-architecture changes.
