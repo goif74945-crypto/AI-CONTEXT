@@ -1,0 +1,90 @@
+{
+  "contract_hash": "b6498e3f3edcf89b9dcdf1f256e3ec000b7d73cae159c5d222df65b1e7cae4a8",
+  "frontier": {
+    "admissible_count": 1,
+    "dominated_by": {},
+    "frontier": [
+      "baseline"
+    ],
+    "rejected": [
+      {
+        "candidate_id": "candidate",
+        "status": "FAIL"
+      }
+    ],
+    "status": "PASS"
+  },
+  "recovery": {
+    "cost": 1.0,
+    "plan": [
+      "restore"
+    ],
+    "reason": "minimal_lexicographic_cost_risk_size_id",
+    "result_status": "PASS",
+    "risk": 0.01,
+    "status": "PASS"
+  },
+  "regression": {
+    "baseline_soft_score": 1.0,
+    "baseline_status": "PASS",
+    "candidate_soft_score": 1.0,
+    "candidate_status": "FAIL",
+    "regressions": [
+      {
+        "baseline": 99.95,
+        "candidate": 99.0,
+        "criterion_id": "availability",
+        "max_regression": 0.0,
+        "path": "metrics.availability",
+        "reason": "lower_is_worse"
+      }
+    ],
+    "status": "FAIL"
+  },
+  "verify_candidate": {
+    "contract_hash": "b6498e3f3edcf89b9dcdf1f256e3ec000b7d73cae159c5d222df65b1e7cae4a8",
+    "criteria": [
+      {
+        "actual": 99.0,
+        "criterion_id": "availability",
+        "expected": 99.9,
+        "hard": true,
+        "margin": -0.9000000000000057,
+        "path": "metrics.availability",
+        "reason": "below_minimum",
+        "satisfied": false
+      },
+      {
+        "actual": 180,
+        "criterion_id": "latency",
+        "expected": 200,
+        "hard": false,
+        "margin": 20.0,
+        "path": "metrics.latency_ms",
+        "reason": "actual<=maximum",
+        "satisfied": true
+      },
+      {
+        "actual": 8.4,
+        "criterion_id": "satisfaction",
+        "expected": 8.0,
+        "hard": false,
+        "margin": 0.40000000000000036,
+        "path": "metrics.satisfaction",
+        "reason": "actual>=minimum",
+        "satisfied": true
+      }
+    ],
+    "forbidden_violations": [],
+    "hard_failures": [
+      "availability"
+    ],
+    "invalid_observations": [],
+    "missing_observations": [],
+    "objective_id": "deploy.safe-fast",
+    "report_hash": "6ea740a8a1b126652f488953edb71613eebaab307ff59d2ecadd5d66cfc0efa4",
+    "soft_failures": [],
+    "soft_score": 1.0,
+    "status": "FAIL"
+  }
+}
