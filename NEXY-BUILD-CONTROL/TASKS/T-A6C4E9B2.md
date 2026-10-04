@@ -5,7 +5,7 @@ STATUS: IMPLEMENTING
 PRIORITY: P1
 RISK: MEDIUM
 BASE_SHA: cf8b517975b252575fde4d4b155d18e56df82a73
-EXPECTED_PARENT_SHA: cf8b517975b252575fde4d4b155d18e56df82a73
+EXPECTED_PARENT_SHA: ff154a7ea52f32848d652219bcf6867067cf753a
 TARGET_PATHS:
 - core-kernel/src/kernel/vnext_matrix.rs
 SEMANTIC_SCOPE: Align Rust VNext TRANSITIONS and Rust unit oracle to the authoritative final DOC-C §5.2/§5.4 transition set after TypeScript exactness fix 27af7f; remove only the five superseded non-active error->FREEZE edges. No TypeScript state matrix, hydration, persistence, event ownership, guard, error taxonomy, or protected-branch changes.
@@ -22,5 +22,5 @@ TEST_PLAN:
 - rely on fresh exact-head Railway test:contract / core-kernel test execution after commit
 - do not claim full PASS without exact-head execution
 REVIEW_STATE: NOT_STARTED
-LAST_PROGRESS: Railway exact work-branch execution proved 5 obsolete Rust error edges remain after TS final-DOC-C correction.
+LAST_PROGRESS: Reconciled shared-head drift cf8b5179 -> ff154a7e; target Rust blob remains c55e13839f2bed01a29749f226edef82d1929a4a unchanged, so mutation scope is non-overlapping.
 NEXT_ACTION: Recheck work HEAD/file blob, apply one-file repair, then observe exact-head executable validation.
