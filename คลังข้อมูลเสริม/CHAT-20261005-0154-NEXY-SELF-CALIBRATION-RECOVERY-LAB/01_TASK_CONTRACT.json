@@ -1,0 +1,57 @@
+{
+  "task_id": "NEXY-SELF-CALIBRATION-RECOVERY-LAB-20261005-0154",
+  "conversation_identifier": "PROJECT-CONVERSATION-2026-10-05T01:54+07:00",
+  "classification": "EXPERIMENTAL_AI_PROPOSAL_NOT_NEXY_CANON",
+  "objective": "Design, implement, test, audit, and persist five novel auxiliary systems useful to future NEXY.AI engineering without mutating any repository whose name contains NEXY.AI.",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "branch": "main",
+  "target": "คลังข้อมูลเสริม/CHAT-20261005-0154-NEXY-SELF-CALIBRATION-RECOVERY-LAB",
+  "authorized_scope": [
+    "Create files only under the target mission folder in AI-CONTEXT",
+    "Read AI-CONTEXT canonical rules/project context",
+    "Execute authored code and tests in an isolated local runtime"
+  ],
+  "protected_scope": [
+    "Any repository whose name contains NEXY.AI",
+    "Existing AI-CONTEXT paths outside the target mission folder",
+    "Secrets, credentials, private user data",
+    "Canonical NEXY requirements unless explicitly promoted by authority"
+  ],
+  "authority_sources": [
+    "Current explicit user directive",
+    "AI-BOOTSTRAP.md",
+    "AI-EXECUTION-KERNEL.md",
+    "WORK-ROUTER.md",
+    "rules/GLOBAL.md",
+    "rules/SECURITY.md",
+    "rules/VERIFICATION.md",
+    "rules/MEMORY.md",
+    "projects/NEXY.AI/overview.md",
+    "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md"
+  ],
+  "immutable_requirements": [
+    "No hidden authority promotion from observation to requirement",
+    "Deterministic canonical outputs for equivalent inputs",
+    "No network, model calls, eval, exec, subprocess, secrets, or production mutation in core implementations",
+    "Fail closed on malformed identity-sensitive input",
+    "Separate design, code presence, runtime evidence, and future integration status",
+    "All five concepts must have design, code, tests, evidence, and an integration boundary",
+    "Do not mutate NEXY.AI repositories"
+  ],
+  "required_evidence": ["E0_PRESENCE", "E1_STATIC", "E2_UNIT", "E3_LOCAL_INTEGRATION"],
+  "acceptance_criteria": [
+    "Five distinct concepts implemented",
+    "Equivalent input order does not change deterministic result where order is semantically irrelevant",
+    "Adversarial and negative paths are tested",
+    "Integration test composes all five systems",
+    "All local tests pass after final repair",
+    "Persisted critical source files match locally tested content by SHA-256",
+    "No protected repository mutation occurs"
+  ],
+  "stop_conditions": [
+    "A required action would mutate a NEXY.AI-named repository",
+    "A material authority conflict cannot be resolved",
+    "Exact tested source identity cannot be verified after persistence",
+    "Required runtime evidence cannot be executed"
+  ]
+}

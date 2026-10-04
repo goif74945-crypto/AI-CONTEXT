@@ -1,0 +1,43 @@
+test_invalid_probability_rejected (concepts.calibration_observatory.test_calibrator.CalibrationObservatoryTests.test_invalid_probability_rejected) ... ok
+test_no_data_explicit (concepts.calibration_observatory.test_calibrator.CalibrationObservatoryTests.test_no_data_explicit) ... ok
+test_order_independent (concepts.calibration_observatory.test_calibrator.CalibrationObservatoryTests.test_order_independent) ... ok
+test_overconfidence_detected (concepts.calibration_observatory.test_calibrator.CalibrationObservatoryTests.test_overconfidence_detected) ... ok
+test_small_sample_not_promoted (concepts.calibration_observatory.test_calibrator.CalibrationObservatoryTests.test_small_sample_not_promoted) ... ok
+test_underconfidence_detected (concepts.calibration_observatory.test_calibrator.CalibrationObservatoryTests.test_underconfidence_detected) ... ok
+test_bad_limits_rejected (concepts.contract_archaeologist.test_miner.ContractArchaeologistTests.test_bad_limits_rejected) ... ok
+test_boolean_not_numeric (concepts.contract_archaeologist.test_miner.ContractArchaeologistTests.test_boolean_not_numeric) ... ok
+test_mines_required_constant_range_and_implication (concepts.contract_archaeologist.test_miner.ContractArchaeologistTests.test_mines_required_constant_range_and_implication) ... ok
+test_no_data_is_explicit (concepts.contract_archaeologist.test_miner.ContractArchaeologistTests.test_no_data_is_explicit) ... ok
+test_non_mapping_input_rejected (concepts.contract_archaeologist.test_miner.ContractArchaeologistTests.test_non_mapping_input_rejected) ... ok
+test_nonfinite_float_rejected (concepts.contract_archaeologist.test_miner.ContractArchaeologistTests.test_nonfinite_float_rejected) ... ok
+test_order_independent (concepts.contract_archaeologist.test_miner.ContractArchaeologistTests.test_order_independent) ... ok
+test_type_collision_true_vs_one_not_conflated (concepts.contract_archaeologist.test_miner.ContractArchaeologistTests.test_type_collision_true_vs_one_not_conflated) ... ok
+test_identical_content_collapses_even_across_roots (concepts.evidence_genealogy.test_auditor.EvidenceGenealogyTests.test_identical_content_collapses_even_across_roots) ... ok
+test_mixed_claims_rejected (concepts.evidence_genealogy.test_auditor.EvidenceGenealogyTests.test_mixed_claims_rejected) ... ok
+test_shared_root_collapses_apparent_count (concepts.evidence_genealogy.test_auditor.EvidenceGenealogyTests.test_shared_root_collapses_apparent_count) ... ok
+test_stale_evidence_blocks_ready (concepts.evidence_genealogy.test_auditor.EvidenceGenealogyTests.test_stale_evidence_blocks_ready) ... ok
+test_two_independent_groups_ready (concepts.evidence_genealogy.test_auditor.EvidenceGenealogyTests.test_two_independent_groups_ready) ... ok
+test_baseline_not_failing_is_explicit (concepts.failure_atomizer.test_atomizer.FailureAtomizerTests.test_baseline_not_failing_is_explicit) ... ok
+test_budget_exhaustion_fails_closed (concepts.failure_atomizer.test_atomizer.FailureAtomizerTests.test_budget_exhaustion_fails_closed) ... ok
+test_deterministic (concepts.failure_atomizer.test_atomizer.FailureAtomizerTests.test_deterministic) ... ok
+test_duplicate_values_and_order_sensitive_predicate (concepts.failure_atomizer.test_atomizer.FailureAtomizerTests.test_duplicate_values_and_order_sensitive_predicate) ... ok
+test_empty_failure_is_explicit (concepts.failure_atomizer.test_atomizer.FailureAtomizerTests.test_empty_failure_is_explicit) ... ok
+test_minimizes_trigger_pair (concepts.failure_atomizer.test_atomizer.FailureAtomizerTests.test_minimizes_trigger_pair) ... ok
+test_result_is_explicitly_one_minimal (concepts.failure_atomizer.test_atomizer.FailureAtomizerTests.test_result_is_explicitly_one_minimal) ... ok
+test_blocks_non_idempotent_unprotected_inflight (concepts.pausesafe_kernel.test_kernel.PauseSafeKernelTests.test_blocks_non_idempotent_unprotected_inflight) ... ok
+test_compensation_allows_drain_not_instant_checkpoint (concepts.pausesafe_kernel.test_kernel.PauseSafeKernelTests.test_compensation_allows_drain_not_instant_checkpoint) ... ok
+test_duplicate_step_ids_rejected (concepts.pausesafe_kernel.test_kernel.PauseSafeKernelTests.test_duplicate_step_ids_rejected) ... ok
+test_requires_drain_for_idempotent_running_step (concepts.pausesafe_kernel.test_kernel.PauseSafeKernelTests.test_requires_drain_for_idempotent_running_step) ... ok
+test_token_and_resume_are_state_bound (concepts.pausesafe_kernel.test_kernel.PauseSafeKernelTests.test_token_and_resume_are_state_bound) ... ok
+test_token_deterministic_for_equivalent_state (concepts.pausesafe_kernel.test_kernel.PauseSafeKernelTests.test_token_deterministic_for_equivalent_state) ... ok
+test_atomizer_all_28_trigger_pairs_are_one_minimal (integration.test_adversarial_matrix.AdversarialMatrixTests.test_atomizer_all_28_trigger_pairs_are_one_minimal) ... ok
+test_calibration_balanced_population (integration.test_adversarial_matrix.AdversarialMatrixTests.test_calibration_balanced_population) ... ok
+test_contract_miner_permutation_stability_24_orders (integration.test_adversarial_matrix.AdversarialMatrixTests.test_contract_miner_permutation_stability_24_orders) ... ok
+test_evidence_transitive_genealogy_collapses (integration.test_adversarial_matrix.AdversarialMatrixTests.test_evidence_transitive_genealogy_collapses) ... ok
+test_pausesafe_state_matrix (integration.test_adversarial_matrix.AdversarialMatrixTests.test_pausesafe_state_matrix) ... ok
+test_meta_integrity_workflow (integration.test_portfolio.PortfolioIntegrationTests.test_meta_integrity_workflow) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 0.009s
+
+OK
