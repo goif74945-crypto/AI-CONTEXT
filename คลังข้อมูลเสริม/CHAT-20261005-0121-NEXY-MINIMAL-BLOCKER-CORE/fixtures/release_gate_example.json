@@ -1,0 +1,94 @@
+{
+  "certificate_id": "NEXY-EXAMPLE-RELEASE-GATE-9E615B04",
+  "evidence": {
+    "core_branch_coverage": {
+      "observed_class": "E2_UNIT",
+      "observed_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+      "remediation": "raise Core branch coverage to the configured policy threshold and rerun exact-head coverage",
+      "repair_cost": 2,
+      "repair_kind": "IMPLEMENTATION",
+      "required_class": "E2_UNIT",
+      "status": "FAIL",
+      "target_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+    },
+    "doc_e_e11_signoff": {
+      "observed_class": "E0_PRESENCE",
+      "observed_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+      "remediation": "obtain current exact-head E11 signoff evidence",
+      "repair_cost": 3,
+      "repair_kind": "REVIEW",
+      "required_class": "E6_DEPLOYMENT",
+      "status": "NOT_VERIFIED",
+      "target_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+    },
+    "doc_e_e12_rollback_provider": {
+      "observed_class": "E0_PRESENCE",
+      "observed_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+      "remediation": "produce exact-head rollback/provider proof",
+      "repair_cost": 4,
+      "repair_kind": "EVIDENCE",
+      "required_class": "E6_DEPLOYMENT",
+      "status": "NOT_VERIFIED",
+      "target_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+    },
+    "gha_execution": {
+      "observed_class": "E0_PRESENCE",
+      "observed_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+      "remediation": "restore an executable CI runner path and collect exact-head job evidence",
+      "repair_cost": 5,
+      "repair_kind": "DEPENDENCY",
+      "required_class": "E3_INTEGRATION",
+      "status": "BLOCKED",
+      "target_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+    },
+    "railway_measured_tests": {
+      "observed_class": "E3_INTEGRATION",
+      "observed_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+      "remediation": "none",
+      "repair_cost": 0,
+      "repair_kind": "EVIDENCE",
+      "required_class": "E3_INTEGRATION",
+      "status": "PASS",
+      "target_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+    }
+  },
+  "gate": {
+    "all_of": [
+      {
+        "leaf": "core_branch_coverage"
+      },
+      {
+        "leaf": "railway_measured_tests"
+      },
+      {
+        "any_of": [
+          {
+            "leaf": "gha_execution"
+          },
+          {
+            "leaf": "doc_e_e11_signoff"
+          }
+        ],
+        "label": "external execution path"
+      },
+      {
+        "leaf": "doc_e_e12_rollback_provider"
+      }
+    ],
+    "label": "release authorization prerequisites"
+  },
+  "metadata": {
+    "fixture_revision_lock": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "source_context_refs": [
+      "AI-CONTEXT/projects/NEXY.AI/status.md@blob:33bd1c9ab7f7dd029294ebfb355e6c3fdc4440e0",
+      "AI-CONTEXT/projects/NEXY.AI/overview.md@blob:a2b408a4babaa898757511bb641de33c2d423ace"
+    ],
+    "source_truth_class": "PROJECT_STATE / advisory fixture input",
+    "truth_note": "Example derived from AI-CONTEXT status; this fixture is advisory and not release authorization."
+  },
+  "schema_version": "1.0",
+  "target": {
+    "name": "NEXY exact-head release readiness example",
+    "revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+  }
+}
