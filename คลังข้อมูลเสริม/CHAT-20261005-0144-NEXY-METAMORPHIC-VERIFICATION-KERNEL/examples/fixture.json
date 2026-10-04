@@ -1,0 +1,18 @@
+{
+  "case": {
+    "prompt": "Summarize the verified state.",
+    "context": {"project": "example"},
+    "authority": ["user-law", "project-law"],
+    "permissions": ["read"],
+    "evidence": ["ev-001"],
+    "metadata": {"fixture": true}
+  },
+  "observation": {
+    "status": "PASS",
+    "released": true,
+    "payload": {"summary": "verified"},
+    "side_effects": [],
+    "evidence": ["ev-001"],
+    "metadata": {"adapter": "example"}
+  }
+}

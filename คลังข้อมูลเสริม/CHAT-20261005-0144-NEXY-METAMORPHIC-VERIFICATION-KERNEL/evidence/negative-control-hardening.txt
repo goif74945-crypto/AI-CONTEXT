@@ -1,0 +1,1 @@
+FAIL: semantic projection changed under an invariance relation
