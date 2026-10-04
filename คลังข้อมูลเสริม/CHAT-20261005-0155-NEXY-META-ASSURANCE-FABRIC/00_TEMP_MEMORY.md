@@ -44,19 +44,25 @@ COMPLETED:
 - Enumerated current supplementary project names.
 - Screened candidate themes for direct keyword collision.
 
+COMPLETED:
+- Task Contract persisted and read back.
+- Five concepts designed as explicit PROPOSALs.
+- Five core modules implemented.
+- Six test modules implemented.
+- Static compile and forbidden-import audit passed.
+- Final aligned unittest suite passed 31/31.
+- Design, code, tests, review, limitations and evidence persisted.
+- GitHub directory/read-back gate found no missing expected artifact.
+- Completion Record persisted.
+
 IN PROGRESS:
-- Establish task contract.
-- Implement five prototypes and tests.
+- None for the authorized standalone prototype mission.
 
 BLOCKED:
 - None.
 
 NEXT ACTION:
-1. Persist task contract.
-2. Build standalone Python package under this folder.
-3. Run real local unit tests in an isolated working directory.
-4. Persist source/tests/evidence.
-5. Re-read persisted files and bind evidence to final commit(s).
+No automatic next action. Any integration into a repository whose name contains NEXY.AI requires a separate explicit authorization and fresh authority/compatibility verification.
 
 ## Invariants
 - Never write to any repository whose name contains `NEXY.AI`.

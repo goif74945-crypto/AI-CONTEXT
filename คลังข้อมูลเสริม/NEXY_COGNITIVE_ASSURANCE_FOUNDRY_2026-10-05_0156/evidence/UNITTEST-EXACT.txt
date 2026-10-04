@@ -1,0 +1,28 @@
+test_age_amplifies_debt (test_foundry.CognitiveDebtTests.test_age_amplifies_debt) ... ok
+test_empty_ledger_passes (test_foundry.CognitiveDebtTests.test_empty_ledger_passes) ... ok
+test_release_blocker_freezes (test_foundry.CognitiveDebtTests.test_release_blocker_freezes) ... ok
+test_threshold_review (test_foundry.CognitiveDebtTests.test_threshold_review) ... ok
+test_missing_rollback_freezes (test_foundry.CounterfactualGateTests.test_missing_rollback_freezes) ... ok
+test_safe_proposal_passes (test_foundry.CounterfactualGateTests.test_safe_proposal_passes) ... ok
+test_scenario_order_does_not_change_fingerprint (test_foundry.CounterfactualGateTests.test_scenario_order_does_not_change_fingerprint) ... ok
+test_undetectable_irreversible_risk_freezes (test_foundry.CounterfactualGateTests.test_undetectable_irreversible_risk_freezes) ... ok
+test_complete_contract_passes (test_foundry.IntentLatticeTests.test_complete_contract_passes) ... ok
+test_missing_authority_freezes (test_foundry.IntentLatticeTests.test_missing_authority_freezes) ... ok
+test_output_is_deterministic (test_foundry.IntentLatticeTests.test_output_is_deterministic) ... ok
+test_scope_collision_freezes (test_foundry.IntentLatticeTests.test_scope_collision_freezes) ... ok
+test_changed_source_invalidates_transitively (test_foundry.ProofHorizonTests.test_changed_source_invalidates_transitively) ... ok
+test_duplicate_proof_ids_rejected_even_from_generator (test_foundry.ProofHorizonTests.test_duplicate_proof_ids_rejected_even_from_generator) ... ok
+test_fresh_unchanged_proofs_pass (test_foundry.ProofHorizonTests.test_fresh_unchanged_proofs_pass) ... ok
+test_missing_upstream_proof_is_invalid (test_foundry.ProofHorizonTests.test_missing_upstream_proof_is_invalid) ... ok
+test_stale_low_class_requires_review (test_foundry.ProofHorizonTests.test_stale_low_class_requires_review) ... ok
+test_freeze_dominates_pass (test_foundry.SuiteTests.test_freeze_dominates_pass) ... ok
+test_suite_is_order_invariant (test_foundry.SuiteTests.test_suite_is_order_invariant) ... ok
+test_high_impact_weak_evidence_freezes (test_foundry.TrustBudgetTests.test_high_impact_weak_evidence_freezes) ... ok
+test_irreversible_requires_at_least_confirmation (test_foundry.TrustBudgetTests.test_irreversible_requires_at_least_confirmation) ... ok
+test_low_risk_executes (test_foundry.TrustBudgetTests.test_low_risk_executes) ... ok
+test_unclear_scope_freezes (test_foundry.TrustBudgetTests.test_unclear_scope_freezes) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.002s
+
+OK

@@ -1,55 +1,48 @@
-# TEMP SESSION STATE — NEXY Authority-Preserving Causal Merge Lab
+# SESSION STATE — NEXY Authority-Preserving Causal Merge Lab
 
-status: IN_PROGRESS
+status: COMPLETE_FOR_STANDALONE_SCOPE
 date: 2026-10-05
 project_local_work_id: CHAT-20261005-0140-NEXY-CAUSAL-MERGE-LAB
 platform_chat_id: UNKNOWN
-platform_chat_id_note: Current toolset does not expose an immutable ChatGPT conversation ID. Do not invent one.
+platform_chat_id_note: Current toolset does not expose an immutable ChatGPT conversation ID. This value was not invented.
 
 ## Objective
-Create a standalone, experimental, deterministic causal merge/reference implementation that can later integrate with NEXY.AI without modifying any repository whose name contains NEXY.AI.
+Create a standalone experimental deterministic causal merge/reference implementation that can later integrate with NEXY.AI without modifying any repository whose name contains NEXY.AI.
 
-## Mutable scope
+## Mutable scope used
 - goif74945-crypto/AI-CONTEXT
-- path: คลังข้อมูลเสริม/CHAT-20261005-0140-NEXY-CAUSAL-MERGE-LAB/**
+- คลังข้อมูลเสริม/CHAT-20261005-0140-NEXY-CAUSAL-MERGE-LAB/**
 
 ## Protected scope
-- Every repository whose name contains NEXY.AI: READ/ANALYZE ONLY.
-- Existing supplemental projects outside this project folder are read-only for this task unless a final index/provenance update is strictly needed.
-- No secrets/credentials/PII.
+Every repository whose name contains NEXY.AI remained READ/ANALYZE ONLY.
 
-## Verified starting facts
-- AI-CONTEXT default branch: main.
-- Supplemental folder already exists.
-- NEXY implementation repository observed read-only: goif74945-crypto/NEXY.AI-, canonical branch NEXY.ai.
-- NEXY uses TypeScript/Vitest and strict TypeScript settings in its current repository.
-- AI-CONTEXT search returned zero direct hits for CRDT, vector clock, Lamport, causal consistency, replica, concurrent edit, and distributed state terminology at inspection time. This is search evidence, not proof of absolute conceptual absence.
+## Delivered
+- deterministic causal merge design
+- standalone TypeScript source and tests preserved losslessly in CODE_TEST_BUNDLE parts
+- external authority/policy gate
+- canonical SHA-256 operation, policy, state/frontier/history and conflict certificate identities
+- causal gap/cycle/equivocation/tamper detection
+- tombstones, CAS-style expected key digest, deterministic replay
+- generic future NEXY adapter seam with no protected repo import
+- design, integration contract, failure model, repair log, test evidence, future proposal backlog, final audit in DURABLE_RECORD.md
 
-## Locked design direction
-Experimental proposal: authority-preserving deterministic causal merge fabric for multi-agent/session state.
-- No last-write-wins.
-- No model-generated conflict winner.
-- Causally ordered updates may supersede predecessors.
-- Concurrent divergent writes to the same semantic key freeze with a deterministic conflict certificate.
-- Concurrent commuting writes merge deterministically.
-- Tamper, causal gaps, invalid authority, malformed clocks, and policy violations fail closed.
-- External authority mapping is configuration; this lab must not invent NEXY canonical authority law.
+## Verification
+- E1 strict TypeScript: PASS
+- E1 Node16 compatibility configuration: PASS on local TypeScript 5.8.3
+- E2 executable tests: 39/39 PASS
+- sampled permutation convergence: 500 merge + 500 conflict permutations PASS
+- 10,000 independent-operation stress path: PASS
+- latest sandbox full verify observation: 2.56 s / 144368 KB max RSS
+- E3 actual NEXY integration: NOT_VERIFIED
+- E4-E6 runtime/deployment: NOT_VERIFIED
+- exact NEXY TypeScript 6.x workspace validation: NOT_VERIFIED
 
-## Planned artifacts
-- DESIGN.md
-- REQUIREMENT_LEDGER.md
-- INTEGRATION_CONTRACT.md
-- FAILURE_MODEL.md
-- src/*.ts
-- tests/*.test.ts
-- package.json / tsconfig.json
-- TEST_EVIDENCE.md
-- FINAL_AUDIT.md
-- README.md
-- 00_SESSION_STATE.md updated at resumable checkpoints
+## Durable integration rule
+Current DOC-C context forbids direct SWARM -> VAULT. A future authorized integration must use an authorized CORE/VAULT path and preserve Vault previous_version optimistic concurrency. This lab must never become a worker persistence backdoor.
 
-## Verification target
-E1 static TypeScript compilation + E2 executed unit/property-style tests in isolated local environment. NEXY integration/runtime/deployment remain NOT_VERIFIED because protected NEXY repositories will not be mutated.
+## Bundle integrity
+Decoded CODE_TEST_BUNDLE.tar.gz SHA-256:
+7f2e8d086f729597b0427ca7ea20949c7df7803a1745517644d8b89fafdea4ab
 
-## Next action
-Implement locally, run compile/tests, repair failures, then persist verified artifacts and evidence into this folder.
+## Remaining
+None for this standalone authorized scope. Production integration/formal verification/signatures/clock compaction/database concurrency/deployment remain separate future work requiring appropriate authorization and evidence.

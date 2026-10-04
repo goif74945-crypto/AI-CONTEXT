@@ -1,0 +1,13 @@
+{
+  "contract": {
+    "schema_version": "1",
+    "name": "example-temperature-window",
+    "dimension": "temperature",
+    "canonical_unit": "C",
+    "lower": {"value": "0", "inclusive": true},
+    "upper": {"value": "100", "inclusive": true},
+    "normalization": {"quantum": null, "rounding_mode": null},
+    "uncertainty_policy": "FREEZE_ON_BOUNDARY_OVERLAP"
+  },
+  "observation": {"value": "31.9", "unit": "F", "uncertainty_abs": "0.5"}
+}

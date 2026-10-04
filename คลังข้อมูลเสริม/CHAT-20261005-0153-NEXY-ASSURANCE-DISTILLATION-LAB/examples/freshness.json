@@ -1,0 +1,1 @@
+{"now":"2026-10-05T02:00:00+07:00","current_versions":{"spec":"v2"},"artifacts":[{"id":"unit","observed_at":"2026-10-05T01:59:00+07:00","max_age_seconds":3600,"captured_versions":{"spec":"v1"},"depends_on_artifacts":[]},{"id":"integration","observed_at":"2026-10-05T01:59:30+07:00","max_age_seconds":3600,"captured_versions":{"spec":"v2"},"depends_on_artifacts":["unit"]}]}

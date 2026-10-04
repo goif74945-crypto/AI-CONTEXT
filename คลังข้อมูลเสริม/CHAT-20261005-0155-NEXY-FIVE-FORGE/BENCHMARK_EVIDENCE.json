@@ -1,0 +1,18 @@
+{
+  "assumption_burndown_planner": {
+    "iterations": 2000,
+    "ops_per_second": 12759.76,
+    "seconds": 0.156743
+  },
+  "context_budget_optimizer": {
+    "iterations": 2000,
+    "ops_per_second": 10706.07,
+    "seconds": 0.18681
+  },
+  "note": "Microbenchmark only; not production or NEXY runtime evidence.",
+  "tool_evidence_router": {
+    "iterations": 2000,
+    "ops_per_second": 12657.54,
+    "seconds": 0.158009
+  }
+}

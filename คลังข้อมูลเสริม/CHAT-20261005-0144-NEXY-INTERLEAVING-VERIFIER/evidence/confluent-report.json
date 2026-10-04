@@ -1,0 +1,50 @@
+{
+  "canonical_schedule_witness": [
+    "worker-a",
+    "worker-b"
+  ],
+  "canonical_terminal_state": {
+    "audit": [],
+    "counter": 3
+  },
+  "decision": "CONFLUENT",
+  "diagnostics": [],
+  "exploration_complete": true,
+  "plan_fingerprint": "c314e9c71fdff38358a219119edbe42943333618495569a8111df3af7fa68bf5",
+  "report_fingerprint": "63a4886e27b1f5bb38c5bf7fd5ec309e4ca7918edd647387b5e661c72ed29b1b",
+  "report_version": "1.0",
+  "states_explored": 4,
+  "static_conflicts": [
+    {
+      "actions": [
+        "worker-a",
+        "worker-b"
+      ],
+      "left_read_right_write": [
+        [
+          "/counter",
+          "/counter"
+        ]
+      ],
+      "left_write_right_read": [
+        [
+          "/counter",
+          "/counter"
+        ]
+      ],
+      "write_write": [
+        [
+          "/counter",
+          "/counter"
+        ]
+      ]
+    }
+  ],
+  "terminal_fingerprints": [
+    "f9faf33784a92116ea43fe55e7500b121ddc7db789fb5b08ff457aaac2ed7181"
+  ],
+  "terminal_state_count": 1,
+  "transitions_explored": 4,
+  "verification_status": "PASS",
+  "witnesses": []
+}

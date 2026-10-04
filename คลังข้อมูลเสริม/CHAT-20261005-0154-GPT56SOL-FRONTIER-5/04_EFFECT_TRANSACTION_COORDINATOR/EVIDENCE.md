@@ -1,0 +1,9 @@
+# Evidence — 04_EFFECT_TRANSACTION_COORDINATOR
+
+- E1 Python compile: PASS
+- E2 executed unittest/negative suite: PASS (6 tests)
+- Cross-system lab integration: PASS (shared pipeline test)
+- NEXY.AI production integration: NOT_VERIFIED
+- Raw run: `../evidence/TEST_OUTPUT.txt`
+
+The evidence proves reference-library behavior at this tested artifact only. It does not prove live provider, connector, deployment, security, or production behavior.

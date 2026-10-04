@@ -1,0 +1,1 @@
+from .cli import main\n\nraise SystemExit(main())\n

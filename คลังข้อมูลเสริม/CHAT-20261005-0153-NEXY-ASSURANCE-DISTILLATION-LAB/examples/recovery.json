@@ -1,0 +1,10 @@
+{
+  "states": ["FREEZE", "SNAPSHOT_OK", "SAFE"],
+  "current_state": "FREEZE",
+  "safe_states": ["SAFE"],
+  "available_evidence": ["verified_snapshot"],
+  "transitions": [
+    {"id": "restore-snapshot", "from": "FREEZE", "to": "SNAPSHOT_OK", "requires_evidence": ["verified_snapshot"]},
+    {"id": "revalidate", "from": "SNAPSHOT_OK", "to": "SAFE", "requires_evidence": ["verified_snapshot"]}
+  ]
+}

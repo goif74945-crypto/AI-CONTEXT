@@ -1,0 +1,28 @@
+test_covers_blockers_with_best_bounded_plan (test_assumption_burndown_planner.AssumptionBurndownPlannerTests.test_covers_blockers_with_best_bounded_plan) ... ok
+test_freezes_when_blocker_uncoverable (test_assumption_burndown_planner.AssumptionBurndownPlannerTests.test_freezes_when_blocker_uncoverable) ... ok
+test_optional_probe_selected_if_budget_allows_and_adds_risk_burn (test_assumption_burndown_planner.AssumptionBurndownPlannerTests.test_optional_probe_selected_if_budget_allows_and_adds_risk_burn) ... ok
+test_dependency_closure_and_budget (test_context_budget_optimizer.ContextBudgetOptimizerTests.test_dependency_closure_and_budget) ... ok
+test_deterministic (test_context_budget_optimizer.ContextBudgetOptimizerTests.test_deterministic) ... ok
+test_mandatory_overflow_freezes (test_context_budget_optimizer.ContextBudgetOptimizerTests.test_mandatory_overflow_freezes) ... ok
+test_unknown_dependency_freezes (test_context_budget_optimizer.ContextBudgetOptimizerTests.test_unknown_dependency_freezes) ... ok
+test_verified_learning_pipeline (test_integration_pipeline.FiveSystemIntegrationTests.test_verified_learning_pipeline) ... ok
+test_burndown_pass_covers_all_blockers (test_properties.PropertyTests.test_burndown_pass_covers_all_blockers) ... ok
+test_context_budget_never_exceeds_budget_on_pass (test_properties.PropertyTests.test_context_budget_never_exceeds_budget_on_pass) ... ok
+test_distilled_recipe_meets_success_threshold (test_properties.PropertyTests.test_distilled_recipe_meets_success_threshold) ... ok
+test_skill_pass_implies_consistent_steps_and_thresholds (test_properties.PropertyTests.test_skill_pass_implies_consistent_steps_and_thresholds) ... ok
+test_tool_route_pass_always_satisfies_request (test_properties.PropertyTests.test_tool_route_pass_always_satisfies_request) ... ok
+test_distills_and_penalizes_failures (test_recovery_recipe_distiller.RecoveryRecipeDistillerTests.test_distills_and_penalizes_failures) ... ok
+test_inconsistent_repairs_do_not_publish (test_recovery_recipe_distiller.RecoveryRecipeDistillerTests.test_inconsistent_repairs_do_not_publish) ... ok
+test_requires_repeated_evidence (test_recovery_recipe_distiller.RecoveryRecipeDistillerTests.test_requires_repeated_evidence) ... ok
+test_compiles_consistent_records (test_skill_compiler.SkillCompilerTests.test_compiles_consistent_records) ... ok
+test_rejects_secret_literal (test_skill_compiler.SkillCompilerTests.test_rejects_secret_literal) ... ok
+test_rejects_step_drift (test_skill_compiler.SkillCompilerTests.test_rejects_step_drift) ... ok
+test_rejects_weak_evidence (test_skill_compiler.SkillCompilerTests.test_rejects_weak_evidence) ... ok
+test_budget_gate (test_tool_evidence_router.ToolEvidenceRouterTests.test_budget_gate) ... ok
+test_evidence_gate (test_tool_evidence_router.ToolEvidenceRouterTests.test_evidence_gate) ... ok
+test_selects_reliable_route (test_tool_evidence_router.ToolEvidenceRouterTests.test_selects_reliable_route) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.023s
+
+OK

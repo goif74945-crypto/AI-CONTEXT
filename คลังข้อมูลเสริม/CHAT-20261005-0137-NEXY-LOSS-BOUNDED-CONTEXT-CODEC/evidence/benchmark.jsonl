@@ -1,0 +1,3 @@
+{"atoms": 250, "capsule_bytes": 24949, "max_seconds": 0.01904441599998563, "median_seconds": 0.01616658500000767, "retained_atoms": 75, "runs": 5, "status": "PASS"}
+{"atoms": 1000, "capsule_bytes": 99996, "max_seconds": 0.104895909999982, "median_seconds": 0.0654856599999789, "retained_atoms": 308, "runs": 5, "status": "PASS"}
+{"atoms": 5000, "capsule_bytes": 499950, "max_seconds": 0.4491005290000203, "median_seconds": 0.3983984330000112, "retained_atoms": 1533, "runs": 3, "status": "PASS"}

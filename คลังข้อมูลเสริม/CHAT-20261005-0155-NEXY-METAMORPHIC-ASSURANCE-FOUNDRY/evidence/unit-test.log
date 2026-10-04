@@ -1,0 +1,27 @@
+test_01_canonical_order (test_nmaf.NMAFTests.test_01_canonical_order) ... ok
+test_02_nan_rejected (test_nmaf.NMAFTests.test_02_nan_rejected) ... ok
+test_03_nonstring_key_rejected (test_nmaf.NMAFTests.test_03_nonstring_key_rejected) ... ok
+test_04_relation_order_passes (test_nmaf.NMAFTests.test_04_relation_order_passes) ... ok
+test_05_relation_semantic_change (test_nmaf.NMAFTests.test_05_relation_semantic_change) ... ok
+test_06_missing_path_rejected (test_nmaf.NMAFTests.test_06_missing_path_rejected) ... ok
+test_07_executor_error_not_masked (test_nmaf.NMAFTests.test_07_executor_error_not_masked) ... ok
+test_08_shrinker_reduces (test_nmaf.NMAFTests.test_08_shrinker_reduces) ... ok
+test_09_shrinker_requires_failure (test_nmaf.NMAFTests.test_09_shrinker_requires_failure) ... ok
+test_10_shrinker_budget (test_nmaf.NMAFTests.test_10_shrinker_budget) ... ok
+test_11_oracle_independent (test_nmaf.NMAFTests.test_11_oracle_independent) ... ok
+test_12_oracle_shared_source (test_nmaf.NMAFTests.test_12_oracle_shared_source) ... ok
+test_13_oracle_approved_shared_schema (test_nmaf.NMAFTests.test_13_oracle_approved_shared_schema) ... ok
+test_14_oracle_same_logic (test_nmaf.NMAFTests.test_14_oracle_same_logic) ... ok
+test_15_mandatory_over_budget_freezes (test_nmaf.NMAFTests.test_15_mandatory_over_budget_freezes) ... ok
+test_16_mandatory_first (test_nmaf.NMAFTests.test_16_mandatory_first) ... ok
+test_17_scheduler_deterministic (test_nmaf.NMAFTests.test_17_scheduler_deterministic) ... ok
+test_18_duplicate_test_ids_rejected (test_nmaf.NMAFTests.test_18_duplicate_test_ids_rejected) ... ok
+test_19_volatile_fingerprint (test_nmaf.NMAFTests.test_19_volatile_fingerprint) ... ok
+test_20_meaningful_fingerprint_change (test_nmaf.NMAFTests.test_20_meaningful_fingerprint_change) ... ok
+test_21_truth_surface (test_nmaf.NMAFTests.test_21_truth_surface) ... ok
+test_22_truth_surface_missing_state (test_nmaf.NMAFTests.test_22_truth_surface_missing_state) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.001s
+
+OK

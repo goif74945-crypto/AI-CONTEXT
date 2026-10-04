@@ -1,0 +1,17 @@
+{
+  "schema": "NEXY_SUPPLEMENTAL_LAB_MANIFEST_V1",
+  "mission_id": "CHAT-20261005-0144-NEXY-ERASURE-PROPAGATION-LAB",
+  "title": "NEXY Provenance-Aware Erasure & Tombstone Lab",
+  "classification": "EXPERIMENTAL_AI_PROPOSED_ADVISORY_ONLY",
+  "storage_repository": "goif74945-crypto/AI-CONTEXT",
+  "storage_folder": "คลังข้อมูลเสริม/CHAT-20261005-0144-NEXY-ERASURE-PROPAGATION-LAB",
+  "protected_repository_pattern": "*NEXY.AI*",
+  "nexy_reference": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.ai",
+    "commit": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+  },
+  "platform_chat_id": null,
+  "platform_chat_id_status": "UNKNOWN_NOT_EXPOSED",
+  "local_chat_reference": "CHAT-20261005-0144-NEXY-ERASURE-PROPAGATION-LAB"
+}

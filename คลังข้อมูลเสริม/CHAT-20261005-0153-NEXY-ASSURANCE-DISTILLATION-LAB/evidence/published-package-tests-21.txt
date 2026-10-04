@@ -1,0 +1,26 @@
+test_invalid_json_freezes (__main__.CliTests.test_invalid_json_freezes) ... ok
+test_unsat_cli (__main__.CliTests.test_unsat_cli) ... ok
+test_bad_pointer (__main__.CoreTests.test_bad_pointer) ... ok
+test_canonical_order_independent (__main__.CoreTests.test_canonical_order_independent) ... ok
+test_pointer_escape (__main__.CoreTests.test_pointer_escape) ... ok
+test_baseline_not_interesting (__main__.CounterexampleTests.test_baseline_not_interesting) ... ok
+test_deterministic (__main__.CounterexampleTests.test_deterministic) ... ok
+test_missing_protected_rejected (__main__.CounterexampleTests.test_missing_protected_rejected) ... ok
+test_reduces (__main__.CounterexampleTests.test_reduces) ... ok
+test_cycle_rejected (__main__.FreshnessTests.test_cycle_rejected) ... ok
+test_future_observation_freezes (__main__.FreshnessTests.test_future_observation_freezes) ... ok
+test_version_propagation (__main__.FreshnessTests.test_version_propagation) ... ok
+test_consistent (__main__.LinterTests.test_consistent) ... ok
+test_contradiction (__main__.LinterTests.test_contradiction) ... ok
+test_already_safe (__main__.RecoveryTests.test_already_safe) ... ok
+test_missing_evidence_freezes (__main__.RecoveryTests.test_missing_evidence_freezes) ... ok
+test_shortest_path (__main__.RecoveryTests.test_shortest_path) ... ok
+test_step_bound (__main__.RecoveryTests.test_step_bound) ... ok
+test_bound (__main__.UnsatTests.test_bound) ... ok
+test_feasible (__main__.UnsatTests.test_feasible) ... ok
+test_min_core (__main__.UnsatTests.test_min_core) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 1.190s
+
+OK

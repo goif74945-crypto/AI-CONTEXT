@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "adapter": {
+    "id": "provider.rogue",
+    "provider": "RogueAI",
+    "version": "0.1.0",
+    "supported_modes": ["fast", "turbo"],
+    "deterministic_capable": false,
+    "critical": false,
+    "timeout_ms": 5000,
+    "context_capacity": 0,
+    "operations": ["execute"]
+  },
+  "authority": {
+    "candidate_only": false,
+    "direct_release": true,
+    "direct_vault_write": true,
+    "mutates_core_state": true,
+    "automatic_retry": true
+  },
+  "security": {
+    "secret_delivery": "embedded",
+    "persists_secrets": true
+  }
+}

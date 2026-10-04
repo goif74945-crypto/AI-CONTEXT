@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexy:proposal:ncif:input:v1",
+  "title": "NCIF Input Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["claim_id", "evidence", "votes"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["evidence_id", "kind", "source_identity", "parents", "correlation_keys"],
+        "properties": {
+          "evidence_id": {"type": "string", "minLength": 1},
+          "kind": {
+            "enum": ["source", "repo", "runtime", "external", "test", "derived", "model", "document", "operator"]
+          },
+          "source_identity": {"type": "string", "minLength": 1},
+          "parents": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "correlation_keys": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "votes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["actor_id", "stance", "evidence_ids", "correlation_keys"],
+        "properties": {
+          "actor_id": {"type": "string", "minLength": 1},
+          "stance": {"enum": ["SUPPORT", "OPPOSE", "ABSTAIN"]},
+          "evidence_ids": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "correlation_keys": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status": "FAIL",
+  "pass": false,
+  "exitCode": 2,
+  "expectedFingerprint": "3f83e73bf4f87516c44630adc7c65ecd07c1d9cb41cc27b8c8f4136a00472117",
+  "observedFingerprint": "3f83e73bf4f87516c44630adc7c65ecd07c1d9cb41cc27b8c8f4136a00472117",
+  "diffs": [
+    {
+      "expected": "OWNER",
+      "kind": "VALUE_MISMATCH",
+      "observed": "SWARM",
+      "path": "$.enums.vnext_actor[5]"
+    },
+    {
+      "expected": "SWARM",
+      "kind": "VALUE_MISMATCH",
+      "observed": "SYSTEM",
+      "path": "$.enums.vnext_actor[6]"
+    },
+    {
+      "expected": "SYSTEM",
+      "kind": "VALUE_MISMATCH",
+      "observed": "VAULT",
+      "path": "$.enums.vnext_actor[7]"
+    },
+    {
+      "expected": "VAULT",
+      "kind": "MISSING_VALUE",
+      "path": "$.enums.vnext_actor[8]"
+    }
+  ]
+}
