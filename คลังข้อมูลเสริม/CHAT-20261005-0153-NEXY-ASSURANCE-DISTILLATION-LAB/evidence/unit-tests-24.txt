@@ -1,0 +1,29 @@
+test_invalid_json_contract_freezes_on_stderr (test_cli.CliTests.test_invalid_json_contract_freezes_on_stderr) ... ok
+test_unsat_cli (test_cli.CliTests.test_unsat_cli) ... ok
+test_bad_pointer_rejected (test_common.CommonTests.test_bad_pointer_rejected) ... ok
+test_canonical_is_order_independent (test_common.CommonTests.test_canonical_is_order_independent) ... ok
+test_json_pointer_escaping (test_common.CommonTests.test_json_pointer_escaping) ... ok
+test_baseline_not_interesting_freezes (test_counterexample.CounterexampleTests.test_baseline_not_interesting_freezes) ... ok
+test_deterministic (test_counterexample.CounterexampleTests.test_deterministic) ... ok
+test_missing_protected_path_rejected (test_counterexample.CounterexampleTests.test_missing_protected_path_rejected) ... ok
+test_nested_protected_path_survives_reduction (test_counterexample.CounterexampleTests.test_nested_protected_path_survives_reduction) ... ok
+test_reduces_irrelevant_top_level_keys (test_counterexample.CounterexampleTests.test_reduces_irrelevant_top_level_keys) ... ok
+test_consistent_examples_pass (test_example_linter.ExampleLinterTests.test_consistent_examples_pass) ... ok
+test_detects_contradicting_example (test_example_linter.ExampleLinterTests.test_detects_contradicting_example) ... ok
+test_cycle_rejected (test_freshness.FreshnessTests.test_cycle_rejected) ... ok
+test_fresh_artifacts_pass (test_freshness.FreshnessTests.test_fresh_artifacts_pass) ... ok
+test_future_observation_is_stale (test_freshness.FreshnessTests.test_future_observation_is_stale) ... ok
+test_version_change_propagates_to_downstream (test_freshness.FreshnessTests.test_version_change_propagates_to_downstream) ... ok
+test_already_safe (test_recovery.RecoveryTests.test_already_safe) ... ok
+test_finds_shortest_path_and_tiebreaks (test_recovery.RecoveryTests.test_finds_shortest_path_and_tiebreaks) ... ok
+test_missing_evidence_blocks_path (test_recovery.RecoveryTests.test_missing_evidence_blocks_path) ... ok
+test_step_bound_rejected (test_recovery.RecoveryTests.test_step_bound_rejected) ... ok
+test_constraint_bound_rejected (test_unsat_core.UnsatCoreTests.test_constraint_bound_rejected) ... ok
+test_feasible_set_passes (test_unsat_core.UnsatCoreTests.test_feasible_set_passes) ... ok
+test_finds_two_constraint_core (test_unsat_core.UnsatCoreTests.test_finds_two_constraint_core) ... ok
+test_single_impossible_constraint_is_core (test_unsat_core.UnsatCoreTests.test_single_impossible_constraint_is_core) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 1.221s
+
+OK
