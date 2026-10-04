@@ -1,0 +1,13 @@
+{
+  "name": "nexy-epc-constitutional-argumentation-kernel-20",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test tests/*.test.mjs",
+    "verify": "npm run typecheck && npm run clean && npm run build && npm test"
+  }
+}
