@@ -1,0 +1,30 @@
+test_all_of_requires_union_of_blockers (test_blocker_core.BlockerCoreTests.test_all_of_requires_union_of_blockers) ... ok
+test_all_pass_allows (test_blocker_core.BlockerCoreTests.test_all_pass_allows) ... ok
+test_any_of_exposes_alternative_minimal_repairs (test_blocker_core.BlockerCoreTests.test_any_of_exposes_alternative_minimal_repairs) ... ok
+test_conflict_dominates_aggregate_status (test_blocker_core.BlockerCoreTests.test_conflict_dominates_aggregate_status) ... ok
+test_deterministic_fuzz_small_monotone_formulas (test_blocker_core.BlockerCoreTests.test_deterministic_fuzz_small_monotone_formulas) ... ok
+test_hash_is_independent_of_mapping_insertion_order (test_blocker_core.BlockerCoreTests.test_hash_is_independent_of_mapping_insertion_order) ... ok
+test_inclusion_minimal_repairs_remove_supersets (test_blocker_core.BlockerCoreTests.test_inclusion_minimal_repairs_remove_supersets) ... ok
+test_insufficient_evidence_class_downgrades_declared_pass (test_blocker_core.BlockerCoreTests.test_insufficient_evidence_class_downgrades_declared_pass) ... ok
+test_invalid_threshold_is_rejected (test_blocker_core.BlockerCoreTests.test_invalid_threshold_is_rejected) ... ok
+test_nested_gate_repairs_match_bruteforce_oracle (test_blocker_core.BlockerCoreTests.test_nested_gate_repairs_match_bruteforce_oracle) ... ok
+test_repair_limit_is_reported (test_blocker_core.BlockerCoreTests.test_repair_limit_is_reported) ... ok
+test_stale_revision_downgrades_declared_pass (test_blocker_core.BlockerCoreTests.test_stale_revision_downgrades_declared_pass) ... ok
+test_threshold_repair_with_one_existing_pass (test_blocker_core.BlockerCoreTests.test_threshold_repair_with_one_existing_pass) ... ok
+test_unknown_leaf_is_rejected (test_blocker_core.BlockerCoreTests.test_unknown_leaf_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.012s
+
+OK
+$ /opt/pyvenv/bin/python -m unittest discover -s tests -v
+{
+  "certificate_sha256": "fbd001162936086eb9e53a52df7218cd99ee657d3e78d19c950bd7ddce23153c",
+  "decision": "FREEZE",
+  "fixture_status": "FAIL",
+  "recommended_repair_set": [
+    "core_branch_coverage",
+    "doc_e_e11_signoff",
+    "doc_e_e12_rollback_provider"
+  ]
+}
