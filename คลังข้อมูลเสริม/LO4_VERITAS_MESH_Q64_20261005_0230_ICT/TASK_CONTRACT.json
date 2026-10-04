@@ -1,0 +1,39 @@
+{
+  "work_id": "NEXY-LO4-VERITAS-MESH-20261005-0230-ICT",
+  "objective": "Design and implement a new Lo4 non-canonical innovation suite for NEXY.AI, with 20 executable Q64.64 concepts, tests, evidence, and durable AI-CONTEXT storage.",
+  "target_repository": "goif74945-crypto/AI-CONTEXT",
+  "target_path_prefix": "คลังข้อมูลเสริม/LO4_VERITAS_MESH_Q64_20261005_0230_ICT",
+  "authorized_scope": [
+    "Create new files under the target path prefix",
+    "Read NEXY.AI repository for compatibility evidence",
+    "Run local standalone tests and typechecks"
+  ],
+  "protected_scope": [
+    "goif74945-crypto/NEXY.AI-: all mutation forbidden",
+    "Existing AI-CONTEXT files outside the new work folder: no mutation"
+  ],
+  "immutable_requirements": [
+    "Lo4 remains non-canonical and cannot promote itself",
+    "All authoritative scoring arithmetic uses Q64.64 bigint raw values",
+    "No IEEE-754 values enter scoring",
+    "20 distinct executable concepts are present",
+    "Failure, test, evidence, and compatibility state are recorded",
+    "No claim of completion without executed evidence"
+  ],
+  "acceptance_criteria": [
+    "20 concept IDs exist exactly once",
+    "Strict TypeScript static check passes",
+    "All executed tests pass",
+    "Deterministic stress evaluation keeps every score in [0,1]",
+    "Unsafe candidate is rejected and Lo4 cannot auto-promote Canon",
+    "Benchmark executes successfully",
+    "NEXY compatibility is grounded in read-only repository evidence",
+    "Files are written and re-read from AI-CONTEXT"
+  ],
+  "stop_conditions": [
+    "Any required NEXY mutation",
+    "Authority conflict that changes Canon",
+    "Unresolved failing tests",
+    "Unable to verify AI-CONTEXT write"
+  ]
+}
