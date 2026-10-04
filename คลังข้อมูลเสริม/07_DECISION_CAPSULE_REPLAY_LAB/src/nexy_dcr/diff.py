@@ -28,12 +28,7 @@ def diff_capsules(left: Capsule, right: Capsule) -> list[Divergence]:
 
     if left.project_target != right.project_target:
         differences.append(
-            Divergence(
-                "identity",
-                "project_target",
-                left.project_target,
-                right.project_target,
-            )
+            Divergence("identity", "project_target", left.project_target, right.project_target)
         )
 
     if left.authority_fingerprint != right.authority_fingerprint:
@@ -62,12 +57,7 @@ def diff_capsules(left: Capsule, right: Capsule) -> list[Divergence]:
         re = right.events[index]
         if le.kind != re.kind:
             differences.append(
-                Divergence(
-                    "event_kind",
-                    f"events[{index}].kind",
-                    le.kind.value,
-                    re.kind.value,
-                )
+                Divergence("event_kind", f"events[{index}].kind", le.kind.value, re.kind.value)
             )
             continue
         left_payload_digest = sha256_hex(le.payload)
@@ -84,12 +74,7 @@ def diff_capsules(left: Capsule, right: Capsule) -> list[Divergence]:
 
     if len(left.events) != len(right.events):
         differences.append(
-            Divergence(
-                "event_count",
-                "events.length",
-                len(left.events),
-                len(right.events),
-            )
+            Divergence("event_count", "events.length", len(left.events), len(right.events))
         )
 
     return differences
