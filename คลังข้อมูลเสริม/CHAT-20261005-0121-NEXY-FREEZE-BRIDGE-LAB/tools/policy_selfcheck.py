@@ -42,56 +42,25 @@ def main() -> int:
                     second = compile_mapping(payload)
                     if first != second:
                         raise AssertionError(
-                            "non-deterministic output for "
-                            f"{reason}/{locale}/{disclosure}/{status}"
+                            f"non-deterministic output for {reason}/{locale}/{disclosure}/{status}"
                         )
-
                     emitted = set(first["eligible_recovery_intents"])
                     allowed = {intent.value for intent in policy.allowed_intents}
                     if not emitted.issubset(allowed):
-                        raise AssertionError(
-                            f"unauthorized intent leak for {reason}: {emitted - allowed}"
-                        )
-
+                        raise AssertionError(f"unauthorized intent leak for {reason}: {emitted - allowed}")
                     if first["downstream_ui_authority_required"] is not True:
-                        raise AssertionError(
-                            "bridge unexpectedly claimed downstream UI authority"
-                        )
-
-                    forbidden_output_keys = {
-                        "role",
-                        "display_mode",
-                        "actions",
-                        "primary_action",
-                        "secondary_actions",
-                    }
+                        raise AssertionError("bridge unexpectedly claimed downstream UI authority")
+                    forbidden_output_keys = {"role", "display_mode", "actions", "primary_action", "secondary_actions"}
                     if forbidden_output_keys.intersection(first):
-                        raise AssertionError(
-                            "Trust UX responsibility leaked into Freeze Bridge output"
-                        )
-
-                    if (
-                        reason is ReasonCode.SECURITY_INTEGRITY
-                        and disclosure is Disclosure.RESTRICTED
-                    ):
+                        raise AssertionError("Trust UX responsibility leaked into Freeze Bridge output")
+                    if reason is ReasonCode.SECURITY_INTEGRITY and disclosure is Disclosure.RESTRICTED:
                         if first["evidence_refs"]:
-                            raise AssertionError(
-                                "restricted security event leaked evidence refs"
-                            )
+                            raise AssertionError("restricted security event leaked evidence refs")
                         if first["dependency_recheck_safe"]:
-                            raise AssertionError(
-                                "restricted security event became dependency-recheck safe"
-                            )
-
-                    if (
-                        reason is ReasonCode.UNKNOWN_REASON
-                        and first["dependency_recheck_safe"]
-                    ):
-                        raise AssertionError(
-                            "unknown reason became dependency-recheck safe"
-                        )
+                            raise AssertionError("restricted security event became dependency-recheck safe")
+                    if reason is ReasonCode.UNKNOWN_REASON and first["dependency_recheck_safe"]:
+                        raise AssertionError("unknown reason became dependency-recheck safe")
                     checked += 1
-
     print(f"PASS policy_matrix_cases={checked}")
     return 0
 
