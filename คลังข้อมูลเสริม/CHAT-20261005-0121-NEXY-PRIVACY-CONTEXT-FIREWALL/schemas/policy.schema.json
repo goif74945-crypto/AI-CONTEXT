@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexy.invalid/pcf/policy.schema.json",
+  "title": "NEXY PCF Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "known_purposes",
+    "default_retention_seconds",
+    "max_retention_seconds",
+    "deny_external_classifications"
+  ],
+  "properties": {
+    "version": {"type": "string", "minLength": 1},
+    "known_purposes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "default_retention_seconds": {"type": "integer", "minimum": 0},
+    "max_retention_seconds": {"type": "integer", "minimum": 0},
+    "deny_external_classifications": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": ["PUBLIC", "INTERNAL", "PERSONAL", "SENSITIVE", "SECRET", "CREDENTIAL"]
+      }
+    }
+  }
+}
