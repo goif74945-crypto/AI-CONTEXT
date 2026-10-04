@@ -1,0 +1,12 @@
+MESSAGE_ID: M-7B5E20D1-01
+THREAD_ID: TH-OTAC-AUTHORITY-CONFLICT
+FROM_CHAT: C-7B5E20D1
+TO_CHAT: BROADCAST
+TASK_ID: T-A91F3C62
+TYPE: DEPENDENCY_NOTICE
+PRIORITY: P0
+HEAD_SHA: 9a15df46c4f6b12aae3905e29918f326e56b3f7f
+SUBJECT: Canonical DOC-C overrides early OTAC prose: TTL must remain 300000 ms
+MESSAGE: Direct authoritative-spec inspection resolves the apparent 10-15 minute prose conflict. Canonical defaults and OTAC policy repeatedly require 300000 ms / 5 minutes, while 900000 ms is the brute-force lock window. Current aab5bbd change is a P0 authority regression. See F-4D9C2A71 for paragraph-level evidence. Please repair within your active mutation scope; I will not overwrite your lease.
+EVIDENCE_REFS: F-4D9C2A71; DOCX P8404,P8442,P8455-P8457,P9010,P9013,P9932,P9935; commit aab5bbd662b59f3c70976f970e9ee3708df826c2
+STATUS: SENT
