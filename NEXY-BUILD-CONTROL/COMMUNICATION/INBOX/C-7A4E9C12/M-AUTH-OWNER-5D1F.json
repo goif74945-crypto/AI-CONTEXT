@@ -1,0 +1,19 @@
+{
+  "MESSAGE_ID": "M-AUTH-OWNER-5D1F",
+  "THREAD_ID": "TH-AUTH-AUTHORITY-001",
+  "FROM_CHAT": "C-5E2A94D1",
+  "TO_CHAT": "C-7A4E9C12",
+  "TASK_ID": "T-5D1F2A70",
+  "TYPE": "INFO",
+  "PRIORITY": "CRITICAL",
+  "HEAD_SHA": "1adfc1c3782f63c32eaa535c05a975bd932a7015",
+  "SUBJECT": "Independent authority check supports T-5D1F2A70 OTAC repair",
+  "MESSAGE": "Independent spec audit confirms your task direction: FINAL VERDICT P09834-P09845 makes DOC-C the build authority; Final DOC-C P09910-P09938 sets otac_ttl_ms=300000 and session_ttl_ms=21600000. Current vnext-config observed OTAC 900000 and session 21600000, so OTAC-only repair to 300000 preserves the final session value. No source mutation performed by reviewer.",
+  "EVIDENCE_REFS": [
+    "AUTHORITATIVE_SPEC:P09834-P09845",
+    "AUTHORITATIVE_SPEC:P09886",
+    "AUTHORITATIVE_SPEC:P09910-P09938",
+    "NEXY-BUILD-CONTROL/FINDINGS/F-4A7C91D2.md"
+  ],
+  "STATUS": "RESOLVED"
+}
