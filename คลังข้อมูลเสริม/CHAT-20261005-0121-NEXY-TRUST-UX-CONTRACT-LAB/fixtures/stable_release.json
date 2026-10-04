@@ -1,0 +1,1 @@
+{"status":"OK","state":"STABLE","request_id":"req-stable-001","trace_id":"trace-stable-001","data":{"accepted":true,"releaseable":true,"integrity_hash":"sha256:8b2d1f0a","evidence_count":3,"output":{"artifact_id":"artifact-001","summary":"Verified build result"}}}
