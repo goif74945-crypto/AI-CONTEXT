@@ -3,7 +3,8 @@
 **WORK_CHAT_ID:** `CHAT-20261005-0221-NEXY-LO4-RADICAL-INNOVATION-FOUNDRY`
 
 **Repository:** `goif74945-crypto/AI-CONTEXT`  
-**Verified branch:** `lo4-radical-innovation-foundry-0221`  
+**Canonical delivery branch:** `main`  
+**Staging branch:** `lo4-radical-innovation-foundry-0221`  
 **Bundle root:** `คลังข้อมูลเสริม/CHAT-20261005-0221-NEXY-LO4-RADICAL-INNOVATION-FOUNDRY`  
 **Classification:** `AI-PROPOSED / Lo4 / EXPERIMENTAL / NOT CANON`
 
@@ -30,7 +31,7 @@ Documentation presence was re-read successfully for:
 
 ## Fresh post-bind verification
 
-After remote SHA equality was established, the same local byte-identical code/test/verifier artifacts were rerun:
+After remote SHA equality was established, the same byte-identical code/test/verifier artifacts were rerun:
 
 - COMPILE_PASS
 - STATIC_GUARD_PASS banned_imports=0 banned_calls=0
@@ -45,11 +46,19 @@ After remote SHA equality was established, the same local byte-identical code/te
 - DEMO_DETERMINISM_PASS
 - MANIFEST_PASS entries=11
 
-## Concurrency record
+## Concurrency and merge record
 
-Multiple independent writers were actively advancing `main`. Safe `force=false` attempts were rejected as non-fast-forward, and PR #74 could not merge while the base branch was continuously changing. No force push was used.
+Multiple independent writers were actively advancing `main`. Initial safe `force=false` direct updates were rejected as non-fast-forward, and the first PR merge attempt was rejected because the base moved during the operation.
 
-The full bundle is durably committed and verified on the dedicated branch above. Earlier documentation plus `lo4_foundry.py` were also written to `main`; remaining tested artifacts are guaranteed on the verified branch.
+Recovery preserved all concurrent work:
+1. immutable tested blobs were kept;
+2. a dedicated staging branch was created;
+3. the branch was synchronized with the latest observed `main` using a merge-parent commit;
+4. PR #74 was merged successfully without force.
+
+**Merged result:** PR #74 → commit `292dc14f9e6c40a02c11768a3aa36076dd6069ed`.
+
+No force push was used and no unrelated path was intentionally modified.
 
 ## Protected-scope statement
 
