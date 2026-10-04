@@ -1,0 +1,6 @@
+environment: 3.13.5 Linux-6.18.44-x86_64-with-glibc2.41
+AURORA: iterations=30000 elapsed_s=0.103114 ops_per_s=290939.01
+MARGIN: iterations=50000 elapsed_s=0.160529 ops_per_s=311470.72
+UPA: iterations=250000 elapsed_s=0.699331 ops_per_s=357484.39
+TRACEWEIGHT: iterations=20000 elapsed_s=0.096832 ops_per_s=206543.75
+CONTRACT_DRIFT: iterations=50000 elapsed_s=0.456187 ops_per_s=109604.16
