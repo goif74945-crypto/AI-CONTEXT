@@ -4,97 +4,117 @@
 - platform_chat_id: `UNKNOWN / not exposed to this execution context`
 - target_repository: `goif74945-crypto/AI-CONTEXT`
 - target_path: `คลังข้อมูลเสริม/CHAT-20261005-0141-NEXY-CHRONO-INTEGRITY-LAB`
+- authority: `SUPPLEMENTAL / AI_PROPOSED / NON_CANONICAL`
 - protected_repository_pattern: any repository name containing `NEXY.AI`
 - protected_repository_mutation: `NONE`
-- proposal_authority: `SUPPLEMENTAL / AI_PROPOSED / NON_CANONICAL`
 
 ## CURRENT STATE
 
-`REPOSITORY_PUBLICATION_READY_FOR_FINAL_FAST_FORWARD`
+`REPOSITORY_PUBLISHED_VERIFIED`
 
 ## COMPLETED
 
-- Read AI-CONTEXT bootstrap, execution kernel, work router, global/security/verification rules.
-- Read NEXY overview and current 837-row source-normalization boundary.
-- Inspected the supplemental inventory for obvious project collision.
-- Compared the design with existing Temporal Truth and Delegation Lease work.
-- Selected a distinct low-level clock/deadline integrity gap.
-- Designed dual-clock semantics, explicit integrity failures, deadline propagation, canonical serialization, and promotion gates.
-- Implemented dependency-free Python reference code.
-- Added and executed 42 deterministic, boundary, negative, and randomized tests.
-- Executed 1,000 randomized within-skew cases and 500 randomized above-skew freeze cases inside the suite.
-- Executed compile/static syntax validation.
-- Executed deterministic example.
-- Published source, tests, package metadata, example, working-memory checkpoint, and evidence to AI-CONTEXT.
-- Detected publication byte-identity mismatch in the test file caused by one trailing newline.
-- Corrected the exact local publish baseline, reran compile + 42 tests + example, and reverified the Git blob identity.
-- Prepared README, corrected evidence, and this execution record as branch-independent Git blobs for a final fast-forward commit.
-- Used no force update and no destructive repository operation.
+- Loaded AI-CONTEXT execution law, security/verification rules, NEXY overview, and current source-normalization boundary.
+- Inspected existing supplemental workstreams and compared nearby Temporal Truth and Delegation Lease designs.
+- Selected a distinct low-level chrono/deadline integrity gap.
+- Designed monotonic lifetime semantics, wall-clock divergence checks, explicit FREEZE behavior, strict serialization, child deadline narrowing, and future promotion gates.
+- Implemented a dependency-free Python reference kernel.
+- Implemented and executed 42 unit/boundary/negative/property-style tests.
+- Executed 1,000 randomized within-skew cases and 500 randomized above-skew freeze cases inside the test suite.
+- Executed compile/static validation and deterministic demo.
+- Published source, tests, package metadata, demo, README, evidence, and memory under the isolated supplemental folder.
+- Detected one-byte publication-identity mismatch in the test file caused by a trailing newline.
+- Normalized the exact local test baseline, reran compile + 42 tests + demo, and verified the repository Git blob matches the rerun file.
+- Recovered from concurrent-main write races without force updates.
+- Finalized documentation through isolated branch + PR #42.
+- PR #42 merge result: `merged=true`, merge SHA `4884f096cb56d56b2a65ec08b39441bcdb31d6d8`.
+- Re-fetched the target on current `main` after merge and verified all critical artifact identities.
 
 ## VERIFIED
 
-### E1
+### E0 — Repository presence
 `PASS`
-- compileall exit 0 after the final exact-set normalization.
 
-### E2
+Expected top-level objects exist under the workstream:
+- `README.md`
+- `EXECUTION_STATE.md`
+- `evidence/`
+- `examples/`
+- `memory/`
+- `pyproject.toml`
+- `src/`
+- `tests/`
+
+### E1 — Static/compile
 `PASS`
-- 42/42 tests passed after normalization.
-- latest run: `Ran 42 tests in 0.022s / OK`.
-- demo returned `VALID / OK` with 240 seconds remaining from a 300-second envelope after 60 seconds elapsed.
 
-### Exact executable Git blob identities
+`PYTHONPATH=src python -m compileall -q src tests examples` exited successfully after final exact-set normalization.
+
+### E2 — Standalone behavior
+`PASS`
+
+Latest rerun:
+`Ran 42 tests in 0.022s / OK`
+
+Demo:
+`VALID / OK`, 60 seconds elapsed, 240 seconds remaining from a 300-second envelope.
+
+### Exact executable Git blobs on main
 - source: `33477fe7af548b45a120b8f3db68e533783ef33c`
 - tests: `b831cde8a85f583668e29a5d9fe66d761bc3ddc4`
 - pyproject: `a3438cb2f2a74659de5e5fbeca1418c7921b3996`
 - demo: `b62687e762a7c62076ff7029935064455da57b8e`
 
-All four match the locally executed final exact set.
+These match the final locally executed exact set.
+
+### Documentation/evidence blobs observed after merge
+- README: `20dc4d9467b3fcb186cd3d32e16578d069a48793`
+- corrected evidence record before this post-merge checkpoint: `b5d722a1744d6cd40b5a2afc96e977a9ab2afcec`
 
 ### Mutation boundary
 `PASS`
-Every mutation call made by this workstream targeted only `goif74945-crypto/AI-CONTEXT`. No repository containing `NEXY.AI` in its name was mutated.
+
+Every mutation action performed for this workstream targeted only `goif74945-crypto/AI-CONTEXT`. No repository with `NEXY.AI` in its name was mutated.
 
 ## FAILURE / RECOVERY RECORD
 
-1. Concurrent sessions changed `main` during contents-API publication.
-2. Two writes returned HTTP 409 instead of silently overwriting new HEAD.
-3. No force push/update was used.
-4. HEAD/state was refreshed and unique-path writes were retried.
-5. Fetch-back verification found the test-byte mismatch.
-6. Root cause was one trailing newline difference.
-7. The local exact baseline was normalized to the published bytes.
-8. The complete compile/test/demo proof was rerun.
-9. The final local Git blob now equals the repository blob.
+1. Concurrent sessions changed `main` during contents-API writes.
+2. GitHub returned HTTP 409 rather than overwriting a newer head.
+3. A later direct ref attempt returned 422 `Update is not a fast forward`.
+4. No force update was used.
+5. Publication was moved to an isolated branch.
+6. GitHub server-side PR merge integrated only the additive workstream changes.
+7. Fetch-back found a one-byte test mismatch.
+8. Root cause: trailing newline only; logic was unchanged.
+9. Exact local baseline was normalized to the repository bytes.
+10. Full compile/test/demo validation was rerun.
+11. Final executable Git blobs were re-fetched from current main and matched.
 
 ## NOT VERIFIED
 
-- E3 integration with actual NEXY implementation.
-- E4 NEXY end-to-end flow.
-- E5 target-runtime clock fault behavior, suspend/resume, VM snapshot, restart continuity, or multi-node timing.
+- E3 actual NEXY integration.
+- E4 actual NEXY end-to-end user flow.
+- E5 OS/VM/suspend/restart/multi-node temporal fault behavior.
 - E6 deployment.
-- Cryptographic/trusted-time guarantees under host compromise.
+- Trusted-time guarantees under host compromise.
 
 ## REMAINING
 
-For this standalone supplemental lab:
-- attach README + corrected evidence + this state file to current `main` using one non-force fast-forward commit;
-- fetch final folder and these files back after the commit.
+For this standalone supplemental lab: `NONE` after this post-merge checkpoint is merged and re-fetched.
 
-For any future NEXY adoption:
-- a new explicitly authorized integration task is required;
-- promotion must satisfy the E3/E4/E5 gates defined in README.
+For future canonical adoption:
+- requires a new explicit authorization;
+- requires current NEXY implementation inspection;
+- requires E3/E4/E5 evidence according to the README promotion gate.
 
 ## KNOWN LIMITATIONS
 
-- `SystemDualClock` uses process-local monotonic epochs and intentionally fails closed across unknown continuity.
-- Envelope SHA-256 fingerprint is provenance metadata, not a signature.
-- Generic policy is separated from product-specific TTL values.
-- The platform's actual conversation/chat identifier is unavailable, so the workstream ID above is the durable identifier created for this task.
-- The request to execute autonomously for many continuous hours cannot be fulfilled as background work by this chat runtime; engineering execution is limited to the active response.
+- `SystemDualClock` intentionally treats new process-local epochs as non-comparable.
+- SHA-256 envelope fingerprints provide lineage, not authentication.
+- Product timeout policy remains outside the generic kernel.
+- Actual platform chat ID is unavailable; the workstream ID is the durable identifier.
+- The chat runtime cannot execute autonomously for many continuous hours after a response; there is no background continuation here.
 
-## STOP CONDITIONS
+## SAFE RESUME POINT
 
-Do not modify any NEXY.AI repository from this workstream.  
-Do not promote this proposal to canonical NEXY law without explicit future authority.  
-Do not claim E3-E6 from the E1/E2 evidence stored here.
+If this workstream is revisited, start from README + this file + evidence. Do not rerun discovery from zero unless current NEXY authority/runtime has materially changed. Do not mutate any NEXY.AI repository without a new explicit user directive.
