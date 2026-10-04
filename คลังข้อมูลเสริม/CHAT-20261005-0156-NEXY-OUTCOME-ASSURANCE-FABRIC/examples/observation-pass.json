@@ -1,0 +1,4 @@
+{
+  "metrics": {"availability": 99.95, "latency_ms": 180},
+  "effects": {"data_loss": false}
+}
