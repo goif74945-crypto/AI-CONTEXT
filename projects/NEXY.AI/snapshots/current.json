@@ -1,121 +1,166 @@
 {
   "snapshot_kind": "NEXY.AI context truth snapshot",
-  "observed_at": "2026-10-03T08:23:08.742Z",
+  "observed_at": "2026-10-04T18:06:57.071Z",
   "context_repository": {
     "repository": "goif74945-crypto/AI-CONTEXT",
     "branch": "main",
-    "observed_parent_commit": "626d21c6db79232af470ac07911368d23791be68",
-    "write_scope": "AI-CONTEXT current-state synchronization"
+    "write_scope": "Read-only NEXY.AI audit; AI-CONTEXT synchronization only",
+    "implementation_mutation_authorized": false
   },
   "source_authority": {
     "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
     "normalized_rows": 837,
-    "primary_source_content_access": "BLOCKED",
-    "numbered_section_mapping": "CONFLICT_UNKNOWN"
+    "current_build_rows": 773,
+    "deployment_evidence_rows": 52,
+    "excluded_or_deferred_rows": 12,
+    "source": "AI-CONTEXT normalized matrix + deep DOC-B/C/D/E context"
   },
   "live_implementation_observation": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "9cedbbd94af495199ca10f96e747689b0c19ddb1",
-    "tree": "205c038c85f2c18c0a42d391c212fe367e2aab7d",
-    "commit_time": "2026-10-03T04:45:39Z",
-    "commit_message": "fix: keep listener contract source-unambiguous",
-    "status": "PARTIAL",
+    "head": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "tree": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c",
+    "commit_time": "2026-10-04T18:04:40Z",
+    "commit_message": "test(game): deepen canonical ordering proof",
+    "status": "NOT_VERIFIED_FOR_RELEASE",
     "implementation_files_changed_by_this_cycle": false
   },
   "validation": {
-    "provider": "railway",
-    "deployment_id": "b5f4902d-f5c5-4c22-a419-cdfd03b53699",
-    "status": "PARTIAL",
-    "deployment_status": "CRASHED_AFTER_E10_FAILURE",
-    "build": "VERIFIED_PASS",
-    "typecheck": "VERIFIED_PASS",
-    "contract_test_files": 108,
-    "full_test_files": 153,
-    "full_tests": 1046,
-    "coverage": {
-      "status": "VERIFIED_PASS",
-      "statements": 80.68,
-      "branches": 74.8,
-      "functions": 79.58,
-      "lines": 82.35
+    "primary_execution_provider": "railway",
+    "branch_service": {
+      "deployment_id": "6ebf2acb-1889-450c-874a-1114b4f51531",
+      "status": "FAILED",
+      "failure_stage": "check:coverage",
+      "tests": {
+        "files": 162,
+        "total": 1130,
+        "passed": 1130,
+        "failed": 0
+      },
+      "core_coverage": {
+        "threshold_pct": 90,
+        "lines_pct": 93.88,
+        "statements_pct": 92.41,
+        "functions_pct": 95.65,
+        "branches_pct": 83.13,
+        "status": "FAIL_BRANCHES"
+      },
+      "tick_coverage": {
+        "branches_pct": 79.16,
+        "uncovered_lines": [
+          28,
+          48,
+          71,
+          90
+        ]
+      },
+      "state_matrix_coverage": {
+        "branches_pct": 95.45,
+        "uncovered_lines": [
+          179
+        ]
+      }
     },
-    "doc_c_static": "VERIFIED_PASS",
-    "module_boundaries": "VERIFIED_PASS",
-    "web_build": "VERIFIED_PASS",
-    "browser_e2e": {
-      "status": "VERIFIED_PASS",
-      "tests": 11,
-      "suites": 2
+    "main_service": {
+      "deployment_id": "89becf8b-c085-4e87-a59b-76e17b127aad",
+      "status": "SKIPPED",
+      "combined_status_context": "success",
+      "evidence_class": "NON_PROOF"
     },
-    "doc_e_internal_e1_e9": "VERIFIED_PASS",
-    "doc_e_e10": "FAILED",
-    "failure_code": "DOC_E_E10_PROVIDER_RECEIPT_IDENTITY_MISMATCH",
-    "url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=b5f4902d-f5c5-4c22-a419-cdfd03b53699&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
-  },
-  "github_actions": {
-    "run_id": 37097611233,
-    "run_attempt": 2,
-    "workflow": "NEXY CI / Deploy Gate",
-    "workflow_path": ".github/workflows/deploy.yml",
-    "head_sha": "9cedbbd94af495199ca10f96e747689b0c19ddb1",
-    "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
-    "conclusion": "failure",
-    "run_started_at": "2026-10-03T08:22:42Z",
-    "run_updated_at": "2026-10-03T08:22:47Z",
-    "failed_jobs": 8,
-    "skipped_jobs": 3,
-    "executable_steps_observed": 0,
-    "artifacts_observed": 0,
-    "requested_job_id": 111130645942,
-    "resulting_typecheck_job_id": 111164487979,
-    "typecheck_runner_id": 0,
-    "typecheck_runner_name": "",
-    "typecheck_steps_observed": 0,
-    "typecheck_log_result": "404 BlobNotFound",
-    "typecheck_log_observed_at": "2026-10-03T08:23:08.742Z",
-    "provider_metadata_note": "Several dependent jobs returned completed_at timestamps inherited from attempt 1; no code-level conclusion is inferred.",
-    "reason": "GitHub Actions jobs completed before any executable step; this does not override exact-head Railway code-level evidence."
+    "github_actions": {
+      "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
+      "run_ids": [
+        37222997743,
+        37222997798,
+        37222997736,
+        37222997784
+      ],
+      "executable_steps_observed": 0
+    }
   },
   "release_truth": {
     "status": "BLOCKED",
     "authorized": false,
     "deploy_authorized": false,
     "blocking_reasons": [
-      "DOC-E E10 provider command receipt identity does not match the exact current SHA/tree",
-      "Current exact-head E11 signoff is not proven",
-      "Current exact-head E12 rollback/provider receipt is not proven",
-      "GitHub Actions runner path still records zero executable steps",
-      "Exhaustive 837-row spec-code-test crosswalk remains UNKNOWN"
+      "Exact-head Core branch coverage is 83.13%, below the configured 90% gate.",
+      "TSA production ingress for queue elapsed-time authority is not proven; source audit exposes a P0 blocker candidate.",
+      "DOC-E E11 authorized signoff is not proven for exact head.",
+      "DOC-E E12 rollback/provider proof is not proven for exact head.",
+      "GitHub Actions exact-head runs provide no executable-step evidence.",
+      "Main validation exact-head deployment is SKIPPED, not PASS.",
+      "Exhaustive 837-row current-revision crosswalk was not re-audited in this cycle."
     ]
   },
   "open_findings": [
-    "Issue a new authoritative E10 provider command receipt whose tested_sha/tested_tree equal 9cedbbd94af495199ca10f96e747689b0c19ddb1 / 205c038c85f2c18c0a42d391c212fe367e2aab7d.",
-    "Obtain current exact-head E11 signoff and E12 rollback/provider receipts.",
-    "Restore a GitHub Actions runner path that records executable steps and logs.",
-    "Complete the exhaustive 837-row spec-code-test crosswalk.",
-    "Inspect and pin the canonical DOC-C/DOC-E source text before assigning numbered-section compliance to the recent changed slice."
+    {
+      "priority": 1,
+      "id": "TSA-QUEUE-INGRESS",
+      "status": "SOURCE_BLOCKER_NOT_RUNTIME_VERIFIED",
+      "next_evidence": "Trace or provide verified production TSA ingress, then execute production-like E7 queue positive/negative paths."
+    },
+    {
+      "priority": 2,
+      "id": "CORE-COVERAGE",
+      "status": "VERIFIED_EXACT_HEAD_BLOCKER",
+      "next_evidence": "Add negative-path tests for tick.ts uncovered branches and remaining vnext-state-matrix branch; rerun test:coverage + check:coverage."
+    },
+    {
+      "priority": 3,
+      "id": "VALIDATION-AUTHORITY-PARITY",
+      "status": "VERIFIED_CONFLICT",
+      "next_evidence": "Align Docker blocking gates with authoritative advisory/current-build classifications or formally promote scope first."
+    },
+    {
+      "priority": 4,
+      "id": "EXACT-HEAD-EVIDENCE-BINDING",
+      "status": "VERIFIED_CONFLICT",
+      "next_evidence": "Require exact deployment id + commit hash + terminal SUCCESS + environment identity; reject SKIPPED green contexts."
+    },
+    {
+      "priority": 5,
+      "id": "DOC-E-EXTERNAL-PROOF",
+      "status": "NOT_VERIFIED",
+      "next_evidence": "Acquire exact-head E11 signoff and E12 rollback/provider proof after software gates are green."
+    },
+    {
+      "priority": 6,
+      "id": "EXHAUSTIVE-CROSSWALK",
+      "status": "UNKNOWN_NOT_REAUDITED",
+      "next_evidence": "Re-run 837-row requirement→implementation→test→runtime evidence audit on a stable pinned head."
+    }
+  ],
+  "non_findings": [
+    {
+      "area": "storage retention tick naming",
+      "status": "NOT_PROVEN_DEFECT",
+      "reason": "Current API explicitly accepts retention_until_tick/archive_after_tick in the same canonical logical-tick domain as deletedTick; no wall-time requirement was proven for this path."
+    },
+    {
+      "area": "AUTH module path naming",
+      "status": "NOT_PROVEN_DEFECT",
+      "reason": "API auth orchestration importing Core may be consistent with allowed API→CORE dependency; no direct forbidden packages/auth→CORE edge was proven."
+    }
   ],
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2.md",
-    "status": "PARTIAL"
+    "cycle_id": "NEXY-READONLY-AUDIT-20261005T0048+0700-9e615b04",
+    "path": "projects/NEXY.AI/cycles/2026-10-05/NEXY-READONLY-AUDIT-20261005T0048+0700-9e615b04.md",
+    "status": "NOT_VERIFIED_FOR_RELEASE"
   },
-  "spec_alignment": {
-    "status": "PARTIAL_UNKNOWN",
-    "affected_slice": [
-      "queue_completed_job_retention",
-      "doc_e_execution_scoped_databases",
-      "browser_listener_lifecycle"
-    ],
-    "reason": "Exact numbered-section mapping cannot be verified because primary DOC-C/DOC-E text is not readable through the current repository connector and secondary repository citations conflict.",
-    "execution_evidence_separate": true
+  "failure_library": {
+    "records": 21,
+    "added_this_cycle": [
+      "FAIL-TSA-INGRESS-001",
+      "FAIL-VALIDATION-EXPERIMENTAL-COUPLING-001",
+      "FAIL-EVIDENCE-SKIPPED-STATUS-002",
+      "FAIL-COVERAGE-TIME-AUTHORITY-001"
+    ]
   },
-  "context_correction": {
-    "preserves_execution_observed_at": true,
-    "corrected_at": "2026-10-03T09:20:25Z",
-    "ai_context_commit": "914357218de9355efdd68eefeecc26d2940c3a4e",
-    "scope": "Checkpointed blocked primary-source access and conflicting numbered-section mapping."
+  "provenance": {
+    "previous_snapshot_preserved_in_git_history": true,
+    "evidence_cutoff": "2026-10-04T18:06:57.071Z",
+    "exact_revision_binding": true,
+    "no_implementation_mutation": true
   }
 }
