@@ -112,6 +112,7 @@ def generate_boundary_corpus(policy: AgencyPolicy | None = None) -> tuple[Reques
                 )
             )
 
+    # Full boolean boundary matrix over a neutral numeric profile.
     for mask in range(32):
         requests.append(
             RequestProfile(
@@ -125,6 +126,7 @@ def generate_boundary_corpus(policy: AgencyPolicy | None = None) -> tuple[Reques
             )
         )
 
+    # High-value interaction surfaces near hard boundaries.
     for ambiguity in (
         _below(policy.confirm_ambiguity),
         policy.confirm_ambiguity,
