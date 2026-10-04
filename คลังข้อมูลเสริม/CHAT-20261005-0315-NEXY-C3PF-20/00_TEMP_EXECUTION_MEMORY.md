@@ -66,3 +66,20 @@ Do not duplicate EPC adjudication, compatibility proof, scientific trial value, 
 
 ## Resume rule
 Refresh AI-CONTEXT and NEXY heads; re-read this file; continue from the first non-PASS quality gate. Never claim NEXY integration verified merely from isolated lab tests.
+
+
+## Pivot record — semantic collision found
+PIVOT_AT: `2026-10-05T03:2x:00+07:00`
+C3PF_STATUS: `SUPERSEDED_BEFORE_PUBLICATION / NO_VOTE_CONSUMED`
+KEEP_REMAINING: `1`
+CUT_REMAINING: `1`
+
+### FACT
+A stronger pre-existing project was discovered at AI-CONTEXT commit `6607c3bbff3a35f0d7a386032d46d7b63722258e`, path `คลังข้อมูลเสริม/CHAT-20261005-0143-NEXY-CONTEXT-FIDELITY-COMPILER/00_SESSION_MEMORY.md`.
+Its objective explicitly covers proof-carrying context compaction preserving protected requirements, authority, conflicts, unknowns, evidence status, numeric constants, negation/exception semantics, and provenance. That is semantically equivalent to the core C3PF objective.
+
+### Decision
+Do not publish or vote KEEP on duplicate C3PF implementation. Preserve this record as evidence of collision handling. Continue the same chat/vote identity with a non-overlapping candidate under `ECRPF-20/**`.
+
+### Vote law
+This pivot is not CUT. No vote round is consumed because the candidate was stopped pre-adjudication under semantic duplicate evidence.
