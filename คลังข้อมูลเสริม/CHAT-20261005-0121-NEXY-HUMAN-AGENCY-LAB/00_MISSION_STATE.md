@@ -2,7 +2,7 @@
 
 Mission ID: `NEXY-HAL-20261005-0121`
 Chat / repository work code: `CHAT-20261005-0121-NEXY-HUMAN-AGENCY-LAB`
-Persistence mode: `ACTIVE_SYNC` until GitHub write/read-back succeeds; then `DURABLE_RESUMABLE`.
+Persistence mode: `DURABLE_RESUMABLE`.
 
 ## Objective
 
@@ -38,11 +38,15 @@ Create a novel, useful NEXY-adjacent research/prototype package that operational
 - Python compile validation passes: `PASS`.
 - Unit/regression/invariant tests pass: `PASS` 34/34.
 - CLI simulation exits zero: `PASS`.
-- Durable GitHub write/read-back verification: `PENDING`.
+- Durable GitHub write/read-back verification: `PASS` for the published W1-W6 slices; see `FINAL_STATE.md` and `CHECKPOINT-002-W6.md`.
 
 ## Current checkpoint
 
-`CHECKPOINT-001.md` — locally verified prototype awaiting durable GitHub persistence.
+`CHECKPOINT-002-W6.md` — W6 published, exact-byte read-back verified, and full local regression `104/104 PASS`.
+
+Mission completion: `NOT_COMPLETE`. W7 Human-Facing Semantic Contract and W8 Final Research Audit remain open.
+
+Exact next legal action: search current supplemental work for a materially equivalent W7 contract; if no collision exists, implement and verify W7 inside this mission directory only.
 
 ## Stop/freeze condition
 
