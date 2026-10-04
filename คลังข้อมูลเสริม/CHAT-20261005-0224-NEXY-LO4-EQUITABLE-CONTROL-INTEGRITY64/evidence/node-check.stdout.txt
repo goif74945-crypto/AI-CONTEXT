@@ -1,0 +1,13 @@
+CHECK src/avoidablefreeze.mjs
+CHECK src/common.mjs
+CHECK src/freezeburden.mjs
+CHECK src/index.mjs
+CHECK src/pipeline.mjs
+CHECK src/q64.mjs
+CHECK src/recoveryequity.mjs
+CHECK src/thresholdfragility.mjs
+CHECK src/verifytax.mjs
+CHECK tests/equity.test.mjs
+CHECK tests/integration.test.mjs
+CHECK tests/q64.test.mjs
+CHECK verify.mjs

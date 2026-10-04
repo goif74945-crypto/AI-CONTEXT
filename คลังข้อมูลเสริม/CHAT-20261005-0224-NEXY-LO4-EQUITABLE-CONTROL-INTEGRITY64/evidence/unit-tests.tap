@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: FREEZE_EQ64 passes a small explicit freeze-rate gap
+ok 1 - FREEZE_EQ64 passes a small explicit freeze-rate gap
+  ---
+  duration_ms: 2.42932
+  type: 'test'
+  ...
+# Subtest: FREEZE_EQ64 freezes a large freeze-rate gap
+ok 2 - FREEZE_EQ64 freezes a large freeze-rate gap
+  ---
+  duration_ms: 0.26585
+  type: 'test'
+  ...
+# Subtest: FREEZE_EQ64 freezes insufficient sample instead of smoothing it away
+ok 3 - FREEZE_EQ64 freezes insufficient sample instead of smoothing it away
+  ---
+  duration_ms: 0.159201
+  type: 'test'
+  ...
+# Subtest: VERIFY_TAX64 passes bounded average verification burden gap
+ok 4 - VERIFY_TAX64 passes bounded average verification burden gap
+  ---
+  duration_ms: 0.307161
+  type: 'test'
+  ...
+# Subtest: VERIFY_TAX64 freezes excessive verification burden disparity
+ok 5 - VERIFY_TAX64 freezes excessive verification burden disparity
+  ---
+  duration_ms: 1.715779
+  type: 'test'
+  ...
+# Subtest: VERIFY_TAX64 rejects negative burden
+ok 6 - VERIFY_TAX64 rejects negative burden
+  ---
+  duration_ms: 0.588437
+  type: 'test'
+  ...
+# Subtest: UNNECESSARY_FREEZE64 passes bounded avoidable-freeze gap
+ok 7 - UNNECESSARY_FREEZE64 passes bounded avoidable-freeze gap
+  ---
+  duration_ms: 0.337964
+  type: 'test'
+  ...
+# Subtest: UNNECESSARY_FREEZE64 freezes avoidable-freeze disparity
+ok 8 - UNNECESSARY_FREEZE64 freezes avoidable-freeze disparity
+  ---
+  duration_ms: 0.147755
+  type: 'test'
+  ...
+# Subtest: UNNECESSARY_FREEZE64 rejects impossible avoidable count
+ok 9 - UNNECESSARY_FREEZE64 rejects impossible avoidable count
+  ---
+  duration_ms: 0.382625
+  type: 'test'
+  ...
+# Subtest: RECOVERY_EQ64 passes bounded recovery-rate and time gaps
+ok 10 - RECOVERY_EQ64 passes bounded recovery-rate and time gaps
+  ---
+  duration_ms: 0.572332
+  type: 'test'
+  ...
+# Subtest: RECOVERY_EQ64 freezes rate disparity
+ok 11 - RECOVERY_EQ64 freezes rate disparity
+  ---
+  duration_ms: 0.319928
+  type: 'test'
+  ...
+# Subtest: RECOVERY_EQ64 freezes if recovery duration is unobservable
+ok 12 - RECOVERY_EQ64 freezes if recovery duration is unobservable
+  ---
+  duration_ms: 0.119643
+  type: 'test'
+  ...
+# Subtest: THRESHOLD_FRAGILITY64 passes bounded near-boundary gap
+ok 13 - THRESHOLD_FRAGILITY64 passes bounded near-boundary gap
+  ---
+  duration_ms: 0.182168
+  type: 'test'
+  ...
+# Subtest: THRESHOLD_FRAGILITY64 freezes asymmetric threshold fragility
+ok 14 - THRESHOLD_FRAGILITY64 freezes asymmetric threshold fragility
+  ---
+  duration_ms: 0.083827
+  type: 'test'
+  ...
+# Subtest: all auditors reject duplicate cohort IDs
+ok 15 - all auditors reject duplicate cohort IDs
+  ---
+  duration_ms: 0.106868
+  type: 'test'
+  ...
+# Subtest: equitable control pack passes only when all five audits pass
+ok 16 - equitable control pack passes only when all five audits pass
+  ---
+  duration_ms: 4.165152
+  type: 'test'
+  ...
+# Subtest: equitable control pack freezes when one cohort suffers excessive freeze burden
+ok 17 - equitable control pack freezes when one cohort suffers excessive freeze burden
+  ---
+  duration_ms: 0.689159
+  type: 'test'
+  ...
+# Subtest: pipeline does not infer cohort labels or sensitive attributes
+ok 18 - pipeline does not infer cohort labels or sensitive attributes
+  ---
+  duration_ms: 0.51039
+  type: 'test'
+  ...
+# Subtest: Q64 uses exactly 64 fractional bits
+ok 19 - Q64 uses exactly 64 fractional bits
+  ---
+  duration_ms: 1.445056
+  type: 'test'
+  ...
+# Subtest: Q64 rejects binary Number input
+ok 20 - Q64 rejects binary Number input
+  ---
+  duration_ms: 0.496361
+  type: 'test'
+  ...
+# Subtest: Q64 arithmetic identities hold on exact quarters
+ok 21 - Q64 arithmetic identities hold on exact quarters
+  ---
+  duration_ms: 1.432348
+  type: 'test'
+  ...
+# Subtest: Q64 overflow fails closed
+ok 22 - Q64 overflow fails closed
+  ---
+  duration_ms: 0.485049
+  type: 'test'
+  ...
+# Subtest: Q64 division by zero fails closed
+ok 23 - Q64 division by zero fails closed
+  ---
+  duration_ms: 0.256531
+  type: 'test'
+  ...
+# Subtest: Q64 decimal serialization is deterministic
+ok 24 - Q64 decimal serialization is deterministic
+  ---
+  duration_ms: 0.224038
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 93.210091
