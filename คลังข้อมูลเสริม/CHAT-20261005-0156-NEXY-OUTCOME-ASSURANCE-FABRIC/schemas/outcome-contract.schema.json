@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/nexy-oaf/outcome-contract.schema.json",
+  "title": "NEXY Outcome Assurance Fabric Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "objective_id", "objective", "criteria", "forbidden_effects"],
+  "properties": {
+    "contract_version": {"const": "nexy-oaf/1"},
+    "objective_id": {"type": "string", "minLength": 1},
+    "objective": {"type": "string", "minLength": 1},
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "op", "value", "hard", "weight", "regression_guard", "max_regression"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "op": {"enum": ["min", "max", "eq", "range", "in"]},
+          "value": {},
+          "hard": {"type": "boolean"},
+          "weight": {"type": "number", "minimum": 0},
+          "regression_guard": {"type": "boolean"},
+          "max_regression": {"type": "number", "minimum": 0}
+        }
+      }
+    },
+    "forbidden_effects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "op", "value"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "minLength": 1},
+          "op": {"enum": ["min", "max", "eq", "range", "in"]},
+          "value": {}
+        }
+      }
+    }
+  }
+}
