@@ -52,6 +52,5 @@ class FiveSystemIntegrationTests(unittest.TestCase):
         self.assertEqual(skill.status,'PASS')
         self.assertEqual(skill.steps,('drain','retry'))
 
-
 if __name__ == '__main__':
     unittest.main()
