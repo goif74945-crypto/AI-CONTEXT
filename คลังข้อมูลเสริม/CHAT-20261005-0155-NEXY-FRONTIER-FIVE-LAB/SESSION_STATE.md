@@ -17,7 +17,10 @@ Start context: 2026-10-05 01:55 +07:00
 - Regression tests were added.
 - Split implementation passed 21/21.
 - Publication bundle was then created by consolidating the same source and tests into one source file and one test file to reduce connector write surface.
-- Bundled implementation passed 21/21 after consolidation.
+- Initial bundled implementation passed 21/21 after consolidation.
+- Final pre-publication source audit found one remaining `localeCompare` in Trace Invariant Miner path traversal; prior evidence was invalidated.
+- The traversal was changed to `compareCodeUnits`, a regression test that disables `localeCompare` was added, and the final suite passed 22/22.
+- The exact final compiled artifact then passed 50/50 repeated regression runs with 22 tests and 0 failures per run.
 
 ## Protected scope
 
