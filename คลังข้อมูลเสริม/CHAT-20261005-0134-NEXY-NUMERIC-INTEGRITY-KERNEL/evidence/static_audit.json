@@ -1,0 +1,14 @@
+{
+  "files_scanned": [
+    "__init__.py",
+    "canonical.py",
+    "cli.py",
+    "errors.py",
+    "evaluator.py",
+    "fixed128.py",
+    "rational.py",
+    "units.py"
+  ],
+  "findings": [],
+  "pass": true
+}
