@@ -1,0 +1,23 @@
+{
+  "project": "NEXY Commitment Integrity Kernel",
+  "acronym": "NCIK",
+  "classification": "AI_PROPOSED_SUPPLEMENTARY_REFERENCE",
+  "chat_code": "CHAT-20261005-0143-NEXY-COMMITMENT-INTEGRITY-KERNEL",
+  "platform_chat_id": "UNKNOWN_NOT_EXPOSED",
+  "target_repository": "goif74945-crypto/AI-CONTEXT",
+  "target_branch": "main",
+  "write_scope": "คลังข้อมูลเสริม/CHAT-20261005-0143-NEXY-COMMITMENT-INTEGRITY-KERNEL/",
+  "protected_repository_rule": "Do not mutate any repository whose name contains NEXY.AI",
+  "verification": {
+    "E0_PRESENCE": "PASS",
+    "E1_STATIC": "PASS",
+    "E2_UNIT": "PASS",
+    "unit_invariant_tests": 53,
+    "adversarial_cases": 30,
+    "E3_INTEGRATION": "NOT_VERIFIED",
+    "E4_E2E": "NOT_VERIFIED",
+    "E5_RUNTIME": "NOT_VERIFIED",
+    "E6_DEPLOYMENT": "NOT_VERIFIED"
+  },
+  "production_status": "NOT_ADOPTED_NOT_INTEGRATED_NOT_DEPLOYED"
+}
