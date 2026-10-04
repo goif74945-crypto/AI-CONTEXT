@@ -167,3 +167,20 @@ Completion is legal only if:
 ## Current next legal action
 
 Scheduled continuation should begin with W2, but must first re-check whether another supplemental chat created materially equivalent authority-provenance work after this checkpoint. If so, it must pivot to the next non-duplicative research gap instead of cloning the idea with a new filename.
+
+---
+
+## Continuation checkpoint — W2 through W6 published
+
+Superseding continuation status recorded at `2026-10-05 06:25:53 +07:00`:
+
+- W2 Authority Provenance + Policy Identity: artifact and tests present.
+- W3 Multi-Action Transaction Graph: artifact and tests present.
+- W4 Counterfactual Gate Minimizer: artifact and tests present.
+- W5 Property / Boundary Assurance: deterministic harness and tests present.
+- W6 Boundary-Safe Interaction Coalescing: published and read back at branch head `e1cc03b1b73dd0d000dde6580c44fe60492f8019` before checkpoint publication.
+- Full local regression after W6: `104/104 PASS`, `0` failures, `0` errors.
+
+See `CHECKPOINT-002-W6.md` for exact commands, bounded property denominators, commit/blob/SHA-256 evidence, limitations, and protected-scope confirmation.
+
+Mission status remains `NOT_COMPLETE`. The exact next legal action is W7 Human-Facing Semantic Contract after a fresh supplemental collision search. W8 remains the final reconciliation/completion audit.
