@@ -1,0 +1,20 @@
+{
+  "schema_version": "nexy.cige.v1",
+  "nodes": [
+    {"id":"REQ-RELEASE-POLICY","kind":"requirement","critical":true,"label":"Release policy requirement"},
+    {"id":"CONTRACT-RELEASE","kind":"contract","label":"ReleasePolicyResult contract"},
+    {"id":"MODULE-JUDGE","kind":"module","label":"Judge module"},
+    {"id":"API-DIRECTIVES","kind":"artifact","label":"Directive API"},
+    {"id":"TEST-RELEASE","kind":"test","label":"Release policy tests"},
+    {"id":"TEST-API","kind":"test","label":"Directive API integration test"},
+    {"id":"EVIDENCE-RELEASE","kind":"evidence","label":"Sealed release evidence"}
+  ],
+  "edges": [
+    {"from":"CONTRACT-RELEASE","to":"REQ-RELEASE-POLICY","type":"derived_from"},
+    {"from":"MODULE-JUDGE","to":"CONTRACT-RELEASE","type":"implements"},
+    {"from":"API-DIRECTIVES","to":"MODULE-JUDGE","type":"depends_on"},
+    {"from":"TEST-RELEASE","to":"MODULE-JUDGE","type":"verifies"},
+    {"from":"TEST-API","to":"API-DIRECTIVES","type":"verifies"},
+    {"from":"EVIDENCE-RELEASE","to":"TEST-RELEASE","type":"derived_from"}
+  ]
+}
