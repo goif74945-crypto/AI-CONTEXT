@@ -244,5 +244,66 @@ class PrivacyFirewallTests(unittest.TestCase):
         self.assertIn("NO_PURPOSE_NECESSARY_FIELDS", result.receipt.reason_codes)
 
 
+    def test_non_string_request_purpose_freezes_instead_of_crashing(self):
+        req = EgressRequest(
+            request_id="req-invalid-purpose",
+            purpose=None,  # type: ignore[arg-type]
+            recipient="model-a",
+            recipient_class=RecipientClass.EXTERNAL_MODEL,
+            now=NOW,
+            items=(item(),),
+        )
+        result = self.fw.evaluate(req)
+        self.assertEqual(Action.FREEZE, result.action)
+        self.assertIn("INVALID_REQUEST_PURPOSE", result.receipt.reason_codes)
+
+    def test_non_string_item_id_freezes_instead_of_crashing(self):
+        bad = DataItem(
+            item_id=123,  # type: ignore[arg-type]
+            value={"text": "hello"},
+            sensitivity=Sensitivity.PUBLIC,
+            allowed_purposes=frozenset({"answer"}),
+            allowed_recipients=frozenset({"model-a"}),
+        )
+        result = self.fw.evaluate(request([bad]))
+        self.assertEqual(Action.FREEZE, result.action)
+        self.assertIn("INVALID_ITEM_METADATA", result.receipt.reason_codes)
+
+    def test_invalid_item_enum_freezes_instead_of_crashing(self):
+        bad = DataItem(
+            item_id="i-bad-enum",
+            value={"text": "hello"},
+            sensitivity="SENSITIVE",  # type: ignore[arg-type]
+            allowed_purposes=frozenset({"answer"}),
+            allowed_recipients=frozenset({"model-a"}),
+        )
+        result = self.fw.evaluate(request([bad]))
+        self.assertEqual(Action.FREEZE, result.action)
+        self.assertIn("INVALID_ITEM_METADATA", result.receipt.reason_codes)
+
+    def test_malformed_grant_freezes_instead_of_being_used(self):
+        bad_grant = ConsentGrant(
+            grant_id="g-bad-time",
+            item_id="i1",
+            purpose="answer",
+            recipient="model-a",
+            expires_at=datetime(2026, 10, 5, 1, 30),  # naive on purpose
+        )
+        result = self.fw.evaluate(
+            request([item(sensitivity=Sensitivity.SENSITIVE, required=True)], grants=[bad_grant])
+        )
+        self.assertEqual(Action.FREEZE, result.action)
+        self.assertIn("INVALID_GRANT_METADATA", result.receipt.reason_codes)
+
+    def test_non_string_field_purpose_freezes_instead_of_crashing(self):
+        bad = item(
+            value={"name": "Ada"},
+            field_purposes={"name": frozenset({None})},  # type: ignore[arg-type]
+        )
+        result = self.fw.evaluate(request([bad]))
+        self.assertEqual(Action.FREEZE, result.action)
+        self.assertIn("INVALID_ITEM_METADATA", result.receipt.reason_codes)
+
+
 if __name__ == "__main__":
     unittest.main()
