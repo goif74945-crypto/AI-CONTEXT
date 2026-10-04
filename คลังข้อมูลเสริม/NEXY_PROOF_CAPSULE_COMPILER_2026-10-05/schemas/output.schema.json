@@ -1,0 +1,20 @@
+{
+  "$id": "https://nexy.invalid/proposals/proof-capsule/output-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "as_of": {"format": "date-time", "type": "string"},
+    "capsule_id": {"pattern": "^pc1:[0-9a-f]{64}$", "type": "string"},
+    "claims": {"items": {"type": "string"}, "type": "array"},
+    "cost": {"minimum": 0, "type": "integer"},
+    "coverage": {"additionalProperties": {"items": {"type": "string"}, "type": "array"}, "type": "object"},
+    "dissent": {"additionalProperties": {"items": {"type": "string"}, "type": "array"}, "type": "object"},
+    "evidence": {"items": {"type": "string"}, "type": "array"},
+    "metadata": {"type": "object"},
+    "reasons": {"items": {"type": "string"}, "type": "array"},
+    "status": {"enum": ["PASS", "FREEZE"]}
+  },
+  "required": ["status", "capsule_id", "as_of", "claims", "evidence", "coverage", "dissent", "reasons", "cost", "metadata"],
+  "title": "NEXY Proof Capsule Proposal Output v1",
+  "type": "object"
+}

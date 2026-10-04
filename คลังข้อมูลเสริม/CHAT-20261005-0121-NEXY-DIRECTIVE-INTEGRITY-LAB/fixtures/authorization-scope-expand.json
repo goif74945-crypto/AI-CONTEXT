@@ -1,0 +1,5 @@
+{
+  "path": "/scope_in",
+  "evidence_ref": "USER_CLARIFICATION:scope-expand-1",
+  "reason": "user explicitly authorized the additional resource"
+}
