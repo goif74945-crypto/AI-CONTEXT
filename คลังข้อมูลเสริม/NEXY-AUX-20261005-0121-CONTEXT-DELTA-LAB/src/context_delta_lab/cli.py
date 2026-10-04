@@ -35,8 +35,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"INPUT_ERROR: {exc}", file=sys.stderr)
         return 3
 
-    rendered = json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "
-"
+    rendered = json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     try:
         if args.output:
             args.output.write_text(rendered, encoding="utf-8")
