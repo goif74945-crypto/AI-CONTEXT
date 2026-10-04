@@ -1,0 +1,19 @@
+{
+  "task_id": "CHAT-20261005-0222-NEXY-LO4-EOSF-NX5A",
+  "requirements": [
+    {"id":"R01","requirement":"Work is useful to NEXY.AI but NEXY.AI repos are not mutated","status":"PASS_LOCAL_SCOPE","evidence":["04_NEXY_INTEGRATION_CONTRACT.md","00_TEMP_EXECUTION_MEMORY.md"]},
+    {"id":"R02","requirement":"Write durable work under AI-CONTEXT/คลังข้อมูลเสริม","status":"PENDING_REMOTE_PERSISTENCE","evidence":["target path defined in task contract"]},
+    {"id":"R03","requirement":"Exactly five Lo4 AI-proposed concepts","status":"PASS","evidence":["README.md","concepts/"]},
+    {"id":"R04","requirement":"Lo4 proposals have no Canon authority until formal promotion","status":"PASS_DESIGN","evidence":["README.md","07_PROMOTION_GATE.md"]},
+    {"id":"R05","requirement":"Each concept stores Design + Code + Test + Evidence together","status":"PASS_LOCAL","evidence":["concepts/01-* through concepts/05-*"]},
+    {"id":"R06","requirement":"Implement real code and execute tests","status":"PASS_LOCAL","evidence":["evidence/verify-after-layout.log","evidence/coverage-layout-final.log"]},
+    {"id":"R07","requirement":"Failure -> fix -> retest loop is preserved","status":"PASS","evidence":["06_FAILURE_REPAIR_LEDGER.md","evidence/verify-initial.log","evidence/verify-after-security-hardening.log"]},
+    {"id":"R08","requirement":"Temporary durable execution memory exists","status":"PASS_LOCAL","evidence":["00_TEMP_EXECUTION_MEMORY.md"]},
+    {"id":"R09","requirement":"Concepts are materially non-duplicative versus inspected recent sibling work","status":"PARTIALLY_VERIFIED","evidence":["03_NOVELTY_AUDIT.md"],"note":"Global semantic uniqueness across all concurrent/future work is not mathematically provable."},
+    {"id":"R10","requirement":"Code is designed for future NEXY compatibility but is not integrated into NEXY","status":"PASS_DESIGN_ONLY","evidence":["04_NEXY_INTEGRATION_CONTRACT.md"]},
+    {"id":"R11","requirement":"Final source/test bytes are remotely persisted and read back","status":"PENDING_REMOTE_PERSISTENCE","evidence":[]},
+    {"id":"R12","requirement":"Continuous autonomous execution for many tens of hours","status":"UNSATISFIED_RUNTIME_LIMIT","evidence":["Synchronous chat runtime exposes no legal background continuation primitive."]},
+    {"id":"R13","requirement":"Consume arbitrary hundreds of millions/billions of tokens","status":"UNSATISFIED_INTERFACE_LIMIT","evidence":["Token allocation is not an exposed controllable engineering primitive."]},
+    {"id":"R14","requirement":"Objectively better than every prior/concurrent chat","status":"NOT_VERIFIED","evidence":["03_NOVELTY_AUDIT.md"],"note":"Bounded novelty and stronger safety properties are evidenced; universal subjective superiority is not objectively provable."}
+  ]
+}

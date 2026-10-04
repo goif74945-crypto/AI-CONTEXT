@@ -1,0 +1,73 @@
+{
+  "task_id": "CHAT-20261005-0222-NEXY-LO4-EOSF-NX5A",
+  "objective": "Design, implement, verify, and persist exactly five AI-proposed Lo4 reference systems for exactly-once external-effect safety that can later integrate with NEXY.AI without mutating any NEXY.AI-named repository.",
+  "target": "goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0222-NEXY-LO4-EOSF-NX5A",
+  "authorized_scope": [
+    "Read AI-CONTEXT authoritative project context",
+    "Create and update only this unique supplemental mission namespace",
+    "Implement standalone TypeScript reference code",
+    "Run local static, unit, integration, property, stress and determinism verification",
+    "Read NEXY context only for compatibility analysis"
+  ],
+  "protected_scope": [
+    "Every repository whose name contains NEXY.AI",
+    "Existing AI-CONTEXT sibling supplemental projects",
+    "Canonical NEXY requirements and current build matrix"
+  ],
+  "authority_sources": [
+    "Current user directive",
+    "AI-CONTEXT/INDEX.md",
+    "AI-CONTEXT/AI-EXECUTION-KERNEL.md",
+    "AI-CONTEXT/rules/GLOBAL.md",
+    "AI-CONTEXT/rules/AI-BEHAVIOR.md",
+    "AI-CONTEXT/rules/SECURITY.md",
+    "AI-CONTEXT/rules/VERIFICATION.md",
+    "AI-CONTEXT/projects/NEXY.AI/overview.md",
+    "AI-CONTEXT/projects/NEXY.AI/deep/doc-c-vnext-build-spec.md",
+    "AI-CONTEXT/projects/NEXY.AI/deep/final-architecture-cross-system.md"
+  ],
+  "preconditions": [
+    "AI-CONTEXT repository identity is resolved",
+    "Authorized supplemental path is unique",
+    "No required mutation targets a NEXY.AI-named repository",
+    "Node.js and TypeScript compiler are locally available"
+  ],
+  "success_invariants": [
+    "Exactly five materially distinct proposal systems exist",
+    "Every concept stores Design + Code + Test + Evidence in its own folder",
+    "All externally visible set-like outputs are deterministic",
+    "Missing/unsafe/contradictory execution state fails closed",
+    "No automatic retry is accepted unless explicitly safe",
+    "Critical effect equality never relies on a lossy non-cryptographic hash",
+    "Stale fencing tokens never authorize a commit",
+    "Completed/emitted replay is suppressed rather than re-executed",
+    "Every materialized side effect in a cancellation closure has an explicit compensation obligation",
+    "No NEXY.AI repository is mutated"
+  ],
+  "required_evidence": [
+    "E0 durable artifact presence",
+    "E1 TypeScript strict typecheck/static audit",
+    "E2 focused unit/negative/property tests",
+    "E3 local five-system integration test",
+    "Stress and deterministic replay evidence",
+    "SHA-256 source/test manifest",
+    "GitHub post-persistence read-back evidence"
+  ],
+  "stop_conditions": [
+    "Any required write would leave this mission namespace",
+    "Any required mutation would target a repository whose name contains NEXY.AI",
+    "Tests remain failing after repair attempts",
+    "Persisted source/test bytes cannot be matched to the tested manifest",
+    "A proposal would be represented as Canon or live NEXY behavior without promotion evidence"
+  ],
+  "deliverables": [
+    "ISC design/code/test/evidence",
+    "RAB design/code/test/evidence",
+    "LFCG design/code/test/evidence",
+    "OES design/code/test/evidence",
+    "CCC design/code/test/evidence",
+    "Integration preflight fabric",
+    "Task/requirement/failure/novelty/security/promotion/audit records",
+    "Raw verification logs and source/test SHA-256 manifest"
+  ]
+}

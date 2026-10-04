@@ -1,0 +1,308 @@
+
+> nexy-lo4-exactly-once-effect-safety-fabric@0.1.0 verify
+> npm run typecheck && npm run test
+
+
+> nexy-lo4-exactly-once-effect-safety-fabric@0.1.0 typecheck
+> tsc -p tsconfig.json --noEmit
+
+
+> nexy-lo4-exactly-once-effect-safety-fabric@0.1.0 test
+> npm run build && node --test tests/*.test.mjs
+
+
+> nexy-lo4-exactly-once-effect-safety-fabric@0.1.0 build
+> tsc -p tsconfig.json
+
+TAP version 13
+# Subtest: CCC cancels queued/running descendants and records compensation obligations
+ok 1 - CCC cancels queued/running descendants and records compensation obligations
+  ---
+  duration_ms: 2.40995
+  type: 'test'
+  ...
+# Subtest: CCC freezes completed external effect with no compensation
+ok 2 - CCC freezes completed external effect with no compensation
+  ---
+  duration_ms: 0.247853
+  type: 'test'
+  ...
+# Subtest: CCC ignores jobs outside requested subtree
+ok 3 - CCC ignores jobs outside requested subtree
+  ---
+  duration_ms: 0.143356
+  type: 'test'
+  ...
+# Subtest: CCC rejects unknown parent
+ok 4 - CCC rejects unknown parent
+  ---
+  duration_ms: 0.377078
+  type: 'test'
+  ...
+# Subtest: CCC requires compensation for materialized effect even when job FAILED
+ok 5 - CCC requires compensation for materialized effect even when job FAILED
+  ---
+  duration_ms: 0.549928
+  type: 'test'
+  ...
+# Subtest: CCC requires compensation for materialized effect while RUNNING
+ok 6 - CCC requires compensation for materialized effect while RUNNING
+  ---
+  duration_ms: 0.253662
+  type: 'test'
+  ...
+# Subtest: LFCG allows current holder with exact fence
+ok 7 - LFCG allows current holder with exact fence
+  ---
+  duration_ms: 1.78605
+  type: 'test'
+  ...
+# Subtest: LFCG rejects stale worker after re-acquisition
+ok 8 - LFCG rejects stale worker after re-acquisition
+  ---
+  duration_ms: 1.443434
+  type: 'test'
+  ...
+# Subtest: LFCG rejects future fence and expired lease
+ok 9 - LFCG rejects future fence and expired lease
+  ---
+  duration_ms: 0.356136
+  type: 'test'
+  ...
+# Subtest: LFCG rejects revoked lease
+ok 10 - LFCG rejects revoked lease
+  ---
+  duration_ms: 0.269676
+  type: 'test'
+  ...
+# Subtest: ISC compiles stable identity independent of object key order
+ok 11 - ISC compiles stable identity independent of object key order
+  ---
+  duration_ms: 2.641399
+  type: 'test'
+  ...
+# Subtest: ISC rejects policy that does not bind payload when required
+ok 12 - ISC rejects policy that does not bind payload when required
+  ---
+  duration_ms: 0.396868
+  type: 'test'
+  ...
+# Subtest: ISC requires route and project scope
+ok 13 - ISC requires route and project scope
+  ---
+  duration_ms: 0.126931
+  type: 'test'
+  ...
+# Subtest: replay of same semantic payload is recognized
+ok 14 - replay of same semantic payload is recognized
+  ---
+  duration_ms: 0.369837
+  type: 'test'
+  ...
+# Subtest: same effect identity with different semantic payload freezes alias
+ok 15 - same effect identity with different semantic payload freezes alias
+  ---
+  duration_ms: 0.32555
+  type: 'test'
+  ...
+# Subtest: replay state distinguishes in-flight from retryable failure
+ok 16 - replay state distinguishes in-flight from retryable failure
+  ---
+  duration_ms: 0.287303
+  type: 'test'
+  ...
+# Subtest: duplicate registry identity fails closed
+ok 17 - duplicate registry identity fails closed
+  ---
+  duration_ms: 1.047378
+  type: 'test'
+  ...
+# Subtest: integration READY when all five gates pass
+ok 18 - integration READY when all five gates pass
+  ---
+  duration_ms: 2.618774
+  type: 'test'
+  ...
+# Subtest: integration aggregates independent blockers instead of first-error hiding
+ok 19 - integration aggregates independent blockers instead of first-error hiding
+  ---
+  duration_ms: 1.119426
+  type: 'test'
+  ...
+# Subtest: integration detects outbox payload conflict for same effect identity
+ok 20 - integration detects outbox payload conflict for same effect identity
+  ---
+  duration_ms: 0.417329
+  type: 'test'
+  ...
+# Subtest: integration suppresses a completed idempotent replay instead of re-executing effect
+not ok 21 - integration suppresses a completed idempotent replay instead of re-executing effect
+  ---
+  duration_ms: 1.594952
+  type: 'test'
+  location: '/tmp/nexy-eosf/tests/integration.test.mjs:50:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+        effectIdentity: '{"scope":{"actorId":"owner","authorityEpoch":"law-7","payload":{"artifact":"a","revision":2},"projectId":"p","route":"/api/vault/commit"},"userKey":"K"}',
+    +   evidence: 'REGISTRY_COMPLETED',
+        verdict: 'SUPPRESS_REPLAY'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    verdict: 'SUPPRESS_REPLAY'
+    effectIdentity: '{"scope":{"actorId":"owner","authorityEpoch":"law-7","payload":{"artifact":"a","revision":2},"projectId":"p","route":"/api/vault/commit"},"userKey":"K"}'
+  actual:
+    verdict: 'SUPPRESS_REPLAY'
+    effectIdentity: '{"scope":{"actorId":"owner","authorityEpoch":"law-7","payload":{"artifact":"a","revision":2},"projectId":"p","route":"/api/vault/commit"},"userKey":"K"}'
+    evidence: 'REGISTRY_COMPLETED'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///tmp/nexy-eosf/tests/integration.test.mjs:55:9)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: integration freezes in-flight duplicate and allows retryable duplicate only through retry gate
+ok 22 - integration freezes in-flight duplicate and allows retryable duplicate only through retry gate
+  ---
+  duration_ms: 0.681136
+  type: 'test'
+  ...
+# Subtest: integration suppresses replay when outbox already emitted even if registry row is absent
+ok 23 - integration suppresses replay when outbox already emitted even if registry row is absent
+  ---
+  duration_ms: 0.752183
+  type: 'test'
+  ...
+# Subtest: integration freezes registry/outbox state contradiction
+ok 24 - integration freezes registry/outbox state contradiction
+  ---
+  duration_ms: 0.447955
+  type: 'test'
+  ...
+# Subtest: integration resumes from COMMITTED outbox record without creating a second effect identity
+ok 25 - integration resumes from COMMITTED outbox record without creating a second effect identity
+  ---
+  duration_ms: 0.622477
+  type: 'test'
+  ...
+# Subtest: OES enforces PREPARED -> COMMITTED -> EMITTED
+ok 26 - OES enforces PREPARED -> COMMITTED -> EMITTED
+  ---
+  duration_ms: 2.930614
+  type: 'test'
+  ...
+# Subtest: OES makes repeated emission idempotent
+ok 27 - OES makes repeated emission idempotent
+  ---
+  duration_ms: 0.227804
+  type: 'test'
+  ...
+# Subtest: OES freezes same effect id with different payload
+ok 28 - OES freezes same effect id with different payload
+  ---
+  duration_ms: 0.201464
+  type: 'test'
+  ...
+# Subtest: OES forbids emission before commit
+ok 29 - OES forbids emission before commit
+  ---
+  duration_ms: 0.541396
+  type: 'test'
+  ...
+# Subtest: OES permits cancel only before commit
+ok 30 - OES permits cancel only before commit
+  ---
+  duration_ms: 0.21915
+  type: 'test'
+  ...
+# Subtest: OES audit detects tampering
+ok 31 - OES audit detects tampering
+  ---
+  duration_ms: 0.218719
+  type: 'test'
+  ...
+# Subtest: OES reconciles exact state and refuses reuse after cancellation
+ok 32 - OES reconciles exact state and refuses reuse after cancellation
+  ---
+  duration_ms: 0.266432
+  type: 'test'
+  ...
+# Subtest: property: idempotency scope is invariant to payload key insertion order for 100 cases
+ok 33 - property: idempotency scope is invariant to payload key insertion order for 100 cases
+  ---
+  duration_ms: 20.01107
+  type: 'test'
+  ...
+# Subtest: property: stale fences never authorize after 500 reacquisitions
+ok 34 - property: stale fences never authorize after 500 reacquisitions
+  ---
+  duration_ms: 0.657991
+  type: 'test'
+  ...
+# Subtest: property: outbox repeated emit never advances original emission sequence
+ok 35 - property: outbox repeated emit never advances original emission sequence
+  ---
+  duration_ms: 0.404088
+  type: 'test'
+  ...
+# Subtest: property: retry calculation matches closed form for 200 shallow cases
+ok 36 - property: retry calculation matches closed form for 200 shallow cases
+  ---
+  duration_ms: 1.402042
+  type: 'test'
+  ...
+# Subtest: property: cancellation result is invariant to input ordering
+ok 37 - property: cancellation result is invariant to input ordering
+  ---
+  duration_ms: 0.955169
+  type: 'test'
+  ...
+# Subtest: RAB computes worst-case nested retry amplification
+ok 38 - RAB computes worst-case nested retry amplification
+  ---
+  duration_ms: 0.838032
+  type: 'test'
+  ...
+# Subtest: RAB freezes retry when explicit safe flag is absent
+ok 39 - RAB freezes retry when explicit safe flag is absent
+  ---
+  duration_ms: 1.650496
+  type: 'test'
+  ...
+# Subtest: RAB freezes if worst-case effects exceed budget
+ok 40 - RAB freezes if worst-case effects exceed budget
+  ---
+  duration_ms: 0.275545
+  type: 'test'
+  ...
+# Subtest: RAB rejects cycles
+ok 41 - RAB rejects cycles
+  ---
+  duration_ms: 0.400132
+  type: 'test'
+  ...
+# Subtest: RAB rejects analysis cap explosion
+ok 42 - RAB rejects analysis cap explosion
+  ---
+  duration_ms: 0.228524
+  type: 'test'
+  ...
+1..42
+# tests 42
+# suites 0
+# pass 41
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 193.069894

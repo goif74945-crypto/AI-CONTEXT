@@ -1,0 +1,12 @@
+# Integration Evidence
+- 8 integration tests PASS.
+- 5 property tests PASS.
+- READY path verified.
+- Multiple independent blockers aggregated in one FREEZE report.
+- Completed replay suppression verified.
+- In-flight duplicate freeze verified.
+- Retryable duplicate proceeds only through RAB safe-retry proof.
+- Outbox-emitted replay suppression verified.
+- Registry/outbox contradiction freeze verified.
+- COMMITTED outbox resume path verified.
+- Determinism probe is byte-identical across two separate processes.
