@@ -31,6 +31,6 @@ test_uncovered_requirement_is_explicit (test_witness.WitnessTests.test_uncovered
 test_unknown_requirement_reference_fails_closed (test_witness.WitnessTests.test_unknown_requirement_reference_fails_closed) ... ok
 
 ----------------------------------------------------------------------
-Ran 31 tests in 0.005s
+Ran 31 tests in 0.004s
 
 OK
