@@ -611,4 +611,9 @@ def _approvals_removed(baseline: TaskContract, candidate: TaskContract) -> list[
     return [
         Finding(
             code="PFL-DRIFT-APPROVAL-REMOVED",
-            message=f"Candidate removes previously explicit approval '{approval
+            message=f"Candidate removes previously explicit approval '{approval}'.",
+            decision=Decision.BLOCKED,
+            resource=approval,
+        )
+        for approval in removed
+    ]
