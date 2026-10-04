@@ -1,0 +1,8 @@
+{
+  "schema_version": "nfwm.trace.v1",
+  "events": [
+    {"seq": 1, "kind": "EXECUTION_STARTED", "trace_id": "t1", "request_id": "q1", "run_id": "r1", "idempotency_key": "same-key"},
+    {"seq": 2, "kind": "NOISE", "trace_id": "t1", "request_id": "q1", "run_id": "r1"},
+    {"seq": 3, "kind": "EXECUTION_STARTED", "trace_id": "t2", "request_id": "q2", "run_id": "r2", "idempotency_key": "same-key"}
+  ]
+}
