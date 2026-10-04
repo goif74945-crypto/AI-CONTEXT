@@ -35,7 +35,7 @@ PYTHONPATH=src python -m unittest discover -s tests -v
 Final result:
 
 ```text
-Ran 61 tests in 1.245s
+Ran 61 tests in 1.434s
 OK
 ```
 
@@ -46,7 +46,7 @@ Covered behaviors include proposal validation, prohibited-risk blocking, equal-a
 Final result:
 
 ```text
-ADVERSARIAL_SWEEP_PASS checks=10143 max_roundtrip_error=2.726e-10
+ADVERSARIAL_SWEEP_PASS checks=10149 max_roundtrip_error=2.726e-10
 ```
 
 This swept inverse-normal round trips plus proportion planning/evaluation combinations across multiple baselines, MDE values, and both metric directions.
