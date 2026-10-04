@@ -12,11 +12,20 @@
   "local_verification": {
     "compileall": "PASS",
     "tests": {"status": "PASS", "count": 23},
-    "integration_self_scan": {"status": "PASS", "documents": 15, "warnings": 0, "errors": 0, "critical": 0},
-    "link_graph": {"status": "PASS", "nodes": 15, "edges": 18},
+    "integration_self_scan": {"status": "PASS", "documents": 16, "warnings": 0, "errors": 0, "critical": 0},
+    "link_graph": {"status": "PASS", "nodes": 16, "edges": 19},
     "truth_lock_verify": "PASS",
     "wheel_build": "PASS",
-    "isolated_target_install_smoke": "PASS"
+    "isolated_target_install_smoke": "PASS",
+    "final_metadata_self_scan": "PASS"
   },
-  "repository_write": "PENDING"
+  "repository_write": {
+    "status": "PASS",
+    "content_commit": "e4168d34f81d69be1a82db2aa06b984b6c475a90",
+    "branch": "main",
+    "update_mode": "fast-forward force=false",
+    "verified_by_refetch": true,
+    "protected_scope_mutation_observed": false,
+    "native_platform_chat_id": "UNKNOWN_NOT_EXPOSED_TO_ASSISTANT"
+  }
 }
