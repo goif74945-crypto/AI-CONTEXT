@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "."
+      ],
+      "name": "compileall",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "name": "unittest",
+      "returncode": 0,
+      "stderr": "test_budget_freezes_even_when_coverage_exists (concepts.assurance_budget_planner.test_engine.AssuranceBudgetPlannerTests.test_budget_freezes_even_when_coverage_exists) ... ok\ntest_missing_independence_freezes (concepts.assurance_budget_planner.test_engine.AssuranceBudgetPlannerTests.test_missing_independence_freezes) ... ok\ntest_order_independent (concepts.assurance_budget_planner.test_engine.AssuranceBudgetPlannerTests.test_order_independent) ... ok\ntest_same_domain_does_not_fake_independence (concepts.assurance_budget_planner.test_engine.AssuranceBudgetPlannerTests.test_same_domain_does_not_fake_independence) ... ok\ntest_selects_cheapest_independent_assurance (concepts.assurance_budget_planner.test_engine.AssuranceBudgetPlannerTests.test_selects_cheapest_independent_assurance) ... ok\ntest_field_order_does_not_change_suite (concepts.counterexample_synthesizer.test_engine.CounterexampleSynthesizerTests.test_field_order_does_not_change_suite) ... ok\ntest_generated_vectors_are_all_invalid (concepts.counterexample_synthesizer.test_engine.CounterexampleSynthesizerTests.test_generated_vectors_are_all_invalid) ... ok\ntest_invalid_base_case_freezes (concepts.counterexample_synthesizer.test_engine.CounterexampleSynthesizerTests.test_invalid_base_case_freezes) ... ok\ntest_malformed_bounds_fail_closed (concepts.counterexample_synthesizer.test_engine.CounterexampleSynthesizerTests.test_malformed_bounds_fail_closed) ... ok\ntest_forbidden_effect_freezes (concepts.goal_state_compiler.test_engine.GoalStateCompilerTests.test_forbidden_effect_freezes) ... ok\ntest_missing_fact_is_not_verified (concepts.goal_state_compiler.test_engine.GoalStateCompilerTests.test_missing_fact_is_not_verified) ... ok\ntest_non_json_fact_rejected (concepts.goal_state_compiler.test_engine.GoalStateCompilerTests.test_non_json_fact_rejected) ... ok\ntest_pass_and_order_independence (concepts.goal_state_compiler.test_engine.GoalStateCompilerTests.test_pass_and_order_independence) ... ok\ntest_tampered_contract_rejected (concepts.goal_state_compiler.test_engine.GoalStateCompilerTests.test_tampered_contract_rejected) ... ok\ntest_approved_irreversible_marks_point_of_no_return (concepts.reversibility_envelope.test_engine.ReversibilityEnvelopeTests.test_approved_irreversible_marks_point_of_no_return) ... ok\ntest_cycle_freezes (concepts.reversibility_envelope.test_engine.ReversibilityEnvelopeTests.test_cycle_freezes) ... ok\ntest_execution_and_rollback_orders (concepts.reversibility_envelope.test_engine.ReversibilityEnvelopeTests.test_execution_and_rollback_orders) ... ok\ntest_missing_compensation_freezes (concepts.reversibility_envelope.test_engine.ReversibilityEnvelopeTests.test_missing_compensation_freezes) ... ok\ntest_unapproved_irreversible_action_freezes (concepts.reversibility_envelope.test_engine.ReversibilityEnvelopeTests.test_unapproved_irreversible_action_freezes) ... ok\ntest_input_order_does_not_change_plan (concepts.unknown_closure_planner.test_engine.UnknownClosurePlannerTests.test_input_order_does_not_change_plan) ... ok\ntest_known_unknowns_need_no_question (concepts.unknown_closure_planner.test_engine.UnknownClosurePlannerTests.test_known_unknowns_need_no_question) ... ok\ntest_selects_minimum_cost_cover (concepts.unknown_closure_planner.test_engine.UnknownClosurePlannerTests.test_selects_minimum_cost_cover) ... ok\ntest_unresolvable_unknown_freezes (concepts.unknown_closure_planner.test_engine.UnknownClosurePlannerTests.test_unresolvable_unknown_freezes) ... ok\ntest_ask_exit_code (integration.test_cli.CliTests.test_ask_exit_code) ... ok\ntest_invalid_input_fail_closed (integration.test_cli.CliTests.test_invalid_input_fail_closed) ... ok\ntest_ready_exit_code_and_json (integration.test_cli.CliTests.test_ready_exit_code_and_json) ... ok\ntest_irreversible_action_freezes (integration.test_fabric.FabricIntegrationTests.test_irreversible_action_freezes) ... ok\ntest_matching_question_can_resolve_missing_goal_evidence (integration.test_fabric.FabricIntegrationTests.test_matching_question_can_resolve_missing_goal_evidence) ... ok\ntest_repeat_is_byte_stable (integration.test_fabric.FabricIntegrationTests.test_repeat_is_byte_stable) ... ok\ntest_safe_mission_is_ready (integration.test_fabric.FabricIntegrationTests.test_safe_mission_is_ready) ... ok\ntest_unknown_path_asks_minimum_question (integration.test_fabric.FabricIntegrationTests.test_unknown_path_asks_minimum_question) ... ok\ntest_unrelated_question_cannot_mask_missing_goal_evidence (integration.test_fabric.FabricIntegrationTests.test_unrelated_question_cannot_mask_missing_goal_evidence) ... ok\n\n----------------------------------------------------------------------\nRan 32 tests in 1.846s\n\nOK",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "scripts/fuzz_determinism.py"
+      ],
+      "name": "determinism_fuzz",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"assurance_permutation_checks\": 500, \"seed\": 20261005, \"status\": \"PASS\", \"total_checks\": 1000, \"unknown_permutation_checks\": 500}"
+    }
+  ],
+  "status": "PASS"
+}
