@@ -1,0 +1,10 @@
+{
+  "authority_conflict": false,
+  "missing_required_information": false,
+  "evidence_required": true,
+  "evidence_sufficient": true,
+  "action_reversible": false,
+  "action_preauthorized": false,
+  "confirmation_required_by_law": false,
+  "risk": "HIGH"
+}
