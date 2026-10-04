@@ -54,13 +54,7 @@ class CapsuleBuilder:
             {"fingerprint": self.fingerprint, "mode": mode},
         )
 
-    def append_final(
-        self,
-        *,
-        status: TerminalState | str,
-        output: Any = None,
-        reason: str | None = None,
-    ) -> Event:
+    def append_final(self, *, status: TerminalState | str, output: Any = None, reason: str | None = None) -> Event:
         state = TerminalState(status)
         payload: dict[str, Any] = {
             "status": state.value,
