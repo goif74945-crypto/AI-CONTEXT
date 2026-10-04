@@ -1,0 +1,13 @@
+{
+  "audit": "NCIF_STRESS_AUDIT",
+  "deep_lineage_nodes": 5000,
+  "failures": [],
+  "limitations": [
+    "Local structural stress only; no production latency/SLO claim.",
+    "Does not prove correctness for unbounded graph sizes or hostile memory exhaustion."
+  ],
+  "observed_wide_support_groups": 500,
+  "status": "PASS",
+  "wide_unique_roots": 500,
+  "wide_votes": 5000
+}
