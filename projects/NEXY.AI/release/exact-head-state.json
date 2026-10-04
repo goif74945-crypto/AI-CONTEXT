@@ -1,125 +1,182 @@
 {
   "schema_version": "4.0.0",
-  "observed_at": "2026-10-03T08:23:08.742Z",
-  "timestamp_source": "GitHub repository/actions APIs plus preserved Railway exact-deployment evidence",
-  "trace_id": "NEXY-9CEDBBD9-GHA-37097611233-ATTEMPT2",
+  "observed_at": "2026-10-04T18:06:57.071Z",
+  "timestamp_source": "GitHub repository/actions APIs + Railway deployment/log APIs",
+  "trace_id": "NEXY-9E615B04-RWY-6EBF2ACB-GHA-37222997743",
   "target": {
     "repository": "goif74945-crypto/NEXY.AI-",
     "branch": "NEXY.ai",
-    "head": "9cedbbd94af495199ca10f96e747689b0c19ddb1",
-    "tree": "205c038c85f2c18c0a42d391c212fe367e2aab7d",
-    "commit_time": "2026-10-03T04:45:39Z",
-    "commit_message": "fix: keep listener contract source-unambiguous"
+    "head": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "tree": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c",
+    "commit_time": "2026-10-04T18:04:40Z",
+    "commit_message": "test(game): deepen canonical ordering proof",
+    "commit_signature": "UNSIGNED"
   },
   "authority": {
     "design_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
     "normalized_matrix_sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
     "normalized_rows": 837,
-    "primary_source_content_access": "BLOCKED",
-    "numbered_section_mapping": "CONFLICT_UNKNOWN"
+    "current_build_rows": 773,
+    "deployment_evidence_rows": 52,
+    "excluded_or_deferred_rows": 12,
+    "authority_source": "AI-CONTEXT normalized matrix + deep DOC-B/C/D/E context",
+    "exhaustive_837_row_alignment": "UNKNOWN_NOT_REAUDITED"
   },
   "exact_head_execution": {
     "provider": "railway",
-    "deployment_id": "b5f4902d-f5c5-4c22-a419-cdfd03b53699",
-    "status": "PARTIAL",
-    "deployment_status": "CRASHED_AFTER_E10_FAILURE",
-    "build": "VERIFIED_PASS",
-    "typecheck": "VERIFIED_PASS",
-    "contract_test_files": 108,
-    "full_test_files": 153,
-    "full_tests": 1046,
-    "coverage": {
-      "status": "VERIFIED_PASS",
-      "statements": 80.68,
-      "branches": 74.8,
-      "functions": 79.58,
-      "lines": 82.35
+    "service": "nexy-validation-branch",
+    "deployment_id": "6ebf2acb-1889-450c-874a-1114b4f51531",
+    "deployment_status": "FAILED",
+    "failure_stage": "npm run check:coverage",
+    "source_revision": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "execution_inference_basis": "Sequential Docker build reached check:coverage; all prior Docker RUN gates completed successfully.",
+    "preceding_gates": {
+      "rust_check": "VERIFIED_PASS",
+      "rust_tests": "VERIFIED_PASS",
+      "typecheck": "VERIFIED_PASS",
+      "contract_tests": "VERIFIED_PASS",
+      "experimental_tests": "VERIFIED_PASS",
+      "integration_tests": "VERIFIED_PASS",
+      "phase_f_check": "VERIFIED_PASS",
+      "static_determinism": "VERIFIED_PASS",
+      "six_system_spec": "VERIFIED_PASS",
+      "coverage_measurement_tests": "VERIFIED_PASS_1130_OF_1130"
     },
-    "doc_c_static": "VERIFIED_PASS",
-    "module_boundaries": "VERIFIED_PASS",
-    "web_build": "VERIFIED_PASS",
-    "browser_e2e": {
-      "status": "VERIFIED_PASS",
-      "tests": 11,
-      "suites": 2
+    "coverage_policy": {
+      "status": "FAILED",
+      "api": {
+        "threshold_pct": 85,
+        "branches_pct": 85.49,
+        "status": "PASS"
+      },
+      "core": {
+        "threshold_pct": 90,
+        "lines_pct": 93.88,
+        "statements_pct": 92.41,
+        "functions_pct": 95.65,
+        "branches_pct": 83.13,
+        "status": "FAIL_BRANCHES"
+      },
+      "law": {
+        "threshold_pct": 90,
+        "branches_pct": 96.83,
+        "status": "PASS"
+      },
+      "judge": {
+        "threshold_pct": 90,
+        "branches_pct": 93.41,
+        "status": "PASS"
+      },
+      "concentrated_gap": {
+        "packages/core/tick.ts": {
+          "branches_pct": 79.16,
+          "uncovered_lines": [
+            28,
+            48,
+            71,
+            90
+          ]
+        },
+        "packages/core/vnext-state-matrix.ts": {
+          "branches_pct": 95.45,
+          "uncovered_lines": [
+            179
+          ]
+        }
+      }
     },
-    "doc_e_internal_e1_e9": "VERIFIED_PASS",
-    "doc_e_e10": "FAILED",
-    "failure_code": "DOC_E_E10_PROVIDER_RECEIPT_IDENTITY_MISMATCH",
-    "url": "https://railway.com/project/01537473-6a6d-42a0-856f-40d8a4e6a712/service/3c290782-e2f0-4e5b-87d9-58bae4d4dba8?id=b5f4902d-f5c5-4c22-a419-cdfd03b53699&environmentId=776c1d3d-20f2-4b9f-9f07-8387ea9e63b8"
+    "post_failure_gates": {
+      "doc_c_static": "NOT_EXECUTED_AFTER_COVERAGE_FAILURE",
+      "web_build": "NOT_EXECUTED_AFTER_COVERAGE_FAILURE",
+      "browser_e2e": "NOT_PROVEN_BY_THIS_DEPLOYMENT",
+      "doc_e_campaign": "NOT_REACHED"
+    },
+    "main_validation_service": {
+      "deployment_id": "89becf8b-c085-4e87-a59b-76e17b127aad",
+      "exact_commit_status": "SKIPPED",
+      "combined_commit_status_context": "success",
+      "proof_classification": "NON_PROOF_SKIPPED_EXECUTION"
+    }
   },
   "github_actions": {
-    "run_id": 37097611233,
-    "run_attempt": 2,
-    "workflow": "NEXY CI / Deploy Gate",
-    "workflow_path": ".github/workflows/deploy.yml",
-    "head_sha": "9cedbbd94af495199ca10f96e747689b0c19ddb1",
+    "head_sha": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
     "status": "BLOCKED_BEFORE_EXECUTABLE_STEPS",
-    "conclusion": "failure",
-    "run_started_at": "2026-10-03T08:22:42Z",
-    "run_updated_at": "2026-10-03T08:22:47Z",
-    "failed_jobs": 8,
-    "skipped_jobs": 3,
     "executable_steps_observed": 0,
-    "artifacts_observed": 0,
-    "requested_job_id": 111130645942,
-    "resulting_typecheck_job_id": 111164487979,
-    "typecheck_runner_id": 0,
-    "typecheck_runner_name": "",
-    "typecheck_steps_observed": 0,
-    "typecheck_log_result": "404 BlobNotFound",
-    "typecheck_log_observed_at": "2026-10-03T08:23:08.742Z",
-    "provider_metadata_note": "Several dependent jobs returned completed_at timestamps inherited from attempt 1; no code-level conclusion is inferred.",
-    "reason": "GitHub Actions jobs completed before any executable step; this does not override exact-head Railway code-level evidence."
+    "runs": [
+      {
+        "run_id": 37222997743,
+        "workflow": "NEXY CI / Deploy Gate",
+        "conclusion": "failure",
+        "jobs_with_steps": 0
+      },
+      {
+        "run_id": 37222997798,
+        "workflow": "Exact HEAD test evidence",
+        "conclusion": "failure",
+        "jobs_with_steps": 0
+      },
+      {
+        "run_id": 37222997736,
+        "workflow": "Layer8 Cargo lock evidence",
+        "conclusion": "failure",
+        "jobs_with_steps": 0
+      },
+      {
+        "run_id": 37222997784,
+        "workflow": "Six-system exact HEAD evidence",
+        "conclusion": "failure",
+        "jobs_with_steps": 0
+      }
+    ],
+    "reason": "Current exact-head jobs completed with empty step arrays; no code-level PASS/FAIL is inferred from these hosted runs."
+  },
+  "source_findings": {
+    "tsa_queue_ingress": {
+      "status": "SOURCE_BLOCKER_NOT_RUNTIME_VERIFIED",
+      "severity": "P0_CANDIDATE",
+      "fact": "Queue dispatch and worker elapsed-time logic require currentTsaBatchTimeMs(); currentTsaBatchTimeMs() fails closed before injection; web bootstrap does not inject TSA; no production injectTsaBatchTime caller was observed in repository search.",
+      "caution": "Runtime consequence has not been E5-executed on an exact production-like queue path in this audit."
+    },
+    "validation_authority_conflict": {
+      "status": "VERIFIED",
+      "severity": "P1",
+      "fact": "Dockerfile hard-gates test:experimental/check:phase-f while deploy.yml marks Phase-F experimental validation advisory with continue-on-error."
+    },
+    "skipped_green_status": {
+      "status": "VERIFIED",
+      "severity": "P1",
+      "fact": "Main validation commit status is green while exact-commit Railway deployment is SKIPPED; green context is excluded from exact-head PASS evidence."
+    }
   },
   "release": {
     "status": "BLOCKED",
     "authorized": false,
     "deploy_authorized": false,
     "blocking_reasons": [
-      "DOC-E E10 provider command receipt identity does not match the exact current SHA/tree",
-      "Current exact-head E11 signoff is not proven",
-      "Current exact-head E12 rollback/provider receipt is not proven",
-      "GitHub Actions runner path still records zero executable steps",
-      "Exhaustive 837-row spec-code-test crosswalk remains UNKNOWN"
+      "Exact-head Railway branch validation fails Core branch coverage: 83.13% < 90%.",
+      "TSA production ingress for authoritative queue elapsed-time decisions is not proven and source inspection exposes a blocker candidate.",
+      "Current exact-head DOC-E E11 authorized signoff is not proven.",
+      "Current exact-head DOC-E E12 rollback/provider execution proof is not proven.",
+      "GitHub Actions exact-head runs expose no executable steps.",
+      "Main validation service exact-head deployment is SKIPPED and cannot count as PASS.",
+      "Exhaustive 837-row spec-code-test crosswalk was not re-audited in this cycle."
     ]
   },
   "latest_cycle": {
-    "cycle_id": "NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2",
-    "path": "projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2.md",
-    "status": "PARTIAL"
+    "cycle_id": "NEXY-READONLY-AUDIT-20261005T0048+0700-9e615b04",
+    "path": "projects/NEXY.AI/cycles/2026-10-05/NEXY-READONLY-AUDIT-20261005T0048+0700-9e615b04.md",
+    "status": "NOT_VERIFIED_FOR_RELEASE"
   },
   "repository": "goif74945-crypto/NEXY.AI-",
   "branch": "NEXY.ai",
-  "head": "9cedbbd94af495199ca10f96e747689b0c19ddb1",
-  "tree": "205c038c85f2c18c0a42d391c212fe367e2aab7d",
-  "current_head_code_delta": {
-    "base_head": "ac366e2c36a326e02724bba10ddb336bf4f22543",
-    "changed_paths": [
-      "packages/queue/jobs.ts",
-      "tests/contract/queue-payload.test.ts",
-      "scripts/doc-e/run-campaign.ts",
-      "tests/contract/doc-e-campaign-runner.test.ts",
-      "scripts/doc-e/railway-browser-e2e.sh",
-      "tests/contract/railway-browser-e2e-gate.test.ts"
-    ],
-    "classification": "VERIFIED_EXECUTION_PASS_FOR_CHANGED_SLICE",
-    "spec_alignment": {
-      "status": "PARTIAL_UNKNOWN",
-      "direct_numbered_section_mapping": "BLOCKED",
-      "reason": "Primary DOC-C/DOC-E text was not readable through the current repository connector; secondary repository citations conflict. Execution success does not prove canonical requirement alignment."
-    }
-  },
-  "exhaustive_scope": {
-    "normalized_rows": 837,
-    "status": "UNKNOWN"
-  },
+  "head": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "tree": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c",
   "release_status": "BLOCKED",
-  "final_status": "PARTIAL",
-  "context_correction": {
-    "preserves_execution_observed_at": true,
-    "corrected_at": "2026-10-03T09:19:31Z",
-    "ai_context_commit": "a137a531e30afcdb961625673778242a42a3314f",
-    "scope": "Separated exact-head execution success from canonical specification alignment."
+  "final_status": "NOT_VERIFIED",
+  "provenance": {
+    "previous_head": "9cedbbd94af495199ca10f96e747689b0c19ddb1",
+    "previous_state_preserved_in_git_history": true,
+    "implementation_mutated_by_cycle": false,
+    "context_only_update": true
   }
 }
