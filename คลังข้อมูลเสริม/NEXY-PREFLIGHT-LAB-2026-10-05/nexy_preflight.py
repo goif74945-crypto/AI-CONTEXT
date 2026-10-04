@@ -263,4 +263,120 @@ def contains_scope(parent: str, child: str) -> bool:
     return c.startswith(p + "/")
 
 
-def overlaps_scope(left: str, ri
+def overlaps_scope(left: str, right: str) -> bool:
+    return contains_scope(left, right) or contains_scope(right, left)
+
+# ===== verification.py =====
+
+from collections import Counter, defaultdict
+from typing import Iterable
+
+
+
+_MINIMUM: dict[str, EvidenceClass] = {
+    "presence": EvidenceClass.E0,
+    "static": EvidenceClass.E1,
+    "type": EvidenceClass.E1,
+    "schema": EvidenceClass.E1,
+    "unit": EvidenceClass.E2,
+    "behavior": EvidenceClass.E2,
+    "integration": EvidenceClass.E3,
+    "e2e": EvidenceClass.E4,
+    "user-flow": EvidenceClass.E4,
+    "runtime": EvidenceClass.E5,
+    "recovery": EvidenceClass.E5,
+    "performance": EvidenceClass.E5,
+    "deployment": EvidenceClass.E6,
+    "physical": EvidenceClass.E7,
+    "hardware": EvidenceClass.E7,
+}
+
+
+def minimum_for_claim(kind: str) -> EvidenceClass | None:
+    return _MINIMUM.get(kind.strip().lower())
+
+
+def evidence_obligations(
+    claims: Iterable[Claim], evidence: Iterable[Evidence]
+) -> tuple[dict[str, EvidenceClass], list[Finding]]:
+    claims = tuple(claims)
+    evidence = tuple(evidence)
+    required: dict[str, EvidenceClass] = {}
+    findings: list[Finding] = []
+
+    claim_counts = Counter(claim.id for claim in claims)
+    duplicate_ids = {claim_id for claim_id, count in claim_counts.items() if count > 1}
+    for claim_id in sorted(duplicate_ids):
+        findings.append(
+            Finding(
+                code="PFL-CLAIM-DUPLICATE",
+                message=f"Claim id '{claim_id}' is duplicated and cannot be addressed uniquely.",
+                decision=Decision.CONFLICT,
+                claim_id=claim_id,
+            )
+        )
+
+    claim_ids = set(claim_counts)
+    for item in evidence:
+        if item.claim_id not in claim_ids:
+            findings.append(
+                Finding(
+                    code="PFL-EVIDENCE-ORPHAN",
+                    message=f"Evidence references unknown claim '{item.claim_id}'.",
+                    decision=Decision.CONFLICT,
+                    claim_id=item.claim_id,
+                )
+            )
+
+    by_claim: dict[str, list[Evidence]] = defaultdict(list)
+    for item in evidence:
+        by_claim[item.claim_id].append(item)
+
+    for claim in claims:
+        if claim.id in duplicate_ids:
+            continue
+        minimum = minimum_for_claim(claim.kind)
+        if minimum is None:
+            findings.append(
+                Finding(
+                    code="PFL-EVIDENCE-POLICY-UNKNOWN",
+                    message=f"No minimum evidence policy is defined for claim kind '{claim.kind}'.",
+                    decision=Decision.BLOCKED,
+                    claim_id=claim.id,
+                )
+            )
+            continue
+        required[claim.id] = minimum
+        candidates = by_claim.get(claim.id, [])
+        if not candidates:
+            findings.append(
+                Finding(
+                    code="PFL-EVIDENCE-MISSING",
+                    message=f"Claim '{claim.id}' requires {minimum.value} or stronger evidence.",
+                    decision=Decision.NOT_VERIFIED,
+                    claim_id=claim.id,
+                )
+            )
+            continue
+
+        passing = [e for e in candidates if e.result == "PASS"]
+        failing = [e for e in candidates if e.result == "FAIL"]
+        if failing and not passing:
+            findings.append(
+                Finding(
+                    code="PFL-EVIDENCE-FAILED",
+                    message=f"Claim '{claim.id}' has explicit failing evidence.",
+                    decision=Decision.FAIL,
+                    claim_id=claim.id,
+                )
+            )
+            continue
+
+        if not any(e.evidence_class.rank >= minimum.rank for e in passing):
+            strongest = max((e.evidence_class.rank for e in passing), default=-1)
+            observed = f"E{strongest}" if strongest >= 0 else "none"
+            findings.append(
+                Finding(
+                    code="PFL-EVIDENCE-INSUFFICIENT",
+                    message=(
+                        f"Claim '{c
