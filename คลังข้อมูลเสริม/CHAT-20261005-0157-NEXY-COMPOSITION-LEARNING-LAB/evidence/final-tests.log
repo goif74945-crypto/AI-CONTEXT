@@ -1,0 +1,64 @@
+$ PYTHONPATH=src python -m unittest discover -s tests -v
+test_core_modules_do_not_import_network_or_process_execution (test_architecture.ArchitectureBoundaryTests.test_core_modules_do_not_import_network_or_process_execution) ... ok
+test_runtime_package_imports_only_stdlib_or_local_modules (test_architecture.ArchitectureBoundaryTests.test_runtime_package_imports_only_stdlib_or_local_modules) ... ok
+test_cli_input_error_is_machine_readable_freeze (test_cli.CliTests.test_cli_input_error_is_machine_readable_freeze) ... ok
+test_compose_cli (test_cli.CliTests.test_compose_cli) ... ok
+test_distill_risk_cli (test_cli.CliTests.test_distill_risk_cli) ... ok
+test_portability_reverify_is_nonzero_gate (test_cli.CliTests.test_portability_reverify_is_nonzero_gate) ... ok
+test_risk_cli_returns_nonzero_on_freeze (test_cli.CliTests.test_risk_cli_returns_nonzero_on_freeze) ... ok
+test_component_input_order_does_not_change_result (test_composition.CompositionTests.test_component_input_order_does_not_change_result) ... ok
+test_composes_assume_guarantee_chain (test_composition.CompositionTests.test_composes_assume_guarantee_chain) ... ok
+test_freezes_on_cross_component_contradiction (test_composition.CompositionTests.test_freezes_on_cross_component_contradiction) ... ok
+test_freezes_on_unsatisfied_assumption (test_composition.CompositionTests.test_freezes_on_unsatisfied_assumption) ... ok
+test_rejects_duplicate_ids (test_composition.CompositionTests.test_rejects_duplicate_ids) ... ok
+test_reports_contradicted_assumption (test_composition.CompositionTests.test_reports_contradicted_assumption) ... ok
+test_compiles_deterministically (test_corrections.CorrectionTests.test_compiles_deterministically) ... ok
+test_conflicting_corrections_freeze (test_corrections.CorrectionTests.test_conflicting_corrections_freeze) ... ok
+test_detects_regression (test_corrections.CorrectionTests.test_detects_regression) ... ok
+test_global_requires_explicit_user_law (test_corrections.CorrectionTests.test_global_requires_explicit_user_law) ... ok
+test_passes_compliant_output (test_corrections.CorrectionTests.test_passes_compliant_output) ... ok
+test_rejects_overbroad_bounded_scope (test_corrections.CorrectionTests.test_rejects_overbroad_bounded_scope) ... ok
+test_scope_does_not_leak (test_corrections.CorrectionTests.test_scope_does_not_leak) ... ok
+test_can_reduce_to_empty_if_empty_still_fails (test_distiller.DistillerTests.test_can_reduce_to_empty_if_empty_still_fails) ... ok
+test_distills_to_one_minimal_counterexample (test_distiller.DistillerTests.test_distills_to_one_minimal_counterexample) ... ok
+test_freezes_when_original_does_not_reproduce (test_distiller.DistillerTests.test_freezes_when_original_does_not_reproduce) ... ok
+test_handles_single_element_failure (test_distiller.DistillerTests.test_handles_single_element_failure) ... ok
+test_detects_confused_deputy (test_emergence.EmergenceTests.test_detects_confused_deputy) ... ok
+test_detects_secret_egress_created_by_composition (test_emergence.EmergenceTests.test_detects_secret_egress_created_by_composition) ... ok
+test_detects_untrusted_code_execution (test_emergence.EmergenceTests.test_detects_untrusted_code_execution) ... ok
+test_missing_artifact_freezes (test_emergence.EmergenceTests.test_missing_artifact_freezes) ... ok
+test_output_overwrite_freezes (test_emergence.EmergenceTests.test_output_overwrite_freezes) ... ok
+test_redaction_breaks_secret_taint_chain (test_emergence.EmergenceTests.test_redaction_breaks_secret_taint_chain) ... ok
+test_validation_breaks_untrusted_chain (test_emergence.EmergenceTests.test_validation_breaks_untrusted_chain) ... ok
+test_all_terminal_results_have_fingerprint (test_hardening.HardeningTests.test_all_terminal_results_have_fingerprint) ... ok
+test_correction_detects_conflicting_equalities (test_hardening.HardeningTests.test_correction_detects_conflicting_equalities) ... ok
+test_correction_detects_exists_not_exists_conflict (test_hardening.HardeningTests.test_correction_detects_exists_not_exists_conflict) ... ok
+test_correction_rejects_malformed_supersedes (test_hardening.HardeningTests.test_correction_rejects_malformed_supersedes) ... ok
+test_distiller_freezes_on_nondeterministic_oracle (test_hardening.HardeningTests.test_distiller_freezes_on_nondeterministic_oracle) ... ok
+test_emergence_rejects_duplicate_outputs_within_step (test_hardening.HardeningTests.test_emergence_rejects_duplicate_outputs_within_step) ... ok
+test_nonfinite_float_is_rejected_from_canonical_form (test_hardening.HardeningTests.test_nonfinite_float_is_rejected_from_canonical_form) ... ok
+test_portability_expires_at_exact_boundary (test_hardening.HardeningTests.test_portability_expires_at_exact_boundary) ... ok
+test_portability_freezes_if_any_context_dimension_is_ungoverned (test_hardening.HardeningTests.test_portability_freezes_if_any_context_dimension_is_ungoverned) ... ok
+test_portability_rejects_evidence_evaluated_before_collection (test_hardening.HardeningTests.test_portability_rejects_evidence_evaluated_before_collection) ... ok
+test_minimal_repro_reanalyzes_to_same_finding (test_integration.IntegrationTests.test_minimal_repro_reanalyzes_to_same_finding) ... ok
+test_risk_analyzer_plus_distiller_produces_minimal_repro (test_integration.IntegrationTests.test_risk_analyzer_plus_distiller_produces_minimal_repro) ... ok
+test_claim_mismatch_invalidates (test_portability.PortabilityTests.test_claim_mismatch_invalidates) ... ok
+test_code_difference_invalidates (test_portability.PortabilityTests.test_code_difference_invalidates) ... ok
+test_evidence_class_is_not_substituted (test_portability.PortabilityTests.test_evidence_class_is_not_substituted) ... ok
+test_expired_evidence_requires_reverification (test_portability.PortabilityTests.test_expired_evidence_requires_reverification) ... ok
+test_missing_dimension_freezes (test_portability.PortabilityTests.test_missing_dimension_freezes) ... ok
+test_portable_when_required_dimensions_match (test_portability.PortabilityTests.test_portable_when_required_dimensions_match) ... ok
+test_runtime_difference_requires_reverification (test_portability.PortabilityTests.test_runtime_difference_requires_reverification) ... ok
+test_composition_is_stable_across_component_permutations (test_properties.PropertyTests.test_composition_is_stable_across_component_permutations) ... ok
+test_correction_selector_never_applies_outside_exact_bound (test_properties.PropertyTests.test_correction_selector_never_applies_outside_exact_bound) ... ok
+test_distiller_result_is_1_minimal_across_seeded_cores (test_properties.PropertyTests.test_distiller_result_is_1_minimal_across_seeded_cores) ... ok
+test_emergent_risk_has_no_bypass_from_irrelevant_steps (test_properties.PropertyTests.test_emergent_risk_has_no_bypass_from_irrelevant_steps) ... ok
+test_portability_policy_cross_product (test_properties.PropertyTests.test_portability_policy_cross_product) ... ok
+
+----------------------------------------------------------------------
+Ran 55 tests in 4.530s
+
+OK
+
+$ python -m compileall -q src tests benchmarks
+COMPILEALL_EXIT=0

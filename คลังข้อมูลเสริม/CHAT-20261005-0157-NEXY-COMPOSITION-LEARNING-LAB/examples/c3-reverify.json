@@ -1,0 +1,13 @@
+{
+  "evidence": {
+    "claim_id": "worker-contract-valid",
+    "evidence_class": "E2",
+    "source_context": {"code_sha": "abc", "runtime": "py3.13"}
+  },
+  "target": {
+    "claim_id": "worker-contract-valid",
+    "required_evidence_classes": ["E2"],
+    "target_context": {"code_sha": "abc", "runtime": "py3.14"}
+  },
+  "policy": {"code_sha": "MUST_EQUAL", "runtime": "REVERIFY_IF_DIFFERENT"}
+}

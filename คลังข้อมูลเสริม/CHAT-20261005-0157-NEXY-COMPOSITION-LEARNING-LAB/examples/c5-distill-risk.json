@@ -1,0 +1,8 @@
+{
+  "artifacts": {"credential": ["SECRET"], "public": []},
+  "steps": [
+    {"id": "normalize", "consumes": ["credential"], "produces": ["normalized"], "capabilities": []},
+    {"id": "noise", "consumes": ["public"], "produces": ["noise_out"], "capabilities": []},
+    {"id": "send", "consumes": ["normalized"], "produces": [], "capabilities": ["EXTERNAL_EGRESS"]}
+  ]
+}
