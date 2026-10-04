@@ -1,0 +1,33 @@
+test_add_sub_mul_div (test_fixed.Q64Tests.test_add_sub_mul_div) ... ok
+test_divide_by_zero_rejected (test_fixed.Q64Tests.test_divide_by_zero_rejected) ... ok
+test_exact_integer_and_decimal_parse (test_fixed.Q64Tests.test_exact_integer_and_decimal_parse) ... ok
+test_float_is_forbidden (test_fixed.Q64Tests.test_float_is_forbidden) ... ok
+test_overflow_is_fail_closed (test_fixed.Q64Tests.test_overflow_is_fail_closed) ... ok
+test_ratio_rounding_is_deterministic (test_fixed.Q64Tests.test_ratio_rounding_is_deterministic) ... ok
+test_allow_certificate_when_entire_box_above_threshold (test_systems.DecisionRobustnessEngineTests.test_allow_certificate_when_entire_box_above_threshold) ... ok
+test_boundary_crossing_freezes (test_systems.DecisionRobustnessEngineTests.test_boundary_crossing_freezes) ... ok
+test_deny_certificate_when_entire_box_below_threshold (test_systems.DecisionRobustnessEngineTests.test_deny_certificate_when_entire_box_below_threshold) ... ok
+test_negative_radius_rejected (test_systems.DecisionRobustnessEngineTests.test_negative_radius_rejected) ... ok
+test_large_surprise_freezes (test_systems.ExpectationDivergenceBarrierTests.test_large_surprise_freezes) ... ok
+test_matching_preview_passes (test_systems.ExpectationDivergenceBarrierTests.test_matching_preview_passes) ... ok
+test_undeclared_actual_dimension_freezes (test_systems.ExpectationDivergenceBarrierTests.test_undeclared_actual_dimension_freezes) ... ok
+test_weight_zero_rejected (test_systems.ExpectationDivergenceBarrierTests.test_weight_zero_rejected) ... ok
+test_freeze_dominates_pipeline (test_systems.PipelineIntegrationTests.test_freeze_dominates_pipeline) ... ok
+test_low_surprise_robust_budgeted_reversible_flow_passes (test_systems.PipelineIntegrationTests.test_low_surprise_robust_budgeted_reversible_flow_passes) ... ok
+test_checkpoint_required_near_safe_edge (test_systems.ReversibilityHalfLifeSchedulerTests.test_checkpoint_required_near_safe_edge) ... ok
+test_expired_window_freezes (test_systems.ReversibilityHalfLifeSchedulerTests.test_expired_window_freezes) ... ok
+test_invalid_retention_rejected (test_systems.ReversibilityHalfLifeSchedulerTests.test_invalid_retention_rejected) ... ok
+test_scheduler_finds_latest_safe_tick (test_systems.ReversibilityHalfLifeSchedulerTests.test_scheduler_finds_latest_safe_tick) ... ok
+test_conservation_passes_with_evidence_receipt (test_systems.UncertaintyMassCompilerTests.test_conservation_passes_with_evidence_receipt) ... ok
+test_laundered_uncertainty_freezes (test_systems.UncertaintyMassCompilerTests.test_laundered_uncertainty_freezes) ... ok
+test_resolution_without_evidence_freezes (test_systems.UncertaintyMassCompilerTests.test_resolution_without_evidence_freezes) ... ok
+test_stage_chain_mismatch_freezes (test_systems.UncertaintyMassCompilerTests.test_stage_chain_mismatch_freezes) ... ok
+test_duplicate_reservation_id_freezes (test_systems.VectorBudgetReactorTests.test_duplicate_reservation_id_freezes) ... ok
+test_non_fungible_dimension_cannot_borrow_from_other (test_systems.VectorBudgetReactorTests.test_non_fungible_dimension_cannot_borrow_from_other) ... ok
+test_reserve_commit_release_flow (test_systems.VectorBudgetReactorTests.test_reserve_commit_release_flow) ... ok
+test_unknown_dimension_freezes (test_systems.VectorBudgetReactorTests.test_unknown_dimension_freezes) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.002s
+
+OK
