@@ -32,3 +32,12 @@ Protected:
 
 ## Remaining limits
 No claim is made that these ideas are canonical NEXY requirements, integrated into NEXY.AI, deployed, or production-proven.
+
+
+## Persistence integrity gate
+- Implementation blob exact-match: PASS (`db607b90ef2fc0227d754bfabcddbee050b32f29`)
+- Test blob exact-match: PASS (`8c9a588fa579acde4ecb918d43e8cb4c0d8459b0`)
+- Fresh post-binding compile: PASS
+- Fresh post-binding unit/adversarial/integration suite: 26/26 PASS
+- Artifact/test mismatch incident: RESOLVED with preserved evidence
+- Protected NEXY.AI repositories: no write action was issued by this mission.
