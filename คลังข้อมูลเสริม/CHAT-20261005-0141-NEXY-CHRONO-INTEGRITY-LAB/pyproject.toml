@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexy-chrono-integrity"
+version = "0.1.0"
+description = "AI-proposed reference kernel for deterministic deadline and clock-integrity semantics"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools]
+py-modules = ["nexy_chrono_integrity"]
+package-dir = {"" = "src"}
