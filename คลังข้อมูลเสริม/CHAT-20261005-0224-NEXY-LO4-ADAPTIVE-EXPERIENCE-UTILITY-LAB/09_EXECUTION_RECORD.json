@@ -1,0 +1,31 @@
+{
+  "work_code": "CHAT-20261005-0224-NEXY-LO4-ADAPTIVE-EXPERIENCE-UTILITY-LAB",
+  "final_project_name": "NEXY Lo4 Innovation Capital Fabric",
+  "classification": "Lo4_AI_PROPOSAL_ONLY / EXPERIMENTAL / NON_GOVERNING / NOT_CANON",
+  "target_repository": "goif74945-crypto/AI-CONTEXT",
+  "target_subtree": "คลังข้อมูลเสริม/CHAT-20261005-0224-NEXY-LO4-ADAPTIVE-EXPERIENCE-UTILITY-LAB",
+  "protected_repository_pattern": "*NEXY.AI*",
+  "numeric_format": "signed Q64.64 checked 128-bit raw integer",
+  "python_runtime": "3.13.5",
+  "systems": ["IURS", "COMET", "SCTE", "DCPX", "RIVP"],
+  "verification": {
+    "compileall": "PASS",
+    "unit_adversarial_integration_tests": 53,
+    "unit_adversarial_integration_failures": 0,
+    "hashseed_1": "PASS",
+    "hashseed_777": "PASS",
+    "normalized_replay_identical": true,
+    "stress_iurs_cases": 10000,
+    "stress_dcpx_cases": 3000,
+    "stress_status": "PASS"
+  },
+  "known_recovered_failures": [
+    "Q64 multi-step decimal test oracle mismatch corrected without engine weakening",
+    "SCTE Q64 operational oracle mismatch corrected without engine weakening",
+    "stress runner import-root contract corrected to PYTHONPATH=."
+  ],
+  "nexy_integration": "NOT_VERIFIED",
+  "nexy_runtime": "NOT_VERIFIED",
+  "deployment": "NOT_VERIFIED",
+  "publication_readback": "PENDING_AT_RECORD_CREATION"
+}

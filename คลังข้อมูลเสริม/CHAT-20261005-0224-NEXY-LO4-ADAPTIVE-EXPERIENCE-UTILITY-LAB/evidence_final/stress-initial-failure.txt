@@ -1,0 +1,6 @@
+COMMAND: python3 tests/stress.py
+OBSERVED: FAIL
+ERROR: ModuleNotFoundError: No module named 'aeul'
+ROOT_CAUSE: Direct script execution made tests/ the import root; the package root was not on sys.path.
+CORRECTION: execute with explicit project root: PYTHONPATH=. python3 tests/stress.py
+ENGINE_CODE_CHANGE_REQUIRED: NO
