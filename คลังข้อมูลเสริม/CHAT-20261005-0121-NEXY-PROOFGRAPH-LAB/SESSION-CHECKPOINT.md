@@ -19,6 +19,6 @@ Design, policy, schemas, implementation, 23-test suite, CLI integration, self-sc
 
 No repository whose name contains `NEXY.AI` may be mutated. No AI-CONTEXT file outside this new folder is required to change.
 
-## Resume point
+## Final state
 
-Refresh AI-CONTEXT HEAD; if it changed, rebase the atomic tree onto the new HEAD after confirming no target-path collision. Commit only the new supplemental folder. After write, fetch committed paths and record final evidence.
+Repository content commit `e4168d34f81d69be1a82db2aa06b984b6c475a90` was fast-forwarded with `force=false` after optimistic concurrency retries. Repository paths were re-fetched from `main`. Final metadata/evidence is recorded in this project only. No repository whose name contains `NEXY.AI` was mutated by this execution.
