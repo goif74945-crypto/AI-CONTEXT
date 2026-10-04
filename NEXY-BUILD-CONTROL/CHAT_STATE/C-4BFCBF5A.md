@@ -1,7 +1,7 @@
 CHAT_ID: C-4BFCBF5A
-STATE: IMPLEMENTING
+STATE: TESTING
 CURRENT_TASK: T-768BB2A7
 ROLE: OWNER
-LAST_VERIFIED_SOURCE_HEAD: db78e5301573da5d5c2073e3df5545ea9c91ed91
-LAST_PROGRESS: Claimed canonical JSON integrity scope with active lease; prior branch changes did not touch leased paths.
-NEXT_ACTION: Recheck work HEAD and leased file blobs, then atomically commit guard plus regression tests.
+LAST_VERIFIED_SOURCE_HEAD: 5852ed77f80debc4338c6d947ea8387452eb6d8a
+LAST_PROGRESS: Canonical JSON fail-closed guard and contract regressions committed; Railway exact-SHA validator accepted the work branch commit and is executing.
+NEXT_ACTION: Classify validation outcome with exact evidence; repair only scope-related failures.
