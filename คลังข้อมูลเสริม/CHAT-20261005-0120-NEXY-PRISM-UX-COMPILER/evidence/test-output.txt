@@ -1,0 +1,17 @@
+test_auditor_never_gets_config_surface (test_compiler.PrismCompilerTests.test_auditor_never_gets_config_surface) ... ok
+test_backend_deny_can_never_be_widened (test_compiler.PrismCompilerTests.test_backend_deny_can_never_be_widened) ... ok
+test_fingerprint_is_deterministic (test_compiler.PrismCompilerTests.test_fingerprint_is_deterministic) ... ok
+test_freeze_operator_cannot_submit (test_compiler.PrismCompilerTests.test_freeze_operator_cannot_submit) ... ok
+test_inconsistent_release_flags_fail_closed (test_compiler.PrismCompilerTests.test_inconsistent_release_flags_fail_closed) ... ok
+test_irreversible_action_forces_typed_confirmation_and_forensic_detail (test_compiler.PrismCompilerTests.test_irreversible_action_forces_typed_confirmation_and_forensic_detail) ... ok
+test_owner_can_recover_only_when_backend_allows_and_recoverable (test_compiler.PrismCompilerTests.test_owner_can_recover_only_when_backend_allows_and_recoverable) ... ok
+test_stop_only_allows_diagnostic_read (test_compiler.PrismCompilerTests.test_stop_only_allows_diagnostic_read) ... ok
+test_unverified_state_never_looks_final (test_compiler.PrismCompilerTests.test_unverified_state_never_looks_final) ... ok
+test_user_compact_preference_cannot_hide_high_risk_truth (test_compiler.PrismCompilerTests.test_user_compact_preference_cannot_hide_high_risk_truth) ... ok
+test_verified_stable_result_is_viewable (test_compiler.PrismCompilerTests.test_verified_stable_result_is_viewable) ... ok
+test_cross_product_invariants (test_exhaustive_matrix.ExhaustiveInvariantMatrixTests.test_cross_product_invariants) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests
+
+OK
