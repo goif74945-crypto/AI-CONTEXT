@@ -1,0 +1,12 @@
+{
+  "schema_version": "nfwm.trace.v1",
+  "events": [
+    {"seq": 1, "kind": "STATE_TRANSITION", "trace_id": "t1", "request_id": "q1", "run_id": "r1", "state_from": "INIT", "state_to": "READY"},
+    {"seq": 2, "kind": "NOISE", "trace_id": "t1", "request_id": "q1", "run_id": "r1"},
+    {"seq": 3, "kind": "STATE_TRANSITION", "trace_id": "t1", "request_id": "q1", "run_id": "r1", "state_from": "READY", "state_to": "RUNNING"},
+    {"seq": 4, "kind": "STATE_TRANSITION", "trace_id": "t1", "request_id": "q1", "run_id": "r1", "state_from": "RUNNING", "state_to": "FREEZE", "incident_id": "inc-9"},
+    {"seq": 5, "kind": "NOISE", "trace_id": "t1", "request_id": "q1", "run_id": "r1"},
+    {"seq": 6, "kind": "RELEASE", "trace_id": "t1", "request_id": "q1", "run_id": "r1"},
+    {"seq": 7, "kind": "NOISE", "trace_id": "t1", "request_id": "q1", "run_id": "r1"}
+  ]
+}
