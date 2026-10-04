@@ -61,3 +61,6 @@ A valid resolution must explicitly establish:
 6. whether OS scheduling can affect authoritative outcomes.
 
 No source mutation in this path is legal until the above is proven.
+
+## Concurrent HEAD compatibility
+NEXY.ai moved to 568ec8a820abd543b32a42976d2886377b2c47b7 via an out-of-scope Phase-F G15 commit. The CORE clock files cited in this case were not modified by that commit, so the conflict remains applicable at HEAD 568ec8a820abd543b32a42976d2886377b2c47b7.
