@@ -2,52 +2,40 @@
 
 Execution code: `CHAT-20261005-0222-NEXY-LO4-COHERENCE-UTILITY-LAB`
 Platform chat ID: UNKNOWN — the internal ChatGPT conversation ID is not exposed to the available tools. This execution code is the durable surrogate identifier.
-Status: IN_PROGRESS
-Classification: `Lo4_AI_PROPOSAL_ONLY / EXPERIMENTAL / NON_CANONICAL`
-Repository target: `goif74945-crypto/AI-CONTEXT` only.
-Protected scope: every repository whose name contains `NEXY.AI`; no mutation is authorized there.
 
-## Objective
-Design, implement, test, and preserve five materially distinct Lo4 systems that could improve future NEXY.AI coherence, usefulness, zero-guess behavior, and auditability without gaining authority over Canon.
+## Final execution state
+TECHNICAL_SCOPE: COMPLETE
+LOCAL_VERIFICATION: PASS
+REMOTE_SOURCE_TEST_IDENTITY: PASS 15/15
+NEXY_INTEGRATION: NOT_VERIFIED
+PRODUCTION_DEPLOYMENT: NOT_VERIFIED
+CLASSIFICATION: `Lo4_AI_PROPOSAL_ONLY / EXPERIMENTAL / NON_CANONICAL`
+REQUESTED_MULTI_TENS_OF_HOURS_RUNTIME: NOT_SATISFIABLE_IN_THIS_CHAT_RUNTIME
 
-## Authority loaded
-- current explicit user directive;
-- AI-BOOTSTRAP.md;
-- INDEX.md;
-- AI-EXECUTION-KERNEL.md;
-- WORK-ROUTER.md;
-- rules/GLOBAL.md;
-- rules/SECURITY.md;
-- rules/VERIFICATION.md;
-- rules/MEMORY.md;
-- workflows/project-start.md;
-- workflows/research.md;
-- workflows/system-design.md;
-- workflows/implementation.md;
-- workflows/verification.md;
-- workflows/memory-update.md;
-- projects/NEXY.AI/overview.md;
-- projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md.
+## Protected scope
+No repository whose name contains `NEXY.AI` was mutated. All writes were constrained to:
+`goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0222-NEXY-LO4-COHERENCE-UTILITY-LAB/**`
 
-## Collision scan observations
-Recent repository work already covers counterfactual systems, self-calibration/recovery, evidence genealogy, failure minimization, calibration, pause/resume, verification budgeting, uncertainty debt, capability composition, authority wind tunnels, replay capsules, trust-surface work, promotion gates, goal conservation, metamorphic/meta-assurance, incremental verification scheduling, cross-device handoff, and cross-runtime contract generation.
-
-## Locked concept set
+## Delivered concept set
 1. BKR — Bitemporal Knowledge Reconstructor.
 2. CEML — Concurrent Epistemic Merge Lattice.
 3. CUVL — Causal User Value Ledger.
 4. STCE — Scoped Terminology Contract Engine.
 5. FSA — Failure Semantics Algebra.
 
-## Non-goals
-- no NEXY.AI repository mutation;
-- no Canon promotion;
-- no deployment/runtime claim;
-- no model/network/provider dependency in reference implementations;
-- no claim of global uniqueness beyond inspected evidence.
+## Verification close-out
+- Python compileall: PASS.
+- Final unittest suite: 49/49 PASS.
+- Integration suite: 2/2 PASS.
+- Static execution/network/environment boundary suite: PASS.
+- FSA exhaustive algebra pair/triple checks: PASS.
+- CEML 4-replica 24-permutation invariance: PASS.
+- Remote Git blob identity vs exact locally tested source/tests: 15/15 MATCH.
+- SHA-256 manifest persisted.
+- Three real defects/gaps were recorded and repaired before completion: immutable failure-path container types, guard metric directionality, and first remote publication byte drift.
 
-## Verification target
-E0 presence + E1 compile/static + E2 unit/adversarial + E3 local cross-module integration. NEXY integration remains NOT_VERIFIED.
+## Evidence boundary
+Passing this lab does not promote any proposal into NEXY Canon and does not establish NEXY runtime integration, deployment, production scale, or complete security hardening.
 
 ## Resume rule
-Read this file, 01_TASK_CONTRACT.md, DESIGN.md, TEST_MATRIX.md, and FINAL_AUDIT.md if present. Continue from first non-PASS gate. Refresh concurrent AI-CONTEXT activity before claiming novelty or completion.
+If future work continues, read `01_TASK_CONTRACT.md`, `FINAL_AUDIT.md`, `DEFECT_LOG.md`, `evidence/EVIDENCE_INDEX.md`, and `evidence/REMOTE_IDENTITY.txt` first. Re-scan concurrent `AI-CONTEXT` work before adding any new Lo4 concept.
