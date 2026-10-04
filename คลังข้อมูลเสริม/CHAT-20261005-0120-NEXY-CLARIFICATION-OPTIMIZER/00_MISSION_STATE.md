@@ -74,3 +74,17 @@ NEXT:
 
 ## Stop conditions
 FREEZE if a write would touch protected scope, if a required file path collides with existing content, or if verification evidence cannot be obtained.
+
+
+## Checkpoint CP-01 — 2026-10-05
+Persistence: durable read-after-write verified for 01_SPEC.md.
+Local reference implementation state: NOT YET PERSISTED.
+Local executed evidence:
+- unittest suite: 13 tests PASS.
+- deterministic exhaustive-oracle cross-check: 250 generated problems PASS.
+- validated behaviors: READY/no-blocker, multi-blocker cover, exact minimum total cost, canonical tie-break, uncovered blocker BLOCKED, cost-budget BLOCKED, input validation, order-invariant SHA-256 fingerprint.
+Evidence limitation:
+- tests were executed in the session's local container, not GitHub Actions.
+- code must still be persisted and read back before repository-level completion.
+Next legal action:
+- add JSON/CLI boundary and additional metamorphic/scale tests, then persist implementation + tests + evidence.
