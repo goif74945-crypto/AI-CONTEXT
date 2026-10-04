@@ -13,11 +13,7 @@ POLICY_VERSION = "freeze-bridge-policy/1.1"
 def _eligible_intents(event: FreezeEvent) -> tuple[RecoveryIntent, ...]:
     policy = REASON_POLICIES[event.reason_code]
     authorized = set(event.authorized_recovery_intents)
-    return tuple(
-        intent
-        for intent in INTENT_PRIORITY
-        if intent in policy.allowed_intents and intent in authorized
-    )
+    return tuple(intent for intent in INTENT_PRIORITY if intent in policy.allowed_intents and intent in authorized)
 
 
 def _effective_dependency_recheck_safe(event: FreezeEvent) -> bool:
@@ -31,15 +27,10 @@ def _effective_dependency_recheck_safe(event: FreezeEvent) -> bool:
 
 def _safe_evidence(event: FreezeEvent) -> tuple[str, ...]:
     policy = REASON_POLICIES[event.reason_code]
-    if (
-        event.disclosure is Disclosure.RESTRICTED
-        and policy.suppress_evidence_when_restricted
-    ):
+    if event.disclosure is Disclosure.RESTRICTED and policy.suppress_evidence_when_restricted:
         return ()
     if event.disclosure is Disclosure.RESTRICTED:
-        return tuple(
-            sorted(ref for ref in event.evidence_refs if ref.startswith("public:"))
-        )
+        return tuple(sorted(ref for ref in event.evidence_refs if ref.startswith("public:")))
     return tuple(sorted(event.evidence_refs))
 
 
@@ -49,10 +40,7 @@ def _required_inputs(event: FreezeEvent) -> tuple[str, ...]:
     return tuple(sorted(event.missing_inputs))
 
 
-def _fingerprint_payload(
-    event: FreezeEvent,
-    output_without_fingerprint: dict[str, object],
-) -> str:
+def _fingerprint_payload(event: FreezeEvent, output_without_fingerprint: dict[str, object]) -> str:
     canonical = {
         "policy_version": POLICY_VERSION,
         "event": {
@@ -67,19 +55,12 @@ def _fingerprint_payload(
             "dependency_recheck_safe": event.dependency_recheck_safe,
             "missing_inputs": sorted(event.missing_inputs),
             "evidence_refs": sorted(event.evidence_refs),
-            "authorized_recovery_intents": sorted(
-                intent.value for intent in event.authorized_recovery_intents
-            ),
+            "authorized_recovery_intents": sorted(intent.value for intent in event.authorized_recovery_intents),
             "context_label": event.context_label,
         },
         "explanation": output_without_fingerprint,
     }
-    encoded = json.dumps(
-        canonical,
-        ensure_ascii=False,
-        sort_keys=True,
-        separators=(",", ":"),
-    ).encode("utf-8")
+    encoded = json.dumps(canonical, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
 
 
