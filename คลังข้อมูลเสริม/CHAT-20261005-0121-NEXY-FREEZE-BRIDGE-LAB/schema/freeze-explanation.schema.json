@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/nexy/freeze-bridge/freeze-explanation.schema.json",
+  "title": "NEXY Freeze Bridge Explanation v1.1",
+  "description": "AI-proposed upstream semantic contract for downstream Trust UX or other presentation layers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "event_id", "status", "reason_code", "title", "summary", "blocking_layer", "recovery_owner", "required_inputs", "eligible_recovery_intents", "evidence_refs", "disclosure", "dependency_recheck_safe", "downstream_ui_authority_required", "fingerprint"],
+  "properties": {
+    "protocol_version": {"const": "1.1"},
+    "event_id": {"type": "string"},
+    "status": {"type": "string", "enum": ["FROZEN", "BLOCKED", "NOT_VERIFIED", "UNKNOWN", "CONFLICT"]},
+    "reason_code": {"type": "string"},
+    "title": {"type": "string"},
+    "summary": {"type": "string"},
+    "blocking_layer": {"type": "string"},
+    "recovery_owner": {"type": "string"},
+    "required_inputs": {"type": "array", "items": {"type": "string"}},
+    "eligible_recovery_intents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["PROVIDE_REQUIRED_INPUT", "RESOLVE_AUTHORITY_CONFLICT", "REFRESH_EVIDENCE", "RECHECK_DEPENDENCY", "REQUEST_AUTHORITY_REVIEW", "ESCALATE_OPERATOR", "ADJUST_SCOPE", "ACKNOWLEDGE_STATE"]
+      }
+    },
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "disclosure": {"type": "string", "enum": ["PUBLIC", "INTERNAL", "RESTRICTED"]},
+    "dependency_recheck_safe": {"type": "boolean"},
+    "downstream_ui_authority_required": {"const": true},
+    "fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
