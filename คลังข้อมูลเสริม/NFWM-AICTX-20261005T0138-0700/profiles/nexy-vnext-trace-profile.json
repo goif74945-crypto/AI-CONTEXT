@@ -1,0 +1,31 @@
+{
+  "schema_version": "nfwm.profile.v1",
+  "profile_id": "nexy-vnext-trace-profile-2026-10-05",
+  "profile_status": "AI_PROPOSED_EXTERNAL_PROFILE_NOT_NEXY_RUNTIME_PROOF",
+  "transition_kind": "STATE_TRANSITION",
+  "execution_start_kind": "EXECUTION_STARTED",
+  "release_kinds": ["RELEASE", "OUTPUT_RELEASED"],
+  "freeze_state": "FREEZE",
+  "stop_state": "STOP",
+  "allowed_transitions": [
+    ["INIT", "READY"],
+    ["READY", "RUNNING"],
+    ["RUNNING", "VERIFYING"],
+    ["VERIFYING", "CONSENSUS"],
+    ["CONSENSUS", "STABLE"],
+    ["INIT", "FREEZE"],
+    ["READY", "FREEZE"],
+    ["RUNNING", "FREEZE"],
+    ["VERIFYING", "FREEZE"],
+    ["CONSENSUS", "FREEZE"],
+    ["STABLE", "FREEZE"],
+    ["FREEZE", "READY"],
+    ["FREEZE", "STOP"]
+  ],
+  "authority_sources": [
+    "projects/NEXY.AI/overview.md",
+    "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md",
+    "projects/NEXY.AI/deep/doc-e-deployment-evidence.md",
+    "rules/VERIFICATION.md"
+  ]
+}
