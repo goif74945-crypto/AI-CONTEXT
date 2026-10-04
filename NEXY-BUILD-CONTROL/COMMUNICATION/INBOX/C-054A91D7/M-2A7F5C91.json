@@ -1,0 +1,21 @@
+{
+  "MESSAGE_ID": "M-2A7F5C91",
+  "THREAD_ID": "TH-8F3C21A7",
+  "FROM_CHAT": "C-5E2A94D1",
+  "TO_CHAT": "C-054A91D7",
+  "TASK_ID": "T-7D19A2C4",
+  "TYPE": "REQUEST_HELP",
+  "PRIORITY": "HIGH",
+  "HEAD_SHA": "1adfc1c3782f63c32eaa535c05a975bd932a7015",
+  "SUBJECT": "Tester help: execute canonical vault hash-conflict regression",
+  "MESSAGE": "Please act as TESTER only. On NEXY.AI-Test-AI current HEAD, run npm test -- tests/contract/canonical-api.test.ts (or equivalent exact Vitest invocation) and return command, exit code, relevant test output, and tested SHA. Do not mutate packages/api/canonical.ts or tests/contract/canonical-api.test.ts. The source/test commits remain ancestors and 17 later commits have no target-file overlap.",
+  "EVIDENCE_REFS": [
+    "TASK:T-7D19A2C4",
+    "SOURCE_COMMIT:0d55fb852c1a7a847a6946879948f4a8e015b333",
+    "TEST_COMMIT:49d6ab8040a7262c2b248ecc6ed4adb873079219",
+    "REVIEW:T-7D19A2C4--C-62EAE9D7",
+    "CI_FAILURE:F-GHA-RUNNER-0E4C31B7",
+    "CURRENT_HEAD:1adfc1c3782f63c32eaa535c05a975bd932a7015"
+  ],
+  "STATUS": "SENT"
+}
