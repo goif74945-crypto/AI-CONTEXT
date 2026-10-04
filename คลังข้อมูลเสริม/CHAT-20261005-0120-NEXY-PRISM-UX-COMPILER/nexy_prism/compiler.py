@@ -4,8 +4,17 @@ from dataclasses import replace
 
 from .canonical import fingerprint
 from .model import (
-    Action, ActionDecision, Confirmation, DetailLevel, EvidenceStatus,
-    RiskLevel, Role, SurfaceInput, SurfacePlan, SystemState, TrustLabel,
+    Action,
+    ActionDecision,
+    Confirmation,
+    DetailLevel,
+    EvidenceStatus,
+    RiskLevel,
+    Role,
+    SurfaceInput,
+    SurfacePlan,
+    SystemState,
+    TrustLabel,
 )
 from .policy import MUTATING_ACTIONS, ROLE_SURFACE_CAPABILITIES
 
@@ -93,9 +102,13 @@ def _decide_action(inp: SurfaceInput, conflicts: tuple[str, ...]) -> ActionDecis
     if action not in ROLE_SURFACE_CAPABILITIES[inp.role]:
         return ActionDecision(action, False, "ROLE_SURFACE_DENY", confirmation)
 
+    # PRISM can only narrow backend authority, never widen it.
     if not inp.backend_authorized:
         return ActionDecision(
-            action, False, inp.backend_reason_code or "BACKEND_DENY", confirmation
+            action,
+            False,
+            inp.backend_reason_code or "BACKEND_DENY",
+            confirmation,
         )
 
     if inp.system_state is SystemState.STOP:
@@ -134,7 +147,8 @@ def _decide_action(inp: SurfaceInput, conflicts: tuple[str, ...]) -> ActionDecis
         return ActionDecision(action, False, "EXPORT_BLOCKED_UNRELEASED", confirmation)
 
     if action in {Action.CONFIG_CHANGE, Action.HARD_DELETE} and inp.system_state not in {
-        SystemState.READY, SystemState.STABLE,
+        SystemState.READY,
+        SystemState.STABLE,
     }:
         return ActionDecision(action, False, "MUTATION_DEFERRED_DURING_ACTIVE_STATE", confirmation)
 
@@ -159,12 +173,14 @@ def _mandatory_disclosures(
         items.extend(f"CONTRACT_CONFLICT:{code}" for code in conflicts)
 
     if inp.system_state is SystemState.FREEZE:
-        items.extend([
-            "FREEZE:AUTHORITATIVE",
-            f"INCIDENT_CODE:{inp.incident_code or 'UNKNOWN'}",
-            f"BLOCKING_LAYER:{inp.blocking_layer or 'UNKNOWN'}",
-            f"RECOVERABLE:{str(inp.recoverable).lower()}",
-        ])
+        items.extend(
+            [
+                "FREEZE:AUTHORITATIVE",
+                f"INCIDENT_CODE:{inp.incident_code or 'UNKNOWN'}",
+                f"BLOCKING_LAYER:{inp.blocking_layer or 'UNKNOWN'}",
+                f"RECOVERABLE:{str(inp.recoverable).lower()}",
+            ]
+        )
 
     if inp.system_state is SystemState.STOP:
         items.append("STOP:AUTHORITATIVE")
@@ -186,6 +202,7 @@ def _mandatory_disclosures(
     if action.confirmation is not Confirmation.NONE:
         items.append(f"CONFIRMATION:{action.confirmation.value}")
 
+    # Stable ordering makes snapshots and fingerprints reproducible.
     return tuple(dict.fromkeys(items))
 
 
@@ -204,8 +221,9 @@ def _optional_sections(inp: SurfaceInput, detail: DetailLevel) -> tuple[str, ...
 
 
 def _banner(inp: SurfaceInput, conflicts: tuple[str, ...]) -> str | None:
-    # Blocked states must remain visually dominant even when upstream
-    # facts are contradictory. Conflict is disclosed, never used to mask them.
+    # Authoritative blocked states must remain visually dominant even when
+    # the upstream contract is also contradictory. Conflict is disclosed
+    # inside the surface, never used to mask FREEZE/STOP.
     if inp.system_state is SystemState.FREEZE:
         return "FREEZE"
     if inp.system_state is SystemState.STOP:
@@ -220,8 +238,8 @@ def _banner(inp: SurfaceInput, conflicts: tuple[str, ...]) -> str | None:
 def compile_surface(inp: SurfaceInput) -> SurfacePlan:
     """Compile authoritative backend state into a truth-preserving UI plan.
 
-    This does not grant permission, release output, recover state, or mutate
-    NEXY. It can only make the presentation surface more restrictive.
+    This function does not grant backend permission, release output, recover state,
+    or mutate NEXY. It can only make the presentation surface more restrictive.
     """
     conflicts = _detect_conflicts(inp)
     action = _decide_action(inp, conflicts)
@@ -249,8 +267,10 @@ def compile_surface(inp: SurfaceInput) -> SurfacePlan:
         reasons=tuple(reasons),
         fingerprint="",
     )
-    digest = fingerprint({
-        "input": inp.to_primitive(),
-        "plan": draft.to_primitive(include_fingerprint=False),
-    })
+    digest = fingerprint(
+        {
+            "input": inp.to_primitive(),
+            "plan": draft.to_primitive(include_fingerprint=False),
+        }
+    )
     return replace(draft, fingerprint=digest)

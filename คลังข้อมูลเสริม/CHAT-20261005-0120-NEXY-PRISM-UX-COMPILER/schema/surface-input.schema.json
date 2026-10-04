@@ -5,9 +5,16 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "system_state", "role", "evidence_status", "requested_action", "risk",
-    "preferred_detail", "backend_authorized", "release_authorized",
-    "recoverable", "irreversible"
+    "system_state",
+    "role",
+    "evidence_status",
+    "requested_action",
+    "risk",
+    "preferred_detail",
+    "backend_authorized",
+    "release_authorized",
+    "recoverable",
+    "irreversible"
   ],
   "properties": {
     "system_state": {"enum": ["INIT", "READY", "RUNNING", "VERIFYING", "CONSENSUS", "STABLE", "FREEZE", "STOP"]},

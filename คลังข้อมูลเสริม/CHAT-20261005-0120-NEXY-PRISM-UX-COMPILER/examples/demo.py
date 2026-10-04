@@ -9,9 +9,16 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from nexy_prism import (
-    Action, DetailLevel, EvidenceStatus, RiskLevel, Role,
-    SurfaceInput, SystemState, compile_surface,
+    Action,
+    DetailLevel,
+    EvidenceStatus,
+    RiskLevel,
+    Role,
+    SurfaceInput,
+    SystemState,
+    compile_surface,
 )
+
 
 SCENARIOS = {
     "verified_result": SurfaceInput(

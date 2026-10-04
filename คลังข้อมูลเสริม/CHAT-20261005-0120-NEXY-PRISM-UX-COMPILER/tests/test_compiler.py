@@ -3,8 +3,17 @@ from __future__ import annotations
 import unittest
 
 from nexy_prism import (
-    Action, Confirmation, DetailLevel, EvidenceStatus, RiskLevel, Role,
-    SurfaceInput, SystemState, TrustLabel, assert_plan_valid, compile_surface,
+    Action,
+    Confirmation,
+    DetailLevel,
+    EvidenceStatus,
+    RiskLevel,
+    Role,
+    SurfaceInput,
+    SystemState,
+    TrustLabel,
+    assert_plan_valid,
+    compile_surface,
 )
 
 
@@ -29,7 +38,7 @@ def make_input(**overrides) -> SurfaceInput:
 
 
 class PrismCompilerTests(unittest.TestCase):
-    def test_verified_stable_result_is_viewable(self):
+    def test_verified_stable_result_is_viewable(self) -> None:
         inp = make_input()
         plan = compile_surface(inp)
         self.assertTrue(plan.action.enabled)
@@ -38,56 +47,71 @@ class PrismCompilerTests(unittest.TestCase):
         self.assertIn("OUTPUT_RELEASE:AUTHORIZED", plan.mandatory_disclosures)
         assert_plan_valid(inp, plan)
 
-    def test_backend_deny_can_never_be_widened(self):
+    def test_backend_deny_can_never_be_widened(self) -> None:
         inp = make_input(backend_authorized=False, backend_reason_code="FORBIDDEN")
         plan = compile_surface(inp)
         self.assertFalse(plan.action.enabled)
         self.assertEqual(plan.action.reason_code, "FORBIDDEN")
         assert_plan_valid(inp, plan)
 
-    def test_freeze_operator_cannot_submit(self):
+    def test_freeze_operator_cannot_submit(self) -> None:
         inp = make_input(
-            system_state=SystemState.FREEZE, role=Role.OPERATOR,
-            requested_action=Action.SUBMIT_DIRECTIVE, release_authorized=False,
-            recoverable=True, incident_code="FRZ-001", blocking_layer="LAW",
+            system_state=SystemState.FREEZE,
+            role=Role.OPERATOR,
+            requested_action=Action.SUBMIT_DIRECTIVE,
+            release_authorized=False,
+            recoverable=True,
+            incident_code="FRZ-001",
+            blocking_layer="LAW",
         )
         plan = compile_surface(inp)
         self.assertFalse(plan.action.enabled)
         self.assertEqual(plan.banner, "FREEZE")
         self.assertEqual(plan.trust_label, TrustLabel.FROZEN)
         self.assertEqual(plan.detail_level, DetailLevel.FORENSIC)
+        self.assertIn("INCIDENT_CODE:FRZ-001", plan.mandatory_disclosures)
         assert_plan_valid(inp, plan)
 
-    def test_owner_can_recover_only_when_backend_allows_and_recoverable(self):
+    def test_owner_can_recover_only_when_backend_allows_and_recoverable(self) -> None:
         inp = make_input(
             system_state=SystemState.FREEZE,
             requested_action=Action.RECOVER_FREEZE,
-            release_authorized=False, recoverable=True,
-            incident_code="FRZ-002", blocking_layer="CORE",
+            release_authorized=False,
+            recoverable=True,
+            incident_code="FRZ-002",
+            blocking_layer="CORE",
         )
         plan = compile_surface(inp)
         self.assertTrue(plan.action.enabled)
+        self.assertEqual(plan.action.reason_code, "OWNER_RECOVERY_ALLOWED")
         self.assertEqual(plan.action.confirmation, Confirmation.CONFIRM)
         assert_plan_valid(inp, plan)
 
         denied = make_input(
             system_state=SystemState.FREEZE,
             requested_action=Action.RECOVER_FREEZE,
-            release_authorized=False, recoverable=False,
-            incident_code="FRZ-003", blocking_layer="CORE",
+            release_authorized=False,
+            recoverable=False,
+            incident_code="FRZ-003",
+            blocking_layer="CORE",
         )
         denied_plan = compile_surface(denied)
         self.assertFalse(denied_plan.action.enabled)
+        self.assertEqual(denied_plan.action.reason_code, "FREEZE_RECOVERY_DENIED")
         assert_plan_valid(denied, denied_plan)
 
-    def test_auditor_never_gets_config_surface(self):
-        inp = make_input(role=Role.AUDITOR, requested_action=Action.CONFIG_CHANGE)
+    def test_auditor_never_gets_config_surface(self) -> None:
+        inp = make_input(
+            role=Role.AUDITOR,
+            requested_action=Action.CONFIG_CHANGE,
+            backend_authorized=True,
+        )
         plan = compile_surface(inp)
         self.assertFalse(plan.action.enabled)
         self.assertEqual(plan.action.reason_code, "ROLE_SURFACE_DENY")
         assert_plan_valid(inp, plan)
 
-    def test_irreversible_action_forces_typed_confirmation_and_forensic_detail(self):
+    def test_irreversible_action_forces_typed_confirmation_and_forensic_detail(self) -> None:
         inp = make_input(
             requested_action=Action.HARD_DELETE,
             risk=RiskLevel.HIGH,
@@ -96,9 +120,10 @@ class PrismCompilerTests(unittest.TestCase):
         plan = compile_surface(inp)
         self.assertEqual(plan.action.confirmation, Confirmation.TYPE_TO_CONFIRM)
         self.assertEqual(plan.detail_level, DetailLevel.FORENSIC)
+        self.assertIn("IRREVERSIBLE_ACTION:true", plan.mandatory_disclosures)
         assert_plan_valid(inp, plan)
 
-    def test_user_compact_preference_cannot_hide_high_risk_truth(self):
+    def test_user_compact_preference_cannot_hide_high_risk_truth(self) -> None:
         inp = make_input(
             requested_action=Action.SUBMIT_DIRECTIVE,
             risk=RiskLevel.CRITICAL,
@@ -107,9 +132,10 @@ class PrismCompilerTests(unittest.TestCase):
         plan = compile_surface(inp)
         self.assertEqual(plan.detail_level, DetailLevel.FORENSIC)
         self.assertIn("DETAIL_RAISED_TO_TRUTH_FLOOR", plan.reasons)
+        self.assertIn("RISK:CRITICAL", plan.mandatory_disclosures)
         assert_plan_valid(inp, plan)
 
-    def test_unverified_state_never_looks_final(self):
+    def test_unverified_state_never_looks_final(self) -> None:
         inp = make_input(
             evidence_status=EvidenceStatus.NOT_VERIFIED,
             release_authorized=False,
@@ -117,9 +143,10 @@ class PrismCompilerTests(unittest.TestCase):
         plan = compile_surface(inp)
         self.assertFalse(plan.action.enabled)
         self.assertNotEqual(plan.trust_label, TrustLabel.VERIFIED_FINAL)
+        self.assertIn("OUTPUT_RELEASE:NOT_FINAL", plan.mandatory_disclosures)
         assert_plan_valid(inp, plan)
 
-    def test_inconsistent_release_flags_fail_closed(self):
+    def test_inconsistent_release_flags_fail_closed(self) -> None:
         inp = make_input(
             system_state=SystemState.RUNNING,
             evidence_status=EvidenceStatus.NOT_VERIFIED,
@@ -130,9 +157,10 @@ class PrismCompilerTests(unittest.TestCase):
         self.assertFalse(plan.action.enabled)
         self.assertEqual(plan.trust_label, TrustLabel.CONTRACT_CONFLICT)
         self.assertEqual(plan.banner, "CONTRACT_CONFLICT")
+        self.assertTrue(plan.conflict_codes)
         assert_plan_valid(inp, plan)
 
-    def test_stop_only_allows_diagnostic_read(self):
+    def test_stop_only_allows_diagnostic_read(self) -> None:
         trace_inp = make_input(
             system_state=SystemState.STOP,
             requested_action=Action.OPEN_TRACE,
@@ -151,9 +179,10 @@ class PrismCompilerTests(unittest.TestCase):
         )
         mutate_plan = compile_surface(mutate_inp)
         self.assertFalse(mutate_plan.action.enabled)
+        self.assertEqual(mutate_plan.action.reason_code, "SYSTEM_STOP")
         assert_plan_valid(mutate_inp, mutate_plan)
 
-    def test_fingerprint_is_deterministic(self):
+    def test_fingerprint_is_deterministic(self) -> None:
         inp = make_input(
             preferred_detail=DetailLevel.FORENSIC,
             requested_action=Action.EXPORT_ARTIFACT,

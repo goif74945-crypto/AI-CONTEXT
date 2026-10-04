@@ -2,8 +2,15 @@ from __future__ import annotations
 
 from .compiler import compile_surface
 from .model import (
-    Action, Confirmation, DetailLevel, EvidenceStatus, Role,
-    SurfaceInput, SurfacePlan, SystemState, TrustLabel,
+    Action,
+    Confirmation,
+    DetailLevel,
+    EvidenceStatus,
+    Role,
+    SurfaceInput,
+    SurfacePlan,
+    SystemState,
+    TrustLabel,
 )
 
 
@@ -27,7 +34,9 @@ def validate_plan(inp: SurfaceInput, plan: SurfacePlan) -> tuple[str, ...]:
         if "FREEZE:AUTHORITATIVE" not in plan.mandatory_disclosures:
             violations.append("FREEZE_DISCLOSURE_MISSING")
         if plan.action.enabled and plan.action.action not in {
-            Action.OPEN_TRACE, Action.EXPORT_AUDIT, Action.RECOVER_FREEZE,
+            Action.OPEN_TRACE,
+            Action.EXPORT_AUDIT,
+            Action.RECOVER_FREEZE,
         }:
             violations.append("FREEZE_ENABLED_ILLEGAL_ACTION")
         if plan.action.action is Action.RECOVER_FREEZE and plan.action.enabled:
@@ -54,6 +63,7 @@ def validate_plan(inp: SurfaceInput, plan: SurfacePlan) -> tuple[str, ...]:
         if not inp.release_authorized:
             violations.append("RELEASE_ACTION_ENABLED_WITHOUT_RELEASE_AUTH")
 
+    # Fingerprint must be exactly reproducible from the same input.
     if compile_surface(inp).fingerprint != plan.fingerprint:
         violations.append("NON_DETERMINISTIC_FINGERPRINT")
 
