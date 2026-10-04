@@ -1,0 +1,32 @@
+# NEXY Lo4 LICPL Bundle Integrity
+
+## Reconstructed payload
+
+archive_file=NEXY-LO4-INNOVATION-CONTAINMENT-LAB.tar.gz
+archive_size_bytes=38462
+archive_sha256=c592552347f3a8f69b4c80b64748ae244651d221834d702173afa0c7eda48498
+base64_size_chars=51284
+base64_sha256=e74336f1ac2bc62731c5c914e8fc6fb83712de7fa2e99773a7278a7010ebed00
+
+internal_manifest_entries=49
+internal_manifest_total_bytes=135611
+internal_manifest_identity=843c4f7a2618aa980e911e541c72093a83c301a9e61267e97eb7df3bc861eb31
+
+## Published fragment order and SHA-256
+
+b50e540106233640232f46a613d4045eac2c5d346f54f8019d53b943c427addd  bundle/BUNDLE.part00.b64
+25a1721651b8c88af96e283d4b28c895a764ec4730893af3b52b9852db48c6fb  bundle/BUNDLE.part01.b64
+d7dcbeb58accbcb0c6d072890faa1731d8a87e234ad5d81df7a8e3d52c78f731  bundle/BUNDLE.part02.b64
+ed5c4762b653f7e572b1e09c07ae309ae8a9a25845081c6acf0d91f6e49ff795  bundle/BUNDLE.part03.b64
+571f939ba8f9bbfb689d7c9660c1e4faa2a489a190e41f7e9f454986618f947e  bundle/BUNDLE.part04a.b64
+e905acd09ca63a56b3674b2e599d65175b9a691fe5fa550ab627db601ab39cbb  bundle/BUNDLE.part04b.b64
+18fb144a28db753b4a03b63a83fdfeadee764c5092fcd6c54571ee156f167c53  bundle/BUNDLE.part04c.b64
+ccd0bbe0baa0a271e00cc1cf3c2dcc51e36890e0220ced19d3b889450a299f6a  bundle/BUNDLE.part05.b64
+
+## Original unsplit part04 identity
+
+c29a4cc7a52b8c0a7d84b1c7ae87df31e846295fcbaf0b2b8eed897a8f6a0b4b  original-part04-before-transport-split
+
+The concatenation of part04a + part04b + part04c must reproduce original-part04 exactly.
+
+Integrity of the complete remote reconstruction must be checked against archive_sha256 above. Hash equality proves byte identity, not NEXY Canon authority or production correctness.
