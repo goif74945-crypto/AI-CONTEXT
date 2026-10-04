@@ -22,7 +22,17 @@
     "trigger_spec": {"type":["string","null"]},
     "deadline_spec": {"type":["string","null"]},
     "supersedes_fingerprint": {"type":["string","null"]},
-    "binding": {"type":"object","additionalProperties":false,"required":["binding_type","binding_ref","durable","capability_proof_ref"],"properties":{"binding_type":{"enum":["INLINE_SESSION","SCHEDULED_TASK","CONDITION_WATCH","RECURRING_TASK"]},"binding_ref":{"type":"string","minLength":1},"durable":{"type":"boolean"},"capability_proof_ref":{"type":"string","minLength":1}}},
+    "binding": {
+      "type":"object",
+      "additionalProperties":false,
+      "required":["binding_type","binding_ref","durable","capability_proof_ref"],
+      "properties":{
+        "binding_type":{"enum":["INLINE_SESSION","SCHEDULED_TASK","CONDITION_WATCH","RECURRING_TASK"]},
+        "binding_ref":{"type":"string","minLength":1},
+        "durable":{"type":"boolean"},
+        "capability_proof_ref":{"type":"string","minLength":1}
+      }
+    },
     "metadata":{"type":"object","additionalProperties":{"type":"string"}}
   }
 }
