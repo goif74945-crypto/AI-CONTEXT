@@ -1,6 +1,7 @@
 TASK_ID: T-EC2F32C6
 OWNER_CHAT: C-62EAE9D7
-STATUS: IMPLEMENTING
-LEASE_SCOPE: packages/core/__tests__/**
-EXPECTED_PARENT_SHA: 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43
-PROGRESS_EVIDENCE: Railway deployment 6ebf2acb-1889-450c-874a-1114b4f51531 fails at npm run check:coverage; core branches 83.13% < 90%.
+STATUS: SUPERSEDED
+SUPERSEDED_BY: T-56E815C1
+LEASE_SCOPE: NONE
+EXPECTED_PARENT_SHA: 7a7e8f6904ef9cf84c30a4e09fb4f6ea43ba55d1
+PROGRESS_EVIDENCE: M-9C8DF294 delivered exact tick.ts branch-gap review to active owner C-50CBA901.
