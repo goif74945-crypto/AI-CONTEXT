@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/nexy/intent-contract.schema.json",
+  "title": "NEXY Intent Integrity Lab Contract",
+  "description": "AI-PROPOSED CONCEPT research schema. Not a current NEXY.AI requirement.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","contract_id","objective","scope","requirements","acceptance_criteria","stop_conditions","unknowns","assumptions"],
+  "properties": {
+    "schema_version": {"type":"string","minLength":1},
+    "contract_id": {"type":"string","minLength":1},
+    "objective": {"type":"string","minLength":1},
+    "scope": {
+      "type":"object","additionalProperties":false,
+      "required":["in_scope","out_of_scope","protected","allowed_repositories","protected_repositories"],
+      "properties":{
+        "in_scope":{"$ref":"#/$defs/uniqueStringArray"},
+        "out_of_scope":{"$ref":"#/$defs/uniqueStringArray"},
+        "protected":{"$ref":"#/$defs/uniqueStringArray"},
+        "allowed_repositories":{"$ref":"#/$defs/uniqueStringArray"},
+        "protected_repositories":{"$ref":"#/$defs/uniqueStringArray"}
+      }
+    },
+    "requirements":{"type":"array","items":{"$ref":"#/$defs/requirement"}},
+    "acceptance_criteria":{"type":"array","items":{"$ref":"#/$defs/criterion"}},
+    "stop_conditions":{"$ref":"#/$defs/uniqueStringArray"},
+    "unknowns":{"$ref":"#/$defs/uniqueStringArray"},
+    "assumptions":{"$ref":"#/$defs/uniqueStringArray"}
+  },
+  "$defs":{
+    "uniqueStringArray":{"type":"array","uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "requirement":{
+      "type":"object","additionalProperties":false,
+      "required":["id","text","kind","immutable"],
+      "properties":{
+        "id":{"type":"string","minLength":1},
+        "text":{"type":"string","minLength":1},
+        "kind":{"enum":["must","must_not","should"]},
+        "immutable":{"type":"boolean"}
+      }
+    },
+    "criterion":{
+      "type":"object","additionalProperties":false,
+      "required":["id","text","minimum_evidence","requirement_ids"],
+      "properties":{
+        "id":{"type":"string","minLength":1},
+        "text":{"type":"string","minLength":1},
+        "minimum_evidence":{"enum":["none","inspection","static","unit","integration","e2e","runtime","deployment","physical"]},
+        "requirement_ids":{"$ref":"#/$defs/uniqueStringArray"}
+      }
+    }
+  }
+}
