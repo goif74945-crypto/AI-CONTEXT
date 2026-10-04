@@ -5,48 +5,41 @@
 - Started: 2026-10-05 01:55 Asia/Bangkok
 - Target repository: `goif74945-crypto/AI-CONTEXT`
 - Mutable scope: `คลังข้อมูลเสริม/CHAT-20261005-0155-NEXY-DECISION-STABILITY-LAB/**`
-- Protected scope: every repository whose name contains `NEXY.AI`; all paths outside this namespace unless explicitly required for read-only context.
+- Protected scope: every repository whose name contains `NEXY.AI`; all paths outside this namespace except read-only context.
 - NEXY.AI repository mutation: FORBIDDEN.
-- Status: VERIFYING
+- Engineering status: VERIFIED_COMPLETE
+- Strict request status: INCOMPLETE
 
-## Objective
-Create five novel, AI-proposed supplemental systems useful to NEXY.AI, implement real standalone reference code, execute tests, repair failures, and persist design + code + tests + evidence without integrating into NEXY.AI.
-
-## Chosen system family
-Decision Stability under Evidence Perturbation.
-
-## Implemented concepts
+## Built systems
 1. MONO — Decision Monotonicity Verifier.
 2. IRIS — Irrelevance Invariance Scanner.
 3. EDGE — Decision Boundary Cartographer.
 4. MDE — Minimal Decisive Evidence Extractor.
 5. DAMP — Temporal Decision Flicker Guard.
 
-## Verified checkpoint
-- Initial compile: PASS.
-- Initial test run: 16 PASS / 1 FAIL. Failure was in the integration test expectation: two consecutive RELEASE proposals used identical evidence fingerprints, so DAMP correctly promoted on the second observation.
-- Fix: corrected the test vector so the middle RELEASE fingerprint genuinely changes, then repeats.
-- Rerun: 17/17 PASS.
-- Re-audit found two latent integrity risks:
-  - canonical-equivalent duplicate evidence with reordered tags was falsely treated as conflict;
-  - temporal integration canonicalized only after oracle exposure.
-- Fixes applied:
-  - duplicate identity now compares canonical dictionaries;
-  - temporal evidence now canonicalizes before oracle evaluation.
-- Added deterministic/property coverage.
-- Latest local verification: 23/23 PASS.
-- Executable five-system demo: PASS and produced deterministic JSON summary.
+## Verified code revision
+`a1bd30487c8af56c9350695a748111834f41a030`
 
-## Truth boundary
-These are AI-proposed concepts, not current NEXY law, not current NEXY implementation, and not deployment/runtime evidence for NEXY.AI.
+## Verification snapshot
+- Exact Git blob identity for 7 source modules + 2 test files: PASS.
+- py_compile: PASS.
+- Unit/negative/integration/property: 21/21 PASS under PYTHONHASHSEED=1.
+- Same suite: 21/21 PASS under PYTHONHASHSEED=999.
+- Fixed-seed stress: 5,000 MONO + 5,000 fingerprint + 50,000 temporal transitions PASS.
+- Worsening transitions checked immediate: 2,821.
+- Determinism probe byte-identical across seeds; SHA-256 4b577bd21dbf048a4bbc4953faa088d1440289ee212a213806c27f81bfa04f06.
+- Remote GitHub re-read at verified revision: expected blobs present.
 
-## Next actions
-1. package/install validation;
-2. hash-seed determinism verification;
-3. generate final evidence + manifest;
-4. commit tested artifacts into this namespace;
-5. re-read exact committed revision;
-6. final audit and status update.
+## Failure / recovery history
+- Early DAMP integration expectation failed; test vector fixed without weakening implementation.
+- Canonical duplicate/tag-order and pre-oracle canonicalization risks found in re-audit; fixed.
+- First modular committed test failed due wrong tests/code import path; exact committed failure reproduced, fixed to ../code, and all gates rerun.
+- Concurrent main-branch movement caused 409/422 races; immutable blobs + non-force fast-forward retry recovered safely.
 
-## Checkpoint law
-Never claim PASS without recorded executed evidence. If later source files change, prior test evidence becomes stale and must be rerun.
+## Remaining strict blockers
+- User requested many tens of hours of continuous execution: cannot be fulfilled by this synchronous session/runtime.
+- User requested universal superiority over prior/concurrent chats: not objectively verifiable.
+- User requested arbitrary massive token consumption: not an exposed controllable primitive.
+
+## Resume rule
+Do not redo verified engineering work unless source blobs change. Any future continuation should start from the manifest/evidence files and only address remaining strict blockers if the execution environment actually supports them.

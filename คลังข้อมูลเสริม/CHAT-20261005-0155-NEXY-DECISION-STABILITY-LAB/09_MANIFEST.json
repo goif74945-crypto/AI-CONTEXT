@@ -1,0 +1,77 @@
+{
+  "schema": "nexy-decision-stability-lab-manifest/v1",
+  "execution_namespace": "CHAT-20261005-0155-NEXY-DECISION-STABILITY-LAB",
+  "platform_chat_id": "UNKNOWN_NOT_EXPOSED_TO_TOOL_RUNTIME",
+  "verified_code_revision": "a1bd30487c8af56c9350695a748111834f41a030",
+  "concepts": [
+    "MONO",
+    "IRIS",
+    "EDGE",
+    "MDE",
+    "DAMP"
+  ],
+  "files": {
+    "code/core.py": {
+      "git_blob_sha1": "80e412484a40583d6f32bcd2e439474e584dda63",
+      "sha256": "ac9f22f12ecf96a4164ffcff51580153c9584b0ae2d182dc4bae1554f6aa1c58",
+      "bytes": 2658
+    },
+    "code/mono.py": {
+      "git_blob_sha1": "37bc24819ce3f7a2c74c0686a1b41fcaa452cf20",
+      "sha256": "c1d2fd1f97e499b95d566667514f4825607cd9d0340b758a4c8987fc1257de21",
+      "bytes": 986
+    },
+    "code/iris.py": {
+      "git_blob_sha1": "bea248c368a35a316af3c8b7755659c3f26289fa",
+      "sha256": "468e4d5d09734b4680dbbd9a6dedb7bc840535c09885da9ebf8df0afe436675d",
+      "bytes": 1222
+    },
+    "code/edge.py": {
+      "git_blob_sha1": "2307d85ab799027f16ee67fb34d940fb525db473",
+      "sha256": "c8c0af44eae3471461a42be37aed20137703736414429615dc8839526eef6b56",
+      "bytes": 2003
+    },
+    "code/mde.py": {
+      "git_blob_sha1": "e0c626b56af654ae2e45b6d3af1fb48d5c7ed42f",
+      "sha256": "eb973605be65007d380b0874b1035684f5d9154daea2c29845323624eea7fdaf",
+      "bytes": 914
+    },
+    "code/damp.py": {
+      "git_blob_sha1": "29bf09300a434c67e0573497da2efb63d6a26c37",
+      "sha256": "eef3b449444d5bd3f2049061009c7c21867dee70f09c3052da618aa402857732",
+      "bytes": 1958
+    },
+    "code/suite.py": {
+      "git_blob_sha1": "db115a4774e7c0e6b369383690cc8673b5fdbed5",
+      "sha256": "27301695cb2aa7c4440d95a1a775a928c14a44e8e1f10e9a0e16d4e44e1fd771",
+      "bytes": 847
+    },
+    "tests/test_lab.py": {
+      "git_blob_sha1": "184db7b382fca5de84ccd9f5a8ecd59a4781adf6",
+      "sha256": "fdb62b08a4540eb3d5b2ac511375ad7fdd37692b57eecff6e7355c8d1aafff55",
+      "bytes": 6380
+    },
+    "tests/stress_lab.py": {
+      "git_blob_sha1": "fe577a14e24eaf4c2c5d874cd0216e7c60442feb",
+      "sha256": "fadcd192921ee7253c6b6cb13bda6d5c2e58df130c765cfbae98f51343ba3a08",
+      "bytes": 1997
+    }
+  },
+  "verification": {
+    "compile": "PASS",
+    "unit_seed_1": "21/21 PASS",
+    "unit_seed_999": "21/21 PASS",
+    "monotonic_stress": 5000,
+    "fingerprint_stress": 5000,
+    "temporal_transitions": 50000,
+    "safety_regressions_checked": 2821,
+    "determinism_probe_sha256": "4b577bd21dbf048a4bbc4953faa088d1440289ee212a213806c27f81bfa04f06"
+  },
+  "strict_request_status": "INCOMPLETE",
+  "engineering_scope_status": "VERIFIED_COMPLETE",
+  "strict_blockers": [
+    "multi-tens-of-hours continuous runtime requirement unsatisfied",
+    "absolute superiority over all prior/concurrent chats not objectively verified",
+    "arbitrary huge token-consumption request not controllable"
+  ]
+}
