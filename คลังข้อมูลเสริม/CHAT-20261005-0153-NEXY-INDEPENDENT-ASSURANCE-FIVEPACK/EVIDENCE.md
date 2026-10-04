@@ -56,3 +56,15 @@ The compact suite contains tests for:
 
 ## Truth constraints
 A passing standalone test does not establish adoption, compatibility with an unknown future NEXY HEAD, production security, calibrated risk scoring, correctness of supplied provenance metadata, or deployment readiness. Those claims require separate evidence.
+
+## Remote persistence proof
+The base bundle was published through a dedicated branch and PR to avoid overwriting highly concurrent `main` writers. PR #66 merged successfully to `main` with merge commit `a989043468510309a07b9ef7ab8da46c056c4005`.
+
+Post-merge directory read-back from `main` returned exactly the expected eleven base-bundle files. Their Git blob SHAs matched the locally verified Git objects, including:
+- `nexy_assurance_fivepack.py` -> `bc37cb0159a6db7e8bdde79c02bc3184e4433e58`;
+- `test_nexy_assurance_fivepack.py` -> `6ec709f1ef0636a5fd784dfa7d5580a14bccc4ed`;
+- `DESIGN.md` -> `a39e48a9ad4bcb83e3ec111a40d92a5de7fc97ce`;
+- original `EVIDENCE.md` base object -> `0390f548476c62e65ece58c2ef0d67278b47425f`;
+- original `MANIFEST.sha256` base object -> `87347a1daea387bdd18f2768a13e5fadb933b8f4`.
+
+PR metadata for the base publication reported 11 changed files, 1026 additions and 0 deletions. This proves repository persistence of the standalone package. It still does not prove NEXY.AI runtime integration or deployment.
