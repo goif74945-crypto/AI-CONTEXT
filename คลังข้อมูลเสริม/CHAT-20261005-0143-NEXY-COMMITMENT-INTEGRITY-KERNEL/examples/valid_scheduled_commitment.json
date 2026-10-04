@@ -1,0 +1,20 @@
+{
+  "commitment_id":"C-SAMPLE-001",
+  "revision":1,
+  "issuer":"NEXY",
+  "beneficiary":"user",
+  "objective":"Deliver a scheduled verified report",
+  "deliverable":"Verified report artifact",
+  "scope":["project:alpha"],
+  "protected_scope":["project:omega"],
+  "temporal_mode":"SCHEDULED",
+  "effect":"READ_ONLY",
+  "authority_state":"RESOLVED",
+  "authority_refs":["user-directive:sample"],
+  "required_evidence":["E2_UNIT"],
+  "deadline_spec":"2026-10-06T09:00:00+07:00",
+  "trigger_spec":null,
+  "supersedes_fingerprint":null,
+  "binding":{"binding_type":"SCHEDULED_TASK","binding_ref":"automation:sample","durable":true,"capability_proof_ref":"automation-created:sample"},
+  "metadata":{"classification":"example-only"}
+}
