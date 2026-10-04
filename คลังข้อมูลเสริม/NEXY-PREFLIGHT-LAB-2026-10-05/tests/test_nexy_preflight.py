@@ -152,4 +152,127 @@ class EngineTests(unittest.TestCase):
         self.assertIn("PFL-EVIDENCE-POLICY-UNKNOWN", {f.code for f in result.findings})
 
     def test_missing_evidence_is_not_verified(self):
-        claims = [{"id": "C1", "kind": "uni
+        claims = [{"id": "C1", "kind": "unit", "text": "behavior works"}]
+        result = evaluate_contract(contract(claims=claims))
+        self.assertEqual(result.decision, Decision.NOT_VERIFIED)
+        self.assertEqual(result.required_evidence["C1"].value, "E2")
+
+    def test_static_evidence_cannot_satisfy_integration_claim(self):
+        claims = [{"id": "C1", "kind": "integration", "text": "components interact"}]
+        evidence = [{"claim_id": "C1", "class": "E1", "result": "PASS"}]
+        result = evaluate_contract(contract(claims=claims, evidence=evidence))
+        self.assertEqual(result.decision, Decision.NOT_VERIFIED)
+        self.assertIn("PFL-EVIDENCE-INSUFFICIENT", {f.code for f in result.findings})
+
+    def test_stronger_evidence_satisfies_lower_requirement(self):
+        claims = [{"id": "C1", "kind": "static", "text": "schema valid"}]
+        evidence = [{"claim_id": "C1", "class": "E3", "result": "PASS"}]
+        result = evaluate_contract(contract(claims=claims, evidence=evidence))
+        self.assertEqual(result.decision, Decision.PASS)
+
+    def test_failed_evidence_is_not_verified(self):
+        claims = [{"id": "C1", "kind": "unit", "text": "behavior works"}]
+        evidence = [{"claim_id": "C1", "class": "E2", "result": "FAIL"}]
+        result = evaluate_contract(contract(claims=claims, evidence=evidence))
+        self.assertEqual(result.decision, Decision.FAIL)
+        self.assertIn("PFL-EVIDENCE-FAILED", {f.code for f in result.findings})
+
+    def test_contract_hash_is_stable_across_repeated_evaluation(self):
+        item = contract()
+        self.assertEqual(evaluate_contract(item).contract_hash, evaluate_contract(item).contract_hash)
+
+
+    def test_repository_identity_is_case_insensitive_but_path_is_not(self):
+        protected = "GoIf74945-Crypto/NEXY.AI-"
+        ops = [{"kind": "write", "resource": "goif74945-crypto/nexy.ai-/src/x.ts", "irreversible": False}]
+        result = evaluate_contract(contract(authorized_scope=[protected], protected_scope=[protected], operations=ops))
+        self.assertEqual(result.decision, Decision.CONFLICT)
+        self.assertIn("PFL-PROTECTED-WRITE", {f.code for f in result.findings})
+
+    def test_dotdot_normalization_cannot_escape_scope_check(self):
+        allowed = "owner/repo/allowed"
+        ops = [{"kind": "write", "resource": "owner/repo/allowed/sub/../x", "irreversible": False}]
+        result = evaluate_contract(contract(authorized_scope=[allowed], operations=ops))
+        self.assertEqual(result.decision, Decision.PASS)
+
+    def test_orphan_evidence_conflicts(self):
+        evidence = [{"claim_id": "NOPE", "class": "E1", "result": "PASS"}]
+        result = evaluate_contract(contract(evidence=evidence))
+        self.assertEqual(result.decision, Decision.CONFLICT)
+        self.assertIn("PFL-EVIDENCE-ORPHAN", {f.code for f in result.findings})
+
+    def test_duplicate_claim_ids_conflict(self):
+        claims = [
+            {"id": "C1", "kind": "static", "text": "one"},
+            {"id": "C1", "kind": "unit", "text": "two"},
+        ]
+        result = evaluate_contract(contract(claims=claims))
+        self.assertEqual(result.decision, Decision.CONFLICT)
+        self.assertIn("PFL-CLAIM-DUPLICATE", {f.code for f in result.findings})
+
+    def test_capability_plan_is_minimal_and_sorted(self):
+        ops = [
+            {"kind": "write", "resource": "goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/lab/a", "irreversible": False},
+            {"kind": "read", "resource": "goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/lab/b", "irreversible": False},
+            {"kind": "write", "resource": "goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/lab/c", "irreversible": False},
+        ]
+        result = evaluate_contract(contract(operations=ops))
+        self.assertEqual(result.required_capabilities, ("read", "write"))
+
+    def test_findings_are_stably_sorted(self):
+        result = evaluate_contract(contract(target="", authority_sources=[], authorized_scope=[]))
+        codes = [f.code for f in result.findings]
+        self.assertEqual(codes, sorted(codes))
+
+
+
+# ===== test_drift.py =====
+import unittest
+
+
+
+def raw_contract():
+    return {
+        "task_id": "T",
+        "objective": "demo",
+        "target": "repo",
+        "authorized_scope": ["repo/allowed"],
+        "protected_scope": ["repo/protected", "repo/secret"],
+        "authority_sources": ["user", "spec"],
+        "preconditions": [],
+        "operations": [{"kind": "write", "resource": "repo/allowed/a", "irreversible": False}],
+        "claims": [],
+        "evidence": [],
+        "approvals": ["approval:A"],
+    }
+
+
+class DriftTests(unittest.TestCase):
+    def test_identical_contract_is_safe(self):
+        a = TaskContract.from_mapping(raw_contract())
+        b = TaskContract.from_mapping(raw_contract())
+        self.assertTrue(compare_contracts(a, b).safe)
+
+    def test_write_expansion_detected(self):
+        base = raw_contract()
+        candidate = raw_contract()
+        candidate["operations"] = base["operations"] + [
+            {"kind": "write", "resource": "repo/new-area/x", "irreversible": False}
+        ]
+        report = compare_contracts(TaskContract.from_mapping(base), TaskContract.from_mapping(candidate))
+        self.assertIn("PFL-DRIFT-WRITE-EXPANDED", {f.code for f in report.findings})
+
+    def test_protection_relaxation_detected(self):
+        base = raw_contract()
+        candidate = raw_contract()
+        candidate["protected_scope"] = ["repo/protected"]
+        report = compare_contracts(TaskContract.from_mapping(base), TaskContract.from_mapping(candidate))
+        self.assertIn("PFL-DRIFT-PROTECTION-RELAXED", {f.code for f in report.findings})
+
+    def test_new_irreversible_detected(self):
+        base = raw_contract()
+        candidate = raw_contract()
+        candidate["operations"] = base["operations"] + [
+            {"kind": "delete", "resource": "repo/allowed/a", "irreversible": True}
+        ]
+        report = compare_contracts(TaskContract.from_mapping(base), TaskContract.from_mapping(c
