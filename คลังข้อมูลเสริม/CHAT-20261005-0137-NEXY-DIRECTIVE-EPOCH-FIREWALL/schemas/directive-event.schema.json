@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/nexy-def/directive-event.schema.json",
+  "title": "NEXY DEF Directive Event Reference Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "directive_id", "operation", "allowed_actions", "constraints"],
+  "properties": {
+    "event_id": {"type": "string", "minLength": 1},
+    "directive_id": {"type": "string", "minLength": 1},
+    "operation": {"enum": ["NEW", "REPLACE", "NARROW", "REVOKE"]},
+    "expected_epoch": {"type": ["integer", "null"], "minimum": 0},
+    "allowed_actions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["READ", "REVERSIBLE_WRITE", "IRREVERSIBLE_WRITE"]}
+    },
+    "constraints": {"type": "object"},
+    "note": {"type": ["string", "null"]}
+  }
+}
