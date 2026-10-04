@@ -1,13 +1,15 @@
 # Mission State
 
 - **mission_id:** `CHAT-20261005-0153-NEXY-INDEPENDENT-ASSURANCE-FIVEPACK`
-- **contract_revision:** `1`
-- **persistence_mode:** `DURABLE_RESUMABLE` only after GitHub read-back verification
-- **current_phase:** `REMOTE_WRITE_IN_PROGRESS`
-- **mutable_scope:** `goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0153-NEXY-INDEPENDENT-ASSURANCE-FIVEPACK/**`
-- **protected_scope:** every repository whose name contains `NEXY.AI`; all existing sibling supplemental paths
-- **completed_local:** AI-CONTEXT boot; NEXY context resolution; sibling collision scan; 5 designs; TDD implementation; expanded 35-test package; compact exact-persistence bundle; compact bundle 32/32 tests; compact bundle compileall exit 0
-- **current_action:** persist only this new folder, then read back and compare critical files/hashes
-- **open_gate:** remote write receipt + read-back + final target audit
-- **stop_conditions:** target mismatch; protected-scope write; unsafe non-fast-forward overwrite; read-back mismatch
-- **next_legal_action:** commit exact bundle to current AI-CONTEXT main without force, rebase the new-file commit on a newer HEAD if another session advances main first
+- **contract_revision:** `2`
+- **persistence_mode:** `DURABLE_RESUMABLE`
+- **current_phase:** `COMPLETE`
+- **mutable_scope_used:** `goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0153-NEXY-INDEPENDENT-ASSURANCE-FIVEPACK/**`
+- **protected_scope_preserved:** every repository whose name contains `NEXY.AI`; all pre-existing sibling supplemental paths
+- **completed_local:** AI-CONTEXT boot; NEXY context resolution; sibling collision scan; five designs; TDD implementation; expanded 35-test development package; compact exact-persistence bundle; compact bundle 32/32 tests; compileall exit 0; SHA-256 manifest verification
+- **completed_remote:** dedicated branch publish; PR #66; merge to `main`; post-merge directory read-back; exact Git blob SHA match for all eleven base-bundle files
+- **base_merge_commit:** `a989043468510309a07b9ef7ab8da46c056c4005`
+- **verification_status:** `PASS`
+- **open_gate:** none for the stated standalone-reference objective
+- **not_claimed:** NEXY.AI runtime integration, deployment, production calibration, current-law promotion, superiority over every other possible design
+- **resume_rule:** future work must treat this package as `AI_PROPOSED_CONCEPT + STANDALONE_REFERENCE_IMPLEMENTATION` unless a higher-authority project artifact explicitly promotes it
