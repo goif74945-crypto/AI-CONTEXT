@@ -44,3 +44,46 @@ proof: exact-head, six-system, and deploy-gate workflow conclusions are failure 
 status: VERIFIED claim about blocker; project completion remains NOT_VERIFIED
 confidence: 1.0 for observed workflow conclusions
 freshness: bound to cde969ea2d16626a60ad5571e9308ea294289d15
+
+
+## CHECKPOINT 2026-10-04 — PACKAGE STATIC READ CLOSURE
+audit_head: cde969ea2d16626a60ad5571e9308ea294289d15
+audit_tree: a6ff8287e3f8aea0dbc674b7dc1ff4f271f3cfb1
+mode: AUDIT/CROSS/READ_ONLY
+
+coverage:
+- apps/web content static-read: 102/102
+- packages non-Phase-F content static-read: 127/127
+- packages/phase-f content static-read: 125/125
+- packages total static-read: 252/252
+- semantic verification: incomplete
+- runtime verification: blocked by failed exact-head workflows and absent run artifacts
+
+new_proven_findings:
+1. CORE_CLOCK_LAW_CONFLICT
+   - design Layer 9: Core cannot read system clock; only TSA-injected batch time allowed; monotonic_clock forbidden.
+   - implementation packages/core/tick.ts blob 92ce2ae30a74d767013b322dd0d7aceb3fedd8b0 derives authoritative currentTick() from process.hrtime.bigint().
+   - status: PROVEN_CONFLICT unless superseded by a later explicit amendment. Precedence sweep still open.
+2. G15_LOCALE_FIX_INCOMPLETE
+   - packages/phase-f/game/g15-simulation-law.ts blob 2ad6c30be3e1bf881311965b7647c72259c9f05b retains localeCompare in sequentialAccumulate.
+   - current commit title says locale-independent fix; added non-ASCII regression covers another path, not sequential accumulation.
+   - status: PROVEN implementation/test gap.
+3. PHASE_F_SCOPE_GOVERNANCE_CONFLICT
+   - root tsconfig and vitest exclude packages/phase-f/**.
+   - deploy workflow marks Phase-F validation continue-on-error/advisory and release-attestation does not depend on it.
+   - authoritative design contains Game Fabric/Sovereign/L1o/Lo2/Lo3 requirements largely implemented in Phase-F.
+   - status: PROVEN config/design scope conflict; promotion precedence not yet resolved.
+4. WEBGPU_RUNTIME_STUB
+   - packages/phase-f/game/runtime/webgpu.ts explicitly says GPU pipeline stub and in-process simulation.
+   - release severity depends on authoritative deployment scope.
+5. DETERMINISM_GATE_GAP
+   - phase-f no-nondeterminism ESLint rule detects Math.random, Date.now, parameterless new Date only.
+   - it does not detect process.hrtime.bigint() or localeCompare even though current authoritative design contains clock/locale determinism laws.
+   - status: PROVEN static-gate coverage gap.
+
+important_nonfindings:
+- G15 saturating arithmetic is NOT automatically a violation: later G15 numeric law explicitly specifies saturating overflow, while earlier Layer 9 says overflow FREEZE/no saturating. This is a source-precedence conflict requiring ACTIVE/SUPERSEDED resolution rather than implementation FAIL by pattern.
+- Date.now/process.env in queue/secrets/boundary files are not automatically core determinism violations without dataflow proof.
+
+status: PARTIAL
+release_verdict: RELEASE_BLOCKED / NOT_VERIFIED
