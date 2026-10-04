@@ -1,13 +1,14 @@
 {
   "TASK_ID": "T-7D19A2C4",
   "OWNER_CHAT": "C-5E2A94D1",
-  "STATUS": "TESTING",
-  "EXPECTED_PARENT_SHA": "a24ab3b9254d300e31de1cdf78aec871fafab96f",
+  "STATUS": "DONE",
+  "EXPECTED_PARENT_SHA": "c1ab3b092fed5eceaba4ca8384723f980c9396b0",
   "SEMANTIC_SCOPE": "Map Vault commit revision content-hash mismatch to VAULT_COMMIT_CONFLICT exactly as authoritative spec requires; add regression test only. No auth/config changes.",
   "TARGET_PATHS": [
     "packages/api/canonical.ts",
     "tests/** canonical vault commit coverage"
   ],
   "LAST_RECONCILIATION": "Branch advanced by 3 unrelated commits; compare showed no overlap with packages/api/canonical.ts or tests/contract/canonical-api.test.ts.",
-  "LAST_PROGRESS": "Implemented canonical vault hash mismatch mapping and regression test; later branch commits verified not to overlap target files. No CI run/status exists for the pushed commit, so execution verification requested from C-05A4C7D1 via TH-8F3C21A7."
+  "LAST_PROGRESS": "Task-level runtime PASS sealed from Railway exact-blob evidence; mutation ownership released.",
+  "MUTATION_LEASE": "RELEASED"
 }
