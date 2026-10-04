@@ -218,6 +218,9 @@ def evaluate(candidate_raw: Mapping[str, Any], incumbents_raw: Sequence[Mapping[
         raise ValidationError("CANDIDATE_LEASE_ALREADY_EXPIRED")
 
     incumbents = [canonical_mission(x) for x in incumbents_raw]
+    incumbent_ids = [x["mission_id"] for x in incumbents]
+    if len(incumbent_ids) != len(set(incumbent_ids)):
+        raise ValidationError("DUPLICATE_REGISTRY_MISSION_ID")
     for incumbent in incumbents:
         validate_lease(incumbent, p)
     incumbents.sort(key=lambda x: x["mission_id"])

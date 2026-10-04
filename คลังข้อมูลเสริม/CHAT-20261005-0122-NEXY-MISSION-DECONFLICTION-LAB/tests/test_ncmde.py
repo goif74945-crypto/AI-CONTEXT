@@ -145,8 +145,15 @@ class NCMDETests(unittest.TestCase):
         with self.assertRaisesRegex(ValidationError,"UNKNOWN_MISSION_STATUS"):
             evaluate(m(status="MAYBE"),[],now=NOW)
 
+    def test_duplicate_registry_id_rejected(self):
+        a=m("duplicate",write_claims=[{"path":"registry/a","kind":"TREE"}],domains=["a"],capabilities=["a"],deliverables=["a"],objective="A")
+        b=m("duplicate",write_claims=[{"path":"registry/b","kind":"TREE"}],domains=["b"],capabilities=["b"],deliverables=["b"],objective="B")
+        with self.assertRaisesRegex(ValidationError,"DUPLICATE_REGISTRY_MISSION_ID"):
+            evaluate(m(),[a,b],now=NOW)
+
     def test_fixture_corpus(self):
-        corpus=json.load(open(os.path.join(ROOT,"fixtures","scenarios.json"),encoding="utf-8"))
+        with open(os.path.join(ROOT,"fixtures","scenarios.json"), encoding="utf-8") as handle:
+            corpus=json.load(handle)
         for case in corpus["scenarios"]:
             with self.subTest(case=case["id"]):
                 first=evaluate(case["candidate"],case["incumbents"],now=case["now"])
