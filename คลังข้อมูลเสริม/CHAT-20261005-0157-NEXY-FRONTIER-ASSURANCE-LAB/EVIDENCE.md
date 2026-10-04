@@ -51,3 +51,23 @@ Measured on the sandbox only; not a production latency guarantee.
 - E2: 26 unit/adversarial tests PASS
 - E3: pipeline integration tests PASS
 - E5/E6: NOT PERFORMED; these are standalone research components, not deployed NEXY runtime
+
+
+## Repository persistence verification
+Read-back performed from `main` after persistence repair.
+
+- Persisted implementation Git blob: `db607b90ef2fc0227d754bfabcddbee050b32f29`
+- Local exact-tested implementation Git blob: `db607b90ef2fc0227d754bfabcddbee050b32f29`
+- Persisted test Git blob: `8c9a588fa579acde4ecb918d43e8cb4c0d8459b0`
+- Local exact-tested test Git blob: `8c9a588fa579acde4ecb918d43e8cb4c0d8459b0`
+- Test persistence correction commit: `2b6b9987f72177373c2b877aa48f2e72dd960614`
+- Binding verdict: **PASS — exact tested bytes are the persisted bytes for implementation and tests.**
+
+Fresh post-binding local verification:
+- compileall: PASS
+- unittest: **26/26 PASS**, 0 failures, 0 errors
+- implementation SHA-256: `44d01377712c7eb6da7a635725bb2c0e0997d54a7c5ad0f18c5fab440770551c`
+- test SHA-256: `caab77819f970433ca3686b9008bec834040a4e072a8f744389a7a45de6f8030`
+
+### Integrity incident preserved
+The first persisted test artifact did not match the tested local blob. This was detected by read-back, not ignored. The persisted test was corrected twice: first to restore missing imports, then to restore the exact trailing newline required for byte identity. Final Git blob matches the local tested artifact exactly.
