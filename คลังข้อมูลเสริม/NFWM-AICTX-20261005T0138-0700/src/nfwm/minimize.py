@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable, Iterable, Sequence
 
-from .analyzer import analyze_events
+from .analyzer import Violation, analyze_events
 from .canonical import sha256_canonical
 from .model import Event
 from .profile import Profile
