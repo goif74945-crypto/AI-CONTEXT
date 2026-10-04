@@ -128,3 +128,4 @@ class ReCertTests(unittest.TestCase):
         r=self.c.certify({"law":{"epoch":4}},{"law":{"epoch":3}},RecoveryPolicy()); self.assertEqual(r["status"],"FREEZE"); self.assertEqual(r["mismatches"][0]["path"],"law.epoch")
     def test_ignored_ephemeral_prefix(self):
         p=RecoveryPolicy(ignore_prefixes=("runtime.temp",)); self.assertEqual(self.c.certify({"runtime":{"temp":{"pid":1}},"x":1},{"runtime":{"temp":{"pid":9}},"x":1},p)["status"],"CERTIFIED")
+
