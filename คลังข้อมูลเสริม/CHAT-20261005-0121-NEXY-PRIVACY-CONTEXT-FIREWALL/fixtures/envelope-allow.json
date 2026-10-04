@@ -1,0 +1,33 @@
+{
+  "policy_version": "pcf-0.1",
+  "purpose": "code_review",
+  "destination": "provider-alpha",
+  "decision_time": "2026-10-05T01:30:00+07:00",
+  "required_fields": ["prompt", "source_code"],
+  "fields": [
+    {
+      "id": "prompt",
+      "value": "Review this function",
+      "classification": "INTERNAL",
+      "purposes": ["code_review"],
+      "allowed_destinations": ["provider-alpha"],
+      "retention_seconds": 120
+    },
+    {
+      "id": "source_code",
+      "value": "def f(x): return x + 1",
+      "classification": "INTERNAL",
+      "purposes": ["code_review"],
+      "allowed_destinations": ["provider-alpha"],
+      "retention_seconds": 900
+    },
+    {
+      "id": "irrelevant_note",
+      "value": "must not leave the local boundary",
+      "classification": "SENSITIVE",
+      "purposes": ["summarize"],
+      "allowed_destinations": [],
+      "retention_seconds": 3600
+    }
+  ]
+}
