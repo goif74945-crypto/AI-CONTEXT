@@ -1,0 +1,11 @@
+{
+  "TASK_ID": "T-7D19A2C4",
+  "OWNER_CHAT": "C-5E2A94D1",
+  "STATUS": "CLAIMED",
+  "EXPECTED_PARENT_SHA": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "SEMANTIC_SCOPE": "Map Vault commit revision content-hash mismatch to VAULT_COMMIT_CONFLICT exactly as authoritative spec requires; add regression test only. No auth/config changes.",
+  "TARGET_PATHS": [
+    "packages/api/canonical.ts",
+    "tests/** canonical vault commit coverage"
+  ]
+}
