@@ -6,6 +6,7 @@ from typing import Any, Mapping
 
 from .model import (
     Action,
+    ConsentGrant,
     ConsentMode,
     DataItem,
     EgressRequest,
@@ -141,7 +142,7 @@ class PrivacyFirewall:
         if not isinstance(req.consent_grants, tuple):
             return "INVALID_GRANT_COLLECTION"
         for grant in req.consent_grants:
-            if not hasattr(grant, "grant_id"):
+            if not isinstance(grant, ConsentGrant):
                 return "INVALID_GRANT_OBJECT"
             if not all(
                 isinstance(value, str) and bool(value.strip())
