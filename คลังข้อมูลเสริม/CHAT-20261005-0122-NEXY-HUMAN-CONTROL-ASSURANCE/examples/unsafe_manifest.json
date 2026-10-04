@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "surface_id": "unsafe-owner-panel",
+  "profile": "current_vnext",
+  "source_refs": [],
+  "freeze_surface": {
+    "visible": true,
+    "sticky": false,
+    "maskable": true,
+    "authoritative": false
+  },
+  "pending_state": {
+    "is_evidence": true,
+    "success_claim": true
+  },
+  "actions": [
+    {
+      "id": "delete-project",
+      "label": "Delete project",
+      "accessibility_name": "",
+      "side_effect": "DESTRUCTIVE",
+      "mutates": true,
+      "backend_authorization": false,
+      "confirmation": "NONE",
+      "required_role": "OWNER",
+      "ui_visibility_role": "OWNER",
+      "reversible": false,
+      "rollback_path": null,
+      "irreversible_warning": false,
+      "audit_event": "",
+      "failure_mode": "IGNORE",
+      "deterministic_result": false,
+      "evidence_requirement": "E0",
+      "visible_outcomes": ["SUCCESS"]
+    }
+  ]
+}
