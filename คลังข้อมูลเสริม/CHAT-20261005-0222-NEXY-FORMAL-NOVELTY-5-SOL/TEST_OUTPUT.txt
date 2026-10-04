@@ -1,0 +1,67 @@
+Python 3.13.5
+
+[STATIC] python3 -m compileall -q .
+exit=0
+
+[UNIT] python3 run_all_tests.py
+== 01_requirement_unsat_core/test_ruc.py ==
+test_extracts_irreducible_conflict_and_drops_irrelevant_requirement (__main__.RequirementUnsatCoreTests.test_extracts_irreducible_conflict_and_drops_irrelevant_requirement) ... ok
+test_fails_closed_when_state_space_is_too_large (__main__.RequirementUnsatCoreTests.test_fails_closed_when_state_space_is_too_large) ... ok
+test_returns_witness_for_satisfiable_set (__main__.RequirementUnsatCoreTests.test_returns_witness_for_satisfiable_set) ... ok
+test_supports_cross_variable_implication (__main__.RequirementUnsatCoreTests.test_supports_cross_variable_implication) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+== 02_absence_evidence_planner/test_aep.py ==
+test_hit_refutes_absence_even_when_other_surfaces_are_missing (__main__.AbsenceEvidencePlannerTests.test_hit_refutes_absence_even_when_other_surfaces_are_missing) ... ok
+test_missing_or_stale_surface_blocks_absence_claim_and_plans_cheapest_scan_first (__main__.AbsenceEvidencePlannerTests.test_missing_or_stale_surface_blocks_absence_claim_and_plans_cheapest_scan_first) ... ok
+test_pass_requires_complete_fresh_version_bound_coverage (__main__.AbsenceEvidencePlannerTests.test_pass_requires_complete_fresh_version_bound_coverage) ... ok
+test_version_mismatch_is_not_current_evidence (__main__.AbsenceEvidencePlannerTests.test_version_mismatch_is_not_current_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+== 03_semantic_namespace_collision_guard/test_sncg.py ==
+test_allows_same_identity_with_same_signature (__main__.SemanticNamespaceCollisionGuardTests.test_allows_same_identity_with_same_signature) ... ok
+test_detects_same_label_different_semantics (__main__.SemanticNamespaceCollisionGuardTests.test_detects_same_label_different_semantics) ... ok
+test_detects_semantic_id_drift_even_without_label_collision (__main__.SemanticNamespaceCollisionGuardTests.test_detects_semantic_id_drift_even_without_label_collision) ... ok
+test_unicode_nfkc_normalization_catches_lookalike_width_variants (__main__.SemanticNamespaceCollisionGuardTests.test_unicode_nfkc_normalization_catches_lookalike_width_variants) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+== 04_trace_invariant_candidate_miner/test_ticm.py ==
+test_constant_candidate_can_be_supported_by_holdout (__main__.TraceInvariantCandidateMinerTests.test_constant_candidate_can_be_supported_by_holdout) ... ok
+test_holdout_refutes_false_monotonic_candidate (__main__.TraceInvariantCandidateMinerTests.test_holdout_refutes_false_monotonic_candidate) ... ok
+test_mines_candidates_but_does_not_promote_them_to_law (__main__.TraceInvariantCandidateMinerTests.test_mines_candidates_but_does_not_promote_them_to_law) ... ok
+test_requires_multiple_training_records (__main__.TraceInvariantCandidateMinerTests.test_requires_multiple_training_records) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+== 05_requirement_delta_revalidation_compiler/test_rdrc.py ==
+test_added_and_removed_requirements_have_distinct_obligations (__main__.RequirementDeltaRevalidationCompilerTests.test_added_and_removed_requirements_have_distinct_obligations) ... ok
+test_detects_loosening_as_policy_sensitive (__main__.RequirementDeltaRevalidationCompilerTests.test_detects_loosening_as_policy_sensitive) ... ok
+test_detects_tightening_and_requires_negative_regression_proof (__main__.RequirementDeltaRevalidationCompilerTests.test_detects_tightening_and_requires_negative_regression_proof) ... ok
+test_interval_relation_handles_narrowing (__main__.RequirementDeltaRevalidationCompilerTests.test_interval_relation_handles_narrowing) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+FINAL: PASS
+exit=0
+
+[STRESS] python3 stress_checks.py
+PASS check_ruc elapsed=0.776648s
+PASS check_aep elapsed=0.003277s
+PASS check_sncg elapsed=0.005669s
+PASS check_ticm elapsed=0.014795s
+PASS check_rdrc elapsed=0.013022s
+FINAL: PASS total_elapsed=0.813462s
+exit=0
