@@ -28,3 +28,8 @@ Nothing in this folder is canonical NEXY law. These are AI-proposed companion ex
 
 ## Resume point
 If work continues, first re-read this file, `03_NEXY_COMPATIBILITY_AUDIT.md`, and `evidence/TEST_EVIDENCE.md`; refresh AI-CONTEXT HEAD and re-run tests before changing status.
+
+## Remote persistence verification
+- AI-CONTEXT remote path created: `คลังข้อมูลเสริม/NCAF-20261005-0154-TH-01/`.
+- 18/18 pre-final-audit artifacts were re-fetched from `main` and their Git blob SHA-1 values matched the locally tested bytes exactly.
+- No write action was issued to `goif74945-crypto/NEXY.AI-`.
