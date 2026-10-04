@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "classification": "AI_PROPOSED_CONCEPT",
+  "cases": [
+    {
+      "id": "CRF-A01",
+      "attack_or_failure": "Unrequested secret present beside requested public task",
+      "expected_status": "RELEASED",
+      "expected_invariant": "Only explicitly requested keys cross the boundary"
+    },
+    {
+      "id": "CRF-A02",
+      "attack_or_failure": "Required field exceeds consumer sensitivity ceiling",
+      "expected_status": "FROZEN",
+      "expected_invariant": "Atomic fail-closed release; no partial payload"
+    },
+    {
+      "id": "CRF-A03",
+      "attack_or_failure": "Optional field exceeds consumer sensitivity ceiling",
+      "expected_status": "RELEASED",
+      "expected_invariant": "Optional illegal context is omitted without widening authority"
+    },
+    {
+      "id": "CRF-A04",
+      "attack_or_failure": "Field is used for an undeclared purpose",
+      "expected_status": "FROZEN",
+      "expected_invariant": "Purpose binding is enforced before release"
+    },
+    {
+      "id": "CRF-A05",
+      "attack_or_failure": "Consumer requests a compartment beyond its policy",
+      "expected_status": "VALIDATION_ERROR",
+      "expected_invariant": "Request cannot self-escalate compartment authority"
+    },
+    {
+      "id": "CRF-A06",
+      "attack_or_failure": "Derived summary is labelled less sensitive than a secret source",
+      "expected_status": "VALIDATION_ERROR",
+      "expected_invariant": "Sensitivity taint cannot be downgraded implicitly"
+    },
+    {
+      "id": "CRF-A07",
+      "attack_or_failure": "Derived object drops a source compartment",
+      "expected_status": "VALIDATION_ERROR",
+      "expected_invariant": "Compartment taint is monotonic"
+    },
+    {
+      "id": "CRF-A08",
+      "attack_or_failure": "Derived object broadens source purpose restrictions",
+      "expected_status": "VALIDATION_ERROR",
+      "expected_invariant": "Derived purpose set may narrow but never broaden inherited restrictions"
+    },
+    {
+      "id": "CRF-A09",
+      "attack_or_failure": "Forged declassification grant is supplied by caller",
+      "expected_status": "FROZEN",
+      "expected_invariant": "Grant must match a digest already trusted by an upstream authority layer"
+    },
+    {
+      "id": "CRF-A10",
+      "attack_or_failure": "Trusted grant is modified after approval",
+      "expected_status": "FROZEN",
+      "expected_invariant": "Canonical grant digest detects semantic tampering"
+    },
+    {
+      "id": "CRF-A11",
+      "attack_or_failure": "Blocked value contains a canary secret",
+      "expected_status": "FROZEN",
+      "expected_invariant": "Receipt never contains the blocked value or a per-field value digest"
+    },
+    {
+      "id": "CRF-A12",
+      "attack_or_failure": "Same context arrives with different map insertion order",
+      "expected_status": "RELEASED",
+      "expected_invariant": "Receipt and metadata hashes remain deterministic"
+    },
+    {
+      "id": "CRF-A13",
+      "attack_or_failure": "Context field expires before release",
+      "expected_status": "FROZEN",
+      "expected_invariant": "Expired context is unusable even if other policy dimensions allow it"
+    },
+    {
+      "id": "CRF-A14",
+      "attack_or_failure": "Derived-data provenance graph contains a cycle",
+      "expected_status": "VALIDATION_ERROR",
+      "expected_invariant": "Taint graph must be acyclic and fully resolvable"
+    },
+    {
+      "id": "CRF-A15",
+      "attack_or_failure": "Floating-point context value crosses canonical hashing boundary",
+      "expected_status": "VALIDATION_ERROR",
+      "expected_invariant": "Reference canonical form rejects floats to avoid cross-runtime ambiguity"
+    }
+  ]
+}
