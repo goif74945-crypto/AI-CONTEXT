@@ -4,7 +4,7 @@ import hashlib
 import json
 from copy import deepcopy
 from dataclasses import dataclass
-from typing import Any, Callable, Iterable
+from typing import Any, Callable
 
 
 @dataclass(frozen=True)
@@ -133,6 +133,8 @@ def evaluate_mutation_adequacy(
         raise ValueError("baseline document is not accepted by the oracle")
 
     mutants = generate_mutants(document, max_mutants=max_mutants)
+    if not mutants:
+        raise ValueError("no mutants generated; mutation adequacy is undefined")
     killed = []
     survived = []
     for mutant in mutants:
@@ -145,7 +147,7 @@ def evaluate_mutation_adequacy(
         else:
             killed.append(mutant.mutant_id)
     total = len(mutants)
-    score = 1.0 if total == 0 else len(killed) / total
+    score = len(killed) / total
     return MutationReport(
         total=total,
         killed=len(killed),
