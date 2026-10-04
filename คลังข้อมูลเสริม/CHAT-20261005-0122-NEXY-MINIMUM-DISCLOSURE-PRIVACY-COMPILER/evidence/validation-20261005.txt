@@ -1,0 +1,48 @@
+test_example_policy_compiles_without_payload_values (test_cli.CLITests.test_example_policy_compiles_without_payload_values) ... ok
+test_credential_is_brokered_and_never_enters_bundle (test_compiler.DisclosureCompilerTests.test_credential_is_brokered_and_never_enters_bundle) ... ok
+test_credential_that_recipient_must_receive_freezes (test_compiler.DisclosureCompilerTests.test_credential_that_recipient_must_receive_freezes) ... ok
+test_deterministic_plan_is_order_independent (test_compiler.DisclosureCompilerTests.test_deterministic_plan_is_order_independent) ... ok
+test_duplicate_rule_freezes (test_compiler.DisclosureCompilerTests.test_duplicate_rule_freezes) ... ok
+test_irrelevant_field_is_omitted_by_necessity (test_compiler.DisclosureCompilerTests.test_irrelevant_field_is_omitted_by_necessity) ... ok
+test_negative_retention_freezes (test_compiler.DisclosureCompilerTests.test_negative_retention_freezes) ... ok
+test_private_external_tokenization_requires_runtime_key (test_compiler.DisclosureCompilerTests.test_private_external_tokenization_requires_runtime_key) ... ok
+test_private_external_with_consent_masks (test_compiler.DisclosureCompilerTests.test_private_external_with_consent_masks) ... ok
+test_private_external_without_consent_freezes (test_compiler.DisclosureCompilerTests.test_private_external_without_consent_freezes) ... ok
+test_public_required_external_is_raw_and_retention_is_clipped (test_compiler.DisclosureCompilerTests.test_public_required_external_is_raw_and_retention_is_clipped) ... ok
+test_purpose_mismatch_freezes_even_for_public_data (test_compiler.DisclosureCompilerTests.test_purpose_mismatch_freezes_even_for_public_data) ... ok
+test_secret_external_model_always_freezes (test_compiler.DisclosureCompilerTests.test_secret_external_model_always_freezes) ... ok
+test_secret_trusted_processor_requires_explicit_consent (test_compiler.DisclosureCompilerTests.test_secret_trusted_processor_requires_explicit_consent) ... ok
+test_unknown_recipient_freezes_globally (test_compiler.DisclosureCompilerTests.test_unknown_recipient_freezes_globally) ... ok
+test_credential_never_appears_in_disclosure_bundle (test_invariants.CompilerInvariantTests.test_credential_never_appears_in_disclosure_bundle) ... ok
+test_external_secret_always_freezes_across_transforms_and_consents (test_invariants.CompilerInvariantTests.test_external_secret_always_freezes_across_transforms_and_consents) ... ok
+test_frozen_plan_cannot_build_bundle (test_invariants.CompilerInvariantTests.test_frozen_plan_cannot_build_bundle) ... ok
+test_irrelevant_sensitive_fields_do_not_force_disclosure_or_consent (test_invariants.CompilerInvariantTests.test_irrelevant_sensitive_fields_do_not_force_disclosure_or_consent) ... ok
+test_policy_fingerprint_is_permutation_invariant (test_invariants.CompilerInvariantTests.test_policy_fingerprint_is_permutation_invariant) ... ok
+test_retention_is_never_greater_than_request_or_field_maximum (test_invariants.CompilerInvariantTests.test_retention_is_never_greater_than_request_or_field_maximum) ... ok
+test_transformed_private_value_is_not_echoed (test_invariants.CompilerInvariantTests.test_transformed_private_value_is_not_echoed) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.011s
+
+OK
+
+
+{
+  "json_files": {
+    "examples/support_case_policy.json": "6d96e4759f069191aec5203f908ca9569da27f0dbfc0d2c3d863e59f4e1859bc",
+    "fixtures/adversarial_cases.json": "ef51fa041a56b4ef8badb4370f563311f65305b2217f85ac3018f14c5b9119e7",
+    "requirements.json": "0735e85c4b3ac60a5702ef683856d7e5b2b1d6d78c032bb675e6f52b6250f85f",
+    "schemas/disclosure-plan.schema.json": "513e71c0b8f81d7c7385cfde7ef0a0522ced5f35adf5baf2723d7aaaa510a45e",
+    "schemas/disclosure-policy.schema.json": "662b1b7c56cb65b9388b3ab74ddd45c762374919ced0746b2fc629c88e36b01b"
+  },
+  "python_files": {
+    "src/nmdpc/__init__.py": "d88b563871bb505873c0bf957177c34aa015fba502ad4619b749e2c924b18619",
+    "src/nmdpc/cli.py": "9ce5becd927c581c792f773cf1326f6c0afe2558f91ee6500c0eb32a4a2f56ad",
+    "src/nmdpc/compiler.py": "a9bc3a4a411aa8b8061677dfe0dea6b165cb7870dcef24bb24de7a3627c4df74",
+    "tests/test_cli.py": "170734c164bd360364080f18da558f354d3bd11fdec25d880dc3e4a1e8c8462c",
+    "tests/test_compiler.py": "df329cdbdf7b87ad4a6d208ae15ce18509ed8d1592ad4cfc59e39addde26a40d",
+    "tests/test_invariants.py": "478bb9dbbb9400d0460096e0210a774213f97465b4a89d60881070356f7b5351",
+    "validate.py": "e5c85a7aefd54efa2ffc737326e8a8fc51eb8646180fc08c96e3602054777225"
+  },
+  "tests_returncode": 0
+}
