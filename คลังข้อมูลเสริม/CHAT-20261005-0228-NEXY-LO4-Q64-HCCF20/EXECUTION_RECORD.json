@@ -1,0 +1,14 @@
+{
+  "work_code": "CHAT-20261005-0228-NEXY-LO4-Q64-HCCF20",
+  "classification": "AI_PROPOSED_EXPERIMENTAL_NON_CANON",
+  "target_repository": "goif74945-crypto/AI-CONTEXT",
+  "target_subtree": "คลังข้อมูลเสริม/CHAT-20261005-0228-NEXY-LO4-Q64-HCCF20",
+  "protected_repository_pattern": "*NEXY.AI*",
+  "numeric_law": "checked signed Q64.64; float forbidden in decision path",
+  "systems_registered": 20,
+  "initial_failure": "F-001 decimal-weight ULP normalization",
+  "repair": "integer-weight normalized means",
+  "nexy_integration": "NOT_VERIFIED",
+  "nexy_runtime": "NOT_VERIFIED",
+  "canon_promotion": "NOT_PERFORMED"
+}
