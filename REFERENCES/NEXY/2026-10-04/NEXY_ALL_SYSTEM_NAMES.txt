@@ -1,0 +1,74 @@
+DOC-B System Law
+Auth hardening
+Build Order
+Canonical API
+Canonical config
+Canonical contracts
+Configuration
+FSM / state control
+Module architecture
+Observability
+Queue
+RBAC
+Reference stack
+Retention / redaction
+Runtime enforcement
+Scope fence
+SWARM / JUDGE / LAW
+System baseline
+Test / CI gate
+UI truth layer
+Vault / storage
+Product screens
+UX contract
+Exact-head deployment evidence
+Auto recovery
+Build reproducibility
+Builder Engine
+CIRL
+CLE
+Constitutional Fabric
+Crash/recovery
+Cross-universe permissions
+Deployment direction
+Detection model
+DSL
+ECL
+Economic layer
+G12 Cross-shard transfer
+G14 Toolchain
+G15 Numeric law
+G16 Crowd budget
+G16 World topology
+G17 AI/crowd determinism
+G18 Networking
+G19 Hardware determinism
+G1–G10 Game Fabric
+G20 Capability registry
+G21 Admission
+G22 Rejection codes
+G23 Public registry view
+G25 Chaos
+Global Anchor
+Human/operational determinism
+Implementation verification
+IRL
+L1o
+Lifecycle
+Lo2
+Lo3
+Memory model
+Named product surfaces
+Node security
+Public mode
+Robotics
+RSEL
+Runtime determinism
+Runtime integrity
+Sandbox
+Sovereign continuity
+Storage containment
+Trinity
+Universe
+Universe isolation
+Versioning law
