@@ -1,0 +1,1 @@
+import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{limitPreferenceUpdate}from"./CODE.ts";test("limits drift",()=>assert.equal(limitPreferenceUpdate(Q.zero(),Q.one(),Q.parse("0.1")).toDecimal(1),"0.1"));

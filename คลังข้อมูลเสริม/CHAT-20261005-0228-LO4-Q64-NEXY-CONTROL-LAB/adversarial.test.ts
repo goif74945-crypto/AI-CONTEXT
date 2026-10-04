@@ -1,0 +1,13 @@
+import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q,unit}from"./shared/q64.ts";import{chooseModel}from"./01_model-route-stabilizer/CODE.ts";import{allocateBudget}from"./03_compute-budget-allocator/CODE.ts";import{promotionGate}from"./09_lo4-promotion-gate/CODE.ts";import{resolveConsensus}from"./10_consensus-weight-resolver/CODE.ts";import{PrivacyBudgetGovernor}from"./12_privacy-budget-governor/CODE.ts";import{chooseRunnable}from"./13_fair-queue-credit-scheduler/CODE.ts";
+const w={quality:Q.one(),latency:Q.one(),cost:Q.one(),safety:Q.one(),stability:Q.one()};
+test("unit metrics fail closed",()=>assert.throws(()=>unit(Q.parse("1.0001")),RangeError));
+test("no safe model fails",()=>assert.throws(()=>chooseModel([{id:"x",quality:Q.one(),latency:Q.zero(),cost:Q.zero(),safety:Q.zero(),stability:Q.one()}],w,Q.parse("0.9")),/NO_SAFE_MODEL/));
+test("insufficient floors fail",()=>assert.throws(()=>allocateBudget(Q.fromInt(1n),[{id:"a",weight:Q.one(),floor:Q.fromInt(2n)}]),/INSUFFICIENT/));
+test("zero weights with remainder fail",()=>assert.throws(()=>allocateBudget(Q.fromInt(2n),[{id:"a",weight:Q.zero(),floor:Q.one()}]),/ZERO_WEIGHT/));
+test("promotion security hard gate rejects",()=>assert.equal(promotionGate({evidence:Q.one(),determinism:Q.one(),security:Q.parse("0.89"),regression:Q.one(),integration:Q.one()}).status,"REJECT"));
+test("empty consensus abstains",()=>assert.equal(resolveConsensus([],Q.parse("0.2")).decision,0));
+test("privacy negative cost fails",()=>{const g=new PrivacyBudgetGovernor(Q.one());assert.throws(()=>g.tryConsume(Q.parse("-0.1")),RangeError)});
+test("queue with no runnable actor fails",()=>assert.throws(()=>chooseRunnable([{id:"a",credit:Q.zero(),cost:Q.one()}]),/NO_RUNNABLE/));
+test("raw 128 overflow fails",()=>assert.throws(()=>Q.fromRaw(Q.MIN_RAW-1n),RangeError));
+test("decimal grammar rejects exponent",()=>assert.throws(()=>Q.parse("1e-3"),TypeError));
+test("duplicate identity fails",()=>assert.throws(()=>chooseModel([{id:"x",quality:Q.one(),latency:Q.zero(),cost:Q.zero(),safety:Q.one(),stability:Q.one()},{id:"x",quality:Q.one(),latency:Q.zero(),cost:Q.zero(),safety:Q.one(),stability:Q.one()}],w,Q.parse("0.9")),/DUPLICATE_ID/));

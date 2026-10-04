@@ -1,0 +1,1 @@
+import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{rankTools}from"./CODE.ts";test("risk penalized",()=>{const a={id:"a",expectedUtility:Q.one(),confidence:Q.one(),latencyCost:Q.zero(),moneyCost:Q.zero(),mutationRisk:Q.zero()};assert.equal(rankTools([{...a,id:"b",mutationRisk:Q.one()},a])[0].id,"a")});

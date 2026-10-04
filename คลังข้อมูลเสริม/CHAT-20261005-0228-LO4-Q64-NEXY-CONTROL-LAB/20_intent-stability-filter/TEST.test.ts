@@ -1,0 +1,1 @@
+import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{filterIntent}from"./CODE.ts";test("detects oscillation",()=>{const p={confidence:Q.one(),stability:Q.one(),direction:1 as const};const c={confidence:Q.one(),stability:Q.one(),direction:-1 as const};assert.equal(filterIntent(p,c,Q.parse("0.5")).oscillation,true)});

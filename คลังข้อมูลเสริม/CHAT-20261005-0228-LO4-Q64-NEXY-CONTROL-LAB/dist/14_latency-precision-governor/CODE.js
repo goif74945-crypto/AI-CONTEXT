@@ -1,0 +1,2 @@
+import { Q64, complement, unit } from "../shared/q64.js";
+export function choosePrecision(importance, urgency, latencyPressure, uncertainty) { const score = Q64.weightedMean([unit(importance), complement(urgency), complement(latencyPressure), unit(uncertainty)], [Q64.fromInt(4n), Q64.fromInt(2n), Q64.fromInt(3n), Q64.fromInt(4n)]); return { score, tier: score.compare(Q64.parse('0.72')) >= 0 ? 'DEEP' : score.compare(Q64.parse('0.42')) >= 0 ? 'BALANCED' : 'FAST' }; }

@@ -1,0 +1,1 @@
+import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{safetyMargin,requireSafety}from"./CODE.ts";test("unsafe blocked",()=>{const h={likelihood:Q.one(),impact:Q.one(),containment:Q.zero(),reversibility:Q.zero()};assert.equal(safetyMargin(h).isZero(),true);assert.throws(()=>requireSafety(h,Q.parse("0.1")))});
