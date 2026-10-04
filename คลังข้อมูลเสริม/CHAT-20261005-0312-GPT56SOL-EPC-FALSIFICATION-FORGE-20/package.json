@@ -1,0 +1,14 @@
+{
+  "name": "@nexy-lo4/epc-falsification-forge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "tsc -p tsconfig.json --pretty false",
+    "static": "node scripts/static-verify.cjs",
+    "test": "npm run build && npm run static && node --test tests/*.test.cjs",
+    "verify": "npm run clean && npm run build && npm run static && node --test tests/*.test.cjs && npm run replay",
+    "replay": "node scripts/replay-proof.cjs"
+  }
+}
