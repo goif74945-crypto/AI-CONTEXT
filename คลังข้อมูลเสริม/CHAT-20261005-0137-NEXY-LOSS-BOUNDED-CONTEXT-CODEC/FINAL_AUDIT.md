@@ -25,6 +25,7 @@ Create a new, useful standalone project compatible with future NEXY.AI integrati
 | NEXY.AI compatibility design | PASS as contract/design only | `INTEGRATION_CONTRACT.md` |
 | actual NEXY.AI integration | NOT_VERIFIED / intentionally out of scope | protected scope |
 | NEXY.AI repo mutation | PASS: none performed | operation log / target repo boundary |
+| AI-CONTEXT publication | PASS | PR #56 merged; remote 30-file listing verified |
 
 ## Final quality gate
 
@@ -35,7 +36,8 @@ Create a new, useful standalone project compatible with future NEXY.AI integrati
 - CLI integration evidence: PASS;
 - known critical local errors: none observed after final regression;
 - protected NEXY.AI mutation: none performed;
-- deployment/in-product claims: not made.
+- deployment/in-product claims: not made;
+- AI-CONTEXT publication: PASS, PR #56 merged to main and 30-file remote listing verified.
 
 ## Known limitations
 
