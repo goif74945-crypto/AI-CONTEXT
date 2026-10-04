@@ -23,7 +23,9 @@ class AdversarialDeterminismTests(unittest.TestCase):
         for _ in range(100):
             sample=base[:]; rng.shuffle(sample); self.assertEqual(d.detect(sample,{}),expected)
 
+
 # ===== test_ghostedge.py =====
+import unittest
 from frontier_assurance_lab import PerturbationExperiment, HiddenDependencyDetector
 class GhostEdgeTests(unittest.TestCase):
     def test_detects_repeatable_undeclared_edge(self):
@@ -41,7 +43,9 @@ class GhostEdgeTests(unittest.TestCase):
         d=HiddenDependencyDetector(min_hits=1,min_ratio_milli=1); ex=[PerturbationExperiment("z","a",("b",),("b",)),PerturbationExperiment("a","a",("b",),("b",))]
         self.assertEqual(d.detect(ex,{}),d.detect(reversed(ex),{}))
 
+
 # ===== test_muscle.py =====
+import unittest
 from frontier_assurance_lab import Constraint, ConstraintEngine, FreezeError
 class MuscleTests(unittest.TestCase):
     def setUp(self): self.engine=ConstraintEngine({"mode":["safe","fast","audit"]})
@@ -57,7 +61,9 @@ class MuscleTests(unittest.TestCase):
     def test_unknown_variable_freezes(self):
         with self.assertRaises(FreezeError): self.engine.solve([Constraint("x","missing","EQ",("v",))])
 
+
 # ===== test_obsure.py =====
+import unittest
 from frontier_assurance_lab import EffectSpec, TelemetryEventSpec, ObservabilityGate
 BASE=("trace_id","action_id","effect_id","timestamp")
 def events(eid,fields=BASE,reversible=False):
@@ -73,7 +79,9 @@ class ObsureTests(unittest.TestCase):
     def test_critical_complete_passes(self):
         f=BASE+("authority_ref","evidence_ref","state_digest"); self.assertEqual(self.g.evaluate([EffectSpec("deploy","CRITICAL",True)],events("deploy",f,True))["status"],"PASS")
 
+
 # ===== test_parex.py =====
+import unittest
 from frontier_assurance_lab import Plan, ParetoPruner
 class ParexTests(unittest.TestCase):
     def setUp(self): self.p=ParetoPruner()
@@ -90,7 +98,9 @@ class ParexTests(unittest.TestCase):
         a=Plan("a",1,1,1,1,1); b=Plan("b",1,1,1,1,1)
         self.assertEqual(self.p.prune([b,a])["frontier"],["a","b"])
 
+
 # ===== test_pipeline.py =====
+import unittest
 from frontier_assurance_lab import Constraint,Plan,PerturbationExperiment,RecoveryPolicy,EffectSpec,TelemetryEventSpec,FrontierAssurancePipeline
 BASE=("trace_id","action_id","effect_id","timestamp")
 class PipelineTests(unittest.TestCase):
@@ -105,7 +115,9 @@ class PipelineTests(unittest.TestCase):
         kw=self.base(); kw["experiments"]=[PerturbationExperiment("e1","vault",("judge",),("judge",)),PerturbationExperiment("e2","vault",("judge",),("judge",))]
         r=FrontierAssurancePipeline({"mode":["safe","fast"]}).assess(**kw); self.assertIn("UNDECLARED_DEPENDENCY",r["reasons"])
 
+
 # ===== test_recert.py =====
+import unittest
 from frontier_assurance_lab import RecoveryPolicy, RecoveryCertifier
 class ReCertTests(unittest.TestCase):
     def setUp(self): self.c=RecoveryCertifier()
