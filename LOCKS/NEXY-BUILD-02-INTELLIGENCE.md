@@ -1,0 +1,34 @@
+# NEXY-BUILD-02-INTELLIGENCE — SHARED PATH LOCK
+
+CHAT_ID: NEXY-BUILD-02-INTELLIGENCE
+MODE: EXECUTE
+SCOPE: INTELLIGENCE / LOGIC / CERTAINTY / TRINITY
+TARGET_REPOSITORY: goif74945-crypto/NEXY.AI-
+TARGET_BRANCH: NEXY.ai
+BOUND_HEAD: cde969ea2d16626a60ad5571e9308ea294289d15
+AI_CONTEXT_BASE_HEAD: 3ca037ce1408a0f5598c25d271aba6538781d64d
+AUTHORITATIVE_DESIGN: แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx
+AUTHORITATIVE_DESIGN_SHA256: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
+
+LOCK_INTENTION:
+- packages/intelligence/**
+- tests directly exercising INT-01..INT-10
+- packages/phase-f/l1o/predictive-structuring.ts only if required to resolve the proven MPG/EPE authority conflict
+- tests/contract/l1o-mpg-epe.test.ts only if required to resolve the same conflict
+
+EXCLUDED:
+- Game
+- API/security
+- UI
+- CI/release
+- core architecture, except a shared interface only when proven necessary
+
+PRECEDENCE_FINDINGS_AT_LOCK:
+- Older strict ambiguity -> VOID_STATE is superseded for graded ambiguity by later Bounded Truth / CTS and L600 WAIT_FOR_DATA_CLARITY threshold semantics.
+- No-guess / no fabricated certainty remains active.
+- Final architecture defines IRL -> CIRL -> CLE -> L1o -> Lo3 -> DSL -> RSEL -> ECL -> Safety Kernel -> Lo2.
+- Authoritative L600 defines MPG = Multi-Path Generator and EPE = Entropy & Pruning Engine.
+- Existing phase-f predictive-structuring naming MPG = Memory Prediction Graph / EPE = Evidence Pattern Extraction is a proven conflict and is not authoritative for INT-03/INT-04.
+
+MUTATION_RULE:
+Any NEXY mutation must be based on BOUND_HEAD. If NEXY.ai moves, inspect the diff before proceeding. No branch creation, branch switch, force update, or history rewrite.
