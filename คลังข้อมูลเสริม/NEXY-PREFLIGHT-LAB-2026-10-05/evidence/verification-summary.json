@@ -1,0 +1,21 @@
+{
+  "checks": {
+    "acceptance_vectors": true,
+    "canonical_permutation_stability": true,
+    "compile": true,
+    "unit_tests": true
+  },
+  "limitations": [
+    "Reference implementation only; NEXY.AI integration not executed.",
+    "No tool-broker interception or deployment proof.",
+    "Logical path normalization is not an OS/filesystem sandbox."
+  ],
+  "observed_vectors": {
+    "task-evidence-gap": "NOT_VERIFIED",
+    "task-protected-write": "CONFLICT",
+    "task-safe": "PASS"
+  },
+  "python": "3.13.5",
+  "status": "PASS",
+  "unique_hashes_for_24_permutations": 1
+}
