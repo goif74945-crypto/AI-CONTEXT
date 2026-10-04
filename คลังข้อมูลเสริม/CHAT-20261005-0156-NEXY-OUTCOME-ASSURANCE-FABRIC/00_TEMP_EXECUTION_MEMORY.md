@@ -8,7 +8,7 @@
 - Mutable scope: this namespace only.
 - Protected scope: every repository whose name contains `NEXY.AI`; all existing paths outside this namespace.
 - NEXY.AI repository mutation: FORBIDDEN.
-- Current state: `LOCAL_VERIFICATION_PASS / PERSISTENCE_IN_PROGRESS`
+- Current state: `PERSISTED_SOURCE_VERIFIED / FINAL_METADATA_WRITE_PENDING`
 
 ## Objective
 Design, implement, test, repair, and preserve five AI-proposed supplemental systems that verify user-level outcomes after execution rather than merely action correctness.
@@ -20,17 +20,13 @@ Design, implement, test, repair, and preserve five AI-proposed supplemental syst
 4. BRG — Benefit Regression Guard.
 5. ORP — Outcome Recovery Planner.
 
-## Completed locally
-- architecture/non-duplication/requirements/integration/failure/performance docs;
-- Python 3.11+ stdlib reference package;
-- JSON schemas and examples;
-- 45-test final suite PASS;
-- compileall PASS;
-- static banned-import audit PASS;
-- JSON schema syntax PASS;
-- deterministic replay coverage;
-- local performance benchmark;
-- two failure->repair->retest cycles recorded.
+## Verified execution state
+- 45/45 final tests PASS.
+- compileall/static audit/schema parse PASS.
+- two observed failure -> repair -> re-test cycles recorded.
+- 27 tested source/test/schema/tool files bound by `TESTED_CONTENT_SHA256.txt`.
+- repository read-back at `9b968218f83cc86abdda44002a5e64f00a9975ed`: 56 expected files, 56 observed, zero missing, zero blob mismatches, zero extras.
+- no repository whose name contains `NEXY.AI` was mutated by this mission.
 
-## Remaining gate
-Persist exact tested bytes to AI-CONTEXT, read back/compare identities, generate final repository-bound audit/manifest, and only then mark COMPLETE.
+## Resume point
+Only final metadata publication/read-back remains. Do not modify tested source/test bytes unless full E1/E2/E3 revalidation is repeated and hash evidence is regenerated.
