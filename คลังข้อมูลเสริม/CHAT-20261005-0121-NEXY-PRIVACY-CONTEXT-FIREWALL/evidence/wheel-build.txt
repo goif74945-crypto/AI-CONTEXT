@@ -1,0 +1,10 @@
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing /mnt/data/nexy_pcf_lab
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: nexy-privacy-context-firewall
+  Building wheel for nexy-privacy-context-firewall (pyproject.toml): started
+  Building wheel for nexy-privacy-context-firewall (pyproject.toml): finished with status 'done'
+  Created wheel for nexy-privacy-context-firewall: filename=nexy_privacy_context_firewall-0.1.0-py3-none-any.whl size=7100 sha256=833efe9bd21ab85b5065896e86e3ada48c561365bc50dd2dba23f482e55d8239
+  Stored in directory: /tmp/pip-ephem-wheel-cache-d6d70wjb/wheels/ce/9f/15/d5c41471ce2fc7a6660703e11e018498c5f28892595d403c77
+Successfully built nexy-privacy-context-firewall
