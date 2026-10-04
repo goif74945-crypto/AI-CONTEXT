@@ -85,15 +85,17 @@ def calibration_report(
         gap = avg_conf - success_rate
         weighted_gap += abs(gap) * count / len(rows)
         signed_weighted_gap += gap * count / len(rows)
-        buckets.append({
-            "bucket": i,
-            "lower": i / bucket_count,
-            "upper": (i + 1) / bucket_count,
-            "count": count,
-            "avg_confidence": round(avg_conf, 12),
-            "success_rate": round(success_rate, 12),
-            "signed_gap": round(gap, 12),
-        })
+        buckets.append(
+            {
+                "bucket": i,
+                "lower": i / bucket_count,
+                "upper": (i + 1) / bucket_count,
+                "count": count,
+                "avg_confidence": round(avg_conf, 12),
+                "success_rate": round(success_rate, 12),
+                "signed_gap": round(gap, 12),
+            }
+        )
 
     if len(rows) < min_records:
         status = "NOT_ENOUGH_DATA"
