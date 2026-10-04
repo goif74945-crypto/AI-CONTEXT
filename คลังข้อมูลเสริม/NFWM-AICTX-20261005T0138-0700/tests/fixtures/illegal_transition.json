@@ -1,0 +1,6 @@
+{
+  "schema_version": "nfwm.trace.v1",
+  "events": [
+    {"seq": 1, "kind": "STATE_TRANSITION", "trace_id": "t1", "request_id": "q1", "run_id": "r1", "state_from": "READY", "state_to": "CONSENSUS"}
+  ]
+}
