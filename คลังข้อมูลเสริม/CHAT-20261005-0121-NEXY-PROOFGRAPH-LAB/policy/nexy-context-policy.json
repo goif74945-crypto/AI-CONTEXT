@@ -1,0 +1,19 @@
+{
+  "schema": "nexy-proofgraph/policy-v1",
+  "proposal_root": "คลังข้อมูลเสริม",
+  "protected_repo_name_fragment": "NEXY.AI",
+  "scan_max_bytes": 2000000,
+  "nexy": {
+    "current_requirement_rows": 837,
+    "current_build_rows": 773,
+    "deprecated_registry_count": 215,
+    "historical_partial_registry_count": 262,
+    "ontology_entity_count": 518
+  },
+  "authority_sources": [
+    "projects/NEXY.AI/overview.md",
+    "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md",
+    "rules/VERIFICATION.md",
+    "AI-EXECUTION-KERNEL.md"
+  ]
+}
