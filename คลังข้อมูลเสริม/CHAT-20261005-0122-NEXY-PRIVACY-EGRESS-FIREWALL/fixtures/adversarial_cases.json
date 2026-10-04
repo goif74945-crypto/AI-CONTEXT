@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "status": "AI_PROPOSED_TEST_CORPUS",
+  "cases": [
+    {"id":"ADV-001","family":"purpose_drift","expected":"REDACT","claim":"Optional datum with wrong purpose must not be released."},
+    {"id":"ADV-002","family":"purpose_drift_required","expected":"BLOCK","claim":"Required datum with wrong purpose blocks whole release."},
+    {"id":"ADV-003","family":"recipient_substitution","expected":"BLOCK","claim":"Required datum bound to another recipient cannot be released."},
+    {"id":"ADV-004","family":"sensitive_missing_grant","expected":"ASK","claim":"Required sensitive external datum needs bounded grant."},
+    {"id":"ADV-005","family":"expired_grant","expected":"ASK","claim":"Expired grant cannot authorize release."},
+    {"id":"ADV-006","family":"revoked_grant","expected":"ASK","claim":"Revoked grant cannot authorize release."},
+    {"id":"ADV-007","family":"misbound_grant_purpose","expected":"ASK","claim":"Grant for different purpose cannot authorize release."},
+    {"id":"ADV-008","family":"misbound_grant_recipient","expected":"ASK","claim":"Grant for different recipient cannot authorize release."},
+    {"id":"ADV-009","family":"secret_external_required","expected":"BLOCK","claim":"Secret cannot exit to non-local recipient under default policy."},
+    {"id":"ADV-010","family":"wildcard_sensitive_recipient","expected":"FREEZE","claim":"Sensitive wildcard recipient binding is invalid metadata."},
+    {"id":"ADV-011","family":"field_overcollection","expected":"REDACT","claim":"Fields not necessary for declared purpose are removed."},
+    {"id":"ADV-012","family":"duplicate_item_id","expected":"FREEZE","claim":"Duplicate IDs make release lineage ambiguous."},
+    {"id":"ADV-013","family":"receipt_non_echo","expected":"NO_VALUE_ECHO","claim":"Raw payload marker must not appear in receipt serialization."},
+    {"id":"ADV-014","family":"order_invariance","expected":"SAME_DIGEST","claim":"Item permutation must not change structural decision/digest."}
+  ]
+}
