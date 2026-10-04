@@ -1,0 +1,10 @@
+[project]
+name = "nexy-verification-frontier-lab"
+version = "0.1.0"
+description = "AI-proposed standalone verification prototypes for future NEXY integration"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.frontier_lab]
+status = "AI_PROPOSED_NON_CANONICAL"
+work_id = "CHAT-20261005-0155-NEXY-VERIFICATION-FRONTIER-LAB"
