@@ -14,6 +14,8 @@ def _normalize(value: Any) -> Any:
     if value is None or isinstance(value, (str, int, bool)):
         return value
     if isinstance(value, float):
+        # json.dumps(..., allow_nan=False) rejects NaN/Infinity, but we normalize
+        # through a round trip so callers cannot smuggle non-standard numbers.
         return value
     if isinstance(value, Mapping):
         normalized: dict[str, Any] = {}
@@ -28,7 +30,16 @@ def _normalize(value: Any) -> Any:
 
 
 def canonical_json(value: Any) -> str:
-    """Return a stable UTF-8 JSON representation."""
+    """Return a stable UTF-8 JSON representation.
+
+    Properties:
+    - mapping keys are sorted;
+    - insignificant whitespace is removed;
+    - Unicode is preserved rather than ASCII-escaped;
+    - NaN/Infinity are rejected;
+    - unsupported Python objects are rejected explicitly.
+    """
+
     try:
         return json.dumps(
             _normalize(value),
