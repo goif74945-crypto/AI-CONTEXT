@@ -13,10 +13,10 @@
 - [x] Temporary/resumption checkpoint exists.
 - [x] NEXY integration is a proposal only.
 - [x] No NEXY.AI repository mutation is part of the implementation.
-- [ ] Remote AI-CONTEXT write/readback verified. (completed only after publication step)
+- [x] Remote AI-CONTEXT write/readback verified: 34/34 pre-final published files matched exact local Git blob identities.
 
-## Status before remote publication
+## Final status
 
-`PARTIAL`
+`COMPLETE`
 
-The implementation is locally verified, but the user explicitly requires storage in AI-CONTEXT. Therefore COMPLETE is forbidden until remote write/readback is proven.
+The requested external project is implemented, locally verified, published to AI-CONTEXT on an isolated branch, and byte-identity read back. Live NEXY.AI runtime/deployment compatibility is intentionally `NOT_VERIFIED`; that is outside this project's authorized mutation scope, not a hidden completion claim.
