@@ -34,7 +34,17 @@ class Claim:
 
     @property
     def identity_fingerprint(self) -> str:
-        return fingerprint({"claim_id":self.claim_id,"subject":self.subject,"predicate":self.predicate,"scope":self.scope,"value":self.value,"authority_rank":self.authority_rank,"evidence_digest":self.evidence_digest})
+        return fingerprint(
+            {
+                "claim_id": self.claim_id,
+                "subject": self.subject,
+                "predicate": self.predicate,
+                "scope": self.scope,
+                "value": self.value,
+                "authority_rank": self.authority_rank,
+                "evidence_digest": self.evidence_digest,
+            }
+        )
 
 
 @dataclass(frozen=True, slots=True)
@@ -42,6 +52,7 @@ class Retraction:
     retraction_id: str
     claim_id: str
     reason: str
+
     def __post_init__(self) -> None:
         if not self.retraction_id.strip() or not self.claim_id.strip() or not self.reason.strip():
             raise MergeError("retraction fields must be non-empty")
@@ -49,65 +60,122 @@ class Retraction:
 
 @dataclass(frozen=True, slots=True)
 class Replica:
-    claims: tuple[Claim,...]=()
-    retractions: tuple[Retraction,...]=()
+    claims: tuple[Claim, ...] = ()
+    retractions: tuple[Retraction, ...] = ()
+
 
 @dataclass(frozen=True, slots=True)
 class ResolvedKey:
-    key: tuple[str,str,str]
+    key: tuple[str, str, str]
     status: str
-    values: tuple[Any,...]
-    claim_ids: tuple[str,...]
-    authority_rank: int|None
+    values: tuple[Any, ...]
+    claim_ids: tuple[str, ...]
+    authority_rank: int | None
+
 
 @dataclass(frozen=True, slots=True)
 class MergeResult:
-    status:str
-    claims:tuple[Claim,...]
-    retractions:tuple[Retraction,...]
-    resolved:tuple[ResolvedKey,...]
-    reason_codes:tuple[str,...]
-    state_fingerprint:str
+    status: str
+    claims: tuple[Claim, ...]
+    retractions: tuple[Retraction, ...]
+    resolved: tuple[ResolvedKey, ...]
+    reason_codes: tuple[str, ...]
+    state_fingerprint: str
 
 
-def merge_replicas(replicas:Iterable[Replica])->MergeResult:
-    claim_by_id:dict[str,Claim]={}
-    retraction_by_id:dict[str,Retraction]={}
+def merge_replicas(replicas: Iterable[Replica]) -> MergeResult:
+    claim_by_id: dict[str, Claim] = {}
+    retraction_by_id: dict[str, Retraction] = {}
+
     for replica in replicas:
         for claim in replica.claims:
-            existing=claim_by_id.get(claim.claim_id)
-            if existing is not None and existing.identity_fingerprint!=claim.identity_fingerprint:
+            existing = claim_by_id.get(claim.claim_id)
+            if existing is not None and existing.identity_fingerprint != claim.identity_fingerprint:
                 raise MergeError(f"claim identity collision: {claim.claim_id}")
-            claim_by_id[claim.claim_id]=claim
+            claim_by_id[claim.claim_id] = claim
         for retraction in replica.retractions:
-            existing=retraction_by_id.get(retraction.retraction_id)
-            if existing is not None and existing!=retraction:
+            existing = retraction_by_id.get(retraction.retraction_id)
+            if existing is not None and existing != retraction:
                 raise MergeError(f"retraction identity collision: {retraction.retraction_id}")
-            retraction_by_id[retraction.retraction_id]=retraction
-    claims=tuple(sorted(claim_by_id.values(),key=lambda c:c.claim_id))
-    retractions=tuple(sorted(retraction_by_id.values(),key=lambda r:r.retraction_id))
-    tombstoned={r.claim_id for r in retractions}
-    unknown_targets=sorted(tombstoned-set(claim_by_id))
+            retraction_by_id[retraction.retraction_id] = retraction
+
+    claims = tuple(sorted(claim_by_id.values(), key=lambda c: c.claim_id))
+    retractions = tuple(sorted(retraction_by_id.values(), key=lambda r: r.retraction_id))
+    tombstoned = {retraction.claim_id for retraction in retractions}
+    unknown_targets = sorted(tombstoned - set(claim_by_id))
     if unknown_targets:
         raise MergeError(f"retraction references unknown claim ids: {unknown_targets}")
-    active=[c for c in claims if c.claim_id not in tombstoned]
-    grouped:dict[tuple[str,str,str],list[Claim]]={}
+
+    active = [claim for claim in claims if claim.claim_id not in tombstoned]
+    grouped: dict[tuple[str, str, str], list[Claim]] = {}
     for claim in active:
-        grouped.setdefault(claim.semantic_key,[]).append(claim)
-    resolved:list[ResolvedKey]=[]
-    conflicts=0
+        grouped.setdefault(claim.semantic_key, []).append(claim)
+
+    resolved: list[ResolvedKey] = []
+    conflicts = 0
     for key in sorted(grouped):
-        group=grouped[key]
-        top_rank=max(c.authority_rank for c in group)
-        top=[c for c in group if c.authority_rank==top_rank]
-        by_value:dict[str,list[Claim]]={}; values:dict[str,Any]={}
+        group = grouped[key]
+        top_rank = max(claim.authority_rank for claim in group)
+        top = [claim for claim in group if claim.authority_rank == top_rank]
+        by_value: dict[str, list[Claim]] = {}
+        values: dict[str, Any] = {}
         for claim in top:
-            fp=fingerprint(claim.value); by_value.setdefault(fp,[]).append(claim); values[fp]=claim.value
-        fps=sorted(by_value); status="PASS" if len(fps)==1 else "CONFLICT"
-        if status=="CONFLICT": conflicts+=1
-        resolved.append(ResolvedKey(key,status,tuple(values[fp] for fp in fps),tuple(sorted(c.claim_id for fp in fps for c in by_value[fp])),top_rank))
-    overall="CONFLICT" if conflicts else "PASS"
-    reasons=("UNRESOLVED_CONCURRENT_CONFLICT",) if conflicts else ("CONVERGED",)
-    payload={"claims":[{"claim_id":c.claim_id,"subject":c.subject,"predicate":c.predicate,"scope":c.scope,"value":c.value,"authority_rank":c.authority_rank,"evidence_digest":c.evidence_digest} for c in claims],"retractions":[{"retraction_id":r.retraction_id,"claim_id":r.claim_id,"reason":r.reason} for r in retractions],"resolved":[{"key":list(r.key),"status":r.status,"values":list(r.values),"claim_ids":list(r.claim_ids),"authority_rank":r.authority_rank} for r in resolved],"status":overall,"reason_codes":list(reasons)}
+            fp = fingerprint(claim.value)
+            by_value.setdefault(fp, []).append(claim)
+            values[fp] = claim.value
+        fps = sorted(by_value)
+        status = "PASS" if len(fps) == 1 else "CONFLICT"
+        if status == "CONFLICT":
+            conflicts += 1
+        resolved.append(
+            ResolvedKey(
+                key=key,
+                status=status,
+                values=tuple(values[fp] for fp in fps),
+                claim_ids=tuple(sorted(c.claim_id for fp in fps for c in by_value[fp])),
+                authority_rank=top_rank,
+            )
+        )
+
+    overall = "CONFLICT" if conflicts else "PASS"
+    reasons = ("UNRESOLVED_CONCURRENT_CONFLICT",) if conflicts else ("CONVERGED",)
+    payload = {
+        "claims": [
+            {
+                "claim_id": c.claim_id,
+                "subject": c.subject,
+                "predicate": c.predicate,
+                "scope": c.scope,
+                "value": c.value,
+                "authority_rank": c.authority_rank,
+                "evidence_digest": c.evidence_digest,
+            }
+            for c in claims
+        ],
+        "retractions": [
+            {"retraction_id": r.retraction_id, "claim_id": r.claim_id, "reason": r.reason}
+            for r in retractions
+        ],
+        "resolved": [
+            {
+                "key": list(r.key),
+                "status": r.status,
+                "values": list(r.values),
+                "claim_ids": list(r.claim_ids),
+                "authority_rank": r.authority_rank,
+            }
+            for r in resolved
+        ],
+        "status": overall,
+        "reason_codes": list(reasons),
+    }
+    # Force canonical serialization now so unsupported values fail during merge.
     canonical_json(payload)
-    return MergeResult(overall,claims,retractions,tuple(resolved),reasons,fingerprint(payload))
+    return MergeResult(
+        status=overall,
+        claims=claims,
+        retractions=retractions,
+        resolved=tuple(resolved),
+        reason_codes=reasons,
+        state_fingerprint=fingerprint(payload),
+    )
