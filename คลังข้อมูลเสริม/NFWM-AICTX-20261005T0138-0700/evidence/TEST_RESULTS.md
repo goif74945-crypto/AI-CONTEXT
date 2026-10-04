@@ -93,3 +93,23 @@ A test replaces the stored witness hash with 64 zeroes. Replay returns exit `3`,
 - NEXY production logs/schema compatibility: NOT_VERIFIED.
 - deployment behavior: NOT_VERIFIED.
 - global-minimum witness cardinality: not claimed.
+
+
+## Final regression after remote-state synchronization
+
+After remote byte-identity readback passed and only documentation/evidence state was synchronized locally, the full suite was executed again:
+
+```bash
+PYTHONPATH=src python -m unittest discover -s tests -v
+```
+
+Observed:
+
+```text
+Ran 17 tests in 3.315s
+OK
+```
+
+Artifact: `evidence/unittest-final-after-remote.txt`.
+
+This second run confirms the executable source/test state still passes after the publication-verification phase. No NEXY.AI runtime was involved.
