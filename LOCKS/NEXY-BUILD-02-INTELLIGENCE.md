@@ -5,8 +5,8 @@ MODE: EXECUTE
 SCOPE: INTELLIGENCE / LOGIC / CERTAINTY / TRINITY
 TARGET_REPOSITORY: goif74945-crypto/NEXY.AI-
 TARGET_BRANCH: NEXY.ai
-BOUND_HEAD: 929c1de4a015a87a1da7e57e4667ecf2bce9eedc
-PREVIOUS_BOUND_HEAD: 568ec8a820abd543b32a42976d2886377b2c47b7
+BOUND_HEAD: 4fdddfe3aa93faa8b50086a189f0cab507a8abef
+PREVIOUS_BOUND_HEAD: 929c1de4a015a87a1da7e57e4667ecf2bce9eedc
 AI_CONTEXT_BASE_HEAD: 9daf245c11d8728c52fb6c69034b2e054024d4f1
 AUTHORITATIVE_DESIGN: แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx
 AUTHORITATIVE_DESIGN_SHA256: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
@@ -47,3 +47,9 @@ HEAD_CHANGE_INSPECTION_2:
 - changed paths: packages/phase-f/game/** and game integration tests only
 - collision with INT-01..INT-10 target paths: NONE
 - decision: REBIND_AND_CONTINUE
+
+SELF_REBIND_AFTER_INTELLIGENCE_COMMIT:
+- 929c1de4a015a87a1da7e57e4667ecf2bce9eedc -> 4fdddfe3aa93faa8b50086a189f0cab507a8abef
+- reason: own INT-01..INT-10 mutation commit
+- next targeted repair: packages/intelligence/cirl.ts Q64 ambiguity-score schema drift
+- collision: NONE
