@@ -1,61 +1,81 @@
-# Temporary Session Memory — OXC Lab
+# Temporary / Resumption Memory — OXC Lab
 
 Work/session reference: CHAT-20261005-0120-NEXY-OXC-LAB
-State: EVIDENCE_LOCKED → MERGE_PENDING
+State: REFERENCE_SLICE_COMPLETE / EXPERIMENTAL
 Date: 2026-10-05 Asia/Bangkok
 
 ## Mission
-Build a unique, useful supplemental R&D project for future NEXY development while writing only to AI-CONTEXT and never mutating a repository whose name contains NEXY.AI.
+Create a distinct supplemental R&D project useful to future NEXY development while writing only to AI-CONTEXT and never mutating a repository whose name contains NEXY.AI.
 
-## Selected and implemented experiment
+## Implemented experiment
 NEXY Operator Experience Compiler (OXC).
 
-Purpose: deterministically transform authoritative state/role/action-risk input plus presentation-only preferences into a truth-preserving SurfacePlan.
+OXC deterministically transforms authoritative system/truth/role/action-risk input plus presentation-only preferences into a truth-preserving SurfacePlan.
 
-## Verified starting context
-- AI-CONTEXT canonical boot/kernel/router/global rules were read.
-- NEXY authority/context was read from AI-CONTEXT, including requirements, status, human-control surface, product design and current normalized build matrix.
-- Supplemental vault was recursively enumerated at 350 entries at initial inspection.
-- Existing supplemental work was dominated by verification/evidence/epistemic/reliability/security/context/capacity topics.
-- OXC was chosen as an orthogonal human/operator-experience research direction.
-
-## Work completed
-- task contract written;
-- architecture and non-goals written;
-- requirements/evidence ledger written;
-- failure/security/privacy model written;
-- future integration plan written;
-- 32-item research backlog written;
-- five adjacent future system concepts documented as AI-PROPOSED;
-- zero-dependency strict TypeScript reference compiler implemented;
-- 15-test Node suite implemented and executed;
-- combinatorial 576-case backend-denial matrix executed;
-- 36-combination preference non-interference matrix executed;
-- exact tested-source Git blob lineage verified.
+## Completed deliverables
+- task contract;
+- concept/non-goals;
+- deterministic architecture;
+- contracts/state model;
+- requirement/evidence ledger;
+- failure/security/privacy model;
+- future integration guide;
+- validation report;
+- 32-item research backlog;
+- five adjacent AI-proposed systems;
+- strict zero-dependency TypeScript reference implementation;
+- Node unit/metamorphic/combinatorial test suite;
+- final audit;
+- post-merge verification.
 
 ## Executed evidence
-E1 TypeScript build: PASS.
-E2 Node tests: 15/15 PASS.
-Tested/published source blob match: 6/6 PASS on OXC branch.
+- E1 TypeScript strict build: PASS.
+- E2 Node tests: 15/15 PASS.
+- 576 policy combinations: backend-denied mutation was never promoted to ENABLED.
+- 36 presentation preference combinations: authorization projection invariant.
+- tested/staged source Git blob identity: 6/6 PASS.
+- post-merge source Git blob identity on AI-CONTEXT main: 6/6 PASS.
 
-## Concurrency incident
-Direct main write encountered a 409 because main advanced concurrently.
-No force was used.
-Work moved to branch:
+## Publication
+Initial implementation branch:
 `chat-20261005-0120-nexy-oxc-lab`
 
-Atomic implementation commit:
-`86ceb09aef4762fa7fe852245d895f89f1159549`
+Implementation branch final head:
+`28cf5bc218305c9f97dbdfadf7694f4b08724c58`
+
+Pull request:
+`#6`
+
+Merge commit:
+`ed05ec7c525156a6df822b944c170b9d995bdadb`
+
+Post-merge verified main head:
+`de75662999d76d0e35d9615b6aaa25a927554279`
 
 ## Protected-scope status
-No write operation in this lab targeted a repository whose name contains NEXY.AI.
+No write action from this work targeted a repository whose name contains NEXY.AI.
 
-## Not verified
-NEXY integration, production UI, E3/E4, deployment, accessibility, localization and stale-snapshot handling remain NOT_VERIFIED.
+## Truth boundary
+PASS applies to the standalone OXC reference and recorded E1/E2 claims.
+
+Still NOT_VERIFIED:
+- real NEXY integration;
+- E3 backend integration;
+- E4 browser/user flow;
+- stale-plan race handling;
+- accessibility;
+- localization;
+- production security/performance/deployment.
 
 ## Platform conversation identifier
-UNKNOWN: the available tool surface does not expose the hidden ChatGPT conversation ID.
-Durable work reference used instead: CHAT-20261005-0120-NEXY-OXC-LAB.
+The tool surface does not expose the hidden ChatGPT platform conversation ID.
 
-## Next exact action
-Commit this updated checkpoint + final audit + adjacent proposal portfolio to the OXC branch, then merge the branch into AI-CONTEXT main and re-read final main paths/SHAs.
+- platform conversation ID: UNKNOWN
+- durable work reference: CHAT-20261005-0120-NEXY-OXC-LAB
+
+## Resume rule
+If future work continues this experiment:
+1. re-read current NEXY authority/status first;
+2. keep this pack EXPERIMENTAL unless explicitly promoted;
+3. do not write to a repository containing NEXY.AI without a new explicit authorization;
+4. treat real integration as a new task requiring E3/E4 evidence.
