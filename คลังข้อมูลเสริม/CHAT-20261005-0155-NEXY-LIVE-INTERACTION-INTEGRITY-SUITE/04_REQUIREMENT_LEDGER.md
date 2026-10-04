@@ -17,6 +17,6 @@
 | LII-013 | passing intent+input+epoch compile to one deterministic snapshot | `coordinator.py` | integration + determinism | PASS locally |
 | LII-014 | hash-seed-independent reference fingerprints | canonical serialization + probe | subprocess probe seeds 1/2/777 | PASS locally |
 | LII-015 | Python source parses/compiles | package | `compileall` | PASS locally |
-| LII-016 | NEXY.AI repo untouched | mutation boundary | connector write audit | pending final audit |
-| LII-017 | committed code bytes equal locally tested bytes | manifest Git blob SHA | post-write fetch | pending repository write |
+| LII-016 | NEXY.AI repo untouched | mutation boundary | connector write audit | PASS — all mutation tool targets were AI-CONTEXT |
+| LII-017 | committed code bytes equal locally tested bytes | manifest Git blob SHA | post-write fetch | PASS — 19/19 Git blobs matched |
 | LII-018 | production NEXY integration | OUT OF SCOPE | E3/E4/E5 in actual NEXY | NOT_VERIFIED |
