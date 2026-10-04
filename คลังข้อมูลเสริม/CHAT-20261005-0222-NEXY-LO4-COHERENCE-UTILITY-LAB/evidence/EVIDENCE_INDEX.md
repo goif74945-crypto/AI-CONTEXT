@@ -8,7 +8,7 @@ Classification: standalone Lo4 reference implementation only.
 | Focused, negative, algebraic and regression behavior | E2 | `UNIT_TESTS.txt` | PASS, 49 tests |
 | Five systems compose and preserve conflict | E3-local | `INTEGRATION_TEST.txt` | PASS, 2 integration tests |
 | Reference core avoids forbidden network/subprocess/dynamic execution/environment reads under the implemented AST policy | E1-static security boundary | `SECURITY_BOUNDARY.txt` | PASS |
-| Persisted source equals locally tested source | E0 + identity | repository read-back + `SHA256SUMS.txt` | PENDING until publication/read-back |
+| Persisted source equals locally tested source | E0 + identity | `REMOTE_IDENTITY.txt` + `SHA256SUMS.txt` | PASS, 15/15 executable/test blobs match |
 | NEXY.AI runtime integration | E3/E4 | none | NOT_VERIFIED |
 | Production/deployment | E5/E6 | none | NOT_VERIFIED |
 
