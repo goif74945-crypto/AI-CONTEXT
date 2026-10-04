@@ -57,3 +57,9 @@ Before any future integration into canonical NEXY build scope:
 4. map revalidation actions to actual evidence jobs;
 5. prove that no optimization can suppress mandatory gates;
 6. explicitly promote through project authority.
+
+## Post-merge evidence
+PASS — PR #4 merged successfully.
+PASS — merge commit `51a0363b2d1a720af19252f075b1a981ffbddd3f` contains the exact verified executable/test/fixture blob SHAs.
+PASS — no force/rebase/history rewrite was used.
+Final artifact status: COMPLETE for the requested AI-CONTEXT auxiliary project slice.
