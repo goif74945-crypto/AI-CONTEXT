@@ -89,6 +89,6 @@ If required adapter semantics are missing or ambiguous, integration must FREEZE 
 
 Local verification can establish syntax/static properties, module behavior, and local composition only. It cannot establish real NEXY integration, production runtime behavior, deployment readiness, or physical robotics safety.
 
-The complete tested source, tests, evidence, and documents are also sealed in `bundle/nexy_lo4_q64_pentaforge.tar.gz.b64`. Decode with `base64 -d` and verify against `bundle/BUNDLE_SHA256.txt`.
+The complete tested source, tests, raw evidence, and original local documents are sealed as three ordered Base64 parts: `bundle/SOURCE_TEST_EVIDENCE.part00.b64`, `part01`, and `part02`. Concatenate them in that order, decode with `base64 -d`, and verify the reconstructed tar.gz against `bundle/BUNDLE_SHA256.txt` before extraction.
 
 See `EVIDENCE.md`, `NOVELTY_AUDIT.md`, and `FINAL_AUDIT.md` for exact evidence and limitations.
