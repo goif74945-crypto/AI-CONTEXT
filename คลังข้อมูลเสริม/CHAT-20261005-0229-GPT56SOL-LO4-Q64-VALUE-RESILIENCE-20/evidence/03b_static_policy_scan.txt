@@ -1,0 +1,7 @@
+$ /opt/pyvenv/bin/python static_policy_scan.py
+exit=0
+
+STDOUT
+{"status": "PASS", "violations": []}
+
+STDERR

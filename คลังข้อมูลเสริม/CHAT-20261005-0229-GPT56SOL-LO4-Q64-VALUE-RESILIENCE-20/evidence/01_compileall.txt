@@ -1,0 +1,6 @@
+$ /opt/pyvenv/bin/python -m compileall -q src tests demo.py
+exit=0
+
+STDOUT
+
+STDERR

@@ -1,0 +1,248 @@
+$ /opt/pyvenv/bin/python demo.py
+exit=0
+
+STDOUT
+[
+  {
+    "concept_id": "L4Q64-01",
+    "confidence": "0.369419999999",
+    "confidence_raw_q64": 6814596195709782557,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "VALUE_VS_ALTERNATIVE",
+      "REVERSIBILITY_WEIGHTED"
+    ],
+    "readiness": "0.301327272727",
+    "readiness_raw_q64": 5558507082428879980
+  },
+  {
+    "concept_id": "L4Q64-02",
+    "confidence": "0.413949999999",
+    "confidence_raw_q64": 7636029709312068891,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "UNCERTAINTY_HOTSPOT",
+      "COVERAGE_FLOOR"
+    ],
+    "readiness": "0.525699999999",
+    "readiness_raw_q64": 9697453359549111284
+  },
+  {
+    "concept_id": "L4Q64-03",
+    "confidence": "0.568819999999",
+    "confidence_raw_q64": 10492876964007467149,
+    "decision": "ESCALATE",
+    "rationale_codes": [
+      "MARGINAL_INFORMATION_GAIN",
+      "MEASUREMENT_RELIABILITY"
+    ],
+    "readiness": "0.475459108874",
+    "readiness_raw_q64": 8770672498913178840
+  },
+  {
+    "concept_id": "L4Q64-04",
+    "confidence": "0.619479999999",
+    "confidence_raw_q64": 11427389018781593034,
+    "decision": "HOLD",
+    "rationale_codes": [
+      "MINIMUM_SAFE_FREEZE",
+      "BLAST_RADIUS_AWARE"
+    ],
+    "readiness": "0.522664446384",
+    "readiness_raw_q64": 9641457278889539424
+  },
+  {
+    "concept_id": "L4Q64-05",
+    "confidence": "0.670139999999",
+    "confidence_raw_q64": 12361901073555718919,
+    "decision": "HOLD",
+    "rationale_codes": [
+      "DECISION_TTL",
+      "CHANGE_SENSITIVE"
+    ],
+    "readiness": "0.578189999999",
+    "readiness_raw_q64": 10665722955978125648
+  },
+  {
+    "concept_id": "L4Q64-06",
+    "confidence": "0.733059999999",
+    "confidence_raw_q64": 13522570210673523906,
+    "decision": "HOLD",
+    "rationale_codes": [
+      "HEDGED_EXECUTION",
+      "EQUIVALENCE_FLOOR"
+    ],
+    "readiness": "0.595699999999",
+    "readiness_raw_q64": 10988725444708779897
+  },
+  {
+    "concept_id": "L4Q64-07",
+    "confidence": "0.881799999999",
+    "confidence_raw_q64": 16266338924197082614,
+    "decision": "ESCALATE",
+    "rationale_codes": [
+      "INTERRUPTION_SAFE_MERGE",
+      "WORK_SALVAGE"
+    ],
+    "readiness": "0.480982857142",
+    "readiness_raw_q64": 8872567669555887877
+  },
+  {
+    "concept_id": "L4Q64-08",
+    "confidence": "0.091739999999",
+    "confidence_raw_q64": 1692304301322114265,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "SLO_MIN_MARGIN",
+      "DEGRADED_MODE_READY"
+    ],
+    "readiness": "0.495639999999",
+    "readiness_raw_q64": 9142944232693402162
+  },
+  {
+    "concept_id": "L4Q64-09",
+    "confidence": "0.234349999999",
+    "confidence_raw_q64": 4322994473673833421,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "COUNTEREXAMPLE_DIVERSITY",
+      "REPLAYABLE_FAILURE_MEMORY"
+    ],
+    "readiness": "0.193805413870",
+    "readiness_raw_q64": 3575078869763788903
+  },
+  {
+    "concept_id": "L4Q64-10",
+    "confidence": "0.450666666666",
+    "confidence_raw_q64": 8313332662551771261,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "BOUNDED_REGRET",
+      "OPTION_VALUE"
+    ],
+    "readiness": "0.118718749999",
+    "readiness_raw_q64": 2189974398000705830
+  },
+  {
+    "concept_id": "L4Q64-11",
+    "confidence": "0.366319999999",
+    "confidence_raw_q64": 6757411289081282947,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "COGNITIVE_LOAD_BOUND",
+      "DECISION_SALIENCE"
+    ],
+    "readiness": "0.356545454545",
+    "readiness_raw_q64": 6577102750644441948
+  },
+  {
+    "concept_id": "L4Q64-12",
+    "confidence": "0.450257142857",
+    "confidence_raw_q64": 8305778281645394968,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "PROOF_REUSE_ELIGIBILITY",
+      "LINEAGE_GATED"
+    ],
+    "readiness": "0.365066487160",
+    "readiness_raw_q64": 6734288058542792396
+  },
+  {
+    "concept_id": "L4Q64-13",
+    "confidence": "0.541199999999",
+    "confidence_raw_q64": 9983377892691609334,
+    "decision": "ESCALATE",
+    "rationale_codes": [
+      "CONTAINMENT_RADIUS",
+      "DEPENDENCY_AWARE"
+    ],
+    "readiness": "0.402411111111",
+    "readiness_raw_q64": 7423174779083764787
+  },
+  {
+    "concept_id": "L4Q64-14",
+    "confidence": "0.640899999999",
+    "confidence_raw_q64": 11822518276840451630,
+    "decision": "ESCALATE",
+    "rationale_codes": [
+      "INTENT_FRESHNESS",
+      "OBSOLESCENCE_GUARD"
+    ],
+    "readiness": "0.430099999999",
+    "readiness_raw_q64": 7933944626102478150
+  },
+  {
+    "concept_id": "L4Q64-15",
+    "confidence": "0.771249999999",
+    "confidence_raw_q64": 14227051366848491683,
+    "decision": "HOLD",
+    "rationale_codes": [
+      "EVIDENCE_MARGINAL_GAIN",
+      "REDUNDANCY_PENALTY"
+    ],
+    "readiness": "0.527016718314",
+    "readiness_raw_q64": 9721742525320932378
+  },
+  {
+    "concept_id": "L4Q64-16",
+    "confidence": "0.864819999999",
+    "confidence_raw_q64": 15953113209825494428,
+    "decision": "ESCALATE",
+    "rationale_codes": [
+      "OPTIONALITY_PRESERVED",
+      "LOCKIN_PENALTY"
+    ],
+    "readiness": "0.481354545454",
+    "readiness_raw_q64": 8879424108716791350
+  },
+  {
+    "concept_id": "L4Q64-17",
+    "confidence": "0.314133333333",
+    "confidence_raw_q64": 5794737205021293813,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "MINIMUM_SEMANTIC_CUT",
+      "INVARIANT_PRESERVATION"
+    ],
+    "readiness": "0.685815991328",
+    "readiness_raw_q64": 12651072073689940707
+  },
+  {
+    "concept_id": "L4Q64-18",
+    "confidence": "0.060033333333",
+    "confidence_raw_q64": 1107419535891696748,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "VERIFIED_PROGRESS_RATE",
+      "CHURN_DISCOUNTED"
+    ],
+    "readiness": "0.755091047688",
+    "readiness_raw_q64": 13928971309055267794
+  },
+  {
+    "concept_id": "L4Q64-19",
+    "confidence": "0.221033333333",
+    "confidence_raw_q64": 4077345331758934558,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "VALUE_PER_SURFACE",
+      "LOSS_BOUNDED_COMPACTION"
+    ],
+    "readiness": "0.170083178458",
+    "readiness_raw_q64": 3137480864263132852
+  },
+  {
+    "concept_id": "L4Q64-20",
+    "confidence": "0.136833333333",
+    "confidence_raw_q64": 2524129480752590312,
+    "decision": "FREEZE",
+    "rationale_codes": [
+      "RECOVERY_PATH_DIVERSITY",
+      "DRILL_EVIDENCE_GATED"
+    ],
+    "readiness": "0.141941666666",
+    "readiness_raw_q64": 2618361598395789938
+  }
+]
+
+STDERR
