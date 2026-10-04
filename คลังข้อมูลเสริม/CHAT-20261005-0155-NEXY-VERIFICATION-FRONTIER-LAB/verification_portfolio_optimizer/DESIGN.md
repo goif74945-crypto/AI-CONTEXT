@@ -23,7 +23,7 @@ VPO is a planning optimizer. It MUST NOT redefine which evidence class a claim r
 ## Algorithm
 Each claim is assigned one bit. Every check is converted into the mask of claims it legally covers. Dynamic programming retains the best tuple `(cost, count, sorted check IDs)` for each reachable coverage mask.
 
-Complexity is `O(number_of_checks * reachable_masks)`, bounded by `O(C * 2^R)` for C checks and R claims. The reference implementation therefore applies an explicit `max_exact_claims` guard rather than pretending exponential state is free because computers have fans.
+Complexity is `O(number_of_checks * reachable_masks)`, bounded by `O(C * 2^R)` for C checks and R claims. The reference implementation therefore applies an explicit `max_exact_claims` guard to bound exponential state growth.
 
 ## Failure model
 - More claims than exact bound: `PortfolioTooLarge`.
