@@ -1,0 +1,22 @@
+test_duplicate_idempotency_fails (test_nfwm.AnalyzerTests.test_duplicate_idempotency_fails) ... ok
+test_freeze_without_incident_fails (test_nfwm.AnalyzerTests.test_freeze_without_incident_fails) ... ok
+test_illegal_transition_fails (test_nfwm.AnalyzerTests.test_illegal_transition_fails) ... ok
+test_non_increasing_sequence_fails (test_nfwm.AnalyzerTests.test_non_increasing_sequence_fails) ... ok
+test_release_after_freeze_fails (test_nfwm.AnalyzerTests.test_release_after_freeze_fails) ... ok
+test_stop_is_terminal (test_nfwm.AnalyzerTests.test_stop_is_terminal) ... ok
+test_valid_trace_passes (test_nfwm.AnalyzerTests.test_valid_trace_passes) ... ok
+test_cli_detects_tampered_witness_hash (test_nfwm.CLITests.test_cli_detects_tampered_witness_hash) ... ok
+test_cli_failure_returns_two_and_witness (test_nfwm.CLITests.test_cli_failure_returns_two_and_witness) ... ok
+test_cli_valid_returns_zero (test_nfwm.CLITests.test_cli_valid_returns_zero) ... ok
+test_cli_witness_round_trip_verification (test_nfwm.CLITests.test_cli_witness_round_trip_verification) ... ok
+test_deterministic_witness_hash (test_nfwm.MinimizerTests.test_deterministic_witness_hash) ... ok
+test_idempotency_minimizes_to_two_events (test_nfwm.MinimizerTests.test_idempotency_minimizes_to_two_events) ... ok
+test_release_after_freeze_minimizes_to_two_events (test_nfwm.MinimizerTests.test_release_after_freeze_minimizes_to_two_events) ... ok
+test_single_event_violation_stays_single (test_nfwm.MinimizerTests.test_single_event_violation_stays_single) ... ok
+test_canonical_hash_key_order_independent (test_nfwm.ValidationTests.test_canonical_hash_key_order_independent) ... ok
+test_unknown_event_field_rejected (test_nfwm.ValidationTests.test_unknown_event_field_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 3.315s
+
+OK
