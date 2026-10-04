@@ -7,7 +7,7 @@ Detect semantic regression and verification circularity while preserving determi
 Canonical JSON identity; metamorphic execution; bounded counterexample shrinking; oracle-dependency overlap detection; deterministic risk/coverage test scheduling; semantic failure fingerprinting; strict extraction of selected DOC-C truth-surface fields.
 
 ## Out of scope
-Changing NEXY requirements; mutating a repository whose name contains \`NEXY.AI\`; production deployment; provider/network execution; automatic semantic-relation invention; replacing LAW/JUDGE/release policy; claiming physical/security assurance.
+Changing NEXY requirements; mutating a repository whose name contains `NEXY.AI`; production deployment; provider/network execution; automatic semantic-relation invention; replacing LAW/JUDGE/release policy; claiming physical/security assurance.
 
 ## Invariants
 - Mapping insertion order does not change canonical identity.
@@ -21,7 +21,7 @@ Changing NEXY requirements; mutating a repository whose name contains \`NEXY.AI\
 - Missing truth-surface status/state is rejected, never defaulted.
 
 ## Failure semantics
-Invalid config -> exception; relation mismatch -> \`passed=false\`; shrink budget exhaustion -> best witness plus \`exhausted_budget=true\`; mandatory proof over budget -> \`freeze_required=true\`; oracle contamination -> \`independent=false\`; unsupported canonical value -> \`CanonicalizationError\`.
+Invalid config -> exception; relation mismatch -> `passed=false`; shrink budget exhaustion -> best witness plus `exhausted_budget=true`; mandatory proof over budget -> `freeze_required=true`; oracle contamination -> `independent=false`; unsupported canonical value -> `CanonicalizationError`.
 
 ## Security boundary
 Library code imports no networking, subprocess, database, environment or filesystem APIs. A caller-provided executor remains outside this guarantee and must be sandboxed/authorized by the integration layer.
