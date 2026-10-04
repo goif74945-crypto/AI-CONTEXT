@@ -15,6 +15,7 @@ Load only what the current task needs.
 - [Execution record](./EXECUTION-RECORD.json) — stable execution ID, chat-ID availability status, and evidence summary.
 - [Non-duplication note](./NON-DUPLICATION-NOTE.md) — boundary against concurrently-created sibling labs.
 - [Local test evidence](./evidence/LOCAL-TEST-REPORT.md) — executed sandbox evidence.
+- [Repository write evidence](./evidence/REPOSITORY-WRITE-REPORT.md) — verified GitHub insertion and protected-scope audit.
 
 ## Machine interfaces
 
