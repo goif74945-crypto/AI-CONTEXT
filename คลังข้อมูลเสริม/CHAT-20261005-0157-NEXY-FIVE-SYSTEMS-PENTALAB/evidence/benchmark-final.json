@@ -1,0 +1,11 @@
+{
+  "classification": "LOCAL_REFERENCE_BENCHMARK_NOT_PRODUCTION_SLA",
+  "python": "3.13.5",
+  "results": [
+    {"name":"CACG_1000_independent_votes","median_ms":35.861,"max_ms":100.199,"peak_kib":896.7,"repeats":3},
+    {"name":"CSEC_1000_to_1200_fields","median_ms":21.131,"max_ms":21.759,"peak_kib":398.1,"repeats":3},
+    {"name":"FCCP_5000_hard_chain","median_ms":83.955,"max_ms":104.589,"peak_kib":4113.6,"repeats":3},
+    {"name":"CPES_1000_independent_tasks_8_slots","median_ms":73.358,"max_ms":78.355,"peak_kib":1535.9,"repeats":3},
+    {"name":"CDA_2000_item_event","median_ms":9.474,"max_ms":9.576,"peak_kib":468.6,"repeats":3}
+  ]
+}
