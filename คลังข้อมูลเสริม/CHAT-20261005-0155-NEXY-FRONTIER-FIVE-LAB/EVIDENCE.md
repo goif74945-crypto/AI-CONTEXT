@@ -18,6 +18,8 @@ Status of actual NEXY integration/runtime/deployment: `NOT_VERIFIED`
 5. **Regression harness inefficiency:** recompiling for every repeated run hit execution timeout. Fix: perform one clean final build, then rerun the exact compiled test artifact repeatedly.
 6. **Connector publication optimization:** split source/tests were bundled into one source and one test file to reduce remote write surface. The bundle was rebuilt and all tests rerun; no evidence from the split layout was reused as final bundle proof.
 
+7. **Final pre-publication audit defect:** Trace Invariant Miner path traversal still used `localeCompare` even though canonicalization had been fixed. This invalidated the prior final evidence. Fix: replace the remaining call with `compareCodeUnits`, add a regression test that temporarily makes `localeCompare` throw, then rebuild and rerun all evidence.
+
 ## Final evidence classes
 
 ### E1 — Static build
@@ -28,7 +30,7 @@ Final bundled result: `PASS`.
 
 ### E2 — Unit behavior
 
-21 tests cover positive and negative behavior across canonicalization, PACF, DFE, FCM, TIM and MES.
+22 tests cover positive and negative behavior across canonicalization, PACF, DFE, FCM, TIM and MES.
 
 Final bundled result: `PASS`.
 
@@ -44,7 +46,7 @@ This is E3 only for the standalone lab modules. It is **not** NEXY.AI integratio
 
 The exact compiled artifact from the final bundle build is executed repeatedly. Raw output: `evidence/repeat-regression-output.txt`.
 
-Final result: `PASS` only if every recorded run reports `tests=21 fail=0`.
+Final result: `PASS` only if every recorded run reports `tests=22 fail=0`.
 
 ## Limitations
 
