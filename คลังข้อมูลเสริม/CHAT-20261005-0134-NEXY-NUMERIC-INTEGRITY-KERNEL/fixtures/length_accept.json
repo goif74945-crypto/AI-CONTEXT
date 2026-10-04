@@ -1,0 +1,13 @@
+{
+  "contract": {
+    "schema_version": "1",
+    "name": "example-length-window",
+    "dimension": "length",
+    "canonical_unit": "m",
+    "lower": {"value": "1", "inclusive": true},
+    "upper": {"value": "2", "inclusive": true},
+    "normalization": {"quantum": null, "rounding_mode": null},
+    "uncertainty_policy": "FREEZE_ON_BOUNDARY_OVERLAP"
+  },
+  "observation": {"value": "150", "unit": "cm", "uncertainty_abs": "5"}
+}
