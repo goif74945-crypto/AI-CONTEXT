@@ -1,0 +1,13 @@
+{
+  "contract": {
+    "schema_version": "1",
+    "name": "json-number-token",
+    "dimension": "length",
+    "canonical_unit": "m",
+    "lower": {"value": 1, "inclusive": true},
+    "upper": {"value": 2, "inclusive": true},
+    "normalization": {"quantum": null, "rounding_mode": null},
+    "uncertainty_policy": "FREEZE_ON_BOUNDARY_OVERLAP"
+  },
+  "observation": {"value": 1.5, "unit": "m", "uncertainty_abs": 0.1}
+}
