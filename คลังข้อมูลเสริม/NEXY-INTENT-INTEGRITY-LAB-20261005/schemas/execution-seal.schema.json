@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/nexy/execution-seal.schema.json",
+  "title": "NEXY Intent Integrity Lab Execution Seal",
+  "description": "AI-PROPOSED CONCEPT TOCTOU precondition seal. Not an authorization token.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "target_repository",
+    "target_ref",
+    "target_revision",
+    "contract_digest",
+    "proposal_digest",
+    "seal_digest"
+  ],
+  "properties": {
+    "target_repository": {"type": "string", "minLength": 1},
+    "target_ref": {"type": "string", "minLength": 1},
+    "target_revision": {"type": "string", "minLength": 1},
+    "contract_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "proposal_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "seal_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}
