@@ -94,7 +94,6 @@ A test replaces the stored witness hash with 64 zeroes. Replay returns exit `3`,
 - deployment behavior: NOT_VERIFIED.
 - global-minimum witness cardinality: not claimed.
 
-
 ## Final regression after remote-state synchronization
 
 After remote byte-identity readback passed and only documentation/evidence state was synchronized locally, the full suite was executed again:
