@@ -30,7 +30,7 @@ No repository whose name contains `NEXY.AI` was mutated by this mission.
 ### E2 behavior
 Final aligned local execution:
 ```text
-Ran 31 tests in 0.005s
+Ran 31 tests in 0.004s
 OK
 ```
 
@@ -54,7 +54,7 @@ Final GitHub read-back before closing this record observed:
 - concept docs: 5/5 files;
 - evidence files: 5/5 files;
 - README re-read with 31/31 claim;
-- `evidence/unittest-output.txt` re-read ending with `Ran 31 tests in 0.005s / OK`;
+- `evidence/unittest-output.txt` re-read ending with `Ran 31 tests in 0.004s / OK`;
 - `evidence/import-audit.txt` re-read ending with `FORBIDDEN_IMPORT_VIOLATIONS []`;
 - `evidence/sha256-manifest.txt` re-read and present.
 
