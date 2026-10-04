@@ -1,0 +1,68 @@
+{
+  "task_id": "NEXY-ORACLE-FORGE-20261005-0125",
+  "objective": "Design, implement, test, audit, and persist NEXY Oracle Forge as an executable deterministic requirement-to-test-oracle compiler useful to future NEXY.AI engineering.",
+  "target": "คลังข้อมูลเสริม/CHAT-20261005-0125-NEXY-ORACLE-FORGE",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "branch": "main",
+  "expected_head": null,
+  "authorized_scope": [
+    "คลังข้อมูลเสริม/CHAT-20261005-0125-NEXY-ORACLE-FORGE/**",
+    "Read-only inspection of AI-CONTEXT canonical rules and NEXY project context",
+    "Local isolated execution of authored Oracle Forge code/tests for verification"
+  ],
+  "protected_scope": [
+    "Any repository whose name contains NEXY.AI",
+    "Existing AI-CONTEXT files outside คลังข้อมูลเสริม/CHAT-20261005-0125-NEXY-ORACLE-FORGE",
+    "Secrets/credentials/private data",
+    "Canonical NEXY requirements unless explicitly user-promoted"
+  ],
+  "authority_sources": [
+    "Current user directive",
+    "AI-EXECUTION-KERNEL.md",
+    "rules/GLOBAL.md",
+    "rules/SECURITY.md",
+    "rules/VERIFICATION.md",
+    "rules/MEMORY.md",
+    "projects/NEXY.AI/overview.md"
+  ],
+  "preconditions": [
+    "goif74945-crypto/AI-CONTEXT is writable",
+    "Target mission folder did not exist before creation",
+    "No indexed duplicate implementation found for selected oracle/test-synthesis search terms"
+  ],
+  "success_invariants": [
+    "Compiler output is deterministic for equivalent normalized input",
+    "Underspecified executable expectations do not produce invented oracles",
+    "All generated artifacts are traceable to source requirement IDs and content hashes",
+    "No protected repository is mutated",
+    "All PASS claims are backed by matching evidence"
+  ],
+  "forbidden_actions": [
+    "Mutate repositories whose name contains NEXY.AI",
+    "Deploy to production",
+    "Store secrets",
+    "Silently reinterpret proposal as canonical NEXY law",
+    "Claim tests ran without runtime evidence"
+  ],
+  "required_evidence": [
+    "E0_PRESENCE",
+    "E1_STATIC",
+    "E2_UNIT",
+    "E3_INTEGRATION"
+  ],
+  "stop_conditions": [
+    "Protected-scope mutation would be required",
+    "Material authority conflict cannot be resolved",
+    "Test execution environment cannot execute the authored project",
+    "Repository state drifts such that writes would overwrite unrelated work"
+  ],
+  "deliverables": [
+    "Proposal and architecture specification",
+    "Machine-readable input/output schema contract",
+    "Python package and CLI",
+    "Unit/integration/determinism/negative-path tests",
+    "Example input and generated output",
+    "Validation evidence and final audit",
+    "Durable execution record and resume state"
+  ]
+}
