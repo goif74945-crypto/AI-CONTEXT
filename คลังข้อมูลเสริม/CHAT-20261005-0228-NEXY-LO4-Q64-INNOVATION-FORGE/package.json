@@ -1,0 +1,13 @@
+{
+  "name": "nexy-lo4-q64-innovation-forge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "check": "node scripts/static-check.mjs",
+    "test": "node --test",
+    "test:all": "npm run check && npm test",
+    "smoke": "node src/cli.js fixtures/smoke.json"
+  }
+}
