@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexy-reflex"
+version = "0.1.0"
+description = "Standalone deterministic shadow verifier for NEXY requirement, authority, and evidence snapshots."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+nexy-reflex = "nexy_reflex.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
