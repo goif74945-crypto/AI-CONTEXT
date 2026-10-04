@@ -1,6 +1,12 @@
 from nexy_lease import (
-    Action, AuthorityLease, Effect, LeaseState, Plan,
-    POLICY_VERSION, evaluate_action, plan_fingerprint,
+    Action,
+    AuthorityLease,
+    Effect,
+    LeaseState,
+    Plan,
+    POLICY_VERSION,
+    evaluate_action,
+    plan_fingerprint,
 )
 
 plan = Plan((Action("project://demo/report.md", "WRITE", Effect.REVERSIBLE_WRITE, cost_units=2),))

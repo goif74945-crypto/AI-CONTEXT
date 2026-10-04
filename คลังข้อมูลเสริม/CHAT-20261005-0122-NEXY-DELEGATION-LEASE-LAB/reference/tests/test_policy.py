@@ -175,6 +175,7 @@ class LeasePolicyTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "expires after"):
             derive_child_lease(**{**common, "expires_at_tick": 21})
 
+
     def test_high_impact_can_pass_only_when_both_scope_and_second_gate_allow(self) -> None:
         plan = Plan((Action("project://alpha/x", "DELETE", Effect.IRREVERSIBLE_WRITE),))
         lease = replace(
