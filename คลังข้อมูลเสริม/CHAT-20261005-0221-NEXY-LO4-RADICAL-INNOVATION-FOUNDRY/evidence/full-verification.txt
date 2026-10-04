@@ -1,0 +1,41 @@
+COMPILE_PASS
+STATIC_GUARD_PASS banned_imports=0 banned_calls=0
+test_high_risk_rejected (test_lo4_foundry.AntiFeatureTests.test_high_risk_rejected) ... ok
+test_keeps_evidenced_high_value_experiment (test_lo4_foundry.AntiFeatureTests.test_keeps_evidenced_high_value_experiment) ... ok
+test_rejects_low_value (test_lo4_foundry.AntiFeatureTests.test_rejects_low_value) ... ok
+test_rejects_subsumed_feature (test_lo4_foundry.AntiFeatureTests.test_rejects_subsumed_feature) ... ok
+test_requires_evidence (test_lo4_foundry.AntiFeatureTests.test_requires_evidence) ... ok
+test_freeze_propagates_at_first_failed_stage (test_lo4_foundry.IntegrationTests.test_freeze_propagates_at_first_failed_stage) ... ok
+test_integrated_lo4_plan_never_claims_canon (test_lo4_foundry.IntegrationTests.test_integrated_lo4_plan_never_claims_canon) ... ok
+test_need_evidence_blocks_integration (test_lo4_foundry.IntegrationTests.test_need_evidence_blocks_integration) ... ok
+test_relaxation_proposal_can_reach_human_review_path (test_lo4_foundry.IntegrationTests.test_relaxation_proposal_can_reach_human_review_path) ... ok
+test_seeded_fuzz_invariants (test_lo4_foundry.IntegrationTests.test_seeded_fuzz_invariants) ... ok
+test_exact_weighted_hitting_set (test_lo4_foundry.MinimalRelaxationTests.test_exact_weighted_hitting_set) ... ok
+test_never_relaxes_canon (test_lo4_foundry.MinimalRelaxationTests.test_never_relaxes_canon) ... ok
+test_no_conflict_is_plan (test_lo4_foundry.MinimalRelaxationTests.test_no_conflict_is_plan) ... ok
+test_permutation_determinism (test_lo4_foundry.MinimalRelaxationTests.test_permutation_determinism) ... ok
+test_search_bound_fail_closed (test_lo4_foundry.MinimalRelaxationTests.test_search_bound_fail_closed) ... ok
+test_unknown_constraint_rejected (test_lo4_foundry.MinimalRelaxationTests.test_unknown_constraint_rejected) ... ok
+test_hard_constraint_block (test_lo4_foundry.OptionPreservationTests.test_hard_constraint_block) ... ok
+test_permutation_determinism (test_lo4_foundry.OptionPreservationTests.test_permutation_determinism) ... ok
+test_prefers_future_flexibility_when_values_close (test_lo4_foundry.OptionPreservationTests.test_prefers_future_flexibility_when_values_close) ... ok
+test_unknown_option_rejected (test_lo4_foundry.OptionPreservationTests.test_unknown_option_rejected) ... ok
+test_illegal_action_does_not_define_regret_baseline (test_lo4_foundry.RegretEnvelopeTests.test_illegal_action_does_not_define_regret_baseline) ... ok
+test_irreversible_with_explicit_human_gate_can_be_considered (test_lo4_foundry.RegretEnvelopeTests.test_irreversible_with_explicit_human_gate_can_be_considered) ... ok
+test_irreversible_without_human_gate_blocked (test_lo4_foundry.RegretEnvelopeTests.test_irreversible_without_human_gate_blocked) ... ok
+test_permutation_determinism (test_lo4_foundry.RegretEnvelopeTests.test_permutation_determinism) ... ok
+test_scenario_mismatch_rejected (test_lo4_foundry.RegretEnvelopeTests.test_scenario_mismatch_rejected) ... ok
+test_selects_minimax_regret (test_lo4_foundry.RegretEnvelopeTests.test_selects_minimax_regret) ... ok
+test_allows_bounded_experimental_novelty (test_lo4_foundry.SurpriseBudgetTests.test_allows_bounded_experimental_novelty) ... ok
+test_duplicate_dimension_rejected (test_lo4_foundry.SurpriseBudgetTests.test_duplicate_dimension_rejected) ... ok
+test_freezes_canon_drift (test_lo4_foundry.SurpriseBudgetTests.test_freezes_canon_drift) ... ok
+test_freezes_total_budget_overrun (test_lo4_foundry.SurpriseBudgetTests.test_freezes_total_budget_overrun) ... ok
+test_permutation_determinism (test_lo4_foundry.SurpriseBudgetTests.test_permutation_determinism) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.014s
+
+OK
+STRESS_PROBE_PASS surprise_dims=20000 alternatives=10000 relaxation_candidates=18 regret_actions=5000 option_choices=5000
+DEMO_DETERMINISM_PASS
+MANIFEST_PASS entries=11
