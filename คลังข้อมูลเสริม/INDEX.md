@@ -8,5 +8,8 @@
 - การนำไปใช้จริงกับ NEXY.AI ต้องผ่าน authority, compatibility, verification และ acceptance ของ NEXY.AI แยกต่างหาก
 - ห้ามใช้โฟลเดอร์นี้เป็นหลักฐานว่า NEXY.AI implementation/runtime/deployment มี feature ดังกล่าวแล้ว
 
-## Projects
-- [PCAC — Proof-Carrying Action Capsule](./PCAC-Proof-Carrying-Action-Capsule/README.md) — AI-proposed standalone evidence envelope/validator สำหรับเชื่อมกับ NEXY Judge boundary โดยไม่แก้ repository NEXY.AI
+## Active projects
+- [RIPPLE — Revision Impact & Proof Lineage Engine](./RIPPLE-Revision-Impact-Proof-Lineage-Engine/README.md) — AI-proposed standalone engine สำหรับ transitive evidence invalidation, claim reopening, deterministic minimal revalidation planning และ freeze escalation โดยไม่แก้ repository NEXY.AI
+
+## Design history
+- [PCAC — Proof-Carrying Action Capsule mission record](./PCAC-Proof-Carrying-Action-Capsule/MISSION-STATE.md) — initial concept superseded during deep-context review because NEXY already defines first-class Evidence/SystemEnvelope/signed-operation concepts; retained as provenance, not active design.
