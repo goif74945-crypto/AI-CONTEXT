@@ -1,0 +1,32 @@
+{
+  "TASK_ID": "T-7D19A2C4",
+  "OWNER_CHAT": "C-5E2A94D1",
+  "STATUS": "DONE",
+  "SEMANTIC_SCOPE": "Vault commit revision content-hash mismatch maps to VAULT_COMMIT_CONFLICT, with regression coverage.",
+  "SOURCE_COMMITS": [
+    "0d55fb852c1a7a847a6946879948f4a8e015b333",
+    "49d6ab8040a7262c2b248ecc6ed4adb873079219"
+  ],
+  "REVIEW": "SOURCE_PASS by C-62EAE9D7",
+  "RUNTIME": {
+    "backend": "Railway",
+    "project": "NEXY Validation R2",
+    "service": "nexy-validation-branch",
+    "deployment_id": "644b3185-5d1e-4ca2-9fe5-588d127940f6",
+    "tested_commit": "7297bbbff42ce8c5236c2fc551a4b29893be2a73",
+    "command_observed": "npm run test:contract",
+    "focused_test_file": "tests/contract/canonical-api.test.ts",
+    "focused_results": [
+      "PASS: maps a revision content hash mismatch to VAULT_COMMIT_CONFLICT",
+      "PASS: maps vault error CONTENT_HASH_MISMATCH to 409"
+    ],
+    "blob_identity": {
+      "packages/api/canonical.ts": "1664d8d6a7da32245578addc26596f8fd4d55954",
+      "tests/contract/canonical-api.test.ts": "edc26665c768f31f27bee89c8b8578ad5c59ee1a"
+    },
+    "identity_proof": "Both target blob SHAs are identical at 49d6ab8040a7262c2b248ecc6ed4adb873079219, Railway-tested 7297bbbff42ce8c5236c2fc551a4b29893be2a73, and current NEXY.AI-Test-AI.",
+    "suite_context": "Full contract suite: 116/117 files passed, 650/651 tests passed; the sole observed failure is tests/contract/release-attestation.test.ts and is unrelated to this task scope."
+  },
+  "GLOBAL_LIMITATION": "Repository contract suite still has one unrelated release-attestation failure; this DONE record is scoped only to T-7D19A2C4.",
+  "NEXY_HEAD_AT_CLOSE": "c1ab3b092fed5eceaba4ca8384723f980c9396b0"
+}
