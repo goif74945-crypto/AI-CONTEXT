@@ -21,7 +21,7 @@ Command:
 
 Observed in `FINAL_TEST.txt`:
 
-`32 passed in 0.07s`
+`35 passed in 0.05s`
 
 `EXIT_CODE=0`
 
@@ -35,6 +35,27 @@ Observed in `STATIC.txt`:
 `COMPILE_EXIT=0`
 
 Runtime: Python 3.13.5 was used in the larger local package verification. No claim is made for untested Python implementations or platforms.
+
+## Continuation iteration — AIG critical-severity escalation integrity
+The highest-value verified weakness found in the package was an AIG ordering defect: when an alert changed from `LOW`, `MEDIUM` or `HIGH` to `CRITICAL` while retaining the same semantic key, evidence fingerprint and state fingerprint, duplicate suppression ran before severity escalation was recognized and returned `SUPPRESS`.
+
+Design invariant added: escalation from any noncritical severity to `CRITICAL` is material and must be delivered even when the state and evidence fingerprints are unchanged. Exact repeated `CRITICAL` alerts remain eligible for duplicate suppression.
+
+RED command:
+
+`PYTHONPATH=. python -m pytest -q test_nexy_assurance_fivepack.py::test_aig_escalation_to_critical_never_suppressed_as_duplicate`
+
+Observed before implementation: `LOW -> CRITICAL` returned `SUPPRESS`; pytest reported `1 failed`.
+
+Minimal implementation: AIG now checks noncritical-to-`CRITICAL` escalation before exact-duplicate suppression and returns `DELIVER / critical-severity-escalated`.
+
+Fresh targeted proof after repair: `3 passed in 0.05s` across `LOW`, `MEDIUM` and `HIGH` prior severities.
+
+Fresh full regression proof after repair: `35 passed in 0.05s`; exit code 0.
+
+Fresh static proof after repair: Python 3.12.14 `compileall` exit code 0.
+
+Evidence classification remains E1 for compilation and E2-style local execution for AIG behavior. NEXY.AI integration, runtime operation, deployment and law promotion remain NOT_VERIFIED.
 
 ## Coverage intent
 The compact suite contains tests for:

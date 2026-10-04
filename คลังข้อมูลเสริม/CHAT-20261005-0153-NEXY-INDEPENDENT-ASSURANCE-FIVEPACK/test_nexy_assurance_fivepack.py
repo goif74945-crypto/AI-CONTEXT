@@ -169,6 +169,15 @@ def test_aig_changed_critical_state_never_suppressed():
     assert g.decide(Alert("k","CRITICAL","e","s2",2)).action=="DELIVER"
 
 
+@pytest.mark.parametrize("prior_severity", ["LOW", "MEDIUM", "HIGH"])
+def test_aig_escalation_to_critical_never_suppressed_as_duplicate(prior_severity):
+    g=AttentionGovernor()
+    assert g.decide(Alert("k",prior_severity,"e","s",1)).action=="DELIVER"
+    decision=g.decide(Alert("k","CRITICAL","e","s",2))
+    assert decision.action=="DELIVER"
+    assert decision.reason=="critical-severity-escalated"
+
+
 def test_aig_exact_critical_duplicate_may_suppress():
     g=AttentionGovernor()
     g.decide(Alert("k","CRITICAL","e","s",1))

@@ -16,7 +16,9 @@
 
 ## Verification
 - Larger development package reached 35 passing tests after TDD repair cycles.
-- Exact compact persisted code/test bundle: 32/32 tests PASS.
+- Continuation RED proof reproduced an AIG defect where noncritical-to-CRITICAL escalation was suppressed as an exact duplicate.
+- The minimal ordering repair preserves exact CRITICAL duplicate suppression while guaranteeing delivery for LOW/MEDIUM/HIGH-to-CRITICAL escalation.
+- Exact compact persisted code/test bundle: 35/35 tests PASS after repair.
 - Exact compact persisted code/test bundle: compileall exit 0.
 - SHA-256 manifest verification passed before remote publication.
 - False-green zero-test run was rejected and is not counted as evidence.

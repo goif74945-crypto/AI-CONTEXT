@@ -30,3 +30,7 @@ This package explores five orthogonal controls selected after scanning the exist
 ## Integration boundary
 
 These mechanisms are deliberately implemented as a provider-agnostic standalone package. An actual NEXY integration would require an explicit promotion decision, interface mapping to the exact NEXY implementation HEAD, tests at the required evidence class, and DOC-C/DOC-E compliance. This package makes no claim that those later gates have occurred.
+
+## Latest verified continuation
+
+The AIG reference now treats escalation from any noncritical severity to `CRITICAL` as material before duplicate suppression. A parameterized regression test covers `LOW`, `MEDIUM` and `HIGH` escalation while the existing exact-CRITICAL-duplicate behavior remains covered. The exact standalone bundle passes 35 tests and static compilation in the recorded environment.

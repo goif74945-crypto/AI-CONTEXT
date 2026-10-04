@@ -104,6 +104,7 @@ Each alert contains a semantic key, severity, evidence fingerprint, state finger
 
 ### Invariants
 - changed CRITICAL state is never hidden by dedup or noncritical budget;
+- escalation from any noncritical severity to CRITICAL is material and is never hidden by dedup, even when the state and evidence fingerprints are unchanged;
 - exact CRITICAL duplicates may be suppressed to prevent duplicate storms;
 - evidence change is material even when the state fingerprint is unchanged;
 - alert time cannot regress;
