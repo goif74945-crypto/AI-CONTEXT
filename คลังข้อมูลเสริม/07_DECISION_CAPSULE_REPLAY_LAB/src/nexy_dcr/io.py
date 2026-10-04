@@ -5,8 +5,8 @@ from pathlib import Path
 from typing import Any
 
 from .builder import CapsuleBuilder
-from .canonical import sha256_hex
 from .errors import SchemaError
+from .canonical import sha256_hex
 from .model import AuthorityRef, Capsule, EventKind, TerminalState
 
 
