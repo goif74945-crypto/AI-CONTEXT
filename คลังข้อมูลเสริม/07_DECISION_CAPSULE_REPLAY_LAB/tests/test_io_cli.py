@@ -14,7 +14,8 @@ from helpers import authority_refs
 class CliTests(unittest.TestCase):
     def _plan(self) -> dict:
         refs = [r.to_dict() for r in authority_refs()]
-        from nexy_dcr.canonical import sha256_hex
+        # Authority fingerprint is injected by the builder event in a second step here,
+        # so compile-plan fixtures use the exact precomputed value.
         from nexy_dcr.model import authority_fingerprint
 
         fp = authority_fingerprint(authority_refs())
@@ -33,7 +34,7 @@ class CliTests(unittest.TestCase):
                     "payload": {
                         "status": "PASS",
                         "output": {"ok": True},
-                        "output_digest": sha256_hex({"ok": True}),
+                        "output_digest": __import__("nexy_dcr.canonical", fromlist=["sha256_hex"]).sha256_hex({"ok": True}),
                     },
                 },
             ],
