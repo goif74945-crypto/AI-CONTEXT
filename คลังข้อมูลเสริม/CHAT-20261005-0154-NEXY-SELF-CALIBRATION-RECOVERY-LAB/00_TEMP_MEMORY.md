@@ -1,6 +1,6 @@
 # Temporary Execution Memory — NEXY Self-Calibration & Recovery Lab
 
-Status: IN_PROGRESS until GitHub read-back and final audit are complete.
+Status: COMPLETE after GitHub read-back and final audit; this file also preserves the execution checkpoint history.
 Classification: EXPERIMENTAL / AI_PROPOSAL / NOT_NEXY_CANON.
 Conversation identifier: `PROJECT-CONVERSATION-2026-10-05T01:54+07:00`.
 Identifier note: the ChatGPT UI internal chat ID is not exposed to available tools; this deterministic identifier is used for durable resumption.
@@ -17,11 +17,11 @@ Build five non-canonical, executable auxiliary concepts that help a future NEXY 
 - Five designs: PASS locally
 - Five reference implementations: PASS locally
 - Static compilation: PASS locally
-- Unit/adversarial/integration tests: PASS locally; final rerun pending after documentation
+- Unit/adversarial/integration tests: PASS locally; final rerun 38/38 PASS
 - Demo: PASS locally
 - Performance smoke: PASS locally; observational only
-- GitHub persistence/read-back: PENDING
-- Final audit: PENDING
+- GitHub persistence/read-back: PASS (45/45 persisted blobs matched tested local bytes after one identity correction)
+- Final audit: PASS; see `FINAL_AUDIT.md`
 
 ## Defects found and repaired
 1. Contract Archaeologist originally validated mapping type after consuming the iterable. Fixed by materializing once and validating before normalization.

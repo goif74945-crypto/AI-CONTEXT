@@ -12,5 +12,5 @@
 | R08 | No hidden I/O/network/model/subprocess in reference core | source inspection + standard library only | source files + compileall | PASS_STATIC_LOCAL |
 | R09 | Cross-system composition exists | `integration/test_portfolio.py`, `demo.py` | E3-local execution | PASS_LOCAL |
 | R10 | Future NEXY compatibility is adapter-based and non-authoritative | design contracts | architecture review | DESIGN_ONLY |
-| R11 | No repository whose name contains NEXY.AI is mutated | mutation scope restricted to AI-CONTEXT mission folder | GitHub commit/diff audit required | PENDING_GITHUB_AUDIT |
-| R12 | Persisted critical source matches tested local content | manifest/read-back hashes | GitHub read-back required | PENDING_GITHUB_AUDIT |
+| R11 | No repository whose name contains NEXY.AI is mutated | mutation scope restricted to AI-CONTEXT mission folder | GitHub commit/diff audit | PASS |
+| R12 | Persisted critical source matches tested local content | Git blob identity audit | 45/45 exact byte matches | PASS |
