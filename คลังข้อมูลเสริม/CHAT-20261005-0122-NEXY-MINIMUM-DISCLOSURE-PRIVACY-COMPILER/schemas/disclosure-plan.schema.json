@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexy.invalid/schemas/nmdpc/disclosure-plan.schema.json",
+  "title": "NMDPC Disclosure Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision", "purpose", "recipient_id", "recipient_trust", "capabilities", "field_decisions", "freeze_reasons", "policy_fingerprint"],
+  "properties": {
+    "decision": {"enum": ["ALLOW", "TRANSFORM", "FREEZE"]},
+    "purpose": {"type": "string"},
+    "recipient_id": {"type": "string"},
+    "recipient_trust": {"enum": ["LOCAL_CORE", "TRUSTED_PROCESSOR", "EXTERNAL_MODEL", "UNKNOWN"]},
+    "capabilities": {"type": "array", "items": {"type": "string"}},
+    "field_decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field_name", "classification", "action", "transform", "retention_seconds", "reasons"],
+        "properties": {
+          "field_name": {"type": "string"},
+          "classification": {"enum": ["PUBLIC", "INTERNAL", "PRIVATE", "SECRET", "CREDENTIAL"]},
+          "action": {"enum": ["INCLUDE_RAW", "INCLUDE_TRANSFORMED", "OMIT_NOT_NEEDED", "BROKER_OUT_OF_BAND", "FREEZE"]},
+          "transform": {"enum": ["NONE", "MASK", "TOKENIZE"]},
+          "retention_seconds": {"type": "integer", "minimum": 0},
+          "reasons": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "freeze_reasons": {"type": "array", "items": {"type": "string"}},
+    "policy_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
