@@ -1,0 +1,23 @@
+{
+  "candidate_cases": 2,
+  "compared_cases": 2,
+  "finding_counts": {
+    "MATCH": 2
+  },
+  "findings": [
+    {
+      "case_id": "release-ok",
+      "code": "MATCH",
+      "message": "candidate preserves input, policy, authority, evidence obligations, safety labels, and release behavior",
+      "severity": "INFO"
+    },
+    {
+      "case_id": "unsafe-input",
+      "code": "MATCH",
+      "message": "candidate preserves input, policy, authority, evidence obligations, safety labels, and release behavior",
+      "severity": "INFO"
+    }
+  ],
+  "stable_cases": 2,
+  "status": "PASS"
+}

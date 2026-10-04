@@ -103,3 +103,36 @@ This preserves forward compatibility without treating malformed structure as a v
 - Neither is current NEXY implementation proof.
 - Neither gains authority over the other merely by existing in AI-CONTEXT.
 - Integration between them is proposed, not executed.
+
+
+## Second sibling boundary — Semantic Localization Integrity
+
+A later concurrent sibling was discovered at:
+
+`คลังข้อมูลเสริม/CHAT-20261005-0122-NEXY-SEMANTIC-LOCALIZATION-INTEGRITY-LAB`
+
+That lab owns deterministic detection of high-risk EN↔TH semantic drift, including protected identifiers, units, normative modality and negation.
+
+Freeze Bridge therefore owns only:
+- locale selection of its fixed reference strings;
+- proof that locale selection does not alter machine status/reason/intents/disclosure/recheck semantics.
+
+Freeze Bridge does **not** claim:
+- linguistic equivalence;
+- translation completeness;
+- modality/negation preservation;
+- localization release approval.
+
+A future composition can be:
+
+```text
+Freeze Bridge wording pair
+        ↓
+Semantic Localization Integrity gate
+        ↓
+approved localized wording
+        ↓
+Trust UX presentation compiler
+```
+
+This keeps reason normalization, localization integrity and presentation authority in separate systems.

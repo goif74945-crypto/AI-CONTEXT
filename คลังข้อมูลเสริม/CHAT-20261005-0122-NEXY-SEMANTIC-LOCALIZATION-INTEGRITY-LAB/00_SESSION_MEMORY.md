@@ -1,19 +1,18 @@
 # Temporary Execution Memory — Semantic Localization Integrity Lab
 
-Status: IN_PROGRESS
-Durable session code: `CHAT-20261005-0122-NEXY-SEMANTIC-LOCALIZATION-INTEGRITY-LAB`
-Platform-native ChatGPT conversation ID: `UNKNOWN` (not exposed by available tools)
-Start time: 2026-10-05T01:22:00+07:00
+Status: CLOSED / REFERENCE LAB VERIFIED  
+Durable session code: `CHAT-20261005-0122-NEXY-SEMANTIC-LOCALIZATION-INTEGRITY-LAB`  
+Platform-native ChatGPT conversation ID: `UNKNOWN` (not exposed by available tools)  
+Started: 2026-10-05T01:22:00+07:00
 
 ## Objective
-Create a distinct, additive, future-useful NEXY.AI supplemental project inside AI-CONTEXT only, including architecture, executable reference code, adversarial fixtures, tests, verification evidence, future proposals, and a final audit.
+Create a distinct, additive, future-useful NEXY.AI supplemental project inside AI-CONTEXT only, including architecture, executable reference code, adversarial fixtures, tests, verification evidence, future proposals, and a final audit, while never mutating a repository whose name contains `NEXY.AI`.
 
 ## Mutation boundary
-- Writable target: `goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0122-NEXY-SEMANTIC-LOCALIZATION-INTEGRITY-LAB`
+- Writable target used: `goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0122-NEXY-SEMANTIC-LOCALIZATION-INTEGRITY-LAB/**`
 - Protected from mutation: every repository whose name contains `NEXY.AI`
-- Existing sibling artifacts: additive-only; no overwrite
-- Destructive Git actions: forbidden
-- Secrets/credentials: forbidden
+- Destructive Git actions: not used
+- Secrets/credentials: not persisted
 
 ## Canonical context inspected
 - `AI-BOOTSTRAP.md`
@@ -23,44 +22,56 @@ Create a distinct, additive, future-useful NEXY.AI supplemental project inside A
 - `rules/GLOBAL.md`
 - `rules/SECURITY.md`
 - `rules/VERIFICATION.md`
-- `workflows/system-design.md`
-- `workflows/implementation.md`
-- `workflows/verification.md`
-- `workflows/memory-update.md`
-- `projects/NEXY.AI/overview.md`
-- `projects/NEXY.AI/deep/INDEX.md`
-- `projects/NEXY.AI/deep/human-control-surface.md`
-- `projects/NEXY.AI/deep/constitutional-locks.md`
-- `projects/NEXY.AI/deep/doc-d-product-design.md`
-- `projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md`
+- relevant system-design / implementation / verification / memory workflows
+- NEXY overview, deep context, human control surface, constitutional locks, product design
+- current NEXY source-normalization build matrix
 
-## Source facts used
-- Current normalized source denominator is 837 rows; implementation is not proven by that matrix.
-- NEXY is source-described as a deterministic AI control hub with explicit authority, verification, and freeze semantics.
-- Product wording should be human, concise, non-patronizing, and explicit about blocked/frozen paths.
-- Design != implementation != runtime != deployment.
-- AI-CONTEXT requires scope control, explicit truth classes, evidence-matched status, streaming checkpoints, and no secret persistence.
+## Source facts retained
+- Current source-normalization denominator is 837 rows; that matrix does not prove implementation.
+- NEXY is source-described as a deterministic control hub with explicit authority, verification and freeze semantics.
+- Design, implementation, runtime and deployment are separate truth domains.
+- AI-CONTEXT requires scope control, explicit truth classes, evidence-matched status and no fake execution.
 
-## Divergence check
-Recent sibling work already covers proof-carrying execution, context compilation, failure atlas, scope firewall, temporal compatibility, uncertainty debt/budget, verification economy, reliability budgets, migration choreography, proposal lifecycle, capability admission, evidence graphs, causal debugging, survivability/degraded modes, idempotency/replay, and a concurrent Human Authority & Interaction Integrity Lab.
+## Divergence decision
+An initial Preference/Interaction Contract direction was rejected because a concurrent `NEXY Human Authority & Interaction Integrity Lab` already occupied that axis.
 
-Searches for `localization`, `i18n`, `multilingual`, `translation`, `semantic equivalence`, `Thai`, and related terms returned no matching AI-CONTEXT code-search results during this session. This is evidence of no indexed match, not proof that no related text exists anywhere.
+Selected distinct axis: **Semantic Localization Integrity**, focused on deterministic preservation of operationally dangerous translation invariants.
 
-## Chosen distinct axis
-Semantic localization integrity for EN↔TH control/product text, specifically invariant preservation under translation.
+Searches for localization/i18n/multilingual/translation/semantic-equivalence/Thai-related terms returned no indexed AI-CONTEXT code-search match during the selection phase. This was used only as divergence evidence, not as proof that no related text could exist anywhere.
 
-## Truth labels
-- `SOURCE_FACT`: supported by canonical AI-CONTEXT/NEXY context.
-- `AI_PROPOSED_CONCEPT`: authored in this lab; no authority unless adopted.
-- `HYPOTHESIS`: expected benefit requiring experiment.
-- `NOT_VERIFIED`: no production NEXY claim.
+## Implemented system
+A dependency-free Node.js reference gate now checks:
+- numbers;
+- semantic units;
+- placeholders;
+- URLs/emails;
+- hashes/UUIDs/backtick/UPPER_SNAKE identifiers;
+- canonical NEXY tokens;
+- caller-protected literals;
+- normative modality classes;
+- negation polarity;
+- strict unsupported-language failure.
 
-## Current execution state
-- Local isolated implementation created.
-- First test run: 34/35 PASS; one test-design defect found and corrected.
-- Second test run after unit/unsupported-language improvements: 37/39 PASS; Thai unit boundary bug found and corrected.
-- Third run: 39/39 PASS plus static validation PASS.
-- Repository commit and post-commit re-fetch verification remain pending at this checkpoint.
+Decision is `PASS` or `FREEZE`; output includes a deterministic SHA-256 fingerprint.
+
+## Development checkpoints
+- first test stage: 34/35 PASS; test-design collision fixed;
+- second stage: 37/39 PASS; Thai unit-boundary defect fixed;
+- final stage: 39/39 PASS;
+- validator: PASS;
+- CLI: PASS exit 0, FREEZE exit 3, invalid invocation exit 2;
+- stable reference bytes: 25/25 GitHub blob identities match local passing bytes;
+- manifest v2 Git blob: `508783e5ba6063d4ec1c5be5f0888978e07e372d`;
+- manifest lock commit: `fca3f33cd287c37d3f92e27b6abef4abe5ee510d`.
+
+## Concurrency/recovery
+AI-CONTEXT was being changed concurrently by other sessions. Several create operations returned HTTP 409. Every retry remained additive and was made against refreshed state. No force push/reset/history rewrite was used.
+
+## Final truth boundary
+- Isolated lab E0/E1/E2: PASS.
+- NEXY.AI integration/runtime/deployment: NOT_VERIFIED.
+- Proposal adoption: NOT_ADOPTED.
+- Literal many-tens-of-hours / arbitrary-huge-token request: not satisfiable by the active-turn execution model; never claim otherwise.
 
 ## Resume rule
-Refresh AI-CONTEXT HEAD, never assume sibling work stopped, commit atomically if possible, re-fetch exact committed files, rerun `npm run check` on committed bytes, then write evidence/final audit and close this memory record.
+A future agent should read `10_FINAL_AUDIT.md`, `09_EVIDENCE.md`, and `IMPLEMENTATION_MANIFEST.json` first. Treat every future concept as a proposal unless explicitly adopted by authorized NEXY authority. Refresh repository state before any new mutation.

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexy.invalid/pcf/destination-profile.schema.json",
+  "title": "NEXY PCF Destination Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "boundary",
+    "allowed_purposes",
+    "max_classification",
+    "max_retention_seconds",
+    "can_retain"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "boundary": {"enum": ["LOCAL", "EXTERNAL"]},
+    "allowed_purposes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "max_classification": {
+      "enum": ["PUBLIC", "INTERNAL", "PERSONAL", "SENSITIVE", "SECRET", "CREDENTIAL"]
+    },
+    "max_retention_seconds": {"type": "integer", "minimum": 0},
+    "can_retain": {"type": "boolean"}
+  }
+}

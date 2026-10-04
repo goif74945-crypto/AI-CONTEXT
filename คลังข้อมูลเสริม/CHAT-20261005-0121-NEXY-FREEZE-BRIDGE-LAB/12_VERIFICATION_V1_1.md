@@ -125,3 +125,10 @@ This is environment-specific microbenchmark evidence only, **not** an E5 load cl
 ## Historical test defect
 
 Before v1.1, the initial v1.0 suite had one false failure because a test searched substring `script` and matched JSON key `description`. The assertion was corrected to test actual payload markers. This history is retained because hiding test defects would make the evidence record worse, not prettier.
+
+
+## Clarification: localization evidence
+
+The Thai/English test in this suite proves that locale selection does not change machine-semantic output fields. It does **not** prove that the English and Thai prose are linguistically equivalent.
+
+A concurrent sibling, `NEXY Semantic Localization Integrity Lab`, owns deterministic high-risk localization-drift checks. Full localization correctness remains NOT_VERIFIED here.

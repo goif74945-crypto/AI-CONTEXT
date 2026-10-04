@@ -1,6 +1,6 @@
 # MPAL Verification Evidence
 
-Status: `PRE-COMMIT LOCAL EVIDENCE` until final post-write verification closes the lab.
+Status: `POST-WRITE VERIFIED / STANDALONE_REFERENCE_ONLY`
 
 ## Target
 Standalone reference prototype only. No NEXY.AI implementation repository was tested or modified by this workstream.
@@ -41,3 +41,7 @@ This is bounded exhaustive evidence for the fixture, not formal proof for arbitr
 
 ## Completion gate
 After GitHub persistence: re-fetch committed bytes, rebuild a clean local workspace from them, rerun compile/tests/model-check, then record exact commit/file evidence in `99_FINAL_AUDIT.md`.
+
+
+## Post-write closure
+Critical GitHub blob identities were re-fetched and matched to the clean verification workspace. From those byte-identical inputs: py_compile PASS, unittest 49/49 PASS, bounded model 256 vectors PASS, engine coverage 90%, total coverage 94%, and CLI example ALLOW. See `08_GITHUB_BYTE_IDENTITY.json` and `99_FINAL_AUDIT.md`.

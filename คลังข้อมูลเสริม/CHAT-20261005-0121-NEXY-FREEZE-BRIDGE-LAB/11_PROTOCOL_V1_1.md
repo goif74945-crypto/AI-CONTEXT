@@ -161,3 +161,12 @@ The protocol is designed to minimize presentation-layer authority:
 - no bypass/force token.
 
 A future production integration must replace prototype disclosure prefixes with actual NEXY ACL/data-classification authority.
+
+
+## Localization verification boundary
+
+The compiler contains fixed English/Thai reference strings, but locale switching is not a translation-verification system.
+
+The v1.1 unit test verifies **machine-semantic invariance** only: changing locale must not alter event identity, status, reason, blocking layer, recovery owner, required-input identifiers, eligible recovery intents, evidence refs, disclosure, dependency-recheck safety or downstream-authority requirement.
+
+Cross-language textual semantic-drift verification is delegated to the sibling `NEXY Semantic Localization Integrity Lab` and remains outside Freeze Bridge authority.
