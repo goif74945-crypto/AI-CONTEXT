@@ -303,4 +303,150 @@ Unknown claim kinds do not guess. They require explicit evidence policy and ther
 1. **Scope laundering**: candidate operation is phrased differently but mutates outside authorized scope.
 2. **Protected mutation**: write/delete/deploy operation targets protected repository/path.
 3. **Approval inference**: destructive action proceeds because approval is assumed from context.
-4. **Evidence laundering**: E1/static result is presented
+4. **Evidence laundering**: E1/static result is presented as E4/E6 proof.
+5. **Authority stripping**: revised task silently removes an authority source that constrained behavior.
+6. **Protection weakening**: candidate contract narrows protected scope.
+7. **Irreversibility injection**: later revision adds destructive operation without a new approval.
+8. **Hash instability**: semantically equal inputs produce different decision identities due to key ordering.
+9. **Optimistic unknown**: unknown claim type defaults to a weak evidence level.
+10. **Path prefix confusion**: `allowed/x` incorrectly authorizes `allowed-evil/x`.
+
+## Controls implemented
+- boundary-aware scope matching;
+- explicit write-like operation set;
+- explicit irreversible flag + approval token;
+- monotonic evidence-class comparison;
+- stable reason codes;
+- deterministic canonical JSON hash;
+- fail-closed handling for unknown claim policy;
+- revision drift checks.
+
+## Residual limitations
+- No filesystem canonicalization/symlink defense.
+- No repository API side-effect interception.
+- No natural-language semantic parser.
+- No cryptographic signature, only content hashing.
+- No direct NEXY runtime integration evidence.
+
+
+---
+
+# AI-Proposed Future Systems
+
+**Classification: AI-PROPOSAL ONLY. None of these items is a current NEXY.AI requirement.**
+
+These are deliberately parked behind an authority boundary. They exist so future work has concrete hypotheses without confusing invention with project truth.
+
+## P1 — Capability Lease Compiler
+Compile `required_capabilities` into short-lived, task-bound capability leases with exact resource scope and expiry/revocation semantics.
+
+Potential value: prevents an agent from retaining write power after the action that justified it.
+
+Promotion gate: authoritative capability model + integration tests at the real tool broker.
+
+## P2 — Semantic Approval Binding
+Bind an approval token to a canonical operation tuple `(kind, resource, contract_hash)` so approval for one deletion cannot authorize a different deletion after task drift.
+
+Potential value: closes approval replay and “approval laundering.”
+
+Promotion gate: user-approval UX contract + cryptographic identity design.
+
+## P3 — Mutation Receipt Ledger
+After each admitted mutation, issue a machine-readable receipt with pre-state identity, action, post-state identity, verifier, and rollback handle.
+
+Potential value: audit and recovery across long autonomous sessions.
+
+Promotion gate: repository/tool integration and durable evidence policy.
+
+## P4 — Boundary Diff Firewall
+Before accepting a revised task contract, compare baseline/candidate scopes and require explicit promotion for any new mutation surface.
+
+Potential value: makes scope creep visible as a first-class event rather than a conversational accident.
+
+Promotion gate: baseline contract persistence and user-visible approval flow.
+
+## P5 — Proof Debt Budget
+Quantify claims that cannot yet reach their required evidence class. Refuse release-completion status while critical proof debt remains non-zero.
+
+Potential value: converts vague “still needs testing” into explicit debt.
+
+Promotion gate: authoritative claim inventory and evidence graph linkage.
+
+## P6 — Counterfactual Admission Simulator
+Generate controlled contract mutations such as removed authority, widened scope, lower evidence class, or added destructive operation and verify the gate changes state correctly.
+
+Potential value: regression tests the safety policy itself.
+
+Promotion gate: threat corpus governance + deterministic mutation definitions.
+
+## P7 — Precondition Witnesses
+Replace plain precondition strings with typed witness objects carrying `name`, `source`, `state`, and `evidence_identity`.
+
+Potential value: stops “precondition listed” from being mistaken for “precondition proven.”
+
+Promotion gate: evidence schema compatibility review.
+
+## P8 — Cross-Agent Contract Handoff
+Require each delegated sub-agent to receive a strict subset of the parent contract and reject child contracts that expand authority.
+
+Potential value: protects swarm execution from authority amplification.
+
+Promotion gate: authoritative SWARM delegation semantics.
+
+## P9 — Resource/Cost Admission Bounds
+Add explicit bounded limits for token use, writes, network destinations, runtime, retries, money, and recursion depth.
+
+Potential value: reduces runaway autonomous execution blast radius.
+
+Promotion gate: product policy for budgets and user override semantics.
+
+## P10 — Human-Readable Decision Trace
+Generate a compact explanation from stable finding codes without exposing hidden reasoning or allowing prose to change the actual decision.
+
+Potential value: understandable freezes without making model prose authoritative.
+
+Promotion gate: UX requirements and localization strategy.
+
+
+---
+
+# Integration Notes
+
+## Current status
+REFERENCE IMPLEMENTATION ONLY. Integration into NEXY.AI is NOT AUTHORIZED and NOT VERIFIED.
+
+## Hypothetical placement
+If a future authoritative specification promotes the concept, a safe placement would be before capability issuance and after task normalization.
+
+## Required adapters
+A production adapter would need canonical identities for:
+- repository + branch + commit;
+- file/path/resource;
+- external service/account;
+- deployment target;
+- approval subject;
+- evidence artifact.
+
+## Non-negotiable separation
+The model may propose a task contract, but a deterministic policy layer must validate it. Model confidence cannot substitute for authority, approval, or evidence.
+
+## Required production proofs before adoption
+- parser/schema validation;
+- unit tests for every reason code;
+- integration with the actual tool broker;
+- replay tests on real historical task records;
+- adversarial path/identity tests;
+- capability escape tests;
+- approval replay tests;
+- evidence downgrade tests;
+- UI tests for freeze/error display;
+- exact-revision deployment evidence if shipped.
+
+
+---
+
+# User Value Hypothesis
+
+**Status: PROPOSAL / HYPOTHESIS.**
+
+The preflight model is valuable only if it reduces real f
