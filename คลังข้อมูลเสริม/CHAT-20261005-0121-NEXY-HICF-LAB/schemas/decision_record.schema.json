@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexy-ai-proposed:hicf:decision-record:v0",
+  "title": "AI-PROPOSED HICF Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["intent_fingerprint", "action", "decision", "reason_codes", "required_questions", "friction_advisories"],
+  "properties": {
+    "intent_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action_id", "capability", "impact", "reversibility", "mutates_state"],
+      "properties": {
+        "action_id": {"type": "string", "minLength": 1},
+        "capability": {"type": "string", "minLength": 1},
+        "impact": {"enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+        "reversibility": {"enum": ["REVERSIBLE", "PARTIALLY_REVERSIBLE", "IRREVERSIBLE"]},
+        "mutates_state": {"type": "boolean"}
+      }
+    },
+    "decision": {"enum": ["PROCEED", "ASK", "FREEZE"]},
+    "reason_codes": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "required_questions": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "friction_advisories": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+  }
+}
