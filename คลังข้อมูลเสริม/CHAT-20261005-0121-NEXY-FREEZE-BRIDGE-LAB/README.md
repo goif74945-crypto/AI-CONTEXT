@@ -108,3 +108,12 @@ Freeze Bridge does not:
 - mutate any NEXY.AI repository.
 
 Promotion into current NEXY build scope requires a separately authorized task and matching current-head evidence.
+
+
+## Localization sibling boundary
+
+A second concurrent sibling was discovered:
+
+`คลังข้อมูลเสริม/CHAT-20261005-0122-NEXY-SEMANTIC-LOCALIZATION-INTEGRITY-LAB`
+
+Freeze Bridge may select fixed English/Thai reference wording, but it does **not** claim translation correctness or semantic-equivalence verification. Its locale test proves only that machine fields/intents do not change when locale changes. Cross-language drift detection belongs to the Localization Integrity sibling.
