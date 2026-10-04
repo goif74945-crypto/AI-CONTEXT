@@ -105,6 +105,8 @@ def evaluate_claim(document: Mapping[str, Any]) -> dict[str, Any]:
     fingerprint = _fingerprint(document)
     if not isinstance(document, Mapping):
         return _invalid(fingerprint, ["DOCUMENT_NOT_MAPPING"])
+    if fingerprint is None:
+        return _invalid(None, ["DOCUMENT_NOT_CANONICAL_JSON"])
 
     claim_id_value = document.get("claim_id")
     quantifier_value = document.get("quantifier")
@@ -117,7 +119,7 @@ def evaluate_claim(document: Mapping[str, Any]) -> dict[str, Any]:
         errors.append("INVALID_CLAIM_ID")
     if not _nonblank_string(document.get("predicate")):
         errors.append("INVALID_PREDICATE")
-    if quantifier_value not in VALID_QUANTIFIERS:
+    if not isinstance(quantifier_value, str) or quantifier_value not in VALID_QUANTIFIERS:
         errors.append("INVALID_QUANTIFIER")
     target_revision = document.get("target_revision")
     if not _nonblank_string(target_revision):
@@ -136,9 +138,10 @@ def evaluate_claim(document: Mapping[str, Any]) -> dict[str, Any]:
         errors.append("EMPTY_DOMAIN_FORBIDDEN")
     if len(population) > MAX_POPULATION:
         errors.append("DOMAIN_TOO_LARGE")
-    if any(not _nonblank_string(member) for member in population):
+    population_members_valid = all(_nonblank_string(member) for member in population)
+    if not population_members_valid:
         errors.append("INVALID_POPULATION_MEMBER")
-    if len(set(population)) != len(population):
+    elif len(set(population)) != len(population):
         errors.append("DUPLICATE_POPULATION_MEMBER")
 
     enumeration = domain.get("enumeration")
@@ -157,7 +160,7 @@ def evaluate_claim(document: Mapping[str, Any]) -> dict[str, Any]:
         if not _nonblank_string(enumeration.get("evidence_ref")):
             errors.append("INVALID_ENUMERATION_EVIDENCE_REF")
 
-    if quantifier_value in COUNT_QUANTIFIERS:
+    if isinstance(quantifier_value, str) and quantifier_value in COUNT_QUANTIFIERS:
         threshold = document.get("threshold")
         if isinstance(threshold, bool) or not isinstance(threshold, int) or threshold < 0:
             errors.append("INVALID_THRESHOLD")
@@ -190,7 +193,8 @@ def evaluate_claim(document: Mapping[str, Any]) -> dict[str, Any]:
         if member_id in evidence_by_member:
             evidence_errors.append("DUPLICATE_EVIDENCE_MEMBER")
             continue
-        if record.get("outcome") not in VALID_OUTCOMES:
+        outcome_value = record.get("outcome")
+        if not isinstance(outcome_value, str) or outcome_value not in VALID_OUTCOMES:
             evidence_errors.append("INVALID_EVIDENCE_OUTCOME")
             continue
         if not _nonblank_string(record.get("evidence_ref")):
