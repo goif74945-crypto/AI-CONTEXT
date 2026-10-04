@@ -66,6 +66,5 @@ class PropertyTests(unittest.TestCase):
         self.assertEqual(r.status,'PASS')
         self.assertTrue({'a','b'}.issubset(set(r.covered_assumptions)))
 
-
 if __name__ == '__main__':
     unittest.main()
