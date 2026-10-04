@@ -1,0 +1,38 @@
+{
+  "$schema": "../schema/policy.schema.json",
+  "policyVersion": "0.1.0",
+  "mode": "strict",
+  "supportedLanguages": ["en", "th"],
+  "freezeOnUnsupportedLanguage": true,
+  "preserve": {
+    "numbers": true,
+    "units": true,
+    "placeholders": true,
+    "urls": true,
+    "emails": true,
+    "identifiers": true,
+    "canonicalTokens": true,
+    "modality": true,
+    "negation": true
+  },
+  "canonicalTokens": [
+    "FREEZE", "PASS", "FAIL", "PARTIAL", "BLOCKED", "NOT_VERIFIED", "UNKNOWN", "CONFLICT",
+    "OWNER", "OPERATOR", "AUDITOR", "SYSTEM", "VIEW", "RUN", "FORGE"
+  ],
+  "protectedLiterals": [],
+  "allowAdditionalCanonicalTokens": false,
+  "severity": {
+    "emptyInput": "BLOCK",
+    "numberMismatch": "BLOCK",
+    "unitMismatch": "BLOCK",
+    "placeholderMismatch": "BLOCK",
+    "urlMismatch": "BLOCK",
+    "emailMismatch": "BLOCK",
+    "identifierMismatch": "BLOCK",
+    "canonicalTokenMismatch": "BLOCK",
+    "protectedLiteralMismatch": "BLOCK",
+    "modalityMismatch": "BLOCK",
+    "negationMismatch": "BLOCK",
+    "unsupportedLanguage": "BLOCK"
+  }
+}
