@@ -1,0 +1,86 @@
+{
+  "format": "NCW1",
+  "hash_domain": "NEXY-CANONICAL-WIRE-LAB-v1\\x00",
+  "vectors": [
+    {
+      "id": "null",
+      "value": null,
+      "wire_hex": "4e43573100",
+      "sha256": "d038347245c1648223f0222233a89ddf4f9e1c1fc05feee9d5799b25e264233c"
+    },
+    {
+      "id": "false",
+      "value": false,
+      "wire_hex": "4e43573101",
+      "sha256": "70d190b9cd56d7635d103d6b337e3b648d7b64b4928faa822d0b9e58d5b8ad63"
+    },
+    {
+      "id": "true",
+      "value": true,
+      "wire_hex": "4e43573102",
+      "sha256": "ac026287ad562f67ed9bb1bf49b9df12dc33acad1b80689716315ae54e00c3eb"
+    },
+    {
+      "id": "zero",
+      "value": 0,
+      "wire_hex": "4e4357310300000000000000000000000000000000",
+      "sha256": "aec3731288394928a4d1991fbd49d661584c2fedb959274959dab55224970301"
+    },
+    {
+      "id": "minus-one",
+      "value": -1,
+      "wire_hex": "4e43573103ffffffffffffffffffffffffffffffff",
+      "sha256": "c1c919b89b7e79a424b852c5cbcd4e9336c52a8c79594cbae564e1039f030202"
+    },
+    {
+      "id": "i128-min",
+      "value": -170141183460469231731687303715884105728,
+      "wire_hex": "4e4357310380000000000000000000000000000000",
+      "sha256": "06577fac0941c11301f061e650c6cbd62ae93944cf66682852c03855b21eeb58"
+    },
+    {
+      "id": "i128-max",
+      "value": 170141183460469231731687303715884105727,
+      "wire_hex": "4e435731037fffffffffffffffffffffffffffffff",
+      "sha256": "8b462009a6026b7a3c3af5926345516159b8e191fd1be90b92597dbb9ae0ba28"
+    },
+    {
+      "id": "ascii",
+      "value": "NEXY",
+      "wire_hex": "4e43573104000000044e455859",
+      "sha256": "dfd2b8bfbfc60b7df7ccfcf96d9d63d1196c632ad25778247c8694230bf758bf"
+    },
+    {
+      "id": "unicode",
+      "value": "é ไทย",
+      "wire_hex": "4e435731040000000cc3a920e0b984e0b897e0b8a2",
+      "sha256": "2f32b7d16c1b07ec4a8bdd681dc3164a6d2f058e960afb8cf061f42ea2268ff8"
+    },
+    {
+      "id": "empty-list",
+      "value": [],
+      "wire_hex": "4e4357310500000000",
+      "sha256": "2f0c5cc5e5cf3dd1ffac67dafcb127b8f1433b6813f3755351a175c258f0d99b"
+    },
+    {
+      "id": "empty-map",
+      "value": {},
+      "wire_hex": "4e4357310600000000",
+      "sha256": "4f822ff88bbd6ff89122f9cdc6cc826712c60abab75ef40f5b9db9c104c22c8c"
+    },
+    {
+      "id": "composite",
+      "value": {
+        "a": 1,
+        "b": [
+          true,
+          null,
+          "ไทย"
+        ],
+        "z": -7
+      },
+      "wire_hex": "4e4357310600000003000000016103000000000000000000000000000000010000000162050000000302000400000009e0b984e0b897e0b8a2000000017a03fffffffffffffffffffffffffffffff9",
+      "sha256": "baf270eb77afc93ad9ecb83535613d6d99684e476ab61befdf03ccb7d68d401e"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "protected_repository_name_substrings": ["NEXY.AI"],
+  "lexical_warn_threshold": 0.45,
+  "lexical_freeze_threshold": 0.72,
+  "require_namespace_write_containment": true,
+  "minimum_concept_tags": 2
+}

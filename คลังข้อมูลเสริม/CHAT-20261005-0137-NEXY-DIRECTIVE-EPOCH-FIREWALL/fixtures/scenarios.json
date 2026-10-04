@@ -1,0 +1,34 @@
+{
+  "name": "prepared action becomes stale after replacement",
+  "steps": [
+    {
+      "type": "directive",
+      "event": {
+        "event_id": "evt-001",
+        "directive_id": "directive-alpha",
+        "operation": "NEW",
+        "allowed_actions": ["READ", "REVERSIBLE_WRITE"],
+        "constraints": {"workspace": "alpha"}
+      }
+    },
+    {
+      "type": "prepare",
+      "save_as": "write-old",
+      "action_id": "action-001",
+      "kind": "REVERSIBLE_WRITE",
+      "payload": {"target": "artifact-A", "operation": "update"}
+    },
+    {
+      "type": "directive",
+      "event": {
+        "event_id": "evt-002",
+        "directive_id": "directive-beta",
+        "operation": "REPLACE",
+        "expected_epoch": 1,
+        "allowed_actions": ["READ"],
+        "constraints": {"workspace": "alpha", "read_only": true}
+      }
+    },
+    {"type": "commit", "action": "write-old"}
+  ]
+}

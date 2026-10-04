@@ -1,0 +1,7 @@
+events=20001
+build_seconds=1.500952
+replay_seconds=1.655925
+build_events_per_second=13325.55
+replay_events_per_second=12078.44
+journal_records=20001
+final_replay_match=PASS

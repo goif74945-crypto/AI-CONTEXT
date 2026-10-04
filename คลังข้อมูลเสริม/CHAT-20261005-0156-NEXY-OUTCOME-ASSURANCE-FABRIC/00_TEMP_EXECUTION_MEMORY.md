@@ -8,7 +8,7 @@
 - Mutable scope: `คลังข้อมูลเสริม/CHAT-20261005-0156-NEXY-OUTCOME-ASSURANCE-FABRIC/**`
 - Protected scope: every repository whose name contains `NEXY.AI`; all existing paths outside this namespace.
 - NEXY.AI repository mutation: FORBIDDEN.
-- Current state: EXECUTING
+- Current state: EXECUTING / LOCAL_REFERENCE_IMPLEMENTATION_VERIFIED
 
 ## Objective
 Design, implement, test, repair, and preserve five AI-proposed supplemental systems that verify user-level outcomes after execution, rather than merely action correctness.
@@ -34,5 +34,11 @@ All five systems are AI-PROPOSED / EXPERIMENTAL / NOT CANON. They are not eviden
 - deterministic replay/hash evidence.
 - final scope audit proving no protected repository/path mutation by this mission.
 
-## Resume point
-Next: implement the isolated reference package and tests locally, capture failures, repair, then persist exact tested bytes plus evidence.
+## Execution checkpoint — local implementation
+- Five-engine Python reference implementation exists locally.
+- Initial suite: 27 tests, 1 FAIL caused by an incorrect Pareto test oracle; test expectation corrected without weakening engine behavior.
+- Expanded adversarial suite exposed a real non-finite observation canonicalization bug; root cause repaired by normalizing invalid numeric observations to null + explicit invalid_observations.
+- Current executed suite: 37/37 PASS.
+- Compileall/static import check: PASS.
+- Deterministic replay: 100 identical verifier replays covered by executed test.
+- Next: expand CLI/all-engine integration coverage, benchmark, write design/non-duplication/evidence docs, persist exact tested bytes, read back and hash-audit.

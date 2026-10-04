@@ -1,0 +1,17 @@
+{
+  "compileall": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "unit_tests": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_duplicate_event_id_different_payload_freezes (test_engine.FirewallTests.test_duplicate_event_id_different_payload_freezes) ... ok\ntest_duplicate_event_same_payload_is_idempotent (test_engine.FirewallTests.test_duplicate_event_same_payload_is_idempotent) ... ok\ntest_expected_epoch_mismatch_freezes (test_engine.FirewallTests.test_expected_epoch_mismatch_freezes) ... ok\ntest_failed_directive_attempt_is_journaled_and_replayable (test_engine.FirewallTests.test_failed_directive_attempt_is_journaled_and_replayable) ... ok\ntest_full_journal_replay_reproduces_commit_freeze (test_engine.FirewallTests.test_full_journal_replay_reproduces_commit_freeze) ... ok\ntest_irreversible_requires_exact_approval_binding (test_engine.FirewallTests.test_irreversible_requires_exact_approval_binding) ... ok\ntest_journal_tamper_is_detected (test_engine.FirewallTests.test_journal_tamper_is_detected) ... ok\ntest_narrow_cannot_expand_scope (test_engine.FirewallTests.test_narrow_cannot_expand_scope) ... ok\ntest_narrow_reduces_scope_and_old_action_becomes_stale (test_engine.FirewallTests.test_narrow_reduces_scope_and_old_action_becomes_stale) ... ok\ntest_prepare_outside_scope_rejected (test_engine.FirewallTests.test_prepare_outside_scope_rejected) ... ok\ntest_recovery_requires_new_replacement_and_old_action_stays_invalid (test_engine.FirewallTests.test_recovery_requires_new_replacement_and_old_action_stays_invalid) ... ok\ntest_replace_invalidates_prepared_action_and_freezes (test_engine.FirewallTests.test_replace_invalidates_prepared_action_and_freezes) ... ok\ntest_replay_is_deterministic (test_engine.FirewallTests.test_replay_is_deterministic) ... ok\ntest_revoke_blocks_prepared_action (test_engine.FirewallTests.test_revoke_blocks_prepared_action) ... ok\ntest_tampered_payload_freezes (test_engine.FirewallTests.test_tampered_payload_freezes) ... ok\ntest_valid_reversible_action_commits (test_engine.FirewallTests.test_valid_reversible_action_commits) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.004s\n\nOK\n"
+  },
+  "scenario": {
+    "returncode": 0,
+    "stdout": "{\n  \"decisions\": [\n    {\n      \"code\": \"STALE_DIRECTIVE_EPOCH\",\n      \"reason\": \"prepared action belongs to a superseded directive epoch\",\n      \"status\": \"FREEZE\"\n    }\n  ],\n  \"final_state\": {\n    \"active_directive_id\": \"directive-beta\",\n    \"allowed_actions\": [\n      \"READ\"\n    ],\n    \"constraints\": {\n      \"read_only\": true,\n      \"workspace\": \"alpha\"\n    },\n    \"directive_hash\": \"1c4b74a6ba58c7d8496d86b980dfe9fc67f8d89f88f8c880ba30e4b1fa48a989\",\n    \"epoch\": 2,\n    \"freeze_reason\": \"STALE_DIRECTIVE_EPOCH\",\n    \"lineage_hash\": \"6b2826ede4b7aa7913ff657a7c4ca66fc9fcfc8da690e30878cbb2d5670f9786\",\n    \"status\": \"FROZEN\"\n  },\n  \"state_hash\": \"81a8d26f10f8938399bee8399fc4c77a2895d2e1c37e83825badbe7ab0d2c563\"\n}\n",
+    "stderr": ""
+  }
+}

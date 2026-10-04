@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexy-agent-adapter-cert"
+version = "0.1.0"
+description = "Standalone preflight certification harness for NEXY.AI AgentAdapter candidates"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+nexy-adapter-cert = "nexy_adapter_cert.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
