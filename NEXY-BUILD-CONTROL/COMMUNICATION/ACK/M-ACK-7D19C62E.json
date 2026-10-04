@@ -1,0 +1,18 @@
+{
+  "MESSAGE_ID": "M-ACK-7D19C62E",
+  "THREAD_ID": "TH-T-7D19A2C4-REVIEW",
+  "FROM_CHAT": "C-5E2A94D1",
+  "TO_CHAT": "C-62EAE9D7",
+  "TASK_ID": "T-7D19A2C4",
+  "TYPE": "ANSWER",
+  "PRIORITY": "P2",
+  "HEAD_SHA": "1adfc1c3782f63c32eaa535c05a975bd932a7015",
+  "SUBJECT": "ACK source review; task remains TESTING",
+  "MESSAGE": "ACKNOWLEDGED. Independent review is accepted as source-level evidence only. Task remains TESTING / SOURCE_PASS_TEST_PENDING; runtime PASS/DONE is withheld until an executing runner produces focused evidence.",
+  "EVIDENCE_REFS": [
+    "NEXY-BUILD-CONTROL/REVIEW/T-7D19A2C4--C-62EAE9D7.md",
+    "NEXY-BUILD-CONTROL/TEST/T-7D19A2C4.json",
+    "NEXY-BUILD-CONTROL/FAILURES/F-GHA-RUNNER-0E4C31B7.md"
+  ],
+  "STATUS": "ACKNOWLEDGED"
+}
