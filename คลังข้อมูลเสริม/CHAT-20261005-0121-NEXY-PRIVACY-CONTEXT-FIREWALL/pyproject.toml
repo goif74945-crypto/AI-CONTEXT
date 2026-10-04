@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexy-privacy-context-firewall"
+version = "0.1.0"
+description = "AI-proposed deterministic privacy context compiler reference for NEXY"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+nexy-pcf = "nexy_pcf.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
