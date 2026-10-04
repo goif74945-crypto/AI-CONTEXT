@@ -1,0 +1,42 @@
+test_computes_dominators (dependency_dominator_analyzer.test_engine.DominatorTests.test_computes_dominators) ... ok
+test_finds_shared_chokepoint (dependency_dominator_analyzer.test_engine.DominatorTests.test_finds_shared_chokepoint) ... ok
+test_ignores_unreachable_nodes (dependency_dominator_analyzer.test_engine.DominatorTests.test_ignores_unreachable_nodes) ... ok
+test_detects_deadlock_cycle (liveness_deadlock_sentinel.test_engine.LivenessTests.test_detects_deadlock_cycle) ... ok
+test_detects_starvation_risk_without_cycle (liveness_deadlock_sentinel.test_engine.LivenessTests.test_detects_starvation_risk_without_cycle) ... ok
+test_progressable_and_quiescent (liveness_deadlock_sentinel.test_engine.LivenessTests.test_progressable_and_quiescent) ... ok
+test_rejects_unknown_dependency (liveness_deadlock_sentinel.test_engine.LivenessTests.test_rejects_unknown_dependency) ... ok
+test_invariant_failure_cannot_win (lo4_mutation_tournament.test_engine.TournamentTests.test_invariant_failure_cannot_win) ... ok
+test_output_is_deterministic (lo4_mutation_tournament.test_engine.TournamentTests.test_output_is_deterministic) ... ok
+test_pareto_frontier_excludes_dominated_candidate (lo4_mutation_tournament.test_engine.TournamentTests.test_pareto_frontier_excludes_dominated_candidate) ... ok
+test_threshold_failure_rejected (lo4_mutation_tournament.test_engine.TournamentTests.test_threshold_failure_rejected) ... ok
+test_finds_minimal_hitting_sets (minimal_cut_failure_geometry.test_engine.MinimalCutTests.test_finds_minimal_hitting_sets) ... ok
+test_is_deterministic_under_input_order (minimal_cut_failure_geometry.test_engine.MinimalCutTests.test_is_deterministic_under_input_order) ... ok
+test_rejects_empty_or_oversized_inputs (minimal_cut_failure_geometry.test_engine.MinimalCutTests.test_rejects_empty_or_oversized_inputs) ... ok
+test_class_boundary_is_preserved (symmetry_state_space_reducer.test_engine.SymmetryTests.test_class_boundary_is_preserved) ... ok
+test_non_equivalent_state_does_not_collapse (symmetry_state_space_reducer.test_engine.SymmetryTests.test_non_equivalent_state_does_not_collapse) ... ok
+test_swapped_equivalent_entities_collapse (symmetry_state_space_reducer.test_engine.SymmetryTests.test_swapped_equivalent_entities_collapse) ... ok
+test_dominators_match_all_simple_paths_definition (test_properties.DominatorPropertyTests.test_dominators_match_all_simple_paths_definition) ... ok
+test_shared_critical_dominator_matches_path_intersection (test_properties.DominatorPropertyTests.test_shared_critical_dominator_matches_path_intersection) ... ok
+test_unknown_start_rejected (test_properties.DominatorPropertyTests.test_unknown_start_rejected) ... ok
+test_unreachable_target_rejected (test_properties.DominatorPropertyTests.test_unreachable_target_rejected) ... ok
+test_duplicate_ids_are_rejected (test_properties.LivenessPropertyTests.test_duplicate_ids_are_rejected) ... ok
+test_input_permutation_does_not_change_result (test_properties.LivenessPropertyTests.test_input_permutation_does_not_change_result) ... ok
+test_self_wait_is_deadlock (test_properties.LivenessPropertyTests.test_self_wait_is_deadlock) ... ok
+test_terminal_dependency_does_not_create_false_deadlock (test_properties.LivenessPropertyTests.test_terminal_dependency_does_not_create_false_deadlock) ... ok
+test_every_result_hits_every_path_and_is_minimal (test_properties.MinimalCutPropertyTests.test_every_result_hits_every_path_and_is_minimal) ... ok
+test_random_small_instances_match_bruteforce (test_properties.MinimalCutPropertyTests.test_random_small_instances_match_bruteforce) ... ok
+test_redundant_superset_path_does_not_change_answer (test_properties.MinimalCutPropertyTests.test_redundant_superset_path_does_not_change_answer) ... ok
+test_all_worker_id_permutations_collapse (test_properties.SymmetryPropertyTests.test_all_worker_id_permutations_collapse) ... ok
+test_nan_rejected (test_properties.SymmetryPropertyTests.test_nan_rejected) ... ok
+test_nested_json_key_order_is_irrelevant (test_properties.SymmetryPropertyTests.test_nested_json_key_order_is_irrelevant) ... ok
+test_non_json_state_rejected (test_properties.SymmetryPropertyTests.test_non_json_state_rejected) ... ok
+test_dominated_candidate_never_wins (test_properties.TournamentPropertyTests.test_dominated_candidate_never_wins) ... ok
+test_input_permutation_is_deterministic (test_properties.TournamentPropertyTests.test_input_permutation_is_deterministic) ... ok
+test_metric_out_of_range_rejected (test_properties.TournamentPropertyTests.test_metric_out_of_range_rejected) ... ok
+test_promotion_is_never_permitted (test_properties.TournamentPropertyTests.test_promotion_is_never_permitted) ... ok
+test_unknown_metric_rejected (test_properties.TournamentPropertyTests.test_unknown_metric_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.012s
+
+OK
