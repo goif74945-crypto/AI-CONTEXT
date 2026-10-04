@@ -379,4 +379,127 @@ def evidence_obligations(
                 Finding(
                     code="PFL-EVIDENCE-INSUFFICIENT",
                     message=(
-                        f"Claim '{c
+                        f"Claim '{claim.id}' requires {minimum.value} or stronger PASS evidence; "
+                        f"strongest passing class is {observed}."
+                    ),
+                    decision=Decision.NOT_VERIFIED,
+                    claim_id=claim.id,
+                )
+            )
+    return required, findings
+
+# ===== engine.py =====
+
+from collections import Counter
+
+
+
+_PRIORITY = {
+    Decision.PASS: 0,
+    Decision.NOT_VERIFIED: 1,
+    Decision.BLOCKED: 2,
+    Decision.FAIL: 3,
+    Decision.CONFLICT: 4,
+}
+
+
+def evaluate_contract(contract: TaskContract) -> AdmissionEnvelope:
+    findings: list[Finding] = []
+
+    if not contract.target:
+        findings.append(
+            Finding(
+                code="PFL-TARGET-MISSING",
+                message="Target identity is missing.",
+                decision=Decision.BLOCKED,
+            )
+        )
+
+    if not contract.authorized_scope:
+        findings.append(
+            Finding(
+                code="PFL-SCOPE-MISSING",
+                message="No authorized scope was declared.",
+                decision=Decision.BLOCKED,
+            )
+        )
+
+    if not contract.authority_sources:
+        findings.append(
+            Finding(
+                code="PFL-AUTHORITY-MISSING",
+                message="No authority source was declared.",
+                decision=Decision.BLOCKED,
+            )
+        )
+
+    findings.extend(_operation_findings(contract))
+
+    required, evidence_findings = evidence_obligations(contract.claims, contract.evidence)
+    findings.extend(evidence_findings)
+
+    ordered = tuple(sorted(findings, key=_finding_key))
+    decision = max((f.decision for f in ordered), key=lambda d: _PRIORITY[d], default=Decision.PASS)
+    capabilities = tuple(sorted({op.kind.value for op in contract.operations}))
+    return AdmissionEnvelope(
+        contract_hash=sha256_identity(contract.to_primitive()),
+        decision=decision,
+        findings=ordered,
+        required_evidence=required,
+        required_capabilities=capabilities,
+    )
+
+
+def _operation_findings(contract: TaskContract) -> list[Finding]:
+    findings: list[Finding] = []
+    approval_counts = Counter(contract.approvals)
+
+    for op in contract.operations:
+        if not any(contains_scope(scope, op.resource) for scope in contract.authorized_scope):
+            findings.append(
+                Finding(
+                    code="PFL-SCOPE-OUTSIDE",
+                    message=f"Operation target '{op.resource}' is outside declared authorized scope.",
+                    decision=Decision.BLOCKED,
+                    resource=op.resource,
+                )
+            )
+
+        if op.kind.is_mutation and any(
+            contains_scope(scope, op.resource) for scope in contract.protected_scope
+        ):
+            findings.append(
+                Finding(
+                    code="PFL-PROTECTED-WRITE",
+                    message=f"Mutation '{op.kind.value}' targets protected scope '{op.resource}'.",
+                    decision=Decision.CONFLICT,
+                    resource=op.resource,
+                )
+            )
+
+        if op.irreversible:
+            required_approval = op.approval or f"approve:{op.kind.value}:{op.resource}"
+            if approval_counts[required_approval] <= 0:
+                findings.append(
+                    Finding(
+                        code="PFL-APPROVAL-MISSING",
+                        message=(
+                            f"Irreversible operation '{op.kind.value}' on '{op.resource}' requires "
+                            f"explicit approval token '{required_approval}'."
+                        ),
+                        decision=Decision.BLOCKED,
+                        resource=op.resource,
+                    )
+                )
+    return findings
+
+
+def _finding_key(finding: Finding) -> tuple[int, str, str, str]:
+    return (
+        -_PRIORITY[finding.decision],
+        finding.code,
+        finding.resource or "",
+        finding.claim_id or "",
+    )
+
+# ===== drift.py 
