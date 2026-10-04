@@ -16,7 +16,8 @@ Platform chat ID remains `UNKNOWN` because no authoritative chat identifier is e
 - local implementation: complete
 - local static validation: PASS
 - local unit/CLI validation: PASS
-- remote AI-CONTEXT publication: pending at time this checkpoint was first written
+- remote AI-CONTEXT publication: complete on isolated branch
+- remote readback identity: PASS, 34/34 pre-final published files matched local verified Git blob identities
 - NEXY.AI mutation: none authorized and none performed
 
 ## Proven local evidence
@@ -29,6 +30,10 @@ Platform chat ID remains `UNKNOWN` because no authoritative chat identifier is e
 - tampered witness hash test → correctly FAILS verification
 
 ## Resume rule
+
+## Closing status
+
+`COMPLETE` for the external NFWM deliverables. NEXY.AI runtime integration remains `NOT_VERIFIED` and was intentionally not attempted.
 
 A future AI should:
 
