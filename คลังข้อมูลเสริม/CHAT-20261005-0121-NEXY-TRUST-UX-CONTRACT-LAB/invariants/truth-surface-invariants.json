@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0-proposal",
+  "classification": "AI_PROPOSED_ADVISORY",
+  "invariants": [
+    {"id":"TS-001","violation_code":"STATUS_MISMATCH","class":"truth_fidelity","severity":"ERROR"},
+    {"id":"TS-002","violation_code":"STATE_MISMATCH","class":"truth_fidelity","severity":"ERROR"},
+    {"id":"TS-003","violation_code":"REQUEST_ID_MISMATCH","class":"identity_binding","severity":"ERROR"},
+    {"id":"TS-004","violation_code":"TRACE_ID_MISMATCH","class":"identity_binding","severity":"ERROR"},
+    {"id":"TS-005","violation_code":"FREEZE_RESULT_LEAK","class":"result_suppression","severity":"ERROR"},
+    {"id":"TS-006","violation_code":"FREEZE_SUCCESS_COPY","class":"semantic_truth","severity":"ERROR"},
+    {"id":"TS-007","violation_code":"RECOVER_VISIBILITY_VIOLATION","class":"authority_visibility","severity":"ERROR"},
+    {"id":"TS-008","violation_code":"STOP_MUTATION_ACTION","class":"authority_visibility","severity":"ERROR"},
+    {"id":"TS-009","violation_code":"STOP_RETRY_COPY","class":"semantic_truth","severity":"ERROR"},
+    {"id":"TS-010","violation_code":"PENDING_RESULT_LEAK","class":"result_suppression","severity":"ERROR"},
+    {"id":"TS-011","violation_code":"PENDING_SUCCESS_COPY","class":"semantic_truth","severity":"ERROR"},
+    {"id":"TS-012","violation_code":"PENDING_MUTATION_ACTION","class":"authority_visibility","severity":"ERROR"},
+    {"id":"TS-013","violation_code":"RELEASE_PROOF_MISSING","class":"release_boundary","severity":"ERROR"},
+    {"id":"TS-014","violation_code":"ROLE_MUTATION_VISIBILITY","class":"authority_visibility","severity":"ERROR"},
+    {"id":"TS-015","violation_code":"BACKEND_AUTH_FLAG_MISSING","class":"authority_annotation","severity":"ERROR"},
+    {"id":"TS-016","violation_code":"RECOVER_CONFIRMATION_MISSING","class":"operator_safety","severity":"ERROR"},
+    {"id":"TS-017","violation_code":"VISIBLE_RESULT_MISSING","class":"internal_consistency","severity":"ERROR"},
+    {"id":"TS-018","violation_code":"STOP_RESULT_LEAK","class":"result_suppression","severity":"ERROR"},
+    {"id":"TS-019","violation_code":"FREEZE_ILLEGAL_MUTATION","class":"authority_visibility","severity":"ERROR"}
+  ]
+}
