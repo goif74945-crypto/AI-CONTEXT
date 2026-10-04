@@ -449,4 +449,25 @@ The model may propose a task contract, but a deterministic policy layer must val
 
 **Status: PROPOSAL / HYPOTHESIS.**
 
-The preflight model is valuable only if it reduces real f
+The preflight model is valuable only if it reduces real failure without turning every action into bureaucratic sludge.
+
+## Expected user-visible benefits
+- fewer accidental out-of-scope changes;
+- clearer reasons when a task freezes;
+- less “tested” language backed only by weak evidence;
+- fewer destructive actions that rely on implied approval;
+- more predictable behavior across different AI models;
+- easier resumption because the admitted scope and proof obligations are explicit.
+
+## Metrics worth measuring if piloted
+- protected-scope mutation escape rate;
+- unauthorized scope-expansion rate;
+- false-completion rate;
+- approval replay/misbinding rate;
+- median preflight latency;
+- false-block rate for legitimate read-only work;
+- percentage of completion claims with matching evidence class;
+- contract replay determinism rate;
+- user correction rate after freeze explanations.
+
+A proposal should be rejected if it meaningfully increases false blocking without proportional integrity gains.
