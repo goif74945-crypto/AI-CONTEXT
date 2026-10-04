@@ -11,7 +11,7 @@ TAP version 13
 #     at moduleResolve (node:internal/modules/esm/resolve:860:10)
 #     at defaultResolve (node:internal/modules/esm/resolve:984:11)
 #     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:780:12)
-#     at #cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
 #     at ModuleLoader.resolve (node:internal/modules/esm/loader:687:38)
 #     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:305:38)
 #     at ModuleJob._link (node:internal/modules/esm/module_job:137:49) {
@@ -39,7 +39,7 @@ not ok 1 - 01_FLOWGUARD_64/test.mjs
 #     at moduleResolve (node:internal/modules/esm/resolve:860:10)
 #     at defaultResolve (node:internal/modules/esm/resolve:984:11)
 #     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:780:12)
-#     at #cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
 #     at ModuleLoader.resolve (node:internal/modules/esm/loader:687:38)
 #     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:305:38)
 #     at ModuleJob._link (node:internal/modules/esm/module_job:137:49) {
@@ -67,7 +67,7 @@ not ok 2 - 02_QUEUEBOUND_64/test.mjs
 #     at moduleResolve (node:internal/modules/esm/resolve:860:10)
 #     at defaultResolve (node:internal/modules/esm/resolve:984:11)
 #     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:780:12)
-#     at #cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
 #     at ModuleLoader.resolve (node:internal/modules/esm/loader:687:38)
 #     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:305:38)
 #     at ModuleJob._link (node:internal/modules/esm/module_job:137:49) {
@@ -95,7 +95,7 @@ not ok 3 - 03_DEADLINE_64/test.mjs
 #     at moduleResolve (node:internal/modules/esm/resolve:860:10)
 #     at defaultResolve (node:internal/modules/esm/resolve:984:11)
 #     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:780:12)
-#     at #cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
 #     at ModuleLoader.resolve (node:internal/modules/esm/loader:687:38)
 #     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:305:38)
 #     at ModuleJob._link (node:internal/modules/esm/module_job:137:49) {
@@ -123,7 +123,7 @@ not ok 4 - 04_CHAIN_64/test.mjs
 #     at moduleResolve (node:internal/modules/esm/resolve:860:10)
 #     at defaultResolve (node:internal/modules/esm/resolve:984:11)
 #     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:780:12)
-#     at #cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
 #     at ModuleLoader.resolve (node:internal/modules/esm/loader:687:38)
 #     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:305:38)
 #     at ModuleJob._link (node:internal/modules/esm/module_job:137:49) {
@@ -151,7 +151,7 @@ not ok 5 - 05_SHAPER_64/test.mjs
 #     at moduleResolve (node:internal/modules/esm/resolve:860:10)
 #     at defaultResolve (node:internal/modules/esm/resolve:984:11)
 #     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:780:12)
-#     at #cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:704:25)
 #     at ModuleLoader.resolve (node:internal/modules/esm/loader:687:38)
 #     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:305:38)
 #     at ModuleJob._link (node:internal/modules/esm/module_job:137:49) {
