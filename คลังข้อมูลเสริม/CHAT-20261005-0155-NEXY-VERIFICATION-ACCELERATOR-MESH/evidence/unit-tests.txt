@@ -1,0 +1,30 @@
+Command: python -m unittest discover -s tests -p 'test_*.py' -v
+
+test_can_chain_with_budget (test_all.AssumptionPlannerTests.test_can_chain_with_budget) ... ok
+test_execution_risk_penalizes_utility (test_all.AssumptionPlannerTests.test_execution_risk_penalizes_utility) ... ok
+test_generator_input_and_duplicate_guard (test_all.AssumptionPlannerTests.test_generator_input_and_duplicate_guard) ... ok
+test_prefers_high_risk_reduction_per_cost (test_all.AssumptionPlannerTests.test_prefers_high_risk_reduction_per_cost) ... ok
+test_unknown_assumption_reference_is_rejected (test_all.AssumptionPlannerTests.test_unknown_assumption_reference_is_rejected) ... ok
+test_behavior_change_detects_drift (test_all.BehavioralCanaryTests.test_behavior_change_detects_drift) ... ok
+test_ignore_rule_does_not_hide_nested_drift (test_all.BehavioralCanaryTests.test_ignore_rule_does_not_hide_nested_drift) ... ok
+test_ignored_nondeterministic_field (test_all.BehavioralCanaryTests.test_ignored_nondeterministic_field) ... ok
+test_same_behavior_passes (test_all.BehavioralCanaryTests.test_same_behavior_passes) ... ok
+test_correlated_votes_freeze (test_all.CorrelatedEvidenceTests.test_correlated_votes_freeze) ... ok
+test_empty_evidence_freezes (test_all.CorrelatedEvidenceTests.test_empty_evidence_freezes) ... ok
+test_shared_root_counts_once (test_all.CorrelatedEvidenceTests.test_shared_root_counts_once) ... ok
+test_minimizes_cross_chunk_failure (test_all.CounterexampleTests.test_minimizes_cross_chunk_failure) ... ok
+test_rejects_non_failing_input (test_all.CounterexampleTests.test_rejects_non_failing_input) ... ok
+test_single_trigger (test_all.CounterexampleTests.test_single_trigger) ... ok
+test_drift_to_counterexample_to_epistemic_plan (test_all.MeshIntegrationTests.test_drift_to_counterexample_to_epistemic_plan) ... ok
+test_base_execution_exception_is_captured (test_all.MetamorphicTests.test_base_execution_exception_is_captured) ... ok
+test_order_sensitive_bug_fails (test_all.MetamorphicTests.test_order_sensitive_bug_fails) ... ok
+test_permutation_invariant_system_passes (test_all.MetamorphicTests.test_permutation_invariant_system_passes) ... ok
+test_relation_exception_is_failure_evidence (test_all.MetamorphicTests.test_relation_exception_is_failure_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.001s
+
+OK
+
+Evidence class: E2 unit plus one local cross-module E3 integration test.
+Target code bytes for nexy_vam package were the same bytes later written to the branch.

@@ -1,0 +1,10 @@
+Command: PYTHONPATH=. python tests/stress_properties.py
+Observed: STRESS_PASS: 1002 deterministic/property checks
+
+Coverage:
+- 250 randomized CME reproducer + 1-minimality checks
+- 250 CEF input-permutation determinism checks
+- 500 ALP input-permutation determinism checks
+- 2 BCC canonicalization/drift assertions
+
+Result: PASS
