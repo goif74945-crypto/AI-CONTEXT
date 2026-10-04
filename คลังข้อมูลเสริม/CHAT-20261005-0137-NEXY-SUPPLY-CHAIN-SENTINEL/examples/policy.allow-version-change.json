@@ -1,0 +1,11 @@
+{
+  "require_integrity": true,
+  "allowed_npm_hosts": ["registry.npmjs.org"],
+  "allow_additions": false,
+  "allow_removals": false,
+  "allow_version_changes": true,
+  "allow_source_changes": false,
+  "allow_integrity_changes": false,
+  "max_packages": 100000,
+  "max_input_bytes": 67108864
+}
