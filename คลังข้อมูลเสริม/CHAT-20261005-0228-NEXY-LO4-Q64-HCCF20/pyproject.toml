@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexy-lo4-q64-fabric"
+version = "0.1.0"
+description = "Experimental non-canon deterministic Q64.64 coordination fabric for future NEXY adapters"
+requires-python = ">=3.11"
+
+[tool.setuptools.packages.find]
+where = ["src"]
