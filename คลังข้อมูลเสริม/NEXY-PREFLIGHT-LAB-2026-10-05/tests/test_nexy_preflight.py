@@ -275,4 +275,56 @@ class DriftTests(unittest.TestCase):
         candidate["operations"] = base["operations"] + [
             {"kind": "delete", "resource": "repo/allowed/a", "irreversible": True}
         ]
-        report = compare_contracts(TaskContract.from_mapping(base), TaskContract.from_mapping(c
+        report = compare_contracts(TaskContract.from_mapping(base), TaskContract.from_mapping(candidate))
+        self.assertIn("PFL-DRIFT-IRREVERSIBLE-ADDED", {f.code for f in report.findings})
+
+    def test_authority_removal_detected(self):
+        base = raw_contract()
+        candidate = raw_contract()
+        candidate["authority_sources"] = ["user"]
+        report = compare_contracts(TaskContract.from_mapping(base), TaskContract.from_mapping(candidate))
+        self.assertIn("PFL-DRIFT-AUTHORITY-REMOVED", {f.code for f in report.findings})
+
+    def test_approval_removal_detected(self):
+        base = raw_contract()
+        candidate = raw_contract()
+        candidate["approvals"] = []
+        report = compare_contracts(TaskContract.from_mapping(base), TaskContract.from_mapping(candidate))
+        self.assertIn("PFL-DRIFT-APPROVAL-REMOVED", {f.code for f in report.findings})
+
+    def test_mutation_added_inside_baseline_scope_not_flagged_as_scope_expansion(self):
+        base = raw_contract()
+        candidate = raw_contract()
+        candidate["operations"] = base["operations"] + [
+            {"kind": "write", "resource": "repo/allowed/b", "irreversible": False}
+        ]
+        report = compare_contracts(TaskContract.from_mapping(base), TaskContract.from_mapping(candidate))
+        self.assertNotIn("PFL-DRIFT-WRITE-EXPANDED", {f.code for f in report.findings})
+
+
+
+# ===== test_policy_matrix.py =====
+import unittest
+
+
+
+class PolicyMatrixTests(unittest.TestCase):
+    def test_expected_minimums(self):
+        expected = {
+            "presence": EvidenceClass.E0,
+            "static": EvidenceClass.E1,
+            "unit": EvidenceClass.E2,
+            "integration": EvidenceClass.E3,
+            "e2e": EvidenceClass.E4,
+            "runtime": EvidenceClass.E5,
+            "deployment": EvidenceClass.E6,
+            "physical": EvidenceClass.E7,
+        }
+        for kind, evidence_class in expected.items():
+            with self.subTest(kind=kind):
+                self.assertEqual(minimum_for_claim(kind), evidence_class)
+
+    def test_unknown_kind_has_no_default(self):
+        self.assertIsNone(minimum_for_claim("made-up"))
+
+
