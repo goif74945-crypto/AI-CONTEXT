@@ -3,6 +3,15 @@
 ## Environment
 Local isolated Python runtime available to this session. No NEXY.AI repository was modified or executed.
 
+## E0 persistence/read-back
+- initial publication commit: `ef44eeaa738911e55253d05cd839a7b6da2e8914`
+- 36 expected project files at publication snapshot;
+- 36/36 Git blob SHAs matched the locally authored/tested files;
+- missing 0, mismatch 0, extra 0;
+- publication commit changed 36 files, all under this authorized project folder;
+- status: PASS.
+See `10_PUBLICATION_EVIDENCE.md`.
+
 ## E1 static
 - `python -m compileall -q src` -> PASS.
 - AST boundary scan across production package -> 0 forbidden network/subprocess/eval/exec/open calls -> PASS.
@@ -37,6 +46,7 @@ Full suite was rerun after both corrections.
 - `evidence/example-delta.json`
 - `evidence/example-debt.json`
 - `evidence/SHA256SUMS.txt`
+- `10_PUBLICATION_EVIDENCE.md`
 
 ## Unverified
 NEXY production integration, UI delivery behavior, persisted acknowledgement storage, distributed ordering, load/fault recovery, and deployment are NOT_VERIFIED.

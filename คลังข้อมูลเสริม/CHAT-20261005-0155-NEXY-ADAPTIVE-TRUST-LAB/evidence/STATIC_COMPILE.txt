@@ -1,0 +1,3 @@
+COMMAND: python3 -m compileall -q <WORKSTREAM>
+PYTHON: Python 3.13.5
+RESULT: PASS

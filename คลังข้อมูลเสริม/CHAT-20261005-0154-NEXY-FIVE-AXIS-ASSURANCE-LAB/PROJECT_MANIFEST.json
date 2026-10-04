@@ -1,0 +1,17 @@
+{
+  "archive_hash_path": "ARCHIVE.sha256",
+  "base64_bundle_bytes": 53443,
+  "base64_bundle_sha256": "ba5124fac6d1dab619c69a96d5c4f6e3459d309365dd456ea4ac1dea36fadb28",
+  "bundle_manifest_path": "BUNDLE_MANIFEST.sha256",
+  "bundle_manifest_sha256": "718989b83f13ddd12c6a132076acc6f434f91795c2f60e14e8393def456d478d",
+  "bundle_path": "FAAL_BUNDLE.tar.gz.b64",
+  "decode_command": "base64 -d FAAL_BUNDLE.tar.gz.b64 > FAAL_BUNDLE.tar.gz && tar -xzf FAAL_BUNDLE.tar.gz",
+  "platform_conversation_id": "UNKNOWN_NOT_EXPOSED",
+  "project": "NEXY Five-Axis Assurance Lab (FAAL)",
+  "scope_note": "The bundle contains Design + Code + Tests + Scripts + raw Evidence. PROJECT_MANIFEST and remote closure records are outside the archive to avoid self-reference.",
+  "stable_payload_file_count": 46,
+  "status": "EXPERIMENTAL_ADVISORY",
+  "tar_gz_bytes": 39559,
+  "tar_gz_sha256": "0daaeb9348b546cd50c30a1e43bf8a7eba949700c86476d92b6c8d7598da67ca",
+  "work_reference": "CHAT-20261005-0154-NEXY-FIVE-AXIS-ASSURANCE-LAB"
+}

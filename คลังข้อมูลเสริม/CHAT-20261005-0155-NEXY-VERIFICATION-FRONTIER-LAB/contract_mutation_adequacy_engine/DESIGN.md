@@ -31,7 +31,8 @@ Mutants are canonicalized and deduplicated. IDs are deterministic SHA-256-derive
 ## Failure model
 - Baseline rejected or raises: `ValueError`; no score is fabricated.
 - Non-JSON-serializable values may fail canonicalization; this v0.1 deliberately does not hide that mismatch.
-- Mutant generation is capped by `max_mutants`.
+- Mutant generation is capped by `max_mutants`; non-positive budgets are rejected.
+- If no mutants can be generated, adequacy is undefined and the engine rejects the report instead of emitting a vacuous perfect score.
 
 ## NEXY integration proposal
 CMAE could evaluate requirement validators, schema gates, evidence adjudicators, or policy tests in an isolated build/verification environment. It must never mutate production contracts. Surviving mutants become review findings, not automatic fixes.
