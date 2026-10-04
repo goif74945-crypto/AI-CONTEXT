@@ -286,42 +286,117 @@ def _evaluate_evidence(
                 )
             )
 
-        accepted = [item for item in current if item.evidence_class in claim.accepted_evidence_classes and item.status is TruthStatus.PASS]
-        explicit_failures = [item for item in current if item.evidence_class in claim.accepted_evidence_classes and item.status is TruthStatus.FAIL]
+        accepted = [
+            item
+            for item in current
+            if item.evidence_class in claim.accepted_evidence_classes and item.status is TruthStatus.PASS
+        ]
+        explicit_failures = [
+            item
+            for item in current
+            if item.evidence_class in claim.accepted_evidence_classes and item.status is TruthStatus.FAIL
+        ]
 
         if explicit_failures:
-            findings.append(Finding(code="CURRENT_REQUIRED_EVIDENCE_FAIL",status=TruthStatus.FAIL,severity=Severity.BLOCKING,subject=claim.claim_id,detail="current evidence in an accepted evidence class explicitly failed",related_ids=tuple(item.evidence_id for item in explicit_failures)))
+            findings.append(
+                Finding(
+                    code="CURRENT_REQUIRED_EVIDENCE_FAIL",
+                    status=TruthStatus.FAIL,
+                    severity=Severity.BLOCKING,
+                    subject=claim.claim_id,
+                    detail="current evidence in an accepted evidence class explicitly failed",
+                    related_ids=tuple(item.evidence_id for item in explicit_failures),
+                )
+            )
         elif not accepted:
-            findings.append(Finding(code="MISSING_CURRENT_PASS_EVIDENCE",status=TruthStatus.NOT_VERIFIED,severity=Severity.BLOCKING,subject=claim.claim_id,detail="no current PASS evidence exists in an accepted evidence class",related_ids=tuple(item.evidence_id for item in current)))
+            findings.append(
+                Finding(
+                    code="MISSING_CURRENT_PASS_EVIDENCE",
+                    status=TruthStatus.NOT_VERIFIED,
+                    severity=Severity.BLOCKING,
+                    subject=claim.claim_id,
+                    detail="no current PASS evidence exists in an accepted evidence class",
+                    related_ids=tuple(item.evidence_id for item in current),
+                )
+            )
+
     return findings
 
 
 def _evidence_matches_target(record: EvidenceRecord, snapshot: Snapshot) -> bool:
-    if record.target_revision != snapshot.target.revision: return False
-    if snapshot.target.content_digest is not None: return record.target_digest == snapshot.target.content_digest
+    if record.target_revision != snapshot.target.revision:
+        return False
+    if snapshot.target.content_digest is not None:
+        return record.target_digest == snapshot.target.content_digest
     return True
 
 
-def _finalize(snapshot: Snapshot,input_digest: str,effective_requirements: tuple[str, ...],non_gating_requirements: tuple[str, ...],findings: list[Finding]) -> GateDecision:
-    ordered=tuple(sorted(_dedupe_findings(findings),key=lambda item:(item.severity.value,item.status.value,item.code,item.subject,item.related_ids,item.detail)))
-    verdict=_derive_verdict(ordered)
-    action=GateAction.ACCEPT_ADVISORY if verdict is TruthStatus.PASS else GateAction.FREEZE_RECOMMENDED
-    decision_body: dict[str, Any]={"snapshot_version":snapshot.snapshot_version,"target":snapshot.target.to_dict(),"verdict":verdict.value,"action":action.value,"input_digest":input_digest,"effective_requirements":list(effective_requirements),"non_gating_requirements":list(non_gating_requirements),"findings":[item.to_dict() for item in ordered]}
-    return GateDecision(verdict=verdict,action=action,input_digest=input_digest,decision_digest=sha256_digest(decision_body),effective_requirements=effective_requirements,non_gating_requirements=non_gating_requirements,findings=ordered)
+def _finalize(
+    snapshot: Snapshot,
+    input_digest: str,
+    effective_requirements: tuple[str, ...],
+    non_gating_requirements: tuple[str, ...],
+    findings: list[Finding],
+) -> GateDecision:
+    ordered = tuple(
+        sorted(
+            _dedupe_findings(findings),
+            key=lambda item: (
+                item.severity.value,
+                item.status.value,
+                item.code,
+                item.subject,
+                item.related_ids,
+                item.detail,
+            ),
+        )
+    )
+    verdict = _derive_verdict(ordered)
+    action = GateAction.ACCEPT_ADVISORY if verdict is TruthStatus.PASS else GateAction.FREEZE_RECOMMENDED
+    decision_body: dict[str, Any] = {
+        "snapshot_version": snapshot.snapshot_version,
+        "target": snapshot.target.to_dict(),
+        "verdict": verdict.value,
+        "action": action.value,
+        "input_digest": input_digest,
+        "effective_requirements": list(effective_requirements),
+        "non_gating_requirements": list(non_gating_requirements),
+        "findings": [item.to_dict() for item in ordered],
+    }
+    return GateDecision(
+        verdict=verdict,
+        action=action,
+        input_digest=input_digest,
+        decision_digest=sha256_digest(decision_body),
+        effective_requirements=effective_requirements,
+        non_gating_requirements=non_gating_requirements,
+        findings=ordered,
+    )
 
 
 def _derive_verdict(findings: tuple[Finding, ...]) -> TruthStatus:
-    statuses={item.status for item in findings if item.severity is Severity.BLOCKING}
-    if TruthStatus.CONFLICT in statuses: return TruthStatus.CONFLICT
-    if TruthStatus.BLOCKED in statuses: return TruthStatus.BLOCKED
-    if TruthStatus.FAIL in statuses: return TruthStatus.FAIL
-    if TruthStatus.UNKNOWN in statuses: return TruthStatus.UNKNOWN
-    if TruthStatus.NOT_VERIFIED in statuses: return TruthStatus.NOT_VERIFIED
-    if TruthStatus.PARTIAL in statuses: return TruthStatus.PARTIAL
+    statuses = {item.status for item in findings if item.severity is Severity.BLOCKING}
+    # Structural BLOCKED findings return early before authority evaluation.
+    # After that gate, an authority CONFLICT is the primary causal truth and
+    # must not be hidden by dependency cascades caused by the unresolved claim.
+    if TruthStatus.CONFLICT in statuses:
+        return TruthStatus.CONFLICT
+    if TruthStatus.BLOCKED in statuses:
+        return TruthStatus.BLOCKED
+    if TruthStatus.FAIL in statuses:
+        return TruthStatus.FAIL
+    if TruthStatus.UNKNOWN in statuses:
+        return TruthStatus.UNKNOWN
+    if TruthStatus.NOT_VERIFIED in statuses:
+        return TruthStatus.NOT_VERIFIED
+    if TruthStatus.PARTIAL in statuses:
+        return TruthStatus.PARTIAL
     return TruthStatus.PASS
 
 
 def _dedupe_findings(findings: list[Finding]) -> list[Finding]:
-    unique: dict[str, Finding]={}
-    for finding in findings: unique[canonical_json(finding.to_dict())]=finding
+    unique: dict[str, Finding] = {}
+    for finding in findings:
+        key = canonical_json(finding.to_dict())
+        unique[key] = finding
     return list(unique.values())
