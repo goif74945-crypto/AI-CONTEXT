@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/nexy-oaf/outcome-report.schema.json",
+  "title": "NEXY Outcome Assurance Fabric Verification Report",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["status", "contract_hash", "objective_id", "criteria", "hard_failures", "soft_failures", "forbidden_violations", "missing_observations", "invalid_observations", "report_hash"],
+  "properties": {
+    "status": {"enum": ["PASS", "PARTIAL", "FAIL", "FREEZE"]},
+    "contract_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "objective_id": {"type": "string", "minLength": 1},
+    "soft_score": {"type": "number", "minimum": 0, "maximum": 1},
+    "criteria": {"type": "array"},
+    "hard_failures": {"type": "array", "items": {"type": "string"}},
+    "soft_failures": {"type": "array", "items": {"type": "string"}},
+    "forbidden_violations": {"type": "array"},
+    "missing_observations": {"type": "array", "items": {"type": "string"}},
+    "invalid_observations": {"type": "array", "items": {"type": "string"}},
+    "report_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
