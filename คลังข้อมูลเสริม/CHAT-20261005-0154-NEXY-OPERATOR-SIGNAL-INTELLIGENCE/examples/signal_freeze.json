@@ -1,0 +1,15 @@
+{
+  "signal_id": "freeze-001",
+  "sequence": 12,
+  "component": "judge",
+  "kind": "FREEZE",
+  "severity": "HIGH",
+  "evidence": "CONFLICT",
+  "state": "FROZEN",
+  "message": "Two authoritative requirements conflict.",
+  "requires_user": true,
+  "blocking": true,
+  "state_changed": true,
+  "evidence_changed": true,
+  "requires_ack": true
+}

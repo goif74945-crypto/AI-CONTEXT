@@ -1,0 +1,21 @@
+{
+  "signals": [
+    {
+      "signal_id": "security-001",
+      "sequence": 10,
+      "component": "guard",
+      "kind": "SECURITY",
+      "severity": "CRITICAL",
+      "evidence": "FAIL",
+      "state": "FROZEN",
+      "message": "Credential exposure suspected.",
+      "requires_user": true,
+      "blocking": true,
+      "state_changed": true,
+      "evidence_changed": true,
+      "requires_ack": true
+    }
+  ],
+  "acknowledgements": [],
+  "current_sequence": 12
+}

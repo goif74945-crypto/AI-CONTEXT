@@ -1,0 +1,11 @@
+{
+  "before": {
+    "task": {"status": "VERIFYING", "result": {"$nexy_state": "NOT_VERIFIED"}},
+    "secret": "alpha"
+  },
+  "after": {
+    "task": {"status": "PASS", "result": "artifact-42"},
+    "secret": "beta"
+  },
+  "redact_paths": ["/secret"]
+}
