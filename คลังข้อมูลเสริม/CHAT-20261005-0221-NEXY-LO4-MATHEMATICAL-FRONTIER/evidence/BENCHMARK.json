@@ -1,0 +1,13 @@
+{
+  "dominator_chain_1500_s": 1.1049265240000068,
+  "dominator_target_size": 1500,
+  "liveness_1000_cycle_s": 0.0034289580000859132,
+  "liveness_status": "DEADLOCK",
+  "minimal_cut_12_nodes_12_paths_s": 0.002136576999987483,
+  "minimal_cut_result_count": 69,
+  "symmetry_5000_entities_s": 0.019195571000068412,
+  "symmetry_key_prefix": "3e4a92a8dea85b97",
+  "tournament_5000_candidates_s": 0.7893219790000785,
+  "tournament_promotion_permitted": false,
+  "tournament_winner": "c00019"
+}
