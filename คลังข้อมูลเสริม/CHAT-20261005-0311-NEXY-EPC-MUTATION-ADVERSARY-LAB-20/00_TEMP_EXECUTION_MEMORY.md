@@ -1,45 +1,45 @@
-# Temporary Execution Memory — EPC Mutation Adversary Laboratory 20
+# Durable Execution Memory — EPC Mutation Adversary Laboratory 20
 
 CHAT_ID: `CHAT-20261005-0311-NEXY-EPC-MUTATION-ADVERSARY-LAB-20`
 PLATFORM_NATIVE_CHAT_ID: `UNKNOWN_NOT_EXPOSED_TO_AVAILABLE_TOOLS`
 CREATED_LOCAL: `2026-10-05T03:11+07:00`
-STATUS: `IN_PROGRESS`
+FINALIZED_LOCAL: `2026-10-05T03:46:20+07:00`
+STATUS: `COMPLETE_FOR_STANDALONE_LO4_SCOPE`
 AUTHORITY_CLASS: `Lo4_AI_PROPOSAL_ONLY / EXPERIMENTAL / NON_CANONICAL / NON_GOVERNING`
 
 ## Objective
-Design, implement, execute, repair, re-test, and preserve exactly 20 deterministic mutation-adversary systems that test the adequacy of EPC/NEXY verification by injecting known-invalid behaviors and requiring independent sentinels to kill them. Decision-relevant quantitative logic must use signed Q64.64. This package may be adapted later but has no authority to promote, mutate Canon, change CORE state, or bypass JUDGE/LAW.
+Design, implement, execute, repair, re-test, publish, and preserve exactly 20 deterministic mutation-adversary systems that test EPC/NEXY verification adequacy by injecting known-invalid behavior and requiring exact independent sentinels to detect it.
 
 ## Scope lock
 - Writable repository: `goif74945-crypto/AI-CONTEXT` only.
-- Writable namespace: `คลังข้อมูลเสริม/CHAT-20261005-0311-NEXY-EPC-MUTATION-ADVERSARY-LAB-20/**`.
-- Protected repository: every repository whose name contains `NEXY.AI`; READ-ONLY inspection only.
-- NEXY observed repo: `goif74945-crypto/NEXY.AI-`.
+- Project namespace: `คลังข้อมูลเสริม/CHAT-20261005-0311-NEXY-EPC-MUTATION-ADVERSARY-LAB-20/**`.
+- Central vote namespace used once: `คลังข้อมูลเสริม/VOTES/VOTE-2026-10-05-0311-EPC-MUTATION-ADVERSARY-LAB-KEEP-001.md`.
+- Every repository whose name contains `NEXY.AI`: READ-ONLY.
+- NEXY repo inspected: `goif74945-crypto/NEXY.AI-`.
 - NEXY branch: `NEXY.ai`.
-- NEXY inspected commit: `9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43`.
-- AI-CONTEXT pre-checkpoint observed HEAD: `65d353f422b37dfc62eeb89d6e04015917550200`.
-- Authoritative NEXY source identity: `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx`.
-- Source SHA-256 pinned by current NEXY code/evidence: `b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7`.
+- NEXY exact head at vote gate: `9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43`.
 
-## Authority facts inspected
-- AI-CONTEXT execution law requires evidence before PASS and separates design/implementation/runtime/deployment.
-- NEXY authority map observed in current code: L1O proposer, LO3 verifier, LO2 feedback learner, EXTERNAL_JUDGE publisher; implicit override false.
-- SWARM path must reach JUDGE_PENDING or freeze.
-- Current numeric law uses authoritative Q64.64 / fixed-point boundaries and forbids binary float for authoritative state.
-- Auxiliary/Lo4 work is advisory only and must not mutate CORE/JUDGE/LAW state.
+## Direct Spec gate
+- Source: `แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx`.
+- Raw Drive object was downloaded before KEEP vote.
+- Detected type: Microsoft Word 2007+ / OOXML.
+- Raw size: 2,146,350 bytes.
+- SHA-256: `b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7`.
+- Direct parse: 12,537 paragraphs / 10,979 non-empty.
+- Directly inspected boundaries include: unclear→halt / contradiction→FREEZE; Core authority; Human no state mutation/verification bypass; signed Q64.64 authoritative math; repeated validation; JUDGE event ownership for verified/accepted/rejected.
+- Preserved details: `SPEC_EVIDENCE.md`.
 
 ## Collision exclusions
-Do not recreate:
-- EPC causal/evidence governance work from CHAT-20261005-0308-NEXY-LO4-EPC-CAUSAL-PROOF-20 (WIP).
-- EPC vote-right/ballot-lineage/court mechanics from CHAT-20261005-0309-NEXY-EPC-LO4-COURT-FOUNDRY-20 (WIP).
-- DSMF-20 swarm diversity/collusion/minority mechanisms.
-- Minimal Blocker Core inclusion-minimal repair-set solver.
-- Causal Merge Lab / Concurrency Integrity mutation scheduling.
-- existing Anti-Goodhart / optimization / shadow / counterfactual portfolios.
+Semantically inspected and not recreated:
+- EPC causal/evidence governance WIP `CHAT-20261005-0308-NEXY-LO4-EPC-CAUSAL-PROOF-20`;
+- EPC court/vote mechanics WIP `CHAT-20261005-0309-NEXY-EPC-LO4-COURT-FOUNDRY-20`;
+- DSMF-20 diversity/collusion/minority mechanisms;
+- Minimal Blocker Core repair-set solver;
+- Causal Merge / Concurrency Integrity work.
 
-## Selected distinct gap
-Mutation adequacy assurance: deliberately construct known-invalid policy/verification mutants, run independent invariants against them, report killed vs escaped mutants, and fail closed if required mutants survive.
+WIP siblings were not CUT.
 
-## Planned 20 mutant families
+## Implemented 20 mutation families
 1. AUTHORITY_BYPASS
 2. JUDGE_SKIP
 3. SWARM_SELF_APPROVAL
@@ -61,36 +61,79 @@ Mutation adequacy assurance: deliberately construct known-invalid policy/verific
 19. DEPENDENCY_TRUNCATION
 20. EVIDENCE_CLASS_SUBSTITUTION
 
-## Vote budget for this chat
-- KEEP remaining: 1.
-- CUT remaining: 1.
-- DEFER / INSUFFICIENT_EVIDENCE / WIP does not consume either round.
-- WIP sibling projects are not CUT candidates merely because evidence is incomplete.
-- If this package reaches sufficient evidence, at most one KEEP record may be created. CUT will remain unused unless a separately proven cut is justified.
+## Architecture completed
+- signed Q64.64 raw integer model;
+- i128 deterministic saturation;
+- divide-by-zero fail-closed;
+- binary float rejection at canonical authority data;
+- deterministic canonical serialization;
+- separate mutation operator and independent oracle modules;
+- exact-invariant kill requirement;
+- canonical campaign digest;
+- independent verifier;
+- static AST audit forbidding decision-package random/time/secrets imports.
 
-## Current state
-COMPLETED:
-- authority/context read;
-- exact NEXY read-only repository and branch identified;
-- authoritative source hash independently pinned from current NEXY code/evidence;
-- semantic collision scan against high-overlap supplemental projects;
-- mutation-lab concept surface selected.
+## Failure / repair / re-test
+F-001 discovered during real verification:
+- M06 + M07 composition caused M07 to overwrite the active round and hide M06.
+- Root cause identified.
+- M07 repaired to consume the budget for the already-active round without rewriting it.
+- Entire verification pipeline rerun.
 
-IN PROGRESS:
-- standalone architecture;
-- Q64.64 implementation;
-- independent mutation oracle;
-- 20 mutation operators and fixtures;
-- executable test campaign.
+## Final standalone verification
+- compileall: PASS.
+- static audit: PASS, 9 package files.
+- tests: 39/39 PASS.
+- pairwise compositions: 190/190 exercised.
+- all 20 combined: all intended invariant detections preserved.
+- campaign: 20/20 killed; 0 escaped.
+- mutation score Q64.64 raw: `18446744073709551616` = exact 1.0.
+- independent verifier: PASS.
+- baseline digest: `2048f73637aae394d845fa5ab3a86dbb40e56f5ce2a0badab8ac81177505f99a`.
+- campaign report digest: `7a9c25710d6aebcb8ad35c09dfd8b0bd4d6ba8ad0c1d44b389b29ce60ddb1127`.
 
-NEXT:
-- implement locally in isolated sandbox;
-- run compile/unit/campaign/determinism/adversarial tests;
-- repair defects;
-- re-run;
-- publish exact tested bytes + evidence;
-- re-fetch published files;
-- only then consider one KEEP vote.
+## Exact-byte publication
+- sealed archive SHA-256: `a4ce20cd6d25bb1170017de8cab1e59a17ff0f2a1be61f0b1d88050a7cb1fc89`.
+- manifest SHA-256: `55d96963950a5db3bc8896b9b267bf8ee81dbbf2818d87f5f76ec7a7b14fab38`.
+- manifest-tracked files: 35.
+- archive preserved as 8 base64 pieces under `bundle/`.
+- all 8 pieces re-fetched after publication.
+- 8/8 Git blob SHAs match local tested parts.
+- 8/8 byte lengths match local tested parts.
 
-## Resume law
-Refresh AI-CONTEXT HEAD before any write, never overwrite sibling work, never mutate NEXY.AI, preserve exact tested-byte lineage, and never claim NEXY integration/runtime/deployment from standalone evidence.
+## EPC vote state
+KEEP:
+- consumed: YES.
+- VOTE_ID: `VOTE-2026-10-05-0311-EPC-MUTATION-ADVERSARY-LAB-KEEP-001`.
+- vote commit: `cdd65ffe9cedaa90040a42e939a10dcdbf52730c`.
+- verdict: `KEEP_FOR_FURTHER_DEVELOPMENT_AND_INTEGRATION_PREPARATION__NO_PROMOTION`.
+
+CUT:
+- consumed: NO.
+- remaining: 1.
+
+Vote snapshot:
+- NEXY commit: `9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43`.
+- AI-CONTEXT snapshot inspected immediately before vote: `739fab334ac5988a032a3a70a4478781197cacf2`.
+
+## Claim boundary
+VERIFIED:
+- standalone design/code/test/evidence;
+- direct Spec source identity and selected authority/numeric/verification paragraphs;
+- exact-byte AI-CONTEXT publication;
+- KEEP vote uniqueness at post-vote read-back.
+
+NOT VERIFIED:
+- NEXY workspace integration;
+- NEXY runtime behavior;
+- deployment;
+- production performance/resource characteristics;
+- formal Canon promotion.
+
+## Resume / future law
+This work is complete for its authorized standalone Lo4 scope. Any future integration must:
+1. use current Spec/Canon and current NEXY commit rather than these historical pins;
+2. produce E3+ integration evidence;
+3. preserve Core/JUDGE/LAW authority;
+4. not reuse this CHAT_ID's KEEP right;
+5. never alter the historical KEEP vote; append evidence/revision records instead.
