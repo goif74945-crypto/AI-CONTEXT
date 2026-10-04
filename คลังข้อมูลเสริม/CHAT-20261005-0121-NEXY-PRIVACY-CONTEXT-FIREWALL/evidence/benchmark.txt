@@ -1,0 +1,1 @@
+{"benchmark": [{"decision": "ALLOW", "fields": 100, "max_ms": 1.32, "median_ms": 1.018, "min_ms": 0.867, "runs": 5}, {"decision": "ALLOW", "fields": 1000, "max_ms": 11.557, "median_ms": 9.227, "min_ms": 8.866, "runs": 5}, {"decision": "ALLOW", "fields": 10000, "max_ms": 141.881, "median_ms": 112.674, "min_ms": 102.413, "runs": 5}]}
