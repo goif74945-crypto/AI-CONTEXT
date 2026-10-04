@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexy:proposal:trust-card:1.0.0",
+  "title": "NEXY Trust Card Proposal",
+  "description": "AI-proposed presentation contract. This schema does not grant authority or define canonical NEXY runtime behavior.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","system_status","system_state","display_mode","headline","summary","blocked","result_visible","result","primary_action","secondary_actions","request_id","trace_id","incident_code","blocking_layer","trigger","recoverable","evidence_count","integrity_hash_present","deterministic_fingerprint","truth_flags"],
+  "properties": {
+    "schema_version": {"const": "1.0.0-proposal"},
+    "system_status": {"enum": ["OK","DEGRADED","FREEZE","STOP"]},
+    "system_state": {"enum": ["INIT","READY","RUNNING","VERIFYING","CONSENSUS","STABLE","FREEZE","STOP"]},
+    "display_mode": {"enum": ["RESULT","PENDING","FREEZE","STOP","HOLD","READY"]},
+    "headline": {"type":"string","minLength":1},
+    "summary": {"type":"string","minLength":1},
+    "blocked": {"type":"boolean"},
+    "result_visible": {"type":"boolean"},
+    "result": {},
+    "primary_action": {"oneOf":[{"type":"null"},{"$ref":"#/$defs/action"}]},
+    "secondary_actions": {"type":"array","maxItems":2,"items":{"$ref":"#/$defs/action"}},
+    "request_id": {"type":"string","minLength":1},
+    "trace_id": {"type":"string","minLength":1},
+    "incident_code": {"type":["string","null"]},
+    "blocking_layer": {"type":["string","null"]},
+    "trigger": {"type":["string","null"]},
+    "recoverable": {"type":["boolean","null"]},
+    "evidence_count": {"type":["integer","null"],"minimum":0},
+    "integrity_hash_present": {"type":["boolean","null"]},
+    "deterministic_fingerprint": {"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "truth_flags": {"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}}
+  },
+  "$defs": {
+    "action": {
+      "type":"object",
+      "additionalProperties":false,
+      "required":["id","label","kind","requires_backend_authorization","requires_confirmation"],
+      "properties":{
+        "id":{"type":"string","minLength":1},
+        "label":{"type":"string","minLength":1},
+        "kind":{"enum":["READ","MUTATION_REQUEST"]},
+        "requires_backend_authorization":{"type":"boolean"},
+        "requires_confirmation":{"type":"boolean"}
+      }
+    }
+  }
+}
