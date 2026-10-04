@@ -32,6 +32,7 @@ Otherwise the guard returns `FREEZE` rather than trying to infer permission.
 - Detection of `NOT_VERIFIED` completion claims.
 - Contract-to-contract drift detection.
 - Exact change authorization envelopes rather than blanket approval.
+- TOCTOU execution seals bound to repository identity, ref, exact revision, contract digest, and proposal digest.
 - Deterministic CLI output and standard-library-only Python implementation.
 - Unit and invariant tests, including randomized ordering checks.
 
@@ -53,9 +54,11 @@ This prototype does **not** claim to:
 - `docs/02_ARCHITECTURE.md` — proposed data flow and component model.
 - `docs/03_FAILURE_SECURITY_MODEL.md` — attack/failure analysis.
 - `docs/04_FUTURE_INTEGRATION_IDEAS.md` — strictly non-authoritative integration concepts.
+- `docs/05_TOCTOU_EXECUTION_SEAL.md` — state-binding design derived from observed concurrent-write conflicts.
 - `schemas/` — machine-readable research schemas.
 - `src/nexy_intent_guard/` — deterministic prototype implementation.
 - `tests/` — unit/invariant tests and fixtures.
+- `ARTIFACT_MANIFEST.json` + `tools/verify_manifest.py` — byte-exact integrity evidence for the verified artifact set.
 - `00_EXECUTION_STATE.md` — resumable checkpoint for this work.
 - `VERIFICATION.md` — executed evidence and limitations.
 - `CHAT_PROVENANCE.md` — session provenance and chat-ID status.
@@ -64,11 +67,15 @@ This prototype does **not** claim to:
 
 ```bash
 PYTHONPATH=src python -m unittest discover -s tests -v
-PYTHONPATH=src python -m compileall -q src tests
+PYTHONPATH=src python -m compileall -q src tests tools
+PYTHONPATH=src python tools/verify_manifest.py
 PYTHONPATH=src python -m nexy_intent_guard.cli digest tests/fixtures/base_contract.json
 PYTHONPATH=src python -m nexy_intent_guard.cli check-proposal \
   tests/fixtures/base_contract.json \
   tests/fixtures/passing_proposal.json
+PYTHONPATH=src python -m nexy_intent_guard.cli create-seal \
+  tests/fixtures/base_contract.json tests/fixtures/passing_proposal.json \
+  --revision <observed-revision> --ref main
 ```
 
 Expected result: the unit suite passes; compileall exits `0`; the passing proposal returns `PASS`.
