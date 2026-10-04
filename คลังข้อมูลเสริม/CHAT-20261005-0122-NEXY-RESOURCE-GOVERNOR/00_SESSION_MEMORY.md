@@ -1,6 +1,6 @@
 # Temporary Execution Memory — NEXY Proof-Preserving Resource Governor Lab
 
-Status: IN_PROGRESS
+Status: PARTIAL
 Truth class: REPO_FACT_FOR_THIS_TASK_RECORD
 Durable session code: CHAT-20261005-0122-NEXY-RESOURCE-GOVERNOR
 Platform-native ChatGPT conversation ID: UNKNOWN_NOT_EXPOSED
@@ -61,3 +61,33 @@ The governor is advisory/planning infrastructure below CORE/JUDGE. It may select
 
 ## Resume
 Read this file first. Continue only within the authorized namespace. Do not infer completion from file presence. Final status must be based on the validation report and final audit.
+
+## Closure / Final verified state
+Bounded NPRG lab acceptance status: PASS.
+Overall original user objective status: PARTIAL because the literal multi-tens-of-hours continuous/background duration requirement cannot execute inside one synchronous chat turn and is not claimed.
+
+Final audit:
+- path: 09_FINAL_AUDIT.md
+- Git blob SHA: 36ca8e4923c54d4a808c80acf03916e960321b3e
+
+Verified evidence:
+- E0: 18 core local validated artifacts matched the corresponding AI-CONTEXT Git blob SHAs exactly.
+- E1: Python compile PASS; JSON parse PASS; Draft 2020-12 schema check PASS; 4 positive fixture payloads PASS; zero+zero worker-token negative payload correctly rejected.
+- E2: 16/16 unit/adversarial/property tests PASS; 300 fixed-seed generated task/inventory cases included.
+- Synthetic benchmark: 250,000 worker/verifier pairs median 423.918 ms in this Python 3.13.5 container; environment-specific, not a production SLA.
+- E3-E7: NOT_VERIFIED.
+- NEXY.AI implementation/runtime/deployment: NOT_VERIFIED and not mutated.
+
+Defects corrected before closure:
+1. feasible-pair materialization replaced by streaming best-candidate selection;
+2. self-verification forbidden;
+3. source split into models/governor/serde;
+4. stale requirement-ledger helper names corrected;
+5. schema aligned with nonzero worker-token invariant;
+6. README artifact index completed.
+
+Concurrency incident:
+A GitHub 409 occurred because another AI-CONTEXT writer moved main during an isolated validation-report update. Recovery re-fetched and retried only this namespace/file. No force, reset, rebase, destructive update, or sibling overwrite was used.
+
+Resume rule:
+Read 09_FINAL_AUDIT.md before extending this lab. Any future promotion into canonical/current NEXY build scope requires explicit authority plus fresh implementation/integration/runtime evidence. Do not treat this proposal as current NEXY product truth.
