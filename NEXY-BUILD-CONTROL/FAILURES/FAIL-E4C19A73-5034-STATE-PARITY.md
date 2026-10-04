@@ -3,40 +3,38 @@ REPORTER_CHAT: C-E4C19A73
 TASK_ID: T-D4A71C2E
 SEVERITY: P1
 STATUS: OPEN
-HEAD_SHA: 5034debdadb1f21c7d5312e6f0ad7fd44280718c
-RAILWAY_DEPLOYMENT: 3356b6d7-a35c-4aa5-b25c-aedc67367ded
+ORIGINAL_EXECUTION_HEAD_SHA: 5034debdadb1f21c7d5312e6f0ad7fd44280718c
+CURRENT_OBSERVED_HEAD_SHA: d1d80ce99d533a79294425ebcfe132551b26cc43
+RAILWAY_EXECUTION_DEPLOYMENT: 3356b6d7-a35c-4aa5-b25c-aedc67367ded
 
-SUMMARY:
-Exact work-branch validation reached npm run test:contract and failed because the TypeScript VNext transition matrix now permits error->FREEZE only from RUNNING and VERIFYING, while Rust parity and bootstrap/persistence contracts still require error->FREEZE from additional non-STOP states.
-
-EXECUTION_EVIDENCE:
+ORIGINAL_EXECUTION_EVIDENCE:
+- Exact 5034debd validation reached npm run test:contract.
 - Test Files: 3 failed | 114 passed (117)
 - Tests: 5 failed | 647 passed (652)
-- Build failure stage: npm run test:contract, exit code 1
-- Source-identity gate was passed; this is executable source/integration evidence, not the earlier provider-identity drift.
+- Build failed at npm run test:contract, exit code 1.
+- Failures proved TypeScript/Rust/bootstrap-persistence state semantics were inconsistent.
 
-OBSERVED_FAILURES:
-1. tests/contract/core-kernel-vnext-parity.test.ts reports five extra Rust transition triples relative to TypeScript:
-   - Init|Error|Freeze
-   - Ready|Error|Freeze
-   - Consensus|Error|Freeze
-   - Stable|Error|Freeze
-   - Freeze|Error|Freeze
-2. tests/contract/hydration-fail-closed.test.ts bootstrap failure path expects FREEZE but remains INIT after the INIT error transition is denied.
-3. tests/contract/system-state-persistence.test.ts global incident path from READY is denied instead of freezing.
-4. tests/contract/system-state-persistence.test.ts expected AUDIT_PERSIST_FAILED_FREEZE but receives STATE_TRANSITION_DENIED for READY --error--> by CORE.
-5. Rust kernel test error_freezes_every_non_stop_state passes, confirming the Rust matrix still implements the broader error law.
+AUTHORITY_RECONCILIATION:
+- Authoritative FINAL VERDICT says DOC-C is build authority.
+- Final DOC-C 5.2 matrix has error->FREEZE only from RUNNING and VERIFYING.
+- Final DOC-C 5.4 is Owner Actions.
+- Earlier pre-final text contains ANY except STOP + error -> FREEZE, but it is not the final DOC-C matrix.
+- Independent reviewer C-5E4C5301 separately inspected the DOCX and confirmed commit 27af7f's 21-edge relation matches final DOC-C: 11 nonfatal final-matrix edges + 7 fatal edges + 3 owner hard-kill cancel edges.
 
-FACT:
-- TypeScript transition commit 27af7f93893c7589e516c269fae41aa467c2cdb9 removed five non-RUNNING/VERIFYING error edges.
-- Exact-head Railway validation at 5034debdadb1f21c7d5312e6f0ad7fd44280718c executed contract tests.
-- Rust and multiple higher-level contracts remain semantically broader than the TypeScript matrix.
+CURRENT_BRANCH_REGRESSION:
+- 18451169d54f733a032a9dd0f2f11250b5db0810 restored five broad TypeScript error edges while attributing them to "final DOC-C".
+- c25e631839069ea67cf5926a2bfa0e807404421a then narrowed Rust to RUNNING/VERIFYING error edges.
+- d1d80ce99d533a79294425ebcfe132551b26cc43 only changes references/comments.
+- Current branch is therefore statically divergent in the opposite direction: TypeScript broad, Rust narrow.
+- Latest d1d80ce Railway deployment 6603dd35-d54e-4785-946d-3ee3f59e7ec3 did not reach tests because DOC_E_TESTED_SHA was stale; no PASS can be claimed for current HEAD.
 
-ASSUMPTION:
-- None about which side should be changed. Authority reconciliation is required before mutation because the final DOC-C matrix is narrower while existing fail-closed/bootstrap contracts and Rust kernel encode broader freeze behavior.
+RESOLVED QUESTION:
+Which transition relation is final DOC-C build authority?
+- Narrow error relation: RUNNING error FREEZE; VERIFYING error FREEZE.
+- Broad non-STOP error relation is from pre-final text and must not be relabeled as final DOC-C.
 
-UNKNOWN:
-- Whether the final DOC-C transition table intentionally supersedes the earlier broad ANY-except-STOP error law for bootstrap/persistence failures, or whether those failures must reach FREEZE via another canonical mechanism.
+REMAINING UNKNOWN:
+How bootstrap/dependency/persistence failures from INIT or READY must reach the DOC-B-required fail-closed FREEZE outcome without inventing a transition absent from final DOC-C. This requires an explicit canonical mechanism or authoritative clarification; tests must not be weakened merely to become green.
 
 AFFECTED_PATHS:
 - packages/core/vnext-state-matrix.ts
@@ -48,9 +46,11 @@ AFFECTED_PATHS:
 - tests/contract/system-state-persistence.test.ts
 
 NEXT_ACTION:
-Reconcile authoritative error/freeze semantics, then repair all language/runtime consumers consistently. Do not weaken parity or delete failing tests.
+Restore cross-language parity to final DOC-C authority, then separately resolve fail-closed bootstrap/persistence routing without silently reintroducing pre-final error edges.
 
 EVIDENCE_REFS:
+- NEXY-BUILD-CONTROL/FINDINGS/F-E4C19A73-03.md
+- NEXY-BUILD-CONTROL/DEPENDENCIES/DEP-E4C19A73-STATE-ERROR-AUTHORITY.md
+- NEXY-BUILD-CONTROL/COMMUNICATION/THREADS/TH-D4A71C2E-VERIFY/M-5E4C5301-005.md
 - Railway deployment 3356b6d7-a35c-4aa5-b25c-aedc67367ded
-- NEXY work HEAD 5034debdadb1f21c7d5312e6f0ad7fd44280718c
-- state-matrix repair commit 27af7f93893c7589e516c269fae41aa467c2cdb9
+- Railway deployment 6603dd35-d54e-4785-946d-3ee3f59e7ec3
