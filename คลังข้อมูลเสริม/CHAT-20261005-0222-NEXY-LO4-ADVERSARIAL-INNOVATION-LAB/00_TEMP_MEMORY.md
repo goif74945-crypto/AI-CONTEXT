@@ -1,6 +1,6 @@
 # Temporary Execution Memory — NEXY Lo4 Adversarial Innovation Lab
 
-Status: ACTIVE_CHECKPOINT
+Status: FINAL_VERIFIED
 Conversation code: `CHAT-20261005-0222-NEXY-LO4-ADVERSARIAL-INNOVATION-LAB`
 Identifier note: internal ChatGPT UI chat ID is not exposed to the available tools; this deterministic conversation code is the durable identifier.
 Created: 2026-10-05T02:22+07:00
@@ -55,7 +55,7 @@ All are `Lo4_AI_PROPOSAL_ONLY`:
 2. MARGIN — Decision Legality Margin Sentinel.
 3. UPA — Unknown Propagation Algebra.
 4. TRACEWEIGHT — Agent Influence Dominance Auditor.
-5. FRICTION — Semantic Transformation Budget Meter.
+5. CONTRACT-DRIFT — Task Contract Drift Budgeter.
 
 ## Acceptance gates
 - explicit design, contracts, invariants, failures, integration boundary for all five;
@@ -74,11 +74,25 @@ All are `Lo4_AI_PROPOSAL_ONLY`:
 - CONTEXT_RESOLVED: PASS
 - COLLISION_SCAN: PASS
 - PROTECTED_SCOPE_LOCKED: PASS
-- TEMP_MEMORY: WRITING
-- DESIGN: IN_PROGRESS
-- IMPLEMENTATION: NOT_VERIFIED
-- TESTS: NOT_VERIFIED
-- PERSISTENCE: NOT_VERIFIED
-- FINAL_AUDIT: NOT_VERIFIED
+- TEMP_MEMORY: PASS
+- DESIGN: PASS
+- IMPLEMENTATION: PASS_LOCAL_E1_E3
+- TESTS: PASS
+- PERSISTENCE: PASS_MAIN_46_OF_46
+- FINAL_AUDIT: PASS
 
 Resume only from the latest verified state and never promote Lo4 proposals to Canon without an explicit formal promotion process.
+
+
+## Final verified persistence
+- Snapshot fast-forward commit to `main`: `2b93f703a80fd8200676fad37eaa9a8235d2dda3`.
+- Post-write comparison observed at main head `12488dd8193b55f0eb3854f874d472083eb97896`.
+- Expected snapshot blobs: 46.
+- Main snapshot blobs: 46.
+- Missing: 0.
+- SHA mismatches: 0.
+- Extra files inside this lab folder: 0.
+- Exact snapshot match: PASS.
+- Force update used: NO.
+- Integration into any repository whose name contains `NEXY.AI`: NOT_ATTEMPTED / NOT_AUTHORIZED.
+- Canon promotion: NOT_PERFORMED.
