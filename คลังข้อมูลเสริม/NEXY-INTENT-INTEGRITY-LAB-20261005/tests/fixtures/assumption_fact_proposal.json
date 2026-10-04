@@ -1,0 +1,9 @@
+{
+  "proposal_id":"proposal-block-assumption",
+  "touch_paths":["คลังข้อมูลเสริม/NEXY-INTENT-INTEGRITY-LAB-20261005/README.md"],
+  "covered_requirement_ids":["REQ-001","REQ-002","REQ-003"],
+  "evidence":{"AC-001":"unit","AC-002":"runtime"},
+  "resolved_unknowns":[],
+  "claims":[{"id":"CLM-ASSUME","truth_class":"REPO_FACT","basis":"Assumption that the repository contains the file.","completion_claim":false}],
+  "target_repository":"goif74945-crypto/AI-CONTEXT"
+}
