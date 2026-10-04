@@ -1,0 +1,5 @@
+[project]
+name = "nexy-prism-prototype"
+version = "0.1.0"
+description = "Reference prototype for the AI-proposed NEXY::PRISM truth-preserving control-surface compiler"
+requires-python = ">=3.11"
