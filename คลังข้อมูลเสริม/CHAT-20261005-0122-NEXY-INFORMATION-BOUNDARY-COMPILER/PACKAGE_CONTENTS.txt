@@ -1,0 +1,25 @@
+Exact archive member inventory for NIBC-REFERENCE-PACK.tar.gz
+SHA-256 504ab478cf517ebff014890d97b5e39d822df227255729ec39be13e11f7389a1
+
+00_SESSION_MEMORY.md
+01_MANIFEST.md
+02_ARCHITECTURE.md
+03_REQUIREMENT_LEDGER.md
+04_POLICY_CONTRACT.md
+05_THREAT_FAILURE_MODEL.md
+06_INTEGRATION_PROPOSAL.md
+07_ADOPTION_GATES.md
+08_RESEARCH_BACKLOG.md
+09_VALIDATION_REPORT.md
+10_FINAL_AUDIT.md
+README.md
+execution-evidence.json
+fixtures/base_policy.json
+fixtures/scenarios.json
+requirements-dev.txt
+schemas/decision.schema.json
+schemas/policy.schema.json
+schemas/request.schema.json
+src/nibc.py
+tests/test_nibc.py
+tools/validate.py

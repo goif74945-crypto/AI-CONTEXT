@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "project": "NEXY Information Boundary Compiler",
+  "acronym": "NIBC",
+  "truth_class": "AI_PROPOSED_SUPPLEMENTAL_R_AND_D",
+  "execution_code": "CHAT-20261005-0122-NEXY-INFORMATION-BOUNDARY-COMPILER",
+  "platform_chat_id": "UNKNOWN_NOT_EXPOSED_BY_AVAILABLE_TOOLS",
+  "package": {
+    "file": "NIBC-REFERENCE-PACK.tar.gz",
+    "bytes": 26121,
+    "sha256": "504ab478cf517ebff014890d97b5e39d822df227255729ec39be13e11f7389a1",
+    "members": 22,
+    "git_blob_sha": "1aa8b47c2353caeff59175b690fb81ea26544861"
+  },
+  "validation": {
+    "python": "3.13.5",
+    "jsonschema": "4.26.0",
+    "coverage": "7.13.3",
+    "tests_run": 41,
+    "tests_status": "PASS",
+    "schema_status": "PASS",
+    "syntax_status": "PASS",
+    "src_branch_coverage_percent": 99.451,
+    "coverage_gate_percent": 98,
+    "highest_claimed_evidence_class": "E2_REFERENCE_PROTOTYPE_ONLY"
+  },
+  "protected_scope": [
+    "repositories whose name contains NEXY.AI",
+    "existing sibling supplemental packages",
+    "destructive Git history"
+  ],
+  "production_adoption": "NOT_VERIFIED"
+}
