@@ -35,3 +35,15 @@ Added explicit `guard_direction: Direction` to `ValueContract`, validated the en
 
 ### Regression proof
 Added `test_higher_is_better_guard_detects_downward_regression` and invalid-direction rejection. Full suite after repair: 49 tests PASS.
+
+## D-003 — First remote publication of merge lattice was semantically equivalent but byte-different
+
+**Discovered by:** publication identity gate before completion.  
+**Affected artifact:** remote `src/lo4lab/merge_lattice.py` only.  
+**Observed failure:** an intermediate publication serialized the locally tested implementation into a compact equivalent form. Functional intent was preserved, but the Git blob was not the exact tested artifact, so the evidence contract failed.
+
+### Repair
+Fetched the remote blob SHA, replaced the file with the exact locally tested content, then re-fetched the remote blob and compared it with local `git hash-object`.
+
+### Regression / identity proof
+Final remote blob `226992443ef4b27b38deea9ed430abbf847d28d9` exactly matches the local tested file. The final identity gate matches all 15 source+test files.
