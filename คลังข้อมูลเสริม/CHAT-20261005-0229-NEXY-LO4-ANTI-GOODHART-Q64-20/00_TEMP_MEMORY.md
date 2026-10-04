@@ -64,3 +64,14 @@ E0 presence, E1 syntax/static, E2 unit/adversarial, E3 local cross-engine integr
 
 ## Resume rule
 Refresh current AI-CONTEXT main, re-read this file and 01_TASK_CONTRACT.md, continue from the first non-PASS gate, and never promote Lo4 outputs implicitly.
+
+## Checkpoint — local implementation cycle 1
+- Q64.64 core: IMPLEMENTED locally.
+- 20-engine Anti-Goodhart namespace: IMPLEMENTED locally.
+- E1 compileall: PASS.
+- Initial E2/E3 run: 32 PASS / 1 FAIL (integration safe portfolio false FREEZE).
+- Root cause: independently rounded normalized Q64.64 weights summed to ONE-1 raw LSB for equal thirds, causing TRIAD to fail an exact qualified-weight floor.
+- Repair: normalization now conserves exact Q64 mass by assigning rounding residual deterministically to the largest original weight, lowest index on ties.
+- Regression after repair: 34/34 tests PASS, including 10,000 arithmetic identity stress iterations and AST scan forbidding binary-float literals.
+- Publication of code/evidence: IN_PROGRESS / NOT_YET_VERIFIED.
+- NEXY.AI integration/runtime/deployment: NOT_VERIFIED.
