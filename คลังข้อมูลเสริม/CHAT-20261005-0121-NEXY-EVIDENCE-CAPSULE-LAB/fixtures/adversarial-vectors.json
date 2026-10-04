@@ -1,0 +1,15 @@
+{
+  "status": "AI_PROPOSED_TEST_CORPUS",
+  "vectors": [
+    {"id":"TAMPER_VALUE","expected":"REJECT","reason":"Merkle proof mismatch"},
+    {"id":"TAMPER_HEADER","expected":"REJECT","reason":"header authentication mismatch"},
+    {"id":"WRONG_AUDIENCE","expected":"REJECT","reason":"audience binding"},
+    {"id":"MISSING_REQUIRED_FIELD","expected":"REJECT","reason":"required disclosure absent"},
+    {"id":"EXPIRED_CAPSULE","expected":"REJECT","reason":"freshness"},
+    {"id":"STALE_PRESENTATION","expected":"REJECT","reason":"max age"},
+    {"id":"REPLAY_PRESENTATION","expected":"REJECT","reason":"replay guard"},
+    {"id":"WRONG_KEY","expected":"REJECT","reason":"authentication"},
+    {"id":"CORRUPT_MERKLE_PROOF","expected":"REJECT","reason":"commitment integrity"},
+    {"id":"PUBLIC_USER_REQUESTS_SECRET","expected":"REJECT","reason":"policy"}
+  ]
+}
