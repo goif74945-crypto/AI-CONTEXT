@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "mission": "CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL",
+  "scope": "REFERENCE_PROTOTYPE_ONLY",
+  "status": "WAVE_01_VERIFIED_E0_E1_E2",
+  "verification_date_local": "2026-10-05",
+  "exact_blob_bindings": {
+    "src/__init__.py": "cb41d00bb2c7c26bbd8b7ca3a7800e2a27d55293",
+    "src/privacy_firewall.py": "edfe506a219a07b1d3ca020510191aadc9a9289e",
+    "src/npcef/__init__.py": "f1234d2363ff1f9ebd455073bbbb94ada0908218",
+    "src/npcef/model.py": "b737a405862891eedf594db6a6e7b3dee67f8764",
+    "src/npcef/receipt.py": "756307d5b2a2333108636397ee8be73b139d7c8c",
+    "src/npcef/utils.py": "50910998bb44af05cbf0bf767c23af3bdeafe4d0",
+    "src/npcef/core.py": "8a971f51970b1dfb46a433a6a729d83e165544dc",
+    "tests/test_release_contract.py": "e7a0b8d24f4511485d59799306e2f66f54bac38c",
+    "tools/__init__.py": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "tools/property_audit.py": "3a4cc12c48100a69ef170511f26eb11a361821b9",
+    "fixtures/adversarial_cases.json": "2fa02aa6690148cd24f9b025d667ad88e0c27423"
+  },
+  "executed_evidence": {
+    "comprehensive_local_suite": {
+      "command": "python -m unittest discover -s tests -v",
+      "tests": 44,
+      "result": "PASS",
+      "note": "Includes the exact-byte release suite plus a broader local adversarial suite. The broader test file is not used as the exact-byte binding claim."
+    },
+    "exact_byte_release_suite": {
+      "command": "python -m unittest tests.test_release_contract -v",
+      "tests": 12,
+      "result": "PASS",
+      "test_blob_sha": "e7a0b8d24f4511485d59799306e2f66f54bac38c"
+    },
+    "property_audit": {
+      "command": "python -m tools.property_audit",
+      "bounded_cases": 1280,
+      "deterministic_replays": 1280,
+      "receipt_non_echo_checks": 1280,
+      "secret_external_egress_checks": 192,
+      "terminal_payload_checks": 592,
+      "order_permutations": 24,
+      "failures": 0,
+      "result": "PASS",
+      "tool_blob_sha": "3a4cc12c48100a69ef170511f26eb11a361821b9"
+    },
+    "static_compile": {
+      "command": "python -m compileall -q src tests tools",
+      "result": "PASS"
+    },
+    "fixture_parse": {
+      "command": "python -m json.tool fixtures/adversarial_cases.json",
+      "result": "PASS"
+    }
+  },
+  "tdd_red_evidence": [
+    "Initial production module absent: ModuleNotFoundError.",
+    "Sensitive wildcard recipient regression: expected FREEZE but observed REDACT before fix.",
+    "Five malformed-metadata cases crashed before runtime validation hardening.",
+    "Invalid recipient-class receipt and partial fake grant produced TypeError/AttributeError before final hardening."
+  ],
+  "claim_boundary": {
+    "E0": "PASS",
+    "E1": "PASS",
+    "E2": "PASS_FOR_REFERENCE_PROTOTYPE",
+    "E3": "NOT_VERIFIED",
+    "E4": "NOT_VERIFIED",
+    "E5": "NOT_VERIFIED",
+    "E6": "NOT_VERIFIED",
+    "legal_compliance": "NOT_VERIFIED",
+    "NEXY_AI_runtime_security": "NOT_VERIFIED"
+  }
+}
