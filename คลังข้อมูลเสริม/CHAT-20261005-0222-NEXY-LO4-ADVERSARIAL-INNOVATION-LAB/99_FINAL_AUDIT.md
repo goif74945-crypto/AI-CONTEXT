@@ -104,9 +104,28 @@ These are sandbox microbenchmark observations only. They are not production SLAs
 - Local implementation/static verification: PASS.
 - Unit/integration/parity evidence: PASS at E1-E3 as stated.
 - Durable branch persistence/readback: PASS.
-- Merge to `main`: pending at the instant this audit file is authored.
+- Persistence to `main`: PASS via non-force optimistic fast-forward; snapshot commit `2b93f703a80fd8200676fad37eaa9a8235d2dda3`.
 - Integration into an actual NEXY implementation repository: NOT_VERIFIED and intentionally not attempted.
 - NEXY runtime/deployment behavior: NOT_VERIFIED.
 - Canon promotion: NOT_VERIFIED / not authorized.
 
 Promotion from Lo4 requires a separate explicit authority decision and new evidence against the exact target NEXY revision.
+
+
+## Post-merge / main persistence evidence
+
+The complete 46-file snapshot was persisted to `main` using an optimistic compare-and-swap style fast-forward. No force ref update was used.
+
+- snapshot commit: `2b93f703a80fd8200676fad37eaa9a8235d2dda3`
+- parent observed for that commit: `003fc3221c9fd6b76e071d53b616138f066811ab`
+- post-write main head used for path-by-path blob verification: `12488dd8193b55f0eb3854f874d472083eb97896`
+- expected blob count in lab folder: 46
+- observed blob count in lab folder: 46
+- missing paths: 0
+- blob SHA mismatches: 0
+- extra paths: 0
+- exact snapshot match: PASS
+
+Two stale pull requests created during concurrency recovery (#79 and #81) are superseded by the verified direct fast-forward snapshot and must not be treated as the persistence authority.
+
+The canonical status of the five mechanisms remains `Lo4_AI_PROPOSAL_ONLY`; this persistence proves artifact durability, not NEXY Canon promotion, runtime integration, or deployment.
