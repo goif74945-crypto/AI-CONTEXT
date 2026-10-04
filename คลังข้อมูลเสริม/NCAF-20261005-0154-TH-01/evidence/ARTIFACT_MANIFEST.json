@@ -2,9 +2,9 @@
   "classification": "AI_PROPOSED_CONCEPT_NOT_ADOPTED",
   "files": [
     {
-      "bytes": 2022,
+      "bytes": 2364,
       "path": "00_SESSION_MEMORY.md",
-      "sha256": "e2a173adcec305cef79aa6bae271796f6af61ea224fbafdb3c3fbd4ff656bf4e"
+      "sha256": "3f30231a031c1c4c1f0b832f11ceb4a84188ba45959054ec11a581cb32ca423f"
     },
     {
       "bytes": 1603,
@@ -20,6 +20,11 @@
       "bytes": 2671,
       "path": "03_NEXY_COMPATIBILITY_AUDIT.md",
       "sha256": "19fbb12fcecde6953c134ebf69df2fd179b60e636c94066625a5661340876af3"
+    },
+    {
+      "bytes": 1519,
+      "path": "04_FINAL_AUDIT.md",
+      "sha256": "2ad754f1f49fc51a306c2f2b389033a1889f4f56bf06239adf165afadffa22b8"
     },
     {
       "bytes": 931,
@@ -87,7 +92,8 @@
       "sha256": "b720264e6e7bb8c4f24b0e08728c9233754f19e6f3a90c94c274fa624400ee0c"
     }
   ],
-  "generated_from": "local-final-reference-lab-files",
-  "schema_version": 1,
+  "generated_from": "post-remote-verification-final-reference-lab-files",
+  "schema_version": 2,
+  "self_included": false,
   "work_session_id": "NCAF-20261005-0154-TH-01"
 }
