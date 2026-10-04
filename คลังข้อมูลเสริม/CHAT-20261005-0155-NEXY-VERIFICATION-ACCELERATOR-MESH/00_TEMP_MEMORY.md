@@ -1,12 +1,12 @@
 # Temporary Session Memory / Resume Checkpoint
 
 Status: ACTIVE CHECKPOINT
-Conversation code: CHAT-20261005-0155-NEXY-VERIFICATION-ACCELERATOR-MESH
+Conversation code: `CHAT-20261005-0155-NEXY-VERIFICATION-ACCELERATOR-MESH`
 Created: 2026-10-05 +07:00
-Repository target: goif74945-crypto/AI-CONTEXT
+Repository target: `goif74945-crypto/AI-CONTEXT`
 Write boundary: this folder only.
 
-Objective: create five novel, high-value future NEXY.AI verification systems; implement prototypes; execute tests; store Design + Code + Test + Evidence; never mutate repositories whose names contain NEXY.AI.
+Objective: create five novel, high-value future NEXY.AI verification systems; implement prototypes; execute tests; store Design + Code + Test + Evidence; never mutate repositories whose names contain `NEXY.AI`.
 
 Authority read:
 - INDEX.md
@@ -38,12 +38,13 @@ Defects found and repaired before repository write:
 - MVF base SUT exception initially escaped.
 - stress harness import path issue.
 - isolated wheel build attempted unavailable network access.
+- wheel hash evidence was initially nondeterministic because build timestamps differed; fixed with SOURCE_DATE_EPOCH and verified by two byte-identical builds.
 
 Verified locally:
 - compileall PASS
 - 20/20 unit + integration tests PASS
 - 1002 deterministic/property checks PASS
-- wheel build PASS
-- wheel SHA-256 56c275d96fcad546daef4b06a2b3e68ef5b84fe184eecc63b9116fad3791f18a
+- deterministic wheel build 2/2 matching hashes PASS
+- wheel SHA-256 8518f646fc6f8689584f68c66ed9386aa7e52a15881dbd20cae40c13fcafc755
 
 Resume rule: re-fetch, rerun tests, preserve evidence-class boundaries, and never touch adjacent chat folders or NEXY.AI repositories.
