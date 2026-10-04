@@ -42,6 +42,10 @@ class ContractMutationAdequacyEngineTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "max_mutants"):
             evaluate_mutation_adequacy(self.contract, lambda _doc: True, max_mutants=-1)
 
+    def test_no_generated_mutants_does_not_produce_vacuous_perfect_score(self):
+        with self.assertRaisesRegex(ValueError, "no mutants generated"):
+            evaluate_mutation_adequacy({}, lambda _doc: True)
+
 
 if __name__ == "__main__":
     unittest.main()
