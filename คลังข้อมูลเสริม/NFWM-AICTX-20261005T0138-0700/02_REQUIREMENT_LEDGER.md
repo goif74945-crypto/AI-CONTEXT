@@ -2,8 +2,8 @@
 
 | ID | Requirement | Authority | Implementation | Evidence | Status |
 |---|---|---|---|---|---|
-| R-001 | Work only in AI-CONTEXT isolated supplemental area | User | repository destination | GitHub read/write verification | PENDING_REMOTE |
-| R-002 | Never mutate repo containing `NEXY.AI` | User | no connector write targets that repo | tool-call audit + final report | PASS_LOCAL_PROCESS |
+| R-001 | Work only in AI-CONTEXT isolated supplemental area | User | repository destination | GitHub read/write verification | PASS |
+| R-002 | Never mutate repo containing `NEXY.AI` | User | no connector write targets that repo | tool-call audit + remote verification record | PASS |
 | R-003 | Label concept as AI-proposed | User + AI-CONTEXT truth-class law | README/docs/profile status | static inspection | PASS |
 | R-004 | Strictly parse trace input | AI-CONTEXT no-guess law | `model.py` | unit tests | PASS |
 | R-005 | Deterministic invariant analysis | design | `analyzer.py` | unit tests | PASS |
@@ -16,10 +16,10 @@
 | R-012 | Canonical SHA-256 witness identity | evidence/replay design | `canonical.py` | hash determinism test | PASS |
 | R-013 | Detect witness hash tampering | evidence integrity design | CLI verifier | negative CLI test | PASS |
 | R-014 | Use no runtime third-party dependency | portability constraint | stdlib-only code | `pyproject.toml` + imports | PASS |
-| R-015 | Preserve resumable execution state | user + AI-CONTEXT long-work law | `CHECKPOINT.md` | file presence/readback | PENDING_REMOTE |
-| R-016 | Store executed test evidence | user + verification law | `evidence/` | commands + outputs + hashes | PASS_LOCAL |
+| R-015 | Preserve resumable execution state | user + AI-CONTEXT long-work law | `CHECKPOINT.md` | file presence/readback | PASS |
+| R-016 | Store executed test evidence | user + verification law | `evidence/` | commands + outputs + hashes + remote readback | PASS |
 | R-017 | Do not claim NEXY runtime/deployment verification | verification law | explicit docs/profile status | final audit | PASS |
 
 ## Acceptance rule
 
-Remote project status may become `COMPLETE` only after all `PENDING_REMOTE` rows are written to AI-CONTEXT and read back successfully.
+All remote-gated requirements have been written to AI-CONTEXT and read back successfully. The NFWM project deliverable status is `COMPLETE`; live NEXY.AI integration remains `NOT_VERIFIED` by design.
