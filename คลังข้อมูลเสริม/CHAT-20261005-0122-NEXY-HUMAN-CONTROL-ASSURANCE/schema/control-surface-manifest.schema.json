@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexy.local/advisory/hcas/control-surface-manifest.schema.json",
+  "title": "HCAS Control Surface Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "surface_id", "profile", "source_refs", "freeze_surface", "pending_state", "actions"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "surface_id": {"type": "string", "minLength": 1},
+    "profile": {"enum": ["current_vnext", "strict_future"]},
+    "source_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "freeze_surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visible", "sticky", "maskable", "authoritative"],
+      "properties": {
+        "visible": {"const": true},
+        "sticky": {"const": true},
+        "maskable": {"const": false},
+        "authoritative": {"const": true}
+      }
+    },
+    "pending_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["is_evidence", "success_claim"],
+      "properties": {
+        "is_evidence": {"const": false},
+        "success_claim": {"const": false}
+      }
+    },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/action"}
+    }
+  },
+  "$defs": {
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "label", "accessibility_name", "side_effect", "mutates",
+        "backend_authorization", "confirmation", "required_role", "ui_visibility_role",
+        "reversible", "rollback_path", "irreversible_warning", "audit_event", "failure_mode",
+        "deterministic_result", "evidence_requirement", "visible_outcomes"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "accessibility_name": {"type": "string", "minLength": 1},
+        "side_effect": {"enum": ["READ_ONLY", "REVERSIBLE_WRITE", "DURABLE_WRITE", "EXTERNAL_COMMUNICATION", "PRIVILEGE_CHANGE", "DESTRUCTIVE", "FINANCIAL_OR_LEGAL"]},
+        "mutates": {"type": "boolean"},
+        "backend_authorization": {"type": "boolean"},
+        "confirmation": {"enum": ["NONE", "EXPLICIT", "EXPLICIT_TYPED", "DUAL_APPROVAL"]},
+        "required_role": {"type": "string", "minLength": 1},
+        "ui_visibility_role": {"type": "string", "minLength": 1},
+        "reversible": {"type": "boolean"},
+        "rollback_path": {"type": ["string", "null"]},
+        "irreversible_warning": {"type": "boolean"},
+        "audit_event": {"type": ["string", "null"]},
+        "failure_mode": {"enum": ["BLOCK", "FREEZE", "FREEZE_OR_BLOCK"]},
+        "deterministic_result": {"type": "boolean"},
+        "evidence_requirement": {"enum": ["E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7"]},
+        "visible_outcomes": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true}
+      }
+    }
+  }
+}

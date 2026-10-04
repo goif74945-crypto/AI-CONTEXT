@@ -1,0 +1,47 @@
+{
+  "task": {
+    "purpose": "summarize_support_case",
+    "capabilities": ["summarize"],
+    "recipient": {"recipient_id": "external-model-A", "trust": "EXTERNAL_MODEL"},
+    "requested_retention_seconds": 600,
+    "consents": ["private_to_external_model"]
+  },
+  "rules": [
+    {
+      "field_name": "issue_title",
+      "classification": "PUBLIC",
+      "allowed_purposes": ["summarize_support_case"],
+      "required_for_capabilities": ["summarize"],
+      "recipient_value_required_for": ["summarize"],
+      "preferred_transform": "NONE",
+      "max_retention_seconds": 600
+    },
+    {
+      "field_name": "customer_name",
+      "classification": "PRIVATE",
+      "allowed_purposes": ["summarize_support_case"],
+      "required_for_capabilities": ["summarize"],
+      "recipient_value_required_for": [],
+      "preferred_transform": "MASK",
+      "max_retention_seconds": 300
+    },
+    {
+      "field_name": "provider_token",
+      "classification": "CREDENTIAL",
+      "allowed_purposes": ["summarize_support_case"],
+      "required_for_capabilities": ["summarize"],
+      "recipient_value_required_for": [],
+      "preferred_transform": "NONE",
+      "max_retention_seconds": 0
+    },
+    {
+      "field_name": "full_account_history",
+      "classification": "PRIVATE",
+      "allowed_purposes": ["billing_review"],
+      "required_for_capabilities": ["billing"],
+      "recipient_value_required_for": [],
+      "preferred_transform": "MASK",
+      "max_retention_seconds": 60
+    }
+  ]
+}

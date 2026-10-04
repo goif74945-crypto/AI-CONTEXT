@@ -1,0 +1,22 @@
+{
+  "schema": "nexy-proofgraph/execution-record-v1",
+  "execution_id": "CHAT-20261005-0121-NEXY-PROOFGRAPH-LAB",
+  "platform_chat_id": "UNKNOWN_NOT_EXPOSED_TO_ASSISTANT",
+  "date_local": "2026-10-05",
+  "target_repository": "goif74945-crypto/AI-CONTEXT",
+  "target_path": "คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-PROOFGRAPH-LAB",
+  "start_head": "b81bf1c4135794caec59116ecc214f6f8ea0148f",
+  "refreshed_head_after_concurrent_work": "b5392d0a469523bb4d19344f0216701b728d19fb",
+  "prewrite_head_observed": "08986affbe292515d793969d56731614ca3b8fe8",
+  "protected_repository_rule": "Do not mutate any repository whose name contains NEXY.AI.",
+  "local_verification": {
+    "compileall": "PASS",
+    "tests": {"status": "PASS", "count": 23},
+    "integration_self_scan": {"status": "PASS", "documents": 15, "warnings": 0, "errors": 0, "critical": 0},
+    "link_graph": {"status": "PASS", "nodes": 15, "edges": 18},
+    "truth_lock_verify": "PASS",
+    "wheel_build": "PASS",
+    "isolated_target_install_smoke": "PASS"
+  },
+  "repository_write": "PENDING"
+}

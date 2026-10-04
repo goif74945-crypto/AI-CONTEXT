@@ -1,0 +1,54 @@
+{
+  "task_id": "CHAT-20261005-0137-NEXY-TOOL-CONTRACT-DRIFT-LAB",
+  "status": "IN_PROGRESS",
+  "objective": "Create an auxiliary, deterministic tool/plugin/connector contract-drift detection prototype that can integrate with NEXY.AI without modifying any NEXY.AI repository.",
+  "target": "คลังข้อมูลเสริม/CHAT-20261005-0137-NEXY-TOOL-CONTRACT-DRIFT-LAB",
+  "branch_ref": "main",
+  "authority_sources": [
+    "current user directive",
+    "AI-EXECUTION-KERNEL.md",
+    "rules/SECURITY.md",
+    "rules/VERIFICATION.md",
+    "projects/NEXY.AI/overview.md",
+    "projects/NEXY.AI/capabilities/*"
+  ],
+  "authorized_scope": [
+    "คลังข้อมูลเสริม/CHAT-20261005-0137-NEXY-TOOL-CONTRACT-DRIFT-LAB/**"
+  ],
+  "protected_scope": [
+    "any repository whose name contains NEXY.AI",
+    "all paths outside the lab folder unless explicitly required for read-only context"
+  ],
+  "success_invariants": [
+    "No NEXY.AI repository mutation",
+    "Deterministic canonicalization and classification for identical inputs",
+    "Unknown/unsupported schema constructs never silently become compatible",
+    "Breaking or uncertain drift cannot be promoted to safe automatically",
+    "Every core behavior is mapped to executed tests",
+    "Artifacts include design, code, tests, evidence, integration guidance, and final audit"
+  ],
+  "required_evidence": [
+    "E0 file presence",
+    "E1 Python compilation/static syntax",
+    "E2 executed unit and negative-path tests",
+    "Read-after-write verification from GitHub"
+  ],
+  "stop_conditions": [
+    "Any required action would mutate a NEXY.AI repository",
+    "Target identity becomes ambiguous",
+    "A material authority conflict appears",
+    "Required evidence cannot be produced"
+  ],
+  "deliverables": [
+    "README/design specification",
+    "machine-readable drift report contract",
+    "reference Python package",
+    "CLI",
+    "test suite",
+    "fixtures",
+    "verification report",
+    "integration notes",
+    "research backlog",
+    "final audit"
+  ]
+}

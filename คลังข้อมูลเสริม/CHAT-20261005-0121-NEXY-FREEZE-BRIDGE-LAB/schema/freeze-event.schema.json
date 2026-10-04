@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/nexy/freeze-bridge/freeze-event.schema.json",
+  "title": "NEXY Freeze Bridge Event v1.1",
+  "description": "AI-proposed upstream freeze-semantics normalization input. It contains no role or UI display authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "event_id", "reason_code", "status", "blocking_layer", "recovery_owner", "authorized_recovery_intents"],
+  "properties": {
+    "protocol_version": {"const": "1.1"},
+    "event_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "reason_code": {"type": "string"},
+    "status": {"type": "string", "enum": ["FROZEN", "BLOCKED", "NOT_VERIFIED", "UNKNOWN", "CONFLICT"]},
+    "blocking_layer": {"type": "string", "minLength": 1, "maxLength": 96},
+    "recovery_owner": {"type": "string", "enum": ["USER", "OPERATOR", "SYSTEM", "EXTERNAL_DEPENDENCY", "NONE"]},
+    "disclosure": {"type": "string", "enum": ["PUBLIC", "INTERNAL", "RESTRICTED"], "default": "PUBLIC"},
+    "locale": {"type": "string", "enum": ["en", "th"], "default": "en"},
+    "dependency_recheck_safe": {"type": "boolean", "default": false},
+    "missing_inputs": {"type": "array", "maxItems": 24, "items": {"type": "string", "minLength": 1, "maxLength": 96}},
+    "evidence_refs": {"type": "array", "maxItems": 24, "items": {"type": "string", "minLength": 1, "maxLength": 160}},
+    "authorized_recovery_intents": {
+      "type": "array",
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["PROVIDE_REQUIRED_INPUT", "RESOLVE_AUTHORITY_CONFLICT", "REFRESH_EVIDENCE", "RECHECK_DEPENDENCY", "REQUEST_AUTHORITY_REVIEW", "ESCALATE_OPERATOR", "ADJUST_SCOPE", "ACKNOWLEDGE_STATE"]
+      }
+    },
+    "context_label": {"type": ["string", "null"], "maxLength": 160}
+  }
+}

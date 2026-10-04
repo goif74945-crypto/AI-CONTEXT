@@ -1,0 +1,27 @@
+{
+  "project_id": "CHAT-20261005-0122-NEXY-HCAS",
+  "name": "NEXY Human Control Surface Assurance",
+  "status": "AI_PROPOSED_ADVISORY_VERIFIED_E0_E2",
+  "created_at": "2026-10-05T01:22:00+07:00",
+  "target_storage_repo": "goif74945-crypto/AI-CONTEXT",
+  "target_path": "คลังข้อมูลเสริม/CHAT-20261005-0122-NEXY-HUMAN-CONTROL-ASSURANCE",
+  "protected_repository_name_pattern": "contains:NEXY.AI",
+  "runtime_dependencies": [],
+  "language": "Python >=3.11",
+  "verification": {
+    "compile": "PASS",
+    "unit_tests": {
+      "status": "PASS",
+      "passed": 11,
+      "failed": 0
+    },
+    "cli_contract": "PASS",
+    "repository_presence": "PASS",
+    "repository_reread": "PASS",
+    "pull_request": 5,
+    "merge_commit": "83c46e1e03e03151a2db0541130042fd38060a59",
+    "validator_blob_sha": "3ccc9ac1a95c14ae72ceaa34b5ad6248e84d63ad",
+    "test_blob_sha": "df60f788048168a15573393419fdbbffb70d49c9"
+  },
+  "authority": "SECONDARY_ADVISORY_ONLY"
+}

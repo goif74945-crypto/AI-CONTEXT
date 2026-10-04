@@ -1,0 +1,73 @@
+{
+  "task_id": "CHAT-20261005-0138-NEXY-PARTIAL-ORDER-VERIFICATION-LAB",
+  "objective": "Design, implement, test, verify, and persist a deterministic static partial-order verification reduction reference kernel that reduces equivalent concurrent interleavings without guessing hidden independence.",
+  "target": "คลังข้อมูลเสริม/CHAT-20261005-0138-NEXY-PARTIAL-ORDER-VERIFICATION-LAB",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "branch": "main",
+  "expected_head": "befdfb55b27533bab73bb9495adf3b336190b38b",
+  "authorized_scope": [
+    "คลังข้อมูลเสริม/CHAT-20261005-0138-NEXY-PARTIAL-ORDER-VERIFICATION-LAB/**"
+  ],
+  "protected_scope": [
+    "Every repository whose name contains NEXY.AI",
+    "Every pre-existing AI-CONTEXT path outside the new work root",
+    "Canonical NEXY requirements, project status, build matrix, scheduler and concurrency records"
+  ],
+  "authority_sources": [
+    "Current explicit user directive",
+    "AI-CONTEXT/INDEX.md",
+    "AI-CONTEXT/AI-EXECUTION-KERNEL.md",
+    "AI-CONTEXT/rules/* relevant rules",
+    "AI-CONTEXT/projects/NEXY.AI/overview.md",
+    "AI-CONTEXT current NEXY build-matrix context",
+    "External academic literature only for advisory algorithm grounding"
+  ],
+  "preconditions": [
+    "Target repository is goif74945-crypto/AI-CONTEXT",
+    "Target branch is main",
+    "New work root does not already exist",
+    "Writes remain additive and isolated",
+    "NEXY.AI repositories remain read-only"
+  ],
+  "success_invariants": [
+    "No writes occur outside the authorized root",
+    "No repository whose name contains NEXY.AI is mutated",
+    "No reduction is based on undeclared or incomplete effects",
+    "Every reduced representative set is deterministic for normalized input",
+    "Exact equivalence claims are backed by executed bounded exhaustive cross-checks",
+    "Safety-limit exhaustion blocks rather than silently truncates",
+    "All implementation claims are separated from NEXY runtime/deployment claims"
+  ],
+  "forbidden_actions": [
+    "Modify any NEXY.AI repository",
+    "Overwrite sibling supplemental work",
+    "Force push, rebase, delete, reset or rewrite history",
+    "Use eval/exec for model semantics",
+    "Claim integration/deployment without matching evidence",
+    "Persist secrets or hidden reasoning"
+  ],
+  "required_evidence": [
+    "E0_PRESENCE",
+    "E1_STATIC",
+    "E2_UNIT"
+  ],
+  "stop_conditions": [
+    "Authorized path collision",
+    "Material authority conflict",
+    "Verification cannot be executed",
+    "Correctness requires inventing NEXY behavior",
+    "Mutation would escape authorized scope"
+  ],
+  "deliverables": [
+    "Execution state",
+    "Architecture and algorithm specification",
+    "Requirement ledger",
+    "Reference implementation",
+    "Fixtures",
+    "Unit/adversarial/property tests",
+    "Validation evidence",
+    "Adoption proposal",
+    "Research backlog",
+    "Final audit"
+  ]
+}

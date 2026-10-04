@@ -1,0 +1,35 @@
+# PCAC Mission State
+
+- mission_id: AICTX-PCAC-20261005T0143+07
+- platform_chat_id: UNKNOWN_NOT_EXPOSED_TO_ASSISTANT
+- persistence_mode: DURABLE_RESUMABLE
+- repository: goif74945-crypto/AI-CONTEXT
+- branch: main
+- writable_scope: คลังข้อมูลเสริม/PCAC-Proof-Carrying-Action-Capsule/** plus this folder INDEX
+- protected_scope: every repository whose name contains NEXY.AI; existing AI-CONTEXT files unless explicitly required for indexing
+- current_phase: BASELINE_VERIFY
+- status: IN_PROGRESS
+- concept_authority: AI_PROPOSED_CONCEPT_ONLY
+- objective: Design, implement, test, and evidence a standalone Proof-Carrying Action Capsule system that can interoperate with NEXY.AI without modifying the NEXY.AI repository.
+- authority_sources:
+  - /INDEX.md
+  - /AI-EXECUTION-KERNEL.md
+  - /rules/GLOBAL.md
+  - /rules/AI-BEHAVIOR.md
+  - /rules/SECURITY.md
+  - /rules/VERIFICATION.md
+  - /projects/NEXY.AI/overview.md
+  - /projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md
+- verified_baseline:
+  - default_branch: main
+  - target repository readable/writable through GitHub connector: write verification pending
+  - คลังข้อมูลเสริม/INDEX.md did not exist at inspection time
+  - direct code-search matches for "proof capsule", "evidence bundle", "replay packet", "action package", "proof-carrying": none observed in indexed search scope
+- immutable_rules:
+  - Never mutate a repository whose name contains NEXY.AI.
+  - Never present PCAC as an existing NEXY.AI feature.
+  - NEXY CORE/JUDGE remains final authority.
+  - Any READY_FOR_JUDGE capsule must fail closed on unresolved material claims.
+  - Completion requires executed static and behavior tests plus read-back of persisted files.
+- next_action: create project design + implementation locally, run tests, persist artifacts, read back, then record evidence.
+- last_checkpoint: CP-0001

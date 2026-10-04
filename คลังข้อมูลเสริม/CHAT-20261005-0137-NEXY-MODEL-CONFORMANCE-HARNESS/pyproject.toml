@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexy-model-conformance"
+version = "0.1.0"
+description = "Provider-neutral conformance harness for NEXY-compatible model adapters"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+nexy-model-conformance = "nexy_model_conformance.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

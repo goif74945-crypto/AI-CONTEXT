@@ -1,0 +1,22 @@
+{
+  "request_id": "fixture-release",
+  "objective": "Show a verified result without exposing internal machinery",
+  "claims": [
+    {
+      "id": "verified-result",
+      "text": "The requested artifact exists and its verification command passed.",
+      "status": "RUNTIME_FACT",
+      "materiality": "MATERIAL",
+      "visibility": "PUBLIC",
+      "evidence_refs": ["test:artifact-verification"]
+    },
+    {
+      "id": "internal-route",
+      "text": "Worker-7 produced the first candidate.",
+      "status": "REPO_FACT",
+      "materiality": "NON_MATERIAL",
+      "visibility": "INTERNAL",
+      "evidence_refs": ["trace:worker-7"]
+    }
+  ]
+}

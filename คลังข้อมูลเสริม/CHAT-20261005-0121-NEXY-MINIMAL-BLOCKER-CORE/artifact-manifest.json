@@ -1,0 +1,42 @@
+{
+  "manifest_version": "1.0",
+  "session_code": "NEXY-MBC-20261005-0121-ICT",
+  "platform_chat_id": null,
+  "platform_chat_id_status": "UNKNOWN_NOT_EXPOSED_BY_AVAILABLE_TOOLS",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "branch": "main",
+  "namespace": "คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-MINIMAL-BLOCKER-CORE/",
+  "artifact_semantics": "EXPERIMENTAL_AI_PROPOSED_ADVISORY_ONLY",
+  "protected_repository_writes_by_this_execution": 0,
+  "artifacts": [
+    {"path":"src/blocker_core.py","commit":"0fdab05fbace639c382f125b60431927440e1955","blob_sha":"29efcfc41e5e7c8f90fba841ee54c831e54be8c0"},
+    {"path":"tests/test_blocker_core.py","commit":"b84049eb523e0bcdb52b7042aff586d30c4fcfd4","blob_sha":"892347490d05fdc0debaa7a29e363e8bc5e04d49"},
+    {"path":"scripts/run_validation.py","commit":"ed6aef180bdba4e312b190aa8aa004c246847431","blob_sha":"2d04a243c3085ee1ed5a02c75cec4c440e2d16b5"},
+    {"path":"fixtures/release_gate_example.json","commit":"4abae50b5a8db4b96dd6361ae3d17e5281ecad73","blob_sha":"916b860306d501c8108b2f4e5bea092a7d2b0c57"},
+    {"path":"fixtures/release_gate_actual.json","commit":"099672eee0451bef69c4fc8970a69f1d46d2b6d5","blob_sha":"2ceb56d8fac13f749a986a12a87164c2ab8e5f6e"},
+    {"path":"schema/blocker-core-input.schema.json","commit":"7577c371c1520253beb179b23988cadcb22eb690","blob_sha":"47342568fc45302f8434b05652acab714e7c7ea7"},
+    {"path":"schema/blocker-core-certificate.schema.json","commit":"b8c4bdcb6557735992596f6589e0e7d61c8865f2","blob_sha":"35832351b22403b53b7ef23ebce6e29eae5a92da"},
+    {"path":"evidence/E1_STATIC.json","commit":"e4c9f6f381128b62254a555913d5d2bf5b16bc9d","blob_sha":"1ed6d404127b82795461f1d66def73fdde865fbb"},
+    {"path":"evidence/E2_UNIT.json","commit":"66e6a2bbf4a102a61ad2f60a939412d5e6e4e652","blob_sha":"5ff18effa6c7eb6e3d9b26a425697bf5231e9d3d"},
+    {"path":"README.md","commit":"7d33097bbb09dcf00398672adcaaa630186c1b0b","blob_sha":"2349079924d232233af2c78bd40b8368d0610ce5"},
+    {"path":"00_SESSION_MEMORY.md","commit":"ac15e28e7f9aaf1e1d14e54c3bec5070430c9f09","blob_sha":"f05c8da671c2daf16e7f257f5d4d587b746bf126"},
+    {"path":"01_TASK_CONTRACT.json","commit":"a5674e1d02769bd5cd53acbb324bb62883ecdd87","blob_sha":"f766ecb2c682aee85e8e4858a217552bc7b3a785"},
+    {"path":"02_ARCHITECTURE.md","commit":"7767d08d4a479e7b3574c43b0a6dc343d7b1f93a","blob_sha":"c4bb095fc21024bea80f3d681cba0c109aa19081"},
+    {"path":"03_FREEZE_CERTIFICATE_CONTRACT.md","commit":"b302a65e02641e9475c0ee0d4e86889aed6f6175","blob_sha":"775e971739389384269e790350a976ffb05addea"},
+    {"path":"04_ADOPTION_GATES.md","commit":"6abf14d548f73f4179893399fc29c444f4fcc308","blob_sha":"f73c3b6a12edf78161d88b9d96d52db1865a40b4"},
+    {"path":"05_FUTURE_IDEAS.md","commit":"83aa17b04e95902521d955e8958eecbc84fca034","blob_sha":"836af89ff9a405a598e8c77a66a25890e9ce48b2"},
+    {"path":"06_VALIDATION_REPORT.md","commit":"7b3e3f739b1073649e77ea20d210becba1f9ffeb","blob_sha":"176248e8874b4d1a0e656f8fad598aa6bbb915a9"},
+    {"path":"07_EXECUTION_RECORD.json","commit":"b3d5cd45962cbb44c816094f6092a45bda3ef6ae","blob_sha":"84838ea653644cb5afc9b9a4102b75a324003ec2"},
+    {"path":"validation.log","commit":"c17d29ee6068cdded34b012adc1a3878f567982d","blob_sha":"d1f17e2901f0bb9aba86d282723e1872d2eaa629"}
+  ],
+  "standalone_validation": {
+    "static": "PASS",
+    "unit_tests": "14/14 PASS",
+    "deterministic_seeded_iterations": 50,
+    "bruteforce_oracle_crosscheck": "PASS",
+    "fixture_decision": "FREEZE",
+    "fixture_certificate_sha256": "fbd001162936086eb9e53a52df7218cd99ee657d3e78d19c950bd7ddce23153c"
+  },
+  "nexy_integration": "NOT_VERIFIED_NOT_PERFORMED",
+  "nexy_release_authority": "NONE"
+}

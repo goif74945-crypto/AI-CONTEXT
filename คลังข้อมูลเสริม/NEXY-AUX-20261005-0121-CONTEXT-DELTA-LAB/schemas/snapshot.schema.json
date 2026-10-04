@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexy-ai-context:context-delta-lab:snapshot:0.1.0",
+  "title": "Context Delta Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["snapshot_id", "source_commit", "requirements"],
+  "properties": {
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "source_commit": {"type": "string", "minLength": 1},
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "authority", "scope", "statement", "evidence_class"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "authority": {"enum": ["DOC_B", "DOC_C", "DOC_D", "DOC_E", "PROJECT_CONTEXT", "AI_PROPOSAL"]},
+          "scope": {"enum": ["CURRENT_GOVERNING_LAW", "CURRENT_BUILD", "CURRENT_BUILD_SUPPLEMENT", "SUPPORTED_PRODUCT_DESIGN", "DEPLOYMENT_EVIDENCE", "EXCLUDED_CURRENT", "DEFERRED_FUTURE", "ADVISORY"]},
+          "statement": {"type": "string", "minLength": 1},
+          "evidence_class": {"enum": ["E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7", "NOT_APPLICABLE"]},
+          "depends_on": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "source_hash": {"type": ["string", "null"]},
+          "metadata": {"type": "object"}
+        }
+      }
+    }
+  }
+}

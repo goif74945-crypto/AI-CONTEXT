@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexy.invalid/nxts/input-envelope.schema.json",
+  "title": "NEXY Truth Surface Compiler Input Envelope v0",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["request_id", "objective", "claims"],
+  "properties": {
+    "request_id": {"type": "string", "minLength": 1},
+    "objective": {"type": "string", "minLength": 1},
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["id", "text", "status"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "text": {"type": "string", "minLength": 1},
+          "status": {
+            "type": "string",
+            "enum": ["SOURCE_FACT", "REPO_FACT", "RUNTIME_FACT", "EXTERNAL_FACT", "INFERENCE", "ASSUMPTION", "UNKNOWN", "CONFLICT", "NOT_VERIFIED"]
+          },
+          "materiality": {"type": "string", "enum": ["MATERIAL", "NON_MATERIAL"], "default": "MATERIAL"},
+          "visibility": {"type": "string", "enum": ["PUBLIC", "INTERNAL", "SENSITIVE"], "default": "PUBLIC"},
+          "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true, "default": []}
+        }
+      }
+    }
+  }
+}

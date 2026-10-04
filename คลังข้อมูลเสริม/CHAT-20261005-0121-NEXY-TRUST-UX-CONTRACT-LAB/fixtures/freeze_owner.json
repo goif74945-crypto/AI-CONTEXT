@@ -1,0 +1,1 @@
+{"status":"FREEZE","state":"FREEZE","request_id":"req-freeze-001","trace_id":"trace-freeze-001","data":{},"error":{"code":"EVIDENCE_MISSING"},"freeze":{"incident_code":"EVIDENCE_MISSING","trigger":"Minimum verified evidence not satisfied","blocking_layer":"LAW_PRE_RELEASE","recoverable":true}}

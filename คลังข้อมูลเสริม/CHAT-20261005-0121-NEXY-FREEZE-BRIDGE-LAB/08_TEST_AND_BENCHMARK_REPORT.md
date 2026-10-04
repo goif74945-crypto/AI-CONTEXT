@@ -1,3 +1,7 @@
+> **HISTORICAL / SUPERSEDED v1.0**
+>
+> This file records the initial design before the concurrent `NEXY Trust UX Contract Lab` was discovered. Its UI/action-oriented portions are **not current**. The current Freeze Bridge contract is v1.1 and is defined by `README.md`, `10_V1_1_PIVOT_AND_SIBLING_BOUNDARY.md`, and `11_PROTOCOL_V1_1.md`. Historical text is retained for provenance only.
+
 # Test and Benchmark Report
 
 Classification: **EXECUTED LOCAL EVIDENCE FOR THIS REFERENCE IMPLEMENTATION ONLY**
