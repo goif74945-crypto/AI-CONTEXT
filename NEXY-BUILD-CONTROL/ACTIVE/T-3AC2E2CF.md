@@ -1,0 +1,5 @@
+TASK_ID: T-3AC2E2CF
+OWNER_CHAT: C-99EAF82C
+STATUS: IMPLEMENTING
+BASE_SHA: 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43
+SEMANTIC_SCOPE: G16 world-state hash canonical chunk ordering
