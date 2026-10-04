@@ -1,0 +1,63 @@
+{
+  "evidence_version": "1.0",
+  "workstream_id": "CHAT-20261005-0137-NEXY-WOCF",
+  "evidence_scope": "standalone reference implementation",
+  "execution_environment": {
+    "python": "3.13.5",
+    "os": "Linux 6.18.44 x86_64, glibc 2.41",
+    "backend": "isolated local sandbox",
+    "network_required": false
+  },
+  "exact_tested_git_blob_shas": {
+    "src/wocf.py": "9a2f0438a7585309a482102974e2ab7a43abe575",
+    "tests/test_wocf.py": "b816ef2148619fa83f9c671861fbba6c3e1a1106",
+    "scripts/run_verification.py": "2cec576a94fa0d838ff87a003d670c844a4159d6",
+    "fixtures/catalog.json": "b2fe479b8549c976ae3cbcbc10ef97ce6da969f5",
+    "fixtures/policy.json": "0de1c6fa1e0f5016d2794b96552f7c7dc28d7696",
+    "fixtures/proposal-allow.json": "093187411702acb27e44d2193e70bbdf420a260d",
+    "fixtures/proposal-freeze.json": "003bceaa43f8bbf8aa69e564d0f7cf612cc2414a",
+    "schema/evaluation-result.schema.json": "598b12ecfce59a87eb74d4fca5e651b5b794191f",
+    "schema/workstream-manifest.schema.json": "3a92c472dbd02eb27d8b40f4ff846dd920d83b3d"
+  },
+  "gates": [
+    {
+      "gate": "E1-python-compile",
+      "status": "PASS"
+    },
+    {
+      "gate": "E1-json-parse",
+      "status": "PASS"
+    },
+    {
+      "gate": "E2-unit-adversarial",
+      "status": "PASS",
+      "tests_run": 18,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "gate": "E2-cli-allow-scenario",
+      "status": "PASS",
+      "decision": "ALLOW",
+      "returncode": 0
+    },
+    {
+      "gate": "E2-cli-freeze-scenario",
+      "status": "PASS",
+      "decision": "FREEZE",
+      "returncode": 2,
+      "finding_codes": [
+        "HIGH_LEXICAL_CONCEPT_OVERLAP"
+      ]
+    },
+    {
+      "gate": "E1-core-static-dependency-audit",
+      "status": "PASS",
+      "non_stdlib_imports": [],
+      "dangerous_execution_or_network_calls": []
+    }
+  ],
+  "latest_verifier_exit_code": 0,
+  "overall_status": "PASS",
+  "evidence_boundary": "E1/E2 only; no NEXY.AI integration/runtime/deployment claim"
+}
