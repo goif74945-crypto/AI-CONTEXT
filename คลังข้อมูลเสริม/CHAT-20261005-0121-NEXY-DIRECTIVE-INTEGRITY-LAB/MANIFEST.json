@@ -1,0 +1,116 @@
+{
+  "schema": "nexy.supplemental-manifest.v1",
+  "status": "PRE_PUBLICATION_VERIFIED",
+  "session_code": "NEXY-DIRECTIVE-INTEGRITY-20261005-0121-SOL",
+  "authority": "AI_PROPOSED_EXPERIMENTAL",
+  "protected_repositories": "READ_ONLY:any name containing NEXY.AI",
+  "files": [
+    {
+      "path": "00_EXECUTION_STATE.md",
+      "sha256": "a42892336b574b08e59d15be053ee0efef394faf24a72eac0b9379ae58d05ebc",
+      "bytes": 2168
+    },
+    {
+      "path": "01_TASK_CONTRACT.md",
+      "sha256": "03b2f5fb3e6f7d8681eb897f29e5f3cdfdf39b93ee5d8ce9596c0032148d6b18",
+      "bytes": 2145
+    },
+    {
+      "path": "02_GAP_ANALYSIS_AND_PROVENANCE.md",
+      "sha256": "703ca5852290f2969c5d4f379d3cbfccf9c355a476db64eff1db39bdd49bec62",
+      "bytes": 2838
+    },
+    {
+      "path": "03_AI_PROPOSED_SEMANTIC_CONTINUITY_SPEC.md",
+      "sha256": "d6bd4536c8b6ee848915f23e91af00e003c54a4fb35b5178b7baa403a67851b7",
+      "bytes": 3825
+    },
+    {
+      "path": "04_DIRECTIVE_SNAPSHOT.schema.json",
+      "sha256": "4b8cd32c448459be5edab1931497479ee5d15cc82adc63fdb569f5ce0c4ac269",
+      "bytes": 3181
+    },
+    {
+      "path": "05_TRANSITION_RULES.md",
+      "sha256": "de04cae94d7b9058bdff61280b493073387a62102eb25b12feb0db505769f3d8",
+      "bytes": 2035
+    },
+    {
+      "path": "06_OPERATOR_EXPLANATION_CONTRACT.md",
+      "sha256": "1ad12c77b9600065af3846ae59edbff6258e8a7f0d99ca7b075bf9563fd3e954",
+      "bytes": 1280
+    },
+    {
+      "path": "07_ADOPTION_AND_INTEGRATION_MAP.md",
+      "sha256": "b39e9d5cad885ae71f594b47ea436b76e48999e48e99eabeb252b5245fe7f123",
+      "bytes": 1917
+    },
+    {
+      "path": "08_FAILURE_AND_ABUSE_CASES.md",
+      "sha256": "e10c3eee8a8759e317a84ff12b6aad2cbb6109f659bc150a9e062b099d021b2b",
+      "bytes": 2383
+    },
+    {
+      "path": "09_FUTURE_IDEAS_AI_PROPOSED.md",
+      "sha256": "853735b1454afb3655eb178a5a5be6e92b47f9ab2cded02e22485c6efcc530ff",
+      "bytes": 2441
+    },
+    {
+      "path": "10_TEST_MATRIX.md",
+      "sha256": "1057bc9b663a06436785bcbc34e5032ec27c9fc1737b21305177d2f5ee8a2dfd",
+      "bytes": 1399
+    },
+    {
+      "path": "11_VALIDATION_REPORT.md",
+      "sha256": "f3823540ed49e084687a06212e87f2bea58d731cded37d4df4bee89f1b3bf17b",
+      "bytes": 2495
+    },
+    {
+      "path": "12_FINAL_AUDIT.md",
+      "sha256": "990b4977d124370d1a92234696b4ad8cb08424f20251c2fa5cdd0c6ec3114993",
+      "bytes": 2115
+    },
+    {
+      "path": "README.md",
+      "sha256": "8b78453f758c3d8fa697f754c003ff77364b391f4096c40e2c4f5f90fca00f50",
+      "bytes": 2970
+    },
+    {
+      "path": "fixtures/authorization-scope-expand.json",
+      "sha256": "6736780fae6f4c76023ae77c92f3b9344d6e740c72cccea516adbab02d7f776f",
+      "bytes": 147
+    },
+    {
+      "path": "fixtures/child-broadened.json",
+      "sha256": "d316590f576230b6508479ee188ee06ed631b25083761a9a3ce507994f1c8a91",
+      "bytes": 609
+    },
+    {
+      "path": "fixtures/child-safe.json",
+      "sha256": "8a82401106e6b29a4619e0d5bfe5e36e8af63b3dc5209b6ad970db0b25a09593",
+      "bytes": 574
+    },
+    {
+      "path": "fixtures/parent.json",
+      "sha256": "fa31658e3ccd8dc3e8b6650c53c1ed904302a214d89e5b45fedd82378a0fedb6",
+      "bytes": 493
+    },
+    {
+      "path": "reference/directive_integrity.py",
+      "sha256": "7f7b8e87e37acb71446d575a054a6047ee0397e026e2f4a996193e03bce623fe",
+      "bytes": 16782
+    },
+    {
+      "path": "reference/test_directive_integrity.py",
+      "sha256": "565466efcfc78f34cb55ac31ac9233d308b2fa9a26132fa68cba40c5e3876a82",
+      "bytes": 8650
+    }
+  ],
+  "local_evidence": {
+    "python_compile": "PASS",
+    "json_schema_fixtures": "4/4 PASS",
+    "unit_tests": "22/22 PASS",
+    "safe_cli": "PASS exit 0",
+    "broadened_cli": "FREEZE exit 2"
+  }
+}

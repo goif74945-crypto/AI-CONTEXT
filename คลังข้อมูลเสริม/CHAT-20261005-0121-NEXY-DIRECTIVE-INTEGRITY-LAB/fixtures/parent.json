@@ -1,0 +1,17 @@
+{
+  "schema_version": "nexy.directive-integrity.v1",
+  "stage": "CIRL",
+  "action": "ACTION_RUN",
+  "target": "project:alpha",
+  "constraints": ["deterministic_required", "max_tokens=4096"],
+  "scope_in": ["project:alpha"],
+  "scope_out": ["repo:NEXY.AI-"],
+  "side_effects": [],
+  "authority_refs": ["USER_DIRECTIVE:1"],
+  "ambiguity": "RESOLVED",
+  "clarification_refs": [],
+  "mutation_class": "READ_ONLY",
+  "impact_class": "LOW",
+  "risk_reassessment_refs": [],
+  "parent_digest": null
+}

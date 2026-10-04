@@ -1,6 +1,6 @@
 # SESSION MEMORY — NEXY Product Evidence Lab
 
-status: IN_PROGRESS
+status: COMPLETE_FOR_SCOPED_ARTIFACT
 truth_class: REPO_FACT_FOR_THIS_TASK_RECORD
 chat_code: CHAT-20261005-0123-NEXY-PRODUCT-EVIDENCE-LAB
 platform_chat_id: UNKNOWN_NOT_EXPOSED
@@ -42,8 +42,17 @@ The lab explores a deterministic, zero-guess product-evidence layer that:
 - No dark-pattern optimization.
 - No promotion into the 837-row build matrix.
 
-## Verification target
-E1 static/syntax and E2 unit behavior for the standalone reference prototype only.
+## Final verification state
+- standalone syntax/static verification: PASS
+- unit suite: 61/61 PASS
+- adversarial numeric sweep: 10,149 checks PASS
+- targeted critical-source scan: PASS
+- example contract SHA-256: 732bc2dcc023d622753acfb460538a8f61c581067ede09f637c9aca08826168b
+- repository byte identity: 29/29 deliverable files matched GitHub readback by Git blob SHA-1
+- protected repository mutation: NONE OBSERVED; all write calls targeted AI-CONTEXT only
+
+## Verification boundary
+E1-style static/syntax and E2-style unit behavior are verified for the standalone reference prototype only. No NEXY.AI integration, deployment, production provider, real-user, or legal/privacy compliance claim is made.
 
 ## Resume instruction
-Read this file, then 01_TASK_CONTRACT.md, 02_ARCHITECTURE.md, and 11_VALIDATION_REPORT.md. Do not infer PASS from file presence.
+Read this file, then 01_TASK_CONTRACT.md, 11_VALIDATION_REPORT.md, 13_FINAL_AUDIT.md, and 15_REPO_WRITE_AUDIT.md. Treat future extensions as non-governing unless explicitly promoted by human authority.

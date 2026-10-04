@@ -151,25 +151,13 @@ class FreezeEvent:
         if not isinstance(raw, Mapping):
             raise FreezeBridgeError("event must be an object")
 
-        protocol_version = _clean_text(
-            raw.get("protocol_version", "1.1"),
-            field_name="protocol_version",
-            max_length=16,
-        )
+        protocol_version = _clean_text(raw.get("protocol_version", "1.1"), field_name="protocol_version", max_length=16)
         if protocol_version != "1.1":
             raise FreezeBridgeError("unsupported protocol_version")
 
         event_id = _clean_text(raw.get("event_id"), field_name="event_id", max_length=128)
-        blocking_layer = _clean_text(
-            raw.get("blocking_layer"),
-            field_name="blocking_layer",
-            max_length=96,
-        )
-        context_label = _clean_optional_text(
-            raw.get("context_label"),
-            field_name="context_label",
-            max_length=160,
-        )
+        blocking_layer = _clean_text(raw.get("blocking_layer"), field_name="blocking_layer", max_length=96)
+        context_label = _clean_optional_text(raw.get("context_label"), field_name="context_label", max_length=160)
 
         reason_code = _parse_enum(
             ReasonCode,
@@ -178,37 +166,19 @@ class FreezeEvent:
             fallback=ReasonCode.UNKNOWN_REASON,
         )
         status = _parse_enum(FreezeStatus, raw.get("status"), field_name="status")
-        recovery_owner = _parse_enum(
-            RecoveryOwner,
-            raw.get("recovery_owner"),
-            field_name="recovery_owner",
-        )
-        disclosure = _parse_enum(
-            Disclosure,
-            raw.get("disclosure", Disclosure.PUBLIC.value),
-            field_name="disclosure",
-        )
-        locale = _parse_enum(
-            Locale,
-            raw.get("locale", Locale.EN.value),
-            field_name="locale",
-        )
+        recovery_owner = _parse_enum(RecoveryOwner, raw.get("recovery_owner"), field_name="recovery_owner")
+        disclosure = _parse_enum(Disclosure, raw.get("disclosure", Disclosure.PUBLIC.value), field_name="disclosure")
+        locale = _parse_enum(Locale, raw.get("locale", Locale.EN.value), field_name="locale")
 
         dependency_recheck_safe = raw.get("dependency_recheck_safe", False)
         if not isinstance(dependency_recheck_safe, bool):
             raise FreezeBridgeError("dependency_recheck_safe must be a boolean")
 
         missing_inputs = _clean_string_list(
-            raw.get("missing_inputs"),
-            field_name="missing_inputs",
-            max_items=24,
-            item_max_length=96,
+            raw.get("missing_inputs"), field_name="missing_inputs", max_items=24, item_max_length=96
         )
         evidence_refs = _clean_string_list(
-            raw.get("evidence_refs"),
-            field_name="evidence_refs",
-            max_items=24,
-            item_max_length=160,
+            raw.get("evidence_refs"), field_name="evidence_refs", max_items=24, item_max_length=160
         )
 
         raw_intents = raw.get("authorized_recovery_intents", ())
@@ -216,15 +186,11 @@ class FreezeEvent:
             raise FreezeBridgeError("authorized_recovery_intents must be a list")
         if len(raw_intents) > len(RecoveryIntent):
             raise FreezeBridgeError("authorized_recovery_intents exceeds supported intent count")
-
         intents: list[RecoveryIntent] = []
         seen_intents: set[RecoveryIntent] = set()
         for index, value in enumerate(raw_intents):
-            intent = _parse_enum(
-                RecoveryIntent,
-                value,
-                field_name=f"authorized_recovery_intents[{index}]",
-            )
+            intent = _parse_enum(RecoveryIntent, value, field_name=f"authorized_recovery_intents[{index}]")
+            assert isinstance(intent, RecoveryIntent)
             if intent not in seen_intents:
                 intents.append(intent)
                 seen_intents.add(intent)
@@ -275,9 +241,7 @@ class FreezeExplanation:
             "blocking_layer": self.blocking_layer,
             "recovery_owner": self.recovery_owner.value,
             "required_inputs": list(self.required_inputs),
-            "eligible_recovery_intents": [
-                intent.value for intent in self.eligible_recovery_intents
-            ],
+            "eligible_recovery_intents": [intent.value for intent in self.eligible_recovery_intents],
             "evidence_refs": list(self.evidence_refs),
             "disclosure": self.disclosure.value,
             "dependency_recheck_safe": self.dependency_recheck_safe,
