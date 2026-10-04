@@ -5,11 +5,11 @@ STATUS: TESTING
 PRIORITY: P1
 RISK: HIGH
 BASE_SHA: 27af7f93893c7589e516c269fae41aa467c2cdb9
-TARGET_PATHS: Railway service nexy-validation-branch exact-head validation configuration; Dockerfile and scripts/doc-e/railway-runtime-entrypoint.sh READ ONLY unless a proven source defect requires a separate reconciled mutation
-SEMANTIC_SCOPE: Restore exact-work-branch validation so Railway validates the commit it actually builds, without weakening DOC-E fail-closed source identity, mutating NEXY.ai, lowering tests, or silently reusing canonical upstream identity.
-DEPENDENCIES: Railway project 01537473-6a6d-42a0-856f-40d8a4e6a712; service 3c290782-e2f0-4e5b-87d9-58bae4d4dba8; environment 776c1d3d-20f2-4b9f-9f07-8387ea9e63b8
-BLOCKS: Exact-head validation evidence for NEXY.AI-Test-AI
-TEST_PLAN: Frozen snapshot 5034debdadb1f21c7d5312e6f0ad7fd44280718c / tree eabc3e62cf336d33de49373050f66a19ce5ff86b. Require provider commit == tested SHA, source-identity gate success, then actual downstream Dockerfile gates through build completion. Never treat identity admission alone as product PASS.
-REVIEW_STATE: INDEPENDENT_DESIGN_REVIEW_RECEIVED from C-50CBA901; frozen-snapshot pinning endorsed. Runtime provenance audit confirmed scripts/doc-e/railway-runtime-entrypoint.sh is canonical-NEXY.ai-only, so branch validation runtime was changed to non-attesting health runtime rather than emit false DOC-E provenance.
-LAST_PROGRESS: Applied provider-only repair. Service source pinned exactly to 5034debd; DOC_E_TESTED_SHA=5034debd; DOC_E_TESTED_TREE=eabc3e62; fresh rerun nonce set without intermediate deploy. Deployment 0dc3d4f6-8e94-4446-b309-64536cee30b8 executed Dockerfile step 9/26 with RAILWAY_GIT_COMMIT_SHA == DOC_E_TESTED_SHA and completed the identity gate successfully; build advanced to cargo check (step 11/26) with no errors observed.
-NEXT_ACTION: Continue executable build verification through remaining gates; record exact failure if any, otherwise require successful deploy/health before PASS.
+TARGET_PATHS: Railway service nexy-validation-branch exact-head validation configuration; source files READ ONLY under this task
+SEMANTIC_SCOPE: Provide race-safe exact-work-branch validation without weakening DOC-E source identity, mutating NEXY.ai, lowering tests, or emitting canonical NEXY.ai evidence for a work-branch snapshot.
+DEPENDENCIES: Railway project 01537473-6a6d-42a0-856f-40d8a4e6a712; service 3c290782-e2f0-4e5b-87d9-58bae4d4dba8; active source repair T-D4A71C2E
+BLOCKS: Exact-head integrated PASS for NEXY.AI-Test-AI
+TEST_PLAN: For each selected immutable snapshot, bind exact SHA/tree + fresh nonce with no intermediate deploy, pin provider source to that SHA, require source-identity equality, then require actual Dockerfile gates. Never treat identity admission or provider deploy alone as product PASS.
+REVIEW_STATE: INDEPENDENT_DESIGN_REVIEW_RECEIVED from C-50CBA901; frozen-snapshot pinning verified. Authority conflict F-6A8F5C4D persisted and sent to state owners.
+LAST_PROGRESS: Provider identity drift is RESOLVED. Frozen deployment 0dc3d4f6-8e94-4446-b309-64536cee30b8 passed step 9/26 identity at SHA 5034debd/tree eabc3e62, then reached npm run test:contract and exposed 5 real source-contract failures in 3 files. Authoritative DOC-C §5.4 resolves the central regression: ANY except STOP + error -> FREEZE. T-D4A71C2E is already repairing the TypeScript matrix; T-A6C4E9B2 was told not to delete required Rust edges.
+NEXT_ACTION: Observe source repair convergence without overwriting owners; select the next immutable repaired SHA/tree and re-run exact-head Railway validation.
