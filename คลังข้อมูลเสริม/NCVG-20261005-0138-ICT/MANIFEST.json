@@ -1,0 +1,50 @@
+{
+  "project": "NCVG",
+  "work_id": "NCVG-20261005-0138-ICT",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "root_path": "คลังข้อมูลเสริม/NCVG-20261005-0138-ICT",
+  "classification": "AI_PROPOSED_COMPANION_NOT_CANONICAL_NEXY_LAW",
+  "protected_repository_rule": "No mutation to any repository whose name contains NEXY.AI",
+  "tested_artifact_identity": "Git blob SHA readback matches locally tested bytes for pyproject, package code, tests, examples, and schema",
+  "local_verification": {
+    "python": "3.13.5",
+    "compileall": "PASS",
+    "unittest": "21 PASS",
+    "deterministic_random_json_cases": 500,
+    "schema_json_parse": "PASS",
+    "wheel_build": "PASS",
+    "clean_venv_install": "PASS",
+    "installed_cli_allow_exit": 0,
+    "installed_cli_freeze_exit": 2
+  },
+  "files": {
+    "pyproject.toml": "df872bc369d63b6fd85e9337f7022dca247de7a0",
+    "nexy_gate/__init__.py": "08fe8c04713aad6e0f76e14455ef7eb375a4d5c7",
+    "nexy_gate/__main__.py": "eb53e2f31b2f703ad32ef64b8a41faa3e7d18e08",
+    "nexy_gate/canonical.py": "ee5729ec420cd4d2a9bb94c08b249e43a565941c",
+    "nexy_gate/model.py": "6446271fc0d2b56b8f66f7eeb31732ba82fadd76",
+    "nexy_gate/gate.py": "2996da176297c75c7d704eba196c774f8344a34d",
+    "nexy_gate/cli.py": "14062c5a5efa58729ac7e9ba243841573a55a157",
+    "nexy_gate/validator.py": "1e1056b20987abe8656f40dbe014631d000148d1",
+    "tests/__init__.py": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "tests/test_cli.py": "a6efa0edb8a0f1ebc686663fbf6cf10e5e713361",
+    "tests/test_gate.py": "2bb63595d209fa7f194618a11b21a108cc665483",
+    "examples/pass_bundle.json": "ebf39951dc69b11202d373d3a8c6c678c32cb023",
+    "examples/freeze_bundle.json": "10859594bb4e6fd6b3e0ec409132b94d3716d19f",
+    "schema/ncvg-bundle-v1.schema.json": "7066ceafe0ba5d5d7e0c11bd3a88a507c8e45f6c",
+    "README.md": "c6ccaf20838c6893ea69ce65a92951a9ea2be9c9",
+    "DESIGN.md": "8a2ea0148b7e3adfc5987a011d657ce5f1645876",
+    "INTEGRATION.md": "e1d84612e87fabbf5dbf50c573d455a7f5b7e38e",
+    "THREAT_MODEL.md": "e6fe5ddad15e4d2f5ca6ec79f97f7a18c2fbabfd",
+    "FUTURE_IDEAS_AI_PROPOSALS.md": "24454900284181c906e5128a2fbb10c238b9e8b8",
+    "REQUIREMENT_LEDGER.md": "5437afbe769dce9bd1a80e8d7432a78e97bc902d",
+    "EVIDENCE.md": "92e77a711767a8221e2450ee39e113923e97fd8d",
+    "CHANGELOG.md": "85f90b8dcec30239810516424bd3d489061d266c"
+  },
+  "content_commit": "140b12b49383942c5c709466448284e93f865115",
+  "notes": [
+    "Initial batch write encountered concurrent-writer conflicts; no force update was used.",
+    "Atomic tree update was retried on refreshed HEAD until a fast-forward succeeded.",
+    "NEXY.AI runtime integration remains NOT_VERIFIED."
+  ]
+}
