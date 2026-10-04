@@ -515,9 +515,13 @@ class AttentionGovernor:
         self._last_timestamp = alert.timestamp
         previous = self._last_by_key.get(alert.semantic_key)
 
-        if alert.severity == "CRITICAL" and previous and previous.state_fingerprint != alert.state_fingerprint:
-            self._last_by_key[alert.semantic_key] = alert
-            return AttentionDecision("DELIVER", "critical-state-changed")
+        if alert.severity == "CRITICAL" and previous:
+            if previous.severity != "CRITICAL":
+                self._last_by_key[alert.semantic_key] = alert
+                return AttentionDecision("DELIVER", "critical-severity-escalated")
+            if previous.state_fingerprint != alert.state_fingerprint:
+                self._last_by_key[alert.semantic_key] = alert
+                return AttentionDecision("DELIVER", "critical-state-changed")
 
         if previous:
             exact_duplicate = (
