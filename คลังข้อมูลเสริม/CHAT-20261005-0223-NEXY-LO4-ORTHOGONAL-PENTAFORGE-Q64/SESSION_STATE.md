@@ -8,26 +8,46 @@
 - writable_root: `คลังข้อมูลเสริม/CHAT-20261005-0223-NEXY-LO4-ORTHOGONAL-PENTAFORGE-Q64/**`
 - protected_repo: `goif74945-crypto/NEXY.AI-`
 - proposal_class: `Lo4 / AI_PROPOSED / EXPERIMENTAL / NOT_CANON`
+- artifact_state: `COMPLETE_VERIFIED_AND_PERSISTED`
+- literal_multi_tens_of_hours_condition: `NOT_SATISFIED_SYNCHRONOUS_LIMIT`
 
-## Current verified local state
+## Completed
 
 - selected systems: SQX, CEFG, RSEK, FPSA, OEWC
 - shared numeric kernel: signed Q64.64
-- initial strengthened/adversarial verification discovered 2 real defects
-- defect 1 repaired: bare decimal point `.` is rejected instead of parsed as zero
-- defect 2 repaired: response-time iteration exhaustion is reported as `ITERATION_LIMIT`, not falsely promoted to `DEADLINE_MISS`
-- current property/regression suite: 33/33 PASS
+- two real truth-semantics defects discovered, repaired, and regression-tested
+- final local suite: 33/33 PASS
+- repeated fresh regressions: 20/20 PASS
+- compileall: PASS
 - production-source float literals: none detected by AST test
 - banned hidden-I/O imports in production source: none detected by AST test
+- complete tested artifact sealed into three Base64 bundle parts
+- remote bundle byte identity: PASS via matching Git blob SHA for all three parts
+- durable GitHub readback: PASS
+- mutation scope audit: PASS, mission root only
 - NEXY.AI write actions: none
 
-## Remaining before durable completion
+## Durable evidence
 
-1. Publish tested files into the writable root in AI-CONTEXT.
-2. Compare publication changes against the observed pre-publication HEAD to prove scope confinement.
-3. Read back persisted artifacts.
-4. Record persistence evidence.
+- `EVIDENCE.md`
+- `PERSISTENCE_EVIDENCE.md`
+- `FINAL_AUDIT.md`
+- `NOVELTY_AUDIT.md`
+- `bundle/BUNDLE_SHA256.txt`
+- `evidence/MANIFEST.sha256`
 
-Additional local proof already completed: 20/20 repeated 33-test runs PASS and compileall PASS.
+Decoded sealed archive SHA-256:
+`e7dc7c2378576480ba3ce5471b11e69b6c90f4ceb3ea6bea19dc987bf7a45083`
 
-This file is a resumable checkpoint, not Canon and not a completion certificate.
+## Remaining / intentional boundaries
+
+No concrete artifact-building step remains in this mission.
+
+Not verified and not promoted:
+- actual NEXY runtime integration;
+- production deployment;
+- physical robotics safety;
+- universal semantic uniqueness of all existing supplemental prose;
+- literal many-tens-of-hours wall-clock execution.
+
+This checkpoint is resumable operational state, not Canon.
