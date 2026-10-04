@@ -222,6 +222,36 @@ class CoreContractTests(unittest.TestCase):
         self.assertEqual("INVALID", result["decision"])
         self.assertIn("DOMAIN_TOO_LARGE", result["reason_codes"])
 
+    def test_unhashable_quantifier_fails_closed_instead_of_raising(self):
+        doc = self.claim()
+        doc["quantifier"] = []
+        result = self.evaluate_claim(doc)
+        self.assertEqual("INVALID", result["decision"])
+        self.assertIn("INVALID_QUANTIFIER", result["reason_codes"])
+
+    def test_unhashable_population_member_fails_closed_instead_of_raising(self):
+        doc = self.claim(population=["A"], evidence=[])
+        doc["domain"]["population"] = [[]]
+        result = self.evaluate_claim(doc)
+        self.assertEqual("INVALID", result["decision"])
+        self.assertIn("INVALID_POPULATION_MEMBER", result["reason_codes"])
+
+    def test_unhashable_evidence_outcome_fails_closed_instead_of_raising(self):
+        evidence = [
+            {"member_id": "A", "outcome": {}, "evidence_ref": "ev:A", "target_revision": "rev-1"},
+            {"member_id": "B", "outcome": "MATCH", "evidence_ref": "ev:B", "target_revision": "rev-1"},
+        ]
+        result = self.evaluate_claim(self.claim(evidence=evidence))
+        self.assertEqual("INVALID", result["decision"])
+        self.assertIn("INVALID_EVIDENCE_OUTCOME", result["reason_codes"])
+
+    def test_noncanonical_json_value_fails_closed(self):
+        doc = self.claim()
+        doc["extra"] = float("nan")
+        result = self.evaluate_claim(doc)
+        self.assertEqual("INVALID", result["decision"])
+        self.assertIn("DOCUMENT_NOT_CANONICAL_JSON", result["reason_codes"])
+
 
 if __name__ == "__main__":
     unittest.main()
