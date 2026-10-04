@@ -1,0 +1,31 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:nexy:proposal:truth-surface-manifest:1.0.0",
+  "title":"NEXY Truth Surface Manifest Proposal",
+  "type":"object",
+  "additionalProperties":true,
+  "required":["displayed_status","displayed_state","headline","summary","result_visible","result","actions","request_id","trace_id"],
+  "properties":{
+    "displayed_status":{"enum":["OK","DEGRADED","FREEZE","STOP"]},
+    "displayed_state":{"enum":["INIT","READY","RUNNING","VERIFYING","CONSENSUS","STABLE","FREEZE","STOP"]},
+    "headline":{"type":"string"},
+    "summary":{"type":"string"},
+    "result_visible":{"type":"boolean"},
+    "result":{},
+    "request_id":{"type":"string","minLength":1},
+    "trace_id":{"type":"string","minLength":1},
+    "actions":{"type":"array","items":{"$ref":"#/$defs/action"}}
+  },
+  "$defs":{
+    "action":{
+      "type":"object",
+      "required":["id","kind"],
+      "properties":{
+        "id":{"type":"string","minLength":1},
+        "kind":{"enum":["READ","MUTATION_REQUEST"]},
+        "requires_backend_authorization":{"type":"boolean"},
+        "requires_confirmation":{"type":"boolean"}
+      }
+    }
+  }
+}
