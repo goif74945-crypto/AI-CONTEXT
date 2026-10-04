@@ -65,9 +65,7 @@ class FreezeBridgeTests(unittest.TestCase):
         b = copy.deepcopy(BASE)
         b["missing_inputs"] = list(reversed(b["missing_inputs"]))
         b["evidence_refs"] = list(reversed(b["evidence_refs"]))
-        b["authorized_recovery_intents"] = list(
-            reversed(b["authorized_recovery_intents"])
-        )
+        b["authorized_recovery_intents"] = list(reversed(b["authorized_recovery_intents"]))
         self.assertEqual(compile_mapping(a), compile_mapping(b))
 
     def test_unknown_reason_never_infers_specific_cause(self) -> None:
@@ -116,11 +114,7 @@ class FreezeBridgeTests(unittest.TestCase):
         payload = copy.deepcopy(BASE)
         payload["reason_code"] = "INSUFFICIENT_EVIDENCE"
         payload["disclosure"] = "RESTRICTED"
-        payload["evidence_refs"] = [
-            "internal:trace/5",
-            "public:proof/7",
-            "secret:key/1",
-        ]
+        payload["evidence_refs"] = ["internal:trace/5", "public:proof/7", "secret:key/1"]
         payload["authorized_recovery_intents"] = ["REFRESH_EVIDENCE"]
         result = compile_mapping(payload)
         self.assertEqual(result["evidence_refs"], ["public:proof/7"])
@@ -133,10 +127,7 @@ class FreezeBridgeTests(unittest.TestCase):
         no_recheck = compile_mapping(payload)
         self.assertFalse(no_recheck["dependency_recheck_safe"])
 
-        payload["authorized_recovery_intents"] = [
-            "RECHECK_DEPENDENCY",
-            "ACKNOWLEDGE_STATE",
-        ]
+        payload["authorized_recovery_intents"] = ["RECHECK_DEPENDENCY", "ACKNOWLEDGE_STATE"]
         recheck = compile_mapping(payload)
         self.assertTrue(recheck["dependency_recheck_safe"])
 
@@ -152,10 +143,7 @@ class FreezeBridgeTests(unittest.TestCase):
             "REQUEST_AUTHORITY_REVIEW",
         ]
         result = compile_mapping(payload)
-        self.assertEqual(
-            result["eligible_recovery_intents"],
-            ["REQUEST_AUTHORITY_REVIEW"],
-        )
+        self.assertEqual(result["eligible_recovery_intents"], ["REQUEST_AUTHORITY_REVIEW"])
 
     def test_thai_locale_changes_text_not_machine_semantics(self) -> None:
         english = compile_mapping(BASE)
@@ -297,15 +285,9 @@ class FreezeBridgeTests(unittest.TestCase):
 
     def test_recovery_intent_collection_validation_paths(self) -> None:
         payload = copy.deepcopy(BASE)
-        payload["authorized_recovery_intents"] = [
-            "ACKNOWLEDGE_STATE",
-            "ACKNOWLEDGE_STATE",
-        ]
+        payload["authorized_recovery_intents"] = ["ACKNOWLEDGE_STATE", "ACKNOWLEDGE_STATE"]
         result = compile_mapping(payload)
-        self.assertEqual(
-            result["eligible_recovery_intents"],
-            ["ACKNOWLEDGE_STATE"],
-        )
+        self.assertEqual(result["eligible_recovery_intents"], ["ACKNOWLEDGE_STATE"])
 
         for value in ["ACKNOWLEDGE_STATE", ["ACKNOWLEDGE_STATE"] * 9]:
             with self.subTest(value_type=type(value).__name__):
