@@ -1,0 +1,82 @@
+{
+  "schema": "nqim-manifest/v1",
+  "execution_id": "CHAT-20261005-0230-NEXY-Q64-IMPACT-MESH",
+  "platform_chat_id": "UNKNOWN_NOT_EXPOSED_TO_TOOL_RUNTIME",
+  "classification": "Lo4_AI_PROPOSAL_ONLY",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "namespace": "คลังข้อมูลเสริม/CHAT-20261005-0230-NEXY-Q64-IMPACT-MESH",
+  "protected_repo_mutation": false,
+  "tested_snapshot_revision": "ac85525121a59aefe46737b7e97ff1f4d9522f59",
+  "archive": {
+    "format": "tar.xz split into 4 byte-contiguous parts",
+    "sha256": "6958bc0713c95b334fc0597d6a6f59f7db0ab29bc439f48de584f87e3f5e740f",
+    "parts": [
+      {
+        "name": "nqim_project.tar.xz.part00",
+        "sha256": "2d493c3afeae68c9c5e9e0ed954c552e3285b7ceb58b5395364025c0cca0542c",
+        "git_blob_sha1": "1ae9a8061808850dc04d2665f966403a0c818be8",
+        "bytes": 5120
+      },
+      {
+        "name": "nqim_project.tar.xz.part01",
+        "sha256": "bab2d58d0bb7f1b7d3f0ff78192675bd9c50ff310dff558550a3fff075f9b4df",
+        "git_blob_sha1": "80ceb2116e0a8e8ccf4ba29436934944551c0a9e",
+        "bytes": 5120
+      },
+      {
+        "name": "nqim_project.tar.xz.part02",
+        "sha256": "6cda298233abbe1429b3a87005b545331c139c362b584ee54887d381f19a602b",
+        "git_blob_sha1": "4e30632e3237acfac54c7269c63b1f81d2d67e9e",
+        "bytes": 5120
+      },
+      {
+        "name": "nqim_project.tar.xz.part03",
+        "sha256": "eed3bfdb0769ff79c163a714f2576b579d8d8f0c11498890f48ef3f48b390a59",
+        "git_blob_sha1": "3b3f0965437fba8f4bcd99c63a94d32705bf7c52",
+        "bytes": 3852
+      }
+    ]
+  },
+  "concepts": [
+    "OCL",
+    "RRG",
+    "BRB",
+    "DDI",
+    "RDM",
+    "UFB",
+    "LVD",
+    "FSS",
+    "CRI",
+    "CSD",
+    "RPG",
+    "PSM",
+    "BSA",
+    "SME",
+    "VLD",
+    "IGO",
+    "SRE",
+    "DCA",
+    "ECG",
+    "CMB"
+  ],
+  "verification": {
+    "compile": "PASS",
+    "static_audit": "PASS / 24 production modules",
+    "unit_seed_1": "36/36 PASS",
+    "unit_seed_999": "36/36 PASS",
+    "stress_seed_1": "50000 PASS",
+    "stress_seed_999": "50000 PASS",
+    "deep_validation_seed_1": "670892 PASS",
+    "deep_validation_seed_999": "670892 PASS",
+    "deterministic_demo_sha256": "aa1cb33f6875bdadd6644bea0b065a899a1a04eb4664da2ec8e42533ee077311",
+    "cli_payload_sha256": "d10c797f6ccd77e1e64facc0facda9092b39246df76ab2cae5e4d2312c566a28",
+    "repository_readback": "PASS exact blob identity for 4 archive parts + metadata"
+  },
+  "engineering_scope_status": "VERIFIED_COMPLETE",
+  "strict_request_status": "INCOMPLETE",
+  "strict_blockers": [
+    "multi-tens-of-hours continuous execution unavailable in synchronous runtime",
+    "arbitrary huge token consumption not a controllable primitive",
+    "universal superiority over all prior/concurrent chats not objectively verifiable"
+  ]
+}
