@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from .core import ContractError, evaluate_proposal, semantic_digest, validate_contract_shape
+from .state_binding import create_execution_seal, verify_execution_seal
 from .transition import compare_contracts
 
 
@@ -40,6 +41,20 @@ def build_parser() -> argparse.ArgumentParser:
     transition.add_argument("candidate")
     transition.add_argument("--approval", default=None)
 
+    seal = sub.add_parser("create-seal", help="Bind a passing proposal to an exact repository revision")
+    seal.add_argument("contract")
+    seal.add_argument("proposal")
+    seal.add_argument("--revision", required=True)
+    seal.add_argument("--ref", default="main")
+
+    verify = sub.add_parser("verify-seal", help="Re-check an execution seal immediately before mutation")
+    verify.add_argument("seal")
+    verify.add_argument("contract")
+    verify.add_argument("proposal")
+    verify.add_argument("--repository", required=True)
+    verify.add_argument("--ref", required=True)
+    verify.add_argument("--revision", required=True)
+
     return parser
 
 
@@ -63,6 +78,28 @@ def main(argv: list[str] | None = None) -> int:
             report = compare_contracts(_load(args.base), _load(args.candidate), approval)
             _emit(report.to_dict())
             return 0 if report.decision.value == "PASS" else (2 if report.decision.value == "FREEZE" else 1)
+
+        if args.command == "create-seal":
+            seal = create_execution_seal(
+                _load(args.contract),
+                _load(args.proposal),
+                target_revision=args.revision,
+                target_ref=args.ref,
+            )
+            _emit(seal.to_dict())
+            return 0
+
+        if args.command == "verify-seal":
+            report = verify_execution_seal(
+                _load(args.seal),
+                _load(args.contract),
+                _load(args.proposal),
+                current_repository=args.repository,
+                current_ref=args.ref,
+                current_revision=args.revision,
+            )
+            _emit(report.to_dict())
+            return 0 if report.decision.value == "PASS" else 2
 
     except ContractError as exc:
         _emit({"status": "INVALID_INPUT", "error": str(exc)})
