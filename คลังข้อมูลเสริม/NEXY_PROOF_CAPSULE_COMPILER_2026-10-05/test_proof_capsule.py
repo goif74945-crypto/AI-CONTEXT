@@ -40,5 +40,28 @@ class T(unittest.TestCase):
     ss=tuple(sorted({f"C{rng.randrange(n)}" for _ in range(rng.randint(1,min(n,3)))})); es.append(e(f"M{case}-{j}",ss,cost=rng.randint(1,4)))
    p=Policy(max_items=100,max_cost=1000); a=compile_capsule(cs,es,as_of=A,policy=p); self.assertEqual(a.status,"PASS"); self.assertTrue(all(a.coverage[x.id] for x in cs))
    cc=list(cs); ee=list(es); rng.shuffle(cc); rng.shuffle(ee); self.assertEqual(a.to_dict(),compile_capsule(cc,ee,as_of=A,policy=p).to_dict())
+ def test_runtime_type_hardening(self):
+  with self.assertRaises(ContractError): compile_capsule([c("C")],[Evidence("E","ev/E","PASS","E2","demo",V,("C",),True,"2026-10-05T01:00:00+07:00",None,1,D)],as_of=A)
+  with self.assertRaises(ContractError): compile_capsule([c("C")],[Evidence("E","ev/E","PASS","E2","demo",V,("C",),1,"2026-10-05T01:00:00+07:00",None,True,D)],as_of=A)
+  with self.assertRaises(ContractError): compile_capsule([c("C")],[e("E",("C",))],as_of=A,policy=Policy(max_items=True))
+  with self.assertRaises(ContractError): compile_capsule([Claim("C","claim","demo",V,("E2",),"false",True)],[e("E",("C",))],as_of=A)
+  with self.assertRaises(ContractError): compile_capsule([c("C")],[e("E",("C",))],as_of=A,policy=Policy(strict_refs="false"))
+ def test_identifier_and_contract_hardening(self):
+  with self.assertRaises(ContractError): compile_capsule([Claim(" C","claim","demo",V,("E2",))],[e("E",(" C",))],as_of=A)
+  with self.assertRaises(ContractError): compile_capsule([Claim("C","claim","demo",V,("E2","E2"))],[e("E",("C",))],as_of=A)
+  with self.assertRaises(ContractError): compile_capsule([c("C")],[e("E",("C",),digest="sha256:nothex")],as_of=A,policy=Policy(require_digest=False))
+  with self.assertRaises(ContractError): compile_capsule([c("C")],[e("E",("C",),obs="2026-10-05 01:00:00+07:00")],as_of=A)
+ def test_semantic_timestamp_canonicalization(self):
+  x=compile_capsule([c("C")],[e("E",("C",),obs="2026-10-05T01:00:00+07:00",until="2026-10-06T01:00:00+07:00")],as_of="2026-10-05T01:30:00+07:00")
+  y=compile_capsule([c("C")],[e("E",("C",),obs="2026-10-04T18:00:00Z",until="2026-10-05T18:00:00Z")],as_of="2026-10-04T18:30:00Z")
+  self.assertEqual(x.to_dict(),y.to_dict()); self.assertEqual(x.as_of,"2026-10-04T18:30:00.000000Z")
+ def test_time_boundaries_are_inclusive(self):
+  r=compile_capsule([c("C")],[e("E",("C",),obs=A,until=A)],as_of=A); self.assertEqual(r.status,"PASS")
+ def test_nonmaterial_equal_conflict_is_disclosed(self):
+  r=compile_capsule([c("C",material=False)],[e("P",("C",)),e("F",("C",),status="FAIL")],as_of=A)
+  self.assertEqual(r.status,"PASS"); self.assertEqual(r.dissent["C"],("F",))
+ def test_cover_tiebreak_prefers_lower_cost_then_id(self):
+  r=compile_capsule([c("A"),c("B")],[e("Z",("A","B"),cost=3),e("M",("A","B"),cost=1),e("A0",("A","B"),cost=1)],as_of=A)
+  self.assertEqual(r.evidence,("A0",))
  def test_json(self): json.dumps(compile_capsule([c("C")],[e("E",("C",))],as_of=A).to_dict(),sort_keys=True)
 if __name__=="__main__": unittest.main(verbosity=2)
