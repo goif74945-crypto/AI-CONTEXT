@@ -56,3 +56,7 @@
 - action เป็น irreversible/high-impact และไม่มี approval
 
 เอกสารนี้เป็นฐานเสริม ไม่ใช่ authoritative specification ของ NEXY.AI หากขัดกับ requirement/spec ที่ผู้ใช้กำหนด ให้ requirement/spec นั้นมีอำนาจสูงกว่า
+
+
+## Specialized implemented systems
+- [NEXY Evolutionary Proposal Court (EPC)](./CHAT-20261005-0309-NEXY-EPC-Q64-COURT/README.md) — Lo4 advisory proposal court with one KEEP + one CUT lifetime entitlement per CHAT_ID, Q64.64 deterministic scoring, semantic CUT burden, append-only vote/revision ledger, sealed replay verification, and hard Canon/JUDGE promotion barriers. Status: IMPLEMENTED SUPPLEMENTAL / NON-AUTHORITATIVE / 33/33 local tests PASS.
