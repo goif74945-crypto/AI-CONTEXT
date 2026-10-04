@@ -19,6 +19,7 @@ class IntegrityTests(unittest.TestCase):
     def test_payload_tamper_is_detected(self) -> None:
         raw = build_pass_capsule().to_dict()
         raw["events"][0]["payload"]["objective"] = "tampered"
+        # capsule_id must be removed to exercise the deeper event-chain validator.
         raw.pop("capsule_id", None)
         capsule = Capsule.from_dict(raw)
         with self.assertRaisesRegex(IntegrityError, "event hash mismatch"):
