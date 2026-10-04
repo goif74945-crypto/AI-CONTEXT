@@ -1,0 +1,32 @@
+test_dangerous_authority_expansion_freezes (test_cawt.CounterfactualAuthorityWindTunnelTests.test_dangerous_authority_expansion_freezes) ... ok
+test_duplicate_case_rejected (test_cawt.CounterfactualAuthorityWindTunnelTests.test_duplicate_case_rejected) ... ok
+test_report_is_order_deterministic (test_cawt.CounterfactualAuthorityWindTunnelTests.test_report_is_order_deterministic) ... ok
+test_safe_no_change_passes (test_cawt.CounterfactualAuthorityWindTunnelTests.test_safe_no_change_passes) ... ok
+test_top_priority_conflict_freezes_decision (test_cawt.CounterfactualAuthorityWindTunnelTests.test_top_priority_conflict_freezes_decision) ... ok
+test_dangerous_composition_freezes_with_minimal_witness (test_ccf.CapabilityCompositionFirewallTests.test_dangerous_composition_freezes_with_minimal_witness) ... ok
+test_initial_violation_is_detected (test_ccf.CapabilityCompositionFirewallTests.test_initial_violation_is_detected) ... ok
+test_order_deterministic (test_ccf.CapabilityCompositionFirewallTests.test_order_deterministic) ... ok
+test_scope_lock_prevents_composition (test_ccf.CapabilityCompositionFirewallTests.test_scope_lock_prevents_composition) ... ok
+test_cawt_permutations_stable (test_determinism_properties.DeterminismPropertyTests.test_cawt_permutations_stable) ... ok
+test_ccf_permutations_stable (test_determinism_properties.DeterminismPropertyTests.test_ccf_permutations_stable) ... ok
+test_equivalent_executors_pass_despite_mapping_order (test_drcdo.DeterministicReplayOracleTests.test_equivalent_executors_pass_despite_mapping_order) ... ok
+test_executor_exception_becomes_freeze_evidence (test_drcdo.DeterministicReplayOracleTests.test_executor_exception_becomes_freeze_evidence) ... ok
+test_executor_mutation_cannot_poison_later_replays (test_drcdo.DeterministicReplayOracleTests.test_executor_mutation_cannot_poison_later_replays) ... ok
+test_invalid_policy_hash_rejected (test_drcdo.DeterministicReplayOracleTests.test_invalid_policy_hash_rejected) ... ok
+test_output_divergence_freezes (test_drcdo.DeterministicReplayOracleTests.test_output_divergence_freezes) ... ok
+test_current_evidence_passes (test_edel.EpistemicDebtLedgerTests.test_current_evidence_passes) ... ok
+test_dependency_cycle_rejected (test_edel.EpistemicDebtLedgerTests.test_dependency_cycle_rejected) ... ok
+test_deterministic_evidence_order (test_edel.EpistemicDebtLedgerTests.test_deterministic_evidence_order) ... ok
+test_insufficient_evidence_class_is_debt (test_edel.EpistemicDebtLedgerTests.test_insufficient_evidence_class_is_debt) ... ok
+test_stale_root_propagates_debt_to_dependents (test_edel.EpistemicDebtLedgerTests.test_stale_root_propagates_debt_to_dependents) ... ok
+test_unknown_dependency_rejected (test_edel.EpistemicDebtLedgerTests.test_unknown_dependency_rejected) ... ok
+test_all_clear_prototype_gate_passes_but_stays_proposal_only (test_integration.FrontierFiveIntegrationTests.test_all_clear_prototype_gate_passes_but_stays_proposal_only) ... ok
+test_any_critical_frontier_risk_freezes (test_integration.FrontierFiveIntegrationTests.test_any_critical_frontier_risk_freezes) ... ok
+test_challenge_falsifies_weak_invariants (test_simf.ShadowInvariantMinerTests.test_challenge_falsifies_weak_invariants) ... ok
+test_mines_proposals_without_promoting_them (test_simf.ShadowInvariantMinerTests.test_mines_proposals_without_promoting_them) ... ok
+test_mining_is_order_deterministic (test_simf.ShadowInvariantMinerTests.test_mining_is_order_deterministic) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.017s
+
+OK
