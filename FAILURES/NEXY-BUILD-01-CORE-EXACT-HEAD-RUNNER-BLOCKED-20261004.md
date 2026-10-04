@@ -58,3 +58,12 @@ UNKNOWN:
 
 RECOVERY:
 Restore a runnable exact-HEAD execution environment, then rerun all mandated gates against cde969ea2d16626a60ad5571e9308ea294289d15 or the new exact HEAD after any authorized mutation.
+
+## Current HEAD recurrence
+A concurrent out-of-scope Phase-F commit moved NEXY.ai to 568ec8a820abd543b32a42976d2886377b2c47b7.
+New push-triggered runs at that exact HEAD also failed before any exposed steps:
+- 37199560362 — Exact HEAD test evidence; job 111428255497; steps unavailable/null.
+- 37199560363 — Six-system exact HEAD evidence; job 111428255383; steps unavailable/null.
+- 37199560350 — NEXY CI / Deploy Gate; completed failure within seconds.
+
+This recurrence strengthens the infrastructure-block classification. It still does not prove the exact GitHub-side cause.
