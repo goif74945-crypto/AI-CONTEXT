@@ -1,0 +1,12 @@
+{
+  "proposal_id":"proposal-pass-001",
+  "touch_paths":[
+    "คลังข้อมูลเสริม/NEXY-INTENT-INTEGRITY-LAB-20261005/README.md",
+    "คลังข้อมูลเสริม/NEXY-INTENT-INTEGRITY-LAB-20261005/src/nexy_intent_guard/core.py"
+  ],
+  "covered_requirement_ids":["REQ-001","REQ-002","REQ-003"],
+  "evidence":{"AC-001":"unit","AC-002":"runtime"},
+  "resolved_unknowns":[],
+  "claims":[{"id":"CLM-001","truth_class":"RUNTIME_FACT","basis":"Executed local unit test suite with exit code 0.","completion_claim":false}],
+  "target_repository":"goif74945-crypto/AI-CONTEXT"
+}
