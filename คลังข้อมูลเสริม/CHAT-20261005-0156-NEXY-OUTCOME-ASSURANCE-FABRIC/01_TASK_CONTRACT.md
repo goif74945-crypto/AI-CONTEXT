@@ -9,7 +9,7 @@ Create five materially distinct, outcome-centric, NEXY-compatible supplemental s
 - Write root: `คลังข้อมูลเสริม/CHAT-20261005-0156-NEXY-OUTCOME-ASSURANCE-FABRIC/`
 
 ## AUTHORIZED SCOPE
-Create new files only under the write root. Read AI-CONTEXT and NEXY context inside AI-CONTEXT for compatibility/non-duplication analysis. Execute authored code/tests in an isolated local workspace.
+Create/update new files only under the write root. Read AI-CONTEXT/NEXY context for compatibility and non-duplication analysis. Execute authored code/tests in an isolated local workspace.
 
 ## PROTECTED SCOPE
 - Every repository whose name contains `NEXY.AI`.
@@ -38,19 +38,7 @@ Create new files only under the write root. Read AI-CONTEXT and NEXY context ins
 - If a test fails: capture -> fix root cause -> rerun full relevant suite.
 
 ## REQUIRED DELIVERABLES
-- Temporary execution memory.
-- Non-duplication analysis.
-- Architecture + five concept specifications.
-- Reference Python implementation.
-- Unit/adversarial tests for every engine.
-- Cross-engine integration test.
-- Requirement ledger.
-- Integration contract.
-- Failure model.
-- Validation evidence.
-- Final audit.
-- AI-proposed future extensions.
-- Content hash manifest.
+Temporary execution memory; five concept specs; non-duplication analysis; architecture; source; schemas; unit/adversarial/property/integration tests; requirement ledger; future integration contract; failure/security model; performance notes; validation evidence; failure-repair ledger; final audit; future AI proposals; resume capsule; source/test hash manifest.
 
 ## ACCEPTANCE CRITERIA
 - OCC, ODV, OSF, BRG, ORP independently callable.
@@ -58,9 +46,9 @@ Create new files only under the write root. Read AI-CONTEXT and NEXY context ins
 - Deterministic replay demonstrated.
 - Benefit regression cannot be hidden by aggregate score improvement.
 - Recovery planner rejects inadmissible/insufficient repair sets.
-- Full suite PASS after any repair.
-- Persisted source/tests match tested hashes.
-- No write outside namespace.
+- Full suite PASS after repairs.
+- Persisted source/test files match tested content identity.
+- No write outside namespace by this mission.
 
 ## STOP CONDITIONS
-Freeze mutation and report BLOCKED if protected scope must be touched, repository identity becomes ambiguous, permissions are lost, an unresolved authority conflict affects correctness, or persisted bytes cannot be matched to tested bytes.
+Freeze mutation and report BLOCKED if protected scope must be touched, repository identity becomes ambiguous, permissions are lost, unresolved authority conflict affects correctness, or persisted source/test bytes cannot be matched to tested bytes.
