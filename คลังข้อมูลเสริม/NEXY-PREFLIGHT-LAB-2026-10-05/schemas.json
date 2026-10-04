@@ -1,0 +1,290 @@
+{
+  "admission-envelope.schema": {
+    "$id": "https://example.invalid/nexy-preflight/admission-envelope.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "contract_hash": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "decision": {
+        "enum": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "NOT_VERIFIED",
+          "CONFLICT"
+        ]
+      },
+      "findings": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "claim_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "code": {
+              "pattern": "^PFL-",
+              "type": "string"
+            },
+            "decision": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "BLOCKED",
+                "NOT_VERIFIED",
+                "CONFLICT"
+              ]
+            },
+            "message": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "resource": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "decision",
+            "resource",
+            "claim_id"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "required_capabilities": {
+        "items": {
+          "enum": [
+            "read",
+            "search",
+            "analyze",
+            "write",
+            "update",
+            "delete",
+            "deploy",
+            "merge",
+            "permission",
+            "execute"
+          ]
+        },
+        "type": "array",
+        "uniqueItems": true
+      },
+      "required_evidence": {
+        "additionalProperties": {
+          "enum": [
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7"
+          ]
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "contract_hash",
+      "decision",
+      "findings",
+      "required_evidence",
+      "required_capabilities"
+    ],
+    "title": "NEXY PREFLIGHT Admission Envelope",
+    "type": "object"
+  },
+  "task-contract.schema": {
+    "$id": "https://example.invalid/nexy-preflight/task-contract.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "approvals": {
+        "items": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "type": "array",
+        "uniqueItems": true
+      },
+      "authority_sources": {
+        "items": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "type": "array",
+        "uniqueItems": true
+      },
+      "authorized_scope": {
+        "items": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "type": "array",
+        "uniqueItems": true
+      },
+      "claims": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "kind": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "text": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "kind",
+            "text"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "evidence": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "artifact": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "claim_id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "class": {
+              "enum": [
+                "E0",
+                "E1",
+                "E2",
+                "E3",
+                "E4",
+                "E5",
+                "E6",
+                "E7"
+              ]
+            },
+            "result": {
+              "enum": [
+                "PASS",
+                "FAIL"
+              ]
+            }
+          },
+          "required": [
+            "claim_id",
+            "class",
+            "result"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "objective": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "operations": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "approval": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "irreversible": {
+              "default": false,
+              "type": "boolean"
+            },
+            "kind": {
+              "enum": [
+                "read",
+                "search",
+                "analyze",
+                "write",
+                "update",
+                "delete",
+                "deploy",
+                "merge",
+                "permission",
+                "execute"
+              ]
+            },
+            "resource": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "resource"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "preconditions": {
+        "items": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "protected_scope": {
+        "items": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "type": "array",
+        "uniqueItems": true
+      },
+      "target": {
+        "type": "string"
+      },
+      "task_id": {
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "task_id",
+      "objective",
+      "target",
+      "authorized_scope",
+      "protected_scope",
+      "authority_sources",
+      "preconditions",
+      "operations",
+      "claims",
+      "evidence",
+      "approvals"
+    ],
+    "title": "NEXY PREFLIGHT Task Contract",
+    "type": "object"
+  }
+}
