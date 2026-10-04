@@ -14,9 +14,12 @@ Commands executed:
 python -m py_compile src/models.py src/governor.py src/serde.py src/__init__.py tests/test_governor.py tests/test_properties.py benchmarks/benchmark_governor.py
 python -m json.tool fixtures/scenarios.json
 python -m json.tool contracts/resource-governor.schema.json
+python - <<PY  # jsonschema Draft202012Validator.check_schema + validate all fixture task/agent payloads
+...
+PY
 ```
 
-Observed: PASS. Python sources compiled and both JSON artifacts parsed successfully.
+Observed: PASS. Python sources compiled, both JSON artifacts parsed, the Draft 2020-12 schema passed `check_schema`, and all 4 fixture task/agent payloads validated against it using jsonschema 4.26.0.
 
 ## E2 — unit/adversarial evidence
 Command executed:
@@ -69,7 +72,6 @@ PASS: high/critical risk cannot use same-provider-domain verification under the 
 PASS: selected verifier can never be the same agent as the worker.
 
 ## Known limitations
-- No third-party JSON Schema validator was used; E1 proves JSON syntax, while schema semantics were reviewed and exercised indirectly by mapping/unit tests.
 - Agent capabilities, prices, quality and latency are trusted inputs in this reference implementation; production provenance/freshness is future work.
 - Pair enumeration is exhaustive O(W×V); large production inventories need proven-safe indexing/Pareto pruning before scale claims.
 - No E3 integration, E4 E2E, E5 runtime/operational, E6 deployment or E7 physical evidence exists.
