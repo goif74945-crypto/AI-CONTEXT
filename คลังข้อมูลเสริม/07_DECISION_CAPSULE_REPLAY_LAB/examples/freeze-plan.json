@@ -1,0 +1,40 @@
+{
+  "project_target": "goif74945-crypto/NEXY.AI-",
+  "authority_refs": [
+    {
+      "path": "AI-EXECUTION-KERNEL.md",
+      "sha": "1111111111111111111111111111111111111111111111111111111111111111",
+      "role": "GLOBAL_EXECUTION_KERNEL",
+      "rank": 1
+    },
+    {
+      "path": "projects/NEXY.AI/overview.md",
+      "sha": "2222222222222222222222222222222222222222222222222222222222222222",
+      "role": "PROJECT_CONTEXT",
+      "rank": 2
+    }
+  ],
+  "terminal_state": "FREEZE",
+  "events": [
+    {
+      "kind": "REQUEST",
+      "payload": {"request_id": "freeze-001", "objective": "Demonstrate authority-conflict freeze"}
+    },
+    {
+      "kind": "CONTEXT_SELECTED",
+      "payload": {"sources": ["AI-EXECUTION-KERNEL.md", "projects/NEXY.AI/overview.md"]}
+    },
+    {
+      "kind": "AUTHORITY_RESOLVED",
+      "payload": {"fingerprint": "$AUTHORITY_FINGERPRINT", "mode": "EXPLICIT"}
+    },
+    {
+      "kind": "DECISION",
+      "payload": {"decision": "FREEZE", "reason": "example authority conflict"}
+    },
+    {
+      "kind": "FINAL",
+      "payload": {"status": "FREEZE", "output": null, "output_digest": "$AUTO", "reason": "example authority conflict"}
+    }
+  ]
+}
