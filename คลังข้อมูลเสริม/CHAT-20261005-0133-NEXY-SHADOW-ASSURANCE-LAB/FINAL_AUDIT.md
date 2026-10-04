@@ -1,11 +1,12 @@
 # Final Audit
 
-Status: LOCAL_VERIFICATION_PASS / REPOSITORY_PUBLICATION_PENDING
+Status: COMPLETE_FOR_STANDALONE_SCOPE / NEXY_INTEGRATION_NOT_VERIFIED
 
 ## Scope audit
 - Target is AI-CONTEXT supplemental directory only.
-- No write to any repository containing `NEXY.AI` was performed during local build/test.
+- No write to any repository containing `NEXY.AI` was performed.
 - Prototype has no network client, deployment code or action executor.
+- Pre-merge compare showed zero changed files outside this lab path.
 
 ## Requirement checklist
 - [x] temporary execution memory
@@ -22,9 +23,16 @@ Status: LOCAL_VERIFICATION_PASS / REPOSITORY_PUBLICATION_PENDING
 - [x] adversarial fixture executed: FAIL / exit 1
 - [x] 10,000-case capacity smoke benchmark executed: PASS
 - [x] benchmark harness failure repaired and full suite rerun
-- [x] content hash manifest generated
-- [ ] files published to AI-CONTEXT
-- [ ] post-write repository presence/content re-fetched
+- [x] content hash manifest generated and locally checked
+- [x] files published to AI-CONTEXT via PR #32
+- [x] immutable merge commit re-fetched
+- [x] post-write target tree verified: 33 blobs, non-truncated
+- [x] concurrent-write conflicts handled without force
 
-## Local verdict
-The prototype is internally usable for its declared standalone scope. Integration with NEXY is NOT_VERIFIED and must remain advisory until separately authorized and proven.
+## Publication evidence
+- PR: `#32`
+- Merge commit: `e99c31025eb98fb80ddac6ac3b9da0d21d29e546`
+- Repository verification record: `results/REPOSITORY_VERIFICATION.md`
+
+## Verdict
+The prototype is complete and verified for its declared standalone AI-CONTEXT scope. It is only a proposal/tooling lab, not current NEXY authority. Integration with NEXY remains NOT_VERIFIED and requires separate explicit authorization plus exact-revision validation.
