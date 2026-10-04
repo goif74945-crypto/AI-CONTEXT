@@ -2,7 +2,7 @@
 
 Execution reference: NEXY-AUX-20261005-0121-CONTEXT-DELTA-LAB
 Platform chat ID: UNKNOWN (not exposed by available tools)
-Status: IN_PROGRESS
+Status: READY_FOR_MERGE
 Storage target: goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/NEXY-AUX-20261005-0121-CONTEXT-DELTA-LAB/
 Protected target: every repository whose name contains NEXY.AI; writes forbidden for this execution.
 
@@ -12,22 +12,33 @@ Create an additive, executable auxiliary tool that deterministically detects aut
 ## Truth boundary
 - SOURCE_FACT: AI-CONTEXT canonical rules and NEXY context read before build.
 - AI_PROPOSED_CONCEPT: this entire Context Delta Lab design and its possible future integration.
-- RUNTIME_FACT: only locally executed tests against the exact committed artifact may be reported as runtime evidence.
+- RUNTIME_FACT: E1/E2 results recorded in VERIFY.md for byte-identical tested source.
 - NOT_VERIFIED: usefulness in production NEXY workflows until separately integrated and evaluated.
 
 ## Scope lock
 IN SCOPE: files in this unique subfolder, deterministic Python implementation, fixtures, schema, tests, verification record, final audit.
 OUT OF SCOPE: NEXY.AI code, workflows, branches, settings, issues, PRs, deployment, canonical requirement promotion.
 
-## Current workstreams
-1. Architecture and invariants.
-2. Snapshot validation and deterministic canonicalization.
-3. Delta classification.
-4. Dependency impact propagation.
-5. Revalidation queue synthesis.
-6. CLI and machine-readable report.
-7. Unit/CLI tests and negative paths.
-8. Exact-commit read-back verification.
+## Completed workstreams
+PASS — architecture and invariants.
+PASS — snapshot validation and deterministic canonicalization.
+PASS — delta classification.
+PASS — dependency impact propagation.
+PASS — revalidation queue synthesis.
+PASS — CLI and machine-readable report.
+PASS — unit/CLI tests and negative paths.
+PASS — exact branch byte-identity verification for all 13 artifacts.
+PASS — bug recovery and regression test addition.
+
+## Verification anchor
+Verified source snapshot: `f95439eec65b7307dbdbb00d758db8ec1b495e99`.
+18/18 tests PASS, Python compile PASS, demo CLI PASS.
+See VERIFY.md for exact evidence and limitations.
+
+## Boundary ledger
+- Writes to repositories with NEXY.AI in the name: 0.
+- Writes to AI-CONTEXT outside this unique subfolder: 0.
+- Existing sibling auxiliary artifacts overwritten: 0.
 
 ## Resume rule
-Continue from the last verified workstream. Never infer PASS from file presence alone.
+If future work extends this project, read FINAL-AUDIT.md and VERIFY.md first. Re-run evidence if executable blobs change.
