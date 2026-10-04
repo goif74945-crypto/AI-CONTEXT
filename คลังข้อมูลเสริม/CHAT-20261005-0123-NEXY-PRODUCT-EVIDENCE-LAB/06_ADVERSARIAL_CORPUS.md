@@ -38,4 +38,4 @@ A separate executed sweep tested:
 
 Recorded result in the final local verification run:
 
-`ADVERSARIAL_SWEEP_PASS checks=10143 max_roundtrip_error=2.726e-10`
+`ADVERSARIAL_SWEEP_PASS checks=10149 max_roundtrip_error=2.726e-10`
