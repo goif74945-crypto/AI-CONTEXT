@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "contract_id": "intent-lab-demo-001",
+  "objective": "Create supplemental NEXY.AI research artifacts only inside AI-CONTEXT without mutating any NEXY.AI repository.",
+  "scope": {
+    "in_scope": ["คลังข้อมูลเสริม/NEXY-INTENT-INTEGRITY-LAB-20261005/**"],
+    "out_of_scope": ["projects/NEXY.AI/**"],
+    "protected": ["NEXY.AI/**",".github/**"],
+    "allowed_repositories": ["goif74945-crypto/AI-CONTEXT"],
+    "protected_repositories": ["*NEXY.AI*"]
+  },
+  "requirements": [
+    {"id":"REQ-001","text":"All produced concepts must be labeled AI-PROPOSED CONCEPT and must not be presented as current NEXY.AI requirements.","kind":"must","immutable":true},
+    {"id":"REQ-002","text":"No repository whose name contains NEXY.AI may be mutated.","kind":"must_not","immutable":true},
+    {"id":"REQ-003","text":"Executable prototype code must have deterministic local tests.","kind":"must","immutable":false}
+  ],
+  "acceptance_criteria": [
+    {"id":"AC-001","text":"The prototype test suite executes successfully.","minimum_evidence":"unit","requirement_ids":["REQ-003"]},
+    {"id":"AC-002","text":"The final repository artifacts are fetch-verified after write.","minimum_evidence":"runtime","requirement_ids":["REQ-001","REQ-002"]}
+  ],
+  "stop_conditions": [
+    "Freeze if an intended write targets a repository whose name contains NEXY.AI.",
+    "Freeze if a protected path would be touched."
+  ],
+  "unknowns": ["Platform chat ID is not exposed by available tools."],
+  "assumptions": []
+}
