@@ -1,0 +1,18 @@
+{
+  "scenario": "verified_result",
+  "schema_version": "nexy.prism.surface-plan.v0.1",
+  "trust_label": "VERIFIED_FINAL",
+  "detail_level": "COMPACT",
+  "banner": null,
+  "action": {"action": "VIEW_RESULT", "enabled": true, "reason_code": "RELEASED_RESULT", "confirmation": "NONE"},
+  "fingerprint": "1960215ba7562e7e5ecc93584235f068a3f6bb1373a10e30e531effd2cc4653e"
+}
+{
+  "scenario": "freeze_owner_recovery",
+  "schema_version": "nexy.prism.surface-plan.v0.1",
+  "trust_label": "FROZEN",
+  "detail_level": "FORENSIC",
+  "banner": "FREEZE",
+  "action": {"action": "RECOVER_FREEZE", "enabled": true, "reason_code": "OWNER_RECOVERY_ALLOWED", "confirmation": "CONFIRM"},
+  "fingerprint": "0623b3baa17166fceb86c49d4be64253f581df2d9c16114f73231ea967e4e0aa"
+}
