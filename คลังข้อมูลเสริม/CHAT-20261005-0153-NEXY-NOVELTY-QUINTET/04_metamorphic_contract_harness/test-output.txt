@@ -1,0 +1,9 @@
+test_detects_broken_idempotency (test_src.MetamorphicContractHarnessTests.test_detects_broken_idempotency) ... ok
+test_mapping_order_invariance_passes_for_canonicalizer (test_src.MetamorphicContractHarnessTests.test_mapping_order_invariance_passes_for_canonicalizer) ... ok
+test_mutation_exception_is_recorded_not_hidden (test_src.MetamorphicContractHarnessTests.test_mutation_exception_is_recorded_not_hidden) ... ok
+test_zero_checks_is_not_verified (test_src.MetamorphicContractHarnessTests.test_zero_checks_is_not_verified) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
