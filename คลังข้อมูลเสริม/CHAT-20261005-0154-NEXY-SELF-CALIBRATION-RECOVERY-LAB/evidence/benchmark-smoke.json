@@ -1,0 +1,46 @@
+{
+  "benchmarks": {
+    "calibration_100000_records": {
+      "max_seconds": 0.042171716999973796,
+      "median_seconds": 0.0403482140000051,
+      "min_seconds": 0.039295510000101785,
+      "repeats": 3,
+      "status": "LOCAL_MISALIGNMENT"
+    },
+    "contract_archaeologist_2000_events": {
+      "max_seconds": 0.01629428299997926,
+      "median_seconds": 0.013200721999965026,
+      "min_seconds": 0.012568751999992855,
+      "patterns": 31,
+      "repeats": 3
+    },
+    "evidence_genealogy_20000_items": {
+      "groups": 500,
+      "max_seconds": 0.09137361899990992,
+      "median_seconds": 0.041157538999982535,
+      "min_seconds": 0.03732692199992016,
+      "repeats": 3
+    },
+    "failure_atomizer_2048_items": {
+      "evaluations": 158,
+      "max_seconds": 0.0029271829999970578,
+      "median_seconds": 0.00173688300003505,
+      "min_seconds": 0.0016669189999447553,
+      "minimal_size": 2,
+      "repeats": 3
+    },
+    "pausesafe_50000_steps": {
+      "max_seconds": 0.004962169000009453,
+      "median_seconds": 0.0030407420000528873,
+      "min_seconds": 0.0029632260000198585,
+      "repeats": 5,
+      "status": "PREEMPT_SAFE"
+    }
+  },
+  "environment": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "processor": "",
+    "python": "3.13.5"
+  },
+  "status": "LOCAL_SMOKE_ONLY_NOT_PRODUCTION_SLA"
+}
