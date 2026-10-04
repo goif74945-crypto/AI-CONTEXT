@@ -1,0 +1,49 @@
+# Temporary Session Memory / Resume Checkpoint
+
+Status: ACTIVE CHECKPOINT
+Conversation code: CHAT-20261005-0155-NEXY-VERIFICATION-ACCELERATOR-MESH
+Created: 2026-10-05 +07:00
+Repository target: goif74945-crypto/AI-CONTEXT
+Write boundary: this folder only.
+
+Objective: create five novel, high-value future NEXY.AI verification systems; implement prototypes; execute tests; store Design + Code + Test + Evidence; never mutate repositories whose names contain NEXY.AI.
+
+Authority read:
+- INDEX.md
+- AI-EXECUTION-KERNEL.md
+- WORK-ROUTER.md
+- rules/GLOBAL.md
+- rules/SECURITY.md
+- rules/VERIFICATION.md
+- workflows/system-design.md
+- workflows/implementation.md
+- workflows/verification.md
+- projects/NEXY.AI/overview.md
+- projects/NEXY.AI/deep/INDEX.md
+- projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md
+
+Selected systems:
+1. Correlated Evidence Firewall (CEF)
+2. Metamorphic Verification Forge (MVF)
+3. Counterexample Minimization Engine (CME)
+4. Assumption Liquidation Planner (ALP)
+5. Behavioral Canary Compiler/Runner (BCC)
+
+Collision search returned no exact matches for these query clusters: correlated evidence independence; metamorphic testing relation; counterexample minimization delta debugging; assumption experiment planner information gain; behavioral canary contract drift. This is negative evidence, not exhaustive semantic proof.
+
+Defects found and repaired before repository write:
+- ALP one-shot iterable duplicate validation bug.
+- ALP unknown-assumption reference silently ignored.
+- BCC top-level ignore rule accidentally affected nested keys.
+- MVF base SUT exception initially escaped.
+- stress harness import path issue.
+- isolated wheel build attempted unavailable network access.
+
+Verified locally:
+- compileall PASS
+- 20/20 unit + integration tests PASS
+- 1002 deterministic/property checks PASS
+- wheel build PASS
+- wheel SHA-256 56c275d96fcad546daef4b06a2b3e68ef5b84fe184eecc63b9116fad3791f18a
+
+Resume rule: re-fetch, rerun tests, preserve evidence-class boundaries, and never touch adjacent chat folders or NEXY.AI repositories.
