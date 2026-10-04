@@ -20,22 +20,10 @@ def _read_payload(path: str | None) -> Any:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="nexy-freeze-bridge",
-        description=(
-            "Normalize authoritative freeze metadata into a deterministic "
-            "freeze explanation contract."
-        ),
+        description="Normalize authoritative freeze metadata into a deterministic freeze explanation contract.",
     )
-    parser.add_argument(
-        "input",
-        nargs="?",
-        default="-",
-        help="JSON input file, or - for stdin",
-    )
-    parser.add_argument(
-        "--compact",
-        action="store_true",
-        help="Emit compact canonical JSON",
-    )
+    parser.add_argument("input", nargs="?", default="-", help="JSON input file, or - for stdin")
+    parser.add_argument("--compact", action="store_true", help="Emit compact canonical JSON")
     return parser
 
 
@@ -48,25 +36,11 @@ def main(argv: list[str] | None = None) -> int:
             raise FreezeBridgeError("top-level JSON must be an object")
         result = compile_mapping(payload)
     except (FreezeBridgeError, json.JSONDecodeError, OSError) as exc:
-        print(
-            json.dumps(
-                {"status": "FAIL", "error": str(exc)},
-                ensure_ascii=False,
-                sort_keys=True,
-            ),
-            file=sys.stderr,
-        )
+        print(json.dumps({"status": "FAIL", "error": str(exc)}, ensure_ascii=False, sort_keys=True), file=sys.stderr)
         return 2
 
     if args.compact:
-        print(
-            json.dumps(
-                result,
-                ensure_ascii=False,
-                sort_keys=True,
-                separators=(",", ":"),
-            )
-        )
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True, separators=(",", ":")))
     else:
         print(json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2))
     return 0
