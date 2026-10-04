@@ -1,74 +1,59 @@
 # Working Memory — NEXY Decision Capsule & Replay Lab
 
-Status: READY_FOR_INTEGRATION
+Status: **COMPLETE**
 Classification: **AI PROPOSAL / SECONDARY ADVISORY CONTEXT**
 Started: 2026-10-05T01:21+07:00
 Work/session reference: `DCRL-20261005-0121-TH`
 Storage repo: `goif74945-crypto/AI-CONTEXT`
 Protected target: `goif74945-crypto/NEXY.AI-` — **NO MUTATION**
+Integration PR: `#21`
+Merge commit: `1c5219490cf7cf1721003b66e1b466a48aacb225`
 
 ## Objective
 
 Create a standalone reference/prototype for recording, verifying and replaying the provenance of one decision/output without silently promoting the proposal into NEXY authority.
 
-## Distinct gap
+## Final execution state
 
-The six pre-existing supplemental packs cover release evidence, retrieval/context, agentic security, failure taxonomy, eval/regression and future research. This lab adds a distinct per-decision layer:
+CURRENT STATE: COMPLETE
 
-- canonical structural identity;
-- tamper-evident event chain;
-- deterministic state-machine replay;
-- authority fingerprint capture;
-- tool side-effect intent/result pairing;
-- terminal-state proof rules;
-- structural counterfactual diff;
-- payload-minimized trust receipt.
-
-## Current execution state
-
-CURRENT STATE: FINAL AUDIT / INTEGRATION
 COMPLETED:
 - AI-CONTEXT bootstrap/index/kernel/router inspected.
 - NEXY.AI overview/deep index/current 837-row normalized matrix context inspected from AI-CONTEXT.
 - All six existing supplemental packs inspected to avoid duplicate work.
 - Architecture/spec/security/integration/roadmap documentation created.
 - Python stdlib-only reference implementation created.
-- Positive and negative unit/regression tests created.
-- 30/30 tests passed on latest rerun.
-- compileall passed.
+- Positive and adversarial/negative unit/regression tests created.
+- 30/30 tests passed on the final tested baseline.
+- `compileall` passed.
 - PASS and FREEZE CLI examples passed.
-- Public receipt path passed.
-- 10,000-capsule microbenchmark executed.
+- Public trust receipt path passed.
+- 10,000-capsule microbenchmark executed; no production guarantee claimed.
 - Git blob identity matched all 17 source/test branch files to the tested local baseline.
+- PR #21 changed-file scope audited: 19/19 paths inside the dedicated supplemental folder.
+- PR #21 merged successfully without force.
+- Post-merge verification on `main`: 17/17 source/test blobs matched the tested baseline; mismatch count 0.
+- Stale PR #13 superseded by PR #21.
 
 IN PROGRESS:
-- branch scope audit;
-- merge into AI-CONTEXT main;
-- post-merge re-read verification.
+- none.
 
 BLOCKED:
 - none.
 
-VERIFICATION STATUS: PASS for the standalone prototype; NEXY integration remains NOT_VERIFIED and OUT OF SCOPE.
+REMAINING:
+- optional future roadmap research only; not required for completion.
 
-## Authority anchors
+VERIFICATION STATUS:
+- standalone prototype: **PASS**
+- storage/integration into AI-CONTEXT main: **PASS**
+- NEXY.AI runtime/product integration: **NOT_VERIFIED / OUT OF SCOPE**
 
-- `AI-EXECUTION-KERNEL.md`
-- `projects/NEXY.AI/overview.md`
-- `projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md`
-- explicit user directive in this work session
+## Invariants preserved
 
-## Invariants
-
-- proposal must remain labeled AI proposal;
+- proposal remains labeled AI proposal;
 - no NEXY.AI repository mutation;
 - no claim that this prototype is current NEXY implementation;
 - no PASS without matching evidence;
 - no forced overwrite of concurrent AI-CONTEXT work;
-- only the dedicated supplemental path may be added/updated by this work.
-
-## Stop conditions
-
-FREEZE if integration diff touches a path outside:
-`คลังข้อมูลเสริม/07_DECISION_CAPSULE_REPLAY_LAB/`
-or if post-merge blobs differ from the verified branch state.
+- all integration changes stayed inside the dedicated supplemental path.
