@@ -1,0 +1,80 @@
+{
+  "surprise": {
+    "status": "ALLOW_EXPERIMENT",
+    "total_cost": 990,
+    "dimension_costs": [
+      [
+        "architecture",
+        720
+      ],
+      [
+        "ux",
+        270
+      ]
+    ],
+    "reason_codes": [],
+    "fingerprint": "f25cd94428a5dcbfee97b85149eeb2d383305b97f9d6f9462fb07189d5c20293"
+  },
+  "anti_feature": {
+    "status": "KEEP_EXPERIMENT",
+    "reason_codes": [],
+    "strongest_alternative": null,
+    "aggregate_value_bps": 7800,
+    "fingerprint": "feb79cde74e27a69b48739d69d88e59cbbc5d5e2f6f0863c509440766e09136e"
+  },
+  "relaxation": {
+    "status": "PROPOSE_RELAXATION",
+    "relax_constraint_ids": [
+      "LO4_LATENCY_TARGET"
+    ],
+    "total_cost": 3,
+    "reason_codes": [
+      "PROPOSAL_ONLY_NO_AUTOMATIC_MUTATION"
+    ],
+    "fingerprint": "bf27a825cdab50c326336f3863597f6205fa96789c5d9b650a95e88a3e94c91d"
+  },
+  "regret": {
+    "status": "PLAN",
+    "selected_action_id": "small-reversible-pilot",
+    "action_regrets": [
+      {
+        "action_id": "small-reversible-pilot",
+        "worst_case_regret": 0,
+        "total_regret": 0
+      }
+    ],
+    "reason_codes": [
+      "IRREVERSIBLE_WITHOUT_HUMAN_GATE:full-cutover"
+    ],
+    "fingerprint": "e8d047455153b104de62a1a0d3a750b547618eab8177d7783c4ef77c2f174f74"
+  },
+  "option": {
+    "status": "PLAN",
+    "selected_choice_id": "adapter-first",
+    "scores": [
+      {
+        "choice_id": "adapter-first",
+        "score": 11625,
+        "preserved_importance": 10000
+      },
+      {
+        "choice_id": "provider-locked",
+        "score": 5500,
+        "preserved_importance": 3000
+      }
+    ],
+    "reason_codes": [],
+    "fingerprint": "07f5bdbc42bb6885d1437b8bdede167df3a6df5f41181b00e16b09dd6f02ae89"
+  },
+  "foundry": {
+    "status": "PLAN",
+    "stage": "lo4_experiment_ready",
+    "reason_codes": [
+      "EXPERIMENTAL_RELAXATION_REVIEW_REQUIRED",
+      "HUMAN_OR_FORMAL_PROMOTION_REQUIRED",
+      "LO4_ONLY_NOT_CANON",
+      "NO_AUTOMATIC_AUTHORITY_ESCALATION"
+    ],
+    "fingerprint": "97b4104953c18fb9bb149a7ce081b588cc722be62b4fc69dc8edf132654fda63"
+  }
+}
