@@ -1,0 +1,1 @@
+{"decision": "ALLOW", "payload_keys": ["prompt", "source_code"], "receipt_algorithm": "HMAC-SHA256"}
