@@ -1,0 +1,25 @@
+IMPORT_AUDIT
+__init__.py: metamorphic
+__init__.py: conservation
+__init__.py: witness
+__init__.py: fingerprint
+__init__.py: spec_mutation
+conservation.py: __future__
+conservation.py: dataclasses
+conservation.py: typing
+fingerprint.py: __future__
+fingerprint.py: dataclasses
+fingerprint.py: hashlib
+fingerprint.py: json
+fingerprint.py: typing
+metamorphic.py: __future__
+metamorphic.py: dataclasses
+metamorphic.py: typing
+spec_mutation.py: __future__
+spec_mutation.py: dataclasses
+spec_mutation.py: enum
+spec_mutation.py: typing
+witness.py: __future__
+witness.py: dataclasses
+witness.py: typing
+FORBIDDEN_IMPORT_VIOLATIONS []
