@@ -1,0 +1,29 @@
+test_1000_case_identity_corpus_passes (test_matrix.ExhaustiveMatrixTests.test_1000_case_identity_corpus_passes) ... ok
+test_all_cross_outcome_pairs_obey_freeze_boundary (test_matrix.ExhaustiveMatrixTests.test_all_cross_outcome_pairs_obey_freeze_boundary) ... ok
+test_each_evidence_class_can_be_required_without_substitution (test_matrix.ExhaustiveMatrixTests.test_each_evidence_class_can_be_required_without_substitution) ... ok
+test_every_single_authority_truncation_blocks (test_matrix.ExhaustiveMatrixTests.test_every_single_authority_truncation_blocks) ... ok
+test_mutation_catalog_is_fail_closed (test_matrix.ExhaustiveMatrixTests.test_mutation_catalog_is_fail_closed) ... ok
+test_action_divergence_blocks (test_shadowguard.ShadowGuardTests.test_action_divergence_blocks) ... ok
+test_authority_extension_is_allowed (test_shadowguard.ShadowGuardTests.test_authority_extension_is_allowed) ... ok
+test_authority_regression_blocks (test_shadowguard.ShadowGuardTests.test_authority_regression_blocks) ... ok
+test_candidate_more_conservative_is_not_verified (test_shadowguard.ShadowGuardTests.test_candidate_more_conservative_is_not_verified) ... ok
+test_canonical_json_ignores_mapping_order (test_shadowguard.ShadowGuardTests.test_canonical_json_ignores_mapping_order) ... ok
+test_evidence_profile_downgrade_blocks (test_shadowguard.ShadowGuardTests.test_evidence_profile_downgrade_blocks) ... ok
+test_freeze_bypass_blocks (test_shadowguard.ShadowGuardTests.test_freeze_bypass_blocks) ... ok
+test_identical_duplicate_is_not_verified (test_shadowguard.ShadowGuardTests.test_identical_duplicate_is_not_verified) ... ok
+test_identical_pair_passes (test_shadowguard.ShadowGuardTests.test_identical_pair_passes) ... ok
+test_input_mismatch_short_circuits (test_shadowguard.ShadowGuardTests.test_input_mismatch_short_circuits) ... ok
+test_jsonl_loader_reports_line (test_shadowguard.ShadowGuardTests.test_jsonl_loader_reports_line) ... ok
+test_missing_candidate_case_blocks (test_shadowguard.ShadowGuardTests.test_missing_candidate_case_blocks) ... ok
+test_nondeterministic_duplicate_blocks (test_shadowguard.ShadowGuardTests.test_nondeterministic_duplicate_blocks) ... ok
+test_policy_drift_blocks_comparison (test_shadowguard.ShadowGuardTests.test_policy_drift_blocks_comparison) ... ok
+test_record_validation_rejects_action_on_freeze (test_shadowguard.ShadowGuardTests.test_record_validation_rejects_action_on_freeze) ... ok
+test_required_evidence_missing_blocks (test_shadowguard.ShadowGuardTests.test_required_evidence_missing_blocks) ... ok
+test_safety_label_regression_blocks (test_shadowguard.ShadowGuardTests.test_safety_label_regression_blocks) ... ok
+test_stale_evidence_blocks (test_shadowguard.ShadowGuardTests.test_stale_evidence_blocks) ... ok
+test_unbaselined_candidate_is_not_verified (test_shadowguard.ShadowGuardTests.test_unbaselined_candidate_is_not_verified) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.035s
+
+OK

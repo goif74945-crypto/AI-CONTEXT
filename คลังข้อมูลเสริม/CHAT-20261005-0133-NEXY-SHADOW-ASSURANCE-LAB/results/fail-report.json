@@ -1,0 +1,51 @@
+{
+  "candidate_cases": 2,
+  "compared_cases": 2,
+  "finding_counts": {
+    "ACTION_DIVERGENCE": 1,
+    "AUTHORITY_REGRESSION": 1,
+    "EVIDENCE_PROFILE_DOWNGRADE": 1,
+    "FREEZE_BYPASS": 1,
+    "SAFETY_LABEL_REGRESSION": 2
+  },
+  "findings": [
+    {
+      "case_id": "release-ok",
+      "code": "AUTHORITY_REGRESSION",
+      "message": "candidate removed, reordered, or replaced stable authority precedence",
+      "severity": "BLOCKING"
+    },
+    {
+      "case_id": "release-ok",
+      "code": "EVIDENCE_PROFILE_DOWNGRADE",
+      "message": "candidate removed baseline evidence obligations: E3",
+      "severity": "BLOCKING"
+    },
+    {
+      "case_id": "release-ok",
+      "code": "ACTION_DIVERGENCE",
+      "message": "candidate released a different action than stable baseline",
+      "severity": "BLOCKING"
+    },
+    {
+      "case_id": "release-ok",
+      "code": "SAFETY_LABEL_REGRESSION",
+      "message": "candidate removed baseline safety labels: validated-input",
+      "severity": "BLOCKING"
+    },
+    {
+      "case_id": "unsafe-input",
+      "code": "FREEZE_BYPASS",
+      "message": "candidate releases an action where stable baseline blocked execution",
+      "severity": "BLOCKING"
+    },
+    {
+      "case_id": "unsafe-input",
+      "code": "SAFETY_LABEL_REGRESSION",
+      "message": "candidate removed baseline safety labels: freeze-required",
+      "severity": "BLOCKING"
+    }
+  ],
+  "stable_cases": 2,
+  "status": "FAIL"
+}
