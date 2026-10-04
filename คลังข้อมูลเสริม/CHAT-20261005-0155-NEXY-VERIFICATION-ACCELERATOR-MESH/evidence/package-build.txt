@@ -1,0 +1,16 @@
+Deterministic package build verification
+
+Command A:
+SOURCE_DATE_EPOCH=1704067200 python -m pip wheel . --no-deps --no-build-isolation -w /tmp/vam-wheel-a
+
+Command B:
+SOURCE_DATE_EPOCH=1704067200 python -m pip wheel . --no-deps --no-build-isolation -w /tmp/vam-wheel-b
+
+Result A: PASS
+Result B: PASS
+Wheel A SHA-256: 8518f646fc6f8689584f68c66ed9386aa7e52a15881dbd20cae40c13fcafc755
+Wheel B SHA-256: 8518f646fc6f8689584f68c66ed9386aa7e52a15881dbd20cae40c13fcafc755
+Reproducibility invariant: PASS — two builds with fixed SOURCE_DATE_EPOCH produced byte-identical hashes.
+
+Build-isolation note:
+The initial isolated build attempt tried to access the network, which was unavailable in the sandbox. The verified command intentionally uses --no-build-isolation with the installed setuptools. The failed attempt was not hidden or counted as PASS.
