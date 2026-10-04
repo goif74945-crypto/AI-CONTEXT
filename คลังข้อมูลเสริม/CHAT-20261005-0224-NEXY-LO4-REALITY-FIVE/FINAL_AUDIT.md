@@ -3,23 +3,42 @@
 Execution: `CHAT-20261005-0224-NEXY-LO4-REALITY-FIVE`
 
 ## Requirement audit
-- Five new Lo4 concepts: PASS.
-- Explicitly AI-proposed / not Canon: PASS.
-- Q64.64 implementation: PASS.
-- Code exists: PASS.
-- Tests executed: PASS, 28 final tests.
-- Stress verification executed: PASS.
-- Real defect found -> fixed -> regression tested: PASS.
-- Design + Code + Test + Evidence in work folder: PASS.
-- Avoid adjacent 02:21 concepts: PASS by explicit exclusion + keyword scans.
-- NEXY.AI repository mutation: NOT PERFORMED.
-- AI-CONTEXT-only publication target: PASS by scope design; requires post-write readback evidence to close publication.
 
-## Acceptance boundary
-The isolated lab is ready for publication into AI-CONTEXT. It is **not** evidence that NEXY.AI currently implements or is compatible with these systems.
+- Five distinct Lo4 concepts: **PASS**
+- Explicit AI-proposed / not Canon classification: **PASS**
+- Q64.64 deterministic fixed-point implementation: **PASS**
+- Executable reference code: **PASS**
+- Compile validation: **PASS**
+- Final unit/integration/regression suite: **28 tests PASS**
+- Stress verification: **PASS**
+- Real failure discovered → corrected → regression-tested: **PASS**
+- Reverse-order deterministic digests: **PASS**
+- Four `PYTHONHASHSEED` runs: **PASS**
+- Design + Code + Test + Evidence preserved: **PASS**
+- Exact-name collision scan before publication: **PASS**, with the documented limitation that keyword search is not proof of universal novelty
+- Adjacent 02:21 Lo4 concepts explicitly avoided: **PASS**
+- Publication into `AI-CONTEXT/คลังข้อมูลเสริม`: **PASS**
+- Post-write GitHub readback: **PASS, 14/14 original files matched expected blob SHAs**
+- Source bundle transport integrity: **PASS, all seven Git blob SHAs matched local exact chunks**
+- Concurrent-write safety: **PASS, non-force publication; one stale candidate was abandoned and rebuilt on the newer head**
+- Publication commit retained in later `main` ancestry: **PASS**
+- Mutation of a repository whose name contains `NEXY.AI`: **NOT PERFORMED**
 
-## Remaining publication gate
-After GitHub write, read back every published file (or directory listing + hash-critical files) from `goif74945-crypto/AI-CONTEXT` and record resulting commit/head evidence. Until that readback occurs, publication is NOT VERIFIED.
+## Final status
 
-## Modular source gate
-PASS — 20 Python files compile; 28 tests PASS; stress suite PASS; reverse-order deterministic digests unchanged.
+The requested supplemental Lo4 research/build artifact is complete and reproducibly preserved in AI-CONTEXT.
+
+The five concepts remain `Lo4_AI_PROPOSAL_ONLY`. They have **not** been promoted to NEXY Canon and have **not** been integrated into the NEXY.AI implementation repository.
+
+## Known limitations / intentionally unproven
+
+- real NEXY runtime integration;
+- production deployment;
+- provider/jurisdiction metadata truth and legal compliance;
+- accessibility-standard certification;
+- representative production performance;
+- hostile-input/security review;
+- user-study evidence;
+- formal Canon promotion.
+
+Those are future integration gates, not hidden PASS claims.
