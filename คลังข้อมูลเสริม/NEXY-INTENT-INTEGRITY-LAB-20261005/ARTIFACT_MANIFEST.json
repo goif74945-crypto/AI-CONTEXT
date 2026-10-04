@@ -2,7 +2,7 @@
   "artifact_class": "AI-PROPOSED CONCEPT / RESEARCH PROTOTYPE",
   "byte_exact_git_blobs": {
     "CHAT_PROVENANCE.md": "1bbfd2b0d138047ca9a4801a18acecbf303f0b09",
-    "README.md": "571a081a5bce3d39ec7e9344d62138140808aa02",
+    "README.md": "78d6fe3728f11821bfe7fe634acf1a73beab7798",
     "docs/01_CONCEPT_SPEC.md": "186580284d886d68b5c924a8561c44490b175ac8",
     "docs/02_ARCHITECTURE.md": "00fa4cf3b41159c3e634d4d9e48e4be6fcab12ef",
     "docs/03_FAILURE_SECURITY_MODEL.md": "3103d8ad72b3280d707c72dced434d69193cd09d",
