@@ -50,6 +50,6 @@ test_same_primary_guard_metric_rejected (test_value_ledger.TestValueLedger.test_
 test_supported_benefit (test_value_ledger.TestValueLedger.test_supported_benefit) ... ok
 
 ----------------------------------------------------------------------
-Ran 49 tests in 0.045s
+Ran 49 tests in 0.060s
 
 OK
