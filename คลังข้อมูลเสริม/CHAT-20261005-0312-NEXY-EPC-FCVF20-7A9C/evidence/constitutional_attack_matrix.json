@@ -6,7 +6,10 @@
       "strict_code": "PROMOTION_AUTHORITY_FORBIDDEN",
       "strict_state_identity": true,
       "weak_accepted": true,
-      "weak_failed_systems": ["PNCG", "PWCV"]
+      "weak_failed_systems": [
+        "PNCG",
+        "PWCV"
+      ]
     },
     {
       "event": "ATTEMPT_CORE_MUTATION",
@@ -14,7 +17,10 @@
       "strict_code": "CORE_MUTATION_FORBIDDEN",
       "strict_state_identity": true,
       "weak_accepted": true,
-      "weak_failed_systems": ["ANIC", "PWCV"]
+      "weak_failed_systems": [
+        "ANIC",
+        "PWCV"
+      ]
     },
     {
       "event": "ATTEMPT_CANON_OVERRIDE",
@@ -22,7 +28,10 @@
       "strict_code": "CANON_OVERRIDE_FORBIDDEN",
       "strict_state_identity": true,
       "weak_accepted": true,
-      "weak_failed_systems": ["CNOP", "PWCV"]
+      "weak_failed_systems": [
+        "CNOP",
+        "PWCV"
+      ]
     }
   ]
 }
