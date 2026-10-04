@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "declaration": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "skipLibCheck": true
+  },
+  "include": ["shared/**/*.ts", "01_FLOWGUARD_64/src.ts", "02_QUEUEBOUND_64/src.ts", "03_DEADLINE_64/src.ts", "04_CHAIN_64/src.ts", "05_SHAPER_64/src.ts", "integration/index.ts"]
+}
