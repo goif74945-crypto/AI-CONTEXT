@@ -3,6 +3,7 @@
 Status: ACTIVE_CHECKPOINT
 Conversation code: `CHAT-20261005-0223-NEXY-LO4-Q64-FORMAL-ENVELOPE`
 Created: 2026-10-05T02:23+07:00
+Last checkpoint: 2026-10-05T02:34+07:00
 Target repository: `goif74945-crypto/AI-CONTEXT`
 Target branch: `main`
 Persistence mode: DURABLE_RESUMABLE
@@ -22,56 +23,96 @@ Create five novel Lo4 AI-proposed, non-canonical systems useful to future NEXY.A
 - `projects/NEXY.AI/deep/human-control-surface.md`
 - `projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md`
 
-## Source facts that constrain this mission
+## Source facts / immutable mission law
 - NEXY separates design, implementation, runtime, and deployment truth.
 - AI worker output is not final authority.
 - Later architecture prefers bounded truth, explicit uncertainty, verified outputs, and FREEZE when proof is insufficient.
 - Constitutional source-design forbids floating point in canonical Core and specifies signed 128-bit fixed/integer arithmetic with overflow -> FREEZE.
-- Current 837-row normalized matrix is the source enumeration reference; the legacy 215-entry registry is deprecated/unreliable.
+- Lo4 work here is proposal-only and cannot silently become Canon.
+- Protected repositories containing `NEXY.AI` are READ-ONLY for this mission.
 
-## User locks for this mission
-- Lo4 = AI-designed innovation only; it has no authority over Canon until formal proof and promotion.
-- All produced code must use Q64.64.
-- Create five concepts, implement, test, repair failures, retest, and preserve Design + Code + Test + Evidence.
-- Do not mutate any repository whose name contains `NEXY.AI`.
-- Work only under this unique folder in `AI-CONTEXT/คลังข้อมูลเสริม`.
+## Five systems implemented locally
+1. HYPERBOX-64 — affine guard certification over Q64.64 uncertainty boxes.
+2. REACHTUBE-64 — finite-horizon affine interval reachability with per-step guard certification.
+3. CONSERVE-64 — linear invariant drift certification using exact raw-product accumulation.
+4. FUSEBOX-64 — exact quorum interval fusion on the discrete Q64.64 raw lattice.
+5. DESCENT-64 — weighted-L1 potential decrease certification.
 
-## Novelty controls
-Adjacent recent work already covers: authority wind tunnels, evidence decay/debt, capability composition, invariant mining/falsification, replay differentials, numeric integrity, metamorphic verification, interleaving verification, cross-runtime contracts, consensus independence, tool drift, resource governance, proof efficiency, and many evidence/UX assurance topics.
+A sixth composition surface, FormalEnvelopePipeline, gates all five and returns READY/REJECT/FREEZE without side effects.
 
-This mission therefore targets a different axis: exact continuous-state / bounded-uncertainty formal envelopes using one shared Q64.64 arithmetic substrate.
+## Q64.64 substrate now implemented
+- 64 fractional bits, signed-128 raw domain.
+- Python float forbidden.
+- production package contains no Fraction arithmetic/import.
+- decimal/ratio input is projected into Q64.64 using explicit REQUIRE_EXACT/FLOOR/CEIL/HALF_EVEN policy.
+- addition/subtraction/negation/multiplication overflow is fail-closed.
+- interval multiply uses outward directed rounding.
+- huge decimal exponent is rejected before ratio expansion.
+- canonical evidence JSON rejects binary floats and has stable SHA-256 digest.
 
-## Five candidate systems
-1. HYPERBOX-64 — Robust Linear Guard Certifier for interval boxes.
-2. REACHTUBE-64 — Bounded Reachability Tube Certifier for affine state evolution with disturbances.
-3. CONSERVE-64 — Conservation Law Transition Certifier using exact Q64.64 product accumulators.
-4. FUSEBOX-64 — Quorum Interval Fusion Kernel that finds a unique k-supported truth interval or freezes.
-5. DESCENT-64 — Progress Potential Certifier using an explicit weighted L1 potential and minimum decrease law.
+## TDD / failure evidence so far
+- RED: Q64 module absent -> expected failing bootstrap test.
+- GREEN: initial Q64 contract -> 10/10.
+- RED: five Lo4 engine modules absent -> expected failing bootstrap.
+- RED: 22/22 behavior tests failed against NOT_IMPLEMENTED skeleton.
+- GREEN: Q64 + five engines -> 33/33.
+- RED/GREEN: pipeline bootstrap and three pipeline behaviors.
+- RED/GREEN: canonical evidence layer.
+- RED: numeric purity test found production `fractions` import.
+- FIX: removed Fraction from production; test-only Fraction oracle retained.
+- REGRESSION: automated test refactor corrupted two oracle expressions; full suite became 47 pass + 1 error.
+- FIX/RETEST: oracle corrected; full suite 48/48.
+- RED: exponent-bound test proved rejection happened only after ratio expansion.
+- FIX: early exponent guard added.
+- FRESH FULL SUITE: 54/54 PASS.
+- independent property verification includes 2,400 brute-force FUSEBOX cases, Fraction-oracle directed multiplication checks, interval-corner enclosure proof, and permutation digest invariance.
+- compileall: PASS.
+- static grep: no float constructor/random/network/subprocess/eval/time/Fraction dependency found in production package.
 
-## Required engineering properties
-- signed Q64.64 domain: raw signed-128 range, 64 fractional bits;
-- no Python float accepted at authoritative input boundaries;
-- overflow never wraps/saturates: deterministic FREEZE/error;
-- directed rounding for enclosure arithmetic so safety bounds are never understated;
-- deterministic ordering/canonical serialization;
-- no network, model calls, subprocesses, secrets, or external mutations;
-- bounded input sizes/steps for combinatorial or iterative work;
-- positive, negative, boundary, overflow, determinism, and cross-module integration tests.
+## Local workspace
+`/mnt/data/nexy_lo4_q64_envelope`
+
+Current production modules:
+- q64foundry/q64.py
+- interval.py
+- model.py
+- hyperbox.py
+- reachtube.py
+- conserve.py
+- fusebox.py
+- descent.py
+- pipeline.py
+- canonical.py
+
+Current tests:
+- test_q64.py
+- test_q64_security.py
+- test_numeric_purity.py
+- test_engines.py
+- test_properties.py
+- test_pipeline.py
+- canonical/pipeline/engine bootstrap tests
+
+## Persistence incident
+Initial AI-CONTEXT checkpoint write hit HTTP 409 because concurrent chats advanced main. It was recovered by refresh + retry with no force update and no overwrite outside this unique folder.
 
 ## Truth boundary
-All five systems remain `Lo4_AI_PROPOSAL_ONLY / NOT_CANON / NOT_INTEGRATED`.
-Local execution can prove only the standalone reference implementation at exact tested bytes.
-NEXY.AI runtime/deployment/integration remains NOT_VERIFIED.
+Local E1/E2/E3 evidence is emerging for the standalone prototype only.
+NEXY.AI integration/runtime/deployment remains NOT_VERIFIED.
+No production promotion is authorized.
 
-## Initial persistence incident
-The first checkpoint write was rejected with HTTP 409 because concurrent work advanced `main`. No force update was attempted. The legal recovery is refresh current head and retry only this unique path.
-
-## Next legal action
-Write tests first, execute RED failures, implement the shared Q64.64 substrate and five systems, run focused and full regression tests, repair failures, then persist exact tested bytes plus evidence and read them back.
+## Next action
+1. build static auditor + deterministic validation runner;
+2. add adversarial/limit tests and performance characterization;
+3. write README/contracts/compatibility/promotion/evidence/final audit;
+4. run fresh final suite and compute exact file hashes;
+5. persist exact tested bytes to this folder;
+6. read back and bind Git blob hashes to local tested bytes;
+7. only then declare mission completion.
 
 ## Stop/freeze conditions
-- required write would leave this folder;
-- any operation would mutate a repository containing `NEXY.AI`;
-- Q64.64 overflow or unsupported numeric semantics are silently tolerated;
-- a completion claim lacks fresh evidence;
-- final persisted bytes cannot be bound to tested bytes.
+- any required write leaves this unique folder;
+- any operation mutates a repository containing `NEXY.AI`;
+- unsupported arithmetic silently wraps/saturates/guesses;
+- persisted bytes differ from tested bytes;
+- completion lacks fresh proof.
