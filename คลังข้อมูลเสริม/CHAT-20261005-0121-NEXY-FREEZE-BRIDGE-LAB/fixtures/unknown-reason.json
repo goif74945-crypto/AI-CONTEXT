@@ -1,0 +1,14 @@
+{
+  "protocol_version": "1.1",
+  "event_id": "fixture-unknown-001",
+  "reason_code": "UNRECOGNIZED_FUTURE_REASON",
+  "status": "UNKNOWN",
+  "blocking_layer": "UNKNOWN_LAYER",
+  "recovery_owner": "OPERATOR",
+  "disclosure": "INTERNAL",
+  "locale": "en",
+  "dependency_recheck_safe": true,
+  "missing_inputs": [],
+  "evidence_refs": [],
+  "authorized_recovery_intents": ["ESCALATE_OPERATOR", "ACKNOWLEDGE_STATE", "RECHECK_DEPENDENCY"]
+}
