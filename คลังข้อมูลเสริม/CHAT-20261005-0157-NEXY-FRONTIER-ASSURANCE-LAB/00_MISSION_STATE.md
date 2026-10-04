@@ -77,3 +77,28 @@ Build exact reference implementation and test suite in an isolated local workspa
 - final_audit_blob: 70c1f68b0ce6d2b3b10ca69e1600b7dca3a27aee
 - protected_repository_write_actions: NONE
 - concept_classification: AI_PROPOSED_EXPERIMENTAL_NOT_CANON
+
+## Checkpoint CP-OBSURE-RUNTIME-WITNESS-01
+
+- timestamp_local: `2026-10-05T06:27:44+07:00`
+- continuation_type: `DEEPEN_EXISTING_CONCEPT`
+- concept_count_after: `5` (unchanged)
+- deepened_concept: `OBSURE`
+- verified_gap: original OBSURE proves telemetry specification sufficiency but not actual runtime emission
+- delivered_design: `OBSURE_RUNTIME_DESIGN.md`
+- delivered_code: `obsure_runtime_assurance.py`
+- delivered_tests: `test_obsure_runtime_assurance.py`
+- delivered_evidence: `OBSURE_RUNTIME_EVIDENCE.md`
+- persisted_code_commit: `136f066c86dd6a3cf33354e1786fe072436e08a1`
+- design_blob: `e4f5b78f3d168efe46067b52f79484fa20174ad8`
+- implementation_blob: `891b09d4ae5b94cc643dabe5aeadf4327328a2b6`
+- test_blob: `859257a6fb2a8b9dca48a779789195e055c04bf3`
+- compile: `PASS`
+- tests: `40/40 PASS` (`14` new + `26` regression)
+- positive_negative_adversarial_integration: `PASS`
+- persistence_readback: `EXACT_MATCH`
+- post_persistence_detached_worktree_verification: `PASS`
+- verification_path_failure: `RECORDED_AND_REPAIRED`
+- protected_repository_write_actions: `NONE`
+- current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
+- next_resume_rule: inspect later artifacts and deepen another unverified dimension only if materially distinct and non-duplicate; never add a sixth concept under the current mission acceptance contract
