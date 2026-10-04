@@ -1,0 +1,38 @@
+test_fixed (unittest.loader._FailedTest.test_fixed) ... ERROR
+test_systems (unittest.loader._FailedTest.test_systems) ... ERROR
+
+======================================================================
+ERROR: test_fixed (unittest.loader._FailedTest.test_fixed)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_fixed
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/q64_constitutional_physics/tests/test_fixed.py", line 3, in <module>
+    from qcp.fixed import Q64, Q64Overflow, Q64DomainError
+ModuleNotFoundError: No module named 'qcp'
+
+
+======================================================================
+ERROR: test_systems (unittest.loader._FailedTest.test_systems)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_systems
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/q64_constitutional_physics/tests/test_systems.py", line 3, in <module>
+    from qcp.fixed import Q64
+ModuleNotFoundError: No module named 'qcp'
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (errors=2)
+exit_code=1

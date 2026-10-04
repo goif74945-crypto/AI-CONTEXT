@@ -2,44 +2,39 @@
 
 Conversation code: `CHAT-20261005-0224-NEXY-Q64-CONSTITUTIONAL-PHYSICS`
 Created: 2026-10-05T02:24+07:00
-Status: IN_PROGRESS
-Authority: Lo4_AI_PROPOSAL_ONLY / ADVISORY / NON_GOVERNING
-Writable repository: `goif74945-crypto/AI-CONTEXT` only
-Writable path: `คลังข้อมูลเสริม/CHAT-20261005-0224-NEXY-Q64-CONSTITUTIONAL-PHYSICS/**`
-Protected scope: every repository whose name contains `NEXY.AI`; no mutation authorized.
+Final state: COMPLETE_FOR_ISOLATED_LO4_REFERENCE
+Authority: `Lo4_AI_PROPOSAL_ONLY / ADVISORY / NON_GOVERNING`
+Writable repository used: `goif74945-crypto/AI-CONTEXT` only
+Protected scope: every repository whose name contains `NEXY.AI`; no mutation performed.
 
-## Objective
-Design, implement, test, and preserve five new Lo4 systems that are materially distinct from adjacent supplemental work, compatible with NEXY.AI principles, use exact Q64.64 fixed-point arithmetic for quantitative behavior, and remain non-canonical until formally promoted.
+## Completed
+- loaded AI-CONTEXT execution kernel, rules, NEXY project overview and current 837-row source-normalization context;
+- inspected recent supplemental work and excluded colliding concept families;
+- designed UMC, DRC, VBR, RHL and EDB;
+- implemented checked signed Q64.64 substrate and all five engines;
+- implemented conservative cross-engine demo pipeline;
+- captured TDD RED, discovered one-ULP conservation defect, fixed it, and replayed RED→GREEN;
+- expanded to 37 unit/adversarial/integration tests;
+- ran 1,000 deterministic/property stress checks;
+- compile/static PASS; executable AST float constants = 0;
+- published sealed artifacts through PR #75;
+- merged to main at `b1b47c00f88d577636d840b4fae78a2d9fd5905d`;
+- exact Git blob read-back: 40/40 matches, 0 mismatches.
 
-## Loaded authority
-- root INDEX.md, AI-BOOTSTRAP.md, AI-EXECUTION-KERNEL.md, WORK-ROUTER.md
-- rules/GLOBAL.md, AI-BEHAVIOR.md, SECURITY.md, VERIFICATION.md
-- workflows/system-design.md, implementation.md, verification.md, memory-update.md
-- projects/NEXY.AI/overview.md
-- current 837-row source-normalization matrix
+## Durable evidence
+- `evidence/HASHES.sha256`
+- `evidence/FINAL_TESTS.txt`
+- `evidence/STRESS.txt`
+- `evidence/NO_FLOAT_AST.txt`
+- `evidence/FAILURE_FIX_LOG.md`
+- `evidence/PUBLICATION_READBACK.md`
 
-## Collision exclusions
-Observed adjacent work already covers model drift, capability ABI/negotiation/composition, context taint, side-effect transactions, scoped authority leases, multimodal claim arbitration, consent-purpose binding, empirical calibration routing, incremental verification scheduling, handoff capsules, counterfactual adoption, cognitive debt, proof freshness/horizon, trust budgets, metamorphic verification, correlated-evidence independence, replay capsules, authority wind tunnels, epistemic evidence decay, and requirement conservation.
-These responsibilities are excluded from this work.
+## Remaining / intentionally unproven
+- production NEXY repository integration: NOT_VERIFIED;
+- real user-flow E4: NOT_VERIFIED;
+- load/fault/deployment E5/E6: NOT_VERIFIED;
+- distributed VBR concurrency semantics: NOT_VERIFIED;
+- Canon promotion: NOT_PERFORMED.
 
-## Candidate five
-1. UMC — Uncertainty Mass Conservation Compiler.
-2. DRC — Decision Robustness Certificate Engine.
-3. VBR — Vector Budget Reactor for non-fungible multi-dimensional plan budgets.
-4. RHL — Reversibility Half-Life Scheduler.
-5. EDB — Expectation Divergence Barrier between consequence preview and executable consequence model.
-
-## Q64.64 invariant
-All quantitative scores, budgets, uncertainty values, margins, rates, and thresholds in executable logic use signed Q64.64 integers. Float input is forbidden in the reference API. Decimal parsing is exact and explicit.
-
-## Evidence target
-- TDD red evidence for missing implementation
-- E1 compile/static proof
-- E2 unit + negative-path proof for each concept
-- E3 isolated cross-engine integration scenario
-- deterministic/property stress checks
-- exact file hashes and GitHub read-back verification
-- no production/NEXY runtime/deployment claim
-
-## Next legal action
-Create local tests first, record RED, implement the Q64.64 core and five engines, run GREEN/regression/stress, then publish only verified artifacts under this folder and re-fetch them.
+## Resume law
+Future work must treat these five systems as proposals, refresh current Canon/AI-CONTEXT first, and never infer production readiness from isolated PASS evidence.

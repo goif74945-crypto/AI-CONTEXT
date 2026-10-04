@@ -1,4 +1,18 @@
-34 unittest methods: PASS
-Seeded randomized invariant iterations: 1400
-Integration pipeline: PASS
-Result: OK
+EXACT DURABLE TARGET
+commit: 80cf0db8b300312b39347c5eff286a64b7365854
+source/test Git blob identity: 15/15 matched by git hash-object
+
+command:
+PYTHONPATH=src python -m unittest discover -s tests -v
+
+observed:
+Ran 22 tests in 0.103s
+OK
+exit: 0
+
+seeded randomized invariant iterations: 1400
+compileall: PASS (exit 0)
+AST float literal scan: PASS (0 float literals)
+isolated integration test: PASS
+
+NOTE: 34/34 was the larger local pre-write suite, not exact durable evidence.
