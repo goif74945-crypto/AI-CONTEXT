@@ -1,91 +1,56 @@
 # Temporary Execution Memory — NEXY Workstream Orthogonality & Collision Firewall (WOCF)
 
-Status: IN_PROGRESS
+Status: READY_TO_MERGE
 Truth class: EXPERIMENTAL + TASK_RECORD
 Repository-local workstream code: `CHAT-20261005-0137-NEXY-WOCF`
 Platform-native ChatGPT conversation ID: UNKNOWN_NOT_EXPOSED
 Started local time: 2026-10-05T01:37:00+07:00
 Target repository: `goif74945-crypto/AI-CONTEXT`
-Target branch: `main`
-Observed starting HEAD: `d07023af97a58d84a4332de95e3e936cd3676b35`
+Finalization branch: `wocf-20261005-0137-finalize`
 
 ## Objective
-Design, implement, execute tests for, and document an AI-proposed deterministic preflight firewall that detects collisions and excessive overlap among concurrent AI workstreams before they mutate shared project context.
+Design, implement, execute tests for, and document an AI-proposed deterministic preflight firewall that detects collisions and excessive overlap among concurrent AI workstreams before shared project-context mutation.
 
 ## Authorized write scope
-Only:
-`คลังข้อมูลเสริม/CHAT-20261005-0137-NEXY-WOCF/**`
+Only `คลังข้อมูลเสริม/CHAT-20261005-0137-NEXY-WOCF/**`, plus the isolated branch/PR metadata required to land that namespace in AI-CONTEXT.
 
 ## Protected scope
-- Do not mutate any repository whose name contains `NEXY.AI`.
-- Do not modify existing sibling workstreams.
-- Do not modify existing AI-CONTEXT files outside this namespace.
-- Do not promote this proposal into NEXY canonical law/spec.
+- No mutation to any repository whose name contains `NEXY.AI`.
+- No sibling-workstream file mutation.
+- No promotion into NEXY canonical law/spec.
 
-## Source-grounded constraints
-- NEXY treats external AI/agents as labor, not final authority.
-- Material ambiguity must not be guessed.
-- Mutation scope must be explicit.
-- Design, implementation, runtime and deployment are separate truth domains.
-- Verification claims require matching evidence.
-- Current NEXY context describes SWARM/AGENT multi-agent labor and deterministic control, making concurrent-work coordination a relevant future concern.
+## Implemented
+- Deterministic ALLOW/WARN/FREEZE engine.
+- Structural manifest validation and unsafe-path rejection.
+- Protected repository policy check.
+- ID, namespace, write-set, exclusive-resource, exact-concept and lexical-overlap collision checks.
+- Deterministic hashing and catalog-order normalization.
+- JSON fixtures/schemas.
+- CLI.
+- Unit/adversarial suite and verification runner.
+- Design, failure model, integration proposal, research backlog and evidence.
 
-## Distinctness boundary
-This workstream is intentionally not:
-- delegation authority leasing;
-- resource/cost governor;
-- proof/evidence verifier;
-- UI compiler;
-- scheduler;
-- execution engine.
+## Verification state
+PASS:
+- E1 Python compile.
+- E1 JSON parse.
+- E1 core dependency/dangerous-call static audit.
+- E2 unit/adversarial: 18/18.
+- E2 CLI allow scenario: ALLOW / exit 0.
+- E2 CLI freeze scenario: FREEZE / exit 2.
+- Exact Git blob SHA match between locally tested and branch-resident source, tests, runner, fixtures and schemas.
 
-It only evaluates whether a proposed workstream collides with existing work by namespace/write-set/exclusive-resource and deterministic lexical-concept overlap.
+NOT_VERIFIED / NOT CLAIMED:
+- Production NEXY integration.
+- Distributed atomic reservation.
+- E3/E4/E5/E6/E7.
+- Exhaustive semantic novelty across all historical prose.
 
-## Planned deliverables
-1. Task contract
-2. Distinctness evidence and non-goals
-3. Architecture + protocol
-4. Requirement ledger
-5. Standard-library Python reference implementation
-6. JSON schemas / fixtures
-7. Unit + adversarial tests
-8. Verification runner
-9. Validation report
-10. NEXY integration proposal marked AI-PROPOSED
-11. Research backlog
-12. Final audit and closed execution memory
+## Failure loop
+Initial moderate-overlap test fixture failed because its actual score was below the asserted warning boundary. The scoring formula was retained; the fixture was corrected to exercise the intended boundary; the complete suite was rerun and passed.
 
-## Required evidence
-- E0: files present in AI-CONTEXT and re-readable.
-- E1: Python compile and JSON schema/fixture syntax checks.
-- E2: executed unit/adversarial tests for deterministic collision behavior.
-- E3+: NOT REQUIRED for this standalone reference lab and must not be claimed.
+## Next action
+Open and merge a PR from the isolated branch into `main`, then re-read main and close this execution memory with the merge evidence.
 
 ## Stop conditions
-- Any required action would mutate a repository whose name contains `NEXY.AI`.
-- Any required write would leave this namespace.
-- Required authoritative constraints conflict materially.
-- Secret/credential persistence would be required.
-- Test evidence cannot support the claimed result.
-
-## Current state
-COMPLETED:
-- AI-CONTEXT bootstrap, kernel, router, relevant rules/workflows inspected.
-- NEXY overview inspected from AI-CONTEXT.
-- Supplemental inventory inspected.
-- Delegation Lease Lab, Resource Governor and OXC concept inspected to avoid duplication.
-- Unique WOCF namespace selected.
-
-IN_PROGRESS:
-- Architecture and implementation construction.
-
-BLOCKED:
-- None.
-
-NEXT ACTION:
-- Build reference implementation and tests locally, run failure loop, then persist tested artifacts and evidence.
-
-VERIFICATION STATUS:
-- Source/context grounding: PASS for inspected files.
-- Distinctness: PARTIAL; exact semantic uniqueness across all prose cannot be mathematically guaranteed.
-- Implementation/tests: NOT_VERIFIED.
+Do not claim COMPLETE until main-branch persistence and final re-read are proven.

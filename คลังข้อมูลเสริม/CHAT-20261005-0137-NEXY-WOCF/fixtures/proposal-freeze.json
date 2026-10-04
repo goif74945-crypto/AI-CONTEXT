@@ -1,0 +1,12 @@
+{
+  "workstream_id": "FIXTURE-RESOURCE-GOVERNOR-CLONE",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "namespace": "fixtures/new/resource-governor-clone",
+  "objective": "Allocate workers and verifiers under token cost latency capability privacy and proof constraints with optimized worker routing.",
+  "concept_tags": ["budget", "cost", "latency", "resource-allocation", "worker-routing"],
+  "write_paths": ["fixtures/new/resource-governor-clone"],
+  "read_paths": [],
+  "exclusive_resources": ["fixture-global-worker-budget"],
+  "status": "ACTIVE",
+  "differentiators": ["resource planning below proof authority"]
+}
