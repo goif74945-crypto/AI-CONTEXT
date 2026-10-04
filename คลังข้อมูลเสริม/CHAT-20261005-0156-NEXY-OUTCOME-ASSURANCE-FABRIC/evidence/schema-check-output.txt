@@ -1,0 +1,4 @@
+$ python -m json.tool schemas/outcome-contract.schema.json
+contract schema JSON parse: PASS
+$ python -m json.tool schemas/outcome-report.schema.json
+report schema JSON parse: PASS
