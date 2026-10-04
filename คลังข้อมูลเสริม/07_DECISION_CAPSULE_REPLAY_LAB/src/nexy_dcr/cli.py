@@ -52,6 +52,7 @@ def main(argv: list[str] | None = None) -> int:
             if not isinstance(raw, dict):
                 raise CapsuleError("plan root must be an object")
             capsule = compile_plan(raw)
+            # Compilation is not enough; reject plans whose event semantics are invalid.
             replay(capsule)
             dump_json(capsule.to_dict(), args.output)
             _print_json({"status": "PASS", "capsule_id": capsule.capsule_id, "output": str(args.output)})
