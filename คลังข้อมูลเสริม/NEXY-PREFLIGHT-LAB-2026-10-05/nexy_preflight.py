@@ -502,4 +502,113 @@ def _finding_key(finding: Finding) -> tuple[int, str, str, str]:
         finding.claim_id or "",
     )
 
-# ===== drift.py 
+# ===== drift.py =====
+
+from dataclasses import dataclass
+
+
+
+@dataclass(frozen=True, slots=True)
+class DriftReport:
+    findings: tuple[Finding, ...]
+
+    @property
+    def safe(self) -> bool:
+        return not self.findings
+
+    def to_primitive(self) -> dict[str, object]:
+        return {
+            "safe": self.safe,
+            "findings": [
+                {
+                    "code": f.code,
+                    "message": f.message,
+                    "decision": f.decision.value,
+                    "resource": f.resource,
+                }
+                for f in self.findings
+            ],
+        }
+
+
+def compare_contracts(baseline: TaskContract, candidate: TaskContract) -> DriftReport:
+    findings: list[Finding] = []
+    findings.extend(_write_expansion(baseline, candidate))
+    findings.extend(_protection_relaxation(baseline, candidate))
+    findings.extend(_new_irreversible(baseline, candidate))
+    findings.extend(_authority_removed(baseline, candidate))
+    findings.extend(_approvals_removed(baseline, candidate))
+    return DriftReport(tuple(sorted(findings, key=lambda f: (f.code, f.resource or ""))))
+
+
+def _write_expansion(baseline: TaskContract, candidate: TaskContract) -> list[Finding]:
+    old_write_resources = {
+        op.resource for op in baseline.operations if op.kind.is_mutation
+    }
+    result: list[Finding] = []
+    for op in candidate.operations:
+        if not op.kind.is_mutation or op.resource in old_write_resources:
+            continue
+        if not any(contains_scope(scope, op.resource) for scope in baseline.authorized_scope):
+            result.append(
+                Finding(
+                    code="PFL-DRIFT-WRITE-EXPANDED",
+                    message=f"Candidate adds mutation outside baseline authorized scope: '{op.resource}'.",
+                    decision=Decision.BLOCKED,
+                    resource=op.resource,
+                )
+            )
+    return result
+
+
+def _protection_relaxation(baseline: TaskContract, candidate: TaskContract) -> list[Finding]:
+    result: list[Finding] = []
+    for protected in baseline.protected_scope:
+        if not any(contains_scope(new, protected) for new in candidate.protected_scope):
+            result.append(
+                Finding(
+                    code="PFL-DRIFT-PROTECTION-RELAXED",
+                    message=f"Candidate no longer protects baseline scope '{protected}'.",
+                    decision=Decision.CONFLICT,
+                    resource=protected,
+                )
+            )
+    return result
+
+
+def _new_irreversible(baseline: TaskContract, candidate: TaskContract) -> list[Finding]:
+    old = {(op.kind.value, op.resource) for op in baseline.operations if op.irreversible}
+    result: list[Finding] = []
+    for op in candidate.operations:
+        identity = (op.kind.value, op.resource)
+        if op.irreversible and identity not in old:
+            result.append(
+                Finding(
+                    code="PFL-DRIFT-IRREVERSIBLE-ADDED",
+                    message=f"Candidate adds irreversible operation '{op.kind.value}' on '{op.resource}'.",
+                    decision=Decision.BLOCKED,
+                    resource=op.resource,
+                )
+            )
+    return result
+
+
+def _authority_removed(baseline: TaskContract, candidate: TaskContract) -> list[Finding]:
+    removed = sorted(set(baseline.authority_sources) - set(candidate.authority_sources))
+    return [
+        Finding(
+            code="PFL-DRIFT-AUTHORITY-REMOVED",
+            message=f"Candidate removes authority source '{source}'.",
+            decision=Decision.CONFLICT,
+            resource=source,
+        )
+        for source in removed
+    ]
+
+
+def _approvals_removed(baseline: TaskContract, candidate: TaskContract) -> list[Finding]:
+    removed = sorted(set(baseline.approvals) - set(candidate.approvals))
+    return [
+        Finding(
+            code="PFL-DRIFT-APPROVAL-REMOVED",
+            message=f"Candidate removes previously explicit approval '{approval
