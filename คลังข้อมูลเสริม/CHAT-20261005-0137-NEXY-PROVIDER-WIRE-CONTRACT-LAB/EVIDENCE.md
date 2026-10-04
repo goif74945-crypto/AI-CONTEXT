@@ -78,8 +78,22 @@ PASS does **not** establish:
 Those remain **NOT_VERIFIED** until provider-specific adapters and integration/runtime evidence exist.
 
 ## Verification-harness repair
-During final evidence capture, two smoke-harness mistakes were exposed after the 18 unit tests had already passed: (1) an import of a non-public helper name (`transcript_hash`), and (2) an outdated constructor keyword (`seq`) instead of the public `CanonicalEvent(sequence=..., event_type=..., source=...)` contract. The verifier was corrected to use only the public API and the whole final sequence was rerun. These were verifier defects, not library behavior failures, and they are intentionally preserved in this evidence narrative rather than hidden.
+During final evidence capture, two smoke-harness mistakes were exposed after the 18 unit tests had already passed: (1) an import of a non-public helper name (`transcript_hash`), and (2) an outdated constructor keyword (`seq`) instead of the public `CanonicalEvent(sequence=..., event_type=..., source=...)` contract. The verifier was corrected to use only the public API and the whole final sequence was rerun. These were verifier defects, not library behavior failures, and they ire intentionally preserved in this evidence narrative rather than hidden.
 
 ## Durable raw evidence artifacts
 - `TEST_RUN.txt` contains the final executed unit/regression/static/smoke commands and observed output.
 - `FILE_MANIFEST.sha256` hashes every project file except the manifest itself at manifest-generation time.
+
+## Repository persistence/read-back evidence
+The exact 24-file tested baseline was written to `goif74945-crypto/AI-CONTEXT` at commit:
+`a0f719abd9c85d1cf19ba5ab107d502940e40b30`
+
+GitHub read-back of that commit established:
+- expected project blobs: 24;
+- committed project blobs: 24;
+- missing: 0;
+- blob SHA mismatches: 0;
+- extras: 0;
+- commit changed paths outside `คลังข้อมูลเสริม/CHAT-20261005-0137-NEXY-PROVIDER-WIRE-CONTRACT-LAB/`: 0.
+
+This proves the persisted baseline matched the exact blobs assembled from the locally verified artifact. It does not elevate provider/runtime compatibility beyond the limitations already stated above.
