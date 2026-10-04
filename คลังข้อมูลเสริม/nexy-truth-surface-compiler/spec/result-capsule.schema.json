@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexy.invalid/nxts/result-capsule.schema.json",
+  "title": "NEXY Truth Surface Result Capsule v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "request_id", "objective", "decision", "summary", "facts", "uncertainties", "freeze_reasons", "evidence_refs", "receipt"],
+  "properties": {
+    "schema": {"const": "nxts.result-capsule.v0"},
+    "request_id": {"type": "string"},
+    "objective": {"type": "string"},
+    "decision": {"enum": ["RELEASE", "FREEZE"]},
+    "summary": {"type": "string"},
+    "facts": {"type": "array"},
+    "uncertainties": {"type": "array"},
+    "freeze_reasons": {"type": "array"},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compiler_version", "input_sha256", "output_sha256"],
+      "properties": {
+        "compiler_version": {"type": "string"},
+        "input_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "output_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

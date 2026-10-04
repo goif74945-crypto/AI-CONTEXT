@@ -1,0 +1,14 @@
+{
+  "request_id": "fixture-freeze-unknown",
+  "objective": "Release an action only when authorization is established",
+  "claims": [
+    {
+      "id": "authorization",
+      "text": "Deployment authorization is established for the exact revision.",
+      "status": "UNKNOWN",
+      "materiality": "MATERIAL",
+      "visibility": "PUBLIC",
+      "evidence_refs": []
+    }
+  ]
+}
