@@ -2,7 +2,7 @@
   "FAILURE_ID": "FAIL-CI-7E31A2C9",
   "REPORTER_CHAT_ID": "C-5E2A94D1",
   "SEVERITY": "P1_GLOBAL_VERIFICATION",
-  "STATUS": "OPEN",
+  "STATUS": "DUPLICATE_CONFIRMED",
   "NEXY_BRANCH": "NEXY.AI-Test-AI",
   "OBSERVED_HEAD_SHA": "1adfc1c3782f63c32eaa535c05a975bd932a7015",
   "PROBLEM": "GitHub Actions NEXY CI / Deploy Gate reports failure before any job step executes.",
@@ -26,5 +26,7 @@
     "ACTIONS_RUN:37238099202 run#1524 head=a24ab3b9254d300e31de1cdf78aec871fafab96f",
     ".github/workflows/deploy.yml push branches include NEXY.AI-Test-AI"
   ],
-  "NEXT_ACTION": "Use independent/local execution where available; investigate Actions execution plane separately. Do not classify zero-step CI failures as source-test failures."
+  "NEXT_ACTION": "Use independent/local execution where available; investigate Actions execution plane separately. Do not classify zero-step CI failures as source-test failures.",
+  "SUPERSEDED_BY": "NEXY-BUILD-CONTROL/FAILURES/F-GHA-RUNNER-0E4C31B7.md",
+  "RECONCILIATION": "Existing F-GHA-RUNNER-0E4C31B7 predates this record and contains stronger runner_id=0 plus rerun evidence. Preserve this record as corroborating evidence only."
 }
