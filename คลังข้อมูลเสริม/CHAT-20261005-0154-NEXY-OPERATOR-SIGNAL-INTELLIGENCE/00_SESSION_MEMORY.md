@@ -9,7 +9,7 @@
 - classification: `AI-PROPOSED / AUXILIARY / NOT CURRENT NEXY SPEC`
 
 ## Current state
-Reference implementation and local verification are complete. Publication/read-back verification is still required before repository completion can be claimed.
+Reference implementation, local verification, GitHub publication, and exact blob read-back verification are complete for this isolated lab.
 
 ## Locked design
 Five independent but composable operator-signal systems:
@@ -27,14 +27,27 @@ Five independent but composable operator-signal systems:
 - static production-boundary scan: no network/subprocess/eval/exec/open calls detected
 - CLI subprocess paths exercised by tests
 
+## Publication evidence
+- initial publication commit: `ef44eeaa738911e55253d05cd839a7b6da2e8914`
+- published file count at that commit: 36
+- exact blob read-back: 36/36 matched locally tested/authored bytes
+- missing: 0
+- mismatched: 0
+- extra inside target snapshot: 0
+- files outside authorized target in publication commit: 0
+- details: `10_PUBLICATION_EVIDENCE.md`
+
 ## Important repair history
 Two issues were found after the first green run and corrected before publication:
 - compressed trailing routine events were mislabeled as `collapsed_before`; contract changed to explicit `trailing_collapsed`;
 - empty-root JSON Pointer redaction was accepted but did not redact the full tree; implementation and regression test were fixed.
 
 ## Resume rule
-Do not claim COMPLETE until:
-1. files are persisted under the authorized GitHub folder;
-2. persisted critical source/test bytes match locally tested bytes;
-3. repository HEAD/read-back evidence is recorded;
-4. protected NEXY.AI repositories remain untouched.
+For future research or real NEXY adapter work, begin with:
+1. `01_TASK_CONTRACT.md`
+2. `03_FIVE_CONCEPTS.md`
+3. `04_ARCHITECTURE.md`
+4. `08_VALIDATION_REPORT.md`
+5. `10_PUBLICATION_EVIDENCE.md`
+
+Do not promote this AI proposal to canonical NEXY law without explicit authority and new integration evidence.
