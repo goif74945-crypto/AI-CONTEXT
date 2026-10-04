@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "chat_id": "CHAT-20261005-0109-NEXY-FUTURE-INTELLIGENCE",
+  "created_date": "2026-10-05",
+  "scope": "AI-CONTEXT additive knowledge only",
+  "protected_repo_pattern": "*NEXY.AI*",
+  "protected_repo_mutation": false,
+  "files": [
+    "README.md",
+    "01-FAILURE-TAXONOMY.md",
+    "02-EVIDENCE-GATES.md",
+    "03-ADVERSARIAL-EVAL-CORPUS.md",
+    "04-ARCHITECTURE-DECISION-INTELLIGENCE.md",
+    "05-CONTEXT-INTEGRITY.md",
+    "06-OBSERVABILITY-SPEC.md",
+    "07-RECOVERY-PLAYBOOK.md",
+    "08-FUTURE-RESEARCH-BACKLOG.md"
+  ],
+  "truth_policy": "Do not interpret this pack as evidence of current NEXY.AI implementation.",
+  "status": "CREATED_PENDING_READBACK_VERIFICATION"
+}
