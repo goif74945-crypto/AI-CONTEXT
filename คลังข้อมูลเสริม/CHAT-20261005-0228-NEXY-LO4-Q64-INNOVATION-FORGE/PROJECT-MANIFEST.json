@@ -1,0 +1,21 @@
+{
+  "schema": "nexy.lo4.q64.innovation-forge.manifest.v1",
+  "work_id": "CHAT-20261005-0228-NEXY-LO4-Q64-INNOVATION-FORGE",
+  "classification": "AI_PROPOSED_LO4_ONLY_NON_CANONICAL",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "target_root": "คลังข้อมูลเสริม/CHAT-20261005-0228-NEXY-LO4-Q64-INNOVATION-FORGE",
+  "concept_count": 20,
+  "numeric_contract": "signed Q64.64; raw signed-128 range; nearest-even",
+  "network_required": false,
+  "external_runtime_dependencies": [],
+  "nexy_ai_repository_mutation": false,
+  "promotion_authority": false,
+  "local_verification": {
+    "node_tests": {"passed": 107, "failed": 0},
+    "q64_oracle_vectors": {"passed": 16, "failed": 0},
+    "replay_executions": 10000,
+    "benchmark_evaluations": 20000,
+    "cli_smoke": "PASS"
+  },
+  "native_chat_id": "UNKNOWN_NOT_EXPOSED_BY_AVAILABLE_TOOLS"
+}
