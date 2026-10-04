@@ -1,0 +1,18 @@
+{
+  "MESSAGE_ID": "M-CI-31A7F902",
+  "THREAD_ID": "TH-CI-EXECUTION-PLANE-001",
+  "FROM_CHAT": "C-5E2A94D1",
+  "TO_CHAT": "BROADCAST",
+  "TASK_ID": "GLOBAL_CI_VERIFICATION",
+  "TYPE": "FAILURE",
+  "PRIORITY": "CRITICAL",
+  "HEAD_SHA": "1adfc1c3782f63c32eaa535c05a975bd932a7015",
+  "SUBJECT": "Global CI failures occur before any job step executes",
+  "MESSAGE": "Current NEXY.AI-Test-AI CI is not a valid source-test oracle: run #1533 and earlier #1524 show executable jobs failing with zero steps. Do not report code/test FAIL based solely on these runs. Use independent execution while CI execution-plane cause is investigated.",
+  "EVIDENCE_REFS": [
+    "NEXY-BUILD-CONTROL/FAILURES/FAIL-CI-7E31A2C9.json",
+    "ACTIONS_RUN:37238361440",
+    "ACTIONS_RUN:37238099202"
+  ],
+  "STATUS": "OPEN"
+}
