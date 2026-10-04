@@ -2,9 +2,9 @@
 
 > **AI PROPOSAL / SUPPLEMENTAL PROTOTYPE — NOT CANONICAL NEXY.AI LAW**
 
-Conversation code: CHAT-20261005-0155-NEXY-VERIFICATION-ACCELERATOR-MESH
+Conversation code: `CHAT-20261005-0155-NEXY-VERIFICATION-ACCELERATOR-MESH`
 
-This workspace contains five orthogonal, evidence-first prototype systems intended for future integration evaluation with NEXY.AI. It was built only in AI-CONTEXT supplemental storage. No repository whose name contains NEXY.AI was modified.
+This workspace contains five orthogonal, evidence-first prototype systems intended for future integration evaluation with NEXY.AI. It was built only in AI-CONTEXT supplemental storage. No repository whose name contains `NEXY.AI` was modified.
 
 ## Five concepts
 
@@ -18,7 +18,7 @@ This workspace contains five orthogonal, evidence-first prototype systems intend
 
 ## Proposed mesh
 
-Behavioral Canary -> Metamorphic Verification -> Counterexample Minimization -> Correlated Evidence Firewall -> Assumption Liquidation Planner -> new evidence -> repeat gate.
+`Behavioral Canary -> Metamorphic Verification -> Counterexample Minimization -> Correlated Evidence Firewall -> Assumption Liquidation Planner -> new evidence -> repeat gate`
 
 The flow is fail-closed. No module turns an assumption into fact and no module claims production/runtime/deployment proof.
 
@@ -27,13 +27,14 @@ The flow is fail-closed. No module turns an assumption into fact and no module c
     python -m compileall -q nexy_vam tests
     python -m unittest discover -s tests -p 'test_*.py' -v
     PYTHONPATH=. python tests/stress_properties.py
-    python -m pip wheel . --no-deps --no-build-isolation -w evidence
+    SOURCE_DATE_EPOCH=1704067200 python -m pip wheel . --no-deps --no-build-isolation -w evidence
 
-Verified before repository write:
+Verified for the prototype package:
 - unit + integration: 20/20 PASS
 - deterministic/property stress: 1002 checks PASS
 - package build: PASS
-- wheel SHA-256: 56c275d96fcad546daef4b06a2b3e68ef5b84fe184eecc63b9116fad3791f18a
+- deterministic wheel reproducibility: 2/2 matching builds
+- wheel SHA-256: 8518f646fc6f8689584f68c66ed9386aa7e52a15881dbd20cae40c13fcafc755
 
 ## Evidence boundary
 
