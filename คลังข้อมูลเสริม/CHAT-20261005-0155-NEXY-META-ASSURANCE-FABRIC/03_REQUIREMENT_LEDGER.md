@@ -14,9 +14,9 @@ Mission: `MISSION-NEXY-META-ASSURANCE-20261005-0155-A`
 | R8 | Fail closed on invalid/insufficient input | explicit exceptions + negative tests | PASS for tested classes |
 | R9 | No hidden network/clock/random/env/process I/O in core | AST forbidden-import audit | PASS |
 | R10 | No NEXY.AI repository mutation | all writes scoped to AI-CONTEXT unique folder | PASS based on performed actions |
-| R11 | Design + code + test + evidence persisted | folder contents + read-back required at final gate | IN PROGRESS until GitHub read-back |
+| R11 | Design + code + test + evidence persisted | final GitHub directory/read-back gate: root + src + tests + docs + evidence complete | PASS |
 | R12 | Collision checks recorded with bounded wording | 00_TEMP_MEMORY + search results | PASS |
-| R13 | Final read-back verifies durable persistence | final verification step | IN PROGRESS |
+| R13 | Final read-back verifies durable persistence | GitHub read-back observed every expected file; raw evidence content re-read | PASS |
 | R14 | Integration claims limited to proposal compatibility | README/docs explicit boundaries | PASS |
 
 ## Evidence classes
