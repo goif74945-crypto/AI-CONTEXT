@@ -139,4 +139,128 @@ class TaskContract:
         return cls(
             task_id=_require_nonblank(str(raw.get("task_id", "")), "task_id"),
             objective=_require_nonblank(str(raw.get("objective", "")), "objective"),
-            target=str(raw.get("target",
+            target=str(raw.get("target", "")).strip(),
+            authorized_scope=strings("authorized_scope"),
+            protected_scope=strings("protected_scope"),
+            authority_sources=strings("authority_sources"),
+            preconditions=strings("preconditions"),
+            operations=operations,
+            claims=claims,
+            evidence=evidence,
+            approvals=strings("approvals"),
+        )
+
+    def to_primitive(self) -> dict[str, Any]:
+        data = asdict(self)
+        for op in data["operations"]:
+            op["kind"] = op["kind"].value if isinstance(op["kind"], Enum) else op["kind"]
+        for ev in data["evidence"]:
+            key = "evidence_class"
+            ev[key] = ev[key].value if isinstance(ev[key], Enum) else ev[key]
+        return data
+
+
+@dataclass(frozen=True, slots=True)
+class AdmissionEnvelope:
+    contract_hash: str
+    decision: Decision
+    findings: tuple[Finding, ...] = field(default_factory=tuple)
+    required_evidence: Mapping[str, EvidenceClass] = field(default_factory=dict)
+    required_capabilities: tuple[str, ...] = field(default_factory=tuple)
+
+    def to_primitive(self) -> dict[str, Any]:
+        return {
+            "contract_hash": self.contract_hash,
+            "decision": self.decision.value,
+            "findings": [
+                {
+                    "code": f.code,
+                    "message": f.message,
+                    "decision": f.decision.value,
+                    "resource": f.resource,
+                    "claim_id": f.claim_id,
+                }
+                for f in self.findings
+            ],
+            "required_evidence": {k: v.value for k, v in sorted(self.required_evidence.items())},
+            "required_capabilities": list(self.required_capabilities),
+        }
+
+
+def _mapping_list(value: Any, name: str) -> Iterable[Mapping[str, Any]]:
+    if not isinstance(value, (list, tuple)):
+        raise ValueError(f"{name} must be a list")
+    for item in value:
+        if not isinstance(item, Mapping):
+            raise ValueError(f"{name} items must be objects")
+        yield item
+
+
+def _require_nonblank(value: str, field_name: str) -> str:
+    normalized = value.strip()
+    if not normalized:
+        raise ValueError(f"{field_name} must not be blank")
+    return normalized
+
+# ===== canonical.py =====
+
+import hashlib
+import json
+from typing import Any
+
+
+def canonical_json(value: Any) -> str:
+    """Serialize JSON-compatible data with a stable byte representation."""
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def sha256_identity(value: Any) -> str:
+    payload = canonical_json(value).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+# ===== pathing.py =====
+
+
+def normalize_scope(value: str) -> str:
+    """Lexically normalize a logical repository/resource scope.
+
+    The first two segments are treated as repository owner/name and case-folded,
+    while the remaining logical path remains case-sensitive. This mirrors GitHub
+    repository identity without pretending every downstream filesystem is
+    case-insensitive.
+    """
+    raw = value.replace("\\", "/").strip()
+    while "//" in raw:
+        raw = raw.replace("//", "/")
+
+    parts: list[str] = []
+    for part in raw.split("/"):
+        if not part or part == ".":
+            continue
+        if part == "..":
+            if parts and parts[-1] != "..":
+                parts.pop()
+            else:
+                parts.append(part)
+            continue
+        parts.append(part)
+
+    if len(parts) >= 1:
+        parts[0] = parts[0].casefold()
+    if len(parts) >= 2:
+        parts[1] = parts[1].casefold()
+    return "/".join(parts)
+
+
+def contains_scope(parent: str, child: str) -> bool:
+    """Boundary-aware logical scope containment, not a filesystem sandbox."""
+    p = normalize_scope(parent)
+    c = normalize_scope(child)
+    if p == c:
+        return True
+    if not p:
+        return False
+    return c.startswith(p + "/")
+
+
+def overlaps_scope(left: str, ri
