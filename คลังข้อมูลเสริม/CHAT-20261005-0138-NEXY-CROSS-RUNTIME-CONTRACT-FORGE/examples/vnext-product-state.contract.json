@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "contractId": "nexy.observed.vnext-product-lifecycle",
+  "contractVersion": "0.1.0",
+  "provenance": {
+    "observedRepository": "goif74945-crypto/NEXY.AI-",
+    "observedRef": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "observedPaths": [
+      "core-kernel/src/kernel/vnext_matrix.rs",
+      "packages/core/vnext-state-matrix.ts",
+      "packages/contracts/state.ts"
+    ],
+    "observedAt": "2026-10-05T01:38:00+07:00",
+    "note": "Observed compatibility fixture only. It is not promoted to NEXY.AI authority and must be refreshed against the target commit before integration."
+  },
+  "enums": [
+    {
+      "name": "VNextState",
+      "wireName": "vnext_state",
+      "members": [
+        { "name": "Init", "wire": "INIT" },
+        { "name": "Ready", "wire": "READY" },
+        { "name": "Running", "wire": "RUNNING" },
+        { "name": "Verifying", "wire": "VERIFYING" },
+        { "name": "Consensus", "wire": "CONSENSUS" },
+        { "name": "Stable", "wire": "STABLE" },
+        { "name": "Freeze", "wire": "FREEZE" },
+        { "name": "Stop", "wire": "STOP" }
+      ]
+    },
+    {
+      "name": "VNextEvent",
+      "wireName": "vnext_event",
+      "members": [
+        { "name": "Boot", "wire": "boot" },
+        { "name": "Execute", "wire": "execute" },
+        { "name": "AgentsDone", "wire": "agents_done" },
+        { "name": "Verified", "wire": "verified" },
+        { "name": "Accepted", "wire": "accepted" },
+        { "name": "Rejected", "wire": "rejected" },
+        { "name": "Recover", "wire": "recover" },
+        { "name": "Cancel", "wire": "cancel" },
+        { "name": "Error", "wire": "error" },
+        { "name": "Timeout", "wire": "timeout" },
+        { "name": "Fatal", "wire": "fatal" }
+      ]
+    },
+    {
+      "name": "VNextActor",
+      "wireName": "vnext_actor",
+      "members": [
+        { "name": "Core", "wire": "CORE" },
+        { "name": "Swarm", "wire": "SWARM" },
+        { "name": "Judge", "wire": "JUDGE" },
+        { "name": "Owner", "wire": "OWNER" },
+        { "name": "System", "wire": "SYSTEM" },
+        { "name": "Law", "wire": "LAW" },
+        { "name": "Auth", "wire": "AUTH" },
+        { "name": "Vault", "wire": "VAULT" },
+        { "name": "Api", "wire": "API" }
+      ]
+    }
+  ],
+  "stateMachines": [
+    {
+      "name": "VNextLifecycle",
+      "stateEnum": "VNextState",
+      "eventEnum": "VNextEvent",
+      "actorEnum": "VNextActor",
+      "initialState": "INIT",
+      "terminalStates": ["STOP"],
+      "transitions": [
+        { "from": "INIT", "event": "boot", "to": "READY", "actors": ["CORE"], "guards": ["not_in_stop", "system_valid"] },
+        { "from": "READY", "event": "execute", "to": "RUNNING", "actors": ["CORE"], "guards": ["not_in_stop", "directive_valid"] },
+        { "from": "RUNNING", "event": "agents_done", "to": "VERIFYING", "actors": ["SWARM"], "guards": ["not_in_stop", "results_exist"] },
+        { "from": "VERIFYING", "event": "verified", "to": "CONSENSUS", "actors": ["JUDGE"], "guards": ["not_in_stop", "evidence_valid"] },
+        { "from": "CONSENSUS", "event": "accepted", "to": "STABLE", "actors": ["JUDGE"], "guards": ["not_in_stop", "quorum_satisfied", "release_policy_passed"] },
+        { "from": "CONSENSUS", "event": "rejected", "to": "FREEZE", "actors": ["JUDGE"], "guards": ["not_in_stop"] },
+        { "from": "RUNNING", "event": "cancel", "to": "FREEZE", "actors": ["OWNER"], "guards": ["not_in_stop"] },
+        { "from": "VERIFYING", "event": "cancel", "to": "FREEZE", "actors": ["OWNER"], "guards": ["not_in_stop"] },
+        { "from": "CONSENSUS", "event": "cancel", "to": "FREEZE", "actors": ["OWNER"], "guards": ["not_in_stop"] },
+        { "from": "FREEZE", "event": "recover", "to": "READY", "actors": ["OWNER", "SYSTEM"], "guards": ["not_in_stop", "freeze_recovery_allowed"] },
+        { "from": "RUNNING", "event": "timeout", "to": "FREEZE", "actors": ["SYSTEM"], "guards": ["not_in_stop"] },
+        { "from": "CONSENSUS", "event": "timeout", "to": "FREEZE", "actors": ["SYSTEM"], "guards": ["not_in_stop"] },
+        { "from": "INIT", "event": "error", "to": "FREEZE", "actors": ["LAW", "CORE", "AUTH", "VAULT", "SWARM", "API"], "guards": ["not_in_stop"] },
+        { "from": "READY", "event": "error", "to": "FREEZE", "actors": ["LAW", "CORE", "AUTH", "VAULT", "SWARM", "API"], "guards": ["not_in_stop"] },
+        { "from": "RUNNING", "event": "error", "to": "FREEZE", "actors": ["LAW", "CORE", "AUTH", "VAULT", "SWARM", "API"], "guards": ["not_in_stop"] },
+        { "from": "VERIFYING", "event": "error", "to": "FREEZE", "actors": ["LAW", "CORE", "AUTH", "VAULT", "SWARM", "API"], "guards": ["not_in_stop"] },
+        { "from": "CONSENSUS", "event": "error", "to": "FREEZE", "actors": ["LAW", "CORE", "AUTH", "VAULT", "SWARM", "API"], "guards": ["not_in_stop"] },
+        { "from": "STABLE", "event": "error", "to": "FREEZE", "actors": ["LAW", "CORE", "AUTH", "VAULT", "SWARM", "API"], "guards": ["not_in_stop"] },
+        { "from": "FREEZE", "event": "error", "to": "FREEZE", "actors": ["LAW", "CORE", "AUTH", "VAULT", "SWARM", "API"], "guards": ["not_in_stop"] },
+        { "from": "INIT", "event": "fatal", "to": "STOP", "actors": ["LAW", "AUTH"], "guards": ["not_in_stop"] },
+        { "from": "READY", "event": "fatal", "to": "STOP", "actors": ["LAW", "AUTH"], "guards": ["not_in_stop"] },
+        { "from": "RUNNING", "event": "fatal", "to": "STOP", "actors": ["LAW", "AUTH"], "guards": ["not_in_stop"] },
+        { "from": "VERIFYING", "event": "fatal", "to": "STOP", "actors": ["LAW", "AUTH"], "guards": ["not_in_stop"] },
+        { "from": "CONSENSUS", "event": "fatal", "to": "STOP", "actors": ["LAW", "AUTH"], "guards": ["not_in_stop"] },
+        { "from": "STABLE", "event": "fatal", "to": "STOP", "actors": ["LAW", "AUTH"], "guards": ["not_in_stop"] },
+        { "from": "FREEZE", "event": "fatal", "to": "STOP", "actors": ["LAW", "AUTH"], "guards": ["not_in_stop"] }
+      ]
+    }
+  ]
+}
