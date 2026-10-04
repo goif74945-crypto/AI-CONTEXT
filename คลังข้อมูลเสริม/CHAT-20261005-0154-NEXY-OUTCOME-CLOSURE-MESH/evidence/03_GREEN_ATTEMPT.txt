@@ -1,0 +1,145 @@
+
+> nexy-outcome-closure-mesh-reference@0.1.0 test
+> npm run build && node --test tests/*.test.mjs
+
+
+> nexy-outcome-closure-mesh-reference@0.1.0 build
+> tsc -p tsconfig.json
+
+TAP version 13
+# Subtest: can only become READY_FOR_HUMAN_REVIEW, never auto-approved
+ok 1 - can only become READY_FOR_HUMAN_REVIEW, never auto-approved
+  ---
+  duration_ms: 3.144282
+  type: 'test'
+  ...
+# Subtest: freezes on protected-scope mutation
+ok 2 - freezes on protected-scope mutation
+  ---
+  duration_ms: 0.516619
+  type: 'test'
+  ...
+# Subtest: holds when overlap remains unresolved
+ok 3 - holds when overlap remains unresolved
+  ---
+  duration_ms: 0.292092
+  type: 'test'
+  ...
+# Subtest: holds when rollback proof is absent
+ok 4 - holds when rollback proof is absent
+  ---
+  duration_ms: 0.284526
+  type: 'test'
+  ...
+# Subtest: marks a candidate BENEFICIAL only with declared improvement and no forbidden regression
+ok 5 - marks a candidate BENEFICIAL only with declared improvement and no forbidden regression
+  ---
+  duration_ms: 3.071896
+  type: 'test'
+  ...
+# Subtest: rejects a critical regression even when another axis improves
+ok 6 - rejects a critical regression even when another axis improves
+  ---
+  duration_ms: 0.548738
+  type: 'test'
+  ...
+# Subtest: is inconclusive when a required observation is missing
+ok 7 - is inconclusive when a required observation is missing
+  ---
+  duration_ms: 0.334248
+  type: 'test'
+  ...
+# Subtest: does not call an unchanged candidate beneficial
+ok 8 - does not call an unchanged candidate beneficial
+  ---
+  duration_ms: 0.211184
+  type: 'test'
+  ...
+# Subtest: end-to-end mesh moves from unresolved work to human-review-ready without auto-promotion
+ok 9 - end-to-end mesh moves from unresolved work to human-review-ready without auto-promotion
+  ---
+  duration_ms: 5.179127
+  type: 'test'
+  ...
+# Subtest: closes only when every required predicate has enough evidence and no forbidden predicate fires
+ok 10 - closes only when every required predicate has enough evidence and no forbidden predicate fires
+  ---
+  duration_ms: 3.299392
+  type: 'test'
+  ...
+# Subtest: stays open when evidence is missing
+ok 11 - stays open when evidence is missing
+  ---
+  duration_ms: 1.000351
+  type: 'test'
+  ...
+# Subtest: freezes when a forbidden condition is satisfied
+ok 12 - freezes when a forbidden condition is satisfied
+  ---
+  duration_ms: 0.425838
+  type: 'test'
+  ...
+# Subtest: is deterministic across input ordering
+ok 13 - is deterministic across input ordering
+  ---
+  duration_ms: 1.245252
+  type: 'test'
+  ...
+# Subtest: allows COMPLETE only when every obligation passes
+ok 14 - allows COMPLETE only when every obligation passes
+  ---
+  duration_ms: 2.613198
+  type: 'test'
+  ...
+# Subtest: unknown work prevents a completion claim
+ok 15 - unknown work prevents a completion claim
+  ---
+  duration_ms: 0.418104
+  type: 'test'
+  ...
+# Subtest: blocked outranks pending
+ok 16 - blocked outranks pending
+  ---
+  duration_ms: 0.38453
+  type: 'test'
+  ...
+# Subtest: empty obligation set is not verified
+ok 17 - empty obligation set is not verified
+  ---
+  duration_ms: 0.382715
+  type: 'test'
+  ...
+# Subtest: chooses the minimum-cost safe probe cover deterministically
+ok 18 - chooses the minimum-cost safe probe cover deterministically
+  ---
+  duration_ms: 4.692799
+  type: 'test'
+  ...
+# Subtest: never selects irreversible probes
+ok 19 - never selects irreversible probes
+  ---
+  duration_ms: 0.654268
+  type: 'test'
+  ...
+# Subtest: rejects reversible writes that have no rollback
+ok 20 - rejects reversible writes that have no rollback
+  ---
+  duration_ms: 0.434916
+  type: 'test'
+  ...
+# Subtest: returns READY when no blocking unknown exists
+ok 21 - returns READY when no blocking unknown exists
+  ---
+  duration_ms: 0.272808
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 152.777972
+GREEN_ATTEMPT_EXIT_CODE=0

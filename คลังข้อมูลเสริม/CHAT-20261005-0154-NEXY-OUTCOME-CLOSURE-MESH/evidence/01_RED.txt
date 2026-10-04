@@ -1,0 +1,33 @@
+
+> nexy-outcome-closure-mesh-reference@0.1.0 test
+> npm run build && node --test dist/tests/*.test.js
+
+
+> nexy-outcome-closure-mesh-reference@0.1.0 build
+> tsc -p tsconfig.json
+
+tests/adoption_readiness.test.ts(1,18): error TS2307: Cannot find module 'node:test' or its corresponding type declarations.
+tests/adoption_readiness.test.ts(2,20): error TS2307: Cannot find module 'node:assert/strict' or its corresponding type declarations.
+tests/adoption_readiness.test.ts(3,43): error TS2307: Cannot find module '../src/adoption_readiness.js' or its corresponding type declarations.
+tests/benefit_regression.test.ts(1,18): error TS2307: Cannot find module 'node:test' or its corresponding type declarations.
+tests/benefit_regression.test.ts(2,20): error TS2307: Cannot find module 'node:assert/strict' or its corresponding type declarations.
+tests/benefit_regression.test.ts(3,40): error TS2307: Cannot find module '../src/benefit_regression.js' or its corresponding type declarations.
+tests/integration.test.ts(1,18): error TS2307: Cannot find module 'node:test' or its corresponding type declarations.
+tests/integration.test.ts(2,20): error TS2307: Cannot find module 'node:assert/strict' or its corresponding type declarations.
+tests/integration.test.ts(3,40): error TS2307: Cannot find module '../src/outcome_closure.js' or its corresponding type declarations.
+tests/integration.test.ts(4,35): error TS2307: Cannot find module '../src/progress_truth.js' or its corresponding type declarations.
+tests/integration.test.ts(5,38): error TS2307: Cannot find module '../src/reversible_probe.js' or its corresponding type declarations.
+tests/integration.test.ts(6,40): error TS2307: Cannot find module '../src/benefit_regression.js' or its corresponding type declarations.
+tests/integration.test.ts(7,43): error TS2307: Cannot find module '../src/adoption_readiness.js' or its corresponding type declarations.
+tests/outcome_closure.test.ts(1,18): error TS2307: Cannot find module 'node:test' or its corresponding type declarations.
+tests/outcome_closure.test.ts(2,20): error TS2307: Cannot find module 'node:assert/strict' or its corresponding type declarations.
+tests/outcome_closure.test.ts(3,40): error TS2307: Cannot find module '../src/outcome_closure.js' or its corresponding type declarations.
+tests/progress_truth.test.ts(1,18): error TS2307: Cannot find module 'node:test' or its corresponding type declarations.
+tests/progress_truth.test.ts(2,20): error TS2307: Cannot find module 'node:assert/strict' or its corresponding type declarations.
+tests/progress_truth.test.ts(3,35): error TS2307: Cannot find module '../src/progress_truth.js' or its corresponding type declarations.
+tests/reversible_probe.test.ts(1,18): error TS2307: Cannot find module 'node:test' or its corresponding type declarations.
+tests/reversible_probe.test.ts(2,20): error TS2307: Cannot find module 'node:assert/strict' or its corresponding type declarations.
+tests/reversible_probe.test.ts(3,38): error TS2307: Cannot find module '../src/reversible_probe.js' or its corresponding type declarations.
+tests/reversible_probe.test.ts(32,41): error TS7006: Parameter 'x' implicitly has an 'any' type.
+tests/reversible_probe.test.ts(44,41): error TS7006: Parameter 'x' implicitly has an 'any' type.
+RED_EXIT_CODE=2
