@@ -1,0 +1,53 @@
+== FINAL Python compileall ==
+PASS
+== FINAL Python unit tests ==
+test_critical_timeout_freezes (test_simulator.SimulatorTests.test_critical_timeout_freezes) ... ok
+test_invalid_manifest_freezes_before_execution (test_simulator.SimulatorTests.test_invalid_manifest_freezes_before_execution) ... ok
+test_invalid_result_schema_freezes (test_simulator.SimulatorTests.test_invalid_result_schema_freezes) ... ok
+test_noncritical_timeout_can_exclude_when_quorum_survives (test_simulator.SimulatorTests.test_noncritical_timeout_can_exclude_when_quorum_survives) ... ok
+test_noncritical_timeout_freezes_when_quorum_would_fail (test_simulator.SimulatorTests.test_noncritical_timeout_freezes_when_quorum_would_fail) ... ok
+test_provider_failure_freezes (test_simulator.SimulatorTests.test_provider_failure_freezes) ... ok
+test_unknown_quorum_freezes_instead_of_guessing (test_simulator.SimulatorTests.test_unknown_quorum_freezes_instead_of_guessing) ... ok
+test_valid_result_never_releases_directly (test_simulator.SimulatorTests.test_valid_result_never_releases_directly) ... ok
+test_authority_escalation_is_rejected (test_validator.ValidatorTests.test_authority_escalation_is_rejected) ... ok
+test_critical_timeout_must_be_30_seconds (test_validator.ValidatorTests.test_critical_timeout_must_be_30_seconds) ... ok
+test_digest_changes_when_semantics_change (test_validator.ValidatorTests.test_digest_changes_when_semantics_change) ... ok
+test_duplicate_modes_rejected (test_validator.ValidatorTests.test_duplicate_modes_rejected) ... ok
+test_issue_order_is_deterministic (test_validator.ValidatorTests.test_issue_order_is_deterministic) ... ok
+test_missing_operation_rejected (test_validator.ValidatorTests.test_missing_operation_rejected) ... ok
+test_non_object_manifest_fails_without_crash (test_validator.ValidatorTests.test_non_object_manifest_fails_without_crash) ... ok
+test_report_digest_is_deterministic_for_key_order (test_validator.ValidatorTests.test_report_digest_is_deterministic_for_key_order) ... ok
+test_secret_persistence_rejected (test_validator.ValidatorTests.test_secret_persistence_rejected) ... ok
+test_timeout_boundaries (test_validator.ValidatorTests.test_timeout_boundaries) ... ok
+test_unknown_mode_rejected (test_validator.ValidatorTests.test_unknown_mode_rejected) ... ok
+test_valid_critical_passes (test_validator.ValidatorTests.test_valid_critical_passes) ... ok
+test_valid_noncritical_passes (test_validator.ValidatorTests.test_valid_noncritical_passes) ... ok
+test_wrong_boolean_types_rejected (test_validator.ValidatorTests.test_wrong_boolean_types_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.008s
+
+OK
+== FINAL TypeScript typecheck ==
+PASS
+== FINAL TypeScript tests ==
+TypeScript mirror tests: PASS (9 assertions)
+== FINAL parity ==
+PASS
+== FINAL schema ==
+schema_check=PASS
+valid-noncritical.json: expected_valid=True observed_valid=True errors=0
+valid-critical.json: expected_valid=True observed_valid=True errors=0
+invalid-critical-timeout.json: expected_valid=False observed_valid=False errors=1
+invalid-authority-escalation.json: expected_valid=False observed_valid=False errors=12
+fixture_expectations=PASS
+== FINAL CLI ==
+positive_validate:
+exit=0
+{"issues":[],"manifest_digest":"3cfdb4174ceb1f7ea0db304601bbec2ed226717ba5c8de75cec63d2e48e2424c","report_digest":"59aa78caa76f3148ef4e06fea45ad08bf63e8ad13b75cf3acb7a63751209196f","required_evidence":["E1: schema/static validation of the real adapter implementation","E2: unit tests for execute/cancel/healthcheck and result parsing","E3: integration tests through the real NEXY SWARM adapter boundary","E5: runtime timeout/health/failure evidence before operational claims"],"scope_statement":"Standalone preflight only. PASS does not prove NEXY.AI implementation, runtime integration, release eligibility, deployment readiness, or provider correctness.","status":"PASS"}
+negative_validate:
+exit=2
+{"issues":[{"classification":"SOURCE_FACT","code":"DOC-C.AGENT_ADAPTER_OPERATIONS","message":"Missing required AgentAdapter operation(s): cancel, healthcheck.","path":"$.adapter.operations"},{"classification":"SOURCE_FACT","code":"DOC-C.AGENT_SUPPORTED_MODES","message":"Unsupported NEXY mode(s): turbo; allowed: audit, fast, strict.","path":"$.adapter.supported_modes"},{"classification":"SOURCE_FACT","code":"DOC-C.AGENT_TIMEOUT_RANGE","message":"timeout_ms must be an integer in [10000, 60000].","path":"$.adapter.timeout_ms"},{"classification":"SOURCE_FACT","code":"DOC-C.CONTEXT_CAPACITY_DECLARED","message":"context_capacity must be a positive integer.","path":"$.adapter.context_capacity"},{"classification":"SOURCE_FACT","code":"DOC-C.DEPENDENCY.SWARM_TO_VAULT_FORBIDDEN","message":"direct_vault_write must be false.","path":"$.authority.direct_vault_write"},{"classification":"SOURCE_FACT","code":"DOC-C.PIPELINE.NO_AUTOMATIC_RETRY","message":"automatic_retry must be false.","path":"$.authority.automatic_retry"},{"classification":"SOURCE_FACT","code":"NEXY.CORE.NO_WORKER_AUTHORITY_ESCALATION","message":"mutates_core_state must be false.","path":"$.authority.mutates_core_state"},{"classification":"SOURCE_FACT","code":"NEXY.CORE.NO_WORKER_RELEASE","message":"direct_release must be false.","path":"$.authority.direct_release"},{"classification":"SOURCE_FACT","code":"NEXY.CORE.WORKER_NOT_AUTHORITY","message":"candidate_only must be true.","path":"$.authority.candidate_only"},{"classification":"SOURCE_FACT","code":"NEXY.SECURITY.NO_SECRET_PERSISTENCE","message":"persists_secrets must be false.","path":"$.security.persists_secrets"},{"classification":"SOURCE_FACT","code":"NEXY.SECURITY.SERVER_SIDE_RUNTIME_SECRETS","message":"secret_delivery must be 'runtime_injection'; provider secrets must not be embedded in adapter artifacts.","path":"$.security.secret_delivery"}],"manifest_digest":"f6040a76962650b397b38ffb618ffe9b2ec3e8874d92544495588110159f171f","report_digest":"d3de6570f0c0bdef0a7e28d894cfafbd6815c245556ba9e0bfd663a15319e40c","required_evidence":["E1: schema/static validation of the real adapter implementation","E2: unit tests for execute/cancel/healthcheck and result parsing","E3: integration tests through the real NEXY SWARM adapter boundary","E5: runtime timeout/health/failure evidence before operational claims"],"scope_statement":"Standalone preflight only. PASS does not prove NEXY.AI implementation, runtime integration, release eligibility, deployment readiness, or provider correctness.","status":"FAIL"}
+positive_simulate:
+exit=0
+{"action":"FREEZE","event":"timeout","limitation":"Deterministic lab simulation only; this is not E3/E5 evidence from the real NEXY.AI runtime.","manifest_digest":"0785539cb4c4541eb9be73c012ebef77e093855260895fd3f624305e7a2b7584","reason_code":"AGENT_TIMEOUT_CRITICAL","report_digest":"9288fc2e4513aa72e6e69e4b509678cca2a2f7461451f8dc6ab8903250eee967","status":"PASS"}

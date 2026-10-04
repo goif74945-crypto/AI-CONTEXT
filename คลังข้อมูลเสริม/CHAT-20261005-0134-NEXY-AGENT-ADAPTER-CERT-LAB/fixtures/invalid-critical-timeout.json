@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "adapter": {
+    "id": "provider.critical",
+    "provider": "CriticalExampleAI",
+    "version": "2.0.0",
+    "supported_modes": ["strict"],
+    "deterministic_capable": true,
+    "critical": true,
+    "timeout_ms": 60000,
+    "context_capacity": 262144,
+    "operations": ["execute", "cancel", "healthcheck"]
+  },
+  "authority": {
+    "candidate_only": true,
+    "direct_release": false,
+    "direct_vault_write": false,
+    "mutates_core_state": false,
+    "automatic_retry": false
+  },
+  "security": {
+    "secret_delivery": "runtime_injection",
+    "persists_secrets": false
+  }
+}
