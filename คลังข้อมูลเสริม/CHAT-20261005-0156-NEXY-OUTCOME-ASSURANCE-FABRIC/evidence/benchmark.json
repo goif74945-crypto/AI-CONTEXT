@@ -1,0 +1,1 @@
+{"environment_note": "local sandbox; timings are informational, not a production SLA", "frontier_120_candidates_median_seconds": 0.014656088500004216, "recovery_10_actions_exact_search_median_seconds": 0.04012989199998174, "verify_20000_seconds": 1.2524190769999848, "verify_ops_per_second": 15969.095622455328}
