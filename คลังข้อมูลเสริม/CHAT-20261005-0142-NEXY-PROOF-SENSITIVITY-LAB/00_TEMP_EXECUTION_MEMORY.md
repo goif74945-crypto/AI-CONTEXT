@@ -82,12 +82,12 @@ This is bounded deduplication evidence, not a universal proof that no semantical
 
 ## Work DAG
 - W01 authority/context/deduplication baseline — PASS
-- W02 durable mission checkpoint + task contract — IN_PROGRESS
-- W03 architecture + requirement ledger — PENDING
-- W04 TDD RED tests — PENDING
-- W05 implementation GREEN — PENDING
-- W06 refactor + static validation — PENDING
-- W07 focused/unit/integration/determinism tests — PENDING
+- W02 durable mission checkpoint + task contract — PASS
+- W03 architecture + requirement ledger — IN_PROGRESS
+- W04 TDD RED tests — PASS
+- W05 implementation GREEN — PASS
+- W06 refactor + static validation — PASS
+- W07 focused/unit/integration/determinism tests — IN_PROGRESS
 - W08 independent review/security/truth audit — PENDING
 - W09 repository write + read-back verification — PENDING
 - W10 final audit/completion certificate — PENDING
@@ -110,3 +110,16 @@ Finalize the architecture and tests locally, execute the RED phase, implement th
 
 ## Resume rule
 On resume: read this file, root `INDEX.md`, `AI-EXECUTION-KERNEL.md`, re-check the target folder and latest commit, then continue from the first non-PASS work item. Never promote planned/unverified work to fact.
+
+
+## Checkpoint — implementation wave 1
+Observed local verification against the current authored workspace contents:
+- Python test suite: 42 tests PASS after multiple RED→GREEN cycles.
+- Static compile: `python -m compileall -q src tests` exited successfully.
+- Deterministic malformed-input sweep: 1,000 generated malformed/invalid inputs; 0 unhandled exceptions; all 1,000 returned FREEZE.
+- Import audit over `src/**/*.py`: no imports of socket, requests, urllib, httpx, subprocess, random, secrets, or time.
+- Confirmed repaired hostile-input defects: unknown fields, irrelevant fields, invalid metadata types, non-finite JSON values, numeric overflow, duplicate JSON keys, non-standard NaN literal, huge array indices, cyclic programmatic input, and raw declared-mutant denominator accounting.
+- Runtime claims above are local E1/E2 observations only. Repository persistence/read-back and final integration evidence remain pending.
+
+### Current next action
+Finish architecture/integration/threat-model documents and examples, run final E1/E2/E3 regression against the frozen local artifact set, then persist the exact tested contents into this mission folder and read them back.

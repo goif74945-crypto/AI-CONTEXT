@@ -32,8 +32,8 @@ TAG_RULES = {
     "security": {"security", "trust", "threat", "boundary", "poisoning"},
 }
 
-_TOKEN_RE = re.compile(r"[A-Za-z0-9]+|[฀-๿]+", flags=re.UNICODE)
-_DATE_LIKE_RE = re.compile(r"^(?:d{4,}|d{1,4}td+)$", flags=re.IGNORECASE)
+_TOKEN_RE = re.compile(r"[A-Za-z0-9]+|[\u0E00-\u0E7F]+", flags=re.UNICODE)
+_DATE_LIKE_RE = re.compile(r"^(?:\d{4,}|\d{1,4}t\d+)$", flags=re.IGNORECASE)
 
 
 def normalize_terms(text: str) -> set[str]:
@@ -87,8 +87,7 @@ def _collect_project_text(project_dir: Path, max_files: int = 80, max_bytes_per_
         parts.append(text)
         files_read += 1
         bytes_read += len(text.encode("utf-8"))
-    return "
-".join(parts), files_read, bytes_read
+    return "\n".join(parts), files_read, bytes_read
 
 
 @dataclass(frozen=True)
@@ -103,9 +102,7 @@ class Candidate:
 
     @property
     def terms(self) -> set[str]:
-        return normalize_terms(f"{self.title}
-{self.summary}
-{' '.join(self.tags)}")
+        return normalize_terms(f"{self.title}\n{self.summary}\n{' '.join(self.tags)}")
 
     @property
     def inferred_tags(self) -> set[str]:
@@ -124,8 +121,7 @@ class ProjectRecord:
 
     @classmethod
     def from_text(cls, name: str, path: str, text: str, files_read: int = 0, bytes_read: int = 0) -> "ProjectRecord":
-        terms = normalize_terms(f"{name}
-{text}")
+        terms = normalize_terms(f"{name}\n{text}")
         digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
         return cls(
             name=name,
@@ -281,15 +277,12 @@ def render_markdown_report(result: dict) -> str:
             f"| {item['score']:.3f} | `{item['project']}` | "
             f"{', '.join(item['shared_tags']) or '-'} | {', '.join(item['shared_terms']) or '-'} |"
         )
-    return "
-".join(lines) + "
-"
+    return "\n".join(lines) + "\n"
 
 
 def _write_json(path: Path, payload: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "
-", encoding="utf-8")
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def build_parser() -> argparse.ArgumentParser:

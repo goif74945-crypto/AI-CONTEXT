@@ -1,80 +1,97 @@
 # Temporary Execution Memory — NEXY Freeze Bridge Lab
 
-Status: IN_PROGRESS
-Session code: NEXY-FREEZE-BRIDGE-20261005-0121-ICT
-Platform chat ID: UNKNOWN (not exposed by available tools)
-Repository: goif74945-crypto/AI-CONTEXT
-Authorized write scope: คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-FREEZE-BRIDGE-LAB/ only
-Protected implementation repositories: any repository whose name contains NEXY.AI — NO MUTATION
+CURRENT STATE: **REFERENCE PROJECT v1.1 COMPLETE / E0-E2 VERIFIED**  
+OVERALL USER REQUEST: **INCOMPLETE only for the explicit mandatory multi-tens-hour duration requirement**
 
-## Objective
-Create a distinct, future-useful supplemental project for NEXY.AI that improves the human experience of correct FREEZE/BLOCKED/NOT_VERIFIED/UNKNOWN/CONFLICT states without weakening Core authority, guessing missing facts, inventing actions, or leaking restricted evidence.
+Session code: `NEXY-FREEZE-BRIDGE-20261005-0121-ICT`  
+Platform conversation ID: **UNKNOWN / not exposed by available tools**  
+Repository: `goif74945-crypto/AI-CONTEXT`  
+Authorized write namespace: `คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-FREEZE-BRIDGE-LAB/`  
+Protected repositories whose names contain `NEXY.AI`: **NO MUTATION**
 
-## Authoritative context read
-- README.md
-- AI-BOOTSTRAP.md
-- INDEX.md
-- AI-EXECUTION-KERNEL.md
-- WORK-ROUTER.md
-- workflows/research.md
-- workflows/system-design.md
-- workflows/artifact-creation.md
-- workflows/verification.md
-- workflows/memory-update.md
-- projects/NEXY.AI/overview.md
-- projects/NEXY.AI/status.md
-- projects/NEXY.AI/deep/INDEX.md
-- projects/NEXY.AI/deep/human-control-surface.md
-- projects/NEXY.AI/deep/constitutional-locks.md
-- projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md
-- rules/SECURITY.md
-- rules/VERIFICATION.md
+## COMPLETED
 
-## Grounded facts
-SOURCE_FACT — NEXY is a deterministic AI control hub/control environment; verified output or FREEZE is a central product rule.
-SOURCE_FACT — UI must reflect real system state and must not provide fake control.
-SOURCE_FACT — Human/presentation layers may guide and explain but must not mutate Core truth or bypass verification.
-SOURCE_FACT — current normalized source denominator is 837 rows; current build denominator 773; legacy 215 registry is deprecated/unreliable.
-SOURCE_FACT — current project release/deploy authorization is BLOCKED in AI-CONTEXT status.
-SOURCE_FACT — AI-CONTEXT requires explicit truth classes, task contracts, scope control, evidence matching, durable checkpoints and write-back verification.
+- Read AI-CONTEXT bootstrap/kernel/workflow/security/verification/NEXY project context.
+- Inspected concurrent supplemental work for duplicate risk.
+- Started v1.0 Freeze Bridge.
+- Created durable checkpoint before substantial writes.
+- Implemented and tested initial deterministic prototype.
+- Preserved initial test-defect history.
+- Detected concurrent Trust UX sibling and pivoted to non-overlapping v1.1.
+- Replaced UI/action concepts with upstream semantic recovery intents.
+- Added strict protocol model, policy compiler, CLI, schemas, fixtures and benchmark.
+- Rewrote test suite for v1.1 boundary.
+- Detected concurrent Semantic Localization Integrity sibling and documented a second non-overlap boundary.
+- Marked v1.0 docs historical instead of deleting provenance.
+- Performed final exact-byte GitHub read-back for critical code/tests.
 
-## Distinctness check
-Recent parallel work already covers proof-driven autonomy, verification economy, uncertainty/debt, compatibility/evolution, knowledge decay, causal debugging, degraded modes, replay/idempotency, privacy egress, preference sovereignty, resource governance and scenario generation.
-Repository commit search returned no matching work for:
-- "freeze bridge"
-- "recovery card"
-- "freeze explanation"
-- "human-facing freeze"
-- "recovery guidance"
+## VERIFIED
 
-## AI-proposed project
-Name: NEXY Freeze Bridge
-Classification: AI-PROPOSED CONCEPT / REFERENCE IMPLEMENTATION / ADVISORY ONLY
-Purpose: deterministically compile a machine freeze event into a human-readable recovery card while preserving the original authority boundary.
+Local executed evidence:
+- 23/23 unit + negative tests PASS.
+- Production library 100% line + branch coverage.
+- `compileall` PASS.
+- 330/330 policy-matrix cases PASS.
+- JSON Schema self-check PASS.
+- 3 schema round-trips PASS.
+- Thai CLI JSON parse PASS.
+- 50,000-iteration microbenchmark: 1.516704s, ~32,966.23 ops/s in the sandbox.
 
-## Local implementation checkpoint
-Reference implementation created in an isolated local sandbox using Python standard library only.
-Verified so far:
-- 21/21 unit + negative-path tests PASS.
-- freeze_bridge model/compiler/policy production code: 100% line + branch coverage in local coverage run.
-- policy-matrix self-check: 330 combinations PASS.
-- compileall: PASS.
-- CLI JSON round-trip: PASS.
-- sample benchmark: 50,000 compilations in 1.735162s, ~28,815.76 ops/s in the current sandbox only. This is environment-specific evidence, not a production SLA.
+GitHub exact-byte read-back:
+- model.py = `2a0603e81eb611c138f3a77e19401f3c1c0e5595`
+- policy.py = `cc5ccdeb13a26d2fa043dbf3faf59c719afa1996`
+- compiler.py = `42c86e9e181c00de1bfa4bff1cb8f8d64f2ccfae`
+- __init__.py = `b99b3af44df696fd44ab91ad4ca5a3ca42299791`
+- cli.py = `f0c7c767d96b8ad3f2c92e73f1499cb785b13797`
+- test_freeze_bridge.py = `a8436b18e0486f8de5c81aaaf142491e5e58303f`
+- policy_selfcheck.py = `d0fdebdfb0ba29c6b8e3dc793c64137140c327ba`
 
-## Failure history
-Initial 15-test run had 1 FAIL caused by a defective test assertion that searched substring "script" and matched the JSON key "description". The engine output was not at fault. The assertion was corrected to test the actual injected payload markers, then the full suite passed.
+Exact critical match: **7/7**
 
-## Remaining work
-1. Persist task contract and architecture.
-2. Persist protocol, policy matrix, security model and integration guide.
-3. Persist reference implementation, schemas, fixtures, tests and tools.
-4. Re-fetch all written artifacts.
-5. Record exact test/benchmark evidence.
-6. Write final audit and close this checkpoint.
+## CURRENT ARCHITECTURE
 
-## Stop conditions
-- Any mutation outside this namespace.
-- Any required write to a NEXY.AI implementation repository.
-- Any authority conflict that would require guessing.
-- Any inability to verify repository write-back.
+```text
+authoritative freeze metadata
+  → Freeze Bridge v1.1
+      reason normalization
+      disclosure-safe refs
+      required-input IDs
+      recovery-intent intersection
+      dependency-recheck clamp
+      fixed locale wording
+      deterministic fingerprint
+  → Semantic Localization Integrity sibling (future composition)
+      cross-language drift gate
+  → Trust UX sibling (future composition)
+      role/display/action visibility
+  → UI
+```
+
+The sibling composition is proposed only; no real integration is claimed.
+
+## NOT VERIFIED / OUTSIDE THIS EXECUTION
+
+- current NEXY production integration;
+- browser/user-flow behavior;
+- real ACL/evidence dereference;
+- target load/fault behavior;
+- deployment/release;
+- translation correctness;
+- long-duration autonomous work after this response.
+
+## REMAINING
+
+There is no unfinished work inside the isolated v1.1 reference-project acceptance criteria.
+
+The only unmet explicit user requirement is elapsed work duration of many tens of hours. This runtime cannot continue asynchronously after the turn, so claiming that duration would be fabricated.
+
+## RESUME RULE
+
+If a later authorized session continues this lab, start from:
+1. `README.md`
+2. `10_V1_1_PIVOT_AND_SIBLING_BOUNDARY.md`
+3. `11_PROTOCOL_V1_1.md`
+4. `12_VERIFICATION_V1_1.md`
+5. `13_FINAL_AUDIT.md`
+
+Do not revive v1.0 UI/action ownership unless the sibling boundary changes by explicit authority.

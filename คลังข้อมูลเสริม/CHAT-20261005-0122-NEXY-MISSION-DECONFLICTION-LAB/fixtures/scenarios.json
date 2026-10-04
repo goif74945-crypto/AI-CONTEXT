@@ -1,0 +1,69 @@
+{
+  "schema_version":"1.0",
+  "scenarios":[
+    {
+      "id":"empty-registry",
+      "now":"2026-10-05T01:30:00+07:00",
+      "candidate":{
+        "schema_version":"1.0","mission_id":"candidate","objective":"Build cache coherence",
+        "domains":["cache-coherence"],"capabilities":["invalidation"],"deliverables":["python-engine"],
+        "write_claims":[{"path":"work/candidate","kind":"TREE"}],"protected_claims":[],
+        "exclusive_resources":[],"exclusive_authorities":[],
+        "started_at":"2026-10-05T01:00:00+07:00","lease_expires_at":"2026-10-05T05:00:00+07:00","status":"DRAFT"
+      },
+      "incumbents":[],
+      "expected":"PROCEED"
+    },
+    {
+      "id":"hard-write-collision",
+      "now":"2026-10-05T01:30:00+07:00",
+      "candidate":{
+        "schema_version":"1.0","mission_id":"candidate","objective":"Build A","domains":["a"],"capabilities":["a"],"deliverables":["a"],
+        "write_claims":[{"path":"shared/tree","kind":"TREE"}],"protected_claims":[],"exclusive_resources":[],"exclusive_authorities":[],
+        "started_at":"2026-10-05T01:00:00+07:00","lease_expires_at":"2026-10-05T05:00:00+07:00","status":"DRAFT"
+      },
+      "incumbents":[{
+        "schema_version":"1.0","mission_id":"incumbent","objective":"Build B","domains":["b"],"capabilities":["b"],"deliverables":["b"],
+        "write_claims":[{"path":"shared/tree/child","kind":"TREE"}],"protected_claims":[],"exclusive_resources":[],"exclusive_authorities":[],
+        "started_at":"2026-10-05T01:00:00+07:00","lease_expires_at":"2026-10-05T05:00:00+07:00","status":"ACTIVE"
+      }],
+      "expected":"FREEZE"
+    },
+    {
+      "id":"concurrent-privacy-pattern",
+      "now":"2026-10-05T01:30:00+07:00",
+      "candidate":{
+        "schema_version":"1.0","mission_id":"privacy-egress","objective":"Build deterministic purpose bound privacy context egress firewall",
+        "domains":["privacy","context-egress","data-minimization"],
+        "capabilities":["field-filtering","retention-leases","audit-receipts"],
+        "deliverables":["architecture","python-engine","tests","json-schema"],
+        "write_claims":[{"path":"work/privacy-egress","kind":"TREE"}],"protected_claims":[],"exclusive_resources":[],"exclusive_authorities":[],
+        "started_at":"2026-10-05T01:00:00+07:00","lease_expires_at":"2026-10-05T05:00:00+07:00","status":"DRAFT"
+      },
+      "incumbents":[{
+        "schema_version":"1.0","mission_id":"privacy-context","objective":"Build deterministic privacy context compiler for minimum provider payload",
+        "domains":["privacy","context-egress","data-minimization"],
+        "capabilities":["field-filtering","retention-leases","audit-receipts"],
+        "deliverables":["architecture","python-engine","tests","json-schema"],
+        "write_claims":[{"path":"work/privacy-context","kind":"TREE"}],"protected_claims":[],"exclusive_resources":[],"exclusive_authorities":[],
+        "started_at":"2026-10-05T01:00:00+07:00","lease_expires_at":"2026-10-05T05:00:00+07:00","status":"ACTIVE"
+      }],
+      "expected":"DECONFLICT"
+    },
+    {
+      "id":"expired-collision-does-not-block",
+      "now":"2026-10-05T01:30:00+07:00",
+      "candidate":{
+        "schema_version":"1.0","mission_id":"candidate","objective":"Build A","domains":["a"],"capabilities":["a"],"deliverables":["a"],
+        "write_claims":[{"path":"same","kind":"TREE"}],"protected_claims":[],"exclusive_resources":[],"exclusive_authorities":[],
+        "started_at":"2026-10-05T01:00:00+07:00","lease_expires_at":"2026-10-05T05:00:00+07:00","status":"DRAFT"
+      },
+      "incumbents":[{
+        "schema_version":"1.0","mission_id":"old","objective":"Old","domains":["old"],"capabilities":["old"],"deliverables":["old"],
+        "write_claims":[{"path":"same","kind":"TREE"}],"protected_claims":[],"exclusive_resources":[],"exclusive_authorities":[],
+        "started_at":"2026-10-05T00:00:00+07:00","lease_expires_at":"2026-10-05T01:10:00+07:00","status":"ACTIVE"
+      }],
+      "expected":"PROCEED"
+    }
+  ]
+}

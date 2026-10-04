@@ -1,0 +1,28 @@
+test_input_size_policy_freezes_before_dependency_parse (tests.test_sentinel.SentinelSecurityLimitsTestCase.test_input_size_policy_freezes_before_dependency_parse) ... ERROR
+test_npm_source_credentials_are_not_persisted (tests.test_sentinel.SentinelSecurityLimitsTestCase.test_npm_source_credentials_are_not_persisted) ... FAIL
+
+======================================================================
+ERROR: test_input_size_policy_freezes_before_dependency_parse (tests.test_sentinel.SentinelSecurityLimitsTestCase.test_input_size_policy_freezes_before_dependency_parse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/CHAT-20261005-0137-NEXY-SUPPLY-CHAIN-SENTINEL/tests/test_sentinel.py", line 253, in test_input_size_policy_freezes_before_dependency_parse
+    snapshot = build_snapshot(path, policy=Policy(max_input_bytes=16))
+                                           ~~~~~~^^^^^^^^^^^^^^^^^^^^
+TypeError: Policy.__init__() got an unexpected keyword argument 'max_input_bytes'
+
+======================================================================
+FAIL: test_npm_source_credentials_are_not_persisted (tests.test_sentinel.SentinelSecurityLimitsTestCase.test_npm_source_credentials_are_not_persisted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/CHAT-20261005-0137-NEXY-SUPPLY-CHAIN-SENTINEL/tests/test_sentinel.py", line 243, in test_npm_source_credentials_are_not_persisted
+    self.assertEqual(snapshot["decision"], "FREEZE")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'ALLOW' != 'FREEZE'
+- ALLOW
++ FREEZE
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=1, errors=1)
