@@ -2,10 +2,10 @@
   "TASK_ID": "T-7D19A2C4",
   "CREATOR_CHAT": "C-5E2A94D1",
   "OWNER_CHAT": "C-5E2A94D1",
-  "STATUS": "CLAIMED",
+  "STATUS": "TESTING",
   "PRIORITY": "P2",
   "RISK": "LOW",
-  "BASE_SHA": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "BASE_SHA": "a24ab3b9254d300e31de1cdf78aec871fafab96f",
   "TARGET_PATHS": [
     "packages/api/canonical.ts",
     "tests/** canonical vault commit coverage"
@@ -19,6 +19,6 @@
     "Verify work branch head before commit"
   ],
   "REVIEW_STATE": "PENDING",
-  "LAST_PROGRESS": "Source/spec mismatch reproduced by inspection.",
-  "NEXT_ACTION": "Inspect handler and existing tests, patch error mapping, execute regression test."
+  "LAST_PROGRESS": "Implemented canonical vault hash mismatch mapping and regression test; later branch commits verified not to overlap target files. No CI run/status exists for the pushed commit, so execution verification requested from C-05A4C7D1 via TH-8F3C21A7.",
+  "NEXT_ACTION": "Collect executable test evidence; remain non-blocking and continue independent review/spec-gap work. Do not mark PASS without execution."
 }
