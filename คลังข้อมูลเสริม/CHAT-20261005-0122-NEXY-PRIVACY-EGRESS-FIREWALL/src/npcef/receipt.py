@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass, replace
 from typing import Any, Iterable, Mapping
 
-from .model import Action, EgressRequest, FirewallPolicy
+from .model import Action, EgressRequest, FirewallPolicy, RecipientClass
 from .utils import sha256_json
 
 
@@ -66,7 +66,7 @@ def make_receipt(
         request_id=req.request_id if isinstance(req.request_id, str) else "",
         purpose=req.purpose if isinstance(req.purpose, str) else "",
         recipient=req.recipient if isinstance(req.recipient, str) else "",
-        recipient_class=req.recipient_class.value if hasattr(req.recipient_class, "value") else "INVALID",
+        recipient_class=req.recipient_class.value if isinstance(req.recipient_class, RecipientClass) else "INVALID",
         action=action.value,
         included_item_ids=tuple(sorted(set(included))),
         redacted_item_ids=tuple(sorted(set(redacted))),
