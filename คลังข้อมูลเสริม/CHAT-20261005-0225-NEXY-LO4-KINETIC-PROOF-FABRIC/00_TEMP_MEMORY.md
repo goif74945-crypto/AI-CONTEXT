@@ -1,51 +1,71 @@
-# Temporary Execution Memory — NEXY Lo4 Kinetic Proof Fabric
+# Execution Memory — NEXY Lo4 Kinetic Proof Fabric
 
-**Conversation/work code:** `CHAT-20261005-0225-NEXY-LO4-KINETIC-PROOF-FABRIC`
+**Conversation/work code:** CHAT-20261005-0225-NEXY-LO4-KINETIC-PROOF-FABRIC
 **Platform-native conversation ID:** UNKNOWN / not exposed by current host
-**Created:** 2026-10-05T02:25+07:00
-**Target repository:** `goif74945-crypto/AI-CONTEXT`
-**Target branch:** `main`
-**Authority class:** `Lo4_AI_PROPOSAL_ONLY / EXPERIMENTAL / NON-CANON`
+**Target repository:** goif74945-crypto/AI-CONTEXT
+**Branch:** main
+**Authority class:** Lo4_AI_PROPOSAL_ONLY / EXPERIMENTAL / NON-CANON
+**Current status:** ISOLATED_REFERENCE_IMPLEMENTATION_COMPLETE
 
-## Objective
-Design, implement, execute tests for, and preserve evidence for exactly five new cyber-physical Lo4 systems that can integrate with future NEXY robotics/RCL architecture, while never mutating any repository whose name contains `NEXY.AI`.
+## Objective completed
+Exactly five cyber-physical Lo4 proposals were designed, implemented in checked Q64.64, tested, documented, and preserved under this folder without mutating any repository whose name contains NEXY.AI.
 
-## Authority loaded
-Root execution kernel/router, global behavior/memory/security/verification rules, relevant workflows, NEXY overview, current 837-row normalized matrix, robotics RCL, intelligence trinity, final cross-system architecture.
+## Five systems
+1. PSTL — Physical State Trust Lattice
+2. WMDS — World-Model Divergence Sentinel
+3. AEPE — Actuation Envelope Proof Engine
+4. CHI — Cumulative Hazard Integrator
+5. RHPV — Reflex/Safe-Path Handoff Verifier
 
-## Hard boundary
-- Write only inside this unique AI-CONTEXT folder.
-- Never mutate a repository whose name contains `NEXY.AI`.
-- No Canon promotion, deployment claim, HIL claim, or physical-safety claim.
-- Robotics/RCL context is SOURCE-DESIGN, not runtime proof.
-
-## Five selected Lo4 proposals
-1. PSTL — Physical State Trust Lattice.
-2. WMDS — World-Model Divergence Sentinel.
-3. AEPE — Actuation Envelope Proof Engine.
-4. CHI — Cumulative Hazard Integrator.
-5. RHPV — Reflex/Safe-Path Handoff Verifier.
+Pipeline:
+Sensors -> PSTL -> WMDS -> AEPE -> CHI -> RHPV -> proposed actuation capsule -> independent Safety Kernel
 
 ## Numeric law
-All decision-relevant real-valued quantities use checked signed Q64.64 fixed point backed by a signed-128-bit raw range. Floating-point input is forbidden in the decision path.
+Decision-relevant real values use checked signed Q64.64 with signed-128 raw bounds. Float/bool numeric inputs are forbidden. AST regression checks reject Python float literals in the decision source.
 
-## Integration pipeline
-`Sensors -> PSTL -> WMDS -> AEPE -> CHI -> RHPV -> proposed actuation capsule -> independent Safety Kernel`
+## Verification history
+- Initial modular suite: 52 PASS.
+- Architecture audit found real AEPE braking defect: target speed alone underestimated stopping risk when current speed was higher.
+- New regression test reproduced FAIL.
+- Formula repaired to use max(abs(current_v), abs(target_v)).
+- Targeted regression PASS; expanded suite reached 62 PASS.
+- PSTL upgraded from O(n^2) scan to O(n log n) weighted interval sweep; regression remained PASS.
+- First consolidated publish package exposed an import-layout failure; it was not accepted as PASS.
+- Packaging repaired.
+- Final compact release candidate matching durable code/tests: py_compile PASS; unittest 44/44 PASS.
+- GitHub post-write readback: 5/5 final artifacts matched expected Git blob SHA.
 
-Independent Safety Kernel remains dominant and outside this lab.
+## Final durable artifacts and blob SHA
+- 01_DESIGN.md — c96dc5f448af26d348a8bbd2c8517932ce58ebec
+- src/kinetic_proof_fabric.py — 10a2d194cd1e8305b53d9979dfd5964011a0ddd4
+- tests/test_kpf.py — 9991b7117c8e700ca60bf0018d2d32b609c17558
+- EVIDENCE.md — 340d213b6731d6f027a6874699b433381212d1a3
+- FINAL_AUDIT.md — e00c2e7a250521e427a107a087a00ec4f0e33856
 
-## Evidence target
-E0 durable presence; E1 syntax/static; E2 unit/adversarial; E3 cross-module integration; GitHub readback. Physical/E7 remains NOT_VERIFIED.
+Local SHA-256 of exact release candidate before publication:
+- source: 452cd5b48078fa86377526dc2667f193ecd47872712ad8de01c56b36af362029
+- tests: d00ea59483d0fc11d32b7248f1d148d85ae4efd03958061811bcf630ce412d16
 
-## Current state
-BOOT: PASS
-CONTEXT_RESOLVED: PASS
-COLLISION_SCAN: PARTIAL but broad; 208 supplemental top-level entries and newest Lo4 labs inspected
-IMPLEMENTATION: IN_PROGRESS
-VERIFICATION: NOT_VERIFIED
-NEXY INTEGRATION: NOT_VERIFIED
-PHYSICAL SAFETY: NOT_VERIFIED
+## Evidence status
+E0 durable presence: PASS + GitHub readback.
+E1 static: PASS.
+E2 unit/regression/property: PASS.
+E3 isolated software integration: PASS.
+NEXY runtime integration: NOT_VERIFIED.
+Target-hardware WCET/HIL: NOT_VERIFIED.
+Physical safety/certification: NOT_VERIFIED.
+Deployment: NOT_VERIFIED.
+Canon promotion: NOT PERFORMED.
 
-## Failure history
-- First GitHub write attempt returned HTTP 409 because concurrent sessions advanced main between expected and observed HEAD.
-- Recovery rule: refresh current main and retry only this unique path, never force-push and never overwrite adjacent work.
+## Concurrency/failure lineage
+Concurrent chats advanced main repeatedly:
+- initial create encountered HTTP 409;
+- atomic tree publication attempts encountered 422 non-fast-forward;
+- one test-file contents write encountered 409.
+Recovery never used force. Writes were restricted to this unique path and retried against current main.
+
+## Protected scope audit
+Repositories whose names contain NEXY.AI were not mutation targets. No Canon file, NEXY implementation file, branch, workflow, issue, PR, or setting was intentionally modified.
+
+## Resume rule
+Treat this folder as experimental evidence only. Any future integration requires explicit promotion authority, current NEXY compatibility analysis, exact-revision integration/runtime evidence, and HIL/physical proof appropriate to the claimed safety property.
