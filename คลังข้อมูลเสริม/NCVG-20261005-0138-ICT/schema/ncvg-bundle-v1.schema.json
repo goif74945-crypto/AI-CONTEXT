@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/experimental/ncvg-bundle-v1.schema.json",
+  "title": "NCVG Verification Bundle v1.0 (AI Proposal)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bundle_version",
+    "task_contract",
+    "requirement_ledger",
+    "evidence",
+    "execution_record",
+    "policy"
+  ],
+  "properties": {
+    "bundle_version": {"const": "1.0"},
+    "task_contract": {
+      "type": "object",
+      "required": ["objective", "target", "authorized_scope", "protected_scope", "deliverables"],
+      "properties": {
+        "objective": {"type": "string", "minLength": 1},
+        "target": {"type": "string", "minLength": 1},
+        "authorized_scope": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "protected_scope": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "deliverables": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "requirement_ledger": {
+      "type": "object",
+      "required": ["ledger_id", "target", "requirements"],
+      "properties": {
+        "ledger_id": {"type": "string", "minLength": 1},
+        "target": {"type": "string", "minLength": 1},
+        "requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "requirement", "status", "evidence_refs"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "requirement": {"type": "string", "minLength": 1},
+              "mandatory": {"type": "boolean", "default": true},
+              "status": {"type": "string"},
+              "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "claim", "status", "evidence_class", "target", "method", "observed"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "claim": {"type": "string", "minLength": 1},
+          "status": {"type": "string"},
+          "evidence_class": {
+            "enum": ["E0_PRESENCE", "E1_STATIC", "E2_UNIT", "E3_INTEGRATION", "E4_E2E", "E5_RUNTIME", "E6_DEPLOYMENT", "E7_PHYSICAL"]
+          },
+          "target": {"type": "string", "minLength": 1},
+          "method": {"type": "string", "minLength": 1},
+          "observed": {"type": "string", "minLength": 1},
+          "commit": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "execution_record": {
+      "type": "object",
+      "required": ["task_id", "final_status", "mutations"],
+      "properties": {
+        "task_id": {"type": "string", "minLength": 1},
+        "final_status": {"type": "string"},
+        "mutations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["target", "change"],
+            "properties": {
+              "target": {"type": "string", "minLength": 1},
+              "change": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "required": ["acceptable_evidence_classes"],
+      "properties": {
+        "acceptable_evidence_classes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "enum": ["E0_PRESENCE", "E1_STATIC", "E2_UNIT", "E3_INTEGRATION", "E4_E2E", "E5_RUNTIME", "E6_DEPLOYMENT", "E7_PHYSICAL"]
+            }
+          }
+        },
+        "expected_commit": {"type": ["string", "null"]},
+        "protected_target_patterns": {"type": "array", "items": {"type": "string"}},
+        "forbidden_mutation_repository_name_fragments": {"type": "array", "items": {"type": "string"}},
+        "allow_warnings": {"type": "boolean", "default": true}
+      }
+    }
+  }
+}

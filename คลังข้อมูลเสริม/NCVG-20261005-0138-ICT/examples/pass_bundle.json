@@ -1,0 +1,72 @@
+{
+  "bundle_version": "1.0",
+  "task_contract": {
+    "objective": "Verify a standalone companion artifact without mutating protected NEXY repositories",
+    "target": "AI-CONTEXT/คลังข้อมูลเสริม/NCVG",
+    "authorized_scope": ["AI-CONTEXT/คลังข้อมูลเสริม/NCVG/**"],
+    "protected_scope": ["**/NEXY.AI/**", "repositories containing NEXY.AI"],
+    "deliverables": ["design", "code", "tests", "evidence"]
+  },
+  "requirement_ledger": {
+    "ledger_id": "NCVG-DEMO-001",
+    "target": "NCVG demo bundle",
+    "requirements": [
+      {
+        "id": "REQ-001",
+        "requirement": "Gate must prove an executed unit behavior claim",
+        "mandatory": true,
+        "status": "PASS",
+        "evidence_refs": ["EV-UNIT-001"]
+      },
+      {
+        "id": "REQ-002",
+        "requirement": "Gate must preserve protected repository boundary",
+        "mandatory": true,
+        "status": "PASS",
+        "evidence_refs": ["EV-STATIC-001"]
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "EV-UNIT-001",
+      "claim": "Core decision logic returns ALLOW for a valid complete bundle",
+      "status": "PASS",
+      "evidence_class": "E2_UNIT",
+      "target": "nexy_gate.gate.evaluate_bundle",
+      "method": "executed unittest",
+      "observed": "test passed",
+      "commit": null
+    },
+    {
+      "id": "EV-STATIC-001",
+      "claim": "Protected mutation patterns are declared in policy",
+      "status": "PASS",
+      "evidence_class": "E1_STATIC",
+      "target": "bundle policy",
+      "method": "semantic policy inspection",
+      "observed": "protected target patterns present",
+      "commit": null
+    }
+  ],
+  "execution_record": {
+    "task_id": "NCVG-DEMO-001",
+    "final_status": "PASS",
+    "mutations": [
+      {
+        "target": "goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/NCVG/README.md",
+        "change": "create documentation"
+      }
+    ]
+  },
+  "policy": {
+    "acceptable_evidence_classes": {
+      "REQ-001": ["E2_UNIT"],
+      "REQ-002": ["E1_STATIC", "E2_UNIT"]
+    },
+    "expected_commit": null,
+    "protected_target_patterns": ["*/NEXY.AI/*", "NEXY.AI/*"],
+    "forbidden_mutation_repository_name_fragments": ["/NEXY.AI/", "NEXY.AI-"],
+    "allow_warnings": true
+  }
+}
