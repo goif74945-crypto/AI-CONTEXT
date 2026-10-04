@@ -1,0 +1,1 @@
+{"CAWT":{"status":"FREEZE","witness":"AUTHORITY_EXPANSION"},"CCF":{"status":"FREEZE","violations":["exfil"],"witness":["read","send"]},"DRCDO":{"divergent":["b"],"status":"FREEZE"},"EDEL":{"direct":["claim"],"status":"FREEZE"},"SIMF":{"falsified_count":2,"survivor_count":0}}
