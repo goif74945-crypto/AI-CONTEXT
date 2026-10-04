@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/nexy-intent-integrity/delegation-capsule.schema.json",
+  "title": "NEXY Intent Integrity Lab Least-Authority Delegation Capsule",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "relation", "parentContractSeal", "objective", "inputs", "requiredOutputs", "inScope",
+    "constraints", "outOfScope", "immutable", "requiredBehavior", "forbidden", "edgeCases", "failureConditions",
+    "validation", "acceptance", "authorities", "protectedScope", "evidenceRefs", "stopConditions", "sealAlgorithm", "seal"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "relation": { "const": "LEAST_AUTHORITY_DELEGATION" },
+    "parentContractSeal": { "$ref": "#/$defs/seal" },
+    "objective": { "type": "string", "minLength": 1 },
+    "inputs": { "$ref": "#/$defs/nonEmptyStrings" },
+    "requiredOutputs": { "$ref": "#/$defs/nonEmptyStrings" },
+    "inScope": { "$ref": "#/$defs/nonEmptyStrings" },
+    "constraints": { "$ref": "#/$defs/nonEmptyStrings" },
+    "outOfScope": { "$ref": "#/$defs/nonEmptyStrings" },
+    "immutable": { "$ref": "#/$defs/nonEmptyStrings" },
+    "requiredBehavior": { "$ref": "#/$defs/nonEmptyStrings" },
+    "forbidden": { "$ref": "#/$defs/nonEmptyStrings" },
+    "edgeCases": { "$ref": "#/$defs/nonEmptyStrings" },
+    "failureConditions": { "$ref": "#/$defs/nonEmptyStrings" },
+    "validation": { "$ref": "#/$defs/nonEmptyStrings" },
+    "acceptance": { "$ref": "#/$defs/nonEmptyStrings" },
+    "authorities": { "$ref": "#/$defs/nonEmptyStrings" },
+    "protectedScope": { "$ref": "#/$defs/strings" },
+    "evidenceRefs": { "$ref": "#/$defs/strings" },
+    "stopConditions": { "$ref": "#/$defs/nonEmptyStrings" },
+    "sealAlgorithm": { "const": "sha256" },
+    "seal": { "$ref": "#/$defs/seal" }
+  },
+  "$defs": {
+    "strings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "nonEmptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "seal": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}
