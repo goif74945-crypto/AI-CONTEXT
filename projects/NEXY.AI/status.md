@@ -1,25 +1,30 @@
 # NEXY.AI — Current Context Status
 
 <!-- HOURLY_CYCLE_LATEST:START -->
-## Latest verified context overlay — 2026-10-03 16:19 ICT
+## Latest verified context overlay — exact revision `9e615b04...`
 
 - implementation repository/branch: `goif74945-crypto/NEXY.AI-` / `NEXY.ai`
-- exact HEAD/tree: `9cedbbd94af495199ca10f96e747689b0c19ddb1` / `205c038c85f2c18c0a42d391c212fe367e2aab7d`
-- branch inventory: only `NEXY.ai`
-- source mutation by this cycle: none
-- latest executable evidence remains Railway deployment `b5f4902d-f5c5-4c22-a419-cdfd03b53699`
-- Railway build/typecheck/tests/coverage/DOC-C static checks and module boundaries/web build/browser E2E and DOC-E E1-E9: `VERIFIED_PASS` according to the preserved exact-head execution record
-- DOC-E E10: `FAILED` — `DOC_E_E10_PROVIDER_RECEIPT_IDENTITY_MISMATCH`
-- code inspection confirms E10 strictly requires provider receipt `tested_sha` and `tested_tree` to equal the exact target; weakening this check is forbidden
-- GitHub Actions run `37097611233`, attempt 2: 8 failed, 3 skipped, 0 executable steps, 0 artifacts
-- TypeScript job `111164487979`: runner_id 0, empty runner name, 0 steps; log `404 BlobNotFound`
-- external commit statuses: one success plus one failure; overall failure
-- recent queue retention, DOC-E database isolation and browser-listener changes: execution evidence exists, but direct numbered spec-section alignment is `PARTIAL / UNKNOWN`; the primary DOC-C/DOC-E source text was not readable through the current repository connector and repository comments conflict on queue section mapping
-- exhaustive 837-row implementation status: `UNKNOWN`
-- release/deploy authorization: `BLOCKED`
-- cycle evidence: `projects/NEXY.AI/cycles/2026-10-03/NEXY-HOURLY-20261003T152048+0700-9cedbbd9-gha2.md`
+- exact HEAD/tree: `9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43` / `a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c`
+- commit time: `2026-10-04T18:04:40Z`
+- source mutation by this audit cycle: **none**
+- authoritative normalized scope: 837 rows; current-build denominator 773; DOC-E evidence rows 52; excluded/deferred 12
+- exact-head Railway branch deployment: `6ebf2acb-1889-450c-874a-1114b4f51531` → **FAILED at `npm run check:coverage`**
+- coverage execution suite immediately before the gate: **162 files / 1130 tests / 1130 passed**
+- coverage policy: API branch 85.49% PASS; **Core branch 83.13% < 90% FAIL**; LAW branch 96.83% PASS; JUDGE branch 93.41% PASS
+- concentrated Core gap: `packages/core/tick.ts` branch 79.16%, uncovered lines 28/48/71/90; `vnext-state-matrix.ts` branch 95.45%, uncovered line 179
+- sequential Railway evidence shows Rust check/tests, typecheck, contract, experimental, integration, Phase-F, static-determinism, six-system and coverage-measurement tests completed before the coverage-policy failure
+- post-coverage Docker gates including `check:doc-c` and `build:web` were **not reached**
+- exact-head main Railway deployment `89becf8b-c085-4e87-a59b-76e17b127aad` is **SKIPPED**; its green combined status context is **NON-PROOF**
+- exact-head GitHub Actions runs `37222997743`, `37222997798`, `37222997736`, `37222997784` failed with **zero executable steps observed**
+- source blocker candidate: queue elapsed-time consumers require `currentTsaBatchTimeMs()`, but no production `injectTsaBatchTime` caller was observed; runtime consequence remains **NOT E5-VERIFIED**
+- validation topology conflict: Docker hard-gates experimental/Phase-F while canonical `deploy.yml` marks Phase-F experimental validation advisory
+- DOC-E E11 signoff and E12 rollback/provider proof are not current exact-head proof
+- exhaustive 837-row exact-head crosswalk: **UNKNOWN / not re-audited**
+- release/deploy authorization: **BLOCKED**
+- cycle evidence: `projects/NEXY.AI/cycles/2026-10-05/NEXY-READONLY-AUDIT-20261005T0048+0700-9e615b04.md`
+- current truth surfaces: `release/exact-head-state.json`, `release/current-gate-state.json`, `snapshots/current.json`
 
-Overall status: **PARTIAL / BLOCKED — implementation slice verified by prior exact-head Railway execution; E10 external receipt and release evidence unresolved.**
+Overall status: **NOT VERIFIED / BLOCKED — exact-head execution reached 1130 passing measured tests but failed the configured Core branch coverage gate; release evidence remains incomplete.**
 <!-- HOURLY_CYCLE_LATEST:END -->
 
 ## Historical / superseded audit body — target `f94eb1f0cc04f5003abc7e1d8663aa40d940ca66`
