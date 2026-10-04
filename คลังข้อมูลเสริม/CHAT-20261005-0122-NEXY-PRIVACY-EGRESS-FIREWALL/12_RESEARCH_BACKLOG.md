@@ -21,3 +21,14 @@ Every item is **AI-PROPOSED**.
 - **R-12 Cross-provider retention contracts:** model retention/training/region/deletion as recipient capabilities without treating claims as runtime proof.
 - **R-13 Confidential local preprocessing:** evaluate local redaction/classification before external model use.
 - **R-14 Policy conflict solver:** produce minimal conflict proof and freeze rather than weaken conflicting rules.
+
+## Concurrent overlap reclassification — 2026-10-05
+
+A sibling Context Release Firewall appeared after this mission began. To prevent duplicate work:
+
+- **R-02 Derived-data taint:** `SKIPPED_OVERLAP` for independent implementation. Sibling CRF already defines derived sensitivity/compartment/purpose monotonicity. NPCEF may later test interoperability only if explicitly useful.
+- **R-10 Information-flow control:** `SKIPPED_OVERLAP` for independent derived-data authority work. Preserve as historical idea only.
+- **R-01 Recursive minimization:** narrowed to attachment/binary/streaming release envelopes not already covered by sibling field/compartment semantics.
+- **R-03, R-04, R-05, R-06, R-07, R-08, R-09, R-11, R-12, R-13, R-14:** remain candidate complementary research, subject to fresh sibling scan before execution.
+
+Authority remains unchanged: this reclassification coordinates AI proposals; it does not promote either lab into NEXY requirements.
