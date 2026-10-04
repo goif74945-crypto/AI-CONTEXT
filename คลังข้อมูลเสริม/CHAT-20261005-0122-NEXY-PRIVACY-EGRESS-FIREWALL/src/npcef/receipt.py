@@ -63,10 +63,10 @@ def make_receipt(
     reasons: Iterable[str] = (),
 ) -> EgressReceipt:
     receipt = EgressReceipt(
-        request_id=req.request_id,
-        purpose=req.purpose,
-        recipient=req.recipient,
-        recipient_class=req.recipient_class.value,
+        request_id=req.request_id if isinstance(req.request_id, str) else "",
+        purpose=req.purpose if isinstance(req.purpose, str) else "",
+        recipient=req.recipient if isinstance(req.recipient, str) else "",
+        recipient_class=req.recipient_class.value if hasattr(req.recipient_class, "value") else "INVALID",
         action=action.value,
         included_item_ids=tuple(sorted(set(included))),
         redacted_item_ids=tuple(sorted(set(redacted))),
