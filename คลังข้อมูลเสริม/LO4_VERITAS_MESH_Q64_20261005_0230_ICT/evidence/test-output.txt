@@ -1,0 +1,122 @@
+
+> nexy-lo4-veritas-mesh@0.1.0 test
+> node --experimental-strip-types --test tests/*.test.ts
+
+TAP version 13
+# (node:1203) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: all 20 Lo4 concepts are present exactly once
+ok 1 - all 20 Lo4 concepts are present exactly once
+  ---
+  duration_ms: 0.682966
+  type: 'test'
+  ...
+# Subtest: all concept scores stay inside UnitQ64 for 2000 deterministic stress frames
+ok 2 - all concept scores stay inside UnitQ64 for 2000 deterministic stress frames
+  ---
+  duration_ms: 72.900147
+  type: 'test'
+  ...
+# Subtest: evidence reliability is monotonic in evidence coverage
+ok 3 - evidence reliability is monotonic in evidence coverage
+  ---
+  duration_ms: 1.008014
+  type: 'test'
+  ...
+# Subtest: regression containment improves as regression risk decreases
+ok 4 - regression containment improves as regression risk decreases
+  ---
+  duration_ms: 0.168753
+  type: 'test'
+  ...
+# Subtest: scope integrity collapses under extreme scope distance and change surface
+ok 5 - scope integrity collapses under extreme scope distance and change surface
+  ---
+  duration_ms: 0.304768
+  type: 'test'
+  ...
+# Subtest: safety utility balance respects the weaker side
+ok 6 - safety utility balance respects the weaker side
+  ---
+  duration_ms: 0.363356
+  type: 'test'
+  ...
+# (node:1204) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: strong Lo4 candidate becomes eligible only for review, never auto-promoted
+ok 7 - strong Lo4 candidate becomes eligible only for review, never auto-promoted
+  ---
+  duration_ms: 4.042002
+  type: 'test'
+  ...
+# Subtest: unsafe candidate is rejected
+ok 8 - unsafe candidate is rejected
+  ---
+  duration_ms: 0.494503
+  type: 'test'
+  ...
+# Subtest: borderline candidate is quarantined rather than granted authority
+ok 9 - borderline candidate is quarantined rather than granted authority
+  ---
+  duration_ms: 0.267131
+  type: 'test'
+  ...
+# Subtest: receipt is deterministic and portable raw Q64.64 JSON contains no float fields
+ok 10 - receipt is deterministic and portable raw Q64.64 JSON contains no float fields
+  ---
+  duration_ms: 0.517136
+  type: 'test'
+  ...
+# (node:1205) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Q64 constants and raw ABI are exact
+ok 11 - Q64 constants and raw ABI are exact
+  ---
+  duration_ms: 2.09692
+  type: 'test'
+  ...
+# Subtest: decimal parsing never uses IEEE-754 and is deterministic
+ok 12 - decimal parsing never uses IEEE-754 and is deterministic
+  ---
+  duration_ms: 0.609426
+  type: 'test'
+  ...
+# Subtest: multiplication and division use exact bigint intermediates
+ok 13 - multiplication and division use exact bigint intermediates
+  ---
+  duration_ms: 0.200071
+  type: 'test'
+  ...
+# Subtest: saturation is deterministic at signed i128 boundaries
+ok 14 - saturation is deterministic at signed i128 boundaries
+  ---
+  duration_ms: 0.13989
+  type: 'test'
+  ...
+# Subtest: division by zero fails closed
+ok 15 - division by zero fails closed
+  ---
+  duration_ms: 0.195855
+  type: 'test'
+  ...
+# Subtest: UnitQ64 preserves [0,1] invariant
+ok 16 - UnitQ64 preserves [0,1] invariant
+  ---
+  duration_ms: 0.340913
+  type: 'test'
+  ...
+# Subtest: weighted average rejects invalid weight and is exact for binary fractions
+ok 17 - weighted average rejects invalid weight and is exact for binary fractions
+  ---
+  duration_ms: 0.300552
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 234.102053
