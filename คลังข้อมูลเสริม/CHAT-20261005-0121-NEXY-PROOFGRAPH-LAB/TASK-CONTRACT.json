@@ -1,0 +1,14 @@
+{
+  "schema": "ai-context/task-contract-compatible-v1",
+  "status": "REPOSITORY_WRITE_VERIFIED",
+  "objective": "Create a useful, non-duplicative supplemental NEXY-oriented system in AI-CONTEXT without modifying any NEXY.AI repository.",
+  "target": "goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-PROOFGRAPH-LAB",
+  "branch_ref_at_start": "main@b81bf1c4135794caec59116ecc214f6f8ea0148f",
+  "authorized_scope": ["AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-PROOFGRAPH-LAB/**"],
+  "protected_scope": ["any repository whose name contains NEXY.AI", "AI-CONTEXT paths outside the new supplemental folder"],
+  "authority_sources": ["AI-EXECUTION-KERNEL.md", "rules/GLOBAL.md", "rules/SECURITY.md", "rules/VERIFICATION.md", "projects/NEXY.AI/overview.md", "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md"],
+  "success_invariants": ["No NEXY.AI repository mutation", "All design ideas explicitly marked AI-proposed/experimental/not canon", "Implementation has no external runtime dependencies", "Tests execute and pass before repository write", "Repository write is verified by exact paths and commit"],
+  "required_evidence": ["E1 Python compile", "E2 unit tests", "CLI integration test", "E0 repository presence after write"],
+  "stop_conditions": ["target path collides with an independently created artifact", "target path collision", "test failure", "protected-scope mutation required"],
+  "completion_evidence": {"content_commit": "e4168d34f81d69be1a82db2aa06b984b6c475a90", "local_tests": "23/23 PASS", "repository_refetch": "PASS"}
+}

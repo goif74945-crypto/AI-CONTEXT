@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nexy-proofgraph/truth-lock.schema.json",
+  "title": "NEXY ProofGraph Truth Lock",
+  "type": "object",
+  "required": ["schema", "version", "files"],
+  "properties": {
+    "schema": {"const": "nexy-proofgraph/truth-lock"},
+    "version": {"const": 1},
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "size"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "size": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

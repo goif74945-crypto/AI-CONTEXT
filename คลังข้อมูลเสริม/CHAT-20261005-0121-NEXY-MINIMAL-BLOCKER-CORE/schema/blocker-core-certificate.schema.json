@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-context.local/experimental/nexy-mbc/certificate.schema.json",
+  "title": "NEXY Minimal Blocker Core Certificate v1.0",
+  "type": "object",
+  "required": [
+    "schema_version", "certificate_id", "engine", "target", "status", "decision",
+    "status_summary", "unsatisfied_evidence", "minimal_repair_sets",
+    "recommended_repair_set", "primary_blocker_core", "recommendation_guarantee",
+    "explanation_tree", "evaluation", "metadata", "certificate_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "certificate_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["PASS", "FAIL", "BLOCKED", "NOT_VERIFIED", "UNKNOWN", "CONFLICT"]},
+    "decision": {"enum": ["ALLOW", "FREEZE"]},
+    "primary_blocker_core": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "recommendation_guarantee": {
+      "enum": [
+        "LOWEST_DECLARED_COST_AMONG_ALL_INCLUSION_MINIMAL_REPAIR_SETS",
+        "PARTIAL_DUE_TO_REPAIR_SET_TRUNCATION"
+      ]
+    },
+    "certificate_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": true
+}

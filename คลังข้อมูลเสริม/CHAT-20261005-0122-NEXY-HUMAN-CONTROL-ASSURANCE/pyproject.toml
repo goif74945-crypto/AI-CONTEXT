@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexy-hcas"
+version = "0.1.0"
+description = "Deterministic human-control-surface assurance linter for NEXY advisory manifests"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+hcas = "hcas.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

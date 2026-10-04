@@ -1,0 +1,14 @@
+{
+  "request_id": "fixture-freeze-conflict",
+  "objective": "Present one legal verified output or freeze",
+  "claims": [
+    {
+      "id": "policy-state",
+      "text": "Two governing sources disagree on whether release is allowed.",
+      "status": "CONFLICT",
+      "materiality": "MATERIAL",
+      "visibility": "PUBLIC",
+      "evidence_refs": ["law:a", "law:b"]
+    }
+  ]
+}

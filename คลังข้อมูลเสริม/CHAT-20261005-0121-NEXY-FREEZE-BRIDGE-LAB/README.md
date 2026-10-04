@@ -1,93 +1,110 @@
-# NEXY Freeze Bridge Lab
+# NEXY Freeze Bridge Lab — Current v1.1
 
 > **AI-PROPOSED CONCEPT / REFERENCE IMPLEMENTATION / ADVISORY ONLY**
 >
-> This directory does not claim that NEXY.AI currently implements this system. It is an isolated supplemental research + executable reference project stored in AI-CONTEXT only.
+> This namespace does not claim current NEXY implementation. It exists in AI-CONTEXT only.
 
-## One-line idea
-
-**Machine FREEZE in → deterministic human recovery card out, with no authority expansion.**
-
-NEXY's strict freeze behavior protects correctness, but a user still needs to understand:
-- what category of problem blocked progress;
-- what information is genuinely missing;
-- who owns recovery;
-- which actions are actually authorized;
-- whether retry is legal;
-- which evidence can be shown safely.
-
-Freeze Bridge is designed as a presentation/control-boundary compiler. It does **not** decide truth, change Core state, resolve conflicts, grant permission, or manufacture recovery actions.
-
-## Session identity
+## Session
 
 - Session code: `NEXY-FREEZE-BRIDGE-20261005-0121-ICT`
-- Platform chat ID: **UNKNOWN** because the available tools do not expose it.
-- Target namespace: `คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-FREEZE-BRIDGE-LAB/`
-- NEXY.AI implementation repository mutations: **FORBIDDEN / NONE**
+- Namespace: `CHAT-20261005-0121-NEXY-FREEZE-BRIDGE-LAB`
+- Actual ChatGPT platform conversation ID: **UNKNOWN / not exposed by available tools**
+- NEXY.AI implementation-repository writes by this session: **0**
 
-## Why this is distinct
+## Current purpose
 
-Recent supplemental work already covers proof lineage, uncertainty debt, compatibility/evolution, knowledge decay, verification economy, causal debugging, replay/idempotency, privacy egress, preference sovereignty and resource governance.
+Freeze Bridge v1.1 is an **upstream freeze-semantics normalizer**.
 
-This project instead concentrates on **human-safe recovery semantics after a correct freeze decision**.
+```text
+authoritative freeze metadata
+        ↓
+NEXY Freeze Bridge v1.1
+  - reason normalization
+  - unknown-reason fail-safe
+  - disclosure-safe evidence refs
+  - required-input identifiers
+  - recovery-intent intersection
+  - dependency-recheck safety clamp
+  - Thai/English explanation text
+  - deterministic fingerprint
+        ↓
+FreezeExplanation
+        ↓
+downstream Trust UX / presentation authority
+```
 
-## Reference implementation
+It deliberately does **not** receive a user role, choose display modes, create UI buttons, expose a Recover affordance, authorize an operation, or mutate Core state.
 
-Language: Python 3.11+  
+## Why v1.1 exists
+
+The initial v1.0 design included human recovery-card/action concepts. During execution, a concurrent sibling project appeared:
+
+`คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-TRUST-UX-CONTRACT-LAB`
+
+That sibling already owns the presentation problem: backend envelope + role → Trust Card/display/action visibility.
+
+To satisfy the user's no-duplication requirement, Freeze Bridge was pivoted upstream. Files `01_...` through `09_...` are retained as **HISTORICAL / SUPERSEDED v1.0** provenance.
+
+## Current machine contract
+
+Input: `schema/freeze-event.schema.json`  
+Output: `schema/freeze-explanation.schema.json`
+
+Protocol: `1.1`  
+Policy: `freeze-bridge-policy/1.1`
+
+Key invariant:
+
+`eligible_recovery_intents = upstream_authorized_intents ∩ reason_policy_intents`
+
+The output always carries:
+
+`downstream_ui_authority_required = true`
+
+## Current code
+
+- `freeze_bridge/model.py`
+- `freeze_bridge/policy.py`
+- `freeze_bridge/compiler.py`
+- `freeze_bridge/cli.py`
+- `tests/test_freeze_bridge.py`
+- `tools/policy_selfcheck.py`
+- `tools/benchmark.py`
+
 Runtime dependencies: Python standard library only.
 
-Key properties:
-- strict input normalization;
-- deterministic action ordering;
-- reason-policy intersection with pre-authorized actions;
-- unknown-reason fallback without cause invention;
-- restricted-evidence suppression;
-- security/integrity freezes cannot become retryable;
-- Thai and English user-facing text;
-- SHA-256 fingerprint bound to normalized input + policy output;
-- CLI that reads JSON and emits JSON;
-- JSON Schema contracts;
-- negative-path tests;
-- exhaustive policy matrix self-check.
+## Verified local evidence for v1.1
 
-## Local verification snapshot
+- 23/23 unit + negative-path tests PASS.
+- Production library line + branch coverage: 100%.
+- Policy matrix self-check: 330/330 PASS.
+- `compileall`: PASS.
+- JSON Schema Draft 2020-12 self-check: PASS.
+- Three input→output schema round-trips: PASS.
+- Thai CLI JSON round-trip: PASS.
+- Local microbenchmark: 50,000 compiles in 1.516704s, about 32,966.23 ops/s in that sandbox only.
 
-- Unit/negative tests: **21/21 PASS**
-- Production library line + branch coverage: **100%**
-- Policy-matrix cases: **330 PASS**
-- `compileall`: **PASS**
-- CLI JSON round-trip: **PASS**
-- Example benchmark: **~28.8k compile operations/sec** in the current sandbox, 50,000 iterations. This is environment-specific and is **not** a production SLA.
+The benchmark is not a production SLA. E3–E6 integration/runtime/deployment claims remain NOT_VERIFIED.
 
-## Directory map
+## Current documents
 
-- `00_EXECUTION_STATE.md` — durable temporary execution memory.
-- `01_PROJECT_CHARTER.md` — task contract and scope lock.
-- `02_ARCHITECTURE.md` — module/data/authority architecture.
-- `03_PROTOCOL_SPEC.md` — event and recovery-card protocol.
-- `04_POLICY_MATRIX.md` — reason/action/failure policy.
-- `05_SECURITY_THREAT_MODEL.md` — disclosure and misuse threats.
-- `06_INTEGRATION_GUIDE.md` — future integration boundary.
-- `07_ADOPTION_GATES.md` — conditions before any real promotion.
-- `08_TEST_AND_BENCHMARK_REPORT.md` — evidence from this run.
-- `09_FUTURE_IDEAS.md` — clearly marked AI proposals only.
-- `freeze_bridge/` — executable reference package.
-- `schema/` — JSON contracts.
-- `fixtures/` — example/negative fixtures.
-- `tests/` — unit + negative-path test suite.
-- `tools/` — policy self-check and benchmark.
-- `10_FINAL_AUDIT.md` — final verification boundary.
+- `00_EXECUTION_STATE.md` — durable execution state.
+- `10_V1_1_PIVOT_AND_SIBLING_BOUNDARY.md` — non-overlap law.
+- `11_PROTOCOL_V1_1.md` — current protocol/policy contract.
+- `12_VERIFICATION_V1_1.md` — executed evidence.
+- `13_FINAL_AUDIT.md` — final repository/write-back audit.
 
 ## Non-goals
 
-This lab does not:
-- mutate NEXY Core decisions;
-- redefine DOC-B/C/D/E;
-- alter current 837-row source scope;
-- bypass freeze;
-- grant permissions;
-- implement deployment/runtime integration;
-- claim UI completion;
-- claim release readiness.
+Freeze Bridge does not:
+- override DOC-B/C/D/E;
+- decide release/deployment;
+- infer missing intent;
+- guess a causal reason;
+- grant authorization;
+- decide role visibility;
+- decide display mode;
+- execute a recovery operation;
+- mutate any NEXY.AI repository.
 
-Promotion into real NEXY scope would require explicit authorization plus current build-spec mapping and matching implementation/runtime evidence.
+Promotion into current NEXY build scope requires a separately authorized task and matching current-head evidence.

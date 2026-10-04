@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nexy-freeze-bridge-reference"
-version = "0.1.0"
-description = "AI-proposed deterministic freeze explanation and recovery reference engine for NEXY research."
+version = "0.2.0"
+description = "AI-proposed deterministic freeze-semantics normalization and explanation reference engine for NEXY research."
 requires-python = ">=3.11"
 
 [tool.setuptools.packages.find]

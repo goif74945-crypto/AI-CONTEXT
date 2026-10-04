@@ -1,29 +1,27 @@
-from .compiler import POLICY_VERSION, compile_mapping, compile_recovery_card
+from .compiler import POLICY_VERSION, compile_freeze_explanation, compile_mapping
 from .model import (
-    ActionCode,
     Disclosure,
     FreezeBridgeError,
     FreezeEvent,
+    FreezeExplanation,
     FreezeStatus,
     Locale,
-    RecoveryAction,
-    RecoveryCard,
+    RecoveryIntent,
     RecoveryOwner,
     ReasonCode,
 )
 
 __all__ = [
     "POLICY_VERSION",
-    "ActionCode",
     "Disclosure",
     "FreezeBridgeError",
     "FreezeEvent",
+    "FreezeExplanation",
     "FreezeStatus",
     "Locale",
-    "RecoveryAction",
-    "RecoveryCard",
+    "RecoveryIntent",
     "RecoveryOwner",
     "ReasonCode",
+    "compile_freeze_explanation",
     "compile_mapping",
-    "compile_recovery_card",
 ]

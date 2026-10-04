@@ -1,82 +1,64 @@
-# Temporary Execution Memory — NEXY Evidence Capsule & Selective Disclosure Lab
+# Closed Execution Memory — NEXY Evidence Capsule & Selective Disclosure Lab
 
-status: IN_PROGRESS
+status: COMPLETE_REFERENCE_LAB
 truth_class: REPO_FACT_FOR_THIS_TASK_RECORD
 durable_chat_code: CHAT-20261005-0121-NEXY-EVIDENCE-CAPSULE-LAB
 platform_native_chat_id: UNKNOWN_NOT_EXPOSED
 started_local: 2026-10-05T01:21:00+07:00
+target_repository: goif74945-crypto/AI-CONTEXT
+target_branch: main
+authorized_write_scope: คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-EVIDENCE-CAPSULE-LAB/
 
-## Objective
-Create a distinct supplemental R&D project for NEXY inside AI-CONTEXT only. The project explores privacy-preserving, tamper-evident evidence capsules that can disclose only authorized evidence fields while preserving verifiable integrity, freshness, provenance, and explicit failure semantics.
+## Objective completed
+Designed, implemented, tested and documented a distinct AI-proposed evidence-capsule/selective-disclosure mechanism useful to future NEXY research without modifying any repository whose name contains NEXY.AI.
 
-## Authority and source facts
-- AI-CONTEXT Execution Kernel, Security, Verification, System Design, Implementation and Memory Update workflows govern this task.
-- Current NEXY source normalization uses 837 normalized requirement rows; that matrix is source normalization, not implementation proof.
-- DOC-C is current build authority; this lab does not promote itself into DOC-C.
-- DOC-C states that redaction may operate on derived/copied views but must not rewrite original audit lineage; hashes remain for integrity evidence.
-- NEXY design separates design, implementation, runtime, and deployment evidence.
+## Canonical context used
+AI-CONTEXT bootstrap/index/execution kernel/work router; global/security/verification rules; project-start/research/system-design/artifact/implementation/verification/memory workflows; NEXY overview/deep indexes/constitutional/build-spec context; current 837-row normalized requirement matrix.
 
-## Why this lab is distinct
-Recent sibling work already covers proof-carrying execution, evidence graphs, verification economy, reliability budgets, capability admission, idempotency/replay, compatibility evolution, experience compilation, and human-authority interaction integrity.
+## Source-grounded motivation
+NEXY separates source/design/implementation/runtime/deployment truth and DOC-C context permits redaction on derived/copied views without rewriting original audit lineage, with hashes retained for integrity. This lab explores a possible derived-view proof mechanism. It does not change DOC-C.
 
-This lab intentionally targets a separate axis:
-- field-level selective disclosure;
-- redacted derived views without rewriting lineage;
-- tamper-evident Merkle commitments;
-- freshness and replay rejection;
-- role-scoped disclosure policy;
-- provenance-preserving verification bundles;
-- explicit distinction between integrity and issuer authenticity.
+## Distinctness check
+Concurrent/sibling work already covered experience compilation, human-authority integrity, proof/evidence infrastructure, verification economy, reliability budgets, compatibility, anti-entropy, replay/idempotency and resource governance. Repository/commit searches did not show a recent dedicated selective-disclosure/Merkle evidence-capsule lab before this task.
 
-Repository/commit keyword checks found no recent commits titled around privacy, redaction, selective disclosure, Merkle commitments, or evidence capsules.
+## Deliverables
+- README.md
+- design/01_TASK_CONTRACT.md
+- design/02_ARCHITECTURE_PROTOCOL.md
+- design/03_THREAT_MODEL.md
+- design/04_REQUIREMENT_LEDGER.md
+- design/05_INTEGRATION_PROPOSAL.md
+- reference/reference_impl.py
+- reference/test_reference_impl.py
+- fixtures/adversarial-vectors.json
+- schema/protocol.schema.json
+- validation/06_TEST_EVIDENCE.md
+- validation/07_RESEARCH_BACKLOG.md
+- 10_FINAL_AUDIT.md
 
-## Truth labels
-- SOURCE_FACT: grounded in canonical AI-CONTEXT/NEXY context.
-- AI_PROPOSED_CONCEPT: newly designed mechanism in this lab.
-- HYPOTHESIS: benefit expected but requiring future integration/runtime experiments.
-- REFERENCE_IMPLEMENTATION: standalone code in AI-CONTEXT, not NEXY production code.
-- NOT_VERIFIED_NEXY_RUNTIME: no claim about NEXY.AI runtime behavior.
+## Verification
+E0: core package paths re-fetched from GitHub main.
+E1: Python compile PASS; protocol JSON parse PASS.
+E2: compact committed reference test suite 20/20 PASS.
+Byte linkage:
+- implementation Git blob: 6b7a899d1f65b89fd0ded881f105b843ef60e187
+- tests Git blob: 0b0401e592ebc1420e88fd4e53e5c3ab4f397630
+Both matched local git hash-object results before commit and GitHub create_blob results.
+Core package commit: 036f3b56d23e636db155742eb64efefd8dab7de4
 
-## Authorized mutation scope
-Only:
-`goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0121-NEXY-EVIDENCE-CAPSULE-LAB/`
+A larger exploratory development package reached 32/32 tests locally. Completion claims are based on the compact committed 20/20 suite because its exact bytes are linked to repository blobs.
 
-## Protected scope
-- Every repository whose name contains `NEXY.AI`.
-- Existing files outside this new supplemental folder.
-- Canonical 837-row matrix and NEXY project law/spec.
-- Repository settings, workflows, branches, issues, and PRs unless separately authorized.
-- Secrets and real credentials.
+## Concurrency/recovery record
+Concurrent writes caused expected GitHub 409/422 conflicts. No force push was used. The task refreshed HEAD and retried fast-forward-only until successful.
 
-## Planned deliverables
-1. task contract
-2. concept/non-goals
-3. architecture
-4. threat model
-5. protocol specification
-6. requirement ledger
-7. integration proposal
-8. standard-library Python reference implementation
-9. adversarial fixture corpus
-10. unit/adversarial tests
-11. package validator
-12. verification report
-13. final audit
-14. research/adoption backlog
-15. content manifest
+## Known limitations
+- HMAC-SHA256 is REFERENCE-ONLY, not production issuer authentication.
+- no E3/E4/E5/E6 NEXY evidence;
+- no asymmetric key lifecycle/revocation;
+- no durable distributed replay service;
+- no cross-language canonicalization proof;
+- no zero-knowledge privacy;
+- no real NEXY RBAC/Vault/Audit integration.
 
-## Verification target
-- E0: every committed path can be re-fetched.
-- E1: Python compile/static/package checks and JSON validation.
-- E2: executed unit/adversarial tests against the exact reference source content.
-- No E3/E4/E5/E6 claim about NEXY.AI.
-
-## Stop conditions
-- Any write would touch a NEXY.AI-named repository.
-- Any existing sibling artifact would need destructive overwrite.
-- A material authority conflict invalidates the concept.
-- A real secret/credential would be persisted.
-- Required write precondition cannot be established safely.
-
-## Resume instruction
-Read this file first. Then read `01_TASK_CONTRACT.md`, `03_ARCHITECTURE.md`, `05_PROTOCOL_SPEC.md`, and `09_VALIDATION_REPORT.md` when present. Do not infer PASS from file presence.
+## Resume / adoption rule
+Read README, task contract, architecture, threat model, test evidence and final audit. Treat all new architecture here as AI_PROPOSED_CONCEPT until explicit project authority promotes it. Never infer NEXY implementation from this lab's existence.

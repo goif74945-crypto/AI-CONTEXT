@@ -102,10 +102,7 @@ def replay(capsule: Capsule) -> ReplayReport:
             continue
 
         if kind is EventKind.AUTHORITY_RESOLVED:
-            _expect(
-                phase is ReplayPhase.CONTEXT_READY,
-                "AUTHORITY_RESOLVED must follow CONTEXT_SELECTED",
-            )
+            _expect(phase is ReplayPhase.CONTEXT_READY, "AUTHORITY_RESOLVED must follow CONTEXT_SELECTED")
             _expect(
                 payload.get("fingerprint") == capsule.authority_fingerprint,
                 "AUTHORITY_RESOLVED fingerprint must equal capsule authority fingerprint",
@@ -115,10 +112,7 @@ def replay(capsule: Capsule) -> ReplayReport:
             continue
 
         if kind is EventKind.DECISION:
-            _expect(
-                phase is ReplayPhase.AUTHORITY_READY,
-                "DECISION must follow AUTHORITY_RESOLVED",
-            )
+            _expect(phase is ReplayPhase.AUTHORITY_READY, "DECISION must follow AUTHORITY_RESOLVED")
             decision = str(payload.get("decision", ""))
             _expect(decision in {"ALLOW", "FREEZE"}, "DECISION must be ALLOW or FREEZE")
             if decision == "FREEZE":
@@ -136,24 +130,15 @@ def replay(capsule: Capsule) -> ReplayReport:
             )
             action_id = str(payload.get("action_id", "")).strip()
             _expect(bool(action_id), "TOOL_INTENT requires action_id")
-            _expect(
-                action_id not in open_tools and action_id not in completed_tools,
-                "action_id must be unique",
-            )
+            _expect(action_id not in open_tools and action_id not in completed_tools, "action_id must be unique")
             open_tools[action_id] = payload
             phase = ReplayPhase.EXECUTING
             continue
 
         if kind is EventKind.TOOL_RESULT:
-            _expect(
-                phase is ReplayPhase.EXECUTING,
-                "TOOL_RESULT requires an active tool execution",
-            )
+            _expect(phase is ReplayPhase.EXECUTING, "TOOL_RESULT requires an active tool execution")
             action_id = str(payload.get("action_id", "")).strip()
-            _expect(
-                action_id in open_tools,
-                "TOOL_RESULT action_id has no matching open intent",
-            )
+            _expect(action_id in open_tools, "TOOL_RESULT action_id has no matching open intent")
             expected_intent_hash = sha256_hex(open_tools[action_id])
             provided_intent_hash = str(payload.get("intent_digest", ""))
             _expect(
@@ -167,16 +152,9 @@ def replay(capsule: Capsule) -> ReplayReport:
 
         if kind is EventKind.VERIFICATION:
             _expect(decision == "ALLOW", "VERIFICATION requires an ALLOW decision")
+            _expect(not open_tools, "VERIFICATION cannot run while tool intents are unresolved")
             _expect(
-                not open_tools,
-                "VERIFICATION cannot run while tool intents are unresolved",
-            )
-            _expect(
-                phase in {
-                    ReplayPhase.ALLOWED,
-                    ReplayPhase.EXECUTING,
-                    ReplayPhase.VERIFIED,
-                },
+                phase in {ReplayPhase.ALLOWED, ReplayPhase.EXECUTING, ReplayPhase.VERIFIED},
                 "VERIFICATION appears in an illegal phase",
             )
             status = str(payload.get("status", ""))
@@ -186,24 +164,15 @@ def replay(capsule: Capsule) -> ReplayReport:
             )
             verification_statuses.append(status)
             if status == "FREEZE" and freeze_reason is None:
-                freeze_reason = (
-                    str(payload.get("reason", "")).strip()
-                    or "verification freeze"
-                )
+                freeze_reason = str(payload.get("reason", "")).strip() or "verification freeze"
             phase = ReplayPhase.VERIFIED
             continue
 
         if kind is EventKind.FINAL:
             _expect(authority_seen, "FINAL requires authority resolution")
-            _expect(
-                not open_tools,
-                "FINAL cannot close with unresolved tool intents",
-            )
+            _expect(not open_tools, "FINAL cannot close with unresolved tool intents")
             final_status = str(payload.get("status", ""))
-            _expect(
-                final_status == capsule.terminal_state.value,
-                "FINAL status must match capsule terminal_state",
-            )
+            _expect(final_status == capsule.terminal_state.value, "FINAL status must match capsule terminal_state")
             _expect(
                 payload.get("output_digest") == sha256_hex(payload.get("output")),
                 "FINAL output_digest mismatch",
@@ -211,45 +180,25 @@ def replay(capsule: Capsule) -> ReplayReport:
 
             if capsule.terminal_state is TerminalState.PASS:
                 _expect(decision == "ALLOW", "PASS requires ALLOW decision")
-                _expect(
-                    bool(verification_statuses),
-                    "PASS requires at least one verification event",
-                )
+                _expect(bool(verification_statuses), "PASS requires at least one verification event")
                 _expect(
                     all(status == "PASS" for status in verification_statuses),
                     "PASS requires every verification status to be PASS",
                 )
             elif capsule.terminal_state is TerminalState.FREEZE:
                 freeze_signal = decision == "FREEZE" or any(
-                    status in {"FREEZE", "FAIL", "NOT_VERIFIED"}
-                    for status in verification_statuses
+                    status in {"FREEZE", "FAIL", "NOT_VERIFIED"} for status in verification_statuses
                 )
-                _expect(
-                    freeze_signal,
-                    "FREEZE requires a decision or verification freeze signal",
-                )
+                _expect(freeze_signal, "FREEZE requires a decision or verification freeze signal")
                 if freeze_reason is None:
-                    freeze_reason = (
-                        str(payload.get("reason", "")).strip()
-                        or "terminal freeze"
-                    )
+                    freeze_reason = str(payload.get("reason", "")).strip() or "terminal freeze"
             elif capsule.terminal_state is TerminalState.FAIL:
-                _expect(
-                    "FAIL" in verification_statuses,
-                    "FAIL requires a FAIL verification",
-                )
+                _expect("FAIL" in verification_statuses, "FAIL requires a FAIL verification")
             elif capsule.terminal_state is TerminalState.BLOCKED:
-                _expect(
-                    "BLOCKED" in verification_statuses,
-                    "BLOCKED requires a BLOCKED verification",
-                )
+                _expect("BLOCKED" in verification_statuses, "BLOCKED requires a BLOCKED verification")
             elif capsule.terminal_state is TerminalState.NOT_VERIFIED:
                 _expect(
-                    not verification_statuses
-                    or any(
-                        status == "NOT_VERIFIED"
-                        for status in verification_statuses
-                    ),
+                    not verification_statuses or any(status == "NOT_VERIFIED" for status in verification_statuses),
                     "NOT_VERIFIED requires missing verification or NOT_VERIFIED evidence",
                 )
 

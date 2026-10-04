@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Mapping, Sequence
+from typing import Any, Mapping, Sequence, TypeVar
 
 
 class FreezeBridgeError(ValueError):
@@ -50,16 +50,18 @@ class ReasonCode(str, Enum):
     UNKNOWN_REASON = "UNKNOWN_REASON"
 
 
-class ActionCode(str, Enum):
-    PROVIDE_MISSING_INPUT = "PROVIDE_MISSING_INPUT"
-    REVIEW_CONFLICT = "REVIEW_CONFLICT"
-    RETRY_AFTER_DEPENDENCY = "RETRY_AFTER_DEPENDENCY"
-    OPEN_EVIDENCE = "OPEN_EVIDENCE"
+class RecoveryIntent(str, Enum):
+    PROVIDE_REQUIRED_INPUT = "PROVIDE_REQUIRED_INPUT"
+    RESOLVE_AUTHORITY_CONFLICT = "RESOLVE_AUTHORITY_CONFLICT"
+    REFRESH_EVIDENCE = "REFRESH_EVIDENCE"
+    RECHECK_DEPENDENCY = "RECHECK_DEPENDENCY"
     REQUEST_AUTHORITY_REVIEW = "REQUEST_AUTHORITY_REVIEW"
-    CONTACT_OPERATOR = "CONTACT_OPERATOR"
-    ACKNOWLEDGE = "ACKNOWLEDGE"
-    CHANGE_SCOPE = "CHANGE_SCOPE"
-    WAIT_FOR_SYSTEM = "WAIT_FOR_SYSTEM"
+    ESCALATE_OPERATOR = "ESCALATE_OPERATOR"
+    ADJUST_SCOPE = "ADJUST_SCOPE"
+    ACKNOWLEDGE_STATE = "ACKNOWLEDGE_STATE"
+
+
+E = TypeVar("E", bound=Enum)
 
 
 CONTROL_CHARACTERS = {chr(i) for i in range(0x20)} - {"\t"}
@@ -116,17 +118,15 @@ def _clean_string_list(
     return tuple(cleaned)
 
 
-def _parse_enum(enum_type: type[Enum], value: Any, *, field_name: str, fallback: Enum | None = None) -> Enum:
+def _parse_enum(enum_type: type[E], value: Any, *, field_name: str, fallback: E | None = None) -> E:
     if not isinstance(value, str):
-        if fallback is not None:
-            return fallback
         raise FreezeBridgeError(f"{field_name} must be a string")
     try:
         return enum_type(value)
     except ValueError:
         if fallback is not None:
             return fallback
-        allowed = ", ".join(member.value for member in enum_type)
+        allowed = ", ".join(str(member.value) for member in enum_type)
         raise FreezeBridgeError(f"{field_name} must be one of: {allowed}") from None
 
 
@@ -139,20 +139,20 @@ class FreezeEvent:
     recovery_owner: RecoveryOwner
     disclosure: Disclosure = Disclosure.PUBLIC
     locale: Locale = Locale.EN
-    retryable: bool = False
+    dependency_recheck_safe: bool = False
     missing_inputs: tuple[str, ...] = field(default_factory=tuple)
     evidence_refs: tuple[str, ...] = field(default_factory=tuple)
-    authorized_actions: tuple[ActionCode, ...] = field(default_factory=tuple)
+    authorized_recovery_intents: tuple[RecoveryIntent, ...] = field(default_factory=tuple)
     context_label: str | None = None
-    protocol_version: str = "1.0"
+    protocol_version: str = "1.1"
 
     @classmethod
     def from_mapping(cls, raw: Mapping[str, Any]) -> "FreezeEvent":
         if not isinstance(raw, Mapping):
             raise FreezeBridgeError("event must be an object")
 
-        protocol_version = _clean_text(raw.get("protocol_version", "1.0"), field_name="protocol_version", max_length=16)
-        if protocol_version != "1.0":
+        protocol_version = _clean_text(raw.get("protocol_version", "1.1"), field_name="protocol_version", max_length=16)
+        if protocol_version != "1.1":
             raise FreezeBridgeError("unsupported protocol_version")
 
         event_id = _clean_text(raw.get("event_id"), field_name="event_id", max_length=128)
@@ -170,9 +170,9 @@ class FreezeEvent:
         disclosure = _parse_enum(Disclosure, raw.get("disclosure", Disclosure.PUBLIC.value), field_name="disclosure")
         locale = _parse_enum(Locale, raw.get("locale", Locale.EN.value), field_name="locale")
 
-        retryable = raw.get("retryable", False)
-        if not isinstance(retryable, bool):
-            raise FreezeBridgeError("retryable must be a boolean")
+        dependency_recheck_safe = raw.get("dependency_recheck_safe", False)
+        if not isinstance(dependency_recheck_safe, bool):
+            raise FreezeBridgeError("dependency_recheck_safe must be a boolean")
 
         missing_inputs = _clean_string_list(
             raw.get("missing_inputs"), field_name="missing_inputs", max_items=24, item_max_length=96
@@ -181,53 +181,39 @@ class FreezeEvent:
             raw.get("evidence_refs"), field_name="evidence_refs", max_items=24, item_max_length=160
         )
 
-        raw_actions = raw.get("authorized_actions", ())
-        if isinstance(raw_actions, (str, bytes)) or not isinstance(raw_actions, Sequence):
-            raise FreezeBridgeError("authorized_actions must be a list")
-        if len(raw_actions) > len(ActionCode):
-            raise FreezeBridgeError("authorized_actions exceeds supported action count")
-        actions: list[ActionCode] = []
-        seen_actions: set[ActionCode] = set()
-        for index, value in enumerate(raw_actions):
-            action = _parse_enum(ActionCode, value, field_name=f"authorized_actions[{index}]")
-            assert isinstance(action, ActionCode)
-            if action not in seen_actions:
-                actions.append(action)
-                seen_actions.add(action)
+        raw_intents = raw.get("authorized_recovery_intents", ())
+        if isinstance(raw_intents, (str, bytes)) or not isinstance(raw_intents, Sequence):
+            raise FreezeBridgeError("authorized_recovery_intents must be a list")
+        if len(raw_intents) > len(RecoveryIntent):
+            raise FreezeBridgeError("authorized_recovery_intents exceeds supported intent count")
+        intents: list[RecoveryIntent] = []
+        seen_intents: set[RecoveryIntent] = set()
+        for index, value in enumerate(raw_intents):
+            intent = _parse_enum(RecoveryIntent, value, field_name=f"authorized_recovery_intents[{index}]")
+            assert isinstance(intent, RecoveryIntent)
+            if intent not in seen_intents:
+                intents.append(intent)
+                seen_intents.add(intent)
 
         return cls(
             event_id=event_id,
-            reason_code=reason_code,  # type: ignore[arg-type]
-            status=status,  # type: ignore[arg-type]
+            reason_code=reason_code,
+            status=status,
             blocking_layer=blocking_layer,
-            recovery_owner=recovery_owner,  # type: ignore[arg-type]
-            disclosure=disclosure,  # type: ignore[arg-type]
-            locale=locale,  # type: ignore[arg-type]
-            retryable=retryable,
+            recovery_owner=recovery_owner,
+            disclosure=disclosure,
+            locale=locale,
+            dependency_recheck_safe=dependency_recheck_safe,
             missing_inputs=missing_inputs,
             evidence_refs=evidence_refs,
-            authorized_actions=tuple(actions),
+            authorized_recovery_intents=tuple(intents),
             context_label=context_label,
             protocol_version=protocol_version,
         )
 
 
 @dataclass(frozen=True, slots=True)
-class RecoveryAction:
-    code: ActionCode
-    label: str
-    description: str
-
-    def as_dict(self) -> dict[str, str]:
-        return {
-            "code": self.code.value,
-            "label": self.label,
-            "description": self.description,
-        }
-
-
-@dataclass(frozen=True, slots=True)
-class RecoveryCard:
+class FreezeExplanation:
     protocol_version: str
     event_id: str
     status: FreezeStatus
@@ -236,11 +222,12 @@ class RecoveryCard:
     summary: str
     blocking_layer: str
     recovery_owner: RecoveryOwner
-    needed: tuple[str, ...]
-    actions: tuple[RecoveryAction, ...]
+    required_inputs: tuple[str, ...]
+    eligible_recovery_intents: tuple[RecoveryIntent, ...]
     evidence_refs: tuple[str, ...]
     disclosure: Disclosure
-    retryable: bool
+    dependency_recheck_safe: bool
+    downstream_ui_authority_required: bool
     fingerprint: str
 
     def as_dict(self) -> dict[str, Any]:
@@ -253,10 +240,11 @@ class RecoveryCard:
             "summary": self.summary,
             "blocking_layer": self.blocking_layer,
             "recovery_owner": self.recovery_owner.value,
-            "needed": list(self.needed),
-            "actions": [action.as_dict() for action in self.actions],
+            "required_inputs": list(self.required_inputs),
+            "eligible_recovery_intents": [intent.value for intent in self.eligible_recovery_intents],
             "evidence_refs": list(self.evidence_refs),
             "disclosure": self.disclosure.value,
-            "retryable": self.retryable,
+            "dependency_recheck_safe": self.dependency_recheck_safe,
+            "downstream_ui_authority_required": self.downstream_ui_authority_required,
             "fingerprint": self.fingerprint,
         }

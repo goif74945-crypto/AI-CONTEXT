@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nexy-proofgraph/scan-result.schema.json",
+  "title": "NEXY ProofGraph Scan Result",
+  "type": "object",
+  "required": ["schema", "documents", "findings", "counts", "fail_on", "ok"],
+  "properties": {
+    "schema": {"const": "nexy-proofgraph/scan-result"},
+    "documents": {"type": "integer", "minimum": 0},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "severity", "path", "line", "message", "evidence"],
+        "properties": {
+          "rule_id": {"type": "string", "pattern": "^PG[0-9]{3}$"},
+          "severity": {"enum": ["INFO", "WARNING", "ERROR", "CRITICAL"]},
+          "path": {"type": "string"},
+          "line": {"type": ["integer", "null"], "minimum": 1},
+          "message": {"type": "string"},
+          "evidence": {"type": "object"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": ["INFO", "WARNING", "ERROR", "CRITICAL"],
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "fail_on": {"enum": ["INFO", "WARNING", "ERROR", "CRITICAL"]},
+    "ok": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

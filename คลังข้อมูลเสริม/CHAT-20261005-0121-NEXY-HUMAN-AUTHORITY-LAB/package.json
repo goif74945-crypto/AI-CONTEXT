@@ -1,0 +1,16 @@
+{
+  "name": "nexy-human-authority-interaction-integrity-lab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-proposed offline reference evaluator for user-authority and interaction-integrity experiments.",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "validate": "npm run build && node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
