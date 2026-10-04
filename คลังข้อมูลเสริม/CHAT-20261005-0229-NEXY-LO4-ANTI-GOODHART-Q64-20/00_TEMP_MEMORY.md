@@ -3,7 +3,7 @@
 **Work/conversation code:** `CHAT-20261005-0229-NEXY-LO4-ANTI-GOODHART-Q64-20`
 **Platform-native chat ID:** UNKNOWN_NOT_EXPOSED_TO_AVAILABLE_TOOLS
 **Created:** 2026-10-05T02:29+07:00
-**Status:** IN_PROGRESS
+**Status:** ISOLATED_REFERENCE_COMPLETE / NEXY_INTEGRATION_NOT_VERIFIED
 **Authority class:** `Lo4_AI_PROPOSAL_ONLY / EXPERIMENTAL / NON_CANONICAL / NON_GOVERNING`
 **Writable repository:** `goif74945-crypto/AI-CONTEXT`
 **Writable namespace:** `คลังข้อมูลเสริม/CHAT-20261005-0229-NEXY-LO4-ANTI-GOODHART-Q64-20/**`
@@ -75,3 +75,32 @@ Refresh current AI-CONTEXT main, re-read this file and 01_TASK_CONTRACT.md, cont
 - Regression after repair: 34/34 tests PASS, including 10,000 arithmetic identity stress iterations and AST scan forbidding binary-float literals.
 - Publication of code/evidence: IN_PROGRESS / NOT_YET_VERIFIED.
 - NEXY.AI integration/runtime/deployment: NOT_VERIFIED.
+
+
+## Final checkpoint — sealed publication
+- Exact Lo4 concepts implemented: 20 / 20.
+- Shared checked signed Q64.64 substrate: PASS.
+- Authoritative binary-float input: forbidden.
+- Overflow wrapping/saturation: forbidden; explicit failure semantics used.
+- Final test suite: 44 / 44 PASS.
+- Property/stress checks: 23,000+ iterative checks PASS.
+- Deterministic replay SHA-256: `e67a295bceb14c96e73a2e9eb7d0e51c2884ac3d882542870b194d31d169aac8`, repeated bytes identical.
+- Wheel build, clean install and smoke import: PASS.
+- Final wheel SHA-256: `130dd3791fb2ba51fda3c2a564987087eb722a4073a9370c669d17f22090e83a`.
+- Sealed archive SHA-256: `46bb4e0e7d8e5a9ca262462c6c08e639d109e7cbd7f16c34d2335b368b9563d6`.
+- Sealed archive extracted fresh and revalidated: compile PASS, 44/44 tests PASS, tested-byte manifest match PASS.
+- Published bundle chunks: 10 / 10.
+- GitHub post-write readback: 10 / 10 Git blob SHAs matched exact local chunk bytes.
+- Readable concept index: `12_CONCEPT_INDEX.md`.
+- Publication evidence: `11_PUBLICATION_AUDIT.md`.
+- Reconstruction/evidence contract: `bundle/README.md`.
+- Preserved defects: F-001 Q64 normalization residual and F-002 evidence-harness import-context defect, both repaired and full evidence rerun.
+- Fresh collision scan included concurrent 02:28–02:30 Lo4 work. Goodhart/reward-hacking/proxy-gaming target phrases remained absent from inspected AI-CONTEXT search results outside this namespace. This is inspected-repository evidence only, not global novelty proof.
+- Mutation of repositories whose name contains `NEXY.AI`: 0 authorized / 0 performed.
+- Canon promotion: NOT_PERFORMED / NOT_AUTHORIZED.
+- NEXY.AI runtime integration: NOT_VERIFIED.
+- Deployment: NOT_VERIFIED.
+- Platform-native ChatGPT conversation ID remains unavailable to tools. Durable work code is `CHAT-20261005-0229-NEXY-LO4-ANTI-GOODHART-Q64-20`.
+
+## Resume condition after completion
+Do not continue modifying this sealed reference package casually. Any future change invalidates the matching tested-byte evidence and requires a new fail/fix/retest + manifest + publication/readback cycle. Future NEXY adoption must occur through an explicitly authorized promotion/integration process against the exact target revision.
