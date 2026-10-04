@@ -10,7 +10,13 @@ from .replay import replay
 
 @dataclass(frozen=True, slots=True)
 class TrustReceipt:
-    """Compact, payload-minimized receipt for a verified capsule."""
+    """Compact, payload-minimized receipt for a verified capsule.
+
+    The receipt intentionally exposes structural proof metadata rather than raw
+    request/tool/output payloads. It is not a secrecy boundary by itself, but it
+    prevents the common mistake of making a UI trust indicator depend on dumping
+    the complete internal transcript.
+    """
 
     capsule_id: str
     proposal_status: str
