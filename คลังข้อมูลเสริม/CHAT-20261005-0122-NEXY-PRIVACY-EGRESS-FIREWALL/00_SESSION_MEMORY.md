@@ -1,6 +1,6 @@
 # Temporary Execution Memory — NEXY Purpose-Bound Privacy & Context Egress Firewall Lab
 
-Status: IN_PROGRESS
+Status: WAVE_01_VERIFIED_LONG_HORIZON_ACTIVE
 Truth class: REPO_TASK_RECORD
 Durable chat code: CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL
 Platform-native ChatGPT conversation ID: UNKNOWN_NOT_EXPOSED
@@ -144,3 +144,41 @@ This is E2 evidence for the local prototype state only. It is not yet durable re
 ## Resume instruction
 
 Read this file first. Then inspect README.md, 01_TASK_CONTRACT.md, and 03_ARCHITECTURE.md when present. Before continuing, refresh the target branch and re-fetch any source/test file that may have changed. Never infer completion from file presence; only 10_VALIDATION_REPORT.md + 99_FINAL_AUDIT.md may close the mission after fresh verification.
+
+## Wave 01 verified checkpoint — 2026-10-05
+
+### Completed and verified
+- Base NPCEF architecture, policy/state model, threat model, requirement ledger, integration/adoption proposal.
+- Pure Python reference evaluator with ALLOW / REDACT / ASK / BLOCK / FREEZE.
+- Purpose + exact-recipient binding, expiry, consent grants, secret-external hard block, field minimization, value-free deterministic receipts.
+- Runtime malformed-metadata fail-closed hardening.
+- Exact-byte release regression suite.
+- Bounded deterministic property audit.
+- Concurrent sibling overlap boundary and long-horizon wave plan.
+
+### Fresh Wave 01 evidence
+- comprehensive local tests: 44/44 PASS;
+- exact-byte release-contract tests: 12/12 PASS;
+- bounded property audit: 1,280 cases, 0 failures;
+- compileall: PASS;
+- adversarial fixture JSON parse: PASS;
+- exact release-source / release-test / property-tool Git blob bindings recorded in `evidence/release_evidence.json`;
+- detailed evidence: `10_VALIDATION_REPORT.md`;
+- wave audit: `99_FINAL_AUDIT.md`.
+
+### Defects found and fixed
+1. Sensitive wildcard recipient binding did not originally FREEZE.
+2. Malformed runtime metadata could raise instead of FREEZE.
+3. Invalid recipient-class metadata could break terminal receipt serialization.
+4. Partial fake grant object could cause attribute access failure.
+5. Concurrent GitHub main movement produced 409; resolved without overwrite/force.
+6. Concurrent sibling CRF later overlapped derived information-flow scope; backlog was reclassified to avoid duplicate work.
+
+### Coordination boundary
+A sibling Context Release Firewall appeared after this mission began. Read `13_CONCURRENT_OVERLAP_BOUNDARY.md` before every next wave. Do not independently rebuild its derived-sensitivity, compartment, derived-purpose, provenance, or declassification-registry work.
+
+### Next action
+Execute the next `PLANNED` non-overlapping wave from `09_LONG_HORIZON_EXECUTION_PLAN.md`, beginning with a fresh AI-CONTEXT authority + sibling scan. Use TDD for behavior changes, update evidence, and advance this checkpoint. Long-horizon mission remains INCOMPLETE until every wave has a terminal state and Wave 25 final audit is performed.
+
+### Verification boundary
+E0/E1/E2 reference-prototype claims are PASS for Wave 01. E3/E4/E5/E6, NEXY.AI runtime integration, production privacy/security, and legal compliance remain NOT_VERIFIED.
