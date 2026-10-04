@@ -1,0 +1,66 @@
+{
+  "task_id": "CHAT-20261005-0154-NEXY-NOVELTY-FORGE",
+  "objective": "Design, implement, test, and preserve five novel NEXY-compatible auxiliary reference systems without mutating any repository whose name contains NEXY.AI.",
+  "target": "goif74945-crypto/AI-CONTEXT/คลังข้อมูลเสริม/CHAT-20261005-0154-NEXY-NOVELTY-FORGE",
+  "repository": "goif74945-crypto/AI-CONTEXT",
+  "branch": "main",
+  "expected_head": null,
+  "authorized_scope": [
+    "Create a new isolated folder under AI-CONTEXT/คลังข้อมูลเสริม",
+    "Read NEXY.AI repositories for compatibility analysis only",
+    "Create design, reference code, tests, evidence, audit, and resumable execution-state artifacts"
+  ],
+  "protected_scope": [
+    "Every repository whose name contains NEXY.AI",
+    "Existing AI-CONTEXT files outside the new isolated supplemental folder"
+  ],
+  "authority_sources": [
+    "Current user directive",
+    "AI-CONTEXT/AI-EXECUTION-KERNEL.md",
+    "AI-CONTEXT/rules/GLOBAL.md",
+    "AI-CONTEXT/rules/SECURITY.md",
+    "AI-CONTEXT/rules/VERIFICATION.md",
+    "AI-CONTEXT/projects/NEXY.AI/overview.md",
+    "AI-CONTEXT/projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md",
+    "Read-only current NEXY.AI implementation state"
+  ],
+  "preconditions": [
+    "AI-CONTEXT repository is writable",
+    "Supplemental folder exists or can be addressed",
+    "Target work folder does not already exist at mutation time",
+    "NEXY.AI repositories remain read-only"
+  ],
+  "success_invariants": [
+    "Exactly five distinct proposal systems are documented and implemented",
+    "Reference package compiles under the available strict TypeScript compiler",
+    "Focused positive, negative, boundary, determinism, and cross-module tests pass",
+    "No NEXY.AI repository is mutated",
+    "Proposal outputs never self-promote to canonical NEXY authority",
+    "Evidence records distinguish verified claims from NOT_VERIFIED limitations"
+  ],
+  "forbidden_actions": [
+    "Create, update, delete, commit, branch, merge, push, or modify settings in any repository whose name contains NEXY.AI",
+    "Overwrite existing supplemental work from other sessions",
+    "Claim exact TypeScript 6.0.3 compatibility without executing it",
+    "Claim NEXY runtime or deployment integration from standalone tests"
+  ],
+  "required_evidence": [
+    "E0_PRESENCE",
+    "E1_STATIC",
+    "E2_UNIT",
+    "E3_INTEGRATION"
+  ],
+  "stop_conditions": [
+    "Target path collision that cannot be safely resolved",
+    "Protected NEXY.AI mutation would be required",
+    "AI-CONTEXT branch cannot be updated without force or destructive mutation"
+  ],
+  "deliverables": [
+    "Task contract and resumable execution state",
+    "Design for five systems",
+    "Standalone modular TypeScript reference implementation",
+    "Executable tests and captured test evidence",
+    "Collision and compatibility evidence",
+    "Final audit and remote verification record"
+  ]
+}

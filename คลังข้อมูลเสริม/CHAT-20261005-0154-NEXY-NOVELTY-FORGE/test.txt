@@ -1,0 +1,27 @@
+PASS cross-modal exact agreement passes
+PASS cross-modal critical contradiction freezes
+PASS cross-modal polarity contradiction is detected
+PASS outcome credit satisfies symmetry
+PASS outcome credit identifies dummy action
+PASS outcome credit blocks incomplete counterfactual table
+PASS verification scheduler preserves mandatory evidence first
+PASS verification scheduler blocks impossible mandatory class
+PASS verification scheduler chooses globally higher value plan
+PASS semantic entropy passes stable proposals
+PASS semantic entropy freezes critical split
+PASS semantic entropy reviews low coverage
+PASS contract miner preserves observed markers as non-authority
+PASS contract miner reports conflicting duplicate observations
+PASS contract miner quarantines malformed markers
+PASS cross-modal report is invariant to input ordering
+PASS outcome credits are invariant to action ordering
+PASS verification scheduler is invariant to claim ordering
+PASS semantic entropy is invariant to worker ordering
+PASS contract mining is invariant to file map insertion order
+PASS verification scheduler blocks when mandatory cost exceeds budget
+PASS semantic entropy rejects inverted thresholds
+PASS contract miner quarantines invalid evidence class
+PASS cross-modal coverage gap is explicit rather than pass-by-silence
+PASS outcome credit conserves asymmetric total delta
+PASS observed-contract output composes with verification scheduling without authority promotion
+SUMMARY passed=26 failed=0
