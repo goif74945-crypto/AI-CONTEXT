@@ -22,4 +22,4 @@ IN SCOPE: files under this lab directory in AI-CONTEXT, local isolated test exec
 OUT OF SCOPE: any write to NEXY.AI repositories, production integration, deployment, provider calls, secrets, claiming full NEXY compliance.
 
 ## Current execution state
-Implementation produced locally first, then tested. Repository publication occurs only after tests and final audit are updated with actual observed results.
+Implementation was produced locally, tested, staged on a collision-isolated branch, and merged through GitHub PR #32. Immutable merge commit `e99c31025eb98fb80ddac6ac3b9da0d21d29e546` was re-fetched: the target subtree contained 33 blobs and the Git tree response was not truncated. Final audit sealing is being recorded without changing any NEXY.AI repository.
