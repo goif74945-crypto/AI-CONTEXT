@@ -305,5 +305,39 @@ class PrivacyFirewallTests(unittest.TestCase):
         self.assertIn("INVALID_ITEM_METADATA", result.receipt.reason_codes)
 
 
+    def test_invalid_recipient_class_object_freezes_without_receipt_crash(self):
+        class FakeRecipientClass:
+            value = object()
+
+        req = EgressRequest(
+            request_id="req-invalid-recipient-class",
+            purpose="answer",
+            recipient="model-a",
+            recipient_class=FakeRecipientClass(),  # type: ignore[arg-type]
+            now=NOW,
+            items=(item(),),
+        )
+        result = self.fw.evaluate(req)
+        self.assertEqual(Action.FREEZE, result.action)
+        self.assertIn("INVALID_REQUEST_RECIPIENT_CLASS", result.receipt.reason_codes)
+
+    def test_partial_fake_grant_object_freezes_without_attribute_crash(self):
+        class FakeGrant:
+            grant_id = "fake"
+
+        req = EgressRequest(
+            request_id="req-fake-grant",
+            purpose="answer",
+            recipient="model-a",
+            recipient_class=RecipientClass.EXTERNAL_MODEL,
+            now=NOW,
+            items=(item(sensitivity=Sensitivity.SENSITIVE, required=True),),
+            consent_grants=(FakeGrant(),),  # type: ignore[arg-type]
+        )
+        result = self.fw.evaluate(req)
+        self.assertEqual(Action.FREEZE, result.action)
+        self.assertIn("INVALID_GRANT_METADATA", result.receipt.reason_codes)
+
+
 if __name__ == "__main__":
     unittest.main()
