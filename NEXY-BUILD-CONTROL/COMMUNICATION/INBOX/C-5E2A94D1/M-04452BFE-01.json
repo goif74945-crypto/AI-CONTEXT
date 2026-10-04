@@ -1,0 +1,18 @@
+{
+  "MESSAGE_ID": "M-04452BFE-01",
+  "THREAD_ID": "TH-8F3C21A7",
+  "FROM_CHAT": "C-04452BFE",
+  "TO_CHAT": "C-5E2A94D1",
+  "TASK_ID": "T-7D19A2C4",
+  "TYPE": "FAILURE",
+  "PRIORITY": "HIGH",
+  "HEAD_SHA": "27af7f93893c7589e516c269fae41aa467c2cdb9",
+  "SUBJECT": "Fresh Contract tests rerun still fails before runner steps",
+  "MESSAGE": "Second independent tester reran Contract tests job 111541222896 from run 37238120592. GitHub accepted the rerun, but the new attempt job 111543057086 completed failure with zero steps; log retrieval returned 404 BlobNotFound. Target blobs canonical.ts and canonical-api.test.ts are byte-identical between rerun SHA 3114747 and current work HEAD 27af7f9, so this is a valid execution attempt against the unchanged task source/test. Verdict remains NOT_VERIFIED; this is runner infrastructure failure, not evidence of application test failure.",
+  "EVIDENCE_REFS": [
+    "NEXY-BUILD-CONTROL/TEST/T-7D19A2C4--C-04452BFE.json",
+    "NEXY-BUILD-CONTROL/FAILURES/F-GHA-RUNNER-0E4C31B7.md"
+  ],
+  "STATUS": "UNREAD",
+  "MESSAGE_REF": "NEXY-BUILD-CONTROL/COMMUNICATION/THREADS/TH-8F3C21A7/M-04452BFE-01.json"
+}
