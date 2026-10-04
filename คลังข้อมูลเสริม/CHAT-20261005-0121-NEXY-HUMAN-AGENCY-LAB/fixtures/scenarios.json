@@ -1,0 +1,57 @@
+[
+  {
+    "name": "read-only reversible local action proceeds",
+    "expected": "PROCEED",
+    "request": {"action_id": "read-context"}
+  },
+  {
+    "name": "broad but reversible change previews",
+    "expected": "PREVIEW",
+    "request": {"action_id": "bulk-format", "scope_breadth": 0.8, "reversibility": 0.9}
+  },
+  {
+    "name": "external sensitive action confirms",
+    "expected": "CONFIRM",
+    "request": {"action_id": "share-record", "external_side_effect": true, "data_sensitivity": 0.9}
+  },
+  {
+    "name": "destructive action without rollback freezes",
+    "expected": "FREEZE",
+    "request": {"action_id": "delete-source", "destructive": true, "rollback_available": false, "reversibility": 0.0}
+  },
+  {
+    "name": "destructive action with rollback still confirms",
+    "expected": "CONFIRM",
+    "request": {"action_id": "delete-temp", "destructive": true, "rollback_available": true, "reversibility": 0.8}
+  },
+  {
+    "name": "high impact without explicit authority freezes",
+    "expected": "FREEZE",
+    "request": {"action_id": "wide-change", "scope_breadth": 0.9, "explicit_user_authority": false}
+  },
+  {
+    "name": "auth boundary always confirms",
+    "expected": "CONFIRM",
+    "request": {"action_id": "grant-access", "crosses_auth_boundary": true}
+  },
+  {
+    "name": "moderate ambiguity previews",
+    "expected": "PREVIEW",
+    "request": {"action_id": "rename-ambiguous", "ambiguity": 0.45}
+  },
+  {
+    "name": "high ambiguity external irreversible freezes",
+    "expected": "FREEZE",
+    "request": {"action_id": "send-unclear", "ambiguity": 0.95, "external_side_effect": true, "reversibility": 0.1}
+  },
+  {
+    "name": "material monetary effect confirms",
+    "expected": "CONFIRM",
+    "request": {"action_id": "purchase", "external_side_effect": true, "monetary_cost": 0.8}
+  },
+  {
+    "name": "low confidence previews",
+    "expected": "PREVIEW",
+    "request": {"action_id": "uncertain-transform", "confidence": 0.4}
+  }
+]
