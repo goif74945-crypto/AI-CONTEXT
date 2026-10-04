@@ -1,0 +1,10 @@
+test_duplicate_ids_fail_closed (test_src.ArtifactReferentialIntegrityGuardTests.test_duplicate_ids_fail_closed) ... ok
+test_empty_manifest_is_not_verified (test_src.ArtifactReferentialIntegrityGuardTests.test_empty_manifest_is_not_verified) ... ok
+test_missing_reference_and_stale_hash_fail (test_src.ArtifactReferentialIntegrityGuardTests.test_missing_reference_and_stale_hash_fail) ... ok
+test_orphan_evidence_is_reported (test_src.ArtifactReferentialIntegrityGuardTests.test_orphan_evidence_is_reported) ... ok
+test_valid_graph_with_hashes_passes (test_src.ArtifactReferentialIntegrityGuardTests.test_valid_graph_with_hashes_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

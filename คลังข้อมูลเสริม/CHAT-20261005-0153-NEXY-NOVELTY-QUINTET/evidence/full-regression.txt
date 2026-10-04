@@ -1,0 +1,60 @@
+== 01_schema_migration_witness ==
+test_default_operation_does_not_overwrite_existing_value (test_src.SchemaMigrationWitnessTests.test_default_operation_does_not_overwrite_existing_value) ... ok
+test_drop_without_inverse_is_detected (test_src.SchemaMigrationWitnessTests.test_drop_without_inverse_is_detected) ... ok
+test_empty_witness_corpus_is_not_verified (test_src.SchemaMigrationWitnessTests.test_empty_witness_corpus_is_not_verified) ... ok
+test_invalid_operation_fails_closed (test_src.SchemaMigrationWitnessTests.test_invalid_operation_fails_closed) ... ok
+test_rename_round_trip_is_lossless (test_src.SchemaMigrationWitnessTests.test_rename_round_trip_is_lossless) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+== 02_determinism_divergence_bisector ==
+test_finds_first_real_divergence_and_dependency_frontier (test_src.DeterminismDivergenceBisectorTests.test_finds_first_real_divergence_and_dependency_frontier) ... ok
+test_identical_traces_pass (test_src.DeterminismDivergenceBisectorTests.test_identical_traces_pass) ... ok
+test_length_divergence_is_reported (test_src.DeterminismDivergenceBisectorTests.test_length_divergence_is_reported) ... ok
+test_volatile_keys_do_not_create_false_divergence (test_src.DeterminismDivergenceBisectorTests.test_volatile_keys_do_not_create_false_divergence) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+== 03_artifact_referential_integrity_guard ==
+test_duplicate_ids_fail_closed (test_src.ArtifactReferentialIntegrityGuardTests.test_duplicate_ids_fail_closed) ... ok
+test_empty_manifest_is_not_verified (test_src.ArtifactReferentialIntegrityGuardTests.test_empty_manifest_is_not_verified) ... ok
+test_missing_reference_and_stale_hash_fail (test_src.ArtifactReferentialIntegrityGuardTests.test_missing_reference_and_stale_hash_fail) ... ok
+test_orphan_evidence_is_reported (test_src.ArtifactReferentialIntegrityGuardTests.test_orphan_evidence_is_reported) ... ok
+test_valid_graph_with_hashes_passes (test_src.ArtifactReferentialIntegrityGuardTests.test_valid_graph_with_hashes_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+== 04_metamorphic_contract_harness ==
+test_detects_broken_idempotency (test_src.MetamorphicContractHarnessTests.test_detects_broken_idempotency) ... ok
+test_mapping_order_invariance_passes_for_canonicalizer (test_src.MetamorphicContractHarnessTests.test_mapping_order_invariance_passes_for_canonicalizer) ... ok
+test_mutation_exception_is_recorded_not_hidden (test_src.MetamorphicContractHarnessTests.test_mutation_exception_is_recorded_not_hidden) ... ok
+test_zero_checks_is_not_verified (test_src.MetamorphicContractHarnessTests.test_zero_checks_is_not_verified) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+== 05_acceptance_mutation_sentinel ==
+test_baseline_rejection_is_configuration_error (test_src.AcceptanceMutationSentinelTests.test_baseline_rejection_is_configuration_error) ... ok
+test_mutator_must_not_modify_baseline_in_place (test_src.AcceptanceMutationSentinelTests.test_mutator_must_not_modify_baseline_in_place) ... ok
+test_no_mutators_is_not_verified (test_src.AcceptanceMutationSentinelTests.test_no_mutators_is_not_verified) ... ok
+test_strong_gate_kills_critical_mutations (test_src.AcceptanceMutationSentinelTests.test_strong_gate_kills_critical_mutations) ... ok
+test_weak_gate_exposes_surviving_mutation (test_src.AcceptanceMutationSentinelTests.test_weak_gate_exposes_surviving_mutation) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+test_release_evolution_guard_pipeline (test_integration.NoveltyQuintetIntegrationTests.test_release_evolution_guard_pipeline) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+VERIFICATION_PASS
