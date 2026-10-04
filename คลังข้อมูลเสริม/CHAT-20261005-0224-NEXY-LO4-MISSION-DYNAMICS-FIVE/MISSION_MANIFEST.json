@@ -1,0 +1,64 @@
+{
+  "mission_id": "CHAT-20261005-0224-NEXY-LO4-MISSION-DYNAMICS-FIVE",
+  "contract_revision": 1,
+  "objective": "Design, implement, test, verify, and durably preserve five distinct Lo4 Q64.64 reference systems useful to future NEXY.AI integration without mutating any NEXY.AI-named repository.",
+  "authority_sources": [
+    "AI-BOOTSTRAP.md",
+    "INDEX.md",
+    "AI-EXECUTION-KERNEL.md",
+    "WORK-ROUTER.md",
+    "rules/GLOBAL.md",
+    "rules/AI-BEHAVIOR.md",
+    "rules/SECURITY.md",
+    "rules/VERIFICATION.md",
+    "projects/NEXY.AI/overview.md",
+    "TASKS/2026-10-03/NEXY-IRL-Q64-20261003-01.md",
+    "CASES/2026-10-01/CASE-NEXY-FIXED128-SCOPE-CORRECTION-20261001.json",
+    "projects/NEXY.AI/checkpoints/2026-10-03/NEXY-LO2-Q64-036.json"
+  ],
+  "writable_scope": [
+    "คลังข้อมูลเสริม/CHAT-20261005-0224-NEXY-LO4-MISSION-DYNAMICS-FIVE/**"
+  ],
+  "protected_scope": [
+    "Any repository whose name contains NEXY.AI",
+    "All sibling supplemental chat folders"
+  ],
+  "immutable_requirements": [
+    "Exactly five Lo4 concepts",
+    "Every concept remains AI proposal/non-Canon",
+    "Design + Code + Test + Evidence per concept",
+    "Reference code uses signed Q64.64 for material numeric semantics",
+    "Overflow fails closed; no saturation",
+    "Positive and negative tests",
+    "Cross-concept integration test",
+    "No NEXY.AI repository mutation",
+    "Persist verified artifacts to AI-CONTEXT with readback"
+  ],
+  "concepts": [
+    "Mission Lyapunov Convergence Monitor",
+    "Capability-Evidence Reachability Solver",
+    "Assumption Dominator Analyzer",
+    "History-Sensitive Provenance Guard",
+    "Negative Capability Boundary Compiler"
+  ],
+  "persistence_mode": "DURABLE_RESUMABLE",
+  "mutation_repository": "goif74945-crypto/AI-CONTEXT",
+  "branch": "main",
+  "status": "IN_PROGRESS",
+  "current_phase": "AUTHORITY_SEAL",
+  "baseline_head_observed": "8cd723386bdea2fe66a7bfe0d19a7b2b7ece60cd",
+  "completion_conditions": [
+    "All implementation files persisted",
+    "Fresh full test suite passes locally",
+    "Static compile passes",
+    "Integration scenario passes",
+    "Evidence files match executed results",
+    "GitHub readback verifies all critical artifacts",
+    "Final audit confirms protected scope untouched"
+  ],
+  "stop_conditions": [
+    "Authority conflict affecting correctness",
+    "Required mutation would touch protected scope",
+    "Fresh verification fails and cannot be repaired from available evidence"
+  ]
+}
