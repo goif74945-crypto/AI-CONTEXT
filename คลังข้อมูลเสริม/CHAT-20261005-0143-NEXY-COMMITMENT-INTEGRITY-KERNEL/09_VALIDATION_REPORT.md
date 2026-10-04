@@ -55,8 +55,9 @@ The adversarial corpus contains 30 named cases covering malformed identity, scop
 
 ## 7. Source integrity artifacts
 
-- `evidence/SHA256SUMS.txt` records project hashes after finalization.
-- Repository-bound E1/E2 evidence requires uploaded Git blob identities to match locally tested bytes.
+- `evidence/SHA256SUMS.txt` records SHA-256 hashes for the tested runtime artifacts.
+- `evidence/GIT-BLOB-SHA1.json` records expected Git blob identities for the same tested runtime artifacts.
+- Repository-bound E1/E2 evidence requires those uploaded Git blob identities to match the locally tested bytes.
 
 ## 8. Explicitly NOT VERIFIED
 
