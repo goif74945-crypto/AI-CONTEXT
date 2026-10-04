@@ -1,6 +1,6 @@
 # Temporary Work Memory — LBCC
 
-Status: LOCAL_COMPLETE_PUBLICATION_PENDING
+Status: PUBLICATION_VERIFIED
 Session work ID: CHAT-20261005-0137-NEXY-LBCC
 Target repository: goif74945-crypto/AI-CONTEXT only
 Target path: คลังข้อมูลเสริม/CHAT-20261005-0137-NEXY-LOSS-BOUNDED-CONTEXT-CODEC
@@ -41,5 +41,14 @@ Build a standalone, deterministic, model-agnostic Loss-Bounded Context Codec (LB
 - randomized invariant suite: PASS
 - benchmark artifacts captured
 
+## Publication verification
+- First complete publication PR: #56
+- Merge commit: f81c711b45e4f50ac5cbffd5103d57799e53d251
+- Remote branch verified: main
+- Remote file count: 30 files
+- Source, tests, evidence, examples, tools, and top-level design files were re-listed from GitHub after merge.
+- Remote blob identities match the prepared final subtree for all 30 files.
+- No repository whose name contains NEXY.AI was mutated.
+
 ## Remaining action
-Publish this complete folder to AI-CONTEXT unique supplemental path, then re-read/list remote files and mark publication verified.
+None for the standalone LBCC deliverable. Actual NEXY.AI integration remains intentionally out of scope and NOT_VERIFIED.
