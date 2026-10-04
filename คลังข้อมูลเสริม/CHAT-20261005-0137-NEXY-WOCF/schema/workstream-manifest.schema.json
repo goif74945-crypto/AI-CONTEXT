@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nexy.invalid/schemas/experimental/wocf-workstream-manifest.schema.json",
+  "title": "WOCF Experimental Workstream Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["workstream_id", "repository", "namespace", "objective", "concept_tags", "write_paths"],
+  "properties": {
+    "workstream_id": {"type": "string", "minLength": 3, "maxLength": 128, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"},
+    "repository": {"type": "string", "minLength": 3},
+    "namespace": {"type": "string", "minLength": 1},
+    "objective": {"type": "string", "minLength": 20},
+    "concept_tags": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "write_paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "read_paths": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "exclusive_resources": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "status": {"enum": ["ACTIVE", "IN_PROGRESS", "COMPLETE", "ARCHIVED", "REFERENCE"]},
+    "differentiators": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  }
+}
