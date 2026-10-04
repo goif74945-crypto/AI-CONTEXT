@@ -34,6 +34,11 @@ class PrivacyFirewall:
         request_error = self._validate_request(req)
         if request_error:
             return self._terminal(req, Action.FREEZE, (request_error,))
+        if not isinstance(req.items, tuple) or any(not isinstance(item, DataItem) for item in req.items):
+            return self._terminal(req, Action.FREEZE, ("INVALID_ITEM_METADATA", "INVALID_ITEM_COLLECTION"))
+        grant_error = self._validate_grants(req)
+        if grant_error:
+            return self._terminal(req, Action.FREEZE, ("INVALID_GRANT_METADATA", grant_error))
         if first_duplicate(item.item_id for item in req.items) is not None:
             return self._terminal(req, Action.FREEZE, ("DUPLICATE_ITEM_ID",))
         for item in req.items:
@@ -118,37 +123,66 @@ class PrivacyFirewall:
         )
 
     def _validate_request(self, req: EgressRequest) -> str | None:
-        if not req.request_id.strip():
+        if not isinstance(req.request_id, str) or not req.request_id.strip():
             return "INVALID_REQUEST_ID"
-        if not req.purpose.strip():
+        if not isinstance(req.purpose, str) or not req.purpose.strip():
             return "INVALID_REQUEST_PURPOSE"
-        if not req.recipient.strip():
+        if not isinstance(req.recipient, str) or not req.recipient.strip():
             return "INVALID_REQUEST_RECIPIENT"
+        if not isinstance(req.recipient_class, RecipientClass):
+            return "INVALID_REQUEST_RECIPIENT_CLASS"
         try:
             aware_utc(req.now)
         except (TypeError, ValueError):
             return "INVALID_REQUEST_TIME"
         return None
 
+    def _validate_grants(self, req: EgressRequest) -> str | None:
+        if not isinstance(req.consent_grants, tuple):
+            return "INVALID_GRANT_COLLECTION"
+        for grant in req.consent_grants:
+            if not hasattr(grant, "grant_id"):
+                return "INVALID_GRANT_OBJECT"
+            if not all(
+                isinstance(value, str) and bool(value.strip())
+                for value in (grant.grant_id, grant.item_id, grant.purpose, grant.recipient)
+            ):
+                return "INVALID_GRANT_BINDING"
+            if not isinstance(grant.revoked, bool):
+                return "INVALID_GRANT_REVOCATION"
+            try:
+                aware_utc(grant.expires_at)
+            except (TypeError, ValueError):
+                return "INVALID_GRANT_EXPIRY"
+        return None
+
     def _validate_item(self, item: DataItem) -> str | None:
-        if not item.item_id.strip():
-            return "EMPTY_ITEM_ID"
-        if not item.allowed_purposes or any(not purpose.strip() for purpose in item.allowed_purposes):
+        if not isinstance(item.item_id, str) or not item.item_id.strip():
+            return "EMPTY_OR_INVALID_ITEM_ID"
+        if not isinstance(item.sensitivity, Sensitivity):
+            return "INVALID_SENSITIVITY"
+        if not isinstance(item.consent_mode, ConsentMode):
+            return "INVALID_CONSENT_MODE"
+        if not isinstance(item.required, bool):
+            return "INVALID_REQUIRED_FLAG"
+        if not _valid_string_scope(item.allowed_purposes, allow_empty=False):
             return "EMPTY_OR_INVALID_PURPOSE_SET"
+        if not _valid_string_scope(item.allowed_recipients, allow_empty=True):
+            return "INVALID_RECIPIENT_SET"
         if (
             self.policy.sensitive_requires_explicit_recipient_binding
             and item.sensitivity >= Sensitivity.SENSITIVE
             and (not item.allowed_recipients or "*" in item.allowed_recipients)
         ):
             return "SENSITIVE_ITEM_WITHOUT_EXPLICIT_RECIPIENT_BINDING"
-        if any(not recipient.strip() for recipient in item.allowed_recipients):
-            return "INVALID_RECIPIENT_SET"
         if item.expires_at is not None:
             try:
                 aware_utc(item.expires_at)
             except (TypeError, ValueError):
                 return "INVALID_ITEM_EXPIRY"
         if item.field_purposes:
+            if not isinstance(item.field_purposes, Mapping):
+                return "INVALID_FIELD_RULES"
             if not isinstance(item.value, Mapping):
                 return "FIELD_RULES_REQUIRE_MAPPING_VALUE"
             if set(item.field_purposes) - set(item.value):
@@ -156,7 +190,7 @@ class PrivacyFirewall:
             for field_name, purposes in item.field_purposes.items():
                 if not isinstance(field_name, str) or not field_name.strip():
                     return "INVALID_FIELD_NAME"
-                if any(not purpose.strip() for purpose in purposes):
+                if not _valid_string_scope(purposes, allow_empty=True):
                     return "INVALID_FIELD_PURPOSE"
         return None
 
@@ -215,3 +249,11 @@ class PrivacyFirewall:
             reasons=reasons,
         )
         return EvaluationResult(action=action, payload=sorted_mapping(payload), receipt=receipt)
+
+
+def _valid_string_scope(value: object, *, allow_empty: bool) -> bool:
+    if not isinstance(value, (set, frozenset)):
+        return False
+    if not allow_empty and not value:
+        return False
+    return all(isinstance(entry, str) and bool(entry.strip()) for entry in value)
