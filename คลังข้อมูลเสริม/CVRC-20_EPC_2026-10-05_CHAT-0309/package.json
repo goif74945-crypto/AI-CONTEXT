@@ -1,0 +1,13 @@
+{
+  "name": "nexy-cvrc20-reference-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "syntax": "node --check src/q64.mjs && node --check src/canonical.mjs && node --check src/baseline.mjs && node --check src/gates.mjs && node --check src/integration.mjs && node --check tests/test_cvrc20.mjs && node --check tests/stress_cvrc20.mjs && node --check tests/malformed_cvrc20.mjs && node --check tests/benchmark_cvrc20.mjs",
+    "test": "node tests/test_cvrc20.mjs",
+    "stress": "node tests/stress_cvrc20.mjs",
+    "malformed": "node tests/malformed_cvrc20.mjs",
+    "benchmark": "node tests/benchmark_cvrc20.mjs"
+  }
+}
