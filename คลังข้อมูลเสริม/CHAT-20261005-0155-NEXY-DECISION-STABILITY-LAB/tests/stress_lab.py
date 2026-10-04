@@ -1,6 +1,6 @@
 from pathlib import Path
 import json, random, sys, time
-sys.path.insert(0,str(Path(__file__).parent/"code"))
+sys.path.insert(0,str(Path(__file__).parent.parent/"code"))
 from core import Decision, Evidence, Kind, fingerprint
 import mono
 from damp import Guard, Observation

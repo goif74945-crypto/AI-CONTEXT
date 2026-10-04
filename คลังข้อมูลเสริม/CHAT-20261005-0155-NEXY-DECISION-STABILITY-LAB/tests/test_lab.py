@@ -2,7 +2,7 @@ from __future__ import annotations
 from pathlib import Path
 import itertools, random, sys, unittest
 
-sys.path.insert(0,str(Path(__file__).parent/"code"))
+sys.path.insert(0,str(Path(__file__).parent.parent/"code"))
 from core import Decision, DuplicateEvidenceError, Evidence, Kind, StabilityError, canonicalize, fingerprint
 import mono, iris, edge, mde, suite
 from damp import Guard, Observation
