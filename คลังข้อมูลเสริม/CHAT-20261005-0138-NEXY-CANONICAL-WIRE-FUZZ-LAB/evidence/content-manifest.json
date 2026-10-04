@@ -1,0 +1,72 @@
+{
+  "algorithm": "sha256",
+  "python": "3.13.5",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "files": [
+    {
+      "path": "00_TEMP_EXECUTION_MEMORY.md",
+      "sha256": "54ea50a6e10f5a050c6d22e2ee56fe9c867f039cdddc5795ad8795d3f794635b",
+      "bytes": 2546
+    },
+    {
+      "path": "01_TASK_CONTRACT.json",
+      "sha256": "bc697c18587c190b97575ac56ca02c5ec9a49c5c9705226f5a9a96dcd5f21601",
+      "bytes": 4265
+    },
+    {
+      "path": "DESIGN_AND_INTEGRATION.md",
+      "sha256": "1878019581fba840fcfd813ea76653ca259f6551781963bc6b9ba6c10fe2bdb0",
+      "bytes": 3886
+    },
+    {
+      "path": "FINAL_AUDIT.md",
+      "sha256": "c1871aab19574843622d53f4de580a711550c5509d577c9c03543a42bfaf2542",
+      "bytes": 1029
+    },
+    {
+      "path": "FUTURE_IDEAS.md",
+      "sha256": "33b9c16d477e79fe6c8a1813d1b4105103579d1dac0602a98766d70657ef7469",
+      "bytes": 1539
+    },
+    {
+      "path": "README.md",
+      "sha256": "eebcb9e21c08c1209a99c759881281798a5236dc597b9a44d9370a128fe55b1d",
+      "bytes": 3135
+    },
+    {
+      "path": "evidence/TEST_EVIDENCE.md",
+      "sha256": "459d56fdd5db9ca92f6b14cb1de11c3c276d207c1a81c62137330260d5b412a7",
+      "bytes": 1049
+    },
+    {
+      "path": "evidence/unit-test-output.txt",
+      "sha256": "0fce9bf412e54786eaa6adf6697168046f5650674ad3da4361bb0b73a09302ad",
+      "bytes": 2002
+    },
+    {
+      "path": "fixtures/adversarial_cases.json",
+      "sha256": "3d2c1c0a84b15ccb37ef0cec95e00fb720b85ad63d770e3375dc47723eec9870",
+      "bytes": 565
+    },
+    {
+      "path": "fixtures/golden_vectors.json",
+      "sha256": "2c2da43317c170ce701dc35b23f8dfc188e1bedeed588740a2bff40ff7428e65",
+      "bytes": 2688
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "ad89e4a4e0e50b6670b7c93ddb112cb35e34028feea2fe287081fee2bc3ecb10",
+      "bytes": 111
+    },
+    {
+      "path": "src/ncw.py",
+      "sha256": "90c7b0a2dcd950588156be1a179f5cdc81c9c4bfcaa3ccbb50d1a3d478eb824c",
+      "bytes": 10760
+    },
+    {
+      "path": "tests/test_ncw.py",
+      "sha256": "11d26a1c4c433e8aa0cfdb56e9b89cd03e38e64e151084e57ae9f46a48c50148",
+      "bytes": 6330
+    }
+  ]
+}

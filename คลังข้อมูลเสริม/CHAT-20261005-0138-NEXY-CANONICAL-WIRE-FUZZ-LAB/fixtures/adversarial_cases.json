@@ -1,0 +1,20 @@
+{
+  "classes": [
+    "duplicate exact JSON key",
+    "NFC-equivalent JSON key collision",
+    "floating-point/exponent/NaN/Infinity",
+    "signed-i128 overflow",
+    "non-NFC or invalid Unicode scalar text",
+    "unsupported semantic type collapse",
+    "bad wire magic/version",
+    "unknown wire tag",
+    "truncated frame",
+    "invalid UTF-8",
+    "non-canonical map order",
+    "duplicate wire key",
+    "trailing data",
+    "depth/item/string/raw-JSON/total-wire resource limit"
+  ],
+  "generator": "src/ncw.py::malformed_mutations",
+  "randomness": "none"
+}

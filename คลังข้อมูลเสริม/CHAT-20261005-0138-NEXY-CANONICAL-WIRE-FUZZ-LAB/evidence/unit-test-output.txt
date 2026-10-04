@@ -1,0 +1,26 @@
+test_all_six_key_permutations_match (test_ncw.NCWTests.test_all_six_key_permutations_match) ... ok
+test_bool_is_not_integer_encoding (test_ncw.NCWTests.test_bool_is_not_integer_encoding) ... ok
+test_core_imports_avoid_common_side_effect_modules (test_ncw.NCWTests.test_core_imports_avoid_common_side_effect_modules) ... ok
+test_deterministic_malformed_mutation_corpus (test_ncw.NCWTests.test_deterministic_malformed_mutation_corpus) ... ok
+test_duplicate_json_key_rejected (test_ncw.NCWTests.test_duplicate_json_key_rejected) ... ok
+test_float_and_nonstandard_numbers_rejected (test_ncw.NCWTests.test_float_and_nonstandard_numbers_rejected) ... ok
+test_generated_small_domain (test_ncw.NCWTests.test_generated_small_domain) ... ok
+test_golden_vectors (test_ncw.NCWTests.test_golden_vectors) ... ok
+test_i128_boundaries (test_ncw.NCWTests.test_i128_boundaries) ... ok
+test_json_surface_variants_converge (test_ncw.NCWTests.test_json_surface_variants_converge) ... ok
+test_limits (test_ncw.NCWTests.test_limits) ... ok
+test_lone_surrogate_rejected (test_ncw.NCWTests.test_lone_surrogate_rejected) ... ok
+test_map_order_and_hash_are_deterministic (test_ncw.NCWTests.test_map_order_and_hash_are_deterministic) ... ok
+test_nfc_key_collision_rejected (test_ncw.NCWTests.test_nfc_key_collision_rejected) ... ok
+test_non_nfc_rejected (test_ncw.NCWTests.test_non_nfc_rejected) ... ok
+test_non_nfc_wire_rejected (test_ncw.NCWTests.test_non_nfc_wire_rejected) ... ok
+test_noncanonical_map_order_and_duplicate_rejected (test_ncw.NCWTests.test_noncanonical_map_order_and_duplicate_rejected) ... ok
+test_raw_json_size_gate (test_ncw.NCWTests.test_raw_json_size_gate) ... ok
+test_round_trip (test_ncw.NCWTests.test_round_trip) ... ok
+test_unsupported_types_fail_closed (test_ncw.NCWTests.test_unsupported_types_fail_closed) ... ok
+test_wire_corruption_rejected (test_ncw.NCWTests.test_wire_corruption_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.011s
+
+OK
