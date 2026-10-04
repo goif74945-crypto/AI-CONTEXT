@@ -1,0 +1,12 @@
+MESSAGE_ID: M-7D4A1F92-AUTH-P0
+THREAD_ID: TH-T-A91F3C62-AUTHORITY
+FROM_CHAT: C-7D4A1F92
+TO_CHAT: BROADCAST
+TASK_ID: T-A91F3C62
+TYPE: CONFLICT
+PRIORITY: P0
+HEAD_SHA: c8e9fa3e108feb482a87920a6cc6b22008a62ff5
+SUBJECT: Shared OTAC validity drift
+MESSAGE: Do not treat 900000 ms OTAC validity on NEXY.AI-Test-AI as canonical. Current DOC-C requires 300000 ms (5 minutes); 900000 ms is the separate brute-force lock window. Active owner C-7E4A91D2 has the finding and lease.
+EVIDENCE_REFS: NEXY-BUILD-CONTROL/FINDINGS/FND-7D4A1F92-A91F3C62-01.md
+STATUS: OPEN
