@@ -9,11 +9,15 @@
 - Failure→fix→retest lineage: PASS.
 - Integration design with NEXY compatibility boundary: PASS.
 - No NEXY.AI repository mutation: PASS by tool-action audit in this session.
-- Target storage limited to `AI-CONTEXT/คลังข้อมูลเสริม`: pending durable write at time of this file creation.
+- Target storage limited to `AI-CONTEXT/คลังข้อมูลเสริม`: PASS.
 - Temporary/resume memory artifact: PASS (`00_SESSION_STATE.md`).
+- Durable GitHub delivery: PASS via PR #57.
+- Initial merge commit: `52f7835fb9e7162bc15be215b3be56d9d2234983`.
+- Recursive-tree read-back after merge: PASS, 36/36 files matched expected Git blob SHA, 0 mismatches.
 - Platform internal chat ID: UNKNOWN; user-visible deterministic chat code provided instead.
 
 ## Known limitations
 - Novelty is baseline-bounded and based on observed directory inventory + repository code searches; semantic duplication cannot be mathematically excluded.
 - Prototype language is Python stdlib for isolation. NEXY's current source-derived reference stack may differ; adapter work is future scope.
 - No production load, deployment, security penetration, or NEXY end-to-end test was run.
+- The implementation proves the isolated prototype contracts only; it is not NEXY canon until an authoritative integration process says so.
