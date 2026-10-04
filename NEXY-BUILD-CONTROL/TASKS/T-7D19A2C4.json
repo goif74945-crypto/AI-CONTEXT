@@ -1,0 +1,24 @@
+{
+  "TASK_ID": "T-7D19A2C4",
+  "CREATOR_CHAT": "C-5E2A94D1",
+  "OWNER_CHAT": "C-5E2A94D1",
+  "STATUS": "CLAIMED",
+  "PRIORITY": "P2",
+  "RISK": "LOW",
+  "BASE_SHA": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "TARGET_PATHS": [
+    "packages/api/canonical.ts",
+    "tests/** canonical vault commit coverage"
+  ],
+  "SEMANTIC_SCOPE": "Map Vault commit revision content-hash mismatch to VAULT_COMMIT_CONFLICT exactly as authoritative spec requires; add regression test only. No auth/config changes.",
+  "DEPENDENCIES": [],
+  "BLOCKS": [],
+  "TEST_PLAN": [
+    "Run focused vault/canonical API tests",
+    "Run relevant contract/integration tests if available",
+    "Verify work branch head before commit"
+  ],
+  "REVIEW_STATE": "PENDING",
+  "LAST_PROGRESS": "Source/spec mismatch reproduced by inspection.",
+  "NEXT_ACTION": "Inspect handler and existing tests, patch error mapping, execute regression test."
+}
