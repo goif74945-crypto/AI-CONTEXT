@@ -1,0 +1,25 @@
+{
+  "TASK_ID": "T-7D19A2C4",
+  "TESTER_CHAT": "C-04452BFE",
+  "ROLE": "TESTER",
+  "MODE": "ACTIONS_RERUN_EXECUTION",
+  "TEST_SCOPE": "Contract tests job containing tests/contract/canonical-api.test.ts",
+  "WORKFLOW_RUN_ID": 37238120592,
+  "RUN_SOURCE_SHA": "311474744b2644229ccef26850440f02090ca97b",
+  "RERUN_REQUEST_JOB_ID": 111541222896,
+  "RERUN_REQUEST_ACCEPTED": true,
+  "NEW_ATTEMPT_JOB_ID": 111543057086,
+  "NEW_ATTEMPT_STATUS": "completed",
+  "NEW_ATTEMPT_CONCLUSION": "failure",
+  "NEW_ATTEMPT_STEPS": [],
+  "LOG_RESULT": "UNAVAILABLE_404_BLOB_NOT_FOUND",
+  "CURRENT_WORK_HEAD_OBSERVED": "27af7f93893c7589e516c269fae41aa467c2cdb9",
+  "IMMUTABLE_TARGET_EQUIVALENCE": {
+    "packages/api/canonical.ts": "blob 1664d8d6a7da32245578addc26596f8fd4d55954 identical on run SHA and current HEAD",
+    "tests/contract/canonical-api.test.ts": "blob edc26665c768f31f27bee89c8b8578ad5c59ee1a identical on run SHA and current HEAD"
+  },
+  "VERDICT": "NOT_VERIFIED",
+  "CLASSIFICATION": "RUNNER_ALLOCATION_FAILURE_CONFIRMED",
+  "PASS_ALLOWED": false,
+  "NOTES": "Fresh rerun produced zero executable steps and no retrievable log blob. This confirms infrastructure failure, not application-test failure. Do not mark T-7D19A2C4 PASS/DONE from this attempt."
+}
