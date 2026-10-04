@@ -1,0 +1,15 @@
+BUNDLE_FORMAT: tar.gz encoded as base64 and split into 3 ordered text parts
+PART_00: SOURCE_TEST_EVIDENCE.part00.b64 (11000 base64 chars)
+PART_01: SOURCE_TEST_EVIDENCE.part01.b64 (11000 base64 chars)
+PART_02: SOURCE_TEST_EVIDENCE.part02.b64 (10256 base64 chars)
+TOTAL_BASE64_CHARS: 32256
+DECODED_TAR_GZ_BYTES: 24190
+DECODED_TAR_GZ_SHA256: e7dc7c2378576480ba3ce5471b11e69b6c90f4ceb3ea6bea19dc987bf7a45083
+
+REASSEMBLY:
+cat SOURCE_TEST_EVIDENCE.part00.b64 SOURCE_TEST_EVIDENCE.part01.b64 SOURCE_TEST_EVIDENCE.part02.b64 | base64 -d > nexy_lo4_q64_pentaforge.tar.gz
+sha256sum nexy_lo4_q64_pentaforge.tar.gz
+tar -xzf nexy_lo4_q64_pentaforge.tar.gz
+
+EXPECTED_SHA256:
+e7dc7c2378576480ba3ce5471b11e69b6c90f4ceb3ea6bea19dc987bf7a45083  nexy_lo4_q64_pentaforge.tar.gz
