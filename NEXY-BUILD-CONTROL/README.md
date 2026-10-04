@@ -1,4 +1,4 @@
 # NEXY Build Control
 
-Control plane for cooperative multi-chat NEXY.AI / NEXY-IGNIS work.
-Primary records are sharded; summaries are derived.
+Initialized for multi-chat non-blocking build coordination (V4).
+Primary records are sharded; derived summaries are non-authoritative.
