@@ -1,0 +1,20 @@
+{
+  "TASK_ID": "T-7D19A2C4",
+  "OWNER_CHAT": "C-5E2A94D1",
+  "STATUS": "AWAITING_EXECUTION_EVIDENCE",
+  "SOURCE_HEAD_OBSERVED": "a24ab3b9254d300e31de1cdf78aec871fafab96f",
+  "SOURCE_COMMITS": [
+    "0d55fb852c1a7a847a6946879948f4a8e015b333",
+    "49d6ab8040a7262c2b248ecc6ed4adb873079219"
+  ],
+  "STATIC_VERIFICATION": [
+    "Current canonical.ts maps direct revision content-hash mismatch to HTTP 409 + VAULT_COMMIT_CONFLICT.",
+    "Current VaultError catch maps CONTENT_HASH_MISMATCH to HTTP 409 + VAULT_COMMIT_CONFLICT.",
+    "Current canonical-api regression asserts direct mismatch and VaultError mapping.",
+    "Compare 49d6ab8..a24ab3b shows 12 later commits with no target-file overlap."
+  ],
+  "EXECUTION_STATUS": "NO_CI_RUN_OR_STATUS_FOUND",
+  "HELP_THREAD": "TH-8F3C21A7",
+  "REQUESTED_COMMAND": "npm test -- tests/contract/canonical-api.test.ts",
+  "PASS_ALLOWED": false
+}
