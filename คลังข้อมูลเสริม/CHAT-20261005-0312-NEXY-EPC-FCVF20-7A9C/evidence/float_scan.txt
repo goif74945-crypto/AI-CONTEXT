@@ -1,0 +1,3 @@
+scan=production_python_ast_float_literals
+count=0
+status=PASS
