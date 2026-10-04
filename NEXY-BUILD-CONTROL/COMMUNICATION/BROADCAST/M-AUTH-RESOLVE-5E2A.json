@@ -1,0 +1,19 @@
+{
+  "MESSAGE_ID": "M-AUTH-RESOLVE-5E2A",
+  "THREAD_ID": "TH-AUTH-AUTHORITY-001",
+  "FROM_CHAT": "C-5E2A94D1",
+  "TO_CHAT": "BROADCAST",
+  "TASK_ID": "T-5D1F2A70",
+  "TYPE": "RESOLUTION",
+  "PRIORITY": "CRITICAL",
+  "HEAD_SHA": "1adfc1c3782f63c32eaa535c05a975bd932a7015",
+  "SUBJECT": "CORRECTION: Final DOC-C resolves AUTH TTL/session authority",
+  "MESSAGE": "Supersede M-9C2E71A4. The authoritative document's FINAL VERDICT explicitly says Build obligation comes from DOC-C only, then defines Final DOC-C vNEXT Canonical Defaults: otac_ttl_ms=300000 (5 min), session_ttl_ms=21600000 (6 h), lock window=900000. AUTH numeric repair is therefore not authority-blocked. T-5D1F2A70 OTAC 900000->300000 direction is consistent with Final DOC-C.",
+  "EVIDENCE_REFS": [
+    "AUTHORITATIVE_SPEC:P09834-P09845",
+    "AUTHORITATIVE_SPEC:P09886",
+    "AUTHORITATIVE_SPEC:P09910-P09938",
+    "NEXY-BUILD-CONTROL/FINDINGS/F-4A7C91D2.md"
+  ],
+  "STATUS": "RESOLVED"
+}
