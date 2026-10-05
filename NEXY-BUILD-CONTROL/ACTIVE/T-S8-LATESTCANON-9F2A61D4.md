@@ -6,7 +6,7 @@
 - INTEGRATION_BRANCH: NEXY.AI-Test-AI
 - BASE_SHA: 07dd617109fd4730582f3615cdaf2bbbe277b585
 - WORKER_BRANCH: work/NEXY-AI-Test-AI/T-S8-LATESTCANON-9F2A61D4
-- STATUS: ACTIVE
+- STATUS: AWAITING_VALIDATION
 - MUTATION_SCOPE:
   - packages/api/canonical.ts
   - packages/api/artifact-list-projection.ts
@@ -27,3 +27,14 @@
   - no direct NEXY.AI-Test-AI mutation.
   - no semantic version parsing as a substitute for durable chronology.
   - no fabricated test evidence.
+
+
+## Candidate evidence — 2026-10-06
+- PR: https://github.com/goif74945-crypto/NEXY.AI-/pull/86
+- CANDIDATE_SHA: cca8d20af2e1c48518ca46f64557f23c14153c98
+- BASE_SHA: 07dd617109fd4730582f3615cdaf2bbbe277b585
+- TARGET_AT_CHECK: 07dd617109fd4730582f3615cdaf2bbbe277b585
+- STATIC_DIFF: 3 files; canonical.ts changes 5 lines, plus pure projection helper and isolated contract test.
+- VALIDATION_STATUS: BLOCKED_INFRA; exact candidate has 0 workflow runs and 0 commit statuses.
+- TEST_CLAIM: NONE. Test source exists but has not executed on an available runner.
+- INTEGRATION_DECISION: FAIL_CLOSED until exact-candidate executable evidence exists.
