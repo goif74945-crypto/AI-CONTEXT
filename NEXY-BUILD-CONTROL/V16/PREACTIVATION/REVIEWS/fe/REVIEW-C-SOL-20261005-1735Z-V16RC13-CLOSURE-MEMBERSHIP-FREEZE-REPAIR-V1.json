@@ -1,0 +1,43 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_INDEPENDENT_CONTROL_REPAIR_REVIEW_V1",
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-1735Z-V16RC13-CLOSURE-MEMBERSHIP-FREEZE-REPAIR-V1",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-1735Z-V16RC13-P0MANIFEST-AUDIT",
+  "REVIEWER_MEMBERSHIP_ID": "PRE-8a430da17738fbc630483a29f8a7ba2e",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "REVIEWED_REPAIR_ID": "V16RC13-CLOSURE-MEMBERSHIP-FREEZE-REPAIR-97E912A7-V1",
+  "REVIEWED_REPAIR_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REPAIRS/CLOSURE-MEMBERSHIP-FREEZE-97E912A7-V1.json",
+  "REVIEWED_REPAIR_COMMIT": "a57951cc7a26edce079245d4911fd057f5d49184",
+  "AFFECTED_FINDING": "FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593",
+  "VERDICT": "CHANGES_REQUIRED_P0_CONTROL",
+  "PASS_POINTS": [
+    "Bulk invalidating pre-closure memberships by incrementing MEMBERSHIP_EPOCH is consistent with MEMBERSHIP_EPOCH being a bulk invalidation generation.",
+    "Separating post-pin read-only observers from normal MEMBERSHIP_RECORDs can preserve clause [197] participation without adding records to the clause [200] membership manifest.",
+    "Explicit empty-shard freeze acknowledgements and immutable manifest artifacts correctly preserve clauses [199], [200]-[209]."
+  ],
+  "BLOCKING_REVIEW_FINDINGS": [
+    {
+      "ID": "R1-FREEZE-MUTATION-CAS-DOMAIN",
+      "SEVERITY": "P0_CONTROL_PROTOCOL",
+      "ISSUE": "The candidate does not require the shard freeze state/acknowledgement to be serialized in the same authoritative CAS domain as normal membership mutation for that shard.",
+      "RISK": "If freeze acknowledgement is separate evidence, a stale writer can pass its earlier shard precondition and commit a normal membership write after freeze. The acknowledgement is then logically invalid, but invalidation is not atomically coupled to the write."
+    },
+    {
+      "ID": "R2-COMPLETE-TOCTOU-REMAINS",
+      "SEVERITY": "P0_CONTROL_PROTOCOL",
+      "ISSUE": "COMPLETE_PRECONDITIONS require proving no normal membership write exists after freeze, but do not state a mechanism that makes this predicate stable through the final Mission Fence COMPLETE CAS.",
+      "RISK": "A write can race after the last revalidation and before COMPLETE CAS without changing Mission Fence STATE_VERSION, recreating the original pinned-world stale-completion counterexample."
+    }
+  ],
+  "REQUIRED_CHANGES": [
+    "For each membership shard, place freeze state and membership mutation sequencing in one authoritative shard CAS domain, or use a transactional control store with equivalent atomicity.",
+    "A shard-freeze CAS must advance shard generation/head and mark the normal closure-membership namespace immutable; every normal membership write must bind the expected shard generation/head, so any stale pre-freeze writer fails its CAS after freeze.",
+    "Alternatively, atomically install in the Mission Fence a canonical immutable shard-snapshot mapping for the closure generation and define later mutable-shard writes as noncanonical for that closure generation; do not depend on absence-of-late-write polling.",
+    "The final COMPLETE CAS must bind a frozen-shard/root generation whose canonical value cannot change without either failing the COMPLETE expected-version CAS or forcing a prior authoritative transition visible to that CAS.",
+    "Add a torture test where a writer reads pre-freeze shard state, pauses, freeze succeeds, final revalidation succeeds, then the stale writer resumes immediately before COMPLETE CAS; the stale write must be rejected or provably noncanonical."
+  ],
+  "DISPOSITION": "KEEP_STATIC_PROTOCOL_P0_OPEN_UNTIL_ATOMIC_SHARD_FREEZE_SEMANTICS_ARE_INDEPENDENTLY_VERIFIED",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
