@@ -2746,3 +2746,69 @@ FALSIFICATION_TARGET: show proposed thresholds are arbitrary, candidate-tailored
 REVIEWER: JOB-EGC-025 by a distinct future session.
 STATUS: CLAIMED
 
+
+
+======================================================================
+30. SESSION CLAIM EVENT — PHYSICS / PHYSICAL-EVIDENCE PRE-SCREEN
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:08:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+PRIMARY_ROLE: First-principles physics + physical-evidence reconnaissance
+PRIMARY_JOB_ID: JOB-EGC-034
+QUESTION: Which candidate energy families are physically valid and supported by existing real-world or laboratory physical evidence, independent of later economic thresholds?
+DEPENDENCIES: NONE
+TOOLS: Authoritative web/source retrieval; published measured/operational evidence; first-principles checks; cross-source validation
+EVIDENCE_TARGET: SOURCE_FACT / EXTERNAL_FACT / MEASUREMENT / EXPERIMENT_RESULT / CALCULATION
+FALSIFICATION_TARGET: Reject perpetual-motion/over-unity mechanisms, unsupported net-energy claims, and any candidate whose claimed physical behavior lacks independently checkable evidence.
+REVIEWER: JOB-EGC-035
+STATUS: EXECUTING
+
+COLLISION_RECONCILIATION:
+- JOB-EGC-001 is owned by CHATGPT-SOL-20261005T190600Z-A1.
+- JOB-EGC-031 is owned by CHATGPT-SOL-20261005T190600Z-B1.
+- This session deliberately avoids duplicating either objective calibration or baseline-envelope work.
+
+#### JOB-EGC-034
+ROLE: R03 First-principles physics + R20 Physical-evidence reconnaissance
+TITLE: Cross-family physics and physical-evidence pre-screen
+QUESTION_TO_RESOLVE: For solar, wind, hydro, geothermal, fission, advanced fission, fusion, waste heat, tidal, wave, storage-coupled and hybrid systems, establish whether the energy mechanism obeys conservation/thermodynamics and whether existing measured physical evidence demonstrates the claimed conversion mechanism and nonzero net useful output at relevant scale.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: Authoritative scientific/engineering sources and measured operational or experimental evidence.
+REQUIRED_TOOLS: Official/primary web sources; peer-reviewed literature where needed; calculations for energy-balance sanity checks; cross-source validation.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / MEASUREMENT / EXPERIMENT_RESULT / CALCULATION
+EXPECTED_OUTPUT: Candidate-family evidence matrix, falsified extraordinary claims, material unknowns, provenance records, and handoff to economic/scale jobs without selecting a winner.
+FALSIFICATION_CRITERIA: FAIL a candidate/mechanism if it violates conservation/thermodynamics or if the decisive physical claim cannot be traced to real measurement/experiment; mark NOT_VERIFIED rather than infer proof from simulation.
+REVIEWER_JOB_ID: JOB-EGC-035
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+CLAIMED_AT: 2026-10-05T19:08:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:08:00Z
+BLOCKERS: NONE
+HANDOFF: Move to AWAITING_REVIEW after recording source-grounded evidence; independent session JOB-EGC-035 must reproduce/attack the screen.
+
+#### JOB-EGC-035
+ROLE: Independent physics/evidence replication
+TITLE: Independently reproduce and red-team JOB-EGC-034
+QUESTION_TO_RESOLVE: Reproduce the physics/evidence classification, search for counterexamples, and fail any family classification supported only by weak or non-independent evidence.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-034 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: JOB-EGC-034 evidence records and classifications.
+REQUIRED_TOOLS: Independent source retrieval; first-principles recalculation; provenance audit.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION
+EXPECTED_OUTPUT: PASS/FAIL with corrections, conflicts, and repair jobs.
+FALSIFICATION_CRITERIA: FAIL if a material physics classification or evidence claim is unreproducible or contradicted by stronger evidence.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-034 not yet AWAITING_REVIEW
+HANDOFF: A different session must claim this review after JOB-EGC-034 is submitted.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
