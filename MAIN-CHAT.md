@@ -7724,3 +7724,189 @@ BRANCH_HEAD_AT_CLAIM: 1b70f2a0051059e7c53e7862db25ec05246000a1
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: b4a2aa11d62457bce97ba65829036b7f4f63c794
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+54. SAFETY/FMEA/REGULATORY RESULT — JOB-EGC-046-SAFETY-FMEA-REG-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0318+07-SAFE1
+PRIMARY_JOB_ID: JOB-EGC-046-SAFETY-FMEA-REG-C1-20261006
+ROLE: Cross-Candidate Safety / FMEA / Environmental / Regulatory Gate Analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-046-SAFETY-FMEA-REG-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+COMMON HAZARD TAXONOMY:
+H1 routine occupational/public acute hazards;
+H2 low-frequency/high-consequence catastrophic hazards;
+H3 chronic toxic/radiological/chemical exposure;
+H4 waste/end-of-life/decommissioning/stranded-energy hazards;
+H5 ecosystem/land/water/cultural impacts;
+H6 emergency/security/system-interaction hazards;
+H7 siting/permitting/regulatory maturity.
+P0 = plausible mission-invalidating mode lacking adequate candidate/site evidence, mitigation, emergency/regulatory treatment, or accounted cost.
+P1 = major known hazard with mitigation path but material cost/performance/resource penalty not yet quantified.
+RULE: no probability is invented. A single cross-technology deaths/TWh number is NOT sufficient because official frameworks use different site, denominator and tail-risk structures.
+
+EVIDENCE_ID: TE-EGC-046-001
+CLAIM_ID: CLAIM-EGC-046-HYDRO-RIDM
+TOOL/METHOD: official FERC source audit.
+SOURCE/DATE: FERC Risk-Informed Decision Making, page updated 2026-07-30.
+URL: https://www.ferc.gov/dam-safety-and-inspections/risk-informed-decision-making-ridm
+OUTPUT: FERC dam-safety risk combines loading likelihood, conditional system response and consequences; RIDM informs safety investment with standards-based engineering.
+LIMITATION: U.S./project-specific; not a universal failure rate.
+EVIDENCE_CLASS: SOURCE_FACT.
+REPLICATION_STATUS: FERC Dam Safety Program cross-check; independent review pending.
+
+EVIDENCE_ID: TE-EGC-046-002
+CLAIM_ID: CLAIM-EGC-046-BESS-HAZARD
+TOOL/METHOD: DOE official PDF extraction + screenshot visual verification.
+SOURCE/DATE: DOE Office of Electricity, Energy Storage Safety Strategic Plan, 2024-04.
+URL: https://www.energy.gov/sites/default/files/2024-05/EED_2827_FIG_SafetyStrategy%20240505v2.pdf
+OUTPUT: Li-ion thermal runaway can cause fire/explosion; DOE records gaps in incident response, containment, O&M information, end-of-life guidance, system-fire modeling and toxic emissions, plus limited public failure statistics in some areas.
+LIMITATION: design/site dependent; not a complete quantitative risk model.
+EVIDENCE_CLASS: SOURCE_FACT.
+REPLICATION_STATUS: text+visual cross-check passed; independent review pending.
+
+EVIDENCE_ID: TE-EGC-046-003
+CLAIM_ID: CLAIM-EGC-046-NUCLEAR-PRA
+TOOL/METHOD: NRC official risk-framework audit.
+SOURCE: NRC Probabilistic Risk Assessment.
+URL: https://www.nrc.gov/regulations-legislation/how-we-regulate/risk-assessment/probabilistic-risk-assessment-pra
+OUTPUT: NRC PRA distinguishes core-damage, release and public/environmental consequence risk levels; plant/design/site evidence and uncertainty remain necessary.
+LIMITATION: generic framework does not prove a candidate acceptable.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: TE-EGC-046-004
+CLAIM_ID: CLAIM-EGC-046-FUKUSHIMA-CONSTRAINT
+TOOL/METHOD: UNSCEAR official evidence audit.
+SOURCE: UNSCEAR Fukushima 2020/2021 assessment FAQ.
+URL: https://www.unscear.org/unscear/en/areas-of-work/fukushima-report-faq.html
+OUTPUT: UNSCEAR reports no adverse health effects among Fukushima residents documented as directly attributable to accident radiation exposure and no population-level detectable future radiation-related health effects expected.
+LIMITATION: does NOT imply zero accident consequence/risk and is not universal to every reactor/site.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: TE-EGC-046-005
+CLAIM_ID: CLAIM-EGC-046-NUCLEAR-DECOM
+TOOL/METHOD: NRC financial-assurance audit + executed diagnostic arithmetic.
+SOURCE: NRC Financial Assurance for Decommissioning.
+URL: https://www.nrc.gov/facilities-safety/decommissioning/financial-assurance
+SOURCE_FACT: NRC gives approximate USD280-612M reactor decommissioning range and requires financial assurance/status reporting.
+CALCULATION: hypothetical 1000 MW * 0.90 CF * 8760 h/y * 60 y = 473.04M MWh; simple undiscounted C/E = USD0.592-1.294/MWh.
+LIMITATION: NOT LCOE/FSRC and NOT ranking evidence; actual timing/site/spent-fuel boundaries differ. Demonstrates terminal liability is non-zero and must be carried once.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+REPLICATION_STATUS: same-session arithmetic pass; independent replication required if ranking-critical.
+
+EVIDENCE_ID: TE-EGC-046-006
+CLAIM_ID: CLAIM-EGC-046-ADVNUC-REG
+TOOL/METHOD: NRC final-rule status audit.
+SOURCE_DATE: Part 53 final 2026-03-30; effective 2026-04-29.
+URL: https://www.nrc.gov/facilities-safety/new-reactors/advanced-reactors/modernizing-how-we-regulate/rulemaking/part-53-risk-informed-technology-inclusive-regulatory-framework-for-advanced-reactors
+OUTPUT: Part 53 provides risk-informed, performance-based, technology-inclusive U.S. licensing framework for commercial advanced reactors.
+LIMITATION: framework existence does not prove economics, construction performance or project approval.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: TE-EGC-046-007
+CLAIM_ID: CLAIM-EGC-046-FUSION-REGMATURITY
+TOOL/METHOD: NRC current rule-status audit.
+SOURCE_DATE: fusion proposed rule 2026-02-26; final rule/guidance targeted for 2027.
+URL: https://www.nrc.gov/materials/fusion/rulemaking-status
+OUTPUT: U.S. fusion-machine regulation remains in rulemaking rather than final regulatory closure.
+LIMITATION: regulatory maturity is not a physics falsification; timing/content can change.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: TE-EGC-046-008
+CLAIM_ID: CLAIM-EGC-046-EGS-SEISMIC
+TOOL/METHOD: DOE geothermal hazard audit.
+SOURCE: DOE Subsurface Enhancement and Sustainability + induced-seismicity protocol.
+URL: https://www.energy.gov/hgeo/geothermal/subsurface-enhancement-and-sustainability
+OUTPUT: EGS stimulation can induce seismicity; DOE emphasizes protocols/monitoring and site-specific subsurface heterogeneity/model uncertainty.
+LIMITATION: reservoir/site/stimulation dependent; not equal across all geothermal.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: TE-EGC-046-009
+CLAIM_ID: CLAIM-EGC-046-PV-EOL
+TOOL/METHOD: DOE lifecycle audit.
+SOURCE: DOE End-of-Life Management for Solar Photovoltaics / PV life-cycle guidance.
+URL: https://www.energy.gov/cmei/systems/end-life-management-solar-photovoltaics
+OUTPUT: PV EOL includes reuse/recycling/disposal/repowering/decommissioning; restoration costs must be budgeted and U.S. recycling can cost more than landfill.
+LIMITATION: no universal terminal USD/MWh.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: TE-EGC-046-010
+CLAIM_ID: CLAIM-EGC-046-RENEWABLE-DECOM
+TOOL/METHOD: BLM/BOEM regulatory-liability audit.
+SOURCE: BLM renewable-energy bonding; BOEM offshore-wind decommissioning framework.
+URL: https://www.blm.gov/programs/energy-and-minerals/renewable-energy/wind-energy/permitting-and-development/bonding
+OUTPUT: U.S. federal renewable authorizations can require financial assurance for decommissioning/reclamation; offshore wind likewise requires decommissioning planning/assurance.
+LIMITATION: U.S. federal jurisdiction; amount project-specific.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: TE-EGC-046-011
+CLAIM_ID: CLAIM-EGC-046-HYDRO-ENV
+TOOL/METHOD: FERC/DOE environmental-permitting audit.
+SOURCE: FERC hydropower licensing/environmental review + DOE fish-passage material.
+URL: https://www.ferc.gov/industries-data/hydropower/licensing
+OUTPUT: hydropower review can address water, fish/aquatic, terrestrial, recreation/cultural resources and mitigation; dam/diversion fish-passage solutions are site-specific.
+LIMITATION: no universal hydro environmental factor.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: TE-EGC-046-012
+CLAIM_ID: CLAIM-EGC-046-LCA-BOUNDARY
+TOOL/METHOD: UNECE LCA + corrigendum audit.
+SOURCE: UNECE Life Cycle Assessment of Electricity Generation Options (2021) + corrigendum (2022).
+URL: https://unece.org/sed/documents/2021/10/reports/life-cycle-assessment-electricity-generation-options
+OUTPUT: LCA spans construction/operation/decommissioning and multiple impact categories but is geography/site dependent; downstream grid/distribution generally falls outside beyond grid connection. Corrigendum corrected land-use data and flags weaker quality checking for some aggregate health/ecosystem indicators.
+LIMITATION: NOT sufficient as delivered-system safety/cost ranking.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+CANDIDATE SCREEN:
+SOLAR_PV = NOT_FALSIFIED_BY_SAFETY; P1 lifecycle/decommissioning/site cost; cross-tech numeric fatality rank NOT_VERIFIED.
+WIND_ONSHORE/OFFSHORE = NOT_FALSIFIED_BY_SAFETY; P1 workplace/decommissioning/site/ecosystem/permitting costs.
+HYDRO/PUMPED = CONDITIONAL_SITE_SPECIFIC; P0 for any site lacking accepted dam-safety/RIDM-PFMA/emergency treatment; no class-wide fail.
+GEOTHERMAL/EGS = CONDITIONAL_SITE_SPECIFIC; P0 where induced-seismicity monitoring/mitigation evidence is absent; no class-wide fail.
+NUCLEAR_FISSION = NOT_FALSIFIED_BY_SAFETY_WITH_REGULATED_SAFETY_CASE; severe accident/PRA, emergency/security, waste and decommissioning remain in boundary; Fukushima evidence constrains exaggerated population-health claims.
+ADVANCED_FISSION/SMR = U.S._REGULATORY_PATHWAY_EXISTS; candidate safety/licensing/cost still design/site specific.
+LI_ION_BESS = NOT_FALSIFIED_BY_SAFETY; P1 thermal-runaway/fire-explosion/toxic-emission/EOL gaps and mitigation resources; P0 if hazard/emergency design absent.
+FUSION = NOT_PHYSICS_FALSIFIED_BY_THIS_JOB; U.S. REGULATORY_CLOSURE_NOT_FINAL and commercial operating safety baseline insufficient.
+HYBRID_GRIDS = inherit component hazards plus interface/cascade/control/cyber/protection risk; interfaces cannot be omitted or double-counted.
+
+RED_TEAM:
+DEATHS_PER_TWH_ALONE_AS_GATE = FALSIFIED_AS_SUFFICIENT.
+HYDRO_AUTOMATICALLY_SAFE_BECAUSE_RENEWABLE = FALSIFIED.
+NUCLEAR_AUTOMATICALLY_DISQUALIFIED_BY_SEVERE-ACCIDENT_HAZARD = FALSIFIED.
+BESS_SAFETY_COST_ZERO = FALSIFIED.
+SOLAR_WIND_DECOMMISSIONING_ZERO = FALSIFIED.
+ALL_EGS_INVALID_DUE_INDUCED_SEISMICITY = FALSIFIED.
+FUSION_US_REGULATORY_CLOSURE_ALREADY_FINAL = FALSIFIED.
+LCA_ALONE_IDENTIFIES_SAFEST_DELIVERED_SYSTEM = FALSIFIED_AS_SUFFICIENT.
+
+SYSTEM-BOUNDARY RULE:
+FSRC_ND includes real resources caused by safety/environment/regulation: mitigation hardware, monitoring/inspection, emergency capability, security where applicable, environmental mitigation, permitting/compliance labor, cleanup, waste, decommissioning/restoration and replacement. Financial deposits/taxes/penalties/insurance transfers are not automatically primary social-resource cost; underlying real resources are. Do not double-count terminal liabilities.
+
+CLAIM_GRAPH:
+CLAIM-EGC-046-GATE = SUPPORTED_PENDING_INDEPENDENT_REVIEW.
+CLAIM-EGC-046-HYDRO-RIDM = SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-046-BESS-HAZARD = SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-046-NUCLEAR-PRA = SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-046-EGS-SEISMIC = SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-046-RENEWABLE-EOL = SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-046-FUSION-REGMATURITY = SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-046-CROSS-TECH-NUMERIC-SAFETY-RANK = NOT_VERIFIED / NOT_REQUIRED_AS_SINGLE_GATE.
+
+P0_GLOBAL_TECHNOLOGY_CLASS: NONE established solely from generic safety evidence for mature solar/wind/hydro/geothermal/nuclear/BESS.
+P0_SITE_OR_DESIGN: remains open where candidate-specific high-consequence treatment is missing, especially dam safety, nuclear safety case, EGS seismicity plan, BESS fire/explosion emergency design.
+P1_COMMON: mitigation, EOL/restoration, environmental and regulatory schedule/resource costs remain candidate/site-specific and can reverse close economic rankings.
+FUSION: regulatory maturity/commercial operational evidence insufficient for present-baseline treatment; net-energy/economics owned elsewhere.
+
+STATUS_CHANGE:
+JOB-EGC-046-SAFETY-FMEA-REG-C1-20261006: CLAIMED -> AWAITING_REVIEW.
+JOB-EGC-046-SAFETY-FMEA-REG-REV-C2-20261006: OPEN; distinct reviewer required.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+NEXT_ACTION: independent review of denominator/tail-risk/waste/decommissioning/jurisdiction assumptions; integrate candidate-specific P1 real-resource costs without double count. G13/G14/G19/G20/G23/G24 remain open.
