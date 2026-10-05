@@ -1,0 +1,31 @@
+{
+  "FINDING_ID": "FINDING-V16RC13-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-3C632ADD",
+  "TYPE": "STATIC_PROTOCOL_SPEC_ACTIVATION_ACTIVE_INTEGRATION_RACE",
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "DISCOVERED_BY_CHAT_ID": "C-SOL-20261005-1756Z-V16RC13-SPEC-ACTIVATION-RACE-91B7D2E4",
+  "DISCOVERY_RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1756Z-V16RC13-SPEC-ACTIVATION-RACE-91B7D2E4-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-AUDIT.json",
+  "AFFECTED_CLAUSES": [
+    "[119]",
+    "[121]-[123]",
+    "[132]-[145]",
+    "[157]-[160]",
+    "[184]",
+    "[237]",
+    "[243]",
+    "[244]"
+  ],
+  "OBSERVED_GAP": "SPEC_ACTIVATION has no explicit ACTIVE_INTEGRATION==null / INTEGRATION_HEALTH==HEALTHY entry precondition and no explicit mandatory active-integration drain/reconciliation before new Spec identity and rebuilt roots are installed.",
+  "CONCRETE_RACE": "An old-Spec integration already at REF_UPDATE_IN_PROGRESS can have an external Git CAS in flight while SPEC_ACTIVATION closes gates and rotates epochs. Epoch invalidation makes future authority stale but cannot prove the already-issued Git side effect is stopped. Without mandatory reconciliation-before-install, target movement can occur across the Spec cutover boundary.",
+  "IMPACT": "Atomic Spec activation and the prohibition on old-Spec/new-Spec concurrent authority cannot be statically proven. Activation must remain fail-closed until this transition race is repaired and independently reviewed.",
+  "REQUIRED_REPAIR": [
+    "Require ACTIVE_INTEGRATION == null and INTEGRATION_HEALTH == HEALTHY before Spec cutover, or define an explicit drain/reconciliation subprotocol that reaches those conditions before installing the new Spec.",
+    "For REF_UPDATE_IN_PROGRESS and crash ambiguity, reconcile actual target HEAD using clauses [144]-[145] before advancing Spec activation.",
+    "Bind the repaired transition ordering to torture tests covering every ACTIVE_INTEGRATION phase."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "FAIL_CLOSED": true
+}
