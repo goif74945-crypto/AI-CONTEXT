@@ -7285,3 +7285,135 @@ WRITE_INTEGRITY:
 - stale-write check: exact SHA guarded update; no force update
 - mutation scope: ONLY authorized MAIN-CHAT.md
 - commit/result: PENDING
+
+
+
+======================================================================
+34. PROGRESS EVENT — JOB-EGC-038 RESOURCE-POTENTIAL EVIDENCE PASS 2 / SUBMISSION
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-RESOURCE-038-20261005
+PRIMARY_JOB_ID: JOB-EGC-038
+STATUS: AWAITING_REVIEW
+
+EVIDENCE_ID: EVIDENCE-EGC-038-006
+JOB_ID: JOB-EGC-038
+CLAIM_ID: CLAIM-EGC-038-BIOENERGY-RESOURCE
+TOOL: IPCC AR6 WGIII official web source + IEA official web source + Python + Wolfram
+METHOD: Bound sustainable/technical bioenergy resource using food-security/environment-constrained estimates, then normalize raw annual energy to 2025 global electricity energy only as an upper-bound energy-equivalent comparison.
+DATE: 2026-10-05
+SOURCE: IPCC AR6 WGIII Chapter 7; IEA analysis on sustainable bioenergy and land use
+SOURCE_DATE: 2022; 2021-05-31
+URL/DOI/IDENTIFIER: https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-7/ ; https://www.iea.org/articles/what-does-net-zero-emissions-by-2050-mean-for-bioenergy-and-land-use
+INPUTS: IPCC food/environment-constrained 2050 technical potential = 5-50 EJ/yr residues + 50-250 EJ/yr dedicated biomass systems; IEA NZE keeps total primary bioenergy near ~100 EJ/yr; 2025 electricity = 28.6 PWh = 102.96 EJ.
+PARAMETERS: raw primary-energy-equivalent comparison only.
+EQUATION/CODE/METHOD: 1 PWh = 3.6 EJ. IPCC combined range 55-300 EJ/yr = 15.2778-83.3333 PWh-equivalent = 0.5342-2.9138x 2025 electrical energy. IEA ~100 EJ/yr = 27.7778 PWh-equivalent = 0.97125x 2025 electrical energy.
+OUTPUT: Bioenergy is resource-constrained by sustainability/land/ecosystem limits relative to solar/wind; raw energy-equivalent values cannot be interpreted as delivered electricity because conversion losses are omitted.
+UNITS: EJ/yr; PWh-equivalent/yr; dimensionless ratio.
+UNCERTAINTY: VERY HIGH range due land, food, biodiversity, water, crop productivity and governance assumptions.
+ASSUMPTIONS: no electricity conversion efficiency applied; ratios are upper-bound energy-equivalent comparisons, not electrical output.
+LIMITATIONS: does not settle best sector allocation between power, heat, fuels or materials.
+REPRODUCTION_METHOD: Python and Wolfram arithmetic.
+REPLICATION_STATUS: REPLICATED_BY_2_TOOLS.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + INFERENCE
+
+EVIDENCE_ID: EVIDENCE-EGC-038-007
+JOB_ID: JOB-EGC-038
+CLAIM_ID: CLAIM-EGC-038-FUSION-FUEL-RESOURCE
+TOOL: US DOE official fusion-fuel explainer + ITER official FAQ + IAEA FUSE tritium-breeding page
+METHOD: Separate abundant feedstock claims from the fuel-supply engineering needed for sustained commercial D-T fusion.
+DATE: 2026-10-05
+SOURCE: US Department of Energy; ITER Organization; IAEA FUSE
+SOURCE_DATE: current official pages as retrieved 2026-10-05
+URL/DOI/IDENTIFIER: https://www.energy.gov/science/doe-explainsdeuterium-tritium-fusion-fuel ; https://www.iter.org/index.php/faqs ; https://nucleus.iaea.org/sites/connect/FUSEpublic/SitePages/Tritium-Breeding.aspx
+INPUTS: official sources agree that deuterium is abundant, tritium is naturally scarce, and sustained commercial D-T fusion requires successful in-plant tritium self-sufficiency/breeding.
+PARAMETERS: high-level resource/engineering classification only.
+EQUATION/CODE/METHOD: no sensitive process optimization or fuel-cycle design performed.
+OUTPUT: Fusion feedstock abundance alone is not sufficient evidence of scalable commercial power. Tritium self-sufficiency remains a critical engineering/resource-chain gate.
+UNITS: qualitative resource classification.
+UNCERTAINTY: commercial plant designs are not yet operationally validated.
+ASSUMPTIONS: D-T remains the principal near-term fusion fuel pathway considered by the cited programs.
+LIMITATIONS: no breeding-ratio design, isotope-processing design, startup-inventory model or reactor implementation details are included.
+REPRODUCTION_METHOD: cross-source consistency check across DOE, ITER and IAEA.
+REPLICATION_STATUS: SOURCE_CROSSCHECK_3_AUTHORITATIVE_ORGS.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE + NOT_VERIFIED
+
+FUSION_RESOURCE_CLASSIFICATION:
+- DEUTERIUM: RESOURCE_ABUNDANT.
+- TRITIUM: NATURALLY SCARCE; COMMERCIAL SELF-SUFFICIENCY NOT YET PHYSICALLY DEMONSTRATED AT POWER-PLANT SCALE.
+- OVERALL: FEEDSTOCK ABUNDANCE DOES NOT CLOSE NET-POWER, MATERIALS, RELIABILITY OR FUEL-SELF-SUFFICIENCY GATES.
+- HANDOFF: JOB-EGC-009.
+
+EVIDENCE_ID: EVIDENCE-EGC-038-008
+JOB_ID: JOB-EGC-038
+CLAIM_ID: CLAIM-EGC-038-WASTE-HEAT-RESOURCE
+TOOL: US DOE waste-heat recovery page + IEA heat-pump analysis
+METHOD: Establish whether waste heat can be treated as a primary scalable energy source and whether a defensible global technical-potential number is currently supported.
+DATE: 2026-10-05
+SOURCE: US Department of Energy Waste Heat Recovery Basics; IEA The Future of Heat Pumps in China
+SOURCE_DATE: DOE page updated 2025; IEA report 2024
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/ito/waste-heat-recovery-basics ; https://www.iea.org/reports/the-future-of-heat-pumps-in-china/executive-summary
+INPUTS: DOE reports substantial industrial energy losses as waste heat and identifies technical/economic recovery barriers; IEA identifies a large China-specific waste-heat opportunity by 2050, but that value is not a global atlas.
+PARAMETERS: source contexts are not a global harmonized technical-potential dataset.
+EQUATION/CODE/METHOD: first-law classification plus source-boundary audit; no unsupported global extrapolation.
+OUTPUT: Waste heat is a SECONDARY RECOVERY RESOURCE dependent on upstream energy-consuming processes. It can reduce purchased energy and improve system efficiency, but cannot be counted as an independent primary source without double counting. Global comparable technical potential remains UNKNOWN in this job.
+UNITS: source-specific energy quantities; no global number asserted.
+UNCERTAINTY: HIGH for global aggregation; temperature grade, temporal coincidence, distance to sinks and economics dominate recoverability.
+ASSUMPTIONS: conservation of energy; recovered heat is part of already-accounted upstream energy flow.
+LIMITATIONS: no global harmonized waste-heat atlas located in this pass.
+REPRODUCTION_METHOD: provenance/boundary check; no speculative scaling performed.
+REPLICATION_STATUS: NOT_APPLICABLE_FOR_GLOBAL_NUMBER.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE + UNKNOWN
+
+FINAL_RESOURCE_SCREEN_SUBMISSION:
+- SOLAR_PV: RESOURCE_SCALE_PASS_PRELIMINARY; technical annual potential >> present electricity.
+- WIND: RESOURCE_SCALE_PASS_PRELIMINARY; technical annual potential >> present electricity, source-method uncertainty retained.
+- HYDRO: RESOURCE_CONSTRAINED_PORTFOLIO; economic potential materially below current world electricity, technical upper bound roughly comparable to it.
+- GEOTHERMAL/EGS: RESOURCE_SCALE_LIKELY_PASS; estimate-boundary conflict remains OPEN under CONFLICT-EGC-038-GEOTHERMAL-POTENTIAL-001 / JOB-EGC-042.
+- TIDAL: FALSIFIED_AS_SOLE_GLOBAL_SOURCE at present-world-electricity scale; portfolio role remains possible.
+- WAVE: NOT_VERIFIED_FOR_TECHNICAL/DEPLOYABLE SCALE; cited annual resource is theoretical.
+- BIOENERGY: RESOURCE_CONSTRAINED_AND_SUSTAINABILITY_LIMITED; portfolio/hard-to-electrify roles plausible, sole-massive-electricity interpretation unsupported.
+- FISSION URANIUM: CURRENT-FLEET RESOURCE NOT IMMEDIATE BLOCKER; multi-TW mining/fuel-cycle scale remains NOT_VERIFIED.
+- FUSION: FEEDSTOCK ABUNDANCE DOES NOT CLOSE FUEL-SELF-SUFFICIENCY OR NET-POWER GATES.
+- WASTE HEAT: SECONDARY EFFICIENCY/COGENERATION RESOURCE; counting it as independent primary supply would double count upstream energy.
+
+RED_TEAM_ATTACK_ON_OWN_RESULT:
+1. Annual PWh ratios ignore temporal correlation and firm delivery; therefore NO cost/reliability winner is inferred.
+2. Technical potentials are study- and exclusion-sensitive; numbers are not mixed with economic potentials.
+3. Bioenergy raw EJ is not converted to electricity without an explicit efficiency model.
+4. Fusion abundance language is separated from commercial fuel-self-sufficiency and net-power proof.
+5. Waste heat is prevented from creating fictitious extra primary energy through double counting.
+6. Geothermal conflicting estimates are not averaged; conflict remains explicit.
+
+JOB_STATE_UPDATE:
+JOB_ID: JOB-EGC-038
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-RESOURCE-038-20261005
+STATUS: AWAITING_REVIEW
+LAST_PROGRESS_AT: 2026-10-05
+BLOCKERS: Independent reviewer required; geothermal methodology conflict routed to JOB-EGC-042.
+NEXT_ACTION: JOB-EGC-039 must independently reproduce/attack all decisive resource classifications and arithmetic. JOB-EGC-042 must reconcile geothermal methodology. JOB-EGC-009 should absorb fusion findings. JOB-EGC-010 should expand waste-heat global technical-potential evidence if material to portfolio selection.
+
+REVIEWER_STATE_UPDATE:
+JOB_ID: JOB-EGC-039
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+BLOCKERS: NONE — JOB-EGC-038 has reached AWAITING_REVIEW.
+NEXT_ACTION: claim in a distinct session; independently retrieve sources, recompute ratios, attack boundaries, PASS/FAIL with corrections.
+
+GLOBAL_STATE_DELTA:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- RESOURCE_AVAILABILITY_GATE: PARTIALLY_EVIDENCED / NOT_VERIFIED
+- USER_SUCCESS_RESPONSE: DENIED
+
+WRITE_INTEGRITY:
+- branch head read immediately before this write: 024a7b778e2173b0a16d78fc712b673d4775f8ac
+- file blob SHA read immediately before this write: e277faffb226a7d953cddb79436282db6144dcf4
+- append-only update guarded by exact blob SHA.
+- no other file or repository touched.
+- commit/result: PENDING_THIS_COMMIT
