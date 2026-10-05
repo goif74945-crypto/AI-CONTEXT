@@ -20,11 +20,12 @@
   "PROTECTED_UPSTREAM_HEAD_OBSERVED": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
   "TARGET_HEAD_OBSERVATIONS": [
     "3fbc68e3b38c1f45ce771639ecdac64ae3738969",
-    "2dc24a8d8bee7294109cd3dab2b3b9fee1a76cbe"
+    "2dc24a8d8bee7294109cd3dab2b3b9fee1a76cbe",
+    "262f7f5da1fcfba882ca9f546ec23bbab20ba5f5"
   ],
-  "LATEST_TARGET_HEAD_OBSERVED": "2dc24a8d8bee7294109cd3dab2b3b9fee1a76cbe",
-  "LATEST_TARGET_COMMIT_MESSAGE": "ci(test): run exact-head evidence on NEXY.AI-Test-AI",
-  "LATEST_TARGET_COMMIT_AUTHOR_DATE": "2026-10-05T18:39:20Z",
+  "LATEST_TARGET_HEAD_OBSERVED": "262f7f5da1fcfba882ca9f546ec23bbab20ba5f5",
+  "LATEST_TARGET_COMMIT_MESSAGE": "test(determinism): lock incident arbitration scan authority",
+  "LATEST_TARGET_COMMIT_AUTHOR_DATE": "2026-10-05T18:43:01Z",
   "OBSERVED_NEW_COMMIT_CHAIN": [
     {
       "sha": "7bcc2350c6a9ab023cc2cc22d56ce878ba2c25f9",
@@ -62,7 +63,7 @@
     "ACTIVE_INTEGRATION_RECORD_DISCOVERED": false
   },
   "MISSION_FENCE_DISCOVERED": false,
-  "AUTHORITY_ASSESSMENT": "No discovered V16 Mission Fence or canonical active-integration record authorizes these target-ref changes, while the current Bootstrap Fence explicitly keeps product mutation and integration closed. Treat target state as externally changed and authority-unreconciled until proven otherwise.",
+  "AUTHORITY_ASSESSMENT": "Target ref continued advancing after the initial finding while Bootstrap Fence remains blocked and no V16 Mission Fence/active integration authority has been discovered. Treat target state as actively authority-unreconciled; all activation/integration/closure assertions must fail closed.",
   "IMPACT": [
     "Target HEAD no longer matches the Bootstrap-pinned target HEAD.",
     "Any preactivation evidence or candidate assuming target HEAD 9e615b04... is stale for target-state assertions.",
@@ -79,5 +80,8 @@
   ],
   "PRODUCT_SOURCE_MUTATION_PERFORMED_BY_REPORTER": false,
   "TARGET_INTEGRATION_PERFORMED_BY_REPORTER": false,
-  "PROTECTED_UPSTREAM_MUTATION_PERFORMED_BY_REPORTER": false
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED_BY_REPORTER": false,
+  "LATEST_TARGET_TREE_OBSERVED": "74381e4bdc92f5e5496c6d07ee18723d4696e0f4",
+  "TARGET_MOVEMENT_CONTINUED_AFTER_INITIAL_FINDING": true,
+  "LATEST_CONTROL_MAIN_OBSERVED": "8914a51ecd7f68ce7cc508fa984fd93f010561ad"
 }
