@@ -1,0 +1,64 @@
+{
+  "REQ_ID": "REQ-DOC-C-3-3-RELEASE-POLICY-RESULT",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "PRIMARY_DOCX_ANCHOR",
+  "SPEC_LINES": "raw_docx_w_p_indexes 10014-10025",
+  "SPEC_TEXT": {
+    "section": "DOC-C §3.3 Release Policy Result",
+    "shape": {
+      "passed": "boolean",
+      "reasons": "ErrorCode[]",
+      "threshold_snapshot": {
+        "confidence_min": "number",
+        "deterministic_match_min": "number",
+        "quorum_min": "number",
+        "evidence_min": "number"
+      }
+    }
+  },
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC / FINAL VERDICT",
+  "EXPECTED_BEHAVIOR": [
+    "Canonical ReleasePolicyResult exposes passed, reasons, and threshold_snapshot.",
+    "threshold_snapshot contains confidence_min, deterministic_match_min, quorum_min, and evidence_min as numbers.",
+    "reasons is constrained to canonical ErrorCode values.",
+    "Executable release-policy paths return a result compatible with the canonical contract."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not omit any canonical ReleasePolicyResult field while claiming DOC-C compliance.",
+    "Do not redefine reasons outside the canonical ErrorCode contract.",
+    "Do not declare this requirement VERIFIED without an executable contract oracle bound to the relevant source SHA."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "CONTRACTS",
+    "LAW",
+    "RELEASE_POLICY",
+    "VALIDATION"
+  ],
+  "DEPENDENCIES": [
+    "REQ-DOC-C-3-1-ERROR-CODE",
+    "REQ-DOC-C-2-3-VNEXT-DEFAULTS"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "packages/contracts/release-policy.ts",
+    "packages/orch-core/release-policy.ts",
+    "packages/law/prerelease.ts",
+    "packages/validation/release-policy.schema.ts"
+  ],
+  "TEST_PATHS": [
+    "tests/contract/release-spine.test.ts",
+    "tests/contract/release-atomicity.test.ts",
+    "tests/contract/release-policy-result.test.ts (new file permitted)"
+  ],
+  "STATUS": "PARTIAL",
+  "LAST_VERIFIED_SHA": null,
+  "LAST_INSPECTED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "contract_blob": "a52354b950c268f2c8fd07d95475d72e7fa26191",
+    "runtime_policy_blob": "96153ca97b78f018e27239940a6304ef1926206e",
+    "validation_schema_blob": "2f5d735f7f7925b22716877bed5986bf581eec5e",
+    "source_result": "MATCH on declared §3.3 field names and primitive types at the inspected integration SHA.",
+    "test_result": "PARTIAL: release behavior tests exercise passed/reasons/thresholds, but repository search found no test import/use of ReleasePolicyResultSchema and no direct closed contract oracle.",
+    "execution": "NOT_EXECUTED_BY_C-6D91A4F2 because source/test mutation is globally blocked by INC-BRANCH-NAMESPACE-001 and GitHub Actions exact-head execution remains zero-step infrastructure failure."
+  },
+  "RECORDED_BY": "C-6D91A4F2"
+}
