@@ -4,8 +4,8 @@
   "CHAT_ID": "C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9",
   "MEMBERSHIP_ID": "PRE-89004dd7f3c888e71204246037033450",
   "SHARD": "89",
-  "STATE": "ACTIVE_READ_ONLY_PREACTIVATION",
-  "RECORD_GENERATION": 1,
+  "STATE": "SUSPENDED",
+  "RECORD_GENERATION": 2,
   "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
   "BOOTSTRAP_STATE_OBSERVED": "BLOCKED",
   "REQUESTED_CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
@@ -19,5 +19,6 @@
   ],
   "PRODUCT_MUTATION_ELIGIBLE": false,
   "INTEGRATION_ELIGIBLE": false,
-  "NOTE": "Real chat membership created in blocked preactivation. Scope is independent control-plane audit and evidence only; product mutation and target integration remain forbidden."
+  "HANDOFF_STATE": "NEXY-BUILD-CONTROL/CHAT_STATE/C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9.md",
+  "NOTE": "Execution window ended with resumable Phase-1 handoff. No leases, product mutation, target integration, or terminal mission claim. Renew with expected RECORD_GENERATION=2 -> 3 before resuming."
 }
