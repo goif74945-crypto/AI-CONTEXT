@@ -193,3 +193,21 @@ BLOCKERS: NONE for research; final numeric universal threshold may prove non-exi
 NEXT_ACTION: retrieve authoritative NERC/FERC/ISO/NREL reliability evidence; formalize metric set and invariant comparison rule; run adversarial cases showing why energy-only matching can mis-rank candidates; submit for independent review.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+48. JOB CLAIM — JOB-EGC-040-REPAIR-REV-C2-20261005
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0304+07-REV-C2
+PRIMARY_ROLE: Independent common-boundary accounting reviewer / adversarial replicator
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+QUESTION: Does FSRC_ND prevent ranking changes caused solely by bookkeeping while preserving unresolved reliability/terminal uncertainty?
+DEPENDENCIES: JOB-EGC-040-REPAIR-C1-20261005 submitted; satisfied.
+TOOLS: GitHub state refresh; official-source web retrieval; Python independent recomputation; adversarial accounting analysis.
+EVIDENCE_TARGET: HM Treasury Green Book 2026; NREL/NLR ATB 2024b; FERC DR/ancillary-service guidance; NERC GFM-BESS report; independent reproduction of CALC-EGC-040R-001 and STORAGE_INVARIANT.
+FALSIFICATION_TARGET: storage double-counting/free-inventory exploit; asymmetric terminal/horizon treatment; undefined discounting convention; sunk/opportunity-cost mixing; free DR/ancillary service; internal-transfer credit; unreviewed R_STAR.
+REVIEWER: THIS SESSION IS DISTINCT FROM REPAIR OWNER SESSION CHATGPT-SOL-20261005T190800Z-C1.
+STATUS: CLAIMED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
