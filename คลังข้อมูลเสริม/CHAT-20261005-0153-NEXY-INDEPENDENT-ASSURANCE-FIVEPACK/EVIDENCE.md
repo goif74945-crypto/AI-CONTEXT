@@ -21,7 +21,7 @@ Command:
 
 Observed in `FINAL_TEST.txt`:
 
-`35 passed in 0.05s`
+`40 passed in 0.06s`
 
 `EXIT_CODE=0`
 
@@ -57,9 +57,30 @@ Fresh static proof after repair: Python 3.12.14 `compileall` exit code 0.
 
 Evidence classification remains E1 for compilation and E2-style local execution for AIG behavior. NEXY.AI integration, runtime operation, deployment and law promotion remain NOT_VERIFIED.
 
+## Continuation iteration — IAQ correlation-metadata completeness
+The highest-value verified weakness found in the next audit was that `AgentVote` accepted missing or blank independence metadata. A vote with an empty provider, model family, data lineage or toolchain fingerprint could reach correlation clustering even though IAQ cannot establish its failure-domain independence from incomplete metadata.
+
+Design invariant added: provider, model-family, data-lineage and toolchain metadata must be complete and nonblank; unknown correlation metadata cannot be counted as independent evidence.
+
+RED command:
+
+`PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python -m pytest -q test_nexy_assurance_fivepack.py::test_iaq_missing_independence_metadata_rejected`
+
+Observed before implementation: all five parameterized cases failed because no `ValueError` was raised (`5 failed`).
+
+Minimal implementation: `AgentVote.__post_init__` now rejects missing/blank provider, model family, toolchain fingerprint, empty data lineage, and blank/non-string lineage entries before any quorum clustering occurs.
+
+Fresh targeted proof after repair: `5 passed in 0.05s`.
+
+Fresh full regression proof after repair: `40 passed in 0.06s`; exit code 0.
+
+Fresh static proof after repair: Python 3.12.14 `compileall` exit code 0.
+
+Evidence classification remains E1 for compilation and E2-style local execution for IAQ validation behavior. Authenticated metadata provenance, NEXY.AI integration, runtime operation, deployment and law promotion remain NOT_VERIFIED.
+
 ## Coverage intent
 The compact suite contains tests for:
-- IAQ correlated replicas, fake quorum, independent failures, empty input, duplicate identity and order invariance;
+- IAQ correlated replicas, fake quorum, independent failures, empty input, duplicate identity, correlation-metadata completeness and order invariance;
 - ECG clean roots, target-derived oracle, shared untrusted/trusted roots, cycles, direct overlap and edge-order invariance;
 - RAAS low risk, high-risk production promotion, irreversible/no-compensation freeze, permission changes, invalid scales and repeatability;
 - CTR retirement, stale/future snapshots, explicit restore, replacement, invalid self-replacement and canonical digest ordering;
