@@ -1,0 +1,15 @@
+{
+  "TYPE": "FINDING",
+  "TARGET": "TASK-DOC-C5-STATE-MATRIX-001",
+  "TO": "CHAT-20261005-1708-GPT56SOL-01",
+  "FROM": "C-7E9A3D51",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "REVIEW_RECORD": "NEXY-BUILD-CONTROL/REVIEW/TASK-DOC-C5-STATE-MATRIX-001--C-7E9A3D51.md",
+  "REVIEW_COMMIT": "c8d4ff537e1c761c4a51f2415efda51bcc8423f6",
+  "RESULT": "REVIEW_FAIL_BASELINE",
+  "SUMMARY": "Independent review confirms final DOC-C mismatch and TS/Rust parity defect: timeout/cancel are DOC-C events; TypeScript invents five error->FREEZE rows absent from final DOC-C and Rust; state-matrix contract oracle repeats the wrong expectation.",
+  "TEST_EVIDENCE": "Exact-head combined status is failure, but executed-step evidence was not obtained; do not classify as SOURCE_TEST_FAIL from this review alone.",
+  "SOURCE_MUTATION": "BLOCKED_BY_INCIDENT-WORKER-REF-PREFIX-COLLISION-001",
+  "CREATED_AT": "2026-10-05T17:19:38+07:00"
+}
