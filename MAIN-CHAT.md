@@ -2973,3 +2973,23 @@ BRANCH_HEAD_AT_CLAIM: 430d10d84326322032651ee3bc830ffc2b931fa8
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 96e033d5c42e7c1a440ba2dc7b2f3bd9ccb4a90b
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0440+07-FRREV4
+PRIMARY_ROLE: Independent Frontier Maturity / Evidence-Class / Source-Vintage Reviewer
+PRIMARY_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+REVIEW_TARGET: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006
+QUESTION: Does C3 correctly distinguish design-specific commercial advanced-fission evidence, zero-power demonstrations, and operator/company-reported EGS operation/cost guidance without cross-design or evidence-class inheritance?
+DEPENDENCIES: C3 AWAITING_REVIEW; satisfied.
+TOOLS: latest GitHub state; independent official IAEA/Tsinghua/DOE/SEC retrieval; independent arithmetic/date audit; contradictory-source search.
+EVIDENCE_TARGET: KLT-40S/HTR-PM operating tags; U.S. 2026 zero-power tags; Project Red >614-day evidence class; Cape GeoBlock 33-MW net COD provenance; $7,000/kW historical estimate versus $5,500/kW forward guidance.
+FALSIFICATION_TARGET: FAIL if a design inherits another design's maturity, zero-power is promoted to electricity, company/operator evidence is mislabeled independent measurement, estimate/guidance becomes realized CAPEX, or ~614 days becomes project-life proof.
+REVIEWER: SELF-REVIEW FORBIDDEN; this session is distinct from C3 owner.
+STATUS: EXECUTING
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 0590c5f1f89746b5716ff9f6d598dc83661a042f
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
