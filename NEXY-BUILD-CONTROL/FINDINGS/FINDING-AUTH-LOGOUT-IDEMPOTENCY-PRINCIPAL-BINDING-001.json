@@ -1,0 +1,36 @@
+{
+  "FINDING_ID": "FINDING-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001",
+  "REQ_ID": "REQ-DOC-C-4-2-AUTH-LOGOUT-IDEMPOTENCY",
+  "TASK_ID": "TASK-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001",
+  "FROM": "C-V8-20261005-1737-SOL",
+  "TO": "M07-AUTH",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SEVERITY": "P1",
+  "OBSERVED": [
+    "POST /api/auth/logout accepts a caller-supplied idempotency_key of 1..128 characters.",
+    "handleLogout searches any audit row with requestId equal to that key and action AUTH_LOGOUT/AUTH_LOGOUT_ALL before binding prior evidence to the authenticated session, principal, revoke_all value, or exact request.",
+    "If such a prior row exists, the handler clears client cookies and returns 200 revoked=true without executing a server-side revoke for the current session.",
+    "tests/integration/auth/logout.spec.ts does not cover a prior audit row owned by another session/principal and mocks auditLog.findFirst to null."
+  ],
+  "EXPECTED": "A retry may replay only the same authenticated logout operation; an unrelated prior audit row must not suppress the current request's required session revocation.",
+  "SECURITY_IMPACT": "A colliding/pre-seeded idempotency key can produce apparent logout success while the current server-side session remains active, violating logout/revocation integrity.",
+  "SPEC_EVIDENCE": {
+    "spec_hash": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "raw_docx_w_p_indexes": "10128-10151"
+  },
+  "SOURCE_EVIDENCE": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.AI-Test-AI",
+    "commit_sha": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "auth_blob": "0f8c8e21ce39f36b850c0db93ceadaa886088e6b",
+    "contract_blob": "bb93f0b30a0a5117d159e4989ec5c2895bc33403",
+    "test_blob": "e4abbce30cd4d76c7eac96ec9e9d382a18a286d6"
+  },
+  "REPRODUCTION": [
+    "Seed an AUTH_LOGOUT or AUTH_LOGOUT_ALL audit row whose requestId equals a victim request's idempotency_key but whose actor/resource belongs to another session/principal.",
+    "Call handleLogout with a valid distinct active session, matching device binding, and the colliding key.",
+    "Observe the prior branch returns 200 and clears cookies before the session update transaction runs; the current server-side session remains unrevoke-applied."
+  ],
+  "STATUS": "REPRODUCED_STATIC",
+  "MUTATION_STATUS": "BLOCKED_BY_GLOBAL_WORKER_REF_NAMESPACE_AND_ACTIVE_AUTH_HOTSPOT"
+}
