@@ -5254,3 +5254,23 @@ REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006
 STATUS: OPEN
 BLOCKERS: NONE for narrow repair; final integrated ledger still depends on FINPV/terminal/accounting reviews.
 NEXT_ACTION: distinct session claims C6; distinct reviewer C7 follows.
+
+
+======================================================================
+64. SESSION CLAIM — JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0520+07-RSTAR60REV
+PRIMARY_ROLE: Independent jurisdiction/reliability-method reviewer / probabilistic counterexample replicator
+PRIMARY_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006
+QUESTION: Does EGC-060 C1 eliminate foreign-threshold jurisdiction leakage and same-model technology bias without creating candidate-specific scenario, weight or information privilege?
+DEPENDENCIES: JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006 is AWAITING_REVIEW; satisfied.
+TOOLS: official NERC + AEMC/AEMO + GB reliability-source retrieval; Wolfram independent arithmetic; adversarial storage/thermal/VRE/hydro counterexamples; scenario-probability and information-set audit.
+EVIDENCE_TARGET: independently verify foreign reference non-eliminating semantics; reproduce battery-duration, LOLE/EUE and scenario-weight counterexamples; test same-exogenous-driver wording against candidate-specific validated physics; check local operating-security requirements remain mandatory.
+FALSIFICATION_TARGET: any foreign diagnostic can eliminate a locally compliant candidate; candidate can choose easier scenarios/weights/information; common comparison rules erase duration/resource/outage physics; or R_STAR adequacy pass silently substitutes for operating-security compliance.
+REVIEWER: distinct from C1 owner.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 981ed20d2f3272cab98f1b32edd09425f53afe19
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 612c8db7e92f32053ff6f518c0e1601315fdec3b
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
