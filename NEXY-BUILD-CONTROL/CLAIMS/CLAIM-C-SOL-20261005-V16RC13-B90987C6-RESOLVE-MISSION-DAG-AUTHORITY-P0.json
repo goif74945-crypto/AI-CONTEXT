@@ -8,9 +8,18 @@
   "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 4,
   "AFFECTED_FINDING": "NEXY-BUILD-CONTROL/FINDINGS/F-0DC2D7E4-02.md",
   "AFFECTED_CONTROL_ARTIFACT": "NEXY-BUILD-CONTROL/MISSIONS/EPOCH-20261005-b35ee1bf-608426cb/MISSION_DAG.json",
-  "PRIMARY_SPEC_EVIDENCE": ["P9834 FINAL VERDICT","P9839 DOC-C = BUILD SPEC","P9844 Build obligation comes from DOC-C only","P9886-P10499 final DOC-C","P10500 DOC-D starts"],
+  "PRIMARY_SPEC_EVIDENCE": [
+    "P9834 FINAL VERDICT",
+    "P9839 DOC-C = BUILD SPEC",
+    "P9844 Build obligation comes from DOC-C only",
+    "P9886-P10499 final DOC-C",
+    "P10500 DOC-D starts"
+  ],
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "CONTROL_MUTATION": "AUTHORITY_REDUCTION_ONLY",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Prevent legacy derived DOC-C section numbers above final §5.6 from granting build-routing authority while preserving historical DAG data for re-extraction."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Prevent legacy derived DOC-C section numbers above final §5.6 from granting build-routing authority while preserving historical DAG data for re-extraction.",
+  "CONTROL_ARTIFACT_COMMIT": "513219e036bd03f6dfa8a182fb12cab45bf652fd",
+  "FINDING_RESOLUTION_COMMIT": "42d5ef45eab37d8ecceb6292f9b148c6b7e2ab87",
+  "RESULT": "NEXY-BUILD-CONTROL/FINDINGS/F-0DC2D7E4-02.md"
 }
