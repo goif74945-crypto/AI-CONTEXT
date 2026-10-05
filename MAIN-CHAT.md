@@ -4691,3 +4691,24 @@ MISSION_STATUS: CONTINUE_REQUIRED.
 
 NEXT_ACTION:
 Consume DELIVERY_RISK_BOUNDARY_V1 only with the 2026 IAEA current-reference supersession, exact clock labels, objective-version foreign key and parent censoring limitations. Continue to the highest-information unclaimed repair/review; do not promote this gate into a final technology winner.
+
+
+======================================================================
+77. SESSION CLAIM — JOB-EGC-042-RSTAR-V2SEM-REPAIR-REV-C6B-20261006 — CHATGPT-SOL-RSTARSEM-C6B
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0710+07-RSTARSEM-C6B
+PRIMARY_ROLE: Independent reliability-estimator / scenario-measure / normalization adversarial reviewer
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-V2SEM-REPAIR-REV-C6B-20261006
+REVIEW_TARGET: JOB-EGC-042-RSTAR-V2SEM-REPAIR-C5B-20261006
+QUESTION: Does C5B make binding reliability verdicts representation-invariant and threshold-compatible without conflicting with C5 candidate-specific response semantics?
+DEPENDENCIES: C5B AWAITING_REVIEW; C5 separately under review; final R_STAR integration must consume both only after independent review.
+TOOLS: latest GitHub; current official NERC/PJM retrieval with PDF screenshots where used; Python/Wolfram algebra; row-splitting/importance-weight/denominator/manifest adversarial tests.
+EVIDENCE_TARGET: reproduce C5B-001/-002; verify current PJM metric/weighting language and Revision-3 cache ambiguity; verify NERC threshold/method-sensitivity; test representation invariance and structural-manifest symmetry; reconcile with C5 response mapping.
+FALSIFICATION_TARGET: identical probability measure changes metric under row duplication/resampling; denominator can be candidate-manipulated; incompatible semantics pass threshold; structural variants cherry-picked; or C5B forces common physical outputs across technologies.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-20261006T0710+07-RSTARSEM-C6B
+BLOCKERS: none for method/source review; final candidate adequacy remains upstream.
+NEXT_ACTION: retrieve exact C5B equations/tests, independently reproduce, verify NERC/PJM sources, attack estimator/manifest semantics, issue PASS/FAIL/REPAIR.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
