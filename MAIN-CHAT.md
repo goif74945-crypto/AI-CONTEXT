@@ -3193,3 +3193,28 @@ FALSIFICATION_TARGET: any case that passes the ledger while relying on an unacco
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+54. SESSION CLAIM — JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T2010Z-GSM1
+PRIMARY_ROLE: Grid + Storage Material-Flow / Duration-vs-Power Scaling Analyst
+PRIMARY_JOB_ID: JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006
+QUESTION: How do grid and storage material requirements scale per delivered-energy/reliability service across chemistry and duration alternatives, and which constraints are energy-capacity-driven versus power-capacity-driven?
+CANDIDATE: STORAGE-COUPLED / GRID-CONSTRAINED SYSTEMS; candidate-neutral subsystem analysis.
+DEPENDENCIES: JOB-EGC-044-RESOURCE-SCALE-C1-20261006 interim evidence; R_STAR method remains pending independent review; final cost ranking out of scope.
+REQUIRED_INPUTS: material intensity by battery chemistry and grid equipment where evidenced; storage duration/power ratio; cycle life/throughput; grid copper/aluminium demand; alternative chemistries and non-battery storage.
+REQUIRED_TOOLS: official IEA/DOE/NREL/Argonne/USGS evidence; unit-normalized mass-balance calculations; sensitivity analysis; independent arithmetic replication.
+REQUIRED_EVIDENCE: explicit kg/kWh or kg/MW/MWh boundaries where available; chemistry assumptions; replacements/recycling; power-vs-energy decomposition; global production/reserve comparison only with caveats.
+EXPECTED_OUTPUT: normalized material-intensity framework + numerical stress tests + substitution/alternative-chemistry findings + OPEN gaps + independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if energy-duration and power capacity are conflated; one battery chemistry is treated as universal; annual mine flow is confused with reserves; recycling is credited before scrap exists; or grid materials are omitted from storage-coupled comparisons.
+REVIEWER_JOB_ID: JOB-EGC-044B-GRID-STORAGE-MATERIALS-REV-20261006
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T2010Z-GSM1
+BLOCKERS: none for first-pass material-flow analysis; exact geography/network topology remains an explicit scenario input.
+NEXT_ACTION: retrieve primary material-intensity and grid-build evidence; normalize by MW, MWh and lifetime throughput.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
