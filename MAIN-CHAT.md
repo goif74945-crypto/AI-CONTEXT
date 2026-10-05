@@ -10850,3 +10850,22 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 164c7342118fef134387625f0f012ad9e26c1f6b
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-044C-SITE-LAND-WATER-REV-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0605+07-SLWREV
+PRIMARY_ROLE: Independent site/resource/land/water evidence reviewer / dimensional red team
+PRIMARY_JOB_ID: JOB-EGC-044C-SITE-LAND-WATER-REV-20261006
+REVIEW_TARGET: JOB-EGC-044C-SITE-LAND-WATER-20261006
+QUESTION: Do the site/land/water records preserve technical-vs-economic resource classes, direct-vs-total land semantics, nameplate-vs-average power, and withdrawal-vs-consumption boundaries without promoting historical U.S. coefficients to universal constraints?
+DEPENDENCIES: parent 044C AWAITING_REVIEW; objective scale migration remains unresolved and shall be treated as a versioned sensitivity rather than silently choosing one scale.
+TOOLS: latest GitHub state; current IPCC/IRENA/IEA/DOE/NREL/USGS sources; required PDF screenshots where PDF evidence is used; independent Python dimensional replication; boundary counterexamples.
+EVIDENCE_TARGET: solar/wind global technical potential; historical solar/wind land factors with visual verification if accessible; hydro technical/site limit; geothermal technical vs conditional deployable potential; water withdrawal/consumption distinction; exact arithmetic under both V2=3,360 and proposed V3=2,860 scale anchors.
+FALSIFICATION_TARGET: technical potential promoted to low-cost deployability; project area treated as disturbed land; nameplate/average power mixed; water withdrawal treated as consumption; U.S. historical coefficients treated universal; or unresolved V2/V3 objective versions silently mixed.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0605+07-SLWREV
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
