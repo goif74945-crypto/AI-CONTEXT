@@ -13016,3 +13016,295 @@ REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+60. REPAIR RESULT — JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200400Z-C2
+ROLE: Candidate-neutral objective repair architect
+PRIMARY_JOB_ID: JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-REPAIR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair F-EGC-043-OBJREV-P1-001/002/003 and P2-004 while preserving the pre-registered cost and scale conventions that survived review.
+
+OBJECTIVE_V2 — FROZEN COMMON MISSION OBJECTIVE
+
+A. LOW_COST_V2
+
+PRIMARY METRIC:
+FSRC_ND on the reviewed common whole-system resource-cost boundary and the same R_STAR/service boundary.
+
+PRIMARY ABSOLUTE GATE:
+FSRC_ND_candidate <= 60 USD_2025/MWh.
+TRUTH_CLASS: MISSION_CONVENTION, not a universal market fact.
+
+PRIMARY RELATIVE IMPROVEMENT GATE:
+J(candidate) <= 0.90 * C_BASE_STAR.
+The 10% improvement requirement remains a MISSION_CONVENTION and is frozen before final candidate ranking.
+
+MANDATORY COST SENSITIVITY:
+40 / 60 / 80 USD_2025/MWh;
+H=30 / 60 / 100 years;
+common financing/discount/fuel/resource/storage/transmission/weather sensitivities where material.
+If winner identity changes across the required cost threshold sensitivity:
+COST_THRESHOLD_SENSITIVE must be reported even when the primary 60-USD case passes.
+
+B. STRONGEST CURRENT BASELINE OPTIMIZER
+
+For each frozen comparison case q:
+q = {geography/feasible geography set, load/service boundary, R_STAR version, appraisal horizon, accounting version, uncertainty rule, T0, network/import limits, scale requirement}.
+
+Define:
+B_current_feasible(q,T0) =
+the frozen set of evidence-backed CURRENT commercially deployable technology/portfolio designs feasible at T0 and allowed the same physically applicable optimization freedom as the candidate, including storage, transmission, demand flexibility, geographic siting and hybridization.
+
+Define one pre-outcome score functional J_q(.) that is exactly the functional used to judge the candidate under q.
+
+Then:
+b_star(q) = argmin_{b in B_current_feasible(q,T0)} J_q(b)
+C_BASE_STAR(q) = J_q(b_star(q)).
+
+RULES:
+- b_star is selected algorithmically BEFORE candidate outcome inspection.
+- no weak comparator may be substituted after seeing candidate results.
+- if candidate may optimize across geography G, every baseline may optimize across the same feasible G subject to the same delivery/transmission rules.
+- baseline portfolios receive the same reliability, storage, grid, curtailment, finance, lifetime and environmental/safety accounting freedom where physically applicable.
+- current-baseline membership is frozen/versioned at T0; future speculative technologies do not enter B_current unless separately versioned.
+- if baseline frontier coverage or optimizer optimality uncertainty is large enough to reverse the 0.90 result, status=BASELINE_NOT_VERIFIED.
+- no arbitrary numerical optimizer-gap tolerance is invented; the required bound is decision-relevant: the certified baseline-cost uncertainty must be too small to reverse the candidate's pass/fail conclusion.
+
+ANTI-CLAIRVOYANCE:
+Under uncertainty, b_star is a design/portfolio selected ex ante using the same frozen decision functional J_q. It may not switch to a different hindsight-perfect design for every realized random state unless the candidate is granted the identical recourse.
+
+C. UNCERTAINTY / ROBUSTNESS RULE
+
+C1 — CALIBRATED JOINT-PROBABILITY MODE
+Allowed only when an evidence-supported joint probability distribution P(S) exists for all ranking-material uncertain inputs, including material dependence/correlation.
+Pre-registration alone does NOT validate P(S).
+
+If P(S) is defensible:
+LOW_COST_PROBABILISTIC_PASS requires at least 95% probability, under paired common states S, that:
+1. FSRC_ND_candidate(S) <= 60 USD_2025/MWh; AND
+2. FSRC_ND_candidate(S) <= 0.90 * FSRC_ND_b_star(S); AND
+3. all other binding objective/service gates pass.
+The 95% probability level is a MISSION_CONVENTION and must be sensitivity-tested if ranking-critical.
+Candidate and baseline use the SAME sampled exogenous state with physically appropriate response models.
+
+C2 — ALLOWED-JOINT-STATE ROBUST MODE
+If a calibrated joint distribution is not defensible, probabilities are forbidden.
+Construct evidence-supported S_allowed containing credible joint states and dependencies.
+
+ROBUSTLY_LOW_COST iff:
+sup_{s in S_allowed}[FSRC_ND_candidate(s)-60] <= 0
+AND
+sup_{s in S_allowed}[FSRC_ND_candidate(s)-0.90*FSRC_ND_b_star(s)] <= 0
+AND all binding gates pass for every material allowed state.
+
+If S_allowed is materially incomplete:
+STATUS=NOT_VERIFIED.
+Do not invent independence or probability weights to manufacture a 95% pass.
+
+D. MASSIVE_ENERGY_V2
+
+SOURCE ANCHOR:
+IEA Electricity 2026 forecast = 33,600 TWh global electricity consumption in 2030.
+URL: https://www.iea.org/reports/electricity-2026/demand
+SOURCE_FACT: 33,600 TWh is a forecast in that version, not immutable measurement.
+A later 2026 mid-year update revises 2025/2027 values but, in the reviewed source, does not replace the 2030 anchor used here.
+
+PRIMARY SCALE:
+>=3,360 TWh/year net served attributable to post-T0 deployment decisions
+=10% of the version-locked 33,600-TWh/year anchor
+=383.561643835616 GW continuous-equivalent.
+
+SENSITIVITY:
+5% =1,680 TWh/y=191.780821917808 GW average.
+10%=3,360 TWh/y=383.561643835616 GW average.
+20%=6,720 TWh/y=767.123287671233 GW average.
+CALCULATION_REPLICATION: Python Decimal + Wolfram PASS.
+
+EXACT DEPLOYMENT CLOCK:
+T0 = 2026-10-06T00:00:00Z.
+T_END = 2046-10-06T00:00:00Z.
+TRUTH_CLASS: MISSION_CONVENTION.
+
+TARGET TEST:
+By T_END the candidate must demonstrate an evidence-backed engineering/manufacturing/resource/grid pathway whose post-T0 additions can provide >=3,360 TWh/y NET_SERVED at the frozen service/reliability boundary.
+Nameplate capacity is not the numerator.
+
+PIPELINE LOCK:
+At T0 classify physical assets/projects:
+1. LEGACY_OPERATING: already commissioned before T0.
+2. LEGACY_COMMITTED_PIPELINE: evidenced irreversible commitment/FID/notice-to-proceed before T0.
+3. POST_T0_DECISION: investment/deployment decision after T0.
+4. UNKNOWN_STATUS.
+
+For deployment-rate proof:
+- LEGACY_OPERATING and LEGACY_COMMITTED_PIPELINE receive ZERO credit toward the >=3,360 TWh/y post-T0 deployment numerator.
+- POST_T0_DECISION output may count after commissioning and only as net served under the common boundary.
+- UNKNOWN_STATUS receives no deployment credit until provenance resolves it.
+
+For brownfield whole-system economics:
+legacy operating/committed assets may exist in the common T0 starting state, but historical sunk CAPEX, forward O&M/fuel/refurbishment/opportunity/retirement and remaining committed real-resource costs follow the common brownfield ledger.
+No candidate may convert inherited pipeline into evidence of its own post-T0 deployment rate.
+
+For greenfield comparison:
+no pre-T0 legacy/pipeline output is credited as candidate deployment.
+
+SUSTAINMENT:
+resource/fuel/material/replacement/waste pathway must support the common 60-year appraisal/service horizon or explicit replacement/terminal liabilities; no end-state one-year sprint can satisfy MASSIVE_ENERGY.
+
+If feasibility flips across 5/10/20% scale sensitivity:
+SCALE_NOT_STABLE.
+
+E. EROI / LIFECYCLE NET-ENERGY V2
+
+BOUNDARY:
+EROI_SYS =
+lifetime useful net electrical energy delivered at the common M_LOAD service boundary
+/
+lifecycle external energy invested to build, fuel, operate, maintain, replace and retire the complete candidate system, including allocated storage/grid burden where material.
+
+Internal electricity transfers such as storage charging already produced inside the system are not counted again as external lifecycle energy input.
+Energy-carrier conversion/quality convention must be explicit and common; if materially inconsistent across candidates, EROI comparison=NOT_VERIFIED.
+
+HARD PHYSICAL/OBJECTIVE FAIL:
+EROI_SYS <= 1 on the frozen comparable boundary
+=> non-positive lifecycle net energy
+=> NET_ENERGY_FAIL.
+
+UNCERTAINTY:
+If credible uncertainty/allowed joint states cross EROI_SYS=1:
+NET_ENERGY_NOT_VERIFIED.
+
+FOR EROI_SYS>1:
+do NOT impose a universal binary 3 or 5 cutoff.
+Report continuously:
+- EROI_SYS;
+- lifetime E_out and E_in;
+- lifecycle net energy E_out-E_in;
+- net-energy fraction = 1 - 1/EROI_SYS;
+- energy payback time where meaningful;
+- boundary/version and uncertainty.
+
+Examples independently replicated:
+R=1 => net-energy fraction 0.
+R=1.1 => 0.0909091.
+R=2 =>0.5.
+R=3 =>0.6666667.
+R=4 =>0.75.
+R=5 =>0.8.
+R=10 =>0.9.
+
+The prior central>=5 / pessimistic>=3 binary elimination rule is FALSIFIED_AS_EVIDENCE_DERIVED_GATE and removed.
+A future normative EROI threshold may only be added as a separately labeled MISSION_CONVENTION, pre-registered before outcome inspection and independently reviewed.
+
+G8 interpretation:
+"EROI/lifecycle favorable" requires robustly positive lifecycle net energy plus complete lifecycle accounting; higher continuous EROI is preferred evidence but no unsupported universal cutoff is silently inserted.
+
+F. PRESERVED COMMON GATES
+
+- net served energy is after curtailment, parasitics, storage/network losses under the common ledger;
+- resource/material/manufacturing pathways must be quantitatively evidenced at mission scale;
+- unresolved P0/P1 safety/environment/regulatory failures block PASS;
+- candidate and baseline receive symmetric geography/portfolio optimization;
+- plant LCOE cannot substitute for FSRC_ND delivered-system cost;
+- all critical calculations retain source/units/uncertainty and independent replication requirements.
+
+REGRESSION TESTS
+
+CALC-EGC-043R3-001 — SCALE ARITHMETIC
+33,600*0.10=3,360 TWh/y.
+3,360*1000/8760=383.561643835616 GW average.
+5/20% values as above.
+Python + Wolfram PASS.
+
+CALC-EGC-043R3-002 — BASELINE CHERRY-PICK
+Feasible current baseline costs={52,60,68}; candidate=50 USD/MWh.
+If analyst cherry-picks 60:
+50/60=0.833333 => <=0.90 appears PASS.
+Optimizer baseline=52:
+50/52=0.961538 => relative-improvement gate FAIL.
+CONCLUSION:
+selectable baseline can manufacture a false 10% improvement; C_BASE_STAR blocks it.
+Python + Wolfram PASS.
+
+CALC-EGC-043R3-003 — EROI CUTOFF RANKING ATTACK
+Generic candidate A: FSRC_ND=50, EROI_SYS=4, other gates pass.
+Generic B: FSRC_ND=55, EROI_SYS=10.
+Old >=5 binary rule eliminates lower-cost positive-net-energy A.
+V2: both have positive lifecycle net energy; EROI remains continuous evidence and A is not eliminated solely by unsupported cutoff.
+TRUTH_CLASS: LOGICAL COUNTEREXAMPLE, not real candidate data.
+
+CALC-EGC-043R3-004 — PIPELINE CREDIT ATTACK
+If a candidate enters T0 with X TWh/y of already committed pipeline and is allowed to count it while another candidate must start post-T0, apparent deployment rate is structurally biased by X.
+V2 sets X contribution to post-T0 deployment numerator=0 for all candidates.
+TRUTH_CLASS: ACCOUNTING INVARIANT.
+
+SOURCE EVIDENCE
+TE-EGC-043R3-001:
+IEA Electricity 2026 Demand:
+https://www.iea.org/reports/electricity-2026/demand
+SOURCE_FACT: 2025=28,200 TWh; forecast 2030=33,600 TWh; average 2026-2030 growth ~3.6%/y and ~1,100 TWh/y added.
+
+TE-EGC-043R3-002:
+IEA Electricity Mid-Year Update 2026:
+https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+SOURCE_FACT: latest page reports 2025=28,600 TWh and forecast 2027=30,700 TWh.
+LIMITATION: reviewed page does not provide a replacement 2030 forecast; mission retains the explicitly versioned Electricity-2026 2030 anchor.
+
+TE-EGC-043R3-003:
+IRENA Renewable Capacity Statistics 2026 release:
+https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+SOURCE_FACT: 692 GW renewable capacity added in 2025; total reached 5,149 GW.
+LIMITATION: aggregate renewable nameplate deployment does not prove any one candidate can meet 3,360 TWh/y net served.
+
+TE-EGC-043R3-004:
+Hall, Balogh & Murphy (2009), DOI 10.3390/en20100025.
+URL: https://www.mdpi.com/1996-1073/2/1/25
+SOURCE/REVIEW FACT: EROI interpretation depends on boundary; literature discussion does not establish mission-boundary 5/3 as universal cross-technology elimination thresholds.
+LIMITATION: older literature; used only to reject unsupported universalization, not to set current technology performance.
+
+CLAIM_GRAPH UPDATE
+CLAIM-EGC-043-003 LOW_COST_V1 -> SUPERSEDED_BY LOW_COST_V2 pending review.
+CLAIM-EGC-043-004 MASSIVE_ENERGY_V1 -> REPAIRED_V2 pending review.
+CLAIM-EGC-043-005 EROI_5_3_GATE -> FALSIFIED / REMOVED.
+CLAIM-EGC-043R3-001 C_BASE_STAR -> REPAIR_SUBMITTED / AWAITING_REVIEW.
+CLAIM-EGC-043R3-002 JOINT_UNCERTAINTY_RULE -> REPAIR_SUBMITTED / AWAITING_REVIEW.
+CLAIM-EGC-043R3-003 T0_PIPELINE_LOCK -> REPAIR_SUBMITTED / AWAITING_REVIEW.
+CLAIM-EGC-043R3-004 EROI_CONTINUOUS_GATE -> REPAIR_SUBMITTED / AWAITING_REVIEW.
+
+SOLVED-GATE EFFECT
+G1 quantitative objective defined: REPAIR_SUBMITTED, NOT VERIFIED until independent review.
+G8 EROI/lifecycle favorable: method repaired, candidate evidence still required.
+G21 uncertainty cannot reverse conclusion: method repaired but depends on independently reviewed uncertainty implementation.
+G22 strongest current baseline comparison: optimizer definition repaired; actual frontier/optimization remains downstream evidence.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+STATUS_CHANGE:
+JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006: EXECUTING -> AWAITING_REVIEW.
+JOB-EGC-043-OBJECTIVE-REPAIR-REV-C4-20261006: BLOCKED -> OPEN.
+
+REVIEW JOB:
+JOB_ID: JOB-EGC-043-OBJECTIVE-REPAIR-REV-C4-20261006
+TITLE: Independent review of OBJECTIVE_V2 repair
+ROLE: Independent objective-gate auditor / numerical replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does OBJECTIVE_V2 eliminate unsupported EROI cutoffs, invented probability distributions, cherry-picked baselines and candidate-specific deployment starts without moving the surviving 60-USD/10%-scale mission goalposts?
+DEPENDENCIES: JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006 AWAITING_REVIEW.
+REQUIRED_INPUTS: OBJECTIVE_V2; CALC-EGC-043R3-001..004; source records.
+REQUIRED_TOOLS: independent arithmetic; uncertainty-boundary audit; baseline-optimizer counterexamples; T0/pipeline attack; source-provenance check.
+FALSIFICATION_CONDITION: arbitrary EROI cutoff remains hidden; probability can be invented; b_star can be selected after candidate outcome; legacy pipeline can create asymmetric scale credit; objective thresholds moved to favor a candidate.
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session independently attacks OBJECTIVE_V2.
