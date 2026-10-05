@@ -3796,3 +3796,45 @@ GLOBAL_STATE_DELTA:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+34. INDEPENDENT REVIEW CLAIM — JOB-EGC-018 PROVENANCE AUDIT
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:13:00Z
+SESSION_ID: SESSION-GPT56SOL-EGC-REV018-P1-20261005
+PRIMARY_ROLE: R23 Independent Replication + R25 Evidence Provenance Reviewer
+PRIMARY_JOB_ID: JOB-EGC-018-REV-P1-20261005
+QUESTION: Does TE-EGC-018-001 correctly reconstruct canonical lease ownership from actual Git commit ancestry/order under the repository's earliest-valid-committed-claim rule?
+DEPENDENCIES: JOB-EGC-018 is AWAITING_REVIEW with TE-EGC-018-001 recorded.
+TOOLS: GitHub compare_commits; fetch_commit; exact MAIN-CHAT.md state; deterministic ancestry/order audit.
+EVIDENCE_TARGET: REPO_FACT / REPLICATION / CONFLICT_RESOLUTION.
+FALSIFICATION_TARGET: Find any listed pair that is not ancestor->direct-next-commit, any earlier valid lease omitted by TE-EGC-018-001, or any rule interpretation that lets textual CLAIMED_AT override committed ancestry.
+REVIEWER: This is the independent reviewer for TE-EGC-018-001; this session will not self-review its own later technical energy jobs.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-018-REV-P1-20261005
+ROLE: Independent provenance replication / adversarial reviewer
+TITLE: Independently reproduce and attack TE-EGC-018-001 canonical lease audit
+QUESTION_TO_RESOLVE: Reproduce the audited commit sequence and determine PASS/FAIL for the canonical lease map and collision interpretation.
+TARGET_CANDIDATE: MISSION-WIDE COORDINATION
+DEPENDENCIES: TE-EGC-018-001 present and JOB-EGC-018 AWAITING_REVIEW
+REQUIRED_INPUTS: Listed commit SHAs, their diffs/ancestry, collision law, current ledger.
+REQUIRED_TOOLS: GitHub compare_commits + fetch_commit + file state refresh.
+REQUIRED_EVIDENCE_CLASS: REPO_FACT / REPLICATION
+EXPECTED_OUTPUT: Independent PASS/FAIL with exact reproduced ancestry facts, scope limits, and repair instructions if needed.
+FALSIFICATION_CRITERIA: FAIL if any canonical owner does not correspond to the earliest valid committed lease in branch ancestry, or if evidence cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-REV018-P1-20261005
+CLAIMED_AT: 2026-10-05T19:13:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:13:00Z
+BLOCKERS: NONE
+HANDOFF: Complete independent replay, attack edge cases, then record PASS/FAIL without modifying historical events.
+
+WRITE_INTEGRITY:
+- branch head read: df411ddfdba0881f828423068a6e70af86bedc2f
+- file SHA read: e0e647ba8ab709a4a8d946f0dbcf6f909b4b163d
+- stale-write check: update_file must accept exactly this blob SHA; otherwise abort/reconcile.
+- commit/result: PENDING_THIS_COMMIT
