@@ -1,0 +1,39 @@
+{
+  "VALIDATION_ID": "VAL-RAILWAY-R2-608426CB-STATUS-001",
+  "CHAT_ID": "C-GPT56SOL-20261005-1923-V8",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "STATUS_CONTEXT": "NEXY Validation R2 - nexy-validation-branch",
+  "STATUS_HISTORY": [
+    {
+      "state": "pending",
+      "description": "Railway is deploying the service",
+      "created_at": "2026-10-04T22:30:30Z",
+      "creator": "railway-app[bot]"
+    },
+    {
+      "state": "failure",
+      "description": "Deployment failed",
+      "created_at": "2026-10-04T22:31:50Z",
+      "creator": "railway-app[bot]"
+    }
+  ],
+  "TARGET_DEPLOYMENT_ID": "f1391868-cac3-493c-98e0-4cbbf4b8e254",
+  "TARGET_ACCESS": {
+    "github_status_api": "available",
+    "public_web": "not accessible via current web tool",
+    "railway_plugin": "available but not invoked because no MISSION_PLUGIN_AUTHORIZATION was present"
+  },
+  "CLASSIFICATION": "UNCLASSIFIED_EXTERNAL_VALIDATION_FAILURE",
+  "CODE_RESULT": "UNKNOWN",
+  "PASS": false,
+  "CODE_FAIL_ALLOWED": false,
+  "INFRA_FAIL_ALLOWED": false,
+  "REASON": "GitHub exposes only 'Deployment failed' status metadata. No Railway build/runtime logs, executed command, runner or exit code are currently available, so neither code failure nor infrastructure failure can be honestly promoted.",
+  "RELATIONSHIP_TO_GHA": "Independent from the repeated GitHub Actions zero-step EXECUTION_INFRA_FAILURE. Both block exact-SHA integrated PASS evidence.",
+  "SOURCE_MUTATION": "NONE",
+  "NEXT_EXACT_STEP": "Acquire deployment execution evidence through an authorized Railway capability or equivalent exact-deployment logs, then classify CODE_FAIL versus EXECUTION_INFRA_FAILURE and enqueue repair/retry accordingly."
+}
