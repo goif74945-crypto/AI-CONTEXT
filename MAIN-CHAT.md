@@ -511,3 +511,211 @@ REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-REV-C3-20261006
 STATUS: OPEN
 BLOCKERS: NONE
 NEXT_ACTION: claim and execute smallest safe repair, then submit to distinct reviewer.
+
+
+======================================================================
+51. INDEPENDENT REVIEW RESULT — JOB-EGC-040-REPAIR-REV-C2-20261005
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0304+07-REV-C2
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+TARGET_REPAIR_JOB: JOB-EGC-040-REPAIR-C1-20261005
+PRIMARY_ROLE: Independent common-boundary accounting reviewer / adversarial replicator
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+TARGET_REPAIR_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+QUESTION:
+Does FSRC_ND prevent ranking changes caused solely by bookkeeping while preserving unresolved reliability/terminal uncertainty?
+
+LATEST_STATE_AT_WRITE:
+BRANCH_HEAD_FETCH: bf088be95616d045f386e115ee2ab8b354ec2cf2
+MAIN_CHAT_BLOB_SHA_FETCH: 0865606b5d58ee5a299f3df6d0e5b3d29ed9a56e
+
+EVIDENCE_ID: TE-EGC-040REV-001
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040REV-001
+EVIDENCE_CLASS: EXTERNAL_FACT
+TOOL: official-source web retrieval
+SOURCE: HM Treasury, The Green Book (2026)
+SOURCE_DATE: updated 2026-02-05
+URL: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+METHOD: independent source audit of horizon, sunk cost, transfers, discounting, residual value.
+OUTPUT:
+- infrastructure appraisal horizon is normally 60 years and should span construction/development, operation/delivery, and winding-down/decommissioning;
+- sunk costs already incurred and unchangeable should not drive forward appraisal, while opportunity cost of already-paid resources remains relevant;
+- economic transfers do not by themselves make society better or worse off;
+- future monetisable costs/benefits are converted to real present-value terms using discount factors;
+- residual asset value or liability at appraisal end should be included to reflect opportunity cost.
+LIMITATIONS: UK public-appraisal guidance used as an explicit accounting convention and evidence on internal consistency; not a universal physical law.
+REPLICATION_STATUS: SOURCE_RETRIEVED_INDEPENDENTLY.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: TE-EGC-040REV-002
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040REV-002
+EVIDENCE_CLASS: EXTERNAL_FACT
+TOOL: official-source web retrieval
+SOURCE: NREL/NLR Annual Technology Baseline 2024b — Definitions
+URL: https://atb.nrel.gov/electricity/2024b/definitions
+METHOD: independent audit of economic/cost-recovery period versus technical life and replacement/residual treatment.
+OUTPUT:
+- cost-recovery period is an explicit LCOE assumption;
+- technical life can differ from cost-recovery period;
+- technical life longer than recovery period can leave residual value;
+- ATB explicitly lists technology technical lives and notes replacement costs; utility PV-plus-battery assumes battery-cell replacement at year 15 within a 30-year project life.
+LIMITATIONS: representative U.S. ATB values are not universal technology lives.
+REPLICATION_STATUS: SOURCE_RETRIEVED_INDEPENDENTLY.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: TE-EGC-040REV-003
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040REV-003
+EVIDENCE_CLASS: EXTERNAL_FACT
+TOOL: official-source web retrieval
+SOURCE: FERC Demand Response National Assessment / FERC Ancillary Services
+URLS:
+https://www.ferc.gov/electric/industry-activity/demand-response/national-assessment-and-action-plan-demand-response
+https://www.ferc.gov/ancillary-services
+OUTPUT:
+- DR evaluation includes cost-effectiveness, measurement and verification, program design/implementation, and analytical-method questions;
+- ancillary services include frequency regulation, operating reserves, voltage support, black start and reactive power;
+- multiple resource types can provide some of these services, so service obligations must be technology-neutral.
+LIMITATIONS: these sources establish service/evaluation categories, not a universal numeric R_STAR or candidate-specific cost.
+REPLICATION_STATUS: SOURCE_RETRIEVED_INDEPENDENTLY.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: CALC-EGC-040REV-001
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-002
+EVIDENCE_CLASS: CALCULATION
+METHOD: independent Python recomputation of CALC-EGC-040R-001.
+EQUATION: CRF=r(1+r)^n/[(1+r)^n-1].
+INPUTS: r=0.07; A CAPEX=100, n=30; B CAPEX=110, n=60; A replacement at year 30 for 60-year comparison.
+OUTPUT:
+EAC_A=8.058640351111118/y
+EAC_B=7.835214805002139/y
+PV_A_60=113.13671171545896
+PV_B_60=110
+RESULT: reproduces original rank reversal.
+UNCERTAINTY: arithmetic floating-point only; economic assumptions remain toy-case assumptions.
+REPRODUCTION_METHOD: Python double precision.
+REPLICATION_STATUS: PASS.
+
+EVIDENCE_ID: CALC-EGC-040REV-002
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-002
+EVIDENCE_CLASS: CALCULATION
+METHOD: independent second implementation using Wolfram Language evaluator.
+INPUTS: identical to CALC-EGC-040REV-001.
+OUTPUT:
+EAC_A=8.058640351111118/y
+EAC_B=7.835214805002139/y
+PV_A_60=113.13671171545897
+PV_B_60=110
+RESULT: agrees with Python/original values to floating-point precision.
+REPRODUCTION_METHOD: Wolfram Language, stateless evaluator.
+REPLICATION_STATUS: PASS / INDEPENDENT_TOOL_IMPLEMENTATION.
+
+EVIDENCE_ID: CALC-EGC-040REV-003
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-001
+EVIDENCE_CLASS: CALCULATION
+METHOD: independent Python + Wolfram replication of STORAGE_INVARIANT.
+INPUTS: gross generation=100 MWh; source cost=30 USD/MWh; charge=20 MWh; RTE=0.8; discharged energy=16 MWh; storage service=10 USD/MWh discharged; delivered=96 MWh.
+OUTPUT:
+correct total=3160 USD
+correct delivered cost=32.9166666666667 USD/MWh
+double-charge total=3760 USD
+double-charge delivered cost=39.1666666666667 USD/MWh
+artificial distortion=+18.9873417721519%
+RESULT: original storage anti-double-count invariant independently reproduced.
+REPLICATION_STATUS: PASS / TWO_TOOL_IMPLEMENTATION.
+
+ADVERSARIAL_FINDING: P1-TERMINAL-PV-AMBIGUITY
+TRUTH_CLASS: CALCULATION + INFERENCE
+OBSERVATION:
+PRIMARY_METRIC currently writes
+FSRC_ND=[PV(C_EXTERNAL_RESOURCE)-PV(V_EXTERNAL_COPRODUCT)-RV_H+TL_H]/PV(E_NET_SERVED)
+but RV_H and TL_H are not explicitly defined as present values at the common base date.
+WHY_MATERIAL:
+HM Treasury guidance requires future monetisable costs/benefits to be discounted into present-value terms. If RV_H or TL_H are inserted as undiscounted horizon-year amounts while the rest of the numerator is PV, bookkeeping alone can reverse ranking.
+COUNTEREXAMPLE:
+At r=7%, a terminal amount of 50 occurring at year 60 has PV_0=50/(1.07)^60=0.8628659735, not 50.
+Using raw 50 instead of PV_0 overstates that term by 49.1371340265 and by a factor of 57.9464.
+FALSIFICATION_STATUS: CURRENT FORMULATION FAILS UNAMBIGUITY GATE.
+REPAIR_REQUIRED:
+Define a frozen present-value operator for the primary view:
+D(0)=1;
+PV_0[X]=sum_t X_t*D(t).
+Define residual value and terminal liabilities by timing:
+RV_0=sum_j E[RV_j at time t_j]*D(t_j);
+TL_0=sum_k E[TL_k at time t_k]*D(t_k).
+Then use only PV-base-date quantities in numerator:
+FSRC_ND=[PV_0(C_RESOURCE)-PV_0(V_EXTERNAL_COPRODUCT)-RV_0+TL_0]/PV_0(E_NET_SERVED).
+If a liability occurs beyond H, discount it from its actual expected payment time; do not silently book the entire nominal amount at H.
+A single common real price base and common primary-view discount curve must be frozen before candidate ranking; mandatory sensitivity may vary the common curve symmetrically.
+
+ADVERSARIAL_FINDING: P1-FINANCE-RESOURCE-VIEW-MIX
+TRUTH_CLASS: EXTERNAL_FACT + INFERENCE
+OBSERVATION:
+The repair labels the primary view "real whole-system resource cost" and excludes internal transfers, but MANDATORY ROWS currently contains "source CAPEX+construction finance" without decomposing real financing services from financing cash transfers/returns.
+WHY_MATERIAL:
+The Green Book separates discounted economic/resource appraisal from the financial case, and treats transfers differently. Candidate-specific debt/equity interest or return cannot be silently inserted as a real resource cost in the primary resource view while a discount rate is also applied; doing so can create asymmetric double counting. Conversely, real financing services such as due diligence/legal/underwriting/admin resources may consume real resources and must not disappear.
+REPAIR_REQUIRED:
+Split the row into at least:
+1. CONSTRUCTION_REAL_RESOURCES: equipment, labour, EPC, owner engineering, real insurance/admin/transaction services -> primary resource cost when causally required;
+2. FINANCING_CASH_FLOWS / CAPITAL RETURNS / TAX EFFECTS -> secondary financial/private-customer view unless an explicitly defined external-resource component exists;
+3. PRIMARY DISCOUNTING -> one frozen candidate-neutral social/resource discount convention with sensitivity;
+4. SECONDARY FINANCIAL VIEW -> candidate-specific WACC/financing structure allowed, reported separately.
+Do not allow a candidate to improve primary FSRC_ND merely by relabeling transfers as credits or worsen it merely through financing cash-flow conventions.
+
+ATTACK_MATRIX:
+- storage charge/RTE double counting: PASS if canonical gross-generation ledger is enforced.
+- 30y vs 60y replacement/truncation: PASS; independently replicated.
+- sunk-incumbent vs greenfield-challenger asymmetry: PASS at method level; source-consistent.
+- demand-flexibility free-capacity assumption: PASS at method level; real enablement/M&V/nonperformance costs retained.
+- ancillary/system-strength technology-label surcharge: PASS at method level; common service vector is technology-neutral.
+- internal ancillary/capacity/DR payment as negative resource cost: PASS; transfer treatment source-consistent.
+- numeric R_STAR hardcoding: PASS PRESERVATION OF UNKNOWN; R_STAR remains unresolved dependency and therefore blocks final winner.
+- terminal value/liability timing and discounting: FAIL P1.
+- primary resource cost versus construction-finance cash-flow decomposition: FAIL P1.
+
+CLAIM_GRAPH_UPDATE:
+CLAIM-EGC-040R-001 STORAGE_PRECEDENCE: INDEPENDENT_REPLICATION_PASS / SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-040R-002 HORIZON_TERMINAL: REVIEW_FAILED / REPAIR_REQUIRED due terminal-PV ambiguity.
+CLAIM-EGC-040R-003 GREENFIELD_BROWNFIELD: INDEPENDENT_SOURCE_AUDIT_PASS / SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-040R-004 DEMAND_FLEX: METHOD_SOURCE_AUDIT_PASS / candidate-specific quantification still future work.
+CLAIM-EGC-040R-005 ANCILLARY_STRENGTH: METHOD_SOURCE_AUDIT_PASS / candidate-specific quantification still future work.
+CLAIM-EGC-040R-006 RELIABILITY_INTEGRATION: UNKNOWN PRESERVED; numeric R_STAR remains external dependency.
+CLAIM-EGC-040REV-004 PRIMARY_FINANCE_RESOURCE_SEPARATION: NEW MATERIAL DEFECT / REPAIR_REQUIRED.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-C1-20261005: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-040-REPAIR-REV-C2-20261005: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+JOB_ID: JOB-EGC-040-REPAIR-C3-20261006
+TITLE: Terminal-PV + financing/resource-view repair
+ROLE: Common-boundary accounting repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can FSRC_ND be rewritten so every terminal item is on the same base-date PV basis and primary real-resource costs cannot be contaminated by financing cash-flow transfers?
+CANDIDATE: COMMON SYSTEM BOUNDARY
+DEPENDENCIES: CALC-EGC-040REV-001/002/003 and TE-EGC-040REV-001/002/003 complete.
+REQUIRED_INPUTS: frozen price base; discount operator; terminal timing convention; financing/resource decomposition; existing storage/greenfield/DR/ancillary rules.
+REQUIRED_TOOLS: source audit; numerical counterexamples; independent recomputation.
+REQUIRED_EVIDENCE: explicit equations and owner-state mapping preventing raw terminal values, candidate-specific primary discount privilege, or financing-transfer double count.
+EXPECTED_OUTPUT: corrected FSRC_ND equation + terminal ledger + finance/resource owner states + sensitivity rule.
+FALSIFICATION_CONDITION: FAIL if equal physical systems can receive different primary resource-cost rankings solely from terminal timing notation, candidate-specific discount/WACC convention, transfer relabeling, or finance double counting.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-C3-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct repair session applies the exact fixes above, then an independent reviewer attacks the corrected equation.
+
+NEXT_HIGHEST_VALUE_ACTION:
+Do not promote a cost winner. Repair P1 terminal/finance accounting defects while R_STAR, objective formalization and baseline-frontier jobs continue independently.
