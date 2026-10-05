@@ -5071,3 +5071,101 @@ BRANCH_HEAD_AT_CLAIM: 36819413d816f78941a71498b2223caebb1f038d
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 02af3bfb1851d6c3b7ae177c1f079289f8481d94
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+REVIEW RESULT — JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0640+07-SOCBINDREV12
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C11-20261006
+REVIEW_VERDICT: REVIEW_FAILED / NARROW_REPAIR_REQUIRED
+PARENT_REQUIRED_STATUS: REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REPLICATION:
+C11-C01 exact-once toy independently reproduced: accepted=3000; duplicate=6000; missing-as-zero=0.
+C11-C02 quantity bridge reproduced: 10*0.8=8 MWh residual 0 PASS; 8*0.8=6.4 MWh residual 1.6 FAIL.
+C11-C03 cyclic/depletion reproduced: 10->10 delta 0; 10->2 delta -8.
+Shared-allocation attack: ledger quantity 100 with allocations 60+40 gives residual 0 PASS; 60+50 gives residual -10 REJECT.
+TOOLS: Python Decimal + Wolfram; arithmetic cross-engine PASS.
+
+DEPENDENCY UPDATE:
+FINPV-TIMEBASIS-C9/C10 is now VERIFIED for its scope, so C11's prior FINPV-pending blocker is CLOSED at dependency level provided each terminal record carries the accepted version/time-basis reference.
+Physical-state dependency is not yet closed: STATEBOUND-C4 was REVIEW_FAILED and GREENSTATE-C6 is AWAITING_REVIEW. COMMON_FIXED_CYCLIC_STATE therefore cannot yet be accepted in integrated ranking merely from C11.
+
+FINDING F-EGC-040-SOCBIND-C12-P1-001
+TITLE: owner trigger excludes material nondepletable greenfield initialization
+C11 I1 requires an owner when initial quantity is nonzero AND the state "can be net-depleted inside the comparison horizon." That antecedent is too narrow.
+COUNTEREXAMPLE:
+a greenfield working inventory/thermal heel has X0=100 state-MWh, is operationally constrained not to net-deplete below its working level, but physically requires commissioning input. With eta=0.9, 111.111111111 MWh input is causally required even though DEPLETABLE_WITHIN_HORIZON=FALSE. Under literal I1, mandatory-owner condition evaluates FALSE.
+IMPACT:
+real commissioning resource can disappear from FSRC/EROI while local C11 cardinality checks never run.
+REQUIRED_REPAIR:
+owner requirement must also trigger whenever the reviewed physical-state protocol marks a material initialization resource/opportunity effect, regardless of whether terminal net depletion is permitted. Add explicit PHYSICAL_INIT_FLOW_ID / INITIALIZATION_REQUIRED_BY_STATE_PROTOCOL interface to GREENSTATE-C6/C7.
+
+FINDING F-EGC-040-SOCBIND-C12-P1-002
+TITLE: local initial/terminal cardinality does not prove global causal-resource exact-once
+C11 enforces exactly one owner for each initial contribution and one terminal owner, but does not mechanically state a global uniqueness/allocation invariant across initial and terminal owner namespaces.
+COUNTEREXAMPLE:
+the same accepted ledger item R1 is referenced once as INITIAL_OWNER_ITEM_ID and once as TERMINAL_OWNER_ITEM_ID for two distinct timed physical effects. Local counts are 1 and 1, yet global use count of R1 is 2 while the resource ledger contains R1 only once.
+IMPACT:
+one causal resource line can appear to satisfy two physical obligations, or one composite can be allocated twice, without violating local owner counts.
+REQUIRED_REPAIR:
+add global CAUSAL_EFFECT_ID + RESOURCE_LEDGER_ITEM_ID + PHYSICAL_EFFECT_TIME usage table. A ledger item may map to multiple effects only via explicit quantity/fraction allocation that reconciles globally; initial/terminal namespaces participate in the same cardinality test. Distinct timed effects cannot share one atomic item without an accepted composite/allocation decomposition.
+
+FINDING F-EGC-040-SOCBIND-C12-P2-003
+TITLE: physical-protocol dependency must be version/status gated like FINPV
+COMMON_FIXED_CYCLIC_STATE already says independent physical protocol must verify it, but C11 has no explicit PHYSICAL_STATE_PROTOCOL_ID / DEPENDENCY_STATUS field analogous to FINPV_DEPENDENCY_STATUS.
+CURRENT FACT:
+C4 is REVIEW_FAILED; C6 is AWAITING_REVIEW.
+REQUIRED_REPAIR:
+add versioned physical-protocol FK/status; status != VERIFIED blocks cyclic exemption and integrated owner acceptance.
+
+PASS FINDINGS:
+- missing text-only owner/FK rejection: PASS.
+- upstream vs opportunity simultaneous owner rejection: PASS.
+- initial quantity/energy conversion bridge: PASS.
+- shared allocation reconciliation principle: PASS.
+- recursive predecessor unresolved/cycle BLOCKED rule: PASS.
+- explicit zero-valued accepted owner distinguished from missing owner: PASS.
+- dollars cannot satisfy physical quantity bridge: PASS.
+- terminal physical-time vs valuation-time separation: PASS.
+- FINPV dependency gate: PASS and upstream dependency now VERIFIED.
+- UNKNOWN blocks ranking: PASS.
+
+CLAIM_GRAPH:
+F-EGC-040-SOCDISC-C10-P1-001 stale FINPV dependency = CLOSED by verified C9/C10.
+F-EGC-040-SOCDISC-C10-P1-002 initial owner FK gap = PARTIALLY_REPAIRED; reopened by C12 P1-001/P1-002.
+INITIAL_INVENTORY_EXACT_ONCE = NOT_VERIFIED.
+TERMINAL_GLOBAL_EXACT_ONCE = NOT_VERIFIED.
+COMMON_LEDGER = NOT_VERIFIED.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C11-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006: EXECUTING -> REVIEW_FAILED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+REPAIR JOB:
+JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-GLOBALCARD-C13-20261006
+TITLE: Broaden initialization-owner trigger and enforce global causal-resource cardinality
+ROLE: Inventory/resource owner-schema repair architect
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: F-EGC-040-SOCBIND-C12-P1-001; F-EGC-040-SOCBIND-C12-P1-002; P2-003; FINPV C9/C10 VERIFIED; GREENSTATE-C6/C7 dependency explicit.
+REQUIRED_EVIDENCE:
+- nondepletable but materially initialized greenfield stock cannot pass ownerless;
+- global initial+terminal owner use cardinality;
+- shared item allocation sums/reconciles;
+- resource/effect physical dates cannot create future-borrowed initialization;
+- cyclic exemption gated by VERIFIED physical-state protocol;
+- prior C11 C01-C03 remain passing.
+FALSIFICATION_CONDITION:
+any material causal initialization has no accepted owner; one atomic ledger item satisfies two distinct causal effects without allocation; cyclic exemption consumes unverified state protocol; or future resource item owns earlier physical stock.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-GLOBALCARD-REV-C14-20261006
+STATUS: OPEN
+BLOCKERS: final integration also waits for distinct GREENSTATE-C7 review.
+NEXT_ACTION: distinct repair session claims C13; distinct reviewer C14 follows.
