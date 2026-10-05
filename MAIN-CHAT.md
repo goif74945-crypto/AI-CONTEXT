@@ -3701,3 +3701,257 @@ BRANCH_HEAD_AT_CLAIM: c687662b8697f1ae6755eb4430c9be653df6ac2f
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 983164490fe033b451985a84cb1b6d33b629efec
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+FRONTIER CANDIDATE FALSIFICATION SCREEN — JOB-EGC-048-FRONTIER-SCREEN-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-FRONTIER-C1
+PRIMARY_ROLE: Frontier Candidate Physics/Evidence Screener + Adversarial Techno-Economic Analyst
+PRIMARY_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-C1-20261006
+QUESTION: Which emerging/non-baseline energy candidates have enough real physical evidence and scale/cost plausibility to deserve deep integrated comparison, and which can be demoted or falsified before expensive whole-system modeling?
+CANDIDATE_SET: enhanced geothermal (EGS); fusion; advanced fission/microreactors; marine wave/tidal/current; industrial waste-heat-to-power; hybrid/source+storage systems.
+DEPENDENCIES: COMMON ACCOUNTING repair and R_STAR work remain independently active; baseline/objective/resource/safety/finance/EROI jobs are independently active. This job does not declare a final winner.
+TOOLS_USED: latest AI-CONTEXT GitHub state; Talarion/Acumen current-state scan; official DOE/NRC/NREL/NLR/EIA/ORNL sources; SEC filings; peer-reviewed/Stanford geothermal evidence; executed Python dual-formulation arithmetic.
+EVIDENCE_TARGET: separate MEASUREMENT/OPERATION from projection/target; identify candidate-killing scale or evidence gaps; promote only candidates with real physical evidence.
+FALSIFICATION_TARGET: reject any candidate promoted solely from press claims, modeled LCOE, scientific gain without net electric output, zero-power criticality without power conversion, resource potential without cost evidence, or recovered energy larger than its host waste stream.
+REVIEWER_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REV-C2-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+EVIDENCE-EGC-048-001
+CLAIM_ID: CLAIM-EGC-048-EGS-COMMERCIAL-PHYSICAL
+EVIDENCE_CLASS: EXTERNAL_FACT + OPERATIONAL_MEASUREMENT_CLAIM_FROM_OPERATOR
+SOURCE: Fervo Energy, "Fervo Energy Declares Commercial Operation at Cape Station Ahead of Schedule"
+SOURCE_DATE: 2026-10-01
+URL: https://ir.fervoenergy.com/news-releases/news-release-details/fervo-energy-declares-commercial-operation-cape-station-ahead
+METHOD: operator commercial-operation disclosure cross-checked against prior 2026-09-24 first-power release.
+OUTPUT:
+- Cape Station first GeoBlock reached contractual commercial operation.
+- Reported net power production = 33 MW, meeting PPA production threshold.
+- Phase I ~100 MW total; later units still commissioning at source date.
+LIMITATIONS:
+- operator disclosure, not an independent metered dataset.
+- no public full PPA price found in reviewed evidence.
+- one GeoBlock/early operation does not validate multi-decade reservoir decline, fleet reliability, or nationwide economics.
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED.
+
+EVIDENCE-EGC-048-002
+CLAIM_ID: CLAIM-EGC-048-EGS-CAPEX
+EVIDENCE_CLASS: EXTERNAL_FACT + CALCULATION
+SOURCE: Fervo Energy SEC Form S-1 / 424B4
+SOURCE_DATE: 2026-04/05
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026034849/fervoenergy-424b4.htm
+SOURCE_FACT:
+- Company estimated capital expenditure to construct one standardized 50-MW GeoBlock at approximately $7,000/kW as of 2025-12-31.
+- estimate described as inclusive of wellfield, surface facilities, and plant equipment.
+CALCULATION:
+50,000 kW * $7,000/kW = $350,000,000 implied per 50-MW GeoBlock.
+LIMITATIONS:
+- company estimate, not audited final all-in delivered-system cost.
+- financing, transmission, taxes/credits, replacements, and full whole-system reliability boundary are not proven included.
+- must not be equated to DOE OCC/LCOE targets without boundary reconciliation.
+REPLICATION_STATUS: arithmetic checked; independent session review still required.
+
+EVIDENCE-EGC-048-003
+CLAIM_ID: CLAIM-EGC-048-EGS-COST-TARGET
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_TARGET
+SOURCE: U.S. DOE Pathways to Commercial Liftoff: Next-Generation Geothermal Power
+SOURCE_DATE: 2025
+URL: https://www.energy.gov/sites/default/files/2025-07/LIFTOFF_DOE_Next-Generation-Geothermal%20Power.pdf
+OUTPUT:
+- DOE reported field-evidence-driven EGS OCC estimate reduction from about $27,800/kW (2021 base) to about $14,700/kW (2023 estimate).
+- modeled 2030 pathway: about $4,700-$5,000/kW OCC and unsubsidized LCOE $60-$70/MWh.
+- DOE Enhanced Geothermal Shot target: $45/MWh by 2035.
+LIMITATION: modeled/target values, not present Cape Station measured LCOE or delivered-system cost.
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED.
+
+EVIDENCE-EGC-048-004
+CLAIM_ID: CLAIM-EGC-048-EGS-SCALE
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_RESULT
+SOURCES:
+1) NREL Geothermal Resources and Technologies
+URL: https://www.nrel.gov/geothermal/technologies.html
+2) DOE Next-Generation Geothermal Liftoff report
+OUTPUT:
+- NREL modeling indicates U.S. geothermal capacity could reach ~90 GWe by 2050 under updated EGS assumptions.
+- DOE Liftoff describes ~5,500 GW next-generation geothermal resource potential versus roughly 4 GW current U.S. geothermal deployment in the report context.
+LIMITATION: resource potential != economically deployable capacity; 90-GW result is model-dependent.
+STATUS: SCALE_PLAUSIBLE_NOT_VALIDATED.
+
+EVIDENCE-EGC-048-005
+CLAIM_ID: CLAIM-EGC-048-EGS-RESERVOIR-RISK
+EVIDENCE_CLASS: EXTERNAL_FACT + MODEL_RESULT
+SOURCES:
+1) Stanford Geothermal Workshop Project Red analyses.
+2) Communications Engineering 2025 closed-loop/EGS comparison.
+URLS:
+https://pangea.stanford.edu/ERE/db/GeoConf/papers/SGW/2025/Ertas.pdf
+https://www.nature.com/articles/s44172-025-00458-7
+OUTPUT:
+- Project Red demonstrated commercial-scale flow and grid operation; published analyses use ~40-63 L/s circulation conditions.
+- some reservoir models project thermal-front/breakthrough behavior on multi-year timescales under simplified assumptions.
+- long-duration thermal decline and reservoir variability remain material to lifecycle economics.
+LIMITATION: model assumptions are site-specific and cannot be universalized.
+STATUS: OPEN_RISK; requires measured multi-year Cape/Red production history.
+
+CLAIM-EGC-048-EGS-SCREEN:
+TRUTH_CLASS: INFERENCE
+RESULT: PROMOTE_TO_DEEP_INTEGRATED_REVIEW / NOT_FINAL_WINNER.
+RATIONALE: among frontier candidates screened here, EGS has the strongest combination of real grid operation, current utility-scale commercial operation, large modeled resource, and an explicit cost-reduction pathway. However, current all-in delivered cost, long-duration reservoir performance, induced-seismicity/site limits, transmission, financing and replacement lifecycle remain unresolved.
+
+EVIDENCE-EGC-048-006
+CLAIM_ID: CLAIM-EGC-048-FUSION-STATUS
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: U.S. DOE Fusion Science & Technology Roadmap / Office of Fusion
+SOURCE_DATE: 2026-06-09
+URLS:
+https://www.energy.gov/articles/energy-department-releases-finalized-fusion-science-and-technology-roadmap-accelerate
+https://www.energy.gov/fusion/office-fusion
+OUTPUT:
+- DOE roadmap aims to enable U.S. fusion pilot/commercial power in the mid-2030s.
+- DOE still identifies critical gaps in structural materials, plasma-facing components, confinement systems, fuel cycle, blankets, and plant engineering/integration.
+- roadmap timing is contingent on future public-private partnerships and Congressional appropriations.
+INTERPRETATION:
+current roadmap is evidence of active development, not evidence of commercial net-electric cost/performance today.
+CLAIM-EGC-048-FUSION-SCREEN:
+TRUTH_CLASS: INFERENCE
+RESULT: DEFER_FROM_CURRENT_WINNER; RETAIN_LONG_HORIZON_RESEARCH.
+FALSIFICATION_OF_PREMATURE_CLAIM: scientific/plasma milestones cannot substitute for verified net delivered electricity, fleet CAPEX/OPEX, fuel-cycle closure, materials lifetime, or grid availability.
+
+EVIDENCE-EGC-048-007
+CLAIM_ID: CLAIM-EGC-048-ADVANCED-FISSION-STATUS
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCES:
+1) DOE Antares Mark-0 criticality release, 2026-06-04
+2) DOE NEPA Antares R1 Mark-0 experiment description
+3) DOE 2026 advanced-reactor criticality releases
+URLS:
+https://www.energy.gov/articles/department-energy-celebrates-first-advanced-reactor-criticality
+https://www.energy.gov/nepa/articles/cx-035340-antares-r1-mark-0-reactor-experiment
+https://www.energy.gov/articles/us-department-energy-meets-president-trumps-goal-delivers-third-advanced-reactor
+OUTPUT:
+- multiple advanced reactor designs achieved zero-power fueled criticality in 2026.
+- Mark-0 is explicitly a zero-power experiment and is not equipped with power-conversion or heat-removal systems.
+- therefore criticality demonstrates reactor-physics feasibility for that test, not net electricity, cost, efficiency, capacity factor or commercial reliability.
+RELATED_RESOURCE_CONSTRAINT:
+NRC confirms active HALEU licensing and fuel-fabrication/enrichment work; fuel-cycle scale remains a deployment dependency for many advanced designs.
+URL: https://www.nrc.gov/materials/new-fuels/haleu
+CLAIM-EGC-048-ADVANCED-FISSION-SCREEN:
+RESULT: RETAIN_FOR_DEEP_REVIEW / NOT_ELIGIBLE_AS_PROVEN_LOW-COST_FRONT_RUNNER_YET.
+TRUTH_CLASS: INFERENCE.
+
+EVIDENCE-EGC-048-008
+CLAIM_ID: CLAIM-EGC-048-MARINE-SCALE-COST
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_TARGET
+SOURCES:
+1) DOE Marine Energy Program
+URL: https://www.energy.gov/cmei/water/marine-energy-program
+2) DOE/WPTO historical cost targets (Powering the Blue Economy / MYPP)
+OUTPUT:
+- U.S. marine energy technical resource is described as equivalent to roughly 57% of 2019 U.S. electricity generation.
+- historical 2035 modeled cost goals were approximately $170/MWh wave and $110/MWh tidal/current, from much higher 2015 baselines.
+- DOE continues open-water testing/commercial-readiness R&D, indicating performance/reliability/cost validation remains active.
+LIMITATION:
+resource magnitude is not deployable economic generation; cost goals are modeled and older than current mission date.
+CLAIM-EGC-048-MARINE-SCREEN:
+RESULT: RETAIN_GEOGRAPHIC/NICHE_AND_DIVERSITY_VALUE; CURRENT_LOW-COST_GLOBAL_FRONT_RUNNER_NOT_VERIFIED.
+TRUTH_CLASS: INFERENCE.
+
+EVIDENCE-EGC-048-009
+CLAIM_ID: CLAIM-EGC-048-WASTE-HEAT-UPPER-BOUND
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+SOURCE: Oak Ridge National Laboratory, "High Performance Computing to Enable Next-generation Low-temperature Waste Heat Recovery"
+SOURCE_DATE: 2019
+URL: https://www.ornl.gov/publication/high-performance-computing-enable-next-generation-low-temperature-waste-heat-recovery
+SOURCE_FACT: cited U.S. manufacturing low-temperature waste heat ~= 900 trillion Btu/year.
+COMPARATOR_SOURCE: U.S. EIA 2025 utility-scale net electricity generation ~= 4,429 TWh.
+URL: https://www.eia.gov/energyexplained/electricity/electricity-in-the-us-generation-capacity-and-sales.php
+CALCULATION_A:
+900e12 Btu * 0.29307107 Wh/Btu / 1e12 Wh/TWh = 263.763963 TWh_th/year.
+CALCULATION_B:
+900e12 Btu * 1055.05585262 J/Btu / 3.6e15 J/TWh = 263.763963155 TWh_th/year.
+DUAL_FORMULATION_DIFFERENCE: 1.55e-7 TWh.
+IMPOSSIBLE_100_PERCENT_CONVERSION_UPPER_BOUND_SHARE:
+263.763963 / 4429 * 100 = 5.955384%.
+PHYSICS_RULE:
+actual electric output must be lower than the thermal-energy ceiling because conversion efficiency <100% and low-temperature heat has limited exergy.
+LIMITATION:
+this bounds only the cited low-temperature U.S. manufacturing waste-heat segment, not every waste-heat stream in all sectors.
+REPLICATION_STATUS: SAME_SESSION_DUAL_FORMULATION_PASS; INDEPENDENT_SESSION_REQUIRED.
+CLAIM-EGC-048-WASTE-HEAT-SCREEN:
+RESULT: FALSIFIED as a standalone source capable of replacing a massive share of national electricity for this quantified segment; RETAIN as efficiency/cogeneration supplement where site economics work.
+
+EVIDENCE-EGC-048-010
+CLAIM_ID: CLAIM-EGC-048-HYBRID
+EVIDENCE_CLASS: INFERENCE
+METHOD:
+hybrid/source+storage/grid configurations do not create primary energy; their value is in reducing delivered-system cost/reliability penalties through complementary profiles, storage sizing, curtailed-energy reuse, or shared network assets.
+RESULT: DO_NOT_SCREEN_BY_COMPONENT_LCOE. Must be tested under common chronological R_STAR and FSRC_ND whole-system boundary.
+STATUS: DEPENDENCY_ON_RSTAR_AND_COMMON_ACCOUNTING.
+
+ADVERSARIAL FINDINGS:
+P0: NONE established in this screen.
+P1-1: EGS current all-in delivered cost is NOT_VERIFIED. Commercial operation cannot be combined with DOE future target LCOE to claim current $45-$70/MWh.
+P1-2: EGS multi-decade reservoir thermal decline/replacement behavior is NOT_VERIFIED at Cape-scale.
+P1-3: fusion has no reviewed commercial net-electric plant evidence in this job; cannot be current winner.
+P1-4: advanced fission zero-power criticality cannot be counted as electric-generation evidence.
+P1-5: marine resource potential cannot substitute for actual utility-scale cost/reliability evidence.
+P1-6: waste heat must be bounded by host-process waste flow and conversion exergy; no standalone "free energy" accounting.
+
+CANDIDATE_STATE_UPDATE:
+- ENHANCED_GEOTHERMAL_EGS: PROMOTED_TO_DEEP_REVIEW; strongest frontier evidence in this screen; NOT_FINAL_WINNER.
+- FUSION: LONG_HORIZON_ONLY pending net-electric/commercial evidence.
+- ADVANCED_FISSION_MICROREACTORS: DEEP_REVIEW retained; commercial electricity/cost evidence pending.
+- MARINE_WAVE_TIDAL: GEOGRAPHIC/NICHE retained; broad low-cost winner NOT_VERIFIED.
+- LOW_TEMP_INDUSTRIAL_WASTE_HEAT: SUPPLEMENTAL_ONLY for quantified segment; standalone massive-source claim FALSIFIED.
+- HYBRID_SYSTEMS: RETAIN; requires common chronological system optimization.
+
+CLAIM_GRAPH:
+CLAIM-EGC-048-EGS-COMMERCIAL-PHYSICAL <- EVIDENCE-EGC-048-001.
+CLAIM-EGC-048-EGS-CAPEX <- EVIDENCE-EGC-048-002.
+CLAIM-EGC-048-EGS-COST-TARGET <- EVIDENCE-EGC-048-003.
+CLAIM-EGC-048-EGS-SCALE <- EVIDENCE-EGC-048-004.
+CLAIM-EGC-048-EGS-RESERVOIR-RISK <- EVIDENCE-EGC-048-005.
+CLAIM-EGC-048-FUSION-STATUS <- EVIDENCE-EGC-048-006.
+CLAIM-EGC-048-ADVANCED-FISSION-STATUS <- EVIDENCE-EGC-048-007.
+CLAIM-EGC-048-MARINE-SCALE-COST <- EVIDENCE-EGC-048-008.
+CLAIM-EGC-048-WASTE-HEAT-UPPER-BOUND <- EVIDENCE-EGC-048-009.
+CLAIM-EGC-048-HYBRID <- EVIDENCE-EGC-048-010.
+ALL -> JOB-EGC-048-FRONTIER-SCREEN-REV-C2-20261006 -> candidate states -> future SOLVED gate.
+
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REV-C2-20261006
+TITLE: Independent frontier-candidate screen replication and source-boundary audit
+ROLE: Independent adversarial reviewer / numerical replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does C1 correctly distinguish measured commercial operation from targets/models and correctly demote candidates whose evidence does not yet prove low-cost massive delivered electricity?
+CANDIDATE: EGS, fusion, advanced fission, marine, waste heat, hybrids.
+DEPENDENCIES: JOB-EGC-048-FRONTIER-SCREEN-C1-20261006 submitted.
+REQUIRED_INPUTS: all evidence records EGC-048-001..010.
+REQUIRED_TOOLS: independent primary-source retrieval; independent unit conversion; cross-source provenance; search for contradictory 2025-2026 commercial evidence.
+REQUIRED_EVIDENCE:
+- independently reproduce waste-heat upper bound;
+- independently verify Fervo 33-MW net COD and $7,000/kW company estimate/boundary;
+- search for current net-electric fusion evidence;
+- distinguish zero-power advanced-reactor criticality from electric operation;
+- update marine actual cost evidence if newer field data exists;
+- attack EGS resource/cost and long-duration reservoir assumptions.
+FALSIFICATION_CONDITION:
+FAIL C1 if any promoted/demoted state depends on mismatched system boundaries, outdated evidence contradicted by newer primary evidence, arithmetic error, or target/model values mislabeled as measurement.
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session claims this reviewer job and attempts to falsify C1.
+
+NEXT_HIGH_INFORMATION_GAIN:
+- independent review of this screen;
+- then measured EGS lifecycle/reservoir decline + induced seismicity + water/O&M/decommissioning if no other session already owns it;
+- advanced-fission first-saleable-MWh evidence and fuel-cycle boundary;
+- newer marine field actual-cost/reliability evidence;
+- fusion plant-level net-electric/recirculating-power/fuel-cycle/materials evidence.
+
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+MISSION_STATUS: CONTINUE_REQUIRED
