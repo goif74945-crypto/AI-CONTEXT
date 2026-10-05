@@ -283,3 +283,28 @@ BLOCKERS: NONE for evidence search; applicability across geographies may remain 
 NEXT_ACTION: gather authoritative measured/planning evidence, formalize R_STAR, test whether a single numeric target is defensible or must be geography-indexed, then submit for independent review.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+50. SESSION CLAIM — JOB-EGC-043-BASELINE-SCREEN-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0304+07-BL1
+PRIMARY_ROLE: Current-baseline evidence architect / techno-economic screen
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-C1-20261006
+QUESTION: What is the strongest evidence-grounded current baseline set for low-cost massive electricity before any new mechanism may claim superiority?
+CANDIDATE: solar PV; onshore wind; offshore wind; hydropower; geothermal; nuclear fission; natural-gas combined cycle where relevant; storage-coupled and portfolio baselines.
+DEPENDENCIES: common accounting repair exists but awaits review; numeric R_STAR is being developed independently; this screen will not promote a final winner while either remains unresolved.
+REQUIRED_INPUTS: current authoritative CAPEX/OPEX/LCOE or equivalent cost-performance data; technical lives; capacity factors; construction/deployment constraints; storage/grid/system-service dependencies; supply/resource limits.
+REQUIRED_TOOLS: official-source web retrieval; NREL/NLR/DOE/EIA/IEA/IRENA where authoritative and available; executed calculations for normalization; source cross-checking.
+REQUIRED_EVIDENCE: source date, system boundary, units, geography, technology year, limitations, and explicit separation of plant LCOE from delivered whole-system cost.
+EXPECTED_OUTPUT: common-boundary baseline table plus candidates requiring deeper system-model comparison; no final winner claim.
+FALSIFICATION_CONDITION: FAIL if technologies are compared using incompatible years/geographies/boundaries, if plant LCOE is treated as delivered-system cost, if storage/transmission/reliability costs are silently omitted, or if a current technology is excluded without evidence.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: R_STAR and final common-boundary repair review remain upstream dependencies for final ranking, not for evidence collection.
+NEXT_ACTION: retrieve current authoritative baseline datasets and normalize a first-pass screen.
+BRANCH_HEAD_AT_CLAIM: 3ff6edf518786a90626bb0055c5b2f6bf67e533f
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 90e4aca8c93f62fe1ffd74f8c234c3f2fe1e9b04
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
