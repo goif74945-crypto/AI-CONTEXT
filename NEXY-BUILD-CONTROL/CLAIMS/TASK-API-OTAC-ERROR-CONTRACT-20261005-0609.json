@@ -8,6 +8,10 @@
   "LEASE_ID": "LEASE-API-OTAC-ERROR-CONTRACT-20261005-0609",
   "LEASE_EPOCH": 1,
   "CLAIM_SEQUENCE": "20261005T0609-0800-chat-gpt56sol",
-  "STATUS": "CLAIMED",
-  "FINDING": "DOC-C request-otac error matrix declares 503 DEPENDENCY_FAILURE; middleware emits DEPENDENCY_UNHEALTHY for runtime-config/backend unavailability."
+  "STATUS": "SUSPENDED",
+  "FINDING": "DOC-C request-otac error matrix declares 503 DEPENDENCY_FAILURE; middleware emits DEPENDENCY_UNHEALTHY for runtime-config/backend unavailability.",
+  "SUSPEND_REASON": "V16-RC1.3 preactivation legacy-admission freeze and migration drain; no legacy mutation/integration authority may continue.",
+  "SUSPENDED_BY": "C-SOL-V16RC13-B11E0417-A5F26CF7",
+  "BOOTSTRAP_FENCE_STATE_VERSION": 2,
+  "LEGACY_AUTHORITY": "NONE"
 }
