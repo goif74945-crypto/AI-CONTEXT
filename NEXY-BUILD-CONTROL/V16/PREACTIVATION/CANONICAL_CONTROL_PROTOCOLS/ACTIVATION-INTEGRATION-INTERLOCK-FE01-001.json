@@ -1,0 +1,65 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_PREACTIVATION_CONTROL_BINDING_V1",
+  "BINDING_ID": "V16RC13-CANONICAL-ACTIVATION-INTEGRATION-INTERLOCK-FE01-001",
+  "BINDING_GENERATION": 1,
+  "STATUS": "CANONICALLY_BOUND_PREACTIVATION_CONTROL_PROTOCOL_PENDING_BINDING_REVIEW",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "BOOTSTRAP_FENCE_STATE_VERSION_BOUND": 6,
+  "LAW_TEXT_CHANGE": false,
+  "PRODUCT_MUTATION_AUTHORITY_GRANTED": false,
+  "TARGET_INTEGRATION_AUTHORITY_GRANTED": false,
+  "ATOMIC_ACTIVATION_AUTHORITY_GRANTED": false,
+  "WORK_ADMISSION_GATE_EFFECT": "NONE_REMAINS_READ_ONLY_PREACTIVATION",
+  "MUTATION_GATE_EFFECT": "NONE_REMAINS_CLOSED",
+  "INTEGRATION_GATE_EFFECT": "NONE_REMAINS_CLOSED",
+  "AFFECTED_FINDINGS": [
+    "FINDING-V16RC13-CONSTITUTION-ACTIVATION-ACTIVE-INTEGRATION-RACE-FE01",
+    "FINDING-V16RC13-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-3C632ADD"
+  ],
+  "BOUND_REPAIR": {
+    "REPAIR_ID": "V16RC13-ACTIVATION-INTEGRATION-INTERLOCK-FE01-V1",
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REPAIRS/ACTIVATION-INTEGRATION-INTERLOCK-FE01-V1.json",
+    "GIT_BLOB_SHA": "f3bab72141e6e4e15588ce6f183d648499aa9419"
+  },
+  "INDEPENDENT_STATIC_REVIEW": {
+    "REVIEW_ID": "REVIEW-C-SOL-20261005-V16RC13-SPEC-RACE-REVIEW-4A3A5E8D-FE01-ACTIVATION-INTERLOCK-V1",
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REVIEWS/9a/REVIEW-C-SOL-20261005-V16RC13-SPEC-RACE-REVIEW-4A3A5E8D-FE01-ACTIVATION-INTERLOCK-V1.json",
+    "GIT_BLOB_SHA": "4e1eb709e747b25784c0f381e81869688722d455",
+    "VERDICT": "PASS_FOR_DECLARED_INTERLOCK_SCOPE",
+    "FINDING_RESOLUTION_AUTHORIZED": false,
+    "RUNTIME_VERIFIED": false
+  },
+  "CANONICAL_PROTOCOL_RULES": {
+    "ACTIVATION_PRE_ENTRY": "CONSTITUTION_ACTIVATION and SPEC_ACTIVATION are ineligible to enter unless TRANSITION_KIND==NONE, ACTIVE_INTEGRATION==null and INTEGRATION_HEALTH==HEALTHY on the authoritative Mission Fence snapshot.",
+    "OLD_INTEGRATION_DRAIN": "Any old-generation integration or recovery state must reach a terminal reconciled outcome and ACTIVE_INTEGRATION must be cleared under the currently active law before activation entry.",
+    "REF_UPDATE_IN_PROGRESS": "Actual target HEAD must be reconciled using Git-truth recovery rules before activation may enter or install new identity; epoch invalidation does not cancel an already-issued external Git ref side effect.",
+    "ATOMIC_ENTRY_CAS": "Activation entry is one expected-STATE_VERSION Mission Fence CAS that revalidates transition/integration predicates and TARGET_HEAD_AT_INTENT, closes all three gates, increments ENGINEERING_EPOCH and MEMBERSHIP_EPOCH, and establishes the immutable active transition identity.",
+    "RESERVATION_INTERLOCK": "ACTIVE_INTEGRATION reservation requires TRANSITION_KIND==NONE and INTEGRATION_GATE==OPEN and must contend on the same Mission Fence STATE_VERSION CAS domain as activation entry.",
+    "TARGET_HEAD_CUTOVER": "Immediately before Constitution/Spec identity install, actual target HEAD must exactly equal TARGET_HEAD_AT_INTENT; ACTIVE_INTEGRATION must remain null, INTEGRATION_HEALTH healthy, and all three gates closed.",
+    "HEAD_MISMATCH": "Any target-head mismatch moves the transition fail-closed to reconciliation-required state; no new law/spec identity may be installed across unexplained Git movement.",
+    "USER_STOP_PREEMPTION": "USER_STOP remains preemptive over activation, drain, reconciliation, and identity installation while durable integration/Git/transition truth is preserved.",
+    "CRASH_RECOVERY": "Crash or ambiguous external state never permits inferred completion; resume from durable transition state with gates closed and reconcile actual Git truth.",
+    "TORTURE_TEST_OBLIGATION": "The repair's race/crash torture matrix is mandatory before either affected finding may become terminally resolved and before VERIFIED_GLOBAL_CODE_CLOSURE."
+  },
+  "CURRENT_INDEPENDENT_BLOCKERS": [
+    "Exact V16-RC1.3 law bytes/EFFECTIVE_CONSTITUTION_HASH are not yet canonically proven.",
+    "Bootstrap Fence remains BLOCKED v6 with mutation/integration gates CLOSED.",
+    "FINDING-V16RC13-PREACTIVATION-TARGET-MUTATION-DETECTED-4B508E13 remains open; actual target movement authority is unreconciled.",
+    "A fresh independent review of this canonical binding and exact Mission Fence transition composition is still required.",
+    "Runtime race/crash torture evidence does not yet exist."
+  ],
+  "PROHIBITED_INTERPRETATIONS": [
+    "This binding does not activate V16-RC1.3 or a new Spec.",
+    "This binding does not grant product mutation, worker integration, target-ref movement, rollback, or recovery authority.",
+    "This binding does not resolve either affected P0 finding.",
+    "This binding does not make stale product claims valid.",
+    "This binding does not permit mutation of NEXY.ai.",
+    "This binding does not convert static design review into runtime verification."
+  ],
+  "FINDING_DISPOSITION": "KEEP_BOTH_OPEN_UNTIL_INDEPENDENT_BINDING_REVIEW_AND_REQUIRED_RUNTIME_VERIFICATION",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
