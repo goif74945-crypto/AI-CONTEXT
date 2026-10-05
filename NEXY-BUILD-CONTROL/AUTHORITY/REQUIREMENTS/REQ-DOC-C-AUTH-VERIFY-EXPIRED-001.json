@@ -2,23 +2,40 @@
   "REQ_ID": "REQ-DOC-C-AUTH-VERIFY-EXPIRED-001",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "SPEC_PAGE": "UNAVAILABLE_IN_DOCX_EXTRACTION",
-  "SPEC_LINES": "10071-10105 (final DOC-C POST /api/auth/verify-otac route matrix; paragraph extraction)",
-  "SPEC_TEXT": "POST /api/auth/verify-otac verifies one-time code and creates session. Its canonical error matrix includes 401 AUTH_INVALID, 401 AUTH_EXPIRED, 403 DEVICE_MISMATCH, 409 OTAC_LOCKED, 409 SESSION_REVOKED.",
-  "AUTHORITY_CLASS": "DOC-C_BUILD_SPEC_FINAL",
+  "SPEC_LINES": "final DOC-C 9939-9950 (auth defaults including otac_ttl_ms=300000); 10081-10115 (POST /api/auth/verify-otac route and canonical errors)",
+  "SPEC_TEXT": "POST /api/auth/verify-otac verifies a one-time code and creates a session. Final DOC-C gives OTAC a finite TTL and declares 401 AUTH_EXPIRED in this route's canonical error surface. Final DOC-C does not explicitly state the exact predicate that maps to AUTH_EXPIRED.",
+  "AUTHORITY_CLASS": "DOC-C_DIRECT_ERROR_SURFACE_WITH_ENGINEERING_INFERENCE_TRIGGER_MAPPING",
   "EXPECTED_BEHAVIOR": [
-    "A submitted OTAC that existed for the email/device binding but is expired returns HTTP 401 with canonical ErrorCode AUTH_EXPIRED.",
-    "Invalid non-expired codes continue to return AUTH_INVALID unless another higher-specificity canonical error applies.",
-    "Expired and invalid outcomes remain auditable as AUTH_VERIFY_FAILED."
+    "POST /api/auth/verify-otac must have a reachable, deterministic 401 AUTH_EXPIRED outcome for an expiration condition consistent with the route and OTAC TTL.",
+    "Mapping a matching email/device OTAC whose TTL has elapsed to AUTH_EXPIRED is the leading engineering interpretation, not a verbatim final-DOC-C clause, and requires independent review before source mutation.",
+    "Invalid live codes remain AUTH_INVALID unless another higher-specificity canonical route error applies.",
+    "AUTH_VERIFY_FAILED audit evidence remains required for rejected verification attempts."
   ],
   "FORBIDDEN_BEHAVIOR": [
-    "Collapse an expired OTAC into NO_SESSION/AUTH_INVALID when expiry is observable from the fetched canonical OTAC records.",
-    "Change the expected error merely to match current implementation."
+    "Claim final DOC-C explicitly says 'expired OTAC => AUTH_EXPIRED'; it does not.",
+    "Leave AUTH_EXPIRED unreachable on POST /api/auth/verify-otac while claiming exact route conformance.",
+    "Use post-DOC-C paragraphs 10853-10860 as final-DOC-C build authority.",
+    "Change the expected error surface merely to match current implementation.",
+    "Weaken rejection of consumed, expired, mismatched, or locked credentials."
   ],
-  "AFFECTED_SYSTEMS": ["Auth API", "OTAC verification", "Auth contract tests", "Security audit evidence"],
-  "DEPENDENCIES": [],
-  "IMPLEMENTATION_PATHS": ["packages/api/auth.ts"],
-  "TEST_PATHS": ["tests/coverage/auth-decision-paths.test.ts", "tests/integration/auth/"],
+  "AFFECTED_SYSTEMS": [
+    "Auth API",
+    "OTAC verification",
+    "Auth contract tests",
+    "Security audit evidence"
+  ],
+  "DEPENDENCIES": [
+    "Independent review of the AUTH_EXPIRED trigger mapping"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "packages/api/auth.ts"
+  ],
+  "TEST_PATHS": [
+    "tests/coverage/auth-decision-paths.test.ts",
+    "tests/integration/auth/"
+  ],
   "STATUS": "MISMATCH",
-  "LAST_VERIFIED_SHA": null,
+  "STATUS_REASON": "The route declares AUTH_EXPIRED, but current handleVerifyOtac has no AUTH_EXPIRED response path. Exact expired-OTAC trigger mapping is an engineering inference supported by the route context and finite OTAC TTL, not explicit final-DOC-C prose.",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SOURCE_BASELINE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96"
 }
