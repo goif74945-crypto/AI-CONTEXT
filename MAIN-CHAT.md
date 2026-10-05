@@ -5878,3 +5878,216 @@ FALSIFICATION_TARGET: any path to free initial energy, asymmetric terminal inven
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+52. EGS EVIDENCE RESULT — JOB-EGC-044-EGS-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-EGS1
+PRIMARY_JOB_ID: JOB-EGC-044-EGS-C1-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-044-EGS-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE:
+Stimulation-based next-generation EGS is assessed here. Closed-loop geothermal is NOT generalized from these results and requires separate evidence.
+
+EVIDENCE_ID: TE-EGC-044-001
+CLAIM_ID: CLAIM-EGC-044-001-COMMERCIAL-PHYSICAL
+TOOL: web retrieval
+METHOD: current SEC-filed operating announcement cross-checked against company IR announcement
+DATE: 2026-10-06
+SOURCE: Fervo Energy SEC-filed press release
+SOURCE_DATE: 2026-10-01
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/exhibit991pressrelease10126.htm
+OUTPUT: First Cape Station GeoBlock declared contractual commercial operation on 2026-09-30 and reported 33 MW NET power, meeting its PPA production threshold; build+commission duration reported as 23 months.
+TRUTH_CLASS: SOURCE_FACT
+EVIDENCE_CLASS: COMPANY_REPORTED_OPERATIONAL / SEC-FILED
+UNCERTAINTY: no independent meter dataset retrieved in this job.
+LIMITATION: proves commercial operation at tens-of-MW block scale, not multi-GW durability or 30-year life.
+REPLICATION_STATUS: SOURCE_CROSS_CHECK_PASS / INDEPENDENT_PHYSICAL_REPLICATION_NOT_AVAILABLE.
+
+EVIDENCE_ID: TE-EGC-044-002
+CLAIM_ID: CLAIM-EGC-044-002-LONGER-OPERATION
+TOOL: web retrieval
+METHOD: retrieve public Project Red production update and adversarial secondary commentary
+SOURCE: Fervo Project Red operating update
+SOURCE_DATE: 2026-04-13
+URL: https://fervoenergy.com/enhanced-geothermal-has-been-proven-at-scale-heres-what-two-years-of-production-data-show/
+OUTPUT: company reports >614 production days, average gross ~2.1 MW, average net ~1.4 MW, average production temperature 347 F, circulation ~36 kg/s, zero downhole workovers/remediations/chemical treatments over that interval.
+TRUTH_CLASS: SOURCE_FACT
+EVIDENCE_CLASS: COMPANY_REPORTED_OPERATIONAL
+LIMITATION: not independently metered/peer-reviewed 614-day dataset in evidence retrieved here; Project Red was a pilot intentionally not production-optimized.
+REVIEW_STATUS: adversarial external commentary located and consistent with ~1.4 MW net but not upgraded to independent measurement.
+
+EVIDENCE_ID: CALC-EGC-044-001
+CLAIM_ID: CLAIM-EGC-044-003-PARASITICS
+TOOL: Python + independent container arithmetic
+METHOD: parasitic fraction=(P_gross-P_net)/P_gross using TE-EGC-044-002 averages.
+INPUTS: gross=2.1 MW; net=1.4 MW.
+OUTPUT: implied average parasitic load=0.7 MW=33.3333% of gross; net/gross=66.6667%.
+TRUTH_CLASS: CALCULATION
+ASSUMPTIONS: company-reported gross/net averages are accurate and comparable.
+REPLICATION_STATUS: SAME_SESSION_CROSS_TOOL_PASS; INDEPENDENT_SESSION_REQUIRED.
+CONCLUSION: parasitic consumption is material and cannot be omitted from net-energy/system-cost accounting.
+
+EVIDENCE_ID: TE-EGC-044-003
+CLAIM_ID: CLAIM-EGC-044-004-LIFETIME-WATER
+TOOL: official-source web retrieval
+SOURCE: Utah FORGE / DOE
+SOURCE_DATE: 2026-08-12 to 2026-08-17
+URL: https://utahforge.com/press-release-utah-forge-begins-extended-circulation/
+URL_2: https://www.energy.gov/hgeo/geothermal/articles/running-hot-keeping-cool-forge-embarks-extended-circulation-test
+OUTPUT: 2024 ~30-day circulation injected 420 gal/min, recovered nearly/more than 90% fluid, production ~370 F; 2026 extended circulation planned ~90-120 days specifically to resolve thermal decline, water loss, scaling/corrosion and long-term commercial viability.
+TRUTH_CLASS: SOURCE_FACT
+EVIDENCE_CLASS: FIELD_TEST
+LIMITATION: months-scale FORGE testing and ~614-day Project Red operation do not validate 30-year thermal sustainability.
+CONCLUSION: LONG_TERM_THERMAL_DRAWDOWN=NOT_VERIFIED; LONG_TERM_WATER_LOSS=NOT_VERIFIED.
+
+EVIDENCE_ID: TE-EGC-044-004
+CLAIM_ID: CLAIM-EGC-044-005-DRILLING
+TOOL: official-source web retrieval
+SOURCE: U.S. DOE FORGE
+URL: https://www.energy.gov/hgeo/geothermal/forge
+OUTPUT: DOE states geothermal drilling can comprise >=50% of project capital cost; FORGE reduced on-bottom drilling time at equivalent 6,000 ft from 440 h to 60 h across demonstrated wells.
+TRUTH_CLASS: SOURCE_FACT
+LIMITATION: on-bottom time is not total well cost; transferability to every depth/geology is not proven.
+CONCLUSION: physical learning curve exists, but full-project cost learning remains candidate/site dependent.
+
+EVIDENCE_ID: TE-EGC-044-005
+CLAIM_ID: CLAIM-EGC-044-006-CAPEX
+TOOL: SEC/company-primary source retrieval
+SOURCE: Fervo 2026 SEC prospectus and Q2 2026 results
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026034849/fervoenergy-424b4.htm
+URL_2: https://ir.fervoenergy.com/news-releases/news-release-details/fervo-energy-reports-second-quarter-2026-results
+OUTPUT:
+- approximate first Cape/GeoBlock installed capital estimate: 7,000 USD/kW as of 2025-12-31, including wellfield, surface facilities and plant equipment;
+- Phase II EXPECTED all-in cost: 5,500 USD/kW;
+- long-term company TARGET: 3,000 USD/kW.
+TRUTH_CLASS: SOURCE_FACT for reported estimate/target; NOT a measured final cost for Phase II or NOAK.
+LIMITATION: company cost claims are interested-party evidence; final audited project-level resource cost boundary remains unresolved.
+
+EVIDENCE_ID: CALC-EGC-044-002
+CLAIM_ID: CLAIM-EGC-044-007-CAPITAL-COST-FLOOR
+TOOL: Python + independent container arithmetic
+METHOD: CRF=r(1+r)^n/[(1+r)^n-1]; capital-only cost=CAPEX*CRF/(8.76*CF) USD/MWh.
+INPUTS: n=30 y; CF=0.90; real r=0.07.
+OUTPUT:
+- 7,000 USD/kW -> 71.5506 USD/MWh capital-only;
+- 5,500 USD/kW -> 56.2183 USD/MWh capital-only;
+- 3,000 USD/kW -> 30.6645 USD/MWh capital-only;
+- CAPEX required for capital-only 45 USD/MWh at same r,n,CF -> 4,402.48 USD/kW.
+SENSITIVITY:
+7,000 USD/kW capital-only at 30y:
+  r=5%, CF 0.85/0.90/0.95 -> 61.15/57.76/54.72 USD/MWh;
+  r=7% -> 75.76/71.55/67.78;
+  r=10% -> 99.73/94.19/89.23.
+5,500 USD/kW:
+  r=5%, CF 0.85/0.90/0.95 -> 48.05/45.38/42.99;
+  r=7% -> 59.53/56.22/53.26;
+  r=10% -> 78.36/74.00/70.11.
+3,000 USD/kW:
+  r=5% -> 26.21/24.75/23.45;
+  r=7% -> 32.47/30.66/29.05;
+  r=10% -> 42.74/40.37/38.24.
+TRUTH_CLASS: CALCULATION
+ASSUMPTIONS: equal real CAPEX boundary; no O&M, water, royalties, replacement/redrilling, decommissioning, exploration failure, transmission, taxes/subsidies, or grid services included.
+REPLICATION_STATUS: SAME_SESSION_CROSS_TOOL_PASS; INDEPENDENT_SESSION_REQUIRED.
+CONCLUSION: DOE 45 USD/MWh Shot is NOT achieved merely by present reported 7,000 or projected 5,500 USD/kW capital levels under this finance case.
+
+EVIDENCE_ID: SIM-EGC-044-001
+CLAIM_ID: CLAIM-EGC-044-008-INDEPENDENT-MODEL
+TOOL: public GEOPHIRES-X output retrieval
+SOURCE: National Laboratory of the Rockies / GEOPHIRES-X public repository
+SOURCE_DATE: simulation output 2026-02-27
+URL: https://github.com/NatLabRockies/GEOPHIRES-X/blob/main/tests/examples/Fervo_Project_Cape-5.out
+OUTPUT: 500-MWe Cape-modeled case reported average net 510.13 MW, total CAPEX 2,865.69 MUSD = 5,595 USD/kW, electricity breakeven 8.59 cents/kWh, 30-y project life, 90% CF, WACC 8.31%, 30% ITC, 56 production wells + 38 injection wells, and 3 modeled redrilling events; average O&M 135.11 MUSD/y including 89.10 MUSD/y modeled redrilling cost.
+TRUTH_CLASS: SIMULATION_RESULT
+LIMITATION: external simulation was not executed by this session; input file explicitly contains assumptions/calibrations and is not a forecast or measurement.
+CONCLUSION: independent public model is directionally consistent with an ~80-90 USD/MWh all-in economic level near 5.6k USD/kW, but cannot verify future Cape economics.
+
+EVIDENCE_ID: TE-EGC-044-006
+CLAIM_ID: CLAIM-EGC-044-009-RESOURCE-SCALE
+TOOL: USGS/DOE/IEA retrieval
+SOURCE: USGS 2025 Great Basin assessment; DOE 2026; IEA Future of Geothermal
+URL: https://www.usgs.gov/publications/enhanced-geothermal-systems-electric-resource-assessment-great-basin-southwestern
+URL_2: https://www.energy.gov/articles/energy-department-announces-1715-million-expand-us-geothermal-energy
+URL_3: https://www.iea.org/reports/the-future-of-geothermal-energy/executive-summary
+OUTPUT:
+- USGS provisional best estimate: 135 GWe from upper 6 km Great Basin IF sufficient technological advances/commercial-scale EGS application succeed;
+- DOE current analysis: potential for at least 300 GW reliable/flexible U.S. geothermal by 2050;
+- IEA conditional global pathway: up to ~800 GW geothermal by 2050 and almost 6,000 TWh/y if technology/cost improve.
+TRUTH_CLASS: SOURCE_FACT about assessments/projections
+LIMITATION: RESOURCE_POTENTIAL != DEPLOYED_CAPACITY != ECONOMICALLY_BANKABLE_CAPACITY.
+CALCULATION: 135 GW at assumed 90% CF -> 1,064.34 TWh/y; 300 GW -> 2,365.2 TWh/y.
+CONCLUSION: geological/resource scale can satisfy a "massive" order of magnitude condition, but deployment/manufacturing/permitting scale remains NOT_VERIFIED.
+
+EVIDENCE_ID: TE-EGC-044-007
+CLAIM_ID: CLAIM-EGC-044-010-SEISMICITY
+TOOL: peer-reviewed + current project monitoring retrieval
+SOURCE: Nature Communications Pohang studies; Fervo Cape monitoring
+URL: https://www.nature.com/articles/s41467-020-16408-0
+URL_2: https://www.nature.com/articles/s41467-021-26679-w
+URL_3: https://www.nature.com/articles/s43247-026-03268-7
+URL_4: https://fervoenergy.com/april-2026-insights-on-seismic-behavior-at-cape-station/
+OUTPUT:
+- peer-reviewed studies identify the 2017 Pohang Mw5.5 event as induced/likely triggered by EGS stimulation and document low-probability high-impact tail risk;
+- Cape company monitoring Nov 2025-Apr 2026 reports no red events, 36 yellow M2-M3 events, largest ML2.87, with six-hour operational pauses.
+TRUTH_CLASS: EXTERNAL_FACT for peer-reviewed Pohang evidence; SOURCE_FACT for Cape operator report.
+CONCLUSION: induced seismicity is a material site-specific safety constraint. Present Cape experience supports mitigation feasibility at that site but does NOT prove universal deployability/safety.
+
+MODEL_VALIDATION_AUDIT:
+- PHYSICS OF COMMERCIAL NET POWER: SUPPORTED at ~33 MW block scale by SEC-filed commercial operation.
+- LONGER PILOT OPERATION: SUPPORTED by >614-day company-reported Project Red data; independent raw-data validation NOT_VERIFIED.
+- 30-YEAR THERMAL LIFE: NOT_VERIFIED.
+- LONG-TERM WATER LOSS: NOT_VERIFIED.
+- PRESENT LOW-COST <=45 USD/MWh WHOLE-SYSTEM: NOT_VERIFIED / current capex arithmetic argues against present achievement under common 7%/90%/30y finance case.
+- MASSIVE RESOURCE POTENTIAL: SUPPORTED CONDITIONALLY by USGS/DOE/IEA assessments.
+- MASSIVE DEPLOYMENT RATE: NOT_VERIFIED.
+- INDUCED-SEISMICITY UNIVERSAL SAFETY: NOT_VERIFIED; historical P0/P1-class tail-risk precedent exists.
+- GRID/STORAGE ADVANTAGE: INFERENCE only; firm generation plausibly reduces storage requirement relative to weather-variable generation, but common R_STAR/system model is unresolved.
+- EROI/LIFECYCLE: UNKNOWN in this job.
+- FINAL DELIVERED-SYSTEM COST: BLOCKED by common accounting/R_STAR and long-term reservoir data.
+
+RED_TEAM VERDICT:
+EGS is NOT FALSIFIED. It has crossed the threshold from laboratory/pilot-only into commercial net generation at tens-of-MW module scale. However, the strongest defensible status is FRONT_RUNNER_CANDIDATE_PENDING_CRITICAL_VALIDATION, not winner. The primary unresolved variables capable of reversing mission conclusions are 30-year thermal drawdown, water make-up, redrilling/re-stimulation frequency, final Phase-II/NOAK capex, independent long-duration operational replication, induced-seismicity tail risk across geologies, and deployment rate.
+
+CLAIM_GRAPH:
+CLAIM-EGC-044-001 commercial net electricity -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-044-003 parasitics material -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-044-004 30y sustainability -> NOT_VERIFIED.
+CLAIM-EGC-044-006 present/projected CAPEX -> SOURCE_SUPPORTED_AS_ESTIMATE/TARGET.
+CLAIM-EGC-044-007 <=45 USD/MWh current whole-system -> NOT_VERIFIED.
+CLAIM-EGC-044-009 resource massive -> CONDITIONALLY_SUPPORTED / deployment UNKNOWN.
+CLAIM-EGC-044-010 universal safety -> NOT_VERIFIED.
+DEPENDENT FINAL EGS WINNER CLAIM -> OPEN / CANNOT PROMOTE.
+
+JOB_ID: JOB-EGC-044-EGS-REV-C2-20261006
+TITLE: Independent EGS evidence replication and adversarial review
+ROLE: Independent EGS reviewer / numerical replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do the EGS evidence classes and capital-cost conclusions survive independent replication, and does any omitted long-duration/safety/system-cost evidence invalidate FRONT_RUNNER_CANDIDATE_PENDING_CRITICAL_VALIDATION?
+CANDIDATE: stimulation-based EGS
+DEPENDENCIES: JOB-EGC-044-EGS-C1-20261006 submitted.
+REQUIRED_INPUTS: evidence records TE/CALC/SIM-EGC-044 above.
+REQUIRED_TOOLS: independent source retrieval; independent finance calculation; adversarial long-term reservoir/safety/resource analysis; preferably independent model execution or alternative model.
+REQUIRED_EVIDENCE: verify 33 MW net COD; replicate capital-only thresholds; audit Project Red duration and parasitics; test GEOPHIRES assumptions; search contrary cost/lifetime/seismicity evidence.
+EXPECTED_OUTPUT: VERIFIED / REVIEW_FAILED / REPAIR_REQUIRED with exact defects.
+FALSIFICATION_CONDITION: fail if physical/commercial output is overstated, capex/LCOE arithmetic is wrong, source classes are upgraded beyond provenance, 30-year sustainability is treated as measured, or scale/safety assumptions can reverse the candidate state.
+REVIEWER_JOB_ID: NONE; reviewer may create repair jobs.
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session independently reproduce and attack.
+
+STATUS_CHANGE:
+JOB-EGC-044-EGS-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+JOB-EGC-044-EGS-REV-C2-20261006: OPEN.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+BRANCH_HEAD_BEFORE_WRITE: 57f817ac4a2789e65c1d22e919f79784680709e3
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 04be6676dddf833024aaf056df40117d7a0bbcee
