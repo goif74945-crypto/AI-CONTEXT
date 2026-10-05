@@ -11461,3 +11461,29 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: f0a9e688369aa257df7710444c29958a02805380
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+75. NEW INTEGRATION JOB + CLAIM — JOB-EGC-070-INTEGRATED-MODEL-GATE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0640+07-INTMODEL1
+PRIMARY_ROLE: Integrated model interface / dependency-gate / regression-harness architect
+PRIMARY_JOB_ID: JOB-EGC-070-INTEGRATED-MODEL-GATE-C1-20261006
+QUESTION: Can reviewed subsystem methods be wired into one candidate-neutral integrated-model contract that mechanically blocks ranking whenever a ranking-critical upstream version/status is unresolved, stale or boundary-incompatible?
+CANDIDATE: ALL / integration layer only
+DEPENDENCIES: objective/versioning; R_STAR; physical energy/adequacy/storage-state ledgers; FSRC_ND/terminal/finance/inventory accounting; baseline optimizer; scale/resource/material/manufacturing/deployment; EROI/lifecycle; thermal/water; safety/regulatory; operational/model-validation evidence.
+DEPENDENCY_POLICY: contract construction may proceed while dependencies are pending, but numerical winner promotion is forbidden.
+REQUIRED_INPUTS: latest MAIN-CHAT.md status/version graph and reviewed equations/interfaces.
+REQUIRED_TOOLS: GitHub state; schema/version audit; algebra/unit checks; dependency graph tests; Python/Wolfram for regressions.
+REQUIRED_EVIDENCE: canonical interfaces/units; version/provenance foreign keys; hard dependency-status gate; common scenario/geography/time/service binding; exact-once owner mappings; stale/mismatch regressions; measurement-linked MODEL_VALIDATION state.
+EXPECTED_OUTPUT: INTEGRATED_MODEL_CONTRACT_V1 + dependency matrix + validation hierarchy + regression tests + reviewer job.
+FALSIFICATION_CONDITION: candidate ranks with critical UNKNOWN/REVIEW_FAILED/STALE dependency; candidates consume different objective/reliability/scenario versions; unit/delivery boundary mismatch is silent; causal item counts twice/zero; or simulation claims validation without measurement mapping.
+REVIEWER_JOB_ID: JOB-EGC-070-INTEGRATED-MODEL-GATE-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: numerical candidate ranking blocked by unresolved upstream nodes; integration contract executable.
+BRANCH_HEAD_AT_CLAIM: eb68c4d149a4a424e9d090f656dcb286e46f58ff
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 29ad66c637c9d73d481a0c29c020b1d01475eea8
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
