@@ -17,6 +17,9 @@
   ],
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_AUDIT_EVIDENCE",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Prove or disprove that legacy V11 mutation/integration authority issuance remains stably frozen after e406623c."
+  "STATUS": "SUPERSEDED",
+  "SUPERSEDED_BY_CLAIM_ID": "CLAIM-C-SOL-20261005-0922-0800-V16RC13-5D0EC9EE-FREEZE-STABILITY",
+  "SUPERSEDED_BY_COMMIT": "5eae6bbb3b8f516725526b9f598f5351fc4a9597",
+  "SUPERSESSION_REASON": "Concurrent earlier equivalent claim became visible after this claim was created. No exclusive work proceeds under this claim.",
+  "PURPOSE": "Preserve race evidence and prevent duplicate authority."
 }
