@@ -1,0 +1,28 @@
+{
+  "TASK_ID": "CTRL-V16RC13-CANONICAL-FINDING-UNIVERSE-CONTRACT-1A7C",
+  "CLAIM_ID": "CLAIM-C-SOL-20261005-1738Z-V16RC13-1A7C-FINDING-UNIVERSE-CONTRACT",
+  "SCOPE": "CONTROL_REPAIR_CANONICAL_FINDING_UNIVERSE_CONTRACT_ONLY",
+  "OWNER_CHAT": "C-SOL-20261005-1738Z-V16RC13-P0-SNAPSHOT-AUDIT-1A7C",
+  "MEMBERSHIP_ID": "PRE-5232bb19aab396089b674d37912486d9",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "AUTHORITY_BASIS": "V16-RC1.3 clauses [062]-[064] plus open finding F-V16RC13-CANONICAL-FINDING-UNIVERSE-OMISSION-31B7.",
+  "REQUIRED_OUTPUT": [
+    "deterministic canonical finding-universe discovery contract",
+    "normalization and identity rules",
+    "active-fence referenced finding inclusion rule",
+    "validation conditions for complete manifest generation"
+  ],
+  "EXPLICIT_NON_SCOPE": [
+    "regenerate existing P0 shards",
+    "classify findings as control-vs-product",
+    "change finding statuses",
+    "compute CONTROL_P0_SET_ROOT_HASH",
+    "mutate product source",
+    "integrate target"
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "ACTIVE"
+}
