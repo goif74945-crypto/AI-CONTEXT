@@ -1,0 +1,48 @@
+{
+  "FINDING_ID": "FINDING-VALIDATION-EXACT-HEAD-EXPERIMENTAL-ORACLE-001",
+  "REQ_ID": "CLOSURE-VALIDATION-SCOPE",
+  "FOUND_BY": "C-SOL-20261005-1924-V8",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SEVERITY": "P1",
+  "TYPE": [
+    "TEST_ORACLE_DEFECT",
+    "CLOSURE_EVIDENCE_DEFECT",
+    "SCOPE_ACCOUNTING_DEFECT"
+  ],
+  "STATUS": "REPRODUCED_BLOCKED",
+  "AUTHORITY_EVIDENCE": [
+    "Verified control-plane execution sets classify Phase-F sources and the exact experimental test set outside active canonical DOC-C execution.",
+    "Final DOC-C is the build authority; later experimental extensions are not promoted by active authority.",
+    "deploy.yml independently marks Phase-F experimental validation advisory and continue-on-error."
+  ],
+  "OBSERVED": [
+    ".github/workflows/exact-head-evidence.yml run_check marks any non-zero check as failed=1.",
+    "The same required-pass accumulator includes `npm run check:phase-f` and `npm run test:experimental`.",
+    "attestation overall_pass is rows.every(status === 0), so either experimental check failing makes overall_pass=false.",
+    "The workflow then exits non-zero if overall-status.txt is non-zero.",
+    "scripts/check-phase-f.ts explicitly validates packages/phase-f later-era modules; package.json test:experimental uses vitest.experimental.config.ts.",
+    "In deploy.yml the corresponding Phase-F experimental job is explicitly advisory with continue-on-error:true."
+  ],
+  "IMPACT": [
+    "Manual exact-SHA/fallback validation can report a canonical overall failure solely because excluded/advisory experimental scope fails.",
+    "Closure evidence can conflate experimental readiness with active DOC-C correctness."
+  ],
+  "EXPECTED": [
+    "Exact-head evidence must preserve raw experimental results without allowing excluded/advisory checks to determine canonical overall_pass or canonical run success unless active authority promotes them.",
+    "Required canonical checks and advisory experimental checks must be distinguishable in the attestation."
+  ],
+  "REPAIR_CONSTRAINTS": [
+    "Do not delete experimental checks or evidence.",
+    "Do not promote experimental scope into canonical DOC-C.",
+    "Mark phase-f-gate and test:experimental advisory for canonical overall-pass accounting, or derive required/advisory status from the verified execution-scope source.",
+    "Add executable validation proving an experimental-only failure does not falsify canonical overall_pass while a required-check failure still does.",
+    "No mutation to NEXY.ai."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001 prevents Constitution-compliant source repair.",
+  "CONTROL_HEAD_OBSERVED": "9ea48caa88c5451b4ae0a5354b905fa7fce2b540"
+}
