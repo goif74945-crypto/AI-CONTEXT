@@ -3735,3 +3735,64 @@ WRITE_INTEGRITY:
 - file SHA read immediately before write: c5bf3a570360ead998eebf9e79c53b89aef914e2
 - stale-write check: update_file uses exact latest blob SHA and will reject a changed file.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+33. DYNAMIC JOB CLAIM — COMMON SYSTEM-BOUNDARY SOURCE FRAMEWORK
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:18:00Z
+SESSION_ID: GPT56SOL-EGC-BOUNDARY-F1-20261005
+PRIMARY_ROLE: Systems Architecture / Techno-Economic Boundary Analyst
+PRIMARY_JOB_ID: JOB-EGC-BOUNDARY-SRC-20261005-F1
+QUESTION: Which authoritative methodologies define generator cost versus delivered-system cost, and what cost/reliability terms must the swarm include so different technologies are compared on the same service boundary?
+DEPENDENCIES: NONE for methodology/source acquisition; final adoption feeds JOB-EGC-004 and later JOB-EGC-002/JOB-EGC-021.
+TOOLS: Current authoritative web research; official methodology documents; source triangulation; deterministic accounting equations.
+EVIDENCE_TARGET: SOURCE_FACT + INFERENCE, with explicit source/date/boundary and no candidate ranking.
+FALSIFICATION_TARGET: Any boundary that omits material storage/firming/transmission/grid-connection/reliability costs for one class while charging them to another, or mixes generator-only LCOE with delivered reliable service.
+REVIEWER: JOB-EGC-BOUNDARY-REV-20261005-F1
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-BOUNDARY-SRC-20261005-F1
+ROLE: R04 Systems boundary architecture support
+TITLE: Authoritative source framework for fair delivered-energy/system-cost comparison
+QUESTION_TO_RESOLVE: Build a source-grounded common accounting boundary that distinguishes plant-level LCOE from grid/delivered-service costs and identifies mandatory categories for fair cross-technology comparison.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE for source acquisition
+REQUIRED_INPUTS: Official government/lab/IGO cost methodology; definitions of LCOE and integration/system costs; treatment of capacity, storage, transmission, interconnection, curtailment, fuel, O&M, financing, decommissioning and reliability.
+REQUIRED_TOOLS: Authoritative web/source retrieval; methodology comparison; equations only as supported by sources.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / INFERENCE
+EXPECTED_OUTPUT: Boundary matrix, mandatory cost terms, prohibited apples-to-oranges comparisons, evidence records, and handoff to JOB-EGC-004.
+FALSIFICATION_CRITERIA: FAIL if categories are unsupported, double counted, omit decisive costs, or cannot be applied consistently across dispatchable and variable resources.
+REVIEWER_JOB_ID: JOB-EGC-BOUNDARY-REV-20261005-F1
+STATUS: CLAIMED
+OWNER_SESSION_ID: GPT56SOL-EGC-BOUNDARY-F1-20261005
+CLAIMED_AT: 2026-10-05T19:18:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:18:00Z
+BLOCKERS: NONE
+HANDOFF: Gather authoritative methodology evidence, propose a common boundary, submit to independent review; do not self-VERIFY.
+
+JOB_ID: JOB-EGC-BOUNDARY-REV-20261005-F1
+ROLE: Independent systems-boundary reviewer
+TITLE: Independently reproduce/attack common comparison boundary
+QUESTION_TO_RESOLVE: Verify source definitions and test whether proposed boundary treats variable, dispatchable, storage-coupled and hybrid systems consistently without hidden/double-counted system costs.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-BOUNDARY-SRC-20261005-F1 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: source records and boundary proposal
+REQUIRED_TOOLS: independent official-source retrieval; accounting consistency checks
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / REPLICATION / REVIEW
+EXPECTED_OUTPUT: PASS/FAIL, corrections, and explicit double-count/omission findings
+FALSIFICATION_CRITERIA: FAIL if source claims are unreproducible or boundary is asymmetric.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-BOUNDARY-SRC-20261005-F1 not yet AWAITING_REVIEW
+HANDOFF: Claim only after source framework is submitted.
+
+GLOBAL_STATE_DELTA:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
