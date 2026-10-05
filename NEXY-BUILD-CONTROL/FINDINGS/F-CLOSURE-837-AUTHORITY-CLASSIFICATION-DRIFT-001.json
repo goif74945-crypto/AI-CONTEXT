@@ -1,0 +1,92 @@
+{
+  "FINDING_ID": "F-CLOSURE-837-AUTHORITY-CLASSIFICATION-DRIFT-001",
+  "RELATED_FINDINGS": [
+    "F-CLOSURE-REQ-DENOMINATOR-837-ROUTING-001",
+    "F-0DC2D7E4-02"
+  ],
+  "TYPE": [
+    "TEMPORAL_AUTHORITY_CLASSIFICATION_DEFECT",
+    "REQUIREMENT_DENOMINATOR_SCOPE_DRIFT",
+    "CLOSURE_EVIDENCE_DEFECT"
+  ],
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "MATRIX": {
+    "filename": "NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.xlsx",
+    "sha256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+    "rows": 837,
+    "verified_materialized_file_id": "file_00000000d31c8211b2166b6f645e3029"
+  },
+  "PRIMARY_AUTHORITY_FACTS": [
+    "FINAL VERDICT declares DOC-C as BUILD SPEC and states build obligation comes from DOC-C only.",
+    "Locked primary final DOC-C is raw DOCX paragraphs 9886..10499 and its last numbered section is §5.6.",
+    "Historical Execution Pack material before FINAL VERDICT is not automatically final DOC-C build authority."
+  ],
+  "OBSERVED_COUNTS": {
+    "CURRENT_GOVERNING_LAW": {
+      "rows": 12,
+      "source_region": "FINAL_VERDICT_DOC_B"
+    },
+    "CURRENT_BUILD": {
+      "rows": 547,
+      "pre_final_verdict_mislabeled_doc_c_build_spec": 465,
+      "within_final_doc_c": 82,
+      "post_final_doc_c": 0
+    },
+    "CURRENT_BUILD_SUPPLEMENT": {
+      "rows": 127,
+      "source_region": "POST_FINAL_DOC_C",
+      "authority_labels": {
+        "STORAGE LAW — MIGRATION-READY PACK": 78,
+        "STORAGE/AUTH HARDENING PACK": 49
+      }
+    },
+    "SUPPORTED_PRODUCT_DESIGN": {
+      "rows": 87,
+      "source_region": "POST_FINAL_DOC_C_DOC_D"
+    },
+    "DEPLOYMENT_EVIDENCE": {
+      "rows": 52,
+      "source_region": "POST_FINAL_DOC_C_DOC_E"
+    },
+    "EXCLUDED_CURRENT": {
+      "rows": 8,
+      "source_region": "FINAL_DOC_C"
+    },
+    "DEFERRED_FUTURE": {
+      "rows": 4,
+      "source_region": "PRE_FINAL_VERDICT"
+    }
+  },
+  "OBSERVED": [
+    "465 of the 547 rows currently classified CURRENT_BUILD have Source_Doc_Paragraph before FINAL VERDICT yet Authority='DOC-C BUILD SPEC'.",
+    "Only 82 CURRENT_BUILD rows are actually sourced from the locked final DOC-C range.",
+    "The 127 CURRENT_BUILD_SUPPLEMENT rows occur after final DOC-C and therefore are not direct DOC-C build obligations on location/label alone.",
+    "The 87 SUPPORTED_PRODUCT_DESIGN rows are DOC-D product-design rows and require explicit support mapping to final DOC-C rather than blanket promotion.",
+    "The 837-row workbook remains useful as exhaustive source enumeration, but its existing Build_Scope/Authority classification cannot be treated as active build truth without temporal-authority reconciliation."
+  ],
+  "IMPORTANT_NON_INFERENCE": [
+    "Do not reduce the exhaustive source denominator from 837 merely because many rows are historical/non-build.",
+    "Do not infer that all 465 pre-final rows are useless; some high-level capabilities may be independently supported by final DOC-C.",
+    "Do not automatically promote DOC-D or hardening-pack rows into required build scope from broad capability similarity."
+  ],
+  "REQUIRED_ACTION": [
+    "Preserve all 837 source rows and their anchors as the source-enumeration denominator.",
+    "Reclassify every row under FINAL VERDICT temporal authority before canonical REQ routing.",
+    "Treat pre-FINAL rows as historical/reverify unless independently rebound to a primary final-DOC-C clause.",
+    "Treat post-DOC-C hardening rows as non-required hardening unless active authority is proven.",
+    "Require explicit row-level DOC-C support mapping before a DOC-D row contributes to active build closure.",
+    "Keep DOC-E rows in deployment-evidence accounting, not as implementation proof.",
+    "Derive REQUIREMENTS_TOTAL/REMAINING_COUNT from the reclassified row map rather than the stale workbook Build_Scope column."
+  ],
+  "IMPACT": [
+    "F-CLOSURE-REQ-DENOMINATOR-837-ROUTING-001 must not route the workbook's stale authority labels verbatim.",
+    "Current mission requirement counts cannot be made closure-authoritative until row-level temporal reclassification exists.",
+    "CODE_CLOSURE_VERIFIED is blocked by incomplete active-requirement denominator evidence."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "CONTROL_MUTATION": "APPEND_ONLY_FINDING",
+  "BLOCKS_CODE_CLOSURE_VERIFIED": true
+}
