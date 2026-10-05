@@ -1,0 +1,37 @@
+{
+  "TASK_ID": "TASK-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001",
+  "CREATOR_CHAT": "C-V8-20261005-1737-SOL",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M07-AUTH",
+  "REQ_ID": "REQ-DOC-C-4-2-AUTH-LOGOUT-IDEMPOTENCY",
+  "FINDING_ID": "FINDING-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE_AND_ACTIVE_HOTSPOT",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/auth.ts",
+    "tests/integration/auth/logout.spec.ts"
+  ],
+  "HOTSPOT_CONFLICT": {
+    "active_task": "T-A91F3C62",
+    "overlapping_path": "packages/api/auth.ts",
+    "rule": "Do not claim writer ownership until the existing semantic writer releases or scope is reconciled."
+  },
+  "SEMANTIC_SCOPE": "Bind logout idempotency replay to the same authenticated principal/session and request semantics so unrelated audit evidence cannot suppress revocation. Preserve CSRF, device-binding, RBAC, revoke_all, audit event names, and fail-closed persistence behavior.",
+  "ACCEPTANCE_CRITERIA": [
+    "An unrelated principal/session cannot obtain idempotent replay success from another logout audit record.",
+    "A legitimate same-request same-principal retry remains safe and does not double-apply mutation.",
+    "revoke_all=false and revoke_all=true cannot alias as the same replay unless the exact request semantics match.",
+    "A 200 revoked=true response implies the requested server-side revocation was previously or currently applied to the same authenticated operation.",
+    "Add negative cross-principal/session/request-variant tests.",
+    "Run exact-candidate SHA auth integration/security tests and independent review after integration.",
+    "No mutation to NEXY.ai."
+  ],
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001",
+    "ACTIVE_AUTH_HOTSPOT_T-A91F3C62"
+  ],
+  "NEXT_ACTION": "After both blockers clear, refresh auth.ts/test blobs, claim one-writer scope, implement principal/request-bound idempotency evidence, execute targeted tests, security review, integrate and reverify."
+}
