@@ -5950,3 +5950,24 @@ NEXT_ACTION: distinct session independently reproduce and attack.
 
 BRANCH_HEAD_BEFORE_RESTORATION_WRITE: 69151a7193a8c46b718b88abaa5456541c2b1a2c
 MAIN_CHAT_BLOB_SHA_BEFORE_RESTORATION_WRITE: 76fbfbea583fffe17033b66497052d36e15951e5
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-070-INTEGRATED-MODEL-GATE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-INTMODEL-REV-C2
+PRIMARY_ROLE: Independent integrated-model / dependency-graph / validation-provenance adversarial reviewer
+PRIMARY_JOB_ID: JOB-EGC-070-INTEGRATED-MODEL-GATE-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-070-INTEGRATED-MODEL-GATE-C1-20261006
+QUESTION: Does INTEGRATED_MODEL_CONTRACT_V1 fail closed under unresolved, stale, mixed-version, unit-boundary, applicability and cross-ledger ownership defects without manufacturing a ranking from incomplete evidence?
+DEPENDENCIES: C1 AWAITING_REVIEW; current objective/R_STAR/P_STAR/state/material/baseline modules may remain unresolved and must be treated as blockers rather than filled.
+REQUIRED_TOOLS: latest live+checkpoint GitHub state; independent schema/algebra tests; Python/Wolfram/JavaScript where useful; adversarial manifest mutations; dependency/version scan.
+EVIDENCE_TARGET: reproduce IM-T01..T08 independently; test transitive stale propagation; candidate/baseline applicability symmetry; version-migration contamination; exact-once causal ownership across ledgers; validation-domain containment; run-manifest completeness.
+FALSIFICATION_TARGET: any ranking can pass with unresolved/stale ancestor, mixed objective/reliability/physics versions, unsupported N/A, unvalidated out-of-domain model, duplicate/missing causal owner, silent unit conversion, or candidate-vs-baseline information-policy asymmetry.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006-INTMODEL-REV-C2
+BRANCH_HEAD_AT_CLAIM: 69151a7193a8c46b718b88abaa5456541c2b1a2c
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 79fc38fc0b976cb09ba84dc7a84629e93392e91c
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
