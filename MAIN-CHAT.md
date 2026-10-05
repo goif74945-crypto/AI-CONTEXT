@@ -4712,3 +4712,341 @@ BLOCKERS: none for method/source review; final candidate adequacy remains upstre
 NEXT_ACTION: retrieve exact C5B equations/tests, independently reproduce, verify NERC/PJM sources, attack estimator/manifest semantics, issue PASS/FAIL/REPAIR.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+76. REPAIR RESULT — JOB-EGC-043-BASELINE-SCREEN-COMPLETE-C5-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0550+07-BLCOMP5
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-COMPLETE-C5-20261006
+ROLE: Strongest-current-baseline completeness architect / storage challenger registry analyst
+STATUS: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair strongest-current-storage-baseline completeness so a real current commercial/operating challenger cannot disappear merely because public common-boundary data are incomplete. Missing ranking-critical data must fail closed rather than silently make Li-ion/PSH the strongest baseline.
+
+SCOPE:
+- Does NOT compute final C_BASE_STAR.
+- Does NOT relabel vendor LCOS/PNNL LCOS as mission FSRC_ND.
+- Does NOT assert every storage family is service-compatible everywhere.
+- DOES instantiate STORAGE_CHALLENGER_REGISTRY_V1, maturity/procurement states, fail-closed completeness, and omission regressions.
+
+CLAIM_ID: CLAIM-EGC-043-BLCOMP-001
+TRUTH_CLASS: METHOD_DEFINITION
+TITLE: FROZEN_CURRENT_BASELINE_AND_ASSET_CLASS
+FREEZE_DATE: 2026-10-06
+
+B_DISCOVERED(g,y) includes storage/hybrid-storage families for which authoritative/primary evidence shows at least one of:
+1) grid-connected operation;
+2) current procurement/order/offtake/manufacturing pathway;
+3) authoritative mature-commercial status; or
+4) a material evidence gap preventing safe exclusion of a physically plausible challenger.
+
+ASSET_CLASSES:
+- NEW_BUILD_CURRENT: evidence supports procurement/deployment at freeze date.
+- INHERITED_EXISTING: already-built asset may enter a brownfield optimizer using remaining-life/remaining-cost accounting, but legacy operation alone does not establish current greenfield new-build eligibility.
+
+SERVICE_MATCH:
+Technology enters the optimizer only if it can satisfy the same frozen service/R_STAR vector under validated technology-specific physics. Short-duration, long-duration, fuel-assisted, site-constrained and multi-day systems are not interchangeable merely because all are called storage.
+
+CLAIM_ID: CLAIM-EGC-043-BLCOMP-002
+TRUTH_CLASS: METHOD_DEFINITION
+TITLE: FOUR_FAIL_CLOSED_REGISTRY_STATES
+
+REGISTRY_STATE is exactly one of:
+1. ELIGIBLE_QUANTIFIED: current/eligible asset; service/site/maturity matched; ranking-critical inputs have evidence-bounded values/ranges suitable for common accounting.
+2. INELIGIBLE_WITH_EVIDENCE: excluded only by recorded service/site/regulatory/fuel/boundary evidence with adequate source coverage.
+3. NOT_CURRENT_COMMERCIAL: evidence shows not a current new-build commercial challenger at freeze date; legacy installed assets can remain INHERITED_EXISTING.
+4. DATA_GAP_MATERIAL: current/plausibly current and potentially service-compatible, but ranking-critical maturity/performance/cost/site/lifecycle evidence is missing, stale, projection-only, vendor-only without adequate corroboration, or not portable to target scale/geography.
+
+FAIL-CLOSED RULE:
+Let E={ELIGIBLE_QUANTIFIED service/site-matched technologies}; D={DATA_GAP_MATERIAL challengers not physically/site falsified}.
+C_KNOWN_STAR=min_{e in E} FSRC_ND(e).
+For d in D, S_d is its evidence-supported allowed completion set and L_d=inf_{s in S_d} FSRC_ND(d,s), if a defensible finite lower bound exists, otherwise UNKNOWN.
+BASELINE_COMPLETENESS can be VERIFIED only if every d is independently ineligible for frozen service/site OR has known L_d >= C_KNOWN_STAR on the same accounting boundary.
+If any plausible d has L_d<C_KNOWN_STAR or L_d=UNKNOWN: BASELINE_COMPLETENESS=NOT_VERIFIED; C_BASE_STAR is not a verified single point; G22=NOT_VERIFIED.
+No favorable/unfavorable point estimate may be invented to force a decision.
+
+======================================================================
+STORAGE_CHALLENGER_REGISTRY_V1 — VERSION 2026-10-06
+======================================================================
+TRUTH_CLASS: SOURCE_FACT + METHOD_CLASSIFICATION
+NOTE: discovery/maturity classification only; final FSRC_ND remains downstream.
+
+REG-01 LI-ION LFP/NMC
+STATUS: CURRENT_MATURE_GRID_SCALE.
+SOURCE: PNNL ESGC Cost & Performance Database.
+URL: https://www.pnnl.gov/projects/esgc-cost-performance/lithium-ion-battery
+REGISTRY_STATE: ELIGIBLE_QUANTIFIED when frozen duration/service/site and common lifecycle/accounting are applied. Detailed BESS parameters remain owned by parent baseline work.
+
+REG-02 PUMPED STORAGE HYDROPOWER
+STATUS: CURRENT_MATURE_LONG_DURATION / SITE_CONSTRAINED.
+SOURCE: U.S. DOE PSH.
+URL: https://www.energy.gov/cmei/water/how-pumped-storage-hydropower-works
+SOURCE_FACT: about 22 GW/550 GWh U.S. fleet; DOE describes PSH as well-established/dominant commercialized LDES.
+REGISTRY_STATE: ELIGIBLE_QUANTIFIED only with positive target-geography site evidence; INELIGIBLE_WITH_EVIDENCE only after coverage-complete local exclusion; otherwise DATA_GAP_MATERIAL.
+GUARD: U.S. site evidence cannot decide non-U.S. eligibility.
+
+REG-03 LEAD-ACID
+STATUS: CURRENT_MATURE BATTERY FAMILY.
+SOURCE: PNNL Lead Acid Battery.
+URL: https://www.pnnl.gov/projects/esgc-cost-performance/lead-acid-battery
+SOURCE_FACT: PNNL treats lead-acid as mature relative to VRFB and suited to larger-power applications.
+REGISTRY_STATE: ELIGIBLE_QUANTIFIED only where service/duration/cycling match; otherwise evidence-based exclusion or DATA_GAP, never omitted by fashion.
+
+REG-04 VANADIUM REDOX FLOW BATTERY
+STATUS: CURRENT_COMMERCIAL_EARLY / OPERATING + NEW PROCUREMENT.
+SOURCE_A: Sumitomo Electric, 28 Apr 2026.
+URL: https://sumitomoelectric.com/press/2026/04/prs015
+SOURCE_FACT_A: new 11 MW/33 MWh system selected; 20-year LTSA/decommissioning; 15 MW/60 MWh system operating since 2015 continues commercial operation; 17 MW/51 MWh operating since 2022.
+SOURCE_B: PNNL VRFB.
+URL: https://www.pnnl.gov/projects/esgc-cost-performance/vanadium-redox-flow-battery
+SOURCE_FACT_B: early commercialization relative to Li-ion/lead-acid; modeled cost/performance available.
+REGISTRY_STATE: DATA_GAP_MATERIAL pending target common-boundary FSRC_ND closure. It is a real challenger and must remain visible.
+
+REG-05 ZINC-BASED / EOS ZINC-BROMINE Z3
+STATUS: CURRENT_COMMERCIAL_EARLY / COMMERCIAL PRODUCTION + FIRM ORDERS.
+SOURCE_A: U.S. DOE LPO Eos.
+URL: https://www.energy.gov/edf/eos
+SOURCE_FACT_A: Eos already manufactures zinc-bromine batteries; DOE financed utility/industrial manufacturing expansion.
+SOURCE_B: Eos 18 Jun 2026 Redbird PO.
+URL: https://investors.eose.com/news-releases/news-release-details/eos-energy-enterprises-announces-first-purchase-order-under
+SOURCE_FACT_B: 100 MW/400 MWh Redbird purchase order under 2 GWh reservation.
+SOURCE_C: Eos commercial production June 2026.
+URL: https://investors.eose.com/news-releases/news-release-details/eos-energy-enterprises-launches-commercial-production-second
+SOURCE_FACT_C: second commercial production line launched; 4 GWh/y end-2026 capacity target.
+SOURCE_D: PNNL Zinc.
+URL: https://www.pnnl.gov/projects/esgc-cost-performance/zinc
+SOURCE_SCOPE_D: developer-heavy/projection data; PNNL limits zinc study to 10 MW because most manufacturers had not deployed >10 MW systems.
+REGISTRY_STATE: DATA_GAP_MATERIAL at mission scale. Current production/orders prevent NOT_CURRENT_COMMERCIAL; older limited deployment prevents universal scale closure.
+
+REG-06 CONVENTIONAL DIABATIC CAES / HUNTORF
+STATUS: CURRENT_OPERATING_LEGACY / FUEL-ASSISTED.
+SOURCE: Uniper Huntorf.
+URL: https://www.uniper.energy/about-uniper/projects/energy-transformation-hub-northwest
+SOURCE_FACT: 321 MW; compressed air is discharged with natural gas combustion.
+REGISTRY_STATE: INELIGIBLE_WITH_EVIDENCE for zero-fuel electricity-in/electricity-out service; otherwise evaluate as HYBRID_STORAGE_PLUS_FUEL with gas, emissions, fuel infrastructure and losses fully inside boundary. Legacy asset can enter inherited geography.
+
+REG-07 ADVANCED FUEL-FREE CAES / HYDROSTOR
+STATUS: CURRENT_COMMERCIAL_REFERENCE_AT_SMALL_SCALE / LARGE PROJECTS LATE-STAGE.
+SOURCE: Hydrostor Goderich.
+URL: https://hydrostor.ca/project/the-goderich-a-caes-facility/
+SOURCE_FACT: commercially contracted to Ontario IESO; in service since 2019; 1.75 MW discharge, 2.2 MW charge, >10 MWh storage, contracted 7 MWh; fuel-free.
+SOURCE_2: https://hydrostor.ca/
+SOURCE_FACT_2: 200-500 MW 8+ hour projects are late-stage/development rather than an operating fleet.
+REGISTRY_STATE: DATA_GAP_MATERIAL at hundreds-MW mission scale. One operating 1.75 MW facility proves reality, not fleet-scale cost/delivery.
+
+REG-08 CO2 THERMOMECHANICAL BATTERY / ENERGY DOME
+STATUS: CURRENT_COMMERCIAL_EARLY / FULL-SCALE COMMERCIAL OPERATION + NEW CONTRACTS.
+SOURCE_A: Energy Dome, 21 Nov 2025 Ottana update.
+URL: https://energydome.com/energy-dome-shines-at-the-2025-energy-storage-awards/
+SOURCE_FACT_A: 20 MW/200 MWh Ottana asset described as grid-connected and in commercial operation; company reports 10 h and 75% RTE.
+SOURCE_B: Energy Dome/Google Ireland, 23 Jun 2026.
+URL: https://energydome.com/google-and-energy-dome-advance-multi-continent-energy-storage-buildout-with-first-bilateral-project-in-ireland/
+SOURCE_FACT_B: 23 MW/200 MWh bilateral commercial contract.
+SOURCE_C: Alliant Columbia.
+URL: https://www.alliantenergy.com/our-energy/energy-storage/columbia
+SOURCE_FACT_C: 20 MW/200 MWh U.S. project construction 2026, completion expected end-2027.
+REGISTRY_STATE: DATA_GAP_MATERIAL pending independently closed/common-boundary long-run cost, availability, O&M, decommissioning and scale transfer. Vendor/operator RTE is source fact, not independent certification of mission economics.
+
+REG-09 GRAVITY BLOCK STORAGE / ENERGY VAULT EVx
+STATUS: CURRENT_EARLY_COMMERCIAL / COMMISSIONED FIRST-OF-KIND.
+SOURCE_A: Energy Vault Rudong.
+URL: https://www.energyvault.com/projects/rudong
+SOURCE_FACT_A: 25 MW/100 MWh 4-hour system grid-interconnected, tested/commissioned; vendor describes first commercial-scale non-PSH gravity deployment.
+SOURCE_B: 7 May 2024 commissioning release.
+URL: https://investors.energyvault.com/news/news-details/2024/Energy-Vault-Announces-Successful-Testing-and-Commissioning-of-First-EVx-100-MWh-Gravity-Energy-Storage-System-by-China-Tianying-Extension-of-Atlas-Renewable-Licensing-Agreement-to-15-Years-5e8837c40/default.aspx
+SOURCE_C: PNNL Gravitational.
+URL: https://www.pnnl.gov/projects/esgc-cost-performance/gravitational
+SOURCE_SCOPE_C: v2024 page says gravity values remain 2021 estimates.
+REGISTRY_STATE: DATA_GAP_MATERIAL. Commissioning proves a physical challenger; stale/model estimates and limited fleet evidence do not verify mission-scale economics.
+
+REG-10 IRON-AIR / FORM ENERGY
+STATUS: CURRENT_COMMERCIALIZATION / CONTRACTED BACKLOG / FIRST UTILITY COMMERCIAL DEPLOYMENT NOT YET COD AT FREEZE.
+SOURCE_A: Great River Energy 2026-2040 IRP.
+URL: https://greatriverenergy.com/wp-content/uploads/2026/05/2026-2040-GRE-IRP-FINAL-4-24-2026.pdf
+SOURCE_FACT_A: 1.5 MW/150 MWh Cambridge structures/BOP substantially complete; GRE anticipated commercial operation by end-2026 and planned model updates after verified results.
+SOURCE_B: Form Energy About 2026.
+URL: https://formenergy.com/about/
+SOURCE_FACT_B: company states ~800 MW/80 GWh under agreement and expanded manufacturing/testing.
+SOURCE_C: Form/FuturEnergy Ireland 17 Mar 2026.
+URL: https://formenergy.com/form-energy-and-futurenergy-ireland-announce-agreement-to-deploy-first-iron-air-battery-storage-project-in-ireland/
+SOURCE_FACT_C: 10 MW/1,000 MWh project anticipated online 2029.
+REGISTRY_STATE: DATA_GAP_MATERIAL. Commercial contracts/manufacturing mean it cannot silently disappear; no completed GRE utility COD at freeze means seasonal field performance/economics remain NOT_VERIFIED.
+
+REG-11 SODIUM-SULFUR / NGK NAS
+STATUS: OPERATING_LEGACY_FLEET BUT NEW MANUFACTURING/SALES DISCONTINUED.
+SOURCE: NGK 31 Oct 2025 notice.
+URL: https://www.ngk-insulators.com/en/news/2025/20251031_1.pdf
+SOURCE_FACT: NAS commercialized globally in 2002; NGK describes it as proprietary product manufactured exclusively by the company; board resolved to discontinue manufacturing/sales and cease accepting new orders.
+REGISTRY_STATE: NOT_CURRENT_COMMERCIAL for documented NEW_BUILD_CURRENT NGK route at freeze; existing local assets remain INHERITED_EXISTING. Reopen if independently evidenced alternative current NAS new-build route is found.
+
+REG-12 SODIUM-ION
+STATUS: MATURITY/GEOGRAPHY UNCERTAIN FOR MISSION GRID BASELINE.
+SOURCE: PNNL current sodium-ion/SAGES research.
+URL: https://www.pnnl.gov/news-media/grid-storage-launchpad-celebrates-first-year-operations
+SOURCE_FACT: PNNL describes sodium-ion as moving through demonstration/validation toward commercial applications and notes remaining performance/lifetime commercialization work.
+REGISTRY_STATE: DATA_GAP_MATERIAL, not universal NOT_CURRENT_COMMERCIAL. U.S. lab evidence cannot prove absence in all global geographies.
+
+REG-13 LIQUID AIR ENERGY STORAGE / HIGHVIEW
+STATUS: FIRST LARGE COMMERCIAL-SCALE PLANT UNDER CONSTRUCTION; STORAGE COD NOT VERIFIED AT FREEZE.
+SOURCE_A: Highview Carrington groundbreaking 21 Nov 2025.
+URL: https://highviewpower.com/news-announcements/mayor-of-greater-manchester-andy-burnham-officially-breaks-ground-on-highviews-pioneering-liquid-air-energy-storage-facility-in-carrington-manchester/
+SOURCE_FACT_A: 50 MW/300 MWh six-hour plant under construction.
+SOURCE_B: Highview 2026 Hunterston update.
+URL: https://highviewpower.com/news-announcements/highview-surpasses-half-a-billion-pounds-of-funding-with-latest-130m-capital-raise-for-phase-one-of-long-duration-energy-storage-facility-at-hunterston-ayrshire/
+SOURCE_FACT_B: stability-island phase expected 2026; Carrington LAES storage expected operational 2027 in current update.
+SOURCE_C: PNNL Thermal.
+URL: https://www.pnnl.gov/projects/esgc-cost-performance/thermal
+REGISTRY_STATE: DATA_GAP_MATERIAL / not yet operating at required large scale. Do not relabel stability-island operation as storage-block COD.
+
+REG-14 THERMAL / PUMPED-HEAT / SENSIBLE-HEAT ELECTRICITY STORAGE
+STATUS: TECHNOLOGY-SPECIFIC MIXED MATURITY.
+SOURCE: PNNL Thermal.
+URL: https://www.pnnl.gov/projects/esgc-cost-performance/thermal
+SOURCE_FACT: PNNL models materially different AC-in/AC-out PHES/sensible/LAES pathways and notes hybrid fuel cases; list is not exhaustive.
+REGISTRY_STATE: DATA_GAP_MATERIAL unless a specific design has current operating/procurement and common-boundary evidence. Family-level modeling cannot universalize maturity.
+
+REG-15 BIDIRECTIONAL HYDROGEN ELECTRICITY STORAGE
+STATUS: MODELLED/DEVELOPING; CURRENT COMMON-BOUNDARY COST VINTAGE STALE IN PNNL DB.
+SOURCE: PNNL ESGC database/LCOS.
+URL: https://www.pnnl.gov/projects/esgc-cost-performance
+URL_2: https://www.pnnl.gov/projects/esgc-cost-performance/lcos-estimates
+SOURCE_FACT: hydrogen and gravity values remain 2021 estimates in v2024 because not updated.
+REGISTRY_STATE: DATA_GAP_MATERIAL until target-geography current commercial electrolyzer-storage-fuel-cell procurement plus full storage/site/fuel-cycle evidence is established.
+
+REG-16 FLYWHEEL / SUPERCAPACITOR / OTHER POWER-ORIENTED STORAGE
+STATUS: SERVICE_DEPENDENT DISCOVERY CLASS.
+REGISTRY_STATE: DATA_GAP_MATERIAL until R_STAR/service vector is frozen; then technologies physically incapable of required duration become INELIGIBLE_WITH_EVIDENCE. Excellent power response is not multi-hour energy adequacy.
+
+REG-17 IRON FLOW / ESS
+STATUS: CURRENT COMMERCIALIZATION / UTILITY CONTRACT PATH.
+SOURCE: ESS/Salt River Project.
+URL: https://essinc.com/ess-and-srp-announce-50-mwh-storage-project/
+URL_2: https://essinc.com/ess-joins-srp-and-google-energy-storage-collaboration/
+SOURCE_FACT: 5 MW/50 MWh Energy Base project under ten-year storage agreement; described as utility-scale platform/commercial validation milestone.
+REGISTRY_STATE: DATA_GAP_MATERIAL pending operating performance and common-boundary cost/life evidence at mission scale.
+
+======================================================================
+COMMON COST-DATA SCOPE LOCK
+======================================================================
+EVIDENCE_ID: EGC-043-BLCOMP-E01
+TRUTH_CLASS: SOURCE_FACT
+SOURCE: PNNL ESGC Cost and Performance Database v2024 / LCOS.
+URL: https://www.pnnl.gov/projects/esgc-cost-performance
+URL_2: https://www.pnnl.gov/projects/esgc-cost-performance/lcos-estimates
+VERIFIED:
+- current database evaluates Li-ion, VRFB, lead-acid, zinc, hydrogen, PSH, gravity, CAES, thermal;
+- almost all v2024 LCOS capital/O&M/performance inputs represent 2023 values;
+- gravity/hydrogen remain 2021 estimates;
+- LCOS analysis assumes 20 years;
+- decommissioning is excluded from shown LCOS due data-availability differences;
+- augmentation/replacement/major-overhaul schedules are inputs.
+BOUNDARY: PNNL provides valuable common technical/cost evidence but its LCOS != mission FSRC_ND. Mission still owns finance, charging-energy, grid/transmission, reliability, terminal value, decommissioning, site/geography.
+
+CLAIM_ID: CLAIM-EGC-043-BLCOMP-003
+TRUTH_CLASS: METHOD_DEFINITION
+TITLE: FAIL_CLOSED_OPTIMIZER_SEMANTICS
+E={ELIGIBLE_QUANTIFIED and service/site matched}; D={DATA_GAP_MATERIAL and not service/site falsified}.
+C_KNOWN_STAR=min_{t in E} FSRC_ND_t.
+For d in D, S_d=evidence-supported allowed completion set; L_d=inf_{s in S_d} FSRC_ND_d(s), or UNKNOWN if no defensible finite bound.
+BASELINE_COMPLETENESS=VERIFIED only if every d is independently ineligible OR known L_d>=C_KNOWN_STAR.
+If any plausible d has L_d<C_KNOWN_STAR or UNKNOWN -> BASELINE_COMPLETENESS=NOT_VERIFIED.
+For mission candidate<=0.90*C_BASE_STAR, uncertain baseline set must be tested against the LOWEST plausible baseline cost because strongest competitor is cheapest. Unknown lower bound -> relative-cost PASS NOT_VERIFIED.
+This composes with allowed-joint-state uncertainty; no invented independence is permitted.
+
+======================================================================
+REGRESSION TESTS
+======================================================================
+CALC_ID: CALC-EGC-043-BLCOMP-001
+TRUTH_CLASS: CALCULATION / SYNTHETIC REGRESSION
+TOOL: Wolfram Language
+INPUT: incumbent baseline=70 USD/MWh; DATA_GAP challenger interval=55-90; candidate=60; gate candidate/baseline<=0.90.
+OUTPUT:
+- omission: 60/70=0.8571428571 -> PASS;
+- challenger=55: 60/55=1.090909091 -> FAIL;
+- omission overstates comparator cost versus 55 by 27.2727%.
+VERDICT: PASS. Missing challenger can reverse qualification; silent omission is ranking-critical.
+
+TEST_ID: REG-EGC-043-BLCOMP-002 LEGACY_OPERATION_IS_NOT_NEW_BUILD_PROCUREMENT
+CASE: 321 MW Huntorf operates but uses natural gas; legacy operation alone cannot establish same-boundary current greenfield zero-fuel offer.
+EXPECTED: inherited asset allowed where applicable; zero-fuel service excludes or accounts all fuel/emissions. PASS.
+
+TEST_ID: REG-EGC-043-BLCOMP-003 PROJECTION_CANNOT_BECOME_REALIZED_COST_BY_CALENDAR_ROLLOVER
+CASE: old report has projected 2025 cost; year passes without observation.
+EXPECTED: remains PROJECTION, never mutates to MEASUREMENT/REALIZED_COST. PASS.
+
+TEST_ID: REG-EGC-043-BLCOMP-004 U.S._PSH_SITE_DATA_DOES_NOT_EXCLUDE_NON-U.S._PSH
+EXPECTED: outside source coverage => DATA_GAP/local evidence required, not INELIGIBLE. PASS.
+
+TEST_ID: REG-EGC-043-BLCOMP-005 FUEL_ASSISTED_CAES_CANNOT_HIDE_EXTERNAL_FUEL
+EXPECTED: exclude from zero-fuel service or include fuel price/infrastructure/emissions/losses. PASS.
+
+TEST_ID: REG-EGC-043-BLCOMP-006 ONE_FIRST-OF-KIND_PROJECT_DOES_NOT_UNIVERSALIZE_FLEET_SCALE
+CASE: Goderich 1.75 MW or Rudong 25 MW used to assume hundreds-GW cost/reliability.
+EXPECTED: operation proves reality, not scale transfer; retain DATA_GAP_MATERIAL. PASS.
+
+TEST_ID: REG-EGC-043-BLCOMP-007 CURRENT_ORDERABILITY_AND_OPERATION_ARE_SEPARATE
+CASE_A: NGK NAS has operating legacy fleet but stopped new orders/manufacture -> NOT_CURRENT_COMMERCIAL new-build; inherited fleet persists.
+CASE_B: Form iron-air has manufacturing/contracts but GRE utility COD still future at freeze -> DATA_GAP_MATERIAL, not no-market and not verified fleet.
+PASS.
+
+CLAIM_ID: CLAIM-EGC-043-BLCOMP-004
+TRUTH_CLASS: METHOD_DEFINITION
+TITLE: FINAL_DISCOVERY_RESCAN_AND_REOPEN_RULE
+Before G22 final audit:
+1. rerun authoritative/primary discovery for frozen target geography/service and latest allowed vintage;
+2. reconcile new operating/procurement evidence;
+3. reopen material NOT_CURRENT_COMMERCIAL/DATA_GAP classifications whose source state changed;
+4. record search/source coverage and omitted-family rationale;
+5. only then freeze final baseline discovery set.
+No-public-cost-data is never proof of economic irrelevance.
+
+RESULT:
+- fail-closed current challenger registry: PRODUCED.
+- independently evidenced non-Li-ion challengers: PRODUCED (VRFB, zinc, fuel-free A-CAES, CO2 battery, gravity, iron-air commercialization, iron flow; plus mature/legacy PSH/lead-acid/NAS distinctions).
+- missing-data silent omission: REPAIRED by DATA_GAP_MATERIAL.
+- legacy-vs-new-build confusion: REPAIRED.
+- projection-vs-realized confusion: REPAIRED.
+- site/geography leakage: REPAIRED at method level.
+- fuel-assisted CAES boundary leakage: REPAIRED.
+- final numerical C_BASE_STAR: NOT_VERIFIED and not claimed.
+
+CURRENT CONCLUSION:
+Multiple DATA_GAP_MATERIAL challengers are real and plausibly service-compatible while full mission-boundary cost/performance closure remains incomplete. Therefore BASELINE_COMPLETENESS is currently NOT_VERIFIED. A Li-ion/PSH-only optimizer cannot presently establish G22.
+
+PRIMARY_JOB_STATE:
+JOB-EGC-043-BASELINE-SCREEN-COMPLETE-C5-20261006: EXECUTING -> AWAITING_REVIEW.
+SELF_VERIFICATION: FORBIDDEN.
+
+JOB_ID: JOB-EGC-043-BASELINE-SCREEN-COMPLETE-REV-C6-20261006
+TITLE: Independent review of fail-closed storage challenger registry and completeness rule
+ROLE: Independent strongest-baseline completeness auditor / omission red team
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does STORAGE_CHALLENGER_REGISTRY_V1 prevent real current challengers from disappearing while avoiding false maturity, vendor-claim promotion, service mismatch and impossible exhaustiveness claims?
+DEPENDENCIES: JOB-EGC-043-BASELINE-SCREEN-COMPLETE-C5-20261006 AWAITING_REVIEW.
+REQUIRED_INPUTS: C5 source records; parent BESS/PSH rules; service/geography rules; PNNL data-scope.
+REQUIRED_TOOLS: independent current-source retrieval; maturity/procurement cross-check; independent omission arithmetic; adversarial service/site tests.
+REQUIRED_EVIDENCE:
+- independently check at least VRFB, zinc, A-CAES, CO2 battery, gravity/iron-air maturity or document conflicts;
+- test NGK NAS new-build vs inherited distinction;
+- independently reproduce 60/70 vs 60/55 reversal;
+- test whether DATA_GAP rule is too broad and, if so, repair using evidence-supported lower bounds without silent omission;
+- test geography/source coverage and fuel-assisted CAES;
+- verify discovery rescan before G22 final audit.
+EXPECTED_OUTPUT: PASS / REVIEW_FAILED with P0/P1/P2 findings and independent arithmetic.
+FALSIFICATION_CONDITION: FAIL if a plausible current challenger can still be silently omitted; a non-commercial concept enters merely by vendor assertion; legacy operation automatically becomes greenfield procurement; DATA_GAP clears without evidence; or service/geography mismatch changes C_BASE_STAR.
+REVIEWER_JOB_ID: N/A
+STATUS: OPEN
+BLOCKERS: none for method/source review; final optimizer still depends on R_STAR/common accounting/geography.
+NEXT_ACTION: distinct reviewer claims C6.
+
+G22 strongest current baseline comparison: NOT_VERIFIED.
+G21 uncertainty cannot plausibly reverse conclusion: NOT_VERIFIED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
