@@ -5623,3 +5623,20 @@ NEXT_ACTION: distinct session claims C4 and attacks P_STAR_V2.
 GLOBAL_SOLVED: NO.
 CURRENT_WINNER: NONE.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+76. SESSION CLAIM — JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-REV-C6-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0715+07-BF-C6
+PRIMARY_ROLE: Independent baseline-completeness / site-screen / provenance reviewer
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-REV-C6-20261006
+REVIEW_TARGET: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-C5-20261006
+QUESTION: Does BASELINE_FRONTIER_V3 prevent incomplete PSH searches and stale storage inputs from manufacturing a weak strongest baseline without over-promoting technical potential into project feasibility?
+TOOLS: current NLR ATB/EIA/DOE retrieval; independent state-machine regression; adversarial geography/subtype/duration/vintage examples.
+EVIDENCE_TARGET: verify 2025-vs-2024 material changes; partial/full zero-hit cases; UNKNOWN blocking; technical-potential boundary; preliminary/final flags.
+FALSIFICATION_TARGET: partial/stale/narrow evidence produces NOT_APPLICABLE; UNKNOWN disappears without safe bound; newer source mislabeled measured-current-year; technical potential becomes deployable capacity.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
