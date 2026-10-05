@@ -1,0 +1,20 @@
+{
+  "LEASE_ID": "LEASE-20261006-DOC-C-CORE-TYPES-EXACT-ORACLE-001",
+  "TASK_ID": "TASK-DOC-C-CORE-TYPES-EXACT-ORACLE-001",
+  "OWNER": "CHATGPT-GPT-5.6-SOL-20261006",
+  "STATUS": "ACTIVE",
+  "TARGET_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "TARGET_BRANCH": "NEXY.AI-Test-AI",
+  "PROTECTED_BRANCH": "NEXY.ai",
+  "AUTHORITY_RECORD": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-3-1-CORE-TYPES.json",
+  "FINDING": "Canonical source sets match FINAL DOC-C, but exact-set test proof is incomplete for SystemState/SystemStatus.",
+  "SCOPE": [
+    "tests/contract/core-types-exact.test.ts"
+  ],
+  "ACCEPTANCE": [
+    "SystemStatus exact set equals OK, DEGRADED, FREEZE, STOP.",
+    "SystemState exact set equals INIT, READY, RUNNING, VERIFYING, CONSENSUS, STABLE, FREEZE, STOP.",
+    "Schemas reject representative non-canonical values."
+  ],
+  "MUTATION_BOUNDARY": "Test-only. No runtime source mutation."
+}
