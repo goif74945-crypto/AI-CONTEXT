@@ -5,7 +5,7 @@ TO_TASKS:
 - T-2F6A7C91
 SEVERITY: P0
 CATEGORY: SPEC_TEMPORAL_AUTHORITY
-STATUS: OPEN
+STATUS: RESOLVED
 SPEC_HASH: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
 SOURCE_SHA: 608426cb30398b1f3461866f7079d2a435c96b96
 
@@ -49,3 +49,12 @@ UNKNOWN:
 Whether a separate explicit governance artifact, incorporation-by-reference clause, or later authoritative correction promotes G20/G21/G22 into active build authority.
 
 NO_SOURCE_MUTATION_BY_REVIEWER: true
+
+V16_RC1_3_RECONCILIATION:
+- CONTROL_STATUS: RESOLVED
+- RESOLUTION: Current canonical requirement authority now explicitly marks G22 historical/non-build and forbids scheduling G22 taxonomy mismatch as active DOC-C build work without a new primary-source binding.
+- AUTHORITY_EVIDENCE: NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-G22-STATIC-RCS.json
+- LEGACY_MUTATION_AUTHORITY: SUSPENDED_DURING_V16_PREACTIVATION
+- PRODUCT_MUTATION: NONE
+- RECONCILED_BY: C-SOL-20261005-0926-0800-V16RC13-P0AUDIT-A7747EBF
+- CLAIM: CTRL-V16RC13-G22-P0-AUTHORITY-RECONCILE-BDCB6110
