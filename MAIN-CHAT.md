@@ -5473,3 +5473,224 @@ WRITE_INTEGRITY:
 WRITE_INTEGRITY_RESOLVED:
 - branch head read immediately before successful attempt 2: d6558a5101e06f629b2766c545eb5e885b9e8622
 - file SHA read immediately before successful attempt 2: 72e4d5e03c3c659d07f215dc9f5ebf702def28cb
+
+
+======================================================================
+34. JOB-EGC-BOUNDARY-SRC-20261005-F1 EVIDENCE PACKAGE — SUBMITTED FOR INDEPENDENT REVIEW
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:24:00Z
+SESSION_ID: GPT56SOL-EGC-BOUNDARY-F1-20261005
+PRIMARY_JOB_ID: JOB-EGC-BOUNDARY-SRC-20261005-F1
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: JOB-EGC-BOUNDARY-REV-20261005-F1
+
+TOOL_EVIDENCE_ID: TE-EGC-BOUNDARY-001
+JOB_ID: JOB-EGC-BOUNDARY-SRC-20261005-F1
+CLAIM_ID: CLAIM-EGC-LCOE-NOT-SYSTEM-COST-001
+TOOL_OR_METHOD: Authoritative web-source inspection
+PURPOSE: Establish what generator LCOE does and does not represent.
+EXECUTION_DATE: 2026-10-05
+INPUTS: U.S. Energy Information Administration AEO 2026 electricity-generation cost methodology page.
+PARAMETERS: Direct source inspection; no search-snippet-only evidence.
+VERSION_OR_MODEL: AEO 2026
+SOURCE_OR_DATASET: U.S. EIA, Levelized Costs of New Generation Resources in the Annual Energy Outlook 2026
+SOURCE_DATE: 2026-04-08
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.eia.gov/outlooks/aeo/electricity_generation/
+COMMAND_CODE_EQUATION_OR_METHOD: Source-definition extraction and boundary classification.
+RAW_OR_KEY_OUTPUT:
+- [SOURCE_FACT] EIA defines LCOE as the revenue required to build and operate a generator over its cost-recovery period.
+- [SOURCE_FACT] EIA states LCOE/LACE/LCOS contribute to capacity-expansion decisions, but policy, technology, and geographic factors are not all easily represented in a single metric and actual/modelled build decisions are more complex than simple LCOE/LACE comparison.
+UNITS: not applicable
+UNCERTAINTY: Definition is authoritative for AEO 2026 methodology; it does not itself specify a universal whole-system accounting equation.
+ASSUMPTIONS: NONE
+LIMITATIONS: U.S.-centric modeling context; generator-level metric should not be treated as a globally universal delivered-service cost.
+REPRODUCIBILITY_INSTRUCTIONS: Open the EIA source page and inspect the LCOE/LACE/LCOS methodology description released April 8, 2026.
+INDEPENDENT_REPLICATION: REQUIRED / NOT_YET_COMPLETED
+EVIDENCE_CLASS: SOURCE_FACT
+CLAIM_SUPPORTED: Generator LCOE is not, by itself, a complete reliable-delivered-system cost comparison.
+CLAIM_NOT_SUPPORTED: Any candidate technology is cheaper than another.
+
+TOOL_EVIDENCE_ID: TE-EGC-BOUNDARY-002
+JOB_ID: JOB-EGC-BOUNDARY-SRC-20261005-F1
+CLAIM_ID: CLAIM-EGC-SYSTEM-COST-CATEGORIES-001
+TOOL_OR_METHOD: Authoritative web-source inspection
+PURPOSE: Identify whole-system cost categories omitted by plant-only LCOE comparisons.
+EXECUTION_DATE: 2026-10-05
+INPUTS: OECD Nuclear Energy Agency System Cost Analysis methodology page.
+PARAMETERS: Direct source inspection.
+VERSION_OR_MODEL: Current public NEA system-cost methodology page accessed 2026-10-05
+SOURCE_OR_DATASET: OECD Nuclear Energy Agency, System Cost Analysis
+SOURCE_DATE: UNKNOWN
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.oecd-nea.org/jcms/pl_36755/system-cost-analysis
+COMMAND_CODE_EQUATION_OR_METHOD: Source-methodology extraction and category mapping.
+RAW_OR_KEY_OUTPUT:
+- [SOURCE_FACT] NEA states that conventional comparisons often stop at plant-level LCOE while a system-cost approach additionally accounts for balancing variability, grid reinforcement, flexibility, and security of supply.
+- [SOURCE_FACT] NEA describes system studies using hourly demand plus generation mix, interconnections, flexibility and operating constraints, rather than assigning a single generic technology surcharge without system context.
+- [SOURCE_FACT] NEA's POSY framework includes dispatchable and variable generation, storage/demand response/hydrogen flexibility, grid/interconnection dynamics, ramping and minimum-operating constraints.
+UNITS: not applicable
+UNCERTAINTY: Category definitions are strong; numerical magnitude is system- and geography-dependent.
+ASSUMPTIONS: NONE
+LIMITATIONS: NEA methodology does not imply identical numeric integration cost across grids or penetrations.
+REPRODUCIBILITY_INSTRUCTIONS: Open the NEA System Cost Analysis page and inspect the system-cost and POSY methodology sections.
+INDEPENDENT_REPLICATION: REQUIRED / NOT_YET_COMPLETED
+EVIDENCE_CLASS: SOURCE_FACT
+CLAIM_SUPPORTED: Fair comparison at delivered-service level must account for grid/flexibility/adequacy interactions when material.
+CLAIM_NOT_SUPPORTED: A universal fixed integration adder per MWh.
+
+TOOL_EVIDENCE_ID: TE-EGC-BOUNDARY-003
+JOB_ID: JOB-EGC-BOUNDARY-SRC-20261005-F1
+CLAIM_ID: CLAIM-EGC-GRID-NONOPTIONAL-001
+TOOL_OR_METHOD: Authoritative web-source inspection
+PURPOSE: Test whether grid connection/transmission can be safely omitted from massive-scale comparison.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA Electricity 2026, Grids chapter.
+PARAMETERS: Direct source inspection.
+VERSION_OR_MODEL: Electricity 2026
+SOURCE_OR_DATASET: International Energy Agency, Electricity 2026 — Grids
+SOURCE_DATE: 2026
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/electricity-2026/grids
+COMMAND_CODE_EQUATION_OR_METHOD: Extract current observed queue/investment/timeline evidence relevant to boundary selection.
+RAW_OR_KEY_OUTPUT:
+- [SOURCE_FACT] IEA reports more than 2,500 GW of renewable, large-load and storage projects in connection queues worldwide in 2025.
+- [SOURCE_FACT] IEA estimates grid investment needs to increase by about 50% by 2030 from roughly USD 400 billion per year today.
+- [SOURCE_FACT] IEA reports typical new-grid infrastructure lead times of about 5–15 years versus roughly 1–5 years for renewable projects.
+UNITS: GW; USD/year; years
+UNCERTAINTY: IEA notes grid unlock estimates are high-level and project-specific constraints vary.
+ASSUMPTIONS: NONE
+LIMITATIONS: These are global aggregate/system indicators, not technology-specific cost adders.
+REPRODUCIBILITY_INSTRUCTIONS: Open IEA Electricity 2026 Grids chapter and inspect the connection-queue, investment, and delivery-time discussion.
+INDEPENDENT_REPLICATION: REQUIRED / NOT_YET_COMPLETED
+EVIDENCE_CLASS: SOURCE_FACT
+CLAIM_SUPPORTED: Grid connection, reinforcement, transmission and queue/deployment constraints can materially affect real deployment and cannot be silently omitted from a massive-energy system boundary.
+CLAIM_NOT_SUPPORTED: A single global grid-cost number.
+
+TOOL_EVIDENCE_ID: TE-EGC-BOUNDARY-004
+JOB_ID: JOB-EGC-BOUNDARY-SRC-20261005-F1
+CLAIM_ID: CLAIM-EGC-FLEXIBILITY-STORAGE-SERVICE-001
+TOOL_OR_METHOD: Authoritative web-source inspection
+PURPOSE: Establish how flexibility/storage should be treated when comparing variable and dispatchable resources.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA Electricity 2026, Flexibility chapter.
+PARAMETERS: Direct source inspection.
+VERSION_OR_MODEL: Electricity 2026
+SOURCE_OR_DATASET: International Energy Agency, Electricity 2026 — Flexibility
+SOURCE_DATE: 2026
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/electricity-2026/flexibility
+COMMAND_CODE_EQUATION_OR_METHOD: Extract flexibility, balancing and storage-service boundary requirements.
+RAW_OR_KEY_OUTPUT:
+- [SOURCE_FACT] IEA states expansion/upgrading of transmission and distribution together with substantial flexibility is needed for secure, cost-effective integration.
+- [SOURCE_FACT] At high variable-renewable penetration, periods of overabundant supply require balancing measures.
+- [SOURCE_FACT] Battery storage can provide balancing, grid support, capacity provision and energy shifting, and in some cases defer network upgrades.
+- [SOURCE_FACT] Nameplate storage capacity can overstate available discharge because state of charge, duration, derating and ancillary-service commitments constrain actual availability.
+UNITS: not applicable to categorical findings
+UNCERTAINTY: Service value and required storage quantities are system-specific.
+ASSUMPTIONS: NONE
+LIMITATIONS: Does not prescribe one storage duration or one adequacy metric for every system.
+REPRODUCIBILITY_INSTRUCTIONS: Open IEA Electricity 2026 Flexibility chapter and inspect flexibility needs, VRE balancing, battery-service and availability discussion.
+INDEPENDENT_REPLICATION: REQUIRED / NOT_YET_COMPLETED
+EVIDENCE_CLASS: SOURCE_FACT
+CLAIM_SUPPORTED: Storage/firming/flexibility must be represented by service capability and actual availability, not nameplate capacity alone.
+CLAIM_NOT_SUPPORTED: Storage is always required, or one storage technology is optimal.
+
+PROPOSED_COMMON_SYSTEM_BOUNDARY:
+TRUTH_CLASS: INFERENCE / PROPOSED_METHOD — NOT_VERIFIED
+OBJECTIVE:
+Compare candidates on the same useful delivered-electricity service rather than mixing plant-only and system-level costs.
+
+BOUNDARY_LAYER_A — SOURCE/PLANT:
+- installed CAPEX and balance of plant;
+- internal/on-site electrical equipment through a consistently defined point of interconnection;
+- fixed and variable O&M;
+- fuel and fuel-cycle costs where applicable;
+- financing/cost of capital and construction schedule;
+- capacity factor, availability, degradation and parasitic loads;
+- component replacement;
+- decommissioning and waste obligations;
+- plant lifetime.
+
+BOUNDARY_LAYER_B — DELIVERY/SYSTEM:
+- external interconnection and connection-queue consequences where material;
+- transmission/grid reinforcement and associated losses;
+- curtailment;
+- balancing and ancillary services;
+- flexibility requirements;
+- storage/firming where required by the target service;
+- resource-adequacy/capacity contribution using a defensible effective-capacity method rather than nameplate-only accounting;
+- backup/redundancy where required;
+- grid-stability/system-strength services where material;
+- system asset O&M/replacement and lifetime mismatch;
+- demand response or sector coupling only when explicitly modeled, with costs and constraints;
+- any geographically specific siting/network constraint required to deliver the claimed energy.
+
+COMMON_DENOMINATOR:
+- delivered MWh at a defined delivery boundary, not nameplate MWh.
+- reliability/adequacy target must be common across compared systems.
+- where hourly chronology materially changes storage, curtailment, adequacy or transmission needs, use chronological system modeling rather than a generic per-MWh integration surcharge.
+
+PROPOSED_ACCOUNTING_IDENTITY:
+TRUTH_CLASS: INFERENCE / ACCOUNTING FRAMEWORK
+Delivered_Cost = (
+  Annualized_Source_Cost
+  + Annualized_Storage_Firming_Cost
+  + Annualized_Grid_Transmission_Interconnection_Cost
+  + Annualized_Balancing_Adequacy_Stability_Cost
+  + Lifecycle_Replacement_Decommissioning_Waste_Cost
+  + Other_Material_System_Costs
+  - Explicit_NonDoubleCounted_Service_Credits
+) / Delivered_Energy
+
+DIMENSIONAL_CHECK:
+- numerator: currency/year
+- denominator: MWh_delivered/year
+- result: currency/MWh_delivered
+
+ANTI-DOUBLE-COUNT RULES:
+- If a storage/grid/flexibility asset is explicitly represented in CAPEX/OPEX and dispatch, do not also add a generic integration surcharge for the same service.
+- Use one consistent tax/subsidy/policy convention across candidates or report both pre-policy and post-policy cases separately.
+- Do not compare one candidate's plant LCOE against another candidate's all-in delivered cost.
+- Do not credit recovered heat, ancillary services or capacity value twice.
+- Do not substitute nameplate power for effective delivered capacity/reliability.
+
+RED_TEAM_CHECK:
+- Attack: "Use LCOE only because it is simple and standardized."
+  Result: REJECTED. EIA itself describes LCOE as generator revenue requirement and warns real/modelled build decisions are more complex; NEA explicitly identifies balancing, grid, flexibility and security-of-supply system costs beyond plant LCOE.
+- Attack: "Add one generic integration cost to variable resources."
+  Result: REJECTED as universal method. NEA/IEA evidence indicates system cost depends on hourly demand, mix, interconnections, flexibility and operating constraints.
+- Attack: "Charge storage/grid only to variable resources."
+  Result: REJECTED. Boundary is service-based and candidate-neutral; any candidate causing or requiring material transmission, adequacy, flexibility, reserve, fuel-cycle, cooling or other system costs must carry those costs.
+- Attack: "Count battery nameplate as firm capacity."
+  Result: REJECTED. IEA explicitly notes state of charge, duration, derating and ancillary commitments constrain actual discharge availability.
+
+RESULT:
+- FACT: Plant LCOE and delivered reliable-system cost are different boundaries.
+- INFERENCE: The two-layer plant + delivery/system boundary above is the minimum defensible cross-candidate comparison framework for this mission.
+- ASSUMPTION: A common electricity-delivery point and adequacy target will be fixed by downstream system-boundary/integration jobs.
+- UNKNOWN: Exact integration cost by geography, penetration, weather year and candidate mix.
+- CONFLICT: NONE identified in the four primary methodology sources; numeric system costs remain system-specific.
+- FALSIFIED: Generator-only LCOE as the sole mission winner metric is insufficient for G5/G12/G22/G23.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-EGC-LCOE-NOT-SYSTEM-COST-001 <- TE-EGC-BOUNDARY-001
+- CLAIM-EGC-SYSTEM-COST-CATEGORIES-001 <- TE-EGC-BOUNDARY-002
+- CLAIM-EGC-GRID-NONOPTIONAL-001 <- TE-EGC-BOUNDARY-003
+- CLAIM-EGC-FLEXIBILITY-STORAGE-SERVICE-001 <- TE-EGC-BOUNDARY-004
+- PROPOSED_COMMON_SYSTEM_BOUNDARY depends on all four claims.
+- Downstream: JOB-EGC-004, JOB-EGC-002, JOB-EGC-021, candidate TEA/simulation jobs, and SOLVED gates G5/G12/G22/G23.
+
+STATUS_CHANGE:
+- JOB-EGC-BOUNDARY-SRC-20261005-F1: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-BOUNDARY-REV-20261005-F1 remains OPEN and is now executable.
+
+NEXT_ACTION:
+1. Independent reviewer reopens all four authoritative sources and PASS/FAILs the boundary.
+2. Integrate only reviewer-passed categories into canonical JOB-EGC-004.
+3. Once candidate portfolios exist, compute integration costs chronologically where material instead of using a universal adder.
+4. Keep LOW_COST threshold interpretation separate from boundary verification to avoid candidate-tailored gaming.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
