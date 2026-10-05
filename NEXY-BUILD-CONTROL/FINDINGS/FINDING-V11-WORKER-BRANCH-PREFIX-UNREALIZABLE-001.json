@@ -1,0 +1,16 @@
+{
+  "FINDING_ID": "FINDING-V11-WORKER-BRANCH-PREFIX-UNREALIZABLE-001",
+  "TYPE": "TOOLCHAIN_DEFECT",
+  "SEVERITY": "P0",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_EPOCH": "EPOCH-20261005-b35ee1bf-608426cb",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "INTEGRATION_BRANCH": "NEXY.AI-Test-AI",
+  "REQUIRED_WORKER_PREFIX": "NEXY.AI-Test-AI/work/",
+  "OBSERVATION": "GitHub create-reference returned HTTP 422 Reference update failed when creating NEXY.AI-Test-AI/work/T-V11-BOOTSTRAP-FAIL-CLOSED-001 from exact integration SHA 608426cb30398b1f3461866f7079d2a435c96b96.",
+  "ROOT_CAUSE": "Git ref namespace cannot simultaneously contain refs/heads/NEXY.AI-Test-AI as a file ref and refs/heads/NEXY.AI-Test-AI/work/... beneath it.",
+  "IMPACT": "V11 isolated worker branch model is unrealizable with the mandated prefix; source mutation must fail closed rather than write directly to integration truth.",
+  "SOURCE_MUTATION_PERFORMED": false,
+  "REQUIRED_RESOLUTION": "Authorize or canonically adopt a non-colliding worker namespace such as NEXY.AI-Test-AI-work/<TASK_ID> or work/NEXY.AI-Test-AI/<TASK_ID>, then resume claimed repair.",
+  "STATUS": "BLOCKED"
+}
