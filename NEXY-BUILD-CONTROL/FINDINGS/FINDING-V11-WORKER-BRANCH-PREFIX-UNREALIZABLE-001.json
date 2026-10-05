@@ -12,5 +12,11 @@
   "IMPACT": "V11 isolated worker branch model is unrealizable with the mandated prefix; source mutation must fail closed rather than write directly to integration truth.",
   "SOURCE_MUTATION_PERFORMED": false,
   "REQUIRED_RESOLUTION": "Authorize or canonically adopt a non-colliding worker namespace such as NEXY.AI-Test-AI-work/<TASK_ID> or work/NEXY.AI-Test-AI/<TASK_ID>, then resume claimed repair.",
-  "STATUS": "BLOCKED"
+  "STATUS": "SUPERSEDED",
+  "PRIOR_STATUS": "BLOCKED",
+  "SUPERSEDED_BY": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "SUPERSESSION_RECORD": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SUPERSESSIONS/SUPERSESSION-V16RC13-LEGACY-WORKER-NAMESPACE-P0-001.json",
+  "SUPERSESSION_REASON": "Legacy V7/V8/V11 required the Git-impossible NEXY.AI-Test-AI/work/<TASK_ID> prefix. V16-RC1.3 preserves isolated worker-branch implementation but removes that literal prefix requirement, so this legacy protocol blocker no longer blocks V16 migration/activation.",
+  "PRESERVED_TECHNICAL_FACT": "The literal descendant ref remains impossible while refs/heads/NEXY.AI-Test-AI exists.",
+  "PRODUCT_MUTATION_AUTHORIZED": false
 }
