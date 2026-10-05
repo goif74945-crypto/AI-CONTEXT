@@ -1,0 +1,60 @@
+{
+  "FINDING_ID": "FINDING-DOC-D-S7-INCIDENT-TRIGGER-001",
+  "REQ_ID": "REQ-DOC-D-S7-INCIDENT-TRIGGER-001",
+  "TASK_ID": "TASK-DOC-D-S7-INCIDENT-TRIGGER-001",
+  "FROM": "C-SOL-20261006-AUDITSEARCH-6E2F1C9A",
+  "TO": "NEXY-PRODUCT-S7",
+  "SHA": "aec9afaa77213c37b223b7594b92eb81c7862f9a",
+  "SEVERITY": "P1",
+  "CLASS": [
+    "TRUTH_LAYER_MISMATCH",
+    "SPEC_IMPLEMENTATION_GAP",
+    "AUTHORITY_GAP"
+  ],
+  "OBSERVED": [
+    "Authoritative DOC-D S7 requires the Freeze Incident screen to display a trigger in addition to primary incident code, blocking layer and recoverable state.",
+    "apps/web/app/incidents/[id]/page.tsx maps IncidentCard.trigger to incident.request_id.",
+    "apps/web/components/IncidentCard.tsx labels that value as trigger.",
+    "packages/api/canonical.ts handleIncident exposes request_id and trace_id but no trigger field.",
+    "prisma/schema.prisma FreezeIncident persists primaryErrorCode, blockingLayer, recoverable, requestId and traceId but no trigger field.",
+    "Canonical incident writers therefore have no authoritative trigger value that the UI can render without inference."
+  ],
+  "EXPECTED": "S7 must render a canonical incident trigger whose semantics and persistence/derivation are defined by an authoritative build contract. Correlation request_id must not be relabeled as trigger unless the authority explicitly defines them as identical.",
+  "SPEC_EVIDENCE": {
+    "authority": "DOC-D Product Design Pack",
+    "screen": "S7 / Freeze Incident",
+    "required_fields": [
+      "primary incident code",
+      "trigger",
+      "blocking layer",
+      "recoverable true/false"
+    ],
+    "supporting_nonfinal_context": "An earlier non-final FreezeReason shape contains a distinct trigger:string member; it is supporting context only and is not used to invent final storage semantics."
+  },
+  "SOURCE_EVIDENCE": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.AI-Test-AI",
+    "commit_sha": "aec9afaa77213c37b223b7594b92eb81c7862f9a",
+    "ui_page": "apps/web/app/incidents/[id]/page.tsx",
+    "ui_component": "apps/web/components/IncidentCard.tsx",
+    "api": "packages/api/canonical.ts#handleIncident",
+    "storage": "prisma/schema.prisma#FreezeIncident"
+  },
+  "REPRODUCTION": [
+    "Read DOC-D S7 field list and note trigger is distinct from primary incident code and blocking layer.",
+    "Inspect IncidentDetailPage and observe trigger: incident.request_id.",
+    "Inspect handleIncident and observe no trigger member in canonical response.",
+    "Inspect FreezeIncident schema and observe no trigger member in durable truth."
+  ],
+  "DUPLICATE_CHECK": {
+    "control_commit_queries": [
+      "incident trigger request_id S7",
+      "S7 trigger",
+      "FreezeIncident trigger"
+    ],
+    "result": "NO_MATCHES_FOUND_AT_CHECK_TIME"
+  },
+  "STATUS": "REPRODUCED",
+  "MUTATION_STATUS": "BLOCKED_BY_AUTHORITY_GAP",
+  "BLOCKER": "Final DOC-C/D do not define canonical trigger persistence or derivation; source mutation would require inventing truth semantics."
+}
