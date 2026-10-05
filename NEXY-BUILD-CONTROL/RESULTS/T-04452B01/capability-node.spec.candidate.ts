@@ -5,6 +5,7 @@ import {
   validateCapabilityNode,
   type CapabilityNode,
 } from "../../packages/phase-f/universe/capability-node.js";
+import { STATIC_CODES as GOVERNANCE_STATIC_CODES } from "../../packages/phase-f/game/ncf-governance.js";
 
 function node(overrides: Partial<CapabilityNode> = {}): CapabilityNode {
   return {
@@ -37,6 +38,7 @@ describe("CapabilityNode contract", () => {
       R009: "R009_CONTAINER_DIGEST_MISMATCH",
       R010: "R010_SPEC_HASH_DRIFT",
     });
+    expect(CAPABILITY_NODE_STATIC_REASON_CODES).toEqual(GOVERNANCE_STATIC_CODES);
   });
 
   it("deduplicates rejection identities and returns them in lexical order", () => {
@@ -79,6 +81,7 @@ describe("CapabilityNode contract", () => {
     expect(validateCapabilityNode(node({ name: "cycle", dependencies: ["cycle"] }), known)).toContain("R001_DEPENDENCY_CYCLE");
     expect(validateCapabilityNode(node({ name: "too-big", resource_profile: { cpu_millicores: 1001 } }), known)).toContain("R003_RESOURCE_CAP_VIOLATION");
     expect(validateCapabilityNode(node({ name: "sneaky", description: "calls https://example.invalid" }), known)).toContain("R005_UNDECLARED_NETWORK_SCOPE");
+    expect(validateCapabilityNode(node({ name: "bad-depth", max_depth: 6 }), known)).toContain("R008_SCHEMA_NONCANONICAL");
   });
 
   it("rejects upward permission scope independently of syscall mismatch", () => {
