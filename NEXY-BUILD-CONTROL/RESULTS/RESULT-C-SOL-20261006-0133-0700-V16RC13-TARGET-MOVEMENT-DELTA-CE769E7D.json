@@ -1,0 +1,51 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_TARGET_DRIFT_DELTA_V1",
+  "RESULT_ID": "RESULT-C-SOL-20261006-0133-0700-V16RC13-TARGET-MOVEMENT-DELTA-CE769E7D",
+  "CHAT_ID": "C-SOL-20261006-0133-0700-V16RC13-ADAPTER-XREVIEW-23F94A9F",
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0133-0700-V16RC13-TARGET-DRIFT-XCHECK-23F94A9F",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "CANONICAL_FINDING_ID": "FINDING-V16RC13-PREACTIVATION-TARGET-MUTATION-DETECTED-4B508E13",
+  "OBSERVATION_METHOD": "LIVE_GITHUB_REF_FETCH_PLUS_BASELINE_COMPARE_PLUS_HEAD_COMMIT_INSPECTION",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "BOOTSTRAP_STATE_OBSERVED": "BLOCKED",
+  "MUTATION_GATE_OBSERVED": "CLOSED",
+  "INTEGRATION_GATE_OBSERVED": "CLOSED",
+  "LEGACY_DRAIN_PASS_OBSERVED": false,
+  "BASELINE_TARGET_HEAD": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "PROTECTED_UPSTREAM_HEAD_OBSERVED": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "PRIOR_DELTA_TARGET_HEAD": "f82d0f49197e3aa554cca5a2ae7b75c33be778dc",
+  "PRIOR_DELTA_AHEAD_BY": 35,
+  "NEW_TARGET_HEAD_OBSERVED": "ce769e7d0986db2a3eec0324175da94d2f630cb0",
+  "NEW_TARGET_TREE_OBSERVED": "550c753afab1f86485cdc31fa2553bb0eb577532",
+  "NEW_TARGET_COMPARE_STATUS": "ahead",
+  "NEW_TARGET_AHEAD_BY": 47,
+  "NEW_TARGET_BEHIND_BY": 0,
+  "NEW_TARGET_COMPARE_TOTAL_COMMITS": 47,
+  "NEW_TARGET_CHANGED_FILES_COUNT": 35,
+  "NEW_HEAD_COMMIT": {
+    "sha": "ce769e7d0986db2a3eec0324175da94d2f630cb0",
+    "parent": "a3a61bef255344d311d756e05a1bff3f44d4fe91",
+    "message": "fix(game): remove simulated WebGPU production path",
+    "committer_date": "2026-10-05T18:48:16Z",
+    "changed_file": "packages/phase-f/game/runtime/webgpu.ts",
+    "additions": 53,
+    "deletions": 77
+  },
+  "CANONICAL_V16_INTEGRATION_DIRECTORY_ENTRIES": [
+    ".gitkeep",
+    "00_INDEX.md",
+    "README.md"
+  ],
+  "ACTIVE_INTEGRATION_RECORD_DISCOVERED": false,
+  "ASSESSMENT": "The existing canonical target-mutation incident is independently confirmed and still advancing. Target drift grew from prior observed ahead_by=35 to ahead_by=47 while Bootstrap remains BLOCKED and mutation/integration gates remain CLOSED. The latest observed head includes direct product-source modification. Authority/provenance remains unreconciled; do not create a second incident and do not blind-rollback.",
+  "REQUIRED_PROCESSING": [
+    "Attach this delta to the existing canonical finding identity.",
+    "Continue provenance/legacy-authority reconciliation against the actual moving target ref.",
+    "Refresh any target-bound evidence made stale by the new HEAD/tree.",
+    "Keep activation and integration fail-closed until authority is reconciled and independently reviewed.",
+    "Use an explicit recovery intent if rollback/forward-fix becomes authorized; never force-reset blindly."
+  ],
+  "PRODUCT_SOURCE_MUTATION_PERFORMED_BY_REPORTER": false,
+  "TARGET_INTEGRATION_PERFORMED_BY_REPORTER": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED_BY_REPORTER": false
+}
