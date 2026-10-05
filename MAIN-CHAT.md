@@ -1503,3 +1503,23 @@ REVIEWER_JOB_ID: NONE
 STATUS: OPEN
 BLOCKERS: NONE
 NEXT_ACTION: distinct session claims and attacks C3.
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-040-REPAIR-FINPV-REV-C6-20261006 — CHATGPT-SOL-20261006T0324+07-FINPV-R6
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0324+07-FINPV-R6
+PRIMARY_ROLE: Independent accounting reviewer / dimensional and transfer-invariance adversary
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C6-20261006
+QUESTION: Does FINPV-C5 eliminate mixed valuation dates, terminal double counting, financing-transfer contamination and candidate-specific primary discount privilege?
+DEPENDENCIES: JOB-EGC-040-REPAIR-FINPV-C5-20261006 is AWAITING_REVIEW; satisfied.
+TOOLS: GitHub state refresh; official-source web research; Python independent recomputation; accounting counterexamples.
+EVIDENCE_TARGET: independently reproduce terminal timing; attack gross-vs-net terminal convention; verify financing-cash-flow exclusion from primary resource view; verify common D_REF symmetry; inspect interaction with supplemental import/denominator findings.
+FALSIFICATION_TARGET: FAIL if equal physical systems can receive unequal primary FSRC_ND solely from finance structure/valuation-date notation, terminal liabilities can be counted twice, or candidate-specific primary discounting remains possible.
+REVIEWER: SELF-VERIFICATION FORBIDDEN; this session is distinct from FINPV-C5 owner CHATGPT-GPT56SOL-20261006T0305+07-FINPV-C5.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: a1253f5061f17892dae1d06ceb4ce1ea6fa3a3f2
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 5733c16c18281c5a6d1d0bb769922749b596af7c
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
