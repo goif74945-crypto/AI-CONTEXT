@@ -8440,3 +8440,181 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+39. INDEPENDENT REVIEW RESULT — JOB-EGC-003
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:30:00Z
+SESSION_ID: CHATGPT-SOL-REV003-C1-20261005
+PRIMARY_JOB_ID: JOB-EGC-003-REV-C1-20261005
+REVIEWED_JOB: JOB-EGC-003
+REVIEWED_EVIDENCE: TE-EGC003-D1-001 through TE-EGC003-D1-007
+REVIEW_SCOPE: scale/reliability source facts, arithmetic, source-vintage interpretation, and MASSIVE_ENERGY anchor rationale
+GLOBAL_SOLVED: NO
+
+TOOL_EVIDENCE_ID: TE-EGC003-REV-C1-001
+JOB_ID: JOB-EGC-003-REV-C1-20261005
+CLAIM_ID: CLAIM-EGC003-SCALE-REPLICATION-C1
+TOOL_OR_METHOD: Independent authoritative-source retrieval + deterministic recomputation + boundary/vintage audit
+PURPOSE: Reproduce JOB-EGC-003 without trusting the submitting session's source extraction or arithmetic.
+EXECUTION_DATE: 2026-10-05
+VERSION_OR_MODEL: Current retrieved IEA/EIA/IRENA/Berkeley Lab/IAEA pages as of execution date.
+SOURCES:
+1. IEA, Electricity Mid-Year Update 2026, Executive summary:
+   https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+2. IEA, Electricity 2026, Demand:
+   https://www.iea.org/reports/electricity-2026/demand
+3. U.S. EIA, Electric Power Monthly, Table 6.07.B:
+   https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b
+4. IRENA, Renewable Capacity Statistics 2026:
+   https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026
+5. IRENA press release, 2026-04-01:
+   https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+6. Berkeley Lab, Queued Up 2026:
+   https://emp.lbl.gov/queues
+7. IAEA PRIS Analytics:
+   https://pris-stats.iaea.org/
+8. IAEA PRIS Energy Availability Factor trend:
+   https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+
+INDEPENDENT SOURCE REPRODUCTION:
+
+A. TE-EGC003-D1-001 — PASS
+- IEA Mid-Year Update 2026 independently reproduces 28,600 TWh global electricity consumption in 2025 and 30,700 TWh in 2027.
+- It independently reproduces 2025 demand growth of 3%, with forecasts of 3.6% in 2026 and 3.8% in 2027.
+- Classification as latest retrieved IEA 2025 estimate is supported.
+LIMITATION: electricity consumption remains a different boundary from gross generation.
+
+B. TE-EGC003-D1-002 — SOURCE FACTS PASS / INTERPRETATION REPAIR REQUIRED
+- IEA Electricity 2026 independently reproduces 28,200 TWh for 2025, 33,600 TWh for 2030, and approximately 1,100 TWh average annual additions through 2030.
+- The later Mid-Year Update 2026 independently reproduces 28,600 TWh for 2025.
+- Therefore the +400 TWh / +1.4184% source-vintage revision is arithmetically reproducible.
+MATERIAL DEFECT:
+- The submitting package describes ~1,100 TWh/year as the order of "one year's current global electricity-demand growth."
+- The IEA source actually states ~1,100 TWh/year is the FORECAST AVERAGE annual addition through 2030.
+- The later Mid-Year Update reports 2025 actual/estimated demand growth as 3%, which is a lower observed-growth scale than 1,100 TWh.
+- Hence 1 PWh/year may remain a mission-scale convention, but its evidence rationale must be repaired: it lies in the order-of-magnitude range between recent observed growth and forecast 2026-2030 average growth; it is not a measured 2025 1.1 PWh increment.
+VERDICT: PARTIAL_FAIL on interpretation; source values themselves PASS.
+EXACT_CAUSE_OF_REVISION: NOT_VERIFIED. Later source is fresher, but this review found no evidence proving whether all +400 TWh comes from ordinary estimate revision versus any methodology/data revision.
+
+C. TE-EGC003-D1-003 — PASS WITH PRELIMINARY-DATA CAVEAT
+- EIA Table 6.07.B independently reproduces 2025 capacity factors:
+  geothermal 65.9%; conventional hydroelectric 35.3%; nuclear 91.0%;
+  solar PV 24.4%; solar thermal 23.6%; wind 34.2%.
+- EIA page currently labels 2025 values preliminary; this should be carried into uncertainty/provenance.
+- U.S. fleet values cannot be universalized and do not establish firm capacity; JOB-EGC-003 already states those limitations.
+VERDICT: PASS, with provenance repair to explicitly label 2025 PRELIMINARY.
+
+D. TE-EGC003-D1-004 — PASS
+- IRENA independently reproduces end-2025 renewable capacity 5,149 GW, 692 GW additions in 2025, +15.5%, and 85.6% of total global capacity additions.
+- IRENA defines renewable capacity as maximum net generating capacity; therefore the package correctly rejects converting 692 GW directly into continuous delivered power.
+VERDICT: PASS.
+
+E. TE-EGC003-D1-005 — PASS
+- Berkeley Lab independently reproduces ~8,200 active projects, 1,312 GW generation + ~749 GW storage, >5-year median IR-to-COD for projects built in 2025 where data are available, 13% of 2000-2020 requested capacity reaching commercial operation by end-2025, 75% withdrawn and 10% still active.
+- The report explicitly warns most queued capacity will not be built.
+VERDICT: PASS; queue volume is process evidence, not a build forecast.
+
+F. TE-EGC003-D1-006 — PASS WITH DYNAMIC-SNAPSHOT CAVEAT
+- IAEA PRIS independently reproduces 2,635.3 TWh electricity produced in 2025 and 417 reactors in operation.
+- Current PRIS dashboard at review shows 379,611 MW(e) net capacity, versus submitting snapshot 379,608 MW(e). The 3 MW difference is immaterial to the mission and is consistent with a dynamic dashboard; capacity values must be timestamped rather than treated as immutable.
+- PRIS EAF trend independently reproduces 84.1% for 2025, weighted over 402 reactors with data and 362 GW(e) in that EAF table.
+- EAF is not capacity factor; JOB-EGC-003 correctly distinguishes them.
+VERDICT: PASS with timestamp caveat.
+
+G. TE-EGC003-D1-007 — ARITHMETIC PASS / THRESHOLD ADOPTION NOT_VERIFIED
+INDEPENDENT RECOMPUTATION:
+- 28,600 TWh/year / 8.76 = 3,264.8402 GW average.
+- 33,600 TWh/year / 8.76 = 3,835.6164 GW average.
+- 1,000 TWh/year / 8.76 = 114.1553 GW average.
+- 2,860 TWh/year / 8.76 = 326.4840 GW average.
+Using EIA 2025 U.S. fleet CF anchors:
+- nuclear 91.0% -> 125.4453 GW nameplate for 1,000 TWh/year.
+- geothermal 65.9% -> 173.2250 GW.
+- conventional hydro 35.3% -> 323.3860 GW.
+- wind 34.2% -> 333.7873 GW.
+- solar PV 24.4% -> 467.8494 GW.
+DIMENSIONAL CHECK: TWh/year * 1000 GWh/TWh / h/year = GW.
+VERDICT:
+- arithmetic: PASS.
+- use as illustrative nameplate-before-losses calculation: PASS.
+- use as firm-power model: correctly NOT_SUPPORTED.
+- adoption of 1,000 TWh/year as final MASSIVE_ENERGY threshold: NOT_VERIFIED / normative mission criterion requiring objective-owner decision and common boundary.
+
+CONFLICT REVIEW — CONFLICT-EGC003-D1-001:
+- FACT: 28,200 TWh (February Electricity 2026) and 28,600 TWh (later Mid-Year Update 2026) are both independently reproduced.
+- FACT: later report is fresher.
+- INFERENCE: use 28,600 TWh for current scale anchoring is reasonable if boundary is confirmed consistent.
+- UNKNOWN: exact decomposition/cause of the +400 TWh revision.
+- STATUS: PARTIALLY_RESOLVED; value/vintage resolved, methodological cause remains UNKNOWN.
+
+RED_TEAM FINDINGS:
+1. NAMEPLATE ATTACK: PASS. JOB-EGC-003 correctly rejects nameplate GW as delivered-energy proof.
+2. CAPACITY-FACTOR ATTACK: PASS. JOB-EGC-003 correctly labels EIA values as U.S.-fleet operational anchors, not universal constants or adequacy values.
+3. QUEUE ATTACK: PASS. JOB-EGC-003 correctly refuses to count queue GW as built capacity.
+4. NUCLEAR AVAILABILITY ATTACK: PASS. EAF is not silently converted into capacity factor.
+5. GROWTH-ANCHOR ATTACK: FAIL/REPAIR REQUIRED. The ~1,100 TWh/year number is forecast-average growth through 2030, not observed 2025 annual growth.
+6. THRESHOLD-ARBITRARINESS ATTACK: NOT_VERIFIED. 1 PWh/year remains a defensible round-number mission convention, but no physical law uniquely selects it. It must remain ASSUMPTION/INFERENCE, frozen ex ante if adopted.
+
+REVIEW_VERDICT:
+- TE-EGC003-D1-001: PASS.
+- TE-EGC003-D1-002: PARTIAL_FAIL / REPAIR_REQUIRED interpretation.
+- TE-EGC003-D1-003: PASS_WITH_CAVEAT (2025 EIA data preliminary).
+- TE-EGC003-D1-004: PASS.
+- TE-EGC003-D1-005: PASS.
+- TE-EGC003-D1-006: PASS_WITH_CAVEAT (dynamic PRIS snapshot).
+- TE-EGC003-D1-007 arithmetic: PASS.
+- Proposed 1 PWh/year final threshold: NOT_VERIFIED.
+- JOB-EGC-003 overall: REVIEW_FAILED / REPAIR_REQUIRED because one decision-relevant rationale is materially misclassified, even though most factual evidence and arithmetic independently reproduce.
+
+JOB_ID: JOB-EGC-003-REPAIR-C1-20261005
+ROLE: R02 baseline scale repair / objective-support correction
+TITLE: Repair JOB-EGC-003 growth-anchor interpretation and provenance caveats
+QUESTION_TO_RESOLVE: Correct the 1 PWh/year rationale so observed 2025 demand growth is not conflated with IEA forecast-average 2026-2030 growth; add preliminary/dynamic-source caveats without weakening the non-nameplate scale logic.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-003-REV-C1-20261005 review result present
+REQUIRED_INPUTS: TE-EGC003-D1-001..007 and TE-EGC003-REV-C1-001.
+REQUIRED_TOOLS: IEA source comparison; deterministic arithmetic; provenance correction.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / CORRECTION.
+EXPECTED_OUTPUT:
+- Replace "current annual growth ~1,100 TWh/year" with correct observed-vs-forecast distinction.
+- Preserve 1 PWh only as explicitly normative/inferred mission anchor if objective owner chooses it.
+- Mark EIA 2025 CF values PRELIMINARY.
+- Timestamp dynamic PRIS capacity snapshots.
+FALSIFICATION_CRITERIA: FAIL if repaired text still treats forecast-average growth as observed history or promotes 1 PWh to a source fact.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE
+HANDOFF: Original JOB-EGC-003 owner or another non-review session may repair; independent re-review required before VERIFIED.
+
+CLAIM_GRAPH_DELTA:
+- CLAIM-EGC003-WORLD-SCALE: SUPPORTED by independent reproduction.
+- CLAIM-EGC003-CF-BASELINES: SUPPORTED_WITH_PRELIMINARY_CAVEAT.
+- CLAIM-EGC003-RENEWABLE-DEPLOYMENT: SUPPORTED.
+- CLAIM-EGC003-QUEUE-BOTTLENECK: SUPPORTED.
+- CLAIM-EGC003-NUCLEAR-OPERATIONAL-SCALE: SUPPORTED_WITH_DYNAMIC_SNAPSHOT_CAVEAT.
+- CLAIM-EGC003-1PWH-ANCHOR: REOPENED / NOT_VERIFIED pending JOB-EGC-003-REPAIR-C1-20261005 and objective-owner adoption.
+- DEPENDENT objective claims using "1.1 PWh current growth" must be REOPENED or corrected.
+
+STATUS_CHANGE:
+- JOB-EGC-003-REV-C1-20261005: CLAIMED/EXECUTING -> VERIFIED as independent review work.
+- JOB-EGC-003: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+- JOB-EGC-003-REPAIR-C1-20261005: NEW -> OPEN.
+- GLOBAL_SOLVED remains NO.
+- MISSION_STATUS remains CONTINUE_REQUIRED.
+- CURRENT_WINNER remains NONE.
+
+NEXT_ACTION:
+- Repair JOB-EGC-003-REPAIR-C1-20261005.
+- In parallel continue independent review of other AWAITING_REVIEW evidence packages; do not wait on this repair if unrelated jobs are executable.
+
+WRITE_INTEGRITY:
+- branch head read: 74c52c6d06b4c3a185ce54530edb76b0ba7fc9f3
+- file SHA read: 1e24320b4522e53f24a37ab2c7bf1ace886a7d40
+- stale-write check: exact current blob SHA used; concurrent change must reject
+- commit/result: pending this commit
