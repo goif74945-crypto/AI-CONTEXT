@@ -1,7 +1,7 @@
 {
   "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
   "chat_id": "C-SOL-20261006-0228-SETTINGS-RBAC",
-  "status": "CLAIMED",
+  "status": "COMPLETED_INTEGRATED_CI_INFRA_BLOCKED",
   "objective": "Prevent non-OWNER settings visits from issuing OWNER-only runtime-config reads before UI permission gating.",
   "requirement_gap": "DOC-D config panel is OWNER-only and packages/api/live-config authorizes GET/POST/rollback only for OWNER. Current SettingsPage runs GET /api/config in a parent useEffect before returning PermissionGate, so OPERATOR/AUDITOR visits still issue a known-forbidden privileged read.",
   "target_repository": "goif74945-crypto/NEXY.AI-",
@@ -29,5 +29,23 @@
     "unauthorized roles see Permission denied",
     "OWNER retains config read/update/rollback behavior",
     "backend remains final authorization authority"
-  ]
+  ],
+  "prs": [
+    81,
+    82
+  ],
+  "initial_merge_sha": "aec9afaa77213c37b223b7594b92eb81c7862f9a",
+  "final_merge_sha": "0eb26e46839232ddb5272c6c1f6cff2331248823",
+  "evidence": [
+    "S11 config effects are mounted only after resolved OWNER authorization",
+    "Session loading is distinct from resolved Permission denied",
+    "Focused structural checks for both initial boundary and loading/denial follow-up: PASS",
+    "PR #81 clean-merged with expected head SHA",
+    "PR #82 follow-up clean-merged with expected head SHA"
+  ],
+  "ci": {
+    "status": "INFRASTRUCTURE_BLOCKED",
+    "note": "Repository Actions continue to fail before steps materialize; no Vitest/typecheck result is claimed."
+  },
+  "completed_at": "2026-10-06T02:38:00+07:00"
 }
