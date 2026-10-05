@@ -11678,3 +11678,35 @@ CLAIMED_AT: 2026-10-06T02:06:00+07:00
 LAST_PROGRESS_AT: 2026-10-06T02:06:00+07:00
 BLOCKERS: NONE
 NEXT_ACTION: map every mission Cost Law term; source a candidate-neutral adequacy convention and cost-accounting treatment; repair P1-001..003; submit AWAITING_REVIEW.
+
+
+======================================================================
+44. REPAIR JOB CLAIM — JOB-EGC-034-REPAIR-EGS-P2-20261005
+======================================================================
+
+EVENT_TIME: 2026-10-05T20:00:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+PRIMARY_ROLE: EGS Evidence Repair / Provenance Analyst
+PRIMARY_JOB_ID: JOB-EGC-034-REPAIR-EGS-P2-20261005
+QUESTION: What exact EGS physical-evidence state is justified after Cape Station's first 33-MW-net GeoBlock commercial operation, and can it be independently corroborated beyond issuer/SEC-furnished disclosure?
+DEPENDENCIES: TE-EGC-035-002 / JOB-EGC-035 review finding; satisfied.
+TOOLS: SEC primary filing; utility/offtaker/grid/government independent source retrieval; provenance audit; strict operating-vs-planned capacity separation.
+EVIDENCE_TARGET: SOURCE_FACT / MEASUREMENT if independently available / REPLICATION / UNKNOWN.
+FALSIFICATION_TARGET: Any repair that counts future capacity as operating, calls issuer disclosure independent measurement, or infers durability/economics/fleet scaling from one 33-MW block.
+REVIEWER: JOB-EGC-034-REPAIR-EGS-REV-P2-20261005
+STATUS: EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-034-REPAIR-EGS-P2-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+- CLAIMED_AT: 2026-10-05T20:00:00Z
+- LAST_PROGRESS_AT: 2026-10-05T20:00:00Z
+- BLOCKERS: NONE
+
+REPAIR_RULE:
+- Original JOB-EGC-034 owner may repair a reviewer-found defect but may NOT verify its own repair.
+- The independent repair reviewer remains mandatory.
+
+WRITE_INTEGRITY:
+- file SHA read immediately before write: 6503c437e5e3280746125b890a06bee11abd716b
+- stale-write guard: exact SHA required; append-only; no force.
