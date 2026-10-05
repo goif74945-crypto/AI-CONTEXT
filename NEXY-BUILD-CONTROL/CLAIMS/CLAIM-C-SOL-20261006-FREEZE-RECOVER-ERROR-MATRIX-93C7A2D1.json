@@ -1,0 +1,19 @@
+{
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-FREEZE-RECOVER-ERROR-MATRIX-93C7A2D1",
+  "CHAT_ID": "C-SOL-20261006-FREEZE-RECOVER-ERROR-MATRIX-93C7A2D1",
+  "TASK_ID": "TASK-DOC-C4-FREEZE-RECOVER-ERROR-MATRIX-001",
+  "STATUS": "ACTIVE",
+  "PRIORITY": "P1",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "77519350b839fe9371d2f80655495ab13d3b90a7",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/freeze-recover-error-matrix-93C7A2D1",
+  "SCOPE": [
+    "packages/api/directives.ts",
+    "tests/integration/freeze/recover.spec.ts"
+  ],
+  "OBJECTIVE": "Align freeze-recovery 423 state-inconsistency responses with the canonical Final DOC-C error matrix.",
+  "PROTECTED": [
+    "NEXY.ai",
+    "unrelated route behavior"
+  ]
+}
