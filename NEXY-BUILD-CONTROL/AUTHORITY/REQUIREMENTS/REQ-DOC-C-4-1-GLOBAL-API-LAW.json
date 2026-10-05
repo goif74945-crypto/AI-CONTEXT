@@ -47,5 +47,24 @@
   ],
   "STATUS": "PARTIAL",
   "STATUS_REASON": "Existing route-surface and envelope requirements cover parts of §4.1, but no dedicated denominator previously mapped all four global API laws across all twelve canonical routes.",
-  "LAST_VERIFIED_SHA": null
+  "LAST_VERIFIED_SHA": null,
+  "LAST_INSPECTED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "mutating_routes": {
+      "POST /api/auth/logout": "CSRF + session + body idempotency present, but canonical P1 task exists for replay not being principal/action/request bound.",
+      "POST /api/directives": "CSRF + active session/device/RBAC + idempotency key; replay bound to sessionId and canonical request hash.",
+      "POST /api/freeze/recover": "CSRF + active session/device/OWNER + idempotency key; replay bound to incident resource, requestHash and principalHash.",
+      "POST /api/vault/commit": "CSRF + authenticated OWNER/SYSTEM context + body idempotency key forwarded to vault commit."
+    },
+    "exempt_mutations": {
+      "POST /api/auth/request-otac": "Final DOC-C explicitly exempts session/CSRF and idempotency.",
+      "POST /api/auth/verify-otac": "Final DOC-C explicitly exempts session/CSRF and idempotency."
+    },
+    "known_open_tasks": [
+      "TASK-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001",
+      "TASK-DOC-C4-CANONICAL-ROUTE-ORACLE-001",
+      "TASK-DOC-C3-ENVELOPE-CONTRACT-001"
+    ],
+    "execution": "No exact-SHA runtime PASS available: GitHub Actions zero-step and local checkout blocked by runtime DNS."
+  }
 }
