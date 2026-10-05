@@ -4235,3 +4235,263 @@ WRITE_INTEGRITY:
 - file SHA read before write: 52c5454dc45cbdd8b6c123356d53c3d787c8d7d7
 - stale-write check: re-fetch immediately before mutation; update_file SHA lease must also pass.
 - commit/result: populated by GitHub mutation below if successful.
+
+
+======================================================================
+33. JOB-EGC-036 EVIDENCE PASS 1 — CURRENT COST/SYSTEM-COST SOURCE MATRIX
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-COSTSRC-E1
+JOB_ID: JOB-EGC-036
+STATUS: EXECUTING
+MISSION_STATUS: CONTINUE_REQUIRED
+GLOBAL_SOLVED: NO
+
+METHOD:
+- Searched current official/intergovernmental/government/lab sources first.
+- Added an independent market benchmark only as a cross-check, not as sole authority.
+- Did NOT rank technologies across incompatible boundaries.
+- Treated plant-level LCOE, firm project-level LCOE, and system-level costs as distinct metrics.
+- PDF-structured evidence from EIA and IRENA was visually checked against rendered pages before recording decisive table/method facts.
+
+### EVIDENCE_ID: EVID-EGC-036-001
+CLAIM_ID: CLAIM-EGC-COSTSRC-IRENA-2025
+TOOL: current web research
+METHOD: direct source retrieval from IRENA 2026 publication landing page
+DATE: 2026-10-05 mission date
+SOURCE: International Renewable Energy Agency (IRENA), Renewable power generation costs in 2025
+SOURCE_DATE: July 2026
+URL/DOI/IDENTIFIER: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+INPUTS: IRENA renewable-cost database / projects commissioned in 2025
+PARAMETERS: global weighted-average utility-scale LCOE by renewable technology
+EQUATION/CODE/METHOD: source-reported LCOE; no re-computation in this pass
+OUTPUT:
+- Solar PV: USD 44/MWh
+- Onshore wind: USD 33/MWh
+- Offshore wind: USD 78/MWh
+- Hydropower: USD 62/MWh
+- Geothermal: USD 89/MWh
+- CSP: USD 115/MWh
+- Bioenergy: USD 86/MWh
+- IRENA reports >90% of utility-scale renewable projects commissioned in 2025 produced electricity below the cheapest new fossil-fuel plant in their market.
+UNITS: 2025 source-reported USD/MWh
+UNCERTAINTY: project/database dispersion not extracted in this pass
+ASSUMPTIONS: source methodology and weighting as published
+LIMITATIONS:
+- Plant/project generation-cost metric is not equivalent to delivered system cost.
+- Transmission, distribution, balancing, and economy-wide reliability costs are not automatically included.
+- Cross-technology ranking against nuclear/fossil/storage requires common boundary JOB-EGC-004.
+REPRODUCTION_METHOD: retrieve publication landing page and annex/methodology; reproduce technology-weighted averages from database if available.
+REPLICATION_STATUS: NOT_YET_INDEPENDENTLY_REPLICATED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### EVIDENCE_ID: EVID-EGC-036-002
+CLAIM_ID: CLAIM-EGC-COSTSRC-IRENA-FIRM-2026
+TOOL: current web research + PDF visual verification
+METHOD: IRENA 2026 report/press release plus rendered executive-summary page
+DATE: 2026-10-05 mission date
+SOURCE: IRENA, 24/7 renewables: The economics of firm solar and wind
+SOURCE_DATE: May 2026
+URL/DOI/IDENTIFIER: https://www.irena.org/Publications/2026/May/24-7-renewables-The-economics-of-firm-solar-and-wind ; ISBN 978-92-9260-736-4
+INPUTS: solar PV/onshore wind/BESS project assumptions and resource profiles
+PARAMETERS:
+- firm renewable power defined as meeting a specified share of demand continuously on an hourly basis
+- storage modeled as utility-scale four-hour lithium-ion BESS unless otherwise stated
+- bottom-up asset/project-level analysis rather than a full system-wide flexibility model
+EQUATION/CODE/METHOD: project-level firm LCOE optimization/model documented by IRENA
+OUTPUT:
+- High-quality resource regions: solar + storage firm cost reported at about USD 54–82/MWh.
+- IRENA explicitly warns that universal generator-level firming is not required for reliable power systems; reliability can come from diverse resources, transmission, dispatchable generation, storage, and demand flexibility.
+- Executive summary explicitly distinguishes this project-level metric from system-wide flexibility-cost modeling.
+UNITS: USD/MWh
+UNCERTAINTY: site/resource/finance/configuration sensitivity is material; not fully extracted in this pass
+ASSUMPTIONS: four-hour lithium-ion storage convention; project-level optimization; flat-output/reliability target assumptions per report
+LIMITATIONS:
+- Not a universal delivered-system-cost result.
+- High-resource-region results cannot be generalized globally.
+- Candidate comparison must not double-count or omit grid/system services.
+REPRODUCTION_METHOD: inspect report executive summary/method annex; rerun firm-LCOE optimization for selected published sites in independent job.
+REPLICATION_STATUS: NOT_YET_INDEPENDENTLY_REPLICATED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + SIMULATION/MODEL_SOURCE
+
+### EVIDENCE_ID: EVID-EGC-036-003
+CLAIM_ID: CLAIM-EGC-COSTSRC-EIA-AEO2026
+TOOL: current web research + PDF visual verification
+METHOD: EIA AEO2026 levelized-cost page plus Electricity Market Module assumptions table
+DATE: 2026-10-05 mission date
+SOURCE: U.S. Energy Information Administration, Annual Energy Outlook 2026
+SOURCE_DATE: 2026-04-08 release; EMM assumptions April 2026
+URL/DOI/IDENTIFIER: https://www.eia.gov/outlooks/aeo/electricity_generation/ ; https://www.eia.gov/outlooks/aeo/assumptions/pdf/EMM_Assumptions.pdf
+INPUTS: NEMS/EMM U.S. regional cost, financing, fuel, performance and policy assumptions
+PARAMETERS:
+- new resources entering service in 2031 for LCOE/LACE/LCOS comparison
+- 25 U.S. electricity supply regions
+- capacity-weighted and unweighted regional averages/ranges
+EQUATION/CODE/METHOD: EIA NEMS/EMM; LCOE, LACE, LCOS and value-cost ratio
+OUTPUT:
+- EIA explicitly states real/model capacity decisions are more complex than a simple LCOE comparison and uses LACE-to-LCOE/S value-cost framing.
+- EMM Table 3 provides consistent 2025$/kW overnight cost, variable/fixed O&M, lead-time, size and technological-optimism inputs across technologies.
+- Visually verified examples from Table 3 include total overnight cost: combined-cycle single-shaft USD 1,086/kW; nuclear LWR USD 8,255/kW; SMR USD 9,831/kW; battery storage USD 1,521/kW; onshore wind USD 1,712/kW; solar PV tracking USD 1,484/kW; solar PV with storage USD 1,903/kW.
+- EIA notes overnight capital cost excludes construction interest; regional multipliers and site variation matter; battery electricity-to-storage losses are represented through additional generation demand.
+UNITS: 2025 USD/kW; 2025 USD/MWh; years; Btu/kWh as applicable
+UNCERTAINTY: EIA regional ranges and scenario uncertainty exist; not fully extracted here
+ASSUMPTIONS: U.S. NEMS structure and policy assumptions; several base technology estimates originate from 2024 engineering studies adjusted for 2025 commodity changes and selected later updates
+LIMITATIONS:
+- Primarily U.S. and partially forward-looking to 2031.
+- Not direct observed project transaction cost for every technology.
+- Some source inputs are older than 2026 and require vintage flags.
+REPRODUCTION_METHOD: download EIA XLSX/assumptions, independently recompute selected LCOE/LCOS using published inputs and compare against EIA outputs.
+REPLICATION_STATUS: NOT_YET_INDEPENDENTLY_REPLICATED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### EVIDENCE_ID: EVID-EGC-036-004
+CLAIM_ID: CLAIM-EGC-COSTSRC-NEA-EPRI-2025
+TOOL: current web research
+METHOD: OECD Nuclear Energy Agency publication and release summary
+DATE: 2026-10-05 mission date
+SOURCE: OECD NEA + EPRI, The Costs of Generating Electricity 2025
+SOURCE_DATE: 2026-09-17 publication
+URL/DOI/IDENTIFIER: https://tdb.oecd-nea.org/jcms/pl_121713/the-costs-of-generating-electricity-2025?details=true
+INPUTS: plant-level cost data across 23 technologies in 21 countries
+PARAMETERS: LCOE; technology/country-specific capacity-factor and cost assumptions
+EQUATION/CODE/METHOD: internationally comparable plant-level LCOE framework
+OUTPUT:
+- Report spans 23 technologies and 21 countries.
+- NEA/EPRI state that only long-term operation of existing nuclear, hydro, and onshore wind/solar PV when system costs are excluded can provide electricity below USD 100/MWh in the reported comparison.
+- Source explicitly states LCOE must be complemented by system-cost analysis in country context.
+UNITS: USD/MWh and source-specific cost inputs
+UNCERTAINTY: technology/country dispersion material; detailed table extraction pending
+ASSUMPTIONS: publication methodology
+LIMITATIONS:
+- Plant-level LCOE cannot be treated as full delivered-system cost.
+- Exact country/technology values require detailed dataset extraction before numerical ranking.
+REPRODUCTION_METHOD: obtain publication tables/data; recompute LCOE at common discount rates/capacity factors and compare to published values.
+REPLICATION_STATUS: NOT_YET_INDEPENDENTLY_REPLICATED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### EVIDENCE_ID: EVID-EGC-036-005
+CLAIM_ID: CLAIM-EGC-COSTSRC-GENCOST-2025-26
+TOOL: current web research
+METHOD: direct CSIRO GenCost pages and 2026 release
+DATE: 2026-10-05 mission date
+SOURCE: CSIRO + Australian Energy Market Operator, GenCost 2025-26
+SOURCE_DATE: 2026-07-15 final release
+URL/DOI/IDENTIFIER: https://www.csiro.au/en/research/technology-space/energy/electricity-transition/gencost
+INPUTS: Australian new-build generation/storage/hydrogen costs and system-model inputs
+PARAMETERS: CAPEX, LCOE, System Levelised Cost of Electricity (SLCOE), generation/storage/transmission mix
+EQUATION/CODE/METHOD: GenCost plus Simple Electricity Model (SEM)
+OUTPUT:
+- Current GenCost explicitly models system-level combinations of generation, storage and transmission, not only standalone LCOE.
+- CSIRO states the final 2025-26 report provides capital costs and LCOE and adds SLCOE plus a Simple Electricity Model for system-cost transparency.
+- Current 2026 release reports 2025 NEM average generation price about AUD 104/MWh and futures-based expectations around AUD 80–90/MWh by 2030; these are market/system context, not directly comparable to global plant LCOEs.
+UNITS: AUD/MWh and technology-specific CAPEX units
+UNCERTAINTY: scenario/local-condition dependent
+ASSUMPTIONS: Australian NEM context and published model assumptions
+LIMITATIONS:
+- Geography is Australia; not automatically portable globally.
+- Retail prices include substantial non-generation components and must not be confused with generator LCOE.
+REPRODUCTION_METHOD: download public GenCost data/formulae and SEM inputs; independently rerun common scenarios if software environment permits.
+REPLICATION_STATUS: NOT_YET_INDEPENDENTLY_REPLICATED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + MODEL_SOURCE
+
+### EVIDENCE_ID: EVID-EGC-036-006
+CLAIM_ID: CLAIM-EGC-COSTSRC-ATB-2024B
+TOOL: current web research
+METHOD: National Laboratory of the Rockies/NREL ATB site inspection
+DATE: 2026-10-05 mission date
+SOURCE: Electricity Annual Technology Baseline 2024b
+SOURCE_DATE: 2024 vintage; site current when inspected in 2026
+URL/DOI/IDENTIFIER: https://atb.nrel.gov/electricity/2024b/data
+INPUTS: technology-specific CAPEX/OPEX/capacity factor/financial assumptions/LCOE
+PARAMETERS: U.S. technology cost/performance and projections through 2050
+EQUATION/CODE/METHOD: ATB standardized technology baseline
+OUTPUT:
+- ATB supplies consistent downloadable CAPEX, OPEX, capacity factor, financial assumptions and LCOE across renewable, conventional and storage technologies.
+- The site identifies 2024b as the current Electricity ATB version observed in this search.
+UNITS: source-specific; typically USD/kW, USD/kW-year, USD/MWh, capacity factor
+UNCERTAINTY: scenario/resource-class dependent
+ASSUMPTIONS: ATB technology/scenario methodology
+LIMITATIONS:
+- Cost-data vintage is materially older than 2026 for fast-moving solar, battery, gas-turbine and financing conditions.
+- Use as methodology/normalization backbone only until current costs are refreshed from newer sources.
+REPRODUCTION_METHOD: download workbook/CSV and compare selected 2024b inputs against 2026 EIA/IRENA/Lazard/GenCost.
+REPLICATION_STATUS: NOT_YET_INDEPENDENTLY_REPLICATED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### EVIDENCE_ID: EVID-EGC-036-007
+CLAIM_ID: CLAIM-EGC-COSTSRC-LAZARD-2026
+TOOL: current web research
+METHOD: direct Lazard 2026 LCOE+ release and landing page
+DATE: 2026-10-05 mission date
+SOURCE: Lazard, Levelized Cost of Energy+ 2026
+SOURCE_DATE: 2026-07-13
+URL/DOI/IDENTIFIER: https://lazard.com/research-insights/levelized-cost-of-energyplus-lcoeplus/
+INPUTS: market/industry cost benchmarks for generation and storage
+PARAMETERS: unsubsidized new-build LCOE and system/storage contextual analysis
+EQUATION/CODE/METHOD: Lazard LCOE+ methodology
+OUTPUT:
+- Lazard reports rising/inflationary cost pressure across generation technologies in 2026.
+- Lazard still identifies renewables as the most cost-competitive new-build generation on an unsubsidized basis in its benchmark.
+- Lazard reports storage costs rose in 2026, reversing recent declines.
+UNITS: report-specific USD/MWh and storage cost metrics
+UNCERTAINTY: range by technology/project and market conditions
+ASSUMPTIONS: Lazard market methodology
+LIMITATIONS:
+- Private-sector benchmark, not government/intergovernmental dataset.
+- Use as independent market cross-check, never as sole authoritative baseline.
+REPRODUCTION_METHOD: extract 2026 report ranges and compare against EIA/IRENA/NEA/CSIRO under matched boundary/year/geography.
+REPLICATION_STATUS: NOT_YET_INDEPENDENTLY_REPLICATED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: EXTERNAL_FACT
+
+### CLAIM_ID: CLAIM-EGC-036-A
+TRUTH_CLASS: INFERENCE
+CLAIM: No single published LCOE series found in this pass is sufficient for the mission's LOW_COST comparison because the mission requires delivered-system boundary including storage/firming/grid/transmission, while major current sources explicitly use different plant/project/system boundaries.
+SUPPORTED_BY: EVID-EGC-036-001,002,003,004,005
+DEPENDENT_CLAIMS: JOB-EGC-002 normalized baseline; JOB-EGC-004 common system boundary; JOB-EGC-021 integration cost
+STATUS: SUPPORTED_NOT_VERIFIED
+FALSIFICATION: A current dataset with globally comparable full delivered-system costs across all candidate families under a common boundary would supersede this inference.
+
+### CLAIM_ID: CLAIM-EGC-036-B
+TRUTH_CLASS: INFERENCE
+CLAIM: The strongest current baseline evidence stack should combine at least (a) current plant/project cost datasets, (b) a system-cost model, and (c) a value/reliability metric rather than ranking technologies by LCOE alone.
+SUPPORTED_BY: EVID-EGC-036-002,003,004,005
+STATUS: SUPPORTED_NOT_VERIFIED
+FALSIFICATION: Independent review shows one of these dimensions is immaterial under the mission's final fixed objective and common boundary.
+
+### CROSS-SOURCE RECONCILIATION: RECON-EGC-036-001
+OBSERVATION:
+- IRENA 2025 global renewable LCOEs show low/stable renewable generation costs.
+- Lazard 2026 reports rising cost pressure across U.S./market generation technologies.
+- CSIRO 2025-26 reports falling battery costs but rising gas-technology costs in its Australian planning context.
+RESOLUTION: NOT_A_CONTRADICTION_YET.
+REASON: different geography, commissioning year, financing/market conditions, system boundary, technology baskets and cost definitions.
+REQUIRED_NEXT_STEP: normalize year/currency/geography/financing/boundary before any winner claim.
+
+### JOB-EGC-036 PROGRESS DECISION
+RESULT:
+- Authoritative source reconnaissance produced a usable provenance-ranked evidence set.
+- Key boundary traps are identified before numerical baseline normalization.
+- Current evidence is sufficient to hand off source acquisition to JOB-EGC-002/JOB-EGC-004, but NOT sufficient to rank candidates or mark JOB-EGC-036 VERIFIED.
+STATUS_CHANGE: JOB-EGC-036 CLAIMED -> AWAITING_REVIEW
+REVIEWER_REQUIRED: JOB-EGC-018 or independent provenance-review session
+BLOCKERS:
+- independent review/replication not yet completed
+- common comparison boundary JOB-EGC-004 not yet verified
+- detailed NEA/EPRI table extraction and independent numerical recomputation pending
+NEXT_ACTION:
+- Independent reviewer checks source dates/boundaries and extracts detailed tables.
+- JOB-EGC-002 uses only boundary-compatible inputs after JOB-EGC-004.
+- If execution capacity remains, select a new non-colliding high-information job.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
