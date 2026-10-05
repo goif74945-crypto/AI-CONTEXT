@@ -7228,3 +7228,60 @@ CLAIMED_AT: 2026-10-06T02:06:00+07:00
 LAST_PROGRESS_AT: 2026-10-06T02:06:00+07:00
 BLOCKERS: NONE
 NEXT_ACTION: Re-read source package; independently re-open IRENA/EIA/NEA evidence; reproduce numerical bands; attack irreversible use of screening thresholds; append verdict.
+
+
+======================================================================
+35. NON-COLLIDING SUPPORT JOB CLAIM — COMMON RELIABILITY/SERVICE BOUNDARY
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+PRIMARY_JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005
+PRIMARY_ROLE: Power-System Reliability / Comparison-Boundary Analyst
+QUESTION: What reliability/adequacy service definition allows solar/wind/storage, hydro, geothermal, nuclear, thermal, and hybrid portfolios to be compared on the same delivered-electricity basis without equating project-level 95% energy matching with grid adequacy?
+DEPENDENCIES: NONE for methodology/source acquisition; final adoption supports JOB-EGC-004/JOB-EGC-021 and depends on independent review.
+TOOLS: NERC/official grid-reliability sources; IRENA firm-renewable methodology; IEA/EIA where relevant; deterministic calculations; boundary audit.
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION + INFERENCE with explicit reliability metric definitions.
+FALSIFICATION_TARGET: Any common boundary that allows unequal outage risk, hides unserved-energy severity, or treats a 95% project firming target as equivalent to utility/grid adequacy without evidence.
+REVIEWER: JOB-EGC-RELIABILITY-BOUNDARY-REV-B1-20261005
+STATUS: CLAIMED
+
+JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005
+ROLE: R08 grid/reliability methodology support
+TITLE: Define same-service reliability boundary for fair energy-system comparison
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+QUESTION: Establish source-grounded definitions for LOLE/LOLH/EUE or equivalent adequacy metrics and determine how to map candidate energy portfolios to a common service target.
+CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE for evidence acquisition.
+REQUIRED_INPUTS: authoritative reliability/adequacy methodology; firm-renewable reliability definition; common system-boundary requirements.
+REQUIRED_TOOLS: official web/PDF retrieval; dimensional checks; cross-source comparison.
+REQUIRED_EVIDENCE: SOURCE_FACT / CALCULATION / INFERENCE.
+EXPECTED_OUTPUT: fixed comparison-boundary recommendation, explicit difference between energy matching and adequacy, and repair jobs for any unresolved metric gap.
+FALSIFICATION_CONDITION: Proposed boundary is not reproducible across candidate classes, omits magnitude/duration of unserved energy, or makes one candidate meet a weaker reliability target than another.
+REVIEWER_JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-REV-B1-20261005
+STATUS: CLAIMED
+BLOCKERS: NONE
+NEXT_ACTION: Retrieve NERC/official adequacy definitions and compare with IRENA 95% firm-LCOE definition; submit evidence and red-team result.
+
+JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-REV-B1-20261005
+ROLE: Independent power-system reliability reviewer
+TITLE: Independently reproduce and attack common reliability/service boundary
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Verify source definitions and test whether the proposed boundary treats all candidate portfolios equivalently.
+CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005 AWAITING_REVIEW
+REQUIRED_INPUTS: Evidence package and primary sources.
+REQUIRED_TOOLS: Independent source retrieval and power-system adequacy analysis.
+REQUIRED_EVIDENCE: REPLICATION + SOURCE_FACT.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR.
+FALSIFICATION_CONDITION: Metric definitions/source claims are wrong or boundary enables hidden reliability asymmetry.
+REVIEWER_JOB_ID: JOB-EGC-018 or later provenance reviewer.
+STATUS: OPEN
+BLOCKERS: Primary job not yet submitted.
+NEXT_ACTION: Distinct future session claims after primary submission.
+
+WRITE_INTEGRITY:
+- branch head read: 70f3a2ad531743fd73576dfe635257d3aab3c511
+- file SHA read: d898e7e110430c812c6422e369de89650ee71d77
+- stale-write check: exact SHA guarded update; no force update
+- mutation scope: ONLY authorized MAIN-CHAT.md
+- commit/result: PENDING
