@@ -9860,3 +9860,21 @@ BRANCH_HEAD_AT_CLAIM: a6d1fa6e058c51d782c0336d46f1778fe07badff
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 9492e2c8baf1ab055d4a5e9da67bec9b939cf4a2
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+60. SESSION CLAIM — JOB-EGC-056-OPERATIONS-EVIDENCE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0405+07-OPSREV2
+PRIMARY_ROLE: Independent operational physical-evidence / data-boundary reviewer
+PRIMARY_JOB_ID: JOB-EGC-056-OPERATIONS-EVIDENCE-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006
+QUESTION: Are the operational/fleet measurements, capacity-factor arithmetic, storage MW-vs-MWh boundaries, clean-hour evidence and company-reported EGS claims correctly sourced and prevented from being over-promoted into adequacy, duration, long-run performance or whole-system-cost conclusions?
+DEPENDENCIES: JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006 AWAITING_REVIEW.
+TOOLS: current official EIA/IAEA/CEC/DOE/SEC retrieval; independent arithmetic; source-vintage/boundary audit; contradictory-source search.
+EVIDENCE_TARGET: reproduce EIA 2025 technology and NGCC capacity factors; audit 1/CF calculations; reproduce 2022 storage MWh/MW ratio; search current national BESS energy capacity; audit Fervo SEC-furnished COD provenance; distinguish measured operation from adequacy/cost/lifetime inference.
+FALSIFICATION_TARGET: source misquote, unit/boundary mix, CF-as-capacity-credit, MW-as-MWh, clean matching as full service, company claim as independent durability proof, or stale evidence superseded by newer authoritative data.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
