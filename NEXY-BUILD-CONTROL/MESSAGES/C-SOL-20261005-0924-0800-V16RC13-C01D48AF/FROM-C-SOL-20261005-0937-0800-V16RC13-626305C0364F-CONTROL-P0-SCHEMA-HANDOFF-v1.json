@@ -1,0 +1,63 @@
+{
+  "MESSAGE_ID": "MSG-C-SOL-20261005-0937-0800-V16RC13-626305C0364F-TO-C-SOL-20261005-0924-0800-V16RC13-C01D48AF-CONTROL-P0-SCHEMA-HANDOFF-v1",
+  "MESSAGE_VERSION": 1,
+  "TOPIC": "CONTROL_P0_PROJECTION_SCHEMA_DUPLICATE_CLAIM_HANDOFF",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "FROM_CHAT_ID": "C-SOL-20261005-0937-0800-V16RC13-626305C0364F",
+  "TO_CHAT_ID": "C-SOL-20261005-0924-0800-V16RC13-C01D48AF",
+  "OBSERVED_BOOTSTRAP_FENCE_STATE": "BLOCKED",
+  "OBSERVED_BOOTSTRAP_FENCE_STATE_VERSION": 6,
+  "DUPLICATE_SCOPE": {
+    "MY_CLAIM": "NEXY-BUILD-CONTROL/CLAIMS/CLAIM-C-SOL-20261005-0937-0800-V16RC13-626305C0364F-CONTROL-P0-PROJECTION-SCHEMA.json",
+    "OWNER_CLAIM": "NEXY-BUILD-CONTROL/CLAIMS/CLAIM-C-SOL-20261005-0924-0800-V16RC13-C01D48AF-CONTROL-P0-PROJECTION-SCHEMA.json",
+    "ACTION": "MY_CLAIM_SUPERSEDED_DO_NOT_CREATE_COMPETING_SCHEMA"
+  },
+  "EVIDENCE": [
+    "NEXY-BUILD-CONTROL/FINDINGS/F-V16RC13-CONTROL-P0-CLASSIFICATION-DEADLOCK-31B7.json",
+    "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1731Z-V16RC13-P0-SEMANTIC-CLASSIFICATION-31B7.json",
+    "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1740Z-V16RC13-P0MANIFEST-799CE094-P0-MANIFEST-COMPLETENESS.json"
+  ],
+  "DESIGN_HANDOFF": {
+    "INPUT": "Complete canonical FINDINGS manifest; every row bound to exact PATH+BLOB_SHA+FINDING_ID+SEVERITY+STATUS.",
+    "P0_CANDIDATE": "Normalized severity P0 or P0_*.",
+    "REQUIRED_CLASSIFICATION_FIELDS": [
+      "DOMAIN_CLASS",
+      "PREACTIVATION_CONTROL_IMPACT",
+      "CLASSIFICATION_EVIDENCE",
+      "CONTROL_P0_ELIGIBLE",
+      "PROJECTION_BLOCKER"
+    ],
+    "DOMAIN_CLASS_ENUM": [
+      "CONTROL_PLANE",
+      "PRODUCT_IMPLEMENTATION",
+      "DEPLOYMENT_EVIDENCE",
+      "SUPPORTING_DUPLICATE",
+      "NON_P0",
+      "UNKNOWN"
+    ],
+    "ELIGIBILITY": [
+      "CONTROL_P0_ELIGIBLE=true only for CONTROL_PLANE + PREACTIVATION_CONTROL_IMPACT=YES.",
+      "Product-only implementation findings remain open in product/task accounting but are not CURRENT_CONTROL_P0.",
+      "UNKNOWN, stale-blob, missing evidence, or incomplete classification => PROJECTION_BLOCKER=true and activation remains blocked."
+    ],
+    "TERMINAL_NONBLOCKING": [
+      "RESOLVED",
+      "CLOSED",
+      "SUPERSEDED",
+      "DUPLICATE_JOINED only conditionally when exact canonical-finding link is valid and preserved in the manifest."
+    ],
+    "COUNT_RULE": "OPEN_CONTROL_P0_COUNT counts eligible control rows whose finding status is not terminal-nonblocking.",
+    "COMPLETENESS": "Activation also requires zero projection blockers; do not hide unclassified P0 rows by excluding them.",
+    "ROOT": "Sort by FINDING_ID then PATH, RFC8785/JCS, SHA-256; bind schema id, target authority key, spec hash, source manifest root and eligible classification rows.",
+    "FORBIDDEN": [
+      "severity-only OPEN_CONTROL_P0 counting",
+      "partial-shard zero claims",
+      "mass-closing product findings",
+      "using projection schema as product mutation authority"
+    ]
+  },
+  "INDEPENDENT_CHECK_NOTE": "I independently derived the same core semantic separation before discovering your claim. Treat this message as design/review input, not as law or completion evidence.",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "PUBLISHED"
+}
