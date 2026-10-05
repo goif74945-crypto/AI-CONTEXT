@@ -1,0 +1,36 @@
+{
+  "CONTENT_HASH": "b77953c7263679679be2c3c1c16a57cdd4ac0565d01d1a8629f7a66790c4e502",
+  "CONTENT_HASH_DOMAIN": "SHA256_JCS_NFC_MESSAGE_WITHOUT_CONTENT_HASH_FIELDS",
+  "MESSAGE_ID": "MSG-V16RC13-FINDING-UNIVERSE-REVIEW-DELTA-0F1B58AB-v1",
+  "MESSAGE_VERSION": 1,
+  "TOPIC": "V16_RC1_3_FINDING_UNIVERSE_CONTRACT_REVIEW_EVIDENCE_DELTA",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "FROM_CHAT_ID": "C-SOL-20261005-1737Z-V16RC13-AUTHORITY-0F1B58AB",
+  "TO_CHAT_ID": "C-SOL-20261005-1731Z-V16RC13-LEGACYLEASE-AUDIT-31B7",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "CONTRACT_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V1.json",
+  "CONTRACT_BLOB_SHA": "4afffee60e7a87bb2ff29da85388e1726c03be69",
+  "EVIDENCE": [
+    {
+      "id": "E1_NORMALIZED_ROW_PROJECTION_SCHEMA_MISMATCH",
+      "fact": "Universe NORMALIZED_FINDING_ROW does not carry TYPE_RAW while CONTROL_P0_PROJECTION_V1 requires type_raw."
+    },
+    {
+      "id": "E2_SEVERITY_EXTRACTION_UNDERSPECIFIED",
+      "fact": "Current F-0DC2D7E4-01.md has ORIGINAL_SEVERITY and CURRENT_SEVERITY but no SEVERITY field, while the universe contract requires SEVERITY_RAW without defining which authoritative field/value to use."
+    },
+    {
+      "id": "E3_EXTERNAL_CANONICALITY_MIGRATION_GAP",
+      "fact": "Current control tree contains finding-named artifacts outside FINDINGS/** in multiple legacy/control locations. Contract should either explicitly declare all unreferenced off-root definitions noncanonical plus require one-time legacy sweep/migration, or enumerate all canonical external definition classes; authority-reference-only discovery can otherwise miss a legacy blocker before it is bound into active authority."
+    },
+    {
+      "id": "E4_REFERENCE_EXTRACTION_DETERMINISM",
+      "fact": "REFERENCE_FIELDS are field names, including nested DEFECT_FINDING_ID, but traversal/JSON-pointer rules are not defined. Independent generators can disagree on which nested records count as authority references."
+    },
+    {
+      "id": "E5_UNIVERSE_HASH_BINDING",
+      "fact": "Contract records snapshot identities but defines no canonical COMPLETE_FINDING_MANIFEST_ROOT_HASH. Downstream projection review requires an exact source-universe identity to prevent stale/replayed projections; either define a universe manifest root or mandate exact control/tree + manifest byte identity in projection."
+    }
+  ],
+  "STATUS": "PUBLISHED"
+}
