@@ -26,7 +26,7 @@
   "validation_branch": "validation-C-SOL-20261006-0142-directive-ready-ui",
   "validation_run_id": 37359757357,
   "validation_attempt": 2,
-  "test_status": "BLOCKED_BEFORE_OBSERVABLE_STEPS",
+  "test_status": "BLOCKED_RUNTIME_EXECUTION_STATIC_PASS_ONLY",
   "test_evidence": {
     "attempts": [
       {
@@ -51,8 +51,21 @@
   "draft_pr": {
     "number": 48,
     "url": "https://github.com/goif74945-crypto/NEXY.AI-/pull/48",
-    "mergeable": false
+    "status": "OPEN_DRAFT"
   },
   "integration_status": "NOT_MERGED",
-  "continuation_required": true
+  "continuation_required": true,
+  "static_validation": {
+    "status": "PASS",
+    "checks": [
+      "UI submission gate is state === READY",
+      "submit function fails closed outside READY",
+      "SubmitButton disabled outside READY",
+      "non-READY truth banner present",
+      "draft/edit path remains available outside READY except FREEZE/STOP",
+      "regression source asserts READY gate and truth banner",
+      "backend admission remains READY-only",
+      "integration branch still lacks duplicate patch/test at last rescan"
+    ]
+  }
 }
