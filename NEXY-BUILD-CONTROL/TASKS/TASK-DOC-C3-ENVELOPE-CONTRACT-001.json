@@ -25,12 +25,10 @@
   ],
   "PRIORITY": "P1",
   "RISK": "HIGH",
-  "STATUS": "BLOCKED",
-  "OWNER": "UNASSIGNED",
-  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
-  "BLOCKERS": [
-    "INC-BRANCH-NAMESPACE-001"
-  ],
+  "STATUS": "ACTIVE",
+  "OWNER": "C-SOL-20261006-0142-ENVELOPE",
+  "BASE_SHA": "1ab5de28aa9f9b5a1a6722dc1e2a20d8b807a87c",
+  "BLOCKERS": [],
   "REVIEW_REQUIRED": 2,
   "REVIEW_COMPLETED": 2,
   "CREATED_BY": "CHAT-20261005-1713-GPT56SOL-CONTRACT-AUDIT",
@@ -41,5 +39,16 @@
     "NEXY-BUILD-CONTROL/RESULTS/REVIEW-ENVELOPE-CHAT-20261005-1708-GPT56SOL-01.json",
     "NEXY-BUILD-CONTROL/RESULTS/REVIEW-ENVELOPE-C-6E5A17C3.json"
   ],
-  "REVIEW_SATURATION": "COMPLETE"
+  "REVIEW_SATURATION": "COMPLETE",
+  "ACTUAL_WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C3-ENVELOPE-CONTRACT-001",
+  "CLAIMED_AT": "2026-10-06T01:42:00+07:00",
+  "NAMESPACE_RESOLUTION": {
+    "invalid_requested_prefix": "NEXY.AI-Test-AI/work/*",
+    "reason": "Git ref namespace collision with existing refs/heads/NEXY.AI-Test-AI",
+    "git_valid_prefix": "NEXY.AI-Test-AI-work/*"
+  },
+  "DEPENDENT_USAGE_REVIEW": {
+    "result": "NO_RUNTIME_CONSUMERS_FOUND_FOR_UNSUPPORTED_ENVELOPE_EXTENSION_SYMBOLS",
+    "note": "Current source/dependent review found unsupported envelope extension symbols confined to packages/contracts/envelope.ts; unrelated DialogRoleSchema does not import this RoleSchema."
+  }
 }
