@@ -11021,3 +11021,25 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+41. SESSION CLAIM — JOB-EGC-025 UNCERTAINTY / SENSITIVITY FRAMEWORK
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:22:30Z
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+PRIMARY_ROLE: Uncertainty / Sensitivity / Decision-Stability Analyst
+PRIMARY_JOB_ID: JOB-EGC-025
+QUESTION: What uncertainty protocol prevents a candidate from being called cheaper, scalable, or superior when plausible evidence-supported uncertainty can reverse the decision?
+DEPENDENCIES: Objective repair proposal exists and is AWAITING_REVIEW; methodology construction is executable now and final application waits on reviewed candidate/baseline models.
+TOOLS: authoritative measurement-uncertainty guidance; source/model audit; deterministic sensitivity; Monte Carlo only when distributions and correlations are evidenced; independent recomputation.
+EVIDENCE_TARGET: SOURCE_FACT / INFERENCE / CALCULATION / SIMULATION_RESULT / REVIEW.
+FALSIFICATION_TARGET: invented probability distributions; untracked correlations; one-at-a-time sensitivity that misses interactions; central-estimate winner whose plausible uncertainty reverses ranking; uncertainty hidden inside point estimates.
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+CLAIMED_AT: 2026-10-05T19:22:30Z
+LAST_PROGRESS_AT: 2026-10-05T19:22:30Z
+BLOCKERS: NONE for framework; candidate-specific application awaits upstream evidence.
+NEXT_ACTION: establish evidence-grounded uncertainty classes, propagation rules, decision-stability test and replication requirements; submit for independent review.
+WRITE_INTEGRITY: branch_head=fc1c75789de2bef911bde8ce5a5d4fac9f625591; file_sha=f83be5e40fd3efcbc62b7a928f26cf26cf58e51c; exact-SHA optimistic append only.
