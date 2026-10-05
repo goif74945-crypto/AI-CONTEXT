@@ -13526,3 +13526,314 @@ BLOCKERS: quantitative site/design risk remains candidate-specific; method/evide
 NEXT_ACTION: retrieve independent authoritative sources and attempt to break each C1 hazard classification; PASS/FAIL per claim; create repair job for material defects.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+56. THERMAL / HEAT-REJECTION RESULT — JOB-EGC-056-THERMAL-HEATREJECTION-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-THERM1
+PRIMARY_JOB_ID: JOB-EGC-056-THERMAL-HEATREJECTION-C1-20261006
+ROLE: Thermal Engineering / Heat-Rejection / Cooling-System Scale Analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-056-THERMAL-HEATREJECTION-REV-C2-20261006
+BRANCH_HEAD_BEFORE_WRITE: 4f1f581088efa7bbd749ed4b9b0645f30d7e4f4b
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 37a732f7935342276d004eaaccd6bb32d09a0d21
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE / NOT ESTABLISHED BY THIS JOB
+MISSION_STATUS: CONTINUE_REQUIRED
+
+OBJECTIVE:
+Close a missing thermal-engineering boundary: any thermal-electric candidate must show where the non-electric energy goes, how heat is rejected at the chosen site/cooling technology, what water/air heat sink is required, and how ambient conditions affect NET_SERVED output. Prevent gross-output optimism and hidden water/cooling externalization.
+
+THERMAL_BOUNDARY T_STAR:
+T_STAR_METHOD = SUPPORTED_PENDING_INDEPENDENT_REVIEW.
+T_STAR_UNIVERSAL_NUMERIC_PASS_THRESHOLD = UNKNOWN / NOT_SUPPORTED.
+For a steady-state thermal-electric plant, the audit SHALL distinguish:
+Q_IN = E_NET_PLANT + Q_USEFUL_EXTERNAL + Q_ENV_AND_OTHER + DELTA_STORED,
+where:
+- E_NET_PLANT is electricity exported after plant auxiliaries at the plant boundary;
+- Q_USEFUL_EXTERNAL is only a real useful thermal/other energy export with a valid co-product/counterfactual treatment;
+- Q_ENV_AND_OTHER is all non-electric energy leaving to condenser/cooling system, stack/exhaust, radiation/convection and other physical streams;
+- DELTA_STORED is zero over a sufficiently long steady-state accounting interval unless explicitly measured/modelled otherwise.
+For a simple heat-rate audit with no useful coproduct:
+ETA_NET = 3412.141633 / HR, with HR in Btu/kWh_net.
+Q_NON_ELECTRIC / E_NET = HR / 3412.141633 - 1 = 1/ETA_NET - 1.
+CRITICAL LIMITATION: Q_NON_ELECTRIC is NOT automatically condenser/cooling duty. For combustion plants a material portion can leave via stack/exhaust and other paths. Candidate-specific heat-rejection design must partition streams; the first-law result is a lower-level energy-balance invariant, not a cooling-tower sizing rule.
+
+MANDATORY COOLING/HEAT-SINK FIELDS:
+COOLING_TYPE = {ONCE_THROUGH, WET_RECIRCULATING, DRY_AIR_COOLED, HYBRID, OTHER_WITH_EVIDENCE}.
+WATER_WITHDRAWAL and WATER_CONSUMPTION MUST be separate.
+AMBIENT_BASIS must specify dry-bulb / wet-bulb / source-water temperature and hydrologic constraints as applicable.
+NET_DERATE must be measured or modelled against stated conditions.
+COOLING_AUXILIARIES must be netted exactly once.
+THERMAL_DISCHARGE / ecological legal limits remain separate hard constraints where applicable.
+Site water right, intake/discharge infrastructure, cooling CAPEX/OPEX, parasitic power, treatment and water cost belong to FSRC_ND exactly once.
+Residual water/thermal-discharge constraints that are legal or physical cannot be averaged away by low monetary cost.
+
+EVIDENCE_RECORD: TE-EGC-056-THERM-001
+CLAIM_ID: CLAIM-EGC-056-HEATRATE-001
+TOOL: Web
+SOURCE: U.S. Energy Information Administration, Electric Power Annual Table 8.2 + EIA efficiency FAQ/glossary
+SOURCE_DATE: EPA 2024-data release 2025-10-16; current EIA FAQ/glossary accessed 2026-10-06
+URL/IDENTIFIER: https://www.eia.gov/electricity/annual/html/epa_08_02.html ; https://www.eia.gov/tools/faqs/faq.php?id=107&t=10 ; https://www.eia.gov/tools/glossary/index.php?id=Heat_rate
+INPUTS: 2024 full-load tested heat rate: natural-gas combined cycle = 7,548 Btu/kWh; nuclear = 10,443 Btu/kWh. EIA states heat rates are expressed in Btu per net kWh generated and 1 kWh = 3,412 Btu for the efficiency calculation.
+OUTPUT: authoritative input basis for first-law normalization.
+EVIDENCE_CLASS: SOURCE_FACT.
+LIMITATIONS: Table 8.2 values are U.S. capacity-weighted tested/full-load values, not global fleet operating averages and not site-specific cooling design data.
+REPLICATION_STATUS: source-table and EIA definition cross-checked.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CALCULATION: CALC-EGC-056-THERM-001
+CLAIM_ID: CLAIM-EGC-056-FIRSTLAW-001
+TOOL: Wolfram Language evaluator
+METHOD: ETA_NET=3412.141633/HR; Q_NON_ELECTRIC/E_NET=HR/3412.141633-1.
+INPUTS:
+- NGCC HR=7,548 Btu/kWh_net
+- Nuclear HR=10,443 Btu/kWh_net
+OUTPUT:
+- NGCC ETA_NET = 0.452059039878 = 45.2059%.
+- NGCC Q_IN/E_NET = 2.212100437743 MWh_th/MWh_e.
+- NGCC Q_NON_ELECTRIC/E_NET = 1.212100437743 MWh_th/MWh_e.
+- Nuclear ETA_NET = 0.326739599062 = 32.6740%.
+- Nuclear Q_IN/E_NET = 3.060541185923 MWh_th/MWh_e.
+- Nuclear Q_NON_ELECTRIC/E_NET = 2.060541185923 MWh_th/MWh_e.
+UNITS: MWh_th per MWh_net-electric.
+ASSUMPTIONS: steady state; heat-rate thermal input basis accepted as EIA-defined; no useful co-product credit; non-electric term is aggregate physical energy out, not condenser duty.
+UNCERTAINTY: input heat-rate rounding and representativeness dominate; arithmetic rounding negligible.
+EVIDENCE_CLASS: CALCULATION.
+REPRODUCTION_METHOD: apply explicit equations to EIA values; independent reviewer can reproduce with any calculator.
+REPLICATION_STATUS: SAME_SESSION_TOOL_EXECUTION_PASS; INDEPENDENT_SESSION_REQUIRED.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CALCULATION: CALC-EGC-056-THERM-002
+CLAIM_ID: CLAIM-EGC-056-MASSIVE-SCALE-001
+TOOL: Wolfram Language evaluator
+METHOD: multiply Q_NON_ELECTRIC/E_NET by mission massive-energy reference P_NET_AVG=326.484 GWe and E_NET_SERVED=2,860 TWh/y.
+INPUTS: mission reference + CALC-EGC-056-THERM-001 ratios.
+OUTPUT:
+- If a system had the 2024 EIA tested NGCC heat-rate ratio at the mission net-power level, aggregate non-electric energy release = 395.731399316 GW_th average = 3,466.607251945 TWh_th/y.
+- If a system had the EIA nuclear heat-rate ratio at the mission net-power level, aggregate non-electric energy release = 672.733728545 GW_th average = 5,893.147791741 TWh_th/y.
+EVIDENCE_CLASS: CALCULATION / SCALE_SENSITIVITY, NOT a proposed build.
+LIMITATIONS: scenario extrapolation; does not specify condenser fraction, geography, cooling system, fuel/exhaust losses, outage rate or actual deployment mix.
+REPLICATION_STATUS: SAME_SESSION_TOOL_EXECUTION_PASS; INDEPENDENT_SESSION_REQUIRED.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CALCULATION: CALC-EGC-056-THERM-003
+CLAIM_ID: CLAIM-EGC-056-ETA-SENS-001
+TOOL: Wolfram Language evaluator
+METHOD: Q_NON_ELECTRIC/E_NET = 1/ETA_NET - 1.
+INPUTS/OUTPUT:
+ETA=0.25 -> 3.0000 MWh_th/MWh_e
+ETA=0.30 -> 2.333333 MWh_th/MWh_e
+ETA=0.33 -> 2.030303 MWh_th/MWh_e
+ETA=0.40 -> 1.500000 MWh_th/MWh_e
+ETA=0.45 -> 1.222222 MWh_th/MWh_e
+ETA=0.50 -> 1.000000 MWh_th/MWh_e
+ETA=0.60 -> 0.666667 MWh_th/MWh_e
+CONCLUSION: low conversion efficiency mechanically amplifies the heat/environmental sink burden per unit NET electricity; the relationship is first-law and cannot be removed by financing assumptions.
+EVIDENCE_CLASS: CALCULATION.
+REPLICATION_STATUS: SAME_SESSION_TOOL_EXECUTION_PASS; INDEPENDENT_SESSION_REQUIRED.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-056-WATER-001
+CLAIM_ID: CLAIM-EGC-056-WATER-BOUNDARY-001
+TOOL: Web
+SOURCE: U.S. Geological Survey, Thermoelectric Power Water Use; Water Use Across CONUS 2010-2020
+SOURCE_DATE: USGS science page 2019; CONUS report current publication page accessed 2026-10-06
+URL/IDENTIFIER: https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use ; https://pubs.usgs.gov/publication/pp1894D/full
+OUTPUT:
+- Once-through cooling withdraws water, passes it through heat exchangers and returns it to the source.
+- Recirculating cooling reuses water and needs makeup for evaporation/blowdown/drift/leakage.
+- USGS 2015 compilation: once-through plants accounted for 96% of thermoelectric withdrawals but 37% of net generation, with only 1% of once-through withdrawals consumed; recirculating plants were 4% of withdrawals and 63% of net generation, while consumptive use was 57% of recirculating withdrawals and 67% of total thermoelectric consumptive use.
+- CONUS 2020 thermoelectric withdrawals were 80,432 Mgal/d total; consumptive use 2,382 Mgal/d; recirculating consumptive-use rates can be >=70% of withdrawals.
+CONCLUSION: withdrawal and consumption are physically different quantities; pooling them invalidates cooling comparisons.
+EVIDENCE_CLASS: SOURCE_FACT / MEASURED+MODELLED NATIONAL DATA.
+LIMITATIONS: U.S. fleet and historical infrastructure; not candidate-specific future water intensity.
+REPLICATION_STATUS: multiple USGS publications/data pages converge.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-056-WATER-002
+CLAIM_ID: CLAIM-EGC-056-WATER-STRESS-001
+TOOL: Web
+SOURCE: USGS 2025 journal article, Water withdrawal and consumption trends for thermoelectric-power plants in CONUS, 2008-2020
+SOURCE_DATE: 2025-09-20
+URL/DOI: https://www.usgs.gov/publications/water-withdrawal-and-consumption-trends-thermoelectric-power-plants-conterminous ; DOI 10.1021/acsestwater.5c00360
+OUTPUT: overall U.S. thermoelectric withdrawal/consumption declined, but NGCC plants with recirculating towers showed increasing water-consumption trends across most hydrologic regions. Some plants withdraw volumes close to or exceeding average simulated streamflows, creating possible water-availability competition, thermal-pollution/ecosystem impacts and generation constraints.
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED+USGS.
+LIMITATIONS: geography=CONUS; observations through 2020.
+REPLICATION_STATUS: publication page + USGS data/model family cross-check.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-056-COOLING-001
+CLAIM_ID: CLAIM-EGC-056-DRYCOOL-001
+TOOL: Web + PDF text extraction; screenshot tool attempted but remote PDF cache returned an internal cache-miss error
+SOURCE: U.S. DOE National Energy Technology Laboratory, Cost and Performance Impact of Dry and Hybrid Cooling on Fossil Energy Power Systems, NETL-PUB-22446
+SOURCE_DATE: 2018-06-20
+URL/IDENTIFIER: https://netl.doe.gov/projects/files/CostAndPerformanceImpactofDryandHybridCoolingSystemsFinalReport_061919.pdf
+OUTPUT for modeled non-capture NGCC:
+- At 85 F dry bulb / 53% RH, wet-evaporative case net output: 628 -> 591 MWe-net (-5.9%).
+- Strict dry-cooling case: 628 -> 586 MWe-net (-6.7%).
+- The report attributes high-temperature reduction to combustion-turbine derating plus condenser/backpressure effects, with dry cooling lacking evaporative approach to lower wet-bulb temperature.
+- Report conclusion: modeled raw-water withdrawal for non-capture NGCC fell from 3.8 gpm/MW-net with wet cooling to <0.1 gpm/MW-net with dry cooling (~99% reduction), while dry cooling does not eliminate all plant water needs.
+EVIDENCE_CLASS: SIMULATION_RESULT / DOE-NETL TECHNICAL_REPORT.
+LIMITATIONS: one modeled reference-design family and ambient cases; not measured universal fleet behavior. PDF screenshot retrieval failed due tool cache miss, so page-visual verification is NOT_VERIFIED in this session; text lines were retrieved from the PDF and must be independently checked.
+REPLICATION_STATUS: source text retrieved; visual PDF replication pending.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CALCULATION: CALC-EGC-056-THERM-004
+CLAIM_ID: CLAIM-EGC-056-WATER-SCALE-SENS-001
+TOOL: Wolfram Language evaluator
+METHOD: convert modeled raw-water withdrawal intensity from gpm/MW to gal/MWh and extrapolate only as a scale sensitivity.
+INPUTS: NETL modeled non-capture NGCC 3.8 gpm/MW-net wet and <0.1 gpm/MW-net dry; mission P_NET_AVG=326,484 MW.
+OUTPUT:
+- 3.8 gpm/MW = 228 gal/MWh raw withdrawal.
+- <0.1 gpm/MW = <6 gal/MWh raw withdrawal.
+- IF the same modeled intensity were applied uniformly at 326.484 GW_net, wet raw withdrawal would be 1.786520448 billion gal/day; dry would be <0.047013696 billion gal/day.
+TRUTH_CLASS: CALCULATION / CONDITIONAL_SENSITIVITY.
+LIMITATION: NOT a forecast, NOT consumption, NOT fleet average, NOT evidence that all NGCC designs share these intensities.
+REPLICATION_STATUS: SAME_SESSION_TOOL_EXECUTION_PASS; INDEPENDENT_SESSION_REQUIRED.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-056-AMBIENT-001
+CLAIM_ID: CLAIM-EGC-056-NUCLEAR-AMBIENT-001
+TOOL: Web
+SOURCE: EDF official plant notices, Blayais and Bugey
+SOURCE_DATE: 2026-07-07 and 2026-09-20
+URL/IDENTIFIER: https://www.edf.fr/la-centrale-nucleaire-du-blayais/les-actualites-de-la-centrale-nucleaire-du-blayais/adaptation-de-la-production-de-la-centrale-du-blayais-en-raison-des-conditions-climatiques ; https://www.edf.fr/reconnexion-de-l-unite-de-production-ndeg2-au-reseau-national-d-electricite
+OUTPUT:
+- EDF stated Blayais output could be adapted because Gironde water temperature required compliance with thermal-discharge limits.
+- EDF states that since 2000, high river temperature/low flow has caused on average about 0.3% annual production loss across its fleet.
+- At Bugey, Unit 2 was disconnected 2026-09-18 because Rhône temperature was expected to reach the applicable 24 C daily-average limit, and reconnected 2026-09-20.
+CONCLUSION: heat-sink/environmental constraints can cause real unit derating/shutdown, but the same EDF evidence shows average historical fleet energy loss is much smaller than episodic event severity. This must be modelled as weather/site-correlated availability rather than exaggerated into a generic nuclear capacity factor penalty.
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_EVENT_EVIDENCE.
+LIMITATIONS: France, EDF fleet, specific environmental rules/sites.
+REPLICATION_STATUS: two EDF plant notices cross-checked.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-056-GEOTHERMAL-001
+CLAIM_ID: CLAIM-EGC-056-GEO-COOLING-001
+TOOL: Web
+SOURCE: U.S. DOE Geothermal Technologies Office / DOE geothermal environmental analysis / GETEM pages
+SOURCE_DATE: current DOE pages accessed 2026-10-06
+URL/IDENTIFIER: https://www.energy.gov/hgeo/geothermal/environmental-analysis ; https://www.energy.gov/hgeo/geothermal/geothermal-electricity-technology-evaluation-model
+OUTPUT:
+- geothermal operational water impacts vary by plant and cooling type;
+- DOE geothermal techno-economic tools explicitly support air-cooled binary plants;
+- air cooling can reduce surface freshwater cooling dependence but retains fan/heat-exchanger/ambient-performance burdens.
+A DOE geothermal technical reference additionally states binary plants can reject a very large fraction of extracted geothermal heat and that lower resource temperature increases rejected-heat burden; however, no universal modern field-normalized thermal-efficiency value is accepted here.
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_SCOPE_EVIDENCE.
+LIMITATIONS: current operational EGS whole-plant thermal input and heat-rejection measurements remain insufficient for a universal value; existing JOB-EGC-044 parasitic evidence must not be double-counted.
+REPLICATION_STATUS: DOE page family cross-check.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-056-DRYCOOL-002
+CLAIM_ID: CLAIM-EGC-056-DRYCOOL-TRADEOFF-001
+TOOL: Web
+SOURCE: U.S. DOE ARPA-E ARID + DOE/NETL Energy-Water Analysis
+SOURCE_DATE: current pages accessed 2026-10-06
+URL/IDENTIFIER: https://arpa-e.energy.gov/programs-and-initiatives/view-all-programs/arid ; https://www.netl.doe.gov/carbon-management/water-management/energy-water-analysis
+OUTPUT: DOE/ARPA-E identifies the core trade: wet cooling is preferred for performance because water temperatures and evaporative cooling improve heat rejection; current dry-cooling systems reduce water dependency but reduce generation efficiency/performance, particularly under hot ambient conditions, and affect cost/siting.
+EVIDENCE_CLASS: SOURCE_FACT / ENGINEERING_PROGRAM_EVIDENCE.
+LIMITATIONS: program-level motivation, not a universal numeric penalty.
+REPLICATION_STATUS: DOE and NETL independent program pages converge.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CANDIDATE THERMAL SCREEN:
+NATURAL_GAS_CCGT:
+- first-law non-electric energy burden at EIA 2024 tested heat rate: 1.2121 MWh_th/MWh_net-electric.
+- direct air-temperature CT derating and steam-cycle condenser performance both matter.
+- wet vs dry cooling materially changes water withdrawal; dry does not make ambient sensitivity disappear.
+- STATE: HEAT_REJECTION_REQUIRED / WATER_SITE_SPECIFIC / AMBIENT_DERATE_CONFIRMED / NO UNIVERSAL PASS.
+
+NUCLEAR_FISSION:
+- first-law non-electric energy burden at EIA nuclear heat rate: 2.06054 MWh_th/MWh_net-electric.
+- river/coastal cooling and thermal-discharge limits can produce episodic curtailment/shutdown; EDF evidence shows small long-run average fleet loss but nonzero weather-correlated events.
+- STATE: LARGE_HEAT_SINK_BURDEN / SITE_COOLING_REQUIRED / AMBIENT_EVENT_RISK_CONFIRMED / NO UNIVERSAL FAIL OR PASS.
+
+GEOTHERMAL/EGS:
+- low source temperature can imply large heat rejection per unit electricity; binary systems commonly use air cooling in water-constrained settings.
+- candidate-specific resource temperature, geofluid mass flow, thermodynamic cycle, fan/pump load and ambient derating are REQUIRED.
+- existing JOB-EGC-044 company-reported gross/net parasitic result remains upstream evidence and is not duplicated here.
+- STATE: SITE/DESIGN_SPECIFIC P1; UNIVERSAL THERMAL EFFICIENCY UNKNOWN.
+
+CSP / SOLAR-THERMAL:
+- thermoelectric CSP needs heat rejection; dry cooling saves water but may reduce thermal-to-electric performance.
+- STATE: COOLING_OPTION_REQUIRED if candidate enters frontier; no current mission-winning evidence established by this job.
+
+FUSION:
+- no operational commercial whole-plant thermal evidence supports a numeric pass.
+- any heat-engine fusion concept must satisfy Q_NON_ELECTRIC/E_NET = 1/ETA_NET - 1 after recirculating power is accounted at the net boundary; blanket/generator/cryogenic/tritium-system heat loads require design-specific evidence.
+- STATE: PARAMETRIC_ONLY / WHOLE_PLANT_HEAT_REJECTION UNKNOWN / NOT_VERIFIED.
+
+PV/WIND/HYDRO:
+- do not force non-thermal technologies into heat-engine equation.
+- common grid/storage thermal losses remain in their own physical/accounting rows.
+- STATE: NOT_APPLICABLE_TO_PRIMARY_HEAT_ENGINE T_STAR WITH EVIDENCE, not zero total lifecycle heat/environmental impact.
+
+CROSS-EXAMINATION OF COMMON FSRC_ND:
+PASS_DIRECTIONALLY:
+- current common owner rows already name parasitics and cooling/water/heat rejection.
+REPAIR/INTEGRATION REQUIREMENTS:
+1. Net electric output at the plant boundary must already subtract cooling pumps/fans and plant auxiliaries exactly once.
+2. Cooling CAPEX/OPEX, water acquisition/treatment/discharge, heat-exchanger/tower/ACC replacement and site infrastructure must be owner rows, not hidden in generic O&M if doing so blocks verification.
+3. Water withdrawal and water consumption must never share one coefficient.
+4. Water scarcity/opportunity cost and legal discharge limits cannot be represented solely as a national average $/MWh.
+5. Weather-correlated thermal derating must feed R_STAR availability/chronic-weather scenarios where material, without double counting the same outage in generic forced-outage assumptions.
+6. Useful CHP/direct-heat coproduct credit requires a real external service and frozen counterfactual; dumping heat to environment is not a coproduct.
+TRUTH_CLASS: INFERENCE / INTEGRATION_REQUIREMENT, PENDING_REVIEW.
+
+RED_TEAM RESULTS:
+RT-THERM-001: "Heat rate only affects fuel cost" = FALSIFIED. First-law energy disposal scales directly with HR/efficiency.
+RT-THERM-002: "All non-electric energy equals cooling-water duty" = FALSIFIED. Combustion stacks and other streams require partitioning.
+RT-THERM-003: "Water use is one scalar" = FALSIFIED. Withdrawal and consumption differ drastically by cooling type.
+RT-THERM-004: "Dry cooling eliminates the cooling problem" = FALSIFIED. It can sharply reduce water dependence but retains cost/footprint/auxiliary and hot-ambient performance burdens.
+RT-THERM-005: "A heatwave event proves thermal technology is generally unreliable" = FALSIFIED as overgeneralization. EDF measured/operational evidence supports episodic site constraints while reporting ~0.3% average annual fleet loss since 2000 from high temperature/low river flow.
+RT-THERM-006: "Nameplate/gross output can be used for MASSIVE_ENERGY" = FALSIFIED by mission boundary; cooling/ambient parasitics must be reflected in NET_SERVED.
+RT-THERM-007: "Geothermal is renewable so heat rejection is negligible" = FALSIFIED physically; low-temperature conversion can reject large heat per unit electricity, but universal numeric EGS value remains UNKNOWN.
+RT-THERM-008: "Future fusion high power density removes cooling constraint" = FALSIFIED as logic; unless electricity conversion is 100% and all auxiliaries zero (not credible), energy conservation requires substantial non-electric energy rejection. Numeric magnitude remains design-specific.
+
+P0/P1 FINDINGS:
+P0_UNRESOLVED: NONE established at technology-class level by this job; this is NOT a candidate thermal PASS.
+P1-056-001: every thermal FRONT_RUNNER needs a site/design heat-flow partition, not merely a headline efficiency.
+P1-056-002: MASSIVE_ENERGY scale requires explicit feasible heat sink(s), cooling-area/infrastructure and water source if wet cooled.
+P1-056-003: ambient/hydrologic derating must enter reliability modelling with weather correlation where material.
+P1-056-004: dry/wet/hybrid selection must be optimized jointly with CAPEX/OPEX/water/derating, not selected after LCOE ranking.
+P1-056-005: EGS candidate needs measured/validated resource-temperature -> net-power -> rejected-heat/air-cooler/fan-load evidence at commercial block scale.
+P1-056-006: fusion remains blocked by whole-plant net efficiency, recirculating power, component heat loads and heat-rejection evidence.
+P1-056-007: NETL PDF visual screenshot verification failed due remote cache miss; independent reviewer should reproduce the relevant pages/figures from the official report or an alternate archival copy.
+
+CLAIM_GRAPH:
+CLAIM-EGC-056-HEATRATE-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-056-FIRSTLAW-001 -> CALCULATION_PENDING_INDEPENDENT_REPLICATION.
+CLAIM-EGC-056-MASSIVE-SCALE-001 -> CONDITIONAL_SCALE_CALC_PENDING_REVIEW.
+CLAIM-EGC-056-WATER-BOUNDARY-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-056-WATER-STRESS-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-056-DRYCOOL-001 -> SOURCE_TEXT_SUPPORTED / PDF_VISUAL_NOT_VERIFIED.
+CLAIM-EGC-056-NUCLEAR-AMBIENT-001 -> SOURCE_SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-056-GEO-COOLING-001 -> METHOD_SUPPORTED / UNIVERSAL_NUMERIC_VALUE UNKNOWN.
+CLAIM-EGC-056-DRYCOOL-TRADEOFF-001 -> SUPPORTED_PENDING_REVIEW.
+
+STATUS_CHANGE:
+JOB-EGC-056-THERMAL-HEATREJECTION-C1-20261006: CLAIMED -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE / NOT ESTABLISHED BY THIS JOB.
+
+JOB_ID: JOB-EGC-056-THERMAL-HEATREJECTION-REV-C2-20261006
+TITLE: Independent thermal/heat-rejection boundary reviewer and first-law replicator
+ROLE: Independent thermodynamics / cooling / water / ambient-derating reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does T_STAR correctly conserve energy, preserve the NET_SERVED boundary, separate total non-electric energy from condenser duty, distinguish withdrawal from consumption, and integrate wet/dry/hybrid cooling and ambient derating without asymmetric candidate treatment?
+CANDIDATE: thermal candidates + common system interfaces.
+DEPENDENCIES: JOB-EGC-056-THERMAL-HEATREJECTION-C1-20261006 submitted; satisfied.
+REQUIRED_INPUTS: TE/CALC-EGC-056 evidence; EIA heat rates; USGS water evidence; NETL dry-cooling report; EDF 2026 operational notices; DOE geothermal sources; current FSRC_ND/R_STAR state.
+REQUIRED_TOOLS: independent calculation engine; independent source retrieval; official PDF visual verification or alternate official archive; adversarial first-law and system-boundary audit.
+REQUIRED_EVIDENCE: independently reproduce efficiencies/heat loads and scale arithmetic; verify NETL modeled derates/water intensities; test at least one alternative heat-flow partition; check for double counting with parasitics/reliability.
+EXPECTED_OUTPUT: REVIEW_PASS / REVIEW_FAILED / REPAIR_REQUIRED with exact defects and corrected equations/rows.
+FALSIFICATION_CONDITION: fail if T_STAR misuses gross/net output, equates all loss with condenser heat, pools withdrawal+consumption, treats modeled design values as fleet measurements, externalizes cooling costs, or double counts ambient outages/parasitics.
+REVIEWER_JOB_ID: JOB-EGC-056-THERMAL-HEATREJECTION-REV-C3-20261006 if repair creates material new claims.
+STATUS: OPEN
+BLOCKERS: NONE for method/arithmetic/source review; final candidate thermal PASS remains design/site-specific.
+NEXT_ACTION: independent session must reproduce calculations, visually verify NETL report evidence, attack boundary assumptions and pass/fail/repair.
