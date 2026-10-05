@@ -1,0 +1,85 @@
+{
+  "REQ_ID": "REQ-DOC-C-5-STATE-EVENT-MATRIX",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": [
+    242,
+    243,
+    244,
+    245
+  ],
+  "SPEC_LINES": "paragraphs 10353-10499",
+  "SPEC_TEXT": {
+    "events": [
+      "boot",
+      "execute",
+      "agents_done",
+      "verified",
+      "accepted",
+      "rejected",
+      "timeout",
+      "error",
+      "recover",
+      "fatal",
+      "cancel"
+    ],
+    "required_rows": [
+      "INIT + boot -> READY",
+      "READY + execute -> RUNNING",
+      "RUNNING + agents_done -> VERIFYING",
+      "RUNNING + timeout -> FREEZE",
+      "RUNNING + error -> FREEZE",
+      "VERIFYING + verified -> CONSENSUS",
+      "VERIFYING + error -> FREEZE",
+      "CONSENSUS + accepted -> STABLE",
+      "CONSENSUS + rejected -> FREEZE",
+      "CONSENSUS + timeout -> FREEZE",
+      "FREEZE + recover -> READY",
+      "FREEZE + fatal -> STOP",
+      "ANY except STOP + fatal -> STOP"
+    ],
+    "owner_actions": [
+      "hard kill run allowed in RUNNING / VERIFYING / CONSENSUS -> FREEZE",
+      "revoke release allowed in STABLE before emission only -> FREEZE"
+    ]
+  },
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC / FINAL VERDICT",
+  "EXPECTED_BEHAVIOR": [
+    "SystemEvent includes timeout and cancel as DOC-C events.",
+    "Executable legal transition table matches DOC-C §5.2 plus explicit §5.4 owner actions.",
+    "fatal transitions every non-STOP state to STOP.",
+    "STOP has no outgoing transitions.",
+    "Every legal transition emits EventLog; FREEZE/STOP transitions create primary incident; recover emits AuditLog + EventLog."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not classify timeout or cancel as non-DOC-C compatibility-only events.",
+    "Do not invent legal error transitions from INIT, READY, CONSENSUS, STABLE, or FREEZE unless another active DOC-C clause explicitly authorizes them.",
+    "Do not let tests redefine the executable matrix beyond DOC-C."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "CORE",
+    "LAW",
+    "JUDGE",
+    "OWNER_CONTROL",
+    "EVENT_LOG",
+    "INCIDENTS"
+  ],
+  "DEPENDENCIES": [
+    "SystemState enum",
+    "SystemEvent enum",
+    "owner action mapping",
+    "transition logging/incident creation"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "packages/core/vnext-state-matrix.ts"
+  ],
+  "TEST_PATHS": [
+    "tests/contract/state-matrix.test.ts",
+    "scripts/check-doc-c.ts"
+  ],
+  "STATUS": "MISMATCH",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "runtime_mismatch": "NEXY.AI-Test-AI permits error->FREEZE from INIT/READY/CONSENSUS/STABLE/FREEZE beyond DOC-C §5.2 rows.",
+    "test_oracle_mismatch": "tests/contract/state-matrix.test.ts labels timeout/cancel as extended compatibility rails and requires error->FREEZE for every non-STOP state."
+  }
+}
