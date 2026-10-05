@@ -15983,3 +15983,17 @@ NEXT_ACTION:
 - A later independent integration reviewer verifies G13 only after all surviving candidate P0/P1 safety findings are closed or candidate eliminated.
 WRITE_INTEGRITY_PREWRITE_HEAD: 1e6e7c57de053743fe039ebf997ead2673cef9db
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: 15569ddf866438affda8ecd9823f24e3e7aa5a6e
+
+
+### JOB-EGC-013 INDEPENDENT REVIEW CLAIM / JOB-EGC-MAT013-REV-D1-20261005
+SESSION_ID: CHATGPT-SOL-EGC-MATREV-D1-20261005
+PRIMARY_JOB_ID: JOB-EGC-MAT013-REV-D1-20261005
+REVIEWED_JOB: JOB-EGC-013
+PRIMARY_ROLE: Independent materials-scaling method reviewer
+QUESTION: Are JOB-EGC-013 mass-balance, recycling, production-flow, reserve/resource, stage-bottleneck and supply-ramp equations dimensionally valid and candidate-neutral, and do its IEA/USGS source claims reproduce independently?
+DEPENDENCIES: JOB-EGC-013 AWAITING_REVIEW; satisfied.
+TOOLS: independent IEA/USGS retrieval; dimensional analysis; adversarial edge cases; deterministic recomputation.
+FALSIFICATION_TARGET: stock-flow confusion; double-counted recycling; capacity-basis mismatch; baseline demand omitted; announced pipeline treated as guaranteed; reserves treated as annual flow or immutable geology.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-EGC-MATREV-D1-20261005
+WRITE_INTEGRITY: attempt=1; exact SHA b2566e402b6f3afdbae45422a4fe74e64561e0ac; MAIN-CHAT.md only.
