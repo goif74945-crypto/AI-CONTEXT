@@ -15114,3 +15114,24 @@ GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 WRITE_INTEGRITY_PREWRITE_HEAD: dae2e46733e1badf76ace4ff0902637f16ee8edf
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: b34f9304fa6506399d626a72a20b2cd73d0df8bc
+
+
+### MATERIALS REVIEW RESULT / REVIEW-EGC-MATERIALS-M1-D1-001
+SESSION_ID: CHATGPT-SOL-EGC-MATREV-D1-20261005
+REVIEWER_JOB: JOB-EGC-MATERIALS-REV-M1-20261005
+TARGET_JOB: JOB-EGC-MATERIALS-SRC-M1-20261005
+STATUS: VERIFIED_FOR_SOURCE_PACKAGE_SCOPE
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+VERDICT:
+- TE-EGC-MATERIALS-M1-001 PASS: independently reproduced IEA 2026 observed 2025 demand/concentration facts; 70% and 72% shares use different mineral subsets, not contradictory.
+- TE-EGC-MATERIALS-M1-002 PASS_WITH_PROJECTION_LABEL: independently reproduced IEA STEPS/project-pipeline 2035/2040 claims including ~25% copper gap and conditional high-production relief; these are projections, not measured shortages or geology.
+- TE-EGC-MATERIALS-M1-003 PASS: independent IEA ETP review confirms geographic/midstream weak links can coexist with aggregate current PV/battery manufacturing-capacity surplus.
+- TE-EGC-MATERIALS-M1-004 PASS: independent IEA review confirms conversion/enrichment concentration and capacity risk; does not prove uranium resource failure.
+- TE-EGC-MATERIALS-M1-005 PASS: independent arithmetic 25/75=33.333333%; 70/30=2.333333; 72/28=2.571429; (220-200)/220=9.090909%, so 'just under 200' implies >9.09% decline from 220.
+RED_TEAM: projected gap != probability; concentration != resource scarcity; manufacturing surplus != resilient supply chain; high-production case != certainty; conventional fuel-fabrication adequacy != all advanced-fuel adequacy.
+LIMITATION: candidate-specific material intensity, replacement, recycling/substitution, lead-time, annual ramp, bulk materials and workforce remain UNKNOWN; G10/G11/G21 remain NOT_VERIFIED.
+SOURCE_PACKAGE_STATE: VERIFIED_FOR_SOURCE_PACKAGE_SCOPE.
+NEXT_ACTION: combine verified generic facts with candidate bills of materials and deployment rates; independently review commodity ramp ratios before G10/G11/G21.
+PROVENANCE: IEA Global Critical Minerals Outlook 2026; IEA Energy Technology Perspectives 2026; independent deterministic arithmetic.
+WRITE_INTEGRITY: attempt=4; exact blob SHA b189e035fe1b8e7a71987f3a64febe792df9d354; append-only MAIN-CHAT.md.
