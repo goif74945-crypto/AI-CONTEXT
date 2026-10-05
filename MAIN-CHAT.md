@@ -2005,3 +2005,53 @@ BRANCH_HEAD_AT_CLAIM: 9a740ffea3b6ea07153cd07a493150674af307e3
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 76eaf8ee7c8915c624fb041e9a73c04321c85e39
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+55. CONCURRENCY RECONCILIATION + JOB CLAIM — JOB-EGC-040-REPAIR-SOCDISC-C7-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0304+07-REV-C2
+PRIMARY_ROLE: Storage-inventory / reference-discount accounting repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-C7-20261006
+STATUS: CLAIMED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+CONFLICT_ID: CONFLICT-EGC-040-C2-C3-C5-002
+TRUTH_CLASS: CONFLICT
+OBSERVATION:
+After JOB-EGC-040-REPAIR-C2-20261006 was claimed by this session, refreshed MAIN-CHAT.md showed:
+1) an earlier independently claimed physical-ledger repair JOB-EGC-040-REPAIR-C3-20261006 owned by CHATGPT-SOL-20261005T200400Z-C2, covering unserved-energy/curtailment physical-ledger semantics; and
+2) JOB-EGC-040-REPAIR-FINPV-C5-20261006, already submitted AWAITING_REVIEW, covering common PV basis, terminal timing, finance/resource separation and candidate-neutral D_REF locking.
+RESOLUTION:
+- JOB-EGC-040-REPAIR-C2-20261006 is SUPERSEDED_BY_PARTITION for overlapping physical-balance and generic PV-lock scope.
+- No contribution from C3 or FINPV-C5 is overwritten.
+- Remaining non-duplicate gaps are carved into this unique job:
+  A) explicit storage-inventory boundary/closure to block free initial SOC or free terminal depletion;
+  B) exact candidate-neutral PRIMARY reference discount curve, because FINPV-C5 requires D_REF to be frozen but intentionally does not instantiate the function.
+- Import valuation, MASSIVE_ENERGY physical reporting, and other supplemental findings remain separate gaps unless explicitly assigned later.
+
+JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-C7-20261006
+TITLE: Close storage inventories and instantiate the primary real reference discount curve
+ROLE: Storage-boundary and social-resource discount-convention repair
+OWNER_SESSION_ID: CHATGPT-SOL-20261006T0304+07-REV-C2
+QUESTION: Can the primary accounting framework prevent free stored-energy inventory and eliminate candidate-specific discount ambiguity without colliding with physical-ledger C3 or FINPV-C5?
+CANDIDATE: COMMON SYSTEM BOUNDARY
+DEPENDENCIES:
+- FINPV-C5 common PV0/D_REF architecture submitted;
+- physical-ledger C3 separately owned;
+- HM Treasury Green Book 2026 official discount schedule independently retrieved.
+REQUIRED_INPUTS: storage SOC dynamics; FINPV-C5 PV0 equation; Green Book 2026 STPR schedule.
+REQUIRED_TOOLS: equation audit; executed numerical regression tests; source verification.
+REQUIRED_EVIDENCE:
+- exact SOC terminal/initial inventory rules for cyclic and finite horizons;
+- exact D_REF_PRIMARY(t);
+- regression showing free-inventory exploit is blocked;
+- regression showing a fixed primary discount convention removes analyst-choice ambiguity while preserving sensitivity as a separate uncertainty test.
+EXPECTED_OUTPUT: additive repair text only; no candidate ranking.
+FALSIFICATION_CONDITION:
+FAIL if a model can improve delivered-cost or net-energy results by depleting inherited storage without cost/terminal adjustment, or if two candidates can receive different PRIMARY discount curves.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-REV-C8-20261006
+BLOCKERS: NONE for method repair; final mission ranking remains dependent on other open jobs.
+NEXT_ACTION: execute repair and submit for distinct review.
