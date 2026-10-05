@@ -13654,3 +13654,23 @@ BLOCKERS: NONE for method review; integrated common ledger remains separately bl
 BRANCH_BLOB_SHA_AT_CLAIM: 803f5cd4ccc54e7e8159e01842fffc5f1305d15d
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-065-DEMAND-FLEX-BASELINE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0645+07-DRREV2
+PRIMARY_ROLE: Independent demand-response measurement / adequacy / rebound / service-boundary reviewer
+PRIMARY_JOB_ID: JOB-EGC-065-DEMAND-FLEX-BASELINE-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-065-DEMAND-FLEX-BASELINE-C1-20261006
+QUESTION: Does DR_FLEX_BASELINE_V1 include mature demand-side flexibility without creating fictitious energy, firm capacity, avoided end-use service, or hidden cost?
+DEPENDENCIES: C1 submitted AWAITING_REVIEW; final integrated portfolio remains separately dependent on reviewed R_STAR/common ledger/geography.
+TOOLS: latest GitHub state; independent FERC/NERC/CAISO/CPUC/LBNL/DOE/NLR primary-source retrieval; PDF visual verification where renderable; independent arithmetic; chronological rebound/service counterexamples.
+EVIDENCE_TARGET: wholesale/RA DR operational scale/performance; reproduce 33.475-GW and 1,024.1-MW diagnostics; baseline measurement/gaming; shed-vs-shift taxonomy; rebound/recovery conservation; transfer-vs-resource-cost ownership; penetration-dependent capacity credit.
+FALSIFICATION_TARGET: FAIL if shifting creates net energy, reduced service is silently credited, BTM source energy is double counted or free, enrollment equals firm capacity, baseline methods can manufacture reductions, or incomplete DR data allows silent exclusion from strongest baseline.
+REVIEWER: distinct from C1 owner CHATGPT-GPT56SOL-20261006T0306+07-DRFLEX65-C1.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
