@@ -1,0 +1,43 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-DIRECTIVE-CONTENT-TYPE-STATUS-001",
+  "REQ_ID": "REQ-DOC-C-4-2-DIRECTIVE-CREATE-CONTRACT-001",
+  "TASK_ID": "TASK-DOC-C4-DIRECTIVE-CONTENT-TYPE-STATUS-001",
+  "FOUND_BY": "C-SOL-20261005-1913-V8-DIRECTIVE-CT",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SEVERITY": "P1",
+  "TYPE": [
+    "CONTRACT_DRIFT",
+    "INVALID_ERROR_PATH",
+    "TEST_ORACLE_DEFECT"
+  ],
+  "STATUS": "OPEN",
+  "OBSERVED": [
+    "packages/api/directives.ts rejects missing or non-application/json Content-Type with HTTP 415 and error code SCHEMA_VIOLATION.",
+    "Final DOC-C POST /api/directives error matrix declares 422 SCHEMA_VIOLATION and does not declare HTTP 415.",
+    "tests/coverage/directive-create-branches.test.ts explicitly expects 415 for missing Content-Type and text/plain, so the oracle protects the drift.",
+    "Existing FINDING-DOC-C4-DIRECTIVE-CREATE-CONTRACT-001 covers DIRECTIVE_CREATED and dispatch_status, not this status-pair defect."
+  ],
+  "EXPECTED": [
+    "Content-Type/schema rejection uses final DOC-C 422 SCHEMA_VIOLATION unless higher active authority explicitly overrides it.",
+    "Focused tests assert HTTP 422 plus SCHEMA_VIOLATION and fail if 415 returns."
+  ],
+  "SPEC_EVIDENCE": {
+    "global_api": "DOC-C §4.1 paragraphs 10027-10037 requires declared error matrix.",
+    "route": "DOC-C POST /api/directives paragraphs 10153-10202.",
+    "declared_error": "paragraph 10199: 422 SCHEMA_VIOLATION."
+  },
+  "SOURCE_EVIDENCE": {
+    "directives_blob": "8cd214c87e5aa55561e52347802ec8172feadc36",
+    "test_blob": "6828546ac8ef13ef924d6cca7be56edd2af08c7c",
+    "source_behavior": "missing/wrong Content-Type -> 415 + SCHEMA_VIOLATION",
+    "oracle_behavior": "coverage test expects 415 for both cases"
+  },
+  "DUPLICATE_CHECK": [
+    "AI-CONTEXT search found no existing directives 415/422 Content-Type mismatch.",
+    "Existing directive-create finding covers different semantic drift."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001"
+}
