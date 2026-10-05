@@ -1,0 +1,21 @@
+{
+  "LEASE_ID": "LEASE-20261006-DOC-C-RUN-DETAIL-OPTIONAL-WIRE-001",
+  "TASK_ID": "TASK-DOC-C-RUN-DETAIL-OPTIONAL-WIRE-001",
+  "OWNER": "CHATGPT-GPT-5.6-SOL-20261006",
+  "STATUS": "ACTIVE",
+  "TARGET_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "TARGET_BRANCH": "NEXY.AI-Test-AI",
+  "PROTECTED_BRANCH": "NEXY.ai",
+  "AUTHORITY_RECORD": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-4-2-RUN-DETAIL.json",
+  "FINDING": "FINAL DOC-C declares primary_incident_id?: string. Current route serializes primary_incident_id:null when absent and the exact-shape test canonizes null.",
+  "SCOPE": [
+    "packages/api/directives.ts",
+    "tests/integration/directives/read-auth.spec.ts"
+  ],
+  "MUTATION_BOUNDARY": "Only listed files; NEXY.ai mutation forbidden.",
+  "ACCEPTANCE": [
+    "Absent primary incident omits primary_incident_id from canonical run data.",
+    "Present primary incident serializes primary_incident_id as string.",
+    "Existing auth/RBAC/auditor evidence and state validation semantics remain unchanged."
+  ]
+}
