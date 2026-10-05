@@ -5694,3 +5694,187 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+
+======================================================================
+33. PROGRESS EVENT — JOB-EGC-038 RESOURCE-POTENTIAL EVIDENCE PASS 1
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-RESOURCE-038-20261005
+PRIMARY_JOB_ID: JOB-EGC-038
+STATUS: EXECUTING
+SCOPE_OF_THIS_PASS: Establish candidate-neutral resource-scale anchors against measured/estimated 2025 global electricity demand; do not infer low delivered cost or engineering readiness from resource abundance.
+
+BASELINE_ANCHOR:
+EVIDENCE_ID: EVIDENCE-EGC-038-001
+JOB_ID: JOB-EGC-038
+CLAIM_ID: CLAIM-EGC-038-GLOBAL-ELECTRICITY-ANCHOR
+TOOL: IEA official web source + Python calculation + independent Wolfram Language recomputation
+METHOD: Use IEA Electricity Mid-Year Update 2026 actual 2025 consumption value, convert annual energy to mean power.
+DATE: 2026-10-05
+SOURCE: International Energy Agency, Electricity Mid-Year Update 2026, Executive summary
+SOURCE_DATE: 2026
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+INPUTS: global electricity consumption 2025 = 28,600 TWh/yr; 8760 h/yr.
+PARAMETERS: none.
+EQUATION/CODE/METHOD: P_avg = 28,600 TWh / 8,760 h = 3.26484018265 TW.
+OUTPUT: 28.6 PWh/yr electricity; 3.26484 TW annual-average load.
+UNITS: PWh/yr; TW.
+UNCERTAINTY: IEA source value is reported to three significant digits; calendar-year hourly divisor ignores leap-year issue because 2025 has 365 days.
+ASSUMPTIONS: consumption boundary as reported by IEA; this is electricity, not total final/primary energy.
+LIMITATIONS: does not define mission MASSIVE_ENERGY threshold; JOB-EGC-001 remains authoritative for fixed target.
+REPRODUCTION_METHOD: Python direct arithmetic and Wolfram Language direct arithmetic.
+REPLICATION_STATUS: REPLICATED_BY_2_TOOLS; exact numeric agreement to displayed precision.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+
+EVIDENCE_ID: EVIDENCE-EGC-038-002
+JOB_ID: JOB-EGC-038
+CLAIM_ID: CLAIM-EGC-038-SOLAR-WIND-RESOURCE
+TOOL: IPCC AR6 WGIII Chapter 6 official web synthesis + Python + Wolfram
+METHOD: Compare IPCC global technical/potentially exploitable annual resource estimates with 28.6 PWh/yr 2025 electricity anchor.
+DATE: 2026-10-05
+SOURCE: IPCC AR6 WGIII Chapter 6, Energy systems
+SOURCE_DATE: 2022
+URL/DOI/IDENTIFIER: https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/
+INPUTS: solar PV technical potential ~= 300 PWh/yr; wind potentially exploitable resource = 557-717 PWh/yr; 2025 electricity = 28.6 PWh/yr.
+PARAMETERS: global annual energy basis.
+EQUATION/CODE/METHOD: resource_ratio = candidate annual potential / 28.6 PWh.
+OUTPUT: solar PV ~= 10.4895x 2025 global electricity; wind ~= 19.4755-25.0699x.
+UNITS: dimensionless ratio; PWh/yr.
+UNCERTAINTY: solar and wind potential estimates are study-dependent; IPCC explicitly notes some bottom-up wind methods may overestimate technical potential.
+ASSUMPTIONS: ratios compare annual energy quantity only; no temporal matching, storage, grid, land, financing or delivered-cost penalty is applied.
+LIMITATIONS: RESOURCE_SCALE evidence only. It does not prove deployable low-cost firm energy.
+REPRODUCTION_METHOD: Python division and independent Wolfram Language division.
+REPLICATION_STATUS: REPLICATED_BY_2_TOOLS.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + INFERENCE
+
+EVIDENCE_ID: EVIDENCE-EGC-038-003
+JOB_ID: JOB-EGC-038
+CLAIM_ID: CLAIM-EGC-038-HYDRO-OCEAN-RESOURCE
+TOOL: IPCC AR6 WGIII Chapter 6 official web synthesis + IRENA 2026 hydropower cross-check + Python + Wolfram
+METHOD: Compare technical/economic hydropower and marine-resource estimates with 2025 electricity anchor; preserve theoretical-vs-technical distinctions.
+DATE: 2026-10-05
+SOURCE: IPCC AR6 WGIII Chapter 6; IRENA Collaborative Framework on Hydropower event page
+SOURCE_DATE: 2022; 2026-07-08
+URL/DOI/IDENTIFIER: https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/ ; https://www.irena.org/Events/2026/Jul/Financing-the-Future-of-Hydropower-Unlocking-Stalled-Capacity-and-Untapped-Resources
+INPUTS: hydro technical = 8-30 PWh/yr; hydro economic = 8-15 PWh/yr; IRENA global hydro technical ~=15 PWh/yr; tidal technically harvestable ~=1.2 PWh/yr; wave theoretical ~=29.5 PWh/yr; 2025 electricity =28.6 PWh/yr.
+PARAMETERS: global annual energy basis.
+EQUATION/CODE/METHOD: ratio = annual potential / 28.6 PWh.
+OUTPUT: hydro technical ~=0.2797-1.0490x; hydro economic ~=0.2797-0.5245x; tidal technical ~=0.04196x; wave THEORETICAL ~=1.03147x current electricity. IRENA ~15 PWh/yr hydro technical lies inside IPCC 8-30 PWh/yr range.
+UNITS: PWh/yr; dimensionless ratio.
+UNCERTAINTY: hydropower estimates vary with technical/economic/political exclusions and site assumptions; wave figure is theoretical and must not be promoted to technical/deployable potential.
+ASSUMPTIONS: annual energy comparison only.
+LIMITATIONS: marine technology maturity, environmental exclusions and costs not evaluated here.
+REPRODUCTION_METHOD: Python and Wolfram arithmetic; cross-source hydro range check.
+REPLICATION_STATUS: ARITHMETIC_REPLICATED_BY_2_TOOLS; SOURCE_CROSSCHECK_PARTIAL.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + INFERENCE
+
+EVIDENCE_ID: EVIDENCE-EGC-038-004
+JOB_ID: JOB-EGC-038
+CLAIM_ID: CLAIM-EGC-038-GEOTHERMAL-RESOURCE
+TOOL: IEA Future of Geothermal Energy official web source + IPCC AR6 WGIII official web synthesis + Python + Wolfram
+METHOD: Compare new EGS technical-potential estimate with older IPCC global technical-potential range; do not reconcile incompatible boundaries by averaging.
+DATE: 2026-10-05
+SOURCE: IEA The Future of Geothermal Energy; IPCC AR6 WGIII Chapter 6
+SOURCE_DATE: 2024-12-13; 2022
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/the-future-of-geothermal-energy/global-geothermal-potential-for-electricity-generation-using-egs-technologies ; https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/
+INPUTS: IEA EGS annual technical potential ~=4,000 PWh/yr (about 300,000 EJ resource within 8 km, represented as ~600 TW for 20 years; source uses <$300/MWh screen); IPCC geothermal electricity technical potential ~=30 PWh/yr to 3 km and ~=300 PWh/yr to 10 km; 2025 electricity =28.6 PWh/yr.
+PARAMETERS: depth, technology and cost-screen definitions differ materially.
+EQUATION/CODE/METHOD: IEA ratio = 4,000/28.6 = 139.8601x. IPCC range ratio = 30/28.6 to 300/28.6 = ~1.049x to ~10.49x.
+OUTPUT: Both source families imply resource abundance at or above current global-electricity scale, but their upper-scale estimates differ by >13x relative to IPCC's 300 PWh/yr upper figure and by >100x relative to its 30 PWh/yr lower figure.
+UNITS: PWh/yr; ratio.
+UNCERTAINTY: HIGH / BOUNDARY-SENSITIVE.
+ASSUMPTIONS: none beyond direct normalization; no averaging of incompatible estimates.
+LIMITATIONS: estimates use different vintages, EGS assumptions, depth/resource models and cost screens.
+REPRODUCTION_METHOD: Python/Wolfram arithmetic; source-boundary comparison.
+REPLICATION_STATUS: ARITHMETIC_REPLICATED; SOURCE-CONFLICT_UNRESOLVED.
+REVIEW_STATUS: CONFLICT_REQUIRES_ARBITRATION
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + CONFLICT
+
+CONFLICT_ID: CONFLICT-EGC-038-GEOTHERMAL-POTENTIAL-001
+TRUTH_CLASS: CONFLICT
+QUESTION: Why does IEA 2024 next-generation EGS imply ~4,000 PWh/yr technical generation potential while IPCC AR6 reports ~30-300 PWh/yr geothermal electricity technical potential?
+POSSIBLE_CAUSES_TO_TEST: technology scope; EGS vs broader/older geothermal assumptions; depth; temperature cutoff; economic/cost screen; recoverable fraction; study methodology; resource lifetime conversion.
+STATUS: OPEN
+ARBITRATION_JOB: JOB-EGC-042
+
+EVIDENCE_ID: EVIDENCE-EGC-038-005
+JOB_ID: JOB-EGC-038
+CLAIM_ID: CLAIM-EGC-038-URANIUM-RESOURCE
+TOOL: OECD NEA / IAEA Uranium 2026 official summary + Python + Wolfram
+METHOD: Static resource-to-current-reactor-requirement ratio; explicitly not a fuel-cycle or growth model.
+DATE: 2026-10-05
+SOURCE: OECD Nuclear Energy Agency / IAEA, Uranium 2026: Resources, Production and Demand summary
+SOURCE_DATE: 2026-09-14
+URL/DOI/IDENTIFIER: https://www.oecd-nea.org/jcms/pl_121582/adequate-uranium-resources-available-but-sustained-investment-essential-to-support-global-nuclear-capacity-growth
+INPUTS: identified uranium resources recoverable below USD260/kgU >8.1 million tU; 418 operating commercial reactors =378 GWe; annual reactor-related requirements ~=64,500 tU.
+PARAMETERS: current fleet/fuel-cycle requirement basis.
+EQUATION/CODE/METHOD: static_years = 8,100,000 tU / 64,500 tU/yr = 125.5814 yr.
+OUTPUT: >~125.6 current-fleet requirement-years as a static ratio.
+UNITS: years at stated annual tU requirement.
+UNCERTAINTY: resource total is a lower-bound style 'exceeds 8.1 MtU' value; mine conversion, future discoveries, prices, fuel-cycle changes and reactor growth materially affect duration.
+ASSUMPTIONS: holds annual requirement constant; does not credit recycling, breeder cycles, unconventional resources or future discoveries.
+LIMITATIONS: NOT a claim that multi-terawatt fission is fuel-secure for 125 years; mining/refining capacity and growth scenarios must be modeled separately.
+REPRODUCTION_METHOD: Python and Wolfram direct division.
+REPLICATION_STATUS: REPLICATED_BY_2_TOOLS.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + INFERENCE
+
+PRELIMINARY_RESOURCE_SCREEN:
+- SOLAR_PV: RESOURCE_SCALE_PASS_PRELIMINARY. Technical annual potential ~=10.5x current global electricity. Grid/storage/materials/cost gates remain OPEN.
+- WIND: RESOURCE_SCALE_PASS_PRELIMINARY. Technical/potentially exploitable annual resource ~=19.5-25.1x current global electricity, but methodology uncertainty is material. Grid/land/storage/cost gates remain OPEN.
+- HYDRO: RESOURCE_CONSTRAINED_PORTFOLIO_CANDIDATE. Economic annual potential ~=28-52% of current global electricity; technical upper range can approach current demand but cannot justify a >world-demand sole-source claim robustly.
+- TIDAL: FALSIFIED_AS_SOLE_GLOBAL_MASSIVE_SOURCE at current-electricity scale on cited technical resource (~4.2% of 2025 electricity). Remains potentially useful as portfolio component.
+- WAVE: NOT_VERIFIED_FOR_TECHNICAL_SCALE. Theoretical ~=103% of current electricity is not a technical/deployable claim.
+- GEOTHERMAL: RESOURCE_SCALE_LIKELY_PASS, BUT CONFLICT. Even lower cited technical estimate is around current electricity scale; IEA next-gen estimate is far larger. Cost/engineering and source-boundary conflict remain decisive.
+- FISSION_URANIUM: RESOURCE_NOT_IMMEDIATE_CURRENT_FLEET_BLOCKER; MULTI_TW_SCALE_NOT_VERIFIED. Latest official resource inventory supports continued/current growth with investment, but static reserve ratio cannot substitute for mining/fuel-cycle scale analysis.
+- FUSION: RESOURCE_SCALE NOT ASSESSED IN THIS PASS; engineering/net-energy evidence is a separate gate.
+- BIOMASS: RESOURCE_SCALE UNKNOWN in this pass due land/ecosystem/lifecycle coupling.
+- WASTE_HEAT: INFERENCE — secondary/cogeneration resource is bounded by upstream heat streams and cannot be treated as an independent primary energy source; quantitative global technical potential remains UNKNOWN.
+
+CROSS_EXAMINATION:
+- Any baseline session using a 2026 forecast as if it were measured 2025 consumption must separate forecast from actual. This pass anchors ratios to IEA's reported 2025 consumption 28.6 PWh/yr.
+- Resource abundance MUST NOT be promoted to delivered low-cost energy. Solar/wind/geothermal remain subject to construction, materials, grid, storage, financing and reliability gates.
+- Hydropower and wave claims are especially sensitive to theoretical-vs-technical-vs-economic terminology; category errors are P1-level evidence defects.
+
+#### JOB-EGC-042
+ROLE: Conflict arbitrator / geothermal resource-methodology reviewer
+TITLE: Reconcile geothermal technical-potential estimates across IEA 2024 and IPCC AR6
+QUESTION_TO_RESOLVE: Are the IEA ~4,000 PWh/yr next-generation EGS estimate and IPCC ~30-300 PWh/yr geothermal technical-potential range actually contradictory after harmonizing technology scope, depth, temperature cutoff, cost screen, resource lifetime and recoverable-fraction assumptions?
+TARGET_CANDIDATE: GEOTHERMAL / EGS
+DEPENDENCIES: EVIDENCE-EGC-038-004
+REQUIRED_INPUTS: IEA 2024 methodology; IPCC cited underlying studies; comparable depth/temperature/cost/resource-lifetime definitions.
+REQUIRED_TOOLS: source-method audit; dimensional reconciliation; independent recalculation.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + REPLICATION
+EXPECTED_OUTPUT: resolved apples-to-apples potential range or explicit irreducible uncertainty with candidate impact.
+FALSIFICATION_CRITERIA: FAIL any reconciliation that averages non-comparable numbers or omits cost/depth/resource-lifetime boundaries.
+REVIEWER_JOB_ID: JOB-EGC-039
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE
+HANDOFF: Independent session should claim after reading both source methodologies; report RESOLVED or CONFLICT remains.
+
+JOB_STATE_UPDATE:
+- JOB-EGC-038 remains EXECUTING. Initial high-information resource screen completed; fusion/biomass/waste-heat and source-method reconciliation remain open.
+- JOB-EGC-039 remains OPEN/BLOCKED until JOB-EGC-038 reaches AWAITING_REVIEW.
+- JOB-EGC-042 created OPEN for material geothermal conflict.
+
+NEXT_HIGHEST_VALUE_ACTION:
+1. Resolve CONFLICT-EGC-038-GEOTHERMAL-POTENTIAL-001.
+2. Add sustainable biomass resource bounds with land/ecosystem constraints.
+3. Add fusion fuel-resource bounds only at safe high-level evidence scope; do not confuse fuel abundance with net-power feasibility.
+4. Re-scan latest MAIN-CHAT.md before any further write and avoid duplicating concurrent sessions.
+
+WRITE_INTEGRITY:
+- branch head read immediately before this write: 5d1d26fd824d3416007439886363580854c48056
+- file blob SHA read immediately before this write: eafb6aa537e51e9caffb6ddd8f0a8ca6616a8410
+- append-only update guarded by exact blob SHA.
+- no other file, branch, issue, PR, workflow, release, tag, settings or repository touched.
+- commit/result: PENDING_THIS_COMMIT
