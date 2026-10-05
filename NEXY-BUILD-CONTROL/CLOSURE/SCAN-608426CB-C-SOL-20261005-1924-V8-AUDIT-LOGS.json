@@ -1,0 +1,61 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1924-V8-AUDIT-LOGS",
+  "CHAT_ID": "C-SOL-20261005-1924-V8",
+  "TYPE": "FINAL_DOC_C_ROUTE_STATIC_AUDIT",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "REQUIREMENT": {
+    "route": "GET /api/audit-logs",
+    "raw_docx_paragraphs": "10341-10352",
+    "auth": "session required",
+    "rbac": [
+      "OWNER",
+      "AUDITOR"
+    ],
+    "pagination": [
+      "cursor",
+      "limit"
+    ],
+    "audit_event": "AUDIT_LOG_BROWSED"
+  },
+  "FILES": [
+    {
+      "path": "apps/web/app/api/audit-logs/route.ts",
+      "blob": "a3345d844dfff6822b604da5d53f2348a0ab9be8",
+      "status": "SCANNED_NO_GAP"
+    },
+    {
+      "path": "packages/api/canonical.ts",
+      "blob": "1664d8d6a7da32245578addc26596f8fd4d55954",
+      "scope": "handleAuditLogs + audit truth mapping",
+      "status": "SCANNED_NO_GAP"
+    },
+    {
+      "path": "tests/contract/canonical-api.test.ts",
+      "blob": "edc26665c768f31f27bee89c8b8578ad5c59ee1a",
+      "scope": "audit-log route tests",
+      "status": "SCANNED_NO_GAP_STATIC"
+    },
+    {
+      "path": "tests/contract/audit-role-filter-contract.test.ts",
+      "blob": "3a252cebf6e2d2081bba05cc3029eb00d03b0d21",
+      "status": "SCANNED_NO_GAP_STATIC"
+    }
+  ],
+  "VERIFIED_FACTS": [
+    "Next route delegates GET to handleAuditLogs through runApiHandler.",
+    "handleAuditLogs authorizes only OWNER/AUDITOR and fails closed for other returned roles.",
+    "Pagination validates cursor and limit, uses stable occurredTick/id ordering, and emits next_cursor only when another page exists.",
+    "Successful browse records AUDIT_LOG_BROWSED via recordCanonicalRead.",
+    "Focused static tests cover AUDITOR success, OPERATOR denial, pagination bounds/cursor, dependency failure, and immutable role-attribution filtering."
+  ],
+  "NEW_ACTIONABLE_CODE_GAPS": 0,
+  "EXECUTED_TESTS": false,
+  "TEST_EVIDENCE_STATUS": "STATIC_ONLY_REVERIFY_REQUIRED",
+  "SOURCE_MUTATION": "NONE",
+  "CLOSURE_ELIGIBLE": false,
+  "NEXT": "Continue final-DOC-C route sweep; branch namespace blocker still prevents isolated source repair."
+}
