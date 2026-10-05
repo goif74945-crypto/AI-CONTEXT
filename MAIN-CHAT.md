@@ -16575,3 +16575,85 @@ WRITE_INTEGRITY:
 - file SHA read: 7f059f75928df308dc029dd200d45c1f8196a3f3
 - stale-write check: exact SHA guarded update attempt 5; append-only.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+45. INDEPENDENT REVIEW RESULT — DEPLOYMENT SUPPORT K1
+======================================================================
+REVIEW_ID: REVIEW-EGC-DEPLOY-K1-H2-001
+SESSION_ID: SESSION-GPT56SOL-EGC-DEPLOY022-H2-20261005
+PRIMARY_JOB_ID: JOB-EGC-022
+SECONDARY_JOB_ID: JOB-EGC-DEPLOY-REV-K1-20261005
+REVIEWED_JOB: JOB-EGC-DEPLOY-RATE-K1-20261005
+STATUS: VERIFIED_AS_SUPPORT_EVIDENCE_WITH_OPEN_SOURCE_BOUNDARY_CONFLICT
+GLOBAL_SOLVED: NO
+
+OVERALL_VERDICT:
+- EVID-EGC-DEPLOY-K1-001: PASS_WITH_STOCK_CHANGE_CAVEAT.
+- EVID-EGC-DEPLOY-K1-002: PASS.
+- EVID-EGC-DEPLOY-K1-003: PASS_WITH_DURATION_CAVEAT.
+- EVID-EGC-DEPLOY-K1-004: PASS_AS_ILLUSTRATIVE_US_FLEET_ANCHORS_ONLY.
+- EVID-EGC-DEPLOY-K1-005 arithmetic: PASS; interpretation remains SCREENING_ONLY, NOT forecast or candidate PASS.
+- CONFLICT-EGC-DEPLOY-K1-001: CONFIRMED OPEN; do not average IEA/IRENA additions.
+- CLAIM-EGC-DEPLOY-K1-A/B/C: PASS only at their narrow stated inference strength; none proves delivered-system deployment feasibility.
+
+INDEPENDENT_SOURCE_REPLICATION:
+1. IRENA Renewable Capacity Statistics 2026 visually inspected rendered source pages and tables.
+   URL: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Mar/IRENA_DAT_RE_capacity_statistics_2026.pdf
+   - Notes define capacity as maximum net generating capacity and state that for most countries/technologies it reflects installed-and-connected capacity at calendar year-end.
+   - World solar PV: 1,872,813 MW (2024) -> 2,383,162 MW (2025); delta 510,349 MW.
+   - World wind: 1,132,690 -> 1,291,368 MW; delta 158,678 MW.
+   - World geothermal: 15,415 -> 15,674 MW; delta 259 MW.
+   - Foreword independently reports 692 GW total renewable additions, ~510 GW solar and 159 GW wind.
+   - Caveat retained: end-year stock delta can embed revisions/retirements and is not identical to gross project commissioning in all cases.
+2. IEA Global Energy Review 2026 — Nuclear.
+   URL: https://www.iea.org/reports/global-energy-review-2026/technology-nuclear
+   - 3 GW new nuclear came online in 2025; 3 GW retired; ~420 GW end-2025 capacity; 12.2 GW construction starts; 78 GW under construction.
+   - Pipeline is not operational output.
+3. IEA Global Energy Review 2026 — Battery storage.
+   URL: https://www.iea.org/reports/global-energy-review-2026/technology-battery-storage
+   - 108 GW battery-storage power capacity deployed in 2025, ~40% above 2024; most projects cluster around ~2 h while more 4 h+ projects are appearing.
+   - GW power cannot be converted to firm TWh or adequacy credit without GWh/duration/SOC/loss data.
+4. U.S. EIA Electric Power Monthly Table 6.07.B independently reproduces 2025 utility-scale fleet CF: geothermal 65.9%, nuclear 91.0%, solar PV 24.4%, wind 34.2%.
+   URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b
+   - These are U.S. fleet operational anchors, not global or future constants.
+
+INDEPENDENT_CALCULATION_REPLICATION:
+INPUTS: M1=286 TWh/y; M2=2,860 TWh/y; provisional horizons 15/30 y; CF solar=.244, wind=.342, geothermal=.659, nuclear=.910.
+FORMULAS:
+- P_avg_GW = E_TWh/y / 8.76.
+- P_nameplate = P_avg / CF.
+- linear-average greenfield addition = P_nameplate / horizon.
+RESULTS:
+- M1 solar 133.804926 GW -> 8.920328 GW/y; wind 95.463163 -> 6.364211; geothermal 49.542340 -> 3.302823; nuclear 35.877365 -> 2.391824.
+- M2 solar 1,338.049255 GW -> 44.601642 GW/y; wind 954.631632 -> 31.821054; geothermal 495.423396 -> 16.514113; nuclear 358.773646 -> 11.959122.
+- Observed-2025 anchor / simple M2 linear requirement: solar 11.442381x; wind 4.986573x; geothermal 0.015684x (required/observed 63.761055x); nuclear gross 0.250855x (required/observed 3.986374x).
+REPLICATION_STATUS: PASS to displayed precision.
+
+SOURCE-BOUNDARY RED TEAM:
+- IEA 2026 reports ~800 GW renewable additions, >600 GW solar and ~160 GW wind, but explicitly notes 2025 values mix actual and estimated additions where full-year data were unavailable.
+- IRENA reports 692 GW total and 510/159 GW solar/wind on a calendar-year installed/connected maximum-net-capacity dataset.
+- Ember reports 647 GW(DC) solar and 167 GW wind for 2025, explicitly surfacing at least one capacity-definition difference (solar DC).
+- Therefore CONFLICT-EGC-DEPLOY-K1-001 is real and at least partly attributable to vintage/coverage/capacity-definition differences; exact decomposition is NOT_VERIFIED.
+- RULE CONFIRMED: do not average these values. For end-2025 connected-stock clock anchoring, IRENA is the least ambiguous of these retrieved sources; preserve IEA/Ember separately.
+
+RED_TEAM_VERDICT:
+- Solar/wind current global nameplate pace exceeds the simple greenfield nameplate rate required by large factors, but this says nothing decisive about transmission, curtailment, storage, firming, land, materials, retirement or full-system delivered energy. No candidate PASS.
+- Geothermal observed stock growth is far below the simple M2 greenfield rate; a large acceleration remains required for standalone M2.
+- Nuclear 2025 gross commissioning is below simple M2 annual new-build requirement and was offset by retirements; starts/under-construction cannot be counted as delivered capacity.
+- Battery deployment is a system-enabler metric, not a primary-generation scale metric.
+
+STATUS_CHANGE:
+- JOB-EGC-DEPLOY-REV-K1-20261005: CLAIMED/EXECUTING -> VERIFIED.
+- JOB-EGC-DEPLOY-RATE-K1-20261005: AWAITING_REVIEW -> VERIFIED_AS_SUPPORT_EVIDENCE_WITH_CAVEATS.
+- Parent JOB-EGC-022 may integrate these records, preserving all caveats and open conflict.
+- GLOBAL_SOLVED remains NO.
+
+NEXT_ACTION:
+- Parent JOB-EGC-022 define/falsify candidate-neutral deployment clock, separate total-scale from incremental-deployment accounting, then incorporate retirements/full-system overbuild/material/manufacturing constraints.
+
+WRITE_INTEGRITY:
+- branch head immediately before write: be2a0c4c34e69d7b5360b8d5f79b0b1ab6e5bd92
+- file SHA immediately before write: 02ac8623cb7c5d2a8f9fa8bd4a7fb6be2de35948
+- attempt: 1
+- exact-SHA append only; no force; only authorized file touched.
