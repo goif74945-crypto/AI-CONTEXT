@@ -154,3 +154,30 @@ Build exact reference implementation and test suite in an isolated local workspa
 - protected_repository_write_actions: `NONE`
 - current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
 - next_resume_rule: inspect current artifacts and deepen another unverified dimension only if materially distinct and non-duplicate; never add a sixth concept under the current mission acceptance contract
+
+## Checkpoint CP-PAREX-METRIC-INTEGRITY-04
+
+- timestamp_local: `2026-10-06T06:17:45+07:00`
+- continuation_type: `DEEPEN_EXISTING_CONCEPT`
+- concept_count_after: `5` (unchanged)
+- deepened_concept: `PAREX`
+- verified_gap_1: original `Plan` accepts NaN and boolean metric values and the pruner returns `PASS`
+- verified_gap_2: original output does not bind metric values/profile/evidence, allowing incomparable candidate inputs
+- delivered_design: `PAREX_METRIC_INTEGRITY_DESIGN.md`
+- delivered_code: `parex_metric_integrity.py`
+- delivered_tests: `test_parex_metric_integrity.py`
+- delivered_evidence: `PAREX_METRIC_INTEGRITY_EVIDENCE.md`
+- persisted_code_commit: `14d810a151851f155b41ac3bc67f0ea77c3cb176`
+- design_blob: `95b3d4c3c20769db7a78628acb8b7de3ac73808a`
+- implementation_blob: `63dfdf1e88c290d2d651fefd424076dfa8fce456`
+- test_blob: `3cc92dd05ca4b42bba08bbeb78817b0c8fbc83c2`
+- compile: `PASS`
+- tests: `96/96 PASS` (`20` new + `76` regression)
+- positive_negative_adversarial_integration: `PASS`
+- persistence_readback: `EXACT_MATCH`
+- post_persistence_detached_worktree_verification: `PASS`
+- tdd_red_observed: `18/18 FAIL before implementation`
+- self_audit_repairs: `2` (foreign candidate pre-sort validation; evidence key type validation before set conversion)
+- protected_repository_write_actions: `NONE`
+- current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
+- next_resume_rule: inspect current artifacts and deepen the remaining unverified concept/dimension only if materially distinct and non-duplicate; never add a sixth concept under the current mission acceptance contract
