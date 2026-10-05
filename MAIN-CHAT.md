@@ -9777,3 +9777,177 @@ WRITE_INTEGRITY:
 - stale-write guard: exact blob SHA required; concurrent mismatch => abort/refresh/reapply only nonduplicate material.
 - only authorized mutable file touched: MAIN-CHAT.md.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+39. JOB-EGC-042 RESULT — GEOTHERMAL POTENTIAL CONFLICT RECONCILIATION
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:25:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+PRIMARY_JOB_ID: JOB-EGC-042
+ROLE: Conflict Arbitrator / Geothermal Resource Methodology Reviewer
+STATUS: AWAITING_REVIEW
+TARGET_CONFLICT: CONFLICT-EGC-038-GEOTHERMAL-POTENTIAL-001
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+QUESTION:
+Why does IEA 2024 next-generation EGS report about 4,000 PWh/year technical electricity potential while IPCC AR6 reports about 30–300 PWh/year geothermal technical electricity potential, and can those values be compared directly?
+
+VERDICT:
+CONFLICT_STATUS: METHODOLOGICALLY_RECONCILED / NUMERICAL_UNCERTAINTY_REMAINS
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + INFERENCE
+
+CORE_FINDING:
+- The numbers are NOT apples-to-apples estimates generated with a common methodology.
+- IPCC AR6 (2022) repeats the 30–300 PWh/year range from IPCC SRREN (2011), rather than presenting a new global EGS resource model.
+- The 2011 SRREN EGS method used legacy global stored-heat estimates, assumed 2% heat recovery, conversion losses, a 30-year project life, and 90% capacity factor.
+- IEA 2024 uses Project InnerSpace GeoMap global thermal/porosity modelling, a 20% recovery factor, exergy-dependent heat-to-power conversion, 20-year electricity production life, 80% capacity factor, and a permissive LCOE screen below USD 300/MWh.
+- The recovery/lifetime assumptions alone change annual recoverable-energy rate by a factor of 15: (0.20/20 years) / (0.02/30 years) = 15. This nearly explains the observed ~14.26x ratio between IEA's ~15,000 EJ/year EGS annual potential and the IPCC SRREN EGS-only upper estimate of 1,051.8 EJ/year.
+- Therefore the large numerical gap is mainly a model-assumption/methodology change, not evidence that one source measured the other source to be physically wrong.
+
+SOURCE_EVIDENCE:
+
+EVIDENCE_ID: EVIDENCE-EGC-042-001
+JOB_ID: JOB-EGC-042
+CLAIM_ID: CLAIM-EGC-042-IPCC-METHOD
+TOOL: Official IPCC AR6 HTML + official IPCC SRREN Chapter 4 retrieval
+METHOD: Trace AR6 geothermal potential statement back to cited IPCC 2011 source and inspect SRREN technical-potential assumptions.
+DATE: 2026-10-05
+SOURCE:
+- IPCC AR6 WGIII Chapter 6, section 6.4.2.8
+- IPCC SRREN 2011 Chapter 4, Geothermal Energy
+SOURCE_DATE: 2022; 2011
+URL/DOI/IDENTIFIER:
+- https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/
+- https://archive.ipcc.ch/pdf/special-reports/srren/Chapter%204%20Geothermal%20Energy.pdf
+INPUTS / KEY SOURCE FACTS:
+- AR6: geothermal electricity technical potential ≈30 PWh/year to 3 km and ≈300 PWh/year to 10 km, explicitly citing IPCC 2011.
+- SRREN final: global EGS technical potential examples include 1,051.8 EJ/year from Rowley 1982 stored-heat basis and 288.1 EJ/year from Tester et al.; total geothermal technical upper potential including hydrothermal reaches 1,108.6 EJ/year at 10 km.
+- SRREN final: Tester-based conversion assumes 2% of heat recoverable, average temperature decline 10°C, conversion losses, 30-year lifespan, 90% CF.
+OUTPUT: AR6 30–300 PWh/year is a legacy-assumption range inherited from SRREN 2011, with EGS recovery fraction 2% in the underlying conversion pathway.
+UNCERTAINTY: Old stored-heat datasets and extrapolation methodology carry large geological uncertainty; the range combines hydrothermal + EGS in the summarized total.
+ASSUMPTIONS: None for quoted source parameters.
+LIMITATIONS: No claim that the 2011 assumptions are uniquely correct; they are used here to explain provenance and boundary.
+REPRODUCTION_METHOD: Read AR6 geothermal section, then SRREN Chapter 4 technical-potential methodology and Table 4.2/4.3.
+REPLICATION_STATUS: SOURCE_CHAIN_REPRODUCED_ONCE; independent reviewer required.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: EVIDENCE-EGC-042-002
+JOB_ID: JOB-EGC-042
+CLAIM_ID: CLAIM-EGC-042-IEA-METHOD
+TOOL: IEA HTML + IEA report PDF text extraction + mandatory PDF visual inspection of methodology pages
+METHOD: Inspect Chapter 2 methodology, assumptions table and electricity-potential section.
+DATE: 2026-10-05
+SOURCE: IEA, The Future of Geothermal Energy (2024), Chapter 2
+SOURCE_DATE: 2024-12-13
+URL/DOI/IDENTIFIER:
+- https://www.iea.org/reports/the-future-of-geothermal-energy/global-geothermal-potential-for-electricity-generation-using-egs-technologies
+- https://iea.blob.core.windows.net/assets/cbe6ad3a-eb3e-463f-8b2a-5d1fa4ce39bf/TheFutureofGeothermal.pdf
+INPUTS / KEY SOURCE FACTS:
+- Power-generation volumes require temperature >150°C; volumes >250°C for EGS excluded because of field-data/high-temperature challenges.
+- Usable heat applies 20% recovery factor; electricity conversion uses an exergy-dependent heat-to-power efficiency.
+- Electricity potential translated to capacity with 20-year production lifetime and 80% capacity factor.
+- Assumptions table: 10 wells; 3,000 m horizontal length; 1:1 injector/producer; 80 kg/s total flow; productivity 5 kg/s/bar; drilling USD 2,000/m; stimulation USD 2,800/m; power CAPEX USD 2,250/kW; OPEX 2% CAPEX; derisking/construction 6 years.
+- Transmission-line and grid-connection costs are explicitly excluded.
+- Global EGS resources within 8 km with modelled LCOE <USD 300/MWh: ~300,000 EJ total, approximately 600 TW for 20 years; annual technical generation reported around 4,000 PWh (15,000 EJ).
+- <5 km: ~42 TW / 21,000 EJ; 5–8 km: >550 TW / 280,000 EJ.
+OUTPUT: IEA estimate uses a materially newer and more optimistic-recovery technical/economic screen than SRREN 2011; >90% of its total energy estimate comes from 5–8 km resources.
+UNCERTAINTY: GeoMap global interpolation, flow/productivity, drilling cost and 20% recovery are model assumptions, not globally measured field outcomes.
+ASSUMPTIONS: As stated by IEA.
+LIMITATIONS: USD 300/MWh threshold is far above the mission's proposed low-cost generation screen; grid/transmission excluded; technical potential is not deployable low-cost market potential.
+REPRODUCTION_METHOD: Inspect IEA PDF Chapter 2 pages 42–45 and recalculate totals.
+REPLICATION_STATUS: SOURCE_METHOD_REPRODUCED_ONCE; independent reviewer required.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: CALC-EGC-042-001
+JOB_ID: JOB-EGC-042
+CLAIM_ID: CLAIM-EGC-042-SCALING-RECONCILIATION
+TOOL: Python deterministic arithmetic + dimensional analysis
+DATE: 2026-10-05
+INPUTS:
+- IEA total lifetime electricity = 300,000 EJ; life=20 y; reported annual ≈15,000 EJ/y.
+- IEA <5 km = 21,000 EJ total; 5–8 km = 280,000 EJ total.
+- IEA recovery=20%; life=20 y; CF=80%.
+- IPCC/SRREN recovery=2%; life=30 y; CF=90%; EGS upper annual =1,051.8 EJ/y; total geothermal upper annual=1,108.6 EJ/y.
+- 1 PWh = 3.6 EJ.
+EQUATIONS:
+1. IEA annual from lifetime energy = 300,000 EJ / 20 y = 15,000 EJ/y = 4,166.67 PWh/y, consistent with IEA's rounded ~4,000 PWh/y.
+2. IEA <5 km annual = 21,000/20/3.6 = 291.67 PWh/y.
+3. IEA 5–8 km annual = 280,000/20/3.6 = 3,888.89 PWh/y.
+4. Deep-resource share = 280,000/300,000 = 93.33% of lifetime-energy estimate; capacity share lower bound ≈550/600 =91.67%.
+5. SRREN EGS upper =1,051.8/3.6=292.17 PWh/y; total geothermal upper=1,108.6/3.6=307.94 PWh/y.
+6. Annualization factor from recovery/life alone = (0.20/20)/(0.02/30)=15.0.
+7. Observed annual IEA/SRREN-EGS-upper ratio =15,000/1,051.8=14.2613.
+8. Residual ratio after recovery/life normalization =14.2613/15=0.95075.
+OUTPUT:
+- The 15x recovery/lifetime scaling is within ~5% of the actual IEA-vs-SRREN EGS annual-potential ratio.
+- This demonstrates that recovery fraction + assumed extraction lifetime are sufficient to explain almost all order-of-magnitude discrepancy before considering map, depth, temperature and conversion-method differences.
+UNITS: EJ, EJ/year, PWh/year, dimensionless ratios.
+UNCERTAINTY: Deterministic arithmetic exact to shown inputs; interpretation inherits source-model uncertainty.
+ASSUMPTIONS: Comparison uses SRREN EGS-only upper value where possible; CF is not multiplied into lifetime-energy annualization because both source annual-energy values already embody their own conversion framework.
+LIMITATIONS: This does not validate IEA's 20% recovery as achievable globally; it only reconciles why model outputs differ.
+REPRODUCTION_METHOD: Apply equations above using any calculator.
+REPLICATION_STATUS: CALCULATED_ONCE / INDEPENDENT_REPLICATION_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: CALCULATION.
+
+CONFLICT_ID: CONFLICT-EGC-042-IEA-LIFETIME-001
+TRUTH_CLASS: SOURCE_INTERNAL_CONFLICT
+QUESTION: Why does the IEA executive-summary web text mention almost 600 TW with a 25-year operating lifespan while detailed Chapter 2 specifies 20 years for electricity and 25 years for heat?
+EVIDENCE:
+- Detailed Chapter 2 methodology explicitly states 20 years for electricity, 25 years for heat, with 80%/90% CF respectively.
+- Detailed electricity-potential section explicitly says almost 600 TW operating for 20 years.
+- Executive-summary web text says almost 600 TW with an operating lifespan of 25 years.
+ARBITRATION:
+- Use detailed Chapter 2's 20-year electricity assumption for calculations because it is technology-specific, repeated in the assumptions table and internally consistent with 300,000 EJ lifetime / ~15,000 EJ/year annual generation.
+- Do NOT silently delete the executive-summary discrepancy.
+STATUS: RESOLVED_FOR_CALCULATION_BOUNDARY / EDITORIAL_OR_VERSION_CAUSE_UNKNOWN.
+
+RED_TEAM_ATTACKS:
+1. ATTACK: Treat 4,000 PWh/year as measured recoverable generation.
+RESULT: REJECTED. It is modelled technical potential using 20% recovery and cost/performance assumptions.
+2. ATTACK: Treat IPCC 30–300 PWh/year as a contradictory modern measurement.
+RESULT: REJECTED. AR6 explicitly traces it to IPCC 2011 methodology.
+3. ATTACK: Average 300 and 4,000 PWh/year to obtain a compromise potential.
+RESULT: FALSIFIED. Different recovery/lifetime/depth/method boundaries make averaging invalid.
+4. ATTACK: Use the IEA <USD300/MWh technical screen as evidence of mission LOW_COST.
+RESULT: REJECTED. USD300/MWh is a permissive resource-screen threshold; transmission/grid are excluded, and IEA itself describes current next-generation geothermal costs as high.
+5. ATTACK: Assume the 20% recovery factor is already globally demonstrated.
+RESULT: REJECTED. It is a model assumption referenced by IEA; broad field validation remains an engineering/evidence job.
+
+CANDIDATE_IMPACT:
+- RESOURCE-SCALE CONCLUSION IS ROBUST TO THIS CONFLICT: even the much lower legacy IPCC AR6 range (30–300 PWh/year) is far above the mission's currently proposed multi-PWh/year massive-energy threshold. Thus geothermal/EGS should NOT be rejected for insufficient gross technical heat resource on current evidence.
+- ECONOMIC / ENGINEERING CONCLUSION REMAINS OPEN: IEA's vast 4,000 PWh/year result is dominated (>90%) by 5–8 km resources and uses a <USD300/MWh screen. It does NOT establish low-cost delivered electricity at massive scale.
+- HIGH-SENSITIVITY VARIABLE: global effective heat-recovery fraction. Moving from 2% to 20% is a 10x swing before lifetime and conversion effects.
+- HIGH-SENSITIVITY VARIABLE: achievable drilling depth/cost. >90% of IEA modelled resource lies in 5–8 km band.
+
+CLAIM_GRAPH_UPDATE:
+- CLAIM-EGC-038-GEOTHERMAL-RESOURCE: RESOURCE_SCALE_LIKELY_PASS remains supported, but value is boundary-sensitive and cannot use a single 4,000 PWh/year figure as a measured fact.
+- CLAIM-EGC-042-RECONCILIATION: IEA-vs-IPCC discrepancy is substantially explained by recovery/lifetime/methodology differences. STATUS=SUPPORTED_PENDING_INDEPENDENT_REVIEW.
+- CLAIM-EGC-042-20PCT-GLOBAL: '20% recovery globally achievable' = ASSUMPTION / NOT_VERIFIED.
+- CLAIM-EGC-042-LOWCOST: 'EGS at resource scale meets mission low-cost gate' = NOT_VERIFIED.
+
+CONFLICT_UPDATE:
+- CONFLICT-EGC-038-GEOTHERMAL-POTENTIAL-001: OPEN -> RESOLUTION_PROPOSED / AWAITING_INDEPENDENT_REVIEW.
+- Numerical range remains uncertain; category conflict is resolved by preserving each source boundary instead of averaging.
+
+STATUS_CHANGE:
+- JOB-EGC-042: EXECUTING -> AWAITING_REVIEW.
+- SELF_VERIFICATION: FORBIDDEN.
+- REVIEWER_JOB_ID: JOB-EGC-039 as predeclared by creator, or a distinct reviewer if JOB-EGC-039 is occupied by JOB-EGC-038 review.
+
+NEXT_ACTION:
+1. Independent reviewer recomputes CALC-EGC-042-001 and inspects both source methods.
+2. Create/execute an engineering-validation job for realistic field recovery fraction and reservoir lifetime across EGS demonstrations.
+3. Techno-economic jobs must not treat IEA's <USD300/MWh resource screen as a mission LOW_COST pass.
+4. Keep EGS in candidate set for resource-scale testing, but do not promote it to front-runner until field durability and common-boundary cost are verified.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
