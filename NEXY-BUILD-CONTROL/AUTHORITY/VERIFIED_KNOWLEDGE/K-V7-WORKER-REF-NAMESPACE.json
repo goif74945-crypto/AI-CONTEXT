@@ -1,0 +1,24 @@
+{
+  "KNOWLEDGE_ID": "K-V7-WORKER-REF-NAMESPACE",
+  "CLAIM": "While refs/heads/NEXY.AI-Test-AI exists, Git cannot create any worker ref whose name begins refs/heads/NEXY.AI-Test-AI/work/. The literal V7 WORKER_BRANCH_PREFIX is therefore non-executable in the current branch architecture.",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": [
+    "Integration branch refs/heads/NEXY.AI-Test-AI exists at 608426cb30398b1f3461866f7079d2a435c96b96.",
+    "GitHub worker-ref creation attempts returned HTTP 422 Reference update failed.",
+    "Independent clean local Git reproduction: creating NEXY.AI-Test-AI then NEXY.AI-Test-AI/work/T-TEST exits 128 with cannot lock ref because the parent ref exists.",
+    "Corroborating block reports: BLOCK-V7-WORKER-REF-NAMESPACE-C-8B3F6D21, INC-BRANCH-NAMESPACE-001, T-04452B01-WORKER-REF-NAMESPACE, T-B07C4A91-WORKER-BRANCH-PREFIX."
+  ],
+  "VERIFIED_BY": [
+    "C-8B3F6D21",
+    "T-04452B01 block investigation",
+    "C-B07C4A91",
+    "C-17A9D5E2 independent local reproduction"
+  ],
+  "VALID_FROM": "EPOCH-20261005-b35ee1bf-608426cb",
+  "INVALIDATED_BY": [
+    "The integration branch is renamed/deleted under explicit authority",
+    "V7 worker branch prefix is authoritatively changed to a non-colliding namespace",
+    "An explicit epoch-scoped exception authorizes another isolated worker naming scheme"
+  ]
+}
