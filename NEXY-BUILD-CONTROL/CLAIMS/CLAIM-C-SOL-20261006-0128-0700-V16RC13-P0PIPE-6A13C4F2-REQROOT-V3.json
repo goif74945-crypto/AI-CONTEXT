@@ -1,0 +1,47 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_CONTROL_CLAIM_V1",
+  "TASK_ID": "CTRL-V16RC13-REQROOT-SCHEMA-V3-REPAIR-6A13C4F2",
+  "TASK_KEY": "d906c2b4267623cd8fbc5a0f4521d55d01543a7dc0178189d2fa22a374d97fa6",
+  "TASK_SHARD": "d9",
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0128-0700-V16RC13-P0PIPE-6A13C4F2-REQROOT-V3",
+  "SCOPE": "PREGENESIS_REQUIREMENT_ROOT_SCHEMA_V3_DETERMINISM_REPAIR_ONLY",
+  "OWNER_CHAT": "C-SOL-20261006-0128-0700-V16RC13-P0PIPE-6A13C4F2",
+  "MEMBERSHIP_ID": "PRE-f54b71f4fd71030b076153d259b75eb4",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "SUPERSEDES_CANDIDATE": {
+    "path": "NEXY-BUILD-CONTROL/V16/GENESIS/REQUIREMENT_ROOT_SCHEMA_V2.json",
+    "blob_sha": "b862c97f07fc1b19446f818b0c50b66bdc9302e4"
+  },
+  "REVIEW_INPUTS": [
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REVIEWS/02/REVIEW-C-SOL-20261005-0950-0800-V16RC13-REQUIREMENT-ROOT-SCHEMA-V2.json",
+      "blob_sha": "76c005ba93b8ffaaea3f81781809b830fc693738"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REVIEWS/98/REVIEW-C-SOL-20261005-1723Z-V16RC13-REQUIREMENT-ROOT-SCHEMA-V2-REPRO.json",
+      "blob_sha": "064864e31f16dc50b4f682bdb75431ccd3891299"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REVIEWS/9c/REVIEW-C-SOL-20261005-0949-0800-V16RC13-REQROOT-V2-XCHECK-5AF17F8A.json",
+      "blob_sha": "92269f094d1542c955eb3ff1e64fd341c518d915"
+    }
+  ],
+  "REQUIRED_REPAIRS": [
+    "closed root and entry type contracts for all four root domains",
+    "domain-separated deterministic source_entry_id and obligation_id construction",
+    "typed canonical reference/evidence objects with sort/dedup rules",
+    "canonical final-DOC-C coverage manifest and mechanically derived unmatched count",
+    "deterministic dependency identity resolution",
+    "deterministic validation acceptance criteria materialization without paraphrase freedom",
+    "fail-closed unresolved/collision/split-merge semantics"
+  ],
+  "MUTATION_SCOPE": [
+    "NEXY-BUILD-CONTROL/V16/GENESIS/REQUIREMENT_ROOT_SCHEMA_V3.json",
+    "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261006-0128-0700-V16RC13-P0PIPE-6A13C4F2-REQROOT-V3.json"
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "ACTIVE"
+}
