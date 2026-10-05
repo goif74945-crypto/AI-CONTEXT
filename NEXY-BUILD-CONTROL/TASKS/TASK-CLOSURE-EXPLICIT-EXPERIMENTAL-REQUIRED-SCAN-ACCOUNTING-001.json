@@ -1,0 +1,25 @@
+{
+  "TASK_ID": "TASK-CLOSURE-EXPLICIT-EXPERIMENTAL-REQUIRED-SCAN-ACCOUNTING-001",
+  "FINDING_ID": "FINDING-CLOSURE-EXPLICIT-EXPERIMENTAL-REQUIRED-SCAN-ACCOUNTING-001",
+  "PRIORITY": "P1",
+  "RISK": "CLOSURE_INTEGRITY",
+  "STATUS": "READY_CONTROL_PLANE",
+  "OWNER": "UNASSIGNED",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SCOPE": [
+    "NEXY-BUILD-CONTROL/CLOSURE accounting only",
+    "Explicit experimental source/test exclusion derived from PRIMARY-EXECUTION-SETS-608426CB"
+  ],
+  "GOAL": "Publish a superseding numeric active required-scan accounting record for the verified explicit-experimental set without overclaiming final global DOC-C closure.",
+  "ACCEPTANCE": [
+    "Record BASE_UNSCANNED_REQUIRED_CANDIDATES = 816.",
+    "Record EXPLICIT_EXPERIMENTAL_UNIQUE_PATHS = 229 (146 sources + 83 tests).",
+    "Prove all 229 are present and UNSCANNED in the base inventory and have zero overlap with active primary execution sets.",
+    "Record EXPLICIT_EXPERIMENTAL_ADJUSTED_REQUIRED_CANDIDATES = 587.",
+    "State explicitly that 587 is not the final global denominator if other authority-aware scope overlays remain.",
+    "Preserve historical inventory and existing overlays append-only.",
+    "No source mutation and no NEXY.ai mutation."
+  ]
+}
