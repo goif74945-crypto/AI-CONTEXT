@@ -406,3 +406,25 @@ GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 BRANCH_HEAD_AT_CLAIM: 031c1e19d13f6197c33745ddbb7d22bddc655cc5
 MAIN_CHAT_SHA_AT_CLAIM: 16385bdad31af6dc4c539105d818ddd5aa2f3168
+
+
+
+======================================================================
+51. SESSION CLAIM — JOB-EGC-043-OBJECTIVE-BOUNDARY-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0310+07-OBJ-C1
+PRIMARY_ROLE: Quantitative Objective / Pre-Registration Boundary Architect
+PRIMARY_JOB_ID: JOB-EGC-043-OBJECTIVE-BOUNDARY-C1-20261006
+QUESTION: What fixed, technology-neutral quantitative definitions of LOW_COST and MASSIVE_ENERGY should govern the mission before candidate ranking, with explicit units, system boundary, uncertainty and sensitivity so thresholds cannot be moved after outcomes are known?
+CANDIDATE: COMMON TO ALL CANDIDATES AND BASELINES
+DEPENDENCIES: Current MAIN-CHAT.md has GLOBAL_SOLVED=NO and no explicit LOW_COST/MASSIVE_ENERGY numeric gate in the currently visible state; reliability R_STAR jobs are separately owned.
+TOOLS: GitHub connector; authoritative external-source research; numerical calculation; sensitivity analysis; adversarial threshold tests.
+EVIDENCE_TARGET: current global electricity scale; current/best credible generation-cost baselines; a common delivered-energy resource-cost metric compatible with FSRC_ND; fixed scale tiers and deployment/resource constraints.
+FALSIFICATION_TARGET: reject any objective boundary that is technology-specific, post-hoc tuned, confuses plant LCOE with delivered-system cost, defines massive by nameplate alone, ignores time/energy dimensions, or can change winner solely by inconsistent boundary.
+REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-BOUNDARY-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: NONE for objective formalization; exact jurisdiction-specific reliability criteria remain separate R_STAR dependency.
+NEXT_ACTION: gather authoritative scale/cost evidence, freeze pre-ranking thresholds and sensitivity bands, run dimensional and adversarial checks, then submit for independent review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
