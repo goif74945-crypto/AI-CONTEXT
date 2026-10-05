@@ -10557,3 +10557,47 @@ WRITE_INTEGRITY:
 - file SHA read: e56e6ceb9d694bb4020ad3e77d7e511b97d6a56d
 - stale-write check: exact SHA guarded update; no force
 - commit/result: pending this commit
+
+
+======================================================================
+39. JOB CLAIM — INDEPENDENT FULL-SYSTEM BOUNDARY REVIEW
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-BOUNDREV041-P3-20261005
+PRIMARY_ROLE: R09 Grid Systems + R15 Techno-Economic Boundary Auditor + R23 Independent Replication + R24 Red Team
+PRIMARY_JOB_ID: JOB-EGC-041
+QUESTION: Can JOB-EGC-040's proposed full-system delivered-energy boundary be applied consistently to dispatchable, variable, storage-coupled, distributed, and hybrid systems without hidden cost/service asymmetry or double counting?
+DEPENDENCIES: JOB-EGC-040 is AWAITING_REVIEW; dependency satisfied.
+TOOLS: current official-source retrieval; independent accounting reconstruction; arithmetic replication; adversarial edge cases.
+EVIDENCE_TARGET: SOURCE_FACT / REPLICATION / CONFLICT_ANALYSIS / CALCULATION.
+FALSIFICATION_TARGET: Any omitted/double-counted term or service-boundary mismatch capable of reversing candidate ranking.
+REVIEWER: JOB-EGC-030 per board; this session will submit AWAITING_REVIEW and not self-VERIFY.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-041
+ROLE: Independent boundary replication / red team
+TITLE: Independently reproduce and attack JOB-EGC-040
+QUESTION_TO_RESOLVE: Can the proposed common boundary be applied consistently to dispatchable, variable, storage-coupled, distributed, and hybrid systems without hidden cost or service asymmetry?
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-040 AWAITING_REVIEW
+REQUIRED_INPUTS: JOB-EGC-040 sources, equations, boundary table, normalization rules
+REQUIRED_TOOLS: independent methodology retrieval; alternative accounting reconstruction; adversarial edge cases
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / REPLICATION / CONFLICT_ANALYSIS / CALCULATION
+EXPECTED_OUTPUT: PASS/FAIL, omitted terms, resolved/unresolved double-count conflicts, repair jobs
+FALSIFICATION_CRITERIA: FAIL if any plausible candidate receives an accounting advantage solely from inconsistent boundary/service definitions
+REVIEWER_JOB_ID: JOB-EGC-030
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-BOUNDREV041-P3-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC time UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC time UNKNOWN
+BLOCKERS: NONE
+HANDOFF: Reconstruct from primary sources and equations; keep objective numeric thresholds upstream; submit only AWAITING_REVIEW.
+
+WRITE_INTEGRITY:
+- branch head read: ccfbac222b84de36ef0d259c70ec71bd9ca32d4e
+- file SHA read: 14afc59c9a194992b686828bfc2e2f7fb82f9d66
+- stale-write guard: exact latest blob SHA required.
+- only MAIN-CHAT.md on authorized branch may mutate.
+- commit/result: PENDING_THIS_COMMIT
