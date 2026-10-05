@@ -1,7 +1,7 @@
 {
   "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
   "chat_id": "C-SOL-20261006-0142-DIRECTIVE-READY-UI",
-  "status": "TESTING",
+  "status": "BLOCKED_TEST_INFRA",
   "objective": "Align directive-create UI action availability with canonical backend admission: new directives are actionable only when system state is READY.",
   "requirement_gap": "UI currently enables submission in canonical non-READY states although POST /api/directives deterministically rejects every non-READY state.",
   "target_repository": "goif74945-crypto/NEXY.AI-",
@@ -26,16 +26,33 @@
   "validation_branch": "validation-C-SOL-20261006-0142-directive-ready-ui",
   "validation_run_id": 37359757357,
   "validation_attempt": 2,
-  "test_status": "RETRY_QUEUED",
+  "test_status": "BLOCKED_BEFORE_OBSERVABLE_STEPS",
   "test_evidence": {
-    "first_attempt": {
-      "head_sha": "71643e5cc94d43640d9807e337e443e40f8457d3",
-      "conclusion": "failure",
-      "runner_steps_observed": 0,
-      "classification": "EXECUTION_INFRASTRUCTURE_BLOCKER_SUSPECTED"
-    },
-    "second_attempt": {
-      "status": "queued"
-    }
-  }
+    "attempts": [
+      {
+        "attempt": 1,
+        "conclusion": "failure",
+        "job_id": 111931098633,
+        "observable_steps": 0,
+        "logs": "UNAVAILABLE_BLOB_404"
+      },
+      {
+        "attempt": 2,
+        "conclusion": "failure",
+        "job_id": 111931859955,
+        "observable_steps": 0,
+        "logs": "UNAVAILABLE_BLOB_404"
+      }
+    ],
+    "corroboration": "Contemporaneous Exact HEAD and Six-system runs on NEXY.AI-Test-AI also fail within seconds in the same runner/pre-step window.",
+    "remote_desktop": "OFFLINE",
+    "container_network": "GITHUB_DNS_UNAVAILABLE"
+  },
+  "draft_pr": {
+    "number": 48,
+    "url": "https://github.com/goif74945-crypto/NEXY.AI-/pull/48",
+    "mergeable": false
+  },
+  "integration_status": "NOT_MERGED",
+  "continuation_required": true
 }
