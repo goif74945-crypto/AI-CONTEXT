@@ -1,0 +1,54 @@
+{
+  "SCHEMA_VERSION": "NEXY_CONTROL_P0_PROJECTION_V1",
+  "PURPOSE": "Deterministically derive CURRENT_CONTROL_P0 from the complete canonical finding manifest while preserving product-only P0 findings outside the preactivation control blocker count.",
+  "INPUT_REQUIREMENTS": {
+    "COMPLETE_FINDING_MANIFEST_REQUIRED": true,
+    "PARTIAL_SEARCH_PROVES_ZERO": false,
+    "REQUIRED_ROW_FIELDS": [
+      "finding_path",
+      "blob_sha",
+      "finding_id",
+      "severity_raw",
+      "status_raw",
+      "type_raw",
+      "control_relevance",
+      "classification_evidence",
+      "canonical_blocker_id"
+    ]
+  },
+  "CONTROL_RELEVANCE_ENUM": [
+    "CONTROL_BLOCKER",
+    "PRODUCT_ONLY",
+    "SUPPORTING_DUPLICATE",
+    "HISTORICAL_NONBLOCKING",
+    "UNKNOWN"
+  ],
+  "CLASSIFICATION_RULES": [
+    "Never infer control relevance from severity or filename alone.",
+    "CONTROL_BLOCKER requires evidence that the finding affects admission, authority, law/spec identity, control integrity, gating, leases, integration authority, closure authority, canonical roots, control transport, or other preactivation control correctness.",
+    "PRODUCT_ONLY requires evidence that resolution is normal product implementation and does not independently affect control authority or activation safety.",
+    "SUPPORTING_DUPLICATE requires canonical_blocker_id pointing to an existing semantically equivalent parent blocker; missing/invalid parent downgrades to UNKNOWN.",
+    "HISTORICAL_NONBLOCKING requires explicit terminal nonblocking status RESOLVED, CLOSED, or SUPERSEDED; age or legacy origin alone is insufficient.",
+    "UNKNOWN is fail-closed and remains control-blocking until evidence-backed classification is published."
+  ],
+  "P0_CLASS_RULE": "A row is P0-class when its authoritative structured severity identifies P0, P0_CONTROL, P0_AUTHORITY, or an explicitly schema-mapped P0 variant. Free-text P0 mentions alone do not establish P0-class.",
+  "PROJECTION_RULES": [
+    "Include CONTROL_BLOCKER rows that are P0-class and whose status is not RESOLVED/CLOSED/SUPERSEDED.",
+    "Include UNKNOWN P0-class rows as blocking until classified.",
+    "Exclude PRODUCT_ONLY rows from CURRENT_CONTROL_P0 after evidence-backed classification; retain them in product requirement/task accounting.",
+    "Exclude valid SUPPORTING_DUPLICATE rows from OPEN_CONTROL_P0_COUNT but retain them in the complete source manifest and bind them to canonical_blocker_id.",
+    "Exclude terminal RESOLVED/CLOSED/SUPERSEDED rows from OPEN_CONTROL_P0_COUNT."
+  ],
+  "COUNTING": {
+    "DEDUP_KEY": "canonical_blocker_id when present and valid, otherwise finding_id",
+    "OPEN_CONTROL_P0_COUNT": "count of unique projected blocking dedup keys",
+    "CONTROL_P0_SET_ROOT_HASH": "SHA-256 of UTF-8 JCS(projected manifest) after canonical byte-order sort by dedup key then finding_path"
+  },
+  "FAIL_CLOSED": [
+    "Missing required classification evidence => UNKNOWN.",
+    "Conflicting classifications => UNKNOWN.",
+    "Missing finding_id or ambiguous duplicate parent => UNKNOWN.",
+    "Any denominator mismatch or incomplete manifest => OPEN_CONTROL_P0_COUNT is UNKNOWN, never zero."
+  ],
+  "AUTHORITY_NOTE": "This schema is an engineering control-plane candidate consistent with V16-RC1.3 [062]-[065]. It does not amend the Constitution and requires independent review before canonical adoption."
+}
