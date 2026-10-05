@@ -11044,3 +11044,310 @@ Distinct repair session freezes cost-unit/uncertainty/deployment rules while sca
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+
+======================================================================
+RESULT — JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0312+07-SAFE1
+PRIMARY_ROLE: Cross-Candidate Safety / FMEA / Regulatory-Risk Evidence Analyst
+PRIMARY_JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-SAFETY-FMEA-REV-SOL-20261006-0312
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+OBJECTIVE:
+Create a technology-neutral safety/FMEA/regulatory gate and prevent false cross-technology risk normalization while keeping real safety/lifecycle resource costs inside the common FSRC_ND boundary.
+
+S_STAR PROPOSED RULE:
+For every candidate/baseline at the same geography/service scale record failure modes; exposed workers/public/environment; prevention/detection/mitigation/emergency/recovery; applicable law/codes/standards; residual-risk evidence/uncertainty; upstream/fuel infrastructure where required; waste/decommission/remediation; and real safety-control resources. A lower cost cannot compensate for an unresolved safety/regulatory defect that blocks acceptable deployment. Safety-resource cost enters FSRC_ND exactly once.
+
+NO_FALSE_SCALAR:
+Do not combine occupational fatalities, individual latent-risk objectives, dam-breach tail risk, toxic releases, seismic risk and environmental harm into one deaths/TWh number unless causal boundary, numerator, geography, observation period and net-delivered-energy denominator are compatible. Otherwise use separate dimensions and NOT_COMPARABLE/NOT_VERIFIED.
+
+MISSION_PRIORITY_CONVENTION, NOT SOURCE_FACT:
+P0 = unresolved safety/regulatory defect capable of making proposed deployment unacceptable/infeasible.
+P1 = material safety/regulatory uncertainty/control obligation capable of reversing cost/site/deployment ranking.
+P2 = established controlled hazard; never means zero risk.
+
+EVIDENCE_ID: TE-EGC-SAFE-001
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-NUCLEAR-RISK
+TOOL: official-source web retrieval
+METHOD: NRC quantitative-safety-goal provenance check
+DATE: 2026-10-06
+SOURCE: U.S. NRC Speech 97-17 explaining 1986 Safety Goal Policy
+SOURCE_DATE: 1997
+URL/DOI/IDENTIFIER: https://www.nrc.gov/documents-reports/document-collections/commission-documents/speeches/1997/s97-17
+INPUTS: NRC risk objectives
+PARAMETERS: latent=2e-6/person-year; early=5e-7/person-year; subsidiary CDF=1e-4/reactor-year; conditional-containment-failure implementation guideline=0.1
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: quantitative probabilistic regulatory objectives exist; they are not measured accident rates.
+UNITS: person^-1 year^-1; reactor^-1 year^-1; dimensionless
+UNCERTAINTY: design-specific current PRA/licensing still required.
+ASSUMPTIONS: none beyond source scope.
+LIMITATIONS: historical policy explanation, not fleet fatality data.
+REPRODUCTION_METHOD: retrieve NRC source and verify values/context.
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: CALC-EGC-SAFE-001
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-RISK-UNITS
+TOOL: Wolfram Language evaluator
+METHOD: cumulative arithmetic sanity check
+DATE: 2026-10-06
+SOURCE: TE-EGC-SAFE-001 inputs
+SOURCE_DATE: 1997 inputs; calculation 2026-10-06
+URL/DOI/IDENTIFIER: NRC source above; executed Wolfram evaluator
+INPUTS: p_early=5e-7/y; p_latent=2e-6/y; n=60 y
+PARAMETERS: constant independent annual-p illustration
+EQUATION/CODE/METHOD: P60=1-(1-p)^60; N[{1-(1-5*10^-7)^60,10^6*(1-(1-5*10^-7)^60),1-(1-2*10^-6)^60,10^6*(1-(1-2*10^-6)^60)},16]
+OUTPUT: early=0.00002999955750427747=29.9995575043/million; latent=0.0001199929202737522=119.992920274/million
+UNITS: cumulative individual probability; per-million-person equivalent
+UNCERTAINTY: rounding negligible; interpretation dominates.
+ASSUMPTIONS: constant/independent years only for arithmetic demonstration.
+LIMITATIONS: NOT measured reactor risk, NOT accident frequency, NOT population fatalities, NOT total nuclear risk.
+REPRODUCTION_METHOD: independently execute equation.
+REPLICATION_STATUS: EXECUTED_TOOL_PASS / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+EVIDENCE_ID: TE-EGC-SAFE-002
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-NUCLEAR-MEASURED
+TOOL: official-source web retrieval
+METHOD: post-accident physical-evidence review
+DATE: 2026-10-06
+SOURCE: UNSCEAR 2020/2021 Fukushima Report FAQ
+SOURCE_DATE: report adopted 2020
+URL/DOI/IDENTIFIER: https://www.unscear.org/unscear/en/areas-of-work/fukushima-report-faq.html
+INPUTS: >500 scientific articles plus monitoring data summarized by UNSCEAR
+PARAMETERS: resident/worker radiation-health assessment
+EQUATION/CODE/METHOD: source synthesis
+OUTPUT: no adverse health effects among Fukushima residents documented as directly attributable to accident radiation exposure and none expected to be detectable; worker dose evidence exists; broader mental-health/financial consequences are outside/partly outside scope.
+UNITS: qualitative causal result; source dose values in mSv
+UNCERTAINTY: source explicitly treats exposure uncertainty.
+ASSUMPTIONS: source scope preserved.
+LIMITATIONS: does not imply accident risk zero or erase evacuation/social effects; not future-plant PRA.
+REPRODUCTION_METHOD: review UNSCEAR FAQ health/worker/scope sections.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT / EXISTING_PHYSICAL_EVIDENCE
+
+EVIDENCE_ID: TE-EGC-SAFE-003
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-HYDRO
+TOOL: official-source web retrieval
+METHOD: hazard-definition/risk-method cross-check
+DATE: 2026-10-06
+SOURCE: FEMA dam guidance + FERC RIDM
+SOURCE_DATE: FEMA 2013 text; FERC updated 2026-07-30
+URL/DOI/IDENTIFIER: https://www.fema.gov/sites/default/files/2020-08/fema_dam-safety_inflow-designs_P-94.pdf ; https://www.ferc.gov/dam-safety-and-inspections/risk-informed-decision-making-ridm
+INPUTS: hazard-potential definition; FERC RIDM
+PARAMETERS: loading likelihood; system response; consequences
+EQUATION/CODE/METHOD: source comparison
+OUTPUT: high-hazard classification is consequence if failure/misoperation occurs, not structural integrity; FERC estimates risk using likelihood+response+consequence.
+UNITS: method-level
+UNCERTAINTY: site-specific.
+ASSUMPTIONS: none.
+LIMITATIONS: hazard class alone cannot yield failure probability/fatalities.
+REPRODUCTION_METHOD: retrieve both official sources.
+REPLICATION_STATUS: TWO_SOURCE_CROSSCHECK
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-SAFE-004
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-BESS
+TOOL: Sandia/DOE web retrieval
+METHOD: large-scale physical-test and standards check
+DATE: 2026-10-06
+SOURCE: Sandia/DOE Office of Electricity ESS; DOE 10 CFR 1021 TSD
+SOURCE_DATE: Sandia 2026-04-05; DOE TSD 2023
+URL/DOI/IDENTIFIER: https://www.sandia.gov/ess/2026/04/05/large-scale-testing-provides-insights-to-improve-energy-storage-systems-safety ; https://www.energy.gov/documents/doe-10-cfr-1021-technical-support-document-2023-11-16pdf
+INPUTS: grid-scale Li-ion thermal-runaway evidence and code references
+PARAMETERS: propagation; toxic gas; large-scale failure; NFPA 855; UL 9540/9540A
+EQUATION/CODE/METHOD: source synthesis; PDF text extraction; prior screenshot attempt cache-failed and no visual-only datum used.
+OUTPUT: facility-scale thermal runaway can propagate/release toxic gas/cause large-scale failure; code/testing framework is material.
+UNITS: qualitative physical/control evidence
+UNCERTAINTY: chemistry/design/site/jurisdiction dependent.
+ASSUMPTIONS: standards mandatory only where adopted/required.
+LIMITATIONS: no universal event frequency.
+REPRODUCTION_METHOD: retrieve Sandia and DOE sources.
+REPLICATION_STATUS: CROSS_SOURCE_PASS
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT / EXISTING_PHYSICAL_TEST_EVIDENCE
+
+EVIDENCE_ID: TE-EGC-SAFE-005
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-EGS
+TOOL: DOE/USGS official-source web retrieval
+METHOD: induced-seismicity triangulation
+DATE: 2026-10-06
+SOURCE: DOE Geothermal + USGS
+SOURCE_DATE: DOE protocol page 2012-era; USGS evidence through 2026
+URL/DOI/IDENTIFIER: https://www.energy.gov/hgeo/geothermal/articles/doe-releases-updated-induced-seismicity-protocol ; https://www.usgs.gov/congressional/statement-william-leith-senior-science-advisor-earthquake-and-geologic-hazards-us-1 ; https://pubs.usgs.gov/publication/cir1509
+INPUTS: EGS stimulation/seismic evidence
+PARAMETERS: injection; fractures; event magnitude/site response
+EQUATION/CODE/METHOD: source triangulation
+OUTPUT: EGS commonly creates many small events; USGS states sufficiently large >M4 events can cause surface damage/disturbance/project termination; monitoring/mitigation is required.
+UNITS: magnitude; qualitative consequence
+UNCERTAINTY: strongly site dependent.
+ASSUMPTIONS: no universal frequency inferred.
+LIMITATIONS: oil/gas injection evidence not automatically transferred to EGS.
+REPRODUCTION_METHOD: retrieve DOE/USGS sources.
+REPLICATION_STATUS: MULTI_SOURCE_PASS
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT / EXISTING_FIELD_EVIDENCE
+
+EVIDENCE_ID: TE-EGC-SAFE-006
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-WIND-SOLAR
+TOOL: official-source web retrieval
+METHOD: occupational-hazard check
+DATE: 2026-10-06
+SOURCE: U.S. OSHA
+SOURCE_DATE: current pages accessed 2026-10-06
+URL/DOI/IDENTIFIER: https://www.osha.gov/green-jobs/solar/ ; https://www.osha.gov/green-jobs/wind-energy/
+INPUTS: OSHA hazards/incidents
+PARAMETERS: electrical/arc flash; falls; burns/fire; crushing
+EQUATION/CODE/METHOD: source synthesis
+OUTPUT: wind/solar have serious occupational hazards and reported fatalities/incidents; controls/work practices apply.
+UNITS: qualitative
+UNCERTAINTY: denominator-matched per-TWh rates not established here.
+ASSUMPTIONS: none.
+LIMITATIONS: no whole-system cross-tech mortality ranking.
+REPRODUCTION_METHOD: retrieve OSHA pages.
+REPLICATION_STATUS: TWO_PAGE_PASS
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-SAFE-007
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-GAS-H2
+TOOL: DOE/PHMSA/EPA official-source web retrieval
+METHOD: fuel/infrastructure boundary check
+DATE: 2026-10-06
+SOURCE: DOE hydrogen safety; PHMSA pipeline safety data; EPA power-sector impacts
+SOURCE_DATE: current pages accessed 2026-10-06
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/fuels/hydrogen-safe ; https://www.phmsa.dot.gov/data-and-statistics/pipeline/pipeline-safety-data-report-index ; https://www.epa.gov/power-sector/human-health-environmental-impacts-electric-power-sector
+INPUTS: H2 flammability/leak/embrittlement; pipeline incidents; fossil pollution
+PARAMETERS: material compatibility/inspection; injuries/fatalities/releases; NOx/SO2/PM/Hg/CO2 pathways
+EQUATION/CODE/METHOD: system-boundary source audit
+OUTPUT: H2 requires leak/material/inspection controls; gas-backed electricity has pipeline safety and air-pollution pathways outside generator fence.
+UNITS: source-specific
+UNCERTAINTY: no common lifecycle normalization completed.
+ASSUMPTIONS: causally required fuel infrastructure stays in boundary.
+LIMITATIONS: no deaths/TWh claim.
+REPRODUCTION_METHOD: retrieve three agency sources.
+REPLICATION_STATUS: MULTI_AGENCY_PASS
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-SAFE-008
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-FUSION
+TOOL: NRC official-source web retrieval
+METHOD: current commercial/regulatory-status check
+DATE: 2026-10-06
+SOURCE: U.S. NRC Fusion FAQ + Rulemaking Status
+SOURCE_DATE: 2026/current
+URL/DOI/IDENTIFIER: https://www.nrc.gov/materials/fusion/faq ; https://www.nrc.gov/materials/fusion/rulemaking-status
+INPUTS: commercial operation; rule status
+PARAMETERS: grid supply; proposed rule 91 FR 9476 on 2026-02-26
+EQUATION/CODE/METHOD: source synthesis
+OUTPUT: no commercially operational U.S. fusion machine supplies grid electricity; fusion-specific regulatory rule was proposed in 2026.
+UNITS: status/date
+UNCERTAINTY: evolving technology/regulation.
+ASSUMPTIONS: U.S. scope only.
+LIMITATIONS: not proof fusion physics unsafe; commercial-scale safety/cost evidence remains unavailable.
+REPRODUCTION_METHOD: retrieve NRC pages.
+REPLICATION_STATUS: TWO_NRC_PAGE_PASS
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-SAFE-009
+JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+CLAIM_ID: CLAIM-EGC-SAFE-NUCLEAR-LIFECYCLE
+TOOL: NRC official-source web retrieval
+METHOD: lifecycle obligation check
+DATE: 2026-10-06
+SOURCE: NRC spent-fuel storage, decommissioning process, new-reactor environmental review
+SOURCE_DATE: current pages accessed 2026-10-06
+URL/DOI/IDENTIFIER: https://www.nrc.gov/facilities-safety/storage-of-spent-nuclear-fuel/spent-fuel-storage-in-pools-and-dry-casks-key-points-and-questions-answers ; https://www.nrc.gov/facilities-safety/decommissioning/process ; https://www.nrc.gov/facilities-safety/new-reactors/how-we-regulate/regulations-guidance-and-communications/erp
+INPUTS: storage licenses/aging; decommissioning; environmental review
+PARAMETERS: cask licenses/certifications up to 40 years with renewals; decommission normally within 60 years unless approved otherwise; environmental review estimate 24–36 months
+EQUATION/CODE/METHOD: regulatory lifecycle audit
+OUTPUT: spent fuel/decommissioning are continuing regulated obligations; NRC 24–36 months is environmental review only, not total project/license/construction duration.
+UNITS: years
+UNCERTAINTY: project/site durations/cost vary.
+ASSUMPTIONS: jurisdiction-scoped.
+LIMITATIONS: no cost estimate produced.
+REPRODUCTION_METHOD: retrieve NRC pages.
+REPLICATION_STATUS: MULTI_PAGE_PASS
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+FIRST_PASS_FMEA:
+NUCLEAR_FISSION: RETAIN; P1 design/site tail-risk, licensing, spent-fuel and decommissioning integration. No generic P0 established. Candidate-specific PRA/cost UNKNOWN.
+HYDRO/PUMPED_STORAGE: RETAIN_WITH_SITE_GATE; P1; specific unmitigated site may be P0. Hazard class != failure probability.
+LI_ION_BESS: RETAIN; P1 until facility-scale propagation/fire/toxic-gas mitigation and applicable-code compliance are demonstrated.
+GEOTHERMAL_EGS: RETAIN_WITH_SITE_GATE; P1 induced seismicity/site uncertainty.
+SOLAR_WIND: RETAIN; occupational safety cost nonzero; cross-tech denominator-matched risk rank NOT_VERIFIED.
+HYDROGEN_IF_USED: CONDITIONAL_RETAIN; P1 at material scale due flammability/leak/embrittlement controls.
+NATURAL_GAS_BASELINE: RETAIN where relevant but include pipeline safety and pollution/externalities rather than generator-only boundary.
+FUSION: NOT_SAFETY_FALSIFIED; COMMERCIAL_SCALE_SAFETY_AND_REGULATORY_COST_NOT_VERIFIED.
+TIDAL_WAVE_WASTE_HEAT_NONLI_STORAGE: SAFETY_REVIEW_INCOMPLETE/NOT_VERIFIED if they survive frontier screen.
+
+RED_TEAM:
+RT-SAFE-001 "high-hazard dam=high failure probability" -> FALSIFIED.
+RT-SAFE-002 "Fukushima finding=nuclear risk zero" -> FALSIFIED.
+RT-SAFE-003 "wind/solar safety cost=0" -> FALSIFIED.
+RT-SAFE-004 "cell/module certification alone closes facility BESS risk" -> FALSIFIED_AS_GENERIC_ASSERTION.
+RT-SAFE-005 "EGS only harmless microseismicity" -> FALSIFIED.
+RT-SAFE-006 "gas safety/externality ends at generator fence" -> FALSIFIED.
+RT-SAFE-007 "fusion has mature commercial safety record" -> FALSIFIED/NOT_VERIFIED.
+
+CLAIM_GRAPH:
+CLAIM-EGC-SAFE-001 COMMON_SAFETY_BOUNDARY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-SAFE-002 NUCLEAR: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-SAFE-003 HYDRO: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-SAFE-004 BESS: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-SAFE-005 EGS: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-SAFE-006 WIND_SOLAR: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-SAFE-007 GAS_H2: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-SAFE-008 FUSION: COMMERCIAL_SCALE_SAFETY_EVIDENCE_NOT_VERIFIED.
+
+MATERIAL_UNKNOWNS:
+No audited denominator-compatible lifecycle safety dataset across all finalists; residual-risk monetization not frozen; site/design-specific hydro/EGS/BESS/nuclear risks unresolved; tidal/wave/waste-heat/non-Li storage FMEA incomplete if they survive; reviewer must test whether omitted safety resources can reverse ranking.
+
+STATUS_CHANGE:
+JOB-EGC-SAFETY-FMEA-SOL-20261006-0312: EXECUTING -> AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+JOB_ID: JOB-EGC-SAFETY-FMEA-REV-SOL-20261006-0312
+TITLE: Independent cross-candidate safety/FMEA boundary review
+ROLE: Independent safety evidence auditor / adversarial replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does S_STAR apply symmetrically, preserve incompatible risk dimensions without fake normalization, and capture safety/regulatory resource costs without double counting?
+CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312 submitted.
+REQUIRED_INPUTS: TE-EGC-SAFE-001..009; CALC-EGC-SAFE-001; FSRC_ND ledger.
+REQUIRED_TOOLS: independent official-source retrieval; independent calculation replication; adversarial FMEA; denominator audit.
+REQUIRED_EVIDENCE: provenance plus independent reproduction of ranking-critical claims.
+EXPECTED_OUTPUT: PASS/FAIL per claim, corrections, P0/P1 list, repair job if needed.
+FALSIFICATION_CONDITION: FAIL if any technology gets free safety, hazard class becomes probability, regulatory objective becomes measured rate, lifecycle/upstream cost vanishes, incompatible denominators are ranked numerically, or emerging safety maturity is asserted without operating evidence.
+REVIEWER_JOB_ID: SELF_REVIEW_FORBIDDEN
+STATUS: OPEN
+BLOCKERS: NONE for method review; site-specific risk depends on geography/design.
+NEXT_ACTION: distinct session independently reproduce and attack.
+
+BRANCH_HEAD_BEFORE_WRITE: ca27e92c7c0fdda1de122ece07854ed63693ec9e
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: d729bb18ef52927cd688f1bdac83d455f244556b
