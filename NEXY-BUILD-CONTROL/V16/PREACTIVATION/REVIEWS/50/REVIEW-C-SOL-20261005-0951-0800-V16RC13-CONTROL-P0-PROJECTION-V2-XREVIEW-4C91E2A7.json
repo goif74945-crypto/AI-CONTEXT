@@ -1,0 +1,61 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_REVIEW_V1",
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-0951-0800-V16RC13-CONTROL-P0-PROJECTION-V2-XREVIEW-4C91E2A7",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-0951-0800-V16RC13-REQROOTV2-XREVIEW-4C91E2A7",
+  "REVIEWER_MEMBERSHIP_ID": "PRE-5011ab6687e93391523330e083974abd",
+  "REVIEW_KIND": "INDEPENDENT_CONTROL_P0_PROJECTION_V2_DETERMINISM_CROSS_REVIEW",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REVIEWED_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SCHEMAS/CONTROL_P0_PROJECTION_V2.json",
+  "REVIEWED_BLOB_SHA": "e6dd00bb07b7235b6d514758d6420407282aa306",
+  "PASS_POINTS": [
+    "V2 explicitly maps known P0 severity variants and rejects free-text P0 mentions as classification authority.",
+    "V2 binds projection to one control snapshot and fails closed on mixed-snapshot evidence.",
+    "V2 restricts terminal non-blocking statuses to exact canonical values unless an explicitly versioned extension exists.",
+    "V2 requires independent review for semantic control relevance and dedup decisions.",
+    "V2 correctly makes partial coverage incapable of proving OPEN_CONTROL_P0_COUNT==0."
+  ],
+  "BLOCKING_REVIEW_FINDINGS": [
+    {
+      "ID": "P0PV2_R1_SEVERITY_TAXONOMY_BINDING_MISSING",
+      "SEVERITY": "P0_CONTROL_DETERMINISM",
+      "DETAIL": "P0_CLASSIFICATION.NON_P0_RULE requires a canonical severity taxonomy artifact bound by blob SHA before any severity outside EXACT_VARIANT_MAP can become NOT_P0. SNAPSHOT_BINDING and PROJECTED_MANIFEST hash domains contain no severity_taxonomy_blob_sha or taxonomy root field. The finding universe contains ordinary P1/P2 severities, so a strict implementation must classify them UNKNOWN and force UNKNOWN_BLOCKING, while a permissive implementation can consult an unbound taxonomy. Either path prevents a deterministic valid zero proof.",
+      "REQUIRED_REPAIR": "Add an exact severity taxonomy artifact/schema, bind its blob/hash into SNAPSHOT_BINDING and PROJECTED_MANIFEST root object, define its normalization and lookup semantics, and independently review it. Until then, do not claim projection_status=VALID."
+    },
+    {
+      "ID": "P0PV2_R2_STATUS_TAXONOMY_EXTENSION_UNBOUND",
+      "SEVERITY": "P0_CONTROL_DETERMINISM",
+      "DETAIL": "STATUS_CLASSIFICATION permits a separately versioned canonical status taxonomy to add terminal non-blocking values, but no status taxonomy identity is bound into the schema/root. Two peers can therefore apply different extension taxonomies while hashing the same declared projection inputs.",
+      "REQUIRED_REPAIR": "Either forbid all status-taxonomy extension in V2 and use only the three exact Constitution statuses, or add a bound status_taxonomy_blob_sha/root with exact normalization and version rules."
+    },
+    {
+      "ID": "P0PV2_R3_CLASSIFICATION_MANIFEST_COMPLETENESS_UNDEFINED",
+      "SEVERITY": "P0_CONTROL_AUTHORITY",
+      "DETAIL": "CLASSIFICATION_MANIFEST defines sorting and a root hash over rows but does not define a canonical exhaustive classification-record universe or a mandatory inclusion rule. A materializer can omit a higher-generation or conflicting valid record and still hash a syntactically valid manifest, defeating the highest-generation/conflict validity rules and potentially changing control relevance.",
+      "REQUIRED_REPAIR": "Define a snapshot-bound classification-record universe, enumerate every candidate record exactly once, add completeness counts/root binding, and require projection to fail closed on any missing/duplicate/unparseable record before selecting highest generation."
+    },
+    {
+      "ID": "P0PV2_R4_DEDUP_MANIFEST_COMPLETENESS_UNDEFINED",
+      "SEVERITY": "P0_CONTROL_AUTHORITY",
+      "DETAIL": "DEDUP_DECISION_MANIFEST has the same omission problem: the root hashes supplied rows but no exhaustive decision-record universe is defined. Omitting a conflicting or newer dedup decision can change canonical blocker mapping and OPEN_CONTROL_P0_COUNT.",
+      "REQUIRED_REPAIR": "Define a snapshot-bound exhaustive dedup-decision universe and completeness proof before any dedup decision can affect projection."
+    },
+    {
+      "ID": "P0PV2_R5_EQUAL_GENERATION_SELECTION_NOT_DETERMINISTIC",
+      "SEVERITY": "P0_CONTROL_DETERMINISM",
+      "DETAIL": "Validity rules only say that multiple highest-generation records that disagree become UNKNOWN. When multiple highest-generation valid records agree semantically, PROJECTED_MANIFEST still stores one singular classification_record_id and one singular dedup_decision_id, but no deterministic tie-breaker selects which ID. Semantically equivalent input can therefore produce different root bytes.",
+      "REQUIRED_REPAIR": "Either forbid more than one valid record at the highest generation, or define a canonical tie-break tuple and prove all tied records agree on every projection-relevant field before selecting one."
+    },
+    {
+      "ID": "P0PV2_R6_NESTED_EVIDENCE_ARRAY_NORMALIZATION_UNDEFINED",
+      "SEVERITY": "P1_CONTROL_DETERMINISM",
+      "DETAIL": "classification_evidence and equivalence_basis are hash-bearing arrays of EvidenceRef objects, but V2 gives no canonical sort/dedup rule for those nested arrays. JCS preserves array order, so logically identical evidence sets can produce different classification/dedup manifest bytes.",
+      "REQUIRED_REPAIR": "Define canonical EvidenceRef sort tuple, duplicate handling and set-vs-sequence semantics before hashing any record manifest."
+    }
+  ],
+  "REVIEW_VERDICT": "CHANGES_REQUIRED_BEFORE_CANONICAL_ADOPTION",
+  "OPEN_CONTROL_P0_ZERO_PROVABLE_WITH_REVIEWED_SCHEMA": false,
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "SELF_CERTIFICATION": false
+}
