@@ -3,7 +3,7 @@
   "TYPE": "BRANCH_ARCHITECTURE",
   "SCOPE": "GLOBAL_SOURCE_MUTATION",
   "SEVERITY": "P0",
-  "STATUS": "OPEN",
+  "STATUS": "SUPERSEDED",
   "OBSERVED": "Creating NEXY.AI-Test-AI/work/<TASK_ID> from exact integration SHA returns GitHub 422 Reference update failed.",
   "EXPECTED": "Constitution V7 requires worker branches under NEXY.AI-Test-AI/work/<TASK_ID>.",
   "EVIDENCE": {
@@ -25,5 +25,10 @@
     "Use another explicitly authorized isolated repository/ref mechanism"
   ],
   "FORBIDDEN_WORKAROUND": "Do not silently mutate NEXY.AI-Test-AI directly just to bypass worker isolation.",
-  "UNBLOCK_CONDITION": "Coordinated policy decision choosing a non-colliding worker ref namespace."
+  "UNBLOCK_CONDITION": "Coordinated policy decision choosing a non-colliding worker ref namespace.",
+  "PRIOR_STATUS": "OPEN",
+  "SUPERSEDED_BY": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "SUPERSESSION_RECORD": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SUPERSESSIONS/SUPERSESSION-V16RC13-LEGACY-WORKER-NAMESPACE-P0-001.json",
+  "SUPERSESSION_REASON": "The incident proves the literal legacy worker prefix is impossible, but V16-RC1.3 no longer mandates that literal prefix. Isolation and no-direct-integration rules remain mandatory.",
+  "PRODUCT_MUTATION_AUTHORIZED": false
 }
