@@ -1,0 +1,146 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_SHARD_UNIVERSE_UPDATE_REPAIR_V1",
+  "REPAIR_ID": "V16RC13-SHARD-UNIVERSE-UPDATE-ATOMIC-CUTOVER-FE-V1",
+  "STATUS": "CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+  "OWNER_CHAT": "C-SOL-20261005-1735Z-V16RC13-P0MANIFEST-AUDIT",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "AFFECTED_FINDING": "FINDING-V16RC13-SHARD-UNIVERSE-UPDATE-SPLIT-BRAIN-DE64F6B9",
+  "CONFIRMING_REVIEW": "REVIEW-C-SOL-20261005-1735Z-V16RC13-SHARD-UNIVERSE-SPLIT-BRAIN",
+  "REPAIR_CLASS": "CONTROL_LAYER_PROTOCOL_REPAIR_NO_PRODUCT_MUTATION",
+  "LAW_TEXT_CHANGE_REQUIRED": false,
+  "AUTHORITY_BASIS": [
+    "[042]-[045] make SHARD_UNIVERSE_UPDATE a serialized global transition with immutable intent.",
+    "[080] defines MEMBERSHIP_EPOCH as the global bulk-invalidation generation.",
+    "[121]-[123] make ENGINEERING_EPOCH and membership generations authority-bearing lease bindings.",
+    "[169]-[174] permit sharded bulk control state while intentionally serializing the global fence.",
+    "[196]-[209] require closure to drain and pin the complete active shard universe.",
+    "[223] requires shard-migration torture testing."
+  ],
+  "REQUIRED_TRANSITION_PRECONDITIONS": [
+    "MISSION_FENCE_STATE exists and is authoritative for TARGET_AUTHORITY_KEY.",
+    "TRANSITION_KIND == NONE.",
+    "ACTIVE_INTEGRATION == null.",
+    "INTEGRATION_HEALTH == HEALTHY.",
+    "CLOSURE_STATE is not an active closure barrier or pinned-world sweep.",
+    "Old SHARD_UNIVERSE_HASH and SHARD_UNIVERSE_VERSION exactly match the migration intent source universe.",
+    "New shard-universe artifact and deterministic routing/mapping rules are immutable and independently hash-verifiable before entry."
+  ],
+  "MIGRATION_INTENT_REQUIRED_FIELDS": [
+    "TARGET_AUTHORITY_KEY",
+    "MISSION_ID",
+    "MISSION_GENERATION",
+    "TRANSITION_GENERATION",
+    "OLD_SHARD_UNIVERSE_HASH",
+    "OLD_SHARD_UNIVERSE_VERSION",
+    "NEW_SHARD_UNIVERSE_HASH",
+    "NEW_SHARD_UNIVERSE_VERSION",
+    "ROUTING_ALGORITHM_ID",
+    "ROUTING_ALGORITHM_HASH",
+    "MIGRATED_DOMAIN_MANIFEST",
+    "EXPECTED_MISSION_FENCE_STATE_VERSION",
+    "OWNER_MEMBERSHIP_EPOCH",
+    "CREATED_FROM_CONTROL_SNAPSHOT"
+  ],
+  "MIGRATED_DOMAIN_MANIFEST_RULES": [
+    "Enumerate every canonical bulk-state domain whose routing depends on SHARD_UNIVERSE, including at minimum membership, messages, tasks, evidence, findings/projection artifacts, and reviews when those domains are sharded by the active control implementation.",
+    "For each domain bind immutable record identity rule, old routing rule, new routing rule, source denominator root/count, and migration output root/count.",
+    "A domain not using SHARD_UNIVERSE routing must be explicitly marked NOT_SHARD_UNIVERSE_ROUTED with evidence; omission is invalid."
+  ],
+  "ENTRY_CAS": {
+    "EXPECTED": "Mission Fence STATE_VERSION and all preconditions above still match.",
+    "ATOMIC_WRITES": [
+      "TRANSITION_KIND = SHARD_UNIVERSE_UPDATE",
+      "TRANSITION_GENERATION = prior + 1",
+      "ACTIVE_TRANSITION_ID = immutable migration intent id",
+      "ACTIVE_TRANSITION_INTENT_HASH = immutable intent hash",
+      "ACTIVE_TRANSITION_STATE = ENTRY_BARRIER",
+      "WORK_ADMISSION_GATE = CLOSED",
+      "MUTATION_GATE = CLOSED",
+      "INTEGRATION_GATE = CLOSED",
+      "ENGINEERING_EPOCH = prior + 1",
+      "MEMBERSHIP_EPOCH = prior + 1",
+      "STATE_VERSION = expected + 1"
+    ],
+    "EFFECT": "All old normal memberships/leases/writers lose mutation eligibility before any U2 canonical routing is exposed."
+  },
+  "OLD_UNIVERSE_FREEZE": [
+    "After ENTRY_CAS, no new normal work, mutation lease, integration reservation, or normal membership may be admitted under U1.",
+    "Every sharded writer must re-read the authoritative Mission Fence before a write; closed gates/epoch mismatch reject stale writers.",
+    "For sharded control transports, each U1 shard/domain publishes an immutable freeze acknowledgement bound to transition id, ENGINEERING_EPOCH, MEMBERSHIP_EPOCH, old universe hash/version, exact shard head/snapshot id, and writer-drain generation.",
+    "Freeze acknowledgement and shard writes must share one authoritative CAS/transaction domain or equivalent fencing token so a writer that read pre-freeze state cannot commit after freeze.",
+    "Every old shard is represented, including explicit empty shards for closure-relevant domains."
+  ],
+  "MIGRATION_BUILD": [
+    "Materialize migration from immutable frozen U1 shard snapshots only.",
+    "Recompute each record's U2 destination from immutable canonical record identity and the bound routing algorithm.",
+    "Do not mutate canonical record identity while moving records.",
+    "For every migrated domain create a sorted manifest containing record id, source U1 shard, source artifact identity, destination U2 shard, destination artifact identity, and migration disposition.",
+    "Require source denominator count/root == migrated unique record count/root after canonical identity projection; zero omissions and zero duplicate canonical identities.",
+    "Build explicit empty U2 shard manifests where the active domain/closure contract requires full shard enumeration.",
+    "Migration writes populate a candidate U2 namespace that has no normal writer authority before cutover."
+  ],
+  "VERIFY_BEFORE_CUTOVER": [
+    "Every U1 shard/domain freeze acknowledgement is valid and still matches its frozen source snapshot.",
+    "No post-freeze authoritative U1 write exists; any ambiguity aborts/restarts transition.",
+    "Every migrated domain proves one-to-one identity preservation and no omission/duplication.",
+    "Candidate U2 manifests and routing outputs recompute to the expected NEW_SHARD_UNIVERSE_HASH/VERSION and migration roots.",
+    "Independent review/test evidence for the migration generation is present.",
+    "ACTIVE_INTEGRATION remains null and closure remains inactive."
+  ],
+  "CUTOVER_CAS": {
+    "LINEARIZATION_POINT": "The Mission Fence expected-version CAS that installs NEW_SHARD_UNIVERSE_HASH/VERSION after verified migration.",
+    "EXPECTED": "Transition id/state, ENGINEERING_EPOCH, MEMBERSHIP_EPOCH, old universe, gates, and STATE_VERSION still match the verified migration snapshot.",
+    "ATOMIC_WRITES": [
+      "SHARD_UNIVERSE_HASH = NEW_SHARD_UNIVERSE_HASH",
+      "SHARD_UNIVERSE_VERSION = NEW_SHARD_UNIVERSE_VERSION",
+      "ACTIVE_TRANSITION_STATE = CUTOVER_COMMITTED_PENDING_REBIND",
+      "STATE_VERSION = expected + 1"
+    ],
+    "RULE": "No normal U2 mutation authority exists before this CAS; no normal U1 mutation authority exists after ENTRY_CAS. Therefore canonical normal-writer authority has no overlapping U1/U2 interval."
+  },
+  "POST_CUTOVER_REBIND": [
+    "U1 namespaces become immutable historical evidence and recovery input only.",
+    "Existing pre-entry memberships remain stale because MEMBERSHIP_EPOCH changed.",
+    "Chats renew/create ACTIVE memberships under current MEMBERSHIP_EPOCH and current SHARD_UNIVERSE_HASH/VERSION before normal mutation.",
+    "New leases bind current ENGINEERING_EPOCH and renewed membership generations; operational lease schema must also bind current SHARD_UNIVERSE_HASH/VERSION or a transition/cutover generation that uniquely implies them.",
+    "Normal work-loop revalidation must include current SHARD_UNIVERSE_HASH/VERSION or the uniquely binding cutover generation before mutation.",
+    "Only after rebind verification may WORK_ADMISSION_GATE/MUTATION_GATE/INTEGRATION_GATE reopen and TRANSITION_KIND return to NONE via Mission Fence CAS."
+  ],
+  "CLOSURE_RULES": [
+    "Closure entry is forbidden while TRANSITION_KIND == SHARD_UNIVERSE_UPDATE or migration state is ambiguous/incomplete.",
+    "After cutover, closure uses U2 only after verified migration manifests prove every canonical U1 record is represented or explicitly terminal/historical under U2 accounting.",
+    "Migration manifests themselves are closure-relevant dependency/control evidence and must be retained."
+  ],
+  "CRASH_RECOVERY": [
+    "Crash before ENTRY_CAS: no authority change; discard/revalidate candidate intent.",
+    "Crash after ENTRY_CAS before all U1 freezes: gates remain closed; resume freeze/drain or abort through an explicit reconciled rollback transition without restoring stale memberships.",
+    "Crash after U1 frozen during migration: resume from immutable U1 snapshots; never reopen U1 writers to simplify recovery.",
+    "Crash after migration verification but before CUTOVER_CAS: revalidate every frozen-source and candidate-root binding before retrying CUTOVER_CAS.",
+    "Crash after CUTOVER_CAS before rebind: U2 is canonical but gates remain closed; resume membership/lease rebind and validation.",
+    "If actual shard/control transport state cannot be reconciled to either verified pre-cutover U1 or committed U2, transition becomes UNKNOWN_REQUIRES_RECONCILIATION and gates remain closed."
+  ],
+  "REQUIRED_TORTURE_TESTS": [
+    "Paused U1 writer reads valid state before ENTRY_CAS, resumes after U1 freeze, and its write is rejected by epoch/fencing CAS.",
+    "Membership/message/task/evidence write storms during entry barrier cannot create canonical post-freeze U1 records.",
+    "Crash after 1 of N U1 shards freezes.",
+    "Crash after candidate U2 records are partially materialized.",
+    "Duplicate record deliberately routed to two U2 shards is detected by canonical identity manifest.",
+    "Source U1 record deliberately omitted from migration is detected by denominator root/count mismatch.",
+    "Cutover CAS races a stale transition writer and only one Mission Fence state wins.",
+    "Post-cutover old membership/lease attempts mutation and is rejected.",
+    "Closure attempt during migration is rejected.",
+    "Closure after cutover includes every U2 shard, explicit empty shards, and all migrated canonical records."
+  ],
+  "ACCEPTANCE_FOR_FINDING_RESOLUTION": [
+    "Independent reviewer confirms no compliant stale U1 writer can remain canonical after ENTRY_CAS.",
+    "Independent reviewer confirms there is exactly one U1-to-U2 canonical linearization point.",
+    "Migration denominator/completeness proofs cover all SHARD_UNIVERSE-routed authoritative domains.",
+    "Crash recovery never requires blind force or erasure of ambiguous durable truth.",
+    "Operational schemas are updated so membership/lease/work-loop validation cannot ignore the active shard universe after cutover.",
+    "Real torture tests execute after activation before runtime scale safety is declared."
+  ],
+  "FINDING_DISPOSITION_IF_VERIFIED": "RESOLVED_BY_CONTROL_PROTOCOL_REPAIR",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
