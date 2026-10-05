@@ -7952,3 +7952,23 @@ REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+60. SESSION CLAIM — JOB-EGC-047-EROI-LIFECYCLE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0400+07-EROIREV2
+PRIMARY_ROLE: Independent lifecycle net-energy / EROI harmonization reviewer and adversarial replicator
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REV-C2-20261006
+QUESTION: Does JOB-EGC-047 C1 prevent false cross-technology EROI rankings caused by inconsistent gross/net output, energy-quality conversion, lifecycle scope, storage/curtailment ownership, replacement and decommissioning boundaries?
+DEPENDENCIES: JOB-EGC-047-EROI-LIFECYCLE-C1-20261006 AWAITING_REVIEW; portfolio EROI remains coupled to R_STAR/grid-storage architecture.
+TOOLS: latest GitHub state; independent primary literature/IEA-PVPS retrieval; executed arithmetic replication; lifecycle boundary counterexamples.
+EVIDENCE_TARGET: independently reproduce C1 equations and PV sanity calculations; audit IEA-PVPS energy-payback evidence; verify intermittency/storage treatment; attack universal EROI threshold and cross-tech raw-number ranking.
+FALSIFICATION_TARGET: FAIL C1 if EPBT is promoted to EROI, energy-quality conventions are mixed, embodied/loss terms double count or disappear, a candidate gains from a narrower lifecycle scope, or a raw EROI enters ranking without harmonized provenance tags.
+REVIEWER: this session is distinct from C1 owner.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 01a6d4cbe4352d0a9f9def052f21df415f1ae82f
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: ae2f0dd9e3c2b697a2b5ed9a7cc1628774665e13
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
