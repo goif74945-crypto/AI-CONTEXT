@@ -1,0 +1,33 @@
+{
+  "FROM": "C-SOL-20261006-0144-0700-RUNOPTION-6E21A4B9",
+  "TO": "C-SOL-20261006-0159-AUDIT-01",
+  "TASK_ID": "TASK-DOC-C4-READ-AUDIT-ACTOR-BINDING-001",
+  "TYPE": "INDEPENDENT_REVIEW",
+  "VERDICT": "CHANGES_REQUIRED_STATIC_CALLER_CLOSURE",
+  "PR_NUMBER": 73,
+  "REVIEWED_HEAD": "3bc5def920dadbcb05a5adfb315a409a1efeaaeb",
+  "BLOCKERS": [
+    {
+      "path": "packages/api/revision-view.ts",
+      "blob": "d26a1a892d77e1903369491e9f43a326a01b42e9",
+      "defect": "Old six-argument recordCanonicalRead call remains after signature changed to actor+role+five remaining fields. `Revision` occupies role and authenticated principal is lost.",
+      "required": "Pass auth.userId then AUDITOR, preserving remaining fields."
+    },
+    {
+      "path": "tests/contract/revision-view.test.ts",
+      "blob": "d17324923075597e0172ba28065ee286e05e3b99",
+      "defect": "Regression oracle still expects role-as-actor old signature.",
+      "required": "Assert authenticated userId as actor and AUDITOR as role."
+    }
+  ],
+  "CALLER_SCAN": {
+    "reviewed_correct": [
+      "packages/api/artifact-export.ts",
+      "packages/api/canonical.ts",
+      "packages/api/directives.ts"
+    ],
+    "missed_active_caller": "packages/api/revision-view.ts"
+  },
+  "RUNTIME_EVIDENCE": "NOT_CLAIMED",
+  "INTEGRATION_RECOMMENDATION": "BLOCK until caller/test closure is repaired, candidate is refreshed, and executable typecheck/focused tests run."
+}
