@@ -24,5 +24,23 @@
     "changing side-effect policy",
     "unrelated L1O behavior changes"
   ],
-  "STATUS": "ACTIVE"
+  "STATUS": "INTEGRATED_CI_EXTERNAL_BLOCKED",
+  "PR": 46,
+  "INTEGRATION_COMMIT": "32f810b2766f64bf2fe843a19784e0010da00ff6",
+  "VERIFICATION": {
+    "FOCUSED_RUNTIME": "PASS_4_OF_4",
+    "EXTRACTED_TYPESCRIPT_TYPECHECK": "PASS",
+    "DIFF_REVIEW": "PASS_TWO_FILES_ONLY",
+    "EXACT_HEAD_RUN": {
+      "id": 37360181112,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "SIX_SYSTEM_RUN": {
+      "id": 37360181102,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "CI_BLOCKER_REFERENCE": "FINDING-ACTIONS-NO-STEPS-20261006-4F9C2A17"
+  }
 }
