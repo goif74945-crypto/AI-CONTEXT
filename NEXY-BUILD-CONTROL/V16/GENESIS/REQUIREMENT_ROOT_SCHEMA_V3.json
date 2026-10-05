@@ -192,7 +192,14 @@
       },
       "EXTRA_KEYS": "FORBIDDEN",
       "SORT": "evidence_kind,source_path,source_identity,locator by UTF-8 bytes",
-      "DEDUP": "Exact JCS equality"
+      "DEDUP": "Exact JCS equality",
+      "SOURCE_IDENTITY_BY_KIND": {
+        "SOURCE_MATRIX": "lowercase 40-hex Git blob SHA",
+        "PRIMARY_SPEC": "lowercase 64-hex SHA-256 equal SPEC_ARTIFACT_HASH",
+        "AUTHORITY_INDEX": "lowercase 40-hex Git blob SHA",
+        "REVIEW": "lowercase 40-hex Git blob SHA",
+        "CONTROL_RECORD": "lowercase 40-hex Git blob SHA"
+      }
     },
     "ACCEPTANCE_CRITERION": {
       "FIELDS": [
@@ -206,8 +213,9 @@
         "provenance_refs": "non-empty sorted array of PRIMARY_REF or CONTROL_EVIDENCE_REF canonical objects"
       },
       "EXTRA_KEYS": "FORBIDDEN",
-      "ID_DERIVATION": "criterion_id = 'AC-' + SHA256(UTF8(JCS({domain:'NEXY_ACCEPTANCE_CRITERION_ID_V1',source_entry_id,criterion_ordinal,criterion_text,provenance_refs})))",
-      "ORDINAL_RULE": "criterion_ordinal is the 1-based position after the accepted manifest row's canonical criterion ordering; reordering text changes IDs and requires a new manifest generation."
+      "ID_DERIVATION": "criterion_id = 'AC-' + SHA256(UTF8(JCS({domain:'NEXY_ACCEPTANCE_CRITERION_ID_V2',target_authority_key,spec_artifact_hash,source_entry_id,scope,criterion_text,provenance_refs})))",
+      "ID_CONTEXT_RULE": "target_authority_key, spec_artifact_hash, source_entry_id and scope are taken from the exact bound acceptance-manifest row/root context; they are not copied from free text.",
+      "DEDUP_AND_ORDER": "Within one source_entry_id+scope row, exact duplicate {criterion_text,provenance_refs} canonical objects are invalid as duplicate authoring input; after validation, criteria sort by criterion_id UTF-8 bytes. criterion_id collision with unequal canonical identity objects is HASH_COLLISION_BLOCKING."
     }
   },
   "IDENTITY_CONSTRUCTION": {
@@ -307,6 +315,7 @@
       "target_authority_key",
       "spec_artifact_hash",
       "clause_manifest_root_hash",
+      "matrix_export_git_blob_sha",
       "coverage_generation",
       "row_count",
       "unmatched_count",
@@ -320,7 +329,8 @@
       "coverage_generation": "positive JSON integer",
       "row_count": "non-negative integer equal canonical clause row count and rows.length",
       "unmatched_count": "non-negative integer mechanically derived from rows",
-      "rows": "sorted array of COVERAGE_ROW"
+      "rows": "sorted array of COVERAGE_ROW",
+      "matrix_export_git_blob_sha": "exact lowercase 40-hex Git blob SHA of SOURCE_ARTIFACTS.MATRIX_EXPORT"
     },
     "COVERAGE_ROW_FIELDS": [
       "clause_id",
@@ -336,12 +346,28 @@
     },
     "DERIVATION": [
       "CONTEXT_NON_OBLIGATION => mapped_source_entry_ids=[] and coverage_status=COVERED.",
-      "BUILD_OBLIGATION => mapped_source_entry_ids must contain at least one source entry whose reconciliation retains this clause as final DOC-C normative authority; otherwise coverage_status=UNMATCHED.",
-      "When no matrix source entry covers a BUILD_OBLIGATION clause, the source-enumeration materializer must create the exact PRIMARY_FINAL_DOC_C_OMISSION ID for that clause and map it here.",
-      "unmatched_count = count(rows where coverage_status=UNMATCHED)."
+      "For each BUILD_OBLIGATION clause, an independently reviewed coverage decision maps zero or more normalized matrix source_entry_ids whose pinned source paragraph/anchor/text provenance materially covers that clause. No authority-reconciliation result is consulted at this layer.",
+      "If one or more valid matrix source entries cover a BUILD_OBLIGATION clause, mapped_source_entry_ids is the sorted unique exact set and coverage_status=COVERED.",
+      "If no matrix source entry covers a BUILD_OBLIGATION clause, mapped_source_entry_ids contains exactly the deterministic PRIMARY_FINAL_DOC_C_OMISSION source_entry_id for that clause and coverage_status=COVERED.",
+      "coverage_status=UNMATCHED only when a BUILD_OBLIGATION clause has neither a reviewed valid matrix mapping nor a valid deterministic omission mapping.",
+      "unmatched_count = count(rows where coverage_status=UNMATCHED).",
+      "Every mapped matrix ID must exist in MATRIX_SOURCE_SET; every mapped omission ID must equal the deterministic omission ID for the same clause. Any other ID is invalid and blocks the manifest."
     ],
     "ORDER": "rows sort by clause_id UTF-8 bytes",
-    "ACTIVATION_GATE": "unmatched_count MUST equal 0."
+    "ACTIVATION_GATE": "unmatched_count MUST equal 0.",
+    "DEPENDENCY_MODEL": {
+      "ACYCLIC_RULE": "Coverage depends only on the bound final-DOC-C clause manifest, the exact pinned matrix export identity/normalized matrix source IDs, deterministic omission-ID rules, and independently reviewed coverage decisions. It MUST NOT depend on SOURCE_ENUMERATION_ROOT_HASH, AUTHORITY_RECONCILIATION_ROOT_HASH, active/deployment roots, or mutable implementation evidence.",
+      "MATRIX_SOURCE_SET": "The candidate matrix source-entry set is exactly the 837 normalized matrix IDs obtained under MATRIX_NORMALIZATION from matrix_export_git_blob_sha.",
+      "OMISSION_SOURCE_SET": "Candidate omission IDs are deterministically derivable from BUILD_OBLIGATION clause_id values under IDENTITY_CONSTRUCTION.PRIMARY_OMISSION_SOURCE_ENTRY_ID."
+    },
+    "CONSISTENCY": [
+      "authority_disposition exactly equals the bound clause-manifest row disposition for clause_id.",
+      "Every bound clause_id appears exactly once and no foreign clause_id appears.",
+      "row_count equals bound clause-manifest clause_count and rows.length.",
+      "mapped_source_entry_ids are unique and sorted by UTF-8 bytes.",
+      "CONTEXT_NON_OBLIGATION cannot map any source entry.",
+      "BUILD_OBLIGATION cannot be COVERED by an empty mapping."
+    ]
   },
   "SOURCE_ENUMERATION_ROOT_HASH": {
     "ROOT_DOMAIN": "NEXY_SOURCE_ENUMERATION_ROOT_V3",
@@ -608,7 +634,9 @@
     "UNRESOLVED_RULE": "unresolved_count = count(rows with resolution_status in {CONFLICT,UNKNOWN})",
     "ORDER": "rows sort by scope UTF-8 bytes then source_entry_id UTF-8 bytes",
     "ACTIVATION_GATE": "unresolved_count == 0 and exact coverage holds",
-    "EXTRA_KEYS": "FORBIDDEN"
+    "EXTRA_KEYS": "FORBIDDEN",
+    "CRITERIA_ORDER_RULE": "For each row, criteria are unique and sorted by criterion_id UTF-8 bytes after recomputing every criterion_id from the exact row/root context. Array authoring order has no authority.",
+    "CRITERIA_ID_VERSION": "NEXY_ACCEPTANCE_CRITERION_ID_V2"
   },
   "ACTIVE_BUILD_REQUIREMENT_ROOT_HASH": {
     "ROOT_DOMAIN": "NEXY_ACTIVE_BUILD_REQUIREMENT_ROOT_V3",
@@ -750,5 +778,10 @@
   "CREATED_BY_CHAT_ID": "C-SOL-20261006-0128-0700-V16RC13-P0PIPE-6A13C4F2",
   "PRODUCT_SOURCE_MUTATION": false,
   "TARGET_INTEGRATION": false,
-  "PROTECTED_UPSTREAM_MUTATION": false
+  "PROTECTED_UPSTREAM_MUTATION": false,
+  "REPAIR_NOTES_V3_1": {
+    "COVERAGE_CYCLE_REMOVED": "FINAL_DOC_C coverage no longer depends on reconciliation; it binds exact matrix-export identity and deterministic omission IDs only.",
+    "ACCEPTANCE_ID_CYCLE_REMOVED": "Acceptance criterion identity no longer depends on an ordinal derived from array ordering; identity is content/context hashed and criteria sort by derived criterion_id.",
+    "EVIDENCE_IDENTITY_CLOSED": "CONTROL_EVIDENCE_REF now states exact source_identity format by evidence_kind."
+  }
 }
