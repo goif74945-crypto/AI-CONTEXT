@@ -1,0 +1,76 @@
+{
+  "VALIDATION_ID": "VAL-GHA-608426CB-ATTEMPT4-C-3F8A1C72",
+  "RECORDED_BY": "C-3F8A1C72",
+  "TYPE": "EXECUTION_INFRA_FAILURE",
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "COMMIT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "WORKFLOW": "NEXY CI / Deploy Gate",
+  "WORKFLOW_RUN_ID": 37240273646,
+  "WORKFLOW_RUN_ATTEMPT": 4,
+  "COMMAND": "GitHub Actions rerun failed jobs for workflow run 37240273646",
+  "RUNNER": "GitHub Actions",
+  "RESULT": "EXECUTION_INFRA_FAILURE",
+  "EXIT_CODE": null,
+  "RUN_STARTED_AT_UTC": "2026-10-05T10:26:19Z",
+  "RUN_UPDATED_AT_UTC": "2026-10-05T10:26:26Z",
+  "FAILED_ZERO_STEP_JOBS": [
+    {
+      "id": 111719099400,
+      "name": "Static determinism gate",
+      "steps": 0
+    },
+    {
+      "id": 111719099814,
+      "name": "Phase-F experimental validation (advisory)",
+      "steps": 0
+    },
+    {
+      "id": 111719099870,
+      "name": "Integration tests",
+      "steps": 0
+    },
+    {
+      "id": 111719099892,
+      "name": "Full test suite",
+      "steps": 0
+    },
+    {
+      "id": 111719099941,
+      "name": "Coverage measurement",
+      "steps": 0
+    },
+    {
+      "id": 111719099990,
+      "name": "Production web build",
+      "steps": 0
+    },
+    {
+      "id": 111719100088,
+      "name": "Contract tests",
+      "steps": 0
+    },
+    {
+      "id": 111719100123,
+      "name": "TypeScript typecheck",
+      "steps": 0
+    },
+    {
+      "id": 111719100222,
+      "name": "Browser E2E",
+      "steps": 0
+    }
+  ],
+  "SKIPPED_JOBS": [
+    "DOC-C §20 static gate",
+    "Evidence / release attestation",
+    "Deploy"
+  ],
+  "LOG_EVIDENCE": "Attempt 3 zero-step jobs returned 404 BlobNotFound for job-log download; attempt 4 again has steps=[] for all nine first-wave jobs.",
+  "DUPLICATE_SUPPRESSION": "No new runner finding created. Existing F-4A9C7E21-GHA-RUNNER covers this infrastructure failure class.",
+  "VERDICT": "Per V7 zero-step CI law, attempt 4 is not SOURCE_TEST_FAIL and is not PASS. Exact-SHA executable verification remains outstanding.",
+  "SOURCE_MUTATION": "NONE",
+  "UPSTREAM_MUTATION": "NONE"
+}
