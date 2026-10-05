@@ -1,14 +1,14 @@
 {
   "TASK_ID": "TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001",
   "CREATOR_CHAT": "C-SOL-20261005-1739-V8",
-  "OWNER_CHAT": "UNASSIGNED",
+  "OWNER_CHAT": "C-SOL-20261006-0144-API-HANDLER-STATE",
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-3-2-SYSTEM-ENVELOPE",
   "FINDING_ID": "FIND-DOC-C3-API-HANDLER-FALSE-FREEZE-001",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "ACTIVE",
   "PRIORITY": "P1",
   "RISK": "HIGH",
-  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "BASE_SHA": "c1a2bea37fd40a5b8a6b12b7770fa41f55beb02c",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "TARGET_PATHS": [
     "apps/web/lib/api-handler.ts",
@@ -23,5 +23,8 @@
     "Mutation test kills any reintroduced hardcoded false FREEZE state.",
     "NEXY.ai remains unchanged."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001"
+  "BLOCKER": null,
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001",
+  "UNBLOCK_NOTE": "Latest explicit user authority requires isolated worker branches and immediate product execution; slash-child namespace under NEXY.AI-Test-AI is Git-invalid, so the established Git-valid sibling prefix NEXY.AI-Test-AI-work/* is used.",
+  "CLAIMED_AT": "2026-10-06T01:44:00+07:00"
 }
