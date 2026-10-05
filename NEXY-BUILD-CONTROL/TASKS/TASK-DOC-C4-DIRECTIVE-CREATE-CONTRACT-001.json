@@ -1,0 +1,42 @@
+{
+  "TASK_ID": "TASK-DOC-C4-DIRECTIVE-CREATE-CONTRACT-001",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "FINDING_ID": "FINDING-DOC-C4-DIRECTIVE-CREATE-CONTRACT-001",
+  "GOAL": "Align POST /api/directives accepted audit semantics and canonical success response exactly with final DOC-C §4.2 without weakening queue durability or idempotency behavior.",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_ROUTE_CONTRACT",
+  "STATUS": "BLOCKED",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "SCOPE": [
+    "packages/api/directives.ts",
+    "tests/coverage/directive-create-branches.test.ts",
+    "route-specific contract tests for POST /api/directives",
+    "scripts/check-doc-c.ts only if needed to enforce the repaired source semantics"
+  ],
+  "REQUIRED_BEHAVIOR": [
+    "Accepted create path emits DIRECTIVE_CREATED as the route-required audit action/event semantics.",
+    "Successful create response data is exactly directive_id, run_id, state:\"RUNNING\".",
+    "Same-key idempotent replay returns the same canonical success shape.",
+    "Do not weaken CSRF, session/device binding, RBAC, ownership, idempotency fingerprinting, SERIALIZABLE persistence, durable dispatch, or fail-closed dependency handling."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not change final DOC-C oracle to DIRECTIVE_RECEIVED merely to match implementation.",
+    "Do not expose dispatch_status in the canonical success response unless new active DOC-C authority is proven.",
+    "Do not mutate NEXY.ai.",
+    "Do not mutate NEXY.AI-Test-AI directly while isolated worker branch law remains blocked."
+  ],
+  "ACCEPTANCE": [
+    "Focused tests prove exact DIRECTIVE_CREATED evidence on accepted create.",
+    "Focused tests reject success-response drift beyond directive_id, run_id, state.",
+    "Idempotent replay has identical canonical success shape.",
+    "Existing queue-failure and security tests remain green.",
+    "Independent review and exact-SHA post-integration retest complete."
+  ],
+  "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker branch namespace or explicitly authorizes an equivalent isolation mechanism."
+}
