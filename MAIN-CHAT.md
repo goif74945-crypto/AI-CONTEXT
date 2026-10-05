@@ -10147,3 +10147,377 @@ GLOBAL_STATE:
 - GLOBAL_SOLVED: NO
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
+
+
+======================================================================
+40. CANONICAL JOB-EGC-003 SUBMISSION — SESSION-GPT56SOL-EGC-20261005T1912Z-C1
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1912Z-C1
+PRIMARY_JOB_ID: JOB-EGC-003
+PRIMARY_ROLE: Baseline Scale / Reliability Analyst
+CANONICAL_LEASE_BASIS: TE-EGC-018-001 currently proposes commit a9540293dedb3be061f15855dc1e1e1bc232f6c9 as earliest valid JOB-EGC-003 lease; independent provenance review is still required.
+STATUS_TARGET: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+COLLABORATION / CROSS-EXAMINATION:
+- Later session CHATGPT-SOL-20261005T190900Z-D1 independently collected scale/reliability evidence, then correctly reclassified its duplicate JOB-EGC-003 lease as SUPPORT / POTENTIAL_INDEPENDENT_REPLICATION after provenance audit proposed this session as canonical owner.
+- Its records TE-EGC003-D1-001, -003, -004, -006 independently overlap this session's IEA, EIA, IRENA and IAEA evidence.
+- Agreement is treated as replication support, NOT as automatic verification.
+- Its newer EIA annual 2025 row supersedes this session's earlier 2024 EIA anchor for freshness, but EIA explicitly marks 2025 preliminary; this limitation is preserved.
+- Existing CONFLICT-EGC-SCALE-BOUNDARY-001 already covers Ember-vs-IEA world-electricity boundary mismatch, so this session does NOT create a duplicate boundary job.
+
+----------------------------------------------------------------------
+TE-EGC003-C1-001 — IEA VINTAGE / SCALE-ANCHOR REFRESH
+----------------------------------------------------------------------
+
+TOOL_EVIDENCE_ID: TE-EGC003-C1-001
+JOB_ID: JOB-EGC-003
+CLAIM_ID: CLAIM-EGC003-C1-IEA-REFRESH
+TOOL_OR_METHOD: Authoritative IEA source retrieval + Wolfram deterministic arithmetic + cross-session comparison.
+PURPOSE: Refresh the 2025 world-consumption anchor and quantify whether the revision changes percentage-based MASSIVE_ENERGY thresholds.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- Older IEA Electricity 2026 estimate: 28,200 TWh in 2025.
+- Newer IEA Electricity Mid-Year Update 2026 estimate: 28,600 TWh in 2025.
+- Mid-Year Update forecast: 30,700 TWh in 2027; demand growth +3.6% in 2026 and +3.8% in 2027.
+PARAMETERS: World; annual electricity consumption; 2025-2027.
+VERSION_OR_MODEL: IEA Electricity 2026 vs IEA Electricity Mid-Year Update 2026.
+SOURCE_OR_DATASET: International Energy Agency.
+SOURCE_DATE: 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.iea.org/reports/electricity-2026/demand
+- https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+COMMAND_CODE_EQUATION_OR_METHOD:
+- Revision = (28,600-28,200)/28,200*100.
+- 1% anchors = 282 and 286 TWh/y.
+- 10% anchors = 2,820 and 2,860 TWh/y.
+- Wolfram output: {1.4184397163, 282, 286, 2820, 2860, 1.4184397163}.
+RAW_OR_KEY_OUTPUT:
+- Latest inspected IEA 2025 estimate = 28,600 TWh.
+- Revision from earlier IEA 2026 report = +400 TWh = +1.41844%.
+- Percentage-based 1% threshold moves 282 -> 286 TWh/y.
+- Percentage-based 10% threshold moves 2,820 -> 2,860 TWh/y.
+UNITS: TWh/year; percent.
+UNCERTAINTY: IEA estimate revision shows data-vintage uncertainty; forecast uncertainty for 2026-2027 not numerically supplied in inspected summary.
+ASSUMPTIONS: Latest IEA update should be preferred for freshness unless a later methodology audit finds boundary non-equivalence.
+LIMITATIONS: Does not resolve Ember-vs-IEA boundary conflict; exact absolute threshold adoption belongs to JOB-EGC-001/reviewer.
+REPRODUCIBILITY_INSTRUCTIONS: Open both IEA pages and execute listed arithmetic.
+INDEPENDENT_REPLICATION: TE-EGC003-D1-001 independently found the 28,600-TWh value; separate reviewer still required.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + REPLICATION_SUPPORT.
+CLAIM_SUPPORTED: Percentage-based MASSIVE_ENERGY tiers are numerically stable to this 1.42% IEA revision, while absolute TWh anchors must be refreshed.
+CLAIM_NOT_SUPPORTED: Final mission threshold adoption or common world-generation boundary.
+
+----------------------------------------------------------------------
+TE-EGC003-C1-002 — OPERATIONAL CAPACITY-FACTOR ANCHOR
+----------------------------------------------------------------------
+
+TOOL_EVIDENCE_ID: TE-EGC003-C1-002
+JOB_ID: JOB-EGC-003
+CLAIM_ID: CLAIM-EGC003-C1-CF
+TOOL_OR_METHOD: Direct U.S. EIA operational-table retrieval and cross-session reproduction.
+PURPOSE: Establish observed fleet utilization anchors and prevent nameplate-to-delivered-power substitution.
+EXECUTION_DATE: 2026-10-05
+INPUTS: EIA Table 6.07.B annual 2025 row.
+PARAMETERS: U.S. utility-scale non-fossil generators; 2025 annual fleet average.
+VERSION_OR_MODEL: Electric Power Monthly, data release available 2026-09-24.
+SOURCE_OR_DATASET: U.S. Energy Information Administration, Form EIA-923/EIA-860/EIA-860M.
+SOURCE_DATE: 2025 annual data; retrieved 2026-10-05.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b
+COMMAND_CODE_EQUATION_OR_METHOD: Direct annual-row extraction.
+RAW_OR_KEY_OUTPUT:
+- Geothermal 65.9%.
+- Hydroelectric 35.3%.
+- Nuclear 91.0%.
+- Solar photovoltaic 24.4%.
+- Solar thermal 23.6%.
+- Wind 34.2%.
+- EIA page explicitly marks 2025 and 2026 values preliminary; 2024 and prior final.
+UNITS: percent capacity factor.
+UNCERTAINTY: Preliminary annual 2025 values subject to revision; geography/fleet/weather/dispatch-specific.
+ASSUMPTIONS: Use only as a real U.S. fleet anchor, not a universal technology constant.
+LIMITATIONS: Capacity factor != availability != ELCC/capacity credit != system adequacy.
+REPRODUCIBILITY_INSTRUCTIONS: Open cited EIA table and read annual 2025 row plus preliminary-data note.
+INDEPENDENT_REPLICATION: TE-EGC003-D1-003 independently reports the same 2025 values.
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATA / REPLICATION_SUPPORT.
+CLAIM_SUPPORTED: Nameplate capacity must not be treated as continuous delivered power; observed utilization differs strongly by technology/fleet.
+CLAIM_NOT_SUPPORTED: Global capacity factors, firm capacity, or cost ranking.
+
+----------------------------------------------------------------------
+TE-EGC003-C1-003 — GLOBAL RENEWABLE DEPLOYMENT THROUGHPUT
+----------------------------------------------------------------------
+
+TOOL_EVIDENCE_ID: TE-EGC003-C1-003
+JOB_ID: JOB-EGC-003
+CLAIM_ID: CLAIM-EGC003-C1-RE-DEPLOY
+TOOL_OR_METHOD: IRENA official publication/press-release retrieval.
+PURPOSE: Establish demonstrated annual global build throughput and installed renewable nameplate scale.
+EXECUTION_DATE: 2026-10-05
+INPUTS: Renewable Capacity Statistics 2026.
+PARAMETERS: Global; end-2025 stock and 2025 additions.
+VERSION_OR_MODEL: IRENA Renewable Capacity Statistics 2026.
+SOURCE_OR_DATASET: International Renewable Energy Agency.
+SOURCE_DATE: 2026-03 publication; 2026-04-01 press release.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026
+- https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+COMMAND_CODE_EQUATION_OR_METHOD: Direct source extraction.
+RAW_OR_KEY_OUTPUT:
+- 5,149 GW renewable power capacity at end-2025.
+- +692 GW in 2025; +15.5%.
+- 85.6% of 2025 global power-capacity additions were renewable.
+- IRENA defines renewable capacity as maximum net generating capacity; most records reflect installed-and-connected capacity at year end.
+UNITS: GW nameplate; percent.
+UNCERTAINTY: National statistical revisions; IRENA sources include questionnaires, official statistics and other documented sources.
+ASSUMPTIONS: None for quoted IRENA values.
+LIMITATIONS: Nameplate additions are not equivalent to firm/continuous output, annual TWh, or adequate capacity.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect official publication methodology and 2025 summary figures.
+INDEPENDENT_REPLICATION: TE-EGC003-D1-004 independently reports the same 5,149/692/15.5% values.
+EVIDENCE_CLASS: SOURCE_FACT + REPLICATION_SUPPORT.
+CLAIM_SUPPORTED: Global deployment throughput can reach several hundred GW nameplate per year.
+CLAIM_NOT_SUPPORTED: Firm delivered-power additions of 692 GW/year or low system cost.
+
+----------------------------------------------------------------------
+TE-EGC003-C1-004 — GLOBAL NUCLEAR AVAILABILITY / SCALE
+----------------------------------------------------------------------
+
+TOOL_EVIDENCE_ID: TE-EGC003-C1-004
+JOB_ID: JOB-EGC-003
+CLAIM_ID: CLAIM-EGC003-C1-NUC-OPS
+TOOL_OR_METHOD: IAEA PRIS authoritative operational database retrieval.
+PURPOSE: Establish global operational availability, production, and fleet-scale anchors.
+EXECUTION_DATE: 2026-10-05
+INPUTS: PRIS 2025 production and Energy Availability Factor trend.
+PARAMETERS: Global commercial nuclear fleet with reported PRIS data.
+VERSION_OR_MODEL: PRIS pages updated through 2026-07-27 for EAF; dashboard retrieved 2026-10-05.
+SOURCE_OR_DATASET: IAEA Power Reactor Information System.
+SOURCE_DATE: Underlying 2025; database update 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://pris-stats.iaea.org/
+- https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+COMMAND_CODE_EQUATION_OR_METHOD: Direct database extraction.
+RAW_OR_KEY_OUTPUT:
+- 2025 Energy Availability Factor = 84.1%, weighted average from 362 GW(e), 402 commercially operated reactors with data.
+- Current dashboard: 417 reactors in operation, 379,608 MW(e) net capacity.
+- Under construction: 77 reactors, 80,720 MW(e).
+- Electricity produced in 2025: 2,635.3 TWh.
+UNITS: percent; GW(e)/MW(e); reactor count; TWh/year.
+UNCERTAINTY: PRIS reporting coverage and timing; EAF is not identical to capacity factor.
+ASSUMPTIONS: PRIS is treated as the authoritative IAEA reactor-performance database for included member-state reports.
+LIMITATIONS: Does not establish new-build CAPEX, safety acceptability, waste solution, or deployment speed.
+REPRODUCIBILITY_INSTRUCTIONS: Open PRIS analytics and EAF trend page; read 2025 row and dashboard.
+INDEPENDENT_REPLICATION: TE-EGC003-D1-006 independently reports 2,635.3 TWh and 84.1% EAF.
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATA / REPLICATION_SUPPORT.
+CLAIM_SUPPORTED: Existing nuclear operates at multi-PWh/year global scale with high measured availability.
+CLAIM_NOT_SUPPORTED: Economic superiority or future build feasibility.
+
+----------------------------------------------------------------------
+TE-EGC003-C1-005 — ADEQUACY / RELIABILITY IS NOT NAMEPLATE CAPACITY
+----------------------------------------------------------------------
+
+TOOL_EVIDENCE_ID: TE-EGC003-C1-005
+JOB_ID: JOB-EGC-003
+CLAIM_ID: CLAIM-EGC003-C1-ADEQUACY
+TOOL_OR_METHOD: NERC official 2026 Summer Reliability Assessment Snapshot inspection, including rendered PDF page inspection, plus deterministic arithmetic.
+PURPOSE: Test whether added nameplate/anticipated resources alone are sufficient to infer system reliability.
+EXECUTION_DATE: 2026-10-05
+INPUTS: NERC Summer 2026 anticipated resources, risk areas, load-growth and challenge statements.
+PARAMETERS: North America; summer 2026 adequacy outlook.
+VERSION_OR_MODEL: NERC 2026 Summer Reliability Assessment.
+SOURCE_OR_DATASET: North American Electric Reliability Corporation.
+SOURCE_DATE: 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.nerc.com/globalassets/our-work/assessments/2026-summer-reliability-assessment-snapshot.pdf
+COMMAND_CODE_EQUATION_OR_METHOD:
+- Direct PDF text/chart inspection.
+- Anticipated-resource change = 1,173 - 1,115 = 58 GW.
+- Relative change = 58/1,115*100 = 5.20179%.
+RAW_OR_KEY_OUTPUT:
+- NERC states record resource additions strengthened summer readiness.
+- Elevated shortfall risk under abnormal conditions decreased from six regions in 2025 to three regions and one locality in 2026.
+- Load growth increased by 11 GW since 2025.
+- NERC identifies accelerated demand, rapid growth of large loads, low-wind periods and maintenance overlap as remaining reliability challenges.
+UNITS: GW; region/locality count; qualitative risk classification.
+UNCERTAINTY: Weather/load/scenario uncertainty inherent in adequacy assessment; not a universal global metric.
+ASSUMPTIONS: None for quoted NERC statements.
+LIMITATIONS: North America only; anticipated resources are not directly comparable to annual energy; risk classification is not a single outage-probability scalar.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect NERC snapshot PDF text and chart, reproduce 58-GW arithmetic, then consult full assessment for review.
+INDEPENDENT_REPLICATION: REQUIRED by JOB-EGC-003-REV-C1-20261005; objective job independently uses NERC LOLE material but not this exact snapshot result.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+CLAIM_SUPPORTED: Capacity, utilization, and resource adequacy are distinct dimensions; nameplate-only MASSIVE_ENERGY scoring is invalid.
+CLAIM_NOT_SUPPORTED: A universal reserve-margin, storage-duration, or global reliability requirement.
+
+----------------------------------------------------------------------
+TE-EGC003-C1-006 — NUCLEAR 2025 GENERATION SOURCE DISCREPANCY
+----------------------------------------------------------------------
+
+TOOL_EVIDENCE_ID: TE-EGC003-C1-006
+JOB_ID: JOB-EGC-003
+CLAIM_ID: CLAIM-EGC003-C1-NUC-DATA-CONFLICT
+TOOL_OR_METHOD: Cross-source comparison + Wolfram arithmetic.
+PURPOSE: Detect whether a supposedly simple technology annual-energy baseline is source-definition stable.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- Ember Global Electricity Review 2026: nuclear generation 2,812 TWh in 2025.
+- IAEA PRIS: electricity produced 2,635.3 TWh in 2025.
+PARAMETERS: World; 2025; nuclear electricity.
+VERSION_OR_MODEL: Ember GER 2026 vs IAEA PRIS.
+SOURCE_OR_DATASET: Ember and IAEA.
+SOURCE_DATE: 2026 publications/databases for 2025.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+- https://pris-stats.iaea.org/
+COMMAND_CODE_EQUATION_OR_METHOD:
+- Difference = 2,812 - 2,635.3 = 176.7 TWh.
+- Relative difference to PRIS = 176.7/2,635.3*100 = 6.70512%.
+RAW_OR_KEY_OUTPUT: Source totals differ by 176.7 TWh, or 6.705% of PRIS value.
+UNITS: TWh/year; percent.
+UNCERTAINTY: Dominated by dataset coverage, gross/net treatment, reactor inclusion/reporting, or revisions; exact cause UNKNOWN.
+ASSUMPTIONS: None about causal source of discrepancy.
+LIMITATIONS: This record detects a conflict; it does NOT resolve it.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect both source totals and repeat arithmetic; audit methodology/coverage before choosing a canonical value.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: CONFLICT + SOURCE_FACT + CALCULATION.
+CLAIM_SUPPORTED: Nuclear 2025 world-generation total is not yet source-definition stable enough for fake precision.
+CLAIM_NOT_SUPPORTED: Which source is wrong, or that either source should be discarded.
+
+CONFLICT_ID: CONFLICT-EGC-NUC-GEN-2025-C1
+STATUS: OPEN
+SEVERITY: P1
+DECISION_IMPACT: CP13/CP24 and fission model validation; unlikely alone to reverse civilization-scale order-of-magnitude but large enough to block precision claims.
+NEXT_ARBITRATION: JOB-EGC-NUC-DATA-RECON-C1-20261005
+
+----------------------------------------------------------------------
+CROSS-SESSION REPLICATION / DISAGREEMENT MATRIX
+----------------------------------------------------------------------
+
+AGREEMENT:
+- IEA latest 2025 consumption 28,600 TWh: this session + TE-EGC003-D1-001.
+- IRENA end-2025 renewable capacity 5,149 GW and additions 692 GW: this session + TE-EGC003-D1-004.
+- IAEA PRIS 2025 nuclear production 2,635.3 TWh and EAF 84.1%: this session + TE-EGC003-D1-006.
+- EIA 2025 non-fossil fleet capacity factors: this session directly reproduced TE-EGC003-D1-003.
+
+MATERIAL DIFFERENCES / REPAIRS:
+- Earlier objective/scale records use IEA 28,200 TWh from an earlier 2026 vintage. Latest Mid-Year Update uses 28,600 TWh. Treat 28,600 as fresher provisional anchor; retain 28,200 in history as an earlier estimate.
+- Existing Ember-vs-IEA boundary conflict is not resolved by the IEA revision and remains >10% depending denominator.
+- This session adds NERC summer-2026 adequacy evidence and a new Ember-vs-IAEA nuclear-generation conflict.
+
+REPLICATION_STATUS:
+- Cross-session evidence overlap materially improves confidence in source extraction.
+- Formal independent review of the canonical JOB-EGC-003 package is STILL REQUIRED because replication support has not yet issued a reviewer PASS on this canonical synthesis.
+
+----------------------------------------------------------------------
+DYNAMIC REVIEW / RECONCILIATION JOBS
+----------------------------------------------------------------------
+
+JOB_ID: JOB-EGC-003-REV-C1-20261005
+ROLE: R23 Independent Numerical Replication + R25 Evidence Audit + Reliability Red Team
+TITLE: Independently reproduce and attack canonical JOB-EGC-003
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do TE-EGC003-C1-001..006 reproduce from primary sources, and do their boundary/metric limitations support the proposed scale/reliability conclusions without technology favoritism?
+CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: Canonical JOB-EGC-003 submission present.
+REQUIRED_INPUTS: TE-EGC003-C1-001..006; TE-EGC003-D1 support records; existing CONFLICT-EGC-SCALE-BOUNDARY-001.
+REQUIRED_TOOLS: Independent authoritative-source retrieval; independent arithmetic; provenance and adequacy-metric audit.
+REQUIRED_EVIDENCE: REPLICATION + SOURCE_FACT + CALCULATION + REVIEW.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR per evidence record and an explicit verdict on the canonical JOB-EGC-003 conclusion.
+FALSIFICATION_CONDITION: Any decisive source/value/unit cannot be reproduced, metric boundary is asymmetric, or nameplate/utilization/adequacy dimensions are conflated.
+REVIEWER_JOB_ID: JOB-EGC-030 or later final evidence audit.
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: Distinct session claims and replays sources/calculations.
+
+JOB_ID: JOB-EGC-NUC-DATA-RECON-C1-20261005
+ROLE: Nuclear Data Provenance / Conflict Arbitration
+TITLE: Reconcile 2025 world nuclear-generation totals
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Why do Ember (2,812 TWh) and IAEA PRIS (2,635.3 TWh) differ for 2025 world nuclear electricity, and what common boundary is valid for model validation?
+CANDIDATE: FISSION_BASELINE
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: Exact Ember methodology/coverage; IAEA PRIS definitions/coverage; country/reactor data if needed.
+REQUIRED_TOOLS: Primary-source methodology inspection; coverage mapping; arithmetic.
+REQUIRED_EVIDENCE: SOURCE_FACT + CONFLICT_RESOLUTION + CALCULATION.
+EXPECTED_OUTPUT: Reconciled common-boundary value(s) or persistent quantified conflict with exact cause categories.
+FALSIFICATION_CONDITION: Proposed reconciliation cannot reproduce source totals or relies on guessed gross/net/reporting assumptions.
+REVIEWER_JOB_ID: JOB-EGC-018 or distinct later provenance reviewer.
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: Audit source definitions before any fission package uses a precise world-generation denominator.
+
+----------------------------------------------------------------------
+JOB-EGC-003 RESULT / RED TEAM / STATUS
+----------------------------------------------------------------------
+
+RESULT:
+- SOURCE_FACT: Latest IEA mid-year estimate places 2025 world electricity consumption at 28.6 PWh/year, about 3.265 TW average.
+- SOURCE_FACT: IRENA records 692 GW renewable nameplate additions in 2025, reaching 5,149 GW installed renewable capacity.
+- SOURCE_FACT: U.S. EIA preliminary 2025 fleet CFs range from ~24% solar PV and ~34% wind/hydro to ~66% geothermal and 91% nuclear in the cited non-fossil classes.
+- SOURCE_FACT: IAEA PRIS records 84.1% 2025 nuclear EAF and 2,635.3 TWh produced.
+- SOURCE_FACT: NERC 2026 evidence shows resource growth improved readiness while load growth, low-wind periods and maintenance overlap still produce adequacy risk.
+- CALCULATION: Latest-vs-earlier IEA 2025 estimate changed by 1.418%; percentage-based 1%/10% scale tiers are robust to that revision but absolute TWh values must refresh.
+- CONFLICT: Existing Ember-vs-IEA world-boundary conflict remains unresolved.
+- CONFLICT: Ember-vs-IAEA 2025 nuclear-generation discrepancy = 176.7 TWh / 6.705% relative to PRIS.
+- FALSIFIED: Nameplate GW alone is sufficient proof of MASSIVE_ENERGY or reliable delivered service.
+- INFERENCE: A fair mission baseline must track at least annual delivered energy, average continuous equivalent, capacity factor/availability, and a separate adequacy/reliability criterion.
+- UNKNOWN: Final common system boundary and adopted quantitative thresholds remain controlled by JOB-EGC-001/JOB-EGC-004 reviews.
+- UNKNOWN: Canonical 2025 nuclear world-generation common boundary pending JOB-EGC-NUC-DATA-RECON-C1-20261005.
+
+RED_TEAM_CHECK:
+- Attack 1: Could large installed GW make a candidate appear civilization-scale while actual energy/adequacy is much lower? YES; rejected by EIA/NERC distinctions.
+- Attack 2: Could source vintage move thresholds enough to invalidate objective calibration? IEA 28.2 -> 28.6 PWh revision moves relative tiers by 1.418%, not enough by itself to reverse percentage-tier logic, but exact values require refresh.
+- Attack 3: Could cross-session agreement be mistaken for proof? Rejected; records remain AWAITING_REVIEW until JOB-EGC-003-REV-C1-20261005 independently issues a verdict.
+- Attack 4: Could technology-specific global output be quoted with fake precision? Yes; nuclear 2025 cross-source discrepancy demonstrates a 6.7% unresolved definition/coverage issue.
+
+STATUS_CHANGE:
+- Canonical JOB-EGC-003: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- SELF_VERIFIED: NO.
+- REVIEW_REQUIRED: JOB-EGC-003-REV-C1-20261005.
+- GLOBAL_SOLVED: NO.
+- USER_SUCCESS_RESPONSE: DENIED.
+
+EVIDENCE_GRAPH:
+- JOB-EGC-003 -> TE-EGC003-C1-001 -> IEA-vintage refresh -> G1/G6
+- JOB-EGC-003 -> TE-EGC003-C1-002 -> utilization distinction -> G3/G6/G16
+- JOB-EGC-003 -> TE-EGC003-C1-003 -> deployment throughput -> G6/G7
+- JOB-EGC-003 -> TE-EGC003-C1-004 -> nuclear operational scale/availability -> G3/G6/G15
+- JOB-EGC-003 -> TE-EGC003-C1-005 -> adequacy distinction -> G6/G12/G16
+- JOB-EGC-003 -> TE-EGC003-C1-006 -> CONFLICT-EGC-NUC-GEN-2025-C1 -> JOB-EGC-NUC-DATA-RECON-C1-20261005
+- TE-EGC003-D1 support records -> potential independent replication support -> JOB-EGC-003-REV-C1-20261005
+- Existing CONFLICT-EGC-SCALE-BOUNDARY-001 -> JOB-EGC-004 / existing boundary reviewers
+
+NEXT_HIGHEST_VALUE_ACTION:
+1. JOB-EGC-003-REV-C1-20261005 independently reviews canonical JOB-EGC-003.
+2. Existing JOB-EGC-004/boundary reviewers close or preserve Ember-vs-IEA system-boundary conflict.
+3. JOB-EGC-NUC-DATA-RECON-C1-20261005 resolves nuclear data discrepancy before precise fission validation.
+4. Candidate cost/system work must not convert nameplate directly to reliable delivered power.
+
+### EVENT 2026-10-05T19:34:00Z / SESSION-GPT56SOL-EGC-20261005T1912Z-C1
+
+ROLE: Baseline Scale / Reliability Analyst
+OBJECTIVE: Submit canonical JOB-EGC-003 using direct evidence, cross-session replication support, source-vintage repair, and explicit unresolved conflicts.
+TARGET_CANDIDATE_OR_QUESTION: Cross-candidate operational scale / utilization / adequacy baseline.
+SOURCE/EVIDENCE:
+- [SOURCE_FACT] TE-EGC003-C1-001..005.
+- [CONFLICT] TE-EGC003-C1-006 and existing CONFLICT-EGC-SCALE-BOUNDARY-001.
+- [REPO_FACT] TE-EGC-018-001 proposes this session's a9540293... lease as canonical earliest JOB-EGC-003 claim; independent provenance review remains separate.
+WORK:
+- Reproduced major scale and operational evidence.
+- Cross-examined duplicate support contribution rather than discarding it.
+- Replaced stale 2024 CF anchor with fresher 2025 preliminary EIA row.
+- Quantified IEA data-vintage revision.
+- Added NERC adequacy evidence.
+- Exposed nuclear-generation data discrepancy and created arbitration job.
+RESULT:
+- JOB-EGC-003 is submitted AWAITING_REVIEW, not VERIFIED.
+RED_TEAM_CHECK:
+- No winner selected; no nameplate-only scale claims accepted; no source conflict averaged away.
+STATUS_CHANGE:
+- JOB-EGC-003 -> AWAITING_REVIEW.
+NEXT_ACTION:
+- Independent review and conflict reconciliation.
+WRITE_INTEGRITY:
+- branch head read: d01a860bdca9a9aaa30aaa396fbc9525990d8fb7
+- file SHA read: cfc3b8fb5586e44f51d3722e27a777da0c8f7a94
+- stale-write check: exact expected SHA used; on conflict this append is regenerated from latest state.
+- mutation scope: ONLY MAIN-CHAT.md on authorized branch.
+- commit/result: PENDING_THIS_COMMIT
