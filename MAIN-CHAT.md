@@ -2657,3 +2657,270 @@ STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 NEXT_ACTION: independently retrieve sources, reproduce calculations, attack feasible-set semantics, issue review.
+
+
+======================================================================
+62. INDEPENDENT REVIEW RESULT — JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0410+07-FINREV2
+PRIMARY_JOB_ID: JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006
+PRIMARY_ROLE: Independent Finance / Construction-Duration / Discount-Provenance Adversarial Reviewer
+REVIEW_VERDICT: PASS_WITH_QUALIFICATIONS
+REVIEW_TARGET_STATUS: VERIFIED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SUMMARY:
+FIN_BOUNDARY_V1 survives independent source-boundary and numerical attack. Its core claims are supported: overnight cost is not financed/all-in cost; construction duration and spend timing can materially change financed capital; candidate-specific private WACC must not silently replace a candidate-neutral primary real-resource discount convention; nominal/real/currency/tax/geography provenance is mandatory for private/project finance comparisons. The Green Book 3.5%-versus-announced-3% issue remains FRESHNESS_SENSITIVE rather than resolved as an operative policy change.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-046-FIN-001
+CLAIM_ID: CLAIM-EGC-046-CONFIN
+TRUTH_CLASS: EXTERNAL_FACT
+TOOL/METHOD: official NLR/NREL ATB source audit
+SOURCE: National Laboratory of the Rockies / Annual Technology Baseline, Equations & Variables
+URL: https://atb.nrel.gov/electricity/2024b/equations_%26_variables
+OUTPUT:
+ATB explicitly separates overnight capital cost from construction financing through a construction-finance factor; construction financing depends on capital fractions/timing and interest assumptions. WACC is a separate finance parameter.
+REVIEW_RESULT:
+PASS. Parent rule that overnight CAPEX must not be treated as already financed/all-in is source-supported.
+LIMITATION:
+ATB reference assumptions are not globally observed finance terms and do not prove any candidate's realized financing cost.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-046-FIN-002
+CLAIM_ID: CLAIM-EGC-046-BUILDTIME
+TRUTH_CLASS: EXTERNAL_FACT / MODELED_REFERENCE_CASE
+TOOL/METHOD: official EIA 2024 report text extraction; source-boundary audit; visual screenshot attempt
+SOURCE: U.S. EIA, Capital Cost and Performance Characteristics for Utility-Scale Electric Power Generating Technologies
+SOURCE_DATE: 2024-01-10
+URL: https://www.eia.gov/analysis/studies/powerplants/capitalcost/pdf/capital_cost_AEO2025.pdf
+OUTPUT:
+Representative report cases state:
+- onshore wind plant construction time = 9 months;
+- solar PV plant construction time = 12 months;
+- advanced nuclear brownfield 2xAP1000 plant construction time = 52 months.
+The EIA report page states these are contractor generic/reference estimates used to inform AEO modeling rather than measured fleet construction distributions.
+VISUAL_VALIDATION:
+PDF screenshot attempt for relevant pages failed with cache-miss in the web tool; official PDF text extraction was available. Therefore VISUAL_SCREENSHOT_VERIFICATION=NOT_COMPLETED for the EIA duration tables.
+REVIEW_RESULT:
+PASS_WITH_CLASSIFICATION. Parent correctly treated these durations as representative modeled cases, not measured universal construction times.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-046-FIN-003
+CLAIM_ID: CLAIM-EGC-046-OVERNIGHT-BOUNDARY
+TRUTH_CLASS: EXTERNAL_FACT
+TOOL/METHOD: official EIA HTML audit
+SOURCE: U.S. EIA capital-cost methodology
+URL: https://www.eia.gov/outlooks/capitalcost/
+OUTPUT:
+EIA defines overnight cost as project cost as if no interest were incurred during construction and separately states longer lead times increase financing costs.
+REVIEW_RESULT:
+PASS. Overnight-vs-financing boundary is independently supported.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-046-FIN-004
+CLAIM_ID: CLAIM-EGC-046-WACC-PROVENANCE
+TRUTH_CLASS: EXTERNAL_FACT
+TOOL/METHOD: IEA Cost of Capital Observatory and 2025 regional survey audit
+SOURCE: International Energy Agency
+URL: https://www.iea.org/reports/cost-of-capital-observatory
+URL_2: https://www.iea.org/reports/cost-of-capital-observatory/dashboard
+URL_3: https://www.iea.org/commentaries/high-cost-of-capital-and-limited-project-pipeline-hinder-clean-energy-investment-in-southeast-asia
+OUTPUT:
+IEA reports financing costs by country/project type and documents WACC survey values as nominal, post-tax and local-currency where applicable. 2024 solar-PV survey medians cited by IEA include 9.4% Indonesia, 9.0% Viet Nam and 8.0% Philippines, with quoted ranges 6-8% Thailand and 6-7% Malaysia.
+REVIEW_RESULT:
+PASS. A single transplanted global WACC is not evidence-grounded; nominal/real, tax and currency tags are ranking-critical.
+LIMITATION:
+Survey WACC is market evidence, not a physical-resource metric and not transferable without geography/project reconciliation.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-046-FIN-005
+CLAIM_ID: CLAIM-EGC-046-NUCLEAR-FINANCE
+TRUTH_CLASS: EXTERNAL_FACT
+TOOL/METHOD: official IEA audit
+SOURCE: IEA, The Path to a New Era for Nuclear Energy, Financing nuclear projects
+SOURCE_DATE: 2025
+URL: https://www.iea.org/reports/the-path-to-a-new-era-for-nuclear-energy/financing-nuclear-projects
+OUTPUT:
+IEA identifies scale, capital intensity, long construction lead times and technical complexity as financing challenges for nuclear; cost overruns/delays are material investor risks; PPAs/CfDs/RAB/government risk allocation can improve cash-flow predictability and lower private cost of capital.
+REVIEW_RESULT:
+PASS_WITH_BOUNDARY. These mechanisms alter finance/private cost and risk allocation; they do not by themselves prove lower primary real-resource use.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-046-FIN-006
+CLAIM_ID: CLAIM-EGC-046-DISCOUNT-FRESHNESS
+TRUTH_CLASS: CONFLICT / FRESHNESS_SENSITIVE
+TOOL/METHOD: current official HM Treasury guidance + independent-review PDF visual audit + official policy-announcement audit
+SOURCE_A: HM Treasury, The Green Book (2026), updated 2026-02-05
+URL_A: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+SOURCE_A_OUTPUT:
+Published guidance states standard STPR = 3.50% real years 1-30; 3.00% years 31-75; 2.50% year 76 onward, and requires real values before applying STPR.
+SOURCE_B: Green Book Discount Rate Review: Summary of Findings and Recommendations, 2026-06-30
+URL_B: https://assets.publishing.service.gov.uk/media/6a43915e7ac6fd9c6a94abbe/Findings_and_Recommendations_-_Green_Book_Discount_Rate_Review.pdf
+SOURCE_B_OUTPUT:
+The visually verified recommendation table gives standard-project forward rates 3.0% for 0-30y, 2.5% for 31-75y and 2.25% for 76-125y. The report front matter explicitly states it is fully independent, does not represent HM Treasury policy, and is not endorsed as HM Treasury policy.
+SOURCE_C: HM Treasury policy announcement / Chancellor growth speech, 2026-09-07
+OUTPUT_C:
+The official announcement states an intention/change to reduce the Green Book rate from 3.5% to 3%.
+SEARCH_STATUS_AS_OF: 2026-10-06
+No operative revised Green Book text or unambiguous effective-date schedule superseding the published 2026 guidance was found in this review.
+REVIEW_RESULT:
+PARENT CONFLICT CLASSIFICATION PASS.
+REQUIRED_QUALIFICATION:
+3.0/2.5/2.25 is REVIEW_RECOMMENDATION_SENSITIVITY, not verified current HM Treasury policy. The political announcement of 3.0% is evidence of intended/announced policy change, but exact operative effective date and full long-horizon schedule remain NOT_VERIFIED.
+RULE:
+Do not silently replace D_REF_PRIMARY_V1. If the mission later versions a new primary convention, recompute all affected candidates and baselines symmetrically.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-CALC-EGC-046-001
+CLAIM_ID: CLAIM-EGC-046-DURATION-SENS
+TRUTH_CLASS: CALCULATION
+TOOLS: Python independent calculation + Wolfram Language independent calculation
+METHOD:
+F(T,r)=((1+r)^T-1)/(T*ln(1+r)).
+INPUTS:
+T={0.75,1.0,52/12} y; r={0.03,0.05,0.07,0.10,0.12}.
+OUTPUT:
+Wind T=.75:
+1.01116691835, 1.01852153820, 1.02580665190, 1.03660838462, 1.04372835145.
+Solar T=1:
+1.01492610407, 1.02479671571, 1.03460535466, 1.04920586873, 1.05886695566.
+52-month reference:
+1.06686835414, 1.11357307766, 1.16203502148, 1.23813068049, 1.29120272691.
+REPLICATION_STATUS: INDEPENDENT_CROSS_TOOL_PASS.
+REVIEW_RESULT:
+Parent CALC-EGC-046-001 reproduced to displayed precision.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-CALC-EGC-046-002
+CLAIM_ID: CLAIM-EGC-046-RANKREV
+TRUTH_CLASS: CALCULATION
+TOOLS: Python + Wolfram Language
+INPUTS:
+A OCC=95, T=52/12 y; B OCC=100, T=1 y; r=7%; equal physical output/service by construction.
+OUTPUT:
+A financed-at-COD sensitivity = 110.3933270404.
+B = 103.4605354659.
+Break-even OCC_A/OCC_B = 0.8903392200.
+REPLICATION_STATUS: INDEPENDENT_CROSS_TOOL_PASS.
+REVIEW_RESULT:
+PASS. The toy example correctly demonstrates that financing timing alone can reverse an overnight-cost ordering. It is not empirical technology ranking.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-CALC-EGC-046-003
+CLAIM_ID: CLAIM-EGC-046-DELAY
+TRUTH_CLASS: CALCULATION
+TOOLS: Python + Wolfram Language
+INPUTS: r=7%; uniform continuous spending sensitivity.
+OUTPUT:
+T=4.333333 y -> F=1.16203502148.
+T=6.333333 y -> F=1.24843578430; +7.4353% relative to 4.333333y.
+T=8.333333 y -> F=1.34328990847; +15.5981%.
+REPLICATION_STATUS: INDEPENDENT_CROSS_TOOL_PASS.
+REVIEW_RESULT:
+PASS as a sensitivity demonstration, not an empirical delay distribution.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-CALC-EGC-046-004
+CLAIM_ID: CLAIM-EGC-046-CRF
+TRUTH_CLASS: CALCULATION
+TOOLS: Python + Wolfram Language
+METHOD:
+CRF(r,30)=r(1+r)^30/[(1+r)^30-1].
+OUTPUT:
+3%=0.05101925932
+5%=0.06505143508
+7%=0.08058640351
+9%=0.09733635139
+10%=0.10607924825
+12%=0.12414365755
+REPLICATION_STATUS: INDEPENDENT_CROSS_TOOL_PASS.
+REVIEW_RESULT:
+PASS.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-CALC-EGC-046-005
+CLAIM_ID: CLAIM-EGC-046-DISCOUNT-FRESHNESS
+TRUTH_CLASS: CALCULATION
+TOOLS: Python independent implementation
+METHOD:
+Compare current published Green Book schedule 3.5%/3.0%/2.5% with independent-review recommendation sensitivity 3.0%/2.5%/2.25%.
+OUTPUT:
+Recommendation-sensitivity D30=0.4119867595; D60=0.1964116740; D100=0.0777546551.
+Relative future-flow weighting vs D_REF_PRIMARY_V1:
+year30 +15.636%;
+year60 +33.812%;
+year100 +53.006%.
+REPLICATION_STATUS: INDEPENDENT_NUMERICAL_PASS.
+INTERPRETATION:
+The freshness conflict can materially affect long-lived assets/terminal liabilities. This strengthens, rather than weakens, the rule that one common versioned convention and symmetric sensitivity must be used.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-CALC-EGC-046-006
+CLAIM_ID: CLAIM-EGC-046-SPEND-SCHEDULE
+TRUTH_CLASS: CALCULATION / ADVERSARIAL_SENSITIVITY
+TOOLS: Python + independent Wolfram Language implementation
+METHOD:
+Monthly midpoint spending at 7%; compare equal monthly spending against simple linear front-loaded weights (2->1) and back-loaded weights (1->2). All weights normalized to the same overnight capital.
+OUTPUT:
+9 months:
+ equal=1.02580529315; front=1.02901832948; back=1.02259225683.
+12 months:
+ equal=1.03460398426; front=1.03881661802; back=1.03039135050.
+52 months:
+ equal=1.16203348229; front=1.18129730549; back=1.14276965909.
+Approximate deviation from equal:
+9m about +/-0.31%;
+12m about +/-0.41%;
+52m about +/-1.66%.
+REPLICATION_STATUS: INDEPENDENT_CROSS_TOOL_PASS.
+INTERPRETATION:
+Uniform spending is mathematically valid for its explicit assumption but is not invariant to spend profile. Spend-schedule uncertainty becomes more material with longer construction. Actual candidate ranking requires an evidenced spend curve or a symmetric uncertainty treatment if ranking-sensitive.
+FALSIFICATION:
+No parent failure because C1 explicitly labels its uniform-spend equation as a transparent sanity/sensitivity model rather than ATB or observed project finance.
+
+ADVERSARIAL REVIEW:
+1. OVERNIGHT_AS_FINANCED_ALL_IN -> FALSIFIED / parent correctly blocks.
+2. ONE_GLOBAL_WACC -> FALSIFIED / parent correctly blocks.
+3. NOMINAL_WACC_APPLIED_TO_REAL_CASH_FLOWS_WITHOUT_CONVERSION -> FALSIFIED.
+4. CONCESSIONAL_PRIVATE_WACC_AS_FREE_PRIMARY_RESOURCE_REDUCTION -> FALSIFIED as a general rule; risk allocation may affect real outcomes only through separately evidenced mechanisms.
+5. EIA_REFERENCE_DURATIONS_AS_FLEET_MEASUREMENTS -> FALSIFIED; parent classification as representative reference cases PASS.
+6. UNIFORM_SPEND_AS_REALIZED_CONSTRUCTION_PROFILE -> FALSIFIED; parent did not make this claim.
+7. REVIEW_RECOMMENDATION_3P0_2P5_2P25_AS_CURRENT_HMT_POLICY -> FALSIFIED.
+8. PUBLISHED_3P5_AS_UNQUALIFIED_STABLE_FUTURE_POLICY_AFTER_2026-09-07 -> FRESHNESS_SENSITIVE, not safe as an unqualified statement.
+9. PRIMARY_RESOURCE_VIEW_USING_CANDIDATE_SPECIFIC_WACC -> FALSIFIED by FIN_BOUNDARY_V1 and remains forbidden.
+10. PRIVATE_PROJECT_VIEW_IGNORING_FINANCE_DIFFERENCES -> FALSIFIED; WACC/structure can materially affect delivered private cost and must be reported separately.
+
+QUALIFICATIONS / OPEN GAPS:
+- Current effective administrative date and full term structure of the announced UK move to 3% remain NOT_VERIFIED.
+- EIA 9/12/52-month durations are generic modeled reference cases, not realized fleet distributions.
+- Empirical candidate-specific spend curves and realized delay/overrun distributions remain required if final ordering is sensitive to construction risk.
+- Uniform-spend sensitivities do not substitute for project-specific ConFinFactor or actual financing schedules.
+- Financing rules are methodology/boundary evidence; they do not establish a final winner or prove low whole-system cost.
+- Integration with final R_STAR portfolios, transmission/storage build timing, terminal accounting repairs and common baseline remains outstanding.
+
+CLAIM_GRAPH_UPDATE:
+CLAIM-EGC-046-CONFIN: INDEPENDENT_REVIEW_PASS.
+CLAIM-EGC-046-WACC: INDEPENDENT_REVIEW_PASS_WITH_PROVENANCE_RULE.
+CLAIM-EGC-046-BUILDTIME: PASS_AS_MODELED_REFERENCE_CASE.
+CLAIM-EGC-046-DURATION-SENS: INDEPENDENT_CROSS_TOOL_PASS.
+CLAIM-EGC-046-RANKREV: INDEPENDENT_CROSS_TOOL_PASS.
+CLAIM-EGC-046-DELAY: INDEPENDENT_CROSS_TOOL_PASS.
+CLAIM-EGC-046-CRF: INDEPENDENT_CROSS_TOOL_PASS.
+CLAIM-EGC-046-DISCOUNT-FRESHNESS: CONFLICT_CORRECTLY_PRESERVED / OPERATIVE_POLICY_UPDATE_NOT_VERIFIED.
+FIN_BOUNDARY_V1: VERIFIED_AS_COMMON_METHOD_WITH_QUALIFICATIONS.
+JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006: AWAITING_REVIEW -> VERIFIED.
+JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006: REVIEW_COMPLETE / PASS_WITH_QUALIFICATIONS.
+
+DOWNSTREAM RULE:
+A final candidate may consume FIN_BOUNDARY_V1 only together with the still-open common accounting, reliability, storage/grid and terminal-state repairs. This review does not close G5/G21/G22 by itself.
+
+NEXT_HIGHEST_VALUE_ACTION:
+Refresh latest state. Prefer an unclaimed P0/P1 common-boundary repair over additional candidate polishing; otherwise independently review an AWAITING_REVIEW cross-candidate gate.
+
+BRANCH_HEAD_BEFORE_WRITE: 45943812735a16b5c9eae5da5eb0ac4946b5d57c
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: b97c82560e40d15409b71cc1efad8e151aa34aab
