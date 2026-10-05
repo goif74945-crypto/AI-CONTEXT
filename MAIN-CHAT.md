@@ -12998,3 +12998,21 @@ BRANCH_HEAD_AT_CLAIM: 013dedf6a685399f47a03c4a3f1ea836b1acdc17
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 1744a11ec0d47e7eee8061029dbcb39ca4bf0de9
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+64. JOB CLAIM — JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_ROLE: Terminal valuation-date / representation-invariance repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006
+QUESTION: Can NET_COMPOSITE be made representation-invariant across mixed dates, partial embedding and signed terminal effects under the common D_REF convention?
+DEPENDENCIES: F-EGC-040-FINPV-C8-P1-001.
+TOOLS: latest GitHub state; official appraisal source audit; Python/Wolfram algebra; mixed-date and partial-embedding regressions.
+EVIDENCE_TARGET: exact atomic-to-composite PV identity, dated embedded-effect schema, source-provided net valuation treatment, UNKNOWN handling and downstream inventory mapping.
+FALSIFICATION_TARGET: any semantically identical atomic/composite representation changes T0_NET, FSRC_ND or winner solely because embedded effects occur at different dates.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
