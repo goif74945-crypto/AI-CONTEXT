@@ -13617,3 +13617,21 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 2d60b86d42789483a02cd596fcd4836eac087da8
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0640+07-SOCBINDREV12
+PRIMARY_ROLE: Independent inventory-provenance / exact-once owner reviewer
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C11-20261006
+QUESTION: Does INVENTORY_BINDING_V1 mechanically prevent omitted/duplicate initial-resource ownership, quantity-provenance drift and terminal owner/time-basis ambiguity without converting monetary value into physical energy?
+DEPENDENCIES: C11 AWAITING_REVIEW; FINPV C9/C10 now VERIFIED; GREENSTATE-C6 independently submitted but is not assumed verified.
+TOOLS: independent algebra; Python/Wolfram regression; provenance-graph attacks; latest dependency audit.
+EVIDENCE_TARGET: reproduce C11 C01-C03; test shared allocation cardinality, recursive predecessor cycles, zero-valued accepted resource vs missing owner, physical/monetary separation, and updated FINPV dependency state.
+FALSIFICATION_TARGET: nonzero depletable stock passes with no accepted owner; same causal resource owned twice; quantity bridge can be satisfied by dollars; recursive link evades ownership; terminal effect can enter twice; or verified FINPV dependency is not version-locked.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
