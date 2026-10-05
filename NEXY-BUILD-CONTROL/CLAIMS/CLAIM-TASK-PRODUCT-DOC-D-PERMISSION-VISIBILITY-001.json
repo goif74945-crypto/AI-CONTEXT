@@ -2,11 +2,13 @@
   "CLAIM_ID": "CLAIM-TASK-PRODUCT-DOC-D-PERMISSION-VISIBILITY-001",
   "TASK_ID": "TASK-PRODUCT-DOC-D-PERMISSION-VISIBILITY-001",
   "OWNER_CHAT": "C-SOL-20261006-0143-DOC-D-PERMISSION",
-  "STATUS": "ACTIVE",
+  "STATUS": "RELEASED",
   "SCOPE": [
     "tests/contract/doc-d-permission-visibility.test.ts"
   ],
   "BASE_SHA": "999cf6b6a64e1cb36a295f80af5cbbc3a97d5742",
-  "WORKER_BRANCH": "work/C-SOL-20261006-0143-doc-d-permission-visibility",
-  "MUTATION_BOUNDARY": "Test-only. No production source mutation."
+  "WORKER_BRANCH": "work/C-SOL-20261006-0143-doc-d-permission-visibility-v2",
+  "MUTATION_BOUNDARY": "Test-only. No production source mutation.",
+  "INTEGRATED_SHA": "e27b03b1ab7d45fb17f466b6918219b920051a0d",
+  "MUTATION_OWNER_ACTIVE": false
 }
