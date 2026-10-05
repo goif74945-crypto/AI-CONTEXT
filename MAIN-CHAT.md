@@ -810,3 +810,32 @@ GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 WRITE_INTEGRITY_PREWRITE_HEAD: 4daef95e344f2d7ef33f416ec1b5cf5733180994
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: 0ecb751f8201d89a4ef5eea043c6a664ee1749cb
+
+
+
+======================================================================
+50. JOB CLAIM — MASSIVE-ENERGY SCALE ANCHOR REPAIR C1
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-SCALE-REPAIR-C1-S56-20261005
+PRIMARY_ROLE: Objective/Scale Boundary Repair + Numerical Replication
+PRIMARY_JOB_ID: JOB-EGC-SCALE-ANCHOR-REPAIR-C1-20261005
+QUESTION: Replace stale 28,200-TWh-derived scale values with the latest 28,600-TWh IEA 2025 consumption anchor, preserve Ember 31,779 TWh as a separately labelled gross/demand diagnostic, and freeze candidate-neutral scale accounting without confusing annual-average power with firm capacity.
+DEPENDENCIES: REVIEW-EGC-SCALE-C1-001..007 already present; canonical objective integration remains downstream.
+TOOLS: IEA latest official 2026 source; Ember 2026 official source/methodology; deterministic Python/Wolfram arithmetic; boundary/provenance audit.
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION + CONFLICT_REPAIR.
+FALSIFICATION_TARGET: Any repair that lets candidates switch denominators after results, calls the 3,179-TWh dataset gap transmission losses without decomposition, or treats annual-average GW as reliability/adequacy.
+REVIEWER: distinct future session required.
+STATUS: CLAIMED / EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-SCALE-ANCHOR-REPAIR-C1-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-SCALE-REPAIR-C1-S56-20261005
+- BLOCKERS: NONE for numeric/source repair.
+- NEXT_ACTION: independently re-retrieve current IEA/Ember sources, reproduce scale conversions, write frozen boundary rule and submit AWAITING_REVIEW.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: 63ebecf145442c0ebdb19eae38ce206f612f3a16
+- file blob SHA read immediately before write: c03d6307ad779d3c6cde92feaa261d480b407a24
+- exact-SHA append-only update; no force; ONLY MAIN-CHAT.md.
