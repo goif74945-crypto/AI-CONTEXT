@@ -1,0 +1,74 @@
+{
+  "RESULT_ID": "RESULT-C-SOL-V16RC13-TARGETRECON-63CD2839-001",
+  "RESULT_TYPE": "V16_RC1_3_TARGET_HEAD_RECONCILIATION_AUDIT",
+  "CHAT_ID": "C-SOL-V16RC13-TARGETRECON-63CD2839",
+  "TASK_ID": "CTRL-V16RC13-TARGET-HEAD-RECONCILIATION-001",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CONTROL_HEAD_OBSERVED": "7cabca7b5e49b06370ea791c4707b8d753ce0bb1",
+  "BOOTSTRAP_FENCE_STATE_OBSERVED": "LEGACY_DRAINING",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 3,
+  "MEMBERSHIP_RECORD_GENERATION": 2,
+  "PRODUCT_STATE": {
+    "TARGET_BRANCH": "NEXY.AI-Test-AI",
+    "TARGET_HEAD": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "PROTECTED_UPSTREAM_BRANCH": "NEXY.ai",
+    "PROTECTED_UPSTREAM_HEAD": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "TARGET_VS_UPSTREAM": "IDENTICAL"
+  },
+  "LEGACY_BASELINE": {
+    "CONTROL_RECORD": "NEXY-BUILD-CONTROL/AUTHORITY/SOURCE_BASELINE.json",
+    "CAPTURED_IN_CONTROL_COMMIT": "6ef377e59df45b96acd8eaf896752fbdb03747bb",
+    "LEGACY_INTEGRATION_HEAD": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "COMPARE_FROM_CURRENT_TARGET_TO_LEGACY_HEAD": {
+      "STATUS": "ahead",
+      "AHEAD_BY": 57,
+      "BEHIND_BY": 0,
+      "TOTAL_COMMITS": 57,
+      "MERGE_BASE": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+    }
+  },
+  "CANONICAL_CONTROL_EVIDENCE": {
+    "LEGACY_EPOCH_STATUS": "FROZEN_FOR_V16_RC1_3_MIGRATION",
+    "LEGACY_ADMISSION_GATE": "CLOSED",
+    "PRODUCT_MUTATION_AUTHORITY_ISSUANCE": "FROZEN",
+    "TARGET_INTEGRATION_AUTHORITY_ISSUANCE": "FROZEN",
+    "INTEGRATION_DIRECTORY_ENTRIES": [
+      "NEXY-BUILD-CONTROL/INTEGRATION/.gitkeep",
+      "NEXY-BUILD-CONTROL/INTEGRATION/00_INDEX.md",
+      "NEXY-BUILD-CONTROL/INTEGRATION/README.md"
+    ],
+    "EXISTING_RELATED_P0_FINDING": "F-V16RC13-PREACT-DISCOVERY-C-SOL-20261005-1723Z-V16RC13-PREACT"
+  },
+  "PROVENANCE_SEARCH": {
+    "CONTROL_COMMIT_MESSAGE_QUERIES": [
+      "9e615b04",
+      "608426cb",
+      "force",
+      "branch",
+      "stop",
+      "integration",
+      "recovery",
+      "rollback",
+      "move target",
+      "upstream"
+    ],
+    "AUTHORIZING_TARGET_REWIND_OR_ROLLBACK_RECORD_FOUND": false,
+    "NOTE": "Targeted control-history search found baseline, validation, branch-namespace, freeze, and unrelated recovery records, but no canonical intent/evidence authorizing or explaining a target-ref movement from 608426cb... back to 9e615b04...."
+  },
+  "UNKNOWN": [
+    "Exact actor, timestamp, mechanism, and authorization for the target ref movement are not established by available canonical control evidence.",
+    "Private repository ref-event/audit history is not exposed by the available connected GitHub actions used in this audit, so absence of an external GitHub event cannot be proven."
+  ],
+  "VERDICT": "PROVENANCE_UNKNOWN_ACTIVATION_BLOCKING",
+  "REASON": "The current canonical target equals protected upstream while legacy canonical control proves an integration head 57 commits ahead. No authoritative supersession, rollback, or ref-movement intent was found in canonical control evidence. Fail-closed reconciliation is required before genesis may bind a target baseline.",
+  "REQUIRED_RESOLUTION": [
+    "Produce authoritative evidence for why NEXY.AI-Test-AI moved from 608426cb... to 9e615b04..., or explicitly classify the prior 57 commits as superseded through the active fenced transition.",
+    "If the 57 commits remain required, reconcile or restore them only through the authorized post-drain transition protocol; do not move the target blindly.",
+    "Bind the resolved target HEAD and tree into genesis preparation before first MISSION_FENCE_STATE creation."
+  ],
+  "DUPLICATE_POLICY": "No new P0 finding created because the existing V16-RC1.3 preactivation P0 finding already records this exact 57-commit target/control drift. This result deepens provenance evidence and links to that canonical blocker.",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_REF_MUTATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
