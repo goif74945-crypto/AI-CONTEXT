@@ -1,0 +1,69 @@
+{
+  "FINDING_ID": "FINDING-QUEUE-FAILED-STATE-RESURRECTION-001",
+  "REQ_ID": "REQ-DOC-C-2-3-VNEXT-DEFAULTS",
+  "TASK_ID": "TASK-QUEUE-FAILED-STATE-CAS-001",
+  "CHAT_ID": "C-SOL-20261005-1923-V8-QUEUE",
+  "TYPE": "DURABLE_QUEUE_STATE_CONCURRENCY_DEFECT",
+  "SEVERITY": "P1",
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "OBSERVED": [
+    "reconcilePendingDispatches selects ENQUEUED rows and calls dispatchDirective(pipelineRunId).",
+    "dispatchDirective reads the durable row once, then awaits enqueueDirective(), then unconditionally prisma.directiveDispatch.update({where:{id}}) to ENQUEUED and clears lastError.",
+    "When the BullMQ job already exists in failed state and the durable row was read as ENQUEUED, enqueueDirective returns an idempotent hit without retryAuthorization and does not retry the failed BullMQ job.",
+    "The worker failed callback independently persists failDirectiveDispatch(...), which changes ENQUEUED/PROCESSING to FAILED.",
+    "If the worker failure update commits while a reconciler call is between its initial row read and final update, the reconciler's unqualified update can overwrite FAILED back to ENQUEUED and clear lastError.",
+    "Subsequent reconciliation can repeatedly treat the already-failed BullMQ job as an idempotent existing job while leaving the durable dispatch projection ENQUEUED."
+  ],
+  "EXPECTED": [
+    "A terminal/non-authorized failed dispatch must not be resurrected to ENQUEUED by a stale reconciler observation.",
+    "Durable queue state transitions must use compare-and-set/transactional guards so a newer FAILED/CANCELLED/COMPLETED state wins over a stale ENQUEUED/PENDING observation.",
+    "A failed BullMQ job must not produce a durable false-running/false-enqueued projection or a false successful idempotent API retry.",
+    "Explicit failed retry remains limited to the safe retry policy and attempt cap."
+  ],
+  "SPEC_EVIDENCE": {
+    "ACTIVE_SCOPE": "Final DOC-C includes queue + idempotency as required build scope.",
+    "QUEUE_DEFAULTS": "Final DOC-C raw paragraphs 9945-9948: stale_job_ttl_ms=900000; max_concurrent_pipeline_runs=10.",
+    "DIRECTIVE_RETRY": "Final DOC-C raw paragraphs 10161-10164: idempotency required; same key returns same accepted run.",
+    "OPERATIONAL_CLOSURE": "V8 requires concurrency/error-path/data-integrity defects to be closed before CODE_CLOSURE_VERIFIED."
+  },
+  "SOURCE_EVIDENCE": {
+    "DISPATCH_FILE": "packages/queue/dispatch.ts",
+    "DISPATCH_BLOB": "002eef253ce836e2cd0e200f5d15cb5042cdeb29",
+    "JOBS_FILE": "packages/queue/jobs.ts",
+    "JOBS_BLOB": "e90ac64acc446c5bbd24a710e0208fc76bce9089",
+    "WORKER_FILE": "packages/queue/workers.ts",
+    "WORKER_BLOB": "3134e7b6bf83f7200959e3e267b28f5ea28b6392",
+    "CRITICAL_INTERLEAVING": [
+      "R reads durable status ENQUEUED.",
+      "R awaits enqueueDirective; existing BullMQ job is failed, no FAILED retry authorization is attached because R read ENQUEUED.",
+      "W failed callback persists durable FAILED + lastError.",
+      "R resumes and update({where:{id}}) writes ENQUEUED + lastError=null, overwriting W.",
+      "BullMQ job remains failed and is not actually retried."
+    ]
+  },
+  "TEST_EVIDENCE": {
+    "EXISTING_RETRY_POLICY_TEST": "tests/contract/failed-dispatch-retry.test.ts@e555aa85cc90dc80d4b8670317f39c90ba15715d",
+    "EXISTING_QUEUE_BOUNDARY_TEST": "tests/integration/queue-boundary.spec.ts@0b7f955db18bb97e0bfd62f061a320db9637322e",
+    "GAP": "Inspected queue tests do not force the reconciler-vs-worker FAILED state interleaving or assert CAS monotonicity.",
+    "EXECUTED_TEST_EVIDENCE": "NONE_READ_ONLY_SCAN"
+  },
+  "REPRODUCTION": [
+    "Persist DirectiveDispatch status ENQUEUED for a BullMQ job that has just failed.",
+    "Start dispatchDirective and pause after its initial durable read reports ENQUEUED.",
+    "Run failDirectiveDispatch so the durable row becomes FAILED with an error code.",
+    "Resume dispatchDirective; enqueueDirective sees the existing failed BullMQ job, returns idempotent without retrying, then current code writes ENQUEUED and clears lastError.",
+    "Observe durable state says ENQUEUED while BullMQ remains failed."
+  ],
+  "CLASSIFICATION": [
+    "CONCURRENCY_DEFECT",
+    "DATA_INTEGRITY_DEFECT",
+    "REPLAY_DEFECT",
+    "INVALID_ERROR_PATH",
+    "MISSING_REQUIRED_TEST"
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "MUTATION_STATUS": "BLOCKED_BY_INC-BRANCH-NAMESPACE-001"
+}
