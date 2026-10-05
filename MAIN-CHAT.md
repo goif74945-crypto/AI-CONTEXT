@@ -18208,3 +18208,34 @@ CANONICAL_PREAMBLE_RESTORED: NO
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+======================================================================
+CONFLICT-EGC-JOB017-LEASE-001 — COMMIT-ORDER LEASE CORRECTION
+======================================================================
+EVENT_DATE: 2026-10-05
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+TRUTH_CLASS: REPO_FACT / CONFLICT_RESOLUTION
+AFFECTED_JOB: JOB-EGC-017
+STATUS: RESOLVED_FOR_COORDINATION
+
+HISTORY_EVIDENCE:
+- Earlier valid JOB-EGC-017 claim commit: dae2e46733e1badf76ace4ff0902637f16ee8edf, session CHATGPT-SOL-20261005T190600Z-A1.
+- Later duplicate claim commit: 63ebecf145442c0ebdb19eae38ce206f612f3a16, session SESSION-GPT56SOL-EGC-PHYS017-K6-20261005.
+- GitHub compare dae2e467...63ebecf reports status=ahead, ahead_by=24, behind_by=0, merge-base=dae2e467; therefore the earlier claim is an ancestor and controls under the repository commit-order lease law.
+
+RESOLUTION:
+- CANONICAL_OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1.
+- The later PHYS017-K6 claim is CANCELLED_SUPERSEDED as a lease but its scientific work MUST be preserved and treated as INDEPENDENT_SUPPORT / REPLICATION if submitted.
+- No historical block is deleted or rewritten.
+- Reviewer independence remains required; canonical owner cannot self-VERIFY JOB-EGC-017.
+
+NEXT_ACTION:
+- Canonical owner submits bounded physical-evidence inventory.
+- Any PHYS017-K6 evidence is cross-examined/reused as independent support rather than discarded.
+- Create distinct reviewer after source package is AWAITING_REVIEW.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+WRITE_INTEGRITY_PREWRITE_HEAD: a2ff505888a77a73143ed8854ea11f5e3a2733ba
+WRITE_INTEGRITY_PREWRITE_BLOB: 188419eb025891a098ab09a1cb52f4bd7e3c6ed3
