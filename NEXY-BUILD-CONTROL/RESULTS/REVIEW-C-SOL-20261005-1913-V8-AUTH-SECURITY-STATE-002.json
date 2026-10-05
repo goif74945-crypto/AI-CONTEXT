@@ -1,0 +1,78 @@
+{
+  "RESULT_ID": "REVIEW-C-SOL-20261005-1913-V8-AUTH-SECURITY-STATE-002",
+  "CHAT_ID": "C-SOL-20261005-1913-V8-AUTH",
+  "TYPE": "INDEPENDENT_SHADOW_REVIEW",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "REVIEWS": [
+    {
+      "FINDING_ID": "FINDING-DOC-C-ROLE-SYSTEM-SESSION-AUTHORITY-001",
+      "SEVERITY": "P0",
+      "VERDICT": "CONFIRMED",
+      "SPEC_EVIDENCE": [
+        "Final DOC-C POST /api/auth/verify-otac response role is OWNER|OPERATOR|AUDITOR (paragraphs 10093-10097).",
+        "Final DOC-C GET /api/session/me RBAC and response role are OWNER|OPERATOR|AUDITOR (paragraphs 10109-10126)."
+      ],
+      "SOURCE_EVIDENCE": [
+        "packages/api/auth.ts blob 0f8c8e21ce39f36b850c0db93ceadaa886088e6b creates/returns role from durable user record without rejecting SYSTEM during verify.",
+        "handleSessionMe returns session.role after token/revocation/expiry/device/user binding checks but has no human-role allowlist gate."
+      ],
+      "TEST_EVIDENCE": [
+        "tests/integration/auth/verify-otac.spec.ts blob b81b1a963c932aa942d19cca8b9b776d0aeb6031 has no SYSTEM-role negative case in inspected role/session coverage."
+      ],
+      "INDEPENDENT_REPRODUCTION": "STATIC_CONFIRMED"
+    },
+    {
+      "FINDING_ID": "FINDING-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001",
+      "SEVERITY": "P1",
+      "VERDICT": "CONFIRMED",
+      "SPEC_EVIDENCE": [
+        "Final DOC-C POST /api/auth/logout requires session, human RBAC, idempotency required, and retry safe only with same idempotency key (paragraphs 10127-10151).",
+        "DOC-C auth hardening says logout current session revokes current session_id; revoke-all revokes every session for user."
+      ],
+      "SOURCE_EVIDENCE": [
+        "handleLogout looks up prior audit evidence only by requestId=idempotency_key and action in AUTH_LOGOUT/AUTH_LOGOUT_ALL before binding replay to current session/principal/revoke_all.",
+        "After loading and device-validating current session, any such prior record causes 200 revoked=true and cookie clearing before the server-side revoke transaction."
+      ],
+      "TEST_EVIDENCE": [
+        "tests/integration/auth/logout.spec.ts blob e4abbce30cd4d76c7eac96ec9e9d382a18a286d6 globally mocks auditLog.findFirst to null and has no cross-principal/session idempotency collision case."
+      ],
+      "INDEPENDENT_REPRODUCTION": "STATIC_CONFIRMED"
+    },
+    {
+      "FINDING_ID": "FINDING-DOC-C4-INCIDENT-ENVELOPE-STATE-TRUTH-001",
+      "SEVERITY": "P1",
+      "VERDICT": "CONFIRMED",
+      "SPEC_EVIDENCE": [
+        "Final DOC-C §3.2 defines outer SystemEnvelope<T>.state as SystemState.",
+        "Final DOC-C GET /api/runs/:id separately places run state inside response data, establishing a local-run state surface distinct from outer envelope state."
+      ],
+      "SOURCE_EVIDENCE": [
+        "packages/api/canonical.ts blob 1664d8d6a7da32245578addc26596f8fd4d55954 handleIncident sets outer state to VNextStateSchema.parse(incident.pipelineRun.runState), unlike canonical error/other response helpers that use currentSystemState().",
+        "tests/contract/canonical-api.test.ts blob edc26665c768f31f27bee89c8b8578ad5c59ee1 mocks currentSystemState=READY while incident pipelineRun.runState=FREEZE and protects the substituted outer state."
+      ],
+      "INDEPENDENT_REPRODUCTION": "STATIC_CONFIRMED_TEST_ORACLE_DEFECT"
+    },
+    {
+      "FINDING_ID": "FIND-DOC-C4-VAULT-AUDIT-ACTOR-SPOOF-001",
+      "SEVERITY": "P1",
+      "VERDICT": "CONFIRMED",
+      "SPEC_EVIDENCE": [
+        "Final DOC-C /api/vault/commit requires authenticated session, OWNER|SYSTEM RBAC, idempotency, and VAULT_COMMIT_CREATED audit; request metadata.created_by is a client field."
+      ],
+      "SOURCE_EVIDENCE": [
+        "packages/api/canonical.ts builds internalRequest.authorId from parsed.data.metadata.created_by rather than authenticated auth.userId.",
+        "vault/repository.ts blob 197698c5514da02af251640aa51ad80597710c8f persists commit.authorId=req.authorId and uses req.authorId as immutable audit-chain actor/AuditLog.actor.",
+        "tests/contract/canonical-api.test.ts expects internal authorId to equal client metadata.created_by even when authenticated userId is a different fixture value."
+      ],
+      "INDEPENDENT_REPRODUCTION": "STATIC_CONFIRMED_SECURITY_AND_AUDIT_ATTRIBUTION_DEFECT"
+    }
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "CODE_CLOSURE_ELIGIBLE": false
+}
