@@ -301,22 +301,49 @@ Forbidden:
 Dependency violation = build failure, enforced through import/dependency lint + CI.
 
 ## 12. Executable FSM
+### Temporal authority note
+The authoritative **final DOC-C pack appears after the document's `FINAL VERDICT`** (primary-source non-empty paragraphs 8297–8305, then DOC-C beginning at 8346). Its executable state/event matrix is at paragraphs 8811–8957. This later matrix supersedes conflicting transition claims in the earlier `NEXY — EXECUTION PACK vNEXT.1` section (for example the earlier paragraph 7485 claim `ANY except STOP + error → FREEZE`).
+
 Legal states:
 INIT → READY → RUNNING → VERIFYING → CONSENSUS → STABLE
 with FREEZE/STOP side paths.
 
-Events:
+Final event set:
 - boot
 - execute
 - agents_done
 - verified
 - accepted
 - rejected
+- timeout
 - error
 - recover
 - fatal
+- cancel
 
-Guards:
+Final matrix explicitly authorizes:
+- INIT + boot → READY
+- READY + execute → RUNNING
+- RUNNING + agents_done → VERIFYING
+- RUNNING + timeout → FREEZE
+- RUNNING + error → FREEZE
+- VERIFYING + verified → CONSENSUS
+- VERIFYING + error → FREEZE
+- CONSENSUS + accepted → STABLE
+- CONSENSUS + rejected → FREEZE
+- CONSENSUS + timeout → FREEZE
+- FREEZE + recover → READY
+- FREEZE + fatal → STOP
+- ANY except STOP + fatal → STOP
+
+Final owner-action rows additionally authorize:
+- hard kill run from RUNNING / VERIFYING / CONSENSUS → FREEZE
+- revoke release from STABLE before emission → FREEZE
+- STOP override → never
+
+**Do not promote the earlier vNEXT.1 `error from any non-STOP state → FREEZE` clause into final DOC-C authority.** The final executable matrix lists `error` as an allowed event only for RUNNING and VERIFYING. Other error edges are not authorized by the final matrix unless a later authoritative clause explicitly adds them.
+
+Guards represented in the source include:
 - system_valid
 - directive_valid
 - results_exist
@@ -326,21 +353,16 @@ Guards:
 - freeze_recovery_allowed
 - not_in_stop
 
-Key transitions:
-- INIT + boot → READY
-- READY + execute → RUNNING
-- RUNNING + agents_done → VERIFYING
-- VERIFYING + verified → CONSENSUS
-- CONSENSUS + accepted → STABLE if quorum/release pass
-- CONSENSUS + rejected → FREEZE
-- error from any non-STOP state → FREEZE
-- FREEZE + recover → READY if allowed
-- FREEZE + fatal → STOP
+Illegal examples explicitly named by the final pack include:
+- INIT: accepted, verified, recover
+- READY: accepted, verified, agents_done
+- RUNNING: accepted, recover
+- VERIFYING: execute, recover
+- CONSENSUS: execute, agents_done
+- STABLE: execute without new cycle
+- STOP: all
 
-Illegal examples:
-READY→CONSENSUS, RUNNING→STABLE, VERIFYING→READY, STOP→ANY, FREEZE→RUNNING, INIT→STABLE.
-
-Event owners:
+Event ownership from the build-spec lineage:
 - CORE: boot/execute
 - SWARM: agents_done
 - JUDGE: verified/accepted/rejected
@@ -348,7 +370,7 @@ Event owners:
 - OWNER or SYSTEM: recover
 - LAW or AUTH: fatal
 
-Every transition emits traceable event metadata.
+Every legal transition emits EventLog. Transitions to FREEZE or STOP create a primary incident; secondary failures link as secondary incidents; recovery emits AuditLog + EventLog.
 
 ## 13. FREEZE / STOP semantics
 FREEZE:
