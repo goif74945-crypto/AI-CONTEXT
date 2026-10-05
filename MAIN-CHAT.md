@@ -10297,3 +10297,26 @@ CURRENT_WINNER: NONE.
 
 REVIEWER_JOB_NOTE:
 JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-REV-C2-20261006 already exists in the job graph; do not duplicate it.
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-065-DEMAND-FLEX-BASELINE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-DRFLEX65-C1
+PRIMARY_ROLE: Demand-Response / Flexible-Load Baseline & Rebound-Accounting Analyst
+PRIMARY_JOB_ID: JOB-EGC-065-DEMAND-FLEX-BASELINE-C1-20261006
+QUESTION: Must mature demand response and flexible load be an explicit challenger in the strongest-current baseline, and what physical/economic/accounting constraints prevent DR from becoming fictitious free generation or free storage?
+CANDIDATE: demand response; load shifting; interruptible/dispatchable load; flexible industrial/commercial/residential demand as system components, not primary energy sources.
+DEPENDENCIES: strongest-baseline architecture includes demand response in FLEXIBILITY_LAYER but has no dedicated evidence/model gate; R_STAR/common ledger/baseline repairs proceed independently.
+REQUIRED_INPUTS: current ISO/RTO/regulator operational evidence; accreditation/performance rules; event duration/frequency; rebound/recovery energy; customer/enablement/service costs; baseline measurement; non-performance; geography/service applicability.
+REQUIRED_TOOLS: current official FERC/NERC/ISO/RTO/DOE/NLR evidence; executed chronological arithmetic; adversarial baseline/rebound counterexamples; source-boundary audit; concurrency-safe GitHub append.
+REQUIRED_EVIDENCE: prove commercial/operational maturity; distinguish load curtailment from load shifting; quantify at least one real accredited/registered scale example; show how ignored rebound/event constraints can bias adequacy/storage/cost; define exact-once cost/energy ownership.
+EXPECTED_OUTPUT: DR_FLEX_BASELINE_V1 + evidence ledger + falsification tests + independent reviewer job; no final winner.
+FALSIFICATION_CONDITION: FAIL if DR is credited as created energy, if deferred load/rebound disappears, if customer or enablement resource costs are omitted, if event-hour/availability/non-performance limits are ignored, if baselines can be gamed, or if geography-specific DR rules are treated as universal.
+REVIEWER_JOB_ID: JOB-EGC-065-DEMAND-FLEX-BASELINE-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final numerical system ranking requires frozen geography/service and reviewed R_STAR/FSRC_ND, but baseline evidence/model rules are executable now.
+BRANCH_BLOB_SHA_AT_CLAIM: 8bbb3ca7ed94bc1882cd2fc720e663a3800d0a73
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
