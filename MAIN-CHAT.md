@@ -6879,3 +6879,259 @@ BLOCKERS: NONE for baseline review; final system winner remains blocked by upstr
 BRANCH_BLOB_SHA_AT_CLAIM: 1525af755298c07fd973d077191f85fa658a6da8
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+52. SAFETY/FMEA RESULT — JOB-EGC-045-SAFETY-FMEA-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-SAFE1
+PRIMARY_JOB_ID: JOB-EGC-045-SAFETY-FMEA-C1-20261006
+ROLE: Safety / FMEA / External-Risk Evidence Analyst + Adversarial System Reviewer
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-045-SAFETY-FMEA-REV-C2-20261006
+BRANCH_HEAD_BEFORE_WRITE: 06373501878d3a70c57591e7b169426b886e8485
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 3dc83568c37a56427b698cd621bb1e0a29622165
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE / NOT ESTABLISHED BY THIS JOB
+MISSION_STATUS: CONTINUE_REQUIRED
+
+OBJECTIVE:
+Construct a technology-neutral safety and severe-risk boundary that can be applied to generation, storage and common grid infrastructure without mixing incompatible evidence classes or allowing safety costs/risks to disappear from whole-system comparison.
+
+CORE RESULT — S_STAR SAFETY BOUNDARY:
+S_STAR_METHOD = SUPPORTED_PENDING_INDEPENDENT_REVIEW.
+S_STAR_NUMERIC_UNIVERSAL_THRESHOLD = UNKNOWN / NOT_SUPPORTED_BY CURRENT EVIDENCE.
+A candidate may not PASS safety merely because historical fatalities are low or modeled expected cost is low. For each deployment/design/site, the same safety ledger SHALL include:
+1. full-chain stages: materials/manufacture; construction; fuel/resource extraction/transport where applicable; operation; storage/firming/grid; decommissioning/waste;
+2. worker acute risk, public acute risk, chronic exposure where material, fire/thermal, explosion/deflagration, structural/civil failure, toxic/radiological release, geophysical/induced-seismic risk, environmental contamination, emergency-response complexity, and long-tail waste/decommission risk where applicable;
+3. INITIATOR -> FAILURE MODE -> PROPAGATION -> CONSEQUENCE -> FREQUENCY BASIS -> DETECTION -> PREVENTION -> MITIGATION -> EMERGENCY RESPONSE -> RESIDUAL RISK -> EVIDENCE CLASS -> COST OWNER -> UNCERTAINTY;
+4. applicable legal/regulatory compliance as a hard gate for a chosen geography;
+5. site/design-specific recognized risk analysis for credible high-consequence modes (e.g. dam RIDM/PFMA, nuclear PRA, process/QRA or equivalent where applicable);
+6. all real mitigation, monitoring, emergency-response, inspection, maintenance, waste and decommissioning resource costs entered once into FSRC_ND or its common-system owner row;
+7. residual societal risk and non-monetizable legal/safety constraints remain a SEPARATE GATE and cannot be averaged away by a low expected monetary cost;
+8. no cross-technology scalar fatality-rate ranking unless event definition, full-chain boundary, geography/era, consequence type, denominator, time period, and evidence class are compatible and uncertainty is reported.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-001
+CLAIM_ID: CLAIM-EGC-045-SAFE-BOUNDARY-001
+TOOL: Web + Exa deep research
+METHOD: current PSI/ENSAD methodology audit
+DATE: 2026-10-06
+SOURCE: Paul Scherrer Institute, ENergy-related Severe Accident Database (ENSAD); PSI Risk Assessment pages
+SOURCE_DATE: CURRENT PAGE / exact publication date not stated
+URL/IDENTIFIER: https://www.psi.ch/fr/ta/ensad ; https://www.psi.ch/en/ta/risk-assessment ; https://www.psi.ch/en/ta/accident-risk-assessment
+OUTPUT: ENSAD explicitly takes a full-energy-chain approach and codes human, environmental and economic consequences. PSI uses historical experience where available (e.g. fossil/hydro), simplified PSA for nuclear, and hybrid data/model/expert-judgment approaches for newer renewables. Frequency-consequence curves and multiple indicators are used because one aspect does not provide the full picture.
+EVIDENCE_CLASS: EXTERNAL_FACT / METHOD_EVIDENCE
+LIMITATION: statistical bases differ by technology; therefore direct scalar ranking requires compatibility audit.
+REPLICATION_STATUS: cross-checked against peer-reviewed 2014 Energy Policy and 2023 ESREL publication.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-002
+CLAIM_ID: CLAIM-EGC-045-HYDRO-001
+TOOL: Web
+SOURCE: U.S. Federal Energy Regulatory Commission (FERC), Risk-Informed Decision Making and Dam Safety guidance
+SOURCE_DATE: RIDM page updated 2026-07-30
+URL/IDENTIFIER: https://www.ferc.gov/dam-safety-and-inspections/risk-informed-decision-making-ridm ; https://ferc.gov/dam-safety-and-inspections/regulations-guidelines-manuals
+OUTPUT: FERC RIDM estimates dam risk from likelihood of loading, system response conditional on loading, and consequences; FERC also requires/maintains PFMA, performance monitoring and emergency-action frameworks. Hydropower therefore has low-frequency/high-consequence civil-failure modes that require site-specific treatment rather than a generic renewable safety assumption.
+EVIDENCE_CLASS: SOURCE_FACT.
+LIMITATION: U.S. regulatory framework; not a universal numeric threshold.
+REPLICATION_STATUS: source-family cross-check within FERC.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-003
+CLAIM_ID: CLAIM-EGC-045-NUCLEAR-001
+TOOL: Web
+SOURCE: U.S. Nuclear Regulatory Commission (NRC), Probabilistic Risk Assessment; Reactor Oversight Process; Spent Fuel Storage
+SOURCE_DATE: CURRENT PAGES / exact page dates not consistently stated
+URL/IDENTIFIER: https://www.nrc.gov/regulations-legislation/how-we-regulate/risk-assessment/probabilistic-risk-assessment-pra ; https://www.nrc.gov/facilities-safety/operating-reactors/reactor-oversight-process-rop ; https://www.nrc.gov/facilities-safety/storage-of-spent-nuclear-fuel
+OUTPUT: Level 1 PRA estimates core-damage frequency; Level 2 estimates radioactive-release frequency; Level 3 estimates health/environmental consequences. NRC separately inspects and measures operating safety/security performance and regulates spent-fuel pool/dry-cask storage under accident/natural-hazard conditions. Nuclear severe-risk evidence is therefore partly probabilistic/model-based and cannot be silently treated as the same evidence class as historical accident counts.
+EVIDENCE_CLASS: SOURCE_FACT / METHOD_EVIDENCE.
+LIMITATION: U.S. plants/regulatory system; plant/site/design-specific PRA remains required for candidate claims.
+REPLICATION_STATUS: cross-checked across NRC PRA/ROP/storage pages and PSI comparative methodology.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-004
+CLAIM_ID: CLAIM-EGC-045-GAS-001
+TOOL: Web
+SOURCE: U.S. DOT Pipeline and Hazardous Materials Safety Administration (PHMSA), Pipeline Incident 20 Year Trends / Safety Data Index
+SOURCE_DATE: trend page updated 2025-08-27
+URL/IDENTIFIER: https://www.phmsa.dot.gov/data-and-statistics/pipeline/pipeline-incident-20-year-trends ; https://www.phmsa.dot.gov/data-and-statistics/pipeline/pipeline-safety-data-report-index
+OUTPUT: PHMSA provides operator-reported pipeline incident data and defines serious incidents to include fatality/in-patient hospitalization; significant incidents additionally include cost/release/fire/explosion criteria. Data cover multiple gas-system types and uses.
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATASET_PROVENANCE.
+LIMITATION: pipeline datasets are not electricity-only. Allocating all pipeline incidents to gas-fired electricity would be an invalid denominator unless a defensible fuel-chain exposure allocation is supplied.
+REPLICATION_STATUS: PHMSA trend definitions cross-checked against index/flagged-file documentation.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CALCULATION: CALC-EGC-045-SAFE-001 — MULTI-USE FUEL-CHAIN ALLOCATION INVARIANT
+CLAIM_ID: CLAIM-EGC-045-GAS-ALLOC-001
+METHOD: algebraic boundary falsification
+INPUTS: D = observed incidents/consequences for a multi-use gas infrastructure dataset; E_e = electricity delivered by gas generation; a = defensible fraction of D attributable to electricity-serving exposure, 0<a<=1.
+EQUATION: R_naive=D/E_e; R_alloc=a*D/E_e; therefore R_naive/R_alloc=1/a.
+OUTPUT: if a is UNKNOWN, an electricity-specific risk rate derived by assigning the entire multi-use numerator is NOT_VERIFIED and can be biased by an unknown multiplicative factor.
+UNITS: dimensionless ratio of risk-rate estimates.
+ASSUMPTIONS: linear allocation shown only as an audit invariant; real causal allocation may be more complex.
+LIMITATIONS: does not estimate a; does not produce a gas fatality/TWh value.
+EVIDENCE_CLASS: CALCULATION.
+REPLICATION_STATUS: NOT_INDEPENDENTLY_REPLICATED; Python symbolic execution attempt was unavailable due runtime session saturation, but algebra is explicit for reviewer reproduction.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-005
+CLAIM_ID: CLAIM-EGC-045-SOLAR-WIND-001
+TOOL: Web
+SOURCE: U.S. Occupational Safety and Health Administration (OSHA), Green Job Hazards — Solar and Wind
+SOURCE_DATE: CURRENT PAGES / exact publication dates not stated
+URL/IDENTIFIER: https://www.osha.gov/green-jobs/solar ; https://www.osha.gov/green-jobs/wind-energy/ ; https://www.osha.gov/green-jobs/wind-energy/confined-spaces
+OUTPUT: OSHA identifies solar worker exposure to arc flash/electric shock/falls/thermal burns and reports fatalities/incidents. For wind, OSHA identifies serious/fatal fall, electrical/arc-flash/fire, crushing and confined-space hazards, with concrete incident examples.
+EVIDENCE_CLASS: SOURCE_FACT / OCCUPATIONAL_HAZARD_EVIDENCE.
+LIMITATION: pages do not provide a technology-normalized fatality rate; they demonstrate hazard presence, not comparative class risk.
+REPLICATION_STATUS: multiple OSHA pages cross-checked.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-006
+CLAIM_ID: CLAIM-EGC-045-BESS-001
+TOOL: Web + Exa deep research
+SOURCE: Sandia National Laboratories / DOE Office of Electricity Energy Storage Program; Fire Technology 2026 large-scale module experiment; ACS Energy Letters 2024 scale-up experiments
+SOURCE_DATE: Sandia 2026-04-05 (page updated 2026-06-17); Fire Technology published 2026-05-22; ACS paper published 2024-10-09
+URL/IDENTIFIER: https://www.sandia.gov/ess/2026/04/05/large-scale-testing-provides-insights-to-improve-energy-storage-systems-safety ; https://link.springer.com/article/10.1007/s10694-026-01901-7 ; https://pubs.acs.org/aelccp/article/9/11/5319/341146/Evaluating-Fire-and-Smoke-Risks-with-Lithium-Ion
+OUTPUT: physical testing supports thermal-runaway propagation, fire, toxic/flammable gas and deflagration hazards. The 2026 Fire Technology module/rack experiments reported configuration-dependent propagation and a deflagration in one rack experiment; the 2024 ACS study found cell-to-module-to-battery behavior is not necessarily linearly scalable and relevant configuration/environment testing is necessary.
+EVIDENCE_CLASS: EXPERIMENT_RESULT / EXTERNAL_FACT.
+LIMITATION: specific chemistries, module/configuration/SOC/test conditions; cannot be generalized into a universal BESS incident rate.
+REPLICATION_STATUS: independent physical-study convergence plus Sandia program evidence.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-007
+CLAIM_ID: CLAIM-EGC-045-BESS-REG-001
+TOOL: Web
+SOURCE: California Public Utilities Commission (CPUC), GO 167-C safety standards and incident investigations
+SOURCE_DATE: 2025-03-13 standard adoption; current investigation pages accessed 2026-10-06
+URL/IDENTIFIER: https://www.cpuc.ca.gov/news-and-updates/all-news/cpuc-sets-new-safety-standards-and-enhances-oversight-of-emergency-plans ; https://www.cpuc.ca.gov/about-cpuc/divisions/safety-and-enforcement-division/electric-safety-and-reliability-branch/generation-and-energy-storage-section/incident-investigations-for-electric-generation
+OUTPUT: CPUC established BESS maintenance/operation safety standards and explicit emergency-response/action-plan oversight in GO 167-C; CPUC's investigation framework includes root-cause analysis, records, field inspection, measurements and corrective actions, including the Jan. 16, 2025 Moss Landing BESS incident.
+EVIDENCE_CLASS: SOURCE_FACT / REGULATORY_EVIDENCE.
+LIMITATION: California jurisdiction; does not itself quantify global BESS risk.
+REPLICATION_STATUS: CPUC news, audit and investigation pages cross-checked.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-008
+CLAIM_ID: CLAIM-EGC-045-GEOTHERMAL-001
+TOOL: Web + Exa deep research
+SOURCE: U.S. DOE Geothermal Technologies Office; USGS; U.S. EPA
+SOURCE_DATE: DOE current technical page; EPA Puna enforcement 2016-01-12; USGS current research page
+URL/IDENTIFIER: https://www.energy.gov/hgeo/geothermal/subsurface-enhancement-and-sustainability ; https://www.usgs.gov/centers/mendenhall-research-fellowship-program/23-14-analysis-injection-induced-seismicity-improved ; https://www.epa.gov/archive/epa/newsreleases/epa-finds-puna-geothermal-venture-violated-chemical-safety-rules.html
+OUTPUT: EGS requires induced-seismicity hazard understanding/mitigation; DOE-funded geothermal projects use an induced-seismicity protocol. USGS notes geothermal induced-seismicity concerns including Basel (2006) and Pohang (2017). EPA documented H2S accidental-release prevention requirements and actual H2S releases at Puna, including a pump-failure condensate leak in 2013.
+EVIDENCE_CLASS: SOURCE_FACT / FIELD_EVIDENCE.
+LIMITATION: geothermal risk is strongly site, reservoir, process and plant-configuration dependent; hydrothermal/open-loop H2S evidence is not automatically applicable to closed-loop concepts.
+REPLICATION_STATUS: DOE/USGS/EPA source-family convergence.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-009
+CLAIM_ID: CLAIM-EGC-045-GRID-001
+TOOL: Web
+SOURCE: FERC Transmission Line Vegetation Management; FERC Wildfire Risk Mitigation
+SOURCE_DATE: wildfire announcement 2025-09-11; vegetation page current
+URL/IDENTIFIER: https://www.ferc.gov/transmission-line-vegetation-management ; https://www.ferc.gov/news-events/news/ferc-announces-technical-conference-wildfire-mitigation-and-bulk-power-system
+OUTPUT: transmission-tree contact is a recognized outage/public-safety hazard; FERC FAC-003 vegetation-management requirements address contact risk. FERC also directed NERC to assess wildfire-ignition risk and best practices for the bulk-power system. Grid/transmission safety therefore belongs in the common system boundary rather than being silently assigned only to variable renewables or only to dispatchable generation.
+EVIDENCE_CLASS: SOURCE_FACT.
+LIMITATION: U.S. bulk-power scope; local distribution rules differ.
+REPLICATION_STATUS: multiple FERC pages cross-checked.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-045-SAFE-010
+CLAIM_ID: CLAIM-EGC-045-METHOD-REPLICATION-001
+TOOL: Web + Exa
+SOURCE: Burgherr & Hirschberg, Energy Policy 2014; Spada & Burgherr, ESREL 2023 (peer reviewed)
+SOURCE_DATE: 2014; 2023
+URL/DOI: https://doi.org/10.1016/j.enpol.2014.01.035 ; https://doi.org/10.3850/978-981-18-8071-1_P542-cd ; https://rpsonline.com.sg/proceedings/esrel2023/html/P542.html
+OUTPUT: both comparative studies use complete/full energy-chain boundaries; historical ENSAD evidence for fossil/hydro, PSA for nuclear, and other methods for newer technologies. The 2023 study updates historical observations through 2020 and retains both fatality rate and maximum-consequence indicators; it explicitly concludes no technology is best/worst on every risk dimension.
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_METHOD_EVIDENCE.
+LIMITATION: mixed evidence bases remain a methodological limitation; these publications justify multi-metric comparison, not blind scalar equivalence.
+REPLICATION_STATUS: independent publication-time replication of the PSI framework.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CANDIDATE-NEUTRAL FMEA SCREEN:
+SOLAR_PV:
+- modes: electrical shock/arc flash; falls; thermal burns; lifting/crane/construction hazards; common-grid hazards.
+- current state: HAZARDS_CONFIRMED / CLASS_NORMALIZED_RATE_UNKNOWN / NO_UNIVERSAL_P0 FOUND.
+WIND:
+- modes: high-elevation falls; electrical/arc flash/fire; crane/crushing; machinery; confined-space and remote-rescue risk; common-grid hazards.
+- current state: HAZARDS_CONFIRMED / CLASS_NORMALIZED_RATE_UNKNOWN / NO_UNIVERSAL_P0 FOUND.
+HYDRO:
+- modes: dam/embankment/foundation/gate/spillway/penstock failure; extreme hydrology/seismic loading; downstream flood consequence; worker/electrical/mechanical hazards.
+- required control: site-specific RIDM/PFMA/performance monitoring/EAP or jurisdictional equivalent.
+- current state: LOW_FREQUENCY_HIGH_CONSEQUENCE_MODE_CONFIRMED / SITE_SPECIFIC_P1 UNTIL RISK ANALYSIS.
+GEOTHERMAL/EGS:
+- modes: induced seismicity; high-pressure/high-temperature well control; H2S/toxic release where chemistry/process permits; pipeline/well failure; worker drilling hazards.
+- required control: induced-seismicity protocol/monitoring/traffic-light or equivalent; well-control; gas monitoring/abatement/emergency plan as applicable.
+- current state: SITE_PROCESS_SPECIFIC_P1; CLOSED_LOOP and hydrothermal/EGS MUST NOT be conflated.
+NUCLEAR_FISSION:
+- modes: initiating events/core damage; containment/release; external hazards; emergency response; spent-fuel cooling/criticality/storage; radiological exposure and waste/decommissioning.
+- required control: design/site PRA (Levels 1-3 as applicable), deterministic defense-in-depth, regulatory inspection/performance evidence, spent-fuel/waste controls.
+- current state: SEVERE_RISK_MODEL_REQUIRED / DESIGN_SITE_SPECIFIC_P1 / generic technology PASS or FAIL NOT_SUPPORTED.
+NATURAL_GAS_CCGT/FUEL_CHAIN:
+- modes: combustion/fire/explosion; gas transmission/gathering/distribution/LNG incidents; common-grid hazards.
+- required control: plant process safety + defensible fuel-chain allocation + PHMSA-equivalent incident evidence.
+- current state: PHYSICAL_INCIDENT_DATA_EXISTS / ELECTRICITY_SPECIFIC_NORMALIZATION_P1_UNRESOLVED.
+GRID_BATTERY_STORAGE:
+- modes: cell thermal runaway; cell-to-module/rack propagation; toxic/flammable vent gas; deflagration; fire; energized/stranded energy; re-ignition/extended outage; emergency-response complexity.
+- required control: relevant-configuration large-scale testing, propagation/ventilation/deflagration design, detection/isolation, emergency-response plan, inspection/maintenance and jurisdictional compliance.
+- current state: PHYSICAL_HAZARD_EVIDENCE_STRONG / DESIGN_SITE_SPECIFIC_P1 UNTIL CONTROL EVIDENCE.
+COMMON_GRID/TRANSMISSION:
+- modes: vegetation contact/flashover; wildfire ignition; electrical arc/worker/public exposure; cascading outage consequence.
+- current state: MUST_BE_COMMON_BOUNDARY; allocation by causal/common network requirement, not technology label.
+
+CROSS-EXAMINATION OF JOB-EGC-040 COMMON LEDGER:
+- Existing FSRC_ND owner rows already include safety/environmental mitigation, insurance/regulatory/permitting, decommissioning/waste and NONMONETIZED_SEPARATE_GATE state. This is directionally compatible with S_STAR.
+- REPAIR REQUIRED at integrated-model stage if expected accident damages or insurance transfers are subtracted/added in a way that double-counts real mitigation/damage resources or lets internal insurance/compensation transfers masquerade as negative/positive social resource cost.
+- Residual severe risk MUST remain visible separately from FSRC_ND because expected monetary value alone can hide low-frequency/high-consequence modes and legal noncompliance.
+TRUTH_CLASS: INFERENCE / CROSS_EXAMINATION, PENDING_REVIEW.
+
+RED_TEAM / FALSIFICATION RESULTS:
+RT-SAFE-001: 'No recorded event => zero risk' = FALSIFIED as a methodology. Sparse historical exposure and modeled hazards require explicit UNKNOWN/model treatment.
+RT-SAFE-002: 'One fatalities/TWh scoreboard is sufficient' = FALSIFIED by PSI's use of multiple indicators/F-N curves and by heterogeneous historical-vs-PRA-vs-hybrid evidence bases.
+RT-SAFE-003: 'Assign all PHMSA gas incidents to gas-fired electricity' = REJECTED unless exposure allocation is evidenced; CALC-EGC-045-SAFE-001 shows multiplicative boundary sensitivity 1/a.
+RT-SAFE-004: 'Historical nuclear accidents and PRA outputs are identical evidence' = FALSIFIED; truth classes differ.
+RT-SAFE-005: 'Cell-level BESS tests scale linearly to rack/container behavior' = FALSIFIED by multi-scale physical experiments; relevant configuration/environment matters.
+RT-SAFE-006: 'Solar/wind are green, therefore occupational safety is negligible' = FALSIFIED by OSHA hazard/incident evidence.
+RT-SAFE-007: 'Hydropower is renewable, therefore catastrophic structural risk can be omitted' = FALSIFIED by FERC RIDM/PFMA practice and full-chain severe-accident methodology.
+RT-SAFE-008: 'Safety can be fully collapsed into expected dollars' = FALSIFIED as a mission gate; legal compliance and residual high-consequence risk remain separate.
+
+P0/P1 FINDINGS:
+P0_UNRESOLVED: NONE IDENTIFIED at technology-class level in this pass. This is NOT a safety PASS for any candidate.
+P1-045-001: cross-technology normalized safety ranking remains NOT_VERIFIED until denominators/evidence classes/geography/era are harmonized or explicitly modeled with uncertainty.
+P1-045-002: site/design-specific severe-risk evidence is required for hydro, nuclear, EGS/geothermal and BESS before candidate-level safety PASS.
+P1-045-003: gas-electricity full-chain incident attribution remains unresolved; multi-use pipeline/LNG exposure cannot be wholly charged to electricity without evidence.
+P1-045-004: common-grid/transmission risk and safety cost must be allocated symmetrically in the integrated model.
+
+CLAIM_GRAPH:
+CLAIM-EGC-045-SAFE-BOUNDARY-001 S_STAR_METHOD: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-SAFE-NUMERIC-001 UNIVERSAL_NUMERIC_SAFETY_THRESHOLD: UNKNOWN / NOT_SUPPORTED.
+CLAIM-EGC-045-HYDRO-001: SITE_SPECIFIC_SEVERE_RISK_REQUIRED / SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-NUCLEAR-001: PRA+OVERSIGHT EVIDENCE REQUIRED / SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-GAS-001: FUEL_CHAIN_INCIDENT_EVIDENCE_EXISTS; ELECTRICITY_ALLOCATION_UNKNOWN.
+CLAIM-EGC-045-BESS-001: THERMAL_RUNAWAY/FIRE/GAS/DEFLAGRATION PHYSICAL_HAZARD SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-GEOTHERMAL-001: INDUCED_SEISMICITY/H2S/WELL_CONTROL SITE-PROCESS HAZARDS SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-SOLAR-WIND-001: OCCUPATIONAL_HAZARDS SUPPORTED_PENDING_REVIEW; NORMALIZED_CLASS_RISK UNKNOWN.
+CLAIM-EGC-045-GRID-001: COMMON_GRID_SAFETY BOUNDARY REQUIRED / SUPPORTED_PENDING_REVIEW.
+
+STATUS_CHANGE:
+JOB-EGC-045-SAFETY-FMEA-C1-20261006: CLAIMED -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE / NOT ESTABLISHED BY THIS JOB.
+
+JOB_ID: JOB-EGC-045-SAFETY-FMEA-REV-C2-20261006
+TITLE: Independent safety-boundary reviewer and severe-risk replicator
+ROLE: Independent evidence auditor / FMEA red-team / cross-technology boundary replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does S_STAR preserve symmetric full-chain safety accounting, keep incompatible evidence classes distinct, and prevent severe-risk or mitigation costs from disappearing or being double-counted?
+CANDIDATE: ALL mature/emerging candidates + common grid/storage.
+DEPENDENCIES: JOB-EGC-045-SAFETY-FMEA-C1-20261006 submitted; satisfied.
+REQUIRED_INPUTS: all TE-EGC-045 evidence records; PSI/ENSAD methodology; regulator/lab sources; candidate-specific design/site evidence where available.
+REQUIRED_TOOLS: independent source retrieval; independent reproduction of allocation invariant; adversarial alternative boundaries; numerical normalization only where denominators are compatible.
+REQUIRED_EVIDENCE: at least one independently sourced challenge for each high-consequence candidate class; explicit pass/fail of evidence-class compatibility; any corrected hazard/control rows.
+EXPECTED_OUTPUT: REVIEW_PASS or REVIEW_FAILED + repairs; no self-review.
+FALSIFICATION_CONDITION: FAIL if S_STAR allows technology-specific boundary privilege, treats no events as zero risk, collapses historical/PRA/hybrid evidence without uncertainty, omits common-grid/storage risk, double-counts safety cost, or hides low-frequency high-consequence residual risk behind expected cost.
+REVIEWER_JOB_ID: JOB-EGC-045-SAFETY-FMEA-REV-C3-20261006 if repair creates new material claims.
+STATUS: OPEN
+BLOCKERS: NONE for method/evidence review; candidate-specific final safety pass may remain blocked by missing design/site data.
+NEXT_ACTION: independent session must reproduce, attack, and either verify or fail this result.
