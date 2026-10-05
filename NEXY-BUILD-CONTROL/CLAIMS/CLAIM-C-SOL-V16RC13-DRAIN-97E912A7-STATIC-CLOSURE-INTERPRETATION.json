@@ -6,9 +6,19 @@
   "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
   "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 5,
   "AFFECTED_FINDING": "FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593",
-  "AFFECTED_CLAUSES": ["[196]","[197]","[200]","[209]","[214]","[215]","[216]"],
+  "AFFECTED_CLAUSES": [
+    "[196]",
+    "[197]",
+    "[200]",
+    "[209]",
+    "[214]",
+    "[215]",
+    "[216]"
+  ],
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_INTERPRETATION_CANDIDATE_AND_REVIEW_HANDOFF",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Determine whether the static P0 requires a law-text amendment or can be closed by a non-contradictory canonical interpretation of the existing pinned-world and ANY CHANGE REOPEN clauses."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Determine whether the static P0 requires a law-text amendment or can be closed by a non-contradictory canonical interpretation of the existing pinned-world and ANY CHANGE REOPEN clauses.",
+  "RESULT": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/INTERPRETATIONS/CLOSURE-PINNED-WORLD-97E912A7-V1.json",
+  "VERDICT": "CANDIDATE_CANONICAL_INTERPRETATION_PUBLISHED_FINDING_REMAINS_OPEN_PENDING_INDEPENDENT_REVIEW"
 }
