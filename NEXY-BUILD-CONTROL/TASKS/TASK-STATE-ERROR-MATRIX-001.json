@@ -1,0 +1,23 @@
+{
+  "TASK_ID": "TASK-STATE-ERROR-MATRIX-001",
+  "MISSION_ID": "MISSION-STATE-001",
+  "REQ_ID": "REQ-DOC-C-STATE-MATRIX-ERROR-001",
+  "OWNER": "CHAT-20261005-GPT56SOL-STATE01",
+  "ROLE": "IMPLEMENTER_TEST_ENGINEER",
+  "GOAL": "Align TypeScript/Rust/bootstrap/test semantics to the latest final DOC-C state/event matrix.",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EXPECTED_PARENT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "REQUESTED_WORKER_BRANCH": "NEXY.AI-Test-AI/work/TASK-STATE-ERROR-MATRIX-001",
+  "ACTUAL_WORKER_BRANCH": null,
+  "STATUS": "BLOCKED",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "REVIEW_REQUIRED": 1,
+  "REVIEW_COMPLETED": 0,
+  "TEST_EVIDENCE_REQUIRED": true,
+  "OUTPUTS": [
+    "Spec-derived transition oracle repair",
+    "TypeScript/Rust parity restoration",
+    "Bootstrap fail-closed behavior that does not fabricate an illegal FSM transition",
+    "Executed tests on exact candidate SHA"
+  ]
+}
