@@ -6272,3 +6272,285 @@ JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006: EXECUTING -> REVIEW_FA
 GLOBAL_SOLVED: NO.
 CURRENT_WINNER: NONE.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+REVIEW RESULT — JOB-EGC-044C-SITE-LAND-WATER-REV-20261006 — CHATGPT-GPT56SOL-20261006T0605+07-SLWREV
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0605+07-SLWREV
+PRIMARY_JOB_ID: JOB-EGC-044C-SITE-LAND-WATER-REV-20261006
+REVIEW_TARGET: JOB-EGC-044C-SITE-LAND-WATER-20261006
+ROLE: Independent site/resource/land/water evidence reviewer / dimensional red team
+STATUS: VERIFIED_WITH_LIMITATIONS
+PARENT_STATUS: VERIFIED_BY_DISTINCT_REVIEWER_WITH_LIMITATIONS
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REVIEW SUMMARY:
+The parent correctly distinguishes technical potential from economic/firm deployability, direct/disturbed land from total project/spatial area, average delivered power from nameplate, and water withdrawal from consumption. Its hydro/geothermal qualitative conclusions survive both inherited scale versions currently present in the repository. No P0/P1 boundary defect was found in this job. Two P2 evidence-vintage corrections are mandatory: the 2013 U.S. utility-PV land benchmark and 2011 PV operational-water factor remain valid historical-source records but must not be treated as current canonical coefficients. Newer evidence materially changes the PV benchmark. Parent already labels these historical/reference values and rejects universalization, so this is a scoped correction rather than parent-job failure.
+
+EVIDENCE_ID: REV-EGC-044C-001
+EVIDENCE_CLASS: EXTERNAL_FACT / OFFICIAL_ASSESSMENT
+SOURCE: IPCC AR6 WGIII Chapter 6, Energy Systems
+URL: https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/
+VERIFIED:
+- solar-PV technical potential after land-use competition is about 300 PWh/y;
+- global wind technical-potential estimates cited are about 557-717 PWh/y;
+- IPCC separately identifies land availability, infrastructure, grid integration and finance as practical limiting factors.
+BOUNDARY:
+TECHNICAL_POTENTIAL != economically deployable, adequately firm, site-permitted or grid-deliverable energy.
+PDF_VISUAL_STATUS:
+official PDF search result exists, but direct PDF retrieval/screenshot failed in this review; no PDF-only visual datum is used. Official HTML text independently supports the claims.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-044C-002
+EVIDENCE_CLASS: EXTERNAL_FACT / CURRENT_EMPIRICAL_UPDATE
+SOURCE: Bolinger & Bolinger, Lawrence Berkeley National Laboratory, IEEE Journal of Photovoltaics, 2022
+DOI: 10.1109/JPHOTOV.2021.3136805
+URL: https://energyanalysis.lbl.gov/publications/land-requirements-utility-scale-pv
+SCOPE:
+>90% of U.S. utility-scale ground-mounted PV plants built through 2019; U.S. empirical fleet, not universal geography.
+VERIFIED:
+- authors state older nearly-decade-old benchmarks significantly overstate current U.S. utility-PV land requirements;
+- empirical median energy density rose 33% for fixed-tilt and 25% for tracking from 2011 to 2019;
+- reviewed open-access PDF page visually confirmed benchmark values of 447 MWh/acre-y fixed tilt and 394 MWh/acre-y tracking for 2019 benchmark context.
+REVIEW_STATUS: PASS / VISUAL_VERIFIED_FOR_UPDATED_BENCHMARK.
+
+EVIDENCE_ID: REV-EGC-044C-003
+EVIDENCE_CLASS: HISTORICAL_TEXT_SUPPORTED / VISUAL_NOT_VERIFIED
+SOURCE: NREL, Land-Use Requirements for Solar Power Plants in the United States, 2013
+URL: https://www.nrel.gov/docs/fy13osti/56290.pdf
+VERIFIED_FROM_TEXT_INDEX:
+utility-scale PV averages reported about 3.6 acres/GWh/y total area and 3.1 acres/GWh/y direct area in the historical U.S. sample.
+PDF_VISUAL_STATUS:
+direct PDF retrieval returned an upstream 502/non-resolved PDF in this review; required screenshot attempt could not render a valid PDF source.
+MANDATORY_CLASSIFICATION:
+HISTORICAL_US_DIAGNOSTIC; not current canonical global/site coefficient.
+REVIEW_STATUS: PASS_WITH_VINTAGE_LIMITATION.
+
+EVIDENCE_ID: REV-EGC-044C-004
+EVIDENCE_CLASS: HISTORICAL_TEXT_SUPPORTED / VISUAL_NOT_VERIFIED
+SOURCE: NREL, Land-Use Requirements of Modern Wind Power Plants in the United States, 2009
+URL: https://www.nrel.gov/docs/fy09osti/45834.pdf
+VERIFIED_FROM_SOURCE_TEXT/METADATA:
+- permanent direct disturbance about 0.3 +/- 0.3 ha/MW;
+- temporary disturbance about 0.7 +/- 0.6 ha/MW;
+- total project area about 34.5 +/- 22.4 ha/MW.
+BOUNDARY:
+total project area is a spatial/project envelope, not equal to physically disturbed/consumed land.
+PDF_VISUAL_STATUS:
+direct PDF retrieval/screenshot failed to resolve a valid PDF source in this review. Exact values remain text-supported but visual-not-verified.
+MANDATORY_CLASSIFICATION:
+HISTORICAL_US_WIND_DIAGNOSTIC; no universal extrapolation without geography/layout evidence.
+REVIEW_STATUS: PASS_WITH_VISUAL_LIMITATION.
+
+EVIDENCE_ID: REV-EGC-044C-005
+EVIDENCE_CLASS: EXTERNAL_FACT / CURRENT_OFFICIAL_STATEMENT
+SOURCE: IRENA, "Financing the Future of Hydropower: Unlocking Stalled Capacity and Untapped Resources", 2026-07-08
+URL: https://www.irena.org/Events/2026/Jul/Financing-the-Future-of-Hydropower-Unlocking-Stalled-Capacity-and-Untapped-Resources
+VERIFIED:
+global technical hydropower potential about 15,000 TWh/y; around 50% remains undeveloped.
+SOURCE ALSO IDENTIFIES:
+high upfront cost, long development time, construction/geological risk, permitting delay and revenue/finance barriers.
+BOUNDARY:
+technical/undeveloped potential is not a candidate-neutral buildable low-cost supply curve.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-044C-006
+EVIDENCE_CLASS: EXTERNAL_FACT / OFFICIAL_MODEL_RESULT
+SOURCE: IEA, The Future of Geothermal Energy, 2024
+URL_1: https://www.iea.org/reports/the-future-of-geothermal-energy/global-geothermal-potential-for-electricity-generation-using-egs-technologies
+URL_2: https://www.iea.org/reports/the-future-of-geothermal-energy/executive-summary
+VERIFIED:
+- <8-km EGS technical potential under the report's <USD300/MWh screening assumption is about 300,000 EJ, roughly 600 TW over ~20 years in the potential chapter;
+- annual technical generation potential is about 4,000 PWh;
+- a separate conditional cost-reduction/deployment case reaches as much as 800 GW and almost 6,000 TWh/y.
+BOUNDARY:
+USD300/MWh technical-screen threshold is not LOW_COST mission proof; 800-GW/6,000-TWh is conditional model potential, not present operating deployable capacity.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-044C-007
+EVIDENCE_CLASS: EXTERNAL_FACT / OFFICIAL_SCENARIO
+SOURCE: U.S. DOE GeoVision full report / environmental analysis
+URL_1: https://www.energy.gov/hgeo/geothermal/articles/geovision-full-report
+URL_2: https://www.energy.gov/hgeo/geothermal/environmental-analysis
+VERIFIED:
+- geothermal water effects vary with plant/cooling configuration;
+- a non-freshwater sensitivity could retain about 90% of total projected deployment in GeoVision;
+- this is a modeled U.S. scenario, not a universal water-feasibility guarantee.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-044C-008
+EVIDENCE_CLASS: EXTERNAL_FACT / WATER_BOUNDARY
+SOURCES:
+- U.S. Geological Survey hydroelectric/reservoir-water guidance and Water-Energy Nexus assessment;
+- DOE Hydropower Vision context already used upstream.
+VERIFIED:
+- withdrawal/instream use and consumptive reservoir evaporation are distinct concepts;
+- hydro reservoir evaporation allocation is site/geography/multipurpose dependent;
+- USGS states average hydro water intensity cannot be accurately determined without a standardized method for allocating reservoir evaporation among reservoir uses.
+CONCLUSION:
+No universal global hydro gal/MWh coefficient is defensible from these sources.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-044C-009
+EVIDENCE_CLASS: SOURCE_VINTAGE_CONFLICT_RESOLVED
+SOURCE_OLD: NREL/TP-6A20-50900, 2011
+URL_OLD: https://www.nrel.gov/docs/fy11osti/50900.pdf
+SOURCE_UPDATE: Macknick et al., Environmental Research Letters 7 (2012) 045802
+DOI: 10.1088/1748-9326/7/4/045802
+VERIFIED:
+- 2011 historical review can support the parent's PV=26 gal/MWh and wind=0 historical record;
+- the 2012 peer-reviewed update, with additional sources, reports utility-scale PV operational consumption median 1 gal/MWh (0-5; n=3) and wind turbine median 0 (0-0; n=2);
+- the 2012 study is operational-water scope, not full lifecycle water.
+MANDATORY_CLASSIFICATION:
+PV=26 gal/MWh => HISTORICAL_2011_DIAGNOSTIC only.
+No universal PV/wind water coefficient may be imported across operational/lifecycle/site boundaries.
+REVIEW_STATUS: PASS_WITH_CURRENT_BENCHMARK_CORRECTION.
+
+INDEPENDENT NUMERICAL REPLICATION:
+
+CALC_ID: REV-CALC-EGC-044C-001
+TITLE: historical solar land arithmetic
+METHOD: Python Decimal
+INPUT: 1 acre=0.0040468564224 km2; old 3.6 total / 3.1 direct acres/GWh-y.
+OUTPUT:
+- 2,860 TWh/y -> 41,666.433725 km2 total; 35,879.429041 km2 direct.
+- 3,360 TWh/y -> 48,950.775285 km2 total; 42,152.056496 km2 direct.
+- 8,760 TWh/y -> 127,621.664137 km2 total; 109,896.433007 km2 direct.
+PARENT 2,860/8,760 VALUES: PASS.
+
+CALC_ID: REV-CALC-EGC-044C-002
+TITLE: updated U.S. PV direct-area sensitivity
+METHOD: Python Decimal
+INPUT: LBNL 2019 benchmark 447 MWh/acre-y fixed tilt; 394 MWh/acre-y tracking.
+OUTPUT:
+- 2,860 TWh/y -> 25,892.638407 km2 fixed; 29,375.658295 km2 tracking.
+- 3,360 TWh/y -> 30,419.323444 km2 fixed; 34,511.262892 km2 tracking.
+- 8,760 TWh/y -> 79,307.521835 km2 fixed; 89,975.792539 km2 tracking.
+INTERPRETATION:
+old 2013 benchmark materially overstates current U.S.-empirical direct-area sensitivity; updated values remain U.S. empirical references, not universal site requirements.
+
+CALC_ID: REV-CALC-EGC-044C-003
+TITLE: wind nameplate/direct/envelope replication
+METHOD: Python Decimal
+INPUT: historical land factors 0.3 ha/MW direct; 34.5 ha/MW project area; CF={0.35,0.50}.
+OUTPUT:
+2,860 TWh/y / 326.484018 GW average:
+- CF0.35: 932.811481 GW nameplate; 2,798.434442 km2 direct; 321,819.960861 km2 envelope.
+- CF0.50: 652.968037 GW; 1,958.904110 km2 direct; 225,273.972603 km2 envelope.
+3,360 TWh/y / 383.561644 GW average:
+- CF0.35: 1,095.890411 GW; 3,287.671233 km2 direct; 378,082.191781 km2 envelope.
+- CF0.50: 767.123288 GW; 2,301.369863 km2 direct; 264,657.534247 km2 envelope.
+8,760 TWh/y / 1,000 GW average:
+- CF0.35: 2,857.142857 GW; 8,571.428571 km2 direct; 985,714.285714 km2 envelope.
+- CF0.50: 2,000 GW; 6,000 km2 direct; 690,000 km2 envelope.
+PARENT 2,860/8,760 VALUES: PASS.
+BOUNDARY:
+CF is an assumption/sensitivity; envelope != disturbed land.
+
+CALC_ID: REV-CALC-EGC-044C-004
+TITLE: resource-share sensitivity under conflicting scale-objective versions
+METHOD: Python Decimal
+OUTPUT:
+At 2,860 TWh/y:
+- solar /300,000 TWh technical =0.95333%;
+- wind /557,000-717,000 =0.51346%-0.39888%;
+- hydro /15,000 =19.0667%;
+- geothermal /4,000,000 =0.0715%;
+- geothermal /6,000 conditional =47.6667%.
+At 3,360 TWh/y:
+- solar=1.12%;
+- wind=0.60323%-0.46862%;
+- hydro=22.4%;
+- geothermal broad=0.084%;
+- geothermal conditional=56%.
+At 8,760 TWh/y:
+- solar=2.92%;
+- wind=1.57271%-1.22176%;
+- hydro=58.4%;
+- geothermal broad=0.219%;
+- geothermal conditional=146%.
+CONCLUSION:
+Parent qualitative resource classification is stable across current V2/V3 scale dispute: broad solar/wind technical potential is not the immediate gross-resource ceiling; hydro is materially site/resource constrained; geothermal broad technical heat is large while conditional low-cost/deployable pathway is not established. None of these percentages proves delivered reliable buildability.
+
+FINDING_ID: F-EGC-044C-REV-P2-001
+SEVERITY: P2
+TITLE: Solar land vintage must be explicit
+TRUTH_CLASS: EXTERNAL_FACT + REPO_FACT
+FINDING:
+The 2013 3.6/3.1 acres/GWh-y values are true historical U.S. benchmarks but newer fleet evidence says use of the old benchmarks materially overstates contemporary U.S. utility-PV land requirements.
+REQUIRED_DOWNSTREAM_FIELDS:
+LAND_BENCHMARK_ID
+LAND_BENCHMARK_VINTAGE
+GEOGRAPHY
+AREA_CLASS = DIRECT_DISTURBANCE | ARRAY_POLYGON | TOTAL_PROJECT_ENVELOPE | OTHER_EXPLICIT
+CAPACITY_BASIS = DC | AC | NET_DELIVERED
+ENERGY_DENSITY_BASIS
+SITE_IRRADIANCE_OR_APPLICABILITY
+RULE:
+ranking-critical current land analysis may not silently use the 2013 benchmark when newer applicable evidence exists.
+
+FINDING_ID: F-EGC-044C-REV-P2-002
+SEVERITY: P2
+TITLE: PV water factor is source-vintage and scope dependent
+TRUTH_CLASS: SOURCE_VINTAGE_CONFLICT_RESOLVED
+FINDING:
+PV=26 gal/MWh from the 2011 review must not be treated as current canonical operational water intensity; the 2012 peer-reviewed update gives 1 gal/MWh median for utility PV in its U.S. operational scope.
+REQUIRED_DOWNSTREAM_FIELDS:
+WATER_BENCHMARK_ID
+SOURCE_VINTAGE
+GEOGRAPHY
+LIFECYCLE_STAGE
+WITHDRAWAL_OR_CONSUMPTION
+COOLING_OR_CLEANING_CONFIGURATION
+WATER_QUALITY_IF_MATERIAL
+FUNCTIONAL_UNIT
+RULE:
+operational and lifecycle factors cannot be mixed; site-specific/cooling-specific values supersede generic factors when available.
+
+VISUAL-EVIDENCE AUDIT:
+- Updated 2022 LBNL PV paper: VISUAL_VERIFIED on retrieved PDF page containing benchmark values.
+- NREL 2013 solar PDF: screenshot attempted but source resolution failed; VISUAL_NOT_VERIFIED.
+- NREL 2009 wind PDF: screenshot attempted but source resolution failed; VISUAL_NOT_VERIFIED.
+- IPCC PDF: screenshot attempt failed due source retrieval; official HTML directly supports the facts.
+No ranking claim in this review depends solely on an unverified visual.
+
+RED-TEAM MATRIX:
+- technical potential == low-cost deployable: FALSIFIED / parent correctly rejects.
+- wind project envelope == physically disturbed land: FALSIFIED / parent correctly rejects.
+- average GW == nameplate GW: FALSIFIED / parent correctly converts using explicit CF sensitivity.
+- withdrawal == consumption: FALSIFIED / parent correctly separates.
+- historical U.S. solar/wind land factors == universal: FALSIFIED / parent correctly labels historical; P2 metadata hardening added.
+- PV=26 gal/MWh == current universal operating coefficient: FALSIFIED; P2 correction above.
+- IEA geothermal 600 TW == cheap currently deployable power: FALSIFIED / parent correctly rejects.
+- IRENA technical hydro potential == site-permitted buildable capacity: FALSIFIED / parent correctly rejects.
+- 2,860 TWh/y == final canonical objective: NOT_VERIFIED because scale-objective migration remains under independent review; parent correctly treats it as reference.
+
+REVIEW VERDICT:
+JOB-EGC-044C-SITE-LAND-WATER-20261006 = VERIFIED_WITH_LIMITATIONS at evidence-boundary/method level.
+This DOES NOT verify:
+- a candidate-specific land/site build;
+- site permitting/social acceptance;
+- transmission corridor feasibility;
+- water rights or basin availability;
+- hydro economic developability;
+- EGS low-cost commercial deployment;
+- G7/G9/G13/G15 globally;
+- either 2,860 or 3,360 TWh/y as final canonical mission scale.
+Objective-scale versioning remains an external blocker.
+
+CLAIM_GRAPH_UPDATE:
+EGC-044C-SOLAR_WIND_TECHNICAL_RESOURCE = VERIFIED_WITH_TECHNICAL_POTENTIAL_BOUNDARY.
+EGC-044C-SOLAR_LAND_2013 = VERIFIED_HISTORICAL_TEXT / VISUAL_NOT_VERIFIED / NOT_CURRENT_CANONICAL.
+EGC-044C-SOLAR_LAND_2022_UPDATE = VERIFIED_CURRENT_US_EMPIRICAL_REFERENCE / VISUAL_VERIFIED / NOT_UNIVERSAL.
+EGC-044C-WIND_LAND_2009 = VERIFIED_HISTORICAL_TEXT / VISUAL_NOT_VERIFIED / NOT_UNIVERSAL.
+EGC-044C-HYDRO_TECHNICAL_RESOURCE = VERIFIED_WITH_SITE_ECONOMIC_LIMITATION.
+EGC-044C-GEOTHERMAL_TECHNICAL_RESOURCE = VERIFIED_WITH_TECHNICAL_VS_CONDITIONAL_DEPLOYMENT_BOUNDARY.
+EGC-044C-WATER_BOUNDARY = VERIFIED_WITH_VINTAGE_SITE_COOLING_LIMITATIONS.
+F-EGC-044C-REV-P2-001 = CONTROLLED_LIMITATION / DOWNSTREAM_SCHEMA_REQUIRED.
+F-EGC-044C-REV-P2-002 = CONTROLLED_LIMITATION / DOWNSTREAM_SCHEMA_REQUIRED.
+GLOBAL_SOLVED = NO.
+MISSION_STATUS = CONTINUE_REQUIRED.
