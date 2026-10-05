@@ -1,0 +1,42 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1923-V8-QUEUE-TIME",
+  "CHAT_ID": "C-SOL-20261005-1923-V8",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": [
+    "packages/queue/jobs.ts",
+    "packages/queue/payload.ts",
+    "packages/queue/retry-policy.ts",
+    "packages/queue/dispatch.ts",
+    "packages/queue/workers.ts",
+    "packages/core/tick.ts",
+    "tests/contract/queue-payload.test.ts",
+    "tests/integration/queue-boundary.spec.ts",
+    "tests/contract/runtime-config-consumers.test.ts",
+    "packages/contracts/runtime-config.ts"
+  ],
+  "FILES_SCANNED": 10,
+  "STATUS_COUNTS": {
+    "GAP_FOUND": 3,
+    "SCANNED_REVERIFY_REQUIRED": 7,
+    "VERIFIED_CLEAN": 0
+  },
+  "ACTIONABLE_GAPS_CONFIRMED": [
+    "FINDING-DOC-C2-3-QUEUE-FUTURE-TSA-001"
+  ],
+  "NEW_ACTIONABLE_GAPS": 1,
+  "NON_FINDINGS": [
+    "Did not promote the waiting+active admission check race because final DOC-C evidence is insufficient to prove queued+active cardinality is the authority for max_concurrent_pipeline_runs.",
+    "Did not promote static VNEXT_DEFAULTS producer admission because mutable runtime-config semantics are not yet mapped as final DOC-C build authority."
+  ],
+  "EXECUTED_TEST_EVIDENCE": "NONE_THIS_SCAN_READ_ONLY",
+  "SOURCE_MUTATION": "NONE",
+  "SOURCE_MUTATION_BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "CLOSURE_EFFECT": {
+    "SCANNED_FILES_CONTRIBUTION": 10,
+    "VERIFIED_CLEAN_FILES_CONTRIBUTION": 0,
+    "GAP_FILES_CONTRIBUTION": 3,
+    "REVERIFY_FILES_CONTRIBUTION": 7
+  }
+}
