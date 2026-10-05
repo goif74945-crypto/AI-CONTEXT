@@ -1,0 +1,39 @@
+{
+  "FINDING_ID": "FIND-DOC-C3-API-HANDLER-FALSE-FREEZE-001",
+  "REQ_ID": "REQ-DOC-C-3-2-SYSTEM-ENVELOPE",
+  "TASK_ID": "TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001",
+  "FROM": "C-SOL-20261005-1739-V8",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SEVERITY": "P1",
+  "CLASS": [
+    "AUTHORITY_VIOLATION",
+    "CONTRACT_DRIFT",
+    "INVALID_ERROR_PATH"
+  ],
+  "OBSERVED": [
+    "apps/web/lib/api-handler.ts catches every unhandled handler exception and serializes status=DEGRADED, state=FREEZE, DEPENDENCY_FAILURE.",
+    "The catch path performs no canonical FSM transition and does not read currentSystemState.",
+    "tests/contract/api-handler.test.ts explicitly requires the fabricated state=FREEZE fallback.",
+    "runApiHandler is shared by canonical DOC-C routes including auth, directives, run detail, freeze recovery, vault commit, artifact revisions, incidents and audit logs."
+  ],
+  "EXPECTED": [
+    "SystemEnvelope.state must not claim a canonical SystemState transition that did not occur.",
+    "Unhandled request exceptions fail closed without fabricating FSM truth.",
+    "If state is serialized, it must be sourced from the actual authoritative state boundary; route-specific error status/code must still obey that route's final DOC-C error matrix."
+  ],
+  "SPEC_EVIDENCE": {
+    "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "SYSTEM_ENVELOPE": "final DOC-C raw paragraphs 9995-10013",
+    "GLOBAL_API_LAW": "10026-10038",
+    "STATE_MATRIX": "10353-10469",
+    "LOG_INCIDENT_LAW": "10494-10499"
+  },
+  "REPRODUCTION": [
+    "Read apps/web/lib/api-handler.ts at integration SHA.",
+    "Observe catch branch hardcodes state:'FREEZE' without transitionSystemState/currentSystemState.",
+    "Read tests/contract/api-handler.test.ts and observe the same hardcoded fallback is the current oracle.",
+    "Search runApiHandler callers and observe broad canonical-route impact."
+  ],
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "SOURCE_MUTATION": "NONE"
+}
