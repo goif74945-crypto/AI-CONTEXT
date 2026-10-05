@@ -4,7 +4,7 @@
   "OWNER_CHAT": "C-SOL-20261006-0142-CLOSED-ENUM",
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-3-1-CORE-TYPES",
-  "STATUS": "ACTIVE",
+  "STATUS": "WAITING_TEST_REVIEW",
   "PRIORITY": "P1",
   "RISK": "LOW",
   "BASE_SHA": "ebb549055594295cd276e7c3a3ebfa8f6539362d",
@@ -38,11 +38,22 @@
     "No mutation to NEXY.ai."
   ],
   "BLOCKER": null,
-  "NEXT_ACTION": "After a Git-valid Constitution-authorized worker namespace exists, claim an isolated test-only worker branch, add exact closed-enum oracles, run focused and contract tests, mutation-check an extra enum member, review, integrate, and reverify.",
+  "NEXT_ACTION": "Execute required focused/broader gates on the exact candidate SHA, review the candidate diff independently, then integrate only if evidence passes.",
   "ACTUAL_WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C3-1-CLOSED-ENUM-ORACLE-001",
   "CLAIMED_AT": "2026-10-06T01:42:00+07:00",
   "UNBLOCKED_BY": "Current explicit user instruction authorizes isolated worker branches; Git-valid prefix NEXY.AI-Test-AI-work/* avoids ref collision with integration branch.",
   "CHOSEN_MUTATION_SCOPE": [
     "tests/contract/core-types.test.ts (new file only)"
+  ],
+  "CANDIDATE_SHA": "d6a7dcc3e552d01aaabb0074106b5a70f711cfc4",
+  "PR_NUMBER": 43,
+  "TEST_EXECUTION": {
+    "status": "NOT_EXECUTED",
+    "reason": "GitHub PR produced no pull-request workflow/status run and the available local container cannot fetch the repository from GitHub; no PASS is claimed."
+  },
+  "INTEGRATION_ALLOWED": false,
+  "INTEGRATION_BLOCKERS": [
+    "EXACT_CANDIDATE_TEST_EVIDENCE_MISSING",
+    "INDEPENDENT_REVIEW_REQUIRED"
   ]
 }
