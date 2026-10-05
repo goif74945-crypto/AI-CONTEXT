@@ -1,0 +1,26 @@
+{
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0143-PRODUCT-QUEUE-01-TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001",
+  "CHAT_ID": "C-SOL-20261006-0143-PRODUCT-QUEUE-01",
+  "TASK_ID": "TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001",
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "8c1256134b7f2547386b60f70405b86214843849",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001/C-SOL-20261006-0143-PRODUCT-QUEUE-01",
+  "STATUS": "ACTIVE",
+  "PRIORITY": "P0",
+  "SCOPE": [
+    "apps/web/app/api/auth/owner-recovery/route.ts",
+    "focused regression oracle proving the unauthorized POST route adapter stays absent"
+  ],
+  "GOAL": "Disable the sessionless OWNER recovery mutation surface because final DOC-C §4.1 grants no exemption beyond OTAC request/verify.",
+  "PROTECTED": [
+    "NEXY.ai",
+    "unrelated auth lifecycle/OTAC behavior"
+  ],
+  "AUTHORITY": [
+    "TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001",
+    "REVIEW-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-C-SOL-20261005-1923",
+    "current user NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD directive"
+  ],
+  "STARTED_AT": "2026-10-06T01:43:00+07:00"
+}
