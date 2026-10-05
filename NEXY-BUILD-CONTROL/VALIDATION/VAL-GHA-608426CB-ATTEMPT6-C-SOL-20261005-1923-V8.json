@@ -1,0 +1,96 @@
+{
+  "VALIDATION_ID": "VAL-GHA-608426CB-ATTEMPT6-C-SOL-20261005-1923-V8",
+  "CHAT_ID": "C-SOL-20261005-1923-V8",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "WORKFLOW_RUN_ID": 37240273646,
+  "WORKFLOW": "NEXY CI / Deploy Gate",
+  "RUN_NUMBER": 1562,
+  "RUN_ATTEMPT": 6,
+  "EVENT": "push",
+  "FRESH_RERUN_REQUESTED": true,
+  "RERUN_API_ACCEPTED": true,
+  "RUN_CONCLUSION": "failure",
+  "PRIMARY_JOB_COUNT": 9,
+  "PRIMARY_JOBS": [
+    {
+      "name": "TypeScript typecheck",
+      "job_id": 111761904827,
+      "conclusion": "failure",
+      "executed_steps": 0
+    },
+    {
+      "name": "Static determinism gate",
+      "job_id": 111761905032,
+      "conclusion": "failure",
+      "executed_steps": 0
+    },
+    {
+      "name": "Full test suite",
+      "job_id": 111761905116,
+      "conclusion": "failure",
+      "executed_steps": 0
+    },
+    {
+      "name": "Coverage measurement",
+      "job_id": 111761905122,
+      "conclusion": "failure",
+      "executed_steps": 0
+    },
+    {
+      "name": "Contract tests",
+      "job_id": 111761905140,
+      "conclusion": "failure",
+      "executed_steps": 0
+    },
+    {
+      "name": "Phase-F experimental validation (advisory)",
+      "job_id": 111761905216,
+      "conclusion": "failure",
+      "executed_steps": 0
+    },
+    {
+      "name": "Browser E2E",
+      "job_id": 111761905222,
+      "conclusion": "failure",
+      "executed_steps": 0
+    },
+    {
+      "name": "Production web build",
+      "job_id": 111761905233,
+      "conclusion": "failure",
+      "executed_steps": 0
+    },
+    {
+      "name": "Integration tests",
+      "job_id": 111761905282,
+      "conclusion": "failure",
+      "executed_steps": 0
+    }
+  ],
+  "DOWNSTREAM": [
+    {
+      "name": "DOC-C §20 static gate",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Evidence / release attestation",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Deploy",
+      "conclusion": "skipped"
+    }
+  ],
+  "LOG_RETRIEVAL": "All 9 primary job log fetches returned 404 BlobNotFound.",
+  "WORKFLOW_RUNNER_DECLARATION": "ubuntu-latest",
+  "CLASSIFICATION": "EXECUTION_INFRA_FAILURE",
+  "CODE_RESULT": "UNKNOWN_NOT_EXECUTED",
+  "PASS": false,
+  "FAIL_AS_CODE_EVIDENCE": false,
+  "V8_ZERO_STEP_LAW_APPLIED": true,
+  "NOTE": "Fresh rerun attempt 6 reproduced the zero-step infrastructure failure. No repository command executed, so no source verdict can be promoted."
+}
