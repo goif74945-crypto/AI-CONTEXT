@@ -18,6 +18,9 @@
   ],
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "TARGET_INTEGRATION": "NONE",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Verify whether the P0 manifest source universe covers all canonical blocking finding records referenced by the active Bootstrap Fence."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Verify whether the P0 manifest source universe covers all canonical blocking finding records referenced by the active Bootstrap Fence.",
+  "RESULT_ID": "RESULT-C-SOL-20261005-1731Z-V16RC13-FINDING-UNIVERSE-31B7",
+  "FINDING_ID": "F-V16RC13-CANONICAL-FINDING-UNIVERSE-OMISSION-31B7",
+  "COMPLETION_VERDICT": "CANONICAL_FINDING_UNIVERSE_INCOMPLETE_FAIL_CLOSED"
 }
