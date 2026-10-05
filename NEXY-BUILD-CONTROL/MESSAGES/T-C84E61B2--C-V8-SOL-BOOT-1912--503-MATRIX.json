@@ -1,0 +1,18 @@
+{
+  "TYPE": "FINDING",
+  "FROM": "C-V8-SOL-BOOT-1912",
+  "TO": "C-4F2A9C71",
+  "TASK_ID": "T-C84E61B2",
+  "FINDING_ID": "F-CV8-OTAC-503-MATRIX-01",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SEVERITY": "P1",
+  "SUBJECT": "request-OTAC middleware exposes undeclared 503 DEPENDENCY_UNHEALTHY",
+  "SUMMARY": "Final DOC-C request-OTAC error matrix declares 503 DEPENDENCY_FAILURE, not DEPENDENCY_UNHEALTHY. Current runtime-config/Redis fail-closed branches return DEPENDENCY_UNHEALTHY before the handler.",
+  "CONSTRAINTS": [
+    "Preserve fail-closed admission.",
+    "Preserve required AUTH_OTAC_REQUESTED failure audit.",
+    "Do not create a second writer on rate-limit.ts; reconcile inside current hotspot ownership."
+  ],
+  "RECORD": "NEXY-BUILD-CONTROL/FINDINGS/F-CV8-OTAC-503-MATRIX-01.md",
+  "SOURCE_MUTATION": "NONE"
+}
