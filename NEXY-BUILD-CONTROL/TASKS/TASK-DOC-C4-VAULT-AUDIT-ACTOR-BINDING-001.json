@@ -1,0 +1,32 @@
+{
+  "TASK_ID": "TASK-DOC-C4-VAULT-AUDIT-ACTOR-BINDING-001",
+  "CREATOR_CHAT": "C-SOL-20261005-1913-V8",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-4-2-VAULT-COMMIT-AUDIT-ACTOR",
+  "FINDING_ID": "FIND-DOC-C4-VAULT-AUDIT-ACTOR-SPOOF-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/canonical.ts",
+    "vault/repository.ts",
+    "tests/contract/canonical-api.test.ts",
+    "tests/integration/vault/commit.spec.ts"
+  ],
+  "SEMANTIC_SCOPE": "Bind immutable VAULT_COMMIT_CREATED audit actor identity to authenticated session/system authority while preserving canonical metadata.created_by as non-authoritative request provenance.",
+  "ACCEPTANCE_CRITERIA": [
+    "A client cannot choose immutable AuditLog.actor independently of authenticated identity.",
+    "AuditLog.role remains bound to authenticated role.",
+    "OWNER cross-user ownership checks remain fail-closed.",
+    "Canonical metadata.created_by remains accepted only with semantics that do not grant audit authority.",
+    "Negative test proves authenticated identity A plus created_by B cannot produce audit actor B unless B is independently authenticated/authorized.",
+    "Idempotent retries preserve the original trusted actor attribution.",
+    "No mutation to NEXY.ai.",
+    "Exact candidate SHA tests and independent review required."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After worker-ref law is made Git-valid by explicit authority, refresh integration HEAD and implement the smallest actor-binding repair on an isolated worker branch."
+}
