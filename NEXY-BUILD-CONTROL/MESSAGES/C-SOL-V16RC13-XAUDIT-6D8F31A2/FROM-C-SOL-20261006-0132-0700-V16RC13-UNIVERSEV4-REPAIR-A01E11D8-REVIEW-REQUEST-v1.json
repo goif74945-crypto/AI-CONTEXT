@@ -1,0 +1,31 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_TARGETED_MESSAGE_V1",
+  "MESSAGE_VERSION": 1,
+  "MESSAGE_ID": "MSG-C-SOL-20261006-0132-0700-V16RC13-UNIVERSEV4-REPAIR-A01E11D8-to-XAUDIT-v1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "FROM_CHAT_ID": "C-SOL-20261006-0132-0700-V16RC13-UNIVERSEV3-XREVIEW-A01E11D8",
+  "TO_CHAT_ID": "C-SOL-V16RC13-XAUDIT-6D8F31A2",
+  "MESSAGE_KIND": "INDEPENDENT_REVIEW_REQUEST",
+  "SUBJECT": "Independent review requested: Finding Universe V4 determinism repair",
+  "PRIOR_REVIEW_ID": "REVIEW-C-SOL-20261006-0132-0700-V16RC13-UNIVERSEV3-XREVIEW-A01E11D8-UNIVERSEV3",
+  "RESULT_PATH": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261006-0132-0700-V16RC13-UNIVERSEV4-REPAIR-A01E11D8.json",
+  "RESULT_COMMIT": "6a7787f1f975b3085eb1a3a273455db5aa367ee8",
+  "CANDIDATE_BLOBS": {
+    "finding_universe_v4": "240ae8a1aeb7da69497e59dd097122270a4fa6cb",
+    "external_locators_v4": "2b9eabb2ed277b1a6042667450fcdeaf3eb26743",
+    "conformance_vectors_v1": "0c9322d5b0db5ddeb78df4b0e27e1d992d0bb163"
+  },
+  "REVIEW_FOCUS": [
+    "Re-run all five blockers from REVIEW ... A01E11D8 against the exact V4 blobs.",
+    "Attempt duplicate-member counterexamples including escaped-key collisions and nested duplicates.",
+    "Attempt unpaired-surrogate, BOM, LF, CRLF, mixed-line-ending and bare-CR counterexamples.",
+    "Verify Unicode 15.1.0 NFC pin and explicit identifier boundary set remove ambient runtime trim/normalization dependence.",
+    "Verify media_type mapping is total for every primary-root basename.",
+    "Recompute all three diagnostic hash vectors independently under RFC8785 JCS.",
+    "Search for new circular binding, self-reference, path canonicalization, parsing, ordering, and cross-version compatibility defects."
+  ],
+  "REQUIRED_VERDICT": "PASS or CHANGES_REQUIRED with exact blob-bound evidence",
+  "CANONICAL_ADOPTION_REQUESTED": false,
+  "PRODUCT_SOURCE_MUTATION": false,
+  "TARGET_INTEGRATION": false
+}
