@@ -8006,3 +8006,169 @@ NEXT_ACTION: distinct session repairs C5; distinct C6 reviewer re-tests the narr
 GLOBAL_SOLVED: NO
 CURRENT_WINNER: NONE
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+69. INDEPENDENT REVIEW RESULT — JOB-EGC-061-MECHANICAL-RELIABILITY-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006-MECHREV2
+PRIMARY_JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+ROLE: Independent mechanical reliability evidence auditor / lifecycle replacement adversary
+STATUS: VERIFIED
+REVIEW_VERDICT: PASS_WITH_SCOPE_LIMITS
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE:
+Verification is limited to M_STAR method, source-boundary interpretation, denominator discipline, and parametric replacement-accounting sensitivity. It does NOT verify candidate-specific fleet failure rates, component lifetime distributions, mechanical availability, or final lifecycle cost.
+
+EVIDENCE_ID: REV-EGC-MECH-001
+TARGET: TE-EGC-MECH-001
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_SOURCE_REPLICATION
+SOURCE: NREL Gearbox Reliability Database
+URL: https://grd.nrel.gov/
+URL_2: https://grd.nrel.gov/stats/2016
+OUTPUT:
+- current GRD landing page reports 1,938 incidents from 84 wind plants over 21 years;
+- end-2015 owner/operator partner assets were ~35% of U.S. installed wind capacity;
+- 2016 statistics page uses ~1,050 confirmable gearbox damage records from 2009-August 2016 and states participating owners/operators represented >40% of U.S. wind capacity;
+- 2016 damage distribution: bearings 76.2%, gears 17.3%, other 6.6%.
+DENOMINATOR_AUDIT:
+These are incident/damage-record distributions. Neither 76.2% nor 1,938/84/21 is a turbine annual failure probability because turbine-year exposure, censoring, reporting completeness and architecture mix are not supplied.
+REVIEW_RESULT: PASS. Parent explicitly preserves this limitation.
+
+EVIDENCE_ID: REV-EGC-MECH-002
+TARGET: TE-EGC-MECH-002
+EVIDENCE_CLASS: EXTERNAL_FACT / TEMPORAL-TECHNOLOGY-AUDIT
+SOURCE: U.S. DOE, Blade and Drivetrain Testing Advance Wind Turbine Efficiency and Reliability
+SOURCE_DATE: 2024-05-16
+URL: https://www.energy.gov/cmei/systems/articles/blade-and-drivetrain-testing-advance-wind-turbine-efficiency-and-reliability
+SOURCE_2: U.S. DOE, On-Site Research to Determine Causes of Premature Drivetrain Gearbox Failure
+SOURCE_DATE_2: 2018-05-08
+URL_2: https://www.energy.gov/cmei/systems/articles/site-research-determine-causes-premature-drivetrain-gearbox-failure
+OUTPUT:
+DOE states NREL-recommended drivetrain design changes were adopted and gearbox failure frequency declined substantially; remaining failures were predominantly bearings rather than gear teeth. DOE also documents bearing axial cracking/main-bearing wear as mechanisms that can cause premature failure and higher O&M.
+REVIEW_RESULT:
+PASS. Historical GRD damage shares cannot be universalized to modern/direct-drive architectures; parent explicitly forbids this.
+
+EVIDENCE_ID: REV-EGC-MECH-003
+TARGET: TE-EGC-MECH-003
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. DOE, Fleet Modernization, Maintenance, and Cybersecurity
+URL: https://www.energy.gov/cmei/water/fleet-modernization-maintenance-and-cybersecurity
+OUTPUT:
+Most U.S. hydropower plants are >50 years old; DOE states components eventually require refurbishment/replacement and reports approximately USD 9 billion spent in 2007-2017 upgrading/refurbishing turbines and generators.
+CROSSCHECK:
+DOE 2017 Hydropower Market Report reports tracked R&U investment ~USD 8.9 billion across 158 plants and notes the project set is heavily weighted toward turbine/generator work.
+REVIEW_RESULT:
+PASS. This is evidence of material refurbishment, not a universal USD/MW or USD/MWh adder. Parent preserves that distinction.
+
+EVIDENCE_ID: REV-EGC-MECH-004
+TARGET: TE-EGC-MECH-004
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. DOE Geothermal Technologies Office, Subsurface Enhancement and Sustainability
+URL: https://www.energy.gov/hgeo/geothermal/subsurface-enhancement-and-sustainability
+SOURCE_2: U.S. DOE, Wellbore Construction and Evaluation
+URL_2: https://www.energy.gov/hgeo/geothermal/wellbore-construction-and-evaluation
+OUTPUT:
+DOE identifies mineral scale control as crucial for long-term geothermal operation; amorphous-silica deposition is particularly a broad issue above 200 C. DOE also states wellbore durability, cost and long-term flow are vital and that hotter geothermal conditions exceed many off-the-shelf casing/cement evaluation capabilities.
+REVIEW_RESULT:
+PASS. No universal workover/failure interval is inferred.
+
+EVIDENCE_ID: REV-EGC-MECH-005
+TARGET: TE-EGC-MECH-005
+EVIDENCE_CLASS: EXTERNAL_FACT / OPERATIONAL_EVIDENCE
+SOURCE: U.S. NRC, Operating Reactor Maintenance Effectiveness
+URL: https://www.nrc.gov/facilities-safety/operating-reactors/reactor-safety-information-topics/operating-reactor-maintenance-effectiveness
+SOURCE_2: U.S. EIA, U.S. summer nuclear outages declined in 2024
+SOURCE_DATE_2: 2024-11-05
+URL_2: https://www.eia.gov/todayinEnergy/detail.php?id=63624
+OUTPUT:
+- NRC 10 CFR 50.65 requires monitoring continuing maintenance effectiveness for relevant structures, systems and components.
+- EIA: average U.S. nuclear capacity outage in summer 2024 ~2.6 GW/day vs 3.1 GW/day in 2023.
+- EIA explicitly separates planned refueling/maintenance from unplanned outages due to technical issues, weather and other causes.
+- As of 2024-07-31, U.S. refueling outages averaged 34 days vs 38 in 2023.
+REVIEW_RESULT:
+PASS. These operational outage data are not component-specific mechanical failure probabilities; parent correctly preserves that boundary.
+
+EVIDENCE_ID: REV-EGC-MECH-006
+TARGET: TE-EGC-MECH-006
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. DOE FEMP, Optimizing Solar Photovoltaic Performance for Longevity
+URL: https://www.energy.gov/cmei/femp/optimizing-solar-photovoltaic-performance-longevity
+OUTPUT:
+DOE describes PV systems as 20-30-year assets, states modules have no moving parts and require little maintenance, but also states the majority of downtime and maintenance is inverter-associated. Small/string inverters are generally replaced; larger central inverter units are generally repaired by component replacement. DOE separately defines availability and performance ratio.
+REVIEW_RESULT:
+PASS. Parent correctly rejects "no moving module parts => maintenance-free plant" and does not invent a universal inverter replacement interval/cost.
+
+EVIDENCE_ID: REV-EGC-MECH-007
+TARGET: CALC-EGC-MECH-001
+EVIDENCE_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+METHOD:
+H=60 y; r=7% real toy sensitivity; replacement cost normalized to 1.0 initial component cost; replacements at t=kL for 0<t<60.
+EQUATION:
+PV_factor(L)=SUM[(1.07)^(-kL)] for integer k>=1 and kL<60.
+OUTPUT:
+L10=0.9988635525361114 Python / 0.998863552536112 Wolfram
+L20=0.32519938382918256 / 0.32519938382918284
+L30=0.1313671171545896 / 0.13136711715458974
+L40=0.06678038101531414 / 0.06678038101531424
+L50=0.033947759417621674 / 0.03394775941762175
+REPLICATION_STATUS: CROSS_TOOL_PASS.
+BOUNDARY:
+7% is a toy parametric assumption and is NOT the mission D_REF or measured technology financing/lifetime evidence. Parent labels it accordingly.
+
+EVIDENCE_ID: REV-EGC-MECH-008
+TARGET: M_STAR necessity / omitted-replacement ranking attack
+EVIDENCE_CLASS: CALCULATION / ADVERSARIAL_COUNTEREXAMPLE
+METHOD:
+Candidate A initial normalized component cost=1.0 with deterministic replacement every 10 y; Candidate B initial cost=1.5 with no replacement before H=60; same toy r=7%; all other service equal.
+OUTPUT:
+If replacements are omitted: A=1.0 < B=1.5, so A appears cheaper.
+With M_STAR replacement timing:
+PV_A=1+0.9988635525361114=1.9988635525361114 > B=1.5.
+Ranking reverses solely by whether replacement cost is accounted.
+Wolfram: PV_A=1.998863552536112; difference A-B=0.49886355253611203.
+Python: PV_A=1.9988635525361114; difference=0.49886355253611137.
+REPLICATION_STATUS: CROSS_TOOL_PASS.
+INTERPRETATION:
+Symmetric component-life/replacement accounting is ranking-material. This counterexample does not assign 10-y life to any real technology.
+
+ADVERSARIAL DISPOSITION:
+1. DAMAGE_RECORD_SHARE -> FLEET_FAILURE_RATE: FALSIFIED; M_STAR blocks this.
+2. INCIDENT_COUNT/(PLANTS*YEARS) -> TURBINE-YEAR FAILURE RATE: FALSIFIED; exposure denominator absent.
+3. PROJECT/CIVIL LIFE -> COMPONENT LIFE: FALSIFIED; hydro and PV evidence demonstrate maintenance/replacement layers.
+4. CAPACITY_FACTOR -> MECHANICAL_AVAILABILITY: FALSIFIED; DOE PV and EIA nuclear sources explicitly preserve different operational dimensions.
+5. OLD GEARED-WIND DAMAGE DISTRIBUTION -> MODERN/DIRECT-DRIVE UNIVERSAL RATE: FALSIFIED; architecture/time drift is material.
+6. REGULATED NUCLEAR MAINTENANCE -> ZERO MECHANICAL COST/FAILURE: FALSIFIED; regulation proves maintenance obligation, not zero failure/cost.
+7. GEOTHERMAL RESOURCE LONGEVITY -> ZERO WELL/SCALING BURDEN: FALSIFIED.
+8. PV MODULE LOW MAINTENANCE -> ZERO BOS/INVERTER REPLACEMENT: FALSIFIED.
+9. OMITTING REPLACEMENTS AS "SECOND ORDER": FALSIFIED by REV-EGC-MECH-008 ranking reversal.
+
+REVIEW VERDICT BY CLAIM:
+CLAIM-EGC-MECH-001 ASSET_COMPONENT_LIFE_SEPARATION: VERIFIED.
+CLAIM-EGC-MECH-002 WIND_DAMAGE_DENOMINATOR: VERIFIED.
+CLAIM-EGC-MECH-003 HYDRO_REFURBISHMENT: VERIFIED_WITH_NONNORMALIZED_COST_LIMIT.
+CLAIM-EGC-MECH-004 GEOTHERMAL_DURABILITY: VERIFIED_AS_SITE_SPECIFIC_QUALITATIVE_CONSTRAINT.
+CLAIM-EGC-MECH-005 NUCLEAR_MAINTENANCE_BOUNDARY: VERIFIED; COMPONENT_MECHANICAL_FAILURE_RATE remains NOT_VERIFIED.
+CLAIM-EGC-MECH-006 PV_BOS_REPLACEMENT: VERIFIED_QUALITATIVELY; universal interval/cost remains UNKNOWN.
+CLAIM-EGC-MECH-007 REPLACEMENT_TIMING_COST: VERIFIED_AS_PARAMETRIC_CALCULATION.
+
+MATERIAL LIMITS THAT REMAIN:
+- modern architecture-specific wind turbine component failure/repair/downtime distributions;
+- hydro/PSH class-specific refurbishment timing and normalized cost;
+- geothermal/EGS workover/scaling/corrosion distributions and lifecycle costs;
+- nuclear component-specific forced mechanical outage/replacement distributions;
+- PV inverter lifetime/cost distributions on a consistent utility-scale fleet boundary;
+- BESS and gas/thermal mechanical/BOS reliability where finalist architectures depend on them;
+- stochastic mapping from component states to R_STAR/system adequacy.
+
+SOLVED-GATE EFFECT:
+Mechanical boundary/method is independently verified, but candidate-specific mechanical reliability and integrated lifecycle cost/availability remain NOT_VERIFIED until architecture-specific inputs and R_STAR/system integration exist.
+No candidate is promoted.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
