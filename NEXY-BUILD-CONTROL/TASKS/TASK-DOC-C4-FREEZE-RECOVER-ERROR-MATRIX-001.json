@@ -1,0 +1,29 @@
+{
+  "TASK_ID": "TASK-DOC-C4-FREEZE-RECOVER-ERROR-MATRIX-001",
+  "CREATOR_CHAT": "C-V8-20261005-1737-SOL",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-4-2-FREEZE-RECOVER",
+  "FINDING_ID": "FINDING-DOC-C4-FREEZE-RECOVER-ERROR-MATRIX-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/directives.ts",
+    "tests/integration/freeze/recover.spec.ts",
+    "tests/contract/freeze-recovery-audit.test.ts"
+  ],
+  "SEMANTIC_SCOPE": "Repair only final DOC-C §4.2 freeze-recovery route error-matrix semantics and executable oracle. Preserve OWNER/session/CSRF/device-binding/ownership/idempotency/audit/fail-closed behavior and do not broaden recovery authority.",
+  "ACCEPTANCE_CRITERIA": [
+    "No canonical route-specific response uses an undeclared HTTP-status/ErrorCode pair.",
+    "Bind 403 FORBIDDEN, 409 FREEZE_RECOVERY_DENIED and 423 SYSTEM_IN_FREEZE to conditions justified by final DOC-C/system law without weakening global auth/security errors.",
+    "Tests no longer encode 423 FREEZE_RECOVERY_DENIED as canonical freeze-recovery behavior.",
+    "Audit events remain FREEZE_RECOVER_ATTEMPT/SUCCESS/DENIED.",
+    "Exact candidate SHA tests, independent security review and post-integration reverify are required.",
+    "No mutation to NEXY.ai."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After a Git-valid V8 worker isolation mechanism is authoritatively selected, refresh integration HEAD, claim the scope, implement minimal contract repair, run targeted and affected API/security tests, review, integrate and reverify."
+}
