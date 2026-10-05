@@ -1,0 +1,64 @@
+{
+  "FINDING_ID": "FIND-DOC-C4-READ-AUDIT-ACTOR-ROLE-COLLAPSE-001",
+  "REQ_ID": "REQ-DOC-C-READ-AUDIT-ACTOR-IDENTITY",
+  "TASK_ID": "TASK-DOC-C4-READ-AUDIT-ACTOR-BINDING-001",
+  "FROM": "C-GPT56SOL-20261005-1923-V8",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SEVERITY": "P1",
+  "CLASS": [
+    "DATA_INTEGRITY_DEFECT",
+    "AUTHORITY_VIOLATION",
+    "SECURITY_DEFECT",
+    "TEST_ORACLE_DEFECT"
+  ],
+  "OBSERVED": [
+    "packages/api/directives.ts recordCanonicalRead accepts actor as OWNER|OPERATOR|AUDITOR and writes the same enum into both AuditLog.actor and AuditLog.role.",
+    "packages/api/artifact-export.ts has authenticated auth.userId but passes auth.role to recordCanonicalRead.",
+    "packages/api/canonical.ts records ARTIFACT_HISTORY_VIEWED, INCIDENT_VIEWED, AUDIT_LOG_BROWSED and AUDIT_EXPORTED using role literals/role values as actor identity.",
+    "GET audit browse/export paths use authorizeRead in places, which returns role only and discards authenticated userId before mandatory audit emission.",
+    "Existing contract/coverage tests explicitly expect role strings such as OWNER/AUDITOR as the first recordCanonicalRead argument."
+  ],
+  "EXPECTED": [
+    "Immutable audit actor attribution identifies the authenticated principal (userId) or an explicit canonical system/service identity.",
+    "Audit role remains independently bound to the authenticated role at emission time.",
+    "Two principals with the same role remain distinguishable in AuditLog actor identity.",
+    "Required read-audit events remain fail-closed if audit persistence fails."
+  ],
+  "SPEC_EVIDENCE": {
+    "canonical_read_audits": "final DOC-C paragraphs 10301-10351 require ARTIFACT_HISTORY_VIEWED, INCIDENT_VIEWED and AUDIT_LOG_BROWSED audit events.",
+    "audit_ui_contract": "final DOC-C paragraphs 10606-10615 define AuditTable columns actor and role separately.",
+    "audit_index_contract": "final DOC-C paragraph 10824 specifies AuditLog(actor_id, request_id, incident_id, created_at)."
+  },
+  "SOURCE_EVIDENCE": {
+    "directives": {
+      "path": "packages/api/directives.ts",
+      "blob": "8cd214c87e5aa55561e52347802ec8172feadc36"
+    },
+    "canonical": {
+      "path": "packages/api/canonical.ts",
+      "blob": "1664d8d6a7da32245578addc26596f8fd4d55954"
+    },
+    "artifact_export": {
+      "path": "packages/api/artifact-export.ts",
+      "blob": "a778091f5880f2d5a31ec3522e7f6897a55abf00"
+    },
+    "prisma": {
+      "path": "prisma/schema.prisma",
+      "blob": "0c557a1bb9b02859bb479655575c3566e201eb6f"
+    }
+  },
+  "TEST_ORACLE_EVIDENCE": [
+    "tests/contract/canonical-api.test.ts expects AUDITOR as audit actor argument.",
+    "tests/coverage/api-owner-artifact-control-plane.test.ts expects OWNER as audit actor argument.",
+    "tests/coverage/canonical-export.test.ts expects OWNER as audit actor argument."
+  ],
+  "REPRODUCTION": [
+    "Authenticate principal A with role AUDITOR and perform a required audited read.",
+    "Authenticate principal B with the same role AUDITOR and perform the same class of read.",
+    "Current helper writes actor=AUDITOR for both rows, so immutable audit actor attribution cannot distinguish A from B."
+  ],
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "SOURCE_MUTATION": "NONE"
+}
