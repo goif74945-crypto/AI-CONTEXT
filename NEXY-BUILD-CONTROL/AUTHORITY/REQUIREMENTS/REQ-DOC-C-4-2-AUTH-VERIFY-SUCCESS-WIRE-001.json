@@ -1,0 +1,31 @@
+{
+  "REQ_ID": "REQ-DOC-C-4-2-AUTH-VERIFY-SUCCESS-WIRE-001",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_LINES": "primary DOCX paragraphs 10071-10105",
+  "AUTHORITY_CLASS": "DOC-C_BUILD_SPEC_FINAL",
+  "SPEC_TEXT": "POST /api/auth/verify-otac success response is SystemEnvelope<{session_id:string, expires_at:string, role:'OWNER'|'OPERATOR'|'AUDITOR'}>.",
+  "EXPECTED_BEHAVIOR": [
+    "Successful verify-otac canonical data exposes exactly session_id, expires_at, role.",
+    "Required CSRF/session/device-binding security mechanisms remain operational without silently widening the canonical DOC-C response shape."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Expose email_hash or csrf_token as extra canonical success-data fields without separate active build authority.",
+    "Remove CSRF issuance, session cookie, or device-binding protection merely to satisfy the wire shape."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "Auth API",
+    "web login bootstrap",
+    "CSRF",
+    "contract tests"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "packages/api/auth.ts",
+    "apps/web/components/OtacLoginForm.tsx"
+  ],
+  "TEST_PATHS": [
+    "tests/coverage/auth-decision-paths.test.ts",
+    "tests/integration/auth/verify-otac.spec.ts"
+  ],
+  "STATUS": "MISMATCH",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96"
+}
