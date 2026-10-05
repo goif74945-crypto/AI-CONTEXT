@@ -1,6 +1,0 @@
-{
-  "source": "Retry limit must be 5 before FREEZE.",
-  "target": "ขีดจำกัดการลองใหม่ต้องเป็น 6 ก่อน FREEZE",
-  "sourceLanguage": "en",
-  "targetLanguage": "th"
-}

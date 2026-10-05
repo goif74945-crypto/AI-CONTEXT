@@ -1,5 +1,0 @@
-packages=10000
-decision=ALLOW
-elapsed_seconds=0.148450
-inventory_sha256=11fcc49b2f01f7de8ca5586b25d0a1c76174dad6ee3fea176e0c9a9723d96b8b
-note=Informational smoke measurement on the current container; not a production SLA.

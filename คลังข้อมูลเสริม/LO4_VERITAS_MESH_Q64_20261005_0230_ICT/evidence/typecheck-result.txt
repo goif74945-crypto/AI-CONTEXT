@@ -1,7 +1,0 @@
-command: tsc -p tsconfig.json --pretty false
-exit_code: 0
-stdout: <empty>
-stderr: <empty>
-compiler: TypeScript 5.8.3
-status: PASS
-limitation: exact NEXY TypeScript 6.x execution not independently run in this sandbox

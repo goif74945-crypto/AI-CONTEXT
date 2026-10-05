@@ -1,7 +1,0 @@
-{
-  "initial_facts": ["directive_valid"],
-  "components": [
-    {"id": "law", "assumptions": ["directive_valid"], "guarantees": ["law_pass"]},
-    {"id": "judge", "assumptions": ["law_pass"], "guarantees": ["release_eligible"]}
-  ]
-}

@@ -1,9 +1,0 @@
-[project]
-name = "nexy-consensus-independence-firewall"
-version = "0.1.0"
-description = "Experimental deterministic evidence-lineage independence firewall reference for NEXY research"
-requires-python = ">=3.11"
-dependencies = []
-
-[tool.unittest]
-start-directory = "tests"

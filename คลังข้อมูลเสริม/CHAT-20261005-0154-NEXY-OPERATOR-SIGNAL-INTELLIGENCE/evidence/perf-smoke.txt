@@ -1,5 +1,0 @@
-operation=classify_salience
-iterations= 100000
-seconds= 0.711056
-ops_per_second= 140635.96
-NOTE=local sandbox microbenchmark only; not production SLO evidence

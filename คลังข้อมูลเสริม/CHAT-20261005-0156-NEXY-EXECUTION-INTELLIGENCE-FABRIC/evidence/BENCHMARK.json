@@ -1,1 +1,0 @@
-{"decision_id": "eif-decision:8d723d6d4924b5c8099d7e7c1a2b75df0680a997aecf439f76006ed8f250b92b", "decisions_per_second": 7386.39, "elapsed_seconds": 0.270768, "environment_note": "local ephemeral container; not production performance evidence", "iterations": 2000, "status": "OBSERVED"}

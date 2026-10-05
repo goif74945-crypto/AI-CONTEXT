@@ -1,3 +1,0 @@
-COMMAND: python -m compileall -q src tests
-Python 3.13.5
-RESULT: PASS

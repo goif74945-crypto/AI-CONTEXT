@@ -1,7 +1,0 @@
-{
-  "TYPE": "INCIDENT",
-  "TARGET": "GLOBAL",
-  "INCIDENT_ID": "INCIDENT-WORKER-REF-PREFIX-COLLISION-001",
-  "SUMMARY": "Worker prefix NEXY.AI-Test-AI/work/ collides with existing NEXY.AI-Test-AI branch ref namespace; source mutation via mandated worker branches is blocked.",
-  "ACTION_REQUIRED": "Do not bypass by writing directly to integration. Coordinate a non-colliding worker prefix."
-}

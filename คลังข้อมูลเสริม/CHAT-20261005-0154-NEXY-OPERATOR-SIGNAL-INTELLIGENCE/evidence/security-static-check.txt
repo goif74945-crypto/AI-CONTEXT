@@ -1,3 +1,0 @@
-production_files= 10
-violations= 0
-STATIC_BOUNDARY=PASS

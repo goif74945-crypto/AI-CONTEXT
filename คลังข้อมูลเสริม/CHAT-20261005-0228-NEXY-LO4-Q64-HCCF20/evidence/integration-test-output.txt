@@ -1,7 +1,0 @@
-test_float_injection_cannot_enter_representative_pipeline (tests.test_integration.TestFabricIntegration.test_float_injection_cannot_enter_representative_pipeline) ... ok
-test_twenty_system_pipeline_composes_deterministically (tests.test_integration.TestFabricIntegration.test_twenty_system_pipeline_composes_deterministically) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.001s
-
-OK

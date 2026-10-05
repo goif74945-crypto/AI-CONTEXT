@@ -1,6 +1,0 @@
-[project]
-name = "nexy-meta-assurance-fabric"
-version = "0.1.0"
-description = "Standalone deterministic proposal prototypes for NEXY-compatible future assurance research"
-requires-python = ">=3.11"
-dependencies = []

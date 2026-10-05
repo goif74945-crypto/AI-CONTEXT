@@ -1,4 +1,0 @@
-$ python3 --version
-Python 3.13.5
-$ python3 -m compileall -q .
-compileall_exit=0

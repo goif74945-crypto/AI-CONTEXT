@@ -1,8 +1,0 @@
-[project]
-name = "nexy-shadow-assurance-lab"
-version = "0.1.0"
-description = "Standalone shadow comparison and promotion-gate prototype for NEXY-style decision records"
-requires-python = ">=3.11"
-
-[project.scripts]
-shadowguard = "shadowguard.cli:main"

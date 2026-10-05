@@ -1,7 +1,0 @@
-files_total=50
-python_files=23
-python_lines=1289
-test_files=7
-test_lines=500
-markdown_files=20
-markdown_lines=488

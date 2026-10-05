@@ -1,7 +1,0 @@
-{
-  "version": "pcf-0.1",
-  "known_purposes": ["code_review", "summarize"],
-  "default_retention_seconds": 300,
-  "max_retention_seconds": 3600,
-  "deny_external_classifications": ["SECRET", "CREDENTIAL"]
-}

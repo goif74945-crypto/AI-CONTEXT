@@ -1,7 +1,0 @@
-COMMAND: python3 test_composition.py -v
-test_reference_components_can_coexist_in_fail_closed_flow (__main__.TestComposition.test_reference_components_can_coexist_in_fail_closed_flow) ... ok
-
-----------------------------------------------------------------------
-Ran 1 test in 0.000s
-
-OK

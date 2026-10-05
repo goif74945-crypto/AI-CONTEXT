@@ -1,5 +1,0 @@
-node=v22.16.0
-npm=10.9.2
-tsc=Version 5.8.3
-rustc=NOT_INSTALLED
-cargo=NOT_INSTALLED

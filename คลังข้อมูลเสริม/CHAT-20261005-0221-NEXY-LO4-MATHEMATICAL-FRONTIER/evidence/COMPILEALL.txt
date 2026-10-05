@@ -1,3 +1,0 @@
-$ /opt/pyvenv/bin/python -m compileall -q lo4_frontier
-
-EXIT=0

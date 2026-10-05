@@ -1,1 +1,0 @@
-import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{freshnessDiscount}from"./CODE.ts";test("half life rational discount",()=>assert.equal(freshnessDiscount(Q.one(),Q.fromInt(1n),Q.fromInt(1n)).toDecimal(1),"0.5"));

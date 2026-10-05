@@ -1,1 +1,0 @@
-import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{rankPrefetch}from"./CODE.ts";test("useful low waste ranks",()=>{const a={id:"a",probability:Q.one(),utility:Q.one(),sizeCost:Q.zero(),freshness:Q.one(),wasteRisk:Q.zero()};assert.equal(rankPrefetch([{...a,id:"b",wasteRisk:Q.one()},a])[0].id,"a")});
