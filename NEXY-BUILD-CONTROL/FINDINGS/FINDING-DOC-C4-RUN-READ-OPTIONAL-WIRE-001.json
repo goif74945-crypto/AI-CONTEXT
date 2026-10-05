@@ -5,7 +5,7 @@
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "TYPE": "CANONICAL_OPTIONAL_NULLABILITY_DRIFT",
   "SEVERITY": "P1",
-  "STATUS": "REPRODUCED_BLOCKED",
+  "STATUS": "DUPLICATE_SUPPORTING_EVIDENCE",
   "OBSERVED": [
     "packages/api/directives.ts always serializes accepted, releaseable, confidence, deterministic_match_score and primary_incident_id.",
     "New/unfinished PipelineRun records store accepted/releaseable and metric/incident fields as null, so the canonical HTTP response emits null values.",
@@ -25,5 +25,9 @@
     "tests/integration/directives/read-auth.spec.ts": "560bc7a5bdc99211395faf5fd46c826e6312fd5e"
   },
   "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "REVIEWER_CHAT": "C-V8-SOL-20261005-1738-B35E"
+  "REVIEWER_CHAT": "C-V8-SOL-20261005-1738-B35E",
+  "ACTIVE": false,
+  "CANONICAL_FINDING_ID": "FINDING-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "CANONICAL_TASK_ID": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "RECONCILIATION_NOTE": "Use as corroborating evidence that accepted/releaseable/confidence/deterministic_match_score share the same optional-not-nullable risk; do not allocate a second writer."
 }
