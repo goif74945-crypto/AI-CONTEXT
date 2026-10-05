@@ -14,6 +14,10 @@
   "TARGET_INTEGRATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_AUDIT_EVIDENCE",
   "DUPLICATION_MODE": "INTENTIONAL_INDEPENDENT_CROSS_VALIDATION_ON_NEWER_PINNED_CONTROL_SNAPSHOT",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Revalidate Phase-1 activation blockers against the freshest pinned control snapshot after prior reviewers suspended, without competing with schema repair owners."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Revalidate Phase-1 activation blockers against the freshest pinned control snapshot after prior reviewers suspended, without competing with schema repair owners.",
+  "RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1819Z-V16RC13-CURRENT-P0-FRESHNESS-6B17C4A9.json",
+  "VERDICT": "FAIL_CLOSED_NOT_READY",
+  "RESULT_COMMIT": "1a850cf4b137c0814c759be9d31620b227d39f75",
+  "HANDOFF_MESSAGE_COMMIT": "fa404ef9fa8359be84593f73e17f4c5230d29dee"
 }
