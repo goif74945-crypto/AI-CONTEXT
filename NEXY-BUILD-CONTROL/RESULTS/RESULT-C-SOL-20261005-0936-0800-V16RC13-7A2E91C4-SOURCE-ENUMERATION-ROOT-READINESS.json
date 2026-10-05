@@ -1,0 +1,71 @@
+{
+  "RESULT_ID": "RESULT-C-SOL-20261005-0936-0800-V16RC13-7A2E91C4-SOURCE-ENUMERATION-ROOT-READINESS",
+  "RESULT_TYPE": "V16_RC1_3_PREGENESIS_SOURCE_ENUMERATION_ROOT_READINESS_AUDIT",
+  "CHAT_ID": "C-SOL-20261005-0936-0800-V16RC13-7A2E91C4",
+  "CLAIM_ID": "CLAIM-C-SOL-20261005-0936-0800-V16RC13-7A2E91C4-SOURCE-ENUMERATION-ROOT-READINESS",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "INPUTS": {
+    "REQUIREMENT_ROOT_SCHEMA": {
+      "path": "NEXY-BUILD-CONTROL/V16/GENESIS/REQUIREMENT_ROOT_SCHEMA_V1.json",
+      "blob_sha": "925e7733a7aa7424e8f9cb815cafbaa5cb59df1d",
+      "schema_version": "NEXY_V16_RC1_3_REQUIREMENT_ROOT_SCHEMA_CONTRACT_V1"
+    },
+    "SOURCE_MATRIX_TEXT": {
+      "path": "REFERENCES/NEXY/2026-10-04/NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.txt",
+      "blob_sha": "e7aa7b52ad6080030c7278eb428bef75f83309c4"
+    },
+    "DECLARED_WORKBOOK_SHA256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+    "DECLARED_NORMALIZED_REQUIREMENT_ROWS": 837
+  },
+  "STRUCTURAL_VERIFICATION": {
+    "BUILD_MATRIX_ROWS": 837,
+    "UNIQUE_REQUIREMENT_IDS": 837,
+    "FIRST_ID": "REQ-0001",
+    "LAST_ID": "REQ-0837",
+    "DUPLICATE_IDS": [],
+    "INDEX_SEQUENCE_0_TO_836": true,
+    "SCOPE_COUNTS": {
+      "CURRENT_GOVERNING_LAW": 12,
+      "CURRENT_BUILD": 547,
+      "EXCLUDED_CURRENT": 8,
+      "CURRENT_BUILD_SUPPLEMENT": 127,
+      "SUPPORTED_PRODUCT_DESIGN": 87,
+      "DEFERRED_FUTURE": 4,
+      "DEPLOYMENT_EVIDENCE": 52
+    },
+    "EXPECTED_SCOPE_COUNTS": {
+      "CURRENT_GOVERNING_LAW": 12,
+      "CURRENT_BUILD": 547,
+      "CURRENT_BUILD_SUPPLEMENT": 127,
+      "SUPPORTED_PRODUCT_DESIGN": 87,
+      "DEPLOYMENT_EVIDENCE": 52,
+      "EXCLUDED_CURRENT": 8,
+      "DEFERRED_FUTURE": 4
+    },
+    "STRUCTURAL_RESULT": "PASS_837_ROWS_UNIQUE_IDS_COUNTS_MATCH"
+  },
+  "CANONICALIZATION_BLOCKERS": [
+    "SOURCE_ENUMERATION entry field data types are not defined. JCS hashes JSON numbers and JSON strings differently, so source_doc_paragraph/source_extraction_seq cannot be independently reconstructed without a normative type contract.",
+    "Blank-cell normalization is not defined (empty string vs null vs omitted). ROOT entry fields are listed, but exact representation of absent CSV cells is not normative.",
+    "CSV-column to ROOT-entry transformation is not specified as a canonical mapping, including case/name conversion and whether the workbook index column is excluded solely by ENTRY_FIELDS.",
+    "SOURCE_MATRIX.PATH points to a parsed text derivative while WORKBOOK_SHA256 identifies the original XLSX. The schema does not bind the parsed-text blob SHA to the declared workbook hash through a verified deterministic extraction transform.",
+    "matrix_artifact_hash in ROOT_OBJECT is not explicitly defined as the original workbook SHA256 versus a canonical extracted-row artifact hash."
+  ],
+  "VERDICT": "BLOCKED_SCHEMA_CANONICALIZATION_UNDERSPECIFIED",
+  "SOURCE_ENUMERATION_ROOT_HASH": "NOT_COMPUTED",
+  "REQUIRED_REPAIR": [
+    "Add normative JSON data types for every SOURCE_ENUMERATION entry field.",
+    "Add exact blank-cell/null/omission normalization rules.",
+    "Add exact CSV-column-to-entry mapping and value-normalization rules.",
+    "Bind the parsed source artifact identity and extraction transform to the declared workbook artifact, or provide the exact workbook bytes as the recomputation source.",
+    "Define matrix_artifact_hash unambiguously.",
+    "After schema repair, independently recompute the 837-entry root and verify duplicate-ID/count invariants before activation."
+  ],
+  "RELATED_BLOCKER": "FINDING-V16RC13-GENESIS-ROOT-AUTHORITY-READINESS-001",
+  "NOTIFY_OWNER_CHAT": "C-SOL-V16RC13-A81EAF503A95",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
