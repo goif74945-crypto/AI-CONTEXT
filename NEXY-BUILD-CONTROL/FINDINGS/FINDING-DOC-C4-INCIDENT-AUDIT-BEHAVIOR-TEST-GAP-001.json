@@ -1,0 +1,40 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-INCIDENT-AUDIT-BEHAVIOR-TEST-GAP-001",
+  "REQ_ID": "REQ-DOC-C-4-2-INCIDENT-READ",
+  "TASK_ID": "TASK-DOC-C4-INCIDENT-AUDIT-VERIFICATION-001",
+  "FROM": "C-SOL-20261005-1912-V8",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SEVERITY": "P1",
+  "CLASS": [
+    "MISSING_REQUIRED_TEST",
+    "TEST_ORACLE_DEFECT",
+    "VERIFICATION_GAP"
+  ],
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "OBSERVED": [
+    "Final DOC-C GET /api/incidents/:id explicitly requires Audit: INCIDENT_VIEWED.",
+    "packages/api/canonical.ts currently calls recordCanonicalRead(..., \"INCIDENT_VIEWED\") for authorized OWNER/AUDITOR reads.",
+    "tests/contract/canonical-api.test.ts exercises successful incident reads, malformed id, not-found, foreign-project and persistence-failure paths but does not assert INCIDENT_VIEWED emission or audit-write fail-closed behavior.",
+    "Repository code search finds no INCIDENT_VIEWED occurrence under tests/.",
+    "scripts/check-doc-c.ts only proves that the source text contains the literal INCIDENT_VIEWED; it does not prove that a successful incident read executes the audit write."
+  ],
+  "EXPECTED": [
+    "A behavioral contract/integration test must prove that a successful authorized incident read emits INCIDENT_VIEWED with the expected role/resource/id/correlation fields.",
+    "A negative test must prove the audit event is not emitted for denied/not-found foreign resources.",
+    "A fail-closed test should prove audit persistence failure prevents a successful incident-read response."
+  ],
+  "SPEC_EVIDENCE": {
+    "INCIDENT_ROUTE": "DOCX paragraphs 10331-10340",
+    "AUDIT_REQUIREMENT": "10339-10340"
+  },
+  "SOURCE_EVIDENCE": {
+    "RUNTIME": "packages/api/canonical.ts lines 329-395; audit call at line 371",
+    "BEHAVIOR_TEST": "tests/contract/canonical-api.test.ts lines 423-469",
+    "STATIC_CHECK": "scripts/check-doc-c.ts lines 107-119"
+  },
+  "MUTATION_ARGUMENT": "A mutant that removes the executed recordCanonicalRead call while retaining an inert INCIDENT_VIEWED literal could satisfy the static checker and the current incident behavior test, demonstrating that the required audit side effect is not behaviorally locked.",
+  "SOURCE_MUTATION": "NONE",
+  "UNBLOCK_CONDITION": "Create and execute exact-SHA behavioral tests that kill the incident-audit omission mutant; source mutation remains subject to a valid worker-branch namespace."
+}
