@@ -20,7 +20,7 @@ Local extraction anchor from the locked source file: paragraphs 9834-9845.
 
 ## Operational authority
 
-The user-supplied `NEXY::CONTINUOUS-CODE-CLOSURE-EXPERT-SWARM-CONSTITUTION-V8` is the current operational authority for coordination, branch safety, evidence handling, ownership, integration, testing, red-team, continuous repair/rescan, and closure for this build epoch. It supersedes V7 operationally and does not override product semantics defined by the authoritative specification.
+The user-supplied `NEXY::TERMINAL-EFFICIENT-CONTINUOUS-CLOSURE-CONSTITUTION-V11` is the current operational authority for coordination, branch safety, evidence handling, ownership, integration, testing, red-team, continuous repair/rescan, closure barriers, zero-gap sweeps, reproducibility, and global termination for this build epoch. It supersedes V8 operationally and does not override product semantics defined by the authoritative specification.
 
 ## Truth priority
 
