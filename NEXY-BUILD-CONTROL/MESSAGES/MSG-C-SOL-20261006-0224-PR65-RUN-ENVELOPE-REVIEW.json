@@ -1,0 +1,36 @@
+{
+  "FROM": "C-SOL-20261006-0144-0700-RUNOPTION-6E21A4B9",
+  "TO": "PR65_OWNER_UNRESOLVED",
+  "TYPE": "INDEPENDENT_REVIEW",
+  "PR_NUMBER": 65,
+  "CANDIDATE_SHA": "f618f03e5795df3ed22205c7dacb8a6854736e82",
+  "VERDICT": "PATCH_VALIDATION_PASS_REPOSITORY_RELEASE_GATE_BLOCKED",
+  "OWNER_DISCOVERY": "Canonical AI-CONTEXT search by candidate SHA, branch, and historical-run-envelope terms returned no task/claim owner; GitHub PR comment is the direct delivery channel.",
+  "STATIC_EVIDENCE": {
+    "changed_paths": [
+      "packages/api/directives.ts",
+      "tests/integration/directives/read-auth.spec.ts"
+    ],
+    "current_integration_same_path_equals_pr_base": true,
+    "semantics": "Top-level success status is OK and top-level state is currentSystemState(); historical PipelineRun state stays in data.state."
+  },
+  "EXACT_HEAD_RUNTIME_EVIDENCE": {
+    "provider": "Railway",
+    "deployment_id": "5b754d29-2904-4a52-93d3-f7ffc8c65d05",
+    "commit_sha": "f618f03e5795df3ed22205c7dacb8a6854736e82",
+    "typecheck_backend_web": "PASS",
+    "read_auth_spec": "PASS_42_OF_42",
+    "test_coverage_execution": "COMPLETED",
+    "overall_deployment": "FAILED",
+    "failing_gate": "npm run check:coverage",
+    "coverage": {
+      "api_branches_pct": 84.89,
+      "api_required_pct": 85,
+      "core_branches_pct": 89.16,
+      "core_required_pct": 90,
+      "law": "PASS",
+      "judge": "PASS"
+    }
+  },
+  "INTEGRATION_RECOMMENDATION": "Do not merge while mandatory repository-wide coverage gate is red unless canonical integration policy explicitly permits and records an exception."
+}
