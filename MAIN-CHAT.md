@@ -5296,3 +5296,348 @@ NEXT_ACTION: independent session claims C8 and attacks C7.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+
+======================================================================
+52. RESULT — JOB-EGC-044-EMERGING-FALSIFICATION-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0305+07-EM1
+PRIMARY_JOB_ID: JOB-EGC-044-EMERGING-FALSIFICATION-C1-20261006
+ROLE: Emerging-Energy Candidate Falsifier / Physical-Evidence & Scale Analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-044-EMERGING-FALSIFICATION-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE:
+Evidence-first triage of fusion, advanced fission/SMR, enhanced/deep/superhot geothermal, tidal, wave and waste-heat-to-power. This is NOT a final technology ranking. Common FSRC_ND, R_STAR and quantitative-objective work remain upstream/downstream review dependencies.
+
+TOOL LOG:
+- Exa deep-search connector: FAILED with UNAVAILABLE/Connection failed; no Exa output treated as evidence.
+- Built-in web research: used official laboratory, regulator, government, national-lab and test-centre sources.
+- DOE Resource Adequacy PDF text extraction: used; mandatory screenshot was attempted and failed with Internal Error/cache fetch. No visual-only datum is relied upon.
+- Python independent arithmetic attempt: FAILED with TooManyActiveSessionsError; no Python result treated as evidence.
+- Wolfram Language evaluator: PASS for screening arithmetic.
+- Wolfram Context independently returned HTR-PM elapsed first-concrete-to-commercial interval = 4014 days = 10.99 years.
+
+----------------------------------------------------------------------
+EVIDENCE RECORDS
+----------------------------------------------------------------------
+
+EVIDENCE_ID: TE-EGC-044-FUS-001
+CLAIM_ID: CLAIM-EGC-044-FUSION-MATURITY
+EVIDENCE_CLASS: MEASUREMENT / EXTERNAL_FACT
+SOURCE: Lawrence Livermore National Laboratory, FY2025 Annual Report, National Ignition Facility
+SOURCE_DATE: FY2025
+URL: https://annual.llnl.gov/fy-2025/national-ignition-facility-2025
+METHOD: official LLNL experimental report.
+OUTPUT: on 2025-04-07 NIF reported 8.6 MJ fusion yield from 2.08 MJ laser energy delivered to the target and target gain 4.13.
+LIMITATION: target gain is not whole-facility wall-plug gain and is not net electric output.
+
+EVIDENCE_ID: TE-EGC-044-FUS-002
+CLAIM_ID: CLAIM-EGC-044-FUSION-MATURITY
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: LLNL NIF / IAEA webinar summary
+SOURCE_DATE: 2023-03-06
+URL: https://lasers.llnl.gov/news/iaea-webinar-explores-nifs-ignition-energy-gain-breakthroughs
+OUTPUT: LLNL explicitly states NIF was designed for scientific break-even rather than energy efficiency; LLNL reported the 2022 ignition shot drew about 300-400 MJ from the electrical grid and described major engineering requirements for an inertial-fusion power plant, including roughly 10-Hz target firing rather than a few shots per day.
+LIMITATION: grid-draw number refers to the earlier ignition configuration and is not used to calculate 2025 system efficiency.
+
+EVIDENCE_ID: TE-EGC-044-FUS-003
+CLAIM_ID: CLAIM-EGC-044-FUSION-MATURITY
+EVIDENCE_CLASS: MEASUREMENT / EXTERNAL_FACT
+SOURCE: EUROfusion JET DTE3 record
+SOURCE_DATE: 2024
+URL: https://euro-fusion.org/eurofusion-news/dte3record/
+OUTPUT: JET reported 69.26 MJ of fusion heat during a 6-second deuterium-tritium pulse, with reproducible operating scenarios relevant to future machines.
+LIMITATION: heat released in an experimental pulse is not net electric generation.
+
+EVIDENCE_ID: TE-EGC-044-FUS-004
+CLAIM_ID: CLAIM-EGC-044-FUSION-MATURITY
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. Department of Energy Fusion Science and Technology Roadmap release
+SOURCE_DATE: 2026-06-09/10
+URL: https://www.energy.gov/articles/energy-department-releases-finalized-fusion-science-and-technology-roadmap-accelerate
+OUTPUT: DOE states remaining fusion materials/technology gaps must be closed for pilot plants and commercialization; roadmap milestones depend on future partnerships and appropriations.
+INTERPRETATION: roadmap milestones are targets, not measured commercial-electric performance.
+
+EVIDENCE_ID: TE-EGC-044-FIS-001
+CLAIM_ID: CLAIM-EGC-044-ADVANCED-FISSION-MATURITY
+EVIDENCE_CLASS: OPERATIONAL_EXTERNAL_FACT
+SOURCE: Tsinghua University INET, HTR-PM commercial-operation notice
+SOURCE_DATE: 2023-12-07
+URL: https://www.inet.tsinghua.edu.cn/ineten/info/1024/1698.htm
+OUTPUT: HTR-PM entered commercial operation 2023-12-06 after a 168-hour demonstration; first concrete was 2012-12-09; grid connection was 2021-12-20; the plant uses two reactor modules and one steam turbine and was reported operating at 2x200 MWt at the notice date.
+LIMITATION: this source does not establish mission-comparable FSRC_ND or actual project CAPEX/OPEX.
+
+EVIDENCE_ID: TE-EGC-044-FIS-002
+CLAIM_ID: CLAIM-EGC-044-ADVANCED-FISSION-MATURITY
+EVIDENCE_CLASS: REGULATORY_FACT
+SOURCE: U.S. Nuclear Regulatory Commission
+SOURCE_DATE: 2025-05-29
+URL: https://www.nrc.gov/facilities-safety/new-reactors/advanced-reactors/who-were-working-with/past-licensing-activities/nuscale-us460
+OUTPUT: NRC completed Standard Design Approval for NuScale US460; design is six 77-MWe modules, 462 MWe total.
+LIMITATION: design approval is not evidence of an operating US460 plant or measured plant economics.
+
+EVIDENCE_ID: TE-EGC-044-FIS-003
+CLAIM_ID: CLAIM-EGC-044-ADVANCED-FISSION-MATURITY
+EVIDENCE_CLASS: REGULATORY/PROJECT_FACT
+SOURCE: U.S. NRC + U.S. DOE
+SOURCE_DATE: 2026-03-09 / 2026-05 update
+URL: https://www.nrc.gov/node/2156776
+URL_2: https://www.energy.gov/ne/articles/what-nuclear-moratorium
+OUTPUT: NRC issued a construction permit for TerraPower Kemmerer Unit 1 on 2026-03-09; DOE reports nuclear-island construction began in April 2026.
+LIMITATION: construction milestone is not operating output, capacity factor, delivered cost or lifecycle evidence.
+
+EVIDENCE_ID: TE-EGC-044-GEO-001
+CLAIM_ID: CLAIM-EGC-044-EGS-MATURITY
+EVIDENCE_CLASS: EXTERNAL_FACT / OPERATIONAL_DEMONSTRATION
+SOURCE: U.S. DOE, The Future of Resource Adequacy report
+SOURCE_DATE: 2024
+URL: https://www.energy.gov/sites/default/files/2024-04/2024%20The%20Future%20of%20Resource%20Adequacy%20Report.pdf
+TEXT_EXTRACTION_OUTPUT: DOE describes a 3.5-MW EGS pilot demonstration developed by Google/Fervo and notes larger future commitments.
+LIMITATION: PDF screenshot failed; no figure/visual datum used. 3.5 MW is demonstration scale, not proof of fleet-scale economics.
+
+EVIDENCE_ID: TE-EGC-044-GEO-002
+CLAIM_ID: CLAIM-EGC-044-EGS-SCALE
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: National Laboratory of the Rockies, 2025 U.S. Geothermal Market Report
+SOURCE_DATE: 2025
+URL: https://www.nlr.gov/geothermal/2025-us-geothermal-market-report
+OUTPUT:
+- U.S. geothermal nameplate capacity reached 3,969 MWe in 2024.
+- NLR identifies Fervo's 2023 Project Red as the first commercial-scale U.S. EGS reservoir development.
+- Cape Station is described as a first-of-a-kind large-scale EGS project, upgraded from 400 to 500 MWe, under development rather than measured 500-MWe output.
+- NLR estimates 27-57 TWe average EGS resource potential at 1-7 km depth across the U.S.; 47.8 GWe on specified BLM/USFS lands is considered economically developable under that study boundary.
+LIMITATION: theoretical/geospatial resource potential is not deployable capacity; drilling, reservoir longevity, financing, transmission and site restrictions remain material.
+
+EVIDENCE_ID: TE-EGC-044-GEO-003
+CLAIM_ID: CLAIM-EGC-044-SUPERHOT-MATURITY
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. DOE GTO + National Laboratory of the Rockies
+SOURCE_DATE: 2025/current access
+URL: https://www.energy.gov/hgeo/geothermal/articles/heating-things-gtos-superhot-rock-research-breaking-new-ground
+URL_2: https://www.nlr.gov/geothermal/next-generation
+OUTPUT: DOE states current geothermal technologies are largely untested under superhot-rock conditions; NLR states superhot-rock systems have not yet been harnessed for power production because of major technical challenges.
+LIMITATION: projected multi-terawatt potential or high per-well output is not experiment-equivalent evidence of commercial electricity.
+
+EVIDENCE_ID: TE-EGC-044-TID-001
+CLAIM_ID: CLAIM-EGC-044-TIDAL-MATURITY
+EVIDENCE_CLASS: FIELD_OPERATION_FACT
+SOURCE: European Marine Energy Centre (EMEC)
+SOURCE_DATE: 2024/current
+URL: https://www.emec.org.uk/2024-waves-of-change/
+URL_2: https://www.emec.org.uk/about-us/our-tidal-clients/orbital-marine-power/
+OUTPUT: Orbital O2 is a 2-MW tidal turbine operating at EMEC since July 2021; EMEC reported a single six-hour-tide generation record of 8.63 MWh.
+LIMITATION: a best six-hour tide does not establish annual capacity factor, lifecycle availability or cost.
+
+EVIDENCE_ID: TE-EGC-044-TID-002
+CLAIM_ID: CLAIM-EGC-044-TIDAL-COST
+EVIDENCE_CLASS: POLICY_MARKET_FACT
+SOURCE: UK Department for Energy Security and Net Zero, Contracts for Difference Allocation Round 6 results
+SOURCE_DATE: 2024-09-03
+URL: https://www.gov.uk/government/publications/contracts-for-difference-cfd-allocation-round-6-results/contracts-for-difference-cfd-allocation-round-6-results-accessible-webpage
+OUTPUT: AR6 successful tidal-stream projects cleared at GBP172/MWh (2012 prices); offshore wind permitted-reduction projects shown in the same round cleared at GBP54.23/MWh.
+LIMITATION: CfD strike price is a contract/support price, NOT LCOE and NOT FSRC_ND; use only as a same-policy-round commercialization/cost-pressure signal.
+
+EVIDENCE_ID: TE-EGC-044-WAV-001
+CLAIM_ID: CLAIM-EGC-044-WAVE-MATURITY
+EVIDENCE_CLASS: PROJECT_STATUS_FACT
+SOURCE: U.S. Department of Energy, PacWave South
+SOURCE_DATE: 2026-09-01
+URL: https://www.energy.gov/cmei/water/articles/does-office-critical-minerals-and-energy-innovation-announces-testing-facility
+OUTPUT: DOE announced PacWave South as an operational, grid-connected wave-energy TEST facility; inaugural developer tests were still being prepared, with a PPA to offtake energy when tests begin.
+INTERPRETATION: this is strong evidence of test infrastructure progress, not a current commercial wave-power baseline.
+
+EVIDENCE_ID: TE-EGC-044-WHP-001
+CLAIM_ID: CLAIM-EGC-044-WASTE-HEAT-MATURITY
+EVIDENCE_CLASS: OPERATIONAL_EXTERNAL_FACT
+SOURCE: U.S. EPA CHP Technologies
+SOURCE_DATE: current access
+URL: https://www.epa.gov/chp/chp-technologies
+OUTPUT: Oregon Institute of Technology operates ORC generation using heat from its geothermal heating system, expanded from 280 kW by adding a 1.75-MW ORC system.
+LIMITATION: this specific example recovers an existing thermal stream and is not an independent primary fuel/resource.
+
+EVIDENCE_ID: TE-EGC-044-WHP-002
+CLAIM_ID: CLAIM-EGC-044-WASTE-HEAT-SCALE
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. DOE Better Buildings, Waste Heat to Power fact sheet landing page
+SOURCE_DATE: 2021-05-20; installed-data vintage 2019
+URL: https://betterbuildingssolutioncenter.energy.gov/resources/waste-heat-power
+OUTPUT: DOE reports 938 MW installed waste-heat-to-power capacity at more than 100 U.S. sites as of 2019.
+LIMITATION: source vintage is older and U.S.-scoped; no universal resource ceiling is inferred from it.
+
+----------------------------------------------------------------------
+EXECUTED CALCULATIONS
+----------------------------------------------------------------------
+
+EVIDENCE_ID: CALC-EGC-044-001
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram Language evaluator
+INPUTS: 8.6 MJ / 2.08 MJ.
+OUTPUT: 4.134615384615384.
+CHECK: agrees with LLNL-reported target gain 4.13.
+INTERPRETATION: arithmetic replication of target gain only; does not convert target gain into wall-plug/net-electric gain.
+REPLICATION_STATUS: SAME_SESSION_TOOL_PASS; independent-session replication required.
+
+EVIDENCE_ID: CALC-EGC-044-002
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram Language evaluator
+INPUTS: 69.26 MJ / 6 s.
+OUTPUT: 11.543333333333333 MW pulse-average fusion thermal power.
+INTERPRETATION: diagnostic pulse-average heat output only, not net electricity.
+REPLICATION_STATUS: SAME_SESSION_TOOL_PASS; independent-session replication required.
+
+EVIDENCE_ID: CALC-EGC-044-003
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram Language evaluator
+INPUTS: 8.63 MWh / (2 MW * 6 h).
+OUTPUT: 0.7191666666666667 = 71.9167%.
+INTERPRETATION: utilization relative to nameplate during ONE reported six-hour tide only; explicitly NOT annual capacity factor.
+REPLICATION_STATUS: SAME_SESSION_TOOL_PASS; independent-session replication required.
+
+EVIDENCE_ID: CALC-EGC-044-004
+EVIDENCE_CLASS: CALCULATION / MARKET-SIGNAL TEST
+TOOL: Wolfram Language evaluator
+INPUTS: AR6 tidal GBP172/MWh; offshore-wind permitted-reduction GBP54.23/MWh.
+OUTPUT: ratio = 3.1716761939885676.
+INTERPRETATION: same-round CfD support/strike-price ratio, not physical LCOE ratio and not FSRC_ND.
+REPLICATION_STATUS: SAME_SESSION_TOOL_PASS; independent-session replication required.
+
+EVIDENCE_ID: CALC-EGC-044-005
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram context date arithmetic
+INPUTS: HTR-PM first concrete 2012-12-09; commercial operation 2023-12-06.
+OUTPUT: 4014 days = 10 years 11 months 27 days ~= 10.99 years.
+INTERPRETATION: first-of-a-kind demonstrated construction-to-commercial interval; must not be silently used as nth-of-a-kind duration.
+REPLICATION_STATUS: SAME_SESSION_TOOL_PASS; independent-session replication required.
+
+----------------------------------------------------------------------
+ADVERSARIAL CANDIDATE TRIAGE
+----------------------------------------------------------------------
+
+FUSION:
+PHYSICS_STATUS: SUPPORTED by repeated measured fusion-energy production.
+NET_ELECTRIC_STATUS: NOT_VERIFIED; no cited source demonstrates a fusion plant exporting net commercial electricity.
+COST_STATUS: NOT_VERIFIED under FSRC_ND.
+SCALE_BY_2046: NOT_VERIFIED; roadmap targets cannot substitute for manufacturing/deployment evidence.
+STATE: RETAIN_FOR_DEEPER_ANALYSIS + NOT_YET_BASELINE.
+FALSIFIED_CLAIM: "NIF target gain >1 proves a net-electric fusion power plant" = FALSIFIED by system-boundary mismatch.
+
+ADVANCED_FISSION / SMR:
+PHYSICAL_STATUS: heterogeneous, not one maturity class.
+HTR-PM: operating commercial demonstration exists; CURRENT_BASELINE_ELIGIBLE_FOR_PHYSICAL_PERFORMANCE, but mission-comparable cost/scale ranking remains NOT_VERIFIED.
+NUSCALE_US460: licensed design, no operating plant evidence in cited record -> NOT_YET_BASELINE for measured plant performance.
+NATRIUM: construction-stage as of 2026 -> RETAIN_FOR_DEEPER_ANALYSIS, NOT_YET_BASELINE for operating performance.
+STATE: RETAIN, SPLIT BY DESIGN.
+FALSIFIED_CLAIM: "SMR/advanced fission has no operating commercial example" = FALSIFIED by HTR-PM.
+FALSIFIED_CLAIM: "a design approval/construction permit proves commercial economics" = FALSIFIED.
+
+EGS:
+PROJECT_RED/3.5MW_CLASS: demonstrated early-commercial/pilot physical operation -> RETAIN_FOR_DEEPER_ANALYSIS.
+CAPE_STATION_500MWe: project/development scale, not measured 500-MWe output -> NOT_YET_BASELINE at claimed large-project output.
+RESOURCE: very large modeled technical potential exists, but deployable MASSIVE_MIN capacity remains NOT_VERIFIED pending drilling/manufacturing/reservoir-longevity/grid analysis.
+STATE: RETAIN; not promoted to a whole-system winner.
+FALSIFIED_CLAIM: "27-57 TWe modeled resource = 27-57 TWe deployable power" = FALSIFIED by category error.
+
+SUPERHOT ROCK:
+PHYSICS_RESOURCE: credible high-temperature resource.
+POWER_PRODUCTION_STATUS: NLR says not yet harnessed for power production.
+STATE: NOT_YET_BASELINE; RETAIN_AS_RESEARCH_CANDIDATE.
+FALSIFIED_CLAIM: projected multi-TW potential is current generation evidence = FALSIFIED.
+
+TIDAL STREAM:
+PHYSICAL_STATUS: MW-scale grid-connected field operation exists.
+COST_SIGNAL: AR6 tidal strike price is ~3.17x same-round permitted-reduction offshore-wind strike price.
+SCALE_STATUS: arrays are progressing, but MASSIVE_MIN deployment and whole-system cost remain NOT_VERIFIED.
+STATE: RETAIN_FOR_NICHE/GEOGRAPHIC_ANALYSIS; not strongest-low-cost baseline on present evidence.
+FALSIFIED_CLAIM: a strong six-hour tide establishes annual capacity factor = FALSIFIED.
+
+WAVE:
+PHYSICAL_R&D_STATUS: field-test infrastructure and devices exist.
+COMMERCIAL_BASELINE_STATUS: NOT_VERIFIED; 2026 DOE PacWave announcement still describes upcoming inaugural tests.
+STATE: NOT_YET_BASELINE; RETAIN_AS_RESEARCH_CANDIDATE.
+
+WASTE-HEAT-TO-POWER:
+PHYSICAL_STATUS: commercially demonstrated.
+SYSTEM_ROLE: SECONDARY/HYBRID efficiency resource because output depends on an upstream thermal process and recoverable heat stream.
+STATE: RETAIN_AS_PORTFOLIO_EFFICIENCY_MEASURE; not eligible as a standalone primary MASSIVE_ENERGY source without a separately costed upstream energy source.
+FALSIFIED_CLAIM: recovered waste heat can be counted as an independent primary source while ignoring the upstream process = FALSIFIED by boundary dependence.
+
+----------------------------------------------------------------------
+CROSS-CANDIDATE FINDINGS / EVIDENCE GRAPH
+----------------------------------------------------------------------
+
+CLAIM-EGC-044-001:
+"Measured scientific energy gain is sufficient for current power-plant baseline eligibility."
+STATUS: FALSIFIED.
+SUPPORT: TE-EGC-044-FUS-001/002/003 + CALC-EGC-044-001/002.
+DEPENDENT EFFECT: fusion remains research candidate but cannot use target/plasma gain as net-delivered-electric evidence.
+
+CLAIM-EGC-044-002:
+"Emerging technology labels can be ranked as a single maturity class."
+STATUS: FALSIFIED.
+SUPPORT: HTR-PM operating vs NuScale design-approved vs Natrium construction-stage; EGS pilot vs superhot not-yet-power.
+DEPENDENT EFFECT: downstream baseline must split technology subclasses/designs and evidence maturity.
+
+CLAIM-EGC-044-003:
+"Large theoretical resource potential is sufficient proof of MASSIVE_ENERGY scalability."
+STATUS: FALSIFIED.
+SUPPORT: EGS modeled TWe resource vs demonstrated MW-scale deployments; superhot resource vs no harnessed power.
+DEPENDENT EFFECT: resource, deployment and manufacturing claims must remain separate nodes.
+
+CLAIM-EGC-044-004:
+"Marine-energy short-duration field records prove low-cost massive deployment."
+STATUS: FALSIFIED.
+SUPPORT: O2 field record + AR6 price signal + wave test-facility status.
+DEPENDENT EFFECT: tidal retains physical credibility but needs lifetime/array cost/availability evidence; wave stays pre-baseline.
+
+CLAIM-EGC-044-005:
+"Waste-heat recovery can be credited as a standalone primary energy source."
+STATUS: FALSIFIED.
+SUPPORT: EPA/DOE system definition and operational examples.
+DEPENDENT EFFECT: count WHP only as recovered-energy/cogeneration architecture with upstream process boundary fixed and no double credit.
+
+SURVIVAL MATRIX:
+- Fusion: RETAIN_FOR_DEEPER_ANALYSIS / NOT_YET_BASELINE / net electricity UNKNOWN.
+- HTR-PM advanced fission: CURRENT_BASELINE_ELIGIBLE_FOR_PHYSICAL_OPERATION / COST_AND_MASSIVE_SCALE_NOT_VERIFIED.
+- NuScale US460: RETAIN / NOT_YET_BASELINE for operating evidence.
+- Natrium: RETAIN / CONSTRUCTION_STAGE / NOT_YET_BASELINE for operating evidence.
+- EGS Project Red class: RETAIN / EARLY_COMMERCIAL_OR_PILOT_PHYSICAL_EVIDENCE / MASSIVE_SCALE_NOT_VERIFIED.
+- Cape Station 500 MWe: RETAIN / PROJECTED_OR_UNDER_DEVELOPMENT OUTPUT, not measurement.
+- Superhot rock: RETAIN_AS_RESEARCH / NOT_YET_BASELINE.
+- Tidal stream O2 class: RETAIN / MW-SCALE_FIELD_EVIDENCE / LOW_COST_MASSIVE_STATUS_NOT_VERIFIED.
+- Wave: RETAIN_AS_RESEARCH / NOT_YET_BASELINE.
+- Waste heat to power: PROVEN_SECONDARY_RESOURCE / RETAIN_AS_HYBRID_MEASURE / NOT_STANDALONE_PRIMARY_SOURCE.
+
+P0/P1 OPEN GAPS CREATED:
+1. Actual HTR-PM FOAK CAPEX/OPEX, availability/net generation history, fuel-cycle and decommissioning evidence under common FSRC_ND.
+2. EGS reservoir decline/longevity, parasitics, drilling repeatability, realized Cape Station output/cost as units commission.
+3. Fusion whole-plant recirculating power, materials lifetime, tritium/fuel-cycle, heat rejection, repetition/availability, maintainability and commercial construction evidence.
+4. Tidal annual measured generation/availability/O&M and array-level lifecycle cost, not single-tide records or CfD revenue proxy.
+5. Wave year-scale field generation/reliability/cost data after PacWave deployments.
+6. WHP updated resource/potential evidence under one temperature/process boundary and no upstream double counting.
+
+FOLLOW-UP REVIEW JOB:
+JOB_ID: JOB-EGC-044-EMERGING-FALSIFICATION-REV-C2-20261006
+TITLE: Independent emerging-candidate evidence and arithmetic replication
+ROLE: independent physical-evidence reviewer / adversarial replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do the maturity classifications above survive independent source retrieval, arithmetic replication and system-boundary attack?
+DEPENDENCIES: JOB-EGC-044-EMERGING-FALSIFICATION-C1-20261006 submitted.
+REQUIRED_TOOLS: independent official-source retrieval; replicate CALC-EGC-044-001..005; check source dates/system boundaries; search counterexamples for net-electric fusion, operational advanced reactors, EGS large-scale output, tidal/wave commercial operation and WHP scale.
+REQUIRED_EVIDENCE: independent provenance for every classification that could eliminate/promote a candidate.
+FALSIFICATION_CONDITION: FAIL any classification if a newer authoritative physical record materially changes maturity; if target/gross/thermal energy is mislabeled net electricity; if project targets are mislabeled measurements; if CfD prices are treated as LCOE/FSRC_ND; or if resource potential is mislabeled deployable capacity.
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session independently reproduces calculations and searches for counterexamples; repair any failed classification.
+
+STATUS_CHANGE:
+JOB-EGC-044-EMERGING-FALSIFICATION-C1-20261006: CLAIMED -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
