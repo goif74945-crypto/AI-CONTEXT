@@ -2,7 +2,7 @@
   "LEASE_ID": "LEASE-20261006-DOC-C-DIRECTIVE-CREATE-WIRE-001",
   "TASK_ID": "TASK-DOC-C-DIRECTIVE-CREATE-WIRE-001",
   "OWNER": "CHATGPT-GPT-5.6-SOL-20261006",
-  "STATUS": "ACTIVE",
+  "STATUS": "RELEASED_NO_MUTATION_CONCURRENTLY_SATISFIED",
   "TARGET_REPOSITORY": "goif74945-crypto/NEXY.AI-",
   "TARGET_BRANCH": "NEXY.AI-Test-AI",
   "PROTECTED_BRANCH": "NEXY.ai",
@@ -17,5 +17,11 @@
     "New successful directive data keys are exactly directive_id, run_id, state.",
     "Idempotent successful replay data keys are exactly directive_id, run_id, state.",
     "Queue-delivery failure may retain internal diagnostic dispatch_status outside canonical success."
-  ]
+  ],
+  "CONCURRENT_REPAIR_COMMITS": [
+    "c99d9f644d8e2544afee52881af1c03a027fe631",
+    "6eb82871dec86c6aedc7337b8eec011c2fdf70cd",
+    "52a4e5a4e9f5d4c67af7f26abba7f4547a718345"
+  ],
+  "VERDICT": "Runtime 200 success wire and focused oracle observed aligned; no source mutation performed by this owner."
 }
