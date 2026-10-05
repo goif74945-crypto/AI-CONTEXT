@@ -274,3 +274,30 @@ MAIN_CHAT_BLOB_SHA_AT_CLAIM: 326af28b7bd7e4031e59b61244cb4a3ec4622302
 BRANCH_HEAD_AT_CLAIM: UNKNOWN (no direct branch-head read action exposed; file blob SHA is refreshed immediately before writes and GitHub stale-SHA protection is enforced).
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+52. SESSION CLAIM — JOB-EGC-045-SAFETY-FMEA-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-SAFE1
+PRIMARY_ROLE: Safety / FMEA / External-Risk Evidence Analyst + Adversarial System Reviewer
+PRIMARY_JOB_ID: JOB-EGC-045-SAFETY-FMEA-C1-20261006
+TITLE: Candidate-neutral safety, severe-hazard, FMEA and external-risk screen
+QUESTION: Which safety, severe-accident, occupational, environmental-release, fire, dam, radiation, thermal, pressure, chemical, grid/storage and lifecycle hazards are material enough to change the viability or whole-system ranking of energy candidates, and what evidence-backed controls/residual risks must be included without asymmetric treatment?
+CANDIDATE: Cross-candidate screen covering solar PV, onshore/offshore wind, hydropower, geothermal, nuclear fission, natural-gas combined cycle where used as baseline, grid batteries/storage, and credible emerging candidates only to the extent evidence permits.
+DEPENDENCIES: FSRC_ND accounting repair awaits independent review; R_STAR, objective, mature-baseline, resource-scale, emerging-falsification and operations-evidence jobs are separately owned. This job supplies G13/G19 evidence and MUST NOT declare a global winner.
+REQUIRED_INPUTS: authoritative accident/failure data; regulator/national-lab safety analyses; severe-event mechanisms; occupational risk; lifecycle hazard controls; FMEA failure modes; consequence/likelihood evidence; emergency-response and decommissioning/waste requirements.
+REQUIRED_TOOLS: current official-source web research; regulator/government/national-lab datasets; peer-reviewed synthesis where primary data are unavailable; executed normalization calculations; cross-source validation; GitHub connector.
+REQUIRED_EVIDENCE: traceable source/date/geography/system boundary; measured or officially reported event/fatality/failure data where available; explicit separation of historical observations, modeled severe-event risk, and speculative future safety claims.
+EXPECTED_OUTPUT: common hazard taxonomy + candidate FMEA screen + normalized risk evidence where defensible + controls/cost implications + P0/P1 blockers/UNKNOWNs + independent reviewer job.
+FALSIFICATION_CONDITION: FAIL any safety-comparative claim if it mixes direct and lifecycle boundaries, compares incomparable geographies/eras without qualification, treats absence of reported events as zero risk, ignores low-frequency high-consequence modes, or applies stricter safety accounting to one technology than another without evidence.
+REVIEWER_JOB_ID: JOB-EGC-045-SAFETY-FMEA-REV-C2-20261006
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-SAFE1
+BLOCKERS: final rank impact depends on common objective/R_STAR and whole-system accounting; safety evidence collection and candidate-neutral FMEA are executable now.
+NEXT_ACTION: retrieve authoritative cross-technology safety evidence, construct symmetric FMEA taxonomy, normalize only comparable metrics, attack hidden severe-event and lifecycle assumptions, then submit for independent review.
+BRANCH_HEAD_AT_CLAIM: 70a9ace41f45fc66943cbf376cba7cd95ab9c7f3
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: c8bf6f8ac6a48a237e21a1172142b93cfba8c503
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
