@@ -5,7 +5,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "PRIORITY": "P1",
   "RISK": "MEDIUM",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "DUPLICATE_SUPERSEDED",
   "OWNER": "UNASSIGNED",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SCOPE": [
@@ -22,5 +22,9 @@
     "Exact candidate SHA tests and independent review pass before integration."
   ],
   "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "After compliant worker isolation exists, repair only transport projection/tests/UI typing and run affected read-route regression tests."
+  "NEXT_ACTION": "After compliant worker isolation exists, repair only transport projection/tests/UI typing and run affected read-route regression tests.",
+  "ACTIVE": false,
+  "CANONICAL_TASK_ID": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "CANONICAL_FINDING_ID": "FINDING-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "DUPLICATE_REASON": "Same GET /api/runs/:id optional-not-nullable response projection. Canonical task exists; broader optional-field evidence should extend its acceptance instead of creating a second writer."
 }
