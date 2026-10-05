@@ -1,0 +1,22 @@
+{
+  "SCHEMA_VERSION": "NEXY_PRODUCT_BUILD_CLAIM_V1",
+  "TASK_ID": "TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001",
+  "CLAIM_ID": "CLAIM-C-SOL-OWNERRECOVERY-REPLAY-P0-01-TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001",
+  "OWNER_CHAT": "C-SOL-OWNERRECOVERY-REPLAY-P0-01",
+  "STATUS": "IN_PROGRESS_REPLAY_REVIEW",
+  "PRODUCT_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "0440c47f14dadb1a4fb4bcdd3fd53d7bb9fce6c9",
+  "WORKER_BRANCH": "work/NEXY-AI-Test-AI/TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001/C-SOL-OWNERRECOVERY-REPLAY-P0-01",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CONTROL_HEAD_OBSERVED_AT_CLAIM": "3d47a2cb05a3bd10cb7e066ed924c44cd503d02e",
+  "SCOPE": "Fresh-head replay and independent verification of the already-reviewed P0 removal of the non-canonical sessionless OWNER recovery POST route.",
+  "DUPLICATE_SEARCH": "Existing owner branch and PR #51 found; original mutation lease is released and PR is stale/non-mergeable. This claim replays the same minimal patch on current integration HEAD rather than implementing a competing semantic design.",
+  "MUTATION_SCOPE": [
+    "apps/web/app/api/auth/owner-recovery/route.ts",
+    "tests/contract/owner-recovery-route-authority.test.ts"
+  ],
+  "REQUIREMENT": "Final DOC-C §4.1 permits unauthenticated mutating auth only for OTAC request/verify; owner-recovery has no active exemption.",
+  "PRIOR_IMPLEMENTATION_PR": 51,
+  "PROTECTED_BRANCH": "NEXY.ai"
+}
