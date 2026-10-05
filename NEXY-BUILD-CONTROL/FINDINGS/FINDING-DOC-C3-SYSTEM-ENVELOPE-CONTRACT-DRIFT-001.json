@@ -1,0 +1,32 @@
+{
+  "FINDING_ID": "FINDING-DOC-C3-SYSTEM-ENVELOPE-CONTRACT-DRIFT-001",
+  "REQ_ID": "REQ-DOC-C-3-2-SYSTEM-ENVELOPE",
+  "TASK_ID": "TASK-DOC-C3-SYSTEM-ENVELOPE-EXACT-CONTRACT-001",
+  "FROM": "C-SOL-20261005-1912-V8",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SEVERITY": "P1",
+  "CLASS": ["CONTRACT_DRIFT","AUTHORITY_DRIFT","TEST_ORACLE_DEFECT"],
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "OBSERVED": [
+    "Final DOC-C §3.2 SystemEnvelope declares status, state, timestamp, request_id, trace_id, optional correlation_id, version, optional duration_ms, optional data and optional error.",
+    "packages/contracts/envelope.ts serializes additional actor, freeze_reason, warnings and integrity fields while labeling them canonical DOC-C §3.1/§3.2 vocabulary.",
+    "The schema narrows final-DOC-C primitive contracts without explicit build authority: timestamp requires datetime, request/trace/correlation IDs have length bounds, version requires semver, duration_ms requires nonnegative integer, and error message/source have length bounds.",
+    "tests/contract/envelope.test.ts proves required-field presence and status acceptance/rejection but does not reject unsupported envelope extensions or undocumented narrowing."
+  ],
+  "EXPECTED": [
+    "The canonical SystemEnvelope wire oracle must match the final DOC-C field set and declared primitive types.",
+    "Implementation extensions must be separated from the canonical DOC-C envelope or backed by active build authority.",
+    "Tests must detect unsupported field-set/type narrowing drift rather than presence-only compliance."
+  ],
+  "SPEC_EVIDENCE": "DOCX final DOC-C paragraphs 9995-10013",
+  "SOURCE_EVIDENCE": {
+    "envelope_blob": "daf1156b3431150e667b5e18727d8abe9bdc9b75",
+    "envelope_test_blob": "c8caec95b430dfdd454691bdf68378f422c48785",
+    "error_contract_blob": "b6a1737688399cf0571236f23c0b5ce0f7de5847"
+  },
+  "CONTROL_EVIDENCE": "REQ-DOC-C-3-2-SYSTEM-ENVELOPE is PARTIAL at the exact integration SHA and records the same extension/narrowing evidence.",
+  "SOURCE_MUTATION": "NONE",
+  "UNBLOCK_CONDITION": "Resolve exact canonical-vs-extension boundary, repair schema/builder/test oracle on a valid worker branch, then execute exact-SHA contract verification."
+}
