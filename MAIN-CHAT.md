@@ -11180,3 +11180,51 @@ NEXT_ACTION:
 - Common system-boundary job must integrate finance without double-counting construction finance or policy transfers.
 WRITE_INTEGRITY_PREWRITE_HEAD: 566da59cfb8df28e299887061b33284a2034dd29
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: 3ae1c3baf57e569e777ab775e31954eeaf89f9fe
+
+
+
+======================================================================
+SAFETY / FMEA SOURCE JOB CLAIM — JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-SAFETY-S56-20261005
+PRIMARY_ROLE: Cross-Technology Safety / FMEA Methodology Analyst
+PRIMARY_JOB_ID: JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005
+QUESTION: What candidate-neutral safety/FMEA framework can compare energy systems without hiding low-frequency/high-consequence hazards, routine occupational hazards, environmental release, common-mode failures, or lifecycle/end-of-life risks?
+DEPENDENCIES: NONE for standards/source acquisition; final candidate PASS/FAIL waits on reviewed common system boundary and candidate architectures.
+TOOLS: IEC 60812:2018; ISO 31000:2018; authoritative technology-specific safety sources; failure-mode taxonomy and provenance audit.
+EVIDENCE_TARGET: SOURCE_FACT / INFERENCE / UNKNOWN; no invented incident frequency.
+FALSIFICATION_TARGET: Reject a framework that compares unlike boundaries, collapses severity into one opaque score, omits rare severe events, or treats the absence of measured incidents in immature technology as evidence of safety.
+REVIEWER: JOB-EGC-SAFETY-FRAMEWORK-REV-S56-20261005
+STATUS: CLAIMED / EXECUTING
+
+JOB_ID: JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005
+ROLE: Safety/FMEA source evidence support for JOB-EGC-014
+TITLE: Candidate-neutral lifecycle safety and failure-mode framework
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-SAFETY-S56-20261005
+TARGET_CANDIDATE: CROSS-CANDIDATE
+REQUIRED_INPUTS: generic risk/FMEA standards plus authoritative hazard evidence for surviving technology families.
+REQUIRED_TOOLS: standards/source retrieval; structured FMEA reasoning; cross-technology boundary audit.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + INFERENCE.
+EXPECTED_OUTPUT: common safety boundary, mandatory hazard categories, severity/exposure dimensions, rules for UNKNOWN/immature technologies, candidate-specific follow-up gaps.
+FALSIFICATION_CRITERIA: framework gives any candidate a weaker hazard boundary; substitutes AI judgment for unavailable probability data; or uses one aggregate risk score that can hide catastrophic severity.
+REVIEWER_JOB_ID: JOB-EGC-SAFETY-FRAMEWORK-REV-S56-20261005
+STATUS: CLAIMED
+BLOCKERS: NONE for source/framework work.
+NEXT_ACTION: derive standards-grounded FMEA/risk rules; test against nuclear, geothermal/EGS, battery-storage and other candidate-specific hazard classes; submit for independent review.
+
+JOB_ID: JOB-EGC-SAFETY-FRAMEWORK-REV-S56-20261005
+ROLE: Independent safety/FMEA reviewer
+TITLE: Independently reproduce and attack JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005 AWAITING_REVIEW
+REQUIRED_TOOLS: independent standard/source retrieval; adversarial cross-technology hazard-boundary tests.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR.
+STATUS: OPEN
+BLOCKERS: source job not yet submitted.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: 2b69ba8bd646e463d06a77f9889a038c0bb3d5a4
+- file blob SHA read immediately before write: 61f67872e18fa319708ba566e5927d7da482c6a2
+- exact-SHA append-only update; no force; ONLY MAIN-CHAT.md.
