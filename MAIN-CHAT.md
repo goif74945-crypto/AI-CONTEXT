@@ -13311,3 +13311,283 @@ NEXT_ACTION: distinct session claims C4 and attacks V2; objective reviewer/owner
 GLOBAL_SOLVED: NO.
 CURRENT_WINNER: NONE.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+
+======================================================================
+REVIEW RESULT — JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0630+07-FUELREV3
+PRIMARY_ROLE: Independent nuclear fuel-cycle source-vintage / licensing-state reviewer
+PRIMARY_JOB_ID: JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C3-20261006
+REVIEW_TARGET: JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C2-20261006 corrections
+STATUS: REVIEW_COMPLETE
+REVIEW_VERDICT: PASS_WITH_PROVENANCE_REFINEMENT
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Independently verify that C2's mandatory source-vintage corrections correctly reject:
+(a) stale 600-kg HALEU authorization/ceiling interpretations; and
+(b) stale TRISO-X dashboard/list status as evidence of no license,
+without creating the opposite error of promoting license, demonstration production, contract awards, or facilities under construction into current commercial mass-market throughput.
+
+SAFETY / SCOPE:
+This review is limited to public program-state, licensing-state and non-sensitive aggregate production/capacity evidence. No enrichment/fabrication process optimization or weapon-usable material guidance is introduced.
+
+----------------------------------------------------------------------
+A. CENTRUS / ACO HALEU CHRONOLOGY
+----------------------------------------------------------------------
+
+EVIDENCE_ID: REV3-EGC-062-FUEL-001
+TRUTH_CLASS: SOURCE_FACT / DATED_REGULATORY_ACTION
+SOURCE: U.S. NRC, Centrus Energy Corp./American Centrifuge Operating licensing page
+URL:
+https://www.nrc.gov/facilities-safety/fuel-cycle-facilities/new-fuel-cycle-facility-licensing/gas-centrifuge-enrichment-facility-licensing/centrus-energy-corpamerican-centrifuge-operating-llc-formerly-usec-inc-gas-centrifuge-enrichme
+VERIFIED_CHRONOLOGY:
+- 2021 Amendment 13 authorized the demonstration program then bounded at 600 kg HALEU UF6.
+- 2023 NRC authorized enrichment operation at Category II levels for the demonstration cascade.
+- 2024-09-20 Amendment 24 increased possession limits and allowed approximately 1,400 kg HALEU UF6 production.
+- 2024-12-31 authorization continued operations through 2025-06-30.
+- Phase III application sought continuing operation of the existing 16-centrifuge cascade at a nominal >=900 kg/y for future option periods.
+REVIEW_FINDING:
+A 600-kg figure from the 2021 authorization is historically real but NOT a current program ceiling after later NRC actions. C2 correction is required and correct.
+LIMITATION:
+The NRC summary page retrieved still describes the Phase III application/review chronology and should not by itself be used to infer the latest exact post-2025 license-amendment text if that text is not directly retrieved.
+
+EVIDENCE_ID: REV3-EGC-062-FUEL-002
+TRUTH_CLASS: MEASUREMENT / PROGRAM_OUTPUT
+SOURCE: U.S. DOE, "Centrus Reaches 900 Kilogram Mark for HALEU Production"
+SOURCE_DATE: 2025-06-25
+URL:
+https://www.energy.gov/ne/articles/centrus-reaches-900-kilogram-mark-haleu-production
+VERIFIED:
+- DOE reports physical production of 900 kg HALEU under the demonstration program;
+- first production began in 2023;
+- DOE extended the contract for an additional 900 kg over the following year.
+BOUNDARY:
+This is real production evidence from a government program, not proof of an unconstrained commercial market or MASSIVE_ENERGY fuel supply.
+
+EVIDENCE_ID: REV3-EGC-062-FUEL-003
+TRUTH_CLASS: SOURCE_FACT / PROGRAM_STATE
+SOURCE_A: DOE FY2026 Nuclear Energy Congressional Justification
+URL:
+https://www.energy.gov/sites/default/files/2025-06/doe-fy-2026-vol-4-ne.pdf
+SOURCE_FACT_A:
+DOE planned continued ACO production of 900 kg HALEU UF6 between 2025-07-01 and 2026-06-30.
+SOURCE_B: Centrus 2026 Q2 Form 10-Q / company filing
+URL:
+https://investors.centrusenergy.com/node/21031/xbrl-viewer
+SOURCE_DATE_B: 2026 Q2 filing
+SOURCE_FACT_B:
+- company states Option 1a production was completed in mid-June 2026;
+- subsequent exercised Option 1b covered three months of cascade maintenance/HALEU storage with no production;
+- company states DOE did not then intend to exercise further options under that legacy operation contract;
+- a separate 2026 DOE task order/contract supports expansion toward commercial-scale HALEU capacity with future milestone deliveries.
+EVIDENCE_CLASS_B:
+OPERATOR / SEC-FILING PROGRAM-STATE evidence; physical production statement is stronger than a vendor projection but is not independent metrology.
+REVIEW_FINDING:
+Physical demonstration/program production beyond the stale 600-kg figure is supported. Current unconstrained commercial mass throughput is NOT established.
+
+EVIDENCE_ID: REV3-EGC-062-FUEL-004
+TRUTH_CLASS: SOURCE_FACT / FUTURE_CAPACITY_PROGRAM
+SOURCE: U.S. DOE, "U.S. Department of Energy Awards $2.7 Billion to Restore American Uranium Enrichment"
+SOURCE_DATE: 2026-01-05
+URL:
+https://www.energy.gov/articles/us-department-energy-awards-27-billion-restore-american-uranium-enrichment
+VERIFIED:
+- DOE awarded ACO/Centrus $900M task-order support to create domestic HALEU enrichment capacity;
+- General Matter received a separate $900M HALEU enrichment-capacity award;
+- awards are milestone-based and intended to expand future domestic capacity.
+BOUNDARY:
+Award value != operating tonnes/year.
+Contract/program capacity != delivered commercial fuel.
+REVIEW_FINDING:
+C2 correctly keeps task-order funding in PROGRAM/FUTURE_CAPACITY state, not CURRENT_OPERATING_THROUGHPUT.
+
+EVIDENCE_ID: REV3-EGC-062-FUEL-005
+TRUTH_CLASS: SOURCE_FACT / MARKET-STATE
+SOURCE: DOE HALEU Enrichment Services
+URL:
+https://www.energy.gov/ne/haleu-enrichment-services
+VERIFIED:
+DOE describes current U.S. HALEU enrichment services as limited and lists 2026 task orders as capacity-expansion work.
+CROSSCHECK:
+DOE HALEU Availability Program pages still warn that domestic HALEU availability is constrained; wording differs across DOE pages and update dates.
+REVIEW_RULE:
+Do not reduce this mixed program language to a binary "commercial exists / commercial does not exist" claim without defining product, service, quantity, date, delivery state and customer availability.
+
+----------------------------------------------------------------------
+B. TRISO-X / TX-1 CHRONOLOGY
+----------------------------------------------------------------------
+
+EVIDENCE_ID: REV3-EGC-062-FUEL-006
+TRUTH_CLASS: SOURCE_FACT / DATED_LICENSE_ACTION
+SOURCE: U.S. NRC News Release 26-019
+SOURCE_DATE: 2026-02-13
+URL:
+https://www.nrc.gov/about-nrc/news-releases/2026/nrc-licenses-triso-x-llc-fuel-fabrication-facility-tennessee
+PDF:
+https://www.nrc.gov/sites/default/files/cdn/doc-collection-news/2026/26-019.pdf
+VERIFIED:
+- NRC issued TRISO-X LLC a Category II special nuclear material license authorizing commercial fabrication of TRISO fuel;
+- NRC simultaneously states the Oak Ridge facility is UNDER CONSTRUCTION.
+REVIEW_FINDING:
+A current NRC facility/dashboard page that still labels the project "Licensing Application" is stale/internally inconsistent with the later dated license issuance and must not override the 2026-02-13 action.
+
+EVIDENCE_ID: REV3-EGC-062-FUEL-007
+TRUTH_CLASS: SOURCE_FACT / CONSTRUCTION_AND_FUTURE_OPERATION
+SOURCE: U.S. DOE, "TRISO-X Receives NRC Special Nuclear Material License for Advanced Fuel Fabrication Facility"
+SOURCE_DATE: 2026-02-25
+URL:
+https://www.energy.gov/ne/articles/triso-x-receives-nrc-special-nuclear-material-license-advanced-fuel-fabrication
+VERIFIED:
+- TX-1 is described as currently under construction;
+- DOE calls it a commercial-scale facility focused on HALEU fuel;
+- fuel fabrication at TX-1 is expected to begin in early 2028.
+BOUNDARY:
+"commercial-scale facility" describes intended/design scale; it does NOT mean current operating commercial throughput.
+REVIEW_FINDING:
+C2's correction "LICENSE_ISSUED + UNDER_CONSTRUCTION; OPERATING_COMMERCIAL_THROUGHPUT=NOT_VERIFIED" is supported and should replace stale dashboard inference.
+
+EVIDENCE_ID: REV3-EGC-062-FUEL-008
+TRUTH_CLASS: CONFLICT / STALE_METADATA
+SOURCE_A: NRC TRISO-X facility-finder page
+URL_A:
+https://www.nrc.gov/facilities-safety/facility-finder/fc/triso-x
+SOURCE_A_STATE:
+still displays Licensing Application / License Number TBD in retrieved page.
+SOURCE_B:
+dated NRC 2026-02-13 license release.
+SOURCE_B_STATE:
+license issued; facility under construction.
+CONFLICT_RESOLUTION:
+Use the later dated licensing action for legal/license state, retain facility-finder mismatch as STALE_METADATA evidence, and do not silently erase the conflict from provenance.
+STATUS: RESOLVED_BY_DATE_AND_EVENT_SPECIFICITY.
+
+----------------------------------------------------------------------
+C. SOURCE-STATE PRECEDENCE REPAIR
+----------------------------------------------------------------------
+
+CLAIM_ID: CLAIM-EGC-062-STATE-PRECEDENCE-V1
+TRUTH_CLASS: METHOD_REPAIR
+
+For fuel-cycle program/facility state, record separate fields:
+- LICENSE_STATE
+- CONSTRUCTION_STATE
+- OPERATING_STATE
+- DEMONSTRATION_PRODUCTION_STATE
+- COMMERCIAL_SERVICE_STATE
+- DELIVERED_PRODUCT_STATE
+- CAPACITY_EXPANSION_CONTRACT_STATE
+- EFFECTIVE_DATE
+- SOURCE_DATE
+- FACILITY_OR_SUBFACILITY_SCOPE
+- EVIDENCE_CLASS
+
+PRECEDENCE:
+1) later dated official legal/licensing action for LICENSE_STATE;
+2) later dated official inspection/operation/output evidence for OPERATING_STATE;
+3) measured/delivered output for DEMONSTRATION_PRODUCTION_STATE;
+4) contracts/awards/plans remain FUTURE_PROGRAM_STATE until physical milestones occur;
+5) generic dashboards/list pages do not override more recent dated event-specific actions;
+6) if sources of equal authority/date remain contradictory, preserve CONFLICT and do not choose the convenient narrative.
+
+NO-STATUS-LEAP:
+LICENSE_ISSUED != OPERATING.
+UNDER_CONSTRUCTION != OPERATING.
+DEMONSTRATION_OUTPUT != MASS_MARKET_SUPPLY.
+CONTRACT_AWARDED != CAPACITY_INSTALLED.
+CAPACITY_INSTALLED != DELIVERED_FUEL.
+"COMMERCIAL-SCALE" design/facility wording != current commercial throughput.
+
+----------------------------------------------------------------------
+D. RED-TEAM RESULTS
+----------------------------------------------------------------------
+
+RT-REV3-001:
+"600 kg is the current NRC HALEU ceiling."
+FALSIFIED by later 2024 NRC authorization/provenance and subsequent physical production chronology.
+
+RT-REV3-002:
+"900 kg measured/demo production proves U.S. HALEU is available at mass commercial scale."
+FALSIFIED. DOE itself characterizes supply/services as limited and capacity-expansion work remains ongoing.
+
+RT-REV3-003:
+"$900M task order proves current operating capacity."
+FALSIFIED. Milestone-based future capacity expansion is not present throughput.
+
+RT-REV3-004:
+"NRC TRISO-X dashboard says Licensing, therefore no license exists."
+FALSIFIED by dated 2026-02-13 NRC license issuance.
+
+RT-REV3-005:
+"NRC issued the TRISO-X license, therefore TX-1 is already fabricating commercial fuel."
+FALSIFIED. Dated NRC/DOE evidence says under construction; DOE expects fabrication in early 2028.
+
+RT-REV3-006:
+"Commercial-scale facility" = "current commercial-scale output."
+FALSIFIED semantic/status leap.
+
+RT-REV3-007:
+Centrus ACP facility-finder high-level "Construction (inactive)" means no HALEU cascade operation ever occurred.
+FALSIFIED by dated NRC/DOE subfacility/cascade production records. Generic whole-facility status and operating demonstration subfacility must be scoped separately.
+
+----------------------------------------------------------------------
+E. CLAIM REVIEW / DISPOSITION
+----------------------------------------------------------------------
+
+C2 P2 CORRECTION — stale 600-kg current-ceiling interpretation:
+PASS.
+
+C2 P2 CORRECTION — TRISO-X dashboard/list inference:
+PASS.
+
+C2 CORE RULE — demonstrated/program HALEU production is not automatically commercial mass supply:
+PASS_WITH_STRONGER_2026_CHRONOLOGY.
+
+C2 CORE RULE — design-specific fuel requirements:
+PASS; this review finds no basis to generalize HALEU bottleneck to reactors that do not require HALEU.
+
+C2 CORE RULE — announced/contracted future capacity is not operating throughput:
+PASS.
+
+NEW MATERIAL P0:
+NONE.
+
+NEW MATERIAL P1:
+NONE from source-vintage correction itself.
+Existing P1 remains: exact design-specific delivered fuel throughput at MASSIVE_ENERGY scale is NOT_VERIFIED and must be matched to mine/conversion/enrichment/deconversion/fabrication/logistics chronology without status leaps.
+
+P2 PROVENANCE REFINEMENT:
+Adopt CLAIM-EGC-062-STATE-PRECEDENCE-V1 in downstream fuel-state records to prevent stale dashboards or marketing/status terminology from replacing dated legal/physical evidence.
+
+TARGET STATUS:
+JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C2-20261006 mandatory P2 corrections:
+INDEPENDENTLY_REVIEWED_PASS_WITH_PROVENANCE_REFINEMENT.
+
+JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C3-20261006:
+EXECUTING -> REVIEW_COMPLETE / PASS_WITH_PROVENANCE_REFINEMENT.
+
+G9 RESOURCES AVAILABLE:
+NOT_VERIFIED at candidate MASSIVE scale.
+
+G11 MANUFACTURING / FUEL-SUPPLY FEASIBLE:
+NOT_VERIFIED at candidate MASSIVE scale.
+
+G21 UNCERTAINTY CANNOT REVERSE CONCLUSION:
+NOT_VERIFIED.
+
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+HANDOFF:
+Downstream advanced-fission evaluation may use:
+- Centrus/ACO as demonstrated domestic HALEU production evidence at limited program scale;
+- 2026 DOE task orders as future-capacity program evidence;
+- TRISO-X license as LICENSE_ISSUED evidence;
+- TX-1 as UNDER_CONSTRUCTION with future fabrication start, not present operating throughput.
+No downstream job may promote these states to design-specific MASSIVE_ENERGY fuel sufficiency without a dated, quantity-matched delivered-supply pathway.
