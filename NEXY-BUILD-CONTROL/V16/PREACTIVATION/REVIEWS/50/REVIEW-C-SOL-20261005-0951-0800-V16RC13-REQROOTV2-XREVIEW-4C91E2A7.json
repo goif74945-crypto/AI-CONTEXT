@@ -3,82 +3,39 @@
   "REVIEW_ID": "REVIEW-C-SOL-20261005-0951-0800-V16RC13-REQROOTV2-XREVIEW-4C91E2A7",
   "REVIEWER_CHAT_ID": "C-SOL-20261005-0951-0800-V16RC13-REQROOTV2-XREVIEW-4C91E2A7",
   "REVIEWER_MEMBERSHIP_ID": "PRE-5011ab6687e93391523330e083974abd",
-  "REVIEW_KIND": "INDEPENDENT_REQUIREMENT_ROOT_SCHEMA_V2_DETERMINISM_CROSS_REVIEW",
+  "REVIEW_KIND": "INDEPENDENT_REQUIREMENT_ROOT_SCHEMA_V2_DELTA_CROSS_REVIEW",
   "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
   "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "REVIEWED_PATH": "NEXY-BUILD-CONTROL/V16/GENESIS/REQUIREMENT_ROOT_SCHEMA_V2.json",
   "REVIEWED_BLOB_SHA": "b862c97f07fc1b19446f818b0c50b66bdc9302e4",
-  "REVIEWED_V1_REVIEW_ID": "REVIEW-C-SOL-20261005-1737Z-V16RC13-REQUIREMENT-ROOT-SCHEMA-0F1B58AB",
-  "V1_REPAIR_RECHECK": {
-    "RR1_DOC_C_ONLY_BUILD_AUTHORITY_VIOLATION": "PASS_INTENT_REPAIRED",
-    "RR2_NEGATIVE_BUILD_OBLIGATIONS_DROPPED": "PASS_INTENT_REPAIRED",
-    "RR3_RECONCILIATION_COMPLETENESS_NOT_HASH_BOUND": "PASS_INTENT_REPAIRED",
-    "RR4_DOC_D_SUPPORT_SEMANTICS_TOO_WEAK": "PASS_INTENT_REPAIRED",
-    "RR5_ROOT_FIELD_TYPES_AND_NORMALIZATION_UNDEFINED": "PARTIAL_REPAIR_REMAINS_BLOCKING",
-    "RR6_MUTABLE_ACCOUNTING_IN_DENOMINATOR_ROOT": "PASS_REPAIRED",
-    "RR7_773_COUNT_LABEL_AMBIGUITY": "PASS_REPAIRED"
+  "CANONICAL_PEER_REVIEW": {
+    "COMMIT_SHA": "b11be38e0777e1b4aa04b27790617d2ff4f2fd6c",
+    "REVIEW_ID": "REVIEW-C-SOL-20261005-0950-0800-V16RC13-REQUIREMENT-ROOT-SCHEMA-V2",
+    "RELATION": "AGREES_WITH_V2R1_V2R5_AND_DOES_NOT_REPEAT_THEM"
   },
-  "POSITIVE_FINDINGS": [
-    "Every ACTIVE reconciliation decision is now required to carry final DOC-C normative incorporation within primary paragraphs 9886..10499.",
-    "Final DOC-C MUST_NOT/non-goal requirements are retained as ACTIVE_FINAL_DOC_C_NEGATIVE with PROHIBIT polarity.",
-    "ACTIVE_BUILD root now binds source-enumeration and complete authority-reconciliation roots and forbids unresolved reconciliation.",
-    "Mutable accounting/evidence status is excluded from denominator roots.",
-    "The zero-based matrix to one-based primary paragraph transform is explicitly defined and agrees with sampled matrix/final-index boundaries."
-  ],
-  "BLOCKING_REVIEW_FINDINGS": [
+  "VERIFIED_SHARED_CONCLUSION": "REQUIREMENT_ROOT_SCHEMA_V2 is not ready for deterministic root materialization.",
+  "DELTA_BLOCKING_REVIEW_FINDINGS": [
     {
-      "ID": "V2D1_OBLIGATION_ID_DERIVATION_UNDEFINED",
+      "ID": "V2D6_PRIMARY_OBLIGATION_REPRESENTATION_EQUIVALENCE_UNDEFINED",
       "SEVERITY": "P0_CONTROL_DENOMINATOR",
-      "DETAIL": "ACTIVE_BUILD_REQUIREMENT_ROOT_HASH and DEPLOYMENT_EVIDENCE_REQUIREMENT_ROOT_HASH require hash-bearing obligation_id fields, but V2 defines only type=string and no canonical derivation/domain from source_entry_id, polarity, authority refs, or requirement identity. Two conforming materializers can choose different IDs for the same obligation and produce different roots.",
-      "REQUIRED_REPAIR": "Define one deterministic obligation identity object plus exact JCS/SHA-256 or other canonical derivation, collision handling, and uniqueness rule; use it identically in active-build and deployment roots."
+      "DETAIL": "The PRIMARY_OMISSION_RULE requires adding a PRIMARY_FINAL_DOC_C_OMISSION when a normative final DOC-C obligation is not represented by a matrix row, but V2 defines no deterministic equivalence/matching rule for represented-by. Even after deterministic omission IDs are added, peers can legitimately disagree whether an omission exists at all, changing SOURCE_ENUMERATION_ROOT_HASH and every downstream root.",
+      "REQUIRED_REPAIR": "Define a canonical final-DOC-C obligation enumeration/anchor manifest and deterministic matrix-to-primary coverage relation. Exact match, allowed normalization, one-to-many/many-to-one mapping, duplicate handling, conflicts and ambiguous matches must be machine-checkable; ambiguous coverage must fail closed."
     },
     {
-      "ID": "V2D2_PRIMARY_OMISSION_IDENTITY_AND_EQUIVALENCE_UNDEFINED",
-      "SEVERITY": "P0_CONTROL_DENOMINATOR",
-      "DETAIL": "SOURCE_ENUMERATION_ROOT_HASH introduces PRIMARY_FINAL_DOC_C_OMISSION but does not define deterministic source_entry_id generation or the equivalence test for whether a final DOC-C normative obligation is already represented by a matrix row. Different peers can disagree on omission count and identity while each follows the prose rule.",
-      "REQUIRED_REPAIR": "Define a canonical final-DOC-C obligation enumeration/anchor manifest, deterministic matrix-to-primary matching/equivalence rule, deterministic omission source_entry_id derivation, and explicit duplicate/conflict behavior."
-    },
-    {
-      "ID": "V2D3_ACCEPTANCE_CRITERIA_DERIVATION_UNDEFINED",
+      "ID": "V2D7_DECISION_POLARITY_VALIDITY_MATRIX_MISSING",
       "SEVERITY": "P0_CONTROL_AUTHORITY",
-      "DETAIL": "validation_acceptance_criteria is mandatory and hash-bearing for active-build and deployment entries, but V2 does not define how criteria are derived from locked Spec text, source anchors, or immutable evidence. Free-form paraphrase can alter both denominator identity and closure semantics.",
-      "REQUIRED_REPAIR": "Bind each criterion to exact authoritative source refs and define deterministic extraction/normalization or use immutable criterion records with independently verified IDs/hashes; forbid free-form unbound synthesis inside denominator roots."
-    },
-    {
-      "ID": "V2D4_DEPENDENCY_IDENTITY_RESOLUTION_UNDEFINED",
-      "SEVERITY": "P0_CONTROL_DENOMINATOR",
-      "DETAIL": "Matrix normalization preserves Dependencies only as dependencies_source_text, while ACTIVE_BUILD entries require dependencies_identity as source_entry_id strings. V2 defines no deterministic parser/resolver from source dependency text or normative relations to those IDs.",
-      "REQUIRED_REPAIR": "Define canonical dependency extraction and resolution, unresolved/ambiguous dependency state, ordering, self/cycle handling, and fail-closed rules before root materialization."
-    },
-    {
-      "ID": "V2D5_REFERENCE_AND_EVIDENCE_SHAPES_UNDERSPECIFIED",
-      "SEVERITY": "P0_CONTROL_DETERMINISM",
-      "DETAIL": "Reconciliation reference/evidence fields have no exact JSON object schema. The normalization contract mentions paragraph_1_based+anchor reference ordering while some field names can also be read as integer arrays; supporting_refs likewise names canonical reference objects without defining their exact fields.",
-      "REQUIRED_REPAIR": "Define exact reference/evidence object schemas, required/nullable fields, integer/string types, source identity, anchor normalization, duplicate rules, and canonical sorting for every hash-bearing reference array."
-    },
-    {
-      "ID": "V2D6_DECISION_POLARITY_VALIDITY_MATRIX_MISSING",
-      "SEVERITY": "P0_CONTROL_AUTHORITY",
-      "DETAIL": "Reconciliation defines DECISIONS and POLARITY_VALUES but no mandatory decision-to-polarity matrix. ACTIVE_FINAL_DOC_C_POSITIVE can therefore be paired with PROHIBIT or ACTIVE_FINAL_DOC_C_NEGATIVE with REQUIRE without an explicit schema rejection, allowing semantic inversion.",
-      "REQUIRED_REPAIR": "Define and validate an exact decision/polarity matrix: positive->REQUIRE, negative->PROHIBIT, plus the allowed polarity for every non-active decision; reject all other pairs."
-    },
-    {
-      "ID": "V2D7_ROOT_AND_RECONCILIATION_FIELD_TYPES_STILL_INCOMPLETE",
-      "SEVERITY": "P1_CONTROL_DETERMINISM",
-      "DETAIL": "V2 repairs matrix column types and ACTIVE_BUILD entry types, but exact JSON types/nullability remain absent for multiple ROOT_OBJECT fields, reconciliation entries, PRIMARY_OMISSION entries, deployment entries, generation/count fields, and evidence references. RR5 is therefore only partially repaired.",
-      "REQUIRED_REPAIR": "Provide complete machine-checkable type contracts for every hash-domain field across all roots, including null/empty representation and integer bounds where applicable."
+      "DETAIL": "AUTHORITY_RECONCILIATION_ROOT_HASH defines DECISIONS and POLARITY_VALUES but no mandatory decision-to-polarity validity matrix. As written, ACTIVE_FINAL_DOC_C_POSITIVE can be paired with PROHIBIT or ACTIVE_FINAL_DOC_C_NEGATIVE with REQUIRE without an explicit schema violation, and ACTIVE_BUILD then retains that polarity. This permits semantic inversion inside a hash-valid manifest.",
+      "REQUIRED_REPAIR": "Define and enforce the exact allowed polarity for every reconciliation decision. At minimum ACTIVE_FINAL_DOC_C_POSITIVE->REQUIRE and ACTIVE_FINAL_DOC_C_NEGATIVE->PROHIBIT must be mandatory; all invalid pairs must reject materialization."
     }
   ],
   "REVIEW_VERDICT": "CHANGES_REQUIRED_BEFORE_ROOT_MATERIALIZATION",
-  "ACTIVE_BUILD_ROOT_READY": false,
-  "SOURCE_ENUMERATION_ROOT_READY": false,
-  "DEPLOYMENT_ROOT_READY": false,
+  "DELTA_IS_DUPLICATE_OF_CANONICAL_REVIEW": false,
   "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
   "TARGET_INTEGRATION_PERFORMED": false,
   "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "SELF_CERTIFICATION": false,
   "NON_CLAIMS": [
-    "This cross-review does not claim the blocker list is exhaustive.",
-    "This review does not alter the product repository or either product branch.",
-    "This review does not authorize legacy drain, mission-fence genesis, activation, product mutation, or integration."
+    "Canonical peer review b11be38e already covers identity construction, reference object schemas, dependency/acceptance derivation, reconciliation types and deployment entry types; those findings are intentionally not duplicated here.",
+    "This delta review does not authorize activation or product mutation."
   ]
 }
