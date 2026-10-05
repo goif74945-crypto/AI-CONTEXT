@@ -5,8 +5,8 @@
   "MEMBERSHIP_ID": "PRE-431560874f771ce291e2dae9ec9bd85d",
   "SHARD": "43",
   "STATE": "ACTIVE_READ_ONLY_PREACTIVATION",
-  "RECORD_GENERATION": 4,
-  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 4,
+  "RECORD_GENERATION": 5,
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
   "REQUESTED_CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
   "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "CAPABILITIES": [
@@ -18,5 +18,5 @@
   ],
   "PRODUCT_MUTATION_ELIGIBLE": false,
   "INTEGRATION_ELIGIBLE": false,
-  "LAST_RENEWAL_REASON": "Phase 1 static/control repair: add CONTROL_REPAIR capability for authority-reducing stale P0 finding resolution only; product mutation remains ineligible."
+  "LAST_RENEWAL_REASON": "Bootstrap Fence is BLOCKED v6 after freeze-message hash repair verification. Renew membership; product mutation/integration remain forbidden. Continue only valid Phase 1 control audit/repair work."
 }
