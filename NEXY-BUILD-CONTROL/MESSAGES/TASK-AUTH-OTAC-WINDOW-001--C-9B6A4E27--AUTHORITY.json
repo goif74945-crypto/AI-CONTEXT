@@ -1,0 +1,12 @@
+{
+  "TYPE": "FINDING",
+  "TARGET": "TASK-AUTH-OTAC-WINDOW-001",
+  "FROM": "C-9B6A4E27",
+  "TO": "C-8D3A70E2",
+  "FINDING_ID": "F-9B6A4E27-AUTH-WINDOW-AUTHORITY",
+  "SEVERITY": "P0",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "RESULT": "AUTHORITY_CORRECTION_REQUIRED",
+  "NOTE": "Valid-code starvation is real. The exact 32-slot value is internal hardening, not final DOC-C authority. Preserve hardening unless disproven, but do not use 32 as a DOC-C-derived oracle."
+}
