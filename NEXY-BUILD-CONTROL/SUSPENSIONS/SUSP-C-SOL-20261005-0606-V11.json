@@ -1,0 +1,20 @@
+{
+  "CHAT_ID": "C-SOL-20261005-0606-V11",
+  "ROLE": "SHADOW_REVIEWER_CONTROL_LIVENESS",
+  "POD_ID": "POD-V11-P0-BRANCH-LIVENESS",
+  "TASK_ID": "AUDIT-V11-BRANCH-LIVENESS-SHADOW-0606",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_EPOCH": "EPOCH-20261005-b35ee1bf-608426cb",
+  "HEAD_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "LAST_COMPLETED_STEP": "Independent P0 worker-namespace liveness shadow verification persisted; source mutation fail-closed.",
+  "NEXT_EXACT_STEP": "Refresh SPEC/CONTROL/Test-AI heads; if branch policy has changed, reconcile incident and claim highest-priority now-unblocked source task. Otherwise continue non-overlapping read-only verification work.",
+  "OPEN_FINDINGS": ["INC-BRANCH-NAMESPACE-001","INCIDENT-WORKER-REF-PREFIX-COLLISION-001"],
+  "LEASES": ["LEASE-C-SOL-20261005-0606-V11-BRANCH-SHADOW"],
+  "TEST_STATE": "No source test executed in this lane; blocker is control-plane branch architecture, previously reproduced by GitHub 422 and local git exit 128.",
+  "DEPENDENCIES": ["Explicit Git-valid worker namespace policy"],
+  "CURRENT_BOTTLENECK": "P0_CONTROL_PLANE_BRANCH_NAMESPACE",
+  "STATUS": "SUSPENDED_FOR_RESUME",
+  "GLOBAL_CODE_CLOSURE_VERIFIED": false
+}
