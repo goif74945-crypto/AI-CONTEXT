@@ -35,6 +35,14 @@ This lab turns that tension into deterministic, testable policy.
 - `00_MISSION_STATE.md` — initial durable mission checkpoint.
 - `PUBLICATION_MANIFEST.sha256` — local staging SHA-256 provenance.
 - `FINAL_STATE.md` — post-publication read-back status when available.
+- `authority_provenance.py` — W2 authority evidence and policy/schema identity.
+- `transaction_graph.py` — W3 dependency DAG and aggregate dominance.
+- `counterfactual_minimizer.py` — W4 bounded minimal legal friction reductions.
+- `assurance_harness.py` — W5 exhaustive/adversarial property harness.
+- `confirmation_coalescer.py` — W6 boundary-safe interaction batching.
+- `agency_semantic_contract.py` — W7 lossless agency-specific presentation contract.
+- Matching `test_*.py` files and `fixtures/semantic_scenarios.json` — executable regression evidence.
+- `FINAL_MANIFEST.sha256` and `CHECKPOINT-003-W8-COMPLETE.md` — W8 final integrity boundary and completion certificate.
 
 ## Non-goals / protected boundary
 
@@ -206,18 +214,18 @@ Mitigation: documentation limits claims. This engine is one control layer, not e
 
 ---
 
-## RESEARCH BACKLOG
+## INITIAL RESEARCH BACKLOG — IMPLEMENTATION STATUS
 
-Everything below is **AI-proposed future work**, not implemented product behavior.
+Everything below remains **AI-proposed and non-canonical**. R1–R5 and R7–R8 were developed into standalone W2–W7 artifacts in this mission; this does not make them NEXY product behavior. R6 remains unimplemented and was not part of the bounded W8 completion contract.
 
-- **R1 Authority provenance binding:** replace `explicit_user_authority: bool` with a traceable authority-reference object.
-- **R2 Policy version digest:** bind every decision digest to exact policy and normalization schema versions.
-- **R3 Multi-action transaction planner:** evaluate dependency graphs so risky actions cannot hide inside benign batches.
-- **R4 Confirmation coalescing:** merge compatible confirmations without losing per-action auditability.
-- **R5 Counterfactual UX score:** calculate the smallest change in reversibility, ambiguity or scope that would remove a hard gate.
-- **R6 Preference overlays:** let user preferences increase interaction strictness without weakening canonical hard gates.
-- **R7 Property-based boundary testing:** expand randomized invariants and monotonicity tests.
-- **R8 Real UI prototype:** prototype concise four-state interaction semantics for NEXY VIEW/DIALOG.
+- **R1 Authority provenance binding:** implemented as W2 standalone prototype.
+- **R2 Policy version digest:** implemented as part of W2 identity binding.
+- **R3 Multi-action transaction planner:** implemented as W3 standalone prototype.
+- **R4 Confirmation coalescing:** implemented as W6 standalone prototype.
+- **R5 Counterfactual UX score:** implemented as W4 bounded minimizer.
+- **R6 Preference overlays:** not implemented; future scope only.
+- **R7 Property-based boundary testing:** implemented as W5 deterministic bounded assurance.
+- **R8 UI semantics:** implemented as a W7 machine-readable semantic contract, not a real NEXY UI and not browser/accessibility conformance evidence.
 
 ---
 
@@ -394,3 +402,11 @@ On resume:
 6. Re-run tests if implementation/test/scenario files change.
 7. Do not claim universal uniqueness from search absence.
 8. Continue from the latest durable checkpoint rather than reconstructing from model memory.
+
+---
+
+## CHECKPOINT 003 — BOUNDED MISSION COMPLETE
+
+W1–W7 now provide seven standalone, mutually supporting prototype layers. W8 reconciled stale claims, created `FINAL_MANIFEST.sha256`, and reran the exact committed executable artifacts from a fresh GitHub clone: `119/119` tests passed, the original scenario corpus passed `11/11`, all fixtures parsed, compilation passed, and `git diff --check` was clean.
+
+See `CHECKPOINT-003-W8-COMPLETE.md` and the superseding completion section in `FINAL_STATE.md`. Exact next legal action: read-only integrity/freshness audit unless an authoritative new scope or concrete integrity defect appears.
