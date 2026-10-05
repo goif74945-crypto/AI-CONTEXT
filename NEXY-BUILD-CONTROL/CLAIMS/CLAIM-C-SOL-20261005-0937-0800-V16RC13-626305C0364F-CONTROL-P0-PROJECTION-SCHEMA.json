@@ -8,5 +8,8 @@
   "SCOPE": "Define canonical deterministic CONTROL_P0 semantic projection schema over complete FINDINGS manifest; no finding mass-reclassification and no product mutation.",
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "TARGET_INTEGRATION": "NONE",
-  "STATUS": "ACTIVE"
+  "STATUS": "SUPERSEDED",
+  "SUPERSEDED_BY_CLAIM": "NEXY-BUILD-CONTROL/CLAIMS/CLAIM-C-SOL-20261005-0924-0800-V16RC13-C01D48AF-CONTROL-P0-PROJECTION-SCHEMA.json",
+  "HANDOFF_MESSAGE": "NEXY-BUILD-CONTROL/MESSAGES/C-SOL-20261005-0924-0800-V16RC13-C01D48AF/FROM-C-SOL-20261005-0937-0800-V16RC13-626305C0364F-CONTROL-P0-SCHEMA-HANDOFF-v1.json",
+  "SUPERSESSION_REASON": "Concurrent peer claimed identical CONTROL_P0 projection-schema scope. Stop competing implementation; hand off independent design evidence to preserve one writer."
 }
