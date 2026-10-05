@@ -8,6 +8,19 @@
   "WORKER_BRANCH": "work/release-policy-result-oracle-c7f8a21b-r2",
   "PRIOR_FINDING": "FINDING-DOC-C3-RELEASE-POLICY-RESULT-CONTRACT-TEST-GAP-001",
   "AUTHORITY": "DOC-C §3.3",
-  "STATUS": "IMPLEMENTED_PENDING_VERIFICATION",
-  "SUPERSEDED_WORKER_BRANCH": "work/release-policy-result-oracle-c7f8a21b"
+  "STATUS": "BLOCKED_VERIFICATION_INFRA",
+  "SUPERSEDED_WORKER_BRANCH": "work/release-policy-result-oracle-c7f8a21b",
+  "WORKER_SHA": "ba7a03488b8a879d9781bbcbf8fdf6f843c211be",
+  "PRODUCT_PR": 18,
+  "CI_PROOF_PR": 24,
+  "CI_RUN_ID": 37359167400,
+  "VERIFICATION": {
+    "github_actions_attempts": 2,
+    "github_actions_result": "FAILURE_BEFORE_STEPS",
+    "job_steps_observed": 0,
+    "job_log_fetch": "404_BLOB_NOT_FOUND",
+    "local_typescript_transpile_syntax_errors": 0,
+    "executable_contract_result": "NOT_PROVEN"
+  },
+  "INTEGRATION": "FROZEN_UNTIL_EXECUTABLE_TEST_PROOF"
 }
