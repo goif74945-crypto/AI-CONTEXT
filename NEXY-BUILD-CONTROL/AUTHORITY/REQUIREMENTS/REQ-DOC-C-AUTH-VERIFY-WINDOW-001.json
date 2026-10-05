@@ -1,0 +1,24 @@
+{
+  "REQ_ID": "REQ-DOC-C-AUTH-VERIFY-WINDOW-001",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "UNAVAILABLE_IN_DOCX_EXTRACTION",
+  "SPEC_LINES": "10071-10105; 10853-10860 (final DOC-C paragraph extraction)",
+  "SPEC_TEXT": "verify-otac must verify a valid one-time code and create a session; OTAC is one-time use.",
+  "AUTHORITY_CLASS": "DOC-C_BUILD_SPEC_FINAL",
+  "EXPECTED_BEHAVIOR": [
+    "A newly issued non-expired unconsumed OTAC remains reachable regardless of older retained OTAC history.",
+    "A bounded 32-slot scan selects the semantically relevant candidate window.",
+    "TypeScript and Rust preserve equivalent bounded-window behavior."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Retained old rows occupy all 32 fetched slots and exclude a newer valid OTAC.",
+    "Return AUTH_INVALID solely because the valid active OTAC is outside an incorrectly ordered bounded query."
+  ],
+  "AFFECTED_SYSTEMS": ["Auth API", "OTAC persistence", "TypeScript/Rust parity", "Auth availability"],
+  "DEPENDENCIES": [],
+  "IMPLEMENTATION_PATHS": ["packages/api/auth.ts", "prisma/schema.prisma", "core-kernel/src/auth/email_gate.rs"],
+  "TEST_PATHS": ["tests/coverage/auth-decision-paths.test.ts", "tests/integration/auth/"],
+  "STATUS": "MISMATCH",
+  "LAST_VERIFIED_SHA": null,
+  "SOURCE_BASELINE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96"
+}
