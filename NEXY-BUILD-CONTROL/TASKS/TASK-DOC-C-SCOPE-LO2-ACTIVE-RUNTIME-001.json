@@ -1,0 +1,33 @@
+{
+  "TASK_ID": "TASK-DOC-C-SCOPE-LO2-ACTIVE-RUNTIME-001",
+  "CREATOR_CHAT": "C-SOL-20261005-1913-V8",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-2-1-2-SCOPE",
+  "FINDING_ID": "FINDING-DOC-C-SCOPE-LO2-ACTIVE-RUNTIME-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/queue/workers.ts",
+    "packages/lo2/feedback-dispatch.ts",
+    "packages/lo2/engine.ts",
+    "config/experimental-scope.ts",
+    "tests/contract/lo2-feedback-dispatch.test.ts",
+    "tests/contract/lo2-governance.test.ts",
+    "tests/contract/lo2-durable-anchor.test.ts"
+  ],
+  "SEMANTIC_SCOPE": "Resolve whether Lo2 is explicitly promoted into active DOC-C. If no promotion exists, remove/gate automatic Lo2 runtime activation from the canonical worker and move its tests/config to the experimental lane without altering DOC-C queue/release semantics.",
+  "ACCEPTANCE_CRITERIA": [
+    "An explicit authoritative promotion is produced, or canonical worker no longer automatically activates Lo2 future-domain side effects.",
+    "No future-domain subsystem gains authority over canonical output/release.",
+    "Default DOC-C tests/typecheck and closure inventory reflect the resolved scope.",
+    "Queue success semantics, LAW release, dispatch completion and failure persistence remain DOC-C compliant.",
+    "No mutation to NEXY.ai.",
+    "Exact candidate SHA tests and independent review required."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After a Git-valid worker namespace is explicitly authorized, refresh integration HEAD and resolve the scope leak on an isolated worker branch."
+}
