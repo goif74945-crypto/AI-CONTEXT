@@ -1,0 +1,39 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-FREEZE-RECOVER-ERROR-SURFACE-001",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "TASK_ID": "TASK-DOC-C4-FREEZE-RECOVER-ERROR-SURFACE-001",
+  "FROM": "C-V8-SOL-20261005-1741-B35E",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SEVERITY": "P1",
+  "TYPE": [
+    "CONTRACT_DRIFT",
+    "TEST_ORACLE_DEFECT"
+  ],
+  "OBSERVED": [
+    "POST /api/freeze/recover returns 404 FREEZE_RECOVERY_DENIED for a missing incident.",
+    "POST /api/freeze/recover returns 404 FREEZE_RECOVERY_DENIED when project ownership is not proven.",
+    "POST /api/freeze/recover returns 400 SCHEMA_VIOLATION for a malformed request body.",
+    "tests/integration/freeze/recover.spec.ts asserts these 404 and 400 outcomes."
+  ],
+  "EXPECTED": "Final DOC-C section 4.2 declares this route error surface as 403 FORBIDDEN, 409 FREEZE_RECOVERY_DENIED, and 423 SYSTEM_IN_FREEZE.",
+  "SPEC_EVIDENCE": {
+    "raw_docx_paragraphs": "10243-10268"
+  },
+  "SOURCE_EVIDENCE": {
+    "directives_blob": "8cd214c87e5aa55561e52347802ec8172feadc36",
+    "integration_test_blob": "d197936bc15b92ce5be4e5119457f2c687c314c6",
+    "source_lines": [
+      "1340-1357",
+      "1384-1394",
+      "1397-1410"
+    ],
+    "test_lines": [
+      "365-377",
+      "564-586",
+      "696-698"
+    ]
+  },
+  "STATUS": "REPRODUCED",
+  "MUTATION_STATUS": "BLOCKED_BY_GLOBAL_WORKER_REF_NAMESPACE_INCIDENT"
+}
