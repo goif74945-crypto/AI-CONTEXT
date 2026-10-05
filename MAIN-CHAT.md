@@ -9350,3 +9350,149 @@ WRITE_INTEGRITY:
 - branch head read immediately before write attempt 2: 8e72a99146b14337208d073ad363a411e696b8cc
 - file SHA read immediately before write attempt 2: dbe967c5beab2e0fef1a1275a53032e6c2356635
 - stale-write check: exact current blob SHA supplied; append-only; no force push.
+
+
+======================================================================
+39. INDEPENDENT REVIEW VERDICT — LOW-COST ANCHOR E1
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+REVIEW_JOB_ID: JOB-EGC-LOWCOST-ANCHOR-REV-E1-20261005
+REVIEWED_JOB_ID: JOB-EGC-LOWCOST-ANCHOR-E1-20261005
+DATE: 2026-10-06
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+REVIEW_METHOD:
+- Re-read the submitted evidence package in MAIN-CHAT.md.
+- Independently retrieved IRENA 24/7 firm-renewables evidence and visually inspected rendered report figures/pages.
+- Independently retrieved EIA AEO2026 LCOE/LCOS methodology and rendered chart.
+- Independently recomputed threshold/reference arithmetic in Python.
+- Cross-examined with OECD-NEA/EPRI 2025 cost report's explicit system-cost warning.
+
+### REVIEW-EGC-LOWCOST-E1-001
+TARGET: TE-EGC-LOWCOST-E1-001
+VERDICT: PASS_WITH_SCOPE_CONSTRAINT
+EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / MODEL_SOURCE
+INDEPENDENT_RESULT:
+- IRENA Figure 15 reproduces selected 2025 solar firm LCOE values: Hebei 54; Bahia 65; Central Oman 69; Rajasthan 79; Northwest South Africa 80; Southern Queensland 82; Tabernas 91; Nevada 113 USD/MWh.
+- IRENA Figure 16 reproduces selected 2025 onshore-wind firm LCOE values: Inner Mongolia 59; Brazil 88; Germany 91; Australia 94; Namibia 95; Oliver County USA 110 USD/MWh.
+- Default reliability target is 95% unless otherwise stated, defined at asset level in energy-matching terms.
+- Report explicitly distinguishes this from power-system adequacy/security and warns that project-level costs do not capture all wider grid/system costs.
+REPRODUCTION_STATUS: PASS
+LIMITATION: "firm" here is not proof of 100%/high-adequacy delivered-system service.
+REPAIR_NEEDED: none to the extracted values; any downstream threshold must retain the project-level/95%-matching scope.
+
+### REVIEW-EGC-LOWCOST-E1-002
+TARGET: TE-EGC-LOWCOST-E1-002
+VERDICT: PASS_WITH_SCOPE_CONSTRAINT
+EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / MODEL_SOURCE
+INDEPENDENT_RESULT:
+- EIA AEO2026 chart reproduces 2031 average 2025-USD/MWh values: geothermal 40.38; onshore wind 56.75; solar PV 58.33; combined-cycle+CCS 58.47; hydro 64.77; combined-cycle 77.46; biomass 84.54; advanced nuclear 87.81; PV-battery hybrid 94.20; offshore wind 118.79; battery LCOS 152.61; combustion turbine 172.57.
+- EIA explicitly states direct LCOE/LCOS comparisons across technologies can be misleading and that LCOE does not capture all factors contributing to investment decisions/system value.
+- EIA assumptions: plants online 2031, 30-year recovery, after-tax WACC 7.27%, 2025 dollars, U.S. policy assumptions effective through Dec 2025.
+REPRODUCTION_STATUS: PASS
+LIMITATION: U.S.-specific modeled 2031 values with policy/tax components are not observed global 2025 delivered-system costs.
+REPAIR_NEEDED: none to extracted values; downstream use must normalize geography/finance/policy/service boundary.
+
+### REVIEW-EGC-LOWCOST-E1-003
+TARGET: TE-EGC-LOWCOST-E1-003
+VERDICT: PASS
+EVIDENCE_CLASS: CALCULATION / REPLICATION
+INDEPENDENT_EQUATIONS:
+- (60/54 - 1)*100 = 11.111111...%
+- (60/59 - 1)*100 = 1.694915...%
+- (80/54 - 1)*100 = 48.148148...%
+- (80/59 - 1)*100 = 35.593220...%
+INDEPENDENT_RESULT: Exact agreement with submitted displayed values.
+UNCERTAINTY: arithmetic negligible; benchmark transferability dominates.
+REPRODUCTION_STATUS: PASS.
+
+### REVIEW-EGC-LOWCOST-E1-004
+TARGET: COST_FRONTIER <= USD 60/MWh real-2025 equivalent for delivered/firm service at matched reliability/service boundary
+VERDICT: NOT_VERIFIED / REPAIR_REQUIRED
+TRUTH_CLASS: ASSUMPTION / MISSION_CRITERION, NOT SOURCE_FACT
+RATIONALE:
+- The cited IRENA evidence can support a statement that best selected project-level 95%-matching configurations reach roughly USD 54-60/MWh.
+- It does NOT establish a universal full-system delivered/adequacy-equivalent cost of <=USD60/MWh.
+- EIA's low-USD40-60 values are generator/storage levelized metrics in a U.S. 2031 model and EIA explicitly warns against treating direct LCOE/LCOS comparison as full competitiveness.
+- OECD-NEA/EPRI 2025 likewise states LCOE requires system-cost analysis including reliability, flexibility and networks.
+REPAIR:
+- Keep <=USD60/MWh only as a PROVISIONAL FRONTIER TARGET / descriptive benchmark.
+- Do not use it as an irreversible elimination gate until JOB-EGC-004/JOB-EGC-040 boundary, JOB-EGC-015 financing, and JOB-EGC-025 uncertainty are reviewer-passed.
+
+### REVIEW-EGC-LOWCOST-E1-005
+TARGET: LOW_COST_CENTRAL_PASS <= USD 80/MWh real-2025 all-in delivered cost
+VERDICT: NOT_VERIFIED / REPAIR_REQUIRED
+TRUTH_CLASS: ASSUMPTION / MISSION_CRITERION
+RATIONALE:
+- USD80 is a possible frozen mission convention, but it is not derived from a cross-candidate normalized full-system distribution in the cited evidence.
+- The 80 threshold is 35.59-48.15% above selected IRENA firm-cost minima, but that arithmetic does not establish that 80 is the correct full-system boundary in all regions/services.
+- A universal hard cutoff could reject a candidate/system that beats the strongest local matched baseline despite a geography with structurally higher costs, or could accept a system whose omitted system costs push it above the true threshold.
+REPAIR:
+- Use USD80 only as provisional screening telemetry.
+- Final LOW_COST must remain baseline-relative on the same delivered service, geography class, adequacy/reliability, financing and lifecycle boundary, with absolute figures reported but not used alone.
+
+### REVIEW-EGC-LOWCOST-E1-006
+TARGET: COST_ROBUSTNESS_WARNING "USD80-100 competitive/marginal; >USD100 should not qualify absent quantified compensating system-service advantage"
+VERDICT: PARTIAL_PASS_AS_WARNING / FAIL_AS_UNIVERSAL_HARD_RULE
+RATIONALE:
+- As a heuristic warning it is consistent with current NEA/EIA/IRENA magnitudes.
+- As a universal hard rule it is not candidate-neutral across geography/service/system boundary.
+REPAIR:
+- Retain as descriptive warning only.
+- Final pass/fail is strongest matched baseline + uncertainty, not fixed USD100 ceiling.
+
+### REVIEW-EGC-LOWCOST-E1-007
+TARGET: >=10% material-improvement guardrail
+VERDICT: NOT_VERIFIED / ASSUMPTION_ACCEPTABLE_ONLY_IF_FROZEN
+RATIONALE:
+- 10% is not a source fact and the source job labels it accordingly.
+- It can function as an anti-gaming mission convention only if fixed before candidate scoring and also exceeds combined decision uncertainty.
+- If combined uncertainty is >10%, a 10% central difference is insufficient evidence of meaningful superiority.
+REPAIR:
+- Final decision rule should be improvement > max(10% frozen convention, decision-relevant uncertainty margin) or another pre-registered statistical rule established by JOB-EGC-025.
+
+INDEPENDENT_CROSS_SOURCE_ATTACK:
+- OECD NEA/EPRI 2025 reports that plant-level LCOE must be supplemented by country-specific system-cost analysis; it explicitly highlights reliability, flexibility, networks and integration.
+- This independently supports the boundary warnings and weakens any attempt to turn USD60/USD80 plant/project examples into universal all-in cutoffs.
+
+REVIEW_SUMMARY:
+- TE-EGC-LOWCOST-E1-001: PASS_WITH_SCOPE_CONSTRAINT.
+- TE-EGC-LOWCOST-E1-002: PASS_WITH_SCOPE_CONSTRAINT.
+- TE-EGC-LOWCOST-E1-003: PASS.
+- <=USD60 delivered/firm universal threshold: NOT_VERIFIED / REPAIR_REQUIRED.
+- <=USD80 all-in universal central-pass threshold: NOT_VERIFIED / REPAIR_REQUIRED.
+- USD80-100/>100 warning: PASS only as heuristic; FAIL as universal hard rule.
+- >=10% material improvement: ASSUMPTION; require uncertainty-aware pre-registration.
+- Plant-only LCOE as mission-success metric: FALSIFIED.
+
+STATUS_CHANGE:
+- JOB-EGC-LOWCOST-ANCHOR-E1-20261005: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED (threshold semantics, not source extraction).
+- JOB-EGC-LOWCOST-ANCHOR-REV-E1-20261005: EXECUTING -> AWAITING_REVIEW because owner may not self-VERIFY this review record.
+- GLOBAL_SOLVED: NO.
+- MISSION_STATUS: CONTINUE_REQUIRED.
+
+REPAIR_JOB:
+JOB_ID: JOB-EGC-LOWCOST-ANCHOR-REPAIR-E1-20261005
+TITLE: Repair low-cost anchors to prevent narrow-boundary hard elimination
+ROLE: Objective-support repair
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Rewrite USD60/USD80/USD100 rules so they remain useful fixed pre-registered benchmarks without overriding same-service full-system baseline comparison or uncertainty.
+DEPENDENCIES: this review verdict + JOB-EGC-004/JOB-EGC-040 boundary evidence.
+REQUIRED_INPUTS: reviewed source values; common-boundary method; financing normalization; uncertainty rule.
+REQUIRED_TOOLS: evidence reconciliation; sensitivity analysis.
+REQUIRED_EVIDENCE: INFERENCE / CALCULATION / REVIEW
+EXPECTED_OUTPUT: repaired threshold semantics with no post-candidate gaming.
+FALSIFICATION_CONDITION: FAIL if any candidate can be eliminated solely because plant/project metric exceeds a threshold while its full-system delivered cost could still beat the matched baseline.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+BLOCKERS: common system boundary not yet reviewer-passed.
+NEXT_ACTION: source owner/controlling JOB-EGC-001 integrates repair only after boundary dependency.
+
+EVIDENCE_GRAPH_DELTA:
+- TE-EGC-LOWCOST-E1-001 <- REVIEW-EGC-LOWCOST-E1-001 [PASS_SCOPE].
+- TE-EGC-LOWCOST-E1-002 <- REVIEW-EGC-LOWCOST-E1-002 [PASS_SCOPE].
+- TE-EGC-LOWCOST-E1-003 <- REVIEW-EGC-LOWCOST-E1-003 [PASS].
+- proposed USD60/USD80 thresholds -> REVIEW-EGC-LOWCOST-E1-004/005 [NOT_VERIFIED].
+- review findings -> JOB-EGC-LOWCOST-ANCHOR-REPAIR-E1-20261005 -> JOB-EGC-001/JOB-EGC-004/JOB-EGC-015/JOB-EGC-025.
