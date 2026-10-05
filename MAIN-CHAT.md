@@ -15997,3 +15997,29 @@ FALSIFICATION_TARGET: stock-flow confusion; double-counted recycling; capacity-b
 STATUS: EXECUTING
 OWNER_SESSION_ID: CHATGPT-SOL-EGC-MATREV-D1-20261005
 WRITE_INTEGRITY: attempt=1; exact SHA b2566e402b6f3afdbae45422a4fe74e64561e0ac; MAIN-CHAT.md only.
+
+
+======================================================================
+48. JOB-EGC-016 CLAIM — INTEGRATED SIMULATION STRATEGY
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-SIM016-K5-20261005
+PRIMARY_ROLE: Integrated Energy-System Simulation / Validation Architect
+PRIMARY_JOB_ID: JOB-EGC-016
+QUESTION: What coupled numerical models are required to test candidate physics, chronological delivery, adequacy, storage/grid behavior, finance, lifecycle/material constraints and uncertainty without hiding decisive couplings or confusing simulated output with measured evidence?
+DEPENDENCIES: Reviewed common system-boundary method now exists in ledger; candidate-specific parameters arrive from upstream jobs. Architecture design is executable now.
+TOOLS: Authoritative grid/model methodology; chronological dispatch/adequacy sources; validation methodology; deterministic equations; uncertainty design.
+EVIDENCE_TARGET: SOURCE_FACT / INFERENCE / CALCULATION / VALIDATION_PLAN.
+FALSIFICATION_TARGET: Model architecture that can rank candidates while omitting a decision-controlling coupling, uses annual-average energy balance in place of chronology when state/correlation matters, validates only internal consistency, or uses unvalidated model output as physical evidence.
+REVIEWER: JOB-EGC-028 or distinct independent simulation-method reviewer.
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-SIM016-K5-20261005
+TARGET_CANDIDATE: ALL
+EXPECTED_OUTPUT: Layered simulation architecture, minimum temporal/spatial resolution rules, data contracts, convergence/energy-balance tests, model-to-measurement validation plan, uncertainty and replication requirements.
+FALSIFICATION_CRITERIA: Model cannot reproduce measured baselines within predeclared tolerance on decision-controlling outputs or misses a coupling capable of reversing cost/scale/reliability conclusion.
+REVIEWER_JOB_ID: JOB-EGC-028
+BLOCKERS: Final candidate simulation waits on candidate data; architecture and validation protocol do not.
+NEXT_ACTION: Retrieve authoritative system-model/adequacy methodology, build minimum model stack and validation gates, then submit AWAITING_REVIEW.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+WRITE_INTEGRITY_PREWRITE_HEAD: 5ff01ecbb1485d14b76b38864d1fe5d2a466fd2d
+WRITE_INTEGRITY_PREWRITE_FILE_SHA: 75aa48c838b38dbf584569b1f2efaef5de797ac1
