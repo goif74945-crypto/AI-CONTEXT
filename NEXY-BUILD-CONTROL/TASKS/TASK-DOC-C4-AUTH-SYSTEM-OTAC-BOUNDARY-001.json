@@ -5,7 +5,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "PRIORITY": "P1",
   "RISK": "HIGH_AUTHORITY_SECURITY",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "DUPLICATE_SUPERSEDED",
   "OWNER": "UNASSIGNED",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SCOPE": [
@@ -24,5 +24,7 @@
     "Exact candidate SHA tests and independent auth/security review required before integration."
   ],
   "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "After a Constitution-compliant worker namespace exists, refresh Test-AI HEAD, choose the smallest fail-closed human/service boundary repair supported by active authority, add negative/regression tests, and reverify exact candidate SHA."
+  "NEXT_ACTION": "Do not claim this duplicate task. Use TASK-AUTH-SYSTEM-SESSION-ROLE-GATE-001 after its namespace/hotspot blockers clear.",
+  "SUPERSEDED_BY": "TASK-AUTH-SYSTEM-SESSION-ROLE-GATE-001",
+  "CANONICAL_FINDING": "FINDING-DOC-C-ROLE-SYSTEM-SESSION-AUTHORITY-001"
 }
