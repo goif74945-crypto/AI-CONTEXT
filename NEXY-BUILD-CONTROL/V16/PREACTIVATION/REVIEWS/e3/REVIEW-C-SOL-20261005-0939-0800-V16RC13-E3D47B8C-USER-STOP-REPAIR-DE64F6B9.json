@@ -1,0 +1,53 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_REPAIR_RED_TEAM_REVIEW_V1",
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-0939-0800-V16RC13-E3D47B8C-USER-STOP-REPAIR-DE64F6B9",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-0939-0800-V16RC13-STATIC-P0-AUDIT-E3D47B8C",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REVIEW_TARGET": {
+    "REPAIR_ID": "V16RC13-USER-STOP-AUTHORITY-INVALIDATION-DE64F6B9-V1",
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REPAIRS/USER-STOP-AUTHORITY-INVALIDATION-DE64F6B9-V1.json",
+    "COMMIT": "81e43e4105f9de1662e43a85db60bb514d82bb43"
+  },
+  "RELATED_FINDING": "FINDING-V16RC13-USER-STOP-LEASE-GATE-TOCTOU-E3D47B8C",
+  "REVIEW_KIND": "ADVERSARIAL_REPAIR_SUFFICIENCY_REVIEW_NOT_SELF_CERTIFICATION",
+  "CLAUSES_REVIEWED": [
+    "[121]",
+    "[123]",
+    "[164]",
+    "[166]",
+    "[220]",
+    "[230]",
+    "[241]"
+  ],
+  "POSITIVE_FINDINGS": [
+    "The proposed STOP CAS correctly closes all authority gates and rotates ENGINEERING_EPOCH and MEMBERSHIP_EPOCH, making pre-stop leases/memberships stale for canonical authority.",
+    "The repair correctly preserves ACTIVE_INTEGRATION and actual Git truth instead of erasing ambiguous external state.",
+    "The repair correctly distinguishes canonical authority from physical Git artifacts and forbids stale artifacts from later integration."
+  ],
+  "BLOCKING_GAP": {
+    "TITLE": "Absolute stale-membership mutation invariant is not enforced at the physical mutation boundary.",
+    "OBSERVATION": "The repair explicitly permits a durable worker-branch write to physically appear after STOP from stale local state, classifying it as a noncanonical stale artifact. But [241] states 'NEVER LET STALE MEMBERSHIP MUTATE.' Once the STOP CAS increments MEMBERSHIP_EPOCH/ENGINEERING_EPOCH, the actor is stale. A post-CAS worker-branch Git write is therefore still a mutation performed by stale membership, even if later denied canonical authority.",
+    "COUNTEREXAMPLE": [
+      "Worker W passes the repair's local mutation-admission reread while the mission is ACTIVE and epochs match.",
+      "USER_STOP linearizes immediately afterward, closes gates, and increments ENGINEERING_EPOCH and MEMBERSHIP_EPOCH.",
+      "Before W performs the Git mutation, there is no mandatory atomic sink-side fence check coupled to that Git write.",
+      "W creates/updates the isolated worker branch after STOP using now-stale membership.",
+      "The repair labels this artifact noncanonical, but the physical mutation already occurred by stale membership, violating [241] and the immediate/preemptive intent of [164]."
+    ],
+    "WHY_LOCAL_REREAD_IS_INSUFFICIENT": "A non-atomic reread before mutation has the same TOCTOU window as the original defect. It reduces probability but does not prove the absolute invariant.",
+    "IMPACT": "The repair is sufficient for canonical-authority invalidation but insufficient to prove the Constitution's stronger absolute prohibition that stale membership never mutates."
+  },
+  "REQUIRED_RESOLUTION_OPTIONS": [
+    "Enforce a mutation-sink fence token/generation atomically at every worker-branch ref mutation, so Git ref update succeeds only if STOP/fence generation and membership authority still match.",
+    "Route all product writes through an authorized mutation gateway that performs compare-and-swap over the current mission/stop generation immediately with the external ref update, or otherwise guarantees equivalent linearizability.",
+    "If such sink-level atomicity is impossible, a successor-law activation must explicitly redefine [241]/USER_STOP semantics; a control-layer interpretation must not silently weaken an absolute 'NEVER' invariant."
+  ],
+  "VERDICT": "REPAIR_PARTIAL_BLOCKING_GAP_REMAINS",
+  "FINDING_DISPOSITION_RECOMMENDATION": "KEEP_OPEN_BLOCKING",
+  "NOTE": "This review does not reject the authority-cut design. It rejects treating that design alone as sufficient to resolve the full current-law mutation-safety invariant.",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "SELF_CERTIFICATION": false,
+  "FAIL_CLOSED": true
+}
