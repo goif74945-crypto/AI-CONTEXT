@@ -1,0 +1,45 @@
+{
+  "TASK_ID": "TASK-DOC-C4-AUTH-LOGOUT-IDEMPOTENCY-001",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "MISSION_ID": "MISSION-AUTH-001",
+  "FINDING_ID": "FINDING-DOC-C4-AUTH-LOGOUT-IDEMPOTENCY-001",
+  "GOAL": "Make POST /api/auth/logout idempotency replay exact-request/principal bound so a reused key cannot produce false-success or cross-action replay.",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_AUTH_SECURITY",
+  "STATUS": "BLOCKED",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "SCOPE": [
+    "packages/api/auth.ts handleLogout",
+    "tests/coverage/auth-decision-paths.test.ts",
+    "tests/integration/auth/logout.spec.ts",
+    "persistence/schema only if exact replay binding cannot be represented safely with existing immutable audit fields"
+  ],
+  "REQUIRED_BEHAVIOR": [
+    "Same key + same authenticated session/principal + same revoke_all semantics may return the prior accepted result.",
+    "Same key + different session/principal must not be treated as the current request's prior success.",
+    "Same key + different revoke_all semantics must not replay across AUTH_LOGOUT and AUTH_LOGOUT_ALL.",
+    "Idempotent retry after the original session was revoked must remain possible for the exact original request.",
+    "CSRF, device binding, RBAC, persistence fail-closed behavior, and audit evidence remain intact."
+  ],
+  "TEST_MATRIX": [
+    "exact same request retry after successful single-session logout -> 200 prior success",
+    "same key different live session -> no false-success; current session remains subject to requested logout semantics or conflict",
+    "same key different principal -> no false-success",
+    "same key single logout then revoke_all=true -> no cross-action replay",
+    "same key revoke_all=true then single logout -> no cross-action replay",
+    "persistence failure -> fail closed",
+    "device mismatch -> denied before accepting replay"
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not solve by disabling logout idempotency.",
+    "Do not weaken session/device/CSRF/RBAC checks.",
+    "Do not mutate NEXY.ai.",
+    "Do not mutate NEXY.AI-Test-AI directly while worker-isolation policy is structurally blocked."
+  ],
+  "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker namespace or explicitly authorizes an equivalent isolation mechanism."
+}
