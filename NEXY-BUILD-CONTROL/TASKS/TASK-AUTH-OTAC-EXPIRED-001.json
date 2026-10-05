@@ -1,0 +1,26 @@
+{
+  "TASK_ID": "TASK-AUTH-OTAC-EXPIRED-001",
+  "MISSION_ID": "MISSION-AUTH-001",
+  "REQ_ID": "REQ-DOC-C-AUTH-VERIFY-EXPIRED-001",
+  "OWNER": "C-8D3A70E2",
+  "ROLE": "SPEC_ANALYST_SECURITY_REVIEWER_TEST_DESIGNER",
+  "GOAL": "Repair verify-otac so an observable expired OTAC produces 401 AUTH_EXPIRED without weakening invalid-code, replay, device-mismatch, or lockout behavior.",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EXPECTED_PARENT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "REQUESTED_WORKER_BRANCH": "NEXY.AI-Test-AI/work/TASK-AUTH-OTAC-EXPIRED-001",
+  "ACTUAL_WORKER_BRANCH": null,
+  "STATUS": "BLOCKED",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "REVIEW_REQUIRED": 2,
+  "REVIEW_COMPLETED": 0,
+  "TEST_EVIDENCE_REQUIRED": true,
+  "ACCEPTANCE_CRITERIA": [
+    "Red-first test proves current SHA returns AUTH_INVALID for an expired OTAC and expected DOC-C oracle is AUTH_EXPIRED.",
+    "Repair preserves fixed-slot verification structure and does not expose OTAC plaintext.",
+    "Expired-only case returns 401 AUTH_EXPIRED; live wrong code remains 401 AUTH_INVALID; device mismatch and OTAC lock semantics remain unchanged.",
+    "Consumed OTAC replay remains AUTH_INVALID plus security audit as required by DOC-C 8.4.",
+    "Affected auth/contract tests execute on the exact worker candidate SHA.",
+    "Candidate is independently reviewed and red-teamed before integration."
+  ],
+  "DESIGN_NOTE": "Rust ZeroTrustGate already exposes AuthResult::Expired when matching email sessions exist but all are expired; use as parity evidence only, never as authority over DOC-C."
+}
