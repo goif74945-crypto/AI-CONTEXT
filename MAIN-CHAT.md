@@ -1024,3 +1024,264 @@ FALSIFICATION_CONDITION: FAIL if equal physical systems can receive unequal prim
 STATUS: OPEN
 BLOCKERS: distinct reviewer required.
 NEXT_ACTION: independent session attacks FINPV-C5; meanwhile physical-ledger C3, R_STAR, objective, baseline, scale, safety, operations and grid/storage jobs proceed independently.
+
+
+======================================================================
+50. RESEARCH RESULT — JOB-EGC-042-RSTAR-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200500Z-RSTAR1
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-C1-20261006
+ROLE: Reliability-Boundary Architect / Adequacy & System-Service Evidence Analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+QUESTION:
+What technology-neutral numeric reliability boundary R_STAR can be frozen for common-system comparison without silently favoring any candidate, and which parts must remain geography-specific?
+
+VERDICT:
+A single universal fixed planning-reserve-margin or single universal regulatory reliability number is FALSIFIED as a valid cross-geography boundary. The defensible architecture is a parameterized, technology-neutral R_STAR(g) with:
+(1) applicable local/regional legal or operator adequacy requirements as mandatory constraints;
+(2) a common all-hours probabilistic metric vector and identical scenario/model boundary for every candidate and baseline within a comparison geography;
+(3) a transparent cross-candidate screening benchmark, clearly labeled as a mission benchmark rather than universal law;
+(4) separate operational/stability/system-service gates.
+Reserve margin is a DERIVED output from the adequacy study, not a universal fixed input.
+
+R_STAR(g) — PROPOSED COMMON FORM:
+R_STAR(g) = {
+  ADEQUACY_LOCAL(g),
+  COMMON_PROBABILISTIC_REPORTING,
+  CHRONOLOGICAL_STRESS_ENSEMBLE(g),
+  OPERATING_RESERVE_RULE(g),
+  STABILITY_AND_ESSENTIAL_SERVICE_GATE(g),
+  DELIVERY_POINT_AND_NETWORK(g),
+  UNSERVED_ENERGY_TREATMENT(g)
+}
+
+A. ADEQUACY_LOCAL(g)
+- PASS every applicable statutory/regulatory/system-operator resource-adequacy target for geography g.
+- If multiple applicable targets exist, all applicable constraints must pass; do not choose the easiest.
+- No candidate-specific relaxation.
+
+B. COMMON_PROBABILISTIC_REPORTING
+Every candidate and strongest matched baseline must report, from the SAME stochastic chronological model and scenario set:
+- LOLH (hours/year);
+- EUE and normalized EUE/NEUE (ppm of annual demand);
+- LOLE when the governing jurisdiction defines/uses it;
+- reserve margin/firm-capacity requirement as a derived diagnostic, not the primary universal metric;
+- shortfall timing/duration distributions when material.
+Annual energy matching and nameplate capacity are explicitly insufficient.
+
+C. MISSION REFERENCE SCREEN (NOT A UNIVERSAL REGULATORY STANDARD)
+For cross-candidate screening before a final geography-specific legal overlay is selected, use NERC 2025 LTRA "Normal Risk" thresholds as a transparent conservative reference:
+- annual LOLH < 0.1 h/year;
+- annual normalized EUE < 0.0002% = 2 ppm;
+- applicable resource-adequacy target(s) met;
+- reserves expected under plausible above-normal-demand / low-resource conditions associated with a once-per-decade event, with low load-loss risk.
+IMPORTANT: these are NERC LTRA assessment/risk-screen criteria, not universal physical law and not a globally binding reliability standard. Final comparisons MUST also run the applicable local target and sensitivity cases.
+
+D. CHRONOLOGICAL_STRESS_ENSEMBLE(g)
+Same candidates/baselines must be tested with the same:
+- hourly or finer chronology where needed;
+- weather/load correlation;
+- forced outage states;
+- fuel/energy limitations;
+- storage state-of-charge and dispatch logic;
+- import/export and transmission availability;
+- demand-response availability/nonperformance;
+- plausible extreme heat/cold and low-resource scenarios.
+Do not mix candidate-specific favorable weather years or import assumptions.
+
+E. OPERATIONAL / STABILITY GATE
+Adequacy metrics do not replace reliable-operation requirements. Applicable standards/local equivalents must be satisfied for:
+- contingency reserves and balancing;
+- frequency response;
+- voltage/reactive support;
+- transient/dynamic stability and ride-through;
+- protection/system-strength/fault-current needs where material;
+- black start/restoration;
+- extreme-temperature transmission planning and credible contingency performance.
+These services are costed in the common system ledger when the candidate portfolio causes the need.
+
+EVIDENCE RECORDS
+
+EVIDENCE_ID: TE-EGC-042-001
+JOB_ID: JOB-EGC-042-RSTAR-C1-20261006
+CLAIM_ID: CLAIM-EGC-042-001
+TOOL: web research + PDF text extraction + PDF screenshot
+METHOD: authoritative NERC 2025 Long-Term Reliability Assessment; inspected pages 12-13 and reserve-margin table page 175.
+DATE: 2026-10-06
+SOURCE: North American Electric Reliability Corporation, 2025 Long-Term Reliability Assessment
+SOURCE_DATE: 2026 release for 2025 LTRA
+URL: https://prod.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+SOURCE_FACT:
+- NERC uses all-hours probabilistic indices because traditional capacity criteria do not capture magnitude, frequency, duration and timing of energy shortfalls.
+- NERC reports LOLH and expected normalized unserved energy from probabilistic assessment.
+- High Risk thresholds include annual LOLH >2.4 h/year or NEUE >20 ppm, or failure of established local resource-adequacy targets.
+- Elevated Risk includes LOLH 0.1-2.4 h/year or NEUE 2-20 ppm, or plausible stress scenarios showing loss-of-load risk despite meeting established targets.
+- Normal Risk screen includes LOLH <0.1 h/year and NEUE <2 ppm and established resource-adequacy targets met, with reserves expected in plausible above-normal-demand/low-resource once-per-decade conditions.
+- When probabilistic/reserve-margin indications conflict, jurisdiction-established adequacy targets take precedence and other contradictions are assessed using all-hours probabilistic analysis.
+- Many assessment areas use 0.1 day/year LOLE yet the associated reserve-margin levels differ substantially, demonstrating that fixed PRM is not a transferable universal criterion.
+OUTPUT/UNITS: LOLH h/year; NEUE ppm; reserve margins %.
+UNCERTAINTY: assessment-model results depend on entity methods/assumptions; NERC explicitly states this.
+LIMITATIONS: North-American assessment framework; not a universal legal standard.
+REPRODUCTION_METHOD: retrieve cited PDF; inspect Capacity and Energy Risk Assessment pages 12-13 and Summary of Planning Reserve Margins page 175.
+REPLICATION_STATUS: SOURCE_VISUAL_AND_TEXT_CROSSCHECK_PASS
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-042-002
+JOB_ID: JOB-EGC-042-RSTAR-C1-20261006
+CLAIM_ID: CLAIM-EGC-042-002
+TOOL: official web research
+METHOD: ACER 2026 ERAA methodology update
+DATE: 2026-10-06
+SOURCE: European Union Agency for the Cooperation of Energy Regulators (ACER)
+SOURCE_DATE: 2026-03-17
+URL: https://www.acer.europa.eu/news/acer-amends-european-resource-adequacy-assessment-methodology-support-streamlined-capacity-mechanisms-approval
+SOURCE_FACT: EU Member States define their own reliability standards; ERAA provides a consistent assessment against those national standards.
+OUTPUT: cross-jurisdiction evidence that one legal reliability threshold is not universal.
+LIMITATIONS: EU jurisdiction only.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-042-003
+JOB_ID: JOB-EGC-042-RSTAR-C1-20261006
+CLAIM_ID: CLAIM-EGC-042-003
+TOOL: official web research
+METHOD: UK DESNZ 2026 Capacity Market parameters
+DATE: 2026-10-06
+SOURCE: UK Department for Energy Security and Net Zero
+SOURCE_DATE: 2026-02-10
+URL: https://www.gov.uk/government/publications/capacity-market-auction-parameters-letter-from-desnz-to-neso-february-2026/final-auction-parameters-t-1-and-t-4-capacity-market-auctions
+SOURCE_FACT: the 2026/27 T-1 and 2029/30 T-4 auction parameters use a reliability standard of 3 hours LOLE.
+OUTPUT/UNITS: 3 h LOLE.
+LIMITATIONS: Great Britain capacity-market context; do not equate mechanically with another jurisdiction's differently defined LOLE statistic.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-042-004
+JOB_ID: JOB-EGC-042-RSTAR-C1-20261006
+CLAIM_ID: CLAIM-EGC-042-004
+TOOL: official web research
+METHOD: Australian Energy Market Commission National Electricity Rules
+DATE: 2026-10-06
+SOURCE: AEMC, NER clause 3.9.3C
+URL: https://energy-rules.aemc.gov.au/ner/347/37366
+SOURCE_FACT: NEM reliability standard is maximum expected unserved energy of 0.002% of total regional energy demand in a financial year; an interim reliability measure is 0.0006%.
+OUTPUT/UNITS: expected USE fraction/year.
+LIMITATIONS: Australia NEM; metric is energy-based and not interchangeable with LOLE without a joint stochastic model.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-042-005
+JOB_ID: JOB-EGC-042-RSTAR-C1-20261006
+CLAIM_ID: CLAIM-EGC-042-005
+TOOL: official web research
+METHOD: NERC reliability-standard pages/search index
+DATE: 2026-10-06
+SOURCES:
+- BAL-002-3 Disturbance Control Standard — contingency reserve.
+- VAR-001-5 Voltage and Reactive Control.
+- TPL-001-5.1 Transmission System Planning Performance Requirements: system stable, no cascading/uncontrolled islanding, ratings/voltage/transient response within applicable limits.
+- TPL-008-1 Transmission System Planning Performance Requirements for Extreme Temperature Events, mandatory effective 2026-04-01.
+URLS:
+https://www.nerc.com/standards/reliability-standards/bal/bal-002-3
+https://www.nerc.com/standards/reliability-standards/var/var-001-5
+https://www.nerc.com/globalassets/standards/reliability-standards/tpl/tpl-001-5.1.pdf
+https://www.nerc.com/standards/reliability-standards/tpl/tpl-008-1
+SOURCE_FACT: resource adequacy is not the complete reliable-operation boundary; contingency response, voltage/reactive control, stability and extreme-temperature planning are separate obligations/engineering constraints.
+LIMITATIONS: North-American standards; other geographies require local equivalents.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+CALC-EGC-042-001 — ANNUAL-ENERGY-MATCHING FALSIFICATION
+TRUTH_CLASS: CALCULATION
+INPUTS:
+- constant load = 1 MW for 8760 h => annual demand = 8760 MWh;
+- generation = 0 MW for 10 critical hours;
+- generation in remaining 8750 hours adjusted to 1.001142857142857 MW so annual generation still equals exactly 8760 MWh;
+- no storage/imports/DR.
+EQUATIONS:
+E_demand = 1 MW * 8760 h.
+P_other = 8760 MWh / 8750 h.
+EUE = sum_t max(load_t-generation_t,0)*dt = 10 MWh.
+NEUE_ppm = EUE/E_demand * 1e6.
+OUTPUT:
+- annual generation = annual demand = 8760 MWh (100% annual energy match);
+- LOLH = 10 h/year;
+- EUE = 10 MWh/year;
+- NEUE = 1141.552511415525 ppm;
+- exceeds NERC 2025 High-Risk 2.4 h/year LOLH threshold by 4.1666667x;
+- exceeds 20 ppm High-Risk NEUE threshold by 57.0776256x.
+CONCLUSION: 100% annual energy matching can coexist with severe adequacy failure; annual energy matching is FALSIFIED as an adequacy criterion.
+UNCERTAINTY: none beyond exact toy assumptions; this is a logical counterexample, not a claim about a real grid.
+ASSUMPTIONS: deterministic toy chronology, no imports/storage/DR.
+REPRODUCTION_METHOD:
+Python arithmetic and independent Wolfram Language evaluation.
+REPLICATION_STATUS: INDEPENDENT_TOOL_REPLICATION_PASS (Python + Wolfram).
+REVIEW_STATUS: PENDING_INDEPENDENT_SESSION_REVIEW.
+
+CALC-EGC-042-002 — SINGLE-METRIC EUE INSUFFICIENCY
+TRUTH_CLASS: CALCULATION
+INPUTS:
+Case A: 1 MW shortfall for 2 h => 2 MWh EUE, LOLH=2 h.
+Case B: 0.1 MW shortfall for 20 h => 2 MWh EUE, LOLH=20 h.
+OUTPUT: equal EUE with 10x different loss-of-load duration.
+CONCLUSION: EUE alone cannot represent duration/frequency; at minimum pair energy-severity and duration/frequency metrics under a common probabilistic model.
+REPLICATION_STATUS: Python + Wolfram arithmetic PASS.
+REVIEW_STATUS: PENDING_INDEPENDENT_SESSION_REVIEW.
+
+ADVERSARIAL TESTS
+1. FIXED_PRM_GLOBAL:
+FALSIFIED. NERC 2025 shows areas using similar 0.1 day/year LOLE methodology but materially different reserve-margin requirements; PRM is system-dependent.
+2. ONE_GLOBAL_REGULATORY_NUMBER:
+FALSIFIED. ACER explicitly leaves reliability standards to Member States; UK and Australia use different metrics/threshold structures.
+3. ANNUAL_100_PERCENT_ENERGY_MATCH:
+FALSIFIED by CALC-EGC-042-001.
+4. EUE_ONLY:
+FALSIFIED by CALC-EGC-042-002 because equal energy severity can hide radically different duration.
+5. LOLE_OR_LOLH_ONLY:
+NOT SUFFICIENT. NERC explicitly supplements traditional LOLE/PRM with all-hours EUE/LOLH and energy-risk analysis.
+6. ADEQUACY_EQUALS_RELIABLE_OPERATION:
+FALSIFIED as a complete boundary; separate contingency/frequency/voltage/stability/extreme-event requirements remain.
+7. NERC_NORMAL_RISK_AS_GLOBAL_LAW:
+REJECTED. It may be used only as an explicit mission reference screen/sensitivity outside its jurisdiction, not mislabeled as universal law.
+
+CLAIM_GRAPH
+CLAIM-EGC-042-001: Fixed universal reserve margin is invalid for cross-system ranking. SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-002: R_STAR must retain geography-specific mandatory adequacy constraints. SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-003: Same all-hours probabilistic model/scenario boundary is required for fair candidate comparison. SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-004: Annual energy matching is not resource adequacy. SUPPORTED_PENDING_REVIEW + INDEPENDENT_TOOL_REPLICATION.
+CLAIM-EGC-042-005: Multiple adequacy metrics are required because frequency/duration and energy severity are non-equivalent. SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-006: Operational reliability/system services require separate gates beyond adequacy. SUPPORTED_PENDING_REVIEW.
+
+STATUS_CHANGE:
+JOB-EGC-042-RSTAR-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+JOB_ID: JOB-EGC-042-RSTAR-REV-C2-20261006
+TITLE: Independent R_STAR reliability-boundary review
+ROLE: Independent adequacy/stability boundary reviewer / adversarial replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does proposed R_STAR(g) prevent candidate-specific reliability favoritism without pretending a globally universal legal threshold exists?
+CANDIDATE: ALL.
+DEPENDENCIES: JOB-EGC-042-RSTAR-C1-20261006 result submitted.
+REQUIRED_INPUTS: evidence records TE-EGC-042-001..005 and CALC-EGC-042-001..002.
+REQUIRED_TOOLS: independently retrieve at least NERC LTRA + one non-North-American authority; independently recompute both toy counterexamples; attack definition/metric comparability; test whether mission reference screen can bias ranking.
+REQUIRED_EVIDENCE: direct source provenance and numerical replication.
+EXPECTED_OUTPUT: PASS / REVIEW_FAILED with exact defect list and repair job if needed.
+FALSIFICATION_CONDITION: FAIL if any universal number is mislabeled as law; metric definitions are conflated; local standards can be bypassed; same-scenario rule has loopholes; or operational reliability can be omitted after adequacy passes.
+REVIEWER_JOB_ID: NONE (this job is independent review).
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session claims and attacks R_STAR(g).
