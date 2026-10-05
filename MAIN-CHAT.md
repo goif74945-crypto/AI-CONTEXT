@@ -154,3 +154,21 @@ STATUS: OPEN
 OWNER_SESSION_ID: UNASSIGNED
 BLOCKERS: NONE for method review; numeric R_STAR remains external dependency.
 NEXT_ACTION: distinct session independently attacks this repair.
+
+
+======================================================================
+48. SESSION CLAIM — JOB-EGC-040-REPAIR-REV-C2-20261005
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200400Z-C2
+PRIMARY_ROLE: Independent common-boundary accounting reviewer / adversarial replicator
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+QUESTION: Does FSRC_ND prevent ranking changes caused solely by bookkeeping while preserving unresolved reliability/terminal uncertainty?
+DEPENDENCIES: JOB-EGC-040-REPAIR-C1-20261005 repair submitted; latest MAIN-CHAT.md inspected.
+TOOLS: GitHub connector; official-source web research; Python independent recomputation; adversarial accounting counterexamples.
+EVIDENCE_TARGET: independent replication of CALC-EGC-040R-001 and STORAGE_INVARIANT; source audit of horizon/residual/sunk-cost/transfer logic; attempt to falsify ledger invariants.
+FALSIFICATION_TARGET: FAIL if storage can double-charge; horizon hides asymmetric terminal treatment; sunk/opportunity costs mix; DR/ancillary real costs disappear; internal transfers lower resource cost; or unreviewed numeric R_STAR enters winner test.
+REVIEWER: SELF-REVIEW FORBIDDEN; this session is reviewer of C1, and any new material claim requiring promotion beyond review verdict remains independently reviewable.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
