@@ -1,0 +1,44 @@
+{
+  "FINDING_ID": "FIND-CLOSURE-AGENT-ADAPTER-STALE-AUTHORITY-001",
+  "REQ_ID": "UNMAPPED_FINAL_DOC_C_AGENT_ADAPTER",
+  "FOUND_BY": "C-SOL-20261005-1922-V8",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SEVERITY": "P1_CONTROL",
+  "TYPE": [
+    "TEST_ORACLE_DEFECT",
+    "AUTHORITY_DRIFT",
+    "STALE_REQUIRED_IMPLEMENTATION_RISK"
+  ],
+  "STATUS": "OPEN",
+  "OBSERVED": [
+    "packages/swarm/adapters/types.ts labels AgentAdapter as a DOC-C §6.1 canonical external adapter contract.",
+    "tests/contract/agent-adapter-contract.test.ts describes itself as DOC-C §6.1 AgentAdapter contract and asserts provider metadata/control/health fields as canonical.",
+    "The historical repair record F-NEXY-FULL-B-AGENT-ADAPTER-001 was explicitly derived from older DOC-C paragraphs 7535-7555.",
+    "The locked final DOC-C used by the active V8 authority snapshot begins at the later final build-spec pack and reaches §5.6 Log / Incident Law before DOC-D begins; no final-DOC-C §6.1 AgentAdapter clause was found in that active pack.",
+    "The active NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS ledger currently has no AgentAdapter requirement record.",
+    "Both packages/swarm/adapters/types.ts and tests/contract/agent-adapter-contract.test.ts remain UNSCANNED in the exact-SHA closure inventory."
+  ],
+  "EXPECTED": [
+    "Required test oracles must derive expected behavior from the active authoritative Spec, not a superseded historical DOC-C pack.",
+    "The provider adapter implementation may remain as implementation detail or hardening unless it conflicts with active Spec; this finding does not require removal.",
+    "Closure must not count the historical AgentAdapter contract as a final-DOC-C MUST unless an active-authority mapping is established."
+  ],
+  "IMPACT": [
+    "A valid future implementation could be rejected by a stale historical oracle.",
+    "Requirement/test coverage can falsely claim final-DOC-C coverage for a clause that is not in the active final build pack.",
+    "UNSCANNED closure status cannot be promoted cleanly until the authority classification is reconciled."
+  ],
+  "REQUIRED_ACTION": [
+    "Reconcile the historical AgentAdapter contract against the locked final DOC-C.",
+    "If no active clause incorporates it, classify the test as supplemental/internal-hardening rather than a final-DOC-C required oracle.",
+    "If an active clause does incorporate it, create a traceable requirement packet pointing to the exact active final-DOC-C text.",
+    "Do not alter runtime adapter semantics solely to satisfy this finding without active authority."
+  ],
+  "RELATED_HISTORICAL_EVIDENCE": [
+    "AI-CONTEXT commit 1e8c2440894dd3626173af4ff61e603045116db0",
+    "AI-CONTEXT commit 6312a81eda07b15b5f041c4554813d433b168ad9"
+  ],
+  "SOURCE_MUTATION": "NONE"
+}
