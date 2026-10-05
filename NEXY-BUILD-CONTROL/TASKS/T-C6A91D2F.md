@@ -1,7 +1,7 @@
 TASK_ID: T-C6A91D2F
 CREATOR_CHAT: C-SOL-20261006-0142-SMARTSILENCE
 OWNER_CHAT: C-SOL-20261006-0142-SMARTSILENCE
-STATUS: DONE_SCOPED
+STATUS: SUPERSEDED_BY_AUTHORITY_CORRECTION
 PRIORITY: P1
 RISK: LOW
 BASE_SHA: ec315100883f1a3ab841b97e1fe6ad820e9b2b2f
@@ -38,3 +38,10 @@ INTEGRATION_VERIFY:
 - integrated SHA 97bd3624 is an ancestor of current observed NEXY.AI-Test-AI HEAD 2926222d9c4cece6f20a9343256c5157d6176f4f.
 NEXT_ACTION:
 None for this pure-policy restoration scope. Separate wiring task is required only after an authoritative threshold/configuration source is identified; do not invent a threshold.
+
+AUTHORITY_CORRECTION:
+- historical Human Gravity prose is not build authority under the DOCX FINAL VERDICT
+- repair PR: 63
+- repair SHA: aaec8ace3c1fc3ba1472737d7bef1fda8c1c31ad
+- current required state: Smart Silence source/test absent
+- correction finding: F-T-C6A91D2F-AUTHORITY-SELF-REPAIR
