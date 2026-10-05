@@ -1,0 +1,10 @@
+{
+  "DEPENDENCY_ID": "DEP-AUTH-OTAC-WINDOW-BEFORE-EXPIRED",
+  "UPSTREAM_REQ": "REQ-DOC-C-AUTH-VERIFY-WINDOW-001",
+  "DOWNSTREAM_REQ": "REQ-DOC-C-AUTH-VERIFY-EXPIRED-001",
+  "TYPE": "SEMANTIC_PRECONDITION",
+  "REASON": "Expiry classification is only correct after the bounded verification candidate window can see the newest active OTAC. Otherwise 32 retained expired/consumed rows can hide a fresh row and a later AUTH_EXPIRED repair could misclassify a valid credential as expired.",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "STATUS": "ACTIVE"
+}
