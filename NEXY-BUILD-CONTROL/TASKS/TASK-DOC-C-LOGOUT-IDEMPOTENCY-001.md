@@ -1,6 +1,6 @@
 # TASK-DOC-C-LOGOUT-IDEMPOTENCY-001
 
-STATUS: IN_PROGRESS
+STATUS: SUPERSEDED_BY_PARALLEL_INTEGRATION
 OWNER_CHAT: C-SOL-20261006-0202-0700-LOGOUT-IDEMPOTENCY
 PRODUCT_REPO: goif74945-crypto/NEXY.AI-
 BASE_BRANCH: NEXY.AI-Test-AI
@@ -20,3 +20,12 @@ Current replay lookup is global by AuditLog.requestId=idempotency_key plus logou
 
 ## Constraints
 Bind idempotent replay to the authenticated session and exact logout action. Preserve valid exact replay semantics. Do not widen error codes or touch unrelated auth behavior.
+
+
+## Independent review result
+- Parallel integration commit: c2a833cde90a51d7fd709937d66a4abea132739e
+- Parallel regression evidence commit immediately before it: 77519350b839fe9371d2f80655495ab13d3b90a7
+- Reviewed implementation binds replay to requestId=idempotency_key, exact action, actor=session.emailHash, resourceId=session.id, outcome=ACCEPTED.
+- Replay lookup occurs after canonical session/device-binding resolution and before revoked-session rejection, preserving exact retry semantics while preventing cross-session/cross-action replay.
+- Our worker implementation is intentionally NOT integrated because target already contains a stricter equivalent repair.
+- GitHub Actions validation infrastructure remained unavailable: worker run 37360770351 / job 111934514447 failed before any workflow step executed.
