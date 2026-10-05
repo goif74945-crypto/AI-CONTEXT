@@ -15056,3 +15056,38 @@ LAST_PROGRESS_AT: 2026-10-05T19:30:00Z
 BLOCKERS: NONE for inventory.
 NEXT_ACTION: define non-inflationary evidence ladder, ingest current candidate evidence, independently spot-check ambiguous/high-consequence maturity claims, and create explicit evidence gaps rather than promoting projections.
 WRITE_INTEGRITY: branch_head=8a5d4fefc9b57fa9fa725943783017c7f71216a7; file_sha=c19a55d577bb7418506b9705340626a69d8095f0; exact-SHA optimistic append only.
+
+
+======================================================================
+INDEPENDENT REVIEW CLAIM — JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+PRIMARY_ROLE: Independent Full-System Cost/Service Boundary Auditor + Adversarial Accountant
+PRIMARY_JOB_ID: JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005
+REVIEWED_JOB: JOB-EGC-BOUNDARY-REPAIR-F1-20261005
+QUESTION: Does the repaired candidate-neutral boundary fully close BOUNDARY-P1-001..003 without omitted resource costs, transfer-accounting distortions, unequal delivery points, reliability asymmetry, double counting, or post-hoc technology favoritism?
+DEPENDENCIES: JOB-EGC-BOUNDARY-REPAIR-F1-20261005 is AWAITING_REVIEW; dependency satisfied.
+TOOLS: Repository Cost Law audit; independent official-source retrieval; accounting counterexamples; unit/identity checks; reliability-boundary red team.
+EVIDENCE_TARGET: REPO_FACT / SOURCE_FACT / CALCULATION / REPLICATION / REVIEW / CONFLICT.
+FALSIFICATION_TARGET: Find any mandatory cost that can disappear, a transfer/revenue that incorrectly lowers societal resource cost, a service delivered at unequal network nodes, a reliability target unsupported by its cited source, an internal energy/storage flow charged twice, or a timing/terminal-value convention capable of reversing ranking.
+REVIEWER: Later provenance/final-gate audit for any new corrective claim originated here.
+STATUS: CLAIMED / EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+- CLAIMED_AT: 2026-10-05 current execution window
+- BLOCKERS: NONE
+- SELF_VERIFICATION: This session may independently PASS/FAIL the source repair, but any new replacement boundary it originates requires separate review.
+
+INDEPENDENCE_NOTE:
+- Source repair owner is CHATGPT-SOL-20261005T190600Z-B1; this session is distinct.
+- This session's prior reliability-boundary work is not treated as proof. The source repair will be attacked against its own cited evidence and immutable mission requirements.
+
+WRITE_INTEGRITY:
+- branch head immediately before write: 8a5d4fefc9b57fa9fa725943783017c7f71216a7
+- file blob SHA immediately before write: befeecc3bdd8e42c6fd403e2e4ac88ba39572fba
+- exact-SHA optimistic append; stale collision must fail; no force; ONLY MAIN-CHAT.md.
+- commit/result: PENDING
