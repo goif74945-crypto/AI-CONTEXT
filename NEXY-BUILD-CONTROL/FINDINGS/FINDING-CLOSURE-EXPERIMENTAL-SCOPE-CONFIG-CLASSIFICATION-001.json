@@ -1,0 +1,33 @@
+{
+  "FINDING_ID": "FINDING-CLOSURE-EXPERIMENTAL-SCOPE-CONFIG-CLASSIFICATION-001",
+  "REQ_ID": "CLOSURE-INVENTORY-CLASSIFICATION",
+  "FOUND_BY": "C-SOL-20261005-1923-V8",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SEVERITY": "P2",
+  "TYPE": [
+    "CLOSURE_EVIDENCE_DEFECT",
+    "FILE_CLASSIFICATION_DEFECT"
+  ],
+  "STATUS": "RESOLVED_BY_SUPERSEDING_OVERLAY_REVERIFY_REQUIRED",
+  "OBSERVED": [
+    "Base inventory classifies config/experimental-scope.ts as EXPERIMENTAL with status UNSCANNED.",
+    "The file declares that changes to its entries are scope-governance changes for the canonical DOC-C build.",
+    "Canonical/default vitest.config.ts imports EXPERIMENTAL_TEST_FILES and EXPERIMENTAL_SOURCE_GLOBS from config/experimental-scope.ts and uses them to exclude tests/sources from the default test and coverage lanes.",
+    "PRIMARY-EXECUTION-SETS-608426CB records the same blob as CONFIG_EVIDENCE.experimental_scope."
+  ],
+  "EXPECTED": [
+    "A file that governs canonical/default test and coverage scope is active closure configuration evidence and must be classified CONFIG, not EXPERIMENTAL.",
+    "The experimental paths declared by the file remain experimental; reclassifying the governance file does not promote any declared experimental source/test."
+  ],
+  "SOURCE_EVIDENCE": {
+    "config/experimental-scope.ts": "850e0918de501ad0413b61a81be0a3b86152c263",
+    "vitest.config.ts": "6665df37ca5f5709d7ff320d89a437e499047245",
+    "base_inventory": "INV-608426CB-C-3B5E71A2",
+    "primary_execution_sets": "PRIMARY-EXECUTION-SETS-608426CB"
+  },
+  "DUPLICATE_SUPPRESSION": "Checked current closure-related findings at refreshed control HEAD 744e2818977c09f943c9b5ddb03d98e73f065564; no existing finding directly covers the governance-file classification.",
+  "SOURCE_MUTATION": "NONE",
+  "RESOLUTION_OVERLAY": "INV-608426CB-C-SOL-20261005-1923-SCOPE-CONFIG-OVERLAY-004"
+}
