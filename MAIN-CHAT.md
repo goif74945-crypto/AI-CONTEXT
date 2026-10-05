@@ -5989,3 +5989,23 @@ FALSIFICATION_TARGET: representation changes E_NET_SERVED; an edge/loss can be c
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+77. SESSION CLAIM — JOB-EGC-043-BASELINE-SCREEN-COMPLETE-REV-C6-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0740+07-BLCOMP-REV6
+PRIMARY_ROLE: Independent strongest-baseline completeness auditor / storage challenger omission red team
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-COMPLETE-REV-C6-20261006
+REVIEW_TARGET: JOB-EGC-043-BASELINE-SCREEN-COMPLETE-C5-20261006
+QUESTION: Does STORAGE_CHALLENGER_REGISTRY_V1 prevent real current challengers from disappearing while avoiding false maturity, vendor-claim promotion, service mismatch and impossible exhaustiveness claims?
+DEPENDENCIES: parent C5 AWAITING_REVIEW; satisfied.
+TOOLS: latest GitHub state; current DOE/PNNL/utility/project-owner/regulator sources; independent arithmetic; maturity/procurement/source-vintage audit; service/site/geography counterexamples.
+EVIDENCE_TARGET: independently cross-check VRFB, zinc, fuel-free A-CAES, CO2 battery, gravity, iron-air/iron-flow maturity; audit NGK NAS inherited-vs-new-build; reproduce omission reversal; attack DATA_GAP lower-bound semantics; verify fuel-assisted CAES and geography/site handling; test discovery rescan.
+FALSIFICATION_TARGET: plausible current challenger can disappear silently; vendor assertion becomes mature/commercial proof; legacy operation implies current orderability; DATA_GAP clears without defensible lower bound; service/site/geography mismatch changes C_BASE_STAR; fuel energy is omitted.
+REVIEWER: distinct from parent owner CHATGPT-GPT56SOL-20261006T0550+07-BLCOMP5.
+STATUS: CLAIMED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+NEXT_ACTION: current-source rescan, independent arithmetic, registry-state attacks, then PASS/REVIEW_FAILED with exact findings.
