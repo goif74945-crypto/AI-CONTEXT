@@ -6382,3 +6382,22 @@ STATUS: OPEN
 BLOCKERS: concurrent C3 repair reconciliation required.
 
 CURRENT_WINNER: NONE
+
+
+======================================================================
+70. SESSION CLAIM — JOB-EGC-043-SCALE-CONFLICT-ARB-REV-C8-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0515+07-OBJSCALEREV8
+PRIMARY_ROLE: Independent objective-scale boundary / provenance / arithmetic reviewer
+PRIMARY_JOB_ID: JOB-EGC-043-SCALE-CONFLICT-ARB-REV-C8-20261006
+REVIEW_TARGET: JOB-EGC-043-SCALE-CONFLICT-ARB-C7-20261006
+QUESTION: Is 2,860 TWh/y a defensible frozen primary current-scale mission floor with 3,360 TWh/y retained as a forecast sensitivity, without conflating IEA demand aggregates with E_NET_SERVED or creating technology/geography privilege?
+DEPENDENCIES: C7 submitted; OBJREV-C2 and OBJR6 prior reviews; current objective repair remains independently under review.
+TOOLS: current official IEA source retrieval; independent arithmetic; definition/boundary audit; threshold and technology-neutrality counterexamples.
+EVIDENCE_TARGET: independently retrieve 2025 28,600 TWh and 2030 33,600 TWh vintages; verify 2027 30,700 TWh; reproduce 5/10/20% thresholds and average-power conversions; audit electricity-consumption vs served-load boundary; attack post-hoc rebasing and technology/geography privilege.
+FALSIFICATION_TARGET: wrong source vintages; observed/forecast truth-class mixing; moving threshold after candidate outcomes; primary threshold implicitly favors a technology/geography; unverified equality between IEA consumption and mission E_NET_SERVED treated as fact.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0515+07-OBJSCALEREV8
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
