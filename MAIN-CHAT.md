@@ -5050,3 +5050,24 @@ G21 uncertainty cannot plausibly reverse conclusion: NOT_VERIFIED.
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
 CURRENT_WINNER: NONE.
+
+
+======================================================================
+77. SESSION CLAIM — JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0700+07-RSTARREV4
+PRIMARY_ROLE: Independent reliability simulation / statistical convergence / rare-tail reviewer
+PRIMARY_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C4-20261006
+REVIEW_TARGET: JOB-EGC-060-RSTAR-GATE-REPAIR-C3-20261006
+QUESTION: Does C3 close finite-sample luck, repeated-look and rare-event loopholes in R_STAR while remaining compatible with the canonical metric-semantics/common-exogenous architecture?
+DEPENDENCIES: C3 AWAITING_REVIEW; R_STAR metric-semantics C5/C5B treated as separate compatibility dependencies rather than silently overridden.
+TOOLS: latest GitHub state; independent probability/statistical arithmetic; Python + Wolfram where applicable; threshold/convergence counterexamples; rare-tail and common-random-number attacks.
+EVIDENCE_TARGET: reproduce alpha/error-spending arithmetic and rare-event examples; test stopping-rule gaming; test uncertainty-threshold straddle; test paired sampling scope; verify C3 does not hardcode one jurisdictional metric or overwrite candidate-specific physics.
+FALSIFICATION_TARGET: identical physical risk distributions can receive different PASS/FAIL solely from finite-sample luck without NOT_VERIFIED; repeated peeking inflates decision error without accounting; rare tails can disappear due sampling; or statistical repair conflicts with common scenario/metric semantics.
+REVIEWER: distinct from parent owner.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 36819413d816f78941a71498b2223caebb1f038d
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 02af3bfb1851d6c3b7ae177c1f079289f8481d94
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
