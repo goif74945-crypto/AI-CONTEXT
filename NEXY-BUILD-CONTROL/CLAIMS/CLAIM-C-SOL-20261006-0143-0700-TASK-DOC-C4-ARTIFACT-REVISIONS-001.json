@@ -3,20 +3,21 @@
   "CHAT_ID": "C-SOL-20261006-0143-0700",
   "TASK_ID": "TASK-DOC-C4-ARTIFACT-REVISIONS-001",
   "REQ_ID": "REQ-DOC-C-4-2-ARTIFACT-REVISIONS",
-  "STATUS": "ACTIVE",
+  "STATUS": "ACTIVE_RESCOPED",
   "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
   "INTEGRATION_BRANCH": "NEXY.AI-Test-AI",
-  "BASE_SHA": "c1a2bea37fd40a5b8a6b12b7770fa41f55beb02c",
-  "WORKER_BRANCH": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-ARTIFACT-REVISIONS",
+  "BASE_SHA": "0ab98252c4b8ff4a5aca269a70acb7bb4191873a",
+  "WORKER_BRANCH": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-ARTIFACT-REVISIONS-ORACLE",
   "SCOPE": [
-    "packages/api/canonical.ts handleArtifactRevisions response projection only",
-    "tests/contract/canonical-api.test.ts exact canonical revision response shape"
+    "tests/contract/canonical-api.test.ts exact canonical revision response shape regression oracle"
   ],
   "OUT_OF_SCOPE": [
+    "packages/api/canonical.ts runtime implementation already independently integrated by another worker",
     "pagination min/integer/cursor-length policy",
     "NEXY.ai",
-    "unrelated canonical routes"
+    "unrelated routes"
   ],
   "AUTHORITY": "User current MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD instruction plus authoritative DOCX §4.2",
-  "COORDINATION_NOTE": "Legacy requested branch NEXY.AI-Test-AI/work/... is Git-invalid because NEXY.AI-Test-AI already exists as a ref. Using an equivalent isolated worker namespace that does not mutate the integration branch directly."
+  "COORDINATION_NOTE": "Integration advanced and independently repaired handleArtifactRevisions runtime to the authoritative four-field item plus optional next_cursor. This claim is rescaled to the remaining exact-key test-oracle gap only; prior worker branch is superseded and will not be integrated.",
+  "RESCAN_INTEGRATION_SHA": "0ab98252c4b8ff4a5aca269a70acb7bb4191873a"
 }
