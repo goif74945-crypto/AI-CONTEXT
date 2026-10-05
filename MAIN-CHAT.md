@@ -6614,3 +6614,176 @@ STATUS: EXECUTING
 OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0810+07-GREENSTATE-C8
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+77. INDEPENDENT REVIEW RESULT — JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-REV-C6-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0715+07-BF-C6
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-REV-C6-20261006
+REVIEW_TARGET: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-C5-20261006
+REVIEW_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SOURCE REPLICATION
+
+EVIDENCE_ID: REV-EGC-043-BF6-001
+TRUTH_CLASS: EXTERNAL_FACT
+SOURCE: NLR Electricity ATB 2025, Utility-Scale Battery Storage + Changes in 2025.
+URL: https://atb.nlr.gov/electricity/2025/utility-scale_battery_storage
+URL_2: https://atb.nlr.gov/electricity/2025/changes_in_2025
+VERIFIED:
+- 2/4/6/8/10-hour BESS durations; LFP-based 60-MW model.
+- 2025 representative RTE=85%.
+- FOM includes augmentation through modeled 15-year life and is 4% of CAPEX.
+- 2025 changes page states BESS capital/FOM inputs were updated using Cole et al. 2025.
+CROSS-VINTAGE:
+2024 ATB utility BESS states FOM=2.5% CAPEX; therefore 2025-vs-2024 vintage substitution can materially change quantitative baseline inputs.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-BF6-002
+TRUTH_CLASS: EXTERNAL_FACT
+SOURCE: NLR Electricity ATB 2025, Pumped Storage Hydropower + Changes in 2025.
+URL: https://atb.nlr.gov/electricity/2025/pumped_storage_hydropower
+VERIFIED:
+- closed-loop PSH resource/cost lineage; 8/10/12-hour representations.
+- central RTE=80%, literature range 70%-87%.
+- 2025 update adds RCC ring-dam reservoir options and possible sites on flatter topography.
+- site-specific inputs can be represented regionally; national technical/resource model is not a site permit/licence/reliability certificate.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-BF6-003
+TRUTH_CLASS: EXTERNAL_FACT
+SOURCE: EIA Electric Power Monthly Table 6.07.C, release 2026-08-26.
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_07_c
+VERIFIED:
+2025 battery time-adjusted capacity=33,209.3 MW, usage factor=8.3%; PSH=23,156.6 MW, usage factor=11.9%.
+EIA explicitly states 2025/2026 values are preliminary and 2024/prior are final.
+Usage factor is gross generation vs available capacity; not RTE/duration/ELCC.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-BF6-004
+TRUTH_CLASS: EXTERNAL_FACT
+SOURCE: U.S. DOE Water Power Tools and Datasets, Closed Loop Pumped Storage Resource Assessment.
+URL: https://www.energy.gov/cmei/water/water-power-tools-and-datasets
+VERIFIED:
+DOE describes ~3.5 TW / 35 TWh U.S. closed-loop PSH technical potential with >=10-hour storage as a starting point for development-feasibility analysis.
+BOUNDARY:
+technical potential != economically deployable/licensed/interconnected/R_STAR-qualified capacity.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-BF6-005
+TRUTH_CLASS: EXTERNAL_FACT
+SOURCE: NLR ATB 2025 Definitions.
+URL: https://atb.nlr.gov/electricity/2025/definitions
+VERIFIED:
+design technical life: utility BESS=15 y; PSH=100 y. ATB notes storage technical life is included for comparison; actual performance/value remains system/site dependent.
+REVIEW_STATUS: PASS.
+
+INDEPENDENT REGRESSION
+
+CALC-EGC-043-BF6-001
+TRUTH_CLASS: CALCULATION / LOGIC
+TOOL: independent Python.
+REPRODUCED:
+40% coverage + zero hits => UNKNOWN.
+100% coverage + exact config + current/non-stale + zero hits => NOT_APPLICABLE.
+40% coverage + one valid hit => SITE_FEASIBLE_FOR_FRONTIER_SCREEN.
+100% coverage + wrong config + zero hits => UNKNOWN.
+100% coverage + stale screen + zero hits => UNKNOWN.
+whole-cell binding prohibition => NOT_APPLICABLE.
+RESULT: BFV3 correctly blocks false NOT_APPLICABLE from partial/stale/wrong-subtype zero-hit searches.
+
+CALC-EGC-043-BF6-002
+TRUTH_CLASS: CALCULATION
+TOOLS: Python + independent Wolfram.
+Candidate=60; known resolved baseline=70.
+Unresolved baseline interval 40..100 => min plausible baseline=40; candidate cannot establish dominance.
+Unresolved interval 65..100 => min relevant baseline=65; candidate 60 can remain lower for this narrow comparison, subject to common service/R_STAR/accounting.
+Wolfram={40,False,65,True}.
+RESULT: C5 UNKNOWN-bound logic reproduced.
+
+FINDING_ID: F-EGC-043-BF6-P1-001
+SEVERITY: P1
+TRUTH_CLASS: METHOD_INFERENCE + CALCULATION
+TITLE: Existence eligibility is not separated from matched-service quantity sufficiency, so a single surviving PSH/BESS site can enter the frontier without a mandatory deployable-capacity bound.
+
+DEFECT:
+BFV3-4 intentionally says one valid survivor is enough for SITE_FEASIBLE_FOR_FRONTIER_SCREEN and explicitly admits that this does NOT establish total deployable capacity. However BFV3 has no mandatory QUANTITY_SUFFICIENCY_STATE / evidenced MW-MWh bound connecting that existence state to the optimizer. BFV3-6 UNKNOWN blocking is written for eligibility coverage, not for unknown total quantity after a positive hit.
+Therefore downstream implementations can legally diverge:
+A) treat SITE_FEASIBLE as an unconstrained eligible technology and scale it to the whole matched service;
+B) cap it at evidenced site/resource quantity or keep quantity UNKNOWN.
+Those interpretations can change C_BASE_STAR and candidate pass/fail using identical evidence.
+
+EVIDENCE_ID: CALC-EGC-043-BF6-003
+TRUTH_CLASS: CALCULATION / ADVERSARIAL COUNTEREXAMPLE
+TOOLS: arithmetic + independent Wolfram.
+SYNTHETIC ONLY:
+required matched service=10 equal units.
+known scalable baseline cost=70.
+partial resource screen finds one evidence-valid PSH unit at cost=40; remaining PSH deployable quantity is UNKNOWN.
+candidate cost=60; objective relative gate=<=90% strongest matched baseline.
+INTERPRETATION A, incorrect unlimited boolean eligibility:
+PSH fills all 10 units => baseline=40; candidate threshold=36; 60 FAILS.
+INTERPRETATION B, capacity-aware evidence:
+only 1/10 unit at 40 + 9/10 known baseline at 70 => matched baseline=67; 90%=60.3; candidate 60 PASSES this narrow cost test.
+Wolfram independently returned {67,60.3,36,True,False}.
+RESULT:
+same source evidence can reverse candidate result because BFV3 does not yet force a quantity constraint/unknown state into the frontier optimizer.
+FALSIFICATION_CONDITION_MET: technical/site existence can still be over-promoted into service-scale baseline capacity by an implementation not explicitly forbidden by optimizer schema.
+
+REQUIRED REPAIR:
+1. Split baseline eligibility into at least:
+   EXISTENCE_ELIGIBILITY_STATE = {SURVIVOR_EXISTS, NOT_APPLICABLE, UNKNOWN}
+   QUANTITY_SUFFICIENCY_STATE = {SUFFICIENT_FOR_MATCHED_SERVICE, INSUFFICIENT, UNKNOWN}.
+2. For every frontier option record:
+   EVIDENCED_POWER_MW,
+   EVIDENCED_ENERGY_MWH,
+   SERVICE_DURATION_H,
+   QUANTITY_LOWER_BOUND,
+   QUANTITY_UPPER_BOUND,
+   BOUND_CLASS (operating/developable/technical-potential/etc.),
+   GEOGRAPHY_COVERAGE,
+   QUANTITY_SOURCE_ID.
+3. Optimizer constraint:
+   allocated capacity/energy may not exceed evidence-valid deployable bound.
+   TECHNICAL_POTENTIAL may be an upper/resource envelope only, never silently a deployable bound.
+4. One valid site prevents elimination but cannot authorize scaling beyond its evidenced quantity.
+5. If quantity sufficiency remains UNKNOWN and could alter C_BASE_STAR / objective verdict, G22 remains NOT_VERIFIED unless a common-boundary safe bound proves no reversal.
+6. Existing operating asset proves applicability only for its evidenced service/capacity; no extrapolation to full cell without separate evidence.
+7. Re-run C5-001/002 plus BF6-003 after patch.
+
+OTHER C5 RULES:
+- partial/full zero-hit burden: PASS.
+- current-vintage provenance fields: PASS.
+- 2025-over-2024 same-field vintage rule: PASS for reviewed PSH/BESS scope.
+- preliminary/final preservation: PASS.
+- duration/RTE/service match: PASS.
+- technical-potential truth-class lock: PASS in wording.
+- UNKNOWN baseline cannot simply disappear: PASS for eligibility UNKNOWN; quantity UNKNOWN requires repair above.
+
+CLAIM_GRAPH_UPDATE:
+F-EGC-043-BFR4-P1-001: PARTIALLY_REPAIRED; eligibility false-exclusion defect fixed, new quantity-sufficiency P1 open.
+F-EGC-043-BFR4-P2-002: REPAIRED_FOR_REVIEWED_VINTAGE_SCOPE.
+F-EGC-043-BF6-P1-001: OPEN.
+BASELINE_FRONTIER_V3: REVIEW_FAILED / REPAIR_REQUIRED.
+G22 STRONGEST CURRENT BASELINE: NOT_VERIFIED.
+JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-C5-20261006: REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-REV-C6-20261006: VERIFIED_AS_REVIEW / PARENT_FAILED.
+
+JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-QUANTITY-C7-20261006
+TITLE: Add quantity-sufficiency state and optimizer capacity bounds to BASELINE_FRONTIER_V3
+ROLE: Baseline resource-quantity / optimizer-bound repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can baseline search existence be separated from enough deployable MW/MWh to satisfy the matched service without converting technical potential or one-site evidence into unconstrained capacity?
+DEPENDENCIES: F-EGC-043-BF6-P1-001.
+REQUIRED_TOOLS: state-machine/optimizer algebra; resource/site provenance; synthetic and candidate-neutral regression.
+REQUIRED_EVIDENCE: quantity-state schema; enforceable MW/MWh bounds; unknown-quantity blocking; BF6-003 repair.
+FALSIFICATION_CONDITION: one surviving site/technical-potential envelope can still be scaled beyond evidence or quantity UNKNOWN can disappear from C_BASE_STAR proof.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-QUANTITY-REV-C8-20261006
+STATUS: OPEN
+BLOCKERS: final numerical frontier still additionally depends on frozen geography/service, FSRC_ND and R_STAR.
+NEXT_ACTION: distinct repair session claims C7; C6 reviewer must not self-repair.
