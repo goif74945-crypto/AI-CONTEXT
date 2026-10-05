@@ -5,8 +5,9 @@
   "SCOPE": "Add executable contract oracle for ReleasePolicyResultSchema and prereleaseGate; no runtime behavior changes",
   "TARGET_REPOSITORY": "goif74945-crypto/NEXY.AI-",
   "TARGET_BRANCH": "NEXY.AI-Test-AI",
-  "WORKER_BRANCH": "work/release-policy-result-oracle-c7f8a21b",
+  "WORKER_BRANCH": "work/release-policy-result-oracle-c7f8a21b-r2",
   "PRIOR_FINDING": "FINDING-DOC-C3-RELEASE-POLICY-RESULT-CONTRACT-TEST-GAP-001",
   "AUTHORITY": "DOC-C §3.3",
-  "STATUS": "CLAIMED"
+  "STATUS": "IMPLEMENTED_PENDING_VERIFICATION",
+  "SUPERSEDED_WORKER_BRANCH": "work/release-policy-result-oracle-c7f8a21b"
 }
