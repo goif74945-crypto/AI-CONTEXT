@@ -9732,3 +9732,220 @@ NEXT_ACTION: distinct repair session executes V2.1; distinct C6 reviewer attacks
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+======================================================================
+THERMAL REVIEW RESULT — JOB-EGC-056-THERMAL-HEATREJECTION-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0435+07-THERMREV2
+PRIMARY_JOB_ID: JOB-EGC-056-THERMAL-HEATREJECTION-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-056-THERMAL-HEATREJECTION-C1-20261006
+ROLE: Independent thermodynamics / cooling / water / ambient-derating reviewer
+REVIEW_VERDICT: PASS_FOR_METHOD_AND_STATED_SOURCE_SCOPE
+PARENT_STATUS: VERIFIED_FOR_METHOD_SCOPE
+REVIEWER_JOB_STATUS: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+INDEPENDENT SOURCE REPLICATION
+
+EVIDENCE_ID: REV-EGC-056-THERM-001
+TARGET: TE-EGC-056-THERM-001
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: U.S. EIA Electric Power Annual Table 8.2
+URL: https://www.eia.gov/electricity/annual/html/epa_08_02.html
+SOURCE_DATE: 2024 data / page current at review
+VERIFIED:
+- 2024 natural-gas combined-cycle full-load tested heat rate = 7,548 Btu/kWh.
+- 2024 nuclear steam-generator full-load tested heat rate = 10,443 Btu/kWh.
+- EIA notes values are full-load tested and capacity-weighted by Net Summer Capacity.
+LIMITATION:
+not global operating-fleet average and not site-specific cooling performance.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-056-WATER-001
+TARGET: TE-EGC-056-WATER-001
+EVIDENCE_CLASS: SOURCE_FACT / MEASURED+MODELLED NATIONAL DATA
+SOURCE: U.S. Geological Survey, Thermoelectric Power Water Use
+URL: https://www.usgs.gov/mission-areas/water-resources/science/thermoelectric-power-water-use
+VERIFIED:
+- once-through and recirculating cooling are physically distinct water-use regimes.
+- 2015 once-through systems: 96% of thermoelectric withdrawals, 37% net generation, ~1% withdrawal consumed.
+- recirculating: 4% withdrawals, 63% generation, 57% of recirculating withdrawals consumed, 67% total thermoelectric consumptive use.
+- sources include fresh/saline surface/groundwater and reclaimed wastewater.
+REVIEW_STATUS: PASS. Withdrawal and consumption SHALL remain separate.
+
+EVIDENCE_ID: REV-EGC-056-WATER-002
+TARGET: TE-EGC-056-WATER-001 / national scale
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: USGS Water Use Across CONUS 2010-2020
+URL: https://pubs.usgs.gov/publication/pp1894D/full
+VERIFIED:
+2020 total thermoelectric withdrawals = 61,399 + 19,033 = 80,432 Mgal/d; consumptive use = 2,382 Mgal/d.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-056-COOL-001
+TARGET: TE-EGC-056-COOLING-001
+EVIDENCE_CLASS: SIMULATION_RESULT / DOE-NETL TECHNICAL_REPORT
+SOURCE: DOE NETL, Cost and Performance Impact of Dry and Hybrid Cooling on Fossil Energy Power Systems, NETL-PUB-22446
+URLS:
+https://www.netl.doe.gov/projects/files/CostandPerformanceImpactofDryandHybridCoolingonFossilEnergyPowerSystems_062018.pdf
+https://www.osti.gov/servlets/purl/1529314
+SOURCE_DATE: 2018-06-20
+VERIFIED FROM OFFICIAL PDF TEXT:
+- NGCC cases at 85 F dry bulb / 53% RH: wet-evaporative net power 628 -> 591 MWe (-5.9%); dry/ACC 628 -> 586 MWe (-6.7%).
+- NETL conclusion: non-capture NGCC raw-water withdrawal falls from 3.8 to <0.1 gpm/MWe-net under dry cooling, about 99% reduction; remaining withdrawal is steam-cycle makeup.
+- report explicitly warns its cost/performance differences are site/ambient-design specific and should not be generalized.
+PDF_VISUAL_CHECK:
+screenshot tool was attempted repeatedly against two official NETL PDF URLs and returned cache-miss errors. Therefore exact visual figure verification remains NOT_VERIFIED; official PDF extracted text and alternate official/OSTI provenance agree.
+REVIEW_STATUS: PASS_TEXT_AND_PROVENANCE / VISUAL_NOT_VERIFIED.
+MATERIALITY: visual failure does not alter T_STAR method; do not promote chart-only values beyond extracted text.
+
+EVIDENCE_ID: REV-EGC-056-AMBIENT-001
+TARGET: TE-EGC-056-AMBIENT-001
+EVIDENCE_CLASS: OPERATIONAL_EVENT_EVIDENCE
+SOURCE: EDF Blayais/Bugey official notices
+URLS:
+https://www.edf.fr/la-centrale-nucleaire-du-blayais/les-actualites-de-la-centrale-nucleaire-du-blayais/adaptation-de-la-production-de-la-centrale-du-blayais-en-raison-des-conditions-climatiques
+https://www.edf.fr/reconnexion-de-l-unite-de-production-ndeg2-au-reseau-national-d-electricite
+VERIFIED:
+- EDF reports thermal-discharge/river-temperature constraints can require production adaptation or temporary unit disconnection.
+- EDF reports high-temperature/low-flow losses since 2000 average about 0.3% annual fleet production.
+- Bugey 2026 event provenance was retrieved by C1; direct re-open in this reviewer intermittently cache-missed, so no new unsupported detail is added.
+REVIEW_STATUS: PASS_DIRECTION / SITE-JURISDICTION_SCOPED.
+
+INDEPENDENT CALCULATIONS
+
+CALC_ID: REV-CALC-EGC-056-001
+TOOLS: executed Python Decimal + independent AWK
+EQUATIONS:
+eta_net = 3412.141633 / HR
+Q_in/E_net = HR / 3412.141633
+Q_non-electric/E_net = HR/3412.141633 - 1
+INPUTS: NGCC HR=7548; nuclear HR=10443 Btu/kWh_net.
+OUTPUT:
+NGCC eta=0.4520590398781134; Q_in/E=2.2121004377428784; Q_non/E=1.2121004377428784.
+Nuclear eta=0.3267395990615723; Q_in/E=3.0605411859232750; Q_non/E=2.0605411859232750.
+REPLICATION_STATUS: PASS; C1 values match rounding.
+
+CALC_ID: REV-CALC-EGC-056-002
+TOOLS: Python Decimal + AWK
+PURPOSE: scale-sensitivity replication under currently contested objective anchors.
+AT 2,860 TWh/y = 326.48401826484 GW average:
+NGCC Q_non = 395.731421455 GWth = 3,466.607251945 TWhth/y.
+Nuclear Q_non = 672.733766180 GWth = 5,893.147791741 TWhth/y.
+AT 3,360 TWh/y = 383.561643835616 GW average:
+NGCC Q_non = 464.915236395 GWth = 4,072.657470816 TWhth/y.
+Nuclear Q_non = 790.344564464 GWth = 6,923.418384702 TWhth/y.
+NOTE:
+C1 used rounded 326.484 GW, giving 395.731399316 and 672.733728545 GWth; exact annual-energy-derived power explains the tiny difference. No substantive arithmetic defect.
+TRUTH_CLASS: CALCULATION / CONDITIONAL_SENSITIVITY.
+CRITICAL DEPENDENCY:
+2,860 primary-vs-3,360 forecast scale boundary is still under separate objective arbitration. Neither may be promoted here to final MASSIVE_ENERGY proof.
+
+CALC_ID: REV-CALC-EGC-056-003
+TOOLS: Python Decimal + AWK
+RESULT:
+eta=.25 -> Q_non/E=3
+.30 ->2.3333333333
+.33 ->2.0303030303
+.40 ->1.5
+.45 ->1.2222222222
+.50 ->1
+.60 ->.6666666667
+REPLICATION_STATUS: PASS.
+
+CALC_ID: REV-CALC-EGC-056-004
+TOOLS: Python Decimal + AWK
+INPUTS: NETL modeled 3.8 and <0.1 gpm/MW-net.
+RESULT:
+3.8 gpm/MW = 228 gal/MWh.
+<0.1 gpm/MW = <6 gal/MWh.
+At exact 326,484.018 MW:
+wet = 1.786520548 billion gal/day;
+dry = <0.047013699 billion gal/day.
+C1 rounded-power values are consistent.
+TRUTH_CLASS: CONDITIONAL_SENSITIVITY, NOT fleet forecast and NOT water consumption.
+
+FIRST-LAW / BOUNDARY ATTACKS
+
+ATTACK-056-001: Q_NON_ELECTRIC == CONDENSER_DUTY.
+RESULT: FALSIFIED and C1 correctly rejects it. Combustion exhaust/stack and other streams require partitioning.
+
+ATTACK-056-002: NET heat rate plus cooling auxiliaries can be charged twice.
+RESULT: T_STAR direction passes only under C1 owner rule: net exported electricity already reflects plant auxiliaries; cooling pump/fan electricity must not be subtracted again from NET_SERVED or separately treated as an energy loss. Cooling equipment/resource CAPEX/OPEX remains a distinct cost/resource row.
+REVIEW_CONDITION: integrated FSRC_ND/R_STAR implementation must maintain one causal owner ID for each parasitic/outage.
+
+ATTACK-056-003: dry cooling eliminates plant water requirement.
+RESULT: FALSIFIED by NETL; NGCC raw-water withdrawal becomes very small in cited model but nonzero, and process water/discharge remains.
+
+ATTACK-056-004: a single national water-intensity scalar is sufficient.
+RESULT: FALSIFIED. Source type, local hydrology, cooling design, withdrawal, consumption and legal thermal-discharge limits are nonfungible.
+REVIEW_ADDITION: WATER_SOURCE_CLASS={fresh_surface,fresh_ground,saline,reclaimed,other_evidenced} should be mandatory downstream metadata where material.
+
+ATTACK-056-005: EDF heat events justify a generic nuclear CF penalty.
+RESULT: FALSIFIED. Evidence is operational but site/regulation/weather scoped; weather-correlated availability must be modeled geographically.
+
+ATTACK-056-006: EIA full-load tested HR is fleet-average operating HR.
+RESULT: FALSIFIED. C1 limitation already correct.
+
+ATTACK-056-007: scale heat-rejection arithmetic proves feasible heat sinks.
+RESULT: FALSIFIED. Aggregate GWth/TWhth is a conservation sensitivity only. Feasible site sinks, cooling area, water, discharge, climate and topology remain candidate/site evidence requirements.
+
+REVIEW FINDINGS
+
+FINDING_ID: F-EGC-056REV-P2-001
+SEVERITY: P2 / schema-hardening
+TITLE: Water source class should be explicit rather than implicit in hydrology metadata
+TRUTH_CLASS: SOURCE_FACT + METHOD_HARDENING
+RATIONALE: USGS explicitly distinguishes fresh/saline surface/groundwater and reclaimed sources; identical withdrawal volumes can have different resource/legal constraints.
+REPAIR: add WATER_SOURCE_CLASS and RETURN_SOURCE/QUALITY where material. This does not invalidate T_STAR first-law method.
+
+FINDING_ID: F-EGC-056REV-P2-002
+SEVERITY: P2 / dependency-control
+TITLE: Scale heat-rejection sensitivity imports unresolved MASSIVE_ENERGY anchor
+TRUTH_CLASS: DEPENDENCY
+RATIONALE: 2,860 TWh/y proposed current-scale floor and 3,360 TWh/y forecast sensitivity remain under objective arbitration.
+REPAIR: keep both labeled sensitivities and bind final scale calculation by foreign key to whichever objective version independently verifies; no hardcoded promotion.
+This is not an arithmetic defect.
+
+CLAIM REVIEW
+CLAIM-EGC-056-HEATRATE-001: PASS.
+CLAIM-EGC-056-FIRSTLAW-001: PASS / independently replicated.
+CLAIM-EGC-056-MASSIVE-SCALE-001: PASS_AS_CONDITIONAL_CALCULATION_ONLY / FINAL_SCALE_NOT_VERIFIED.
+CLAIM-EGC-056-WATER-BOUNDARY-001: PASS.
+CLAIM-EGC-056-WATER-STRESS-001: PASS_DIRECTION / geography scoped.
+CLAIM-EGC-056-DRYCOOL-001: PASS_TEXT_AND_PROVENANCE / PDF_VISUAL_NOT_VERIFIED.
+CLAIM-EGC-056-NUCLEAR-AMBIENT-001: PASS_DIRECTION / not universal penalty.
+CLAIM-EGC-056-GEO-COOLING-001: PASS_METHOD / numeric EGS whole-plant value remains UNKNOWN.
+CLAIM-EGC-056-DRYCOOL-TRADEOFF-001: PASS_DIRECTION / model/site scoped.
+
+PARENT VERDICT
+JOB-EGC-056-THERMAL-HEATREJECTION-C1-20261006:
+VERIFIED_FOR_T_STAR_METHOD_AND_STATED_EVIDENCE_SCOPE.
+This does NOT establish candidate-level thermal feasibility, final MASSIVE_ENERGY scale, or low delivered cost.
+
+OPEN DEPENDENCIES:
+- objective scale arbitration;
+- candidate/site heat-flow partition and cooling design;
+- R_STAR weather correlation;
+- FSRC_ND causal-owner integration;
+- EGS commercial-block measured heat-rejection/fan-load evidence;
+- fusion whole-plant thermal evidence.
+
+GATES:
+G2 physics valid: T_STAR_METHOD contribution SUPPORTED/REVIEWED, not entire mission G2.
+G4 engineering complete: NO.
+G6 massive energy validated: NO.
+G12 grid/storage accounted: NO.
+G15 integrated model passed: NO.
+G16 model vs measurement validated: NO.
+G21 uncertainty cannot reverse: NO.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+NEXT_HIGH_INFORMATION_WORK:
+Consume T_STAR only as reviewed method. Do not reopen C1 solely for P2 schema hardening; bind WATER_SOURCE_CLASS and objective-version foreign key in integrated model. Candidate-level thermal front-runners still require site/design evidence and chronological reliability integration.
