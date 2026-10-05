@@ -11262,3 +11262,245 @@ WRITE_INTEGRITY:
 - file SHA read: 2093f30e0937ab4b8d94f02aa04bd8844aab1f3e
 - stale-write check: exact SHA guarded update, attempt 1.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+41. JOB-EGC-GEOTHERMAL-OPS-D1-20261005 — OPERATIONAL / ENGINEERING EVIDENCE PACKAGE
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-EGC-GEOOPS-D1-20261005
+STATUS: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+CLAIM_ID: CL-GEOOPS-D1-A
+CLAIM: Conventional geothermal is physically mature and high-utilisation, but global deployment is still small and slow relative to a civilization-scale target.
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + INFERENCE
+
+EVIDENCE_ID: EVIDENCE-GEOOPS-D1-001
+JOB_ID: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+CLAIM_ID: CL-GEOOPS-D1-A
+TOOL: authoritative web/PDF retrieval + visual PDF page inspection
+METHOD: IRENA Renewable Capacity Statistics 2026, geothermal table.
+DATE: 2026-10-05
+SOURCE: International Renewable Energy Agency, Renewable Capacity Statistics 2026
+SOURCE_DATE: 2026-03
+URL/DOI/IDENTIFIER: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Mar/IRENA_DAT_RE_capacity_statistics_2026.pdf
+INPUTS: World geothermal capacity 2024=15,415 MW; 2025=15,674 MW.
+PARAMETERS: NONE.
+EQUATION/CODE/METHOD: Delta=15,674-15,415; growth=Delta/15,415.
+OUTPUT: +259 MW net installed geothermal capacity in 2025; +1.680% year-on-year; end-2025 global capacity=15.674 GW.
+UNITS: MW, GW, percent/year.
+UNCERTAINTY: IRENA capacity-statistics reporting/estimation flags vary by country; this is nameplate capacity, not delivered average power.
+ASSUMPTIONS: Arithmetic only.
+LIMITATIONS: Does not distinguish conventional geothermal from next-generation EGS within aggregate world capacity.
+REPRODUCTION_METHOD: Open geothermal table in IRENA 2026 statistics; verify World row 2024/2025; recompute delta/growth.
+REPLICATION_STATUS: NOT_VERIFIED by distinct session.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+
+EVIDENCE_ID: EVIDENCE-GEOOPS-D1-002
+JOB_ID: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+CLAIM_ID: CL-GEOOPS-D1-A
+TOOL: authoritative web retrieval
+METHOD: IRENA 2025-generation-cost report page plus 2024 detailed digital report.
+DATE: 2026-10-05
+SOURCE: IRENA Renewable Power Generation Costs in 2025; IRENA Renewable Power Generation Costs in 2024.
+SOURCE_DATE: 2026-07 and 2025-07.
+URL/DOI/IDENTIFIER: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025 ; https://www.irena.org/Digital-Report/Renewable-Power-Generation-Costs-in-2024
+INPUTS: 2025 global weighted-average geothermal LCOE=USD 89/MWh. 2024 commissioned-geothermal weighted-average LCOE=USD 60/MWh, total installed cost=USD 4,015/kW, capacity factor=88%, O&M assumption=USD 125/kW-year.
+PARAMETERS: IRENA plant-level LCOE methodology.
+EQUATION/CODE/METHOD: source extraction only.
+OUTPUT: Mature geothermal can achieve high utilisation but observed commissioning costs vary materially year-to-year; 2025 global weighted-average geothermal LCOE is above the current proposed USD 65/MWh generation-screen anchor.
+UNITS: USD/MWh, USD/kW, percent.
+UNCERTAINTY: IRENA notes few geothermal plants dominate annual weighted averages; project/geography mix changes values strongly.
+ASSUMPTIONS: NONE for quoted values.
+LIMITATIONS: Plant/busbar LCOE is not full-system delivered cost; 2024 detail and 2025 summary are different commissioning cohorts.
+REPRODUCTION_METHOD: Verify 2026 report summary for USD 89/MWh; verify 2024 digital report geothermal section for USD 60/MWh, USD 4,015/kW, CF 88%, O&M assumption.
+REPLICATION_STATUS: NOT_VERIFIED.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+CLAIM_ID: CL-GEOOPS-D1-B
+CLAIM: EGS has crossed from field-pilot evidence to at least one disclosed grid-connected contractual commercial-operation milestone, but present evidence does not establish low full-system cost, multi-decade reservoir performance, or hundreds-of-GW scalability.
+TRUTH_CLASS: SOURCE_FACT + INFERENCE + NOT_VERIFIED
+
+EVIDENCE_ID: EVIDENCE-GEOOPS-D1-003
+JOB_ID: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+CLAIM_ID: CL-GEOOPS-D1-B
+TOOL: SEC filing retrieval
+METHOD: Inspect Fervo Energy SEC-filed 1 Oct 2026 press-release exhibit.
+DATE: 2026-10-05
+SOURCE: U.S. SEC EDGAR, Fervo Energy exhibit 99.1 filed 2026-10-01.
+SOURCE_DATE: 2026-10-01.
+URL/DOI/IDENTIFIER: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/exhibit991pressrelease10126.htm
+INPUTS: First Cape Station GeoBlock reached contractual commercial operation; disclosed 33 MW net power production meeting PPA production threshold.
+PARAMETERS: NONE.
+EQUATION/CODE/METHOD: source extraction.
+OUTPUT: Current physical/commercial evidence exists for 33 MW net EGS grid power at Cape Station according to an SEC-filed issuer disclosure.
+UNITS: MW net.
+UNCERTAINTY: Underlying revenue-grade meter data and independent technical audit were not retrieved in this job.
+ASSUMPTIONS: Treat filing as primary company/regulatory disclosure, not independent metrology.
+LIMITATIONS: One GeoBlock does not prove long-term reservoir life, fleet reliability, global scalability, or low delivered cost.
+REPRODUCTION_METHOD: Retrieve EDGAR exhibit; verify contractual COD and 33 MW net statements.
+REPLICATION_STATUS: NOT_VERIFIED independently.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_COMPANY_DISCLOSURE; NOT independent MEASUREMENT.
+
+EVIDENCE_ID: EVIDENCE-GEOOPS-D1-004
+JOB_ID: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+CLAIM_ID: CL-GEOOPS-D1-B
+TOOL: U.S. DOE source retrieval
+METHOD: Inspect Utah FORGE extended-circulation-test status and prior test measurements.
+DATE: 2026-10-05
+SOURCE: U.S. Department of Energy, Office of Geothermal, Running Hot, Keeping Cool: FORGE Embarks on Extended Circulation Test.
+SOURCE_DATE: 2026-08-17.
+URL/DOI/IDENTIFIER: https://www.energy.gov/hgeo/geothermal/articles/running-hot-keeping-cool-forge-embarks-extended-circulation-test
+INPUTS: 2024 30-day circulation test injected at 10 barrels/minute and produced ~370°F fluid; extended test began Aug 2026 because 30 days cannot establish pressure/production stability, water recovery, heat extraction and project economics over longer periods.
+PARAMETERS: NONE.
+EQUATION/CODE/METHOD: source extraction.
+OUTPUT: EGS heat extraction/circulation is physically demonstrated at FORGE, while long-duration reservoir-performance evidence remains actively under test as of Aug 2026.
+UNITS: barrels/minute, °F, days/months.
+UNCERTAINTY: Extended-test final results not available in retrieved source.
+ASSUMPTIONS: NONE for quoted test state.
+LIMITATIONS: Research field site, not commercial power-plant economics.
+REPRODUCTION_METHOD: Open DOE page and verify prior 30-day test plus rationale for extended test.
+REPLICATION_STATUS: NOT_VERIFIED.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: EXPERIMENT_RESULT/SOURCE_FACT for achieved test; UNKNOWN for long-duration result.
+
+CLAIM_ID: CL-GEOOPS-D1-C
+CLAIM: Current next-generation geothermal economics remain materially less proven than conventional geothermal economics; public targets and long-run cost projections must not be counted as achieved low cost.
+TRUTH_CLASS: SOURCE_FACT + INFERENCE
+
+EVIDENCE_ID: EVIDENCE-GEOOPS-D1-005
+JOB_ID: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+CLAIM_ID: CL-GEOOPS-D1-C
+TOOL: IEA 2026 current-state source retrieval
+METHOD: Extract development-stage, cost-structure and contract-price evidence.
+DATE: 2026-10-05
+SOURCE: IEA, Investment in next-generation geothermal is surging. Policies are key to further growth.
+SOURCE_DATE: 2026-01-23.
+URL/DOI/IDENTIFIER: https://www.iea.org/commentaries/investment-in-next-generation-geothermal-is-surging-policies-are-key-to-further-growth
+INPUTS: IEA classifies next-generation geothermal as early-stage; drilling/well costs often up to 80% of project costs; developers have demonstrated well-cost cuts up to 30%; some newer geothermal contract prices reach about USD 130/MWh; IEA says policy support remains crucial for bridging pilots to large-scale deployment.
+PARAMETERS: NONE.
+EQUATION/CODE/METHOD: source extraction with achieved-versus-projected classification.
+OUTPUT: Current economic evidence does not support treating next-generation geothermal as already proven at <=USD 65/MWh full-system or even plant-level cost across scalable deployments.
+UNITS: percent; USD/MWh.
+UNCERTAINTY: PPA prices are contract-market outcomes, not identical to LCOE; projects differ in attributes/firm-power value.
+ASSUMPTIONS: NONE for quoted IEA facts; interpretation is inference.
+LIMITATIONS: IEA data aggregate multiple developers and contract structures; not a project audit.
+REPRODUCTION_METHOD: Verify IEA lines on early stage, up-to-80% drilling/well cost share, up-to-30% well-cost cuts, and contract prices up to ~USD130/MWh.
+REPLICATION_STATUS: NOT_VERIFIED.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE.
+
+EVIDENCE_ID: EVIDENCE-GEOOPS-D1-006
+JOB_ID: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+CLAIM_ID: CL-GEOOPS-D1-C
+TOOL: SEC S-1 retrieval
+METHOD: Extract developer's disclosed standardized GeoBlock capital-cost estimate.
+DATE: 2026-10-05
+SOURCE: Fervo Energy Form S-1 / S-1A filed with U.S. SEC.
+SOURCE_DATE: 2026-04-17 / 2026-05-04.
+URL/DOI/IDENTIFIER: https://www.sec.gov/Archives/edgar/data/1853868/000162828026025821/fervoenergy-sx1.htm
+INPUTS: Company estimated approximately USD 7,000/kW capital expenditures to construct a standardized 50-MW GeoBlock as of 2025-12-31, inclusive of wellfield, surface facilities and plant equipment.
+PARAMETERS: NONE.
+EQUATION/CODE/METHOD: source extraction.
+OUTPUT: Current developer-disclosed next-generation EGS CAPEX estimate is high relative to mature wind/solar and conventional geothermal plant-cost anchors; it is an estimate, not final audited as-built cost.
+UNITS: USD/kW; MW.
+UNCERTAINTY: Project estimate may change; financing/O&M/grid costs excluded from a simple CAPEX comparison; exact real-dollar basis must be harmonized downstream.
+ASSUMPTIONS: NONE for quoted disclosure.
+LIMITATIONS: Company disclosure; not independent engineering estimate. Do not divide remaining Phase-II spending by capacity and call it total CAPEX because that would mix partial-spend boundaries.
+REPRODUCTION_METHOD: Search SEC filing risk/capital-requirements section for standardized 50-MW GeoBlock and ~USD7,000/kW estimate.
+REPLICATION_STATUS: NOT_VERIFIED.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT / COMPANY_ESTIMATE.
+
+CLAIM_ID: CL-GEOOPS-D1-D
+CLAIM: The geothermal resource may be physically large, but the scale-up rate required to satisfy the mission is far above demonstrated recent deployment and therefore remains a P1 scaling uncertainty.
+TRUTH_CLASS: CALCULATION + INFERENCE
+
+EVIDENCE_ID: EVIDENCE-GEOOPS-D1-007
+JOB_ID: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+CLAIM_ID: CL-GEOOPS-D1-D
+TOOL: deterministic arithmetic / Python
+METHOD: Normalize current global capacity against mission scale anchors.
+DATE: 2026-10-05
+SOURCE: Inputs from EVIDENCE-GEOOPS-D1-001; IEA 2024 Future of Geothermal; current controlling JOB-EGC-001 proposal is under review.
+SOURCE_DATE: 2024-2026.
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/the-future-of-geothermal-energy/executive-summary
+INPUTS: end-2025 geothermal=15.674 GW; 2025 net addition=0.259 GW; IEA global geothermal utilisation >75% in 2023; provisional mission scale=2,860 TWh/year (10% of 28,600 TWh/year) if JOB-EGC-001 criterion survives review.
+PARAMETERS: CF=0.75 exactly for a conservative illustrative calculation only; 8,760 h/year; horizon 25 years to 2050.
+EQUATION/CODE/METHOD: P_required=E*1000/(8760*CF); ratio=P_required/15.674; CAGR=(P_required/15.674)^(1/25)-1; average net additions=(P_required-15.674)/25.
+OUTPUT: 2,860 TWh/year at 75% CF requires ~435.31 GW nameplate, ~27.77x end-2025 global geothermal capacity. Reaching that nameplate by 2050 implies ~14.22% compound capacity growth/year, or ~16.79 GW/year linear-average net additions, ~64.8x the 2025 net addition. A 1,000 TWh/year support anchor would require ~152.21 GW at 75% CF, ~9.71x end-2025 capacity.
+UNITS: TWh/year, GW, percent/year, multiples.
+UNCERTAINTY: CF=75% is an illustrative lower anchor based on IEA 'over 75%' 2023 utilisation; actual future EGS fleet CF is NOT_VERIFIED. Objective threshold is not yet final.
+ASSUMPTIONS: No transmission/parasitic/storage losses in this simple scale conversion; no retirements; constant boundary.
+LIMITATIONS: Scale arithmetic is not a forecast and not evidence that deployment can achieve these rates.
+REPRODUCTION_METHOD: Recompute stated formulas from IRENA capacity and IEA utilisation anchors.
+REPLICATION_STATUS: NOT_VERIFIED by distinct session.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: CALCULATION + INFERENCE.
+
+EVIDENCE_ID: EVIDENCE-GEOOPS-D1-008
+JOB_ID: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+CLAIM_ID: CL-GEOOPS-D1-D
+TOOL: IEA scenario/source retrieval + deterministic cross-check
+METHOD: Check scenario scale and implied utilisation.
+DATE: 2026-10-05
+SOURCE: IEA, The Future of Geothermal Energy, executive summary.
+SOURCE_DATE: 2024-12-13.
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/the-future-of-geothermal-energy/executive-summary
+INPUTS: IEA conditional scenario: as much as 800 GW geothermal worldwide producing almost 6,000 TWh/year, if technology improves and project costs decline.
+PARAMETERS: 8,760 h/year.
+EQUATION/CODE/METHOD: implied CF = 6000*1000/(800*8760).
+OUTPUT: implied scenario utilisation ~85.6%; 800 GW is ~51.0x end-2025 global geothermal capacity; from 15.674 GW to 800 GW over 25 years corresponds to ~17.04% CAGR or ~31.37 GW/year linear-average net addition, ~121x the 2025 net addition.
+UNITS: GW, TWh/year, percent/year, multiples.
+UNCERTAINTY: IEA numbers are conditional scenario outcomes, not measurements or commitments; 'almost 6,000' limits precision.
+ASSUMPTIONS: 25-year 2025->2050 interval; no retirements for simple scale ratio.
+LIMITATIONS: Must not be promoted to demonstrated deployment feasibility.
+REPRODUCTION_METHOD: Verify IEA 800-GW/6,000-TWh statements; recompute ratios/CAGR.
+REPLICATION_STATUS: NOT_VERIFIED.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + SCENARIO, not MEASUREMENT.
+
+RED_TEAM:
+- Attack: '33 MW commercial operation proves EGS is scalable.' REJECTED. It proves a materially stronger physical/commercial milestone than a pilot, not multi-decade reservoir life or hundreds-of-GW deployment.
+- Attack: 'Huge technical resource proves massive cheap energy.' REJECTED. Resource potential is upstream of drilling, reservoir, finance, permitting and build-rate constraints.
+- Attack: 'USD45-50/MWh 2035 targets prove low cost today.' FALSIFIED as category error; those are targets/scenarios, not achieved current costs.
+- Attack: '2025 geothermal LCOE USD89/MWh means all geothermal is expensive.' REJECTED. Weighted averages depend on a small number of commissioned projects; 2024 project/country values were lower in some locations.
+- Attack: 'Current deployment rate means geothermal can never scale.' REJECTED. Historical rate is not a physical ceiling; it is a demonstrated-rate baseline that creates a large unverified acceleration requirement.
+
+CANDIDATE_STATE_RECOMMENDATION:
+- CONVENTIONAL_GEOTHERMAL: PHYSICS/OPERATIONAL_EVIDENCE = STRONG; CURRENT_GLOBAL_SCALE = SMALL; COST = SITE_DEPENDENT and not uniformly <= proposed screen; RESOURCE GEOGRAPHY = CONSTRAINED relative to EGS.
+- NEXT_GEN_EGS: PHYSICAL_EVIDENCE = MATERIAL AND IMPROVING; COMMERCIAL_EVIDENCE = at least one disclosed 33-MW-net contractual COD; LONG_DURATION_RESERVOIR_LIFE = NOT_VERIFIED at the mission-required evidence strength; CURRENT_LOW_COST = NOT_VERIFIED; MASSIVE_SCALE_DEPLOYMENT = NOT_VERIFIED.
+- DO NOT FALSIFY geothermal as a candidate. It remains a serious firm-power candidate, but cannot yet be promoted to FRONT_RUNNER solely from resource potential or one commercial block.
+
+FOLLOW_UP_JOB_CREATED:
+JOB_ID: JOB-EGC-GEOOPS-REV-D1-20261005
+ROLE: Independent geothermal operational/economic evidence reviewer
+QUESTION: Reopen EVIDENCE-GEOOPS-D1-001..008, independently reproduce scale arithmetic, verify the SEC/IEA/DOE/IRENA boundaries, and search for stronger independent evidence on Cape output/cost and multi-year EGS reservoir performance.
+DEPENDENCIES: JOB-EGC-GEOTHERMAL-OPS-D1-20261005 AWAITING_REVIEW
+REQUIRED_EVIDENCE: REPLICATION / SOURCE_FACT / MEASUREMENT where available.
+FALSIFICATION_CONDITION: FAIL if 33-MW status, USD7,000/kW estimate, current cost characterization, or scale arithmetic is materially wrong/boundary-mismatched; FAIL candidate-status recommendation if stronger operational evidence closes the stated gaps.
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+REVIEWER: distinct future session.
+
+STATUS_CHANGE:
+- JOB-EGC-GEOTHERMAL-OPS-D1-20261005: EXECUTING -> AWAITING_REVIEW.
+- GLOBAL_SOLVED: remains NO.
+- CURRENT_WINNER: remains NONE.
+
+NEXT_HIGHEST_VALUE_ACTION:
+- Independent review of this package.
+- Integrate only reviewed geothermal evidence into JOB-EGC-007 after common objective/system boundary is verified.
+- Continue cross-candidate work; geothermal is neither eliminated nor proven mission winner.
+
+WRITE_INTEGRITY:
+- branch head read: cce8c8b7f9faf78c6d6aa2300f9b5d987a35e404
+- file SHA read: 65d57bd0cbd8b4de46e106dbb02eac737528d58c
+- stale-write check: exact expected blob SHA supplied; no force.
+- mutation scope: only MAIN-CHAT.md on authorized branch.
+- commit/result: PENDING
