@@ -1,0 +1,78 @@
+{
+  "REVIEW_ID": "REVIEW-TASK-DOC-C4-VERIFY-OTAC-ADMISSION-CONTRACT-001-C-SOL-20261005-1924-V8",
+  "REVIEWER_CHAT": "C-SOL-20261005-1924-V8-EXPERIMENTAL-REVERIFY",
+  "TASK_ID": "TASK-DOC-C4-VERIFY-OTAC-ADMISSION-CONTRACT-001",
+  "FINDING_ID": "FIND-DOC-C4-VERIFY-OTAC-ADMISSION-AUDIT-ERROR-MATRIX-001",
+  "REQ_ID": "REQ-DOC-C-4-2-VERIFY-OTAC",
+  "ROLE": "INDEPENDENT_SECURITY_CONTRACT_REVIEWER",
+  "PRIORITY": "P1",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "PRIMARY_SOURCE": {
+    "verify_otac_retry": {
+      "paragraphs": "10081-10082",
+      "value": "allowed until attempt limit reached"
+    },
+    "verify_otac_audit": {
+      "paragraphs": "10083-10084",
+      "value": "emit AUTH_VERIFIED or AUTH_VERIFY_FAILED"
+    },
+    "verify_otac_errors": {
+      "paragraphs": "10099-10105",
+      "declared": [
+        "401 AUTH_INVALID",
+        "401 AUTH_EXPIRED",
+        "403 DEVICE_MISMATCH",
+        "409 OTAC_LOCKED",
+        "409 SESSION_REVOKED"
+      ]
+    },
+    "auth_attempt_limit": {
+      "paragraph": 9933,
+      "value": 5
+    },
+    "global_route_declaration_law": {
+      "paragraphs": "10032-10037"
+    }
+  },
+  "SOURCE_RECOMPUTATION": {
+    "packages/api/auth.ts": {
+      "blob": "0f8c8e21ce39f36b850c0db93ceadaa886088e6b",
+      "handle_verify_otac_rate_limit_lines": "565-570",
+      "request_id_created_after_admission": true,
+      "auth_verify_failed_logging_begins_after_admission": true
+    },
+    "packages/api/middleware/rate-limit.ts": {
+      "blob": "d6c99adcbb17365a505032acbb8da4da16537ff9",
+      "default_auth_profile": "default_auth",
+      "default_auth_audit_request_otac": false,
+      "rate_limit_exceeded_status": 429,
+      "rate_limit_exceeded_code": "RATE_LIMIT_EXCEEDED",
+      "fail_closed_dependency_status": 503,
+      "fail_closed_codes": [
+        "DEPENDENCY_UNHEALTHY",
+        "DEPENDENCY_FAILURE"
+      ],
+      "request_otac_specific_audit_hook_not_applied_to_default_auth": true
+    }
+  },
+  "FACT": {
+    "undeclared_429_path_confirmed": true,
+    "undeclared_503_paths_confirmed": true,
+    "required_auth_verify_failed_missing_on_prehandler_rejection": true,
+    "retry_contract_interference_confirmed": true
+  },
+  "VERDICT": "CONFIRMED_ACTIONABLE_CONTRACT_AND_AUDIT_DEFECT",
+  "REPAIR_BOUNDARY": [
+    "Preserve effective brute-force and abuse protection.",
+    "Do not expose undeclared verify-OTAC statuses/codes as canonical final-DOC-C behavior without active authority.",
+    "Ensure canonical failure audit semantics include AUTH_VERIFY_FAILED for admission rejection or otherwise obtain authoritative route-specific semantics.",
+    "Do not silently replace retry-until-attempt-limit semantics with an unrelated generic admission policy.",
+    "Add negative tests that fail on audit omission and undeclared error/status drift.",
+    "Source repair remains blocked until worker isolation law is operationally valid."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "PROJECT_CLOSURE": "NOT_ESTABLISHED"
+}
