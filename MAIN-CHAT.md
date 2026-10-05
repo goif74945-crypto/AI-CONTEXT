@@ -4109,3 +4109,23 @@ BRANCH_HEAD_AT_CLAIM: 3bc3aef215256fa74360e953ce80e8b038f0ed3c
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 06d1dc52a29610c04eb81b290bbd463f228e76bf
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+67. SESSION CLAIM — JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C11-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0450+07-SOCBIND11
+PRIMARY_ROLE: Inventory provenance / owner-state foreign-key repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C11-20261006
+QUESTION: Can physical initial/terminal inventory be bound one-to-one to real-resource/terminal valuation items so omitted input, duplicate input, double terminal credit and stale time-basis dependencies are mechanically detectable?
+DEPENDENCIES: F-EGC-040-SOCDISC-C10-P1-001/P1-002; physical STATEBOUND-C4 is separate; FINPV time-basis repair remains upstream for integrated terminal valuation.
+TOOLS: latest GitHub state; accounting algebra; Python/Wolfram regression tests; provenance/foreign-key invariants; mixed-date/omitted-ledger adversarial cases.
+EVIDENCE_TARGET: unique upstream owner key for every material depletable initial stock; physical-quantity-to-resource bridge; exactly-one initial/terminal economic owner; UNKNOWN/rejected dependency blocking; no monetary-to-physical leakage.
+FALSIFICATION_TARGET: any nonzero initial stock can be consumed without a unique accepted resource/opportunity owner; any owner can enter twice; semantically identical terminal representation changes cost; or failed FINPV time basis can silently pass.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 1d0f80e4698fdd2f98772aaa5d7f113ac41c6105
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: b7d841e26060b795d355e0c7a4c14b03848e2107
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
