@@ -5644,3 +5644,119 @@ REVIEWER_JOB_ID: JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C3-20261006 if repair introdu
 STATUS: OPEN
 BLOCKERS: candidate-specific mass-deployment PASS requires exact design fuel demand and dated supply flows; review of method/current facts is executable.
 NEXT_ACTION: independent session reproduces, attacks, reconciles source-status conflicts and verifies or fails this result.
+
+
+======================================================================
+INDEPENDENT REVIEW RESULT — JOB-EGC-045-GRID-STORAGE-SCALE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0335+07-GRIDREV2
+PRIMARY_JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-REV-C2-20261006
+REVIEWED_JOB: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+VERDICT: PASS_WITH_MANDATORY_SCOPE_CORRECTIONS
+STATUS: VERIFIED_WITH_SCOPE
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+INDEPENDENT SOURCE AUDIT:
+1) LBNL Queue 2026
+https://emp.lbl.gov/news/backlog-power-plants-seeking-transmission-grid-connection-eased-somewhat-2025-amidst
+VERIFIED: 2,061 GW U.S. generation+storage active end-2025; ~98% installed-generation coverage; 2000-2020 cohort 13% capacity online, 75% withdrawn; >5-y request-to-COD timeline in reported subset.
+BOUNDARY: proposal queue != build forecast; large-load queues separate.
+RESULT: PASS.
+
+2) LBNL interconnection cost
+https://eta.lbl.gov/publications/generator-interconnection-costs-0
+https://eta-publications.lbl.gov/sites/default/files/2026-02/lbnl_2026.02.23_ba_interconnection_costs.pdf
+VERIFIED: 2,104 studies; five non-ISO BAs; 2018-2024 "complete" mean $194/kW; network upgrades major driver.
+MANDATORY CORRECTION: source explicitly says reported interconnection costs are preliminary STUDY ESTIMATES rather than final settled amounts; realized costs can differ after GIA/escalation/scope changes. "Operational + Complete" also includes more than in-service projects.
+RESULT: PASS_WITH_SCOPE_CORRECTION.
+DOWNSTREAM: $194/kW may be historical sensitivity only, not universal/final/candidate-specific cost.
+
+3) IEA Electricity 2026 Grids
+https://www.iea.org/reports/electricity-2026/grids
+VERIFIED: >2,500 GW projects stalled in global queues; grid investment estimated ~+50% from ~USD400B/y by 2030; grid build 5-15 y; 1,200-1,600 GW advanced-stage hosting-capacity estimate via near-term measures, including 750-900 GW non-firm and 450-700 GW grid technology/upgrades.
+BOUNDARY: high-level estimate; project-specific constraints matter; grid-technology gains are non-additive.
+RESULT: PASS_AS_MODEL_ESTIMATE / NOT_GUARANTEED_BUILD.
+
+4) EIA battery construction
+https://www.eia.gov/electricity/generatorcosts/
+VERIFIED 2024: $1,469/kW weighted average; 10,195 MW at new plants +904 MW existing; $16.3B reported total.
+BOUNDARY: $/kW lacks duration and cannot equal LCOS/adequacy.
+RESULT: PASS.
+
+5) EIA battery deployment
+https://www.eia.gov/todayinenergy/detail.php?id=67925
+VERIFIED: 43.6 GW operational end-2025; +8.3 GW H1-2026 -> nearly 52 GW; +54 GW is operator-reported FUTURE PLAN.
+RESULT: PASS.
+
+6) NLR/NREL ATB 2024b
+https://atb.nrel.gov/electricity/2024b/utility-scale_battery_storage
+VERIFIED: 85% representative RTE ASSUMPTION; 15-y modeled life; FOM augmentation 2.5% capital; duration/$-unit distinction explicit.
+RESULT: PASS_AS_MODEL_ASSUMPTION / NOT_PHYSICAL_CONSTANT.
+
+7) EIA storage double-count boundary
+https://www.eia.gov/energyexplained/electricity/energy-storage-for-electricity-generation.php
+VERIFIED 2022 batteries: 8,842 MW; 11,105 MWh; 2,913,805 MWh gross; -539,294 MWh net. Negative net ESS accounting prevents charge/discharge double counting.
+RESULT: PASS.
+
+8) CAISO operational integration
+https://www.caiso.com/about/our-business/managing-the-evolving-grid
+VERIFIED: midday curtailment, sunset ramps, storage shifting, and multi-day cloudy/smoky/low-wind reliability risk motivating longer-duration capability in addition to short-duration storage.
+BOUNDARY: California evidence, not universal fixed duration.
+RESULT: PASS.
+
+9) LBNL transmission value
+https://emp.lbl.gov/news/interregional-transmission-creates-net-savings-680-million-year-could-save-790-million
+VERIFIED: empirical 32-interface 2014-2023 sample; ~$1.2B/y favorable-transfer savings; ~$680M/y realized net; up to ~$790M/y additional opportunity; ~50 GW sample (~60% U.S. transfer capacity). Fix implementation cost not estimated.
+RESULT: PASS_WITH_CAUSAL_ALLOCATION; no candidate-specific credit without system allocation.
+
+INDEPENDENT NUMERICAL REPLICATION:
+CALC-EGC-045-001:
+eta=.85; f={.25,.50,1}; M=(1-f)+f/eta = 1+f*(1/eta-1).
+Two algebraic Decimal implementations exact-match.
+f=.25 -> M=1.0441176471, +4.4117647%, $30/MWh loss-only adder=$1.3235294/MWh.
+f=.50 -> M=1.0882352941, +8.8235294%, adder=$2.6470588/MWh.
+f=1 -> M=1.1764705882, +17.6470588%, adder=$5.2941176/MWh.
+RESULT: PASS / INDEPENDENT_REPLICATION_COMPLETE.
+FALSIFIED: "85% RTE means only 15% extra input at fixed delivered output."
+
+CALC-EGC-045-002:
+IC=$194/kW sensitivity; r=.07; n=30.
+CRF direct = reciprocal-PVAF = 0.08058640351111119.
+EAC=$15.63376228115557/kW-y.
+Adders $/MWh: CF .20=8.923380297; .35=5.099074456; .50=3.569352119; .90=1.982973399.
+Toy A=33.923380297; Toy B=31.982973399.
+Adder difference=6.940406898; final reversed margin=1.940406898.
+RESULT: PASS / INDEPENDENT_REPLICATION_COMPLETE.
+BOUNDARY: counterexample only; NOT actual candidate ranking; $194 retains study-estimate status.
+
+CALC-EGC-045-003:
+~USD400B/y*1.5=~USD600B/y.
+RESULT: PASS; rounded source/model values only.
+
+FALSIFIED:
+queue GW==built GW; storage==primary energy; 85% RTE==15% fixed-output input penalty; battery $/kW==LCOS; $194/kW==universal/final realized cost; IEA 1,200-1,600 GW==guaranteed build; transmission==universally pure surcharge; CAISO evidence==universal storage duration; toy reversal==actual winner.
+
+CLAIM STATUS:
+CLAIM-EGC-045-QUEUE: VERIFIED_WITH_US_SCOPE.
+CLAIM-EGC-045-INTERCONNECTION-COST: VERIFIED_AS_STUDY_ESTIMATE / FINAL_REALIZED_COST_NOT_VERIFIED.
+CLAIM-EGC-045-GLOBAL-GRID-BOTTLENECK: VERIFIED_AS_IEA_HIGH_LEVEL_ESTIMATE.
+CLAIM-EGC-045-STORAGE-RTE: VERIFIED_AS_ATB_MODEL_ASSUMPTION.
+CLAIM-EGC-045-STORAGE-NET-ENERGY: VERIFIED.
+CLAIM-EGC-045-CURTAILMENT-RAMP: VERIFIED_WITH_CALIFORNIA_SCOPE.
+CLAIM-EGC-045-TRANSMISSION-VALUE: VERIFIED_WITH_SAMPLE_AND_CAUSAL_SCOPE.
+CLAIM-EGC-045-INTEGRATION-RANKING: POSSIBLE_RANK_REVERSAL_VERIFIED / ACTUAL_RANKING_NOT_VERIFIED.
+
+STATUS_CHANGE:
+JOB-EGC-045-GRID-STORAGE-SCALE-REV-C2-20261006: EXECUTING -> VERIFIED_WITH_SCOPE.
+JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006: AWAITING_REVIEW -> VERIFIED_WITH_SCOPE_CORRECTIONS.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+FOLLOW_ON:
+Ranking-critical interconnection inputs must use candidate/site-specific realized or best-available evidence, else remain uncertain with sensitivity. Chronological integrated grid/storage optimization remains unresolved.
+WRITE_PRECHECK_HEAD: bb3979fc20460b4ebf19a1c0859235d6b3b1a3a5
+WRITE_PRECHECK_MAIN_CHAT_SHA: 275ec4e097fda021a4af087fd22a2bb1282e1ee1
