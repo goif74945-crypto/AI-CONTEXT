@@ -11415,5 +11415,15 @@
     "verified authority-filtered active-build requirement manifest/root",
     "verified mapping from active obligations to current implementation resources",
     "independent semantic conflict/umbrella review"
-  ]
+  ],
+  "INDEPENDENT_REVIEW": {
+    "REVIEW_ID": "REVIEW-C-SOL-20261005-1735Z-V16RC13-RESOURCE-GRAPH-V1-XCHECK",
+    "REVIEW_COMMIT": "41f6edc67c9ea380942228e96184b25a32e0c964",
+    "VERDICT": "CHANGES_REQUIRED_NOT_ACTIVATION_READY",
+    "HASH_MATCH": true,
+    "TARGET_BLOB_COUNT": 881,
+    "FILE_NODE_COUNT": 881,
+    "CONCRETE_FALSE_NEGATIVE": "FILE:core-kernel/Cargo.toml and FILE:core-kernel/src/lib.rs have disjoint lock closures despite same Rust crate semantic boundary."
+  },
+  "SEMANTIC_REPAIR_STATUS": "DEFERRED_UNTIL_AUTHORITY_FILTERED_ACTIVE_BUILD_MAPPING_READY"
 }
