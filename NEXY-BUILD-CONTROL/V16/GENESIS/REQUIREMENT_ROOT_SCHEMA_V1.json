@@ -1,0 +1,205 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_REQUIREMENT_ROOT_SCHEMA_CONTRACT_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_MATRIX": {
+    "PATH": "REFERENCES/NEXY/2026-10-04/NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.txt",
+    "WORKBOOK_SHA256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+    "NORMALIZED_REQUIREMENT_ROWS": 837,
+    "COLUMN_ORDER": [
+      "index",
+      "ID",
+      "Parent_System",
+      "Feature_or_Requirement",
+      "Entity_Type",
+      "Requirement",
+      "Authority",
+      "Build_Scope",
+      "Strength",
+      "Source_Doc_Paragraph",
+      "Source_Extraction_Seq",
+      "Source_Section",
+      "Source_Anchor",
+      "Dependencies",
+      "Validation_Evidence",
+      "Implementation_Status",
+      "Notes"
+    ]
+  },
+  "FINAL_AUTHORITY_INDEX": {
+    "PATH": "NEXY-BUILD-CONTROL/AUTHORITY/FINAL_DOC_C_PRIMARY_INDEX.json",
+    "FINAL_DOC_C_START": 9886,
+    "FINAL_DOC_C_END": 10499,
+    "HISTORICAL_PRE_FINAL_START": 8095,
+    "HISTORICAL_PRE_FINAL_END": 9829
+  },
+  "CANONICAL_ROOT_WRAPPER": {
+    "REQUIRED_FIELDS": [
+      "SCHEMA_VERSION",
+      "TARGET_AUTHORITY_KEY",
+      "SPEC_ARTIFACT_HASH",
+      "MANIFEST_GENERATION",
+      "ROOT_OBJECT",
+      "ROOT_HASH"
+    ],
+    "ROOT_HASH_RULE": "SHA-256(UTF8(JCS(ROOT_OBJECT)))",
+    "ROOT_HASH_FORMAT": "lowercase 64-character hexadecimal",
+    "JCS_RULE": "RFC8785/JCS canonical JSON; object keys lexicographic; arrays preserve schema-defined order; UTF-8; no insignificant whitespace",
+    "SELF_REFERENCE_RULE": "ROOT_HASH is outside ROOT_OBJECT and is never included in its own hash domain"
+  },
+  "ROOT_SCHEMAS": {
+    "SOURCE_ENUMERATION_ROOT_HASH": {
+      "ROOT_DOMAIN": "NEXY_SOURCE_ENUMERATION_ROOT_V1",
+      "PURPOSE": "Exhaustive normalized source material only; not an active-build denominator.",
+      "ROOT_OBJECT_FIELDS": [
+        "domain",
+        "target_authority_key",
+        "spec_artifact_hash",
+        "matrix_artifact_hash",
+        "manifest_generation",
+        "entry_count",
+        "entries"
+      ],
+      "ENTRY_FIELDS": [
+        "id",
+        "parent_system",
+        "feature_or_requirement",
+        "entity_type",
+        "requirement",
+        "authority",
+        "build_scope",
+        "strength",
+        "source_doc_paragraph",
+        "source_extraction_seq",
+        "source_section",
+        "source_anchor",
+        "dependencies",
+        "validation_evidence",
+        "implementation_status",
+        "notes"
+      ],
+      "SORT_RULE": "entries sorted by UTF-8 byte ordering of id; duplicate id is invalid",
+      "INCLUSION_RULE": "For the pinned matrix generation, every one of the 837 normalized rows must appear exactly once.",
+      "EXCLUSION_RULE": "None. EXCLUDED_CURRENT, DEFERRED_FUTURE and DEPLOYMENT_EVIDENCE rows remain source-enumeration facts.",
+      "FORBIDDEN_SHORTCUTS": [
+        "Do not use this root as ACTIVE_BUILD_REQUIREMENT_ROOT_HASH.",
+        "Do not drop historical, excluded, deferred or deployment rows from source enumeration.",
+        "Do not infer implementation satisfaction from matrix Implementation_Status."
+      ]
+    },
+    "ACTIVE_BUILD_REQUIREMENT_ROOT_HASH": {
+      "ROOT_DOMAIN": "NEXY_ACTIVE_BUILD_REQUIREMENT_ROOT_V1",
+      "PURPOSE": "Canonical denominator of current build obligations after explicit temporal and semantic authority reconciliation.",
+      "ROOT_OBJECT_FIELDS": [
+        "domain",
+        "target_authority_key",
+        "spec_artifact_hash",
+        "manifest_generation",
+        "authority_reconciliation_generation",
+        "entry_count",
+        "entries"
+      ],
+      "ENTRY_FIELDS": [
+        "id",
+        "requirement",
+        "entity_type",
+        "strength",
+        "primary_source_refs",
+        "authority_resolution",
+        "dependencies",
+        "validation_evidence",
+        "accounting_state"
+      ],
+      "AUTHORITY_RESOLUTION_FIELDS": [
+        "decision",
+        "basis",
+        "final_primary_source_refs",
+        "historical_source_refs",
+        "incorporation_evidence_refs",
+        "supported_doc_d_refs"
+      ],
+      "SORT_RULE": "entries sorted by UTF-8 byte ordering of id; duplicate id is invalid",
+      "ALLOWED_DECISIONS": [
+        "INCLUDE_FINAL_DOC_C",
+        "INCLUDE_CURRENT_GOVERNING_LAW",
+        "INCLUDE_DOC_D_EXPLICITLY_SUPPORTED_BY_FINAL_DOC_C",
+        "EXCLUDE_EXPLICIT_CURRENT_NON_GOAL",
+        "EXCLUDE_NO_FINAL_INCORPORATION",
+        "DEFER_FUTURE",
+        "DEPLOYMENT_ONLY",
+        "CONFLICT",
+        "UNKNOWN"
+      ],
+      "ROOT_INCLUSION_DECISIONS": [
+        "INCLUDE_FINAL_DOC_C",
+        "INCLUDE_CURRENT_GOVERNING_LAW",
+        "INCLUDE_DOC_D_EXPLICITLY_SUPPORTED_BY_FINAL_DOC_C"
+      ],
+      "BLOCKING_RECONCILIATION_DECISIONS": [
+        "CONFLICT",
+        "UNKNOWN"
+      ],
+      "TEMPORAL_RULE": "Rows sourced from paragraphs 8095-9829 are pre-FINAL historical material and may enter this root only when explicit incorporation evidence binds them to final authoritative material.",
+      "FINAL_DOC_C_RULE": "Final DOC-C primary range is 9886-10499 for this pinned spec generation.",
+      "DOC_D_RULE": "DOC-D may enter current build only with explicit support by final DOC-C; DOC-D content alone is insufficient.",
+      "FORBIDDEN_SHORTCUTS": [
+        "Do not filter the matrix Current Build worksheet or Build_Scope column and call the result authoritative.",
+        "Do not assume all 773 matrix Current Build rows are active obligations.",
+        "Do not silently promote historical execution-pack text.",
+        "Do not include CONFLICT or UNKNOWN rows in the active root."
+      ]
+    },
+    "DEPLOYMENT_EVIDENCE_REQUIREMENT_ROOT_HASH": {
+      "ROOT_DOMAIN": "NEXY_DEPLOYMENT_EVIDENCE_REQUIREMENT_ROOT_V1",
+      "PURPOSE": "Deployment/runtime proof obligations kept separate from implementation obligations.",
+      "ROOT_OBJECT_FIELDS": [
+        "domain",
+        "target_authority_key",
+        "spec_artifact_hash",
+        "manifest_generation",
+        "entry_count",
+        "entries"
+      ],
+      "ENTRY_FIELDS": [
+        "id",
+        "requirement",
+        "entity_type",
+        "strength",
+        "primary_source_refs",
+        "authority_resolution",
+        "validation_evidence",
+        "accounting_state"
+      ],
+      "SORT_RULE": "entries sorted by UTF-8 byte ordering of id; duplicate id is invalid",
+      "INCLUSION_RULE": "Only deployment-evidence obligations validated as deployment authority for the pinned spec generation.",
+      "SEPARATION_RULE": "Deployment evidence never satisfies or substitutes for implementation obligations in ACTIVE_BUILD_REQUIREMENT_ROOT_HASH.",
+      "FORBIDDEN_SHORTCUTS": [
+        "Do not merge deployment evidence rows into the active-build denominator.",
+        "Do not treat existence of deployment documentation as runtime proof."
+      ]
+    }
+  },
+  "REQUIREMENT_ACCOUNTING_STATES": [
+    "UNROUTED",
+    "ROUTED",
+    "IMPLEMENTED_UNVERIFIED",
+    "VERIFIED_SATISFIED",
+    "VERIFIED_NOT_APPLICABLE",
+    "BLOCKED",
+    "CONFLICT",
+    "UNKNOWN",
+    "ORPHAN"
+  ],
+  "VALIDATION_INVARIANTS": [
+    "All roots bind the exact SPEC_ARTIFACT_HASH.",
+    "Source enumeration is exhaustive and authority-neutral.",
+    "Active-build root is impossible until every candidate row has explicit authority reconciliation.",
+    "Historical pre-FINAL rows require explicit final incorporation evidence before active inclusion.",
+    "Deployment evidence remains a separate root.",
+    "No root may be called activation-ready while any required reconciliation is CONFLICT or UNKNOWN.",
+    "Every root is independently recomputable from its ROOT_OBJECT and declared canonicalization rule."
+  ],
+  "STATUS": "SCHEMA_CONTRACT_MATERIALIZED_ROOTS_NOT_COMPUTED",
+  "PRODUCT_SOURCE_MUTATION": false,
+  "TARGET_INTEGRATION": false
+}
