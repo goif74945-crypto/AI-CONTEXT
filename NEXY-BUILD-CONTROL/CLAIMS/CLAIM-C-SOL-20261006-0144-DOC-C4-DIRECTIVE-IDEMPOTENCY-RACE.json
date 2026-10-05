@@ -1,7 +1,7 @@
 {
   "TASK_ID": "T-DOC-C4-DIR-IDEM-RACE-0144",
   "OWNER_CHAT": "C-SOL-20261006-0144-DIR-IDEM",
-  "STATUS": "IMPLEMENTING",
+  "STATUS": "IMPLEMENTATION_SUPERSEDED_BY_PEER_TEST_PENDING",
   "PRIORITY": "P1",
   "REPOSITORY": "goif74945-crypto/NEXY.AI-",
   "BASE_BRANCH": "NEXY.AI-Test-AI",
@@ -18,5 +18,9 @@
     "auth/state-machine/OTAC changes",
     "unrelated refactor"
   ],
-  "NOTE": "NEXY.AI-Test-AI/work/* is not a realizable Git ref while refs/heads/NEXY.AI-Test-AI exists; using isolated work/* ref."
+  "NOTE": "NEXY.AI-Test-AI/work/* is not a realizable Git ref while refs/heads/NEXY.AI-Test-AI exists; using isolated work/* ref.",
+  "PEER_IMPLEMENTATION_SHA": "58e010b1ee3080bdb7cd4c30276e9201306cf839",
+  "PEER_IMPLEMENTATION_NOTE": "Concurrent same-key convergence is now present on NEXY.AI-Test-AI; do not merge duplicate source patch. Peer commit changed source only; regression oracle still absent at inspected head.",
+  "TEST_PLANE": "GitHub Actions run 37359827306 attempts 1-2 failed before first step (steps=null); Desktop Commander device offline.",
+  "CONTINUATION_REQUIRED": true
 }
