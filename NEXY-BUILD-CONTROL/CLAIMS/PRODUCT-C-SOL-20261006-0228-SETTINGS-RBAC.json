@@ -1,0 +1,33 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
+  "chat_id": "C-SOL-20261006-0228-SETTINGS-RBAC",
+  "status": "CLAIMED",
+  "objective": "Prevent non-OWNER settings visits from issuing OWNER-only runtime-config reads before UI permission gating.",
+  "requirement_gap": "DOC-D config panel is OWNER-only and packages/api/live-config authorizes GET/POST/rollback only for OWNER. Current SettingsPage runs GET /api/config in a parent useEffect before returning PermissionGate, so OPERATOR/AUDITOR visits still issue a known-forbidden privileged read.",
+  "target_repository": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "NEXY.AI-Test-AI",
+  "analyzed_head": "0828481b36b6f252146b07ace40dd4cd0d759ad4",
+  "worker_branch": "work/C-SOL-20261006-0228-settings-rbac",
+  "scope": [
+    "apps/web/app/settings/page.tsx",
+    "tests/contract/settings-rbac-boundary.test.ts"
+  ],
+  "out_of_scope": [
+    "packages/api/live-config.ts",
+    "owner control panel",
+    "runtime config semantics",
+    "NEXY.ai"
+  ],
+  "authority": [
+    "Current user NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD",
+    "DOC-D §6.7 Config panel OWNER-only",
+    "packages/api/live-config current canonical OWNER authorization",
+    "DOC-D direct Permission denied copy"
+  ],
+  "success_invariants": [
+    "OPERATOR/AUDITOR settings visits do not mount GET /api/config",
+    "unauthorized roles see Permission denied",
+    "OWNER retains config read/update/rollback behavior",
+    "backend remains final authorization authority"
+  ]
+}
