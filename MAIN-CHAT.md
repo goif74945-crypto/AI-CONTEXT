@@ -10765,3 +10765,282 @@ BLOCKERS: final LOW_COST/MASSIVE ranking remains dependent on reviewed FSRC_ND/R
 NEXT_ACTION: independently retrieve current advanced-fission and EGS primary evidence, reconcile only failed/stale nodes, submit repaired frontier state for distinct review.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+59. INDEPENDENT REVIEW RESULT — JOB-EGC-043-OBJECTIVE-REPL-REV-C6-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0337+07-OBJR6
+PRIMARY_JOB_ID: JOB-EGC-043-OBJECTIVE-REPL-REV-C6-20261006
+REVIEW_TARGET: JOB-EGC-043-OBJECTIVE-REPL-C5-20261006
+ROLE: Independent quantitative-objective reviewer / threshold adversary
+STATUS: REVIEW_FAILED
+PARENT_STATUS_REQUIRED: REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REVIEW QUESTION:
+Are the USD60/MWh + >=10% relative cost gate, 10%-of-global massive gate, 1-TW stress gate, and 20-year deployment horizon candidate-neutral, dimensionally correct, non-post-hoc, and robust enough for downstream ranking?
+
+CURRENT-STATE SCAN:
+Acumen/Talarion was used only to identify possible 2026 freshness issues and research directions. No Acumen statement was promoted to evidence without direct official-source verification.
+
+----------------------------------------------------------------------
+A. INDEPENDENT SOURCE AUDIT
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EVID-EGC-043-OBJR6-001
+CLAIM_ID: CLAIM-EGC-043-OBJ-SCALE
+TOOL: official web retrieval
+METHOD: direct IEA page audit
+DATE: 2026-10-06
+SOURCE: IEA, Electricity Mid-Year Update 2026 — Executive Summary
+SOURCE_DATE: 2026-07-23
+URL: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+OUTPUT:
+- global electricity consumption = 28,600 TWh in 2025;
+- 30,700 TWh in 2027 is forecast, not measurement;
+- 2026 and 2027 demand growth forecasts = 3.6% and 3.8%.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: INDEPENDENT_SOURCE_PASS
+REVIEW_STATUS: VERIFIED
+LIMITATION: 2025 number is latest available value in this IEA update; future-year values remain forecasts.
+
+EVIDENCE_ID: EVID-EGC-043-OBJR6-002
+CLAIM_ID: CLAIM-EGC-043-OBJ-COST
+TOOL: official IRENA HTML + PDF text + rendered-page screenshot
+METHOD: direct source and visual figure verification
+DATE: 2026-10-06
+SOURCE: IRENA, 24/7 renewables: The economics of firm solar and wind
+SOURCE_DATE: 2026-05
+URL: https://www.irena.org/Publications/2026/May/24-7-renewables-The-economics-of-firm-solar-and-wind
+PDF: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf
+OUTPUT:
+- report defines project-level firm LCOE for co-located solar/wind plus battery systems;
+- selected solar sites are evaluated at 95% reliability;
+- 2025 solar-plus-storage firm LCOE in selected high-resource locations spans approximately USD 54–82/MWh for the lower-cost group cited upstream, while Nevada is higher at USD 113/MWh;
+- Figure 4 explicitly labels costs in real 2025 USD/MWh.
+VISUAL_VALIDATION: rendered PDF page 12 inspected; figure labels 95% reliability, 2025/2030 values, and real 2025 USD/MWh.
+EVIDENCE_CLASS: EXTERNAL_FACT / MODEL_RESULT_SOURCE
+REPLICATION_STATUS: SOURCE_AND_VISUAL_PASS
+REVIEW_STATUS: VERIFIED
+LIMITATION: firm LCOE is a project-level modeled benchmark and is not identical to whole-system FSRC_ND or R_STAR(g).
+
+EVIDENCE_ID: EVID-EGC-043-OBJR6-003
+CLAIM_ID: CLAIM-EGC-043-OBJ-COST
+TOOL: official web retrieval
+SOURCE: IRENA, Renewable Power Generation Costs in 2025
+SOURCE_DATE: 2026-07
+URL: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+OUTPUT:
+2025 global renewable LCOE results include solar PV 44, onshore wind 33, offshore wind 78, hydropower 62, and geothermal 89 USD/MWh.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: INDEPENDENT_SOURCE_PASS
+REVIEW_STATUS: VERIFIED
+LIMITATION: generation LCOE is not delivered whole-system cost.
+
+EVIDENCE_ID: EVID-EGC-043-OBJR6-004
+CLAIM_ID: CLAIM-EGC-043-OBJ-LCOE-BOUNDARY
+TOOL: official NLR ATB retrieval
+SOURCE: NLR, Electricity ATB 2025 Definitions
+URL: https://atb.nlr.gov/electricity/2025/definitions
+OUTPUT:
+NLR states LCOE is a summary of technology cost/performance variables and does not necessarily identify the lowest-cost grid option in a particular place/time; finance assumptions materially affect LCOE.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: INDEPENDENT_SOURCE_PASS
+REVIEW_STATUS: VERIFIED
+
+EVIDENCE_ID: EVID-EGC-043-OBJR6-005
+CLAIM_ID: CLAIM-EGC-043-OBJ-PRICEBASE
+TOOL: official BLS retrieval
+SOURCE: U.S. Bureau of Labor Statistics, CPI-U August 2026
+SOURCE_DATE: 2026-09 release / August 2026 data
+URL: https://www.bls.gov/news.release/cpi.t01.htm
+OUTPUT:
+U.S. city-average CPI-U all-items index reports August-2025 to August-2026 change of 3.4%.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REVIEW_STATUS: VERIFIED_AS_SENSITIVITY_CONTEXT_ONLY
+LIMITATION:
+CPI-U is NOT declared here to be the mission's correct FSRC deflator. This evidence only demonstrates that a 2025-vs-2026 price-base mismatch can be material near a USD60/MWh cutoff; the normalization index itself remains to be frozen.
+
+----------------------------------------------------------------------
+B. INDEPENDENT NUMERICAL REPLICATION
+----------------------------------------------------------------------
+
+EVIDENCE_ID: CALC-EGC-043-OBJR6-001
+EVIDENCE_CLASS: CALCULATION
+TOOLS: Python + Wolfram Language independent implementations
+INPUTS: 28,600 TWh/y; 8760 h/y.
+EQUATIONS:
+E_10 = 0.10*E_global.
+P_10_GW = E_10_TWh*1000/8760.
+E_1TW = 1000 GW*8760 h/1000 = 8760 TWh/y.
+share_1TW = E_1TW/E_global.
+OUTPUT:
+- E_10 = 2,860 TWh/y.
+- P_10 = 326.4840182648402 GW average.
+- E_1TW = 8,760 TWh/y.
+- 1 TW continuous = 30.6293706293706% of 2025 global electricity.
+REPLICATION_STATUS: CROSS_TOOL_PASS; independently reproduces C5 arithmetic.
+
+EVIDENCE_ID: CALC-EGC-043-OBJR6-002
+EVIDENCE_CLASS: CALCULATION / SOURCE-VINTAGE SENSITIVITY
+TOOLS: Python + Wolfram Language
+INPUTS: IEA 2025 value 28,600 TWh; IEA 2027 forecast 30,700 TWh.
+OUTPUT:
+- 10% of 2027 forecast = 3,070 TWh/y = 350.4566210045662 GW average.
+- 2027 forecast anchor is 7.3426573426573% above the 2025 observed/estimated anchor.
+INTERPRETATION:
+The arithmetic is stable, but a rule that says merely "10% of latest global electricity" would drift as source vintages change. The base year and vintage must be frozen. A separate scale-anchor arbitration job is already active elsewhere in MAIN-CHAT.md.
+
+EVIDENCE_ID: CALC-EGC-043-OBJR6-003
+EVIDENCE_CLASS: CALCULATION / UNCERTAINTY-RULE FALSIFICATION
+TOOLS: Python + Wolfram Language
+TOY INPUT:
+baseline point estimate = 60 USD/MWh with interval half-width 4;
+candidate point estimate = 54 USD/MWh with interval half-width 4.
+Point advantage = 6 USD/MWh = 10%.
+OUTPUT:
+- root-sum-square of half-widths = sqrt(4^2+4^2) = 5.65685424949238.
+- under an RSS-style interpretation, 6 > 5.6569 and the phrase "advantage exceeds combined uncertainty" can PASS.
+- worst-case interval separation = (60-4)-(54+4) = -2 USD/MWh, so intervals overlap and a robust-dominance interpretation FAILS.
+- simple summed half-width = 8 USD/MWh, also FAILS.
+REPLICATION_STATUS: CROSS_TOOL_PASS.
+FALSIFICATION:
+The same candidate/baseline evidence can pass or fail solely from the unspecified uncertainty-combination rule.
+
+EVIDENCE_ID: CALC-EGC-043-OBJR6-004
+EVIDENCE_CLASS: CALCULATION / PRICE-BASE SENSITIVITY
+TOOLS: Python + Wolfram Language
+INPUT: illustrative 3.4% price-level shift, equal to the cited BLS August-2025/August-2026 CPI-U year-on-year change solely as a sensitivity magnitude.
+OUTPUT: 60*1.034 = 62.04.
+INTERPRETATION:
+A few-percent price-base mismatch can move a near-threshold result by multiple USD/MWh. This is not an instruction to use CPI-U as the mission deflator; it demonstrates why the base/index must be explicit.
+
+----------------------------------------------------------------------
+C. ADVERSARIAL FINDINGS
+----------------------------------------------------------------------
+
+FINDING_ID: F-EGC-043-OBJR6-P1-001
+SEVERITY: P1
+TITLE: LOW_COST price-base conflict with current primary FSRC convention
+TRUTH_CLASS: CONFLICT
+OBSERVATION:
+OBJECTIVE-REPL-C5 defines C_DELIVERED and the USD60 gate in real 2025 USD/MWh.
+Current SOCDISC common accounting text defines the primary price base as real base-year 2026 currency units.
+PROBLEM:
+A numerical threshold of 60 cannot be applied to a cost metric in a different real-price base without a frozen conversion convention. Near the cutoff, this can change PASS/FAIL.
+REQUIRED_REPAIR:
+- distinguish PV_BASE_DATE from PRICE_LEVEL_BASE;
+- freeze one common price-level base and one normalization index/method for candidate, baseline, and threshold;
+- convert every source before comparison;
+- never mix real-2025 and real-2026 values by label-only equivalence.
+STATUS: REPAIR_REQUIRED.
+
+FINDING_ID: F-EGC-043-OBJR6-P1-002
+SEVERITY: P1
+TITLE: Relative-improvement uncertainty gate is operationally undefined
+TRUTH_CLASS: CALCULATION / METHOD_CONFLICT
+OBSERVATION:
+C5 requires >=10% cost improvement and says the advantage must exceed the "combined uncertainty interval", but does not freeze confidence level, dependency/correlation treatment, interval construction, Monte Carlo rule, or robust-dominance criterion.
+COUNTEREXAMPLE: CALC-EGC-043-OBJR6-003.
+REQUIRED_REPAIR:
+Freeze the uncertainty representation and pass rule before candidate ranking. At minimum record distribution/interval provenance, correlation assumptions, confidence/coverage level, and exact decision inequality. If data cannot support probabilistic combination, use explicit bounded sensitivity and retain NOT_STABLE when plausible bounds reverse the conclusion.
+STATUS: REPAIR_REQUIRED.
+
+FINDING_ID: F-EGC-043-OBJR6-P1-003
+SEVERITY: P1
+TITLE: MASSIVE_ENERGY primary anchor is under active cross-job conflict
+TRUTH_CLASS: CONFLICT
+OBSERVATION:
+OBJECTIVE-REPL-C5 proposes a fixed 2,860 TWh/y anchor from 10% of 2025 global electricity.
+A concurrent objective path proposes a forecast-based 2030 anchor; MAIN-CHAT.md already instantiated CONFLICT-EGC-043-SCALE-ANCHOR-001 under JOB-EGC-043-SCALE-CONFLICT-ARB-C7-20261006.
+DISPOSITION:
+Do not vote or duplicate arbitration. C5's 2,860 TWh arithmetic/source-vintage treatment is correct, but G1 cannot treat the scale threshold as globally frozen until the existing arbitration resolves and receives independent review.
+STATUS: CONFLICT_OPEN_EXTERNALLY.
+
+FINDING_ID: F-EGC-043-OBJR6-P2-004
+SEVERITY: P2
+TITLE: Deployment-horizon acceptance event is not fully specified
+TRUTH_CLASS: INFERENCE
+OBSERVATION:
+"Primary feasibility horizon = 20 years from 2026 (through 2046)" does not state whether MASSIVE_MIN must be sustained for one complete chronological year by 2046, averaged across a multi-year period, or merely annualized from a shorter operating interval.
+RISK:
+A candidate can game deployment feasibility using a transient or partial-year commissioning state.
+REQUIRED_REPAIR:
+Freeze exact milestone date, minimum sustained operating/validated period, treatment of staged commissioning, and replacement/manufacturing pipeline at the milestone. Do not count nameplate, contracted, permitted, under-construction, or momentarily available capacity as net annual served energy.
+STATUS: REPAIR_REQUIRED.
+
+----------------------------------------------------------------------
+D. REVIEW DISPOSITION
+----------------------------------------------------------------------
+
+PASS:
+- 28,600 TWh 2025 source vintage is independently verified from IEA July 2026.
+- 2,860 TWh/y, 326.484 GW average, and 1-TW/8,760-TWh conversions are numerically correct and independently replicated.
+- LCOE-vs-whole-system warning is independently source-supported.
+- IRENA firm-renewable evidence is correctly treated as project/model evidence rather than FSRC_ND proof.
+- USD60/MWh, >=10%, 10%-scale, 1-TW stress, and 20-year choices are explicitly labeled MISSION_CONVENTION rather than SOURCE_FACT; this truth-class separation is correct.
+
+FAIL / NOT VERIFIED:
+- common cost price base is inconsistent across objective/accounting state;
+- uncertainty decision rule is undefined and can reverse PASS/FAIL;
+- scale anchor has an unresolved concurrent conflict;
+- deployment milestone lacks a non-gameable sustained-service acceptance event.
+
+REVIEW VERDICT:
+JOB-EGC-043-OBJECTIVE-REPL-C5-20261006: REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-043-OBJECTIVE-REPL-REV-C6-20261006: AWAITING_REVIEW for this session's new findings; self-verification forbidden.
+GLOBAL_SOLVED: NO.
+G1 QUANTITATIVE_OBJECTIVE_DEFINED: NOT_VERIFIED.
+CURRENT_WINNER: NONE.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-043-OBJ-SCALE arithmetic/source fact: INDEPENDENT_REPLICATION_PASS.
+CLAIM-EGC-043-OBJ-COST source context: INDEPENDENT_SOURCE_PASS.
+CLAIM-EGC-043-OBJ-LCOE-BOUNDARY: INDEPENDENT_SOURCE_PASS.
+CLAIM-EGC-043-OBJ-GATES: REVIEW_FAILED_PENDING_REPAIR.
+CLAIM-EGC-043-OBJ-EROI: UNKNOWN_DEPENDENCY unchanged.
+F-EGC-043-OBJR6-P1-001 -> G1/G5/G21/G22.
+F-EGC-043-OBJR6-P1-002 -> G1/G5/G21/G22.
+F-EGC-043-OBJR6-P1-003 -> G1/G6/G7.
+F-EGC-043-OBJR6-P2-004 -> G6/G7/G11/G24.
+
+NEW JOB:
+JOB_ID: JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REPAIR-20261006
+TITLE: Freeze objective price base, uncertainty pass rule, and deployment acceptance event
+ROLE: Quantitative-objective repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can LOW_COST and deployment gates be made dimensionally common and non-gameable while leaving the separately owned scale-anchor conflict to its existing arbitration?
+CANDIDATE: ALL; objective method only.
+DEPENDENCIES:
+- F-EGC-043-OBJR6-P1-001;
+- F-EGC-043-OBJR6-P1-002;
+- F-EGC-043-OBJR6-P2-004;
+- do NOT duplicate CONFLICT-EGC-043-SCALE-ANCHOR-001 arbitration.
+REQUIRED_INPUTS:
+- reviewed FSRC_ND/SOCDISC price/PV conventions;
+- USD60 mission threshold provenance;
+- candidate/baseline uncertainty representation requirements;
+- 2046 deployment horizon.
+REQUIRED_TOOLS: accounting-unit audit; official price-index source selection; uncertainty algebra/Monte Carlo or bounded-sensitivity design; adversarial milestone tests.
+REQUIRED_EVIDENCE:
+- exact PRICE_LEVEL_BASE and normalization index/method;
+- exact uncertainty coverage/correlation/decision rule;
+- regression where same evidence cannot flip solely by analyst uncertainty convention;
+- exact deployment milestone and sustained-service acceptance condition.
+EXPECTED_OUTPUT: repaired objective schema plus counterexample regressions; no candidate ranking.
+FALSIFICATION_CONDITION:
+FAIL if real-price bases can differ, uncertainty aggregation remains analyst-selectable, or a partial/transient commissioning state can satisfy MASSIVE_MIN.
+REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REV-20261006
+STATUS: OPEN
+BLOCKERS:
+Scale-anchor conflict remains separately owned by JOB-EGC-043-SCALE-CONFLICT-ARB-C7-20261006.
+NEXT_ACTION:
+Distinct repair session freezes cost-unit/uncertainty/deployment rules while scale-anchor arbitration proceeds independently.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
