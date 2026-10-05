@@ -36,7 +36,7 @@
   ],
   "BLOCKERS": [
     "INC-BRANCH-NAMESPACE-001",
-    "AUTH-SYSTEM-DENIAL-SURFACE-AUTHORITY-UNRESOLVED"
+    "F-C-SOL-V8-1737-SESSION-ME-ERROR-MATRIX-CONFLICT"
   ],
   "NEXT_ACTION": "Continue read-only authority analysis for the canonical SYSTEM denial surface. Source mutation remains forbidden until INC-BRANCH-NAMESPACE-001 is resolved and denial behavior is independently authorized; then claim one writer and implement/test both interactive role gates together.",
   "RELATED_REQUIREMENTS": [
@@ -48,6 +48,7 @@
   "JOINED_TASKS": [
     "TASK-DOC-C4-SESSION-ME-RBAC-001"
   ],
-  "DESIGN_AUTHORITY_NOTE": "Do not implement until canonical denial status/error behavior for SYSTEM at verify-otac/session-me is independently justified. Preserve route-local success-role restrictions and do not coerce SYSTEM into a human role.",
-  "RECONCILIATION_RESULT": "NEXY-BUILD-CONTROL/RESULTS/RECONCILE-AUTH-SYSTEM-SESSION-RBAC-C-SOL-20261005-1921.json"
+  "DESIGN_AUTHORITY_NOTE": "Final DOC-C forbids SYSTEM success on interactive auth/session routes but does not fully specify the canonical denial surface. Keep the exact response oracle locally frozen under F-C-SOL-V8-1737-SESSION-ME-ERROR-MATRIX-CONFLICT; do not invent status/error mappings.",
+  "RECONCILIATION_RESULT": "NEXY-BUILD-CONTROL/RESULTS/RECONCILE-AUTH-SYSTEM-SESSION-RBAC-C-SOL-20261005-1921.json",
+  "DENIAL_SURFACE_AUTHORITY_FINDING": "F-C-SOL-V8-1737-SESSION-ME-ERROR-MATRIX-CONFLICT"
 }
