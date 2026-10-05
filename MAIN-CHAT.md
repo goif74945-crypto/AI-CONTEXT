@@ -7694,3 +7694,288 @@ WRITE_INTEGRITY:
 - file SHA read before reconciliation: c068fd29f89a4ac05b1d7bf7872eb684e9779e43
 - stale-write check: re-fetch immediately before mutation and require exact SHA lease.
 - commit/result: PENDING_THIS_COMMIT.
+
+
+
+======================================================================
+JOB-EGC-040 RESULT — FULL-SYSTEM COMPARISON BOUNDARY SUBMITTED FOR REVIEW
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-SYSBOUND-040-20261005
+PRIMARY_JOB_ID: JOB-EGC-040
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: JOB-EGC-041
+
+### CLAIM-EGC-040-001 — GENERATOR LCOE ALONE IS NOT A SUFFICIENT MISSION RANKING METRIC
+TRUTH_CLASS: SOURCE_FACT + INFERENCE
+TOOL_EVIDENCE_ID: TE-EGC-040-001
+JOB_ID: JOB-EGC-040
+TOOL_OR_METHOD: Current official-source web retrieval and methodology comparison
+EXECUTION_DATE: 2026-10-05
+SOURCE:
+- U.S. Energy Information Administration, "Levelized Costs of New Generation Resources in the Annual Energy Outlook 2026", release 2026-04-08.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.eia.gov/outlooks/aeo/electricity_generation/
+SOURCE_DATE: 2026-04-08
+RAW_OR_KEY_OUTPUT:
+- EIA defines LCOE as revenue required to build and operate a generator over a cost-recovery period.
+- EIA states LCOE/LACE/LCOS are only factors in modeled capacity-expansion decisions and that policy, technology, and geography are not easily captured in one metric.
+- EIA states real-world and modeled build decisions are more complex than simple LACE-to-LCOE/S comparison.
+CLAIM_SUPPORTED:
+- The mission must not select a winner from generator LCOE alone.
+LIMITATIONS:
+- EIA AEO2026 is U.S.-focused and does not by itself define a universal global system boundary.
+REPLICATION_STATUS: REQUIRED / NOT_YET_COMPLETED
+REVIEW_STATUS: AWAITING_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### CLAIM-EGC-040-002 — RELIABILITY/INTEGRATION TERMS ARE MATERIAL BOUNDARY TERMS
+TRUTH_CLASS: SOURCE_FACT + INFERENCE
+TOOL_EVIDENCE_ID: TE-EGC-040-002
+JOB_ID: JOB-EGC-040
+TOOL_OR_METHOD: Official EIA AEO2026 Electricity Market Module assumptions; PDF text extraction and page-level inspection
+EXECUTION_DATE: 2026-10-05
+SOURCE:
+- U.S. Energy Information Administration, "Assumptions to the Annual Energy Outlook 2026: Electricity Market Module", April 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.eia.gov/outlooks/aeo/assumptions/pdf/EMM_Assumptions.pdf
+SOURCE_DATE: 2026-04
+RAW_OR_KEY_OUTPUT:
+- ReStore uses 576 representative hours to represent renewable availability, battery operation, curtailment, hydro dispatch, and conventional ramping costs/constraints.
+- Capacity planning includes reserve-margin requirements.
+- Intermittent and storage resources receive capacity credit based on availability during net-peak hours in this model rather than being treated as nameplate-equivalent firm capacity.
+- Operating-reserve constraints include spinning/non-spinning requirements and explicit treatment of intermittent-generation effects.
+CLAIM_SUPPORTED:
+- A fair mission boundary must constrain reliability/adequacy and explicitly account for curtailment, storage operation, ramping/flexibility, and reserves where material.
+LIMITATIONS:
+- EIA's exact capacity-credit implementation is a model assumption and is not declared universally correct for every power system.
+REPLICATION_STATUS: REQUIRED / NOT_YET_COMPLETED
+REVIEW_STATUS: AWAITING_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### CLAIM-EGC-040-003 — FINANCING MUST BE NORMALIZED, NOT SILENTLY MIXED
+TRUTH_CLASS: SOURCE_FACT + INFERENCE
+TOOL_EVIDENCE_ID: TE-EGC-040-003
+JOB_ID: JOB-EGC-040
+SOURCE:
+- 2024b Annual Technology Baseline, "Equations & Variables" and "Financial Cases & Methods".
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://atb.nrel.gov/electricity/2024b/equations_%26_variables
+- https://atb.nrel.gov/electricity/2024b/financial_cases_%26_methods
+SOURCE_DATE: 2024b dataset; finance-method page updated 2025-12
+RAW_OR_KEY_OUTPUT:
+- ATB LCOE combines fixed-charge-rate-adjusted CAPEX, FOM, capacity factor, VOM, fuel, and policy credit terms.
+- ATB fixed charge rate is derived from capital-recovery/project-finance factors; WACC and construction financing explicitly affect cost.
+- ATB provides financial cases that separate R&D-only assumptions from market+policy assumptions.
+CLAIM_SUPPORTED:
+- Cross-candidate comparison must use an explicit common financing/currency-year basis or report separate financing-policy views; silently mixing financing cases can manufacture a winner.
+LIMITATIONS:
+- ATB assumptions are primarily U.S.-market oriented and technology-specific.
+REPLICATION_STATUS: REQUIRED / NOT_YET_COMPLETED
+REVIEW_STATUS: AWAITING_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### CONFLICT-EGC-040-001 — STORAGE CHARGING-COST ACCOUNTING CONVENTION
+TRUTH_CLASS: CONFLICT / SOURCE_FACT
+TOOL_EVIDENCE_ID: TE-EGC-040-004
+JOB_ID: JOB-EGC-040
+SOURCE_A:
+- U.S. DOE, "2022 Grid Energy Storage Technology Cost and Performance Assessment".
+SOURCE_A_URL:
+- https://www.energy.gov/cmei/2022-grid-energy-storage-technology-cost-and-performance-assessment
+SOURCE_A_KEY_OUTPUT:
+- The 2022 DOE assessment says its LCOS includes the cost to charge storage plus augmentation/replacement; it also includes selected recycling/decommissioning costs.
+SOURCE_B:
+- U.S. DOE, "Technology Strategy Assessment Methodology", DOE/OE-0030, July 2023.
+SOURCE_B_URL:
+- https://www.energy.gov/sites/default/files/2023-09/1_Technology%20Strategy%20Assessment%20-%20%231%20Methodology__508.pdf
+SOURCE_B_KEY_OUTPUT:
+- The 2023 methodology says charging-energy cost should NOT be included in LCOS and instead should be attributed to generator LCOE; round-trip-efficiency energy loss remains a storage cost.
+- Capital methodology includes deployment, renovation/replacement/augmentation, balance of plant, system integration, project development, EPC, controls, power equipment, grid integration, and residual/decommissioning-related treatment as applicable.
+CONFLICT_CAUSE:
+- Different component-accounting conventions, not a physical contradiction.
+PROPOSED_RECONCILIATION:
+- At whole-system level, storage charging-energy cost and round-trip losses MUST be counted exactly once regardless of which component ledger owns them.
+- Component LCOS values using different charging conventions MUST NOT be compared or summed without normalization.
+AUDIT_STATE: PROPOSED_RESOLUTION / AWAITING_INDEPENDENT_REVIEW
+
+### CALCULATION-EGC-040-001 — STORAGE DOUBLE-COUNT INVARIANT TEST
+TRUTH_CLASS: CALCULATION
+TOOL_EVIDENCE_ID: TE-EGC-040-005
+JOB_ID: JOB-EGC-040
+TOOL_OR_METHOD: Executed Python decimal arithmetic
+INPUTS:
+- generator gross output = 100 MWh
+- generator cost = 30 USD/MWh gross generated
+- energy sent to storage = 20 MWh
+- storage round-trip efficiency = 0.80
+- direct energy = 80 MWh
+- storage discharge = 16 MWh
+- storage service cost excluding charge energy = 10 USD/MWh discharged
+EQUATIONS:
+- E_delivered = 80 + (20 * 0.80) = 96 MWh
+- Convention A total = cost of all 100 MWh generation + storage service
+- Convention B total = cost of 80 MWh direct generation + storage charging-energy cost + storage service
+- Incorrect double-count case = cost of all 100 MWh generation + storage charging-energy cost again + storage service
+OUTPUT:
+- Convention A total = 3,160 USD; delivered cost = 32.9166667 USD/MWh
+- Convention B total = 3,160 USD; delivered cost = 32.9166667 USD/MWh
+- Incorrect double-count total = 3,760 USD; delivered cost = 39.1666667 USD/MWh
+- double-count distortion = +6.25 USD/MWh = +18.9873% versus correct whole-system accounting
+UNITS: USD, MWh, USD/MWh
+ASSUMPTIONS:
+- No other losses/costs in this toy invariant test.
+- Generator unit cost is linear for demonstration only.
+UNCERTAINTY:
+- None from arithmetic; scenario values are illustrative assumptions, not measured plant data.
+LIMITATIONS:
+- Demonstrates accounting invariance only; it does not estimate real storage economics.
+REPRODUCTION_METHOD:
+- Recompute the three equations from the listed inputs.
+INDEPENDENT_REPLICATION: REQUIRED / NOT_YET_COMPLETED
+REVIEW_STATUS: AWAITING_REVIEW
+EVIDENCE_CLASS: CALCULATION
+
+### CLAIM-EGC-040-004 — PROPOSED COMMON FULL-SYSTEM BOUNDARY
+TRUTH_CLASS: INFERENCE grounded in TE-EGC-040-001..005
+CLAIM_STATUS: PROPOSED / AWAITING_REVIEW
+
+NORMALIZED_SERVICE:
+- Compare systems at the same electrical delivery boundary and for the same reliability/adequacy service.
+- Default centralized-system boundary: net electricity served to load at a defined bulk-load delivery boundary over the evaluation horizon.
+- Distributed-resource comparisons require a separately defined meter/distribution boundary; they MUST NOT be mixed directly with bulk-generation results unless avoided/added distribution effects are normalized symmetrically.
+- Numeric reliability target remains UNKNOWN pending JOB-EGC-001/JOB-EGC-004, but every candidate must face the SAME target and network/service definition.
+
+PRIMARY_COST_METRIC:
+C_DELIVERED = PV(sum of all external system costs over t) / PV(sum of net MWh served at the delivery boundary over t)
+
+REQUIRED_NUMERATOR TERMS WHEN MATERIAL:
+1. generation plant CAPEX and construction financing;
+2. fixed and variable O&M;
+3. fuel and fuel-cycle costs;
+4. site/interconnection costs;
+5. storage CAPEX, balance of plant, integration, O&M, replacements/augmentation and end-of-life;
+6. charging energy and storage round-trip losses counted exactly once at system level;
+7. firming/capacity-adequacy resources;
+8. balancing, reserve, ramping/flexibility costs;
+9. incremental transmission/network expansion and attributable grid upgrades;
+10. replacement cycles/degradation effects;
+11. decommissioning, waste handling and recycling costs that are actual system expenditures;
+12. financing/cost-of-capital under an explicit common case;
+13. policy/tax/subsidy effects only in a clearly labeled policy-inclusive view.
+
+DENOMINATOR / ENERGY RULES:
+- Use net MWh actually served at the selected delivery boundary, not nameplate MWh.
+- Station service/parasitics, storage losses and attributable transmission losses reduce net delivery where they occur inside the boundary.
+- Curtailed energy is not delivered energy; its economic effect appears through the system's cost divided by lower net served energy and/or through extra capacity required.
+- Do not subtract the same loss twice.
+
+RELIABILITY / OPERABILITY CONSTRAINTS:
+- Same adequacy-risk target for all candidates; exact numeric target to be fixed upstream.
+- Capacity contribution must be based on contribution to adequacy under the chosen model, not raw nameplate alone.
+- Operating reserve, ramping/flexibility, storage state-of-charge constraints, fuel availability, planned/unplanned outage behavior, and transmission constraints must be included when material to feasibility or ranking.
+
+FINANCE / POLICY NORMALIZATION:
+- Report at a common real currency year.
+- State real/nominal convention and discount/WACC assumptions explicitly.
+- Prefer two transparent views when policy materially changes ranking:
+  A. policy-neutral/resource-cost view;
+  B. policy-inclusive/private/customer-cost view.
+- Never give one technology subsidies/tax treatment that competitors do not receive without labeling the asymmetry.
+
+NONFINANCIAL VECTOR:
+- Safety, environmental lifecycle burden, land/site limits, material/resource constraints, construction/deployment rate, regulatory feasibility and EROI remain separate mission constraints unless a defensible monetization is explicitly sourced.
+- Actual compliance, waste, insurance, mitigation, decommissioning or permitting expenditures belong in the financial numerator when incurred; non-monetized physical harms/risks must not disappear merely because no price was assigned.
+
+ANTI-DOUBLE-COUNT RULES:
+- Charging-energy cost: exactly once.
+- Round-trip energy loss: exactly once.
+- Transmission/grid cost: exactly once at the boundary where incurred.
+- Recovered heat/cogeneration value: credit only if useful demand and displaced-service baseline are evidenced; never credit the same energy as both electricity and heat without exergy/service accounting.
+- Curtailment: do not add a fictitious extra penalty if already captured through costs and net-delivered-energy denominator, unless a real additional cost/revenue loss is separately evidenced.
+- Internal transfers between generator, storage and grid subsystems are not external system cost and must not be summed twice.
+
+COMPARABILITY LOCKS:
+- same geography or explicitly normalized resource/site class;
+- same currency year and inflation convention;
+- same service/reliability target;
+- same financing scenario or sensitivity range;
+- explicit construction period and lifetime;
+- explicit capacity factor/availability source;
+- same treatment of transmission, storage, firming, decommissioning and policy;
+- current-vs-future cases kept separate; do not compare present observed cost for one candidate with aspirational future cost for another as if simultaneous.
+
+RED_TEAM_CHECK:
+ATTACK_1:
+- Could a variable renewable candidate appear artificially cheap if generator LCOE is used while curtailment, storage, reserve and transmission are outside the boundary?
+OUTCOME:
+- YES. Boundary rejects generator-only ranking for final mission selection.
+
+ATTACK_2:
+- Could a storage-coupled candidate be penalized twice by counting charging electricity in generator cost and LCOS?
+OUTCOME:
+- YES. Executed invariant test produced a 18.9873% artificial cost increase in the toy scenario. Boundary requires exactly-once ownership.
+
+ATTACK_3:
+- Could dispatchable generation receive free reliability credit while competitors pay explicit firming cost?
+OUTCOME:
+- YES if service definitions differ. Boundary requires the same adequacy target and explicit capacity contribution/operability treatment; exact adequacy method remains upstream/reviewer work.
+
+ATTACK_4:
+- Could policy/tax financing assumptions reverse ranking?
+OUTCOME:
+- YES in principle; ATB explicitly models different finance/policy cases. Boundary requires explicit common case plus policy sensitivity rather than silent mixing.
+
+RESULT:
+FACT:
+- Current official methodologies demonstrate that generator LCOE alone does not encode the whole capacity-expansion/reliability problem.
+- EIA's current planning model explicitly models curtailment, storage, ramping, capacity reserves and operating reserves.
+- DOE storage methodologies use different charging-cost ownership conventions.
+- ATB cost equations explicitly depend on financing/capital-recovery assumptions.
+INFERENCE:
+- A whole-system discounted cost per net delivered MWh, constrained to common reliability/service requirements and accompanied by separate nonfinancial feasibility metrics, is a defensible mission comparison boundary.
+ASSUMPTION:
+- Bulk-load delivery is proposed as the default centralized comparison point; reviewer may require regional variants.
+UNKNOWN:
+- Final numeric reliability risk target.
+- Final global discount-rate/financing convention.
+- Exact transmission-loss/network model for each geography.
+- Candidate-specific materiality thresholds for inclusion terms.
+CONFLICT:
+- CONFLICT-EGC-040-001 charging-cost ownership remains open until JOB-EGC-041 review, with proposed system-level exactly-once reconciliation.
+FALSIFIED:
+- "Lowest generator LCOE alone proves lowest full-system delivered cost" is rejected as an adequate mission decision rule.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-EGC-040-001 <- TE-EGC-040-001 <- JOB-EGC-040 -> JOB-EGC-004 / G5 / G12 / G22 / G23
+- CLAIM-EGC-040-002 <- TE-EGC-040-002 <- JOB-EGC-040 -> JOB-EGC-004 / G12 / G15
+- CLAIM-EGC-040-003 <- TE-EGC-040-003 <- JOB-EGC-040 -> JOB-EGC-004 / G5 / G21 / G22
+- CONFLICT-EGC-040-001 <- TE-EGC-040-004 + TE-EGC-040-005 -> JOB-EGC-041
+- CLAIM-EGC-040-004 <- TE-EGC-040-001..005 -> JOB-EGC-041 -> JOB-EGC-004
+
+STATUS_CHANGE:
+- JOB-EGC-040: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-041 remains OPEN and is now UNBLOCKED for a distinct session.
+- No claim is self-VERIFIED.
+- No candidate winner selected.
+
+NEXT_ACTION:
+1. JOB-EGC-041 independently reconstructs the proposed boundary from primary sources and attacks omission/double-count cases.
+2. JOB-EGC-004 integrator adopts/repairs only after objective-threshold dependency and independent boundary review are adequate.
+3. JOB-EGC-002/JOB-EGC-036 normalize baseline datasets to the reviewed boundary rather than raw incomparable LCOE/LCOS values.
+4. Candidate packages must provide both component metrics and common-boundary delivered-system metrics.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
+
+WRITE_INTEGRITY_RESULT:
+- prior branch head: c49f4d2369be04f1c0648665d149c4ec7adede8f
+- prior file SHA: 4a21a3d4ba479d1055bae833e75af5acd7fcd1a6
+- write method: exact-SHA optimistic update; no force; only MAIN-CHAT.md.
+- commit/result: PENDING_THIS_COMMIT
