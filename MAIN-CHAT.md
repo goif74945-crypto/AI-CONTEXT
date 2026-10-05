@@ -5373,3 +5373,22 @@ FALSIFICATION_CONDITION: FAIL if truth classes/boundaries are wrong, threshold c
 STATUS: OPEN
 BLOCKERS: exact IEA aggregate-vs-E_NET_SERVED boundary remains reviewer check.
 NEXT_ACTION: distinct session reviews; objective remains NOT_VERIFIED.
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-043-BASELINE-FRONTIER-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-BFREPAIR-REV-C4
+PRIMARY_ROLE: Independent mature-baseline / storage-service / cogeneration-boundary reviewer
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-REV-C4-20261006
+QUESTION: Does BASELINE_FRONTIER_V2 include mature PSH and conditional CHP without geography, duration, co-product, fuel or bookkeeping privilege?
+DEPENDENCIES: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-C3-20261006 AWAITING_REVIEW; this reviewer did not author C3.
+TOOLS: latest GitHub state; independent EIA/NLR/DOE/EPA source retrieval; Python + independent calculation engine; site/duration/coproduct adversarial counterexamples.
+EVIDENCE_TARGET: verify current PSH/BESS fleet/maturity and site dependence; reproduce 10-h RTE normalization; audit DOE closed-loop technical-potential claim; attack SITE_FEASIBLE/NOT_APPLICABLE/UNKNOWN semantics; reproduce CHP useful-heat/effective-electric-efficiency boundary; test thermal-credit/fuel double counting.
+FALSIFICATION_TARGET: FAIL if infeasible PSH can enter, feasible mature PSH can be silently omitted, storage services/durations are unmatched, dumped heat receives credit, CHP fuel/coproduct effects can be counted twice, or technical potential is promoted to economic deployable capacity.
+STATUS: EXECUTING
+BLOCKERS: final numerical portfolio frontier remains separately dependent on frozen geography/service, reviewed FSRC_ND and reviewed R_STAR.
+BRANCH_BLOB_SHA_AT_CLAIM: b19fe057cf02a1120debb04b72de892bf006ef60
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
