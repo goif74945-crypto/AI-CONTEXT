@@ -1,0 +1,48 @@
+{
+  "FINDING_ID": "FINDING-CLOSURE-PHASE-F-EXPERIMENTAL-CLASSIFICATION-001",
+  "REQ_ID": "CLOSURE-INVENTORY-CLASSIFICATION",
+  "FOUND_BY": "C-SOL-20261005-1913-V8-AUTH",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SEVERITY": "P1",
+  "TYPE": [
+    "CLOSURE_EVIDENCE_DEFECT",
+    "FILE_CLASSIFICATION_DEFECT",
+    "SCOPE_ACCOUNTING_DEFECT"
+  ],
+  "STATUS": "OPEN",
+  "OBSERVED": [
+    "Across INV-608426CB-C-3B5E71A2 shards 01-08, 126 paths under packages/phase-f/** are inventoried.",
+    "Those 126 records are classified as AUTHORITATIVE_RUNTIME=123, CONTRACT=1, BUILD_SUPPORT=1, CONFIG=1, EXPERIMENTAL=0.",
+    "config/experimental-scope.ts explicitly declares EXPERIMENTAL_SOURCE_GLOBS including packages/phase-f/** and states canonical DOC-C excludes these later-era extensions until explicit promotion.",
+    "tsconfig.json excludes packages/phase-f/** from default backend typecheck.",
+    "vitest.config.ts excludes EXPERIMENTAL_SOURCE_GLOBS from default tests and coverage.",
+    "vitest.experimental.config.ts and separate package scripts provide an explicit experimental execution lane."
+  ],
+  "EXPECTED": [
+    "Closure inventory classification must reflect active build scope and verified source scope declarations.",
+    "packages/phase-f/** must not be labeled AUTHORITATIVE_RUNTIME/CONTRACT/BUILD_SUPPORT/CONFIG for canonical DOC-C closure without specific evidence of promotion or active canonical dependency.",
+    "Any exceptions must be individually proven rather than inferred from file location or implementation content.",
+    "Existing inventory generation should be superseded/reconciled append-only; do not silently rewrite historical evidence."
+  ],
+  "SPEC_EVIDENCE": [
+    "Final DOC-C Included paragraphs 9889-9899 define the active build obligations.",
+    "Final DOC-C Excluded paragraphs 9902-9909 exclude later capabilities including self-patch/auto-heal runtime.",
+    "V8 sections 10-18 and 94-95 require canonical inventory, correct classification, zero required unscanned files, and evidence-based closure."
+  ],
+  "SOURCE_EVIDENCE": {
+    "config/experimental-scope.ts": "blob 850e0918de501ad0413b61a81be0a3b86152c263",
+    "tsconfig.json": "blob 4f878346b620f042392958f4490f0e086576f3cb",
+    "vitest.config.ts": "blob 6665df37ca5f5709d7ff320d89a437e499047245",
+    "vitest.experimental.config.ts": "blob 9dadfe5d9ddf2a0f4ec1c48035c4254eab8000f9",
+    "package.json": "blob 972cd03ed7878ff6eb0cb4813e459cb0c29cd1e7",
+    "inventory": "INV-608426CB-C-3B5E71A2 shards 01-08"
+  },
+  "REPRODUCTION": [
+    "Read exact integration-branch config files listed above.",
+    "Parse all eight inventory shards and filter p.startsWith('packages/phase-f/').",
+    "Count class c: AUTHORITATIVE_RUNTIME=123, CONTRACT=1, BUILD_SUPPORT=1, CONFIG=1, EXPERIMENTAL=0."
+  ],
+  "SOURCE_MUTATION": "NONE"
+}
