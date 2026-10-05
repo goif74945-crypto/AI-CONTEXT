@@ -1,0 +1,110 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_REVIEW_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REVIEW_ID": "REVIEW-C-SOL-V16RC13-P0-V3-XREVIEW-8E0875C21BCD-P0-INTEROP-V3-v2",
+  "REVIEWER_CHAT_ID": "C-SOL-V16RC13-P0-V3-XREVIEW-8E0875C21BCD",
+  "REVIEW_KIND": "INDEPENDENT_FINDING_UNIVERSE_V3_AND_CONTROL_P0_PROJECTION_V3_REVIEW",
+  "SUPERSEDES_REVIEW_ID": "REVIEW-C-SOL-V16RC13-P0-V3-XREVIEW-8E0875C21BCD-P0-INTEROP-V3",
+  "MEMBERSHIP_ID": "PRE-4e386679ac611fb62ff0ca0fd8718bef",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "BOOTSTRAP_STATE_OBSERVED": "BLOCKED",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CANDIDATE_OWNER_CHAT_ID": "C-SOL-20261005-1818Z-V16RC13-P0-INTEROP-4B508E13FA35",
+  "PINNED_CANDIDATE_BRANCH": "control/v16rc13-p0-interop-v3-C-SOL-1818-4B508E13FA35",
+  "PINNED_CANDIDATE_COMMIT_SHA": "ebee7f4f749b865ac44d379282bae351a18a62d0",
+  "PINNED_CANDIDATE_TREE_SHA": "75a3743b836b81b0bd041e3d263198524e4969a5",
+  "REVIEWED_ARTIFACTS": [
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V3.json",
+      "blob_sha": "1544af03e05eb4350b751c8f001216d85ba49001",
+      "schema_version": "NEXY_V16_RC1_3_CANONICAL_FINDING_UNIVERSE_CONTRACT_V3"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SCHEMAS/CONTROL_P0_PROJECTION_V3.json",
+      "blob_sha": "6661c2ad86feac4f54b90df481c5b9f2e1432b4a",
+      "schema_version": "NEXY_CONTROL_P0_PROJECTION_V3"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1818Z-V16RC13-P0-INTEROP-V3-4B508E13FA35.json",
+      "blob_sha": "d72259c6260962d471019ea6a3837f8801f6328f",
+      "role": "IMPLEMENTER_SELF_VALIDATION_ONLY"
+    }
+  ],
+  "EVIDENCE_CORRECTION": {
+    "direct_fetch_at_original_commit": "CONTROL_P0_PROJECTION_V3 exists at 8cfc5084798c55fb00b76e4804dcc4268f62ee5f with blob 6661c2ad86feac4f54b90df481c5b9f2e1432b4a",
+    "old_compare_absence_inference": "WITHDRAWN",
+    "anti_fake_disposition": "Evidence correction published before canonical integration."
+  },
+  "PRIOR_XR1_XR5_DISPOSITION": {
+    "XR1_PROJECTION_V2_HARDCODES_UNIVERSE_V1": "PASS_FOR_CANDIDATE_V3. Projection V3 binds Universe V3 schema/path/blob exactly.",
+    "XR2_V2_CROSS_SCHEMA_ADAPTER_UNDEFINED": "PASS_FOR_ORIGINAL_DEFECT. Exact field mapping and explicit fail-closed adapter conditions are present in Projection V3.",
+    "XR3_UNIVERSE_V2_HASH_COMPONENT_ROW_SCHEMAS_UNDEFINED": "PASS_FOR_ORIGINAL_MISSING_ROW_SCHEMA_DEFECT, BUT NEW DETERMINISM FINDINGS BELOW REMAIN.",
+    "XR4_EXTERNAL_SWEEP_NONDEFINITION_DISPOSITION_UNDEFINED": "PASS. Universe V3 defines explicit disposition classes and algorithm.",
+    "XR5_DEDUP_PARENT_CONTROL_CLASS_UNCONSTRAINED": "PASS_FOR_ORIGINAL_DEFECT. Projection V3 requires same-universe parent P0 + CONTROL_BLOCKER, forbids chains/cycles, and fails closed on parent invalidity."
+  },
+  "POSITIVE_OBSERVATIONS": [
+    "Projection V3 pins Universe V3 by exact schema version, path, and blob SHA.",
+    "Adapter mapping is explicit and semantic inference from TYPE_RAW/filename is forbidden.",
+    "External sweep now distinguishes finding definitions from non-finding identity artifacts deterministically at the high-level decision tree.",
+    "Dedup parent semantics now require a same-snapshot P0 CONTROL_BLOCKER parent with independent classification review.",
+    "Candidate explicitly does not claim OPEN_CONTROL_P0_COUNT zero, Phase 2, activation, product mutation, or target integration."
+  ],
+  "BLOCKING_REVIEW_FINDINGS": [
+    {
+      "id": "V3C1_PRIMARY_SOURCE_CLASSIFICATION_ALGORITHM_UNDEFINED",
+      "severity": "P0_CONTROL",
+      "evidence": "Universe V3 PRIMARY_SOURCE_ACCOUNTING lists source_class/parse_status enums and INFRA_BASENAMES but gives no exact decision algorithm mapping each primary-root blob's media type, parse result, FINDING_ID presence/validity, and infra basename to source_class + parse_status.",
+      "counterexample": "For a tracked JSON blob under NEXY-BUILD-CONTROL/FINDINGS that parses but has no valid FINDING_ID and is not an infra basename, one generator can emit UNSUPPORTED_CANDIDATE/PASS while another emits PARSE_ERROR/FAIL; both conform to the listed enums but produce different root rows.",
+      "impact": "COMPLETE_FINDING_MANIFEST_ROOT_HASH is not uniquely derivable from the same pinned tree."
+    },
+    {
+      "id": "V3C2_AUTHORITY_REFERENCE_PATH_ENCODING_UNDEFINED",
+      "severity": "P0_CONTROL",
+      "evidence": "Universe V3 NORMALIZED_FINDING_ROW_SCHEMA requires AUTHORITY_REFERENCE_PATHS as sorted unique 'canonical authority reference strings', while AUTHORITY_REFERENCE_ROW_SCHEMA exposes authority_path and json_pointer but no exact string construction/escaping rule binds the two.",
+      "counterexample": "path#pointer and path::pointer can represent the same discovered reference but serialize differently.",
+      "impact": "The normalized finding rows and complete finding root can diverge across implementations."
+    },
+    {
+      "id": "V3C3_RAW_FIELD_NONSTRING_SEMANTICS_UNDEFINED",
+      "severity": "P0_CONTROL",
+      "evidence": "Universe V3 RAW_EXTRACTION says exact top-level TYPE/SEVERITY/STATUS 'or null', while normalized row types permit only JSON string or null. It never defines the single required outcome for a present non-string value.",
+      "counterexample": "SEVERITY: 0 can be treated as null, parse error, unsupported candidate, or raw type violation depending on implementation.",
+      "impact": "Malformed severity/status can alter completeness and downstream P0 classification; zero proof is not deterministic."
+    },
+    {
+      "id": "V3C4_CLASSIFICATION_AND_DEDUP_RECORD_TYPES_REGRESSED",
+      "severity": "P0_CONTROL",
+      "evidence": "Projection V3 CLASSIFICATION_RECORD_SCHEMA and DEDUP_DECISION_SCHEMA list required field names and some validity rules but omit exact field types/null rules/normalization and the evidence-object schema that Projection V2 had. record_generation, classification_evidence/equivalence_basis, IDs, review blob fields, and verdict representation are not fully schema-bound.",
+      "counterexample": "Two generators can treat record_generation as JSON integer versus numeric-looking string or accept different classification_evidence object shapes while both satisfy field presence.",
+      "impact": "Record validity, highest-generation selection, manifest root, PRODUCT_ONLY suppression, and dedup suppression can diverge."
+    },
+    {
+      "id": "V3C5_PROJECTED_ROW_TYPES_AND_STATUS_VALID_RULE_MISSING",
+      "severity": "P0_CONTROL",
+      "evidence": "Projection V3 PROJECTED_MANIFEST defines ROW_EXACT_FIELDS including status_valid, classification_record_id/generation, canonical_blocker_id and dedup_decision_id but defines no ROW_TYPES/null semantics and nowhere defines the exact computation of status_valid.",
+      "impact": "Independent implementations can emit different JCS rows and different CONTROL_P0_SET_ROOT_HASH for identical source evidence."
+    },
+    {
+      "id": "V3C6_EXTERNAL_TAXONOMY_HASH_BINDING_UNSPECIFIED",
+      "severity": "P0_CONTROL",
+      "evidence": "Projection V3 allows a canonical severity taxonomy and separately versioned status taxonomy 'bound by blob SHA' to affect classification, but SNAPSHOT_BINDING, INPUT_MANIFESTS, and PROJECTED_MANIFEST root fields contain no explicit taxonomy blob-SHA fields or canonical location for those bindings.",
+      "impact": "Classification authority can depend on external artifacts that are not structurally bound into the projected root/projection generation, preventing reproducible verification of OPEN_CONTROL_P0_COUNT."
+    }
+  ],
+  "REQUIRED_REPAIR": [
+    "Define an exhaustive primary-root classification algorithm covering media type, parse failure, infra basenames, missing/invalid/duplicate FINDING_ID, and exact parse_status.",
+    "Define AUTHORITY_REFERENCE_PATHS as exact structured objects or an exact escaped string function of authority_path + json_pointer.",
+    "Define present non-string TYPE/SEVERITY/STATUS as one exact fail-closed outcome and include it in source accounting/validation.",
+    "Restore exact field types/null/normalization/evidence-object schemas for classification and dedup records, including positive-integer record_generation and exact PASS verdict semantics.",
+    "Define PROJECTED_MANIFEST row types/null rules and exact status_valid derivation.",
+    "Add explicit severity/status taxonomy binding fields (path/blob/domain as applicable) to snapshot/root inputs or forbid external taxonomy extensions in this generation."
+  ],
+  "REVIEW_VERDICT": "CHANGES_REQUIRED",
+  "OPEN_CONTROL_P0_ZERO_PROVABLE": false,
+  "CONTROL_P0_SET_ROOT_HASH_ACCEPTABLE": false,
+  "STATIC_PROTOCOL_P0_ZERO_PROVEN": false,
+  "PHASE_2_AUTHORIZED": false,
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
