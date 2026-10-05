@@ -6,7 +6,7 @@
   "REPOSITORY": "goif74945-crypto/NEXY.AI-",
   "BASE_BRANCH": "NEXY.AI-Test-AI",
   "BASE_SHA": "1ab5de28aa9f9b5a1a6722dc1e2a20d8b807a87c",
-  "WORKER_BRANCH": "NEXY.AI-Test-AI/work/directive-idempotency-race-0144",
+  "WORKER_BRANCH": "work/NEXY-AI-Test-AI-directive-idempotency-race-0144",
   "SEMANTIC_SCOPE": "POST /api/directives concurrent same-session same-payload idempotency P2002 convergence only",
   "TARGET_PATHS": [
     "packages/api/directives.ts",
@@ -17,5 +17,6 @@
     "NEXY.ai mutation",
     "auth/state-machine/OTAC changes",
     "unrelated refactor"
-  ]
+  ],
+  "NOTE": "NEXY.AI-Test-AI/work/* is not a realizable Git ref while refs/heads/NEXY.AI-Test-AI exists; using isolated work/* ref."
 }
