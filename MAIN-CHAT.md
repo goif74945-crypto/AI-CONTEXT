@@ -9878,3 +9878,143 @@ FALSIFICATION_TARGET: source misquote, unit/boundary mix, CF-as-capacity-credit,
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+58. REPAIR RESULT — JOB-EGC-042-RSTAR-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200400Z-C2
+ROLE: Reliability-boundary repair architect
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-REPAIR-C3-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-REPAIR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair F-EGC-042REV-P1-001 and F-EGC-042REV-P1-002 without weakening candidate-neutral reliability accounting or pretending one jurisdiction's policy is globally optimal.
+
+R_STAR_REF_V2 — TWO-LAYER RELIABILITY ARCHITECTURE
+
+LAYER A — COMMON MISSION SERVICE CASE, R_MISSION
+PURPOSE: one frozen reliability-service case for apples-to-apples techno-economic comparison.
+ADEQUACY REFERENCE:
+- annual LOLH point target <0.1 h/year;
+- annual NEUE point target <2 ppm;
+- all-hours chronological/probabilistic modeling;
+- common demand/weather/outage/fuel/import/DR/storage/network scenario definitions;
+- common delivery boundary, stress/tail reporting, and separate operating/security gates.
+PROVENANCE:
+Numeric adequacy values are an explicit MISSION_CONVENTION derived from the NERC 2025 LTRA Normal-Risk classification band. They are NOT universal law and NOT proof of globally optimal reliability.
+FREEZE:
+thresholds, model version, demand/weather/outage/correlation assumptions, import/DR limits, storage boundary rule, network representation and service vector are frozen/versioned before candidate adequacy outputs are inspected; material changes require a new version and full rerun.
+
+LAYER B — R_LOCAL(g,y)
+PURPOSE: actual deployability and jurisdiction/operator compliance.
+RULES:
+- use exact applicable standard(s) with geography, study-year and version provenance;
+- preserve native metric units/definitions;
+- no mechanical LOLE/LOLH/EUE conversion unless the governing method defines it;
+- all applicable local constraints pass;
+- future-year comparisons use the rule applicable to that year or an explicitly frozen scenario.
+
+COMBINED DEPLOYMENT GATE:
+R_DEPLOY(g,y) = R_MISSION AND R_LOCAL(g,y) AND applicable OPERATING/SECURITY requirements.
+No scalar "stricter number wins" shortcut across non-equivalent metrics; use the intersection of constraints.
+
+MANDATORY DUAL REPORTING:
+For every candidate/geography report:
+1. cost/reliability under R_MISSION;
+2. compliance/cost under R_LOCAL(g,y);
+3. R_DEPLOY result.
+If candidate ranking materially changes between mission and plausible/local reliability cases:
+RANKING_STATUS=RELIABILITY_SENSITIVE;
+GLOBAL winner claim=NOT_VERIFIED until service objective/geography is explicitly fixed.
+
+UNCERTAINTY GATE U1
+For every stochastic upper-threshold metric M<=T:
+- report point estimate, uncertainty interval from the actual estimator/justified method, effective simulated years/states, seeds/replications, convergence diagnostics and model version;
+- default mission evidence convention where no governing method specifies otherwise: two-sided 95% interval, plus 90%/99% sensitivity for ranking-critical near-threshold cases.
+MISSION_VERIFIED_PASS requires Upper95(M)<T for each binding mission upper threshold.
+If M_hat<T but Upper95(M)>=T: RELIABILITY_NOT_VERIFIED.
+If local law prescribes a different compliance statistic, apply it for R_LOCAL and separately report mission-U1 evidence.
+ZERO-EVENT RULE: finite-sample zero shortfall does not prove zero risk; report an upper bound or governing rare-event statistic.
+REPLICATION: ranking-critical stochastic results require >=2 independently executed replications when practical, with separate random streams or independent implementation.
+
+STRUCTURAL UNCERTAINTY GATE U2
+Test predeclared reasonable structural sensitivities where material:
+weather/hydro years and correlation; forced/common-mode outages; fuel-energy limits; storage degradation/initial-terminal rule; imports/transmission; DR availability/rebound/nonperformance; load forecast/high-load cases; extreme heat/cold; network resolution.
+If a reasonable evidenced variant changes a binding PASS/FAIL or reverses ranking:
+STATUS=RELIABILITY_MODEL_SENSITIVE / NOT_GLOBAL.
+Do not average contradictory structural models into false precision.
+
+METRIC DENOMINATOR:
+NEUE normalization uses the same frozen annual demand/service-obligation denominator for candidate and baseline. Unserved energy cannot reduce the denominator. Legitimate efficiency/flex changes require common service-equivalence accounting.
+
+REGRESSION TESTS
+
+CALC-EGC-042R3-001
+INPUT: LOLH_hat=0.09 h/y; SE=0.04.
+METHOD: illustrative normal two-sided 95% interval.
+OUTPUT: Upper95=0.1684 h/y.
+POINT RULE would PASS; V2 => RELIABILITY_NOT_VERIFIED.
+REPLICATION: Python + Wolfram PASS.
+
+CALC-EGC-042R3-002
+INPUT: LOLH_hat=0.05; SE=0.01.
+OUTPUT: Upper95=0.0696<0.1.
+V2 => this metric statistically passes, subject to U2/other gates.
+REPLICATION: Python + Wolfram PASS.
+
+CALC-EGC-042R3-003
+INPUT: LOLH_hat=0.11; SE=0.01.
+OUTPUT: Upper95=0.1296.
+V2 => FAIL.
+REPLICATION: Python + Wolfram PASS.
+
+CALC-EGC-042R3-004 — SERVICE-LEVEL RANK REVERSAL
+GENERIC INPUT:
+A cost=40 under local service, 70 under mission service.
+B cost=55 under both.
+OUTPUT: local A<B; mission B<A.
+CONCLUSION: unconditional "cheapest" is invalid when reliability service choice reverses ranking; V2 requires RELIABILITY_SENSITIVE.
+TRUTH_CLASS: CALCULATION / LOGICAL COUNTEREXAMPLE, not real candidate cost data.
+
+SOURCE LOCK:
+- NERC Normal-Risk numbers remain SOURCE_FACT only as NERC risk-classification criteria; R_MISSION adoption is MISSION_CONVENTION.
+- PJM 0.1 days/y, GB 3h LOLE, NEM current 0.002% USE and future-recommended 0.003% USE remain jurisdiction/time-scoped SOURCE_FACT.
+- none proves a universal welfare-optimal threshold.
+
+CLAIM_GRAPH:
+CLAIM-EGC-042-008 R_STAR_REF_V1: REVIEW_FAILED / SUPERSEDED_BY_REPAIR.
+CLAIM-EGC-042R3-001 TWO_LAYER_MISSION_LOCAL: REPAIR_SUBMITTED / AWAITING_REVIEW.
+CLAIM-EGC-042R3-002 U1: REPAIR_SUBMITTED / AWAITING_REVIEW.
+CLAIM-EGC-042R3-003 U2: REPAIR_SUBMITTED / AWAITING_REVIEW.
+CLAIM-EGC-042R3-004 RELIABILITY_SENSITIVE_RULE: REPAIR_SUBMITTED / AWAITING_REVIEW.
+
+DEPENDENCY:
+No candidate may consume R_STAR as VERIFIED until JOB-EGC-042-RSTAR-REPAIR-REV-C4-20261006 passes V2. Candidate-specific adequacy/stability simulations remain downstream NOT_VERIFIED.
+
+STATUS_CHANGE:
+JOB-EGC-042-RSTAR-REPAIR-C3-20261006: CLAIMED -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+REVIEW JOB:
+JOB_ID: JOB-EGC-042-RSTAR-REPAIR-REV-C4-20261006
+TITLE: Independent review of R_STAR_REF_V2 uncertainty and scope repair
+ROLE: Independent stochastic-adequacy / policy-boundary reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does V2 prevent stochastic threshold gaming and distinguish common mission service from local legal reliability without hiding cost-ranking sensitivity?
+DEPENDENCIES: JOB-EGC-042-RSTAR-REPAIR-C3-20261006 AWAITING_REVIEW.
+REQUIRED_INPUTS: R_STAR_REF_V2; CALC-EGC-042R3-001..004; TE-EGC-042REV-001..005.
+REQUIRED_TOOLS: independent statistical calculation; source-scope audit; adversarial candidate examples; uncertainty-method review.
+REQUIRED_EVIDENCE: reproduce threshold-crossing cases; attack the 95% convention and structural-sensitivity rule; test non-equivalent local metrics; test ranking reversals.
+FALSIFICATION_CONDITION: point estimates can PASS while material uncertainty crosses threshold, local law is replaced by mission convention, mission reference is mislabeled globally optimal, or service-level choice can reverse ranking without disclosure.
+STATUS: OPEN
+BLOCKERS: NONE for method review.
+NEXT_ACTION: distinct session independently attacks V2.
