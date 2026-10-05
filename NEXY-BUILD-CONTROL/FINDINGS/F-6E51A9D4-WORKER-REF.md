@@ -22,3 +22,13 @@ IMPACT:
 Source mutation for T-04452B01 cannot obey both the integration-branch name and the mandated worker-branch prefix simultaneously.
 SAFE_ACTION:
 Freeze source mutation only. Continue non-mutating candidate preparation, review, test design, and evidence collection. Do not invent a replacement branch naming scheme.
+
+DUPLICATE_RECONCILIATION:
+STATUS: ACKNOWLEDGED
+DUPLICATE_OF:
+- รายงานผลบล็อค/INC-BRANCH-NAMESPACE-001.md
+- NEXY-BUILD-CONTROL/FINDINGS/F-C5A0C9E71-WORKER-BRANCH-NAMESPACE.md
+CORROBORATING_EVIDENCE:
+- independent GitHub HTTP 422 reproduction
+- independent local Git exit 128 reproduction
+NO_NEW_GLOBAL_BLOCK_CREATED: true
