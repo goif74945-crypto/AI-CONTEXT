@@ -1,0 +1,82 @@
+{
+  "REPAIR_ID": "V16RC13-USER-STOP-LEASE-FENCE-E3D47B8C-V1",
+  "STATUS": "CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+  "OWNER_CHAT": "C-SOL-20261005-0939-0800-V16RC13-STATIC-P0-AUDIT-E3D47B8C",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "AFFECTED_FINDING": "FINDING-V16RC13-USER-STOP-LEASE-GATE-TOCTOU-E3D47B8C",
+  "REPAIR_CLASS": "CONTROL_LAYER_STOP_PROTOCOL_REPAIR_NO_PRODUCT_MUTATION",
+  "LAW_TEXT_CHANGE_REQUIRED": false,
+  "LAW_BASIS": [
+    "[042] defines STOPPING as a global transition kind.",
+    "[046] allows USER_STOP to preempt any non-terminal transition.",
+    "[121]-[123] make ENGINEERING_EPOCH and MEMBERSHIP_EPOCH authoritative lease invalidation bindings.",
+    "[164] requires USER_STOP to be immediate and preemptive.",
+    "[166] requires Mission Fence CAS after the Mission Fence exists.",
+    "[167]-[168] preserve durable external truth and require STOPPED_RECONCILIATION_REQUIRED for ambiguity.",
+    "[220] requires canonical-state validation before implementation."
+  ],
+  "STOP_AUTHORITY_CUT": {
+    "INTENT": "Create immutable USER_STOP transition intent before the authority-cut CAS.",
+    "CAS_PRECONDITION": "STATE_VERSION equals expected state version.",
+    "ATOMIC_WRITES": [
+      "TRANSITION_KIND=STOPPING",
+      "MISSION_STATUS=STOPPING",
+      "WORK_ADMISSION_GATE=CLOSED",
+      "MUTATION_GATE=CLOSED",
+      "INTEGRATION_GATE=CLOSED",
+      "ENGINEERING_EPOCH=ENGINEERING_EPOCH+1",
+      "MEMBERSHIP_EPOCH=MEMBERSHIP_EPOCH+1",
+      "STATE_VERSION=STATE_VERSION+1"
+    ],
+    "PRESERVE": [
+      "ACTIVE_INTEGRATION exact durable state",
+      "preempted transition identity/evidence",
+      "actual Git ref truth"
+    ],
+    "LINEARIZATION_SEMANTICS": "The authority-cut CAS is the point after which no new mutation/integration authority may be issued or remain valid. STOPPED is declared only after pre-cut in-flight operations are drained or reconciled."
+  },
+  "LEASE_AND_WRITE_RULES": [
+    "Every lease minted before the authority-cut CAS becomes stale because ENGINEERING_EPOCH and MEMBERSHIP_EPOCH rotate.",
+    "No lease or mutation permit may be issued while MISSION_STATUS!=ACTIVE, TRANSITION_KIND!=NONE, or MUTATION_GATE!=OPEN.",
+    "Immediately before each externally durable product write, re-read canonical state and require MISSION_STATUS=ACTIVE, TRANSITION_KIND=NONE, MUTATION_GATE=OPEN, exact ENGINEERING_EPOCH, exact MEMBERSHIP_EPOCH, exact membership record generation, exact task and lease generations, exact Spec/resource bindings.",
+    "A pre-cut operation that becomes durable only after the authority cut is PRE_STOP_IN_FLIGHT_STALE_WRITE: preserve evidence, deny canonical product authority, and forbid later integration.",
+    "No stale worker result may be integrated after the authority-cut CAS."
+  ],
+  "ACTIVE_INTEGRATION_RULES": [
+    "If ACTIVE_INTEGRATION is null, target movement stays prohibited while stop drains.",
+    "If ACTIVE_INTEGRATION exists, preserve its exact phase and reconcile against actual Git refs.",
+    "Do not clear ACTIVE_INTEGRATION merely to finish STOP.",
+    "Any ambiguous target-ref result requires STOPPED_RECONCILIATION_REQUIRED."
+  ],
+  "STOP_COMPLETION_PRECONDITIONS": [
+    "Work, mutation, and integration gates remain closed.",
+    "No valid mutation/integration lease exists for pre-stop epochs.",
+    "Every known in-flight write has a terminal reconciled disposition.",
+    "ACTIVE_INTEGRATION is null with known target HEAD or is fully reconciled.",
+    "Actual target HEAD and protected upstream truth are recorded.",
+    "Any unresolved external ambiguity yields STOPPED_RECONCILIATION_REQUIRED, never STOPPED."
+  ],
+  "CRASH_RECOVERY": [
+    "Crash before authority-cut CAS: retry only from immutable intent with expected STATE_VERSION.",
+    "Crash after authority-cut CAS: epochs and closed gates remain durable; resume drain without reopening.",
+    "Crash during Git uncertainty: inspect actual Git refs and preserve durable truth.",
+    "Never infer STOPPED from absence of recent writes."
+  ],
+  "TORTURE_TESTS_REQUIRED": [
+    "USER_STOP after canonical-state read but before lease revalidation.",
+    "USER_STOP after lease revalidation but before worker commit.",
+    "USER_STOP racing worker commit completion.",
+    "USER_STOP during ACTIVE_INTEGRATION REF_UPDATE_IN_PROGRESS.",
+    "USER_STOP during regression recovery.",
+    "USER_STOP during another global transition.",
+    "Crash immediately before and after authority-cut CAS.",
+    "Delayed stale worker mutation attempt after epoch rotation.",
+    "Target-ref ambiguity during STOP."
+  ],
+  "SAFETY_ARGUMENT": "This repair does not assume Git and the control store are one atomic transaction. It creates a precise authority-cut CAS that atomically closes admission and invalidates all prior leases, while durable writes already beyond an external write point are preserved as truth but cannot gain canonical authority or integration. STOP completion waits for reconciliation.",
+  "FINDING_DISPOSITION_IF_INDEPENDENTLY_VERIFIED": "RESOLVED_BY_CONTROL_PROTOCOL_REPAIR",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
