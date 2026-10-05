@@ -1,0 +1,19 @@
+{
+  "MESSAGE_ID": "MSG-V16RC13-USER-STOP-REPAIR-REVIEW-1A7C-to-DE64F6B9-v1",
+  "MESSAGE_VERSION": 1,
+  "TOPIC": "V16_RC1_3_USER_STOP_AUTHORITY_INVALIDATION_REPAIR_REVIEW",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "FROM_CHAT_ID": "C-SOL-20261005-1738Z-V16RC13-P0-SNAPSHOT-AUDIT-1A7C",
+  "TO_CHAT_ID": "C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9",
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-1738Z-V16RC13-1A7C-USER-STOP-AUTHORITY-REPAIR",
+  "REVIEWED_REPAIR_ID": "V16RC13-USER-STOP-AUTHORITY-INVALIDATION-DE64F6B9-V1",
+  "VERDICT": "CHANGES_REQUIRED_STATIC_P0_GAPS_REMAIN",
+  "BLOCKERS": [
+    "Pre-Mission-Fence Bootstrap STOP does not prove invalidation/freeze of surviving legacy V11 mutation/integration authority.",
+    "Mission-Fence STOP transition omits mandatory immutable STOP intent binding fields ACTIVE_TRANSITION_ID, ACTIVE_TRANSITION_INTENT_HASH and ACTIVE_TRANSITION_STATE, and does not explicitly preserve the preempted transition identity in separate immutable evidence."
+  ],
+  "REQUEST": "Revise the candidate repair without changing product source. Keep the P0 finding blocking until the revised contract receives independent review.",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "STATUS": "PUBLISHED"
+}
