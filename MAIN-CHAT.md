@@ -7359,3 +7359,217 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 1177c84dc989b22ca0958d9e64962652c5aba984
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+65. INDEPENDENT REVIEW RESULT — JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0520+07-RSTAR60REV
+PRIMARY_JOB_REVIEWED: JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006
+ROLE: Independent jurisdiction/reliability-method reviewer / probabilistic counterexample replicator
+REVIEW_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+EXECUTIVE_REVIEW:
+EGC-060 C1 successfully repairs the two previously identified conceptual defects: unadopted foreign reliability thresholds are non-eliminating diagnostics outside their jurisdiction, and comparison symmetry now freezes common exogenous drivers/service/weights/information while preserving candidate-specific validated physics. Current GB, NEM and NERC evidence independently supports this architecture, and CALC-EGC-060-001..005 all independently reproduce. However, one new ranking-critical defect remains: candidate-specific stochastic residuals/outages are only required to use an evidenced distribution and a frozen sampling rule. There is no convergence, estimator-error, effective-sample-size or pass/fail uncertainty requirement. A frozen Monte Carlo sample can therefore reproducibly rank physically identical distributions differently by random luck. Reproducibility is not statistical sufficiency. C1 remains NOT_VERIFIED until stochastic metric estimation is convergence-gated or exact/analytic evaluation is used.
+
+EVIDENCE_ID: REV-EGC-060-001
+TRUTH_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: Great Britain, Electricity Capacity Regulations 2014, regulation 6, point-in-time 2026-07-17; DESNZ 2026 Capacity Market auction parameters
+URL_1: https://www.legislation.gov.uk/uksi/2014/2043/regulation/6/2026-07-17
+URL_2: https://www.gov.uk/government/publications/capacity-market-auction-parameters-letter-from-desnz-to-neso-july-2026/full-details-of-auction-parameters-and-interconnector-de-rating-factors
+VERIFIED_FACTS:
+- statutory GB reliability standard is 3 hours expected loss of load per capacity year;
+- July-2026 auction parameters continue to use 3 hours LOLE for T-1 2027/28 and T-4 2030/31.
+BOUNDARY:
+- LOLE is a duration/frequency-style adequacy metric; it is not an EUE magnitude constraint.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-060-002
+TRUTH_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: AEMC National Electricity Rules clause 3.9.3C
+URL: https://energy-rules.aemc.gov.au/ner/347/37366
+VERIFIED_FACTS:
+- current NEM reliability standard is maximum expected USE = 0.002% of regional annual energy demand;
+- interim reliability measure = 0.0006% expected USE for its rule-specific applications.
+BOUNDARY:
+- these are expected unserved ENERGY fractions; they are not algebraically interchangeable with LOLE without an evidenced joint event model.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-060-003
+TRUTH_CLASS: SOURCE_FACT / FUTURE-RECOMMENDATION / INDEPENDENT_RETRIEVAL
+SOURCE: AEMC Reliability Panel, 2026 Reliability Standard and Settings Review
+SOURCE_DATE: 2026-04-23
+URL: https://www.aemc.gov.au/market-reviews-advice/2026-reliability-standard-and-settings-review
+VERIFIED_FACTS:
+- final Panel recommendation for 1 July 2028 through 30 June 2032 is 0.003% USE;
+- current 0.002% and future 0.003% are therefore time/vintage-specific records.
+SCOPE_LOCK:
+- 0.003% is a future-period recommendation at the reviewed source state; C1 correctly does not relabel it as current 2026 binding rule.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-060-004
+TRUTH_CLASS: SOURCE_FACT + PDF_VISUAL_REPLICATION
+SOURCE: NERC, 2025 Long-Term Reliability Assessment, January 2026
+URL: https://www.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+INDEPENDENT_VISUAL_CHECK:
+- report p.12 visually inspected: High Risk criteria include annual LOLH >2.4 h/y OR normalized EUE >0.002% (20 ppm) OR failure of established local resource-adequacy targets;
+- report p.173 visually inspected: NERC states it is not aware of North American planning criteria based on EUE and cites Australia's 0.002% EUE requirement; the methods text separately uses 2 h language for ProbA risk categories.
+VERIFIED_SCOPE:
+- report states NERC's responsibility/jurisdiction is the North American bulk power system and the LTRA is a forward-looking reliability assessment, not a universal legal reliability code for all geographies.
+CONCLUSION:
+- C1 correctly treats NERC LTRA thresholds outside native scope as reference diagnostics unless the mission separately pre-registers a convention.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-060-005
+TRUTH_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCES:
+- NERC Reliability Standards families: https://www.nerc.com/standards/reliability-standards
+- AEMC electricity guidelines/standards: https://www.aemc.gov.au/regulation/electricity-guidelines-and-standards
+VERIFIED_FACTS:
+- NERC separately maintains BAL, EOP, FAC, IRO, PRC, TOP, TPL, VAR and other standards families;
+- AEMC separately lists Frequency Operating Standard and System Restart Standard in addition to adequacy/reliability settings.
+CONCLUSION:
+- adequacy PASS cannot substitute for all operating-security obligations; C1 L4 separation is source-supported.
+REVIEW_STATUS: PASS.
+
+CALC_ID: REV-CALC-EGC-060-001
+TRUTH_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+TOOL: Wolfram Language
+INPUT: GB illustrative LOLE=2.5 h/y; local standard=3 h/y; illustrative NEUE=30 ppm; NERC reference=20 ppm.
+OUTPUT: 2.5<=3 TRUE; 30>20 TRUE.
+RESULT: CALC-EGC-060-001 PASS. A global hard NERC EUE screen can reject a system that passes the cited local GB LOLE standard; this proves jurisdiction leakage, not overall physical safety.
+
+CALC_ID: REV-CALC-EGC-060-002
+TRUTH_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+TOOL: Wolfram Language
+INPUT: illustrative USE=25 ppm; current NEM=20 ppm; future-period recommendation=30 ppm.
+OUTPUT: 25<=20 FALSE; 25<=30 TRUE.
+RESULT: CALC-EGC-060-002 PASS. Rule vintage can change classification; R_STAR(g,y) indexing is required.
+
+CALC_ID: REV-CALC-EGC-060-003
+TRUTH_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+TOOL: Wolfram Language
+INPUT: four one-hour periods at 100 MW load; battery 100 MW/200 MWh, eta=1 toy case, no recharge; fueled generator 100 MW with sufficient fuel.
+OUTPUT:
+- load=400 MWh;
+- battery serves 200 MWh and has EUE=200 MWh;
+- fueled generator EUE=0 MWh.
+RESULT: CALC-EGC-060-003 PASS. Identical 100-MW dispatchable abstraction erases storage duration physics.
+
+CALC_ID: REV-CALC-EGC-060-004
+TRUTH_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+TOOL: Wolfram Language
+INPUT: same loss duration 2.5 h; shortfall magnitude 1 MW versus 10,000 MW.
+OUTPUT: EUE=2.5 MWh versus 25,000 MWh; ratio=10,000x.
+RESULT: CALC-EGC-060-004 PASS. LOLE alone does not bound event magnitude/severity.
+
+CALC_ID: REV-CALC-EGC-060-005
+TRUTH_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+TOOL: Wolfram Language
+INPUT: loss outcomes [0,100] MWh; weights A=[0.99,0.01], B=[0.90,0.10].
+OUTPUT: expected EUE=1 versus 10 MWh; ratio=10x.
+RESULT: CALC-EGC-060-005 PASS. Candidate-specific scenario weights can manufacture an adequacy advantage.
+
+CALC_ID: REV-CALC-EGC-060-006
+TITLE: FROZEN_SAMPLE_WITHOUT_CONVERGENCE_CAN_RANK_IDENTICAL_DISTRIBUTIONS_DIFFERENTLY
+TRUTH_CLASS: CALCULATION / SYNTHETIC FALSIFICATION
+TOOL: Wolfram Language
+PHYSICAL_DISTRIBUTION:
+Both Candidate A and Candidate B have exactly the same illustrative residual-loss distribution: 90% probability 0 MWh loss, 10% probability 100 MWh loss; true expected EUE=10 MWh for each.
+FROZEN_SAMPLE_A: [0,0,0,0,0,0,0,0,0,100] -> sample mean 10 MWh.
+FROZEN_SAMPLE_B: [0,0,0,0,0,0,0,0,0,0] -> sample mean 0 MWh.
+APPARENT_DIFFERENCE: 10 MWh despite identical true distributions.
+RESULT:
+A frozen sampling rule/seed can make a stochastic comparison reproducible while remaining statistically wrong or ranking-unstable. The problem becomes more acute for rare tail events that dominate EUE/LOLE.
+FALSIFICATION_CONDITION_MET: YES for C1's current stochastic-estimation specification.
+
+ADVERSARIAL METHOD AUDIT:
+1. FOREIGN_THRESHOLD_ELIMINATION: REPAIRED. L3 is explicitly non-eliminating outside jurisdiction unless independently pre-registered as a mission convention before results.
+2. SAME_COMPONENT_MODEL_BIAS: REPAIRED. Candidate-specific SOC, hydro, thermal, outage, VRE and network physics are retained while exogenous drivers/service/weights/information are common.
+3. SCENARIO_WEIGHT_PRIVILEGE: REPAIRED at rule level; weights are common and evidence-supported or allowed-joint-state robustness is used.
+4. PERFECT_FORESIGHT_PRIVILEGE: REPAIRED directionally; same information-policy class is mandatory and symmetric perfect foresight is diagnostic only.
+5. METRIC_COLLAPSE: REPAIRED directionally; native local metrics are preserved and common diagnostics cannot be algebraically converted without evidence.
+6. OPERATING_SECURITY_DISAPPEARS_AFTER_ADEQUACY: REPAIRED; L4 remains separately mandatory.
+7. STOCHASTIC_SAMPLE_ERROR / MONTE-CARLO_CONVERGENCE: NOT REPAIRED. Frozen sampling has no numerical convergence or uncertainty decision rule.
+8. HYDRO/FUEL/VRE COMMON-DRIVER PAIRING: PASS_DIRECTIONALLY. Same exogenous weather/fuel-market realization plus candidate-specific validated transfer functions is the correct abstraction; actual distributions/correlations remain candidate/geography evidence requirements.
+
+FINDING_ID: F-EGC-060-REV-P1-001
+SEVERITY: P1
+TITLE: Frozen stochastic sampling lacks convergence and pass/fail uncertainty control
+TRUTH_CLASS: CALCULATION + METHOD_REVIEW
+DEFECT:
+C1 requires EPS_c[s] from evidenced distributions under a frozen sampling rule, but specifies no minimum estimator convergence, confidence/error bound, effective sample size, rare-event treatment, paired/common-random-number policy where valid, or rule for results whose statistical uncertainty straddles a local threshold or reverses candidate ordering.
+WHY_RANKING_CRITICAL:
+Adequacy metrics are often tail-sensitive. Identical physical distributions can produce different finite-sample EUE/LOLE estimates; a fixed seed only freezes the accident.
+REQUIRED_REPAIR:
+A. If exact/analytic enumeration is feasible, use it and record numerical tolerance.
+B. If Monte Carlo/resampling is used, pre-register estimator, stopping/convergence rule, randomization/sampling design, effective sample size and uncertainty interval/error bound for every ranking/pass-fail metric.
+C. Where common-random-number/paired sampling is physically/statistically valid, use it for comparative deltas; where it is not valid, do not fabricate counterfactual correlation.
+D. A local hard threshold may be called PASS only when the applicable regulator-required method is met and simulation uncertainty is handled consistently with that method; for mission comparison, if estimator uncertainty can cross the threshold or reverse ordering, classify NOT_STABLE/NOT_VERIFIED rather than choosing the favorable point estimate.
+E. Rare/common-mode events need explicit importance/tail sampling or sufficient evidence-based event representation when ordinary sampling cannot resolve them.
+F. Record seed(s) for reproducibility, but seed recording is never a substitute for convergence.
+VERDICT: REPAIR_REQUIRED.
+
+CLAIM-BY-CLAIM REVIEW:
+- CLAIM-EGC-060-001 LOCAL_RULE_MANDATORY: PASS.
+- CLAIM-EGC-060-002 FOREIGN_REFERENCE_NON_ELIMINATING: PASS.
+- CLAIM-EGC-060-003 SAME_EXOGENOUS_NOT_SAME_COMPONENT_MODEL: PASS.
+- CLAIM-EGC-060-004 METRIC_NON_INTERCHANGEABILITY: PASS.
+- CLAIM-EGC-060-005 OPERATING_SECURITY_SEPARATE: PASS.
+- CLAIM-EGC-060-006 R_STAR_REPAIRED: REVIEW_FAILED_PENDING_STATISTICAL_REPAIR.
+
+STATUS_CHANGE:
+JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006: EXECUTING -> AWAITING_REVIEW.
+G12 grid/storage accounted: NOT_VERIFIED through reliability boundary.
+G15 integrated model passed: NOT_VERIFIED.
+G16 model validated against measurements: NOT_VERIFIED.
+G19 red team no unresolved P0/P1: FAIL because F-EGC-060-REV-P1-001 remains open.
+G21 uncertainty cannot plausibly reverse conclusion: NOT_VERIFIED.
+G24 no unresolved critical contradiction: NOT_VERIFIED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+REPAIR_JOB:
+JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-C3-20261006
+TITLE: Add stochastic convergence and threshold-uncertainty gate to R_STAR
+ROLE: Reliability simulation / statistical decision-rule repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can R_STAR retain jurisdiction-safe/candidate-neutral physics while preventing finite-sample Monte Carlo luck from changing adequacy PASS/FAIL or candidate ordering?
+CANDIDATE: COMMON RELIABILITY BOUNDARY.
+DEPENDENCIES: F-EGC-060-REV-P1-001; retain all C1 repairs.
+REQUIRED_INPUTS: C1 R_STAR architecture; applicable local regulator/modeling method; candidate-specific stochastic distributions/correlation evidence; mission allowed-joint-state uncertainty rule.
+REQUIRED_TOOLS: statistical estimator specification; exact enumeration where feasible; Monte Carlo/rare-event tests; independent arithmetic; adversarial threshold cases.
+REQUIRED_EVIDENCE:
+- explicit exact-vs-sampling method;
+- convergence/stopping criterion and numerical tolerance;
+- uncertainty interval/error bound or regulator-required equivalent for each ranking-critical adequacy metric;
+- seed/provenance plus explicit statement that seed != convergence;
+- paired/common-random-number policy only where statistically valid;
+- threshold-straddle -> NOT_STABLE/NOT_VERIFIED rule for mission comparison;
+- regression tests including identical-distribution/different-sample exploit and rare-tail case.
+EXPECTED_OUTPUT: R_STAR_C3 with executable stochastic-error gate and preserved C1 jurisdiction/physics rules.
+FALSIFICATION_CONDITION: FAIL if physically identical distributions can still receive materially different classification solely from finite-sample luck without triggering NOT_STABLE; or if convergence rule itself can be tuned after seeing candidate outcomes.
+REVIEWER_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: NONE for method repair; numeric thresholds remain geography/vintage inputs.
+NEXT_ACTION: distinct author repairs C3; distinct reviewer independently reproduces stochastic regression tests.
+
+JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C4-20261006
+TITLE: Independent review of stochastic-converged R_STAR repair
+ROLE: Independent probabilistic adequacy/statistical convergence reviewer
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-060-RSTAR-GATE-REPAIR-C3-20261006 AWAITING_REVIEW.
+EXPECTED_OUTPUT: PASS / REVIEW_FAILED with independent tail/convergence counterexamples.
+STATUS: BLOCKED
+BLOCKERS: C3 not yet submitted.
+
+REVIEW_JOB_STATE:
+- JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006: AWAITING_REVIEW.
+- SELF_VERIFICATION: FORBIDDEN.
+- NEXT_HIGHEST_VALUE_ACTION: refresh graph and claim a distinct executable job; do not self-author C3.
