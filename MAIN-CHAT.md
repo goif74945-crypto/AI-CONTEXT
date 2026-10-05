@@ -8876,3 +8876,310 @@ BRANCH_HEAD_AT_CLAIM: 9a754034e688c6994abade96992ac58bd8d4b79a
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: cdde331168852ce37225c647eb3d31188eea2317
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+RESULT — JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-CONSTRISK1
+PRIMARY_JOB_ID: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-C1-20261006
+ROLE: Empirical construction / schedule-risk / project-delivery evidence analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+KEY FINDING:
+SOURCE_FACT + SURVEY + MEASUREMENT/OPERATIONAL-DATA + CALCULATION + INFERENCE:
+Reference physical-construction duration is not a defensible proxy for end-to-end deployment lead time. For candidate-neutral delivered-system analysis, project delivery must separate development/permitting, interconnection, physical construction, commissioning, and enabling-grid/transmission clocks. Completion-only evidence is survivor-conditioned; cancellations and withdrawals must remain visible. Grid/transmission timing can dominate generator construction timing.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-066-001 — U.S. utility-scale wind/solar developer survey
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-066-WINDSOLAR-DELIVERY
+EVIDENCE_CLASS: SURVEY / EXTERNAL_FACT
+SOURCE: Lawrence Berkeley National Laboratory, Survey of Utility-Scale Wind and Solar Developers, January 2024.
+URL: https://energyanalysis.lbl.gov/publications/survey-utility-scale-wind-and-solar
+SUMMARY_PDF: https://eta-publications.lbl.gov/sites/default/files/w3s_developer_survey_summary_-_011724.pdf
+METHOD: official LBNL page + official summary PDF; summary PDF page visually checked with screenshot in web tool.
+OUTPUT:
+- 123 respondents; 19.2% response rate; respondents at 62 companies.
+- Approximately one-third of wind/solar siting applications submitted in the prior five years were canceled; about half experienced delays of at least 6 months.
+- Most projects took 4-6 years from initial public announcement/contact to commercial operation; about 20% took more than 6 years.
+- Reported delay cost was approximately USD 200,000/MW for both wind and solar, but LBNL explicitly flags cost answers as a limited sample of roughly one-half to one-third of respondents.
+- Cancellation sunk costs averaged more than USD 2M/project solar and USD 7.5M/project wind; cost-per-MW was described as similar.
+- Permitting was a frequent delay/cancellation stage; site control and construction can also contribute.
+LIMITATIONS:
+Survey, not administrative census; nonresponse and recall bias possible; cost answers are especially limited. Timeline starts at public announcement/contact, not first concrete. It combines development and construction and is not a physical-build duration distribution.
+REPLICATION_STATUS: SOURCE_RETRIEVED; VISUAL_SUMMARY_CHECK_PASS; independent review pending.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-066-002 — U.S. interconnection completion / withdrawal / queue duration
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-066-QUEUE
+EVIDENCE_CLASS: OBSERVATIONAL_DATASET / SOURCE_FACT
+SOURCE: Lawrence Berkeley National Laboratory, Queued Up: 2026 Edition; data through end-2025.
+URL: https://emp.lbl.gov/queues
+URL_NEWS: https://emp.lbl.gov/news/backlog-power-plants-seeking-transmission-grid-connection-eased-somewhat-2025-amidst
+SOURCE_DATE: report/data 2026-05/06; news 2026-07-01.
+COVERAGE:
+7 ISO/RTOs + 50 non-ISO balancing areas, ~98% of currently installed U.S. generating capacity.
+OUTPUT:
+- 2,061 GW generation+storage active in queues at end-2025.
+- Solar 773 GW; storage 749 GW; wind 220 GW; natural gas 253 GW.
+- For requests submitted 2000-2020, 13% of capacity reached commercial operation by end-2025; 75% withdrew; LBNL page reports 10% still active.
+- Withdrawal remains >40% even after an interconnection agreement in the news summary.
+- For regions with available data, projects built in 2025 had median interconnection-request-to-COD duration >5 years.
+- 549 GW with draft/executed interconnection agreement had not yet reached COD.
+BOUNDARY:
+Queue capacity is developer activity, NOT built capacity, committed capacity, delivered energy, or a completion probability for a new project. Historical cohorts are censored and process rules changed over time.
+LIMITATIONS:
+U.S.-specific; outcomes depend on ISO/utility rules, era and project selection. Technology-specific COD-duration distributions were not independently extracted in this job.
+TRUTH_CLASS: SOURCE_FACT / OBSERVATIONAL_DATASET.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-066-003 — U.S. solar schedule-update evidence
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-066-SOLAR-DELAY
+EVIDENCE_CLASS: ADMINISTRATIVE_SURVEY / SOURCE_FACT
+SOURCE: U.S. EIA, "Fewer U.S. solar projects are reporting delays in their expected online date", 2025-11-10.
+URL: https://www.eia.gov/todayinEnergy/detail.php?id=66604
+INPUT_DATA: EIA-860 / EIA-860M developer reports.
+OUTPUT:
+- In Q3 2025, projects representing about 20% of planned U.S. solar capacity reported a delay, down from 25% in Q3 2024.
+- Developers added 31 GW utility-scale solar PV in 2024 after reporting more than 36 GW expected for that year in January 2024.
+- EIA states late-stage construction/testing delays are commonly one or two months.
+- Less than 1% of planned solar capacity is entirely canceled in a typical month in this EIA reporting frame.
+BOUNDARY:
+This is schedule-update evidence for planned U.S. solar capacity, not lifetime cancellation probability and not an end-to-end development-time distribution. It must not be confused with the broader LBNL developer survey or queue withdrawal statistics; each source observes a different project population and clock.
+TRUTH_CLASS: SOURCE_FACT.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-066-004 — recent completed nuclear construction duration
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-066-NUCLEAR-OBS
+EVIDENCE_CLASS: OPERATIONAL_COMPLETION_DATA / SOURCE_FACT
+SOURCE: IAEA Reference Data Series No. 2, Nuclear Power Reactors in the World, 2025 edition, data through 2024.
+URL: https://www-pub.iaea.org/MTCD/Publications/PDF/RDS-2-45_web.pdf
+DEFINITION:
+IAEA construction time is measured from first pouring of concrete to grid connection.
+OUTPUT:
+- Reactors connected during 2021-2024: n=17; world median construction time 102 months.
+- Table includes strong country/design heterogeneity, e.g. China six units median 80 months; U.S. one unit 121 months; France one unit 200 months; other countries differ materially.
+LIMITATIONS:
+Completion-only sample; excludes pre-construction licensing/development and canceled/unfinished units. n=17 is small, globally heterogeneous, and NOT an AP1000-specific distribution. PDF text extraction verified the table; screenshot retrieval for the IAEA PDF failed, so no visual-only datum is relied upon.
+TRUTH_CLASS: SOURCE_FACT / OBSERVED_COMPLETIONS.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-066-005 — model-vs-observation schedule boundary
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-066-MODEL-OBS-GAP
+EVIDENCE_CLASS: SOURCE_FACT + BOUNDARY_COMPARISON
+SOURCE_A: EIA/Sargent & Lundy AEO2025 representative AP1000 case, already recorded under EVIDENCE-EGC-046-003.
+URL_A: https://www.eia.gov/analysis/studies/powerplants/capitalcost/pdf/capital_cost_AEO2025.pdf
+SOURCE_B: IAEA RDS-2 2025, EVIDENCE-EGC-066-004.
+OUTPUT:
+- EIA representative AP1000 physical construction = 52 months, a modeled reference case.
+- IAEA 2021-2024 completed-reactor world median = 102 months, an observed mixed-fleet completion statistic.
+BOUNDARY_RULE:
+102 months MUST NOT replace 52 months as an "AP1000 actual duration." The technologies/geographies/samples differ. The comparison is only evidence that a modeled reference schedule is not itself an empirical schedule-risk bound.
+TRUTH_CLASS: BOUNDARY_COMPARISON / INFERENCE.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-066-006 — grid/transmission delivery lead time
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-066-GRID-LEAD
+EVIDENCE_CLASS: SOURCE_FACT / IEA SYNTHESIS
+SOURCE: IEA Electricity 2026, "Grids".
+URL: https://www.iea.org/reports/electricity-2026/grids
+OUTPUT:
+- >2,500 GW of renewable, large-load and storage projects are stalled in grid queues worldwide.
+- Planning, permitting and completing new grid infrastructure can take 5-15 years, versus 1-5 years for new solar/wind projects in the IEA comparison.
+- Annual grid investment must rise roughly 50% by 2030 from about USD 400B today to meet forecast demand.
+- IEA estimates grid-enhancing technologies can unlock material connection capacity with shorter lead times, but capacity gains are constraint-specific and not additive.
+CROSS_SOURCE:
+IEA Building the Future Transmission Grid reports cable procurement 2-3 years, large power transformers up to 4 years, and specialised DC cable waits >5 years; average cable/transformer lead times nearly doubled since 2021.
+URL_2: https://www.iea.org/reports/building-the-future-transmission-grid/executive-summary
+BOUNDARY:
+These are system/infrastructure lead-time and supply-chain observations/syntheses, not generator physical construction times.
+TRUTH_CLASS: SOURCE_FACT.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-066-007 — large hydropower schedule/cost overrun evidence
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-066-HYDRO-OVERRUN
+EVIDENCE_CLASS: PEER_REVIEWED_OBSERVATIONAL_META_DATA
+SOURCE: Plummer Braeckman, Disselhoff & Kirchherr, International Journal of Water Resources Development 36(5), 2020.
+DOI: 10.1080/07900627.2019.1568232
+URL: https://www.tandfonline.com/doi/full/10.1080/07900627.2019.1568232
+OUTPUT:
+Meta-dataset: 184 cost-overrun and 191 time-overrun observations. For large dam projects started/completed since 2000, mean cost overrun 33% and mean schedule overrun 18%, versus 46% and 37% respectively for pre-2000 projects. Time-overrun reduction was statistically significant; cost-overrun change was not.
+LIMITATIONS:
+Large dams/hydropower, not existing hydro refurbishment, every pumped-storage project, or small hydro. Completion/sample selection and cross-country heterogeneity remain. Historical evidence is useful as a stress bound, not a universal future project probability distribution.
+TRUTH_CLASS: PEER_REVIEWED_OBSERVATIONAL.
+
+----------------------------------------------------------------------
+CALC-EGC-066-001 — duration-finance sensitivity: 52-month model vs 102-month stress
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-066-FINANCE-STRESS
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram Language, with monthly midpoint equal-spend same-session second implementation.
+METHOD:
+Reuse candidate-neutral construction-finance sanity model from EGC-046:
+F(T,r)=((1+r)^T - 1)/(T*ln(1+r)).
+This calculation does NOT claim actual nuclear cashflow. It asks how much financing accumulation changes if the same hypothetical uniform-spend project lasts 102 months instead of 52 months.
+INPUTS:
+T_ref=52/12=4.333333 y; T_stress=102/12=8.5 y.
+OUTPUT:
+r=3%: F_52=1.066868354; F_102=1.136841493; relative +6.5587%.
+r=5%: 1.113573078 vs 1.239259708; +11.2868%.
+r=7%: 1.162035021 vs 1.351604270; +16.3136%.
+r=10%: 1.238130680 vs 1.540746364; +24.4413%.
+r=12%: 1.291202727 vs 1.682054930; +30.2704%.
+SECOND_IMPLEMENTATION:
+102 equal monthly midpoint spends:
+3% 1.136841206;
+5% 1.239258854;
+7% 1.351602479;
+10% 1.540742315;
+12% 1.682048679.
+Continuous vs monthly result agrees closely; independent-session replication still required.
+LIMITATION:
+102-month IAEA statistic is a mixed-fleet observed median, not AP1000-specific. Therefore these numbers are stress-test arithmetic only and MUST NOT be entered as a technology forecast without a matched empirical distribution.
+
+----------------------------------------------------------------------
+CALC-EGC-066-002 — 20-year deployment-clock sensitivity
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-066-DEPLOYMENT-CLOCK
+EVIDENCE_CLASS: CALCULATION / SANITY_BOUND
+DEPENDENCY:
+OBJECTIVE_V2 currently uses T0 to T_END = 20 years and massive scale 3,360 TWh/y = 383.5616438 GW continuous-equivalent.
+METHOD:
+Simple lower-bound throughput sanity check assuming a uniform initial lead L consumes part of the 20-y window and the remaining interval must commission enough continuous-equivalent output to reach the end-state annual target:
+required average COD throughput = 383.5616438 GW / (20-L).
+OUTPUT:
+L=0 -> 19.1781 GWavg/y
+L=4 -> 23.9726
+L=5 -> 25.5708
+L=6 -> 27.3973
+L=8.5 -> 33.3532
+L=10 -> 38.3562
+INTERPRETATION:
+An 8.5-y initial lead raises this simplified required average end-state commissioning throughput ~1.739x relative to zero lead.
+LIMITATIONS:
+Not a fleet optimisation. Modular/serial projects may commission before the full programme is complete; learning, retirements, replacement, geographic staging and capacity factors must be modeled explicitly. This only proves that lead time is scale-gate material and cannot be omitted.
+
+----------------------------------------------------------------------
+DELIVERY_RISK_BOUNDARY_V1 — candidate-neutral proposal
+----------------------------------------------------------------------
+TRUTH_CLASS: INFERENCE / PROPOSED_METHOD
+
+For each candidate and strongest baseline, maintain distinct clocks:
+T_DEV = site control + permitting/licensing + contracting + interconnection studies before physical build, as applicable.
+T_GRID = enabling transmission/substation/interconnection asset lead time not already inside T_DEV.
+T_PHYS = physical plant construction.
+T_COMM = commissioning/testing to declared commercial operation.
+T_TOTAL = chronology from the frozen project-origin boundary to deliverable COD, respecting overlap rather than naively summing clocks.
+
+RULES:
+1. CLOCK DISCLOSURE: every schedule datum must state start/end event. "Construction time" without event definitions is NOT_COMPARABLE.
+2. NO FREE GRID: candidate and baseline must receive the same physically applicable interconnection/transmission treatment. Grid delay/cost cannot be charged to one side and omitted from the other.
+3. COMPLETION CENSORING: completion-only distributions are survivor-conditioned. Withdrawal/cancellation evidence is retained separately; active queues are not converted to completion probability without a calibrated model.
+4. PLANNED != REALIZED: vendor targets, permitting targets and model reference schedules are MODELED/PLANNED, not observations.
+5. ALLOWED-STATE ROBUSTNESS: where a calibrated joint probability distribution is unavailable, use OBJECTIVE_V2 allowed-joint-state robust mode. Do not invent lognormal/normal delay distributions merely because Monte Carlo software exists.
+6. COST COUPLING: schedule states feed construction financing, escalation, idle/claim costs, lost-revenue timing, and enabling-grid costs only where their accounting boundary is evidenced. Do not double-count.
+7. DEPLOYMENT COUPLING: MASSIVE_ENERGY timing uses actual deliverable COD/commissioning ramp, not nameplate capacity under construction or active in queue.
+8. MODULARITY: serial/modular plants may deliver incrementally. Do not impose one monolithic COD if actual architecture supports staged commissioning.
+9. GEOGRAPHY/ERA: project-delivery evidence is versioned by jurisdiction, technology class and era. One-country/old-fleet observations cannot silently become a global future distribution.
+10. DECISION RULE: if plausible evidence-supported schedule states can reverse LOW_COST, MASSIVE_ENERGY, baseline or G21 uncertainty conclusions, status = DELIVERY_RISK_NOT_STABLE / NOT_VERIFIED until resolved.
+
+RED_TEAM RESULTS:
+RT-EGC-066-01 PHYSICAL_BUILD_TIME_EQUALS_TOTAL_DELIVERY_TIME: FALSIFIED.
+RT-EGC-066-02 ACTIVE_QUEUE_MW_EQUALS_DEPLOYABLE_OR_COMMITTED_MW: FALSIFIED.
+RT-EGC-066-03 COMPLETED_PROJECT_MEDIAN_IS_UNBIASED_FULL_PIPELINE_DISTRIBUTION: FALSIFIED.
+RT-EGC-066-04 EIA_REFERENCE_DURATION_IS_EMPIRICAL_RISK_BOUND: FALSIFIED.
+RT-EGC-066-05 GRID_TIMING_IS_ALWAYS_SECOND_ORDER: FALSIFIED; IEA reports 5-15 y new-grid lead times and multi-year component procurement.
+RT-EGC-066-06 ALL_RENEWABLE_PROJECTS_TAKE_ONLY_1_YEAR_BECAUSE_PHYSICAL_CONSTRUCTION_CAN_BE_SHORT: FALSIFIED by LBNL/EIA development/interconnection evidence.
+RT-EGC-066-07 RECENT_NUCLEAR_WORLD_MEDIAN_102M_IS_AP1000_SPECIFIC_FORECAST: FALSIFIED boundary extrapolation.
+RT-EGC-066-08 LARGE_DAM_OVERRUN_STATISTICS_APPLY_TO_ALL_HYDRO/PSH: FALSIFIED boundary extrapolation.
+
+CANDIDATE-STATE IMPLICATIONS:
+SOLAR_PV:
+- Physical build can be short, but delivered-project timing includes permitting/interconnection/development; EIA shows current delay rates are improving yet nonzero.
+- End-to-end U.S. developer survey commonly 4-6 y from public project contact/announcement to COD.
+- Generic exact physical-construction distribution remains NOT_VERIFIED in this job.
+
+ONSHORE_WIND:
+- Similar end-to-end survey boundary; cancellation/delay and interconnection evidence material.
+- Exact current physical-construction distribution remains NOT_VERIFIED.
+
+OFFSHORE_WIND:
+- No common empirical distribution closed in this job; long permitting/grid/supply-chain clocks remain material. STATUS=OPEN.
+
+NUCLEAR_FISSION:
+- Recent completed-reactor observed physical-construction median 102 months is materially longer than the EIA representative 52-month AP1000 model, but candidate-specific replacement is invalid.
+- Licensing/development before first concrete remains outside IAEA 102-month clock.
+- Empirical design/jurisdiction-specific risk model remains OPEN.
+
+HYDRO:
+- Large-dam post-2000 evidence shows nontrivial mean schedule/cost overrun; do not transfer wholesale to refurbishment/small hydro/PSH.
+- Site-specific civil/geology/permitting risk remains OPEN.
+
+GEOTHERMAL/EGS:
+- DOE permitting evidence indicates multi-agency/site-dependent development can range from months to years, but a matched realized-project duration distribution was not closed here.
+- STATUS=NOT_VERIFIED for empirical fleet schedule distribution.
+
+BATTERY STORAGE:
+- Queue/interconnection timing is evidenced; matched physical-build duration distribution not closed here.
+- STATUS=NOT_VERIFIED for end-to-end empirical distribution.
+
+TRANSMISSION/GRID:
+- IEA reports 5-15 y for new infrastructure planning/permitting/completion and multi-year transformer/cable procurement, making grid schedule a first-class system variable.
+
+OPEN GAPS:
+- technology-specific observed IR-to-COD percentiles from Queued Up data should be independently extracted/reproduced by technology and region;
+- matched physical-construction distributions for solar, wind, batteries, geothermal/EGS and PSH remain NOT_VERIFIED;
+- nuclear design-specific modern build-time/cost-overrun distributions require further source stratification;
+- cancellations need separate economic/resource treatment from completed-project schedule distributions;
+- delay correlations with commodity prices, interest rates, supply chains and grid bottlenecks are UNKNOWN; do not assume independence;
+- DELIVERY_RISK_BOUNDARY_V1 has not yet been integrated into final R_STAR + FSRC_ND portfolio optimisation.
+
+CLAIM_GRAPH:
+CLAIM-EGC-066-WINDSOLAR-DELIVERY <- EVIDENCE-EGC-066-001.
+CLAIM-EGC-066-QUEUE <- EVIDENCE-EGC-066-002.
+CLAIM-EGC-066-SOLAR-DELAY <- EVIDENCE-EGC-066-003.
+CLAIM-EGC-066-NUCLEAR-OBS <- EVIDENCE-EGC-066-004.
+CLAIM-EGC-066-MODEL-OBS-GAP <- EVIDENCE-EGC-066-004 + EVIDENCE-EGC-066-005.
+CLAIM-EGC-066-GRID-LEAD <- EVIDENCE-EGC-066-006.
+CLAIM-EGC-066-HYDRO-OVERRUN <- EVIDENCE-EGC-066-007.
+CLAIM-EGC-066-FINANCE-STRESS <- CALC-EGC-066-001.
+CLAIM-EGC-066-DEPLOYMENT-CLOCK <- CALC-EGC-066-002.
+ALL -> DELIVERY_RISK_BOUNDARY_V1 -> independent review -> downstream integrated cost/scale model.
+
+JOB_ID: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-REV-C2-20261006
+TITLE: Independent empirical project-delivery and schedule-risk review
+ROLE: Independent schedule/censoring/data-boundary adversary and numerical replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Are EGC-066's project-delivery evidence, censoring rules, finance/deployment sensitivities and DELIVERY_RISK_BOUNDARY_V1 reproducible and free of cross-technology/geography/survivor bias?
+DEPENDENCIES: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-C1-20261006 submitted AWAITING_REVIEW.
+REQUIRED_TOOLS: independent IAEA/LBNL/EIA/IEA source retrieval; independent calculation implementation; queue data extraction if available; source-boundary and censoring audit.
+REQUIRED_EVIDENCE:
+- reproduce IAEA 102-month recent-world median and verify its construction-time definition;
+- independently reproduce CALC-EGC-066-001/002;
+- verify LBNL survey and Queued Up clocks/sample boundaries;
+- test whether solar/wind delay evidence is wrongly mixed across survey populations;
+- attack large-dam transferability;
+- test grid lead-time attribution/double-counting;
+- identify any newer operative dataset that changes findings.
+FALSIFICATION_CONDITION:
+FAIL if any planned/modelled duration is promoted to realized evidence; completion-only data is treated as uncensored full-pipeline risk; grid delay is asymmetrically allocated; technology/geography transfer is unsupported; or calculations cannot be independently reproduced.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required.
+NEXT_ACTION: a distinct session claims the reviewer; downstream integration consumes only reviewed claims.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
