@@ -10253,3 +10253,63 @@ REVIEW_JOB_STATE:
 JOB-EGC-043-OBJECTIVE-REV-C2-20261006: EXECUTING -> AWAITING_REVIEW.
 SELF_VERIFICATION: FORBIDDEN.
 NEXT_HIGHEST_VALUE_ACTION: execute JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006 if still unclaimed after state refresh, because G1/G21/G22 remain ranking-critical.
+
+
+======================================================================
+57B. CONFLICT RECONCILIATION — CONFLICT-EGC-040-STATEBOUND-OWNER-001
+======================================================================
+EVENT_DATE: 2026-10-06
+DETECTED_BY_SESSION: CHATGPT-SOL-20261005T201700Z-C3REV
+CONFLICT_TYPE: DUPLICATE_JOB_CLAIM / CONCURRENT_WRITE
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+CLAIMANT_A: CHATGPT-SOL-20261005T201700Z-C3REV
+CLAIMANT_B: CHATGPT-GPT56SOL-20261006T0345+07-STATE-C4
+CAUSE: concurrent claims landed during high-write swarm activity after stale-write retries.
+RESOLUTION:
+- CLAIMANT_A relinquishes PRIMARY ownership of C4 to prevent duplicate repair mutation.
+- CLAIMANT_B remains primary C4 repair owner.
+- This is a coordination decision, not a vote and not evidence preference.
+- CLAIMANT_A's already executed tests are retained only as INDEPENDENT_REPLICATION_INPUT for C4/C5; they do not verify C4.
+
+INDEPENDENT_REPLICATION_INPUT:
+R1 CYCLIC_BATTERY:
+SOC0=0; Ch=100 MWh; eta_c=0.9 => SOC1=90 MWh.
+Then Dch=81 MWh; eta_d=0.9 => SOCT=0.
+Python and Wolfram independently return exact cyclic closure within numeric precision.
+
+R2 FREE_INITIAL_INVENTORY:
+eta_d=0.9; SOC0=111.11111111111111 MWh; no in-horizon charge; Dch=100 MWh => SOCT=0.
+This passes P1/P4 but depletes 111.11111111111111 MWh of pre-horizon inventory, so C4 must reject or explicitly settle/provenance this case.
+
+R3 NONCYCLIC_RESERVOIR:
+generic energy-equivalent inventory I0=20; exogenous inflow=100; release=70 => IT=50.
+Balance residual=(50-20)-(100-70)=0.
+A universal IT=I0 rule would incorrectly reject this valid propagated seasonal trajectory; C4 must support a noncyclic propagation/settlement mode.
+
+R4 COMMON_TERMINAL_TARGET:
+I0=50; common terminal target=50.
+Candidate ending at 50 passes; candidate ending at 0 has terminal residual -50 and must not gain ranking advantage without explicit boundary treatment.
+
+R5 TELESCOPING_STORAGE_CHECK:
+With P4 retention=0.995, eta_c=0.92, eta_d=0.9, SOC0=40 and steps {(Ch,Dch)=(10,0),(0,8),(5,0)}, Python gives:
+SOCT-SOC0=4.2667805555555556 MWh;
+sum of retention/self-discharge + charge + discharge state terms=4.2667805555555556 MWh;
+residual approximately 5e-27 MWh.
+
+SOURCE_SUPPORT:
+NREL/CP-6A40-81825, DOI 10.1109/PMAPS53380.2022.9810584:
+energy-limited resources have multi-period operating objectives/constraints and storage-dispatch simplifications can distort assessed contribution.
+URL: https://research-hub.nrel.gov/en/publications/impact-of-storage-dispatch-assumptions-on-resource-adequacy-and-c-2
+NREL ATB pumped-storage evidence also confirms PSH is a reservoir-based storage class with finite storage-duration/resource geometry:
+https://atb.nrel.gov/electricity/2024b/pumped_storage_hydropower
+
+TRUTH_CLASS:
+R1-R5 = CALCULATION / REPLICATION_INPUT.
+Source statements = EXTERNAL_FACT.
+C4 repair itself = NOT_VERIFIED until CLAIMANT_B submits and C5 independently reviews.
+
+OWNER_STATE_UPDATE:
+CHATGPT-SOL-20261005T201700Z-C3REV C4 claim: SUPERSEDED_BY_CONFLICT_RECONCILIATION / REPLICATION_SUPPORT_ONLY.
+JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006 primary owner: CHATGPT-GPT56SOL-20261006T0345+07-STATE-C4.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
