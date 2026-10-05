@@ -5,7 +5,7 @@
   "MISSION_ID": "M05-QUEUE-IDEMPOTENCY",
   "REQ_ID": "REQ-DOC-C-2-3-VNEXT-DEFAULTS",
   "FINDING_ID": "FINDING-DOC-C2-3-QUEUE-FUTURE-TSA-001",
-  "STATUS": "IMPLEMENTING",
+  "STATUS": "READY_FOR_VALIDATION",
   "PRIORITY": "P1",
   "RISK": "HIGH",
   "BASE_SHA": "c1f94b2c59b787a7761079362a82aefbbfca9855",
@@ -48,5 +48,31 @@
       "tests/contract/queue-processing-monotonicity.test.ts"
     ],
     "result": "NO_TARGET_PATH_OVERLAP"
-  }
+  },
+  "CANDIDATE_SHA": "0f701f78d90eb6a136d19172079eec5f02c7e499",
+  "PR_NUMBER": 68,
+  "STATIC_REVIEW": {
+    "status": "PASS",
+    "diff_files": [
+      "packages/queue/payload.ts",
+      "tests/contract/queue-payload.test.ts",
+      "tests/integration/queue-boundary.spec.ts"
+    ],
+    "additions": 24,
+    "deletions": 1,
+    "integration_changes_on_leased_paths_since_base": 0,
+    "pr_mergeability": "clean"
+  },
+  "TEST_EXECUTION": {
+    "status": "NOT_EXECUTED_INFRA_BLOCKED",
+    "exact_sha": "0f701f78d90eb6a136d19172079eec5f02c7e499",
+    "blockers": [
+      "GitHub Actions: no workflow run/status exists for exact candidate SHA after push and PR creation.",
+      "Desktop Commander: sole authorized device DESKTOP-FOB7IK8 is offline.",
+      "Railway: shared nexy-validation-branch remains leased by T-B7E4C2A1/C-6A8F4D23; no collision attempted.",
+      "Railway: creating a dedicated validation service previously failed because the workspace free-plan resource provision limit is exhausted."
+    ]
+  },
+  "INTEGRATION_ALLOWED": false,
+  "NEXT_ACTION": "Execute tests/contract/queue-payload.test.ts and tests/integration/queue-boundary.spec.ts on exact candidate SHA; then independently review and merge only if PASS and current-head leased-path race check remains clean."
 }
