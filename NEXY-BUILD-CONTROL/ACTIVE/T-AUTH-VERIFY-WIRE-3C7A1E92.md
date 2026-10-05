@@ -1,6 +1,6 @@
 TASK_ID: T-AUTH-VERIFY-WIRE-3C7A1E92
 OWNER_CHAT: C-SOL-20261006-0132
-STATUS: IMPLEMENTING
+STATUS: CONVERGED_BY_CONCURRENT_WORK
 PRIORITY: P1
 REPOSITORY: goif74945-crypto/NEXY.AI-
 BRANCH: NEXY.AI-Test-AI
@@ -24,3 +24,11 @@ EVIDENCE:
 FORBIDDEN:
 - no NEXY.ai mutation
 - no change to session-refresh or owner-recovery route shapes in this task
+
+STATUS_RESOLUTION: CONVERGED_BY_CONCURRENT_WORK
+SOURCE_MUTATION_BY_THIS_CHAT: NONE
+LATEST_STATIC_EVIDENCE:
+- packages/api/auth.ts response data now contains only session_id, expires_at, role
+- tests/coverage/auth-decision-paths.test.ts now asserts exact success data and CSRF issuance out-of-band
+MUTATION_OWNER_ACTIVE: FALSE
+NEXT_ACTION: runtime verification only; do not duplicate source mutation.
