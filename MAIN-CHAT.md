@@ -4390,3 +4390,25 @@ JOB-EGC-040-REPAIR-C2-20261006: CLAIMED -> AWAITING_REVIEW.
 JOB-EGC-040: remains REVIEW_FAILED / REPAIR_REQUIRED.
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+54. SESSION CLAIM — JOB-EGC-042-RSTAR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-RSTAR-R4-SCALE1
+PRIMARY_ROLE: Independent Resource-Adequacy / Grid-Reliability Reviewer
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-REV-C4-20261006
+QUESTION: Does JOB-EGC-042-RSTAR-C3-20261006 define a technology-neutral parameterized reliability boundary that cannot be gamed by annual-energy matching, geography, tail-risk averaging, or omission of operating-security services?
+CANDIDATE: COMMON SYSTEM BOUNDARY
+DEPENDENCIES: JOB-EGC-042-RSTAR-C3-20261006 AWAITING_REVIEW; current MAIN-CHAT.md inspected; this reviewer is distinct from C3 owner.
+REQUIRED_TOOLS: independent official-source retrieval; independent arithmetic replication; adversarial counterexamples; standards applicability check.
+EVIDENCE_TARGET: verify PJM adequacy criterion/metric units; verify NERC evidence that resource adequacy methods and thresholds are not a single universal global law; verify non-North-American jurisdiction logic; reproduce same-LOLE/different-severity counterexample; test separation of adequacy from operating/security services and candidate symmetry.
+FALSIFICATION_TARGET: FAIL if a universal threshold is smuggled in as law; LOLE/LOLH/EUE/NEUE are conflated; annual energy matching can pass adequacy; geography/import/stress traces can be candidate-specific; operating reliability disappears after adequacy; or baseline-noninferiority is circular/asymmetric.
+REVIEWER: THIS SESSION IS THE INDEPENDENT REVIEWER; any new repair claim must remain separately reviewable.
+STATUS: EXECUTING
+BLOCKERS: NONE for methodology/source review; geography-specific numeric standards may remain parameterized by jurisdiction/year.
+BRANCH_HEAD_AT_CLAIM: be8ec46588a0630c255cd22df3dd0d16f2b2bb79
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: d44728c0412ac6de012e5ffccaeae46c3175f490
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
