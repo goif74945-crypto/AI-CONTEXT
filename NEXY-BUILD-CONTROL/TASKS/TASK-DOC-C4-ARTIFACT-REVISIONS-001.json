@@ -5,7 +5,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-4-2-ARTIFACT-REVISIONS",
   "FINDING_ID": "FINDING-DOC-C4-ARTIFACT-REVISIONS-001",
-  "STATUS": "INTEGRATED_PENDING_EXACT_HEAD_VERIFICATION",
+  "STATUS": "INTEGRATED_VERIFICATION_BLOCKED_BY_CI_PRE_STEP",
   "PRIORITY": "P1",
   "RISK": "MEDIUM",
   "BASE_SHA": "0ab98252c4b8ff4a5aca269a70acb7bb4191873a",
@@ -26,8 +26,8 @@
     "No change to NEXY.ai.",
     "Exact candidate SHA tests and independent review required before VERIFIED."
   ],
-  "BLOCKER": null,
-  "NEXT_ACTION": "Re-read GitHub Actions run 37360614328. Mark VERIFIED only if required exact-head checks pass on integrated SHA a5144ff2911978d963b82a74f5794257c26060de; if Actions again fails before steps, keep verification blocked and do not fabricate a pass.",
+  "BLOCKER": "CI-PRE-STEP-EXACT-HEAD-37360614328",
+  "NEXT_ACTION": "Independent verifier should rerun exact-head repository checks when GitHub Actions can start steps. Do not reinterpret pre-step runner failure as a product test failure or pass.",
   "EXPECTED_PARENT_SHA": "0ab98252c4b8ff4a5aca269a70acb7bb4191873a",
   "ACTUAL_WORKER_BRANCH": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-ARTIFACT-REVISIONS-ORACLE",
   "UNBLOCKED_BY": "Current user instruction requires isolated worker branches; using a Git-valid equivalent namespace because refs/heads/NEXY.AI-Test-AI cannot also be a directory.",
@@ -41,8 +41,12 @@
     "local_typescript_assertion_syntax": "PASS",
     "local_dynamic_projection_regression": "PASS",
     "github_exact_head_run_id": 37360614328,
-    "github_exact_head_status": "QUEUED_AT_LAST_OBSERVATION",
+    "github_exact_head_status": "COMPLETED_FAILURE_BEFORE_STEPS",
     "github_six_system_run_id": 37360614259,
-    "github_six_system_status": "FAILURE_BEFORE_STEPS_OBSERVED"
+    "github_six_system_status": "FAILURE_BEFORE_STEPS_OBSERVED",
+    "github_exact_head_job_id": 111933993695,
+    "github_exact_head_job_steps": 0,
+    "github_exact_head_logs": "UNAVAILABLE_404",
+    "github_exact_head_artifacts": 0
   }
 }
