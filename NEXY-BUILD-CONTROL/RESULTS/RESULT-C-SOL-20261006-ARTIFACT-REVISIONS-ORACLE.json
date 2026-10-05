@@ -2,7 +2,7 @@
   "CHAT_ID": "C-SOL-20261006-0143-0700",
   "TASK_ID": "TASK-DOC-C4-ARTIFACT-REVISIONS-001",
   "REQ_ID": "REQ-DOC-C-4-2-ARTIFACT-REVISIONS",
-  "STATUS": "INTEGRATED_PENDING_EXACT_HEAD_VERIFICATION",
+  "STATUS": "INTEGRATED_VERIFICATION_BLOCKED_BY_CI_PRE_STEP",
   "INTEGRATION_SHA": "a5144ff2911978d963b82a74f5794257c26060de",
   "PR": 54,
   "WORKER_SHA": "d580994574f7e05e42088856e0f31cb1a6ce077a",
@@ -18,9 +18,13 @@
   ],
   "VERIFICATION_BLOCKER": {
     "exact_head_run_id": 37360614328,
-    "observed_status": "queued",
-    "six_system_run_id": 37360614259,
-    "six_system_conclusion": "failure",
-    "note": "GitHub Actions has recently failed before any job step starts; no repository CI pass is claimed."
+    "exact_head_job_id": 111933993695,
+    "run_status": "completed",
+    "run_conclusion": "failure",
+    "executed_steps": 0,
+    "logs": "UNAVAILABLE_404",
+    "artifacts": 0,
+    "classification": "PRE_STEP_CI_INFRA_BLOCKER",
+    "inference": "No repository test result can be inferred because no workflow step executed."
   }
 }
