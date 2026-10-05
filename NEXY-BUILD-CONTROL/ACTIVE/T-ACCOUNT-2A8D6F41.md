@@ -1,7 +1,7 @@
 TASK_ID: T-ACCOUNT-2A8D6F41
 CREATOR_CHAT: C-SOL-20261006-ACCOUNT-2A8D6F41
 OWNER_CHAT: C-SOL-20261006-ACCOUNT-2A8D6F41
-STATUS: REPAIRING_POST_INTEGRATION
+STATUS: INTEGRATED_STATIC_VERIFIED_REPAIRED
 PRIORITY: P2
 RISK: LOW
 BASE_SHA: 88afb720868754b9c9058868192da1237e545a59
@@ -30,8 +30,18 @@ RUNTIME:
 - Exact-head GitHub Actions run 37361046612 completed failure with job steps=null/logs_url=null. No test-step execution evidence exists.
 - Six-system exact-head run 37361046727 was queued at last observation.
 - Repository Vitest/typecheck/full-suite verdict: NOT_VERIFIED; no code-failure inference from runner status.
-MUTATION_OWNER_ACTIVE: TRUE
+MUTATION_OWNER_ACTIVE: FALSE
 CONTINUATION_REQUIRED: Independent exact-head runtime validation after the shared execution-layer blocker is repaired. No further mutation under this task without a new claim.
 
 REPAIR_BASE_SHA: dd9e691e346e97701877ad6e2e5ff5642ca1b068
 REPAIR_REASON: ACCOUNT nav entry was not role-gated, so it rendered while session role was null. Repair to authenticated OWNER/OPERATOR/AUDITOR only.
+
+POST_INTEGRATION_REPAIR_SHA: 4f8d065b0c98c0034860d24429b69475dba2341b
+POST_INTEGRATION_REPAIR_WORKER: NEXY.AI-Test-AI-work-account-2a8d6f41-repair
+POST_INTEGRATION_REPAIR_WORKER_HEAD: 1aa14f409c2cf4143d59d9a94ae3aef9b91b73a5
+POST_INTEGRATION_REPAIR:
+- Corrected ACCOUNT navigation visibility to authenticated OWNER/OPERATOR/AUDITOR only.
+- Focused repair source-contract PASS 5/5.
+- Repair diff exactly 2 files; integration drift 3 commits; target overlap 0; force=false.
+- Post-repair exact blobs: NavBar=61620f0d2bc8fff6a83a5f0fa353c8a28f95c97e; test=bbc55017b480cbe458db4173f2008e18e639e5c4.
+- Protected NEXY.ai remained 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43.
