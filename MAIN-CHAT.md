@@ -13559,3 +13559,261 @@ WRITE_INTEGRITY:
 - stale-write protection: exact fetched blob SHA supplied to update_file; collision must fail rather than overwrite.
 - mutation scope: ONLY authorized MAIN-CHAT.md on authorized branch.
 - commit/result: PENDING
+
+
+======================================================================
+41. BOUNDARY REPAIR EVIDENCE PACKAGE — F1
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+PRIMARY_JOB_ID: JOB-EGC-BOUNDARY-REPAIR-F1-20261005
+STATUS_TARGET: AWAITING_REVIEW
+REVIEWER_JOB_ID: JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+SELF_VERIFICATION: FORBIDDEN
+
+REPAIR_OBJECTIVE:
+Close BOUNDARY-P1-001..003 at proposal level by making every mandatory mission cost class explicit, separating physical/resource cost from internal monetary transfers, and freezing a candidate-neutral delivery/reliability service before technology ranking.
+
+### TE-EGC-BOUNDARY-REPAIR-001
+CLAIM_ID: CLAIM-EGC-BOUNDARY-COSTLAW-MAP-001
+TRUTH_CLASS: REPO_FACT / INFERENCE
+SOURCE:
+- MAIN-CHAT.md §15 COST LAW and §16 SCALE LAW.
+SOURCE_DATE: mission constitution.
+METHOD: exhaustive term mapping from immutable mission requirements into one explicit accounting matrix.
+OUTPUT:
+MANDATORY_RESOURCE_COST_CLASSES — every candidate/portfolio MUST explicitly report INCLUDED / ZERO_WITH_EVIDENCE / NOT_APPLICABLE_WITH_REASON / UNKNOWN for each item; silence is not zero:
+A. SOURCE_AND_BUILD:
+  A1 plant/source core equipment;
+  A2 balance of plant;
+  A3 land/site acquisition, preparation, civil works and access;
+  A4 construction labour/workforce and owner/engineering/project-management costs;
+  A5 permitting/licensing/regulatory-compliance resource costs;
+  A6 insurance and risk-mitigation resource costs;
+  A7 material cooling, water supply/treatment and heat-rejection infrastructure;
+  A8 environmental-control/mitigation equipment required for legal/safe operation;
+  A9 construction schedule, contingency and construction-finance exposure;
+  A10 supply-chain scaling effects including scarcity premiums, logistics, manufacturing expansion and qualified-workforce bottlenecks where material.
+B. OPERATIONS:
+  B1 fixed O&M;
+  B2 variable O&M;
+  B3 operating labour;
+  B4 fuel acquisition;
+  B5 complete fuel cycle where applicable;
+  B6 water/cooling/consumables;
+  B7 parasitic/auxiliary electricity and other internal energy inputs;
+  B8 reliability-driven inspections, security and regulatory compliance.
+C. DELIVERY_AND_SYSTEM:
+  C1 grid interconnection;
+  C2 attributable transmission expansion/reinforcement and losses;
+  C3 balancing and ancillary-service resource requirements;
+  C4 storage/firming including charging energy, losses, degradation and replacement;
+  C5 curtailment/overbuild required by the chosen architecture;
+  C6 resource-adequacy/redundancy/backup capacity required to meet the common reliability service;
+  C7 stability/system-strength/reactive/inertia or grid-forming resources when material;
+  C8 demand-response/flexible-load implementation costs when credited;
+  C9 shared grid/network assets allocated by a declared causal/counterfactual method.
+D. LIFECYCLE:
+  D1 degradation and component replacement cycles;
+  D2 maintenance-fleet/logistics infrastructure;
+  D3 recycling where required or economically credited;
+  D4 decommissioning/site restoration;
+  D5 waste handling, long-term stewardship and disposal.
+E. FINANCE_AND_NORMALIZATION:
+  E1 real-currency base year;
+  E2 common financing/discount convention required by JOB-EGC-FINANCE-SENS-J1-20261005/JOB-EGC-015 before final numeric ranking;
+  E3 construction duration and timing of capital outlays;
+  E4 lifetime and residual/salvage value with evidence;
+  E5 uncertainty/sensitivity distribution, not a single magical point estimate.
+LIMITATION:
+- This matrix forces explicit accounting but does not itself supply technology-specific numbers.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+### TE-EGC-BOUNDARY-REPAIR-002
+CLAIM_ID: CLAIM-EGC-RESOURCE-COST-NOT-TRANSFER-001
+TRUTH_CLASS: SOURCE_FACT / INFERENCE
+SOURCE:
+- HM Treasury, The Green Book 2026, updated 2026-02-05.
+URL/IDENTIFIER: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+SOURCE_FACT:
+- Economic transfers such as taxes, grants and subsidies impose an equal monetary cost and benefit on different parties and do not by themselves make society as a whole better or worse off.
+- The Green Book permits transfers to be shown as offsetting entries or excluded from net social-value calculation and says taxes/subsidies are transfers rather than production/consumption of goods and services.
+REPAIRED_PRIMARY_COST_METRIC:
+FULL_SYSTEM_RESOURCE_COST (FSRC) = present value of all real physical/economic resources consumed to deliver the mission electricity service, divided by present value of net MWh delivered at the frozen delivery boundary, under one common real-currency and financing convention.
+POLICY/TAX BOUNDARY:
+- Primary FSRC is PRE-SUBSIDY / PRE-TAX-CREDIT / PRE-GRANT and excludes electricity-market revenues, capacity-market revenues, ancillary-service payments, tax receipts and other internal monetary transfers as negative resource cost.
+- Real administrative/compliance resources, financing opportunity cost under the common convention, physical fuel/material/labour inputs, and real risk-mitigation resources remain costs.
+- A secondary PRIVATE/CONSUMER_FINANCIAL_COST view may include actual tariffs, taxes, subsidies, credits and market revenues, but it MUST be kept separate and cannot decide the mission's physical-resource-cost winner.
+CREDIT_RULE:
+- Internal transfers between participants inside the compared electricity system never reduce FSRC.
+- A credit is allowed only for (a) an externally delivered co-product with independently evidenced value AND a pre-registered allocation/counterfactual method, or (b) an explicitly quantified real resource cost that the candidate causally avoids relative to the same-service baseline.
+- The avoided/coproduct term must identify the counterfactual resource, quantity, unit value/cost, system boundary and uncertainty, and MUST NOT also appear as an avoided cost elsewhere.
+- Waste heat/recovered heat cannot be double-counted as both primary energy production and a free monetary credit.
+EXTERNALITIES:
+- Safety/environmental impacts remain separate mandatory gates.
+- If monetised externalities are included in FSRC, ALL compared candidates must use the same valuation method and scope; otherwise report them separately rather than assigning an implicit zero.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+### TE-EGC-BOUNDARY-REPAIR-003
+CLAIM_ID: CLAIM-EGC-COMMON-DELIVERY-BOUNDARY-001
+TRUTH_CLASS: INFERENCE / MISSION_CONVENTION
+METHOD: choose one candidate-neutral electrical delivery point before candidate ranking.
+FROZEN_DELIVERY_BOUNDARY:
+- Net AC electricity is counted at the COMMON HIGH-VOLTAGE LOAD-ZONE RECEIVING BUS / BULK-SYSTEM DELIVERY INTERFACE, before local end-use conversion.
+- Numerator and denominator must both be evaluated at this same boundary.
+- Delivered energy is AFTER source auxiliaries/parasitics, architecture-required storage round-trip losses, modeled curtailment effects on required generation, and attributable interconnection/transmission losses.
+- Local distribution is outside the default bulk-energy denominator only when it is identical across candidates.
+- If a distributed/downstream candidate changes distribution investment or losses, it must be translated back to the common boundary using an explicit same-service counterfactual: incremental distribution resource costs are added and independently evidenced avoided distribution resource costs may be credited only under TE-EGC-BOUNDARY-REPAIR-002.
+- No comparison of meter-level DER MWh against bus-level central-generation MWh is permitted without this normalization.
+REASON:
+- Freezes a common useful electrical service while allowing central, distributed and hybrid architectures to be normalized without gifting either side an unpriced network advantage.
+UNCERTAINTY:
+- Exact physical bus/topology is geography-specific; the functional boundary above is fixed and the modeled node set is a geography input, not a candidate-specific choice.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+### TE-EGC-BOUNDARY-REPAIR-004
+CLAIM_ID: CLAIM-EGC-COMMON-ADEQUACY-001
+TRUTH_CLASS: SOURCE_FACT + MISSION_CONVENTION + CALCULATION
+SOURCES:
+- NERC 2025 Long-Term Reliability Assessment, published January 2026.
+  https://www.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+- NERC/NAE, Evolving Planning Criteria for a Sustainable Power Grid, July 2024.
+  https://www.nerc.com/globalassets/programs/rapa/ra/evolving_planning_criteria_for_a_sustainable_power_grid.pdf
+SOURCE_FACT:
+- NERC's 2025 LTRA uses all-hours probabilistic analysis and LOLH plus normalized EUE to identify resource/energy risk.
+- NERC classifies its 2025-LTRA "Normal Risk" category using annual LOLH < 0.1 h/year, annual normalized EUE < 0.0002% (2 ppm), applicable regulatory/operator adequacy targets met, and reserves expected to be available under plausible above-normal-demand/low-resource once-per-decade conditions.
+- NERC separately notes that traditional 1-day-in-10 LOLE alone does not capture duration/magnitude/energy risk and recommends multi-metric treatment.
+FROZEN_MISSION_ADEQUACY_CONVENTION:
+For every candidate/portfolio in a fixed geography and demand case, before final cost ranking:
+1. Baseline probabilistic all-hours assessment MUST achieve annual LOLH < 0.1 h/year.
+2. Annual NEUE MUST be < 0.0002% of annual load served.
+3. Any applicable local statutory/operator adequacy requirement stricter than these mission thresholds MUST also be met; a looser local rule does not weaken the mission threshold.
+4. Report LOLE, LOLH, EUE, NEUE, maximum modeled shortfall magnitude, maximum modeled event duration, and dependence on external imports.
+5. Run common stressed cases covering plausible extreme demand, correlated low-resource conditions, outages/fuel constraints and transmission limitations; all candidates in a geography use the same stress set.
+6. Imported adequacy counts only when transfer capacity, neighboring-system availability and correlated stress are modeled; nameplate imports or queue capacity do not count.
+7. Storage adequacy is based on chronology, state of charge, duration, derating, degradation and competing ancillary-service commitments, never nameplate alone.
+8. The reliability convention is a frozen MISSION_CRITERION anchored to NERC risk-assessment practice; it is NOT asserted to be a globally mandated reliability standard.
+CALCULATION:
+At MASSIVE_ENERGY_MIN = 2,860 TWh/year, NEUE = 0.0002% corresponds to 2e-6 * 2,860 TWh = 0.00572 TWh = 5.72 GWh expected unserved energy/year.
+At 1-TW stretch = 8,760 TWh/year, the same 2-ppm threshold corresponds to 17.52 GWh/year.
+UNITS: h/year; percent; ppm; TWh/year; GWh/year.
+REPRODUCTION_METHOD:
+- 0.0002% / 100 = 2e-6.
+- multiply annual served-energy target by 2e-6.
+LIMITATION:
+- These are mission comparison thresholds, not a claim that NERC legally requires them worldwide.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+### TE-EGC-BOUNDARY-REPAIR-005
+CLAIM_ID: CLAIM-EGC-SYSTEM-CHRONOLOGY-001
+TRUTH_CLASS: SOURCE_FACT / INFERENCE
+SOURCES:
+- OECD NEA System Cost Analysis:
+  https://www.oecd-nea.org/jcms/pl_36755/system-cost-analysis
+- IEA Electricity 2026 — Grids:
+  https://www.iea.org/reports/electricity-2026/grids
+- IEA Electricity 2026 — Flexibility:
+  https://www.iea.org/reports/electricity-2026/flexibility
+SOURCE_FACT:
+- NEA system-cost analysis goes beyond plant LCOE and includes balancing, grid reinforcement, flexibility and security of supply; its POSY model meets demand hourly and includes dispatchable/variable resources, storage/demand response, grid/interconnection and operating constraints.
+- IEA reports grid queues and grid build times as material deployment constraints and describes batteries as multiple-service resources whose actual peak contribution can be below nameplate because of temperature derating, state of charge, duration and ancillary-service commitments.
+REPAIRED_MODEL_RULES:
+- Use chronological dispatch/adequacy modeling whenever storage state, weather correlation, curtailment, fuel limits, ramping, transmission or demand flexibility can materially change required capacity/cost.
+- A generic fixed "integration adder" is forbidden when those quantities are decision-controlling.
+- Use the SAME demand trace/scenario ensemble, weather/fuel/outage assumptions, transmission topology convention and reliability thresholds for candidates compared in the same geography.
+- Perform sensitivity/uncertainty analysis for decision-controlling inputs; if plausible assumptions reverse the ranking, mark conclusion NOT_STABLE rather than selecting a winner.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+REPAIRED ACCOUNTING IDENTITY:
+Let C_i(t) be real resource cash-equivalent costs incurred in category i at time t under the common finance convention, and E_del(t) be net AC electricity delivered at the frozen boundary.
+
+FSRC [real USD/MWh_delivered] =
+  PV( C_source_build
+    + C_land_site
+    + C_labor
+    + C_regulatory_insurance_risk_mitigation
+    + C_cooling_water_heat_rejection
+    + C_fuel_fuelcycle
+    + C_OM
+    + C_storage_firming
+    + C_grid_interconnection_transmission
+    + C_balancing_adequacy_stability
+    + C_replacement_lifecycle
+    + C_decommissioning_waste
+    + C_supply_chain_scaling
+    + C_other_material_resource_costs
+    - C_verified_external_coproduct_or_avoided_resource_cost )
+  / PV(E_del)
+
+DIMENSIONAL_CHECK:
+- numerator: real currency present-value equivalent.
+- denominator: MWh delivered at common electrical boundary.
+- result: real currency/MWh_delivered.
+- Market transfers do not appear as negative resource cost.
+
+ANTI-DOUBLE-COUNT RULES:
+1. Storage modeled explicitly in CAPEX/OPEX/dispatch -> no second generic storage/integration surcharge for same service.
+2. Charging/round-trip loss changes required source energy and delivered denominator; do not also invent a second "lost-energy cost" if already embodied in source dispatch/cost.
+3. Curtailment changes useful delivered energy/required build; do not count curtailed MWh as delivered MWh or duplicate their cost in a second adder.
+4. Transmission/interconnection itemized explicitly -> no duplicate generic grid adder for same asset/service.
+5. Fuel/fuel-cycle already embedded in an imported source-cost model -> unpack it or avoid re-adding it.
+6. Capacity/ancillary-market revenue, tax credits, grants and subsidies -> financial-transfer view only; no FSRC resource credit.
+7. Existing/sunk assets and greenfield candidates MUST be reported as separate decision cases; do not compare sunk historical CAPEX against new-build all-in CAPEX without declaring the boundary.
+8. CHP/waste-heat/cogeneration co-products require pre-registered resource allocation/counterfactual; no free double credit.
+9. Salvage/recycling credit requires expected physically recoverable quantity, real resource value and decommission cost; no gross resale-price credit without costs.
+10. Environmental/safety externalities must be treated with a common valuation if monetized; otherwise remain explicit separate gates/metrics, never implicit zero for one candidate and monetized for another.
+
+P1_REPAIR_MATRIX:
+- BOUNDARY-P1-001 mandatory classes missing -> REPAIR_PROPOSED by TE-EGC-BOUNDARY-REPAIR-001 plus explicit cooling/water/heat rejection and scaling terms. NOT_VERIFIED until independent review.
+- BOUNDARY-P1-002 under-specified credits/transfers -> REPAIR_PROPOSED by TE-EGC-BOUNDARY-REPAIR-002 and FSRC transfer rule. NOT_VERIFIED until independent review.
+- BOUNDARY-P1-003 reliability/delivery UNKNOWN -> REPAIR_PROPOSED by TE-EGC-BOUNDARY-REPAIR-003/004 with frozen common delivery boundary and multi-metric mission adequacy convention. NOT_VERIFIED until independent review.
+
+RED_TEAM_CHECK:
+- Attack: subsidized candidate appears cheapest because tax credit is subtracted. RESULT: blocked from FSRC; transfer shown only in secondary financial view.
+- Attack: DER gets free distribution advantage or central plant avoids distribution cost while output is measured at different points. RESULT: blocked by common boundary/counterfactual normalization.
+- Attack: VRE+4h battery passes "firm" because 95% energy matching is treated as adequacy. RESULT: blocked; mission requires common probabilistic LOLH+NEUE and chronology.
+- Attack: dispatchable candidate avoids grid/redundancy/stability costs by claiming they are a VRE issue. RESULT: blocked; every cost category is causal/service-based, not technology-labelled.
+- Attack: capacity-market revenue reduces societal cost with no counterparty. RESULT: blocked as internal transfer.
+- Attack: co-generation claims electricity is nearly free by assigning most cost to heat after seeing results. RESULT: blocked; co-product allocation/counterfactual must be pre-registered and independently evidenced.
+- Attack: existing fleet with sunk CAPEX is compared directly to greenfield candidate and declared universal winner. RESULT: blocked by separate existing-asset vs greenfield decision cases.
+
+RESULT:
+FACT:
+- Mission Cost Law explicitly requires plant/source, BOP, land/site, grid connection, storage/firming, fuel, maintenance, labour, financing, replacement, decommissioning, waste, transmission, redundancy/reliability, insurance/regulatory burden and supply-chain scaling.
+- Current NERC 2025 assessment uses probabilistic LOLH and NEUE and defines a strict normal-risk band; NEA/IEA evidence supports hourly/system-level treatment of balancing, networks, flexibility and adequacy.
+- Government appraisal guidance supports separating economic transfers from real social/resource costs.
+INFERENCE:
+- FSRC plus the explicit matrix and common electrical/reliability service is a candidate-neutral minimum accounting framework for mission comparison.
+ASSUMPTION / MISSION_CONVENTION:
+- High-voltage load-zone receiving-bus functional boundary.
+- LOLH <0.1 h/year and NEUE <0.0002% as frozen mission adequacy thresholds, supplemented by common stress cases and stricter applicable local rules.
+UNKNOWN:
+- Candidate-specific values for most matrix rows.
+- Final common finance/discount parameters pending finance job review.
+- Geography-specific topology and stress ensembles.
+CONFLICT:
+- NONE created by this repair; external reliability standards differ by region, therefore the mission convention is explicitly not labeled universal law.
+FALSIFIED:
+- Generator LCOE alone, project-level 95% matching alone, nameplate storage/import capacity alone, or internal market revenue alone cannot satisfy full-system low-cost/adequacy proof.
+
+STATUS_CHANGE:
+- JOB-EGC-BOUNDARY-REPAIR-F1-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005: OPEN dependency now satisfied; must be claimed by a different session.
+- BOUNDARY-P1-001..003: remain OPEN at global level, with REPAIR_PROPOSED; only independent reviewer can close/pass them.
+- GLOBAL_SOLVED: NO.
+- MISSION_STATUS: CONTINUE_REQUIRED.
+
+EVIDENCE_GRAPH_DELTA:
+- §15/§16 repo law -> TE-EGC-BOUNDARY-REPAIR-001 -> P1-001.
+- HM Treasury Green Book 2026 -> TE-EGC-BOUNDARY-REPAIR-002 -> P1-002.
+- NERC 2025 LTRA + NERC/NAE 2024 -> TE-EGC-BOUNDARY-REPAIR-004 -> P1-003 reliability.
+- mission common-service inference -> TE-EGC-BOUNDARY-REPAIR-003 -> P1-003 delivery.
+- NEA + IEA 2026 -> TE-EGC-BOUNDARY-REPAIR-005 -> chronological/system rule.
+- TE-EGC-BOUNDARY-REPAIR-001..005 -> REPAIRED_ACCOUNTING_IDENTITY -> JOB-EGC-004 after independent review.
+
+NEXT_ACTION:
+1. Independent session claims JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005 and attacks every term, transfer rule, delivery boundary and adequacy convention.
+2. Canonical JOB-EGC-004 must not freeze numeric cross-candidate comparison until that review passes.
+3. Finance normalization job must supply/review the common real financing convention before final FSRC ranking.
