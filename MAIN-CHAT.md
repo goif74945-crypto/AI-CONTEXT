@@ -588,3 +588,199 @@ WRITE_INTEGRITY:
 - file SHA before claim: 16c5da33363c7c83dbef99c8e528a78155f7427e
 - claim attempt: 1
 - exact-SHA append only; no force; no other file/repository touched.
+
+
+======================================================================
+49. JOB-EGC-016 EVIDENCE PACKAGE — INTEGRATED SIMULATION / VALIDATION ARCHITECTURE
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-SIM016-K5-20261005
+PRIMARY_JOB_ID: JOB-EGC-016
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: JOB-EGC-028 or distinct independent simulation-method reviewer
+
+TOOL_EVIDENCE_ID: TE-EGC-SIM016-001
+CLAIM_ID: CLAIM-EGC-SIM-HOURLY-SYSTEM-001
+TOOL_OR_METHOD: OECD/NEA official model-method retrieval
+SOURCE:
+- OECD Nuclear Energy Agency, POSY system-cost model
+- NEA System Cost Analysis
+IDENTIFIERS:
+- https://tdb.oecd-nea.org/tools/abstract/detail/nea-1929/
+- https://www.oecd-nea.org/jcms/pl_36755/system-cost-analysis
+SOURCE_STATUS: POSY catalog tested 2023; pages retrieved 2026-10-05
+KEY_OUTPUT:
+- POSY jointly models capacity expansion and dispatch/unit commitment.
+- It minimizes total cost while meeting demand at each time step and includes dispatchable/variable generation, storage, demand response, interconnections, losses/reserves and operating constraints.
+- The reference configuration models 8760 hourly steps/year and can represent storage inventory and curtailment chronologically.
+EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_MODEL_METHOD
+SUPPORTED: Whole-system cost cannot generally be reduced to annual-average generation cost when chronology/constraints matter.
+NOT_SUPPORTED: POSY is automatically the correct or sufficient model for every mission candidate/geography.
+
+TOOL_EVIDENCE_ID: TE-EGC-SIM016-002
+CLAIM_ID: CLAIM-EGC-SIM-ADEQUACY-PROBABILISTIC-001
+TOOL_OR_METHOD: NREL/NLR PRAS public documentation/repository inspection
+SOURCE: Probabilistic Resource Adequacy Suite (PRAS)
+IDENTIFIERS:
+- https://github.com/NatLabRockies/PRAS
+- https://github.com/NatLabRockies/PRAS/blob/main/docs/src/PRAS/simulations.md
+KEY_OUTPUT:
+- PRAS is used for bulk-system resource adequacy and capacity-credit calculation.
+- Its Sequential Monte Carlo specification chronologically simulates the full operating horizon, records hourly unserved energy, repeats with new random generator/line outage transitions, and derives system risk metrics from repeated samples.
+- This explicitly separates probabilistic adequacy from deterministic energy balance.
+EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_MODEL_METHOD
+SUPPORTED: Forced outages/deliverability uncertainty and energy-limited resources require probabilistic adequacy analysis when decision-relevant.
+LIMITATION: Model assumptions/fidelity must match study question; PRAS documentation itself notes multiple possible simplifications.
+
+TOOL_EVIDENCE_ID: TE-EGC-SIM016-003
+CLAIM_ID: CLAIM-EGC-SIM-STORAGE-STATE-001
+TOOL_OR_METHOD: Current IEA system-flexibility evidence
+SOURCE: IEA Electricity 2026, Flexibility
+IDENTIFIER: https://www.iea.org/reports/electricity-2026/flexibility
+KEY_OUTPUT:
+- Battery nameplate capacity can overstate actual discharge available during a peak because of temperature derating, starting state of charge, finite duration and capacity committed to ancillary services.
+- Storage, demand response, transmission and curtailment are coupled flexibility mechanisms.
+EVIDENCE_CLASS: SOURCE_FACT
+SUPPORTED: Storage must be stateful and service-coupled; nameplate MW/MWh cannot be credited as firm peak output without chronology/service constraints.
+
+TOOL_EVIDENCE_ID: TE-EGC-SIM016-004
+CLAIM_ID: CLAIM-EGC-SIM-MEASUREMENT-VALIDATION-001
+TOOL_OR_METHOD: PNNL model-validation evidence retrieval
+SOURCE:
+- PNNL, Inverter Model Validation and Calibration Using Phasor Measurement Unit Data, 2024
+- PNNL, Offline Power Systems Applications Enabled by PMUs, 2024
+IDENTIFIERS:
+- https://www.pnnl.gov/publications/inverter-model-validation-and-calibration-using-phasor-measurement-unit-data
+- https://www.pnnl.gov/publications/offline-power-systems-applications-enabled-phasor-measurement-units-technical
+KEY_OUTPUT:
+- PNNL validates simulation/model response against field measurements and recalibrates when material mismatch exists.
+- PMU/event data are used for component and system model validation; model-validation workflows compare simulation to observed events rather than checking only internal consistency.
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_VALIDATION_METHOD
+SUPPORTED: Mission simulations require model-to-measurement validation on relevant observed variables/events before model output can support a physical-performance claim.
+NOT_SUPPORTED: A single universal numerical error tolerance across all mission models.
+
+TOOL_EVIDENCE_ID: TE-EGC-SIM016-005
+CLAIM_ID: CLAIM-EGC-SIM-ANNUAL-BALANCE-FAIL-001
+TOOL_OR_METHOD: Deterministic illustrative chronology calculation
+PURPOSE: Falsify annual-energy-equality as proof of adequacy.
+ASSUMPTIONS:
+- constant 100 MW load for 24 h = 2,400 MWh/day;
+- solar output only during 12 daylight hours;
+- no other source;
+- illustration is not candidate evidence.
+CASE_A_NO_STORAGE:
+- 200 MW solar for 12 h produces exactly 2,400 MWh/day, equal annual/daily energy to load.
+- Yet nighttime unserved energy is 1,200 MWh/day.
+RESULT: annual energy equality does not imply adequacy.
+CASE_B_STORAGE_WITH_85_PERCENT_ROUND_TRIP:
+- To supply 1,200 MWh nighttime load after 85% round-trip loss, required daylight surplus = 1,200/0.85 = 1,411.765 MWh.
+- Required constant daylight solar power = 100 + 1,411.765/12 = 217.647 MW.
+- Solar energy = 2,611.765 MWh/day, 8.8235% above load energy solely to cover storage losses under this simplified schedule.
+EVIDENCE_CLASS: CALCULATION + ASSUMPTION (ILLUSTRATIVE)
+SUPPORTED: Chronology and state/loss accounting can change capacity/energy requirements even when annual totals appear sufficient.
+NOT_SUPPORTED: Required storage/solar sizing for any real geography.
+
+TOOL_EVIDENCE_ID: TE-EGC-SIM016-006
+CLAIM_ID: CLAIM-EGC-INTEGRATED-SIM-ARCHITECTURE-001
+EVIDENCE_CLASS: INFERENCE / VALIDATION_PLAN
+PROPOSED MINIMUM MODEL STACK:
+
+L0 — INPUT / BOUNDARY NORMALIZATION
+- Freeze service node, geography, load dataset, weather years, dollar year, finance convention, resource/fuel assumptions and candidate/system cost boundary.
+- Every variable carries units, time basis, spatial basis, vintage/source, uncertainty and truth class.
+- Candidate comparison uses same exogenous demand/weather/outage scenario ensemble unless a physical difference requires a documented exception.
+
+L1 — TECHNOLOGY PHYSICS / PERFORMANCE
+- Convert resource/fuel/ambient conditions to gross output using evidence-grounded efficiency/performance curves.
+- Apply parasitics, degradation, maintenance/availability, ramp/minimum-load/start constraints where relevant.
+- Fuel/resource/water/thermal/material limits remain explicit constraints.
+- Novel physical mechanism may not enter integrated ranking as "validated" unless separately supported by physical evidence.
+
+L2 — CHRONOLOGICAL OPERATIONS / DISPATCH
+- Enforce power balance at every operational timestep.
+- Track generation, load, curtailment, storage charge/discharge/state-of-charge/efficiency, imports/exports, transmission limits/losses, reserve/firming commitments and demand response.
+- Hourly chronology is the default minimum for long-horizon energy/cost screening when VRE/storage/ramps matter; use finer dispatch/reserve resolution if sub-hourly constraints materially affect result.
+- Annual-average or representative-period compression is allowed only after showing it preserves decision-controlling quantities against a higher-fidelity chronological reference.
+
+L3 — RESOURCE ADEQUACY / FORCED-OUTAGE RISK
+- Separate adequacy from economic dispatch.
+- Use sequential/probabilistic Monte Carlo or equivalently defensible method when stochastic outages/weather/deliverability are decision-relevant.
+- Report at least EUE plus the mission-adopted event/duration metric(s); preserve full shortage magnitude/duration distribution where material.
+- Storage capacity credit is endogenous to SoC/duration/chronology, not equal to nameplate by assumption.
+
+L4 — NETWORK / STABILITY ESCALATION
+- A copper-plate/single-zone or transport/DC network may be used for screening only if transmission/congestion/stability cannot plausibly reverse the conclusion.
+- Finalists with material transmission dependence require nodal/zonal deliverability checks at appropriate fidelity.
+- If inverter penetration, inertia/frequency response, voltage/reactive-power, fault-level, short-circuit or dynamic controls are material, run a separate validated AC/dynamic/stability model. Hourly energy dispatch cannot prove dynamic stability.
+
+L5 — TECHNO-ECONOMIC / FINANCE COUPLING
+- Feed actual build, replacement, fuel, O&M, storage throughput, curtailment, grid expansion and delivered-energy outputs to JOB-EGC-015/common cost accounting.
+- No double-counting between annualized component costs and discounted cash-flow categories.
+- Finance scenarios are outer-loop inputs, not hidden technology constants.
+
+L6 — LIFECYCLE / MATERIAL / DEPLOYMENT COUPLING
+- Feed actual capacity, component replacement and throughput to JOB-EGC-012/JOB-EGC-013/JOB-EGC-022.
+- Material/replacement constraints can bind capacity expansion; they are not post-hoc footnotes.
+- Lifecycle energy/emissions/resources use the same operational lifetime/output actually simulated.
+
+L7 — UNCERTAINTY / STRUCTURAL ROBUSTNESS
+- Propagate correlated weather/load/fuel/outage/cost/performance uncertainties where decision-relevant.
+- Include model-form alternatives for structural assumptions (e.g., transmission expansion, storage degradation, resource availability) capable of reversing rank.
+- If plausible uncertainty or model form reverses winner, label NOT_STABLE and do not select a global winner.
+
+L8 — MEASUREMENT VALIDATION / REPLAY
+- Before forecasting a candidate architecture, reproduce one or more observed baseline periods/events at matching boundary using data not solely used for calibration.
+- Validate decision-controlling outputs: generation by technology, delivered energy, storage SoC/throughput where measured, imports/exports, curtailment, outage/shortfall behavior, fuel use/efficiency, and relevant dynamic variables for stability submodels.
+- Calibration and validation datasets/events must be separated where practicable.
+- No global arbitrary tolerance: acceptance requires model discrepancy + measurement uncertainty to be small enough that the error envelope cannot plausibly reverse the mission decision. Predeclare output-specific tolerance before candidate comparison.
+- Failure to reproduce measured baseline/event within tolerance -> MODEL_VALIDATION_FAIL or REPAIR_REQUIRED, not parameter tuning until desired winner appears.
+
+NUMERICAL / SOFTWARE VERIFICATION GATES:
+V1 DIMENSIONAL: every equation/unit conversion checked.
+V2 CONSERVATION: energy balance residual per timestep within numerical tolerance; cumulative fuel/resource/material balances close.
+V3 STATE: storage/reservoir/thermal/fuel inventories obey bounds and intertemporal continuity.
+V4 BOUNDARY: net delivered MWh denominator matches common boundary.
+V5 OPTIMIZATION: solver status/gap recorded; infeasible cases remain infeasible rather than silently relaxing constraints.
+V6 RESOLUTION: temporal/spatial resolution sensitivity on decision-controlling outputs.
+V7 REPRODUCIBILITY: code/version/input hashes or immutable identifiers, random seeds, solver/version and scenario config recorded.
+V8 INDEPENDENT_REPLICATION: at least one decisive integrated result independently recomputed/implemented; same-session rerun is not enough.
+V9 MEASUREMENT: model replay compared to observed data with predeclared error metrics.
+V10 OUT-OF-SAMPLE: where enough data exist, at least one independent stress/event period not used for calibration.
+V11 CLOSURE: all P0/P1 model discrepancies either repaired/revalidated or candidate/result remains NOT_VERIFIED.
+
+MANDATORY OUTPUTS:
+- net MWh delivered and average continuous GW;
+- curtailment and parasitic/loss breakdown;
+- capacity and build trajectory;
+- storage power/energy/SoC/throughput/loss/replacement;
+- fuel/resource/water flows where applicable;
+- imports/exports/transmission build/congestion/loss;
+- adequacy metrics and shortfall distribution;
+- CAPEX/OPEX/fuel/finance/system-cost components at common dollar/boundary basis;
+- lifecycle energy/EROI and material throughput handoff;
+- uncertainty intervals and ranking-reversal map;
+- validation error metrics and provenance.
+
+RED_TEAM:
+1. Annual TWh balance proves reliability -> FALSIFIED by TE-EGC-SIM016-005 and stateful system evidence.
+2. Hourly deterministic dispatch proves adequacy -> FALSIFIED when stochastic outage/deliverability risk is material; requires L3.
+3. Adequacy Monte Carlo proves voltage/frequency stability -> FALSIFIED; L4 separate.
+4. Optimization feasible solution proves physical buildability -> FALSIFIED; materials/safety/manufacturing/regulation remain external constraints.
+5. Model calibrated to historical data is therefore validated -> FALSIFIED without independent/out-of-sample test.
+6. Very low solver gap means real-world uncertainty is low -> FALSIFIED; numerical optimality != model truth.
+7. More model detail is always better -> REJECTED; fidelity escalates only where it can change the decision, and each added layer needs validation/data.
+8. One preferred software is mission truth -> REJECTED; requirements are model-behavior/evidence based, not package based.
+
+STATUS_CHANGE:
+- JOB-EGC-016: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-028 becomes executable for review/validation-protocol attack but must be owned by a distinct session.
+- Integrated candidate models are NOT yet run by this job; this package defines architecture and gates.
+- G15/G16 remain NOT_VERIFIED.
+- GLOBAL_SOLVED: NO.
+- CURRENT_WINNER: NONE.
+NEXT_ACTION:
+- Independent reviewer attacks the stack and minimum fidelity.
+- Candidate jobs map data/physics into L1-L7.
+- JOB-EGC-028 defines/executes model-to-measurement acceptance tests on actual candidate models.
+WRITE_INTEGRITY_PREWRITE_HEAD: d9d7ae9b7d2149b6d7bd1812ee359444f620e79c
+WRITE_INTEGRITY_PREWRITE_FILE_SHA: eb753ed057f074ebb1bf7691fdd56011d0770b3f
