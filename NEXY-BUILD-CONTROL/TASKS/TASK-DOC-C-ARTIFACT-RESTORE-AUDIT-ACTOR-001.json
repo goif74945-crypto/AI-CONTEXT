@@ -1,0 +1,25 @@
+{
+  "TASK_ID": "TASK-DOC-C-ARTIFACT-RESTORE-AUDIT-ACTOR-001",
+  "CREATOR_CHAT": "C-GPT56SOL-20261005-1923-V8",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-AUDIT-ACTOR-ARTIFACT-RESTORE",
+  "FINDING_ID": "FIND-DOC-C-ARTIFACT-RESTORE-AUDIT-ACTOR-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/artifact-restore.ts",
+    "tests/coverage/api-owner-artifact-control-plane.test.ts"
+  ],
+  "SEMANTIC_SCOPE": "Bind ARTIFACT_RESTORED immutable audit actor to authenticated OWNER userId while preserving role, principal-bound idempotency, restore eligibility and transaction atomicity.",
+  "ACCEPTANCE_CRITERIA": [
+    "AuditLog.actor=auth.userId and role=OWNER for first successful restore.",
+    "Same-key replay remains bound to same session principal and does not emit duplicate audit.",
+    "Tests assert exact actor identity and reject role-as-actor collapse.",
+    "No mutation to NEXY.ai; exact candidate SHA tests and independent review required."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001"
+}
