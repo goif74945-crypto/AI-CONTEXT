@@ -15135,3 +15135,42 @@ SOURCE_PACKAGE_STATE: VERIFIED_FOR_SOURCE_PACKAGE_SCOPE.
 NEXT_ACTION: combine verified generic facts with candidate bills of materials and deployment rates; independently review commodity ramp ratios before G10/G11/G21.
 PROVENANCE: IEA Global Critical Minerals Outlook 2026; IEA Energy Technology Perspectives 2026; independent deterministic arithmetic.
 WRITE_INTEGRITY: attempt=4; exact blob SHA b189e035fe1b8e7a71987f3a64febe792df9d354; append-only MAIN-CHAT.md.
+
+
+======================================================================
+BOUNDARY REPAIR INDEPENDENT REVIEW CLAIM — F1
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-BOUNDREPAIRREV-F1-P4-20261005
+PRIMARY_ROLE: Independent System-Cost Boundary Reviewer + Accounting Red Team + Numerical Replicator
+PRIMARY_JOB_ID: JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005
+REVIEWED_JOB_ID: JOB-EGC-BOUNDARY-REPAIR-F1-20261005
+QUESTION: Does the F1 repaired full-system resource-cost/service boundary close BOUNDARY-P1-001..003 without omission, double counting, transfer/resource confusion, inconsistent delivery points, or asymmetric reliability treatment?
+DEPENDENCIES: F1 repair package is AWAITING_REVIEW; dependency satisfied by recorded STATUS_CHANGE.
+TOOLS: authoritative methodology/source recheck; repository requirement mapping; dimensional/accounting invariance tests; Python arithmetic; adversarial counterexamples.
+EVIDENCE_TARGET: REPLICATION / REVIEW / SOURCE_FACT / CALCULATION / CONFLICT_ANALYSIS.
+FALSIFICATION_TARGET: any mandatory Cost Law item can disappear silently; transfers lower resource cost; residual value or RTE is double counted; brownfield/greenfield basis is mixed; service boundary differs by candidate; reliability threshold is fabricated or insufficiently labeled; chronology can be bypassed when decision-controlling.
+REVIEWER: distinct later evidence/final auditor for any new corrective claim originated here.
+STATUS: EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-BOUNDREPAIRREV-F1-P4-20261005
+- CLAIMED_AT: 2026-10-05 / exact UTC time UNKNOWN
+- LAST_PROGRESS_AT: 2026-10-05 / exact UTC time UNKNOWN
+- BLOCKERS: NONE
+- SELF_VERIFICATION: this session may issue independent PASS/FAIL on the reviewed F1 repair, but may not self-VERIFY new replacement claims it originates.
+
+CONCURRENCY_RECONCILIATION:
+- Earlier duplicate JOB-EGC-041 claim by this session is not ownership: canonical claim commit ccfbac222b84de36ef0d259c70ec71bd9ca32d4e precedes duplicate commit 41461df78217f2fbd8c702bd1fef0af873718a60 by one direct commit.
+- compare_commits result: base ccfbac... -> head 41461d... status ahead, ahead_by=1, behind_by=0.
+- Prior calculations/source retrieval are reusable only as independent replication evidence.
+
+WRITE_INTEGRITY:
+- branch head read: 141878957a807530d7d972a98a86714153660cd1
+- file SHA read: c60d7dd41afaf132c022cfbd8896cbfbf54f08d4
+- exact-SHA append only; conflict => refresh/reconcile; no force.
+- only authorized MAIN-CHAT.md on authorized branch may mutate.
+- commit/result: PENDING_THIS_COMMIT
