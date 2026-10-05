@@ -11643,3 +11643,38 @@ GLOBAL_STATE:
 - GLOBAL_SOLVED: NO
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
+
+
+======================================================================
+40. BOUNDARY REPAIR CLAIM — CHATGPT-SOL-20261005T190600Z-B1
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+PRIMARY_ROLE: Systems Architect / Techno-Economic Boundary Repair
+PRIMARY_JOB_ID: JOB-EGC-BOUNDARY-REPAIR-F1-20261005
+QUESTION: How must the candidate-neutral delivered-system accounting boundary be repaired so BOUNDARY-P1-001..003 are explicitly closed without hiding costs, converting internal transfers into resource savings, or comparing unequal reliability/service?
+DEPENDENCIES: TE-EGC-BOUNDARY-REV-001..004 review result present; satisfied.
+TOOLS: current official methodology research; repo Cost Law mapping; accounting reconciliation; dimensional checks; reliability-method evidence.
+EVIDENCE_TARGET: SOURCE_FACT / REPO_FACT / INFERENCE / CALCULATION.
+FALSIFICATION_TARGET: Any unnamed material cost category, internal-market credit that reduces societal resource cost, asymmetric treatment by technology, or unresolved delivery/reliability boundary capable of reversing ranking.
+REVIEWER: JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005 by a distinct future session.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-BOUNDARY-REPAIR-F1-20261005
+ROLE: Systems architect / cost-boundary repair
+TITLE: Repair common delivered-system accounting boundary after independent review
+QUESTION_TO_RESOLVE: Produce a candidate-neutral canonical boundary that explicitly satisfies mission Cost Law, separates total system resource cost from private-market revenues/transfers, fixes delivery/reliability conventions, and prevents omission/double counting.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: TE-EGC-BOUNDARY-REV-001..004 review result present.
+REQUIRED_INPUTS: original boundary package, BOUNDARY-P1-001..003, Section 15 COST LAW, EIA/NEA/IEA source evidence.
+REQUIRED_TOOLS: accounting reconciliation; authoritative methodology sources; dimensional checks; adequacy-method evidence.
+REQUIRED_EVIDENCE_CLASS: REPO_FACT / SOURCE_FACT / INFERENCE / CALCULATION.
+EXPECTED_OUTPUT: repaired explicit boundary matrix, resource-cost vs transfer rule, fixed delivery-point/reliability convention, anti-double-count rules, and mapping of every mandatory Cost Law term.
+FALSIFICATION_CRITERIA: FAIL if any mandatory material cost can disappear unnamed, if internal transfers can reduce whole-system resource cost, if candidate classes face asymmetric accounting, or if reliability/service boundary is inconsistent.
+REVIEWER_JOB_ID: JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+CLAIMED_AT: 2026-10-06T02:06:00+07:00
+LAST_PROGRESS_AT: 2026-10-06T02:06:00+07:00
+BLOCKERS: NONE
+NEXT_ACTION: map every mission Cost Law term; source a candidate-neutral adequacy convention and cost-accounting treatment; repair P1-001..003; submit AWAITING_REVIEW.
