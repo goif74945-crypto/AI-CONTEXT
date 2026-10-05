@@ -2154,3 +2154,595 @@ WRITE_INTEGRITY:
 - file SHA read: 1704ff175738b571acb6c5608ca4d0c176e6d4c2
 - stale-write check: same fetch used immediately for this append-only write
 - commit/result: PENDING
+
+
+======================================================================
+27. LOGICAL JOB BOARD — BOOTSTRAP SESSION-GPT56SOL-EGC-20261005T1907Z
+======================================================================
+
+BOOTSTRAP_AT: 2026-10-05T19:07:00Z
+BRANCH_HEAD_READ: 2aae761fd69b38a594382ece2c536aee5d90881e
+FILE_SHA_READ: 8b9919e3daba6297960edb09ee962c9a16f41a7e
+GLOBAL_SOLVED: NO
+
+### JOB-EGC-001
+ROLE: Objective / metric formalization
+TITLE: Formalize quantitative objective thresholds
+QUESTION_TO_RESOLVE: What fixed quantitative thresholds define LOW_COST and MASSIVE_ENERGY before candidate selection?
+TARGET_CANDIDATE: MISSION
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: current authoritative cost/scale baselines; unit conversions
+REQUIRED_TOOLS: web research; calculator/Python; source triangulation
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: fixed thresholds, units, sensitivity and anti-gaming rules
+FALSIFICATION_CRITERIA: thresholds are arbitrary, candidate-tailored, or inconsistent with current baselines
+REVIEWER_JOB_ID: JOB-EGC-025
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1907Z
+CLAIMED_AT: 2026-10-05T19:07:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:07:00Z
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-002
+ROLE: Baseline benchmark research
+TITLE: Build current baseline energy-cost dataset
+QUESTION_TO_RESOLVE: What are current defensible generation and delivered-system cost envelopes?
+TARGET_CANDIDATE: BASELINES
+DEPENDENCIES: JOB-EGC-004
+REQUIRED_INPUTS: current cost datasets by technology/geography/vintage
+REQUIRED_TOOLS: web research; dataset extraction
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT
+EXPECTED_OUTPUT: normalized baseline cost table with provenance
+FALSIFICATION_CRITERIA: boundaries/years/geographies are not comparable
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-003
+ROLE: Baseline benchmark research
+TITLE: Build current scale/capacity-factor/reliability baseline
+QUESTION_TO_RESOLVE: What operational scale, CF, availability and construction-time baselines exist?
+TARGET_CANDIDATE: BASELINES
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: fleet/plant operational datasets
+REQUIRED_TOOLS: web research; calculations
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: scale/reliability baseline table
+FALSIFICATION_CRITERIA: claims rely on aspirational rather than operational data
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-004
+ROLE: Systems architect
+TITLE: Define common system boundary for fair comparison
+QUESTION_TO_RESOLVE: What cost/energy/reliability boundary must all candidates use?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-001
+REQUIRED_INPUTS: cost law; grid/storage/transmission terms
+REQUIRED_TOOLS: systems analysis
+REQUIRED_EVIDENCE_CLASS: INFERENCE + SOURCE_FACT
+EXPECTED_OUTPUT: common comparison boundary
+FALSIFICATION_CRITERIA: boundary omits material system costs or double-counts value
+REVIEWER_JOB_ID: JOB-EGC-027
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-005
+ROLE: Theoretical physicist
+TITLE: Physics-screen candidate families
+QUESTION_TO_RESOLVE: Which candidate families survive first-principles screening?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-001
+REQUIRED_INPUTS: candidate mechanisms; conservation laws
+REQUIRED_TOOLS: first-principles calculations; literature
+REQUIRED_EVIDENCE_CLASS: CALCULATION + SOURCE_FACT
+EXPECTED_OUTPUT: screen matrix with falsifications
+FALSIFICATION_CRITERIA: mechanism violates conservation/thermodynamics or requires unsupported physics
+REVIEWER_JOB_ID: JOB-EGC-020
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-006
+ROLE: Renewables analyst
+TITLE: Renewables + storage/grid candidate package
+QUESTION_TO_RESOLVE: Can mature wind/solar plus firming meet objective under common boundary?
+TARGET_CANDIDATE: RENEWABLES
+DEPENDENCIES: JOB-EGC-002,JOB-EGC-004
+REQUIRED_INPUTS: cost, CF, storage/grid data
+REQUIRED_TOOLS: web; system model
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + SIMULATION_RESULT
+EXPECTED_OUTPUT: candidate proof package subset
+FALSIFICATION_CRITERIA: all-in delivered cost/scale fails thresholds
+REVIEWER_JOB_ID: JOB-EGC-027
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-007
+ROLE: Geothermal analyst
+TITLE: Geothermal candidate package
+QUESTION_TO_RESOLVE: Can hydrothermal/EGS meet objective at deployable scale?
+TARGET_CANDIDATE: GEOTHERMAL
+DEPENDENCIES: JOB-EGC-002,JOB-EGC-004
+REQUIRED_INPUTS: resource maps; drilling/cost/performance evidence
+REQUIRED_TOOLS: web; TEA calculations
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: candidate proof package subset
+FALSIFICATION_CRITERIA: resource/cost/engineering fails objective
+REVIEWER_JOB_ID: JOB-EGC-024
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-008
+ROLE: Nuclear analyst
+TITLE: Fission candidate package
+QUESTION_TO_RESOLVE: Can current/advanced fission meet objective under full lifecycle boundary?
+TARGET_CANDIDATE: FISSION
+DEPENDENCIES: JOB-EGC-002,JOB-EGC-004
+REQUIRED_INPUTS: operational, construction, fuel-cycle, cost data
+REQUIRED_TOOLS: web; TEA calculations
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: candidate proof package subset
+FALSIFICATION_CRITERIA: cost/scale/safety/resource fails objective
+REVIEWER_JOB_ID: JOB-EGC-019
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-009
+ROLE: Plasma analyst
+TITLE: Fusion evidence/status package
+QUESTION_TO_RESOLVE: Does any fusion pathway have evidence sufficient for near/mid-term objective?
+TARGET_CANDIDATE: FUSION
+DEPENDENCIES: JOB-EGC-004,JOB-EGC-005
+REQUIRED_INPUTS: experimental gain, engineering and cost evidence
+REQUIRED_TOOLS: web; physics calculations
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: evidence status and blockers
+FALSIFICATION_CRITERIA: net-electric/system-scale evidence absent or economics unsupported
+REVIEWER_JOB_ID: JOB-EGC-020
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-010
+ROLE: Energy systems analyst
+TITLE: Hydro/ocean/waste-heat and other credible families
+QUESTION_TO_RESOLVE: Which other mature/emerging families remain competitive?
+TARGET_CANDIDATE: OTHER
+DEPENDENCIES: JOB-EGC-002,JOB-EGC-004
+REQUIRED_INPUTS: resource and operational datasets
+REQUIRED_TOOLS: web; screening calculations
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: screened family set
+FALSIFICATION_CRITERIA: resource/physics/economics cannot meet objective
+REVIEWER_JOB_ID: JOB-EGC-027
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-011
+ROLE: Systems architect
+TITLE: Hybrid-system architecture search
+QUESTION_TO_RESOLVE: Can a portfolio beat any single-source candidate on delivered service?
+TARGET_CANDIDATE: HYBRID
+DEPENDENCIES: JOB-EGC-002,JOB-EGC-003,JOB-EGC-004
+REQUIRED_INPUTS: candidate envelopes; load/grid assumptions
+REQUIRED_TOOLS: optimization/simulation
+REQUIRED_EVIDENCE_CLASS: SIMULATION_RESULT + CALCULATION
+EXPECTED_OUTPUT: Pareto-optimal architectures
+FALSIFICATION_CRITERIA: no robust advantage under common boundary
+REVIEWER_JOB_ID: JOB-EGC-026
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-012
+ROLE: Lifecycle / EROI analyst
+TITLE: EROI/lifecycle methodology
+QUESTION_TO_RESOLVE: How will lifecycle energy and EROI be computed consistently?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-004
+REQUIRED_INPUTS: lifecycle inventories; lifetime outputs
+REQUIRED_TOOLS: LCA equations; source review
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: common EROI method
+FALSIFICATION_CRITERIA: boundary inconsistency can reverse rankings
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-013
+ROLE: Materials / supply-chain analyst
+TITLE: Materials/supply-chain scaling methodology
+QUESTION_TO_RESOLVE: Can material throughput support target deployment rates?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-001
+REQUIRED_INPUTS: material intensity, reserves, production rates
+REQUIRED_TOOLS: web datasets; scale calculations
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: material bottleneck method
+FALSIFICATION_CRITERIA: required annual throughput exceeds credible supply expansion
+REVIEWER_JOB_ID: JOB-EGC-022
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-014
+ROLE: Safety / reliability analyst
+TITLE: Safety/FMEA framework
+QUESTION_TO_RESOLVE: What failure modes and severity criteria apply consistently?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-004
+REQUIRED_INPUTS: standards; incident/operational evidence
+REQUIRED_TOOLS: FMEA; standards review
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + INFERENCE
+EXPECTED_OUTPUT: risk scoring framework
+FALSIFICATION_CRITERIA: material hazards omitted or incomparable
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-015
+ROLE: Techno-economic analyst
+TITLE: Cost/finance sensitivity framework
+QUESTION_TO_RESOLVE: How will CAPEX/OPEX/WACC/lifetime uncertainty propagate to delivered cost?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-001,JOB-EGC-004
+REQUIRED_INPUTS: finance assumptions and cost equations
+REQUIRED_TOOLS: Python/calculator; sensitivity
+REQUIRED_EVIDENCE_CLASS: CALCULATION
+EXPECTED_OUTPUT: TEA sensitivity model
+FALSIFICATION_CRITERIA: plausible finance assumptions reverse winner without acknowledgment
+REVIEWER_JOB_ID: JOB-EGC-025
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-016
+ROLE: Simulation / numerical analyst
+TITLE: Integrated simulation strategy
+QUESTION_TO_RESOLVE: What integrated models are needed and how will they be validated?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-004
+REQUIRED_INPUTS: candidate system models; measured benchmarks
+REQUIRED_TOOLS: numerical modeling plan
+REQUIRED_EVIDENCE_CLASS: INFERENCE
+EXPECTED_OUTPUT: simulation architecture + validation criteria
+FALSIFICATION_CRITERIA: model cannot be benchmarked or misses decisive coupling
+REVIEWER_JOB_ID: JOB-EGC-028
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-017
+ROLE: Evidence auditor
+TITLE: Physical-evidence inventory
+QUESTION_TO_RESOLVE: What real measured/operational evidence exists for each surviving candidate?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-005
+REQUIRED_INPUTS: field/lab/operator datasets
+REQUIRED_TOOLS: web research; provenance check
+REQUIRED_EVIDENCE_CLASS: MEASUREMENT + SOURCE_FACT
+EXPECTED_OUTPUT: evidence ladder inventory
+FALSIFICATION_CRITERIA: key physical claim lacks matching evidence level
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-018
+ROLE: Evidence auditor
+TITLE: Evidence provenance audit
+QUESTION_TO_RESOLVE: Are sources, vintages, boundaries and dependencies traceable and independent?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: all evidence records
+REQUIRED_TOOLS: provenance audit
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT
+EXPECTED_OUTPUT: audit findings
+FALSIFICATION_CRITERIA: citation not inspectable, stale, circular, or boundary-mismatched
+REVIEWER_JOB_ID: JOB-EGC-030
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-019
+ROLE: Replication team
+TITLE: Independent replication protocol
+QUESTION_TO_RESOLVE: How will decisive calculations be independently recomputed?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-001
+REQUIRED_INPUTS: critical equations and datasets
+REQUIRED_TOOLS: independent recomputation
+REQUIRED_EVIDENCE_CLASS: CALCULATION
+EXPECTED_OUTPUT: replication protocol/results
+FALSIFICATION_CRITERIA: reproduction disagrees outside uncertainty
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-020
+ROLE: Adversarial red team
+TITLE: Adversarial anti-overunity / extraordinary-claim screen
+QUESTION_TO_RESOLVE: Which claims require extraordinary evidence or violate physics?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: candidate mechanism claims
+REQUIRED_TOOLS: physics red-team
+REQUIRED_EVIDENCE_CLASS: FALSIFIED + SOURCE_FACT
+EXPECTED_OUTPUT: kill/retain decisions
+FALSIFICATION_CRITERIA: unsupported over-unity/new-physics dependence
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-021
+ROLE: Grid systems analyst
+TITLE: Grid/transmission/firming system-cost analysis
+QUESTION_TO_RESOLVE: What integration costs/constraints apply at target penetration?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-003,JOB-EGC-004
+REQUIRED_INPUTS: grid/storage/transmission datasets
+REQUIRED_TOOLS: power-system modeling; web
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + SIMULATION_RESULT
+EXPECTED_OUTPUT: integration cost envelopes
+FALSIFICATION_CRITERIA: omitted integration cost changes ranking
+REVIEWER_JOB_ID: JOB-EGC-027
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-022
+ROLE: Manufacturing / deployment analyst
+TITLE: Deployment-rate/manufacturing bottleneck analysis
+QUESTION_TO_RESOLVE: Can factories/workforce/construction scale to massive-energy target?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-001,JOB-EGC-013
+REQUIRED_INPUTS: production capacity and construction rates
+REQUIRED_TOOLS: scale calculations; web
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: deployment ramp model
+FALSIFICATION_CRITERIA: required ramp exceeds plausible industry expansion
+REVIEWER_JOB_ID: JOB-EGC-025
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-023
+ROLE: Environmental analyst
+TITLE: Environmental lifecycle comparison
+QUESTION_TO_RESOLVE: What lifecycle burdens constrain candidate deployment?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-004,JOB-EGC-012
+REQUIRED_INPUTS: LCA datasets
+REQUIRED_TOOLS: LCA comparison
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+EXPECTED_OUTPUT: comparable lifecycle metrics
+FALSIFICATION_CRITERIA: unmodeled burden is material to feasibility
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-024
+ROLE: Regulatory / siting analyst
+TITLE: Regulatory/siting constraints
+QUESTION_TO_RESOLVE: What legal, permitting and siting constraints affect scale/cost/time?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-003
+REQUIRED_INPUTS: current regulations; siting data
+REQUIRED_TOOLS: web research
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT
+EXPECTED_OUTPUT: constraint matrix
+FALSIFICATION_CRITERIA: required deployment conflicts with binding rules/site availability
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-025
+ROLE: Uncertainty analyst
+TITLE: Uncertainty and sensitivity framework
+QUESTION_TO_RESOLVE: Can plausible uncertainty reverse candidate conclusions?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-015
+REQUIRED_INPUTS: all decisive uncertain inputs
+REQUIRED_TOOLS: Monte Carlo/sensitivity
+REQUIRED_EVIDENCE_CLASS: CALCULATION + SIMULATION_RESULT
+EXPECTED_OUTPUT: uncertainty bounds and reversal tests
+FALSIFICATION_CRITERIA: winner changes across plausible input range
+REVIEWER_JOB_ID: JOB-EGC-019
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-026
+ROLE: Mission integrator
+TITLE: Candidate Pareto frontier
+QUESTION_TO_RESOLVE: Which candidates dominate on cost, scale, reliability, safety and deployment?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-002,JOB-EGC-003,JOB-EGC-006,JOB-EGC-007,JOB-EGC-008,JOB-EGC-009,JOB-EGC-010,JOB-EGC-011
+REQUIRED_INPUTS: candidate normalized metrics
+REQUIRED_TOOLS: multi-objective analysis
+REQUIRED_EVIDENCE_CLASS: CALCULATION + INFERENCE
+EXPECTED_OUTPUT: Pareto frontier
+FALSIFICATION_CRITERIA: frontier uses incomparable or unverified metrics
+REVIEWER_JOB_ID: JOB-EGC-027
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-027
+ROLE: Adversarial red team
+TITLE: Competing-baseline red team
+QUESTION_TO_RESOLVE: Does any claimed winner beat the strongest realistic baseline on same boundary?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-026
+REQUIRED_INPUTS: baseline and candidate packages
+REQUIRED_TOOLS: red-team comparison
+REQUIRED_EVIDENCE_CLASS: CALCULATION + SOURCE_FACT
+EXPECTED_OUTPUT: challenge report
+FALSIFICATION_CRITERIA: winner only beats strawman or boundary mismatch
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-028
+ROLE: Model validation analyst
+TITLE: Model-to-measurement validation
+QUESTION_TO_RESOLVE: Do integrated models reproduce known measured behavior within uncertainty?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-016,JOB-EGC-017
+REQUIRED_INPUTS: model outputs; measured datasets
+REQUIRED_TOOLS: validation statistics
+REQUIRED_EVIDENCE_CLASS: MEASUREMENT + SIMULATION_RESULT + CALCULATION
+EXPECTED_OUTPUT: validation report
+FALSIFICATION_CRITERIA: model error exceeds acceptance tolerance on decisive outputs
+REVIEWER_JOB_ID: JOB-EGC-019
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-029
+ROLE: Experimental design analyst
+TITLE: Build-readiness gate design
+QUESTION_TO_RESOLVE: If gaps remain, what safe professional test would maximally reduce uncertainty?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-017,JOB-EGC-028
+REQUIRED_INPUTS: evidence gaps; safety constraints
+REQUIRED_TOOLS: experimental design
+REQUIRED_EVIDENCE_CLASS: INFERENCE
+EXPECTED_OUTPUT: test spec/readiness decision
+FALSIFICATION_CRITERIA: test is unsafe, non-discriminating, or lower-information than existing evidence
+REVIEWER_JOB_ID: JOB-EGC-014
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### JOB-EGC-030
+ROLE: Final integrator
+TITLE: Final-gate integration audit
+QUESTION_TO_RESOLVE: Do all mission gates and proof-package requirements pass without P0/P1?
+TARGET_CANDIDATE: ALL
+DEPENDENCIES: JOB-EGC-018,JOB-EGC-019,JOB-EGC-027,JOB-EGC-028
+REQUIRED_INPUTS: all verified jobs/evidence
+REQUIRED_TOOLS: gate audit
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + REVIEW
+EXPECTED_OUTPUT: GLOBAL_SOLVED decision
+FALSIFICATION_CRITERIA: any decisive gate unknown/fail or unresolved contradiction
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: OPEN
+OWNER_SESSION_ID: UNCLAIMED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE_KNOWN
+HANDOFF: Execute when dependencies are satisfied; do not self-verify material results.
+
+### SESSION SESSION-GPT56SOL-EGC-20261005T1907Z
+PRIMARY_ROLE: Objective / metric formalization
+PRIMARY_JOB_ID: JOB-EGC-001
+QUESTION: Fix non-gameable quantitative definitions for LOW_COST and MASSIVE_ENERGY before candidate selection.
+DEPENDENCIES: NONE
+TOOLS: GitHub evidence ledger; authoritative web research; calculator/Python; source triangulation.
+EVIDENCE_TARGET: current authoritative cost/scale benchmarks plus reproducible unit conversions.
+FALSIFICATION_TARGET: show proposed thresholds are arbitrary, candidate-tailored, or inconsistent with current deployable baselines.
+REVIEWER: JOB-EGC-025 by a distinct future session.
+STATUS: CLAIMED
+
