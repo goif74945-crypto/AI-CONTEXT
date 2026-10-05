@@ -330,3 +330,26 @@ BLOCKERS: NONE for metric architecture; any numeric threshold lacking authoritat
 NEXT_ACTION: retrieve current authoritative cost, demand/scale and system-cost evidence; construct candidate-neutral threshold set; adversarially test threshold sensitivity; submit for independent review.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+50. SESSION CLAIM — JOB-EGC-043-BASELINE-FRONTIER-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0310+07-BF1
+PRIMARY_ROLE: Baseline Frontier / Techno-Economic Evidence Analyst / Candidate Eliminator
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-C1-20261006
+QUESTION: Which existing or near-term credible energy-system candidates form the present evidence-backed Pareto frontier for low delivered cost and massive scalable net energy under the common whole-system boundary, and which candidates can already be falsified or demoted?
+CANDIDATE: solar; wind; hydro; geothermal; nuclear fission; advanced fission; fusion; waste heat; tidal; wave; storage-coupled systems; hybrid grids; cogeneration; other credible emerging systems.
+DEPENDENCIES: JOB-EGC-040 accounting repair is pending independent review; R_STAR reliability boundary is concurrently under construction. This job may build source-grounded baseline evidence but MUST NOT declare a global winner until those dependencies pass.
+REQUIRED_INPUTS: current authoritative cost/performance data; measured fleet/plant capacity factors and build rates where available; fuel/resource constraints; construction timelines; system-boundary caveats.
+REQUIRED_TOOLS: current-state research brief; official/primary web sources; deep literature search; numerical normalization/sensitivity checks; cross-source validation.
+REQUIRED_EVIDENCE: traceable source URLs/identifiers; publication/source dates; metric definitions and boundaries; at least two independent sources for ranking-critical values where feasible.
+EXPECTED_OUTPUT: candidate evidence matrix; provisional Pareto frontier; eliminations/demotions with falsification reason; UNKNOWN/conflict list; follow-on independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if ranking mixes incompatible system boundaries, treats modeled LCOE as delivered-system cost, ignores finance/storage/transmission/firming, promotes non-commercial concepts using speculative costs, or claims a global winner before R_STAR/common-ledger review closes.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final winner blocked by unresolved R_STAR and common-ledger review; baseline evidence collection itself is executable.
+NEXT_ACTION: gather current authoritative global cost/performance/build evidence, normalize boundaries, run adversarial comparison, and record only source-supported conclusions.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
