@@ -1,0 +1,88 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_REVIEW_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REVIEW_ID": "REVIEW-C-SOL-V16RC13-XAUDIT-6D8F31A2-FINDING-UNIVERSE-V2-INTEROP",
+  "REVIEWER_CHAT_ID": "C-SOL-V16RC13-XAUDIT-6D8F31A2",
+  "REVIEW_KIND": "INDEPENDENT_FINDING_UNIVERSE_V2_AND_CONTROL_P0_V2_INTEROP_REDTEAM",
+  "CLAIM_ID": "CLAIM-C-SOL-V16RC13-XAUDIT-6D8F31A2-FINDING-UNIVERSE-V2-INTEROP-REVIEW",
+  "MEMBERSHIP_ID": "PRE-c172465e29e04ac462c2dc67e5908c6d",
+  "PINNED_CONTROL_COMMIT_SHA": "c7e2bae48c98dce47bf2c9265b4ee3944f881b50",
+  "PINNED_CONTROL_TREE_SHA": "7f0b6c47a3d2bdb3cf3b1255828db2ea85758e2d",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "BOOTSTRAP_STATE_OBSERVED": "BLOCKED",
+  "REVIEWED_ARTIFACTS": [
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V2.json",
+      "blob_sha": "effbca8635cc3963cf27ccb65c883f79c1a2d362"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_EXTERNAL_LOCATORS_V2.json",
+      "blob_sha": "f441e009d2155276cb697b9529714de2d70de3dd"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SCHEMAS/CONTROL_P0_PROJECTION_V2.json",
+      "blob_sha": "e6dd00bb07b7235b6d514758d6420407282aa306"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/FINDINGS/F-V16RC13-P0-PROJECTION-UNIVERSE-SCHEMA-INTEROP-1F8D4486.json",
+      "blob_sha": "f05b7dc809d956ca77c450a1351552063b2fb887"
+    }
+  ],
+  "ORIGINAL_E1_E5_REREVIEW": {
+    "E1_NORMALIZED_ROW_PROJECTION_SCHEMA_MISMATCH": "PARTIAL_FIX_ONLY. Universe V2 adds TYPE_RAW, but no exact V2-universe-to-projection-V2 field adapter is defined and projection V2 still explicitly requires universe CONTRACT_V1.",
+    "E2_SEVERITY_EXTRACTION_UNDERSPECIFIED": "PASS_FOR_UNIVERSE_V2. Exact SEVERITY only, null on absence, and no alias substitution are explicit.",
+    "E3_EXTERNAL_CANONICALITY_MIGRATION_GAP": "PARTIAL_FIX_ONLY. Whole-control-tree candidate sweep exists, but deterministic disposition semantics for matched non-definition artifacts are not defined.",
+    "E4_REFERENCE_EXTRACTION_DETERMINISM": "PASS_FOR_ACTIVE_BOOTSTRAP_SCHEMA. Exact versioned JSON-pointer registry is defined and unknown active schema fails closed.",
+    "E5_UNIVERSE_HASH_BINDING": "CHANGES_REQUIRED. Root domain/object field names exist, but exact schemas/types for primary_source_accounting_rows, external_sweep_candidate_rows, authority_reference_rows, and validation_summary are not defined, so independent generators can serialize different JCS inputs."
+  },
+  "BLOCKING_REVIEW_FINDINGS": [
+    {
+      "id": "XR1_PROJECTION_V2_HARDCODES_UNIVERSE_V1",
+      "severity": "P0_CONTROL",
+      "evidence": "CONTROL_P0_PROJECTION_V2 INPUT_MANIFESTS.FINDING_UNIVERSE says it must PASS NEXY_V16_RC1_3_CANONICAL_FINDING_UNIVERSE_CONTRACT_V1, while Universe V2 explicitly supersedes V1 to repair known completeness/determinism defects.",
+      "impact": "Literal V2 projection either consumes the defective V1 denominator or silently violates its own input contract by consuming V2. Neither path proves deterministic OPEN_CONTROL_P0_COUNT."
+    },
+    {
+      "id": "XR2_V2_CROSS_SCHEMA_ADAPTER_UNDEFINED",
+      "severity": "P0_CONTROL",
+      "evidence": "Universe V2 emits uppercase FINDING_ID/DEFINITION_PATH/DEFINITION_BLOB_SHA/TYPE_RAW/SEVERITY_RAW/STATUS_RAW fields. Projection V2 operates on normalized finding_id/finding_path/finding_blob_sha/type_raw/severity_raw/status_raw semantics but defines no versioned exact mapping/adapter from the V2 universe row.",
+      "impact": "Independent implementations can map or reject the same row differently; existing interop finding remains substantively open."
+    },
+    {
+      "id": "XR3_UNIVERSE_V2_HASH_COMPONENT_ROW_SCHEMAS_UNDEFINED",
+      "severity": "P0_CONTROL",
+      "evidence": "Universe V2 defines COMPLETE_FINDING_MANIFEST_ROOT_HASH root object field names and JCS, but does not define exact field sets/types/null rules for primary_source_accounting_rows, external_sweep_candidate_rows, authority_reference_rows, or validation_summary.",
+      "impact": "JCS canonicalizes a concrete object, not an underspecified object model; two compliant-looking generators can hash different structures for the same pinned tree."
+    },
+    {
+      "id": "XR4_EXTERNAL_SWEEP_NONDEFINITION_DISPOSITION_UNDEFINED",
+      "severity": "P0_CONTROL",
+      "evidence": {
+        "path": "NEXY-BUILD-CONTROL/COMMUNICATION/INBOX/C-50CBA901/F-7D1527AD-01-LINK.md",
+        "blob_sha": "551a91197a2c8b4f41f6d64eab9a5103f7590306",
+        "observation": "The path matches Universe V2 BASENAME_REGEX but the leading metadata contains TYPE/TASK_ID/FROM_CHAT/FINDING_REF/PRIORITY/STATUS and no FINDING_ID. Universe V2 defines primary-root classes but no exact external-candidate classification/disposition schema."
+      },
+      "impact": "Generators can disagree whether such a matched artifact is a blocking candidate conflict, ignorable non-finding infra, or parse error, changing completeness and root hash."
+    },
+    {
+      "id": "XR5_DEDUP_PARENT_CONTROL_CLASS_UNCONSTRAINED",
+      "severity": "P0_CONTROL",
+      "evidence": "Projection V2 dedup validity requires the canonical parent to exist and be non-SUPPORTING_DUPLICATE, but does not require that parent itself classify as P0 + CONTROL_BLOCKER. Counting excludes SUPPORTING_DUPLICATE rows independently.",
+      "impact": "A syntactically valid reviewed dedup can point at a PRODUCT_ONLY/HISTORICAL_NONBLOCKING/non-P0 parent and undercount an otherwise control-P0 supporting row. Cross-record consistency must fail closed."
+    }
+  ],
+  "REQUIRED_REPAIR": [
+    "Change CONTROL_P0_PROJECTION_V2 input universe binding to the accepted canonical Universe V2 generation (or later exact generation) and bind its exact contract blob SHA.",
+    "Define a versioned exact adapter/shared schema mapping Universe V2 normalized row fields into projection fields; missing/non-derivable fields must fail closed.",
+    "Define exact schemas, field types, null semantics, and ordering for every COMPLETE_FINDING_MANIFEST_ROOT_HASH component row/object, not only the top-level field names.",
+    "Define external sweep candidate disposition classes and exact rules for matched non-definition artifacts, including deterministic conflict behavior.",
+    "Require every valid SUPPORTING_DUPLICATE canonical parent to be a valid P0 CONTROL_BLOCKER canonical row for the same pinned universe, or otherwise make projection UNKNOWN_BLOCKING."
+  ],
+  "REVIEW_VERDICT": "CHANGES_REQUIRED_BEFORE_CANONICAL_ADOPTION",
+  "EXISTING_INTEROP_FINDING_DISPOSITION": "REMAINS_OPEN_SUPPORTED_BY_NEW_V2_EVIDENCE",
+  "OPEN_CONTROL_P0_ZERO_PROVABLE": false,
+  "CONTROL_P0_SET_ROOT_HASH_ACCEPTABLE": false,
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
