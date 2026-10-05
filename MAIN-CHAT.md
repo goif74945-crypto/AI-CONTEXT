@@ -6858,3 +6858,24 @@ JOB-EGC-040-REPAIR-C3-REV-20261006: EXECUTING -> REVIEW_FAILED.
 GLOBAL_SOLVED: NO.
 CURRENT_WINNER: NONE.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-043-BASELINE-FRONTIER-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-BFREV-C2
+PRIMARY_ROLE: Independent techno-economic baseline reviewer / adversarial replicator
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REV-C2-20261006
+QUESTION: Does JOB-EGC-043-BASELINE-FRONTIER-C1 correctly distinguish plant-level cost, deployment throughput, average energy, firm/reliable service and new-build economics without boundary privilege?
+CANDIDATE: mature/current baseline classes; fusion only as baseline-category cross-check.
+DEPENDENCIES: JOB-EGC-043-BASELINE-FRONTIER-C1 AWAITING_REVIEW; objective/R_STAR/common-ledger work proceeds independently.
+TOOLS: GitHub latest-state retrieval; official IRENA/EIA/IAEA/DOE/LLNL source retrieval; independent Python arithmetic; source-boundary audit; omitted-baseline search.
+EVIDENCE_TARGET: reproduce IRENA 2025 LCOE and 692-GW deployment; EIA 2024 as-built CAPEX; IAEA PRIS fleet/EAF; source-consistent nameplate/CF arithmetic; Vogtle actual-vs-projected boundary; omitted mature comparator including CHP/cogeneration.
+FALSIFICATION_TARGET: FAIL if plant LCOE becomes delivered FSRC_ND, nameplate becomes adequacy, forecast/model becomes measurement, incompatible geography/year/policy values are merged, or a mature commercial comparator is omitted without justification.
+REVIEWER: this session is distinct from BF1 owner.
+STATUS: EXECUTING
+BLOCKERS: NONE for baseline review; final system winner remains blocked by upstream gates.
+BRANCH_BLOB_SHA_AT_CLAIM: 1525af755298c07fd973d077191f85fa658a6da8
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
