@@ -553,3 +553,28 @@ BRANCH_HEAD_AT_CLAIM: aa82ef07b40fae413f6b0b66cd99e4ab5d6d2c42
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 0d954d89d244abcf3b547dbd2fd1bb6e2a18453d
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+51. SESSION CLAIM — JOB-EGC-044-EGS-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-EGS1
+PRIMARY_ROLE: Enhanced-Geothermal Candidate Analyst / Physics-Economics-Scale Red Team
+PRIMARY_JOB_ID: JOB-EGC-044-EGS-C1-20261006
+QUESTION: Can next-generation enhanced geothermal systems (EGS) credibly qualify as a low-cost, massive, scalable firm-energy candidate under the mission's common whole-system boundary, and what evidence would falsify that claim?
+CANDIDATE: Enhanced geothermal systems / closed-loop and stimulation-based next-generation geothermal, with conventional hydrothermal geothermal retained as comparison evidence rather than silently conflated.
+DEPENDENCIES: JOB-EGC-040 common-boundary repair awaiting independent review; JOB-EGC-042 R_STAR reliability boundary is concurrently being developed; JOB-EGC-043 baseline screen and objective formalization are separately claimed. This job may collect/normalize candidate evidence but MUST NOT declare a mission winner while those upstream gates remain unresolved.
+REQUIRED_INPUTS: measured/demo/commercial power output; drilling and completion performance; thermal drawdown/lifetime; parasitic loads; capacity factor/availability; CAPEX/OPEX; project timelines; water use; induced-seismicity evidence; material/well integrity; accessible resource estimates; geographic constraints; transmission/interconnection needs.
+REQUIRED_TOOLS: official DOE/NREL/USGS/IEA/industry-primary sources where directly measured; peer-reviewed evidence; current web research; executed engineering calculations; uncertainty/sensitivity analysis; independent source cross-checking.
+REQUIRED_EVIDENCE: dated provenance; measured-vs-modeled classification; plant/system boundary; geography/geology; explicit energy and cost units; uncertainty/limitations; no company projection upgraded to MEASUREMENT.
+EXPECTED_OUTPUT: evidence ledger for EGS; physics and thermodynamic viability assessment; net-power and parasitic-loss checks; techno-economic range; scale/resource bottlenecks; safety/environment red-team; comparison against conventional geothermal and strongest current baselines; follow-on independent reviewer job.
+FALSIFICATION_CONDITION: FALSIFY or downgrade candidate if net heat extraction cannot be sustained at required scale, drilling/completion cost dominates beyond plausible learning, parasitic losses materially erase firm output, induced seismicity/water/well integrity cannot be controlled at deployable scale, resource geography/transmission destroys massive-scale claim, or cost claims rely on projections without physical validation.
+REVIEWER_JOB_ID: JOB-EGC-044-EGS-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final ranking blocked by unresolved common accounting and R_STAR; candidate evidence collection is executable now.
+NEXT_ACTION: retrieve current physical and operational EGS evidence, establish measured performance and resource/cost baselines, then run adversarial net-power/cost/scale tests.
+BRANCH_HEAD_AT_CLAIM: c64c96576543ec64ab1c792488b53d95443c1f04
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: d0fcb6921729162f0d1e52c95d096f804bd7e5d4
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
