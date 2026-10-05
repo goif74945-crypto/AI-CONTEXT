@@ -1,0 +1,127 @@
+{
+  "RESULT_ID": "RESULT-TASK-DOC-C-ROLE-ENUM-001-C-SOL-20261005-1921-V8-ROLE-REVERIFY",
+  "TASK_ID": "TASK-DOC-C-ROLE-ENUM-001",
+  "REQ_ID": "REQ-DOC-C-ROLE-ENUM-001",
+  "VERIFIER_CHAT": "C-SOL-20261005-1921-V8-ROLE-REVERIFY",
+  "VERIFIED_AT": "2026-10-05T19:21:00+07:00",
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_REVERIFY": {
+    "final_doc_c_role_contracts": {
+      "verify_otac_response": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR"
+      ],
+      "session_me_rbac": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR"
+      ],
+      "session_me_response": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR"
+      ],
+      "logout_rbac": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR"
+      ],
+      "directive_create": [
+        "OWNER",
+        "OPERATOR"
+      ],
+      "directive_read": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR"
+      ],
+      "run_read": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR"
+      ],
+      "freeze_recover": [
+        "OWNER"
+      ],
+      "vault_commit": [
+        "OWNER",
+        "SYSTEM"
+      ],
+      "artifact_revisions": [
+        "OWNER",
+        "OPERATOR",
+        "AUDITOR"
+      ],
+      "incident_detail": [
+        "OWNER",
+        "AUDITOR"
+      ],
+      "audit_logs": [
+        "OWNER",
+        "AUDITOR"
+      ]
+    },
+    "final_doc_c_contains_public_user": false,
+    "exact_global_role_union_in_final_doc_c": false
+  },
+  "SOURCE_FACTS": {
+    "envelope_blob": "daf1156b3431150e667b5e18727d8abe9bdc9b75",
+    "role_schema": [
+      "OWNER",
+      "OPERATOR",
+      "AUDITOR",
+      "SYSTEM",
+      "PUBLIC_USER"
+    ],
+    "role_schema_runtime_consumers": [
+      "packages/contracts/envelope.ts -> EnvelopeBaseSchema.actor.role only"
+    ],
+    "role_schema_used_as_route_authorizer": false,
+    "prisma_blob": "0c557a1bb9b02859bb479655575c3566e201eb6f",
+    "prisma_role_enum": [
+      "OWNER",
+      "OPERATOR",
+      "AUDITOR",
+      "SYSTEM"
+    ],
+    "public_user_persistable_as_user_or_session_role": false,
+    "directive_read_test_blob": "560bc7a5bdc99211395faf5fd46c826e6312fd5e",
+    "directive_read_negative_roles": [
+      "SYSTEM",
+      "PUBLIC_USER",
+      "INVALID"
+    ],
+    "upstream_to_test_ai_compare": {
+      "ahead_by": 57,
+      "changed_files": 30
+    },
+    "changed_files_role_schema_consumer_check": {
+      "checked_changed_files": 29,
+      "direct_RoleSchema_hits": 0,
+      "PUBLIC_USER_hits": 0,
+      "envelope_import_hits_only_buildEnvelope": true
+    }
+  },
+  "ROUTE_LOCAL_FINDINGS": {
+    "PUBLIC_USER": {
+      "active_final_doc_c_authorization_path_found": false,
+      "global_schema_membership_is_not_authority": true,
+      "source_repair_to_delete_PUBLIC_USER_justified": false
+    },
+    "SYSTEM": {
+      "verify_otac": "MISMATCH_TRACKED_SEPARATELY: durable SYSTEM user role can be persisted into a human session; TASK-AUTH-SYSTEM-SESSION-ROLE-GATE-001",
+      "session_me": "MISMATCH_TRACKED_SEPARATELY: handler returns session.role without final-DOC-C human-role gate; REQ-DOC-C-4-2-SESSION-ME-RBAC-001",
+      "logout": "MATCH for role gate: auth.ts explicitly allows only OWNER/OPERATOR/AUDITOR before revocation"
+    }
+  },
+  "DECISION": "CLOSE_EXACT_GLOBAL_ENUM_REPAIR_PREMISE_AS_UNSUPPORTED",
+  "REQUIRED_BEHAVIOR": "Keep PUBLIC_USER membership decision separate from final-DOC-C route authorization. Repair route-local SYSTEM authority gaps under their existing tasks; do not delete PUBLIC_USER solely from this requirement.",
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "LIMITATION": "This result does not declare all role-related requirements verified. It closes only the speculative premise that PUBLIC_USER membership in shared RoleSchema is itself a final-DOC-C source defect.",
+  "STATUS": "PASS_SCOPED"
+}
