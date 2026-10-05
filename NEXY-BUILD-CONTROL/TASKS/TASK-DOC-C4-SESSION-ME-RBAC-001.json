@@ -1,0 +1,48 @@
+{
+  "TASK_ID": "TASK-DOC-C4-SESSION-ME-RBAC-001",
+  "REQ_ID": "REQ-DOC-C-4-2-SESSION-ME-RBAC-001",
+  "MISSION_ID": "MISSION-AUTH-001",
+  "FINDING_ID": "FINDING-DOC-C4-SESSION-ME-RBAC-001",
+  "GOAL": "Enforce the final DOC-C GET /api/session/me RBAC and response-role contract without weakening existing session, expiry, device-binding, persistence, or fail-closed behavior.",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_AUTHORITY_RBAC",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "SCOPE": [
+    "packages/api/auth.ts handleSessionMe",
+    "tests/coverage/auth-decision-paths.test.ts",
+    "focused session-me integration/contract tests if an existing canonical suite is located"
+  ],
+  "REQUIRED_BEHAVIOR": [
+    "Preserve missing-cookie, missing-session, revoked-session, expired-session, device-mismatch, missing-user-binding, and persistence fail-closed outcomes.",
+    "Allow successful canonical session-me responses only for OWNER, OPERATOR, and AUDITOR.",
+    "Reject SYSTEM or any other persisted role before a 200 response and never serialize it into the final DOC-C success role union.",
+    "Use the canonical RBAC denial policy and canonical envelope/error taxonomy; do not invent an endpoint-specific response shape.",
+    "Do not alter protected NEXY.ai."
+  ],
+  "TEST_MATRIX": [
+    "OWNER valid session -> existing canonical 200 response",
+    "OPERATOR valid session -> existing canonical 200 response",
+    "AUDITOR valid session -> existing canonical 200 response",
+    "SYSTEM valid otherwise-clean session -> canonical RBAC denial, never 200",
+    "missing session cookie -> existing 401 UNAUTHORIZED",
+    "revoked session -> existing SESSION_REVOKED path and suspicious reuse evidence",
+    "expired session -> existing AUTH_EXPIRED path and durable revoke",
+    "device mismatch -> existing DEVICE_MISMATCH path",
+    "persistence failure -> existing fail-closed DEPENDENCY_FAILURE behavior"
+  ],
+  "EVIDENCE_TARGET": [
+    "exact worker candidate SHA after namespace unblock",
+    "focused auth-decision-path execution",
+    "affected auth integration/contract tests",
+    "independent RBAC/authority review",
+    "post-integration exact-head revalidation on NEXY.AI-Test-AI"
+  ],
+  "NEXT_ACTION": "After an authoritative Git-valid worker isolation mechanism is established, refresh NEXY.AI-Test-AI HEAD, claim a single-writer lease, implement the smallest endpoint RBAC guard plus negative-role oracle, run focused/regression evidence, shadow-review, then integrate and reverify.",
+  "CREATED_BY": "GPT-5.6-SOL-CURRENT-INVOCATION"
+}
