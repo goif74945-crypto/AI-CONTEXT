@@ -1,0 +1,143 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_MISSION_ROTATION_DRAIN_REPAIR_V1",
+  "REPAIR_ID": "V16RC13-MISSION-ROTATION-ACTIVE-INTEGRATION-DRAIN-6F42C1A9-V1",
+  "STATUS": "CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+  "OWNER_CHAT": "C-SOL-20261005-0951-0800-V16RC13-6F42C1A9",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "AFFECTED_FINDING": "FINDING-V16RC13-MISSION-ROTATION-ACTIVE-INTEGRATION-DRAIN-AMBIGUITY-6F42C1A9",
+  "REPAIR_CLASS": "CONTROL_LAYER_CANONICAL_INTERPRETATION_AND_TRANSITION_PROTOCOL",
+  "LAW_TEXT_CHANGE_REQUIRED": false,
+  "AUTHORITY_BASIS": [
+    "[039]-[041] require expected-version CAS for every Mission Fence mutation.",
+    "[042]-[045] serialize MISSION_ROTATION as one global transition with immutable intent.",
+    "[134]-[145] make ACTIVE_INTEGRATION the sole integration authority and preserve actual Git ref truth across crash.",
+    "[161]-[163] order mission rotation as close gates, increment epochs, drain old authority, install new descriptor, rebind namespaces, reopen.",
+    "[236], [243]-[245] forbid competing missions, stale integration, blind target movement, and erasure of ambiguous Git truth."
+  ],
+  "CANONICAL_INTERPRETATION": "In [163], 'drain old authority' includes the complete pre-existing ACTIVE_INTEGRATION lifecycle and its external Git-ref truth. The new mission generation is not installed until that authority is terminally reconciled and cleared.",
+  "ROTATION_INTENT_REQUIRED_FIELDS": [
+    "TARGET_AUTHORITY_KEY",
+    "OLD_MISSION_ID",
+    "OLD_MISSION_GENERATION",
+    "NEW_MISSION_ID",
+    "NEW_MISSION_GENERATION",
+    "EXPECTED_MISSION_FENCE_STATE_VERSION",
+    "EXPECTED_TARGET_HEAD_SHA",
+    "EXPECTED_TARGET_TREE_SHA",
+    "ENGINEERING_EPOCH_BEFORE",
+    "MEMBERSHIP_EPOCH_BEFORE",
+    "ACTIVE_INTEGRATION_ID_AT_INTENT_OR_NULL",
+    "INTENT_CREATED_FROM_CONTROL_SNAPSHOT"
+  ],
+  "ENTRY_CAS": {
+    "EXPECTED": [
+      "TRANSITION_KIND == NONE",
+      "MISSION_STATUS permits rotation",
+      "ACTIVE_MISSION_ID / ACTIVE_MISSION_GENERATION exactly equal OLD mission in intent",
+      "actual Mission Fence STATE_VERSION equals expected",
+      "target identity and active integration identity still equal the intent observations"
+    ],
+    "ATOMIC_WRITES": [
+      "TRANSITION_KIND = MISSION_ROTATION",
+      "TRANSITION_GENERATION = prior + 1",
+      "ACTIVE_TRANSITION_ID = immutable rotation intent id",
+      "ACTIVE_TRANSITION_INTENT_HASH = immutable intent hash",
+      "ACTIVE_TRANSITION_STATE = DRAIN_OLD_AUTHORITY",
+      "WORK_ADMISSION_GATE = CLOSED",
+      "MUTATION_GATE = CLOSED",
+      "INTEGRATION_GATE = CLOSED",
+      "ENGINEERING_EPOCH = prior + 1",
+      "MEMBERSHIP_EPOCH = prior + 1",
+      "STATE_VERSION = expected + 1"
+    ],
+    "PRESERVE": [
+      "ACTIVE_MISSION_ID remains OLD_MISSION_ID",
+      "ACTIVE_MISSION_GENERATION remains OLD_MISSION_GENERATION",
+      "existing ACTIVE_INTEGRATION durable identity/state remains preserved until reconciled"
+    ],
+    "EFFECT": "All new normal old-generation work loses authority at the barrier, while the old mission generation remains canonical solely to finish deterministic drain/reconciliation before cutover."
+  },
+  "OLD_AUTHORITY_DRAIN": {
+    "NORMAL_AUTHORITY": [
+      "No new normal membership, mutation lease, task mutation authority, or integration reservation may be admitted.",
+      "Old memberships/leases are stale because ENGINEERING_EPOCH and MEMBERSHIP_EPOCH changed."
+    ],
+    "PREEXISTING_ACTIVE_INTEGRATION": [
+      "A pre-entry ACTIVE_INTEGRATION is a drain/recovery object, not new normal integration authority.",
+      "RESERVED or REF_UPDATE_PENDING with no issued external Git CAS may be deterministically cancelled and cleared with evidence.",
+      "REF_UPDATE_IN_PROGRESS must wait for the issued ref operation to return or otherwise establish a transport-level completion/fencing fact, then reconcile actual target HEAD using [144]-[145]. A single early HEAD read is not sufficient while an external CAS may still be in flight.",
+      "If actual HEAD == EXPECTED after the operation is known quiescent, classify NOT_COMMITTED and clear/reconcile.",
+      "If actual HEAD == CANDIDATE, continue COMMITTED_PENDING_VERIFICATION and finish verification/recovery under OLD mission authority until terminal.",
+      "If actual HEAD is neither, set UNKNOWN_REQUIRES_RECONCILIATION and keep all gates closed.",
+      "REGRESSION / ROLLBACK_PENDING / FORWARD_FIX_PENDING must reach a reconciled terminal target state under the existing incident/recovery chain before cutover.",
+      "No unrelated candidate may integrate during drain."
+    ]
+  },
+  "DRAIN_COMPLETE_PROOF_REQUIRED": [
+    "ACTIVE_INTEGRATION == null",
+    "INTEGRATION_HEALTH == HEALTHY",
+    "zero remaining normal OLD-generation mutation/integration authority",
+    "actual target HEAD and TREE captured after integration transport is quiescent and all recovery is terminal",
+    "target HEAD/TREE are bound into immutable DRAIN_COMPLETE evidence",
+    "old-authority manifests and relevant control shards show no unresolved mutation/integration authority",
+    "all ambiguity is resolved; UNKNOWN_REQUIRES_RECONCILIATION forbids cutover"
+  ],
+  "CUTOVER_CAS": {
+    "LINEARIZATION_POINT": "The Mission Fence expected-version CAS that changes ACTIVE_MISSION_GENERATION from G to G+1 after verified drain.",
+    "EXPECTED": [
+      "ACTIVE_TRANSITION_ID and state == DRAIN_COMPLETE_READY_FOR_CUTOVER",
+      "ACTIVE_MISSION_ID / GENERATION still equal OLD mission",
+      "ACTIVE_INTEGRATION == null",
+      "INTEGRATION_HEALTH == HEALTHY",
+      "gates remain CLOSED",
+      "ENGINEERING_EPOCH and MEMBERSHIP_EPOCH equal entry-barrier generations",
+      "actual target HEAD/TREE equal DRAIN_COMPLETE evidence",
+      "NEW_MISSION_GENERATION == OLD_MISSION_GENERATION + 1",
+      "STATE_VERSION equals expected"
+    ],
+    "ATOMIC_WRITES": [
+      "ACTIVE_MISSION_ID = NEW_MISSION_ID",
+      "ACTIVE_MISSION_GENERATION = NEW_MISSION_GENERATION",
+      "install/rebind new mission descriptor and generation-scoped canonical namespaces",
+      "ACTIVE_TRANSITION_STATE = CUTOVER_COMMITTED_PENDING_REBIND",
+      "STATE_VERSION = expected + 1"
+    ],
+    "RULE": "No G2 authority exists before this CAS; no unresolved G1 integration exists when this CAS executes."
+  },
+  "POST_CUTOVER_REBIND": [
+    "All participants renew/create memberships bound to NEW_MISSION_ID/NEW_MISSION_GENERATION and current epochs.",
+    "Tasks, leases, queues and generation-scoped namespaces are revalidated/rebound; stale G1 objects remain historical evidence only.",
+    "No gate reopens until the authoritative projection proves only G2-normal authority is eligible.",
+    "Final transition CAS reopens permitted gates, clears transition state, and advances STATE_VERSION."
+  ],
+  "CRASH_RECOVERY": [
+    "Crash before ENTRY_CAS: no authority change; discard/revalidate intent.",
+    "Crash after ENTRY_CAS while old integration exists: old mission remains canonical, gates remain closed, and reconciliation resumes from durable ACTIVE_INTEGRATION plus actual Git ref truth.",
+    "Crash after external Git CAS but before control recording: recover via [144]-[145] only after the issued operation is known quiescent; never assume an early EXPECTED HEAD means the CAS cannot still land.",
+    "Crash after DRAIN_COMPLETE evidence but before CUTOVER_CAS: revalidate ACTIVE_INTEGRATION null, health, target HEAD/TREE, epochs, transition id, and STATE_VERSION before retry.",
+    "Crash after CUTOVER_CAS before rebind: G2 is canonical but gates remain closed; resume rebind. Never reactivate G1 normal authority.",
+    "Any irreconcilable external state keeps transition fail-closed as UNKNOWN_REQUIRES_RECONCILIATION."
+  ],
+  "REQUIRED_TORTURE_TESTS": [
+    "MISSION_ROTATION races ACTIVE_INTEGRATION in RESERVED.",
+    "MISSION_ROTATION races REF_UPDATE_PENDING before external CAS issue.",
+    "MISSION_ROTATION enters while REF_UPDATE_IN_PROGRESS; Git CAS finishes after entry barrier but before drain completes. G2 cutover must wait and bind the resulting target truth.",
+    "Git CAS transport pauses; an early HEAD read still shows EXPECTED; CAS later succeeds. Rotation must not cut over from the early read.",
+    "COMMITTED_PENDING_VERIFICATION completes during drain.",
+    "REGRESSION, ROLLBACK_PENDING and FORWARD_FIX_PENDING each block G2 cutover until terminal recovery.",
+    "UNKNOWN_REQUIRES_RECONCILIATION permanently blocks cutover until reconciled.",
+    "A new integration reservation races ENTRY_CAS; Mission Fence CAS ordering permits only one winner and a closed integration gate prevents later reservation.",
+    "Crash immediately before and after CUTOVER_CAS preserves exactly one active mission generation."
+  ],
+  "ACCEPTANCE_FOR_FINDING_RESOLUTION": [
+    "Independent reviewer confirms [163] drain ordering is preserved and old mission remains canonical through integration reconciliation.",
+    "Independent reviewer confirms no G1 Git side effect can occur after G2 mission-generation cutover.",
+    "Independent reviewer confirms early HEAD reads cannot falsely prove an in-flight Git CAS quiescent.",
+    "Independent reviewer confirms one Mission Fence CAS is the sole G1-to-G2 generation linearization point.",
+    "Repair remains fail-closed for UNKNOWN_REQUIRES_RECONCILIATION."
+  ],
+  "FINDING_DISPOSITION_IF_VERIFIED": "RESOLVED_BY_CANONICAL_ROTATION_DRAIN_PROTOCOL",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
