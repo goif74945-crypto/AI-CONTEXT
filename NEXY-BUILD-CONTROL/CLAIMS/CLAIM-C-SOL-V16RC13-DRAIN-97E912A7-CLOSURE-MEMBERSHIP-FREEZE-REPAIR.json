@@ -9,6 +9,8 @@
   "CONFIRMED_REVIEW": "REVIEW-C-SOL-20261005-0924-0800-V16RC13-C01D48AF-F0D72593",
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_REPAIR_DESIGN_AND_REVIEW_HANDOFF",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Design a control-layer closure membership freeze that prevents post-pin sharded membership TOCTOU while preserving clause [197] audit-only post-barrier participation."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Design a control-layer closure membership freeze that prevents post-pin sharded membership TOCTOU while preserving clause [197] audit-only post-barrier participation.",
+  "RESULT": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REPAIRS/CLOSURE-MEMBERSHIP-FREEZE-97E912A7-V1.json",
+  "VERDICT": "REPAIR_CANDIDATE_PUBLISHED_FINDING_REMAINS_OPEN_PENDING_INDEPENDENT_REVIEW"
 }
