@@ -13308,3 +13308,24 @@ FALSIFICATION_CONDITION: arbitrary EROI cutoff remains hidden; probability can b
 STATUS: OPEN
 BLOCKERS: NONE.
 NEXT_ACTION: distinct session independently attacks OBJECTIVE_V2.
+
+
+======================================================================
+66. SESSION CLAIM — JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-STATEBOUND-REV-C5
+PRIMARY_ROLE: Independent chronological inventory/accounting reviewer / adversarial replicator
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+QUESTION: Do STATEBOUND-S0..S6 prevent free pre-horizon inventory, unpaid terminal depletion and terminal-credit gaming without invalidly forcing seasonal/noncyclic stocks to equal their initial state?
+DEPENDENCIES: STATEBOUND-C4 AWAITING_REVIEW; FINPV/time-basis remains separate upstream integration dependency.
+REQUIRED_TOOLS: independent algebra; Python numerical counterexamples; source-boundary audit; battery/reservoir/additional-state tests; double-count/PV ownership audit.
+EVIDENCE_TARGET: reproduce summed P4 boundary term; free-initial-state exploit; cyclic closure; non-equal seasonal target; brownfield inventory provenance; terminal settlement/arbitrage; tail-energy denominator exclusion.
+FALSIFICATION_TARGET: any candidate improves served energy or cost with unmatched initial/terminal inventory, arbitrary endpoint target/valuation, candidate-specific state target, or duplicate residual credit.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006-STATEBOUND-REV-C5
+BRANCH_HEAD_AT_CLAIM: 31497dbf0f3cbebaefe1fbc0fefc2ffdcdada483
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 0875b9839ea9bdb9639202f0105e66275700c747
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
