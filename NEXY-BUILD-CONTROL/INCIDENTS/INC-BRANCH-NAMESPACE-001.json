@@ -24,5 +24,10 @@
     "Use worker prefix work/NEXY.AI-Test-AI/<TASK_ID>",
     "Rename integration branch and preserve current branch as protected historical ref"
   ],
-  "STATUS": "OPEN"
+  "STATUS": "SUPERSEDED",
+  "PRIOR_STATUS": "OPEN",
+  "SUPERSEDED_BY": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "SUPERSESSION_RECORD": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SUPERSESSIONS/SUPERSESSION-V16RC13-LEGACY-WORKER-NAMESPACE-P0-001.json",
+  "SUPERSESSION_REASON": "The incident proves the literal legacy worker prefix is impossible, but V16-RC1.3 no longer mandates that literal prefix. Isolation and no-direct-integration rules remain mandatory.",
+  "PRODUCT_MUTATION_AUTHORIZED": false
 }
