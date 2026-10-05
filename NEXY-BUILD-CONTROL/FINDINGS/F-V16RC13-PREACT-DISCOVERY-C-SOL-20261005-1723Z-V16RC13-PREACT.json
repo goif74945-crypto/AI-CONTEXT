@@ -1,0 +1,46 @@
+{
+  "FINDING_ID": "F-V16RC13-PREACT-DISCOVERY-C-SOL-20261005-1723Z-V16RC13-PREACT",
+  "TYPE": "V16_RC1_3_PREACTIVATION_CONTROL_AUTHORITY_DRIFT",
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "CREATOR_CHAT": "C-SOL-20261005-1723Z-V16RC13-PREACT",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "TARGET_AUTHORITY_OBJECT": {
+    "domain": "NEXY_TARGET_AUTHORITY_V1",
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "target_ref": "refs/heads/NEXY.AI-Test-AI"
+  },
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "LEGACY_EPOCH": "EPOCH-20261005-b35ee1bf-608426cb",
+  "LEGACY_CONSTITUTION": "NEXY::TERMINAL-EFFICIENT-CONTINUOUS-CLOSURE-CONSTITUTION-V11",
+  "V16_DIRECTIVE": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "FACTS": [
+    "AI-CONTEXT AUTHORITY/EPOCH.json is still STATUS ACTIVE under V11.",
+    "Current NEXY.AI-Test-AI HEAD is 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43 with tree a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c.",
+    "Current protected NEXY.ai HEAD is the same 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43.",
+    "Legacy SOURCE_BASELINE binds NEXY.AI-Test-AI to 608426cb30398b1f3461866f7079d2a435c96b96.",
+    "Git compare proves 608426cb30398b1f3461866f7079d2a435c96b96 is 57 commits ahead of 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43 with merge base equal to 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43.",
+    "At least six legacy lease records remain STATUS ACTIVE: T-5A04C0D1, T-6C3F12A9, T-6F42B8E1, T-6F42C9E2, T-768BB2A7, T-8A3C1D72.",
+    "An OPEN P0 branch-namespace finding exists under legacy law.",
+    "No V16-RC1.3 Mission Fence or Bootstrap Fence artifact was located on AI-CONTEXT main during discovery.",
+    "No durable exact-byte V16-RC1.3 constitution artifact/hash was located on AI-CONTEXT main during discovery.",
+    "The attached authoritative Spec bytes hash to b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7, matching the legacy locked SPEC_HASH exactly."
+  ],
+  "CONCLUSION": "PHASE_0 discovery is sufficient to enter PHASE_1_STATIC_CONTROL_REPAIR, but PHASE_1 cannot advance to legacy drain/activation because static/control zero-P0 proof and legacy authority drain prerequisites are not met.",
+  "BLOCKS": [
+    "V16_RC1_3_ATOMIC_ACTIVATION",
+    "PRODUCT_MUTATION_AUTHORITY",
+    "TARGET_INTEGRATION_AUTHORITY"
+  ],
+  "REQUIRED_ACTIONS": [
+    "Persist the exact V16-RC1.3 constitution bytes in canonical control state and compute EFFECTIVE_CONSTITUTION_HASH using the specified normalization.",
+    "Establish one pre-genesis BOOTSTRAP_FENCE_STATE for TARGET_AUTHORITY_KEY using versioned CAS semantics.",
+    "Freeze legacy admission so compliant V11 participants cannot receive fresh mutation/integration authority.",
+    "Reconcile every active legacy lease, claim, and integration authority against the actual current target ref.",
+    "Construct a complete canonical finding manifest and derive CONTROL_P0_SET_ROOT_HASH plus OPEN_CONTROL_P0_COUNT from the full manifest.",
+    "Recompute current target/source baselines and all genesis roots from the actual target state before first Mission Fence creation.",
+    "Do not mutate product code until atomic activation succeeds."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE"
+}
