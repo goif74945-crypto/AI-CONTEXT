@@ -8618,3 +8618,33 @@ WRITE_INTEGRITY:
 - file SHA read: 1e24320b4522e53f24a37ab2c7bf1ace886a7d40
 - stale-write check: exact current blob SHA used; concurrent change must reject
 - commit/result: pending this commit
+
+
+======================================================================
+40. JOB-EGC-015 CLAIM — FINANCE / WACC SENSITIVITY FRAMEWORK
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-FIN015-K1-20261005
+PRIMARY_ROLE: Techno-Economic / Finance Sensitivity Analyst
+PRIMARY_JOB_ID: JOB-EGC-015
+QUESTION: How do CAPEX, OPEX, fuel, lifetime, construction timing and real WACC propagate into same-service delivered cost, and when can plausible finance assumptions reverse candidate rankings?
+DEPENDENCIES: Objective anchors exist; final ranking awaits verified common boundary, but finance-model construction is executable now.
+TOOLS: Authoritative LCOE/finance methodology; deterministic calculation; sensitivity and uncertainty analysis.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / ASSUMPTION / SENSITIVITY.
+FALSIFICATION_TARGET: Mixed nominal/real values, hidden construction financing, candidate-specific WACC favoritism, or a winner that flips under plausible finance assumptions without NOT_STABLE classification.
+REVIEWER: JOB-EGC-025 or distinct independent finance reviewer.
+STATUS: CLAIMED
+
+JOB_ID: JOB-EGC-015
+ROLE: Techno-economic finance sensitivity
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-FIN015-K1-20261005
+TITLE: Candidate-neutral cost/finance sensitivity framework
+TARGET_CANDIDATE: ALL
+EXPECTED_OUTPUT: Reproducible equations and scenario matrix for capital recovery, OPEX/fuel and construction timing, plus ranking-reversal criteria.
+FALSIFICATION_CRITERIA: Model cannot reproduce source conventions, mixes dollar years or real/nominal WACC, or hides a ranking reversal.
+REVIEWER_JOB_ID: JOB-EGC-025
+BLOCKERS: Final numerical ranking awaits verified common boundary and candidate data; framework construction is not blocked.
+NEXT_ACTION: Retrieve authoritative methodology, define finance normalization, execute WACC/lifetime sensitivity, red-team reversals, submit AWAITING_REVIEW.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+WRITE_INTEGRITY_PREWRITE_HEAD: 954cb89ece7e424bd1815efdb659ae70617b0db6
+WRITE_INTEGRITY_PREWRITE_FILE_SHA: 906a777647a51348fad67dcfba6690308a415dc9
