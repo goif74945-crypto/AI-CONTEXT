@@ -56,7 +56,7 @@
   "STATUS": "PARTIAL",
   "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "EVIDENCE": {
-    "route_blob": "3f48be8c? refresh not captured in record creation",
+    "route_blob": "e81c14e0f38f6d94b4dc91f84dfd4336e10ce087",
     "directives_blob": "8cd214c87e5aa55561e52347802ec8172feadc36",
     "read_test_blob": "560bc7a5bdc99211395faf5fd46c826e6312fd5e",
     "confirmed": [
@@ -67,7 +67,9 @@
     ],
     "unresolved": [
       "Stable directive reads call emitAuthorizedPipelineOutput, which persists outputEmittedTick and OUTPUT_EMITTED audit/event evidence. Final DOC-C defines an emission concept and revoke-release-before-emission law but does not state the canonical emission entrypoint; this behavior is therefore not promoted to defect or match without further authority mapping."
-    ]
+    ],
+    "run_state_blob": "e162efc8b2a45014bcefbd60dc67a95d8a1e1003",
+    "evidence_integrity_note": "All source blob SHAs refreshed from NEXY.AI-Test-AI at 608426cb30398b1f3461866f7079d2a435c96b96; no placeholder evidence remains."
   },
   "RECORDED_BY": "C-SOL-20261005-1923-V8"
 }
