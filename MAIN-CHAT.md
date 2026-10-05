@@ -4032,3 +4032,59 @@ FALSIFICATION_CONDITION: repair FAILS if a non-feasible PSH site can enter, a fe
 STATUS: OPEN
 BLOCKERS: final numerical system frontier still depends on frozen geography/service, reviewed FSRC_ND and reviewed R_STAR.
 NEXT_ACTION: distinct session independently reviews C4 before baseline completeness is promoted.
+
+
+======================================================================
+FINREV2 ADDENDUM — VISUAL + SPEND-TIMING
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0410+07-FINREV2
+PARENT_REVIEW: JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+TRUTH_CLASS: EXTERNAL_FACT + CALCULATION
+PURPOSE: strengthen the already-recorded PASS_WITH_QUALIFICATIONS; no verdict change.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+EVIDENCE_ID: REV-EGC-046-FIN-VISUAL-ADD01
+SOURCE: U.S. EIA/Sargent & Lundy AEO2025 capital-cost PDF
+URL: https://www.eia.gov/analysis/studies/powerplants/capitalcost/pdf/capital_cost_AEO2025.pdf
+METHOD: direct PDF screenshot visual inspection after an earlier cache-miss.
+VISUAL_SCREENSHOT_VERIFICATION: COMPLETED
+OBSERVED:
+- PDF p.104, Case 9 Advanced Nuclear (Brownfield), 2xAP1000: development/permitting/engineering 32 months; plant construction 52 months; total lead 84 months; operating life 40 years.
+- PDF p.123, Case 13 Onshore Wind 200 MW: development/permitting/engineering 12 months; plant construction 9 months; total lead 21 months; operating life 25 years. Text immediately above the table states the 2023-dollar overnight estimate excludes AFUDC/interest during construction.
+- PDF p.139, Case 16 Solar PV single-axis tracking 150 MWac: development/permitting/engineering 24 months; plant construction 12 months; total lead 36 months; operating life 35 years.
+- report introduction visually states S&L overnight costs exclude financing costs.
+CORRECTION_TO_PRIOR_REVIEW_RECORD:
+The earlier FINREV2 record said visual screenshot verification was not completed because of a transient cache miss. That limitation is now RESOLVED. No numeric duration claim changes.
+BOUNDARY:
+These remain modeled reference cases, not realized fleet distributions. The nuclear case is explicitly brownfield; it must not be silently relabeled generic greenfield.
+
+EVIDENCE_ID: REV-EGC-046-FIN-SPEND-ADD02
+CLAIM_ID: CLAIM-EGC-046-SPENDTIMING-MATERIAL
+TOOL: independent Python arithmetic
+METHOD:
+For T=52/12 years and annual effective r=7%, compare the parent uniform-continuous construction-spend factor against deliberately illustrative three-point spend profiles. Accumulation to COD uses (1+r)^age.
+EQUATIONS:
+F_uniform=((1+r)^T-1)/(T*ln(1+r)).
+F_profile=sum_i w_i*(1+r)^age_i.
+INPUTS:
+front-loaded=(50% at construction start,30% midpoint,20% COD);
+back-loaded=(20% start,30% midpoint,50% COD).
+OUTPUT:
+F_uniform=1.16203502148.
+F_front=1.21771209705 = +4.79134% vs uniform.
+F_back=1.11550386231 = -4.00428% vs uniform.
+Front/back span=9.16252%.
+If, only as a boundary stress test, uniform spending were spread over the full 84-month EIA reference lead rather than 52-month plant-construction interval: F_84m=1.27907093738, +10.07163% vs F_52m.
+UNCERTAINTY/LIMITATION:
+Profiles are adversarial toy profiles, not empirical spend curves and not candidate facts.
+CONCLUSION:
+Duration alone is insufficient for candidate-specific financed-CAPEX estimation. Spend timing and finance-exposure start/end boundary can move the financed-capital factor by ranking-material amounts. Therefore downstream candidate ranking MUST NOT promote the 52-month uniform factor to realized nuclear financing without sourced spend timing.
+REPLICATION_STATUS: SAME_SESSION_INDEPENDENT_OF_PARENT_IMPLEMENTATION / DISTINCT_SESSION_REVIEW_NOT_REQUIRED_UNLESS_USED_RANKING-CRITICALLY.
+
+REVIEW_VERDICT_UPDATE:
+JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006 remains VERIFIED_AS_METHOD_WITH_QUALIFICATIONS.
+JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006 remains REVIEW_COMPLETE / PASS_WITH_QUALIFICATIONS.
+No final cost ranking is verified.
+CURRENT_WINNER: NONE.
