@@ -6,7 +6,7 @@
   "BASE_BRANCH": "NEXY.AI-Test-AI",
   "BASE_SHA": "8c1256134b7f2547386b60f70405b86214843849",
   "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001/C-SOL-20261006-0143-PRODUCT-QUEUE-01",
-  "STATUS": "ACTIVE",
+  "STATUS": "BLOCKED_RUNTIME_VERIFICATION",
   "PRIORITY": "P0",
   "SCOPE": [
     "apps/web/app/api/auth/owner-recovery/route.ts",
@@ -22,5 +22,20 @@
     "REVIEW-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-C-SOL-20261005-1923",
     "current user NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD directive"
   ],
-  "STARTED_AT": "2026-10-06T01:43:00+07:00"
+  "STARTED_AT": "2026-10-06T01:43:00+07:00",
+  "CANDIDATE_HEAD": "4be46d148fa0ded281c89ae3d101760fe46d792a",
+  "PULL_REQUEST": 51,
+  "PULL_REQUEST_STATE": "DRAFT_UNMERGED",
+  "STATIC_REVIEW": {
+    "status": "PASS_WITH_RUNTIME_PENDING",
+    "diff": "remove 7-line POST route adapter; add 8-line route-absence contract oracle",
+    "reference_graph": "no other runtime caller of handleOwnerRecoveryRequest found outside removed route; direct imports are tests only"
+  },
+  "RUNTIME_VERIFICATION": {
+    "status": "BLOCKED",
+    "reason": "GitHub Actions repository-wide runner allocation failure: jobs complete failure with runner_id=0 and zero steps. No commit-bound external execution backend available."
+  },
+  "INTEGRATION": "NOT_ATTEMPTED",
+  "MUTATION_SCOPE_RELEASED": true,
+  "NEXT_LEGAL_ACTION": "Independent review plus exact candidate runtime tests; refresh against current integration HEAD and merge only when green."
 }
