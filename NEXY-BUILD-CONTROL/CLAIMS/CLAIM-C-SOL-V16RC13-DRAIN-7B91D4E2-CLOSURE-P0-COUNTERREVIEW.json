@@ -7,6 +7,8 @@
   "FINDING_ID": "FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593",
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_REVIEW_EVIDENCE_ONLY",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Determine whether the reported terminal closure race is already fail-closed by the literal interaction of [197], [209], [210]-[216], without changing V16-RC1.3 law text."
+  "STATUS": "SUPERSEDED",
+  "PURPOSE": "Determine whether the reported terminal closure race is already fail-closed by the literal interaction of [197], [209], [210]-[216], without changing V16-RC1.3 law text.",
+  "SUPERSEDED_BY_REVIEW": "REVIEW-C-SOL-20261005-0924-0800-V16RC13-C01D48AF-F0D72593",
+  "SUPERSESSION_REASON": "Concurrent independent review completed with VERDICT=CONFIRMED_P0. Do not publish competing self-certified disposition; preserve fail-closed finding authority."
 }
