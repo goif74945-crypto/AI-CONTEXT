@@ -9951,3 +9951,199 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+36. JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005 EVIDENCE PACKAGE
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+PRIMARY_JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+
+### CLAIM REL-B1-01 — PROJECT ENERGY-COVERAGE PERCENT IS NOT GRID RESOURCE ADEQUACY
+
+TRUTH_CLASS: SOURCE_FACT
+FINDING:
+- IRENA 2026 explicitly defines its firm-renewables "reliability target" at the ASSET level as the ratio of annual energy delivered by the renewable+storage configuration to total annual demand under a flat 8,760-hour load profile.
+- IRENA explicitly states that this definition differs from standard power-system reliability concepts, which also concern adequacy and security and depend on the broader grid/generation mix.
+- Therefore IRENA 90/95/99% firm-LCOE results MUST NOT be relabelled as a grid meeting a conventional adequacy standard.
+
+### CLAIM REL-B1-02 — COMMON SERVICE COMPARISON MUST USE MULTI-METRIC ADEQUACY, NOT NAMEPLATE OR LOLE ALONE
+
+TRUTH_CLASS: SOURCE_FACT + INFERENCE
+SOURCE-GROUNDED OBSERVATIONS:
+- NERC 2025 LTRA defines adequacy as ability to supply aggregate power AND energy requirements at all times, accounting for scheduled and expected unscheduled outages.
+- NERC states most current North American resource-adequacy targets are based on a one-day/event load loss in a ten-year planning requirement, and many assessment areas use 0.1 day/year LOLE.
+- NERC also states capacity/reserve-margin criteria alone are insufficient for modern mixes and uses all-hours probabilistic LOLH and normalized EUE/NEUE to capture timing, duration and magnitude of shortfalls.
+- In the 2025 LTRA risk framework, High Risk includes annual LOLH >2.4 h/y OR annual normalized EUE >0.002% (20 ppm) OR failure of the applicable regulatory/system-operator adequacy target. Elevated Risk includes LOLH 0.1–2.4 h/y or NEUE 2–20 ppm under the report's criteria. Normal Risk uses LOLH <0.1 h/y, NEUE <0.0002% (2 ppm), and meeting the applicable adequacy target with reserves available under plausible once-per-decade stress.
+
+IMPORTANT LIMITATION:
+- These NERC Normal/Elevated/High thresholds are assessment risk-classification references, NOT declared here as a universal legal reliability standard for every geography.
+- Regional/operator criteria remain authoritative for a real deployment geography.
+
+### CLAIM REL-B1-03 — PROPOSED COMMON RELIABILITY/SERVICE BOUNDARY
+
+TRUTH_CLASS: INFERENCE / PROPOSED_METHOD
+PROPOSAL_FOR_INDEPENDENT_REVIEW:
+1. Candidate and baseline MUST serve the same hourly load trace at the same defined delivery node/geography and weather/sample horizon.
+2. Candidate and baseline MUST meet the same applicable regulator/system-operator resource-adequacy target. A weaker reliability target for the cheaper candidate is forbidden.
+3. Report at minimum: applicable LOLE/LOLP or regional criterion; LOLH; EUE and normalized EUE/NEUE; plus reserve/firming capacity and transmission/import assumptions.
+4. Perform all-hours probabilistic adequacy analysis with correlated weather/resource/load states; include fuel-supply, hydro/storage energy limits, forced outages, transmission constraints/import scarcity, and common-mode/extreme-weather sensitivity where relevant.
+5. Cost of storage, firming, reserve, redundant capacity, attributable transmission, fuel assurance, and replacement needed to satisfy the target is INSIDE C_DELIVERED.
+6. NERC 2025 Normal/Elevated/High risk thresholds may be used as transparent North-American reference sensitivities, but a project's actual jurisdictional criterion governs if different.
+7. Project-level firm-LCOE energy-coverage percentages (e.g. IRENA 95%) are diagnostic scenario inputs only; they do not satisfy the common grid-service boundary by themselves.
+
+### CLAIM REL-B1-04 — QUANTITATIVE BOUNDARY-MISMATCH DIAGNOSTIC
+
+TRUTH_CLASS: CALCULATION
+METHOD:
+- IRENA 95% energy-coverage target leaves a modelled annual-energy gap of 5% by definition if the target is binding; 99% leaves 1%.
+- NERC 2025 LTRA High-Risk NEUE reference is 0.002% (20 ppm); Normal-Risk reference is <0.0002% (2 ppm).
+- At the separate 1-TW-average scale anchor (8,760 TWh/y), 5% = 438 TWh/y, 1% = 87.6 TWh/y, 0.002% = 0.1752 TWh/y = 175.2 GWh/y, and 0.0002% = 0.01752 TWh/y = 17.52 GWh/y.
+- Pure percentage ratios are 5% / 0.002% = 2,500 and 1% / 0.002% = 500.
+
+BOUNDARY WARNING:
+- These ratios MUST NOT be interpreted as direct reliability equivalence. IRENA's percentage is deterministic/project-level annual energy coverage under its optimisation setup; NERC NEUE is an expected probabilistic system-risk metric. The enormous numerical gap is evidence that the metrics inhabit different service boundaries and cannot be substituted for one another.
+
+---------------------------------------------------------------------
+TOOL EVIDENCE RECORDS
+---------------------------------------------------------------------
+
+TOOL_EVIDENCE_ID: EV-REL-B1-001
+JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005
+CLAIM_ID: REL-B1-01
+TOOL_OR_METHOD: Official report retrieval + PDF visual inspection
+EXECUTION_DATE: 2026-10-05
+SOURCE: IRENA, 24/7 renewables: The economics of firm solar and wind
+SOURCE_DATE: May 2026
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf ; ISBN 978-92-9260-736-4
+INPUTS: Annex modelling framework and reliability-target definition.
+METHOD: Direct text extraction plus screenshot inspection of Figure 22/model description.
+OUTPUT: Reliability target = share of total annual flat demand covered by modelled renewable+storage configuration; report explicitly distinguishes this from standard power-system reliability.
+UNITS: percent annual energy coverage.
+UNCERTAINTY: None material for source definition; model application remains site/scenario dependent.
+ASSUMPTIONS: NONE added.
+LIMITATIONS: Asset-level cost model, not full system-adequacy/security model.
+REPRODUCTION_METHOD: Inspect report Annex A around Figure 22 and reliability-target note.
+REPLICATION_STATUS: AWAITING independent session.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+TOOL_EVIDENCE_ID: EV-REL-B1-002
+JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005
+CLAIM_ID: REL-B1-02, REL-B1-03
+TOOL_OR_METHOD: Official NERC report retrieval + PDF visual inspection
+EXECUTION_DATE: 2026-10-05
+SOURCE: NERC, 2025 Long-Term Reliability Assessment
+SOURCE_DATE: Released 2026-01-29
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+INPUTS: Capacity and Energy Risk Assessment; Methods and Assumptions; planning margin table.
+METHOD: Direct extraction of adequacy definitions, risk metrics, and area criteria; screenshot inspection of Capacity and Energy Risk Assessment page.
+OUTPUT:
+- Adequacy requires aggregate power and energy service at all times considering outages.
+- Most North American targets currently use one-day/event in ten-year planning criterion; many areas explicitly use 0.1 day/year LOLE.
+- 2025 LTRA High Risk: LOLH >2.4 h/y OR normalized EUE >20 ppm OR local adequacy target failure.
+- Elevated: LOLH 0.1–2.4 h/y or NEUE 2–20 ppm in the stated framework.
+- Normal: LOLH <0.1 h/y, NEUE <2 ppm, applicable adequacy criteria met, reserves available under plausible once-per-decade stress.
+UNITS: event-days/year, hours/year, fraction or ppm of annual net energy.
+UNCERTAINTY: Risk thresholds are NERC assessment criteria and not universally binding standards; regional methods differ.
+ASSUMPTIONS: NONE added to quoted framework.
+LIMITATIONS: North American BPS focus; final project must use its applicable regional criterion.
+REPRODUCTION_METHOD: Inspect LTRA pages 12-13 and Methods/Assumptions pages 171-175.
+REPLICATION_STATUS: AWAITING independent session.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+TOOL_EVIDENCE_ID: EV-REL-B1-003
+JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005
+CLAIM_ID: REL-B1-02
+TOOL_OR_METHOD: Official current NERC standards-development page retrieval
+EXECUTION_DATE: 2026-10-05
+SOURCE: NERC Project 2024-02 Planning Energy Assurance
+SOURCE_DATE: page current through 2025-2026 development cycle
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.nerc.com/standards/reliability-standards-under-development/2024-02-planning-energy-assurance
+INPUTS: NERC project background/purpose.
+METHOD: Direct source extraction.
+OUTPUT: NERC states installed generating-capacity analysis alone is not sufficient to ensure reliable energy supply and is developing long-term energy-reliability assessment requirements addressing resource/fuel availability and energy assurance.
+UNITS: N/A.
+UNCERTAINTY: Standard is under development; do not treat draft requirements as final enforceable law.
+ASSUMPTIONS: NONE.
+LIMITATIONS: North American standards process.
+REPRODUCTION_METHOD: Open project page and verify background/purpose/status.
+REPLICATION_STATUS: AWAITING independent session.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+TOOL_EVIDENCE_ID: EV-REL-B1-004
+JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005
+CLAIM_ID: REL-B1-04
+TOOL_OR_METHOD: Python deterministic arithmetic
+EXECUTION_DATE: 2026-10-05
+INPUTS: 8,760 TWh/y scale; fractions 0.05, 0.01, 0.00002, 0.000002.
+METHOD: E_unserved = E_annual * fraction; ratio = fraction_A/fraction_B.
+OUTPUT: 438 TWh; 87.6 TWh; 0.1752 TWh=175.2 GWh; 0.01752 TWh=17.52 GWh; ratios 2,500 and 500 versus 0.002%.
+UNITS: TWh/y, GWh/y, dimensionless ratios.
+UNCERTAINTY: Arithmetic exact for stated inputs; conceptual metric mismatch dominates and is explicitly not erased.
+ASSUMPTIONS: 8,760-hour non-leap-year normalization inherited from scale anchor.
+LIMITATIONS: This is a metric-boundary diagnostic, NOT a stochastic reliability equivalence.
+REPRODUCTION_METHOD: Direct substitution into equations.
+REPLICATION_STATUS: Cross-tool EV-REL-B1-005 PASS; independent session still REQUIRED.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: CALCULATION.
+
+TOOL_EVIDENCE_ID: EV-REL-B1-005
+JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005
+CLAIM_ID: REL-B1-04
+TOOL_OR_METHOD: Wolfram Language computational replication
+EXECUTION_DATE: 2026-10-05
+INPUTS: Same fractions and annual-energy scale as EV-REL-B1-004.
+METHOD: Independent evaluation in Wolfram kernel.
+OUTPUT: {438, 87.6, 0.1752, 2500, 500} for the decisive 95%/99% vs 20-ppm comparison arithmetic.
+UNITS: TWh/y and dimensionless ratios as mapped in EV-REL-B1-004.
+UNCERTAINTY: Same conceptual limitations.
+ASSUMPTIONS: Same source inputs.
+LIMITATIONS: Different calculator engine is not an independent human/session review.
+REPRODUCTION_METHOD: Evaluate listed products/ratios in Wolfram Language.
+REPLICATION_STATUS: CROSS_TOOL_PASS; INDEPENDENT_SESSION_NOT_YET.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: CALCULATION.
+
+---------------------------------------------------------------------
+RED TEAM / CONFLICTS
+---------------------------------------------------------------------
+
+ATTACK REL-B1-A: "Use IRENA 95% firm LCOE as cost of grid-equivalent firm power."
+RESULT: FALSIFIED AS STATED. IRENA explicitly says its asset-level annual-energy coverage metric differs from standard system reliability; broader adequacy/security depend on grid mix.
+
+ATTACK REL-B1-B: "One-day-in-ten-years LOLE alone is sufficient common service."
+RESULT: REJECTED. NERC explicitly identifies duration/magnitude/timing gaps and uses LOLH/EUE/NEUE plus local targets and extreme-condition analysis.
+
+ATTACK REL-B1-C: "Adopt NERC 2-ppm Normal Risk as universal global law."
+RESULT: REJECTED. It is a NERC 2025 assessment risk classification, while actual regional criteria vary. It is suitable as a transparent sensitivity/reference, not as universal law without jurisdiction-specific evidence.
+
+CONFLICT REL-B1-C1:
+- NERC materials contain context-dependent LOLH thresholds: the 2025 LTRA primary risk framework uses 0.1/2.4 h/y bands, while an appendix discussion of probabilistic assessment uses a 2 h/y significant-risk split in a different framing.
+- RESOLUTION: Do not promote either 2.0 or 2.4 h/y as a universal hard mission standard. Use the report's stated primary risk framework when reproducing NERC risk categories, and require the applicable regional target in candidate comparison.
+- STATUS: RESOLVED_FOR_BOUNDARY_USE; independent reviewer should confirm source-context interpretation.
+
+STATUS_CHANGE:
+- JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-RELIABILITY-BOUNDARY-REV-B1-20261005: OPEN, now dependency satisfied.
+
+NEXT_ACTION:
+- Independent session reproduces EV-REL-B1-001..005 and attacks the same-service rule.
+- JOB-EGC-004/JOB-EGC-021 may adopt only independently reviewed portions; no candidate receives credit for 90/95/99% asset energy coverage as if it were full grid adequacy.
+
+WRITE_INTEGRITY:
+- branch head read: c5c84b77f46c46e4687ee7791117cc619bb67186
+- file SHA read: 5ed996195cc86398a0e72ac32435513db8decea2
+- stale-write check: exact blob SHA guarded update
+- mutation scope: ONLY MAIN-CHAT.md on authorized branch
+- commit/result: PENDING
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
