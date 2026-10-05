@@ -1,0 +1,30 @@
+{
+  "TASK_ID": "TASK-DOC-C4-INCIDENT-ENVELOPE-STATE-TRUTH-001",
+  "FINDING_ID": "FINDING-DOC-C4-INCIDENT-ENVELOPE-STATE-TRUTH-001",
+  "REQ_ID": "REQ-DOC-C-3-2-SYSTEM-ENVELOPE",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "WORK_BRANCH": "NEXY.AI-Test-AI/work/TASK-DOC-C4-INCIDENT-ENVELOPE-STATE-TRUTH-001",
+  "SEMANTIC_SCOPE": "Correct only the incident-detail outer SystemEnvelope state source and its focused oracle; preserve incident authorization, ownership masking, audit emission, incident fields, and pipeline run data.",
+  "TARGET_PATHS": [
+    "packages/api/canonical.ts",
+    "tests/contract/canonical-api.test.ts"
+  ],
+  "ACCEPTANCE": [
+    "handleIncident outer SystemEnvelope.state is sourced from authoritative currentSystemState(), not incident.pipelineRun.runState.",
+    "Incident-local pipeline run state remains available only inside data where already exposed; do not erase required incident/run information.",
+    "Focused oracle sets current system state different from incident pipeline run state and proves the outer envelope reports current system truth.",
+    "Oracle fails if the route is mutated back to incident.pipelineRun.runState.",
+    "RBAC OWNER/AUDITOR, ownership masking, INCIDENT_VIEWED audit behavior, and error paths remain unchanged unless independently proven defective.",
+    "Run focused contract test plus required canonical contract/static gates on the exact candidate SHA.",
+    "Independent review required before integration.",
+    "No mutation to NEXY.ai."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "When a Git-valid Constitution-authorized worker namespace exists, claim an isolated worker branch and repair the two-file semantic scope."
+}
