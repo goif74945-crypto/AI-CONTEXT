@@ -1,0 +1,129 @@
+{
+  "REPAIR_ID": "V16RC13-CLOSURE-ATOMIC-MEMBERSHIP-FREEZE-97E912A7-V2",
+  "STATUS": "CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+  "OWNER_CHAT": "C-SOL-V16RC13-DRAIN-97E912A7",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "AFFECTED_FINDING": "FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593",
+  "SUPERSEDES_REPAIR": "V16RC13-CLOSURE-MEMBERSHIP-FREEZE-REPAIR-97E912A7-V1",
+  "REVIEW_INPUTS": [
+    "REVIEW-C-SOL-20261005-1735Z-V16RC13-CLOSURE-MEMBERSHIP-FREEZE-REPAIR-V1",
+    "REVIEW-C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9-CLOSURE-FREEZE-97E912A7-V1"
+  ],
+  "REPAIR_CLASS": "LAW_PRESERVING_CONTROL_PROTOCOL_REPAIR",
+  "LAW_TEXT_CHANGE_REQUIRED": false,
+  "LAW_PRESERVATION": {
+    "CLAUSE_197": "Post-barrier Chats may still join for closure, review, audit, and read-only verification.",
+    "CLAUSE_200": "Every current-epoch normal membership record remains included in the closure membership manifest.",
+    "CLAUSE_217": "Every Chat still creates or renews a real sharded membership record. No observer bypass namespace exists in V2.",
+    "CLAUSE_215": "Final COMPLETE still uses expected-version Mission Fence CAS.",
+    "CLAUSE_216": "Any membership-universe change after pin first linearizes REOPEN through Mission Fence before its membership write can become canonical."
+  },
+  "AUTHORITATIVE_SHARD_STATE": {
+    "OBJECT": "MEMBERSHIP_SHARD_FENCE_STATE",
+    "KEY": "TARGET_AUTHORITY_KEY + MEMBERSHIP_EPOCH + SHARD_ID",
+    "FIELDS": [
+      "TARGET_AUTHORITY_KEY",
+      "MISSION_GENERATION",
+      "MEMBERSHIP_EPOCH",
+      "SHARD_ID",
+      "SHARD_STATE_VERSION",
+      "MODE",
+      "RECORD_SET_ROOT_HASH",
+      "CLOSURE_GENERATION",
+      "FREEZE_GENERATION",
+      "FROZEN_SNAPSHOT_ID",
+      "STATE_SCHEMA_VERSION"
+    ],
+    "MODES": ["OPEN","FREEZING","FROZEN"],
+    "CAS_LAW": "Every normal membership create, renew, suspend, retire, revoke, or other record mutation in the shard and every shard freeze transition are serialized through the same authoritative shard CAS domain. A successful operation must bind EXPECTED_SHARD_STATE_VERSION and write SHARD_STATE_VERSION = expected + 1 atomically with the canonical record-set change or freeze-state change.",
+    "TRANSPORT": "SINGLE_REF_COMPAT may realize this as one expected-head Git CAS containing both shard-state and affected membership-record mutation. SHARDED_REF_SCALE must use one authoritative shard ref/CAS domain per logical membership shard. TRANSACTIONAL_CONTROL_STORE may use an equivalent serializable transaction. Separate unbound acknowledgement files are insufficient."
+  },
+  "CLOSURE_ENTRY": [
+    "Mission Fence expected-version CAS closes WORK_ADMISSION_GATE, MUTATION_GATE, and INTEGRATION_GATE.",
+    "The same Mission Fence CAS increments ENGINEERING_EPOCH exactly once for closure entry and increments CLOSURE_GENERATION exactly once.",
+    "The same entry establishes CLOSURE_STATE = MEMBERSHIP_FORMING.",
+    "No product mutation or target integration is eligible after this linearization point."
+  ],
+  "MEMBERSHIP_FORMATION": [
+    "Every participating Chat obeys clause [217] and holds a real sharded membership record.",
+    "During MEMBERSHIP_FORMING, closure-only/read-only membership joins or renewals may occur through the shard CAS domain.",
+    "Before freeze begins, each admitted membership mutation updates the shard RECORD_SET_ROOT_HASH in the same shard CAS transaction."
+  ],
+  "ATOMIC_SHARD_FREEZE": [
+    "For every logical shard in SHARD_UNIVERSE_HASH, including empty shards, execute a shard CAS from MODE=OPEN to MODE=FROZEN for the active CLOSURE_GENERATION.",
+    "The freeze CAS increments SHARD_STATE_VERSION and FREEZE_GENERATION and binds an immutable FROZEN_SNAPSHOT_ID plus exact RECORD_SET_ROOT_HASH.",
+    "A membership writer that read an earlier OPEN shard state must present the earlier SHARD_STATE_VERSION; after freeze its CAS fails.",
+    "A writer that reads MODE=FROZEN cannot perform a normal membership mutation while the current closure pin remains valid.",
+    "No freeze acknowledgement is authoritative unless it is derived from the successful shard freeze CAS result itself.",
+    "CLOSURE_STATE may advance from MEMBERSHIP_FORMING to MEMBERSHIP_FROZEN only after every shard has a valid FROZEN state for the same CLOSURE_GENERATION and MEMBERSHIP_EPOCH."
+  ],
+  "PINNED_WORLD_BINDING": {
+    "MANIFEST_SOURCE": "Build the clause [200] membership manifest only from the immutable FROZEN_SNAPSHOT_ID of every shard. Build the drain manifest from the same closure generation and include explicit empty shards.",
+    "IMMUTABLE_ARTIFACTS": [
+      "MEMBERSHIP_MANIFEST_ID",
+      "MEMBERSHIP_ROOT_HASH",
+      "DRAIN_MANIFEST_ID",
+      "DRAIN_MANIFEST_ROOT_HASH",
+      "SHARD_FREEZE_MANIFEST_ID",
+      "SHARD_FREEZE_MANIFEST_ROOT_HASH"
+    ],
+    "MISSION_FENCE_BINDING": "Before sweeps, a Mission Fence expected-version CAS sets CLOSURE_STATE = PINNED_WORLD_READY and binds an immutable CLOSURE_BINDING_HASH over CLOSURE_GENERATION, MEMBERSHIP_EPOCH, SHARD_UNIVERSE_HASH, SHARD_FREEZE_MANIFEST_ROOT_HASH, MEMBERSHIP_ROOT_HASH, DRAIN_MANIFEST_ROOT_HASH, and every other clause [209] pinned-world component.",
+    "EFFECT": "After PINNED_WORLD_READY, normal membership-shard states for that closure generation remain FROZEN until a Mission Fence REOPEN linearization invalidates that pinned closure generation."
+  },
+  "POST_PIN_JOIN_AND_MEMBERSHIP_MUTATION": [
+    "Clause [197] remains usable: a post-barrier Chat may request to join for closure/review/audit/read-only work, but clause [217] still requires a real membership record.",
+    "While Mission Fence CLOSURE_STATE is PINNED_WORLD_READY, SWEEP_1, SWEEP_2, or COMPLETE_CAS_PENDING, no normal membership create/update may be admitted directly to a frozen shard.",
+    "Before any such membership mutation can become canonical, the requester or control participant must execute a Mission Fence expected-version CAS from the active pinned closure state to REOPEN_REQUIRED.",
+    "That REOPEN CAS increments Mission Fence STATE_VERSION and invalidates the prior CLOSURE_BINDING_HASH for completion.",
+    "If a concurrent COMPLETE CAS wins first, the REOPEN CAS fails and the membership mutation is not admitted into the terminated closure generation.",
+    "If the REOPEN CAS wins first, every concurrent COMPLETE CAS using the old expected Mission Fence STATE_VERSION fails.",
+    "Only after successful REOPEN may control create a new closure attempt/generation or reopen shard membership formation under a newly authoritative closure state, then admit the membership write through the shard CAS domain.",
+    "Therefore no post-pin membership mutation can commit while the old Mission Fence still authorizes COMPLETE against the old membership root."
+  ],
+  "FREEZE_JOIN_RACE_LINEARIZATION": [
+    "If a membership write CAS wins before its shard freeze CAS, the freeze CAS fails on SHARD_STATE_VERSION and must retry from a state that includes the new membership.",
+    "If the shard freeze CAS wins first, the membership writer's stale expected SHARD_STATE_VERSION fails.",
+    "If a new join arrives after its shard is frozen but before global PINNED_WORLD_READY, the closure coordinator must REOPEN or abort the current freeze attempt before admitting the join; it may not mutate the frozen shard in place.",
+    "Thus every valid execution has exactly one ordering between membership mutation and shard freeze."
+  ],
+  "COMPLETE_LINEARIZATION": [
+    "Immediately before COMPLETE, verify Mission Fence CLOSURE_STATE and exact CLOSURE_BINDING_HASH for the active CLOSURE_GENERATION.",
+    "Verify all shard states still reference the bound frozen snapshot generation and all clause [209] pinned-world components equal their bound values.",
+    "Execute COMPLETE as an expected-version Mission Fence CAS.",
+    "A post-pin membership request necessarily competes through the same Mission Fence CAS domain via REOPEN before any membership write; therefore the final COMPLETE predicate cannot be invalidated by a canonical membership write that is invisible to Mission Fence STATE_VERSION."
+  ],
+  "REOPEN_PROTOCOL": [
+    "REOPEN_REQUIRED is an authoritative Mission Fence state, not advisory evidence.",
+    "A REOPEN transition invalidates the old pinned closure binding before any post-pin normal membership write is allowed.",
+    "Re-entering closure requires a fresh closure generation or equivalent new binding, re-freezing every shard including empty shards, rebuilding membership and drain roots, and rerunning required sweeps.",
+    "Old frozen snapshot artifacts remain immutable evidence but are noncanonical for the reopened closure attempt."
+  ],
+  "CRASH_RECOVERY": [
+    "Crash before a shard freeze CAS commits: shard remains OPEN at prior authoritative version; retry safely.",
+    "Crash after shard freeze CAS but before global freeze aggregation: recover from authoritative FROZEN shard state; never infer from an acknowledgement file alone.",
+    "Crash after PINNED_WORLD_READY but before COMPLETE: recover from Mission Fence CLOSURE_BINDING_HASH and frozen shard snapshots; any mismatch forces REOPEN_REQUIRED.",
+    "Crash after REOPEN CAS but before membership write: old closure is already invalidated; membership write may be retried under the reopened authority without permitting stale COMPLETE.",
+    "Crash after COMPLETE CAS: mission terminal truth wins; uncommitted join or membership mutations from the old closure generation are rejected."
+  ],
+  "REQUIRED_TORTURE_TESTS": [
+    "Writer reads OPEN shard state, pauses, shard freeze CAS commits, writer resumes: writer CAS must fail.",
+    "Writer CAS and shard freeze CAS race concurrently: exactly one wins at each shard version, with retry including canonical winner.",
+    "Post-pin join request races COMPLETE: join first means REOPEN CAS wins and COMPLETE fails; COMPLETE first means join REOPEN CAS fails and no membership write enters the completed generation.",
+    "Post-pin membership renew, suspend, retire, and revoke each require the same REOPEN-before-write rule, not only brand-new joins.",
+    "All 256 logical shards freeze, including empty shards; omit one empty shard and PINNED_WORLD_READY must fail.",
+    "Crash after shard freeze, after pin, after REOPEN, and immediately before COMPLETE.",
+    "High-concurrency membership storm during MEMBERSHIP_FORMING followed by freeze must produce deterministic canonical snapshot roots.",
+    "Attempt direct frozen-shard membership write without REOPEN must fail closed."
+  ],
+  "REVIEWER_FINDING_DISPOSITION": {
+    "R1_FREEZE_MUTATION_CAS_DOMAIN": "ADDRESSED_BY_SINGLE_AUTHORITATIVE_SHARD_CAS_DOMAIN",
+    "R2_COMPLETE_TOCTOU_REMAINS": "ADDRESSED_BY_MISSION_FENCE_REOPEN_CAS_BEFORE_ANY_POST_PIN_MEMBERSHIP_WRITE",
+    "R1_OBSERVER_NAMESPACE_LAW_CONFLICT": "REMOVED; V2_HAS_NO_OBSERVER_BYPASS_NAMESPACE",
+    "R2_PINNED_MEMBERSHIP_ACCOUNTING": "ADDRESSED; EVERY_REAL_MEMBERSHIP_REMAINS_IN_CLAUSE_200_MANIFEST_AND_POST_PIN_CHANGE_FORCES_REOPEN_BEFORE_WRITE"
+  },
+  "SAFETY_ARGUMENT": "The original stale-completion execution requires a canonical membership change that can occur after the closer's last root read without touching the Mission Fence version. V2 removes that execution. Pre-pin membership writes serialize against shard freeze in the same shard CAS domain. Post-pin membership writes cannot occur until a REOPEN CAS changes Mission Fence STATE_VERSION and invalidates the pinned closure. Therefore either the membership change is included before freeze, or it invalidates the old closure before becoming canonical; it cannot remain invisible to the final COMPLETE CAS.",
+  "FINDING_DISPOSITION_IF_INDEPENDENTLY_VERIFIED": "RESOLVED_BY_ATOMIC_CONTROL_PROTOCOL_REPAIR",
+  "PRODUCT_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
