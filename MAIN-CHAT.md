@@ -16877,3 +16877,150 @@ WRITE_INTEGRITY:
 - exact current SHA used; any concurrent write causes retry/recompute.
 - MAIN-CHAT.md only; authorized branch only.
 - no force push; no reset; no rewrite history.
+
+
+======================================================================
+48. JOB-EGC-022 PHASE 1 — CANDIDATE-NEUTRAL DEPLOYMENT CLOCK PROPOSAL
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-DEPLOY022-H2-20261005
+PRIMARY_JOB_ID: JOB-EGC-022
+PHASE: 1 / DEPLOYMENT CLOCK + SCALE ACCOUNTING
+STATUS: EXECUTING / CLOCK_METHOD_AWAITING_INDEPENDENT_REVIEW
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair FIND-EGC-OBJREV-H1-DEPLOY-CLOCK-001 without allowing mature or emerging candidates to reset the 15/30-year clock technology-by-technology.
+
+ALTERNATIVES ATTACKED:
+A. T0 = each candidate's first historical commercial COD -> REJECT.
+   Mature technologies are penalized for existing longer; architecture lineage disputes change clock origin; it measures history rather than current forward deployability.
+B. T0 = each candidate's future "standardized commercial-scale deployment start" -> REJECT AS CONTROLLING CLOCK.
+   Emerging technologies can defer/reset T0 by declaring readiness later; the event is candidate-specific and remains gameable.
+C. T0 = first candidate fleet size threshold such as 1 GW -> REJECT.
+   Adds a new arbitrary technology-biased threshold and different origins.
+D. T0 = exact chat/review timestamp -> REJECT FOR ANNUAL-DATA ACCOUNTING.
+   Reproducible but misaligned with complete annual generation/capacity/manufacturing datasets.
+E. T0 = one COMMON EVIDENCE BASELINE, frozen for all candidates at the latest complete shared calendar-year snapshot used by the objective version -> PROPOSED / least-gameable reviewed option.
+
+PROPOSED_CLOCK_METHOD: DEPLOY-CLOCK-V0.1
+TRUTH_CLASS: MISSION_METHOD / ASSUMPTION / PROPOSED, NOT SOURCE_FACT.
+CURRENT_MISSION_T0_DATA: 2025-12-31 calendar-year end.
+CLOCK_START: 2026-01-01 00:00.
+M1_DEADLINE_IF_15Y_SURVIVES_REVIEW: 2040-12-31.
+M2_DEADLINE_IF_30Y_SURVIVES_REVIEW: 2055-12-31.
+WHY_2025:
+- latest complete calendar year shared by current authoritative global deployment/generation datasets retrieved in mission;
+- IRENA Renewable Capacity Statistics 2026 explicitly states most capacity data reflect installed-and-connected capacity at end of calendar year;
+- one date applies to all candidates and cannot be shifted after candidate results are known.
+CHANGE_CONTROL:
+- T0 is frozen with the objective version.
+- Later data refresh may create a NEW objective/version baseline, but cannot move T0 for only one candidate or retroactively rescue a failing candidate.
+
+CANDIDATE_IDENTITY_RULE:
+- Freeze candidate architecture before scoring: source(s), storage, firming, grid/transmission scope, delivery node, reliability service and other required components.
+- Baseline E0 counts only 2025 annual net-delivered energy from assets/systems that actually satisfy that frozen architecture and service boundary.
+- Existing source generation may NOT be relabeled as firm/hybrid output unless storage/firming/transmission/service actually existed and is evidenced at T0.
+- Demo/pilot/pipeline/announced/under-construction capacity does not count as baseline delivered output.
+
+TWO-SEPARATE-SCALE-TEST RULE:
+1. TOTAL_SCALE_TEST:
+   Does the frozen candidate architecture deliver >=M1/M2 annual net energy by the common deadlines?
+   If verified architecture-consistent 2025 output already exceeds a threshold, time-to-threshold = 0 for TOTAL_SCALE_TEST only.
+2. DEPLOYMENT_AND_SUSTAINMENT_TEST:
+   Can the industrial system commission, replace and maintain enough boundary-consistent assets after T0 while accounting for retirements, degradation, replacements, construction lead-time, manufacturing, materials, workforce and grid/storage/firming build?
+   Existing fleet scale does not waive this test.
+RATIONALE: a legacy fleet must not "pass deployment" without replacement/scalability evidence, while a new architecture must not gain a later private clock.
+
+ANNUAL_ENERGY_RULE:
+- M1/M2 are annual-energy thresholds, not instantaneous nameplate thresholds.
+- PASS requires a complete calendar-year net-delivered-energy record/model on the declared boundary; reliability/service is evaluated separately and consistently.
+- One annual threshold crossing alone does not prove lifecycle sustainability; retirement/replacement/lifetime evidence remains required by other gates.
+
+RAMP_ACCOUNTING:
+- C_net_c(y)=C_surviving_preT0_c(y)+C_commissioned_postT0_c(y)-C_retired_c(y), with technology-appropriate units.
+- E_delivered_c(y) must come from the actual architecture/system boundary, not nameplate alone.
+- Required new build includes replacements needed when pre-T0 assets retire.
+- If E0>0, descriptive CAGR=(Target/E0)^(1/T)-1 may be reported but is not a forecast.
+- If E0=0, CAGR is undefined and MUST NOT be fabricated; use explicit annual commissioning/ramp trajectory.
+- Linear-average build rate may be used only as a screening statistic, never schedule proof.
+
+TOOL_EVIDENCE_ID: TE-EGC-DEPLOY022-H2-CLOCK-001
+JOB_ID: JOB-EGC-022
+CLAIM_ID: CLAIM-EGC-DEPLOY-COMMON-T0
+TOOL_OR_METHOD: IRENA PDF method inspection + alternative-clock red team + deterministic calendar mapping
+EXECUTION_DATE: 2026-10-05
+SOURCE: IRENA Renewable Capacity Statistics 2026
+SOURCE_URL: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Mar/IRENA_DAT_RE_capacity_statistics_2026.pdf
+SOURCE_FACT:
+- IRENA capacity is maximum net generating capacity; for most countries/technologies data reflect capacity installed and connected at calendar year-end.
+- 2025 tables provide a common end-year snapshot for renewable candidate families.
+CALCULATION:
+- end-2025 + 15 complete calendar years -> end-2040.
+- end-2025 + 30 complete calendar years -> end-2055.
+ASSUMPTION: latest-complete-year common T0 is a mission method choice, not a scientific law.
+LIMITATIONS:
+- non-renewable datasets may have different publication timing; quantities must still be harmonized to calendar-year 2025 and candidate boundary;
+- exact 15/30-year horizons remain normative/provisional; Phase 1 fixes clock origin, not scientific uniqueness of durations.
+REPRODUCTION_METHOD: inspect IRENA notes and apply same date to every candidate.
+REPLICATION_STATUS: SOURCE FACTS REPRODUCED; CLOCK METHOD REQUIRES DISTINCT REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT + ASSUMPTION + METHOD.
+
+DIAGNOSTIC_EVIDENCE_ID: CALC-EGC-DEPLOY022-H2-001
+PURPOSE: show why TOTAL_SCALE and DEPLOYMENT must be separated.
+SOURCE: Ember Global Electricity Review 2026.
+URL: https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+INPUTS: M2=2,860 TWh/y; Ember 2025 generation solar 2,778, wind 2,715, nuclear 2,812, hydro 4,437 TWh; 2025 growth solar +636, wind +205, nuclear +35 TWh.
+OUTPUT:
+- solar =97.1329% of M2; gap 82 TWh.
+- wind =94.9301%; gap 145 TWh.
+- nuclear =98.3217%; gap 48 TWh.
+- hydro =155.1399% of M2.
+- gap / 2025 absolute-growth diagnostic: solar 0.1289, wind 0.7073, nuclear 1.3714 year-equivalents; NOT forecasts.
+BOUNDARY_WARNING:
+- Ember generation cannot be silently substituted for IEA consumption or mission net-delivered firm-service output; CONFLICT-EGC-SCALE-BOUNDARY-001 remains open.
+- Values do NOT grant M2 PASS; they prove existing-fleet TOTAL_SCALE and forward DEPLOYMENT answer different questions.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + DIAGNOSTIC_INFERENCE.
+
+RED_TEAM:
+1. Common 2025 T0 gives mature technologies legacy credit -> PARTLY TRUE but bounded: legacy counts only TOTAL_SCALE on same service; DEPLOYMENT_AND_SUSTAINMENT still tests post-T0 replacement/scale. Erasing real existing capacity would also bias a mission asking what can supply massive energy now.
+2. Common T0 gives emerging candidates less time than future commercialization clock -> ACCEPTED AS INTENTIONAL. A future reset asks "30 years after eventually ready", not "can solve the current mission within 30 years". If objective authority intended the former, it must explicitly override this proposal.
+3. Count existing solar toward firm solar+storage -> REJECTED by architecture-consistent E0 rule.
+4. CAGR from zero baseline -> FALSIFIED mathematically; explicit commissioning trajectory required.
+5. Annual-average nameplate screen proves feasibility -> REJECTED; retirements, supply chain, construction, grid/storage/firming and system boundary remain open.
+
+FINDING_UPDATE:
+- FIND-EGC-OBJREV-H1-DEPLOY-CLOCK-001: REPAIR_PROPOSED, NOT CLOSED.
+- Proposal removes candidate-specific clock reset and makes T0 observable/reproducible.
+- Closure requires distinct review and objective-owner adoption because it changes earlier "commercial-scale deployment start" wording into a common mission evaluation epoch.
+
+JOB_ID: JOB-EGC-022-CLOCK-REV-H2-20261005
+ROLE: Independent deployment-clock method reviewer
+TITLE: Attack common-T0 deployment clock and scale-accounting split
+QUESTION_TO_RESOLVE: Is DEPLOY-CLOCK-V0.1 candidate-neutral, reproducible and less gameable than technology-specific T0 without changing mission intent in a decision-reversing way?
+DEPENDENCIES: Phase-1 package present.
+REQUIRED_INPUTS: OBJ-EGC-V1.1 section 5; objective-review finding; IRENA calendar-year method; candidate identity rules.
+REQUIRED_TOOLS: independent method/source review; mature-vs-emerging counterexamples; calendar arithmetic.
+REQUIRED_EVIDENCE_CLASS: REVIEW / REPLICATION / ASSUMPTION_AUDIT.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR on common epoch, architecture-consistent E0 and total-scale/deployment split.
+FALSIFICATION_CRITERIA: fail if clock can still shift candidate-by-candidate, existing fleet is double-counted across service boundaries, zero-baseline math is abused, or common T0 materially contradicts mission intent without authority.
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+BLOCKERS: NONE.
+
+JOB-EGC-022 STATUS:
+- remains EXECUTING.
+- Phase 1 clock method -> AWAITING_INDEPENDENT_REVIEW.
+- Phase 2 manufacturing/retirement/grid-coupled ramp integration -> IN PROGRESS.
+
+NEXT_ACTION:
+1. Integrate VERIFIED support evidence from REVIEW-EGC-DEPLOY-K1-H2-001.
+2. Build retirement/replacement-aware ramp cases and integrate candidate-specific materials/manufacturing evidence.
+3. Keep storage energy-duration and grid build distinct from primary-generation GW.
+4. Distinct session reviews DEPLOY-CLOCK-V0.1; this owner cannot self-verify.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: 2f4dab95e409fce47720366f1e26af076b9b9e85
+- file SHA read at exact head: 314eee4265f4523c8c5a00325288c3730c8d8d52
+- full-ledger sanity length: 1053642 chars; critical markers present.
+- attempt: 1; exact-SHA append only; no force; only authorized file.
