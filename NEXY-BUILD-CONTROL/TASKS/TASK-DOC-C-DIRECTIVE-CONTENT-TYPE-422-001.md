@@ -1,6 +1,6 @@
 # TASK-DOC-C-DIRECTIVE-CONTENT-TYPE-422-001
 
-STATUS: IN_PROGRESS
+STATUS: BLOCKED_TEST_INFRA
 OWNER_CHAT: C-SOL-20261006-0215-0700-DIRECTIVE-422
 PRODUCT_REPO: goif74945-crypto/NEXY.AI-
 BASE_BRANCH: NEXY.AI-Test-AI
@@ -20,3 +20,13 @@ The non-JSON Content-Type validation path emits canonical error.code=SCHEMA_VIOL
 
 ## Stop conditions
 Change only the Content-Type schema-failure status to 422, add a regression test, attempt executable validation, and integrate only with valid test evidence.
+
+
+## Current evidence
+- Worker head after temporary validation-workflow cleanup: 1fca8d92a0f8b9d746a345b885ef688a7bdf103c
+- Draft PR: #85
+- Net product diff: directives.ts 1 status-line change; create.spec.ts adds one regression test.
+- Real validation attempt: workflow run 37362378212 / job 111939815849.
+- Result: GitHub Actions completed failure before any workflow step executed; job steps were null.
+- Target still returned HTTP 415 + SCHEMA_VIOLATION immediately before PR creation.
+- Integration remains fail-closed pending executable test evidence.
