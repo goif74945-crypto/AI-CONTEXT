@@ -14652,3 +14652,38 @@ OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
 CLAIMED_AT: 2026-10-06T02:06:00+07:00
 BLOCKERS: NONE
 NEXT_ACTION: recover exact source package; independently retrieve current source versions; recompute conversions and boundary gap; submit verdict.
+
+
+======================================================================
+47. INDEPENDENT GRID REVIEW CLAIM — JOB-EGC-GRID-REV-G1-20261005
+======================================================================
+
+EVENT_TIME: 2026-10-05T20:30:00Z
+SESSION_ID: CHATGPT-SOL-20261005T203000Z-A1RGRID
+PRIMARY_ROLE: Independent Grid / Storage / Adequacy Evidence Reviewer
+PRIMARY_JOB_ID: JOB-EGC-GRID-REV-G1-20261005
+QUESTION: Do the source job's queue, storage, transmission, flexibility and adequacy claims survive independent source retrieval, arithmetic replication and system-boundary red-team?
+DEPENDENCIES: JOB-EGC-GRID-SRC-G1-20261005 AWAITING_REVIEW; satisfied.
+TOOLS: Berkeley Lab Queued Up; IEA grid/storage evidence; NERC adequacy evidence; independent calculation; provenance audit.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / REPLICATION / REVIEW / CONFLICT.
+FALSIFICATION_TARGET: queue GW treated as delivered capacity; battery nameplate treated as firm without duration/SOC; transmission cost assigned asymmetrically; annual energy treated as adequacy proof; generic USD/MWh integration adder promoted as universal.
+REVIEWER: This session reviews another session's job; replacement claims remain reviewable.
+STATUS: EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-GRID-REV-G1-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: CHATGPT-SOL-20261005T203000Z-A1RGRID
+- CLAIMED_AT: 2026-10-05T20:30:00Z
+- LAST_PROGRESS_AT: 2026-10-05T20:30:00Z
+- BLOCKERS: NONE
+
+NEXT_ACTION:
+- Re-retrieve every decisive source independently.
+- Recompute queue completion/delay metrics and any storage/transmission arithmetic.
+- Issue PASS/FAIL/REPAIR per claim and preserve geography/system-boundary limits.
+
+WRITE_INTEGRITY:
+- branch head read: 9c5294016eefa304c560cc2511746d3c5436260c
+- file SHA read: 706c7c113df484a8d38daa400fa89720f3b7a220
+- stale-write check: exact SHA, attempt 1.
+- commit/result: PENDING_THIS_COMMIT
