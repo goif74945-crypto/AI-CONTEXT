@@ -1,0 +1,16 @@
+{
+  "FINDING_ID": "FINDING-V16RC13-E03-STALE-SESSION-EVIDENCE-3231AEAD",
+  "TYPE": "DEPLOYMENT_EVIDENCE_STALE_SOURCE_BINDING",
+  "STATUS": "OPEN",
+  "CONTROL_P0": false,
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "TARGET_HEAD_SHA": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "RESULT_ID": "RESULT-C-SOL-V16RC13-B11E0417-E03-DEPLOYMENT-EVIDENCE-AUDIT-3231AEAD",
+  "AFFECTED_EVIDENCE": [
+    "evidence/E03-session-security.md",
+    "evidence/.seal.json"
+  ],
+  "ASSESSMENT": "Historical E03 PASS is not valid current-target deployment evidence; canonical API source already satisfies the inspected DOC-C owner-session confirmation behavior.",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE"
+}
