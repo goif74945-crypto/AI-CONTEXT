@@ -31,3 +31,12 @@ DESIGN_CHALLENGE_RESOLUTION:
 - forbidden collision, syscall-scope mismatch, and unknown dependency retain rejection semantics under INTERNAL_* identities because G22 provides no specific canonical identity for those conditions in the inspected taxonomy.
 - candidate test now asserts parity with packages/phase-f/game/ncf-governance.ts STATIC_CODES.
 CANDIDATE_TEST_REVISION_COMMIT: e17f75d0530589e9363f6810130fec2a6a2281c6
+
+AUTHORITY_REVIEW:
+- FINAL VERDICT paragraphs 9833-9844 declares DOC-C = BUILD SPEC and Build obligation comes from DOC-C only.
+- final DOC-C begins at paragraph 9885 and ends before DOC-D at 10499.
+- independent primary-source scan of DOC-C paragraphs 9885-10498 found zero occurrences of G20, G21, G22, CapabilityNode, NCF, R001_ through R010_, reason_codes, or rejection reason.
+- canonical control requirement REQ-G22-STATIC-RCS marks ACTIVE_BUILD_REQUIREMENT=false and SCHEDULING_STATUS=DEFER_NON_BUILD_AUTHORITY.
+AUTHORITY_VERDICT: DO_NOT_APPLY_TO_SOURCE_UNDER_CURRENT_SPEC_AUTHORITY
+CANDIDATE_PURPOSE: historical parity analysis / future reactivation reference only
+REACTIVATION_CONDITION: primary-source final DOC-C binding or later authoritative spec explicitly activates G20/G21/G22.
