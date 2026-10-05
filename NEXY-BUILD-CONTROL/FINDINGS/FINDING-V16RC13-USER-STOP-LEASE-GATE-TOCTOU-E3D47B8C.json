@@ -1,0 +1,46 @@
+{
+  "FINDING_ID": "FINDING-V16RC13-USER-STOP-LEASE-GATE-TOCTOU-E3D47B8C",
+  "TYPE": "STATIC_PROTOCOL_STOP_PREEMPTION_RACE",
+  "SEVERITY": "P0",
+  "STATUS": "OPEN_REVIEW_REQUIRED",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "DISCOVERED_BY_CHAT_ID": "C-SOL-20261005-0939-0800-V16RC13-STATIC-P0-AUDIT-E3D47B8C",
+  "CONTROL_HEAD_BASELINE": "6873a14f558627777779609d22699972cc9fe95f",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "AFFECTED_CLAUSES": [
+    "[121]",
+    "[122]",
+    "[164]",
+    "[166]",
+    "[220]",
+    "[230]"
+  ],
+  "OBSERVATION": "USER_STOP is required to be immediate and preemptive, but the normal pre-mutation revalidation list does not bind MISSION_FENCE_STATE.STATE_VERSION, MISSION_STATUS, EXECUTION_PHASE, STOPPING/STOPPED state, WORK_ADMISSION_GATE, or MUTATION_GATE. The USER_STOP clauses do not explicitly require STOP entry to increment ENGINEERING_EPOCH or MEMBERSHIP_EPOCH. Therefore a lease can remain valid across a STOP CAS unless an implementation adds an unstated extra fence.",
+  "COUNTEREXAMPLE": [
+    "An ACTIVE member holds a valid lease bound to mission generation, membership epoch/generation, task version, spec hash, resource graph hash, engineering epoch, and lease generation.",
+    "The worker performs the [220] canonical-state read and listed REVALIDATE checks while USER_STOP is not yet present and all lease bindings match.",
+    "Immediately after that revalidation and before IMPLEMENT ON WORKER BRANCH, USER_STOP is committed through the Mission Fence as required by [166].",
+    "If STOP changes only Mission Fence stop/transition state and gates, the lease bindings listed in [121] remain unchanged; [220] does not require a final atomic check of stop state or MUTATION_GATE at the product write.",
+    "The worker can therefore perform a product mutation after USER_STOP without violating any explicitly listed lease-binding revalidation, contradicting [164] immediate/preemptive STOP semantics and [230] mission termination on USER_STOP."
+  ],
+  "SAFETY_IMPACT": "A compliant implementation can admit a post-STOP product write through a time-of-check/time-of-use window. USER_STOP cannot be proven immediate/preemptive under the current normative bindings, so activation safety must fail closed unless this is repaired or authoritatively disproved.",
+  "REQUIRED_RESOLUTION_OPTIONS": [
+    "Define STOP entry CAS to atomically close work/mutation/integration gates and increment ENGINEERING_EPOCH and MEMBERSHIP_EPOCH before STOP is considered effective.",
+    "Add a monotonic STOP_GENERATION or fence STATE_VERSION/gate binding to every mutation lease and require it in the final pre-write validator.",
+    "Require an atomic final mutation-admission check immediately at product write that rejects STOPPING/STOPPED or MUTATION_GATE != OPEN.",
+    "Specify crash/race semantics proving no write may commit after the authoritative STOP linearization point."
+  ],
+  "DEDUP_EVIDENCE": {
+    "SEARCH_TERM": "USER_STOP",
+    "SEARCH_RESULT": "NO_MATCHING_V16_CONTROL_COMMIT_FOUND_AT_AUDIT_TIME",
+    "BASELINE_CONTROL_HEAD": "6873a14f558627777779609d22699972cc9fe95f"
+  },
+  "STATIC_PROTOCOL_P0_EFFECT": "BLOCKING_UNTIL_RESOLVED_OR_SUPERSEDED_BY_AUTHORITATIVE_PROOF",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "EVIDENCE_CLASS": "CONSTITUTION_TEXT_COUNTEREXAMPLE",
+  "INDEPENDENT_REVIEW_REQUIRED": true,
+  "FAIL_CLOSED": true
+}
