@@ -11798,3 +11798,21 @@ NEXT_ACTION: distinct repair execution, then independent C4 review.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+======================================================================
+62. SESSION CLAIM — JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C10-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_ROLE: Independent finite-horizon inventory owner-state / representation-invariance reviewer
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C10-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C9-20261006
+QUESTION: Does TERMBIND-C9 make finite-horizon initial/terminal storage accounting invariant to embedded-vs-separate inventory valuation without free energy or double credit?
+DEPENDENCIES: TERMBIND-C9 submitted; FINPV-C7 dependency currently REVIEW_FAILED and must be audited explicitly.
+TOOLS: latest GitHub state; independent Python/Wolfram arithmetic; provenance/foreign-key attacks; physical-vs-monetary boundary tests.
+EVIDENCE_TARGET: reproduce embedded-vs-split terminal invariance; duplicate and omitted initial-resource cases; UNKNOWN embedding; upstream dependency reopening; monetary-to-physical leakage.
+FALSIFICATION_TARGET: representation changes FSRC_ND, inventory enters twice or zero times, free initial stock survives schema completeness, UNKNOWN silently passes, failed FINPV dependency is ignored, or monetary residual enters MASSIVE_ENERGY/EROI.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
