@@ -1,0 +1,33 @@
+{
+  "SCHEMA_VERSION": "NEXY_PRODUCT_BUILD_FINDING_V1",
+  "FINDING_ID": "FINDING-ACTIONS-NO-STEPS-20261006-4F9C2A17",
+  "SCOPE": "GLOBAL_CI_EXECUTION_PLANE",
+  "SEVERITY": "P1_VERIFICATION_BLOCKER",
+  "STATUS": "OPEN",
+  "OBSERVATION": "Exact HEAD and Six-system push workflows fail within seconds with zero job steps and unavailable logs across multiple integration commits, including commits predating LO3.2 change.",
+  "EVIDENCE": [
+    {
+      "run_id": 37359394923,
+      "sha": "fea0eb02ea87f629bec170b9e39a08a25865f0a4",
+      "workflow": "Exact HEAD test evidence",
+      "conclusion": "failure",
+      "steps": 0
+    },
+    {
+      "run_id": 37359392582,
+      "sha": "fea0eb02ea87f629bec170b9e39a08a25865f0a4",
+      "workflow": "Six-system exact HEAD evidence",
+      "conclusion": "failure",
+      "steps": 0
+    },
+    {
+      "run_id": 37358743058,
+      "sha": "9a12704259ee38009f45fe1964ca90d53212554a",
+      "workflow": "Six-system exact HEAD evidence",
+      "conclusion": "failure",
+      "steps": 0
+    }
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "NEXT_ACTION": "Treat full GitHub Actions verification as externally blocked; continue safe product implementation with focused executable regression checks until runner execution is restored."
+}
