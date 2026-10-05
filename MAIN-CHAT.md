@@ -3392,3 +3392,59 @@ GLOBAL_STATE_DELTA:
 - GLOBAL_SOLVED: NO
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
+
+
+======================================================================
+33. CONCURRENCY CORRECTION + NON-COLLIDING SUPPORT JOB CLAIM
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:20:00Z
+SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1907Z
+
+CONCURRENCY_CORRECTION:
+- REPO_FACT: Commit-order audit TE-EGC-018-001 shows JOB-EGC-001 was first validly claimed by CHATGPT-SOL-20261005T190600Z-A1 before this session's later e48caa5 claim.
+- STATUS_CHANGE: this session's duplicate JOB-EGC-001 lease -> CANCELLED_SUPERSEDED / NON_CONTROLLING_DUPLICATE.
+- PRESERVATION_RULE: prior work is not deleted; any useful independent evidence is reassigned as support/replication under the non-colliding job below.
+
+JOB_ID: JOB-EGC-LOWCOST-ANCHOR-E1-20261005
+ROLE: R01 objective-support / baseline-cost calibration
+TITLE: Freeze candidate-neutral LOW_COST screening anchors from current authoritative evidence
+QUESTION_TO_RESOLVE: What pre-candidate numerical cost anchors can define LOW_COST without gaming the mission, while explicitly distinguishing plant-level LCOE from firm/delivered system cost?
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE for evidence calibration; final adoption by controlling JOB-EGC-001.
+REQUIRED_INPUTS: current authoritative 2025/2026 generation-cost evidence; firm-renewable cost evidence; independent methodological warning on LCOE/system-boundary limitations.
+REQUIRED_TOOLS: official source retrieval; PDF inspection; arithmetic/unit checks; cross-source validation.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / INFERENCE.
+EXPECTED_OUTPUT: fixed cost screening bands, provenance, boundary caveats, and explicit handoff to JOB-EGC-001.
+FALSIFICATION_CRITERIA: FAIL if the threshold is selected after seeing candidate results, relies on a single incomparable metric, hides integration/firming/transmission, or is inconsistent with current cost-frontier evidence.
+REVIEWER_JOB_ID: JOB-EGC-LOWCOST-ANCHOR-REV-E1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1907Z
+CLAIMED_AT: 2026-10-05T19:20:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:20:00Z
+BLOCKERS: NONE
+HANDOFF: Gather/record cost-frontier evidence, propose thresholds as ASSUMPTION/INFERENCE, and submit for independent review; do not mark VERIFIED.
+
+JOB_ID: JOB-EGC-LOWCOST-ANCHOR-REV-E1-20261005
+ROLE: R23 Independent numerical replication + R25 evidence audit
+TITLE: Independently reproduce and attack LOW_COST screening-anchor calibration
+QUESTION_TO_RESOLVE: Are source values, boundaries, cost bands and anti-gaming logic independently reproducible and defensible?
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-LOWCOST-ANCHOR-E1-20261005 reaches AWAITING_REVIEW.
+REQUIRED_INPUTS: evidence records from JOB-EGC-LOWCOST-ANCHOR-E1-20261005.
+REQUIRED_TOOLS: independent source retrieval; independent arithmetic; boundary/provenance audit.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION.
+EXPECTED_OUTPUT: PASS/FAIL with reproduced source values and repair requirements.
+FALSIFICATION_CRITERIA: FAIL if a decision-relevant source/value/boundary cannot be independently reproduced or if a more defensible candidate-neutral threshold contradicts the proposal.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-LOWCOST-ANCHOR-E1-20261005 not yet AWAITING_REVIEW.
+HANDOFF: Must be claimed by a distinct future session.
+
+WRITE_INTEGRITY:
+- branch head read: b29523c4ef6024951e6440b5384b2540a7e27c55
+- file SHA read: d9b37ca3a8bb4f073dae26a313aa33bf34e90e2c
+- stale-write check: exact latest blob SHA passed to update_file
