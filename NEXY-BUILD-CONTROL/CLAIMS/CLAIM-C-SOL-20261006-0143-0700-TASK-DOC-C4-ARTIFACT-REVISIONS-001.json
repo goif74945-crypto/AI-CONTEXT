@@ -1,0 +1,22 @@
+{
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0143-0700-TASK-DOC-C4-ARTIFACT-REVISIONS-001",
+  "CHAT_ID": "C-SOL-20261006-0143-0700",
+  "TASK_ID": "TASK-DOC-C4-ARTIFACT-REVISIONS-001",
+  "REQ_ID": "REQ-DOC-C-4-2-ARTIFACT-REVISIONS",
+  "STATUS": "ACTIVE",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "INTEGRATION_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "c1a2bea37fd40a5b8a6b12b7770fa41f55beb02c",
+  "WORKER_BRANCH": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-ARTIFACT-REVISIONS",
+  "SCOPE": [
+    "packages/api/canonical.ts handleArtifactRevisions response projection only",
+    "tests/contract/canonical-api.test.ts exact canonical revision response shape"
+  ],
+  "OUT_OF_SCOPE": [
+    "pagination min/integer/cursor-length policy",
+    "NEXY.ai",
+    "unrelated canonical routes"
+  ],
+  "AUTHORITY": "User current MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD instruction plus authoritative DOCX §4.2",
+  "COORDINATION_NOTE": "Legacy requested branch NEXY.AI-Test-AI/work/... is Git-invalid because NEXY.AI-Test-AI already exists as a ref. Using an equivalent isolated worker namespace that does not mutate the integration branch directly."
+}
