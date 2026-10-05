@@ -3,8 +3,8 @@
   "FINDING_ID": "FINDING-CLOSURE-EXPLICIT-EXPERIMENTAL-REQUIRED-SCAN-ACCOUNTING-001",
   "PRIORITY": "P1",
   "RISK": "CLOSURE_INTEGRITY",
-  "STATUS": "READY_CONTROL_PLANE",
-  "OWNER": "UNASSIGNED",
+  "STATUS": "IN_PROGRESS_CONTROL_PLANE",
+  "OWNER": "C-SOL-20261005-1920-V8-PHASEF-REVERIFY",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
@@ -21,5 +21,6 @@
     "State explicitly that 587 is not the final global denominator if other authority-aware scope overlays remain.",
     "Preserve historical inventory and existing overlays append-only.",
     "No source mutation and no NEXY.ai mutation."
-  ]
+  ],
+  "CLAIM_BASIS": "Independent reverify found deterministic missing accounting; repair is control-plane only."
 }
