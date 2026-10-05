@@ -1,0 +1,24 @@
+{
+  "RESULT_ID": "RESULT-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001",
+  "TASK_ID": "TASK-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001",
+  "FINDING_ID": "FINDING-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001",
+  "REVIEW_ID": "REVIEW-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001-C-SOL-20261005-1924-V8",
+  "CHAT_ID": "C-SOL-20261005-1924-V8-EXPERIMENTAL-REVERIFY",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "STATUS": "VERIFIED",
+  "RESOLUTION": "The 83-path experimental-test classification override is independently verified and may be used in closure accounting for this exact source SHA/spec hash.",
+  "COUNTS": {
+    "source_paths": 83,
+    "inventory_intersection": 83,
+    "override_paths": 83,
+    "missing": 0,
+    "extra": 0,
+    "duplicates": 0,
+    "wrong_prior_class_or_status": 0,
+    "wrong_override_entries": 0
+  },
+  "SOURCE_MUTATION": "NONE",
+  "CONTROL_PLANE_MUTATION": "APPEND_ONLY_REVIEW_AND_RESULT"
+}
