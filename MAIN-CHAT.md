@@ -16200,3 +16200,186 @@ WRITE_INTEGRITY:
 - file SHA read immediately before write: 0106e905b368ca67c0ab19728ce32691c950fdea
 - attempt: 1
 - exact-SHA append only; no force; only MAIN-CHAT.md on authorized branch.
+
+
+======================================================================
+49. JOB-EGC-015-REPAIR-RT20-20261005 — REPAIRED FINANCE STABILITY TAXONOMY
+======================================================================
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-FIN015-REPAIR-R1-20261005
+PRIMARY_JOB_ID: JOB-EGC-015-REPAIR-RT20-20261005
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: JOB-EGC-015-REPAIR-REV-RT20-20261005
+
+TOOL_EVIDENCE_ID: TE-EGC-FIN015-REPAIR-001
+JOB_ID: JOB-EGC-015-REPAIR-RT20-20261005
+CLAIM_ID: CLAIM-EGC-FINANCE-TWO-LANE-001
+TOOL_OR_METHOD: Narrow repair of independently reviewed finance method + authoritative NREL/IEA source recheck
+PURPOSE: Close FIN-FINDING-RT20-001 by preventing mission counterfactual WACC stresses from being interpreted as empirical market distributions/probabilities.
+EXECUTION_DATE: 2026-10-05
+INPUTS: REVIEW-EGC-015-RT20-001; original JOB-EGC-015 rules; JOB-EGC-025 uncertainty taxonomy; NREL ATB 2024b finance methodology; IEA GEC Model 2025 finance assumptions; IEA Cost of Capital Observatory / Southeast Asia commentary.
+PARAMETERS: Candidate-neutral finance treatment; same delivered-service boundary.
+VERSION_OR_MODEL: repaired framework v2.
+SOURCE_OR_DATASET:
+- NREL/NLR ATB 2024b Financial Cases & Methods + Equations & Variables.
+- IEA GEC Model 2025 techno-economic inputs.
+- IEA Cost of Capital Observatory / 2025 Southeast Asia finance commentary.
+SOURCE_DATE: 2025-2026 source state.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://atb.nrel.gov/electricity/2024b/financial_cases_%26_methods
+- https://atb.nrel.gov/electricity/2024b/equations_%26_variables
+- https://www.iea.org/reports/global-energy-and-climate-model/techno-economic-inputs
+- https://www.iea.org/reports/cost-of-capital-observatory
+- https://www.iea.org/commentaries/high-cost-of-capital-and-limited-project-pipeline-hinder-clean-energy-investment-in-southeast-asia
+COMMAND_CODE_EQUATION_OR_METHOD: source-boundary reconciliation; no new candidate ranking.
+RAW_OR_KEY_OUTPUT:
+- NREL ATB explicitly describes technology-specific finance assumptions, nominal after-tax WACC, tax/inflation assumptions, construction-period financing, and project-finance factors. Therefore a WACC number cannot be safely detached from its finance convention.
+- IEA GEC uses differentiated WACC assumptions by technology; current GEC source states roughly 4-7% for utility PV/onshore wind, 5-8% offshore wind, and standard 8-9% for nuclear/coal/gas depending on development stage.
+- IEA Cost of Capital Observatory evidence is geography/technology/project specific. Southeast Asia 2024 solar survey values are explicitly nominal, post-tax, local currency and have limited-response caveats in some countries.
+UNITS: percent WACC; categorical finance metadata.
+UNCERTAINTY: source WACC ranges are not universal probability distributions; coverage differs by geography/technology.
+ASSUMPTIONS: mission common 3/7/10% real-WACC grid remains a pre-registered analytical stress set.
+LIMITATIONS: this repair does not create missing market-finance evidence for candidates/geographies.
+REPRODUCIBILITY_INSTRUCTIONS: reopen source pages; verify finance-basis labels and technology/geography variation; compare rules below to FIN-FINDING-RT20-001/002.
+INDEPENDENT_REPLICATION: REQUIRED by repair reviewer.
+EVIDENCE_CLASS: SOURCE_FACT / REPAIR / INFERENCE.
+
+### REPAIRED FINANCE NORMALIZATION RULES V2
+TRUTH_CLASS: MISSION_METHOD / INFERENCE_PENDING_REVIEW
+
+F1 SOURCE-NATIVE RECORD LOCK
+Before normalization, retain all available source-native finance metadata:
+- finance source + date/vintage;
+- WACC/discount-rate value;
+- NOMINAL / REAL / UNKNOWN basis;
+- PRE-TAX / AFTER-TAX / UNKNOWN basis;
+- currency and constant/current-dollar convention;
+- geography/country/region;
+- technology and project stage/maturity;
+- contract/offtake structure (PPA, regulated, merchant, quasi-merchant, UNKNOWN);
+- debt/equity/leverage and construction-finance assumptions where supplied;
+- inflation assumption/source;
+- tax credits/subsidies/depreciation/policy treatment;
+- construction duration/spend profile and COD timing.
+UNKNOWN MUST remain UNKNOWN; no inferred basis from a nearby source.
+
+F2 REAL/NOMINAL CONSISTENCY
+- Constant-dollar cash flows pair only with real discount/WACC assumptions.
+- Nominal cash flows pair only with nominal discount/WACC assumptions.
+- If a source supports conversion and inflation is basis-compatible, Fisher relation may be used: r_real=(1+r_nominal)/(1+inflation)-1.
+- Inflation used for conversion MUST match the relevant currency/geography/time convention as closely as evidence permits and be recorded.
+- If taxes, tax shields, depreciation, construction finance or source-specific project-finance factors make a simple WACC conversion insufficient to reproduce source economics, rerun the cash-flow/project-finance model rather than pretending a single Fisher conversion normalizes the full source result.
+- EIA AEO2026 after-tax 7.27% remains basis=UNKNOWN for real/nominal unless a separate authoritative methodology source resolves it.
+
+F3 LANE A — COMMON-FINANCE COUNTERFACTUAL STRESS
+Purpose: isolate capital-intensity/engineering sensitivity under identical finance assumptions, not estimate market probability.
+- Apply identical mission real-WACC scenarios 3%, 7%, 10% to every candidate on the same constant-dollar delivered-service boundary.
+- Hold other finance/policy conventions common where possible and explicitly list any term that cannot be equalized.
+- These three values are ASSUMPTION / STRESS_SCENARIO. No frequency, probability or likelihood may be assigned from their mere inclusion.
+- Allowed labels:
+  COMMON_STRESS_ORDER_INVARIANT — candidate ordering does not reverse across 3/7/10% under otherwise matched stress assumptions.
+  COMMON_STRESS_ORDER_REVERSAL — ordering reverses somewhere in the common stress grid.
+  COMMON_STRESS_NOT_COMPARABLE — equalization cannot be performed without material boundary distortion.
+- COMMON_STRESS_ORDER_REVERSAL is an engineering/finance-sensitivity warning. By itself it is NOT evidence of probable market reversal.
+
+F4 LANE B — EVIDENCED MARKET-FINANCE CASE
+Purpose: assess deployability/cost robustness under finance conditions actually evidenced for a defined candidate/geography/project structure.
+- Use source-grounded finance ranges/cases only, preserving technology, geography, currency, tax, policy, contract/merchant exposure, construction finance and maturity labels.
+- If evidence provides intervals/scenarios but no calibrated distribution, propagate as intervals/scenarios with NO invented probabilities per JOB-EGC-025.
+- If an evidence-supported distribution exists, record source, population, vintage, dependencies and calibration before probability propagation.
+- Allowed labels:
+  MARKET_FINANCE_STABLE — candidate's claimed superiority/acceptance does not reverse across the allowed evidence-supported joint finance cases on the same service boundary.
+  MARKET_FINANCE_NOT_STABLE — at least one allowed evidence-supported joint case reverses the claimed superiority/acceptance.
+  MARKET_FINANCE_NOT_VERIFIED — evidence is insufficient to construct a defensible candidate/geography/project finance case.
+  MARKET_FINANCE_CONDITIONAL — superiority holds only under explicitly named finance/contract/policy regime; claim must carry that condition.
+
+F5 CORRELATION / JOINT-CASE LOCK
+- Market WACC, inflation, currency risk, technology risk, development stage, construction duration, policy, leverage and contract structure are NOT presumed independent.
+- Prefer source-observed/source-defined joint cases as atomic scenario tuples.
+- Constructed joint cases must document why the combination is physically/economically plausible.
+- JOB-EGC-025 Monte Carlo must not independently sample marginals that create impossible or unsupported combinations.
+- Common stress Lane A may deliberately vary WACC counterfactually while holding other terms fixed; that artificial independence is permitted ONLY because Lane A is explicitly not a market distribution.
+
+F6 CONSTRUCTION-FINANCE LOCK
+For long-build assets, record overnight CAPEX separately from all-in financed CAPEX and include construction duration, spend profile/ConFinFactor or equivalent and interest/equity during construction. Do not double count source CAPEX that already embeds financing.
+
+F7 POLICY / TRANSFER LOCK
+Tax credits, subsidies, depreciation benefits and carbon-policy transfers must be separately traceable. Report policy-inclusive investor/project economics separately from the mission's resource/system-cost accounting where the common boundary requires transfer-neutral comparison.
+
+F8 REPLACEMENT / LIFETIME LOCK
+Replacement cycles and residual value use the same real/nominal convention as the main analysis; lifetime extension cannot be assumed without technology evidence. Finance and physical lifetime uncertainty remain distinct inputs even when coupled.
+
+F9 TWO-STABILITY REPORTING REQUIREMENT
+Every decision-relevant candidate cost comparison must report BOTH:
+- COMMON_FINANCE_STATUS = one F3 label; and
+- MARKET_FINANCE_STATUS = one F4 label.
+No single generic 'finance stable' label is allowed.
+
+F10 FINAL-CLAIM PRECEDENCE RULE
+For empirical mission claims about present/credible delivered cost:
+- MARKET_FINANCE_STATUS + JOB-EGC-025 evidence-supported decision stability is controlling.
+- A Lane-A reversal alone does NOT falsify empirical cost superiority unless the reversing condition is also inside the evidence-supported market/uncertainty set.
+- A Lane-A invariant ordering does NOT rescue a candidate with MARKET_FINANCE_NOT_STABLE or MARKET_FINANCE_NOT_VERIFIED.
+- MARKET_FINANCE_NOT_VERIFIED blocks a robust final LOW_COST/winner claim; it does not prove the candidate is expensive.
+- A final conclusion may be explicitly conditional on a finance regime only if labeled MARKET_FINANCE_CONDITIONAL and the regime is evidence-grounded.
+
+F11 NO PROBABILITY FROM STRESS GRID
+Never compute or imply statements such as '2 of 3 WACC cases pass, therefore 67% chance' or assign equal probability to 3/7/10% without external calibration. Stress-grid frequency is not probability.
+
+F12 SAME-SERVICE / SYSTEM-BOUNDARY PRECEDENCE
+Finance normalization cannot repair an incomparable physical service boundary. All final finance labels inherit the common delivered-service, adequacy, grid/storage and resource-cost boundary; generator LCOE remains a component metric.
+
+TOOL_EVIDENCE_ID: TE-EGC-FIN015-REPAIR-002
+JOB_ID: JOB-EGC-015-REPAIR-RT20-20261005
+CLAIM_ID: CLAIM-EGC-FINANCE-COUNTEREXAMPLES-001
+TOOL_OR_METHOD: Deterministic edge-case/red-team audit
+PURPOSE: Attempt to break V2 rules with category errors identified in independent review.
+EXECUTION_DATE: 2026-10-05
+RAW_OR_KEY_OUTPUT:
+- Case A: candidate flips only at common 10% real stress, while evidence-supported market finance never approaches that case. V2 => COMMON_STRESS_ORDER_REVERSAL + market status evaluated independently; no empirical probability/failure inferred from 10% stress alone. PASS repair target.
+- Case B: source gives 9% nominal post-tax local-currency WACC but inflation is missing. V2 => source basis retained, normalized real WACC UNKNOWN until compatible inflation/method evidence appears. PASS.
+- Case C: source provides PPA finance terms for one technology and merchant terms for another. V2 => no silent equal-probability mixing; Lane B retains contract structure; Lane A can normalize counterfactually but cannot be reported as observed market economics. PASS.
+- Case D: Monte Carlo independently samples low WACC with high construction-risk duration combinations never observed/supported. V2 F5 rejects unless joint plausibility is documented. PASS.
+- Case E: all 3 common stresses preserve order but candidate-specific market-finance evidence is absent. V2 => COMMON_STRESS_ORDER_INVARIANT + MARKET_FINANCE_NOT_VERIFIED; robust final cost claim blocked. PASS.
+UNITS: categorical decision labels.
+UNCERTAINTY: logic audit only; independent reviewer must attempt stronger counterexamples.
+ASSUMPTIONS: conditions as stated.
+LIMITATIONS: does not replace candidate-specific TEA.
+REPRODUCIBILITY_INSTRUCTIONS: apply F3-F11 mechanically to each edge case.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: CALCULATION/LOGIC_AUDIT / REPAIR.
+
+FIN-FINDING CLOSURE CLAIMS — PENDING INDEPENDENT REVIEW:
+- FIN-FINDING-RT20-001: REPAIRED by F3/F4/F5/F9/F10/F11.
+- FIN-FINDING-RT20-002: REPAIRED by F1/F2 source-native metadata lock and UNKNOWN rule.
+- Original JOB-EGC-015 rules 1-7/9 are retained only insofar as consistent with V2; V2 supersedes original Rule 8 and clarifies Rules 1-4.
+
+RED_TEAM:
+- 'Common 3/7/10 stress cases represent empirical market probabilities' -> FALSIFIED by method/source boundaries.
+- 'Stable under common finance means proven market-robust' -> FALSIFIED by F10.
+- 'Market finance can be represented by one universal WACC' -> FALSIFIED by IEA/NREL source heterogeneity.
+- 'Unknown nominal/real basis can be guessed during normalization' -> FORBIDDEN.
+- 'More Monte Carlo samples fix unsupported correlation/distribution assumptions' -> FALSIFIED; JOB-EGC-025/F5 require evidence-supported dependency model.
+
+STATUS_CHANGE:
+- JOB-EGC-015-REPAIR-RT20-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-015-REPAIR-REV-RT20-20261005: OPEN and dependency now satisfied.
+- JOB-EGC-015 remains REVIEW_FAILED/REPAIR_REQUIRED until the repair reviewer passes V2 and canonical integration is recorded.
+- GLOBAL_SOLVED: NO.
+- CURRENT_WINNER: NONE.
+
+CLAIM_GRAPH_UPDATE:
+- REVIEW-EGC-015-RT20-001 -> JOB-EGC-015-REPAIR-RT20-20261005 -> TE-EGC-FIN015-REPAIR-001/002 -> JOB-EGC-015-REPAIR-REV-RT20-20261005.
+- V2 feeds JOB-EGC-025 uncertainty propagation, JOB-EGC-004/common-boundary integration, candidate TEA and G21/G22.
+
+NEXT_ACTION:
+1. Distinct session independently reviews JOB-EGC-015-REPAIR-RT20-20261005 using stronger counterexamples and source-boundary checks.
+2. If PASS, canonical JOB-EGC-015 adopts V2 and closes FIN-FINDING-RT20-001/002.
+3. Candidate TEA jobs then report separate common-stress and market-finance stability labels.
+
+WRITE_INTEGRITY:
+- branch head read immediately before attempt 3: 0259d0f43e0227aa5822a805da1968c63ddaa463
+- file SHA read immediately before attempt 3: 23bc872c6b14496cbc1db8ec4918355f3cab1326
+- exact fetched blob SHA supplied; append-only; no force; only authorized file touched.
