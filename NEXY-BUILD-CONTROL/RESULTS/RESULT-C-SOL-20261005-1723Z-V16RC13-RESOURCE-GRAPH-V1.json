@@ -19,8 +19,8 @@
     "Every FILE node was assigned exactly one deterministic structural MODULE parent.",
     "Typed semantic resources were only emitted from explicit path/name evidence; no guessed import relation was asserted."
   ],
-  "STATUS": "PARTIAL",
-  "VERDICT": "NOT_ACTIVATION_READY",
+  "STATUS": "BLOCKED",
+  "VERDICT": "INVENTORY_BASELINE_VALID_AS_STRUCTURE_ONLY_NOT_GENESIS_RESOURCE_AUTHORITY",
   "OPEN_REVIEW_REQUIREMENTS": [
     "Independently recompute RESOURCE_GRAPH_HASH from exact artifact.",
     "Verify 881 target blobs map 1:1 to FILE nodes with no omissions/duplicates.",
@@ -28,5 +28,9 @@
     "Either add conservative cross-module conflicts/umbrellas or prove the current candidate sufficient before genesis installation."
   ],
   "PRODUCT_SOURCE_MUTATION": "NONE",
-  "TARGET_INTEGRATION": "NONE"
+  "TARGET_INTEGRATION": "NONE",
+  "AUTHORITY_REVIEW_EVIDENCE": "RESULT-C-SOL-20261005-0936-0800-V16RC13-HASHBIND-7C91-RESOURCE-GRAPH-READINESS",
+  "BLOCK_REASON": "ACTIVE_BUILD_AUTHORITY_FILTER_NOT_READY",
+  "DO_NOT_BIND_IN_GENESIS": true,
+  "NOTE": "The structural graph hash remains a reproducible inventory baseline; it must not populate MISSION_FENCE_STATE.RESOURCE_GRAPH_HASH."
 }
