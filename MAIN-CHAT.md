@@ -12818,3 +12818,155 @@ WRITE_INTEGRITY:
 - file SHA read: 310d66d6da3b1dbf691b18a09aedc587d4357f7c
 - exact SHA guarded update; only MAIN-CHAT.md; no force
 - commit/result: pending
+
+
+======================================================================
+45. REPAIR RESULT — JOB-EGC-034-REPAIR-EGS-P2-20261005
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+PRIMARY_JOB_ID: JOB-EGC-034-REPAIR-EGS-P2-20261005
+ROLE: EGS Evidence Repair / Provenance Analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-034-REPAIR-EGS-REV-P2-20261005
+TARGET_PARENT_JOB: JOB-EGC-034
+TARGET_REVIEW_FINDING: TE-EGC-035-002
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+REPAIR_VERDICT:
+- PRIOR JOB-EGC-034 EGS maturity wording "OPERATING PILOT / EARLY COMMERCIALIZATION" is superseded because it omitted a material October-2026 operational event that was public by the mission date.
+- Corrected maturity state: INITIAL UTILITY-SCALE COMMERCIAL OPERATION SUPPORTED BY ISSUER DISCLOSURE + INDEPENDENT JOURNALISTIC CORROBORATION OF GRID EXPORT; 33-MW NET METER VALUE IS NOT INDEPENDENTLY METER-REPLICATED IN PUBLIC EVIDENCE FOUND BY THIS JOB.
+- Cape Station GeoBlock 1 may be counted as operating/commercial at the disclosed 33-MW-net PPA threshold for issuer-reported operational-state accounting, but the evidence class must remain SOURCE_FACT / COMPANY-REPORTED PERFORMANCE, not independent MEASUREMENT.
+- Remaining Phase-I GeoBlocks and Phase II must NOT be counted as operating until separate operational evidence exists.
+- No durability, fleet repeatability, low-cost, reservoir-life, induced-seismicity, or massive-scale conclusion follows from this milestone.
+
+EVIDENCE_ID: EVIDENCE-EGC-034-REPAIR-001
+JOB_ID: JOB-EGC-034-REPAIR-EGS-P2-20261005
+CLAIM_ID: CLAIM-EGC-034-EGS-COD-20260930
+TOOL: SEC EDGAR direct retrieval
+METHOD: Inspect Fervo Energy 2026-10-01 Form 8-K Item 7.01 and furnished Exhibit 99.1; separate registrant disclosure from SEC validation.
+DATE: 2026-10-05
+SOURCE:
+- Fervo Energy Company Form 8-K dated 2026-10-01
+- Exhibit 99.1, issuer press release dated 2026-10-01
+SOURCE_DATE: 2026-10-01
+URL/DOI/IDENTIFIER:
+- https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/frvo-20261001.htm
+- https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/exhibit991pressrelease10126.htm
+INPUTS / KEY OUTPUT:
+- 8-K states the company issued and furnished the press release to SEC under Item 7.01 Regulation FD.
+- 8-K explicitly states the Item 7.01 information and press release are "furnished" and not deemed "filed" for Section 18 or Sections 11/12(a)(2) purposes except as specifically incorporated.
+- Exhibit 99.1 states Cape Station synchronized to the grid on 2026-09-24 and declared commercial operation on 2026-09-30, one day before contractual COD.
+- Exhibit 99.1 states first GeoBlock achieved 33 MW NET production, meeting expected PPA production threshold, and revenue was being generated under the PPA.
+- Phase I is approximately 100 MW across three 33-MW GeoBlocks; the other two were still commissioning with expected COD 2027-01-01.
+- Additional 400 MW Phase II was under construction with expected 2028 COD.
+EVIDENCE_CLASS: SOURCE_FACT / ISSUER-REPORTED PERFORMANCE
+UNCERTAINTY: Public filing does not expose independent meter telemetry or third-party acceptance certificate in retrieved evidence.
+ASSUMPTIONS: NONE for text extracted from filing.
+LIMITATIONS: SEC hosts the disclosure but does not independently validate the 33-MW measurement merely by receiving a furnished press release.
+REPRODUCTION_METHOD: Open both EDGAR URLs and compare Item 7.01 legal status with Exhibit 99.1 operational statements.
+REPLICATION_STATUS: PRIMARY_SOURCE_REPRODUCED; INDEPENDENT_METER_REPLICATION_NOT_FOUND.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: EVIDENCE-EGC-034-REPAIR-002
+JOB_ID: JOB-EGC-034-REPAIR-EGS-P2-20261005
+CLAIM_ID: CLAIM-EGC-034-EGS-GRIDEXPORT-CORROBORATION
+TOOL: Current web research / independent publication retrieval
+METHOD: Search non-Fervo current reporting published before/around COD and compare chronology/recipient against issuer disclosure.
+DATE: 2026-10-05
+SOURCE: Canary Media, Maria Gallucci, "In global first, a next-gen geothermal plant goes live at utility scale"
+SOURCE_DATE: 2026-09-28
+URL/DOI/IDENTIFIER: https://www.canarymedia.com/articles/geothermal/global-first-next-gen-geothermal-fervo
+KEY OUTPUT:
+- Independent outlet reported Fervo was producing/selling power to the grid from Cape Station after turning on an initial 33-MW unit in the prior week.
+- It reported the unit was testing/ramping and scheduled to begin formal commercial operation on Thursday 2026-10-01, supplying Shell Energy in California.
+- Chronology is consistent with Fervo's later SEC-furnished disclosure of 2026-09-24 grid synchronization and 2026-09-30 declared COD.
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_JOURNALISTIC_CORROBORATION
+UNCERTAINTY: Article reporting is independent from Fervo's corporate publication channel, but it is not an independent instrument-level measurement of net MW and may rely partly on company/interview information.
+LIMITATIONS: Supports real grid export / operational event; does NOT independently replicate the 33-MW-net meter value or contractual acceptance paperwork.
+REPRODUCTION_METHOD: Retrieve dated Canary Media article and compare dates, operating status, unit size and offtaker statement with EDGAR disclosure.
+REPLICATION_STATUS: OPERATIONAL_EVENT_CORROBORATED; NET_MW_NOT_INDEPENDENTLY_MEASURED.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: EVIDENCE-EGC-034-REPAIR-003
+JOB_ID: JOB-EGC-034-REPAIR-EGS-P2-20261005
+CLAIM_ID: CLAIM-EGC-034-EGS-INDEPENDENT-METER-STATUS
+TOOL: Targeted source search
+METHOD: Search current official/offtaker/grid/regulatory domains and general web for public confirmation of the first GeoBlock's 2026-09-30 COD and 33-MW-net value, including Southern California Edison, Shell Energy, PacifiCorp, Utah government/PSC, EIA, CPUC and FERC-related records.
+DATE: 2026-10-05
+SEARCH_TARGETS:
+- SCE/offtaker operational confirmation
+- Shell Energy operational confirmation
+- PacifiCorp/grid synchronization or metered-output confirmation
+- Utah state/PSC operational filing
+- EIA current operating-generator record
+- CPUC procurement/COD update
+- FERC generator-status/rate records
+RESULT:
+- Public regulatory and planning evidence confirms Cape Station project entities, wholesale-generator preparations, PPAs and planned phased capacity, but this pass did NOT locate a utility/ISO/offtaker/government source publishing independent meter telemetry or an independently measured 33-MW-net result for 2026-09-30.
+- Search did locate independent media corroboration of grid export (EVIDENCE-EGC-034-REPAIR-002), but that is not instrument replication.
+TRUTH_CLASS: NOT_VERIFIED / SEARCH_RESULT
+UNCERTAINTY: Absence from this search is not proof that no private acceptance/meter record exists; such records may be non-public or not indexed yet because the event is only days old.
+LIMITATIONS: Do not convert "not found publicly" into "does not exist."
+REPRODUCTION_METHOD: Repeat targeted source-domain searches after additional regulatory/utility reporting cycles.
+REPLICATION_STATUS: PUBLIC_INDEPENDENT_METER_EVIDENCE_NOT_FOUND_AS_OF_2026-10-05.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+PROVENANCE_CORRECTION:
+- SEC EDGAR provenance = strong evidence that Fervo formally furnished the statement to investors/regulators.
+- It is NOT equivalent to SEC certification of physical performance.
+- Canary Media = independent publisher corroborating the operational/grid-export event and Shell Energy offtake context, but not independent metering.
+- Therefore the strongest justified present claim is "commercial operation / grid export at an issuer-reported 33 MW net threshold, independently corroborated as an operating 33-MW-class unit," not "33 MW independently measured by a third party."
+
+CAPACITY_BOUNDARY:
+- OPERATING / COMMERCIAL NOW: ONLY first GeoBlock, issuer-reported 33 MW net and commercial as of 2026-09-30.
+- COMMISSIONING / NOT OPERATING-COUNTED: remaining two Phase-I GeoBlocks, expected contractual COD by 2027-01-01.
+- UNDER CONSTRUCTION / NOT OPERATING-COUNTED: additional 400 MW Phase II, expected 2028 COD.
+- FUTURE / NOT EVIDENCE: any larger multi-GW resource or expansion statements.
+
+CLAIM_GRAPH_REPAIR:
+- CLAIM-EGC-034-EGS-PHYSICS: remains SUPPORTED for physical operation.
+- CLAIM-EGC-034-EGS-MATURITY: OPERATING_PILOT/EARLY_COMMERCIALIZATION -> INITIAL_UTILITY_SCALE_COMMERCIAL_OPERATION_SUPPORTED_WITH_PROVENANCE_LIMITATION.
+- CLAIM-EGC-034-EGS-33MW-INDEPENDENT: NOT_VERIFIED.
+- CLAIM-EGC-034-EGS-100MW-OPERATING: FALSIFIED_AS_OF_THIS_EVIDENCE_DATE; only first block is supported operating.
+- CLAIM-EGC-034-EGS-500MW-OPERATING: FALSIFIED_AS_OF_THIS_EVIDENCE_DATE; Phase II remains construction/future COD.
+- CLAIM-EGC-034-EGS-DURABILITY: NOT_VERIFIED.
+- CLAIM-EGC-034-EGS-LOWCOST: NOT_VERIFIED.
+- CLAIM-EGC-034-EGS-FLEET-SCALE: NOT_VERIFIED.
+
+RED_TEAM_ATTACKS:
+1. ATTACK: SEC filing means SEC independently verified 33 MW.
+RESULT: REJECTED. Item 7.01 explicitly says furnished, not filed; the exhibit is the company's press release.
+2. ATTACK: Independent article mentioning 33 MW proves meter replication.
+RESULT: REJECTED. Independent publication is not an independent measurement system.
+3. ATTACK: One block commercial means full 100 MW Phase I operational.
+RESULT: FALSIFIED by issuer statement that two blocks remain commissioning.
+4. ATTACK: 500 MW "under construction" can be counted toward demonstrated massive energy.
+RESULT: FALSIFIED. Construction/planned capacity is not measured delivered energy.
+5. ATTACK: Initial COD proves long-run reservoir recovery/lifetime/economics.
+RESULT: REJECTED. The elapsed commercial record is days, not the 20-30 year horizon relevant to resource models.
+
+REPAIR_ACCEPTANCE_CHECK:
+- reviewer-found October-2026 evidence incorporated: YES.
+- operating vs planned capacity separated: YES.
+- issuer disclosure vs independent measurement separated: YES.
+- extrapolation to durability/economics/fleet scale prohibited: YES.
+- independent meter evidence: NOT_VERIFIED / NOT FOUND PUBLICLY IN THIS PASS.
+- self-verification: NO.
+
+STATUS_CHANGE:
+- JOB-EGC-034-REPAIR-EGS-P2-20261005: EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-034: REPAIR_REQUIRED -> REPAIR_SUBMITTED / AWAITING_REVIEW for EGS maturity correction only.
+- Other JOB-EGC-034 classifications remain bounded by JOB-EGC-035 review outcome.
+- GLOBAL_SOLVED remains NO.
+- MISSION_STATUS remains CONTINUE_REQUIRED.
+- CURRENT_WINNER remains NONE.
+
+NEXT_ACTION:
+1. JOB-EGC-034-REPAIR-EGS-REV-P2-20261005 must independently reproduce the SEC legal/provenance distinction and operational chronology.
+2. Reviewer should specifically search for Shell Energy/offtaker acceptance, grid-operator telemetry, utility settlement, EIA generator-status or regulator records that could upgrade the 33-MW value from issuer-reported performance to independent measurement.
+3. Create/execute a separate EGS durability/reservoir-recovery job; initial commercial operation cannot validate 20% heat recovery or 20-year life used in global resource models.
+4. Reopen maturity if later evidence shows COD, net-output, or capacity boundary was misstated.
