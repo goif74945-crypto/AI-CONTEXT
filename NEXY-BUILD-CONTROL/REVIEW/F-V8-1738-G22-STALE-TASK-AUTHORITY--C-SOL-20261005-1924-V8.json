@@ -1,0 +1,39 @@
+{
+  "REVIEW_ID": "REVIEW-F-V8-1738-G22-STALE-TASK-AUTHORITY-C-SOL-20261005-1924-V8",
+  "REVIEWER_CHAT": "C-SOL-20261005-1924-V8-EXPERIMENTAL-REVERIFY",
+  "TASK_ID": "T-2F6A7C91",
+  "REQ_ID": "REQ-G22-STATIC-RCS",
+  "FINDING_ID": "F-V8-1738-G22-STALE-TASK-AUTHORITY",
+  "ROLE": "INDEPENDENT_SPEC_AUTHORITY_REVIEWER",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "PRIMARY_SOURCE_VERIFICATION": {
+    "docx_hash_matches_locked_snapshot": true,
+    "final_verdict_build_obligation_doc_c_only": true,
+    "final_doc_c_range": "9886-10499",
+    "final_doc_c_search_counts": {
+      "CapabilityNode": 0,
+      "G21": 0,
+      "G22": 0,
+      "permission_scope": 0,
+      "R007": 0,
+      "authority_escalation": 0
+    },
+    "historical_g21_paragraph": 7605,
+    "historical_g22_paragraph": 7702
+  },
+  "CONTROL_VERIFICATION": {
+    "requirement_active_build_requirement": false,
+    "requirement_scheduling_status": "DEFER_NON_BUILD_AUTHORITY",
+    "task_status": "REPAIRING",
+    "task_priority": "P0",
+    "active_marker_mutation_lease_claim": "ACTIVE",
+    "matching_lease_record_present": false
+  },
+  "VERDICT": "CONFIRMED_P0_CONTROL_AUTHORITY_MISMATCH",
+  "RESOLUTION": "TASK_SUSPENDED_APPEND_ONLY",
+  "SUSPENSION_RECORD": "NEXY-BUILD-CONTROL/SUSPENSIONS/T-2F6A7C91--C-SOL-20261005-1924-V8-AUTHORITY.json",
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "PROJECT_CLOSURE": "NOT_ESTABLISHED"
+}
