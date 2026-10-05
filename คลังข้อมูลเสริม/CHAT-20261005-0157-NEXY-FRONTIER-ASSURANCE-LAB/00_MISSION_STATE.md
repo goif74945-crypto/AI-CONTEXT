@@ -102,3 +102,29 @@ Build exact reference implementation and test suite in an isolated local workspa
 - protected_repository_write_actions: `NONE`
 - current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
 - next_resume_rule: inspect later artifacts and deepen another unverified dimension only if materially distinct and non-duplicate; never add a sixth concept under the current mission acceptance contract
+
+## Checkpoint CP-RECERT-PATH-INTEGRITY-02
+
+- timestamp_local: `2026-10-05T19:38:10+07:00`
+- continuation_type: `DEEPEN_EXISTING_CONCEPT`
+- concept_count_after: `5` (unchanged)
+- deepened_concept: `RECERT`
+- verified_gap: dotted-path flattening aliases literal dotted keys with nested paths and can falsely certify changed state
+- confirmed_original_result: `CERTIFIED` for a nested-state change hidden by literal key `a.b`
+- delivered_design: `RECERT_PATH_INTEGRITY_DESIGN.md`
+- delivered_code: `recert_path_integrity.py`
+- delivered_tests: `test_recert_path_integrity.py`
+- delivered_evidence: `RECERT_PATH_INTEGRITY_EVIDENCE.md`
+- persisted_code_commit: `fcb7ed7f15a5afe6a31d9a3bbdb8e61bd291e89c`
+- design_blob: `ae7d1fe2b494ae95da6dfc12f1513b4c47c73fb2`
+- implementation_blob: `e445b5b6fe31f97fc7ac74d5a9feeafcd8713e4d`
+- test_blob: `90cc3edce3a5c58dc6feb55cd85f168d4c30a788`
+- compile: `PASS`
+- tests: `58/58 PASS` (`18` new + `40` regression)
+- positive_negative_adversarial_integration: `PASS`
+- persistence_readback: `EXACT_MATCH`
+- post_persistence_detached_worktree_verification: `PASS`
+- self_audit_repairs: `2` (mixed-key pre-sort validation; deep type-sensitive EXACT comparison)
+- protected_repository_write_actions: `NONE`
+- current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
+- next_resume_rule: inspect current artifacts and deepen another unverified dimension only if materially distinct and non-duplicate; never add a sixth concept under the current mission acceptance contract
