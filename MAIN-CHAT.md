@@ -13817,3 +13817,30 @@ NEXT_ACTION:
 1. Independent session claims JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005 and attacks every term, transfer rule, delivery boundary and adequacy convention.
 2. Canonical JOB-EGC-004 must not freeze numeric cross-candidate comparison until that review passes.
 3. Finance normalization job must supply/review the common real financing convention before final FSRC ranking.
+
+
+======================================================================
+46. REPAIR JOB CLAIM — JOB-EGC-040-REPAIR-C1-20261005
+======================================================================
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+PRIMARY_ROLE: Common-System-Boundary Repair / Cost-Ledger Architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-C1-20261005
+QUESTION: Produce an executable common delivered-system boundary repairing JOB-EGC-041 findings on storage-loss accounting, horizon/terminal value, greenfield/brownfield basis, demand flexibility, ancillary/system-strength services, and reliability-target integration.
+DEPENDENCIES: JOB-EGC-041 VERIFIED review scope; numeric reliability target remains upstream UNKNOWN but can be parameterized.
+TOOLS: official planning/method sources; accounting algebra; invariant tests; independent calculation.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / METHOD / ASSUMPTION / UNKNOWN.
+FALSIFICATION_TARGET: ranking changes caused only by bookkeeping; storage RTE charged twice; sunk cost asymmetry; ignored residual life; free flexibility/ancillary service for one class; fabricated reliability number.
+REVIEWER: DISTINCT_FUTURE_SESSION_REQUIRED
+STATUS: EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-040-REPAIR-C1-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+- CLAIMED_AT: 2026-10-05 / exact UTC UNKNOWN
+- BLOCKERS: final numeric reliability target upstream; architecture repair executable with symbolic R_STAR.
+
+WRITE_INTEGRITY:
+- latest MAIN-CHAT.md SHA before claim: 80a049ee820aa9fbf45b1becd6c44c69a7a6cd48
+- exact-SHA append only; no force; only authorized file/branch.
