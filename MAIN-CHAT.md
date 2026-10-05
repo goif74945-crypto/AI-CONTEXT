@@ -9177,3 +9177,93 @@ WRITE_CONCURRENCY:
 BRANCH_HEAD_BEFORE_WRITE: 4b4e097a4aa2c4d59b9bca4467eddc491977e7d7
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 0456155e24a89ccab5f3473c01d716a3a27c38de
 STALE_WRITE_GUARD: update_file blob-SHA precondition; abort/reconcile on concurrent mutation.
+
+
+======================================================================
+57. SECOND RESULT — JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0310+07-OPS1
+PRIMARY_JOB_ID: JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-056-OPERATIONS-EVIDENCE-REV-C2-20261006
+BRANCH_HEAD_BEFORE_WRITE: 976c95ccb4914a7eb1cd280254127e7621127372
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: de684c4a14aa4c75cf5f6e3b1c6bd028c3e3446a
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+EVIDENCE_ID: E-EGC-056-008
+CLAIM_ID: CLAIM-EGC-056-NGCC-OPERATING-ANCHOR
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: U.S. EIA Electric Power Monthly Table 6.07.A
+SOURCE_DATE: July 2026 data release, September 24 2026; 2025 values preliminary
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_a
+METHOD: direct official table extraction from EIA-923/860/860M-derived fleet statistics.
+OUTPUT_2025:
+- natural-gas combined-cycle time-adjusted capacity = 291,470.5 MW
+- capacity factor = 58.4%
+CALC-EGC-056-002:
+TWh_per_GW_nameplate_year = 8.76*0.584 = 5.11584 TWh/GW-y.
+Nameplate_per_1GW_annual_average = 1/0.584 = 1.712328767 GW/GW-average.
+CRITICAL_LIMITATION: NGCC is dispatchable; observed fleet capacity factor reflects dispatch/economics/load plus outages and is NOT equivalent to technical availability or accredited capacity. Do not use 58.4% as an availability ceiling.
+REPLICATION_STATUS: SAME_SESSION_CALC; independent reviewer required.
+
+EVIDENCE_ID: E-EGC-056-009
+CLAIM_ID: CLAIM-EGC-056-STORAGE-DURATION-BOUNDARY
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+SOURCE: U.S. EIA Energy Storage for Electricity Generation
+URL: https://www.eia.gov/energyexplained/electricity/energy-storage-for-electricity-generation.php
+SOURCE_PERIOD: end-2022 snapshot
+OUTPUT_2022: operational utility-scale batteries = 8,842 MW power and 11,105 MWh energy capacity.
+CALC-EGC-056-003:
+fleet_snapshot_duration_ratio = 11,105 MWh / 8,842 MW = 1.25593757 hours.
+INTERPRETATION: this is only an aggregate 2022 nameplate energy/power ratio, not measured discharge duration under all operating conditions and not a valid proxy for the much larger 2026 fleet.
+CURRENT_BOUNDARY: EIA reports nearly 52 GW operational battery power capacity by June 2026, but the official summary surfaced in this session did not provide a matched current national MWh total. Therefore current national aggregate duration = UNKNOWN, not inferred from 2022.
+FALSIFICATION: any downstream model that converts 2026 battery MW directly to MWh by silently applying the 2022 ratio is REJECTED unless it independently retrieves current generator-level energy capacity.
+
+CROSS-EXAMINATION / INDEPENDENT REPLICATION:
+TARGET: JOB-EGC-043-BASELINE-SCREEN-C1-20261006, measured 2025 EIA capacity-factor lane and CALC-EGC-043-001.
+METHOD: this EGC-056 session independently retrieved current EIA Table 6.07.B and separately computed 1/CF.
+RESULT:
+- nuclear: baseline 1.0989; EGC-056 independent = 1.0989011 -> MATCH
+- geothermal: baseline 1.5175; independent = 1.5174507 -> MATCH
+- hydro: baseline 2.8329; independent = 2.8328612 -> MATCH
+- wind: baseline 2.9240; independent = 2.9239766 -> MATCH
+- solar PV: baseline 4.0984; independent = 4.0983607 -> MATCH
+VERDICT: CALC-EGC-043-001 independently replicated to displayed precision.
+IMPORTANT: replication validates arithmetic only. It does NOT validate use of CF as capacity credit; both jobs explicitly reject that interpretation.
+REPLICATION_CLASS: DISTINCT_SESSION_NUMERICAL_REPLICATION.
+
+CROSS-EXAMINATION OF BASELINE STORAGE CAPEX WARNING:
+Baseline job states observed battery USD/kW CAPEX cannot be interpreted without energy duration USD/kWh. E-EGC-056-009 independently supports the dimensional objection: MW and MWh are distinct storage attributes and historical fleet energy/power ratios are time-varying. VERDICT: boundary warning SUPPORTED; no cost conclusion added.
+
+JOB RESULT:
+The operational-evidence matrix now has mature fleet CF anchors, direct generation cross-checks, NGCC dispatch baseline, global nuclear availability, U.S. offshore-wind commercial-operation evidence, national/California battery deployment evidence, grid-integration evidence with source-stated boundary exclusions, and current company-reported EGS commercial operation evidence.
+UNKNOWNs are preserved rather than filled: long-run EGS durability/economics; mature U.S. offshore-wind fleet CF; current national BESS MWh/duration; technology-specific firm capacity/ELCC; full delivered-system cost.
+
+FOLLOW-UP REVIEW JOB:
+JOB_ID: JOB-EGC-056-OPERATIONS-EVIDENCE-REV-C2-20261006
+TITLE: Independent operational-evidence and boundary review
+ROLE: independent physical-evidence / data-boundary reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Are E-EGC-044-001..007, E-EGC-056-008..009 and CALC-EGC-044-001/CALC-EGC-056-002..003 correctly sourced, dimensionally correct, independently reproducible and bounded so no CF/nameplate/storage/clean-hour/company-report claim is over-promoted?
+DEPENDENCIES: JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006 AWAITING_REVIEW.
+REQUIRED_TOOLS: independent EIA/IAEA/CEC/DOE/SEC retrieval; arithmetic replication; generator-level or operator evidence where useful; source-vintage audit.
+REQUIRED_EVIDENCE:
+- reproduce EIA 2025 non-fossil and NGCC values;
+- reproduce 1/CF arithmetic and 2022 MWh/MW ratio;
+- audit solar reverse-generation boundary mismatch;
+- confirm CEC charging/pumping-demand exclusion;
+- distinguish Fervo company-reported SEC-furnished claim from independent measurement;
+- search for current national BESS MWh and offshore-wind measured operating data that could close UNKNOWNs.
+FALSIFICATION_CONDITION: FAIL if any source is misquoted, units/boundaries are mixed, CF is promoted to adequacy, battery MW is promoted to MWh, clean matching hours are promoted to full retail service, or company-reported EGS COD is promoted to independently validated long-run performance.
+STATUS: OPEN
+BLOCKERS: NONE for review.
+NEXT_ACTION: distinct session claims reviewer job.
+
+STATUS_CHANGE:
+JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+CURRENT_WINNER: NONE.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
