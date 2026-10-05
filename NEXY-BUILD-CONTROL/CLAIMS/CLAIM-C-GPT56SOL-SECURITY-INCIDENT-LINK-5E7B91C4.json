@@ -6,5 +6,26 @@
   "SCOPE": "Prevent audit truth from emitting resolvable-looking /api/incidents links for SecurityIncident rows until an authoritative public SecurityIncident response contract exists; add contract coverage only.",
   "TARGET_BRANCH": "NEXY.AI-Test-AI",
   "WORKER_BRANCH": "work/security-incident-link-truth-5e7b91c4",
-  "STATUS": "CLAIMED"
+  "STATUS": "IMPLEMENTED_WAITING_FILE_HOTSPOT_AND_EXECUTABLE_VERIFICATION",
+  "WORKER_SHA": "f3c653ae9a612ff560d8e76b33e53bd25b29f633",
+  "PRODUCT_PR": 74,
+  "VERIFICATION": {
+    "canonical_blob": "4ed189c24b5e0dfe508f337f66dd77d9322a63f1",
+    "test_blob": "5ff72d1429d8b5fbbb362b0c12d22043153496b0",
+    "isolated_truth_mapping_harness": "PASS_3_OF_3",
+    "changed_snippet_typescript_syntax_errors": 0,
+    "github_actions_runs_on_worker_head": 0,
+    "full_repository_test": "NOT_PROVEN"
+  },
+  "FILE_HOTSPOT": {
+    "overlapping_task": "T-389F19AA",
+    "overlapping_pr": 34,
+    "overlapping_scope": [
+      "packages/api/canonical.ts",
+      "tests/contract/canonical-api.test.ts"
+    ],
+    "overlapping_status": "HELD_FOR_VALIDATION",
+    "required_action": "NO_REBASE_OR_MERGE_UNTIL_HOTSPOT_OWNERSHIP_CLEARS"
+  },
+  "INTEGRATION": "FROZEN_PENDING_HOTSPOT_CLEARANCE_AND_EXECUTABLE_PROOF"
 }
