@@ -1,0 +1,71 @@
+{
+  "FINDING_ID": "FIND-DOC-C4-VERIFY-OTAC-OWNER-EVICTION-AUTHORITY-001",
+  "REQ_ID": "REQ-DOC-C-4-2-VERIFY-OTAC",
+  "TASK_ID": "TASK-DOC-C4-VERIFY-OTAC-OWNER-CAP-AUTHORITY-001",
+  "FROM": "C-SOL-20261005-1924-V8",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CONTROL_PARENT_OBSERVED": "4c56f219a5dd21c22584f9738f58e6a3ab6dd20e",
+  "SEVERITY": "P1",
+  "CLASS": [
+    "AUTHORITY_VIOLATION",
+    "CONTRACT_DRIFT",
+    "TEST_ORACLE_DEFECT",
+    "STALE_REQUIRED_IMPLEMENTATION"
+  ],
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "FACTS": [
+    "Final DOC-C §4.2 defines POST /api/auth/verify-otac request as exactly email, device_id, and otac; its stated purpose is verify one-time code and create session.",
+    "Final DOC-C §2.3 sets concurrent_sessions_per_user=5 but final DOC-C ends at §5.6 and does not contain §8.3 or §8.7.",
+    "packages/contracts/auth.ts adds confirm_owner_session_eviction to VerifyOtacBodySchema and labels it DOC-C §8.3.",
+    "packages/api/auth.ts consumes confirm_owner_session_eviction and, when all active sessions are OWNER sessions at the cap, may revoke the oldest OWNER session before creating the new session.",
+    "packages/api/auth.ts emits AUTH_OWNER_SESSION_CAP_CONFIRMED for that extension behavior.",
+    "tests/contract/owner-session-cap-confirmation.test.ts explicitly treats DOC-C §8.3 as authority and requires both the server-side eviction behavior and UI retry field.",
+    "apps/web/components/OtacLoginForm.tsx sends confirm_owner_session_eviction=true and exposes a replace-oldest-owner-session flow.",
+    "AI-CONTEXT code/commit duplicate searches for confirm_owner_session_eviction, OWNER_SESSION_CAP_CONFIRMED, and session-cap confirmation returned no prior finding."
+  ],
+  "EXPECTED": [
+    "Final DOC-C is the build authority; superseded or non-final sections must not authorize runtime/session mutation.",
+    "The canonical verify-otac transport must not gain an authority-bearing request field or revoke an existing OWNER session based solely on a field absent from final DOC-C.",
+    "The required concurrent-session cap must remain enforced without inventing unsupported authority semantics; if final authority does not determine the at-cap behavior, freeze only that semantic scope rather than importing historical text."
+  ],
+  "SPEC_EVIDENCE": {
+    "AUTHORITY": "FINAL VERDICT paragraphs 9833-9844",
+    "CANONICAL_DEFAULTS": "DOC-C paragraphs 9929-9937",
+    "VERIFY_OTAC": "DOC-C paragraphs 10070-10104",
+    "DOC_C_END": "DOC-C ends at paragraph 10498; DOC-D begins at 10499"
+  },
+  "SOURCE_EVIDENCE": {
+    "auth_contract": {
+      "path": "packages/contracts/auth.ts",
+      "blob": "bb93f0b30a0a5117d159e4989ec5c2895bc33403"
+    },
+    "auth_runtime": {
+      "path": "packages/api/auth.ts",
+      "blob": "0f8c8e21ce39f36b850c0db93ceadaa886088e6b"
+    },
+    "test_oracle": {
+      "path": "tests/contract/owner-session-cap-confirmation.test.ts",
+      "blob": "3e254036b146209fb787e2bcba2b586a0e7e08ab"
+    },
+    "ui": {
+      "path": "apps/web/components/OtacLoginForm.tsx",
+      "blob": "8fc42e167469e82e33a0831de3cf602c023d7b7c"
+    }
+  },
+  "REPRODUCTION": [
+    "Reach the configured concurrent session cap with active OWNER sessions.",
+    "Submit an otherwise-valid verify-otac request with confirm_owner_session_eviction=true.",
+    "Current runtime revokes the oldest OWNER session and creates the new session; the extra field and mutation are not declared by final DOC-C."
+  ],
+  "REPAIR_CONSTRAINTS": [
+    "Do not cite historical/non-final DOC-C §8.x as build authority.",
+    "Do not weaken concurrent_sessions_per_user=5.",
+    "Do not silently evict an OWNER session from the canonical verify-otac path without active authoritative support.",
+    "Repair the contract/runtime/UI/test oracle together once branch-policy/source-mutation blocking is resolved.",
+    "Do not mutate protected NEXY.ai."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "SOURCE_MUTATION": "NONE"
+}
