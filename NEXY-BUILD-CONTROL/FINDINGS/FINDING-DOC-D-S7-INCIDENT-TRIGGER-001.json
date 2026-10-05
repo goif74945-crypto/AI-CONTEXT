@@ -54,7 +54,16 @@
     ],
     "result": "NO_MATCHES_FOUND_AT_CHECK_TIME"
   },
-  "STATUS": "REPRODUCED",
-  "MUTATION_STATUS": "BLOCKED_BY_AUTHORITY_GAP",
-  "BLOCKER": "Final DOC-C/D do not define canonical trigger persistence or derivation; source mutation would require inventing truth semantics."
+  "STATUS": "RESOLVED_BY_INTEGRATED_REPAIR",
+  "MUTATION_STATUS": "NO_ACTION_REQUIRED",
+  "BLOCKER": "Final DOC-C/D do not define canonical trigger persistence or derivation; source mutation would require inventing truth semantics.",
+  "RESOLUTION": {
+    "task_id": "T-INCIDENT-TRUTH-7B3E91C4",
+    "integration_commit_sha": "cf6d5cc7792cbed7e06018364e33be658f24010a",
+    "behavior": "UI renders trigger as explicit UNKNOWN when backend trigger truth is absent and renders request_id under its own label.",
+    "control_commits": [
+      "5f87f414604bfe43eae192a6c0ed1a63a571ee85",
+      "8de38be2cdefb31ec640526e1c451f29e83821c7"
+    ]
+  }
 }
