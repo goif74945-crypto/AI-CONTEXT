@@ -1,0 +1,174 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_STATIC_PROTOCOL_REPAIR_PROPOSAL_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "STATUS": "NON_NORMATIVE_PROPOSAL_USER_LAW_ADOPTION_REQUIRED",
+  "PURPOSE": "Provide one serializable repair pattern for active-integration cutover races and shard-universe split-brain findings without claiming that V16-RC1.3 text has already changed.",
+  "AFFECTED_FINDINGS": [
+    {
+      "ID": "FINDING-V16RC13-CONSTITUTION-ACTIVATION-ACTIVE-INTEGRATION-RACE-FE01",
+      "BLOB_SHA": "a5b9edb72e429324e09a4979c6217a0b7844a833"
+    },
+    {
+      "ID": "FINDING-V16RC13-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-3C632ADD",
+      "BLOB_SHA": "30530c493c7cf175a36cf1431570165918a298d8"
+    },
+    {
+      "ID": "FINDING-V16RC13-MISSION-ROTATION-ACTIVE-INTEGRATION-DRAIN-AMBIGUITY-6F42C1A9",
+      "BLOB_SHA": "f95832fd62aba866180dcc1b95f44b4a0713dfe0"
+    },
+    {
+      "ID": "FINDING-V16RC13-SHARD-UNIVERSE-UPDATE-SPLIT-BRAIN-DE64F6B9",
+      "BLOB_SHA": "6527fe791e057180c9d11d0c9a90b9b12ba6bb39"
+    }
+  ],
+  "CORE_TRANSITION_MODEL": {
+    "APPLIES_TO": [
+      "CONSTITUTION_ACTIVATION",
+      "SPEC_ACTIVATION",
+      "MISSION_ROTATION",
+      "SHARD_UNIVERSE_UPDATE"
+    ],
+    "PHASES": [
+      "INTENT_CREATED",
+      "ENTRY_RESERVED_GATES_CLOSED",
+      "DRAINING_OLD_INTEGRATION",
+      "OLD_INTEGRATION_RECONCILED",
+      "CUTOVER_READY",
+      "CUTOVER_COMMITTED",
+      "POST_CUTOVER_VALIDATION",
+      "ACTIVE",
+      "BLOCKED_RECONCILIATION_REQUIRED",
+      "STOPPED"
+    ],
+    "CAS_A_ENTRY_RESERVATION": {
+      "PRECONDITIONS": [
+        "TRANSITION_KIND == NONE",
+        "ACTIVE_TRANSITION_ID == null",
+        "INTEGRATION_HEALTH in {HEALTHY,REGRESSION}",
+        "STATE_VERSION == EXPECTED_STATE_VERSION"
+      ],
+      "ATOMIC_WRITES": [
+        "bind immutable ACTIVE_TRANSITION_ID and ACTIVE_TRANSITION_INTENT_HASH",
+        "set TRANSITION_KIND to requested transition",
+        "set ACTIVE_TRANSITION_STATE=ENTRY_RESERVED_GATES_CLOSED",
+        "close WORK_ADMISSION_GATE, MUTATION_GATE, INTEGRATION_GATE",
+        "STATE_VERSION = EXPECTED_STATE_VERSION + 1"
+      ],
+      "MUST_NOT_CHANGE": [
+        "EFFECTIVE_CONSTITUTION_HASH or activation generation",
+        "SPEC_ARTIFACT_HASH or activation generation",
+        "ACTIVE_MISSION_ID or ACTIVE_MISSION_GENERATION",
+        "ENGINEERING_EPOCH",
+        "MEMBERSHIP_EPOCH",
+        "ACTIVE_INTEGRATION durable identity/truth"
+      ],
+      "RATIONALE": "Closing integration admission and reserving the one global transition occurs before identity cutover, so no new integration can race into the drain window while an already-issued old-identity Git side effect remains representable."
+    },
+    "OLD_INTEGRATION_DRAIN": {
+      "RULES": [
+        "If ACTIVE_INTEGRATION==null and INTEGRATION_HEALTH==HEALTHY, mark OLD_INTEGRATION_RECONCILED without inventing work.",
+        "If an integration exists, only transition-authorized reconciliation/recovery may advance it; unrelated integration stays forbidden.",
+        "RESERVED or REF_UPDATE_PENDING may abort only if no external ref update was issued and durable evidence proves that fact.",
+        "REF_UPDATE_IN_PROGRESS must read actual target HEAD and classify exactly per clauses [144]-[145].",
+        "HEAD==EXPECTED -> NOT_COMMITTED path; HEAD==CANDIDATE -> COMMITTED_PENDING_VERIFICATION; any other HEAD -> BLOCKED_RECONCILIATION_REQUIRED.",
+        "COMMITTED_PENDING_VERIFICATION must finish exact bound verification before clearing ACTIVE_INTEGRATION.",
+        "REGRESSION/ROLLBACK_PENDING/FORWARD_FIX_PENDING must complete authorized recovery with expected-head semantics before clearing ACTIVE_INTEGRATION.",
+        "UNKNOWN_REQUIRES_RECONCILIATION can never be cleared by timeout, assumption, or epoch invalidation.",
+        "The old law/spec/mission identity remains the semantic authority for interpreting and reconciling the already-existing integration until it becomes terminal."
+      ],
+      "EXIT": "ACTIVE_INTEGRATION==null AND INTEGRATION_HEALTH==HEALTHY AND actual target HEAD/TREE are explicitly bound into transition evidence"
+    },
+    "CAS_B_IDENTITY_CUTOVER": {
+      "PRECONDITIONS": [
+        "ACTIVE_TRANSITION_ID and intent hash still match",
+        "ACTIVE_TRANSITION_STATE==CUTOVER_READY",
+        "ACTIVE_INTEGRATION==null",
+        "INTEGRATION_HEALTH==HEALTHY",
+        "actual target HEAD/TREE equal transition drain evidence",
+        "STATE_VERSION==EXPECTED_STATE_VERSION"
+      ],
+      "ATOMIC_WRITES_COMMON": [
+        "ENGINEERING_EPOCH = prior + 1",
+        "MEMBERSHIP_EPOCH = prior + 1",
+        "install only the requested new global identity/descriptor",
+        "set ACTIVE_TRANSITION_STATE=CUTOVER_COMMITTED",
+        "STATE_VERSION = EXPECTED_STATE_VERSION + 1"
+      ],
+      "TRANSITION_SPECIFIC": [
+        "CONSTITUTION_ACTIVATION installs new EFFECTIVE_CONSTITUTION_HASH + activation generation/state.",
+        "SPEC_ACTIVATION installs new SPEC_ARTIFACT_HASH + activation generation/state and binds rebuilt root-generation intent.",
+        "MISSION_ROTATION installs ACTIVE_MISSION_ID and exactly OLD_GENERATION+1.",
+        "SHARD_UNIVERSE_UPDATE installs new SHARD_UNIVERSE_HASH/VERSION only after migration verification described below."
+      ],
+      "GATES": "Remain closed through post-cutover validation; reopening requires a later expected-version CAS after all transition-specific validation passes."
+    },
+    "CRASH_RECOVERY": [
+      "Before CAS_A: no transition authority exists.",
+      "After CAS_A/before drain: resume by transition ID; gates remain closed.",
+      "During Git truth reconciliation: actual target ref is product truth and ambiguity blocks cutover.",
+      "After drain/before CAS_B: revalidate target HEAD/TREE and STATE_VERSION; any movement blocks/restarts reconciliation.",
+      "After CAS_B: new identity is installed but gates remain closed until post-cutover validation.",
+      "USER_STOP may preempt any phase but must preserve active integration, Git result, transition ID, and reconciliation evidence."
+    ]
+  },
+  "SHARD_UNIVERSE_UPDATE_DELTA": {
+    "MIGRATION_INTENT_REQUIRED_FIELDS": [
+      "old_shard_universe_hash",
+      "old_shard_universe_version",
+      "new_shard_universe_hash",
+      "new_shard_universe_version",
+      "mapping_algorithm_id",
+      "mapping_algorithm_hash",
+      "migrated_domains",
+      "source_record_roots",
+      "expected_record_counts"
+    ],
+    "REQUIRED_DOMAINS": [
+      "MEMBERSHIP",
+      "MESSAGES",
+      "TASKS",
+      "EVIDENCE",
+      "FINDINGS",
+      "REVIEWS"
+    ],
+    "MIGRATION_RULES": [
+      "CAS_A closes normal writers before authoritative migration begins.",
+      "All old-universe records are enumerated by immutable record ID from pinned source roots.",
+      "Each record is mapped exactly once to a new logical shard using the bound mapping algorithm.",
+      "Every new shard emits an explicit manifest, including empty shards.",
+      "Per-domain migration manifests prove source_count==destination_count, unique source IDs, unique destination IDs, and identical record-content hashes.",
+      "Any missing, duplicate, conflicting, or unparseable record blocks CUTOVER_READY.",
+      "No dual-write protocol is assumed. V1 repair uses freeze/drain/migrate/cutover for simpler linearizability.",
+      "CAS_B increments ENGINEERING_EPOCH and MEMBERSHIP_EPOCH and installs U2 only after all domain migration roots independently verify.",
+      "Old U1 shard namespaces become read-only historical evidence after CAS_B.",
+      "Every active participant must renew membership in the new MEMBERSHIP_EPOCH before normal mutation.",
+      "Closure entry is forbidden while SHARD_UNIVERSE_UPDATE is nonterminal."
+    ],
+    "LEASE_AND_REVALIDATION_DELTA": [
+      "Lease binding adds SHARD_UNIVERSE_HASH and SHARD_UNIVERSE_VERSION.",
+      "Pre-mutation revalidation adds SHARD_UNIVERSE_HASH and SHARD_UNIVERSE_VERSION.",
+      "Membership record adds SHARD_UNIVERSE_HASH and SHARD_UNIVERSE_VERSION for active mutation eligibility."
+    ]
+  },
+  "TORTURE_TEST_MATRIX": [
+    "For each of RESERVED, REF_UPDATE_PENDING, REF_UPDATE_IN_PROGRESS, COMMITTED_PENDING_VERIFICATION, VERIFIED, REGRESSION, ROLLBACK_PENDING, FORWARD_FIX_PENDING, UNKNOWN_REQUIRES_RECONCILIATION: race transition CAS_A before/after phase change.",
+    "Crash immediately before and after Git ref CAS, before and after CAS_A, and before and after CAS_B.",
+    "Attempt new integration reservation after CAS_A and require deterministic rejection.",
+    "Change target HEAD between drain evidence and CAS_B and require cutover rejection.",
+    "For shard migration: crash after each domain/shard manifest, duplicate one record, omit one record, omit one empty shard, inject stale U1 writer, and require fail-closed behavior.",
+    "USER_STOP at every transition phase preserves durable Git/integration truth."
+  ],
+  "ADOPTION_REQUIREMENTS": [
+    "Explicit user law change or a higher-authority normative Constitution revision must adopt equivalent rules; this proposal cannot amend immutable V16-RC1.3 by itself.",
+    "Exact adopted law bytes must be pinned and hashed.",
+    "Independent static review must prove the repaired ordering closes all four referenced findings or explicitly leave residual blockers.",
+    "Executable torture tests must pass before product mutation activation."
+  ],
+  "NON_CLAIMS": [
+    "This proposal is not an active Constitution amendment.",
+    "It does not close any referenced finding.",
+    "It does not activate V16-RC1.3.",
+    "It performs no product source mutation or target integration."
+  ],
+  "CREATED_BY_CHAT_ID": "C-SOL-20261005-0951-0800-V16RC13-REQROOTV2-XREVIEW-4C91E2A7"
+}
