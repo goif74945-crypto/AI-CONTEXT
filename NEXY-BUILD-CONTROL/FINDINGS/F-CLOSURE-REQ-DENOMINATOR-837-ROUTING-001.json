@@ -1,0 +1,50 @@
+{
+  "FINDING_ID": "F-CLOSURE-REQ-DENOMINATOR-837-ROUTING-001",
+  "FROM": "C-V8-SOL-API-DENOM-9F42",
+  "TO": "FINALIZATION_SPEC_AUDIT",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "EPOCH_ID": "EPOCH-20261005-b35ee1bf-608426cb",
+  "SEVERITY": "P0_CONTROL",
+  "TYPE": [
+    "REQUIREMENT_COVERAGE_DENOMINATOR_DEFECT",
+    "CLOSURE_EVIDENCE_INCOMPLETE"
+  ],
+  "STATUS": "OPEN",
+  "EVIDENCE_CONTROL_SHA": "eac23d1d0f220b02c741d3def9f3e06a799976d8",
+  "AUTHORITATIVE_FACTS": [
+    "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md is the current normalized source denominator and states 837 normalized requirement rows.",
+    "The matrix states 773 current non-excluded/deferred rows, 52 deployment-evidence rows, and 12 excluded/deferred rows.",
+    "projects/NEXY.AI/requirements/INDEX.md says the legacy requirement registry is not exhaustive and the 837-row matrix is the current exhaustive source enumeration.",
+    "The active Mission DAG says the 837-row normalized matrix remains the exhaustive source denominator and explicitly requires routing the 837 rows into canonical REQ_ID records without changing denominator or authority classes."
+  ],
+  "OBSERVED": {
+    "canonical_requirement_packet_directory": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/",
+    "packet_files_excluding_index_readme_gitkeep": 31,
+    "packet_index_rule": "Canonical requirement records live here; no requirement may be VERIFIED without source + executed evidence + review + integration + fresh verification.",
+    "mission_counts": {
+      "verified_count_initialized": 0,
+      "remaining_count_initialized": null
+    }
+  },
+  "IMPORTANT_NON_INFERENCE": [
+    "Do not claim exactly 806 missing requirements by subtracting 31 packet files from 837 rows.",
+    "Some existing packets are broad, overlapping, duplicate-shaped, or may map more than one source row; the exact unrouted-row count requires a row-to-REQ mapping.",
+    "Do not substitute the historical 262-entry registry or any ontology count for the 837 normalized source denominator."
+  ],
+  "IMPACT": [
+    "REQUIREMENTS_TOTAL and REQUIREMENTS_VERIFIED cannot be proven exhaustive from the canonical packet directory in its current state.",
+    "ZERO-UNINSPECTED and required spec closure cannot be demonstrated until normalized source rows are explicitly routed/classified.",
+    "A project completion claim based only on the current packet set could omit active source obligations."
+  ],
+  "REQUIRED_ACTION": [
+    "Build a deterministic mapping from each of the 837 normalized source rows to one canonical REQ_ID or an explicit excluded/deferred/deployment-only classification.",
+    "Preserve source authority class and temporal authority while routing.",
+    "Record implementation/test/evidence links only when verified against exact source SHA.",
+    "Populate mission VERIFIED_COUNT and REMAINING_COUNT from routed rows and fresh evidence, not from packet-file count.",
+    "Run duplicate/conflict detection so broad legacy packets do not double-count rows.",
+    "Use the mapped denominator for final spec coverage and closure challenge."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "CONTROL_MUTATION": "APPEND_ONLY_FINDING",
+  "BLOCKS_CODE_CLOSURE_VERIFIED": true
+}
