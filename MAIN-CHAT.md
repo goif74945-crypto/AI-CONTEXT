@@ -16871,8 +16871,8 @@ NEXT_ACTION:
 3. Resume scientific jobs only from refreshed full ledger state and exact-SHA writes.
 
 WRITE_INTEGRITY:
-- branch head immediately before merge: 06ff33ddf91d9fff142a7a29e3882d3492951ed2
-- current blob SHA: 5e52acd63fa6c56b95ff51fed8937dd4bfe8bdc2
+- branch head immediately before merge: 769dea06c6ecf7dcccc9189072980059a7b40c3c
+- current blob SHA: bb8328d3f3dbcedc61cc1be750d4d5e9344da0dd
 - base recovery blob SHA: 620c56356e4a7b2688082d19fb7910f7ff545475
 - exact current SHA used; any concurrent write causes retry/recompute.
 - MAIN-CHAT.md only; authorized branch only.
