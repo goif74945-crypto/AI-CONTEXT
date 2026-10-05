@@ -1,0 +1,49 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_INDEPENDENT_CONTROL_REPAIR_REVIEW_V1",
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-0951-0800-V16RC13-6F42C1A9-SHARD-UPDATE-REPAIR-V1",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-0951-0800-V16RC13-6F42C1A9",
+  "REVIEWER_MEMBERSHIP_ID": "PRE-b0b3df0a14b90114a13e8996451cc36e",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "REVIEWED_REPAIR_ID": "V16RC13-SHARD-UNIVERSE-UPDATE-ATOMIC-CUTOVER-FE-V1",
+  "REVIEWED_REPAIR_COMMIT": "9fb4ed725d23d95c52a3025295ecd124803ebe3e",
+  "REVIEWED_REPAIR_BLOB_SHA": "1dcc7934199ba2aa64771ce5256ce833c543df37",
+  "AFFECTED_FINDING": "FINDING-V16RC13-SHARD-UNIVERSE-UPDATE-SPLIT-BRAIN-DE64F6B9",
+  "VERDICT": "REJECTED_REPAIR_V1_P0_REMAINS_OPEN",
+  "PASSING_PROPERTIES": [
+    "ENTRY_CAS closes all three gates and increments ENGINEERING_EPOCH plus MEMBERSHIP_EPOCH, which correctly invalidates old normal authority.",
+    "The candidate defines one Mission Fence CUTOVER_CAS for U1-to-U2 canonical universe installation.",
+    "Candidate U2 remains non-authoritative before cutover and closure is blocked during migration.",
+    "Migration completeness uses immutable record identity, roots/counts, explicit empty shards, and preserves ambiguous durable truth during crash recovery."
+  ],
+  "BLOCKING_DEFECT": {
+    "ID": "POST_ENTRY_PRE_LOCAL_FREEZE_STALE_WRITE_INGESTION_WINDOW",
+    "SUMMARY": "The protocol invalidates U1 authority globally at ENTRY_CAS but does not bind each shard's migration source to an exact pre-entry authoritative shard head/snapshot. A stale writer may physically update an as-yet-unfrozen shard after ENTRY_CAS but before that shard's freeze acknowledgement, and the later freeze can capture the polluted post-entry head. Migration then preserves the unauthorized record into U2.",
+    "WHY_EXISTING_RULES_DO_NOT_CATCH_IT": [
+      "OLD_UNIVERSE_FREEZE prevents commits only after that shard's local freeze/fencing point; it does not close the interval from global ENTRY_CAS to each shard's local freeze.",
+      "The rule requiring writers to reread Mission Fence is a participant obligation, not a sink-level atomic guard. A paused/stale writer can still physically win a Git/ref CAS on a shard whose ref has not yet been fenced.",
+      "VERIFY_BEFORE_CUTOVER checks for no post-freeze authoritative U1 write, but the counterexample write occurs before local freeze and is unauthorized, so that wording does not reject a frozen snapshot already containing it.",
+      "Source denominator root/count equality only proves lossless migration of the selected frozen snapshot. It does not prove that every record in that snapshot still has pre-entry canonical authority."
+    ],
+    "COUNTEREXAMPLE": [
+      "At U1, shard S is at head H0. Writer W validates a lease at ENGINEERING_EPOCH E and prepares a CAS H0->H1.",
+      "Global ENTRY_CAS succeeds, closes gates, and advances ENGINEERING_EPOCH/MEMBERSHIP_EPOCH. W is now stale and has zero mission authority.",
+      "Before shard S receives its freeze acknowledgement/fencing ref update, W resumes and physically succeeds with shard CAS H0->H1 because the shard sink has not changed and is not atomically coupled to the Mission Fence CAS.",
+      "The freezer later observes H1, establishes the shard freeze/fencing token, and records H1 as the immutable frozen U1 snapshot.",
+      "Migration denominator and manifests are computed from H1, so W's unauthorized record is treated as source input and is moved one-to-one into candidate U2.",
+      "CUTOVER_CAS installs U2. The stale post-entry write has now become canonical U2 state even though the candidate acceptance rule requires that no compliant stale U1 writer can remain canonical after ENTRY_CAS."
+    ]
+  },
+  "REQUIRED_REPAIR_V2": [
+    "Bind every SHARD_UNIVERSE-routed domain/shard to an exact PRE_ENTRY_SOURCE_SNAPSHOT identity in the immutable migration intent before ENTRY_CAS, including exact ref/head or transactional snapshot id plus denominator root/count.",
+    "After ENTRY_CAS, each shard freeze operation must CAS/fence the same mutation sink from the intent-bound PRE_ENTRY_SOURCE_SNAPSHOT identity to a freeze marker/token. If the shard no longer equals that pre-entry identity, fail closed and reconcile; do not silently freeze the later observed head.",
+    "Migration input must be the intent-bound pre-entry authoritative snapshots only, never a later post-entry head. Any post-entry physical write is forensic stale evidence and must be excluded unless separately proven to precede the entry linearization point by authority evidence.",
+    "VERIFY_BEFORE_CUTOVER must prove every shard freeze marker descends from or exactly fences the intent-bound pre-entry identity without admitting an unauthorized post-entry mutation.",
+    "Add a torture test where a writer validates before ENTRY_CAS, physically commits after ENTRY_CAS but before its shard's local freeze, and verify the transition detects/rejects the changed shard head and never migrates that record."
+  ],
+  "FINDING_DISPOSITION": "KEEP_OPEN; candidate V1 is materially safer but does not yet satisfy its own acceptance condition that stale U1 work cannot become canonical after ENTRY_CAS.",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
