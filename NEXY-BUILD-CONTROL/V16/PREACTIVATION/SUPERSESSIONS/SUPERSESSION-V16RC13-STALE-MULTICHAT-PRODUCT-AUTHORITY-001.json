@@ -1,0 +1,49 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CONTROL_SUPERSESSION_V1",
+  "SUPERSESSION_ID": "SUPERSESSION-V16RC13-STALE-MULTICHAT-PRODUCT-AUTHORITY-001",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REQUESTED_CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "BOOTSTRAP_STATE_OBSERVED": "BLOCKED",
+  "WORK_ADMISSION_GATE_OBSERVED": "READ_ONLY_PREACTIVATION",
+  "MUTATION_GATE_OBSERVED": "CLOSED",
+  "INTEGRATION_GATE_OBSERVED": "CLOSED",
+  "SUPERSESSION_CLASS": "STALE_PRODUCT_MUTATION_AUTHORITY_INVALIDATED_BY_CURRENT_EXPLICIT_SUCCESSOR_LAW_AND_CLOSED_BOOTSTRAP_GATES",
+  "SUPERSEDED_AUTHORITY_IDENTITIES": [
+    "NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD",
+    "USER_CURRENT_NEXY_MULTI_CHAT_CONTINUOUS_PRODUCT_BUILD_2026-10-06",
+    "User current MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD instruction"
+  ],
+  "AUTHORITY_BASIS": [
+    "The current explicit user directive establishes V16-RC1.3 as the controlling engineering constitution for this target authority.",
+    "Before atomic activation, normal product mutation and target integration are forbidden.",
+    "Bootstrap Fence v6 is BLOCKED with read-only preactivation admission and closed mutation/integration gates.",
+    "A claim record cannot manufacture mutation or integration authority that the active fence denies."
+  ],
+  "EFFECT": [
+    "Any ACTIVE or IN_PROGRESS claim whose product mutation/integration authority depends on a superseded MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD identity has no current product mutation authority and no target integration authority.",
+    "Such claim files and worker/source commits remain historical evidence and must not be deleted or rewritten merely to hide the split-brain.",
+    "A participant may preserve or convert useful work into read-only audit/review evidence, but must not continue product writes under the stale authority.",
+    "No worker candidate created under stale authority may be integrated until post-activation authority is freshly established and the candidate is revalidated against current target/spec/resource/requirement roots.",
+    "Observed target movement remains UNKNOWN/UNRECONCILED Git truth; this supersession does not authorize rollback or ref movement."
+  ],
+  "OBSERVED_EXAMPLES": [
+    "CLAIM-C-SOL-20261006-0143-0700-TASK-DOC-C4-ARTIFACT-REVISIONS-001",
+    "CLAIM-C-SOL-20261006-0143-PRODUCT-QUEUE-01-TASK-QUEUE-PROCESSING-REGRESSION-001",
+    "CLAIM-C-SOL-20261006-0144-0700-PRODUCT-RUN-OPTIONAL-PRIMARY-INCIDENT",
+    "CLAIM-C-SOL-20261006-0144-PRODUCT-QUEUE-02-TASK-QUEUE-MISSING-DISPATCH-FAIL-CLOSED-001",
+    "CLAIM-C-SOL-20261006-0144-PRODUCT-UI-SIDEBAR-AUTOSHOW"
+  ],
+  "RELATED_RESULT": "RESULT-C-SOL-20261005-1828Z-V16RC13-STALE-PRODUCT-AUTH-BC018FBA",
+  "RELATED_FINDING": "FINDING-V16RC13-PREACTIVATION-TARGET-MUTATION-DETECTED-4B508E13",
+  "EXCLUSIONS": [
+    "This decision does not activate V16-RC1.3.",
+    "This decision does not resolve exact-law-byte identity P0.",
+    "This decision does not authorize product mutation, worker integration, target ref movement, or changes to NEXY.ai.",
+    "This decision does not claim the sampled stale-authority claim list is exhaustive."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "STATUS": "ACTIVE_CONTROL_DECISION_FAIL_CLOSED"
+}
