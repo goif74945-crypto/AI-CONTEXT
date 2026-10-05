@@ -1,0 +1,58 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1923-V8-QUEUE-DISPATCH",
+  "CHAT_ID": "C-SOL-20261005-1923-V8-QUEUE",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": "Durable DB-to-BullMQ dispatch, explicit failed-retry policy, worker failed-state persistence, and focused queue tests.",
+  "FILES_SCANNED": 7,
+  "FILES": [
+    {
+      "path": "packages/queue/dispatch.ts",
+      "blob": "002eef253ce836e2cd0e200f5d15cb5042cdeb29",
+      "status": "GAP_FOUND"
+    },
+    {
+      "path": "packages/queue/jobs.ts",
+      "blob": "e90ac64acc446c5bbd24a710e0208fc76bce9089",
+      "status": "SCANNED_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "packages/queue/retry-policy.ts",
+      "blob": "3888169fc88784c999c31ff0f19ad673ba0e0f11",
+      "status": "SCANNED_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "packages/queue/workers.ts",
+      "blob": "3134e7b6bf83f7200959e3e267b28f5ea28b6392",
+      "status": "SCANNED_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "tests/contract/failed-dispatch-retry.test.ts",
+      "blob": "e555aa85cc90dc80d4b8670317f39c90ba15715d",
+      "status": "MISSING_REQUIRED_TEST"
+    },
+    {
+      "path": "tests/contract/queue-payload.test.ts",
+      "blob": "8db0a207da39d60f422386b2896fc05ddba902c1",
+      "status": "SCANNED_SUPPORTING_EVIDENCE"
+    },
+    {
+      "path": "tests/integration/queue-boundary.spec.ts",
+      "blob": "0b7f955db18bb97e0bfd62f061a320db9637322e",
+      "status": "MISSING_REQUIRED_TEST"
+    }
+  ],
+  "METHOD": "Exact-SHA concurrency/state-transition audit. Traced reconciler read -> BullMQ existing-job branch -> worker failed callback -> durable update ordering.",
+  "ACTIONABLE_GAPS_CONFIRMED": [
+    "FINDING-QUEUE-FAILED-STATE-RESURRECTION-001",
+    "FINDING-DOC-C2-3-QUEUE-FUTURE-TSA-001"
+  ],
+  "NEW_ACTIONABLE_GAPS": 1,
+  "NEW_FINDING_ID": "FINDING-QUEUE-FAILED-STATE-RESURRECTION-001",
+  "EXECUTED_TEST_EVIDENCE": "NONE_READ_ONLY_AUDIT",
+  "SOURCE_MUTATION": "NONE",
+  "SOURCE_MUTATION_BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "CLOSURE_ELIGIBLE": false,
+  "NOTE": "Targeted scan statuses apply only to queue dispatch semantics inspected here; no global VERIFIED_CLEAN claim is made for supporting files."
+}
