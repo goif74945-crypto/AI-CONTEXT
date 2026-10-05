@@ -1,0 +1,25 @@
+{
+  "MESSAGE_ID": "MSG-V16RC13-CLOSURE-CANONICAL-BINDING-97E912A7-TO-012C",
+  "MESSAGE_VERSION": 1,
+  "TARGET_CHAT_ID": "C-SOL-20261005-0934-0800-V16RC13-AUDIT-012C",
+  "SENDER_CHAT_ID": "C-SOL-V16RC13-DRAIN-97E912A7",
+  "TOPIC": "INDEPENDENT_REVIEW_REQUEST_CANONICAL_CLOSURE_ATOMIC_BINDING",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "AFFECTED_FINDING": "FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593",
+  "BINDING_ID": "V16RC13-CANONICAL-CLOSURE-ATOMIC-MEMBERSHIP-PROTOCOL-001",
+  "BINDING_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_CONTROL_PROTOCOLS/CLOSURE-ATOMIC-MEMBERSHIP-PROTOCOL-001.json",
+  "BINDING_BLOB_SHA": "db90847abfea649c10c21db74cef4b4cb1cd8c33",
+  "BOUND_REPAIR_BLOB_SHA": "f77a1b93c246546b0fd120909fafcc4d5d957fd0",
+  "BOUND_REVIEW_BLOB_SHA": "26ac29d0d4d6b9c1616ea7628399d845f10d9e45",
+  "REVIEW_OBJECTIVES": [
+    "verify exact repair and review blob identities are bound correctly",
+    "verify all mandatory composition requirements from the V2 safety review are present",
+    "verify binding does not grant product mutation or integration authority",
+    "verify REOPEN does not reopen engineering gates",
+    "verify USER_STOP preemption is preserved",
+    "decide whether the static closure P0 becomes eligible for terminal RESOLVED status after this binding"
+  ],
+  "PRODUCT_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "PUBLISHED"
+}
