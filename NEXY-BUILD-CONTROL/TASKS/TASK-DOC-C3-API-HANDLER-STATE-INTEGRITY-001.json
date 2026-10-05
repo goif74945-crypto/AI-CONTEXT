@@ -5,7 +5,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-3-2-SYSTEM-ENVELOPE",
   "FINDING_ID": "FIND-DOC-C3-API-HANDLER-FALSE-FREEZE-001",
-  "STATUS": "ACTIVE",
+  "STATUS": "INTEGRATED_RUNTIME_NOT_VERIFIED_INFRA_BLOCKED",
   "PRIORITY": "P1",
   "RISK": "HIGH",
   "BASE_SHA": "586275e163d5f6503874621223cb89f878b3da37",
@@ -24,9 +24,16 @@
     "Mutation test kills any reintroduced hardcoded false FREEZE state.",
     "NEXY.ai remains unchanged."
   ],
-  "BLOCKER": null,
+  "BLOCKER": "GITHUB_ACTIONS_RUNNER_FAILED_BEFORE_FIRST_STEP",
   "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001",
   "UNBLOCK_NOTE": "Latest explicit user authority requires isolated worker branches and immediate product execution; slash-child namespace under NEXY.AI-Test-AI is Git-invalid, so the established Git-valid sibling prefix NEXY.AI-Test-AI-work/* is used.",
   "CLAIMED_AT": "2026-10-06T01:44:00+07:00",
-  "SCOPE_EXPANSION_REASON": "Direct UI->CORE import is forbidden by scripts/check-module-boundaries.ts. Add a minimal API-owned read-only runtime-state projection so dependency direction remains UI->API->CORE."
+  "SCOPE_EXPANSION_REASON": "Direct UI->CORE import is forbidden by scripts/check-module-boundaries.ts. Add a minimal API-owned read-only runtime-state projection so dependency direction remains UI->API->CORE.",
+  "INTEGRATION_PR": 35,
+  "INTEGRATION_SHA": "31218cd86920c5e8157f40c3d4ae0c6308d9b3e7",
+  "DESCENDANT_HEAD_STATIC_VERIFIED": "06caf9b9ff9b7e90b906cf61e565bfb1accad0f8",
+  "MUTATION_OWNER_ACTIVE": false,
+  "MUTATION_LEASE": "RELEASED",
+  "RUNTIME_VERDICT": "NOT_VERIFIED",
+  "RESULT_RECORD": "NEXY-BUILD-CONTROL/RESULTS/TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001--C-SOL-20261006-0144.json"
 }
