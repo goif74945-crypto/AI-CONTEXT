@@ -13674,3 +13674,21 @@ REVIEWER: distinct from C1 owner CHATGPT-GPT56SOL-20261006T0306+07-DRFLEX65-C1.
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+68. JOB CLAIM — JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_ROLE: Stage-indexed energy-flow / meter-boundary repair architect
+PRIMARY_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-C3-20261006
+QUESTION: Repair P_STAR so source-energy, generator-terminal gross-electric, storage and network representations produce identical served energy without double-counting conversion/loss edges.
+DEPENDENCIES: F-EGC-PHYS-R2-P1-001; F-EGC-PHYS-R2-P1-002.
+TOOLS: latest repo state; current EIA/DOE source verification; directed energy-flow algebra; Python/Wolfram representation regressions.
+EVIDENCE_TARGET: stage/meter graph; external-vs-internal edge rule; exact-one ownership; source-anchor/gross-anchor equivalence; storage/state reconciliation; 36-MWh and 98.5-MWh regressions.
+FALSIFICATION_TARGET: same physical system changes E_NET_SERVED from representation choice; internal loss enters twice; inventory manufactures energy; or upstream source/plasma/gross power is promoted directly to served load.
+REVIEWER_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-REV-C4-20261006
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
