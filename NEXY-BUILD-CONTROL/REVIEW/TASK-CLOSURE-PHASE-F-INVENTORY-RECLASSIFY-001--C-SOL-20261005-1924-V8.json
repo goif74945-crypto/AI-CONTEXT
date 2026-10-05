@@ -1,0 +1,49 @@
+{
+  "REVIEW_ID": "REVIEW-TASK-CLOSURE-PHASE-F-INVENTORY-RECLASSIFY-001-C-SOL-20261005-1924-V8",
+  "TASK_ID": "TASK-CLOSURE-PHASE-F-INVENTORY-RECLASSIFY-001",
+  "FINDING_ID": "FINDING-CLOSURE-PHASE-F-EXPERIMENTAL-CLASSIFICATION-001",
+  "REVIEWER_CHAT": "C-SOL-20261005-1924-V8",
+  "ROLE": "INDEPENDENT_CLOSURE_INVENTORY_REVIEWER",
+  "STATUS": "PASS",
+  "CONTROL_HEAD_OBSERVED": "d9235551385a8770488d98ed810e262817a3b35a",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_FILE_HASH_RECOMPUTED_LOCAL": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "VERIFIED_OVERLAYS": [
+    "INV-608426CB-C-SOL-20261005-1913-PHASEF-OVERLAY-001",
+    "INV-608426CB-C-SOL-20261005-1913-EXPLICIT-EXPERIMENTAL-OVERLAY-002"
+  ],
+  "RECOMPUTATION": {
+    "phase_f_paths": 126,
+    "unique_phase_f_paths": 126,
+    "base_prior_class_counts": {
+      "AUTHORITATIVE_RUNTIME": 123,
+      "CONTRACT": 1,
+      "BUILD_SUPPORT": 1,
+      "CONFIG": 1
+    },
+    "all_prior_status_UNSCANNED": true,
+    "overlay_correction_count": 126,
+    "primary_execution_set_blob_mismatches": 0,
+    "corrected_record_semantic_mismatches": 0,
+    "corrected_global_class_counts_match": true,
+    "main_typescript_intersection": 0,
+    "web_typescript_intersection": 0,
+    "active_primary_tests_intersection": 0,
+    "explicitly_experimental_sources_intersection": 126,
+    "combined_overlay_phase_count": 126,
+    "combined_overlay_total_corrections": 127,
+    "combined_overlay_explicit_mismatch_after": 0
+  },
+  "VERDICT": "PASS: Phase-F append-only classification overlay truthfully reclassifies all 126 packages/phase-f/** inventory records to EXPERIMENTAL for this exact SHA/spec hash, preserves UNSCANNED status, and is consistent with primary execution sets.",
+  "LIMITS": [
+    "Classification/accounting review only; does not mark Phase-F files VERIFIED_CLEAN.",
+    "Does not establish final global required-scan denominator.",
+    "Invalidate on source SHA/spec hash/config promotion change."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "CONTROL_MUTATION": "APPEND_ONLY_REVIEW"
+}
