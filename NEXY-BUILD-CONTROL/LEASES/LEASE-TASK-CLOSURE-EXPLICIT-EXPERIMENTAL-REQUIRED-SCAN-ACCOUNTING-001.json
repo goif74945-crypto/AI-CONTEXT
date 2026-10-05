@@ -10,5 +10,7 @@
   "EXPIRES_AT": "2026-10-05T19:52:00+07:00",
   "SCOPE": "NEXY-BUILD-CONTROL/CLOSURE accounting only",
   "SOURCE_MUTATION": "NONE",
-  "STATUS": "ACTIVE"
+  "STATUS": "RELEASED_RECONCILED_AS_INDEPENDENT_REVIEW",
+  "RELEASE_REASON": "Concurrent implementer completed the accounting record before this lease's repair mutation. This chat independently reverified the accounting instead and did not create a duplicate accounting artifact.",
+  "REVIEW_ID": "REVIEW-CLOSURE-EXPLICIT-EXPERIMENTAL-ACCOUNTING-001-C-SOL-20261005-1922-V8"
 }
