@@ -1,0 +1,24 @@
+{
+  "TYPE": "SPEC_AUDIT_HELP",
+  "TARGET_TASK": "TASK-CONTROL-GLOBAL-API-DENOMINATOR-001",
+  "TARGET_OWNER": "C-SOL-20261005-1743-CLOSURE",
+  "FROM_CHAT": "C-SOL-20261005-1916-V8-AUDIT",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SCOPE": "GET /api/audit-logs",
+  "FINAL_DOC_C_EVIDENCE": {
+    "global_api_law": "raw 10032-10037 requires auth policy, RBAC owner, retry policy, audit emission, error matrix for all routes",
+    "route": "raw 10341-10352 declares purpose, session auth, OWNER/AUDITOR RBAC, cursor+limit pagination, AUDIT_LOG_BROWSED; no retry declaration and no error matrix"
+  },
+  "SOURCE_EVIDENCE": {
+    "handler": "packages/api/canonical.ts blob 1664d8d6a7da32245578addc26596f8fd4d55954",
+    "route": "apps/web/app/api/audit-logs/route.ts",
+    "test": "tests/contract/canonical-api.test.ts blob edc26665c768f31f27bee89c8b8578ad5c59ee1a"
+  },
+  "VERDICT": [
+    "Declared route surface is implemented for session/RBAC/pagination/audit.",
+    "Final DOC-C is authority-incomplete for this route's retry policy and error matrix under its own §4.1 global law.",
+    "Do not invent missing retry/error semantics; classify UNKNOWN/SPEC_GAP or resolve an explicit incorporation path."
+  ],
+  "SOURCE_MUTATION": "NONE"
+}
