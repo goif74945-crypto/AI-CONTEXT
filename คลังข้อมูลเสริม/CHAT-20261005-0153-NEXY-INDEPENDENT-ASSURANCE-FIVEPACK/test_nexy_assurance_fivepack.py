@@ -134,6 +134,26 @@ def test_raas_invalid_scale_rejected():
     with pytest.raises(ValueError): ActionRisk(6,0,0,0)
 
 
+@pytest.mark.parametrize(("field", "value"), [
+    ("production", 1),
+    ("permission_change", "false"),
+    ("compensation_available", "false"),
+])
+def test_raas_non_boolean_control_flags_rejected(field, value):
+    values = {
+        "impact": 5,
+        "irreversibility": 5,
+        "externality": 5,
+        "sensitivity": 5,
+        "production": False,
+        "permission_change": False,
+        "compensation_available": False,
+    }
+    values[field] = value
+    with pytest.raises(ValueError, match="control flags must be booleans"):
+        ActionRisk(**values)
+
+
 def test_raas_pure():
     r=ActionRisk(3,2,1,4,production=True)
     first=plan_assurance(r)

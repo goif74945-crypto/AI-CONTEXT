@@ -62,6 +62,7 @@ Integer 0–5 dimensions: impact, irreversibility, externality and sensitivity; 
 Required evidence class E1–E6, explicit confirmation requirement, rollback/compensation requirement, independent-quorum requirement, negative-path test requirement, and an ALLOW_WITH_ASSURANCE or FREEZE disposition.
 
 ### Safety rules
+- production, permission-change and compensation-availability inputs must be exact booleans; truthy/falsy substitutes are invalid and cannot alter assurance routing;
 - high-impact + highly irreversible + no compensation path freezes by default;
 - high-impact production actions are promoted to E6;
 - permission changes require confirmation, independent quorum and negative-path tests;

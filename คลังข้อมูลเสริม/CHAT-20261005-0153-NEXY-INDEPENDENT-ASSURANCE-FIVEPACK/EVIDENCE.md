@@ -21,7 +21,7 @@ Command:
 
 Observed in `FINAL_TEST.txt`:
 
-`40 passed in 0.06s`
+`43 passed in 0.06s`
 
 `EXIT_CODE=0`
 
@@ -78,11 +78,32 @@ Fresh static proof after repair: Python 3.12.14 `compileall` exit code 0.
 
 Evidence classification remains E1 for compilation and E2-style local execution for IAQ validation behavior. Authenticated metadata provenance, NEXY.AI integration, runtime operation, deployment and law promotion remain NOT_VERIFIED.
 
+## Continuation iteration — RAAS exact-boolean control validation
+The highest-value verified weakness found in the next audit was that `ActionRisk` trusted Python type hints for its three control flags without runtime validation. Truthy substitutes could change safety routing; specifically, `compensation_available="false"` is truthy in Python and could prevent the default irreversible/high-impact/no-compensation FREEZE path.
+
+Design invariant added: production, permission-change and compensation-availability inputs must be exact booleans; truthy/falsy substitutes are invalid and cannot alter assurance routing.
+
+RED command:
+
+`PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python -m pytest -q test_nexy_assurance_fivepack.py::test_raas_non_boolean_control_flags_rejected`
+
+Observed before implementation: all three parameterized cases failed because no `ValueError` was raised (`3 failed`).
+
+Minimal implementation: `ActionRisk.__post_init__` now requires exact `bool` instances for all three control flags before scoring or routing.
+
+Fresh targeted proof after repair: `3 passed in 0.05s`.
+
+Fresh full regression proof after repair: `43 passed in 0.06s`; exit code 0.
+
+Fresh static proof after repair: Python 3.12.14 `compileall` exit code 0.
+
+Evidence classification remains E1 for compilation and E2-style local execution for RAAS validation behavior. Policy calibration, NEXY.AI integration, runtime operation, deployment and law promotion remain NOT_VERIFIED.
+
 ## Coverage intent
 The compact suite contains tests for:
 - IAQ correlated replicas, fake quorum, independent failures, empty input, duplicate identity, correlation-metadata completeness and order invariance;
 - ECG clean roots, target-derived oracle, shared untrusted/trusted roots, cycles, direct overlap and edge-order invariance;
-- RAAS low risk, high-risk production promotion, irreversible/no-compensation freeze, permission changes, invalid scales and repeatability;
+- RAAS low risk, high-risk production promotion, irreversible/no-compensation freeze, permission changes, invalid scales, exact-boolean controls and repeatability;
 - CTR retirement, stale/future snapshots, explicit restore, replacement, invalid self-replacement and canonical digest ordering;
 - AIG duplicate suppression, changed critical delivery, exact critical duplicate suppression, noncritical budget, evidence changes and time regression;
 - one integrated high-risk flow across all five mechanisms.
