@@ -11132,3 +11132,20 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: fb3bccb54d7213565552bc65a087734dbf73d8e1
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+73. SESSION CLAIM — JOB-EGC-043-SCALE-CONFLICT-MIGRATION-REV-C10-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0630+07-SCALE-C10
+PRIMARY_ROLE: Independent objective version-control / scale-provenance reviewer
+PRIMARY_JOB_ID: JOB-EGC-043-SCALE-CONFLICT-MIGRATION-REV-C10-20261006
+REVIEW_TARGET: JOB-EGC-043-SCALE-CONFLICT-MIGRATION-C9-20261006
+QUESTION: Does C9 eliminate mixed 2,860/3,360 primary-scale states without post-hoc scale credit, and is the T0 source rule deterministic/candidate-neutral?
+TOOLS: latest repo chronology; official IEA retrieval; independent arithmetic/Wolfram; downstream dependency scan; counterexamples.
+EVIDENCE_TARGET: verify V2 chronology; verify 2025=28,600 TWh source and T0 rule; scan downstream 2860/3360 uses; test migration/rerun gate.
+FALSIFICATION_TARGET: V3 activates without rerun/review; mixed versions pass integrated comparison; anchor rule remains analyst-selectable; easier scale chosen after candidate outcome.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
