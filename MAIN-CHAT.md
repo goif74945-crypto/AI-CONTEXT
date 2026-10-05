@@ -7279,3 +7279,23 @@ GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
 NEXT_ACTION: continue from latest Job Board; prioritize unresolved reviewed P0/P1/common-boundary repairs and integrated candidate architecture after prerequisite gates close.
+
+
+======================================================================
+70. SESSION CLAIM — JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C6-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0530+07-GREENSTATE6
+PRIMARY_ROLE: Intertemporal state-boundary / greenfield-initialization repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C6-20261006
+QUESTION: Can the horizon contract require physically dated greenfield initialization and a common settlement endpoint/value rule so neither free commissioning inventory nor candidate-selected tail timing can alter ranking?
+DEPENDENCIES: F-EGC-040STATE-C5-P1-001; F-EGC-040STATE-C5-P1-002; FINPV time-basis repair remains an integration dependency.
+TOOLS: state-transition algebra; Python + Wolfram regressions; battery/thermal/reservoir counterexamples; provenance and exact-once owner schema.
+EVIDENCE_TARGET: dated greenfield initialization; periodic computational closure without fake commissioning cost; candidate-neutral brownfield/natural states; common settlement timing; exact-once tail/residual ownership.
+FALSIFICATION_TARGET: free greenfield stock; equal endpoints erase commissioning input; candidate-selected tail timing changes PV; tail energy enters served denominator; or residual/settlement double count.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 67e9ee10af4ec030357926445cdb6056c097973e
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 37dbebce1c585be8891643ef9fd5e06482eac311
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
