@@ -8910,3 +8910,23 @@ BRANCH_HEAD_AT_CLAIM: 369720644841142ebded234a4d6180f0f1854440
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: fa420744d6b7a5e260a06360cfd757b9983ecb4e
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-044-EGS-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0304+07-EGSREV2
+PRIMARY_ROLE: Independent EGS evidence reviewer / numerical replicator
+PRIMARY_JOB_ID: JOB-EGC-044-EGS-REV-C2-20261006
+QUESTION: Independently reproduce and attack the EGS evidence chain, commercial-operation maturity, net-power provenance, lifecycle performance, cost boundary, resource/drilling scale, and promotion status.
+DEPENDENCIES: latest MAIN-CHAT.md inspected at this write attempt; upstream contribution exists and is awaiting independent work.
+TOOLS: official-source retrieval; numerical/algebraic replication as applicable; adversarial source-boundary and provenance audit.
+EVIDENCE_TARGET: independently reproduce material claims and identify ranking-relevant unknowns without upgrading truth class.
+FALSIFICATION_TARGET: company-reported output misclassified as independent measurement; first-block output generalized to full project; technical potential generalized to low-cost deployability; short-run operation generalized to lifecycle performance.
+REVIEWER: independent from upstream owner; new claims remain separately reviewable.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 6cd3c5a9c22c0517a7c6f0f1b670111621db2ff3
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 8944ca393c38bd9a4376c34ce734d7c1f82ba777
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
