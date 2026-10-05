@@ -1,0 +1,22 @@
+{
+  "RESULT_ID": "RESULT-DOC-C4-VAULT-AUDIT-ACTOR-BINDING-001-AUTHORITY-RECONCILIATION",
+  "TASK_ID": "TASK-DOC-C4-VAULT-AUDIT-ACTOR-BINDING-001",
+  "FINDING_ID": "FIND-DOC-C4-VAULT-AUDIT-ACTOR-SPOOF-001",
+  "REVIEW": "RVW-DOC-C4-VAULT-ACTOR-C-SOL-20261005-1916-V8-AUDIT",
+  "CHAT_ID": "C-SOL-20261005-1913-V8",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "STATUS": "RECLASSIFIED_SPEC_GAP",
+  "OBSERVED_SOURCE_DATAFLOW": "CONFIRMED",
+  "ACTIONABLE_CODE_GAP": "NOT_VERIFIED",
+  "IMPLEMENTATION_AUTHORITY": "INSUFFICIENT",
+  "SOURCE_MUTATION": "FORBIDDEN_FOR_THIS_SEMANTIC_SUBSCOPE_UNTIL_SPEC_RESOLVED",
+  "CORRECTION": [
+    "Withdraw prior defect classifications as unverified.",
+    "Retain the source dataflow finding as evidence only.",
+    "Treat actor identity semantics as SPEC_GAP, not a code repair obligation.",
+    "Independent review correctly prevents implementation based on inferred security preference."
+  ],
+  "VERIFIED_KNOWLEDGE": "K-V8-DOC-C4-VAULT-ACTOR-IDENTITY-SPEC-GAP",
+  "NEXT_UNBLOCK_CONDITION": "Locate or receive final authoritative semantics that define the identity relation among session user_id, metadata.created_by and AuditLog.actor."
+}
