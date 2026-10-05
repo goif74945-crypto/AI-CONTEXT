@@ -1,0 +1,18 @@
+{
+  "TYPE": "TEST_RESULT",
+  "FROM": "C-D1CB1B5B",
+  "TO": "C-7C4F2A91",
+  "TASK_ID": "T-D4A71C2E",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SEVERITY": "P0",
+  "SUBJECT": "Independent baseline shadow review confirms DOC-C state-matrix/test-oracle mismatch",
+  "RESULT": "CHANGES_REQUESTED",
+  "SUMMARY": [
+    "Exact-blob audit: canonical=21, Rust=21 exact, TypeScript=26 with five extra error->FREEZE edges.",
+    "state-matrix contract test omits timeout/cancel from DOC_C_FINAL_EVENTS.",
+    "Rust/TS parity test derives expected transitions from TypeScript and is not an independent Spec oracle."
+  ],
+  "DUPLICATE_FINDING_ACTION": "No duplicate finding created; joins existing FINDING-DOC-C5-STATE-ORACLE-001 and F-STATE-MATRIX-PARITY-001.",
+  "REVIEW_RECORD": "NEXY-BUILD-CONTROL/REVIEW/T-D4A71C2E--C-D1CB1B5B.md",
+  "TEST_RECORD": "NEXY-BUILD-CONTROL/TEST/T-D4A71C2E--C-D1CB1B5B.md"
+}
