@@ -1,0 +1,253 @@
+{
+  "RESULT_ID": "AUDIT-C-V8-SOL-API-DENOM-9F42",
+  "CHAT_ID": "C-V8-SOL-API-DENOM-9F42",
+  "TYPE": "GLOBAL_API_DENOMINATOR_STATIC_AUDIT",
+  "EPOCH_ID": "EPOCH-20261005-b35ee1bf-608426cb",
+  "SPEC_ID": "NEXY-IGNIS-b35ee1bf82125792",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "AUTHORITY": {
+    "PRIMARY": "Final DOC-C §4.1 Global API Law",
+    "DEEP_CONTEXT": "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md §16 API law",
+    "GLOBAL_LAWS": [
+      "All responses use SystemEnvelope<T>.",
+      "All mutating routes require secure session + CSRF except OTAC request/verify.",
+      "All mutating routes require idempotency_key unless explicitly exempt.",
+      "All routes declare auth policy, RBAC owner, retry policy, audit emission, and error matrix."
+    ],
+    "CANONICAL_ROUTE_COUNT": 12
+  },
+  "INVENTORY": {
+    "ROUTE_FILES": 38,
+    "HTTP_METHOD_SURFACES": 40,
+    "GET_SURFACES": 19,
+    "POST_SURFACES": 21,
+    "CANONICAL_SURFACES": 12,
+    "NON_CANONICAL_SURFACES": 28,
+    "CANONICAL_POST_SURFACES": 6,
+    "NON_CANONICAL_POST_SURFACES": 15,
+    "NON_CANONICAL_DURABLE_MUTATIONS": 14,
+    "NON_CANONICAL_POST_REQUEST_ONLY": 1
+  },
+  "CANONICAL_ROUTES": [
+    "POST /api/auth/request-otac",
+    "POST /api/auth/verify-otac",
+    "GET /api/session/me",
+    "POST /api/auth/logout",
+    "POST /api/directives",
+    "GET /api/directives/:id",
+    "GET /api/runs/:id",
+    "POST /api/freeze/recover",
+    "POST /api/vault/commit",
+    "GET /api/artifacts/:id/revisions",
+    "GET /api/incidents/:id",
+    "GET /api/audit-logs"
+  ],
+  "NON_CANONICAL_POST_AUDIT": [
+    {
+      "route": "POST /api/artifacts/:id/archive-snapshot",
+      "handler": "handleColdArchiveSnapshot",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; ArtifactColdSnapshotBodySchema requires idempotency_key",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "GLOBAL_MUTATION_SECURITY_GATES_STATIC_PASS_ROUTE_AUTHORITY_UNRESOLVED"
+    },
+    {
+      "route": "POST /api/artifacts/:id/archive/restore",
+      "handler": "handleArchiveRestore",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; ArtifactArchiveRestoreBodySchema requires idempotency_key",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "GLOBAL_MUTATION_SECURITY_GATES_STATIC_PASS_ROUTE_AUTHORITY_UNRESOLVED"
+    },
+    {
+      "route": "POST /api/artifacts/:id/archive",
+      "handler": "handleArchive",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; ArtifactArchiveBodySchema requires idempotency_key",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "GLOBAL_MUTATION_SECURITY_GATES_STATIC_PASS_ROUTE_AUTHORITY_UNRESOLVED"
+    },
+    {
+      "route": "POST /api/artifacts/:id/hard-delete",
+      "handler": "handleHardDelete",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; ArtifactHardDeleteBodySchema requires idempotency_key",
+      "capability_authority": "DOC-C Storage/Vault: hard delete irreversible, OWNER-only, audited",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "CAPABILITY_AUTHORIZED_SECURITY_GATES_STATIC_PASS_ROUTE_CONTRACT_INCOMPLETE"
+    },
+    {
+      "route": "POST /api/artifacts/:id/restore",
+      "handler": "handleArtifactRestore",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; ArtifactRestoreBodySchema requires idempotency_key",
+      "capability_authority": "DOC-C Storage/Vault: restore only if lineage remains valid",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "CAPABILITY_AUTHORIZED_SECURITY_GATES_STATIC_PASS_ROUTE_CONTRACT_INCOMPLETE"
+    },
+    {
+      "route": "POST /api/artifacts/:id/retention",
+      "handler": "handleRetentionUpdate",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; ArtifactRetentionBodySchema requires idempotency_key",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "GLOBAL_MUTATION_SECURITY_GATES_STATIC_PASS_ROUTE_AUTHORITY_UNRESOLVED"
+    },
+    {
+      "route": "POST /api/auth/owner-recovery",
+      "handler": "handleOwnerRecoveryRequest",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "FAIL_BY_DESIGN; lost/no-active-session path proceeds to durable session revocation and evidence writes",
+      "idempotency": "STATIC_PASS; OwnerRecoveryRequestSchema requires idempotency_key",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "DIRECT_SPEC_CONFLICT_P0",
+      "existing_finding": "FINDING-GLOBAL-API-OWNER-RECOVERY-SESSION-001"
+    },
+    {
+      "route": "POST /api/config/rollback",
+      "handler": "handleRollbackRuntimeConfig",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; RuntimeConfigRollbackBodySchema requires idempotency_key",
+      "capability_authority": "DOC-C Config law requires version/audit/rollback target for config changes",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "CAPABILITY_AUTHORIZED_SECURITY_GATES_STATIC_PASS_ROUTE_CONTRACT_INCOMPLETE"
+    },
+    {
+      "route": "POST /api/config",
+      "handler": "handleUpdateRuntimeConfig",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; RuntimeConfigUpdateBodySchema requires idempotency_key",
+      "capability_authority": "DOC-C Config law requires version/audit/rollback target for config changes",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "CAPABILITY_AUTHORIZED_SECURITY_GATES_STATIC_PASS_ROUTE_CONTRACT_INCOMPLETE"
+    },
+    {
+      "route": "POST /api/dialog",
+      "handler": "handleDialog",
+      "durable_mutation": false,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding",
+      "idempotency": "NOT_REQUIRED_BY_MUTATION_LAW_ON_CURRENT_STATIC_EVIDENCE",
+      "behavior_evidence": "DialogResult hard-locks core_mutation_allowed=false, persistence=REQUEST_ONLY, presentation/no authority",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "REQUEST_ONLY_POST_ROUTE_AUTHORITY_UNRESOLVED"
+    },
+    {
+      "route": "POST /api/runs/:id/cancel",
+      "handler": "handleOwnerCancel",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; OwnerCancelBodySchema requires idempotency_key and durable ownerControlIdempotency binding",
+      "capability_authority": "Final DOC-C FSM owner action: hard kill RUNNING/VERIFYING/CONSENSUS -> FREEZE",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "CAPABILITY_AUTHORIZED_SECURITY_GATES_STATIC_PASS_ROUTE_CONTRACT_INCOMPLETE"
+    },
+    {
+      "route": "POST /api/runs/:id/revoke-release",
+      "handler": "handleOwnerRevokeRelease",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; OwnerRevokeReleaseBodySchema requires idempotency_key and durable ownerControlIdempotency binding",
+      "capability_authority": "Final DOC-C FSM owner action: revoke release from STABLE before emission -> FREEZE",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "CAPABILITY_AUTHORIZED_SECURITY_GATES_STATIC_PASS_ROUTE_CONTRACT_INCOMPLETE"
+    },
+    {
+      "route": "POST /api/session/refresh",
+      "handler": "handleSessionRefresh",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS; active session, expiry, device binding, SYSTEM rejection",
+      "idempotency": "STATIC_PASS; SessionRefreshBodySchema requires idempotency_key and replay successor is bound to actor/user/device/role/device-binding",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "GLOBAL_MUTATION_SECURITY_GATES_STATIC_PASS_ROUTE_AUTHORITY_UNRESOLVED"
+    },
+    {
+      "route": "POST /api/storage/reconcile",
+      "handler": "handleStorageReconcile",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; StorageReconcileBodySchema requires idempotency_key with principal/request binding",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "GLOBAL_MUTATION_SECURITY_GATES_STATIC_PASS_ROUTE_AUTHORITY_UNRESOLVED"
+    },
+    {
+      "route": "POST /api/users/:id/role",
+      "handler": "handleManageUserRole",
+      "durable_mutation": true,
+      "csrf": "STATIC_PASS",
+      "secure_session": "STATIC_PASS via authorizeReadContext + device binding + OWNER",
+      "idempotency": "STATIC_PASS; ManageUserRoleBodySchema requires idempotency_key with principal/request binding",
+      "capability_authority": "DOC-C RBAC: manage roles OWNER only",
+      "route_local_final_doc_c_declaration": "NOT_LOCATED",
+      "verdict": "CAPABILITY_AUTHORIZED_SECURITY_GATES_STATIC_PASS_ROUTE_CONTRACT_INCOMPLETE"
+    }
+  ],
+  "NON_CANONICAL_GET_SURFACES": [
+    "GET /api/artifacts/:id/export",
+    "GET /api/artifacts/:id/storage-status",
+    "GET /api/artifacts",
+    "GET /api/audit-logs/export",
+    "GET /api/auth/me",
+    "GET /api/auth/owner-recovery/csrf",
+    "GET /api/config",
+    "GET /api/directives",
+    "GET /api/health/freeze",
+    "GET /api/health/liveness",
+    "GET /api/health/readiness",
+    "GET /api/health",
+    "GET /api/runs"
+  ],
+  "CROSS_CUTTING_FINDINGS": [
+    {
+      "status": "CONFIRMED",
+      "finding": "The active API denominator is 40 HTTP method surfaces, while final DOC-C §4.2 enumerates only 12 canonical routes.",
+      "effect": "REQ-DOC-C-4-1-GLOBAL-API-LAW cannot close if it audits only the canonical 12."
+    },
+    {
+      "status": "CONFIRMED",
+      "finding": "Final DOC-C §4.1 says all routes declare auth/RBAC/retry/audit/error semantics; route-local final-DOC-C declarations were not located for the 28 non-canonical method surfaces.",
+      "effect": "Do not invent missing route contracts. Capability-level authority may justify a behavior, but it does not supply absent route-local retry/error declarations."
+    },
+    {
+      "status": "CONFIRMED",
+      "finding": "Of 14 non-canonical durable POST mutations, 13 statically satisfy secure-session + CSRF + required idempotency gates; owner-recovery deliberately violates the secure-session prerequisite.",
+      "effect": "Do not broaden the owner-recovery defect to compliant sibling routes."
+    }
+  ],
+  "RELATED_CONTROL": [
+    "F-CLOSURE-GLOBAL-API-DENOMINATOR-NARROWING-001",
+    "FINDING-GLOBAL-API-OWNER-RECOVERY-SESSION-001",
+    "REQ-DOC-C-4-1-GLOBAL-API-LAW",
+    "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE"
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "CONTROL_MUTATION": "APPEND_ONLY_RESULT",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "BLOCKER_EFFECT": "Source repairs remain frozen because literal worker prefix NEXY.AI-Test-AI/work/ is Git-invalid while integration branch NEXY.AI-Test-AI exists.",
+  "CLOSURE_EFFECT": "GLOBAL_API_LAW_NOT_CLOSED"
+}
