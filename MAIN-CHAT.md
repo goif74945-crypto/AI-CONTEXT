@@ -1285,3 +1285,221 @@ REVIEWER_JOB_ID: NONE (this job is independent review).
 STATUS: OPEN
 BLOCKERS: NONE.
 NEXT_ACTION: distinct session claims and attacks R_STAR(g).
+
+
+======================================================================
+54. REPAIR RESULT — JOB-EGC-040-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200400Z-C2
+ROLE: System-boundary ledger repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-C3-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-C3-REV-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair F-EGC-040REV-P1-001 and F-EGC-040REV-P1-002 by separating physical power/energy conservation from adequacy shortfall and from counterfactual available-energy/curtailment accounting, while retaining storage anti-double-counting.
+
+CANONICAL METERING DEFINITIONS:
+For each timestep t, all electrical-energy terms are measured over the same timestep and expressed at explicitly stated meters.
+
+1. G_bus[i,t]
+Actual net electrical energy injected by generator i into the modeled grid at its point of interconnection, AFTER internal plant auxiliary/parasitic consumption that is behind the generator meter.
+
+2. Imports_bus[t]
+Actual electrical energy imported across the modeled system boundary, measured at the receiving-side boundary meter.
+
+3. Dch_bus[s,t]
+Actual AC-side electrical energy injected into the modeled grid by storage s.
+
+4. Ch_bus[s,t]
+Actual AC-side electrical energy withdrawn from the modeled grid by storage s for charging.
+
+5. Served[t]
+Actual end-use electrical energy delivered at the defined service/delivery boundary.
+
+6. Exports_bus[t]
+Actual electrical energy exported across the system boundary, measured at the sending-side boundary meter.
+
+7. NetworkLoss[t]
+Physical network loss internal to the modeled grid between the chosen injection and delivery/export meters. If the selected metered quantities already embed these losses, NetworkLoss MUST be zero in this equation rather than counted again.
+
+8. Aux_grid[t]
+Plant/system auxiliary load actually withdrawn from the modeled grid and NOT already netted inside G_bus. Behind-meter auxiliaries already deducted from G_bus MUST NOT also appear here.
+
+9. Unserved[t]
+Demand/service obligation not delivered. It is an adequacy shortfall, not a physical electrical-energy outflow.
+
+10. Curtail[i,t]
+Available electrical-energy potential deliberately/not-dispatched at the same candidate-specific net-at-bus reference. It is not a physical outflow unless a separately evidenced dump-load process physically consumes produced electricity.
+
+REPAIRED EQUATIONS:
+
+LEDGER-P1 — PHYSICAL BUS CONSERVATION
+sum_i G_bus[i,t] + Imports_bus[t] + sum_s Dch_bus[s,t]
+=
+Served[t] + sum_s Ch_bus[s,t] + Exports_bus[t] + NetworkLoss[t] + Aux_grid[t].
+
+RULE:
+Only actual physical injections, withdrawals and physical network losses belong in LEDGER-P1.
+Unserved and ordinary pre-generation curtailment are forbidden in LEDGER-P1.
+
+LEDGER-P2 — ADEQUACY / SERVICE OBLIGATION
+Demand_postflex[t] = Served[t] + Unserved[t],
+with Unserved[t] >= 0.
+
+Demand_postflex is demand after any explicitly modeled legitimate flexibility schedule.
+A candidate may not reduce Demand_postflex by silent load shedding.
+
+For demand shifting/flexibility:
+- service constraints, shifted-energy conservation, rebound, availability, opt-out/nonperformance and enabling-resource costs must be modeled separately;
+- permanent efficiency may reduce the obligation only if the same end service is preserved and the real efficiency resources/costs are included.
+
+LEDGER-P3 — CURTAILMENT / AVAILABLE-POTENTIAL ACCOUNTING
+Where a defensible same-meter available-energy quantity exists:
+Available_bus[i,t] = G_bus[i,t] + Curtail[i,t],
+Curtail[i,t] >= 0.
+
+RULES:
+- LEDGER-P3 is a utilization/resource-potential identity, not the physical bus-conservation equation.
+- Available_bus must be derived from candidate-specific weather/resource/unit-availability and operating constraints at the SAME net-at-bus meter.
+- For technologies where "available energy before curtailment" is not well-defined, use NOT_APPLICABLE rather than inventing a number.
+- Curtailment caused by storage/grid limits affects utilization and cost through installed resources plus reduced served-energy denominator; do not add a fictitious second energy purchase.
+
+LEDGER-P4 — STORAGE STATE OF CHARGE
+SOC[s,t+1]
+=
+SOC[s,t]*(1-lambda_s)
++ eta_c,s*Ch_bus[s,t]
+- Dch_bus[s,t]/eta_d,s.
+
+RULES:
+- Ch_bus and Dch_bus use the same AC-side convention as LEDGER-P1.
+- storage conversion/self-discharge losses are internal to LEDGER-P4 and MUST NOT be added again as a separate "RTE loss" term to LEDGER-P1.
+- a diagnostic storage-loss quantity may be derived, but if used diagnostically it is NON-ADDITIVE to LEDGER-P1.
+
+LEDGER-P5 — OPTIONAL GROSS-TO-NET PLANT MAPPING
+If a source model starts from gross electrical generation:
+G_bus[i,t] = G_gross[i,t] - Aux_behind_meter[i,t] - OtherBehindMeterElectricalLoss[i,t].
+
+RULE:
+If this mapping is used, Aux_behind_meter is already embodied in net G_bus and MUST NOT also be placed in Aux_grid or elsewhere in the physical balance.
+
+COST-LEDGER BINDING:
+- generation/source CAPEX, O&M, fuel/resource input and financing are counted once according to the source model;
+- internal charging electricity is an internal flow already supplied by G_bus/imports and is not a second resource-cost line;
+- external imports are external resource flows and must be costed once under the frozen system boundary;
+- storage CAPEX/BOP/O&M/degradation/augmentation/replacement/decommissioning counted once;
+- network assets/O&M/loss consequences counted once;
+- internal market payments for energy/capacity/ancillary/DR remain transfers in the primary resource-cost view;
+- physical losses reduce deliverable service through the equations and are not monetized again as duplicate lost-energy purchases;
+- Unserved is handled by R_STAR and any explicitly adopted value-of-lost-service/welfare treatment, never by pretending it was consumed energy;
+- ordinary curtailment is handled through unused installed capability/resource opportunity and reduced utilization, not as delivered energy.
+
+ANTI-PRIVILEGE METER RULE:
+Every candidate and baseline must declare:
+M_GEN = generator injection meter;
+M_IMPORT = import boundary meter;
+M_STORAGE = storage AC charge/discharge meter;
+M_LOAD = served-energy delivery meter;
+M_EXPORT = export boundary meter.
+Any candidate-specific change in meter placement requires an explicit transformation including losses/auxiliaries so comparisons land on the same M_LOAD service boundary.
+
+REPAIR TESTS:
+
+CALC-EGC-040C3-001 — UNSERVED-ENERGY COUNTEREXAMPLE
+INPUT: Demand_postflex=100 MWh; G_bus=90; Served=90; Unserved=10; all other physical flows=0.
+LEDGER-P1: 90=90 PASS.
+LEDGER-P2: 100=90+10 PASS.
+OLD COMBINED LEDGER: 90=90+10 FAIL.
+RESULT: F-EGC-040REV-P1-001 repaired.
+
+CALC-EGC-040C3-002 — CURTAILMENT COUNTEREXAMPLE
+INPUT: Available_bus=100 MWh; actual G_bus=80; Curtail=20; Served=80; all other physical flows=0.
+LEDGER-P1: 80=80 PASS.
+LEDGER-P3: 100=80+20 PASS.
+OLD COMBINED LEDGER using actual G: 80=80+20 FAIL.
+RESULT: F-EGC-040REV-P1-002 repaired.
+
+CALC-EGC-040C3-003 — STORAGE INVARIANT
+INPUT: source actual net bus generation=100 MWh; charge=20; eta_c*eta_d represented as RTE=0.8 in the toy aggregate; discharge=16; served=96; source resource cost=30 USD/MWh generated; storage service=10 USD/MWh discharged.
+PHYSICAL BALANCE: 100+16=96+20 PASS.
+COST: 100*30+16*10=3160 USD; 32.9166666667 USD/MWh served.
+FORBIDDEN DOUBLE CHARGE: +20*30 => 3760 USD; 39.1666666667 USD/MWh; +18.9873417722% distortion.
+RESULT: original storage anti-double-count invariant preserved.
+
+CALC-EGC-040C3-004 — MONTE CARLO PROPERTY TEST
+TOOL: Python
+METHOD:
+Generate 100,000 random nonnegative feasible physical-flow cases over G_bus, Imports, Dch, Ch, Exports and NetworkLoss; solve Served from LEDGER-P1; independently generate Unserved and Curtailment.
+OUTPUT:
+- corrected LEDGER-P1 max absolute closure residual = 4.547473508864641e-13 MWh (floating-point roundoff);
+- old combined ledger closure fraction within 1e-9 = 0/100000;
+- old residual mean approximately -124.9064 MWh under Uniform(0,100) Unserved and Uniform(0,150) Curtailment, matching expected -(50+75)=-125 MWh.
+LIMITATIONS: randomized algebraic property test, not a physical grid simulation.
+EVIDENCE_CLASS: CALCULATION / MODEL_TEST
+
+CALC-EGC-040C3-005 — SYMBOLIC REPLICATION
+TOOL: Wolfram Language evaluator
+METHOD:
+Substitute the corrected physical-balance definition of Served into the old combined residual.
+OUTPUT:
+old_residual = -Curtailment - Unserved.
+CONCLUSION:
+When G_internal is actual net bus generation and parasitics are consistently metered, the old equation is structurally wrong whenever ordinary curtailment or unserved energy is positive.
+EVIDENCE_CLASS: CALCULATION
+REPLICATION_STATUS: CROSS_ENGINE_PASS; independent-session review still required.
+
+SOURCE SUPPORT:
+- US DOE reliability material defines unserved energy as unmet electrical energy demand / energy not delivered:
+https://www.energy.gov/documents/pios202-25-11exhibits31to40
+- FERC demand-response material supports treating DR as a reliability/economic resource requiring cost-effectiveness and M&V rather than silent demand deletion:
+https://www.ferc.gov/electric/industry-activity/demand-response/national-assessment-and-action-plan-demand-response
+- NERC GFM material supports separate system-stability/service requirements that cannot be inferred merely from annual energy balance:
+https://www.nerc.com/comm/RSTC/Documents/Need_for_Widespread_Implementation_of_GFM_BESS.pdf
+
+TRUTH CLASSES:
+- LEDGER-P1/P2/P3/P4/P5 definitions: INFERENCE / ENGINEERING ACCOUNTING SPECIFICATION supported by conservation logic and source definitions.
+- CALC-EGC-040C3-001..005: CALCULATION.
+- universal numeric R_STAR: UNKNOWN.
+- candidate-specific available energy, losses, auxiliaries, storage efficiency and flex behavior: UNKNOWN until candidate/geography evidence is attached.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-040R-001 STORAGE_PRECEDENCE:
+- original anti-double-count rule: SUPPORTED_PENDING_INDEPENDENT_REVIEW;
+- old combined conservation equation: FALSIFIED;
+- repaired split ledgers P1-P5: REPAIR_SUBMITTED / AWAITING_REVIEW.
+
+DEPENDENT CLAIM RULE:
+No candidate cost ranking may use the repaired common ledger as VERIFIED until JOB-EGC-040-REPAIR-C3-REV-20261006 independently passes it.
+Numeric R_STAR remains a separate blocking dependency for any final winner.
+
+STATUS CHANGE:
+JOB-EGC-040-REPAIR-C3-20261006: CLAIMED -> AWAITING_REVIEW.
+JOB-EGC-040-REPAIR-C1-20261005: REVIEW_FAILED.
+JOB-EGC-040: REVIEW_FAILED / REPAIR_SUBMITTED pending C3 review.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+REVIEW JOB:
+JOB_ID: JOB-EGC-040-REPAIR-C3-REV-20261006
+TITLE: Independent adversarial review of split energy/adequacy/curtailment ledgers
+ROLE: Independent accounting-boundary replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do LEDGER-P1..P5 conserve physical energy, prevent unserved/curtailment/storage-loss double counting, and preserve a common delivered-service boundary without candidate privilege?
+CANDIDATE: common accounting framework
+DEPENDENCIES: JOB-EGC-040-REPAIR-C3-20261006 submitted
+REQUIRED_INPUTS: equations P1-P5; CALC-EGC-040C3-001..005; prior F-EGC-040REV findings
+REQUIRED_TOOLS: independent algebra; independent implementation/property tests; adversarial meter-boundary examples; storage-loss audit
+REQUIRED_EVIDENCE: reproduce or falsify at least unsupplied-demand, curtailment, storage and mixed-import/export cases
+EXPECTED_OUTPUT: PASS/FAIL plus exact defects and repair jobs
+FALSIFICATION_CONDITION: any feasible case violates conservation, any term can be counted twice, or different candidates can choose meter placement to gain an unreported cost/energy advantage
+REVIEWER_JOB_ID: NONE
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: distinct session claims and attacks C3.
