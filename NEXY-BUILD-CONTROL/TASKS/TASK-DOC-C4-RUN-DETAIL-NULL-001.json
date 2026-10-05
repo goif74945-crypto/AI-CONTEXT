@@ -5,11 +5,27 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "PRIORITY": "P1",
   "RISK": "MEDIUM",
-  "STATUS": "BLOCKED",
+  "STATUS": "DUPLICATE_SUPERSEDED",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
-  "SCOPE": ["packages/api/directives.ts", "tests/integration/directives/read-auth.spec.ts"],
+  "SCOPE": [
+    "packages/api/directives.ts",
+    "tests/integration/directives/read-auth.spec.ts"
+  ],
   "GOAL": "Make GET /api/runs/:id serialize unavailable optional DOC-C response members by omission, not null, and repair the exact-shape oracle.",
   "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "ACCEPTANCE": ["Optional run fields are omitted when unavailable.", "Present optional fields use their declared non-null scalar types.", "Focused contract tests reject nullability drift.", "Exact-SHA review and retest required.", "NEXY.ai unchanged."]
+  "ACCEPTANCE": [
+    "Optional run fields are omitted when unavailable.",
+    "Present optional fields use their declared non-null scalar types.",
+    "Focused contract tests reject nullability drift.",
+    "Exact-SHA review and retest required.",
+    "NEXY.ai unchanged."
+  ],
+  "ACTIVE": false,
+  "CANONICAL_TASK_ID": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "CANONICAL_FINDING_ID": "FINDING-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "DUPLICATE_REASON": "Same GET /api/runs/:id optional primary_incident_id null-versus-omission defect and same source/test scope; canonical task uses the route-specific requirement.",
+  "FORBIDDEN": [
+    "Do not allocate a second writer for this duplicate semantic mutation scope."
+  ]
 }
