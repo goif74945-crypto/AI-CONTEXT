@@ -5,24 +5,23 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-2-1-2-SCOPE",
   "FINDING_ID": "FINDING-DOC-C-SCOPE-LO2-ACTIVE-RUNTIME-001",
-  "STATUS": "IN_PROGRESS",
+  "STATUS": "TEST_BLOCKED_RUNTIME",
   "PRIORITY": "P1",
   "RISK": "HIGH",
   "BASE_SHA": "32f810b2766f64bf2fe843a19784e0010da00ff6",
   "EXPECTED_PARENT_SHA": "32f810b2766f64bf2fe843a19784e0010da00ff6",
+  "CANDIDATE_SHA": "547e306dc3499e20f84fce18cee7c60bc3607b55",
+  "PR_NUMBER": 60,
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "ACTUAL_WORKER_BRANCH": "worker/NEXY-AI-Test-AI/C-SOL-20261006-LO2-SCOPE-REPAIR",
   "TARGET_PATHS": [
     "packages/queue/workers.ts",
     "packages/queue/run-state.ts",
-    "packages/lo2/feedback-dispatch.ts",
-    "packages/lo2/engine.ts",
     "config/experimental-scope.ts",
-    "tests/contract/lo2-feedback-dispatch.test.ts",
-    "tests/contract/lo2-governance.test.ts",
-    "tests/contract/lo2-durable-anchor.test.ts"
+    "vitest.experimental.config.ts",
+    "tests/contract/current-scope-no-lo2-runtime.test.ts"
   ],
-  "SEMANTIC_SCOPE": "Resolve whether Lo2 is explicitly promoted into active DOC-C. No promotion was found in current build authority; remove automatic Lo2 side effects from the canonical release/worker path while preserving the future Lo2 implementation as non-authoritative experimental code.",
+  "SEMANTIC_SCOPE": "Remove automatic future-domain Lo2 side effects from the canonical DOC-C release/worker path while preserving Lo2 as non-authoritative experimental code.",
   "ACCEPTANCE_CRITERIA": [
     "Canonical worker no longer imports, executes, or starts Lo2 feedback processing.",
     "Canonical LAW-authorized release no longer creates Lo2 feedback obligations.",
@@ -32,7 +31,20 @@
     "No mutation to NEXY.ai.",
     "Exact candidate SHA tests and independent review required before integration."
   ],
-  "BLOCKER": null,
-  "UNBLOCKED_BY": "Current user instruction explicitly authorizes Git-valid isolated worker branches; existing team convention uses worker/NEXY-AI-Test-AI/...",
-  "NEXT_ACTION": "Create isolated worker from exact integration SHA, remove only canonical Lo2 runtime coupling, add focused scope-regression proof, execute available exact-SHA validation, review diff, then integrate only if evidence is sufficient."
+  "STATIC_EVIDENCE": {
+    "compare": "5 commits; 5 files; +28/-42 from exact base",
+    "canonical_worker_lo2_refs": 0,
+    "canonical_run_state_lo2_refs": 0,
+    "target_drift_collision_at_review": 0,
+    "pr_patch_reviewed": true
+  },
+  "TEST_EVIDENCE": {
+    "execution_mode": "STATIC_INSPECTION_ONLY",
+    "candidate_workflow_runs": 0,
+    "candidate_check_runs": 0,
+    "verdict": "NOT_RUN",
+    "reason": "No push/PR workflow run exists for candidate SHA and no eligible rerun/fresh GitHub execution action is exposed."
+  },
+  "BLOCKER": "EXACT_SHA_RUNTIME_TEST_BACKEND_UNAVAILABLE",
+  "NEXT_ACTION": "Run repository-defined current-build gates on candidate SHA 547e306dc3499e20f84fce18cee7c60bc3607b55 using an isolated execution backend. If runtime evidence passes and target paths remain collision-free, update/rebase safely as needed, independently review, then integrate PR #60."
 }
