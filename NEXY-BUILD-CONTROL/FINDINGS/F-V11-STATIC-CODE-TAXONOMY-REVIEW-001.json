@@ -1,0 +1,47 @@
+{
+  "FINDING_ID": "F-V11-STATIC-CODE-TAXONOMY-REVIEW-001",
+  "TYPE": "SPEC_MISMATCH",
+  "SEVERITY": "P0",
+  "STATUS": "OPEN",
+  "REVIEW_MODE": "INDEPENDENT_READ_ONLY",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_EPOCH": "EPOCH-20261005-b35ee1bf-608426cb",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "HEAD_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "AFFECTED_TASK": "T-04452B01",
+  "EVIDENCE": {
+    "capability_node_blob": "25d26bf233b1d7b446027aad391688b7e91b09a0",
+    "governance_blob": "563f60f78c7c2390a91f6b3b1364e92ddb8c19b0",
+    "capability_test_blob": "a04597422ebfa57f2bff8e7d72885e361b492b9b",
+    "observed_capability_codes": [
+      "R001_RESOURCE_CAP_EXCEEDED",
+      "R002_DEPENDENCY_NOT_ANCHORED",
+      "R003_FORBIDDEN_COMBINATION",
+      "R004_DYNAMIC_CODE_LOADING",
+      "R005_HIDDEN_NETWORK_CAPABILITY",
+      "R006_SYSCALL_SCOPE_MISMATCH",
+      "R007_AUTHORITY_ESCALATION",
+      "R010_UNKNOWN_DEPENDENCY",
+      "R011_DEPENDENCY_CYCLE",
+      "R012_INVALID_NODE"
+    ],
+    "authoritative_sibling_static_codes": [
+      "R001_DEPENDENCY_CYCLE",
+      "R002_PERMISSION_ESCALATION",
+      "R003_RESOURCE_CAP_VIOLATION",
+      "R004_DETERMINISM_CLASS_VIOLATION",
+      "R005_UNDECLARED_NETWORK_SCOPE",
+      "R006_DYNAMIC_CODE_LOADING",
+      "R007_NONDET_SYSCALL",
+      "R008_SCHEMA_NONCANONICAL",
+      "R009_CONTAINER_DIGEST_MISMATCH",
+      "R010_SPEC_HASH_DRIFT"
+    ]
+  },
+  "VERDICT": "Confirmed identity drift remains on exact integration HEAD. CapabilityNode tests also assert the noncanonical local R007_AUTHORITY_ESCALATION identity. Admission semantics and reason-code identity are separate concerns; repair must preserve fail-closed behavior while aligning canonical G22 code identity.",
+  "MUTATION": "NONE",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After a Constitution-authorized non-colliding isolated worker namespace exists, execute T-04452B01 with focused taxonomy tests, independent review, integration CAS, and exact-SHA reverify."
+}
