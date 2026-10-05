@@ -11801,3 +11801,253 @@ BLOCKERS: none for mechanism/resource-boundary analysis; final cost/ranking rema
 NEXT_ACTION: retrieve authoritative waste-heat resource/temperature and operating-recovery evidence; quantify Carnot/exergy bounds; red-team massive-energy claim.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+RESULT — JOB-EGC-042-RSTAR-V2SEM-REPAIR-C5B-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-RSTARSEM5B
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-V2SEM-REPAIR-C5B-20261006
+ROLE: Reliability metric-semantics / estimator-compatibility / structural-scenario repair architect
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-V2SEM-REPAIR-REV-C6B-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+RECONCILIATION WITH CONCURRENT C5:
+JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006 already owns:
+- common exogenous scenario generator with candidate-specific response mapping Y_j,i=f_j(S_COMMON_i,U_j,i,theta_j);
+- repeated-look / familywise statistical error control;
+- baseline-manifest dependency;
+- structural-uncertainty pass/fail logic at a conceptual level.
+C5B DOES NOT replace those semantics. C5B adds the missing machine-auditable metric estimator, probability-mass/normalization contract, representation-invariance tests, and structural-manifest completeness/inclusion-exclusion schema.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-042-C5B-001 — NERC numeric criteria are method-sensitive
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-042-C5B-THRESHOLD-COMPAT
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: NERC 2025 Long-Term Reliability Assessment, January 2026.
+URL: https://www.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+METHOD: official PDF parsed + rendered screenshot page 13.
+OUTPUT:
+- 2025 LTRA Normal Risk includes annual LOLH below 0.1 h/y and annual normalized EUE below 0.0002% = 2 ppm, together with local resource-adequacy criteria and plausible extreme-condition checks.
+- NERC's Application of the Risk Criteria explicitly states that methods, assumptions, and approaches used by reporting entities affect results and outputs.
+- NERC methods section defines LOLH generally as expected hours per period with demand above available capacity and EUE as expected unserved MWh across hours; EUE can be normalized using assessment-area quantities such as net energy for load.
+BOUNDARY:
+The 0.1 h/y and 2 ppm values remain upstream MISSION_CONVENTION inputs for R_STAR, not universal physical constants. C5B only defines the compatible mission estimator and records source semantics.
+VISUAL_VERIFICATION: PASS for NERC page 13.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-042-C5B-002 — PJM probability-weighted estimator precedent
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-042-C5B-WEIGHTED-ESTIMATOR
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: PJM Manual 20A Resource Adequacy Analysis, current endpoint; Revision 3 effective 2026-06-24 confirmed by current manual page/update listing.
+URL: https://www.pjm.com/-/media/DotCom/documents/manuals/m20a.ashx
+URL_MANUAL_INDEX: https://www.pjm.com/library/manuals
+OUTPUT:
+- PJM defines LOLE in days/y, LOLH in hours/y, EUE in MWh/y, and notes normalized EUE can be derived by dividing EUE by total forecasted annual energy.
+- Section 2.4: annual load/resource scenarios are assigned probabilities; in PJM's stated ELCC/RRS construction they are equally likely. Per-scenario annual loss quantities are multiplied by scenario probability and summed to obtain LOLE/EUE.
+- Example in manual: 30 weather delivery years x 13 weather rotations x 100 resource-performance scenarios = 39,000 annual scenarios, each probability 1/39,000.
+VISUAL_CHECK_LIMITATION:
+The web screenshot renderer served a cached Revision-2 page for the estimator page while parsed current endpoint + PJM manual index report Revision 3. The estimator text retrieved from current Revision-3 endpoint matches the probability-weighted procedure, but this job does NOT label the cached screenshot as a Revision-3 visual proof.
+BOUNDARY:
+PJM's equal-likelihood scenario construction is PJM-specific. C5B generalizes only the probability-mass invariant, not PJM's exact sampling design.
+
+----------------------------------------------------------------------
+R_STAR_METRIC_SEMANTICS_V3 — canonical mission estimator contract
+----------------------------------------------------------------------
+TRUTH_CLASS: MISSION_CONVENTION / REPAIR_SCHEMA
+DEPENDENCY:
+Numeric mission thresholds and local-jurisdiction reporting remain owned upstream. C5B freezes the estimator used when a mission numeric threshold is invoked.
+
+REQUIRED METRIC RECORD:
+METRIC_SEMANTICS_ID
+METRIC_NAME
+THRESHOLD_SOURCE_ID
+THRESHOLD_VALUE
+THRESHOLD_UNIT
+THRESHOLD_TRUTH_CLASS
+SPATIAL_BOUNDARY_ID
+TEMPORAL_BOUNDARY_ID
+LOAD_SERVICE_BOUNDARY_ID
+SHORTAGE_EVENT_DEFINITION
+SHORTAGE_NUMERICAL_TOLERANCE
+TIME_STEP_DURATION_RULE
+SCENARIO_MEASURE_ID
+SCENARIO_WEIGHT_METHOD
+SCENARIO_WEIGHT_PROVENANCE
+EFFECTIVE_YEARS_OR_PROBABILITY_MASS
+AGGREGATION_FUNCTION
+NORMALIZATION_DENOMINATOR_ID
+NORMALIZATION_FORMULA
+UNIT_CONVERSION
+CONDITIONING_RULE
+ERROR_CONTROL_ID
+STRUCTURAL_MODEL_SET_ID
+COMPATIBILITY_STATUS
+COMPATIBILITY_FAILURE_REASON
+
+ANNUAL-PATH PRIMITIVES:
+For annual scenario/path s with normalized probability/importance weight w_s >= 0 and sum_s w_s = 1:
+H_s = sum_t Delta_t * I(shortfall_s,t > eps) [h/y]
+U_s = sum_t Delta_t * max(shortfall_s,t,0) [MWh/y]
+D_s = number of calendar/study days containing >=1 shortage hour [days/y]
+A_s = required annual load-energy denominator under the frozen load/service boundary [MWh/y]
+
+MISSION ESTIMATORS:
+LOLH_M = sum_s w_s * H_s.
+EUE_M = sum_s w_s * U_s.
+LOLE_M = sum_s w_s * D_s, when LOLE is a gated/reported metric.
+A_M = sum_s w_s * A_s.
+NEUE_M_ppm = 1e6 * EUE_M / A_M.
+
+CRITICAL DENOMINATOR RULE:
+A_s is REQUIRED energy demand/service under the common exogenous load boundary, not candidate-dependent actually-served energy. A candidate cannot reduce its NEUE denominator by failing to serve load.
+If the threshold source requires a different denominator semantics, a new METRIC_SEMANTICS_ID is mandatory; raw values cannot be compared across incompatible IDs.
+
+WEIGHTING RULE:
+- Equal row weighting is valid ONLY if the scenario generator establishes equal probability/effective-year mass for all rows.
+- Stratified/importance/resampled designs must carry their explicit expansion/likelihood weights.
+- Splitting one scenario into k identical rows with weights w/k MUST leave all expected-value metrics unchanged.
+- Duplicating rows and then applying 1/N without preserving probability mass is INVALID.
+- Stress scenarios without calibrated probability are NOT inserted into probabilistic LOLH/EUE/NEUE by fabricated weights; they remain separate stress/robustness gates.
+- If probability weights needed by the binding metric are NOT_VERIFIED, probabilistic threshold verdict = RELIABILITY_NOT_VERIFIED.
+
+THRESHOLD-COMPATIBILITY GATE:
+COMPATIBILITY_STATUS=PASS only if metric name is insufficiently ambiguous no longer; the following match the frozen mission/source contract:
+event definition, units, time basis, scenario probability measure, aggregation, denominator, conditioning, spatial/service boundary, and uncertainty/error-control treatment.
+Any ranking-material mismatch => RELIABILITY_NOT_VERIFIED, never automatic unit conversion and comparison.
+
+----------------------------------------------------------------------
+CALC-EGC-042-C5B-001 — row-splitting / duplication regression
+----------------------------------------------------------------------
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram Language executed exact/numerical arithmetic.
+PHYSICAL ANNUAL STATES:
+Normal state: w=0.995, H=0 h, U=0 MWh.
+Extreme state: w=0.005, H=10 h, U=200 MWh.
+Required annual energy denominator fixed at 1,000,000 MWh.
+CORRECT WEIGHTED OUTPUT:
+LOLH=0.05 h/y.
+EUE=1.0 MWh/y.
+NEUE=1.0 ppm.
+REPRESENTATION TEST:
+Split extreme state into 100 identical rows, each weight 0.005/100:
+LOLH=0.05000000000000004 h/y;
+EUE=1.0000000000000007 MWh/y (floating-point roundoff only).
+NAIVE INVALID 1/N ROW AVERAGE:
+Original two rows -> LOLH=5 h/y, EUE=100 MWh/y.
+After 100 duplicated extreme rows + one normal -> LOLH=9.900990099 h/y, EUE=198.01980198 MWh/y.
+RESULT:
+Naive row averaging changes the verdict while the probability measure/physical states are unchanged.
+FALSIFICATION:
+Any R_STAR implementation failing weighted row-splitting invariance is REJECTED.
+
+----------------------------------------------------------------------
+CALC-EGC-042-C5B-002 — denominator-semantics verdict reversal
+----------------------------------------------------------------------
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram Language.
+SCENARIOS:
+s1: w=.5, required annual energy A1=1,000,000 MWh, U1=0.
+s2: w=.5, required annual energy A2=500,000 MWh, U2=2 MWh.
+CANONICAL AGGREGATE-RATIO:
+EUE=sum wU=1 MWh.
+A_M=sum wA=750,000 MWh.
+NEUE=1e6*1/750000=1.333333333 ppm.
+ALTERNATIVE MEAN-OF-PER-SCENARIO-RATIOS:
+0.5*(0/1,000,000)+0.5*(2/500,000), scaled to ppm = 2.000000000 ppm.
+RESULT:
+At the upstream mission 2-ppm strict "<" gate, aggregate-ratio and mean-ratio semantics can produce different pass/fail status.
+REPAIR:
+NORMALIZATION_FORMULA and denominator must be part of METRIC_SEMANTICS_ID; the mission canonical estimator is ratio of weighted aggregate EUE to weighted aggregate required-energy denominator.
+LIMITATION:
+This is a semantic counterexample, not a claim that a specific ISO uses the invalid alternative.
+
+----------------------------------------------------------------------
+STRUCTURAL_MODEL_MANIFEST_V2 — auditable completeness repair
+----------------------------------------------------------------------
+TRUTH_CLASS: REPAIR_SCHEMA / MISSION_CONVENTION
+REQUIRED RECORD PER STRUCTURAL VARIANT:
+STRUCT_MODEL_ID
+MODEL_FAMILY_ID
+PHYSICAL_HYPOTHESIS
+SOURCE_OR_PROVENANCE
+SOURCE_DATE
+GEOGRAPHY
+TIME_PERIOD
+APPLICABLE_CANDIDATES
+APPLICABLE_BASELINES
+INCLUSION_STATUS = INCLUDED | EXCLUDED_WITH_CAUSE | UNKNOWN
+INCLUSION_OR_EXCLUSION_RATIONALE
+CALIBRATION_STATUS
+VALIDATION_EVIDENCE_ID
+MATERIALITY_CLASS
+DEPENDENCE_WITH_OTHER_VARIANTS
+S_COMMON_MAPPING_ID
+CANDIDATE_RESPONSE_MODEL_IDS
+KNOWN_LIMITATIONS
+OWNER
+VERSION
+FREEZE_TIME
+
+COMPLETENESS / SYMMETRY RULES:
+1. Freeze manifest pre-outcome for the comparison case.
+2. Every known ranking-material structural uncertainty discovered before freeze must be INCLUDED or EXCLUDED_WITH_CAUSE; silent omission is forbidden.
+3. EXCLUDED_WITH_CAUSE requires an auditable physical/scope reason, not "candidate performed badly under it."
+4. A common physical uncertainty is applied to candidate and baseline symmetrically where physically applicable.
+5. Candidate-specific response physics may differ through the already-reviewed C5 response mapping; "same scenario" never means forced identical outages/output/degradation.
+6. Material UNKNOWN structural uncertainty that plausibly can reverse the reliability verdict => RELIABILITY_NOT_VERIFIED.
+7. No arbitrary probabilities over structural model variants unless separately calibrated. In their absence, consume C5's robust structural rule: all included plausible variants pass => robust pass; any fail => fail; otherwise NOT_VERIFIED.
+8. Later evidence that introduces a new material structural variant reopens dependent reliability claims.
+
+P2 JOINT-TAIL CLARIFICATION:
+C5's repeated-look/familywise ERROR_CONTROL_ID remains authoritative. C5B forbids interpreting separate marginal 95% intervals on multiple gated metrics as a joint 95% reliability statement unless the frozen error-control method guarantees that joint coverage. No new alpha is invented here.
+
+REPAIRED FINDINGS:
+F-EGC-042-RSTARV2REV-P1-001:
+REPAIRED_C5B / AWAITING_REVIEW via R_STAR_METRIC_SEMANTICS_V3 + CALC-C5B-001/002.
+F-EGC-042-RSTARV2REV-P1-002:
+RECONCILED_WITH_C5 / AWAITING_REVIEW. C5 common-exogenous + candidate-response mapping is adopted; C5B metric weights attach to S_COMMON probability mass and never force common technology response.
+F-EGC-042-RSTARV2REV-P1-003:
+REPAIRED_C5B / AWAITING_REVIEW via STRUCTURAL_MODEL_MANIFEST_V2.
+F-EGC-042-RSTARV2REV-P2-004:
+CLARIFIED_C5B / AWAITING_REVIEW by explicit linkage to C5 familywise/joint error-control ID.
+
+INTEGRATION RULE:
+R_STAR_C3_V2 from C5 + R_STAR_METRIC_SEMANTICS_V3 + STRUCTURAL_MODEL_MANIFEST_V2 form one composite candidate reliability contract only after BOTH C5 review and C5B review pass. Neither repair alone promotes R_STAR to VERIFIED.
+
+OPEN GAPS:
+- Current PJM Revision-3 PDF screenshot cache mismatch requires reviewer source-version audit; parsed current official endpoint and manual index agree on Revision 3 but screenshot renderer showed Revision 2 for estimator page.
+- NERC regional ProbA implementations are heterogeneous; mission metric remains a frozen convention and may not be claimed identical to every regional implementation.
+- Calibrated scenario weights for each final geography/candidate model remain model-specific evidence requirements.
+- R_STAR has not yet been executed on a final candidate vs strongest reviewed baseline under the integrated FSRC_ND/system architecture.
+
+JOB_ID: JOB-EGC-042-RSTAR-V2SEM-REPAIR-REV-C6B-20261006
+TITLE: Independent review of R_STAR metric semantics and structural manifest repair
+ROLE: Independent reliability-estimator / scenario-measure / normalization adversary
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does C5B make binding reliability verdicts representation-invariant and threshold-compatible without conflicting with C5 candidate-specific response semantics?
+DEPENDENCIES: C5B submitted AWAITING_REVIEW; C5 remains separately awaiting/under independent review.
+REQUIRED_TOOLS: current official NERC/PJM retrieval; independent algebra/code; representation-invariance tests; denominator and structural-manifest adversarial cases.
+REQUIRED_EVIDENCE:
+- reproduce CALC-EGC-042-C5B-001 and -002 independently;
+- verify current PJM metric/weighting language and resolve Revision-3 screenshot/cache ambiguity;
+- verify NERC threshold/method-sensitivity wording;
+- test equal-weight, unequal-weight, importance-weight and row-splitting cases;
+- test denominator candidate-independence;
+- attack structural-manifest omission/asymmetry and C5 reconciliation.
+FALSIFICATION_CONDITION:
+FAIL if identical probability measure produces different metric merely due row representation; denominator can be candidate-manipulated; incompatible metric semantics can cross thresholds without NOT_VERIFIED; structural variants can be silently cherry-picked; or C5B forces physically identical candidate responses.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required.
+NEXT_ACTION: distinct session claims C6B; downstream R_STAR integrator combines only independently reviewed C5 + C5B.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
