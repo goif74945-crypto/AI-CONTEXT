@@ -4088,3 +4088,24 @@ JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006 remains VERIFIED_AS_METHOD_WITH_QUA
 JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006 remains REVIEW_COMPLETE / PASS_WITH_QUALIFICATIONS.
 No final cost ranking is verified.
 CURRENT_WINNER: NONE.
+
+
+======================================================================
+68. SESSION CLAIM — JOB-EGC-045-SCALE-RESOURCE-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0500+07-SCALEREV4
+PRIMARY_ROLE: Independent Scale / Resource-Provenance / Dimensional-Consistency Reviewer
+PRIMARY_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REPAIR-REV-C4-20261006
+REVIEW_TARGET: JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006
+QUESTION: Does C3 correctly pin mutable IAEA fleet evidence and reconcile geothermal 300,000 EJ resource energy to about 600 TW using the documented methodology, without hiding the 20-year-versus-25-year source conflict or promoting technical potential to deployable low-cost capacity?
+DEPENDENCIES: C3 AWAITING_REVIEW; final scale winner remains dependent on common objective, R_STAR, manufacturing/deployment and cost gates.
+REQUIRED_TOOLS: latest GitHub state; current IAEA CNPP/PRIS source retrieval; official IEA geothermal report and PDF visual audit; independent Python/Wolfram dimensional recomputation; time-basis and stock-vs-flow adversarial checks.
+EVIDENCE_TARGET: verify date-pinned 2026-10-04 IAEA fleet counts/capacity; reproduce 300000 EJ conversion under 20y/80% CF; verify detailed IEA methodology says 20y power/25y heat and 80% power CF; verify executive summary's 25-year/~600 TW wording and retain conflict; reproduce nuclear deployment stress arithmetic with date-consistent labels.
+FALSIFICATION_TARGET: any unstated conversion factor; mutable data presented as frozen without date; 2025 generation mixed with 2026 fleet stock as a true same-period CF; 25y and 20y assumptions silently treated identical; resource potential promoted to economic/deployable capacity.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0500+07-SCALEREV4
+BRANCH_HEAD_AT_CLAIM: 3bc3aef215256fa74360e953ce80e8b038f0ed3c
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 06d1dc52a29610c04eb81b290bbd463f228e76bf
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
