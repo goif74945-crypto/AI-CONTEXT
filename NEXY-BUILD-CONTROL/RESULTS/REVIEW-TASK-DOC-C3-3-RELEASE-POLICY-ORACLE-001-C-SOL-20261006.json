@@ -1,0 +1,33 @@
+{
+  "RESULT_ID": "REVIEW-TASK-DOC-C3-3-RELEASE-POLICY-ORACLE-001-C-SOL-20261006",
+  "TASK_ID": "TASK-DOC-C3-3-RELEASE-POLICY-ORACLE-001",
+  "STATUS": "BLOCKED_STALE_CANDIDATE",
+  "REVIEWER_CHAT": "C-SOL-20261006-0144-RELEASE-POLICY-XREVIEW",
+  "AUTHORITY": "DOC-C P10014-P10025",
+  "CANDIDATE": {
+    "sha": "122f60e3e82bdef8e135d0abccaf6cade95c636a",
+    "test_blob": "53a96620aa04dd606a8de7d0b8b83368c1776c13",
+    "branch_behind_current": 68
+  },
+  "CURRENT_INTEGRATION": {
+    "test_blob": "2ac1f0e867d4bc3b63aa9269503e1e84d137a35f",
+    "stronger_existing_oracles": [
+      "Each of confidence_min, deterministic_match_min, quorum_min, evidence_min is individually required.",
+      "Each of the four threshold fields is individually required to be numeric.",
+      "Noncanonical ErrorCode reason is rejected."
+    ]
+  },
+  "CANDIDATE_ADDS_USEFUL_COVERAGE": [
+    "Explicit confidence + evidence policy-failure output validation.",
+    "Explicit invalid candidateHash schema-failure output validation."
+  ],
+  "BLOCKER": "Candidate would regress current integration test strength if merged/replaced without rebase because it drops the four-field required/numeric matrices.",
+  "REQUIRED_REPAIR": [
+    "Rebase/refresh the test onto current NEXY.AI-Test-AI.",
+    "Preserve all current four-field required and numeric threshold_snapshot tests.",
+    "Add candidate's useful policy-failure and schema-failure cases on top.",
+    "Re-run exact candidate focused and contract gates before integration."
+  ],
+  "VERDICT": "DO_NOT_MERGE_CURRENT_CANDIDATE; COMBINE COVERAGE ON FRESH HEAD",
+  "NEXY_AI_PROTECTED": "UNCHANGED"
+}
