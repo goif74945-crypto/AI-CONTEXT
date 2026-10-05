@@ -1,11 +1,11 @@
 {
   "TASK_ID": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
   "CREATOR_CHAT": "C-V8-20261005-1737-SOL",
-  "OWNER_CHAT": "C-SOL-20261006-0144-0700-RUNOPTION-6E21A4B9",
+  "OWNER_CHAT": "UNASSIGNED",
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-4-2-RUN-DETAIL",
   "FINDING_ID": "FINDING-DOC-C4-RUN-OPTIONAL-NULL-001",
-  "STATUS": "RUNTIME_VALIDATION_BLOCKED",
+  "STATUS": "SUPERSEDED_BY_CONCURRENT_INTEGRATION",
   "PRIORITY": "P1",
   "RISK": "LOW",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -23,8 +23,8 @@
     "Exact-SHA targeted tests and independent review are required.",
     "No mutation to NEXY.ai."
   ],
-  "BLOCKER": "EXECUTION_PLANE_NO_SAFE_EXACT_HEAD_TRIGGER",
-  "NEXT_ACTION": "Do not merge until exact-head runtime evidence is available. Meanwhile release mutation scope and continue another non-overlapping product task.",
+  "BLOCKER": null,
+  "NEXT_ACTION": "No duplicate implementation. Broader optional scalar omission remains owned by CLAIM-C-SOL-20261006-0144-0700-RUN-OPTIONAL-SCALARS-CLOSURE.",
   "WORKER_BRANCH": "NEXY.AI-Test-AI-work/run-optional-null-6E21A4B9-r2",
   "REFRESHED_AT": "2026-10-06T01:44:00+07:00",
   "WORKER_HEAD": "c6542e274d2b66966c4a53d108b4d7092385a1ab",
@@ -42,5 +42,11 @@
     "status": "BLOCKED",
     "reason": "PR #27 triggered no GitHub Actions workflows/statuses; available GitHub connector exposes rerun/read but no workflow_dispatch action. Authorized Desktop Commander device is offline. Existing Railway validation service is concurrently tracking NEXY.AI-Test-AI and mutating it would collide with other validation work.",
     "evidence_sha": "c6542e274d2b66966c4a53d108b4d7092385a1ab"
-  }
+  },
+  "CURRENT_HEAD_EVIDENCE": {
+    "source_blob": "ad2893e22e9524d6592c7851e7d3f57e05c41782",
+    "test_blob": "97cbcd16d886563dad6adf073b8fd6228c073dac",
+    "result": "NEXY.AI-Test-AI now omits primary_incident_id when null and has absent/present regression coverage."
+  },
+  "PR_STATUS": "CLOSED_UNMERGED_DUPLICATE"
 }
