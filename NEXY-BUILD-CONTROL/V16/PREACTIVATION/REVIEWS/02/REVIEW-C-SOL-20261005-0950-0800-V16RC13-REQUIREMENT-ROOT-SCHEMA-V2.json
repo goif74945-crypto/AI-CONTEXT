@@ -1,0 +1,75 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_REVIEW_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-0950-0800-V16RC13-REQUIREMENT-ROOT-SCHEMA-V2",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-0950-0800-V16RC13-P0AUDIT",
+  "REVIEWER_MEMBERSHIP_ID": "PRE-cb00537cedc3f4712c89172b99132fa8",
+  "REVIEW_KIND": "INDEPENDENT_REQUIREMENT_ROOT_SCHEMA_V2_REVIEW",
+  "REVIEWED_PATH": "NEXY-BUILD-CONTROL/V16/GENESIS/REQUIREMENT_ROOT_SCHEMA_V2.json",
+  "REVIEWED_BLOB_SHA": "b862c97f07fc1b19446f818b0c50b66bdc9302e4",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_BYTE_PIN_VERIFIED": true,
+  "PRIMARY_SPEC_AUTHORITY_CHECK": {
+    "FINAL_VERDICT_PARAGRAPH_1_BASED": 9834,
+    "DOC_C_BUILD_SPEC_PARAGRAPH_1_BASED": 9839,
+    "BUILD_OBLIGATION_DOC_C_ONLY_PARAGRAPH_1_BASED": 9844,
+    "FINAL_DOC_C_START_1_BASED": 9886,
+    "FINAL_DOC_C_END_1_BASED": 10499,
+    "DOC_D_START_1_BASED": 10500,
+    "DOC_E_START_1_BASED": 10917,
+    "DOC_C_EXCLUDED_RANGE_1_BASED": [
+      9902,
+      9909
+    ],
+    "VERDICT": "V2 authority separation and negative-obligation direction agree with exact pinned Spec."
+  },
+  "PASS_POINTS": [
+    "Every active build obligation is required to bind final DOC-C normative authority rather than enter solely from DOC-B/D or historical source class.",
+    "Final DOC-C exclusions are retained as active PROHIBIT obligations rather than silently dropped.",
+    "Active-build denominator binds source-enumeration and authority-reconciliation roots and excludes mutable accounting state.",
+    "Deployment-evidence denominator is separated from implementation obligations.",
+    "The legacy 773 current-ish aggregate is explicitly rejected as the literal CURRENT_BUILD denominator."
+  ],
+  "BLOCKING_REVIEW_FINDINGS": [
+    {
+      "ID": "V2R1_DERIVED_IDENTITY_CONSTRUCTION_UNDEFINED",
+      "SEVERITY": "P0_CONTROL_DETERMINISM",
+      "DETAIL": "PRIMARY_FINAL_DOC_C_OMISSION source_entry_id and ACTIVE/DEPLOYMENT obligation_id are hash-domain fields, but V2 does not define deterministic construction algorithms for these derived identities. Two conforming implementations can assign different IDs to identical source semantics and produce different roots.",
+      "REQUIRED_REPAIR": "Define exact domain-separated identity objects and SHA-256/JCS or equivalent deterministic construction for omission source_entry_id and all obligation_id values, including collision handling."
+    },
+    {
+      "ID": "V2R2_REFERENCE_OBJECT_SCHEMAS_INCOMPLETE",
+      "SEVERITY": "P0_CONTROL_DETERMINISM",
+      "DETAIL": "supporting_refs is only described as an array of canonical reference objects, while reconciliation final_doc_c_normative_refs_1_based, supporting_doc_b_refs_1_based, supporting_doc_d_refs_1_based, deployment_doc_e_refs_1_based, authority_evidence_refs, omission primary_docx_refs_1_based and normalization_evidence_refs lack one complete typed object schema. JCS cannot canonicalize semantics that the schema leaves structurally undefined.",
+      "REQUIRED_REPAIR": "Define exact required/optional fields, JSON types, null rules, normalization, sort tuple and duplicate rules for every reference/evidence object used in any root hash domain."
+    },
+    {
+      "ID": "V2R3_DERIVED_ACCEPTANCE_AND_DEPENDENCY_RULES_UNDEFINED",
+      "SEVERITY": "P0_CONTROL_DENOMINATOR",
+      "DETAIL": "ACTIVE_BUILD entries hash dependencies_identity and validation_acceptance_criteria, but V2 does not define a deterministic derivation from source Dependencies/Validation_Evidence/final DOC-C semantics. Equivalent source material can therefore yield materially different obligation identities or acceptance criteria.",
+      "REQUIRED_REPAIR": "Define deterministic dependency resolution and acceptance-criterion derivation rules, including unresolved-reference behavior. Ambiguous or unresolved derivation must fail closed in reconciliation rather than permit root materialization."
+    },
+    {
+      "ID": "V2R4_RECONCILIATION_FIELD_TYPES_NOT_CLOSED",
+      "SEVERITY": "P0_CONTROL_DETERMINISM",
+      "DETAIL": "AUTHORITY_RECONCILIATION_ROOT_HASH enumerates ENTRY_REQUIRED_FIELDS but does not provide a complete ENTRY_TYPE_CONTRACT for reconciliation_generation, polarity/reference arrays and authority_evidence_refs. This leaves root bytes implementation-dependent despite RR5 claiming exact type repair.",
+      "REQUIRED_REPAIR": "Add a complete type contract for every reconciliation root field and entry field, including reconciliation_generation and all arrays/objects."
+    },
+    {
+      "ID": "V2R5_DEPLOYMENT_ENTRY_TYPE_CONTRACT_MISSING",
+      "SEVERITY": "P0_CONTROL_DETERMINISM",
+      "DETAIL": "DEPLOYMENT_EVIDENCE_REQUIREMENT_ROOT_HASH lists required fields but lacks exact types/shapes for doc_e_normative_refs_1_based and validation_acceptance_criteria and does not define deterministic obligation_id construction.",
+      "REQUIRED_REPAIR": "Add the same closed identity/reference/acceptance type and derivation contracts used by active-build entries, specialized to DOC-E authority."
+    }
+  ],
+  "REVIEW_VERDICT": "CHANGES_REQUIRED_BEFORE_ROOT_MATERIALIZATION",
+  "ACTIVE_BUILD_ROOT_READY": false,
+  "SOURCE_ENUMERATION_ROOT_READY": false,
+  "DEPLOYMENT_ROOT_READY": false,
+  "FINDING_IMPACT": "FINDING-V16RC13-GENESIS-ROOT-AUTHORITY-READINESS-001 remains OPEN; V2 is a strong semantic repair but is not yet a deterministic materialization contract.",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "SELF_CERTIFICATION": false
+}
