@@ -1,0 +1,9 @@
+{
+  "TASK_ID": "TASK-DOC-C4-AUTH-VERIFY-ERROR-MATRIX-001",
+  "FINDING_ID": "FINDING-DOC-C4-AUTH-VERIFY-ERROR-MATRIX-001",
+  "STATUS": "BLOCKED",
+  "PRIORITY": "P1",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "GOAL": "Reconcile verify-OTAC public error behavior and tests to the final DOC-C route matrix without weakening fail-closed auth persistence.",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001"
+}
