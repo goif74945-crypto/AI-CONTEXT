@@ -3,8 +3,8 @@
   "FINDING_ID": "FINDING-CLOSURE-PHASE-F-EXPERIMENTAL-CLASSIFICATION-001",
   "PRIORITY": "P1",
   "RISK": "CLOSURE_INTEGRITY",
-  "STATUS": "READY_CONTROL_PLANE",
-  "OWNER": "UNASSIGNED",
+  "STATUS": "CONTROL_PLANE_REPAIRED_REVERIFY_REQUIRED",
+  "OWNER": "C-SOL-20261005-1913-V8-AUTH",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
@@ -21,5 +21,6 @@
     "Do not mark EXPERIMENTAL as VERIFIED_CLEAN merely because it is excluded from the canonical lane; preserve truthful status semantics.",
     "No source mutation and no NEXY.ai mutation.",
     "Publish exact source SHA/tree/spec hash in replacement evidence."
-  ]
+  ],
+  "RESULT_OVERLAY": "INV-608426CB-C-SOL-20261005-1913-EXPLICIT-EXPERIMENTAL-OVERLAY-002"
 }
