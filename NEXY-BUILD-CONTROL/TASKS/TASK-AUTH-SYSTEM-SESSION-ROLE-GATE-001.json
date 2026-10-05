@@ -5,7 +5,7 @@
   "MISSION_ID": "M07-AUTH",
   "REQ_ID": "REQ-DOC-C-ROLE-ENUM-001",
   "FINDING_ID": "FINDING-DOC-C-ROLE-SYSTEM-SESSION-AUTHORITY-001",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE_AND_ACTIVE_HOTSPOT",
+  "STATUS": "BLOCKED_WORKER_NAMESPACE_AUTH_HOTSPOT_AND_DENIAL_SURFACE",
   "PRIORITY": "P0",
   "RISK": "CRITICAL_AUTHORITY",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -35,7 +35,19 @@
   ],
   "BLOCKERS": [
     "INC-BRANCH-NAMESPACE-001",
-    "ACTIVE_AUTH_HOTSPOT"
+    "ACTIVE_AUTH_HOTSPOT",
+    "AUTH-SYSTEM-DENIAL-SURFACE-AUTHORITY-UNRESOLVED"
   ],
-  "NEXT_ACTION": "After worker namespace and auth hotspot blockers clear, refresh auth/prisma/test blobs, claim one-writer scope, implement the narrow route-local role gates, run auth/security tests, review, integrate and reverify."
+  "NEXT_ACTION": "Continue read-only authority analysis while source mutation is blocked. Before implementation: resolve worker namespace, reconcile auth hotspot ownership, and obtain independent approval for the SYSTEM denial surface; then claim one writer, implement both verify-otac and session-me role gates together, test, review, integrate, and reverify.",
+  "RELATED_REQUIREMENTS": [
+    "REQ-DOC-C-4-2-SESSION-ME-RBAC-001"
+  ],
+  "RELATED_FINDINGS": [
+    "FINDING-DOC-C4-SESSION-ME-RBAC-001"
+  ],
+  "JOINED_TASKS": [
+    "TASK-DOC-C4-SESSION-ME-RBAC-001"
+  ],
+  "DESIGN_AUTHORITY_NOTE": "Do not implement until canonical denial status/error behavior for SYSTEM at verify-otac/session-me is independently justified. Preserve route-local success-role restrictions and do not coerce SYSTEM into a human role.",
+  "RECONCILIATION_RESULT": "NEXY-BUILD-CONTROL/RESULTS/RECONCILE-AUTH-SYSTEM-SESSION-RBAC-C-SOL-20261005-1921.json"
 }
