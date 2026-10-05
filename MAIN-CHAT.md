@@ -12350,3 +12350,283 @@ BRANCH_HEAD_AT_CLAIM: f8836c6d2cd1f93fbeb5156d26aebf89a453a7d5
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 9902841eaf3dd765e7597f6b60028b1638ff1446
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+REPAIR RESULT — JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006 — CHATGPT-GPT56SOL
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0345+07-STATE-C4
+PRIMARY_ROLE: Intertemporal Inventory Boundary Architect / Adversarial Energy-Accounting Repair
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Close the P0/P1 intertemporal inventory exploit found by JOB-EGC-040-REPAIR-C3-REV-20261006 without imposing an invalid universal SOC_H=SOC_0 rule on seasonal/noncyclic stocks.
+
+UPSTREAM PRESERVED:
+LEDGER-P1/P2/P3/P5 remain unchanged.
+LEDGER-P4 remains the intra-storage state equation:
+SOC[s,t+1]=SOC[s,t]*(1-lambda_s)+eta_c,s*Ch_bus[s,t]-Dch_bus[s,t]/eta_d,s.
+This repair adds a horizon-boundary contract around P4 and analogous stateful technologies.
+
+STATEBOUND-S0 — REQUIRED STATE DECLARATION
+Every stateful asset/resource k MUST declare:
+STATE_VARIABLE X[k,t]; units; min/max/capacity; physical transition equation; initial state X0; initial-state provenance; core-horizon terminal state XH; terminal reference XREF_H; closure mode; settlement method; resource/cost owner; and uncertainty.
+Allowed initial provenance classes:
+A) PERIODIC_COMPUTATIONAL_STATE: nonzero X0 allowed without standalone initialization-energy charge ONLY when the frozen closure makes net boundary-stock contribution zero.
+B) GREENFIELD_INITIALIZED_STATE: nonzero X0 created for a new asset outside the core service horizon must have physical initialization/prelude resource flows accounted unless an exactly offsetting validated terminal treatment makes the net boundary contribution zero.
+C) COMMON_OBSERVED_BROWNFIELD_STATE: measured common starting stock may be used, but historical sunk CAPEX does NOT make net depletion of the stock a free resource.
+D) EXOGENOUS_NATURAL_STATE: reservoir/thermal/resource stock with explicit inflows/outflows and non-energy obligations; its terminal reference is chronology/resource specific and need not equal X0.
+UNKNOWN provenance is forbidden for a ranking-critical state.
+
+STATEBOUND-S1 — SUMMED STORAGE IDENTITY
+Summing LEDGER-P4 over the core horizon for constant efficiencies:
+sum_t Dch_bus[s,t]/eta_d,s
+=
+SOC[s,0]-SOC[s,H]
++eta_c,s*sum_t Ch_bus[s,t]
+-sum_t lambda_s*SOC[s,t].
+Therefore SOC0-SOCH is an explicit boundary-stock contribution. It may not disappear from the common system boundary merely because every hourly P1/P4 equation closes.
+
+STATEBOUND-S2 — TERMINAL REFERENCE FREEZE
+Before observing candidate ranking, freeze XREF_H[k] and its provenance.
+Allowed modes:
+1) PERIODIC_CLOSURE: XREF_H=X0 only when the modeled chronology is explicitly periodic/repeated and that condition is physically meaningful.
+2) REFERENCE_TARGET: XREF_H may differ from X0 for seasonal/hydrological/other noncyclic states, but must come from a common exogenous chronology, operating obligation, observed/reference continuation, or other candidate-neutral evidence.
+3) CONTINUATION_TARGET: when a single endpoint is insufficient, freeze a continuation/settlement rule and target band rather than inventing equality.
+FORBIDDEN: candidate-specific terminal target chosen after seeing cost/reliability results.
+
+STATEBOUND-S3 — PHYSICAL SETTLEMENT TAIL
+If XH != XREF_H beyond tolerance, the preferred repair is an explicit settlement tail tau=H..H+K:
+- use the same physical transition equations, bounds, efficiencies and resource constraints;
+- use frozen continuation traces/rules common to candidate and matched baseline;
+- restore/settle state to XREF_H or documented target band;
+- include all causal REAL EXTERNAL RESOURCE costs and resource consumption needed by the tail in the primary FSRC_ND numerator under the same D_REF/PV convention;
+- EXCLUDE all settlement-tail served electricity from the mission E_NET_SERVED denominator;
+- allow tail external export/co-product credit only under the already frozen external-counterfactual rule and never twice;
+- storage/network losses remain physical energy-balance effects and are not separately repurchased a second time;
+- if the state cannot be settled within predeclared K_MAX/physical limits, mark the candidate/system comparison NOT_VERIFIED or FAIL rather than silently truncating inventory.
+
+STATEBOUND-S4 — VALIDATED CONTINUATION-VALUE FALLBACK
+A signed terminal settlement value SC_H(XH -> XREF_H) may replace an explicit tail ONLY if:
+- it is frozen before ranking;
+- derived from or validated against a physical continuation/settlement model under the same boundary;
+- uses the common D_REF valuation date;
+- its sign/units are explicit;
+- it cannot credit unavailable/unusable terminal energy;
+- validation error is below a predeclared tolerance that cannot plausibly reverse ranking.
+Then add D_REF(0,H)*SC_H to the primary numerator.
+FORBIDDEN: arbitrary raw salvage price or candidate-specific shadow price inserted solely to improve rank.
+
+STATEBOUND-S5 — FSRC_ND COUPLING
+For physical-tail mode:
+FSRC_ND_STATE
+=
+[
+ PV_core(C_EXTERNAL_RESOURCE)
+ +PV(C_STATE_INIT_NONCANCELLING)
+ +PV_tail(C_EXTERNAL_RESOURCE_SETTLE)
+ -PV_core(V_EXTERNAL_COPRODUCT)
+ -PV_tail(V_EXTERNAL_SETTLE)
+ -RV_NONSTATE_H
+ +TL_H
+]
+/
+PV_core(E_NET_SERVED).
+
+Rules:
+- denominator is core-horizon delivered service only;
+- if the state boundary is exactly periodic/reference-closed with zero net boundary contribution, C_STATE_INIT_NONCANCELLING=0;
+- if a greenfield noncyclic starting inventory is imported into the core and not cancelled by closure, initialization/prelude resources are included;
+- brownfield observed stock is not recharged historical CAPEX, but any candidate-caused terminal depletion versus frozen target must be physically settled or continuation-valued;
+- state inventory may NOT simultaneously receive a tail settlement and an RV_H inventory credit/debit for the same quantity;
+- RV_NONSTATE_H covers other residual asset value only; inventory residual is owned by the chosen state-boundary method;
+- all terms use the common primary real-resource discount convention once FINPV review/repair is accepted.
+
+STATEBOUND-S6 — NON-BATTERY STATEFUL RESOURCES
+For a reservoir:
+Volume[t+1]=Volume[t]+Inflow[t]-Release[t]-Spill[t]-Evaporation[t]+PumpedIn[t]-OtherObligationOut[t].
+Power conversion is separately tied to release/head/efficiency.
+Flood control, irrigation, water supply, environmental/fish-flow and other obligations must not be silently deleted.
+A seasonal XREF_H may differ from X0; the candidate must meet the same hydrological/resource obligation and terminal reference/continuation rule as its matched baseline.
+
+EVIDENCE_ID: TE-EGC-040STATE-001
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+CLAIM_ID: CLAIM-EGC-040STATE-STORAGE-PROVENANCE
+TOOL: official web retrieval
+METHOD: EIA storage physical/accounting evidence
+DATE: 2026-10-06
+SOURCE: U.S. Energy Information Administration, Energy storage for electricity generation
+SOURCE_DATE: current page; cited physical fleet data 2022
+URL/DOI/IDENTIFIER: https://www.eia.gov/energyexplained/electricity/energy-storage-for-electricity-generation.php
+INPUTS: EIA storage definitions and observed fleet accounting
+PARAMETERS: utility-scale storage
+EQUATION/CODE/METHOD: source review
+OUTPUT: ESS is a secondary rather than primary source; it must be charged from another source and uses more electricity to charge than it later supplies. EIA reports negative net generation for ESS to avoid double counting.
+UNITS: qualitative accounting plus MW/MWh in source tables
+UNCERTAINTY: fleet values vary over time/technology.
+ASSUMPTIONS: NONE beyond EIA definitions.
+LIMITATIONS: does not prescribe this mission's terminal-state method.
+REPRODUCTION_METHOD: inspect EIA storage page.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT + MEASUREMENT CONTEXT
+
+EVIDENCE_ID: TE-EGC-040STATE-002
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+CLAIM_ID: CLAIM-EGC-040STATE-PSH
+TOOL: official web retrieval
+METHOD: DOE pumped-storage mechanics review
+DATE: 2026-10-06
+SOURCE: U.S. Department of Energy, How Pumped Storage Hydropower Works
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/water/how-pumped-storage-hydropower-works
+INPUTS: DOE technology description
+PARAMETERS: pumped storage hydropower
+EQUATION/CODE/METHOD: source review
+OUTPUT: PSH stores/generates by moving water between reservoirs at different elevations; charging requires power to pump water to the upper reservoir and discharge releases it through turbines.
+UNITS: physical mechanism
+UNCERTAINTY: site/design specific efficiencies omitted here.
+ASSUMPTIONS: NONE.
+LIMITATIONS: mechanism evidence, not candidate-specific economics.
+REPRODUCTION_METHOD: inspect DOE page.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-040STATE-003
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+CLAIM_ID: CLAIM-EGC-040STATE-SEASONAL-HYDRO
+TOOL: official web retrieval
+METHOD: DOE hydropower source cross-check
+DATE: 2026-10-06
+SOURCE: U.S. Department of Energy, Types of Hydropower Plants; U.S. National Laboratories Contribute to Global Information Sharing on Hydropower's Role...
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/water/types-hydropower-plants ; https://www.energy.gov/cmei/water/articles/us-national-laboratories-contribute-global-information-sharing-hydropowers-role
+INPUTS: DOE operational descriptions and national-lab/IEA survey summary
+PARAMETERS: impoundment and seasonal storage
+EQUATION/CODE/METHOD: source review
+OUTPUT: impoundment reservoirs release stored water for electricity and other obligations including flood control/recreation/fish passage/water quality; DOE national-lab summary reports hydropower providing long-term seasonal storage services. Therefore universal XH=X0 is not source-supported for all reservoir chronologies.
+UNITS: qualitative operational evidence
+UNCERTAINTY: site/jurisdiction specific water obligations.
+ASSUMPTIONS: NONE.
+LIMITATIONS: exact seasonal targets remain geography/chronology specific.
+REPRODUCTION_METHOD: inspect DOE pages.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL CONTEXT
+
+EVIDENCE_ID: CALC-EGC-040STATE-001
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+CLAIM_ID: CLAIM-EGC-040STATE-SUMIDENTITY
+TOOL: Wolfram Language evaluator
+METHOD: symbolic rearrangement of summed P4
+DATE: 2026-10-06
+SOURCE: LEDGER-P4
+SOURCE_DATE: 2026-10-06 repo repair
+URL/DOI/IDENTIFIER: REPO:MAIN-CHAT.md
+INPUTS: s0,sT,eta_c,eta_d,sumCh,sumDch,sumLoss
+PARAMETERS: loss=sum(lambda*SOC)
+EQUATION/CODE/METHOD: solve sT-s0=-loss+eta_c*sumCh-sumDch/eta_d for sumDch
+OUTPUT: sumDch = eta_d*(eta_c*sumCh - loss + s0 - sT); normalized boundary contribution after removing charge/loss terms = s0-sT.
+UNITS: stored-energy units / AC-side energy mapping per P4
+UNCERTAINTY: constant aggregate efficiencies notation; timestep-specific efficiencies require direct summation but same boundary-state principle holds.
+ASSUMPTIONS: P4 meter convention unchanged.
+LIMITATIONS: algebraic identity, not dispatch simulation.
+REPRODUCTION_METHOD: symbolic solve/rearrange.
+REPLICATION_STATUS: SAME_SESSION_EXECUTED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+EVIDENCE_ID: CALC-EGC-040STATE-002
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+CLAIM_ID: CLAIM-EGC-040STATE-FREE-SOC-REGRESSION
+TOOL: Wolfram Language evaluator
+METHOD: adversarial deterministic regression cases
+DATE: 2026-10-06
+SOURCE: repaired state-boundary equations
+SOURCE_DATE: 2026-10-06
+URL/DOI/IDENTIFIER: REPO:MAIN-CHAT.md
+INPUTS/PARAMETERS/OUTPUT:
+A) FREE_INITIAL_SOC:
+SOC0=100, SOCH=0, eta_c=eta_d=1, charge=0, discharge=100, G=0, Served=100.
+P1 residual=0; P4 residual=0; un-repaired apparent resource cost=0/100=0.
+A physical tail restoring 100 units at illustrative $30/MWh requires $3,000; repaired cost contribution=$30/MWh core service. Thus hourly closure alone does not prevent free pre-horizon energy.
+B) CYCLIC_BATTERY:
+SOC0=50; eta_c=eta_d=0.9; Ch=20; Dch=16.2; G=20; Served=16.2; SOCH=50.
+P1 residual=0; P4 terminal state=50 exactly; settlement=0. Source cost at illustrative $30/MWh is $600/16.2=$37.037037/MWh. Loss is counted physically once.
+C) SEASONAL_NONBATTERY:
+Reservoir stock0=1000, inflow=500, release=800, terminal=700 stock units. Water/state balance closes exactly. Universal terminal equality would produce -300-unit mismatch, while pre-frozen seasonal XREF_H=700 has zero terminal gap. This demonstrates why equality cannot be universal.
+D) BROWNFIELD_DEPLETION:
+Observed SOC0=100, candidate SOCH=20, frozen target=100, eta_c=0.9. Tail restoration requires (100-20)/0.9=88.888889 MWh bus charge. At illustrative $30/MWh source resource cost, settlement=$2,666.666667. If the core obtained 80 MWh service from that depletion (eta_d=1), the settlement contribution is $33.333333/MWh rather than zero.
+UNITS: MWh or explicitly labeled generic reservoir stock units; USD; USD/MWh
+UNCERTAINTY: prices/efficiencies are adversarial toy inputs, not candidate facts.
+ASSUMPTIONS: no additional tail losses except stated eta_c; no tail service denominator.
+LIMITATIONS: regression/accounting tests, not full chronological grid simulation.
+REPRODUCTION_METHOD: recalculate each balance and settlement independently.
+REPLICATION_STATUS: SAME_SESSION_EXECUTED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION / REGRESSION_TEST
+
+RED_TEAM / FAILURE TESTS:
+F1 Free initial battery SOC: BLOCKED by periodic/reference closure or physical settlement tail.
+F2 Brownfield stock labeled "sunk" and drained freely: BLOCKED; sunk historical CAPEX != free inventory depletion.
+F3 Force SOC_H=SOC_0 for seasonal hydro: REJECTED; use frozen seasonal/reference target or continuation.
+F4 End horizon with extra charged inventory to earn arbitrary salvage credit: BLOCKED; no state RV credit if physical-tail mode; continuation-value fallback must be pre-frozen and tail-validated.
+F5 Count tail restoration energy in served denominator: FORBIDDEN; would merely move the free-energy exploit outside H.
+F6 Count state tail settlement AND RV_H inventory credit: FORBIDDEN DOUBLE COUNT.
+F7 Candidate selects its own hydrological end target after results: FORBIDDEN.
+F8 Settlement cannot physically restore target within K_MAX: NOT_VERIFIED/FAIL, never silently truncate.
+F9 New asset starts nonzero in a noncyclic run with no provenance/closure: FAIL.
+F10 Reservoir uses water while ignoring co-obligations: FAIL/UNKNOWN until those resource constraints are represented.
+
+RECONCILIATION WITH C3:
+- P1/P2/P3/P5 remain valid instantaneous ledgers.
+- P4 remains valid local state dynamics.
+- C3 reviewer defect is repaired at HORIZON boundary, not by inserting SOC terms into P1.
+- Unserved and curtailment remain outside physical P1.
+- Storage conversion losses remain inside P4 and must not be separately charged as purchased energy.
+- R_STAR chronology now must carry state across all stress periods without unauthorized resets.
+- FSRC_ND now owns causal prelude/settlement resource costs; FINPV common discount/terminal conventions remain an upstream dependency.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-040C3REV-P1-001 INITIAL_TERMINAL_STATE_GAP: REPAIR_SUBMITTED / AWAITING_INDEPENDENT_REVIEW.
+LEDGER-P1/P2/P3/P5: prior independent pass unchanged.
+LEDGER-P4: local equation supported; horizon boundary now STATEBOUND-S0..S6.
+COMMON_LEDGER: still NOT_VERIFIED until STATEBOUND-C5 and FINPV/accounting dependencies pass.
+ALL candidate cost rankings depending on common ledger: REMAIN REOPEN / NOT_VERIFIED.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
+TITLE: Independent review of intertemporal state-boundary repair
+ROLE: Independent chronological inventory/accounting reviewer / adversarial replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do STATEBOUND-S0..S6 prevent free pre-horizon inventory, unpaid terminal depletion, and terminal-credit gaming without invalidly forcing seasonal/noncyclic stocks to equal their initial state?
+CANDIDATE: COMMON ACCOUNTING / RELIABILITY FRAMEWORK
+DEPENDENCIES: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006 submitted.
+REQUIRED_INPUTS: STATEBOUND-S0..S6; TE-EGC-040STATE-001..003; CALC-EGC-040STATE-001..002; C3/C3REV equations.
+REQUIRED_TOOLS: independent source retrieval; independent symbolic/numerical implementation; chronological battery and reservoir counterexamples; PV/double-count audit.
+REQUIRED_EVIDENCE:
+- independently reproduce summed P4 boundary term;
+- free-initial-SOC exploit must fail;
+- cyclic storage must close with zero settlement;
+- seasonal reservoir must permit a non-equal evidence-based target;
+- brownfield stock depletion must not be free;
+- try terminal-overcharge/salvage arbitrage;
+- verify tail energy cannot enter core served denominator;
+- test one additional non-battery stateful system if feasible.
+EXPECTED_OUTPUT: PASS / REVIEW_FAILED with exact defects and any repair jobs.
+FALSIFICATION_CONDITION: fail if any candidate can improve delivered service or primary cost by unmatched initial/terminal inventory, arbitrary endpoint valuation, candidate-specific state target, or double-counted state residual.
+REVIEWER_JOB_ID: NONE
+STATUS: OPEN
+BLOCKERS: NONE for independent review; final candidate ranking remains blocked by broader common-ledger/R_STAR/objective/system-model reviews.
+NEXT_ACTION: distinct session independently reproduce and attack.
