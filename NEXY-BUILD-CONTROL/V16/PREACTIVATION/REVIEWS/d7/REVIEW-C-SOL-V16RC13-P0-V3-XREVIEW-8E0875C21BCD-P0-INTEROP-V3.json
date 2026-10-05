@@ -1,0 +1,82 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_REVIEW_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REVIEW_ID": "REVIEW-C-SOL-V16RC13-P0-V3-XREVIEW-8E0875C21BCD-P0-INTEROP-V3",
+  "REVIEWER_CHAT_ID": "C-SOL-V16RC13-P0-V3-XREVIEW-8E0875C21BCD",
+  "REVIEW_KIND": "INDEPENDENT_FINDING_UNIVERSE_V3_AND_P0_INTEROP_REVIEW",
+  "CLAIM_ID": "CLAIM-C-SOL-V16RC13-P0-V3-XREVIEW-8E0875C21BCD-P0-INTEROP-V3-XREVIEW",
+  "MEMBERSHIP_ID": "PRE-4e386679ac611fb62ff0ca0fd8718bef",
+  "PINNED_CONTROL_BASE_COMMIT_SHA": "6ef3d01b0f0b6c867b9c4f5172785efc9dcab784",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "BOOTSTRAP_STATE_OBSERVED": "BLOCKED",
+  "CANDIDATE_OWNER_CHAT_ID": "C-SOL-20261005-1818Z-V16RC13-P0-INTEROP-4B508E13FA35",
+  "PINNED_CANDIDATE_BRANCH": "control/v16rc13-p0-interop-v3-C-SOL-1818-4B508E13FA35",
+  "PINNED_CANDIDATE_COMMIT_SHA": "8cfc5084798c55fb00b76e4804dcc4268f62ee5f",
+  "PINNED_CANDIDATE_TREE_SHA": "63e0440898e703cc3e4c1ab144ef85fa3a96d945",
+  "REVIEWED_ARTIFACTS": [
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V3.json",
+      "blob_sha": "1544af03e05eb4350b751c8f001216d85ba49001",
+      "schema_version": "NEXY_V16_RC1_3_CANONICAL_FINDING_UNIVERSE_CONTRACT_V3"
+    }
+  ],
+  "SOURCE_REVIEW_ID": "REVIEW-C-SOL-V16RC13-XAUDIT-6D8F31A2-FINDING-UNIVERSE-V2-INTEROP",
+  "PRIOR_BLOCKER_DISPOSITION": {
+    "XR1_PROJECTION_V2_HARDCODES_UNIVERSE_V1": "NOT_YET_REPAIRED_AT_PINNED_CANDIDATE_HEAD. No CONTROL_P0_PROJECTION_V3 artifact exists in the three-file candidate diff, so a projection cannot yet bind Universe V3.",
+    "XR2_V2_CROSS_SCHEMA_ADAPTER_UNDEFINED": "PARTIALLY_REPAIRED. PROJECTION_ADAPTER_V3 now gives exact field mapping, but its failure state is referenced without a defined output/status schema.",
+    "XR3_UNIVERSE_V2_HASH_COMPONENT_ROW_SCHEMAS_UNDEFINED": "MATERIALLY_REPAIRED_FOR_LISTED_ROOT_COMPONENTS. Exact row fields/types/sorts are now defined, subject to new determinism gaps below.",
+    "XR4_EXTERNAL_SWEEP_NONDEFINITION_DISPOSITION_UNDEFINED": "REPAIRED_IN_CANDIDATE. An explicit disposition algorithm and non-finding identity key set are present.",
+    "XR5_DEDUP_PARENT_CONTROL_CLASS_UNCONSTRAINED": "NOT_YET_REPAIRED_AT_PINNED_CANDIDATE_HEAD. This belongs to the missing Projection V3 artifact."
+  },
+  "POSITIVE_OBSERVATIONS": [
+    "Snapshot binding remains fail-closed and explicitly pins control commit/tree identities.",
+    "External-sweep candidate rows now have exact fields/types and deterministic disposition categories.",
+    "Root components now bind explicit row schemas and validation-summary fields.",
+    "Universe-to-projection raw field mapping is explicit and does not derive semantic control relevance."
+  ],
+  "BLOCKING_REVIEW_FINDINGS": [
+    {
+      "id": "V3R1_PROJECTION_V3_MISSING",
+      "severity": "P0_CONTROL",
+      "evidence": "Candidate branch diff at pinned commit contains only claim, membership, and CANONICAL_FINDING_UNIVERSE_CONTRACT_V3.json; no CONTROL_P0_PROJECTION_V3 artifact is present.",
+      "impact": "The repair claim cannot close XR1 or XR5, and no accepted projection can bind the V3 universe/root. OPEN_CONTROL_P0_COUNT zero remains unprovable through this candidate."
+    },
+    {
+      "id": "V3R2_ADAPTER_STATUS_SCHEMA_UNDEFINED",
+      "severity": "P0_CONTROL",
+      "evidence": "PROJECTION_ADAPTER_V3 DERIVATION_RULES state that failures make adapter_status=FAIL_CLOSED, but OUTPUT_EXACT_FIELDS contains only finding_id/finding_path/finding_blob_sha/type_raw/severity_raw/status_raw and no adapter_status field, enum, or result object schema.",
+      "impact": "Independent consumers can represent or propagate adapter failure differently; a row rejected by one implementation can be silently omitted or represented differently by another."
+    },
+    {
+      "id": "V3R3_AUTHORITY_REFERENCE_PATH_ENCODING_UNDEFINED",
+      "severity": "P0_CONTROL",
+      "evidence": "NORMALIZED_FINDING_ROW_SCHEMA hashes AUTHORITY_REFERENCE_PATHS as sorted canonical strings, while AUTHORITY_REFERENCE_ROW_SCHEMA separately defines authority_path and json_pointer; the contract never defines the exact string construction/escaping for AUTHORITY_REFERENCE_PATHS.",
+      "impact": "Two implementations can discover the same authority references yet serialize different normalized_finding_rows, producing different COMPLETE_FINDING_MANIFEST_ROOT_HASH values."
+    },
+    {
+      "id": "V3R4_PRIMARY_SOURCE_CLASSIFICATION_ALGORITHM_INCOMPLETE",
+      "severity": "P0_CONTROL",
+      "evidence": "PRIMARY_SOURCE_ACCOUNTING defines classes and row fields but no exact transition algorithm from media type/parse outcome/FINDING_ID presence/INFRA_BASENAMES to source_class and parse_status.",
+      "impact": "For the same primary-root blob lacking a valid FINDING_ID, generators can choose PARSE_ERROR versus UNSUPPORTED_CANDIDATE or disagree on parse_status. Both may fail completeness, but the canonical manifest/root is not deterministic."
+    },
+    {
+      "id": "V3R5_RAW_FIELD_TYPE_MISMATCH_SEMANTICS_UNDEFINED",
+      "severity": "P0_CONTROL",
+      "evidence": "RAW_EXTRACTION says exact top-level TYPE/SEVERITY/STATUS 'or null', while NORMALIZED_FINDING_ROW_SCHEMA requires JSON string or null. The contract does not state whether a present non-string value becomes null, PARSE_ERROR, RAW_FIELD_CONFLICT, or another failure.",
+      "impact": "Malformed authoritative raw fields can produce different normalized rows and different downstream P0 classification behavior across implementations."
+    }
+  ],
+  "REQUIRED_REPAIR": [
+    "Publish and independently review CONTROL_P0_PROJECTION_V3 binding the exact accepted Universe V3 contract blob/root; enforce XR5 parent=P0+CONTROL_BLOCKER consistency in the same pinned universe.",
+    "Define a complete PROJECTION_ADAPTER_V3 result schema including adapter_status enum and fail-closed propagation; do not permit failure by row omission.",
+    "Define the exact canonical encoding of AUTHORITY_REFERENCE_PATHS from authority_path + RFC6901 json_pointer (including delimiter/escaping) or replace the string array with exact structured objects.",
+    "Define the primary-root source classification algorithm for every media/parse/identity case and its exact parse_status.",
+    "Define present-but-non-string raw TYPE/SEVERITY/STATUS handling as an explicit blocking parse/type error or another single deterministic fail-closed rule."
+  ],
+  "REVIEW_VERDICT": "CHANGES_REQUIRED_BEFORE_CANONICAL_ADOPTION",
+  "OPEN_CONTROL_P0_ZERO_PROVABLE": false,
+  "CONTROL_P0_SET_ROOT_HASH_ACCEPTABLE": false,
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
