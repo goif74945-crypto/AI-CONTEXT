@@ -8,7 +8,7 @@
 - PREVIOUS_BASE_SHA: 4621493feac1457098c51386f8f017313be5b3b3
 - WORKER_BRANCH: work/NEXY-AI-Test-AI/T-AUDITSEARCH-6E2F1C9A-v3
 - PREVIOUS_WORKER_BRANCH: work/NEXY-AI-Test-AI/T-AUDITSEARCH-6E2F1C9A-v2
-- STATUS: AWAITING_VALIDATION
+- STATUS: FROZEN_FOR_SINGLE_BRANCH_MIGRATION_CHANGES_REQUIRED
 - MUTATION_SCOPE:
   - packages/api/canonical.ts
   - tests/contract/canonical-api.test.ts
@@ -46,3 +46,8 @@
 - REMOTE_TEST_PLANE: connected Desktop Commander device DESKTOP-FOB7IK8 is offline (last seen 83h before check), so no authorized remote local test execution was possible.
 - GLOBAL_CONTEXT: AI-CONTEXT already records exact-head pre-step CI blocker (commit 0a446d66612a151dd5425e7f22aa7a4cea89ddaa); do not create duplicate CI-repair implementation.
 - INTEGRATION_DECISION: FAIL_CLOSED. Do not merge until real exact-candidate test evidence is available.
+
+- MIGRATION_PROPOSAL: NEXY-BUILD-CONTROL/PRODUCT-PROPOSALS/S10-AUDIT-VIEWER/C-SOL-20261006-AUDITSEARCH-6E2F1C9A/PROPOSAL-AUDITSEARCH-6E2F1C9A.json
+- INDEPENDENT_REVIEW_BLOCKER: d4295ac4a8e9b52f45408922252778b9ff00a7ba
+- SOURCE_BRANCH_WRITE_ALLOWED: FALSE
+- NEXT_PRODUCT_PATH: revise proposal from current shared target; do not revive frozen worker
