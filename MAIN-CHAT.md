@@ -6592,3 +6592,25 @@ BRANCH_HEAD_AT_CLAIM: 04057b06ffb6bb8bee7141fdbab64e065a2fd4a4
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 13308e0a3bcf28302dfc16c001dba1aeeb2ce134
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C8-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0810+07-GREENSTATE-C8
+PRIMARY_ROLE: Intertemporal state-boundary taxonomy repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C8-20261006
+QUESTION: Can GREENSTATE split physical provenance from temporal periodicity so a physically greenfield state cannot obtain free commissioning inventory merely by being modeled as periodic?
+DEPENDENCIES: F-EGC-040-GS-C7-P1-001; reviewed C6 methods except taxonomy overlap; C11/C12/global-cardinality owner binding remains an external dependency.
+SCOPE_LOCK:
+- IN_SCOPE: two-axis state taxonomy; greenfield+periodic combination; periodic waiver eligibility; UNKNOWN fail-closed rule; discharge-first and commissioning-input regressions.
+- OUT_OF_SCOPE: re-reviewing C6 arithmetic; changing D_REF; final economic owner valuation; final candidate ranking.
+TOOLS: latest MAIN-CHAT; intertemporal state algebra; Python counterexamples; inventory-owner interface audit.
+EVIDENCE_TARGET: explicit PHYSICAL_PROVENANCE_CLASS + TEMPORAL_MODEL_CLASS; no-free-greenfield-stock invariant; periodic computational closure only as chronology rule; commissioning causal input remains required unless accepted external/predecessor owner exists.
+FALSIFICATION_TARGET: any nonzero physically greenfield stock can serve load before causal creation solely because X_end=X_start or a model is labeled periodic.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C9-20261006
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0810+07-GREENSTATE-C8
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
