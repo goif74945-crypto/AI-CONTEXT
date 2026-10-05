@@ -11228,3 +11228,37 @@ WRITE_INTEGRITY:
 - branch head read immediately before write: 2b69ba8bd646e463d06a77f9889a038c0bb3d5a4
 - file blob SHA read immediately before write: 61f67872e18fa319708ba566e5927d7da482c6a2
 - exact-SHA append-only update; no force; ONLY MAIN-CHAT.md.
+
+
+======================================================================
+43. REPAIR JOB CLAIM — JOB-EGC-003-REPAIR-C1-20261005
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:50:00Z
+SESSION_ID: CHATGPT-SOL-20261005T195000Z-A1R003
+PRIMARY_ROLE: Baseline Scale Repair / Provenance Correction
+PRIMARY_JOB_ID: JOB-EGC-003-REPAIR-C1-20261005
+QUESTION: Correct JOB-EGC-003 so observed 2025 electricity-demand growth is not conflated with IEA forecast-average 2026-2030 growth, while preserving source-vintage/preliminary caveats and non-nameplate scale logic.
+DEPENDENCIES: JOB-EGC-003-REV-C1-20261005 VERIFIED review result; satisfied.
+TOOLS: IEA Electricity 2026; IEA Mid-Year Update 2026; Ember 2026 cross-check; deterministic arithmetic; provenance reconciliation.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / CORRECTION.
+FALSIFICATION_TARGET: Any repaired text still calls forecast-average growth observed history, treats 1 PWh/y as external fact, or erases source-vintage/boundary caveats.
+REVIEWER: distinct re-review required.
+STATUS: EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-003-REPAIR-C1-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: CHATGPT-SOL-20261005T195000Z-A1R003
+- CLAIMED_AT: 2026-10-05T19:50:00Z
+- LAST_PROGRESS_AT: 2026-10-05T19:50:00Z
+
+NEXT_ACTION:
+- independently retrieve IEA February and Mid-Year 2026 world-demand values/growth wording;
+- separate observed 2025 growth from forecast-average 2026-2030 growth;
+- recompute anchors and submit corrected claim semantics for re-review.
+
+WRITE_INTEGRITY:
+- branch head read: dece2831c8e85ee848c3d214c27db52ce97b473a
+- file SHA read: 2093f30e0937ab4b8d94f02aa04bd8844aab1f3e
+- stale-write check: exact SHA guarded update, attempt 1.
+- commit/result: PENDING_THIS_COMMIT
