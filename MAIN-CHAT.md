@@ -719,3 +719,29 @@ NEXT_ACTION: distinct repair session applies the exact fixes above, then an inde
 
 NEXT_HIGHEST_VALUE_ACTION:
 Do not promote a cost winner. Repair P1 terminal/finance accounting defects while R_STAR, objective formalization and baseline-frontier jobs continue independently.
+
+
+======================================================================
+54. SESSION CLAIM — JOB-EGC-047-EROI-LCA-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0320+07-EROI1
+PRIMARY_ROLE: Net-Energy / EROI / Lifecycle Evidence Analyst + Boundary Red-Team
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LCA-C1-20261006
+TITLE: Candidate-neutral lifecycle net-energy and EROI validation gate
+QUESTION: Do leading energy candidates still deliver strongly positive net lifecycle energy after construction, fuel-cycle, replacement, storage/grid integration and decommissioning burdens are counted on a common boundary, and can plausible lifecycle uncertainty reverse the candidate ordering?
+CANDIDATE: solar PV; onshore/offshore wind; hydropower; geothermal; nuclear fission; storage-coupled/hybrid portfolios; emerging candidates only where measured or defensible lifecycle inputs exist.
+DEPENDENCIES: common-ledger repair remains REVIEW_FAILED/REPAIR_REQUIRED; R_STAR, objective, baseline, finance, grid/storage, resource and safety work are concurrently owned. This job may establish lifecycle equations and source-grounded EROI/payback ranges but MUST NOT declare a global winner.
+REQUIRED_INPUTS: lifecycle energy inputs or harmonized LCA/EROI evidence; capacity factor/availability; technical life; replacement/repowering; fuel-cycle energy; storage/transmission additions where system-dependent; decommissioning/end-of-life; net delivered energy.
+REQUIRED_TOOLS: current official/national-lab/peer-reviewed evidence retrieval; executed dimensional calculations; sensitivity/uncertainty analysis; boundary-normalization audit; independent cross-source comparison.
+REQUIRED_EVIDENCE: source/date/technology/geography/system boundary; operational-vs-modeled distinction; numerator/denominator definitions; primary-energy vs electricity-equivalent convention; no mixing of incompatible EROI definitions; explicit UNKNOWN when harmonization is impossible.
+EXPECTED_OUTPUT: common lifecycle net-energy equations; evidence ledger; energy-payback/EROI screen; boundary sensitivity; red-team findings; independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if gross generation is substituted for net delivered energy, embodied/fuel-cycle/storage/grid energy is omitted asymmetrically, primary-energy accounting conventions are mixed, lifetime/capacity-factor assumptions are candidate-privileged, or ranking changes under plausible harmonized boundary uncertainty.
+REVIEWER_JOB_ID: JOB-EGC-047-EROI-LCA-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final system-level EROI requires candidate-specific storage/grid/firming and common delivered-service boundary; technology-level lifecycle screening is executable now.
+NEXT_ACTION: retrieve harmonized authoritative/peer-reviewed lifecycle-energy evidence, formalize compatible EROI/payback metrics, run sensitivity and boundary attacks, and submit only source-supported results.
+BRANCH_HEAD_AT_CLAIM: a16db91b8116ddb3393159665ea0c24ee0d06e2b
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: b2a2b8dc3866362fc751ed54f2f794c962347bd8
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
