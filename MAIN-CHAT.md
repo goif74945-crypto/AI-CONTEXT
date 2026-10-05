@@ -7339,3 +7339,23 @@ BRANCH_HEAD_AT_CLAIM: 1aa547dfbeb0582022bf4dfdd14d57af1fb7b7fb
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: bae9439e63b265a1a844cbf8b3176fcb4293914f
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0545+07-FUELREV2
+PRIMARY_ROLE: Independent Nuclear Fuel-Cycle Throughput / Advanced-Fuel Supply Reviewer
+PRIMARY_JOB_ID: JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-062-FUEL-CYCLE-SUPPLY-C1-20261006
+QUESTION: Does F_STAR keep resource stocks, annual flows, licensed/funded future capacity and actually operating delivered fuel distinct across conventional and advanced-fission designs?
+DEPENDENCIES: parent C1 submitted; satisfied.
+TOOLS: latest GitHub; current IAEA/NEA/IEA/NRC/DOE official sources; independent Wolfram arithmetic; reactor-to-fuel mapping and status counterexamples.
+EVIDENCE_TARGET: annual-flow ratio replication; TRISO-X license-vs-throughput; HALEU design specificity; DOE award/funding-vs-operating capacity; conversion/enrichment interpretation; design-specific fuel mapping.
+FALSIFICATION_TARGET: stock/flow conflation, planned or licensed capacity treated as production, HALEU universalized, advanced designs inherit conventional fuel fabrication, or sensitive operational processing guidance introduced.
+REVIEWER: distinct from C1 owner; self-verification forbidden.
+STATUS: EXECUTING
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 1177c84dc989b22ca0958d9e64962652c5aba984
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
