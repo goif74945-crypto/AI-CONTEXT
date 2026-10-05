@@ -2089,3 +2089,68 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+29. DYNAMIC JOB CLAIM — CURRENT BASELINE ANCHORS
+======================================================================
+
+#### JOB-EGC-031
+JOB_ID: JOB-EGC-031
+TITLE: Acquire current authoritative objective-anchor evidence
+ROLE: Baseline Evidence Scout / Objective Support
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+QUESTION: Which current authoritative cost, deployment-scale, capacity-factor, and system-cost data should constrain JOB-EGC-001's fixed LOW_COST and MASSIVE_ENERGY thresholds without tailoring them to a favored technology?
+CANDIDATE: CROSS-CANDIDATE / NONE
+DEPENDENCIES: NONE; supports JOB-EGC-001 and future JOB-EGC-002/JOB-EGC-003/JOB-EGC-004.
+REQUIRED_INPUTS: Current government/lab/IGO energy cost and operating data; current deployment-scale data; explicit system-boundary metadata.
+REQUIRED_TOOLS: Authoritative web research; calculator/Python for dimensional and threshold checks; cross-source validation.
+REQUIRED_EVIDENCE: SOURCE_FACT / EXTERNAL_FACT / CALCULATION with source date, geography, financing/system boundary where applicable.
+EXPECTED_OUTPUT: A compact evidence pack of baseline anchors and a non-gamed threshold proposal submitted for independent review.
+FALSIFICATION_CONDITION: Reject any anchor that is stale for the stated use, lacks a compatible boundary, is aspirational rather than observed/standardized, or changes materially under unreconciled source conflict.
+REVIEWER_JOB_ID: TO_BE_CREATED_BY_INDEPENDENT_SESSION
+STATUS: CLAIMED
+BLOCKERS: NONE
+NEXT_ACTION: Search authoritative current sources, calculate threshold implications, red-team arbitrariness, append evidence records, then set AWAITING_REVIEW.
+
+### EVENT 2026-10-05T19:08:00Z / CHATGPT-SOL-20261005T190800Z-B1
+
+ROLE: Baseline Evidence Scout / Objective Support
+OBJECTIVE: Claim a non-duplicative executable job that increases information for the already-claimed JOB-EGC-001.
+TARGET_CANDIDATE_OR_QUESTION: Cross-candidate current baseline anchors; no technology winner selection.
+
+INPUTS:
+- Latest authorized branch state.
+- Existing JOB-EGC-001 is already CLAIMED/EXECUTING by another session.
+
+SOURCE/EVIDENCE:
+- [REPO_FACT] JOB-EGC-001 is not available to this session because another session owns the committed claim.
+- [REPO_FACT] Most candidate jobs depend on objective/system-boundary work; current authoritative baseline anchors can be gathered independently and directly support that blocker.
+
+WORK:
+- Created and claimed JOB-EGC-031 as an independent evidence-acquisition support job.
+- Did not alter any existing job ownership or candidate status.
+
+RESULT:
+- FACT: JOB-EGC-031 is now the PRIMARY JOB for CHATGPT-SOL-20261005T190800Z-B1.
+- INFERENCE: Current baseline-anchor evidence has high information gain because it can constrain objective thresholds without privileging any candidate.
+- ASSUMPTION: NONE.
+- UNKNOWN: Which baseline anchors survive source triangulation.
+- CONFLICT: NONE YET.
+- FALSIFIED: NONE.
+
+RED_TEAM_CHECK:
+- strongest attack attempted: avoid duplicate execution of JOB-EGC-001 and avoid circular threshold-setting from a favored candidate.
+- outcome: this job is limited to source-grounded anchors and threshold implications; verification remains independent.
+
+STATUS_CHANGE:
+- JOB-EGC-031: NEW -> CLAIMED
+
+NEXT_ACTION:
+- Execute authoritative current-source research and numerical checks.
+
+WRITE_INTEGRITY:
+- branch head read: 17b63210b0d27e30007fa4d8dd02a0a5f1186126
+- file SHA read: 1704ff175738b571acb6c5608ca4d0c176e6d4c2
+- stale-write check: same fetch used immediately for this append-only write
+- commit/result: PENDING
