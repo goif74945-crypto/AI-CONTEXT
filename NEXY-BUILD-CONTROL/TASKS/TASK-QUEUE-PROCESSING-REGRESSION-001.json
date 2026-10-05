@@ -1,0 +1,47 @@
+{
+  "TASK_ID": "TASK-QUEUE-PROCESSING-REGRESSION-001",
+  "REQ_ID": "REQ-DOC-C-4-2-DIRECTIVE-CREATE",
+  "MISSION_ID": "M03-RUNTIME-INTEGRITY",
+  "FINDING_ID": "FINDING-QUEUE-PROCESSING-REGRESSION-001",
+  "GOAL": "Make idempotent directive replay treat an already PROCESSING durable dispatch as delivered/claimed without re-enqueueing or regressing it to ENQUEUED.",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_REPLAY_STATE_INTEGRITY",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "HOTSPOT_WITH": [
+    "TASK-QUEUE-FAILED-STATE-CAS-001",
+    "TASK-DOC-C4-DIRECTIVE-IDEMPOTENCY-RACE-001"
+  ],
+  "SCOPE": [
+    "packages/queue/dispatch.ts",
+    "packages/api/directives.ts only if replay caller semantics need adjustment",
+    "tests/coverage/directive-create-branches.test.ts",
+    "new focused durable dispatch lifecycle test"
+  ],
+  "REQUIRED_BEHAVIOR": [
+    "PROCESSING is an idempotent already-delivered/claimed state for dispatch replay and must not transition backward to ENQUEUED.",
+    "Replay must not add/retry the BullMQ job when it is already active.",
+    "Worker completion must still transition PROCESSING -> COMPLETED exactly once.",
+    "Legitimate PENDING/ENQUEUED delivery and explicit FAILED retry semantics remain intact.",
+    "Repair must be reconciled with queue CAS and authorized-retry sequencing tasks."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not introduce a generic backward transition to ENQUEUED.",
+    "Do not hide a truly FAILED or missing dispatch as PROCESSING success.",
+    "Do not mutate NEXY.ai or direct integration head while worker branch isolation is blocked."
+  ],
+  "ACCEPTANCE": [
+    "Test sets durable row PROCESSING, performs same-key API replay, and proves row remains PROCESSING.",
+    "Test proves no BullMQ add/retry occurs for PROCESSING replay.",
+    "Worker completion after replay writes COMPLETED successfully.",
+    "Repeated replay remains idempotent without incrementing attempts.",
+    "Existing queue retry/cancellation/directive replay tests remain green.",
+    "Independent exact-SHA review completes after integration."
+  ],
+  "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker branch namespace or explicitly authorizes an equivalent isolation mechanism."
+}
