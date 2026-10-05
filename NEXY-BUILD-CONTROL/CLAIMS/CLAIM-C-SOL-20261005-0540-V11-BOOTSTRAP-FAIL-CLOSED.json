@@ -1,0 +1,17 @@
+{
+  "TASK_ID": "T-V11-BOOTSTRAP-FAIL-CLOSED-001",
+  "SCOPE": "bootstrap process-local fail-closed quarantine only",
+  "OWNER_CHAT": "C-SOL-20261005-0540-V11",
+  "SPEC_EPOCH": "EPOCH-20261005-b35ee1bf-608426cb",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "CONTROL_HEAD": "2ffffda92252158b899c02db4fbb40e43fd09ce8",
+  "LEASE_ID": "LEASE-T-V11-BOOTSTRAP-FAIL-CLOSED-001",
+  "LEASE_EPOCH": 1,
+  "CLAIM_SEQUENCE": "C-SOL-20261005-0540-V11/1",
+  "TARGET_PATHS": [
+    "packages/api/bootstrap.ts",
+    "packages/orch-core/system-state.ts",
+    "tests/coverage/bootstrap-control-plane.test.ts"
+  ],
+  "STATUS": "CLAIMED"
+}
