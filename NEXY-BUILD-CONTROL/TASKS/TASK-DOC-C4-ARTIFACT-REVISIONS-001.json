@@ -5,7 +5,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-4-2-ARTIFACT-REVISIONS",
   "FINDING_ID": "FINDING-DOC-C4-ARTIFACT-REVISIONS-001",
-  "STATUS": "IN_PROGRESS_TEST_ORACLE_ONLY",
+  "STATUS": "INTEGRATED_PENDING_EXACT_HEAD_VERIFICATION",
   "PRIORITY": "P1",
   "RISK": "MEDIUM",
   "BASE_SHA": "0ab98252c4b8ff4a5aca269a70acb7bb4191873a",
@@ -27,10 +27,22 @@
     "Exact candidate SHA tests and independent review required before VERIFIED."
   ],
   "BLOCKER": null,
-  "NEXT_ACTION": "Harden canonical revision contract assertions to exact data/item shapes on the fresh integration head; do not duplicate the already-integrated runtime repair. Validate syntax and execute dynamic route regression locally; integration remains gated on runnable repository CI/test evidence.",
+  "NEXT_ACTION": "Re-read GitHub Actions run 37360614328. Mark VERIFIED only if required exact-head checks pass on integrated SHA a5144ff2911978d963b82a74f5794257c26060de; if Actions again fails before steps, keep verification blocked and do not fabricate a pass.",
   "EXPECTED_PARENT_SHA": "0ab98252c4b8ff4a5aca269a70acb7bb4191873a",
   "ACTUAL_WORKER_BRANCH": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-ARTIFACT-REVISIONS-ORACLE",
   "UNBLOCKED_BY": "Current user instruction requires isolated worker branches; using a Git-valid equivalent namespace because refs/heads/NEXY.AI-Test-AI cannot also be a directory.",
   "RUNTIME_REPAIR_OBSERVED_AT": "0ab98252c4b8ff4a5aca269a70acb7bb4191873a",
-  "RUNTIME_REPAIR_SOURCE_BLOB": "c5bf139e16c88f6f129d574c997d3d2f6ebaeeb2"
+  "RUNTIME_REPAIR_SOURCE_BLOB": "c5bf139e16c88f6f129d574c997d3d2f6ebaeeb2",
+  "INTEGRATED_SHA": "a5144ff2911978d963b82a74f5794257c26060de",
+  "INTEGRATED_PR": 54,
+  "INTEGRATED_SOURCE_BLOB": "61728ee97e7722f22ee7c06458d249969c55e867",
+  "INTEGRATED_TEST_BLOB": "7af11b7d17eb213fb6ccfaecd57f4b311b91569c",
+  "TEST_EVIDENCE": {
+    "local_typescript_assertion_syntax": "PASS",
+    "local_dynamic_projection_regression": "PASS",
+    "github_exact_head_run_id": 37360614328,
+    "github_exact_head_status": "QUEUED_AT_LAST_OBSERVATION",
+    "github_six_system_run_id": 37360614259,
+    "github_six_system_status": "FAILURE_BEFORE_STEPS_OBSERVED"
+  }
 }
