@@ -1,11 +1,11 @@
 {
   "TASK_ID": "TASK-DOC-C4-READ-AUDIT-ACTOR-BINDING-001",
   "CREATOR_CHAT": "C-GPT56SOL-20261005-1923-V8",
-  "OWNER_CHAT": "UNASSIGNED",
+  "OWNER_CHAT": "C-SOL-20261006-0159-AUDIT-01",
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-READ-AUDIT-ACTOR-IDENTITY",
   "FINDING_ID": "FIND-DOC-C4-READ-AUDIT-ACTOR-ROLE-COLLAPSE-001",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "BLOCKED_TEST_RUNNER",
   "PRIORITY": "P1",
   "RISK": "HIGH",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -31,5 +31,10 @@
     "Exact candidate SHA tests and independent review required."
   ],
   "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "After worker branch namespace becomes Git-valid, refresh integration HEAD and implement the smallest principal/role separation repair on an isolated worker branch."
+  "NEXT_ACTION": "When a real Actions runner is assigned, execute focused canonical read audit tests plus backend typecheck; then refresh integration HEAD, review diff, and integrate only on passing evidence.",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C4-READ-AUDIT-ACTOR-BINDING-001/C-SOL-20261006-0159-AUDIT-01",
+  "PR_NUMBER": 73,
+  "IMPLEMENTATION_HEAD": "d46804ff8cc9e92b7d60a5ef6845209dacfcf0c5",
+  "LEGACY_BLOCKER_SUPERSEDED": "INC-BRANCH-NAMESPACE-001 superseded by current user authorization for Git-valid isolated worker branches.",
+  "CURRENT_BLOCKER": "SHARED_GITHUB_ACTIONS_RUNNER_OUTAGE"
 }
