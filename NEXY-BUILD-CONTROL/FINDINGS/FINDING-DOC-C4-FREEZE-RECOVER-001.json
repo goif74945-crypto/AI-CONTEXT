@@ -5,7 +5,7 @@
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "TYPE": "CANONICAL_ERROR_MATRIX_DRIFT",
   "SEVERITY": "P1",
-  "STATUS": "REPRODUCED_BLOCKED",
+  "STATUS": "DUPLICATE_JOINED",
   "OBSERVED": [
     "packages/api/directives.ts emits 404 FREEZE_RECOVERY_DENIED for missing/unowned incident.",
     "The same handler emits 423 FREEZE_RECOVERY_DENIED for runtime/durable state outside the recovery precondition.",
@@ -20,5 +20,9 @@
     "TEST_ORACLE_DEFECT"
   ],
   "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "SOURCE_REQUIREMENT": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-4-2-FREEZE-RECOVER.json"
+  "SOURCE_REQUIREMENT": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-4-2-FREEZE-RECOVER.json",
+  "ACTIVE": false,
+  "DUPLICATE_OF": "FINDING-DOC-C4-FREEZE-RECOVER-ERROR-MATRIX-001",
+  "CANONICAL_TASK": "TASK-DOC-C4-FREEZE-RECOVER-ERROR-MATRIX-001",
+  "RECONCILIATION_NOTE": "Independent evidence for the same freeze-recovery error-surface defect; retain as corroboration only."
 }
