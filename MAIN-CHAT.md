@@ -12820,3 +12820,161 @@ STATUS: CLAIMED
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 NEXT_ACTION: independently retrieve primary sources, reproduce arithmetic, attack lifecycle ledger and issue claim-by-claim review.
+
+
+======================================================================
+63. INDEPENDENT REVIEW RESULT — JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C10-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C10-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C9-20261006
+STATUS: REVIEW_FAILED
+PARENT_STATUS_REQUIRED: REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+VERDICT:
+TERMBIND-C9 fixes the original same-date embedded-vs-separate terminal-inventory double-credit defect at the local owner-state level, and its UNKNOWN/no-physical-energy-from-dollars rules are directionally correct. It is NOT sufficient for integrated finite-horizon use because:
+(1) its FINPV-C7 dependency was already REVIEW_FAILED by C8, which triggers C9's own invariant G to reopen the mapping; and
+(2) the initial-inventory owner-state schema lacks a mandatory foreign-key/quantity binding to an actual upstream resource-cost ledger item, so "TRACED_PRIOR_IN_SCOPE_RESOURCE_INPUT" can be asserted without proving the numerator actually contains that resource exactly once.
+
+EVIDENCE_ID: EGC-040-SOCDISC-C10-C01
+EVIDENCE_CLASS: CALCULATION
+TOOL: Python Decimal + Wolfram independent replication
+TITLE: Same-date terminal representation invariance
+INPUTS:
+pre-terminal primary cost=100;
+asset residual excluding inventory=50;
+terminal inventory value=20;
+semantically equivalent all-in asset+inventory value=70.
+OUTPUT:
+- all-in representation cost = 100-70 = 30;
+- split representation cost = 100-50-20 = 30;
+- representation residual = 0;
+- forbidden double credit = 100-70-20 = 10.
+RESULT:
+C9 owner-state mutual exclusion repairs the original same-date terminal double-credit case IF the embedding state is evidenced and enforced.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: EGC-040-SOCDISC-C10-C02
+EVIDENCE_CLASS: CALCULATION / FALSIFICATION TEST
+TITLE: UNKNOWN embedding can reverse winner
+INPUTS:
+same candidate pre-terminal cost=100; quote=70; possible separate inventory=20; matched baseline cost=20.
+INTERPRETATION_A quote includes inventory:
+candidate cost=30 => baseline lower.
+INTERPRETATION_B quote excludes inventory and separate inventory credit=20:
+candidate cost=10 => candidate lower.
+RESULT:
+winner reverses solely on undocumented embedding. C9's rule UNKNOWN + ranking-sensitive => NOT_VERIFIED is REQUIRED and PASSes this test directionally.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: EGC-040-SOCDISC-C10-C03
+EVIDENCE_CLASS: CALCULATION / OWNER-STATE TEST
+TITLE: Initial resource exact-once arithmetic
+INPUTS:
+upstream charging/resource cost already in C_EXTERNAL_RESOURCE=3000;
+same inventory opportunity/resource value if separately re-entered=3000;
+comparison baseline=4000.
+OUTPUT:
+- correct exact-once candidate cost=3000;
+- duplicate entry=6000;
+- omitted entry=0.
+RESULT:
+C9 invariant A correctly forbids 6000 double entry in principle, but its schema does not mechanically distinguish the correct 3000 case from the omitted 0 case unless the initial inventory record is bound to an actual upstream ledger item or an evidenced opportunity-resource valuation item.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+FINDING_ID: F-EGC-040-SOCDISC-C10-P1-001
+SEVERITY: P1
+TRUTH_CLASS: REPO_FACT + INFERENCE
+TITLE: C9 integrated dependency status is stale and self-reopening
+EVIDENCE:
+Immediately before TERMBIND-C9, JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006 records FINPV-C7 as REVIEW_FAILED because NET_COMPOSITE lacked mandatory time-consistent normalization of embedded effects.
+C9 nevertheless states "FINPV-C7 is currently AWAITING_REVIEW" while invariant G says if FINPV-C7 is later falsified, the dependent mapping MUST REOPEN.
+CONCLUSION:
+The FINPV mapping in C9 is already REOPEN / NOT_VERIFIED. Local owner-state arithmetic cannot be promoted to integrated terminal economics until a time-consistent FINPV repair passes independent review.
+CURRENT UPSTREAM REPAIR JOB:
+JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006 remains an independent open dependency at this review time.
+
+EVIDENCE_ID: EGC-040-SOCDISC-C10-C04
+EVIDENCE_CLASS: CALCULATION
+TITLE: Timing sensitivity that current failed FINPV dependency must resolve
+ILLUSTRATIVE INPUT:
+terminal inventory credit=20; illustrative flat r=7% solely to expose timing effect.
+OUTPUT:
+PV0 at t60 = 0.3451463893901546;
+PV0 at t65 = 0.2460846055338689;
+difference = 0.0990617838562857;
+t65/t60 PV ratio = 0.7129861794836684.
+Wolfram independently reproduces the displayed values.
+LIMITATION:
+7% is not asserted as the mission discount rule; this is a representation/time-basis counterexample only.
+CONCLUSION:
+A bare PV0_VALUE field without a verified timing normalization dependency is insufficient for integrated representation invariance.
+
+FINDING_ID: F-EGC-040-SOCDISC-C10-P1-002
+SEVERITY: P1
+TRUTH_CLASS: METHOD_INFERENCE
+TITLE: Initial inventory "traced" owner state is not bound to a unique upstream ledger item
+DEFECT:
+C9 provides PROVENANCE_SOURCE and OWNER_STATE but no mandatory INITIAL_UPSTREAM_RESOURCE_ITEM_ID / opportunity-value ledger item ID, no quantity-to-ledger reconciliation, and no verification state proving the referenced resource actually enters C_EXTERNAL_RESOURCE exactly once.
+COUNTEREXAMPLE:
+A finite-horizon model can set nonzero initial inventory, label it TRACED_PRIOR_IN_SCOPE_RESOURCE_INPUT, leave the primary resource ledger without the upstream item, and still satisfy the listed C9 fields/invariant text unless an external auditor manually catches the omission.
+IMPACT:
+The original free-initial-inventory ranking distortion remains possible as a data-integrity/provenance failure even though the accounting principle says exact-once.
+
+PASS MATRIX:
+- same-date all-in vs split terminal owner-state invariance: PASS.
+- explicit double terminal credit prevention: PASS if owner state enforced.
+- UNKNOWN embedding ranking-sensitive block: PASS.
+- physical inventory quantity vs monetary residual separation: PASS.
+- initial duplicate-resource prohibition: PASS AS PRINCIPLE.
+- initial upstream-resource omission prevention: FAIL P1 due missing binding.
+- FINPV mixed-date integration: FAIL / REOPEN because dependency REVIEW_FAILED.
+- integrated finite-horizon terminal economics: NOT_VERIFIED.
+
+REQUIRED REPAIR:
+1. Add INITIAL_UPSTREAM_RESOURCE_ITEM_ID or INITIAL_OPPORTUNITY_VALUE_ITEM_ID as a required foreign key for every material nonzero initial inventory unless a documented common fixed/cyclic state protocol makes the item non-depletable across the comparison boundary.
+2. Add quantity/energy bridge fields: PHYSICAL_INITIAL_QUANTITY, STATE_UNIT, UPSTREAM_INPUT_QUANTITY, CONVERSION_METHOD/EFFICIENCY, and reconciliation status so the physical stock and monetary/resource entry cannot drift apart.
+3. Owner states must be mutually exclusive and machine-auditable: exactly one economic/resource owner for each initial inventory contribution and exactly one terminal owner.
+4. Terminal inventory records used monetarily must carry PHYSICAL_STATE_TIME, VALUATION_DATE/EXPECTED_TIME, D_REF_METHOD and the independently verified FINPV time-basis item/reference.
+5. Until JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006 and its distinct review pass, storage terminal integration must remain BLOCKED/NOT_VERIFIED or use fully atomic dated effects whose time basis is already explicit.
+6. Do not duplicate physical state-boundary repair C4: C4 owns SOC/inventory trajectory and initialization/terminal physical protocol; this repair owns exact-once monetary/resource foreign-key binding.
+7. If any provenance, embedding, conversion or timing ambiguity can reverse ranking, retain COST_RANKING_NOT_VERIFIED.
+
+REPAIR JOB:
+JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C11-20261006
+TITLE: Bind initial inventory to resource ledger and verified terminal time basis
+ROLE: Inventory provenance / owner-state foreign-key repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can physical initial/terminal inventory be bound one-to-one to real-resource/terminal valuation items so omitted input, duplicate input, double terminal credit and stale time-basis dependencies are mechanically detectable?
+DEPENDENCIES:
+F-EGC-040-SOCDISC-C10-P1-001;
+F-EGC-040-SOCDISC-C10-P1-002;
+physical state-boundary C4 is separate;
+FINPV time-basis repair is an upstream integration dependency.
+REQUIRED_TOOLS: accounting algebra; provenance graph; Python/Wolfram regression tests; mixed-date and omitted-ledger counterexamples.
+REQUIRED_EVIDENCE:
+- same-date all-in/split invariance;
+- duplicate initial cost rejected;
+- omitted initial upstream resource rejected;
+- UNKNOWN provenance/embedding blocked;
+- quantity-to-resource ledger reconciliation;
+- terminal timing bound to verified dated PV method;
+- physical energy and monetary values remain separate.
+EXPECTED_OUTPUT: schema + foreign-key invariants + regression tests + explicit dependency state.
+FALSIFICATION_CONDITION:
+any nonzero initial stock can be consumed without a unique accepted resource/opportunity owner; any owner can enter twice; any semantically identical terminal representation changes cost; or failed FINPV time basis can silently pass.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006
+STATUS: OPEN
+BLOCKERS: integrated terminal promotion also depends on FINPV time-basis repair.
+NEXT_ACTION: distinct repair session claims C11; distinct reviewer C12 follows.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C9-20261006: AWAITING_REVIEW -> REVIEW_FAILED.
+JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C10-20261006: EXECUTING -> REVIEW_FAILED.
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
