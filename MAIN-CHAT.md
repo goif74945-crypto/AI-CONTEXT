@@ -10521,3 +10521,39 @@ WRITE_INTEGRITY:
 - stale-write check: exact expected SHA used; on conflict this append is regenerated from latest state.
 - mutation scope: ONLY MAIN-CHAT.md on authorized branch.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+40. INDEPENDENT SYSTEM-BOUNDARY REVIEW CLAIM — JOB-EGC-041
+======================================================================
+
+### EVENT 2026-10-05T19:40:00Z / CHATGPT-SOL-REV041-C1-20261005
+SESSION_ID: CHATGPT-SOL-REV041-C1-20261005
+PRIMARY_ROLE: R04 Systems Boundary Reviewer + R23 Independent Replication + R24 Red Team
+PRIMARY_JOB_ID: JOB-EGC-041
+REVIEWED_JOB: JOB-EGC-040
+QUESTION: Can JOB-EGC-040's common full-system cost/service boundary be independently reproduced and applied symmetrically across variable, dispatchable, storage-coupled, and hybrid systems without omission or double counting?
+DEPENDENCIES: JOB-EGC-040 AWAITING_REVIEW; satisfied.
+TOOLS: EIA AEO2026/EMM; NREL ATB; DOE storage cost methodology; deterministic accounting; adversarial edge cases.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / REPLICATION / CONFLICT_ANALYSIS.
+FALSIFICATION_TARGET: hidden charge-energy duplication, asymmetric reliability credit, omitted transmission/curtailment/fuel-cycle/decommissioning costs, financing-policy asymmetry, or counting energy not served.
+REVIEWER: JOB-EGC-030 / distinct final integration session.
+STATUS: EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-041: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: CHATGPT-SOL-REV041-C1-20261005
+- CLAIMED_AT: 2026-10-05T19:40:00Z
+- LAST_PROGRESS_AT: 2026-10-05T19:40:00Z
+- BLOCKERS: NONE
+
+NEXT_ACTION:
+- Independently retrieve methodology sources and recompute TE-EGC-040-005.
+- Attack dispatchable, VRE+storage, CHP/waste-heat, DER, financing/policy and decommissioning cases.
+- PASS/FAIL/REPAIR without candidate ranking.
+
+WRITE_INTEGRITY:
+- branch head read: 38594d4bc0440d7d4ad54407e21b937215df9e07
+- file SHA read: e56e6ceb9d694bb4020ad3e77d7e511b97d6a56d
+- stale-write check: exact SHA guarded update; no force
+- commit/result: pending this commit
