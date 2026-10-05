@@ -1,0 +1,37 @@
+{
+  "TASK_ID": "TASK-DOC-C2-3-VNEXT-DEFAULTS-TEST-001",
+  "REQ_ID": "REQ-DOC-C-2-3-VNEXT-DEFAULTS",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "GOAL": "Close the final DOC-C §2.3 verification gap without changing already-correct runtime default values or weakening cookie hardening assertions.",
+  "SCOPE": [
+    "tests/contract/vnext-defaults.test.ts",
+    "packages/api/vnext-config.ts comments only if needed to separate canonical defaults from implementation-only extensions"
+  ],
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "PRIORITY": "P1",
+  "RISK": "LOW",
+  "STATUS": "BLOCKED",
+  "OWNER": "UNASSIGNED",
+  "BLOCKERS": ["INC-BRANCH-NAMESPACE-001"],
+  "FACTS": [
+    "Final DOC-C paragraphs 9910-9949 define the complete canonical defaults.",
+    "packages/api/vnext-config.ts blob a3141a649be7e40ec79f417f53bba9b73081232b contains every required DOC-C §2.3 value with the correct value.",
+    "tests/contract/vnext-defaults.test.ts blob 9853215fa86392662aa602d095138a7c6b46c2fd omits assertions for consensus_timeout_ms=10000 and emit_timeout_ms=5000.",
+    "The same test cites DOC-C §8.7 for __Host- cookie prefixes, but final DOC-C ends at §5.6; keep the hardening assertion but remove the false build-authority attribution."
+  ],
+  "ACCEPTANCE": [
+    "Add exact assertions for pipeline.consensus_timeout_ms=10000 and pipeline.emit_timeout_ms=5000.",
+    "Preserve every existing final DOC-C §2.3 value assertion.",
+    "Preserve __Host- cookie security assertions but label them as implementation/security hardening unless separate active authority is proven.",
+    "Do not change VNEXT_DEFAULTS runtime values.",
+    "Execute focused contract test and broader required contract gate on exact candidate SHA after the global branch blocker is resolved."
+  ],
+  "EVIDENCE_TARGET": [
+    "primary DOCX paragraphs 9910-9949",
+    "focused executed test",
+    "contract suite exact-SHA evidence",
+    "diff review"
+  ],
+  "CREATED_BY": "CHAT-20261005-1713-GPT56SOL-CONTRACT-AUDIT",
+  "UNBLOCK_CONDITION": "Resolve INC-BRANCH-NAMESPACE-001 with an authoritative Git-valid worker namespace."
+}
