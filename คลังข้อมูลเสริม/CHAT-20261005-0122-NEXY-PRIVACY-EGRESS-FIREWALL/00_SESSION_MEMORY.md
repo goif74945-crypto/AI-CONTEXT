@@ -1,6 +1,6 @@
 # Temporary Execution Memory — NEXY Purpose-Bound Privacy & Context Egress Firewall Lab
 
-Status: WAVE_07_LOCAL_VERIFIED_PENDING_REMOTE_READBACK
+Status: WAVE_07_VERIFIED_E0_E1_E2_LONG_HORIZON_ACTIVE
 Truth class: REPO_TASK_RECORD
 Durable chat code: CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL
 Platform-native ChatGPT conversation ID: UNKNOWN_NOT_EXPOSED
@@ -183,7 +183,7 @@ Execute the next `PLANNED` non-overlapping wave from `09_LONG_HORIZON_EXECUTION_
 ### Verification boundary
 E0/E1/E2 reference-prototype claims are PASS for Wave 01. E3/E4/E5/E6, NEXY.AI runtime integration, production privacy/security, and legal compliance remain NOT_VERIFIED.
 
-## Wave 07 local checkpoint — 2026-10-05
+## Wave 07 verified checkpoint — 2026-10-05
 
 ### Authority and concurrency refresh
 
@@ -209,10 +209,16 @@ Implemented an AI-PROPOSED / NON-GOVERNING `ConsentBundleGrant` with exact reque
 - Static compile, fixture JSON parse, evidence JSON parse before update, and `git diff --check`: PASS.
 - Candidate source/test/tool blob bindings are in `10_VALIDATION_REPORT.md` and `evidence/release_evidence.json`.
 
+### Publication and read-back
+
+- Atomic implementation/evidence commit: `b55246d4307263d80d82a35786e9df410fc29d6d`.
+- The first two non-force ref-update attempts lost benign races to concurrent main movement; target-path diffs were empty, so the candidate was rebased by tree construction and retried without overwriting sibling work.
+- All 13 Wave 07 changed files were fetched from the exact commit and compared byte-for-byte with the tested local candidate: 13/13 exact matches.
+
 ### Resume instruction
 
-This checkpoint is local-verified but not yet remote-read-back verified. Publish the mission-folder-only candidate atomically against a freshly checked main head, re-read every changed blob, compare hashes, then seal `10_VALIDATION_REPORT.md`, `evidence/release_evidence.json`, and this file with the commit/read-back evidence. Do not execute another wave in the same run.
+Do not re-execute Wave 07. On the next run, re-read current authority and refresh sibling ownership, then select the next `PLANNED` wave from `09_LONG_HORIZON_EXECUTION_PLAN.md`. Execute exactly one wave and preserve the same overlap/TDD/evidence discipline.
 
 ### Claim boundary
 
-Wave 07 currently has local E1/E2 reference-prototype evidence only. Remote E0 remains pending. E3/E4/E5/E6, NEXY.AI integration, issuer authentication, human comprehension, legal consent/compliance, and production privacy/security remain NOT_VERIFIED.
+Wave 07 has E0 exact-commit read-back plus E1/E2 reference-prototype evidence. E3/E4/E5/E6, NEXY.AI integration, issuer authentication, human comprehension, legal consent/compliance, and production privacy/security remain NOT_VERIFIED.

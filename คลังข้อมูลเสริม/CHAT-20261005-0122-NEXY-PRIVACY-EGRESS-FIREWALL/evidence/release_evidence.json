@@ -2,8 +2,15 @@
   "schema_version": 1,
   "mission": "CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL",
   "scope": "REFERENCE_PROTOTYPE_ONLY",
-  "status": "WAVE_07_LOCAL_VERIFIED_PENDING_REMOTE_READBACK",
+  "status": "WAVE_07_VERIFIED_E0_E1_E2",
   "verification_date_local": "2026-10-05",
+  "wave_07_atomic_commit": "b55246d4307263d80d82a35786e9df410fc29d6d",
+  "wave_07_remote_readback": {
+    "ref": "b55246d4307263d80d82a35786e9df410fc29d6d",
+    "changed_files": 13,
+    "exact_byte_matches": 13,
+    "result": "PASS"
+  },
   "exact_blob_bindings": {
     "src/__init__.py": "cb41d00bb2c7c26bbd8b7ca3a7800e2a27d55293",
     "src/privacy_firewall.py": "edfe506a219a07b1d3ca020510191aadc9a9289e",
@@ -98,7 +105,7 @@
     "Wave 07 focused import failed because ConsentBundleGrant did not exist before implementation."
   ],
   "claim_boundary": {
-    "E0": "PASS_FOR_WAVE_01; PENDING_REMOTE_READBACK_FOR_WAVE_07",
+    "E0": "PASS_FOR_WAVE_01_AND_WAVE_07_EXACT_COMMIT_READBACK",
     "E1": "PASS",
     "E2": "PASS_FOR_REFERENCE_PROTOTYPE",
     "E3": "NOT_VERIFIED",

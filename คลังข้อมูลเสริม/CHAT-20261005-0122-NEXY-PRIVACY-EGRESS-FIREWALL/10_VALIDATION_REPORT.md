@@ -6,7 +6,9 @@
 
 ## Wave 07 — exact-scope batch consent
 
-Status at this checkpoint: **LOCAL_VERIFIED_PENDING_REMOTE_READBACK**.
+Status at this checkpoint: **VERIFIED_E0_E1_E2_REFERENCE_PROTOTYPE**.
+
+Atomic implementation/evidence commit: `b55246d4307263d80d82a35786e9df410fc29d6d`.
 
 Waves 02–06 were marked `SKIPPED_OVERLAP` after a fresh, SHA-bound sibling scan. Wave 07 was the next bounded non-overlapping topic: exact-scope grant bundling for consent-required items. The mechanism remains **AI-PROPOSED / NON-GOVERNING**.
 
@@ -35,7 +37,7 @@ After the smallest complete implementation, the same focused suite observed 12/1
 
 ### Wave 07 candidate blob bindings
 
-These local Git object IDs bind the bytes tested above. They are not yet E0 remote read-back claims at this checkpoint.
+These Git object IDs bind the bytes tested above and matched GitHub read-back from the exact atomic commit.
 
 | File | Candidate blob SHA |
 |---|---|
@@ -44,6 +46,10 @@ These local Git object IDs bind the bytes tested above. They are not yet E0 remo
 | src/npcef/core.py | d3b2c1f2f3d5ece2e1c5ebcb0be4daf3b9ff775c |
 | tests/test_batch_consent.py | 188347bda56644054845b86f7f36972153977f62 |
 | tools/batch_consent_audit.py | 246d94e3c08b23ca2d4f5c9871ffb53c9d68ffa4 |
+
+### Remote E0 read-back
+
+All 13 files changed by Wave 07 were fetched from exact commit `b55246d4307263d80d82a35786e9df410fc29d6d` as base64 and compared byte-for-byte with the locally tested candidate: 13/13 exact matches. This includes the five source/test/tool bindings above plus the eight requirement, policy, threat, plan, overlap, validation, evidence, and checkpoint records.
 
 ### Behavioral boundary
 
