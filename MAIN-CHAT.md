@@ -13185,3 +13185,126 @@ CLAIMED_AT: UNKNOWN
 LAST_PROGRESS_AT: UNKNOWN
 BLOCKERS: JOB-EGC-EROI-METHOD-K1-20261005 not yet AWAITING_REVIEW
 HANDOFF: Claim only after evidence package submission.
+
+
+======================================================================
+45. JOB-EGC-012 EVIDENCE PACKAGE — HARMONIZED EROI / LIFECYCLE METHOD
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-EROI012-K3-20261005
+PRIMARY_JOB_ID: JOB-EGC-012
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: DISTINCT_FUTURE_SESSION_REQUIRED
+
+TOOL_EVIDENCE_ID: TE-EGC-EROI012-001
+JOB_ID: JOB-EGC-012
+CLAIM_ID: CLAIM-EGC-EROI-BOUNDARY-CONSISTENCY-001
+TOOL_OR_METHOD: Peer-reviewed literature/source inspection
+SOURCE: Murphy et al., "Energy Return on Investment of Major Energy Carriers: Review and Harmonization", Sustainability 2022, 14, 7098
+DOI: 10.3390/su14127098
+SOURCE_URL_OR_IDENTIFIER: https://www.mdpi.com/2071-1050/14/12/7098
+RAW_OR_KEY_OUTPUT:
+- Literature EROI values are often methodologically inconsistent and inappropriate cross-technology comparisons result.
+- Authors advocate point-of-use rather than point-of-extraction EROI for cross-carrier comparison.
+- Comparing crude oil at wellhead with electricity entering grid is explicitly identified as methodologically unsound.
+- Harmonization separates thermal fuels at point of use from electricity at point of use and standardizes process-chain boundaries.
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_METHOD
+LIMITATIONS: Harmonization choices are methodological conventions; they do not remove uncertainty in lifecycle inventories.
+
+TOOL_EVIDENCE_ID: TE-EGC-EROI012-002
+JOB_ID: JOB-EGC-012
+CLAIM_ID: CLAIM-EGC-EROI-PRIMARY-EQ-001
+TOOL_OR_METHOD: Peer-reviewed equation/method extraction
+SOURCE: Murphy et al. 2022, same DOI
+RAW_OR_KEY_OUTPUT:
+- Net-energy subtraction is rigorous only when output and invested energy are measured on the same energy standard.
+- For electricity, paper defines EROI_PE-eq = (Gross electricity output / eta_G) / sum(Energy Investments), where eta_G is lifecycle efficiency of the reference grid mix.
+- Paper harmonizes electricity results using eta_G sensitivity values 0.3 and 0.7 and notes EROI_PE-eq is relative to the reference grid mix, not an absolute technology property.
+- Reported harmonized results for hydro, wind and PV are at/above 10 under the paper's method; exact values vary by technology/site and eta_G.
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_METHOD
+CLAIM_NOT_SUPPORTED: A raw EROI number from one paper is directly comparable to another without matching boundary/accounting convention.
+
+TOOL_EVIDENCE_ID: TE-EGC-EROI012-003
+JOB_ID: JOB-EGC-012
+CLAIM_ID: CLAIM-EGC-EROI-SYSTEM-BOUNDARY-001
+TOOL_OR_METHOD: Method synthesis grounded in harmonization evidence
+PROPOSED COMMON LIFECYCLE BOUNDARY:
+Numerator:
+- Lifetime NET electricity delivered at the mission comparison node after plant parasitics, curtailment and storage/transmission losses assigned to candidate boundary.
+Denominator lifecycle energy investment:
+- resource extraction/fuel preparation where applicable;
+- material production and component manufacturing;
+- construction/installation;
+- fuel processing/enrichment/refining/transport where applicable at non-sensitive aggregate lifecycle level;
+- O&M and replacement components;
+- decommissioning/end-of-life;
+- storage, firming and incremental grid/transmission lifecycle energy assigned by common system boundary;
+- recycling credit only under an explicit consequential/avoided-burden convention, reported separately from no-credit case.
+REQUIRED_REPORTING:
+A. EROI_straight with exact energy-carrier accounting convention.
+B. EROI_PE-eq(eta_G) with eta_G explicitly stated.
+C. Net-to-gross energy fraction only when numerator/denominator are on same energy standard.
+D. Energy payback time as a secondary metric where lifecycle timing data exist.
+E. Generation-only and delivered-system EROI both reported when integration energy is material; only delivered-system metric may support G8.
+EVIDENCE_CLASS: INFERENCE / METHOD_PROPOSAL
+REVIEW_STATUS: NOT_VERIFIED until independent review/common-boundary reconciliation.
+
+TOOL_EVIDENCE_ID: TE-EGC-EROI012-004
+JOB_ID: JOB-EGC-012
+CLAIM_ID: CLAIM-EGC-EROI-BOUNDARY-SENSITIVITY-001
+TOOL_OR_METHOD: Deterministic boundary-sensitivity calculations
+EQUATIONS:
+- EROI = E_out / E_in
+- Net energy fraction, if same energy standard: f_net=(E_out-E_in)/E_out = 1 - 1/EROI
+- EROI_PE-eq = E_electricity/(eta_G * E_in_primary)
+- Delivered-system EROI = E_delivered / (E_in_generation + E_in_storage + E_in_grid + E_in_firming + other allocated lifecycle inputs)
+CALCULATIONS:
+1. Net-energy fraction:
+   EROI=5 -> 80%; EROI=10 -> 90%; EROI=20 -> 95%.
+2. Conversion-boundary sensitivity:
+   For a hypothetical straight electricity EROI=15 using same lifecycle energy-investment dataset:
+   eta_G=0.3 -> EROI_PE-eq=50.
+   eta_G=0.7 -> EROI_PE-eq=21.43.
+   This change is accounting/reference-grid sensitivity, not a physical improvement.
+3. Integration-boundary sensitivity:
+   If generation-only EROI=20 and added storage/grid lifecycle energy equals 25% of original generation energy investment, system EROI becomes 20/1.25 = 16.
+   If added integration energy equals 100% of original investment, system EROI becomes 10.
+EVIDENCE_CLASS: CALCULATION + ASSUMPTION (ILLUSTRATIVE)
+CLAIM_SUPPORTED: Boundary/integration choices can materially move EROI and cross a fixed threshold.
+CLAIM_NOT_SUPPORTED: Any illustrative value represents a real candidate.
+
+ANTI-GAMING / VALIDATION RULES:
+1. Never compare point-of-extraction EROI with point-of-use/delivered electricity EROI.
+2. Never compare straight EROI with PE-equivalent EROI without converting both to same convention.
+3. Record eta_G and sensitivity; candidate may not choose whichever eta_G lets it pass.
+4. Do not mix gross generation numerator with net-delivered mission service.
+5. Lifecycle output must use evidence-based CF, degradation, availability and lifetime; nameplate*8760*life without these is invalid.
+6. Include component replacements; storage cycles and replacement lifetimes cannot be hidden.
+7. Fuel-cycle energy and ongoing consumables belong in thermal/nuclear denominator at lifecycle-aggregate level; no weapon-usable processing detail is required or permitted.
+8. System integration allocation must avoid double-counting with common boundary; report incremental system energy separately before allocation.
+9. Recycling/avoided-burden method must be explicit and sensitivity-tested.
+10. If changing reasonable boundary/eta_G/inventory assumptions crosses mission EROI gate, result is NOT_STABLE.
+11. The mission EROI>=10 criterion remains an ASSUMPTION. Its application is NOT_VERIFIED until the controlling objective fixes which harmonized EROI convention/eta_G it refers to.
+
+RED_TEAM:
+- Attack: pick highest published EROI per candidate. RESULT: FALSIFIED as valid comparison.
+- Attack: use generation-only EROI to pass delivered-system gate. RESULT: FALSIFIED where storage/grid/firming energy is material.
+- Attack: use PE-equivalent numerator for one candidate and straight electricity for another. RESULT: FALSIFIED.
+- Attack: infer EROI>=10 means physics/engineering/economics all pass. RESULT: FALSIFIED; EROI is necessary mission dimension, not a sufficient cost/scale/safety proof.
+
+RESULT:
+- Common EROI methodology can be defined, but final candidate EROI values remain UNKNOWN until lifecycle inventories and integration boundaries are supplied.
+- A fixed EROI threshold without convention/eta_G is under-specified and can be gamed.
+- G8 remains OPEN; no candidate is passed/failed by this method alone.
+
+STATUS_CHANGE:
+- JOB-EGC-012: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-023 becomes methodologically less blocked but must await independent review/common-boundary alignment.
+- GLOBAL_SOLVED: NO.
+- CURRENT_WINNER: NONE.
+NEXT_ACTION:
+- Independent reviewer reproduces Murphy equations and attacks proposed delivered-system inclusion list.
+- Candidate jobs provide lifecycle inventory/lifetime/CF/replacement evidence.
+- Reconcile EROI boundary with JOB-EGC-004 and objective reviewer before using EROI>=10 as a gate.
+WRITE_INTEGRITY_PREWRITE_HEAD: 728d70b760f53d53d96802088a8aed88777374cc
+WRITE_INTEGRITY_PREWRITE_FILE_SHA: e5117c03f5e9aa310c98101f4e02d19df64cf0dc
