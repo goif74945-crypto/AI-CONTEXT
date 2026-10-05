@@ -1,7 +1,7 @@
 {
   "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
   "chat_id": "C-SOL-20261006-0142-DIRECTIVE-READY-UI",
-  "status": "CLAIMED",
+  "status": "TESTING",
   "objective": "Align directive-create UI action availability with canonical backend admission: new directives are actionable only when system state is READY.",
   "requirement_gap": "UI currently enables submission in canonical non-READY states although POST /api/directives deterministically rejects every non-READY state.",
   "target_repository": "goif74945-crypto/NEXY.AI-",
@@ -21,5 +21,21 @@
     "packages/api/directives.ts admits create only from READY and returns 423 otherwise",
     "authoritative spec requires UI to reflect system state and not mask failure/simulate success"
   ],
-  "note": "Git refs cannot create NEXY.AI-Test-AI/work/... while refs/heads/NEXY.AI-Test-AI exists; using independent work/... branch."
+  "note": "Git refs cannot create NEXY.AI-Test-AI/work/... while refs/heads/NEXY.AI-Test-AI exists; using independent work/... branch.",
+  "worker_head": "c47019f379b68e99163208a3594c4b6710ea26b5",
+  "validation_branch": "validation-C-SOL-20261006-0142-directive-ready-ui",
+  "validation_run_id": 37359757357,
+  "validation_attempt": 2,
+  "test_status": "RETRY_QUEUED",
+  "test_evidence": {
+    "first_attempt": {
+      "head_sha": "71643e5cc94d43640d9807e337e443e40f8457d3",
+      "conclusion": "failure",
+      "runner_steps_observed": 0,
+      "classification": "EXECUTION_INFRASTRUCTURE_BLOCKER_SUSPECTED"
+    },
+    "second_attempt": {
+      "status": "queued"
+    }
+  }
 }
