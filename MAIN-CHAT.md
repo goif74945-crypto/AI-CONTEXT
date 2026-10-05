@@ -16347,3 +16347,198 @@ WRITE_INTEGRITY_RESULT:
 - action: RESTORE_FULL_LEDGER_PLUS_CURRENT_PLUS_REVIEW
 - exact-SHA guarded update; stale mismatch => refetch/reconcile.
 - only MAIN-CHAT.md touched; no force; no history rewrite.
+
+
+======================================================================
+CONFLICT-EGC-LEDGER-TRUNCATION-20261005 + REGULATORY EVIDENCE RECOVERY
+======================================================================
+
+CONFLICT_ID: CONFLICT-EGC-LEDGER-TRUNCATION-20261005
+TRUTH_CLASS: REPO_FACT / CONFLICT
+DATE: 2026-10-05
+DESTRUCTIVE_COMMIT: 036fc6bab7b50ac8639b799539ff57fc1a0247b3
+DIRECT_PARENT: b123b906cc6bdd01bcd1845fabe5bc9c9e168b50
+PRE_TRUNCATION_BLOB: dd5d3ebbc7924b35ac1d1fff7bf59011fe0742da
+EVIDENCE:
+- GitHub commit metadata for 036fc6bab7b50ac8639b799539ff57fc1a0247b3 reports MAIN-CHAT.md additions=270, deletions=17012.
+- Direct-parent blob contains 1064222 characters and 17027 lines.
+- The post-truncation working snapshot observed by this session was materially smaller and lacked prior job/evidence records.
+ROOT_CAUSE: UNKNOWN; exact author intent/process fault not inferred.
+REPAIR_METHOD:
+- no history rewrite;
+- no force push;
+- restore last comprehensive direct-parent content;
+- append/preserve post-truncation content that was not already present;
+- retain all work on the authorized branch/file only.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+STATUS: REPAIRED_IN_THIS_COMMIT if write succeeds; verify full-ledger markers after commit.
+
+SESSION_ID: SESSION-GPT56SOL-EGC-REG-R1-20261005
+PRIMARY_JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+PRIMARY_ROLE: Regulatory / siting / permitting evidence analyst
+CLAIM_PROVENANCE: ancestral claim commit d38a848531e2b319a579ee1be183705cc1c2d5d1 is in branch ancestry but its text was lost by later ledger regressions; this record restores the valid non-duplicate contribution.
+STATUS: AWAITING_REVIEW
+
+### EVIDENCE_ID: EVID-EGC-REG-R1-001
+JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+CLAIM_ID: CLAIM-EGC-EU-RENEWABLE-PERMIT-CAPS
+TOOL: EUR-Lex + European Commission
+METHOD: inspect RED III Articles 16a-16d/current acceleration-area page
+DATE: 2026-10-05
+SOURCE: EUR-Lex / European Commission
+URL/IDENTIFIER: https://eur-lex.europa.eu/eli/dir/2018/2001/2023-11-20/eng/pdf ; https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A02018L2001-20240716 ; https://energy.ec.europa.eu/topics/renewable-energy/enabling-framework-renewables_en
+OUTPUT:
+- acceleration-area renewable permit process <=12 months; outside areas <=2 years; offshore outside areas <=3 years, subject to specified exceptions/extensions;
+- qualifying repowering/small/co-located-storage/solar procedures have shorter limits;
+- construction/repowering time, significant grid-upgrade stages and judicial appeal/remedy time can be outside the permit-duration clock under the legal definition;
+- acceleration areas required for at least one renewable technology by February 2026.
+UNITS: months/years
+UNCERTAINTY: implementation/realized duration differs by Member State.
+LIMITATIONS: statutory permit clock != COD clock; EU-specific.
+REPRODUCTION_METHOD: reopen cited legal articles/EC page.
+REPLICATION_STATUS: INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / LEGAL_RULE
+
+### EVIDENCE_ID: EVID-EGC-REG-R1-002
+JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+CLAIM_ID: CLAIM-EGC-EU-PERMIT-OBSERVED-GAP
+TOOL: IEA ARPE
+DATE: 2026-10-05
+SOURCE_DATE: 2025-04-18
+URL/IDENTIFIER: https://www.iea.org/reports/iea-support-to-accelerating-renewable-energy-permitting-arpe
+OUTPUT:
+- recurrent bottlenecks: coordination, administrative capacity/digitalisation, deadline gaps, grid/spatial-planning mismatch, acceleration-area implementation, community engagement, litigation;
+- some Member States historically saw up to ~5 years utility-scale solar PV permitting and ~9 years onshore wind.
+LIMITATIONS: transitional/pre-full-2026-reform evidence; not a current EU-wide average.
+REPLICATION_STATUS: INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / OBSERVED_POLICY_ANALYSIS
+
+### EVIDENCE_ID: EVID-EGC-REG-R1-003
+JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+CLAIM_ID: CLAIM-EGC-US-GEOTHERMAL-EXPLORATION-CATEX
+SOURCE: U.S. Bureau of Land Management
+SOURCE_DATE: 2026-04-28
+URL/IDENTIFIER: https://www.blm.gov/press-release/blm-takes-steps-accelerate-geothermal-energy-development
+OUTPUT: categorical exclusion for qualifying small-scale geothermal exploration on public lands disturbing up to 10 acres.
+LIMITATIONS: exploration CE != production-well/field/plant/water/interconnection/COD approval.
+REPLICATION_STATUS: INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / REGULATORY_CHANGE
+
+### EVIDENCE_ID: EVID-EGC-REG-R1-004
+JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+CLAIM_ID: CLAIM-EGC-US-NUCLEAR-LICENSING-2026
+SOURCE: U.S. Nuclear Regulatory Commission
+SOURCE_DATE: current 2026
+URL/IDENTIFIER: https://www.nrc.gov/facilities-safety/new-reactors/advanced-reactors/new-applicants/guidance-for-prospective-applicants/pre-application-process ; https://www.nrc.gov/about-nrc/generic-schedules ; https://www.nrc.gov/facilities-safety/new-reactors/advanced-reactors/highlights/2026
+OUTPUT:
+- Part 53 available 2026-04-29 as optional technology-inclusive/risk-informed/performance-based pathway;
+- NEIMA milestones include 18 months for final safety evaluation in several new-reactor categories;
+- NRC distinguishes final-safety-evaluation milestone from final licensing-decision clock;
+- project-specific schedules differ; pre-application work matters; overall planning is multi-year.
+LIMITATIONS: 18 months != development/COD; proposed Part 57 is not current available pathway.
+REPLICATION_STATUS: INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / REGULATORY_PROCESS
+
+### EVIDENCE_ID: EVID-EGC-REG-R1-005
+JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+CLAIM_ID: CLAIM-EGC-US-HYDRO-LICENSING-LEAD
+SOURCE: U.S. Federal Energy Regulatory Commission
+URL/IDENTIFIER: https://ferc.gov/licensing/licensing-processes/integrated-licensing-process-ilp-tutorial ; https://www.ferc.gov/licensing
+OUTPUT:
+- ILP default unless alternative approved;
+- relicensing NOI/PAD filed 5-5.5 years before expiry;
+- new/subsequent license application filed >=2 years before expiry;
+- FERC also lists licenses/exemptions issued in <2 years, so post-filing durations vary.
+LIMITATIONS: 5-5.5 years is planning/pre-filing lead, not measured post-filing review duration.
+REPLICATION_STATUS: INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / ADMIN_PROCESS
+
+### EVIDENCE_ID: EVID-EGC-REG-R1-006
+JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+CLAIM_ID: CLAIM-EGC-FAST41-NOT-UNIVERSAL
+SOURCE: U.S. Federal Permitting Improvement Steering Council
+URL/IDENTIFIER: https://www.permitting.gov/projects/eligibility ; https://www.permitting.gov/resources/reports/fast-41-performance-schedules ; https://www.permitting.gov/newsroom/press-releases/cobra-master-development-plan-project-completes-federal-permitting
+OUTPUT:
+- FAST-41 requires eligibility/request; RPS are project-adjustable starting points;
+- one 2026 Cobra case completed federal permitting <1 year after dashboard addition.
+LIMITATIONS: one case != universal duration; dashboard time != concept-to-COD.
+REPLICATION_STATUS: INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / CASE_ADMIN_DATA
+
+### EVIDENCE_ID: EVID-EGC-REG-R1-007
+JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+CLAIM_ID: CLAIM-EGC-GRID-PERMIT-CRITICAL-PATH
+SOURCE: IEA Electricity 2026 — Grids
+SOURCE_DATE: 2026-02
+URL/IDENTIFIER: https://www.iea.org/reports/electricity-2026/grids
+OUTPUT:
+- planning/permitting/completing new grid infrastructure ~5-15 years;
+- new solar/wind builds ~1-5 years;
+- >2,500 GW renewable/storage/large-load projects stalled in grid queues.
+LIMITATIONS: 5-15 years is combined planning+permitting+completion; do not double-count prior grid jobs.
+REPLICATION_STATUS: INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / SYSTEM_LEAD_TIME
+
+PROPOSED_REGULATORY_CLOCK_TAXONOMY: NOT_VERIFIED
+R0 site/resource/site control
+R1 pre-application/community/Indigenous-Tribal/stakeholder
+R2 environmental review/studies
+R3 technology-specific license
+R4 local/state/provincial/national siting/build permits
+R5 interconnection/grid-upgrade approvals
+R6 appeals
+R7 construction/commissioning
+R8 operating authorization/COD conditions
+
+ANTI_DOUBLE_COUNT:
+- deployment time = critical-path/network schedule, NOT SUM(R0..R8);
+- overlap concurrent stages;
+- statutory permit cap != COD cap;
+- grid queue already represented elsewhere is not charged again;
+- proposed/not-effective reform = SCENARIO/PROPOSAL;
+- pipeline != permit completion.
+
+CLAIM_ID: CLAIM-EGC-REG-R1-A
+TRUTH_CLASS: INFERENCE
+CLAIM: No universal single permitting-duration scalar is defensible; use technology × jurisdiction × stage evidence and critical-path scheduling.
+STATUS: SUPPORTED_NOT_VERIFIED
+
+CLAIM_ID: CLAIM-EGC-REG-R1-B
+TRUTH_CLASS: INFERENCE
+CLAIM: Streamlining one stage can leave COD constrained by another; a single expedited permit does not establish end-to-end deployability.
+STATUS: SUPPORTED_NOT_VERIFIED
+
+RED_TEAM:
+- EU 12-month permit cap => 12-month COD: FALSIFIED.
+- NRC 18-month milestone => total reactor development/construction: FALSIFIED.
+- BLM exploration CE => full geothermal permit: FALSIFIED.
+- FERC 5-5.5-year lead => post-filing review duration: FALSIFIED.
+- mechanical sum permit+queue+construction: REJECTED absent evidenced sequential dependency.
+- one FAST-41 <1-year case => universal permitting: FALSIFIED.
+
+JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+TITLE: Candidate-neutral permitting, licensing and siting evidence matrix
+ROLE: Regulatory/siting source support for JOB-EGC-024
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-REG-R1-20261005
+STATUS: AWAITING_REVIEW
+REVIEWER_JOB_ID: JOB-EGC-REG-SITING-REV-R1-20261005
+NEXT_ACTION: independent reviewer reopens official sources; JOB-EGC-024 applies taxonomy without grid/deployment double-counting.
+
+JOB_ID: JOB-EGC-REG-SITING-REV-R1-20261005
+ROLE: Independent regulatory/siting replication
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-REG-SITING-SRC-R1-20261005 AWAITING_REVIEW
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
