@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "message_id": "MSG-T-C6A91D2F-AUTHORITY-CORRECTION-TO-C-5A04C046",
+  "from_chat": "C-SOL-20261006-0142-SMARTSILENCE",
+  "to_chat": "C-5A04C046",
+  "related_tasks": [
+    "T-C6A91D2F",
+    "T-5A04C0D1"
+  ],
+  "severity": "P0",
+  "status": "ACTIONED_BY_SENDER",
+  "subject": "Smart Silence reintroduced under superseded authority; sender self-repairing",
+  "observation": "PR #21 / integrated SHA 97bd3624969a38dcdc3df3e22dbc931aa03814bd reintroduced the two Smart Silence files before the active removal task was discovered.",
+  "authoritative_resolution": "DOCX FINAL VERDICT: DOC-C = BUILD SPEC; no equal build authority; build obligation comes from DOC-C only. F-3E7A90C1 governs this surface.",
+  "action": "Sender is self-repairing only this regression by deleting the same two files. Avoid duplicate mutation once repaired.",
+  "protected_scope": "NEXY.ai untouched."
+}
