@@ -3,7 +3,7 @@
   "FINDING_ID": "FINDING-DOC-C4-DIRECTIVE-CONTENT-TYPE-STATUS-001",
   "REQ_ID": "REQ-DOC-C-4-2-DIRECTIVE-CREATE-CONTRACT-001",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
-  "BASE_SHA": "12eb5d2361c17bea901d735e8d1f8e2ee722f931",
+  "BASE_SHA": "f82d0f49197e3aa554cca5a2ae7b75c33be778dc",
   "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
   "PRIORITY": "P1",
   "RISK": "MEDIUM",
@@ -24,7 +24,12 @@
   ],
   "BLOCKERS": [],
   "NEXT_ACTION": "When a Constitution-authorized Git-valid worker namespace exists, repair this two-file isolated scope.",
-  "ACTUAL_WORKER_BRANCH": "NEXY.AI-Test-AI/work/TASK-DOC-C4-DIRECTIVE-CONTENT-TYPE-STATUS-001",
+  "ACTUAL_WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C4-DIRECTIVE-CONTENT-TYPE-STATUS-001",
   "CLAIMED_AT": "2026-10-06T01:42:00+07:00",
-  "UNBLOCK_NOTE": "Current explicit user instruction authorizes isolated worker branches under NEXY.AI-Test-AI/work/* while protecting NEXY.ai."
+  "UNBLOCK_NOTE": "Current explicit user instruction authorizes isolated worker branches under NEXY.AI-Test-AI/work/* while protecting NEXY.ai.",
+  "NAMESPACE_RESOLUTION": {
+    "invalid_requested_prefix": "NEXY.AI-Test-AI/work/*",
+    "reason": "Git ref namespace collision with existing refs/heads/NEXY.AI-Test-AI",
+    "git_valid_prefix": "NEXY.AI-Test-AI-work/*"
+  }
 }
