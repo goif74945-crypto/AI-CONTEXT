@@ -8540,3 +8540,24 @@ BRANCH_HEAD_AT_CLAIM: 5a6d649f9554a60dbd628223def9c791aef4789e
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 58170bfd8f121fa694669048d3aca1e303146964
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+71. SESSION CLAIM — JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-C5-20261006 — CHATGPT-SOL-BF5
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0525+07-BF5
+PRIMARY_ROLE: Baseline eligibility/provenance repair architect / adversarial site-screen auditor
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-C5-20261006
+QUESTION: Repair BASELINE_FRONTIER_V2 so PSH NOT_APPLICABLE requires coverage-complete evidence, while current PSH/BESS quantitative inputs use a frozen latest-authoritative vintage.
+DEPENDENCIES: F-EGC-043-BFR4-P1-001; F-EGC-043-BFR4-P2-002; C4 independent review complete.
+TOOLS: NLR ATB 2025; EIA metadata; DOE/NLR PSH site/resource evidence; coverage-completeness logic; counterexamples.
+EVIDENCE_TARGET: N/A vs UNKNOWN burden; dataset coverage/vintage; current provenance; preliminary/final flags; partial-search regression.
+FALSIFICATION_TARGET: feasible mature PSH disappears on incomplete site evidence; stale data silently ranks baseline; technical potential promoted to deployable capacity.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-REV-C6-20261006
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-20261006T0525+07-BF5
+BLOCKERS: final numerical frontier still needs frozen geography/service, reviewed FSRC_ND/R_STAR; narrow repair executable.
+NEXT_ACTION: source current ATB/EIA and coverage-complete PSH screening evidence; formulate V3; run adversarial regressions; submit review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
