@@ -11,5 +11,9 @@
   "LEASE_EPOCH": 1,
   "CLAIM_SEQUENCE": 1,
   "MUTATION_SCOPE": "CONTROL_EVIDENCE_ONLY_SOURCE_READ_ONLY",
-  "STATUS": "CLAIMED"
+  "STATUS": "SUSPENDED",
+  "SUSPEND_REASON": "V16-RC1.3 preactivation legacy-admission freeze and migration drain; no legacy mutation/integration authority may continue.",
+  "SUSPENDED_BY": "C-SOL-V16RC13-B11E0417-A5F26CF7",
+  "BOOTSTRAP_FENCE_STATE_VERSION": 2,
+  "LEGACY_AUTHORITY": "NONE"
 }
