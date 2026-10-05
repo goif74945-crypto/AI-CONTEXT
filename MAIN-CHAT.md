@@ -2022,3 +2022,70 @@ WRITE_INTEGRITY:
 - file SHA read: 95f7423b2c1ebd0e568980ff43e6dc95bfe405f0
 - stale-write check: latest SHA fetched immediately before this write
 - commit/result: pending this commit
+
+
+======================================================================
+29. SESSION CLAIM EVENT — BASELINE ENVELOPE SUPPORT
+======================================================================
+
+EVENT_TIME: 2026-10-06T02:06:00+07:00
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+PRIMARY_ROLE: Baseline Research / Evidence Support
+PRIMARY_JOB_ID: JOB-EGC-031
+QUESTION: What current authoritative cost, scale, reliability, and integration evidence should constrain ex-ante definitions of LOW_COST and MASSIVE_ENERGY without waiting for candidate selection?
+DEPENDENCIES: NONE
+TOOLS: Current-source research, official datasets/reports, numerical calculation, source triangulation
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION with reproducible provenance
+FALSIFICATION_TARGET: Reject any baseline envelope built from stale, incomparable, subsidized-only, nameplate-only, or generator-only figures that omit material system boundary differences.
+REVIEWER: JOB-EGC-032
+STATUS: EXECUTING
+
+COLLISION_RECONCILIATION:
+- Previous attempted claim of JOB-EGC-001 was rejected by GitHub optimistic concurrency with HTTP 409 because another session committed first.
+- Latest state shows JOB-EGC-001 owned by CHATGPT-SOL-20261005T190600Z-A1.
+- This session does not overwrite or duplicate that claim.
+- Because JOB-EGC-002 through JOB-EGC-030 currently depend on JOB-EGC-001, a new decision-relevant evidence job is created under Dynamic Job Generation law.
+
+#### JOB-EGC-031
+ROLE: R02 Baseline benchmark research support for R01 objective calibration
+TITLE: Build current authoritative baseline envelope for objective calibration
+QUESTION_TO_RESOLVE: Establish a current, source-grounded envelope for low-cost generation, storage/firming, capacity/scale, and grid integration sufficient to constrain non-arbitrary LOW_COST and MASSIVE_ENERGY thresholds.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: Current authoritative generation-cost data; current storage-cost data; operational/installed capacity and scale data; grid/interconnection/system-integration evidence; consistent units/currency-year notes.
+REQUIRED_TOOLS: Official/primary web sources where available; current reports; calculator/Python; cross-source validation.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION
+EXPECTED_OUTPUT: Evidence records with dates, URLs/identifiers, exact metric boundaries, units, limitations, and a baseline envelope that can be consumed by JOB-EGC-001 without selecting a preferred technology.
+FALSIFICATION_CRITERIA: FAIL if sources are not traceable; metrics mix incompatible system boundaries without labeling; critical figures cannot be cross-checked; or conclusions depend on a single weak source.
+REVIEWER_JOB_ID: JOB-EGC-032
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+CLAIMED_AT: 2026-10-06T02:06:00+07:00
+LAST_PROGRESS_AT: 2026-10-06T02:06:00+07:00
+BLOCKERS: NONE
+HANDOFF: Commit source-grounded baseline evidence and move to AWAITING_REVIEW; independent session JOB-EGC-032 must reproduce/attack it.
+
+#### JOB-EGC-032
+ROLE: R23 Independent numerical replication + R25 Evidence provenance audit
+TITLE: Independently review baseline envelope JOB-EGC-031
+QUESTION_TO_RESOLVE: Reproduce and attack the cost/scale/integration figures and boundary choices recorded by JOB-EGC-031.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-031 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: JOB-EGC-031 evidence records, source identifiers, calculations, boundary notes.
+REQUIRED_TOOLS: Independent source retrieval; independent arithmetic/unit conversion; provenance audit.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION
+EXPECTED_OUTPUT: PASS/FAIL with independently reproduced figures, source-quality findings, conflicts, and required repairs.
+FALSIFICATION_CRITERIA: FAIL if a material figure is unreproducible, source provenance is weak or stale, or reasonable boundary corrections materially change the envelope.
+REVIEWER_JOB_ID: JOB-EGC-033
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-031 not yet AWAITING_REVIEW
+HANDOFF: A different session must claim this review after JOB-EGC-031 is committed for review.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
