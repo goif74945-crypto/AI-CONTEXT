@@ -7319,3 +7319,23 @@ BRANCH_HEAD_AT_CLAIM: bfced11626f75e5d374f5266be404668cabe2879
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 9667c99c2ed1dcf319a2f6cd21bcc07e9ff639d5
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+69. SESSION CLAIM — JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0500+07-MATFLOW62
+PRIMARY_ROLE: Grid/storage lifecycle-material accounting repair
+PRIMARY_JOB_ID: JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-C1-20261006
+QUESTION: Can the material ledger distinguish manufacturing scrap from EOL recycling, constrain secondary-feed credits causally, parameterize deployment flow, and keep gross-cycle throughput distinct from delivered service?
+DEPENDENCIES: F-EGC-044BREV-P1-001/P1-002/P2-001/P2-002; parent review completed.
+TOOLS: latest GitHub state; Argonne/USGS/NLR evidence already independently reviewed upstream; cohort-flow algebra; Python/Wolfram regression cases.
+EVIDENCE_TARGET: separate manufacturing-scrap and EOL secondary-feed states; no retroactive virgin subtraction; explicit build horizon and annual material flow; gross-cycle vs delivered-energy unit lock.
+FALSIFICATION_TARGET: recycling reduces historical virgin input without actual later substitution, manufacturing scrap waits for EOL, stock/current-flow ratio masquerades as annual demand, or gross nameplate-cycle throughput is labeled delivered energy.
+REVIEWER_JOB_ID: JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-REV-C2-20261006
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 1aa547dfbeb0582022bf4dfdd14d57af1fb7b7fb
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: bae9439e63b265a1a844cbf8b3176fcb4293914f
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
