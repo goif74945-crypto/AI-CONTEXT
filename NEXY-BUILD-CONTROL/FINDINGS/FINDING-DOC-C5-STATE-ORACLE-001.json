@@ -22,7 +22,11 @@
       243,
       244
     ],
-    "paragraphs": "10353-10485",
+    "paragraphs": {
+      "non_empty": "8811-8943",
+      "raw_w_p_including_empty": "10353-10485",
+      "note": "Use PDF pages 242-244 as stable primary anchor; paragraph numbers differ by extraction convention."
+    },
     "spec_hash": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
   },
   "REPRODUCTION": [
