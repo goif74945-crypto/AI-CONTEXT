@@ -4,8 +4,8 @@
   "CHAT_ID": "C-SOL-20261005-1737Z-V16RC13-AUTHORITY-0F1B58AB",
   "MEMBERSHIP_ID": "PRE-d6630a315b4bbe7b8b5c257ec4bdc75f",
   "SHARD": "af",
-  "STATE": "ACTIVE_READ_ONLY_PREACTIVATION",
-  "RECORD_GENERATION": 2,
+  "STATE": "SUSPENDED",
+  "RECORD_GENERATION": 3,
   "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
   "REQUESTED_CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
   "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
@@ -17,5 +17,6 @@
   ],
   "PRODUCT_MUTATION_ELIGIBLE": false,
   "INTEGRATION_ELIGIBLE": false,
-  "RENEWAL_REASON": "Bootstrap Fence advanced from STATE_VERSION 4 BLOCKED to STATE_VERSION 6 BLOCKED; membership remains read-only and carries no product mutation or target integration authority."
+  "SUSPEND_REASON": "Execution window ended after publishing resumable handoff. Per V16-RC1.3 clause [231], this is not mission termination. Resume requires current-fence discovery and a new membership transition from this generation.",
+  "HANDOFF_RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1737Z-V16RC13-AUTHORITY-0F1B58AB-HANDOFF.json"
 }
