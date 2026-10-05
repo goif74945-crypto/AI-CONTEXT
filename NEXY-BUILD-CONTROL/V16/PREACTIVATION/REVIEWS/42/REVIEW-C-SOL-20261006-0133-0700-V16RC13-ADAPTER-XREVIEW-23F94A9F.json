@@ -1,0 +1,68 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_REVIEW_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REVIEW_ID": "REVIEW-C-SOL-20261006-0133-0700-V16RC13-ADAPTER-XREVIEW-23F94A9F",
+  "REVIEWER_CHAT_ID": "C-SOL-20261006-0133-0700-V16RC13-ADAPTER-XREVIEW-23F94A9F",
+  "REVIEW_KIND": "INDEPENDENT_CONTROL_P0_UNIVERSE_ADAPTER_V1_AND_PROJECTION_V3_INTEROP_REDTEAM",
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0133-0700-V16RC13-ADAPTER-XREVIEW-23F94A9F",
+  "MEMBERSHIP_ID": "PRE-06454dcf55f360835354fd2fa2b11290",
+  "PINNED_CONTROL_COMMIT_SHA": "0761b6ce99872fdc5bfbe92cecad51f6c559cb7e",
+  "PINNED_CONTROL_TREE_SHA": "01962a67d24f90ecdf4d195a8474e46aaeb763de",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "BOOTSTRAP_STATE_OBSERVED": "BLOCKED",
+  "REVIEWED_ARTIFACTS": [
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V3.json",
+      "blob_sha": "fcc3538fee4fbecf355eb1f875973b9d6e36a8b2"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SCHEMAS/CONTROL_P0_UNIVERSE_ADAPTER_V1.json",
+      "blob_sha": "422c0ae7557d0c2e6f2f3fe126b67c5c4dfb06a9"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SCHEMAS/CONTROL_P0_PROJECTION_V3.json",
+      "blob_sha": "41fb619284c0354fe7aa8617054e9242befa0283"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/FINDINGS/FINDING-V16RC13-ADAPTER-V1-ROW-CARDINALITY-GAP-23F94A9F.json",
+      "blob_sha": "4803f0c5f524fc9f7c3059af21976f114a2e5eca"
+    }
+  ],
+  "REPAIR_REGRESSION_CHECK": {
+    "PRIOR_V2_INTEROP_DEFECTS": {
+      "EXPLICIT_UNIVERSE_V3_BINDING": "PASS",
+      "VERSIONED_ADAPTER_EXISTS": "PASS",
+      "UNIVERSE_V3_TYPED_ROOT_COMPONENTS": "PASS_BY_CONTRACT_V3_REVIEW_SCOPE",
+      "DEDUP_PARENT_MUST_BE_P0_CONTROL_BLOCKER": "PASS_IN_PROJECTION_V3",
+      "ROOT_BOUND_OPEN_CONTROL_P0_COUNT": "PASS_IN_PROJECTION_V3"
+    },
+    "NEW_BLOCKER": "Adapter V1 lacks normative row-set completeness/bijection/cardinality invariants, so its declared lossless transform is not mechanically provable."
+  },
+  "BLOCKING_REVIEW_FINDINGS": [
+    {
+      "id": "XR-V3-ADAPTER-ROW-BIJECTION-001",
+      "severity": "P0_CONTROL",
+      "evidence": [
+        "Adapter V1 INPUT_ROW_REQUIRED_FIELDS and FIELD_MAPPING define how an individual present row maps.",
+        "Adapter V1 PRECONDITIONS/FAILURE_RULES define invalid present-row behavior but do not require every Universe V3 normalized_finding_row to appear exactly once in output.",
+        "Adapter V1 OUTPUT_MANIFEST names source_row_count and rows but defines no equality invariant tying input normalized row count, source_row_count, and rows.length.",
+        "Projection V3 trusts adapter_status=VALID and derives the activation-sensitive P0 set from adapted rows."
+      ],
+      "countermodel": "Two implementations can consume the same complete Universe V3: one maps all rows, another omits one valid row and shortens source_row_count. The Adapter V1 text contains no explicit omission/cardinality failure rule distinguishing them.",
+      "impact": "An omitted open P0 CONTROL_BLOCKER can disappear before Projection V3 classification/counting, allowing an undercount and invalid zero proof."
+    }
+  ],
+  "REQUIRED_REPAIR": [
+    "Add exact input/output bijection and cardinality invariants to the adapter contract.",
+    "Require source_row_count == Universe V3 normalized_finding_rows.length == adapted rows.length.",
+    "Require each input identity tuple finding_id/path/blob to occur exactly once in output and reject missing/duplicate/extra rows.",
+    "Bind Projection V3 or its successor to the repaired adapter blob and independently re-review."
+  ],
+  "REVIEW_VERDICT": "CHANGES_REQUIRED_BEFORE_CANONICAL_ADOPTION",
+  "OPEN_CONTROL_P0_ZERO_PROVABLE": false,
+  "CONTROL_P0_SET_ROOT_HASH_ACCEPTABLE": false,
+  "NEW_FINDING_ID": "FINDING-V16RC13-ADAPTER-V1-ROW-CARDINALITY-GAP-23F94A9F",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
