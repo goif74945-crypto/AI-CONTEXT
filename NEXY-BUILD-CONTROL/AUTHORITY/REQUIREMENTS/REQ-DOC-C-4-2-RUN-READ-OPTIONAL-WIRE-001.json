@@ -28,6 +28,9 @@
   "TEST_PATHS": [
     "tests/integration/directives/read-auth.spec.ts"
   ],
-  "STATUS": "MISMATCH",
-  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96"
+  "STATUS": "DUPLICATE_SUPERSEDED",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "ACTIVE_BUILD_PACKET": false,
+  "CANONICAL_REQ_ID": "REQ-DOC-C-4-2-RUN-DETAIL",
+  "RECONCILIATION_NOTE": "The canonical route-specific requirement already defines all optional run-detail members as non-null scalar types when present. This duplicate packet adds no independent authority."
 }
