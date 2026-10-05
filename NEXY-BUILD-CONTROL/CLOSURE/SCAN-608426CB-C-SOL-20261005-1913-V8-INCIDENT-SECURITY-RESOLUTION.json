@@ -1,0 +1,26 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1913-V8-INCIDENT-SECURITY-RESOLUTION",
+  "CHAT_ID": "C-SOL-20261005-1913-V8-INCIDENT-SECURITY",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "CONTROL_PARENT_OBSERVED": "ec86e085cf274227211529db9fa173de255b5f77",
+  "SCOPE": [
+    "packages/auth/security-incident.ts",
+    "packages/orch-core/system-state.ts",
+    "packages/api/canonical.ts::auditTruthRows",
+    "packages/api/canonical.ts::handleIncident",
+    "packages/api/health.ts",
+    "prisma/schema.prisma incident models"
+  ],
+  "FILES_SCANNED": 5,
+  "NEW_ACTIONABLE_GAPS": 1,
+  "NEW_FINDING_ID": "FINDING-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001",
+  "GAP_CLASS": [
+    "INTEGRATION_DEFECT",
+    "BROKEN_CANONICAL_LINK"
+  ],
+  "KNOWN_AUTHORITY_DEPENDENCY": "F-C-SOL-V8-1737-GLOBAL-API-ROUTE-DENOMINATOR",
+  "SOURCE_MUTATION": "NONE",
+  "CLOSURE_ELIGIBLE": false
+}
