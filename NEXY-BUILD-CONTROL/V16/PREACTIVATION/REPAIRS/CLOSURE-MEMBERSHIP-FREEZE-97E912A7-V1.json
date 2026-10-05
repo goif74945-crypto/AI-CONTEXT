@@ -1,0 +1,121 @@
+{
+  "REPAIR_ID": "V16RC13-CLOSURE-MEMBERSHIP-FREEZE-REPAIR-97E912A7-V1",
+  "STATUS": "CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+  "OWNER_CHAT": "C-SOL-V16RC13-DRAIN-97E912A7",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "AFFECTED_FINDING": "FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593",
+  "CONFIRMING_REVIEW": "REVIEW-C-SOL-20261005-0924-0800-V16RC13-C01D48AF-F0D72593",
+  "REPAIR_CLASS": "CONTROL_LAYER_PROTOCOL_REPAIR_NO_PRODUCT_MUTATION",
+  "LAW_TEXT_CHANGE_REQUIRED": false,
+  "LAW_BASIS": [
+    "[196] closes work admission, mutation, and integration and increments ENGINEERING_EPOCH at closure entry.",
+    "[197] permits post-barrier participation only for closure/review/audit/read-only work.",
+    "[198]-[199] require shard-to-global drain manifests including empty shards.",
+    "[200]-[202] define the closure membership manifest and root.",
+    "[209] pins MEMBERSHIP_ROOT_HASH and DRAIN_MANIFEST_ROOT_HASH in the closure world.",
+    "[216] requires REOPEN on any change.",
+    "[080] defines MEMBERSHIP_EPOCH as the global bulk-invalidation generation.",
+    "[123] denies stale membership mutation authority after global epoch/generation change."
+  ],
+  "STATE_MACHINE_EXTENSION": {
+    "CLOSURE_SUBSTATES": [
+      "ENTRY_BARRIER",
+      "CLOSURE_MEMBERSHIP_FORMING",
+      "CLOSURE_MEMBERSHIP_FREEZING",
+      "CLOSURE_MEMBERSHIP_FROZEN",
+      "PINNED_WORLD_READY",
+      "SWEEP_1",
+      "SWEEP_2",
+      "COMPLETE_CAS_PENDING",
+      "REOPEN_REQUIRED"
+    ],
+    "ENTRY_BARRIER_CAS": [
+      "Close WORK_ADMISSION_GATE.",
+      "Close MUTATION_GATE.",
+      "Close INTEGRATION_GATE.",
+      "Increment ENGINEERING_EPOCH.",
+      "Increment MEMBERSHIP_EPOCH by exactly 1 as a closure bulk invalidation.",
+      "Increment CLOSURE_GENERATION by exactly 1.",
+      "Set closure substate to CLOSURE_MEMBERSHIP_FORMING."
+    ]
+  },
+  "MEMBERSHIP_FORMATION_RULES": [
+    "All pre-barrier normal memberships are stale after MEMBERSHIP_EPOCH increments and cannot mutate product.",
+    "Before the pinned-world snapshot is created, participants needed for closure may renew into the new MEMBERSHIP_EPOCH only with mutation_eligible=false and integration_eligible=false.",
+    "No normal product-mutation membership may be created while closure gates are closed.",
+    "Transition from CLOSURE_MEMBERSHIP_FORMING to CLOSURE_MEMBERSHIP_FREEZING closes all normal membership create/update admission for the closure membership epoch."
+  ],
+  "SHARD_FREEZE_PROTOCOL": [
+    "For every logical membership shard in SHARD_UNIVERSE_HASH, publish a freeze acknowledgement bound to TARGET_AUTHORITY_KEY, CLOSURE_GENERATION, MEMBERSHIP_EPOCH, shard id, exact shard head/tree or immutable shard snapshot id, and freeze generation.",
+    "Every shard must acknowledge, including empty shards.",
+    "A shard acknowledgement is valid only after all authorized membership writers for the closure membership epoch are drained or invalidated.",
+    "Any normal membership write observed after a shard freeze acknowledgement invalidates that acknowledgement and forces REOPEN_REQUIRED.",
+    "Only after all shard freeze acknowledgements are valid may the closure membership manifest be materialized and hashed."
+  ],
+  "PIN_RULE": [
+    "Materialize the closure membership manifest from the frozen membership-shard snapshots only.",
+    "The manifest contains every normal membership record in the closure MEMBERSHIP_EPOCH at the freeze point.",
+    "Sort by MEMBERSHIP_ID canonical bytes and compute MEMBERSHIP_ROOT_HASH exactly as required by [200]-[202].",
+    "Build DRAIN_MANIFEST_ROOT_HASH from every shard, including explicit empty shards.",
+    "Persist immutable manifest artifacts and their content hashes before setting PINNED_WORLD_READY.",
+    "After PINNED_WORLD_READY, the frozen normal membership namespace is immutable for that CLOSURE_GENERATION."
+  ],
+  "POST_PIN_JOIN_RULE": {
+    "NORMAL_MEMBERSHIP_JOIN": "FORBIDDEN_FOR_THE_PINNED_CLOSURE_GENERATION",
+    "ALLOWED_JOIN_CLASS": "CLOSURE_OBSERVER_READ_ONLY",
+    "STORAGE": "Separate sharded observer namespace that is not a normal MEMBERSHIP_RECORD and is excluded from the clause [200] closure membership manifest.",
+    "CAPABILITIES": [
+      "closure verification",
+      "review",
+      "audit",
+      "read-only evidence generation"
+    ],
+    "FORBIDDEN": [
+      "product mutation",
+      "target integration",
+      "normal membership transition",
+      "changing the pinned membership or drain universe"
+    ],
+    "RATIONALE": "This preserves [197] participation while preventing post-pin joins from changing the [200]-[209] pinned membership universe."
+  },
+  "COMPLETE_PRECONDITIONS_ADDED_BY_REPAIR": [
+    "The exact immutable MEMBERSHIP_ROOT_HASH artifact still exists and matches the hash pinned for the active CLOSURE_GENERATION.",
+    "The exact immutable DRAIN_MANIFEST_ROOT_HASH artifact still exists and matches the pinned hash.",
+    "Every membership shard freeze acknowledgement remains valid for the same MEMBERSHIP_EPOCH and CLOSURE_GENERATION.",
+    "No normal membership write exists after its shard freeze acknowledgement.",
+    "Observer records are excluded from normal membership roots and have mutation_eligible=false and integration_eligible=false.",
+    "All other clause [209] pinned-world components exactly match their pinned values.",
+    "Only then may the expected-version COMPLETE CAS of [215] execute."
+  ],
+  "REOPEN_TRIGGERS": [
+    "Any normal membership write after freeze.",
+    "Any shard head/snapshot mismatch.",
+    "Any missing shard acknowledgement.",
+    "Any membership or drain root mismatch.",
+    "Any observer record that acquires normal membership, mutation, or integration eligibility.",
+    "Any change to another pinned-world component.",
+    "Any ambiguous control state or crash that prevents proving the frozen universe."
+  ],
+  "CRASH_RECOVERY": [
+    "Crash before all shard freeze acknowledgements: remain pre-pin and resume/rebuild freeze acknowledgements; COMPLETE is impossible.",
+    "Crash after immutable manifests exist but before PINNED_WORLD_READY fence CAS: revalidate every shard acknowledgement and manifest hash before CAS.",
+    "Crash after PINNED_WORLD_READY: resume from the pinned immutable manifest ids; any mismatch forces REOPEN_REQUIRED.",
+    "Never infer freeze success from absence of recent writes alone."
+  ],
+  "TORTURE_TESTS_REQUIRED": [
+    "Join storm during CLOSURE_MEMBERSHIP_FORMING.",
+    "Normal-membership write racing the per-shard freeze acknowledgement.",
+    "Post-pin join storm proving only observer records are created and MEMBERSHIP_ROOT_HASH is unchanged.",
+    "Delayed stale writer from the pre-closure MEMBERSHIP_EPOCH.",
+    "Shard freeze acknowledgement followed by an unauthorized shard write.",
+    "Missing empty-shard acknowledgement.",
+    "Crash before pin, crash after manifest creation, crash after pin, and retry.",
+    "Two independent sweeps plus a post-sweep observer join immediately before COMPLETE CAS.",
+    "Verify the observer join cannot alter any pinned closure root or authoritative fence predicate."
+  ],
+  "SAFETY_ARGUMENT": "The confirmed counterexample requires a post-pin write to the normal current closure membership universe that does not alter Mission Fence STATE_VERSION. This repair removes that transition from the valid state space: normal membership writes are frozen before pin and post-pin participants use a separate read-only observer namespace. Therefore sharded observer activity cannot change MEMBERSHIP_ROOT_HASH or DRAIN_MANIFEST_ROOT_HASH, and any illegal write to the frozen namespace is a closure blocker that forces REOPEN.",
+  "FINDING_DISPOSITION_IF_INDEPENDENTLY_VERIFIED": "RESOLVED_BY_CONTROL_PROTOCOL_REPAIR",
+  "PRODUCT_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
