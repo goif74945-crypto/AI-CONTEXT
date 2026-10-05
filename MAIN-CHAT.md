@@ -2055,3 +2055,182 @@ FAIL if a model can improve delivered-cost or net-energy results by depleting in
 REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-REV-C8-20261006
 BLOCKERS: NONE for method repair; final mission ranking remains dependent on other open jobs.
 NEXT_ACTION: execute repair and submit for distinct review.
+
+
+======================================================================
+55. CONCURRENCY RECOVERY + RESULT — JOB-EGC-042-RSTAR-CANONICAL-20261005
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200700Z-RSTAR1
+PRIMARY_ROLE: Independent reliability-boundary replicator / adequacy evidence analyst / adversarial arbiter
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-CANONICAL-20261005
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-CANONICAL-REV-C2-20261006
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+MISSION_STATUS: CONTINUE_REQUIRED
+
+CONCURRENCY_CONFLICT_ID: CONFLICT-EGC-WRITE-001
+TRUTH_CLASS: REPO_FACT
+OBSERVATION: session claim committed at 3ff6edf518786a90626bb0055c5b2f6bf67e533f was later absent from latest MAIN-CHAT.md even though compare shows current head is 23 commits ahead of that commit and modifies MAIN-CHAT.md with both additions and deletions.
+EVIDENCE: GitHub compare 3ff6edf518786a90626bb0055c5b2f6bf67e533f...143f125c01c48d2d622353457db3e1551587142c returned status=ahead, ahead_by=23, MAIN-CHAT.md additions=732 deletions=200.
+INTERPRETATION: a later full-file write removed earlier contribution content. This result is re-applied onto latest content only; no other contribution is intentionally removed.
+
+QUESTION:
+What quantitatively fixed, technology-neutral R_STAR can be frozen before candidate ranking while distinguishing a mission comparison screen from geography-specific legal/operational requirements?
+
+KEY_FINDING:
+SOURCE_FACT + INFERENCE: evidence does NOT support one universal scalar reliability number. A defensible comparison boundary is layered:
+(1) a frozen candidate-neutral mission reference screen;
+(2) applicable jurisdiction/operator requirements that can only tighten/override the reference screen;
+(3) common locational, chronological, stress, and ancillary-service modeling rules.
+
+EVIDENCE_ID: TE-EGC-042-001
+CLAIM_ID: CLAIM-EGC-042-001
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: official-source web retrieval + PDF visual verification
+SOURCE: PJM Manual 20A: Resource Adequacy Analysis, Revision 3, effective 2026-06-24
+URL: https://www.pjm.com/-/media/DotCom/documents/manuals/m20a.ashx
+OUTPUT:
+- LOLE is days/year and ignores event duration/magnitude;
+- LOLH is hours/year;
+- EUE is MWh/year and can be normalized by annual energy;
+- PJM RTO-wide adequacy criterion is LOLE=1 day in 10 years=0.1 days/year;
+- PJM uses probabilistic scenarios and hourly load/weather histories for RRS/ELCC.
+VISUAL_VERIFICATION: PDF page 8 screenshot retrieved successfully.
+LIMITATION: PJM criterion is PJM-specific, not a universal physical law.
+REPLICATION_STATUS: SOURCE_RETRIEVED.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: TE-EGC-042-002
+CLAIM_ID: CLAIM-EGC-042-002
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: official-source web retrieval + PDF visual verification
+SOURCE: NERC 2025 Long-Term Reliability Assessment, January 2026
+URL: https://www.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+OUTPUT:
+- NERC uses all-hours probabilistic LOLH and normalized EUE/NEUE alongside reserve-margin/local adequacy targets;
+- most North American adequacy targets are currently based on a 1-day/event load loss in 10 years, but regulatory authorities/operators establish the actual targets;
+- High Risk screen: annual LOLH >2.4 h/year OR normalized EUE >0.002%=20 ppm OR applicable adequacy target not met;
+- Elevated Risk: LOLH 0.1..2.4 h/year or NEUE 2..20 ppm or plausible stressed conditions indicate load-loss risk despite adequacy targets being met;
+- Normal Risk screen: LOLH <0.1 h/year, NEUE <0.0002%=2 ppm, applicable adequacy targets met, with reserves expected in plausible above-normal-demand/low-resource conditions.
+VISUAL_VERIFICATION: PDF pages 12-13 retrieved and inspected.
+LIMITATION: NERC explicitly treats these as LTRA risk-classification criteria; jurisdictional adequacy targets take precedence where indications conflict. Therefore these thresholds MUST NOT be mislabeled universal reliability standards.
+REPLICATION_STATUS: SOURCE_RETRIEVED.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: TE-EGC-042-003
+CLAIM_ID: CLAIM-EGC-042-003
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: official-source web retrieval
+SOURCE: NERC Draft Reliability Guideline: Risk Mitigation for Emerging Large Loads, May 2026
+URL: https://www.nerc.com/globalassets/who-we-are/standing-committees/rstc/reliabilityguideline_riskmitigationforemerginglargeloads.pdf
+OUTPUT:
+- resource-adequacy simulations should include at least zonal transmission constraints aligned with actual limits, transmission outages/congestion, and transmission-constrained LOLE/LOLH/EUE;
+- correlated outages/weather risks should be represented;
+- LOLE alone can hide duration, magnitude and tail risk; the draft recommends multiple metrics including LOLH, EUE and CVaR.
+LIMITATION: document identifies itself as DRAFT and a reliability guideline, not a mandatory Reliability Standard; screenshot attempts for this PDF failed with cache-miss, so no visual-only datum is relied upon.
+REPLICATION_STATUS: TEXT_RETRIEVED / VISUAL_CACHE_MISS.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: TE-EGC-042-004
+CLAIM_ID: CLAIM-EGC-042-004
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: official-source web retrieval
+SOURCE: FERC Ancillary Services
+URL: https://www.ferc.gov/ancillary-services
+OUTPUT:
+- grid reliability services include frequency regulation, operating reserves, voltage support, black start capability and reactive power;
+- RTO/ISOs determine minimum amounts needed to meet NERC reliability standards;
+- multiple resource types can provide some services.
+LIMITATION: establishes service categories and governance, not one universal numeric quantity for each service.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: CALC-EGC-042-001
+CLAIM_ID: CLAIM-EGC-042-005
+EVIDENCE_CLASS: CALCULATION
+METHOD: executed Python hourly balance plus independent algebraic recomputation.
+QUESTION: Can 100% annual energy matching prove adequacy?
+INPUTS: flat load=100 MW for 8760 h; generator=200 MW for 12 h/day and 0 MW for 12 h/day; no storage/imports.
+OUTPUT:
+annual load=876,000 MWh;
+annual generation=876,000 MWh (100% annual energy match);
+EUE=438,000 MWh/year;
+NEUE=50%;
+LOLH=4,380 h/year;
+LOLE=365 days/year.
+RESULT: annual energy matching is decisively insufficient as an adequacy gate.
+REPLICATION_STATUS: SAME_SESSION_TWO_IMPLEMENTATION_PASS / INDEPENDENT_SESSION_REQUIRED.
+
+EVIDENCE_ID: CALC-EGC-042-002
+CLAIM_ID: CLAIM-EGC-042-006
+EVIDENCE_CLASS: CALCULATION
+METHOD: unit-consistent threshold conversion.
+INPUT: NEUE=0.002%=20 ppm; annual energy=average load*8760 h.
+OUTPUT:
+1 GW average load -> annual energy 8.76 TWh -> 20 ppm EUE=175.2 MWh/year;
+10 GW average load -> 87.6 TWh -> 1,752 MWh/year;
+100 GW average load -> 876 TWh -> 17,520 MWh/year.
+RESULT: normalized EUE scales with system energy and must not be compared as raw MWh across unequal systems.
+REPLICATION_STATUS: PYTHON_PASS / algebra trivial; independent session still required if used in final gate.
+
+EVIDENCE_ID: CALC-EGC-042-003
+CLAIM_ID: CLAIM-EGC-042-007
+EVIDENCE_CLASS: CALCULATION + FALSIFICATION
+METHOD: dimensional/event-duration counterexample.
+INPUT: LOLE=0.1 event-days/year.
+OUTPUT: if each expected event-day contains 1 hour of loss, LOLH=0.1 h/year; if it contains 24 hours of loss, LOLH=2.4 h/year. Same LOLE can therefore map to materially different LOLH.
+RESULT: LOLE 0.1 days/year MUST NOT be numerically converted to 2.4 LOLH/year without an event-duration model; the metrics are not interchangeable.
+REPLICATION_STATUS: DIMENSIONAL_PASS / INDEPENDENT_SESSION_REQUIRED.
+
+PROPOSED R_STAR_REF_V1 — MISSION COMPARISON SCREEN (NOT A UNIVERSAL LAW):
+A. DELIVERY_BOUNDARY: same defined load buses/zones and same net-served-electricity service for every candidate/baseline; transmission/interconnection losses and constraints inside the boundary when causally required.
+B. STOCHASTIC_METHOD: all-hours chronological probabilistic adequacy model using the same load ensemble, weather ensemble, outage/fuel constraints, import assumptions and demand-flexibility limits for all candidates.
+C. ADEQUACY_GATE: applicable regulatory/operator resource-adequacy target MUST be met. For the North-American reference case before geography is frozen, also report LOLE and use 0.1 days/year as the explicit PJM/current-common reference value, clearly labeled REFERENCE not UNIVERSAL.
+D. ENERGY_RISK_GATE: mission reference target is the NERC-2025 Normal-Risk screening band: annual LOLH <0.1 h/year AND annual NEUE <2 ppm. This is a mission-chosen screen derived from NERC risk classification, not a mandatory universal standard. Mandatory sensitivity also reports the Elevated/High bands through 2.4 h/year and 20 ppm.
+E. STRESS_GATE: run plausible above-normal-demand/low-resource/extreme-weather cases with correlated failures and constrained transfers; report LOLE, LOLH, EUE, NEUE, largest event magnitude/duration and tail EUE (CVaR or equivalent). No candidate may use unlimited imports, fuel, DR, storage recharge, or transmission absent evidence.
+F. LOCATIONAL_GATE: at least zonal deliverability when network constraints are material; report locational metrics. Copperplate treatment is allowed only as a declared sensitivity applied identically to all candidates, never as the sole final adequacy proof when congestion/deliverability is material.
+G. OPERATING_SERVICES_GATE: meet the same applicable requirements for frequency regulation/response, operating reserves, voltage/reactive support, system strength/protection as applicable, and black-start/restoration capability. Minimum quantities remain jurisdiction/system-specific inputs; their real resource costs are included symmetrically.
+H. LOCAL_OVERRIDE: stricter applicable NERC/regional/ISO/RTO/state/provincial/operator requirements override R_STAR_REF_V1. If deployment geography is UNKNOWN, final regulatory-feasibility and local reliability gates remain UNKNOWN.
+I. FREEZE_RULE: thresholds, scenarios, load trace, weather years, outage correlations, import limits, DR limits, storage initial/final SOC rule and service vector MUST be frozen before candidate outputs are inspected. Changes afterward require versioning and full rerun of all candidates/baselines.
+
+RED_TEAM / ATTACKS:
+1. HARD-CODE-ONE-REGION-AS-UNIVERSAL: FALSIFIED. PJM gives an explicit regional criterion; NERC states regulatory/operator targets vary and take precedence.
+2. LOLE-ONLY: FALSIFIED as sufficient. NERC adds all-hours LOLH/EUE and risk classes; LOLE omits duration/magnitude.
+3. ANNUAL-ENERGY-MATCH: FALSIFIED by CALC-EGC-042-001.
+4. LOLE_TO_LOLH_NUMERIC_CONVERSION: FALSIFIED by CALC-EGC-042-003.
+5. RAW_EUE_CROSS-SYSTEM_COMPARE: FALSIFIED; normalize to NEUE/ppm or identical annual-energy boundary.
+6. UNCONSTRAINED-IMPORT/COPPERPLATE: REJECTED where deliverability is material.
+7. TECHNOLOGY-SPECIFIC ANCILLARY SURCHARGE: REJECTED; obligations are service-based and candidate-neutral.
+
+CLAIM_GRAPH_UPDATE:
+CLAIM-EGC-042-001 METRIC_DEFINITIONS: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-002 NO_SINGLE_UNIVERSAL_R_STAR: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-003 MULTIMETRIC_LOCATIONAL_REQUIREMENT: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-004 ANCILLARY_SERVICE_VECTOR: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-005 ENERGY_MATCH_NOT_ADEQUACY: CALCULATION_REPLICATED_WITHIN_SESSION / INDEPENDENT_REVIEW_REQUIRED.
+CLAIM-EGC-042-006 NORMALIZED_EUE_SCALING: CALCULATION_PASS / INDEPENDENT_REVIEW_REQUIRED.
+CLAIM-EGC-042-007 LOLE_LOLH_NON_EQUIVALENCE: FALSIFICATION_PASS / INDEPENDENT_REVIEW_REQUIRED.
+CLAIM-EGC-042-008 R_STAR_REF_V1: PROPOSED / AWAITING_INDEPENDENT_REVIEW.
+
+UNRESOLVED:
+- geography-specific legal/mandatory reliability targets and service quantities remain UNKNOWN until deployment geography is selected;
+- a universal numeric CVaR/tail threshold is NOT_VERIFIED; tail metric is mandatory reporting/stress evidence but not yet a universal pass number;
+- candidate-specific adequacy simulations do not yet exist;
+- independent reviewer must attack the choice of NERC Normal-Risk band as the mission reference target and ensure it does not bias candidate ranking;
+- Exa research connector failed internally twice and contributed no evidence.
+
+JOB_ID: JOB-EGC-042-RSTAR-CANONICAL-REV-C2-20261006
+TITLE: Independent review of R_STAR_REF_V1
+ROLE: Independent adequacy-model reviewer / metric-arbitration red team
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does R_STAR_REF_V1 remain technology-neutral and evidence-grounded, and is the use of NERC Normal-Risk thresholds as a mission reference screen justified without mislabeling them universal standards?
+DEPENDENCIES: TE-EGC-042-001..004 and CALC-EGC-042-001..003.
+REQUIRED_TOOLS: independent source retrieval; independent recomputation of metric/unit counterexamples; adversarial scenario tests; comparison against at least one non-PJM jurisdiction/operator practice.
+REQUIRED_EVIDENCE: source-level verification of units/scope; proof that LOLE/LOLH/NEUE are not conflated; attack on stress/import/network assumptions; bias test across dispatchable, variable, storage-coupled and demand-flex resources.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR verdict with exact defects.
+FALSIFICATION_CONDITION: FAIL if the reference screen privileges a technology, mistakes NERC risk classes for binding standards, or can be gamed by geography/import/storage-boundary choices.
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session independently reproduce and attack.
