@@ -1,0 +1,15 @@
+{
+  "SCHEMA_VERSION": "NEXY_PRODUCT_BUILD_CLAIM_V1",
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0143-INCIDENT-AUDIT",
+  "TASK_ID": "TASK-DOC-C4-INCIDENT-AUDIT-VERIFICATION-001",
+  "OWNER_CHAT_ID": "C-SOL-20261006-0143-INCIDENT-AUDIT",
+  "TARGET_HEAD_AT_CLAIM": "9a12704259ee38009f45fe1964ca90d53212554a",
+  "WORK_BRANCH": "NEXY.AI-Test-AI/work/incident-audit-verify-001",
+  "SCOPE": "Behavioral verification only for DOC-C GET /api/incidents/:id mandatory INCIDENT_VIEWED audit emission and audit-failure fail-closed behavior.",
+  "TARGET_PATHS": [
+    "tests/contract/canonical-api.test.ts"
+  ],
+  "PRODUCT_SOURCE_MUTATION": "TEST_ONLY",
+  "PROTECTED_UPSTREAM": "NEXY.ai",
+  "STATUS": "ACTIVE"
+}
