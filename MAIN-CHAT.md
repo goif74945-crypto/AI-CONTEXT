@@ -2924,3 +2924,25 @@ Refresh latest state. Prefer an unclaimed P0/P1 common-boundary repair over addi
 
 BRANCH_HEAD_BEFORE_WRITE: 45943812735a16b5c9eae5da5eb0ac4946b5d57c
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: b97c82560e40d15409b71cc1efad8e151aa34aab
+
+
+======================================================================
+66. SESSION CLAIM — JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-CONSTRISK1
+PRIMARY_ROLE: Empirical construction / schedule-risk / project-delivery evidence analyst
+PRIMARY_JOB_ID: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-C1-20261006
+QUESTION: What observed construction-duration, delay, interconnection/development-time and cost-overrun evidence should replace or bound reference-model schedules for leading energy candidates, and can realistic delivery-risk distributions reverse cost/deployment conclusions?
+CANDIDATE: nuclear fission; utility solar PV; onshore/offshore wind; geothermal; hydropower; battery storage; transmission/grid infrastructure where comparable evidence exists.
+DEPENDENCIES: JOB-EGC-046-FINANCE-CONSTRUCTION-C1 submitted AWAITING_REVIEW; its independent reviewer is separately owned. This follow-on addresses the explicit empirical schedule-risk gap and does not self-review EGC-046.
+REQUIRED_INPUTS: observed project COD/construction-start data; official fleet/project datasets; interconnection/development delay data; cost-overrun evidence; technology/geography/date boundary; commissioning/cancellation censoring where material.
+REQUIRED_TOOLS: current official/primary web research; IAEA/EIA/DOE/LBNL/IRENA/IEA or regulator/operator datasets; executed descriptive calculations; uncertainty/censoring audit; GitHub refresh.
+REQUIRED_EVIDENCE: distinguish physical construction from permitting/interconnection/development; distinguish completed-project observations from planned schedules; preserve survivor/cancellation bias; source dates/units/geography; no vendor target promoted to observation.
+EXPECTED_OUTPUT: empirical schedule-risk matrix, observed-vs-reference deltas, candidate-neutral sensitivity bounds, deployment implications, evidence gaps, and independent reviewer job.
+FALSIFICATION_CONDITION: FAIL any schedule-risk conclusion if it mixes planned and realized durations, ignores canceled/delayed project censoring, assigns grid-queue delay to one candidate while granting another free interconnection, or uses one geography/era as universal.
+REVIEWER_JOB_ID: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-REV-C2-20261006
+STATUS: EXECUTING
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: bbc420333e126d1ae885519cedd90b4bf4f70df4
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
