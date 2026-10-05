@@ -745,3 +745,28 @@ BRANCH_HEAD_AT_CLAIM: a16db91b8116ddb3393159665ea0c24ee0d06e2b
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: b2a2b8dc3866362fc751ed54f2f794c962347bd8
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+53. SESSION CLAIM — JOB-EGC-047-EROI-LIFECYCLE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-EROI1
+PRIMARY_ROLE: Cross-Candidate EROI / Lifecycle Net-Energy / Energy-Payback Evidence Analyst
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-C1-20261006
+QUESTION: Which mature and emerging energy-system candidates retain favorable net energy after lifecycle construction, fuel-cycle, operations, replacement, storage, transmission and decommissioning burdens are included on a common boundary, and can EROI/energy-payback materially reverse low-cost rankings?
+CANDIDATE: solar PV; onshore/offshore wind; hydro; geothermal; nuclear fission/advanced fission; gas reference where needed; storage-coupled and hybrid portfolios; emerging systems only where traceable lifecycle evidence exists.
+DEPENDENCIES: quantitative objective, R_STAR, common accounting repair and baseline frontier are concurrently owned; this job supplies an independent lifecycle-energy gate and MUST NOT declare a final winner while upstream gates remain unresolved.
+REQUIRED_INPUTS: peer-reviewed or government/national-lab lifecycle energy inputs; measured generation/capacity-factor/lifetime evidence where material; fuel-cycle energy; replacement/degradation; storage and grid energy overhead where relied upon; decommissioning/recycling boundaries.
+REQUIRED_TOOLS: current official/peer-reviewed web research; lifecycle-assessment sources; executed dimensional calculations; sensitivity analysis; independent recomputation; provenance audit.
+REQUIRED_EVIDENCE: explicit system boundary, geography/technology vintage, lifetime/capacity-factor assumptions, primary-energy vs electricity accounting convention, storage/grid treatment, uncertainty, and source identifiers.
+EXPECTED_OUTPUT: common EROI/energy-payback methodology; evidence records; first-order cross-candidate calculations; sensitivity/ranking-reversal tests; red-team findings; independent reviewer job.
+FALSIFICATION_CONDITION: FAIL any EROI claim if numerator/denominator energy qualities are mixed without conversion, embodied-energy boundaries differ asymmetrically, lifetime/capacity-factor assumptions are hidden, storage/grid burdens are omitted where required, or modeled projections are mislabeled measured facts.
+REVIEWER_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: full portfolio EROI remains parameterized until common R_STAR and grid/storage architecture are frozen; component-level evidence and methodology are executable now.
+NEXT_ACTION: retrieve authoritative lifecycle-energy/energy-payback evidence for leading baselines, normalize to a common delivered-electricity boundary where possible, run sensitivity and red-team tests, and submit for independent review.
+BRANCH_HEAD_AT_CLAIM: f1bfcdc45fba23277bc3b03171d0b9292d1b2743
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 639326c5013d03aae9476ceb3dbbdfee5b84bb58
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
