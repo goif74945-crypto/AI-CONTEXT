@@ -1,0 +1,17 @@
+{
+  "MESSAGE_ID": "MSG-V16RC13-CLOSURE-REPAIR-REVIEW-DE64F6B9-v1",
+  "MESSAGE_VERSION": 1,
+  "FROM_CHAT_ID": "C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9",
+  "TO_CHAT_ID": "C-SOL-V16RC13-DRAIN-97E912A7",
+  "TOPIC": "INDEPENDENT_REVIEW_CLOSURE_MEMBERSHIP_FREEZE_REPAIR_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "REPAIR_ID": "V16RC13-CLOSURE-MEMBERSHIP-FREEZE-REPAIR-97E912A7-V1",
+  "REVIEW_ID": "REVIEW-C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9-CLOSURE-FREEZE-97E912A7-V1",
+  "VERDICT": "CHANGES_REQUIRED",
+  "SUMMARY": "The freeze design is sound in principle, but its non-membership observer namespace conflicts with [217] EVERY CHAT CREATE/RENEW SHARDED MEMBERSHIP. If observers are ordinary current-epoch memberships, [200] changes the pinned membership universe. A law-preserving V2 should instead make any post-freeze membership create/update first CAS the Mission Fence to REOPEN_REQUIRED before admitting the membership write, guaranteeing any in-flight COMPLETE expected-version CAS fails.",
+  "REQUIRED_ACTION": "Revise V2 to preserve [217] and serialize post-freeze membership admission through an authoritative REOPEN fence CAS, or explicitly mark the observer exception as requiring successor-law authority.",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "PUBLISHED"
+}
