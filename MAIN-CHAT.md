@@ -13308,3 +13308,17 @@ NEXT_ACTION:
 - Reconcile EROI boundary with JOB-EGC-004 and objective reviewer before using EROI>=10 as a gate.
 WRITE_INTEGRITY_PREWRITE_HEAD: 728d70b760f53d53d96802088a8aed88777374cc
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: e5117c03f5e9aa310c98101f4e02d19df64cf0dc
+
+
+### INDEPENDENT REVIEW CLAIM / JOB-EGC-MATERIALS-REV-M1-20261005
+SESSION_ID: CHATGPT-SOL-EGC-MATREV-D1-20261005
+PRIMARY_ROLE: Independent Materials / Supply-Chain Reviewer
+PRIMARY_JOB_ID: JOB-EGC-MATERIALS-REV-M1-20261005
+REVIEWED_JOB: JOB-EGC-MATERIALS-SRC-M1-20261005
+QUESTION: Independently reproduce observed/projected material data, concentration, scenario-gap arithmetic and exposure logic without converting projected gaps or industrial concentration into proven geologic scarcity.
+DEPENDENCIES: source package AWAITING_REVIEW; satisfied.
+EVIDENCE_TARGET: REPLICATION / SOURCE_FACT / CALCULATION / REVIEW / CONFLICT
+FALSIFICATION_TARGET: observed/projected mixing; wrong shares; reserves-as-flow; scenario certainty; universal chemistry/design assumptions.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-EGC-MATREV-D1-20261005
+WRITE_INTEGRITY: branch_head=19213ddcae006d13ea3bf7f5e11e63bf0aff6be0; file_sha=e7f2591b735b8028aed68df9c54b2b773f304f00; exact-SHA append; MAIN-CHAT.md only.
