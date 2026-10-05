@@ -3,11 +3,11 @@
   "FINDING_ID": "FINDING-GLOBAL-API-OWNER-RECOVERY-SESSION-001",
   "REQ_ID": "REQ-DOC-C-4-1-GLOBAL-API-LAW",
   "MISSION_ID": "MISSION-AUTH-001",
-  "OWNER": "UNASSIGNED",
+  "OWNER": "C-SOL-20261006-P0-OWNER-RECOVERY",
   "PRIORITY": "P0",
   "RISK": "CRITICAL_AUTHORITY_SECURITY",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
-  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "STATUS": "ACTIVE",
+  "BASE_SHA": "0440c47f14dadb1a4fb4bcdd3fd53d7bb9fce6c9",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "TARGET_PATHS": [
     "apps/web/app/api/auth/owner-recovery/route.ts",
@@ -15,9 +15,7 @@
     "packages/contracts/auth.ts",
     "tests/coverage/owner-recovery-control-plane.test.ts"
   ],
-  "BLOCKERS": [
-    "INC-BRANCH-NAMESPACE-001: mandated worker ref namespace is Git-invalid while integration ref exists."
-  ],
+  "BLOCKERS": [],
   "ACCEPTANCE": [
     "Do not implement a semantic choice until authority conflict is resolved.",
     "If active authority explicitly exempts this recovery mutation, encode the exemption narrowly and test CSRF/idempotency/rate-limit/eligibility/session-revocation evidence.",
@@ -33,5 +31,11 @@
     "evidence": "NEXY-BUILD-CONTROL/RESULTS/REVIEW-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-C-SOL-20261005-1923.json",
     "required_direction": "Remove/disable unauthorized mutation surface unless later active authority explicitly adds a narrow exemption."
   },
-  "NEXT_ACTION": "After a Git-valid V8 worker isolation mechanism is explicitly authorized, refresh integration HEAD, claim one-writer scope, disable/remove the unauthorized sessionless owner-recovery mutation surface narrowly, update affected tests, run security/API tests, independent review/red-team, integrate and reverify."
+  "NEXT_ACTION": "After a Git-valid V8 worker isolation mechanism is explicitly authorized, refresh integration HEAD, claim one-writer scope, disable/remove the unauthorized sessionless owner-recovery mutation surface narrowly, update affected tests, run security/API tests, independent review/red-team, integrate and reverify.",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001",
+  "NAMESPACE_RESOLUTION": {
+    "invalid_requested_prefix": "NEXY.AI-Test-AI/work/*",
+    "git_valid_prefix": "NEXY.AI-Test-AI-work/*",
+    "authority": "latest explicit user build instruction"
+  }
 }
