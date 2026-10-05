@@ -6,7 +6,7 @@
 - INTEGRATION_BRANCH: NEXY.AI-Test-AI
 - BASE_SHA: 07dd617109fd4730582f3615cdaf2bbbe277b585
 - WORKER_BRANCH: work/NEXY-AI-Test-AI/T-DRAFT-SESSION-ISOLATION-2D6A7C91
-- STATUS: ACTIVE
+- STATUS: FROZEN_FOR_SINGLE_BRANCH_MIGRATION
 - MUTATION_SCOPE:
   - apps/web/lib/directive-draft.ts
   - apps/web/app/directives/new/page.tsx
@@ -29,3 +29,7 @@
   - no NEXY.ai mutation.
   - no global/localStorage migration.
   - no preservation of ambiguous v1 unowned draft content.
+
+- MIGRATION_PROPOSAL: NEXY-BUILD-CONTROL/PRODUCT-PROPOSALS/S4-DIRECTIVE-CREATE/C-SOL-20261006-DRAFT-ISOLATION-2D6A7C91/PROPOSAL-DRAFT-SESSION-ISOLATION-2D6A7C91.json
+- SOURCE_BRANCH_WRITE_ALLOWED: FALSE
+- NEXT_PRODUCT_PATH: proposal review/discussion/vote/lease only
