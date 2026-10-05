@@ -8812,3 +8812,24 @@ FAIL if V3 can become canonical without rerun; any mixed V2/V3 integrated compar
 STATUS: OPEN
 BLOCKERS: distinct reviewer + downstream rerun required before canonical migration.
 NEXT_ACTION: independent session reviews C9 and audits downstream scale-version dependencies.
+
+
+======================================================================
+72. SESSION CLAIM — JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REV-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0600+07-COSTBASEREV
+PRIMARY_ROLE: Independent Objective Cost-Base / Joint-Uncertainty / Deployment-Acceptance Reviewer
+PRIMARY_JOB_ID: JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REV-20261006
+REVIEW_TARGET: JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REPAIR-20261006
+QUESTION: Does the repaired LOW_COST unit conversion, uncertainty architecture, and 365-day deployment acceptance rule preserve the frozen mission goalposts and prevent candidate-favorable price-base, probability, state-pairing, or partial-year gaming?
+DEPENDENCIES: repair target AWAITING_REVIEW; OBJECTIVE_V2 and scale-anchor arbitration remain separate dependencies; final baseline and common accounting are not assumed solved.
+REQUIRED_TOOLS: current official BEA/FRED/ALFRED/BLS source retrieval; independent Python/Wolfram arithmetic; uncertainty counterexamples; chronology/leap-year/staged-commissioning attacks; source-vintage audit.
+EVIDENCE_TARGET: independently verify 133.411/128.974 price-index provenance and threshold conversion; test GDPDEF-vs-CPI sensitivity classification; reproduce uncertainty counterexample; attack U1 calibration/correlation requirements and U2 allowed-joint-state closure; test 365-day acceptance against partial-year annualization, leap-day chronology, staged COD and pipeline asymmetry.
+FALSIFICATION_TARGET: threshold changes instead of unit conversion; source/price bases mixed; probability distribution invented; candidate and baseline evaluated under different exogenous states; allowed-state set cherry-picked; partial/transient service annualized into MASSIVE pass; or scale-anchor value silently hard-coded before arbitration.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0600+07-COSTBASEREV
+BRANCH_HEAD_AT_CLAIM: b3a8c950c0cd59289baeeb1c0f717d51648a51eb
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 7ec1d6b517673d5a800010cce1a47de20713d68e
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
