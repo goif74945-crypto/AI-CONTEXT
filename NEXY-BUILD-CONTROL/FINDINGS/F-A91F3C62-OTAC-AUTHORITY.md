@@ -36,4 +36,7 @@ EVIDENCE:
 SUGGESTED_DIRECTION:
 Restore only OTAC validity to DOC-C canonical 5 min while preserving separate 15-minute brute-force lock window; update affected tests/comments consistently and execute focused auth/default/check-doc-c verification.
 
-STATUS: OPEN
+STATUS: RESOLVED_SOURCE_RESTORED_EXECUTION_REVERIFY_REQUIRED
+
+RESOLUTION: Repair commit a363fdb7b8ced513303f3e67ba4520dfcc1e9903 restored final-DOC-C 300000 ms OTAC validity, and exact Test-AI HEAD retains the repaired blobs. Runtime exact-head PASS remains unestablished because prior CI executed zero steps.
+RECONCILIATION_RESULT: NEXY-BUILD-CONTROL/RESULTS/RECONCILE-STALE-AUTH-HOTSPOTS-C-SOL-20261005-1921.json
