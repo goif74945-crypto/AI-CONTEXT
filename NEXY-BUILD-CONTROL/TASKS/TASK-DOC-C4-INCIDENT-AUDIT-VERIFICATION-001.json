@@ -7,7 +7,7 @@
   "OWNER_CHAT": "C-SOL-20261006-0143-INCIDENT-AUDIT",
   "BASE_SHA": "9a12704259ee38009f45fe1964ca90d53212554a",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
-  "WORK_BRANCH": "NEXY.AI-Test-AI/work/incident-audit-verify-001",
+  "WORK_BRANCH": "work/NEXY.AI-Test-AI/incident-audit-verify-001",
   "SEMANTIC_SCOPE": "Behavioral verification only for DOC-C GET /api/incidents/:id mandatory INCIDENT_VIEWED audit emission and audit-failure fail-closed behavior.",
   "TARGET_PATHS": [
     "tests/contract/canonical-api.test.ts"
@@ -23,5 +23,11 @@
     "Audit persistence rejection prevents HTTP 200 and returns dependency failure.",
     "Focused canonical API contract test passes at candidate SHA.",
     "No NEXY.ai mutation."
-  ]
+  ],
+  "WORKER_NAMESPACE_EVIDENCE": {
+    "rejected_legacy_ref": "NEXY.AI-Test-AI/work/incident-audit-verify-001",
+    "result": "HTTP_422_REFERENCE_UPDATE_FAILED",
+    "cause": "Git ref namespace conflict with existing NEXY.AI-Test-AI branch",
+    "authority": "legacy literal descendant prefix is superseded; isolated worker branch remains required"
+  }
 }
