@@ -1,0 +1,24 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-FREEZE-RECOVER-001",
+  "REQ_ID": "REQ-DOC-C-4-2-FREEZE-RECOVER",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TYPE": "CANONICAL_ERROR_MATRIX_DRIFT",
+  "SEVERITY": "P1",
+  "STATUS": "REPRODUCED_BLOCKED",
+  "OBSERVED": [
+    "packages/api/directives.ts emits 404 FREEZE_RECOVERY_DENIED for missing/unowned incident.",
+    "The same handler emits 423 FREEZE_RECOVERY_DENIED for runtime/durable state outside the recovery precondition.",
+    "tests/integration/freeze/recover.spec.ts asserts at least the undeclared 423 FREEZE_RECOVERY_DENIED behavior."
+  ],
+  "EXPECTED": [
+    "Final DOC-C §4.2 declares 403 FORBIDDEN, 409 FREEZE_RECOVERY_DENIED, 423 SYSTEM_IN_FREEZE for this route.",
+    "Repair must preserve OWNER-only auth, idempotency, audit events, tenant isolation and fail-closed behavior."
+  ],
+  "CLASSIFICATION": [
+    "SPEC_MISMATCH",
+    "TEST_ORACLE_DEFECT"
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "SOURCE_REQUIREMENT": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-4-2-FREEZE-RECOVER.json"
+}
