@@ -3838,3 +3838,233 @@ WRITE_INTEGRITY:
 - file SHA read: e0e647ba8ab709a4a8d946f0dbcf6f909b4b163d
 - stale-write check: update_file must accept exactly this blob SHA; otherwise abort/reconcile.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+32. JOB-EGC-003 EVIDENCE PACKAGE — SCALE / RELIABILITY BASELINE
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:15:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190900Z-D1
+PRIMARY_JOB_ID: JOB-EGC-003
+ROLE: Baseline Scale / Reliability Analyst
+STATUS: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+QUESTION:
+What operational scale, capacity factor/availability, and deployment evidence should constrain the meaning of MASSIVE_ENERGY without privileging a technology?
+
+TOOL_EVIDENCE_ID: TE-EGC003-D1-001
+TOOL_OR_METHOD: IEA Electricity Mid-Year Update 2026 source retrieval
+PURPOSE: Establish current global electricity-demand scale.
+EXECUTION_DATE: 2026-10-05
+SOURCE_OR_DATASET: IEA, Electricity Mid-Year Update 2026, Executive summary
+SOURCE_DATE: 2026-07 (latest mid-year update available in this execution)
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+RAW_OR_KEY_OUTPUT:
+- Global electricity consumption: 28,600 TWh in 2025.
+- Forecast: 30,700 TWh in 2027.
+- Forecast demand growth: +3.6% in 2026 and +3.8% in 2027.
+UNITS: TWh/year; percent/year.
+UNCERTAINTY: Forecast values for 2026-2027; 2025 figure is latest IEA estimate in this source.
+ASSUMPTIONS: NONE for quoted values.
+LIMITATIONS: Consumption/demand is not identical to gross generation; losses and own-use depend on boundary.
+REPRODUCIBILITY_INSTRUCTIONS: Open source URL and verify executive-summary numeric statements.
+INDEPENDENT_REPLICATION: NOT_VERIFIED.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Current world electricity use is order 10^4 TWh/year, so a MASSIVE_ENERGY target must be evaluated at at least multi-hundred-TWh to PWh/year scale if intended to be globally material.
+CLAIM_NOT_SUPPORTED: Does not prove any technology can supply that scale cheaply.
+
+TOOL_EVIDENCE_ID: TE-EGC003-D1-002
+TOOL_OR_METHOD: IEA Electricity 2026 source retrieval + revision audit
+PURPOSE: Establish growth-scale anchor and detect estimate revision.
+EXECUTION_DATE: 2026-10-05
+SOURCE_OR_DATASET: IEA, Electricity 2026, Demand chapter
+SOURCE_DATE: 2026-02/2026 report cycle
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/electricity-2026/demand
+RAW_OR_KEY_OUTPUT:
+- Report projected global electricity consumption to reach 33,600 TWh in 2030.
+- Average annual growth through 2030 approximately 1,100 TWh/year.
+- This earlier report used 28,200 TWh for 2025, versus 28,600 TWh in the later Mid-Year Update 2026.
+UNITS: TWh/year.
+UNCERTAINTY: Forecast; later 2026 update revises the 2025 estimate upward by 400 TWh (about 1.4%).
+ASSUMPTIONS: Later IEA update should supersede earlier estimate for current-scale anchoring unless a boundary difference is discovered by reviewer.
+LIMITATIONS: Revision means exact scale anchors should use ranges/versions, not fake precision.
+REPRODUCIBILITY_INSTRUCTIONS: Compare IEA Electricity 2026 Demand chapter with Mid-Year Update 2026 executive summary.
+INDEPENDENT_REPLICATION: NOT_VERIFIED.
+EVIDENCE_CLASS: SOURCE_FACT + CONFLICT_RESOLUTION_CANDIDATE.
+CLAIM_SUPPORTED: Approximately 1,000-1,100 TWh/year is the order of magnitude of one year's current global electricity-demand growth, providing a candidate-neutral reference scale for MASSIVE_ENERGY.
+CLAIM_NOT_SUPPORTED: Threshold adoption remains JOB-EGC-001/reviewer authority; this job only supplies the anchor.
+
+TOOL_EVIDENCE_ID: TE-EGC003-D1-003
+TOOL_OR_METHOD: U.S. EIA Electric Power Monthly Table 6.07.B
+PURPOSE: Establish measured fleet capacity-factor baselines across non-fossil technologies using one consistent national dataset.
+EXECUTION_DATE: 2026-10-05
+SOURCE_OR_DATASET: EIA Electric Power Monthly, Table 6.07.B; July 2026 data release dated 2026-09-24.
+SOURCE_DATE: 2026-09-24; annual row 2025.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b
+RAW_OR_KEY_OUTPUT_2025:
+- Geothermal capacity factor: 65.9%.
+- Conventional hydroelectric capacity factor: 35.3%.
+- Nuclear capacity factor: 91.0%.
+- Solar photovoltaic capacity factor: 24.4%.
+- Solar thermal capacity factor: 23.6%.
+- Wind capacity factor: 34.2%.
+UNITS: percent of time-adjusted capacity.
+UNCERTAINTY: National U.S. fleet average; geography, vintage, curtailment, weather and dispatch differ elsewhere.
+ASSUMPTIONS: Use only as operational baseline, not universal technology constant.
+LIMITATIONS: Capacity factor does not by itself measure availability, dispatchability, reliability value, storage need, or system cost.
+REPRODUCIBILITY_INSTRUCTIONS: Open table; read annual 2025 row.
+INDEPENDENT_REPLICATION: NOT_VERIFIED.
+EVIDENCE_CLASS: MEASUREMENT/SOURCE_FACT.
+CLAIM_SUPPORTED: Nameplate GW cannot be treated as delivered average GW; technology/fleet CF materially changes required installed capacity.
+CLAIM_NOT_SUPPORTED: Does not establish full-system delivered cost or firm capacity.
+
+TOOL_EVIDENCE_ID: TE-EGC003-D1-004
+TOOL_OR_METHOD: IRENA Renewable Capacity Statistics 2026 + official press release
+PURPOSE: Establish demonstrated global deployment throughput and installed renewable scale.
+EXECUTION_DATE: 2026-10-05
+SOURCE_OR_DATASET: IRENA Renewable Capacity Statistics 2026 / 1 Apr 2026 press release
+SOURCE_DATE: 2026-03/2026-04-01
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026 ; https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+RAW_OR_KEY_OUTPUT:
+- Total global renewable power capacity reached 5,149 GW at end-2025.
+- 692 GW renewable capacity added during 2025 (+15.5%).
+- Renewables represented 85.6% of total power-capacity expansion in 2025.
+UNITS: GW nameplate; percent growth/share.
+UNCERTAINTY: IRENA capacity definition is maximum net generating capacity; delivered annual energy depends on technology mix and CF.
+ASSUMPTIONS: NONE for quoted official figures.
+LIMITATIONS: Cannot convert 692 GW additions directly into delivered TWh without technology/geography/CF mix.
+REPRODUCIBILITY_INSTRUCTIONS: Verify official IRENA publication and press-release figures.
+INDEPENDENT_REPLICATION: NOT_VERIFIED.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Global supply chains have demonstrated annual renewable deployment in the several-hundred-GW nameplate range.
+CLAIM_NOT_SUPPORTED: Does not show that 692 GW/year of firm or continuous capacity was added.
+
+TOOL_EVIDENCE_ID: TE-EGC003-D1-005
+TOOL_OR_METHOD: Berkeley Lab Queued Up 2026
+PURPOSE: Quantify grid-interconnection/deployment bottleneck so queued/nameplate capacity is not mistaken for delivered scale.
+EXECUTION_DATE: 2026-10-05
+SOURCE_OR_DATASET: Lawrence Berkeley National Laboratory, Queued Up: 2026 Edition, data through end-2025
+SOURCE_DATE: 2026-05/2026-06 publication cycle
+SOURCE_URL_DOI_OR_IDENTIFIER: https://emp.lbl.gov/queues ; https://eta.lbl.gov/publications/queued-2026-edition-characteristics
+RAW_OR_KEY_OUTPUT:
+- ~8,200 active U.S. interconnection projects at end-2025.
+- 1,312 GW generation plus ~749 GW storage seeking interconnection.
+- Median interconnection-request-to-commercial-operation duration exceeded 5 years for projects built in 2025 where data were available.
+- Only 13% of capacity submitting requests in 2000-2020 had reached commercial operation by end-2025; 75% withdrawn and 10% still active.
+UNITS: projects; GW; years; percent of queued capacity.
+UNCERTAINTY: U.S.-specific; queue rules and project quality vary by region.
+ASSUMPTIONS: NONE for quoted Berkeley Lab findings.
+LIMITATIONS: Queue volume is not a forecast of built capacity.
+REPRODUCIBILITY_INSTRUCTIONS: Open Berkeley Lab 2026 queue report page and verify key highlights.
+INDEPENDENT_REPLICATION: NOT_VERIFIED.
+EVIDENCE_CLASS: SOURCE_FACT/OPERATIONAL_PROCESS_DATA.
+CLAIM_SUPPORTED: Deployment-scale analysis must include interconnection/transmission time and attrition; queue GW is not deliverable GW.
+CLAIM_NOT_SUPPORTED: Does not imply the same delay globally.
+
+TOOL_EVIDENCE_ID: TE-EGC003-D1-006
+TOOL_OR_METHOD: IAEA PRIS Analytics / PRIS world statistics
+PURPOSE: Independent global operational scale/availability anchor for nuclear generation.
+EXECUTION_DATE: 2026-10-05
+SOURCE_OR_DATASET: IAEA Power Reactor Information System (PRIS)
+SOURCE_DATE: PRIS pages updated 2026-07-27/28; generation year 2025.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://pris-stats.iaea.org/ ; https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+RAW_OR_KEY_OUTPUT:
+- Electricity produced by nuclear plants in 2025: 2,635.3 TWh.
+- PRIS current dashboard lists 417 reactors in operation and 379,608 MW(e) net capacity at retrieval time.
+- 2025 global fleet Energy Availability Factor (weighted, reactors with data): 84.1%.
+UNITS: TWh/year; MW(e); percent.
+UNCERTAINTY: Energy Availability Factor is not identical to capacity factor; dashboard operating capacity is a retrieval-time stock and should not be naively divided into 2025 generation.
+ASSUMPTIONS: NONE for quoted values.
+LIMITATIONS: Does not address construction cost, fuel cycle, safety, waste, financing, or build rate.
+REPRODUCIBILITY_INSTRUCTIONS: Open PRIS Analytics and world Energy Availability Factor trend page.
+INDEPENDENT_REPLICATION: NOT_VERIFIED.
+EVIDENCE_CLASS: MEASUREMENT/OPERATIONAL_SOURCE_FACT.
+CLAIM_SUPPORTED: A single mature technology family can physically operate at multi-PWh/year global output; MASSIVE_ENERGY must therefore be judged at substantial system scale rather than single-plant MW.
+CLAIM_NOT_SUPPORTED: Does not prove nuclear is the mission winner.
+
+TOOL_EVIDENCE_ID: TE-EGC003-D1-007
+TOOL_OR_METHOD: Python deterministic calculation (internal execution) + dimensional analysis
+PURPOSE: Convert annual energy anchors to continuous average power and quantify nameplate required for a 1,000 TWh/year net-energy scale using measured EIA 2025 CFs.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- E_world_2025 = 28,600 TWh/year (TE-EGC003-D1-001).
+- E_massive_anchor = 1,000 TWh/year (inference anchored to IEA ~1,100 TWh/year current annual demand growth; NOT yet an adopted threshold).
+- CF values from TE-EGC003-D1-003.
+PARAMETERS: 8,760 h/year.
+COMMAND_CODE_EQUATION_OR_METHOD:
+- P_avg[GW] = E[TWh/year] * 1000[GWh/TWh] / 8760[h/year].
+- P_nameplate[GW] = E[TWh/year] * 1000 / (8760 * CF).
+RAW_OR_KEY_OUTPUT:
+- 28,600 TWh/year -> 3,264.84 GW average global load equivalent.
+- 33,600 TWh/year -> 3,835.62 GW average (2030 IEA forecast from TE-EGC003-D1-002).
+- 1,000 TWh/year -> 114.16 GW continuous average.
+- 10% of 2025 global electricity consumption = 2,860 TWh/year -> 326.48 GW average.
+Nameplate needed for 1,000 TWh/year before storage/curtailment/system losses, using EIA 2025 fleet CF anchors:
+- Nuclear 91.0% -> 125.45 GW.
+- Geothermal 65.9% -> 173.22 GW.
+- Hydro 35.3% -> 323.39 GW.
+- Wind 34.2% -> 333.79 GW.
+- Solar PV 24.4% -> 467.85 GW.
+UNITS: TWh/year; GW average; GW nameplate.
+UNCERTAINTY: Dominated by transferability of U.S. fleet CF to target geography and by omitted curtailment/storage/transmission/losses; arithmetic itself deterministic.
+ASSUMPTIONS: 8760 h/year; no leap-year adjustment; no system losses in nameplate illustration.
+LIMITATIONS: Illustration only; NOT a firm-power or delivered-cost model.
+REPRODUCIBILITY_INSTRUCTIONS: Recompute equations with cited inputs; dimensional check: TWh*1000 GWh/TWh / h = GW.
+INDEPENDENT_REPLICATION: NOT_VERIFIED; reviewer required by mission law.
+EVIDENCE_CLASS: CALCULATION.
+CLAIM_SUPPORTED: Energy-based thresholds avoid nameplate gaming and expose technology-specific installed-capacity consequences.
+CLAIM_NOT_SUPPORTED: Does not rank technologies because system costs/firming/geography differ.
+
+PROPOSED_OBJECTIVE_ANCHOR_FOR_JOB-EGC-001 (INFERENCE, NOT VERIFIED):
+- Use >=1,000 TWh/year NET DELIVERED electricity (approximately 114 GW continuous average) as the first MASSIVE_ENERGY deployment-scale gate because it is approximately the order of one year's current global electricity-demand growth (~1,100 TWh/year in IEA Electricity 2026).
+- Separately stress-test a civilization-scale case at 10% of current global electricity consumption (~2,860 TWh/year, ~326 GW average).
+- Require both annual net delivered energy and continuous/reliability metrics; never accept nameplate GW alone.
+- Do not adopt this threshold until independent reviewer/JOB-EGC-001 checks arbitrariness and common system boundary.
+
+CONFLICT_ID: CONFLICT-EGC003-D1-001
+TOPIC: IEA 2025 global electricity-consumption estimate revision.
+SOURCE_A: Electricity 2026 Demand chapter = 28,200 TWh for 2025.
+SOURCE_B: Electricity Mid-Year Update 2026 = 28,600 TWh for 2025.
+DIFFERENCE: +400 TWh, approximately +1.4% in later update.
+LIKELY_CAUSE: forecast/estimate revision between report vintages; exact methodological delta NOT_VERIFIED.
+ARBITRATION: For current-scale anchoring use later 28,600 TWh with version/date label; reviewer must confirm no boundary change.
+STATUS: RESOLUTION_PROPOSED / AWAITING_REVIEW.
+
+RED_TEAM_CHECK:
+- Attack 1: 1,000 TWh/year could be arbitrary. Outcome: retained only as a proposed anchor because it matches the order of current annual global demand growth; not promoted to FACT or final threshold.
+- Attack 2: capacity factors can be misread as reliability/firm capacity. Outcome: explicitly prohibited; CF is energy utilization, not adequacy value.
+- Attack 3: 692 GW/year renewable deployment could be mistaken for 692 GW continuous. Outcome: explicitly rejected; requires technology mix and delivered-energy conversion.
+- Attack 4: 2,060 GW U.S. queue could be treated as near-term build. Outcome: rejected by measured attrition and >5-year median IR-to-COD for 2025 completions.
+- Attack 5: U.S. CF values could be universalized. Outcome: rejected; geography/fleet-specific limitation recorded.
+
+RESULT:
+- SOURCE_FACT: Current global electricity demand is ~28,600 TWh/year (latest IEA 2026 mid-year estimate for 2025).
+- CALCULATION: Equivalent average load is ~3.265 TW.
+- SOURCE_FACT: Demonstrated annual global renewable capacity build reached 692 GW nameplate in 2025; total renewable nameplate reached 5,149 GW.
+- SOURCE_FACT: U.S. interconnection queues demonstrate major deployment attrition and multi-year delays; queued capacity is not built capacity.
+- SOURCE_FACT: IAEA PRIS records 2,635.3 TWh nuclear generation in 2025 and 84.1% global energy availability factor for reactors with data.
+- INFERENCE: 1 PWh/year net delivered is a defensible candidate-neutral first anchor for MASSIVE_ENERGY because it is the order of current annual global demand growth, but it is NOT yet independently verified/adopted.
+- UNKNOWN: Common delivered-energy boundary, reliability standard, geographic scope, construction-time target, grid/storage boundary, and exact threshold acceptance remain open.
+- FALSIFIED: Any comparison using nameplate GW alone as proof of MASSIVE_ENERGY.
+
+STATUS_CHANGE:
+- JOB-EGC-003: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- GLOBAL_SOLVED remains NO.
+- CURRENT_WINNER remains NONE.
+
+REVIEW_REQUEST:
+- Independent session must reproduce TE-EGC003-D1-007 arithmetic from sources, verify the IEA revision/boundary, attack the 1 PWh/year anchor for arbitrariness, and check transferability of EIA CF data.
+- Suggested reviewer job: create JOB-EGC-036 if no unclaimed reviewer exists; do not let this session self-VERIFY.
+
+NEXT_HIGHEST_VALUE_ACTION:
+- Complete/review JOB-EGC-001 quantitative objective using this scale evidence plus cost/system-boundary evidence from other sessions.
+- In parallel, independent reviewer should claim replication of JOB-EGC-003.
+
+WRITE_INTEGRITY:
+- branch head read: 823b9ac791cfc3e79ad7d35d45d49940bff8bd25
+- file SHA read: bfbb77a0add5c8ed23eefc0f12ea9b35ab4863b4
+- stale-write check: update uses exact latest SHA and must fail on concurrent mutation.
+- commit/result: PENDING
