@@ -1,7 +1,7 @@
 {
   "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
   "chat_id": "C-SOL-20261006-0215-RUN-INCIDENT-RBAC",
-  "status": "CLAIMED",
+  "status": "COMPLETED_INTEGRATED_CI_QUEUED",
   "objective": "Stop S6 from issuing unauthorized incident-detail reads and hide incident-detail navigation from OPERATOR while preserving canonical run truth.",
   "requirement_gap": "DOC-C permits GET /api/runs/:id to OWNER/OPERATOR/AUDITOR but GET /api/incidents/:id only to OWNER/AUDITOR. Current S6 automatically fetches incident detail whenever a run is FREEZE and exposes OPEN INCIDENT to all run viewers, causing OPERATOR to issue a deterministic unauthorized request and see an unusable CTA.",
   "target_repository": "goif74945-crypto/NEXY.AI-",
@@ -30,5 +30,26 @@
     "OWNER/AUDITOR still obtain incident detail for FREEZE summary",
     "OWNER recovery behavior remains unchanged",
     "run detail remains available to OWNER/OPERATOR/AUDITOR"
-  ]
+  ],
+  "pr_number": 72,
+  "pr_head_sha": "9b5853580d3295ba5bcbfcaaa46d85af7b4d6c05",
+  "merge_sha": "26c35beb7ab07a62e4dd70916310f39e1ab58852",
+  "post_merge_observed_head": "26c35beb7ab07a62e4dd70916310f39e1ab58852",
+  "evidence": [
+    "Exact integration S6 keeps canonical run fetch independent of incident RBAC",
+    "Exact integration S6 gates incident detail fetch to OWNER/AUDITOR",
+    "Exact integration S6 gates OPEN INCIDENT to OWNER/AUDITOR",
+    "OWNER-only recovery gate remains present",
+    "Focused exact-worker structural checks: PASS",
+    "Integration run page remained byte-identical to worker base and new test path remained absent before merge",
+    "PR #72 was clean and merged with expected head SHA guard",
+    "Observed integration HEAD equals merge SHA"
+  ],
+  "ci": {
+    "status": "QUEUED",
+    "exact_head_run_id": 37361377944,
+    "six_system_run_id": 37361377929,
+    "note": "No CI pass/fail is claimed until jobs execute."
+  },
+  "completed_at": "2026-10-06T02:18:00+07:00"
 }
