@@ -6444,3 +6444,260 @@ CLAIMED_AT: UNKNOWN
 LAST_PROGRESS_AT: UNKNOWN
 BLOCKERS: JOB-EGC-FUSION-COMMERCIAL-I1-20261005 not yet AWAITING_REVIEW
 HANDOFF: Claim only after evidence package submission.
+
+
+======================================================================
+37. CANONICAL JOB-EGC-031 EVIDENCE SUBMISSION — INDEPENDENT BASELINE REPLICATION
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+PRIMARY_JOB_ID: JOB-EGC-031
+CANONICAL_LEASE: VERIFIED by TE-EGC-018-001 / CONFLICT-EGC-JOB031-001 resolution; first controlling lease commit = 17b63210b0d27e30007fa4d8dd02a0a5f1186126.
+STATUS_TARGET: AWAITING_REVIEW
+REVIEWER_JOB_ID: JOB-EGC-032
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+SCOPE:
+- Independently re-retrieve current authoritative baseline anchors.
+- Cross-examine JOB-EGC-001 objective anchors and JOB-EGC-036 cost/source matrix.
+- Separate generator-only LCOE, project-level firm LCOE, and full-system delivered cost.
+- No candidate is selected or VERIFIED here.
+
+### EVIDENCE-EGC-031-001
+EVIDENCE_ID: EVIDENCE-EGC-031-001
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CLAIM-EGC-031-GEN-LCOE
+TOOL: current authoritative web retrieval
+METHOD: independent retrieval from IRENA publication landing page; compare against JOB-EGC-036 extraction
+DATE: 2026-10-06
+SOURCE: International Renewable Energy Agency (IRENA), Renewable power generation costs in 2025
+SOURCE_DATE: July 2026
+URL/DOI/IDENTIFIER: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025 ; ISBN 978-92-9260-749-4
+INPUTS: IRENA renewable-cost database / utility-scale projects commissioned in 2025
+PARAMETERS: global weighted-average LCOE by technology
+EQUATION/CODE/METHOD: direct source extraction; no arithmetic transformation
+OUTPUT:
+- Onshore wind = USD 33/MWh
+- Solar PV = USD 44/MWh
+- Hydropower = USD 62/MWh
+- Offshore wind = USD 78/MWh
+- Geothermal = USD 89/MWh
+- Bioenergy = USD 86/MWh
+- CSP = USD 115/MWh
+- IRENA reports >90% of utility-scale renewable projects commissioned in 2025 below the cheapest new fossil-fuel plant in their market.
+UNITS: USD/MWh
+UNCERTAINTY: project-level distribution not extracted in this job; global weighted averages hide geography/finance dispersion.
+ASSUMPTIONS: IRENA methodology as published.
+LIMITATIONS: Plant/project generation LCOE is not full-system delivered cost and cannot by itself establish reliability-equivalent superiority.
+REPRODUCTION_METHOD: retrieve cited IRENA landing page and compare the listed 2025 values.
+REPLICATION_STATUS: INDEPENDENT_EXTRACTION_PASS against EVID-EGC-036-001; same underlying IRENA dataset, therefore not an independent dataset replication.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / REPLICATION
+
+### EVIDENCE-EGC-031-002
+EVIDENCE_ID: EVIDENCE-EGC-031-002
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CLAIM-EGC-031-FIRM-BOUNDARY
+TOOL: current web retrieval + PDF text inspection + rendered-page visual inspection
+METHOD: independently inspect IRENA 24/7 renewables report pages defining firm LCOE, reliability and system boundary
+DATE: 2026-10-06
+SOURCE: IRENA, 24/7 renewables: The economics of firm solar and wind
+SOURCE_DATE: May 2026
+URL/DOI/IDENTIFIER: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf
+INPUTS: published IRENA model assumptions and selected 2025 site results
+PARAMETERS:
+- default reliability target = 95% unless otherwise stated
+- asset/project-level energy-based reliability metric
+- storage convention = utility-scale four-hour lithium-ion BESS unless otherwise stated
+- flat hourly output benchmark
+EQUATION/CODE/METHOD: source-reported firm-LCOE optimization/model; independent boundary extraction
+OUTPUT:
+- Firm LCOE explicitly adds storage/generation-overbuild/complementary-renewable expenditure to plant LCOE for a specified reliability target.
+- Selected high-quality non-China solar sites in Brazil, India, Oman, South Africa and Australia are reported around USD 65-82/MWh in 2025.
+- Selected wind-plus-storage results are around USD 59/MWh in China and roughly USD 88-94/MWh across Brazil, Germany and Australia in the report summary.
+- The report explicitly states ordinary LCOE does not include wider power-system integration costs including balancing, grid flexibility and transmission reinforcement.
+- The report's asset-level reliability is not equivalent to power-system adequacy/security.
+UNITS: USD/MWh; percent reliability
+UNCERTAINTY: material sensitivity to site resource, financing, configuration and reliability target; exact distribution not reduced to a single uncertainty interval.
+ASSUMPTIONS: report model assumptions as stated; selected-site values are model outputs, not field-measured tariffs.
+LIMITATIONS:
+- This is project-level MODEL evidence, not measured full-system cost.
+- 95% energy matching must not be presented as 99.9%+ grid reliability.
+- Costs from favorable resource regions are not globally transferable without geography/finance normalization.
+REPRODUCTION_METHOD: inspect report pp. 8, 21 and 31-33 (report page numbering) and verify reliability definition, system-cost exclusion and site values.
+REPLICATION_STATUS: INDEPENDENT_EXTRACTION_PASS against EVID-EGC-036-002 with scope refinement; not an independent model rerun.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / SIMULATION_RESULT_SOURCE / REPLICATION
+
+### EVIDENCE-EGC-031-003
+EVIDENCE_ID: EVIDENCE-EGC-031-003
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CLAIM-EGC-031-SYSTEM-COST-NEA
+TOOL: current authoritative web retrieval
+METHOD: independent retrieval of OECD NEA/EPRI 2025 generating-cost report and release
+DATE: 2026-10-06
+SOURCE: OECD Nuclear Energy Agency + Electric Power Research Institute, The Costs of Generating Electricity 2025
+SOURCE_DATE: 2026-09-17
+URL/DOI/IDENTIFIER: https://tdb.oecd-nea.org/jcms/pl_121713/the-costs-of-generating-electricity-2025
+INPUTS: plant-level cost data for 23 technologies in 21 NEA countries
+PARAMETERS: country/technology-specific LCOE; system costs treated separately
+EQUATION/CODE/METHOD: direct source extraction
+OUTPUT:
+- NEA/EPRI states that in most countries electricity generation now costs USD 100/MWh or more for many technologies.
+- It identifies existing nuclear long-term operation, hydro, and onshore wind/solar PV only when their system costs are excluded as technologies able to provide electricity below USD 100/MWh in the report's surveyed context.
+- NEA explicitly says LCOE must be complemented by country-specific system-cost analysis including reliability, flexibility, networks and integration.
+UNITS: USD/MWh
+UNCERTAINTY: country-specific cost ranges are broad; detailed per-technology table not recomputed in this job.
+ASSUMPTIONS: report methodology as published.
+LIMITATIONS: NEA country set is not a global weighted-average dataset and therefore does not numerically contradict IRENA global averages without normalization.
+REPRODUCTION_METHOD: retrieve cited NEA report page/news release and inspect stated report scope and system-cost caveat.
+REPLICATION_STATUS: INDEPENDENT_SOURCE_RETRIEVAL_PASS against EVID-EGC-036-004; same underlying NEA/EPRI report.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / REPLICATION
+
+### EVIDENCE-EGC-031-004
+EVIDENCE_ID: EVIDENCE-EGC-031-004
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CLAIM-EGC-031-DEMAND-SCALE
+TOOL: current IEA source retrieval + deterministic Python arithmetic
+METHOD: use latest retrieved 2026 IEA electricity update rather than older February estimate; independently recompute mission scale anchors
+DATE: 2026-10-06
+SOURCE: International Energy Agency, Electricity Mid-Year Update 2026
+SOURCE_DATE: 2026
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+INPUTS:
+- latest retrieved 2025 global electricity consumption = 28,600 TWh/year
+- 8,760 h/year
+PARAMETERS: annual-average conversion
+EQUATION/CODE/METHOD:
+- P_avg[GW] = E[TWh/year] * 1000 / 8760
+- 10% scale = 0.10 * 28,600 TWh/year
+- 1 TW continuous annual energy = 1 TW * 8760 h = 8,760 TWh/year
+OUTPUT:
+- 28,600 TWh/year -> 3,264.840 MW? CORRECTION: 3,264.840 GW = 3.264840 TW average.
+- 10% -> 2,860 TWh/year -> 326.484018 GW average.
+- 1 TW continuous -> 8,760 TWh/year -> 30.6293706% of the 28,600 TWh baseline.
+UNITS: TWh/year; GW; TW; percent
+UNCERTAINTY: arithmetic deterministic apart from rounding; source statistical estimate uncertainty not numerically stated on inspected IEA page.
+ASSUMPTIONS: 365-day year = 8760 h.
+LIMITATIONS: Annual-average power is not a firmness/reliability metric.
+REPRODUCTION_METHOD: divide TWh/year by 8.76 TWh per average GW-year; independently re-fetch latest IEA update.
+REPLICATION_STATUS: ARITHMETIC_PASS against JOB-EGC-001 values 2,860 TWh/year and 326.484 GW; same IEA source family.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION
+
+CONFLICT_ID: CONFLICT-EGC-031-IEA-DEMAND-001
+TRUTH_CLASS: CONFLICT -> RESOLUTION_PROPOSED
+SOURCE_A: IEA Electricity 2026 (earlier 2026 edition) reports 28,200 TWh for 2025.
+SOURCE_B: IEA Electricity Mid-Year Update 2026 reports 28,600 TWh for 2025.
+DELTA: +400 TWh = +1.4184% relative to 28,200 TWh.
+LIKELY_CAUSE: later estimate/update vintage; exact statistical revision decomposition UNKNOWN.
+RESOLUTION_PROPOSED: freeze 28,600 TWh for current mission objective because it is the later IEA 2026 update, with explicit vintage label. Do not silently mix both.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+### EVIDENCE-EGC-031-005
+EVIDENCE_ID: EVIDENCE-EGC-031-005
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CLAIM-EGC-031-DEPLOYMENT-BOTTLENECK
+TOOL: current authoritative web retrieval
+METHOD: independent retrieval of Berkeley Lab Queued Up 2026 publication
+DATE: 2026-10-06
+SOURCE: Lawrence Berkeley National Laboratory, Queued Up: 2026 Edition
+SOURCE_DATE: May/July 2026 publication cycle; data through end-2025
+URL/DOI/IDENTIFIER: https://eta-publications.lbl.gov/publications/queued-2026-edition-characteristics
+INPUTS: >50 U.S. transmission grid operators covering about 98% of installed U.S. generating capacity
+PARAMETERS: active queue capacity, historical completion/withdrawal, IR-to-COD duration
+EQUATION/CODE/METHOD: direct source extraction
+OUTPUT:
+- >2,060 GW generation+storage actively seeking connection at end-2025.
+- 1,312 GW generation + about 749 GW storage.
+- Median interconnection-request to commercial-operation time exceeded 5 years for projects built in 2025 where data were available.
+- For 2000-2020 requests, 13% of capacity had reached commercial operation by end-2025 and 75% had withdrawn.
+UNITS: GW; years; percent of queued capacity
+UNCERTAINTY: U.S.-specific and incomplete duration data in some regions.
+ASSUMPTIONS: Berkeley Lab classification as published.
+LIMITATIONS: Queue capacity is not a forecast and must not be generalized globally.
+REPRODUCTION_METHOD: retrieve Berkeley Lab 2026 publication page and key highlights.
+REPLICATION_STATUS: INDEPENDENT_EXTRACTION_PASS against separate JOB-EGC-003 evidence package.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_PROCESS_DATA / REPLICATION
+
+### EVIDENCE-EGC-031-006
+EVIDENCE_ID: EVIDENCE-EGC-031-006
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CLAIM-EGC-031-PHYSICAL-SCALE
+TOOL: current IRENA + IAEA PRIS source retrieval
+METHOD: direct current-source extraction
+DATE: 2026-10-06
+SOURCES:
+- IRENA Renewable Capacity Statistics 2026 press release
+- IAEA PRIS Energy Availability Factor Trend
+SOURCE_DATE: IRENA 2026-04-01; IAEA PRIS updated 2026-07-27
+URL/DOI/IDENTIFIER:
+- https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+- https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+INPUTS: global renewable installed-capacity statistics; nuclear operating-reactor availability records
+PARAMETERS: 2025 data year
+EQUATION/CODE/METHOD: direct source extraction
+OUTPUT:
+- Global renewable capacity reached 5,149 GW after 692 GW additions in 2025; renewables were 85.6% of total annual capacity expansion.
+- IAEA PRIS 2025 weighted Energy Availability Factor = 84.1% for 402 commercially operated reactors with data representing 362 GW(e) in that table.
+UNITS: GW; percent
+UNCERTAINTY: nameplate capacity is not delivered average power; EAF is not identical to capacity factor.
+ASSUMPTIONS: source definitions as published.
+LIMITATIONS: These figures demonstrate physical/deployment scale only; they do not establish cost superiority or future scalable build rate for every technology.
+REPRODUCTION_METHOD: retrieve the two cited official pages and compare 2025 rows/press figures.
+REPLICATION_STATUS: INDEPENDENT_EXTRACTION_PASS against related scale/physics evidence in other sessions; not an independent underlying dataset.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / MEASUREMENT-AGGREGATE / REPLICATION
+
+BASELINE_ENVELOPE_RESULT:
+1. GENERATOR_ONLY_COST: Current global weighted-average low-cost mature renewable anchors are approximately USD 33-62/MWh for onshore wind, PV and hydro, with higher values for other renewable families. This is not delivered-system cost.
+2. PROJECT_LEVEL_FIRM_COST: IRENA model evidence places selected 2025 firm renewable configurations roughly in the ~USD 59-94/MWh range for cited China/Brazil/Germany/Australia wind examples and ~USD 65-82/MWh for selected high-quality non-China solar sites, at report-defined reliability assumptions. This remains project-level model evidence.
+3. FULL_SYSTEM_DELIVERED_COST: UNKNOWN / NOT_YET_NORMALIZED cross-candidate. Both IRENA and NEA explicitly support the need to include system integration/reliability/network effects. JOB-EGC-004/JOB-EGC-040 boundary work is therefore decision-critical.
+4. MASSIVE_ENERGY_SCALE: Latest IEA 2025 consumption baseline = 28,600 TWh/year = 3.26484 TW annual-average equivalent. JOB-EGC-001's 10% criterion arithmetic independently reproduces at 2,860 TWh/year = 326.484 GW average.
+5. DEPLOYMENT_REALITY: Nameplate capacity and queue capacity cannot be treated as delivered power. IRENA demonstrates hundreds of GW/year renewable nameplate deployment, while Berkeley Lab demonstrates major U.S. queue attrition and >5-year median IR-to-COD for 2025 completions.
+
+FINDING_ID: FINDING-EGC-031-P1-001
+SEVERITY: P1 / DECISION-CONTROLLING
+TARGET: JOB-EGC-001 LOW_COST_GENERATION_SCREEN
+TRUTH_CLASS: INFERENCE / RED_TEAM_FINDING
+FINDING:
+- A hard elimination rule at plant-level LCOE <= USD 65/MWh can create false negatives because it screens on a metric that the mission itself states is insufficient for final same-service cost.
+- IRENA's 2025 geothermal global weighted-average is USD 89/MWh, while both IRENA and NEA emphasize system-level value/reliability effects; a higher plant-LCOE firm resource could still beat a low plant-LCOE variable resource after storage, firming, network and adequacy costs.
+REPAIR_REQUIRED:
+- Treat USD 65/MWh as a descriptive low-generation-cost anchor or fast-track screen, NOT as an irreversible candidate-elimination gate.
+- A candidate above USD 65/MWh must remain eligible for full-system analysis if credible evidence shows it can reduce other required same-service costs enough to beat the verified full-system baseline.
+- Final elimination must occur on normalized delivered-service cost plus feasibility gates, not plant LCOE alone.
+FALSIFICATION_CONDITION_FOR_FINDING:
+- This P1 can be closed if JOB-EGC-001 explicitly defines the USD 65/MWh item as non-eliminating telemetry and JOB-EGC-004 guarantees all candidate eliminations use the same delivered-service boundary.
+STATUS: OPEN / AWAITING_INDEPENDENT_REVIEW.
+
+RED_TEAM_CHECK:
+- Attack: Treat IRENA firm-LCOE headline as 24/7 grid reliability. RESULT: FALSIFIED; default asset-level energy reliability is 95%, not system adequacy/security.
+- Attack: Treat USD 33/MWh wind or USD 44/MWh PV as final delivered-system winner. RESULT: FALSIFIED; system/network/reliability costs are outside ordinary LCOE.
+- Attack: Treat 5,149 GW renewables or >2,060 GW queue as continuous deliverable power. RESULT: FALSIFIED.
+- Attack: Use older 28,200 TWh IEA value after later 28,600 TWh update without version label. RESULT: REJECTED; later-vintage baseline retained with conflict record.
+- Attack: Interpret NEA >USD100/MWh context as contradicting IRENA USD33-44/MWh. RESULT: NOT_A_CONTRADICTION without geography/technology/finance/system-boundary normalization.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-EGC-031-GEN-LCOE <- EVIDENCE-EGC-031-001 <- IRENA 2026.
+- CLAIM-EGC-031-FIRM-BOUNDARY <- EVIDENCE-EGC-031-002 <- IRENA firm-renewables 2026.
+- CLAIM-EGC-031-SYSTEM-COST-NEA <- EVIDENCE-EGC-031-003 <- NEA/EPRI 2026.
+- CLAIM-EGC-031-DEMAND-SCALE <- EVIDENCE-EGC-031-004 <- IEA Mid-Year Update 2026 + deterministic calculation.
+- CLAIM-EGC-031-DEPLOYMENT-BOTTLENECK <- EVIDENCE-EGC-031-005 <- LBNL 2026.
+- CLAIM-EGC-031-PHYSICAL-SCALE <- EVIDENCE-EGC-031-006 <- IRENA + IAEA PRIS.
+- FINDING-EGC-031-P1-001 -> JOB-EGC-001 / JOB-EGC-004 / G1 / G5 / G17.
+- All material claims remain AWAITING_REVIEW until JOB-EGC-032 or equivalent independent reviewer passes them.
+
+STATUS_CHANGE:
+- Canonical JOB-EGC-031: EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-032: remains OPEN and is now dependency-ready for an independent session.
+- GLOBAL_SOLVED: NO.
+- MISSION_STATUS: CONTINUE_REQUIRED.
+- CURRENT_WINNER: NONE.
+
+NEXT_ACTION:
+- Independent reviewer claims JOB-EGC-032 and reproduces source extraction, arithmetic, IEA version resolution and P1 generation-screen finding.
+- JOB-EGC-001/JOB-EGC-004 must explicitly resolve whether the USD 65/MWh plant-LCOE screen is non-eliminating before candidate elimination begins.
