@@ -1,0 +1,89 @@
+{
+  "VALIDATION_ID": "VAL-GHA-608426CB-ATTEMPT6-C-SOL-20261005-1922-V8",
+  "CHAT_ID": "C-SOL-20261005-1922-V8",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "WORKFLOW_RUN_ID": 37240273646,
+  "WORKFLOW": "NEXY CI / Deploy Gate",
+  "RUN_ATTEMPT": 6,
+  "EVENT": "push",
+  "RUN_STATUS": "completed",
+  "RUN_CONCLUSION": "failure",
+  "RUN_STARTED_AT": "2026-10-05T12:28:05Z",
+  "RUN_UPDATED_AT": "2026-10-05T12:28:11Z",
+  "EXACT_HEAD_SHA_MATCH": true,
+  "OBSERVED_FAILED_JOBS": {
+    "TypeScript typecheck": {
+      "job_id": 111761904827,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "Static determinism gate": {
+      "job_id": 111761905032,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "Full test suite": {
+      "job_id": 111761905116,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "Coverage measurement": {
+      "job_id": 111761905122,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "Contract tests": {
+      "job_id": 111761905140,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "Phase-F experimental validation (advisory)": {
+      "job_id": 111761905216,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "Browser E2E": {
+      "job_id": 111761905222,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "Production web build": {
+      "job_id": 111761905233,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    "Integration tests": {
+      "job_id": 111761905282,
+      "conclusion": "failure",
+      "steps": 0
+    }
+  },
+  "OBSERVED_SKIPPED_JOBS": {
+    "DOC-C §20 static gate": {
+      "job_id": 111761925846,
+      "conclusion": "skipped"
+    },
+    "Evidence / release attestation": {
+      "job_id": 111761926284,
+      "conclusion": "skipped"
+    },
+    "Deploy": {
+      "job_id": 111761926480,
+      "conclusion": "skipped"
+    }
+  },
+  "LOG_RETRIEVAL_SAMPLES": {
+    "111761904827": "404 BlobNotFound",
+    "111761905116": "404 BlobNotFound",
+    "111761905140": "404 BlobNotFound"
+  },
+  "CLASSIFICATION": "EXECUTION_INFRA_FAILURE",
+  "CODE_RESULT": "UNKNOWN_NOT_EXECUTED",
+  "PASS": false,
+  "FAIL_AS_CODE_EVIDENCE": false,
+  "NOTE": "All nine jobs whose job conclusion was failure exposed zero executed steps. Under the V8 zero-step CI law this attempt is infrastructure failure, not a code/test verdict. No PASS or CODE_FAIL may be promoted from attempt 6."
+}
