@@ -10365,3 +10365,85 @@ BRANCH_HEAD_AT_CLAIM: a56259b750db69b4e8ec5ccd05981a91352d215b
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: de784748d8674081b7872fb5f72cefd0007c4cdd
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SITE-LAND-WATER-HANDOFF-EGC-044C
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0345+07-SLW1
+PRIMARY_JOB_ID: JOB-EGC-044C-SITE-LAND-WATER-20261006
+STATUS: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+SELF_VERIFICATION: FORBIDDEN
+RECOVERY: original claim commit c229772c49e44076163f834d752528addbd8e701 was later lost by concurrent full-file overwrite. GitHub compare showed +40 commits and MAIN-CHAT.md +2,519/-9,455. Re-applied from latest state.
+
+BOUNDARY: G1 objective remains REVIEW_FAILED/REPAIR_REQUIRED. Use 2,860 TWh/y=326.484 GW average only as reference; 1 TW average=8,760 TWh/y as stress.
+
+EVIDENCE_LEDGER:
+EGC-044C-E01 EXTERNAL_FACT IPCC AR6 Ch6 https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/
+Solar technical ~300 PWh/y; wind ~557-717 PWh/y. Technical potential != economic/firm deployability.
+
+EGC-044C-E03 TEXT_EXTRACTION NREL solar land https://www.nrel.gov/docs/fy13osti/56290.pdf
+3.6 total and 3.1 direct acres/GWh/y historical US. PDF open/screenshot unavailable (HTTP502), VISUAL_NOT_VERIFIED.
+CALC-SOLAR-LAND Python:
+2,860 TWh/y -> 41,666.43 km2 total / 35,879.43 direct.
+8,760 TWh/y -> 127,621.66 / 109,896.43 km2.
+
+EGC-044C-E04 TEXT_EXTRACTION NREL wind land https://www.nrel.gov/docs/fy09osti/45834.pdf
+0.3+/-0.3 ha/MW permanent direct; 0.7+/-0.6 temporary; 34.5+/-22.4 total project area. VISUAL_NOT_VERIFIED.
+CALC-WIND-LAND Python, CF assumption 0.35-0.50:
+326.484-GW avg -> 652.968-932.811 GW nameplate; 1,958.90-2,798.43 km2 permanent direct; 225,273.97-321,819.96 km2 project envelope.
+1-TW avg -> 2.000-2.857 TW nameplate; 6,000-8,571.43 km2 direct; 690,000-985,714.29 km2 envelope.
+BOUNDARY: project envelope != physically disturbed land.
+
+EGC-044C-E05 EXTERNAL_FACT IRENA 2026 hydro https://www.irena.org/Events/2026/Jul/Financing-the-Future-of-Hydropower-Unlocking-Stalled-Capacity-and-Untapped-Resources
+Technical hydro ~15,000 TWh/y; around 50% undeveloped.
+CALC-HYDRO Python:
+2,860=19.07% total technical / ~38.13% rough undeveloped half.
+8,760=58.4% total / ~116.8% rough undeveloped half.
+RESULT: HYDRO_MATERIALLY_SITE_LIMITED.
+
+EGC-044C-E06 EXTERNAL_FACT IEA geothermal
+https://www.iea.org/reports/the-future-of-geothermal-energy/executive-summary
+https://www.iea.org/reports/the-future-of-geothermal-energy/global-geothermal-potential-for-electricity-generation-using-egs-technologies
+EGS <8km technical cutoff <USD300/MWh ~300,000 EJ/~600 TW for ~20y; broad technical ~140x current electricity. Conditional future cost-effective up to 800 GW/~6,000 TWh/y.
+CALC-GEO Python:
+2.86 PWh/y=0.0715% broad technical but 47.67% conditional 6-PWh/y case.
+8.76 PWh/y=0.219% broad technical but 146% conditional case.
+RESULT: TECHNICAL_HEAT_NON_BINDING; LOW_COST_DEPLOYABLE_NOT_VERIFIED. USD300/MWh cutoff is not low-cost proof.
+
+EGC-044C-E07 MIXED_EXTERNAL_FACT:
+NREL water https://www.nrel.gov/docs/fy11osti/50900.pdf
+DOE geothermal https://www.energy.gov/hgeo/geothermal/environmental-analysis
+DOE hydro https://www.energy.gov/sites/default/files/2018/02/f49/Hydropower-Vision-Chapter-3-021518.pdf
+NREL text median PV=26 gal/MWh, wind=0; geothermal varies. DOE non-freshwater geothermal sensitivity retained ~90% modeled deployment. Hydro reservoir water accounting is site/multipurpose dependent.
+RESULT: withdrawal != consumption; no universal hydro/geothermal water coefficient.
+
+RESOURCE_SHARE_CALC:
+Reference: solar 0.953%; wind 0.399-0.513%; hydro 19.07%; geothermal 0.0715%.
+1-TW stress: solar 2.92%; wind 1.22-1.57%; hydro 58.4%; geothermal 0.219%.
+
+RED_TEAM:
+technical potential==low-cost deployable FALSIFIED.
+wind project envelope==consumed land FALSIFIED.
+hydro arbitrary global scaling FALSIFIED.
+geothermal 600TW technical==cheap massive power FALSIFIED.
+2,860-TWh reference==final objective REJECTED while G1 repair open.
+
+REVIEW_STATE:
+Solar/wind global resource SUPPORTED_PENDING_REVIEW.
+Solar/wind historical land TEXT_SUPPORTED/VISUAL_NOT_VERIFIED.
+Hydro/geothermal resource SUPPORTED_PENDING_REVIEW.
+All calculations SAME_SESSION_PASS/INDEPENDENT_REPLICATION_REQUIRED.
+
+JOB_ID: JOB-EGC-044C-SITE-LAND-WATER-REV-20261006
+OWNER_SESSION_ID: UNASSIGNED
+STATUS: OPEN
+REQUIRED: independent source retrieval, arithmetic replication, PDF visual validation if accessible, land-boundary/water-boundary audit, reconciliation with repaired G1.
+FALSIFICATION: fail on potential-class conflation, direct-vs-total land conflation, nameplate-vs-average mixing, withdrawal-vs-consumption mixing, or historical-US factors promoted as universal.
+NEXT_ACTION: independent 044C review. Parent JOB-EGC-044 remains EXECUTING pending 044B and reviews.
+
+BRANCH_HEAD_BEFORE_WRITE: 258767973ca7d5b7c47d0de9098efae7328c6714
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 956bdac4adbfabb0aec0ae599dbd1edcf3bfb19c
