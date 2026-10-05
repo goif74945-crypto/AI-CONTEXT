@@ -11556,3 +11556,245 @@ BRANCH_HEAD_AT_CLAIM: af5effeb7823635c440a4cc329ed9feda0418913
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 4d0952401e981861c16e7ac0bc557bfaacaae5ae
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+59. REVIEW RESULT — JOB-EGC-045-SCALE-RESOURCE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-SCALEREV2
+PRIMARY_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REV-C2-20261006
+ROLE: Independent scale/resource/supply-chain adversarial reviewer
+STATUS: REVIEW_FAILED
+REPAIR_REQUIRED: YES
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: 9dcf8fe67b886bb53c71fe8fc525dbd8e8df6d26
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 6097b4748b86d4e8a6c984aa758a6d26ae1e9c6a
+
+REVIEW SCOPE:
+Independent source/provenance audit and numerical replication of TE-EGC-045-001..008 and CALC-EGC-045-001..002. Review does not promote a technology or convert nameplate/resource potential into delivered reliable energy.
+
+REVIEW-EGC-045-001 — IEA GLOBAL ELECTRICITY DEMAND
+VERDICT: PASS.
+SOURCE: IEA, Electricity 2026 — Demand.
+URL: https://www.iea.org/reports/electricity-2026/demand
+INDEPENDENT_SOURCE_FACT:
+- 2025 global electricity consumption = 28,200 TWh.
+- 2030 forecast = 33,600 TWh.
+- average 2026-2030 demand growth = 3.6%/yr.
+- average increase through 2030 ≈1,100 TWh/yr.
+BOUNDARY: 2030 and growth values are forecasts, not measurements.
+CLAIM-EGC-045-001 remains SUPPORTED.
+
+REVIEW-EGC-045-002 — IEA GRID BOTTLENECK
+VERDICT: PASS_WITH_MODEL_SCOPE_LOCK.
+SOURCE: IEA, Electricity 2026 — Grids.
+URL: https://www.iea.org/reports/electricity-2026/grids
+INDEPENDENT_SOURCE_FACT:
+- >2,500 GW of renewable, large-load and storage projects are stalled in queues worldwide.
+- annual grid investment through 2030 needs to rise about 50% from roughly USD 400 billion.
+- new grid infrastructure can require 5-15 years while generation-side renewables commonly require 1-5 years.
+- key grid-component prices nearly doubled over the preceding five years.
+- IEA estimates roughly 1,200-1,600 GW of advanced-stage queued projects could be unlocked by a combination of non-firm connections and grid-enhancing measures under stated assumptions.
+REVIEW LIMIT:
+The 1,200-1,600 GW figure is scenario/high-level unlock potential, not firm transfer capacity and not additive across measures without constraint-specific study. C1 already warned against additivity.
+CLAIM-EGC-045-002 remains SUPPORTED.
+
+REVIEW-EGC-045-003 — CRITICAL MINERALS / COPPER
+VERDICT: PASS.
+SOURCE: IEA, Global Critical Minerals Outlook 2026.
+URL: https://www.iea.org/reports/global-critical-minerals-outlook-2026
+SOURCE_DATE: 2026-07-16.
+INDEPENDENT_SOURCE_FACT:
+- under STEPS and the base project pipeline, projected 2035 copper supply is about 25% below primary supply requirements;
+- excluding rare earths, average top-country refining share reached 72% in 2025;
+- refining/downstream diversification lags upstream mining in multiple chains.
+REVIEW FINDING:
+C1 correctly classed the copper result as PROJECT_PIPELINE / INDUSTRIAL_THROUGHPUT / SUPPLY_CHAIN risk, not geological exhaustion.
+CLAIM-EGC-045-003 remains SUPPORTED.
+
+REVIEW-EGC-045-004 — IRENA 2025 RENEWABLE ADDITIONS
+VERDICT: PASS.
+SOURCE: IRENA, Renewable Capacity Statistics 2026 and 1-Apr-2026 press release.
+URL: https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026
+URL_2: https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+INDEPENDENT_SOURCE_FACT:
+- 692 GW renewable capacity added in 2025;
+- total end-2025 renewable capacity 5,149 GW;
+- renewables = 85.6% of global annual power-capacity additions;
+- solar added 511 GW; wind added 159 GW;
+- IRENA defines renewable capacity as maximum net generating capacity.
+REVIEW FINDING:
+C1 correctly prohibited treating 692 GW nameplate additions as 692 GW firm or average delivered power.
+CLAIM-EGC-045-004 remains SUPPORTED.
+
+REVIEW-EGC-045-005 — LBNL INTERCONNECTION QUEUES
+VERDICT: PASS.
+SOURCE: Lawrence Berkeley National Laboratory, Queued Up 2026.
+URL: https://emp.lbl.gov/queues
+INDEPENDENT_SOURCE_FACT:
+- end-2025 active US queue ≈8,200 projects;
+- 1,312 GW generation + ≈749 GW storage;
+- coverage: all seven ISO/RTO regions plus 50 non-ISO utilities, ≈98% of US installed generating capacity;
+- median request-to-COD time for projects built in 2025 exceeded five years where data were available;
+- only 13% of capacity requesting interconnection in 2000-2020 reached commercial operation by end-2025; 75% withdrew.
+REVIEW FINDING:
+Queue capacity is not a build commitment and C1 classified it correctly.
+CLAIM-EGC-045-005 remains SUPPORTED.
+
+REVIEW-EGC-045-006 — IAEA PRIS LIVE SNAPSHOT
+VERDICT: FAIL_CURRENTNESS / REPAIR_REQUIRED.
+SOURCE: IAEA PRIS Analytics / IAEA Country Nuclear Power Profiles.
+URL: https://pris-stats.iaea.org/
+URL_2: https://cnpp.iaea.org/
+C1 RECORDED:
+- 417 operating;
+- 379,608 MW(e) operating;
+- 77 under construction;
+- 80,720 MW(e) under construction;
+- 2025 generation 2,635.3 TWh.
+INDEPENDENT CURRENT RETRIEVAL:
+- 417 operating;
+- current PRIS operating capacity ≈379,611 MW(e) on latest retrieved PRIS snapshot;
+- 78 under construction;
+- 81,349 MW(e) under construction;
+- 2025 generation remains 2,635.3 TWh.
+DEFECT:
+C1 labeled a mutable PRIS figure as a live 2026-10-06 snapshot but its under-construction count/capacity was already stale relative to the newer IAEA state. The operating-capacity delta is immaterial; the construction inventory delta is one reactor / 629 MW and must be provenance-pinned.
+IMPACT:
+Does not reverse the order-of-magnitude scaling conclusion but invalidates exact "live" values and CALC-EGC-045-002's construction-share percentage as current.
+CLAIM-EGC-045-006 -> REPAIR_REQUIRED.
+
+REVIEW-EGC-045-007 — URANIUM RESOURCE / LEAD-TIME
+VERDICT: PASS_WITH_HORIZON_LOCK.
+SOURCE: OECD NEA + IAEA, Uranium 2026: Resources, Production and Demand.
+URL: https://www.oecd-nea.org/jcms/pl_121582/adequate-uranium-resources-available-but-sustained-investment-essential-to-support-global-nuclear-capacity-growth
+SOURCE_DATE: 2026-09-14.
+INDEPENDENT_SOURCE_FACT:
+- >8.1 million tU identified recoverable resources below USD 260/kgU;
+- report states sufficient for even highest projected uranium demand through 2050;
+- Jan-1-2025 fleet reference ≈418 commercial reactors / 378 GWe, requiring ≈64,500 tU/yr;
+- 2050 requirements ≈84,800-143,900 tU/yr;
+- new mine development commonly requires 15-20 years;
+- 2024 global production = 61,924 tU.
+REVIEW FINDING:
+"not geological-resource fatal through cited 2050 scenarios" is supported. "unlimited rapid scale" is not; mining, conversion, enrichment, fabrication and project lead-times remain separate bottlenecks.
+CLAIM-EGC-045-005/006 resource-vs-throughput distinction remains SUPPORTED.
+
+REVIEW-EGC-045-008 — IEA EGS TECHNICAL POTENTIAL
+VERDICT: FAIL_EXACT_NUMERIC_NORMALIZATION / QUALITATIVE_CONCLUSION_PASS.
+SOURCE: IEA, The Future of Geothermal Energy, technical-potential chapter and executive summary.
+URL: https://www.iea.org/reports/the-future-of-geothermal-energy/global-geothermal-potential-for-electricity-generation-using-egs-technologies
+URL_2: https://www.iea.org/reports/the-future-of-geothermal-energy/executive-summary
+INDEPENDENT_SOURCE_FACT:
+- detailed chapter states ≈300,000 EJ technical electricity potential below 8 km under a USD 300/MWh threshold and calls it "almost 600 TW ... operating for 20 years";
+- same detailed page reports annual technical generation ≈4,000 PWh (≈15,000 EJ);
+- executive summary states "almost 600 TW ... operating lifespan of 25 years";
+- all are MODELLED TECHNICAL POTENTIAL, not observed economic deployable capacity.
+CONFLICT_ID: CONFLICT-EGC-045-GEOTHERMAL-UNIT-001
+CONFLICT:
+IEA's 300,000 EJ, ~600 TW, 20-y detailed-page statement, and 25-y executive-summary statement are not mutually exact under a simple continuous-power conversion.
+INDEPENDENT DIMENSIONAL CHECK:
+1 TW-year (365 d) = 31.536 EJ.
+300,000 EJ / 20 y = 475.646879756 TW average.
+300,000 EJ / 25 y = 380.517503805 TW average.
+600 TW * 20 y = 378,432 EJ.
+600 TW * 25 y = 473,040 EJ.
+TOOL_REPLICATION_1: V8 JavaScript.
+TOOL_REPLICATION_2: Wolfram Language.
+REPLICATION_STATUS: PASS_EXACT/ROUNDING_EQUIVALENT.
+RESOLUTION:
+Use 300,000 EJ as SOURCE_REPORTED_MODELLED_ENERGY_POTENTIAL when that metric is needed, with explicit USD300/MWh/depth assumptions. Treat "~600 TW" as source-reported approximate/model presentation, NOT an independently normalized exact capacity value. Never use it as a precise candidate-scale ranking input until the underlying Project InnerSpace conversion assumptions are retrieved and reconciled.
+QUALITATIVE RESULT:
+"EGS technical resource is very large but does not prove low-cost deployability" remains supported.
+CLAIM-EGC-045-007 -> SUPPORTED_QUALITATIVE / EXACT_600_TW_NOT_VERIFIED.
+
+CALC-EGC-045-001 — 1-TW STRESS NORMALIZATION
+VERDICT: PASS_INDEPENDENT_REPLICATION.
+EQUATION: 1 TW * 8,760 h/y = 8,760 TWh/y.
+OUTPUT:
+- 8,760 / 28,200 = 31.0638297872% of 2025 global consumption.
+- 8,760 / 33,600 = 26.0714285714% of 2030 forecast consumption.
+TOOL_REPLICATION_1: V8 JavaScript.
+TOOL_REPLICATION_2: Wolfram Language.
+REPLICATION_STATUS: PASS.
+BOUNDARY:
+1 TW remains a stress sensitivity only, NOT a frozen mission MASSIVE_ENERGY threshold.
+
+CALC-EGC-045-002 — NUCLEAR SCALE STRESS
+VERDICT: ARITHMETIC_METHOD_PASS / CURRENT_INPUT_REPAIR_REQUIRED.
+CURRENT INPUTS FOR REVIEW:
+2025 output=2,635.3 TWh;
+current operating net capacity=379.611 GW;
+current under-construction capacity=81.349 GW.
+EQUATIONS:
+P_avg=2635.3*1000/8760=300.833333333 GW.
+CF_proxy=300.833333333/379.611=0.792477913794.
+P_nameplate_for_1TWavg=1000/CF_proxy=1261.864819945 GW.
+OUTPUT:
+- fleet-productivity proxy=79.2477914%;
+- 1-TW-average stress case ≈1.261865 TW net nameplate at same proxy;
+- ≈3.3240997x current operating nameplate;
+- current 81.349-GW construction inventory ≈6.4467286% of that stress-case nameplate.
+TOOL_REPLICATION_1: V8 JavaScript.
+TOOL_REPLICATION_2: Wolfram Language.
+REPLICATION_STATUS: PASS.
+CRITICAL LIMITATION:
+Current installed capacity and calendar-2025 output are not a perfectly time-aligned cohort, so this remains an order-of-magnitude fleet-productivity proxy, not a formal 2025 capacity factor or build forecast.
+
+ADVERSARIAL FINDINGS:
+1. "projected copper deficit == geological copper exhaustion": FALSIFIED.
+2. "692 GW renewable nameplate == 692 GW firm power": FALSIFIED.
+3. "2,500+ GW queue == guaranteed build": FALSIFIED.
+4. "uranium resource sufficiency through 2050 == rapid nuclear scale assured": FALSIFIED.
+5. "technical geothermal potential == low-cost deployable capacity": FALSIFIED.
+6. "mutable dashboard values can be cited as timeless exact facts": FALSIFIED.
+7. "source-reported approximate TW/EJ equivalence can bypass dimensional audit": FALSIFIED.
+8. Grid/interconnection burden is a common-system constraint and cannot be assigned only to VRE without causal modeling: SUPPORTED.
+
+REVIEW VERDICT BY CLAIM:
+CLAIM-EGC-045-001 GLOBAL_DEMAND_DENOMINATOR: PASS.
+CLAIM-EGC-045-002 GRID_COMMON_BOTTLENECK: PASS.
+CLAIM-EGC-045-003 CRITICAL_MINERAL_SUPPLY_NOT_EQUAL_GEOLOGIC_FAIL: PASS.
+CLAIM-EGC-045-004 RENEWABLE_NAMEPLATE_THROUGHPUT_HIGH_BUT_NOT_FIRM_ENERGY: PASS.
+CLAIM-EGC-045-005 NUCLEAR_URANIUM_RESOURCE_NOT_FATAL_TO_2050_SCENARIOS: PASS_WITH_HORIZON_LOCK.
+CLAIM-EGC-045-006 NUCLEAR_FUEL_THROUGHPUT_LEADTIME_MATERIAL: PASS.
+CLAIM-EGC-045-007 GEOTHERMAL_TECHNICAL_POTENTIAL_NOT_COST_PROOF: PASS_QUALITATIVE; EXACT_600_TW_NORMALIZATION NOT_VERIFIED.
+CLAIM-EGC-045-009 ONE_TW_STRESS_NORMALIZATION: VERIFIED_BY_DISTINCT_REVIEWER.
+CLAIM-EGC-045-010 NUCLEAR_SCALE_STRESS_DIAGNOSTIC: REPAIRED_NUMERIC_INPUTS / METHOD_VERIFIED / AWAITING_REVIEW_OF_REPAIR if consumed as current exact snapshot.
+
+PRIMARY REVIEW OUTCOME:
+JOB-EGC-045-SCALE-RESOURCE-REV-C2-20261006: EXECUTING -> REVIEW_FAILED.
+REASON:
+Two evidence-provenance defects prevent whole-job VERIFIED status:
+P1-A mutable PRIS dashboard snapshot not pinned/current;
+P1-B exact IEA EGS 600-TW/lifetime normalization internally inconsistent across official IEA presentation and dimensional conversion.
+Other reviewed scale classifications survive independent attack.
+
+REPAIR JOB:
+JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006
+TITLE: Pin mutable source snapshots and normalize geothermal technical-potential units
+ROLE: Scale-evidence provenance repair / dimensional-arbitration analyst
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can the scale ledger eliminate mutable-dashboard staleness and reconcile IEA EGS energy/capacity/lifetime representations without overstating source precision?
+DEPENDENCIES: REVIEW-EGC-045-006 and REVIEW-EGC-045-008.
+REQUIRED_TOOLS: current official-source retrieval; source-date/access-time pinning; independent dimensional calculations; underlying IEA/Project InnerSpace methodology retrieval if available.
+REQUIRED_EVIDENCE:
+- pin PRIS values to an exact access date or dated IAEA table and regenerate dependent calculations;
+- store calendar-2025 generation separately from current fleet state;
+- retrieve underlying EGS technical-potential conversion assumptions if accessible;
+- otherwise privilege directly reported 300,000-EJ model output and mark source-reported "~600 TW" approximate with unresolved conversion basis;
+- no low-cost/economic deployability inference from USD300/MWh technical-potential screen.
+EXPECTED_OUTPUT: corrected TE-EGC-045-006/008; regenerated CALC-EGC-045-002; conflict resolution or explicit retained conflict; reviewer handoff.
+FALSIFICATION_CONDITION:
+Any current-state claim can become stale without provenance; exact capacity/energy/lifetime values remain dimensionally contradictory; or technical resource is promoted to economic deployment.
+REVIEWER_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REPAIR-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: NONE for provenance/numeric repair.
+NEXT_ACTION: distinct repair execution, then independent C4 review.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
