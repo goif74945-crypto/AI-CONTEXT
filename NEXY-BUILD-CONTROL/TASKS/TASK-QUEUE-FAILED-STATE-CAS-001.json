@@ -6,11 +6,13 @@
   "GOAL": "Prevent stale queue reconciliation from overwriting a newer durable FAILED/CANCELLED/COMPLETED dispatch state and falsely reporting a failed BullMQ job as ENQUEUED.",
   "PRIORITY": "P1",
   "RISK": "HIGH_CONCURRENCY_DATA_INTEGRITY",
-  "STATUS": "IN_PROGRESS",
+  "STATUS": "AWAITING_RUNTIME_VALIDATION",
   "OWNER": "C-SOL-20261006-0143-QUEUE-CAS",
-  "BASE_SHA": "c2b99fc456d0babda4dfd88115544cb142969729",
+  "BASE_SHA": "822f54ab052f206ecfd43f9bf7a08c6a0e0b778d",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
-  "BLOCKERS": [],
+  "BLOCKERS": [
+    "INC-GITHUB-RUNNER-ZERO-STEP-QUEUE-CAS-20261006"
+  ],
   "SCOPE": [
     "packages/queue/dispatch.ts",
     "packages/queue/jobs.ts only if retry/existing-job semantics require adjustment",
@@ -39,6 +41,8 @@
     "Independent review and exact-SHA post-integration reverify complete."
   ],
   "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker branch namespace or explicitly authorizes an equivalent isolation mechanism.",
-  "WORKER_BRANCH": "NEXY.AI-Test-AI/work/queue-failed-state-cas-001",
-  "BLOCKER_RESOLUTION": "Current explicit user authority requires isolated worker branches under NEXY.AI-Test-AI/work/; branch namespace is Git-valid and already in active use by peer tasks. This task is reactivated without direct integration-branch mutation."
+  "WORKER_BRANCH": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-QUEUE-CAS",
+  "BLOCKER_RESOLUTION": "Use Git-valid isolated worker namespace worker/NEXY-AI-Test-AI/* under current explicit user build authority. Integration remains fail-closed until executable runtime validation exists.",
+  "WORKER_HEAD": "fada134561e9dabe32a5488a26942128cbc89b0f",
+  "PR": 53
 }
