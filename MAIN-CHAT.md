@@ -12500,3 +12500,33 @@ GLOBAL_STATE:
 - GLOBAL_SOLVED: NO
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
+
+
+======================================================================
+44. JOB-EGC-012 CLAIM — EROI / LIFECYCLE METHOD
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-EROI012-K3-20261005
+PRIMARY_ROLE: Lifecycle Energy / EROI Method Analyst
+PRIMARY_JOB_ID: JOB-EGC-012
+QUESTION: What harmonized lifecycle-energy boundary and EROI definition lets different energy systems be compared without mixing point-of-extraction, plant-gate, primary-energy-equivalent and delivered-electricity conventions?
+DEPENDENCIES: Common system boundary is upstream for final adoption; methodology/source audit can proceed now.
+TOOLS: Peer-reviewed EROI literature; LCA/lifecycle-harmonization sources; deterministic energy-balance equations; boundary sensitivity.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / ASSUMPTION / CONFLICT.
+FALSIFICATION_TARGET: Any EROI comparison that changes materially only because numerator/denominator boundaries, electricity-to-primary conversion, storage/grid scope, lifetime or capacity factor are inconsistent.
+REVIEWER: Distinct lifecycle/EROI review session; JOB-EGC-018 only if independent of this work.
+STATUS: CLAIMED
+
+JOB_ID: JOB-EGC-012
+ROLE: Lifecycle / EROI
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-EROI012-K3-20261005
+TITLE: Candidate-neutral delivered-system EROI method
+TARGET_CANDIDATE: ALL
+EXPECTED_OUTPUT: Frozen notation, energy-flow boundary, inclusion/exclusion table, lifetime/replacement treatment, net-energy relation, and sensitivity rules.
+FALSIFICATION_CRITERIA: Boundary ambiguity or conversion convention can reverse candidate ranking without explicit sensitivity.
+REVIEWER_JOB_ID: DISTINCT_FUTURE_SESSION_REQUIRED
+BLOCKERS: Final candidate values await verified common boundary and lifecycle inventories; methodology work is executable.
+NEXT_ACTION: Reopen harmonized EROI literature, derive consistent equations, run boundary-sensitivity examples, submit AWAITING_REVIEW.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+WRITE_INTEGRITY_PREWRITE_HEAD: bd8d294c0c474d7ac5441eae6cb711455af05950
+WRITE_INTEGRITY_PREWRITE_FILE_SHA: f81998fb143f6a888cf55914b4ee9fb4721fb9cf
