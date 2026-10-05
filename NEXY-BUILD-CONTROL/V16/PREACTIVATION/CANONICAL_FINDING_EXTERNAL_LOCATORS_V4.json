@@ -1,0 +1,53 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_FINDING_EXTERNAL_LOCATORS_V4",
+  "SUPERSEDES": {
+    "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_FINDING_EXTERNAL_LOCATORS_V3",
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_EXTERNAL_LOCATORS_V3.json",
+    "BLOB_SHA": "72f20a02e6746aed164c30df2f6a66c9c468c983"
+  },
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "CONTRACT_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V4.json",
+  "CONTRACT_BLOB_SHA": "f888c3059fa366654190fa671fc7b05abc21f375",
+  "LOCATOR_SCHEMA": {
+    "FIELDS": [
+      "FINDING_ID",
+      "DEFINITION_PATH",
+      "EXPECTED_MEDIA_TYPE"
+    ],
+    "OPTIONAL_AUDIT_FIELDS": [
+      "OBSERVED_BLOB_SHA",
+      "NOTE"
+    ],
+    "TYPES": {
+      "FINDING_ID": "valid non-empty NFC string satisfying CONTRACT IDENTIFIER_WHITESPACE.BOUNDARY_RULE",
+      "DEFINITION_PATH": "normalized repository path string",
+      "EXPECTED_MEDIA_TYPE": "application/json|text/markdown",
+      "OBSERVED_BLOB_SHA": "lowercase 40-hex Git blob SHA or absent",
+      "NOTE": "NFC string or absent"
+    }
+  },
+  "LOCATORS": [
+    {
+      "FINDING_ID": "FINDING-PREMATURE-LEGACY-DRAIN-ENTRY-001",
+      "DEFINITION_PATH": "NEXY-BUILD-CONTROL/V16/BOOTSTRAP/b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93/FINDING-PREMATURE-LEGACY-DRAIN-ENTRY-001.json",
+      "EXPECTED_MEDIA_TYPE": "application/json",
+      "OBSERVED_BLOB_SHA": "6902a6b64d75da3152d63833e4caff344fd8b7d5",
+      "NOTE": "Observed blob is audit evidence only. Manifest generation MUST resolve the definition path and actual blob from its pinned control snapshot."
+    }
+  ],
+  "ORDERING": "LOCATORS sorted by FINDING_ID UTF-8 bytes then DEFINITION_PATH UTF-8 bytes",
+  "VALIDATION": [
+    "Each locator FINDING_ID is unique by exact Unicode scalar sequence, is NFC, and satisfies the contract IDENTIFIER_WHITESPACE.BOUNDARY_RULE.",
+    "Each locator DEFINITION_PATH is unique.",
+    "At the pinned snapshot, definition path exists and media type equals EXPECTED_MEDIA_TYPE.",
+    "Parsed definition FINDING_ID equals locator FINDING_ID exactly.",
+    "A locator never supplies or overrides TYPE, SEVERITY, STATUS, control relevance, or terminal semantics.",
+    "Observed blob mismatch is not itself an error when the pinned snapshot changed; resolution always uses the pinned snapshot blob.",
+    "Any duplicate locator identity/path or resolution mismatch makes the consuming universe manifest incomplete."
+  ],
+  "STATUS": "CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "CANONICAL_ADOPTION": false,
+  "CREATED_BY_CHAT_ID": "C-SOL-20261006-0132-0700-V16RC13-UNIVERSEV3-XREVIEW-A01E11D8",
+  "PRODUCT_SOURCE_MUTATION": false,
+  "TARGET_INTEGRATION": false
+}
