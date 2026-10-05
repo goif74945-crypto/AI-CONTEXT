@@ -1,0 +1,35 @@
+{
+  "FINDING_ID": "FIND-FSM-BOOTSTRAP-AUTHORITY-GAP-001",
+  "REQ_ID": "REQ-DOC-C-FSM-FINAL-ERROR-TRANSITIONS",
+  "TASK_ID": "TASK-FSM-BOOTSTRAP-AUTHORITY-001",
+  "FROM": "CHAT-20261005-1709-V7-MISSION-DAG",
+  "TO": "M02-CORE",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SEVERITY": "P1",
+  "OBSERVED": [
+    "TypeScript final-state matrix claims error -> FREEZE from every non-STOP lifecycle state.",
+    "Rust matrix at the same Test-AI SHA authorizes error -> FREEZE only from RUNNING and VERIFYING.",
+    "bootstrap() currently relies on INIT --error--> FREEZE to satisfy its fail-closed test.",
+    "A previous process-local quarantine implementation existed in commits 67252bb7980926b2ab686682d02d697c77ffc461 and 533748e07ebc50a1a6122fea79ac4dab0a4bc1e0 but was reverted by 81e680d9a1a2d723c8de5d62310059588c8c8c0e / 025deb70b064a38ad647ce16ee2d216bb58e26fa / 608426cb30398b1f3461866f7079d2a435c96b96 as pending an authority-safe repair."
+  ],
+  "EXPECTED": [
+    "Final DOC-C temporal authority must drive FSM semantics.",
+    "TS and Rust must have the same legal transition set.",
+    "Bootstrap dependency failure must fail closed without inventing an unsupported final-DOC-C transition or permitting an implicit recovery bypass."
+  ],
+  "SPEC_EVIDENCE": {
+    "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "FINAL_VERDICT_PARAGRAPHS": "8297-8305",
+    "FINAL_MATRIX_PARAGRAPHS": "8811-8910",
+    "FINAL_LOG_INCIDENT_PARAGRAPHS": "8952-8957",
+    "HISTORICAL_CONFLICT_PARAGRAPHS": "7447-7504"
+  },
+  "REPRODUCTION": [
+    "Inspect NEXY.AI-Test-AI@608426cb packages/core/vnext-state-matrix.ts: INIT/READY/CONSENSUS/STABLE/FREEZE error edges exist.",
+    "Inspect the same SHA core-kernel/src/kernel/vnext_matrix.rs: only RUNNING/VERIFYING error edges exist.",
+    "Inspect packages/api/bootstrap.ts: dependency/tick failure calls transitionSystemState('error','CORE') while startup state may be INIT.",
+    "If TS is narrowed to final matrix without a coupled bootstrap design, transitionSystemState preflight rejects INIT+error before any FREEZE state mutation; hydration-fail-closed expectation can no longer be satisfied."
+  ],
+  "STATUS": "REPRODUCED",
+  "NEXT_SAFE_ACTION": "Resolve an authority-safe bootstrap failure mechanism first; then repair TS/Rust parity and test oracle together. Do not mutate this semantic scope piecemeal."
+}
