@@ -1,0 +1,27 @@
+{
+  "REQ_ID": "REQ-DOC-C-3-1-ERROR-CODE",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "UNKNOWN",
+  "SPEC_LINES": "paragraphs 9965-9994",
+  "SPEC_TEXT": "DOC-C §3.1 declares one canonical ErrorCode union containing 29 values. Primary-source paragraph range is authoritative.",
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC / FINAL VERDICT",
+  "EXPECTED_BEHAVIOR": "The shared canonical ErrorCode value set must match the 29-value DOC-C union exactly.",
+  "FORBIDDEN_BEHAVIOR": "No missing or extra canonical values without active DOC-C authority.",
+  "AFFECTED_SYSTEMS": ["CONTRACTS","API","STATE","VAULT","OBSERVABILITY","RELEASE_POLICY"],
+  "DEPENDENCIES": ["FINAL VERDICT DOC-C authority"],
+  "IMPLEMENTATION_PATHS": ["packages/contracts/errors.ts"],
+  "TEST_PATHS": ["tests/contract/error-codes.test.ts"],
+  "STATUS": "MATCH",
+  "LAST_VERIFIED_SHA": null,
+  "LAST_INSPECTED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "integration_source_blob": "b6a1737688399cf0571236f23c0b5ce0f7de5847",
+    "upstream_source_blob": "b6a1737688399cf0571236f23c0b5ce0f7de5847",
+    "integration_test_blob": "1a433e7a3e6e1825bcaaabf3e2c4aa5be66b3670",
+    "upstream_test_blob": "1a433e7a3e6e1825bcaaabf3e2c4aa5be66b3670",
+    "static_result": "Exact primary-spec versus source value-set comparison found 29 of 29 required values and zero extras. Focused contract test encodes the same exact-set oracle.",
+    "execution_result": "NOT_EXECUTED_IN_THIS_REVIEW"
+  },
+  "RECORDED_BY": "C-17A4D82E",
+  "RECORDED_AT": "2026-10-05T17:19:50+07:00"
+}
