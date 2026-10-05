@@ -1,0 +1,301 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_FINDING_UNIVERSE_CONTRACT_V3",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SUPERSEDES": {
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V2.json",
+    "BLOB_SHA": "effbca8635cc3963cf27ccb65c883f79c1a2d362",
+    "REASON": "V2 independent interop review found incomplete root component schemas and nondeterministic external-candidate disposition."
+  },
+  "EXTERNAL_LOCATOR_CONTRACT": {
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_EXTERNAL_LOCATORS_V3.json",
+    "CANDIDATE_BLOB_SHA": "b8f4d59bb2cae069bdfc60d01a006e6f23249a47",
+    "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_FINDING_EXTERNAL_LOCATORS_V3"
+  },
+  "SNAPSHOT_BINDING": {
+    "REQUIRED_FIELDS": [
+      "control_commit_sha",
+      "control_tree_sha",
+      "primary_findings_tree_sha",
+      "contract_blob_sha",
+      "external_locator_blob_sha"
+    ],
+    "RULE": "Every enumerated path/blob/reference and every locator resolution MUST be evaluated against one exact pinned control commit/tree. No mixed-snapshot rows are valid."
+  },
+  "PATH_NORMALIZATION": {
+    "RULE": "Repository paths use '/' separators, NFC, no leading '/', no trailing '/', no empty segment, no '.' or '..' segment.",
+    "ORDER": "UTF-8 byte ordering after NFC."
+  },
+  "PRIMARY_ROOT": "NEXY-BUILD-CONTROL/FINDINGS",
+  "PRIMARY_INFRA_BASENAMES": [
+    ".gitkeep",
+    "00_INDEX.md",
+    "README.md"
+  ],
+  "MEDIA_TYPES": {
+    ".json": "application/json",
+    ".md": "text/markdown"
+  },
+  "RAW_EXTRACTION": {
+    "JSON": {
+      "FINDING_ID": "top-level /FINDING_ID; exactly one JSON member by JSON parser semantics; non-empty NFC string or null",
+      "TYPE_RAW": "top-level /TYPE as exact string or null",
+      "SEVERITY_RAW": "top-level /SEVERITY as exact string or null",
+      "STATUS_RAW": "top-level /STATUS as exact string or null",
+      "FINDING_REF": "top-level /FINDING_REF as exact string or null"
+    },
+    "MARKDOWN": {
+      "REGION": "Leading metadata lines before the first blank line only.",
+      "GRAMMAR": "^([A-Z][A-Z0-9_]*)[ ]*:[ ]*(.*)$",
+      "DUPLICATE_METADATA_KEY": "PARSE_ERROR",
+      "FINDING_ID": "FINDING_ID exactly once and non-empty NFC string or null",
+      "TYPE_RAW": "TYPE exact metadata value or null",
+      "SEVERITY_RAW": "SEVERITY exact metadata value or null",
+      "STATUS_RAW": "STATUS exact metadata value or null",
+      "FINDING_REF": "FINDING_REF exact metadata value or null"
+    },
+    "NO_ALIAS_SUBSTITUTION": [
+      "ORIGINAL_SEVERITY",
+      "CURRENT_SEVERITY",
+      "PRIOR_STATUS",
+      "CONTROL_STATUS",
+      "resolved-like strings",
+      "textual P0 mentions"
+    ],
+    "STRING_VALIDITY": "Non-null authority-bearing strings MUST equal NFC(value) and MUST have no leading/trailing Unicode whitespace; otherwise parse/classification validity fails closed."
+  },
+  "PRIMARY_SOURCE_ACCOUNTING_ROW_SCHEMA": {
+    "REQUIRED_FIELDS": [
+      "repository_path",
+      "blob_sha",
+      "media_type",
+      "disposition",
+      "parsed_finding_id",
+      "parse_error_code"
+    ],
+    "FIELD_TYPES": {
+      "repository_path": "normalized repository path",
+      "blob_sha": "lowercase 40-hex Git blob SHA",
+      "media_type": "application/json|text/markdown|application/octet-stream",
+      "disposition": "FINDING_DEFINITION|NON_FINDING_INFRA|PARSE_ERROR|UNSUPPORTED_CANDIDATE",
+      "parsed_finding_id": "non-empty normalized FINDING_ID string or null",
+      "parse_error_code": "non-empty NFC string or null"
+    },
+    "RULES": [
+      "Every tracked blob directly under or recursively below PRIMARY_ROOT appears exactly once.",
+      "Basename in PRIMARY_INFRA_BASENAMES -> NON_FINDING_INFRA and parsed_finding_id=null.",
+      "Supported .json/.md that parses and has exactly one valid FINDING_ID whose basename stem equals FINDING_ID -> FINDING_DEFINITION.",
+      "Supported .json/.md with parse failure, invalid FINDING_ID, duplicate markdown metadata key, or basename mismatch -> PARSE_ERROR.",
+      "Any other non-infra blob -> UNSUPPORTED_CANDIDATE.",
+      "PARSE_ERROR and UNSUPPORTED_CANDIDATE block completeness."
+    ],
+    "SORT": "repository_path UTF-8 bytes"
+  },
+  "EXTERNAL_SWEEP": {
+    "ROOT": "NEXY-BUILD-CONTROL",
+    "EXCLUDE": "NEXY-BUILD-CONTROL/FINDINGS",
+    "BASENAME_REGEX": "^(?:FINDING-|F-|FD-).+\\.(?:json|md)$",
+    "INCLUDE_UNREFERENCED_MATCHES": true
+  },
+  "EXTERNAL_SWEEP_CANDIDATE_ROW_SCHEMA": {
+    "REQUIRED_FIELDS": [
+      "repository_path",
+      "blob_sha",
+      "media_type",
+      "basename_stem",
+      "parsed_finding_id",
+      "parsed_finding_ref",
+      "matched_locator_finding_id",
+      "disposition",
+      "parse_error_code"
+    ],
+    "FIELD_TYPES": {
+      "repository_path": "normalized repository path",
+      "blob_sha": "lowercase 40-hex Git blob SHA",
+      "media_type": "application/json|text/markdown",
+      "basename_stem": "non-empty NFC filename without extension",
+      "parsed_finding_id": "non-empty normalized FINDING_ID string or null",
+      "parsed_finding_ref": "non-empty normalized FINDING_ID string or null",
+      "matched_locator_finding_id": "non-empty normalized FINDING_ID string or null",
+      "disposition": "LOCATED_EXTERNAL_FINDING_DEFINITION|VALID_EXTERNAL_REFERENCE_ARTIFACT|MISPLACED_UNLOCATED_FINDING_DEFINITION|BASENAME_ID_MISMATCH|AMBIGUOUS_ID_AND_REF|UNRESOLVED_REFERENCE_ARTIFACT|UNSUPPORTED_EXTERNAL_CANDIDATE|PARSE_ERROR",
+      "parse_error_code": "non-empty NFC string or null"
+    },
+    "DISPOSITION_RULES": [
+      "Parse candidate with RAW_EXTRACTION; parse failure -> PARSE_ERROR.",
+      "If both parsed_finding_id and parsed_finding_ref are non-null -> AMBIGUOUS_ID_AND_REF.",
+      "If parsed_finding_id is non-null: basename_stem MUST equal parsed_finding_id. If not -> BASENAME_ID_MISMATCH.",
+      "If parsed_finding_id is non-null and exact path+ID matches one V3 external locator -> LOCATED_EXTERNAL_FINDING_DEFINITION.",
+      "If parsed_finding_id is non-null and no exact V3 locator matches -> MISPLACED_UNLOCATED_FINDING_DEFINITION.",
+      "If parsed_finding_id is null and parsed_finding_ref is non-null -> VALID_EXTERNAL_REFERENCE_ARTIFACT only when that referenced ID resolves exactly once in the eventual normalized finding rows; otherwise UNRESOLVED_REFERENCE_ARTIFACT.",
+      "If both parsed_finding_id and parsed_finding_ref are null -> UNSUPPORTED_EXTERNAL_CANDIDATE.",
+      "Only LOCATED_EXTERNAL_FINDING_DEFINITION and VALID_EXTERNAL_REFERENCE_ARTIFACT are nonblocking dispositions. Every other disposition blocks completeness."
+    ],
+    "SORT": "repository_path UTF-8 bytes"
+  },
+  "AUTHORITY_REFERENCE_POINTER_REGISTRY": {
+    "VERSION": 1,
+    "BOOTSTRAP_SCHEMA": "NEXY_BOOTSTRAP_FENCE_V16_RC1_3_V1",
+    "POINTERS": [
+      "/KNOWN_BLOCKING_CONTROL_FINDINGS/*",
+      "/BLOCKING_FINDING_ID",
+      "/ADDITIONAL_BLOCKING_FINDINGS/*",
+      "/SUPERSEDED_FREEZE_REQUEST/DEFECT_FINDING_ID"
+    ],
+    "ARRAY_WILDCARD": "* means every array element in index order",
+    "FREEFORM_RECURSIVE_KEY_SEARCH": false,
+    "UNKNOWN_ACTIVE_SCHEMA": "FAIL_CLOSED_UNTIL_POINTER_REGISTRY_VERSIONED"
+  },
+  "AUTHORITY_REFERENCE_ROW_SCHEMA": {
+    "REQUIRED_FIELDS": [
+      "authority_path",
+      "authority_blob_sha",
+      "authority_schema_version",
+      "json_pointer",
+      "array_index",
+      "finding_id"
+    ],
+    "FIELD_TYPES": {
+      "authority_path": "normalized repository path",
+      "authority_blob_sha": "lowercase 40-hex Git blob SHA",
+      "authority_schema_version": "non-empty NFC string",
+      "json_pointer": "non-empty NFC JSON pointer from active registry",
+      "array_index": "non-negative JSON integer or null",
+      "finding_id": "non-empty normalized FINDING_ID string"
+    },
+    "SORT": "authority_path UTF-8, json_pointer UTF-8, array_index with null before integers, finding_id UTF-8"
+  },
+  "NORMALIZED_FINDING_ROW_SCHEMA": {
+    "REQUIRED_FIELDS": [
+      "FINDING_ID",
+      "DEFINITION_PATH",
+      "DEFINITION_BLOB_SHA",
+      "SOURCE_CLASS",
+      "MEDIA_TYPE",
+      "TYPE_RAW",
+      "SEVERITY_RAW",
+      "STATUS_RAW",
+      "RAW_FIELD_CONFLICT",
+      "AUTHORITY_REFERENCE_PATHS"
+    ],
+    "FIELD_TYPES": {
+      "FINDING_ID": "non-empty NFC string",
+      "DEFINITION_PATH": "normalized repository path",
+      "DEFINITION_BLOB_SHA": "lowercase 40-hex Git blob SHA",
+      "SOURCE_CLASS": "PRIMARY_FINDING_DEFINITION|LOCATED_EXTERNAL_FINDING_DEFINITION",
+      "MEDIA_TYPE": "application/json|text/markdown",
+      "TYPE_RAW": "valid NFC string or null",
+      "SEVERITY_RAW": "valid NFC string or null",
+      "STATUS_RAW": "valid NFC string or null",
+      "RAW_FIELD_CONFLICT": "boolean",
+      "AUTHORITY_REFERENCE_PATHS": "sorted unique array of normalized repository paths"
+    },
+    "MATERIALIZATION_RULES": [
+      "Emit one row for each PRIMARY FINDING_DEFINITION and each LOCATED_EXTERNAL_FINDING_DEFINITION.",
+      "Same FINDING_ID at distinct definition paths -> DUPLICATE_FINDING_ID_CONFLICT and completeness fails.",
+      "Same definition path discovered more than once -> one row only, union authority-reference paths then sort unique.",
+      "RAW_FIELD_CONFLICT=true whenever multiple authoritative parsers/locations for the same exact definition disagree on TYPE_RAW, SEVERITY_RAW or STATUS_RAW; conflict blocks completeness."
+    ],
+    "SORT": "FINDING_ID UTF-8 bytes, then DEFINITION_PATH UTF-8 bytes"
+  },
+  "VALIDATION_SUMMARY_SCHEMA": {
+    "REQUIRED_FIELDS": [
+      "primary_blob_count",
+      "primary_accounted_count",
+      "external_candidate_count",
+      "external_nonblocking_count",
+      "authority_reference_count",
+      "normalized_finding_count",
+      "primary_parse_error_count",
+      "primary_unsupported_count",
+      "external_blocking_count",
+      "unresolved_authority_reference_count",
+      "duplicate_finding_id_count",
+      "raw_field_conflict_count",
+      "complete"
+    ],
+    "FIELD_TYPES": {
+      "primary_blob_count": "non-negative JSON integer",
+      "primary_accounted_count": "non-negative JSON integer",
+      "external_candidate_count": "non-negative JSON integer",
+      "external_nonblocking_count": "non-negative JSON integer",
+      "authority_reference_count": "non-negative JSON integer",
+      "normalized_finding_count": "non-negative JSON integer",
+      "primary_parse_error_count": "non-negative JSON integer",
+      "primary_unsupported_count": "non-negative JSON integer",
+      "external_blocking_count": "non-negative JSON integer",
+      "unresolved_authority_reference_count": "non-negative JSON integer",
+      "duplicate_finding_id_count": "non-negative JSON integer",
+      "raw_field_conflict_count": "non-negative JSON integer",
+      "complete": "boolean"
+    },
+    "EXACT_COMPLETE_RULE": "complete=true iff primary_blob_count==primary_accounted_count, primary_parse_error_count==0, primary_unsupported_count==0, external_candidate_count==external_nonblocking_count, external_blocking_count==0, unresolved_authority_reference_count==0, duplicate_finding_id_count==0, raw_field_conflict_count==0, and every authority reference resolves exactly once."
+  },
+  "COMPLETE_FINDING_MANIFEST_ROOT_HASH": {
+    "DOMAIN": "NEXY_V16_RC1_3_COMPLETE_FINDING_MANIFEST_ROOT_V3",
+    "ROOT_OBJECT_FIELDS": [
+      "domain",
+      "target_authority_key",
+      "control_commit_sha",
+      "control_tree_sha",
+      "primary_findings_tree_sha",
+      "contract_blob_sha",
+      "external_locator_blob_sha",
+      "reference_pointer_registry_version",
+      "primary_source_accounting_rows",
+      "external_sweep_candidate_rows",
+      "authority_reference_rows",
+      "normalized_finding_rows",
+      "validation_summary"
+    ],
+    "FIELD_TYPES": {
+      "domain": "exact NEXY_V16_RC1_3_COMPLETE_FINDING_MANIFEST_ROOT_V3",
+      "target_authority_key": "lowercase 64-hex",
+      "control_commit_sha": "lowercase 40-hex Git commit SHA",
+      "control_tree_sha": "lowercase 40-hex Git tree SHA",
+      "primary_findings_tree_sha": "lowercase 40-hex Git tree SHA",
+      "contract_blob_sha": "lowercase 40-hex Git blob SHA of this exact V3 contract",
+      "external_locator_blob_sha": "lowercase 40-hex Git blob SHA of accepted V3 locator contract",
+      "reference_pointer_registry_version": "positive JSON integer",
+      "primary_source_accounting_rows": "array of PRIMARY_SOURCE_ACCOUNTING_ROW_SCHEMA rows",
+      "external_sweep_candidate_rows": "array of EXTERNAL_SWEEP_CANDIDATE_ROW_SCHEMA rows",
+      "authority_reference_rows": "array of AUTHORITY_REFERENCE_ROW_SCHEMA rows",
+      "normalized_finding_rows": "array of NORMALIZED_FINDING_ROW_SCHEMA rows",
+      "validation_summary": "VALIDATION_SUMMARY_SCHEMA object"
+    },
+    "CANONICALIZATION": "RFC8785_JCS",
+    "HASH": "SHA-256(UTF8(JCS(ROOT_OBJECT))) lowercase hex",
+    "SELF_EXCLUDED": true,
+    "HASH_ACCEPTANCE_GATE": "validation_summary.complete MUST be true before the hash may be accepted as an activation denominator."
+  },
+  "PROJECTION_ADAPTER_EXPORT": {
+    "SCHEMA_VERSION": "NEXY_FINDING_UNIVERSE_TO_CONTROL_P0_ADAPTER_V3",
+    "EXACT_MAPPING": {
+      "finding_id": "FINDING_ID",
+      "finding_path": "DEFINITION_PATH",
+      "finding_blob_sha": "DEFINITION_BLOB_SHA",
+      "type_raw": "TYPE_RAW",
+      "severity_raw": "SEVERITY_RAW",
+      "status_raw": "STATUS_RAW",
+      "source_class": "SOURCE_CLASS",
+      "raw_field_conflict": "RAW_FIELD_CONFLICT"
+    },
+    "ADAPTER_GATE": "Universe validation_summary.complete=true, RAW_FIELD_CONFLICT=false, and all mapped fields pass their exact V3 types. No field derivation from free text or aliases is permitted."
+  },
+  "COMPLETENESS_REQUIRES": [
+    "Pinned primary tree enumerated exhaustively.",
+    "Pinned external sweep enumerated exhaustively.",
+    "All row schemas and exact disposition rules pass.",
+    "Every authority-reference pointer is evaluated on the same pinned tree and resolves exactly once.",
+    "All external locator entries re-resolve and validate at the pinned snapshot.",
+    "Validation summary exact complete rule evaluates true.",
+    "Independent generator recomputes identical RFC8785/JCS root bytes and SHA-256."
+  ],
+  "REVIEW_REPAIRS": {
+    "XR3_UNIVERSE_V2_HASH_COMPONENT_ROW_SCHEMAS_UNDEFINED": "REPAIRED_BY_EXACT_ROW_AND_SUMMARY_SCHEMAS",
+    "XR4_EXTERNAL_SWEEP_NONDEFINITION_DISPOSITION_UNDEFINED": "REPAIRED_BY_EXACT_EXTERNAL_DISPOSITION_STATE_MACHINE",
+    "XR2_V2_CROSS_SCHEMA_ADAPTER_UNDEFINED": "REPAIRED_BY_VERSIONED_PROJECTION_ADAPTER_EXPORT"
+  },
+  "STATUS": "V3_CANDIDATE_PENDING_INDEPENDENT_REVIEW_MANIFEST_NOT_MATERIALIZED",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "CREATED_BY_CHAT_ID": "C-SOL-20261005-0951-0800-V16RC13-REQROOTV2-XREVIEW-4C91E2A7"
+}
