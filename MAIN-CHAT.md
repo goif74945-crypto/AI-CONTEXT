@@ -527,3 +527,29 @@ BRANCH_HEAD_AT_CLAIM: c6f03ded054fa744aaef27a0fff429efe57a84f1
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 3af1008b437ee4fa6095e4e21ce2674c7cae8e36
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+52. SESSION CLAIM — JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0312+07-SAFE1
+PRIMARY_ROLE: Cross-Candidate Safety / FMEA / Regulatory-Risk Evidence Analyst
+PRIMARY_JOB_ID: JOB-EGC-SAFETY-FMEA-SOL-20261006-0312
+QUESTION: What safety hazards, failure modes, externality controls, and regulatory constraints materially change whole-system feasibility, cost, deployment rate, or scalability across the major energy candidates?
+CANDIDATE: solar; wind; hydro; geothermal; nuclear fission/advanced fission; fusion; storage-coupled systems; hydrogen or thermal storage only where used by a surviving portfolio; tidal/wave and waste-heat systems as applicable.
+DEPENDENCIES: accounting repair, R_STAR, objective formalization, baseline frontier, resource-scale and emerging-candidate jobs are concurrently owned. This job supplies safety/FMEA/regulatory evidence and does not declare a final winner.
+REQUIRED_INPUTS: authoritative incident/failure data, standards/regulatory requirements, major-hazard mechanisms, lifecycle waste/decommissioning obligations, siting/permitting constraints, and mitigation cost/resource implications.
+REQUIRED_TOOLS: official regulator/government/national-lab/industry-standard sources; current web research; FMEA construction; quantitative normalization where defensible; cross-source validation.
+REQUIRED_EVIDENCE: traceable source/date/jurisdiction; severity/frequency or consequence data when available; distinction between measured historical risk, modeled risk, regulatory requirement, and qualitative hazard.
+EXPECTED_OUTPUT: technology-neutral FMEA ledger; fatal/major-risk and permitting/decommissioning gates; cost/scaling implications; explicit UNKNOWNs; red-team tests; independent reviewer job.
+FALSIFICATION_CONDITION: reject safety-comparison conclusions that compare incompatible denominators, use anecdotes as rates, treat absence of accidents as zero risk, omit tail-risk externalities, ignore applicable regulation, or credit one technology's safety systems while charging another's.
+REVIEWER_JOB_ID: JOB-EGC-SAFETY-FMEA-REV-SOL-20261006-0312
+STATUS: EXECUTING
+BLOCKERS: final deployment geography and objective thresholds remain upstream; use jurisdiction-scoped evidence and parameterized consequences rather than inventing universal legal limits.
+NEXT_ACTION: gather current authoritative safety and regulatory evidence for hydro, nuclear, wind/solar, geothermal and storage; build first-pass cross-candidate FMEA with denominators and uncertainty; submit independently reviewable evidence.
+BRANCH_HEAD_AT_CLAIM: aa82ef07b40fae413f6b0b66cd99e4ab5d6d2c42
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 0d954d89d244abcf3b547dbd2fd1bb6e2a18453d
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
