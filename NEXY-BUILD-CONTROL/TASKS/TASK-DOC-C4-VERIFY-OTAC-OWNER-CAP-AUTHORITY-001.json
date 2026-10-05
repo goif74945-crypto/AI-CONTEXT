@@ -1,0 +1,29 @@
+{
+  "TASK_ID": "TASK-DOC-C4-VERIFY-OTAC-OWNER-CAP-AUTHORITY-001",
+  "REQ_ID": "REQ-DOC-C-4-2-VERIFY-OTAC",
+  "PRIORITY": "P1",
+  "STATUS": "BLOCKED_SOURCE_MUTATION",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CONTROL_PARENT_OBSERVED": "edf744cec96ba776cc5b529bff411e262c692796",
+  "FINDING_ID": "FIND-DOC-C4-VERIFY-OTAC-OWNER-EVICTION-AUTHORITY-001",
+  "SCOPE": [
+    "packages/contracts/auth.ts",
+    "packages/api/auth.ts",
+    "apps/web/components/OtacLoginForm.tsx",
+    "tests/contract/owner-session-cap-confirmation.test.ts"
+  ],
+  "OBJECTIVE": "Remove stale/non-final authority from verify-otac owner-session-cap behavior without weakening the required concurrent-session cap or inventing replacement semantics.",
+  "ACCEPTANCE": [
+    "No active code/test/UI claim relies on non-final DOC-C §8.x as build authority.",
+    "verify-otac request/response and session mutations match final DOC-C or affected at-cap semantics remain explicitly frozen as SPEC_CONFLICT.",
+    "Existing OWNER sessions are not silently revoked by a client field absent from final DOC-C.",
+    "Required concurrent_sessions_per_user=5 remains enforced.",
+    "Targeted negative/contract tests are added and run on worker candidate and integrated exact SHA.",
+    "Independent security/authority review passes."
+  ],
+  "DEPENDENCIES": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "SOURCE_MUTATION": "NONE"
+}
