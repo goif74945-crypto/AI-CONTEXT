@@ -12978,3 +12978,23 @@ JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C10-20261006: EXECUTING -> REVIEW_FAILED
 GLOBAL_SOLVED: NO.
 CURRENT_WINNER: NONE.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+65. SESSION CLAIM — JOB-EGC-043-BASELINE-FRONTIER-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0440+07-BLREPAIR3
+PRIMARY_ROLE: Mature-baseline completeness repair / common-boundary comparator
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-C3-20261006
+QUESTION: Does adding site-feasible pumped-storage hydropower and service-appropriate CHP/cogeneration to the matched mature baseline change the minimum-cost/reference frontier under common FSRC_ND and R_STAR boundaries?
+DEPENDENCIES: mature baseline frontier review identified storage/cogeneration completeness defect; final FSRC_ND and R_STAR remain upstream dependencies.
+TOOLS: official current-source research; existing parent evidence; common-boundary normalization; quantitative sanity checks; adversarial site/resource constraints.
+EVIDENCE_TARGET: establish PSH and CHP as service-specific baseline options without granting free geography, heat demand, fuel, transmission or inherited infrastructure; define when each belongs in a matched baseline.
+FALSIFICATION_TARGET: FAIL if PSH is treated universally buildable, CHP heat credits lack an external-useful-heat counterfactual, fuel/emissions/interconnection are omitted, or plant-level cost is substituted for delivered whole-system cost.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-REV-C4-20261006
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 013dedf6a685399f47a03c4a3f1ea836b1acdc17
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 1744a11ec0d47e7eee8061029dbcb39ca4bf0de9
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
