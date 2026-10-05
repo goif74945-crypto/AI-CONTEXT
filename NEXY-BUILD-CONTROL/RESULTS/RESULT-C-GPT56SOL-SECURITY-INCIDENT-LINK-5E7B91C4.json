@@ -1,0 +1,27 @@
+{
+  "RESULT_ID": "RESULT-C-GPT56SOL-SECURITY-INCIDENT-LINK-5E7B91C4",
+  "TASK_ID": "TASK-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001",
+  "FINDING_ID": "FINDING-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001",
+  "VERDICT": "IMPLEMENTED_NOT_INTEGRATED_WAITING_FILE_HOTSPOT_AND_EXECUTABLE_VERIFICATION",
+  "WORKER_BRANCH": "work/security-incident-link-truth-5e7b91c4",
+  "WORKER_SHA": "f3c653ae9a612ff560d8e76b33e53bd25b29f633",
+  "PRODUCT_PR": 74,
+  "AUTHORITY_BOUNDARY": "Preserve incident_id audit truth but do not advertise a canonical detail URL for SecurityIncident until an authoritative public SecurityIncident response and tenancy contract exists.",
+  "CHANGED_FILES": [
+    "packages/api/canonical.ts",
+    "tests/contract/canonical-api.test.ts"
+  ],
+  "PARTIAL_EVIDENCE": {
+    "canonical_blob": "4ed189c24b5e0dfe508f337f66dd77d9322a63f1",
+    "test_blob": "5ff72d1429d8b5fbbb362b0c12d22043153496b0",
+    "isolated_truth_mapping_harness_cases": 3,
+    "isolated_truth_mapping_harness_result": "PASS",
+    "changed_snippet_typescript_syntax_errors": 0
+  },
+  "BLOCKERS": [
+    "PR34 / T-389F19AA holds the same physical files for validation; do not rebase or overwrite while that lease remains active.",
+    "No exact-head repository test run exists for worker f3c653ae9a612ff560d8e76b33e53bd25b29f633."
+  ],
+  "FORBIDDEN_CONCLUSION": "Do not claim full CI pass or integrate PR 74 until the physical hotspot clears and exact executable proof succeeds.",
+  "PROTECTED_BRANCH_MUTATION": "NONE"
+}
