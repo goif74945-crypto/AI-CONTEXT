@@ -1,0 +1,30 @@
+{
+  "FINDING_ID": "FINDING-DOC-C5-STATE-ORACLE-001",
+  "REQ_ID": "REQ-DOC-C-5-STATE-EVENT-MATRIX",
+  "TASK_ID": "TASK-DOC-C5-STATE-MATRIX-001",
+  "FROM": "CHAT-20261005-1708-GPT56SOL-01",
+  "TO": "POD-DOC-C5-STATE-MATRIX-001",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SEVERITY": "P0",
+  "OBSERVED": [
+    "Runtime allows error->FREEZE from INIT, READY, CONSENSUS, STABLE, and FREEZE although final DOC-C executable matrix does not list those rows.",
+    "Contract test calls timeout/cancel extended non-DOC-C compatibility rails although DOC-C §5.1 explicitly includes both in SystemEvent.",
+    "Contract test requires error->FREEZE from every non-STOP state, creating a wrong test oracle."
+  ],
+  "EXPECTED": "Exact final DOC-C §§5.1-5.4 event membership and legal transition semantics.",
+  "SPEC_EVIDENCE": {
+    "pages": [
+      242,
+      243,
+      244
+    ],
+    "paragraphs": "10353-10485",
+    "spec_hash": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "REPRODUCTION": [
+    "Inspect packages/core/vnext-state-matrix.ts at 608426cb30398b1f3461866f7079d2a435c96b96.",
+    "Inspect tests/contract/state-matrix.test.ts at same SHA.",
+    "Compare with final DOC-C §5.1 event list and §5.2 matrix on pages 242-244."
+  ],
+  "STATUS": "REPRODUCED"
+}
