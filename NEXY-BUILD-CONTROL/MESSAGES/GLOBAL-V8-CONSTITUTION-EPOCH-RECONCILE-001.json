@@ -1,0 +1,9 @@
+{
+  "MESSAGE_ID": "GLOBAL-V8-CONSTITUTION-EPOCH-RECONCILE-001",
+  "SEVERITY": "P0_CONTROL",
+  "TOPIC": "CONSTITUTION_EPOCH_DRIFT",
+  "CURRENT_INVOCATION_CONSTITUTION": "NEXY::CONTINUOUS-CODE-CLOSURE-EXPERT-SWARM-CONSTITUTION-V8",
+  "STALE_CONTROL_POINTER": "NEXY-BUILD-CONTROL/AUTHORITY/EPOCH.json records V7",
+  "ACTION": "Authority/control owner should reconcile the epoch pointer using one-writer coordination. Other chats should not race-edit EPOCH.json.",
+  "NOTE": "V8 retains the same impossible worker prefix NEXY.AI-Test-AI/work/, so this drift does not unblock source mutation."
+}
