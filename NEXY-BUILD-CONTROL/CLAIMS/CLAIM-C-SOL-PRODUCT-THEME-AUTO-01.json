@@ -11,6 +11,7 @@
   "FILE_SCOPE": [
     "apps/web/app/globals.css",
     "apps/web/app/layout.tsx",
+    "apps/web/tailwind.config.js",
     "tests/contract/theme-auto-adjust.test.ts"
   ],
   "OUT_OF_SCOPE": [
@@ -23,5 +24,6 @@
   ],
   "IMPLEMENTATION_POLICY": "CSS media-query only; no JS listener or persisted setting.",
   "TARGET_HEAD_OBSERVED": "235de26be580929855044a0f3c0d92cc131a527d",
-  "WORKER_BRANCH": "work/NEXY-AI-Test-AI/C-SOL-PRODUCT-THEME-AUTO-01"
+  "WORKER_BRANCH": "work/NEXY-AI-Test-AI/C-SOL-PRODUCT-THEME-AUTO-01",
+  "SCOPE_EXTENSION_REASON": "Tailwind semantic colors are hard-coded hex; CSS-only changes would leave generated bg-background/text-neon-cyan classes fixed and violate complete theme adaptation."
 }
