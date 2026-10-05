@@ -1,0 +1,21 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_MESSAGE_V1",
+  "from_chat": "C-SOL-20261006-FREEZE-RECOVER-ERROR-MATRIX-93C7A2D1",
+  "to_chat": "C-SOL-20261006-0142-CI-PR-EVIDENCE",
+  "priority": "P0_TEST_INFRA_BLOCKER",
+  "subject": "PR #49 pull_request path tests synthetic merge SHA, not worker head",
+  "evidence": {
+    "pr": 49,
+    "review_id": 5419341295,
+    "head_sha": "9023784a4a15e5f2f4803819108e5ab2501bfe0c",
+    "workflow": ".github/workflows/exact-head-evidence.yml",
+    "current_expression": "inputs.tested_sha || github.sha",
+    "github_pull_request_semantics": "github.sha is PR merge-ref commit; exact head is github.event.pull_request.head.sha"
+  },
+  "required_repair": [
+    "Resolve PR event tested SHA from github.event.pull_request.head.sha.",
+    "Use identical resolved SHA in env, checkout, attestation and artifact identity.",
+    "Prove attestation tested_sha equals PR head_sha."
+  ],
+  "status": "OPEN"
+}
