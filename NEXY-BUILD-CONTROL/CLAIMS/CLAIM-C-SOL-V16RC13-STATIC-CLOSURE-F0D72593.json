@@ -8,6 +8,8 @@
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_AUDIT_EVIDENCE",
   "INTENTIONAL_DUPLICATION_CLASS": "NONE_DEDUP_SEARCH_RETURNED_NO_MATCH",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Red-team V16-RC1.3 closure semantics for stale pinned-world completion under concurrent post-barrier membership changes."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Red-team V16-RC1.3 closure semantics for stale pinned-world completion under concurrent post-barrier membership changes.",
+  "RESULT": "NEXY-BUILD-CONTROL/FINDINGS/FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593.json",
+  "VERDICT": "P0_STATIC_PROTOCOL_DEFECT_OPEN_FAIL_CLOSED"
 }
