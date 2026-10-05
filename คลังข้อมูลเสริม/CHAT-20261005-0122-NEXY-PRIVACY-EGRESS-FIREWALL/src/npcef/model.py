@@ -38,6 +38,16 @@ class RecipientClass(str, Enum):
 
 
 @dataclass(frozen=True)
+class RecipientRouteProof:
+    """Observed recipient resolution metadata; not an authenticated proof."""
+
+    requested_recipient: str
+    resolved_recipient: str
+    redirect_chain: tuple[str, ...]
+    resolver_version: str
+
+
+@dataclass(frozen=True)
 class ConsentGrant:
     grant_id: str
     item_id: str
@@ -111,6 +121,7 @@ class EgressRequest:
     now: datetime
     items: tuple[DataItem, ...]
     consent_grants: tuple[ConsentGrant | ConsentBundleGrant, ...] = ()
+    recipient_route_proof: RecipientRouteProof | None = None
 
 
 @dataclass(frozen=True)
@@ -118,3 +129,4 @@ class FirewallPolicy:
     external_sensitive_requires_consent: bool = True
     forbid_secret_external_egress: bool = True
     sensitive_requires_explicit_recipient_binding: bool = True
+    require_external_recipient_route_proof: bool = True

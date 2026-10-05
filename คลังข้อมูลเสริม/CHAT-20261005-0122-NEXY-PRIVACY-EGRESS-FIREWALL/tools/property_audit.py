@@ -18,6 +18,7 @@ from src.privacy_firewall import (
     EgressRequest,
     PrivacyFirewall,
     RecipientClass,
+    RecipientRouteProof,
     Sensitivity,
 )
 
@@ -93,6 +94,11 @@ def run() -> dict[str, int]:
             now=NOW,
             items=(data_item,),
             consent_grants=(grant,),
+            recipient_route_proof=(
+                None
+                if recipient_class is RecipientClass.LOCAL_TRUSTED
+                else RecipientRouteProof(recipient, recipient, (), "audit-registry-v1")
+            ),
         )
 
         first = fw.evaluate(req)
@@ -142,6 +148,7 @@ def run() -> dict[str, int]:
             recipient_class=RecipientClass.EXTERNAL_MODEL,
             now=NOW,
             items=ordering,
+            recipient_route_proof=RecipientRouteProof(RECIPIENT, RECIPIENT, (), "audit-registry-v1"),
         )
         result = fw.evaluate(req)
         order_digests.add(result.receipt.digest)

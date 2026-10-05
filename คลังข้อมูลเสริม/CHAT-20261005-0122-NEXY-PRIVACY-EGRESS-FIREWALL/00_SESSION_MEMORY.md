@@ -1,6 +1,6 @@
 # Temporary Execution Memory — NEXY Purpose-Bound Privacy & Context Egress Firewall Lab
 
-Status: WAVE_07_VERIFIED_E0_E1_E2_LONG_HORIZON_ACTIVE
+Status: WAVE_09_LOCAL_VERIFIED_PENDING_REMOTE_READBACK
 Truth class: REPO_TASK_RECORD
 Durable chat code: CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL
 Platform-native ChatGPT conversation ID: UNKNOWN_NOT_EXPOSED
@@ -222,3 +222,37 @@ Do not re-execute Wave 07. On the next run, re-read current authority and refres
 ### Claim boundary
 
 Wave 07 has E0 exact-commit read-back plus E1/E2 reference-prototype evidence. E3/E4/E5/E6, NEXY.AI integration, issuer authentication, human comprehension, legal consent/compliance, and production privacy/security remain NOT_VERIFIED.
+
+## Wave 09 local checkpoint — 2026-10-06
+
+### Authority and concurrency refresh
+
+- Fresh AI-CONTEXT main observed at commit `6f34a9dfe750dd8eb29e757e65913f51dbf7337c`, tree `12a16b290a3570ad00a6083009e29152a4545263`.
+- Bootstrap, execution, security, verification, overlap, plan, validation, evidence, and prior checkpoint records were re-read.
+- Wave 08 is `SKIPPED_OVERLAP` with exact IX-Lab blob evidence recorded in `13_CONCURRENT_OVERLAP_BOUNDARY.md`.
+- A bounded current-tree scan found no implemented privacy-egress recipient-route binding outside NPCEF; Wave 09 was selected. This is not a universal novelty claim.
+
+### Exactly one executed wave
+
+Wave 09 — Recipient alias/substitution/redirect attack model.
+
+Implemented AI-PROPOSED/NON-GOVERNING `RecipientRouteProof` metadata and fail-closed route validation. External requests require route metadata by default. Requested and resolved identities must exactly match the request recipient, redirect chains are rejected absent an authoritative registry, malformed/overlong metadata freezes, and consent grants cannot override a route mismatch.
+
+### TDD and verification evidence
+
+- RED: focused test import failed because `RecipientRouteProof` did not exist; 1 loader error; exit 1.
+- Focused: 12/12 PASS.
+- Full regression: 68/68 PASS.
+- Existing property audit: 1,280 cases; 0 failures.
+- Batch-consent audit: 18 cases; 0 failures.
+- Recipient-route audit: 52 cases, 52 deterministic replays, 52 expected outcomes, 52 value non-echo checks, 0 failures.
+- Static compile, fixture/evidence JSON parse, and `git diff --check`: PASS.
+- Candidate code/test/tool blob bindings are recorded in `10_VALIDATION_REPORT.md` and `evidence/release_evidence.json`.
+
+### Resume instruction
+
+This checkpoint is local-verified but not yet remote-read-back verified. Publish only this mission folder atomically against a freshly checked main head, compare every changed file byte-for-byte from the exact commit, then seal the validation/evidence/checkpoint records. Do not execute another wave in the same run.
+
+### Claim boundary
+
+Wave 09 currently has local E1/E2 reference-prototype evidence only. Remote E0 remains pending. Resolver authenticity, real network-path observation, dispatch integrity, E3/E4/E5/E6, NEXY.AI integration, legal compliance, and production privacy/security remain NOT_VERIFIED.

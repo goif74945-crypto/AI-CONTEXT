@@ -47,6 +47,7 @@ def policy_fingerprint(policy: FirewallPolicy) -> str:
         "external_sensitive_requires_consent": policy.external_sensitive_requires_consent,
         "forbid_secret_external_egress": policy.forbid_secret_external_egress,
         "sensitive_requires_explicit_recipient_binding": policy.sensitive_requires_explicit_recipient_binding,
+        "require_external_recipient_route_proof": policy.require_external_recipient_route_proof,
     })
 
 

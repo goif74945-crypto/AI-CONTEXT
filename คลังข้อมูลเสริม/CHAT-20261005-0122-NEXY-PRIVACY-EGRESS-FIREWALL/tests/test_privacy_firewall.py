@@ -11,6 +11,7 @@ from src.privacy_firewall import (
     EgressRequest,
     PrivacyFirewall,
     RecipientClass,
+    RecipientRouteProof,
     Sensitivity,
 )
 
@@ -51,6 +52,11 @@ def request(items, purpose="answer", recipient="model-a", recipient_class=Recipi
         now=NOW,
         items=tuple(items),
         consent_grants=tuple(grants),
+        recipient_route_proof=(
+            None
+            if recipient_class is RecipientClass.LOCAL_TRUSTED
+            else RecipientRouteProof(recipient, recipient, (), "test-registry-v1")
+        ),
     )
 
 

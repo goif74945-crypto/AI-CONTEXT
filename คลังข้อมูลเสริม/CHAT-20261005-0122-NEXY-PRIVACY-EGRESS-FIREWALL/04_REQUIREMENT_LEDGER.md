@@ -31,7 +31,14 @@ All requirements below are **lab requirements**, not canonical NEXY requirements
 | PF-025 | Bundle item ordering and request item ordering do not change the decision, payload, or receipt digest | Determinism invariant | order test + bounded permutations | E2 |
 | PF-026 | Batch-consent verification records never echo raw payload marker values | Security boundary | marker non-echo bounded audit | E2 bounded |
 | PF-027 | Batch consent remains AI-PROPOSED/NON-GOVERNING and cannot claim upstream human authorization authenticity | Authority boundary | docs + claim limitations | E0 |
+| PF-028 | Every external request supplies explicit recipient-resolution metadata under the default reference policy | Wave 09 lab contract | `RecipientRouteProof` requirement + missing-proof test | E2 |
+| PF-029 | Requested and resolved recipient identities must both equal the request's exact policy/grant recipient binding | Recipient integrity invariant | route validation + alias/substitution tests | E2 |
+| PF-030 | Any observed redirect hop freezes because this lab has no adopted alias/redirect authority registry | Least-authority invariant | redirect-chain tests | E2 |
+| PF-031 | Route proof metadata is strictly typed, nonblank, and bounded to at most eight reported hops | Fail-closed metadata boundary | malformed/blank/overlong tests | E2 |
+| PF-032 | Existing consent grants cannot override a recipient-route mismatch | Consent integrity invariant | grant-plus-substitution negative test | E2 |
+| PF-033 | Recipient-route aliases and payload markers are not echoed into receipts | Metadata minimization boundary | focused test + bounded audit | E2 bounded |
+| PF-034 | Route metadata remains AI-PROPOSED/NON-GOVERNING and is not claimed as authenticated transport evidence | Authority/truth boundary | docs + limitations | E0 |
 
 ## Deliberately NOT VERIFIED by this prototype
 
-Nested-object minimization; streaming/token-by-token egress; derived/inferred sensitive-data classification; real identity/authorization for grant issuers; revocation propagation; cryptographic receipt authenticity; distributed policy consistency; legal compliance; connector retention/deletion behavior; runtime bypass resistance in NEXY.AI; production latency/load behavior. Wave 07 proves only local exact-scope bundle semantics; it does not prove that a human validly granted consent.
+Nested-object minimization; streaming/token-by-token egress; derived/inferred sensitive-data classification; real identity/authorization for grant issuers; revocation propagation; cryptographic receipt authenticity; distributed policy consistency; legal compliance; connector retention/deletion behavior; runtime bypass resistance in NEXY.AI; production latency/load behavior. Wave 07 proves only local exact-scope bundle semantics; it does not prove that a human validly granted consent. Wave 09 validates caller-supplied route metadata only; it does not authenticate a resolver, observe a network path, establish canonical alias equivalence, or prove dispatch-time destination integrity.

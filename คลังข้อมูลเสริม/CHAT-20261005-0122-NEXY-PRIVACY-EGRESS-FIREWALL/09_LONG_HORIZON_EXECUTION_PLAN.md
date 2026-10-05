@@ -21,8 +21,8 @@ A wave is `VERIFIED` only when its intended evidence class exists. File presence
 | 05 | Evaluation-to-dispatch binding / TOCTOU token | SKIPPED_OVERLAP | existing DEF/NAES reference systems bind authority/approval to commit-time execution |
 | 06 | Receipt metadata side-channel minimization | SKIPPED_OVERLAP | existing CRF implementation excludes unrequested metadata from receipt commitment |
 | 07 | Grant bundling and least-authority batch consent | VERIFIED | E1/E2 focused/adversarial + bounded deterministic audit; see `10_VALIDATION_REPORT.md` |
-| 08 | Consent-fatigue safety model and bounded ASK UX rules | PLANNED | scenario corpus + falsification |
-| 09 | Recipient alias/substitution/redirect attack model | PLANNED | adversarial tests |
+| 08 | Consent-fatigue safety model and bounded ASK UX rules | SKIPPED_OVERLAP | IX-Lab already owns interaction budgets, ASK/CONFIRM/FREEZE routing, protected confirmations, and confirmation-fatigue research; see `13_CONCURRENT_OVERLAP_BOUNDARY.md` |
+| 09 | Recipient alias/substitution/redirect attack model | VERIFIED | E1/E2 adversarial tests + bounded route audit; see `10_VALIDATION_REPORT.md` |
 | 10 | Purpose taxonomy drift/alias detector | PLANNED | deterministic conflict tests |
 | 11 | Policy/version invalidation and stale-receipt replay | PLANNED | replay tests |
 | 12 | Downstream retention/deletion attestation contract | PLANNED | schema + contradiction tests |

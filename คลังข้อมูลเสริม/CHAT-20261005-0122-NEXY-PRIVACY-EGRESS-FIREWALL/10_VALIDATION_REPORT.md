@@ -1,8 +1,58 @@
-# Wave 01–07 Validation Report
+# Wave 01–09 Validation Report
 
 **Mission:** CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL  
 **Validated scope:** NPCEF reference prototype only  
 **Verdict:** PASS for E0/E1/E2 reference-prototype claims; NOT_VERIFIED for NEXY integration/runtime/deployment/legal compliance.
+
+## Wave 09 — recipient alias/substitution/redirect attack model
+
+Status at this checkpoint: **LOCAL_VERIFIED_PENDING_REMOTE_READBACK**.
+
+Wave 08 was marked `SKIPPED_OVERLAP` after fresh SHA-bound evidence showed that IX-Lab already owns interaction budgets, deterministic ASK/CONFIRM/FREEZE routing, protected confirmations, and confirmation-fatigue research. Wave 09 was the next bounded non-overlapping topic. All new route mechanisms remain **AI-PROPOSED / NON-GOVERNING**.
+
+### TDD evidence
+
+RED was observed before implementation:
+
+`PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_recipient_route -v`
+
+Observed: import failure because `RecipientRouteProof` did not exist; 1 loader error; exit 1.
+
+After the smallest complete implementation, the same focused suite observed 12/12 PASS; exit 0.
+
+### Fresh executed verification
+
+| Check | Exact command | Observed result |
+|---|---|---|
+| Focused recipient-route suite | `PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_recipient_route -v` | 12/12 PASS; exit 0 |
+| Full regression | `PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v` | 68/68 PASS; exit 0 |
+| Existing property audit | `PYTHONDONTWRITEBYTECODE=1 python -m tools.property_audit` | 1,280 cases; 0 failures; exit 0 |
+| Existing batch-consent audit | `PYTHONDONTWRITEBYTECODE=1 python -m tools.batch_consent_audit` | 18 cases; 0 failures; exit 0 |
+| Recipient-route audit | `PYTHONDONTWRITEBYTECODE=1 python -m tools.recipient_route_audit` | 52 cases; 52 deterministic replays; 52 expected outcomes; 52 value non-echo checks; 0 failures; exit 0 |
+| Static compilation | `PYTHONPYCACHEPREFIX=/tmp/npcef_wave09_pycache python -m compileall -q src tests tools` | PASS; exit 0 |
+| JSON/static checks | `python -m json.tool fixtures/adversarial_cases.json`; `python -m json.tool evidence/release_evidence.json`; `git diff --check` | PASS; exit 0 |
+
+### Wave 09 candidate blob bindings
+
+These local Git object IDs bind the tested code. They are pending remote E0 read-back at this checkpoint.
+
+| File | Candidate blob SHA |
+|---|---|
+| src/npcef/__init__.py | 24e8159d16525c2ff932d8f951e2c13173aec6ac |
+| src/npcef/model.py | 284ab7c56db98336e63bc6a6c911b4385e1c1466 |
+| src/npcef/core.py | a0b3e697f7c92ad20748d1a7c8e284b0aaefe470 |
+| src/npcef/receipt.py | ed51acd941e95fee6637405ebf8b4dadd487997c |
+| tests/test_privacy_firewall.py | aa0d7b45bafd21bc59779bc4d25718891a8f07b2 |
+| tests/test_release_contract.py | 2cd6bd4e1fd02c7da5eee27afb51163508f9d5fa |
+| tests/test_batch_consent.py | 7f6c464f85f636c44fa9b62e60207963adcf30d2 |
+| tests/test_recipient_route.py | 90ec21082db0645ad9d5484082e393815979287a |
+| tools/property_audit.py | 15a4a70e398e16377d3df20b4fbff927638eb6a1 |
+| tools/batch_consent_audit.py | 3d2c877517458ad4b8cb23d0ccb55728999ac574 |
+| tools/recipient_route_audit.py | 1659a2a2a6997e5be0de6e04c021dd0a7ce1a534 |
+
+### Truth boundary
+
+The reference evaluator requires explicit external route metadata and accepts only a direct exact route. It does not authenticate the resolver, independently observe DNS/HTTP/service-mesh behavior, establish alias equivalence, or bind evaluation to dispatch. E3–E6, NEXY.AI integration, legal compliance, and production privacy/security remain NOT_VERIFIED.
 
 ## Wave 07 — exact-scope batch consent
 

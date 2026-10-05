@@ -18,7 +18,7 @@ User/project context values; credentials/secret material; purpose/recipient poli
 A planner sends the entire project history “just in case.” Mitigation: every datum must satisfy exact purpose and recipient constraints; field rules remove unrelated keys.
 
 ### Recipient substitution
-A malicious/injected workflow changes `model-a` to `connector-x` after approval. Mitigation direction: grants and data policy bind exact recipient; production request must be integrity-protected through dispatch.
+A malicious/injected workflow changes `model-a` to an alias, relay, redirect, or `connector-x` after approval. Wave 09 reference defense requires explicit route metadata for external requests and FREEZES unless requested and resolved identities both equal the exact bound recipient with no redirect hops. Grants cannot override a route mismatch. Production request/route evidence must still be authenticated and integrity-protected through dispatch.
 
 ### Consent laundering
 A broad old grant is reused for a new purpose. Reference defense: item/purpose/recipient/expiry binding and revocation state.
@@ -39,7 +39,7 @@ Sensitive data declares `*` as recipient. Reference defense: default policy trea
 Reference defense: natural-language task text has no authority to change datum policy; the evaluator accepts structured policy metadata only.
 
 ## Residual risks
-Item IDs/field names may themselves be sensitive; sensitive data can hide in public strings; nested/binary/streaming values are not recursively minimized; library callers can bypass unless architecture enforces the boundary; downstream behavior cannot be controlled here; classifiers/metadata can be wrong; exact-batch matching can be abused for denial-of-service; grant issuer authenticity and user comprehension are not established; receipt digests are not signatures.
+Item IDs/field names may themselves be sensitive; sensitive data can hide in public strings; nested/binary/streaming values are not recursively minimized; library callers can bypass unless architecture enforces the boundary; downstream behavior cannot be controlled here; classifiers/metadata can be wrong; exact-batch matching can be abused for denial-of-service; grant issuer authenticity and user comprehension are not established; receipt digests are not signatures. `RecipientRouteProof` is unauthenticated caller-supplied metadata, does not observe the network path, and rejects all aliases/redirects until a separately authorized canonical registry exists.
 
 ## Production hardening candidates
 Signed policy snapshots, opaque IDs, mandatory gateway enforcement, schema-aware recursive minimization, content classifiers with explicit uncertainty, taint/provenance tracking, revocation propagation, downstream retention attestations, and abuse-focused E3/E4/E5 tests.

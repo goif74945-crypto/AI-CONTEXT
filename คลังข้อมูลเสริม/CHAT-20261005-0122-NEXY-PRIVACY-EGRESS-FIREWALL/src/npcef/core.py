@@ -13,6 +13,7 @@ from .model import (
     EgressRequest,
     FirewallPolicy,
     RecipientClass,
+    RecipientRouteProof,
     Sensitivity,
 )
 from .receipt import EgressReceipt, make_receipt
@@ -41,6 +42,9 @@ class PrivacyFirewall:
         grant_error = self._validate_grants(req)
         if grant_error:
             return self._terminal(req, Action.FREEZE, ("INVALID_GRANT_METADATA", grant_error))
+        route_error = self._validate_recipient_route(req)
+        if route_error:
+            return self._terminal(req, Action.FREEZE, (route_error,))
         if first_duplicate(item.item_id for item in req.items) is not None:
             return self._terminal(req, Action.FREEZE, ("DUPLICATE_ITEM_ID",))
         for item in req.items:
@@ -172,6 +176,36 @@ class PrivacyFirewall:
                 return "INVALID_GRANT_EXPIRY"
         if first_duplicate(grant_ids) is not None:
             return "DUPLICATE_GRANT_ID"
+        return None
+
+    def _validate_recipient_route(self, req: EgressRequest) -> str | None:
+        proof = req.recipient_route_proof
+        is_external = req.recipient_class is not RecipientClass.LOCAL_TRUSTED
+        if proof is None:
+            if self.policy.require_external_recipient_route_proof and is_external:
+                return "RECIPIENT_ROUTE_PROOF_REQUIRED"
+            return None
+        if not isinstance(proof, RecipientRouteProof):
+            return "INVALID_RECIPIENT_ROUTE_PROOF"
+        bindings = (
+            proof.requested_recipient,
+            proof.resolved_recipient,
+            proof.resolver_version,
+        )
+        if not all(isinstance(value, str) and bool(value.strip()) for value in bindings):
+            return "INVALID_RECIPIENT_ROUTE_PROOF"
+        if not isinstance(proof.redirect_chain, tuple) or any(
+            not isinstance(hop, str) or not hop.strip() for hop in proof.redirect_chain
+        ):
+            return "INVALID_RECIPIENT_ROUTE_PROOF"
+        if len(proof.redirect_chain) > 8:
+            return "RECIPIENT_ROUTE_TOO_LONG"
+        if proof.requested_recipient != req.recipient:
+            return "RECIPIENT_ROUTE_BINDING_MISMATCH"
+        if proof.resolved_recipient != req.recipient:
+            return "RECIPIENT_ROUTE_SUBSTITUTION"
+        if proof.redirect_chain:
+            return "RECIPIENT_REDIRECT_NOT_AUTHORIZED"
         return None
 
     def _validate_bundle_authority(self, req: EgressRequest) -> str | None:

@@ -45,6 +45,14 @@ For an active bundle matching the current request/purpose/recipient, its item se
 
 This contract validates deterministic structured metadata only. It does not authenticate the grant issuer, prove human comprehension, or establish legal consent.
 
+## Wave 09 recipient-route proposal
+
+`RecipientRouteProof` is AI-PROPOSED/NON-GOVERNING structured metadata containing the requested recipient, resolved recipient, reported redirect chain, and resolver version. Under the default reference policy, external model/connector/export requests require it; local trusted requests may omit it.
+
+The current lab has no authoritative alias or redirect registry. It therefore accepts only a direct route where requested recipient and resolved recipient both equal the request's exact recipient binding and the redirect chain is empty. A differing requested identity, resolved alias/substitute, or any redirect hop FREEZES. Route metadata must be strictly typed, nonblank, and contain no more than eight reported hops.
+
+The class name does not imply cryptographic proof. The evaluator cannot authenticate the resolver, independently observe DNS/HTTP/service-mesh routing, or ensure that dispatch uses the reported destination. Those remain integration/runtime concerns.
+
 ## Evaluation state machine
 
 ```text

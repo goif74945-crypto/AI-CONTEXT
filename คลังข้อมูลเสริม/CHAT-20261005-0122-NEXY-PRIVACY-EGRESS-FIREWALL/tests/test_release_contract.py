@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 
 from src.privacy_firewall import (
     Action, ConsentGrant, DataItem, EgressRequest, PrivacyFirewall,
-    RecipientClass, Sensitivity,
+    RecipientClass, RecipientRouteProof, Sensitivity,
 )
 
 NOW = datetime(2026, 10, 5, 1, 22, tzinfo=timezone.utc)
@@ -33,6 +33,7 @@ def make_request(items, **changes):
         now=NOW,
         items=tuple(items),
         consent_grants=(),
+        recipient_route_proof=RecipientRouteProof("model-a", "model-a", (), "test-registry-v1"),
     )
     values.update(changes)
     return EgressRequest(**values)

@@ -61,3 +61,8 @@ The following earlier planned waves are `SKIPPED_OVERLAP` at this checkpoint:
 - **Wave 06:** Context Release Firewall `src/nexy_crf/engine.py` blob `9fcbd6ae109f612ccf5bc6ed203037cf8a983943` excludes values and unrequested-field metadata so receipts do not become unrelated-context correlation oracles.
 
 A targeted current-tree search for grant bundling, batch consent and least-authority consent found no implementation outside this NPCEF plan; the only nearby external hit was an NMDPC research backlog about when a consent prompt is necessary. This is bounded search evidence, not a universal novelty claim. Wave 07 was therefore selected as the first inspected non-overlapping PLANNED wave.
+
+## Fresh sibling scan — Wave 09 selection (AI-CONTEXT HEAD `6f34a9dfe750dd8eb29e757e65913f51dbf7337c`)
+
+- **Wave 08 is `SKIPPED_OVERLAP`.** NEXY Interaction Economics Lab requirement/architecture already owns configurable friction budgets, deterministic `ASK_CLARIFICATION` / `CONFIRM` / `FREEZE` routing, preservation of law-required confirmations, and confirmation-fatigue regression research. Exact observed blobs: `01_CONCEPT_AND_REQUIREMENTS.md` `f942ecbe5c1ce047803244aa0a222606690d5612`; `README.md` `389a439282a0dd2a695dc4aa4aefacdb15951884`; `04_RESEARCH_BACKLOG.md` `8b1925423123549bb79cdc76438f3f000a2add3f`.
+- **Wave 09 selected.** A bounded current-tree search for recipient alias/substitution/redirect resolution found no implemented privacy-egress route-binding mechanism outside NPCEF. Delegation Lease Lab mentions provider resource-alias canonicalization only as `NOT_VERIFIED`; provider/model-substitution labs address model semantics rather than the final privacy recipient route. This is bounded coordination evidence, not a universal novelty claim.

@@ -14,6 +14,7 @@ from src.privacy_firewall import (
     EgressRequest,
     PrivacyFirewall,
     RecipientClass,
+    RecipientRouteProof,
     Sensitivity,
 )
 
@@ -78,6 +79,7 @@ def run() -> dict[str, int]:
                 now=NOW,
                 items=ordering,
                 consent_grants=grants,
+                recipient_route_proof=RecipientRouteProof("model-a", "model-a", (), "audit-registry-v1"),
             )
             cases += 1
             first = firewall.evaluate(request)
