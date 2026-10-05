@@ -6,7 +6,7 @@
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "PRIORITY": "P1",
   "RISK": "HIGH",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "CURRENT_HEAD_CONFORMS",
   "OWNER": "UNASSIGNED",
   "TARGET_PATHS": [
     "packages/api/auth.ts",
@@ -22,8 +22,11 @@
     "Exact candidate SHA tests plus independent auth/security review.",
     "NEXY.ai remains unchanged."
   ],
-  "BLOCKERS": [
-    "INC-BRANCH-NAMESPACE-001"
-  ],
-  "NEXT_ACTION": "After a Git-valid Constitution-authorized worker namespace exists, implement a minimal response-shape repair without weakening CSRF."
+  "BLOCKERS": [],
+  "NEXT_ACTION": "No implementation allocation unless a future rescan proves regression.",
+  "ACTIVE": false,
+  "LAST_VERIFIED_BRANCH": "NEXY.AI-Test-AI",
+  "LAST_VERIFIED_SOURCE_BLOB": "a24f7fc880a81d071e7cc40f0de973e7f8381be2",
+  "LAST_VERIFIED_TEST_BLOB": "19947482d54ab6c69c8f7617da039dd1caa3b26e",
+  "CURRENT_EVIDENCE": "handleVerifyOtac success data contains only session_id, expires_at, role; csrfModule.issueCsrfToken(res) remains out-of-band; auth-decision-paths test asserts exact three-field data and CSRF issuance."
 }
