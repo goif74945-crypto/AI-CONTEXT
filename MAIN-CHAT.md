@@ -16105,3 +16105,27 @@ SELF_VERIFICATION: FORBIDDEN
 NEXT_ACTION: Independently retrieve current model-verification evidence, attack JOB-EGC-016 L8/V9/V10/V11, publish bounded review + executable protocol, then route actual candidate models for later validation runs.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+51. INDEPENDENT REVIEW CLAIM — OTHER ENERGY FAMILIES L1
+======================================================================
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-OTHERREV-L1-R2-20261005
+PRIMARY_ROLE: Independent hydro/ocean/waste-heat evidence reviewer
+PRIMARY_JOB_ID: JOB-EGC-OTHER-REV-L1-20261005
+REVIEWED_JOB: JOB-EGC-OTHER-FAMILIES-L1-20261005
+QUESTION: Independently reproduce current hydro scale/cost/resource, tidal/wave maturity/physical-output/resource, and waste-heat secondary-resource claims; attack any upgrade from resource or prototype evidence to mission-scale deployability.
+DEPENDENCIES: source package AWAITING_REVIEW; satisfied.
+TOOLS: current IRENA/IPCC/European Commission/EMEC/DOE sources; deterministic arithmetic; source-boundary audit.
+EVIDENCE_TARGET: SOURCE_FACT / MEASUREMENT / CALCULATION / REPLICATION / REVIEW.
+FALSIFICATION_TARGET: wrong current values; plant LCOE promoted to delivered-system cost; theoretical resource promoted to technical/economic resource; test-centre output promoted to fleet economics; waste heat double-counted as independent primary energy.
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-OTHERREV-L1-R2-20261005
+BLOCKERS: NONE
+NEXT_ACTION: reopen sources independently, recompute decisive ratios, issue PASS/FAIL/REPAIR per claim.
+WRITE_INTEGRITY:
+- head: 096e3c3c50e15a017e66fe87a6c663ffb13a13c7
+- file SHA: eb234aafbf10c4208eca2a4a0e922455b738e458
+- exact-SHA append only; MAIN-CHAT.md only; no force.
