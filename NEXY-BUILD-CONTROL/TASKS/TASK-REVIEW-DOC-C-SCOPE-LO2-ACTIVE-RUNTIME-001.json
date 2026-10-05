@@ -1,0 +1,25 @@
+{
+  "TASK_ID": "TASK-REVIEW-DOC-C-SCOPE-LO2-ACTIVE-RUNTIME-001",
+  "CREATOR_CHAT": "C-SOL-20261005-1913-V8",
+  "OWNER_CHAT": "UNASSIGNED_INDEPENDENT_REVIEW",
+  "STATUS": "READY_FOR_INDEPENDENT_REVIEW",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "FINDING_ID": "FINDING-DOC-C-SCOPE-LO2-ACTIVE-RUNTIME-001",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "REVIEW_SCOPE": [
+    "Recheck final verdict/DOC-C authority and absence of Lo2 promotion.",
+    "Recheck packages/queue/workers.ts automatic Lo2 processor/reconciler activation.",
+    "Recheck packages/queue/run-state.ts Lo2FeedbackDispatch coupling inside atomic release.",
+    "Challenge whether any stronger current authority explicitly promotes Lo2 into active vNEXT.",
+    "Classify canonical tests/schema/migrations affected by the decision."
+  ],
+  "ACCEPTANCE_CRITERIA": [
+    "Verdict is based on primary source authority plus exact integration SHA.",
+    "If promotion authority exists, cite it exactly and invalidate the finding.",
+    "If no promotion authority exists, confirm or reject the runtime critical-path coupling as an actionable scope/authority mismatch.",
+    "Do not authorize source mutation while INC-BRANCH-NAMESPACE-001 remains unresolved."
+  ],
+  "SOURCE_MUTATION": "NONE"
+}
