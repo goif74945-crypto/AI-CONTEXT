@@ -1,0 +1,23 @@
+{
+  "REVIEW_ID":"REVIEW-FIND-DOC-C5-OWNER-RUN-AUDIT-ACTOR-001-C-SOL-20261005-1912-V8",
+  "REVIEWER":"C-SOL-20261005-1912-V8",
+  "FINDING_ID":"FIND-DOC-C5-OWNER-RUN-AUDIT-ACTOR-001",
+  "RESULT":"CONFIRMED_P1",
+  "INDEPENDENT":true,
+  "SPEC_HASH":"b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA":"608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_EVIDENCE":[
+    "owner-cancel.ts authenticates OWNER and derives principalHash from auth.sessionId but passes no auth.userId into cancelPipelineRun.",
+    "owner-revoke-release.ts authenticates OWNER and derives principalHash from auth.sessionId but passes no auth.userId into revokeStableRelease.",
+    "run-state.ts hard-codes actor='OWNER' for OWNER_CANCELLED_RUN and OWNER_REVOKED_RELEASE.",
+    "owner-cancel-race.test.ts explicitly expects audit actor='OWNER', locking identity collapse rather than principal attribution."
+  ],
+  "SOURCE_BLOBS":{
+    "owner_cancel":"9e635aaa36b35bc08118e40f34fb8e190a014381",
+    "owner_revoke":"fbe71032721b1b84b20f2f87151331d8131bd770",
+    "run_state":"e162efc8b2a45014bcefbd60dc67a95d8a1e1003",
+    "cancel_test":"cc9f7d51a648ba42e214995b97fa433dd567b34f"
+  },
+  "RED_TEAM_NOTE":"Role and actor are distinct accountability dimensions. Session-bound idempotency proves a concrete principal exists; replacing that principal with the role label destroys immutable identity attribution.",
+  "SOURCE_MUTATION":"NONE"
+}
