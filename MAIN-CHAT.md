@@ -6111,3 +6111,305 @@ REVIEWER: THIS SESSION IS DISTINCT FROM C1 OWNER; new material reviewer claims r
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+58. BASELINE FRONTIER RESULT — JOB-EGC-043-BASELINE-FRONTIER-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0310+07-BF1
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-C1-20261006
+ROLE_UPDATE: Mature-baseline frontier analyst + independent replication of overlapping JOB-EGC-043-BASELINE-SCREEN-C1.
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+COORDINATION_NOTE:
+- After this session claimed BASELINE-FRONTIER, an overlapping BASELINE-SCREEN job appeared.
+- Per WRITE-CONCURRENCY LAW, useful duplicate work is converted to INDEPENDENT_REPLICATION rather than overwritten or discarded.
+- Emerging-system falsification is now separately covered by JOB-EGC-048; this block only cross-checks fusion evidence needed to prevent a baseline-category error.
+- JOB-EGC-043 objective has submitted LOW_COST/MASSIVE_ENERGY V1 but its reviewer is still EXECUTING; this block therefore does not use those thresholds to declare a winner.
+
+EVIDENCE_ID: EGC-043-BF-001
+CLAIM_ID: CLAIM-EGC-043-BF-RENEWABLE-COST
+TOOL: official-source web retrieval
+METHOD: direct IRENA 2026 report page audit
+DATE: 2026-10-06
+SOURCE: IRENA, Renewable Power Generation Costs in 2025
+SOURCE_DATE: 2026-07
+URL: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+SOURCE_FACT:
+- 2025 global weighted-average plant LCOE: onshore wind 33 USD/MWh; solar PV 44; offshore wind 78; hydropower 62; geothermal 89; CSP 115; bioenergy 86.
+- IRENA reports >90% of utility-scale renewable projects commissioned in 2025 were below the cheapest new fossil-fuel alternative in their market.
+BOUNDARY:
+- plant/project LCOE; NOT common mission FSRC_ND delivered-system cost.
+- storage, firming, system strength, adequacy, congestion and incremental network requirements cannot be assumed zero.
+EVIDENCE_CLASS: SOURCE_FACT
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED
+
+EVIDENCE_ID: EGC-043-BF-002
+CLAIM_ID: CLAIM-EGC-043-BF-DEPLOYMENT
+TOOL: official-source web retrieval
+METHOD: IRENA Renewable Capacity Statistics 2026 / 2026-04-01 release
+DATE: 2026-10-06
+SOURCE_DATE: 2026-03/04
+URLS:
+https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026
+https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+SOURCE_FACT:
+- renewable capacity reached 5,149 GW at end-2025 after 692 GW net additions in 2025.
+- solar added 511 GW; wind added 159 GW; solar+wind represented 96.8% of renewable additions.
+INTERPRETATION:
+- direct physical/industrial evidence that solar and wind can deploy at hundreds-of-GW/year nameplate scale globally.
+- this does NOT establish firm delivered power or common-boundary delivered cost.
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED
+
+EVIDENCE_ID: EGC-043-BF-003
+CLAIM_ID: CLAIM-EGC-043-BF-US-ASBUILT-CAPEX
+TOOL: official-source web retrieval
+METHOD: EIA Form EIA-860 installed-generator construction-cost dataset
+SOURCE_DATE: 2026-07-06; installation year 2024
+URL: https://www.eia.gov/electricity/generatorcosts/
+SOURCE_FACT:
+2024 U.S. capacity-weighted construction cost:
+- solar 1,865 USD/kW;
+- battery storage 1,469 USD/kW;
+- wind 1,882 USD/kW;
+- natural gas 1,004 USD/kW.
+Included new-plant capacity:
+- solar 30,265 MW;
+- battery 10,195 MW;
+- wind 4,455 MW;
+- natural gas 1,061 MW.
+LIMITATION:
+- construction cost != lifetime delivered cost.
+- EIA suppresses some technologies where disclosure risk exists; absence is not zero cost.
+- gas CAPEX does not include future fuel exposure by itself; battery USD/kW cannot define duration/energy capacity without MWh data.
+EVIDENCE_CLASS: MEASURED/REPORTED_AS_BUILT_COST
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED
+
+EVIDENCE_ID: EGC-043-BF-004
+CLAIM_ID: CLAIM-EGC-043-BF-US-DEPLOYMENT
+TOOL: official-source web retrieval
+METHOD: EIA preliminary generator inventory audit
+SOURCE_DATE: 2026-02-20
+URL: https://www.eia.gov/todayinEnergy/detail.php?id=67205
+SOURCE_FACT:
+- U.S. actual 2025 utility-scale additions = 53 GW.
+- 2025 utility solar additions = 27.2 GW; battery additions = 15 GW.
+- planned 2026 additions = 86 GW, including solar 43.4 GW, battery 24 GW, wind 11.8 GW.
+TRUTH_CLASS:
+- 2025 = EXTERNAL_FACT / reported installed.
+- 2026 values = PLAN, not installed fact.
+LIMITATION: planned capacity may not all enter service and nameplate != average or firm power.
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED
+
+EVIDENCE_ID: EGC-043-BF-005
+CLAIM_ID: CLAIM-EGC-043-BF-LCOE-BOUNDARY-ATTACK
+TOOL: EIA official AEO2026 PDF text + mandatory page-8 visual inspection
+SOURCE_DATE: 2026-04-08
+URL: https://www.eia.gov/outlooks/aeo/electricity_generation/pdf/LCOE_report.pdf
+SOURCE_FACT:
+- AEO2026 explicitly says direct LCOE/LCOS comparisons across technologies are misleading for economic competitiveness and that LCOE omits grid value/reliability and other factors.
+- model uses common online year 2031, 30-year recovery period and 7.27% after-tax WACC.
+- reported average 2025-USD/MWh: advanced nuclear 87.81; biomass 84.54; combined-cycle 77.46; CCGT+CCS 58.47; geothermal 40.38; offshore wind 118.79; hydro 64.77; PV-battery 94.20; solar PV 58.33; onshore wind 56.75; combustion turbine 172.57; battery storage 152.61.
+- eligible technologies include levelized tax-credit components; CCS includes captured-carbon credit treatment.
+VISUAL_CHECK: page 8 chart inspected with PDF screenshot tool; labels and values matched extracted text.
+BOUNDARY_WARNING:
+- AEO2026 modeled U.S. 2031 values and IRENA global observed-project 2025 LCOE are NOT directly mergeable.
+- their numerical differences are boundary/geography/year/policy sensitivity evidence, not a contradiction to average away.
+EVIDENCE_CLASS: SOURCE_FACT + EVIDENCE_BOUNDARY_AUDIT
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED
+
+EVIDENCE_ID: EGC-043-BF-006
+CLAIM_ID: CLAIM-EGC-043-BF-NUCLEAR-SCALE
+TOOL: IAEA PRIS live database
+SOURCE_DATE: database last update 2026-06-29 / 2026-07-27
+URLS:
+https://pris.iaea.org/pris/WorldStatistics/WorldStatisticsLandingPage.aspx
+https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+SOURCE_FACT:
+- operating nuclear fleet: 417 reactors, 379,700 MW net electrical capacity.
+- 2025 PRIS fleet energy availability factor = 84.1% for reactors with available commercial-operation data.
+INTERPRETATION:
+- current fission is physically demonstrated at hundreds-of-GW scale and high availability.
+- this proves operating scale/availability, not low cost for new construction.
+EVIDENCE_CLASS: MEASUREMENT/OPERATIONAL_DATABASE
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED
+
+EVIDENCE_ID: EGC-043-BF-007
+CLAIM_ID: CLAIM-EGC-043-BF-NEW-NUCLEAR-COST
+TOOL: U.S. DOE official source retrieval
+SOURCE: DOE Pathways to Commercial Liftoff: Advanced Nuclear, 2025 update
+SOURCE_DATE: 2025-07
+URL: https://www.energy.gov/sites/default/files/2025-07/LIFTOFF_DOE_Advanced-Nuclear-Update.pdf
+SOURCE_FACT:
+- DOE analysis places Vogtle Units 3&4 overnight capital cost at about 15,000 2024-USD/kW after inflation; report decomposes FOAK/project-specific drivers.
+- DOE estimates about 8,300 USD/kW pre-ITC for a hypothetical next two-unit AP1000 build after removing identified Vogtle-specific/FOAK effects.
+TRUTH_CLASS:
+- Vogtle ~15,000/kW = source-reported retrospective project cost analysis.
+- next-build ~8,300/kW = MODEL/INFERENCE, not measured construction cost.
+BOUNDARY_WARNING:
+- do not mix projected learning with actual cost and call it measurement.
+- recent U.S. new-build nuclear is therefore retained as a firm-energy comparator, but PRESENT_LOW_COST_NEW_BUILD is NOT_VERIFIED.
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED
+
+EVIDENCE_ID: EGC-043-BF-008
+CLAIM_ID: CLAIM-EGC-043-BF-FUSION-REPLICATION
+TOOL: LLNL official source retrieval
+SOURCE_DATE: 2025-2026
+URLS:
+https://annual.llnl.gov/fy-2025/national-ignition-facility-2025
+https://str.llnl.gov/str-march-2026/pursuit-higher-power
+SOURCE_FACT:
+- 2025-04-07 NIF fusion yield = 8.6 MJ from 2.08 MJ laser energy on target; target gain 4.13.
+- LLNL states NIF's present flashlamp-pumped facility requires roughly 100 times as much electrical-grid energy as laser energy delivered to target and is not an appropriate IFE power-plant architecture; commercial IFE requires major efficiency and repetition-rate advances.
+INTERPRETATION:
+- independently corroborates JOB-EGC-048 decision to exclude fusion from CURRENT_BASELINE while retaining long-horizon research.
+- target gain >1 != plant net electricity.
+EVIDENCE_CLASS: EXPERIMENT_RESULT + SOURCE_FACT + INFERENCE
+REVIEW_STATUS: INDEPENDENT_REVIEW_REQUIRED
+
+EVIDENCE_ID: EGC-043-BF-009
+CLAIM_ID: CLAIM-EGC-043-BF-NAMEPLATE-NOT-ENERGY
+TOOL: EIA SEDS source audit + two executed local arithmetic implementations (Python process via container; independent AWK formulation)
+SOURCE: EIA State Energy Data System Energy Indicators, Table N3
+SOURCE_PERIOD: 2023 U.S. aggregate values as visually verified in PDF screenshot
+URL: https://www.eia.gov/state/seds/sep_indicators/indicator_print.pdf
+INPUT CAPACITY FACTORS:
+nuclear 0.930; natural-gas combined-cycle 0.597; conventional hydro 0.350; geothermal 0.694; solar PV 0.232; wind 0.332.
+EQUATION:
+P_nameplate_for_1GWavg = 1 GW / capacity_factor.
+OUTPUT:
+- nuclear = 1.075268817 GW nameplate per 1 GW average;
+- CCGT = 1.675041876;
+- hydro = 2.857142857;
+- geothermal = 1.440922190;
+- solar PV = 4.310344828;
+- wind = 3.012048193.
+REPLICATION:
+- implementation A: Python arithmetic executed in container.
+- implementation B: AWK arithmetic executed independently; outputs agree to shown precision.
+LIMITATIONS:
+- observed fleet capacity factor includes dispatch, resource/weather, outages and market behavior; it is NOT equivalent to technical availability or capacity credit.
+- therefore this calculation is only an energy/nameplate dimensional check, NOT an adequacy model.
+EVIDENCE_CLASS: CALCULATION
+REPLICATION_STATUS: SAME_SESSION_CROSS_IMPLEMENTATION_PASS; INDEPENDENT_SESSION_REQUIRED
+
+ADVERSARIAL FRONTIER RESULT:
+
+A. SOLAR PV
+STATE: COMPONENT_PARETO_FRONTIER / RETAIN.
+WHY: low observed global new-project LCOE; hundreds-of-GW annual deployment demonstrated.
+FAILURE TO CLAIM FINAL WINNER: variability, curtailment, storage/firming, transmission, system-strength and adequacy costs unresolved under common R_STAR/FSRC_ND.
+
+B. ONSHORE WIND
+STATE: COMPONENT_PARETO_FRONTIER / RETAIN.
+WHY: lowest 2025 IRENA global weighted-average LCOE among listed renewable classes; large annual deployment.
+FAILURE TO CLAIM FINAL WINNER: same chronological/system boundary defects as solar plus geography-dependent resource/transmission.
+
+C. OFFSHORE WIND
+STATE: RETAIN_GEOGRAPHIC_OPTION / NOT CURRENT PLANT-COST FRONTIER.
+WHY: 2025 global LCOE 78 USD/MWh and AEO2026 modeled U.S. 2031 average 118.79 USD/MWh exceed onshore wind/solar within their respective datasets.
+LIMITATION: offshore can still dominate constrained coastal/location cases; cannot globally falsify.
+
+D. HYDROPOWER
+STATE: RETAIN_FIRM/FLEXIBLE_BASELINE.
+WHY: physically mature and large existing fleet; plant LCOE mid-range.
+LIMITATION: new-site geography, hydrology, environmental constraints and transmission make unlimited replication invalid.
+
+E. CONVENTIONAL GEOTHERMAL
+STATE: RETAIN_FIRM_RESOURCE-DEPENDENT_BASELINE.
+WHY: dispatchable/high-CF operational technology.
+LIMITATION: current global deployment is tiny relative to solar/wind; IRENA 2025 cost is not on plant-cost frontier. EGS is handled separately by JOB-EGC-048 and must not inherit conventional-geothermal operating history for free.
+
+F. EXISTING/CONVENTIONAL NUCLEAR FISSION
+STATE: RETAIN_HIGH-AVAILABILITY_FIRM_BASELINE.
+WHY: 379.7 GW operating fleet and 84.1% 2025 energy availability are demonstrated.
+FAILURE TO CLAIM LOW-COST NEW BUILD: recent U.S. Vogtle cost evidence is high; future learning estimates remain projections.
+
+G. NATURAL-GAS COMBINED CYCLE
+STATE: RETAIN_DISPATCHABLE_FOSSIL_COMPARATOR.
+WHY: actual 2024 U.S. construction CAPEX was low among listed build classes and AEO provides modeled full-generation cost.
+FAILURE TO CLAIM UNIVERSAL WINNER: fuel price, emissions/carbon-policy, methane, fuel infrastructure and long-run resource-cost treatment remain system-boundary inputs; construction CAPEX alone is not FSRC_ND.
+
+H. BATTERY / SOURCE+STORAGE HYBRID
+STATE: RETAIN_SYSTEM_COMPONENT / NOT PRIMARY_ENERGY_SOURCE.
+WHY: deployment and as-built cost evidence are strong.
+RULE: battery cannot be credited with energy creation; charging losses, replacement/degradation and source energy remain in the ledger. Final value requires chronological R_STAR optimization.
+
+I. FUSION
+STATE: NOT_CURRENT_BASELINE / LONG_HORIZON_RESEARCH.
+WHY: target-level fusion gain is experimentally real, but plant-level net-electric and commercial cost evidence is absent in reviewed LLNL material; current NIF architecture is explicitly unsuitable as power-plant driver.
+
+PROVISIONAL PARETO CONCLUSION:
+- COST+DEPLOYMENT COMPONENT FRONTIER: onshore wind + utility solar PV.
+- FIRM/HIGH-AVAILABILITY OPERATING FRONTIER: existing nuclear; hydropower/geothermal where resource/site exists.
+- LOW-CAPEX DISPATCHABLE FOSSIL COMPARATOR: natural-gas generation, subject to fuel/emissions/system boundary.
+- SYSTEM-LEVEL WINNER: UNKNOWN.
+- A likely final architecture may be a geographically optimized multi-source portfolio rather than one source, but that is INFERENCE and must survive R_STAR, FSRC_ND, transmission/storage, scale, safety, resource and objective reviews.
+
+RED_TEAM:
+1. "Cheapest plant LCOE = cheapest reliable system": FALSIFIED by EIA's own AEO methodology warning and unresolved R_STAR.
+2. "Most GW added = most delivered firm energy": FALSIFIED by capacity-factor/nameplate check.
+3. "Nuclear is already too small to be massive": FALSIFIED; 379.7 GW operating fleet demonstrates hundreds-of-GW scale.
+4. "Existing nuclear scale proves cheap new nuclear": FALSIFIED; cost truth class differs.
+5. "Fusion gain >1 proves net grid power": FALSIFIED by LLNL driver-energy boundary.
+6. "Battery is an energy source": FALSIFIED by conservation and existing storage ledger.
+7. "IRENA global 2025 and EIA U.S. 2031 LCOE can be averaged into one winner score": FALSIFIED; mismatched geography/year/policy/model boundaries.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-043-BF-001 SOLAR_WIND_COMPONENT_FRONTIER: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-BF-002 FIRM_BASELINE_SET: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-BF-003 NEW_NUCLEAR_LOW_COST: NOT_VERIFIED.
+CLAIM-EGC-043-BF-004 FUSION_CURRENT_BASELINE: FALSIFIED.
+CLAIM-EGC-043-BF-005 BATTERY_PRIMARY_SOURCE: FALSIFIED.
+CLAIM-EGC-043-BF-006 GLOBAL_SYSTEM_WINNER: UNKNOWN / BLOCKED_BY_UPSTREAM_GATES.
+CLAIM-EGC-043-BF-007 NAMEPLATE_EQ_DELIVERED: FALSIFIED.
+
+CONFLICT/DEPENDENCY NOTES:
+- IRENA 2025 global project LCOE and AEO2026 U.S. 2031 modeled LCOE differ materially. CONFLICT_ID not opened because scopes are explicitly non-equivalent; treat as scenario/boundary sensitivity.
+- LOW_COST=60 USD_2025/MWh and MASSIVE_ENERGY=3,360 TWh/y from JOB-EGC-043-OBJECTIVE remain PENDING_REVIEW and are not used here for PASS/FAIL.
+- JOB-EGC-042 R_STAR and common finance/physical ledger reviews remain upstream blockers to any delivered-system winner.
+- JOB-EGC-048 EGS/emerging screen is AWAITING_REVIEW; this baseline job must not supersede it.
+
+TOOL_FAILURE_RECORD:
+- Exa deep-search connector returned an internal error before producing any result; EXA_EVIDENCE_COUNT=0.
+- Python notebook runtime returned TooManyActiveSessionsError. Critical arithmetic was rerouted to two executed container implementations; no failed-runtime output was counted as evidence.
+
+STATUS_CHANGE:
+JOB-EGC-043-BASELINE-FRONTIER-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REV-C2-20261006
+TITLE: Independent mature-baseline frontier replication and common-boundary audit
+ROLE: Independent techno-economic baseline reviewer / adversarial replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does the C1 mature-baseline frontier correctly distinguish plant-level cost, deployment scale, average energy, firm/reliable service and new-build economics without candidate-specific boundary privilege?
+CANDIDATE: solar PV; onshore/offshore wind; hydro; geothermal; existing/new nuclear; natural gas; storage/hybrids; fusion only as baseline-category cross-check.
+DEPENDENCIES: JOB-EGC-043-BASELINE-FRONTIER-C1 submitted; objective/R_STAR/common-ledger reviews may proceed concurrently.
+REQUIRED_INPUTS: EGC-043-BF-001..009 and relevant JOB-EGC-048 evidence.
+REQUIRED_TOOLS: independent official-source retrieval; independent arithmetic; source-boundary reconciliation; contradictory-source search.
+REQUIRED_EVIDENCE:
+- independently verify IRENA 2025 LCOE values and 2025 692-GW deployment;
+- verify EIA 2024 as-built CAPEX and 2026 deployment inventory;
+- verify IAEA PRIS live fleet/EAF;
+- independently replicate P_nameplate=1/CF check from a source-period-consistent dataset;
+- attack Vogtle actual-vs-projected learning boundary;
+- test whether any omitted mature baseline (including credible CHP/cogeneration) could alter component frontier status.
+FALSIFICATION_CONDITION:
+FAIL if plant LCOE is promoted to delivered FSRC_ND; nameplate is treated as adequacy; modeled/forecast values are labeled measurement; geography/year/policy boundaries are merged; or a mature candidate is omitted without evidence.
+STATUS: OPEN
+BLOCKERS: NONE for baseline review; final system winner remains blocked upstream.
+NEXT_ACTION: distinct session independently replicate and attack C1 before its claims feed integrated ranking.
+
+WRITE_CONCURRENCY:
+BRANCH_HEAD_BEFORE_WRITE: 08551450ca8b6c4dfa5d3c78b51cdc2c02b45e3b
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 4b6c731b4f3056eb3202091e1e870d3c1b0eff0a
+STALE_WRITE_GUARD: GitHub contents SHA precondition; any concurrent blob change must abort this write.
