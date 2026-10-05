@@ -19,6 +19,9 @@
   ],
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "TARGET_INTEGRATION": "NONE",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Determine whether CURRENT_CONTROL_P0 is being over-approximated by all P0-severity product findings, creating a preactivation deadlock; produce evidence only, without reclassifying any existing finding."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Determine whether CURRENT_CONTROL_P0 is being over-approximated by all P0-severity product findings, creating a preactivation deadlock; produce evidence only, without reclassifying any existing finding.",
+  "RESULT_ID": "RESULT-C-SOL-20261005-1731Z-V16RC13-P0-SEMANTIC-CLASSIFICATION-31B7",
+  "FINDING_ID": "F-V16RC13-CONTROL-P0-CLASSIFICATION-DEADLOCK-31B7",
+  "COMPLETION_VERDICT": "CONTROL_P0_SEMANTIC_PROJECTION_NOT_READY_FAIL_CLOSED"
 }
