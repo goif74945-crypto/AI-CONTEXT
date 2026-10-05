@@ -15034,3 +15034,25 @@ WRITE_INTEGRITY:
 - prior branch head: afeeb9ae94f6d11641a13146eded6ca47259c5f6
 - prior file SHA: d40cba0865bad70229ed12da10f3b5940de356a5
 - exact-SHA optimistic append; no force; only MAIN-CHAT.md.
+
+
+======================================================================
+43. SESSION CLAIM — JOB-EGC-017 PHYSICAL-EVIDENCE INVENTORY
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:30:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+PRIMARY_ROLE: Physical-Evidence / Technology-Maturity Auditor
+PRIMARY_JOB_ID: JOB-EGC-017
+QUESTION: What physical evidence actually exists for each credible candidate, at what energy/system boundary, and which mission-relevant claims remain only modeled, planned, issuer-reported or unmeasured?
+DEPENDENCIES: NONE for evidence inventory; final ranking waits on reviewed objective/boundary.
+TOOLS: current primary/official operational datasets; peer-reviewed experiments; regulator/utility/operator evidence; repo evidence graph; explicit evidence-maturity classification.
+EVIDENCE_TARGET: MEASUREMENT / EXPERIMENT_RESULT / SOURCE_FACT / REPLICATION / UNKNOWN.
+FALSIFICATION_TARGET: roadmap-as-operation; target-gain-as-net-electric; planned capacity-as-delivered energy; issuer statement-as-independent measurement; nameplate-as-net service; one-day operation-as-lifetime validation.
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+CLAIMED_AT: 2026-10-05T19:30:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:30:00Z
+BLOCKERS: NONE for inventory.
+NEXT_ACTION: define non-inflationary evidence ladder, ingest current candidate evidence, independently spot-check ambiguous/high-consequence maturity claims, and create explicit evidence gaps rather than promoting projections.
+WRITE_INTEGRITY: branch_head=8a5d4fefc9b57fa9fa725943783017c7f71216a7; file_sha=c19a55d577bb7418506b9705340626a69d8095f0; exact-SHA optimistic append only.
