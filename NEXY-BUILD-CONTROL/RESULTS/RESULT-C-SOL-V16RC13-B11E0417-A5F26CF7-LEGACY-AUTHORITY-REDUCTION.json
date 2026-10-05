@@ -1,0 +1,84 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_CONTROL_REPAIR_RESULT_V1",
+  "RESULT_ID": "RESULT-C-SOL-V16RC13-B11E0417-A5F26CF7-LEGACY-AUTHORITY-REDUCTION",
+  "OWNER_CHAT": "C-SOL-V16RC13-B11E0417-A5F26CF7",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BOOTSTRAP_FENCE_STATE_OBSERVED": "BLOCKED",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 4,
+  "MEMBERSHIP_RECORD_GENERATION": 2,
+  "CONTROL_HEAD_AFTER_RESYNC": "b91ebf9cb7acd4e795d917dbb8f9c65a6576a6e2",
+  "PRODUCT_TARGET_RECHECK": {
+    "target_branch": "NEXY.AI-Test-AI",
+    "target_head": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "target_tree": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c",
+    "protected_branch": "NEXY.ai",
+    "protected_head": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "protected_tree": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c"
+  },
+  "LEGACY_LEASE_REPAIR": {
+    "prior_inventory_active_count": 7,
+    "already_suspended_by_peer_before_this_repair": [
+      "T-5A04C0D1",
+      "T-6F42B8E1",
+      "T-6F42C9E2",
+      "T-768BB2A7",
+      "T-8A3C1D72"
+    ],
+    "suspended_by_this_chat": [
+      {
+        "task_id": "T-6C3F12A9",
+        "commit": "8d70ef5feb9314dcc4870e3f9a6aa310001eec1f"
+      },
+      {
+        "task_id": "T-D4A71C2E",
+        "commit": "aa34535e703ac8665cc7c754f2862c179e276cd2"
+      }
+    ],
+    "known_inventory_active_entries_remaining_after_repairs": 0
+  },
+  "LEGACY_CLAIM_REPAIR": {
+    "prior_claimed_count": 6,
+    "suspended_by_this_chat": [
+      {
+        "task_id": "T-V11-BOOTSTRAP-FAIL-CLOSED-001",
+        "commit": "1690d0308560ffe61d97fc9dadb8ae9caae07045"
+      },
+      {
+        "task_id": "AUDIT-V11-AUTHORITY-DOC-C-0541",
+        "commit": "308ccfb2cbd2cf6f77bfd5e68686e9fc6d619286"
+      },
+      {
+        "task_id": "AUDIT-V11-WORKER-NAMESPACE-LIVENESS-0545",
+        "commit": "ed9727cb7a61d98372c2ba8342a96e4b379d3dde"
+      },
+      {
+        "task_id": "AUDIT-V11-BRANCH-LIVENESS-SHADOW-0606",
+        "commit": "7f838be0785fbf4ee12737494fd345d77289c4b6"
+      },
+      {
+        "task_id": "AUDIT-DOC-C3-RELEASE-POLICY-CONTRACT-SHADOW-0612",
+        "commit": "99f32966ba8699208df7d6ac8a290e23936f2a7e"
+      },
+      {
+        "task_id": "TASK-API-OTAC-ERROR-CONTRACT-20261005-0609",
+        "commit": "4a97158f664eec617772bfa7b0ea9b56398888a6"
+      }
+    ],
+    "known_legacy_claimed_entries_remaining_after_repairs": 0
+  },
+  "AUTHORITY_EFFECT": "AUTHORITY_REDUCING_ONLY",
+  "PHASE_ADVANCEMENT_CLAIMED": false,
+  "LEGACY_DRAIN_PASS_CLAIMED": false,
+  "REASON_NO_DRAIN_PASS": [
+    "Bootstrap Fence is fail-closed BLOCKED at STATE_VERSION 4.",
+    "STATIC_PROTOCOL_P0 == 0 is not proven.",
+    "OPEN_CONTROL_P0_COUNT == 0 is not proven.",
+    "P0 phase-gate, message-integrity, target-provenance and other control findings remain.",
+    "Exact V16-RC1.3 effective constitution bytes/hash are not yet durably pinned."
+  ],
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "VERDICT": "KNOWN_LEGACY_AUTHORITY_RECORDS_REDUCED_TO_NONMUTATING_STATES_BUT_PHASE_GATE_REMAINS_BLOCKED"
+}
