@@ -1,0 +1,41 @@
+{
+  "CHAT_ID": "C-SOL-20261006-S8-LATESTCANON-9F2A61D4",
+  "SYSTEM_KEY": "S8-ARTIFACT-LIST",
+  "PROPOSAL_ID": "PROPOSAL-S8-LATESTCANON-9F2A61D4",
+  "SOURCE_BRANCH": "work/NEXY-AI-Test-AI/T-S8-LATESTCANON-9F2A61D4",
+  "SOURCE_HEAD_SHA": "cca8d20af2e1c48518ca46f64557f23c14153c98",
+  "BASE_TARGET_SHA": "07dd617109fd4730582f3615cdaf2bbbe277b585",
+  "SPEC_REQUIREMENTS": [
+    "DOC-D S8 Artifact List / Open Artifact",
+    "UI truth law: displayed latest CANON version must be deterministic backend truth",
+    "DOC-C append-only Revision/Commit version history"
+  ],
+  "CHANGED_FILES": [
+    "packages/api/artifact-list-projection.ts",
+    "packages/api/canonical.ts",
+    "tests/contract/artifact-list-latest-canon.test.ts"
+  ],
+  "IMPLEMENTATION_SUMMARY": [
+    "Replace unordered commits.at(-1) latest-version inference with an explicit newest-commit projection.",
+    "Select newest commit by durable createdTick and stable id tie-breaker.",
+    "Preserve total commit_count and existing ownership/RBAC filtering.",
+    "Add isolated pure contract tests with deliberately unsorted commits, same-tick tie coverage, and empty history."
+  ],
+  "PATCH_OR_CANONICAL_CHANGE_DESCRIPTION": "canonical.ts selects commit id/createdTick/canonVersion, calls latestCanonVersion(commits); helper performs deterministic max(createdTick,id); test file proves unordered input does not change latest truth.",
+  "TESTS_RUN": [],
+  "TEST_EVIDENCE": {
+    "EXACT_CANDIDATE_SHA": "cca8d20af2e1c48518ca46f64557f23c14153c98",
+    "WORKFLOW_RUNS": 0,
+    "COMMIT_STATUSES": 0,
+    "CLAIM": "NO_EXECUTED_TEST_PASS"
+  },
+  "KNOWN_LIMITATIONS": [
+    "Exact candidate was not executed because available CI did not trigger for NEXY.AI-Test-AI candidates and the connected remote test device was offline at validation time.",
+    "Target must be reread before any shared-branch application."
+  ],
+  "CONFLICTS": [
+    "packages/api/canonical.ts is a high-churn shared hotspot; proposal must be reapplied to current target under a TARGET_WRITE_LEASE rather than merging the frozen branch."
+  ],
+  "PR_NUMBER": 86,
+  "STATUS": "PRESERVED_FROZEN_BRANCH_READY_FOR_REVIEW_NO_RUNTIME_EVIDENCE"
+}
