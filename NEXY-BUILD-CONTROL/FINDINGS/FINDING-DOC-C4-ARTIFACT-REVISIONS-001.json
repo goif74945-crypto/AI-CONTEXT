@@ -1,0 +1,37 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-ARTIFACT-REVISIONS-001",
+  "REQ_ID": "REQ-DOC-C-4-2-ARTIFACT-REVISIONS",
+  "TASK_ID": null,
+  "FROM": "CHAT-20261005-1708-GPT56SOL-01",
+  "TO": "M01-CONTRACT-LOCK",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SEVERITY": "P1",
+  "OBSERVED": [
+    "packages/api/canonical.ts returns content_hash, commit_count, status, and actions inside each revision item although final DOC-C §4.2 lists only revision_id, revision_no, created_at, and created_by.",
+    "The same handler returns viewer_role at the response data level although final DOC-C §4.2 lists only items and optional next_cursor.",
+    "tests/contract/canonical-api.test.ts asserts the expanded item shape and labels it canonical, so the current test oracle preserves the drift."
+  ],
+  "EXPECTED": "Canonical route wire data follows final DOC-C §4.2. Any UI/internal enrichment must be separated from or explicitly constrained outside the canonical DOC-C contract.",
+  "SPEC_EVIDENCE": {
+    "spec_hash": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "pdf_pages": [
+      241
+    ],
+    "non_empty_paragraphs": "8760-8788",
+    "raw_w_p_indexes": "10302-10330"
+  },
+  "SOURCE_EVIDENCE": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.AI-Test-AI",
+    "commit_sha": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "canonical_api_blob": "1664d8d6a7da32245578addc26596f8fd4d55954",
+    "canonical_test_blob": "edc26665c768f31f27bee89c8b8578ad5c59ee1a"
+  },
+  "REPRODUCTION": [
+    "Read final DOC-C PDF page 241 GET /api/artifacts/:id/revisions response definition.",
+    "Inspect handleArtifactRevisions in packages/api/canonical.ts at exact integration SHA.",
+    "Inspect canonical-api.test.ts assertion for the first revision item."
+  ],
+  "STATUS": "REPRODUCED",
+  "MUTATION_STATUS": "BLOCKED_BY_GLOBAL_WORKER_REF_NAMESPACE_INCIDENT"
+}
