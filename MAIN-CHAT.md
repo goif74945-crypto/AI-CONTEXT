@@ -12377,3 +12377,397 @@ STATUS_CHANGE:
 JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006: EXECUTING -> REVIEW_FAILED.
 NEXT_ACTION:
 Existing RSTAR-GATE-C3 and RSTAR-V2SEM-C5B must integrate TEST_UNIVERSE_ID/M_eff semantics; their distinct reviewers must verify the merged contract before R_STAR can be consumed as a solved mission gate.
+
+
+======================================================================
+RESULT — JOB-EGC-065-DEMAND-FLEX-BASELINE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-DRFLEX65-C1
+PRIMARY_JOB_ID: JOB-EGC-065-DEMAND-FLEX-BASELINE-C1-20261006
+ROLE: Demand-Response / Flexible-Load Baseline & Rebound-Accounting Analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-065-DEMAND-FLEX-BASELINE-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+EXECUTIVE_RESULT:
+Demand response / flexible load is a CURRENT, OPERATIONAL, COMMERCIAL system-flexibility resource and must be considered in the strongest-current baseline wherever the frozen geography/service permits it. It is NOT a primary energy source and cannot be modeled as free generation, free storage, or unconditional firm capacity. Correct comparison requires service-preserving load accounting, measurement/baseline verification, performance/accreditation limits, event-duration/notification constraints, rebound or deferred-energy accounting, non-performance, and exact-once resource costs.
+
+----------------------------------------------------------------------
+A. REAL-WORLD MATURITY / PERFORMANCE EVIDENCE
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EGC-065-DR-001
+CLAIM_ID: CLAIM-EGC-065-DR-COMMERCIAL-MATURITY
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: FERC, 2025 Assessment of Demand Response and Advanced Metering / FERC official 2026 concurrence citing that report
+URLS:
+https://www.ferc.gov/power-sales-and-markets/demand-response/reports-demand-response-and-advanced-metering
+https://www.ferc.gov/news-events/news/e-6-commissioner-rosners-concurrence-midcontinent-independent-system-operator-inc
+SOURCE_FACT:
+- FERC defines DR as changes in end-use electricity usage from normal patterns in response to time-varying prices or incentive payments for reducing use during high wholesale prices or reliability stress.
+- FERC reports wholesale-market DR resources at a scale corresponding to about 6.5% of aggregate RTO/ISO non-coincident peak demand in 2024.
+- the cited aggregate non-coincident peak demand is about 515 GW.
+CALCULATION:
+515 GW * 0.065 = 33.475 GW implied by the rounded reported percentage and rounded peak-demand total.
+TRUTH_CLASS:
+33.475 GW = CALCULATION/ROUGH_SCALE_DIAGNOSTIC, not an exact registered-capacity reconstruction because source values are rounded.
+REPLICATION:
+Python Decimal and Wolfram independently return 33.475 GW.
+INTERPRETATION:
+DR is not a hypothetical laboratory mechanism; organized wholesale markets operate it at multi-GW/tens-of-GW aggregate scale.
+LIMITATION:
+participation/registered MW != dependable firm capacity and does not establish cost-effectiveness or annual-energy equivalence.
+
+EVIDENCE_ID: EGC-065-DR-002
+CLAIM_ID: CLAIM-EGC-065-DR-PERFORMANCE-NOT-NAMEPLATE
+EVIDENCE_CLASS: OPERATIONAL_REPORT
+SOURCE: California ISO Department of Market Monitoring, Demand Response Issues and Performance 2025
+SOURCE_DATE: report posted 2026-09-21
+URL: https://www.caiso.com/notices/department-of-market-monitoring-demand-response-issues-and-performance-2025-report-posted
+SOURCE_FACT:
+- DR provided about 3.1% of total CAISO system resource-adequacy capacity, about 1,330 MW, in summer 2025.
+- on strained summer days, about 77% of DR capacity in real time was reported performing as scheduled.
+- WEIM entities reported out-of-market DR load adjustments in 81 distinct hours in 2025, averaging -250 MW over those hours.
+CALCULATION:
+1,330 MW * 0.77 = 1,024.1 MW.
+TRUTH_CLASS:
+1,024.1 MW = SIMPLE_PERFORMANCE_DIAGNOSTIC ONLY; it is not an official CAISO accreditation value because "77% performing as scheduled" is a performance statistic, not a universal derating formula.
+REPLICATION:
+Python Decimal and Wolfram independently agree.
+INTERPRETATION:
+registered/RA DR MW cannot be used as 100%-available firm MW without applicable accreditation/performance treatment.
+
+EVIDENCE_ID: EGC-065-DR-003
+CLAIM_ID: CLAIM-EGC-065-DR-QUALIFICATION-LIMITS
+EVIDENCE_CLASS: CURRENT_OPERATOR_RULE / OPERATING_REQUIREMENT
+SOURCE: MISO, LMR - DR Registration Requirements for Planning Year 2027/2028
+URL: https://help.misoenergy.org/knowledgebase/article/KA-01539/en-us
+SOURCE_FACT:
+- registered DR must document how load reduction will be achieved, response time and curtailment MW.
+- notification time can be no more than 6 hours.
+- demand reduction obligation must be sustainable for a minimum of 4 consecutive hours.
+- minimum seasonal deployment availability requirements are listed (5 for summer/winter; 3 fall/spring).
+- resources must demonstrate demand-reduction capability annually via real-power test/qualified evidence.
+INTERPRETATION:
+DR has duration, notice, deployment and verification constraints; modeling it as an unconstrained dispatchable generator is physically/operationally false.
+LIMITATION:
+these are MISO-specific rules for the cited program/year, not universal DR physics or regulation.
+
+EVIDENCE_ID: EGC-065-DR-004
+CLAIM_ID: CLAIM-EGC-065-DR-PLANNING-PERFORMANCE
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: NERC, 2025 LTRA Data Form Instructions / 2025 Long-Term Reliability Assessment
+URLS:
+https://www.nerc.com/comm/RSTC/RAS/2025_LTRA_Data_Form_Instructions.pdf
+https://www.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+SOURCE_FACT:
+NERC distinguishes controllable/dispatchable DR Program Total from Available MW expected when called. Its instructions explicitly give examples where availability is reduced because only part of a program may be called or historical response is below 100%.
+INTERPRETATION:
+resource-adequacy modeling must use evidence-grounded available/performing DR, not unique enrollment MW as interchangeable capacity.
+PDF_NOTE:
+web text extraction supported the instruction; direct screenshot evidence for the relevant data-form PDF should be obtained by the independent reviewer if the source endpoint permits rendering.
+
+EVIDENCE_ID: EGC-065-DR-005
+CLAIM_ID: CLAIM-EGC-065-DR-BASELINE-MEASUREMENT-RISK
+EVIDENCE_CLASS: SOURCE_FACT / MARKET-MONITORING
+SOURCE: CAISO Department of Market Monitoring, Comments on Demand and Distributed Energy Market Integration Working Group
+SOURCE_DATE: 2025-02-21
+URL: https://www.caiso.com/documents/dmm-comments-on-demand-and-distributed-energy-market-integration-feb-05-2025-working-group-feb-21-2025.pdf
+SOURCE_FACT:
+- CAISO had 57 DR baseline methodologies but only five were in use in the cited September 2024 count.
+- 99% of resources in the cited count used day-matching baseline types.
+- DMM cautions that additional baseline methods can create errors, miscalculations and potential strategic gaming.
+- DMM also stresses that reliability-DR operating parameters should reflect actual physical constraints.
+PDF_VISUAL_STATUS:
+direct PDF text was retrieved; screenshot call was attempted but web cache returned a cache-miss error. Therefore VISUAL_SCREENSHOT_NOT_VERIFIED in this session.
+CORROBORATING_CURRENT_SOURCE:
+CPUC Load Impact Protocols, version 6.1 current in 2026, use consistent ex-ante/ex-post measurement methods for RA-eligible DR qualifying capacity.
+URL: https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/electric-costs/demand-response-dr/demand-response-load-impact-protocols
+INTERPRETATION:
+the counterfactual customer-load baseline is part of the measurement system. Unverified self-selected baselines can manufacture nonexistent "reductions."
+
+EVIDENCE_ID: EGC-065-DR-006
+CLAIM_ID: CLAIM-EGC-065-SHIFT-NOT-ENERGY-SOURCE
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_RESULT
+SOURCE: U.S. DOE/NREL, Coordination of Demand Flexibility Dispatch With Regional Grid Needs and Rate Structures Is Critical to Optimizing Cost and Carbon Impacts
+URL: https://www.energy.gov/sites/default/files/2023-05/bto-peer-2023-nrel-ee-demand-flexibility-state-levelpotential.pdf
+SOURCE_FACT:
+NREL project results state that load-shift measures require temporal alignment with system signals because load shifting has no net reduction in energy consumption; shed measures differ.
+INTERPRETATION:
+load shifting is an intertemporal flexibility mechanism, not primary energy creation.
+PDF_NOTE:
+source was available through indexed text; independent reviewer should visually verify the PDF page if rendering is available.
+
+EVIDENCE_ID: EGC-065-DR-007
+CLAIM_ID: CLAIM-EGC-065-DR-COST-BOUNDARY
+EVIDENCE_CLASS: SOURCE_FACT / METHOD
+SOURCES:
+1) FERC/DOE National Action Plan DR cost-effectiveness framework
+URL: https://www.energy.gov/documents/napdr-cost-effectivenesspdf
+2) Berkeley Lab, The State of Demand Flexibility Programs and Rates
+URL: https://emp.lbl.gov/publications/state-demand-flexibility-programs-and
+SOURCE_FACT:
+- official DR cost-effectiveness framework identifies real categories including program administration/capital, enabling-measure costs, participant transaction costs, participant value of lost service and increased energy consumption.
+- the framework distinguishes participant incentive payments from societal/total-resource cost, where pure financial incentives can be transfers rather than new resource consumption.
+- Berkeley Lab's 2024 survey covered 148 programs and 93 rates and reports program incentives, outcomes and costs, while noting public outcome/spending data remain sparse.
+INTERPRETATION FOR COMMON LEDGER:
+Primary resource-cost view must count real enabling/administrative/device/customer-service/recovery-energy burdens exactly once while treating pure internal transfer payments according to the frozen transfer policy; it must not treat "incentive paid" as the only cost.
+PDF_VISUAL_STATUS:
+direct FERC/DOE framework PDF screenshot was attempted through the web endpoint but the host returned 403/non-renderable; exact cost-category use is therefore SOURCE_TEXT_RETRIEVED / VISUAL_NOT_VERIFIED in this session and is a reviewer replication item.
+
+EVIDENCE_ID: EGC-065-DR-008
+CLAIM_ID: CLAIM-EGC-065-DR-ACCREDITATION-NONSTATIC
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: MISO, Forward Capacity Accreditation for Use-Limited Resources
+URL: https://www.misoenergy.org/engage/MISO-Dashboard/forward-capacity-accreditation-for-use-limited-resources/
+SOURCE_FACT:
+MISO states that static capacity credits for use-limited resources such as DR and energy storage do not capture how capacity contribution changes with penetration as peak load is levelized and critical hours broaden.
+INTERPRETATION:
+DR accreditation can be endogenous to portfolio penetration/chronology. A fixed historical capacity credit cannot automatically be extrapolated to massive deployment.
+
+----------------------------------------------------------------------
+B. EXECUTED CALCULATIONS / ADVERSARIAL COUNTEREXAMPLES
+----------------------------------------------------------------------
+
+CALC_ID: CALC-EGC-065-001
+TITLE: DR_MW_IS_NOT_GENERATOR_ANNUAL_ENERGY
+EVIDENCE_CLASS: CALCULATION / DIMENSIONAL_COUNTEREXAMPLE
+INPUT:
+1 GW flexible load can reduce grid demand for one 4-h event.
+OUTPUT:
+peak relief energy for the event = 1 GW * 4 h = 4 GWh.
+A 1-GW generator at 90% annual CF produces 1*8760*0.90 = 7,884 GWh/year.
+INTERPRETATION:
+both may be described as "1 GW" for some capacity-service contexts, but the MW labels do not imply equal annual energy service.
+This is dimensional, not a claim that DR can only be called once annually.
+
+CALC_ID: CALC-EGC-065-002
+TITLE: LOAD_SHIFT_REBOUND_OWNERSHIP
+EVIDENCE_CLASS: SYNTHETIC_COUNTEREXAMPLE / CALCULATION
+INPUT:
+1-GW shiftable load removed for 4 h => 4 GWh shifted out of peak.
+Case A energy-neutral recovery: 4 GWh must be added elsewhere inside the allowed recovery window.
+Case B illustrative 5% recovery overhead: 4.2 GWh must be added.
+OUTPUT:
+Ignoring recovery creates fictitious 4.0-4.2 GWh of "energy" from a flexibility operation.
+REPLICATION:
+Python Decimal and Wolfram return 4 GWh and 4.2 GWh.
+LIMITATION:
+5% overhead is a synthetic adversarial parameter, not a universal empirical rebound factor.
+RESULT:
+recovery/rebound must be explicitly measured or constrained; UNKNOWN may not default to zero if ranking-sensitive.
+
+CALC_ID: CALC-EGC-065-003
+TITLE: OBSERVED_PERFORMANCE_HAIRCUT_DIAGNOSTIC
+EVIDENCE_CLASS: CALCULATION
+INPUT:
+CAISO summer 2025 DR RA capacity ~1,330 MW; reported ~77% performing as scheduled on strained days.
+OUTPUT:
+1,024.1 MW simple product.
+REPLICATION:
+Python Decimal + Wolfram PASS.
+RULE:
+do not promote this product to official NQC/ELCC; use it only to prove that 100% nameplate availability is an unsafe default.
+
+CALC_ID: CALC-EGC-065-004
+TITLE: WHOLESALE_DR_SCALE_DIAGNOSTIC
+EVIDENCE_CLASS: CALCULATION
+INPUT:
+FERC-cited aggregate RTO/ISO non-coincident peak ~515 GW; DR share ~6.5%.
+OUTPUT:
+~33.475 GW.
+REPLICATION:
+Python Decimal + Wolfram PASS.
+LIMITATION:
+rounded source inputs and non-coincident peak denominator; not exact national simultaneous DR.
+
+----------------------------------------------------------------------
+C. DR_FLEX_BASELINE_V1
+----------------------------------------------------------------------
+
+RESOURCE_CLASS_LOCK:
+
+DR_CLASS_1_PERMANENT_SHED_OR_INTERRUPTIBLE_SERVICE:
+- load is genuinely curtailed/not served during an allowed event rather than deferred.
+- eligible only if the frozen service contract already permits the interruptible/curtailable service tranche.
+- customer lost-service/disutility/lost-production or other causal resource burden is included when material.
+- may reduce electric energy consumed, but must not be described as same-service generation unless the service vector explicitly allows that curtailment.
+
+DR_CLASS_2_LOAD_SHIFT:
+- end-use service is deferred or temporally relocated.
+- physical electricity trajectory:
+  L_c[t] = L_ref[t] - SED[t] + REC[t],
+  where SED is verified shifted-out load and REC is recovery/load-add.
+- recovery deadline/window, maximum shift duration, pre-charge/load-up, thermal/process state, efficiency/rebound and state boundary are candidate/device specific.
+- if same-service operation is energy-neutral, sum_t REC[t] = sum_t SED[t] after consistent meter/loss boundary.
+- if real recovery energy differs, the measured/evidenced ratio is used.
+- UNKNOWN rebound/recovery that can change ranking => NOT_VERIFIED, never REC=0 by convenience.
+
+DR_CLASS_3_GRID_LOAD_SUBSTITUTION:
+- grid demand falls because a behind-the-meter battery/generator supplies the end-use load.
+- underlying battery charge/source losses, fuel, emissions, O&M, lifecycle/resource cost and owner state remain fully accounted.
+- this is not free demand disappearance and cannot also receive a second avoided-energy credit for the same MWh.
+
+DR_CLASS_4_ENERGY_EFFICIENCY:
+- durable reduction in electricity required to provide the SAME end-use service through improved efficiency is not load shifting.
+- model as a separate energy-efficiency resource/challenger with measure cost/lifetime/performance, not as dispatchable DR unless it also has dispatchable flexibility.
+
+DR_MEASUREMENT_GATE:
+For each DR resource/aggregation:
+- BASELINE_METHOD_ID / counterfactual method;
+- meter boundary and interval;
+- ex-post measured response;
+- ex-ante accredited/available response;
+- weather/day/type adjustments;
+- test/audit history;
+- baseline error/uncertainty;
+- anti-gaming rules;
+- dispatch/event history where available.
+If baseline error can materially change capacity/cost ranking and is not bounded -> DR_CAPACITY_NOT_VERIFIED.
+
+DR_OPERATIONAL_GATE:
+Record, where applicable:
+- P_REDUCTION_MAX MW;
+- response/notification time;
+- minimum/maximum event duration;
+- events/day and events/season/year or equivalent use limits;
+- recovery/rebound state/time;
+- ramp/discreteness/minimum-on constraints;
+- seasonal/temperature/process availability;
+- non-performance distribution and accreditation method;
+- simultaneous availability under common stress chronology.
+Missing material use-limit data -> cannot assume unlimited availability.
+
+DR_SERVICE_EQUIVALENCE_GATE:
+The strongest-baseline optimizer may only use DR to lower required supply if one of:
+A) the end-use service is still delivered through temporal shift/substitution/efficiency with all causal recovery/source costs accounted; OR
+B) the frozen service definition explicitly includes an interruptible tranche and its participant/service cost is included under the common boundary.
+Candidate and baseline receive the same allowed service-flexibility envelope.
+A portfolio may not win LOW_COST by simply serving less useful end service than its comparator.
+
+DR_COST_GATE:
+Primary resource-cost ledger includes, when causal/material:
+- enabling hardware/control/communications/IT;
+- program administration/measurement/testing;
+- participant transaction/operating costs;
+- device wear/degradation;
+- lost service/lost production/disutility for true curtailment where within boundary;
+- recovery/rebound electricity and any fuel/source cost;
+- BTM generator/storage fuel/losses/lifecycle;
+- non-performance/replacement/maintenance;
+- candidate-added network/control assets.
+Financial incentive/settlement payments are classified under the frozen transfer policy; do not both count them as societal resource consumption and separately count the same underlying real cost.
+Unknown material cost -> DR_COST_NOT_VERIFIED.
+
+DR_BASELINE_CHALLENGER_RULE:
+For each frozen geography/service/chronology:
+- discover current commercial/operational DR/flexible-load classes supported by authoritative local evidence;
+- classify ELIGIBLE_QUANTIFIED / INELIGIBLE_WITH_EVIDENCE / DATA_GAP_MATERIAL / NOT_CURRENT_COMMERCIAL;
+- if a plausible mature DR challenger can satisfy the service but ranking-critical availability/cost/rebound data are missing, strongest-baseline completeness is NOT_VERIFIED rather than silently excluding DR.
+This mirrors the fail-closed storage-challenger logic.
+
+PENETRATION_RULE:
+Capacity accreditation/performance must be recomputed or sensitivity-tested at portfolio penetration. Do not extrapolate one current historical DR accreditation value linearly to massive adoption where the set of critical hours, customer saturation and load-shifting opportunities change.
+
+----------------------------------------------------------------------
+D. RED TEAM / FALSIFICATION
+----------------------------------------------------------------------
+
+ATTACK-1: "DR reduces peak, therefore DR is an energy source."
+RESULT: FALSIFIED.
+Evidence: FERC definition is change in usage; NREL distinguishes shifting with no net energy reduction.
+
+ATTACK-2: "Registered DR MW = firm MW."
+RESULT: FALSIFIED.
+Evidence: NERC separates program total from expected available response; CAISO 2025 reports performance below 100% on strained days.
+
+ATTACK-3: "Shifted load disappears."
+RESULT: FALSIFIED.
+Executed 4-GWh counterexample; recovery must be owned.
+
+ATTACK-4: "BTM generator/battery response is free DR."
+RESULT: FALSIFIED.
+Grid-meter demand can fall while source fuel/charge/losses remain causal and must be counted.
+
+ATTACK-5: "Any claimed customer baseline is acceptable."
+RESULT: FALSIFIED.
+CAISO/CPUC use formal baseline/load-impact methods; CAISO DMM explicitly warns of errors and strategic gaming.
+
+ATTACK-6: "Incentive payment is the full societal resource cost."
+RESULT: FALSIFIED.
+Official cost-effectiveness framework separates transfer payments from enabling, administrative, participant, lost-service and increased-energy costs.
+
+ATTACK-7: "Current capacity credit scales linearly to huge DR penetration."
+RESULT: NOT_SUPPORTED / FALSIFIED_AS_DEFAULT.
+MISO explicitly notes capacity value for use-limited resources changes with penetration and peak-shape evolution.
+
+----------------------------------------------------------------------
+E. CLAIM GRAPH / SOLVED-GATE EFFECT
+----------------------------------------------------------------------
+
+CLAIM-EGC-065-001 DR_CURRENT_COMMERCIAL:
+SUPPORTED_PENDING_REVIEW.
+
+CLAIM-EGC-065-002 DR_MUST_ENTER_STRONGEST_BASELINE_WHERE_SERVICE_FEASIBLE:
+INFERENCE_SUPPORTED_PENDING_REVIEW.
+
+CLAIM-EGC-065-003 DR_NOT_PRIMARY_ENERGY:
+SUPPORTED_PENDING_REVIEW.
+
+CLAIM-EGC-065-004 SHIFT_REBOUND_EXACT_ONCE:
+SUPPORTED_PENDING_REVIEW.
+
+CLAIM-EGC-065-005 REGISTERED_MW_NEQ_FIRM_MW:
+SUPPORTED_PENDING_REVIEW.
+
+CLAIM-EGC-065-006 SAME_SERVICE_GATE:
+METHOD_RESULT_PENDING_REVIEW.
+
+CLAIM-EGC-065-007 DR_COST_EXACT_ONCE:
+METHOD_RESULT_PENDING_REVIEW.
+
+CLAIM-EGC-065-008 DR_PENETRATION_STATIC_CREDIT:
+FALSIFIED_AS_DEFAULT / PENDING_REVIEW.
+
+IMPACT:
+- G12 grid/storage/flexibility accounted: remains NOT_VERIFIED until this DR lane and R_STAR/common-ledger are independently reviewed/integrated.
+- G5 cost validated: remains NOT_VERIFIED; no global DR cost curve is claimed.
+- G6 massive energy: DR cannot satisfy the primary-energy requirement by relabeling reduced load as generated energy.
+- G22 strongest current baseline: this job identifies DR/flexible load as a mature conditional challenger; baseline is incomplete if a material feasible DR lane is omitted.
+- GLOBAL_SOLVED remains NO.
+- CURRENT_WINNER remains NONE.
+
+KNOWN LIMITATIONS:
+- no single universal DR cost/availability/rebound parameter exists in evidence reviewed; geography/program/end use matter.
+- FERC 2025 report PDF and older cost-framework PDF were text-retrievable through indexed sources but direct PDF rendering/screenshot failed at the web endpoint in this session; independent reviewer must visually replicate the specific cited pages if possible.
+- 33.475-GW and 1,024.1-MW values are diagnostics from rounded reported figures, not official reconstructed accredited totals.
+- no candidate-specific integrated portfolio has yet been rerun with DR_FLEX_BASELINE_V1.
+
+JOB_ID: JOB-EGC-065-DEMAND-FLEX-BASELINE-REV-C2-20261006
+TITLE: Independent review of demand-response/flexible-load baseline and rebound accounting
+ROLE: Independent DR measurement / resource-adequacy / service-boundary adversarial reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does DR_FLEX_BASELINE_V1 correctly include mature demand-side flexibility without creating fictitious energy, firm capacity, avoided service, or cost?
+DEPENDENCIES: EGC-065-DR-001..008; CALC-EGC-065-001..004; DR_FLEX_BASELINE_V1 submitted.
+REQUIRED_TOOLS: independent FERC/NERC/ISO/RTO/CPUC/LBNL source retrieval; PDF visual replication where available; independent arithmetic; chronological load-shift/recovery counterexamples; capacity-accreditation and customer-baseline audit.
+REQUIRED_EVIDENCE:
+- independently verify wholesale/RA DR operational scale and performance;
+- independently reproduce 33.475-GW and 1,024.1-MW diagnostics with source-boundary labels;
+- attack shed/shift/substitution/efficiency taxonomy;
+- test rebound/temporal recovery and service-equivalence loopholes;
+- test baseline gaming and measurement error;
+- verify incentive-transfer vs real-resource-cost ownership;
+- test penetration-dependent capacity credit.
+FALSIFICATION_CONDITION:
+FAIL if the model can create net energy from shifting, reduce required service without cost/permission, credit BTM source energy twice, treat enrollment as firm capacity, hide a material DR challenger because data are incomplete, or let candidate-specific baseline methods manufacture response.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required; final portfolio ranking still depends on frozen geography/service, reviewed R_STAR and common ledger.
+NEXT_ACTION: distinct session independently attacks C1; downstream strongest-baseline optimization must not consume DR_FLEX_BASELINE_V1 as VERIFIED before C2 passes.
+
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+MISSION_STATUS: CONTINUE_REQUIRED
