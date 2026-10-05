@@ -1,0 +1,55 @@
+{
+  "TASK_ID": "TASK-QUEUE-PROCESSING-CRASH-RECOVERY-001",
+  "REQ_ID": "REQ-DOC-C-2-3-VNEXT-DEFAULTS",
+  "MISSION_ID": "M03-RUNTIME-INTEGRITY",
+  "FINDING_ID": "FINDING-QUEUE-PROCESSING-CRASH-RECOVERY-001",
+  "GOAL": "Provide durable deterministic recovery for abandoned PROCESSING directive dispatches after an unexpected worker termination, without duplicate execution or duplicate authorized output.",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_RECOVERY_REPLAY_CONCURRENCY",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "HOTSPOT_WITH": [
+    "TASK-QUEUE-FAILED-STATE-CAS-001",
+    "TASK-QUEUE-AUTHORIZED-RETRY-CLAIM-RACE-001",
+    "TASK-QUEUE-MISSING-DISPATCH-FAIL-CLOSED-001"
+  ],
+  "SCOPE": [
+    "packages/queue/dispatch.ts",
+    "packages/queue/workers.ts",
+    "packages/queue/jobs.ts only if queue redelivery coordination must change",
+    "focused recovery/replay tests",
+    "scripts/queue-e7.mjs only if needed for exact runtime evidence"
+  ],
+  "REQUIRED_BEHAVIOR": [
+    "An interruption after ENQUEUED->PROCESSING claim cannot leave a required run permanently stuck without a repository-owned recovery path.",
+    "Recovery must prove the previous execution authority is abandoned before another worker may execute authoritative work.",
+    "At most one active execution authority exists for a run at a time.",
+    "COMPLETED/CANCELLED and LAW-authorized final outputs remain terminal and cannot be replayed into a second execution.",
+    "Recovery timing and ownership use deterministic or explicitly authoritative state; no silent host-clock authority.",
+    "BUSY remains valid for a genuinely live concurrent owner but cannot permanently mask an abandoned claim."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not generically change every PROCESSING row back to ENQUEUED.",
+    "Do not infer abandonment solely from untrusted queue payload fields.",
+    "Do not create duplicate SWARM/JUDGE/LAW executions or duplicate durable releases.",
+    "Do not introduce host-clock authority into canonical recovery without active authority.",
+    "Do not mutate NEXY.ai.",
+    "Do not mutate NEXY.AI-Test-AI directly while isolated worker branch law remains blocked."
+  ],
+  "ACCEPTANCE": [
+    "A deterministic test establishes PROCESSING, simulates worker interruption before complete/fail persistence, then exercises recovery/redelivery.",
+    "The run safely resumes exactly once or reaches an explicit fail-closed recoverable state according to the verified design; it does not remain permanently PROCESSING.",
+    "A concurrent live owner cannot be stolen.",
+    "Repeated recovery attempts are idempotent.",
+    "Terminal COMPLETED/CANCELLED and released outputs are never re-executed.",
+    "Recovery evidence is durable and independently reviewable.",
+    "Existing queue cancellation, failed-retry, dispatch reconciliation, and release-atomicity tests remain green.",
+    "Independent review and exact-SHA post-integration reverify complete."
+  ],
+  "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker branch namespace or explicitly authorizes an equivalent isolation mechanism."
+}
