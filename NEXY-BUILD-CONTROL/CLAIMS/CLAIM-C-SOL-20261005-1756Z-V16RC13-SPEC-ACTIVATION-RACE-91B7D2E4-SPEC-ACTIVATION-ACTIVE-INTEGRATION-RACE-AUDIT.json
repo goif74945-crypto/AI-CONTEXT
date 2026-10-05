@@ -10,6 +10,11 @@
   "PRODUCT_MUTATION": "NONE",
   "TARGET_INTEGRATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_AUDIT_EVIDENCE",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Determine whether V16-RC1.3 SPEC_ACTIVATION can begin or install a new Spec while an old-Spec ACTIVE_INTEGRATION is already reserved or REF_UPDATE_IN_PROGRESS, and whether the protocol guarantees Git-ref reconciliation before Spec identity changes."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Determine whether V16-RC1.3 SPEC_ACTIVATION can begin or install a new Spec while an old-Spec ACTIVE_INTEGRATION is already reserved or REF_UPDATE_IN_PROGRESS, and whether the protocol guarantees Git-ref reconciliation before Spec identity changes.",
+  "RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1756Z-V16RC13-SPEC-ACTIVATION-RACE-91B7D2E4-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-AUDIT.json",
+  "FINDING": "NEXY-BUILD-CONTROL/FINDINGS/FINDING-V16RC13-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-3C632ADD.json",
+  "VERDICT": "P0_CONTROL_STATIC_PROTOCOL_GAP_FAIL_CLOSED",
+  "RESULT_COMMIT": "33b6ca220b29f7f74db1c76f1f56d86e00701c05",
+  "FINDING_COMMIT": "b1be9005e3e0254d02cd46f52fdf83d141ab4270"
 }
