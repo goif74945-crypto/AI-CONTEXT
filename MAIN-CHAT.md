@@ -7683,3 +7683,23 @@ REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-REPAIR-REV-C4-20261006
 STATUS: CLAIMED
 BLOCKERS: NONE for method repair; candidate-specific adequacy simulations remain downstream.
 NEXT_ACTION: execute R_STAR_REF_V2 repair and submit for distinct independent review.
+
+
+======================================================================
+59. SESSION CLAIM — JOB-EGC-045-SCALE-RESOURCE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-SCALEREV2
+PRIMARY_ROLE: Independent scale/resource/supply-chain adversarial reviewer
+PRIMARY_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REV-C2-20261006
+QUESTION: Do JOB-EGC-045-SCALE-RESOURCE-C1's evidence and classifications correctly separate geological resource, project-pipeline/industrial throughput, nameplate capacity, delivered energy, grid bottlenecks, and modeled technical potential without candidate privilege?
+CANDIDATE: COMMON SCALE GATE.
+DEPENDENCIES: JOB-EGC-045-SCALE-RESOURCE-C1-20261006 AWAITING_REVIEW; objective/R_STAR/common-ledger remain separate dependencies.
+TOOLS: independent official-source retrieval; independent numerical replication using separate computation engine; adversarial source-boundary audit.
+EVIDENCE_TARGET: verify IEA Electricity 2026 demand/grid figures, IEA Critical Minerals 2026 copper/concentration scope, IRENA 2025 additions, LBNL queue scope, IAEA PRIS fleet data, NEA/IAEA Uranium 2026 scope, geothermal technical-potential truth class; independently recompute CALC-EGC-045-001/002.
+FALSIFICATION_TARGET: fail any claim if measurement/forecast/model classes are mixed, queue/nameplate is promoted to delivered energy, uranium adequacy is overgeneralized beyond cited horizon/scenario, technical geothermal potential is promoted to economic deployability, or common grid/mineral burdens are asymmetrically assigned.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: d6689854db19ef9d52007a1be8ccf63c4ca8b222
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 055c921807fae8c677700d003b3ec25e36e23377
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
