@@ -1,12 +1,15 @@
 TASK_ID: TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001
 OWNER_CHAT: C-SOL-20261006-0144-API-HANDLER-STATE
-STATUS: ACTIVE
+STATUS: RELEASED_TO_RUNTIME_VALIDATION
 PRIORITY: P1
-BASE_SHA: 586275e163d5f6503874621223cb89f878b3da37
-SEMANTIC_SCOPE: generic web exception envelope must serialize authoritative runtime SystemState and never fabricate FREEZE
+INTEGRATION_SHA: 31218cd86920c5e8157f40c3d4ae0c6308d9b3e7
+DESCENDANT_HEAD_STATIC_VERIFIED: 06caf9b9ff9b7e90b906cf61e565bfb1accad0f8
+SEMANTIC_SCOPE: generic web exception envelope serializes authoritative runtime SystemState and does not fabricate FREEZE
 TARGET_PATHS:
 - packages/api/runtime-state.ts
 - apps/web/lib/api-handler.ts
 - tests/contract/api-handler.test.ts
-SCOPE_NOTE: API projection added because canonical module law forbids UI->CORE direct import; no state mutation is exposed.
-WORKER_BRANCH: NEXY.AI-Test-AI-work/TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001
+MUTATION_LEASE: RELEASED
+RUNTIME_VERDICT: NOT_VERIFIED
+BLOCKER: GitHub Actions attempts failed before first executable step
+RESULT_RECORD: NEXY-BUILD-CONTROL/RESULTS/TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001--C-SOL-20261006-0144.json
