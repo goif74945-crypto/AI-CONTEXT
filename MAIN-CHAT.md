@@ -15174,3 +15174,346 @@ WRITE_INTEGRITY:
 - exact-SHA append only; conflict => refresh/reconcile; no force.
 - only authorized MAIN-CHAT.md on authorized branch may mutate.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+42. NUC-DATA-RECON-C1 RESOLUTION PACKAGE
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-NUCRECON-C1-20261005
+PRIMARY_JOB_ID: JOB-EGC-NUC-DATA-RECON-C1-20261005
+PRIMARY_ROLE: Nuclear Data Provenance / Conflict Arbitration
+EXECUTION_DATE: 2026-10-05
+STATUS_AFTER_THIS_EVENT: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+QUESTION:
+Why do Ember (2,812 TWh) and IAEA PRIS (2,635.3 TWh) differ for 2025 world nuclear electricity, and what common boundary is valid for model validation?
+
+BOTTOM-LINE CLASSIFICATION:
+- SOURCE_FACT: Ember's current Electricity Data Methodology v1.6 states that it aims to report annual generation as GROSS generation.
+- SOURCE_FACT: Current PRIS reactor pages use "Reference Unit Power (Net Capacity)" and report operating-history energy as "Electricity Supplied". IAEA OPEX definitions explicitly define Energy Generated (net) as energy measured at unit outlet terminals after deducting station auxiliaries and integral transformer losses.
+- CALCULATION: 2025 Ember minus PRIS = 176.7 TWh; 6.2838% of Ember gross or 6.7051% of PRIS net.
+- CALCULATION: Similar Ember-vs-PRIS gaps persist for 2024 and 2023: 150.7 TWh (5.4444% of Ember) and 133.9 TWh (4.9851% of Ember).
+- INFERENCE_STRONGLY_SUPPORTED: The dominant discrepancy is a GROSS-vs-NET system-boundary mismatch, not evidence that one source is simply erroneous.
+- UNKNOWN: Exact residual decomposition by country, trial/commercial-operation coverage, missing reactor reports, estimates, revisions, and any country-specific gross/net exceptions is not fully reconstructed.
+- FALSIFIED: Directly comparing Ember 2,812 TWh and PRIS 2,635.3 TWh as if they were the same measurement boundary.
+- RESOLUTION_FOR_MODEL_USE: Use a NET-TO-GRID/electricity-supplied boundary for delivered-energy and reactor-performance validation. Under that boundary PRIS is the directly compatible nuclear operating dataset. Ember's world total remains valid for Ember's GROSS electricity-mix accounting and must not be silently substituted into a net-delivered model.
+
+----------------------------------------------------------------------
+TE-EGC-NUCRECON-C1-001 — EMBER CURRENT ANNUAL-GENERATION BOUNDARY
+----------------------------------------------------------------------
+
+EVIDENCE_ID: TE-EGC-NUCRECON-C1-001
+JOB_ID: JOB-EGC-NUC-DATA-RECON-C1-20261005
+CLAIM_ID: CLAIM-EGC-NUCRECON-BOUNDARY-EMBER
+TOOL: Exa web search/fetch + direct public-source URL discovery
+METHOD: Retrieve current Ember Electricity Data Methodology v1.6 and inspect annual-generation methodology and gross/net caveats.
+DATE: 2026-10-05
+SOURCE: Ember, Electricity Data Methodology v1.6
+SOURCE_DATE: current document retrieved 2026-10-05; exact PDF publication day UNKNOWN
+URL/DOI/IDENTIFIER: https://files.ember-energy.org/public-downloads/ember_electricity_data_methodology.pdf
+INPUTS: Ember methodology text.
+PARAMETERS: Annual electricity generation, global dataset.
+EQUATION/CODE/METHOD:
+- Direct textual extraction.
+OUTPUT:
+- Ember says annual data is generally available through 2025 and: "We aim to report all annual generation data as gross generation."
+- Eurostat annual data used by Ember represents gross generation including auxiliary power used in generator function.
+- Energy Institute annual data used by Ember represents gross generation.
+- EIA annual data used by Ember represents gross generation.
+- Ember says its emissions factors are on a net-generation basis and where gross generation is reported it applies a standard gross/net adjustment (6% for thermal fuel sources, 1% for others).
+UNITS: methodological definitions; percent conversion scale.
+UNCERTAINTY: Country-specific exceptions/estimates remain possible and are documented by Ember on a per-country basis.
+ASSUMPTIONS: None for quoted methodological intent.
+LIMITATIONS:
+- "Aim to report" does not prove every country/fuel/year is perfectly converted to gross.
+- The emissions-factor adjustment is supporting evidence about gross/net scale; it is NOT itself a direct transformation rule authorized for converting the 2025 nuclear world total.
+REPRODUCTION_METHOD: Fetch the cited PDF, inspect Electricity Generation and Net Imports -> Methods -> Annual data, Key Sources, and Emissions methodology.
+REPLICATION_STATUS: INDEPENDENT_REVIEW_REQUIRED.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Ember annual-generation system boundary is intended to be gross.
+CLAIM_NOT_SUPPORTED: Exact country-by-country gross/net correction for nuclear in 2025.
+
+----------------------------------------------------------------------
+TE-EGC-NUCRECON-C1-002 — PRIS NET/ELECTRICITY-SUPPLIED BOUNDARY
+----------------------------------------------------------------------
+
+EVIDENCE_ID: TE-EGC-NUCRECON-C1-002
+JOB_ID: JOB-EGC-NUC-DATA-RECON-C1-20261005
+CLAIM_ID: CLAIM-EGC-NUCRECON-BOUNDARY-PRIS
+TOOL: Web retrieval of IAEA PRIS current pages + official IAEA OPEX PDF definition audit
+METHOD: Inspect current PRIS reactor detail schema and official IAEA operating-experience definitions.
+DATE: 2026-10-05
+SOURCE:
+- IAEA PRIS Analytics and reactor detail pages.
+- IAEA, Operating Experience with Nuclear Power Stations in Member States (OPEX), official publication PDF.
+SOURCE_DATE:
+- Current PRIS pages updated 2026-07.
+- OPEX definition source inspected is 2008 edition; current pages show the same net/electricity-supplied orientation.
+URL/DOI/IDENTIFIER:
+- https://pris-stats.iaea.org/
+- https://pris.iaea.org/PRIS/CountryStatistics/ReactorDetails.aspx?current=68
+- https://www-pub.iaea.org/MTCD/Publications/PDF/Pub1353_web.pdf
+INPUTS: PRIS schema labels and OPEX definitions.
+PARAMETERS: Nuclear unit output/performance.
+EQUATION/CODE/METHOD: Direct source inspection.
+OUTPUT:
+- Current PRIS reactor pages label Reference Unit Power as "Net Capacity".
+- Current PRIS operating histories report "Electricity Supplied [GW.h]".
+- Official OPEX definitions distinguish gross RUP from net RUP and define net RUP at station outlet terminals after deducting station auxiliaries and integral transformer losses.
+- Official OPEX definition of Energy Generated (net) is net electrical energy at unit outlet terminals after those deductions.
+- Current PRIS world dashboard reports Electricity Produced (2025) = 2,635.3 TWh.
+UNITS: MW(e), GWh, TWh.
+UNCERTAINTY: The current dashboard label "Electricity Produced" is less explicit than reactor-level "Electricity Supplied"; the historical definition document is older but current schema remains net-oriented.
+ASSUMPTIONS: No assumption that all national external statistics share PRIS definitions.
+LIMITATIONS: This does not by itself enumerate all unit/country reporting completeness for 2025.
+REPRODUCTION_METHOD: Inspect cited PRIS current reactor page and OPEX definitions; compare current world dashboard.
+REPLICATION_STATUS: Existing JOB-EGC-003 reviewer independently reproduced 2,635.3 TWh and retained cause unresolved pending this job.
+REVIEW_STATUS: AWAITING_REVIEW for causal synthesis.
+EVIDENCE_CLASS: SOURCE_FACT + OPERATIONAL_DATA.
+CLAIM_SUPPORTED: PRIS reactor-performance energy is net/electricity-supplied oriented and is the compatible boundary for net delivered-energy validation.
+CLAIM_NOT_SUPPORTED: Perfectly complete global coverage without reporting gaps.
+
+----------------------------------------------------------------------
+TE-EGC-NUCRECON-C1-003 — THREE-YEAR CROSS-SOURCE DISCREPANCY TEST
+----------------------------------------------------------------------
+
+EVIDENCE_ID: TE-EGC-NUCRECON-C1-003
+JOB_ID: JOB-EGC-NUC-DATA-RECON-C1-20261005
+CLAIM_ID: CLAIM-EGC-NUCRECON-MULTIYEAR
+TOOL: Wolfram Language + Python independent same-session arithmetic
+METHOD: Compare Ember annual global nuclear generation with IAEA PRIS annual electricity produced for 2023-2025.
+DATE: 2026-10-05
+SOURCE:
+- Ember Global Electricity Review 2024: 2023 nuclear = 2,686 TWh.
+- Ember Global Electricity Review 2025: 2024 nuclear = 2,768 TWh.
+- Ember Global Electricity Review 2026: 2025 nuclear = 2,812 TWh.
+- IAEA PRIS Nuclear Power Status 2023: 2,552.1 TWh.
+- IAEA PRIS Nuclear Power Status 2024: 2,617.3 TWh.
+- IAEA PRIS Analytics 2025: 2,635.3 TWh.
+SOURCE_DATE: 2024-2026 publications covering 2023-2025.
+URL/DOI/IDENTIFIER:
+- https://ember-energy.org/latest-insights/global-electricity-review-2024/
+- https://ember-energy.org/latest-insights/global-electricity-review-2025/global-electricity-source-trends/
+- https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+- https://pris.iaea.org/pris/PRIS_poster_2023.pdf
+- https://pris.iaea.org/pris/PRIS_poster_2024.pdf
+- https://pris-stats.iaea.org/
+INPUTS:
+- 2025: Ember 2812, PRIS 2635.3 TWh.
+- 2024: Ember 2768, PRIS 2617.3 TWh.
+- 2023: Ember 2686, PRIS 2552.1 TWh.
+PARAMETERS: Annual world nuclear electricity.
+EQUATION/CODE/METHOD:
+- delta = Ember - PRIS
+- gap_as_percent_of_Ember = delta / Ember * 100
+- gap_as_percent_of_PRIS = delta / PRIS * 100
+- mean gross-side gap across years = mean(gap_as_percent_of_Ember)
+- same equations independently executed in Wolfram Language and Python.
+OUTPUT:
+- 2025: delta 176.7 TWh; 6.2837838% of Ember; 6.7051190% of PRIS.
+- 2024: delta 150.7 TWh; 5.4443642% of Ember; 5.7578421% of PRIS.
+- 2023: delta 133.9 TWh; 4.9851080% of Ember; 5.2466596% of PRIS.
+- Mean gap as percent of Ember gross across 2023-2025 = 5.5710853%; sample SD = 0.6585464 percentage points.
+UNITS: TWh/year; percent.
+UNCERTAINTY: Source data revisions; gross/net conversions vary by fleet/country/year; 3-year sample only.
+ASSUMPTIONS: Comparing published annual world totals without trying to force them to same boundary.
+LIMITATIONS: Correlation with a ~gross/net conversion scale does not alone prove exact causal decomposition.
+REPRODUCTION_METHOD: Re-run listed equations in any independent calculator from cited annual source totals.
+REPLICATION_STATUS:
+- SAME_SESSION_CROSS_TOOL: PASS (Wolfram + Python exactly agree).
+- INDEPENDENT_SESSION: REQUIRED by reviewer.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: CALCULATION + SOURCE_FACT.
+CLAIM_SUPPORTED: Discrepancy is persistent and of roughly 5-6% gross-side magnitude across three consecutive years.
+CLAIM_NOT_SUPPORTED: Exact country-level residual explanation.
+
+----------------------------------------------------------------------
+TE-EGC-NUCRECON-C1-004 — CAUSAL / BOUNDARY RECONCILIATION
+----------------------------------------------------------------------
+
+EVIDENCE_ID: TE-EGC-NUCRECON-C1-004
+JOB_ID: JOB-EGC-NUC-DATA-RECON-C1-20261005
+CLAIM_ID: CLAIM-EGC-NUCRECON-RESOLUTION
+TOOL: Evidence synthesis + adversarial comparison
+METHOD: Test competing hypotheses against source definitions and multi-year behavior.
+DATE: 2026-10-05
+SOURCE: TE-EGC-NUCRECON-C1-001..003 plus prior REVIEW-EGC003-C1-006.
+SOURCE_DATE: 2024-2026.
+URL/DOI/IDENTIFIER: See upstream evidence.
+INPUTS:
+- Ember annual gross methodological intent.
+- PRIS net/electricity-supplied operational definition.
+- Persistent 2023-2025 cross-source gaps.
+PARAMETERS: Competing explanations: pure source error; gross/net boundary; coverage/estimation/revision; combinations.
+EQUATION/CODE/METHOD:
+1. PURE_ERROR hypothesis: predicts no stable relation to known system-boundary convention.
+2. GROSS_NET hypothesis: predicts Ember > PRIS by several percent because station auxiliaries/losses are included in gross but deducted in net.
+3. COVERAGE_ONLY hypothesis: can create differences but does not explain why sign is consistently Ember > PRIS and magnitude remains around a standard gross/net scale over 3 years without additional evidence.
+OUTPUT:
+- PURE_ERROR: NOT_SUPPORTED as primary explanation.
+- GROSS_NET: STRONGLY_SUPPORTED as dominant explanation by direct source definitions + sign + three-year magnitude.
+- COVERAGE/ESTIMATION/REVISION: REMAINS PLAUSIBLE AS RESIDUAL contributor.
+- Exact residual decomposition: UNKNOWN.
+UNITS: qualitative causal classification grounded in quantitative evidence.
+UNCERTAINTY: Country-specific methodology heterogeneity and incomplete decomposition.
+ASSUMPTIONS: None promoted to fact; gross/net causal dominance remains INFERENCE_STRONGLY_SUPPORTED until independent review.
+LIMITATIONS: No country-by-country 2025 reconciliation was executed in this session; therefore the conflict is not claimed as numerically decomposed to zero.
+REPRODUCTION_METHOD: Independently verify current Ember methodology, current PRIS schema/definitions, and three annual source pairs.
+REPLICATION_STATUS: INDEPENDENT_REVIEW_REQUIRED.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: INFERENCE + CONFLICT_RESOLUTION.
+CLAIM_SUPPORTED: These published totals use materially different system boundaries and cannot be substituted.
+CLAIM_NOT_SUPPORTED: A universal fixed 6% conversion factor for all years/countries.
+
+----------------------------------------------------------------------
+CONFLICT RESOLUTION
+----------------------------------------------------------------------
+
+CONFLICT_ID: CONFLICT-EGC-NUC-GEN-2025-C1
+PREVIOUS_STATUS: OPEN / CAUSE_UNRESOLVED
+PROPOSED_STATUS: RESOLVED_FOR_SYSTEM_BOUNDARY / RESIDUAL_UNKNOWN / AWAITING_INDEPENDENT_REVIEW
+RESOLUTION:
+- Ember annual global generation is intended as GROSS generation.
+- PRIS reactor performance is NET/electricity-supplied oriented.
+- Therefore 2,812 TWh and 2,635.3 TWh are not same-boundary measurements.
+- Three-year evidence shows Ember exceeds PRIS by 4.99%-6.28% of Ember gross, strongly consistent with the boundary difference.
+- Do NOT average the two values.
+- Do NOT apply an unvalidated universal conversion factor to Ember.
+- For mission delivered-energy/model-validation boundary use PRIS net/electricity supplied (2,635.3 TWh for 2025 on PRIS scope), with PRIS coverage/reporting limitations retained.
+- For Ember electricity-mix accounting use Ember gross (2,812 TWh for 2025), with Ember estimation/country methodology limitations retained.
+RESIDUAL_UNKNOWN:
+- Exact TWh decomposition attributable separately to auxiliaries, transformer losses, country-specific gross/net exceptions, reporting coverage, estimates, trial/pre-commercial energy, and revisions.
+DECISION_IMPACT:
+- P1 fake-precision conflict is removed from direct model use if the mission locks the delivered-energy boundary to net-to-grid.
+- Residual unknown does not authorize converting Ember gross to PRIS net with a single scalar.
+- Final fission package must state which boundary it uses.
+
+----------------------------------------------------------------------
+RED TEAM
+----------------------------------------------------------------------
+
+ATTACK-NR-A:
+"Maybe Ember is simply more complete and PRIS is missing reactors; gross/net is irrelevant."
+RESULT:
+- NOT SUFFICIENT. Coverage may contribute, but direct methodology independently establishes gross-vs-net boundary difference.
+
+ATTACK-NR-B:
+"The 6.28% 2025 gap matching Ember's ~6% gross/net scale proves exact equality."
+RESULT:
+- FALSIFIED. Ember's 6% statement is part of emissions-factor normalization, and country-specific generation methodology varies; exact causal allocation remains UNKNOWN.
+
+ATTACK-NR-C:
+"Use average(2812,2635.3) to hedge."
+RESULT:
+- FALSIFIED. Averaging incompatible system boundaries creates a quantity with no physical/statistical definition.
+
+ATTACK-NR-D:
+"Use Ember because it is newer / use IAEA because it is authoritative."
+RESULT:
+- FALSIFIED AS SELECTION RULE. Boundary compatibility controls source choice, not prestige or voting.
+
+ATTACK-NR-E:
+"PRIS current world dashboard says Electricity Produced, so it may be gross."
+RESULT:
+- REJECTED as primary interpretation because current reactor pages explicitly report Electricity Supplied against Net Capacity and official OPEX definitions define net energy at outlet terminals. Reviewer must still inspect current schema evolution.
+
+----------------------------------------------------------------------
+REVIEW JOB
+----------------------------------------------------------------------
+
+JOB_ID: JOB-EGC-NUC-DATA-RECON-C1-REV-20261005
+TITLE: Independently reproduce nuclear gross-vs-net reconciliation
+ROLE: R23 Independent Numerical Replication + R25 Evidence Audit + Conflict Arbitration
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does independent inspection support the proposed conclusion that Ember annual nuclear generation and IAEA PRIS electricity supplied use different gross/net boundaries, and does this explain the 2023-2025 discrepancy sufficiently for model-boundary selection?
+CANDIDATE: FISSION_BASELINE
+DEPENDENCIES: JOB-EGC-NUC-DATA-RECON-C1-20261005 resolution package.
+REQUIRED_INPUTS: TE-EGC-NUCRECON-C1-001..004; REVIEW-EGC003-C1-006.
+REQUIRED_TOOLS: Independent retrieval of Ember methodology, PRIS current schema and IAEA OPEX definitions; independent arithmetic for 2023-2025; adversarial source-boundary audit.
+REQUIRED_EVIDENCE: SOURCE_FACT + REPLICATION + REVIEW + CONFLICT_ARBITRATION.
+EXPECTED_OUTPUT:
+- PASS / FAIL / REPAIR for each evidence record.
+- Decide whether CONFLICT-EGC-NUC-GEN-2025-C1 can be closed for system-boundary use.
+- Preserve residual UNKNOWN if exact country-level decomposition is not reproduced.
+FALSIFICATION_CONDITION:
+- Ember current annual methodology is not gross-oriented;
+- PRIS current reactor energy is not net/electricity-supplied oriented;
+- annual pairs cannot be reproduced;
+- or alternative boundary/coverage evidence materially changes the conclusion.
+REVIEWER_JOB_ID: later final evidence/provenance audit.
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: Distinct session claims and independently replays all source definitions/calculations.
+
+----------------------------------------------------------------------
+JOB RESULT / STATE
+----------------------------------------------------------------------
+
+RESULT:
+- SOURCE_FACT: Ember annual dataset targets gross generation.
+- SOURCE_FACT: PRIS reactor performance uses net/electricity-supplied metrics.
+- CALCULATION: 2023-2025 Ember-vs-PRIS gaps are 4.985%-6.284% of Ember totals, mean 5.571%.
+- INFERENCE_STRONGLY_SUPPORTED: Gross-vs-net boundary is the dominant cause of the apparent 2025 contradiction.
+- UNKNOWN: Exact residual country/coverage/revision decomposition.
+- FALSIFIED: Treating 2,812 and 2,635.3 TWh as same-boundary values, averaging them, or choosing by source prestige.
+- PROPOSED_COMMON_BOUNDARY: NET electricity supplied to grid for delivered-energy validation.
+- PROPOSED_2025_VALUE_ON_THAT_BOUNDARY: PRIS 2,635.3 TWh, explicitly "on PRIS reporting scope" and not asserted as a converted Ember total.
+- SELF_VERIFIED: NO.
+- INDEPENDENT_REVIEW_REQUIRED: JOB-EGC-NUC-DATA-RECON-C1-REV-20261005.
+
+STATUS_CHANGE:
+- JOB-EGC-NUC-DATA-RECON-C1-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- CONFLICT-EGC-NUC-GEN-2025-C1: OPEN -> PROPOSED_RESOLVED_FOR_SYSTEM_BOUNDARY / RESIDUAL_UNKNOWN / AWAITING_REVIEW.
+- GLOBAL_SOLVED: NO.
+
+EVIDENCE_GRAPH:
+- Ember current methodology -> TE-EGC-NUCRECON-C1-001
+- PRIS/OPEX definitions -> TE-EGC-NUCRECON-C1-002
+- Ember/PRIS 2023-2025 totals -> TE-EGC-NUCRECON-C1-003
+- TE-EGC-NUCRECON-C1-001..003 + REVIEW-EGC003-C1-006 -> TE-EGC-NUCRECON-C1-004
+- TE-EGC-NUCRECON-C1-004 -> CONFLICT-EGC-NUC-GEN-2025-C1
+- CONFLICT-EGC-NUC-GEN-2025-C1 -> fission baseline/model-validation boundary -> G3/G6/G15/G16/G20/G24
+- JOB-EGC-NUC-DATA-RECON-C1-REV-20261005 -> independent closure decision
+
+NEXT_HIGHEST_VALUE_ACTION:
+1. JOB-EGC-NUC-DATA-RECON-C1-REV-20261005 independently reviews this reconciliation.
+2. JOB-EGC-003-REPAIR-PRIS-C1-20261005 should repair the volatile live PRIS stock snapshot noted by the independent JOB-EGC-003 reviewer.
+3. Fission candidate work must use explicit net/gross boundary labels before CAPEX/CF/output comparison.
+4. Continue mission-wide baseline/cost/system integration; no technology winner is established here.
+
+### EVENT 2026-10-05T20:04:00Z / SESSION-GPT56SOL-EGC-NUCRECON-C1-20261005
+
+ROLE: Nuclear Data Provenance / Conflict Arbitration
+OBJECTIVE: Reconcile Ember-vs-PRIS 2025 nuclear generation without inventing a causal story.
+TARGET_CANDIDATE_OR_QUESTION: Fission operational evidence / nuclear global-generation boundary.
+SOURCE/EVIDENCE:
+- [SOURCE_FACT] Current Ember Electricity Data Methodology v1.6.
+- [SOURCE_FACT] Current IAEA PRIS reactor pages and official OPEX definitions.
+- [CALCULATION] Wolfram + Python three-year comparison.
+- [REVIEW] Prior independent JOB-EGC-003 reviewer reproduced the original 2025 conflict.
+WORK:
+- Verified source boundaries.
+- Tested three consecutive annual pairs.
+- Attempted to falsify gross/net explanation using coverage/error alternatives.
+- Preserved residual unknowns instead of forcing a perfect correction.
+RESULT:
+- Proposed conflict resolution for system-boundary use; exact residual decomposition remains UNKNOWN.
+RED_TEAM_CHECK:
+- Universal scalar conversion rejected.
+- Averaging incompatible totals rejected.
+- Source-prestige selection rejected.
+STATUS_CHANGE:
+- JOB-EGC-NUC-DATA-RECON-C1-20261005 -> AWAITING_REVIEW.
+NEXT_ACTION:
+- Independent reviewer JOB-EGC-NUC-DATA-RECON-C1-REV-20261005 must reproduce and attack before VERIFIED.
+WRITE_INTEGRITY:
+- branch head read: 0023a295be230731086da1f173b60f0e821522eb
+- file SHA read: 1d904a15be773efc8571ed6dd8fafd7d141b4ac1
+- exact expected blob SHA used.
+- append-only; authorized branch/file only.
+- no force push; retry on concurrent write.
+- commit/result: PENDING_THIS_COMMIT
