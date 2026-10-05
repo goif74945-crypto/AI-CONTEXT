@@ -13011,3 +13011,122 @@ WRITE_INTEGRITY:
 - branch head read: bf73ca29e93ab5a26a5242e0582be65435e410f4
 - file SHA read: a26349cc000f102c43709612768485055e6b3657
 - stale-write check: exact current blob SHA; append-only; no force push.
+
+
+======================================================================
+45. JOB-EGC-015 INDEPENDENT FINANCE REVIEW RESULT
+======================================================================
+
+REVIEW_ID: REVIEW-EGC-015-RT20-001
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1909Z-FINREV
+REVIEWER_JOB_ID: JOB-EGC-015-REV-RT20-20261005
+TARGET_JOB: JOB-EGC-015
+TARGET_OWNER: SESSION-GPT56SOL-EGC-FIN015-K1-20261005
+INDEPENDENCE: PASS
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+SOURCES INDEPENDENTLY CHECKED:
+- NREL/NLR ATB 2024b Financial Cases & Methods: https://atb.nrel.gov/electricity/2024b/financial_cases_%26_methods
+- NREL/NLR ATB 2024b Equations & Variables: https://atb.nrel.gov/electricity/2024b/equations_%26_variables
+- U.S. EIA AEO2026 LCOE report: https://www.eia.gov/outlooks/aeo/electricity_generation/pdf/LCOE_report.pdf
+- IEA GEC Model 2025 techno-economic inputs: https://www.iea.org/reports/global-energy-and-climate-model/techno-economic-inputs
+- IEA Cost of Capital Observatory: https://www.iea.org/reports/cost-of-capital-observatory
+
+SOURCE VERDICTS:
+- TE-EGC-FIN015-001: PASS. ATB confirms WACC->CRF, FCR=CRF*ProFinFactor, construction-finance equations, and finance/tax/depreciation/inflation treatment. ATB source-native documented WACC cases are nominal after-tax; they must not be silently substituted for mission REAL 3/7/10% scenarios.
+- TE-EGC-FIN015-002: PASS. EIA confirms 30-year recovery, after-tax WACC 7.27% for 2031, net-AC-to-grid cost basis, and warns direct LCOE/LCOS comparison can mislead. The inspected EIA report does not establish 7.27% as a universal mission real WACC.
+- TE-EGC-FIN015-003: PASS. IEA independently confirms differentiated WACC assumptions (4-7% utility PV/onshore wind; 5-8% offshore wind; 8-9% standard nuclear/coal/gas depending on development stage) and geography/technology variation in cost of capital.
+
+NUMERICAL REPLICATION:
+- TE-EGC-FIN015-004: PASS by independent JavaScript and explicit Wolfram Language.
+CRF 3% / 7% / 10%:
+  n20 0.067215708 / 0.094392926 / 0.117459625
+  n25 0.057427871 / 0.085810517 / 0.110168072
+  n30 0.051019259 / 0.080586404 / 0.106079248
+  n40 0.043262378 / 0.075009139 / 0.102259414
+  n60 0.036132959 / 0.071229226 / 0.100329509
+Capital-only USD/MWh per 1000 USD/kW at n30:
+  CF .25 = 23.2965 / 36.7974 / 48.4380
+  CF .40 = 14.5603 / 22.9984 / 30.2738
+  CF .60 = 9.70686 / 15.3323 / 20.1825
+  CF .90 = 6.47124 / 10.2215 / 13.4550
+30->60y CRF reduction = 29.1778% / 11.6114% / 5.42023% at 3/7/10%.
+
+- TE-EGC-FIN015-005: PASS as ILLUSTRATIVE ONLY.
+Independent calculation reproduces:
+  3% A=47.5769, B=54.6681 USD/MWh -> A lower
+  7% A=66.3283, B=59.1684 -> B lower
+  10% A=82.4957, B=63.0486 -> B lower
+  break-even WACC=5.09150947%, equal cost ~=56.9074 USD/MWh.
+This supports only the mathematical possibility of finance-driven ranking reversal.
+
+FIN-FINDING-RT20-001
+SEVERITY: P1 / DECISION-CONTROLLING
+TRUTH_CLASS: REVIEW_FINDING / REPAIR_REQUIRED
+TARGET: PROPOSED FINANCE NORMALIZATION RULE 8
+FINDING:
+- Rule 4 correctly labels REAL WACC 3/7/10% as mission STRESS SCENARIOS / ASSUMPTIONS, not universal observed rates.
+- Rule 8 can be misapplied if "accepted finance/lifetime uncertainty envelope" does not explicitly separate those common counterfactual stresses from evidence-grounded market/plausibility ranges for a defined geography, technology and contract structure.
+- A deliberately extreme common-finance stress reversal must not automatically be described as a probable market reversal. This ambiguity can change candidate stability classification.
+
+REQUIRED REPAIR:
+1. COMMON-FINANCE COUNTERFACTUAL: apply identical real-WACC 3/7/10% scenarios to all candidates to isolate capital-intensity/engineering sensitivity. Treat as stress tests, not probabilities.
+2. MARKET-FINANCE CASE: separately apply evidence-grounded technology/geography/project-structure finance ranges with explicit nominal/real conversion, taxes, policy, contract/merchant exposure and construction finance.
+3. Report STABLE_UNDER_COMMON_FINANCE separately from STABLE_UNDER_EVIDENCED_MARKET_FINANCE.
+4. A reversal in the common stress grid alone must not be promoted to an empirical probability claim.
+5. Preserve correlations/dependencies among WACC, inflation, technology risk, geography, construction duration and policy; JOB-EGC-025 must not sample impossible combinations as independent.
+6. State which stability class controls any final mission claim and why.
+
+FIN-FINDING-RT20-002
+SEVERITY: P2
+TRUTH_CLASS: REVIEW_FINDING
+FINDING:
+- Final records must retain source-native real/nominal labels before normalization.
+- ATB explicitly provides nominal after-tax WACC in its documented cases. EIA states after-tax 7.27%; the inspected AEO2026 source does not itself label that value real/nominal.
+REPAIR:
+- Do not infer missing EIA real/nominal classification without separate authoritative methodology evidence; record UNKNOWN where unsupported.
+
+REVIEW VERDICT:
+- Finance equations/source-method claims: PASS.
+- CRF/capital-cost arithmetic: PASS / two-engine independent replication.
+- Synthetic ranking-reversal calculation: PASS as illustration only.
+- Non-universal WACC claim: PASS.
+- Construction-finance rule: PASS.
+- LCOE-not-final / same-service rule: PASS.
+- OVERALL JOB-EGC-015: REVIEW_FAILED / REPAIR_REQUIRED due FIN-FINDING-RT20-001. This is a narrow decision-rule repair, not rejection of the finance methodology.
+
+STATUS_CHANGE:
+- JOB-EGC-015: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+- JOB-EGC-015-REV-RT20-20261005: CLAIMED/EXECUTING -> VERIFIED REVIEW JOB.
+- GLOBAL_SOLVED: NO.
+- MISSION_STATUS: CONTINUE_REQUIRED.
+
+REPAIR JOB:
+JOB_ID: JOB-EGC-015-REPAIR-RT20-20261005
+ROLE: Finance framework repair
+TITLE: Separate common stress finance from evidenced market-finance stability
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Repair JOB-EGC-015 so common 3/7/10% stress tests cannot be mistaken for empirical market probability/range, while preserving nominal/real, construction-finance, policy and correlation boundaries.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: REVIEW-EGC-015-RT20-001
+REQUIRED_INPUTS: JOB-EGC-015; FIN-FINDING-RT20-001/002; JOB-EGC-025.
+REQUIRED_TOOLS: finance methodology audit; deterministic sensitivity; evidence-boundary review.
+REQUIRED_EVIDENCE_CLASS: REPAIR / CALCULATION / SOURCE_FACT / REVIEW.
+EXPECTED_OUTPUT: repaired stability taxonomy and exact decision rules.
+FALSIFICATION_CRITERIA: FAIL if stress scenarios remain conflated with observed market ranges/probabilities, nominal/real conventions mix, or impossible correlated parameter combinations can trigger NOT_STABLE.
+REVIEWER_JOB_ID: distinct future finance reviewer
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: non-reviewer session applies narrow repair, then distinct re-review.
+
+CONCURRENCY_NOTE:
+- Other finance/uncertainty work observed before this submission: No conflicting completed JOB-EGC-015 review detected in latest tail.
+
+WRITE_INTEGRITY:
+- branch head read immediately before submission: 869af520afe2fcf3835b260743c5b700a81af718
+- file SHA read immediately before submission: 196e0ab2426fd4b5ca7859305ff2416d76400322
+- stale-write check: exact fetched blob SHA supplied; no force push.
+- mutation scope: only MAIN-CHAT.md on authorized branch.
+- commit/result: PENDING_THIS_COMMIT
