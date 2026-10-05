@@ -1,0 +1,40 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1912-V8-CANONICAL-GET-ROUTES",
+  "CHAT_ID": "C-SOL-20261005-1912-V8",
+  "ROLE": "SPEC_AUDITOR_SOURCE_REVIEWER_RED_TEAM",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SCOPE": [
+    "apps/web/app/api/directives/[id]/route.ts",
+    "apps/web/app/api/runs/[id]/route.ts",
+    "apps/web/app/api/artifacts/[id]/revisions/route.ts",
+    "apps/web/app/api/incidents/[id]/route.ts",
+    "apps/web/app/api/audit-logs/route.ts",
+    "packages/api/directives.ts",
+    "packages/api/canonical.ts",
+    "tests/contract/canonical-api.test.ts",
+    "tests/integration/directives/read-auth.spec.ts",
+    "scripts/check-doc-c.ts"
+  ],
+  "VERIFIED_DEFINED_SPEC_BEHAVIOR": [
+    "GET /api/directives/:id uses session authorization with OWNER|OPERATOR|AUDITOR and AUDITOR emits DIRECTIVE_VIEWED.",
+    "GET /api/runs/:id uses session authorization with OWNER|OPERATOR|AUDITOR and AUDITOR emits PIPELINE_RUN_VIEWED.",
+    "GET /api/artifacts/:id/revisions uses session authorization with OWNER|OPERATOR|AUDITOR, supports limit<=100/cursor, and AUDITOR emits ARTIFACT_HISTORY_VIEWED.",
+    "GET /api/incidents/:id restricts to OWNER|AUDITOR and emits INCIDENT_VIEWED in runtime.",
+    "GET /api/audit-logs restricts to OWNER|AUDITOR, supports cursor pagination, and emits AUDIT_LOG_BROWSED in runtime."
+  ],
+  "NEW_FINDINGS": [
+    "FINDING-DOC-C4-GLOBAL-API-ROUTE-DECLARATION-GAPS-001",
+    "FINDING-DOC-C4-INCIDENT-AUDIT-BEHAVIOR-TEST-GAP-001",
+    "FINDING-DOC-C4-ARTIFACT-REVISIONS-WIRE-DRIFT-001"
+  ],
+  "EXISTING_RELATED_FINDINGS_NOT_DUPLICATED": [
+    "F-C-SOL-V8-1737-SESSION-ME-ERROR-MATRIX-CONFLICT",
+    "FINDING-DOC-C4-CANONICAL-ROUTE-ORACLE-001"
+  ],
+  "NEW_ACTIONABLE_GAPS": 3,
+  "SOURCE_MUTATION": "NONE",
+  "TEST_EXECUTION": "NO_EXACT_SHA_WORKFLOW_RUNS_RETURNED; existing control state remains EXECUTION_INFRA_FAILURE_ZERO_STEP_CI",
+  "CLOSURE_ELIGIBLE": false
+}
