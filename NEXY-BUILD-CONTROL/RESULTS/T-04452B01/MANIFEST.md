@@ -22,3 +22,12 @@ CANDIDATE_REVISION:
 - test control commit: 68409b5d6ab49d3465f3ade953e145cae821253c
 - R001-R010 repurposing scan: PASS; only authoritative G22 identities remain under those prefixes
 - duplicate-node rejection identity changed to INTERNAL_DUPLICATE_NODE
+
+DESIGN_CHALLENGE_RESOLUTION:
+- G20 canonical node structure: authoritative paragraphs 7521-7539.
+- G21 mandatory canonical structure validation: paragraphs 7613-7625.
+- G22 maps schema noncanonical to R008: paragraphs 7727-7738.
+- therefore existing invalid structure/max_depth/duplicate-dependency rejection maps to R008_SCHEMA_NONCANONICAL.
+- forbidden collision, syscall-scope mismatch, and unknown dependency retain rejection semantics under INTERNAL_* identities because G22 provides no specific canonical identity for those conditions in the inspected taxonomy.
+- candidate test now asserts parity with packages/phase-f/game/ncf-governance.ts STATIC_CODES.
+CANDIDATE_TEST_REVISION_COMMIT: e17f75d0530589e9363f6810130fec2a6a2281c6
