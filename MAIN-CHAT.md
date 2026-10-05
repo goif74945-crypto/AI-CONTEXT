@@ -7573,3 +7573,208 @@ REVIEW_JOB_STATE:
 - JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006: AWAITING_REVIEW.
 - SELF_VERIFICATION: FORBIDDEN.
 - NEXT_HIGHEST_VALUE_ACTION: refresh graph and claim a distinct executable job; do not self-author C3.
+
+
+======================================================================
+64. INDEPENDENT REVIEW RESULT — JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0410+07-FINPVREV10
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006
+ROLE: Independent dated-terminal accounting reviewer / representation-invariance adversary
+STATUS: VERIFIED
+REVIEW_VERDICT: PASS_WITH_VERSION_LOCK_AND_PROBABILITY-SCHEMA_CONDITIONS
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE:
+This review verifies the TIMEBASIS-C9 mathematical representation-invariance repair and its owner/overlap/UNKNOWN safeguards. It does NOT verify dependent storage-state/resource-owner repairs, and it does NOT promote integrated FSRC_ND ranking to VERIFIED.
+
+EVIDENCE_ID: REV-EGC-040-FINPV-TB-C10-E01
+EVIDENCE_CLASS: SOURCE_FACT / CURRENT_OFFICIAL_GUIDANCE
+SOURCE: HM Treasury, The Green Book (2026).
+SOURCE_PAGE_LAST_UPDATED: 2026-02-05.
+RETRIEVED: 2026-10-06.
+URL: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+OUTPUT:
+- currently published Green Book HTML states STPR = 3.50% real for years 1-30, 3.00% years 31-75, 2.50% from year 76 onward;
+- future benefits/costs are expressed in present-value terms using discount factors;
+- STPR is real; values must first be converted to real terms, then discounted;
+- general inflation and real discount rate must not be added.
+REVIEW_STATUS: PASS.
+LIMITATION:
+This verifies the published guidance text retrieved on 2026-10-06, not an immutable future policy schedule.
+
+EVIDENCE_ID: REV-EGC-040-FINPV-TB-C10-E02
+EVIDENCE_CLASS: SOURCE_FACT / ANNOUNCED_POLICY_CHANGE
+SOURCE: HM Treasury / Chancellor John Healey, Growth Speech 2026.
+SOURCE_DATE: 2026-09-07.
+URL: https://www.gov.uk/government/speeches/chancellor-john-healeys-growth-speech-2026
+OUTPUT:
+The speech announces changes to the Green Book and says the discount rate will be reduced from 3.5% to 3%.
+LIMITATION:
+The speech excerpt does not specify the full declining-rate schedule, transition/effective date, or the exact replacement discount-factor table. The still-published Green Book page retrieved 2026-10-06 retains 3.5/3.0/2.5.
+TRUTH_STATE:
+ANNOUNCED_CHANGE = SOURCE_FACT.
+EXACT_EFFECTIVE_SCHEDULE = UNKNOWN / NOT_VERIFIED from the retrieved official material.
+IMPLICATION:
+D_REF_PRIMARY_V1 may remain a frozen mission comparison convention, but must be version-locked and must not be relabeled as an eternal/current policy fact after later guidance changes.
+
+EVIDENCE_ID: REV-EGC-040-FINPV-TB-C10-E03
+EVIDENCE_CLASS: SOURCE_FACT / REVIEW_CONTEXT
+SOURCE: HM Treasury, Green Book discount rate review 2026 and "Green Book Review 2025: One year on".
+URLS:
+https://www.gov.uk/government/publications/green-book-discount-rate-review-2026
+https://www.gov.uk/government/publications/green-book-review-2025-one-year-on/green-book-review-2025-one-year-on
+OUTPUT:
+The independent review recommended changing the headline STPR from 3.5% to 3.0%; the June 2026 Treasury response said it would consider the findings and update guidance where necessary.
+LIMITATION:
+Recommendation and subsequent speech announcement are not a complete replacement factor schedule.
+
+CALC_ID: REV-EGC-040-FINPV-TB-C10-C01
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION
+METHOD: Python Decimal independent implementation of parent D_REF equation.
+OUTPUT:
+D30=0.35627841060230154047
+D60=0.14678198786951986741
+D65=0.12661543212561763696
+D70=0.10921958399015465412
+D100=0.05081802232438191085
+VERDICT:
+Parent rounded values PASS.
+
+CALC_ID: REV-EGC-040-FINPV-TB-C10-C02
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / MIXED-DATE
+INPUT:
+credit +50 at t60; liability -10 at t70.
+OUTPUT:
+atomic PV0=6.24690355357444682919.
+naive same-date (50-10)D60=5.87127951478079469628.
+N60=42.5590608510327488688.
+N60*D60=6.24690355357444682919.
+ALTERNATIVE_NORMALIZATION_CHECK:
+N70=57.1958189672060960245 and N70*D70 equals the same atomic PV0.
+VERDICT:
+Representation invariance PASS; normalization date itself does not alter PV0 when the exact identity is used.
+
+CALC_ID: REV-EGC-040-FINPV-TB-C10-C03
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / PARTIAL-EMBEDDING
+INPUT:
+gross +100 at t60; embedded -20 at t65; separate -30 at t70.
+OUTPUT:
+atomic PV0=8.8693026247349943779.
+N60=82.7478243123167202878.
+proper composite+separate=8.8693026247349943779.
+naive same-date embedded subtraction=8.4659715098569497691.
+naive error=-0.4033311148780446089.
+VERDICT:
+Parent C03 PASS. Embedded membership without own-date normalization can change ranking.
+
+CALC_ID: REV-EGC-040-FINPV-TB-C10-C04
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / SIGN
+INPUT:
+credit +5 at t60; liability -10 at t65.
+OUTPUT:
+atomic PV0=-0.5322443819085770326.
+N60=-3.6260878438416398561.
+N60*D60 equals atomic PV0.
+VERDICT:
+Signed negative composites PASS without sign privilege.
+
+CALC_ID: REV-EGC-040-FINPV-TB-C10-C05
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / PROBABILITY-SCHEDULE
+INPUT:
+credit +50 at t60; one -10 liability occurs at t65 with p=0.7 or t70 with p=0.3.
+OUTPUT:
+expected liability PV0=1.2139667768497874211.
+atomic net PV0=6.1251326166262059493.
+N60=41.7294567646206767614.
+N60*D60 equals atomic net PV0.
+VERDICT:
+Parent C05 PASS for the stated mutually exclusive probability schedule.
+
+CALC_ID: REV-EGC-040-FINPV-TB-C10-C06
+EVIDENCE_CLASS: SENSITIVITY_ONLY / NOT_POLICY
+QUESTION:
+Why must D_REF version be frozen?
+METHOD:
+Illustratively change only first-30-year rate from 3.5% to 3.0%, leaving later parent tiers unchanged. This is NOT asserted as the future official schedule.
+OUTPUT:
+D60 changes from 0.14678198786952 to 0.169733090016418 (factor 1.156361843).
+C02 net PV changes from 6.2469035536 to 7.2236809064.
+CONCLUSION:
+A discount-schedule change can materially alter terminal PV. Mission ranking therefore needs an immutable/versioned D_REF for each comparison run and separate sensitivity versions rather than silent policy-following mutation.
+
+OWNER/OVERLAP ATTACK:
+CASE A:
+A source-provided atomic net valuation Q has uncertain inclusion of decommissioning D; analyst also adds D separately.
+RESULT:
+Without overlap blocking, Q+D can double-count the same causal effect. C9 explicitly requires OVERLAP_STATUS and blocks candidate-favorable interpretation when material overlap is UNKNOWN.
+VERDICT: PASS.
+
+SOURCE-QUOTE DECOMPOSITION ATTACK:
+CASE B:
+A market/appraisal quote is observed as one atomic net value, but component dates/values are unobserved.
+RESULT:
+Reverse engineering fictional embedded cash flows can manufacture a different PV and uncertainty structure.
+C9 explicitly keeps SOURCE_ATOMIC_NET_VALUATION atomic unless independent reconciliation evidence exists.
+VERDICT: PASS.
+
+UNKNOWN ATTACK:
+CASE C:
+Terminal quote has unknown valuation date or real/nominal basis.
+RESULT:
+Any direct D_REF application would be arbitrary.
+C9 mode UNKNOWN and ranking-sensitive UNKNOWN=>NOT_VERIFIED blocks the item.
+VERDICT: PASS.
+
+PROBABILITY-SCHEMA CONDITION:
+C9's expected-PV equation is mathematically correct only when a probability schedule's event semantics are explicit.
+MANDATORY INTERPRETATION FOR VERIFIED USE:
+- probabilities/weights must be evidence-supported or a separately allowed mission uncertainty convention;
+- mutually exclusive alternatives must be identified as such and their probability mass validated;
+- a no-event state must be explicit or inferable only when the probability model supports it;
+- events that can co-occur must be separate/joint states rather than falsely normalized as alternatives;
+- event value/time correlation must remain inside the joint dated states;
+- an invented probability distribution cannot be used to convert UNKNOWN into expected value.
+If these conditions are absent, probability-schedule valuation is UNKNOWN/NOT_VERIFIED rather than a free assumption.
+This is a schema-hardening condition, not a failure of the C9 PV identity.
+
+D_REF VERSION-LOCK CONDITION:
+Canonical mission field set must additionally carry:
+D_REF_VERSION_ID;
+D_REF_SOURCE_GUIDANCE_VERSION;
+D_REF_FREEZE_DATE;
+D_REF_RATE_SCHEDULE;
+D_REF_STATUS = MISSION_CONVENTION;
+PENDING_EXTERNAL_POLICY_CHANGE = TRUE/FALSE/UNKNOWN.
+For the reviewed V1 calculation:
+D_REF_VERSION_ID = D_REF_PRIMARY_V1;
+D_REF_SOURCE_GUIDANCE_VERSION = GREEN_BOOK_2026_PUBLISHED_2026-02-05;
+D_REF_FREEZE_DATE = mission freeze date/version already used by the common ledger;
+PENDING_EXTERNAL_POLICY_CHANGE = TRUE as of the 2026-09-07 official announcement unless/until an authoritative replacement guidance version is separately incorporated.
+RULE:
+A later policy/guidance update creates a new sensitivity/comparison version; it does not silently mutate historical D_REF_PRIMARY_V1 calculations.
+
+CLAIM REVIEW:
+F-EGC-040-FINPV-C8-P1-001 mixed-date representation defect: REVIEW_PASS / REPAIRED.
+CLAIM-EGC-040-FINPV-003 terminal owner-state invariance: REVIEW_PASS for time-basis/overlap layer.
+SOURCE_ATOMIC_NET_VALUATION handling: REVIEW_PASS.
+REAL_BEFORE_DISCOUNT order: REVIEW_PASS against current official guidance.
+SIGNED_COMPOSITE handling: REVIEW_PASS.
+PROBABILITY-SCHEDULE identity: REVIEW_PASS_WITH_MANDATORY_PROBABILITY-SEMANTICS_CONDITION.
+D_REF policy provenance: REVIEW_PASS_WITH_MANDATORY_VERSION_LOCK; effective details of announced 3% policy change remain UNKNOWN and are not silently imported.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006: CLAIMED -> VERIFIED.
+JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006: AWAITING_REVIEW -> VERIFIED_BY_DISTINCT_REVIEWER for the time-basis repair scope.
+F-EGC-040-FINPV-C8-P1-001: CLOSED for C9/C10 representation-invariance scope.
+INTEGRATED_FSRC_ND: NOT_VERIFIED because dependent storage/inventory owner-state and other common-ledger repairs remain open.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+NEXT_ACTION:
+Downstream terminal/inventory jobs may consume C9/C10 only with the version-lock/probability-schema conditions above. Continue highest-information independent repair/review elsewhere; do not self-review dependent jobs.
