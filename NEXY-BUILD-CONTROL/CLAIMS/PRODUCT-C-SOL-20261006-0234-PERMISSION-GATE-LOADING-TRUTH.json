@@ -1,0 +1,32 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
+  "chat_id": "C-SOL-20261006-0234-PERMISSION-GATE-LOADING-TRUTH",
+  "status": "CLAIMED",
+  "objective": "Separate PermissionGate loading presentation from resolved permission denial across the web UI.",
+  "requirement_gap": "PermissionGate currently renders its denial fallback while session role is still loading, causing screens with denial copy to transiently claim permission failure before authorization is known. DOC-D loading/disabled/error law requires distinct truth states.",
+  "target_repository": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "NEXY.AI-Test-AI",
+  "analyzed_head": "0eb26e46839232ddb5272c6c1f6cff2331248823",
+  "worker_branch": "work/C-SOL-20261006-0234-permission-gate-loading-truth",
+  "scope": [
+    "apps/web/components/PermissionGate.tsx",
+    "tests/contract/permission-gate-loading-truth.test.ts"
+  ],
+  "out_of_scope": [
+    "session backend semantics",
+    "individual role matrices",
+    "NEXY.ai"
+  ],
+  "authority": [
+    "Current user NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD",
+    "DOC-D §16.5 Loading / Pending / Disabled Law",
+    "DOC-D direct Permission denied copy"
+  ],
+  "success_invariants": [
+    "loading never reuses denial fallback implicitly",
+    "resolved null/disallowed role still renders denial fallback",
+    "authorized role still renders children",
+    "callers may provide explicit loadingFallback when desired",
+    "existing PermissionGate callsites remain source-compatible"
+  ]
+}
