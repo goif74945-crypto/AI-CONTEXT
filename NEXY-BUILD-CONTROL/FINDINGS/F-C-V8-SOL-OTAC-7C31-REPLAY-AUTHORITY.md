@@ -5,7 +5,7 @@ FROM: C-V8-SOL-OTAC-7C31
 TO: MISSION-AUTH-001
 SHA: 608426cb30398b1f3461866f7079d2a435c96b96
 SEVERITY: P0_CONTROL
-STATUS: RESOLVED_CONTROL_CORRECTION
+STATUS: RESOLVED
 TYPE: REQUIREMENT_AUTHORITY_CONTAMINATION
 SPEC_HASH: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
 
@@ -27,3 +27,10 @@ CONTROL REPAIR:
 SOURCE_MUTATION: NONE
 REMAINING REQUIRED GAP:
 POST /api/auth/verify-otac still declares AUTH_EXPIRED in final DOC-C while the exact source handler contains no AUTH_EXPIRED response path. Repair remains blocked from source mutation by INC-BRANCH-NAMESPACE-001 and requires independent confirmation of the selected expiration predicate.
+
+V16_RC1_3_STATUS_NORMALIZATION:
+- PRIOR_STATUS: RESOLVED_CONTROL_CORRECTION
+- CANONICAL_STATUS: RESOLVED
+- BASIS: Control contamination repair is complete; remaining route source gap is distinct from this finding type.
+- PRODUCT_SOURCE_MUTATION: NONE
+- NORMALIZED_BY: C-SOL-V16RC13-LEASE-98776641
