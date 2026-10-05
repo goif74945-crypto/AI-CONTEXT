@@ -1,8 +1,60 @@
-# Wave 01 Validation Report
+# Wave 01–07 Validation Report
 
 **Mission:** CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL  
 **Validated scope:** NPCEF reference prototype only  
 **Verdict:** PASS for E0/E1/E2 reference-prototype claims; NOT_VERIFIED for NEXY integration/runtime/deployment/legal compliance.
+
+## Wave 07 — exact-scope batch consent
+
+Status at this checkpoint: **LOCAL_VERIFIED_PENDING_REMOTE_READBACK**.
+
+Waves 02–06 were marked `SKIPPED_OVERLAP` after a fresh, SHA-bound sibling scan. Wave 07 was the next bounded non-overlapping topic: exact-scope grant bundling for consent-required items. The mechanism remains **AI-PROPOSED / NON-GOVERNING**.
+
+### TDD evidence
+
+RED was observed before production implementation:
+
+`PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_batch_consent -v`
+
+Observed: import failure because `ConsentBundleGrant` did not exist; 1 loader error; exit 1.
+
+After the smallest complete implementation, the same focused suite observed 12/12 PASS; exit 0.
+
+### Fresh executed verification
+
+| Check | Exact command | Observed result |
+|---|---|---|
+| Focused batch-consent suite | `PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_batch_consent -v` | 12/12 PASS; exit 0 |
+| Full regression | `PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v` | 56/56 PASS; exit 0 |
+| Existing property audit | `PYTHONDONTWRITEBYTECODE=1 python -m tools.property_audit` | 1,280 cases; 0 failures; exit 0 |
+| Batch-consent audit | `PYTHONDONTWRITEBYTECODE=1 python -m tools.batch_consent_audit` | 18 cases; 18 deterministic replays; 18 expected outcomes; 18 value non-echo checks; 9 order-invariance pairs; 0 failures; exit 0 |
+| Static compilation | `PYTHONPYCACHEPREFIX=/tmp/npcef_wave07_pycache python -m compileall -q src tests tools` | PASS; exit 0 |
+| Fixture parse | `python -m json.tool fixtures/adversarial_cases.json` | PASS; exit 0 |
+| Evidence parse | `python -m json.tool evidence/release_evidence.json` | PASS before this update; exit 0 |
+| Whitespace/static diff check | `git diff --check` | PASS; exit 0 |
+
+### Wave 07 candidate blob bindings
+
+These local Git object IDs bind the bytes tested above. They are not yet E0 remote read-back claims at this checkpoint.
+
+| File | Candidate blob SHA |
+|---|---|
+| src/npcef/__init__.py | 7ffea5c8548a19883124c6db0dd1621e9a14c97e |
+| src/npcef/model.py | 94bf716eb7ef3f1dd1d2494be76f25c3d99da658 |
+| src/npcef/core.py | d3b2c1f2f3d5ece2e1c5ebcb0be4daf3b9ff775c |
+| tests/test_batch_consent.py | 188347bda56644054845b86f7f36972153977f62 |
+| tools/batch_consent_audit.py | 246d94e3c08b23ca2d4f5c9871ffb53c9d68ffa4 |
+
+### Behavioral boundary
+
+- A live bundle is valid only for the exact request, purpose, recipient, expiry/revocation state, and the exact full set of consent-required item IDs.
+- Under-scoped or over-scoped active bundles fail closed with `BUNDLE_SCOPE_NOT_EXACT`.
+- Multiple active matching bundles, or active single grants overlapping an active exact bundle, fail closed with `AMBIGUOUS_GRANT_COVERAGE`.
+- Expired, revoked, or binding-mismatched bundles are inert and do not create ambiguity.
+- A bundle cannot override the existing hard block on external SECRET egress.
+- Receipts remain value-free and deterministic.
+
+This prototype does not authenticate grant issuers, establish human comprehension, prove legal consent, integrate with NEXY.AI, or establish E3–E6 or production-security evidence.
 
 ## Evidence discipline
 

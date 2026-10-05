@@ -58,6 +58,38 @@ class ConsentGrant:
 
 
 @dataclass(frozen=True)
+class ConsentBundleGrant:
+    """Exact-request, exact-item-set batch consent for the reference lab."""
+
+    grant_id: str
+    request_id: str
+    item_ids: frozenset[str]
+    purpose: str
+    recipient: str
+    expires_at: datetime
+    revoked: bool = False
+
+    def is_valid_for(
+        self,
+        *,
+        request_id: str,
+        item_id: str,
+        purpose: str,
+        recipient: str,
+        now: datetime,
+    ) -> bool:
+        return (
+            not self.revoked
+            and self.grant_id.strip() != ""
+            and self.request_id == request_id
+            and item_id in self.item_ids
+            and self.purpose == purpose
+            and self.recipient == recipient
+            and aware_utc(self.expires_at) > aware_utc(now)
+        )
+
+
+@dataclass(frozen=True)
 class DataItem:
     item_id: str
     value: Any
@@ -78,7 +110,7 @@ class EgressRequest:
     recipient_class: RecipientClass
     now: datetime
     items: tuple[DataItem, ...]
-    consent_grants: tuple[ConsentGrant, ...] = ()
+    consent_grants: tuple[ConsentGrant | ConsentBundleGrant, ...] = ()
 
 
 @dataclass(frozen=True)

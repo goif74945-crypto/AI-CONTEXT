@@ -50,3 +50,14 @@ Before every future substantial wave:
 - preserve provenance: independent concurrent invention does not increase authority.
 
 This boundary is coordination metadata, not NEXY governing architecture.
+
+## Fresh sibling scan — Wave 07 selection (AI-CONTEXT HEAD `4d90806b30648073eb4920ecd87867bb24c47a93`)
+
+The following earlier planned waves are `SKIPPED_OVERLAP` at this checkpoint:
+
+- **Wave 02 / 03:** Privacy Context Firewall `03_POLICY_AND_DATA_MODEL.md` blob `06fd6768fc2dd06251e081eca9c5375481aa369e` and Minimum-Disclosure Privacy Compiler `05_POLICY_CONTRACT.md` blob `2fd81107ecff532eee50cd375df09078e772fe3a` already specify destination/recipient retention, region, training/logging, deletion/expiry and capability-constrained disclosure boundaries.
+- **Wave 04:** active sibling `CHAT-20261005-0327-GPT56SOL-NEXY-LO4-REVOCATION-CONVERGENCE-20/00_EXECUTION_MEMORY.md` blob `05270e37b7137133d5c0d7751283bf45f70bd8e1` explicitly owns revocation propagation, in-flight containment and stale-state detection.
+- **Wave 05:** Directive Epoch Firewall `README.md` blob `3194c37695ea2d07cd3312720c515987f8e86145` and Edge Contracts novelty record blob `72e590a955cef22f0a1b10cd3d48d66a061e35cc` already implement/define commit-time stale-authority and exact approval-to-execution TOCTOU binding.
+- **Wave 06:** Context Release Firewall `src/nexy_crf/engine.py` blob `9fcbd6ae109f612ccf5bc6ed203037cf8a983943` excludes values and unrequested-field metadata so receipts do not become unrelated-context correlation oracles.
+
+A targeted current-tree search for grant bundling, batch consent and least-authority consent found no implementation outside this NPCEF plan; the only nearby external hit was an NMDPC research backlog about when a consent prompt is necessary. This is bounded search evidence, not a universal novelty claim. Wave 07 was therefore selected as the first inspected non-overlapping PLANNED wave.

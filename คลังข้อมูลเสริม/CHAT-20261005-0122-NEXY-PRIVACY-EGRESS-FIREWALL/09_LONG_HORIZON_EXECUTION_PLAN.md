@@ -15,12 +15,12 @@ A wave is `VERIFIED` only when its intended evidence class exists. File presence
 | Wave | Topic | Initial state | Minimum evidence |
 |---:|---|---|---|
 | 01 | Base NPCEF architecture, evaluator, consent/recipient binding, value-free receipts | VERIFIED | E0/E1/E2 |
-| 02 | Recipient Capability Envelope: retention/training/region/deletion/logging declarations | PLANNED | schema + unit/adversarial |
-| 03 | Capability-aware disclosure policy: recipient capability cannot create authority | PLANNED | E1/E2 |
-| 04 | Revocation race simulator: grant revoked between evaluate and dispatch | PLANNED | deterministic simulation |
-| 05 | Evaluation-to-dispatch binding / TOCTOU token | PLANNED | negative tests |
-| 06 | Receipt metadata side-channel minimization | PLANNED | differential leakage audit |
-| 07 | Grant bundling and least-authority batch consent | PLANNED | adversarial grant tests |
+| 02 | Recipient Capability Envelope: retention/training/region/deletion/logging declarations | SKIPPED_OVERLAP | current sibling destination/recipient contracts; see `13_CONCURRENT_OVERLAP_BOUNDARY.md` |
+| 03 | Capability-aware disclosure policy: recipient capability cannot create authority | SKIPPED_OVERLAP | current sibling disclosure-policy contracts; see `13_CONCURRENT_OVERLAP_BOUNDARY.md` |
+| 04 | Revocation race simulator: grant revoked between evaluate and dispatch | SKIPPED_OVERLAP | current sibling revocation-convergence mission owns in-flight containment/stale-state work |
+| 05 | Evaluation-to-dispatch binding / TOCTOU token | SKIPPED_OVERLAP | existing DEF/NAES reference systems bind authority/approval to commit-time execution |
+| 06 | Receipt metadata side-channel minimization | SKIPPED_OVERLAP | existing CRF implementation excludes unrequested metadata from receipt commitment |
+| 07 | Grant bundling and least-authority batch consent | VERIFIED | E1/E2 focused/adversarial + bounded deterministic audit; see `10_VALIDATION_REPORT.md` |
 | 08 | Consent-fatigue safety model and bounded ASK UX rules | PLANNED | scenario corpus + falsification |
 | 09 | Recipient alias/substitution/redirect attack model | PLANNED | adversarial tests |
 | 10 | Purpose taxonomy drift/alias detector | PLANNED | deterministic conflict tests |

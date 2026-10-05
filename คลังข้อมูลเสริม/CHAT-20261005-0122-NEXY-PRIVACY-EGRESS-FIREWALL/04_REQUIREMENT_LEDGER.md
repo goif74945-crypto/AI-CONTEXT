@@ -24,7 +24,14 @@ All requirements below are **lab requirements**, not canonical NEXY requirements
 | PF-018 | AI proposal remains non-governing until explicit adoption | AI-CONTEXT authority law | docs/adoption gates | E0 |
 | PF-019 | No NEXY.AI repository mutation is required by this lab | User scope | GitHub mutation ledger | E0 scoped |
 | PF-020 | External standards are rationale, not project authority | Authority separation | research record | E0 |
+| PF-021 | A batch consent grant binds one exact request ID, purpose, recipient, expiry/revocation state, and exact set of at least two consent-requiring item IDs | Wave 07 lab contract | `ConsentBundleGrant` + focused tests | E2 |
+| PF-022 | An active bundle whose item scope differs from the request's full consent-requiring item set freezes instead of broadening or partially guessing consent | Least-authority invariant | exact-scope validation + under/over-scope tests | E2 |
+| PF-023 | Expired, revoked, request-mismatched, purpose-mismatched, or recipient-mismatched bundles are inert and cannot authorize release | Consent integrity invariant | negative tests + bounded audit | E2 |
+| PF-024 | Duplicate grant IDs and overlapping active single/bundle or multiple-bundle authority freeze as ambiguous | Integrity invariant | ambiguity validation + adversarial tests | E2 |
+| PF-025 | Bundle item ordering and request item ordering do not change the decision, payload, or receipt digest | Determinism invariant | order test + bounded permutations | E2 |
+| PF-026 | Batch-consent verification records never echo raw payload marker values | Security boundary | marker non-echo bounded audit | E2 bounded |
+| PF-027 | Batch consent remains AI-PROPOSED/NON-GOVERNING and cannot claim upstream human authorization authenticity | Authority boundary | docs + claim limitations | E0 |
 
 ## Deliberately NOT VERIFIED by this prototype
 
-Nested-object minimization; streaming/token-by-token egress; derived/inferred sensitive-data classification; real identity/authorization for grant issuers; revocation propagation; cryptographic receipt authenticity; distributed policy consistency; legal compliance; connector retention/deletion behavior; runtime bypass resistance in NEXY.AI; production latency/load behavior.
+Nested-object minimization; streaming/token-by-token egress; derived/inferred sensitive-data classification; real identity/authorization for grant issuers; revocation propagation; cryptographic receipt authenticity; distributed policy consistency; legal compliance; connector retention/deletion behavior; runtime bypass resistance in NEXY.AI; production latency/load behavior. Wave 07 proves only local exact-scope bundle semantics; it does not prove that a human validly granted consent.

@@ -1,6 +1,6 @@
 # Temporary Execution Memory — NEXY Purpose-Bound Privacy & Context Egress Firewall Lab
 
-Status: WAVE_01_VERIFIED_LONG_HORIZON_ACTIVE
+Status: WAVE_07_LOCAL_VERIFIED_PENDING_REMOTE_READBACK
 Truth class: REPO_TASK_RECORD
 Durable chat code: CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL
 Platform-native ChatGPT conversation ID: UNKNOWN_NOT_EXPOSED
@@ -182,3 +182,37 @@ Execute the next `PLANNED` non-overlapping wave from `09_LONG_HORIZON_EXECUTION_
 
 ### Verification boundary
 E0/E1/E2 reference-prototype claims are PASS for Wave 01. E3/E4/E5/E6, NEXY.AI runtime integration, production privacy/security, and legal compliance remain NOT_VERIFIED.
+
+## Wave 07 local checkpoint — 2026-10-05
+
+### Authority and concurrency refresh
+
+- Fresh AI-CONTEXT main observed at commit `4d90806b30648073eb4920ecd87867bb24c47a93`, tree `24123f06ff6e04ef964f8ea240e472148803b2d9`.
+- Bootstrap/execution/security/verification authority was re-read before selection.
+- Fresh SHA-bound sibling evidence is recorded in `13_CONCURRENT_OVERLAP_BOUNDARY.md`.
+- Waves 02–06 are `SKIPPED_OVERLAP`: policy lifecycle/capability disclosure, revocation convergence, approval-to-execution freshness, and receipt-correlation work are now owned by identified siblings.
+- A bounded sibling search found no implementation owning exact-scope batch-consent bundling; this is not a universal absence claim.
+
+### Exactly one executed wave
+
+Wave 07 — Grant bundling and least-authority batch consent.
+
+Implemented an AI-PROPOSED / NON-GOVERNING `ConsentBundleGrant` with exact request, purpose, recipient, time/revocation, and exact consent-item-set binding. Active under/over-scope bundles and ambiguous overlapping coverage fail closed. Inert mismatched, expired, or revoked bundles do not affect evaluation.
+
+### TDD and verification evidence
+
+- RED: focused test import failed before implementation because `ConsentBundleGrant` did not exist; 1 loader error; exit 1.
+- Focused: 12/12 PASS.
+- Full regression: 56/56 PASS.
+- Existing bounded property audit: 1,280 cases; 0 failures.
+- Batch-consent audit: 18 cases, 18 deterministic replays, 18 expected outcomes, 18 value non-echo checks, 9 order-invariance pairs, 0 failures.
+- Static compile, fixture JSON parse, evidence JSON parse before update, and `git diff --check`: PASS.
+- Candidate source/test/tool blob bindings are in `10_VALIDATION_REPORT.md` and `evidence/release_evidence.json`.
+
+### Resume instruction
+
+This checkpoint is local-verified but not yet remote-read-back verified. Publish the mission-folder-only candidate atomically against a freshly checked main head, re-read every changed blob, compare hashes, then seal `10_VALIDATION_REPORT.md`, `evidence/release_evidence.json`, and this file with the commit/read-back evidence. Do not execute another wave in the same run.
+
+### Claim boundary
+
+Wave 07 currently has local E1/E2 reference-prototype evidence only. Remote E0 remains pending. E3/E4/E5/E6, NEXY.AI integration, issuer authentication, human comprehension, legal consent/compliance, and production privacy/security remain NOT_VERIFIED.

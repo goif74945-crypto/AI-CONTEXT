@@ -6,6 +6,7 @@ from typing import Any, Mapping
 
 from .model import (
     Action,
+    ConsentBundleGrant,
     ConsentGrant,
     ConsentMode,
     DataItem,
@@ -46,6 +47,9 @@ class PrivacyFirewall:
             item_error = self._validate_item(item)
             if item_error:
                 return self._terminal(req, Action.FREEZE, ("INVALID_ITEM_METADATA", item_error))
+        bundle_error = self._validate_bundle_authority(req)
+        if bundle_error:
+            return self._terminal(req, Action.FREEZE, ("INVALID_GRANT_METADATA", bundle_error))
 
         payload: dict[str, Any] = {}
         included: list[str] = []
@@ -141,20 +145,68 @@ class PrivacyFirewall:
     def _validate_grants(self, req: EgressRequest) -> str | None:
         if not isinstance(req.consent_grants, tuple):
             return "INVALID_GRANT_COLLECTION"
+        grant_ids: list[str] = []
         for grant in req.consent_grants:
-            if not isinstance(grant, ConsentGrant):
+            if not isinstance(grant, (ConsentGrant, ConsentBundleGrant)):
                 return "INVALID_GRANT_OBJECT"
-            if not all(
-                isinstance(value, str) and bool(value.strip())
-                for value in (grant.grant_id, grant.item_id, grant.purpose, grant.recipient)
-            ):
+            binding_values = [grant.grant_id, grant.purpose, grant.recipient]
+            if isinstance(grant, ConsentGrant):
+                binding_values.append(grant.item_id)
+            else:
+                binding_values.append(grant.request_id)
+            if not all(isinstance(value, str) and bool(value.strip()) for value in binding_values):
                 return "INVALID_GRANT_BINDING"
+            grant_ids.append(grant.grant_id)
+            if isinstance(grant, ConsentBundleGrant):
+                if not _valid_string_scope(grant.item_ids, allow_empty=False):
+                    return "INVALID_BUNDLE_ITEM_SCOPE"
+                if len(grant.item_ids) < 2:
+                    return "BUNDLE_REQUIRES_MULTIPLE_ITEMS"
+                if "*" in grant.item_ids:
+                    return "INVALID_BUNDLE_ITEM_SCOPE"
             if not isinstance(grant.revoked, bool):
                 return "INVALID_GRANT_REVOCATION"
             try:
                 aware_utc(grant.expires_at)
             except (TypeError, ValueError):
                 return "INVALID_GRANT_EXPIRY"
+        if first_duplicate(grant_ids) is not None:
+            return "DUPLICATE_GRANT_ID"
+        return None
+
+    def _validate_bundle_authority(self, req: EgressRequest) -> str | None:
+        active_bundles = [
+            grant
+            for grant in req.consent_grants
+            if isinstance(grant, ConsentBundleGrant)
+            and not grant.revoked
+            and grant.request_id == req.request_id
+            and grant.purpose == req.purpose
+            and grant.recipient == req.recipient
+            and aware_utc(grant.expires_at) > aware_utc(req.now)
+        ]
+        if len(active_bundles) > 1:
+            return "AMBIGUOUS_GRANT_COVERAGE"
+        if not active_bundles:
+            return None
+
+        bundle = active_bundles[0]
+        consent_item_ids = frozenset(
+            item.item_id for item in req.items if self._consent_needed(item, req)
+        )
+        if bundle.item_ids != consent_item_ids:
+            return "BUNDLE_SCOPE_NOT_EXACT"
+
+        for grant in req.consent_grants:
+            if not isinstance(grant, ConsentGrant) or grant.item_id not in bundle.item_ids:
+                continue
+            if grant.is_valid_for(
+                item_id=grant.item_id,
+                purpose=req.purpose,
+                recipient=req.recipient,
+                now=req.now,
+            ):
+                return "AMBIGUOUS_GRANT_COVERAGE"
         return None
 
     def _validate_item(self, item: DataItem) -> str | None:
@@ -204,10 +256,23 @@ class PrivacyFirewall:
 
     @staticmethod
     def _has_valid_consent(item: DataItem, req: EgressRequest) -> bool:
-        return any(
-            grant.is_valid_for(item_id=item.item_id, purpose=req.purpose, recipient=req.recipient, now=req.now)
-            for grant in req.consent_grants
-        )
+        for grant in req.consent_grants:
+            if isinstance(grant, ConsentGrant) and grant.is_valid_for(
+                item_id=item.item_id,
+                purpose=req.purpose,
+                recipient=req.recipient,
+                now=req.now,
+            ):
+                return True
+            if isinstance(grant, ConsentBundleGrant) and grant.is_valid_for(
+                request_id=req.request_id,
+                item_id=item.item_id,
+                purpose=req.purpose,
+                recipient=req.recipient,
+                now=req.now,
+            ):
+                return True
+        return False
 
     @staticmethod
     def _minimize_fields(item: DataItem, purpose: str) -> tuple[Any, tuple[str, ...]]:

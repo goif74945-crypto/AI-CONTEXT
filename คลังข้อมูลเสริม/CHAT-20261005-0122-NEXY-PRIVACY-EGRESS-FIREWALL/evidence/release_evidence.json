@@ -2,19 +2,21 @@
   "schema_version": 1,
   "mission": "CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL",
   "scope": "REFERENCE_PROTOTYPE_ONLY",
-  "status": "WAVE_01_VERIFIED_E0_E1_E2",
+  "status": "WAVE_07_LOCAL_VERIFIED_PENDING_REMOTE_READBACK",
   "verification_date_local": "2026-10-05",
   "exact_blob_bindings": {
     "src/__init__.py": "cb41d00bb2c7c26bbd8b7ca3a7800e2a27d55293",
     "src/privacy_firewall.py": "edfe506a219a07b1d3ca020510191aadc9a9289e",
-    "src/npcef/__init__.py": "f1234d2363ff1f9ebd455073bbbb94ada0908218",
-    "src/npcef/model.py": "b737a405862891eedf594db6a6e7b3dee67f8764",
+    "src/npcef/__init__.py": "7ffea5c8548a19883124c6db0dd1621e9a14c97e",
+    "src/npcef/model.py": "94bf716eb7ef3f1dd1d2494be76f25c3d99da658",
     "src/npcef/receipt.py": "756307d5b2a2333108636397ee8be73b139d7c8c",
     "src/npcef/utils.py": "50910998bb44af05cbf0bf767c23af3bdeafe4d0",
-    "src/npcef/core.py": "8a971f51970b1dfb46a433a6a729d83e165544dc",
+    "src/npcef/core.py": "d3b2c1f2f3d5ece2e1c5ebcb0be4daf3b9ff775c",
+    "tests/test_batch_consent.py": "188347bda56644054845b86f7f36972153977f62",
     "tests/test_release_contract.py": "e7a0b8d24f4511485d59799306e2f66f54bac38c",
     "tools/__init__.py": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
     "tools/property_audit.py": "3a4cc12c48100a69ef170511f26eb11a361821b9",
+    "tools/batch_consent_audit.py": "246d94e3c08b23ca2d4f5c9871ffb53c9d68ffa4",
     "fixtures/adversarial_cases.json": "2fa02aa6690148cd24f9b025d667ad88e0c27423"
   },
   "executed_evidence": {
@@ -49,16 +51,54 @@
     "fixture_parse": {
       "command": "python -m json.tool fixtures/adversarial_cases.json",
       "result": "PASS"
+    },
+    "wave_07_tdd_red": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_batch_consent -v",
+      "observed": "ImportError: ConsentBundleGrant did not exist",
+      "loader_errors": 1,
+      "exit_code": 1,
+      "result": "EXPECTED_RED"
+    },
+    "wave_07_focused_suite": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_batch_consent -v",
+      "tests": 12,
+      "result": "PASS"
+    },
+    "wave_07_full_regression": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v",
+      "tests": 56,
+      "result": "PASS"
+    },
+    "wave_07_property_regression": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m tools.property_audit",
+      "bounded_cases": 1280,
+      "failures": 0,
+      "result": "PASS"
+    },
+    "wave_07_batch_consent_audit": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m tools.batch_consent_audit",
+      "bounded_cases": 18,
+      "deterministic_replays": 18,
+      "expected_outcomes": 18,
+      "value_non_echo_checks": 18,
+      "order_invariance_pairs": 9,
+      "failures": 0,
+      "result": "PASS"
+    },
+    "wave_07_static_compile": {
+      "command": "PYTHONPYCACHEPREFIX=/tmp/npcef_wave07_pycache python -m compileall -q src tests tools",
+      "result": "PASS"
     }
   },
   "tdd_red_evidence": [
     "Initial production module absent: ModuleNotFoundError.",
     "Sensitive wildcard recipient regression: expected FREEZE but observed REDACT before fix.",
     "Five malformed-metadata cases crashed before runtime validation hardening.",
-    "Invalid recipient-class receipt and partial fake grant produced TypeError/AttributeError before final hardening."
+    "Invalid recipient-class receipt and partial fake grant produced TypeError/AttributeError before final hardening.",
+    "Wave 07 focused import failed because ConsentBundleGrant did not exist before implementation."
   ],
   "claim_boundary": {
-    "E0": "PASS",
+    "E0": "PASS_FOR_WAVE_01; PENDING_REMOTE_READBACK_FOR_WAVE_07",
     "E1": "PASS",
     "E2": "PASS_FOR_REFERENCE_PROTOTYPE",
     "E3": "NOT_VERIFIED",

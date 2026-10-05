@@ -31,6 +31,20 @@ Policy flags are included in a deterministic fingerprint so receipts can be link
 
 A grant may authorize exactly one item/purpose/recipient tuple for its active interval. Production design may support scoped bundles, but any bundling must remain inspectable and bounded.
 
+### Wave 07 exact-batch consent proposal
+
+`ConsentBundleGrant` is AI-PROPOSED/NON-GOVERNING. It binds:
+- one non-empty grant ID;
+- one exact request ID;
+- one exact purpose;
+- one exact recipient;
+- one expiry/revocation state;
+- one `frozenset` containing at least two item IDs.
+
+For an active bundle matching the current request/purpose/recipient, its item set must equal the full set of items in that request that require consent. Under-scoped and over-scoped active bundles FREEZE with `BUNDLE_SCOPE_NOT_EXACT`; the evaluator does not infer partial consent. Multiple active bundles, duplicate grant IDs, or valid single-item grants overlapping the bundle FREEZE as ambiguous authority. Expired, revoked, or binding-mismatched bundles are inert and lead to ordinary `ASK`/redaction behavior.
+
+This contract validates deterministic structured metadata only. It does not authenticate the grant issuer, prove human comprehension, or establish legal consent.
+
 ## Evaluation state machine
 
 ```text

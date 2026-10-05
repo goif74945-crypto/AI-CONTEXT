@@ -23,6 +23,9 @@ A malicious/injected workflow changes `model-a` to `connector-x` after approval.
 ### Consent laundering
 A broad old grant is reused for a new purpose. Reference defense: item/purpose/recipient/expiry binding and revocation state.
 
+### Batch-consent scope laundering
+One consent action silently includes extra present or future items, or combines overlapping grants so the authority source becomes ambiguous. Wave 07 reference defense: exact request/purpose/recipient/item-set binding; at least two explicit item IDs; no wildcard scope; duplicate/overlapping active authority freezes.
+
 ### Secret smuggling
 A secret is marked required to force release. Reference defense: required semantics cannot override hard secret-external prohibition.
 
@@ -36,7 +39,7 @@ Sensitive data declares `*` as recipient. Reference defense: default policy trea
 Reference defense: natural-language task text has no authority to change datum policy; the evaluator accepts structured policy metadata only.
 
 ## Residual risks
-Item IDs/field names may themselves be sensitive; sensitive data can hide in public strings; nested/binary/streaming values are not recursively minimized; library callers can bypass unless architecture enforces the boundary; downstream behavior cannot be controlled here; classifiers/metadata can be wrong; over-conservative policy can cause denial-of-service; receipt digests are not signatures.
+Item IDs/field names may themselves be sensitive; sensitive data can hide in public strings; nested/binary/streaming values are not recursively minimized; library callers can bypass unless architecture enforces the boundary; downstream behavior cannot be controlled here; classifiers/metadata can be wrong; exact-batch matching can be abused for denial-of-service; grant issuer authenticity and user comprehension are not established; receipt digests are not signatures.
 
 ## Production hardening candidates
 Signed policy snapshots, opaque IDs, mandatory gateway enforcement, schema-aware recursive minimization, content classifiers with explicit uncertainty, taint/provenance tracking, revocation propagation, downstream retention attestations, and abuse-focused E3/E4/E5 tests.
