@@ -1,0 +1,25 @@
+{
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0143-PRODUCT-QUEUE-01-TASK-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001",
+  "CHAT_ID": "C-SOL-20261006-0143-PRODUCT-QUEUE-01",
+  "TASK_ID": "TASK-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001",
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "77519350b839fe9371d2f80655495ab13d3b90a7",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001/C-SOL-20261006-0143-PRODUCT-QUEUE-01",
+  "STATUS": "ACTIVE",
+  "SCOPE": [
+    "packages/obs/incident-priority.ts",
+    "packages/queue/run-state.ts",
+    "packages/orch-core/system-state.ts",
+    "packages/obs/incidents.ts",
+    "packages/contracts/incidents.ts",
+    "tests/contract/incident-semantics.test.ts"
+  ],
+  "GOAL": "Remove historical rank-based primary incident replacement from current build authority; preserve first primary and attach subsequent canonical failures as secondary links.",
+  "AUTHORITY": [
+    "Authoritative DOCX FINAL VERDICT: Build obligation comes from DOC-C only.",
+    "Final DOC-C §5.6: transitions to FREEZE/STOP create primary incident; secondary failures attach as secondary incident links.",
+    "Current user NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD."
+  ],
+  "STARTED_AT": "2026-10-06T02:00:00+07:00"
+}
