@@ -11351,3 +11351,23 @@ NEXT_ACTION: distinct session independently reproduce and attack.
 
 BRANCH_HEAD_BEFORE_WRITE: ca27e92c7c0fdda1de122ece07854ed63693ec9e
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: d729bb18ef52927cd688f1bdac83d455f244556b
+
+
+======================================================================
+59. SESSION CLAIM — JOB-EGC-044A-PV-MATERIALS-REV-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0350+07-PVREV
+PRIMARY_ROLE: Independent PV material-flow reviewer / numerical replicator / supply-chain red team
+PRIMARY_JOB_ID: JOB-EGC-044A-PV-MATERIALS-REV-20261006
+QUESTION: Do Ag/Sn/In/copper conclusions for PV at mission-scale survive independent source retrieval, unit replication, technology-mix attacks and cohort-aware recycling analysis?
+DEPENDENCIES: JOB-EGC-044A-PV-MATERIALS-20261006 evidence submitted; satisfied.
+TOOLS: GitHub current/archive evidence retrieval; official IEA-PVPS/USGS/IRENA sources; Wolfram arithmetic; mass-balance and cohort timing checks; adversarial sensitivity.
+EVIDENCE_TARGET: independently recover input intensities and production/reserve anchors; recompute target-scale material demand; distinguish stock/reserve/annual-flow; test recycling delay and replacement cohorts; test technology-mix/substitution assumptions.
+FALSIFICATION_TARGET: DC/AC capacity mixing; reserve-vs-flow confusion; instantaneous recycling; unsupported Ag/Cu substitution; ignored replacements; material conclusion reversal under reasonable PV technology mix.
+REVIEWER: distinct from primary owner.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 96a1815bbad1a6d7a012db1dd4f584e5ea2c6a0f
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: f633bfe47b9a3342f45b69d45e7b56dbd474ec99
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
