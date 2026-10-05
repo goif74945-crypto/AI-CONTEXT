@@ -13852,3 +13852,243 @@ BRANCH_HEAD_AT_CLAIM: 0f65a8a7ca1aada63105b95c7ade5c8dfb703733
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 7474de82614e288712d8aefa4fd925626b559fa1
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+61. REVIEW RESULT — JOB-EGC-056-OPERATIONS-EVIDENCE-REV-C2-20261006 — CHATGPT-GPT56SOL-20261006T0405+07-OPSREV2
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0405+07-OPSREV2
+PRIMARY_JOB_ID: JOB-EGC-056-OPERATIONS-EVIDENCE-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006
+STATUS: VERIFIED
+PARENT_JOB_STATUS: VERIFIED_BY_DISTINCT_REVIEWER
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REVIEW SCOPE:
+Verify provenance, units, arithmetic, operational-vs-inferred boundary, and non-promotion of measured/observed fleet quantities into adequacy, duration, lifetime, or whole-system-cost claims.
+
+EVIDENCE_ID: E-EGC-056-REV-001
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. EIA Electric Power Monthly Table 6.07.B
+SOURCE_DATE: current page retrieved 2026-10-06; data for July 2026 released 2026-09-24; 2025 values preliminary.
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b
+OUTPUT_2025:
+- geothermal 2,695.5 MW time-adjusted capacity; CF 65.9%
+- conventional hydro 79,890.5 MW; CF 35.3%
+- nuclear 98,436.4 MW; CF 91.0%
+- utility-scale solar PV 133,940.2 MW; CF 24.4%
+- solar thermal 1,392.0 MW; CF 23.6%
+- wind 154,574.1 MW; CF 34.2%
+SOURCE_BOUNDARY:
+EIA states monthly time-adjusted capacity uses summer capacity of generators operating for the entire month and excludes generators starting/retiring during the month; annual values are time-weighted averages. Capacity factor compares net generation with available capacity. 2025/2026 values preliminary.
+REVIEW_STATUS: PASS; matches E-EGC-044-001.
+
+EVIDENCE_ID: E-EGC-056-REV-002
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. EIA Electric Power Monthly Table 6.07.A
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_a
+OUTPUT_2025_NGCC:
+time-adjusted capacity=291,470.5 MW; capacity factor=58.4%.
+BOUNDARY:
+observed fleet CF is not technical availability or accredited firm capacity.
+REVIEW_STATUS: PASS; matches E-EGC-056-008.
+
+EVIDENCE_ID: E-EGC-056-REV-003
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. EIA Electric Power Monthly Table 1.1 and 1.1.A
+URL_1: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_1_1
+URL_2: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_1_01_a
+OUTPUT_2025_THOUSAND_MWH:
+- nuclear 784,781
+- conventional hydro 247,023
+- utility-scale solar 295,671
+- total utility-scale generation 4,429,502
+- estimated small-scale PV 93,148
+- estimated total solar 388,820
+Additional direct renewable table:
+- wind 464,391
+- geothermal 15,669
+REVIEW_STATUS: PASS.
+NOTE:
+Direct wind/geothermal generation closes a minor source-coverage gap left by Table 1.1 aggregation; it does not change candidate ranking.
+
+EVIDENCE_ID: CALC-EGC-056-REV-001
+EVIDENCE_CLASS: CALCULATION
+TOOL: Python Decimal independent replication
+EQUATIONS:
+TWh_per_GW_nameplate_year=8.76*CF
+GW_nameplate_per_GW_annual_average=1/CF
+OUTPUT:
+nuclear: 7.97160; 1.098901098901099
+geothermal: 5.77284; 1.517450682852807
+hydro: 3.09228; 2.832861189801700
+wind: 2.99592; 2.923976608187135
+solar PV: 2.13744; 4.098360655737705
+NGCC: 5.11584; 1.712328767123288
+REPLICATION_STATUS: INDEPENDENT_SESSION_PASS.
+BOUNDARY:
+Arithmetic validation only; none of these 1/CF values is ELCC, capacity credit, adequacy contribution, or storage requirement.
+
+EVIDENCE_ID: CALC-EGC-056-REV-002
+EVIDENCE_CLASS: CALCULATION
+TOOL: Python Decimal independent replication
+METHOD:
+rounded annual time-adjusted capacity * rounded annual CF * 8760, compared with direct generation.
+OUTPUT:
+- nuclear reconstructed 784,695.60624 GWh vs 784,781 GWh direct: -0.0108812%
+- hydro reconstructed 247,043.79534 GWh vs 247,023 GWh: +0.00841838%
+- solar PV+thermal reconstructed 289,166.906208 GWh vs utility-scale solar 295,671 GWh: -2.199774%
+- wind reconstructed 463,091.637672 GWh vs direct 464,391 GWh: -0.279799%
+- geothermal reconstructed 15,560.69022 GWh vs direct 15,669 GWh: -0.691236%
+CONCLUSION:
+small-to-moderate non-closure is expected from rounded CF plus EIA time-adjusted-capacity conventions, especially rapidly changing fleets; it is not evidence of generation-data falsification. Parent boundary warning is correct.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: E-EGC-056-REV-004
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: IAEA PRIS Energy Availability Factor Trend
+SOURCE_DATE: last update 2026-07-27
+URL: https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+OUTPUT_2025:
+362 GW(e) net electrical capacity; 402 commercially operated reactors with data; weighted EAF=84.1%.
+BOUNDARY:
+EAF != capacity factor != ELCC/adequacy.
+REVIEW_STATUS: PASS; matches E-EGC-044-003.
+
+EVIDENCE_ID: E-EGC-056-REV-005
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. EIA Energy Storage for Electricity Generation
+URL: https://www.eia.gov/energyexplained/electricity/energy-storage-for-electricity-generation.php
+OUTPUT_END_2022:
+battery BESS 8,842 MW power; 11,105 MWh energy.
+INDEPENDENT CALC:
+11,105/8,842 = 1.255937570685365 h aggregate nameplate energy/power ratio.
+BOUNDARY:
+not measured all-condition discharge duration; not transferable to the 2026 fleet.
+REVIEW_STATUS: PASS; matches E-EGC-056-009.
+
+EVIDENCE_ID: E-EGC-056-REV-006
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. EIA Today in Energy, 2026-08-07
+URL: https://www.eia.gov/todayinenergy/detail.php?id=67925
+OUTPUT:
+operational U.S. utility-scale battery nameplate power capacity=43.6 GW end-2025; +8.3 GW during first half 2026; nearly 52 GW nameplate power by June 2026.
+BOUNDARY:
+POWER MW ONLY. Source does not provide a matched current national MWh total in the published article.
+CURRENT_NATIONAL_BESS_MWH: NOT_VERIFIED in this review.
+CURRENT_NATIONAL_AGGREGATE_DURATION: NOT_VERIFIED.
+REVIEW_STATUS: parent correctly preserves UNKNOWN rather than importing 2022 ratio.
+
+EVIDENCE_ID: E-EGC-056-REV-007
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. EIA Preliminary Monthly Electric Generator Inventory (EIA-860M)
+SOURCE_DATE: current index release 2026-09-24
+URL: https://www.eia.gov/electricity/data/eia860m/
+OUTPUT:
+official generator-level monthly workbooks exist through August 2026, including June/July/August 2026.
+TOOL ATTEMPTS:
+- direct web click to June 2026 XLS: unsupported content-type in web retrieval.
+- container direct download: failed.
+- Firecrawl query on XLS URL redirected to EIA electricity landing page and returned no workbook contents.
+CONCLUSION:
+No fabricated national MWh aggregate was produced. Raw-workbook aggregation remains a resolvable evidence job for a session/tool path with binary spreadsheet access.
+
+EVIDENCE_ID: E-EGC-056-REV-008
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: California Energy Commission, Tracking Progress Toward 100% Clean Energy
+URL: https://www.energy.ca.gov/data-reports/clean-energy-serving-california/tracking-progress-toward-100-clean-energy
+OUTPUT_2025:
+1,856.08 total hours; 279 days; maximum daily duration 11.3 h in which clean generation equaled/exceeded published CAISO demand for part of the day.
+SOURCE_BOUNDARY:
+CEC explicitly states evaluated CAISO demand excludes pumping loads and electricity used to charge batteries and may not represent actual retail sales delivered to consumers.
+CONCLUSION:
+parent rejection of "clean matching hours == full 100% retail service/adequacy" is directly source-supported.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: E-EGC-056-REV-009
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: California Energy Commission, 2026-08-07 battery release + Energy Storage System Survey
+URL_1: https://www.energy.ca.gov/news/2026-08/california-surpasses-21000-megawatts-battery-resources-supporting-states
+URL_2: https://www.energy.ca.gov/data-reports/energy-almanac/california-electricity-data/california-energy-storage-system-survey
+OUTPUT:
+21,112 MW battery storage resources serving Californians; nearly 16,000 MW from 310 utility-scale systems in California; additional ~2,000 MW utility batteries in Nevada/Arizona serving CAISO; ~3,000 MW smaller behind-the-meter systems.
+BOUNDARY:
+CEC states that beginning June 2026 its displayed statewide total includes out-of-state utility batteries serving CAISO; totals can change with verification.
+REVIEW_STATUS: PASS; parent preserved boundary.
+
+EVIDENCE_ID: E-EGC-056-REV-010
+EVIDENCE_CLASS: EXTERNAL_FACT / COMPANY_REPORTED_OPERATION
+SOURCE_1: Fervo Energy 2026-10-01 release
+URL_1: https://ir.fervoenergy.com/news-releases/news-release-details/fervo-energy-declares-commercial-operation-cape-station-ahead
+SOURCE_2: Fervo Form 8-K, Item 7.01, 2026-10-01
+URL_2: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/frvo-20261001.htm
+SOURCE_3: Fervo Form 10-Q for 2026-06-30
+URL_3: https://www.sec.gov/Archives/edgar/data/1853868/000162828026056457/frvo-20260630.htm
+OUTPUT:
+- company states first Cape Station GeoBlock synchronized 2026-09-24, declared contractual commercial operation 2026-09-30, and achieved 33 MW net;
+- the 8-K explicitly states the press release is FURNISHED and is not deemed filed for Section 18;
+- the June 30 10-Q stated Fervo had not yet commenced large-scale commercial operations at that date.
+CLASSIFICATION:
+Commercial-operation status and 33-MW net output are COMPANY_REPORTED operational facts supported by an SEC-furnished disclosure trail. They are NOT independent metered measurement, NOT long-run CF, NOT reservoir durability proof, NOT lifecycle-cost proof, and NOT multi-GW scale proof.
+REVIEW_STATUS: PASS; parent classification is appropriately conservative.
+
+FALSIFICATION TEST MATRIX:
+1. Capacity factor -> firm capacity/ELCC: NOT PROMOTED. PASS.
+2. Battery MW -> MWh/duration: explicitly forbidden. PASS.
+3. 2022 MWh/MW -> 2026 fleet: explicitly forbidden. PASS.
+4. CEC clean matching -> full delivered retail service: explicitly rejected by source boundary. PASS.
+5. Fervo company report -> independent long-run measurement: explicitly not promoted. PASS.
+6. Conventional geothermal fleet CF -> EGS long-run CF: explicitly rejected. PASS.
+7. Planned offshore capacity -> operating evidence: explicitly rejected. PASS.
+8. Naive annual rounded CF*capacity -> exact generation: explicitly rejected. PASS.
+9. IAEA EAF -> CF/adequacy: explicitly separated. PASS.
+
+REVIEW VERDICT:
+JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006 is VERIFIED as an operational-evidence/boundary job.
+This verification DOES NOT verify any final candidate, whole-system cost, adequacy, lifetime, resource scale, storage duration, or GLOBAL_SOLVED gate.
+Specific retained unknowns:
+- current national U.S. BESS aggregate MWh/duration: NOT_VERIFIED
+- technology-specific ELCC/firm capacity: NOT_VERIFIED
+- mature U.S. offshore-wind long-run fleet CF/availability under a common boundary: NOT_VERIFIED
+- EGS independent long-duration commercial CF/thermal durability/O&M/economics: NOT_VERIFIED
+- full delivered-system cost: NOT_VERIFIED
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-044-MATURE-FLEET-CF: VERIFIED_BY_OPSREV2_AS_2025_PRELIMINARY_SOURCE_FACT.
+CLAIM-EGC-056-NGCC-OPERATING-ANCHOR: VERIFIED_BY_OPSREV2.
+CLAIM-EGC-056-STORAGE-DURATION-BOUNDARY: VERIFIED_BY_OPSREV2.
+CLAIM-EGC-044-NUCLEAR-AVAILABILITY: VERIFIED_BY_OPSREV2_WITH_EAF_BOUNDARY.
+CLAIM-EGC-044-CALIFORNIA-INTEGRATION: VERIFIED_BY_OPSREV2_ONLY_WITH_SOURCE_EXCLUSIONS.
+CLAIM-EGC-044-EGS-COMMERCIAL-OPERATION: VERIFIED_BY_OPSREV2_AS_COMPANY_REPORTED_OPERATION; INDEPENDENT_MEASUREMENT remains UNKNOWN.
+CALC-EGC-044-001: INDEPENDENT_REPLICATION_PASS.
+CALC-EGC-056-002: INDEPENDENT_REPLICATION_PASS.
+CALC-EGC-056-003: INDEPENDENT_REPLICATION_PASS.
+
+JOB_ID: JOB-EGC-056-BESS-MWH-C3-20261006
+TITLE: Current U.S. BESS energy-capacity aggregation from EIA-860M
+ROLE: official raw-data storage analyst
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: What is the current matched national operational utility-scale battery energy capacity in MWh, paired with MW, from a single EIA-860M vintage, and what is the resulting aggregate nameplate MWh/MW ratio?
+DEPENDENCIES: E-EGC-056-REV-006..007.
+REQUIRED_INPUTS: one frozen EIA-860M month (prefer latest available); operating-unit rows; battery technology/energy-source coding; energy-capacity field definition.
+REQUIRED_TOOLS: binary XLSX-capable official-data retrieval and spreadsheet aggregation; independent unit/filter audit.
+REQUIRED_EVIDENCE:
+- exact workbook URL and release date;
+- exact sheet/column names;
+- battery filter logic;
+- row count;
+- missing/null/zero MWh audit;
+- total operational MW;
+- total operational MWh;
+- MWh/MW ratio;
+- comparison with EIA headline MW using boundary reconciliation.
+EXPECTED_OUTPUT: current national BESS MW/MWh evidence record with reproducible aggregation.
+FALSIFICATION_CONDITION:
+FAIL if MWh is imputed from MW, proposed units are mixed with operating units, power and energy fields use incompatible populations, or missing energy-capacity rows can materially bias ratio without being reported.
+REVIEWER_JOB_ID: JOB-EGC-056-BESS-MWH-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: current session could not retrieve/parse the binary official XLSX through available direct web/container/Firecrawl attempts.
+NEXT_ACTION: another session with working binary spreadsheet path downloads one frozen EIA-860M workbook and aggregates it reproducibly.
