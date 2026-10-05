@@ -1,0 +1,32 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
+  "chat_id": "C-SOL-20261006-0215-REVISION-PAGINATION-TRUTH",
+  "status": "CLAIMED",
+  "objective": "Make S9 Revision History consume the complete cursor-paginated backend projection so the UI never silently presents a partial history.",
+  "requirement_gap": "packages/api/revision-view.ts emits at most 100 items plus next_cursor; apps/web/app/vault/[id]/page.tsx ignores next_cursor and therefore silently truncates histories beyond the first page.",
+  "authority": [
+    "DOC-C UI Truth Contract: UI renders truth only and may not release hidden partial output.",
+    "DOC-D S9: Revision History is a canonical screen.",
+    "Storage query pattern: Revision history by artifact."
+  ],
+  "target_repository": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "NEXY.AI-Test-AI",
+  "analyzed_head": "aec9afaa77213c37b223b7594b92eb81c7862f9a",
+  "evidence": {
+    "ui_blob": "941edb07374c6620dbc0546e1ca0813096028216",
+    "revision_view_blob": "d26a1a892d77e1903369491e9f43a326a01b42e9",
+    "backend_emits_next_cursor": true,
+    "ui_consumes_next_cursor": false
+  },
+  "worker_branch": "work/C-SOL-20261006-0215-revision-pagination-truth",
+  "scope": [
+    "apps/web/app/vault/[id]/page.tsx",
+    "apps/web/lib/revision-history.ts",
+    "tests/contract/revision-history-pagination-truth.test.ts"
+  ],
+  "out_of_scope": [
+    "revision backend wire contract",
+    "artifact restore semantics",
+    "NEXY.ai"
+  ]
+}
