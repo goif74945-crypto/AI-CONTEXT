@@ -12117,3 +12117,215 @@ BRANCH_HEAD_AT_CLAIM: 6d191c63d5763da34e3def79374d901c299c8d2d
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 47294e2e62ad4c1e4ef7ea7acfcd2ae54826c8a2
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+59. GRID-STORAGE-MATERIAL RESULT — JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T2010Z-GSM1
+PRIMARY_JOB_ID: JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006
+ROLE: Grid + Storage Material-Flow / Duration-vs-Power Scaling Analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-044B-GRID-STORAGE-MATERIALS-REV-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Quantify storage/grid material scaling without conflating energy capacity, power capacity, network transfer-distance or lifetime throughput. This is complementary to JOB-EGC-045-GRID-STORAGE-SCALE-C1 economics/system integration and MUST NOT double-count that job.
+
+TE-EGC-044B-001 — CURRENT CHEMISTRY / CRITICAL-MINERAL CONTEXT
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCES:
+- IEA Global Critical Minerals Outlook 2026: https://www.iea.org/reports/global-critical-minerals-outlook-2026/outlook
+- IEA Batteries and Secure Energy Transitions: https://www.iea.org/reports/batteries-and-secure-energy-transitions/executive-summary
+OUTPUT:
+Battery/storage growth is a material driver of mineral demand; LFP is the dominant recent stationary lithium-ion baseline and avoids Ni/Co cathode demand. IEA 2026 treats Li/graphite/Cu supply-chain scale/concentration as material risks, not proof of geological exhaustion.
+LIMITATION: current chemistry share does not justify extrapolating LFP to all long-duration storage.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+TE-EGC-044B-002 — LFP BOM STRESS COEFFICIENTS
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: Argonne National Laboratory DOE-supported 2024 critical-material analysis using BatPaC material content
+URL: https://publications.anl.gov/anlpubs/2024/03/187907.pdf
+OUTPUT:
+For the report's LFP-graphite energy-storage case, Table 12 gives approximately Li=0.10 kg/kWh and graphite=1.09 kg/kWh battery capacity, with no Ni/Co/Mn cathode intensities for LFP.
+LIMITATION: model/BOM case, not immutable 2026 fleet average; pack design, loading, density and manufacturing yield can change intensity.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+TE-EGC-044B-003 — CURRENT MINE FLOW / STOCK BOUNDARY
+EVIDENCE_CLASS: SOURCE_FACT + REUSED_UPSTREAM_EVIDENCE
+SOURCES:
+- USGS MCS 2026 Natural Graphite: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-graphite.pdf
+- USGS MCS 2026 Lithium: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-lithium.pdf
+OUTPUT:
+2025 natural-graphite world mine production ~1.8 Mt, reserves ~310 Mt and recoverable resources >800 Mt. USGS explicitly notes synthetic graphite competes in battery applications. Upstream EGC-044 records 2025 world lithium mine production ~290 kt Li, reserves ~37 Mt and resources ~150 Mt.
+BOUNDARY RULE: annual mine production tests manufacturing-flow stress; reserves/resources are stocks. Neither is a depletion forecast and they are not interchangeable.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+TE-EGC-044B-004 — GRID CONDUCTOR INTENSITY
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: IEA, Electricity Grids and Secure Energy Transitions, revised 2023-11
+URL: https://iea.blob.core.windows.net/assets/ea2ff609-8180-4312-8de9-494bcf21696d/ElectricityGridsandSecureEnergyTransitions.pdf
+OUTPUT:
+Representative IEA conductor intensities:
+- overhead AC transmission ~11 kg Al/MW/km;
+- underground AC transmission cable ~101 kg Cu/MW/km;
+- overhead HVDC ~5 kg Al/MW/km;
+- underground HVDC cable ~29 kg Cu/MW/km.
+IEA scenarios show grid expansion can create multi-megaton annual Cu/Al demand and that voltage, HVDC and substitution materially alter demand.
+LIMITATION: conductor coefficients are not a universal full-network BOM; towers, foundations, substations, transformers, insulation and route-specific works remain separate.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+TE-EGC-044B-005 — POWER/ENERGY DECOMPOSITION
+EVIDENCE_CLASS: SOURCE_FACT + ENGINEERING_METHOD
+SOURCE: NREL/NLR ATB 2024b Utility-Scale Battery Storage
+URL: https://atb.nrel.gov/electricity/2024b/utility-scale_battery_storage
+OUTPUT:
+ATB separates battery-pack $/kWh from BOS $/kW and models multiple durations. Representative cases include ~15-y life, augmentation, about one cycle/day and 85% RTE.
+CONCLUSION: material accounting likewise needs separate energy-scaled and power-scaled ledgers.
+LIMITATION: 15 y, one cycle/day and 85% RTE are model cases, not universal facts.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+TE-EGC-044B-006 — LONG-DURATION ALTERNATIVES
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: U.S. DOE Office of Electricity, Storage Innovations 2030
+URL: https://www.energy.gov/oe/storage-innovations-2030
+OUTPUT:
+DOE evaluates flow, lithium-ion, sodium, zinc, hydrogen, pumped-storage hydro, compressed-air and thermal storage among long-duration pathways.
+CONCLUSION: extrapolating current LFP cell BOM to every 10-100+ h requirement is not technology-neutral.
+LIMITATION: existence of an alternative does not establish its cost, geography, lifetime or deployment feasibility.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CALC-EGC-044B-001 — LFP NAMEPLATE-STOCK STRESS
+EVIDENCE_CLASS: CALCULATION / STRESS_TEST_ONLY
+METHOD_A: Python Decimal.
+METHOD_B: independent Wolfram Language.
+INPUTS: Li=0.10 kg/kWh; graphite=1.09 kg/kWh; Li mine flow=290,000 t/y; natural-graphite mine flow=1,800,000 t/y.
+EQUATION: M=i*E; flow_ratio=M/current_annual_mine_flow.
+OUTPUT:
+1 TWh nameplate => 100,000 t Li and 1.09 Mt graphite; ratios 0.3448276 Li annual flow and 0.6055556 natural-graphite annual flow.
+4 TWh => 400,000 t Li and 4.36 Mt graphite; ratios 1.37931 and 2.42222 respectively.
+REPLICATION_STATUS: PYTHON_WOLFRAM_EXACT_MATCH.
+LIMITATIONS: manufacturing-flow stress only; no synthetic graphite, recycling, substitution, yields, competing demand, inventory, ramp or augmentation. NOT a hard resource ceiling.
+
+CALC-EGC-044B-002 — DURATION SCALING
+EVIDENCE_CLASS: CALCULATION
+METHOD_A: Python Decimal.
+METHOD_B: independent Wolfram Language.
+EQUATION: E=P*t; unchanged energy-scaled BOM gives M=i_E*P*t.
+INPUT: fixed P=1 GW using the LFP stress coefficients.
+OUTPUT:
+4 h: 4 GWh => ~400 t Li, 4,360 t graphite.
+10 h: 10 GWh => ~1,000 t Li, 10,900 t graphite.
+24 h: 24 GWh => ~2,400 t Li, 26,160 t graphite.
+100 h: 100 GWh => ~10,000 t Li, 109,000 t graphite.
+100h/4h material factor=25.
+REPLICATION_STATUS: PYTHON_WOLFRAM_EXACT_MATCH.
+LIMITATION: does not assert LFP is appropriate at 100 h; it demonstrates why duration cannot disappear from the ledger.
+
+CALC-EGC-044B-003 — MW-KM GRID NORMALIZATION
+EVIDENCE_CLASS: CALCULATION / NORMALIZATION_TEST
+METHOD_A: Python Decimal.
+METHOD_B: independent Wolfram Language.
+INPUT: IEA coefficients; P=1,000 MW; L=1,000 km.
+OUTPUT:
+overhead AC ~11,000 t Al;
+underground AC ~101,000 t Cu;
+overhead HVDC ~5,000 t Al;
+underground HVDC ~29,000 t Cu.
+REPLICATION_STATUS: PYTHON_WOLFRAM_EXACT_MATCH.
+CONCLUSION: equal transfer MW-km can have materially different conductor burden by line class.
+LIMITATION: normalized corridor, not an actual route/system design.
+
+CALC-EGC-044B-004 — CONDITIONAL LIFETIME THROUGHPUT
+EVIDENCE_CLASS: CALCULATION / CONDITIONAL_LOWER_BOUND
+METHOD_A: Python Decimal.
+METHOD_B: independent Wolfram Language.
+INPUT: illustrative ATB one cycle/day for 15 y; initial-pack intensities above.
+OUTPUT:
+5,475 equivalent cycles; 1 kWh nameplate corresponds to 5.475 MWh gross discharge-throughput-equivalent before detailed efficiency/degradation settlement.
+Base-pack-only:
+Li=0.01826484 kg/MWh;
+graphite=0.19908676 kg/MWh.
+REPLICATION_STATUS: PYTHON_WOLFRAM_EXACT_MATCH.
+LIMITATION: NOT full lifecycle primary-material intensity. Material BOM of augmentation/replacement is UNKNOWN; RTE/degradation/partial cycling/recycling are not settled. Low-cycle adequacy capacity may still be valuable, so throughput intensity cannot replace capacity/reliability metrics.
+
+CANONICAL MATERIAL LEDGER — PROPOSED:
+M_STOCK_m =
+ iE_m,tech * E_nameplate
++ iP_m,tech * P_nameplate
++ SUM_l[iLINE_m,l * MWkm_l]
++ M_BOP_m
++ M_SITE_m.
+
+M_PRIMARY_LIFECYCLE_m(T) =
+ M_initial_m
++ SUM_{replacement/augmentation cohorts <= T} M_added_m
+- SUM_{eligible recycled feed physically available and used by T} M_recycled_in_m.
+
+MANDATORY REPORTING:
+A) STOCK/CAPACITY: kg/MWh-nameplate, kg/MW, kg/MW-km and total tonnes.
+B) LIFECYCLE/THROUGHPUT: kg per delivered lifetime MWh/TWh under explicit dispatch/reliability scenario.
+C) R_STAR service outputs separately; kg/TWh alone cannot value rarely cycled adequacy/security capacity.
+
+RULES:
+- POWER != ENERGY; technology-specific evidence controls each coefficient.
+- duration E/P is explicit and cannot vanish.
+- no recycled credit before retired cohorts physically exist; include collection, yield, quality and lag.
+- annual production tests flow/ramp; reserves/resources test stock.
+- current LFP is a short-duration baseline, not a universal LDES architecture.
+- grid material requires actual MW-km/topology plus substations/transformers/BOP.
+- augmentation cost is not a material BOM; no dollar-to-tonne inference.
+- replacement and recycling terms may be counted once only.
+
+RED_TEAM:
+- universal kg/TWh storage coefficient: FALSIFIED.
+- 4h LFP BOM representing 100h unchanged: FALSIFIED as a candidate-neutral model; unchanged energy BOM scales 25x and DOE documents alternatives.
+- natural graphite flow == total graphite supply: FALSIFIED; synthetic graphite is an evidenced substitute/feedstock.
+- reserves/current production == depletion years: FALSIFIED as forecasting logic.
+- universal grid tonnes/TWh: FALSIFIED by line-class coefficients.
+- ATB 85% RTE universalization: REJECTED; scenario assumption only, consistent with JOB-EGC-045 reviewer attack.
+- immediate recycling solution: FALSIFIED unless cohort timing/yield produces physical feed.
+- current evidence proves unrecoverable global Li/graphite/Cu/Al ceiling: NOT_VERIFIED.
+
+CLAIM_GRAPH:
+CLAIM-EGC-044B-001 POWER_ENERGY_MATERIAL_DECOMPOSITION: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-044B-002 LFP_STOCK_STRESS: CALCULATION_SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-044B-003 DURATION_LINEARITY_UNCHANGED_ENERGY_BOM: CALCULATION_SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-044B-004 GRID_MWKM_TOPOLOGY_DEPENDENCE: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-044B-005 RECYCLING_COHORT_TIMING: ENGINEERING_ACCOUNTING_SPEC_PENDING_REVIEW.
+CLAIM-EGC-044B-006 UNIVERSAL_LFP_LDES_MODEL: FALSIFIED.
+CLAIM-EGC-044B-007 HARD_GLOBAL_MATERIAL_CEILING_FROM_CURRENT_DATA: NOT_VERIFIED.
+
+SYSTEM IMPLICATION:
+Storage and grid cannot be treated as material-free. Unchanged-BOM LFP at TWh scale is already material relative to current annual Li/natural-graphite flows, and transmission can require tens of thousands of tonnes of conductor per normalized GW-thousand-km corridor. But present evidence does not establish an unrecoverable universal hard ceiling because chemistry, synthetic graphite, LDES architecture, conductor substitution/topology and recycling can alter the result. Downstream TEA must carry the actual scenario material/supply-chain terms.
+
+STATUS_CHANGE:
+JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+JOB_ID: JOB-EGC-044B-GRID-STORAGE-MATERIALS-REV-20261006
+TITLE: Independent Grid/Storage Material-Flow Review and Replication
+ROLE: Independent storage/material/grid-supply reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do TE-EGC-044B-001..006 and CALC-EGC-044B-001..004 correctly separate energy, power, network and lifecycle material burdens without converting scenario BOMs or current mine flow into universal physical limits?
+CANDIDATE: candidate-neutral storage + grid material subsystem
+DEPENDENCIES: JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006 AWAITING_REVIEW.
+REQUIRED_INPUTS: current MAIN-CHAT.md and cited Argonne/USGS/IEA/NREL/DOE sources.
+REQUIRED_TOOLS: independent primary-source retrieval; independent arithmetic implementation; material-boundary audit; chemistry/topology counterexamples.
+REQUIRED_EVIDENCE:
+- independently reproduce the 1/4 TWh Li+graphite calculations, 4-100h scaling, 1GW*1000km conductor calculations and lifetime-throughput normalization;
+- verify stationary-LFP/BatPaC transferability limits;
+- verify natural-vs-synthetic graphite caveat;
+- attack recycling timing, augmentation BOM, MW-km coefficients and reliability-vs-throughput normalization.
+EXPECTED_OUTPUT: PASS/FAIL per claim, corrections, remaining gaps and provenance audit.
+FALSIFICATION_CONDITION: fail if power/energy are conflated; current LFP is universalized; natural graphite is total graphite; recycling precedes scrap; mine flow is reserves; or grid topology is hidden.
+REVIEWER_JOB_ID: NONE
+STATUS: OPEN
+BLOCKERS: NONE for independent review; total scenario material demand remains conditional on E/P, chemistry, duty cycle, life, topology and geography.
+NEXT_ACTION: distinct session independently reproduces and attacks this result before downstream ranking consumes it.
