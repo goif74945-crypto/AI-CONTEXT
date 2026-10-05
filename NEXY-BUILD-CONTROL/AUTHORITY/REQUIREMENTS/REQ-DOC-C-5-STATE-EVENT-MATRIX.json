@@ -7,7 +7,11 @@
     244,
     245
   ],
-  "SPEC_LINES": "paragraphs 10353-10499",
+  "SPEC_LINES": {
+    "non_empty_paragraphs": "8811-8957",
+    "raw_docx_w_p_indexes": "10353-10499",
+    "extraction_note": "Primary citation anchor is rendered PDF pages 242-245. non_empty_paragraphs counts only non-empty DOCX paragraphs; raw_docx_w_p_indexes counts every w:p including empty paragraphs."
+  },
   "SPEC_TEXT": {
     "events": [
       "boot",
