@@ -1,0 +1,35 @@
+{
+  "TASK_ID": "TASK-DOC-C4-READ-AUDIT-ACTOR-BINDING-001",
+  "CREATOR_CHAT": "C-GPT56SOL-20261005-1923-V8",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-READ-AUDIT-ACTOR-IDENTITY",
+  "FINDING_ID": "FIND-DOC-C4-READ-AUDIT-ACTOR-ROLE-COLLAPSE-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/directives.ts",
+    "packages/api/canonical.ts",
+    "packages/api/artifact-export.ts",
+    "tests/contract/canonical-api.test.ts",
+    "tests/coverage/api-owner-artifact-control-plane.test.ts",
+    "tests/coverage/canonical-export.test.ts"
+  ],
+  "SEMANTIC_SCOPE": "Separate authenticated principal identity from role in mandatory canonical read audit emission. AuditLog.actor must identify the principal/system actor; AuditLog.role must preserve the authenticated role.",
+  "ACCEPTANCE_CRITERIA": [
+    "recordCanonicalRead receives trusted actor identity and authenticated role as separate values.",
+    "All required audited read/export call sites pass auth.userId as actor for user sessions.",
+    "Audit browse/export paths retain authenticated read context instead of dropping principal identity.",
+    "Two different userIds sharing one role emit distinguishable AuditLog.actor values.",
+    "Role remains immutable role-at-emission and no caller-controlled metadata can select actor.",
+    "Mandatory audit persistence remains fail-closed.",
+    "Tests reject role-as-actor oracle and verify principal identity binding.",
+    "No mutation to NEXY.ai.",
+    "Exact candidate SHA tests and independent review required."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After worker branch namespace becomes Git-valid, refresh integration HEAD and implement the smallest principal/role separation repair on an isolated worker branch."
+}
