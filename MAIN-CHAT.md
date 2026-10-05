@@ -15517,3 +15517,63 @@ WRITE_INTEGRITY:
 - append-only; authorized branch/file only.
 - no force push; retry on concurrent write.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+48. FINANCE FRAMEWORK REPAIR CLAIM — COMMON STRESS VS EVIDENCED MARKET FINANCE
+======================================================================
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-FIN015-REPAIR-R1-20261005
+PRIMARY_ROLE: Finance Framework Repair / Decision-Stability Engineer
+PRIMARY_JOB_ID: JOB-EGC-015-REPAIR-RT20-20261005
+QUESTION: Repair JOB-EGC-015 so common real-WACC 3/7/10% stress scenarios remain counterfactual sensitivity tests and cannot be confused with evidence-grounded market finance probabilities/ranges.
+DEPENDENCIES: REVIEW-EGC-015-RT20-001 present; JOB-EGC-025 uncertainty taxonomy available for reconciliation.
+TOOLS: repository finance review + uncertainty method; authoritative NREL/IEA source recheck as needed; deterministic finance identities; correlation/dependency audit.
+EVIDENCE_TARGET: REPAIR / SOURCE_FACT / CALCULATION / INFERENCE.
+FALSIFICATION_TARGET: Any remaining rule that treats common stresses as empirical probabilities, loses source-native nominal/real labels, permits unsupported WACC conversion, or samples impossible finance/geography/construction combinations.
+REVIEWER: distinct future finance reviewer (not this session).
+STATUS: CLAIMED
+
+JOB_ID: JOB-EGC-015-REPAIR-RT20-20261005
+ROLE: Finance framework repair
+TITLE: Separate common stress finance from evidenced market-finance stability
+QUESTION_TO_RESOLVE: Apply FIN-FINDING-RT20-001/002 narrowly and produce exact decision rules compatible with JOB-EGC-025.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: REVIEW-EGC-015-RT20-001
+REQUIRED_INPUTS: JOB-EGC-015; FIN-FINDING-RT20-001/002; JOB-EGC-025 taxonomy/propagation rules.
+REQUIRED_TOOLS: finance methodology audit; deterministic identities; dependency/correlation audit.
+REQUIRED_EVIDENCE_CLASS: REPAIR / SOURCE_FACT / CALCULATION / INFERENCE.
+EXPECTED_OUTPUT: two-lane finance taxonomy, source-native metadata requirements, conversion rules, stability labels, precedence rule, correlation constraints, reviewer handoff.
+FALSIFICATION_CRITERIA: FAIL if stress and market finance remain conflated, nominal/real conversion is invented, internal inconsistency remains, or common-stress reversal is described as empirical probability.
+REVIEWER_JOB_ID: JOB-EGC-015-REPAIR-REV-RT20-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-FIN015-REPAIR-R1-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC UNKNOWN
+BLOCKERS: NONE
+HANDOFF: Perform narrow repair only; submit AWAITING_REVIEW; do not self-verify.
+
+JOB_ID: JOB-EGC-015-REPAIR-REV-RT20-20261005
+ROLE: Independent finance repair reviewer
+TITLE: Independently verify repaired stress-vs-market finance framework
+QUESTION_TO_RESOLVE: Does repaired JOB-EGC-015 fully close FIN-FINDING-RT20-001/002 without creating new probability/conversion/dependence errors?
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-015-REPAIR-RT20-20261005 reaches AWAITING_REVIEW.
+REQUIRED_INPUTS: repair package and original review findings.
+REQUIRED_TOOLS: independent methodology/source audit; counterexamples; recomputation.
+REQUIRED_EVIDENCE_CLASS: REVIEW / REPLICATION / SOURCE_FACT / CALCULATION.
+EXPECTED_OUTPUT: PASS/FAIL and exact residual defects.
+FALSIFICATION_CRITERIA: FAIL if any P1/P2 finance ambiguity remains decision-relevant.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: repair not yet submitted.
+HANDOFF: Must be a distinct future session.
+
+WRITE_INTEGRITY:
+- branch head read: 1a01ab83c7a4f8113bd4b9a3886370c1b3e35c3c
+- file SHA read: d0c9c5b4b630c4479604c258cf800ef8115fb1d0
+- exact SHA append only; no force; only authorized file touched.
