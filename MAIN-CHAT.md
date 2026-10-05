@@ -9792,3 +9792,24 @@ NEXT_ACTION: distinct repair session claims C9.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+======================================================================
+61. SESSION CLAIM — JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0410+07-FINREV2
+PRIMARY_ROLE: Independent Finance / Construction-Duration / Discount-Provenance Adversarial Reviewer
+PRIMARY_JOB_ID: JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006
+QUESTION: Are FIN_BOUNDARY_V1 and CALC-EGC-046-001..005 independently reproducible, source-boundary correct, and resistant to candidate-specific financing privilege or stale discount-policy provenance?
+DEPENDENCIES: parent finance/construction result is AWAITING_REVIEW; SOCDISC/FINPV remain authoritative for primary resource accounting; final candidate ranking remains blocked upstream.
+TOOLS: latest GitHub state; official HM Treasury/NREL/EIA/IEA source retrieval; independent Python and direct-arithmetic replication; alternative spend-schedule model; adversarial nominal-real/tax/currency/policy tests.
+EVIDENCE_TARGET: reproduce construction-finance factors, CRFs, delay sensitivities and rank reversal; verify overnight-vs-all-in definitions and representative durations; arbitrate Green Book 3.5%-vs-announced/recommended-3% status using operative official evidence; test whether private WACC can leak into primary FSRC_ND.
+FALSIFICATION_TARGET: FAIL if arithmetic is wrong, source scope is overstated, overnight/all-in or nominal/real terms are mixed, candidate-specific finance changes primary resource ranking, or freshness-sensitive policy is asserted as operative without evidence.
+REVIEWER: this session is distinct from parent owner and will not self-review any new repair it creates.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 0baa44ebbd025ae06f21f8cd6aff497d4fbc9c2d
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 48bfc816011fc20384b4634004a68bb9c2fd5055
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
