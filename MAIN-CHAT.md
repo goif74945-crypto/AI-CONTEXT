@@ -10447,3 +10447,387 @@ NEXT_ACTION: independent 044C review. Parent JOB-EGC-044 remains EXECUTING pendi
 
 BRANCH_HEAD_BEFORE_WRITE: 258767973ca7d5b7c47d0de9098efae7328c6714
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 956bdac4adbfabb0aec0ae599dbd1edcf3bfb19c
+
+
+======================================================================
+63. ENVIRONMENTAL BOUNDARY RESULT — JOB-EGC-063-ENVIRONMENT-EXTERNALITY-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-ENV1
+PRIMARY_JOB_ID: JOB-EGC-063-ENVIRONMENT-EXTERNALITY-C1-20261006
+ROLE: Environmental Lifecycle / Externality / Impact-Boundary Integrator
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-063-ENVIRONMENT-EXTERNALITY-REV-C2-20261006
+BRANCH_HEAD_BEFORE_WRITE: e0514f06618b6b12c7552884d8cac11b592d7140
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 1b29cd6debb3d87e45d36f8cf4844701a0f52f43
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE / NOT ESTABLISHED BY THIS JOB
+MISSION_STATUS: CONTINUE_REQUIRED
+
+OBJECTIVE:
+Create a candidate-neutral environmental accounting boundary that prevents direct-operation, generator-LCA and delivered-system impacts from being mixed; prevents supporting infrastructure from being free for one technology; and prevents incomparable environmental categories from being collapsed into an arbitrary scalar.
+
+CORE RESULT — ENV_STAR:
+ENV_STAR_METHOD = SUPPORTED_PENDING_INDEPENDENT_REVIEW.
+ENV_STAR_UNIVERSAL_SCALAR_SCORE = REJECTED / NOT_SUPPORTED.
+ENV_STAR_UNIVERSAL_NUMERIC_PASS_THRESHOLD = UNKNOWN until objective geography/legal constraints and policy targets are frozen.
+
+ENV_STAR SHALL track a vector, not one invented score:
+ENV = {
+  LIFECYCLE_GHG,
+  DIRECT_OPERATIONAL_GHG,
+  CRITERIA_AIR_POLLUTANTS_AND_AIR_TOXICS,
+  WATER_WITHDRAWAL,
+  WATER_CONSUMPTION,
+  THERMAL_AND_CHEMICAL_WATER_DISCHARGE,
+  LAND_DIRECT_FOOTPRINT,
+  LAND_TOTAL_OR_SPATIAL_INFLUENCE_WHEN_RELEVANT,
+  HABITAT_FRAGMENTATION_WILDLIFE_BIODIVERSITY,
+  FRESHWATER_EUTROPHICATION_AND_ECOTOXICITY_WHERE_SUPPORTED,
+  RESOURCE_EXTRACTION_TAILINGS_AND_PROCESS_TOXICITY,
+  SOLID_HAZARDOUS_AND_RADIOACTIVE_WASTE,
+  END_OF_LIFE_REUSE_RECYCLING_DISPOSAL,
+  SITE_SPECIFIC_LEGAL_ENVIRONMENTAL_CONSTRAINTS
+}.
+
+FUNCTIONAL-UNIT RULES:
+1. Generator environmental intensities use stated lifecycle boundary and NET electricity meter.
+2. Delivered-system comparison must add storage, transmission, distribution losses/infrastructure, curtailment/overbuild, replacements and common system resources exactly once.
+3. A generator-only LCA may feed the integrated system model but may NOT by itself establish a delivered-system winner.
+4. DIRECT_OPERATIONAL emissions and LIFECYCLE emissions remain distinct columns.
+5. Site-specific ecological impacts are not assumed linear in MWh and may remain project/location hard gates rather than globally averaged intensities.
+6. Mitigation/monitoring/restoration/recycling/waste-treatment resources enter FSRC_ND once.
+7. Residual environmental damage, permit noncompliance, protected-habitat restrictions and other non-monetizable constraints remain separate gates; low expected dollar cost cannot erase illegality or site infeasibility.
+8. Cross-impact monetization is permitted only when an explicit valuation method, geography, year, uncertainty and policy objective are frozen; absent that, no arbitrary weighted scalar.
+9. Do not double count a physical consequence already owned in S_STAR/T_STAR/site/LCA jobs. ENV_STAR references those claims and carries residual environmental category/state only.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-001
+CLAIM_ID: CLAIM-EGC-063-LCA-METHOD-001
+TOOL: Web + official NREL source
+SOURCE: National Renewable Energy Laboratory, Earth Systems Analysis / LCA Harmonization; NREL LCA harmonization fact sheet
+SOURCE_DATE: current NREL page accessed 2026-10-06; fact sheet NREL/FS-6A20-57187 (2013)
+URL/IDENTIFIER: https://www.nrel.gov/analysis/sustainability.html ; https://nrel.gov/docs/fy13osti/57187.pdf
+OUTPUT:
+- NREL explicitly treats sustainability as environmental effects + externalities + economics/financing, and analyzes air quality, land/water, critical minerals and circular economy.
+- NREL harmonization exists because published electricity LCAs vary materially with system designs, commercial/conceptual status, operating assumptions and LCA methods.
+- Harmonization aligns included processes/system boundaries/metrics and key performance parameters.
+- NREL states fossil electricity has most GHG in operation/combustion while nuclear/renewables have a larger upstream share.
+EVIDENCE_CLASS: SOURCE_FACT / METHOD_EVIDENCE.
+LIMITATION: the 2013 fact sheet is method evidence, not a current 2026 candidate ranking. PDF text was retrieved but web screenshot failed due remote cache miss; visual PDF verification is NOT_VERIFIED and must be independently reproduced.
+REPLICATION_STATUS: current NREL sustainability HTML independently supports the multi-category/lifecycle framing.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-002
+CLAIM_ID: CLAIM-EGC-063-UNECE-LCA-001
+TOOL: Web
+SOURCE: UNECE, Carbon Neutrality in the UNECE Region / Life Cycle Assessment of Electricity Generation Options
+SOURCE_DATE: report 2021/2022; official source accessed 2026-10-06
+URL/IDENTIFIER: https://unece.org/sites/default/files/2022-04/LCA_3_FINAL%20March%202022.pdf ; https://unece.org/sed/documents/2021/10/reports/life-cycle-assessment-electricity-generation-options
+METHOD_FACTS:
+- LCA is cradle-to-grave and multicriteria.
+- functional unit is delivery of 1 kWh electricity to a grid, global-average unless specified, year 2020.
+- study explicitly EXCLUDES load-balancing systems such as storage and additional grid connections.
+- evaluated indicators include climate change, freshwater eutrophication, ionising radiation, human toxicity, land occupation, dissipated water and resource use.
+TEXT-EXTRACTED GHG RANGES:
+- NGCC 403–513 gCO2e/kWh;
+- conventional nuclear 5.1–6.4;
+- hydro 6–147 and strongly site-specific;
+- PV 8–83;
+- onshore wind 7.8–16;
+- offshore wind 12–23.
+EVIDENCE_CLASS: SOURCE_FACT / LCA_MODEL_RESULT.
+CRITICAL LIMITATIONS:
+- these are GENERATOR LCA values under the report's assumptions, not delivered whole-system values;
+- report excludes storage/additional grid;
+- hydropower reservoir biogenic emissions are not comprehensively represented and can be highly site-specific;
+- 2020 technology model and global/regional assumptions are not automatically 2026 project data;
+- exact PDF page visual verification was attempted through web screenshot but failed because the UNECE server returned 403/cache-resolution errors. Therefore exact numeric transcription is SOURCE_TEXT_EXTRACTED / VISUAL_NOT_VERIFIED in this session.
+REPLICATION_STATUS: two official UNECE PDF/text search surfaces returned consistent method/ranges; independent visual/source reproduction required before candidate ranking.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CALCULATION: CALC-EGC-063-ENV-001
+CLAIM_ID: CLAIM-EGC-063-MASSIVE-GHG-SCALE-001
+METHOD: mission-scale unit identity and conditional scaling.
+TOOLS: Wolfram Language + independent V8 JavaScript arithmetic.
+INPUTS:
+- mission energy reference E_NET_SERVED = 2,860 TWh/y;
+- intensity I in gCO2e/kWh.
+EQUATION:
+1 g/kWh = 1 kg/MWh.
+Annual MtCO2e/y = I[g/kWh] * 2,860[TWh/y] / 1000 = 2.86*I.
+OUTPUT:
+- every 1 gCO2e/kWh difference corresponds to 2.86 MtCO2e/y at the mission energy reference.
+- conditional UNECE generator-LCA scale diagnostics:
+  NGCC 403–513 -> 1,152.58–1,467.18 MtCO2e/y.
+  nuclear 5.1–6.4 -> 14.586–18.304 Mt/y.
+  hydro 6–147 -> 17.16–420.42 Mt/y.
+  PV 8–83 -> 22.88–237.38 Mt/y.
+  onshore wind 7.8–16 -> 22.308–45.76 Mt/y.
+  offshore wind 12–23 -> 34.32–65.78 Mt/y.
+TRUTH_CLASS: CALCULATION / CONDITIONAL_SCALE_DIAGNOSTIC.
+CRITICAL LIMITATION: these are NOT mission delivered-system forecasts and MUST NOT rank candidates because underlying UNECE generator LCA excludes storage/additional grid and exact PDF numeric visual verification is pending. Scaling only demonstrates why small intensity differences become system-significant at massive energy.
+REPLICATION_STATUS: TWO_TOOL_SAME_SESSION_NUMERICAL_MATCH (Wolfram + V8 JS); INDEPENDENT_SESSION_SOURCE/ARITHMETIC REVIEW REQUIRED.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-003
+CLAIM_ID: CLAIM-EGC-063-DIRECT-VS-LCA-001
+TOOL: Web
+SOURCE: U.S. EPA eGRID / Power Sector Data / Power Sector Programs
+SOURCE_DATE: eGRID 2023 revision 2 released 2025-06-12; EPA program page updated 2026-03-04; Power Profiler updated 2026-09-09
+URL/IDENTIFIER: https://www.epa.gov/egrid ; https://www.epa.gov/egrid/summary-data ; https://www.epa.gov/power-sector/power-sector-data
+OUTPUT:
+- eGRID reports operational power-sector emission rates including CO2, CH4, N2O/CO2e, NOx and SO2 per MWh at plant/grid aggregation levels.
+- EPA describes eGRID as annual emissions + generation + heat input/environmental-characteristic data for U.S. electricity.
+BOUNDARY FINDING:
+eGRID operational rates are valuable MEASUREMENT/REPORTING evidence for direct operation but are NOT cradle-to-grave lifecycle intensities. Direct stack/grid-region data must not replace LCA upstream/downstream burdens.
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATASET_PROVENANCE.
+LIMITATIONS: United States; eGRID 2023 data vintage; grid-average/subregion rates differ from marginal and project-specific lifecycle values.
+REPLICATION_STATUS: multiple EPA pages cross-checked.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-004
+CLAIM_ID: CLAIM-EGC-063-FOSSIL-POLLUTION-001
+TOOL: Web
+SOURCE: U.S. EPA, Human Health & Environmental Impacts of the Electric Power Sector; Latest Emission Comparisons
+SOURCE_DATE: current pages accessed 2026-10-06; 2024 power-sector comparison data
+URL/IDENTIFIER: https://www.epa.gov/power-sector/human-health-environmental-impacts-electric-power-sector ; https://www.epa.gov/power-sector/latest-emission-comparisons-pollution-controls
+OUTPUT:
+- fossil fuel-fired power plants remain major sources of NOx, SO2, mercury/fine-particle-related pollution and CO2 in the U.S.
+- 2024 program data show monitored fossil-sector NOx/SO2/CO2/Hg remain nonzero even after major historical pollution-control deployment.
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_EMISSION_EVIDENCE.
+LIMITATIONS: U.S. regulatory fleet; does not by itself quantify full-chain upstream methane or global external damages.
+REPLICATION_STATUS: EPA program/data pages converge.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-005
+CLAIM_ID: CLAIM-EGC-063-NG-SUPPLYCHAIN-001
+TOOL: Web
+SOURCE: NREL, Streamlined Life Cycle Assessments of Natural Gas Systems Can Inform Near-Term Energy Transition
+SOURCE_DATE: 2024-05-06
+URL/IDENTIFIER: https://www.nrel.gov/news/program/2024/streamlined-life-cycle-assessments-of-natural-gas-systems-can-inform-near-term-energy-transition
+OUTPUT:
+NREL's SLiNG-GHG work explicitly models natural-gas and LNG supply-chain GHGs and emphasizes that full natural-gas LCA requires acquisition, manufacturing/use/disposal and upstream supply-chain methane/emissions rather than stack CO2 alone.
+EVIDENCE_CLASS: SOURCE_FACT / LCA_METHOD_CURRENTNESS.
+LIMITATIONS: methodology/tool overview, not a single frozen NGCC lifecycle intensity for this mission.
+REPLICATION_STATUS: consistent with UNECE full-life-cycle framing and EPA direct/lifecycle distinction.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-006
+CLAIM_ID: CLAIM-EGC-063-HYDRO-ECOSYSTEM-001
+TOOL: Web
+SOURCE: U.S. Geological Survey hydropower science + 2026 Energy and Wildlife update
+SOURCE_DATE: current; update includes research through 2026-03
+URL/IDENTIFIER: https://www.usgs.gov/programs/species-management-research-program/science/science-topics/hydropower ; https://www.usgs.gov/programs/species-management-research-program/science/usgs-energy-and-wildlife-research-update-sept
+OUTPUT:
+hydroelectric dams can block fish migration and alter upstream/downstream ecosystems; hydropeaking can affect riparian plant communities. Effects depend on site/design/operation and require siting, passage, flow and habitat mitigation.
+EVIDENCE_CLASS: SOURCE_FACT / ECOLOGICAL_FIELD_RESEARCH_SUMMARY.
+LIMITATIONS: does not support a universal impact/MWh coefficient.
+REPLICATION_STATUS: USGS science-topic and 2026 research update converge.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-007
+CLAIM_ID: CLAIM-EGC-063-HYDRO-GHG-001
+TOOL: Web
+SOURCE: U.S. EPA SuRGE reservoir research + USGS 2026 national reservoir dataset
+SOURCE_DATE: EPA page updated 2025-11-13; USGS dataset/publication 2026-03-13
+URL/IDENTIFIER: https://www.epa.gov/air-research/research-emissions-us-reservoirs ; https://www.usgs.gov/publications/summertime-methane-and-carbon-dioxide-emission-rates-and-associated-variables-a
+OUTPUT:
+- EPA/USGS physically measured methane/CO2 emissions across large reservoir surveys; methane can be emitted by diffusion and ebullition and varies with environmental conditions.
+- 2026 USGS dataset covers 146 reservoirs with field measurements at many sites during 2016-2023.
+CONCLUSION: hydro/reservoir GHG is materially site/ecosystem dependent and cannot be assigned one universal zero-emissions operational value.
+EVIDENCE_CLASS: MEASUREMENT_DATASET_PROVENANCE / SOURCE_FACT.
+LIMITATIONS: reservoir emissions are not wholly attributable to hydropower where reservoirs are multipurpose; summertime surveys need attribution/annualization before g/kWh use.
+REPLICATION_STATUS: EPA research program + USGS dataset converge.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-008
+CLAIM_ID: CLAIM-EGC-063-WIND-BIODIV-001
+TOOL: Web
+SOURCE: U.S. DOE, Environment and Wildlife / Environmental Research and Wind Energy Projects
+SOURCE_DATE: current pages accessed 2026-10-06
+URL/IDENTIFIER: https://www.energy.gov/cmei/systems/windexchange/environment-and-wildlife ; https://www.energy.gov/cmei/systems/environmental-research-and-wind-energy-projects
+OUTPUT:
+wind environmental/wildlife effects vary by location/species; birds/bats and offshore marine life are material siting/operation concerns. DOE uses monitoring, siting, avoidance/minimization and operating controls.
+EVIDENCE_CLASS: SOURCE_FACT / SITE_ENVIRONMENT_EVIDENCE.
+LIMITATION: not a universal biodiversity/MWh score.
+REPLICATION_STATUS: two DOE pages converge.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-009
+CLAIM_ID: CLAIM-EGC-063-PV-LAND-EOL-001
+TOOL: Web
+SOURCE: U.S. DOE, Large-Scale Solar Siting Research + End-of-Life Management for Solar PV + FEMP PV lifecycle
+SOURCE_DATE: current; FEMP lifecycle pages updated 2026-05-20
+URL/IDENTIFIER: https://www.energy.gov/cmei/systems/large-scale-solar-siting-research ; https://www.energy.gov/cmei/systems/end-life-management-solar-photovoltaics ; https://www.energy.gov/cmei/femp/life-cycle-photovoltaic-systems-prepare-end-performance-period
+OUTPUT:
+- utility-scale PV siting must account for land, interconnection, wildlife/environment and host-community constraints.
+- recycling exists for silicon/CdTe modules but U.S. recycling cost can exceed landfill disposal cost.
+- DOE treats decommissioning, land restoration, recycling/disposal and potentially hazardous-waste rules as real lifecycle obligations.
+EVIDENCE_CLASS: SOURCE_FACT / LIFECYCLE_OPERATIONAL_GUIDANCE.
+LIMITATIONS: U.S. policy/market context; recycling economics can change; not all modules/materials share the same pathway.
+REPLICATION_STATUS: three DOE pages cross-checked.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-010
+CLAIM_ID: CLAIM-EGC-063-STORAGE-LCA-001
+TOOL: Web
+SOURCE: NREL PSH life-cycle tool/article + Argonne R&D GREET 2025 Rev.1 / Battery Module
+SOURCE_DATE: NREL 2024; Argonne R&D GREET 2025 Rev.1 released 2026-05-26; battery CF calculator 2026-08-12
+URL/IDENTIFIER: https://www.nrel.gov/news/program/2024/new-nrel-tool-estimates-the-lifetime-greenhouse-gas-emissions-of-grid-scale-energy-storage-technology ; https://greet.anl.gov/ ; https://greet.anl.gov/greet_battcf
+OUTPUT:
+- NREL PSH LCA explicitly depends on construction materials and the grid electricity mix used for pumping; site/configuration matters.
+- Argonne GREET maintains current life-cycle inventories for battery manufacturing/material chains and recycling; its current battery tools distinguish chemistry/process assumptions.
+BOUNDARY FINDING:
+storage environmental impact depends on power+energy hardware, replacements/recycling AND charging electricity. An embodied kgCO2e/kWh_capacity value cannot be compared directly to generator gCO2e/kWh_served without lifetime/cycling/charging assumptions.
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_SCOPE_EVIDENCE.
+LIMITATIONS: no universal storage lifecycle g/kWh delivered value accepted by this job; technology/duty cycle/charging mix dominate.
+REPLICATION_STATUS: NREL + Argonne independent source families converge on lifecycle/configuration dependence.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-011
+CLAIM_ID: CLAIM-EGC-063-THERMAL-EFFLUENT-001
+TOOL: Web
+SOURCE: U.S. EPA Steam Electric Power Generating Effluent Guidelines
+SOURCE_DATE: current page accessed 2026-10-06; rule history through 2024 with 2026 proposal noted
+URL/IDENTIFIER: https://www.epa.gov/eg/steam-electric-power-generating-effluent-guidelines
+OUTPUT:
+steam-electric nuclear/fossil plants can create chemical wastewater and thermal pollution from treatment/power cycle/ash/air-pollution-control and cooling systems; these discharges are regulated through NPDES/40 CFR Part 423 in the U.S.
+EVIDENCE_CLASS: SOURCE_FACT / REGULATORY_ENVIRONMENT_EVIDENCE.
+LIMITATION: U.S. jurisdiction; cooling-water quantity physics owned by JOB-EGC-056 T_STAR and must not be double counted.
+REPLICATION_STATUS: EPA regulatory page.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_RECORD: TE-EGC-063-ENV-012
+CLAIM_ID: CLAIM-EGC-063-WIND-EOL-001
+TOOL: Web
+SOURCE: U.S. DOE Wind Turbine Recycling
+SOURCE_DATE: current page accessed 2026-10-06
+URL/IDENTIFIER: https://www.energy.gov/cmei/systems/wind-turbine-recycling
+OUTPUT:
+DOE treats lifetime extension, reuse, recycling/remanufacturing and material-efficient design as ways to reduce wind-system waste/resource/environmental burdens.
+EVIDENCE_CLASS: SOURCE_FACT.
+LIMITATION: does not establish a universal present recycling rate or environmental intensity.
+REPLICATION_STATUS: DOE source retrieved.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CANDIDATE ENVIRONMENTAL SCREEN:
+NATURAL_GAS_CCGT:
+- DIRECT: combustion CO2 + NOx and other regulated pollutants are operationally measured/reported.
+- LIFECYCLE: upstream methane/supply-chain emissions required; stack-only accounting is incomplete.
+- WATER/THERMAL: cooling/effluent site-specific where steam cycle applies, owned by T_STAR.
+- STATE: CLIMATE/AIR BURDEN MATERIAL; whole-chain project value required.
+
+SOLAR_PV:
+- DIRECT_OPERATIONAL: no fuel combustion stack GHG.
+- LIFECYCLE: manufacturing/materials dominate much of GHG/resource burden; utility-scale land/wildlife/site effects; real EOL/decommission/recycling obligations.
+- STATE: LOW_GENERATOR_LCA_GHG_RELATIVE_TO_FOSSIL IN SOURCES, but delivered-system grid/storage/material burden still required; no universal environmental PASS.
+
+WIND:
+- DIRECT_OPERATIONAL: no fuel combustion stack GHG.
+- LIFECYCLE: materials/manufacture/EOL plus site-specific bird/bat/marine effects; mitigation may constrain siting/operation.
+- STATE: LOW_GENERATOR_LCA_GHG_RELATIVE_TO_FOSSIL IN SOURCES; biodiversity/site gate remains project-specific.
+
+HYDRO:
+- DIRECT_STACK: no fossil stack combustion.
+- LIFECYCLE/SITE: reservoir methane/CO2 can be nonzero and strongly site-specific; land inundation, fish passage, hydropeaking/ecosystem change can be material.
+- STATE: generic "zero environmental emissions" is FALSIFIED; project/basin-specific ENV required.
+
+NUCLEAR_FISSION:
+- DIRECT_OPERATIONAL_GHG: no fossil combustion stack at reactor.
+- GENERATOR_LCA_GHG: low in UNECE model, but fuel cycle/material/construction/decommissioning included by lifecycle boundary.
+- WATER/THERMAL: T_STAR.
+- RADIOLOGICAL/WASTE/TAILINGS: safety/fuel-cycle/lifecycle owners; ENV_STAR references residual environmental burden but must not double count consequences/costs.
+- STATE: low modeled lifecycle GHG does not erase separate waste/radiological/water/site gates.
+
+GEOTHERMAL/EGS:
+- hydrothermal/flash configurations can have process gases/fluids including H2S/CO2; binary/closed-loop and EGS differ.
+- induced seismicity is S_STAR; cooling is T_STAR; land/water/process chemistry remain project-specific.
+- current universal lifecycle GHG/environmental intensity for modern commercial EGS = UNKNOWN/NOT_VERIFIED here.
+
+BESS:
+- no primary-energy generation credit.
+- embodied manufacturing/material/recycling impacts are chemistry/geography-specific; operational environmental intensity inherits charging electricity and losses.
+- cycling/augmentation/replacement timing needed to convert capacity footprint to delivered-service intensity.
+- STATE: storage-LCA must be integrated with actual duty cycle; generic zero-emissions storage claim FALSIFIED.
+
+PUMPED STORAGE:
+- construction/reservoir/site ecology + pumping electricity mix + RTE/replacement/lifetime required.
+- STATE: low-carbon potential supported by NREL, but site/configuration/duty-cycle specific; not environmental-free.
+
+GRID/TRANSMISSION:
+- lines/substations/materials/land + SF6 and losses are common-system environmental burdens where applicable.
+- allocation must be causal/common, not charged only to one candidate class.
+
+ANTI-DOUBLE-COUNT OWNER MAP:
+- climate/air/water/land/ecology/waste impact STATE -> ENV_STAR.
+- cooling-water physical flow and heat rejection -> T_STAR; ENV_STAR references ecological/legal consequence only.
+- worker/public accident/radiological severe-event safety -> S_STAR; ENV_STAR does not duplicate expected harm.
+- embodied energy -> EROI/LCA energy gate; associated emissions/material waste -> ENV_STAR using same inventory provenance, not a second physical resource charge.
+- material quantity/supply -> materials/resource jobs; extraction/toxicity/waste consequence -> ENV_STAR.
+- mitigation CAPEX/OPEX -> FSRC_ND once; ENV_STAR stores residual impact/gate after mitigation.
+- legal permit compliance -> regulatory/environment hard gate; permit fees/resource costs -> FSRC_ND once.
+
+RED_TEAM RESULTS:
+RT-ENV-001: "zero stack emissions = zero lifecycle emissions" = FALSIFIED.
+RT-ENV-002: "generator LCA = delivered-system LCA" = FALSIFIED by UNECE's explicit exclusion of storage/additional grid.
+RT-ENV-003: "eGRID operational rate can stand in for lifecycle GHG" = FALSIFIED by dataset boundary.
+RT-ENV-004: "hydropower has universally zero operational GHG" = FALSIFIED by reservoir field measurements and site variability.
+RT-ENV-005: "renewable = no land/biodiversity impact" = FALSIFIED by DOE/USGS site/wildlife evidence.
+RT-ENV-006: "storage is environmentally neutral because it has no fuel" = FALSIFIED; manufacturing/recycling and charging electricity are physical lifecycle owners.
+RT-ENV-007: "all environmental impacts can be one $/MWh without policy choice" = FALSIFIED as objective laundering; valuation weights/geography/year must be explicit and uncertainty tested.
+RT-ENV-008: "recycling availability means recycling is automatically economical/realized" = FALSIFIED by DOE PV evidence.
+RT-ENV-009: "low lifecycle GHG alone establishes environmental winner" = FALSIFIED because water/ecology/toxicity/waste/legal constraints are distinct impact dimensions.
+RT-ENV-010: "system support environmental burden can be ignored because generator study excluded it" = FALSIFIED by mission system boundary.
+
+P0/P1 FINDINGS:
+P0_UNRESOLVED: NONE established at technology-class level by this job; this is NOT an environmental PASS.
+P1-063-001: final candidate comparison needs DELIVERED-SYSTEM LCA or transparent generator-LCA + storage/grid/overbuild/replacement augmentation; current UNECE generator study explicitly omits balancing/storage/additional grid.
+P1-063-002: geography-specific legal/environment thresholds and protected-site constraints are not frozen; universal numeric ENV pass threshold remains UNKNOWN.
+P1-063-003: current modern EGS lifecycle environmental evidence is insufficient for a universal value.
+P1-063-004: hydro reservoir GHG attribution to electricity vs multipurpose reservoir services requires project-specific allocation/measurement.
+P1-063-005: storage environmental service intensity requires actual charge mix, RTE, cycles, lifetime and replacements.
+P1-063-006: biodiversity/ecosystem impacts generally do not support one globally linear impact/MWh coefficient; project/site ecological assessment remains required.
+P1-063-007: UNECE/NREL PDF visual screenshots could not be retrieved due remote cache/403 errors; independent reviewer must visually verify exact pages/ranges or replace with another authoritative accessible copy before promoting exact values.
+
+CLAIM_GRAPH:
+CLAIM-EGC-063-LCA-METHOD-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-063-UNECE-LCA-001 -> SOURCE_TEXT_SUPPORTED / PDF_VISUAL_NOT_VERIFIED.
+CLAIM-EGC-063-MASSIVE-GHG-SCALE-001 -> TWO_TOOL_ARITHMETIC_MATCH / SOURCE_RANGE_PENDING_INDEPENDENT_VISUAL.
+CLAIM-EGC-063-DIRECT-VS-LCA-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-063-FOSSIL-POLLUTION-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-063-NG-SUPPLYCHAIN-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-063-HYDRO-ECOSYSTEM-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-063-HYDRO-GHG-001 -> MEASUREMENT_DATASET_SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-063-WIND-BIODIV-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-063-PV-LAND-EOL-001 -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-063-STORAGE-LCA-001 -> METHOD_SUPPORTED / UNIVERSAL_SERVICE_INTENSITY UNKNOWN.
+CLAIM-EGC-063-THERMAL-EFFLUENT-001 -> SUPPORTED_PENDING_REVIEW.
+
+STATUS_CHANGE:
+JOB-EGC-063-ENVIRONMENT-EXTERNALITY-C1-20261006: CLAIMED -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE / NOT ESTABLISHED BY THIS JOB.
+
+JOB_ID: JOB-EGC-063-ENVIRONMENT-EXTERNALITY-REV-C2-20261006
+TITLE: Independent environmental lifecycle boundary and impact-vector reviewer
+ROLE: Independent LCA/environmental-evidence auditor / boundary red-team / arithmetic replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does ENV_STAR preserve lifecycle and delivered-system boundaries, keep direct vs lifecycle emissions distinct, avoid arbitrary scalar weighting, avoid double counting S_STAR/T_STAR/site/material/LCA jobs, and retain site-specific ecological/legal gates?
+CANDIDATE: all surviving candidates + matched baselines + common grid/storage.
+DEPENDENCIES: JOB-EGC-063-ENVIRONMENT-EXTERNALITY-C1-20261006 submitted; satisfied.
+REQUIRED_INPUTS: TE/CALC-EGC-063 records; current S_STAR/T_STAR/site/material/storage/EROI/fuel-cycle states; UNECE/NREL/EPA/USGS/DOE/Argonne sources.
+REQUIRED_TOOLS: independent official-source retrieval; PDF visual verification from accessible authoritative copy; independent arithmetic; alternative LCA/system-boundary counterexamples; project/site ecological counterexamples.
+REQUIRED_EVIDENCE:
+- independently verify UNECE functional unit/exclusions and exact GHG ranges;
+- reproduce 2.86 Mt/y per 1 g/kWh scaling;
+- challenge reservoir allocation and storage duty-cycle boundaries;
+- verify no impact category is double counted or silently dropped;
+- test at least one case where generator ranking changes after storage/grid/supporting-system environmental burden.
+EXPECTED_OUTPUT: REVIEW_PASS / REVIEW_FAILED / REPAIR_REQUIRED with exact defects and corrected owner map.
+FALSIFICATION_CONDITION: FAIL if direct/lifecycle are mixed, generator LCA is promoted to delivered system, storage/grid are free, ecological/site gates disappear into a scalar, or safety/thermal/material/environment resources are double counted.
+REVIEWER_JOB_ID: JOB-EGC-063-ENVIRONMENT-EXTERNALITY-REV-C3-20261006 if repair creates material new claims.
+STATUS: OPEN
+BLOCKERS: exact project-level environmental PASS waits on geography/design and integrated portfolio; method/source review is executable now.
+NEXT_ACTION: independent session must visually verify LCA source pages, reproduce calculations, attack boundary symmetry and pass/fail/repair.
