@@ -2,7 +2,8 @@
   "MISSION_ID": "MISSION-AUTH-001",
   "GOAL": "Make final DOC-C authentication route semantics and hardening behavior exact, fail-closed, and test-verifiable.",
   "REQUIREMENTS": [
-    "REQ-DOC-C-AUTH-VERIFY-EXPIRED-001"
+    "REQ-DOC-C-AUTH-VERIFY-EXPIRED-001",
+    "REQ-DOC-C-AUTH-VERIFY-WINDOW-001"
   ],
   "DEPENDENCIES": [],
   "CRITICAL_PATH": true,
@@ -11,5 +12,5 @@
     "INC-BRANCH-NAMESPACE-001"
   ],
   "VERIFIED_COUNT": 0,
-  "REMAINING_COUNT": 1
+  "REMAINING_COUNT": 2
 }
