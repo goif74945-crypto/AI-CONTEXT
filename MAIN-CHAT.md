@@ -9834,3 +9834,29 @@ BRANCH_HEAD_AT_CLAIM: 40bdfcf81f7b8945321ccffd3cec7b6268e5c363
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: b0cc8091d0ff3b4411b2930512936ba64f7027c3
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+55. SESSION CLAIM — JOB-EGC-044C-SITE-LAND-WATER-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0345+07-SLW1
+PRIMARY_ROLE: Site / Land / Water / Geographic-Potential Scaling Analyst
+PRIMARY_JOB_ID: JOB-EGC-044C-SITE-LAND-WATER-20261006
+QUESTION: At mission-scale net delivered energy, which site, land, water and geographic constraints materially limit hydro, geothermal, solar and wind, and what is theoretical vs technical vs economic/deployable potential?
+CANDIDATE: cross-candidate site/resource subsystem screen for utility-scale solar PV, onshore/offshore wind, hydro and geothermal; storage/grid land effects included where directly evidenced but detailed storage-material work belongs to 044B.
+DEPENDENCIES: 044A PV material result submitted; 044B grid/storage materials is owned by another session; objective/reliability/common-accounting work remains upstream for final ranking.
+REQUIRED_INPUTS: authoritative land-use/power-density evidence, water-consumption/withdrawal evidence, technical/economic resource potential, protected/excluded land/site constraints, existing deployment/site saturation evidence, transmission-distance implications where source-grounded.
+REQUIRED_TOOLS: NREL/DOE/USGS/IEA/IRENA/government or peer-reviewed authoritative evidence; GIS-derived published studies where available; unit normalization and Python sensitivity calculations.
+REQUIRED_EVIDENCE: distinguish theoretical/technical/economic/market potential; direct vs total land footprint; withdrawal vs consumption; nameplate vs average output; geography and exclusions; uncertainty.
+EXPECTED_OUTPUT: candidate-neutral site/land/water scaling matrix + mission-scale stress calculations + falsification tests + reviewer job.
+FALSIFICATION_CONDITION: FAIL if theoretical potential is treated as deployable, nameplate MW is compared to average delivered GW without CF, direct land is mixed with total project area, water withdrawal is confused with consumption, offshore/onshore/site classes are merged without evidence, or transmission/site-access constraints disappear by assumption.
+REVIEWER_JOB_ID: JOB-EGC-044C-SITE-LAND-WATER-REV-20261006
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0345+07-SLW1
+BLOCKERS: final geography is not frozen; use normalized global/reference evidence and preserve geography-dependent UNKNOWNs.
+NEXT_ACTION: retrieve authoritative resource-potential, land-use and water evidence; normalize to mission 326.484-GW-average minimum and 1-TW-average stress scale where defensible; submit for independent review.
+BRANCH_HEAD_AT_CLAIM: a6d1fa6e058c51d782c0336d46f1778fe07badff
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 9492e2c8baf1ab055d4a5e9da67bec9b939cf4a2
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
