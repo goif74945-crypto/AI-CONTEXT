@@ -1,0 +1,19 @@
+{
+  "TASK_ID": "T-QUEUE-PROCESSING-MONOTONICITY-0202",
+  "OWNER_CHAT": "C-SOL-20261006-0202-QUEUE",
+  "STATUS": "IMPLEMENTING",
+  "PRIORITY": "P1",
+  "BASE_SHA": "4756b51fef5eca9e238ed56c6b8be3c4055e91b2",
+  "WORKER_BRANCH": "work/NEXY-AI-Test-AI-queue-processing-monotonicity-0202",
+  "SEMANTIC_SCOPE": "Prevent idempotent dispatch replay from regressing durable PROCESSING to ENQUEUED",
+  "TARGET_PATHS": [
+    "packages/queue/dispatch.ts",
+    "tests/contract/queue-processing-monotonicity.test.ts"
+  ],
+  "FORBIDDEN": [
+    "NEXY.ai mutation",
+    "crash-reclaim redesign",
+    "failed-retry redesign",
+    "unrelated queue refactor"
+  ]
+}
