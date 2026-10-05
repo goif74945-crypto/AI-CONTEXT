@@ -12771,3 +12771,121 @@ NEXT_ACTION: distinct session independently attacks C1; downstream strongest-bas
 GLOBAL_SOLVED: NO
 CURRENT_WINNER: NONE
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+RESULT — JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C6-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0530+07-GREENSTATE6
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C6-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE:
+Repair only C5 P1-001 future-borrowed greenfield inventory and C5 P1-002 candidate-selected settlement-time PV arbitrage. Preserve C4 state dynamics/seasonal/brownfield/natural-state rules. C11 owns exact-once economic/resource foreign keys; C6 owns physical timing. FINPV C9/C10 is VERIFIED for timing scope; C11 remains AWAITING_REVIEW, so integrated ranking is NOT_VERIFIED.
+
+GREENSTATE_V2:
+
+GS1 CLASS FREEZE:
+Pre-ranking classify each material state exactly one of PERIODIC_COMPUTATIONAL, GREENFIELD_PHYSICAL_INITIALIZED, COMMON_OBSERVED_BROWNFIELD, EXOGENOUS_NATURAL, UNKNOWN. UNKNOWN blocks ranking. Greenfield cannot be relabeled periodic after results.
+
+GS2 GREENFIELD INITIALIZATION:
+For greenfield state materially above empty/reference:
+X0 = Phi_pre(Xref, U_init(t<=T_service), exogenous flows, obligations, losses).
+Every material U_init must physically occur no later than service that consumes it, enter source/resource accounting at its real date, carry INITIAL_RESOURCE_BINDING_ID into C11/C12, and reconcile units/conversion/efficiency to X0. Missing, future-dated, unreconciled or owner-unresolved initialization => REJECT/NOT_VERIFIED.
+
+GS3 NO FUTURE BORROWING:
+X_H=X0 or X_HSETTLE=X0 is quantity closure only. It cannot cancel, move or re-date U_init. Initialization and terminal restoration are separate timed causal effects. Terminal value may enter only through reviewed terminal-owner + FINPV rules.
+
+GS4 PERIODIC EXEMPTION:
+Only an explicitly repeating operating chronology with X_end=X_start within frozen tolerance and no net inherited-stock depletion may omit a standalone boundary-stock initialization charge. All in-cycle charging/fuel/resource flows remain counted; cyclic modeling cannot erase separately evidenced real commissioning resources already in the whole-lifecycle boundary.
+
+GS5 BROWNFIELD/NATURAL:
+Observed brownfield stock is not retroactively charged sunk acquisition cost, but candidate-caused depletion versus frozen target is settled/valued through C11. Natural state gets no manufactured precharge but keeps physical inflows/outflows/losses/co-obligations and seasonal/reference target. Neither label may hide manufactured greenfield inventory.
+
+GS6 COMMON SETTLEMENT:
+Freeze pre-ranking exactly one:
+A EXPLICIT_COMMON_H_SETTLE, or
+B COMMON_CONTINUATION_VALUE_AT_H.
+A: one H_SETTLE=H+K_COMMON at matched-system/geography/scenario level, plus common continuation traces/information policy and XREF_SETTLE. Every candidate evolves through the same H_SETTLE even if target is reached earlier; final target is tested there. Candidate-specific early stopping cannot end resource ownership. Failure to settle by common horizon => NOT_VERIFIED/FAIL, not private extension.
+B: one continuation-value functional at common date H, validated against common fixed-horizon physical continuation and using VERIFIED FINPV C9/C10 with explicit D_REF version. Candidate-specific stopping-time/shadow-value treatment forbidden.
+
+GS7 TAIL/TERMINAL EXACT-ONCE:
+Mode A counts causal tail resources exactly once at actual dates; tail delivered service is excluded from core E_NET_SERVED. Physical tail vs continuation-value substitute are mutually exclusive. Physical tail vs same-inventory residual/salvage credit are mutually exclusive. TERMINAL_OWNER_ITEM_ID resolves through C11/C12; FINPV_TIMEBASIS_ITEM_ID through C9/C10. Ranking-material ambiguity => COST_RANKING_NOT_VERIFIED.
+
+GS8 SYMMETRY:
+Continuation exogenous drivers/information are common; candidate-specific validated state physics/efficiencies/capacities remain physical. No foresight privilege and no fake identical-component model.
+
+EXECUTED REGRESSIONS:
+
+C6-C01 GREENFIELD PRECHARGE, Python Decimal + Wolfram:
+X0=100 MWh, eta_c=.9, toy resource price=30 USD/MWh.
+Required bus input=111.111111111 MWh; t0 resource=3333.333333333 USD.
+D60=0.146781987869520. Illegal re-date to y60 => PV0=489.273292898 USD.
+Artificial reduction=2844.060040435 USD=85.3218012%.
+RESULT: equal terminal SOC cannot cancel causal t0 creation.
+REPLICATION: CROSS_ENGINE_PASS. Price is toy, not candidate fact.
+
+C6-C02 PERIODIC:
+SOC0=50; eta_c=eta_d=.9; charge=20; discharge=16.2.
+SOC_end=50+.9*20-16.2/.9=50 MWh.
+Boundary-stock delta=0 while 20-MWh in-cycle charge remains counted. PASS.
+
+C6-C03 BROWNFIELD:
+Initial=100 MWh; core end=20; target=100; eta_c=.9.
+Restoration bus input=80/.9=88.888888889 MWh; toy 30 USD/MWh =>2666.666667 USD.
+No historical recharge, but candidate depletion is not free. PASS.
+
+C6-C04 STOPPING-TIME:
+D60=0.146781987869520; D65=0.126615432125618.
+100 MWh*30 toy: PV60=440.345963609; PV65=379.846296377; pure deferral=-13.73912156%.
+eta_c=.9 variant: PV60=489.273292898; PV65=422.051440419; same percentage.
+With frozen common H_SETTLE=65 and identical no-self-discharge obligation, both matched systems get identical 422.051440419 USD PV. Real holding/self-discharge/maintenance differences remain physical.
+REPLICATION: Python/Wolfram PASS.
+
+C6-C05 TAIL DENOMINATOR:
+core cost=10000; core served=1000 MWh; tail service=50.
+Correct=10 USD/MWh; wrong including tail=9.523809524, artificial -4.76190476%.
+Tail service exclusion is ranking-material.
+
+C6-C06 DOUBLE TERMINAL OWNER:
+pre-tail PV=10000; explicit tail PV=1000; same-state residual credit=500; service=1000.
+Correct explicit-tail=11 USD/MWh; wrong tail+residual=10.5.
+One terminal owner representation required.
+
+C6-C07 TECHNOLOGY GENERALITY:
+A new thermal-storage system beginning with nonzero hot-salt energy but no dated heat/input flow has the same causal defect as a precharged battery. GS2 rejects by state causality, not technology label; no new performance claim.
+
+DEPENDENCIES:
+FINPV C9/C10 VERIFIED for timing/representation and consumed here.
+TERMBIND C11 AWAITING_REVIEW; required interface is not presumed verified.
+C4 is superseded only for greenfield-init waiver wording and candidate-specific settlement stopping-time ambiguity.
+R_STAR remains upstream for scenario values.
+
+CLAIM_GRAPH:
+F-EGC-040STATE-C5-P1-001 = REPAIR_SUBMITTED / AWAITING C7.
+F-EGC-040STATE-C5-P1-002 = REPAIR_SUBMITTED / AWAITING C7.
+COMMON_LEDGER = NOT_VERIFIED pending C7, C11/C12 and remaining common-ledger gates.
+DEPENDENT candidate rankings = NOT_VERIFIED / REOPENABLE.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C6-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006
+TITLE: Independent review of GREENSTATE_V2
+ROLE: Independent intertemporal state/accounting adversary
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: C6 submitted; FINPV C9/C10 VERIFIED; C11/C12 remains explicit dependency if unverified.
+REQUIRED_TOOLS: independent algebra/Python/Wolfram; battery/thermal/reservoir counterexamples; D_REF timing audit; owner-interface audit.
+REQUIRED_EVIDENCE: reproduce C01-C06; attack greenfield->periodic relabeling, post-service initialization, common H_SETTLE with self-discharge, brownfield/natural false charges, tail denominator and terminal double ownership.
+FALSIFICATION_CONDITION: any stock serves before causal creation; equal terminal quantity deletes real initialization; candidate-selected tail time changes PV without physical difference; periodic/natural gets invented charge; or same state effect enters twice.
+STATUS: OPEN
+BLOCKERS: NONE for method review; integrated ranking remains blocked by unresolved common-ledger dependencies.
+NEXT_ACTION: distinct session independently attacks C6.
