@@ -4725,3 +4725,337 @@ STATUS: CLAIMED
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 NEXT_ACTION: independently reproduce formulas, source-check discount basis, construct overlap/time-basis attacks, then issue PASS or exact repair findings.
+
+
+======================================================================
+RESULT — JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-RSTAR60-C1
+PRIMARY_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006
+ROLE: Reliability-boundary repair architect / jurisdiction-and-model-symmetry engineer
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair F-EGC-042REV-P1-001 and F-EGC-042REV-P1-002 without inventing one universal adequacy number and without forcing physically different technologies into one invalid component model.
+
+KEY RESULT:
+R_STAR must freeze COMMON EXOGENOUS CONDITIONS, SERVICE/OBSERVATION BOUNDARY, SCENARIO WEIGHTS and INFORMATION POLICY, while allowing CANDIDATE-SPECIFIC VALIDATED PHYSICAL CONSTRAINTS. Binding local reliability rules remain mandatory only in their applicable jurisdiction/vintage. Foreign thresholds are diagnostics unless explicitly pre-registered as a mission convention before candidate ranking.
+
+----------------------------------------------------------------------
+A. AUTHORITATIVE JURISDICTION EVIDENCE
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EGC-060-RSTAR-001
+CLAIM_ID: CLAIM-EGC-060-LOCAL-RULES-DIFFER
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: Great Britain, Electricity Capacity Regulations 2014, regulation 6, current point-in-time version inspected for 2026
+URL: https://www.legislation.gov.uk/uksi/2014/2043/regulation/6/2026-07-17
+OUTPUT:
+- GB reliability standard = 3 hours expected loss of load per capacity year.
+- the regulation defines loss-of-load events for the Capacity Market reliability standard; it is not an EUE/NEUE threshold.
+CURRENT_CROSSCHECK:
+DESNZ 2026 Capacity Market auction parameters continue to state 3 hours LOLE.
+URL: https://www.gov.uk/government/publications/capacity-market-auction-parameters-letter-from-desnz-to-neso-july-2026/full-details-of-auction-parameters-and-interconnector-de-rating-factors
+LIMITATION:
+GB LOLE does not by itself constrain event magnitude/EUE. It must not be algebraically converted into an EUE percentage without an evidenced joint event distribution.
+
+EVIDENCE_ID: EGC-060-RSTAR-002
+CLAIM_ID: CLAIM-EGC-060-LOCAL-RULES-DIFFER
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: Australian Energy Market Commission / National Electricity Rules clause 3.9.3C
+URL: https://energy-rules.aemc.gov.au/ner/347/37366
+OUTPUT:
+- current NEM reliability standard = maximum expected unserved energy of 0.002% of regional annual energy demand.
+- interim reliability measure = 0.0006% expected USE for specified mechanisms/applications.
+BOUNDARY:
+metric is expected unserved ENERGY fraction, not LOLE hours. Applicability of the interim measure is rule-specific and cannot be silently applied to every comparison.
+
+EVIDENCE_ID: EGC-060-RSTAR-003
+CLAIM_ID: CLAIM-EGC-060-TIME-INDEXED-RULE
+EVIDENCE_CLASS: SOURCE_FACT / FUTURE_RECOMMENDATION
+SOURCE: AEMC Reliability Panel, 2026 Reliability Standard and Settings Review
+SOURCE_DATE: 2026-04-23
+URL: https://www.aemc.gov.au/market-reviews-advice/2026-reliability-standard-and-settings-review
+OUTPUT:
+- Panel recommends 0.003% expected USE for the 2028-2032 period.
+- current rule remains separately sourced at 0.002% in EGC-060-RSTAR-002.
+INTERPRETATION:
+jurisdiction alone is insufficient; rule vintage/effective period is part of R_STAR(g,y).
+LIMITATION:
+0.003% is recorded here as the 2026 Panel recommendation for the future period, not silently relabeled as the current binding 2026 rule.
+
+EVIDENCE_ID: EGC-060-RSTAR-004
+CLAIM_ID: CLAIM-EGC-060-NERC-REFERENCE-NOT-GLOBAL-LAW
+EVIDENCE_CLASS: SOURCE_FACT + PDF_VISUAL_CHECK
+SOURCE: NERC, 2025 Long-Term Reliability Assessment, published January 2026
+URL: https://www.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+PDF_VISUAL_CHECK:
+- report page 12 inspected: NERC high-risk classification includes annual LOLH >2.4 h/y OR annual normalized EUE >0.002% OR failure of resource-adequacy targets established by the regulatory authority/system operator.
+- report page 173 inspected: NERC states it is not aware of North American planning criteria based on EUE and explicitly points to Australia's 0.002% EUE requirement; appendix describes NERC ProbA risk categories separately.
+INTERPRETATION:
+NERC's cross-area LTRA thresholds are assessment/risk-screen constructs that coexist with locally established requirements. They are not evidence for a universal legal or physical threshold outside applicable NERC assessment scope.
+LIMITATION:
+the 2025 LTRA contains different risk-screen descriptions in its main risk-category section and methods appendix (e.g. 2.4 h vs 2 h wording); this strengthens the requirement to cite the exact assessment construct rather than hard-code a universal mission threshold.
+
+EVIDENCE_ID: EGC-060-RSTAR-005
+CLAIM_ID: CLAIM-EGC-060-ADEQUACY-NEQ-OPERATING-SECURITY
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCES:
+1) NERC Reliability Standards families
+URL: https://www.nerc.com/standards/reliability-standards
+2) AEMC electricity standards list
+URL: https://www.aemc.gov.au/regulation/electricity-guidelines-and-standards
+OUTPUT:
+- NERC separately maintains balancing, emergency, interchange, transmission-operation/planning, protection/control, voltage/reactive and related reliability standards.
+- AEMC separately lists a Frequency Operating Standard and System Restart Standard in addition to resource-adequacy/reliability settings.
+INTERPRETATION:
+passing resource adequacy cannot waive operating-security/service obligations.
+
+----------------------------------------------------------------------
+B. R_STAR REPAIRED ARCHITECTURE
+----------------------------------------------------------------------
+
+DEFINITION:
+For comparison geography g, rule vintage y, frozen service/network boundary B, candidate c, and predeclared scenario ensemble S:
+
+R_STAR_REPAIRED(c,g,y,B,S) :=
+L1_LOCAL_MANDATORY
+AND L2_COMMON_COMPARISON
+AND L4_OPERATING_SECURITY.
+
+L3_REFERENCE_DIAGNOSTICS is reported but is NON-ELIMINATING unless a threshold was independently pre-registered as a mission convention before candidate results were inspected.
+
+L1_LOCAL_MANDATORY:
+1. Enumerate every applicable adequacy/reliability requirement k from the competent regulator/system operator for (g,y).
+2. Preserve its native metric definition, scope, averaging period, exclusions and pass direction.
+3. Candidate c must satisfy all legally/operationally applicable local requirements.
+4. If no binding threshold exists for a desired comparison dimension, record NO_BINDING_LOCAL_THRESHOLD/UNKNOWN rather than importing a foreign threshold.
+5. Never convert LOLE, LOLH, EUE/NEUE, reserve margin or capacity-credit metrics into one another without an evidenced mapping/joint distribution.
+
+L2_COMMON_COMPARISON:
+COMMON_EXOGENOUS_SCENARIO_ID s must freeze, where applicable:
+- common demand/service trajectory at the same delivery nodes;
+- same calendar and underlying meteorological realization;
+- same economy-wide/policy/fuel-market scenario;
+- same inherited-network state and common external import/export availability where the inherited asset is common;
+- same extreme-event/common-mode driver realization;
+- same scenario probability/weight w_s;
+- same dispatch/forecast INFORMATION POLICY class.
+
+Candidate-specific physical response is then:
+X[c,s] = F_c(U_common[s], EPS_c[s], THETA_c)
+where:
+U_common[s] = common exogenous drivers;
+THETA_c = candidate-specific validated physical parameters/constraints;
+EPS_c[s] = candidate-specific stochastic residuals/outages drawn from evidenced distributions under a frozen sampling rule.
+
+CANDIDATE-SPECIFIC PHYSICS THAT MUST NOT BE ERASED:
+- storage SOC, energy duration, charge/discharge limits, RTE, self-discharge/degradation;
+- hydro reservoir/inflow/seasonal water constraints;
+- thermal/nuclear minimum output, ramp/start, refueling/fuel constraints;
+- technology-specific forced-outage/repair distributions;
+- VRE conversion from the SAME weather realization through site/resource-specific validated power curves;
+- inverter active/reactive/current/fault/system-strength capabilities;
+- candidate-added transmission/storage assets and their own failure states;
+- any other evidenced physical constraint that changes deliverable service.
+
+SYMMETRY RULE:
+"same model" is replaced by:
+SAME EXOGENOUS ENSEMBLE + SAME SERVICE METER + SAME SCENARIO WEIGHTS + SAME INFORMATION POLICY + TECHNOLOGY-APPROPRIATE VALIDATED PHYSICS.
+
+RANDOMNESS / CORRELATION RULE:
+- common-mode variables and cross-resource weather/fuel/import correlations must be sampled jointly where evidence supports dependence.
+- candidate-specific residual stochastic processes may differ only because physical evidence supports different distributions.
+- probability weights cannot be candidate-specific.
+- arbitrary independence assumptions cannot be introduced solely to improve a candidate.
+- when a calibrated joint distribution is unavailable, use the mission's allowed-joint-state/scenario robustness rule and retain NOT_VERIFIED if omitted dependence can reverse ranking.
+
+INFORMATION-POLICY RULE:
+Candidate and baseline dispatch/commitment/storage controllers must receive the same class of forecast information.
+No candidate may receive perfect future weather/load/outage knowledge while another receives causal/forecast-only information.
+If perfect-foresight optimization is used as a diagnostic lower bound, apply it symmetrically and label it DIAGNOSTIC_NOT_OPERATIONAL_PROOF.
+
+OBSERVATION RULE:
+All reliability outputs are evaluated at the same frozen M_LOAD / delivered-service boundary after applicable network losses and constraints.
+At minimum report the locally required metrics plus common diagnostics sufficient to expose frequency/duration/magnitude/tail behavior; do not collapse them into one scalar when that loses material risk information.
+
+L3_REFERENCE_DIAGNOSTICS:
+- NERC LTRA risk thresholds, GB 3-h LOLE, Australian USE percentages, or any other foreign/reference rule may be reported outside their jurisdiction only as REFERENCE_DIAGNOSTIC.
+- Such a diagnostic MUST NOT reject a locally compliant candidate unless the mission explicitly adopts that exact threshold/metric/scope before candidate ranking, with truth class MISSION_CONVENTION rather than SOURCE_FACT.
+- diagnostic provenance includes jurisdiction, document vintage, metric definition and source.
+
+L4_OPERATING_SECURITY:
+After adequacy, separately require every applicable frequency, reserve, ramping, voltage/reactive, stability, protection, restoration, contingency, transmission/security and extreme-event obligation in geography g.
+Adequacy PASS cannot substitute for operating-security PASS.
+
+----------------------------------------------------------------------
+C. EXECUTED ADVERSARIAL REGRESSION TESTS
+----------------------------------------------------------------------
+
+CALC_ID: CALC-EGC-060-001
+TITLE: FOREIGN_THRESHOLD_JURISDICTION_LEAK
+EVIDENCE_CLASS: CALCULATION / SYNTHETIC COUNTEREXAMPLE
+INPUT:
+Illustrative candidate in GB:
+LOLE = 2.5 h/y;
+NEUE = 30 ppm.
+Local GB reliability standard = 3 h LOLE/y.
+NERC EUE reference screen = 20 ppm.
+METHOD_A: Python Decimal.
+METHOD_B: independent Wolfram Language evaluation.
+OUTPUT:
+2.5 <= 3 -> TRUE local-GB LOLE pass.
+30 > 20 -> TRUE NERC-reference flag.
+RESULT:
+If the NERC EUE screen is made a global hard gate, a candidate can be rejected despite passing the cited GB local reliability standard.
+INTERPRETATION:
+This does NOT prove the illustrative system is globally "safe"; it proves the foreign-threshold elimination rule is jurisdictionally invalid unless separately pre-registered.
+
+CALC_ID: CALC-EGC-060-002
+TITLE: RULE_VINTAGE_MATTERS
+EVIDENCE_CLASS: CALCULATION / SYNTHETIC COUNTEREXAMPLE
+INPUT:
+Illustrative USE = 25 ppm.
+Current NEM reliability standard = 20 ppm.
+AEMC 2026 recommendation for future 2028-2032 standard = 30 ppm.
+METHOD_A: Python Decimal.
+METHOD_B: Wolfram Language.
+OUTPUT:
+25 <= 20 -> FALSE.
+25 <= 30 -> TRUE.
+RESULT:
+Identical system outcome changes regulatory classification when the applicable rule vintage changes; R_STAR must be indexed by effective year/vintage.
+LIMITATION:
+the 30-ppm condition is a future recommendation record, not relabeled as current 2026 law.
+
+CALC_ID: CALC-EGC-060-003
+TITLE: IDENTICAL_COMPONENT_ABSTRACTION_FAIL
+EVIDENCE_CLASS: CALCULATION / SYNTHETIC PHYSICS COUNTEREXAMPLE
+INPUT:
+4 consecutive one-hour periods; load = 100 MW each hour.
+Candidate A battery = 100 MW power, 200 MWh initial usable SOC, eta=1 for simplified demonstration, no recharge.
+Candidate B fueled generator = 100 MW with sufficient fuel.
+Naive identical "100 MW dispatchable" abstraction gives 100 MW in every hour for both.
+CORRECT CANDIDATE-SPECIFIC MODEL:
+battery dispatch = [100,100,0,0] MWh by hour; terminal SOC=0;
+fueled generator dispatch = [100,100,100,100].
+OUTPUT:
+naive EUE = 0 MWh for battery.
+physical battery EUE = 200 MWh.
+fueled-generator EUE = 0 MWh.
+REPLICATION:
+Python and Wolfram independently return battery EUE 200 MWh and gas EUE 0 MWh.
+RESULT:
+forcing "same component model" erases energy-duration physics and can reverse adequacy conclusions.
+
+CALC_ID: CALC-EGC-060-004
+TITLE: LOLE_DOES_NOT_BOUND_SEVERITY
+EVIDENCE_CLASS: CALCULATION / SYNTHETIC METRIC COUNTEREXAMPLE
+INPUT:
+same illustrative loss-of-load duration = 2.5 h.
+Case small shortfall = 1 MW.
+Case large shortfall = 10,000 MW.
+OUTPUT:
+EUE_small = 2.5 MWh.
+EUE_large = 25,000 MWh.
+ratio = 10,000x.
+REPLICATION:
+Python and Wolfram agree.
+RESULT:
+same LOLE can hide orders-of-magnitude different event magnitude; LOLE and EUE are complementary, not interchangeable.
+
+CALC_ID: CALC-EGC-060-005
+TITLE: CANDIDATE_SPECIFIC_SCENARIO_WEIGHTS_EXPLOIT
+EVIDENCE_CLASS: CALCULATION / SYNTHETIC PROBABILITY COUNTEREXAMPLE
+INPUT:
+identical physical loss outcomes across two states = [0,100] MWh.
+Weight set A = [0.99,0.01].
+Weight set B = [0.90,0.10].
+OUTPUT:
+Expected unserved energy A = 1 MWh.
+Expected unserved energy B = 10 MWh.
+ratio = 10x.
+REPLICATION:
+Python Decimal and independent Wolfram dot-product agree.
+RESULT:
+allowing candidate-specific scenario weights can create a 10x adequacy difference for identical physical outcomes. Scenario probabilities/weights must therefore be common and evidence-supported.
+
+----------------------------------------------------------------------
+D. FALSIFICATION / REPAIR VERDICT
+----------------------------------------------------------------------
+
+F-EGC-042REV-P1-001 NERC_REFERENCE_JURISDICTION_LEAK:
+REPAIRED_C1 / AWAITING_INDEPENDENT_REVIEW.
+Repair mechanism:
+local rules are mandatory; foreign thresholds are diagnostics unless independently pre-registered as mission conventions.
+
+F-EGC-042REV-P1-002 SAME_MODEL_WORDING:
+REPAIRED_C1 / AWAITING_INDEPENDENT_REVIEW.
+Repair mechanism:
+replace SAME_MODEL with SAME_EXOGENOUS_ENSEMBLE + SAME_SERVICE_BOUNDARY + SAME_WEIGHTS + SAME_INFORMATION_POLICY + CANDIDATE_SPECIFIC_VALIDATED_PHYSICS.
+
+NEW_FINDING: F-EGC-060-P1-001
+TITLE: rule vintage must be explicit
+SEVERITY: P1 if candidate ranking spans changing standards or different commissioning years.
+STATUS: REPAIRED_IN_C1 by indexing R_STAR(g,y) and retaining provenance/effective-period fields.
+
+NEW_FINDING: F-EGC-060-P1-002
+TITLE: scenario probability ownership
+SEVERITY: P1.
+STATUS: REPAIRED_IN_C1 by common evidence-supported weights/joint-state rule.
+
+NEW_FINDING: F-EGC-060-P2-003
+TITLE: information-set symmetry
+SEVERITY: P2 normally; P1 if perfect foresight materially changes storage/hydro/commitment adequacy or cost ranking.
+STATUS: REPAIRED_IN_C1 by same information-policy rule and diagnostic-only perfect-foresight treatment.
+
+CLAIM_GRAPH_UPDATE:
+CLAIM-EGC-060-001 LOCAL_RULE_MANDATORY -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-060-002 FOREIGN_REFERENCE_NON_ELIMINATING -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-060-003 SAME_EXOGENOUS_NOT_SAME_COMPONENT_MODEL -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-060-004 METRIC_NON_INTERCHANGEABILITY -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-060-005 OPERATING_SECURITY_SEPARATE -> SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-060-006 R_STAR_REPAIRED -> AWAITING_INDEPENDENT_REVIEW.
+
+REMAINING LIMITATIONS:
+- This repair defines the candidate-neutral method. It does not instantiate every geography's local numeric standard.
+- Candidate-specific outage/resource distributions still require provenance and validation in each integrated model.
+- Cross-technology common-mode correlation models remain candidate/geography dependent; absent evidence must remain UNKNOWN/NOT_VERIFIED rather than guessed.
+- Passing R_STAR does not itself establish LOW_COST, MASSIVE_ENERGY, safety, scale or final winner status.
+
+STATUS_CHANGE:
+JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006
+TITLE: Independent review of jurisdiction-safe R_STAR repair
+ROLE: Independent reliability-method / probabilistic-model / jurisdiction reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does EGC-060 C1 actually eliminate foreign-threshold jurisdiction leakage and same-model technology bias without creating new candidate-specific scenario privilege?
+DEPENDENCIES: JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006 submitted.
+REQUIRED_INPUTS: EGC-060-RSTAR-001..005; CALC-EGC-060-001..005; repaired R_STAR architecture; prior F-EGC-042REV-P1-001/002.
+REQUIRED_TOOLS: independent NERC/AEMC/GB source retrieval; independent Python/Wolfram or equivalent calculation replication; adversarial storage/hydro/thermal/VRE counterexamples; probability/correlation audit.
+REQUIRED_EVIDENCE:
+- independently reproduce jurisdiction-leak and battery-duration counterexamples;
+- verify current GB/NEM rule semantics and NERC LTRA scope;
+- test whether common exogenous-driver definition is sufficiently exact for candidate-added networks, hydrology, fuel shocks and outages;
+- attack information-policy symmetry and scenario-weight ownership;
+- verify L3 cannot silently become an eliminator.
+EXPECTED_OUTPUT: PASS / REVIEW_FAILED with exact repair if required.
+FALSIFICATION_CONDITION:
+FAIL if any unadopted foreign threshold can reject a locally compliant candidate; any candidate can choose easier exogenous scenarios/weights/information; any technology-specific physical constraint is erased by comparison symmetry; or applicable operating-security requirements disappear.
+STATUS: OPEN
+BLOCKERS: distinct session required.
+NEXT_ACTION: distinct session independently attacks C1; downstream integrated ranking must not consume EGC-060 as VERIFIED before that review.
+
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+MISSION_STATUS: CONTINUE_REQUIRED
