@@ -5,7 +5,9 @@
   "SCOPE": [
     "packages/core/vnext-state-matrix.ts",
     "tests/contract/state-matrix.test.ts",
-    "scripts/check-doc-c.ts"
+    "scripts/check-doc-c.ts",
+    "packages/api/bootstrap.ts",
+    "tests/contract/hydration-fail-closed.test.ts"
   ],
   "TARGET_REPOSITORY": "goif74945-crypto/NEXY.AI-",
   "TARGET_BRANCH": "NEXY.AI-Test-AI",
@@ -15,5 +17,6 @@
   "FINDING": "FINAL DOC-C allows error→FREEZE only from RUNNING and VERIFYING, but implementation also allows INIT/READY/CONSENSUS/STABLE/FREEZE.",
   "STATUS": "ACTIVE",
   "MUTATION_BOUNDARY": "Only listed files; no NEXY.ai mutation.",
-  "NOTE": "Scope extended to make the existing DOC-C static checker enforce exact FINAL DOC-C error-transition semantics."
+  "NOTE": "Extended after authority reconciliation: adapt bootstrap fail-closed caller to FINAL DOC-C matrix using the pre-admission quarantine helper; add regression proof. Rust transition table was independently repaired by another concurrent worker and is read-only here.",
+  "AUTHORITY_RECORD": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-5-STATE-EVENT-MATRIX.json"
 }
