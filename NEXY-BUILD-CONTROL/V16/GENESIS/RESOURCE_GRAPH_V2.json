@@ -18,7 +18,7 @@
       "cross_module_conflicts": "No unproven cross-module semantic conflict is invented. Candidate remains NOT_ACTIVATION_READY until independent semantic review either proves sufficiency or adds conservative umbrellas/conflicts.",
       "safety_posture": "Structural inventory is exhaustive for target blobs; semantic conflict inventory is deliberately fail-closed as pending review.",
       "semantic_repair_basis": "Independent V1 review 41f6edc67c9ea380942228e96184b25a32e0c964 plus exact target manifests at HEAD 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43.",
-      "scope_umbrella": "Path-addressable resources receive deterministic MODULE:scope/<boundary> umbrellas; apps/packages/packages-experimental/tests use two path segments; other paths use top-level; root files use repo-root.",
+      "scope_umbrella": "Path-addressable resources receive deterministic MODULE:scope/<boundary>. Root FILEs use repo-root; top-level MODULE/DATABASE/RUNTIME ownership keeps its own top-level scope; apps/packages/packages-experimental/tests use two path segments.",
       "rust_workspace": "Cargo workspace members core-kernel, nexy-daemon, packages/core-binding plus root Cargo manifests and .cargo/** share CONTRACT:rust-workspace.",
       "node_workspace": "apps/**, packages/**, packages-experimental/**, vault/**, scripts/**, tests/**, config/**, prisma/** and root Node/TS toolchain manifests share CONTRACT:node-workspace.",
       "prisma_contract": "prisma/**, vault/**, packages/storage/**, packages/vault/** and apps/web/** share SCHEMA:prisma-database-contract.",
@@ -1926,7 +1926,7 @@
         ],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/prisma"
         ]
       },
       {
@@ -13791,7 +13791,7 @@
         "parents": [],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/config"
         ]
       },
       {
@@ -13955,7 +13955,7 @@
         "parents": [],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/docs"
         ]
       },
       {
@@ -13965,7 +13965,7 @@
         "parents": [],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/evidence"
         ]
       },
       {
@@ -13975,7 +13975,7 @@
         "parents": [],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/infra"
         ]
       },
       {
@@ -13985,7 +13985,7 @@
         "parents": [],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/nexy-daemon"
         ]
       },
       {
@@ -14281,7 +14281,7 @@
         "parents": [],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/prisma"
         ]
       },
       {
@@ -14661,7 +14661,7 @@
         "parents": [],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/scripts"
         ]
       },
       {
@@ -14737,7 +14737,7 @@
         "parents": [],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/vault"
         ]
       },
       {
@@ -14749,7 +14749,7 @@
         ],
         "explicit_conflicts": [],
         "semantic_umbrellas": [
-          "MODULE:scope/repo-root"
+          "MODULE:scope/nexy-daemon"
         ]
       },
       {
@@ -14899,7 +14899,7 @@
       }
     ]
   },
-  "RESOURCE_GRAPH_HASH": "c3d00f11377214dad3f5b0eb2df7d15ce21b0bd2925a964e4747bd38255a77a8",
+  "RESOURCE_GRAPH_HASH": "7aeedbfcf903c1d0a9a828077c42b552d4f363180e691a2520f15d5a479bdfca",
   "HASH_DOMAIN": "SHA256(UTF8(JCS(RESOURCE_GRAPH_OBJECT)))",
   "CANONICALIZATION": "RFC8785/JCS-equivalent for this data class; nodes sorted by canonical id and relation arrays sorted.",
   "NODE_COUNT": 1153,
@@ -14919,7 +14919,7 @@
     "TARGET_TREE": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c",
     "V1_HASH_RECOMPUTED": "ebca38735a5688176ca92ea2dc1fd34e73956147bdb5f9f4b0e474406bce4a9b",
     "V1_HASH_MATCH": true,
-    "V2_HASH_RECOMPUTED": "c3d00f11377214dad3f5b0eb2df7d15ce21b0bd2925a964e4747bd38255a77a8",
+    "V2_HASH_RECOMPUTED": "7aeedbfcf903c1d0a9a828077c42b552d4f363180e691a2520f15d5a479bdfca",
     "FILE_DENOMINATOR_PRESERVED": 881,
     "ADDED_UMBRELLA_NODE_COUNT": 49,
     "COUNTEREXAMPLE_CLOSURE_INTERSECTIONS": {
@@ -14928,24 +14928,23 @@
         "MODULE:scope/core-kernel"
       ],
       "rust_root_vs_daemon": [
-        "CONTRACT:rust-workspace",
-        "MODULE:scope/repo-root"
+        "CONTRACT:rust-workspace"
       ],
       "node_root_vs_web": [
         "CONTRACT:node-workspace"
       ],
       "prisma_vs_vault": [
         "CONTRACT:node-workspace",
-        "MODULE:scope/repo-root",
         "SCHEMA:prisma-database-contract"
       ]
-    }
+    },
+    "GENERATOR_SELF_REPAIR": "Corrected top-level MODULE/DATABASE scope classification before independent review; prior branch-only V2 commit 99df8da6 is superseded by this exact file version."
   },
   "INDEPENDENT_REVIEW_REQUIRED": [
     "Recompute V2 hash independently.",
     "Verify exact target tree still has 881 blobs and all FILE paths map 1:1.",
     "Re-run V1 counterexample and broader package/workspace/runtime/schema conflict tests.",
-    "Audit V2 for residual semantic false negatives; false positives may only be optimized after safety proof.",
+    "Audit V2 for residual semantic false negatives and excessive false positives.",
     "Do not bind RESOURCE_GRAPH_HASH into Mission Fence before independent PASS."
   ],
   "DO_NOT_BIND_IN_GENESIS": true
