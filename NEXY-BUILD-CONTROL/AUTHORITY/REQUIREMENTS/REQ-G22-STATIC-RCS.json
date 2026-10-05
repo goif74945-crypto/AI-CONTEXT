@@ -2,11 +2,22 @@
   "REQ_ID": "REQ-G22-STATIC-RCS",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "SPEC_PAGE": "UNKNOWN",
-  "SPEC_LINES": "DOCX extracted paragraph order 7702-7739; G21 related checks 7616-7626 and strict syscall rule 7657-7664",
-  "SPEC_TEXT": "G22 defines a deterministic, versioned static rejection reason taxonomy R001-R010 and requires rejection reason_codes to be non-empty, lexicographically sorted, and immutable after anchor.",
-  "AUTHORITY_CLASS": "DOC-C BUILD SPEC",
+  "SPEC_LINES": "DOCX paragraphs 7702-7739; G21 checks 7616-7626; authority verdict 9834-9845; final DOC-C 9886-10499",
+  "SPEC_TEXT": "G22 defines a deterministic, versioned static rejection taxonomy R001-R010 in the pre-FINAL Game Fabric lineage.",
+  "AUTHORITY_CLASS": "HISTORICAL_GAME_FABRIC_NON_BUILD_UNDER_FINAL_VERDICT",
+  "ACTIVE_BUILD_REQUIREMENT": false,
+  "AUTHORITY_REASON": "G22 is under pre-FINAL LAYER G1 Game Fabric. The later FINAL VERDICT declares DOC-C the BUILD SPEC and says build obligation comes from DOC-C only. Final DOC-C paragraphs 9886-10499 contain no CapabilityNode, G21, G22, permission_scope, R001_DEPENDENCY_CYCLE, or R002_PERMISSION_ESCALATION binding.",
+  "PRIMARY_AUTHORITY_EVIDENCE": [
+    "P05729 LAYER G1 — GAME FABRIC ARCHITECTURE",
+    "P07605 G21 — HYBRID CAPABILITY ADMISSION LAW",
+    "P07702 G22 — REJECTION REASON CODE SYSTEM (RCS)",
+    "P09834 FINAL VERDICT",
+    "P09839 DOC-C = BUILD SPEC",
+    "P09844 Build obligation comes from DOC-C only.",
+    "P09886-P10499 final DOC-C block"
+  ],
   "EXPECTED_BEHAVIOR": {
-    "static_reason_codes": [
+    "historical_static_reason_codes": [
       "R001_DEPENDENCY_CYCLE",
       "R002_PERMISSION_ESCALATION",
       "R003_RESOURCE_CAP_VIOLATION",
@@ -18,46 +29,32 @@
       "R009_CONTAINER_DIGEST_MISMATCH",
       "R010_SPEC_HASH_DRIFT"
     ],
-    "ordering": "reason_codes are deduplicated and lexicographically sorted before consumption by canonical rejection records",
-    "identity_constraints": [
-      "permission escalation maps to R002_PERMISSION_ESCALATION",
-      "nondeterministic syscall evidence maps to R007_NONDET_SYSCALL",
-      "R007 must not be repurposed for permission escalation"
-    ]
+    "scheduling_rule": "Do not schedule G21/G22 implementation or repair as required DOC-C work without a primary-source DOC-C binding."
   },
   "FORBIDDEN_BEHAVIOR": [
-    "emit legacy/noncanonical static reason identities as canonical G22 outcomes",
-    "repurpose R007_NONDET_SYSCALL for authority or permission escalation",
-    "return nondeterministically ordered reason-code sets in a canonical rejection path",
-    "invent nondeterministic-syscall evidence from a mere syscall-scope mismatch"
+    "promote G21/G22 to required P0/P1 build work without DOC-C binding",
+    "claim G22 taxonomy mismatch as DOC-C build mismatch",
+    "delete existing CapabilityNode implementation solely because this historical requirement is not active build authority",
+    "guess a DOC-C mapping for historical G22 reason identities"
   ],
   "AFFECTED_SYSTEMS": [
     "packages/phase-f/game/ncf-governance.ts",
     "packages/phase-f/universe/capability-node.ts",
     "tests covering CapabilityNode/G21/G22 rejection identity"
   ],
-  "DEPENDENCIES": [
-    "G21 Gate A static verifier checks",
-    "G20 CapabilityNode canonical structure and permission_scope"
-  ],
+  "DEPENDENCIES": ["FINAL VERDICT temporal authority", "DOC-C build-scope boundary"],
   "IMPLEMENTATION_PATHS": [
     "packages/phase-f/game/ncf-governance.ts",
     "packages/phase-f/universe/capability-node.ts"
   ],
-  "TEST_PATHS": [
-    "tests/integration/capability-node.spec.ts",
-    "focused G21/G22 reason-code contract tests"
-  ],
+  "TEST_PATHS": ["tests/integration/capability-node.spec.ts"],
   "STATUS": "PARTIAL",
-  "STATUS_REASON": "GovernedCapabilityRegistry on current integration SHA uses the canonical G22 identities and sorted uniqueness; CapabilityNode verifier still exposes legacy/noncanonical identities.",
+  "STATUS_REASON": "Historical implementation parity may remain partial, but this is not an active DOC-C build gap.",
+  "SCHEDULING_STATUS": "DEFER_NON_BUILD_AUTHORITY",
   "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "EVIDENCE": [
-    "attached authoritative DOCX SHA-256 b35ee1bf...d26b7, extracted paragraphs 7616-7626, 7657-7664, 7702-7739",
-    "packages/phase-f/game/ncf-governance.ts blob 563f60f78c7c2390a91f6b3b1364e92ddb8c19b0",
-    "packages/phase-f/universe/capability-node.ts blob 25d26bf233b1d7b446027aad391688b7e91b09a0",
-    "tests/integration/capability-node.spec.ts blob a04597422ebfa57f2bff8e7d72885e361b492b9b"
+    "authoritative DOCX SHA-256 b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "NEXY-BUILD-CONTROL/FINDINGS/F-3F8A1C72-02.md"
   ],
-  "OPEN_INTERPRETATION": [
-    "Legacy syscall-scope mismatch is not equivalent to G22 R007_NONDET_SYSCALL. If retained as a fail-closed check in CapabilityNode, its canonical reason mapping must not be guessed; R008_SCHEMA_NONCANONICAL is an engineering candidate only when the condition is explicitly treated as noncanonical permission_scope schema."
-  ]
+  "REACTIVATION_CONDITION": "A primary-source final DOC-C clause binds G21/G22/CapabilityNode taxonomy, or a later authoritative spec supersedes the current FINAL VERDICT."
 }
