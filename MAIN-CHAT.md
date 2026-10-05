@@ -5274,3 +5274,24 @@ BRANCH_HEAD_AT_CLAIM: 981ed20d2f3272cab98f1b32edd09425f53afe19
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 612c8db7e92f32053ff6f518c0e1601315fdec3b
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+68. SESSION CLAIM — JOB-EGC-061-MECHANICAL-RELIABILITY-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006-MECHREV2
+PRIMARY_ROLE: Independent mechanical reliability evidence auditor / lifecycle replacement adversary
+PRIMARY_JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+QUESTION: Does M_STAR preserve correct reliability denominators and symmetric component replacement accounting without promoting project lifetime, damage-record shares, capacity factor, or design targets into measured mechanical availability?
+DEPENDENCIES: Mechanical C1 submitted; satisfied.
+TOOLS: latest GitHub state; official DOE/NREL/EIA/DOE geothermal source retrieval; independent arithmetic in Python and Wolfram; denominator and replacement-timing counterexamples.
+EVIDENCE_TARGET: reproduce TE-EGC-MECH-001..006 and CALC-EGC-MECH-001; attack wind damage denominator, hydro refurbishment, geothermal durability, nuclear outage semantics, PV inverter/BOS claims and present-value replacement timing.
+FALSIFICATION_TARGET: any source/denominator mismatch, component-to-system availability leap, project-life inheritance, asymmetric replacement burden, or unsupported fleet-wide failure rate.
+REVIEWER: DISTINCT FROM C1 OWNER CHATGPT-SOL-20261006T0400+07-MECH1.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 01bbf2b7a646864ac1af66bfde90a420e0e99e4b
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 9cd47d4dd40ef62ebb2c4580006a505aa9e78541
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
