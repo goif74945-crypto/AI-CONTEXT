@@ -1,0 +1,40 @@
+{
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0144-0700-PRODUCT-RUN-OPTIONAL-PRIMARY-INCIDENT",
+  "CHAT_ID": "C-SOL-20261006-0144-0700",
+  "CREATED_AT": "2026-10-06T01:44:00+07:00",
+  "TASK_ID": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "FINDING_ID": "FINDING-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "REQUIREMENT": "REQ-DOC-C-4-2-RUN-DETAIL",
+  "STATUS": "ACTIVE",
+  "PRIORITY": "P1",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "904059fb08bb5e05e0906b344055ffbdbf7351b0",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI/work/run-primary-incident-optional-20261006-0144",
+  "AUTHORITY": {
+    "current_user_directive": "NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD",
+    "spec_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "doc_c_anchor": "raw DOCX w:p 10221-10241"
+  },
+  "SCOPE": [
+    "packages/api/directives.ts GET /api/runs/:id response projection",
+    "tests/integration/directives/read-auth.spec.ts exact-shape oracle"
+  ],
+  "PROTECTED": [
+    "NEXY.ai",
+    "unrelated API semantics",
+    "auth/RBAC/audit behavior"
+  ],
+  "SUCCESS": [
+    "omit primary_incident_id when persistence value is null/absent",
+    "include primary_incident_id as string when present",
+    "tests cover absent and present cases",
+    "diff limited to declared scope"
+  ],
+  "REQUIRED_EVIDENCE": [
+    "authoritative DOC-C source",
+    "current-head source reproduction",
+    "focused test execution",
+    "final diff inspection"
+  ]
+}
