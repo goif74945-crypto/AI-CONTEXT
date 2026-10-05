@@ -15782,3 +15782,58 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+45. DYNAMIC JOB CLAIM — HYDRO / MARINE / WASTE-HEAT DECISION SCREEN
+======================================================================
+
+EVENT_TIME: 2026-10-05T20:05:00Z
+SESSION_ID: GPT56SOL-EGC-OTHER-L1-20261005
+PRIMARY_ROLE: Other Energy Families / Candidate-Elimination Analyst
+PRIMARY_JOB_ID: JOB-EGC-OTHER-FAMILIES-L1-20261005
+QUESTION: Which hydro, tidal, wave and waste-heat families remain credible for the mission after combining verified resource bounds, measured maturity, current cost evidence and the mission's M1/M2 scale semantics without promoting theoretical potential to deployable output?
+DEPENDENCIES: VERIFIED resource-screen JOB-EGC-038/039 for scale classifications; objective thresholds still under residual deployment-clock repair, so this job may classify resource/maturity but cannot final-score deployment time.
+TOOLS: IRENA/IPCC/IEA/DOE/EMEC/European Commission current evidence; deterministic scale calculations; provenance and system-boundary audit.
+EVIDENCE_TARGET: SOURCE_FACT + MEASUREMENT + CALCULATION + INFERENCE with portfolio-vs-sole-source distinction.
+FALSIFICATION_TARGET: Any claim that treats wave theoretical potential as technical, tidal technical resource as sufficient for M2 sole-source scale, waste heat as independent primary energy, or mature hydro's global aggregate resource as universally deployable at low environmental/site cost.
+REVIEWER: JOB-EGC-OTHER-REV-L1-20261005
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-OTHER-FAMILIES-L1-20261005
+ROLE: R02/R27 candidate screen support for JOB-EGC-010
+TITLE: Hydro, marine energy and waste-heat decision screen
+QUESTION_TO_RESOLVE: Classify hydro/tidal/wave/waste-heat as current baseline, portfolio contributor, emerging candidate or insufficiently evidenced for current winner status.
+TARGET_CANDIDATE: HYDRO / TIDAL / WAVE / WASTE_HEAT
+DEPENDENCIES: JOB-EGC-038/039 resource-screen evidence; no dependency for fresh cost/maturity retrieval
+REQUIRED_INPUTS: verified resource ratios; current physical evidence; current cost/deployment/maturity sources.
+REQUIRED_TOOLS: authoritative web retrieval; deterministic arithmetic; cross-source maturity audit.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / MEASUREMENT / CALCULATION / INFERENCE
+EXPECTED_OUTPUT: per-family status with explicit sole-source/portfolio boundaries and no final global winner claim.
+FALSIFICATION_CRITERIA: FAIL if resource class, cost boundary or maturity tier is overstated, or if current counterevidence shows commercial deployment/cost materially stronger than classified.
+REVIEWER_JOB_ID: JOB-EGC-OTHER-REV-L1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: GPT56SOL-EGC-OTHER-L1-20261005
+CLAIMED_AT: 2026-10-05T20:05:00Z
+LAST_PROGRESS_AT: 2026-10-05T20:05:00Z
+BLOCKERS: final deployment-clock criterion unresolved; does not block resource/maturity screen
+HANDOFF: Build evidence package, submit AWAITING_REVIEW, no self-verification.
+
+JOB_ID: JOB-EGC-OTHER-REV-L1-20261005
+ROLE: Independent other-family reviewer
+TITLE: Independently attack hydro/marine/waste-heat classification
+QUESTION_TO_RESOLVE: Reopen authoritative sources, recompute decisive scale ratios, search current counterevidence on commercial marine energy and waste-heat scale, and PASS/FAIL each family status.
+TARGET_CANDIDATE: HYDRO / TIDAL / WAVE / WASTE_HEAT
+DEPENDENCIES: JOB-EGC-OTHER-FAMILIES-L1-20261005 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: evidence package/source identifiers
+REQUIRED_TOOLS: independent retrieval + arithmetic + maturity/cost audit
+REQUIRED_EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / REVIEW
+EXPECTED_OUTPUT: PASS/FAIL and repair actions
+FALSIFICATION_CRITERIA: FAIL if current evidence tier, potential class or cost conclusion is materially wrong.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-OTHER-FAMILIES-L1-20261005 not yet AWAITING_REVIEW
+HANDOFF: Distinct session only.
