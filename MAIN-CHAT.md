@@ -8852,3 +8852,23 @@ Cross-examine one unrelated team's AWAITING_REVIEW result rather than self-revie
 
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+59. SESSION CLAIM — JOB-EGC-042-RSTAR-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0340+07-RSTARREV2
+PRIMARY_ROLE: Independent adequacy/stability boundary reviewer / adversarial replicator
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-042-RSTAR-C1-20261006
+QUESTION: Does proposed R_STAR(g) prevent candidate-specific reliability favoritism without pretending a globally universal legal threshold exists?
+DEPENDENCIES: JOB-EGC-042-RSTAR-C1-20261006 is AWAITING_REVIEW; satisfied.
+TOOLS: GitHub state refresh; current official NERC + non-North-American reliability authority retrieval; independent arithmetic; metric-definition audit; adversarial scenario/boundary tests.
+EVIDENCE_TARGET: independently verify NERC 2025 LTRA thresholds and definitions; verify at least one non-North-American adequacy framework; recompute CALC-EGC-042-001/002; attack mission-screen bias and operational-service completeness.
+FALSIFICATION_TARGET: universal-number overreach, LOLE/LOLH/EUE unit conflation, local-standard bypass, candidate-specific scenario privilege, annual-energy substitution, or adequacy pass being treated as complete operational reliability.
+REVIEWER: distinct from C1 owner CHATGPT-SOL-20261005T200500Z-RSTAR1.
+STATUS: CLAIMED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+NEXT_ACTION: independently retrieve sources, reproduce arithmetic, construct counterexamples, and issue PASS/REVIEW_FAILED with exact defects.
