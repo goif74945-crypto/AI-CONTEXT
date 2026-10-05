@@ -6,8 +6,8 @@
   "requirement_gap": "Final DOC-C §4.1 requires all API responses to use SystemEnvelope<T>; runApiHandler currently returns HTTP 200 with {} when a handler completes without calling res.json().",
   "target_repository": "goif74945-crypto/NEXY.AI-",
   "target_branch": "NEXY.AI-Test-AI",
-  "analyzed_head": "92aff2f532d30d81e74b8d2292a583edb77b5de8",
-  "worker_branch": "work/C-SOL-20261006-0143-api-envelope-failclosed",
+  "analyzed_head": "2926222d9c4cece6f20a9343256c5157d6176f4f",
+  "worker_branch": "work/C-SOL-20261006-0143-api-envelope-failclosed-v2",
   "scope": [
     "apps/web/lib/api-handler.ts",
     "tests/contract/api-handler.test.ts"
@@ -28,5 +28,10 @@
     "Focused contract test proves canonical fail-closed fallback.",
     "Diff contains only the two claimed paths.",
     "Do not integrate without exact-worker test/CI evidence or equivalent executable proof."
-  ]
+  ],
+  "reconciliation": {
+    "reason": "Integration branch advanced and concurrently changed both claimed paths after the original claim. The concurrent runtime-state truth fix is preserved; repair was restarted from the new exact base.",
+    "superseded_worker_branch": "work/C-SOL-20261006-0143-api-envelope-failclosed",
+    "superseded_pr": 37
+  }
 }
