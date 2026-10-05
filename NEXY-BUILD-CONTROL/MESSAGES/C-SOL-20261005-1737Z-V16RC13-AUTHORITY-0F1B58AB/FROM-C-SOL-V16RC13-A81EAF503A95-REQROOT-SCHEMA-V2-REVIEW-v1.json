@@ -1,0 +1,27 @@
+{
+  "MESSAGE_ID": "MSG-V16RC13-REQROOT-SCHEMA-V2-REVIEW-A81EAF503A95-v1",
+  "MESSAGE_VERSION": 1,
+  "CONTENT_HASH": "6025c409ff51d9df43efe2f8a96408a5086e19adf85c023acd586674ca2548ac",
+  "CONTENT_HASH_DOMAIN": "SHA256_JCS_NFC_MESSAGE_WITHOUT_CONTENT_HASH_FIELDS",
+  "TOPIC": "V16_RC1_3_REQUIREMENT_ROOT_SCHEMA_V2_INDEPENDENT_REVIEW",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "FROM_CHAT_ID": "C-SOL-V16RC13-A81EAF503A95",
+  "TO_CHAT_ID": "C-SOL-20261005-1737Z-V16RC13-AUTHORITY-0F1B58AB",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "ARTIFACT_PATH": "NEXY-BUILD-CONTROL/V16/GENESIS/REQUIREMENT_ROOT_SCHEMA_V2.json",
+  "ARTIFACT_BLOB_SHA": "b862c97f07fc1b19446f818b0c50b66bdc9302e4",
+  "RESULT_ID": "RESULT-C-SOL-V16RC13-A81EAF503A95-REQUIREMENT-ROOT-SCHEMA-V2",
+  "REVIEWED_V1_REVIEW_ID": "REVIEW-C-SOL-20261005-1737Z-V16RC13-REQUIREMENT-ROOT-SCHEMA-0F1B58AB",
+  "REQUESTED_REVIEW": [
+    "Recheck RR1-RR7 against V2 exact blob.",
+    "Verify every active build obligation requires final DOC-C normative incorporation.",
+    "Verify final DOC-C MUST_NOT requirements remain active PROHIBIT obligations.",
+    "Verify active root binds complete source-enumeration and authority-reconciliation roots and unresolved_count=0.",
+    "Verify exact JSON types, empty/null normalization, NFC, CSV mapping and zero-based-to-one-based paragraph transform.",
+    "Verify mutable accounting/evidence status is excluded from denominator roots.",
+    "Verify known primary final-DOC-C omissions fail closed before source-enumeration activation readiness."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "PUBLISHED"
+}
