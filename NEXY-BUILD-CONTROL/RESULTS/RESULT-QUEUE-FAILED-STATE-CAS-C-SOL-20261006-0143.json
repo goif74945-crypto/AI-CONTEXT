@@ -1,0 +1,63 @@
+{
+  "RESULT_ID": "RESULT-QUEUE-FAILED-STATE-CAS-C-SOL-20261006-0143",
+  "CHAT_ID": "C-SOL-20261006-0143-QUEUE-CAS",
+  "TASK_ID": "TASK-QUEUE-FAILED-STATE-CAS-001",
+  "FINDING_ID": "FINDING-QUEUE-FAILED-STATE-RESURRECTION-001",
+  "STATUS": "IMPLEMENTED_AWAITING_RUNTIME_VALIDATION",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "822f54ab052f206ecfd43f9bf7a08c6a0e0b778d",
+  "WORKER_BRANCH": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-QUEUE-CAS",
+  "WORKER_HEAD": "fada134561e9dabe32a5488a26942128cbc89b0f",
+  "PR": 53,
+  "PR_STATE": "DRAFT_MERGEABLE_CLEAN",
+  "NET_DIFF": [
+    "packages/queue/dispatch.ts",
+    "packages/queue/jobs.ts",
+    "tests/contract/dispatch-reconciliation-cas.test.ts",
+    "tests/contract/queue-payload.test.ts"
+  ],
+  "BEHAVIOR_IMPLEMENTED": [
+    "Durable dispatch success/failure writes use exact snapshot CAS over id/status/attempts/lastError/updatedTick.",
+    "CAS loss reloads current durable truth; FAILED/CANCELLED/COMPLETED cannot be overwritten by stale reconciliation.",
+    "Existing BullMQ failed jobs are never normal idempotency successes.",
+    "Existing BullMQ failed jobs retry only under the existing explicit safe FAILED retry policy; otherwise QUEUE_EXISTING_JOB_FAILED is persisted through the same CAS path.",
+    "SAFE_FAILED_RETRY_ERROR_CODES remains unchanged."
+  ],
+  "TESTS_AUTHORED": [
+    "FAILED/CANCELLED/COMPLETED win stale ENQUEUED reconciliation.",
+    "Normal PENDING enqueue CAS.",
+    "Explicit safe FAILED retry authorization remains functional.",
+    "Existing failed BullMQ job fails closed without authorization.",
+    "Existing failed BullMQ job retries with explicit safe authorization.",
+    "Enqueue failure cannot overwrite a newer terminal durable state."
+  ],
+  "EXECUTION_EVIDENCE": {
+    "github_actions": [
+      {
+        "run_id": 37359963589,
+        "head_sha": "d87083cd809e89f34c350326fe3adb3913dd9def",
+        "attempts": 2,
+        "result": "FAILURE_BEFORE_STEP_EXECUTION",
+        "steps": []
+      },
+      {
+        "run_id": 37360555398,
+        "head_sha": "cc4e1eb0f5e0b9ac0eae28639ca2e99288eda983",
+        "attempts": 1,
+        "result": "FAILURE_BEFORE_STEP_EXECUTION",
+        "steps": []
+      }
+    ],
+    "interpretation": "Infrastructure runner failure only. No test PASS or code-test FAIL is claimed."
+  },
+  "INTEGRATION_DECISION": "BLOCKED_FAIL_CLOSED_UNTIL_EXECUTABLE_RUNTIME_TEST_EVIDENCE",
+  "LATEST_INTEGRATION_HEAD_OBSERVED": "3930e1a514027c40ec88bfb93bf288343a9829da",
+  "COLLISION_CHECK": {
+    "dispatch_blob": "002eef253ce836e2cd0e200f5d15cb5042cdeb29",
+    "jobs_blob": "e90ac64acc446c5bbd24a710e0208fc76bce9089",
+    "queue_payload_test_blob": "8db0a207da39d60f422386b2896fc05ddba902c1",
+    "conclusion": "No target-file overlap observed against latest integration head at recording time."
+  },
+  "CONTINUATION_REQUIRED": "Run focused Vitest plus backend typecheck on worker HEAD or equivalent identical source blobs, independently review, then rebase/merge-safely into current NEXY.AI-Test-AI and exact-SHA reverify."
+}
