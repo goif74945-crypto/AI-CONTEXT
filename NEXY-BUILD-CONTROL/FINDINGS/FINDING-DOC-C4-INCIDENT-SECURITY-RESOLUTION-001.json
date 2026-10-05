@@ -1,0 +1,52 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001",
+  "REQ_ID": "REQ-DOC-C-4-2-INCIDENT-DETAIL",
+  "TASK_ID": "TASK-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001",
+  "FOUND_BY": "C-SOL-20261005-1913-V8-INCIDENT-SECURITY",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "CONTROL_PARENT_OBSERVED": "d45b019147d3fdfd96008f07db1153a1606601cf",
+  "SEVERITY": "P1",
+  "TYPE": [
+    "INTEGRATION_DEFECT",
+    "OBSERVABILITY_DEFECT",
+    "BROKEN_CANONICAL_LINK"
+  ],
+  "STATUS": "OPEN",
+  "OBSERVED": [
+    "packages/auth/security-incident.ts recordAuthSecurityIncidentTx creates SecurityIncident records and writes both EventLog.incidentId and AuditLog.incidentId with the SecurityIncident id.",
+    "packages/orch-core/system-state.ts also creates SecurityIncident as a primary terminal incident for terminal transitions without a pipeline-run FreezeIncident path.",
+    "packages/api/canonical.ts auditTruthRows renders every non-null AuditLog.incidentId as /api/incidents/<incidentId>.",
+    "packages/api/canonical.ts handleIncident resolves only prisma.freezeIncident.findUnique and therefore cannot resolve SecurityIncident ids emitted by the active system.",
+    "packages/api/health.ts explicitly reads both FreezeIncident and SecurityIncident stores, confirming SecurityIncident is an active canonical evidence source rather than dead storage.",
+    "The resulting canonical audit incident_link can point to a guaranteed 404 for a valid active SecurityIncident."
+  ],
+  "EXPECTED": [
+    "A canonical incident link emitted by the audit surface must resolve to incident detail for the referenced active primary incident, or the system must not emit that link.",
+    "GET /api/incidents/:id is a generic incident-detail route under final DOC-C and must not silently support only one active incident store while canonical producers emit another.",
+    "Repair must preserve RBAC and fail closed; do not invent SecurityIncident response/tenancy semantics not supported by active authority."
+  ],
+  "SPEC_EVIDENCE": {
+    "route": "Final DOC-C §4.2 paragraphs 10331-10340: GET /api/incidents/:id, purpose incident detail, session required, OWNER/AUDITOR, audit INCIDENT_VIEWED.",
+    "incident_law": "Final DOC-C §5.6 paragraphs 10494-10499 requires primary incidents for FREEZE/STOP transitions and incident linkage/audit evidence.",
+    "known_spec_gap": "F-C-SOL-V8-1737-GLOBAL-API-ROUTE-DENOMINATOR already records that GET /api/incidents/:id lacks a local response schema, retry policy, and error matrix."
+  },
+  "SOURCE_EVIDENCE": {
+    "auth_security_incident_blob": "942473739aa3dfe04d0dc595f3e92f8e8f665e45",
+    "canonical_api": "packages/api/canonical.ts at exact Test-AI SHA",
+    "health_blob": "bdd0ebf9c1a2a0009be46761a46707607d05494c",
+    "prisma_schema": "SecurityIncident and FreezeIncident are separate active models."
+  },
+  "REPRODUCTION": [
+    "Create or inspect any auth SecurityIncident produced by recordAuthSecurityIncidentTx; its AuditLog row has incidentId equal to the SecurityIncident id.",
+    "Read the row through handleAuditLogs: auditTruthRows emits /api/incidents/<SecurityIncident id>.",
+    "Call handleIncident with that id: the handler queries only freezeIncident.findUnique and returns not found.",
+    "Observe that no securityIncident.findUnique path exists in the canonical incident-detail handler."
+  ],
+  "DEPENDENCIES": [
+    "F-C-SOL-V8-1737-GLOBAL-API-ROUTE-DENOMINATOR",
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "SOURCE_MUTATION": "NONE"
+}
