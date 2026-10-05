@@ -12247,3 +12247,133 @@ FALSIFICATION_CONDITION: FAIL if partial/stale/narrow evidence can still generat
 STATUS: OPEN
 BLOCKERS: NONE for narrow review; final numerical frontier still depends on frozen geography/service, FSRC_ND and R_STAR.
 NEXT_ACTION: distinct session independently reproduce and attack; C5 owner must not self-review C6.
+
+
+======================================================================
+74. REVIEW RESULT — JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-RSTARC6REV
+REVIEW_TARGET: JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006 / R_STAR_C3_V2
+STATUS: REVIEW_FAILED
+REPAIR_REQUIRED: YES_BY_EXISTING_OWNERS
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: 1896a3e82f8f2b28596924e4925359eb1812a974
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: b4c308448ff1f99019a35f7293df69a93be1bf92
+
+REVIEW SUMMARY:
+R_STAR_C3_V2 materially improves reliability-statistics discipline: pre-outcome metric/threshold/scenario/seed freezing, confidence-bound PASS/FAIL/NOT_VERIFIED, alpha spending across repeated looks, explicit structural uncertainty, candidate-specific response to shared exogenous states, no post-outcome baseline selection, and fail-closed handling of invalid rare-event intervals are directionally correct. However, the claimed familywise error guarantee is not yet single-valued because M="total gated inequalities" is not explicitly expanded over structural-model variants and co-frontier baseline comparisons. Under one reasonable implementation, the .05 error budget is silently reused across structural variants and can exceed .05. This is P1 and blocks VERIFIED.
+
+SOURCE-EGC-042C6-001
+CLASS: EXTERNAL_FACT
+SOURCE: NERC, Technical Reference Document: Considerations for Performing an Energy Reliability Assessment Volume 2, December 2024.
+URL: https://www.nerc.com/globalassets/who-we-are/standing-committees/rstc/erawg/technical-reference-document-considerations-for-performing-an-era-v2.pdf
+OFFICIAL_PDF_TEXT_VERIFIED:
+- document purpose is to highlight inputs/methods, not dictate one universal ERA method;
+- probabilistic metrics combine simulated/statistical events and their likelihoods;
+- LOLE/LOLH/EUE represent different frequency/duration/magnitude aspects;
+- multiple metrics may be needed;
+- probabilistic criteria may be metric-probability curves rather than a single scalar;
+- criteria/thresholds reflect stakeholder risk tolerance and may vary by system/scenario;
+- probabilistic outage modeling can vary materially in implementation and accuracy.
+PDF_VISUAL_ATTEMPT:
+Pages 55-57 were requested through the screenshot tool; source returned cache-miss errors. Therefore VISUAL_NOT_VERIFIED, while official PDF text extraction/provenance are available.
+REVIEW IMPLICATION:
+C5 correctly labels NERC as guidance rather than universal law and correctly keeps local thresholds/metric choice pre-outcome and jurisdiction scoped.
+
+CALC-EGC-042C6-001 — REPEATED-LOOK REPLICATION
+INPUT: ALPHA=.05, M=4, stage k=1.
+alpha_mk=.05/(4*2)=.00625.
+two-sided normal z=Phi^-1(1-.00625/2)=2.7343687865331767.
+SE=40:
+d=-120 -> CI [-229.37475146,-10.62524854] => PASS.
+d=20 -> [-89.37475146,129.37475146] => NOT_VERIFIED.
+d=120 -> [10.62524854,229.37475146] => FAIL.
+SE=.05:
+Q=-.30 -> [-.4367184393,-.1632815607] PASS.
+Q=-.05 -> [-.1867184393,.0867184393] NOT_VERIFIED.
+Q=.20 -> [.0632815607,.3367184393] FAIL.
+TOOLS: independent V8 inverse-normal implementation + Wolfram Language.
+REPLICATION_STATUS: CROSS_ENGINE_PASS.
+
+CALC-EGC-042C6-002 — INFINITE-STAGE ALPHA SPEND
+For one metric with M=4:
+SUM_{k=1..infinity} .05/(4*2^k)=.0125.
+Across four predeclared inequalities =.05.
+TOOLS: V8 finite 20-stage approximation=.0124999880791 per metric; Wolfram exact infinite sum=.0125.
+REPLICATION_STATUS: PASS.
+INTERPRETATION:
+The geometric alpha schedule can control optional repeated looks by a union bound IF the universe of statistical inequalities is fully frozen and every reported interval has the promised noncoverage.
+
+REDTEAM-EGC-042C6-003 — ZERO-EVENT RARE-TAIL TEST
+N=1000, zero observed rare events, alpha_mk=.00625.
+Naive Wald/normal p-hat=0 produces SE=0 and false CI upper=0.
+Exact zero-event one-sided upper bound: 1-alpha^(1/N)=0.00506231688.
+Central/two-sided zero-event upper using alpha/2: 0.00575171617.
+For threshold p=0.001, naive normal would falsely PASS while exact interval is NOT_VERIFIED.
+TOOLS: V8 + Wolfram arithmetic.
+REVIEW RESULT:
+PASS_FOR_C5_RULE. C5 explicitly says invalid rare-event CI => NOT_VERIFIED, which blocks the zero-event=zero-risk failure. Downstream STAT_GATE must freeze a valid metric-specific interval method before outcome.
+
+F-EGC-042C6-P1-001 — MULTIPLICITY UNIVERSE IS AMBIGUOUS
+C5 says M="total gated inequalities", but structural-model variants are evaluated separately and nonunique strongest baselines may create a co-frontier. It does not explicitly state whether M counts:
+metric x threshold x structural-model variant x baseline/co-frontier comparison
+for every statistically evaluated inequality.
+
+COUNTEREXAMPLE:
+Suppose four metric inequalities (M=4) and V=3 frozen structural variants.
+If each variant independently reuses the C5 M=4 schedule, total union-bound error across variants is <=3*.05=.15, not .05.
+If the global multiplicity universe instead uses M_eff=4*3=12 for the twelve variant-metric inequalities, the corresponding global union-bound budget is .05.
+The same issue applies when multiple co-frontier baselines each create distinct tested inequalities.
+TOOLS: V8 + exact algebra; Wolfram confirms 3*.05=.15.
+IMPACT:
+Two reasonable implementations of the recorded schema can claim different statistical guarantees. This violates the deterministic/auditable review target and can change PASS/NOT_VERIFIED near thresholds.
+REPAIR:
+Define a global pre-outcome TEST_UNIVERSE_ID. Every statistical decision inequality receives a unique TEST_ID, including each binding metric/threshold, structural-model variant, baseline/co-frontier comparison and any other separately tested gate. Alpha spending must be allocated over TEST_ID x stage, or an explicitly valid simultaneous procedure with equal-or-stronger familywise guarantee must replace Bonferroni spending. If the universe expands post-freeze, old alpha guarantees cannot be silently reused; remaining budget/restart policy must be explicit.
+
+F-EGC-042C6-P2-002 — UNCERTAINTY-METHOD ID MUST BE EXECUTABLE
+C5 freezes "uncertainty method" pre-outcome, which is directionally correct. For machine audit it should resolve to exact estimator, interval/test algorithm, sidedness, confidence allocation, resampling/weighting rules, sample-size/stage schedule and numerical tolerance. Generic labels such as "95% CI" are insufficient because valid methods can yield different boundary decisions in sparse tails.
+STATUS: SCHEMA_HARDENING; not an independent blocker if existing STAT_GATE supplies exact METHOD_ID.
+
+PASS / CONDITIONAL PASS:
+1. Metric vs criterion / local-risk split: PASS.
+2. PASS U<=0, FAIL L>0, otherwise NOT_VERIFIED: PASS for a valid pre-frozen CI.
+3. Geometric repeated-look spending: PASS mathematically conditional on complete TEST_UNIVERSE.
+4. Invalid rare-event CI fail-closed: PASS and independently stress-tested.
+5. Structural uncertainty is not averaged away: PASS_DIRECTION. Completeness/provenance of STRUCTURAL_MODEL_SET remains owned by concurrent semantics repair.
+6. Shared exogenous scenario S_COMMON with candidate-specific response f_j and technology-specific U_j/theta_j: PASS_DIRECTION; avoids physically identical forced outputs.
+7. Common random numbers only for physically corresponding drivers while preserving marginals/correlations: PASS_DIRECTION.
+8. Baseline manifest frozen pre-outcome; nonunique strongest baseline exposed as co-frontier sensitivity: PASS_DIRECTION; actual independently reviewed baseline manifest remains upstream.
+9. Operational-security gates remain conjunctive rather than replaced by adequacy: PASS_DIRECTION.
+
+RECONCILIATION WITH EXISTING OWNERS:
+DO NOT CREATE DUPLICATE REPAIR JOB.
+- JOB-EGC-060-RSTAR-GATE-REPAIR-C3-20261006 is already EXECUTING and owns simultaneous decision intervals, optional stopping, rare-event/tail resolution, seed/stage provenance and convergence.
+  REQUIRED INTEGRATION ADDITION: global TEST_UNIVERSE_ID / M_eff multiplicity accounting across structural variants and co-frontier comparisons.
+- JOB-EGC-042-RSTAR-V2SEM-REPAIR-C5B-20261006 is already EXECUTING and owns exact metric-estimator compatibility plus STRUCTURAL_MODEL_SET manifest completeness.
+  REQUIRED INTEGRATION ADDITION: expose every structural-model-specific statistical inequality as a TEST_ID consumed by the statistical gate.
+No duplicate C7 is opened by this reviewer.
+
+CLAIM DISPOSITION:
+CALC-EGC-042-C5-001: VERIFIED_BY_DISTINCT_REVIEWER.
+CALC-EGC-042-C5-002: VERIFIED_BY_DISTINCT_REVIEWER.
+CALC-EGC-042-C5-003 baseline post-selection counterexample: LOGIC_PASS; baseline manifest still upstream.
+CALC-EGC-042-C5-004 alpha sum: VERIFIED only for a complete fixed test universe.
+CLAIM-EGC-042-002 R_STAR_C3_V2: REVIEW_FAILED_PENDING_MULTIPLICITY_INTEGRATION.
+CLAIM-EGC-042-004 scenario semantics: PASS_DIRECTION; metric/structural details remain concurrent-repair dependencies.
+
+SOLVED-GATE EFFECT:
+G12 / reliability integration contribution: NOT_VERIFIED.
+G15 integrated model: NO.
+G19 red team no unresolved P0/P1: NO; F-EGC-042C6-P1-001 open.
+G21 uncertainty cannot plausibly reverse: NO until multiplicity universe and concurrent R_STAR repairs independently pass.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+STATUS_CHANGE:
+JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006: EXECUTING -> REVIEW_FAILED.
+NEXT_ACTION:
+Existing RSTAR-GATE-C3 and RSTAR-V2SEM-C5B must integrate TEST_UNIVERSE_ID/M_eff semantics; their distinct reviewers must verify the merged contract before R_STAR can be consumed as a solved mission gate.
