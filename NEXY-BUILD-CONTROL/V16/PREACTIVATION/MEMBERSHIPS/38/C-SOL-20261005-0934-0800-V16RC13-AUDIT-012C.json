@@ -5,8 +5,8 @@
   "MEMBERSHIP_ID": "PRE-38d052916f5a46e8707fbd713fb95ca3",
   "SHARD": "38",
   "STATE": "ACTIVE_READ_ONLY_PREACTIVATION",
-  "RECORD_GENERATION": 1,
-  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 5,
+  "RECORD_GENERATION": 2,
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
   "BOOTSTRAP_STATE_OBSERVED": "BLOCKED",
   "REQUESTED_CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
   "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
@@ -20,5 +20,6 @@
   ],
   "PRODUCT_MUTATION_ELIGIBLE": false,
   "INTEGRATION_ELIGIBLE": false,
-  "NOTE": "Actual chat membership created while Bootstrap Fence is preactivation-blocked. Authority is limited to read-only audit and user-authorized control-plane evidence work; no product mutation or target integration authority."
+  "NOTE": "Actual chat membership created while Bootstrap Fence is preactivation-blocked. Authority is limited to read-only audit and user-authorized control-plane evidence work; no product mutation or target integration authority.",
+  "RENEWAL_REASON": "Bootstrap Fence advanced to STATE_VERSION 6; renew read-only preactivation membership without product mutation or integration authority."
 }
