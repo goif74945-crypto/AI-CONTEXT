@@ -14,5 +14,8 @@
   ],
   "VALID_FROM": "608426cb30398b1f3461866f7079d2a435c96b96",
   "INVALIDATED_BY": null,
-  "LIMITATION": "Does not resolve the canonical reason identity for the legacy syscall-scope-mismatch condition; G22 R007 is reserved for nondeterministic syscall evidence."
+  "LIMITATION": "Taxonomy content is verified for historical G22, but G22 is not an active build obligation under the current FINAL VERDICT/DOC-C authority. The canonical reason identity for the legacy syscall-scope-mismatch condition also remains unresolved; G22 R007 is reserved for nondeterministic syscall evidence.",
+  "AUTHORITY_SCOPE": "HISTORICAL_GAME_FABRIC_CONTENT_ONLY_NOT_ACTIVE_DOC_C_BUILD_REQUIREMENT",
+  "BUILD_AUTHORITY_REF": "K-G21-G22-BUILD-AUTHORITY-SCOPE",
+  "REVERIFIED_AT": "2026-10-05T17:09:00+07:00"
 }
