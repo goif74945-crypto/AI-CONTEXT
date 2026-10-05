@@ -3955,3 +3955,156 @@ NEXT_HIGH_INFORMATION_GAIN:
 GLOBAL_SOLVED: NO
 CURRENT_WINNER: NONE
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+56. REPAIR RESULT — JOB-EGC-040-REPAIR-SOCDISC-C7-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0304+07-REV-C2
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-C7-20261006
+ROLE: Storage-inventory / reference-discount accounting repair architect
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-REV-C8-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SOURCE_RECORD:
+EVIDENCE_ID: EVID-EGC-040-SOCDISC-001
+TOOL: Official web retrieval
+SOURCE: HM Treasury, The Green Book (2026)
+SOURCE_DATE: updated 2026-02-05
+URL: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+SOURCE_FACT:
+- social costs/benefits are expressed in real terms and discounted to present value;
+- published standard STPR = 3.50% real for years 1-30, 3.00% for years 31-75, 2.50% thereafter.
+TRUTH_CLASS: EXTERNAL_FACT
+LIMITATION:
+This is UK public-appraisal guidance. It is adopted below only as a transparent candidate-neutral MISSION_CONVENTION_V1 for the primary real-resource comparison, not as a universal physical or private-finance law.
+
+PRIMARY REFERENCE DISCOUNT CONVENTION:
+CONVENTION_ID: D_REF_PRIMARY_V1
+PRICE_BASE: real base-year 2026 currency units.
+D_REF_PRIMARY(0)=1.
+
+For annual integer year y:
+- 1 <= y <= 30:
+  D_REF_PRIMARY(y)=(1.035)^(-y)
+- 30 < y <= 75:
+  D_REF_PRIMARY(y)=(1.035)^(-30)*(1.03)^(-(y-30))
+- y > 75:
+  D_REF_PRIMARY(y)=(1.035)^(-30)*(1.03)^(-45)*(1.025)^(-(y-75))
+
+For subannual dated flows, apply the same piecewise annual effective rates over the exact fractional-year timing.
+
+PRIMARY PV OPERATOR:
+PV0_PRIMARY[X] = sum_t X_t * D_REF_PRIMARY(t).
+
+RULES:
+1. Every candidate and strongest matched baseline in the PRIMARY real-resource view MUST use D_REF_PRIMARY_V1 identically.
+2. Candidate-specific WACC/debt/equity/project-finance discounting MUST NOT replace D_REF_PRIMARY_V1 in the PRIMARY resource view; such terms belong to the secondary finance view under FINPV-C5.
+3. No analyst may change D_REF_PRIMARY_V1 after seeing candidate outcomes. A convention change requires a versioned CONVENTION_CHANGE record and full recomputation of every affected candidate/baseline.
+4. Sensitivity curves may be run only symmetrically across every candidate/baseline. They never silently replace the frozen PRIMARY result.
+5. If plausible common discount sensitivity reverses a real candidate ordering, that ordering is COST_RANKING_NOT_STABLE until the uncertainty is resolved.
+6. PV0(E_NET_SERVED) is an economic levelization denominator only. MASSIVE_ENERGY, continuous/firm power, adequacy, and EROI gates MUST separately use undiscounted physical energy/power quantities under their own definitions.
+
+EXECUTED DISCOUNT REGRESSION:
+EVIDENCE_ID: CALC-EGC-040-SOCDISC-001
+TOOLS: Python + Wolfram Language independent implementations.
+OUTPUT:
+D_REF_PRIMARY(30)=0.3562784106023023
+D_REF_PRIMARY(60)=0.1467819878695201
+D_REF_PRIMARY(100)=0.0508180223243821
+Cross-tool outputs agree to displayed precision.
+
+ANALYST-CHOICE RANK-FLIP REGRESSION:
+Toy candidates with identical delivered service:
+A: cost 100 at t=0.
+B: cost 40 at t=0 plus 200 at year 30.
+Under frozen D_REF_PRIMARY_V1:
+PV_A=100
+PV_B=40+200*0.3562784106023023=111.2556821204605
+=> A lower primary PV cost.
+Under a different flat 7% analyst convention:
+PV_B=66.2734234309179
+=> B lower cost.
+CONCLUSION:
+The physical candidates did not change; only the analyst discount convention changed. Therefore a frozen common primary D_REF is necessary to prevent bookkeeping privilege.
+TRUTH_CLASS: CALCULATION
+REPLICATION_STATUS: CROSS_TOOL_PASS
+LIMITATION: toy test demonstrates accounting sensitivity, not a candidate technology result.
+
+STORAGE INVENTORY CLOSURE:
+For each modeled storage inventory s:
+SOC[s,t+1] =
+SOC[s,t]*(1-sigma_s*Delta_t)
++ eta_c,s * E_charge[s,t]
+- E_discharge[s,t]/eta_d,s
+
+METERING RULE:
+E_charge and E_discharge are bus-side energy flows at the declared storage connection boundary; SOC is internal stored energy. Conversion losses arise through eta_c/eta_d and self-discharge through sigma_s. Do not add the same conversion loss again as a separate monetized energy-input charge.
+
+BEFORE RUNNING, EACH STORAGE INVENTORY MUST BE ASSIGNED ONE OF TWO MODES:
+
+MODE_A_CYCLIC:
+Use for a repeated representative chronological horizon or a full cycle intended to repeat.
+Mandatory:
+SOC[s,T] = SOC[s,0]
+for every storage inventory s, within one documented solver tolerance applied identically across candidates.
+No candidate may lower cost or raise served energy by net depletion across the cycle.
+For seasonal storage, do not impose artificial daily/weekly reset if seasonal carry is physically intended; instead use a chronology/state-linking formulation that conserves inventory across representative periods and closes the actual repeated cycle.
+
+MODE_B_FINITE:
+Use for a genuinely finite non-repeating horizon.
+Mandatory:
+- initial stored inventory is NOT free;
+- pre-existing initial inventory must enter the resource ledger at its frozen opportunity/resource value, or be traced to an in-scope prior charging/fuel input;
+- terminal stored inventory must receive symmetric residual/inventory treatment through the FINPV-C5 common-PV terminal ledger;
+- initial and terminal inventory valuation must use the same commodity/energy boundary and avoid double counting with storage-asset residual value.
+If initial inventory provenance or opportunity value is material and UNKNOWN, candidate cost/net-energy result is NOT_VERIFIED.
+
+GENERAL INVENTORY RULE:
+The closure principle applies to batteries, pumped-storage reservoirs, thermal stores, compressed-air stores, hydrogen/fuel inventories, and any other modeled energy store. A fuel tank, hot reservoir or hydrogen cavern is not magically exempt because humans gave it a different noun.
+
+FREE-INVENTORY REGRESSION:
+EVIDENCE_ID: CALC-EGC-040-SOCDISC-002
+CASE:
+SOC_0=100 MWh internal energy; eta_d=1; no charge/input during horizon; attempt to discharge 100 MWh and end SOC_T=0.
+WITHOUT CLOSURE:
+model can report 100 MWh served from inherited inventory with zero in-horizon source energy, creating a false low-cost/net-energy result.
+WITH MODE_A_CYCLIC:
+SOC_T=SOC_0 is violated by -100 MWh; case is infeasible unless equivalent energy is restored.
+WITH MODE_B_FINITE:
+the initial 100 MWh inventory must be costed/traced as an input and terminal inventory treated symmetrically; zero-input interpretation is forbidden.
+FALSIFICATION_STATUS: free-inventory exploit CLOSED BY RULE, pending distinct reviewer attack.
+
+SEASONAL / REPRESENTATIVE-PERIOD ANTI-CHEAT RULE:
+If representative days/weeks are weighted independently, the model MUST include explicit inter-period storage-state linking or a validated approximation that preserves annual/seasonal inventory conservation. Independent reset of long-duration storage at each representative period is FORBIDDEN unless the physical operating policy truly resets the store and the required refill energy/cost is modeled.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-040-SOCDISC-001 STORAGE_INVENTORY_CLOSURE: REPAIRED / AWAITING_DISTINCT_REVIEW.
+CLAIM-EGC-040-SOCDISC-002 D_REF_PRIMARY_V1: REPAIRED / AWAITING_DISTINCT_REVIEW.
+CLAIM-EGC-040-SOCDISC-003 ECONOMIC_PV_VS_PHYSICAL_ENERGY_SEPARATION: REPAIRED / AWAITING_DISTINCT_REVIEW.
+JOB-EGC-040-REPAIR-C2-20261006: SUPERSEDED_BY_PARTITION; overlapping physical-ledger scope remains with physical C3 owner; generic PV/finance scope remains FINPV-C5; non-duplicate gaps handled here.
+GLOBAL_SOLVED: NO.
+
+JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-REV-C8-20261006
+TITLE: Independent review of storage-inventory closure and exact primary discount convention
+ROLE: Independent storage-ledger / economic-convention adversary
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does SOCDISC-C7 fully prevent free initial/terminal stored energy and candidate-specific primary discount privilege without double counting storage losses or confusing discounted MWh with physical energy?
+DEPENDENCIES: SOCDISC-C7 submitted; FINPV-C5 submitted; physical-ledger C3 separate.
+REQUIRED_TOOLS: independent equation audit; numerical counterexamples; source verification; representative-period/seasonal-storage attack.
+REQUIRED_EVIDENCE:
+- independently reproduce D_REF_PRIMARY values and toy rank-flip;
+- attempt free-inventory exploit under cyclic and finite modes;
+- attack double counting between inventory residual value and storage-asset residual value;
+- verify candidate-specific WACC cannot leak into primary D_REF;
+- verify physical MASSIVE_ENERGY/EROI quantities remain undiscounted.
+FALSIFICATION_CONDITION:
+FAIL if any candidate can gain free stored energy by boundary choice, if solver-period resets erase inventory debt, if inventory residual is double-counted, if PRIMARY D_REF differs by candidate, or if discounted MWh are used as physical energy.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required.
+NEXT_ACTION: independent session attacks SOCDISC-C7 while other mission jobs continue.
