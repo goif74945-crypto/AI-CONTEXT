@@ -13,6 +13,9 @@
     "NEXY-BUILD-CONTROL/FINDINGS/F-V16RC13-PREACT-DISCOVERY-C-SOL-20261005-1723Z-V16RC13-PREACT.json"
   ],
   "PRODUCT_SOURCE_MUTATION": "NONE",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Establish a durable preactivation identity and evidence trail without claiming V16 product mutation authority."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Establish a durable preactivation identity and evidence trail without claiming V16 product mutation authority.",
+  "RESULT": "Preactivation discovery identity registered and P0 control finding published; product mutation remains forbidden.",
+  "FINDING": "NEXY-BUILD-CONTROL/FINDINGS/F-V16RC13-PREACT-DISCOVERY-C-SOL-20261005-1723Z-V16RC13-PREACT.json",
+  "COMMIT": "806808169bdb15deb73c649c2c61d0495a94a454"
 }
