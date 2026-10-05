@@ -7050,3 +7050,232 @@ REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-COMPLETE-REV-C6-20261006
 STATUS: OPEN
 BLOCKERS: none for registry/method repair; final optimized cost remains dependent on common accounting/reliability/geography.
 NEXT_ACTION: distinct repair session instantiates challenger registry and fail-closed completeness; distinct C6 reviewer attacks it.
+
+
+
+======================================================================
+INDEPENDENT REVIEW RESULT — JOB-EGC-046-SAFETY-FMEA-REG-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0445+07-SAFEREV2
+PRIMARY_JOB_ID: JOB-EGC-046-SAFETY-FMEA-REG-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-046-SAFETY-FMEA-REG-C1-20261006
+ROLE: Independent safety/FMEA/regulatory reviewer / denominator, tail-risk and jurisdiction auditor
+STATUS: VERIFIED
+REVIEW_VERDICT: PASS_WITH_SITE_DESIGN_OPEN_ITEMS
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REVIEW SCOPE:
+Independently attack the generic cross-candidate safety/regulatory gate, evidence provenance, denominator logic, tail-risk treatment, decommissioning/waste ownership and jurisdiction limits. This review does NOT certify any future candidate/site-specific safety case and does NOT produce a universal cross-technology safety ranking.
+
+----------------------------------------------------------------------
+REV-EGC-046-001 — HYDRO DAM RISK / ENVIRONMENT
+----------------------------------------------------------------------
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION
+SOURCE: U.S. FERC Risk-Informed Decision Making; FERC hydropower licensing/environment pages.
+URL: https://www.ferc.gov/dam-safety-and-inspections/risk-informed-decision-making-ridm
+URL_2: https://www.ferc.gov/licensing
+URL_3: https://www.ferc.gov/hydropower/administration-and-compliance/environment
+CURRENT_SOURCE_FACT:
+FERC risk-informed dam safety evaluates loading likelihood, conditional system response and consequences rather than a technology-wide scalar. FERC hydropower licensing uses EA/EIS review and project-specific environmental studies/mitigation; current FERC pages explicitly cover environmental-resource protection and case-specific review.
+VERDICT:
+CLAIM-EGC-046-HYDRO-RIDM = PASS.
+BOUNDARY:
+U.S./project specific. A hydropower class-wide safety factor cannot be inferred. C1's CONDITIONAL_SITE_SPECIFIC state is supported.
+
+----------------------------------------------------------------------
+REV-EGC-046-002 — LI-ION BESS THERMAL-RUNAWAY / DESIGN DEPENDENCE
+----------------------------------------------------------------------
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION + VISUAL_PDF_CHECK
+SOURCE: U.S. DOE Office of Electricity, Energy Storage Safety Strategic Plan, 2024-04.
+URL: https://www.energy.gov/sites/default/files/2024-05/EED_2827_FIG_SafetyStrategy%20240505v2.pdf
+METHOD:
+PDF text extraction plus independent rendered-page inspection of printed pp.11 and 26.
+SOURCE_FACT:
+- DOE identifies Li-ion thermal runaway leading to fire or explosion as a primary safety concern.
+- DOE distinguishes electrochemical chemistries and notes different hazard mechanisms; Li-ion system risk is not a valid proxy for every storage chemistry.
+- DOE discusses layered protection, spacing/containment and system design because loss severity/frequency depend on installation and protective architecture.
+VERDICT:
+CLAIM-EGC-046-BESS-HAZARD = PASS.
+ADVERSARIAL LIMIT:
+"BESS has one universal safety risk/cost" = FALSIFIED.
+"LFP/other chemistry has zero hazard" = NOT_SUPPORTED.
+C1 correctly keeps Li-ion hazard/site design inside the gate rather than disqualifying all storage.
+
+----------------------------------------------------------------------
+REV-EGC-046-003 — NUCLEAR PRA / TAIL-RISK DIMENSIONS
+----------------------------------------------------------------------
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION
+SOURCE: U.S. NRC Probabilistic Risk Assessment.
+URL: https://www.nrc.gov/regulations-legislation/how-we-regulate/risk-assessment/probabilistic-risk-assessment-pra
+SOURCE_FACT:
+NRC PRA separates core-damage frequency, radionuclide-release behavior and public/environmental consequences; consequence analysis depends on site/weather/population and emergency-response context.
+VERDICT:
+CLAIM-EGC-046-NUCLEAR-PRA = PASS.
+ADVERSARIAL RESULT:
+A single historical "deaths/TWh" scalar cannot substitute for the required severe-accident/site/design evidence because it discards event-frequency/severity and consequence-distribution dimensions. This is a methodological conclusion, not a claim that deaths/TWh statistics are useless.
+
+----------------------------------------------------------------------
+REV-EGC-046-004 — FUKUSHIMA RADIATION-HEALTH SCOPE
+----------------------------------------------------------------------
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION / SCOPE_AUDIT
+SOURCE: UNSCEAR Fukushima 2020/2021 assessment FAQ.
+URL: https://www.unscear.org/unscear/en/areas-of-work/fukushima-report-faq.html
+SOURCE_FACT:
+UNSCEAR reports no adverse health effects among Fukushima residents documented as directly attributable to accident radiation exposure and no population-level detectable future radiation-related health effects expected from radiation.
+CRITICAL_SCOPE:
+UNSCEAR's assessment is radiation-health evidence; it does not turn all accident, evacuation, mental-health, financial, ecological, emergency-response or decommissioning consequences into zero.
+VERDICT:
+CLAIM-EGC-046-FUKUSHIMA-CONSTRAINT = PASS_WITH_SCOPE_LOCK.
+C1 already states this evidence does not imply zero accident consequence/risk. That limitation is mandatory downstream.
+
+----------------------------------------------------------------------
+REV-EGC-046-005 — NUCLEAR DECOMMISSIONING DIAGNOSTIC REPLICATION
+----------------------------------------------------------------------
+EVIDENCE_CLASS: SOURCE_FACT + INDEPENDENT_CALCULATION
+SOURCE: U.S. NRC Financial Assurance for Decommissioning.
+URL: https://www.nrc.gov/facilities-safety/decommissioning/financial-assurance
+SOURCE_FACT:
+NRC gives an approximate USD 280-612 million reactor decommissioning range and requires decommissioning financial assurance/reporting; actual cost depends on reactor/site/schedule and spent-fuel boundary.
+INDEPENDENT_TOOL: Wolfram Language.
+INPUTS:
+1000 MW; CF=0.90; 8760 h/y; life=60 y; USD280M and USD612M diagnostic endpoints.
+EQUATIONS:
+E_life = 1000*0.90*8760*60 MWh.
+C_diag = C_decom/E_life.
+OUTPUT:
+E_life = 473,040,000 MWh.
+USD280M/E_life = 0.591916117030272 USD/MWh.
+USD612M/E_life = 1.293759512937595 USD/MWh.
+REPLICATION_STATUS: INDEPENDENT_REPLICATION_PASS versus C1 shown rounded values 0.592-1.294 USD/MWh.
+LIMITATION:
+This remains a hypothetical undiscounted diagnostic, NOT LCOE, FSRC_ND or evidence that every reactor has that realized cost.
+
+----------------------------------------------------------------------
+REV-EGC-046-006 — ADVANCED-FISSION REGULATORY PATH
+----------------------------------------------------------------------
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION
+SOURCE: U.S. NRC Part 53 rulemaking/effective-date record.
+URL: https://www.nrc.gov/facilities-safety/new-reactors/advanced-reactors/modernizing-how-we-regulate/rulemaking/part-53-risk-informed-technology-inclusive-regulatory-framework-for-advanced-reactors
+SOURCE_FACT:
+Part 53 final rule was published 2026-03-30 and became effective 2026-04-29, providing a risk-informed, performance-based, technology-inclusive U.S. framework.
+VERDICT:
+CLAIM-EGC-046-ADVNUC-REG = PASS.
+BOUNDARY:
+Framework existence does not establish approval, safety performance, cost or construction performance of a particular reactor.
+
+----------------------------------------------------------------------
+REV-EGC-046-007 — FUSION U.S. REGULATORY MATURITY
+----------------------------------------------------------------------
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION
+SOURCE: U.S. NRC Fusion Energy rulemaking status.
+URL: https://www.nrc.gov/materials/fusion/rulemaking-status
+SOURCE_FACT:
+NRC's fusion rule remained in rulemaking in 2026; proposed rule published 2026-02-26 with final rule/guidance targeted for 2027.
+VERDICT:
+CLAIM-EGC-046-FUSION-REGMATURITY = PASS.
+BOUNDARY:
+This is U.S. regulatory status only. It is neither a physics falsification nor a universal global regulatory conclusion.
+
+----------------------------------------------------------------------
+REV-EGC-046-008 — EGS INDUCED-SEISMICITY SCOPE
+----------------------------------------------------------------------
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION
+SOURCE: U.S. DOE geothermal subsurface / induced-seismicity guidance.
+URL: https://www.energy.gov/hgeo/geothermal/subsurface-enhancement-and-sustainability
+SOURCE_FACT:
+DOE treats induced-seismicity response as reservoir/site/stimulation dependent; subsurface heterogeneity/model uncertainty, monitoring and protocol-based mitigation are material.
+VERDICT:
+CLAIM-EGC-046-EGS-SEISMIC = PASS.
+ADVERSARIAL RESULT:
+"All geothermal/EGS is unacceptable because induced seismicity exists" = FALSIFIED as a class-wide inference.
+"An EGS site may ignore induced-seismicity monitoring/mitigation" = REJECTED.
+
+----------------------------------------------------------------------
+REV-EGC-046-009 — PV/WIND END-OF-LIFE / FINANCIAL ASSURANCE
+----------------------------------------------------------------------
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION
+SOURCES:
+U.S. DOE End-of-Life Management for Solar PV.
+https://www.energy.gov/cmei/systems/end-life-management-solar-photovoltaics
+U.S. BLM renewable-energy bonding.
+https://www.blm.gov/programs/energy-and-minerals/renewable-energy/wind-energy/permitting-and-development/bonding
+SOURCE_FACT:
+DOE identifies repowering/decommissioning/reuse/recycling/disposal and site-restoration costs as real lifecycle considerations; BLM bonding can secure construction, operation, decommissioning and reclamation obligations on U.S. public lands.
+VERDICT:
+CLAIM-EGC-046-RENEWABLE-EOL = PASS.
+BOUNDARY:
+Requirements and amounts are jurisdiction/project specific; no universal renewable decommissioning USD/MWh is established.
+
+----------------------------------------------------------------------
+REV-EGC-046-010 — UNECE LCA AS NON-SUFFICIENT SAFETY RANK
+----------------------------------------------------------------------
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION / QUALITY-AUDIT
+SOURCE: UNECE Life Cycle Assessment of Electricity Generation Options + corrigendum.
+URL: https://unece.org/sed/documents/2021/10/reports/life-cycle-assessment-electricity-generation-options
+CORRIGENDUM_URL: https://unece.org/sites/default/files/2022-07/Corrigendum%20to%20UNECE%20LCA%20report%20-%20land%20use.pdf
+SOURCE_FACT:
+UNECE compares multiple lifecycle impact indicators. The corrigendum records corrections to land-use results and states some aggregate human-health/ecosystem indicators did not receive the same degree of quality checking as the core Table-3 indicators.
+VERDICT:
+"LCA alone identifies the safest delivered system" remains FALSIFIED_AS_SUFFICIENT.
+C1's use of LCA only as one evidence layer is supported.
+
+----------------------------------------------------------------------
+SYSTEM-BOUNDARY / ACCOUNTING RED TEAM
+----------------------------------------------------------------------
+
+FINDING REV-EGC-046-BND-001 — FINANCIAL ASSURANCE IS NOT AUTOMATIC RESOURCE CONSUMPTION
+TRUTH_CLASS: INFERENCE / ACCOUNTING-INVARIANT
+A refundable bond/deposit principal is not automatically a consumed physical/social resource. The primary real-resource ledger should count actual mitigation, monitoring, emergency, waste, cleanup, decommissioning/restoration and compliance resources once. Candidate-neutral finance/opportunity/carrying effects belong in the reviewed finance/accounting lane. Do not charge the same terminal remediation once as physical work and again as an undifferentiated bond/liability.
+C1 wording "financial deposits/taxes/penalties/insurance transfers are not automatically primary social-resource cost" = PASS.
+
+FINDING REV-EGC-046-BND-002 — GENERIC HAZARD != CLASS-WIDE DISQUALIFICATION
+TRUTH_CLASS: INFERENCE SUPPORTED BY REGULATORY METHOD
+FERC/NRC/DOE evidence is explicitly site/design/system dependent. Generic existence of dam failure, severe-reactor accident, induced seismicity or battery thermal runaway is insufficient by itself to mark an entire mature technology class P0.
+C1 P0_GLOBAL_TECHNOLOGY_CLASS = NONE_FROM_GENERIC_EVIDENCE = PASS AS AN EVIDENCE-STATE CLAIM, NOT as proof that every project is safe.
+
+FINDING REV-EGC-046-BND-003 — SITE/DESIGN P0 REMAINS REAL
+TRUTH_CLASS: METHOD_CONDITION
+Where a candidate architecture relies on a dam, reactor safety case, EGS stimulation or Li-ion BESS but omits applicable high-consequence hazard analysis, monitoring/mitigation, emergency provisions or regulatory requirements, the candidate/site remains P0 until those evidence gaps close.
+This does NOT assign an invented probability; it is an evidence-completeness gate.
+
+FINDING REV-EGC-046-BND-004 — NO UNIVERSAL SAFETY SCALAR VERIFIED
+TRUTH_CLASS: NOT_VERIFIED / METHOD_RESULT
+No reviewed evidence supports one candidate-neutral scalar that collapses routine occupational risk, rare catastrophic consequences, chronic releases, EOL/waste, ecosystem impact and jurisdictional compliance without an explicit value model. Do not invent one to make optimization convenient.
+
+----------------------------------------------------------------------
+CLAIM / JOB VERDICT
+----------------------------------------------------------------------
+
+CLAIM-EGC-046-GATE: REVIEW_PASS as generic method/evidence architecture.
+CLAIM-EGC-046-HYDRO-RIDM: REVIEW_PASS.
+CLAIM-EGC-046-BESS-HAZARD: REVIEW_PASS with chemistry/site/design tagging mandatory.
+CLAIM-EGC-046-NUCLEAR-PRA: REVIEW_PASS.
+CLAIM-EGC-046-FUKUSHIMA-CONSTRAINT: REVIEW_PASS_WITH_RADIATION_HEALTH_SCOPE_LOCK.
+CLAIM-EGC-046-NUCLEAR-DECOM: REVIEW_PASS; arithmetic independently replicated, remains diagnostic only.
+CLAIM-EGC-046-ADVNUC-REG: REVIEW_PASS with U.S./design scope.
+CLAIM-EGC-046-FUSION-REGMATURITY: REVIEW_PASS with U.S./date scope.
+CLAIM-EGC-046-EGS-SEISMIC: REVIEW_PASS with site/stimulation scope.
+CLAIM-EGC-046-RENEWABLE-EOL: REVIEW_PASS with jurisdiction/project scope.
+CLAIM-EGC-046-CROSS-TECH-NUMERIC-SAFETY-RANK: remains NOT_VERIFIED and is NOT required as a single scalar gate.
+
+PARENT_STATUS_UPDATE:
+JOB-EGC-046-SAFETY-FMEA-REG-C1-20261006: AWAITING_REVIEW -> VERIFIED_AS_GENERIC_GATE_AND_EVIDENCE_ARCHITECTURE.
+JOB-EGC-046-SAFETY-FMEA-REG-REV-C2-20261006: EXECUTING -> VERIFIED.
+IMPORTANT:
+This does NOT close candidate/site-specific P0/P1 findings and does NOT make G13/G14/G19/G23/G24 globally PASS. Candidate integrated architectures must still attach applicable site/design safety case, mitigation, environmental/regulatory pathway and causal resource costs.
+
+REMAINING SAFETY/REGULATORY WORK:
+- candidate/site-specific dam PFMA/RIDM and emergency requirements when hydro/PSH enters a finalist architecture;
+- design-specific reactor licensing/PRA/security/waste/decommissioning evidence for any nuclear finalist;
+- site-specific induced-seismicity protocol/monitoring for any EGS finalist;
+- chemistry/system-specific fire/explosion/emergency/EOL evidence for any BESS finalist;
+- candidate-specific environmental/permitting and decommissioning resource quantities under the common FSRC_ND ledger;
+- integrated interface/cascade/control/cyber/protection FMEA for any hybrid-grid finalist.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+NEXT_ACTION: continue from latest Job Board; prioritize unresolved reviewed P0/P1/common-boundary repairs and integrated candidate architecture after prerequisite gates close.
