@@ -10576,3 +10576,163 @@ NEXT_ACTION: distinct session claims C3 repair; distinct C4 reviewer attacks it.
 GLOBAL_SOLVED: NO
 CURRENT_WINNER: NONE
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+REVIEW RESULT — JOB-EGC-043-BASELINE-SCREEN-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0340+07-BLREV2
+PRIMARY_ROLE: Independent current-baseline techno-economic / grid-system reviewer
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REV-C2-20261006
+STATUS: AWAITING_REVIEW
+REVIEW_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SUMMARY:
+Submitted source facts and CALC-EGC-043-001 mostly replicate correctly. C1 correctly keeps plant LCOE, observed CAPEX, fleet capacity factor, tax-credit-inclusive AEO values and project-level firm-LCOE in separate evidence lanes. It does not equate CF with capacity credit and does not promote a plant-LCOE winner. The baseline set nevertheless fails completeness because its FLEXIBILITY_LAYER omits currently commercial pumped-storage hydropower (PSH), triggering the review job's explicit falsification condition for an omitted credible baseline. Its BESS physics source should also be updated from 2024b to current 2025 ATB for cost/O&M provenance.
+
+EVIDENCE_ID: REV-EGC-043-BL-001
+TARGET: EVID-EGC-043-001
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_REPLICATION
+SOURCE: IRENA, Renewable Power Generation Costs in 2025
+SOURCE_DATE: 2026-07
+URL: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+OUTPUT_USD_PER_MWH: onshore wind 33; solar PV 44; hydropower 62; offshore wind 78; geothermal 89; bioenergy 86; CSP 115.
+BOUNDARY: global/project LCOE; not delivered-system FSRC_ND.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-BL-002
+TARGET: EVID-EGC-043-002 + CALC-EGC-043-001
+EVIDENCE_CLASS: EXTERNAL_FACT + CALCULATION / INDEPENDENT_REPLICATION
+SOURCE: U.S. EIA Electric Power Monthly Table 6.07.B
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b
+INPUT_2025_CF: nuclear=0.910; geothermal=0.659; hydro=0.353; wind=0.342; solarPV=0.244.
+EQUATION: P_nameplate_per_1GWavg=1/CF.
+OUTPUT_GW_PER_GWAVG: nuclear 1.0989010989; geothermal 1.5174506829; hydro 2.8328611898; wind 2.9239766082; solarPV 4.0983606557.
+TOOLS: Python + Wolfram Language; exact cross-tool agreement to shown precision.
+LIMITATION: U.S. fleet CF is energy-utilization evidence only, not ELCC/adequacy/security.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-BL-003
+TARGET: EVID-EGC-043-003
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_REPLICATION
+SOURCE: U.S. EIA, Construction cost data for generators installed in 2024
+SOURCE_DATE: 2026-07-06
+URL: https://www.eia.gov/electricity/generatorcosts/
+OUTPUT_USD_PER_KW: solar 1865; battery 1469; wind 1882; natural-gas aggregate 1004.
+OUTPUT_NEW_PLANT_MW: solar 30265; battery 10195; wind 4455; gas 1061.
+BOUNDARY: observed installed CAPEX; EIA says grants/tax benefits/incentives excluded. 2024 gas technology split shown is combustion turbine/internal-combustion engine, so C1 is correct not to relabel aggregate as modern NGCC.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-BL-004
+TARGET: EVID-EGC-043-004
+EVIDENCE_CLASS: SIMULATION_RESULT / INDEPENDENT_REPLICATION
+SOURCE: U.S. EIA, Levelized Costs of New Generation Resources in AEO2026
+SOURCE_DATE: 2026-04-08
+URL: https://www.eia.gov/outlooks/aeo/electricity_generation/pdf/LCOE_report.pdf
+VISUAL_CHECK: PDF pages 3 and 7.
+SOURCE_FACTS: common online year 2031; 30-y cost recovery; 7.27% after-tax WACC; PV-battery=PV+4h BESS; eligible reported LCOE values include levelized tax-credit component.
+REPLICATED_USD2025_PER_MWH: advanced nuclear 87.81; biomass 84.54; NGCC 77.46; NGCC+CCS 58.47; geothermal 40.38; offshore wind 118.79; hydro 64.77; PV-battery 94.20; PV 58.33; onshore wind 56.75; CT 172.57; battery LCOS 152.61.
+BOUNDARY_ATTACK: EIA itself states LCOE is limited relative to grid value and uses LACE as companion evidence; tax credits/policy transfers cannot lower PRIMARY FSRC_ND by bookkeeping.
+REVIEW_STATUS: PASS_WITH_PRIMARY_LEDGER_EXCLUSION.
+
+EVIDENCE_ID: REV-EGC-043-BL-005
+TARGET: EVID-EGC-043-005
+EVIDENCE_CLASS: SIMULATION_RESULT + METHODOLOGY_FACT / INDEPENDENT_REPLICATION
+SOURCE: IRENA, 24/7 renewables
+SOURCE_DATE: 2026-05
+URL: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf
+VISUAL_CHECK: PDF pages 25-26.
+OUTPUT: Las Vegas 100-MW PV example LCOE 43.5 USD/MWh; at 95% asset-delivery target BESS=591.8 MWh, solar overbuild=61.9 MW, firm LCOE=113.2 USD/MWh, premium=69.7 USD/MWh.
+BOUNDARY: IRENA explicitly defines this as asset-level delivery certainty, not full system adequacy/security; flat hourly load is a benchmark rather than optimal grid dispatch.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-BL-006
+TARGET: EVID-EGC-043-006
+EVIDENCE_CLASS: EXTERNAL_FACT / SOURCE_UPDATE
+SOURCE: NLR 2025 ATB, Utility-Scale Battery Storage
+URL: https://atb.nlr.gov/electricity/2025/utility-scale_battery_storage
+OUTPUT: 2/4/6/8/10h LIB; 4h one-cycle/day convention=16.7% CF; RTE 85%; technical life 15y; FOM 4% of CAPEX including augmentation.
+FINDING: C1's 2024b RTE/life/duration facts remain compatible, but its 2.5%-FOM vintage is superseded for current cost/O&M work. Use 2025 ATB.
+REVIEW_STATUS: PASS_PHYSICS / REPAIR_REQUIRED_SOURCE_VINTAGE_FOR_COST.
+
+EVIDENCE_ID: REV-EGC-043-BL-007
+TARGET: EVID-EGC-043-007
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_REPLICATION
+SOURCE: U.S. EIA, planned 2026 utility-scale additions
+SOURCE_DATE: 2026-02-20
+URL: https://www.eia.gov/todayinenergy/detail.php?id=67205
+OUTPUT: 86 GW planned if realized; solar 43.4; battery 24; wind 11.8; gas 6.3 GW, including ~3.3 NGCC and ~2.8 CT.
+LIMITATION: plans are not completions; nameplate is not net firm service.
+REVIEW_STATUS: PASS.
+
+FINDING_ID: FIND-EGC-043-BLREV-P1-001
+SEVERITY: P1
+TRUTH_CLASS: EXTERNAL_FACT + INFERENCE
+TARGET: C1 FLEXIBILITY_LAYER / baseline completeness
+FINDING: Pumped-storage hydropower is omitted despite being a current commercial grid-scale long-duration storage comparator.
+SOURCE_A: U.S. DOE, 2026 U.S. Hydropower Market Report release
+SOURCE_DATE: 2026-09-18
+URL_A: https://www.energy.gov/cmei/water/articles/energy-department-releases-2026-us-hydropower-market-report-showing-steady
+OUTPUT_A: U.S. PSH fleet=41 plants, 22.23 GW generating capacity, 553 GWh storage; 82.1% of cited U.S. utility-scale energy-storage capacity.
+CALCULATION: 553 GWh / 22.23 GW = 24.8762933 h aggregate energy-to-power ratio.
+TOOLS: Python + Wolfram PASS.
+LIMITATION: aggregate quotient is not a claim every plant discharges 24.88 h at rating.
+SOURCE_B: NLR 2025 ATB Pumped Storage Hydropower
+URL_B: https://atb.nlr.gov/electricity/2025/pumped_storage_hydropower
+OUTPUT_B: PSH represented at 8/10/12h; RTE literature range 70-87%, central 80%; site-specific cost/resource supply curves; closed-loop and existing-reservoir classes.
+SOURCE_C: NLR 2025 ATB Definitions
+URL_C: https://atb.nlr.gov/electricity/2025/definitions
+OUTPUT_C: PSH technical life 100y versus utility BESS 15y.
+FALSIFICATION_CONDITION_TRIGGERED: YES — reviewer job explicitly fails if a credible current baseline is omitted.
+IMPLICATION: strongest matched portfolio must be allowed to select PSH where geography/site/environment/permitting constraints permit; otherwise a long-duration candidate can be benchmarked against a 4h-BESS strawman.
+
+ADVERSARIAL CHECKS:
+- PLANT_LCOE_AS_SYSTEM_COST: PASS; C1 rejects it.
+- CF_AS_CAPACITY_CREDIT: PASS; C1 rejects it.
+- TAX_CREDIT_AS_PRIMARY_RESOURCE_COST: PASS; C1 excludes transfer privilege.
+- STORAGE_DOUBLE_COUNT: PASS_AT_METHOD_LEVEL; final closure still depends on reviewed FSRC_ND.
+- GEOGRAPHY_SYMMETRY: PASS_WITH_CLARIFICATION; same geography means same demand/delivery domain and symmetric access to feasible resource regions, not identical plant coordinates.
+- GREENFIELD_VS_BROWNFIELD: NOT_VERIFIED downstream; existing-fleet performance cannot grant free sunk assets to baseline while candidate pays greenfield CAPEX.
+
+CLAIM_VERDICTS:
+CLAIM-EGC-043-PLANT-COST-FRONTIER: PASS_WITH_BOUNDARY.
+CLAIM-EGC-043-MEASURED-CF: PASS.
+CLAIM-EGC-043-LCOE-NOT-SYSTEM-COST: PASS.
+CLAIM-EGC-043-PORTFOLIO-BASELINE-REQUIRED: PASS_IN_PRINCIPLE / REPAIR_REQUIRED_FOR_COMPLETENESS.
+CLAIM-EGC-043-FINAL-WINNER: correctly NOT_VERIFIED/NONE.
+
+STATUS_CHANGE:
+JOB-EGC-043-BASELINE-SCREEN-C1-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-043-BASELINE-SCREEN-REV-C2-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+NEW_JOB:
+JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REPAIR-C3-20261006
+TITLE: Add PSH and current-storage provenance to strongest-current baseline
+ROLE: Baseline portfolio repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can the baseline be repaired so current storage/flexibility technologies are represented without privileging four-hour Li-ion and without giving site-constrained PSH free geographic availability?
+DEPENDENCIES: FIND-EGC-043-BLREV-P1-001; REV-EGC-043-BL-006.
+REQUIRED_TOOLS: 2025 ATB/DOE source audit; site-feasibility boundary audit; lifecycle/duration/RTE normalization; chronological-model handoff.
+REQUIRED_EVIDENCE:
+- supersede 2024b BESS cost/O&M provenance with 2025 ATB;
+- add PSH selectable where site/geography permits;
+- encode PSH site/resource/environment/permitting constraints;
+- keep BESS/PSH charge, discharge and losses on one physical ledger;
+- preserve 15y BESS vs 100y PSH lifecycle/replacement asymmetry;
+- separate GW, GWh and hours;
+- rerun omitted-commercial-baseline audit.
+FALSIFICATION_CONDITION: FAIL if superiority can arise solely from restricting baseline storage duration/technology, universalizing PSH geography, or asymmetric lifecycle accounting.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REPAIR-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: NONE for repair; final ranking still requires reviewed FSRC_ND, R_STAR, geography and objective.
+NEXT_ACTION: distinct session claims C3, repairs, then C4 independently attacks it.
+
+HANDOFF:
+No final technology winner is justified. After repair/review, chronological common-geography portfolio optimization must compare candidates against the strongest R_STAR/FSRC_ND-matched portfolio rather than a single-source or 4h-storage strawman.
