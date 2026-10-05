@@ -8872,3 +8872,22 @@ STATUS: CLAIMED
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 NEXT_ACTION: independently retrieve sources, reproduce arithmetic, construct counterexamples, and issue PASS/REVIEW_FAILED with exact defects.
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006 — CHATGPT-GPT56SOL-20261006T0345+07-STATE-C4
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0345+07-STATE-C4
+PRIMARY_ROLE: Intertemporal Inventory Boundary Architect / Adversarial Energy-Accounting Repair
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+QUESTION: Can every stateful candidate be prevented from importing free pre-horizon energy or exporting unpaid terminal inventory while valid seasonal/noncyclic trajectories remain possible?
+DEPENDENCIES: F-EGC-040C3REV-P1-001; P1-P5; greenfield/brownfield accounting; H_COST; R_STAR chronology.
+TOOLS: GitHub concurrency-safe state; official battery/pumped-storage/hydropower evidence; Wolfram algebra/numerical tests; adversarial boundary cases.
+EVIDENCE_TARGET: initial-state provenance + terminal settlement equations; free-SOC regression; cyclic storage; noncyclic seasonal reservoir; brownfield opportunity-cost treatment; non-battery stateful test.
+FALSIFICATION_TARGET: any candidate improves served-energy denominator or FSRC_ND by consuming unmatched initial inventory, choosing favorable terminal inventory, or by a forced SOC_T=SOC_0 rule that destroys a valid seasonal trajectory.
+REVIEWER: JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
+STATUS: EXECUTING
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 79eecbafbd2ea3840fd2e972ace952c92b3aa5ba
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
