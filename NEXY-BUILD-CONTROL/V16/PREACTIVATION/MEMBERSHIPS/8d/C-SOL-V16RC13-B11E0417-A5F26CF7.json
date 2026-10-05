@@ -4,8 +4,8 @@
   "CHAT_ID": "C-SOL-V16RC13-B11E0417-A5F26CF7",
   "MEMBERSHIP_ID": "PRE-8ddcba2cc0ad8817833ed42bf383ce29",
   "SHARD": "8d",
-  "STATE": "ACTIVE_READ_ONLY_PREACTIVATION",
-  "RECORD_GENERATION": 4,
+  "STATE": "SUSPENDED",
+  "RECORD_GENERATION": 5,
   "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
   "REQUESTED_CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
   "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
@@ -18,5 +18,6 @@
   "PRODUCT_MUTATION_ELIGIBLE": false,
   "INTEGRATION_ELIGIBLE": false,
   "BOOTSTRAP_FENCE_STATE_OBSERVED": "BLOCKED",
-  "LAST_RESYNC_REASON": "Bootstrap Fence v6 records independently verified freeze-message integrity while preserving phase-gate block."
+  "LAST_RESYNC_REASON": "Bootstrap Fence v6 records independently verified freeze-message integrity while preserving phase-gate block.",
+  "SUSPEND_REASON": "Execution window ending at fail-closed user-authority/static-protocol blocker; resumable after canonical state refresh."
 }
