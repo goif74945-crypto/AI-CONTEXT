@@ -4495,3 +4495,51 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+35. INDEPENDENT OBJECTIVE REVIEW CLAIM — OBJ-EGC-V1
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-OBJREV-H1-20261005
+PRIMARY_ROLE: Independent Objective / Metric Reviewer + Numerical Replication
+PRIMARY_JOB_ID: JOB-EGC-OBJ-REV-H1-20261005
+QUESTION: Are OBJ-EGC-V1's LOW_COST, MASSIVE_ENERGY, reliability, EROI, and deployment criteria candidate-neutral, numerically reproducible, source-grounded where factual, and strict enough to prevent post-result gaming?
+DEPENDENCIES: JOB-EGC-001 evidence package is present; provenance review of lease ownership is independent and does not block technical review.
+TOOLS: authoritative current source retrieval; source-methodology inspection; deterministic arithmetic; independent replication; boundary red-team.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / REPLICATION / CONFLICT / ASSUMPTION-AUDIT.
+FALSIFICATION_TARGET: arithmetic error; stale or unsupported source fact; metric boundary mismatch; arbitrary threshold presented as fact; candidate-tailored threshold; omitted system cost capable of reversing ranking.
+REVIEWER: distinct future session required for any new decision-controlling proposal introduced by this review.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-OBJ-REV-H1-20261005
+ROLE: R01 objective formalization reviewer + R23 independent numerical replication + R25 evidence audit
+TITLE: Independently reproduce and red-team OBJ-EGC-V1
+QUESTION_TO_RESOLVE: PASS/FAIL each objective criterion separately, verify source facts and calculations, identify conflicts, and issue exact repair instructions without weakening requirements to favor a candidate.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: OBJ-EGC-V1 evidence package available in MAIN-CHAT.md
+REQUIRED_INPUTS: EVID-EGC-001-A through E; current source methodology; mission constitution; current branch state.
+REQUIRED_TOOLS: authoritative web/source retrieval; independent arithmetic; source-boundary comparison; sensitivity and anti-gaming review.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION / CONFLICT
+EXPECTED_OUTPUT: per-criterion PASS/FAIL/NOT_VERIFIED, reproduced calculations, source audit, threshold-class audit, repair jobs, and evidence graph links.
+FALSIFICATION_CRITERIA: FAIL any factual anchor that cannot be independently sourced; FAIL any calculation that cannot be reproduced; mark NOT_VERIFIED any threshold whose arbitrariness or boundary ambiguity can plausibly reverse the final mission decision.
+REVIEWER_JOB_ID: JOB-EGC-OBJ-REV-H1-REVIEW-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-OBJREV-H1-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC time UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC time UNKNOWN
+BLOCKERS: NONE for independent review.
+HANDOFF: Verify current sources and arithmetic now; submit only AWAITING_REVIEW, never self-VERIFY any new replacement criterion.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: 8d368c97a610a14599e4e3c8e1cc954515157b00
+- file SHA read immediately before write: e729e3e27064a1da4dbdf24692851f98ad1afb7d
+- write method: append-only replacement guarded by exact blob SHA; no other file/repository touched; no force update.
+- commit/result: PENDING_THIS_COMMIT
+
+GLOBAL_STATE_DELTA:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
