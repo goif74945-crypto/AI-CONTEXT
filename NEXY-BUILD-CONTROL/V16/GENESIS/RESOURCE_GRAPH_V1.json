@@ -11403,8 +11403,17 @@
   "NODE_COUNT": 1104,
   "FILE_NODE_COUNT": 881,
   "MODULE_NODE_COUNT": 58,
-  "STATUS": "CANDIDATE_NOT_ACTIVATION_READY_PENDING_SEMANTIC_CONFLICT_REVIEW",
+  "STATUS": "INVENTORY_BASELINE_ONLY_NOT_RESOURCE_AUTHORITY",
   "PRODUCT_SOURCE_MUTATION": false,
   "TARGET_INTEGRATION": false,
-  "CREATED_BY_CHAT_ID": "C-SOL-20261005-1723Z-V16RC13-PREACT"
+  "CREATED_BY_CHAT_ID": "C-SOL-20261005-1723Z-V16RC13-PREACT",
+  "AUTHORITY_FILTER_STATUS": "BLOCKED_PENDING_ACTIVE_BUILD_AUTHORITY_RECONCILIATION",
+  "DO_NOT_BIND_IN_GENESIS": true,
+  "AUTHORITY_REVIEW_EVIDENCE": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-0936-0800-V16RC13-HASHBIND-7C91-RESOURCE-GRAPH-READINESS.json",
+  "AUTHORITY_LIMIT": "Exact target-tree enumeration proves structural presence only. Historical, future, experimental, test, docs, and other repository surfaces are not automatically current-build resource authority.",
+  "REQUIRED_PROMOTION_INPUTS": [
+    "verified authority-filtered active-build requirement manifest/root",
+    "verified mapping from active obligations to current implementation resources",
+    "independent semantic conflict/umbrella review"
+  ]
 }
