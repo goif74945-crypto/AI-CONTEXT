@@ -1,7 +1,7 @@
 {
   "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
   "chat_id": "C-SOL-20261006-0220-AUDIT-VIEWER-RBAC",
-  "status": "CLAIMED",
+  "status": "COMPLETED_INTEGRATED_CI_INFRA_BLOCKED",
   "objective": "Enforce canonical OWNER/AUDITOR S10 view permission before the audit page issues privileged audit-log reads.",
   "requirement_gap": "DOC-C GET /api/audit-logs is OWNER/AUDITOR-only. Nav now hides S10 from OPERATOR, but a direct /audit visit still mounts the fetch and converts a deterministic permission denial into a request-level error instead of canonical Permission denied copy.",
   "target_repository": "goif74945-crypto/NEXY.AI-",
@@ -29,5 +29,25 @@
     "OPERATOR sees Permission denied",
     "OWNER/AUDITOR retain S10 filter/export behavior",
     "backend remains final authorization authority"
-  ]
+  ],
+  "pr_number": 76,
+  "pr_head_sha": "8e8d7b408a520a40ede5e3d404de21015b1c8959",
+  "merge_sha": "50146362680f138c6e2cbbbe1fe90f6a01157c60",
+  "post_merge_observed_head": "50146362680f138c6e2cbbbe1fe90f6a01157c60",
+  "evidence": [
+    "Exact integration S10 checks session role before mounting AuditLogContent",
+    "Unauthorized roles receive canonical Permission denied copy before /api/audit-logs fetch can mount",
+    "S10 FILTER LOGS and EXPORT LOGS behavior remains present",
+    "Focused exact-worker structural checks: PASS",
+    "Integration audit page remained byte-identical to worker base and new test path remained absent before merge",
+    "PR #76 was clean and merged with expected head SHA guard",
+    "Observed integration HEAD equaled merge SHA"
+  ],
+  "ci": {
+    "status": "INFRASTRUCTURE_BLOCKED",
+    "exact_head_run_id": 37361619963,
+    "six_system_run_id": 37361619964,
+    "observation": "Both post-merge jobs completed failure before any step materialized; jobs returned steps=null and logs_url=null. No Vitest/typecheck result is claimed."
+  },
+  "completed_at": "2026-10-06T02:24:00+07:00"
 }
