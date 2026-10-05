@@ -12289,3 +12289,134 @@ WRITE_INTEGRITY:
 - file SHA read: 6d0d12a8834ec53a592aae3ed48d02840392ef18
 - stale-write check: exact SHA guarded update attempt 1.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+43. JOB-EGC-013 EVIDENCE PACKAGE — MATERIAL/SUPPLY-CHAIN SCALE METHOD
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-MAT013-K2-20261005
+PRIMARY_JOB_ID: JOB-EGC-013
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: JOB-EGC-022 or distinct independent materials reviewer
+
+TOOL_EVIDENCE_ID: TE-EGC-MAT013-001
+JOB_ID: JOB-EGC-013
+CLAIM_ID: CLAIM-EGC-MINERAL-BASELINE-2026
+TOOL_OR_METHOD: Current authoritative IEA source retrieval
+SOURCE: IEA Global Critical Minerals Outlook 2026
+SOURCE_DATE: 2026-07-16
+SOURCE_URL_OR_IDENTIFIER:
+- https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary
+- https://www.iea.org/reports/global-critical-minerals-outlook-2026/outlook
+RAW_OR_KEY_OUTPUT:
+- Critical-mineral demand continues strong growth; energy technologies remain a dominant driver.
+- Copper demand adds about 7 Mt by 2040 in STEPS.
+- Existing/announced-project base case still leaves projected 2035 supply deficits for copper and lithium; copper gap approximately 25%.
+- A new cobalt gap exceeds 25% in the base-case outlook after DRC policy/export-quota changes.
+- Base-case nickel and graphite also show slight gaps, though early-stage projects could close them in a high-production case.
+EVIDENCE_CLASS: SOURCE_FACT / MODELLED_EXTERNAL_EVIDENCE
+LIMITATIONS: Scenario/project-pipeline evidence, not a guarantee of future supply; candidate mission demand is not included unless explicitly represented.
+
+TOOL_EVIDENCE_ID: TE-EGC-MAT013-002
+JOB_ID: JOB-EGC-013
+CLAIM_ID: CLAIM-EGC-SUPPLY-CONCENTRATION-2026
+TOOL_OR_METHOD: Current IEA market/concentration source retrieval
+SOURCE: IEA Global Critical Minerals Outlook 2026, market overview/executive summary
+RAW_OR_KEY_OUTPUT:
+- Average top refined supplier share across key energy minerals reached about 70% in 2025.
+- Excluding rare earths, average top refining-country share was 72% in 2025.
+- Indonesia for nickel and China for most other key energy minerals accounted for over three-quarters of refined-supply growth between 2023 and 2025.
+- For gallium, graphite, manganese and rare earths, the top refiner accounts for over 90% of global supply.
+- Mining expansion without matched refining/downstream capacity is explicitly identified as a structural bottleneck.
+EVIDENCE_CLASS: SOURCE_FACT
+CLAIM_SUPPORTED: Global tonnage adequacy alone is insufficient; stage-specific concentration/resilience must be tested.
+
+TOOL_EVIDENCE_ID: TE-EGC-MAT013-003
+JOB_ID: JOB-EGC-013
+CLAIM_ID: CLAIM-EGC-RESERVES-NOT-FLOW-001
+TOOL_OR_METHOD: USGS current publication/methodology retrieval
+SOURCE: USGS Mineral Commodity Summaries 2026
+SOURCE_DATE: 2026-02-06; revised through 2026-05-27; data release 2026-09-18
+DOI: 10.3133/mcs2026
+DATA_RELEASE_DOI: 10.5066/P1WKQ63T
+RAW_OR_KEY_OUTPUT:
+- MCS 2026 is the earliest comprehensive U.S. government source for 2025 world mineral production data across >90 commodities.
+- It reports production, reserves and resources separately.
+- USGS reserve/resource methodology treats reserves as an economic working inventory that changes with prices, exploration, technology and feasibility; reserves are not identical to total physical resource.
+EVIDENCE_CLASS: SOURCE_FACT
+CLAIM_SUPPORTED: A scale test must distinguish annual production/refining flow from reserves/resources stock.
+CLAIM_NOT_SUPPORTED: Current reserves are a fixed geologic ceiling or guarantee of annual supply.
+
+TOOL_EVIDENCE_ID: TE-EGC-MAT013-004
+JOB_ID: JOB-EGC-013
+CLAIM_ID: CLAIM-EGC-MATERIAL-SCALE-EQUATIONS-001
+TOOL_OR_METHOD: Candidate-neutral mass-balance/scaling derivation
+EQUATIONS_AND_REQUIRED_INPUTS:
+For candidate c, material m, year t:
+1. New-build primary material before recycling:
+   B_m,t = I_m,c,t * DeltaK_c,t
+   where I is material intensity [kg/MW-nameplate or stage-appropriate unit] and DeltaK is annual new capacity.
+2. Replacement demand:
+   R_m,t = sum_j I_m,j * K_replaced,j,t
+   using component-specific lifetime distributions, not whole-plant lifetime when components differ.
+3. Gross mission demand:
+   G_m,t = B_m,t + R_m,t + grid/storage/interconnection material demand assigned by common system boundary.
+4. Creditable secondary supply:
+   Sec_m,t = actually available recycled/reused material in year t after collection, recovery yield, quality loss and stock-lifetime delay.
+5. Incremental primary requirement:
+   D_m,t = max(0, G_m,t - Sec_m,t).
+6. Market-share stress:
+   S_m,t = D_m,t / ProjectedPrimarySupply_m,t.
+   IMPORTANT: denominator must be residual/projected market supply alongside baseline demand, not assume the mission receives 100% of global production.
+7. Required supply CAGR over T years:
+   g_req = (P_required_T/P_current)^(1/T)-1.
+   Compare with authoritative historical ramps, announced projects, mine/refinery lead times and capacity under construction.
+8. Cumulative reserve-stock screen:
+   Q_m = sum_t D_m,t / CurrentReserves_m.
+   Q is a stress indicator only because reserves are dynamic; also report broader resources where authoritative.
+9. Stage bottleneck:
+   ThroughputRatio_stage = RequiredThroughput_stage / AvailableOrCrediblePipelineCapacity_stage
+   separately for mining, concentration, refining, precursor/component manufacturing, final manufacturing.
+10. Concentration/resilience:
+   report top-1/top-3 shares and N-1 or disruption scenario where authoritative; a globally balanced market can still fail resilience if dominant-supplier loss creates severe shortfall.
+
+BOUNDARY/ANTI-GAMING RULES:
+- Capacity basis must be explicit: nameplate, average delivered, storage power, storage energy, grid-km, etc. Never mix kg/MW with GW-average without CF/loss conversion.
+- Add mission demand to baseline economy/energy demand; do not grant the candidate the entire commodity market.
+- Count refining/manufacturing bottlenecks separately from mine production.
+- Recycling credit is time-dependent and cannot be credited before retirements create recoverable scrap.
+- Co-/by-product materials require host-metal production constraints; price alone may not elicit proportional supply.
+- Substitution cases must include performance/cost/efficiency changes and cannot be zero-cost magic.
+- Import or geographic concentration is a resilience risk distinct from global geological abundance.
+- Use LOW/BASE/HIGH material intensity and supply-ramp cases; if plausible values reverse feasibility, classify NOT_STABLE.
+
+DECISION CLASSIFICATION:
+- PASS requires candidate-specific material intensities + credible annual deployment schedule + stage-by-stage supply path + baseline-demand competition + recycling/substitution sensitivity.
+- NOT_VERIFIED if only reserves/resources or nameplate capacity are provided.
+- SCALING_FAIL if required throughput/ramp exceeds authoritative feasible supply/manufacturing path with no validated substitution or redesign.
+- RESOURCE_FAIL only where cumulative recoverable resource/reserve evidence plus feasible discovery/substitution/recycling cannot support target; reserve-stock ratio alone is insufficient.
+
+RED_TEAM_RESULTS:
+- Attack: "reserves exceed total candidate requirement, therefore scalable." -> FALSIFIED as sufficient proof; reserves are stock/economic inventory and do not establish annual mine/refinery/manufacturing flow.
+- Attack: "announced mine projects close demand, therefore supply secure." -> FALSIFIED as sufficient proof; IEA 2026 shows mid/downstream capacity and concentration can remain bottlenecks.
+- Attack: "current global production is available to the mission." -> FALSIFIED; baseline demand and already-projected energy growth compete for the same supply.
+- Attack: "recycling solves first-wave deployment." -> NOT GENERALLY VALID; recycling availability is delayed by product lifetime and recovery yield.
+- Attack: "well-supplied global total means resilient." -> FALSIFIED as general rule by concentration/export-control evidence.
+
+RESULT:
+- CURRENT SYSTEM-WIDE MATERIAL BOTTLENECK WARNING: copper is already projected to have a material 2035 gap in IEA 2026 base-case supply pipeline; candidate portfolios with high incremental copper demand must explicitly demonstrate additional supply/substitution/recycling rather than borrowing unallocated headroom.
+- CURRENT RESILIENCE WARNING: refining concentration is decision-relevant and must enter G9/G10/G11, not only geological reserves.
+- NO CANDIDATE IS PASSED OR FAILED by this framework alone because technology-specific intensities/deployment trajectories are still upstream evidence.
+
+STATUS_CHANGE:
+- JOB-EGC-013: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-022 now has materially usable upstream methodology but must not automatically VERIFY it.
+- GLOBAL_SOLVED: NO.
+- CURRENT_WINNER: NONE.
+NEXT_ACTION:
+- Independent reviewer reproduces IEA/USGS claims and attacks equations.
+- Candidate jobs provide material intensity distributions and component lifetimes.
+- JOB-EGC-022 converts verified intensities and target deployment into mine/refinery/manufacturing ramp requirements.
+WRITE_INTEGRITY_PREWRITE_HEAD: 6e391fe562d6b97562d0f219ec23a774dcfe05cd
+WRITE_INTEGRITY_PREWRITE_FILE_SHA: 10c19a9927a0d6cb102fe464a75b83782f0a9403
