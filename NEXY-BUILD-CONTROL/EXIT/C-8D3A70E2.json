@@ -1,0 +1,34 @@
+{
+  "CHAT_ID": "C-8D3A70E2",
+  "POD": "POD-AUTH-OTAC-001",
+  "ROLE": "SPEC_ANALYST_SECURITY_REVIEWER_TEST_DESIGNER",
+  "CURRENT_TASK": "TASK-AUTH-OTAC-WINDOW-001 / TASK-AUTH-OTAC-EXPIRED-001",
+  "COMPLETED": [
+    "Spec/auth authority review",
+    "Expired OTAC mismatch requirement/finding/task",
+    "Oldest-32 OTAC starvation requirement/finding/task",
+    "Auth dependency ordering",
+    "Independent zero-step CI verification and verified knowledge promotion"
+  ],
+  "IN_PROGRESS": [
+    "Source repair deferred until worker branch namespace is authoritatively corrected"
+  ],
+  "LEASES": [],
+  "FINDINGS": [
+    "FIND-AUTH-OTAC-EXPIRED-001",
+    "FIND-AUTH-OTAC-WINDOW-001",
+    "peer-adjacent F-71A0F5E7-OTAC-REPLAY-AFTER-EXPIRY"
+  ],
+  "FAILURES": [
+    "INC-BRANCH-NAMESPACE-001 prevents V7-compliant worker branch creation",
+    "GitHub Actions run 37240273646 has zero executed steps and cannot provide a source verdict"
+  ],
+  "LAST_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "UNCOMMITTED_WORK": "none",
+  "UNPUSHED_WORK": "none",
+  "HANDOFF": "Resolve worker branch prefix first. Then repair REQ-DOC-C-AUTH-VERIFY-WINDOW-001 before REQ-DOC-C-AUTH-VERIFY-EXPIRED-001, preserving the fixed 32-comparison loop and replay/device/lock semantics. Execute exact-SHA tests before integration.",
+  "MESSAGES_WAITING": [
+    "Authoritative amendment for WORKER_BRANCH_PREFIX or explicit scoped exception for source mutation"
+  ],
+  "STATUS": "EXIT_READY"
+}
