@@ -3925,3 +3925,377 @@ NEXT_ACTIONS:
 - instantiate versioned dependency list for all eight material mixed-scale jobs above;
 - rerun affected candidate/baseline and scale-derived burdens under one proposed V3 + one frozen objective-contract foreign key;
 - only then consider V3 canonical activation.
+
+
+======================================================================
+76. RESULT — JOB-EGC-070-INTEGRATED-MODEL-GATE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0640+07-INTMODEL1
+PRIMARY_ROLE: Integrated model interface / dependency-gate / regression-harness architect
+PRIMARY_JOB_ID: JOB-EGC-070-INTEGRATED-MODEL-GATE-C1-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-070-INTEGRATED-MODEL-GATE-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: ee236965670c731c269a9579da9d1bdfd4e81446
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: eac426797a8019b059e4f1f0e94c87ecdcd3bfca
+
+PURPOSE:
+Define a single fail-closed integration contract for candidate-vs-baseline evaluation. This contract does NOT fill unresolved inputs, does NOT choose a candidate, and does NOT convert subsystem method verification into candidate/site validation.
+
+======================================================================
+INTEGRATED_MODEL_CONTRACT_V1
+======================================================================
+
+A. RUN MANIFEST — FROZEN BEFORE A RANKING RUN
+
+RUN_ID
+RUN_CREATED_AT
+MODEL_CODE_VERSION_OR_HASH
+DATA_CUTOFF_TIMESTAMP
+
+OBJECTIVE_VERSION_ID
+OBJECTIVE_FREEZE_TIMESTAMP
+SCALE_ANCHOR_VERSION_ID
+T0
+T_END
+
+GEOGRAPHY_ID
+SERVICE_VECTOR_ID
+DELIVERY_BOUNDARY_ID
+NETWORK_BOUNDARY_ID
+TIME_GRID_ID
+APPRAISAL_HORIZON_ID
+
+PRICE_BASE_ID
+DISCOUNT_CURVE_ID
+FSRC_VERSION_ID
+TERMINAL_ACCOUNTING_VERSION_ID
+
+RSTAR_VERSION_ID
+EXOGENOUS_SCENARIO_SET_ID
+STRUCTURAL_MODEL_SET_ID
+UNCERTAINTY_RULE_ID
+
+BASELINE_MANIFEST_ID
+BASELINE_SELECTION_RULE_ID
+
+PSTAR_VERSION_ID
+STATEBOUND_VERSION_ID
+STORAGE_LEDGER_VERSION_ID
+MATERIAL_FLOW_VERSION_ID
+EROI_LIFECYCLE_VERSION_ID
+THERMAL_WATER_VERSION_ID
+SAFETY_REG_VERSION_ID
+ENVIRONMENT_VERSION_ID
+FINANCE_VERSION_ID
+CONSTRUCTION_RISK_VERSION_ID
+MANUFACTURING_VERSION_ID
+DEMAND_FLEX_VERSION_ID
+
+CANDIDATE_ARCHITECTURE_ID
+CANDIDATE_RESPONSE_MODEL_MANIFEST_ID
+
+B. MODULE RECORD — REQUIRED FOR EVERY RANKING-CRITICAL MODULE
+
+MODULE_ID
+VERSION_ID
+STATUS
+APPLICABILITY
+SCOPE_ID_OR_HASH
+INPUT_SCHEMA_VERSION
+OUTPUT_SCHEMA_VERSION
+UNIT_SCHEMA_VERSION
+DEPENDENCY_IDS
+EVIDENCE_IDS
+SOURCE_DATA_VINTAGES
+REVIEWER_JOB_ID
+VALIDATION_STATE
+VALIDATION_DOMAIN
+VALIDATION_EVIDENCE_IDS
+UNCERTAINTY_OUTPUT_ID
+STALE_IF_RULE
+
+ALLOWED APPLICABILITY:
+REQUIRED
+NOT_APPLICABLE_WITH_EVIDENCE
+UNKNOWN
+
+ALLOWED RANKING-READY STATUS:
+VERIFIED
+VERIFIED_WITH_SCOPE only when RUN scope is fully inside the reviewed scope.
+
+NOT RANKING-READY:
+OPEN
+CLAIMED
+EXECUTING
+AWAITING_REVIEW
+REVIEW_FAILED
+REPAIR_REQUIRED
+BLOCKED
+UNKNOWN
+NOT_VERIFIED
+STALE
+SUPERSEDED
+
+RULE IM-1 — FAIL CLOSED:
+For every ranking-critical module:
+- REQUIRED + non-ready status => RANKING_BLOCKED.
+- UNKNOWN applicability => RANKING_BLOCKED.
+- NOT_APPLICABLE_WITH_EVIDENCE requires explicit applicability evidence and scope; missing evidence => RANKING_BLOCKED.
+- REVIEWED method with candidate/site inputs outside validated/reviewed scope does not become VERIFIED by inheritance.
+
+RULE IM-2 — COMMON COMPARISON KEYS:
+Candidate and every baseline comparator MUST share:
+OBJECTIVE_VERSION_ID;
+SCALE_ANCHOR_VERSION_ID;
+GEOGRAPHY_ID;
+SERVICE_VECTOR_ID;
+DELIVERY_BOUNDARY_ID;
+NETWORK_BOUNDARY_ID;
+TIME_GRID_ID;
+APPRAISAL_HORIZON_ID;
+PRICE_BASE_ID;
+DISCOUNT_CURVE_ID;
+RSTAR_VERSION_ID;
+EXOGENOUS_SCENARIO_SET_ID;
+STRUCTURAL_MODEL_SET_ID or the same predeclared admissible structural set;
+UNCERTAINTY_RULE_ID;
+DATA_CUTOFF_TIMESTAMP;
+baseline-selection rule and information policy.
+
+Candidate-specific validated physical response models are allowed and expected.
+Common exogenous states do NOT require identical component physics.
+
+Any candidate/baseline mismatch in a common comparison key =>
+RUN_INVALID_VERSION_OR_BOUNDARY_MISMATCH.
+
+RULE IM-3 — VERSION MIGRATION:
+A newer upstream version does not silently mutate an old run.
+If a ranking-critical upstream version changes:
+1. old run becomes STALE_FOR_CURRENT_DECISION;
+2. dependent results are reopened;
+3. candidate and baseline are rerun under the same new version;
+4. independent review is required where the changed node is review-gated.
+No mixed 2-version portfolio comparison is valid.
+
+RULE IM-4 — UNIT / ENERGY-FORM TYPE SYSTEM:
+Every flow/value carries:
+QUANTITY_TYPE;
+ENERGY_FORM where applicable;
+UNIT;
+METER_OR_CONTROL_VOLUME_ID;
+TIME_INDEX;
+SOURCE_OR_MODEL_STATUS.
+
+Examples:
+MWh_e != MWh_th != MWh_chemical.
+MW != MWh.
+kg != t.
+USD_nominal != USD_real(price_base).
+
+A cross-type conversion requires an explicit CONVERSION_NODE_ID with equation, parameters, units, provenance and uncertainty.
+Silent unit coercion => RUN_INVALID.
+
+RULE IM-5 — PHYSICAL LEDGER FIRST:
+P_STAR/physical-state outputs are the only source for physical served-energy and state trajectories.
+Monetary residual values, subsidies, terminal credits, accounting PVs or material recycling credits cannot create E_NET_SERVED.
+Energy/service denominators consume the reviewed physical delivery boundary.
+
+RULE IM-6 — CAUSAL EFFECT / EXACT-ONCE OWNERSHIP:
+Every ranking-material physical/resource/cost/material/safety/environmental effect receives a CAUSAL_EFFECT_ID.
+
+Within each accounting ledger/metric:
+OWNER_KEY = {LEDGER_ID, CAUSAL_EFFECT_ID, ALLOCATION_ID}.
+A required causal contribution must resolve exactly once.
+Duplicate OWNER_KEY => BLOCK.
+Missing required owner => BLOCK.
+UNKNOWN overlap => NOT_VERIFIED.
+
+The same real-world cause may be referenced in multiple orthogonal ledgers, e.g. kg material and USD resource cost, but each ledger must declare its metric and allocation explicitly. The same monetary/resource burden may not be valued twice merely because two subsystem modules mention it.
+
+RULE IM-7 — STATE / INVENTORY LINK:
+Any stateful resource uses STATE_RECORD_ID and the reviewed state-boundary contract.
+Initial stock, terminal stock, storage SOC, reservoirs, fuel inventories and qualified recycled-material inventory cannot be injected as free energy/material.
+The integrated model consumes the accepted provenance/owner binding rather than reimplementing it ad hoc.
+
+RULE IM-8 — APPLICABILITY IS EVIDENCE-BASED:
+Technology-specific modules such as nuclear fuel cycle, dam safety, induced-seismicity controls or CHP thermal-service treatment may be NOT_APPLICABLE only with a traceable physical/service/design reason.
+Absence of search hits is not evidence of inapplicability.
+
+RULE IM-9 — UNCERTAINTY IS NOT DROPPED BETWEEN MODULES:
+Each ranking-critical module emits either:
+- an evidence-supported uncertainty distribution/joint representation;
+- an allowed-state set;
+- a deterministic bound/tolerance;
+- or UNKNOWN.
+
+The integrated model preserves dependence/correlation semantics defined by the reviewed uncertainty/R_STAR/objective layers.
+UNKNOWN ranking-material uncertainty => NOT_VERIFIED.
+If allowed uncertainty can reverse threshold pass/fail or candidate ordering => NOT_STABLE / NOT_VERIFIED.
+
+RULE IM-10 — VALIDATION HIERARCHY:
+VALIDATION_STATE values:
+V0_SCHEMA_ONLY
+V1_IDENTITY_UNIT_TESTED
+V2_COMPONENT_MEASUREMENT_VALIDATED
+V3_SUBSYSTEM_OPERATIONAL_VALIDATED
+V4_INTEGRATED_BACKCAST_VALIDATED
+V5_OUT_OF_SAMPLE_OR_STRESS_VALIDATED
+OUT_OF_DOMAIN
+UNVALIDATED
+
+Every ranking-critical model output MUST record:
+OUTPUT_METRIC_ID
+MODEL_VERSION
+VALIDATION_DATASET_ID
+MEASUREMENT_SOURCE
+MEASUREMENT_DATE/VINTAGE
+VALIDATION_DOMAIN
+ERROR_METRIC
+ACCEPTANCE_TOLERANCE_OR_PREDECLARED_DECISION_RULE
+RESULT
+LIMITATIONS
+
+Equation checks, conservation identities and simulation self-consistency can establish V0/V1 only.
+SIMULATION_RESULT != MEASUREMENT.
+A model may not claim V2+ without real measurement/operational mapping.
+For final G16, the integrated architecture must demonstrate measurement validation at the level needed for each ranking-critical behavior; unsupported extrapolation outside validation domain => NOT_VERIFIED.
+
+RULE IM-11 — CURRENT GATE:
+RANKING_READY =
+all required module status/scope gates pass
+AND common comparison keys match
+AND unit/type audit passes
+AND exact-once ownership passes
+AND physical/state ledgers pass
+AND uncertainty gate passes
+AND ranking-critical validation requirements pass
+AND baseline manifest is reviewed/frozen
+AND no unresolved P0/P1 can reverse the conclusion.
+
+Otherwise:
+CURRENT_WINNER = NONE
+and the run returns the exact blocking dependency IDs.
+
+======================================================================
+CURRENT DEPENDENCY SNAPSHOT — AT WRITE
+======================================================================
+
+FACT / REPO STATE:
+- OBJECTIVE decision-functional/T0/version work is still in active repair/review; not integration-ready.
+- R_STAR has unresolved/active stochastic and metric-semantics repair/review paths; not integration-ready.
+- P_STAR physics review found a P1 representation-invariance ledger defect; P_STAR repair path is open; not integration-ready.
+- greenfield/state-boundary repair is active; not integration-ready.
+- FINPV time-basis independent review is VERIFIED within stated scope.
+- inventory/resource-owner C11 is AWAITING_REVIEW; not integration-ready.
+- strongest-baseline PSH/CHP eligibility/provenance narrow repair is active; not integration-ready.
+- MATERIAL_FLOW_V2 is AWAITING_REVIEW; not integration-ready.
+- lifecycle/EROI review is VERIFIED only for stated component/method scope; final portfolio EROI remains unresolved.
+- thermal T_STAR method is reviewed, but candidate/site thermal feasibility is unresolved.
+- generic safety/regulatory architecture is reviewed, but candidate/site-specific safety cases remain required.
+- fuel-cycle source-state corrections/review remain active for nuclear applicability.
+- construction-risk, manufacturing-throughput, demand-flex and environmental integration work remain active.
+- operational/mechanical evidence modules may be reviewed in their scopes, but they do not override the blockers above.
+
+INTEGRATION VERDICT:
+RANKING_READY = FALSE.
+GLOBAL_SOLVED = NO.
+CURRENT_WINNER = NONE.
+This is a dependency-state conclusion, not a technology verdict.
+
+======================================================================
+EXECUTED REGRESSION SUITE
+======================================================================
+
+TEST IM-T01 — ALL VERIFIED / COMMON BOUNDARY TOY MANIFEST
+Synthetic manifest with all required modules status VERIFIED, same objective/R_STAR/scenario/geography/service/delivery/time/price/discount keys, same units, one causal owner, non-empty validation mapping.
+EXPECTED: contract gate PASS.
+RESULT: PASS.
+TOOLS: Python implementation + independent JavaScript implementation agree.
+LIMITATION: synthetic schema test only; does not represent mission evidence completion.
+
+TEST IM-T02 — PENDING DEPENDENCY
+Change R_STAR module status to AWAITING_REVIEW.
+EXPECTED: BLOCK.
+RESULT: BLOCK in Python and JavaScript.
+
+TEST IM-T03 — CANDIDATE/BASELINE VERSION MISMATCH
+Candidate RSTAR_VERSION=RSTAR_V3, baseline=RSTAR_V2.
+EXPECTED: BLOCK.
+RESULT: BLOCK in Python and JavaScript.
+
+TEST IM-T04 — ENERGY-FORM UNIT MISMATCH
+Edge MWh_th -> MWh_e with no conversion node.
+EXPECTED: BLOCK.
+RESULT: BLOCK in Python and JavaScript.
+
+TEST IM-T05 — DUPLICATE CAUSAL OWNER
+Same {CAUSAL_EFFECT_ID, LEDGER_OWNER} entered twice.
+EXPECTED: BLOCK.
+RESULT: BLOCK in Python and JavaScript.
+
+TEST IM-T06 — UNVALIDATED RANKING-CRITICAL MODEL
+Required P_STAR module validation state UNVALIDATED.
+EXPECTED: BLOCK.
+RESULT: BLOCK in Python and JavaScript.
+
+TEST IM-T07 — CONDITIONAL N/A WITH EVIDENCE
+Fuel-cycle module on a non-fuel candidate marked NOT_APPLICABLE_WITH_EVIDENCE with an explicit evidence reference.
+EXPECTED: contract-level applicability PASS.
+RESULT: PASS in Python and JavaScript.
+
+TEST IM-T08 — CONDITIONAL N/A WITHOUT EVIDENCE
+Same N/A state but evidence list empty.
+EXPECTED: BLOCK.
+RESULT: BLOCK in Python and JavaScript.
+
+CROSS_IMPLEMENTATION_RESULT:
+All 8 expected gate classifications agree between two separately implemented harnesses.
+TRUTH_CLASS: CALCULATION / SOFTWARE_REGRESSION.
+NO PHYSICAL VALIDATION CLAIMED.
+
+======================================================================
+HANDOFF / REVIEW TARGET
+======================================================================
+
+CLAIM-EGC-070-001:
+INTEGRATED_MODEL_CONTRACT_V1 fail-closed status/version/scope gate.
+STATUS: SUBMITTED_FOR_REVIEW.
+
+CLAIM-EGC-070-002:
+candidate/baseline common-key symmetry with candidate-specific physical response models.
+STATUS: SUBMITTED_FOR_REVIEW.
+
+CLAIM-EGC-070-003:
+unit/type/conversion-node contract.
+STATUS: SUBMITTED_FOR_REVIEW.
+
+CLAIM-EGC-070-004:
+cross-ledger CAUSAL_EFFECT_ID / exact-once owner contract.
+STATUS: SUBMITTED_FOR_REVIEW.
+
+CLAIM-EGC-070-005:
+validation hierarchy prevents SIMULATION from becoming MEASUREMENT by relabeling.
+STATUS: SUBMITTED_FOR_REVIEW.
+
+CLAIM-EGC-070-006:
+current repo dependency state blocks integrated ranking.
+STATUS: SUPPORTED_BY_CURRENT_REPO_STATE / DYNAMIC; must be refreshed before every run.
+
+STATUS_CHANGE:
+JOB-EGC-070-INTEGRATED-MODEL-GATE-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+G15 integrated model passed: NO.
+G16 model validated against real measurements: NO.
+G19 unresolved P0/P1: NOT_PASSED.
+G21 uncertainty cannot plausibly reverse conclusion: NOT_PASSED.
+G24 no unresolved critical contradiction: NOT_PASSED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+REVIEWER_JOB_NOTE:
+JOB-EGC-070-INTEGRATED-MODEL-GATE-REV-C2-20261006 already exists; do not duplicate.
