@@ -8648,3 +8648,160 @@ GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 WRITE_INTEGRITY_PREWRITE_HEAD: 954cb89ece7e424bd1815efdb659ae70617b0db6
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: 906a777647a51348fad67dcfba6690308a415dc9
+
+
+======================================================================
+39. JOB-EGC-042 EVIDENCE PACKAGE — GEOTHERMAL POTENTIAL CONFLICT ARBITRATION
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-GEO42-D1-20261005
+PRIMARY_JOB_ID: JOB-EGC-042
+STATUS: AWAITING_REVIEW
+REVIEWER_REQUIRED: JOB-EGC-039 or distinct independent session
+
+CONFLICT_ID: CONFLICT-EGC-038-GEOTHERMAL-POTENTIAL-001
+REVIEW_VERDICT: RESOLVED_AS_BOUNDARY_AND_ASSUMPTION_MISMATCH / NOT_A_DIRECT_NUMERICAL_CONTRADICTION
+
+TOOL_EVIDENCE_ID: TE-EGC-GEO42-001
+JOB_ID: JOB-EGC-042
+CLAIM_ID: CLAIM-EGC-GEO-IEA2024-METHOD-001
+TOOL_OR_METHOD: IEA 2024 primary-report inspection + methodology extraction
+PURPOSE: Establish exact scope and assumptions behind the ~4,000 PWh/year next-generation geothermal figure.
+EXECUTION_DATE: 2026-10-05
+SOURCE_OR_DATASET: International Energy Agency, The Future of Geothermal Energy, Chapter 2.
+SOURCE_DATE: 2024-12-13
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/the-future-of-geothermal-energy/global-geothermal-potential-for-electricity-generation-using-egs-technologies ; full report https://iea.blob.core.windows.net/assets/6f449aa9-9f24-4305-b971-0eef78497beb/TheFutureofGeothermal.pdf
+INPUTS/PARAMETERS:
+- heat-in-place / volumetric GIS model using GeoMap data;
+- subsurface volume 0.5-8 km, approximately 1 km x 1 km horizontal cells and 500 m vertical slices;
+- power-generation subsurface temperature >150 C;
+- recovery factor = 20%;
+- exergy-dependent heat-to-power conversion efficiency;
+- electricity operation = 20 years at 80% capacity factor;
+- EGS cost screen < USD 300/MWh;
+- transmission-line and grid-connection costs excluded.
+RAW_OR_KEY_OUTPUT:
+- IEA reports about 300,000 EJ of technically generated EGS electricity under the stated cost/depth screen.
+- IEA describes this as almost 600 TW capacity over 20 years.
+- Annual technical generation potential is reported as about 4,000 PWh/year, rounded also as about 15,000 EJ/year.
+- <5 km depth contributes an estimated 42 TW; 5-8 km contributes >550 TW in the report's capacity framing.
+UNITS: EJ; EJ/year; PWh/year; TW; USD/MWh; km; percent.
+UNCERTAINTY: IEA report gives scenario/model assumptions but no single global confidence interval for this total; geological/model uncertainty remains material.
+ASSUMPTIONS: Model parameters above are model assumptions, not measurements of deployable capacity.
+LIMITATIONS:
+- Technical potential is not actual deployable generation.
+- USD 300/MWh screen is far above this mission's LOW_COST ambition.
+- Transmission and grid connection are explicitly excluded from the IEA technical-potential LCOE screen.
+- Resource model does not establish manufacturing, drilling throughput, induced-seismicity acceptability, water constraints, permitting, or M1/M2 deployment rate.
+REPRODUCTION_METHOD: Inspect IEA full report Chapter 2 pages 42-45; verify 20% recovery, 20-year/80% electricity normalization, <8 km and <USD300/MWh criteria, and explicit grid/transmission exclusion.
+REPLICATION_STATUS: COMPLETED_BY_THIS_JOB for source-method extraction; independent reviewer still required.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+TOOL_EVIDENCE_ID: TE-EGC-GEO42-002
+JOB_ID: JOB-EGC-042
+CLAIM_ID: CLAIM-EGC-GEO-IPCC2011-METHOD-001
+TOOL_OR_METHOD: IPCC SRREN Chapter 4 primary-source inspection + AR6 cross-reference
+PURPOSE: Establish the basis of the ~30-300 PWh/year geothermal technical-potential range carried into IPCC AR6.
+EXECUTION_DATE: 2026-10-05
+SOURCE_OR_DATASET:
+- IPCC AR6 WGIII Chapter 6, section 6.4.2.8 Geothermal Energy.
+- IPCC Special Report on Renewable Energy Sources and Climate Change Mitigation (SRREN), 2011, Chapter 4.
+SOURCE_DATE: 2022 / 2011.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/
+- https://www.ipcc.ch/report/renewable-energy-sources-and-climate-change-mitigation/geothermal-energy/
+INPUTS/PARAMETERS:
+- AR6 reports ~30 PWh/year at 3 km and ~300 PWh/year at 10 km, citing IPCC 2011.
+- SRREN derives global EGS potential by extrapolating older stored-heat estimates (EPRI 1978; Rowley 1982; Tester et al. 2005/2006).
+- Key EGS conversion assumption inherited from the US Tester estimate: 2% heat recovery, approximately 10 C reservoir-temperature decline, conversion losses, 30-year lifespan, 90% capacity factor.
+RAW_OR_KEY_OUTPUT:
+- SRREN EGS technical potential: 89.1 EJ/year at 0-3 km; 145.9-364.2 EJ/year at 0-5 km; 288.1-1051.8 EJ/year at 0-10 km depending stored-heat basis.
+- Adding hydrothermal potential yields total electricity technical potential of 117.5 EJ/year at the lower 3-km case through 1,108.6 EJ/year at the upper 10-km case.
+- 1,108.6 EJ/year / 3.6 = 307.94 PWh/year, consistent with AR6's rounded ~300 PWh/year upper bound.
+UNITS: EJ/year; PWh/year; km; percent; years.
+UNCERTAINTY: SRREN explicitly states EGS technical-potential estimation is complicated by limited commercial experience and older global stored-heat datasets.
+ASSUMPTIONS: 2% recovery and 30-year annualization are methodological assumptions, not immutable physical constants.
+LIMITATIONS: This is an older global model and does not use the IEA/GeoMap 2024 spatial dataset or 20% recovery assumption.
+REPRODUCTION_METHOD: Inspect SRREN Chapter 4 section 4.2.1 and Table 4.2; confirm 2% recovery / 30-year basis and the 1051.8 EJ/year 0-10 km EGS upper value; compare AR6 section 6.4.2.8.
+REPLICATION_STATUS: COMPLETED_BY_THIS_JOB for source-method extraction; independent reviewer still required.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT + REPLICATION.
+
+TOOL_EVIDENCE_ID: TE-EGC-GEO42-003
+JOB_ID: JOB-EGC-042
+CLAIM_ID: CLAIM-EGC-GEO-RECONCILIATION-001
+TOOL_OR_METHOD: Independent deterministic normalization calculation
+PURPOSE: Test whether the order-of-magnitude discrepancy survives when the dominant recovery/lifetime assumptions are harmonized.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- IPCC/SRREN upper EGS technical potential = 1051.8 EJ/year.
+- IPCC/SRREN recovery factor = 0.02.
+- IPCC/SRREN lifespan = 30 years.
+- IEA recovery factor = 0.20.
+- IEA electricity lifespan = 20 years.
+- SRREN upper hydrothermal component = 56.8 EJ/year, retained unscaled only as a reference add-on.
+EQUATION/CODE/METHOD:
+- Harmonization multiplier for the EGS annualized energy term = (0.20 / 0.02) * (30 / 20) = 15.
+- Scaled EGS = 1051.8 EJ/year * 15 = 15,777 EJ/year.
+- Scaled EGS + unscaled SRREN hydrothermal upper = 15,833.8 EJ/year.
+- 15,833.8 EJ/year / 3.6 EJ/PWh = 4,398.28 PWh/year.
+- Compare with IEA rounded ~15,000 EJ/year / ~4,000 PWh/year.
+RAW_OR_KEY_OUTPUT:
+- Dominant recovery+lifetime harmonization alone shifts the SRREN EGS upper case by 15x.
+- Harmonized reference = 15,777 EJ/year EGS, or 15,833.8 EJ/year including the unchanged SRREN hydrothermal add-on.
+- This is only ~5.6% above the IEA rounded 15,000 EJ/year figure, or ~10.0% above the exact 14,400 EJ/year implied by the separately rounded 4,000 PWh/year figure.
+UNITS: dimensionless multiplier; EJ/year; PWh/year; percent.
+UNCERTAINTY:
+- This is not an apples-to-apples model rerun. It isolates two dominant parameter changes while depth, spatial heat model, temperature screen, conversion model and cost screen remain different.
+- IEA's 4,000 PWh and 15,000 EJ figures are rounded and not mutually exact because 4,000 PWh = 14,400 EJ.
+ASSUMPTIONS:
+- Linear scaling with recovery factor and inverse project-life annualization is valid for this diagnostic comparison because the SRREN conversion explicitly derives annual technical potential from recoverable stored heat over project life.
+LIMITATIONS:
+- Near numerical agreement does not validate the IEA recovery factor or prove actual recoverability at global scale.
+- It does not imply 4,000 PWh/year can be built, operated, connected to grids, or delivered economically.
+REPRODUCTION_METHOD: Recalculate the equations above from the two primary-source method records.
+REPLICATION_STATUS: COMPLETED / deterministic arithmetic.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: CALCULATION + INFERENCE.
+
+CONFLICT_ARBITRATION:
+- FACT: AR6's ~30-300 PWh/year range and IEA 2024's ~4,000 PWh/year figure use materially different technical-potential methodologies and assumptions.
+- FACT: The most decision-relevant explicit difference is 2% recovery + 30-year normalization in SRREN versus 20% recovery + 20-year normalization in IEA 2024.
+- CALCULATION: Those two changes alone imply a 15x annual-potential multiplier; after applying it to SRREN's upper EGS case, the result is within roughly 6-10% of IEA's rounded annual figure despite other model differences.
+- INFERENCE: The apparent order-of-magnitude contradiction is therefore largely reconciled as a methodology/assumption-boundary difference, not evidence that one source contains a simple arithmetic error.
+- UNKNOWN: Whether 20% recovery is physically and commercially realizable across the global resource mapped by IEA; that requires field-performance/resource-validation work and cannot be promoted from model assumption to measurement.
+- UNKNOWN: Deployable low-cost EGS potential under the mission's much stricter delivered-cost boundary.
+- FALSIFIED: Treating IEA's ~4,000 PWh/year technical potential as proof of low-cost, grid-delivered, manufacturable energy at that scale.
+
+RED_TEAM:
+- Attack: IEA is newer, so discard IPCC. REJECTED. Newer model uses materially different recovery/lifetime/cost assumptions; provenance must remain visible.
+- Attack: Average the 300 and 4,000 PWh/year figures. FALSIFIED. They are not exchangeable estimates under a common boundary.
+- Attack: IEA's <USD300/MWh filter proves economic feasibility. FALSIFIED for this mission; it excludes grid/transmission and the ceiling is far above the LOW_COST target being calibrated elsewhere.
+- Attack: The 15x normalization proves IEA correct. REJECTED. It shows reconciliation of definitions/assumptions, not independent physical validation of 20% recovery.
+- Attack: Resource sufficiency equals deployability. FALSIFIED. Drilling rate, reservoir productivity/lifetime, materials, water, induced seismicity, permitting, manufacturing, grid and cost remain separate gates.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-EGC-GEO-IEA2024-METHOD-001 <- TE-EGC-GEO42-001
+- CLAIM-EGC-GEO-IPCC2011-METHOD-001 <- TE-EGC-GEO42-002
+- CLAIM-EGC-GEO-RECONCILIATION-001 <- TE-EGC-GEO42-001 + TE-EGC-GEO42-002 + TE-EGC-GEO42-003
+- CONFLICT-EGC-038-GEOTHERMAL-POTENTIAL-001 -> RESOLVED_AS_METHOD_BOUNDARY_MISMATCH, pending independent reviewer confirmation.
+- DEPENDENT CLAIMS: geothermal resource sufficiency may use both source envelopes only with explicit method labels; no downstream cost/scale gate may use 4,000 PWh/year as deployable delivered energy without further evidence.
+
+STATUS_CHANGE:
+- JOB-EGC-042: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- GLOBAL_SOLVED: remains NO.
+- MISSION_STATUS: CONTINUE_REQUIRED.
+- CURRENT_WINNER: NONE.
+- USER_SUCCESS_RESPONSE: DENIED.
+
+NEXT_ACTION:
+1. Independent reviewer reopens IEA Chapter 2 and IPCC SRREN section 4.2.1 and verifies the 20%/20-year versus 2%/30-year assumptions and 15x calculation.
+2. Create/execute geothermal field-performance job to test whether 20% recovery and reservoir lifetime have sufficient empirical support at representative EGS sites.
+3. Keep resource-potential and low-cost deployable-potential claims separate.
+4. Feed the resolved methodological distinction back to JOB-EGC-038/JOB-EGC-039 and later geothermal candidate TEA/scale jobs.
+
+WRITE_INTEGRITY:
+- latest MAIN-CHAT.md SHA immediately before write: df1be14b1226570f2743f12d9b6eb8bd9e5a4708
+- stale-write guard: exact current blob SHA; no force push; append-only.
+- no other file/repository touched.
