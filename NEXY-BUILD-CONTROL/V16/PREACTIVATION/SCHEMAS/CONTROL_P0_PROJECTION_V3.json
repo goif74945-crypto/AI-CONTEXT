@@ -1,0 +1,330 @@
+{
+  "SCHEMA_VERSION": "NEXY_CONTROL_P0_PROJECTION_V3",
+  "SUPERSEDES_CANDIDATE": {
+    "SCHEMA_VERSION": "NEXY_CONTROL_P0_PROJECTION_V2",
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SCHEMAS/CONTROL_P0_PROJECTION_V2.json",
+    "BLOB_SHA": "e6dd00bb07b7235b6d514758d6420407282aa306",
+    "REASON": "Repairs independently reviewed Universe/Projection interop, root/count binding, taxonomy-identity, and dedup-parent determinism blockers. V2 remains durable history."
+  },
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "PURPOSE": "Deterministically derive CURRENT_CONTROL_P0 and atomically bind OPEN_CONTROL_P0_COUNT to the same hashed projected manifest using one exact Universe V3 + adapter generation and independently reviewed semantic classification.",
+  "AUTHORITY_CLAUSES": [
+    "[062]",
+    "[063]",
+    "[064]",
+    "[065]",
+    "[225]"
+  ],
+  "REQUIRED_INPUT_ARTIFACTS": {
+    "FINDING_UNIVERSE_CONTRACT": {
+      "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V3.json",
+      "BLOB_SHA": "fcc3538fee4fbecf355eb1f875973b9d6e36a8b2",
+      "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_FINDING_UNIVERSE_CONTRACT_V3",
+      "REQUIRED_ROOT_DOMAIN": "NEXY_V16_RC1_3_COMPLETE_FINDING_MANIFEST_ROOT_V2"
+    },
+    "UNIVERSE_ADAPTER": {
+      "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SCHEMAS/CONTROL_P0_UNIVERSE_ADAPTER_V1.json",
+      "BLOB_SHA": "422c0ae7557d0c2e6f2f3fe126b67c5c4dfb06a9",
+      "SCHEMA_VERSION": "NEXY_CONTROL_P0_UNIVERSE_ADAPTER_V1",
+      "REQUIRED_ADAPTER_DOMAIN": "NEXY_CONTROL_P0_ADAPTED_UNIVERSE_V1"
+    }
+  },
+  "SNAPSHOT_BINDING": {
+    "REQUIRED": true,
+    "FIELDS": [
+      "control_commit_sha",
+      "control_tree_sha",
+      "finding_universe_root_hash",
+      "finding_universe_contract_blob_sha",
+      "adapted_universe_root_hash",
+      "universe_adapter_blob_sha",
+      "projection_schema_blob_sha",
+      "classification_manifest_root_hash",
+      "dedup_decision_manifest_root_hash"
+    ],
+    "EXACT_BINDINGS": {
+      "finding_universe_contract_blob_sha": "fcc3538fee4fbecf355eb1f875973b9d6e36a8b2",
+      "universe_adapter_blob_sha": "422c0ae7557d0c2e6f2f3fe126b67c5c4dfb06a9"
+    },
+    "RULE": "Every projection input, semantic record, review and dedup decision must resolve inside one pinned control commit/tree or be content-addressed by an immutable blob/hash explicitly included in this snapshot identity. Any mismatch => UNKNOWN_BLOCKING."
+  },
+  "RAW_NORMALIZATION": {
+    "unicode": "NFC",
+    "encoding": "UTF-8",
+    "finding_id": "Exact adapter output. Must be non-empty, already NFC, no leading/trailing Unicode whitespace.",
+    "finding_path": "Exact adapter output normalized path.",
+    "finding_blob_sha": "Exact adapter output lowercase 40-hex Git blob SHA.",
+    "type_raw": "Exact adapter output string or null. No semantic inference.",
+    "severity_raw": "Exact adapter output string or null. No trimming/case folding.",
+    "status_raw": "Exact adapter output string or null. No trimming/case folding.",
+    "null_rule": "Missing/null/malformed authority-bearing values never receive permissive normalization."
+  },
+  "P0_CLASSIFICATION": {
+    "ENUM": [
+      "P0",
+      "NOT_P0",
+      "UNKNOWN"
+    ],
+    "EXACT_P0_VARIANT_MAP": {
+      "P0": "P0",
+      "P0_CONTROL": "P0",
+      "P0_AUTHORITY": "P0",
+      "P0_CONTROL_AUTHORITY": "P0",
+      "P0_CONTROL_DENOMINATOR": "P0",
+      "P0_CONTROL_PROTOCOL": "P0",
+      "P0_CONTROL_DETERMINISM": "P0"
+    },
+    "EXACT_P0_RULE": "A well-formed severity_raw exactly present in EXACT_P0_VARIANT_MAP => P0. This classification cannot be downgraded by any semantic record.",
+    "NON_EXACT_RULE": "A severity_raw not in EXACT_P0_VARIANT_MAP, or null/malformed severity, is UNKNOWN unless one highest-generation VALID semantic classification record independently reviewed at the same snapshot supplies p0_classification_override=P0 or NOT_P0.",
+    "OVERRIDE_RULE": "p0_classification_override is permitted only for non-exact-P0 severity. Conflicting highest-generation valid overrides => UNKNOWN.",
+    "FREE_TEXT_RULE": "Free-text P0 mentions outside authoritative severity and reviewed semantic evidence never establish class."
+  },
+  "STATUS_CLASSIFICATION": {
+    "TERMINAL_NONBLOCKING_EXACT": [
+      "RESOLVED",
+      "CLOSED",
+      "SUPERSEDED"
+    ],
+    "RULE": "terminal_nonblocking=true only when status_raw is a well-formed NFC string exactly equal case-sensitively to one TERMINAL_NONBLOCKING_EXACT value.",
+    "FAIL_CLOSED": "All other status values, including null, missing, ACKNOWLEDGED, AUTHORITY_CORRECTION, REPRODUCED, RESOLVED_* variants, OPEN_* variants and unknown strings are terminal_nonblocking=false.",
+    "EXTERNAL_STATUS_TAXONOMY_ALLOWED": false
+  },
+  "CONTROL_RELEVANCE": {
+    "ENUM": [
+      "CONTROL_BLOCKER",
+      "PRODUCT_ONLY",
+      "SUPPORTING_DUPLICATE",
+      "HISTORICAL_NONBLOCKING",
+      "UNKNOWN"
+    ],
+    "RULES": {
+      "CONTROL_BLOCKER": "Requires a highest-generation VALID semantic classification record proving the finding independently affects admission, target/law/spec authority, control integrity, gates, leases, integration authority, closure authority, canonical roots, resource/shard authority, control transport, or other preactivation control correctness.",
+      "PRODUCT_ONLY": "Requires a highest-generation VALID semantic classification record proving normal product implementation is the resolution and the finding does not independently affect activation/control authority.",
+      "SUPPORTING_DUPLICATE": "Requires a highest-generation VALID semantic classification record plus one VALID dedup decision meeting DEDUP_DECISION_SCHEMA and CROSS_RECORD_CONSISTENCY.",
+      "HISTORICAL_NONBLOCKING": "Requires terminal_nonblocking=true plus a highest-generation VALID semantic classification record proving the finding is historical/noncurrent for control authority.",
+      "UNKNOWN": "Any absent, stale, malformed, conflicted, self-reviewed, or insufficient record."
+    },
+    "UNKNOWN_P0_RULE": "P0 + UNKNOWN control relevance => projection_status=UNKNOWN_BLOCKING."
+  },
+  "SEMANTIC_CLASSIFICATION_RECORD_SCHEMA": {
+    "REQUIRED_FIELDS": [
+      "classification_record_id",
+      "record_generation",
+      "finding_id",
+      "finding_path",
+      "finding_blob_sha",
+      "p0_classification_override",
+      "control_relevance",
+      "classification_evidence",
+      "classifier_chat_id",
+      "independent_review_id",
+      "independent_review_blob_sha",
+      "review_verdict"
+    ],
+    "FIELD_TYPES": {
+      "classification_record_id": "non-empty NFC string",
+      "record_generation": "positive JSON integer",
+      "finding_id": "exact adapted-universe finding_id",
+      "finding_path": "exact adapted-universe finding_path",
+      "finding_blob_sha": "exact adapted-universe lowercase 40-hex blob SHA",
+      "p0_classification_override": "NONE|P0|NOT_P0",
+      "control_relevance": "CONTROL_RELEVANCE enum except UNKNOWN is not a certifying value",
+      "classification_evidence": "non-empty array of EvidenceRef objects",
+      "classifier_chat_id": "non-empty NFC string",
+      "independent_review_id": "non-empty NFC string",
+      "independent_review_blob_sha": "lowercase 40-hex Git blob SHA",
+      "review_verdict": "exact PASS"
+    },
+    "EVIDENCE_REF_OBJECT": {
+      "REQUIRED_FIELDS": [
+        "evidence_kind",
+        "source_path",
+        "source_blob_sha",
+        "json_pointer_or_anchor",
+        "statement_sha256"
+      ],
+      "evidence_kind_enum": [
+        "FINDING_DEFINITION",
+        "ACTIVE_FENCE_REFERENCE",
+        "CONSTITUTION_CLAUSE",
+        "CANONICAL_SUPERSESSION",
+        "CANONICAL_CONTROL_RECORD",
+        "INDEPENDENT_REVIEW",
+        "AUTHORITATIVE_SPEC_REFERENCE"
+      ],
+      "source_path": "normalized repository path or pinned-spec logical identifier",
+      "source_blob_sha": "lowercase 40-hex Git blob SHA; for AUTHORITATIVE_SPEC_REFERENCE use exact lowercase 64-hex pinned spec SHA-256",
+      "json_pointer_or_anchor": "non-empty NFC locator string",
+      "statement_sha256": "lowercase 64-hex SHA-256 of UTF8(NFC(canonical evidence statement))"
+    },
+    "VALIDITY_RULES": [
+      "finding_id/path/blob exactly equal the adapted-universe row.",
+      "classifier_chat_id differs from independent reviewer chat identity.",
+      "independent review binds classification_record_id, record_generation, finding_blob_sha, p0_classification_override, control_relevance, and exact evidence hashes with verdict PASS.",
+      "p0_classification_override must be NONE when severity_raw is exact-known P0; any attempted downgrade invalidates the record.",
+      "control_relevance=SUPPORTING_DUPLICATE additionally requires a VALID dedup decision.",
+      "control_relevance=HISTORICAL_NONBLOCKING is valid only when terminal_nonblocking=true.",
+      "If multiple highest-generation VALID records disagree on override or control relevance, classification becomes UNKNOWN.",
+      "A lower-generation record is superseded only by a strictly higher VALID record for the same finding_id."
+    ]
+  },
+  "DEDUP_DECISION_SCHEMA": {
+    "REQUIRED_FIELDS": [
+      "dedup_decision_id",
+      "record_generation",
+      "supporting_finding_id",
+      "supporting_finding_blob_sha",
+      "canonical_blocker_id",
+      "canonical_blocker_blob_sha",
+      "equivalence_basis",
+      "classifier_chat_id",
+      "independent_review_id",
+      "independent_review_blob_sha",
+      "review_verdict"
+    ],
+    "FIELD_TYPES": {
+      "dedup_decision_id": "non-empty NFC string",
+      "record_generation": "positive JSON integer",
+      "supporting_finding_id": "adapted-universe finding_id",
+      "supporting_finding_blob_sha": "exact adapted-universe blob SHA",
+      "canonical_blocker_id": "adapted-universe finding_id distinct from supporting_finding_id",
+      "canonical_blocker_blob_sha": "exact adapted-universe blob SHA",
+      "equivalence_basis": "non-empty array of EvidenceRef objects",
+      "classifier_chat_id": "non-empty NFC string",
+      "independent_review_id": "non-empty NFC string",
+      "independent_review_blob_sha": "lowercase 40-hex Git blob SHA",
+      "review_verdict": "exact PASS"
+    },
+    "VALIDITY_RULES": [
+      "Supporting and canonical findings each exist exactly once in the same adapted universe.",
+      "Independent reviewer differs from classifier and binds the exact decision generation/content with PASS.",
+      "No dedup chains or cycles: canonical parent control_relevance must be CONTROL_BLOCKER, never SUPPORTING_DUPLICATE.",
+      "Supporting finding p0_classification must be P0.",
+      "Canonical parent p0_classification must be P0.",
+      "Canonical parent control_relevance must be CONTROL_BLOCKER.",
+      "If supporting terminal_nonblocking=false, canonical parent terminal_nonblocking must also be false; otherwise decision invalid and projection UNKNOWN_BLOCKING.",
+      "Missing parent, blob mismatch, conflicting highest-generation decisions, stale review, chain, cycle, or parent-class mismatch => UNKNOWN_BLOCKING."
+    ]
+  },
+  "CROSS_RECORD_CONSISTENCY": [
+    "A PRODUCT_ONLY or HISTORICAL_NONBLOCKING row cannot be a canonical dedup parent.",
+    "A NOT_P0 or UNKNOWN p0 row cannot be a canonical dedup parent.",
+    "A SUPPORTING_DUPLICATE row must resolve directly to one P0 CONTROL_BLOCKER parent in the same pinned manifest.",
+    "An open supporting row cannot be hidden behind a terminal-nonblocking parent."
+  ],
+  "INPUT_MANIFESTS": {
+    "FINDING_UNIVERSE": "Must PASS exact REQUIRED_INPUT_ARTIFACTS.FINDING_UNIVERSE_CONTRACT and produce validation_summary.complete=true.",
+    "ADAPTED_UNIVERSE": "Must PASS exact REQUIRED_INPUT_ARTIFACTS.UNIVERSE_ADAPTER with adapter_status=VALID.",
+    "CLASSIFICATION_MANIFEST": {
+      "ROOT_DOMAIN": "NEXY_CONTROL_P0_CLASSIFICATION_MANIFEST_V3",
+      "ROW_SORT": "finding_id UTF-8 bytes, record_generation ascending, classification_record_id UTF-8 bytes",
+      "ROOT_HASH": "SHA-256(UTF8(RFC8785_JCS({domain,target_authority_key,control_commit_sha,control_tree_sha,adapted_universe_root_hash,rows}))) lowercase 64-hex"
+    },
+    "DEDUP_DECISION_MANIFEST": {
+      "ROOT_DOMAIN": "NEXY_CONTROL_P0_DEDUP_MANIFEST_V3",
+      "ROW_SORT": "supporting_finding_id UTF-8 bytes, record_generation ascending, dedup_decision_id UTF-8 bytes",
+      "ROOT_HASH": "SHA-256(UTF8(RFC8785_JCS({domain,target_authority_key,control_commit_sha,control_tree_sha,adapted_universe_root_hash,rows}))) lowercase 64-hex"
+    }
+  },
+  "PROJECTED_MANIFEST": {
+    "ROOT_DOMAIN": "NEXY_CONTROL_P0_PROJECTED_MANIFEST_V3",
+    "ROOT_OBJECT_FIELDS": [
+      "domain",
+      "target_authority_key",
+      "control_commit_sha",
+      "control_tree_sha",
+      "finding_universe_root_hash",
+      "finding_universe_contract_blob_sha",
+      "adapted_universe_root_hash",
+      "universe_adapter_blob_sha",
+      "projection_schema_blob_sha",
+      "classification_manifest_root_hash",
+      "dedup_decision_manifest_root_hash",
+      "projection_status",
+      "source_row_count",
+      "projected_row_count",
+      "open_control_p0_count",
+      "rows"
+    ],
+    "FIELD_TYPES": {
+      "domain": "exact ROOT_DOMAIN string",
+      "target_authority_key": "lowercase 64-hex target authority key",
+      "control_commit_sha": "lowercase 40-hex Git commit SHA",
+      "control_tree_sha": "lowercase 40-hex Git tree SHA",
+      "finding_universe_root_hash": "lowercase 64-hex SHA-256",
+      "finding_universe_contract_blob_sha": "exact required contract lowercase 40-hex blob SHA",
+      "adapted_universe_root_hash": "lowercase 64-hex SHA-256",
+      "universe_adapter_blob_sha": "exact required adapter lowercase 40-hex blob SHA",
+      "projection_schema_blob_sha": "lowercase 40-hex blob SHA of this exact V3 schema",
+      "classification_manifest_root_hash": "lowercase 64-hex SHA-256",
+      "dedup_decision_manifest_root_hash": "lowercase 64-hex SHA-256",
+      "projection_status": "VALID|UNKNOWN_BLOCKING",
+      "source_row_count": "non-negative JSON integer equal adapted-universe row count",
+      "projected_row_count": "non-negative JSON integer equal rows.length",
+      "open_control_p0_count": "non-negative JSON integer when projection_status=VALID; exact JSON null when UNKNOWN_BLOCKING",
+      "rows": "sorted array of projected_row"
+    },
+    "PROJECTED_ROW_FIELDS": [
+      "dedup_key",
+      "finding_id",
+      "finding_path",
+      "finding_blob_sha",
+      "severity_raw",
+      "p0_classification",
+      "status_raw",
+      "status_valid",
+      "terminal_nonblocking",
+      "control_relevance",
+      "classification_record_id",
+      "classification_record_generation",
+      "canonical_blocker_id",
+      "dedup_decision_id"
+    ],
+    "ROW_INCLUSION": "Emit one row for every adapted-universe row whose p0_classification is P0 or UNKNOWN. NOT_P0 rows remain durably represented by source_row_count/classification manifests but are not projected rows.",
+    "DEDUP_KEY_RULE": "Valid SUPPORTING_DUPLICATE => canonical_blocker_id; otherwise finding_id.",
+    "SORT": "dedup_key UTF-8 bytes, then finding_id UTF-8 bytes, then finding_path UTF-8 bytes",
+    "PROJECTION_STATUS_ENUM": [
+      "VALID",
+      "UNKNOWN_BLOCKING"
+    ],
+    "UNKNOWN_BLOCKING_TRIGGERS": [
+      "finding universe incomplete",
+      "adapter_status not VALID",
+      "snapshot/hash/blob binding mismatch",
+      "p0_classification UNKNOWN for any source row",
+      "P0 row control_relevance UNKNOWN",
+      "required semantic classification absent/invalid/conflicted",
+      "dedup decision absent/invalid/conflicted for SUPPORTING_DUPLICATE",
+      "cross-record consistency failure",
+      "root field/type/count mismatch"
+    ],
+    "HASH_RULE": "CONTROL_P0_SET_ROOT_HASH = SHA-256(UTF8(RFC8785_JCS(ROOT_OBJECT))) lowercase 64-hex only when projection_status=VALID. When UNKNOWN_BLOCKING, CONTROL_P0_SET_ROOT_HASH=null for activation authority.",
+    "COUNT_BINDING_RULE": "open_control_p0_count is inside ROOT_OBJECT and therefore cryptographically bound to CONTROL_P0_SET_ROOT_HASH. A validator MUST recompute the count from rows and reject any mismatch before accepting the root."
+  },
+  "COUNTING": {
+    "OPEN_BLOCKER_ROW_RULE": "A canonical projected row is open-control-P0 iff p0_classification=P0, control_relevance=CONTROL_BLOCKER, and terminal_nonblocking=false.",
+    "SUPPORTING_DUPLICATE_RULE": "A valid SUPPORTING_DUPLICATE never increments independently; its dedup_key points directly to a valid P0 CONTROL_BLOCKER canonical parent. Dedup invalidity => UNKNOWN_BLOCKING, never silent exclusion.",
+    "PRODUCT_ONLY_RULE": "PRODUCT_ONLY P0 rows do not increment open_control_p0_count but remain in projected rows/evidence.",
+    "HISTORICAL_NONBLOCKING_RULE": "HISTORICAL_NONBLOCKING is valid only with terminal_nonblocking=true and does not increment count.",
+    "OPEN_CONTROL_P0_COUNT": "When projection_status=VALID, count unique dedup_key values whose canonical parent row satisfies OPEN_BLOCKER_ROW_RULE. This exact integer MUST equal PROJECTED_MANIFEST.open_control_p0_count.",
+    "ZERO_PROOF": "OPEN_CONTROL_P0_COUNT==0 is provable only when projection_status=VALID, all input manifests/reviews validate, CONTROL_P0_SET_ROOT_HASH recomputes exactly, and the root-bound open_control_p0_count is exactly integer 0."
+  },
+  "FAIL_CLOSED": [
+    "Partial search or partial shard coverage never proves zero.",
+    "No unbound severity/status taxonomy is permitted.",
+    "Resolved-like status prefixes never become terminal automatically.",
+    "Known exact P0 severity can never be downgraded.",
+    "Unknown severity requires independently reviewed semantic override or remains UNKNOWN.",
+    "Product-only classification without independent review is UNKNOWN.",
+    "Duplicate mapping without independently reviewed exact evidence is UNKNOWN.",
+    "An open supporting duplicate cannot be hidden behind a closed/non-control/non-P0 parent.",
+    "Any stale or mixed-snapshot evidence makes projection UNKNOWN_BLOCKING.",
+    "No status/finding may be mass-closed or mass-superseded merely to reduce the count."
+  ],
+  "STATUS": "CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "CANONICAL_ADOPTION": false,
+  "REQUIRED_INDEPENDENT_REVIEW": true,
+  "CREATED_BY_CHAT_ID": "C-SOL-20261005-1819Z-V16RC13-CURRENT-P0-FRESHNESS-6B17C4A9",
+  "PRODUCT_SOURCE_MUTATION": false,
+  "TARGET_INTEGRATION": false
+}
