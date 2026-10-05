@@ -6979,3 +6979,82 @@ CLAIMED_AT: UNKNOWN
 LAST_PROGRESS_AT: UNKNOWN
 BLOCKERS: NONE after this submission
 HANDOFF: Must be claimed by a distinct session; do not accept claimant-only evidence for extraordinary positive-net claims.
+
+
+======================================================================
+34. CONCURRENCY CORRECTION — DUPLICATE JOB-EGC-031 LEASE FROM SESSION 190800Z-B1
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:22:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+
+REPO_FACT:
+- TE-EGC-018-001 commit-order audit found the first valid committed JOB-EGC-031 lease at commit 17b63210b0d27e30007fa4d8dd02a0a5f1186126, owned by CHATGPT-SOL-20261005T190600Z-B1.
+- This session's later JOB-EGC-031 lease was committed at 2aae761fd69b38a594382ece2c536aee5d90881e and is therefore non-controlling under the repository collision law.
+
+STATUS_CORRECTION:
+- CHATGPT-SOL-20261005T190800Z-B1 claim to canonical JOB-EGC-031 -> CANCELLED_SUPERSEDED / NON_CONTROLLING_DUPLICATE.
+- Evidence produced later by this session is preserved and reclassified as independent support/cross-tool replication. No historical text is deleted or rewritten.
+- Numeric reviewer job JOB-EGC-032 created by this session is deprecated for this contribution to avoid future collision ambiguity; replacement unique reviewer ID is defined below.
+
+JOB_ID: JOB-EGC-OBJANCHOR-REPL-B1-20261005
+ROLE: Independent objective-anchor support / cross-tool replication
+TITLE: Reclassify duplicate JOB-EGC-031 work as non-colliding objective-anchor replication
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+QUESTION: Do independently gathered 2025/2026 cost/scale anchors and two-engine arithmetic corroborate the controlling objective-formalization work without altering its lease?
+CANDIDATE: CROSS-CANDIDATE / NONE
+DEPENDENCIES: NONE for evidence contribution; final adoption remains with controlling JOB-EGC-001 and its independent reviewer.
+REQUIRED_INPUTS: Existing EV-EGC-031-001 through EV-EGC-031-008 and authoritative source links recorded in section 30.
+REQUIRED_TOOLS: Independent source retrieval; Python; Wolfram; boundary audit.
+REQUIRED_EVIDENCE: SOURCE_FACT + CALCULATION + REPLICATION with explicit limitations.
+EXPECTED_OUTPUT: Non-controlling corroboration/conflict report usable by objective reviewer.
+FALSIFICATION_CONDITION: Any source mismatch, unit error, or boundary inconsistency that invalidates recorded anchors.
+REVIEWER_JOB_ID: JOB-EGC-OBJANCHOR-REPL-REV-B1-20261005
+STATUS: AWAITING_REVIEW
+BLOCKERS: NONE; owner may not self-VERIFY.
+NEXT_ACTION: Independent distinct session replays EV-EGC-031-001..008 and reports PASS/FAIL/REPAIR.
+
+JOB_ID: JOB-EGC-OBJANCHOR-REPL-REV-B1-20261005
+ROLE: Independent objective-anchor replication reviewer
+TITLE: Review reclassified B1 objective-anchor evidence
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Independently reproduce EV-EGC-031-001..008 and determine whether the reclassified evidence is valid support for the controlling objective job.
+CANDIDATE: CROSS-CANDIDATE / NONE
+DEPENDENCIES: JOB-EGC-OBJANCHOR-REPL-B1-20261005 AWAITING_REVIEW
+REQUIRED_INPUTS: Section 30 evidence records and original authoritative sources.
+REQUIRED_TOOLS: Independent source retrieval; independent arithmetic; system-boundary audit.
+REQUIRED_EVIDENCE: REPLICATION + SOURCE_FACT + CALCULATION.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR; report any conflict with controlling JOB-EGC-001 thresholds.
+FALSIFICATION_CONDITION: Decisive source/value/units/boundary not reproducible.
+REVIEWER_JOB_ID: JOB-EGC-018 or later evidence-audit job.
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: Different session claim and review.
+
+EVIDENCE_REASSIGNMENT:
+- EV-EGC-031-001 -> JOB-EGC-OBJANCHOR-REPL-B1-20261005 (preserve original ID for traceability).
+- EV-EGC-031-002 -> JOB-EGC-OBJANCHOR-REPL-B1-20261005.
+- EV-EGC-031-003 -> JOB-EGC-OBJANCHOR-REPL-B1-20261005.
+- EV-EGC-031-004 -> JOB-EGC-OBJANCHOR-REPL-B1-20261005.
+- EV-EGC-031-005 -> JOB-EGC-OBJANCHOR-REPL-B1-20261005.
+- EV-EGC-031-006 -> JOB-EGC-OBJANCHOR-REPL-B1-20261005.
+- EV-EGC-031-007 -> JOB-EGC-OBJANCHOR-REPL-B1-20261005.
+- EV-EGC-031-008 -> JOB-EGC-OBJANCHOR-REPL-B1-20261005.
+
+CONFLICT_NOTE:
+- Controlling JOB-EGC-001 currently proposes a 20% material cost-improvement criterion and 1%/10% global-energy scale tiers, while this replication contribution proposed a 10% cost-improvement rule and a 1 TW-average scale threshold.
+- These differing normative thresholds are a genuine objective-definition conflict, NOT a numerical arithmetic conflict.
+- This session does NOT vote or overwrite the controlling proposal. Independent objective review must arbitrate which precommitted criterion better satisfies the user's LOW_COST/MASSIVE_ENERGY intent without gaming.
+
+WRITE_INTEGRITY:
+- branch head read: 6843268a308d150dd9db0fc367bbe87db9c32da6
+- file SHA read: daa7a1047ed5aa17afc2ac91d93b48242eb236d6
+- stale-write check: exact expected blob SHA passed to update_file; stale write must fail
+- mutation scope: ONLY MAIN-CHAT.md on authorized branch; no other file/repo touched
+- commit/result: PENDING
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
