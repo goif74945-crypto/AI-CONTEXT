@@ -7299,3 +7299,23 @@ BRANCH_HEAD_AT_CLAIM: 67e9ee10af4ec030357926445cdb6056c097973e
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 37dbebce1c585be8891643ef9fd5e06482eac311
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-056-BESS-MWH-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0345+07-BESSMWH3
+PRIMARY_ROLE: Official EIA raw-data storage analyst / power-energy boundary auditor
+PRIMARY_JOB_ID: JOB-EGC-056-BESS-MWH-C3-20261006
+QUESTION: What is the current matched national operational utility-scale battery energy capacity in MWh, paired with MW, from one frozen EIA-860M vintage, and what is the aggregate nameplate MWh/MW ratio?
+DEPENDENCIES: E-EGC-056-REV-006..007; JOB-EGC-045-GRID-STORAGE-SCALE-REV-C2 verified with scope.
+TOOLS: official EIA binary XLSX; spreadsheet-schema inspection; artifact_tool-compatible analysis; reproducible aggregation; unit/filter/missingness audit; independent arithmetic.
+EVIDENCE_TARGET: exact workbook URL/date, sheet/columns, battery filter, row count, missing/zero MWh, operational MW/MWh, MWh/MW ratio, reconciliation to EIA headline MW.
+FALSIFICATION_TARGET: FAIL if MWh is imputed, planned units mix with operating, MW/MWh populations mismatch, or missing MWh materially biases ratio without reporting.
+REVIEWER_JOB_ID: JOB-EGC-056-BESS-MWH-REV-C4-20261006
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: bfced11626f75e5d374f5266be404668cabe2879
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 9667c99c2ed1dcf319a2f6cd21bcc07e9ff639d5
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
