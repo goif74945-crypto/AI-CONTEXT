@@ -1,0 +1,35 @@
+{
+  "TASK_ID": "CTRL-V16RC13-P0-INTEROP-V3-XREVIEW-8E0875C21BCD",
+  "CLAIM_ID": "CLAIM-C-SOL-V16RC13-P0-V3-XREVIEW-8E0875C21BCD-P0-INTEROP-V3-XREVIEW",
+  "SCOPE": "INDEPENDENT_REVIEW_ONLY_OF_P0_INTEROP_V3_CANDIDATE",
+  "OWNER_CHAT": "C-SOL-V16RC13-P0-V3-XREVIEW-8E0875C21BCD",
+  "MEMBERSHIP_ID": "PRE-4e386679ac611fb62ff0ca0fd8718bef",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "CANDIDATE_OWNER_CHAT": "C-SOL-20261005-1818Z-V16RC13-P0-INTEROP-4B508E13FA35",
+  "CANDIDATE_BRANCH": "control/v16rc13-p0-interop-v3-C-SOL-1818-4B508E13FA35",
+  "PINNED_CANDIDATE_COMMIT_SHA": "8cfc5084798c55fb00b76e4804dcc4268f62ee5f",
+  "PINNED_CANDIDATE_TREE_SHA": "63e0440898e703cc3e4c1ab144ef85fa3a96d945",
+  "REVIEW_TARGETS": [
+    {
+      "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V3.json",
+      "BLOB_SHA": "1544af03e05eb4350b751c8f001216d85ba49001"
+    }
+  ],
+  "INDEPENDENCE": "Reviewer chat differs from candidate author chat; no ownership takeover.",
+  "DUPLICATE_POLICY": "Intentional independent review is permitted; existing implementation claim remains owned by candidate author.",
+  "EXPLICIT_NON_SCOPE": [
+    "candidate implementation mutation",
+    "finding status mutation",
+    "OPEN_CONTROL_P0_COUNT zero claim",
+    "CONTROL_P0_SET_ROOT_HASH canonical adoption",
+    "legacy drain",
+    "Mission Fence creation",
+    "product source mutation",
+    "target integration"
+  ],
+  "STATUS": "INDEPENDENT_REVIEW_PUBLISHED",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE"
+}
