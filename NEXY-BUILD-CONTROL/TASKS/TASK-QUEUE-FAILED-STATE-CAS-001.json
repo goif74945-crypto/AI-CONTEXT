@@ -1,0 +1,44 @@
+{
+  "TASK_ID": "TASK-QUEUE-FAILED-STATE-CAS-001",
+  "REQ_ID": "REQ-DOC-C-2-3-VNEXT-DEFAULTS",
+  "MISSION_ID": "M03-RUNTIME-INTEGRITY",
+  "FINDING_ID": "FINDING-QUEUE-FAILED-STATE-RESURRECTION-001",
+  "GOAL": "Prevent stale queue reconciliation from overwriting a newer durable FAILED/CANCELLED/COMPLETED dispatch state and falsely reporting a failed BullMQ job as ENQUEUED.",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_CONCURRENCY_DATA_INTEGRITY",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "SCOPE": [
+    "packages/queue/dispatch.ts",
+    "packages/queue/jobs.ts only if retry/existing-job semantics require adjustment",
+    "tests/contract/failed-dispatch-retry.test.ts",
+    "new or existing focused dispatch reconciliation concurrency test"
+  ],
+  "REQUIRED_BEHAVIOR": [
+    "ENQUEUED/PENDING reconciliation must commit its state transition only if the durable row is still in an eligible predecessor state.",
+    "A concurrently persisted FAILED, CANCELLED, or COMPLETED state must not be overwritten by a stale dispatch attempt.",
+    "Existing failed BullMQ jobs are retried only when the durable row is FAILED and explicit retryAuthorization passes the canonical safe policy.",
+    "The caller must distinguish a stale/no-op CAS from actual successful delivery and must not report false success."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not widen retryable error codes beyond active authority.",
+    "Do not make FAILED retry implicit.",
+    "Do not convert CANCELLED/COMPLETED back to ENQUEUED.",
+    "Do not mutate NEXY.ai.",
+    "Do not mutate NEXY.AI-Test-AI directly while isolated worker branch law remains blocked."
+  ],
+  "ACCEPTANCE": [
+    "A deterministic interleaving test pauses reconciliation after the initial ENQUEUED read, persists FAILED, then resumes reconciliation.",
+    "Final durable state remains FAILED and lastError remains intact.",
+    "BullMQ failed job is not reported as newly delivered without authorized retry.",
+    "Equivalent tests cover CANCELLED and COMPLETED winning over stale reconciliation where applicable.",
+    "Normal PENDING/ENQUEUED delivery and explicit safe FAILED retry continue to pass.",
+    "Independent review and exact-SHA post-integration reverify complete."
+  ],
+  "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker branch namespace or explicitly authorizes an equivalent isolation mechanism."
+}
