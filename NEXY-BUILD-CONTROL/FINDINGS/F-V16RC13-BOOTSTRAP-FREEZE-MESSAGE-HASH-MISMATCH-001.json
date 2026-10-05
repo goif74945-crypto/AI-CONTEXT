@@ -1,0 +1,35 @@
+{
+  "FINDING_ID": "F-V16RC13-BOOTSTRAP-FREEZE-MESSAGE-HASH-MISMATCH-001",
+  "TYPE": "CONTROL_MESSAGE_INTEGRITY_HASH_MISMATCH",
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "CREATOR_CHAT": "C-SOL-20261005-1723Z-V16RC13-PREACT",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 3,
+  "MESSAGE_PATH": "NEXY-BUILD-CONTROL/MESSAGES/GLOBAL-V16RC13-LEGACY-FREEZE-REQUEST-b11e0417-v1.json",
+  "MESSAGE_BLOB_SHA": "1319026eb3b5fa2ab55545cbd5fbde565e8a5dea",
+  "DECLARED_CONTENT_HASH": "29b889eaeb8575dc055eaa6dae84f0cac02168141ce710a8a5ef73cce6b80331",
+  "DECLARED_HASH_DOMAIN": "SHA256_JCS_MESSAGE_WITHOUT_CONTENT_HASH",
+  "RECOMPUTED_CONTENT_HASH": "41eb3ecfc97925bb026c5ce5819920bba1ace5d88e5105d2e04fc98c39a6de11",
+  "RECOMPUTATION_METHOD": "RFC8785/JCS-equivalent canonical JSON for this payload class: recursively lexicographic object-key ordering, UTF-8, no whitespace; payload contains only strings, integers, and objects; CONTENT_HASH field omitted exactly as declared.",
+  "FACTS": [
+    "The current message blob still declares CONTENT_HASH 29b889... while recomputation yields 41eb3e....",
+    "Bootstrap Fence STATE_VERSION 3 binds FREEZE_REQUEST_CONTENT_HASH to the mismatching declared hash.",
+    "Bootstrap Fence has advanced to LEGACY_DRAINING while this invalid message identity binding remains present.",
+    "Observed freeze behavior in EPOCH.json may still be real, but exact message identity/integrity proof is not valid under the declared hash domain."
+  ],
+  "IMPACT": [
+    "Any ACK or transition evidence that claims to bind the exact freeze message by the declared hash cannot be trusted as an exact-content binding.",
+    "Do not use the v1 message hash as proof for further activation transitions.",
+    "Product mutation and integration gates must remain closed until a corrected append-only message and Bootstrap Fence binding are installed."
+  ],
+  "REQUIRED_REPAIR": [
+    "Do not overwrite v1.",
+    "Publish corrected v2 message with a self-consistent JCS hash.",
+    "Create immutable repair intent before Bootstrap Fence mutation.",
+    "CAS Bootstrap Fence STATE_VERSION 3 -> 4 while keeping gates closed and binding the corrected message.",
+    "Publish repair evidence and resolve this finding only after independent recomputation passes."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE"
+}
