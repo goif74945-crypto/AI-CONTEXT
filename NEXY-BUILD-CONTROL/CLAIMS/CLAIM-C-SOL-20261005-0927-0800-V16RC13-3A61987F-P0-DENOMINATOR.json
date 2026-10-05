@@ -15,6 +15,9 @@
   "TARGET_INTEGRATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_AUDIT_EVIDENCE",
   "DUPLICATION_MODE": "INDEPENDENT_DENOMINATOR_CROSSCHECK_NOT_ROW_CLASSIFICATION",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Verify the complete canonical FINDINGS denominator and deterministic 00-7f/80-ff path-hash partition counts so shard completion cannot silently omit records."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Verify the complete canonical FINDINGS denominator and deterministic 00-7f/80-ff path-hash partition counts so shard completion cannot silently omit records.",
+  "RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-0927-0800-V16RC13-3A61987F-P0-DENOMINATOR.json",
+  "RESULT_COMMIT": "f73c266dbeb8a8a314eeb32a4c3ff34e61913c77",
+  "VERDICT": "BASELINE_MANIFEST_SNAPSHOT_STALE_FOR_CURRENT_COMPLETE_MANIFEST_OR_P0_ZERO_PROOF"
 }
