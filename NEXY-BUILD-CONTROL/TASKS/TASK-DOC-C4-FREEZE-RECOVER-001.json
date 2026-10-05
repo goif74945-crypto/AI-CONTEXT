@@ -1,0 +1,26 @@
+{
+  "TASK_ID": "TASK-DOC-C4-FREEZE-RECOVER-001",
+  "REQ_ID": "REQ-DOC-C-4-2-FREEZE-RECOVER",
+  "FINDING_ID": "FINDING-DOC-C4-FREEZE-RECOVER-001",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_AUTHORITY_ERROR_SEMANTICS",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SCOPE": [
+    "packages/api/directives.ts freeze recovery handler",
+    "tests/integration/freeze/recover.spec.ts",
+    "tests/contract/freeze-recovery-audit.test.ts"
+  ],
+  "ACCEPTANCE": [
+    "Route status/error-code pairs conform to final DOC-C §4.2.",
+    "OWNER-only session/RBAC and CSRF requirements remain fail closed.",
+    "Same-key idempotency semantics remain stable.",
+    "FREEZE_RECOVER_ATTEMPT/SUCCESS/DENIED evidence remains complete and mandatory.",
+    "Tenant isolation does not disclose foreign incidents.",
+    "Focused plus affected state/recovery tests execute on exact candidate SHA and independent review passes."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After compliant worker isolation exists, derive exact branch-by-branch oracle from final DOC-C and repair handler/tests without weakening isolation."
+}
