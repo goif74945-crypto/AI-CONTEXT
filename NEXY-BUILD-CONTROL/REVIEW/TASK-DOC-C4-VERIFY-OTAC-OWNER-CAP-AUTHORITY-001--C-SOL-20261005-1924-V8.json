@@ -1,0 +1,87 @@
+{
+  "REVIEW_ID": "REVIEW-TASK-DOC-C4-VERIFY-OTAC-OWNER-CAP-AUTHORITY-001-C-SOL-20261005-1924-V8",
+  "REVIEWER_CHAT": "C-SOL-20261005-1924-V8-EXPERIMENTAL-REVERIFY",
+  "TASK_ID": "TASK-DOC-C4-VERIFY-OTAC-OWNER-CAP-AUTHORITY-001",
+  "FINDING_ID": "FIND-DOC-C4-VERIFY-OTAC-OWNER-EVICTION-AUTHORITY-001",
+  "REQ_ID": "REQ-DOC-C-4-2-VERIFY-OTAC",
+  "ROLE": "INDEPENDENT_SECURITY_AUTHORITY_REVIEWER",
+  "PRIORITY": "P1",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "PRIMARY_SOURCE": {
+    "concurrent_sessions_per_user": {
+      "paragraph": 9937,
+      "value": 5
+    },
+    "verify_otac_request": {
+      "paragraphs": "10085-10091",
+      "fields": [
+        "email",
+        "device_id",
+        "otac"
+      ]
+    },
+    "verify_otac_errors": {
+      "paragraphs": "10099-10105",
+      "codes": [
+        "AUTH_INVALID",
+        "AUTH_EXPIRED",
+        "DEVICE_MISMATCH",
+        "OTAC_LOCKED",
+        "SESSION_REVOKED"
+      ]
+    },
+    "final_doc_c_range": "9886-10499",
+    "absent_terms": [
+      "confirm_owner_session_eviction",
+      "AUTH_OWNER_SESSION_CAP_CONFIRMED",
+      "DOC-C §8.3",
+      "replace oldest owner session"
+    ]
+  },
+  "SOURCE_RECOMPUTATION": {
+    "packages/contracts/auth.ts": {
+      "blob": "bb93f0b30a0a5117d159e4989ec5c2895bc33403",
+      "adds_request_field": "confirm_owner_session_eviction",
+      "stale_authority_comment": "DOC-C §8.3"
+    },
+    "packages/api/auth.ts": {
+      "blob": "0f8c8e21ce39f36b850c0db93ceadaa886088e6b",
+      "consumes_confirmation_field": true,
+      "can_revoke_oldest_owner_session": true,
+      "emits_extension_event": "AUTH_OWNER_SESSION_CAP_CONFIRMED"
+    },
+    "tests/contract/owner-session-cap-confirmation.test.ts": {
+      "blob": "3e254036b146209fb787e2bcba2b586a0e7e08ab",
+      "asserts_historical_authority": true,
+      "asserts_extension_behavior": true
+    },
+    "apps/web/components/OtacLoginForm.tsx": {
+      "blob": "8fc42e167469e82e33a0831de3cf602c023d7b7c",
+      "sends_extension_field": true,
+      "exposes_replace_oldest_flow": true
+    }
+  },
+  "FACT": {
+    "authority_violation_confirmed": true,
+    "transport_contract_drift_confirmed": true,
+    "stale_test_oracle_confirmed": true,
+    "concurrent_session_cap_required": true
+  },
+  "UNKNOWN": [
+    "Final DOC-C does not fully define the policy for admission when the five-session cap is reached and all active sessions are OWNER sessions.",
+    "The canonical meaning of SESSION_REVOKED for the at-cap verify-OTAC case is not sufficiently specific to authorize owner-session eviction."
+  ],
+  "VERDICT": "CONFIRMED_ACTIONABLE_AUTHORITY_AND_CONTRACT_DEFECT_WITH_LOCAL_SPEC_FREEZE",
+  "REPAIR_BOUNDARY": [
+    "Do not use historical/non-final DOC-C §8.x as build authority.",
+    "Do not weaken concurrent_sessions_per_user=5.",
+    "Do not allow the canonical verify-OTAC request to gain an authority-bearing owner-eviction field without active authority.",
+    "Do not silently evict an OWNER session while the at-cap policy remains unspecified by final DOC-C.",
+    "Repair contract/runtime/UI/test oracle together only after source worker isolation is valid; retain a local SPEC_CONFLICT freeze for unspecified at-cap semantics."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "PROJECT_CLOSURE": "NOT_ESTABLISHED"
+}
