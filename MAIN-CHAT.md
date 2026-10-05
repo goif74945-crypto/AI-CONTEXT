@@ -3320,3 +3320,75 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+
+======================================================================
+32. SESSION CLAIM EVENT — RESOURCE AVAILABILITY / TECHNICAL-POTENTIAL BOUNDS
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-RESOURCE-038-20261005
+PRIMARY_ROLE: Resource Availability / Physical Scale Analyst
+PRIMARY_JOB_ID: JOB-EGC-038
+QUESTION: Do the major candidate families have physically and sustainably available energy/fuel/resource potential large enough to support a civilization-scale "massive energy" target before detailed economics are applied?
+DEPENDENCIES: NONE for source acquisition and order-of-magnitude bounds; final PASS/FAIL interpretation depends on JOB-EGC-001 thresholds and common boundaries.
+TOOLS: authoritative government/lab/intergovernmental datasets; primary/peer-reviewed literature where needed; unit-normalized calculations; independent cross-source validation.
+EVIDENCE_TARGET: SOURCE_FACT / MEASUREMENT / CALCULATION / INFERENCE with explicit geography, year, units, and technical-vs-theoretical-potential distinction.
+FALSIFICATION_TARGET: Reject or constrain candidate families whose accessible resource/fuel/technical potential is too small, geographically overconcentrated, depletion-limited, or based only on theoretical flux that cannot become delivered energy.
+REVIEWER: JOB-EGC-039 by a distinct future session.
+STATUS: EXECUTING
+
+WHY_THIS_JOB_NOW:
+- Dependency-free legacy jobs are concurrently claimed.
+- The required team functions include resource availability, but no dedicated current job isolates natural-energy/fuel/resource ceilings across candidate families.
+- Resource ceilings can falsify candidates before expensive integrated modeling and therefore have high information gain.
+
+#### JOB-EGC-038
+ROLE: Resource availability / scale physics
+TITLE: Cross-candidate sustainable resource and technical-potential bounds
+QUESTION_TO_RESOLVE: What defensible lower/central/upper bounds exist for globally deployable resource potential of solar, wind, hydro, geothermal, fission fuels, tidal/wave/waste-heat and other surviving families, and how do those bounds compare with current global electricity/energy scale?
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE for evidence collection and normalization.
+REQUIRED_INPUTS: current authoritative world energy/electricity scale; physical resource flux/potential; fuel/resource inventories and extraction constraints; technical-potential studies.
+REQUIRED_TOOLS: official datasets; peer-reviewed sources; dimensional analysis; reproducible calculations; sensitivity to technical-potential definitions.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + INFERENCE
+EXPECTED_OUTPUT: comparable resource-potential table, binding resource constraints, explicit theoretical-vs-technical-vs-economic-potential labels, uncertainty, and candidate-specific follow-up jobs.
+FALSIFICATION_CRITERIA: FAIL any resource claim that relies on untraceable estimates, confuses theoretical with technical/economic potential, uses incompatible geographies/years without normalization, or cannot exceed target scale with margin after plausible conversion/availability losses.
+REVIEWER_JOB_ID: JOB-EGC-039
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-RESOURCE-038-20261005
+CLAIMED_AT: 2026-10-05
+LAST_PROGRESS_AT: 2026-10-05
+BLOCKERS: NONE for initial evidence acquisition.
+HANDOFF: Gather and normalize authoritative resource-potential evidence, explicitly distinguish resource flux from deliverable power, submit to JOB-EGC-039; never self-VERIFY.
+
+#### JOB-EGC-039
+ROLE: Independent resource-potential replication / red team
+TITLE: Independently reproduce and attack JOB-EGC-038
+QUESTION_TO_RESOLVE: Are JOB-EGC-038's resource bounds reproducible, boundary-consistent, and conservative enough that candidate ranking cannot be manufactured by optimistic potential assumptions?
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-038 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: JOB-EGC-038 evidence records, equations, source data and uncertainty bounds.
+REQUIRED_TOOLS: independent source retrieval; independent unit conversions; alternative-source comparison; red-team sensitivity.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + REPLICATION
+EXPECTED_OUTPUT: PASS/FAIL, corrected bounds, conflicts, and repair jobs.
+FALSIFICATION_CRITERIA: FAIL if decisive bounds cannot be independently reproduced or if stronger evidence materially changes the scale conclusion.
+REVIEWER_JOB_ID: JOB-EGC-030
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-038 not yet AWAITING_REVIEW.
+HANDOFF: A different session must claim this review only after JOB-EGC-038 submission.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: e2c9b26915789f7ffdf31d65cb17925dd74c1be4
+- file blob SHA read immediately before write: 6e67fdd9841dbf1fab31645d1fa5bd88264763e7
+- write method: append-only replacement guarded by exact blob SHA; no force update; no other file/repository touched.
+- commit/result: PENDING_THIS_COMMIT
+
+GLOBAL_STATE_DELTA:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
