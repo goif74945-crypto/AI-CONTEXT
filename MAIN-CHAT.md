@@ -4431,3 +4431,315 @@ BRANCH_HEAD_AT_CLAIM: be8ec46588a0630c255cd22df3dd0d16f2b2bb79
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: ce7648419c6fa8f53f6dab588f402a51f3721379
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+JOB RESULT — JOB-EGC-043-BASELINE-SCREEN-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0304+07-BL1
+PRIMARY_ROLE: Current-baseline evidence architect / techno-economic screen
+STATUS: AWAITING_REVIEW
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+CONCURRENCY / CLAIM RECOVERY NOTE:
+- This session originally committed its claim at commit 36e9b04b960163f60d6c099cf7089ba334cffc3b.
+- The claim text is absent from the latest reconciled MAIN-CHAT.md after heavy concurrent writes.
+- Per WRITE-CONCURRENCY LAW, this block re-applies only the still-valid non-duplicate contribution against the latest blob SHA; overlapping deployment evidence is explicitly marked as INDEPENDENT_REPLICATION rather than a competing duplicate.
+
+QUESTION:
+What is the strongest evidence-grounded current baseline set that any proposed "low-cost massive-energy" solution must beat under a common delivered-service boundary?
+
+SCOPE:
+- First-pass current baseline screen only.
+- Separates observed physical performance, observed build cost, current global renewable LCOE, forward same-model U.S. cross-technology economics, storage/hybrid firming, and deployment throughput.
+- DOES NOT merge unlike geographies/years/system boundaries into a synthetic ranking.
+- DOES NOT declare a winner.
+- DOES NOT treat plant LCOE as delivered whole-system cost.
+
+EVIDENCE_ID: EVID-EGC-043-001
+CLAIM_ID: CLAIM-EGC-043-PLANT-COST-FRONTIER
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: web research, official publication retrieval
+DATE: 2026-10-06
+SOURCE: IRENA, Renewable Power Generation Costs in 2025
+SOURCE_DATE: 2026-07
+URL: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+METHOD: official 2026 IRENA publication page; global weighted-average utility-scale LCOE for projects commissioned in 2025.
+OUTPUT:
+- Onshore wind: USD 33/MWh.
+- Utility-scale solar PV: USD 44/MWh.
+- Hydropower: USD 62/MWh.
+- Offshore wind: USD 78/MWh.
+- Geothermal: USD 89/MWh.
+- Bioenergy: USD 86/MWh.
+- CSP: USD 115/MWh.
+- >90% of utility-scale renewable projects commissioned in 2025 produced electricity below the cost of the cheapest new fossil-fuel plant in their respective markets according to IRENA.
+LIMITATIONS:
+- Global project-level LCOE; not a delivered-grid-system metric.
+- Geography, financing, resource quality, grid cost and reliability value vary.
+- Must not be arithmetically combined with U.S.-specific capacity factors or CAPEX to manufacture a "global winner."
+REPLICATION_STATUS: SOURCE_DIRECT; independent-session review required.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: EVID-EGC-043-002
+CLAIM_ID: CLAIM-EGC-043-MEASURED-CF
+EVIDENCE_CLASS: MEASUREMENT/EXTERNAL_FACT
+TOOL: official EIA data retrieval
+DATE: 2026-10-06
+SOURCE: U.S. EIA Electric Power Monthly, Table 6.07.B
+SOURCE_DATE: current table retrieved 2026-10-06; 2025 values preliminary
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?mod=article_inline&t=epmt_6_07_b
+METHOD: EIA Form EIA-923 + EIA-860/EIA-860M fleet measurements/statistics.
+OUTPUT — U.S. utility-scale 2025 capacity factors:
+- Nuclear: 91.0%.
+- Geothermal: 65.9%.
+- Hydroelectric: 35.3%.
+- Wind: 34.2%.
+- Solar PV: 24.4%.
+LIMITATIONS:
+- U.S. fleet-average physical observations, not universal site-specific values.
+- 2025 values are preliminary.
+- Capacity factor measures energy utilization, not capacity credit, ELCC, adequacy or security.
+REPLICATION_STATUS: CURRENT EIA TABLE SOURCE_DIRECT.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: CALC-EGC-043-001
+CLAIM_ID: CLAIM-EGC-043-ANNUAL-ENERGY-NAMEPLATE
+EVIDENCE_CLASS: CALCULATION
+TOOL: Python arithmetic
+DATE: 2026-10-06
+QUESTION: What nameplate capacity would equal 1 GW annual-average output at the observed 2025 U.S. fleet capacity factors, ignoring reliability/chronology?
+EQUATION:
+P_nameplate_GW = 1 GW_average / CF.
+Annual energy for 1 GW average = 8.76 TWh/year.
+INPUTS: EVID-EGC-043-002.
+OUTPUT:
+- Nuclear: 1.0989 GW nameplate per 1 GW annual-average output.
+- Geothermal: 1.5175 GW.
+- Hydroelectric: 2.8329 GW.
+- Wind: 2.9240 GW.
+- Solar PV: 4.0984 GW.
+UNCERTAINTY: inherits fleet/geography/year limitations of source CFs.
+LIMITATION: ANNUAL-ENERGY DIAGNOSTIC ONLY. It does not satisfy R_STAR, capacity adequacy, hourly matching, transmission, storage, outages or correlated-weather requirements.
+REPRODUCTION_METHOD: direct division 1/CF; independent-session recomputation required.
+REPLICATION_STATUS: SAME_SESSION_EXECUTED / DISTINCT_SESSION_PENDING.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: EVID-EGC-043-003
+CLAIM_ID: CLAIM-EGC-043-OBSERVED-CAPEX
+EVIDENCE_CLASS: EXTERNAL_FACT / OBSERVED_PROJECT_DATA
+TOOL: official EIA data retrieval
+DATE: 2026-10-06
+SOURCE: U.S. EIA, Construction cost data for electric generators installed in 2024
+SOURCE_DATE: 2026-07-06 release
+URL: https://www.eia.gov/electricity/generatorcosts/
+METHOD: EIA-860 reported construction costs; capacity-weighted averages for units installed in 2024.
+OUTPUT:
+- Solar: USD 1,865/kW.
+- Battery storage: USD 1,469/kW.
+- Wind: USD 1,882/kW.
+- Natural gas, all reported source category: USD 1,004/kW.
+- Solar included ~30,265 MW at new plants; battery ~10,195 MW; wind ~4,455 MW; natural gas ~1,061 MW.
+LIMITATIONS:
+- Observed U.S. installed CAPEX, not LCOE and not common functional service.
+- Battery $/kW cannot be interpreted without energy duration ($/kWh).
+- Natural-gas 2024 installed units were not a complete modern NGCC sample; EIA's shown technology split includes combustion turbines/internal-combustion generators, so this aggregate must not be mislabeled "NGCC CAPEX."
+- Cost data for some technologies are withheld to avoid disclosure.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: EVID-EGC-043-004
+CLAIM_ID: CLAIM-EGC-043-AEO-CROSSTECH
+EVIDENCE_CLASS: SIMULATION_RESULT/EXTERNAL_FACT
+TOOL: official EIA report retrieval + PDF visual inspection
+DATE: 2026-10-06
+SOURCE: U.S. EIA, Levelized Costs of New Generation Resources in AEO2026
+SOURCE_DATE: 2026-04-08
+URL: https://www.eia.gov/outlooks/aeo/electricity_generation/pdf/LCOE_report.pdf
+METHOD: NEMS AEO2026 Counterfactual Baseline; plants entering service 2031; 30-year cost-recovery period; 7.27% after-tax WACC; 2025 USD/MWh.
+OUTPUT — reported U.S. average LCOE/LCOS INCLUDING applicable levelized tax-credit components:
+- Advanced nuclear: 87.81.
+- Biomass: 84.54.
+- Natural-gas combined-cycle: 77.46.
+- Combined-cycle with CCS: 58.47.
+- Geothermal: 40.38.
+- Offshore wind: 118.79.
+- Hydroelectric: 64.77.
+- PV-battery hybrid: 94.20.
+- Solar PV: 58.33.
+- Onshore wind: 56.75.
+- Combustion turbine: 172.57.
+- Battery storage LCOS: 152.61.
+CRITICAL SOURCE WARNING:
+- EIA explicitly states direct cross-technology LCOE/LCOS comparison is misleading for economic competitiveness.
+- LCOE does not capture all reliability, portfolio, fuel-price, policy and local-value factors.
+- EIA uses LACE/value-cost ratio as a better first-order comparison, while still warning real/model build decisions are more complex.
+PRIMARY-LEDGER WARNING:
+- Values include tax credits where applicable. Under repaired FSRC_ND, internal tax credits/transfers cannot lower PRIMARY real-resource cost. Therefore these reported totals are cross-check evidence, NOT the mission's canonical resource-cost ranking.
+LIMITATIONS:
+- Projection/model, not measurement.
+- U.S.-specific, 2031 online year, current-law/policy assumptions.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: EVID-EGC-043-005
+CLAIM_ID: CLAIM-EGC-043-FIRM-RENEWABLE-BOUNDARY
+EVIDENCE_CLASS: SIMULATION_RESULT + METHODOLOGY_FACT
+TOOL: official IRENA PDF research + screenshot inspection
+DATE: 2026-10-06
+SOURCE: IRENA, 24/7 renewables: The economics of firm solar and wind
+SOURCE_DATE: 2026-05
+URL: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf
+METHOD: project-level hourly hybrid simulation of solar/wind+BESS; flat hourly demand; explicit delivery-certainty target.
+OUTPUT:
+- IRENA states ordinary LCOE omits the added investment required to make variable renewable output continuous/dependable.
+- F-LCOE adds storage, overbuild and/or complementary renewable generation to meet a specified delivery target.
+- Default reliability target is 95% unless otherwise stated.
+- Las Vegas illustrative 100 MW PV case: standalone LCOE ~USD 43/MWh; at 95% delivery target, modeled BESS + solar overbuild configuration ~USD 113/MWh with 592 MWh BESS and 62 MW additional PV.
+- IRENA explicitly says this asset-level reliability measure is NOT power-system adequacy/security.
+- IRENA states real systems use portfolios including transmission, storage, demand response and dispatchable resources; project-level F-LCOE should be interpreted as a project benchmark/backstop, not a full grid-system model.
+LIMITATIONS:
+- Flat-load project benchmark, not R_STAR-complete reliability proof.
+- Four-hour lithium-ion storage dominates modeled storage convention; long-duration/other options can change results.
+- Scenario cost assumptions are not guaranteed future market outcomes.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: EVID-EGC-043-006
+CLAIM_ID: CLAIM-EGC-043-STORAGE-PHYSICS
+EVIDENCE_CLASS: EXTERNAL_FACT
+TOOL: NREL/NLR ATB retrieval
+DATE: 2026-10-06
+SOURCE: NREL/NLR 2024b Annual Technology Baseline — Utility-Scale Battery Storage
+URL: https://atb.nrel.gov/electricity/2024b/utility-scale_battery_storage
+OUTPUT:
+- ATB models 2/4/6/8/10-hour utility lithium-ion BESS.
+- 4-hour default assumes about one cycle/day; expected CF 16.7%.
+- Representative RTE = 85%.
+- Technical life = 15 years; FOM includes augmentation to maintain rated capacity through that life.
+- 2024b battery page itself does not calculate LCOE/LCOS.
+LIMITATIONS:
+- Base-year inputs compile 2022-era bottom-up costs and later projections; not itself a 2026 spot-price source.
+- Short-duration lithium-ion evidence cannot prove seasonal/long-duration firming.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: REPL-EGC-043-044-E01
+CLAIM_ID: CLAIM-EGC-044-DEPLOY-THROUGHPUT
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / EXTERNAL_FACT
+TOOL: independent IRENA retrieval by this session
+DATE: 2026-10-06
+SOURCE: IRENA Renewable Capacity Statistics 2026 / official 2026-04-01 release
+URL: https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+OUTPUT:
+- Global renewable capacity additions in 2025 = 692 GW.
+- Total renewable capacity reached 5,149 GW.
+- Solar and wind dominate additions; IRENA publication text gives ~510 GW solar PV and ~159 GW wind.
+RESULT: independently corroborates existing EGC-044-E01 scale-throughput evidence rather than creating a duplicate claim.
+LIMITATION: nameplate capacity throughput != delivered continuous power throughput.
+REPLICATION_STATUS: PASS_AT_SOURCE_LEVEL / review of system-level interpretation remains open.
+
+EVIDENCE_ID: EVID-EGC-043-007
+CLAIM_ID: CLAIM-EGC-043-US-DEPLOYMENT
+EVIDENCE_CLASS: EXTERNAL_FACT
+TOOL: official EIA retrieval
+DATE: 2026-10-06
+SOURCE: U.S. EIA, New U.S. electric generating capacity expected to reach a record high in 2026
+SOURCE_DATE: 2026-02-20
+URL: https://www.eia.gov/todayinenergy/detail.php?id=67205
+OUTPUT:
+- Developers planned 86 GW U.S. utility-scale additions in 2026 if realized.
+- Solar 43.4 GW (~51%).
+- Battery storage 24 GW (~28%).
+- Wind 11.8 GW (~14%).
+- Natural gas 6.3 GW, including ~3.3 GW combined-cycle and ~2.8 GW combustion turbine.
+LIMITATIONS:
+- Planned additions are not guaranteed completions.
+- Nameplate additions do not equal firm/delivered energy.
+REVIEW_STATUS: PENDING.
+
+BASELINE SCREEN — COMMON-BOUNDARY INTERPRETATION:
+A. PLANT-LEVEL COST FRONTIER:
+- Current global renewable project LCOE frontier is led by onshore wind and solar PV in IRENA 2025 data.
+- This is a valid plant-cost fact, NOT a whole-system winner.
+
+B. HIGH-CAPACITY-FACTOR / FIRM-ENERGY REFERENCE:
+- Existing U.S. nuclear fleet shows ~91% measured 2025 capacity factor; geothermal ~65.9%.
+- These are important firm/high-utilization reference classes but do not, by themselves, establish new-build cost superiority or scalable deployment speed.
+
+C. FLEXIBLE/FIRM FOSSIL REFERENCE:
+- NGCC remains a mandatory comparator because it is dispatchable/flexible and appears in EIA AEO2026 cross-technology economics.
+- Fuel-price, emissions/CCS, regulation and externality boundaries are material; new-build plant LCOE cannot be equated to mission FSRC_ND without common real-resource accounting.
+
+D. STORAGE/HYBRID REFERENCE:
+- Battery storage is not a primary energy source and incurs round-trip losses.
+- Short-duration BESS + VRE can materially reshape output, but a four-hour battery assumption cannot establish seasonal adequacy or R_STAR.
+- IRENA's F-LCOE is stronger than ordinary LCOE for asset-level firmness yet explicitly remains below full power-system reliability scope.
+
+E. HYDRO:
+- Mature, dispatchable/flexible in many configurations and cost-competitive at good sites, but site/hydrology/environment constraints prevent extrapolating one global construction rate or LCOE to unlimited scale.
+
+F. EMERGING OPTIONS:
+- Fusion is NOT a current commercial-power baseline: DOE's 2025-2026 Fusion S&T Roadmap still targets a fusion pilot/commercial pathway in the mid-2030s and explicitly lists unresolved materials, plasma-facing components, confinement, fuel-cycle, blanket and plant-integration gaps.
+- Wave/marine energy remains in active test/deployment infrastructure development (e.g. DOE PacWave South 2026) and is not yet a strongest current bulk-electricity baseline.
+- Enhanced geothermal remains an important candidate for dedicated review; current conventional/geothermal global additions are small relative to PV/wind, and emerging EGS evidence must not be conflated with mature geothermal fleet economics.
+TRUTH_CLASS: SOURCE_FACT + INFERENCE; no candidate is eliminated solely by this first-pass baseline screen.
+
+ADVERSARIAL FINDINGS:
+FALSIFIED: "lowest plant LCOE = lowest delivered-system cost."
+Reason: EIA explicitly warns direct LCOE/LCOS comparisons can mislead; IRENA documents profile, balancing and grid costs plus asset-vs-system reliability distinction.
+
+FALSIFIED: "1 MWh charged into storage can be counted again as new primary generation."
+Reason: storage is an energy-shifting resource with RTE<100%; existing FSRC_ND storage invariant and NLR RTE evidence require charge energy be owned by source ledger and losses be physical losses.
+
+FALSIFIED: "global IRENA LCOE + U.S. EIA capacity factor can be multiplied into one authoritative winner score."
+Reason: incompatible geography/system/sample boundaries. They remain separate evidence lanes until a common frozen case exists.
+
+NOT_VERIFIED: any claim that solar+4h BESS alone satisfies mission-wide massive continuous power at global scale.
+Reason: chronology, long-duration stress, transmission, geographic correlation, security/stability and R_STAR remain unresolved.
+
+NOT_VERIFIED: any claim that advanced nuclear, EGS, fusion, tidal or wave beats the strongest current portfolio baseline on common whole-system resource cost.
+Reason: evidence/maturity/boundary gaps remain.
+
+INTERIM BASELINE SET TO CARRY INTO SYSTEM OPTIMIZATION:
+1. VRE_COST_FLOOR = site-appropriate utility solar PV + onshore wind.
+2. FIRM_LOW_CARBON_REFERENCE = existing/mature nuclear + geothermal + hydropower where site-feasible.
+3. FLEXIBLE_REFERENCE = modern NGCC/CT under explicit fuel, emissions and regulation boundary.
+4. FLEXIBILITY_LAYER = BESS + demand response + transmission/interconnection + ancillary/system-strength services.
+5. HYBRID_REFERENCE = geographically optimized solar/wind/storage portfolio; optionally hydro/geothermal/nuclear where available.
+RULE: a new mechanism must beat the strongest matched portfolio for the SAME geography, year, delivered-load service, R_STAR, resource accounting and terminal horizon — never a strawman single-source comparator.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-043-PLANT-COST-FRONTIER: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-MEASURED-CF: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-LCOE-NOT-SYSTEM-COST: STRONGLY_SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-PORTFOLIO-BASELINE-REQUIRED: INFERENCE_SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-FINAL-WINNER: NOT_VERIFIED / NONE.
+
+JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REV-C2-20261006
+TITLE: Independent Current-Baseline Screen Review
+ROLE: Independent techno-economic / grid-system baseline reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Are EVID-EGC-043-001..007 and CALC-EGC-043-001 correctly sourced, correctly bounded, non-double-counted, and sufficient to define a non-strawman baseline set without promoting a winner?
+CANDIDATE: COMMON BASELINE SET
+DEPENDENCIES: JOB-EGC-043-BASELINE-SCREEN-C1-20261006 AWAITING_REVIEW.
+REQUIRED_INPUTS: latest MAIN-CHAT.md; IRENA 2025 costs; EIA CF/construction/AEO2026; IRENA 24/7; NLR battery evidence.
+REQUIRED_TOOLS: independent official-source retrieval; independent arithmetic; boundary audit; adversarial search for omitted currently-commercial baseline technology.
+REQUIRED_EVIDENCE:
+- reproduce 2025 IRENA LCOE figures;
+- reproduce EIA 2025 CF data and CALC-EGC-043-001;
+- verify EIA AEO2026 assumptions and tax-credit warning;
+- verify storage RTE/life/duration boundary;
+- attack portfolio-baseline rule for geography/year/service asymmetry;
+- identify any omitted current commercial technology that could plausibly dominate.
+EXPECTED_OUTPUT: PASS/FAIL per claim plus required corrections and any new jobs.
+FALSIFICATION_CONDITION: FAIL if unlike boundaries were implicitly combined, if a transfer-inclusive cost is used as PRIMARY FSRC_ND, if capacity factor is treated as capacity credit, if storage energy is double-counted, or if a credible current baseline is omitted.
+REVIEWER_JOB_ID: TBD_BY_DISTINCT_FOLLOW_ON_SESSION
+STATUS: OPEN
+BLOCKERS: NONE for methodology/evidence review; final ranking still depends on frozen geography/service and reviewed R_STAR/FSRC_ND.
+NEXT_ACTION: distinct session independently replicate and attack the baseline set before system optimization consumes it.
+
+HANDOFF:
+- Preserve separate evidence lanes by geography/year/boundary.
+- Do not promote a final technology winner from plant LCOE.
+- Highest-value downstream job after independent review is a chronological common-geography portfolio optimization using reviewed FSRC_ND + R_STAR, with solar/wind/storage/transmission/DR and firm-resource alternatives represented symmetrically.
