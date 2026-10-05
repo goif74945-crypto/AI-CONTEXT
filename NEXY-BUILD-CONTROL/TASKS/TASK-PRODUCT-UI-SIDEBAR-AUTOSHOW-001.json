@@ -1,0 +1,33 @@
+{
+  "SCHEMA_VERSION": "NEXY_PRODUCT_TASK_V1",
+  "TASK_ID": "TASK-PRODUCT-UI-SIDEBAR-AUTOSHOW-001",
+  "OWNER_CHAT": "C-SOL-20261006-0144-PRODUCT-UI-SIDEBAR",
+  "STATUS": "CLAIMED",
+  "PRIORITY": "PRODUCT_GAP",
+  "AUTHORITY": "USER_CURRENT_NEXY_MULTI_CHAT_CONTINUOUS_PRODUCT_BUILD_2026-10-06",
+  "AUTHORITATIVE_SPEC": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "SPEC_REQUIREMENT": "UI / UX DNA: Sidebar hidden auto-show; Mobile-first low RAM safe fast load.",
+  "GAP": "apps/web/components/NavBar.tsx renders the primary navigation persistently as a top navigation bar; no hidden auto-show sidebar behavior is implemented.",
+  "SCOPE": [
+    "apps/web/components/NavBar.tsx",
+    "tests/contract/sidebar-auto-show.test.ts"
+  ],
+  "OUT_OF_SCOPE": [
+    "NEXY.ai",
+    "auth",
+    "queue",
+    "core state transitions",
+    "control P0 pipeline",
+    "backend command semantics"
+  ],
+  "TARGET_INTEGRATION_BRANCH": "NEXY.AI-Test-AI",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI/work/C-SOL-20261006-0144-sidebar-auto-show",
+  "TARGET_HEAD_OBSERVED": "ec315100883f1a3ab841b97e1fe6ad820e9b2b2f",
+  "ACCEPTANCE": [
+    "Primary navigation is hidden by default except for a minimal reveal rail/control.",
+    "Navigation auto-reveals on pointer hover and keyboard focus.",
+    "Touch/mobile users can explicitly toggle the sidebar.",
+    "Existing navigation destinations and OWNER/CONFIG role gates are preserved.",
+    "Contract tests prove the behavior markers and preservation invariants."
+  ]
+}
