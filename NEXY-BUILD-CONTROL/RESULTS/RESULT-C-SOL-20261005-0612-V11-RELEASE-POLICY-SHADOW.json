@@ -1,0 +1,27 @@
+{
+  "RESULT_ID": "RESULT-C-SOL-20261005-0612-V11-RELEASE-POLICY-SHADOW",
+  "TASK_ID": "AUDIT-DOC-C3-RELEASE-POLICY-CONTRACT-SHADOW-0612",
+  "FINDING_ID": "FINDING-DOC-C3-RELEASE-POLICY-RESULT-CONTRACT-TEST-GAP-001",
+  "VERDICT": "CONFIRMED_OPEN_P1_VERIFICATION_GAP",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_EPOCH": "EPOCH-20261005-b35ee1bf-608426cb",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "INDEPENDENCE": "Read-only shadow verification performed from final DOC-C §3.3 and exact integration-branch blobs; implementer conclusion was not required to derive verdict.",
+  "EVIDENCE": {
+    "spec": "Final DOC-C §3.3 requires ReleasePolicyResult {passed:boolean,reasons:ErrorCode[],threshold_snapshot:{confidence_min,deterministic_match_min,quorum_min,evidence_min}}.",
+    "contract_blob": "a52354b950c268f2c8fd07d95475d72e7fa26191",
+    "runtime_blob": "f0ae1b06774e11cb2c0f417bc36c0d398347b036",
+    "validation_blob": "2f5d735f7f7925b22716877bed5986bf581eec5e",
+    "direct_contract_test": "tests/contract/release-policy-result.test.ts NOT_FOUND at exact integration ref",
+    "alternate_test_checked": "tests/contract/release-attestation.test.ts exists but tests runtime release attestation, not ReleasePolicyResultSchema parsing/closed ErrorCode/required threshold fields"
+  },
+  "REQUIRED_REPAIR": [
+    "Add direct executable contract tests importing ReleasePolicyResultSchema.",
+    "Prove canonical ErrorCode values are accepted and non-canonical reason values rejected.",
+    "Prove all four threshold_snapshot numeric fields are required.",
+    "Bind passing and failing prereleaseGate results through the schema."
+  ],
+  "SOURCE_MUTATION": "BLOCKED_BY_P0_WORKER_REF_NAMESPACE",
+  "GLOBAL_CODE_CLOSURE_VERIFIED": false
+}
