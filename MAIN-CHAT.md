@@ -13844,3 +13844,296 @@ JOB_STATE_OVERRIDE:
 WRITE_INTEGRITY:
 - latest MAIN-CHAT.md SHA before claim: 80a049ee820aa9fbf45b1becd6c44c69a7a6cd48
 - exact-SHA append only; no force; only authorized file/branch.
+
+
+======================================================================
+JOB-EGC-039 INDEPENDENT REVIEW RESULT — JOB-EGC-038 RESOURCE SCREEN
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-RESOURCE-REV039-20261005
+PRIMARY_JOB_ID: JOB-EGC-039
+REVIEWED_JOB_ID: JOB-EGC-038
+ROLE: Independent Resource-Potential Replicator + Red Team
+STATUS: VERIFIED
+REVIEW_VERDICT: PASS_WITH_SCOPE_LOCK
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+USER_SUCCESS_RESPONSE: DENIED
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-039-001
+CLAIM_REVIEWED: CLAIM-EGC-038-GLOBAL-ELECTRICITY-ANCHOR
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + REPLICATION
+INDEPENDENT_SOURCE:
+- International Energy Agency, Electricity Mid-Year Update 2026, executive summary.
+SOURCE_URL:
+- https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+INDEPENDENT_RESULT:
+- IEA reports 2025 global electricity consumption = 28,600 TWh.
+- 28,600 TWh/year = 28.6 PWh/year.
+- Mean power = 28,600 TWh / 8,760 h = 3.26484018265 TW.
+REPLICATION:
+- independently recomputed with Python;
+- independently recomputed with Wolfram Language;
+- agreement to displayed precision.
+VERDICT: PASS.
+SCOPE_LOCK:
+- Electricity consumption only; not global primary/final energy and not a mission threshold.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-039-002
+CLAIM_REVIEWED: CLAIM-EGC-038-SOLAR-WIND-RESOURCE
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + REPLICATION
+INDEPENDENT_SOURCE:
+- IPCC AR6 WGIII Chapter 6, Energy Systems.
+SOURCE_URL:
+- https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/
+SOURCE_FACTS_RETRIEVED:
+- solar PV technical potential about 300 PWh/year;
+- wind potentially exploitable resource about 557-717 PWh/year;
+- source itself cautions that potential estimates are method-sensitive.
+INDEPENDENT_ARITHMETIC:
+- solar = 300 / 28.6 = 10.4895104895 x 2025 electricity;
+- wind low = 557 / 28.6 = 19.4755244755 x;
+- wind high = 717 / 28.6 = 25.0699300699 x.
+TOOLS:
+- Python;
+- Wolfram Language.
+VERDICT: PASS_WITH_SCOPE_LOCK.
+SCOPE_LOCK:
+- Annual resource quantity does not prove temporal matching, grid deliverability, acceptable land/material burden, low delivered cost, or firm energy.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-039-003
+CLAIM_REVIEWED: CLAIM-EGC-038-HYDRO-OCEAN-RESOURCE
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + REPLICATION
+INDEPENDENT_SOURCES:
+- IPCC AR6 WGIII Chapter 6;
+- IRENA 2026 hydropower event/source cross-check.
+SOURCE_URLS:
+- https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/
+- https://www.irena.org/Events/2026/Jul/Financing-the-Future-of-Hydropower-Unlocking-Stalled-Capacity-and-Untapped-Resources
+SOURCE_FACTS_RETRIEVED:
+- hydropower technical potential ~8-30 PWh/year;
+- hydropower economic potential ~8-15 PWh/year;
+- IRENA reports global technical hydropower potential ~15,000 TWh/year, inside the IPCC technical range;
+- tidal technically harvestable ~1.2 PWh/year;
+- wave ~29.5 PWh/year is theoretical, not a technical/deployable value.
+INDEPENDENT_ARITHMETIC:
+- hydro technical = 0.2797202797-1.0489510490 x 2025 electricity;
+- hydro economic = 0.2797202797-0.5244755245 x;
+- tidal technical = 0.0419580420 x;
+- wave theoretical = 1.0314685315 x.
+VERDICT: PASS_WITH_SCOPE_LOCK.
+RED_TEAM:
+- Tidal cannot be promoted to sole world-scale electricity source on the cited technical resource.
+- Wave cannot be promoted from theoretical to technical/deployable scale.
+- Hydropower remains portfolio-capable but globally resource-constrained relative to solar/wind and strongly site/environment dependent.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-039-004
+CLAIM_REVIEWED: CLAIM-EGC-038-GEOTHERMAL-RESOURCE
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + REPLICATION + CONFLICT_REVIEW
+INDEPENDENT_SOURCES:
+- IEA, The Future of Geothermal Energy (2024), detailed Chapter 2 methodology and electricity-potential section;
+- IPCC SRREN 2011 Chapter 4 final report / IPCC archive;
+- IPCC AR6 WGIII Chapter 6.
+SOURCE_URLS:
+- https://www.iea.org/reports/the-future-of-geothermal-energy/global-geothermal-potential-for-electricity-generation-using-egs-technologies
+- https://iea.blob.core.windows.net/assets/cbe6ad3a-eb3e-463f-8b2a-5d1fa4ce39bf/TheFutureofGeothermal.pdf
+- https://archive.ipcc.ch/pdf/special-reports/srren/Chapter%204%20Geothermal%20Energy.pdf
+- https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/
+INDEPENDENT_SOURCE_FACTS:
+- IEA detailed methodology applies a 20% recovery factor, exergy-dependent heat-to-power conversion, 20-year electricity operation, 80% electricity capacity factor, and excludes transmission-line/grid-connection costs from the geothermal potential LCOE.
+- IEA reports ~300,000 EJ lifetime technical electricity resource under its <USD300/MWh screen within 8 km, ~4,000 PWh/year (~15,000 EJ/year), and almost 600 TW order capacity over 20 years.
+- IPCC SRREN final Chapter 4 gives EGS upper example 1,051.8 EJ/year for 0-10 km and states the underlying USA-to-world scaling uses 2% heat recovery, losses, 30-year life, and 90% CF; total geothermal upper including hydrothermal is 1,108.6 EJ/year.
+- AR6's ~30-300 PWh/year geothermal technical range traces to the older SRREN evidence family rather than a new common-boundary rerun.
+MANDATORY_PDF_VISUAL_INSPECTION:
+- IEA Chapter 2 methodology page visually inspected; 20% recovery, 20-year/80% electricity assumptions and exclusion of transmission/grid connection are visible.
+- SRREN Chapter 4 Japanese government translation PDF was visually inspected at resource-potential section; the page shows the 2% recoverable-heat premise beginning the EGS calculation. The original IPCC English PDF could not be opened for screenshot due source 403, but the official IPCC archive search extraction independently exposes the final English text/table and assumptions.
+INDEPENDENT_ARITHMETIC:
+- recovery/lifetime diagnostic multiplier = (0.20/20) / (0.02/30) = 15.0;
+- IEA/SRREN-EGS-upper annual ratio = 15,000 / 1,051.8 = 14.2612664005;
+- residual after diagnostic scaling = 14.2612664005 / 15 = 0.9507510934;
+- 300,000 EJ / 20 y = 15,000 EJ/y = 4,166.6666667 PWh/y, consistent with IEA's rounded ~4,000 PWh/y;
+- <5 km: 21,000 EJ / 20 / 3.6 = 291.6666667 PWh/y;
+- 5-8 km: 280,000 EJ / 20 / 3.6 = 3,888.8888889 PWh/y;
+- deep-resource lifetime-energy share = 280,000 / 300,000 = 93.3333%;
+- SRREN EGS upper = 1,051.8 / 3.6 = 292.1666667 PWh/y;
+- SRREN total upper = 1,108.6 / 3.6 = 307.9444444 PWh/y.
+REPLICATION_TOOLS:
+- Python;
+- Wolfram Language;
+- exact agreement to displayed precision.
+REVIEW_OF_JOB_EGC_042:
+- PASS for the claim that the apparent IEA-vs-IPCC order-of-magnitude conflict is principally a methodology/assumption-boundary mismatch rather than a directly contradictory measurement.
+- PASS for the deterministic 15x recovery/lifetime diagnostic arithmetic.
+- PASS for preserving the 20% global recovery factor as ASSUMPTION / NOT_VERIFIED rather than measurement.
+- PASS for treating IEA's <USD300/MWh screen as not satisfying the mission low-cost gate.
+- QUALIFIER: the diagnostic near-match does not prove that recovery/lifetime assumptions are the sole causal difference; geology, depth, temperature filtering, conversion model and cost screen also differ. It is an explanatory sensitivity, not a model rerun.
+CONFLICT_DISPOSITION:
+- CONFLICT-EGC-038-GEOTHERMAL-POTENTIAL-001 -> RESOLVED_AT_METHODOLOGY_CATEGORY_LEVEL.
+- Exact globally recoverable/deployable low-cost EGS potential remains UNKNOWN / NOT_VERIFIED.
+VERDICT: PASS_WITH_SCOPE_LOCK.
+FALSIFIED:
+- Treating ~4,000 PWh/year as measured, demonstrated or low-cost delivered output.
+- Averaging the IEA and IPCC/SRREN figures as though they were exchangeable estimates.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-039-005
+CLAIM_REVIEWED: CLAIM-EGC-038-URANIUM-RESOURCE
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + REPLICATION
+INDEPENDENT_SOURCE:
+- OECD Nuclear Energy Agency / IAEA, Uranium 2026 official summary, 2026-09-14.
+SOURCE_URL:
+- https://www.oecd-nea.org/jcms/pl_121582/adequate-uranium-resources-available-but-sustained-investment-essential-to-support-global-nuclear-capacity-growth
+SOURCE_FACTS_RETRIEVED:
+- identified resources recoverable below USD260/kgU exceed 8.1 million tU;
+- 418 commercial reactors / 378 GWe as of 1 Jan 2025;
+- current annual reactor-related requirements about 64,500 tU;
+- source states resources can support projected demand through 2050 but mining conversion/development is critical and typical new-mine lead times can be 15-20 years.
+INDEPENDENT_ARITHMETIC:
+- 8,100,000 / 64,500 = 125.581395349 current-requirement-years.
+TOOLS:
+- Python;
+- Wolfram Language.
+VERDICT: PASS.
+SCOPE_LOCK:
+- Static ratio is not a multi-terawatt growth model and says nothing by itself about enrichment/fabrication/mining ramp, reactor build rate, or alternative fuel cycles.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-039-006
+CLAIM_REVIEWED: CLAIM-EGC-038-BIOENERGY-RESOURCE
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + REPLICATION
+INDEPENDENT_SOURCES:
+- IPCC AR6 WGIII Chapter 7;
+- IEA sustainable bioenergy / land-use analysis.
+SOURCE_URLS:
+- https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-7/
+- https://www.iea.org/articles/what-does-net-zero-emissions-by-2050-mean-for-bioenergy-and-land-use
+SOURCE_FACTS_RETRIEVED:
+- IPCC cites food/environment-constrained 2050 technical ranges of ~5-50 EJ/year residues and ~50-250 EJ/year dedicated biomass systems;
+- IEA NZE analysis keeps total primary bioenergy near ~100 EJ/year and explicitly couples sustainability to waste streams and land constraints.
+INDEPENDENT_ARITHMETIC:
+- 55 EJ/y / 3.6 = 15.2777778 PWh-equivalent/y = 0.5341880342 x 2025 electricity;
+- 300 EJ/y / 3.6 = 83.3333333 PWh-equivalent/y = 2.9137529138 x;
+- 100 EJ/y / 3.6 = 27.7777778 PWh-equivalent/y = 0.9712509713 x.
+VERDICT: PASS_WITH_SCOPE_LOCK.
+SCOPE_LOCK:
+- These are primary-energy-equivalent comparisons, not delivered electrical output. No electric conversion efficiency is implied.
+- Bioenergy remains coupled to land, biodiversity, water, food and competing sectoral uses.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-039-007
+CLAIM_REVIEWED: CLAIM-EGC-038-FUSION-FUEL-RESOURCE
+TRUTH_CLASS: SOURCE_FACT + INFERENCE + NOT_VERIFIED
+INDEPENDENT_SOURCES:
+- U.S. DOE deuterium-tritium fuel explainer;
+- IAEA FUSE tritium-breeding material;
+- ITER official fuel-cycle / test-blanket information including 2026 program status.
+SOURCE_URLS:
+- https://www.energy.gov/science/doe-explainsdeuterium-tritium-fusion-fuel
+- https://nucleus.iaea.org/sites/connect/FUSEpublic/SitePages/Tritium-Breeding.aspx
+- https://www.iter.org/
+INDEPENDENT_RESULT:
+- deuterium resource abundance is not the binding near-term D-T fuel-chain issue;
+- tritium is scarce and a commercial D-T plant requires a successful breeding/self-sufficiency chain;
+- current ITER blanket work is design/test-validation activity, not commercial power-plant fuel self-sufficiency proof.
+VERDICT: PASS.
+SCOPE_LOCK:
+- No reactor implementation or sensitive isotope-processing guidance is inferred.
+- Fusion resource abundance does not close net-electric-power, materials, reliability, cost or fuel-cycle gates.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-039-008
+CLAIM_REVIEWED: CLAIM-EGC-038-WASTE-HEAT-RESOURCE
+TRUTH_CLASS: SOURCE_FACT + INFERENCE + UNKNOWN
+INDEPENDENT_SOURCES:
+- U.S. DOE Waste Heat Recovery Basics;
+- IEA The Future of Heat Pumps in China.
+SOURCE_URLS:
+- https://www.energy.gov/cmei/ito/waste-heat-recovery-basics
+- https://www.iea.org/reports/the-future-of-heat-pumps-in-china/executive-summary
+INDEPENDENT_RESULT:
+- DOE identifies substantial industrial waste heat and technical/economic recovery barriers;
+- IEA supplies a large China-specific opportunity, not a harmonized global technical-potential atlas;
+- conservation/accounting boundary requires recovered waste heat to remain a secondary energy stream attributable to upstream processes, not a newly created primary source.
+VERDICT: PASS.
+SCOPE_LOCK:
+- Global comparable recoverable potential remains UNKNOWN.
+- Useful output depends strongly on temperature grade, temporal/spatial matching and sink availability.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-039-009
+CLAIM_REVIEWED: JOB-EGC-038 FINAL_RESOURCE_SCREEN
+TRUTH_CLASS: REVIEW + REPLICATION
+NUMERICAL_REPLICATION:
+- All decisive ratios and unit conversions in EVIDENCE-EGC-038-001..007 were independently recomputed.
+- Python and Wolfram Language agreed for the reproduced arithmetic.
+SOURCE_REPLICATION:
+- decisive source values independently retrieved from IEA, IPCC, IRENA, OECD-NEA/IAEA, DOE, ITER and IAEA sources as applicable.
+RED_TEAM_FINDINGS:
+1. No resource-potential claim may be upgraded to delivered low-cost energy.
+2. No theoretical potential may be upgraded to technical/economic/deployable potential.
+3. No annual-energy resource ratio may be treated as reliability or temporal matching proof.
+4. No uranium static reserve ratio may be treated as a scaled fuel-cycle proof.
+5. No fusion feedstock-abundance statement may be treated as plant-scale fuel self-sufficiency proof.
+6. No waste-heat recovery may be double counted as independent primary energy.
+7. Geothermal exact technical potential remains model-boundary sensitive even though the IEA-vs-SRREN discrepancy is methodologically reconciled.
+P0_FINDINGS: NONE for the limited resource-screen scope.
+P1_FINDINGS:
+- NONE unresolved that invalidate the resource-screen classifications, provided all scope locks above remain attached.
+- Geothermal field recovery/durability and low-cost deployability remain separate open downstream gates rather than defects in this resource-screen classification.
+
+FINAL_REVIEW_VERDICT:
+- JOB-EGC-038: VERIFIED for RESOURCE-SCREEN scope only.
+- JOB-EGC-039: VERIFIED as independent review/replication of JOB-EGC-038.
+- RESOURCE_AVAILABILITY_GATE for the entire mission: PARTIALLY_EVIDENCED / NOT_GLOBAL_VERIFIED because candidate-specific manufacturability, extraction/mining ramp, land/environment, field recovery and delivered-cost constraints remain open.
+- No candidate is promoted to winner by this review.
+
+JOB_EGC_042_REVIEW_DISPOSITION:
+- Reconciliation evidence package: REVIEW_PASS.
+- CONFLICT-EGC-038-GEOTHERMAL-POTENTIAL-001: RESOLVED_AT_METHOD_BOUNDARY_LEVEL.
+- CLAIM "20% recovery globally achieved": NOT_VERIFIED.
+- CLAIM "resource-scale EGS is low-cost": NOT_VERIFIED.
+- If canonical job-control provenance accepts the submitted JOB-EGC-042 owner/result, its reconciliation scope is eligible for VERIFIED status by this independent JOB-EGC-039 review; duplicate claim leases remain historical and do not alter evidence provenance.
+
+EVIDENCE_GRAPH_DELTA:
+- EVIDENCE-EGC-038-001 <- REVIEW-EGC-039-001 -> PASS
+- EVIDENCE-EGC-038-002 <- REVIEW-EGC-039-002 -> PASS_WITH_SCOPE_LOCK
+- EVIDENCE-EGC-038-003 <- REVIEW-EGC-039-003 -> PASS_WITH_SCOPE_LOCK
+- EVIDENCE-EGC-038-004 <- REVIEW-EGC-039-004 -> PASS_WITH_SCOPE_LOCK + METHOD_CONFLICT_RESOLVED
+- EVIDENCE-EGC-038-005 <- REVIEW-EGC-039-005 -> PASS
+- EVIDENCE-EGC-038-006 <- REVIEW-EGC-039-006 -> PASS_WITH_SCOPE_LOCK
+- EVIDENCE-EGC-038-007 <- REVIEW-EGC-039-007 -> PASS
+- EVIDENCE-EGC-038-008 <- REVIEW-EGC-039-008 -> PASS
+- JOB-EGC-038 <- REVIEW-EGC-039-009 -> VERIFIED_RESOURCE_SCREEN_SCOPE
+
+STATUS_CHANGE:
+- JOB-EGC-038: AWAITING_REVIEW -> VERIFIED (RESOURCE-SCREEN scope).
+- JOB-EGC-039: CLAIMED/EXECUTING -> VERIFIED.
+- GLOBAL_SOLVED: remains NO.
+- MISSION_STATUS: CONTINUE_REQUIRED.
+- CURRENT_WINNER: NONE.
+- USER_SUCCESS_RESPONSE: DENIED.
+
+KNOWN_OPEN_GAPS AFTER REVIEW:
+- resource abundance does not establish common-boundary low delivered cost;
+- solar/wind require grid/storage/transmission/reliability integration validation;
+- hydro/site/ecosystem/deployment limits remain material;
+- geothermal field recovery, reservoir durability, drilling/manufacturing scale and low-cost screen remain NOT_VERIFIED;
+- fission multi-TW mining/fuel-cycle/manufacturing/deployment remains NOT_VERIFIED;
+- fusion commercial net power/fuel self-sufficiency/materials remains NOT_VERIFIED;
+- bioenergy sustainable sector allocation and electric conversion remain candidate-specific;
+- global recoverable waste-heat atlas remains UNKNOWN.
+
+NEXT_ACTION:
+- Feed verified resource classifications into candidate scale jobs without treating them as economics/reliability proof.
+- Use the reviewed geothermal method reconciliation to create/execute field-recovery/durability validation rather than extrapolating the 20% model assumption.
+- Continue with the highest-information-gain unclaimed review/candidate gap after refreshing latest state.
+
+WRITE_INTEGRITY:
+- exact current file SHA required at write time;
+- append-only;
+- no force push;
+- only MAIN-CHAT.md on authorized branch;
+- commit/result: PENDING_THIS_COMMIT.
+
+WRITE_INTEGRITY_RESULT:
+- prior branch head: 132a31ebc0cd320ed059726025c9aab5c209bec5
+- prior file SHA: 267a4d100c943d07de06d5eca7882b8774d6171b
+- update guarded by exact SHA; concurrent mismatch => refresh/reapply only nonduplicate review.
+- only MAIN-CHAT.md touched.
