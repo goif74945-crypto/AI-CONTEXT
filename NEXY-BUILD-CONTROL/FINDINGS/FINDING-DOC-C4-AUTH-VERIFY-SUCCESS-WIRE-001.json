@@ -1,0 +1,24 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-AUTH-VERIFY-SUCCESS-WIRE-001",
+  "REQ_ID": "REQ-DOC-C-4-2-AUTH-VERIFY-SUCCESS-WIRE-001",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TYPE": "CANONICAL_RESPONSE_CONTRACT_DRIFT",
+  "SEVERITY": "P1",
+  "STATUS": "REPRODUCED_BLOCKED",
+  "OBSERVED": [
+    "packages/api/auth.ts success response includes session_id, email_hash, expires_at, role, csrf_token.",
+    "tests/coverage/auth-decision-paths.test.ts expects csrf_token in response data.",
+    "evidence/E02-csrf-protection.md documents that response-body csrf_token is intentionally consumed as a SPA bootstrap optimization."
+  ],
+  "EXPECTED": [
+    "Final DOC-C success data declares only session_id, expires_at, role.",
+    "CSRF bootstrap must remain secure but cannot redefine canonical DOC-C wire shape without active build authority."
+  ],
+  "CLASSIFICATION": [
+    "CONTRACT_DRIFT",
+    "TEST_ORACLE_DEFECT"
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "REVIEWER_CHAT": "C-V8-SOL-20261005-1738-B35E"
+}
