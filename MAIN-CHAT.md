@@ -4705,3 +4705,23 @@ REVIEW_JOB_STATE:
 - JOB-EGC-044A-PV-MATERIALS-REV-20261006: AWAITING_REVIEW.
 - SELF_VERIFICATION: FORBIDDEN.
 - NEXT_HIGHEST_VALUE_ACTION: refresh job graph; do not self-author C3; claim a distinct executable review/repair not owned by this session.
+
+
+======================================================================
+63. SESSION CLAIM — JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0410+07-FINPVREV10
+PRIMARY_ROLE: Independent dated-terminal accounting reviewer / representation-invariance adversary
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006
+QUESTION: Does TIMEBASIS-C9 preserve identical PV0/FSRC_ND for semantically identical atomic and constructed-composite terminal effects across mixed dates, partial embedding, signed values and probability schedules without inventing hidden source-quote decompositions?
+DEPENDENCIES: TIMEBASIS-C9 is AWAITING_REVIEW; satisfied.
+TOOLS: latest GitHub state; official HM Treasury source audit; independent Decimal/algebra replication; mixed-date, partial-embedding, negative-composite, probability-schedule, overlap and valuation-date counterexamples.
+EVIDENCE_TARGET: reproduce C02-C05 independently; verify current D_REF source/schedule; attack SOURCE_ATOMIC_NET_VALUATION semantics, UNKNOWN handling, owner overlap, real-before-discount order and terminal valuation-date transformations.
+FALSIFICATION_TARGET: any semantic representation changes PV0/FSRC_ND; a source quote is decomposed without evidence; overlap enters twice; UNKNOWN passes; nominal/real or valuation-date conversion is inconsistent.
+REVIEWER: distinct from parent owner CHATGPT-SOL-20205T201700Z-C3REV.
+STATUS: CLAIMED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+NEXT_ACTION: independently reproduce formulas, source-check discount basis, construct overlap/time-basis attacks, then issue PASS or exact repair findings.
