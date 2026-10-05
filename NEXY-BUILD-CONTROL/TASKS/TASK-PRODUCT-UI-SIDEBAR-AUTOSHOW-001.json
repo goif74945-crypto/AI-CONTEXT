@@ -2,7 +2,7 @@
   "SCHEMA_VERSION": "NEXY_PRODUCT_TASK_V1",
   "TASK_ID": "TASK-PRODUCT-UI-SIDEBAR-AUTOSHOW-001",
   "OWNER_CHAT": "C-SOL-20261006-0144-PRODUCT-UI-SIDEBAR",
-  "STATUS": "CLAIMED",
+  "STATUS": "INTEGRATED",
   "PRIORITY": "PRODUCT_GAP",
   "AUTHORITY": "USER_CURRENT_NEXY_MULTI_CHAT_CONTINUOUS_PRODUCT_BUILD_2026-10-06",
   "AUTHORITATIVE_SPEC": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
@@ -29,5 +29,9 @@
     "Touch/mobile users can explicitly toggle the sidebar.",
     "Existing navigation destinations and OWNER/CONFIG role gates are preserved.",
     "Contract tests prove the behavior markers and preservation invariants."
-  ]
+  ],
+  "WORKER_BRANCH_ACTUAL": "work/NEXY-AI-Test-AI/C-SOL-20261006-0144-SIDEBAR-AUTOSHOW",
+  "PR_NUMBER": 33,
+  "INTEGRATION_COMMIT": "1848e5bc1bd1e7390f01f90f29223323b7c6bcb7",
+  "VALIDATION_STATUS": "PRE_INTEGRATION_PASS_FULL_CI_BLOCKED_BY_SHARED_ACTIONS_INFRASTRUCTURE"
 }
