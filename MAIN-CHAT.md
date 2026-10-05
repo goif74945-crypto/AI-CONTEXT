@@ -5077,3 +5077,180 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 3d32dda6ceba72b4b1fafbadd33a450cfcd54809
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+67. INDEPENDENT REVIEW RESULT — JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-STATEBOUND-REV-C5
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+REVIEW_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: 020a7510a143ce64e6f8c82ecde1e07c29cf4f63
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 4ae553ba715b9f61a2e4559165aa3be9aceb1085
+
+EXECUTIVE REVIEW:
+C4 correctly identifies boundary-stock terms, prevents the simple free-terminal-depletion exploit, preserves noncyclic hydrological targets, and keeps settlement-tail energy outside the core served denominator. Independent algebra and numerical tests reproduce its core examples. However, two ranking-changing loopholes remain:
+(1) GREENFIELD_INITIALIZED_STATE can still obtain a nonzero initial stock without dated initialization resources when equal/reference closure is invoked, which permits impossible borrowing of commissioning energy from the far future; and
+(2) physical settlement tail allows restoration anywhere within K_MAX without freezing one common settlement horizon/continuation endpoint, so an optimizer can reduce PV by delaying identical restoration resources.
+Therefore the common state-boundary contract is not yet VERIFIED.
+
+REVIEW_EVIDENCE_ID: REV-EGC-040STATE-C5-001
+TRUTH_CLASS: SOURCE_FACT + REVIEW
+SOURCE: U.S. EIA, How electricity is generated / Energy storage for electricity generation
+URL: https://www.eia.gov/energyexplained/electricity/how-electricity-is-generated.php
+URL_2: https://www.eia.gov/energyexplained/electricity/energy-storage-for-electricity-generation.php
+VERIFIED_FACT:
+EIA states storage is charged using electricity from another source, storage supplies less electricity than used for charging, and EIA reports storage net generation as negative to avoid double counting.
+REVIEW_RESULT:
+Supports C4's prohibition on treating stored electricity as new primary generation and supports physical charge/settlement ownership. PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-040STATE-C5-002
+TRUTH_CLASS: SOURCE_FACT + REVIEW
+SOURCE: U.S. DOE, How Pumped Storage Hydropower Works / Types of Hydropower Plants
+URL: https://www.energy.gov/cmei/water/how-pumped-storage-hydropower-works
+URL_2: https://www.energy.gov/cmei/water/types-hydropower-plants
+VERIFIED_FACT:
+PSH requires electricity to pump water back to the upper reservoir; conventional reservoir releases can also serve flood control, recreation, fish passage, environmental and water-quality obligations.
+CROSS_SOURCE:
+DOE/US-national-lab hydropower survey reports hydropower can provide long-term seasonal storage.
+URL_3: https://www.energy.gov/cmei/water/articles/us-national-laboratories-contribute-global-information-sharing-hydropowers-role
+REVIEW_RESULT:
+Supports C4's non-universal terminal-equality rule and explicit co-obligation requirement. PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-040STATE-C5-003
+TRUTH_CLASS: SOURCE_FACT + REVIEW
+SOURCE: U.S. DOE, Solar Thermal Energy Storage and Heat Transfer Media
+URL: https://www.energy.gov/cmei/systems/solar-thermal-energy-storage-and-heat-transfer-media
+VERIFIED_FACT:
+CSP thermal storage stores heat for later electricity generation/industrial use; current plants use molten nitrate salts as thermal storage/heat-transfer media.
+REVIEW_USE:
+Independent non-battery stateful-system check. Any horizon-boundary rule that permits unexplained initial stored battery electricity would create the same provenance defect for unexplained initial hot-salt thermal inventory. The state-boundary method must therefore be technology-general.
+
+REVIEW_CALC_ID: CALC-EGC-040STATE-C5-001
+TRUTH_CLASS: CALCULATION
+TOOL: Python Decimal
+TITLE: Independent summed-P4 reproduction
+TEST:
+SOC0=50; eta_c=0.9; eta_d=0.8; lambda=0.01; charge trace=[10,0,5]; discharge trace=[0,5,2].
+EXECUTED_STATE:
+SOC_H=53.148350; sum(lambda*SOC_t)=1.601650.
+IDENTITY:
+sum(Dch)/eta_d = 8.75.
+SOC0-SOCH + eta_c*sum(Ch) - sum(lambda*SOC_t) = 8.750000.
+RESIDUAL=0.
+VERDICT:
+STATEBOUND-S1 algebra independently PASSes for this nontrivial trace.
+
+REVIEW_CALC_ID: CALC-EGC-040STATE-C5-002
+TRUTH_CLASS: CALCULATION
+TOOL: Python Decimal
+TITLE: Independent C4 regression replication
+RESULTS:
+- cyclic battery: 600/16.2 = 37.037037037... USD/MWh, matching C4;
+- brownfield target restoration: 80/0.9 = 88.888888889 MWh bus charge;
+- at illustrative 30 USD/MWh, settlement = 2,666.666667 USD;
+- divided by 80 MWh core service = 33.333333333 USD/MWh.
+VERDICT:
+C4 arithmetic PASSes. These are toy/accounting regressions, not candidate cost facts.
+
+FINDING_ID: F-EGC-040STATE-C5-P1-001
+SEVERITY: P1 / RANKING-CHANGING
+TRUTH_CLASS: METHOD_FALSIFICATION + CALCULATION
+TITLE: GREENFIELD initialization can still borrow physical inventory from the future
+DEFECT:
+STATEBOUND-S0(B) says a GREENFIELD_INITIALIZED_STATE must account prelude initialization resources "unless an exactly offsetting validated terminal treatment makes the net boundary contribution zero." S5 also allows C_STATE_INIT_NONCANCELLING=0 when the state boundary is exactly periodic/reference-closed. This is safe for PERIODIC_COMPUTATIONAL_STATE but is not safe as written for a real greenfield commissioning boundary.
+COUNTEREXAMPLE:
+- new battery does not physically exist charged before commissioning;
+- model declares SOC0=100 MWh, discharges that stock immediately to core service;
+- later, at year 60, it charges 100 MWh to finish at SOC_H=SOC0;
+- if equal terminal stock is treated as cancelling initialization, no pre-horizon charging resource is recorded;
+- the model has delivered early service using inventory that can only be physically created later.
+Using the mission primary D_REF already recorded upstream (3.5% real years 1-30, 3.0% years 31-60) and an illustrative resource price 30 USD/MWh solely for regression:
+D_REF(0,60)=0.14678198786952.
+Actual 100-MWh precharge resource at t0 = 3,000 USD.
+If resource ownership is shifted to y60 recharge, PV0 = 440.345964 USD.
+Artificial PV reduction = 2,559.654036 USD, 85.32%, without changing physical energy quantity.
+FALSIFICATION:
+Equal endpoint quantity does NOT make a one-time greenfield commissioning precharge disappear. It only proves state quantity closure.
+REQUIRED_REPAIR:
+- Only PERIODIC_COMPUTATIONAL_STATE may waive standalone initialization flow solely because of cyclic closure.
+- Every material nonzero GREENFIELD_INITIALIZED_STATE must carry dated physical initialization/prelude resource flows at the time they are physically required.
+- Terminal inventory is handled separately by the frozen terminal method and may not retroactively erase initialization input.
+- If a model intentionally represents a repeating steady-state cycle with no commissioning boundary, classify it A, not B.
+- brownfield/natural-state treatment remains separate.
+
+FINDING_ID: F-EGC-040STATE-C5-P1-002
+SEVERITY: P1 / RANKING-CHANGING
+TRUTH_CLASS: METHOD_FALSIFICATION + CALCULATION
+TITLE: K_MAX without a common settlement endpoint permits discount-timing arbitrage
+DEFECT:
+S3 freezes K_MAX and continuation traces but only requires settlement "within" K_MAX. It does not require a single common H_SETTLE or fixed continuation horizon through which every candidate remains modeled. Therefore two physically identical restoration obligations can receive different PV solely because one optimizer postpones restoration.
+COUNTEREXAMPLE:
+same 100-MWh restoration resource, 30 USD/MWh, same physical quantity.
+Under the mission D_REF:
+PV0 if incurred at y60 = 440.345964 USD.
+PV0 if deferred to y65 = 379.846296 USD.
+Deferral lowers PV by 60.499667 USD = 13.7391% relative to the y60 PV, with no resource reduction.
+REQUIRED_REPAIR:
+Freeze before ranking either:
+A) one common settlement/continuation endpoint H_SETTLE and run every candidate through it under the same exogenous continuation obligations, even if its target is reached earlier; or
+B) one frozen continuation-value functional at H validated against the common fixed-horizon continuation model.
+Candidate-specific stopping time cannot end cost/resource ownership. Early-settled systems must remain subject to ordinary state evolution/obligations until common H_SETTLE, or the comparison must use S4 at H.
+
+REVIEW_TEST_MATRIX:
+1. summed P4 boundary identity: PASS independently.
+2. simple free-initial depletion with required tail: PASS directionally.
+3. cyclic computational battery zero settlement: PASS.
+4. seasonal reservoir XREF_H != X0: PASS and source-supported.
+5. brownfield depletion not free: PASS directionally.
+6. tail energy excluded from core E_NET_SERVED: PASS rule.
+7. state-tail plus inventory RV same quantity: PASS; explicitly forbidden.
+8. hydrological co-obligations: PASS rule / site values remain UNKNOWN.
+9. additional non-battery state (molten-salt thermal storage): FAILS under the same greenfield-initial-stock loophole, confirming technology-general impact.
+10. greenfield equal-endpoint initialization waiver: FAIL P1.
+11. settlement stopping-time/PV invariance: FAIL P1.
+12. continuation-value validation tolerance: NOT_VERIFIED as a ranking rule until upstream uncertainty/tolerance convention is frozen; not a separate C5 blocker beyond P1 repairs.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-040STATE-STORAGE-PROVENANCE: PASS_WITH_REPAIR_REQUIRED.
+CLAIM-EGC-040STATE-PSH: PASS.
+CLAIM-EGC-040STATE-SEASONAL-HYDRO: PASS.
+CLAIM-EGC-040STATE-SUMIDENTITY: VERIFIED_BY_DISTINCT_SESSION_ARITHMETIC.
+CLAIM-EGC-040STATE-FREE-SOC-REGRESSION: PARTIAL_PASS; brownfield/periodic cases pass, greenfield commissioning loophole remains.
+CLAIM-EGC-040C3REV-P1-001 INITIAL_TERMINAL_STATE_GAP: NOT_CLOSED.
+COMMON_LEDGER: NOT_VERIFIED.
+ALL candidate cost rankings depending on common ledger: REMAIN REOPEN / NOT_VERIFIED.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006: EXECUTING -> REVIEW_FAILED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+REPAIR JOB:
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C6-20261006
+TITLE: Remove greenfield initialization and settlement-timing arbitrage
+ROLE: Intertemporal state-boundary repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can the horizon contract require real greenfield initialization at its physical date and freeze a common settlement endpoint/value rule so identical state restoration cannot be discounted differently by candidate?
+DEPENDENCIES: F-EGC-040STATE-C5-P1-001; F-EGC-040STATE-C5-P1-002; FINPV time-basis repair remains an integration dependency.
+REQUIRED_TOOLS: state-transition algebra; D_REF timing regressions; battery/thermal/reservoir counterexamples; provenance schema.
+REQUIRED_EVIDENCE:
+- greenfield nonzero X0 cannot exist without dated initialization resource flow;
+- periodic computational state still closes without fake commissioning cost;
+- brownfield/natural state remains candidate-neutral;
+- common H_SETTLE or H-valued continuation rule removes candidate stopping-time arbitrage;
+- tail resource/served-energy ownership and terminal residual remain exact-once;
+- reproduce C5 calculations independently.
+FALSIFICATION_CONDITION:
+FAIL if a new asset can deliver early service from a stock physically created only later, if equal XH/X0 alone erases a commissioning input, or if identical restoration resources get different cost solely from candidate-selected tail timing.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006
+STATUS: OPEN
+BLOCKERS: NONE for narrow repair; final integrated ledger still depends on FINPV/terminal/accounting reviews.
+NEXT_ACTION: distinct session claims C6; distinct reviewer C7 follows.
