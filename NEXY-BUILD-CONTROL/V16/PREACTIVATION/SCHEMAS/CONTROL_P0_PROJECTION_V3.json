@@ -1,0 +1,289 @@
+{
+  "SCHEMA_VERSION": "NEXY_CONTROL_P0_PROJECTION_V3",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SUPERSEDES": {
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SCHEMAS/CONTROL_P0_PROJECTION_V2.json",
+    "BLOB_SHA": "e6dd00bb07b7235b6d514758d6420407282aa306"
+  },
+  "INPUT_UNIVERSE": {
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V3.json",
+    "BLOB_SHA": "0900174e8ad20951f00bcb22767561fb4d894d63",
+    "REQUIRED_COMPLETE": true,
+    "ADAPTER": {
+      "finding_id": "FINDING_ID",
+      "finding_path": "DEFINITION_PATH",
+      "finding_blob_sha": "DEFINITION_BLOB_SHA",
+      "type_raw": "TYPE_RAW",
+      "severity_raw": "SEVERITY_RAW",
+      "status_raw": "STATUS_RAW",
+      "source_class": "SOURCE_CLASS",
+      "raw_field_conflict": "RAW_FIELD_CONFLICT"
+    },
+    "FAIL_IF": "validation incomplete, raw_field_conflict=true, missing mapped field, type mismatch, or unbound universe blob"
+  },
+  "SNAPSHOT_FIELDS": [
+    "control_commit_sha",
+    "control_tree_sha",
+    "finding_universe_root_hash",
+    "finding_universe_contract_blob_sha",
+    "projection_schema_blob_sha",
+    "severity_taxonomy_root_hash",
+    "classification_record_universe_root_hash",
+    "dedup_decision_universe_root_hash"
+  ],
+  "EVIDENCE_REF": {
+    "FIELDS": [
+      "evidence_kind",
+      "source_path",
+      "source_hash_alg",
+      "source_hash",
+      "anchor",
+      "statement_sha256"
+    ],
+    "TYPES": {
+      "evidence_kind": "non-empty NFC string",
+      "source_path": "normalized repo path or immutable logical artifact ID",
+      "source_hash_alg": "GIT_BLOB_SHA1|SHA256",
+      "source_hash": "lowercase matching hex",
+      "anchor": "non-empty NFC string",
+      "statement_sha256": "lowercase 64-hex"
+    },
+    "ARRAY_SEMANTICS": "SET_SORT_BY_ALL_FIELDS_UTF8",
+    "DUPLICATES": "INVALID"
+  },
+  "P0_CLASSIFICATION": {
+    "VALUES": [
+      "P0",
+      "NOT_P0",
+      "UNKNOWN"
+    ],
+    "FIXED_P0": [
+      "P0",
+      "P0_CONTROL",
+      "P0_AUTHORITY",
+      "P0_CONTROL_AUTHORITY",
+      "P0_CONTROL_DENOMINATOR",
+      "P0_CONTROL_PROTOCOL",
+      "P0_CONTROL_DETERMINISM"
+    ],
+    "RULES": [
+      "Exact FIXED_P0 values map P0.",
+      "Null/malformed/non-NFC/trim-invalid severity maps UNKNOWN.",
+      "Every other distinct valid severity must resolve through exactly one independently reviewed row in SEVERITY_TAXONOMY; otherwise UNKNOWN.",
+      "Any UNKNOWN makes projection UNKNOWN_BLOCKING."
+    ]
+  },
+  "SEVERITY_TAXONOMY": {
+    "DOMAIN": "NEXY_CONTROL_P0_SEVERITY_TAXONOMY_ROOT_V3",
+    "ROW_FIELDS": [
+      "severity_raw",
+      "classification",
+      "evidence_refs",
+      "classifier_chat_id",
+      "reviewer_chat_id",
+      "review_blob_sha",
+      "review_verdict"
+    ],
+    "COVERAGE": "Exactly one row for every distinct non-null valid severity_raw in the bound complete universe.",
+    "VALIDITY": [
+      "FIXED_P0 must classify P0.",
+      "classifier_chat_id != reviewer_chat_id.",
+      "review_verdict == PASS and review binds exact row.",
+      "Duplicate severity_raw rows invalid.",
+      "UNKNOWN row is durable but makes projection UNKNOWN_BLOCKING."
+    ],
+    "SORT": "severity_raw UTF8",
+    "ROOT_FIELDS": [
+      "domain",
+      "target_authority_key",
+      "control_commit_sha",
+      "control_tree_sha",
+      "finding_universe_root_hash",
+      "row_count",
+      "rows"
+    ],
+    "HASH": "SHA-256(UTF8(JCS(root)))"
+  },
+  "STATUS": {
+    "TERMINAL_NONBLOCKING": [
+      "RESOLVED",
+      "CLOSED",
+      "SUPERSEDED"
+    ],
+    "EXTENSIONS": "FORBIDDEN",
+    "RULE": "Only exact case-sensitive terminal values are nonblocking. All other/null/malformed values are blocking for a P0 control-group member."
+  },
+  "CONTROL_RELEVANCE": [
+    "CONTROL_BLOCKER",
+    "PRODUCT_ONLY",
+    "SUPPORTING_DUPLICATE",
+    "HISTORICAL_NONBLOCKING",
+    "UNKNOWN"
+  ],
+  "CLASSIFICATION_STORE": {
+    "ROOT_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CONTROL_P0_CLASSIFICATIONS",
+    "RECORD_FIELDS": [
+      "classification_record_id",
+      "record_generation",
+      "finding_id",
+      "finding_path",
+      "finding_blob_sha",
+      "control_relevance",
+      "evidence_refs",
+      "classifier_chat_id",
+      "reviewer_chat_id",
+      "review_blob_sha",
+      "review_verdict"
+    ],
+    "ID_RULE": "classification_record_id='CLS-'+SHA-256(UTF8(JCS({domain:'NEXY_CONTROL_P0_CLASSIFICATION_ID_V3',record_generation,finding_id,finding_blob_sha,control_relevance,evidence_refs,classifier_chat_id})))",
+    "COMPLETE_UNIVERSE": {
+      "DOMAIN": "NEXY_CONTROL_P0_CLASSIFICATION_RECORD_UNIVERSE_ROOT_V3",
+      "SOURCE_ROW_FIELDS": [
+        "path",
+        "blob_sha",
+        "parse_state",
+        "record_id",
+        "finding_id",
+        "record_generation"
+      ],
+      "ROOT_FIELDS": [
+        "domain",
+        "target_authority_key",
+        "control_commit_sha",
+        "control_tree_sha",
+        "source_blob_count",
+        "valid_record_count",
+        "parse_error_count",
+        "unsupported_blob_count",
+        "source_rows",
+        "records"
+      ],
+      "RULE": "Every tracked blob below ROOT_PATH exactly once; parse_error_count=0; unsupported_blob_count=0."
+    },
+    "VALIDITY": [
+      "finding id/path/blob matches universe",
+      "classifier_chat_id != reviewer_chat_id",
+      "review_verdict == PASS and review binds exact record"
+    ],
+    "SELECTION": "For each P0 finding select the sole valid record at maximum generation. Zero or >1 at maximum -> UNKNOWN."
+  },
+  "DEDUP_STORE": {
+    "ROOT_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CONTROL_P0_DEDUP_DECISIONS",
+    "RECORD_FIELDS": [
+      "dedup_decision_id",
+      "record_generation",
+      "supporting_finding_id",
+      "supporting_blob_sha",
+      "canonical_blocker_id",
+      "canonical_blocker_blob_sha",
+      "evidence_refs",
+      "classifier_chat_id",
+      "reviewer_chat_id",
+      "review_blob_sha",
+      "review_verdict"
+    ],
+    "ID_RULE": "dedup_decision_id='DEDUP-'+SHA-256(UTF8(JCS({domain:'NEXY_CONTROL_P0_DEDUP_ID_V3',record_generation,supporting_finding_id,supporting_blob_sha,canonical_blocker_id,canonical_blocker_blob_sha,evidence_refs,classifier_chat_id})))",
+    "COMPLETE_UNIVERSE": {
+      "DOMAIN": "NEXY_CONTROL_P0_DEDUP_RECORD_UNIVERSE_ROOT_V3",
+      "SOURCE_ROW_FIELDS": [
+        "path",
+        "blob_sha",
+        "parse_state",
+        "decision_id",
+        "supporting_finding_id",
+        "record_generation"
+      ],
+      "ROOT_FIELDS": [
+        "domain",
+        "target_authority_key",
+        "control_commit_sha",
+        "control_tree_sha",
+        "source_blob_count",
+        "valid_record_count",
+        "parse_error_count",
+        "unsupported_blob_count",
+        "source_rows",
+        "records"
+      ],
+      "RULE": "Every tracked blob below ROOT_PATH exactly once; parse_error_count=0; unsupported_blob_count=0."
+    },
+    "VALIDITY": [
+      "supporting and parent IDs/blobs resolve exactly in bound universe",
+      "supporting != parent",
+      "supporting is P0 with selected relevance SUPPORTING_DUPLICATE",
+      "parent is P0 with selected relevance CONTROL_BLOCKER",
+      "parent is not another duplicate; chains/cycles forbidden",
+      "classifier_chat_id != reviewer_chat_id",
+      "review_verdict == PASS and review binds exact decision"
+    ],
+    "SELECTION": "For each SUPPORTING_DUPLICATE select sole valid decision at maximum generation. Zero or >1 at maximum -> UNKNOWN_BLOCKING."
+  },
+  "PROJECTED_ROOT": {
+    "DOMAIN": "NEXY_CONTROL_P0_PROJECTED_MANIFEST_V3",
+    "ROOT_FIELDS": [
+      "domain",
+      "target_authority_key",
+      "control_commit_sha",
+      "control_tree_sha",
+      "finding_universe_root_hash",
+      "finding_universe_contract_blob_sha",
+      "projection_schema_blob_sha",
+      "severity_taxonomy_root_hash",
+      "classification_record_universe_root_hash",
+      "dedup_decision_universe_root_hash",
+      "projection_status",
+      "source_finding_count",
+      "p0_row_count",
+      "open_control_p0_count",
+      "rows"
+    ],
+    "ROW_FIELDS": [
+      "dedup_key",
+      "finding_id",
+      "finding_path",
+      "finding_blob_sha",
+      "severity_raw",
+      "p0_classification",
+      "status_raw",
+      "terminal_nonblocking",
+      "control_relevance",
+      "classification_record_id",
+      "canonical_blocker_id",
+      "dedup_decision_id"
+    ],
+    "ROW_INCLUSION": "Every P0 or UNKNOWN universe row; NOT_P0 stays accounted only in universe.",
+    "DEDUP_KEY": "valid SUPPORTING_DUPLICATE -> canonical_blocker_id; otherwise finding_id",
+    "SORT": "dedup_key UTF8, finding_id UTF8, finding_path UTF8",
+    "STATUS": [
+      "VALID",
+      "UNKNOWN_BLOCKING"
+    ],
+    "HASH": "CONTROL_P0_SET_ROOT_HASH=SHA-256(UTF8(JCS(root))) only when projection_status=VALID; else null"
+  },
+  "COUNTING": {
+    "GROUP": "Group P0 projected rows by dedup_key.",
+    "CANONICAL_PARENT": "Any duplicate group must contain exactly one row finding_id==dedup_key with relevance CONTROL_BLOCKER.",
+    "GROUP_OPEN": "A CONTROL_BLOCKER group is open when ANY member (parent or valid supporting duplicate) is nonterminal.",
+    "EXCLUDE": [
+      "PRODUCT_ONLY",
+      "valid HISTORICAL_NONBLOCKING"
+    ],
+    "OPEN_CONTROL_P0_COUNT": "Count unique open CONTROL_BLOCKER groups only when projection_status=VALID; otherwise null.",
+    "ZERO_PROOF": "VALID projection plus exact computed count 0; partial coverage never proves zero."
+  },
+  "REPAIRS": {
+    "XR1": "bind exact Universe V3 blob",
+    "XR2": "exact adapter mapping",
+    "XR5": "dedup parent must be P0 CONTROL_BLOCKER and group-open uses any member",
+    "P0PV2_R1": "bound complete severity-taxonomy root",
+    "P0PV2_R2": "status extensions forbidden",
+    "P0PV2_R3": "complete classification-record universe",
+    "P0PV2_R4": "complete dedup-decision universe",
+    "P0PV2_R5": "equal-generation tie fails closed",
+    "P0PV2_R6": "EvidenceRef arrays have set/sort/duplicate contract"
+  },
+  "STATUS_VALUE": "V3_CANDIDATE_PENDING_INDEPENDENT_REVIEW_NOT_CANONICAL",
+  "PRODUCT_SOURCE_MUTATION": false,
+  "TARGET_INTEGRATION": false,
+  "CREATED_BY_CHAT_ID": "C-SOL-20261005-0951-0800-V16RC13-REQROOTV2-XREVIEW-4C91E2A7"
+}
