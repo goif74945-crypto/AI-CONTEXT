@@ -1,0 +1,82 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CONTROL_P0_PROJECTION_REVIEW_V1",
+  "RESULT_ID": "RESULT-C-SOL-20261005-0925-0800-V16RC13-9D3C9FD9-CONTROL-P0-PROJECTION-REVIEW",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-0925-0800-V16RC13-9D3C9FD9",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "CURRENT_PHASE": "PHASE_1_STATIC_CONTROL_REPAIR",
+  "REVIEWED_SCHEMA_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/SCHEMAS/CONTROL_P0_PROJECTION_V1.json",
+  "REVIEWED_SCHEMA_BLOB_SHA": "eeadf5b66a8569cf0a49f5e0e6cf5fa805e0fe05",
+  "REVIEW_TYPE": "INDEPENDENT_ADVERSARIAL_STATIC_CONTROL_REVIEW",
+  "VERDICT": "FAIL_REPAIR_REQUIRED",
+  "STATIC_PROTOCOL_P0_ZERO_SUPPORTED": false,
+  "FINDINGS": [
+    {
+      "FINDING_ID": "REVIEW-P0-PROJECTION-SEVERITY-UNKNOWN-FAILOPEN-001",
+      "SEVERITY": "P0_CONTROL",
+      "TYPE": "FAIL_OPEN_CLASSIFICATION",
+      "CLAUSES": [
+        "062",
+        "063",
+        "064",
+        "065"
+      ],
+      "PROBLEM": "P0_CLASS_RULE only includes recognized authoritative P0 severities. A manifest row with severity_raw missing, null, unknown, or an unmapped variant can be non-P0-class even when control_relevance is CONTROL_BLOCKER/UNKNOWN. Projection rules only fail-close UNKNOWN rows that are already P0-class.",
+      "COUNTEREXAMPLE": {
+        "finding_id": "X",
+        "severity_raw": null,
+        "status_raw": "OPEN",
+        "type_raw": "CONTROL_DEFECT",
+        "control_relevance": "CONTROL_BLOCKER",
+        "classification_evidence": "present",
+        "canonical_blocker_id": "X"
+      },
+      "FAILURE": "The row can be excluded from CURRENT_CONTROL_P0 and OPEN_CONTROL_P0_COUNT can become 0 without proving that unknown severity is not P0.",
+      "REQUIRED_REPAIR": "Define severity normalization/authority and require missing, null, unrecognized, conflicting, or unmapped severity to make OPEN_CONTROL_P0_COUNT UNKNOWN/non-zero fail-closed until resolved."
+    },
+    {
+      "FINDING_ID": "REVIEW-P0-PROJECTION-DENOMINATOR-FRESHNESS-TOCTOU-001",
+      "SEVERITY": "P0_CONTROL",
+      "TYPE": "STALE_DENOMINATOR_FAIL_OPEN",
+      "CLAUSES": [
+        "062",
+        "064",
+        "065"
+      ],
+      "PROBLEM": "COMPLETE_FINDING_MANIFEST_REQUIRED is declarative but the schema does not require a source FINDINGS tree/root, complete-manifest root/count, immutable control snapshot, or freshness revalidation binding.",
+      "COUNTEREXAMPLE": "Projection P0 count is computed as 0 from complete snapshot S0; after S0 a new P0 finding is added at S1. The old projected root/count remains internally valid because the schema has no required binding proving S0 is still current.",
+      "FAILURE": "A stale zero projection can be mistaken for CURRENT_CONTROL_P0 unless another unspecified mechanism rejects it.",
+      "REQUIRED_REPAIR": "Bind every projection to immutable CONTROL_HEAD/TREE or FINDINGS_TREE_HASH plus complete source-manifest root/count and require equality/freshness revalidation at activation CAS."
+    },
+    {
+      "FINDING_ID": "REVIEW-P0-PROJECTION-CLASSIFICATION-DEDUP-AUTHORITY-001",
+      "SEVERITY": "P0_CONTROL",
+      "TYPE": "SUPPRESSION_AUTHORITY_AMBIGUITY",
+      "CLAUSES": [
+        "062",
+        "063",
+        "064"
+      ],
+      "PROBLEM": "PRODUCT_ONLY and SUPPORTING_DUPLICATE can suppress P0 rows, but canonical validity of classification_evidence, semantic-equivalence proof, canonical_blocker_id, conflict detection, and reviewer authority are not structurally specified.",
+      "FAILURE": "Different compliant implementations can accept different suppressions, yielding different OPEN_CONTROL_P0_COUNT and CONTROL_P0_SET_ROOT_HASH.",
+      "REQUIRED_REPAIR": "Define a versioned classification evidence object, authority/review requirements, deterministic duplicate-parent validation, conflict resolution, and include those bindings in the projection root."
+    },
+    {
+      "FINDING_ID": "REVIEW-P0-PROJECTION-P0-VARIANT-MAP-UNDEFINED-001",
+      "SEVERITY": "P1_CONTROL",
+      "TYPE": "DETERMINISM_GAP",
+      "PROBLEM": "P0_CLASS_RULE permits an explicitly schema-mapped P0 variant but this candidate defines no variant map or external map identity/hash.",
+      "REQUIRED_REPAIR": "Embed the closed mapping or bind an immutable mapping schema/hash; unknown variants must fail closed."
+    }
+  ],
+  "POSITIVE_OBSERVATIONS": [
+    "Requires a complete finding manifest and rejects partial-search proof of zero.",
+    "Uses exact RESOLVED/CLOSED/SUPERSEDED terminal statuses for historical nonblocking rows.",
+    "Keeps PRODUCT_ONLY findings in product accounting rather than deleting evidence.",
+    "Defines dedup intent and a JCS-based projected-set root."
+  ],
+  "REVIEW_CONCLUSION": "Candidate must not be canonically adopted or used to prove OPEN_CONTROL_P0_COUNT==0 until P0 findings above are repaired and independently re-reviewed.",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
