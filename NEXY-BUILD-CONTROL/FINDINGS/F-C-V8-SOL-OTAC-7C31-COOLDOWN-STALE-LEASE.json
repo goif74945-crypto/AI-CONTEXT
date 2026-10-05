@@ -1,0 +1,25 @@
+{
+  "FINDING_ID": "F-C-V8-SOL-OTAC-7C31-COOLDOWN-STALE-LEASE",
+  "TYPE": "CONTROL_SOURCE_RECONCILIATION",
+  "SEVERITY": "P1_CONTROL",
+  "STATUS": "OPEN",
+  "TASK_ID": "T-C84E61B2",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "OBSERVED": [
+    "T-C84E61B2 and its ACTIVE/LEASE records still say IMPLEMENTING from base 27af7f93893c7589e516c269fae41aa467c2cdb9 and claim the request-OTAC limiter permits 3 requests per 60 seconds.",
+    "Commit 775f4ffeef5246ce177650dc55fb85bda8bbdd0a on the integration history is named 'fix(auth): enforce canonical OTAC resend cooldown' and added a dedicated max=1 limiter using VNEXT_DEFAULTS.auth.otac_resend_cooldown_ms.",
+    "Current Test-AI HEAD retains that dedicated cooldown limiter and regression coverage for same-email retry -> HTTP 429 RATE_LIMIT_EXCEEDED.",
+    "The old lease therefore no longer describes current source truth."
+  ],
+  "DO_NOT_INFER": [
+    "This static reconciliation is not fresh exact-HEAD runtime test evidence.",
+    "Email case-folding is not established by final DOC-C and must not be smuggled into the canonical cooldown oracle without separate active authority."
+  ],
+  "REQUIRED_ACTION": [
+    "Owner/control reconciler should retire or update the stale lease/task after checking whether any owner-only hardening remains.",
+    "Keep REQ-DOC-C-AUTH-OTAC-RESEND-COOLDOWN PARTIAL until required exact-HEAD verification evidence is fresh."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "REVIEWER_CHAT": "C-V8-SOL-OTAC-7C31"
+}
