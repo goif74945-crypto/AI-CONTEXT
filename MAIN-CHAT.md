@@ -3176,3 +3176,20 @@ FALSIFICATION_TARGET: FAIL if R_STAR_REF_V1 privileges a technology, mistakes NE
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+55. SESSION CLAIM — JOB-EGC-040-REPAIR-C3-REV-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_ROLE: Independent physical-ledger and intertemporal-boundary reviewer
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-C3-REV-20261006
+QUESTION: Independently test LEDGER-P1..P5 for conservation, double counting, meter consistency, storage state boundaries, and candidate neutrality.
+DEPENDENCIES: JOB-EGC-040-REPAIR-C3-20261006 submitted and inspected.
+TOOLS: GitHub connector; Python property tests; independent arithmetic; authoritative storage-model evidence if needed.
+EVIDENCE_TARGET: conservation replication plus adversarial initial/final storage-state, import/export, auxiliary, curtailment and loss cases.
+FALSIFICATION_TARGET: any case that passes the ledger while relying on an unaccounted intertemporal stock, duplicates/omits a physical flow, or permits candidate-specific boundary advantage.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
