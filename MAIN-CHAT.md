@@ -5134,3 +5134,165 @@ NEXT_ACTION: distinct session independently reproduce and attack this screen; if
 
 BRANCH_HEAD_AT_RESULT_WRITE_PRECHECK: 431508ced28539c59e4ededd468ac8f6ad9c1cbd
 MAIN_CHAT_BLOB_SHA_AT_RESULT_WRITE_PRECHECK: 0949d20fcb3170f137e126b474eda3c8279694a2
+
+
+======================================================================
+REPAIR RESULT — JOB-EGC-040-REPAIR-FINPV-C7-20261006 — CHATGPT-SOL-20261006T0328+07-FINPV-C7
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0328+07-FINPV-C7
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-C7-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: 9472cd0b52ba1f32473d7afe5d9cbcd1ab5af703
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: e1be2f5e006db0dd7ff55a95ccf4e76df932bf37
+
+OBJECTIVE:
+Eliminate FINPV-C5's remaining gross-vs-net terminal-value ambiguity so semantically identical terminal economics cannot change FSRC_ND or ranking.
+
+CANONICAL TERMINAL NORMALIZATION:
+
+Replace free-form use of "-RV_0 + TL_0" at candidate-comparison input with a normalized terminal contribution:
+
+T0_NET :=
+  SUM(PV0 of terminal credits included as atomic gross credits)
+  - SUM(PV0 of terminal liabilities included as separate atomic liabilities)
+  + SUM(PV0 of signed NET_COMPOSITE terminal valuations)
+
+Then:
+FSRC_ND =
+[
+  PV0(C_REAL_RESOURCE)
+  - PV0(V_EXTERNAL_COPRODUCT)
+  - T0_NET
+]
+/
+PV0(E_NET_SERVED)
+
+SIGN CONVENTION:
+- positive T0_NET = net terminal value/credit that reduces numerator cost;
+- negative T0_NET = net terminal liability that increases numerator cost.
+All terms use the common real price base and D_REF timing convention already defined by FINPV-C5.
+
+TERMINAL ITEM SCHEMA — REQUIRED FOR EVERY MATERIAL TERMINAL ENTRY:
+TERMINAL_ITEM_ID: unique
+ASSET_OR_CAUSAL_ID: exact asset/obligation
+SOURCE_ID: traceable valuation/liability source
+EXPECTED_TIME: t_j or probability-weighted dated schedule
+RAW_VALUE: value + currency/base year
+QUOTE_BASIS: GROSS_CREDIT | SEPARATE_LIABILITY | NET_COMPOSITE | UNKNOWN
+EMBEDDED_TERMINAL_ITEM_IDS: explicit list; NONE if not embedded; UNKNOWN if source does not establish
+OWNER_STATE:
+- INCLUDED_ATOMIC_GROSS_CREDIT
+- INCLUDED_ATOMIC_LIABILITY
+- INCLUDED_NET_COMPOSITE
+- EMBEDDED_IN_NET_COMPOSITE_NO_SEPARATE_ENTRY
+- INCLUDED_IN_WITHIN_HORIZON_RESOURCE_FLOW_NO_TERMINAL_ENTRY
+- UNKNOWN
+PV0_VALUE: dated value transformed with common D_REF
+UNCERTAINTY: source/model uncertainty
+LIMITATION: scope and legal/market assumptions
+
+MUTUAL-EXCLUSION INVARIANTS:
+1. Every causal terminal effect may contribute to the primary numerator exactly once.
+2. If QUOTE_BASIS=GROSS_CREDIT, its liabilities must be represented only as separate atomic liability items.
+3. If QUOTE_BASIS=NET_COMPOSITE, every liability/credit documented as embedded MUST have OWNER_STATE=EMBEDDED_IN_NET_COMPOSITE_NO_SEPARATE_ENTRY and contributes zero additional terminal amount.
+4. If a decommission/waste/restoration item is already in PV0(C_REAL_RESOURCE) as a dated within-horizon or explicit post-horizon resource flow, the same item cannot also appear in T0_NET.
+5. If QUOTE_BASIS or embedded obligations are UNKNOWN and plausible interpretations can reverse ranking, terminal contribution is NOT_VERIFIED and cost ranking is NOT_STABLE.
+6. A market/sale/appraisal quote is never assumed gross or net merely from its label; provenance must establish treatment of obligations.
+7. Negative net terminal values are permitted and enter T0_NET with their sign; no ad-hoc second TL line is added.
+
+NORMALIZATION RULES:
+
+CASE_GROSS:
+Given gross residual credit R_g at t_R and separately owned terminal liabilities L_k at times t_k:
+T0_NET = R_g*D_REF(t_R) - SUM_k[L_k*D_REF(t_k)].
+
+CASE_NET:
+Given a net composite terminal value N at t_N whose provenance explicitly embeds terminal effects set S:
+T0_NET = N*D_REF(t_N).
+Every effect in S is marked EMBEDDED_IN_NET_COMPOSITE_NO_SEPARATE_ENTRY.
+Only terminal effects demonstrably outside S may enter separately.
+
+CASE_UNKNOWN:
+If a source gives "residual value", "sale value", "market value", "decommissioning liability", or similar without enough provenance to determine overlap:
+QUOTE_BASIS=UNKNOWN.
+Do not choose the interpretation that favors a candidate.
+Run bounded sensitivity if defensible; if ranking can reverse, retain NOT_STABLE/NOT_VERIFIED.
+
+REGRESSION TESTS:
+
+EVIDENCE_ID: EGC-040-FINPV-C7-C01
+TOOL: Python
+METHOD: gross-vs-net representation equivalence at common date
+INPUTS:
+- illustrative r=7% solely for arithmetic
+- t=60
+- gross residual=50
+- liability=10
+- semantically equivalent net quote=40
+- pre-terminal PV resource cost=100
+CALCULATION:
+D60=(1.07)^-60=0.01725731946950767
+PV0(gross)=0.8628659734753834
+PV0(liability)=0.1725731946950767
+T0_NET via gross representation=0.8628659734753834-0.1725731946950767=0.6902927787803067
+T0_NET via net representation=40*D60=0.6902927787803068
+RESULT:
+cost via gross representation=99.3097072212197
+cost via net representation=99.3097072212197
+difference within floating-point rounding=0.
+EVIDENCE_CLASS: CALCULATION
+REPLICATION_STATUS: SAME_SESSION_TEST_PASS / DISTINCT_REVIEW_REQUIRED
+
+EVIDENCE_ID: EGC-040-FINPV-C7-C02
+TOOL: Python
+METHOD: deliberate double-count regression
+INPUTS: same as C01, but incorrectly add the embedded liability again after using net quote.
+OUTPUT:
+incorrect cost=99.48228041591477
+correct cost=99.3097072212197
+double-count error=0.17257319469507593
+RESULT:
+owner-state invariant detects/prevents the exact defect F-EGC-040-FINPV-R6-P1-001.
+EVIDENCE_CLASS: CALCULATION
+REPLICATION_STATUS: SAME_SESSION_TEST_PASS / DISTINCT_REVIEW_REQUIRED
+
+EVIDENCE BASIS:
+HM Treasury Green Book 2026 source evidence already recorded in this mission supports explicit inclusion of residual value/liability and common discounted economic appraisal; it does not itself guarantee whether a particular observed market/appraisal value is gross or net of obligations. Therefore provenance and owner-state normalization are required rather than guessed.
+SOURCE: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+TRUTH_CLASS: EXTERNAL_FACT + INFERENCE
+
+CLAIM GRAPH UPDATE:
+F-EGC-040-FINPV-R6-P1-001: REPAIRED_C7 / AWAITING_DISTINCT_REVIEW.
+CLAIM-EGC-040-FINPV-003 TERMINAL_OWNER_STATE_INVARIANCE: NEW / AWAITING_DISTINCT_REVIEW.
+CLAIM-EGC-040-FINPV-001 COMMON_PV0_BASIS: remains supported pending integrated review.
+CLAIM-EGC-040-FINPV-002 COMMON_REFERENCE_DISCOUNT_LOCK: remains supported pending integrated review.
+
+OUT_OF_SCOPE / STILL OPEN:
+- imported-energy resource-vs-tariff valuation remains a separate P1 repair requirement;
+- economic PV-energy denominator versus undiscounted physical MASSIVE_ENERGY/EROI remains separately open;
+- physical conservation/curtailment/unserved-energy ledger remains on its separate repair/review path.
+No status promotion is claimed for those items.
+
+JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006
+TITLE: Independent review of terminal owner-state normalization
+ROLE: Independent terminal-accounting reviewer / representation-invariance adversary
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do C7's T0_NET and owner-state rules guarantee identical primary FSRC_ND for semantically equivalent gross and net terminal representations without hiding liabilities?
+DEPENDENCIES: JOB-EGC-040-REPAIR-FINPV-C7-20261006 submitted.
+REQUIRED_TOOLS: independent algebra/Python replication; provenance attack; counterexamples with mixed dates and partial embedded obligations.
+REQUIRED_EVIDENCE: reproduce C01/C02; test unknown/partial-net cases; confirm no causal terminal item can enter twice.
+EXPECTED_OUTPUT: PASS/FAIL, defects, and repair if needed.
+FALSIFICATION_CONDITION: any semantically identical representation changes T0_NET/FSRC_ND; any embedded obligation can also enter separately; UNKNOWN basis can be silently resolved in a candidate-favorable direction.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required.
+NEXT_ACTION: independent session claims C8 and attacks C7.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
