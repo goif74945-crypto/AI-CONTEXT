@@ -1,0 +1,258 @@
+{
+  "SCHEMA_VERSION": "NEXY_CONTROL_P0_PROJECTION_V2_CANDIDATE",
+  "STATUS": "CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "PURPOSE": "Deterministically derive CURRENT_CONTROL_P0 and OPEN_CONTROL_P0_COUNT from a complete pinned finding universe without conflating product-only P0 work with preactivation control blockers.",
+  "AUTHORITY_BASIS": {
+    "CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+    "CLAUSES": [
+      "[062]",
+      "[063]",
+      "[064]",
+      "[065]",
+      "[184]"
+    ],
+    "TERMINAL_NONBLOCKING_STATUS_NORM": [
+      "RESOLVED",
+      "CLOSED",
+      "SUPERSEDED"
+    ],
+    "OTHER_STATUS_IS_NONBLOCKING": false
+  },
+  "SOURCE_BINDING": {
+    "REQUIRED_FIELDS": [
+      "CONTROL_COMMIT_SHA",
+      "CONTROL_TREE_SHA",
+      "FINDINGS_TREE_SHA",
+      "COMPLETE_FINDING_MANIFEST_ROOT_HASH",
+      "CLASSIFICATION_MANIFEST_ROOT_HASH",
+      "REVIEW_EVIDENCE_ROOT_HASH",
+      "PROJECTION_SCHEMA_BLOB_SHA"
+    ],
+    "SHA_FORMAT": "lowercase 40-hex for Git object SHA-1 fields; lowercase 64-hex for SHA-256 root fields",
+    "DENOMINATOR_FRESHNESS_RULE": "Immediately before any zero-proof use, reread the current canonical FINDINGS directory tree. If its Git tree SHA differs from FINDINGS_TREE_SHA, the projection is STALE_DENOMINATOR and OPEN_CONTROL_P0_COUNT becomes UNKNOWN until rebuilt.",
+    "FULL_CONTROL_BINDING_RULE": "Every projection persists the exact CONTROL_COMMIT_SHA and CONTROL_TREE_SHA from which FINDINGS_TREE_SHA and all referenced control evidence were read. A later unrelated control commit does not silently rewrite this provenance.",
+    "EVIDENCE_FRESHNESS_RULE": "If any classification or review-evidence source path/blob used by the projection changes, the corresponding manifest root changes and the projection is stale."
+  },
+  "TEXT_NORMALIZATION": {
+    "UNICODE": "NFC",
+    "LINE_ENDING_FOR_MARKDOWN_EXTRACTION": "LF",
+    "TRIM_SET": [
+      "U+0009",
+      "U+0020"
+    ],
+    "TRIM_RULE": "Remove only listed trim code points from both ends of extracted scalar values.",
+    "ASCII_CASE_RULE": "For SEVERITY_NORM, PRIORITY_NORM, STATUS_NORM, TYPE_NORM and DOMAIN_NORM, uppercase ASCII a-z only after NFC+TRIM. Non-ASCII code points are preserved.",
+    "IDENTITY_RULE": "FINDING_ID_NORM and canonical_blocker_id use NFC+TRIM and preserve case.",
+    "PATH_RULE": "finding_path is the exact repository-relative POSIX path from the pinned Git tree, NFC-normalized for comparison only; no leading slash, no dot-segment normalization, no case folding.",
+    "NULL_RULE": "Missing source field is null. Empty string after normalization is null. Non-string scalar/object/array where a string field is required yields EXTRACTION_CONFLICT for that field."
+  },
+  "EXTRACTION": {
+    "JSON": {
+      "PARSER": "Strict JSON over exact blob bytes after UTF-8 decode; parse failure marks all structured classifications UNKNOWN.",
+      "TOP_LEVEL_FIELDS": [
+        "FINDING_ID",
+        "SEVERITY",
+        "PRIORITY",
+        "STATUS",
+        "TYPE",
+        "DOMAIN",
+        "DUPLICATE_OF",
+        "SUPERSEDED_BY"
+      ],
+      "DUPLICATE_KEY_RULE": "JSON parser must reject duplicate object keys or the row is EXTRACTION_CONFLICT."
+    },
+    "MARKDOWN": {
+      "FIELD_LINE_PATTERN": "^(FINDING_ID|SEVERITY|PRIORITY|STATUS|TYPE|DOMAIN|DUPLICATE_OF|SUPERSEDED_BY):[\\t ]*(.*?)[\\t ]*$",
+      "MATCH_RULE": "Collect every exact field-line match after LF normalization. Zero matches means null. Multiple matches with one identical normalized value are accepted. Multiple distinct normalized values yield EXTRACTION_CONFLICT.",
+      "FREE_TEXT_RULE": "Free-text mentions of P0, resolved, duplicate, superseded, product, control, or similar words never create structured authority by themselves."
+    }
+  },
+  "P0_CLASSIFICATION": {
+    "ENUM": [
+      "P0",
+      "NOT_P0",
+      "UNKNOWN"
+    ],
+    "SEVERITY_VARIANT_MAP": {
+      "P0": "P0",
+      "P0_CONTROL": "P0",
+      "P0_AUTHORITY": "P0",
+      "P1": "NOT_P0",
+      "P1_CONTROL": "NOT_P0",
+      "P2": "NOT_P0",
+      "HIGH": "NOT_P0",
+      "MEDIUM": "NOT_P0"
+    },
+    "UNMAPPED_VALUES": "UNKNOWN",
+    "MISSING_VALUE": "UNKNOWN",
+    "CONFLICT_RULE": "Classify both SEVERITY_NORM and PRIORITY_NORM when present. If either is UNKNOWN while the other is NOT_P0, or if normalized sources disagree between P0 and NOT_P0, result is UNKNOWN. Any P0 evidence with no conflicting source yields P0.",
+    "CRITICAL_VALUE": "UNKNOWN unless a separately reviewed canonical mapping explicitly binds CRITICAL to a P0 class.",
+    "FAIL_CLOSED_RULE": "UNKNOWN P0 classification is BLOCKING_PENDING_CLASSIFICATION for zero-proof purposes."
+  },
+  "CONTROL_RELEVANCE": {
+    "ENUM": [
+      "CONTROL_BLOCKER",
+      "PRODUCT_ONLY",
+      "SUPPORTING_DUPLICATE",
+      "HISTORICAL_NONBLOCKING",
+      "UNKNOWN"
+    ],
+    "CONTROL_BLOCKER_RULE": "Requires evidence that the finding affects admission, authority, active law/spec identity, control integrity, phase gating, leases, integration authority, closure authority, canonical roots, control transport, or another preactivation control-correctness property.",
+    "PRODUCT_ONLY_RULE": "Requires typed evidence that the required repair is normal product implementation/deployment evidence and has no independent preactivation control-authority or activation-safety effect. PRODUCT_ONLY exclusion requires independent review evidence.",
+    "HISTORICAL_NONBLOCKING_RULE": "Allowed only when STATUS_NORM is exactly RESOLVED, CLOSED, or SUPERSEDED.",
+    "UNKNOWN_RULE": "Missing, conflicting, or insufficient control-relevance evidence is UNKNOWN and blocks zero proof whenever P0_CLASS is P0 or UNKNOWN."
+  },
+  "CLASSIFICATION_EVIDENCE_RECORD": {
+    "REQUIRED_FIELDS": [
+      "EVIDENCE_ID",
+      "EVIDENCE_KIND",
+      "SOURCE_PATH",
+      "SOURCE_BLOB_SHA",
+      "SOURCE_FIELD",
+      "SOURCE_VALUE_HASH_SHA256",
+      "CLASSIFIER_CHAT_ID",
+      "CLASSIFIER_MEMBERSHIP_ID",
+      "DECISION",
+      "DECISION_GENERATION"
+    ],
+    "EVIDENCE_KIND_ENUM": [
+      "STRUCTURED_FINDING_FIELD",
+      "ACTIVE_LAW_CLAUSE",
+      "ACTIVE_SPEC_AUTHORITY",
+      "SUPERSESSION_RECORD",
+      "DUPLICATE_BINDING",
+      "CONTROL_REVIEW",
+      "PRODUCT_SCOPE_EVIDENCE"
+    ],
+    "SOURCE_VALUE_HASH_DOMAIN": "SHA-256(UTF8(NFC(exact extracted evidence scalar or canonical JCS evidence object)))",
+    "CONFLICT_RULE": "Two valid current-generation evidence records that imply incompatible decisions force CONTROL_RELEVANCE=UNKNOWN.",
+    "EXCLUSION_REVIEW_RULE": "PRODUCT_ONLY and SUPPORTING_DUPLICATE decisions are not exclusion-authoritative unless an independent review record binds the exact decision artifact blob SHA and returns PASS."
+  },
+  "DUPLICATE_EQUIVALENCE": {
+    "VALID_PARENT_BINDINGS": [
+      "Structured DUPLICATE_OF field naming an existing finding_id in the same complete manifest",
+      "Structured SUPERSEDED_BY plus an explicit supersession record naming both source and canonical parent finding IDs"
+    ],
+    "PARENT_REQUIREMENTS": [
+      "Parent row exists in the same complete finding manifest",
+      "Parent finding_id is unambiguous",
+      "Parent chain is acyclic",
+      "Every link is bound by source path/blob SHA",
+      "Independent review PASS binds the exact duplicate/supersession decision artifact"
+    ],
+    "SEMANTIC_GUESSING": "FORBIDDEN",
+    "INVALID_OR_AMBIGUOUS_PARENT": "CONTROL_RELEVANCE=UNKNOWN and canonical_blocker_id=null",
+    "CANONICAL_BLOCKER_ID_RULE": "For a valid duplicate chain use the first non-duplicate ancestor finding_id; otherwise use the row's own finding_id."
+  },
+  "COMPLETE_FINDING_MANIFEST": {
+    "SCHEMA_VERSION": "NEXY_COMPLETE_FINDING_MANIFEST_V2",
+    "ROOT_HASH_DOMAIN": "SHA-256(UTF8(JCS(manifest_object)))",
+    "SORT": "rows ascending by UTF-8 byte ordering of finding_path",
+    "OBJECT_SHAPE": {
+      "SCHEMA_VERSION": "NEXY_COMPLETE_FINDING_MANIFEST_V2",
+      "TARGET_AUTHORITY_KEY": "<64hex>",
+      "CONTROL_COMMIT_SHA": "<40hex>",
+      "CONTROL_TREE_SHA": "<40hex>",
+      "FINDINGS_TREE_SHA": "<40hex>",
+      "ROWS": [
+        {
+          "finding_path": "<repo-relative-path>",
+          "blob_sha": "<40hex>",
+          "finding_id_raw": "<string|null>",
+          "severity_raw": "<string|null>",
+          "priority_raw": "<string|null>",
+          "status_raw": "<string|null>",
+          "type_raw": "<string|null>",
+          "domain_raw": "<string|null>",
+          "duplicate_of_raw": "<string|null>",
+          "superseded_by_raw": "<string|null>",
+          "extraction_state": "OK|EXTRACTION_CONFLICT|PARSE_ERROR"
+        }
+      ]
+    },
+    "COMPLETENESS_RULE": "Every canonical file classified as a finding record in the pinned FINDINGS tree appears exactly once. Housekeeping exclusions must come from a separately pinned finding-universe contract; ad hoc filename exclusion is forbidden."
+  },
+  "PROJECTION_ROW": {
+    "EXACT_FIELDS": [
+      "dedup_key",
+      "finding_path",
+      "blob_sha",
+      "finding_id_norm",
+      "p0_class",
+      "status_norm",
+      "terminal_nonblocking",
+      "control_relevance",
+      "eligibility",
+      "canonical_blocker_id",
+      "classification_evidence_root_hash",
+      "review_evidence_ids"
+    ],
+    "ELIGIBILITY_ENUM": [
+      "ELIGIBLE_CONTROL_P0",
+      "NOT_CONTROL_P0",
+      "BLOCKING_PENDING_CLASSIFICATION"
+    ],
+    "ELIGIBILITY_RULES": [
+      "If terminal_nonblocking=true => NOT_CONTROL_P0.",
+      "Else if p0_class=UNKNOWN => BLOCKING_PENDING_CLASSIFICATION.",
+      "Else if p0_class=NOT_P0 => NOT_CONTROL_P0.",
+      "Else if p0_class=P0 and control_relevance=CONTROL_BLOCKER => ELIGIBLE_CONTROL_P0.",
+      "Else if p0_class=P0 and control_relevance=UNKNOWN => BLOCKING_PENDING_CLASSIFICATION.",
+      "Else if p0_class=P0 and control_relevance=PRODUCT_ONLY with valid independent review PASS => NOT_CONTROL_P0.",
+      "Else if p0_class=P0 and control_relevance=SUPPORTING_DUPLICATE with valid parent chain and independent review PASS => NOT_CONTROL_P0, while the canonical parent remains independently accounted.",
+      "Any rule-validation failure => BLOCKING_PENDING_CLASSIFICATION."
+    ]
+  },
+  "PROJECTED_MANIFEST": {
+    "SCHEMA_VERSION": "NEXY_CONTROL_P0_PROJECTED_MANIFEST_V2",
+    "ROOT_HASH_DOMAIN": "SHA-256(UTF8(JCS(projected_manifest_object)))",
+    "SORT": "rows ascending by UTF-8 byte ordering of dedup_key, then finding_path",
+    "OBJECT_SHAPE": {
+      "SCHEMA_VERSION": "NEXY_CONTROL_P0_PROJECTED_MANIFEST_V2",
+      "TARGET_AUTHORITY_KEY": "<64hex>",
+      "SOURCE_BINDING": {
+        "CONTROL_COMMIT_SHA": "<40hex>",
+        "CONTROL_TREE_SHA": "<40hex>",
+        "FINDINGS_TREE_SHA": "<40hex>",
+        "COMPLETE_FINDING_MANIFEST_ROOT_HASH": "<64hex>",
+        "CLASSIFICATION_MANIFEST_ROOT_HASH": "<64hex>",
+        "REVIEW_EVIDENCE_ROOT_HASH": "<64hex>",
+        "PROJECTION_SCHEMA_BLOB_SHA": "<40hex>"
+      },
+      "ROWS": [
+        "<PROJECTION_ROW exact shape>"
+      ]
+    }
+  },
+  "COUNTING": {
+    "DEDUP_KEY_RULE": "Use canonical_blocker_id only when duplicate equivalence is valid; otherwise use finding_id_norm. Missing or conflicting finding_id_norm yields a unique deterministic pending key derived as 'UNKNOWN:' + finding_path.",
+    "BLOCKING_ELIGIBILITY": [
+      "ELIGIBLE_CONTROL_P0",
+      "BLOCKING_PENDING_CLASSIFICATION"
+    ],
+    "OPEN_CONTROL_P0_COUNT": "Count unique dedup_key values among non-terminal rows whose eligibility is blocking.",
+    "CONTROL_P0_SET_ROOT_HASH": "SHA-256(UTF8(JCS(PROJECTED_MANIFEST exact object)))",
+    "ZERO_RULE": "OPEN_CONTROL_P0_COUNT may equal zero only when the complete finding manifest is valid and fresh, every row has deterministic P0 classification, every exclusion requiring review has valid independent review evidence, all source roots match, and the projected blocking set is empty."
+  },
+  "FAIL_CLOSED": [
+    "Incomplete denominator => OPEN_CONTROL_P0_COUNT=UNKNOWN.",
+    "Current FINDINGS tree differs from FINDINGS_TREE_SHA => OPEN_CONTROL_P0_COUNT=UNKNOWN.",
+    "Missing/malformed/conflicting severity or priority classification => BLOCKING_PENDING_CLASSIFICATION.",
+    "Missing/malformed/conflicting control relevance => BLOCKING_PENDING_CLASSIFICATION for P0/UNKNOWN P0 class.",
+    "Invalid duplicate parent or duplicate cycle => BLOCKING_PENDING_CLASSIFICATION.",
+    "Missing independent review for an exclusion-authoritative PRODUCT_ONLY or SUPPORTING_DUPLICATE decision => BLOCKING_PENDING_CLASSIFICATION.",
+    "Classification or review evidence root mismatch => OPEN_CONTROL_P0_COUNT=UNKNOWN.",
+    "Projection schema blob mismatch => OPEN_CONTROL_P0_COUNT=UNKNOWN."
+  ],
+  "REVIEW_REPAIR_COVERAGE": {
+    "R1_P0_VARIANT_MAPPING_UNDEFINED": "Closed by explicit P0/NOT_P0 maps plus UNKNOWN fallback.",
+    "R2_RAW_NORMALIZATION_UNDEFINED": "Closed by TEXT_NORMALIZATION and deterministic JSON/Markdown extraction.",
+    "R3_CLASSIFICATION_EVIDENCE_SCHEMA_UNDEFINED": "Closed by typed CLASSIFICATION_EVIDENCE_RECORD and conflict/review rules.",
+    "R4_DEDUP_EQUIVALENCE_UNDEFINED": "Closed by DUPLICATE_EQUIVALENCE rules and forbidden semantic guessing.",
+    "R5_PROJECTED_MANIFEST_HASH_SHAPE_UNDEFINED": "Closed by exact COMPLETE_FINDING_MANIFEST and PROJECTED_MANIFEST object shapes plus hash domains/sorts.",
+    "R6_UNCERTAIN_P0_CLASS_FAIL_CLOSED_GAP": "Closed by P0_CLASSIFICATION.UNKNOWN => BLOCKING_PENDING_CLASSIFICATION.",
+    "R7_SOURCE_SNAPSHOT_BINDING_MISSING": "Closed by SOURCE_BINDING, exact Git provenance, evidence roots, and FINDINGS tree freshness check."
+  },
+  "NON_AUTHORITY_NOTICE": "This candidate does not itself set OPEN_CONTROL_P0_COUNT, CONTROL_P0_SET_ROOT_HASH, STATIC_PROTOCOL_P0, phase, Bootstrap Fence state, product mutation authority, integration authority, or activation state. Canonical adoption requires independent review and a separately authorized control transition."
+}
