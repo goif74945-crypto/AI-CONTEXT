@@ -67,6 +67,13 @@ describe("CapabilityNode contract", () => {
     expect(() => registry.register(node({ name: "late" }))).toThrow(/sealed/);
   });
 
+  it("does not repurpose canonical R009 for duplicate-node rejection", () => {
+    const registry = new CapabilityNodeRegistry();
+    registry.register(node({ name: "duplicate", version: "1.0.0" }));
+    expect(() => registry.register(node({ name: "duplicate", version: "1.0.0" })))
+      .toThrow(/INTERNAL_DUPLICATE_NODE/);
+  });
+
   it("rejects cycles, resource over-cap, and hidden network capability", () => {
     const known = [node({ name: "base" })];
     expect(validateCapabilityNode(node({ name: "cycle", dependencies: ["cycle"] }), known)).toContain("R001_DEPENDENCY_CYCLE");
