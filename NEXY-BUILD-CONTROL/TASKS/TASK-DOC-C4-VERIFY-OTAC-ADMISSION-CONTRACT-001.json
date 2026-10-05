@@ -1,0 +1,29 @@
+{
+  "TASK_ID": "TASK-DOC-C4-VERIFY-OTAC-ADMISSION-CONTRACT-001",
+  "REQ_ID": "REQ-DOC-C-4-2-VERIFY-OTAC",
+  "PRIORITY": "P1",
+  "STATUS": "BLOCKED_SOURCE_MUTATION",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CONTROL_PARENT_OBSERVED": "5248a12b181ebfb24ef1da9bde591caf625bf5fa",
+  "FINDING_ID": "FIND-DOC-C4-VERIFY-OTAC-ADMISSION-AUDIT-ERROR-MATRIX-001",
+  "SCOPE": [
+    "packages/api/auth.ts",
+    "packages/api/middleware/rate-limit.ts",
+    "tests/integration/auth/verify-otac.spec.ts",
+    "tests/integration/rate-limit-redis.spec.ts"
+  ],
+  "OBJECTIVE": "Reconcile verify-otac admission control with final DOC-C retry, audit, and error-matrix authority without weakening brute-force protection.",
+  "ACCEPTANCE": [
+    "Every canonical verify-otac failure path has authoritative audit behavior.",
+    "No undeclared 429/503 outcome escapes the route unless active authority explicitly declares it.",
+    "Retry-until-attempt-limit semantics are not silently superseded by generic admission behavior.",
+    "Security throttling remains effective and fail-closed where required.",
+    "Tests kill mutants that bypass AUTH_VERIFY_FAILED on admission rejection and detect undeclared error-code/status drift.",
+    "Exact candidate and integrated SHA validation succeeds with independent review."
+  ],
+  "DEPENDENCIES": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "SOURCE_MUTATION": "NONE"
+}
