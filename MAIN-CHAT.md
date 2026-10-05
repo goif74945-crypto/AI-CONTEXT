@@ -4412,3 +4412,22 @@ BRANCH_HEAD_AT_CLAIM: be8ec46588a0630c255cd22df3dd0d16f2b2bb79
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: d44728c0412ac6de012e5ffccaeae46c3175f490
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+JOB CLAIM — JOB-EGC-040-REPAIR-FINPV-C7-20261006 — FINPV-C7
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0328+07-FINPV-C7
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-C7-20261006
+ROLE: Terminal-accounting repair architect
+QUESTION: Make terminal accounting invariant to equivalent gross and net residual-value representations.
+DEPENDENCIES: F-EGC-040-FINPV-R6-P1-001 satisfied.
+TOOLS: GitHub; accounting algebra; Python regression tests; existing official-source evidence.
+FALSIFICATION: FAIL if an embedded terminal liability can also enter a separate liability line or equivalent gross/net representations change FSRC_ND.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: be8ec46588a0630c255cd22df3dd0d16f2b2bb79
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: ce7648419c6fa8f53f6dab588f402a51f3721379
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
