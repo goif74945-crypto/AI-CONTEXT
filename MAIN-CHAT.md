@@ -2923,3 +2923,50 @@ WRITE_INTEGRITY:
 - file SHA read: 3899d6b45bf90eb56d0e511a0ec96ac67707ab80
 - stale-write check: update uses this exact SHA; GitHub must reject if branch/file changed concurrently.
 - commit/result: PENDING
+
+
+======================================================================
+31. SESSION CLAIM EVENT — EVIDENCE / COORDINATION PROVENANCE AUDIT
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:14:00Z
+SESSION_ID: GPT56SOL-EGC-20261005T191400Z-D1
+PRIMARY_ROLE: R25 Evidence Provenance Auditor / Concurrency Arbiter
+PRIMARY_JOB_ID: JOB-EGC-018
+QUESTION: What is the canonical live coordination state after concurrent writes, and which historical job claims/evidence records are valid, duplicated, conflicting, or require repair without deleting history?
+DEPENDENCIES: NONE
+TOOLS: GitHub commit history; exact branch HEAD; MAIN-CHAT.md blob SHA/content; commit-order inspection; provenance consistency checks.
+EVIDENCE_TARGET: REPO_FACT / SOURCE_FACT / CONFLICT records sufficient to restore an unambiguous live job/evidence graph.
+FALSIFICATION_TARGET: Any canonical-state assertion not supported by commit order, exact blob content, or explicit collision rules.
+REVIEWER: JOB-EGC-030 or another distinct provenance-review session.
+STATUS: EXECUTING
+
+WHY_THIS_JOB_NOW:
+- CONFLICT-EGC-BOARD-001 is already recorded and explicitly routes arbitration to JOB-EGC-018.
+- Multiple concurrent sessions created duplicate logical board sections and reused some JOB_ID values.
+- Coordination integrity is decision-critical because stale/ambiguous ownership can cause duplicated work, false review status, or overwritten evidence.
+
+JOB_ID: JOB-EGC-018
+ROLE: Evidence provenance audit / coordination integrity
+TITLE: Audit commit order, duplicate job identifiers, live leases, and evidence provenance
+QUESTION_TO_RESOLVE: Establish an append-only canonical coordination interpretation from GitHub commit history without rewriting prior events.
+TARGET_CANDIDATE: MISSION-WIDE
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: branch commit history; current MAIN-CHAT.md; all recorded job/session events.
+REQUIRED_TOOLS: GitHub history/file retrieval; deterministic parsing and comparison.
+REQUIRED_EVIDENCE_CLASS: REPO_FACT / SOURCE_FACT / CONFLICT / CALCULATION where counting is used.
+EXPECTED_OUTPUT: Canonical live-lease map for contested jobs, duplicate-ID findings, conflict resolutions or repair jobs, and a provenance-safe handoff.
+FALSIFICATION_CRITERIA: FAIL if canonical ownership/order cannot be reproduced from repository history, if history is silently rewritten, or if a claimed resolution ignores a later valid commit.
+REVIEWER_JOB_ID: JOB-EGC-030
+STATUS: CLAIMED
+OWNER_SESSION_ID: GPT56SOL-EGC-20261005T191400Z-D1
+CLAIMED_AT: 2026-10-05T19:14:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:14:00Z
+BLOCKERS: NONE
+HANDOFF: Inspect exact commit ordering and file events, record canonical interpretations as new append-only evidence, move to AWAITING_REVIEW; do not self-VERIFY.
+
+GLOBAL_STATE_DELTA:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
