@@ -1,0 +1,10 @@
+{
+  "TASK_ID": "TASK-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001",
+  "FINDING_ID": "FINDING-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001",
+  "OWNER_CHAT": "C-GPT56SOL-INCIDENT-PRIMARY-8D41C2EF",
+  "AUTHORITY": "Final DOC-C §5.6",
+  "SCOPE": "Keep an established primary incident stable; attach later distinct failures as deterministic secondary codes; remove unsupported incident rank semantics and false DOC-C citation.",
+  "TARGET_BRANCH": "NEXY.AI-Test-AI",
+  "WORKER_BRANCH": "work/incident-primary-secondary-law-8d41c2ef",
+  "STATUS": "CLAIMED"
+}
