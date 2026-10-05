@@ -1,0 +1,35 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-REQUEST-OTAC-DEPENDENCY-STATUS-001",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "TASK_ID": "TASK-DOC-C4-REQUEST-OTAC-DEPENDENCY-STATUS-001",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SEVERITY": "P1",
+  "TYPE": [
+    "CONTRACT_DRIFT",
+    "INVALID_ERROR_PATH"
+  ],
+  "OBSERVED": [
+    "POST /api/auth/request-otac calls respondAuthPersistenceFailure for OTAC lock, audit, issuance, and delivery-failure persistence faults.",
+    "respondAuthPersistenceFailure returns HTTP 500 with ErrorCode DEPENDENCY_FAILURE.",
+    "The same route separately returns HTTP 503 DEPENDENCY_FAILURE for email-provider failure."
+  ],
+  "EXPECTED": "Final DOC-C request-OTAC route matrix declares DEPENDENCY_FAILURE as HTTP 503 and does not declare a 500 DEPENDENCY_FAILURE pair for this canonical route.",
+  "SPEC_EVIDENCE": {
+    "raw_docx_paragraphs": "10038-10069",
+    "declared_pair": "503 DEPENDENCY_FAILURE"
+  },
+  "SOURCE_EVIDENCE": {
+    "auth_blob": "0f8c8e21ce39f36b850c0db93ceadaa886088e6b",
+    "auth_regions": [
+      "393-400",
+      "369-375",
+      "474-482",
+      "544-556"
+    ],
+    "auth_failure_blob": "92c3f4c7cebc495d9c8badc1cec0b14b4c71dd0c",
+    "auth_failure_status": "HTTP 500 DEPENDENCY_FAILURE"
+  },
+  "STATUS": "REPRODUCED",
+  "MUTATION_STATUS": "BLOCKED_BY_INC-BRANCH-NAMESPACE-001"
+}
