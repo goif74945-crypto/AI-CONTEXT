@@ -303,6 +303,11 @@ class ActionRisk:
             value = getattr(self, name)
             if not isinstance(value, int) or isinstance(value, bool) or not 0 <= value <= 5:
                 raise ValueError(f"{name} must be an integer in [0, 5]")
+        if any(
+            type(getattr(self, name)) is not bool
+            for name in ("production", "permission_change", "compensation_available")
+        ):
+            raise ValueError("control flags must be booleans")
 
 
 @dataclass(frozen=True, slots=True)

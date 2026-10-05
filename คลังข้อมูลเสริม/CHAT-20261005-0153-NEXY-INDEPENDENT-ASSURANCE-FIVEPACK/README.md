@@ -36,3 +36,5 @@ These mechanisms are deliberately implemented as a provider-agnostic standalone 
 The AIG reference now treats escalation from any noncritical severity to `CRITICAL` as material before duplicate suppression. A parameterized regression test covers `LOW`, `MEDIUM` and `HIGH` escalation while the existing exact-CRITICAL-duplicate behavior remains covered. The exact standalone bundle passes 35 tests and static compilation in the recorded environment.
 
 The IAQ reference now rejects votes whose provider, model family, data lineage or toolchain correlation metadata is missing or blank, preventing unknown failure-domain metadata from being counted as independent evidence. The exact standalone bundle now passes 40 tests and static compilation in the recorded environment.
+
+The RAAS reference now requires exact booleans for production, permission-change and compensation-availability controls, preventing truthy/falsy substitutes from altering safety routing. The exact standalone bundle now passes 43 tests and static compilation in the recorded environment.

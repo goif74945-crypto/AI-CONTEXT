@@ -20,7 +20,9 @@
 - The minimal ordering repair preserves exact CRITICAL duplicate suppression while guaranteeing delivery for LOW/MEDIUM/HIGH-to-CRITICAL escalation.
 - IAQ continuation RED proof reproduced acceptance of five incomplete/blank correlation-metadata variants.
 - The minimal validation repair rejects incomplete provider/model-family/data-lineage/toolchain metadata before clustering.
-- Exact compact persisted code/test bundle: 40/40 tests PASS after repair.
+- RAAS continuation RED proof reproduced acceptance of three non-boolean control-flag variants, including a truthy string in `compensation_available`.
+- The minimal validation repair requires exact booleans before assurance scoring and routing.
+- Exact compact persisted code/test bundle: 43/43 tests PASS after repair.
 - Exact compact persisted code/test bundle: compileall exit 0.
 - SHA-256 manifest verification passed before remote publication.
 - False-green zero-test run was rejected and is not counted as evidence.
