@@ -1,0 +1,40 @@
+{
+  "FINDING_ID": "F-V16RC13-CONTROL-P0-CLASSIFICATION-DEADLOCK-31B7",
+  "TYPE": "CONTROL_P0_DENOMINATOR_SEMANTIC_DEFECT",
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "DISCOVERED_BY_CHAT": "C-SOL-20261005-1731Z-V16RC13-LEGACYLEASE-AUDIT-31B7",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 4,
+  "LAW_CLAUSES": [
+    "[062] CURRENT_CONTROL_P0 must be derived from a complete canonical finding manifest.",
+    "[064] activation requires OPEN_CONTROL_P0_COUNT == 0.",
+    "[024] before product activation normal product code mutation is forbidden.",
+    "[189]-[190] normal distributed product engineering occurs in PHASE_4 after activation."
+  ],
+  "FACTS": [
+    "The published shard-00-7f P0_CLASS_RECORDS schema contains only path, severity, status, and explicit_nonblocking; it has no control-vs-product domain discriminator.",
+    "Published shard-80-ff rows likewise classify P0 class primarily from severity/mentions/status and do not carry a control-plane relevance field.",
+    "F-3F8A1C72-01 is SEVERITY P0 / STATUS OPEN and is explicitly a product implementation finding for packages/core/vnext-state-matrix.ts, tests/contract/state-matrix.test.ts, and core-kernel/src/kernel/vnext_matrix.rs, with a recommended source repair.",
+    "F-56D7E2A1-BRANCH-REF-CONFLICT is SEVERITY P0 / STATUS OPEN and is a true control/branch-architecture finding, demonstrating that product and control P0 records coexist in the same raw FINDINGS corpus.",
+    "The shard-00-7f summary reports 35 P0-class records and treats 33 not-explicitly-nonblocking rows as potentially blocking without publishing a semantic control-plane eligibility predicate."
+  ],
+  "INFERENCE": [
+    "Using all non-terminal P0-severity findings as OPEN_CONTROL_P0_COUNT would create a protocol deadlock: product repair is forbidden before activation, while activation would require those product findings to be closed.",
+    "A complete FINDINGS manifest can be the source inventory, but CURRENT_CONTROL_P0 requires a deterministic semantic projection selecting control-plane blockers from that inventory."
+  ],
+  "UNKNOWN": [
+    "No canonical control-P0 projection schema or explicit eligibility predicate was located in the inspected V16 preactivation artifacts.",
+    "This finding does not decide which historical P0 rows are control blockers; each row still needs authority-preserving classification."
+  ],
+  "REQUIRED_RESOLUTION": [
+    "Define a canonical deterministic CONTROL_P0 eligibility/projection schema over the complete finding manifest.",
+    "Require explicit evidence-backed domain/relevance classification rather than severity-only inclusion.",
+    "Keep product implementation P0 findings in product requirement/task accounting for post-activation engineering unless they independently block control authority.",
+    "Rebuild both P0 shards and CONTROL_P0_SET_ROOT_HASH using the canonical projection, then recompute OPEN_CONTROL_P0_COUNT.",
+    "Do not mass-close or mass-supersede existing findings merely to reach zero."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "FAIL_CLOSED": true
+}
