@@ -4,7 +4,18 @@
   "GOAL": "Align vNext executable state/event matrix and its contract oracle exactly with final DOC-C §§5.1-5.4.",
   "SCOPE": [
     "packages/core/vnext-state-matrix.ts",
-    "tests/contract/state-matrix.test.ts"
+    "tests/contract/state-matrix.test.ts",
+    "packages/api/bootstrap.ts",
+    "packages/law/freeze.ts",
+    "packages/api/auth-failure.ts",
+    "tests/contract/core-kernel-vnext-parity.test.ts",
+    "tests/contract/system-state-persistence.test.ts",
+    "tests/integration/freeze-persistence.spec.ts",
+    "tests/e2e/freeze-recover.spec.ts",
+    "tests/integration/freeze-mechanism.spec.ts",
+    "tests/coverage/bootstrap-control-plane.test.ts",
+    "tests/contract/hydration-fail-closed.test.ts",
+    "tests/contract/auth-fail-closed-boundary.test.ts"
   ],
   "ACCEPTANCE": [
     "timeout and cancel are treated as DOC-C SystemEvent members",
@@ -38,5 +49,15 @@
     "branch_search_after_failure": "no matching worker branch exists",
     "integration_head_after_failure": "608426cb30398b1f3461866f7079d2a435c96b96"
   },
-  "UNBLOCK_CONDITION": "Coordinated worker branch naming policy that does not collide with existing refs/heads/NEXY.AI-Test-AI, or another explicitly authorized isolation mechanism."
+  "UNBLOCK_CONDITION": "Coordinated worker branch naming policy that does not collide with existing refs/heads/NEXY.AI-Test-AI, or another explicitly authorized isolation mechanism.",
+  "DESIGN_CHALLENGE": {
+    "QUESTION": "How should startup/auth dependency failures fail closed when the system is INIT/READY without inventing an undeclared DOC-C error transition?",
+    "FACTS": [
+      "DOC-C §5.2 declares error->FREEZE only from RUNNING and VERIFYING.",
+      "Rust follows that exact matrix.",
+      "Current TypeScript bootstrap/auth helpers rely on broader error reachability."
+    ],
+    "STATUS": "UNRESOLVED_SPEC_DERIVED_DESIGN",
+    "FORBIDDEN": "Do not preserve READY/INIT + error merely to keep existing tests green."
+  }
 }
