@@ -8172,3 +8172,351 @@ No candidate is promoted.
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
 CURRENT_WINNER: NONE.
+
+
+
+======================================================================
+RESULT — JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0410+07-PHYS1
+PRIMARY_ROLE: Theoretical-Physics / Energy-Conservation / Net-Power Boundary Analyst
+PRIMARY_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+OBJECTIVE:
+Freeze a candidate-neutral physics gate that prevents hidden energy input, initial-inventory mining, gross/net confusion, mechanism-inappropriate efficiency bounds and plasma/source power from being promoted to delivered net electricity.
+
+P_STAR — COMMON PHYSICS LEDGER:
+For every candidate and matched baseline define a closed control volume and reporting interval, then satisfy:
+
+SUM(E_in,all forms) - SUM(E_out,all forms) = DELTA_E_stored_within_boundary
+
+with every material external electrical import, fuel/heat/radiative/kinetic/potential input, initial/final storage inventory, useful export, rejected heat and other loss represented consistently.
+
+For electricity-producing system comparison:
+E_NET_SERVED = E_GROSS_ELECTRIC
+               - E_STATION_AUX
+               - E_PARASITIC
+               - E_INTERNAL_CONVERSION_LOSS
+               - E_NETWORK_LOSS_INSIDE_BOUNDARY
+               - E_INTERNAL_STORAGE_NET_CHARGE_EFFECT
+               +/- other explicitly sourced boundary terms,
+using the common accounting/storage ledger where terms already have canonical ownership.
+
+A physics residual is:
+R_E = SUM(E_in) - SUM(E_out) - DELTA_E_stored.
+PASS only if R_E is consistent with zero within the explicitly propagated measurement/model uncertainty and numerical tolerance. No arbitrary universal residual threshold is invented here.
+
+IMPORTANT BOUNDARY NOTE:
+Physics energy accounting is not cost accounting. Sunlight/wind/water/fuel/heat crossing a physical control volume must obey conservation even when the resource has zero market price. FSRC_ND separately determines monetary/resource-cost ownership.
+
+MECHANISM-SPECIFIC CONSTRAINTS:
+1. THERMAL HEAT-ENGINE PATHS:
+   First and second law apply. For an ideal heat engine exchanging heat between fixed absolute-temperature reservoirs, Carnot eta_max=1-Tc/Th. Real cycles incur additional irreversibilities. Do not apply the simple two-reservoir Carnot expression mechanically to nonthermal direct converters or every open-cycle architecture; use cycle/exergy-specific analysis where appropriate.
+2. WIND:
+   Available rotor-crossing kinetic power scales as 0.5*rho*A*v^3; ideal actuator-disk aerodynamic power coefficient Cp <=16/27 (Betz). Electrical output is further downstream of aerodynamic/mechanical/electrical losses. Betz is not capacity factor.
+3. HYDRO:
+   P_electric = rho*g*Q*H*eta for the conventional head/flow conversion boundary. eta must include the chosen turbine-generator/other loss definition consistently.
+4. SOLAR PV:
+   Electrical efficiency is output electric power / incident solar power on the defined aperture. Single-bandgap non-concentrated Shockley-Queisser-type limit around 33.5% is architecture-specific; it must NOT be imposed on multijunction/concentrator/other architectures. Field energy yield additionally includes temperature, irradiance, dirt/shade and BOS losses.
+5. STORAGE / PSH:
+   Storage shifts energy in time; it is not a primary source. Initial state of charge/potential/chemical inventory and terminal state must reconcile. Round-trip efficiency below 1 means repeated charging/discharging cannot generate net energy.
+6. FUSION:
+   Plasma fusion gain Q=P_fusion/P_heating_to_plasma is not engineering or grid-electric gain. Whole-plant net electricity must subtract wall-plug heating demand, magnets, cryogenics, pumps, diagnostics/control and all other auxiliaries, and include the actual thermal/electric conversion chain.
+7. FISSION / GEOTHERMAL / WASTE-HEAT / THERMAL FIRMING:
+   Nuclear/geothermal/fuel/waste heat source energy is converted through an appropriate thermal cycle unless a direct conversion architecture is explicitly evidenced. Gross thermal or reactor power is not net electricity; heat rejection and auxiliaries remain in boundary.
+8. TIDAL/WAVE:
+   Retain only mechanism-specific kinetic/potential/wave-flux capture models with explicit conversion losses; no generic renewable-efficiency shortcut is allowed.
+
+EVIDENCE_ID: TE-EGC-PHYS-001
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-CONSERVATION
+TOOL: official web retrieval
+METHOD: first-law provenance check
+DATE: 2026-10-06
+SOURCE: NASA Glenn Research Center, First Law - Internal Energy / Conservation of Energy
+SOURCE_DATE: current web pages accessed 2026-10-06
+URL/DOI/IDENTIFIER: https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/first-law-internal-energy/ ; https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/conservation-of-energy/
+INPUTS: thermodynamic first-law definitions
+PARAMETERS: E2-E1=Q-W for NASA sign convention
+EQUATION/CODE/METHOD: source extraction + control-volume generalization
+OUTPUT: energy is conserved; internal-energy change equals heat into system minus work done by system under cited convention.
+UNITS: joules or consistent energy units
+UNCERTAINTY: none for law; practical balance uncertainty arises from measurement/model boundary.
+ASSUMPTIONS: mission control-volume equation uses consistent sign convention.
+LIMITATIONS: source examples focus on gas systems; conservation principle is general, but candidate-specific energy forms must be enumerated explicitly.
+REPRODUCTION_METHOD: retrieve NASA pages and verify equation/definition.
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-PHYS-002
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-SECONDLAW
+TOOL: NASA official web retrieval
+METHOD: second-law/Carnot boundary audit
+DATE: 2026-10-06
+SOURCE: NASA Glenn, Second Law of Thermodynamics; Carnot Cycle
+SOURCE_DATE: current pages accessed 2026-10-06
+URL/DOI/IDENTIFIER: https://www.grc.nasa.gov/www/BGH/thermo2.html ; https://www.grc.nasa.gov/WWW/K-12/airplane/carnot.html
+INPUTS: entropy law and ideal reversible heat-engine cycle
+PARAMETERS: absolute hot/cold reservoir temperatures
+EQUATION/CODE/METHOD: source synthesis
+OUTPUT: first-law conservation alone does not make every process physically realizable; total entropy of system+environment does not decrease, and ideal heat-engine work derives from net heat transfer over a cycle.
+UNITS: kelvin for temperature; dimensionless efficiency
+UNCERTAINTY: cycle applicability is architecture-specific.
+ASSUMPTIONS: none.
+LIMITATIONS: a two-reservoir Carnot bound must not be misapplied to PV/wind or mechanically to every open-cycle machine.
+REPRODUCTION_METHOD: retrieve NASA second-law and Carnot pages.
+REPLICATION_STATUS: TWO_SOURCE_CROSSCHECK
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: CALC-EGC-PHYS-001
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-CARNOT-SANITY
+TOOL: Wolfram Context + Wolfram Language Evaluator
+METHOD: illustrative Carnot upper-bound arithmetic
+DATE: 2026-10-06
+SOURCE: TE-EGC-PHYS-002 equation; executed calculation
+SOURCE_DATE: calculation 2026-10-06
+URL/DOI/IDENTIFIER: executed Wolfram session
+INPUTS: Tc=30 C=303.15 K; Th={600 C=873.15 K,300 C=573.15 K}
+PARAMETERS: ideal reversible heat engine between fixed reservoirs
+EQUATION/CODE/METHOD: eta_C=1-Tc/Th
+OUTPUT: eta_C(600C,30C)=0.6528087957395636; eta_C(300C,30C)=0.47108086888249145
+UNITS: dimensionless
+UNCERTAINTY: arithmetic negligible; physical applicability dominates.
+ASSUMPTIONS: reservoir temperatures fixed and represent heat addition/rejection temperatures in idealized comparison.
+LIMITATIONS: not actual efficiency of any candidate plant; real cycles are below appropriate reversible/exergy bounds.
+REPRODUCTION_METHOD: independently evaluate 1-303.15/873.15 and 1-303.15/573.15.
+REPLICATION_STATUS: EXECUTED_TOOL_PASS / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+EVIDENCE_ID: TE-EGC-PHYS-003
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-WIND
+TOOL: DOE official web retrieval
+METHOD: wind aerodynamic upper-bound provenance
+DATE: 2026-10-06
+SOURCE: U.S. DOE WINDExchange Small Wind Guidebook
+SOURCE_DATE: current page retrieved 2026-10-06
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/systems/windexchange/small-wind-guidebook
+INPUTS: Betz-limit definition
+PARAMETERS: Cp_max=16/27
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: theoretical perfect wind turbine maximum power coefficient is 16/27=59.3%.
+UNITS: dimensionless aerodynamic power coefficient
+UNCERTAINTY: law applies to ideal actuator-disk-type capture boundary; real rotor/electrical losses reduce delivered output.
+ASSUMPTIONS: none beyond stated model.
+LIMITATIONS: not capacity factor; not whole-farm annual energy ratio; not a constraint on unrelated conversion mechanisms.
+REPRODUCTION_METHOD: retrieve DOE guidebook page and verify Betz definition.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: CALC-EGC-PHYS-002
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-BETZ-NUMERIC
+TOOL: Wolfram Language Evaluator
+METHOD: exact-fraction numeric check
+DATE: 2026-10-06
+SOURCE: TE-EGC-PHYS-003
+SOURCE_DATE: calculation 2026-10-06
+URL/DOI/IDENTIFIER: executed Wolfram session
+INPUTS: 16/27
+PARAMETERS: none
+EQUATION/CODE/METHOD: N[16/27,16]
+OUTPUT: 0.5925925925925926
+UNITS: dimensionless
+UNCERTAINTY: none material.
+ASSUMPTIONS: none.
+LIMITATIONS: inherits applicability limitation from Betz model.
+REPRODUCTION_METHOD: divide 16 by 27.
+REPLICATION_STATUS: EXECUTED_TOOL_PASS / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+EVIDENCE_ID: TE-EGC-PHYS-004
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-PV
+TOOL: DOE official web retrieval
+METHOD: architecture-specific PV conversion-limit audit
+DATE: 2026-10-06
+SOURCE: U.S. DOE Solar Photovoltaic Performance and Efficiency Basics; Multijunction III-V Photovoltaics Research
+SOURCE_DATE: current pages accessed 2026-10-06
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/systems/solar-photovoltaic-performance-and-efficiency-basics ; https://www.energy.gov/cmei/systems/multijunction-iii-v-photovoltaics-research
+INPUTS: PV efficiency definition/loss mechanisms and single-bandgap versus multijunction limits
+PARAMETERS: single-bandgap non-concentrated theoretical limit about 33.5%; multijunction record-class devices over 45% noted by DOE
+EQUATION/CODE/METHOD: source comparison
+OUTPUT: PV efficiency is incident-light-to-usable-electric conversion; wavelength/recombination/temperature/reflection cause losses; single-bandgap theoretical limit is not universal to multijunction architectures.
+UNITS: percent/dimensionless efficiency
+UNCERTAINTY: technology-specific laboratory/field conditions differ.
+ASSUMPTIONS: no field energy-yield claim inferred from cell-efficiency limits.
+LIMITATIONS: theoretical cell limit does not equal module/system annual efficiency or cost.
+REPRODUCTION_METHOD: retrieve both DOE pages and compare architecture scope.
+REPLICATION_STATUS: TWO_SOURCE_CROSSCHECK
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-PHYS-005
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-HYDRO
+TOOL: DOE + USGS official web retrieval
+METHOD: head/flow energy-conversion boundary check
+DATE: 2026-10-06
+SOURCE: U.S. DOE How Hydropower Works; U.S. Geological Survey 1995 Hydroelectric Water Use guideline
+SOURCE_DATE: DOE current page accessed 2026-10-06; USGS historical guideline
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/water/how-hydropower-works ; https://water.usgs.gov/usgs/watuse/1995guidelines/hy.html
+INPUTS: water flow, hydraulic head, turbine-generator efficiency
+PARAMETERS: rho, g, Q, H, eta
+EQUATION/CODE/METHOD: standard hydropower conversion P=rho*g*Q*H*eta in consistent units
+OUTPUT: available hydroelectric power depends on flow and head and is reduced by turbine/generator and hydraulic losses.
+UNITS: watts with SI inputs
+UNCERTAINTY: time-varying head/flow and environmental operating constraints dominate site output.
+ASSUMPTIONS: conventional head/flow hydropower boundary.
+LIMITATIONS: equation does not determine annual energy without chronology/hydrology/availability.
+REPRODUCTION_METHOD: retrieve DOE head/flow explanation and USGS standard-energy equation.
+REPLICATION_STATUS: TWO_AGENCY_CROSSCHECK
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT / CALCULATION_METHOD
+
+EVIDENCE_ID: TE-EGC-PHYS-006
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-STORAGE
+TOOL: DOE official web retrieval
+METHOD: source-versus-storage boundary audit
+DATE: 2026-10-06
+SOURCE: U.S. DOE Solar Energy and Storage Basics; Pumped Storage Hydropower
+SOURCE_DATE: current pages accessed 2026-10-06
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/systems/solar-integration-solar-energy-and-storage-basics ; https://www.energy.gov/cmei/water/pumped-storage-hydropower
+INPUTS: storage definition and charge/discharge mechanism
+PARAMETERS: energy capacity; power capacity; charging; conversion/retrieval losses
+EQUATION/CODE/METHOD: source synthesis + first-law boundary
+OUTPUT: storage captures energy, stores it in another form and later releases it; DOE explicitly notes storage is never 100% efficient. PSH requires power to pump water upward before later generation.
+UNITS: kWh/MWh energy; kW/MW power
+UNCERTAINTY: technology-specific round-trip efficiency varies.
+ASSUMPTIONS: none.
+LIMITATIONS: no universal RTE asserted; storage may receive external natural inflow in open-loop hydro, which must be separately credited as source energy rather than hidden.
+REPRODUCTION_METHOD: retrieve DOE pages and verify charge/discharge/loss statements.
+REPLICATION_STATUS: TWO_SOURCE_CROSSCHECK
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-PHYS-007
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-FUSION-Q
+TOOL: ITER primary-source web retrieval
+METHOD: plasma-Q versus engineering-breakeven boundary audit
+DATE: 2026-10-06
+SOURCE: ITER Fusion Glossary; ITER FAQ; How ITER Quantifies Fusion Power
+SOURCE_DATE: current pages; power-quantification article 2025-12-08
+URL/DOI/IDENTIFIER: https://www.iter.org/fusion-glossary ; https://www.iter.org/faqs?thematic=68 ; https://www.iter.org/node/20687/how-iter-quantifies-fusion-power
+INPUTS: Q definition; engineering-breakeven explanation; ITER program target
+PARAMETERS: Q=P_fusion/P_external_plasma_heating; ITER planned example Q=10 from 500 MW fusion output / 50 MW injected heating
+EQUATION/CODE/METHOD: source synthesis
+OUTPUT: plasma Q excludes substantial whole-plant electric demands. ITER explicitly distinguishes plasma energy breakeven from engineering breakeven, the latter requiring all plant systems and grid output/input balance.
+UNITS: dimensionless Q; MW
+UNCERTAINTY: ITER is experimental, not a commercial electric plant; commercial plant auxiliary fractions and conversion efficiencies remain architecture-specific.
+ASSUMPTIONS: none beyond ITER definitions.
+LIMITATIONS: Q=10 target is not measured net-electric gain and not a commercial cost claim.
+REPRODUCTION_METHOD: retrieve ITER glossary/FAQ/article and verify Q and engineering-breakeven definitions.
+REPLICATION_STATUS: THREE_PRIMARY_SOURCE_CROSSCHECK
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: CALC-EGC-PHYS-003
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+CLAIM_ID: CLAIM-EGC-PHYS-FUSION-NET
+TOOL: Wolfram Context + Wolfram Language Evaluator
+METHOD: simplified whole-plant fusion net-power boundary sanity check
+DATE: 2026-10-06
+SOURCE: TE-EGC-PHYS-007 definition + executed algebra
+SOURCE_DATE: calculation 2026-10-06
+URL/DOI/IDENTIFIER: executed Wolfram session
+INPUTS: Q=10; eta_heat=0.50 wall-plug-to-plasma; eta_th=0.40 fusion-thermal-to-gross-electric
+PARAMETERS: define f_aux=P_other_aux/P_fusion
+EQUATION/CODE/METHOD: P_net/P_fusion = eta_th - 1/(Q*eta_heat) - f_aux
+OUTPUT: heating-electric fraction=1/(10*0.5)=0.20; positive net export requires f_aux<0.20; f_aux=0.20 gives simplified net zero.
+UNITS: dimensionless fraction of fusion power
+UNCERTAINTY: illustrative parameters only.
+ASSUMPTIONS: all fusion power represented in thermal conversion term; no blanket energy multiplication, no additional heat sources, no storage/startup transients; simplified steady-state illustration.
+LIMITATIONS: NOT a prediction for ITER or any commercial design; only demonstrates mathematically why Q=10 does not imply net-electric gain.
+REPRODUCTION_METHOD: substitute stated values into equation independently.
+REPLICATION_STATUS: EXECUTED_TOOL_PASS / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+PHYSICS GATE STATES:
+SOLAR_PV: PHYSICS_VALID as a direct photon-to-electric mechanism; field/net performance remains evidence-dependent. Do not impose single-junction limits on multijunction architectures.
+WIND: PHYSICS_VALID; Betz aerodynamic capture bound applies to ideal rotor model; net output still needs drivetrain/electrical losses and measured resource chronology.
+CONVENTIONAL_HYDRO: PHYSICS_VALID; head/flow equation and efficiency losses apply; hydrology/site chronology controls scale.
+PSH/BATTERY/OTHER_STORAGE: PHYSICS_VALID only as storage/energy-shifting systems, not primary sources. Initial/terminal inventory and charging energy mandatory.
+GEOTHERMAL/EGS: PHYSICS_VALID in principle as thermal/resource extraction; net power must include pumps/parasitics and second-law/heat-rejection constraints. Resource sustainability remains separate.
+FISSION: PHYSICS_VALID and physically demonstrated; reactor thermal power != net electric; auxiliaries/thermal cycle/heat rejection remain required.
+FUSION: PHYSICS_NOT_FALSIFIED as mechanism, but COMMERCIAL_NET_ELECTRIC_GAIN_NOT_VERIFIED. Plasma Q cannot close the net-electric gate.
+GAS/THERMAL_FIRMING: PHYSICS_VALID; chemical/thermal input, cycle losses, auxiliaries and heat rejection required.
+WASTE_HEAT: PHYSICS_VALID only when usable exergy and finite-temperature conversion are accounted; gross heat quantity cannot be treated as equal electrical work.
+TIDAL/WAVE: PHYSICS_VALID in principle; mechanism-specific flux/capture/net-loss evidence remains required.
+OVER_UNITY/PERPETUAL_MOTION/FREE_ENERGY WITHOUT EXTRAORDINARY INDEPENDENT REPLICATION: FALSIFIED BY PHYSICS GATE.
+
+RED_TEAM:
+RT-PHYS-001: "gross generator output = net delivered electricity" -> FALSIFIED.
+RT-PHYS-002: "stored-energy discharge with omitted initial SOC/charge is generation" -> FALSIFIED.
+RT-PHYS-003: "plasma fusion Q>1 or Q=10 proves engineering/grid breakeven" -> FALSIFIED.
+RT-PHYS-004: "single-junction Shockley-Queisser limit applies to every PV architecture" -> FALSIFIED.
+RT-PHYS-005: "Betz 59.3% is a wind-farm capacity-factor limit" -> FALSIFIED.
+RT-PHYS-006: "first-law balance alone proves a heat-to-work cycle physically realizable" -> FALSIFIED by second-law requirement.
+RT-PHYS-007: "Carnot 1-Tc/Th should be applied directly to PV/wind" -> FALSIFIED as mechanism-inappropriate.
+RT-PHYS-008: "storage can improve reliability with no energetic cost because charge energy is internal" -> FALSIFIED physically; internal accounting treatment does not erase conversion losses or charging energy.
+RT-PHYS-009: "fusion heating power equals total plant electric input" -> FALSIFIED by ITER engineering-breakeven definition.
+
+CLAIM_GRAPH:
+CLAIM-EGC-PHYS-001 CONSERVATION_CONTROL_VOLUME: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-PHYS-002 SECOND_LAW_MECHANISM_BOUNDS: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-PHYS-003 WIND_BETZ_SCOPE: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-PHYS-004 PV_ARCHITECTURE_SCOPE: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-PHYS-005 HYDRO_HEAD_FLOW: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-PHYS-006 STORAGE_NOT_PRIMARY_SOURCE: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-PHYS-007 FUSION_Q_NOT_ENGINEERING_GAIN: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-PHYS-008 FUSION_NET_SANITY: CALCULATION_SUPPORTED_PENDING_REPLICATION.
+CLAIM-EGC-PHYS-009 OVERUNITY: FALSIFIED absent extraordinary independently replicated evidence.
+
+MATERIAL_UNKNOWNS:
+- candidate-specific measured gross-to-net/parasitic fractions on the final architectures;
+- validated chronological energy-balance residuals for integrated finalist portfolios;
+- commercial fusion wall-plug heating efficiency, auxiliary fraction, thermal conversion, blanket balance and measured net export;
+- architecture-specific wave/tidal capture limits and field net output if those survive;
+- waste-heat source-temperature/exergy distribution and counterfactual ownership if waste heat survives;
+- tolerance/uncertainty propagation for the final integrated model remains a model-validation job, not an arbitrary P_STAR number.
+
+STATUS_CHANGE:
+JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006: EXECUTING -> AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REV-C2-20261006
+TITLE: Independent physics-invariant and net-power boundary review
+ROLE: Independent theoretical-physics auditor / dimensional-analysis replicator / hidden-input red team
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does P_STAR conserve energy, apply second-law and mechanism-specific bounds correctly, preserve net/gross/inventory distinctions, and avoid applying architecture-specific limits universally?
+CANDIDATE: ALL surviving candidates and matched baselines
+DEPENDENCIES: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006 submitted.
+REQUIRED_INPUTS: TE-EGC-PHYS-001..007; CALC-EGC-PHYS-001..003; latest storage/accounting/thermal/frontier states.
+REQUIRED_TOOLS: independent official-source retrieval; dimensional analysis; independent numerical replication; counterexample construction.
+REQUIRED_EVIDENCE: exact equation/units/boundary verification and independent reproduction of ranking-critical calculations.
+EXPECTED_OUTPUT: PASS/FAIL by claim; corrections; physics P0/P1 list; repair job if needed.
+FALSIFICATION_CONDITION: FAIL if hidden energy/inventory can create output, if gross/plasma/source power becomes net served, if wrong physical limit is applied to an architecture, if storage is a source, or if calculations/units cannot be reproduced.
+REVIEWER_JOB_ID: SELF_REVIEW_FORBIDDEN
+STATUS: OPEN
+BLOCKERS: NONE for invariant review; finalist measured parameters remain upstream.
+NEXT_ACTION: distinct session independently reproduce and attack this result.
+
+BRANCH_HEAD_BEFORE_WRITE: 16e13c26251a38afabafa2fc309c06a2afa33162
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 576589033b6afee9d3521aaa9e651ab501a3a8f5
