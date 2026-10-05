@@ -60,7 +60,27 @@
   "TEST_PATHS": [
     "scope audit / authority audit"
   ],
-  "STATUS": "UNINSPECTED",
+  "STATUS": "PARTIAL",
   "LAST_VERIFIED_SHA": null,
-  "CREATED_FROM": "Direct final DOC-C §2.1-§2.2 primary-source mapping; no prior dedicated requirement packet was present."
+  "CREATED_FROM": "Direct final DOC-C §2.1-§2.2 primary-source mapping; no prior dedicated requirement packet was present.",
+  "LAST_INSPECTED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "repository_path_sweep": {
+      "tree_sha": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+      "excluded_name_hits": {
+        "voice": 0,
+        "vr": 0,
+        "xr": 0,
+        "holographic": 0,
+        "blockchain": 0,
+        "iot": 0,
+        "self_patch": 0,
+        "auto_heal_path": 0,
+        "anonymous_path": 0,
+        "quantum_paths": "6 migration paths named logic_quantum; no quantum-safe/post-quantum cryptography search hit"
+      },
+      "content_search": "No active packages/apps hits for blockchain, IoT, holographic, quantum-safe, post-quantum, self-patch. auto-heal appears in a test asserting no auto-heal."
+    },
+    "remaining": "Included capability mapping and authority-path classification still require systematic coverage; do not mark VERIFIED."
+  }
 }
