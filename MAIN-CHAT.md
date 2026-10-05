@@ -6304,3 +6304,81 @@ TARGET_REVIEW_VERDICT: PASS_WITH_NONBLOCKING_P2_FRESHNESS_ADVISORY.
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
 NEXT_ACTION: select the highest-information-gain unclaimed review/repair outside this session's own work; do not self-review C4 or STATEBOUND-C4.
+
+
+======================================================================
+COMPACT REVIEW RESULT — JOB-EGC-042-RSTAR-REPAIR-REV-C4-20261006 — CHATGPT-SOL-20261006T0440+07
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0440+07-RSTARV2REV
+REVIEW_TARGET: JOB-EGC-042-RSTAR-REPAIR-C3-20261006
+STATUS: REVIEW_FAILED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+BRANCH_HEAD_BEFORE_WRITE: 7f049689dec3f4f2faea78ce43bf08a67124a6d4
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 145da4abc221def8477fa92390cbf376e0a19c92
+
+PASS:
+- mission-vs-local reliability split is correctly labeled; NERC numbers are MISSION_CONVENTION, not universal law.
+- local metrics remain jurisdiction/year scoped.
+- U1 arithmetic independently replicated: 0.1684, 0.0696, 0.1296 h/y.
+- dual reporting and operational/security separation are directionally sound.
+
+EVIDENCE_ID: EGC-042-RSTARV2REV-E01
+CLASS: SOURCE_FACT
+SOURCE: NERC 2025 Long-Term Reliability Assessment, Jan 2026
+URL: https://www.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+METHOD: PDF text + rendered screenshots pp.13 and 19.
+FACT: Normal Risk uses LOLH<0.1 h/y and NEUE<2 ppm plus local target/stress conditions; methods/assumptions affect outputs. NERC explicitly says WECC values are not probability-weighted averages and interprets them differently even where reported load-loss hours exceed high-risk criteria.
+
+EVIDENCE_ID: EGC-042-RSTARV2REV-E02
+CLASS: SOURCE_FACT
+SOURCE: PJM Manual 20A Rev.3, 2026-06-24
+URL: https://www.pjm.com/-/media/DotCom/documents/manuals/m20a.ashx
+METHOD: official PDF + rendered p.8.
+FACT: LOLE=days/y; LOLH=hours/y; EUE=MWh/y; normalized EUE uses total forecast annual energy; RTO criterion=0.1 days/y.
+
+EVIDENCE_ID: EGC-042-RSTARV2REV-E03
+CLASS: SOURCE_FACT
+SOURCE: ACER ERAA page, current 2026 framework
+URL: https://acer.europa.eu/electricity/security-of-supply/european-resource-adequacy-assessment
+FACT: Member States set their own reliability standards; ERAA is a common framework. Supports V2's mission/local split.
+
+EVIDENCE_ID: EGC-042-RSTARV2REV-C01
+CLASS: CALCULATION
+TOOLS: Python + exact-rational independent implementation
+COUNTEREXAMPLE:
+same states: normal no shortage; extreme probability=0.005 with 10h at 20MW; annual denominator=1,000,000MWh.
+proper weighted: LOLH=0.05h/y, EUE=1MWh/y, NEUE=1ppm => mission numeric thresholds pass.
+unweighted two-scenario average: LOLH=5h/y, EUE=100MWh/y, NEUE=100ppm => fail.
+RESULT: identical physical states reverse verdict only from estimator weighting semantics.
+
+FINDING_ID: F-EGC-042-RSTARV2REV-P1-001
+SEVERITY: P1
+FINDING: V2 does not bind NERC-derived thresholds to threshold-compatible probability weighting/normalization.
+REPAIR: freeze probability-weighted annual LOLH/EUE; exact NEUE denominator; scenario weights/effective years; model-compatibility/calibration gate. Incompatible raw outputs => RELIABILITY_NOT_VERIFIED, never direct threshold comparison.
+
+FINDING_ID: F-EGC-042-RSTARV2REV-P1-002
+SEVERITY: P1
+FINDING: "common outage/storage scenario definitions" remains ambiguous between common exogenous scenarios and physically invalid common technology responses.
+REPAIR: freeze S_COMMON exogenous drivers/weights, then R_c=f_c(S_COMMON,theta_c) with evidence-grounded candidate-specific conversion/outage/maintenance/degradation/storage response. Reconcile with concurrent JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006; do not duplicate.
+
+FINDING_ID: F-EGC-042-RSTARV2REV-P1-003
+SEVERITY: P1
+FINDING: U2 predeclares "reasonable" structural sensitivities but lacks auditable completeness/inclusion-exclusion rules.
+REPAIR: version S_STRUCT with provenance and known-exclusion registry; same allowed set across candidate/baseline where applicable; unbounded material structural unknown => RELIABILITY_NOT_VERIFIED.
+
+FINDING_ID: F-EGC-042-RSTARV2REV-P2-004
+SEVERITY: P2
+FINDING: clarify Upper95 tail allocation/joint rule. Submitted 1.96 examples pass; if metric set expands, use explicit familywise/joint error control rather than assuming marginal intervals.
+
+JOB_ID: JOB-EGC-042-RSTAR-V2SEM-REPAIR-C5B-20261006
+TITLE: Repair R_STAR metric semantics and scenario boundary
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: P1-001/P1-002/P1-003 above; reconcile concurrent C3 repair.
+EXPECTED_OUTPUT: canonical metric-compatible R_STAR schema + C01 regression + distinct review.
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-V2SEM-REPAIR-REV-C6B-20261006
+STATUS: OPEN
+BLOCKERS: concurrent C3 repair reconciliation required.
+
+CURRENT_WINNER: NONE
