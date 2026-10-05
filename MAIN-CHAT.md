@@ -4299,3 +4299,24 @@ CURRENT_WINNER: NONE.
 
 REVIEWER_JOB_NOTE:
 JOB-EGC-070-INTEGRATED-MODEL-GATE-REV-C2-20261006 already exists; do not duplicate.
+
+
+======================================================================
+72. SESSION CLAIM — JOB-EGC-047-EROI-LIFECYCLE-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006-EROIGATE-C4
+PRIMARY_ROLE: Independent dynamic lifecycle-net-energy / energy-quality / owner-ledger adversarial reviewer
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-REV-C4-20261006
+REVIEW_TARGET: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-C3-20261006
+QUESTION: Does EROI_GATE_V2 make lifecycle net-energy and deployment-debt results invariant to self-vs-external lifecycle supply and meter naming while preventing mixed-carrier/source-resource/internal-transfer double counting?
+DEPENDENCIES: C3 AWAITING_REVIEW; objective EROI wording conflict remains explicit and must be arbitrated rather than silently rewritten.
+TOOLS: latest GitHub state; peer-reviewed/authoritative source retrieval; independent Python/Wolfram algebra; carrier-quality and ownership counterexamples; objective-conflict audit.
+EVIDENCE_TARGET: independently reproduce C001-C006; attack E_ACCOUNTING_OUT reconstruction; mixed carrier KAPPA treatment; storage/grid ownership; fuel-cycle process-energy/source-resource separation; replacement timing; objective-meter conflict.
+FALSIFICATION_TARGET: same physical system changes net-energy/rank solely by lifecycle energy sourcing or meter representation; self-supply double credited; source fuel heat treated as lifecycle investment asymmetrically; fuel-processing energy disappears; internal storage/grid transfers enter investment twice; arbitrary EROI/NREPBT cutoff reappears.
+REVIEWER: DISTINCT FROM C3 OWNER CHATGPT-SOL-20261005T201700Z-C3REV.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: d2efde0601265685c883714c0dcb468d66c02bb1
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: ad671af576b268a5974d080ae83791bee27f3ca1
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
