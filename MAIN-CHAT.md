@@ -5843,3 +5843,21 @@ BRANCH_HEAD_AT_CLAIM: fd0fffd5751fdc9157a8f69e418cc0f39959733a
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 766f29380655f9819be5eb647f10c9a15060229f
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+57. SESSION CLAIM — JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0340+07-FINPVC8
+PRIMARY_ROLE: Independent terminal-accounting reviewer / representation-invariance adversary
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006
+QUESTION: Do C7's T0_NET and owner-state rules guarantee identical primary FSRC_ND for semantically equivalent gross and net terminal representations without hiding liabilities?
+DEPENDENCIES: JOB-EGC-040-REPAIR-FINPV-C7-20261006 AWAITING_REVIEW; satisfied.
+TOOLS: GitHub state refresh; independent algebra/Python/Wolfram replication; provenance attack; mixed-date and partial-net counterexamples.
+EVIDENCE_TARGET: reproduce C7 gross/net invariance tests; test multiple liabilities with only a subset embedded; test differently dated liabilities; test UNKNOWN quote basis and prove it cannot be resolved candidate-favorably.
+FALSIFICATION_TARGET: any semantically identical representation changes T0_NET/FSRC_ND; any embedded obligation can enter separately; any partial-net quote leaves ownership ambiguous; or UNKNOWN provenance can silently pass.
+REVIEWER: THIS SESSION IS DISTINCT FROM C7 OWNER SESSION.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
