@@ -1,0 +1,48 @@
+{
+  "RESULT_ID": "REVERIFY-CLOSURE-EXPLICIT-EXPERIMENTAL-C-SOL-20261005-1923-V8",
+  "CHAT_ID": "C-SOL-20261005-1923-V8",
+  "TYPE": "INDEPENDENT_CONTROL_PLANE_REVERIFY",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BASE_INVENTORY": "INV-608426CB-C-3B5E71A2",
+  "OVERLAY": "INV-608426CB-C-SOL-20261005-1913-EXPLICIT-EXPERIMENTAL-OVERLAY-002",
+  "VERIFIED_FACTS": {
+    "total_base_inventory_records": 885,
+    "phase_f_base_records": 126,
+    "phase_f_base_class_counts": {
+      "AUTHORITATIVE_RUNTIME": 123,
+      "CONTRACT": 1,
+      "BUILD_SUPPORT": 1,
+      "CONFIG": 1
+    },
+    "phase_f_overlay_records": 126,
+    "phase_f_overlay_exact_path_match": true,
+    "engine_lo2_base_class": "AUTHORITATIVE_RUNTIME",
+    "engine_lo2_base_status": "UNSCANNED",
+    "engine_lo2_blob_sha": "e8ca343c7190da2f3d6b2693cea1dffba598649a",
+    "packages_experimental_base_records": 19,
+    "packages_experimental_base_class_counts": {
+      "EXPERIMENTAL": 19
+    },
+    "primary_explicit_experimental_source_count": 146,
+    "expected_corrections": 127,
+    "overlay_declared_corrections": 127,
+    "corrected_total_files": 885,
+    "corrected_class_count_sum": 885,
+    "remaining_explicit_experimental_classification_mismatches": 0
+  },
+  "SOURCE_CONFIG_EVIDENCE": {
+    "config/experimental-scope.ts": "850e0918de501ad0413b61a81be0a3b86152c263",
+    "tsconfig.json": "4f878346b620f042392958f4490f0e086576f3cb",
+    "vitest.config.ts": "6665df37ca5f5709d7ff320d89a437e499047245",
+    "vitest.experimental.config.ts": "9dadfe5d9ddf2a0f4ec1c48035c4254eab8000f9",
+    "package.json": "972cd03ed7878ff6eb0cb4813e459cb0c29cd1e7"
+  },
+  "INDEPENDENT_VERDICT": "PASS_CONTROL_PLANE_RECONCILIATION",
+  "CLOSURE_IMPACT": "Removes this classification mismatch as a stale-evidence concern only. Does not establish CODE_CLOSURE_VERIFIED; required source gaps, executable evidence deficits, and branch-namespace P0 remain open.",
+  "SOURCE_MUTATION": "NONE",
+  "NEXY_AI_MUTATION": "NONE"
+}
