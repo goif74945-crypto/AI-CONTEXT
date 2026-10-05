@@ -6401,3 +6401,30 @@ STATUS: EXECUTING
 OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0515+07-OBJSCALEREV8
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+63. SESSION CLAIM — JOB-EGC-063-ENVIRONMENT-EXTERNALITY-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-ENV1
+PRIMARY_ROLE: Environmental Lifecycle / Externality / Impact-Boundary Integrator
+PRIMARY_JOB_ID: JOB-EGC-063-ENVIRONMENT-EXTERNALITY-C1-20261006
+TITLE: Candidate-neutral environmental impact boundary and anti-double-count ledger
+QUESTION: Which lifecycle environmental burdens can materially invalidate or rerank a low-cost massive-energy candidate, and how must emissions, pollution, land/ecosystem, water/thermal, extraction, waste and decommissioning impacts be represented without double counting safety, site, thermal, EROI or regulatory jobs?
+CANDIDATE: all surviving generation/storage/grid candidates and strongest matched baselines.
+DEPENDENCIES: site/land/water, thermal heat rejection, safety/FMEA, EROI/lifecycle-energy, materials, grid/storage and fuel-cycle jobs own their detailed physics/energy/resource evidence. This job integrates environmental impact classes and comparison rules; it must reference upstream evidence rather than duplicate its ownership.
+REQUIRED_INPUTS: authoritative lifecycle environmental assessments; direct operational emissions/pollutant data; lifecycle GHG ranges; air/water/ecosystem/waste impact categories; environmental permitting constraints; technology/site boundary and functional unit.
+REQUIRED_TOOLS: current UNECE/IPCC/NREL/DOE/EPA/IEA/government and peer-reviewed sources; lifecycle functional-unit normalization; uncertainty/range audit; cross-candidate red team.
+REQUIRED_EVIDENCE: source/method/date/region; operational vs lifecycle distinction; functional unit; median/range where available; explicit allocation of upstream/downstream impacts; no scalar environmental score without disclosed weighting.
+EXPECTED_OUTPUT: ENV_STAR ledger; candidate environmental evidence screen; no-double-count mapping to FSRC_ND and hard gates; P0/P1 unknowns; independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if direct emissions are called lifecycle emissions, if one technology includes mining/grid while another is plant-only, if land/water/ecosystem burden is reduced to an unsupported universal $/MWh, if safety consequences are double counted as environmental externality, if climate/air/water impacts are combined into a scalar by arbitrary weights, or if legal limits are treated as optional cost terms.
+REVIEWER_JOB_ID: JOB-EGC-063-ENVIRONMENT-EXTERNALITY-REV-C2-20261006
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-ENV1
+BLOCKERS: final rank depends on reviewed common objective/accounting and geography; environmental boundary/evidence are executable now.
+NEXT_ACTION: retrieve authoritative harmonized lifecycle evidence, construct impact-category ledger, reconcile upstream jobs, test cross-technology boundary symmetry, submit independent review.
+BRANCH_HEAD_AT_CLAIM: 4d65e804ca697b63fd4cdf5f36bd0ee23683072c
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 229d13af707de9de614584982f42f4956dd87111
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
