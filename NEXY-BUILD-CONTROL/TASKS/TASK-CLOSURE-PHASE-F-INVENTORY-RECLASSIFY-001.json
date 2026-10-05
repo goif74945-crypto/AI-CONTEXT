@@ -1,0 +1,25 @@
+{
+  "TASK_ID": "TASK-CLOSURE-PHASE-F-INVENTORY-RECLASSIFY-001",
+  "FINDING_ID": "FINDING-CLOSURE-PHASE-F-EXPERIMENTAL-CLASSIFICATION-001",
+  "PRIORITY": "P1",
+  "RISK": "CLOSURE_INTEGRITY",
+  "STATUS": "READY_CONTROL_PLANE",
+  "OWNER": "UNASSIGNED",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SCOPE": [
+    "NEXY-BUILD-CONTROL/CLOSURE inventory generation/reconciliation only",
+    "packages/phase-f/** classification evidence"
+  ],
+  "GOAL": "Produce a superseding closure inventory generation whose Phase-F classification matches the active canonical build scope without mutating source.",
+  "ACCEPTANCE": [
+    "Preserve historical INV-608426CB-C-3B5E71A2 records unchanged.",
+    "Reclassify packages/phase-f/** as EXPERIMENTAL unless an exact path has verified promotion/active canonical dependency evidence.",
+    "Document every exception individually.",
+    "Recompute class counts and active required-scan accounting from the superseding generation.",
+    "Do not mark EXPERIMENTAL as VERIFIED_CLEAN merely because it is excluded from the canonical lane; preserve truthful status semantics.",
+    "No source mutation and no NEXY.ai mutation.",
+    "Publish exact source SHA/tree/spec hash in replacement evidence."
+  ]
+}
