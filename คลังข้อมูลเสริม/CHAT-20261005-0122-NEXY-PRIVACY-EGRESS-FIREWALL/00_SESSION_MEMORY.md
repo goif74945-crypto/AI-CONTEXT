@@ -1,6 +1,6 @@
 # Temporary Execution Memory — NEXY Purpose-Bound Privacy & Context Egress Firewall Lab
 
-Status: WAVE_09_LOCAL_VERIFIED_PENDING_REMOTE_READBACK
+Status: WAVE_09_VERIFIED_E0_E1_E2_LONG_HORIZON_ACTIVE
 Truth class: REPO_TASK_RECORD
 Durable chat code: CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL
 Platform-native ChatGPT conversation ID: UNKNOWN_NOT_EXPOSED
@@ -249,10 +249,16 @@ Implemented AI-PROPOSED/NON-GOVERNING `RecipientRouteProof` metadata and fail-cl
 - Static compile, fixture/evidence JSON parse, and `git diff --check`: PASS.
 - Candidate code/test/tool blob bindings are recorded in `10_VALIDATION_REPORT.md` and `evidence/release_evidence.json`.
 
+### Publication and read-back
+
+- Atomic implementation/evidence commit: `d1d4be4091e964373bd14db180b244012a412b9b`.
+- One non-force ref-update attempt lost a benign race to concurrent main movement; the target mission diff remained empty, so publication retried without overwriting sibling work.
+- All 19 Wave 09 changed files were fetched from the exact commit and compared byte-for-byte with the tested local candidate: 19/19 exact matches.
+
 ### Resume instruction
 
-This checkpoint is local-verified but not yet remote-read-back verified. Publish only this mission folder atomically against a freshly checked main head, compare every changed file byte-for-byte from the exact commit, then seal the validation/evidence/checkpoint records. Do not execute another wave in the same run.
+Do not re-execute Wave 09. On the next run, re-read current authority and refresh sibling ownership, then inspect Wave 10 (purpose taxonomy drift/alias detector) or the next non-overlapping `PLANNED` wave. Execute exactly one wave and preserve the same overlap/TDD/evidence discipline.
 
 ### Claim boundary
 
-Wave 09 currently has local E1/E2 reference-prototype evidence only. Remote E0 remains pending. Resolver authenticity, real network-path observation, dispatch integrity, E3/E4/E5/E6, NEXY.AI integration, legal compliance, and production privacy/security remain NOT_VERIFIED.
+Wave 09 has E0 exact-commit read-back plus E1/E2 reference-prototype evidence. Resolver authenticity, real network-path observation, dispatch integrity, E3/E4/E5/E6, NEXY.AI integration, legal compliance, and production privacy/security remain NOT_VERIFIED.

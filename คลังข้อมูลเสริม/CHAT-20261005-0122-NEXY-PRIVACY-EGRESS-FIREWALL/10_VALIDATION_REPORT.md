@@ -6,7 +6,9 @@
 
 ## Wave 09 — recipient alias/substitution/redirect attack model
 
-Status at this checkpoint: **LOCAL_VERIFIED_PENDING_REMOTE_READBACK**.
+Status at this checkpoint: **VERIFIED_E0_E1_E2_REFERENCE_PROTOTYPE**.
+
+Atomic implementation/evidence commit: `d1d4be4091e964373bd14db180b244012a412b9b`.
 
 Wave 08 was marked `SKIPPED_OVERLAP` after fresh SHA-bound evidence showed that IX-Lab already owns interaction budgets, deterministic ASK/CONFIRM/FREEZE routing, protected confirmations, and confirmation-fatigue research. Wave 09 was the next bounded non-overlapping topic. All new route mechanisms remain **AI-PROPOSED / NON-GOVERNING**.
 
@@ -34,7 +36,7 @@ After the smallest complete implementation, the same focused suite observed 12/1
 
 ### Wave 09 candidate blob bindings
 
-These local Git object IDs bind the tested code. They are pending remote E0 read-back at this checkpoint.
+These Git object IDs bind the tested code and matched GitHub read-back from the exact atomic commit.
 
 | File | Candidate blob SHA |
 |---|---|
@@ -49,6 +51,10 @@ These local Git object IDs bind the tested code. They are pending remote E0 read
 | tools/property_audit.py | 15a4a70e398e16377d3df20b4fbff927638eb6a1 |
 | tools/batch_consent_audit.py | 3d2c877517458ad4b8cb23d0ccb55728999ac574 |
 | tools/recipient_route_audit.py | 1659a2a2a6997e5be0de6e04c021dd0a7ce1a534 |
+
+### Remote E0 read-back
+
+All 19 files changed by Wave 09 were fetched from exact commit `d1d4be4091e964373bd14db180b244012a412b9b` as base64 and compared byte-for-byte with the locally tested candidate: 19/19 exact matches.
 
 ### Truth boundary
 

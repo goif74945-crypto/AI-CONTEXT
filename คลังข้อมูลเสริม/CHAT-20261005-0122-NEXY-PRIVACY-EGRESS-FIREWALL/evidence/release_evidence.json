@@ -2,8 +2,15 @@
   "schema_version": 1,
   "mission": "CHAT-20261005-0122-NEXY-PRIVACY-EGRESS-FIREWALL",
   "scope": "REFERENCE_PROTOTYPE_ONLY",
-  "status": "WAVE_09_LOCAL_VERIFIED_PENDING_REMOTE_READBACK",
+  "status": "WAVE_09_VERIFIED_E0_E1_E2",
   "verification_date_local": "2026-10-06",
+  "wave_09_atomic_commit": "d1d4be4091e964373bd14db180b244012a412b9b",
+  "wave_09_remote_readback": {
+    "ref": "d1d4be4091e964373bd14db180b244012a412b9b",
+    "changed_files": 19,
+    "exact_byte_matches": 19,
+    "result": "PASS"
+  },
   "wave_07_atomic_commit": "b55246d4307263d80d82a35786e9df410fc29d6d",
   "wave_07_remote_readback": {
     "ref": "b55246d4307263d80d82a35786e9df410fc29d6d",
@@ -159,7 +166,7 @@
     "Wave 09 focused import failed because RecipientRouteProof did not exist before implementation."
   ],
   "claim_boundary": {
-    "E0": "PASS_FOR_WAVE_01_AND_WAVE_07; PENDING_REMOTE_READBACK_FOR_WAVE_09",
+    "E0": "PASS_FOR_WAVE_01_WAVE_07_AND_WAVE_09_EXACT_COMMIT_READBACK",
     "E1": "PASS",
     "E2": "PASS_FOR_REFERENCE_PROTOTYPE",
     "E3": "NOT_VERIFIED",
