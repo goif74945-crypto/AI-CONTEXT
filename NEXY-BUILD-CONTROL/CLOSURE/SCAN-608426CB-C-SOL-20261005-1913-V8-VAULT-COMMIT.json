@@ -1,0 +1,54 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1913-V8-VAULT-COMMIT",
+  "CHAT_ID": "C-SOL-20261005-1913-V8",
+  "INVENTORY_ID": "INV-608426CB-C-3B5E71A2",
+  "INVENTORY_SHARD": 8,
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": "vault/repository.ts plus canonical POST /api/vault/commit adapter, validation schema and focused tests",
+  "FILES_SCANNED": 4,
+  "FILES": [
+    {
+      "path": "vault/repository.ts",
+      "blob": "197698c5514da02af251640aa51ad80597710c8f",
+      "status": "GAP_FOUND"
+    },
+    {
+      "path": "packages/api/canonical.ts",
+      "blob": "1664d8d6a7da32245578addc26596f8fd4d55954",
+      "status": "GAP_FOUND"
+    },
+    {
+      "path": "packages/validation/api.schema.ts",
+      "blob": "80f84302ae07746a7d56b92dbcf0e19cc99118c7",
+      "status": "SCANNED_REVERIFY_REQUIRED"
+    },
+    {
+      "path": "tests/contract/canonical-api.test.ts",
+      "blob": "edc26665c768f31f27bee89c8b8578ad5c59ee1a",
+      "status": "TEST_ORACLE_GAP"
+    }
+  ],
+  "METHOD": "Exact integration-branch blob read plus primary DOC-C paragraph extraction from locked DOCX SHA; trace session principal -> canonical route -> vault repository -> immutable audit write.",
+  "ACTIONABLE_GAPS": [
+    "FIND-DOC-C4-VAULT-AUDIT-ACTOR-SPOOF-001"
+  ],
+  "FACTS": [
+    "Vault commit route authenticates a session and obtains auth.userId/auth.role.",
+    "The route forwards request metadata.created_by as internal authorId instead of binding immutable audit attribution to auth.userId.",
+    "Vault repository uses authorId as both audit-chain actor input and AuditLog.actor.",
+    "Existing canonical API test explicitly permits authenticated userId and created_by to differ on a successful vault commit."
+  ],
+  "EXECUTED_TEST_EVIDENCE": "NONE_THIS_SCAN",
+  "SOURCE_MUTATION": "NONE",
+  "SOURCE_MUTATION_BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "CLOSURE_EFFECT": {
+    "SCANNED_FILES_CONTRIBUTION": 4,
+    "VERIFIED_CLEAN_FILES_CONTRIBUTION": 0,
+    "GAP_FILES_CONTRIBUTION": 2,
+    "REVERIFY_FILES_CONTRIBUTION": 1,
+    "TEST_ORACLE_GAP_FILES_CONTRIBUTION": 1,
+    "NOTE": "Do not mutate hot inventory shards; aggregator must reconcile this append-only scan."
+  }
+}
