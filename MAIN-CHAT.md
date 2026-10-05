@@ -8221,3 +8221,30 @@ NEXT_ACTION: distinct session performs narrow repair, then another distinct sess
 
 BRANCH_HEAD_AT_RESULT_PRECHECK: 2e2e9f9aa529f54c9532422990cd103e980e1715
 MAIN_CHAT_BLOB_SHA_AT_RESULT_PRECHECK: b4e0f53cfa57b4adcef1a299f331dcb18c60ef5c
+
+
+======================================================================
+56. SESSION CLAIM — JOB-EGC-056-THERMAL-HEATREJECTION-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-THERM1
+PRIMARY_ROLE: Thermal Engineering / Heat-Rejection / Cooling-System Scale Analyst
+PRIMARY_JOB_ID: JOB-EGC-056-THERMAL-HEATREJECTION-C1-20261006
+TITLE: Candidate-neutral thermodynamic heat-rejection, cooling-water and ambient-derating screen
+QUESTION: For thermal electricity candidates, what heat-rejection load, cooling-system burden, water/air heat-sink requirement, ambient-condition derating and parasitic power must be included per unit of NET_SERVED electricity, and can these constraints materially reverse cost/scale feasibility under the common system boundary?
+CANDIDATE: existing thermal baselines and credible challengers: natural-gas combined cycle, nuclear fission, geothermal/EGS, solar-thermal where evidence exists, and fusion only parametrically until whole-plant evidence exists. Non-thermal solar PV/wind/hydro/storage enter only for common-grid comparison, not forced into a heat-engine model.
+DEPENDENCIES: common accounting/terminal-state repairs and R_STAR remain under independent review; EGS-specific parasitic work exists and will not be duplicated. This job supplies thermodynamics/thermal-engineering evidence and does not declare a global winner.
+REQUIRED_INPUTS: net thermal efficiency or heat rate; gross/net definitions; heat input/extracted heat; cooling technology; cooling-water withdrawal/consumption or air-cooling penalty; ambient wet/dry-bulb sensitivity; cooling parasitics; regulatory/environmental discharge constraints; measured plant/fleet evidence where available.
+REQUIRED_TOOLS: current official-source web research; national-lab/government datasets; peer-reviewed thermal/cooling evidence; executed first-law calculations; sensitivity analysis; independent-source cross-checks.
+REQUIRED_EVIDENCE: source/date/geography/system boundary; equation+units for heat rejection; explicit NET vs GROSS; water withdrawal vs consumption separated; once-through/recirculating/dry cooling separated; measured vs modeled derating distinguished.
+EXPECTED_OUTPUT: common thermal boundary; reproducible heat-rejection equations; candidate evidence matrix; cooling/water/ambient P0/P1 constraints; FSRC_ND owner mapping; independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if heat rejection violates first-law accounting, if gross power is used as delivered output, if water withdrawal is confused with consumption, if cooling-system types are pooled without qualification, if ambient derating is ignored where material, or if a candidate-specific heat-sink burden is silently externalized.
+REVIEWER_JOB_ID: JOB-EGC-056-THERMAL-HEATREJECTION-REV-C2-20261006
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-THERM1
+BLOCKERS: final candidate ranking depends on frozen objective/R_STAR/common ledger, but thermal boundary and physical scaling are executable now.
+NEXT_ACTION: gather authoritative measured/fleet heat-rate, cooling and water-use evidence; derive first-law heat-rejection loads per net MWh; test ambient/cooling sensitivity; cross-examine common ledger; submit for independent review.
+BRANCH_HEAD_AT_CLAIM: 754730dc41e67bf5f5c0eba950510b4bae9ffd40
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 297347078dbc0e1562598f22c250846fbd78fe03
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
