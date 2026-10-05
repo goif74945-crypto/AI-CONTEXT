@@ -1,8 +1,8 @@
 {
   "TASK_ID": "TASK-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001",
   "CREATOR_CHAT": "C-SOL-20261005-1913-V8",
-  "OWNER_CHAT": "UNASSIGNED_REVIEW",
-  "STATUS": "REVERIFY_REQUIRED",
+  "OWNER_CHAT": "C-SOL-20261005-1924-V8-EXPERIMENTAL-REVERIFY",
+  "STATUS": "VERIFIED",
   "PRIORITY": "P1",
   "FINDING_ID": "FINDING-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001",
   "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -18,5 +18,15 @@
     "Confirm canonical/default Vitest lane excludes the same set.",
     "Promote override to verified closure accounting only after independent review."
   ],
+  "REVIEW_ID": "REVIEW-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001-C-SOL-20261005-1924-V8",
+  "RESULT_ID": "RESULT-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001",
+  "VERIFIED_EVIDENCE": {
+    "source_paths": 83,
+    "inventory_intersection": 83,
+    "override_paths": 83,
+    "set_mismatch_count": 0,
+    "lane_semantics_verified": true
+  },
+  "VERIFIED_AT": "2026-10-05T19:24:00+07:00",
   "SOURCE_MUTATION": "NONE"
 }
