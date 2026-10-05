@@ -11862,3 +11862,238 @@ BRANCH_HEAD_AT_CLAIM: 69f231967ae6e58963ddee8dc4c64780f1889c4b
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: c336c3b6bc8499e90f79385e0d94c65e85f11427
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+62. TARGETED REPAIR RESULT — JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0410+07-FRREPAIR3
+PRIMARY_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006
+ROLE: Frontier-screen targeted repair architect / advanced-fission taxonomy + EGS freshness auditor
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE_LOCK:
+Only the EGC-048 reviewer-failed/stale nodes are repaired. Passing fusion, marine, waste-heat and hybrid conclusions remain unchanged because this repair found no authoritative counterevidence requiring reopening them.
+
+----------------------------------------------------------------------
+A. ADVANCED-FISSION TAXONOMY REPAIR
+----------------------------------------------------------------------
+
+EVIDENCE_ID: TE-EGC-048R-SMR-001
+CLAIM_ID: CLAIM-EGC-048R-SMR-GLOBAL-OPERATION
+EVIDENCE_CLASS: EXTERNAL_FACT / OPERATIONAL_STATUS
+SOURCE: IAEA Advanced Reactor Information System public publications page
+URL: https://aris.iaea.org/Publications/
+ACCESS_DATE: 2026-10-06
+OUTPUT:
+- IAEA states Akademik Lomonosov's two-module KLT-40S floating power unit has been in commercial operation since May 2020.
+- IAEA lists HTR-PM separately as a Chinese demonstration plant that connected to the grid in December 2021.
+LIMITATION: the ARIS page is technology-status evidence, not evidence of low FSRC_ND or mass-manufacturing economics.
+
+EVIDENCE_ID: TE-EGC-048R-SMR-002
+CLAIM_ID: CLAIM-EGC-048R-HTRPM-COMMERCIAL
+EVIDENCE_CLASS: OPERATIONAL_EXTERNAL_FACT
+SOURCE: Tsinghua University Institute of Nuclear and New Energy Technology
+SOURCE_DATE: 2023-12-07; project page current through 2026
+URL: https://www.inet.tsinghua.edu.cn/ineten/info/1024/1698.htm
+URL_2: https://www.inet.tsinghua.edu.cn/ineten/ResearchNew/jgsz/Division_of_HTR_PM_Project.htm
+OUTPUT:
+- HTR-PM entered commercial operation on 2023-12-06 after a 168-hour demonstration run.
+- Tsinghua's project page identifies the project as a 200 MWe demonstration nuclear power plant with two reactor modules and one turbine-generator unit.
+LIMITATION: one operating FOAK design does not validate cost/reliability/supply-chain claims for unrelated SMR/advanced-reactor designs.
+
+EVIDENCE_ID: TE-EGC-048R-USZP-001
+CLAIM_ID: CLAIM-EGC-048R-US-ZEROPOWER
+EVIDENCE_CLASS: EXPERIMENT_STATUS / SOURCE_FACT
+SOURCE: U.S. Department of Energy
+SOURCE_DATE: 2026-06-04
+URL: https://www.energy.gov/articles/department-energy-celebrates-first-advanced-reactor-criticality
+OUTPUT: Antares Mark-0 completed a ZERO-POWER fueled criticality demonstration. DOE explicitly describes electricity production as a possible subsequent-reactor milestone in 2027 and beyond.
+BOUNDARY: ZERO-POWER CRITICALITY != NET ELECTRIC GENERATION.
+
+EVIDENCE_ID: TE-EGC-048R-USZP-002
+CLAIM_ID: CLAIM-EGC-048R-US-ZEROPOWER
+EVIDENCE_CLASS: EXPERIMENT_STATUS / SOURCE_FACT
+SOURCE: U.S. Department of Energy NEPA
+SOURCE_DATE: 2026-01-26
+URL: https://www.energy.gov/nepa/articles/cx-035340-antares-r1-mark-0-reactor-experiment
+OUTPUT: DOE states the Mark-0 test configuration has no power-conversion or heat-removal systems and is configured for zero-power criticality testing.
+BOUNDARY: no generated-electricity inference permitted.
+
+EVIDENCE_ID: TE-EGC-048R-USZP-003
+CLAIM_ID: CLAIM-EGC-048R-US-ZEROPOWER
+EVIDENCE_CLASS: EXPERIMENT_STATUS / SOURCE_FACT
+SOURCE: U.S. Department of Energy
+SOURCE_DATE: 2026-06-18 and 2026-07-01
+URL: https://www.energy.gov/articles/department-energy-celebrates-second-advanced-reactor-achieving-criticality
+URL_2: https://www.energy.gov/articles/us-department-energy-meets-president-trumps-goal-delivers-third-advanced-reactor
+OUTPUT: Valar Ward 250 and Deployable Energy Unity completed zero-power fueled criticality demonstrations.
+BOUNDARY: criticality milestone validates reactor-physics/design steps, not net electricity, commercial availability or economics.
+
+EVIDENCE_ID: TE-EGC-048R-USZP-004
+CLAIM_ID: CLAIM-EGC-048R-US-ZEROPOWER
+EVIDENCE_CLASS: EXPERIMENT_STATUS / SOURCE_FACT
+SOURCE: U.S. DOE NEPA
+SOURCE_DATE: 2026-04-15
+URL: https://www.energy.gov/nepa/articles/cx-271007-deployable-energy-zero-power-criticality
+OUTPUT: DOE states the Unity test is limited to zero-power operation and will not generate electricity, useful thermal energy or sustained reactor power.
+BOUNDARY: directly falsifies any inheritance from criticality to measured power-plant output.
+
+REPAIRED ADVANCED-FISSION STATE:
+1. Akademik Lomonosov KLT-40S class:
+   - COMMERCIAL_OPERATION: PROVEN by IAEA status.
+   - ELECTRIC/HEAT SERVICE: PROVEN operational role.
+   - LOW_COST/MASSIVE mission superiority: NOT_VERIFIED.
+2. HTR-PM:
+   - GRID_CONNECTED and COMMERCIAL_OPERATION: PROVEN by Tsinghua/IAEA-compatible status evidence.
+   - design-specific physical baseline eligibility: YES.
+   - transferable economics/reliability to all SMRs: FORBIDDEN.
+3. U.S. 2026 Mark-0/Ward250/Unity zero-power demonstrations:
+   - reactor-physics criticality evidence: PROVEN.
+   - net electric output: FALSIFIED for those test configurations where DOE explicitly states zero-power/no-electricity.
+   - future commercial economics/output: NOT_VERIFIED.
+4. Other licensed/construction-stage advanced designs:
+   - remain design-specific; no cross-design inheritance from HTR-PM/KLT-40S or zero-power experiments.
+
+REPAIRED CLAIM:
+CLAIM-EGC-048-ADVANCED-FISSION-STATUS =
+"Advanced fission has real design-specific commercial electricity evidence globally, while multiple 2026 U.S. private advanced-reactor milestones are zero-power experiments. Maturity/economics must be indexed by design and project, not inherited across the class."
+STATUS: REPAIRED_PENDING_INDEPENDENT_REVIEW.
+
+FALSIFIED:
+- "No advanced/SMR design has commercial electricity evidence" = FALSIFIED.
+- "2026 U.S. zero-power criticality demonstrates net electricity" = FALSIFIED.
+- "one commercial SMR proves economics/reliability for all advanced designs" = FALSIFIED.
+
+----------------------------------------------------------------------
+B. EGS EVIDENCE-FRESHNESS REPAIR
+----------------------------------------------------------------------
+
+EVIDENCE_ID: TE-EGC-048R-EGS-001
+CLAIM_ID: CLAIM-EGC-048R-PROJECTRED-LONGEVITY
+EVIDENCE_CLASS: OPERATOR_REPORTED_FIELD_DATA
+SOURCE: Fervo Energy
+SOURCE_DATE: 2026-04-13
+URL: https://fervoenergy.com/enhanced-geothermal-has-been-proven-at-scale-heres-what-two-years-of-production-data-show/
+OUTPUT:
+- operator reports >614 production-days at Project Red;
+- reported average gross output 2.1 MW and approximate average net output 1.4 MW over the operating period;
+- operator reports 98.4% uptime outside identified surface/grid events;
+- >500 days stable production temperature before a later ~2.5 F decrease;
+- no downhole workover/remediation/chemical treatment reported over the stated period.
+METHOD_LIMITATION:
+The page states gross-power estimates use an ORC model while parasitic-load data are measured at the well pad. These are operator-reported/model-combined field data, NOT an independent metered/audited multi-year dataset.
+TIME_LIMITATION:
+614 days is strong early field evidence but is ~1.68 years, not evidence for a 20-60 year project life. No long-horizon extrapolation is permitted.
+
+EVIDENCE_ID: TE-EGC-048R-EGS-002
+CLAIM_ID: CLAIM-EGC-048R-CAPE-COD
+EVIDENCE_CLASS: COMPANY_REPORTED_OPERATION / REGULATORY-FILING PROVENANCE
+SOURCE: Fervo Energy Exhibit 99.1 furnished with SEC Form 8-K
+FILING_DATE: 2026-10-01
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/exhibit991pressrelease10126.htm
+8K_URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/frvo-20261001.htm
+OUTPUT:
+- first Cape Station GeoBlock synchronized 2026-09-24 and declared contractual COD 2026-09-30;
+- company reports 33 MW NET power and PPA production-threshold achievement.
+PROVENANCE_LIMITATION:
+The 8-K states the press release is furnished, not deemed filed under Section 18. SEC hosting authenticates filing provenance/date, not independent technical measurement.
+
+EVIDENCE_ID: TE-EGC-048R-EGS-003
+CLAIM_ID: CLAIM-EGC-048R-EGS-CAPEX-VINTAGE
+EVIDENCE_CLASS: COMPANY_ESTIMATE / SEC-FILED PROSPECTUS
+SOURCE: Fervo registration/prospectus materials hosted by SEC
+SOURCE_DATE: 2026 filings; estimate stated as of 2025-12-31
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026025821/fervoenergy-sx1.htm
+OUTPUT:
+- Fervo described approximately USD 7,000/kW as the then-current Cape/GeoBlock installed-capital-cost level / estimate.
+- the same materials described USD 3,000/kW as a long-term target.
+CLASSIFICATION:
+USD 7,000/kW = HISTORICAL COMPANY ESTIMATE, not audited realized final project CAPEX.
+USD 3,000/kW = TARGET, not measured fact.
+
+EVIDENCE_ID: TE-EGC-048R-EGS-004
+CLAIM_ID: CLAIM-EGC-048R-EGS-CAPEX-GUIDANCE
+EVIDENCE_CLASS: FORWARD_LOOKING_COMPANY_GUIDANCE
+SOURCE: Fervo Q2 2026 earnings-release exhibit hosted by SEC
+SOURCE_DATE: 2026-08-12
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026055942/exhibit991earningsrelease8.htm
+OUTPUT: Fervo states it continues to EXPECT Cape Phase II to achieve all-in cost of USD 5,500/kW, based on drilling/design progress.
+SOURCE_BOUNDARY: the release explicitly contains forward-looking statements and identifies "expect"/"target" language as forward-looking.
+CLASSIFICATION: USD 5,500/kW = PROJECTION/GUIDANCE. It SHALL NOT be used as realized CAPEX, FSRC_ND or measured learning-curve outcome.
+
+REPAIRED EGS STATE:
+- Project Red: early field durability/operation materially strengthened by >614 production-days of operator data, but long-term reservoir life, lifecycle availability and cost remain NOT_VERIFIED.
+- Cape Station GeoBlock 1: COMPANY_REPORTED_COMMERCIAL_OPERATION at 33 MW net is current status.
+- Cape Station remaining Phase I/Phase II: do not inherit GeoBlock-1 COD; status is separately tracked by each commissioned unit/project phase.
+- Historical ~USD7,000/kW and Phase-II expected USD5,500/kW are different estimate vintages/evidence classes; neither is realized mission-comparable FSRC_ND.
+- EGS remains PROMOTE_TO_DEEP_INTEGRATED_REVIEW, not global winner.
+
+----------------------------------------------------------------------
+C. REPAIRED FRONTIER MATRIX / PRESERVED PASSING NODES
+----------------------------------------------------------------------
+
+EGS:
+STATE: PROMOTE_TO_DEEP_INTEGRATED_REVIEW.
+PHYSICAL_EVIDENCE: strengthened.
+COST: NOT_VERIFIED under common FSRC_ND; projections tagged.
+LONGEVITY: 614-day operator field record supported; 20-60y extrapolation forbidden.
+
+ADVANCED_FISSION:
+STATE: RETAIN_BY_DESIGN.
+GLOBAL_OPERATIONAL_SMRS: demonstrated for KLT-40S Akademik Lomonosov and HTR-PM.
+US_2026_ZEROPOWER_DEMOS: experimental criticality only; no net electricity.
+CLASS_WIDE_LOW_COST: NOT_VERIFIED.
+
+FUSION:
+PRESERVED FROM EGC-048 C1/REV C2: CURRENT_WINNER_DEFER / NOT_YET_NET_ELECTRIC_BASELINE.
+No repair-triggering counterevidence found in this narrow job.
+
+MARINE:
+PRESERVED: real physical generation but broad low-cost massive winner NOT_VERIFIED.
+
+LOW-TEMPERATURE MANUFACTURING WASTE HEAT:
+PRESERVED: supplemental/bounded resource under quantified segment, not standalone massive primary source.
+
+HYBRIDS:
+PRESERVED: retain for whole-system optimization under common R_STAR/FSRC_ND; no free storage/grid/firming.
+
+CLAIM_GRAPH:
+CLAIM-EGC-048-ADVANCED-FISSION-STATUS: REVIEW_FAILED -> REPAIRED_PENDING_REVIEW.
+CLAIM-EGC-048-EGS-STATUS: PASSING_NODE_UPDATED_WITH_NEWER_EVIDENCE / PENDING_REVIEW.
+CLAIM-EGC-048-FUSION-STATUS: PRESERVED_PASS.
+CLAIM-EGC-048-MARINE-SCALE-COST: PRESERVED_PASS.
+CLAIM-EGC-048-WASTE-HEAT-UPPER-BOUND: PRESERVED_PASS.
+CLAIM-EGC-048-HYBRID: PRESERVED_PASS.
+
+DEPENDENCY RULE:
+No downstream model may use "advanced fission/SMR" as one homogeneous evidence state. It must carry DESIGN_ID/PROJECT_ID + {operating, grid-connected, commercial, construction, licensing, zero-power experiment} tags.
+No downstream EGS cost model may treat USD 5,500/kW Phase-II guidance as realized CAPEX or 614 days as full-life reservoir validation.
+
+FOLLOW-UP REVIEW JOB:
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+TITLE: Independent review of repaired frontier maturity taxonomy
+ROLE: independent source-vintage / maturity-taxonomy / evidence-class reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does the C3 repair correctly separate global operating SMRs from U.S. zero-power experiments and operator-reported EGS field/COD data from long-life/realized-cost claims?
+DEPENDENCIES: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006 submitted.
+REQUIRED_TOOLS: independent IAEA/Tsinghua/DOE/SEC/Fervo retrieval; counterexample search; date/status audit.
+REQUIRED_EVIDENCE: independently verify commercial-operation and zero-power tags; audit Project Red >614-day report and Cape 33-MW net disclosure; verify $7,000/kW historical estimate vs $5,500/kW guidance classification.
+FALSIFICATION_CONDITION: FAIL if any design inherits another design's maturity; if zero-power becomes electricity; if company estimate/guidance becomes audited realized CAPEX; if operator evidence is mislabeled independent measurement; or if 614 days is promoted to project-life proof.
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session independently reproduces the repaired taxonomy and either passes it or creates a narrow repair.
+
+STATUS_CHANGE:
+JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006: EXECUTING -> AWAITING_REVIEW.
+JOB-EGC-048-FRONTIER-SCREEN-C1-20261006: remains REVIEW_FAILED_PENDING_TARGETED_REPAIR until C4 independently reviews this repair.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
