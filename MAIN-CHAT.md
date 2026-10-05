@@ -5861,3 +5861,20 @@ REVIEWER: THIS SESSION IS DISTINCT FROM C7 OWNER SESSION.
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+57. SESSION CLAIM — JOB-EGC-040-REPAIR-SOCDISC-REV-C8-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0330+07-SOCDISC-R8
+PRIMARY_ROLE: Independent storage-inventory / discount-convention adversarial reviewer
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-REV-C8-20261006
+QUESTION: Does SOCDISC-C7 prevent free storage inventory and candidate-specific primary discount privilege without double counting terminal inventory or confusing economic levelization with physical energy?
+DEPENDENCIES: JOB-EGC-040-REPAIR-SOCDISC-C7-20261006 AWAITING_REVIEW; FINPV-C5 submitted; physical-ledger C3 independently under review.
+TOOLS: GitHub refresh; independent Python calculations; official NREL/peer-reviewed storage-model evidence; Green Book source audit; adversarial representative-period and terminal-value cases.
+EVIDENCE_TARGET: reproduce D_REF_PRIMARY values and toy rank flip; independently reproduce free-inventory exploit; attack cyclic/finite inventory treatment, representative-period resets, terminal inventory vs asset residual, and physical-vs-discounted energy separation.
+FALSIFICATION_TARGET: any path to free initial energy, asymmetric terminal inventory credit/debit, duplicated residual value, candidate-specific primary D_REF, or discounted-MWh substitution for physical MASSIVE_ENERGY/EROI.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
