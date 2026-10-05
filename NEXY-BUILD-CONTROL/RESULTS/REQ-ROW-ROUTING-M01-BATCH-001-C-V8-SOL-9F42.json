@@ -1,0 +1,445 @@
+{
+  "RESULT_ID": "REQ-ROW-ROUTING-M01-BATCH-001-C-V8-SOL-9F42",
+  "CHAT_ID": "C-V8-SOL-API-DENOM-9F42",
+  "TYPE": "NORMALIZED_ROW_TO_CANONICAL_PACKET_ROUTING",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "EPOCH_ID": "EPOCH-20261005-b35ee1bf-608426cb",
+  "SOURCE_MATRIX": {
+    "path": "REFERENCES/NEXY/2026-10-04/NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.txt",
+    "blob_sha": "e7aa7b52ad6080030c7278eb428bef75f83309c4",
+    "build_matrix_rows": 837
+  },
+  "ROUTING_SCOPE": {
+    "mission": "M01-CONTRACT-LOCK",
+    "normalized_rows": "REQ-0042..REQ-0079",
+    "row_count": 38,
+    "parent_systems": [
+      "Canonical Contracts",
+      "Error Taxonomy"
+    ]
+  },
+  "RULES": {
+    "primary_packet": "One counting identity per normalized row for coverage arithmetic.",
+    "secondary_packet": "May supply additional aggregate evidence but must not increment routed-row count.",
+    "packet_status": "Packet status is preserved; MATCH/PARTIAL is not promoted to VERIFIED.",
+    "exact_only": "No semantic-neighbor packet is treated as an exact mapping without source-equivalent requirement text/anchor."
+  },
+  "SUMMARY": {
+    "rows_total": 38,
+    "rows_with_primary_packet": 33,
+    "rows_unmapped_exact_packet": 5,
+    "exact_or_component_mapped_rows": 33,
+    "duplicate_packet_overlap_rows": 30,
+    "verified_rows": 0,
+    "unmapped_rows": [
+      "REQ-0046",
+      "REQ-0047",
+      "REQ-0048",
+      "REQ-0049",
+      "REQ-0050"
+    ],
+    "duplicate_records": [
+      "REQ-DOC-C-3-2-SYSTEM-ENVELOPE",
+      "REQ-DOC-C-3.2-SYSTEM-ENVELOPE"
+    ]
+  },
+  "MAPPINGS": [
+    {
+      "row_id": "REQ-0042",
+      "feature": "SystemStatus",
+      "primary_packet": "REQ-DOC-C-3-1-CORE-TYPES",
+      "routing": "EXACT_COMPONENT_OF_AGGREGATE_PACKET",
+      "packet_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0043",
+      "feature": "SystemState",
+      "primary_packet": "REQ-DOC-C-3-1-CORE-TYPES",
+      "routing": "EXACT_COMPONENT_OF_AGGREGATE_PACKET",
+      "packet_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0044",
+      "feature": "SystemEnvelope<T>",
+      "primary_packet": "REQ-DOC-C-3-2-SYSTEM-ENVELOPE",
+      "secondary_packets": [
+        "REQ-DOC-C-3.2-SYSTEM-ENVELOPE"
+      ],
+      "routing": "EXACT_WITH_DUPLICATE_PACKET_RECORD",
+      "packet_status": "PARTIAL",
+      "secondary_status": "MISMATCH"
+    },
+    {
+      "row_id": "REQ-0045",
+      "feature": "ReleasePolicyResult",
+      "primary_packet": "REQ-DOC-C-3-3-RELEASE-POLICY-RESULT",
+      "routing": "EXACT",
+      "packet_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0046",
+      "feature": "Directive contract",
+      "primary_packet": null,
+      "routing": "UNMAPPED_EXACT_PACKET_NOT_LOCATED",
+      "packet_status": null
+    },
+    {
+      "row_id": "REQ-0047",
+      "feature": "Evidence contract",
+      "primary_packet": null,
+      "routing": "UNMAPPED_EXACT_PACKET_NOT_LOCATED",
+      "packet_status": null
+    },
+    {
+      "row_id": "REQ-0048",
+      "feature": "ConsensusResult",
+      "primary_packet": null,
+      "routing": "UNMAPPED_EXACT_PACKET_NOT_LOCATED",
+      "packet_status": null
+    },
+    {
+      "row_id": "REQ-0049",
+      "feature": "FreezeReason",
+      "primary_packet": null,
+      "routing": "UNMAPPED_EXACT_PACKET_NOT_LOCATED",
+      "packet_status": null
+    },
+    {
+      "row_id": "REQ-0050",
+      "feature": "VaultCommitRequest",
+      "primary_packet": null,
+      "routing": "UNMAPPED_EXACT_PACKET_NOT_LOCATED",
+      "packet_status": null
+    },
+    {
+      "row_id": "REQ-0051",
+      "feature": "INVALID_DIRECTIVE",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0052",
+      "feature": "EMPTY_INPUT",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0053",
+      "feature": "AMBIGUOUS_INPUT",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0054",
+      "feature": "UNVERIFIED_OUTPUT",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0055",
+      "feature": "CONSENSUS_FAILED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0056",
+      "feature": "EVIDENCE_MISSING",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0057",
+      "feature": "SCHEMA_VIOLATION",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0058",
+      "feature": "STATE_TRANSITION_DENIED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0059",
+      "feature": "INVALID_STATE",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0060",
+      "feature": "AUTH_INVALID",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0061",
+      "feature": "AUTH_EXPIRED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0062",
+      "feature": "UNAUTHORIZED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0063",
+      "feature": "FORBIDDEN",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0064",
+      "feature": "SESSION_REVOKED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0065",
+      "feature": "DEVICE_MISMATCH",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0066",
+      "feature": "CSRF_INVALID",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0067",
+      "feature": "OTAC_LOCKED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0068",
+      "feature": "RATE_LIMIT_EXCEEDED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0069",
+      "feature": "SECURITY_BREACH_DETECTED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0070",
+      "feature": "SYSTEM_IN_FREEZE",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0071",
+      "feature": "DEPENDENCY_FAILURE",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0072",
+      "feature": "DEPENDENCY_UNHEALTHY",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0073",
+      "feature": "TIMEOUT",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0074",
+      "feature": "AGENT_TIMEOUT",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0075",
+      "feature": "AGENT_SCHEMA_INVALID",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0076",
+      "feature": "FREEZE_RECOVERY_DENIED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0077",
+      "feature": "VAULT_COMMIT_CONFLICT",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0078",
+      "feature": "REVISION_NOT_FOUND",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    },
+    {
+      "row_id": "REQ-0079",
+      "feature": "RELEASE_POLICY_FAILED",
+      "primary_packet": "REQ-DOC-C-3-1-ERROR-CODE",
+      "secondary_packets": [
+        "REQ-DOC-C-3-1-CORE-TYPES"
+      ],
+      "routing": "EXACT_COMPONENT_OF_GRANULAR_ERROR_PACKET_WITH_AGGREGATE_OVERLAP",
+      "packet_status": "MATCH",
+      "secondary_status": "PARTIAL"
+    }
+  ],
+  "CLOSURE_EFFECT": {
+    "mission_m01": "NOT_CLOSED",
+    "reasons": [
+      "Five canonical contract rows have no exact canonical packet located.",
+      "Mapped packets are MATCH/PARTIAL/MISMATCH, not independently VERIFIED.",
+      "SystemEnvelope has duplicate canonical packet records and must use one primary counting identity.",
+      "Error taxonomy rows are covered by both a granular packet and the aggregate core-types packet; secondary overlap must not double-count."
+    ]
+  },
+  "SOURCE_MUTATION": "NONE",
+  "CONTROL_MUTATION": "APPEND_ONLY_RESULT"
+}
