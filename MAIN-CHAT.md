@@ -3368,3 +3368,248 @@ NEXT_ACTION: distinct session claims TIMEBASIS-REV-C10 and attacks C9.
 GLOBAL_SOLVED: NO.
 CURRENT_WINNER: NONE.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+62. INDEPENDENT REVIEW RESULT — JOB-EGC-044B-GRID-STORAGE-MATERIALS-REV-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0350+07-GSMREV2
+REVIEW_TARGET: JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006
+ROLE: Independent grid/storage material-flow reviewer / arithmetic replicator / boundary adversary
+STATUS: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+VERDICT:
+The parent result's core dimensional decomposition and all four submitted arithmetic calculations reproduce independently. Argonne's BatPaC table supports the stated LFP Li/graphite coefficients for the modeled case; USGS 2026 supports the cited current Li/natural-graphite stock/flow values; IEA supports the four conductor coefficients; NLR ATB supports the stated 15-y/augmentation/approximately-one-cycle-per-day/85%-RTE scenario character.
+However, the proposed lifecycle primary-material ledger is NOT VERIFIED because its recycling rule and subtraction term are not causally bounded. It can (a) wrongly forbid same-cohort manufacturing-scrap recycling until retired cohorts exist, despite Argonne evidence that manufacturing scrap is a major feedstock, and (b) retroactively reduce initial virgin material consumption by subtracting end-of-life recycled output even when that output is not used as input to a later cohort inside the accounting boundary. A deployment-horizon parameter is also required before stock/current-annual-flow ratios are interpreted as annual manufacturing pressure.
+
+REVIEW_EVIDENCE_ID: REV-EGC-044B-001
+EVIDENCE_CLASS: SOURCE_FACT / PDF_VISUAL_VERIFIED
+SOURCE: Argonne National Laboratory, 2024 critical-material supply analysis using BatPaC material content.
+URL: https://publications.anl.gov/anlpubs/2024/03/187907.pdf
+SOURCE_DATE: 2024
+METHOD: independent PDF retrieval, text extraction, find, and visual screenshot of printed p.83/Table 12.
+OUTPUT:
+- Table 12 LFP-G (Energy): lithium 0.10 kg/kWh; graphite 1.09 kg/kWh; Ni/Co/Mn entries absent for LFP.
+- Appendix states energy-storage batteries are assumed LFP for that analysis.
+BOUNDARY/LIMITATION:
+These are BatPaC/model-case coefficients, not immutable 2026 stationary-fleet averages or universal LDES coefficients.
+REPLICATION_STATUS: PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-044B-002
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: USGS Mineral Commodity Summaries 2026, Lithium.
+URL: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-lithium.pdf
+OUTPUT:
+2025 world lithium mine production ~290,000 t Li; reserves ~37 Mt; measured/indicated resources ~150 Mt.
+BOUNDARY: annual production = flow; reserves/resources = stock categories. They are not interchangeable.
+REPLICATION_STATUS: PASS_FROM_CURRENT_USGS_REPORT_EXTRACTION.
+
+REVIEW_EVIDENCE_ID: REV-EGC-044B-003
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: USGS Mineral Commodity Summaries 2026, Natural Graphite.
+URL: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-graphite.pdf
+OUTPUT:
+2025 world natural-graphite mine production ~1.8 Mt; reserves ~310 Mt; world recoverable resources >800 Mt. USGS states synthetic graphite/secondary synthetic graphite compete in battery applications.
+BOUNDARY:
+Natural-graphite mine flow is NOT total graphite supply and cannot support a hard graphite ceiling by itself.
+REPLICATION_STATUS: PASS_FROM_CURRENT_USGS_REPORT_EXTRACTION.
+
+REVIEW_EVIDENCE_ID: REV-EGC-044B-004
+EVIDENCE_CLASS: SOURCE_FACT / PDF_VISUAL_VERIFIED
+SOURCE: IEA, Electricity Grids and Secure Energy Transitions, 2023.
+URL: https://iea.blob.core.windows.net/assets/ea2ff609-8180-4312-8de9-494bcf21696d/ElectricityGridsandSecureEnergyTransitions.pdf
+OUTPUT:
+Representative conductor intensities:
+- overhead AC transmission ~11 kg Al/MW/km;
+- underground AC transmission ~101 kg Cu/MW/km;
+- overhead HVDC ~5 kg Al/MW/km;
+- underground HVDC ~29 kg Cu/MW/km.
+The same page states a transmission line also requires cables/lines, transformers, substations and control systems; towers/supporting infrastructure use additional materials.
+LIMITATION:
+These coefficients are conductor normalization cases, not full-grid BOM and not route-independent universal network intensity.
+REPLICATION_STATUS: PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-044B-005
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: National Laboratory of the Rockies/NREL ATB 2024b Utility-Scale Battery Storage.
+URL: https://atb.nrel.gov/electricity/2024b/utility-scale_battery_storage
+OUTPUT:
+ATB models 2/4/6/8/10-h utility-scale LIB cases; FOM includes augmentation that maintains rated capacity through a 15-year lifetime; cost/performance is based on approximately one cycle/day; 85% RTE is a representative model assumption.
+LIMITATION:
+Augmentation cost is not an augmentation material BOM; one-cycle/day and 85% RTE are scenario/model assumptions, not universal physical constants.
+REPLICATION_STATUS: PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-044B-006
+EVIDENCE_CLASS: SOURCE_FACT / PDF_TEXT_VERIFIED
+SOURCE: Argonne 2024 recycling-feedstock analysis in same report as REV-EGC-044B-001.
+URL: https://publications.anl.gov/anlpubs/2024/03/187907.pdf
+OUTPUT:
+Argonne models recycling feedstock from BOTH manufacturing scrap and end-of-life batteries. With its cited 92% manufacturing-process yield assumption, manufacturing scrap contributes more recycling material than EOL batteries through 2035 in the analyzed scenarios. EOL material availability is cohort-timed and grows when vehicles reach end of life.
+IMPLICATION:
+A blanket rule "no recycled credit before retired cohorts physically exist" is false for manufacturing scrap. Manufacturing scrap and EOL recycling require distinct availability/yield/quality/lag terms.
+REPLICATION_STATUS: PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-044B-007
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: U.S. DOE Office of Electricity, Storage Innovations 2030.
+URL: https://www.energy.gov/oe/storage-innovations-2030
+OUTPUT:
+DOE evaluates multiple 10h+ LDES pathways including flow, lithium-ion, sodium, zinc, hydrogen, pumped-storage hydropower, compressed-air and thermal storage.
+IMPLICATION:
+Current LFP cell BOM cannot be imposed as the universal 10-100+ h material architecture.
+REPLICATION_STATUS: PASS.
+
+INDEPENDENT CALCULATION — REV-CALC-EGC-044B-001
+TRUTH_CLASS: INDEPENDENT_REPLICATION
+INPUTS:
+Li=0.10 kg/kWh; graphite=1.09 kg/kWh;
+2025 Li mine flow=290,000 t/y; natural graphite flow=1,800,000 t/y.
+RESULT:
+1 TWh = 1e9 kWh:
+Li=100,000 t; graphite=1.09 Mt;
+stock/current-one-year-flow equivalents = 0.3448276 and 0.6055556.
+4 TWh:
+Li=400,000 t; graphite=4.36 Mt;
+stock/current-one-year-flow equivalents = 1.3793103 and 2.4222222.
+VERDICT: parent arithmetic PASS.
+SEMANTIC LIMIT:
+These ratios are one-current-year-flow equivalents, not annual demand shares unless the full stock is built in one year.
+
+INDEPENDENT CALCULATION — REV-CALC-EGC-044B-002
+TRUTH_CLASS: INDEPENDENT_REPLICATION
+INPUT: fixed 1 GW; unchanged LFP energy-BOM coefficients.
+RESULT:
+4h=4 GWh => 400 t Li, 4,360 t graphite.
+10h=10 GWh => 1,000 t Li, 10,900 t graphite.
+24h=24 GWh => 2,400 t Li, 26,160 t graphite.
+100h=100 GWh => 10,000 t Li, 109,000 t graphite.
+100h/4h = 25x.
+VERDICT: parent arithmetic PASS as an unchanged-BOM counterexample; NOT evidence LFP is optimal/feasible at 100h.
+
+INDEPENDENT CALCULATION — REV-CALC-EGC-044B-003
+TRUTH_CLASS: INDEPENDENT_REPLICATION
+INPUT: P=1,000 MW; L=1,000 km => 1,000,000 MW-km; IEA coefficients above.
+RESULT:
+overhead AC=11,000 t Al;
+underground AC=101,000 t Cu;
+overhead HVDC=5,000 t Al;
+underground HVDC=29,000 t Cu.
+VERDICT: parent arithmetic PASS.
+BOUNDARY: conductor only; full corridor/network requires additional equipment/material and actual topology.
+
+INDEPENDENT CALCULATION — REV-CALC-EGC-044B-004
+TRUTH_CLASS: INDEPENDENT_REPLICATION
+INPUT: 365 cycles/y * 15 y = 5,475 nominal full-cycle equivalents; base-pack 0.10 kg Li and 1.09 kg graphite per 1 kWh nameplate.
+RESULT:
+1 kWh nameplate * 5,475 = 5.475 MWh gross nameplate-cycle throughput-equivalent.
+Base-pack-only:
+Li=0.0182648402 kg/MWh_gross-cycle-equivalent;
+graphite=0.199086758 kg/MWh_gross-cycle-equivalent.
+VERDICT: parent arithmetic PASS.
+REQUIRED LABEL:
+Do NOT relabel these as kg/MWh delivered. Actual delivered throughput depends on dispatch, degradation/augmentation and metering/efficiency convention; ATB's 85% RTE cannot be silently inserted without defining cycle/input/output meters.
+
+ADVERSARIAL CALCULATION — REV-CALC-EGC-044B-005
+TRUTH_CLASS: CALCULATION
+QUESTION: Can the proposed M_PRIMARY_LIFECYCLE=M_initial+replacements-M_recycled_in equation produce a false reduction of historical primary input?
+CASE:
+Initial finished system uses 100 kg virgin material; no in-bound replacement cohort; at end of horizon 90 kg becomes recoverable/recycled output for some external/future use.
+Parent expression, if generic M_recycled_in/output credit is applied, can yield 100+0-90=10 kg.
+PHYSICAL PRIMARY INPUT TO THIS SYSTEM: 100 kg, not 10 kg.
+CONCLUSION:
+Recycled output cannot retroactively erase primary material already consumed. Credit is allowed only for recovered material actually used as input that displaces virgin feed within the defined accounting/allocation convention, or as a separately defined terminal/avoided-burden term consistent with the common ledger.
+FALSIFICATION: unbounded generic recycling subtraction = FAIL.
+
+ADVERSARIAL CALCULATION — REV-CALC-EGC-044B-006
+TRUTH_CLASS: CALCULATION / SENSITIVITY
+QUESTION: How much does build horizon alter annual-flow stress for the same 4 TWh LFP stock?
+INPUT: 400 kt Li; 4.36 Mt natural-graphite-equivalent BOM; uniform build over N years; current annual flows as above.
+OUTPUT:
+N=1: Li 137.9% of current annual flow; graphite 242.2%.
+N=2: Li 69.0%; graphite 121.1%.
+N=5: Li 27.6%; graphite 48.4%.
+N=10: Li 13.8%; graphite 24.2%.
+N=20: Li 6.9%; graphite 12.1%.
+LIMITATIONS:
+No competing demand, mine growth, synthetic graphite, recycling, yield or inventory modeled.
+CONCLUSION:
+Stock/current-flow ratios cannot be promoted into annual supply-chain pressure without a deployment horizon/ramp.
+
+CLAIM REVIEW:
+CLAIM-EGC-044B-001 POWER_ENERGY_MATERIAL_DECOMPOSITION: REVIEW_PASS.
+CLAIM-EGC-044B-002 LFP_STOCK_STRESS: REVIEW_PASS_WITH_REQUIRED_BUILD-HORIZON_LABEL.
+CLAIM-EGC-044B-003 DURATION_LINEARITY_UNCHANGED_ENERGY_BOM: REVIEW_PASS.
+CLAIM-EGC-044B-004 GRID_MWKM_TOPOLOGY_DEPENDENCE: REVIEW_PASS; conductor-only boundary mandatory.
+CLAIM-EGC-044B-005 RECYCLING_COHORT_TIMING: REVIEW_FAILED / REPAIR_REQUIRED.
+CLAIM-EGC-044B-006 UNIVERSAL_LFP_LDES_MODEL_FALSIFIED: REVIEW_PASS.
+CLAIM-EGC-044B-007 HARD_GLOBAL_MATERIAL_CEILING_NOT_VERIFIED: REVIEW_PASS.
+CALC-EGC-044B-001..004: INDEPENDENT_ARITHMETIC_PASS; CALC-004 unit semantics constrained to gross nameplate-cycle throughput-equivalent.
+
+FINDING_ID: F-EGC-044BREV-P1-001
+TITLE: Manufacturing-scrap recycling omitted by retired-cohort-only rule
+SEVERITY: P1
+DEFECT:
+Parent rule says no recycling credit before retired cohorts physically exist. Argonne evidence shows manufacturing scrap can be available before EOL and materially contributes recycling feedstock.
+REPAIR:
+Split recycling availability into:
+R_MANUF_SCRAP_RECOVERED[m,c,t] and R_EOL_RECOVERED[m,c,t].
+Manufacturing scrap follows manufacturing yield, collection/recovery, requalification and process-loop timing; EOL follows retirement cohort, collection, recovery, quality and lag.
+Never credit either before physically available and actually used.
+
+FINDING_ID: F-EGC-044BREV-P1-002
+TITLE: Unbounded recycled-input subtraction can retroactively erase primary input
+SEVERITY: P1
+DEFECT:
+M_initial + replacements - M_recycled_in lacks a causal cap/allocation rule and may credit exported/end-horizon recovered material against historical initial primary input.
+REPAIR:
+For each build/replacement cohort c:
+PRIMARY_INPUT[m,c] =
+max(0,
+  MATERIAL_FEED_REQUIREMENT[m,c]
+  - RECOVERED_MANUF_SCRAP_USED[m,c]
+  - RECOVERED_EOL_USED[m,c]
+  - OTHER_VERIFIED_SECONDARY_FEED_USED[m,c]).
+Each recycled-used term must be <= physically available qualified secondary feed and the cohort material-feed requirement.
+Then:
+M_PRIMARY_LIFECYCLE[m,T] = SUM_{c<=T} PRIMARY_INPUT[m,c].
+End-of-horizon recovered output is NOT subtracted from prior primary input; if the common accounting convention permits terminal/avoided-burden credit, record it separately with allocation/provenance and no double counting.
+
+FINDING_ID: F-EGC-044BREV-P2-001
+TITLE: Stock-to-current-flow ratio needs build-horizon semantics
+SEVERITY: P2
+REPAIR:
+Report both total stock BOM and annualized deployment demand under explicit build schedule:
+M_ANNUAL_DEMAND[m,t] = SUM cohorts commissioned at t of material feed requirement.
+"X times current annual mine flow" may be used only as a stock-to-flow stress diagnostic unless construction occurs within one year.
+
+FINDING_ID: F-EGC-044BREV-P2-002
+TITLE: Gross cycle throughput must not be mislabeled delivered lifetime energy
+SEVERITY: P2
+REPAIR:
+Keep CALC-004 denominator named MWh_gross-nameplate-cycle-equivalent until dispatch, degradation, augmentation and efficiency-meter conventions are modeled. A delivered-MWh material intensity is a separate system simulation output.
+
+STATUS_CHANGE:
+JOB-EGC-044B-GRID-STORAGE-MATERIALS-REV-20261006: CLAIMED -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+FOLLOW-UP JOB:
+JOB_ID: JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-C1-20261006
+TITLE: Repair recycling causality, deployment horizon and throughput-unit boundary
+ROLE: Grid/storage lifecycle-material accounting repair
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can the material ledger distinguish manufacturing scrap from EOL recycling, constrain secondary-feed credits causally, parameterize deployment flow, and keep gross-cycle throughput distinct from delivered service?
+DEPENDENCIES: F-EGC-044BREV-P1-001; F-EGC-044BREV-P1-002; P2-001; P2-002.
+REQUIRED_TOOLS: Argonne/USGS/IEA/NLR source audit; material-flow balance; cohort timing model; numerical regression cases.
+EXPECTED_OUTPUT: repaired equations, cohort state variables, build-horizon stress formula, delivered-vs-gross unit rules, regression tests.
+FALSIFICATION_CONDITION: FAIL if recycling can reduce historical primary input without actual substitution, manufacturing scrap is forced to wait for EOL, stock/current-flow ratio is treated as annual demand without build horizon, or gross cycle throughput is labeled delivered energy.
+REVIEWER_JOB_ID: JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-REV-C2-20261006
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session claims repair; downstream scale/TEA must consume only repaired material accounting.
