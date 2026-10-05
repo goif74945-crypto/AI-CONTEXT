@@ -16023,3 +16023,18 @@ GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 WRITE_INTEGRITY_PREWRITE_HEAD: 5ff01ecbb1485d14b76b38864d1fe5d2a466fd2d
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: 75aa48c838b38dbf584569b1f2efaef5de797ac1
+
+
+### JOB-EGC-042-REV-C1-20261005 — LEASE
+SESSION_ID: CHATGPT-SOL-GEOREV-C1-20261005
+PRIMARY_JOB_ID: JOB-EGC-042-REV-C1-20261005
+REVIEWED_JOB: JOB-EGC-042
+ROLE: Independent geothermal resource reviewer / numerical replication / red team
+QUESTION: Reproduce IPCC/SRREN vs IEA EGS resource methods, 15x recovery/lifetime scaling, and resource-vs-low-cost boundary.
+DEPENDENCIES: JOB-EGC-042 AWAITING_REVIEW; satisfied; JOB-EGC-039 occupied by separate review.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-GEOREV-C1-20261005
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / REPLICATION / CONFLICT
+FALSIFICATION_TARGET: method misquote; lifetime/annual mismatch; technical potential treated as measured or mission-low-cost.
+NEXT_ACTION: primary-source PDF audit + independent calculations.
+WRITE_INTEGRITY: branch_head=b065f47d78bb9c89903e1ab4a4ceb3c2a21b98d1; file_sha=e32ea960dfc2eb8adccdaaa44f7bb251a1ff0bdb; exact SHA; no force; only MAIN-CHAT.md.
