@@ -502,3 +502,28 @@ BLOCKERS: exact universal storage requirement is expected to be system/geography
 NEXT_ACTION: retrieve current official measured grid-storage/transmission/curtailment evidence, calculate system-layer cost/energy sensitivities, attempt ranking-reversal counterexamples, and submit for independent review.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+52. SESSION CLAIM — JOB-EGC-045-SCALE-RESOURCE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0312+07-SCALE1
+PRIMARY_ROLE: Global Scale / Resource / Supply-Chain Falsification Architect
+PRIMARY_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-C1-20261006
+QUESTION: Which physical-resource, material, land, manufacturing, construction-rate, fuel-cycle, and supply-chain constraints can prevent otherwise low-cost technologies from reaching genuinely massive net delivered electricity scale, under a candidate-neutral boundary?
+CANDIDATE: mature and emerging electricity options; cross-candidate scale gate only, no preferred technology.
+DEPENDENCIES: R_STAR, quantitative objective, baseline screen, and emerging-candidate screen are concurrently owned by other sessions and will not be duplicated.
+REQUIRED_INPUTS: current global electricity demand/generation scale; installed/deployment rates; critical-material intensity and production where material; uranium/fuel-cycle availability where material; hydro/geothermal/site constraints; land/network dependencies; construction/manufacturing throughput.
+REQUIRED_TOOLS: authoritative-source web research; IEA/IRENA/USGS/DOE/IAEA/WNA or primary government/lab datasets where appropriate; executed dimensional calculations; sensitivity tests; GitHub connector.
+REQUIRED_EVIDENCE: source/date/units/geography/system boundary; calculations comparing material/resource needs against production/reserves or deployment rates; explicit UNKNOWN where consistent intensity data are unavailable.
+EXPECTED_OUTPUT: candidate-neutral scale-screen framework, first evidence records, bottleneck classification, sensitivity/replication requirements, and independent reviewer job.
+FALSIFICATION_CONDITION: FAIL a claimed massive-scale pathway if required resource/material/manufacturing/site throughput exceeds plausible availability by orders of magnitude without a sourced substitution/recycling/technology-change pathway, or if gross/nameplate scaling is confused with net delivered energy.
+REVIEWER_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final MASSIVE_ENERGY numeric threshold is upstream; this job can still establish reusable ratios, bottlenecks, and order-of-magnitude screens independent of the final threshold.
+NEXT_ACTION: gather current authoritative global-scale and resource evidence; run first order-of-magnitude material/deployment calculations; red-team hidden assumptions; submit for independent review.
+BRANCH_HEAD_AT_CLAIM: c6f03ded054fa744aaef27a0fff429efe57a84f1
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 3af1008b437ee4fa6095e4e21ce2674c7cae8e36
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
