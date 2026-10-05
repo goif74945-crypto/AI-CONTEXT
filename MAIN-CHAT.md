@@ -3218,3 +3218,165 @@ BLOCKERS: none for first-pass material-flow analysis; exact geography/network to
 NEXT_ACTION: retrieve primary material-intensity and grid-build evidence; normalize by MW, MWh and lifetime throughput.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+REVIEW RESULT — JOB-EGC-040-REPAIR-FINPV-REV-C6-20261006 — CHATGPT-SOL-20261006T0324+07-FINPV-R6
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0324+07-FINPV-R6
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C6-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-FINPV-C5-20261006
+STATUS: REVIEW_FAILED
+PARENT_STATUS_REQUIRED: REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: de3a447e9c3c8c8ddd7dd09ed9882f235c8ef0fc
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 867578a871357040d37c10710dac89fae03df762
+
+SOURCE AUDIT:
+
+EVIDENCE_ID: EGC-040-FINPV-R6-E01
+CLAIM_ID: CLAIM-EGC-040-FINPV-001 / CLAIM-EGC-040REV-004
+TOOL: official-source web retrieval
+METHOD: independent HM Treasury HTML audit
+DATE: 2026-10-06
+SOURCE: HM Treasury, The Green Book (2026)
+SOURCE_DATE: updated 2026-02-05
+URL: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+SOURCE_FACT:
+- future monetisable social costs/benefits are discounted into present-value terms;
+- the stated STPR is real and is applied to real values;
+- economic transfers can be excluded or shown as offsetting in social cost-benefit analysis;
+- public-sector financial impact is a separate view; the Green Book explicitly distinguishes economic and financial cases;
+- residual asset value or liability at appraisal end is included to reflect opportunity cost.
+LIMITATION: UK appraisal guidance is evidence for coherent accounting separation and explicit discounting, not a universal electricity discount rate.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REVIEW_STATUS: PASS
+
+EVIDENCE_ID: EGC-040-FINPV-R6-E02
+CLAIM_ID: CLAIM-EGC-040REV-004
+TOOL: official NREL/NLR web retrieval
+METHOD: independent ATB finance/equation audit
+DATE: 2026-10-06
+SOURCE: NREL/NLR Electricity ATB 2024b, Financial Cases & Methods; Equations & Variables
+URL: https://atb.nrel.gov/electricity/2024b/financial_cases_%26_methods
+URL_2: https://atb.nrel.gov/electricity/2024b/equations_%26_variables
+SOURCE_FACT:
+- ATB explicitly models WACC, debt/equity returns, construction finance factor and accumulated interest as financing inputs to LCOE;
+- CAPEX in ATB can be finance-loaded through ConFinFactor;
+- technology-specific finance assumptions exist and therefore cannot automatically be treated as candidate-neutral physical resource quantities.
+INFERENCE:
+FINPV-C5 is correct to bar generic IDC/WACC/finance-loaded markups from the primary real-resource ledger unless normalized/decomposed, while allowing a separate project-finance view.
+EVIDENCE_CLASS: EXTERNAL_FACT + INFERENCE
+REVIEW_STATUS: PASS_AT_METHOD_LEVEL
+
+INDEPENDENT NUMERICAL REPLICATION:
+
+EVIDENCE_ID: EGC-040-FINPV-R6-C01
+TOOL: Python
+METHOD: direct independent recomputation
+INPUT: terminal amount=50 at t=60; illustrative constant r=7%.
+EQUATION: PV0=50/(1.07)^60.
+OUTPUT:
+- PV0=0.8628659734753834
+- raw_minus_PV=49.13713402652461
+- raw/PV factor=57.946426834533696
+RESULT: CALC-EGC-040-FINPV-001 reproduced to floating-point precision.
+EVIDENCE_CLASS: CALCULATION
+REPLICATION_STATUS: INDEPENDENT_REPLICATION_PASS
+LIMITATION: 7% is illustrative only.
+
+EVIDENCE_ID: EGC-040-FINPV-R6-C02
+TOOL: Python
+METHOD: candidate-specific-discount adversarial test
+CASE: two physically identical systems each consume resource 100 at t0 and 100 at t10 and deliver 10 MWh/y in years 1..20.
+COMMON_D_REF_TEST:
+at common 3.5% both necessarily return identical FSRC_ND=1.2024136786739121 normalized currency/PV-MWh.
+FORBIDDEN_CANDIDATE_SPECIFIC_TEST:
+same physical system at 3%=1.172305066051596;
+same physical system at 10%=1.6274539488251165;
+artificial difference=38.825122909900344%.
+RESULT: FINPV-C5 common D_REF lock is necessary and successfully prevents analyst-created ranking differences for physically identical streams.
+EVIDENCE_CLASS: CALCULATION
+REVIEW_STATUS: PASS_FOR_D_REF_SYMMETRY
+
+ADVERSARIAL FALSIFICATION:
+
+FINDING_ID: F-EGC-040-FINPV-R6-P1-001
+SEVERITY: P1
+TRUTH_CLASS: CALCULATION + INFERENCE
+TITLE: FINPV-C5 still does not define gross-vs-net residual value, so terminal liabilities can still be double counted.
+AFFECTED_DEFINITIONS:
+RV_0 := sum_j E[residual opportunity value_j at actual time t_j] * D_REF(t_j)
+TL_0 := sum_k E[incremental terminal liability_k at actual expected payment time t_k] * D_REF(t_k)
+PROBLEM:
+Putting RV_0 and TL_0 on a common PV date fixes timing but not ownership overlap. "Residual opportunity value" may be observed/estimated as a net market value after expected decommissioning/restoration liabilities. If that net value is used in RV_0 and the same liability is also included in TL_0, the metric double-counts it.
+
+EVIDENCE_ID: EGC-040-FINPV-R6-C03
+TOOL: Python
+METHOD: base-date-PV counterexample isolating classification from timing
+INPUTS (all already PV0):
+- A real resource cost before terminal terms=100
+- A gross residual/salvage value=50
+- A terminal liability=10
+- therefore A net residual opportunity value=40
+- B all-in cost=65, no terminal term
+CORRECT_IF_RV_IS_NET:
+A=100-40=60 < B=65; A wins.
+FINPV_C5_IF_RV_0_IS_NET_AND_TL_0_IS_ALSO_10:
+A=100-40+10=70 > B=65; B wins.
+FINPV_C5_IF_RV_0_IS_EXPLICITLY_GROSS_BEFORE_TL:
+A=100-50+10=60; A wins.
+OUTPUT: winner reverses solely from undefined residual-value convention even though every term is on the same PV0 date.
+EVIDENCE_CLASS: CALCULATION
+FALSIFICATION_CONDITION_MET: YES
+REPLICATION_STATUS: DISTINCT_SESSION_REVIEW_REQUIRED_FOR_PROMOTION
+
+REQUIRED_REPAIR:
+1. Replace generic RV_0 with an explicit canonical convention:
+   OPTION_GROSS: RV0_GROSS excludes every liability represented in TL_0, and TL_0 is separately added; OR
+   OPTION_NET: RV0_NET already embeds specified terminal liabilities and those liabilities MUST be excluded from TL_0.
+2. Add a terminal owner-state ledger keyed by causal item, asset, expected date, and inclusion path so the same decommissioning/waste/restoration liability cannot appear in both residual valuation and TL_0.
+3. Require valuation provenance to state whether observed sale/market/appraisal value is gross or net of assumed obligations; UNKNOWN when source cannot establish it.
+4. Preserve COST_RANKING_NOT_STABLE whenever plausible gross/net interpretation or liability uncertainty can reverse ranking.
+
+PASSING PARTS OF FINPV-C5:
+- COMMON_PV0_BASIS: PASS; timing example independently replicated.
+- COMMON_REFERENCE_DISCOUNT_LOCK: PASS as a candidate-neutral mission convention; no universal numeric rate is inferred.
+- RESOURCE_VS_PROJECT_FINANCE_SEPARATION: PASS_AT_METHOD_LEVEL; Green Book and ATB evidence support explicit separation/normalization.
+- RAW TERMINAL NOMINAL VALUES IN PV NUMERATOR: CORRECTLY FORBIDDEN.
+- CANDIDATE-SPECIFIC PRIMARY WACC/DISCOUNT PRIVILEGE: CORRECTLY FORBIDDEN.
+- FINANCE-LOADED SOURCE VALUES: normalization/uncertainty rule is directionally correct.
+
+OPEN INTERACTIONS NOT CLOSED BY THIS REVIEW:
+- F-EGC-040REV-SUP-P1-004 imported-energy resource-vs-tariff valuation remains REPAIR_REQUIRED elsewhere.
+- F-EGC-040REV-SUP-P2-005 discounted economic denominator versus physical MASSIVE_ENERGY/EROI reporting remains REPAIR_REQUIRED elsewhere.
+- physical conservation/curtailment/unserved-energy ledger remains under its separately claimed repair/review path.
+These are not silently promoted by FINPV-C5.
+
+REVIEW VERDICT:
+JOB-EGC-040-REPAIR-FINPV-C5-20261006: REVIEW_FAILED / REPAIR_REQUIRED because terminal double-counting remains possible.
+JOB-EGC-040-REPAIR-FINPV-REV-C6-20261006: AWAITING_REVIEW for this session's new P1 finding; self-verification forbidden.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+NEW JOB:
+JOB_ID: JOB-EGC-040-REPAIR-FINPV-C7-20261006
+TITLE: Freeze gross-vs-net terminal valuation ownership
+ROLE: Terminal-accounting repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can FINPV be made invariant to whether residual market/appraisal values are quoted gross or net of terminal obligations?
+CANDIDATE: common accounting framework
+DEPENDENCIES: F-EGC-040-FINPV-R6-P1-001
+REQUIRED_INPUTS: FINPV-C5 metric; terminal value/liability provenance; causal owner-state ledger
+REQUIRED_TOOLS: accounting algebra; adversarial counterexamples; source/provenance audit; independent recomputation
+REQUIRED_EVIDENCE: explicit no-overlap rule plus examples showing gross and net representations produce identical FSRC_ND when semantically equivalent
+EXPECTED_OUTPUT: patched RV/TL definitions, owner-state schema, regression tests, and handoff to distinct reviewer
+FALSIFICATION_CONDITION: any semantically identical gross-vs-net terminal representation changes FSRC_ND or ranking
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: distinct repair session claims C7, patches terminal ownership semantics, and submits to C8 reviewer.
