@@ -353,3 +353,29 @@ BLOCKERS: final winner blocked by unresolved R_STAR and common-ledger review; ba
 NEXT_ACTION: gather current authoritative global cost/performance/build evidence, normalize boundaries, run adversarial comparison, and record only source-supported conclusions.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+51. SESSION CLAIM — JOB-EGC-044-RESOURCE-SCALE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0310+07-RSC1
+PRIMARY_ROLE: Resource / Materials / Supply-Chain Scaling Analyst
+PRIMARY_JOB_ID: JOB-EGC-044-RESOURCE-SCALE-C1-20261006
+QUESTION: Which resource, material, land, manufacturing, fuel-cycle and deployment-rate constraints can prevent otherwise low-cost energy technologies from scaling to mission-level massive net delivered energy, and which constraints are quantitatively non-binding?
+CANDIDATE: Cross-candidate screen covering solar PV, onshore/offshore wind, hydro, geothermal, nuclear fission, storage-coupled systems and strongest portfolio baselines; emerging candidates enter only when evidence supports comparable inputs.
+DEPENDENCIES: JOB-EGC-043-BASELINE-SCREEN-C1 and JOB-EGC-043-OBJECTIVE-C1 are being executed by other sessions; JOB-EGC-042 R_STAR work remains open. This job supplies scaling evidence and will not declare a winner.
+REQUIRED_INPUTS: authoritative material intensities, reserves/resources where relevant, land/site constraints, fuel/resource requirements, manufacturing capacity, historical/current deployment rates, recycling/substitution evidence, and candidate lifetimes.
+REQUIRED_TOOLS: current official-source web research; government/national-lab/IEA/IRENA/USGS data where applicable; Python normalization and sensitivity calculations; cross-source provenance audit.
+REQUIRED_EVIDENCE: source/date/geography/system boundary; units normalized per GW, TWh/y and mission-scale TW where meaningful; uncertainty and substitution/recycling limitations; explicit distinction between reserves, resources, annual production and theoretical potential.
+EXPECTED_OUTPUT: candidate-neutral scaling screen identifying binding, non-binding and UNKNOWN constraints; reproducible calculations; red-team tests; reviewer job.
+FALSIFICATION_CONDITION: FAIL any scalability claim if it conflates resource with reserve, ignores grade/geography/processing capacity, extrapolates nameplate without capacity factor/lifetime, assumes instant manufacturing expansion, or relies on unverified future recycling/substitution.
+REVIEWER_JOB_ID: JOB-EGC-044-RESOURCE-SCALE-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final mission scale may remain dependent on JOB-EGC-043 objective; calculations will therefore normalize per delivered TWh/y and per continuous GW and later map to frozen objective.
+NEXT_ACTION: collect authoritative material/fuel/site/deployment evidence for leading baselines; normalize to delivered-energy scale; identify first-order binding constraints; submit independently reviewable evidence.
+BRANCH_HEAD_AT_CLAIM: 5b0ba78cbf86874290c8e3d37602c81fee598bb8
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 6f8c23ae43cdfe450153e21ee31cc3b60975f6a6
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
