@@ -24,5 +24,31 @@
     "forbidding intentional shard overlap",
     "inventing external evidence"
   ],
-  "STATUS": "ACTIVE"
+  "STATUS": "INTEGRATED_CI_EXTERNAL_BLOCKED",
+  "PR": 25,
+  "INTEGRATION_COMMIT": "fea0eb02ea87f629bec170b9e39a08a25865f0a4",
+  "VERIFICATION": {
+    "FOCUSED_TYPESCRIPT_HARNESS": "PASS_5_OF_5",
+    "DIFF_REVIEW": "PASS_TWO_FILES_ONLY",
+    "EXACT_HEAD_RUN": {
+      "id": 37359394923,
+      "conclusion": "failure",
+      "steps": 0,
+      "logs": "unavailable"
+    },
+    "SIX_SYSTEM_RUN": {
+      "id": 37359392582,
+      "conclusion": "failure",
+      "steps": 0,
+      "logs": "unavailable"
+    },
+    "BASELINE_PRECHANGE_SIX_SYSTEM_RUN": {
+      "id": 37358743058,
+      "sha": "9a12704259ee38009f45fe1964ca90d53212554a",
+      "conclusion": "failure",
+      "steps": 0,
+      "logs": "unavailable"
+    },
+    "CLASSIFICATION": "GLOBAL_ACTIONS_EXECUTION_PLANE_BLOCKER_NOT_ATTRIBUTABLE_TO_LO3_PATCH"
+  }
 }
