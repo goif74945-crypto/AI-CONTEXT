@@ -1,0 +1,37 @@
+{
+  "FINDING_ID": "F-CLOSURE-837-FINAL-DOC-C-COVERAGE-001",
+  "RELATED": [
+    "F-CLOSURE-837-AUTHORITY-CLASSIFICATION-DRIFT-001",
+    "F-CLOSURE-REQ-DENOMINATOR-837-ROUTING-001",
+    "F-0DC2D7E4-02"
+  ],
+  "TYPE": [
+    "SOURCE_NORMALIZATION_COVERAGE_DEFECT",
+    "TEMPORAL_AUTHORITY_DRIFT",
+    "REQUIREMENT_DENOMINATOR_DEFECT"
+  ],
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "MATRIX_SHA256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+  "FACTS": [
+    "The matrix Source Coverage sheet classifies the pre-FINAL vNEXT.1 Execution Pack range as DOC-C BUILD SPEC/current build authority.",
+    "FINAL VERDICT instead makes the later locked DOC-C the build specification; locked final DOC-C ends at §5.6.",
+    "The 837 Build Matrix contains zero normalized rows sourced from final DOC-C §4.1 Global API Law.",
+    "The 837 Build Matrix contains zero normalized rows sourced from final DOC-C §§5.1-5.6 executable event/state/owner/timeout/log law.",
+    "The matrix has 90 rows in the final DOC-C range: 82 CURRENT_BUILD plus 8 EXCLUDED_CURRENT; these cover §2, §3 and §4.2 but omit §4.1 and §5."
+  ],
+  "IMPACT": [
+    "The 837 workbook can remain an all-source enumeration artifact but cannot by itself prove exhaustive active build-requirement coverage.",
+    "Routing workbook rows verbatim would both over-promote historical material and omit primary final-DOC-C obligations.",
+    "Final spec closure and REQUIREMENTS_TOTAL cannot be proven from the current workbook classification/routing alone."
+  ],
+  "REQUIRED_ACTION": [
+    "Create a primary-source final-DOC-C ledger directly from the locked DOCX §§2-5.6.",
+    "Add explicit canonical requirement coverage for final §4.1 and §§5.1-5.6 before closure accounting.",
+    "Reconcile the all-source 837 rows to that primary ledger without changing the 837 source-enumeration count.",
+    "Treat historical Execution Pack rows as historical/reverify unless explicitly rebound to final primary authority."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "BLOCKS_CODE_CLOSURE_VERIFIED": true
+}
