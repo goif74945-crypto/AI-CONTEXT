@@ -6428,3 +6428,216 @@ BRANCH_HEAD_AT_CLAIM: 4d65e804ca697b63fd4cdf5f36bd0ee23683072c
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 229d13af707de9de614584982f42f4956dd87111
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+68. REPAIR RESULT — JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C11-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0450+07-SOCBIND11
+PRIMARY_ROLE: Inventory provenance / owner-state foreign-key repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C11-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: 52bd374932b7e893e68f5ac75bf400524939d9f4
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 6f3e647e18c6ff256f4348cc5ef260ecb39f52f1
+
+SCOPE_LOCK:
+This repair owns machine-auditable economic/resource binding of physical inventory records.
+It does NOT replace STATEBOUND-C4 physical conservation/SOC trajectory.
+It does NOT self-verify FINPV-TIMEBASIS-C9.
+Current FINPV time-basis review state observed at write: REVIEW_IN_PROGRESS_OR_CLAIMED; therefore integrated terminal-cost ranking remains NOT_VERIFIED until that distinct review passes.
+
+INVENTORY_BINDING_V1 — REQUIRED RECORD
+INVENTORY_BINDING_ID
+PHYSICAL_STATE_RECORD_ID
+CAUSAL_RESOURCE_ID
+PHYSICAL_INITIAL_QUANTITY
+STATE_UNIT
+DEPLETABLE_WITHIN_HORIZON
+MATERIALITY_STATUS
+
+INITIAL_OWNER_MODE =
+ZERO_STATE |
+UPSTREAM_RESOURCE_LEDGER_ITEM |
+OPPORTUNITY_VALUE_LEDGER_ITEM |
+PREDECESSOR_STATE_LINK |
+COMMON_FIXED_CYCLIC_STATE |
+UNKNOWN
+
+INITIAL_OWNER_ITEM_ID
+INITIAL_OWNER_ITEM_CLASS
+INITIAL_OWNER_ACCEPTANCE_STATUS
+ALLOCATION_QUANTITY
+ALLOCATION_UNIT
+ALLOCATION_FRACTION_IF_SHARED
+UPSTREAM_INPUT_QUANTITY
+UPSTREAM_INPUT_UNIT
+CONVERSION_METHOD_ID
+CONVERSION_PARAMETERS
+EXPECTED_INITIAL_STATE_QUANTITY
+INITIAL_RECONCILIATION_RESIDUAL
+INITIAL_RECONCILIATION_TOLERANCE
+INITIAL_RECONCILIATION_STATUS
+
+TERMINAL_STATE_RECORD_ID
+PHYSICAL_TERMINAL_QUANTITY
+PHYSICAL_STATE_TIME
+TERMINAL_OWNER_MODE =
+ATOMIC_DATED_EFFECTS |
+CONSTRUCTED_COMPOSITE |
+SOURCE_ATOMIC_NET_VALUATION |
+ZERO_VERIFIED_EFFECT |
+UNKNOWN
+TERMINAL_OWNER_ITEM_ID
+TERMINAL_OWNER_ACCEPTANCE_STATUS
+VALUATION_DATE_OR_EXPECTED_SCHEDULE
+D_REF_METHOD_ID
+FINPV_TIMEBASIS_ITEM_ID
+FINPV_DEPENDENCY_STATUS
+PV0_VALUE
+TERMINAL_RECONCILIATION_STATUS
+OWNER_CARDINALITY_STATUS
+
+INITIAL INVARIANT I1 — NONZERO STOCK MUST HAVE ONE VALID OWNER
+If abs(PHYSICAL_INITIAL_QUANTITY)>Q_TOL and the state can be net-depleted inside the comparison horizon:
+- INITIAL_OWNER_MODE may not be ZERO_STATE or UNKNOWN;
+- exactly one accepted economic/resource owner path must resolve for each causal contribution;
+- OWNER_CARDINALITY_STATUS must equal EXACTLY_ONE.
+A text label such as TRACED is insufficient without a resolvable accepted owner item.
+
+I2 — FOREIGN-KEY EXISTENCE
+UPSTREAM_RESOURCE_LEDGER_ITEM:
+INITIAL_OWNER_ITEM_ID MUST resolve to an ACCEPTED in-scope real-resource ledger item entering C_EXTERNAL_RESOURCE exactly once.
+OPPORTUNITY_VALUE_LEDGER_ITEM:
+INITIAL_OWNER_ITEM_ID MUST resolve to an ACCEPTED opportunity-resource valuation item for inherited stock; historical sunk purchase cost is not silently reintroduced.
+PREDECESSOR_STATE_LINK:
+the predecessor record MUST resolve recursively to one accepted owner path. Unresolved recursion/cycle => BLOCKED.
+COMMON_FIXED_CYCLIC_STATE:
+allowed only when the independent physical-state protocol verifies the required initial/final state condition and no net depletion of inherited stock can improve delivered energy/cost.
+UNKNOWN or missing key => COST_RANKING_NOT_VERIFIED.
+
+I3 — CAUSAL RESOURCE UNIQUENESS
+The same CAUSAL_RESOURCE_ID cannot be owned simultaneously by an upstream-resource item and an opportunity-value item.
+If one accepted ledger item supplies multiple inventory records, explicit allocation is required and aggregate allocated physical quantity/fraction must reconcile to the ledger item's accepted quantity. Shared-item allocation is not double ownership.
+
+I4 — QUANTITY/ENERGY BRIDGE
+Every material owner path must reconcile physical stock to its causal resource quantity:
+EXPECTED_INITIAL_STATE_QUANTITY =
+F_conversion(UPSTREAM_INPUT_QUANTITY, CONVERSION_PARAMETERS).
+RECONCILIATION_RESIDUAL =
+PHYSICAL_INITIAL_QUANTITY - EXPECTED_INITIAL_STATE_QUANTITY.
+The conversion method and units are explicit. DIRECT_QUANTITY_MATCH is allowed where physically appropriate.
+Tolerance is frozen before candidate inspection.
+Material residual outside tolerance => REJECTED_BINDING / COST_RANKING_NOT_VERIFIED.
+A monetary PV amount can never satisfy this physical bridge.
+
+I5 — ZERO COST IS NOT MISSING COST
+An accepted owner ledger value may equal zero only if the referenced accepted resource/valuation item explicitly and evidentially has zero primary resource value. Null/missing owner is never coerced to zero.
+
+TERMINAL INVARIANT T1 — ONE MONETARY OWNER PER CAUSAL TERMINAL EFFECT
+Every ranking-material terminal physical state/effect must map to exactly one accepted FINPV owner representation:
+ATOMIC_DATED_EFFECTS;
+CONSTRUCTED_COMPOSITE;
+SOURCE_ATOMIC_NET_VALUATION;
+or explicit ZERO_VERIFIED_EFFECT.
+UNKNOWN => NOT_VERIFIED.
+Embedded effects may not also enter as separate terminal lines.
+
+T2 — PHYSICAL TIME AND VALUE TIME ARE DISTINCT
+PHYSICAL_STATE_TIME is mandatory and remains a physical-state field.
+VALUATION_DATE_OR_EXPECTED_SCHEDULE and D_REF_METHOD_ID are monetary/accounting fields.
+PV0_VALUE is derived only by an accepted FINPV time-basis path.
+No dollar residual, salvage or liability may be converted into physical MWh/mass/SOC.
+
+T3 — DEPENDENCY GATE
+If FINPV_DEPENDENCY_STATUS != VERIFIED for a ranking-material terminal owner, integrated terminal FSRC_ND is NOT_VERIFIED.
+Local C11 provenance success cannot override a failed/pending upstream time-basis review.
+If FINPV is later FALSIFIED, all dependent terminal bindings REOPEN.
+
+T4 — INITIAL/TERMINAL OWNER SEPARATION
+An initial resource owner and terminal residual owner may both exist because they refer to different causal/timed effects; however, each effect has exactly one owner and the physical state trajectory must link them. Terminal residual may not retrospectively erase an initial real-resource input except through the explicit common terminal PV accounting rule.
+
+EVIDENCE_ID: EGC-040-SOCBIND-C11-C01
+EVIDENCE_CLASS: CALCULATION / REGRESSION
+TITLE: Correct vs duplicate vs omitted initial owner
+INPUT:
+material initial stock whose accepted upstream real-resource ledger item has primary value 3000.
+RESULT:
+correct exact-once contribution = 3000.
+if an additional duplicate opportunity-owner is incorrectly allowed => 6000.
+if owner item is missing but null is coerced to zero => 0.
+RULE RESULT:
+INVENTORY_BINDING_V1 accepts only the 3000 case; owner-cardinality=2 and missing-FK cases are rejected before ranking.
+REPLICATION_STATUS: Python + Wolfram PASS.
+
+EVIDENCE_ID: EGC-040-SOCBIND-C11-C02
+EVIDENCE_CLASS: CALCULATION / PHYSICAL-LEDGER BRIDGE
+TITLE: Quantity reconciliation catches provenance drift
+INPUT:
+PHYSICAL_INITIAL_QUANTITY=8 MWh-state.
+Case PASS: upstream charge input=10 MWh; eta_c=0.8.
+EXPECTED=10*0.8=8 MWh; residual=0 -> PASS.
+Case FAIL: recorded upstream charge input=8 MWh; same eta_c=0.8.
+EXPECTED=6.4 MWh; residual=1.6 MWh -> FAIL for zero-tolerance illustrative regression.
+REPLICATION_STATUS: Python + Wolfram PASS.
+LIMITATION:
+Actual tolerance must be pre-registered from measurement/model precision; zero tolerance here is only an exact arithmetic regression.
+
+EVIDENCE_ID: EGC-040-SOCBIND-C11-C03
+EVIDENCE_CLASS: CALCULATION / CYCLIC-EXEMPTION ATTACK
+TITLE: Common fixed/cyclic exemption cannot hide net inherited-stock depletion
+INPUT:
+SOC0=10 MWh.
+Case A terminal SOC=10 => DeltaSOC=0; physical cyclic exemption may be eligible if independently verified by STATEBOUND-C4.
+Case B terminal SOC=2 => DeltaSOC=-8 MWh; exemption invalid because 8 MWh of inherited state was depleted.
+REPLICATION_STATUS: Python + Wolfram PASS.
+RESULT:
+Case B requires a valid initial owner/provenance path and cannot obtain 8 MWh free energy via exemption.
+
+EVIDENCE_ID: EGC-040-SOCBIND-C11-C04
+EVIDENCE_CLASS: REPO_FACT / DEPENDENCY_AUDIT
+TITLE: Time-basis repair is submitted but not yet independently verified at this write
+SOURCE:
+JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006 is AWAITING_REVIEW;
+JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006 is claimed/in review in latest state.
+RESULT:
+C11 binds terminal records to FINPV_TIMEBASIS_ITEM_ID but MUST leave integrated terminal ranking NOT_VERIFIED until C10 review outcome is VERIFIED.
+
+ADVERSARIAL CASES:
+A. nonzero initial stock + owner text but missing foreign key: REJECT.
+B. nonzero initial stock + both resource and opportunity owners: REJECT.
+C. shared purchase batch allocated to several stocks without allocation reconciliation: REJECT.
+D. physical stock 8 MWh linked to causal input that can only produce 6.4 MWh: REJECT.
+E. cyclic exemption with SOC_T != SOC_0 under required cyclic protocol: REJECT.
+F. terminal owner has PV0 value but no physical state time/valuation-date method: REJECT.
+G. FINPV dependency pending/failed but C11 claims integrated PASS: REJECT.
+H. terminal salvage dollar value used to satisfy MASSIVE_ENERGY/EROI physical quantity: REJECT.
+I. inherited stock uses historical sunk acquisition cost rather than evidenced opportunity-resource treatment: REJECT unless the common appraisal boundary specifically makes that historical input in-scope.
+
+CLAIM_GRAPH_UPDATE:
+F-EGC-040-SOCDISC-C10-P1-002 INITIAL_OWNER_FOREIGN_KEY_GAP:
+REPAIR_SUBMITTED / AWAITING_DISTINCT_REVIEW.
+F-EGC-040-SOCDISC-C10-P1-001 STALE_FINPV_DEPENDENCY:
+REPAIRED_AS_EXPLICIT_DEPENDENCY_GATE locally; upstream FINPV review still pending.
+INITIAL_INVENTORY_EXACT_ONCE:
+REPAIRED_SCHEMA_PENDING_REVIEW.
+TERMINAL_TIMEBASIS_INTEGRATION:
+NOT_VERIFIED pending FINPV-TIMEBASIS-REV-C10.
+INTEGRATED_COST_RANKING:
+NOT_VERIFIED.
+CURRENT_WINNER:
+NONE.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C11-20261006: EXECUTING -> AWAITING_REVIEW.
+JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C9-20261006 remains historical REVIEW_FAILED; C11 is the superseding provenance-binding repair, not a self-verification.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+REVIEWER_JOB_NOTE:
+JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006 already exists in the job graph; do not duplicate it.
