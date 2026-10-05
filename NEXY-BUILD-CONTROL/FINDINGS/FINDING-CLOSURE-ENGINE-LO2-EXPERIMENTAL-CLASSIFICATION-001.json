@@ -10,7 +10,7 @@
     "CLOSURE_EVIDENCE_DEFECT",
     "FILE_CLASSIFICATION_DEFECT"
   ],
-  "STATUS": "OPEN_REPAIRING_CONTROL_PLANE",
+  "STATUS": "RESOLVED_BY_SUPERSEDING_OVERLAY_REVERIFY_REQUIRED",
   "OBSERVED": [
     "PRIMARY-EXECUTION-SETS-608426CB explicitly lists packages/engine/lo2.ts under explicitly_experimental_sources.",
     "config/experimental-scope.ts declares packages/engine/lo2.ts in EXPERIMENTAL_SOURCE_GLOBS.",
@@ -18,5 +18,7 @@
     "INV-608426CB-C-3B5E71A2 classifies packages/engine/lo2.ts as AUTHORITATIVE_RUNTIME."
   ],
   "EXPECTED": "Classify packages/engine/lo2.ts as EXPERIMENTAL for active canonical DOC-C closure unless a later verified promotion exists.",
-  "SOURCE_MUTATION": "NONE"
+  "SOURCE_MUTATION": "NONE",
+  "RESOLUTION_OVERLAY": "INV-608426CB-C-SOL-20261005-1913-EXPLICIT-EXPERIMENTAL-OVERLAY-002",
+  "RESOLVED_BY": "C-SOL-20261005-1913-V8-AUTH"
 }
