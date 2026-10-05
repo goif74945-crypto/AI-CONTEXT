@@ -12889,3 +12889,425 @@ FALSIFICATION_CONDITION: any stock serves before causal creation; equal terminal
 STATUS: OPEN
 BLOCKERS: NONE for method review; integrated ranking remains blocked by unresolved common-ledger dependencies.
 NEXT_ACTION: distinct session independently attacks C6.
+
+
+======================================================================
+67. REPAIR RESULT — JOB-EGC-047-EROI-LIFECYCLE-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-C3-20261006
+ROLE: Dynamic lifecycle net-energy / meter-boundary repair architect
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair EROI/lifecycle accounting so identical physics cannot receive different EROI merely from meter naming or self-vs-external supply representation; lifetime scalar EROI cannot hide deployment-period energy debt; source-resource energy cannot be asymmetrically loaded into thermal/fuel technologies; internal storage/grid energy transfers cannot be counted as new lifecycle investment; replacement/decommissioning cohorts cannot disappear.
+
+SOURCE BASIS:
+
+EVIDENCE_ID: EGC-047-C3-E01
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED
+SOURCE: Slameršak, Kallis, O'Neill (2022), "Energy requirements and carbon emissions for a low-carbon energy transition", Nature Communications 13, 6932.
+DOI: 10.1038/s41467-022-33976-5
+URL: https://www.nature.com/articles/s41467-022-33976-5
+SOURCE_FACT:
+- transition-energy requirements are time-dependent and can materially reduce net energy available to society during rapid build-out;
+- the study explicitly models energy requirements of constructing/decommissioning and operating/maintaining energy infrastructure and associated supply-chain activity;
+- its EROI accounting is defined at a specified final-energy boundary rather than as an unqualified cross-technology scalar.
+LIMITATION:
+Scenario/model evidence, not a universal numerical threshold for this mission.
+USE:
+Supports mandatory dynamic net-energy reporting and exact stage/boundary metadata.
+
+EVIDENCE_ID: EGC-047-C3-E02
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED
+SOURCE: Murphy et al. (2022), "Energy Return on Investment of Major Energy Carriers: Review and Harmonization", Sustainability 14(12), 7098.
+DOI: 10.3390/su14127098
+URL: https://www.mdpi.com/2071-1050/14/12/7098
+SOURCE_FACT:
+Cross-study/cross-carrier EROI comparison is highly sensitive to system boundary, energy stage and harmonization choices.
+LIMITATION:
+Does not supply a single universal pass threshold.
+USE:
+Supports meter/stage/quality-convention lock.
+
+EVIDENCE_ID: EGC-047-C3-E03
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: IEA-PVPS Task 12, Environmental Life Cycle Assessment of Electricity from PV Systems fact sheet, 2024.
+URL: https://iea-pvps.org/fact-sheets/fact-sheet-environmental-life-cycle-assessment-of-electricity-from-pv-systems/
+SOURCE_FACT:
+PV NREPBT is a methodology-specific non-renewable-primary-energy-equivalent payback metric with explicit yield/lifetime/system assumptions.
+LIMITATION:
+It is not identical to this mission's delivered-electricity lifecycle EROI boundary.
+USE:
+NREPBT remains diagnostic unless explicitly transformed with complete method mapping.
+
+EROI_GATE_V2 — CANONICAL ENERGY OWNERSHIP
+
+Every material lifecycle-energy flow receives exactly one OWNER_CLASS:
+
+1. EXTERNAL_LIFECYCLE_INPUT
+Energy/resource-processing service entering from outside the candidate system to build, fuel-process, operate, maintain, replace or retire the system.
+
+2. SELF_SUPPLIED_LIFECYCLE_INPUT
+Candidate-produced energy diverted from sale/service to perform lifecycle work. This energy is absent from net delivered service and must be represented exactly once in lifecycle investment.
+
+3. INTERNAL_TRANSFER_NOT_INVESTMENT
+Internal electricity/energy routing that is already generated and remains inside the modeled system, e.g. storage charging or internal bus transfers. Physical conversion losses affect delivered output through the physical ledger; the transfer itself is not a second lifecycle-energy input.
+
+4. SOURCE_RESOURCE_ENERGY
+Intrinsic energy content/enthalpy/potential of the natural energy resource consumed or captured, e.g. fuel heat input, geothermal heat, solar/wind/hydro resource flux when a source-energy convention is defined. This is NOT automatically lifecycle energy investment.
+
+5. UNKNOWN
+Ownership/boundary insufficiently evidenced. If material to pass/ranking => EROI_NOT_VERIFIED.
+
+No flow may occupy two owner classes simultaneously.
+
+EXACT SERVICE-BOUNDARY DEFINITIONS
+
+Freeze an output/service boundary b, normally the common delivered-electricity M_LOAD boundary used by FSRC_ND/R_STAR.
+
+For time t:
+
+E_DEL_b(t)
+= net useful electrical energy delivered at boundary b after curtailment, parasitics, storage/network losses and candidate self-use.
+
+E_INV_EXT_b(t)
+= external lifecycle energy investment converted to the frozen energy-quality equivalent at b.
+
+E_INV_SELF_b(t)
+= candidate-produced energy diverted to lifecycle investment and therefore already excluded from E_DEL_b(t), converted under the same quality convention.
+
+Define representation-invariant accounting output:
+E_ACCOUNTING_OUT_b(t) = E_DEL_b(t) + E_INV_SELF_b(t).
+
+Define lifecycle investment:
+E_INV_TOTAL_b(t) = E_INV_EXT_b(t) + E_INV_SELF_b(t).
+
+Then the societal/candidate-system net-energy identity is:
+E_NET_SOC_b(t)
+= E_ACCOUNTING_OUT_b(t) - E_INV_TOTAL_b(t)
+= E_DEL_b(t) - E_INV_EXT_b(t).
+
+This identity prevents a physically identical system from changing result merely because lifecycle work is self-supplied versus externally supplied.
+
+LIFETIME METRICS
+
+For common physical horizon H:
+E_OUT_H = SUM_t E_ACCOUNTING_OUT_b(t)
+E_INV_H = SUM_t E_INV_TOTAL_b(t)
+E_NET_H = E_OUT_H - E_INV_H
+
+R_OUT_b = E_OUT_H / E_INV_H, when E_INV_H > 0.
+R_SURPLUS_b = E_NET_H / E_INV_H = R_OUT_b - 1.
+NET_ENERGY_FRACTION = E_NET_H / E_OUT_H = 1 - 1/R_OUT_b, where defined.
+
+NAMING LOCK:
+Do not call R_OUT_b "gross EROI" unless E_ACCOUNTING_OUT_b is literally measured at an explicit physical gross meter. "ACCOUNTING_OUTPUT_TO_INVESTMENT_RATIO" is the neutral name.
+
+OBJECTIVE LINK:
+The existing objective's physical fail condition is preserved in substance:
+robust E_NET_H <= 0 under the frozen comparable boundary => NET_ENERGY_FAIL.
+No new universal 3/5/10 threshold is introduced here.
+
+DYNAMIC DEPLOYMENT NET-ENERGY GATE
+
+Lifetime R_OUT is insufficient for mission-scale deployment.
+
+For every material year/time step:
+E_INV_TOTAL_b(t) must retain actual timing of:
+- construction/manufacturing energy;
+- fuel-cycle/process energy;
+- operations/maintenance;
+- storage/grid/enabling-system allocated lifecycle burden;
+- replacements/repowering;
+- decommissioning/retirement/recycling burdens where included by lifecycle scope.
+
+Do NOT financially discount physical energy with D_REF.
+
+Define:
+CUM_NET(T) = SUM_{t<=T} E_NET_SOC_b(t).
+
+PEAK_ENERGY_DEBT
+= max_T max(0, -CUM_NET(T)).
+
+FINAL_SUSTAINED_ENERGY_PAYBACK_TIME
+= earliest T such that CUM_NET(t)>=0 for all subsequent t through the modeled horizon.
+If none, NO_SUSTAINED_PAYBACK.
+
+DEPLOYMENT_WINDOW_NET_ENERGY
+= SUM_{T0 <= t <= T_END} E_NET_SOC_b(t).
+
+Mandatory reporting:
+- annual E_ACCOUNTING_OUT, E_INV_EXT, E_INV_SELF, E_INV_TOTAL, E_NET_SOC;
+- cumulative net-energy path;
+- peak energy debt;
+- sustained payback;
+- replacement-cohort timing;
+- uncertainty/sensitivity.
+
+No arbitrary dynamic-debt cutoff is invented. Instead:
+- if front-loaded energy demand makes MASSIVE_ENERGY deployment or required external-energy availability infeasible under objective/R_STAR/resource constraints, that existing gate fails;
+- if dynamic inputs are missing and plausible timing can reverse deployment feasibility, G8 remains NOT_VERIFIED.
+
+COHORT EQUATIONS
+
+For cohort c:
+E_OUT_b(t) = SUM_c E_ACCOUNTING_OUT_b,c(t).
+E_INV_TOTAL_b(t) = SUM_c [
+  E_BUILD_c(t)
++ E_OM_c(t)
++ E_FUEL_PROCESS_c(t)
++ E_REPLACEMENT_c(t)
++ E_RETIRE_c(t)
++ E_ALLOCATED_ENABLING_c(t)
+].
+
+Construction/replacement energy is booked when physically consumed, not amortized across lifetime for dynamic energy-debt accounting.
+
+SOURCE-RESOURCE / CONVERSION LEDGER
+
+E_SOURCE_RESOURCE(t) is maintained separately from E_INV_TOTAL(t).
+
+Where meaningful:
+ETA_SOURCE_TO_DELIVERED
+= SUM E_DEL_b / SUM E_SOURCE_RESOURCE.
+
+Fuel/mining/conversion/enrichment/fabrication PROCESS ENERGY used to make the source usable may belong in lifecycle investment; intrinsic source heat/chemical/potential energy remains SOURCE_RESOURCE_ENERGY unless a separately frozen, symmetric primary/exergy convention explicitly says otherwise.
+
+PROHIBITION:
+Do not add E_SOURCE_RESOURCE to E_INV_TOTAL for thermal/fuel systems while leaving solar/wind/hydro natural flux absent for others. Such asymmetric source-energy treatment is invalid.
+
+ENERGY QUALITY / CARRIER CONVENTION
+
+Required:
+ENERGY_QUALITY_CONVENTION_ID
+for each carrier k:
+KAPPA_k_TO_b
+SOURCE/METHOD
+UNCERTAINTY
+APPLICABILITY.
+
+Equivalent investment:
+E_INV_*_b = SUM_k KAPPA_k_TO_b * E_INV_*,k.
+
+If no defensible common transform exists and a cross-carrier transform is ranking-material:
+cross-technology scalar EROI = NOT_VERIFIED.
+Report carrier-specific invested energy and delivered electricity separately rather than inventing a conversion.
+
+STORAGE / GRID OWNER RULE
+
+Storage charging, pumping and internal grid transfers:
+- remain physical energy flows in the physical/state ledger;
+- reduce E_DEL through losses/curtailment/self-use as appropriate;
+- do NOT enter E_INV_TOTAL again merely because electricity flowed through storage.
+
+Embodied construction, replacement, maintenance and external process energy of storage/grid assets DO enter E_INV_TOTAL once.
+
+This preserves exact-once ownership across FSRC_ND, physical-energy and lifecycle-energy ledgers.
+
+NREPBT RULE
+
+Rename any simple lifetime-return transform based on IEA-PVPS NREPBT as:
+NREPBT_LIFETIME_RATIO_DIAGNOSTIC.
+
+It MUST NOT:
+- be labeled mission EROI;
+- enter candidate elimination/ranking;
+- be compared numerically against R_OUT_b;
+unless a complete, reviewed transformation maps its non-renewable-primary-energy-equivalent methodology, geographic mix, yield, degradation, lifetime and replacement assumptions to EROI_GATE_V2.
+
+UNIVERSAL THRESHOLD BLOCK
+
+Allowed hard physical statement:
+R_OUT_b <= 1 <=> E_NET_H <= 0 under the same frozen convention => non-positive lifecycle net energy.
+
+Forbidden without separate objective registration:
+"EROI >=3/5/10 therefore PASS" or "below 3/5/10 therefore FAIL".
+
+3/5/10 may appear only as labeled diagnostics/sensitivities, not SOURCE_FACT or hidden binary gates.
+
+MANDATORY SCHEMA
+
+EROI_SYSTEM_RECORD:
+SYSTEM_ID
+CANDIDATE_ID
+BOUNDARY_b
+M_LOAD_MAPPING
+HORIZON
+ENERGY_QUALITY_CONVENTION_ID
+SCENARIO/R_STAR_VERSION
+GRID_STORAGE_ALLOCATION_METHOD
+SOURCE_RESOURCE_CONVENTION
+UNCERTAINTY_RULE
+STATUS
+
+EROI_FLOW_RECORD:
+FLOW_ID
+COHORT_ID
+OWNER_CLASS
+OWNER_LEDGER_ITEM_ID
+PHYSICAL_METER
+ENERGY_STAGE
+CARRIER
+TIME/INTERVAL
+QUANTITY
+UNIT
+KAPPA_TO_b
+EQUIVALENT_QUANTITY_b
+SOURCE_ID
+EVIDENCE_CLASS
+UNCERTAINTY
+LIMITATIONS
+
+INVARIANTS:
+- each material lifecycle flow has one owner;
+- internal transfer cannot re-enter lifecycle input;
+- self-supplied lifecycle energy is reconstructed into E_ACCOUNTING_OUT and E_INV_TOTAL exactly once;
+- external lifecycle energy appears in E_INV_EXT exactly once;
+- source-resource energy is separate;
+- replacements/retirement are not omitted;
+- physical energy sums are undiscounted;
+- candidate and matched baseline share the same boundary/quality convention and allocation rule.
+
+REGRESSION TESTS
+
+EVIDENCE_ID: CALC-EGC-047C3-001
+TITLE: SAME_LIFETIME_EROI_DIFFERENT_RAMP
+TRUTH_CLASS: CALCULATION
+TOOL: Python Decimal; scalar values independently reproduced in Wolfram.
+SYSTEM A:
+t0 investment=100; outputs=100 for t1..t10.
+SYSTEM B:
+investment=10 and output=100 for t0..t9.
+OUTPUT:
+Both: lifetime E_OUT=1000, E_INV=100, R_OUT=10, lifetime net=900.
+A cumulative net path starts -100,0,100,...,900; PEAK_ENERGY_DEBT=100; sustained payback t=1.
+B cumulative path starts 90,180,...,900; PEAK_ENERGY_DEBT=0; sustained payback t=0.
+RESULT:
+Lifetime scalar R cannot substitute for dynamic deployment energy burden.
+REPLICATION_STATUS: CROSS_TOOL_SCALAR_PASS.
+
+EVIDENCE_ID: CALC-EGC-047C3-002
+TITLE: SAME_PHYSICS_SELF_VS_EXTERNAL_INVESTMENT
+TRUTH_CLASS: CALCULATION
+TOOL: Python Decimal + Wolfram
+CASE_SELF:
+M_LOAD delivered=90; external investment=0; self-supplied lifecycle investment=10.
+E_ACCOUNTING_OUT=100; E_INV_TOTAL=10; R_OUT=10; E_NET_SOC=90.
+CASE_EXTERNAL:
+M_LOAD delivered=100; external investment=10; self-supplied=0.
+E_ACCOUNTING_OUT=100; E_INV_TOTAL=10; R_OUT=10; E_NET_SOC=90.
+RESULT:
+representation-invariant formulation yields identical lifecycle return/net energy for identical 100-output/10-investment physics. Naive E_DEL/E_INV_EXT is undefined/infinite in self-supply case and 10 in external case.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+CONFLICT_ID: CONFLICT-EGC-047-OBJV2-EROI-METER-001
+TYPE: METHOD / OBJECTIVE WORDING
+OBSERVATION:
+OBJECTIVE_V2 currently writes EROI_SYS as lifetime useful net electrical energy delivered at M_LOAD divided by lifecycle external energy invested. Taken literally, this becomes representation-dependent when lifecycle work is self-supplied because self-use is already removed from M_LOAD delivered output and external input can be zero.
+EROI_GATE_V2 instead reconstructs accounting output and total investment so the same physics is invariant.
+STATUS: OPEN / RECONCILIATION_REQUIRED.
+RULE:
+This repair does NOT silently rewrite OBJECTIVE_V2. Until the objective review/reconciliation adopts an exact representation-invariant definition, use the robust positive-net-energy identity E_NET_SOC=E_DEL-E_INV_EXT as the hard physical condition and keep exact scalar EROI objective status NOT_VERIFIED if self-supply is material.
+NEXT_ACTION:
+Independent EROI C4 reviewer and objective owner/reviewer arbitrate wording before final gate promotion.
+
+EVIDENCE_ID: CALC-EGC-047C3-003
+TITLE: STORAGE_INTERNAL_TRANSFER_DOUBLE_COUNT
+INPUT:
+delivered accounting output=100; external lifecycle investment=20; internal storage charging flow=20.
+OUTPUT:
+correct R_OUT=100/20=5.
+incorrect denominator adding internal charge=100/(20+20)=2.5.
+RESULT:
+Counting storage charging as new lifecycle investment halves the ratio without changing lifecycle resource use.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: CALC-EGC-047C3-004
+TITLE: THERMAL_SOURCE_RESOURCE_SEPARATION
+INPUT:
+source-resource heat=300; delivered electricity=100; lifecycle invested energy=10.
+OUTPUT:
+lifecycle R_OUT=100/10=10.
+source-to-delivered efficiency=100/300=0.3333333333.
+incorrect ratio if intrinsic source heat is added to lifecycle investment=100/(300+10)=0.3225806452.
+RESULT:
+conversion efficiency and lifecycle investment answer different questions and must remain separate.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: CALC-EGC-047C3-005
+TITLE: COHORT_REPLACEMENT_TIMING
+INPUT:
+output total=1000; initial lifecycle investment=100; replacement energy=50 at t5.
+OUTPUT:
+correct lifetime R_OUT=1000/150=6.6666666667.
+omitting replacement gives 10.
+Cumulative net with replacement: -100,0,100,200,300,350,450,...,850.
+RESULT:
+replacement omission materially inflates lifecycle return.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: CALC-EGC-047C3-006
+TITLE: NET_FRACTION SANITY
+R={1,1.1,2,5,10}
+1-1/R={0,0.09090909,0.5,0.8,0.9}.
+RESULT:
+only R<=1 is the inherited hard non-positive-net-energy condition; no 3/5/10 binary threshold follows from the identity.
+REPLICATION_STATUS: PASS.
+
+ADVERSARIAL PASS/FAIL
+
+SAME_LIFETIME_EROI_DIFFERENT_RAMP: FIXED by dynamic reporting.
+SAME_SYSTEM_DIFFERENT_METER: FIXED at method level by accounting-output/owner identity; OBJECTIVE wording conflict remains OPEN.
+STORAGE_OWNER: FIXED at method level by INTERNAL_TRANSFER_NOT_INVESTMENT.
+THERMAL_SOURCE: FIXED at method level by SOURCE_RESOURCE_ENERGY separation.
+PV_NREPBT_BLOCK: FIXED by DIAGNOSTIC_ONLY lock.
+UNTAGGED_EROI_THRESHOLD_BLOCK: FIXED; only R<=1 inherited hard physical fail.
+COHORT_REPLACEMENT_TIMING: FIXED at method/schema level.
+CANDIDATE_NUMERIC_G8: NOT_VERIFIED; requires actual candidate whole-system inputs.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-047-001 EROI_CONVENTION_LOCK: REPAIRED_V2 / AWAITING_REVIEW.
+CLAIM-EGC-047-002 PV_NREPBT_MARGIN: DIAGNOSTIC_ONLY / PRESERVED.
+CLAIM-EGC-047-003 STORAGE_CURTAILMENT_SENSITIVITY: OWNER_RULE_REPAIRED_V2.
+CLAIM-EGC-047-004 UNIVERSAL_EROI_THRESHOLD: FALSIFIED / BLOCKED.
+CLAIM-EGC-047-005 WHOLE_SYSTEM_EROI_GATE: METHOD_REPAIRED / NUMERIC_CANDIDATE_STATUS_NOT_VERIFIED.
+CLAIM-EGC-047-006 PRECISE_CROSS_TECH_RANK: NOT_VERIFIED.
+CONFLICT-EGC-047-OBJV2-EROI-METER-001: OPEN.
+G8: NOT_VERIFIED pending independent C4 review, objective reconciliation and candidate whole-system evidence.
+G21: NOT_VERIFIED.
+
+STATUS_CHANGE:
+JOB-EGC-047-EROI-LIFECYCLE-REPAIR-C3-20261006: EXECUTING -> AWAITING_REVIEW.
+JOB-EGC-047-EROI-LIFECYCLE-REPAIR-REV-C4-20261006: BLOCKED -> OPEN.
+
+REVIEW JOB:
+JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-REV-C4-20261006
+TITLE: Independent review of EROI_GATE_V2
+ROLE: Independent lifecycle-net-energy / meter-ownership / dynamic-debt reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does EROI_GATE_V2 make lifecycle net-energy comparison invariant to self-vs-external supply and meter naming, while preserving dynamic deployment debt, source-resource separation, replacement timing and no hidden EROI cutoff?
+DEPENDENCIES: C3 AWAITING_REVIEW.
+REQUIRED_TOOLS: independent algebra/Python/Wolfram or equivalent; peer-reviewed boundary-source audit; counterexamples; objective-conflict audit.
+REQUIRED_EVIDENCE:
+- reproduce C001-C006;
+- attack accounting-output reconstruction for double credit;
+- test mixed carriers and quality conversion;
+- test storage/grid owner allocation;
+- verify source-energy separation does not hide fuel-cycle process energy;
+- arbitrate CONFLICT-EGC-047-OBJV2-EROI-METER-001 without self-review.
+FALSIFICATION_CONDITION:
+same physical system changes pass/rank solely from self-vs-external lifecycle supply or meter choice; dynamic debt is hidden; intrinsic source energy is asymmetrically counted; replacement disappears; internal transfer enters denominator twice; untagged NREPBT/3/5/10 threshold can pass.
+STATUS: OPEN
+BLOCKERS: objective wording conflict requires independent reconciliation before final G8 promotion.
+NEXT_ACTION: distinct session claims C4 and attacks V2; objective reviewer/owner resolves meter-definition conflict.
+
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
