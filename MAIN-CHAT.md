@@ -308,3 +308,25 @@ BRANCH_HEAD_AT_CLAIM: 3ff6edf518786a90626bb0055c5b2f6bf67e533f
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 90e4aca8c93f62fe1ffd74f8c234c3f2fe1e9b04
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+50. SESSION CLAIM — JOB-EGC-043-OBJECTIVE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0306+07-OBJ-C1
+PRIMARY_ROLE: Quantitative Objective Formalization / Candidate-Neutral Acceptance Architect
+PRIMARY_JOB_ID: JOB-EGC-043-OBJECTIVE-C1-20261006
+QUESTION: What fixed, measurable, candidate-neutral definitions of LOW_COST and MASSIVE_ENERGY should govern this mission so candidate ranking cannot be rescued by moving the goalposts?
+CANDIDATE: ALL current/future candidates; this job defines gates, not a preferred technology.
+DEPENDENCIES: Current MAIN-CHAT.md reports GLOBAL_SOLVED=NO and CURRENT_WINNER=NONE; FSRC_ND accounting repair and R_STAR reliability work are separately claimed by other sessions.
+TOOLS: GitHub state refresh; current authoritative-source web research; official energy/cost/deployment datasets; Python calculations and sensitivity tests.
+EVIDENCE_TARGET: freeze primary/secondary metrics, system boundary, scale targets, delivered-energy denominator, deployment horizon, capacity-factor/availability treatment, EROI/lifecycle/resource/supply-chain/safety constraints, and baseline-comparison rule with provenance.
+FALSIFICATION_TARGET: reject any objective that can be satisfied by changing geography/system boundary after seeing results, ignores storage/grid/firming needed for delivered service, uses nameplate rather than net delivered energy, or sets a threshold solely because a favored candidate happens to pass it.
+REVIEWER: JOB-EGC-043-OBJECTIVE-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: NONE for metric architecture; any numeric threshold lacking authoritative normative basis must be labeled MISSION_CONVENTION rather than SOURCE_FACT.
+NEXT_ACTION: retrieve current authoritative cost, demand/scale and system-cost evidence; construct candidate-neutral threshold set; adversarially test threshold sensitivity; submit for independent review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
