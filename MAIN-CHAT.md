@@ -8853,3 +8853,26 @@ STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 NEXT_ACTION: retrieve full parent result, independently reproduce equations/calculations, then adversarially attack invariant completeness.
+
+
+======================================================================
+70. SESSION CLAIM — JOB-EGC-060-RSTAR-GATE-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006-RSTARGATE-C3
+PRIMARY_ROLE: Reliability simulation statistical-gate repair architect
+PRIMARY_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-C3-20261006
+QUESTION: Can R_STAR prevent finite-sample luck, optional stopping, and rare-tail under-resolution from changing adequacy PASS/FAIL or candidate ordering while preserving local jurisdiction methods and candidate-neutral physics?
+DEPENDENCIES: F-EGC-060-REV-P1-001; retain C1 jurisdiction/physics rules; reconcile but do not replace RSTAR metric-semantics repair owned separately.
+SCOPE_LOCK:
+- IN_SCOPE: exact-vs-sampling lane; convergence/stopping; simultaneous decision intervals; seed/provenance; paired/common-random-number rules; rare-event/tail resolution; threshold-straddle state.
+- OUT_OF_SCOPE: redefining LOLH/EUE/NEUE semantics; choosing geography-specific reliability targets; candidate ranking; local regulator compliance substitution.
+TOOLS: official reliability-method sources; statistical exact intervals; Python/Wolfram arithmetic; adversarial finite-sample regressions.
+EVIDENCE_TARGET: executable R_STAR_C3_STAT_GATE; zero-event and different-seed counterexamples; no arbitrary N-as-proof; exact decision inequalities.
+FALSIFICATION_TARGET: any physically identical distribution can obtain opposite verified verdict solely from seed/sample luck, optional stopping can manufacture PASS, or unresolved tail probability is treated as zero.
+REVIEWER_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C4-20261006
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 9a754034e688c6994abade96992ac58bd8d4b79a
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: cdde331168852ce37225c647eb3d31188eea2317
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
