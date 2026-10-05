@@ -6413,3 +6413,231 @@ WRITE_CONCURRENCY:
 BRANCH_HEAD_BEFORE_WRITE: 08551450ca8b6c4dfa5d3c78b51cdc2c02b45e3b
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 4b6c731b4f3056eb3202091e1e870d3c1b0eff0a
 STALE_WRITE_GUARD: GitHub contents SHA precondition; any concurrent blob change must abort this write.
+
+
+======================================================================
+54. RESULT — JOB-EGC-047-EROI-LIFECYCLE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-EROI1
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-C1-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: 8d3d1f2bcb590cc3812ae1eedd135d793780795f
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 6fe018a6f67c87f9d8a8c1fb7346b3297f4e0c5d
+
+OBJECTIVE:
+Establish a candidate-neutral lifecycle net-energy/EROI gate that cannot be gamed by inconsistent energy-quality, boundary, lifetime, degradation, storage, curtailment, or gross-vs-net conventions; produce independently reproduced calculations and identify evidence gaps.
+
+EVIDENCE_ID: TE-EGC-047-001
+CLAIM_ID: CLAIM-EGC-047-PV-NREPBT
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: IEA PVPS Task 12, "Environmental Life Cycle Assessment of Electricity from PV Systems", 2023 data update, published/hosted 2024.
+URL: https://iea-pvps.org/wp-content/uploads/2024/05/Task-12-Fact-Sheet-v2-1.pdf
+METHOD: official fact sheet; PDF visually inspected.
+SOURCE_FACT:
+- Scope is 1 kWh AC from a typical 3 kWp roof-mounted European PV system including PV panel, cabling, mounting structure, inverter and installation.
+- Assumptions include 976 kWh/kWp annual production, 1,331 kWh/m2 in-plane irradiation, linear degradation 0.7%/year, panel life 30 y, inverter life 15 y.
+- Non-renewable energy payback time (NREPBT), defined using non-renewable primary-energy equivalent used to produce the system: mono-Si 1.0 y; multi-Si 1.2 y; CIS/CIGS 1.2 y; CdTe 0.8 y.
+LIMITATIONS:
+- NREPBT is NOT identical to EROI and is location/system-boundary dependent.
+- Residential European scope is not a universal utility-scale/global value.
+- This evidence must not be used to silently grant free storage, transmission or firming.
+
+EVIDENCE_ID: TE-EGC-047-002
+CLAIM_ID: CLAIM-EGC-047-PV-LCI-CURRENTNESS
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: IEA PVPS Task 12, "Life Cycle Inventories of Photovoltaic Systems", July 2026.
+URL: https://iea-pvps.org/key-topics/t12-lci-pv-systems-2026/
+SOURCE_FACT:
+- Major public PV LCI update with current TOPCon/PERC, CdTe, balance-of-system and residential/commercial/utility-scale reference systems.
+- Monocrystalline datasets draw on 83 quality-screened factory-level LCAs from 2022-2025 French tenders; reported coverage is ~29% global polysilicon, 16% wafer, 7% cell and 9% module production capacity; CdTe data represent >90% of CdTe module market.
+INFERENCE:
+This materially strengthens the lifecycle-inventory evidence base for current PV, but does not by itself provide a universal system EROI.
+LIMITATIONS:
+Factory coverage is substantial but not complete; production geography and electricity mix still matter.
+
+EVIDENCE_ID: TE-EGC-047-003
+CLAIM_ID: CLAIM-EGC-047-HARMONIZATION
+EVIDENCE_CLASS: PEER_REVIEWED_EXTERNAL_FACT
+SOURCE: Murphy et al., Sustainability 2022, "Energy Return on Investment of Major Energy Carriers: Review and Harmonization".
+DOI: 10.3390/su14127098
+URL: https://www.mdpi.com/2071-1050/14/12/7098
+SOURCE_FACT:
+- Published EROI literature has substantial methodological inconsistency and can yield inappropriate cross-technology comparisons.
+- The authors harmonize electricity EROI values because studies mix straight electricity-output/primary-energy-investment ratios with primary-energy-equivalent weighted ratios.
+- Their harmonized review reports PV, wind and hydropower at or above 10 under their harmonization, while emphasizing boundary/energy-quality sensitivity.
+- The article notes detailed high-temporal-resolution decarbonized-grid analyses can find storage energy investment does not necessarily dominate system EROI.
+LIMITATION:
+This is a review/harmonization, not a single measured universal EROI; values remain source- and convention-dependent.
+
+EVIDENCE_ID: TE-EGC-047-004
+CLAIM_ID: CLAIM-EGC-047-NET-CONVENTION
+EVIDENCE_CLASS: PEER_REVIEWED_EXTERNAL_FACT
+SOURCE: Slamersak, Kallis & O'Neill, Nature Communications 13, 6932 (2022), "Energy requirements and carbon emissions for a low-carbon energy transition".
+DOI: 10.1038/s41467-022-33976-5
+URL: https://www.nature.com/articles/s41467-022-33976-5
+SOURCE_FACT:
+- Defines final-energy NET EROI as R_NET=(E_GROSS-E_REQ)/E_REQ=E_GROSS/E_REQ-1.
+- Boundary includes extraction, refining, transport, construction, decommissioning, and O&M to point of use.
+- The paper explicitly models uncertainty using low/median/high EROI inputs; its 10% decommissioning-energy relation is an assumption inherited from prior work, not a universal measurement.
+- Fourteen 1.5C pathways show a transition-period net-energy burden can be material.
+LIMITATION:
+Scenario model outputs are not direct measurements and should not be used as candidate-specific measured EROI.
+
+EVIDENCE_ID: TE-EGC-047-005
+CLAIM_ID: CLAIM-EGC-047-INTERMITTENCY
+EVIDENCE_CLASS: PEER_REVIEWED_EXTERNAL_FACT
+SOURCE: Aramendia et al., Nature Energy 9, 803-816 (2024), "Estimation of useful-stage energy returns on investment for fossil fuels and implications for renewable energy systems".
+DOI: 10.1038/s41560-024-01518-6
+URL: https://www.nature.com/articles/s41560-024-01518-6
+SOURCE_FACT:
+- Published 20 May 2024.
+- It adjusts renewable EROI for storage and curtailment across EU, France, UK and US transition scenarios rather than treating intermittency as zero-cost.
+- It defines storage fraction phi and curtailment fraction nu and uses storage round-trip efficiency plus ESOI (energy stored on energy invested).
+- In its scenarios, intermittency effects are generally moderate but material; the cited US High Demand case has storage fraction 24% and curtailment 14%.
+- It reports literature-sourced renewable EROIs remain above its approximate 4.6 final-stage EROI-equivalent for the average fossil mix across considered scenarios, while specific comparisons against gas/coal can differ.
+- It explicitly warns that standard process-LCA may have truncation error; cited hybrid-LCA work found 13-33% higher energy use than standard LCA in one comparison.
+LIMITATIONS:
+Scenario-specific storage/curtailment fractions are not universal requirements; the paper conservatively assigns storage to VRE. Its EROI convention must be tagged before mixing with NET-EROI conventions.
+
+EVIDENCE_ID: TE-EGC-047-006
+CLAIM_ID: CLAIM-EGC-047-SYSTEMWIDE-2026
+EVIDENCE_CLASS: PEER_REVIEWED_EXTERNAL_FACT
+SOURCE: Sahin et al., Earth's Future 14, e2025EF006183 (2026), "Uneven Distribution of Natural Energy Resources Impacts on Systemwide Energy Return on Investment".
+DOI: 10.1029/2025EF006183
+URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025EF006183
+SOURCE_DATE: 2026-01-10
+SOURCE_FACT:
+- Integrates cumulative-energy-demand LCA inputs with a regional energy-system transition model across nine regions/scenarios.
+- Numerator is annual net electricity fed to transmission after subtracting plant self-consumption, curtailment, storage losses and other process losses.
+- No modeled regional system EROI fell below 10, while authors explicitly caution that a socially sufficient minimum EROI may vary.
+- Higher VRE penetration can reduce system EROI because enabling technologies, including storage, require energy.
+- Pathway choice matters more than raw regional resource abundance in their modeled results.
+LIMITATIONS:
+Model-based and scenario-specific; not a physical measurement and not authority for a universal mission threshold of 10.
+
+CONFLICT_ID: CONFLICT-EGC-047-EROI-CONVENTION-001
+STATUS: RESOLVED_METHOD / NUMERIC_VALUES_REQUIRE_TAGGING
+CONFLICT:
+Literature uses "EROI" for at least two non-identical ratios:
+A) R_GROSS = E_DELIVERED/E_REQ (common in several EROI comparisons and the 2024 intermittency equation);
+B) R_NET = (E_GROSS-E_REQ)/E_REQ (explicit in Slamersak et al. 2022 and net-energy frameworks).
+RESOLUTION:
+Mission records both explicitly:
+R_GROSS := E_DELIVERED/E_REQ.
+R_NET := (E_DELIVERED-E_REQ)/E_REQ = R_GROSS-1 when numerator/boundary are otherwise identical.
+UNTAGGED "EROI" SHALL NOT ENTER CROSS-CANDIDATE RANKING.
+Energy-quality convention (electricity vs primary-energy-equivalent vs useful energy), boundary and delivery point are mandatory metadata.
+
+CALC_ID: CALC-EGC-047-001 — CONVENTION/NET-FRACTION INVARIANT
+EQUATIONS:
+R_NET=R_GROSS-1.
+invested_share_of_gross=1/R_GROSS.
+net_fraction_of_gross=1-1/R_GROSS.
+gross_generation_factor_for_fixed_net_delivery=1/(1-1/R_GROSS).
+INPUTS: R_GROSS={2,5,10,20,50}.
+OUTPUT:
+R=2 -> R_NET=1, net fraction=0.50, gross factor=2.0000.
+R=5 -> R_NET=4, net fraction=0.80, gross factor=1.2500.
+R=10 -> R_NET=9, net fraction=0.90, gross factor=1.111111.
+R=20 -> R_NET=19, net fraction=0.95, gross factor=1.052632.
+R=50 -> R_NET=49, net fraction=0.98, gross factor=1.020408.
+TOOL_REPLICATION_1: Wolfram Language.
+TOOL_REPLICATION_2: V8 JavaScript independent recomputation.
+REPLICATION_STATUS: PASS_EXACT/ROUNDING_EQUIVALENT.
+INTERPRETATION:
+At low EROI, lifecycle energy overhead strongly amplifies gross build/output needed for a fixed net service. Above ~10-20, incremental net-energy differences shrink; cost/reliability/resource gates can still dominate ranking.
+
+CALC_ID: CALC-EGC-047-002 — PV NREPBT MARGIN CHECK
+METHOD:
+For 30-y panel life and linear annual degradation d, equivalent initial-output years Y_EQ=sum(t=0..29)(1-d*t).
+INPUTS: d={0.005,0.007,0.009}; IEA-PVPS reference d=0.007.
+OUTPUT:
+Y_EQ(0.5%)=27.825 y-equivalent.
+Y_EQ(0.7%)=26.955 y-equivalent.
+Y_EQ(0.9%)=26.085 y-equivalent.
+At d=0.7%, simple lifetime-output / NREPBT multiples:
+mono-Si=26.955/1.0=26.955;
+multi-Si=26.955/1.2=22.4625;
+CIS=22.4625;
+CdTe=26.955/0.8=33.69375.
+TOOL_REPLICATION_1: Wolfram Language.
+TOOL_REPLICATION_2: V8 JavaScript.
+REPLICATION_STATUS: PASS_EXACT/ROUNDING_EQUIVALENT.
+TRUTH_CLASS: CALCULATION + ASSUMPTION.
+CRITICAL LIMITATION:
+These are NREPBT-based return multiples, NOT EROI. They assume the fact-sheet payback basis can be divided into lifetime degraded output without additional boundary conversion. They are a margin/sanity check only and SHALL NOT be ranked against EROI values from other technologies.
+
+CALC_ID: CALC-EGC-047-003 — STORAGE/CURTAILMENT SENSITIVITY REPLICATION
+SOURCE_EQUATION:
+Aramendia et al. 2024 dispatchable-renewable EROI:
+R_DISP=[phi*epsilon+(1-phi-nu)]/[1/R_BASE + phi*epsilon/ESOI].
+PARAMETERS FOR TEST:
+epsilon=0.83 and ESOI=11 for battery storage, following the paper's cited central assumptions.
+SCENARIOS:
+(phi,nu)=(0,0),(0.10,0.05),(0.24,0.14),(0.30,0.10).
+OUTPUT:
+R_BASE=10 -> R_DISP={10.0000,8.6754,6.9360,6.9229}.
+R_BASE=20 -> {20.0000,16.2133,12.0278,11.6884}.
+R_BASE=30 -> {30.0000,22.8236,15.9246,15.1689}.
+TOOL_REPLICATION_1: Wolfram Language.
+TOOL_REPLICATION_2: V8 JavaScript.
+REPLICATION_STATUS: PASS_EXACT/ROUNDING_EQUIVALENT.
+INTERPRETATION:
+Integration burden can materially reduce net-energy return and can change cross-candidate comparisons. It does not justify a universal storage penalty because phi/nu/ESOI are system/geography/pathway dependent.
+
+CANONICAL MISSION EROI/LIFECYCLE GATE — PROPOSED:
+For each candidate/system portfolio report:
+1. DELIVERY_BOUNDARY: plant bus | transmission entry | load-serving bus | useful-energy service.
+2. ENERGY_QUALITY: electricity | final energy | primary-energy-equivalent | useful energy.
+3. R_GROSS and R_NET separately where derivable.
+4. LIFECYCLE_INPUTS: construction/BOS; fuel extraction/refining/enrichment/transport; O&M; replacements/augmentation; decommissioning/waste/recycling; storage hardware; transmission/grid hardware; control/system-strength hardware.
+5. PHYSICAL_LOSSES: self-consumption; charging/discharging losses; network losses; curtailment; conversion losses. Losses reduce delivered-energy numerator/energy balance; their embodied infrastructure energy enters denominator once. No double counting.
+6. VINTAGE/GEOGRAPHY: technology year, manufacturing geography, deployment geography, resource quality, capacity factor/irradiation/wind regime.
+7. TIME: lifetime, degradation, replacement schedule and transition build rate.
+8. UNCERTAINTY: low/central/high assumptions and sensitivity.
+9. EVIDENCE_CLASS: measured/LCI/peer-reviewed model/simulation/inference.
+10. RANKING USE: exact raw EROI from mismatched boundaries is forbidden.
+
+RED_TEAM RESULTS:
+RT-EGC-047-001: "EPBT/NREPBT equals EROI" -> FALSIFIED.
+RT-EGC-047-002: "one published EROI number can rank technologies" -> FALSIFIED by boundary/energy-quality inconsistency.
+RT-EGC-047-003: "storage/curtailment can be ignored for VRE system EROI" -> FALSIFIED as a universal rule; 2024/2026 system studies show material scenario-dependent effects.
+RT-EGC-047-004: "storage penalty can be hard-coded globally to VRE" -> FALSIFIED; integration is portfolio/geography/reliability dependent and must be allocated by causal service need.
+RT-EGC-047-005: "EROI>10 is a universal solved threshold" -> NOT_SUPPORTED; 2026 source explicitly says sufficient societal minimum can vary.
+RT-EGC-047-006: "high EROI alone proves low delivered cost" -> FALSIFIED LOGICALLY; EROI is an energy-efficiency/net-energy constraint, not a financial cost metric.
+RT-EGC-047-007: current PV component lifecycle evidence -> SUPPORTED, but whole-system PV+storage+grid EROI remains PARAMETERIZED pending R_STAR/grid architecture.
+RT-EGC-047-008: precise universal wind/hydro/geothermal/nuclear EROI ranking -> NOT_VERIFIED from current evidence set because cross-study boundaries/vintages remain heterogeneous.
+
+CLAIM GRAPH UPDATE:
+CLAIM-EGC-047-001 EROI_CONVENTION_LOCK: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-047-002 PV_NREPBT_MARGIN: SUPPORTED_AS_SANITY_CHECK_PENDING_REVIEW; NOT EROI.
+CLAIM-EGC-047-003 STORAGE_CURTAILMENT_SENSITIVITY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-047-004 UNIVERSAL_EROI_THRESHOLD: REJECTED/UNKNOWN.
+CLAIM-EGC-047-005 WHOLE_SYSTEM_EROI_GATE: METHOD_PROPOSED / AWAITING_REVIEW.
+CLAIM-EGC-047-006 CROSS_TECH_PRECISE_EROI_RANKING: NOT_VERIFIED.
+
+STATUS_CHANGE:
+JOB-EGC-047-EROI-LIFECYCLE-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+No global winner promoted.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REV-C2-20261006
+TITLE: Independent review of lifecycle net-energy/EROI gate
+ROLE: Independent EROI harmonization reviewer / adversarial replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does the proposed gate correctly prevent cross-technology ranking artifacts from gross-vs-net conventions, energy-quality mismatch, lifecycle-boundary mismatch, and storage/curtailment double counting?
+DEPENDENCIES: JOB-EGC-047-EROI-LIFECYCLE-C1-20261006 submitted.
+REQUIRED_TOOLS: independent literature/source retrieval; independent computation of CALC-EGC-047-001/002/003; adversarial boundary counterexamples.
+REQUIRED_EVIDENCE: reproduce equations/results; check IEA PVPS source; verify 2024 Nature intermittency equation; attack system-loss versus embodied-energy ownership; test whether any candidate receives asymmetric lifecycle scope.
+EXPECTED_OUTPUT: PASS/FAIL per claim, defects and repair jobs if needed.
+FALSIFICATION_CONDITION: any raw untagged EROI can enter ranking; EPBT is promoted to EROI; physical losses are counted twice or omitted; a candidate gains by narrower lifecycle boundary; replication materially disagrees.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required; final portfolio EROI also depends on frozen R_STAR/grid-storage architecture.
+NEXT_ACTION: distinct session independently claims and attacks this result.
