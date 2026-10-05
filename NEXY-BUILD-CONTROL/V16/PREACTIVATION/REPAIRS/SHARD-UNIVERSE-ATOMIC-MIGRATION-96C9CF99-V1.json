@@ -1,0 +1,210 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_SHARD_UNIVERSE_UPDATE_PROTOCOL_CANDIDATE_V1",
+  "REPAIR_ID": "V16RC13-SHARD-UNIVERSE-ATOMIC-MIGRATION-96C9CF99-V1",
+  "STATUS": "CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+  "OWNER_CHAT": "C-SOL-20261005-0951-0800-V16RC13-SHARDMIG-96C9CF99",
+  "OWNER_MEMBERSHIP_ID": "PRE-262243a1659d2cd9e06468bc8b99a213",
+  "TASK_KEY": "edda03303704e2ed7190c900b8780646e6380201afe183c00ab11de310f92508",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "AFFECTED_FINDING": "FINDING-V16RC13-SHARD-UNIVERSE-UPDATE-SPLIT-BRAIN-DE64F6B9",
+  "REPAIR_CLASS": "CONTROL_LAYER_PROTOCOL_REPAIR_NO_PRODUCT_MUTATION",
+  "LAW_TEXT_CHANGE_REQUIRED": false,
+  "LAW_BASIS": [
+    "[042]-[045] make SHARD_UNIVERSE_UPDATE a serialized global transition with immutable intent and one active transition.",
+    "[080] defines MEMBERSHIP_EPOCH as the global bulk-invalidation generation.",
+    "[121]-[123] make ENGINEERING_EPOCH and membership generations authority bindings whose changes stale old leases/authority.",
+    "[169]-[174] require bulk control state to scale horizontally while the global fence remains serialized.",
+    "[196]-[216] require closure to bind and enumerate the active shard universe without omissions, including empty shards.",
+    "[217]-[220] require every participant to re-read canonical state and revalidate authority before mutation.",
+    "[223] explicitly requires shard-migration torture testing."
+  ],
+  "OBJECTIVE": "Define a law-preserving engineering protocol that gives SHARD_UNIVERSE_UPDATE one authority cutover, invalidates stale writers, proves complete record migration, preserves crash truth, and prevents closure over an ambiguous or split universe.",
+  "IN_SCOPE": [
+    "Mission Fence SHARD_UNIVERSE_UPDATE transition behavior",
+    "membership/task/message/evidence/finding/review bulk-state migration",
+    "writer invalidation and membership renewal",
+    "migration manifests and cutover verification",
+    "crash recovery and closure gating"
+  ],
+  "OUT_OF_SCOPE": [
+    "product source mutation",
+    "target integration",
+    "changing the V16-RC1.3 normative law text",
+    "changing the logical 256-shard default by itself",
+    "claiming runtime torture-test PASS before real execution"
+  ],
+  "PRECONDITIONS": [
+    "MISSION_FENCE_STATE exists and is authoritative for the TARGET_AUTHORITY_KEY.",
+    "TRANSITION_KIND == NONE.",
+    "ACTIVE_INTEGRATION == null.",
+    "INTEGRATION_HEALTH == HEALTHY.",
+    "The old shard universe hash/version and proposed new shard universe hash/version are fully materialized and independently reproducible.",
+    "An immutable SHARD_UNIVERSE_UPDATE intent exists before entry CAS."
+  ],
+  "IMMUTABLE_MIGRATION_INTENT_REQUIRED_FIELDS": [
+    "TARGET_AUTHORITY_KEY",
+    "MISSION_ID",
+    "MISSION_GENERATION",
+    "EFFECTIVE_CONSTITUTION_HASH",
+    "SPEC_ARTIFACT_HASH",
+    "OLD_SHARD_UNIVERSE_HASH",
+    "OLD_SHARD_UNIVERSE_VERSION",
+    "NEW_SHARD_UNIVERSE_HASH",
+    "NEW_SHARD_UNIVERSE_VERSION",
+    "MAPPING_RULE_VERSION",
+    "CANONICAL_RECORD_IDENTITY_RULE_VERSION",
+    "MIGRATED_CONTROL_DOMAINS",
+    "SOURCE_DOMAIN_ROOTS",
+    "EXPECTED_SOURCE_RECORD_COUNTS",
+    "EXPECTED_SOURCE_EMPTY_SHARDS",
+    "INTENT_OWNER_CHAT_ID",
+    "INTENT_CONTENT_HASH"
+  ],
+  "MIGRATED_CONTROL_DOMAINS_MINIMUM": [
+    "MEMBERSHIPS",
+    "MESSAGES",
+    "TASKS",
+    "EVIDENCE",
+    "FINDINGS",
+    "REVIEWS"
+  ],
+  "ENTRY_CAS": {
+    "PRECONDITION": "STATE_VERSION == EXPECTED_STATE_VERSION and all PRECONDITIONS still hold",
+    "ATOMIC_WRITES": [
+      "TRANSITION_KIND = SHARD_UNIVERSE_UPDATE",
+      "TRANSITION_GENERATION = prior + 1",
+      "ACTIVE_TRANSITION_ID = immutable migration intent ID",
+      "ACTIVE_TRANSITION_INTENT_HASH = exact immutable intent hash",
+      "ACTIVE_TRANSITION_STATE = ENTERED_FROZEN",
+      "WORK_ADMISSION_GATE = CLOSED",
+      "MUTATION_GATE = CLOSED",
+      "INTEGRATION_GATE = CLOSED",
+      "ENGINEERING_EPOCH = prior + 1",
+      "MEMBERSHIP_EPOCH = prior + 1",
+      "STATE_VERSION = EXPECTED_STATE_VERSION + 1"
+    ],
+    "AUTHORITY_EFFECT": "All pre-entry leases and active memberships become stale for mutation authority before migration begins."
+  },
+  "OLD_UNIVERSE_FREEZE": [
+    "After successful entry CAS, no normal old-universe writer may obtain or renew mutation authority.",
+    "Old-universe namespaces remain readable as migration source and forensic truth.",
+    "Any write that physically appears from stale local state after entry is noncanonical stale evidence and must never enter the destination manifest as an authorized post-freeze record."
+  ],
+  "MIGRATION_RULES": [
+    "Build the destination in inactive staging namespaces/refs; routing to the new universe remains non-authoritative before cutover.",
+    "Migrate each canonical record exactly once by immutable record identity, not by path identity alone.",
+    "Preserve record generation/version, content hash, provenance and terminal/nonterminal status semantics.",
+    "If multiple old physical rows map to one immutable record ID, require deterministic reconciliation evidence; unresolved conflict blocks migration.",
+    "Every old-universe shard in every migrated domain must produce a source manifest, including explicit empty shards.",
+    "Every new-universe shard in every migrated domain must produce a destination manifest, including explicit empty shards.",
+    "For every migrated domain, source and destination record-ID multisets must be identical after canonical reconciliation; count-only equality is insufficient.",
+    "No destination record may exist without source provenance or an explicitly authorized migration-metadata record outside the migrated user/control record set."
+  ],
+  "MIGRATION_VERIFICATION": {
+    "REQUIRED_PROOFS": [
+      "complete old-shard enumeration",
+      "complete new-shard enumeration",
+      "record-ID set equality per domain",
+      "no duplicate immutable record IDs",
+      "no missing records",
+      "explicit empty-shard accounting",
+      "deterministic mapping-rule replay",
+      "content/version/provenance preservation",
+      "no authorized post-freeze old-universe writes"
+    ],
+    "FAILURE": "Any mismatch sets ACTIVE_TRANSITION_STATE = MIGRATION_BLOCKED and keeps every gate CLOSED. No cutover is permitted."
+  },
+  "CUTOVER_CAS": {
+    "PRECONDITIONS": [
+      "ACTIVE_TRANSITION_STATE proves MIGRATION_VERIFIED",
+      "all migration proof roots are bound to ACTIVE_TRANSITION_INTENT_HASH",
+      "ACTIVE_INTEGRATION == null",
+      "all gates remain CLOSED",
+      "STATE_VERSION == EXPECTED_STATE_VERSION"
+    ],
+    "ATOMIC_WRITES": [
+      "SHARD_UNIVERSE_HASH = NEW_SHARD_UNIVERSE_HASH",
+      "SHARD_UNIVERSE_VERSION = NEW_SHARD_UNIVERSE_VERSION",
+      "ACTIVE_TRANSITION_STATE = CUTOVER_COMMITTED_PENDING_VERIFICATION",
+      "STATE_VERSION = EXPECTED_STATE_VERSION + 1"
+    ],
+    "LINEARIZATION_POINT": "The successful expected-version Mission Fence CAS that installs the new shard universe. Before it U1 is authoritative; after it U2 is authoritative while all normal gates remain closed."
+  },
+  "POST_CUTOVER_VERIFICATION": [
+    "Re-read Mission Fence and prove the installed hash/version equal the immutable intent.",
+    "Recompute destination domain/shard manifests from the now-authoritative universe.",
+    "Prove the destination roots still match the pre-cutover verified migration roots.",
+    "Prove old-universe namespaces are marked historical/read-only and no router grants active authority against them.",
+    "Require all active Chats to renew/rebind membership under the incremented MEMBERSHIP_EPOCH before normal mutation can resume."
+  ],
+  "FINALIZATION_CAS": {
+    "PRECONDITIONS": [
+      "post-cutover verification PASS",
+      "no active integration",
+      "no unresolved migration reconciliation blocker",
+      "STATE_VERSION == EXPECTED_STATE_VERSION"
+    ],
+    "ATOMIC_WRITES": [
+      "ACTIVE_TRANSITION_STATE = VERIFIED",
+      "TRANSITION_KIND = NONE",
+      "ACTIVE_TRANSITION_ID = null only after durable transition result preserves the completed transition identity",
+      "ACTIVE_TRANSITION_INTENT_HASH = null only after durable transition result preserves the completed intent hash",
+      "WORK_ADMISSION_GATE = OPEN when otherwise permitted by mission state",
+      "MUTATION_GATE = OPEN when otherwise permitted by mission state",
+      "INTEGRATION_GATE = OPEN when otherwise permitted by mission state",
+      "STATE_VERSION = EXPECTED_STATE_VERSION + 1"
+    ],
+    "NOTE": "Gate reopening is conditional on every other mission/health prerequisite; this protocol does not override unrelated blockers."
+  },
+  "CRASH_RECOVERY": [
+    "Before entry CAS: no transition authority exists; abandoned staging artifacts are noncanonical.",
+    "After entry CAS but before verified migration: recover from immutable intent and source manifests with gates CLOSED; never restart normal writers.",
+    "After migration verification but before cutover CAS: U1 remains authoritative; destination remains staging only.",
+    "After cutover CAS: U2 is authoritative but gates remain CLOSED until post-cutover verification and membership renewal readiness are proven.",
+    "If actual fence state, routing state or destination manifests are ambiguous after a crash, set/retain a reconciliation-required transition state and keep all gates CLOSED.",
+    "Never erase U1/U2 evidence or choose a universe by blind force."
+  ],
+  "CLOSURE_INTERLOCK": [
+    "Global closure entry is forbidden while TRANSITION_KIND == SHARD_UNIVERSE_UPDATE.",
+    "Global closure is forbidden while any shard migration state is blocked, ambiguous, unverified or awaiting post-cutover verification.",
+    "The closure SHARD_UNIVERSE_HASH must equal the verified post-cutover Mission Fence value, and every shard in that exact universe including empty shards must appear in the drain manifest."
+  ],
+  "REQUIRED_TORTURE_TESTS": [
+    "stale U1 writer paused before entry CAS resumes after epoch invalidation",
+    "membership renewal races entry CAS",
+    "task/message/evidence writes race entry CAS",
+    "crash after each migration state transition",
+    "missing old shard",
+    "missing new shard",
+    "duplicate immutable record ID",
+    "record content/version mismatch",
+    "partial domain migration",
+    "cutover CAS conflict",
+    "router still using U1 after cutover",
+    "post-cutover verification failure",
+    "closure attempt during migration",
+    "USER_STOP during migration and during cutover-pending state"
+  ],
+  "PASS_CRITERIA_FOR_THIS_STATIC_REPAIR": [
+    "Independent reviewer confirms the protocol closes the documented U1/U2 split-brain counterexample without changing V16-RC1.3 law semantics.",
+    "Independent reviewer confirms stale writer invalidation is bound to generations every affected writer must revalidate.",
+    "Independent reviewer confirms migration completeness is based on immutable record identity and explicit empty-shard manifests, not counts alone.",
+    "Independent reviewer confirms one cutover CAS defines the authoritative universe and gates remain closed until post-cutover verification.",
+    "Independent reviewer confirms closure cannot omit stranded U1 records.",
+    "Real torture-test execution remains separately required after activation; this static repair does not claim runtime PASS."
+  ],
+  "FORBIDDEN": [
+    "product source mutation",
+    "target integration",
+    "self-certifying the affected P0 as resolved",
+    "opening gates before independent review and required phase gates",
+    "using dual-write without a separately proven serializable protocol",
+    "using count equality as sole migration completeness proof",
+    "dropping empty shards from migration or closure manifests",
+    "blindly deleting old-universe evidence"
+  ],
+  "PRODUCT_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
