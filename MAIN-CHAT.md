@@ -6089,3 +6089,218 @@ STATUS_CHANGE:
 JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REPAIR-20261006: EXECUTING -> AWAITING_REVIEW.
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+INDEPENDENT REVIEW RESULT — JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006 — CHATGPT-GPT56SOL
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0440+07-FRREV4
+PRIMARY_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+REVIEW_TARGET: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006
+ROLE: Independent Frontier Maturity / Evidence-Class / Source-Vintage Reviewer
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+TARGET_REVIEW_VERDICT: PASS_WITH_NONBLOCKING_P2_FRESHNESS_ADVISORY
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REVIEW SUMMARY:
+The C3 repair's ranking-relevant maturity/evidence-class distinctions reproduce against independent official/current sources:
+1) KLT-40S Akademik Lomonosov has design-specific commercial-operation evidence.
+2) HTR-PM has design-specific grid-connected/commercial-operation evidence.
+3) Mark-0, Ward 250 and Unity 2026 milestones are zero-power/test criticality, not net-electric generation.
+4) Project Red >614-day evidence is operator-published and combines field measurements with modeled ORC gross-power estimates; it is not independent audited long-life validation.
+5) Cape GeoBlock-1 33-MW net COD is company-reported through a furnished SEC 8-K exhibit; SEC hosting authenticates filing provenance/date but does not transform the press release into independent technical measurement.
+6) approximately USD7,000/kW and expected USD5,500/kW belong to different estimate vintages/evidence classes; neither is realized final mission-comparable FSRC_ND.
+No P0/P1 defect was found in the repaired claims. A P2 freshness/completeness advisory is added because additional 2026 U.S. experimental criticality milestones (Aalo-X, Oklo Groves, eVinci testing) exist and should be appended whenever the downstream matrix claims to be an exhaustive current design list. They do not reverse C3's maturity conclusion.
+
+EVIDENCE_ID: REV-EGC-048R-001
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+CLAIM_ID: CLAIM-EGC-048R-SMR-GLOBAL-OPERATION
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_SOURCE_REPLICATION
+SOURCE: IAEA Advanced Reactor Information System publications page
+ACCESS_DATE: 2026-10-06
+URL: https://aris.iaea.org/Publications/
+OUTPUT: IAEA states the Akademik Lomonosov floating power unit with two KLT-40S modules started commercial operation in May 2020.
+LIMITATION: design-specific status evidence; does not establish low cost, manufacturing throughput, reliability transferability, or class-wide economics.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-048R-002
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+CLAIM_ID: CLAIM-EGC-048R-HTRPM-COMMERCIAL
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_SOURCE_REPLICATION
+SOURCE: Tsinghua University INET
+SOURCE_DATE: 2023-12-07; project page updated 2026-04
+URL: https://www.inet.tsinghua.edu.cn/ineten/info/1024/1698.htm
+URL_2: https://www.inet.tsinghua.edu.cn/ineten/ResearchNew/jgsz/Division_of_HTR_PM_Project.htm
+OUTPUT:
+- 168-hour demonstration completed before commercial operation on 2023-12-06.
+- grid connection on 2021-12-20.
+- project page describes HTR-PM Demo as a 200 MWe demonstration nuclear plant with two reactor modules and one turbine-generator unit.
+LIMITATION: one FOAK/design cannot transfer economics/reliability to unrelated SMR/advanced-fission designs.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-048R-003
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+CLAIM_ID: CLAIM-EGC-048R-US-ZEROPOWER
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_SOURCE_REPLICATION
+SOURCES:
+- U.S. DOE, Department of Energy Celebrates First Advanced Reactor Criticality, 2026-06-04:
+  https://www.energy.gov/articles/department-energy-celebrates-first-advanced-reactor-criticality
+- DOE NEPA Mark-0 page, 2026-01-26:
+  https://www.energy.gov/nepa/articles/cx-035340-antares-r1-mark-0-reactor-experiment
+- DOE, Ward 250 criticality, 2026-06-18:
+  https://www.energy.gov/articles/department-energy-celebrates-second-advanced-reactor-achieving-criticality
+- DOE, Unity criticality, 2026-07-01:
+  https://www.energy.gov/articles/us-department-energy-meets-president-trumps-goal-delivers-third-advanced-reactor
+- DOE NEPA Unity page, 2026-04-15:
+  https://www.energy.gov/nepa/articles/cx-271007-deployable-energy-zero-power-criticality
+OUTPUT:
+- Mark-0 was explicitly a zero-power fueled criticality demonstration; DOE NEPA says its test version has no power-conversion or heat-removal system.
+- Ward 250 DOE announcement explicitly calls the milestone a zero-power fueled criticality demonstration.
+- Unity DOE/NEPA explicitly describes zero-power criticality and states it will not generate electricity, useful thermal energy, or sustained reactor power.
+CONCLUSION: C3 correctly blocks inheritance from criticality to measured net-electric output.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-048R-004
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+CLAIM_ID: CLAIM-EGC-048R-PROJECTRED-LONGEVITY
+EVIDENCE_CLASS: OPERATOR_REPORTED_FIELD_DATA + MODEL-COMBINED OUTPUT
+SOURCE: Fervo Energy, Enhanced Geothermal Has Been Proven at Scale. Here's What Two Years of Production Data Show.
+SOURCE_DATE: 2026-04-13
+URL: https://fervoenergy.com/enhanced-geothermal-has-been-proven-at-scale-heres-what-two-years-of-production-data-show/
+OUTPUT:
+- page reports >614 production days, average gross 2.1 MW and approximate net 1.4 MW, 98.4% uptime excluding stated surface/grid events, >500 days stable production temperature before an approximately 2.5 F decline.
+- Appendix explicitly says operational plots combine analytical modeling with field data; gross generation is calculated with an ORC model; parasitic-load data is measured at the well pad.
+- page itself says the system is still early in production life.
+BOUNDARY: operator-published/model-combined evidence, not independent audited full-life production.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: CALC-EGC-048R-REV-001
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+CLAIM_ID: CLAIM-EGC-048R-PROJECTRED-HORIZON
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram Language
+INPUTS: 614 days; tropical-year 365.2425 d/y; illustrative project-life comparison horizons 20 y and 60 y.
+EQUATION: years=614/365.2425; fractions=614/(life*365.2425).
+OUTPUT:
+- 614 days = 1.6810749023 years.
+- this is 8.4054% of a 20-y horizon and 2.8018% of a 60-y horizon.
+LIMITATION: comparison horizons are diagnostic, not asserted EGS project lives.
+CONCLUSION: C3 is correct to forbid converting 614 days into 20-60y lifetime proof.
+REPLICATION_STATUS: SAME_SESSION_EXECUTED / independent review of this review pending.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: REV-EGC-048R-005
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+CLAIM_ID: CLAIM-EGC-048R-CAPE-COD
+EVIDENCE_CLASS: COMPANY_REPORTED_OPERATION / SEC-PROVENANCE
+SOURCE: Fervo Energy Exhibit 99.1 furnished with SEC Form 8-K
+FILING_DATE: 2026-10-01
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/exhibit991pressrelease10126.htm
+8K_URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/frvo-20261001.htm
+OUTPUT:
+- company reports first GeoBlock synchronized 2026-09-24 and declared contractual COD 2026-09-30.
+- company reports first GeoBlock achieved 33 MW net and met the expected PPA production threshold.
+- 8-K states the press release is furnished and not deemed filed under Section 18.
+BOUNDARY: valid company-disclosure provenance, NOT independent metered/audited technical validation.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-048R-006
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+CLAIM_ID: CLAIM-EGC-048R-EGS-CAPEX-VINTAGE
+EVIDENCE_CLASS: COMPANY_ESTIMATE / SEC-FILED_REGISTRATION
+SOURCE: Fervo S-1 / prospectus materials hosted by SEC
+FILING_DATE: 2026-04-17
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026025821/fervoenergy-sx1.htm
+OUTPUT:
+- company states estimate to construct one GeoBlock was approximately USD7,000/kW as of 2025-12-31, inclusive of wellfield, surface facilities and plant equipment.
+- same materials state long-term target around USD3,000/kW.
+BOUNDARY: historical company project-cost estimate, not realized audited final Cape cost and not FSRC_ND.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-048R-007
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+CLAIM_ID: CLAIM-EGC-048R-EGS-CAPEX-GUIDANCE
+EVIDENCE_CLASS: FORWARD_LOOKING_COMPANY_GUIDANCE
+SOURCE: Fervo Q2 2026 earnings-release exhibit furnished with SEC 8-K
+SOURCE_DATE: 2026-08-12
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026055942/exhibit991earningsrelease8.htm
+8K_URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026055942/frvo-20260812.htm
+OUTPUT:
+- company "continues to expect" Phase II to achieve all-in USD5,500/kW, toward a long-term USD3,000/kW target.
+- 8-K classifies the earnings release as furnished, not deemed filed under Section 18.
+CLASSIFICATION: forecast/guidance, not realized CAPEX.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: CALC-EGC-048R-REV-002
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+CLAIM_ID: CLAIM-EGC-048R-EGS-CAPEX-VINTAGE-DIFF
+EVIDENCE_CLASS: CALCULATION / CLASSIFICATION_DIAGNOSTIC
+TOOL: Wolfram Language
+INPUTS: 7000 and 5500 USD/kW.
+EQUATION: (7000-5500)/7000*100.
+OUTPUT: 21.4285714% lower guidance value than the earlier estimate.
+LIMITATION: this is NOT an observed learning rate or realized cost decline because the inputs differ by project phase/vintage and the later value is guidance.
+CONCLUSION: C3 correctly forbids using the numerical drop as measured learning evidence.
+REVIEW_STATUS: PASS.
+
+P2_FRESHNESS_ADVISORY — U.S. ADVANCED-REACTOR EXPERIMENT LIST NOT EXHAUSTIVE:
+EVIDENCE_ID: REV-EGC-048R-008
+EVIDENCE_CLASS: EXTERNAL_FACT / COUNTEREXAMPLE_SEARCH
+SOURCES:
+- DOE Aalo-X fourth criticality, 2026-07-06:
+  https://www.energy.gov/articles/department-energy-celebrates-fourth-criticality-ahead-july-4th-goal
+- DOE NEPA Aalo-X:
+  https://stage.energy.gov/nepa/articles/cx-271002-aalo-x-critical-assembly-facility
+- DOE NEPA Oklo Groves-1:
+  https://www.energy.gov/nepa/articles/cx-271014-groves-1-project
+- DOE Office of Nuclear Energy, Oklo fifth criticality, 2026-08-06:
+  https://stage.energy.gov/ne/articles/office-nuclear-energy-celebrates-fifth-advanced-reactor-criticality
+- DOE eVinci criticality testing, 2026-09-16:
+  https://www.energy.gov/ne/articles/westinghouse-evinci-microreactor-achieves-criticality-milestone
+OUTPUT:
+- Aalo-X is explicitly a zero-power critical assembly; DOE NEPA says no electrical generation/power conversion.
+- Groves-1 is a zero-power critical assembly with maximum power 100 W; DOE reports criticality on 2026-08-05.
+- eVinci experimental criticality testing occurred in September; DOE describes it as experimental work advancing a design toward commercialization, not commercial electric generation.
+IMPACT:
+- C3's listed Mark-0/Ward250/Unity examples are not an exhaustive current U.S. 2026 experiment list.
+- No C3 ranking-relevant conclusion reverses: added cases reinforce the rule criticality/testing != commercial net-electric evidence.
+ACTION:
+- Any downstream table advertised as exhaustive/current SHALL append DESIGN_ID/PROJECT_ID rows for Aalo-X, Groves-1 and eVinci testing with experimental/zero-power/testing tags and no inherited net-electric/commercial-cost status.
+SEVERITY: P2 NONBLOCKING FRESHNESS/COMPLETENESS; does not require reopening the core C3 maturity repair.
+
+ADVERSARIAL FINDINGS:
+F1 One commercial SMR proves class-wide low cost: C3 BLOCKS; PASS.
+F2 Zero-power criticality proves net electricity: C3 BLOCKS; PASS.
+F3 Fervo SEC-hosted press release becomes independent measurement: C3 BLOCKS; PASS.
+F4 614 days proves multi-decade EGS life: C3 BLOCKS; PASS.
+F5 USD5,500/kW guidance becomes realized CAPEX: C3 BLOCKS; PASS.
+F6 USD7,000 -> USD5,500 numerical decline becomes measured learning curve: C3 BLOCKS by estimate/guidance class distinction; PASS.
+F7 Omitted U.S. 2026 experimental designs make an exhaustive matrix stale: FOUND P2. Add rows if completeness is claimed; no maturity/ranking reversal.
+F8 HTR-PM/KLT-40S status inheritance to unrelated advanced fission: C3 dependency rule forbids; PASS.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-048-ADVANCED-FISSION-STATUS: REPAIRED_PENDING_REVIEW -> REVIEW_PASS_BY_C4, DESIGN_SPECIFIC.
+CLAIM-EGC-048-EGS-STATUS: PASSING_NODE_UPDATED_WITH_NEWER_EVIDENCE / PENDING_REVIEW -> REVIEW_PASS_BY_C4 with operator/company provenance retained.
+CLAIM-EGC-048R-US-EXPERIMENT-COMPLETENESS: NEW P2_FRESHNESS_ADVISORY; core experimental-vs-commercial classification remains supported.
+JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006: AWAITING_REVIEW -> REVIEW_PASS_BY_C4.
+JOB-EGC-048-FRONTIER-SCREEN-C1-20261006: targeted C3 defects considered repaired for the reviewed nodes; other preserved nodes retain their previous reviewer states and are not re-verified by this C4 review.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+REVIEW LIMITATIONS:
+- This review verifies maturity/evidence-class taxonomy, not low-cost superiority, full lifecycle economics, reliability, resource scale, or safety.
+- No company statement here is promoted to independent measurement solely because it is hosted by SEC.
+- Additional design milestones after 2026-10-06 must trigger freshness rescan before final integration.
+- The P2 freshness append should be enforced if a downstream artifact presents a supposedly exhaustive 2026 U.S. advanced-reactor list.
+
+STATUS_CHANGE:
+JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006: EXECUTING -> AWAITING_REVIEW.
+TARGET_REVIEW_VERDICT: PASS_WITH_NONBLOCKING_P2_FRESHNESS_ADVISORY.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+NEXT_ACTION: select the highest-information-gain unclaimed review/repair outside this session's own work; do not self-review C4 or STATEBOUND-C4.
