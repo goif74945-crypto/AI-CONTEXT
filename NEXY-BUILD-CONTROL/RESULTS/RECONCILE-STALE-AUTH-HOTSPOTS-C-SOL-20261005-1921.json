@@ -1,0 +1,36 @@
+{
+  "RESULT_ID": "RECONCILE-STALE-AUTH-HOTSPOTS-C-SOL-20261005-1921",
+  "CHAT_ID": "C-SOL-20261005-1921-V8-ROLE-REVERIFY",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "RECONCILIATIONS": [
+    {
+      "task_id": "T-A91F3C62",
+      "prior_state": "IMPLEMENTING + ACTIVE lease for 15-minute OTAC validity",
+      "final_doc_c_authority": {
+        "otac_ttl_ms": 300000,
+        "otac_lock_window_ms": 900000
+      },
+      "wrong_authority_commit": "aab5bbd662b59f3c70976f970e9ee3708df826c2",
+      "repair_commit": "a363fdb7b8ced513303f3e67ba4520dfcc1e9903",
+      "exact_head_source": "STATIC_MATCH_FINAL_DOC_C",
+      "executed_exact_head_test": "NOT_ESTABLISHED_ZERO_STEP_CI",
+      "decision": "RETIRE_STALE_WRITER_TASK_AND_RELEASE_LEASE",
+      "source_mutation": "NONE_THIS_RECONCILIATION"
+    },
+    {
+      "task_id": "T-C84E61B2",
+      "prior_state": "IMPLEMENTING + ACTIVE lease although implementation is already on integration history",
+      "implementation_commit": "775f4ffeef5246ce177650dc55fb85bda8bbdd0a",
+      "final_doc_c_authority": "60-second resend cooldown; retry only after cooldown; 429 RATE_LIMIT_EXCEEDED",
+      "exact_head_source": "STATIC_MATCH_FOR_60_SECOND_COOLDOWN_AND_429",
+      "casefold_note": "Final DOC-C does not define email case normalization. Current auth hashes parsed email byte-exactly, so task-local casefold acceptance cannot be promoted to DOC-C authority without separate evidence.",
+      "executed_exact_head_test": "NOT_ESTABLISHED",
+      "decision": "RELEASE_STALE_WRITER_LEASE_AND_SET_INTEGRATED_REVERIFY_REQUIRED",
+      "source_mutation": "NONE_THIS_RECONCILIATION"
+    }
+  ],
+  "HOTSPOT_EFFECT": "T-A91F3C62 and T-C84E61B2 must not be treated as active source writers after reconciliation.",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE"
+}
