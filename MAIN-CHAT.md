@@ -11094,3 +11094,22 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: e29e3f5d3ab68b3274399af468c7295e0c330730
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-043-OBJECTIVE-V2-T0-JFUNC-REPAIR-C5-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0610+07-OBJV21C5
+PRIMARY_ROLE: Objective decision-functional / causal-deployment / brownfield-attribution repair architect
+PRIMARY_JOB_ID: JOB-EGC-043-OBJECTIVE-V2-T0-JFUNC-REPAIR-C5-20261006
+QUESTION: Can OBJECTIVE_V2.1 become single-valued and time-causal while preserving frozen 60-USD, 10%-relative, 3,360-TWh/y and 20-y mission conventions and preventing free inherited output?
+DEPENDENCIES: F-EGC-043R4-P1-001; P1-002; P2-003; P2-004; scale arbitration C8 has now rejected post-hoc 2,860-as-new-primary.
+TOOLS: latest authoritative ledger/checkpoints; algebra; counterexample construction; executed Python/AWK regression tests; provenance/version-lock audit.
+EVIDENCE_TARGET: canonical J_q acceptance semantics and precedence; ex-ante b_star comparator rule; immutable T0<=objective-freeze with exact T_END; POST_T0_CAUSAL_INCREMENT attribution; explicit 3,360 primary authority and 2,860 non-authoritative sensitivity; 52-vs-{40,70x9}, timestamp and brownfield regressions.
+FALSIFICATION_TARGET: two valid readings yield opposite pass/fail; threshold moves after candidate output; T0 occurs after objective freeze; inherited/legacy output counts as free deployment; causal incremental output is incorrectly excluded; or baseline uses a different decision functional.
+REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-V2-T0-JFUNC-REPAIR-REV-C6-20261006
+STATUS: EXECUTING
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: df2dca963266d343289d0dafde35466cd60dcc1b
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
