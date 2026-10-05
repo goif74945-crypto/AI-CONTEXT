@@ -1714,3 +1714,268 @@ REASON: first-pass evidence narrows key bottlenecks but does not close candidate
 NEXT_HIGHEST_VALUE_ACTION: JOB-EGC-044A-PV-MATERIALS-20261006 because PV is the highest observed deployment-throughput baseline and silver/tin scaling sensitivity is already quantitatively material.
 BRANCH_HEAD_BEFORE_WRITE: 9e0817fbe438b6e6f8f92dfad75c7b1d4052071a
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 83b3d7545db7588450edbf7127f810d3a6bf2080
+
+
+
+======================================================================
+50. RELIABILITY-BOUNDARY RESULT — JOB-EGC-042-RSTAR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T2005Z-RSTAR-C3
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-C3-20261006
+ROLE: Reliability Boundary Architect / Adequacy & Essential-Reliability-Services Evidence Analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Replace the unresolved scalar/numeric R_STAR placeholder with a candidate-neutral, jurisdiction-aware reliability service boundary that can be applied before techno-economic ranking without inventing a universal reliability number.
+
+KEY FINDING:
+A single universal numeric resource-adequacy threshold is NOT supported. The common object that can be frozen globally is the METHOD/SCHEMA; numeric thresholds must come from the applicable jurisdiction/system or a predeclared comparison case. Where a metric has no binding numeric threshold, candidate-vs-baseline non-inferiority under the same stochastic traces is required before calling costs comparable.
+
+EVIDENCE_ID: TE-EGC-042-001
+CLAIM_ID: CLAIM-EGC-042-001
+TOOL: web research + PDF text extraction + PDF screenshot attempt
+METHOD: primary technical source review
+DATE: 2026-10-06
+SOURCE: EPRI report hosted by NERC, "Resource Adequacy for a Decarbonized Future: A Summary of Existing and Proposed Resource Adequacy Metrics"
+SOURCE_DATE: 2022-04
+URL: https://www.nerc.com/comm/RSTC/Documents/3002023230_EPRI_Resource%20Adequacy%20for%20a%20Decarbonized%20Future_%20A%20Summary%20of%20Existing%20and%20Proposed%20Resource%20Adequacy%20Metrics.pdf
+OUTPUT:
+- Report warns against relying on a single adequacy metric because information about event frequency, magnitude, duration and tail risk can be concealed.
+- It documents materially different resource-adequacy criteria across regions/countries rather than one global threshold.
+- The report notes many North American systems use LOLE <=0.1 days/year, but this is not a continent-wide universal legal standard.
+LIMITATION: report publication is 2022; used for metric logic/diversity, not as sole evidence of current jurisdictional law. Screenshot retrieval for this PDF hit a cache miss; text extraction succeeded, and no visual-only datum is used.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: SOURCE_CROSSCHECKED_WITH_CURRENT_PJM_AND_EU_RULES
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+
+EVIDENCE_ID: TE-EGC-042-002
+CLAIM_ID: CLAIM-EGC-042-002
+TOOL: web research + PDF screenshot
+METHOD: current operator manual inspection
+DATE: 2026-10-06
+SOURCE: PJM Manual 20A, Resource Adequacy Analysis, Revision 3
+SOURCE_DATE: 2026-06-24 effective
+URL: https://www.pjm.com/-/media/DotCom/documents/manuals/m20a.ashx
+OUTPUT:
+- LOLE is days/year and counts expected days with loss-of-load events regardless of event duration or magnitude.
+- LOLH is hours/year.
+- EUE is MWh/year and can be normalized by annual energy.
+- PJM RTO-wide criterion = LOLE 1 day in 10 years = 0.1 days/year.
+- PJM uses probabilistic load/resource-performance scenarios; LOLE and EUE are computed from scenario probabilities.
+- PJM also applies a separate LDA adequacy criterion, demonstrating that local deliverability constraints are not captured by one RTO-wide scalar.
+EVIDENCE_CLASS: SOURCE_FACT
+REPLICATION_STATUS: TEXT_EXTRACTION_AND_VISUAL_SCREENSHOT_PASS
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+
+EVIDENCE_ID: TE-EGC-042-003
+CLAIM_ID: CLAIM-EGC-042-003
+TOOL: web research + official EU law
+METHOD: legal-text inspection
+DATE: 2026-10-06
+SOURCE: Regulation (EU) 2019/943, consolidated text 2024-07-16, Articles 23-25
+SOURCE_DATE: 2024-07-16 consolidated
+URL: https://eur-lex.europa.eu/eli/reg/2019/943/2024-07-16/eng
+OUTPUT:
+- European/national adequacy assessment uses probabilistic calculations.
+- It must include at least EENS and LOLE.
+- It must account for generation, storage, demand response, imports/exports, real network development, primary-resource availability and interconnection.
+- Reliability standards are set by the Member State/competent authority, not by a single Europe-wide fixed number.
+- Reliability standard is based at least on VOLL and CONE and expressed as EENS and LOLE.
+EVIDENCE_CLASS: SOURCE_FACT
+REPLICATION_STATUS: CROSSCHECKED_WITH_ENTSO-E_2025/2026_ERA_PAGES
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+
+EVIDENCE_ID: TE-EGC-042-004
+CLAIM_ID: CLAIM-EGC-042-004
+TOOL: web research + PDF screenshot
+METHOD: methodology inspection
+DATE: 2026-10-06
+SOURCE: ENTSO-E proposal/methodology for VOLL, CONE and Reliability Standard under Regulation (EU) 2019/943
+SOURCE_DATE: 2020 methodology lineage
+URL: https://www.acer.europa.eu/sites/default/files/documents/en/Electricity/CLEAN_ENERGY_PACKAGE/Documents/Methodology%20for%20VoLL%20CONE%20and%20reliability%20standard_for%20submission%20to%20ACER.pdf
+OUTPUT:
+- Main reliability standard is a target LOLE derived from VOLL and CONE.
+- Dimensional rule shown in source: LOLE_target(h)=CONE(local currency/MW)/VOLL(local currency/MWh).
+- A central estimate AND a range reflecting uncertainty are required.
+CONCLUSION: even where LOLE is the main scalar, its numeric target is an economic/jurisdictional parameter with uncertainty, not a universal physical constant.
+EVIDENCE_CLASS: SOURCE_FACT
+REPLICATION_STATUS: TEXT_EXTRACTION_AND_VISUAL_SCREENSHOT_PASS
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+
+EVIDENCE_ID: TE-EGC-042-005
+CLAIM_ID: CLAIM-EGC-042-005
+TOOL: official NERC web/PDF research
+METHOD: current reliability-standard scope cross-check
+DATE: 2026-10-06
+SOURCES:
+- BAL-002-3 Contingency Reserve: https://www.nerc.com/standards/reliability-standards/bal/bal-002-3
+- NERC 2025 filing administering BAL-003-2 Frequency Response: https://www.nerc.com/who-we-are/regulatory/filings-to-ferc/2025
+- VAR-001-5 Voltage and Reactive Control: https://www.nerc.com/standards/reliability-standards/var/var-001-5
+- TPL-001-5.1 Transmission System Planning Performance: https://www.nerc.com/pa/Stand/Reliability%20Standards/TPL-001-5.1.pdf
+- TPL-008-1 Extreme Temperature Events: https://www.nerc.com/standards/reliability-standards/tpl/tpl-008-1
+SOURCE_DATES: current pages inspected 2026-10-06; TPL-008-1 effective 2026-04-01.
+OUTPUT:
+- Adequacy is not sufficient by itself: contingency reserve, frequency response, real-time voltage/reactive control, transmission steady-state/stability, and extreme-temperature planning are separate reliability obligations/services.
+- TPL-001-5.1 requires the system to remain stable and avoid cascading/uncontrolled islanding for defined planning events, with facility ratings/voltage limits observed.
+- TPL-008-1 explicitly adds reliable planning for extreme heat/cold events.
+EVIDENCE_CLASS: SOURCE_FACT
+REPLICATION_STATUS: MULTI_STANDARD_CROSSCHECK; TPL-001 VISUAL_SCREENSHOT_PASS
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+
+EVIDENCE_ID: CALC-EGC-042-001
+CLAIM_ID: CLAIM-EGC-042-006
+TOOL: Python Decimal arithmetic + independent algebraic recomputation
+METHOD: same-LOLE severity counterexample
+DATE: 2026-10-06
+INPUTS:
+- both systems: LOLE proxy = 0.1 loss-load event-days/year;
+- System A conditional event: 100 MW unserved for 1 h;
+- System B conditional event: 10,000 MW unserved for 24 h.
+EQUATION:
+EUE = expected_event_days_per_year * unserved_MW * duration_h_per_event_day.
+OUTPUT:
+- A: 0.1*100*1 = 10 MWh/year.
+- B: 0.1*10,000*24 = 24,000 MWh/year.
+- B/A severity ratio = 2,400x.
+UNCERTAINTY: none for arithmetic; this is an illustrative counterexample, NOT a measured grid result.
+ASSUMPTIONS: one representative loss-load event per counted event-day in the toy construction.
+LIMITATION: demonstrates information loss only; does not estimate any real system's EUE.
+REPRODUCTION_METHOD: direct multiplication and a second independently written equivalent calculation matched exactly.
+REPLICATION_STATUS: SAME_SESSION_CROSS_IMPLEMENTATION_PASS / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: CALCULATION
+
+R_STAR — PROPOSED CANONICAL SCHEMA (candidate-neutral):
+R_STAR(g,y,S) = {
+  ADEQUACY_STANDARD(g,y),
+  ADEQUACY_VECTOR,
+  STOCHASTIC_STRESS_ENSEMBLE(S),
+  DELIVERABILITY_BOUNDARY,
+  OPERATING_RELIABILITY_SERVICES,
+  SECURITY/STABILITY_CONSTRAINTS,
+  UNSERVED_ENERGY_ACCOUNTING,
+  UNCERTAINTY_RULE
+}
+
+1. ADEQUACY_STANDARD(g,y):
+- Use the applicable binding/planning reliability standard for geography g and study year y, with exact provenance/version.
+- Never substitute a global hardcoded LOLE value when the jurisdiction has another standard.
+- If geography is not frozen, GLOBAL_NUMERIC_R_STAR remains UNKNOWN by design. Candidate ranking must be conditional on declared geographic cases.
+- A common comparison case may be used only if frozen BEFORE candidate outcomes are examined and labelled as a comparison convention, not law.
+
+2. ADEQUACY_VECTOR:
+At minimum compute/report under the same simulations:
+- LOLE [days/year or hours/year, preserving the source convention],
+- EUE/EENS [MWh/year],
+- normalized EUE/EENS [fraction of annual served-demand requirement],
+- LOLH when used/applicable,
+- annual/tail distribution diagnostics sufficient to expose rare high-severity events.
+RULE: LOLE alone cannot establish equal reliability because it discards duration/magnitude information.
+If a jurisdiction specifies only a subset numerically, all binding metrics must pass; unbounded complementary metrics remain reportable and must not materially degrade versus the strongest matched baseline beyond model uncertainty if claiming equal service.
+
+3. STOCHASTIC_STRESS_ENSEMBLE:
+Use identical chronological traces/scenarios for candidate and baseline and model, where material:
+- load/weather dependence,
+- forced/planned outages,
+- VRE/hydro/resource availability,
+- storage state of charge, power and energy limits, self-discharge/degradation where relevant,
+- demand-response availability/nonperformance/rebound where relevant,
+- imports/exports and transmission/interface constraints,
+- correlated/common-mode events,
+- applicable extreme-heat/extreme-cold benchmark scenarios.
+Annual energy matching or deterministic nameplate margin alone does NOT satisfy this gate.
+
+4. DELIVERABILITY_BOUNDARY:
+Reliability is assessed at the common served-load/delivery boundary, including network constraints and losses relevant to serving load. Generator-bus adequacy alone cannot receive equal-service credit if energy cannot be delivered.
+
+5. OPERATING_RELIABILITY_SERVICES:
+Where applicable to the studied grid, candidate and baseline must include enough real capability/cost for:
+- contingency reserve/recovery,
+- frequency response and frequency control,
+- ramping/regulation,
+- reactive power/voltage control,
+- protection/fault-current/system-strength needs,
+- grid-forming/ride-through requirements where applicable,
+- black start/restoration where required.
+These are not automatically satisfied by passing annual/probabilistic adequacy.
+
+6. SECURITY/STABILITY_CONSTRAINTS:
+Applicable steady-state, contingency, transient/dynamic stability, voltage and facility-rating requirements are binary pass/fail constraints in addition to adequacy metrics. Any hardware, headroom, must-run operation, controls, network reinforcement, synchronous compensation, storage reserve, fuel or O&M required to pass must enter the common resource-cost ledger exactly once.
+
+7. UNSERVED_ENERGY_ACCOUNTING:
+- EUE/EENS is a physical reliability output, not free missing demand.
+- FSRC_ND compares resource cost only among systems meeting the same R_STAR service requirement.
+- Internal outage-compensation transfers do not reduce primary resource cost.
+- VOLL may be used where the governing reliability method explicitly uses it or as a declared welfare sensitivity, but cannot hide a physical reliability failure.
+
+8. UNCERTAINTY_RULE:
+- Report confidence/Monte-Carlo uncertainty for adequacy metrics.
+- If pass/fail or candidate-vs-baseline non-inferiority changes within credible uncertainty, RELIABILITY_NOT_VERIFIED.
+- Tail-risk diagnostics cannot be deleted merely because mean LOLE passes.
+
+FROZEN COMPARISON RULE:
+For every candidate C and strongest matched baseline B in geography g:
+A. run C and B on identical demand/weather/outage/network/DR/storage scenario definitions;
+B. both must pass all applicable binding reliability/security requirements;
+C. compare LOLE + EUE/EENS + required local metrics and tail diagnostics;
+D. where no numeric threshold exists for a complementary metric, C must be statistically non-inferior to B within model uncertainty before claiming same reliability service;
+E. cost ranking is invalid if C obtains lower FSRC_ND by accepting materially worse reliability not explicitly priced/authorized by the common service definition.
+
+RED_TEAM / FALSIFICATION RESULTS:
+- Universal "LOLE=0.1 days/year everywhere": FALSIFIED. Current PJM uses it, but NERC/EPRI states North America has no unified RA standard; EU law makes standards Member-State-specific and VOLL/CONE-based.
+- LOLE-only equal-reliability claim: FALSIFIED by PJM definition plus CALC-EGC-042-001 (same LOLE construction, 2,400x EUE difference).
+- Annual 100% energy match = adequacy: FALSIFIED by probabilistic adequacy requirements and PJM/ERAA practice.
+- Resource adequacy = complete grid reliability: FALSIFIED by separate reserve, frequency, voltage/reactive, transmission stability and extreme-weather standards.
+- Candidate-specific weather/outage traces: REJECTED as comparison privilege.
+- Generator-bus only service boundary: REJECTED where network deliverability can constrain load service.
+- Mean-only risk metric with hidden tail deterioration: REJECTED; EPRI explicitly warns single/average metrics can conceal tail risk.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-042-001 UNIVERSAL_NUMERIC_R_STAR: FALSIFIED.
+CLAIM-EGC-042-002 PARAMETERIZED_R_STAR(g,y,S): SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-003 MULTI_METRIC_ADEQUACY_VECTOR: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-004 COMMON_STOCHASTIC_TRACES: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-005 ADEQUACY_NOT_EQUAL_SECURITY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-042-006 LOLE_INFORMATION_LOSS_COUNTEREXAMPLE: CALCULATION_REPLICATED_SAME_SESSION / INDEPENDENT_REVIEW_REQUIRED.
+
+DEPENDENCY UPDATE:
+CLAIM-EGC-040R-006 RELIABILITY_INTEGRATION:
+METHOD: materially repaired by this contribution pending independent review.
+NUMERIC_GLOBAL_R_STAR: intentionally remains UNKNOWN/NOT_APPLICABLE because authoritative evidence does not support one universal number.
+NUMERIC_GEOGRAPHIC_R_STAR: must be sourced when geography/year is frozen.
+This distinction prevents a false "unknown" from being filled with arbitrary 0.1 while still making the system boundary executable.
+
+STATUS_CHANGE:
+JOB-EGC-042-RSTAR-C3-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+JOB_ID: JOB-EGC-042-RSTAR-REV-C4-20261006
+TITLE: Independent R_STAR Reliability Boundary Review and Replication
+ROLE: Independent resource-adequacy / grid-reliability reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does the proposed parameterized R_STAR prevent reliability-service gaming without inventing a universal threshold, and is CALC-EGC-042-001 correct?
+CANDIDATE: COMMON SYSTEM BOUNDARY
+DEPENDENCIES: JOB-EGC-042-RSTAR-C3-20261006 AWAITING_REVIEW.
+REQUIRED_INPUTS: TE-EGC-042-001..005; CALC-EGC-042-001; current MAIN-CHAT.md.
+REQUIRED_TOOLS: independent official-source retrieval; independent arithmetic replication; adversarial counterexamples; standards applicability check.
+REQUIRED_EVIDENCE:
+- verify current PJM criterion and LOLE/EUE definitions;
+- verify EU jurisdiction-specific reliability-standard logic;
+- verify NERC evidence that RA method/threshold is not universally unified;
+- verify separation of adequacy from operating/security obligations;
+- independently recompute same-LOLE severity counterexample;
+- attack the baseline-noninferiority rule for hidden asymmetry or circularity.
+EXPECTED_OUTPUT: PASS/FAIL per claim; corrections; unresolved geography-specific fields; evidence provenance audit.
+FALSIFICATION_CONDITION: FAIL if the schema silently privileges a candidate, if a universal numeric threshold is smuggled in, if LOLE-only equality survives the counterexample, if required system-security services disappear, or if source applicability/date is materially wrong.
+REVIEWER_JOB_ID: TBD_BY_NEXT_DISTINCT_SESSION
+STATUS: OPEN
+BLOCKERS: NONE for methodology review; geography-specific numeric thresholds remain intentionally parameterized.
+NEXT_ACTION: distinct session independently reproduce and attack R_STAR before any downstream winner test consumes it.
