@@ -1,0 +1,508 @@
+{
+  "SCHEMA_VERSION": "NEXY_SINGLE_BRANCH_MIGRATION_INVENTORY_V1",
+  "CAPTURED_FROM_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "CANONICAL_BRANCHES": [
+    {
+      "name": "NEXY.ai",
+      "sha": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+    },
+    {
+      "name": "NEXY.AI-Test-AI",
+      "sha": "07dd617109fd4730582f3615cdaf2bbbe277b585"
+    }
+  ],
+  "EXTRA_BRANCH_COUNT": 98,
+  "EXTRA_BRANCHES": [
+    {
+      "name": "NEXY.AI-Test-AI-validation/TASK-QUEUE-PROCESSING-REGRESSION-001/C-SOL-20261006-0143-PRODUCT-QUEUE-01",
+      "sha": "ac8ec8c36a0ea50587586a0921d914d8852fc3be",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-verify/logout-idempotency-C-SOL-20261006-0149",
+      "sha": "dd5212b007f7b815543e314ec0b5a9245d72a309",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001/C-SOL-20261006-0149-v2",
+      "sha": "0e6d1393c929830a0ea610aa7a1dd0b8c0a1c4a3",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001/C-SOL-20261006-0149",
+      "sha": "fd966526dd6376964319296db870add0e6817e98",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-CI-PR-EXACT-HEAD-001",
+      "sha": "38327dcb0cb00738eb108472cdb83184506b4f95",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-DOC-C3-1-CLOSED-ENUM-ORACLE-001",
+      "sha": "d6a7dcc3e552d01aaabb0074106b5a70f711cfc4",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-DOC-C3-3-RELEASE-POLICY-ORACLE-001",
+      "sha": "122f60e3e82bdef8e135d0abccaf6cade95c636a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001",
+      "sha": "dab708030271129b146364575eca713875376811",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-DOC-C3-ENVELOPE-CONTRACT-001",
+      "sha": "e5162d9266e93f7a3106585d170232ff84e47d8b",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-DOC-C4-CANONICAL-ROUTE-ORACLE-001",
+      "sha": "8eac336d9118d25f1169d0c56db1bda17cc426a0",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-DOC-C4-DIRECTIVE-CONTENT-TYPE-STATUS-001",
+      "sha": "e5affcb4d9c8a473bb1900868a7e87f30a8ac882",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-DOC-C4-READ-AUDIT-ACTOR-BINDING-001/C-SOL-20261006-0159-AUDIT-01",
+      "sha": "d46804ff8cc9e92b7d60a5ef6845209dacfcf0c5",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001/C-SOL-20261006-0143-PRODUCT-QUEUE-01",
+      "sha": "0bb2516efe095daa0e5981233a07d1e45c4c69c2",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001/C-SOL-20261006-0143-PRODUCT-QUEUE-01",
+      "sha": "4be46d148fa0ded281c89ae3d101760fe46d792a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-QUEUE-MISSING-DISPATCH-FAIL-CLOSED-001/C-SOL-20261006-0144-PRODUCT-QUEUE-02",
+      "sha": "96ae88298d49e28693c9743f65e183744f61e419",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-QUEUE-PROCESSING-REGRESSION-001/C-SOL-20261006-0143-PRODUCT-QUEUE-01-r2",
+      "sha": "53b9d7522b4d30144cd447648fcb906ef1aff0c0",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/TASK-QUEUE-PROCESSING-REGRESSION-001/C-SOL-20261006-0143-PRODUCT-QUEUE-01",
+      "sha": "977ddb8dffb146089c9d078aa7a6bfe0057d29a7",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/canonical-route-oracle-4B6E2A11",
+      "sha": "1b6b9742adfe5bcbf631f9daa5ba40d27f4e8ec9",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/freeze-recover-error-matrix-93C7A2D1",
+      "sha": "5dd24902ef33014c72fef96299a450ae2fcecdc5",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/run-optional-null-6E21A4B9-r2",
+      "sha": "c6542e274d2b66966c4a53d108b4d7092385a1ab",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work/run-optional-null-6E21A4B9",
+      "sha": "706f24f173c7cb4cc04ea0e6b3778c8fec52719b",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-account-2a8d6f41-repair",
+      "sha": "1aa14f409c2cf4143d59d9a94ae3aef9b91b73a5",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-account-2a8d6f41",
+      "sha": "bfba83383dbcdbaba64dfb941d48b8dd3c4b4d46",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-ci-pr-gate-7c2d91a4",
+      "sha": "9023784a4a15e5f2f4803819108e5ab2501bfe0c",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-dialog-friend-guard-7a41c2e9",
+      "sha": "0c9dbd6a218a46c86241e7706696b0b1b9c8b4c0",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-directive-created-audit-20261006",
+      "sha": "de0ea5a87ba6256451086f2ecfc18379c49858e2",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-empty-4c91e7b2",
+      "sha": "b5893e9a610694debdfc2628ea084280ce7633d6",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-human-gravity-6f4b2d10",
+      "sha": "5536b948ac55046c325e7f5f3300ff90befa420a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-incident-truth-7b3e91c4",
+      "sha": "fea6cfdaf452cfeac2d4fc2b66b0a3528caacf6c",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-owner-drawer-4e8c2a71",
+      "sha": "dbb51dae6c7197a69ed6e7b9d0072f2c62b6b70d",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-queue-future-tsa-4f2a91c7",
+      "sha": "0f701f78d90eb6a136d19172079eec5f02c7e499",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-queue-retry-cap-6c8f21a4",
+      "sha": "753b98b212689213061b5b741c9d2ad808d3b0f4",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-sol-envelope-status-20261006",
+      "sha": "284910990d3bf4c4db1a57f38116d793d861c70d",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-sol-envelope-status-r2-20261006",
+      "sha": "f618f03e5795df3ed22205c7dacb8a6854736e82",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY.AI-Test-AI-work-vault-hash-389f19aa",
+      "sha": "685029fe14fd32f7de8b5c088add4fa81f3b8aeb",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY-AI-Test-AI-work-C-18F7B6D2-s4-clean",
+      "sha": "8e1c371001d1db713fb0299c93f383a2efdae5c7",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY-AI-Test-AI-work-C-18F7B6D2-s4-constraint-panel",
+      "sha": "c9fd0899b3b99dc336649c5831ad2a85ce27505e",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY-AI-Test-AI-work-C-18F7B6D2-s5-view-result",
+      "sha": "cd951423370b0c6f3833f7b6f78f8118e2e556df",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "NEXY-AI-Test-AI-work-auth-audit-canonical-20261006",
+      "sha": "6bb025008528b853d22f691d5e8d870df997943c",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "ci/C-SOL-20261006-0143-ARTIFACT-REVISIONS",
+      "sha": "b91b846dadb26f0e02607a5f840d4062384148cd",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "ci/release-policy-result-oracle-c7f8a21b",
+      "sha": "95fb34c5579e380cfaf8b2265caadda6979cd2fd",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "ci-base/release-policy-result-oracle-c7f8a21b",
+      "sha": "889dad683e55a10f2969883a63ab58e3992b2f56",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "validation-C-SOL-20261006-0142-directive-ready-ui",
+      "sha": "71643e5cc94d43640d9807e337e443e40f8457d3",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "verify/NEXY-AI-Test-AI/C-SOL-20261006-0144-FREEZE-RECOVERY-CLOSURE",
+      "sha": "81cc3a7368c1ccffbba311362d73740dc4ec358a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0142-directive-ready-ui",
+      "sha": "c47019f379b68e99163208a3594c4b6710ea26b5",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0143-0700-otac-audit",
+      "sha": "d626f4cf55747eac4516896659e4d5f0ffa1ef62",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0143-0700-otac-audit-v2",
+      "sha": "77b58216ad68e078a37eb7b7cd96a32084293f57",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0143-api-envelope-failclosed",
+      "sha": "832aaad559c3cbea02a8a7debfba23d806f95bc7",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0143-api-envelope-failclosed-v2",
+      "sha": "16c4e989495fe144c6220509d418e831e525c976",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0143-doc-d-permission-visibility",
+      "sha": "6be8a00eb2a3017a683b36b6a315e271ca66cc9c",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0143-doc-d-permission-visibility-v2",
+      "sha": "42539543cc85fe5d3f153782749d2236be43f9e8",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0143-s5-view-result-cta",
+      "sha": "4a924a4cf500ece7bdec51ac556c24be16326cd3",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0152-audit-nav-rbac",
+      "sha": "fb8d18c5eff8b5b665b97182a4c9ae0f6f532b31",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0152-audit-nav-rbac-v2",
+      "sha": "9a8115f339a082c748b1065f38bbcaeb4c13fbd6",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0202-0700-logout-idempotency",
+      "sha": "541c0a2ed11ba8ca7a85c738ea053dc6fc0c173e",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0208-0700-freeze-423-code",
+      "sha": "b6b17d8d681cade7a5860c7a669d00af108bd6ea",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0208-incident-view-rbac",
+      "sha": "2f76a6a6aabbf4b1aa9515730af7bba778347100",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0215-0700-directive-422",
+      "sha": "1fca8d92a0f8b9d746a345b885ef688a7bdf103c",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0215-revision-pagination-truth",
+      "sha": "aec9afaa77213c37b223b7594b92eb81c7862f9a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0215-run-incident-rbac",
+      "sha": "9b5853580d3295ba5bcbfcaaa46d85af7b4d6c05",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0220-audit-viewer-rbac",
+      "sha": "8e8d7b408a520a40ede5e3d404de21015b1c8959",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0228-settings-rbac",
+      "sha": "a1c11b634476ebad439c5bd03d0c4df7b6197138",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/C-SOL-20261006-0234-permission-gate-loading-truth",
+      "sha": "9d5274d8d82cb8d08151c7bd2fbc2a2130b3885b",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY.AI-Test-AI/incident-audit-verify-001-r2",
+      "sha": "78424b53740c14d3a6313396da5281e13cfe31ea",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY.AI-Test-AI/incident-audit-verify-001-r3",
+      "sha": "80b409a59271624dd7e1eec49db4a062444c5aaf",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY.AI-Test-AI/incident-audit-verify-001",
+      "sha": "4d648fffb178e2e59d6e130697d50833742bec3c",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/C-SOL-20261006-0142-SMARTSILENCE",
+      "sha": "226cec9b8445db51b63477dd7a69f139f0aeeff1",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/C-SOL-20261006-0142-SMARTSILENCE-AUTHORITY-REVERT",
+      "sha": "639cb1e55f8da9d9b328b2b41218f8a149c03984",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/C-SOL-20261006-0144-FREEZE-RECOVERY-CLOSURE",
+      "sha": "34fd01a10dbd26098abdff49a51c5ce49d10b241",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/C-SOL-20261006-0144-FREEZE-RECOVERY-CLOSURE-r2",
+      "sha": "56e9d4ddc2af2f17c4441f15fb8b630d728ba6dd",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/C-SOL-20261006-0144-RUN-OPTIONAL-SCALARS",
+      "sha": "36c1437bddcdc3d1c2f67bda6ca7c3daf378439f",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/C-SOL-20261006-0144-RUN-OPTIONAL-SCALARS-r2",
+      "sha": "3c091ed4ac683bc934ae4d137b257e5fd7fd5513",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/C-SOL-20261006-0144-SIDEBAR-AUTOSHOW",
+      "sha": "06bf0af97ce42e0b7da6a04d8dac706757f9bce2",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/C-SOL-PRODUCT-NICKNAME-OPTIN-01",
+      "sha": "7956ea12dd6e290bd96fd50f7e41044d0ad890c6",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/C-SOL-PRODUCT-THEME-AUTO-01",
+      "sha": "79d94235d7501cf37be9fa2d476d3350d9cb7b52",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/T-AUDITSEARCH-6E2F1C9A",
+      "sha": "720c025897ca7ceab7370e5ace5774154ac8d05a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/T-AUDITSEARCH-6E2F1C9A-v2",
+      "sha": "48dc662ef2df123c51ddf40190b96bb4a1cf5fb0",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/T-AUDITSEARCH-6E2F1C9A-v3",
+      "sha": "78972243c5cd09fa1f26f1c95ba215a187ebe25c",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/T-S8-LATESTCANON-9F2A61D4",
+      "sha": "cca8d20af2e1c48518ca46f64557f23c14153c98",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/T-S9-REVPAGE-4C71B8D2",
+      "sha": "bc9012021ee4cb4ef738ac684554bdded850ca9a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI/TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001/C-SOL-OWNERRECOVERY-REPLAY-P0-01",
+      "sha": "048ea27ac32b2db54d08131a62f1c47d5b53abf4",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI-directive-idempotency-race-0144",
+      "sha": "71448a9612c33297c0f1bda09debfa8cf32176ae",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/NEXY-AI-Test-AI-queue-processing-monotonicity-0202",
+      "sha": "7c498625671d36ddccd4c28a08562c247078408a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/incident-primary-secondary-law-8d41c2ef",
+      "sha": "45432774c2c4ae1ad0b8740d82198565dcddbb75",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/incident-primary-secondary-law-8d41c2ef-r2",
+      "sha": "f4feeb7c34e387e3457d221586aa2353fbd1beb2",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/nexy-queue-missing-dispatch-20261006-0144",
+      "sha": "dce3de9e7911172cffb51364a96747d84f60d0ad",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/release-policy-result-oracle-c7f8a21b",
+      "sha": "19e7996153d0a4d26be1e25ddb98675c0c3a6d93",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/release-policy-result-oracle-c7f8a21b-r2",
+      "sha": "ba7a03488b8a879d9781bbcbf8fdf6f843c211be",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "work/security-incident-link-truth-5e7b91c4",
+      "sha": "f3c653ae9a612ff560d8e76b33e53bd25b29f633",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-ARTIFACT-REVISIONS",
+      "sha": "23686d61b3f21866af09f054110c8d0d0226859a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-ARTIFACT-REVISIONS-ORACLE",
+      "sha": "49b85e3500562a157c490bfaab84de5070ea1df8",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-ARTIFACT-REVISIONS-ORACLE-R2",
+      "sha": "d580994574f7e05e42088856e0f31cb1a6ce077a",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-QUEUE-CAS",
+      "sha": "fada134561e9dabe32a5488a26942128cbc89b0f",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "worker/NEXY-AI-Test-AI/C-SOL-20261006-LO2-SCOPE-REPAIR",
+      "sha": "547e306dc3499e20f84fce18cee7c60bc3607b55",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "worker/l1o13-unit-test-plan-canonical-7a31d4e2",
+      "sha": "6e1d85a885db843add21d1a367dd171ee21a3886",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "worker/l8-auto-freeze-verification-failure-9c42b7d1",
+      "sha": "0440c47f14dadb1a4fb4bcdd3fd53d7bb9fce6c9",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "worker/lo3-context-shard-coverage-4f9c2a17",
+      "sha": "cfd5a4f7bbd5fdc76f81fe6176d5ae72b201ad96",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    },
+    {
+      "name": "worker/ui-export-truth-5c2a91d7-r2",
+      "sha": "7b657a8e1f8f8e1de4988ce07c248c83a997c358",
+      "status": "FROZEN_FOR_MIGRATION_PENDING_OWNER_EXPORT"
+    }
+  ],
+  "RULE": "Do not delete an extra branch until its useful work is preserved in AI-CONTEXT and integrated or rejected with evidence."
+}
