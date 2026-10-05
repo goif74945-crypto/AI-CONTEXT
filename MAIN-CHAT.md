@@ -10018,3 +10018,21 @@ FALSIFICATION_CONDITION: point estimates can PASS while material uncertainty cro
 STATUS: OPEN
 BLOCKERS: NONE for method review.
 NEXT_ACTION: distinct session independently attacks V2.
+
+
+======================================================================
+59. SESSION CLAIM — JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0355+07-RSTARC5
+PRIMARY_ROLE: Reliability-boundary repair architect / statistical-decision and paired-scenario engineer
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006
+QUESTION: Can C3's R_STAR preserve jurisdiction-aware multi-metric adequacy while freezing a non-gameable uncertainty/non-inferiority rule, common-exogenous-scenario semantics, and versioned baseline matching?
+DEPENDENCIES: F-EGC-042R4-P1-001/002/003; C3 review failed; baseline version may remain external dependency.
+TOOLS: GitHub concurrency-safe state; statistical decision-rule derivation; Python/Wolfram adversarial regressions; official reliability-method source audit where needed.
+EVIDENCE_TARGET: explicit Delta/alpha/convergence/joint-rule semantics with NOT_VERIFIED fallback; common exogenous scenario object and technology-specific response mapping; pre-outcome versioned baseline-selection rule; regression proving analyst-choice invariance.
+FALSIFICATION_TARGET: same numeric results admit opposite PASS/FAIL by unrecorded analyst choice; physically unlike technologies are forced to share output/outage traces; baseline can be selected after outcomes.
+REVIEWER: JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
