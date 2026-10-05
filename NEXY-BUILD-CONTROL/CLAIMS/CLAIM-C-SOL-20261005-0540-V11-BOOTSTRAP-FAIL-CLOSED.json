@@ -13,5 +13,9 @@
     "packages/orch-core/system-state.ts",
     "tests/coverage/bootstrap-control-plane.test.ts"
   ],
-  "STATUS": "CLAIMED"
+  "STATUS": "SUSPENDED",
+  "SUSPEND_REASON": "V16-RC1.3 preactivation legacy-admission freeze and migration drain; no legacy mutation/integration authority may continue.",
+  "SUSPENDED_BY": "C-SOL-V16RC13-B11E0417-A5F26CF7",
+  "BOOTSTRAP_FENCE_STATE_VERSION": 2,
+  "LEGACY_AUTHORITY": "NONE"
 }
