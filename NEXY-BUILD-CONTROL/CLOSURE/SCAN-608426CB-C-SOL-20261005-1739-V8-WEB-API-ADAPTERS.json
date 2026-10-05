@@ -1,0 +1,48 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1739-V8-WEB-API-ADAPTERS",
+  "CHAT_ID": "C-SOL-20261005-1739-V8",
+  "INVENTORY_ID": "INV-608426CB-C-3B5E71A2",
+  "INVENTORY_SHARD": 1,
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": "apps/web/app/api/**/route.ts records present in closure shard 01",
+  "FILES_SCANNED": 38,
+  "FILE_STATUS": "SCANNED_NO_DIRECT_ADAPTER_GAP__DEPENDENCY_REVERIFY_REQUIRED",
+  "METHOD": "Exact integration-branch blob read; inspect exported HTTP methods, imported handlers, parameter forwarding, and use of shared runApiHandler boundary.",
+  "FACTS": [
+    "All 38 inspected route adapter files are thin dispatch adapters; no direct database/FSM/authority mutation was found in these adapter files.",
+    "All twelve final DOC-C §4.2 canonical route adapters are present at expected web paths and forward to named package handlers through runApiHandler.",
+    "Additional implementation routes exist; their mere presence is not treated as DOC-C canonical authority.",
+    "Shared dependency apps/web/lib/api-handler.ts has open finding FIND-DOC-C3-API-HANDLER-FALSE-FREEZE-001, so adapter files cannot be promoted to VERIFIED_CLEAN until that dependency is repaired/reverified.",
+    "Final DOC-C route semantic/oracle gaps remain under TASK-DOC-C4-CANONICAL-ROUTE-ORACLE-001 and auth-specific findings."
+  ],
+  "CANONICAL_ROUTE_ADAPTERS": {
+    "POST /api/auth/request-otac": "apps/web/app/api/auth/request-otac/route.ts -> handleRequestOtac",
+    "POST /api/auth/verify-otac": "apps/web/app/api/auth/verify-otac/route.ts -> handleVerifyOtac",
+    "GET /api/session/me": "apps/web/app/api/session/me/route.ts -> handleSessionMe",
+    "POST /api/auth/logout": "apps/web/app/api/auth/logout/route.ts -> handleLogout",
+    "POST /api/directives": "apps/web/app/api/directives/route.ts -> handleCreateDirective",
+    "GET /api/directives/:id": "apps/web/app/api/directives/[id]/route.ts -> handleGetDirective",
+    "GET /api/runs/:id": "apps/web/app/api/runs/[id]/route.ts -> handleGetRun",
+    "POST /api/freeze/recover": "apps/web/app/api/freeze/recover/route.ts -> handleFreezeRecover",
+    "POST /api/vault/commit": "apps/web/app/api/vault/commit/route.ts -> handleVaultCommit",
+    "GET /api/artifacts/:id/revisions": "apps/web/app/api/artifacts/[id]/revisions/route.ts -> handleArtifactRevisions",
+    "GET /api/incidents/:id": "apps/web/app/api/incidents/[id]/route.ts -> handleIncident",
+    "GET /api/audit-logs": "apps/web/app/api/audit-logs/route.ts -> handleAuditLogs"
+  },
+  "DEPENDENCY_GAPS": [
+    "FIND-DOC-C3-API-HANDLER-FALSE-FREEZE-001",
+    "TASK-DOC-C4-CANONICAL-ROUTE-ORACLE-001",
+    "FIND-DOC-C4-AUTH-PERSISTENCE-ERROR-SURFACE-001",
+    "F-C-SOL-V8-1737-SESSION-ME-ERROR-MATRIX-CONFLICT"
+  ],
+  "EXECUTED_TEST_EVIDENCE": "NONE_THIS_SCAN",
+  "SOURCE_MUTATION": "NONE",
+  "CLOSURE_EFFECT": {
+    "SCANNED_FILES_CONTRIBUTION": 38,
+    "VERIFIED_CLEAN_FILES_CONTRIBUTION": 0,
+    "REVERIFY_FILES_CONTRIBUTION": 38,
+    "NOTE": "Aggregation must account for concurrent shard scans and dependency repair; do not mutate hot central inventory from this record."
+  }
+}
