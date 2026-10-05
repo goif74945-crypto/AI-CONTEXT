@@ -8,9 +8,10 @@
   "STATUS": "ACTIVE",
   "PRIORITY": "P1",
   "RISK": "HIGH",
-  "BASE_SHA": "c1a2bea37fd40a5b8a6b12b7770fa41f55beb02c",
+  "BASE_SHA": "586275e163d5f6503874621223cb89f878b3da37",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "TARGET_PATHS": [
+    "packages/api/runtime-state.ts",
     "apps/web/lib/api-handler.ts",
     "tests/contract/api-handler.test.ts"
   ],
@@ -26,5 +27,6 @@
   "BLOCKER": null,
   "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001",
   "UNBLOCK_NOTE": "Latest explicit user authority requires isolated worker branches and immediate product execution; slash-child namespace under NEXY.AI-Test-AI is Git-invalid, so the established Git-valid sibling prefix NEXY.AI-Test-AI-work/* is used.",
-  "CLAIMED_AT": "2026-10-06T01:44:00+07:00"
+  "CLAIMED_AT": "2026-10-06T01:44:00+07:00",
+  "SCOPE_EXPANSION_REASON": "Direct UI->CORE import is forbidden by scripts/check-module-boundaries.ts. Add a minimal API-owned read-only runtime-state projection so dependency direction remains UI->API->CORE."
 }
