@@ -1,0 +1,32 @@
+{
+  "RESULT_ID": "RESULT-C-SOL-20261005-1723Z-V16RC13-RESOURCE-GRAPH-V1",
+  "RESULT_TYPE": "V16_RC1_3_PREGENESIS_RESOURCE_GRAPH_CANDIDATE",
+  "OWNER_CHAT": "C-SOL-20261005-1723Z-V16RC13-PREACT",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "ARTIFACT_PATH": "NEXY-BUILD-CONTROL/V16/GENESIS/RESOURCE_GRAPH_V1.json",
+  "ARTIFACT_CREATE_COMMIT": "a04a0f5c177c35b2fac470b2a53340402b38a65a",
+  "TARGET_HEAD": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "TARGET_TREE": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c",
+  "RESOURCE_GRAPH_VERSION": 1,
+  "RESOURCE_GRAPH_HASH": "ebca38735a5688176ca92ea2dc1fd34e73956147bdb5f9f4b0e474406bce4a9b",
+  "FILE_DENOMINATOR_COUNT": 881,
+  "MODULE_NODE_COUNT": 58,
+  "TOTAL_NODE_COUNT": 1104,
+  "CANONICAL_OBJECT_BYTES": 233649,
+  "CONSTRUCTION_EVIDENCE": [
+    "Git recursive tree at exact target tree was non-truncated.",
+    "Every blob path in that tree was converted to exactly one FILE node.",
+    "Every FILE node was assigned exactly one deterministic structural MODULE parent.",
+    "Typed semantic resources were only emitted from explicit path/name evidence; no guessed import relation was asserted."
+  ],
+  "STATUS": "PARTIAL",
+  "VERDICT": "NOT_ACTIVATION_READY",
+  "OPEN_REVIEW_REQUIREMENTS": [
+    "Independently recompute RESOURCE_GRAPH_HASH from exact artifact.",
+    "Verify 881 target blobs map 1:1 to FILE nodes with no omissions/duplicates.",
+    "Review module partition and semantic umbrellas for false-negative lock conflicts across modules.",
+    "Either add conservative cross-module conflicts/umbrellas or prove the current candidate sufficient before genesis installation."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE"
+}
