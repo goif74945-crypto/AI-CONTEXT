@@ -4,14 +4,16 @@
   "TASK_ID": "TASK-DOC-C4-INCIDENT-AUDIT-VERIFICATION-001",
   "OWNER_CHAT_ID": "C-SOL-20261006-0143-INCIDENT-AUDIT",
   "TARGET_HEAD_AT_CLAIM": "92aff2f532d30d81e74b8d2292a583edb77b5de8",
-  "WORK_BRANCH": "work/NEXY.AI-Test-AI/incident-audit-verify-001-r2",
+  "WORK_BRANCH": "work/NEXY.AI-Test-AI/incident-audit-verify-001-r3",
   "SCOPE": "Behavioral verification only for DOC-C GET /api/incidents/:id mandatory INCIDENT_VIEWED audit emission and audit-failure fail-closed behavior.",
   "TARGET_PATHS": [
     "tests/contract/canonical-api.test.ts"
   ],
   "PRODUCT_SOURCE_MUTATION": "TEST_ONLY",
   "PROTECTED_UPSTREAM": "NEXY.ai",
-  "STATUS": "ACTIVE_PENDING_INTEGRATION_GATE",
+  "STATUS": "RELEASED_AFTER_INTEGRATION_VALIDATION_BLOCKED",
   "WORKER_NAMESPACE": "GIT_VALID_ISOLATED",
-  "CANDIDATE_SHA": "87405fbba5f6f1856429ddce4bc99ddae6bd659c"
+  "CANDIDATE_SHA": "80b409a59271624dd7e1eec49db4a062444c5aaf",
+  "INTEGRATION_COMMIT": "6cfb3590223382bb26abaa7e5b2d9ee97807596d",
+  "MUTATION_OWNER_ACTIVE": false
 }
