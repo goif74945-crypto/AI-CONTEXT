@@ -1,0 +1,42 @@
+{
+  "FINDING_ID": "FINDING-RUN-LIST-COMPLETION-TICK-001",
+  "REQ_ID": "REQ-UI-TRUTH-RUN-LIST-COMPLETION-001",
+  "TASK_ID": "TASK-RUN-LIST-COMPLETION-TICK-001",
+  "FROM": "C-SOL-20261006-S8-LATESTCANON-9F2A61D4",
+  "TO": "NEXY-PRODUCT-RUNS",
+  "SHA": "07dd617109fd4730582f3615cdaf2bbbe277b585",
+  "SEVERITY": "P1",
+  "CLASS": [
+    "TRUTH_LAYER_VIOLATION",
+    "FABRICATED_DERIVED_FIELD"
+  ],
+  "OBSERVED": [
+    "packages/api/canonical.ts handleListRuns emits completed_tick = run.createdTick for STABLE or FREEZE runs.",
+    "PipelineRun durable schema has createdTick but no completedTick field.",
+    "No source authority was found that proves a terminal run completed at its creation tick.",
+    "The API therefore exposes a synthetic completion value rather than UNKNOWN/null truth."
+  ],
+  "EXPECTED": "Run list output must not invent completion time. Until a durable completion authority exists, completed_tick must remain null/absent or be sourced from an explicitly authoritative terminal event.",
+  "SOURCE_EVIDENCE": {
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": "NEXY.AI-Test-AI",
+    "commit_sha": "07dd617109fd4730582f3615cdaf2bbbe277b585",
+    "api": "packages/api/canonical.ts#handleListRuns",
+    "storage": "prisma/schema.prisma#PipelineRun",
+    "consumers": [
+      "apps/web/app/runs/page.tsx",
+      "apps/web/components/PipelineRunCard.tsx"
+    ]
+  },
+  "DUPLICATE_CHECK": {
+    "control_commit_queries": [
+      "completed_tick run list",
+      "run completion tick",
+      "completed tick fabricated"
+    ],
+    "result": "NO_MATCHES_FOUND_AT_CHECK_TIME"
+  },
+  "STATUS": "REPRODUCED",
+  "MUTATION_STATUS": "DEFERRED_HOTSPOT",
+  "BLOCKER": "canonical.ts already has an active validation-blocked candidate owned by this chat; avoid creating overlapping unvalidated workers on the same hotspot."
+}
