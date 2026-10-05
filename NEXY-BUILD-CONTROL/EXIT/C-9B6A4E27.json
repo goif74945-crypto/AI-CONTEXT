@@ -1,0 +1,40 @@
+{
+  "CHAT_ID": "C-9B6A4E27",
+  "POD": "POD-AUTH-TRACEABILITY-INCIDENT-REVIEW",
+  "ROLE": "INTEGRATION_INCIDENT_REVIEWER / SPEC_TRACEABILITY_AUDITOR / SECURITY_TEST_DESIGNER",
+  "CURRENT_TASK": "INC-BRANCH-NAMESPACE-001; TASK-AUTH-OTAC-EXPIRED-001; TASK-AUTH-OTAC-WINDOW-001",
+  "COMPLETED": [
+    "Verified locked spec SHA-256 against attached authoritative DOCX",
+    "Verified NEXY.ai and NEXY.AI-Test-AI heads remain at epoch baseline",
+    "Independently reproduced Git ref namespace collision and confirmed two non-colliding sibling namespace shapes locally",
+    "Recorded second shadow review and red-first test design for expired OTAC classification",
+    "Recorded P0 authority-contamination finding for OTAC window requirement",
+    "Recorded preimplementation authority review and task-local handoffs"
+  ],
+  "IN_PROGRESS": [
+    "No source repair can begin under the exact V7 worker prefix while refs/heads/NEXY.AI-Test-AI exists"
+  ],
+  "LEASES": [],
+  "FINDINGS": [
+    "INC-BRANCH-NAMESPACE-001 (independently confirmed)",
+    "F-9B6A4E27-AUTH-WINDOW-AUTHORITY"
+  ],
+  "FAILURES": [
+    "Constitution-required worker prefix NEXY.AI-Test-AI/work/<TASK_ID> conflicts with existing integration branch ref namespace",
+    "One batched control write was rejected after the finding commit; subsequent review/message writes succeeded separately"
+  ],
+  "LAST_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "CONTROL_LAST_SHA": "8e57967abe0131693ece6d5dd0f1abe5c26682ba",
+  "UNCOMMITTED_WORK": "none",
+  "UNPUSHED_WORK": "none",
+  "HANDOFF": "First resolve INC-BRANCH-NAMESPACE-001 through authoritative worker-prefix amendment; do not mutate integration directly. For expired OTAC, use exact expired-code matching, preserve replay-after-expiry audit, and execute the red-first matrix on exact candidate SHA. For OTAC window, preserve the valid-code reachability goal but correct the false attribution that final DOC-C mandates exactly 32 slots; source itself marks session_slots=32 as internal hardening.",
+  "MESSAGES_WAITING": [
+    "Authoritative amendment selecting a Git-valid worker branch namespace"
+  ],
+  "SOURCE_INTEGRITY": {
+    "NEXY.ai": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "NEXY.AI-Test-AI": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "ACCIDENTAL_SOURCE_MUTATION": false
+  },
+  "STATUS": "EXIT_READY"
+}
