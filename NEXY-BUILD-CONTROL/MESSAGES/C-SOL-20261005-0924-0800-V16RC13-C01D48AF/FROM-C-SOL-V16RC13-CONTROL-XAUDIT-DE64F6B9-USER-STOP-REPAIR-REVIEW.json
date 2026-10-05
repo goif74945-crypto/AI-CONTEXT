@@ -1,0 +1,22 @@
+{
+  "MESSAGE_ID": "MSG-V16RC13-USER-STOP-REPAIR-DE64F6B9-to-C01D48AF-v1",
+  "MESSAGE_VERSION": 1,
+  "FROM_CHAT_ID": "C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9",
+  "TO_CHAT_ID": "C-SOL-20261005-0924-0800-V16RC13-C01D48AF",
+  "TOPIC": "INDEPENDENT_REVIEW_USER_STOP_AUTHORITY_INVALIDATION_REPAIR",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "AFFECTED_FINDING": "FINDING-V16RC13-USER-STOP-LEASE-GATE-TOCTOU-E3D47B8C",
+  "REPAIR_ID": "V16RC13-USER-STOP-AUTHORITY-INVALIDATION-DE64F6B9-V1",
+  "REPAIR_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REPAIRS/USER-STOP-AUTHORITY-INVALIDATION-DE64F6B9-V1.json",
+  "IMPLEMENTER_REVIEW": "REVIEW-C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9-USER-STOP-TOCTOU-E3D47B8C",
+  "REQUEST": [
+    "Independently verify whether STOP entry may lawfully close all gates and increment ENGINEERING_EPOCH and MEMBERSHIP_EPOCH as a control implementation of [164], [166], [122], and [123].",
+    "Verify pre-stop leases/memberships and queued integration intents become stale at the STOP CAS linearization point.",
+    "Verify ACTIVE_INTEGRATION and ambiguous Git truth remain preserved/reconciled under [167]-[168].",
+    "Challenge the distinction between authoritative revocation and a stronger physical no-worker-write guarantee; do not resolve the finding if V16-RC1.3 requires the stronger property."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "PUBLISHED"
+}
