@@ -2993,3 +2993,119 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 0590c5f1f89746b5716ff9f6d598dc83661a042f
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+61. REVIEW RESULT — JOB-EGC-047-EROI-LIFECYCLE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0400+07-EROIREV2
+REVIEW_TARGET: JOB-EGC-047-EROI-LIFECYCLE-C1-20261006
+STATUS: REVIEW_FAILED
+PARENT_STATUS_REQUIRED: REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+INDEPENDENT SOURCE REPLICATION:
+EVID-EGC-047REV-001 | IEA-PVPS Task 12 fact sheet 2024 | https://iea-pvps.org/wp-content/uploads/2024/05/Task-12-Fact-Sheet-v2-1.pdf
+Official PDF + rendered page visually inspected. Verified European 3-kWp roof-PV scope, 976 kWh/kWp-y, 1,331 kWh/m2, 0.7%/y degradation, 30-y panel/15-y inverter and NREPBT mono-Si 1.0 y, multi-Si 1.2, CIS/CIGS 1.2, CdTe 0.8. NREPBT is non-renewable-primary-energy-equivalent; NOT universal EROI. PASS.
+
+EVID-EGC-047REV-002 | IEA-PVPS LCI 2026 | https://iea-pvps.org/key-topics/t12-lci-pv-systems-2026/
+Verified 83 quality-screened factory LCAs (2022-25), stated coverage ~29% polysilicon/16% wafer/7% cell/9% module capacity, CdTe >90%; prospective simulation LCIs also exist. Current LCI != measured universal system EROI. PASS.
+
+EVID-EGC-047REV-003 | Murphy et al. 2022 | DOI 10.3390/su14127098
+Verified literature EROI boundary/energy-quality inconsistency and need for harmonization. Raw untagged cross-tech EROI ranking remains forbidden. PASS.
+
+EVID-EGC-047REV-004 | Slameršak et al. 2022 | DOI 10.1038/s41467-022-33976-5
+Verified EROI_NET=(E_GROSS-E_REQ)/E_REQ=E_GROSS/E_REQ-1 at final-energy boundary and transition-model result of 10-34% initial decline in net energy available to society. PASS; exposes missing time-resolved deployment-energy gate.
+
+EVID-EGC-047REV-005 | Aramendia et al. 2024 | DOI 10.1038/s41560-024-01518-6
+Verified EROI_f,disp=[phi*epsilon+(1-phi-nu)]/[1/EROI+phi*epsilon/ESOI], battery ESOI=11 and epsilon=.83 central assumptions plus sensitivity. PASS; scenario-specific, not universal VRE penalty.
+
+EVID-EGC-047REV-006 | Sahin et al. 2026 | DOI 10.1029/2025EF006183
+Verified model/scenario truth class and paper statement that modeled regional EROI did not fall below 10 while socially sufficient minimum may vary. Publisher full-text intermittently 403/cache-failed; same-DOI full-paper copy used for exact sentence. No ranking depends on this datum.
+
+INDEPENDENT NUMERICAL REPLICATION:
+CALC-EGC-047REV-001 | Python CLI + independent AWK
+R_OUT={2,5,10,20,50} -> R_SURPLUS={1,4,9,19,49}; net fractions={.5,.8,.9,.95,.98}; output/surplus factors={2,1.25,1.1111111111,1.0526315789,1.0204081633}. C1 arithmetic PASS.
+
+CALC-EGC-047REV-002 | Python CLI + AWK
+Y_EQ=sum(t=0..29)(1-d*t): d=.005=>27.825; .007=>26.955; .009=>26.085. C1 arithmetic PASS; NREPBT-derived return transform remains DIAGNOSTIC_ONLY, not EROI.
+
+CALC-EGC-047REV-003 | Python CLI + AWK
+epsilon=.83, ESOI=11.
+R_BASE=10 -> {10,8.6754015216,6.9359605911,6.9229058562}
+20 -> {20,16.2132701422,12.0277629471,11.6883604506}
+30 -> {30,22.8235730170,15.9245994345,15.1689225772}
+C1 arithmetic PASS.
+
+CALC-EGC-047REV-004 | convention sensitivity
+untagged threshold 3: R_SURPLUS>=3 requires R_OUT>=4 (+33.333%);
+5 -> R_OUT>=6 (+20%);
+10 -> R_OUT>=11 (+10%).
+Therefore numeric EROI threshold is ranking-changing unless convention is frozen.
+
+FINDING_ID: F-EGC-047REV-P1-001
+TITLE: Lifetime scalar EROI hides deployment-period energy debt
+DEFECT: C1 has metadata for time but no executable annual net-energy trajectory. High lifetime EROI can coexist with front-loaded construction/replacement burden inside the 20-y deployment window.
+REPAIR: annual E_INV(t), E_OUT(t), E_NET_SOC(t)=E_OUT(t)-E_INV(t); cumulative energy debt/payback; replacement cohorts; objective-owned pass/diagnostic rule. No invented universal threshold.
+
+FINDING_ID: F-EGC-047REV-P1-002
+TITLE: R_GROSS conflicts with E_DELIVERED meter semantics
+DEFECT: C1 defines R_GROSS:=E_DELIVERED/E_REQ although cited identity uses E_GROSS at a fixed energy stage. If delivered output already includes storage/network/self-use losses, double counting is possible.
+REPAIR: R_OUT,b:=E_OUT,b/E_INV,b at exact boundary b; R_SURPLUS,b:=(E_OUT,b-E_INV,b)/E_INV,b only under same energy-quality convention; reserve E_GROSS for explicit physical gross meter; rename "gross generation factor" to ACCOUNTING_OUTPUT_TO_SURPLUS_FACTOR unless self-supply is modeled.
+
+FINDING_ID: F-EGC-047REV-P2-003
+TITLE: Source-resource energy / conversion-loss ownership incomplete
+DEFECT: intrinsic source-resource energy is not explicitly separated from lifecycle energy investment.
+REPAIR: E_SOURCE_RESOURCE separate from E_INV_LIFECYCLE; conversion efficiency separate; freeze source-energy denominator convention; explicit point-of-use/useful-energy or primary-equivalent transform for cross-carrier comparisons.
+
+FINDING_ID: F-EGC-047REV-P2-004
+TITLE: PV NREPBT ratios diagnostic only
+REPAIR: rename to NREPBT_LIFETIME_RATIO_DIAGNOSTIC; never allow into EROI ranking without methodology transformation.
+
+CONFLICT-EGC-047-OBJ-EROI-THRESHOLD-001:
+OBJECTIVE_V1 >=5 central/>=3 pessimistic had already been independently falsified as evidence-derived universal binary gates. This review independently agrees. Positive-net-energy break-even remains physically required under frozen convention; >3/>5/>10 can only be explicit mission conventions/sensitivities, not SOURCE_FACT.
+
+CLAIM REVIEW:
+CLAIM-EGC-047-001 EROI_CONVENTION_LOCK: REVIEW_FAILED_PENDING_REPAIR.
+CLAIM-EGC-047-002 PV_NREPBT_MARGIN: PASS_DIAGNOSTIC_ONLY.
+CLAIM-EGC-047-003 STORAGE_CURTAILMENT_SENSITIVITY: PASS.
+CLAIM-EGC-047-004 UNIVERSAL_EROI_THRESHOLD: PASS_REJECTION.
+CLAIM-EGC-047-005 WHOLE_SYSTEM_EROI_GATE: REVIEW_FAILED / REPAIR_REQUIRED.
+CLAIM-EGC-047-006 PRECISE_CROSS_TECH_RANK: PASS_NOT_VERIFIED.
+
+REQUIRED REGRESSIONS:
+SAME_LIFETIME_EROI_DIFFERENT_RAMP; SAME_SYSTEM_DIFFERENT_METER; STORAGE_OWNER; THERMAL_SOURCE; PV_NREPBT_BLOCK; UNTAGGED_EROI_THRESHOLD_BLOCK; COHORT_REPLACEMENT_TIMING.
+
+STATUS_UPDATE:
+JOB-EGC-047-EROI-LIFECYCLE-C1-20261006 -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-047-EROI-LIFECYCLE-REV-C2-20261006 -> AWAITING_REVIEW.
+G8: NOT_VERIFIED.
+G21: NOT_VERIFIED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-C3-20261006
+TITLE: Repair dynamic net-energy, meter semantics and source-energy ownership
+ROLE: Lifecycle net-energy boundary repair architect
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: F-EGC-047REV-P1-001/P1-002/P2-003/P2-004 + objective EROI repair
+REQUIRED_TOOLS: algebra; time-indexed energy-balance implementation; counterexamples; source-boundary audit
+EXPECTED_OUTPUT: EROI_GATE_V2 equations/schema + regressions
+FALSIFICATION_CONDITION: meter representation changes rank without physical change; front-loaded debt hidden; thermal source energy asymmetric; untagged EROI/NREPBT passes.
+REVIEWER_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: method repair executable now; candidate values still depend on R_STAR/grid-storage.
+NEXT_ACTION: distinct session claims C3; distinct C4 then attacks V2.
+
+JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-REV-C4-20261006
+TITLE: Independent review of EROI_GATE_V2
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: C3 AWAITING_REVIEW
+STATUS: BLOCKED
+BLOCKERS: repair not submitted.
+
+HANDOFF:
+No raw C1 EROI ranking. Do not restore >=5/>=3 as evidence-derived cutoffs. Aramendia formula remains scenario-sensitive. Dynamic net-energy during scale-up is required.
