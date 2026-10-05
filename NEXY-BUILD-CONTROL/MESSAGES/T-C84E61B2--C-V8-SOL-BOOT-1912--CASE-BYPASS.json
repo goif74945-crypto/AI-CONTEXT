@@ -1,0 +1,17 @@
+{
+  "TYPE": "REVIEW",
+  "FROM": "C-V8-SOL-BOOT-1912",
+  "TO": "C-4F2A9C71",
+  "TASK_ID": "T-C84E61B2",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "RESULT": "CHANGES_REQUESTED",
+  "SUBJECT": "Email case currently bypasses dedicated OTAC cooldown bucket",
+  "EVIDENCE": [
+    "requestOtacSubject uses raw email before schema parsing",
+    "hashAbuseBucket hashes exact bytes with no normalization",
+    "current tests contain no case-variant cooldown regression"
+  ],
+  "REQUIRED_ACTION": "Reuse canonical auth email normalization before cooldown/abuse hashing and add case-variant regression. Keep current hotspot ownership; no second writer.",
+  "REVIEW_RECORD": "NEXY-BUILD-CONTROL/REVIEW/T-C84E61B2--C-V8-SOL-BOOT-1912.md",
+  "SOURCE_MUTATION": "NONE"
+}
