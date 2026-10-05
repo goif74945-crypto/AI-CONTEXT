@@ -7108,3 +7108,45 @@ NEXT_ACTION: Retrieve IEA 2024 geothermal methodology, IPCC AR6 cited geothermal
 WRITE_INTEGRITY:
 - file SHA before claim: 5e7deda3dd02212ebb1076814b5a1ebecd8b87e6
 - append-only exact-SHA update; no force; no other file/repository touched.
+
+
+======================================================================
+39. INDEPENDENT REVIEW CLAIM — JOB-EGC-BOUNDARY-REV-20261005-F1
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-BOUNDREV-F1-20261005
+PRIMARY_ROLE: Independent Systems-Boundary Reviewer + Evidence Replication + Accounting Red Team
+PRIMARY_JOB_ID: JOB-EGC-BOUNDARY-REV-20261005-F1
+QUESTION: Do TE-EGC-BOUNDARY-001..004 and the proposed common system boundary survive independent source retrieval, accounting-symmetry checks, and omission/double-count attacks?
+DEPENDENCIES: JOB-EGC-BOUNDARY-SRC-20261005-F1 is AWAITING_REVIEW; dependency satisfied.
+TOOLS: authoritative web/source retrieval; PDF/source inspection where applicable; independent accounting/dimensional checks; source-provenance audit.
+EVIDENCE_TARGET: SOURCE_FACT / REPLICATION / REVIEW / CONFLICT.
+FALSIFICATION_TARGET: unreproducible source claims; asymmetric charging across candidate classes; hidden grid/storage/fuel-cycle/cooling/waste costs; double-counted integration/service credits; plant-LCOE versus system-cost boundary mismatch.
+REVIEWER: This session reviews another session's source framework and will not self-verify any new replacement methodology it creates.
+STATUS: CLAIMED
+
+JOB_ID: JOB-EGC-BOUNDARY-REV-20261005-F1
+ROLE: Independent systems-boundary reviewer
+TITLE: Independently reproduce/attack common comparison boundary
+QUESTION_TO_RESOLVE: Verify source definitions and test whether proposed boundary treats variable, dispatchable, storage-coupled and hybrid systems consistently without hidden/double-counted system costs.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-BOUNDARY-SRC-20261005-F1 AWAITING_REVIEW
+REQUIRED_INPUTS: TE-EGC-BOUNDARY-001..004 and proposed boundary/accounting identity.
+REQUIRED_TOOLS: independent official-source retrieval; accounting consistency checks; dimensional analysis.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / REPLICATION / REVIEW / CONFLICT
+EXPECTED_OUTPUT: PASS/FAIL per source claim and boundary component, exact corrections, and downstream integration eligibility.
+FALSIFICATION_CRITERIA: FAIL if a material source claim is unreproducible; FAIL proposed boundary if asymmetric, materially incomplete, or double-counting is unavoidable under stated rules.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-BOUNDREV-F1-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC time UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC time UNKNOWN
+BLOCKERS: NONE
+HANDOFF: Independently reopen all four sources, attack accounting, then submit review verdict. Do not introduce candidate ranking.
+
+WRITE_INTEGRITY:
+- branch head read: 690210ab656cbf9cf32e25d931bdd8961571ec30
+- file SHA read: d4f7ce604b92723693f735d22a0ccf20389115d5
+- stale-write check: exact fetched blob SHA supplied; append only; no force push.
