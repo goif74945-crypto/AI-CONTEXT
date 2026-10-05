@@ -1,13 +1,13 @@
 {
   "TASK_ID": "TASK-DOC-C3-3-RELEASE-POLICY-ORACLE-001",
   "CREATOR_CHAT": "C-6D91A4F2",
-  "OWNER_CHAT": "UNASSIGNED",
+  "OWNER_CHAT": "C-SOL-20261006-0142-RELEASE-POLICY",
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-3-3-RELEASE-POLICY-RESULT",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "ACTIVE",
   "PRIORITY": "P1",
   "RISK": "LOW",
-  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "BASE_SHA": "c7e88778e58ffd7d3719b13e47c6ead11dabe7c7",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "GAP_CLASS": "MISSING_REQUIRED_TEST",
   "SEMANTIC_SCOPE": "Add a direct executable contract oracle for final DOC-C §3.3 ReleasePolicyResult. Production release-policy behavior and thresholds are immutable in this task unless a separate runtime defect is independently proven.",
@@ -25,6 +25,12 @@
     "Independent review and integration reverify are required.",
     "No mutation to NEXY.ai."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "When a Git-valid Constitution-authorized worker namespace exists, claim an isolated test-only branch and implement the focused §3.3 oracle."
+  "BLOCKER": null,
+  "NEXT_ACTION": "When a Git-valid Constitution-authorized worker namespace exists, claim an isolated test-only branch and implement the focused §3.3 oracle.",
+  "ACTUAL_WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C3-3-RELEASE-POLICY-ORACLE-001",
+  "CLAIMED_AT": "2026-10-06T01:42:00+07:00",
+  "UNBLOCKED_BY": "Current explicit user instruction authorizes isolated worker branches; Git-valid prefix NEXY.AI-Test-AI-work/* avoids ref collision.",
+  "CHOSEN_MUTATION_SCOPE": [
+    "tests/contract/release-policy-result.test.ts (new file only)"
+  ]
 }
