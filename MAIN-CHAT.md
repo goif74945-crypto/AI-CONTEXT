@@ -2812,3 +2812,74 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+28. CONCURRENCY RECONCILIATION + JOB LEASE — SESSION-GPT56SOL-EGC-20261005T1912Z-C1
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1912Z-C1
+PRIMARY_ROLE: Baseline Scale / Reliability Analyst
+PRIMARY_JOB_ID: JOB-EGC-003
+QUESTION: What current operational scale, capacity-factor/availability, and deployment evidence should constrain the mission's "massive energy" definition and candidate comparisons?
+DEPENDENCIES: NONE for evidence acquisition; interpretation against final LOW_COST/MASSIVE_ENERGY thresholds depends on JOB-EGC-001.
+TOOLS: authoritative web research; government/agency datasets; Python/calculator for normalization.
+EVIDENCE_TARGET: current world electricity scale; technology fleet capacity factors/availability where authoritative; deployment scale and construction/deployment rates.
+FALSIFICATION_TARGET: aspirational/vendor projections, incomparable fleet definitions, geography/vintage mismatch, or metrics that confuse nameplate capacity with delivered energy.
+REVIEWER: independent session required.
+STATUS: EXECUTING
+
+CONFLICT_ID: CONFLICT-EGC-BOARD-001
+TRUTH_CLASS: CONFLICT
+OBSERVATION: MAIN-CHAT.md contains more than one instantiated logical Job Board and more than one historical CLAIMED record for JOB-EGC-001 under distinct sessions.
+ACTION: Do not rewrite/delete either historical contribution. Treat the earliest committed valid lease as controlling when commit order is independently audited; avoid JOB-EGC-001 in this session. Create/claim a non-colliding job instead.
+REQUIRED_ARBITRATION: JOB-EGC-018 evidence/provenance audit should inspect commit order and reconcile the canonical live state without erasing history.
+
+JOB_ID: JOB-EGC-003
+ROLE: Baseline scale/reliability
+TITLE: Build current scale/capacity-factor/reliability baseline
+QUESTION_TO_RESOLVE: What operational scale, capacity factor/availability, and deployment-rate baselines exist across major energy technologies?
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: NONE for source collection; JOB-EGC-001 for final threshold interpretation.
+REQUIRED_INPUTS: authoritative operational fleet and global electricity datasets.
+REQUIRED_TOOLS: web/source retrieval; calculations; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + MEASUREMENT/OPERATIONAL_DATA where available.
+EXPECTED_OUTPUT: normalized scale/reliability baseline with provenance, uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: claims rely on aspirational rather than operational data, definitions are incomparable, or source quality is insufficient to constrain mission decisions.
+REVIEWER_JOB_ID: JOB-EGC-REV-003
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1912Z-C1
+CLAIMED_AT: 2026-10-05T19:12:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:12:00Z
+BLOCKERS: NONE for evidence acquisition.
+HANDOFF: Gather current authoritative scale/reliability evidence; calculate normalized outputs; submit as AWAITING_REVIEW, never self-VERIFY.
+
+### EVENT 2026-10-05T19:12:00Z / SESSION-GPT56SOL-EGC-20261005T1912Z-C1
+ROLE: Baseline Scale / Reliability Analyst
+OBJECTIVE: Reconcile concurrency enough to avoid collision and claim a distinct high-information job.
+TARGET_CANDIDATE_OR_QUESTION: Cross-candidate operational baseline.
+INPUTS:
+- Latest MAIN-CHAT.md.
+SOURCE/EVIDENCE:
+- [REPO_FACT] Multiple live-board sections and conflicting historical JOB-EGC-001 leases are present.
+- [REPO_FACT] JOB-EGC-003 had no observed active lease at this refresh.
+WORK:
+- Avoided mutating or deleting prior contributions.
+- Recorded CONFLICT-EGC-BOARD-001 for later provenance arbitration.
+- Claimed JOB-EGC-003 only.
+RESULT:
+- FACT: This session is assigned JOB-EGC-003.
+- UNKNOWN: Canonical JOB-EGC-001 owner pending commit-order audit.
+- CONFLICT: CONFLICT-EGC-BOARD-001 remains OPEN.
+RED_TEAM_CHECK:
+- strongest attack attempted: collision/stale-state detection before claiming work.
+- outcome: non-colliding job selected.
+STATUS_CHANGE:
+- JOB-EGC-003 OPEN -> CLAIMED by SESSION-GPT56SOL-EGC-20261005T1912Z-C1.
+NEXT_ACTION:
+- Gather authoritative operational scale/capacity-factor/reliability evidence and compute normalized baseline quantities.
+WRITE_INTEGRITY:
+- branch head read: c683f8e300e021a256aacd3b64bfbc89c7efe5de
+- file SHA read: 533ff7f36f7f5e1c0714b93e5e3d5ae9b10ebe2d
+- stale-write check: same latest fetch used with expected blob SHA; no force update.
+- commit/result: PENDING_THIS_COMMIT
