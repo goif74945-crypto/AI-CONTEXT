@@ -36,17 +36,17 @@ Create a novel, useful NEXY-adjacent research/prototype package that operational
 - Hard gates cannot be downgraded by attention budgeting: `PASS` across committed bounded invariant grid.
 - Reference scenario corpus passes: `PASS` 11/11.
 - Python compile validation passes: `PASS`.
-- Unit/regression/invariant tests pass: `PASS` 34/34.
+- Unit/regression/invariant tests pass: `PASS` 119/119.
 - CLI simulation exits zero: `PASS`.
-- Durable GitHub write/read-back verification: `PASS` for the published W1-W6 slices; see `FINAL_STATE.md` and `CHECKPOINT-002-W6.md`.
+- Durable GitHub write/read-back verification: `PASS` for published W1-W7 slices; see `FINAL_STATE.md`, `CHECKPOINT-002-W6.md`, and `CHECKPOINT-003-W8-COMPLETE.md`.
 
 ## Current checkpoint
 
-`CHECKPOINT-002-W6.md` — W6 published, exact-byte read-back verified, and full local regression `104/104 PASS`.
+`CHECKPOINT-003-W8-COMPLETE.md` — final audit executed on a fresh GitHub clone; full regression `119/119 PASS` and the 16-artifact final manifest prepared for durable read-back.
 
-Mission completion: `NOT_COMPLETE`. W7 Human-Facing Semantic Contract and W8 Final Research Audit remain open.
+Mission completion: `COMPLETE` for the bounded standalone research mission. This is not a NEXY.AI integration, runtime, release, deployment, or canonical-specification claim.
 
-Exact next legal action: search current supplemental work for a materially equivalent W7 contract; if no collision exists, implement and verify W7 inside this mission directory only.
+Exact next legal action: read-only integrity/freshness audit. Mutate this directory again only for a concrete integrity repair or an explicitly authorized new scope.
 
 ## Stop/freeze condition
 
