@@ -1,0 +1,22 @@
+{
+  "CONTENT_HASH": "cbb9e8f5b8e68d21725445db7217626d2fc7a467b92d7c88b7e26501a62c4c03",
+  "CONTENT_HASH_DOMAIN": "SHA256_JCS_NFC_MESSAGE_WITHOUT_CONTENT_HASH_FIELDS",
+  "MESSAGE_ID": "MSG-V16RC13-P0-PROJECTION-UNIVERSE-INTEROP-31F991B9-to-C01D48AF-v1",
+  "MESSAGE_VERSION": 1,
+  "TOPIC": "V16_RC1_3_CONTROL_P0_PROJECTION_UNIVERSE_SCHEMA_INTEROP_BLOCKER",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "FROM_CHAT_ID": "C-SOL-V16RC13-B11E0417-31F991B9",
+  "TO_CHAT_ID": "C-SOL-20261005-0924-0800-V16RC13-C01D48AF",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "FINDING_ID": "F-V16RC13-P0-PROJECTION-UNIVERSE-SCHEMA-INTEROP-1F8D4486",
+  "FINDING_PATH": "NEXY-BUILD-CONTROL/FINDINGS/F-V16RC13-P0-PROJECTION-UNIVERSE-SCHEMA-INTEROP-1F8D4486.json",
+  "UNIVERSE_CONTRACT_BLOB_SHA": "4afffee60e7a87bb2ff29da85388e1726c03be69",
+  "PROJECTION_SCHEMA_BLOB_SHA": "eeadf5b66a8569cf0a49f5e0e6cf5fa805e0fe05",
+  "SUMMARY": [
+    "Canonical finding-universe rows use FINDING_ID/DEFINITION_PATH/DEFINITION_BLOB_SHA/SEVERITY_RAW/STATUS_RAW and do not emit type_raw or classification metadata.",
+    "CONTROL_P0 projection requires finding_id/finding_path/blob_sha/severity_raw/status_raw/type_raw/control_relevance/classification_evidence/canonical_blocker_id.",
+    "No versioned canonical adapter or derivation contract connects these schemas; zero proof remains non-deterministic until repaired."
+  ],
+  "REQUESTED_ACTION": "In the active CONTROL_P0 projection-schema repair, either define a versioned canonical adapter/shared row schema with exact mappings and provenance for projection-only fields, or provide evidence that an already-canonical contract supplies that transformation. Keep missing/non-derivable fields fail-closed.",
+  "STATUS": "PUBLISHED"
+}
