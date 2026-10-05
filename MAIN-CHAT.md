@@ -14211,3 +14211,288 @@ JOB_STATE_OVERRIDE:
 WRITE_INTEGRITY:
 - file SHA read immediately before write: b77ed3bea55e217a4a838a5be8044324eb74cffa
 - exact-SHA optimistic update; no force push; only MAIN-CHAT.md.
+
+
+======================================================================
+42. JOB-EGC-025 EVIDENCE PACKAGE — UNCERTAINTY / DECISION-STABILITY FRAMEWORK V1
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:28:30Z
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+PRIMARY_JOB_ID: JOB-EGC-025
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: JOB-EGC-025-REV-A1-20261005
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Prevent central estimates, unjustified probability distributions, hidden correlations, source-boundary differences or structural model uncertainty from creating a false winner.
+
+### EVID-EGC-025-001 — PROPAGATION / COVARIANCE
+TRUTH_CLASS: SOURCE_FACT
+SOURCE:
+- NIST TN 1297, Appendix A, Law of Propagation of Uncertainty.
+- BIPM JCGM 101:2008, DOI 10.59161/JCGM101-2008.
+URL:
+- https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-law-propagation-uncertainty
+- https://www.bipm.org/en/doi/10.59161/jcgm101-2008
+KEY_OUTPUT:
+- NIST first-order propagation includes sensitivity coefficients and covariance:
+  u_c^2(y)=sum_i[(df/dx_i)^2*u_i^2]+2*sum_{i<j}[(df/dx_i)(df/dx_j)cov_ij].
+- JCGM 101 propagates input probability distributions through an explicit mathematical model using Monte Carlo.
+LIMITATION:
+These are measurement-uncertainty methods; future policy, learning, deployment and model-form scenarios do not become calibrated random variables merely by being entered into Monte Carlo.
+REPLICATION_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+### EVID-EGC-025-002 — MONTE CARLO INPUT REQUIREMENTS
+TRUTH_CLASS: SOURCE_FACT
+SOURCE:
+- NIST Uncertainty Machine v1.6.4.
+- JCGM GUM Part 1, propagation-of-distributions section.
+URL:
+- https://uncertainty.nist.gov/
+- https://www.bipm.org/documents/20126/194484570/JCGM_GUM-1/74e7aa56-2403-7037-f975-cd6b555b80e6
+KEY_OUTPUT:
+- Probability distributions for inputs are part of probabilistic propagation.
+- Correlated inputs require explicit dependence treatment / a joint distribution.
+- Monte Carlo trial count controls numerical approximation accuracy, not the empirical validity of an assumed distribution.
+CLAIM_SUPPORTED:
+Probability-of-pass language is allowed only when probability models and dependence structure are evidence-supported enough for that interpretation.
+CLAIM_NOT_SUPPORTED:
+Selecting normal/uniform/triangular distributions solely for computational convenience.
+REPLICATION_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+### EVID-EGC-025-003 — TYPE A / TYPE B / COVERAGE
+TRUTH_CLASS: SOURCE_FACT
+SOURCE: NIST TN 1297 classification and coverage guidance.
+URL:
+- https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-2-classification-components-uncertainty
+- https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-6-expanded-uncertainty
+- https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-b-coverage-factors
+KEY_OUTPUT:
+- Type A: statistical analysis of observation series.
+- Type B: evaluation by other available information, represented through a probability model.
+- Correlation enters through covariance/correlation coefficients.
+- U=k*u_c; k=2 is a convention/approximation under stated conditions, not an exact universal 95% rule.
+LIMITATION:
+Mission structural/scenario uncertainty remains separately labelled and must not be misreported as measurement uncertainty.
+REPLICATION_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+### EVID-EGC-025-004 — FINANCE VARIABILITY / DATA LIMIT
+TRUTH_CLASS: SOURCE_FACT + INFERENCE
+SOURCE:
+- IEA Cost of Capital Observatory, 2025-09-26.
+- IEA Southeast Asia cost-of-capital commentary, 2025-10-08.
+URL:
+- https://www.iea.org/reports/cost-of-capital-observatory
+- https://www.iea.org/commentaries/high-cost-of-capital-and-limited-project-pipeline-hinder-clean-energy-investment-in-southeast-asia
+KEY_OUTPUT:
+- 2024 median solar WACC: about 9.4% Indonesia, 9.0% Viet Nam, 8.0% Philippines; quoted 6-8% Thailand and 6-7% Malaysia.
+- Values are nominal, post-tax, local-currency survey results.
+- IEA states some added-country data points are comparatively fewer and that financing data are scarcer in emerging/developing markets.
+INFERENCE:
+WACC must carry geography/technology/currency/tax-boundary labels and cannot be silently treated as a universal empirical distribution.
+REPLICATION_STATUS: finance packages provide overlapping support; independent JOB-EGC-025 review still required.
+
+### CROSS-TEAM RECONCILIATION
+REPO_FACT:
+- JOB-EGC-LOWCOST-ANCHOR-REV-E1-20261005 found that a frozen 10% central cost-improvement convention is insufficient by itself when decision-relevant uncertainty can exceed/reverse that margin.
+- JOB-EGC-015 finance work shows WACC/construction finance can alter results and must be normalized.
+- Latest JOB-EGC-015 independent review status observed before this write: REVIEW_FAILED / REPAIR_REQUIRED because common stress-finance cases must not be mistaken for empirical market probability/ranges.
+- This directly agrees with JOB-EGC-025's rule: stress cases are scenarios unless evidence supports a probability model.
+- JOB-EGC-040 boundary work implies uncertainty must be propagated on the SAME delivered-service boundary; an uncertainty interval around an incomparable metric remains incomparable.
+
+RECONCILIATION_DECISION:
+- Keep the objective's 10% central "material improvement" rule only as an explicit mission convention / ASSUMPTION.
+- Add a separate robustness requirement: evidence-supported uncertainty must not reverse the decision.
+- Do not turn 10% into a confidence level.
+- Do not assign probabilities to low/base/high scenarios without calibrated probability evidence.
+
+### UNCERTAINTY TAXONOMY — PROPOSED MISSION METHOD
+TRUTH_CLASS: INFERENCE
+U1 MEASUREMENT/OPERATIONAL: measured output, outage, efficiency, physical quantity and reported measurement/statistical uncertainty.
+U2 SAMPLING/DATASET: finite project/fleet/survey samples, missing data and database coverage.
+U3 SOURCE/VINTAGE/BOUNDARY: revision, currency year, geography, accounting boundary, gross/net, plant/system, forecast/observed.
+U4 PARAMETRIC MODEL: CAPEX, OPEX, WACC, CF, efficiency, lifetime, degradation, RTE, transmission loss, fuel price.
+U5 STRUCTURAL/MODEL-FORM: chronology, adequacy model, topology, learning formulation, weather years, resource exclusions.
+U6 FUTURE SCENARIO: deployment, manufacturing expansion, policy, permitting, learning and future commodity conditions unless calibrated probability evidence exists.
+U7 DEPENDENCE/CORRELATION: shared drivers such as CAPEX/build duration, correlated weather, commodity prices, WACC/geography, learning/manufacturing scale.
+U8 NUMERICAL: solver tolerance, discretization, sampling error, time resolution and Monte Carlo convergence.
+
+RULE:
+Never collapse U1-U8 to one standard deviation unless the statistical/mathematical mapping is justified and documented.
+
+### REQUIRED UNCERTAINTY LEDGER
+For each decision-controlling input/output record:
+- variable/output, units and boundary;
+- central/base estimate;
+- evidence source/date;
+- U1-U8 class;
+- actual supported uncertainty representation: standard uncertainty, interval, scenario set or distribution;
+- whether bounds are empirical/model/judgmental/hard;
+- distribution family/parameters ONLY if supported;
+- dependence/correlation group and evidence;
+- source-vintage/geography limits;
+- sensitivity response;
+- low/base/high or alternative-model output;
+- replication status;
+- whether uncertainty can flip a gate/ranking.
+UNKNOWN remains UNKNOWN; a missing distribution must not be replaced by a convenient default.
+
+### PROPAGATION RULES
+P1 ANALYTICAL:
+Use GUM-style first-order propagation including covariance only where explicit model + standard-uncertainty interpretation are defensible.
+
+P2 PROBABILISTIC MONTE CARLO:
+Allowed only where decision-relevant random inputs have evidence-supported probability models and dependencies are specified or defensibly negligible.
+Report distributions/provenance, correlations, reproducible RNG/seed, trial count, convergence/numerical error and output interval/quantiles.
+More trials do not repair bad input distributions.
+
+P3 INTERVAL / SCENARIO:
+If evidence gives ranges or discrete scenarios only, propagate them without invented probabilities.
+Test allowed joint combinations. Exclude a combination only through an explicit physical/logical dependency.
+One-at-a-time sensitivity is insufficient where interactions can matter.
+
+P4 STRUCTURAL:
+Run defensible alternative models/weather years/methods separately; do not average them with invented weights.
+
+P5 SOURCE/VINTAGE:
+Preserve conflicting vintages, resolve explicitly, and test whether plausible source revisions reverse the conclusion.
+
+P6 REPLICATION:
+Every decision-changing numerical result needs independent recomputation. Two computations sharing the same unsupported assumption do not independently validate that assumption.
+
+### DECISION-STABILITY RULE
+TRUTH_CLASS: INFERENCE / PROPOSED_MISSION_METHOD
+
+Central cost effect:
+d = 1 - C_candidate,central/C_baseline,central.
+The current 10% criterion is a pre-registered mission convention, not an external fact.
+
+When only evidence-supported intervals/scenarios exist:
+ROBUSTLY_CHEAPER requires C_candidate,high < C_baseline,low across the allowed joint scenario set on the same service boundary.
+If any allowed evidence-supported scenario gives C_candidate >= C_baseline, cost superiority is NOT_STABLE.
+
+When defensible calibrated distributions exist:
+propagate DeltaC = C_candidate - C_baseline and report coverage interval and P(DeltaC<0).
+This job does NOT invent a universal probability threshold. Any hard probability/confidence gate must be pre-registered as ASSUMPTION and independently reviewed.
+
+Scale:
+If central net-delivered energy clears M2 but an evidence-supported plausible lower case falls below M2, MASSIVE_ENERGY is NOT_STABLE.
+
+Hard constraints:
+Physics impossibility or independently falsified engineering/safety/material states cannot be rescued by favorable probability weighting.
+
+MISSION LABELS:
+- ROBUST_PASS_CANDIDATE: central gate passes and no currently evidenced allowed uncertainty case reverses it; still NOT VERIFIED until independent review/all other gates.
+- NOT_STABLE: an evidenced allowed uncertainty case reverses a decisive gate/ranking.
+- NOT_VERIFIED: uncertainty/dependence/model alternatives are incomplete enough that reversal cannot be assessed.
+- ROBUST_FAIL: gate fails throughout the tested evidence-supported plausible set.
+These labels are mission semantics, not NIST/JCGM terminology.
+
+### CALC-EGC-025-001 — 10% CENTRAL ADVANTAGE COUNTEREXAMPLE
+EVIDENCE_CLASS: CALCULATION / ILLUSTRATIVE_ASSUMPTION
+INPUTS:
+baseline=80 USD/MWh; candidate=72 USD/MWh; illustrative plausible relative interval +/-10% for both.
+EQUATIONS/OUTPUT:
+baseline=[72,88].
+candidate=[64.8,79.2].
+central improvement=10%.
+candidate_high 79.2 > baseline_low 72; allowed interval corners can reverse ranking.
+Maximum cited corner reversal against candidate=7.2 USD/MWh.
+LIMITATION:
+Illustrative arithmetic only. The +/-10% bounds are not measured candidate evidence and no probability is assigned.
+REPRODUCTION_STATUS: AWAITING_INDEPENDENT_REPLICATION.
+
+### CALC-EGC-025-002 — GENERAL NON-OVERLAP CONDITION
+EVIDENCE_CLASS: CALCULATION
+Let C_c=(1-d)C_b.
+Let u_c be candidate upper relative bound and u_b baseline lower relative bound.
+Robust cheaper condition:
+(1-d)(1+u_c) < (1-u_b)
+therefore
+d > 1 - (1-u_b)/(1+u_c).
+
+Equal-bound examples u_c=u_b=u:
+u=2% -> d>3.9216%.
+u=5% -> d>9.5238%.
+u=10% -> d>18.1818%.
+u=20% -> d>33.3333%.
+
+INTERPRETATION:
+These are NOT mission thresholds. They prove that a fixed central-effect margin cannot replace an uncertainty-stability test.
+REPRODUCTION_STATUS: AWAITING_INDEPENDENT_REPLICATION.
+
+### RED-TEAM CHECK
+- "100,000 Monte Carlo draws make the result reliable." REJECTED: numerical convergence != input validity.
+- "Assume independence." REJECTED unless defensible; covariance/correlation is explicitly part of uncertainty propagation.
+- "k=2 means exactly 95% always." REJECTED as universal rule.
+- "Only one-at-a-time +/-10% is enough." REJECTED where interactions/shared drivers matter.
+- "Use surveyed WACC ranges as one global WACC distribution." REJECTED.
+- "10% lower central cost proves material superiority." FALSIFIED as a general inference by CALC-EGC-025-001/002.
+
+### RESULT
+SOURCE_FACT:
+- Valid propagation requires sensitivity/dependence treatment where material.
+- Monte Carlo probability propagation presumes probability models for inputs.
+- Finance evidence shows geography-specific WACC and data limitations.
+
+CALCULATION:
+- Central 10% cost advantage can be reversed by plausible intervals.
+- Under equal +/-10% interval bounds, strict non-overlap requires >18.1818% central discount; this is an illustration, not a new target.
+
+INFERENCE:
+G21 should be operationalized as evidence-supported decision stability rather than one universal uncertainty percentage.
+
+ASSUMPTION:
+The mission's 10% central material-improvement convention remains separate from robustness.
+
+UNKNOWN:
+Candidate-specific distributions/correlations; reviewed final system baseline; final objective threshold verdict; any future hard probability threshold.
+
+STATUS_CHANGE:
+- JOB-EGC-025: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- G21: OPEN/UNDEFINED_OPERATIONALIZATION -> PROPOSED_METHOD / NOT_VERIFIED.
+- GLOBAL_SOLVED remains NO.
+- CURRENT_WINNER remains NONE.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-EGC-025-GUM-PROPAGATION <- EVID-EGC-025-001.
+- CLAIM-EGC-025-DISTRIBUTION-CORRELATION <- EVID-EGC-025-002.
+- CLAIM-EGC-025-TYPE-A-B <- EVID-EGC-025-003.
+- CLAIM-EGC-025-FINANCE-VARIABILITY <- EVID-EGC-025-004.
+- DECISION-STABILITY-V1 <- above claims + CALC-EGC-025-001/002 + low-cost review + finance handoff.
+- DECISION-STABILITY-V1 -> JOB-EGC-001/JOB-EGC-004/JOB-EGC-015/candidate TEA/G21/G22.
+
+### REVIEW JOB
+JOB_ID: JOB-EGC-025-REV-A1-20261005
+ROLE: Independent uncertainty / decision-stability reviewer
+TITLE: Independently reproduce and review JOB-EGC-025
+QUESTION_TO_RESOLVE: Are source scopes correct, algebra reproducible, probabilistic prerequisites constrained, dependence/model-form uncertainty represented without false precision, and decision labels candidate-neutral?
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-025 evidence package available.
+REQUIRED_INPUTS: EVID-EGC-025-001..004, CALC-EGC-025-001..002, objective/boundary/finance handoffs.
+REQUIRED_TOOLS: independent NIST/BIPM retrieval; independent arithmetic; edge-case analysis.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / REPLICATION / REVIEW / CONFLICT_ANALYSIS.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR per propagation rule and decision-stability rule.
+FALSIFICATION_CRITERIA: FAIL if method is applied beyond source scope, equations are wrong, probabilities are implied without calibrated distributions, or plausible correlated/structural cases can reverse a claimed ROBUST_PASS without representation.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE.
+HANDOFF: Distinct session independently reproduces source scope and calculations; agreement is not self-verification.
+
+NEXT_ACTION:
+- independent review of JOB-EGC-025;
+- finance repair/review feeds evidenced finance uncertainty, never unlabelled stress probabilities;
+- candidate TEA/model jobs attach uncertainty ledgers before any winner claim;
+- final gate rejects conclusions whose evidence-supported uncertainty can reverse them.
+
+WRITE_INTEGRITY:
+- branch head immediately before attempted write: 8fa76106ec16555647c803ddcfe5e4a8b5d6026b
+- file SHA immediately before attempted write: 26f473975d6348a083e1a1712be9da702fccf559
+- exact-SHA optimistic append only; any concurrent change causes refresh/reconciliation.
+- commit/result: PENDING_THIS_COMMIT.
