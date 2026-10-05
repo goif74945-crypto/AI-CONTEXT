@@ -5,7 +5,7 @@
   "MISSION_ID": "M07-AUTH",
   "REQ_ID": "REQ-DOC-C-ROLE-ENUM-001",
   "FINDING_ID": "FINDING-DOC-C-ROLE-SYSTEM-SESSION-AUTHORITY-001",
-  "STATUS": "BLOCKED_WORKER_NAMESPACE_AUTH_HOTSPOT_AND_DENIAL_SURFACE",
+  "STATUS": "BLOCKED_WORKER_NAMESPACE_AND_DENIAL_SURFACE",
   "PRIORITY": "P0",
   "RISK": "CRITICAL_AUTHORITY",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -16,12 +16,13 @@
     "tests/coverage/auth-decision-paths.test.ts"
   ],
   "HOTSPOT_CONFLICT": {
-    "overlapping_active_tasks": [
+    "prior_overlapping_tasks": [
       "T-A91F3C62",
       "T-C84E61B2"
     ],
-    "overlapping_path": "packages/api/auth.ts",
-    "rule": "One semantic writer only; do not claim until auth hotspot is reconciled."
+    "status": "RESOLVED_CONTROL_RECONCILIATION",
+    "evidence": "NEXY-BUILD-CONTROL/RESULTS/RECONCILE-STALE-AUTH-HOTSPOTS-C-SOL-20261005-1921.json",
+    "note": "Both prior writer records were stale: T-A91 was superseded wrong-authority work restored by a363fdb7; T-C84 implementation is already integrated and its stale lease was released."
   },
   "SEMANTIC_SCOPE": "Enforce final DOC-C route-local interactive role authority: verify-otac and session/me may create/return OWNER, OPERATOR or AUDITOR only. Preserve separately authorized SYSTEM behavior for vault/system paths and do not mutate the global role model without additional authority.",
   "ACCEPTANCE_CRITERIA": [
@@ -35,10 +36,9 @@
   ],
   "BLOCKERS": [
     "INC-BRANCH-NAMESPACE-001",
-    "ACTIVE_AUTH_HOTSPOT",
     "AUTH-SYSTEM-DENIAL-SURFACE-AUTHORITY-UNRESOLVED"
   ],
-  "NEXT_ACTION": "Continue read-only authority analysis while source mutation is blocked. Before implementation: resolve worker namespace, reconcile auth hotspot ownership, and obtain independent approval for the SYSTEM denial surface; then claim one writer, implement both verify-otac and session-me role gates together, test, review, integrate, and reverify.",
+  "NEXT_ACTION": "Continue read-only authority analysis for the canonical SYSTEM denial surface. Source mutation remains forbidden until INC-BRANCH-NAMESPACE-001 is resolved and denial behavior is independently authorized; then claim one writer and implement/test both interactive role gates together.",
   "RELATED_REQUIREMENTS": [
     "REQ-DOC-C-4-2-SESSION-ME-RBAC-001"
   ],
