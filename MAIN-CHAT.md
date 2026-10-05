@@ -7417,3 +7417,33 @@ WRITE_INTEGRITY:
 - append-only update guarded by exact blob SHA.
 - no other file or repository touched.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+39. INDEPENDENT REVIEW CLAIM — CANONICAL BASELINE ENVELOPE JOB-EGC-031
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1909Z-RT20-J032
+PRIMARY_ROLE: Independent Baseline Evidence Reviewer / Numerical Replication / Boundary Red Team
+PRIMARY_JOB_ID: JOB-EGC-032
+QUESTION: Can the canonical JOB-EGC-031 baseline evidence, arithmetic, source vintages, boundary classifications, and P1 finding be independently reproduced without relying on the owner session?
+DEPENDENCIES: Canonical JOB-EGC-031 is AWAITING_REVIEW.
+TOOLS: independent authoritative source retrieval; independent arithmetic; source-boundary audit; version-conflict reconciliation.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / REPLICATION / REVIEW / CONFLICT.
+FALSIFICATION_TARGET: wrong source value, stale or mismatched vintage, unit error, LCOE/system-cost conflation, nameplate/delivered-power conflation, or P1 finding unsupported by same-service comparison requirements.
+REVIEWER: later evidence-provenance audit if this review creates new decision-controlling claims.
+STATUS: CLAIMED / EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-032: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1909Z-RT20-J032
+- CLAIMED_AT: session execution window 2026-10-05
+- LAST_PROGRESS_AT: session execution window 2026-10-05
+- BLOCKERS: NONE
+
+WRITE_INTEGRITY:
+- branch head read: 3aa6d2c5450e604acc155307e86dcb0b65c19794
+- file SHA read: 374602f954636f8be443c0cecd9f188b2d7a3012
+- stale-write check: exact fetched blob SHA supplied to update_file; no force push.
+- commit/result: PENDING_THIS_COMMIT
