@@ -2,7 +2,7 @@
   "LEASE_ID": "LEASE-20261006-DOC-C-RUN-DETAIL-OPTIONAL-WIRE-001",
   "TASK_ID": "TASK-DOC-C-RUN-DETAIL-OPTIONAL-WIRE-001",
   "OWNER": "CHATGPT-GPT-5.6-SOL-20261006",
-  "STATUS": "ACTIVE",
+  "STATUS": "RELEASED_TO_TESTING",
   "TARGET_REPOSITORY": "goif74945-crypto/NEXY.AI-",
   "TARGET_BRANCH": "NEXY.AI-Test-AI",
   "PROTECTED_BRANCH": "NEXY.ai",
@@ -17,5 +17,20 @@
     "Absent primary incident omits primary_incident_id from canonical run data.",
     "Present primary incident serializes primary_incident_id as string.",
     "Existing auth/RBAC/auditor evidence and state validation semantics remain unchanged."
-  ]
+  ],
+  "IMPLEMENTATION_COMMITS": [
+    "0ab98252c4b8ff4a5aca269a70acb7bb4191873a",
+    "6aa85dcaa5394f8535d30c268ea698f6c4f8b3b2"
+  ],
+  "STATIC_EVIDENCE": {
+    "latest_observed_target_head": "1848e5bc1bd1e7390f01f90f29223323b7c6bcb7",
+    "runtime_wire": "primary_incident_id emitted only when run.primaryIncidentId is non-null",
+    "regression_oracle": "absent field assertion + present string assertion",
+    "evidence_level": "E1_STATIC"
+  },
+  "TEST_EVIDENCE": {
+    "exact_head_run_id": 37359603700,
+    "status": "QUEUED_AT_LAST_CHECK",
+    "code_verdict": "NOT_VERIFIED_UNTIL_EXECUTION"
+  }
 }
