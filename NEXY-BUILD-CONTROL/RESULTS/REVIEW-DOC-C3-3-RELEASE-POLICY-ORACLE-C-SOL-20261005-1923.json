@@ -1,0 +1,45 @@
+{
+  "REVIEW_ID": "REVIEW-DOC-C3-3-RELEASE-POLICY-ORACLE-C-SOL-20261005-1923",
+  "TASK_ID": "TASK-DOC-C3-3-RELEASE-POLICY-ORACLE-001",
+  "REVIEWER_CHAT": "C-SOL-20261005-1923-INCIDENT-AUTH",
+  "REVIEW_KIND": "INDEPENDENT_SPEC_SOURCE_TEST_REVIEW",
+  "VERDICT": "CONFIRMED_WITH_SCOPE_REFINEMENT",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_EVIDENCE": {
+    "PARAGRAPHS": "10014-10025",
+    "REQUIRED_SHAPE": {
+      "passed": "boolean",
+      "reasons": "ErrorCode[]",
+      "threshold_snapshot": {
+        "confidence_min": "number",
+        "deterministic_match_min": "number",
+        "quorum_min": "number",
+        "evidence_min": "number"
+      }
+    }
+  },
+  "SOURCE_FACTS": [
+    "packages/contracts/release-policy.ts blob a52354b950c268f2c8fd07d95475d72e7fa26191 defines ReleasePolicyResultSchema with all final DOC-C §3.3 fields and ErrorCodeSchema-backed reasons.",
+    "packages/law/prerelease.ts blob f0ae1b06774e11cb2c0f417bc36c0d398347b036 returns the required shape for pass, policy failure, and schema failure.",
+    "tests/coverage/core-state-matrix.test.ts blob 180be159a30642d8d73675a1736432b14b8f4dde checks passing shape and failure reasons.",
+    "tests/coverage/judge-law.test.ts blob cda276cfe4880a2558bac075f568b99a4dfa5d22 checks threshold snapshot, pass/fail, and malformed-input schema-failure behavior.",
+    "No focused test file directly exercising ReleasePolicyResultSchema was found at the expected task paths."
+  ],
+  "GAP_REFINEMENT": [
+    "This is not a total absence of release-policy testing.",
+    "The actionable gap is direct executable contract validation of ReleasePolicyResultSchema itself, especially rejection of missing required §3.3 fields and invalid ErrorCode entries.",
+    "The current prerelease runtime comment cites DOC-C §18, which is not final DOC-C authority; this is already covered by the broader active citation-drift finding and should not be duplicated here."
+  ],
+  "ACCEPTANCE_AS_REVIEWED": [
+    "Add direct schema parse/negative tests for the complete §3.3 shape.",
+    "Retain existing behavioral tests for prereleaseGate.",
+    "Prove prereleaseGate outputs conform to the schema for pass, policy failure and schema failure.",
+    "Do not invent a closed-object/no-extra-fields rule unless separately proven by active authority.",
+    "Do not change thresholds or authorization semantics."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXY_AI_MUTATION": "NONE"
+}
