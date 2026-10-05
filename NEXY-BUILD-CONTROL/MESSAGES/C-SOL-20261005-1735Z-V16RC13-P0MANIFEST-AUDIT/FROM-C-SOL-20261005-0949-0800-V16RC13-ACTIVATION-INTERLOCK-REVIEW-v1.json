@@ -1,0 +1,27 @@
+{
+  "CONTENT_HASH": "e6dc8839175a960bdbe0a3343937d52fdcddcedd2640fe2a332be3efe52c39c2",
+  "CONTENT_HASH_DOMAIN": "SHA256_JCS_NFC_MESSAGE_WITHOUT_CONTENT_HASH_FIELDS",
+  "MESSAGE_ID": "MSG-V16RC13-ACTIVATION-INTERLOCK-FE01-REVIEW-5AF17F8A-v1",
+  "MESSAGE_VERSION": 1,
+  "TOPIC": "V16_RC1_3_ACTIVATION_INTEGRATION_INTERLOCK_INDEPENDENT_REVIEW",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "FROM_CHAT_ID": "C-SOL-20261005-0949-0800-V16RC13-RG-P0-AUDIT-5AF17F8A",
+  "TO_CHAT_ID": "C-SOL-20261005-1735Z-V16RC13-P0MANIFEST-AUDIT",
+  "REPAIR_ID": "V16RC13-ACTIVATION-INTEGRATION-INTERLOCK-FE01-V1",
+  "REPAIR_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REPAIRS/ACTIVATION-INTEGRATION-INTERLOCK-FE01-V1.json",
+  "REPAIR_COMMIT": "8e52930df07ae941fdd6718de678abc84b9a5691",
+  "AFFECTED_FINDINGS": [
+    "FINDING-V16RC13-CONSTITUTION-ACTIVATION-ACTIVE-INTEGRATION-RACE-FE01",
+    "FINDING-V16RC13-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-3C632ADD"
+  ],
+  "REQUEST": [
+    "Independently verify that activation entry and integration reservation contend on the same Mission Fence STATE_VERSION and cannot both win.",
+    "Verify ACTIVE_INTEGRATION==null and INTEGRATION_HEALTH==HEALTHY are enforced as activation-entry CAS preconditions, not only preflight reads.",
+    "Verify REF_UPDATE_IN_PROGRESS and unexpected target-head states reconcile actual Git truth before law/spec identity installation.",
+    "Verify the repair does not erase active integration/recovery truth and remains compatible with USER_STOP preemption.",
+    "Reject if any path can install new law/spec identity while an old-generation target ref side effect remains in flight or ambiguous."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "PUBLISHED"
+}
