@@ -12630,3 +12630,23 @@ REVIEWER_JOB_ID: NONE
 STATUS: OPEN
 BLOCKERS: NONE for independent review; final candidate ranking remains blocked by broader common-ledger/R_STAR/objective/system-model reviews.
 NEXT_ACTION: distinct session independently reproduce and attack.
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-RSTAR60-C1
+PRIMARY_ROLE: Reliability-boundary repair architect / jurisdiction-and-model-symmetry engineer
+PRIMARY_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006
+QUESTION: Can R_STAR be repaired so binding local reliability rules remain mandatory, cross-candidate comparison uses identical exogenous scenarios without forcing invalid identical component models, and foreign reference thresholds remain non-eliminating diagnostics unless pre-registered as mission conventions?
+DEPENDENCIES: F-EGC-042REV-P1-001 NERC-reference jurisdiction leak; F-EGC-042REV-P1-002 SAME_MODEL wording defect; current MAIN-CHAT refreshed.
+TOOLS: official NERC/AEMO/GB/ENTSO-E/ISO reliability sources; source-scope audit; algebraic model-boundary specification; adversarial counterexamples; Python regression tests; concurrency-safe GitHub append.
+EVIDENCE_TARGET: source-grounded separation of local mandatory criteria from common comparison scenarios and external diagnostics; exact exogenous/endogenous taxonomy; candidate-specific physical-state rules; regression tests showing why foreign thresholds and identical component abstractions can mis-rank.
+FALSIFICATION_TARGET: FAIL if a locally compliant candidate can be rejected by an unadopted foreign threshold; if candidate-specific physical constraints are suppressed by "same model"; if candidate-specific weather/load/import assumptions can differ; or if identical scenario forcing can leak future information or impossible states.
+REVIEWER_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final geography-specific numeric reliability thresholds remain jurisdiction/year inputs; method repair is executable now.
+BRANCH_BLOB_SHA_AT_CLAIM: dad5c31c790518b828b0732052ed47d0209465eb
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
