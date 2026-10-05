@@ -249,3 +249,28 @@ REVIEWER_JOB_ID: NONE
 STATUS: OPEN
 BLOCKERS: waiting for primary submission.
 NEXT_ACTION: independent session claims after primary reaches AWAITING_REVIEW.
+
+
+======================================================================
+53. SESSION CLAIM — JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-FIN1
+PRIMARY_ROLE: Finance / Construction-Duration / Cost-of-Capital Sensitivity Red-Team Analyst
+PRIMARY_JOB_ID: JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006
+QUESTION: How strongly can cost of capital, construction duration, pre-operation interest, schedule overrun, lifetime and financing structure reverse whole-system cost rankings among candidate energy systems, and what candidate-neutral financing convention should the mission use?
+CANDIDATE: solar PV; onshore/offshore wind; hydropower; geothermal; nuclear fission/advanced fission; storage-coupled portfolios; transmission-heavy portfolios; other surviving candidates where CAPEX timing is material.
+DEPENDENCIES: common-ledger repair, R_STAR, objective, baseline frontier, resource scaling and safety jobs are concurrently owned. This job supplies financing/construction evidence and sensitivity without declaring a final winner.
+REQUIRED_INPUTS: current authoritative CAPEX/overnight-cost and construction-time evidence; WACC/discount-rate conventions; construction finance treatment; lifetime; commissioning profile; overrun/schedule evidence where available; same-boundary delivered-energy denominator.
+REQUIRED_TOOLS: official/primary web research; NREL/NLR ATB, EIA/IEA/DOE/NEA or equivalent authoritative datasets; executed finance calculations; sensitivity analysis; independent cross-source validation; GitHub state refresh.
+REQUIRED_EVIDENCE: source URL/identifier/date; nominal-vs-real rate distinction; system boundary; equations/units; sensitivity ranges; measured historical build/overrun evidence separated from modeled financing assumptions.
+EXPECTED_OUTPUT: candidate-neutral financing convention proposal; construction-interest equations; ranking-reversal sensitivity examples; evidence records; red-team findings; reviewer job.
+FALSIFICATION_CONDITION: FAIL if different candidates receive inconsistent discount/WACC treatment without evidence, overnight CAPEX is compared directly to financed CAPEX, construction-period interest is omitted when material, or a ranking survives only under a candidate-specific financing privilege.
+REVIEWER_JOB_ID: JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final ranking remains blocked by unresolved common-ledger and R_STAR; finance sensitivity is executable now.
+NEXT_ACTION: retrieve authoritative finance/build-time conventions and current technology assumptions; run candidate-neutral construction-finance calculations and ranking-reversal tests; submit for independent review.
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 326af28b7bd7e4031e59b61244cb4a3ec4622302
+BRANCH_HEAD_AT_CLAIM: UNKNOWN (no direct branch-head read action exposed; file blob SHA is refreshed immediately before writes and GitHub stale-SHA protection is enforced).
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
