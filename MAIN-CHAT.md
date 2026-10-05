@@ -6701,3 +6701,281 @@ STATUS_CHANGE:
 NEXT_ACTION:
 - Independent reviewer claims JOB-EGC-032 and reproduces source extraction, arithmetic, IEA version resolution and P1 generation-screen finding.
 - JOB-EGC-001/JOB-EGC-004 must explicitly resolve whether the USD 65/MWh plant-LCOE screen is non-eliminating before candidate elimination begins.
+
+
+======================================================================
+37. JOB-EGC-020 EVIDENCE SUBMISSION — EXTRAORDINARY-CLAIM RED TEAM
+======================================================================
+
+### EVENT 2026-10-05T19:09:00Z / SESSION-GPT56SOL-EGC-20261005T1909Z-RT20
+
+ROLE: Adversarial red team / physics falsification
+OBJECTIVE: Establish a reproducible kill/retain screen for apparent over-unity, vacuum-energy, target-gain, and low-energy-fusion claims without falsely rejecting real conversion phenomena.
+TARGET_CANDIDATE_OR_QUESTION: Cross-candidate extraordinary-claim screen; JOB-EGC-020.
+
+INPUTS:
+- Latest authorized MAIN-CHAT.md state and canonical lease audit.
+- NASA first/second-law statements.
+- LLNL NIF measured target-yield records and March 2026 wall-plug statement.
+- Peer-reviewed quantum-thermodynamics/passivity literature.
+- Peer-reviewed dynamical Casimir experiment.
+- 2026 Nature Communications sub-keV D-D fusion experiment.
+- Current ARPA-E LENR project pages.
+- Two independently executed arithmetic implementations for the NIF boundary example.
+
+SOURCE/EVIDENCE:
+
+#### TE-EGC-020-001
+EVIDENCE_ID: TE-EGC-020-001
+JOB_ID: JOB-EGC-020
+CLAIM_ID: CLAIM-EGC-OU-001
+TOOL: authoritative web retrieval
+METHOD: first-law + second-law boundary audit
+DATE: 2026-10-05
+SOURCE:
+- NASA Glenn, "First Law - Conservation of Energy", https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/first-law-conservation-of-energy/
+- NASA Glenn, "Second Law - Entropy", https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/second-law-entropy/
+- APS Phys. Rev. X 12, 021013 (2022), DOI https://doi.org/10.1103/PhysRevX.12.021013
+SOURCE_DATE: NASA page vintage not stated in retrieved page; APS published 2022-04-18
+INPUTS: complete device/system boundary; all energy/resource flows; stored-energy change
+PARAMETERS: none candidate-specific
+EQUATION/CODE/METHOD:
+- First-law bookkeeping convention: Delta_E_system = E_in,total - E_out,total.
+- For a true repeatable cycle returning the working system to the same state, Delta_E_system = 0, therefore E_out,total = E_in,total.
+- A claim of useful output larger than one selected input is NOT by itself over-unity; omitted fuel, environmental heat, nuclear binding energy, mechanical/radiative input, or depletion of stored energy must first be included.
+- Second-law screen: energy conservation alone is insufficient; a proposed cyclic work-extraction process must also have a physically allowed entropy/exergy path rather than convert equilibrium heat completely to work with no compensating change.
+OUTPUT:
+- Literal energy creation / closed-cycle net output with no energy/resource source is incompatible with first-law conservation.
+- Complete-passivity literature independently supports that work cannot be extracted from thermal equilibrium by cyclic unitary work extraction under its stated quantum-thermodynamic assumptions.
+UNITS: joule-equivalent energy balance
+UNCERTAINTY: negligible for law statement; application uncertainty depends on whether the chosen boundary is actually complete
+ASSUMPTIONS: standard thermodynamics/quantum mechanics remain valid in the tested regime
+LIMITATIONS: this does not falsify devices that draw energy from fuel, gradients, radiation, ambient heat, stored energy, or other real reservoirs
+REPRODUCTION_METHOD: enumerate all crossings of the system boundary and stored-energy changes; verify closure over a repeat cycle
+REPLICATION_STATUS: law-level independent sources agree; candidate-specific replication still required
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION_FRAMEWORK + FALSIFIED_CLASS
+FINDING:
+- FALSIFIED CLASS: perpetual-motion / literal closed-cycle over-unity claims that require E_out,total > E_in,total with Delta_E_system = 0 and no omitted reservoir.
+
+#### TE-EGC-020-002
+EVIDENCE_ID: TE-EGC-020-002
+JOB_ID: JOB-EGC-020
+CLAIM_ID: CLAIM-EGC-NIF-BOUNDARY-001
+TOOL: LLNL source retrieval + Wolfram Language calculation + independent JavaScript recomputation
+METHOD: denominator/boundary audit of NIF April 7, 2025 record shot
+DATE: 2026-10-05
+SOURCE:
+- LLNL, "Achieving Fusion Ignition", https://lmf.llnl.gov/science/achieving-fusion-ignition
+- LLNL, "The Pursuit of Higher Power", March 2026, https://str.llnl.gov/str-march-2026/pursuit-higher-power
+SOURCE_DATE:
+- Record shot occurred 2025-04-07; current LLNL page also reports later ignition through 2026-06-20.
+- Wall-plug source: Science & Technology Review, March 2026.
+INPUTS:
+- fusion yield = 8.6 MJ, measurement uncertainty +/-0.45 MJ
+- laser energy delivered to target = 2.08 MJ
+- current NIF flashlamp architecture requires approximately 100 times as much electrical-grid energy as laser energy delivered to target
+PARAMETERS:
+- nominal grid/target-laser multiplier m = 100
+- sensitivity only, not claimed source uncertainty: m in {80,100,120}
+EQUATION/CODE/METHOD:
+- target_gain = 8.6 / 2.08
+- implied_grid_input_nominal = 100 * 2.08 MJ
+- gross_fusion_yield_to_grid_input_ratio = 8.6 / (m * 2.08)
+OUTPUT:
+- target_gain = 4.1346153846, matching LLNL reported 4.13
+- implied nominal grid input from the approximate 100x statement = 208 MJ
+- gross fusion-yield/grid-input ratio at m=100 = 0.0413462 = 4.13462%
+- sensitivity illustration: m=80 -> 5.16827%; m=120 -> 3.44551%
+UNITS: MJ/MJ dimensionless ratios
+UNCERTAINTY:
+- fusion yield measurement +/-0.45 MJ from LLNL
+- "100 times" is an approximate architecture-level statement, not a shot-specific metered-grid measurement
+- 80/120 cases are analyst sensitivity bounds only, NOT sourced uncertainty
+ASSUMPTIONS:
+- use LLNL's approximate 100x wall-plug statement for boundary illustration
+- no credit/debit for target fabrication, auxiliaries, recovery, thermal-to-electric conversion, or repetition-rate plant balance
+LIMITATIONS:
+- this is NOT a complete fusion power-plant efficiency calculation
+- it must NOT be used to claim all inertial-fusion architectures are net-negative
+- LLNL explicitly states present NIF architecture is not appropriate for IFE because of facility size, low shot rate, and wall-plug efficiency; future IFE laser architecture is a separate engineering candidate
+REPRODUCTION_METHOD:
+- Wolfram execution returned 8.6/2.08 = 4.1346153846 and 8.6/(100*2.08) = 0.04134615385.
+- Independent JavaScript execution returned the same values to displayed precision.
+REPLICATION_STATUS: COMPLETED / NUMERICAL PASS (two implementations; common source inputs)
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + MEASUREMENT + CALCULATION + REPLICATION
+FINDING:
+- RETAIN PHYSICS: target gain >1 is a real measured fusion result.
+- FALSIFIED INFERENCE: target gain >1 does NOT imply current NIF facility net-electric gain >1.
+- CURRENT-NIF ENERGY-PLANT CLAIM: NOT_VERIFIED / contradicted by present wall-plug boundary for this architecture.
+
+#### TE-EGC-020-003
+EVIDENCE_ID: TE-EGC-020-003
+JOB_ID: JOB-EGC-020
+CLAIM_ID: CLAIM-EGC-DCE-001
+TOOL: peer-reviewed literature retrieval
+METHOD: distinguish observed quantum-vacuum phenomena from an unpowered cyclic energy source
+DATE: 2026-10-05
+SOURCE:
+- Wilson et al., Nature 479, 376-379 (2011), DOI https://doi.org/10.1038/nature10561
+- Miura et al., Phys. Rev. X 12, 021013 (2022), DOI https://doi.org/10.1103/PhysRevX.12.021013
+SOURCE_DATE: 2011-11-16; 2022-04-18
+INPUTS:
+- observed dynamical Casimir experiment used a superconducting circuit whose electrical length was varied by high-frequency modulation of SQUID inductance (>10 GHz)
+- complete-passivity result constrains cyclic work extraction from thermal equilibrium under the paper's stated assumptions
+PARAMETERS: none
+EQUATION/CODE/METHOD: boundary/source audit; no numerical efficiency claim
+OUTPUT:
+- Dynamical Casimir photon creation is experimentally real.
+- The cited experiment includes an externally driven time-varying boundary/inductance; it is therefore not evidence of an unpowered cyclic vacuum generator.
+UNITS: not applicable
+UNCERTAINTY: no system-level energy-gain number was extracted from these papers
+ASSUMPTIONS: none beyond the cited experiment/model scope
+LIMITATIONS:
+- These sources do not prove that every conceivable quantum-vacuum engine proposal is impossible.
+- They do show that observing Casimir/DCE photons is insufficient evidence for net energy extraction after the external drive and reset cycle are counted.
+REPRODUCTION_METHOD: inspect experimental method for external modulation; apply full-cycle energy boundary before any net-work claim
+REPLICATION_STATUS: physical DCE phenomenon has peer-reviewed experimental evidence; energy-positive generator claim NOT demonstrated by these sources
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: EXPERIMENT_RESULT + SOURCE_FACT + INFERENCE
+FINDING:
+- RETAIN PHENOMENON: Casimir/DCE physics.
+- REJECT AS UNSUPPORTED: inference "vacuum photons observed => free cyclic energy source."
+- Any positive-net-work vacuum generator remains EXTRAORDINARY / NOT_VERIFIED unless independent full-boundary replication exists.
+
+#### TE-EGC-020-004
+EVIDENCE_ID: TE-EGC-020-004
+JOB_ID: JOB-EGC-020
+CLAIM_ID: CLAIM-EGC-LOWENERGYFUSION-001
+TOOL: peer-reviewed source retrieval + current DOE/ARPA-E project-status retrieval
+METHOD: separate nuclear-reaction evidence from net-energy/power evidence
+DATE: 2026-10-05
+SOURCE:
+- Karahadian et al., Nature Communications 17, 8845 (2026), DOI https://doi.org/10.1038/s41467-026-74421-1
+- ARPA-E MIT project, https://arpa-e.energy.gov/programs-and-initiatives/search-all-projects/neutron-emission-laser-stimulated-metal-hydrides
+- ARPA-E University of Michigan project, https://arpa-e.energy.gov/programs-and-initiatives/search-all-projects/systematic-evaluation-claims-excess-heat-generation-form-deuteration-palladium-nickel-nanocomposites
+- ARPA-E Texas Tech project, https://arpa-e.energy.gov/programs-and-initiatives/search-all-projects/advanced-materials-characterization-and-nuclear-product-detection-lenr
+SOURCE_DATE:
+- Nature Communications published 2026-07-18; version of record 2026-08-24
+- listed ARPA-E projects ended during July 2026 and are marked Alumni on pages retrieved 2026-10-05
+INPUTS:
+- Nature experiment: electrochemical deuterium loading + low-energy deuteron ion-beam bombardment of Pd/Ti hydrides
+- measured center-of-mass energy range 0.25-6.5 keV
+- finite yield plateau below about 2 keV; lowest-energy yields >10^18 above bare-nucleus unscreened expectation; behavior observed in Pd and Ti hydrides
+PARAMETERS: experimental conditions as reported by paper
+EQUATION/CODE/METHOD: evidence-class separation; no invented calorimetry or net-energy calculation
+OUTPUT:
+- Real D-D fusion at sub-keV energies in metal hydrides is experimentally supported by the 2026 paper.
+- The experiment uses external loading and ion-beam excitation and does not report a power-system net-energy gain in the evidence inspected.
+- Current ARPA-E pages describe hypothesis-driven tests of excess-heat/nuclear-product claims; the retrieved project pages do not themselves report a verified energy-positive LENR power source.
+UNITS: keV reaction-energy range; relative yield enhancement
+UNCERTAINTY:
+- mechanism of the low-energy plateau requires further theoretical explanation per paper
+- public ARPA-E project pages are not exhaustive final-publication inventories
+ASSUMPTIONS: none beyond distinguishing "nuclear reaction occurred" from "net useful energy system demonstrated"
+LIMITATIONS:
+- Absence of a net-energy result on project summary pages is not proof that every LENR claim is false.
+- No claim is made here that the 2026 sub-keV result can or cannot ultimately become energy-positive.
+REPRODUCTION_METHOD:
+- inspect peer-reviewed article methods/results and search associated follow-up replication/net-energy studies
+- require calorimetry plus all beam/loading/electrical inputs and nuclear products for an energy claim
+REPLICATION_STATUS: physical result is peer-reviewed and reported reproducible across two host materials; independent external replication of the decisive net-energy claim is NOT_APPLICABLE because no net-energy claim is established here
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: EXPERIMENT_RESULT + SOURCE_FACT + NOT_VERIFIED
+FINDING:
+- RETAIN PHYSICS / RESEARCH CANDIDATE: measured sub-keV D-D fusion enhancement.
+- NET-ENERGY GENERATION: NOT_VERIFIED.
+- Broad statement "all low-energy fusion is impossible": FALSIFIED by current experimental evidence.
+- Broad statement "LENR is already a proven low-cost power source": NOT_VERIFIED by evidence inspected.
+
+WORK:
+
+### RED-TEAM DECISION RULES
+RT20-1 BOUNDARY CLOSURE:
+- Enumerate electrical, chemical/fuel, nuclear, thermal, mechanical, radiative, pressure, gravitational, field, mass-flow, and stored-energy terms that can materially cross or change inside the boundary.
+- A ratio with an incomplete denominator is not system efficiency.
+
+RT20-2 CYCLIC-RESET TEST:
+- Compare start/end working-state inventories.
+- If a battery, magnetization state, chemical reagent, pressure reservoir, temperature gradient, nuclear fuel, charged capacitor, elastic store, or material structure is depleted/changed, count its energy/exergy change.
+
+RT20-3 SECOND-LAW / EXERGY TEST:
+- For a proposed repeatable heat/work cycle, identify source/sink temperatures and entropy generation.
+- Reject cycles requiring equilibrium heat to become net work with no compensating reservoir/state change.
+
+RT20-4 DENOMINATOR AUDIT:
+- Labels such as Q, gain, COP, coefficient, amplification, yield/input, or target gain are not automatically whole-system efficiency.
+- Explicitly identify numerator, denominator, and omitted reservoirs.
+
+RT20-5 PHYSICAL-EVIDENCE TEST:
+- Simulation/calculation cannot establish a novel physical gain mechanism by itself.
+- Extraordinary positive-net claims require independent physical replication with calibrated energy accounting.
+
+RT20-6 MEASUREMENT-ERROR ATTACK:
+- Require uncertainty budget, calibration, blank/control runs, steady-state/transient distinction, and correction for stored thermal/electrical/chemical energy where material.
+
+RT20-7 SCALE RELEVANCE:
+- Even a physically real reaction or gain mechanism remains outside the mission's solution until net energy, power density, repetition rate, lifetime, cost, resource, safety, and scaling evidence pass.
+
+RESULT:
+- FACT: Conservation of energy and entropy constraints remain hard gates.
+- FACT: NIF target gain 4.13 is measured; present NIF wall-plug boundary is far from whole-facility energy gain.
+- FACT: Dynamical Casimir effect is experimentally observed under externally driven modulation.
+- FACT: 2026 peer-reviewed work reports reproducible sub-keV D-D fusion behavior in loaded Pd/Ti hydrides with ion-beam excitation.
+- INFERENCE: Apparent gain >1 is frequently a boundary/metric issue, not evidence of energy creation.
+- ASSUMPTION: None of the retrieved extraordinary-claim evidence is silently upgraded to a deployable power system.
+- UNKNOWN: Whether any future vacuum-engine or low-energy-fusion architecture can demonstrate independently replicated positive full-system net energy at useful scale/cost.
+- CONFLICT: None requiring vote; the apparent conflict "fusion gain >1 vs conservation" resolves by including nuclear fuel energy and distinguishing target from facility boundary.
+- FALSIFIED:
+  - literal perpetual-motion / energy-from-nothing closed-cycle claims under established physics;
+  - inference that NIF target gain >1 equals present NIF facility net energy gain >1;
+  - inference that observing DCE photons alone proves a free-energy vacuum generator;
+  - blanket assertion that sub-keV fusion reactions in condensed matter never occur.
+
+RED_TEAM_CHECK:
+- Strongest attack attempted: Could the screen falsely dismiss a real source merely because its chosen "gain" exceeds 1?
+- Outcome: Screen repaired to require full reservoir/boundary accounting. Heat-pump-like, fusion-target, environmental-harvesting, stored-energy, and other legitimate cases survive if their omitted energy source is accounted.
+- Strongest attack attempted: Could unusual 2026 low-energy fusion evidence invalidate the thermodynamic kill rule?
+- Outcome: NO. It invalidates a blanket "reaction impossible" statement, not conservation; the experiment has explicit external excitation and does not establish full-system net gain.
+
+STATUS_CHANGE:
+- JOB-EGC-020: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- GLOBAL_SOLVED: remains NO.
+- MISSION_STATUS: remains CONTINUE_REQUIRED.
+- CURRENT_WINNER: remains NONE.
+- USER_SUCCESS_RESPONSE: remains DENIED.
+
+NEXT_ACTION:
+- Independent reviewer must reproduce TE-EGC-020-001..004, specifically:
+  1. source-check LLNL's 8.6 MJ / 2.08 MJ record and approximate 100x grid-to-target laser statement;
+  2. recompute ratios independently and reject any accidental treatment of approximate 100x as precise metering;
+  3. check whether Nature 2026 follow-up/replication exists that materially changes net-energy classification;
+  4. search for independently replicated full-boundary positive-net Casimir/vacuum or LENR power evidence;
+  5. fail this job if stronger evidence contradicts any classification.
+
+WRITE_INTEGRITY:
+- branch head read immediately before submission: 2ae844330480cf7727fda7e23b2f5dbfc177be92
+- file SHA read immediately before submission: f3672be276789f110dd46bc807f8e98d9adf1c06
+- stale-write check: exact fetched blob SHA supplied to update_file; no force push.
+- commit/result: PENDING_THIS_COMMIT
+
+
+### JOB-EGC-020-REV-20261005
+ROLE: Independent extraordinary-claim replication + red team
+TITLE: Independently reproduce and attack JOB-EGC-020
+QUESTION_TO_RESOLVE: Are the thermodynamic classifications, source boundaries, NIF arithmetic, DCE inference, and low-energy-fusion evidence classes reproducible without relying on the submitting session?
+TARGET_CANDIDATE: CROSS-CANDIDATE / EXTRAORDINARY CLAIMS
+DEPENDENCIES: JOB-EGC-020 AWAITING_REVIEW
+REQUIRED_INPUTS: TE-EGC-020-001 through TE-EGC-020-004
+REQUIRED_TOOLS: independent authoritative-source retrieval; independent arithmetic; provenance audit; search for counterevidence
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / REPLICATION / REVIEW / CONFLICT
+EXPECTED_OUTPUT: PASS/FAIL per evidence item; corrections and repair jobs for any material defect
+FALSIFICATION_CRITERIA: FAIL if a material source claim is wrong, a boundary is incomplete, arithmetic cannot be reproduced, or stronger independent physical evidence overturns a kill/retain classification
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE after this submission
+HANDOFF: Must be claimed by a distinct session; do not accept claimant-only evidence for extraordinary positive-net claims.
