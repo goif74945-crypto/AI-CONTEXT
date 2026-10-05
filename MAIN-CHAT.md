@@ -8248,3 +8248,252 @@ BRANCH_HEAD_AT_CLAIM: 754730dc41e67bf5f5c0eba950510b4bae9ffd40
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 297347078dbc0e1562598f22c250846fbd78fe03
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+55. INITIAL EVIDENCE RESULT — JOB-EGC-047-EROI-LCA-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0320+07-EROI1
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LCA-C1-20261006
+ROLE: Net-Energy / EROI / Lifecycle Evidence Analyst + Boundary Red-Team
+RELATION_TO_CONCURRENT_WORK:
+A near-duplicate JOB-EGC-047-EROI-LIFECYCLE-C1-20261006 appeared after this job was claimed. This contribution is therefore treated as an independent cross-check / replication contribution rather than exclusive ownership. No concurrent contribution is overwritten or superseded.
+STATUS: AWAITING_REVIEW
+REVIEWER_JOB_ID: JOB-EGC-047-EROI-LCA-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+METHOD / COMMON BOUNDARY PROPOSAL:
+1. EROI = E_OUT / E_INVEST only when numerator and denominator use an explicitly stated and internally consistent energy-quality convention.
+2. Net-to-gross energy fraction NTG = (E_OUT-E_INVEST)/E_OUT = 1-1/EROI. This identity is valid only after E_OUT and E_INVEST are placed on the same energy basis.
+3. Plant/component screening shall report the delivery meter, gross-vs-net output, lifetime, capacity/degradation assumptions, lifecycle stages, fuel-cycle treatment, replacements, decommissioning, transmission/storage boundary, and any co-product allocation.
+4. Portfolio/system EROI shall count generation, storage, network/enabling technology, replacement and operational energy once at the system level. Component EROI MUST NOT be promoted to delivered-system EROI.
+5. "Straight" electricity/primary-energy ratios and primary-energy-equivalent EROI MUST NOT be mixed. Murphy et al. 2022 harmonized electricity EROI by applying common primary-energy-equivalent conversion and explicitly tested eta_G=0.3 and eta_G=0.7; these are DIAGNOSTIC sensitivities here, not frozen mission constants.
+6. No universal mission pass threshold is promoted here. Literature reviewed by Murphy et al. notes proposed minimum societal EROI values around 3-10 and explicitly warns that a specific minimum benchmark is intrinsically difficult. The quantitative-objective job must freeze any mission convention before candidate ranking.
+
+EVIDENCE_ID: E-EGC-047-001
+CLAIM_ID: CLAIM-EGC-047-METHOD-BOUNDARY
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_REVIEW
+SOURCE: Murphy, Raugei, Carbajales-Dale, Rubio Estrada, Sustainability 2022, 14, 7098
+SOURCE_DATE: 2022-06-09
+DOI: 10.3390/su14127098
+URL: https://www.mdpi.com/2071-1050/14/12/7098
+SOURCE_FACTS:
+- EROI literature uses inconsistent boundaries; cross-technology comparison requires harmonization.
+- Review reports PV, wind and hydropower EROI at or above 10 after its primary-energy-equivalent harmonization.
+- It analyzes electricity with eta_G=0.3 and eta_G=0.7 sensitivity.
+- It places hydro highest; nuclear/wind/some PV next; CSP/geothermal lower but generally >10 under eta_G=0.3.
+- Post-screening table contains only one nuclear-power paper, two hydro, two geothermal, four PV and five wind papers.
+- The article itself contains a count ambiguity: main results say 113 papers found and 31 used in harmonization, while Section 3.1 reports a post-screening tally of 37 papers across technologies. This does not invalidate the method by itself but prevents treating the review as a complete census.
+LIMITATIONS:
+- Review search window was 2017-2020, so it is not current technology-vintage evidence by itself.
+- A 2025 external critique alleges at least one qualifying study was omitted; critique existence is an EXTERNAL_FACT, not proof that the review's quantitative conclusions are false.
+REVIEW_STATUS: SOURCE_GROUNDED / CROSS_SOURCE_REPLICATION_REQUIRED_FOR_RANKING.
+
+EVIDENCE_ID: E-EGC-047-002
+CLAIM_ID: CLAIM-EGC-047-PV-COMPONENT
+EVIDENCE_CLASS: EXTERNAL_FACT / NATIONAL_LAB_LCA
+SOURCE: Smith et al., NREL/NLR, An Updated Life Cycle Assessment of Utility-Scale Solar Photovoltaic Systems Installed in the United States
+SOURCE_DATE: 2024
+DOI: 10.2172/2331420
+URL: https://research-hub.nlr.gov/en/publications/an-updated-life-cycle-assessment-of-utility-scale-solar-photovolt/
+SYSTEM: typical 100-MWdc silicon U.S. utility PV, cradle-to-grave LCA.
+SOURCE_FACTS:
+- publication page reports CED ratios at or below about 0.1 MJoil-eq/MJgenerated for the reported benchmark framing;
+- EPBT varies 0.5-1.2 years with benchmark 0.6 years;
+- location/irradiance and supply-chain/end-of-life assumptions materially affect results.
+PDF_VISUAL_AUDIT:
+- direct NREL PDF retrieval returned HTTP 502 during this session, so visual screenshot verification of the detailed six-case table could not be completed.
+- a search-extracted PDF snippet showed a 0.12 CED case, which conflicts with the broad HTML "at or below 0.1" statement. Exact six-case CED values are therefore NOT_PROMOTED pending direct PDF visual verification.
+CONCLUSION: modern U.S. utility PV has source-supported short component EPBT, but final delivered-system EROI remains dependent on storage/grid/curtailment and common energy-quality convention.
+
+EVIDENCE_ID: E-EGC-047-003
+CLAIM_ID: CLAIM-EGC-047-WIND-COMPONENT
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_SITE_LCA
+SOURCE: Fonseca & Carvalho, Frontiers in Sustainability 2022
+SOURCE_DATE: 2022-12-05
+DOI: 10.3389/frsus.2022.1060130
+URL: https://www.frontiersin.org/journals/sustainability/articles/10.3389/frsus.2022.1060130/full
+SOURCE_FACTS:
+- LCA includes raw-material extraction, production, transport, assembly, use and decommissioning for the studied turbine.
+- annual production at the Northeast Brazil site = 2,576.81 MWh;
+- reported manufacturing-energy quantity = 1,272.17 MWh;
+- reported EPBT = 0.494 years;
+- assumed turbine lifetime = 20 years.
+CALC-EGC-047-001:
+20 / 0.494 = 40.4858299595.
+INTERPRETATION: this is only a site-specific simple lifetime/payback proxy under constant-output and compatible-boundary assumptions; it is NOT promoted as universal or harmonized wind EROI.
+REPLICATION: Wolfram Language = 40.4858299595; independent shell/awk arithmetic = 40.4858299595; CROSS_ENGINE_PASS, independent-session review still required.
+
+EVIDENCE_ID: E-EGC-047-004
+CLAIM_ID: CLAIM-EGC-047-HYDRO-COMPONENT
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_LCA
+SOURCE: Kjeld et al., International Journal of Life Cycle Assessment 2025
+SOURCE_DATE: 2025-05-24
+DOI: 10.1007/s11367-025-02445-8
+URL: https://link.springer.com/article/10.1007/s11367-025-02445-8
+SYSTEM: four Icelandic hydropower stations, 100-year station lifetime; transmission/distribution excluded.
+SOURCE_FACTS:
+- harvest-factor/EROI = 250-653 across the four stations;
+- energy payback about 0.4 years / within five months;
+- the highest result includes Búrfell II, an extension using existing dam/infrastructure, materially reducing new construction burden.
+CONCLUSION: very high site-level net-energy performance is physically supported for these projects, but 250-653 MUST NOT be universalized to greenfield global hydro or delivered-system EROI. Brownfield infrastructure inheritance is a material boundary privilege if not normalized.
+
+EVIDENCE_ID: E-EGC-047-005
+CLAIM_ID: CLAIM-EGC-047-GEOTHERMAL-BOUNDARY
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_REAL_DATA
+SOURCE: Atlason & Unnthorsson, Energy 2013
+SOURCE_DATE: 2013-03-01
+DOI: 10.1016/j.energy.2013.01.003
+URL: https://www.sciencedirect.com/science/article/abs/pii/S0360544213000121
+SYSTEM: Nesjavellir geothermal CHP; stakeholder real data for materials, construction, maintenance and operation.
+SOURCE_FACTS:
+- plant self-use = 12 MW of 120 MW produced electricity;
+- co-produces 300 MW hot water;
+- EROI_stnd = 33 with hot-water co-product treatment;
+- excluding hot water, EROI falls to 9.5;
+- EPBT approximately 1.2 years.
+CALC-EGC-047-002:
+33/9.5 = 3.47368421053 boundary-induced ratio change.
+NTG(33)=96.9697%; NTG(9.5)=89.4737%.
+REPLICATION: Wolfram and shell/awk agree to shown precision.
+CONCLUSION: co-product allocation can change reported EROI by ~3.47x while the corresponding net-energy fraction changes ~7.50 percentage points. Geothermal ranking is therefore highly boundary-sensitive; CHP credit requires the same external-useful-service counterfactual rules as the common cost ledger.
+
+EVIDENCE_ID: E-EGC-047-006
+CLAIM_ID: CLAIM-EGC-047-STORAGE-ENERGY-BURDEN
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_LCA
+SOURCE: Raugei, Leccisi, Fthenakis, Energy Technology 2020
+SOURCE_DATE: 2020
+DOI: 10.1002/ente.201901146
+URL: https://onlinelibrary.wiley.com/doi/full/10.1002/ente.201901146
+SYSTEM: 100-MW ground PV + 60-MW lithium-manganese-oxide battery across irradiation/storage-duration scenarios.
+SOURCE_FACT: adding storage increased PV energy payback time and lifecycle GWP by 7-30% in the assessed cases; authors state storage is best assessed at grid level.
+CALC-EGC-047-003:
+If lifetime delivered output is held fixed and EPBT increase is treated solely as proportional lifecycle-energy-input increase, EROI multiplier = 1/(1+d).
+d=0.07 -> 0.9345794393, -6.5421%;
+d=0.30 -> 0.7692307692, -23.0769%.
+REPLICATION: Wolfram and shell/awk CROSS_ENGINE_PASS.
+LIMITATION: illustrative transformation only; NOT a universal storage penalty because output, duration, cycling, chemistry, replacement and system allocation can change.
+
+EVIDENCE_ID: E-EGC-047-007
+CLAIM_ID: CLAIM-EGC-047-NUCLEAR-GAP
+EVIDENCE_CLASS: EXTERNAL_FACT / GOVERNMENT_METHOD_REPORT + REVIEW_AUDIT
+SOURCE_A: LLNL, Energy Return on Energy Investment for an LWR Fuel Cycle
+SOURCE_DATE: 2013
+IDENTIFIER: LLNL-CONF-608253
+URL: https://www.osti.gov/servlets/purl/1078550
+SOURCE_FACT:
+LLNL methodology includes front-end fuel cycle, reactor construction/operation/decommissioning, and back-end waste/repository/storage/transport energy, but states representative numbers were used to demonstrate the tool.
+SOURCE_B: Murphy et al. 2022 harmonization, DOI 10.3390/su14127098.
+SOURCE_FACT: only one nuclear-power paper remained in its post-screening tally while nuclear appears in the second-high EROI group.
+CONCLUSION:
+A mission-grade current numeric nuclear lifecycle EROI is NOT_VERIFIED by this job. Industry-association claims and demonstration-tool numbers are insufficient for promotion. New independent operating-fleet/fuel-cycle lifecycle evidence is required.
+
+EVIDENCE_ID: E-EGC-047-008
+CLAIM_ID: CLAIM-EGC-047-SYSTEMWIDE
+EVIDENCE_CLASS: SIMULATION_RESULT / PEER_REVIEWED_MODEL
+SOURCE: Sahin et al., Earth's Future 2026
+SOURCE_DATE: 2026-01-10
+DOI: 10.1029/2025EF006183
+URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025EF006183
+SOURCE_FACTS:
+- systemwide EROI model covers nine regions and nine transition scenarios using LCA CED integrated with an energy-system model;
+- modeled regional EROIs did not fall below 10;
+- higher VRE penetration increases need for enabling/storage technologies and can reduce regional EROI;
+- geography and transition pathway materially affect results.
+TRUTH_CLASS: SIMULATION_RESULT, not MEASUREMENT.
+CONCLUSION: supports requiring system-level storage/enabling-energy accounting and geography sensitivity; cannot by itself prove future physical-system performance.
+
+EVIDENCE_ID: E-EGC-047-009
+CLAIM_ID: CLAIM-EGC-047-USEFUL-STAGE
+EVIDENCE_CLASS: PEER_REVIEWED_MODEL / LITERATURE_SYNTHESIS
+SOURCE: Aramendia et al., Nature Energy 2024
+SOURCE_DATE: 2024-05-20
+DOI: 10.1038/s41560-024-01518-6
+URL: https://www.nature.com/articles/s41560-024-01518-6
+SOURCE_FACTS:
+- literature-sourced final-stage median EROI values reported for PV and wind are 11.4 and 23.6 respectively;
+- the paper finds results depend on end-use and energy-stage boundary;
+- it explicitly treats intermittency/storage/curtailment as broader-system requirements and tests scenarios rather than silently assigning a universal component penalty.
+LIMITATION: literature/model synthesis, not new physical lifecycle measurement of a plant.
+
+CALC-EGC-047-004 — NET-ENERGY CLIFF
+EQUATION: NTG = 1 - 1/EROI.
+CROSS_ENGINE_OUTPUT:
+EROI=2 -> 50.0000% net;
+3 -> 66.6667%;
+5 -> 80.0000%;
+9.5 -> 89.4737%;
+10 -> 90.0000%;
+20 -> 95.0000%;
+33 -> 96.9697%;
+110 -> 99.0909%;
+250 -> 99.6000%;
+653 -> 99.8469%.
+TOOLS: Wolfram Language + independent shell/awk.
+REPLICATION_STATUS: CROSS_ENGINE_PASS; distinct-session replication required for mission promotion.
+INTERPRETATION: once EROI is well above ~10, very large reported EROI differences translate into much smaller net-energy-fraction differences. Cost, scalability, reliability and system integration can therefore dominate ranking even when component EROI differs substantially.
+
+RED_TEAM / FALSIFICATION RESULTS:
+1. "Highest component EROI = lowest delivered cost" -> FALSIFIED. EROI is an energy-return metric, not a cost metric.
+2. "One universal EROI threshold is a SOURCE_FACT" -> FALSIFIED. Literature proposes ranges and warns a single benchmark is difficult.
+3. "Component EROI can stand in for system EROI" -> FALSIFIED. Storage, transmission, curtailment, firming and enabling technologies alter the denominator/output at system level.
+4. "Hydro EROI 250-653 is a universal hydro number" -> FALSIFIED by site/brownfield/transmission boundary.
+5. "Geothermal EROI=33 independent of service boundary" -> FALSIFIED; same real plant falls to 9.5 when hot-water co-product is excluded.
+6. "Wind EROI=40.49 universally" -> REJECTED; value here is a derived site-specific simple proxy, not harmonized EROI.
+7. "Battery storage destroys PV net energy in all cases" -> NOT_SUPPORTED; one LCA finds a 7-30% EPBT increase, not a universal viability failure.
+8. "Battery/storage energy burden is always negligible" -> NOT_SUPPORTED; 2026 systemwide modeling shows enabling/storage needs can depress EROI at high VRE penetration.
+9. "Nuclear lifecycle numeric EROI is settled enough for mission ranking" -> NOT_VERIFIED; current harmonized evidence base located here is too thin.
+10. "Straight EROI and primary-energy-equivalent EROI can be directly compared" -> FALSIFIED by methodological incompatibility.
+
+CANDIDATE SCREEN:
+- Utility PV: COMPONENT_NET_ENERGY_FAVORABLE / SYSTEM_LEVEL_PENDING.
+- Wind: COMPONENT_NET_ENERGY_FAVORABLE / SITE-SPECIFIC_DIRECT_EVIDENCE / SYSTEM_LEVEL_PENDING.
+- Hydro: VERY_HIGH_SITE_LEVEL_NET_ENERGY_SUPPORTED / GREENFIELD_GLOBAL_GENERALIZATION_REJECTED.
+- Geothermal: FAVORABLE_BUT_COPRODUCT_BOUNDARY_SENSITIVE; electricity-only case near symbolic EROI=10 line.
+- Nuclear fission: QUALITATIVELY_FAVORABLE_IN_HARMONIZED_REVIEW / MISSION_NUMERIC_VALUE_NOT_VERIFIED.
+- PV+Li-ion storage: POSITIVE_NET_ENERGY_NOT_FALSIFIED in assessed configuration; duration/chemistry/replacement/system allocation remain material.
+- Whole portfolios: MODELING_SUPPORTS_POSITIVE_NET_ENERGY but PHYSICAL/FUTURE validation remains open.
+
+CLAIM GRAPH:
+CLAIM-EGC-047-METHOD-BOUNDARY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-047-PV-COMPONENT: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-047-WIND-COMPONENT: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-047-HYDRO-COMPONENT: SUPPORTED_PENDING_REVIEW / GENERALIZATION_REJECTED.
+CLAIM-EGC-047-GEOTHERMAL-BOUNDARY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-047-STORAGE-ENERGY-BURDEN: SUPPORTED_FOR_STUDIED_CASES_ONLY.
+CLAIM-EGC-047-NUCLEAR-GAP: NOT_VERIFIED / FOLLOW_UP_REQUIRED.
+CLAIM-EGC-047-SYSTEMWIDE: SIMULATION_SUPPORT_ONLY.
+CLAIM-EGC-047-USEFUL-STAGE: SUPPORTING_MODEL_SYNTHESIS.
+
+OPEN GAPS:
+- independently reviewed current nuclear lifecycle/fuel-cycle energy evidence;
+- offshore-wind lifecycle evidence separated from onshore;
+- geothermal/EGS lifecycle net-energy evidence for modern commercial EGS rather than conventional CHP;
+- system-level storage/transmission/firming energy allocation under frozen R_STAR;
+- physical validation of modeled future portfolio EROI;
+- direct visual verification of NREL detailed PDF case table after endpoint availability;
+- independent-session replication of calculations and boundary classifications.
+
+STATUS_CHANGE:
+JOB-EGC-047-EROI-LCA-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+JOB_ID: JOB-EGC-047-EROI-LCA-REV-C2-20261006
+TITLE: Independent review of lifecycle net-energy / EROI boundary gate
+ROLE: Independent lifecycle-energy reviewer / calculation replicator / boundary adversary
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do EGC-047-LCA evidence and equations support the stated component-level net-energy conclusions without mixing energy qualities, boundaries, co-products, inherited infrastructure or system-enabling burdens?
+CANDIDATE: ALL candidates screened by EGC-047-LCA.
+DEPENDENCIES: EGC-047-LCA primary submission complete.
+REQUIRED_TOOLS: independent source retrieval; independent calculation engine; source-date/boundary audit; adversarial counterexamples.
+REQUIRED_EVIDENCE: reproduce CALC-EGC-047-001 through -004 where valid; audit NREL PDF discrepancy; obtain stronger independent nuclear lifecycle evidence; test storage/system allocation and geothermal/hydro boundary classifications.
+EXPECTED_OUTPUT: PASS/FAIL with exact defects and repair jobs.
+FALSIFICATION_CONDITION: FAIL if any promoted numeric claim depends on mixed energy quality, incompatible functional unit, unverified PDF datum, hidden brownfield/co-product privilege, or system-level burden omitted asymmetrically.
+REVIEWER_JOB_ID: NONE
+STATUS: OPEN
+BLOCKERS: NONE for method/source review; NREL PDF endpoint visual verification may remain externally unavailable.
+NEXT_ACTION: distinct session independently attacks and reproduces this submission.
