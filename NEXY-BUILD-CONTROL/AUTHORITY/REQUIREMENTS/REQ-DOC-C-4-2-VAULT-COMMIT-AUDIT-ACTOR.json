@@ -1,0 +1,58 @@
+{
+  "REQ_ID": "REQ-DOC-C-4-2-VAULT-COMMIT-AUDIT-ACTOR",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "FINAL_DOC_C",
+  "SPEC_LINES": {
+    "vault_commit_route": "non-empty paragraphs 8727-8759",
+    "auth_session": "7730-7759",
+    "observability_audit": "7967-8005",
+    "commit_atomicity": "9239-9255"
+  },
+  "SPEC_TEXT": [
+    "POST /api/vault/commit requires session auth and OWNER / SYSTEM RBAC.",
+    "The request contains metadata.created_by, timestamp and idempotency_key.",
+    "The route emits VAULT_COMMIT_CREATED.",
+    "Audit Log = user/system actions with accountability.",
+    "AuditLog contains actor_id and role."
+  ],
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC / FINAL CANONICAL API + OBSERVABILITY CONTRACT",
+  "EXPECTED_BEHAVIOR": [
+    "VAULT_COMMIT_CREATED immutable audit attribution must represent the authenticated actor/authority that actually performed the action.",
+    "Client-controlled request metadata may carry canonical created_by provenance but must not be able to forge immutable AuditLog.actor_id or role.",
+    "Role authority must come from authenticated session/system context, not from request-body metadata."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not use untrusted metadata.created_by as the authoritative immutable audit actor without binding it to authenticated identity.",
+    "Do not allow a successful vault commit whose immutable audit actor can be chosen independently of the authenticated principal."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "VAULT",
+    "API",
+    "AUTH",
+    "AUDIT",
+    "DATA_INTEGRITY",
+    "SECURITY"
+  ],
+  "DEPENDENCIES": [
+    "POST /api/vault/commit",
+    "Session.user_id",
+    "AuditLog.actor_id",
+    "AuditLog.role"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "packages/api/canonical.ts",
+    "vault/repository.ts"
+  ],
+  "TEST_PATHS": [
+    "tests/contract/canonical-api.test.ts",
+    "tests/integration/vault/commit.spec.ts"
+  ],
+  "STATUS": "MISMATCH",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "canonical_api_blob": "1664d8d6a7da32245578addc26596f8fd4d55954",
+    "vault_repository_blob": "197698c5514da02af251640aa51ad80597710c8f",
+    "canonical_api_test_blob": "edc26665c768f31f27bee89c8b8578ad5c59ee1a",
+    "observation": "authorizeReadContext yields authenticated userId/role, but handleVaultCommit passes metadata.created_by as commitVault.authorId; commitVault uses authorId as AuditLog.actor and chain input."
+  }
+}
