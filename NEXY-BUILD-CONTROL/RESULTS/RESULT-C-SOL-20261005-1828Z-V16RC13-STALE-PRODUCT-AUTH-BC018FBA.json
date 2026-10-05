@@ -1,0 +1,111 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_STALE_PRODUCT_AUTHORITY_AUDIT_V1",
+  "RESULT_ID": "RESULT-C-SOL-20261005-1828Z-V16RC13-STALE-PRODUCT-AUTH-BC018FBA",
+  "CHAT_ID": "C-SOL-20261005-1828Z-V16RC13-PHASE1-AUDIT-BC018FBA",
+  "CLAIM_ID": "CLAIM-C-SOL-20261005-1828Z-V16RC13-STALE-PRODUCT-AUTH-BC018FBA",
+  "TASK_KEY": "96dd1bc12237912014988a80f91350f2c36012516dc65891d20b2f97717df1a9",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "OBSERVED_CONTROL_HEAD": "373d4293d50ad1e2dd159275ba2f22b8dab22931",
+  "BOOTSTRAP_FENCE_STATE_VERSION": 6,
+  "BOOTSTRAP_STATE": "BLOCKED",
+  "WORK_ADMISSION_GATE": "READ_ONLY_PREACTIVATION",
+  "MUTATION_GATE": "CLOSED",
+  "INTEGRATION_GATE": "CLOSED",
+  "ACTIVE_CONSTITUTION_REQUESTED": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "TARGET_OBSERVATION": {
+    "BASELINE_HEAD": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "LATEST_HEAD": "1b2aa206b18797295cd09b47ab2fe141184546d8",
+    "LATEST_TREE": "393c0fba0bcdd8bdc66ffb824a2e10e8706e0a1e",
+    "LATEST_COMMIT_DATE": "2026-10-05T18:50:46Z",
+    "LATEST_COMMIT_MESSAGE": "test(g14): lock canonical build flag ordering",
+    "AHEAD_OF_FENCED_BASELINE_COMMITS": 73,
+    "PROTECTED_UPSTREAM_HEAD": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43"
+  },
+  "OBSERVED_ACTIVE_PRODUCT_CLAIMS": [
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0143-0700-DOC-C-REQUEST-OTAC-AUDIT",
+      "BASE_SHA": "12eb5d2361c17bea901d735e8d1f8e2ee722f931",
+      "AUTHORITY_FIELD": "ABSENT",
+      "STATUS": "IN_PROGRESS"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0143-0700-LO3SHARD-4F9C2A17",
+      "BASE_SHA": null,
+      "AUTHORITY_FIELD": "ABSENT",
+      "STATUS": "ACTIVE"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0143-0700-TASK-DOC-C4-ARTIFACT-REVISIONS-001",
+      "BASE_SHA": "c1a2bea37fd40a5b8a6b12b7770fa41f55beb02c",
+      "AUTHORITY_FIELD": "User current MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD instruction plus authoritative DOCX §4.2",
+      "STATUS": "ACTIVE"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0143-INCIDENT-AUDIT",
+      "BASE_SHA": "9a12704259ee38009f45fe1964ca90d53212554a",
+      "AUTHORITY_FIELD": "ABSENT",
+      "STATUS": "ACTIVE"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0143-PRODUCT-QUEUE-01-TASK-QUEUE-PROCESSING-REGRESSION-001",
+      "BASE_SHA": "12eb5d2361c17bea901d735e8d1f8e2ee722f931",
+      "AUTHORITY_FIELD": "User directive NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD plus superseded legacy worker-prefix incident.",
+      "STATUS": "ACTIVE"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0144-0700-PRODUCT-RUN-OPTIONAL-PRIMARY-INCIDENT",
+      "BASE_SHA": "904059fb08bb5e05e0906b344055ffbdbf7351b0",
+      "AUTHORITY_FIELD": "current_user_directive=NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD",
+      "STATUS": "ACTIVE"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0144-0700-RUNOPTION-6E21A4B9-RUN-OPTIONAL-NULL",
+      "BASE_SHA": null,
+      "AUTHORITY_FIELD": "ABSENT",
+      "STATUS": "ACTIVE"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0144-API-HANDLER-STATE",
+      "BASE_SHA": null,
+      "AUTHORITY_FIELD": "ABSENT",
+      "STATUS": "ACTIVE"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0144-PRODUCT-QUEUE-02-TASK-QUEUE-MISSING-DISPATCH-FAIL-CLOSED-001",
+      "BASE_SHA": "22d00a274cd63365df3b0e3b69e7cd4f4b4e6e5f",
+      "AUTHORITY_FIELD": "User directive NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD; isolated worker branches explicitly authorized and legacy invalid worker-prefix blocker superseded by Git-valid NEXY.AI-Test-AI-work namespace.",
+      "STATUS": "ACTIVE"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0144-PRODUCT-UI-SIDEBAR-AUTOSHOW",
+      "BASE_SHA": null,
+      "AUTHORITY_FIELD": "USER_CURRENT_NEXY_MULTI_CHAT_CONTINUOUS_PRODUCT_BUILD_2026-10-06",
+      "STATUS": "ACTIVE"
+    },
+    {
+      "CLAIM": "CLAIM-C-SOL-20261006-0144-QUEUE-MISSING-DISPATCH",
+      "BASE_SHA": "c1a2bea37fd40a5b8a6b12b7770fa41f55beb02c",
+      "AUTHORITY_FIELD": "ABSENT",
+      "STATUS": "ACTIVE"
+    }
+  ],
+  "SCOPE_COMPLETENESS": "NON_EXHAUSTIVE_SAMPLE_OF_CURRENT_ACTIVE_CLAIMS__SUFFICIENT_TO_PROVE_SPLIT_BRAIN__NOT_A_COMPLETE_CLAIM_DENOMINATOR",
+  "FINDINGS": [
+    "Multiple active product-work claims exist while the canonical Bootstrap Fence allows read-only preactivation only.",
+    "At least four sampled claims explicitly assert NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD or equivalent as current authority, which is superseded by the active V16-RC1.3 directive.",
+    "Several sampled claims bind base SHAs that are descendants of the fenced baseline, proving product work is being scheduled from already-unreconciled target state.",
+    "One sampled task, TASK-QUEUE-PROCESSING-REGRESSION-001, remains canonically BLOCKED_GLOBAL_WORKER_REF_NAMESPACE and explicitly forbids direct integration-head mutation, yet a later claim marks work ACTIVE under superseded authority."
+  ],
+  "VERDICT": "PREACTIVATION_AUTHORITY_SPLIT_BRAIN_CONFIRMED_FAIL_CLOSED",
+  "REQUIRED_ACTION": [
+    "Suspend or invalidate all preactivation product mutation/integration claims whose authority does not bind the active V16-RC1.3 fenced state.",
+    "Do not delete ambiguous Git truth or blindly roll back target.",
+    "Reconcile target ref provenance and stale claim authority before any phase advancement.",
+    "Refresh any target-bound evidence from the actual target HEAD after authority reconciliation."
+  ],
+  "RELATED_FINDING": "FINDING-V16RC13-PREACTIVATION-TARGET-MUTATION-DETECTED-4B508E13",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
