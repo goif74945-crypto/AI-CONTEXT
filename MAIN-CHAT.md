@@ -8238,3 +8238,205 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+39. JOB-EGC-GRID-SRC-G1-20261005 — EVIDENCE PASS 1
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-GRID-G1-20261005
+JOB_ID: JOB-EGC-GRID-SRC-G1-20261005
+STATUS: EXECUTING
+
+### EVIDENCE_ID: EVID-EGC-GRID-G1-001
+CLAIM_ID: CLAIM-EGC-GRID-QUEUE-IS-NOT-BUILT
+TOOL: authoritative web/source retrieval
+METHOD: direct Lawrence Berkeley National Laboratory Queued Up 2026 dataset landing page
+DATE: 2026-10-05 mission date
+SOURCE: Lawrence Berkeley National Laboratory, Queued Up: 2026 Edition
+SOURCE_DATE: June 2026 report / data through end-2025
+URL/DOI/IDENTIFIER: https://emp.lbl.gov/queues
+INPUTS: seven U.S. ISOs/RTOs + 50 non-ISO utilities representing ~98% of installed U.S. generating capacity
+PARAMETERS: active transmission interconnection requests through end-2025
+OUTPUT:
+- ~8,200 active projects
+- 1,312 GW generation seeking interconnection
+- ~749 GW storage seeking interconnection
+- 549 GW had draft/executed interconnection agreements but had not yet reached commercial operation
+- median request-to-commercial-operation duration exceeded 5 years for projects built in 2025 in regions with available data
+- only 13% of capacity requesting interconnection in 2000-2020 had reached commercial operation by end-2025; 75% had withdrawn and 10% remained active
+UNITS: projects, GW, years, percent of requested capacity
+UNCERTAINTY: queue definitions/data quality differ by utility; hybrid resources may complicate additive capacity accounting
+ASSUMPTIONS: NONE for source-reported values
+LIMITATIONS: queue projects are proposals, not physical installed capacity; load interconnections and distribution/behind-the-meter projects are excluded
+REPRODUCTION_METHOD: retrieve 2026 Queued Up page and downloadable dataset; reproduce status shares by request cohort
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_ADMINISTRATIVE_DATA
+
+### EVIDENCE_ID: EVID-EGC-GRID-G1-002
+CLAIM_ID: CLAIM-EGC-GRID-GLOBAL-BOTTLENECK
+TOOL: authoritative web/source retrieval
+METHOD: IEA Electricity 2026 executive summary + Grids chapter
+DATE: 2026-10-05 mission date
+SOURCE: International Energy Agency, Electricity 2026
+SOURCE_DATE: February 2026
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/electricity-2026/executive-summary ; https://www.iea.org/reports/electricity-2026/grids
+INPUTS: IEA global electricity-system analysis
+PARAMETERS: connection queues, grid investment, non-firm connections, grid-enhancing technologies
+OUTPUT:
+- >2,500 GW of renewable, storage and large-load projects reported stalled in grid connection queues worldwide
+- annual grid investment needs to rise roughly 50% by 2030 from about USD 400 billion/year
+- CALCULATION: 400 * 1.50 = ~USD 600 billion/year; incremental requirement ~USD 200 billion/year versus stated current level
+- IEA high-level model estimates flexible/non-firm connections plus grid-enhancing upgrades could unlock ~1,200-1,600 GW of advanced-stage queued projects, subject to project-specific technical constraints
+UNITS: GW; USD billion/year
+UNCERTAINTY: 1,200-1,600 GW is a high-level modeled potential, not measured delivered capacity; real-world voltage/substation/short-circuit/profile constraints vary
+ASSUMPTIONS: arithmetic only for 50% uplift
+LIMITATIONS: global aggregate does not allocate costs or causation to individual technologies
+REPRODUCTION_METHOD: inspect IEA executive summary and Grids chapter; recompute 400*1.5
+REPLICATION_STATUS: ARITHMETIC_REPLICATED_ONCE / SOURCE_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + MODELLED_EXTERNAL_EVIDENCE
+
+### EVIDENCE_ID: EVID-EGC-GRID-G1-003
+CLAIM_ID: CLAIM-EGC-STORAGE-NAMEPLATE-NOT-FIRM
+TOOL: authoritative web/source retrieval
+METHOD: IEA Electricity 2026 Flexibility chapter
+DATE: 2026-10-05 mission date
+SOURCE: International Energy Agency, Electricity 2026 — Flexibility
+SOURCE_DATE: February 2026
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/electricity-2026/flexibility
+INPUTS: global utility-scale battery and demand-flexibility datasets
+PARAMETERS: installed battery power, peak-demand contribution, duration, state of charge, derating and ancillary-service commitments
+OUTPUT:
+- utility-scale battery additions reached ~63 GW in 2024, bringing installed global utility-scale battery power to ~124 GW
+- project costs were around USD 150/kWh in 2024 after an approximately 40% decline that year
+- IEA explicitly warns actual discharge during peak events can be significantly below aggregate nameplate capacity because of temperature derating, state of charge, duration shorter than the demand event, and capacity committed to ancillary services
+- only ~100 GW of demand response was utilised globally as of 2024 despite larger technical potential
+UNITS: GW, USD/kWh
+UNCERTAINTY: storage duration/service mix is region-specific; nameplate GW is not an adequacy-equivalent metric
+ASSUMPTIONS: NONE
+LIMITATIONS: 2024 global operational snapshot, not 2026 installed total; project cost is not all-in delivered-electricity cost
+REPRODUCTION_METHOD: inspect IEA Flexibility chapter and notes to battery-capacity figure
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### EVIDENCE_ID: EVID-EGC-GRID-G1-004
+CLAIM_ID: CLAIM-EGC-US-BATTERY-OPERATING-SCALE
+TOOL: authoritative web/source retrieval
+METHOD: U.S. Energy Information Administration monthly generator inventory summary
+DATE: 2026-10-05 mission date
+SOURCE: U.S. EIA, Battery storage capacity averaged 70% growth over the last three years
+SOURCE_DATE: 2026-08-07
+URL/DOI/IDENTIFIER: https://www.eia.gov/todayinenergy/detail.php?id=67925
+INPUTS: Preliminary Monthly Electric Generator Inventory
+PARAMETERS: operational U.S. utility-scale battery nameplate power
+OUTPUT:
+- 43.6 GW operational battery storage at end-2025
+- +8.3 GW during first half of 2026
+- nearly 52 GW nameplate operational by June 2026
+UNITS: GW
+UNCERTAINTY: preliminary inventory and nameplate-power metric
+ASSUMPTIONS: NONE
+LIMITATIONS: does not by itself establish duration, usable energy, ELCC/capacity credit, state of charge or delivered-system economics
+REPRODUCTION_METHOD: inspect cited EIA release and underlying generator inventory
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATA
+
+### EVIDENCE_ID: EVID-EGC-GRID-G1-005
+CLAIM_ID: CLAIM-EGC-ADEQUACY-MULTI-FACTOR
+TOOL: authoritative PDF retrieval + rendered screenshot inspection
+METHOD: NERC 2026 Summer Reliability Assessment Snapshot; screenshot visually inspected
+DATE: 2026-10-05 mission date
+SOURCE: North American Electric Reliability Corporation
+SOURCE_DATE: 2026
+URL/DOI/IDENTIFIER: https://www.nerc.com/globalassets/our-work/assessments/2026-summer-reliability-assessment-snapshot.pdf
+INPUTS: NERC summer resource/demand assessment
+PARAMETERS: anticipated resources, peak demand growth, abnormal-condition risk
+OUTPUT:
+- NERC anticipated resources increase from 1,115 GW (2025 SRA) to 1,173 GW (2026 SRA), a CALCULATED +58 GW
+- source figure attributes +16 GW solar, +15 GW battery and +7 GW natural gas among additions
+- elevated-risk areas under abnormal summer conditions fell from six regions in 2025 to three regions plus one locality in 2026
+- NERC still identifies accelerated demand, large loads, low-wind periods, heat/drought and maintenance overlap as reliability stressors
+UNITS: GW; count of risk regions/localities
+UNCERTAINTY: seasonal planning assessment, not realized annual reliability outcome
+ASSUMPTIONS: subtraction 1,173 - 1,115 = 58 GW
+LIMITATIONS: cannot infer technology-specific firm capacity from nameplate additions alone
+REPRODUCTION_METHOD: open one-page NERC snapshot and inspect rendered chart/text; recompute resource delta
+REPLICATION_STATUS: VISUALLY_VERIFIED_SOURCE + ARITHMETIC_ONCE / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+
+### EVIDENCE_ID: EVID-EGC-GRID-G1-006
+CLAIM_ID: CLAIM-EGC-TRANSMISSION-CAN-REDUCE-SYSTEM-COST
+TOOL: authoritative government source retrieval
+METHOD: U.S. DOE National Transmission Planning Study landing/release pages
+DATE: 2026-10-05 mission date
+SOURCE: U.S. Department of Energy, National Transmission Planning Study
+SOURCE_DATE: final study October 2024; still current DOE planning study inspected in 2026
+URL/DOI/IDENTIFIER: https://www.energy.gov/oe/national-transmission-planning-study-0
+INPUTS: DOE/National Laboratory transmission planning models
+PARAMETERS: U.S. long-horizon interregional transmission expansion scenarios
+OUTPUT:
+- DOE reports modeled accelerated transmission expansion can reduce national electricity-system expenditures by approximately USD 270-490 billion through 2050 in the study scenarios
+- 2026 DOE Draft National Transmission Needs Study separately states a pressing need for additional transmission infrastructure due to current load growth and congestion/capacity constraints
+UNITS: USD billion present-value/system expenditure context per study; qualitative 2026 need
+UNCERTAINTY: modeled scenario result, not observed savings; 2024 assumptions may age
+ASSUMPTIONS: use only as directional system-value evidence, not a universal cost credit
+LIMITATIONS: U.S.-specific; scenario-dependent; cannot be assigned as a fixed per-MWh credit
+REPRODUCTION_METHOD: inspect DOE study methodology/scenarios and 2026 Needs Study updates; rerun model only if public inputs/tooling permit
+REPLICATION_STATUS: SOURCE_RETRIEVED / MODEL_REPLICATION_NOT_PERFORMED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + SIMULATION/MODEL_RESULT
+
+### CLAIM_ID: CLAIM-EGC-GRID-G1-A
+TRUTH_CLASS: INFERENCE
+CLAIM: Interconnection-queue GW cannot be counted as deployable or physically demonstrated generation/storage capacity.
+SUPPORTED_BY: EVID-EGC-GRID-G1-001
+STATUS: SUPPORTED_NOT_VERIFIED
+
+### CLAIM_ID: CLAIM-EGC-GRID-G1-B
+TRUTH_CLASS: INFERENCE
+CLAIM: A fair massive-energy comparison requires chronological adequacy/flexibility modeling or another validated effective-capacity method; battery/generator nameplate MW alone is insufficient.
+SUPPORTED_BY: EVID-EGC-GRID-G1-003, EVID-EGC-GRID-G1-005
+STATUS: SUPPORTED_NOT_VERIFIED
+
+### CLAIM_ID: CLAIM-EGC-GRID-G1-C
+TRUTH_CLASS: INFERENCE
+CLAIM: Grid/transmission must be represented as a candidate-neutral system asset with both costs and benefits; treating transmission only as a surcharge assigned to variable renewables is invalid.
+SUPPORTED_BY: EVID-EGC-GRID-G1-002, EVID-EGC-GRID-G1-006
+STATUS: SUPPORTED_NOT_VERIFIED
+
+### RED_TEAM_ATTACKS
+- ATTACK: count all queued GW as near-term scalable supply.
+  RESULT: REJECTED; historical completion is low and queue-to-COD duration is long.
+- ATTACK: equate battery nameplate GW with firm GW.
+  RESULT: REJECTED by IEA operational caveats and duration/state-of-charge dependence.
+- ATTACK: charge transmission only as a renewable integration penalty.
+  RESULT: REJECTED; transmission provides adequacy/resource-sharing/system-cost benefits and is also driven by load growth and other system needs.
+- ATTACK: infer reliability from annual energy balance alone.
+  RESULT: REJECTED; NERC identifies coincident weather, demand, outages and low-wind periods as adequacy stressors.
+
+### JOB PROGRESS DECISION
+RESULT:
+- Current authoritative evidence establishes that grid/interconnection/flexibility are first-order scale and cost constraints.
+- It also establishes anti-gaming rules: queue!=built; nameplate storage!=firm capacity; transmission cost and value must both be modeled.
+- This pass does NOT provide a universal USD/MWh integration surcharge and does NOT rank candidates.
+STATUS_CHANGE: JOB-EGC-GRID-SRC-G1-20261005 CLAIMED/EXECUTING -> AWAITING_REVIEW
+REVIEWER_REQUIRED: JOB-EGC-GRID-REV-G1-20261005
+BLOCKERS:
+- common boundary and objective review not yet finalized
+- candidate penetrations/geographies/load shapes not fixed
+- independent replication pending
+NEXT_ACTION:
+- independent grid review;
+- JOB-EGC-021 should use chronological/system-specific modeling rather than one generic integration adder;
+- select another non-colliding high-information job while review is pending.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
