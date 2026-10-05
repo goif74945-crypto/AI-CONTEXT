@@ -1,0 +1,60 @@
+{
+  "FINDING_ID": "FIND-DOC-C4-VERIFY-OTAC-ADMISSION-AUDIT-ERROR-MATRIX-001",
+  "REQ_ID": "REQ-DOC-C-4-2-VERIFY-OTAC",
+  "TASK_ID": "TASK-DOC-C4-VERIFY-OTAC-ADMISSION-CONTRACT-001",
+  "FROM": "C-SOL-20261005-1924-V8",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CONTROL_PARENT_OBSERVED": "4f78aaf8335f8dcd890939d3f1b77a71d47f6f15",
+  "SEVERITY": "P1",
+  "CLASS": [
+    "CONTRACT_DRIFT",
+    "AUDITABILITY_DEFECT",
+    "AUTHORITY_VIOLATION",
+    "MISSING_REQUIRED_TEST"
+  ],
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "FACTS": [
+    "Final DOC-C POST /api/auth/verify-otac says Retry: allowed until attempt limit reached and Audit: emit AUTH_VERIFIED or AUTH_VERIFY_FAILED.",
+    "Its declared error matrix contains 401 AUTH_INVALID, 401 AUTH_EXPIRED, 403 DEVICE_MISMATCH, 409 OTAC_LOCKED, and 409 SESSION_REVOKED; it does not declare 429 RATE_LIMIT_EXCEEDED or 503 rate-limit dependency errors.",
+    "handleVerifyOtac invokes defaultAuthLimiter before creating its request_id or executing any AUTH_VERIFY_FAILED logging path, then returns immediately when admission is denied.",
+    "defaultAuthLimiter can return 429 RATE_LIMIT_EXCEEDED, and under fail-closed runtime-config/Redis failures can return 503 dependency-family responses.",
+    "auditRequestOtacAdmissionFailure only emits AUTH_OTAC_REQUESTED for request_otac-specific limiter options; defaultAuthLimiter does not emit AUTH_VERIFY_FAILED.",
+    "Repository and control searches found no existing verify-otac rate-limit rejection audit/error reconciliation record."
+  ],
+  "EXPECTED": [
+    "Canonical verify-otac must preserve its required audit semantics for route failures.",
+    "Canonical verify-otac must not expose undeclared error outcomes or contradict retry-until-attempt-limit semantics.",
+    "Security throttling may remain only through a design that stays within active final-DOC-C authority."
+  ],
+  "SPEC_EVIDENCE": {
+    "GLOBAL_API_LAW": "DOC-C paragraphs 10026-10037",
+    "VERIFY_OTAC": "DOC-C paragraphs 10070-10104",
+    "AUTH_DEFAULTS": "DOC-C paragraphs 9929-9937"
+  },
+  "SOURCE_EVIDENCE": {
+    "verify_handler": {
+      "path": "packages/api/auth.ts",
+      "blob": "0f8c8e21ce39f36b850c0db93ceadaa886088e6b"
+    },
+    "rate_limit_middleware": {
+      "path": "packages/api/middleware/rate-limit.ts",
+      "blob": "d6c99adcbb17365a505032acbb8da4da16537ff9"
+    }
+  },
+  "REPRODUCTION": [
+    "Exceed defaultAuthLimiter threshold and call POST /api/auth/verify-otac.",
+    "Observe middleware 429 before AUTH_VERIFY_FAILED path.",
+    "Or fail runtime rate-limit config/Redis in fail-closed mode and observe middleware 503 before AUTH_VERIFY_FAILED path."
+  ],
+  "REPAIR_CONSTRAINTS": [
+    "Do not weaken OTAC brute-force protections.",
+    "Do not invent new final-DOC-C error semantics.",
+    "Reconcile admission control, route error matrix, and AUTH_VERIFY_FAILED auditing atomically.",
+    "Add negative tests for pre-handler rejection semantics.",
+    "Do not mutate protected NEXY.ai."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "SOURCE_MUTATION": "NONE"
+}
