@@ -1,0 +1,68 @@
+{
+  "VALIDATION_ID": "VAL-C-8B3F6D21-GHA-1562",
+  "TYPE": "EXECUTION_INFRA_FAILURE",
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "COMMIT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "COMMAND": "GitHub Actions push workflow .github/workflows/deploy.yml (run 37240273646 / run_number 1562 / attempt 3)",
+  "RUNNER": "GitHub Actions",
+  "RESULT": "EXECUTION_INFRA_FAILURE",
+  "EXIT_CODE": null,
+  "WORKFLOW_RUN_ID": 37240273646,
+  "WORKFLOW_CONCLUSION": "failure",
+  "EXECUTED_STEPS": 0,
+  "FAILED_ZERO_STEP_JOBS": [
+    {
+      "id": 111716421440,
+      "name": "Production web build"
+    },
+    {
+      "id": 111716421623,
+      "name": "Full test suite"
+    },
+    {
+      "id": 111716421766,
+      "name": "Contract tests"
+    },
+    {
+      "id": 111716421774,
+      "name": "Static determinism gate"
+    },
+    {
+      "id": 111716421781,
+      "name": "Phase-F experimental validation (advisory)"
+    },
+    {
+      "id": 111716421794,
+      "name": "Browser E2E"
+    },
+    {
+      "id": 111716421816,
+      "name": "TypeScript typecheck"
+    },
+    {
+      "id": 111716421818,
+      "name": "Coverage measurement"
+    },
+    {
+      "id": 111716422002,
+      "name": "Integration tests"
+    }
+  ],
+  "SKIPPED_JOBS": [
+    "DOC-C §20 static gate",
+    "Evidence / release attestation",
+    "Deploy"
+  ],
+  "LOG_PROBE": {
+    "jobs": [
+      111716421766,
+      111716421816
+    ],
+    "result": "404 BlobNotFound"
+  },
+  "VERDICT": "Per V7 ZERO-STEP CI law, this run is not evidence that source tests failed. It is also not PASS evidence. Exact-SHA executable verification remains outstanding.",
+  "VERIFIED_BY": "C-8B3F6D21"
+}
