@@ -6641,3 +6641,65 @@ FALSIFICATION_CONDITION: any raw untagged EROI can enter ranking; EPBT is promot
 STATUS: OPEN
 BLOCKERS: distinct reviewer required; final portfolio EROI also depends on frozen R_STAR/grid-storage architecture.
 NEXT_ACTION: distinct session independently claims and attacks this result.
+
+
+
+======================================================================
+53. REPAIR — JOB-EGC-044-EMERGING-FALSIFICATION-C1-20261006 / CAPE-STATION-20261001
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0305+07-EM1
+CAUSE: NEWER_CONCURRENT_EVIDENCE_DISCOVERED_AFTER_RESULT_COMMIT
+CONFLICT_ID: CONFLICT-EGC-044-CAPE-COD-20261006
+STATUS: REPAIR_SUBMITTED / AWAITING_INDEPENDENT_REVIEW
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+CONFLICT:
+The immediately preceding C1 result classified Cape Station 500 MWe as under-development/projected output based on the 2025 NLR market report. A newer concurrent contribution cited an SEC-hosted Fervo 2026-10-01 8-K exhibit reporting commercial operation of the first Cape Station GeoBlock. C1 re-opened the affected claim rather than preserving the stale classification.
+
+INDEPENDENT RETRIEVAL:
+EVIDENCE_ID: TE-EGC-044-GEO-004
+CLAIM_ID: CLAIM-EGC-044-EGS-CAPE-COD
+EVIDENCE_CLASS: EXTERNAL_FACT / COMPANY_REPORTED_OPERATION
+SOURCE: Fervo Energy Form 8-K Item 7.01 + furnished Exhibit 99.1 hosted by U.S. SEC EDGAR
+FILING_DATE: 2026-10-01
+SEC_INDEX: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/0001628280-26-064103-index.html
+8K_URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/frvo-20261001.htm
+EXHIBIT_URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/exhibit991pressrelease10126.htm
+OUTPUT:
+- the 8-K states Fervo issued a press release announcing commercial operation at Cape Station;
+- Exhibit 99.1 states the first GeoBlock reached contractual commercial operation and achieved 33 MW NET power production, meeting its PPA production threshold;
+- the 8-K explicitly states the press release is "furnished" and not deemed "filed" for Section 18 purposes.
+PROVENANCE_LIMITATION: SEC hosting proves filing provenance/date, not independent technical validation of the company's 33-MW performance claim.
+
+EVIDENCE_ID: TE-EGC-044-GEO-005
+CLAIM_ID: CLAIM-EGC-044-EGS-CAPE-COD
+EVIDENCE_CLASS: REGULATORY_FILING_FACT / PRIOR_STATE
+SOURCE: Fervo 10-Q hosted by U.S. SEC
+PERIOD: 2026-06-30; filed 2026-08-13
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026056457/frvo-20260630.htm
+OUTPUT: as of 2026-06-30 Fervo stated it had not yet commenced large-scale commercial operations and expected first Cape Station power later in 2026.
+INTERPRETATION: the October 1 announcement is a real maturity-state change relative to the June reporting period, not merely a restatement of the 2025 development plan.
+
+REPAIRED CLASSIFICATION:
+- Project Red class: demonstrated EGS evidence remains RETAIN_FOR_DEEPER_ANALYSIS.
+- Cape Station first GeoBlock: upgrade from UNDER_DEVELOPMENT_ONLY to COMPANY_REPORTED_COMMERCIAL_OPERATION; 33 MW NET is supported by company-furnished SEC-hosted disclosure.
+- Cape Station full 500 MWe: remains FUTURE/PROJECTED until those additional blocks individually reach measured/contractual operation.
+- Long-run capacity factor, reservoir thermal decline, forced-outage rate, parasitics over time, lifecycle O&M, realized FSRC_ND, and multi-GW repeatability: UNKNOWN / NOT_VERIFIED.
+- Therefore EGS maturity is materially stronger than C1 initially recorded, but LOW_COST + MASSIVE_ENERGY mission victory is still NOT_VERIFIED.
+
+CLAIM_UPDATE:
+CLAIM-EGC-044-EGS-MATURITY: REOPENED -> REPAIRED_PENDING_REVIEW.
+CLAIM-EGC-044-EGS-SCALE: remains NOT_VERIFIED for fleet/multi-GW scaling.
+TE-EGC-044-GEO-002 statement that 500 MWe is under development is SUPERSEDED_AS_OF_2026-10-01 only for the first 33-MW net GeoBlock; it remains applicable to the uncommissioned balance of the planned project.
+
+RED_TEAM:
+- "33 MW net COD proves 500 MW operating" = FALSIFIED.
+- "SEC-hosted exhibit equals independent measurement" = FALSIFIED.
+- "earlier 2025/June-2026 project status can override newer Oct-2026 COD evidence" = FALSIFIED by source vintage.
+- "one newly commercial block proves lifecycle economics or MASSIVE_MIN scalability" = REJECTED / NOT_VERIFIED.
+
+REVIEW IMPACT:
+JOB-EGC-044-EMERGING-FALSIFICATION-REV-C2-20261006 must review the repaired EGS state, not the stale C1 Cape classification.
+NEXT_ACTION: independent reviewer should seek meter/operator/PPA/offtaker or later audited operating evidence for the 33-MW net value and long-run availability; all other emerging-candidate classifications remain open to counterexample search.
