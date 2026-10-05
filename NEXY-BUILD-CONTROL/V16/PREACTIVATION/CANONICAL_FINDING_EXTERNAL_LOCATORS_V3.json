@@ -1,0 +1,44 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_FINDING_EXTERNAL_LOCATORS_V3",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "CONTRACT_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V3.json",
+  "SUPERSEDES": {
+    "PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_EXTERNAL_LOCATORS_V2.json",
+    "BLOB_SHA": "f441e009d2155276cb697b9529714de2d70de3dd"
+  },
+  "LOCATOR_SCHEMA": {
+    "REQUIRED_FIELDS": [
+      "FINDING_ID",
+      "DEFINITION_PATH",
+      "EXPECTED_MEDIA_TYPE",
+      "EVIDENCE_BLOB_SHA"
+    ],
+    "FIELD_TYPES": {
+      "FINDING_ID": "non-empty NFC string",
+      "DEFINITION_PATH": "normalized repository path under NEXY-BUILD-CONTROL but outside NEXY-BUILD-CONTROL/FINDINGS",
+      "EXPECTED_MEDIA_TYPE": "application/json|text/markdown",
+      "EVIDENCE_BLOB_SHA": "lowercase 40-hex Git blob SHA observed when locator was admitted; generation MUST re-resolve the pinned snapshot blob"
+    },
+    "SORT": "FINDING_ID UTF-8 bytes, then DEFINITION_PATH UTF-8 bytes",
+    "DUPLICATE_RULE": "Duplicate FINDING_ID or DEFINITION_PATH is invalid."
+  },
+  "LOCATORS": [
+    {
+      "FINDING_ID": "FINDING-PREMATURE-LEGACY-DRAIN-ENTRY-001",
+      "DEFINITION_PATH": "NEXY-BUILD-CONTROL/V16/BOOTSTRAP/b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93/FINDING-PREMATURE-LEGACY-DRAIN-ENTRY-001.json",
+      "EXPECTED_MEDIA_TYPE": "application/json",
+      "EVIDENCE_BLOB_SHA": "6902a6b64d75da3152d63833e4caff344fd8b7d5"
+    }
+  ],
+  "VALIDATION": [
+    "Every locator ID and path is unique.",
+    "At generation time the definition path MUST exist in the pinned control tree.",
+    "The re-resolved blob MUST parse under Universe V3 RAW_EXTRACTION and expose exactly the locator FINDING_ID.",
+    "The basename stem MUST equal FINDING_ID.",
+    "Locator metadata never changes severity/status/type semantics.",
+    "A locator does not make an unreviewed or malformed external definition valid; any mismatch blocks universe completeness."
+  ],
+  "STATUS": "V3_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE"
+}
