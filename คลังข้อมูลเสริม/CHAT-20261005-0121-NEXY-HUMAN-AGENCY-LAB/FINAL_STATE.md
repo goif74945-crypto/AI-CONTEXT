@@ -184,3 +184,45 @@ Superseding continuation status recorded at `2026-10-05 06:25:53 +07:00`:
 See `CHECKPOINT-002-W6.md` for exact commands, bounded property denominators, commit/blob/SHA-256 evidence, limitations, and protected-scope confirmation.
 
 Mission status remains `NOT_COMPLETE`. The exact next legal action is W7 Human-Facing Semantic Contract after a fresh supplemental collision search. W8 remains the final reconciliation/completion audit.
+
+---
+
+## Superseding final completion checkpoint — W8
+
+Recorded at `2026-10-06 06:26:38 +07:00`.
+
+Mission status is now `COMPLETE` for the bounded standalone Human Agency Lab research mission. The earlier `NOT_COMPLETE` and next-action statements above are retained as historical evidence and are superseded by this section.
+
+### Implemented waves
+
+- W1 deterministic four-state agency engine;
+- W2 authority provenance and policy identity;
+- W3 multi-action transaction graph;
+- W4 counterfactual gate minimizer;
+- W5 deterministic property/adversarial assurance;
+- W6 boundary-safe confirmation coalescing;
+- W7 lossless agency semantic projection;
+- W8 final reconciliation, manifest, fresh-clone execution, and certificate.
+
+W7 was shaped by a fresh collision review of related supplemental Interaction Contract, Trust UX Contract, and Accessibility Integrity work. It therefore focuses narrowly on Human Agency-specific lossless binding and event legality instead of claiming a generic Trust Card or accessibility system.
+
+### Fresh-clone execution evidence
+
+Audit base: `goif74945-crypto/AI-CONTEXT` branch `main`, fresh sparse-clone commit `d87a5280794dfa4253c7f8ff576f2d16741ac2aa` before W8 documentation publication.
+
+- `python -m py_compile *.py` -> exit `0`.
+- `python -m unittest -v test_agency_semantic_contract.py` -> `15/15 PASS`.
+- `python -m unittest discover -v` -> `119/119 PASS`, `0` failures, `0` errors.
+- original reference simulation -> `11/11 PASS`, exit `0`.
+- all JSON fixtures parse -> `PASS`.
+- `git diff --check` -> clean.
+
+The final 16 executable source/test/fixture files are bound in `FINAL_MANIFEST.sha256`. `CHECKPOINT-003-W8-COMPLETE.md` records the property denominators, W7 publication receipts, limitations, and completion-contract reconciliation. A final post-publication clone must validate that manifest and rerun the suite before the external completion verdict is issued.
+
+### Protected and truth boundary
+
+This mission performed no mutation of any repository whose name contains `NEXY.AI`. All systems remain AI-proposed, non-canonical, standalone research. The evidence does not establish product integration, real-world input truth, production security, assistive-technology/WCAG conformance, external side-effect correctness, deployment, or release readiness.
+
+### Exact next legal action
+
+Read-only integrity/freshness audit only. Further mutation is legal only to repair a concrete integrity defect or under an explicitly authorized new scope. Any new system remains non-canonical until authoritative NEXY specification promotes it.
