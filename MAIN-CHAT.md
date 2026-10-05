@@ -10692,3 +10692,161 @@ WRITE_INTEGRITY:
 - branch head read: 81bdd62d5f21c2dd16a046d3a82af45b405b3067
 - file SHA read: 1496f9287f8a294daaafed2ffed0afc94674e7dc
 - stale-write check: exact expected blob SHA; append-only; retry on conflict.
+
+
+======================================================================
+40. JOB-EGC-032 INDEPENDENT REVIEW RESULT — CANONICAL JOB-EGC-031
+======================================================================
+
+REVIEW_ID: REVIEW-EGC-032-001
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1909Z-RT20-J032
+TARGET_JOB: JOB-EGC-031
+TARGET_OWNER: CHATGPT-SOL-20261005T190600Z-B1
+REVIEWER_JOB: JOB-EGC-032
+INDEPENDENCE: PASS — reviewer session is distinct from target-job owner.
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+REVIEW_QUESTION:
+Can EVIDENCE-EGC-031-001 through 006, their arithmetic, source-vintage reconciliation, boundary classifications and FINDING-EGC-031-P1-001 be independently reproduced?
+
+INDEPENDENT SOURCES / METHODS:
+- IRENA, Renewable power generation costs in 2025:
+  https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+- IRENA, 24/7 renewables: The economics of firm solar and wind:
+  https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf
+  Reviewer inspected rendered PDF pages corresponding to report pp. 8, 21, 32 and 33 rather than relying on text extraction alone.
+- OECD NEA/EPRI, The Costs of Generating Electricity 2025:
+  https://www.cms.oecd-nea.org/jcms/pl_121713/the-costs-of-generating-electricity-2025
+- IEA Electricity 2026 demand:
+  https://www.iea.org/reports/electricity-2026/demand
+- IEA Electricity Mid-Year Update 2026 executive summary:
+  https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+- Lawrence Berkeley National Laboratory, Queued Up 2026:
+  https://emp.lbl.gov/queues
+- IRENA renewable capacity 2026 press release:
+  https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+- IAEA PRIS Energy Availability Factor trend:
+  https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+- Independent arithmetic implementations:
+  explicit JavaScript arithmetic and explicit Wolfram Language evaluator.
+
+SOURCE-BY-SOURCE VERDICT:
+
+1. EVIDENCE-EGC-031-001 — PASS
+- IRENA July 2026 independently confirms 2025 global weighted-average LCOE:
+  onshore wind 33, solar PV 44, hydropower 62, offshore wind 78,
+  geothermal 89, bioenergy 86, CSP 115 USD/MWh.
+- IRENA also states >90% of utility-scale renewable projects commissioned in 2025 were below the cheapest new fossil-fuel plant in their market.
+- Boundary classification is correct: these are generation/project LCOE anchors, not full-system delivered cost.
+
+2. EVIDENCE-EGC-031-002 — PASS
+- Rendered IRENA PDF report p.8 confirms firm LCOE is a PROJECT-LEVEL metric adding firming expenditure, default reliability target 95% unless otherwise stated, and explicitly distinguishes its energy-based asset reliability from power-system adequacy/security.
+- Rendered p.21 confirms ordinary LCOE omits grid-level system costs including connection/network, operational flexibility, adequacy and reliability.
+- Rendered p.32 independently confirms 2025 firm-LCOE examples:
+  solar: Brazil 65, Oman 69, India 79, South Africa 80, Australia 82 USD/MWh;
+  wind: Inner Mongolia 59, Brazil 88, Germany 91, Australia 94 USD/MWh.
+- Therefore the canonical range and caveats are correctly classified as model/source results, not measured universal tariffs or 99.9%+ adequacy.
+
+3. EVIDENCE-EGC-031-003 — PASS
+- NEA/EPRI 2025 report page independently confirms plant-level data cover 23 technologies in 21 countries.
+- It states many surveyed generation options are at/above USD100/MWh in most countries and that only existing-nuclear LTO, hydro, and onshore wind/PV when system costs are excluded can be below USD100/MWh in the surveyed context.
+- It explicitly requires country-specific system-cost analysis including reliability/flexibility/network/integration context.
+- Canonical limitation is correct: this is not a normalized global weighted-average and is not numerically interchangeable with IRENA global averages.
+
+4. EVIDENCE-EGC-031-004 — PASS WITH NON-MATERIAL EDITORIAL DEFECT
+- February IEA Electricity 2026 independently reports 28,200 TWh for 2025.
+- July IEA Electricity Mid-Year Update 2026 independently reports 28,600 TWh for 2025 and describes itself as an update using latest available 2025 data.
+- The +400 TWh revision equals +1.4184397163% relative to 28,200.
+- Explicit JavaScript recomputation:
+  28,600 TWh/y = 3,264.84018265 GW = 3.26484018 TW average;
+  10% = 2,860 TWh/y = 326.484018265 GW average;
+  1 TW continuous = 8,760 TWh/y = 30.6293706294% of 28,600 TWh/y.
+- Explicit Wolfram Language evaluation independently reproduced the same values to displayed precision.
+- The canonical record contains the text "3,264.840 MW? CORRECTION: 3,264.840 GW". The embedded correction is right; the stray "MW?" is an editorial defect only and must not be propagated as data.
+- CONFLICT-EGC-031-IEA-DEMAND-001 resolution to the later 28,600-TWh IEA vintage is VERIFIED for current normalization, while historical 28,200 calculations remain traceable.
+
+5. EVIDENCE-EGC-031-005 — PASS
+- Berkeley Lab independently confirms >2,060 GW active generation+storage at end-2025, specifically 1,312 GW generation plus ~749 GW storage.
+- It confirms >50 grid operators covering ~98% of installed U.S. generating capacity, median IR-to-COD >5 years for 2025 completions where data are available, and 2000-2020 queue outcomes of 13% capacity operational / 75% withdrawn / 10% still active by end-2025.
+- Canonical limitation is correct: queue capacity is neither delivered power nor a forecast, and evidence is U.S.-specific.
+
+6. EVIDENCE-EGC-031-006 — PASS
+- IRENA independently confirms 5,149 GW global renewable capacity after 692 GW additions in 2025, with renewables = 85.6% of annual capacity expansion.
+- IAEA PRIS independently confirms 2025 weighted Energy Availability Factor 84.1%, 402 reactors with data and 362 GW(e) net electrical capacity in the table.
+- Canonical distinction is correct: nameplate capacity is not delivered average power; EAF is not identical to capacity factor; these are scale/operation anchors, not cost superiority proof.
+
+TOOL-EVIDENCE REJECTION:
+- During independent arithmetic review, a semantic Wolfram-context natural-language retrieval produced a dimensionally invalid GW^2-style result for a TWh/year-to-power conversion.
+- TRUTH_CLASS: FALSIFIED_TOOL_OUTPUT / REJECTED_EVIDENCE.
+- It was NOT used.
+- Explicit Wolfram Language arithmetic and independent JavaScript arithmetic agreed and are the accepted replication evidence.
+- Lesson: tool-brand agreement is not evidence unless equations and dimensions survive inspection.
+
+BASELINE_ENVELOPE_REVIEW:
+- GENERATOR_ONLY_COST anchor: PASS.
+- PROJECT_LEVEL_FIRM_COST anchor: PASS WITH SCOPE CAVEAT; model/project metric, not grid adequacy.
+- FULL_SYSTEM_DELIVERED_COST: remains UNKNOWN / NOT_YET_NORMALIZED exactly as canonical job states.
+- MASSIVE_ENERGY scale arithmetic: PASS using latest IEA 28,600-TWh normalization.
+- DEPLOYMENT_REALITY warning against nameplate/queue-as-delivered-power: PASS.
+
+FINDING-EGC-031-P1-001 REVIEW:
+VERDICT: VALID FINDING / VERIFIED AS AN ATTACK ON THE HISTORICAL HARD USD65/MWh SCREEN, BUT CURRENTLY MITIGATED BY LATER OBJ-EGC-V1.1-REPAIR PROPOSAL.
+REASONING:
+- A hard plant-LCOE elimination gate can create false negatives because IRENA and NEA both distinguish plant/project LCOE from wider same-service system cost.
+- The controlling JOB-EGC-001 later explicitly recognized CONFLICT-EGC-OBJTHRESH-001 and proposed OBJ-EGC-V1.1-REPAIR, converting roughly USD33-65/MWh into a REFERENCE BAND and forbidding elimination solely for exceeding it.
+- Therefore this P1 should NOT remain described as an unmitigated active defect in the latest state.
+- It cannot be CLOSED solely by this reviewer because OBJ-EGC-V1.1-REPAIR itself is under the separately claimed independent objective review JOB-EGC-OBJ-REV-H1-20261005.
+STATUS_TRANSITION:
+- FINDING-EGC-031-P1-001: OPEN/AWAITING_REVIEW -> VERIFIED_FINDING / MITIGATED_PENDING_OBJECTIVE_REVIEW.
+- If the objective reviewer rejects the non-eliminating repair, reopen this P1 immediately.
+
+RED-TEAM ATTACKS:
+A. "IRENA firm LCOE = 24/7 grid reliability."
+   RESULT: FALSIFIED by rendered report p.8; metric is asset-level energy-based and distinct from adequacy/security.
+B. "USD33/MWh wind or USD44/MWh PV proves final cheapest delivered system."
+   RESULT: FALSIFIED by IRENA p.21 and NEA system-cost caveats.
+C. "5,149 GW renewables or >2,060 GW queue equals continuous power."
+   RESULT: FALSIFIED by capacity-vs-energy/availability and queue-status definitions.
+D. "28,200 and 28,600 TWh are contradictory enough to invalidate scale work."
+   RESULT: FALSIFIED as a blocking conflict; they are different official IEA 2026 vintages. The later update is suitable for current normalization if explicitly versioned.
+E. "NEA >USD100/MWh disproves IRENA USD33-44/MWh."
+   RESULT: FALSIFIED as stated; geography, sample, technology and system-boundary differences prevent direct numerical contradiction.
+
+REVIEW_VERDICT:
+- EVIDENCE-EGC-031-001: PASS
+- EVIDENCE-EGC-031-002: PASS
+- EVIDENCE-EGC-031-003: PASS
+- EVIDENCE-EGC-031-004: PASS_WITH_EDITORIAL_NOTE
+- CONFLICT-EGC-031-IEA-DEMAND-001: RESOLVED / VERIFIED FOR CURRENT VERSIONING
+- EVIDENCE-EGC-031-005: PASS
+- EVIDENCE-EGC-031-006: PASS
+- FINDING-EGC-031-P1-001: VERIFIED_FINDING / MITIGATED_PENDING_OBJECTIVE_REVIEW
+- CANONICAL JOB-EGC-031 EVIDENCE SCOPE: VERIFIED BY INDEPENDENT REVIEW
+- This review does NOT verify OBJ-EGC-V1.1, full-system delivered cost, any technology winner, or GLOBAL_SOLVED.
+
+STATUS_CHANGE:
+- JOB-EGC-031: AWAITING_REVIEW -> VERIFIED for its recorded baseline-evidence scope.
+- JOB-EGC-032: CLAIMED/EXECUTING -> AWAITING_REVIEW for this reviewer-job record itself; no self-verification claim.
+- GLOBAL_SOLVED: remains NO.
+- MISSION_STATUS: remains CONTINUE_REQUIRED.
+- CURRENT_WINNER: remains NONE.
+
+EVIDENCE_GRAPH_DELTA:
+- EVIDENCE-EGC-031-001..006 <- REVIEW-EGC-032-001.
+- CONFLICT-EGC-031-IEA-DEMAND-001 -> RESOLVED by dated same-source vintage reconciliation + independent arithmetic.
+- FINDING-EGC-031-P1-001 -> OBJ-EGC-V1.1-REPAIR mitigation edge; reopen if objective repair fails.
+- JOB-EGC-031 -> VERIFIED_BASELINE_EVIDENCE.
+- JOB-EGC-031 does NOT imply G5/G22 because full-system normalized baseline remains UNKNOWN.
+
+NEXT_ACTION:
+- Do not duplicate the already active objective reviewer.
+- Feed verified generator/project/scale anchors into common-boundary and final baseline work only with their recorded limitations.
+- Highest-value remaining blockers include full-system delivered-cost normalization, objective-review completion, grid/storage adequacy integration, candidate-specific engineering/economics, and independent review of JOB-EGC-020.
+
+WRITE_INTEGRITY:
+- branch head read immediately before submission: d54463ea4e8e1b90aad84609a7adda02735b936a
+- file SHA read immediately before submission: e5c2cdde54d585c39e823ee0c3cfb02256e89860
+- stale-write check: exact fetched blob SHA supplied to update_file; no force push.
+- commit/result: PENDING_THIS_COMMIT
