@@ -5,28 +5,25 @@ FROM: C-V8-SOL-OTAC-7C31
 TO: MISSION-AUTH-001
 SHA: 608426cb30398b1f3461866f7079d2a435c96b96
 SEVERITY: P0_CONTROL
-STATUS: OPEN
+STATUS: RESOLVED_CONTROL_CORRECTION
 TYPE: REQUIREMENT_AUTHORITY_CONTAMINATION
 SPEC_HASH: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
 
-OBSERVED:
-F-71A0F5E7-OTAC-REPLAY-AFTER-EXPIRY and the associated red-first design attribute replay-after-expiry security-audit behavior to "final DOC-C §8.4 paragraphs 10853-10860".
+PRIMARY-SOURCE RESULT:
+- FINAL VERDICT makes DOC-C the build obligation.
+- locked final DOC-C ends at 10499; DOC-D begins at 10500.
+- replay-prevention prose around 10863 is outside final DOC-C.
+- final DOC-C directly defines OTAC TTL and lists AUTH_EXPIRED on POST /api/auth/verify-otac.
+- final DOC-C does not explicitly state the exact predicate "expired OTAC => AUTH_EXPIRED".
+- current handleVerifyOtac has no AUTH_EXPIRED response path at all, so the declared route error surface remains unimplemented.
+- mapping a matching expired OTAC to AUTH_EXPIRED is a supported engineering inference, not verbatim authority.
 
-PRIMARY-SOURCE AUTHORITY:
-- FINAL VERDICT assigns build obligation to DOC-C only.
-- The locked final DOC-C range ends at paragraph 10499 and DOC-D begins at 10500.
-- Paragraphs 10853-10860 are therefore outside final DOC-C and cannot be cited as final-DOC-C build authority.
-- Final DOC-C verify-otac authority does support a distinct AUTH_EXPIRED error and the route purpose of verifying a one-time code and creating a session.
-- The currently inspected final-DOC-C route evidence does not establish a special replay-after-expiry SecurityIncident requirement.
-
-RESULT:
-The AUTH_EXPIRED source gap remains required and actionable.
-Replay detection/audit for a consumed credential after expiry may remain useful security hardening, but it must not be counted as a required DOC-C closure item unless another active authority is explicitly bound.
-
-REQUIRED ACTION:
-- Remove the false "final DOC-C §8.4" attribution from required test oracles.
-- Keep consumed replay rejection and existing live replay security behavior intact.
-- Treat replay-after-expiry SecurityIncident behavior as conditional hardening pending separate authority, not as the oracle for REQ-DOC-C-AUTH-VERIFY-EXPIRED-001.
-- Do not weaken AUTH_INVALID/AUTH_EXPIRED secrecy boundaries merely to satisfy the historical finding.
+CONTROL REPAIR:
+- REQ-DOC-C-AUTH-VERIFY-EXPIRED-001 now distinguishes direct route authority from inferred trigger mapping.
+- TASK-AUTH-OTAC-EXPIRED-001 no longer treats replay-after-expiry audit as a required DOC-C oracle.
+- F-71A0F5E7-OTAC-REPLAY-AFTER-EXPIRY is reclassified as optional hardening rather than required closure work.
+- V7 blocker wording is superseded by the active V8 namespace blocker.
 
 SOURCE_MUTATION: NONE
+REMAINING REQUIRED GAP:
+POST /api/auth/verify-otac still declares AUTH_EXPIRED in final DOC-C while the exact source handler contains no AUTH_EXPIRED response path. Repair remains blocked from source mutation by INC-BRANCH-NAMESPACE-001 and requires independent confirmation of the selected expiration predicate.
