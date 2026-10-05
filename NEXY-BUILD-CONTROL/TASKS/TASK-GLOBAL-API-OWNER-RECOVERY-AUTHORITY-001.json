@@ -6,7 +6,7 @@
   "OWNER": "UNASSIGNED",
   "PRIORITY": "P0",
   "RISK": "CRITICAL_AUTHORITY_SECURITY",
-  "STATUS": "BLOCKED_AUTHORITY_AND_WORKER_NAMESPACE",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "TARGET_PATHS": [
@@ -16,7 +16,6 @@
     "tests/coverage/owner-recovery-control-plane.test.ts"
   ],
   "BLOCKERS": [
-    "AUTHORITY_CONFLICT: final DOC-C global mutation law requires secure session; lost-session recovery semantics intentionally operate without one and no active exemption is present.",
     "INC-BRANCH-NAMESPACE-001: mandated worker ref namespace is Git-invalid while integration ref exists."
   ],
   "ACCEPTANCE": [
@@ -27,5 +26,12 @@
     "Independent security/authority review and exact-SHA integration tests are required.",
     "NEXY.ai remains unchanged."
   ],
-  "SOURCE_MUTATION_BY_CREATOR": "NONE"
+  "SOURCE_MUTATION_BY_CREATOR": "NONE",
+  "AUTHORITY_RESOLUTION": {
+    "status": "RESOLVED",
+    "verdict": "Final DOC-C §4.1 provides no sessionless owner-recovery mutation exemption in the active build authority.",
+    "evidence": "NEXY-BUILD-CONTROL/RESULTS/REVIEW-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-C-SOL-20261005-1923.json",
+    "required_direction": "Remove/disable unauthorized mutation surface unless later active authority explicitly adds a narrow exemption."
+  },
+  "NEXT_ACTION": "After a Git-valid V8 worker isolation mechanism is explicitly authorized, refresh integration HEAD, claim one-writer scope, disable/remove the unauthorized sessionless owner-recovery mutation surface narrowly, update affected tests, run security/API tests, independent review/red-team, integrate and reverify."
 }
