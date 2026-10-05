@@ -1,0 +1,37 @@
+{
+  "RESULT_ID": "REVIEW-QUEUE-CAS-STALE-RETRY-CAP-C-SOL-20261006-0211",
+  "REVIEWER_CHAT": "C-SOL-20261006-0142-DIRECTIVE-READY-UI",
+  "REVIEWED_PR": 53,
+  "REVIEWED_HEAD": "fada134561e9dabe32a5488a26942128cbc89b0f",
+  "STATUS": "BLOCKED_STALE_OVERLAP_REGRESSION",
+  "VERDICT": {
+    "dispatch_cas_direction": "NOT_REJECTED",
+    "jobs_ts_candidate_ready": false,
+    "integration_ready": false
+  },
+  "CURRENT_INTEGRATION_EVIDENCE": {
+    "head": "62a075c99985df5e5a09146af0ede541bff6eba2",
+    "jobs_blob": "95ddd27f7113ec655c9f5e95b7f4e7e77e5966c2",
+    "required_existing_behavior": [
+      "assertAdmissionCapacity() exists",
+      "authorized failed-job retry calls assertAdmissionCapacity() before existing.retry()",
+      "new queue admission calls assertAdmissionCapacity() before queue.add()"
+    ]
+  },
+  "CANDIDATE_EVIDENCE": {
+    "jobs_blob": "7384aea6a84048c1191e56743226461b3aed489d",
+    "failed_job_fail_closed": "QUEUE_EXISTING_JOB_FAILED present",
+    "capacity_gate_present": false,
+    "retry_capacity_gate_present": false
+  },
+  "BLOCKER": "PR 53 was built from a pre-#62 jobs.ts surface. Integrating/replaying the stale jobs.ts candidate without a fresh rebase/semantic merge can regress the already-integrated retry/new-admission capacity gate.",
+  "REQUIRED_REPAIR": [
+    "Rebase or reconstruct PR 53 jobs.ts changes on fresh NEXY.AI-Test-AI.",
+    "Preserve BOTH fail-closed failed-job semantics and current admission-capacity checks.",
+    "Re-review the fresh net diff for overlapping queue changes.",
+    "Obtain executable runtime evidence when GitHub Actions runners execute steps."
+  ],
+  "GITHUB_REVIEW_ID": 5419390399,
+  "SOURCE_MUTATION_BY_REVIEWER": "NONE",
+  "PROTECTED_NEXY_AI": "UNCHANGED"
+}
