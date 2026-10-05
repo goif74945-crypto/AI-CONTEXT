@@ -5640,3 +5640,313 @@ FALSIFICATION_TARGET: partial/stale/narrow evidence produces NOT_APPLICABLE; UNK
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+RECONCILED RESTORATION + RESULT — JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0420+07-MFG1
+PRIMARY_ROLE: Cross-Candidate Manufacturing Throughput / Factory-Scale / Industrial Ramp Analyst
+PRIMARY_JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+ORIGINAL_CLAIM_COMMIT: 6daf09595bd31c10c47b822b395a70442cb4d69d
+RECONCILIATION_STATUS: RESTORED_AFTER_LATER_MAIN_CHAT_REWRITE
+RECONCILIATION_EVIDENCE: original claim commit remains an ancestor of the active branch; a later MAIN-CHAT.md rewrite removed its block. Current file was refreshed and no duplicate of this JOB_ID/RESULT marker was present before restoration.
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+QUESTION:
+Even where physical resources are sufficient, can leading candidates be manufactured and supplied at the annual throughput required for MASSIVE_ENERGY without hidden factory, equipment, skilled-labour, long-lead-component or industrial-ramp bottlenecks that reverse cost/deployment conclusions?
+
+DEPENDENCIES:
+Objective-scale/R_STAR/frontier/resource/material/grid/construction/fuel-cycle jobs remain independently owned. This job separates manufacturing flow from geological stock and site construction duration; it does not declare a winner.
+
+MFG_STAR — CANDIDATE-NEUTRAL MANUFACTURING LEDGER:
+For each candidate/baseline distinguish and timestamp:
+FACTORY_NAMEPLATE_CAPACITY;
+ACTUAL_PRODUCTION;
+SHIPMENTS;
+INSTALLATIONS_OR_CONSTRUCTION_STARTS;
+COMMISSIONED_CAPACITY;
+NET_SERVICE_DELIVERED;
+utilisation/yield/scrap;
+product/spec compatibility;
+geography/trade/logistics/import dependence;
+shared long-lead equipment;
+skilled labour/certification/QA;
+factory/project ramp time;
+announced-vs-operating status;
+replacement manufacturing over the common horizon;
+source date and uncertainty.
+
+INVARIANTS:
+RESOURCE_STOCK != ANNUAL_MATERIAL_FLOW != FACTORY_NAMEPLATE != ACTUAL_PRODUCTION != SHIPMENTS != INSTALLATIONS != COMMISSIONED_CAPACITY != NET_SERVICE_DELIVERED.
+ANNOUNCED_FACTORY != OPERATING_THROUGHPUT.
+GLOBAL_CAPACITY != LOCALLY_AVAILABLE_CAPACITY unless trade/logistics/regulatory access is evidenced.
+
+PARAMETRIC REQUIREMENT:
+For service target S [TWh/y], validated candidate net capacity factor CF, and build window W [y]:
+C_required_GW = S/(8.76*CF)
+A_required_GW_per_year = C_required_GW/W
+This is only a first throughput screen. R_STAR overbuild, reserves, curtailment, storage, transmission, replacements and construction attrition can increase actual required manufacturing.
+
+UPSTREAM SCALE STATUS:
+S=2860 TWh/y = PROVISIONAL current-scale anchor under independent objective arbitration.
+S=3360 TWh/y = PROVISIONAL forecast sensitivity.
+Neither is frozen as final mission fact by this job.
+
+EVIDENCE_ID: CALC-EGC-MFG-001
+JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+CLAIM_ID: CLAIM-EGC-MFG-PARAMETRIC-RATE
+TOOL: Wolfram Context + Wolfram Language Evaluator
+METHOD: dimensional throughput calculation
+DATE: 2026-10-06
+SOURCE: executed calculation; provisional mission scale anchors
+SOURCE_DATE: 2026-10-06
+URL/DOI/IDENTIFIER: executed Wolfram session
+INPUTS: S={2860,3360} TWh/y; CF={0.20,0.35,0.50,0.90}; W={10,20} y
+PARAMETERS: generic CF sensitivity only; no technology assignment; no overbuild/curtailment/reserve/storage/transmission addition
+EQUATION/CODE/METHOD: C=S/(8.76*CF); A=C/W
+OUTPUT:
+S2860 average=326.4840182648402 GW.
+CF0.20 C=1632.420091324201 GW; A10=163.2420091324201 GW/y; A20=81.62100456621005.
+CF0.35 C=932.8114807566864; A10=93.28114807566864; A20=46.64057403783432.
+CF0.50 C=652.9680365296804; A10=65.29680365296804; A20=32.64840182648402.
+CF0.90 C=362.76002029426684; A10=36.276002029426685; A20=18.138001014713343.
+S3360 average=383.56164383561645 GW.
+CF0.20 C=1917.8082191780823; A10=191.78082191780823; A20=95.89041095890411.
+CF0.35 C=1095.8904109589043; A10=109.58904109589044; A20=54.79452054794522.
+CF0.50 C=767.1232876712329; A10=76.7123287671233; A20=38.35616438356165.
+CF0.90 C=426.17960426179604; A10=42.61796042617961; A20=21.308980213089804.
+UNITS: GW; GW/y
+UNCERTAINTY: arithmetic negligible; scale, CF, W and integrated-system requirements dominate.
+ASSUMPTIONS: explicit above.
+LIMITATIONS: not candidate-specific build plan or G11 verdict.
+REPRODUCTION_METHOD: independently evaluate equations above.
+REPLICATION_STATUS: EXECUTED_TOOL_PASS / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+EVIDENCE_ID: TE-EGC-MFG-001
+JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+CLAIM_ID: CLAIM-EGC-MFG-DEPLOYMENT-FLOW
+TOOL: current official web retrieval
+METHOD: global annual installation-flow check
+DATE: 2026-10-06
+SOURCE: IEA Global Energy Review 2026 — Technology: Solar PV and wind
+SOURCE_DATE: 2026 report; 2025 additions
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/global-energy-review-2026/technology-solar-pv-and-wind
+INPUTS: 2025 global additions
+PARAMETERS: renewable total ~800 GW; PV >600 GW; wind ~160 GW
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: very large current deployment flows are physically demonstrated; IEA notes some 2025 regional values are estimated where complete data were unavailable.
+UNITS: GW added during year
+UNCERTAINTY: source notes actual+estimated mix for regions without full-year data.
+ASSUMPTIONS: additions are downstream deployment flow, not factory nameplate.
+LIMITATIONS: cannot alone prove local/final mission manufacturing.
+REPRODUCTION_METHOD: retrieve IEA page/notes.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT / OPERATIONAL_DEPLOYMENT_EVIDENCE
+
+EVIDENCE_ID: TE-EGC-MFG-002
+JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+CLAIM_ID: CLAIM-EGC-MFG-PV-WIND-FACTORY
+TOOL: official IEA web retrieval
+METHOD: manufacturing capacity/supply-tightness boundary check
+DATE: 2026-10-06
+SOURCE: IEA Renewables 2024 Executive Summary
+SOURCE_DATE: 2024
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/renewables-2024/executive-summary
+INPUTS: solar/wind manufacturing outlook
+PARAMETERS: global solar manufacturing expected >1100 GW by end-2024, >2x projected demand; onshore wind manufacturing could reach 145 GW and was described as barely above expected 2030 installations; offshore tighter
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: PV and wind have materially different manufacturing tightness in this outlook.
+UNITS: GW manufacturing capacity
+UNCERTAINTY: forecast/nameplate values, not audited actual production.
+ASSUMPTIONS: none.
+LIMITATIONS: do not mechanically compare 145-GW forecast with 2025 160-GW additions without matched vintage/scope/component definitions.
+REPRODUCTION_METHOD: retrieve manufacturing section.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT / FORECAST
+
+EVIDENCE_ID: TE-EGC-MFG-003
+JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+CLAIM_ID: CLAIM-EGC-MFG-BATTERY-RAMP
+TOOL: current official IEA web retrieval
+METHOD: nameplate-versus-production/concentration audit
+DATE: 2026-10-06
+SOURCE: IEA Global EV Outlook 2026 — Electric vehicle batteries
+SOURCE_DATE: 2026 report; end-2025 capacity
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/global-ev-outlook-2026/electric-vehicle-batteries
+INPUTS: global Li-ion nameplate/ramp/geography
+PARAMETERS: >4 TWh nameplate end-2025; >80% China; EU and US each 6–7%; most facilities can take >5 years from operations start to near nominal output
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: nameplate is not actual production or stationary-storage availability; ramp and concentration matter.
+UNITS: TWh/y; percent; years
+UNCERTAINTY: utilisation/product mix/storage-vs-EV allocation varies.
+ASSUMPTIONS: none.
+LIMITATIONS: total Li-ion capacity includes EV-oriented production.
+REPRODUCTION_METHOD: retrieve IEA battery manufacturing section.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT
+
+EVIDENCE_ID: TE-EGC-MFG-004
+JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+CLAIM_ID: CLAIM-EGC-MFG-GRID-SHARED
+TOOL: DOE official web retrieval
+METHOD: shared-grid-component lead-time audit
+DATE: 2026-10-06
+SOURCE: U.S. DOE Office of Electricity, Supply Chain and Market Analysis
+SOURCE_DATE: current page; lead-time data through 2023
+URL/DOI/IDENTIFIER: https://www.energy.gov/oe/supply-chain-and-market-analysis
+INPUTS: distribution-transformer lead times/specification fragmentation
+PARAMETERS: 3–6 months in 2019; 12–30 months in 2023 latest available; >80,000 distribution-transformer varieties nationwide
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: shared grid equipment can bottleneck commissioning even with generation hardware available.
+UNITS: months; count
+UNCERTAINTY: U.S. distribution-transformer scope.
+ASSUMPTIONS: no global universal lead time inferred.
+LIMITATIONS: not a full power-transformer/global dataset.
+REPRODUCTION_METHOD: retrieve DOE page.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-MFG-005
+JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+CLAIM_ID: CLAIM-EGC-MFG-HYDRO
+TOOL: DOE official web retrieval
+METHOD: industrial-base gap audit
+DATE: 2026-10-06
+SOURCE: U.S. DOE, U.S. Hydropower Supply Chain
+SOURCE_DATE: 2024 gap analysis summarized on current page
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/water/us-hydropower-supply-chain
+INPUTS: industry supply-chain gap assessment
+PARAMETERS: variable demand; one/two/no domestic suppliers for some components; procurement/trade gaps; skilled-worker shortage
+EQUATION/CODE/METHOD: source synthesis
+OUTPUT: mature hydro fleet does not imply unconstrained expansion; specific supplier/workforce gaps exist.
+UNITS: qualitative industrial capacity
+UNCERTAINTY: U.S.-specific.
+ASSUMPTIONS: none.
+LIMITATIONS: no global hydro GW/y manufacturing rate.
+REPRODUCTION_METHOD: retrieve DOE page.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-MFG-006
+JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+CLAIM_ID: CLAIM-EGC-MFG-GEOTHERMAL
+TOOL: IEA official web retrieval
+METHOD: transferable-capability/workforce scaling audit
+DATE: 2026-10-06
+SOURCE: IEA The Future of Geothermal Energy — Executive Summary
+SOURCE_DATE: current report page
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/the-future-of-geothermal-energy/executive-summary
+INPUTS: investment overlap/workforce
+PARAMETERS: up to 80% project investment uses capabilities/skills common to oil and gas; ~145,000 geothermal jobs today; potential >6x to 1 million by end of decade with skills-shortfall risk
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: oil/gas capability is an acceleration pathway, not instant dedicated capacity; workforce scale is material.
+UNITS: percent; jobs
+UNCERTAINTY: forecast and regional mix vary.
+ASSUMPTIONS: transferability != committed availability.
+LIMITATIONS: no global compatible rig/well completion rate.
+REPRODUCTION_METHOD: retrieve IEA executive summary.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT / FORECAST
+
+EVIDENCE_ID: TE-EGC-MFG-007
+JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+CLAIM_ID: CLAIM-EGC-MFG-NUCLEAR-FLOW
+TOOL: current IEA official web retrieval
+METHOD: project-stock versus annual-flow audit
+DATE: 2026-10-06
+SOURCE: IEA Global Energy Review 2026 — Technology: Nuclear
+SOURCE_DATE: 2026 report; 2025 activity
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/global-energy-review-2026/technology-nuclear
+INPUTS: commissioning, construction starts, under-construction stock
+PARAMETERS: 3 GW online in 2025; ten starts totaling 12.2 GW; about 78 GW under construction in IEA snapshot; 94% of reactors starting construction over prior decade used Chinese/Russian designs
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: project stock must not become annual manufacturing/commissioning flow; rapid mission-dominant nuclear build requires explicit industrial expansion evidence.
+UNITS: GW; project counts
+UNCERTAINTY: real-time IAEA stock may differ by snapshot date/status.
+ASSUMPTIONS: none.
+LIMITATIONS: construction start is not factory output; 3-GW commissioning is not a physical ceiling.
+REPRODUCTION_METHOD: retrieve IEA nuclear page.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT / OPERATIONAL_DEPLOYMENT_EVIDENCE
+
+FIRST_PASS_MFG_STATES:
+SOLAR_PV: RETAIN. Demonstrated global 2025 deployment flow >600 GW/y is high, and prior IEA outlook showed major module-chain overcapacity. GLOBAL_MODULE_THROUGHPUT_NOT_OBVIOUSLY_FIRST_ORDER_BINDING in a simple provisional quantity screen, but NOT a final G11 pass: regional concentration, inverter/grid/BOS/trade, overbuild and replacements remain.
+WIND: RETAIN; P1 MANUFACTURING/SUPPLY_TIGHTNESS. 2025 additions ~160 GW demonstrate high flow, while IEA outlook says onshore manufacturing may be tight by 2030 and offshore tighter. Matched-vintage/component arbitration required.
+LI_ION_BESS: RETAIN; FACTORY_NAMEPLATE_LARGE_BUT_EFFECTIVE_AVAILABLE_THROUGHPUT_NOT_VERIFIED. >4 TWh/y nameplate cannot be assigned wholly to stationary storage.
+NUCLEAR_FISSION: RETAIN; P1 INDUSTRIAL_EXPANSION_REQUIRED for rapid mission-dominant build. Current starts/commissioning are flow observations, not ceilings; project stock is not annual throughput.
+HYDRO_PSH: RETAIN_WITH_SITE_AND_SUPPLY_CHAIN_GATE. U.S. supplier/workforce gaps are real; global throughput NOT_VERIFIED.
+GEOTHERMAL_EGS: RETAIN; P1 DRILLING_WORKFORCE_RAMP. Transferable oil/gas capability helps but is not free dedicated throughput.
+GRID_SHARED_EQUIPMENT: CROSS_CANDIDATE_P1. Generation factories alone do not establish commissionable throughput.
+GAS_THERMAL_FIRMING_TIDAL_WAVE_FUSION_OTHER: MANUFACTURING_THROUGHPUT_NOT_VERIFIED here.
+
+RED_TEAM:
+RT-MFG-001 adequate resource stock => manufacturing pass: FALSIFIED.
+RT-MFG-002 factory nameplate => actual production: FALSIFIED.
+RT-MFG-003 annual installations => factory nameplate: FALSIFIED.
+RT-MFG-004 announced factory/project => operating throughput: FALSIFIED.
+RT-MFG-005 global capacity => equal local availability: FALSIFIED.
+RT-MFG-006 >4 TWh Li-ion nameplate => >4 TWh/y stationary-grid cells: FALSIFIED.
+RT-MFG-007 ~78 GW nuclear under construction => ~78 GW/y nuclear manufacturing: FALSIFIED.
+RT-MFG-008 mature hydro fleet => unlimited industrial ramp: FALSIFIED.
+RT-MFG-009 80% oil/gas skill overlap => geothermal instantly owns 80% oil/gas capacity: FALSIFIED.
+RT-MFG-010 generation hardware ready => system commissionable: FALSIFIED.
+RT-MFG-011 guaranteed future learning/ramp without evidence: REJECTED.
+
+CLAIM_GRAPH:
+CLAIM-EGC-MFG-001 FLOW_TAXONOMY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MFG-002 PARAMETRIC_BUILD_RATE: CALCULATION_SUPPORTED_PENDING_REPLICATION.
+CLAIM-EGC-MFG-003 PV_HIGH_CURRENT_FLOW: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MFG-004 WIND_SUPPLY_TIGHTNESS: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MFG-005 BATTERY_NAMEPLATE_NOT_OUTPUT: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MFG-006 SHARED_TRANSFORMER_BOTTLENECK: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MFG-007 HYDRO_INDUSTRIAL_GAPS: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MFG-008 GEOTHERMAL_TRANSFERABILITY_WITH_WORKFORCE_RISK: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MFG-009 NUCLEAR_STOCK_FLOW_SEPARATION: SUPPORTED_PENDING_REVIEW.
+
+GATE_IMPACT:
+G11 MANUFACTURING_FEASIBLE: NOT_VERIFIED globally.
+No final architecture, geography, build window or R_STAR-adjusted quantity is frozen, so no candidate receives global G11 PASS from this job.
+
+MATERIAL_UNKNOWNS:
+final S/W; candidate validated CF/availability; reliability overbuild/storage/transmission; matched-vintage actual compatible PV/wind production; stationary-BESS-compatible output; nuclear component/QA/forging/turbine throughput; global hydro equipment flow; geothermal rigs/wells/workforce; final-geography transformer/grid equipment; 60-y replacement manufacturing.
+
+STATUS_CHANGE:
+JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006: RESTORED -> AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-REV-C2-20261006
+TITLE: Independent manufacturing-throughput / stock-flow boundary review
+ROLE: Independent industrial-scale evidence auditor / arithmetic replicator / supply-chain red team
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does MFG_STAR correctly separate resources, factory nameplate, production, installations, commissioning and net service, without converting forecasts/global capacity into local realised throughput?
+CANDIDATE: ALL surviving candidates and strongest baselines
+DEPENDENCIES: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006 submitted/restored.
+REQUIRED_INPUTS: CALC-EGC-MFG-001; TE-EGC-MFG-001..007; latest objective/R_STAR/frontier/resource/grid-material states.
+REQUIRED_TOOLS: independent official-source retrieval; independent arithmetic; matched-vintage status checks.
+REQUIRED_EVIDENCE: exact date/unit/status provenance and independent reproduction of parametric build-rate calculation.
+EXPECTED_OUTPUT: PASS/FAIL per claim; corrections; G11 P0/P1; repair job if material.
+FALSIFICATION_CONDITION: FAIL if stock becomes flow, forecast becomes measured output, global becomes local without access, annual additions become factory capacity, shared grid hardware disappears, or corrected status/units reverse the scale verdict.
+REVIEWER_JOB_ID: SELF_REVIEW_FORBIDDEN
+STATUS: OPEN
+BLOCKERS: final architecture/objective/R_STAR quantities remain upstream.
+NEXT_ACTION: distinct session independently reproduce and attack.
+
+BRANCH_HEAD_BEFORE_RESTORATION_WRITE: 69151a7193a8c46b718b88abaa5456541c2b1a2c
+MAIN_CHAT_BLOB_SHA_BEFORE_RESTORATION_WRITE: 76fbfbea583fffe17033b66497052d36e15951e5
