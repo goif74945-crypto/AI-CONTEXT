@@ -16383,3 +16383,195 @@ WRITE_INTEGRITY:
 - branch head read immediately before attempt 3: 0259d0f43e0227aa5822a805da1968c63ddaa463
 - file SHA read immediately before attempt 3: 23bc872c6b14496cbc1db8ec4918355f3cab1326
 - exact fetched blob SHA supplied; append-only; no force; only authorized file touched.
+
+
+======================================================================
+48. INDEPENDENT GRID REVIEW RESULT — JOB-EGC-GRID-REV-G1-20261005
+======================================================================
+
+EVENT_TIME: 2026-10-05T20:38:00Z
+SESSION_ID: CHATGPT-SOL-20261005T203000Z-A1RGRID
+PRIMARY_JOB_ID: JOB-EGC-GRID-REV-G1-20261005
+REVIEWED_JOB: JOB-EGC-GRID-SRC-G1-20261005
+REVIEW_SCOPE: source facts, arithmetic, empirical-vs-model classification, and anti-gaming interpretations for interconnection queues, grid investment, battery nameplate/firmness, adequacy stressors and transmission system value.
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+SELF_VERIFICATION: FORBIDDEN; this reviewer job remains AWAITING_REVIEW after issuing the source-job verdict.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-001
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-001 / CLAIM-EGC-GRID-QUEUE-IS-NOT-BUILT
+TRUTH_CLASS: SOURCE_FACT + REPLICATION
+INDEPENDENT_SOURCE: Lawrence Berkeley National Laboratory, Queued Up 2026.
+SOURCE_URL: https://emp.lbl.gov/queues
+SOURCE_DATE: June 2026 report, data through end-2025.
+INDEPENDENT_RESULT:
+- ~8,200 active U.S. projects;
+- 1,312 GW generation + ~749 GW storage = 2,061 GW active queue capacity;
+- 549 GW has draft/executed IA but is not yet commercial;
+- median IR-to-COD >5 years for projects built in 2025 in regions with available data;
+- of 2000-2020 requested capacity, 13% reached commercial operation, 75% withdrew, 10% remained active by end-2025.
+INDEPENDENT_ARITHMETIC:
+- 1,312 + 749 = 2,061 GW, consistent with source headline "over 2,060 GW";
+- 549 / 2,061 = 26.64% of the simple generation+storage aggregate, but this ratio is diagnostic only because queue/hybrid accounting can overlap.
+LIMITATION:
+- queue data are administrative pipeline evidence, not forecast installed output;
+- observed completion statistics are U.S.-specific and cannot be blindly globalised.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-002
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-002 / CLAIM-EGC-GRID-GLOBAL-BOTTLENECK
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + MODEL_RESULT + REPLICATION
+INDEPENDENT_SOURCE: IEA Electricity 2026, Grids / Executive Summary.
+SOURCE_URLS:
+- https://www.iea.org/reports/electricity-2026/grids
+- https://www.iea.org/reports/electricity-2026/executive-summary
+SOURCE_DATE: February 2026.
+INDEPENDENT_RESULT:
+- >2,500 GW renewable, large-load and storage projects stalled in grid queues worldwide;
+- annual grid investment needs to rise ~50% by 2030 from ~USD400B/year;
+- modeled regulatory/grid-enhancing measures could unlock ~1,200-1,600 GW of advanced-stage queued projects;
+- 750-900 GW of that modeled range is attributed to conditional non-firm connections, remainder to grid-enhancing/upgrading measures.
+INDEPENDENT_ARITHMETIC:
+- 400 * 1.50 = ~USD600B/year;
+- approximate increment = ~USD200B/year.
+LIMITATION:
+- USD400B and 50% are rounded source values, so 600/200 are approximate, not precision estimates;
+- 1,200-1,600 GW is modeled hosting/connection potential, not realized generation or firm capacity.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS_WITH_MODEL_SCOPE_LOCK.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-003
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-003 / CLAIM-EGC-STORAGE-NAMEPLATE-NOT-FIRM
+TRUTH_CLASS: SOURCE_FACT + REPLICATION
+INDEPENDENT_SOURCE: IEA Electricity 2026, Flexibility.
+SOURCE_URL: https://www.iea.org/reports/electricity-2026/flexibility
+SOURCE_DATE: February 2026.
+INDEPENDENT_RESULT:
+- 2024 utility-scale battery additions ~63 GW; cumulative ~124 GW;
+- 2024 project costs ~USD150/kWh after ~40% decline that year;
+- IEA explicitly states actual discharge during peak can be materially below nameplate due to temperature derating, incomplete charge, event duration exceeding battery duration, and ancillary-service commitments;
+- around 100 GW of demand response was utilised globally as of 2024.
+LIMITATION:
+- installed MW is not ELCC, firm capacity, usable MWh or full-system delivered-cost evidence.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-004
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-004 / CLAIM-EGC-US-BATTERY-OPERATING-SCALE
+TRUTH_CLASS: SOURCE_FACT + OPERATIONAL_DATA + CALCULATION + REPLICATION
+INDEPENDENT_SOURCE: U.S. EIA Today in Energy, 2026-08-07.
+SOURCE_URL: https://www.eia.gov/todayinenergy/detail.php?id=67925
+INDEPENDENT_RESULT:
+- 43.6 GW operational utility-scale battery storage at end-2025;
+- +8.3 GW in first six months of 2026;
+- nearly 52 GW nameplate by June 2026;
+- source identifies underlying inventory as Preliminary Monthly Electric Generator Inventory.
+INDEPENDENT_ARITHMETIC:
+- 43.6 + 8.3 = 51.9 GW, consistent with "nearly 52 GW".
+LIMITATION:
+- preliminary nameplate power, not duration/energy/ELCC or realized availability.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS_WITH_PRELIMINARY_NAMEPLATE_CAVEAT.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-005
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-005 / CLAIM-EGC-ADEQUACY-MULTI-FACTOR
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + VISUAL_PDF_REPLICATION
+INDEPENDENT_SOURCE: NERC 2026 Summer Reliability Assessment Snapshot.
+SOURCE_URL: https://www.nerc.com/globalassets/our-work/assessments/2026-summer-reliability-assessment-snapshot.pdf
+SOURCE_DATE: 2026.
+METHOD:
+- PDF text retrieval AND mandatory rendered-page screenshot inspection.
+INDEPENDENT_RESULT:
+- 2025 SRA anticipated resources 1,115 GW;
+- 2026 SRA anticipated resources 1,173 GW;
+- chart labels include +16 GW solar, +15 GW battery, +7 GW natural gas;
+- elevated-risk areas under abnormal summer conditions move from six regions in 2025 to three regions + one locality in 2026;
+- snapshot identifies accelerated demand, large-load growth, low wind, early-summer heat/maintenance overlap, heat and drought as reliability stressors.
+INDEPENDENT_ARITHMETIC:
+- 1,173 - 1,115 = 58 GW.
+LIMITATION:
+- seasonal anticipated-resource assessment, not realized annual reliability or technology-specific capacity credit.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-006
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-006 / CLAIM-EGC-TRANSMISSION-CAN-REDUCE-SYSTEM-COST
+TRUTH_CLASS: SOURCE_FACT + MODEL_RESULT + REPLICATION
+INDEPENDENT_SOURCES:
+- U.S. DOE National Transmission Planning Study (final 2024);
+- U.S. DOE 2026 Draft National Transmission Needs Study.
+SOURCE_URLS:
+- https://www.energy.gov/oe/national-transmission-planning-study-0
+- https://www.energy.gov/oe/national-transmission-needs-study
+- https://www.energy.gov/oe/articles/does-office-electricity-publishes-2026-draft-national-transmission-needs-study
+INDEPENDENT_RESULT:
+- NTP Study reports modeled accelerated transmission expansion saving USD270-490B in national electricity system cost through 2050 in specified U.S. low-carbon scenarios;
+- study says incremental transmission is more than compensated by lower fuel/generation/storage and other costs, with ~USD1.60-1.80 saved per transmission dollar in core scenarios;
+- 2026 Draft Needs Study independently reports pressing additional-transmission need driven by load growth, generation/load interconnection, congestion and reliability.
+PDF_VISUAL_CHECK:
+- NTP Executive Summary rendered page was inspected; USD270-490B result and its low-carbon-scenario boundary are visible.
+LIMITATION:
+- USD270-490B is scenario-model output, U.S.-specific and dependent on demand/decarbonization assumptions; it is not observed historical savings and not a universal per-MWh transmission credit.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS_WITH_SCENARIO_SCOPE_LOCK.
+
+CROSS_CLAIM_REVIEW:
+A. CLAIM-EGC-GRID-G1-A — "large queue volume plus low historic completion/long timelines means interconnection must be modeled as deployment bottleneck, not demonstrated capacity."
+VERDICT: PASS.
+WHY: direct U.S. queue history plus global IEA queue evidence; claim appropriately avoids treating queue GW as built.
+
+B. CLAIM-EGC-GRID-G1-B — "fair massive-energy comparison requires chronological adequacy/flexibility modeling OR another validated effective-capacity method; battery/generator nameplate alone insufficient."
+VERDICT: PASS_AS_INFERENCE_WITH_SCOPE_LOCK.
+WHY: IEA and NERC independently falsify nameplate-only adequacy. The exact modeling method remains downstream JOB-EGC-021/common-reliability-boundary work; this review does not mandate one universal chronology model.
+
+C. CLAIM-EGC-GRID-G1-C — "grid/transmission is candidate-neutral system asset with costs and benefits; assigning it only as VRE surcharge is invalid."
+VERDICT: PASS_AS_SYSTEM_BOUNDARY_INFERENCE.
+WHY: IEA documents cross-system connection/flexibility needs; DOE modeled transmission reducing total system cost through generation/storage/fuel/resource-sharing effects. Allocation remains candidate/system-specific.
+
+RED_TEAM:
+1. QUEUE=BUILD ATTACK: FALSIFIED by Berkeley Lab historical outcomes.
+2. BATTERY_MW=FIRM_GW ATTACK: FALSIFIED by IEA peak-discharge caveats.
+3. ANNUAL_ENERGY=ADEQUACY ATTACK: FALSIFIED by NERC multi-factor stress evidence.
+4. TRANSMISSION=ONLY_COST ATTACK: FALSIFIED as universal rule by DOE system modeling.
+5. TRANSMISSION=UNIVERSAL_CREDIT ATTACK: ALSO FALSIFIED; modeled savings are scenario/system-specific.
+6. GENERIC_INTEGRATION_ADDER ATTACK: NOT_SUPPORTED. No reviewed source establishes one universal USD/MWh surcharge applicable across geographies/penetrations/architectures.
+
+CONFLICTS / DEFECTS:
+- P0: NONE in reviewed source-anchor scope.
+- P1: NONE that invalidates the source package.
+- OPEN_DOWNSTREAM: exact candidate-specific transmission/storage/firming capacity and USD/MWh system cost remain UNKNOWN until chronological/geographic system modeling under the reviewed common service boundary.
+
+REVIEW_VERDICT:
+- JOB-EGC-GRID-SRC-G1-20261005: VERIFIED for SOURCE-ANCHOR / ANTI-GAMING scope only.
+- JOB-EGC-GRID-REV-G1-20261005: REVIEW_COMPLETE -> AWAITING_REVIEW/PROVENANCE_AUDIT; reviewer does not self-VERIFY.
+- GRID/STORAGE SOLVED GATE G12: NOT_VERIFIED globally; this review provides inputs but no candidate-specific integrated system model.
+- No candidate winner promoted.
+
+EVIDENCE_GRAPH_DELTA:
+- EVID-EGC-GRID-G1-001 <- REVIEW-EGC-GRID-G1-001 -> PASS
+- EVID-EGC-GRID-G1-002 <- REVIEW-EGC-GRID-G1-002 -> PASS_WITH_MODEL_SCOPE_LOCK
+- EVID-EGC-GRID-G1-003 <- REVIEW-EGC-GRID-G1-003 -> PASS
+- EVID-EGC-GRID-G1-004 <- REVIEW-EGC-GRID-G1-004 -> PASS_WITH_PRELIMINARY_NAMEPLATE_CAVEAT
+- EVID-EGC-GRID-G1-005 <- REVIEW-EGC-GRID-G1-005 -> PASS
+- EVID-EGC-GRID-G1-006 <- REVIEW-EGC-GRID-G1-006 -> PASS_WITH_SCENARIO_SCOPE_LOCK
+- JOB-EGC-021 may consume these anchors only as inputs; it still must compute technology/geography/penetration-specific integration requirements.
+
+STATUS_CHANGE:
+- JOB-EGC-GRID-SRC-G1-20261005: AWAITING_REVIEW -> VERIFIED_SOURCE_SCOPE.
+- JOB-EGC-GRID-REV-G1-20261005: EXECUTING -> AWAITING_REVIEW / provenance audit.
+- GLOBAL_SOLVED remains NO.
+- MISSION_STATUS remains CONTINUE_REQUIRED.
+- CURRENT_WINNER remains NONE.
+- USER_SUCCESS_RESPONSE remains DENIED.
+
+NEXT_ACTION:
+- Feed reviewed grid anchors into JOB-EGC-021 and common-boundary integration.
+- Highest information gain is candidate-specific chronological adequacy + transmission/storage optimization on the same delivered-service boundary, not another universal integration-adder lookup.
+- Preserve geographic sensitivity and effective-capacity uncertainty.
+
+WRITE_INTEGRITY:
+- branch head read: 25068720d2c32cd81645bba5dcaa4bff41004f11
+- file SHA read: 7f059f75928df308dc029dd200d45c1f8196a3f3
+- stale-write check: exact SHA guarded update attempt 5; append-only.
+- commit/result: PENDING_THIS_COMMIT
