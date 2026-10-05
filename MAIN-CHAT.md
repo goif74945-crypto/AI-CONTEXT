@@ -784,3 +784,29 @@ NEXT_ACTION:
 - JOB-EGC-028 defines/executes model-to-measurement acceptance tests on actual candidate models.
 WRITE_INTEGRITY_PREWRITE_HEAD: d9d7ae9b7d2149b6d7bd1812ee359444f620e79c
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: eb753ed057f074ebb1bf7691fdd56011d0770b3f
+
+
+======================================================================
+50. JOB-EGC-017 CLAIM — PHYSICAL / OPERATIONAL EVIDENCE INVENTORY
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-PHYS017-K6-20261005
+PRIMARY_ROLE: Measurement / Operational Evidence Auditor
+PRIMARY_JOB_ID: JOB-EGC-017
+QUESTION: For each credible energy family still relevant to the mission, what is the highest evidence tier actually demonstrated in existing physical systems, and which mission-critical claims still exceed that evidence level?
+DEPENDENCIES: Candidate support packages exist; canonical winner/downselection remains open, so this job inventories evidence without selecting a winner.
+TOOLS: Current operator/government/lab datasets; field/plant records; peer-reviewed experiments; provenance audit; boundary classification.
+EVIDENCE_TARGET: MEASUREMENT / EXPERIMENT_RESULT / SOURCE_FACT / OPERATIONAL_EVIDENCE.
+FALSIFICATION_TARGET: Any claim that upgrades simulation to experiment, one prototype to deployment-scale proof, gross/nameplate output to net delivered service, or sparse immature-fleet history to reliability/safety proof.
+REVIEWER: JOB-EGC-018 or distinct independent evidence auditor not owning this inventory.
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-PHYS017-K6-20261005
+TARGET_CANDIDATE: CROSS-CANDIDATE / ALL CREDIBLE FAMILIES
+EXPECTED_OUTPUT: Evidence-ladder matrix (T0-T9), primary identifiers, measured quantity/boundary, maturity ceiling, and exact physical-evidence gaps.
+FALSIFICATION_CRITERIA: Evidence tier is higher than source supports, source provenance cannot be reproduced, or measured quantity is not relevant to the mission claim attributed to it.
+REVIEWER_JOB_ID: DISTINCT_FUTURE_SESSION_REQUIRED
+BLOCKERS: Full candidate-specific inventory may expand as architectures change; first-wave family-level evidence is executable now.
+NEXT_ACTION: Retrieve current operating/field/experimental evidence for mature renewables, geothermal/EGS, fission, fusion, storage and remaining credible niche/hybrid families; classify without winner selection.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+WRITE_INTEGRITY_PREWRITE_HEAD: 4daef95e344f2d7ef33f416ec1b5cf5733180994
+WRITE_INTEGRITY_PREWRITE_FILE_SHA: 0ecb751f8201d89a4ef5eea043c6a664ee1749cb
