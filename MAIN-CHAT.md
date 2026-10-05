@@ -6827,3 +6827,23 @@ Refresh latest state and select the highest-information unclaimed common-boundar
 
 BRANCH_HEAD_BEFORE_WRITE: 82f9aa1083e41c7893d410fc44270dbc71bc1662
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 1d25b764a0c5f845760787ea72d7d32dfc43bccf
+
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-044A-PV-MATERIALS-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0455+07-PVMAT-R3
+PRIMARY_ROLE: PV material-pathway repair architect / cohort mass-balance analyst
+PRIMARY_JOB_ID: JOB-EGC-044A-PV-MATERIALS-REPAIR-C3-20261006
+QUESTION: Can multi-TW silicon-PV material feasibility be stated without outdated silver intensity, without requiring mitigation levers jointly, and without crediting pilot low-Ag metallization before manufacturing-scale validation?
+CANDIDATE: silicon PV material pathway at high global deployment
+DEPENDENCIES: F-EGC-044A-REV-P1-001/P1-002/P2-003; IEA-PVPS 2026 scenario evidence; USGS 2026 silver; Fraunhofer ISE 2026 TOPCon low-Ag pilot; grid/storage material coupling remains separately owned.
+TOOLS: latest GitHub state; official/primary source retrieval; cohort-aware material-flow calculations; independent Python/Wolfram arithmetic; source-date/maturity audit.
+EVIDENCE_TARGET: PV_MATERIAL_GATE_V2 separating historical/current/pilot Ag intensity, gross manufacturing including replacement cohorts, explicit disjunctive closure levers, Ni/Cu burden where evidence supports it, and no instant-recycling/reserve-as-geology errors.
+FALSIFICATION_TARGET: FAIL if 1.1 mg/W pilot is treated as guaranteed fleet intensity, current 10-12 mg/W stress is hidden, retirements/replacements are omitted from sufficiency claims, circularity is credited before material becomes recoverable, or any single mitigation lever is assumed free/unlimited.
+REVIEWER_JOB_ID: JOB-EGC-044A-PV-MATERIALS-REPAIR-REV-C4-20261006
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
