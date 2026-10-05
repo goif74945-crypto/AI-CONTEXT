@@ -1,7 +1,7 @@
 FINDING_ID: F-0DC2D7E4-03
 TYPE: REQUIREMENT_AUTHORITY_MISCLASSIFICATION
 SEVERITY: P0_CONTROL
-STATUS: OPEN
+STATUS: RESOLVED
 REQ_ID: REQ-G22-STATIC-RCS
 SPEC_HASH: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
 
@@ -25,4 +25,14 @@ G22 may be historical/experimental design evidence, but REQ-G22-STATIC-RCS is no
 ACTION:
 Mark this requirement authority REVERIFY_REQUIRED / EXPERIMENTAL unless a final-DOC-C incorporation clause is produced. Do not schedule it as required P0/P1 build work.
 
+RESOLUTION:
+- Canonical requirement record NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-G22-STATIC-RCS.json now classifies AUTHORITY_CLASS=HISTORICAL_GAME_FABRIC_NON_BUILD_UNDER_FINAL_VERDICT.
+- ACTIVE_BUILD_REQUIREMENT=false.
+- SCHEDULING_STATUS=DEFER_NON_BUILD_AUTHORITY.
+- The authority record explicitly forbids promoting G21/G22 to required P0/P1 build work without a final DOC-C binding.
+- This satisfies the finding's required control-plane correction; no product source mutation is required or authorized by this resolution.
+- Resolution verified against requirement-record blob 111781b8e63459a29f7dbe5d6a313ea7f1cfd53c and FINAL_DOC_C_PRIMARY_INDEX blob 71bd5bc30ecc795c565d2bf94eb4ad988c9c1639.
+
+RESOLVED_BY: C-SOL-20261005-V16RC13-B90987C6
+RESOLUTION_BOOTSTRAP_FENCE_STATE_VERSION: 4
 SOURCE_MUTATION: NONE
