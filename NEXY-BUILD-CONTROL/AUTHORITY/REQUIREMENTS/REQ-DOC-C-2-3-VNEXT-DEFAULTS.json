@@ -1,0 +1,35 @@
+{
+  "REQ_ID": "REQ-DOC-C-2-3-VNEXT-DEFAULTS",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "UNKNOWN",
+  "SPEC_LINES": "paragraphs 9910-9949",
+  "SPEC_TEXT": "DOC-C §2.3 Canonical Defaults defines required release, pipeline, auth, retention, and queue values.",
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC / FINAL VERDICT",
+  "EXPECTED_BEHAVIOR": [
+    "Every DOC-C §2.3 required key/value is represented by the canonical configuration used by the runtime.",
+    "Contract tests cover every required DOC-C §2.3 key/value.",
+    "Implementation-only extensions, if retained, are not attributed to DOC-C canonical authority and are constrained or separated from the canonical contract."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not omit required DOC-C defaults from the executable contract test.",
+    "Do not cite a nonexistent final DOC-C subsection as authority for implementation-only defaults."
+  ],
+  "AFFECTED_SYSTEMS": ["CONFIG","RELEASE_POLICY","PIPELINE","AUTH","RETENTION","QUEUE","TESTS"],
+  "DEPENDENCIES": ["FINAL VERDICT DOC-C authority"],
+  "IMPLEMENTATION_PATHS": ["packages/api/vnext-config.ts"],
+  "TEST_PATHS": ["tests/contract/vnext-defaults.test.ts"],
+  "STATUS": "PARTIAL",
+  "LAST_VERIFIED_SHA": null,
+  "LAST_INSPECTED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "integration_source_blob": "a3141a649be7e40ec79f417f53bba9b73081232b",
+    "upstream_source_blob": "a3141a649be7e40ec79f417f53bba9b73081232b",
+    "integration_test_blob": "9853215fa86392662aa602d095138a7c6b46c2fd",
+    "upstream_test_blob": "9853215fa86392662aa602d095138a7c6b46c2fd",
+    "source_match": "All required DOC-C §2.3 values inspected are present with the specified values.",
+    "test_gap": "The focused test does not assert consensus_timeout_ms=10000 or emit_timeout_ms=5000.",
+    "authority_drift": "The test cites DOC-C §8.7 for session cookie defaults, but final DOC-C ends at §5.6 and contains no cookie or __Host term.",
+    "extension_review": "VNEXT_DEFAULTS.auth includes additional implementation keys not present in final DOC-C §2.3; source comments already identify some as internal rather than canonical DOC-C config."
+  },
+  "RECORDED_BY": "C-17A4D82E"
+}
