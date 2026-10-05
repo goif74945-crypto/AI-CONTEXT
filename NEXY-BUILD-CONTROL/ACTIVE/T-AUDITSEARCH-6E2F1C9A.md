@@ -1,0 +1,32 @@
+# ACTIVE CLAIM — T-AUDITSEARCH-6E2F1C9A
+
+- CHAT_ID: C-SOL-20261006-AUDITSEARCH-6E2F1C9A
+- PROJECT: NEXY.AI / NEXY-IGNIS
+- SOURCE_REPOSITORY: goif74945-crypto/NEXY.AI-
+- INTEGRATION_BRANCH: NEXY.AI-Test-AI
+- BASE_SHA: fff0e8fa3a0e2e7a2e12215f9d284c2681fc1eb3
+- WORKER_BRANCH: work/NEXY-AI-Test-AI/T-AUDITSEARCH-6E2F1C9A
+- STATUS: ACTIVE
+- MUTATION_SCOPE:
+  - packages/api/canonical.ts
+  - tests/contract/canonical-api.test.ts
+  - apps/web/app/audit/page.tsx
+  - related audit-view tests only if required
+- REQUIREMENT_BINDING:
+  - DOC-C §7.11: Audit search by actor/date/target
+  - DOC-D §6.1 S10 Audit Viewer: Filter Logs
+  - DOC-C §4.2 GET /api/audit-logs: OWNER/AUDITOR, cursor+limit, AUDIT_LOG_BROWSED
+- GAP:
+  - Current S10 filter is client-only over the first fetched page, so actor/date/target matches outside that page are unreachable.
+  - Current canonical audit test fixture omits immutable role attribution even though audit truth now fails closed on missing role.
+- REQUIRED_BEHAVIOR:
+  - Backend query performs bounded actor/date/target filtering before pagination.
+  - Cursor pagination remains stable under the same filter.
+  - OWNER/AUDITOR authorization and mandatory AUDIT_LOG_BROWSED evidence remain unchanged.
+  - UI filter requests backend truth rather than filtering only an already-truncated page.
+  - Tests prove Prisma where-shape, malformed filter rejection, pagination compatibility, and role-attributed truth fixture.
+- FORBIDDEN:
+  - No mutation of NEXY.ai.
+  - No mutation of NEXY.AI-Test-AI directly.
+  - No weakening of RBAC, audit attribution, cursor validation, or fail-closed behavior.
+  - No fabricated test/runtime evidence.
