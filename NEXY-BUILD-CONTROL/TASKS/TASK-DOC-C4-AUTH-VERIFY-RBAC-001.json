@@ -1,0 +1,11 @@
+{
+  "TASK_ID": "TASK-DOC-C4-AUTH-VERIFY-RBAC-001",
+  "FINDING_ID": "FINDING-DOC-C4-AUTH-VERIFY-RBAC-001",
+  "REQ_ID": "REQ-DOC-C-4-2-AUTH-VERIFY-SUCCESS-WIRE-001",
+  "STATUS": "BLOCKED",
+  "PRIORITY": "P1",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SCOPE": ["packages/api/auth.ts", "tests/coverage/auth-decision-paths.test.ts"],
+  "GOAL": "Reject SYSTEM at the verify-OTAC human-session boundary while preserving OWNER, OPERATOR, and AUDITOR behavior.",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001"
+}
