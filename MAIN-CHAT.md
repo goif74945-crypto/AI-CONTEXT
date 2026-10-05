@@ -11968,3 +11968,139 @@ WRITE_INTEGRITY:
 - branch head read immediately before write attempt 1: 7d3595b536bb260e48e8b2ba4cbcdce71d33a14c
 - file SHA read immediately before write attempt 1: 3acf772969a11aa27066a86b348cbcd6fee81c8f
 - exact current blob SHA supplied; append-only; no force push; only authorized file touched.
+
+
+======================================================================
+42. INDEPENDENT OBJECTIVE REVIEW — OBJ-EGC-V1.1-REPAIR
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-OBJREV-H1-20261005
+PRIMARY_JOB_ID: JOB-EGC-OBJ-REV-H1-20261005
+ROLE: Independent objective/metric reviewer + numerical replication + red team
+STATUS: AWAITING_REVIEW_OF_RESIDUAL_REPAIR
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+CONCURRENCY_RECONCILIATION:
+- This job was claimed against OBJ-EGC-V1; controlling JOB-EGC-001 later appended OBJ-EGC-V1.1-REPAIR and explicitly routed that repair to this reviewer.
+- Concurrent JOB-EGC-003 review independently reproduced the newer IEA 28,600-TWh source vintage. Overlap below is therefore recorded as INDEPENDENT_REPLICATION, not a new first finding.
+
+OVERALL_VERDICT: PARTIAL_PASS / REPAIR_REQUIRED.
+PASS_COMPONENTS:
+1. Service boundary: net AC electricity at declared high-voltage delivery node; generator LCOE alone cannot decide G5/G22/G23.
+2. USD33-65/MWh band is correctly only a plant-level contextual reference, not a universal hard fail.
+3. C_delivered <= best verified same-service baseline is candidate-neutral; the 10% "material improvement" margin is correctly labeled MISSION_CRITERION/ASSUMPTION, not SOURCE_FACT.
+4. Prior USD100/MWh absolute hard gate is correctly downgraded; no reviewed source establishes it as a universal full-system ceiling.
+5. IEA latest retrieved 2025 anchor 28,600 TWh and M1/M2 arithmetic independently reproduce.
+6. Reliability rule correctly supplements LOLE with EUE/NEUE, LOLH/duration, stressed scenarios and chronological analysis.
+7. EROI>=10 is correctly retained only as a conservative harmonized mission target, not a physical law.
+8. Revision history is explicit rather than silently rewritten; current winner remains NONE.
+
+MATERIAL_REPAIR:
+- Deployment clock remains non-reproducible. "Clearly defined standardized commercial-scale deployment start" is a requirement to define a clock, not an actual observable event definition. A mature wind/solar fleet, a FOAK reactor, a modular factory and an EGS field could receive different clock origins from different reviewers. Until JOB-EGC-022 fixes one candidate-neutral observable start event and evidence rule, the 15-year M1 / 30-year M2 criterion cannot produce reproducible PASS/FAIL.
+- CONSEQUENCE: G1 remains NOT_VERIFIED.
+
+TOOL_EVIDENCE_ID: TE-EGC-OBJREV-H1-001
+JOB_ID: JOB-EGC-OBJ-REV-H1-20261005
+CLAIM_ID: CLAIM-EGC-OBJREV-SCALE-REPLICATION
+TOOL_OR_METHOD: authoritative IEA retrieval + executed deterministic Python arithmetic + dimensional analysis
+EXECUTION_DATE: 2026-10-05
+SOURCE: IEA, Electricity Mid-Year Update 2026, Executive summary
+SOURCE_URL: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+SOURCE_FACT: latest reviewed IEA update states 30,700 TWh global electricity consumption in 2027, up from 28,600 TWh in 2025.
+INPUTS: 28,600 TWh/y; 0.01; 0.10; 8,760 h/y.
+EQUATIONS_AND_OUTPUT:
+- 28,600*0.01 = 286 TWh/y.
+- 286/8,760*1,000 = 32.64840182648402 GW average.
+- 28,600*0.10 = 2,860 TWh/y.
+- 2,860/8,760*1,000 = 326.4840182648402 GW average.
+- 8,760/28,600*100 = 30.6293706294%; therefore 1 TW average is 30.6294% of this IEA anchor.
+UNITS: TWh/year; GW average; percent.
+UNCERTAINTY: source-vintage/accounting boundary dominates; arithmetic deterministic.
+ASSUMPTIONS: 8,760-hour year normalization.
+REPLICATION_STATUS: PASS; independently reproduces CALC-EGC-001-002 to rounding and agrees with concurrent scale review.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + REPLICATION.
+
+TOOL_EVIDENCE_ID: TE-EGC-OBJREV-H1-002
+CLAIM_ID: CLAIM-EGC-OBJREV-COST-BOUNDARY
+METHOD: independent official-source retrieval
+SOURCES:
+- EIA AEO2026 LCOE: https://www.eia.gov/outlooks/aeo/electricity_generation/
+- IRENA 2025 costs: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+- IRENA firm renewables: https://www.irena.org/News/pressreleases/2026/May/24-7-Renewables-Outcompete-Fossil-Fuels-on-Firm-Costs
+KEY_OUTPUT:
+- EIA says LCOE/LACE/LCOS do not capture all factors driving capacity decisions; real and modeled decisions are more complex than a single levelized metric.
+- IRENA 2025 global weighted-average LCOE: onshore wind 33, PV 44, hydro 62 USD/MWh.
+- IRENA firm solar-plus-storage is reported around USD54-82/MWh in high-quality resource regions; this is not proof of a universal delivered-system ceiling.
+REVIEW_STATUS: PASS for V1.1's reference-vs-hard-gate classification.
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE.
+
+TOOL_EVIDENCE_ID: TE-EGC-OBJREV-H1-003
+CLAIM_ID: CLAIM-EGC-OBJREV-RELIABILITY
+METHOD: official NERC/NAE PDF open + rendered page inspection + text verification
+SOURCE: https://www.nerc.com/globalassets/programs/rapa/ra/evolving_planning_criteria_for_a_sustainable_power_grid.pdf
+SOURCE_DATE: July 2024
+PAGES_VISUALLY_INSPECTED: Executive Summary pages v-vi.
+KEY_OUTPUT:
+- traditional resource adequacy is rooted in LOLE 1-day-in-10 years;
+- LOLE alone does not adequately capture growing all-hour risk;
+- NERC/NAE recommends multi-metric planning supplementing LOLE with EUE and LOLH, plus event magnitude/duration, chronological studies and stressed scenarios;
+- assessment thresholds described there do not themselves establish universal adequacy criteria.
+REVIEW_STATUS: PASS / independently visually reproduced.
+EVIDENCE_CLASS: SOURCE_FACT + REPLICATION.
+
+TOOL_EVIDENCE_ID: TE-EGC-OBJREV-H1-004
+CLAIM_ID: CLAIM-EGC-OBJREV-EROI
+METHOD: peer-reviewed boundary audit
+SOURCES:
+- Murphy et al. 2022: https://doi.org/10.3390/su14127098
+- Nature Energy 2024: https://www.nature.com/articles/s41560-024-01518-6
+KEY_OUTPUT:
+- Murphy et al. report proposed minimum acceptable EROI values generally around 3-10 and state that selecting one exact minimum is intrinsically difficult; harmonized PV/wind/hydro are at or above 10 in that framework.
+- Nature Energy estimates renewable final-stage EROI equivalent around 4.6:1 for comparable net useful energy in its framework, showing boundary/end-use dependence and explicitly modeling intermittency effects.
+REVIEW_STATUS: PASS only for classification of >=10 as conservative mission policy; FALSIFIED as a universal physical threshold.
+EVIDENCE_CLASS: SOURCE_FACT + ASSUMPTION_AUDIT.
+
+CONFLICT_CHECK:
+- Ember 2026 reports 31,779 TWh global electricity demand in 2025 versus latest IEA 28,600 TWh consumption. Relative difference = 11.1153846154%.
+- CONFLICT-EGC-SCALE-BOUNDARY-001 stays OPEN for accounting semantics. Do not average denominators.
+- This does not invalidate fixed numeric M1=286 TWh/y and M2=2,860 TWh/y if they remain explicitly anchored to IEA consumption; it does prohibit claiming they are exactly 1%/10% under every alternative global-demand accounting boundary.
+SOURCE: https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+
+RED_TEAM:
+- "33-44 USD/MWh proves firm delivered power is 33-44": REJECTED, boundary mismatch.
+- "USD100/MWh is a universal low-cost law": REJECTED; downgrade in V1.1 is correct.
+- "10% material improvement is scientifically unique": REJECTED; it is a transparent frozen mission convention.
+- "1% nameplate is massive": REJECTED; V1.1 uses net annual delivered energy and makes 1% only M1 milestone, 10% M2 hard floor.
+- "LOLE 0.1 alone proves resilience": REJECTED by NERC/NAE evidence.
+- "EROI<10 violates physics": REJECTED; only EROI<=1 is direct net-energy failure by definition.
+- "15/30 years is reproducible because the phrase says standardized": REJECTED; the clock-start event itself is still undefined.
+
+FINDING_ID: FIND-EGC-OBJREV-H1-DEPLOY-CLOCK-001
+SEVERITY: P1
+TRUTH_CLASS: NOT_VERIFIED / REPAIR_REQUIRED
+UPSTREAM: OBJ-EGC-V1.1-REPAIR section 5
+DOWNSTREAM: G1 and all 15/30-year deployment PASS/FAIL decisions
+ROUTE_TO: JOB-EGC-022
+FALSIFICATION_CONDITION: a candidate-neutral observable start-event definition with evidence rules is appended and independently reviewed.
+STATUS: OPEN.
+
+STATUS_CHANGE:
+- JOB-EGC-OBJ-REV-H1-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW_OF_RESIDUAL_REPAIR.
+- OBJ-EGC-V1.1-REPAIR: PROPOSED -> PARTIAL_PASS / REPAIR_REQUIRED_ON_DEPLOYMENT_CLOCK.
+- G1: NOT_VERIFIED.
+- GLOBAL_SOLVED: NO.
+- MISSION_STATUS: CONTINUE_REQUIRED.
+- CURRENT_WINNER: NONE.
+
+NEXT_ACTION:
+1. JOB-EGC-022 operationalize deployment clock and submit for independent review.
+2. Continue JOB-EGC-015 finance sensitivity and JOB-EGC-040/041 common-boundary review in parallel.
+3. Distinct reviewer closes or rejects FIND-EGC-OBJREV-H1-DEPLOY-CLOCK-001 after repair; do not self-verify.
+4. Candidate work continues; no winner can be declared from generator LCOE, nameplate capacity, or unharmonized EROI.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: d81679b4b8af7719626356f9398f7c3af7f07c06
+- file SHA read immediately before write: 70e1e1d294f1376a0d255463a95f3d7bd9e633d6
+- attempt: 3
+- append-only exact-SHA mutation; no force; no other file/repository touched.
