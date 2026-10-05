@@ -1,0 +1,31 @@
+{
+  "TASK_ID": "T-389F19AA",
+  "OWNER_CHAT": "C-SOL-20261006-VAULT-HASH-389F19AA",
+  "STATUS": "IMPLEMENTING",
+  "PRIORITY": "P1",
+  "RISK": "MEDIUM",
+  "BASE_SHA": "1ab5de28aa9f9b5a1a6722dc1e2a20d8b807a87c",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work-vault-hash-389f19aa",
+  "SEMANTIC_SCOPE": "Repair DOC-C vault commit hash-mismatch mapping only: verified revision content_hash mismatch and VaultError CONTENT_HASH_MISMATCH must return 409 VAULT_COMMIT_CONFLICT, not 422 SCHEMA_VIOLATION.",
+  "TARGET_PATHS": [
+    "packages/api/canonical.ts",
+    "tests/contract/canonical-api.test.ts"
+  ],
+  "REQUIREMENT_EVIDENCE": [
+    "Authoritative DOCX §3.4: hash mismatch → VAULT_COMMIT_CONFLICT",
+    "Authoritative DOCX §4.2 POST /api/vault/commit error matrix: 409 VAULT_COMMIT_CONFLICT; 422 SCHEMA_VIOLATION"
+  ],
+  "FORBIDDEN": [
+    "NEXY.ai mutation",
+    "unrelated API refactor",
+    "auth/state/queue changes"
+  ],
+  "ACCEPTANCE_CRITERIA": [
+    "Direct revision content_hash mismatch returns HTTP 409 with VAULT_COMMIT_CONFLICT.",
+    "VaultError CONTENT_HASH_MISMATCH returns HTTP 409 with VAULT_COMMIT_CONFLICT.",
+    "Malformed request schema remains HTTP 422 SCHEMA_VIOLATION.",
+    "Focused contract test passes on worker HEAD.",
+    "Diff contains no unrelated mutation."
+  ]
+}
