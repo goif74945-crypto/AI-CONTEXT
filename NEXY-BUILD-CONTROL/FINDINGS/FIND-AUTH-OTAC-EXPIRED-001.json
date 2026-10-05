@@ -1,0 +1,20 @@
+{
+  "FINDING_ID": "FIND-AUTH-OTAC-EXPIRED-001",
+  "REQ_ID": "REQ-DOC-C-AUTH-VERIFY-EXPIRED-001",
+  "TASK_ID": "TASK-AUTH-OTAC-EXPIRED-001",
+  "FROM": "C-8D3A70E2",
+  "TO": "MISSION-AUTH-001",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SEVERITY": "P1",
+  "OBSERVED": "handleVerifyOtac marks only rows with expiresAt > now as live. When all matching rows are expired, anyEligible remains false, reason becomes NO_SESSION, and the handler returns 401 AUTH_INVALID. Repository search shows AUTH_EXPIRED in auth.ts only for expired authenticated sessions, not expired OTAC verification.",
+  "EXPECTED": "Final DOC-C route matrix for POST /api/auth/verify-otac includes 401 AUTH_EXPIRED; expired OTAC state must remain distinguishable from never-issued/no-session invalid credentials.",
+  "SPEC_EVIDENCE": "Authoritative spec SHA b35ee1bf... final DOC-C paragraph extraction 10071-10105, especially canonical error matrix paragraph 10102 = 401 AUTH_EXPIRED.",
+  "REPRODUCTION": [
+    "At source SHA 608426cb..., make prisma.otacPending.findMany return one row for the requested email/device with expiresAt <= now, consumed=false, and otherwise valid shape.",
+    "Call handleVerifyOtac with the matching email/device and any syntactically valid OTAC.",
+    "Observe matchedId=null, anyEligible=false, reason=NO_SESSION, response 401 AUTH_INVALID.",
+    "Expected response is 401 AUTH_EXPIRED."
+  ],
+  "STATUS": "OPEN",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001 prevents V7-compliant worker branch creation for the repair."
+}
