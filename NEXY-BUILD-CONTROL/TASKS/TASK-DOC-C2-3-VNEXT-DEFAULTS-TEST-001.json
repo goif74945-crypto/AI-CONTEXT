@@ -37,9 +37,10 @@
   "LAST_VERIFIED_BRANCH": "NEXY.AI-Test-AI",
   "LAST_VERIFIED_TEST_BLOB": "c5ca55886434cad3c48f4bba599d63c7647c6dcb",
   "CURRENT_EVIDENCE": [
-    "tests/contract/vnext-defaults.test.ts asserts pipeline.consensus_timeout_ms === 10000.",
-    "tests/contract/vnext-defaults.test.ts asserts pipeline.emit_timeout_ms === 5000.",
-    "Cookie-prefix check is labeled implementation hardening rather than false final-DOC-C §8.7 authority."
+    "packages/api/vnext-config.ts currently exposes pipeline.consensus_timeout_ms=10000 and pipeline.emit_timeout_ms=5000.",
+    "tests/contract/vnext-defaults.test.ts currently asserts both values exactly.",
+    "The cookie prefix oracle is currently described as implementation hardening and does not cite non-final DOC-C §8.7."
   ],
-  "NEXT_ACTION": "No implementation allocation unless a future rescan proves regression."
+  "NEXT_ACTION": "No implementation allocation unless a later rescan proves regression; runtime test execution remains separately governed by exact-SHA validation availability.",
+  "LAST_VERIFIED_SHA": "aaec8ace3c1fc3ba1472737d7bef1fda8c1c31ad"
 }
