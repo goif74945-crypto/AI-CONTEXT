@@ -15577,3 +15577,208 @@ WRITE_INTEGRITY:
 - branch head read: 1a01ab83c7a4f8113bd4b9a3886370c1b3e35c3c
 - file SHA read: d0c9c5b4b630c4479604c258cf800ef8115fb1d0
 - exact SHA append only; no force; only authorized file touched.
+
+
+======================================================================
+45. JOB-EGC-DEPLOY-RATE-K1-20261005 — OBSERVED DEPLOYMENT + GREENFIELD SCALE PASS 1
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-DEPLOY-K1-20261005
+JOB_ID: JOB-EGC-DEPLOY-RATE-K1-20261005
+STATUS: EXECUTING
+COORDINATION_NOTE:
+- Parent JOB-EGC-022 is now claimed by SESSION-GPT56SOL-EGC-DEPLOY022-H2-20261005.
+- This support job is narrowed to observed commissioned/connected deployment anchors and transparent arithmetic.
+- It does NOT select or override JOB-EGC-022's deployment-clock convention.
+
+### EVIDENCE_ID: EVID-EGC-DEPLOY-K1-001
+CLAIM_ID: CLAIM-EGC-RENEWABLE-ADDITIONS-IRENA-2025
+TOOL: authoritative PDF retrieval + rendered-page visual inspection
+METHOD: IRENA Renewable Capacity Statistics 2026; end-2025 world tables
+DATE: 2026-10-05
+SOURCE: International Renewable Energy Agency, Renewable Capacity Statistics 2026
+SOURCE_DATE: March 2026
+URL/DOI/IDENTIFIER: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Mar/IRENA_DAT_RE_capacity_statistics_2026.pdf ; ISBN 978-92-9260-725-8
+INPUTS:
+- IRENA capacity = maximum net generating capacity; for most countries/technologies capacity installed and connected at calendar year-end.
+- World solar PV: 1,872,813 MW end-2024 -> 2,383,162 MW end-2025.
+- World wind: 1,132,690 -> 1,291,368 MW.
+- World geothermal: 15,415 -> 15,674 MW.
+EQUATION: additions = end-2025 - end-2024.
+OUTPUT:
+- Solar PV: +510,349 MW = +510.349 GW.
+- Wind: +158,678 MW = +158.678 GW.
+- Geothermal: +259 MW = +0.259 GW.
+- IRENA foreword separately reports 692 GW total renewable additions, solar ~510 GW, wind 159 GW, consistent with table arithmetic/rounding.
+UNITS: MW/GW
+UNCERTAINTY: country entries can be official, unofficial, or IRENA-estimated; stock change can include revisions and retirements.
+ASSUMPTIONS: subtraction only.
+LIMITATIONS: MW != delivered annual energy or firm capacity; solar/wind values omit storage/transmission/firming/curtailment.
+REPRODUCTION_METHOD: inspect PDF rendered pages 2, 6, 25, 36, 52 and subtract 2024 from 2025 world values.
+REPLICATION_STATUS: SOURCE_VISUALLY_VERIFIED + ARITHMETIC_REPRODUCIBLE / DISTINCT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+
+### EVIDENCE_ID: EVID-EGC-DEPLOY-K1-002
+CLAIM_ID: CLAIM-EGC-NUCLEAR-ADDITIONS-IEA-2025
+TOOL: authoritative web retrieval
+METHOD: IEA Global Energy Review 2026 nuclear page, based on IAEA PRIS
+DATE: 2026-10-05
+SOURCE: IEA, Global Energy Review 2026 — Technology: Nuclear
+SOURCE_DATE: April 2026
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/global-energy-review-2026/technology-nuclear
+OUTPUT:
+- 3 GW new nuclear capacity came online in 2025.
+- 3 GW retired; global nuclear capacity remained ~420 GW end-2025.
+- 10 construction starts totaled 12.2 GW.
+- 78 GW was under construction in 15 countries.
+UNITS: GW
+UNCERTAINTY: starts/under-construction are future pipeline, not commissioned output.
+LIMITATIONS: 3 GW is gross commissioned, not net growth; 12.2/78 GW must not be counted operational.
+REPRODUCTION_METHOD: inspect IEA nuclear page and PRIS source note.
+REPLICATION_STATUS: SOURCE_RETRIEVED / DISTINCT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### EVIDENCE_ID: EVID-EGC-DEPLOY-K1-003
+CLAIM_ID: CLAIM-EGC-BATTERY-ADDITIONS-2025
+TOOL: authoritative web retrieval
+METHOD: IEA Global Energy Review 2026 battery-storage page
+DATE: 2026-10-05
+SOURCE: IEA, Global Energy Review 2026 — Technology: Battery storage
+SOURCE_DATE: April 2026
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/global-energy-review-2026/technology-battery-storage
+OUTPUT: 108 GW of new battery storage power capacity deployed worldwide in 2025, ~40% above 2024.
+UNITS: GW power
+UNCERTAINTY: IEA states 2025 values based on Benchmark (2026) data.
+LIMITATIONS: storage is not primary generation; GW does not determine GWh duration, SOC, losses or adequacy credit.
+REPRODUCTION_METHOD: inspect IEA battery page.
+REPLICATION_STATUS: SOURCE_RETRIEVED / DISTINCT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+### EVIDENCE_ID: EVID-EGC-DEPLOY-K1-004
+CLAIM_ID: CLAIM-EGC-CF-ANCHORS-2025
+TOOL: official operational statistics
+METHOD: EIA Electric Power Monthly Table 6.07.B, annual 2025 U.S. utility-scale fleet
+DATE: 2026-10-05
+SOURCE: U.S. EIA
+SOURCE_DATE: 2026 release containing annual 2025 data
+URL/DOI/IDENTIFIER: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b
+OUTPUT: geothermal 65.9%; nuclear 91.0%; solar PV 24.4%; wind 34.2%.
+UNITS: capacity factor %
+UNCERTAINTY: U.S. fleet averages are geography/resource/mix dependent.
+LIMITATIONS: illustrative observed anchors only, not universal/forward-looking CFs.
+REPRODUCTION_METHOD: inspect annual 2025 row.
+REPLICATION_STATUS: SOURCE_RETRIEVED; upstream canonical scale-baseline review also checked values / DISTINCT_REVIEW_OF_THIS_USE_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATA
+
+### EVIDENCE_ID: EVID-EGC-DEPLOY-K1-005
+CLAIM_ID: CLAIM-EGC-GREENFIELD-RAMP-ARITHMETIC
+TOOL: Python + Wolfram Language same-session cross-tool reproduction
+METHOD: greenfield-equivalent linear-average screening using mission M1/M2 and illustrative CF anchors
+DATE: 2026-10-05
+INPUTS:
+- M1: 286 TWh/y, provisional 15-y horizon.
+- M2: 2,860 TWh/y, provisional 30-y horizon.
+- CF: solar 0.244; wind 0.342; geothermal 0.659; nuclear 0.910.
+- 2025 addition anchors: solar 510.349 GW; wind 158.678; geothermal 0.259; nuclear 3.0 gross commissioned.
+EQUATIONS:
+- P_avg_GW = E_TWh_per_year / 8.76
+- P_nameplate_GW = P_avg_GW / CF
+- linear-average additions = P_nameplate_GW / horizon_years
+OUTPUT:
+M1 = 32.648402 GW average:
+- solar 133.804926 GW nameplate; 8.920328 GW/y
+- wind 95.463163; 6.364211 GW/y
+- geothermal 49.542340; 3.302823 GW/y
+- nuclear 35.877365; 2.391824 GW/y
+M2 = 326.484018 GW average:
+- solar 1,338.049255 GW; 44.601642 GW/y
+- wind 954.631632; 31.821054 GW/y
+- geothermal 495.423396; 16.514113 GW/y
+- nuclear 358.773646; 11.959122 GW/y
+Observed 2025 anchor / simple M2 requirement:
+- solar 11.442381x
+- wind 4.986573x
+- geothermal 0.015684x => required/observed 63.761055x
+- nuclear gross 0.250855x => required/observed 3.986374x
+CROSS_TOOL_CHECK: Python and Wolfram Language matched to displayed precision.
+UNITS: TWh/y; GW avg; GW nameplate; GW/y; ratios.
+UNCERTAINTY: interpretation depends on CF, retirement, future pace, overbuild, system boundary and horizons.
+ASSUMPTIONS:
+- greenfield-equivalent, existing fleet not credited;
+- linear arithmetic not forecast/schedule;
+- no retirements/replacements in target build;
+- no learning/ramp decline;
+- no storage/grid/firming/reserves/curtailment/parasitics/transmission overbuild.
+LIMITATIONS:
+- screening only; no candidate PASS.
+- nuclear 3 GW is gross, while 2025 retirements offset additions, so the comparison is deliberately favorable.
+REPRODUCTION_METHOD: independent implementation of equations/inputs.
+REPLICATION_STATUS: SAME_SESSION_CROSS_TOOL_REPRODUCED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: CALCULATION
+
+### CONFLICT_ID: CONFLICT-EGC-DEPLOY-K1-001
+TOPIC: 2025 global renewable additions — IEA ~800 GW vs IRENA 692 GW
+SOURCE_A:
+- IEA Global Energy Review 2026: ~800 GW; solar >600 GW; wind ~160 GW.
+- IEA notes 2025 values include actual and estimated additions where full-year data were unavailable.
+SOURCE_B:
+- IRENA Renewable Capacity Statistics 2026: 692 GW total; ~510 GW solar; 159 GW wind; primarily installed-and-connected maximum net capacity at year-end.
+ARITHMETIC: difference = 108 GW; 108/692 = 15.6069%; 108/800 = 13.5%.
+STATUS: OPEN / PARTIALLY_EXPLAINED
+LIKELY_CAUSES: vintage, actual+estimated vs end-year stock accounting, technology/capacity definitions (especially solar), revisions/country sourcing.
+RULE:
+- do not average.
+- use IRENA for this job's connected-capacity stock-change anchor.
+- preserve IEA as separate rapid-deployment trend estimate.
+RESOLUTION_NEEDED: trace solar AC/DC and country accounting before closure.
+
+### CLAIM_ID: CLAIM-EGC-DEPLOY-K1-A
+TRUTH_CLASS: INFERENCE
+CLAIM: Recent observed global nameplate pace makes manufacturing/commissioning pace alone not an obvious first-order blocker for solar-only or wind-only GREENFIELD NAMEPLATE M2 arithmetic, but this does not establish delivered-system feasibility.
+SUPPORTED_BY: EVID-EGC-DEPLOY-K1-001,004,005
+STATUS: SUPPORTED_NOT_VERIFIED
+
+### CLAIM_ID: CLAIM-EGC-DEPLOY-K1-B
+TRUTH_CLASS: INFERENCE
+CLAIM: Current geothermal observed stock growth is ~two orders of magnitude below the simple 30-y M2 greenfield ramp; standalone M2 needs a demonstrated deployment-rate step-change.
+SUPPORTED_BY: EVID-EGC-DEPLOY-K1-001,004,005
+STATUS: SUPPORTED_NOT_VERIFIED
+
+### CLAIM_ID: CLAIM-EGC-DEPLOY-K1-C
+TRUTH_CLASS: INFERENCE
+CLAIM: 2025 nuclear gross commissioning was ~one-quarter of simple M2 annual new-build requirement at a 91% CF anchor; retirements mean standalone M2 also requires replacement capacity.
+SUPPORTED_BY: EVID-EGC-DEPLOY-K1-002,004,005
+STATUS: SUPPORTED_NOT_VERIFIED
+
+### RED_TEAM ATTACKS
+- Count IEA 800 GW as directly observed installed capacity: REJECTED; IEA mixes actual/estimated, IRENA boundary more explicit but conflict remains.
+- Infer M2 PASS from solar/wind nameplate pace: REJECTED; omits delivered-system constraints.
+- Count nuclear starts/under-construction as deployed: REJECTED.
+- Compare battery GW as primary generation GW: REJECTED.
+- Treat U.S. CF as universal future global CF: REJECTED.
+
+### JOB PROGRESS DECISION
+RESULT:
+- Observed deployment anchors + reproducible greenfield screening arithmetic produced.
+- IEA/IRENA conflict opened, not averaged away.
+- Parent JOB-EGC-022 now has another owner; evidence is handed off without duplicating clock-method decision.
+STATUS_CHANGE: JOB-EGC-DEPLOY-RATE-K1-20261005 CLAIMED/EXECUTING -> AWAITING_REVIEW
+REVIEWER_REQUIRED: JOB-EGC-DEPLOY-REV-K1-20261005
+BLOCKERS:
+- independent source/arithmetic replication
+- open IEA/IRENA additions conflict
+- parent JOB-EGC-022 must integrate retirements, full-system overbuild, materials/manufacturing and clock convention
+NEXT_ACTION:
+- independent review;
+- parent JOB-EGC-022 may reuse verified inputs but must not treat screening as candidate PASS.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
