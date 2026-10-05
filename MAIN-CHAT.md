@@ -10320,3 +10320,27 @@ BLOCKERS: final numerical system ranking requires frozen geography/service and r
 BRANCH_BLOB_SHA_AT_CLAIM: 8bbb3ca7ed94bc1882cd2fc720e663a3800d0a73
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-042-RSTAR-V2SEM-REPAIR-C5B-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-RSTARSEM5B
+PRIMARY_ROLE: Reliability metric-semantics / estimator-compatibility / structural-scenario repair architect
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-V2SEM-REPAIR-C5B-20261006
+REVIEW_TARGET: F-EGC-042-RSTARV2REV-P1-001 / P1-002 / P1-003 (+ P2-004 clarification)
+QUESTION: Can R_STAR be made invariant to scenario-representation/weighting choices by freezing metric-compatible estimators, exact normalization, exogenous-vs-response scenario semantics, and an auditable structural-model manifest?
+DEPENDENCIES: JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006 is AWAITING_REVIEW and already owns repeated-look statistical gates, baseline-manifest coupling, and candidate-specific response mapping Y_j,i=f_j(S_COMMON_i,U_j,i,theta_j). This job MUST reconcile and extend, not replace/duplicate C5.
+SCOPE_PARTITION:
+- ADOPT C5 scenario pairing/response semantics as upstream.
+- OWN exact metric-estimator compatibility schema, threshold/source semantics, scenario weights/effective-years, NEUE denominator, structural-model manifest completeness, and the prior C01 weighting regression.
+- DO NOT alter local reliability law or invent new reliability thresholds.
+TOOLS: latest MAIN-CHAT; official current PJM/NERC evidence where retrievable; exact/Wolfram calculations; representation-invariance regression tests.
+EVIDENCE_TARGET: current threshold-compatible metric definitions; exact weighted estimator identities; equal-weight vs unequal-weight counterexamples; structural manifest inclusion/exclusion rules; compatibility fail-closed behavior.
+FALSIFICATION_TARGET: same physical annual states can cross a binding reliability threshold solely because scenario rows are duplicated/resampled/weighted differently; NEUE denominator choice can silently change verdict; candidate/baseline receive asymmetric structural-model sets; or this repair conflicts with C5 candidate-specific physical response semantics.
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-V2SEM-REPAIR-REV-C6B-20261006
+STATUS: EXECUTING
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 97219cbbcd9db9233764856ddc4afa21f38b0e09
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
