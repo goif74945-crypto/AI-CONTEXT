@@ -1,0 +1,162 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1913-V8-MUTATING-SURFACES",
+  "CHAT_ID": "C-SOL-20261005-1913-V8-AUTH",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": "Active Next.js POST surfaces and package handlers outside/alongside final DOC-C canonical matrix; guard audit for secure session, CSRF, idempotency, RBAC and durable writes.",
+  "ROUTE_FILES_INVENTORIED": 38,
+  "MUTATING_HANDLER_AUDIT": [
+    {
+      "handler": "handleColdArchiveSnapshot",
+      "source": "packages/api/cold-snapshot.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleRetentionUpdate",
+      "source": "packages/api/storage-control.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleArchive",
+      "source": "packages/api/storage-control.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleArchiveRestore",
+      "source": "packages/api/storage-control.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleHardDelete",
+      "source": "packages/api/storage-control.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleStorageReconcile",
+      "source": "packages/api/storage-control.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleArtifactRestore",
+      "source": "packages/api/artifact-restore.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleUpdateRuntimeConfig",
+      "source": "packages/api/live-config.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleRollbackRuntimeConfig",
+      "source": "packages/api/live-config.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleSessionRefresh",
+      "source": "packages/api/session-refresh.ts",
+      "csrf": true,
+      "secure_session": "manual session-cookie+active+binding checks",
+      "idempotency": true,
+      "rbac": "rejects SYSTEM",
+      "new_gap": false
+    },
+    {
+      "handler": "handleOwnerCancel",
+      "source": "packages/api/owner-cancel.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleOwnerRevokeRelease",
+      "source": "packages/api/owner-revoke-release.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleManageUserRole",
+      "source": "packages/api/owner-roles.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": true,
+      "rbac": "OWNER",
+      "new_gap": false
+    },
+    {
+      "handler": "handleVaultCommit",
+      "source": "packages/api/canonical.ts",
+      "csrf": true,
+      "secure_session": true,
+      "idempotency": "metadata.idempotency_key",
+      "rbac": "OWNER|SYSTEM per current canonical handler",
+      "new_gap": false
+    },
+    {
+      "handler": "handleOwnerRecoveryRequest",
+      "source": "packages/api/owner-recovery.ts",
+      "csrf": true,
+      "secure_session": false,
+      "idempotency": true,
+      "rbac": "lost-session path intentionally unauthenticated",
+      "new_gap": false,
+      "existing_gap": "FINDING-GLOBAL-API-OWNER-RECOVERY-SESSION-001"
+    }
+  ],
+  "POST_NON_DURABLE_SURFACE": {
+    "handler": "handleDialog",
+    "source": "packages/api/dialog.ts",
+    "csrf": true,
+    "secure_session": true,
+    "idempotency": false,
+    "durable_authoritative_write_detected": false,
+    "finding": "NONE; §4.1 idempotency law applies to mutating routes, and this handler's inspected path delegates to sandbox result without persistence write."
+  },
+  "NEW_ACTIONABLE_GAPS": 0,
+  "EXISTING_ACTIONABLE_GAPS_CONFIRMED": [
+    "FINDING-GLOBAL-API-OWNER-RECOVERY-SESSION-001"
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "CLOSURE_EFFECT": "Guard coverage improved for extra POST surfaces; does not promote handlers to VERIFIED_CLEAN where other semantic/dependency findings remain."
+}
