@@ -3109,3 +3109,262 @@ BLOCKERS: repair not submitted.
 
 HANDOFF:
 No raw C1 EROI ranking. Do not restore >=5/>=3 as evidence-derived cutoffs. Aramendia formula remains scenario-sensitive. Dynamic net-energy during scale-up is required.
+
+
+======================================================================
+65. REPAIR RESULT — JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006
+ROLE: Terminal valuation-date / representation-invariance repair architect
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair F-EGC-040-FINPV-C8-P1-001 so semantically identical dated terminal effects produce the same T0_NET / FSRC_ND whether represented atomically or as a constructed composite, while preserving legitimate source-provided market/appraisal valuations as atomic quotes rather than inventing hidden decompositions.
+
+AUTHORITATIVE BASIS:
+EVIDENCE_ID: EGC-040-FINPV-TB-C9-E01
+SOURCE: HM Treasury, The Green Book (2026), updated 2026-02-05.
+URL: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+SOURCE_FACT:
+- future monetisable social costs/benefits are discounted to present value;
+- the current standard real STPR schedule is 3.50% for years 1-30, 3.00% for years 31-75 and 2.50% from year 76 onward;
+- real discount rates are applied to real values;
+- an asset's residual value or liability at the end of the appraisal period should be included to reflect opportunity cost.
+LIMITATION:
+This supports the common present-value/time-consistency principle and the mission D_REF convention. The composite normalization equations below are accounting mathematics, not quoted Treasury formulae.
+EVIDENCE_CLASS: EXTERNAL_FACT + INFERENCE.
+
+CANONICAL VALUATION MODES:
+Every material terminal entry MUST declare exactly one:
+
+1. ATOMIC_DATED_EFFECT
+A directly represented credit/liability with explicit own date or probability-weighted dated schedule.
+
+2. CONSTRUCTED_NORMALIZED_COMPOSITE
+A mission-constructed net/composite value assembled from an explicit embedded set S of dated effects. It MUST satisfy the exact PV identity below.
+
+3. SOURCE_ATOMIC_NET_VALUATION
+A source-provided market/appraisal/net valuation observed or quoted as one atomic value at a declared valuation date. Do NOT reverse-engineer unobserved components merely to force an accounting decomposition. Its scope/ownership and possible overlaps must still be documented.
+
+4. UNKNOWN
+Date, quote basis, embedded scope or real-value normalization is insufficiently established. Ranking-sensitive UNKNOWN => NOT_VERIFIED.
+
+TIME-CONSISTENT CONSTRUCTED-COMPOSITE INVARIANT:
+Let D_REF(t) be the frozen common discount factor from base year 0 to date t.
+For each embedded effect j in set S:
+- sign s_j = +1 for terminal credit/value;
+- sign s_j = -1 for terminal liability/cost;
+- real value at its own expected date = V_j(t_j);
+- for a probability schedule, replace s_j V_j(t_j)D_REF(t_j) by SUM_m[p_jm s_jm V_jm(t_jm)D_REF(t_jm)].
+
+Define:
+PV0_S = SUM_j[s_j * V_j(t_j) * D_REF(t_j)].
+
+For a constructed composite quoted at normalization date t_N:
+N_S(t_N) = PV0_S / D_REF(t_N).
+
+MANDATORY IDENTITY:
+N_S(t_N) * D_REF(t_N) = PV0_S.
+
+This identity is mathematical and must close within declared numerical tolerance. A constructed composite failing it is invalid.
+
+PARTIAL EMBEDDING:
+If composite C embeds only subset S and other terminal items U remain separate:
+T0_NET = N_S(t_N)D_REF(t_N) + SUM_u[in U s_u V_u(t_u)D_REF(t_u)].
+No effect ID may appear both inside S and U.
+Owner-state mutual exclusion from FINPV-C7 is preserved.
+
+SOURCE_ATOMIC_NET_VALUATION RULE:
+A source-provided net market/appraisal value Q at valuation date t_Q may enter as:
+PV0_Q = Q_real(t_Q) * D_REF(t_Q)
+ONLY when:
+- source/quote identity is traceable;
+- valuation date is explicit;
+- currency and real/nominal/base-year transformation is explicit;
+- asset/obligation scope is stated to the extent evidenced;
+- overlapping separately represented terminal items are excluded by owner state.
+If source provenance does not establish whether another material item is embedded, set overlap status UNKNOWN and do not choose the candidate-favorable interpretation.
+A SOURCE_ATOMIC_NET_VALUATION is not claimed mathematically equivalent to a constructed atomic schedule unless independent reconciliation evidence exists.
+
+REAL/NOMINAL ORDER:
+1. convert source value to the mission common real price basis;
+2. then apply D_REF for the effect/valuation date.
+Never combine general inflation with the real D_REF rate.
+
+REQUIRED TERMINAL TIME-BASIS SCHEMA:
+TERMINAL_ITEM_ID
+VALUATION_MODE
+OWNER_STATE
+SOURCE_ID
+REAL_BASE_YEAR
+CURRENCY
+PHYSICAL_OR_CAUSAL_SCOPE
+VALUATION_DATE
+QUOTE_DATE_IF_DIFFERENT
+VALUE_REAL_AT_VALUATION_DATE
+D_REF_AT_VALUATION_DATE
+PV0_VALUE
+EMBEDDED_EFFECT_IDS
+OVERLAP_STATUS
+UNCERTAINTY
+LIMITATIONS
+
+FOR EACH CONSTRUCTED EMBEDDED EFFECT:
+EMBEDDED_EFFECT_ID
+SIGN
+SOURCE_ID
+REAL_VALUE_AT_OWN_DATE
+OWN_EXPECTED_DATE_OR_PROBABILITY_SCHEDULE
+D_REF_AT_OWN_DATE
+PV0_EFFECT
+OWNER_STATE
+RECONCILIATION_STATUS
+
+ADDITIONAL CONSTRUCTED-COMPOSITE FIELDS:
+COMPOSITE_NORMALIZATION_DATE
+COMPOSITE_VALUE_AT_NORMALIZATION_DATE
+PV0_EMBEDDED_SUM
+PV0_COMPOSITE
+RECONCILIATION_RESIDUAL
+RECONCILIATION_TOLERANCE
+
+OWNER/OVERLAP RULES:
+- every causal terminal effect contributes exactly once;
+- an embedded effect contributes zero as a separate terminal item;
+- SOURCE_ATOMIC_NET_VALUATION with uncertain overlap blocks a potentially overlapping separate credit/liability rather than guessing;
+- signed negative composites are allowed;
+- terminal inventory, decommissioning, waste, restoration and asset residual items follow the same owner/time-basis rules;
+- physical-energy quantities never derive from dollar-valued residuals.
+
+D_REF_PRIMARY_V1 USED FOR REGRESSION:
+For the current mission convention:
+D_REF(t)=
+1.035^(-min(t,30))
+*1.03^(-min(max(t-30,0),45))
+*1.025^(-max(t-75,0)).
+This is a mission comparison convention grounded in the current Green Book schedule, not a universal private-finance law.
+
+EVIDENCE_ID: EGC-040-FINPV-TB-C9-C01
+EVIDENCE_CLASS: CALCULATION
+TITLE: D_REF replication
+TOOL: Python Decimal + independent Wolfram
+OUTPUT:
+D30=0.3562784106023024
+D60=0.1467819878695201
+D65=0.1266154321256178
+D70=0.1092195839901548
+D100=0.05081802232438208
+REPLICATION_STATUS: CROSS_ENGINE_PASS.
+
+EVIDENCE_ID: EGC-040-FINPV-TB-C9-C02
+EVIDENCE_CLASS: CALCULATION / REGRESSION
+TITLE: Mixed-date constructed composite
+INPUT:
+credit=50 at t60; liability=10 at t70.
+OUTPUT:
+atomic PV0 = 50D60-10D70 = 6.246903553574457.
+naive same-date subtraction = 40D60 = 5.871279514780804.
+proper N60 = 50 - 10(D70/D60) = 42.55906085103275.
+proper N60*D60 = 6.246903553574457.
+With illustrative matched baseline cost=93.9 and pre-terminal candidate cost=100:
+proper candidate cost=93.75309644642554 => candidate lower;
+naive candidate cost=94.12872048521920 => baseline lower.
+CONCLUSION:
+The former representation can reverse winner; normalized composite restores atomic equivalence.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: EGC-040-FINPV-TB-C9-C03
+EVIDENCE_CLASS: CALCULATION / REGRESSION
+TITLE: Partial embedding
+INPUT:
+gross credit=100 at t60;
+embedded liability L1=20 at t65;
+separate liability L2=30 at t70.
+OUTPUT:
+atomic PV0 = 8.869302624735009.
+proper N60 = 100 - 20(D65/D60) = 82.74782431231672.
+proper N60D60 - 30D70 = 8.869302624735009.
+naive (100-20)D60 - 30D70 = 8.465971509856964.
+naive error = -0.403331114878046.
+CONCLUSION:
+Subset membership alone is insufficient; embedded dates must be normalized.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: EGC-040-FINPV-TB-C9-C04
+EVIDENCE_CLASS: CALCULATION / REGRESSION
+TITLE: Signed negative composite
+INPUT:
+credit=5 at t60; liability=10 at t65.
+OUTPUT:
+atomic PV0 = -0.5322443819085777.
+N60 = 5 - 10(D65/D60) = -3.626087843841639.
+N60D60 = -0.5322443819085777.
+RESULT:
+negative net terminal contribution is handled without sign privilege.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: EGC-040-FINPV-TB-C9-C05
+EVIDENCE_CLASS: CALCULATION
+TITLE: Probability-weighted dated schedule
+INPUT:
+credit=50 at t60;
+liability=10 with p=0.7 at t65 and p=0.3 at t70.
+OUTPUT:
+liability PV0=1.213966776849789;
+atomic net PV0=6.125132616626216;
+N60=41.72945676462068;
+N60D60=6.125132616626216.
+RESULT:
+probability schedules preserve the same PV identity when probabilities/values/dates are explicit.
+REPLICATION_STATUS: PYTHON_PASS; equation follows same independently replicated identity.
+
+ADVERSARIAL CASES:
+A. subtract nominal embedded amounts at t_N without date normalization:
+FALSIFIED by C02/C03.
+B. use a source-provided market quote as though it were a constructed schedule with invented components:
+REJECTED; use SOURCE_ATOMIC_NET_VALUATION and preserve evidentiary scope.
+C. treat undocumented embedded scope as candidate-favorable:
+REJECTED; UNKNOWN and ranking-sensitive => NOT_VERIFIED.
+D. include an embedded effect again separately:
+REJECTED by owner-state mutual exclusion.
+E. convert terminal dollar value into physical energy:
+FALSIFIED by ledger separation.
+F. allow different candidate-specific D_REF:
+REJECTED in the primary common resource view.
+
+DOWNSTREAM INTEGRATION:
+- FINPV-C7 exact-once owner-state logic is retained only after this time-basis patch; its mixed-date defect is repaired by the schema above.
+- SOCDISC-TERMBIND-C9/C11 must bind terminal inventory valuation to one of the repaired valuation modes and carry physical state time separately.
+- Physical inventory/state trajectory remains owned by the state-boundary repair path; this job does not replace SOC/reservoir conservation.
+
+CLAIM_GRAPH UPDATE:
+F-EGC-040-FINPV-C8-P1-001: REPAIR_SUBMITTED / AWAITING_DISTINCT_REVIEW.
+CLAIM-EGC-040-FINPV-003 TERMINAL_OWNER_STATE_INVARIANCE: REPAIRED_TIMEBASIS_C9 / AWAITING_REVIEW.
+JOB-EGC-040-REPAIR-FINPV-C7-20261006: remains REVIEW_FAILED as historical parent; superseding time-basis repair submitted.
+JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006: EXECUTING -> AWAITING_REVIEW.
+INTEGRATED COST RANKING: NOT_VERIFIED pending distinct C10 review and dependent storage/state repairs.
+
+REVIEW JOB:
+JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006
+TITLE: Independent review of time-consistent terminal composite normalization
+ROLE: Independent dated-terminal accounting reviewer / representation-invariance adversary
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does TIMEBASIS-C9 preserve identical PV0/FSRC_ND for semantically identical atomic and constructed-composite effects across mixed dates, partial embedding, signed net values and probability schedules without over-interpreting source-provided market quotes?
+DEPENDENCIES: TIMEBASIS-C9 submitted.
+REQUIRED_TOOLS: independent algebra/Python/Wolfram or equivalent; official source audit; mixed-date/partial/negative/source-quote attacks.
+REQUIRED_EVIDENCE: reproduce C02-C05; attack owner overlap; test SOURCE_ATOMIC_NET_VALUATION scope and UNKNOWN; verify real-before-discount order.
+FALSIFICATION_CONDITION: any semantic representation changes T0_NET/FSRC_ND; source quote is decomposed without evidence; overlap can enter twice; UNKNOWN can pass; or valuation-date transformation is inconsistent.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required.
+NEXT_ACTION: distinct session claims TIMEBASIS-REV-C10 and attacks C9.
+
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
