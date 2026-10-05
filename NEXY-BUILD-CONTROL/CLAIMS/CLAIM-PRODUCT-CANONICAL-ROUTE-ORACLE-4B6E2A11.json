@@ -1,0 +1,32 @@
+{
+  "CLAIM_ID": "CLAIM-PRODUCT-CANONICAL-ROUTE-ORACLE-4B6E2A11",
+  "CHAT_ID": "C-SOL-PRODUCT-CANONICAL-ROUTE-ORACLE-4B6E2A11",
+  "TASK_ID": "TASK-DOC-C4-CANONICAL-ROUTE-ORACLE-001",
+  "FINDING_ID": "FINDING-DOC-C4-CANONICAL-ROUTE-ORACLE-001",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "STATUS": "ACTIVE",
+  "PRIORITY": "P1",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "586275e163d5f6503874621223cb89f878b3da37",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/canonical-route-oracle-4B6E2A11",
+  "SEMANTIC_SCOPE": "Repair only the Final DOC-C canonical route oracle: exactly 12 §4.2 routes, while leaving implementation-only collection endpoints intact.",
+  "TARGET_PATHS": [
+    "scripts/check-doc-c.ts",
+    "tests/contract/canonical-api.test.ts"
+  ],
+  "AUTHORITY": [
+    "Authoritative NEXY-IGNIS DOCX Final DOC-C §4.2 P10037-P10351",
+    "Current user NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD authorization"
+  ],
+  "FORBIDDEN": [
+    "NEXY.ai mutation",
+    "deleting implementation-only endpoints",
+    "unrelated API behavior changes"
+  ],
+  "REQUIRED_EVIDENCE": [
+    "focused exact-worker test",
+    "diff review",
+    "PR CI or equivalent exact-SHA evidence",
+    "post-integration verification"
+  ]
+}
