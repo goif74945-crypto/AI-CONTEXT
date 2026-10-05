@@ -1,0 +1,18 @@
+{
+  "KNOWLEDGE_ID": "KN-CI-608426-ZEROSTEP-001",
+  "CLAIM": "GitHub Actions run 37240273646 for source SHA 608426cb30398b1f3461866f7079d2a435c96b96 is an EXECUTION_INFRA_FAILURE, not an executed source-test failure: nine primary jobs conclude failure with zero steps and three downstream jobs are skipped.",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": [
+    "GitHub Actions workflow run 37240273646 latest attempt",
+    "Static determinism, Phase-F advisory, Integration, Full suite, Coverage, Production web build, Contract, TypeScript typecheck, and Browser E2E jobs each have conclusion=failure and steps=[]",
+    "DOC-C static gate, Deploy, and Evidence/release attestation jobs have conclusion=skipped and steps=[]",
+    "Constitution V7 §130: zero-step CI is EXECUTION_INFRA_FAILURE; §131: PASS/FAIL source verdict requires executed tests."
+  ],
+  "VERIFIED_BY": ["C-8D3A70E2"],
+  "VALID_FROM": "SOURCE_SHA_608426cb_AND_RUN_37240273646",
+  "INVALIDATED_BY": [
+    "A rerun/alternate runner executes actual test steps for the same SHA",
+    "NEXY.AI-Test-AI source SHA changes for source-verdict purposes"
+  ]
+}
