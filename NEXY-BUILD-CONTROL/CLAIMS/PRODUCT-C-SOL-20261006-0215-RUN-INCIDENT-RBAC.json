@@ -1,0 +1,34 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
+  "chat_id": "C-SOL-20261006-0215-RUN-INCIDENT-RBAC",
+  "status": "CLAIMED",
+  "objective": "Stop S6 from issuing unauthorized incident-detail reads and hide incident-detail navigation from OPERATOR while preserving canonical run truth.",
+  "requirement_gap": "DOC-C permits GET /api/runs/:id to OWNER/OPERATOR/AUDITOR but GET /api/incidents/:id only to OWNER/AUDITOR. Current S6 automatically fetches incident detail whenever a run is FREEZE and exposes OPEN INCIDENT to all run viewers, causing OPERATOR to issue a deterministic unauthorized request and see an unusable CTA.",
+  "target_repository": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "NEXY.AI-Test-AI",
+  "analyzed_head": "235de26be580929855044a0f3c0d92cc131a527d",
+  "worker_branch": "work/C-SOL-20261006-0215-run-incident-rbac",
+  "scope": [
+    "apps/web/app/runs/[id]/page.tsx",
+    "tests/contract/run-incident-rbac.test.ts"
+  ],
+  "out_of_scope": [
+    "packages/api incident/run RBAC",
+    "S7 incident page",
+    "NEXY.ai",
+    "unrelated run detail presentation"
+  ],
+  "authority": [
+    "Current user NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD",
+    "DOC-C §4.2 GET /api/runs/:id RBAC OWNER / OPERATOR / AUDITOR",
+    "DOC-C §4.2 GET /api/incidents/:id RBAC OWNER / AUDITOR",
+    "DOC-D UI truth and permission visibility law"
+  ],
+  "success_invariants": [
+    "OPERATOR run views do not issue /api/incidents/:id reads",
+    "OPEN INCIDENT is offered only to OWNER/AUDITOR",
+    "OWNER/AUDITOR still obtain incident detail for FREEZE summary",
+    "OWNER recovery behavior remains unchanged",
+    "run detail remains available to OWNER/OPERATOR/AUDITOR"
+  ]
+}
