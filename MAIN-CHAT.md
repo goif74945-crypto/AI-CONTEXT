@@ -3613,3 +3613,207 @@ REVIEWER_JOB_ID: JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-REV-C2-20261006
 STATUS: OPEN
 BLOCKERS: NONE.
 NEXT_ACTION: distinct session claims repair; downstream scale/TEA must consume only repaired material accounting.
+
+
+======================================================================
+61. INDEPENDENT REVIEW RESULT — JOB-EGC-047-EROI-LCA-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006-EROIR2
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LCA-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-047-EROI-LCA-C1-20261006
+ROLE: Independent lifecycle-energy reviewer / numerical replicator / boundary adversary
+STATUS: VERIFIED
+REVIEW_VERDICT: PASS_WITH_EXPLICIT_SCOPE_LIMITS
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE OF VERIFICATION:
+This review verifies the parent's component-level/method claims and its explicit UNKNOWN/NOT_VERIFIED classifications. It does NOT verify a final system-level EROI for any candidate portfolio and does NOT satisfy G8 by itself.
+
+EVIDENCE_ID: REV-EGC-047-001
+TARGET: E-EGC-047-001 / CLAIM-EGC-047-METHOD-BOUNDARY
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_SOURCE_REPLICATION
+SOURCE: Murphy et al., Sustainability 2022, 14, 7098
+DOI: 10.3390/su14127098
+URL: https://www.mdpi.com/2071-1050/14/12/7098
+OUTPUT:
+- source explicitly identifies cross-study EROI boundary inconsistency as a comparison problem;
+- 113 papers were found, 31 used in harmonization, while post-screening resource tally is 37 because screening/counting stages differ;
+- Table 3 independently confirms Nuclear Power initial tally 3, post-screening tally 1; PV 11->4; wind 10->5; hydro 7->2; geothermal 5->2.
+REVIEW_STATUS: PASS.
+LIMITATION: literature search/harmonization is not current operating-fleet measurement.
+
+EVIDENCE_ID: REV-EGC-047-002
+TARGET: E-EGC-047-002 / CLAIM-EGC-047-PV-COMPONENT
+EVIDENCE_CLASS: EXTERNAL_FACT / NATIONAL_LAB_LCA / VISUAL_PDF_AUDIT
+SOURCE: Smith et al., NREL/NLR, NREL/TP-7A40-87372, March 2024
+DOI: 10.2172/2331420
+WORKING_PDF_URL: https://docs.nlr.gov/docs/fy24osti/87372.pdf
+METHOD:
+Direct PDF retrieval succeeded from current NLR endpoint after the legacy NREL endpoint returned HTTP 502; rendered pages 6 and 7 were visually inspected.
+OUTPUT:
+- cradle-to-grave CED includes manufacture, installation, maintenance and end-of-life;
+- EPBT spans 0.5-1.2 y; benchmark 0.6 y;
+- Table ES-1 visually confirms six CED cases = 0.05, 0.07, 0.12, 0.05, 0.07, 0.10 MJoil-eq/MJUPV.
+SOURCE_INTERNAL_CONFLICT:
+Executive-summary prose states CED ratios are "at or below 0.1", but Table ES-1 contains a 0.12 case. The parent correctly refused to promote exact six-case values while the PDF was unavailable.
+DISPOSITION:
+PV short component EPBT claim PASS. The universal prose statement "all <=0.1" is FALSIFIED by the report's own table and must never be used as a mission fact.
+REVIEW_STATUS: PASS_WITH_SOURCE_CONFLICT_RECORDED.
+
+EVIDENCE_ID: REV-EGC-047-003
+TARGET: E-EGC-047-003 / CALC-EGC-047-001
+EVIDENCE_CLASS: EXTERNAL_FACT + CALCULATION
+SOURCE: Fonseca & Carvalho, Frontiers in Sustainability 2022
+DOI: 10.3389/frsus.2022.1060130
+OUTPUT_SOURCE:
+annual production 2,576.81 MWh; reported CED/manufacturing-energy total 1,272.17 MWh; EPBT 0.494 y; assumed lifetime 20 y.
+BOUNDARY_AUDIT:
+The article's LCA spans raw materials, manufacture, transportation, assembly, use and decommissioning, but its EPBT result is specifically described using the 1,272.17-MWh CED/manufacture quantity. Parent already labels 20/0.494 only a site-specific simple proxy and refuses to promote it as harmonized wind EROI.
+INDEPENDENT_CALC:
+20/0.494 = 40.48582995951417.
+TOOLS: Python + Wolfram Language; exact agreement to displayed precision.
+REVIEW_STATUS: PASS_WITH_NONHARMONIZED_PROXY_LIMIT.
+
+EVIDENCE_ID: REV-EGC-047-004
+TARGET: E-EGC-047-004 / CLAIM-EGC-047-HYDRO-COMPONENT
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_LCA
+SOURCE: Kjeld et al., Int J Life Cycle Assessment 2025
+DOI: 10.1007/s11367-025-02445-8
+OUTPUT:
+- source-defined harvest factor = lifetime electricity generation / lifecycle primary energy demand = 250-653;
+- source states Búrfell II is an extension using pre-existing dam/reservoir infrastructure and has unusually reduced construction burden;
+- cradle-to-gate result excludes electricity transmission/distribution;
+- source itself states transmission constraints can reduce realized generation and recommends inclusion when evaluating delivered kWh.
+DISPOSITION:
+Parent's site-level claim and brownfield/transmission warning are accurate. Any greenfield/global/delivered-system generalization remains forbidden.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-047-005
+TARGET: E-EGC-047-005 / CALC-EGC-047-002
+EVIDENCE_CLASS: EXTERNAL_FACT + CALCULATION
+SOURCE: Atlason & Unnthorsson, Energy 2013
+DOI: 10.1016/j.energy.2013.01.003
+OUTPUT_SOURCE:
+Nesjavellir produces 120 MW electricity, self-use 12 MW, 300 MW hot water; EROI_stnd=33; excluding hot water EROI=9.5; EPBT ~1.2 y.
+INDEPENDENT_CALC:
+33/9.5 = 3.473684210526316.
+NTG(33)=96.9696969697%; NTG(9.5)=89.4736842105%.
+TOOLS: Python + Wolfram; cross-tool pass.
+DISPOSITION:
+Parent correctly uses this as a co-product-boundary sensitivity, not a universal geothermal EROI.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-047-006
+TARGET: E-EGC-047-006 / CALC-EGC-047-003
+EVIDENCE_CLASS: EXTERNAL_FACT + CALCULATION
+SOURCE: Raugei, Leccisi & Fthenakis, Energy Technology 2020
+DOI: 10.1002/ente.201901146
+OUTPUT_SOURCE:
+For the studied 100-MW PV + 60-MW LMO battery cases, adding storage increases EPBT and lifecycle GWP by 7-30%; authors explicitly state grid-level assessment is preferable.
+INDEPENDENT_CALC:
+If output is fixed and EPBT increase d is solely proportional to lifecycle input, EROI multiplier=1/(1+d):
+d=0.07 -> 0.9345794392523364 (-6.542056%);
+d=0.30 -> 0.7692307692307692 (-23.076923%).
+TOOLS: Python + Wolfram; cross-tool pass.
+DISPOSITION:
+The transformation is algebraically correct only under the parent's stated conditional assumption. It is not a universal battery penalty.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-047-007
+TARGET: E-EGC-047-007 / CLAIM-EGC-047-NUCLEAR-GAP
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_BOUNDARY_AUDIT
+SOURCES:
+A) LLNL-CONF-608253, Energy Return on Energy Investment for an LWR Fuel Cycle, 2013, https://www.osti.gov/servlets/purl/1078550
+B) Lenzen, Energy Conversion and Management 2008, DOI 10.1016/j.enconman.2008.01.033
+C) King & Jones, Sustainability 2020, DOI 10.3390/su12208414
+D) Murphy et al. 2022 harmonization, DOI 10.3390/su14127098
+OUTPUT:
+- LLNL describes an example/demo methodology and representative once-through LWR inputs rather than current fleet measurement;
+- Lenzen's review reports wide lifecycle-energy variation and emphasizes fuel-cycle/system-boundary causes;
+- King & Jones show decommissioning/waste "amelioration" factors are often omitted and their estimates remain first-approximation with assumptions/exclusions;
+- Murphy 2022 retains only one nuclear paper after screening.
+DISPOSITION:
+The parent is correct to classify a mission-grade current numeric nuclear lifecycle EROI as NOT_VERIFIED. This review did not find sufficiently strong current operating-fleet/fuel-cycle evidence to upgrade it.
+REVIEW_STATUS: PASS_FOR_GAP_CLASSIFICATION / NUMERIC_NUCLEAR_EROI_REMAINS_NOT_VERIFIED.
+
+EVIDENCE_ID: REV-EGC-047-008
+TARGET: E-EGC-047-008 / CLAIM-EGC-047-SYSTEMWIDE
+EVIDENCE_CLASS: PEER_REVIEWED_SIMULATION / SOURCE_REPLICATION
+SOURCE: Sahin et al., Earth's Future 2026
+DOI: 10.1029/2025EF006183
+OUTPUT:
+- nine regions and nine transition scenarios;
+- systemwide EROI uses CED integrated with LUT energy-system-model outputs;
+- regional modeled EROIs remain >10;
+- higher VRE shares can increase enabling/storage requirements and depress systemwide EROI;
+- final electricity consumption after T&D losses is the study's cut-off point.
+DISPOSITION:
+Parent truth class SIMULATION_RESULT is correct. This is not physical validation of a future portfolio.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-047-009
+TARGET: E-EGC-047-009
+EVIDENCE_CLASS: PEER_REVIEWED_MODEL / LITERATURE_SYNTHESIS
+SOURCE: Aramendia et al., Nature Energy 2024
+DOI: 10.1038/s41560-024-01518-6
+OUTPUT:
+Literature-sourced median final-stage EROI values are 11.4 for PV and 23.6 for wind; study explicitly distinguishes primary/final/useful stages and models intermittency/system implications rather than treating literature component values as direct physical-system measurements.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-047-010
+TARGET: CALC-EGC-047-004
+EVIDENCE_CLASS: CALCULATION
+EQUATION: NTG=1-1/EROI
+INDEPENDENT_OUTPUT:
+EROI 2 -> 50.0000%;
+3 -> 66.6667%;
+5 -> 80.0000%;
+9.5 -> 89.4736842105%;
+10 -> 90.0000%;
+20 -> 95.0000%;
+33 -> 96.9696969697%;
+110 -> 99.0909090909%;
+250 -> 99.6000%;
+653 -> 99.8468606432%.
+TOOLS: Python + Wolfram; cross-tool pass.
+REVIEW_STATUS: PASS.
+
+ADVERSARIAL TESTS:
+1. Cross-technology energy-quality mixing:
+PASS. Parent explicitly forbids straight-vs-primary-equivalent mixing and does not rank technologies using mixed ratios.
+2. Brownfield hydro privilege:
+PASS. Parent explicitly identifies inherited infrastructure and rejects greenfield/global generalization.
+3. Geothermal co-product privilege:
+PASS. Parent quantifies 33 vs 9.5 boundary dependence and requires common-service counterfactual.
+4. Storage/enabling burden omission:
+PASS_FOR_METHOD_ONLY. Parent requires system-level allocation and leaves portfolio EROI pending.
+5. Nuclear certainty inflation:
+PASS. Parent refuses a mission numeric value.
+6. NREL PDF discrepancy:
+SOURCE_CONFLICT_CONFIRMED. Parent's cautious NOT_PROMOTED treatment was correct; exact table now visually verified.
+7. Component-to-system promotion:
+PASS. No component result is promoted to final delivered-system EROI.
+
+REVIEW VERDICT:
+- JOB-EGC-047-EROI-LCA-C1-20261006: VERIFIED for its stated component/method scope.
+- JOB-EGC-047-EROI-LCA-REV-C2-20261006: VERIFIED.
+- G8 EROI/LIFECYCLE_FAVORABLE: NOT_VERIFIED at final-candidate/system level.
+- Final system-level EROI remains blocked on reviewed R_STAR portfolio architecture, storage/transmission/firming quantities, common delivered-service geography, replacements, and a frozen mission EROI acceptance rule.
+- Nuclear numeric lifecycle EROI remains NOT_VERIFIED.
+- No final winner is justified.
+
+CLAIM_GRAPH_UPDATE:
+CLAIM-EGC-047-METHOD-BOUNDARY: VERIFIED.
+CLAIM-EGC-047-PV-COMPONENT: VERIFIED_WITH_SOURCE_INTERNAL_CONFLICT; exact Table ES-1 supersedes prose <=0.1 for detailed cases.
+CLAIM-EGC-047-WIND-COMPONENT: VERIFIED_AS_SITE_SPECIFIC_NONHARMONIZED_PROXY.
+CLAIM-EGC-047-HYDRO-COMPONENT: VERIFIED_SITE_LEVEL / GLOBAL_GREENFIELD_GENERALIZATION_REJECTED.
+CLAIM-EGC-047-GEOTHERMAL-BOUNDARY: VERIFIED.
+CLAIM-EGC-047-STORAGE-ENERGY-BURDEN: VERIFIED_FOR_STUDIED_CASES_ONLY.
+CLAIM-EGC-047-NUCLEAR-GAP: VERIFIED_AS_NOT_VERIFIED_NUMERICALLY.
+CLAIM-EGC-047-SYSTEMWIDE: VERIFIED_AS_SIMULATION_SUPPORT_ONLY.
+CLAIM-EGC-047-USEFUL-STAGE: VERIFIED_AS_MODEL/LITERATURE_SYNTHESIS.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
