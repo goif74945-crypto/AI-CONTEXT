@@ -6819,3 +6819,38 @@ NEXT_ACTION: instantiate source/system taxonomy from latest evidence, define inc
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+======================================================================
+JOB + SESSION CLAIM — JOB-EGC-072-CIVIL-NUCLEAR-FUEL-THROUGHPUT-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-NUCFLOW72-C1
+PRIMARY_ROLE: Civil Nuclear Fuel-Chain Throughput / Deployment-Bottleneck Analyst
+PRIMARY_JOB_ID: JOB-EGC-072-CIVIL-NUCLEAR-FUEL-THROUGHPUT-C1-20261006
+TITLE: Quantity-match civil reactor fuel demand to dated mine/conversion/enrichment/fabrication throughput
+QUESTION: For a clearly specified civilian reactor reference and any advanced-fission design with publicly evidenced fuel demand, what physical annual fuel-chain throughput is required per GW-year and at MASSIVE_ENERGY deployment rate, and do dated operating capacities across mining/conversion/enrichment/deconversion/fabrication/logistics support that throughput?
+CANDIDATE: existing civilian LWR reference; advanced-fission only where exact public DESIGN_ID fuel demand and product form are evidenced.
+DEPENDENCIES: existing JOB-EGC-062 fuel-cycle source-state reviews remain authoritative for LICENSED/UNDER_CONSTRUCTION/DEMO/COMMERCIAL/DELIVERED state separation; this job closes their explicit remaining P1 design-specific quantity-matching gap.
+SCOPE_LOCK:
+- civilian energy supply-chain analysis only;
+- public high-level mass/throughput/SWU accounting sufficient for scale comparison;
+- no cascade design, enrichment-process optimization, weapon-usable material production guidance, or handling procedures.
+REQUIRED_INPUTS: annual reactor reload/fuel demand or burnup-based public reference; natural-uranium feed/product/tails assumptions with provenance; mine/conversion/enrichment/fabrication operating throughput; design-specific fuel form; deployment chronology.
+REQUIRED_TOOLS: current official IAEA/NEA/DOE/NRC/EIA/industry-primary operating data; independent unit/SWU arithmetic; throughput bottleneck min-flow model; uncertainty/sensitivity; adversarial status-boundary audit.
+REQUIRED_EVIDENCE:
+- at least one current conventional civilian reference with traceable annual fuel demand;
+- current dated stage throughput and status (actual/operating/nameplate/contracted/under-construction separated);
+- per-GW-year and deployment-scale mass/SWU calculations independently replicated;
+- advanced-fuel lane remains UNKNOWN where exact DESIGN_ID demand/fabrication throughput is unavailable;
+- identify the binding stage rather than comparing geological stock to reactor demand.
+EXPECTED_OUTPUT: FUEL_FLOW_V1 stage ledger + bottleneck diagnostics + reviewer job; no final nuclear winner.
+FALSIFICATION_CONDITION:
+FAIL if stock is treated as flow, contract/nameplate as delivered output, advanced-design fuel demand is guessed, conventional LWR capacity is transferred to incompatible HALEU/TRISO/metal fuel without evidence, stage units are mismatched, or a weapons-relevant process optimization is introduced.
+REVIEWER_JOB_ID: JOB-EGC-072-CIVIL-NUCLEAR-FUEL-THROUGHPUT-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: exact advanced-design demand may remain UNKNOWN; conventional reference analysis is executable now.
+BRANCH_BLOB_SHA_AT_CLAIM: e39b55925575b4bcc093dde7e883ff0209f9b6e8
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+MISSION_STATUS: CONTINUE_REQUIRED
