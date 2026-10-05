@@ -1,0 +1,65 @@
+{
+  "REQ_ID": "REQ-DOC-C-FSM-FINAL-ERROR-TRANSITIONS",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "UNKNOWN_DOCX_PAGINATION_NOT_STABLE",
+  "SPEC_LINES": {
+    "TEMPORAL_AUTHORITY": "non-empty paragraphs 8297-8305",
+    "FINAL_MATRIX": "non-empty paragraphs 8811-8910",
+    "FINAL_ILLEGAL_EVENTS": "non-empty paragraphs 8911-8927",
+    "FINAL_LOG_INCIDENT_LAW": "non-empty paragraphs 8952-8957",
+    "SUPERSEDED_CONFLICTING_TEXT": "non-empty paragraphs 7447-7504 (earlier NEXY EXECUTION PACK vNEXT.1)"
+  },
+  "SPEC_TEXT": [
+    "FINAL VERDICT: DOC-C = BUILD SPEC; Build obligation comes from DOC-C only.",
+    "Final DOC-C executable matrix explicitly lists RUNNING + error -> FREEZE and VERIFYING + error -> FREEZE.",
+    "Final matrix explicitly lists ANY except STOP + fatal -> STOP.",
+    "Earlier vNEXT.1 text saying ANY except STOP + error -> FREEZE predates FINAL VERDICT and is historical where it conflicts."
+  ],
+  "AUTHORITY_CLASS": "CURRENT_BUILD",
+  "EXPECTED_BEHAVIOR": [
+    "Treat the final DOC-C matrix after FINAL VERDICT as build authority.",
+    "Authorize error -> FREEZE at the canonical matrix level for RUNNING and VERIFYING.",
+    "Do not label INIT/READY/CONSENSUS/STABLE/FREEZE error edges as final DOC-C transitions without later primary-source authority.",
+    "Maintain TS/Rust semantic parity for the same authoritative FSM."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Promote the superseded vNEXT.1 ANY-except-STOP error rule into final DOC-C authority.",
+    "Keep cross-language FSM semantics divergent while claiming VERIFIED.",
+    "Repair bootstrap by fabricating an unsupported durable FSM transition."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "packages/core/vnext-state-matrix.ts",
+    "core-kernel/src/kernel/vnext_matrix.rs",
+    "packages/orch-core/system-state.ts",
+    "packages/api/bootstrap.ts",
+    "tests/contract/state-matrix.test.ts",
+    "tests/contract/hydration-fail-closed.test.ts",
+    "tests/coverage/bootstrap-control-plane.test.ts"
+  ],
+  "DEPENDENCIES": [
+    "DOC-B fail-closed / freeze law",
+    "DOC-C executable FSM",
+    "bootstrap admission integrity",
+    "cross-language parity"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "packages/core/vnext-state-matrix.ts",
+    "core-kernel/src/kernel/vnext_matrix.rs",
+    "packages/orch-core/system-state.ts",
+    "packages/api/bootstrap.ts"
+  ],
+  "TEST_PATHS": [
+    "tests/contract/state-matrix.test.ts",
+    "tests/contract/hydration-fail-closed.test.ts",
+    "tests/coverage/bootstrap-control-plane.test.ts",
+    "core-kernel/src/kernel/vnext_matrix.rs#[cfg(test)]"
+  ],
+  "STATUS": "PARTIAL",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "TS_AT_SHA": "contains error -> FREEZE edges for INIT, READY, RUNNING, VERIFYING, CONSENSUS, STABLE, FREEZE",
+    "RUST_AT_SHA": "contains error -> FREEZE edges only for RUNNING and VERIFYING",
+    "BOOTSTRAP_AT_SHA": "depends on CORE error transition to freeze an INIT bootstrap failure",
+    "EXECUTION_EVIDENCE": "NONE_FOR_608426cb30398b1f3461866f7079d2a435c96b96"
+  }
+}
