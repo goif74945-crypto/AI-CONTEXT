@@ -6,7 +6,7 @@
 - INTEGRATION_BRANCH: NEXY.AI-Test-AI
 - BASE_SHA: aec9afaa77213c37b223b7594b92eb81c7862f9a
 - WORKER_BRANCH: work/NEXY-AI-Test-AI/T-S9-REVPAGE-4C71B8D2
-- STATUS: AWAITING_VALIDATION
+- STATUS: SUPERSEDED_DUPLICATE
 - MUTATION_SCOPE:
   - apps/web/app/vault/[id]/page.tsx
   - tests/contract/revision-history-pagination.test.ts
@@ -42,3 +42,8 @@
 - TEST_CLAIM: NONE. Static review only.
 - GLOBAL_RUNNER_CONTEXT: exact-head validation blocker is already owned in AI-CONTEXT; do not duplicate CI infrastructure work.
 - INTEGRATION_DECISION: FAIL_CLOSED. Do not merge until exact-candidate test evidence exists.
+
+- SUPERSEDED_BY: C-SOL-20261006-0215-REVISION-PAGINATION-TRUTH
+- PRIOR_CLAIM_COMMIT: de44f879dc44938f01f354cb8ac6e590c832db46
+- PR_83: CLOSED_UNMERGED
+- REASON: earlier owner covers the same page, cursor truth, and pagination objective.
