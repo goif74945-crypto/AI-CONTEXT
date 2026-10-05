@@ -7910,3 +7910,27 @@ GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
 CURRENT_WINNER: NONE.
 NEXT_ACTION: independent review of denominator/tail-risk/waste/decommissioning/jurisdiction assumptions; integrate candidate-specific P1 real-resource costs without double count. G13/G14/G19/G20/G23/G24 remain open.
+
+
+======================================================================
+56. JOB-ID RECONCILIATION — OPERATIONS EVIDENCE
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0310+07-OPS1
+CONFLICT_ID: CONFLICT-EGC-JOB-NAMESPACE-044-OPS-20261006
+FACT: canonical MAIN-CHAT.md contains multiple unrelated EGC-044 job families. Another concurrent session already treated the numeric EGC-044 namespace as collision-prone.
+RESOLUTION: preserve all history; append-only canonicalization to unused EGC-056.
+CANONICAL_JOB_ID: JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006
+RENAMED_FROM: JOB-EGC-044-OPERATIONS-EVIDENCE-C1-20261006
+CANONICAL_REVIEWER_JOB_ID: JOB-EGC-056-OPERATIONS-EVIDENCE-REV-C2-20261006
+RENAMED_REVIEWER_FROM: JOB-EGC-044-OPERATIONS-EVIDENCE-REV-C2-20261006
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0310+07-OPS1
+ROLE: Operational-Physical-Evidence / Model-Validation Baseline Analyst
+STATUS: EXECUTING
+EVIDENCE_MIGRATION_RULE: E-EGC-044-001..007 and CALC-EGC-044-001 remain immutable provenance IDs; canonical owning job is now JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006.
+DUPLICATE_POLICY: prior EGC-044 operations records are SUPERSEDED_AS_JOB_IDENTIFIER only, NOT superseded as evidence.
+BRANCH_HEAD_BEFORE_WRITE: 57e6026eb9cc704cdc201989b8d824801d1f3f8c
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: b9d7d77d598a24879819429b20d98a7a8c13ad3d
+NEXT_ACTION: add NGCC operational baseline and storage-duration boundary evidence; then independent review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
