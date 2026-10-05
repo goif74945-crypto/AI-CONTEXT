@@ -1,0 +1,27 @@
+{
+  "TASK_ID": "TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001",
+  "CREATOR_CHAT": "C-SOL-20261005-1739-V8",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-3-2-SYSTEM-ENVELOPE",
+  "FINDING_ID": "FIND-DOC-C3-API-HANDLER-FALSE-FREEZE-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "apps/web/lib/api-handler.ts",
+    "tests/contract/api-handler.test.ts"
+  ],
+  "SEMANTIC_SCOPE": "Remove fabricated canonical FREEZE state from the generic web exception fallback. Keep redaction/fail-closed behavior; bind serialized state to authoritative runtime truth and keep per-route error authority exact.",
+  "ACCEPTANCE_CRITERIA": [
+    "Generic wrapper never invents a SystemState value.",
+    "No generic catch fabricates a legal transition/EventLog/incident.",
+    "Unhandled exception remains redacted and non-successful.",
+    "Canonical routes retain route-specific error-matrix authority.",
+    "Mutation test kills any reintroduced hardcoded false FREEZE state.",
+    "NEXY.ai remains unchanged."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001"
+}
