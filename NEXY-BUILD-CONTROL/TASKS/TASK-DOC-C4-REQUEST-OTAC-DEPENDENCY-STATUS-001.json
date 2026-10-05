@@ -1,0 +1,9 @@
+{
+  "TASK_ID": "TASK-DOC-C4-REQUEST-OTAC-DEPENDENCY-STATUS-001",
+  "FINDING_ID": "FINDING-DOC-C4-REQUEST-OTAC-DEPENDENCY-STATUS-001",
+  "STATUS": "BLOCKED",
+  "PRIORITY": "P1",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "GOAL": "Align request-OTAC dependency-failure status with final DOC-C without changing unrelated auth routes.",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001"
+}
