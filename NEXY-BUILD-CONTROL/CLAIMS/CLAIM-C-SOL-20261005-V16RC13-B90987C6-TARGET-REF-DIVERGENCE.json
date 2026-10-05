@@ -9,6 +9,8 @@
   "CURRENT_TARGET_HEAD_OBSERVED": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
   "LEGACY_INTEGRATION_HEAD_OBSERVED": "608426cb30398b1f3461866f7079d2a435c96b96",
   "PRODUCT_SOURCE_MUTATION": "NONE",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Determine exact lineage and authority implications of the current target ref being 57 commits behind the legacy V11 integration snapshot, without moving any product ref."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Determine exact lineage and authority implications of the current target ref being 57 commits behind the legacy V11 integration snapshot, without moving any product ref.",
+  "RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-V16RC13-B90987C6-TARGET-REF-DIVERGENCE.json",
+  "CONCLUSION": "Current target 9e615b04 is canonical product truth; legacy 608426cb lineage is non-canonical historical candidate only; blind restore forbidden; 608426-bound evidence is stale for current target."
 }
