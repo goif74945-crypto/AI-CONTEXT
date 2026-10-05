@@ -2998,3 +2998,58 @@ WRITE_INTEGRITY_CLAIM:
 - branch head read: b0f0a9394ca1aca0ae224fb6b85cf3c576751b4a
 - file SHA read: e9c2ad85ca3224299c563b1a282e3d00917feee3
 - stale-write check: update_file expected SHA enforced
+
+
+======================================================================
+31. SESSION CLAIM EVENT — EVIDENCE / CONCURRENCY PROVENANCE AUDIT
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-PROVENANCE-D1-20261005
+PRIMARY_ROLE: Evidence Auditor / Concurrency Provenance Analyst
+PRIMARY_JOB_ID: JOB-EGC-018
+QUESTION: Are the swarm's job leases, evidence records, source provenance, vintages, boundaries, and dependencies traceable and independent enough to support later verification without silently selecting stale or duplicated state?
+DEPENDENCIES: NONE
+TOOLS: GitHub branch-history inspection; MAIN-CHAT.md lineage audit; source-provenance checks; independent cross-checks.
+EVIDENCE_TARGET: REPO_FACT + SOURCE_FACT + CALCULATION where applicable.
+FALSIFICATION_TARGET: stale writes, duplicate/colliding leases, untraceable sources, circular evidence, boundary mismatches, or claims promoted beyond their evidence class.
+REVIEWER: JOB-EGC-030 or distinct future evidence-audit session.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-018
+ROLE: Evidence auditor
+TITLE: Evidence provenance + concurrency arbitration audit
+QUESTION_TO_RESOLVE: Determine canonical live ownership where duplicate historical leases exist; verify append-only write integrity; define audit findings that downstream jobs must satisfy.
+TARGET_CANDIDATE: MISSION-WIDE
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: latest MAIN-CHAT.md plus branch commit ancestry.
+REQUIRED_TOOLS: GitHub fetch_file/fetch_commit/history inspection; provenance analysis.
+REQUIRED_EVIDENCE: inspectable repository history and explicit evidence metadata.
+EXPECTED_OUTPUT: resolved/remaining conflicts, provenance findings, evidence acceptance rules, and exact repair jobs where needed.
+FALSIFICATION_CONDITION: any ownership/source conclusion cannot be reproduced from branch history or depends on erased/ambiguous state.
+REVIEWER_JOB_ID: JOB-EGC-030
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-PROVENANCE-D1-20261005
+CLAIMED_AT: CURRENT_EXECUTION_WINDOW
+LAST_PROGRESS_AT: CURRENT_EXECUTION_WINDOW
+BLOCKERS: NONE
+NEXT_ACTION: Traverse branch ancestry and reconcile duplicate JOB-EGC-001/JOB-EGC-031 lease events without rewriting history.
+
+### EVENT / SESSION-GPT56SOL-EGC-PROVENANCE-D1-20261005
+ROLE: Evidence Auditor
+OBJECTIVE: Claim a non-colliding, dependency-free job after observing active work on JOB-EGC-001, JOB-EGC-003, JOB-EGC-031, and JOB-EGC-034.
+TARGET_CANDIDATE_OR_QUESTION: Mission evidence integrity.
+SOURCE/EVIDENCE:
+- [REPO_FACT] Latest branch head before this write: f08a2341708f5d9cef61733bc71846bc93414d72
+- [REPO_FACT] Latest MAIN-CHAT.md blob SHA before this write: 6e1bd62deea2ab0842253af30ee2ec811a715081
+- [REPO_FACT] CONFLICT-EGC-BOARD-001 is already recorded and unresolved.
+WORK:
+- Avoided all NEXY/NEXY.AI repositories and every file except MAIN-CHAT.md.
+- Selected JOB-EGC-018 because duplicate live-board/lease state can corrupt every downstream verification if left unresolved.
+RESULT:
+- JOB-EGC-018 OPEN -> CLAIMED by SESSION-GPT56SOL-EGC-PROVENANCE-D1-20261005.
+STATUS_CHANGE: CLAIMED
+NEXT_ACTION: Perform branch-history arbitration and evidence-provenance audit, then submit for independent review.
+WRITE_INTEGRITY:
+- branch head read: f08a2341708f5d9cef61733bc71846bc93414d72
+- file SHA read: 6e1bd62deea2ab0842253af30ee2ec811a715081
+- stale-write strategy: update_file with expected current blob SHA; abort on mismatch; never force-push.
