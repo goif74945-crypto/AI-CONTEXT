@@ -11514,3 +11514,266 @@ BRANCH_HEAD_AT_CLAIM: 0e10e290f1f14d96830cea078ba545cdda827273
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 88e6d1abb1d086d0f0f0cf96bf615f8f366889de
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+71. REPAIR RESULT — JOB-EGC-060-RSTAR-GATE-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006-RSTARGATE-C3
+PRIMARY_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-C3-20261006
+ROLE: Reliability simulation statistical-gate repair architect
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+CONCURRENCY RECONCILIATION:
+During execution, refreshed MAIN-CHAT.md showed JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006 had independently submitted R_STAR_C3_V2 with:
+- ALPHA_FWER=.05 mission convention;
+- alpha-spending across metrics/stages;
+- threshold-straddle -> NOT_VERIFIED;
+- structural uncertainty separated from sampling uncertainty;
+- common-exogenous/candidate-specific response semantics;
+- common-random-number constraints.
+This C3 therefore does NOT duplicate those semantics.
+This repair adds the missing estimator-execution/rare-tail layer and is conditional on the independently reviewed canonical R_STAR semantics. If the C5 review changes its alpha/stage contract, the formulas below inherit the reviewed version rather than silently retaining stale values.
+
+----------------------------------------------------------------------
+A. SOURCE EVIDENCE
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EVID-EGC-060-C3-001
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: NERC, Probabilistic Adequacy and Measures Technical Reference Report
+SOURCE_DATE: 2018-07
+URL: https://www.nerc.com/globalassets/who-we-are/standing-committees/rstc/pawg/probabilistic_adequacy_and_measures_report.pdf
+METHOD: official PDF text extraction; screenshot attempted.
+SOURCE_FACT:
+- NERC identifies Monte Carlo simulation and convolution/analytical methods as two basic approaches for probabilistic reliability indices.
+- sequential Monte Carlo preserves chronological dependence of equipment states; non-sequential state sampling does not.
+- for both sequential and non-sequential Monte Carlo, artificial-history replications must be sufficient for acceptable statistical convergence;
+- NERC describes convergence using the standard deviation/variance of the reliability estimate and accumulation of annual replications until selected convergence criteria are met.
+- NERC defines Monte-Carlo LOLH and EUE as averages across replications.
+SCREENSHOT_STATUS: FAILED_CACHE_MISS. No visual-only datum is used.
+LIMITATION:
+NERC does not prescribe one universal numeric convergence tolerance in this report; the criterion is study/method dependent.
+
+EVIDENCE_ID: EVID-EGC-060-C3-002
+EVIDENCE_CLASS: EXTERNAL_FACT / CURRENT_IMPLEMENTATION_TRANSPARENCY
+SOURCE: PJM, Effective Load Carrying Capability data / Resource Adequacy Analysis materials
+RETRIEVED: 2026-10-06
+URL: https://www.pjm.com/planning/resource-adequacy-planning/effective-load-carrying-capability.aspx
+URL_2: https://www.pjm.com/pjmfiles/directory/manuals/m20a/index.html
+SOURCE_FACT:
+PJM publishes current hourly load/resource scenario inputs, Monte Carlo draws and replication LOLE data for resource-adequacy/ELCC studies and maintains Manual 20A Rev.3 effective 2026-06-24.
+LIMITATION:
+Publication of Monte Carlo draws demonstrates reproducible stochastic implementation; it does not by itself define the mission convergence threshold.
+
+----------------------------------------------------------------------
+B. R_STAR_C3_STAT_EXEC_V1
+----------------------------------------------------------------------
+
+INHERITS:
+All independently surviving jurisdiction, scenario-physics and metric semantics from EGC-060 C1 and the reviewed canonical R_STAR_C3_V2/C5 successor.
+
+PRE-OUTCOME REQUIRED RECORD:
+STAT_EXEC_VERSION
+RSTAR_SEMANTICS_VERSION
+GEOGRAPHY_ID
+STUDY_YEAR_ID
+METRIC_ID_LIST
+THRESHOLD_ID_LIST
+ESTIMATOR_ID[m]
+SAMPLING_DESIGN_ID
+DEPENDENCE_UNIT
+EXACT_OR_SAMPLED
+CONVERGENCE_CRITERION_ID[m]
+CONVERGENCE_TOLERANCE[m]
+CI_OR_ERROR_BOUND_METHOD_ID[m]
+CI_COVERAGE_CONTRACT
+ALPHA_FWER_VERSION
+STAGE_SCHEDULE_ID
+SEED_SET_ID
+COMMON_EXOGENOUS_STREAM_ID
+CANDIDATE_IDIOSYNCRATIC_STREAM_RULE
+RARE_EVENT_METHOD_ID[m]
+IMPORTANCE_PROPOSAL_ID[m] if used
+TARGET_DISTRIBUTION_ID[m]
+WEIGHT_FORMULA_ID[m] if used
+EFFECTIVE_SAMPLE_SIZE_METHOD_ID[m] if meaningful
+MODEL_VALIDATION_ID
+KNOWN_EXCLUSIONS
+STATUS
+
+RULE C3-S1 — EXACT/ANALYTIC LANE:
+If complete state enumeration, convolution or another exact/analytic calculation is feasible under the frozen model:
+1. prefer it over stochastic sampling for the affected metric;
+2. record state/probability normalization and numerical solver tolerance;
+3. require probability mass normalization residual and numerical residual to be below pre-registered tolerances;
+4. no Monte Carlo confidence interval is invented for an exact calculation;
+5. model/input uncertainty remains separate and is not erased by exact arithmetic.
+
+RULE C3-S2 — SAMPLING LANE:
+If Monte Carlo/resampling is used:
+1. freeze estimator, sample unit, dependence handling, stage schedule, seed-set generation rule and interval/error-bound method BEFORE outcomes;
+2. the sampling unit must preserve the dependence structure relevant to the metric. Chronological storage/fuel/hydro/outage metrics cannot be estimated by treating correlated hours as independent observations merely to inflate N;
+3. every ranking/pass-fail metric requires a statistically valid interval/error bound under its actual sampling design;
+4. seed recording provides reproducibility only. SEED_SET_ID != CONVERGENCE_EVIDENCE.
+
+RULE C3-S3 — TWO DISTINCT GATES:
+STATISTICAL_DECISION_STABILITY:
+Use the reviewed R_STAR decision inequality. For lower-is-better threshold Q=R-T with simultaneous valid interval [L,U]:
+PASS only if U<=0;
+FAIL only if L>0;
+otherwise NOT_STABLE / NOT_VERIFIED.
+For paired candidate-baseline delta, apply the reviewed complementary inequality to a valid interval for that delta.
+
+ESTIMATOR_CONVERGENCE:
+The study may call an estimator CONVERGED only if the pre-outcome CONVERGENCE_CRITERION_ID and CONVERGENCE_TOLERANCE for that metric are met.
+If the applicable regulator/study method specifies a convergence criterion, use it.
+If no defensible convergence tolerance is available, it must be adopted explicitly as a versioned mission/model convention BEFORE stochastic outcomes; it may not be selected post hoc to rescue a candidate.
+A stable point estimate without the required convergence record is NOT_VERIFIED.
+
+RULE C3-S4 — REPEATED LOOKS / OPTIONAL STOPPING:
+Use the independently reviewed alpha-spending/confidence-sequence contract.
+Stopping because a point estimate first becomes favorable is FORBIDDEN.
+Only pre-registered stages may trigger a decision unless an independently valid anytime-confidence-sequence method was frozen in advance.
+Changing sample size after observing candidate-specific outcomes without the frozen stopping rule invalidates PASS.
+
+RULE C3-S5 — RARE EVENTS / ZERO OBSERVATIONS:
+Zero observed shortage/common-mode events never imply zero probability.
+For a simple independent Bernoulli rare-event model, an exact binomial interval such as Clopper-Pearson is admissible.
+For non-Bernoulli, dependent, weighted or sequential-history metrics, the interval method must have demonstrated coverage for that design; an iid binomial formula cannot be pasted onto correlated years/hours.
+If the tail cannot be resolved tightly enough to make the reviewed decision inequality stable, status = RELIABILITY_NOT_VERIFIED.
+
+RULE C3-S6 — IMPORTANCE / TAIL SAMPLING:
+Importance sampling or other rare-event acceleration is allowed only when:
+- target distribution p(x) is frozen/evidenced;
+- proposal q(x) is recorded and has support wherever p contributes materially;
+- likelihood/importance weight rule is explicit;
+- estimator and interval method are valid for the weighted design;
+- weight diagnostics and effective sample size are reported where meaningful;
+- a candidate cannot choose a proposal that changes the target distribution.
+ESS=(sum w)^2/sum(w^2) may be reported as a weight-degeneracy diagnostic, but ESS alone is NOT a coverage proof.
+If weight/proposal validation fails, metric = NOT_VERIFIED.
+
+RULE C3-S7 — PAIRED / COMMON RANDOM NUMBERS:
+Common exogenous draws SHOULD be paired for candidate-vs-baseline deltas when they represent the same physical random driver and preserve each marginal/joint distribution.
+Candidate-internal failures, degradation or maintenance states may be coupled only through an evidence-supported shared/common-cause latent model.
+Artificially forcing identical candidate-specific outages or storage behavior to reduce variance is FORBIDDEN.
+If valid pairing is unavailable, use independent idiosyncratic streams and an interval method that accounts for that variance.
+
+RULE C3-S8 — MULTIPLE METRICS / STAGES:
+The sampling interval coverage must consume the same reviewed familywise/joint error budget used by the canonical R_STAR semantics.
+No metric may quietly receive a fresh 95% interval at each stage if that violates the frozen familywise contract.
+Structural/model uncertainty remains outside sampling error and must still pass the structural-uncertainty gate.
+
+RULE C3-S9 — MODEL VALIDATION PRECEDENCE:
+A narrow confidence interval around a biased/mis-specified model is not validation.
+Before simulated adequacy is promoted, candidate response distributions/correlations and model outputs require the model-vs-measurement validation owned by G16.
+Statistical convergence can reduce sampling uncertainty; it cannot convert ASSUMPTION into MEASUREMENT.
+
+----------------------------------------------------------------------
+C. EXECUTED REGRESSION TESTS
+----------------------------------------------------------------------
+
+CALC_ID: CALC-EGC-060-C3-001
+EVIDENCE_CLASS: CALCULATION / FINITE-SAMPLE FALSE-VERDICT COUNTEREXAMPLE
+TOOLS: Python scipy exact binomial + Wolfram BetaRegularized; cross-tool agreement.
+TOY MODEL:
+Each independently simulated synthetic year has either:
+- 0 shortage hours with probability 1-p; or
+- exactly 10 shortage hours with probability p.
+Binding mission toy threshold LOLH <= 0.1 h/y is therefore p<=0.01.
+n=100 years.
+
+SAMPLE_A: x=0 shortage years.
+Point estimate LOLH=0 -> naive PASS.
+Two-sided 95% exact p interval=[0, 0.0362166926451764].
+Mapped LOLH interval=[0, 0.362166926451764] h/y -> STRADDLES threshold -> NOT_VERIFIED.
+
+SAMPLE_B: x=2 shortage years.
+Point estimate p_hat=.02 => LOLH=.2 -> naive FAIL.
+Two-sided 95% exact p interval=[0.00243133682394254, 0.0703839324710701].
+Mapped LOLH interval=[0.0243133682394254, 0.703839324710701] -> STRADDLES threshold -> NOT_VERIFIED.
+
+RESULT:
+Physically identical distributions can yield opposite point-estimate verdicts from finite-sample luck; the repaired interval gate prevents both from being falsely VERIFIED.
+TRUTH_CLASS: CALCULATION.
+LIMITATION: simple iid Bernoulli toy only; not a real-grid adequacy model.
+
+CALC_ID: CALC-EGC-060-C3-002
+EVIDENCE_CLASS: CALCULATION / ZERO-EVENT TAIL TEST
+TOOLS: Python + Wolfram exact formula.
+For x=0 independent Bernoulli events, one-sided upper confidence bound:
+p_U = 1-alpha^(1/n).
+
+At nominal one-sided alpha=.05:
+n=100 -> p_U=0.0295130496070399 -> LOLH_U=0.295130496070399 h/y.
+Thus 100 zero-event years cannot prove the 0.1 h/y toy threshold.
+
+Under the currently submitted C5 illustrative alpha-spending contract with M=4 gated inequalities and stage k=1:
+alpha_mk=.05/(4*2)=.00625.
+n=100 -> LOLH_U=0.494853822418979 h/y.
+n=300 -> 0.167749529760525 h/y.
+n=500 -> 0.100990067081956 h/y.
+n=505 -> 0.0999951815260247 h/y.
+n=506 -> 0.0997985519945088 h/y.
+Therefore, for THIS toy only, the first integer n satisfying the zero-event upper bound below 0.1 h/y at alpha=.00625 is n=505.
+INTERPRETATION:
+There is no universal "500/1000 runs proves convergence" law. Required information depends on threshold, tail structure, metric, multiplicity and sampling design.
+
+CALC_ID: CALC-EGC-060-C3-003
+EVIDENCE_CLASS: CALCULATION / POINT-ESTIMATE FAILURE
+TOOLS: Python scipy binomial + Wolfram BinomialDistribution; cross-tool agreement.
+TRUE toy p=.012 -> true LOLH=.12 h/y, which exceeds the 0.1 threshold.
+With n=100, naive point-estimate PASS occurs whenever X<=1.
+P(X<=1 | n=100,p=.012)=0.662193375540661.
+RESULT:
+A fixed 100-year sample using only the point estimate would falsely PASS this above-threshold toy system roughly 66.2% of the time. A frozen seed merely makes one such draw repeatable; it does not make it converged.
+
+----------------------------------------------------------------------
+D. REPAIR / CLAIM STATE
+----------------------------------------------------------------------
+
+F-EGC-060-REV-P1-001:
+REPAIRED_BY_PARTITION / AWAITING_DISTINCT_REVIEW.
+Core alpha/decision semantics are owned by R_STAR_C3_V2/C5; this C3 adds estimator execution, convergence provenance and rare-tail safeguards.
+
+CLAIM-EGC-060-006 R_STAR_REPAIRED:
+REPAIR_SUBMITTED / NOT_VERIFIED until:
+1. this C3 passes distinct review;
+2. canonical R_STAR_C3_V2/C5 semantics pass their distinct review or successor repair;
+3. numeric geography/candidate models satisfy model-vs-measurement validation.
+
+G12 GRID/STORAGE_ACCOUNTED: NOT_VERIFIED through final R_STAR integration.
+G15 INTEGRATED_MODEL_PASSED: NOT_VERIFIED.
+G16 MODEL_VALIDATED_AGAINST_MEASUREMENTS: NOT_VERIFIED.
+G19 NO_UNRESOLVED_P0/P1: NOT_VERIFIED pending both R_STAR repair review chains.
+G21 UNCERTAINTY_CANNOT_REVERSE_CONCLUSION: NOT_VERIFIED.
+G24 NO_UNRESOLVED_CRITICAL_CONTRADICTION: NOT_VERIFIED.
+
+JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C4-20261006
+TITLE: Independent review of stochastic-converged R_STAR execution repair
+ROLE: Independent probabilistic adequacy / statistical convergence / rare-event reviewer
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-060-RSTAR-GATE-REPAIR-C3-20261006 submitted; canonical R_STAR_C3_V2/C5 state must be refreshed during review.
+REQUIRED_EVIDENCE:
+- reproduce CALC-EGC-060-C3-001..003 independently;
+- attack iid/non-iid distinction;
+- attack zero-event and optional-stopping rules;
+- test importance-weight support/ESS misuse;
+- verify sampling convergence cannot hide structural/model uncertainty;
+- verify C3 does not conflict with independently reviewed canonical alpha/familywise semantics.
+FALSIFICATION_CONDITION:
+FAIL if seed/sample luck can still create a VERIFIED opposite verdict for identical physical distributions; if iid intervals can be used on correlated histories; if zero tail events are accepted as zero risk; if importance weights alter the target distribution; if convergence tolerance can be selected after outcomes; or if C3 duplicates/conflicts with reviewed canonical R_STAR semantics.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required; canonical C5 review may alter inherited alpha semantics.
+NEXT_ACTION: distinct reviewer attacks this narrow statistical-execution layer and reconciles it with C5 review.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
