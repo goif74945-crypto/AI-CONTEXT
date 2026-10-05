@@ -1,0 +1,19 @@
+{
+  "VALIDATION_ID": "VAL-FALLBACK-LOCAL-608426CB-DNS-001",
+  "TYPE": "EXECUTION_INFRA_FAILURE",
+  "MODE": "FALLBACK_LOCAL_EXACT_SHA_ATTEMPT",
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "TARGET_BRANCH": "NEXY.AI-Test-AI",
+  "COMMIT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "COMMAND": "git clone --filter=blob:none --no-checkout https://github.com/goif74945-crypto/NEXY.AI-.git /tmp/nexy-ai-test && git checkout --detach 608426cb30398b1f3461866f7079d2a435c96b96",
+  "RUNNER": "ChatGPT container runtime",
+  "EXIT_CODE": 128,
+  "RESULT": "EXECUTION_INFRA_FAILURE",
+  "STDERR": "fatal: unable to access 'https://github.com/goif74945-crypto/NEXY.AI-.git/': Could not resolve host: github.com",
+  "LOCAL_CHECKOUT_DISCOVERY": "No existing .git checkout or package.json repository snapshot found under inspected mounted paths.",
+  "VERDICT": "Not CODE_FAIL and not PASS. Exact-SHA executable validation remains outstanding; continue static/spec/source audit through GitHub connector.",
+  "SOURCE_MUTATION": "NONE",
+  "UPSTREAM_MUTATION": "NONE"
+}
