@@ -13329,3 +13329,177 @@ BRANCH_HEAD_AT_CLAIM: 31497dbf0f3cbebaefe1fbc0fefc2ffdcdada483
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 0875b9839ea9bdb9639202f0105e66275700c747
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+60. REPAIR RESULT — JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-SCALEREPAIR3
+PRIMARY_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REPAIR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: 2fc3af3b2fe757bc835b5252618aea3e467a7ad5
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 47cd7e8a00cdfda0f90ffda5c6ac1b59cca89fd3
+
+REPAIR OBJECTIVE:
+Close P1-A mutable PRIS snapshot provenance and P1-B IEA geothermal unit/lifetime normalization without converting approximate/modelled technical-resource figures into low-cost deployable capacity.
+
+REPAIR-EGC-045-PRIS-001 — DATED FLEET SNAPSHOT
+EVIDENCE_CLASS: EXTERNAL_FACT / OPERATIONAL DATABASE SNAPSHOT.
+SOURCE: IAEA Country Nuclear Power Profiles (CNPP), backed by PRIS.
+URL: https://cnpp.iaea.org/
+SOURCE_DATA_DATE: 2026-10-04.
+ACCESS_DATE: 2026-10-06.
+PINNED VALUES:
+- reactors in operation: 417;
+- operating total capacity: 379,700 MWe (CNPP displayed precision);
+- reactors under construction: 78;
+- under-construction total capacity: 81,349 MWe.
+SOURCE_NOTE:
+CNPP explicitly labels these data as of 2026-10-04 from IAEA Power Reactor Information System.
+
+REPAIR-EGC-045-PRIS-002 — HIGHER-PRECISION MUTABLE ACCESS LANE
+EVIDENCE_CLASS: EXTERNAL_FACT / MUTABLE LIVE DATABASE.
+SOURCE: IAEA PRIS Analytics.
+URL: https://pris-stats.iaea.org/
+ACCESS_DATE: 2026-10-06.
+RETRIEVED VALUES:
+- 417 operating;
+- 379,611 MWe net operating capacity;
+- 78 under construction;
+- 81,349 MWe net under-construction capacity;
+- 2025 electricity produced: 2,635.3 TWh.
+PROVENANCE RULE:
+For reproducible date-stamped comparisons, use CNPP's dated snapshot for CURRENT_FLEET_STATE. Use PRIS Analytics for higher displayed precision only when ACCESS_DATE is recorded and recognize that the page is continually updated. Annual 2025 output is a separate YEAR_2025_FLOW datum and must not be relabeled current generation.
+
+REPAIRED CALC-EGC-045-002A — DATE-PINNED NUCLEAR SCALE STRESS
+PURPOSE: order-of-magnitude stress diagnostic only, not formal 2025 capacity factor and not a build forecast.
+INPUTS:
+- E_2025 = 2,635.3 TWh/year from PRIS annual output;
+- P_current_dated = 379.700 GW from CNPP state dated 2026-10-04;
+- P_UC_dated = 81.349 GW from CNPP state dated 2026-10-04.
+EQUATIONS:
+P_avg_2025 = 2635.3*1000/8760 = 300.833333333 GW.
+CF_proxy_cross_time = 300.833333333/379.700 = 0.792292160478.
+P_for_1TWavg_proxy = 1000/CF_proxy = 1262.160664820 GW.
+UC_share_of_stress_nameplate = 81.349/1262.160664820*100 = 6.445217496%.
+OUTPUT:
+- proxy = 79.2292160%;
+- 1-TW-average stress nameplate ≈1.262161 TW;
+- current construction inventory ≈6.4452% of that diagnostic nameplate.
+TOOL_REPLICATION_1: V8 JavaScript.
+TOOL_REPLICATION_2: Wolfram Language.
+REPLICATION_STATUS: PASS.
+LIMITATION:
+This deliberately mixes a calendar-2025 flow with a 2026-10-04 stock only as a scale proxy. It SHALL NOT be called a 2025 fleet capacity factor. A strict capacity-factor calculation requires time-aligned 2025 capacity history.
+
+SENSITIVITY-EGC-045-PRIS-003 — DISPLAY-PRECISION EFFECT
+Using mutable PRIS 379.611 GW accessed 2026-10-06 rather than rounded/date-pinned CNPP 379.700 GW:
+- CF_proxy=0.792477913794;
+- 1-TW-average stress nameplate=1261.864819945 GW;
+- construction share=6.446728581%.
+FINDING:
+Difference is negligible for scale classification, but snapshot provenance is not optional. Exact current numbers must be date/access pinned.
+
+REPAIR-EGC-045-EGS-001 — OFFICIAL METHODOLOGY RETRIEVAL
+EVIDENCE_CLASS: SIMULATION/MODELLING ASSUMPTION.
+SOURCE: IEA, The Future of Geothermal Energy, Chapter 2 technical-potential methodology.
+OFFICIAL_PDF: https://iea.blob.core.windows.net/assets/cbe6ad3a-eb3e-463f-8b2a-5d1fa4ce39bf/TheFutureofGeothermal.pdf
+OFFICIAL_HTML: https://www.iea.org/reports/the-future-of-geothermal-energy/global-geothermal-potential-for-electricity-generation-using-egs-technologies
+VISUAL_PDF_VERIFICATION: PERFORMED on report pages 43-44.
+METHOD FACTS:
+- technical power-generation potential is derived from usable heat with a 20% recovery factor plus temperature/exergy-dependent heat-to-power conversion;
+- power-capacity conversion assumes 20 years operation at 80% capacity factor for electricity;
+- heat uses 25 years at 90% capacity factor;
+- power technical-potential assumptions include production lifetime 20 years and capacity factor 80%;
+- detailed chapter reports about 300,000 EJ for EGS electricity below 8 km at less than USD300/MWh and describes this as almost 600 TW operating for 20 years;
+- transmission line requirements and grid connection are not included in the stated technical-potential cost calculation.
+TRUTH_CLASS:
+MODELLED TECHNICAL POTENTIAL, not measurement and not mission delivered-system cost.
+
+REPAIRED CALC-EGC-045-EGS-002 — 300,000 EJ TO NAMEPLATE CAPACITY
+CONVERSION:
+1 TW-year at full output = 31.536 EJ.
+For nameplate P at capacity factor CF over lifetime L:
+E_EJ = P_TW * CF * L_years * 31.536 EJ/(TW-year).
+Therefore:
+P_TW = 300000 / (0.80*20*31.536)
+     = 594.558599696 TW.
+SOURCE ROUNDING CHECK:
+600 TW * 0.80 * 20 * 31.536 = 302,745.6 EJ.
+Difference from 300,000 EJ = +0.9152%, consistent with the report's approximate wording.
+ANNUAL CHECK:
+594.558599696 TW * 0.80 * 8760 h/y = 4,166.6666667 PWh/y.
+300,000 EJ / 20 y = 15,000 EJ/y = 4,166.6666667 PWh/y.
+IEA text's ≈4,000 PWh / 15,000 EJ annual figures are therefore approximate and order-consistent.
+TOOL_REPLICATION_1: V8 JavaScript.
+TOOL_REPLICATION_2: Wolfram Language.
+REPLICATION_STATUS: PASS.
+
+CONFLICT-EGC-045-GEOTHERMAL-UNIT-001 — RECONCILIATION
+PREVIOUS STATE: OPEN numeric-normalization conflict.
+NEW FINDING:
+The apparent 300,000-EJ vs ~600-TW discrepancy is RESOLVED once the detailed methodology's 80% electricity capacity factor and 20-year power lifetime are included. The earlier simple conversion implicitly assumed 100% capacity factor.
+REMAINING SOURCE-INTERNAL CONFLICT:
+The report executive summary states almost 600 TW with an operating lifespan of 25 years, while Chapter 2 methods and parameter table explicitly use 20 years for power and 25 years for heat.
+ARBITRATION:
+- For quantitative power-potential normalization, use Chapter 2 methods: 20-year POWER lifetime + 80% CF.
+- Treat the executive-summary 25-year phrase as SOURCE_INTERNAL_CONFLICT/NOT_USED_FOR_CALCULATION because applying 25 years at 80% to 300,000 EJ gives 475.646879756 TW, not ~600 TW.
+- Do not silently rewrite the source. Preserve both statements and the reason for selecting the detailed methodology for numerical use.
+CONFLICT_STATUS: PARTIALLY_RESOLVED; dimensional conversion RESOLVED, executive-summary lifetime wording remains SOURCE_INTERNAL_CONFLICT.
+
+REPAIR-EGC-045-EGS-003 — SYSTEM-BOUNDARY LOCK
+MANDATORY TAGS for exact geothermal technical-potential figures:
+- MODEL: IEA/Project InnerSpace GeoMap technical-potential analysis;
+- DEPTH: <8 km;
+- COST_SCREEN: <USD300/MWh model threshold;
+- POWER_LIFETIME: 20 y in detailed methodology;
+- POWER_CF: 80%;
+- GRID/TRANSMISSION: not included in technical-potential model cost boundary;
+- ECONOMIC_DEPLOYABILITY: NOT_PROVEN;
+- REALIZED_BUILD_RATE: NOT_PROVEN;
+- LOW_COST_MISSION_GATE: NOT_PROVEN.
+RULE:
+No candidate receives LOW_COST or MASSIVE_DELIVERED credit from this technical-resource figure alone.
+
+REPAIR STATUS:
+P1-A PRIS mutable snapshot provenance: REPAIRED / awaiting independent review.
+P1-B 300,000 EJ to ~600 TW dimensional mismatch: REPAIRED by retrieving 80% CF + 20-y power-lifetime assumptions / awaiting independent review.
+P1-B remaining 25-y executive-summary wording: RETAINED_CONFLICT, non-blocking for dimensional calculation if detailed methodology governs that calculation; must remain visible in provenance.
+
+CLAIM UPDATE:
+CLAIM-EGC-045-006 PRIS_LIVE_STATE: REPAIRED_TO_DATED_SNAPSHOT + ACCESS-DATED_LIVE_LANE.
+CLAIM-EGC-045-007 EGS_TECHNICAL_POTENTIAL_NOT_COST_PROOF: SUPPORTED, exact conversion repaired.
+CLAIM-EGC-045-010 NUCLEAR_SCALE_STRESS_DIAGNOSTIC: REGENERATED_WITH_DATE-PINNED_INPUTS / AWAITING_C4_REVIEW.
+
+STATUS_CHANGE:
+JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006: EXECUTING -> AWAITING_REVIEW.
+
+REVIEW JOB:
+JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REPAIR-REV-C4-20261006
+TITLE: Independent review of scale provenance and EGS dimensional repair
+ROLE: Independent scale-data provenance / geothermal-unit reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does C3 correctly pin mutable IAEA state and reconcile 300,000 EJ to ~600 TW using documented 20-y/80%-CF power assumptions while preserving the executive-summary 25-y conflict?
+DEPENDENCIES: JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006 submitted.
+REQUIRED_TOOLS: independently retrieve dated CNPP/PRIS state; official IEA report methods; independently recompute EGS and nuclear scale calculations.
+REQUIRED_EVIDENCE:
+- reproduce 300,000/(31.536*20*0.8);
+- verify detailed IEA PDF says 20 y power / 25 y heat and 80% electricity CF;
+- verify executive summary says 25-y lifespan for almost 600 TW;
+- verify dated CNPP 2026-10-04 construction inventory;
+- attack cross-time nuclear proxy labeling.
+FALSIFICATION_CONDITION:
+Repair fails if source timing remains ambiguous, EGS conversion needs an unstated factor, executive-summary conflict is hidden, or current fleet stock vs 2025 generation is mislabeled a true same-period CF.
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session independently claims C4 and attacks this repair.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
