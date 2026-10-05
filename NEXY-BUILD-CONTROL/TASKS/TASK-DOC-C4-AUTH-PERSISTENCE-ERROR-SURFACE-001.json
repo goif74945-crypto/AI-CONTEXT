@@ -1,0 +1,33 @@
+{
+  "TASK_ID": "TASK-DOC-C4-AUTH-PERSISTENCE-ERROR-SURFACE-001",
+  "CREATOR_CHAT": "C-SOL-20261005-1739-V8",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "FINDING_ID": "FIND-DOC-C4-AUTH-PERSISTENCE-ERROR-SURFACE-001",
+  "STATUS": "BLOCKED_SPEC_AUTHORITY_AND_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/auth-failure.ts",
+    "packages/api/auth.ts",
+    "tests/contract/auth-fail-closed-boundary.test.ts",
+    "tests/contract/canonical-api.test.ts",
+    "scripts/check-doc-c.ts"
+  ],
+  "SEMANTIC_SCOPE": "Reconcile final DOC-C auth canonical-route error surfaces for mandatory persistence/evidence failures. Preserve fail-closed auth behavior, audit/security law, and canonical FSM authority. Do not widen final route matrices or invent error->FREEZE transitions.",
+  "ACCEPTANCE_CRITERIA": [
+    "No auth canonical route emits an undeclared HTTP/ErrorCode pair.",
+    "Persistence/evidence failure never continues a success path.",
+    "No request-scoped dependency failure fabricates canonical global FREEZE state.",
+    "Error/status behavior is backed by active final DOC-C authority or the task remains CONFLICT/BLOCKED.",
+    "Exact candidate SHA tests and independent security review required.",
+    "NEXY.ai remains unchanged."
+  ],
+  "BLOCKERS": [
+    "SPEC_AUTHORITY_GAP_AUTH_PERSISTENCE_ERROR_SURFACE",
+    "INC-BRANCH-NAMESPACE-001"
+  ]
+}
