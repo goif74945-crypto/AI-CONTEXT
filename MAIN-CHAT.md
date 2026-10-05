@@ -1413,12 +1413,12 @@ REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT
 EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
 FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
 REVIEWER_JOB_ID: UNKNOWN
-STATUS: CLAIMED
+STATUS: EXECUTING
 OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
 CLAIMED_AT: 2026-10-05T19:06:00Z
-LAST_PROGRESS_AT: 2026-10-05T19:06:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:12:40Z
 BLOCKERS: NONE
-HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+HANDOFF: Objective threshold package V0.1 recorded; continue evidence hardening, common-boundary definition, and independent review before VERIFIED.
 
 #### JOB-EGC-002
 ROLE: Baseline benchmark research
@@ -4068,3 +4068,170 @@ WRITE_INTEGRITY:
 - file SHA read: bfbb77a0add5c8ed23eefc0f12ea9b35ab4863b4
 - stale-write check: update uses exact latest SHA and must fail on concurrent mutation.
 - commit/result: PENDING
+
+
+======================================================================
+29. OBJECTIVE FORMALIZATION — EVIDENCE CHECKPOINT V0.1
+======================================================================
+
+### EVENT 2026-10-05T19:12:40Z / CHATGPT-SOL-20261005T190600Z-A1
+
+ROLE: Objective / Metric Formalization + Mission Integrator
+PRIMARY_JOB_ID: JOB-EGC-001
+OBJECTIVE: Convert LOW_COST and MASSIVE_ENERGY into frozen, candidate-neutral quantitative criteria using current authoritative evidence without treating normative thresholds as external facts.
+TARGET_CANDIDATE_OR_QUESTION: CROSS-CANDIDATE objective definition.
+
+INPUTS:
+- Latest MAIN-CHAT.md on authorized branch.
+- IRENA, Renewable power generation costs in 2025 (July 2026).
+- IEA, Electricity 2026 (06 February 2026) and Electricity Mid-Year Update 2026 (23 July 2026 launch/update).
+- U.S. EIA, Levelized Costs of New Generation Resources in AEO2026 (08 April 2026).
+- Executed deterministic unit conversion for global-demand scale.
+
+SOURCE/EVIDENCE:
+- [SOURCE_FACT] IRENA 2026 reports 2025 global weighted-average LCOE: onshore wind USD 33/MWh, utility-scale solar PV USD 44/MWh, hydropower USD 62/MWh, offshore wind USD 78/MWh, geothermal USD 89/MWh, bioenergy USD 86/MWh, CSP USD 115/MWh.
+  SOURCE: International Renewable Energy Agency, "Renewable power generation costs in 2025", July 2026.
+  URL: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+- [SOURCE_FACT] IRENA explicitly treats LCOE as plant/busbar-level and notes it omits beyond-plant transmission/distribution and can miss curtailment/system effects.
+  SOURCE: IRENA renewable generation cost methodology / 2024 digital report, used as methodological corroboration.
+  URL: https://www.irena.org/Digital-Report/Renewable-Power-Generation-Costs-in-2024
+- [SOURCE_FACT] IEA Electricity 2026 (February 2026) reported 2025 global electricity demand around 28,200 TWh and projected 33,600 TWh in 2030.
+  URL: https://www.iea.org/reports/electricity-2026/demand
+- [SOURCE_FACT] Later IEA Electricity Mid-Year Update 2026 revised/updated the 2025 global electricity consumption baseline to 28,600 TWh and forecast 30,700 TWh in 2027.
+  URL: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+- [SOURCE_FACT] EIA AEO2026 states LCOE/LACE/LCOS are simplified metrics and real/modelled build decisions also depend on policy, technology, geography and other characteristics not captured in one metric.
+  URL: https://www.eia.gov/outlooks/aeo/electricity_generation/
+
+TOOL_EVIDENCE_ID: TE-EGC-001-001
+TOOL_OR_METHOD: Authoritative web retrieval / IRENA
+PURPOSE: Establish current low-cost generation reference envelope.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IRENA 2026 report page.
+PARAMETERS: 2025 commissioned utility-scale projects; global weighted averages.
+VERSION_OR_MODEL: IRENA 2026 / 2025 cost vintage.
+SOURCE_OR_DATASET: Renewable power generation costs in 2025.
+SOURCE_DATE: 2026-07
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+COMMAND_CODE_EQUATION_OR_METHOD: Direct source extraction.
+RAW_OR_KEY_OUTPUT: onshore 33; PV 44; hydro 62; offshore 78; geothermal 89; bioenergy 86; CSP 115.
+UNITS: USD/MWh.
+UNCERTAINTY: Geographic/project dispersion not collapsed into these global weighted averages; candidate comparison still requires regional/system normalization.
+ASSUMPTIONS: NONE for extracted values.
+LIMITATIONS: Generation LCOE is not full-system delivered cost.
+REPRODUCIBILITY_INSTRUCTIONS: Open source URL; verify executive summary values and methodology.
+INDEPENDENT_REPLICATION: PENDING.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Current mature generation includes multiple technologies in approximately USD 33-62/MWh global-average range.
+CLAIM_NOT_SUPPORTED: Full-system firm delivered electricity costs are NOT established by this evidence.
+
+TOOL_EVIDENCE_ID: TE-EGC-001-002
+TOOL_OR_METHOD: Authoritative web retrieval / IEA
+PURPOSE: Anchor MASSIVE_ENERGY to a current global electricity scale.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA Electricity Mid-Year Update 2026.
+PARAMETERS: 2025 global electricity consumption.
+VERSION_OR_MODEL: July 2026 update.
+SOURCE_OR_DATASET: Electricity Mid-Year Update 2026.
+SOURCE_DATE: 2026-07
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+COMMAND_CODE_EQUATION_OR_METHOD: Direct source extraction.
+RAW_OR_KEY_OUTPUT: 28,600 TWh global electricity consumption in 2025.
+UNITS: TWh/year.
+UNCERTAINTY: IEA data revisions possible; earlier February report gave 28,200 TWh.
+ASSUMPTIONS: Latest 2026 update supersedes older same-year estimate for mission baseline.
+LIMITATIONS: Electricity only; does not represent all primary/final energy.
+REPRODUCIBILITY_INSTRUCTIONS: Open IEA update and inspect executive-summary demand statement.
+INDEPENDENT_REPLICATION: PENDING.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: 2025 global electricity scale is approximately 28,600 TWh/year in the latest retrieved IEA update.
+CLAIM_NOT_SUPPORTED: No claim that 10% is a scientifically mandated definition of "massive".
+
+TOOL_EVIDENCE_ID: CALC-EGC-001-001
+TOOL_OR_METHOD: Python deterministic calculation
+PURPOSE: Convert the proposed 10% global-demand scale into annual energy and continuous-average power.
+EXECUTION_DATE: 2026-10-05
+INPUTS: D_2025 = 28,600 TWh/year.
+PARAMETERS: f = 0.10; hours/year = 8,760.
+VERSION_OR_MODEL: Python arithmetic; no stochastic model.
+SOURCE_OR_DATASET: TE-EGC-001-002.
+SOURCE_DATE: 2026-07.
+SOURCE_URL_DOI_OR_IDENTIFIER: IEA URL above.
+COMMAND_CODE_EQUATION_OR_METHOD:
+  E_massive = 0.10 * 28,600 = 2,860 TWh/year.
+  P_avg = 2,860 TWh/year * 1000 GWh/TWh / 8,760 h/year = 326.484 GW.
+  E_1TW = 1,000 GW * 8,760 h/year / 1000 = 8,760 TWh/year.
+  share_1TW = 8,760 / 28,600 = 0.30629 = 30.629%.
+RAW_OR_KEY_OUTPUT: 2,860 TWh/year; 326.484 GW average; 1 TW average = 8,760 TWh/year = 30.629% of 2025 baseline.
+UNITS: TWh/year, GW average, percent.
+UNCERTAINTY: Dominated by source-demand revision, not arithmetic.
+ASSUMPTIONS: 8,760 h/year; annual-average conversion.
+LIMITATIONS: Does not encode temporal load shape, reliability or geography.
+REPRODUCIBILITY_INSTRUCTIONS: Recompute equations above with any calculator.
+INDEPENDENT_REPLICATION: NOT_YET_INDEPENDENTLY_REPLICATED; same-session arithmetic only.
+EVIDENCE_CLASS: CALCULATION.
+CLAIM_SUPPORTED: Scale conversion only.
+CLAIM_NOT_SUPPORTED: Deployment feasibility at this scale.
+
+CONFLICT_ID: CONFLICT-EGC-001-001
+TYPE: SOURCE_VINTAGE_REVISION
+CLAIM: 2025 world electricity consumption baseline.
+SOURCE_A: IEA Electricity 2026, February 2026 -> 28,200 TWh.
+SOURCE_B: IEA Electricity Mid-Year Update 2026, July 2026 -> 28,600 TWh.
+ARBITRATION: Later IEA update is fresher and explicitly updates 2025 data; adopt 28,600 TWh for current mission baseline while preserving Source A as superseded evidence.
+STATUS: RESOLVED_FOR_CURRENT_BASELINE; future official revisions can reopen.
+
+WORK:
+- Defined the objective as a two-stage cost gate plus a net-delivered scale gate.
+- Kept source facts separate from normative mission thresholds.
+- Refused to use plant-level LCOE as proof of delivered-system cost.
+- Applied newest same-source vintage for global electricity demand after explicit conflict check.
+
+PROPOSED_FROZEN_OBJECTIVE_V0_1:
+1. SERVICE: Net AC electricity delivered at the defined high-voltage system boundary. Energy counted toward MASSIVE_ENERGY must be net of internal parasitic consumption, storage round-trip losses used by the architecture, modeled curtailment, and modeled transmission losses inside the declared boundary.
+2. CURRENCY_NORMALIZATION: Report real USD with base year explicit. Initial evidence is 2025-vintage USD where reported; final comparison must normalize all candidates to one real-dollar base and consistent financing assumptions before PASS.
+3. LOW_COST_GENERATION_SCREEN [ASSUMPTION / MISSION_CRITERION]: central plant-level LCOE <= USD 65/MWh after normalization. Rationale: this brackets the current global weighted-average low-cost mature set evidenced by IRENA (wind 33, PV 44, hydro 62) without pretending the threshold itself is a natural constant.
+4. LOW_COST_FINAL [ASSUMPTION / MISSION_CRITERION]: full-system delivered cost must be <= the strongest VERIFIED existing baseline cost for the SAME service, geography class, reliability criterion, financing basis and system boundary. A claim of MATERIAL COST IMPROVEMENT requires median delivered cost <= 0.90 * that verified baseline. The 10% margin is a frozen mission convention, not an external fact.
+5. MASSIVE_ENERGY_MIN [ASSUMPTION / MISSION_CRITERION]: credible net-delivered scalability to at least 10% of the latest retrieved 2025 world electricity consumption baseline = 2,860 TWh/year = 326.484 GW continuous-average equivalent.
+6. MASSIVE_ENERGY_STRETCH [ASSUMPTION / MISSION_CRITERION]: 1.000 TW continuous-average net delivery = 8,760 TWh/year, approximately 30.629% of the 2025 baseline.
+7. NO_THRESHOLD_GAMING: these formulas/thresholds may not be loosened because a favored candidate misses them. A future authoritative source revision may update source-normalized numerical anchors only through an explicit correction/conflict event, not silent editing.
+8. FINAL_COST_BOUNDARY: plant LCOE alone can only pass the preliminary generation screen. Final PASS requires generation + storage + firming + incremental grid/transmission + curtailment + replacement + maintenance + financing + decommissioning/waste + other candidate-specific system costs defined by JOB-EGC-004/JOB-EGC-015.
+9. OPTIMIZATION_METRICS_WITHOUT_YET_FIXED_UNIVERSAL_CUTOFFS: CAPEX, OPEX, capacity factor, efficiency, EROI, lifetime, land/volume, construction time, material throughput, storage requirement, grid requirement, supply-chain requirement, safety, environment and regulation remain mandatory reported dimensions. Candidate-specific feasibility limits must be evidence-derived in their jobs rather than guessed here.
+
+RESULT:
+- FACT: Current retrieved IRENA 2025-vintage generation costs place global weighted-average onshore wind/PV/hydro at approximately USD 33/44/62 per MWh.
+- FACT: Latest retrieved IEA mid-year 2026 update gives 2025 global electricity consumption of 28,600 TWh.
+- CALCULATION: 10% of that baseline is 2,860 TWh/year = 326.484 GW average.
+- INFERENCE: A 10%-of-global-demand threshold is large enough to exclude merely niche sources while still allowing portfolio/system solutions.
+- ASSUMPTION: USD 65/MWh generation screen; 10% global-demand definition; 10% cost-improvement margin.
+- UNKNOWN: Exact normalized full-system baseline cost C_best; common reliability/load-service definition; consistent financing/inflation basis; EROI minimum; deployment-rate threshold.
+- CONFLICT: February-vs-July IEA 2026 estimate resolved in favor of later update for current baseline.
+- FALSIFIED: "Lowest plant LCOE alone proves the cheapest delivered system" is rejected as an invalid inference.
+
+RED_TEAM_CHECK:
+- strongest attack attempted: A candidate can appear cheap by excluding transmission/storage/curtailment and by exploiting a favorable geography.
+- outcome: generation LCOE is restricted to a preliminary screen; final cost gate explicitly requires same-service/system-boundary comparison and geography/reliability normalization.
+
+STATUS_CHANGE:
+- JOB-EGC-001: CLAIMED -> EXECUTING (substantial evidence produced, but independent review and system-boundary coupling remain open).
+- GLOBAL_SOLVED: NO -> NO.
+- CURRENT_WINNER: NONE -> NONE.
+- justification: thresholds are proposed and source-anchored but not independently reviewed; several material definitions remain open.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-EGC-001-A <- TE-EGC-001-001 <- IRENA 2026.
+- CLAIM-EGC-001-B <- TE-EGC-001-002 <- IEA July 2026 update.
+- CLAIM-EGC-001-C <- CALC-EGC-001-001 <- CLAIM-EGC-001-B.
+- CLAIM-EGC-001-D (LCOE insufficient for final system-cost proof) <- IRENA methodology + EIA AEO2026.
+- CLAIM-EGC-001-E (objective threshold package V0.1) <- CLAIM-EGC-001-A/B/C/D + explicit ASSUMPTION labels.
+- CLAIM-EGC-001-E -> G1, G5, G6, G17.
+- CLAIM-EGC-001-E STATUS: OPEN / NOT_VERIFIED pending independent review and JOB-EGC-004 common-boundary work.
+
+NEXT_ACTION:
+- Highest-value next work inside JOB-EGC-001: lock the common delivered-service/reliability definition needed by LOW_COST_FINAL without hiding grid/storage costs, then submit objective package to an independent reviewer.
+- After JOB-EGC-001 is review-ready, unlock baseline jobs only according to dependency rules.
+
+WRITE_INTEGRITY:
+- branch head read before write: dd09d0f6d4ef0bbe542c0d00d802a73149610dd8
+- file SHA read before write: 52c5454dc45cbdd8b6c123356d53c3d787c8d7d7
+- stale-write check: re-fetch immediately before mutation; update_file SHA lease must also pass.
+- commit/result: populated by GitHub mutation below if successful.
