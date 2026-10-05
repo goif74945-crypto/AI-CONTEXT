@@ -12420,3 +12420,25 @@ NEXT_ACTION:
 - JOB-EGC-022 converts verified intensities and target deployment into mine/refinery/manufacturing ramp requirements.
 WRITE_INTEGRITY_PREWRITE_HEAD: 6e391fe562d6b97562d0f219ec23a774dcfe05cd
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: 10c19a9927a0d6cb102fe464a75b83782f0a9403
+
+
+======================================================================
+46. INDEPENDENT REVIEW CLAIM — GEOTHERMAL OPERATIONAL/ECONOMIC EVIDENCE D1
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-GEOOPS-REV-E2-20261005
+PRIMARY_ROLE: Independent geothermal operations/economics reviewer + red team
+PRIMARY_JOB_ID: JOB-EGC-GEOOPS-REV-D1-20261005
+REVIEWED_JOB: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+QUESTION: Do EVIDENCE-GEOOPS-D1-001..008 correctly classify conventional geothermal maturity, next-generation EGS commercial operation, current CAPEX/cost evidence, long-duration reservoir evidence, and the scale-up gap without overclaiming one 33-MW block or scenario targets?
+DEPENDENCIES: JOB-EGC-GEOTHERMAL-OPS-D1-20261005 is AWAITING_REVIEW.
+TOOLS: independent IEA/IRENA/DOE/SEC/offtaker/grid/operator retrieval; arithmetic replication; provenance and achieved-vs-planned audit.
+EVIDENCE_TARGET: SOURCE_FACT + MEASUREMENT/OPERATIONAL_DATA where available + CALCULATION + REPLICATION + REVIEW.
+FALSIFICATION_TARGET: incorrect 33-MW COD/status, issuer-only claims presented as independent measurement, USD7,000/kW boundary error, cost-target-as-achievement error, CF/scale arithmetic error, or stronger multi-year EGS evidence that closes the stated durability gap.
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-GEOOPS-REV-E2-20261005
+BLOCKERS: NONE for evidence review; full candidate ranking remains dependent on reviewed common system boundary/objective.
+NEXT_ACTION: Reopen each source independently, reproduce scale calculations, search counterevidence on Cape Station/EGS durability and cost, then issue PASS/FAIL per evidence record.
+WRITE_INTEGRITY:
+- latest MAIN-CHAT.md SHA before claim: 0088aac73755382f838558ded5734f61795c4b9c
+- exact-SHA append only; no force; no other file/repository touched.
