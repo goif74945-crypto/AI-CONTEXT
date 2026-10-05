@@ -1,0 +1,61 @@
+{
+  "RESULT_ID": "REQ-837-T04-STRUCTURAL-HISTORICAL-BATCH-C-SOL-A4C7",
+  "TASK_ID": "TASK-CLOSURE-837-AUTHORITY-RECLASSIFICATION-001",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CLASSIFICATION": "HISTORICAL_PRE_FINAL__NOT_DIRECT_FINAL_DOC_C_AUTHORITY",
+  "ROW_GROUPS": [
+    {
+      "rows": "REQ-0135..REQ-0148",
+      "count": 14,
+      "subject": "historical allowed module dependency shape"
+    },
+    {
+      "rows": "REQ-0149..REQ-0155",
+      "count": 7,
+      "subject": "historical forbidden dependency shape"
+    },
+    {
+      "rows": "REQ-0538..REQ-0549",
+      "count": 12,
+      "subject": "historical required test suites"
+    },
+    {
+      "rows": "REQ-0550..REQ-0561",
+      "count": 12,
+      "subject": "historical test gates and merge policy"
+    },
+    {
+      "rows": "REQ-0683..REQ-0740",
+      "count": 58,
+      "subject": "historical repository structure"
+    },
+    {
+      "rows": "REQ-0741..REQ-0750",
+      "count": 10,
+      "subject": "historical locked build phases"
+    },
+    {
+      "rows": "REQ-0751..REQ-0755",
+      "count": 5,
+      "subject": "historical forbidden build order"
+    },
+    {
+      "rows": "REQ-0756..REQ-0771",
+      "count": 16,
+      "subject": "historical pre-FINAL build-readiness/final-system-law block"
+    }
+  ],
+  "COUNTS": {
+    "rows_reviewed": 134,
+    "direct_final_doc_c_rows": 0,
+    "preserved_trace_rows": 134
+  },
+  "AUTHORITY_BASIS": [
+    "FINAL VERDICT makes the later locked DOC-C the build specification.",
+    "Primary final DOC-C ends at §5.6 and contains no locked repository-structure, module-dependency, test-gate, or build-order section.",
+    "Existing primary mission revalidation already marks historical dependency/test/build-order semantics not primary verified."
+  ],
+  "RULE": "These rows remain traceable engineering history. They may still describe useful implementation choices or hardening, but they cannot be counted as direct active DOC-C obligations without a separate primary binding.",
+  "SOURCE_MUTATION": "NONE",
+  "NEXT": "Continue T04 semantic rebinding for capability/runtime/auth/storage/queue/UI rows where final DOC-C may partially restate the older requirement."
+}
