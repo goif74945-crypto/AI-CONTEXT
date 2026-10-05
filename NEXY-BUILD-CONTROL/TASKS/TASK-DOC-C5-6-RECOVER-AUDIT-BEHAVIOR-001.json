@@ -1,0 +1,43 @@
+{
+  "TASK_ID": "TASK-DOC-C5-6-RECOVER-AUDIT-BEHAVIOR-001",
+  "REQ_ID": "REQ-DOC-C-5-6-INCIDENT-LAW",
+  "MISSION_ID": "M03-RUNTIME-INTEGRITY",
+  "FINDING_ID": "FINDING-DOC-C5-6-RECOVER-AUDIT-BEHAVIOR-TEST-GAP-001",
+  "GOAL": "Add behavioral exact-SHA verification that successful canonical recovery emits required AuditLog and EventLog evidence atomically and fails closed if required evidence persistence fails.",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_AUDITABILITY_VERIFICATION",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "SCOPE": [
+    "tests/integration/freeze/recover.spec.ts",
+    "tests/contract/freeze-recovery-audit.test.ts only if static oracle is reduced/retained as supplemental",
+    "packages/api/directives.ts only if behavioral test exposes an actual runtime defect"
+  ],
+  "REQUIRED_BEHAVIOR": [
+    "Successful non-replay recovery behaviorally emits AuditLog and EventLog evidence required by DOC-C §5.6.",
+    "Evidence includes incident_id, request_id, trace_id and successful recovery identity.",
+    "Required evidence is inside the same transactional recovery boundary.",
+    "Audit/Event persistence failure prevents successful recovery.",
+    "Idempotent replay does not fabricate a second transition or duplicate evidence unless active authority explicitly requires it."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not count source-text/literal presence alone as behavioral proof.",
+    "Do not invent additional canonical event names beyond active source/authority.",
+    "Do not weaken transaction rollback/fail-closed semantics.",
+    "Do not mutate NEXY.ai or direct integration head while worker isolation remains blocked."
+  ],
+  "ACCEPTANCE": [
+    "Behavioral test asserts eventLog.create and auditLog.create calls for successful recovery.",
+    "Test verifies required correlation and success identity.",
+    "Negative test forces audit persistence failure and proves no successful recovery response/state commit.",
+    "Negative test forces event persistence failure and proves no successful recovery response/state commit.",
+    "Mutation/equivalent proof catches removal of either required evidence write.",
+    "Independent exact-SHA review follows integration."
+  ],
+  "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker branch namespace or explicitly authorizes an equivalent isolation mechanism."
+}
