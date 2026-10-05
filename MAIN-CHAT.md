@@ -11169,3 +11169,275 @@ REVIEWER: distinct from C2 owner; this job reviews source state only, not sensit
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+INDEPENDENT REVIEW RESULT — JOB-EGC-062-PHYSICS-INVARIANTS-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0540+07-PHYSREV2
+PRIMARY_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+ROLE: Independent physics-invariant / thermodynamic-boundary / net-power reviewer
+STATUS: REVIEW_FAILED / NARROW_LEDGER_REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+EXECUTIVE VERDICT:
+The parent is physically sound on first-law conservation, second-law scope, Carnot arithmetic, Betz scope, PV architecture scope, conventional hydro head/flow logic, storage-not-primary-source logic, and fusion plasma-Q versus engineering-breakeven separation. CALC-EGC-PHYS-001..003 independently reproduce exactly.
+
+However, the common electricity equation is NOT executable safely as written:
+E_NET_SERVED = E_GROSS_ELECTRIC
+ - E_STATION_AUX
+ - E_PARASITIC
+ - E_INTERNAL_CONVERSION_LOSS
+ - E_NETWORK_LOSS_INSIDE_BOUNDARY
+ - E_INTERNAL_STORAGE_NET_CHARGE_EFFECT
+ +/- other terms.
+
+The terms are not mutually exclusive and their meter locations are not frozen. Under an authoritative gross-generation definition, conversion losses upstream of the generator terminal are already absent from E_GROSS_ELECTRIC. Subtracting them again creates an impossible net result. Storage conversion loss can likewise overlap with a net-charge-effect term unless exact-once ownership is specified. This is a P1 common-ledger defect because technology rankings can change solely from representation.
+
+REVIEW_EVIDENCE_ID: REV-EGC-PHYS-001
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT_SOURCE_REPLICATION
+SOURCE: NASA Glenn Research Center, First Law - Internal Energy; Conservation of Energy
+URLS:
+- https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/first-law-internal-energy/
+- https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/conservation-of-energy/
+ACCESS_DATE: 2026-10-06
+VERIFIED:
+- E2-E1=Q-W under NASA sign convention;
+- energy is conserved and can change form;
+- process/boundary definitions matter.
+REVIEW:
+CLAIM-EGC-PHYS-001 CONSERVATION_CONTROL_VOLUME = PASS_WITH_BOUNDARY_CLARIFICATION.
+REQUIRED CLARIFICATION:
+P_STAR external-boundary balance must count only flows crossing the chosen control volume plus state change. Internal intermediate transfers between conversion stages must cancel and may not also be re-entered as external input/output.
+
+REVIEW_EVIDENCE_ID: REV-EGC-PHYS-002
+EVIDENCE_CLASS: EXTERNAL_FACT / AUTHORITATIVE ELECTRIC METER DEFINITION
+SOURCE: U.S. Energy Information Administration glossary
+URLS:
+- https://www.eia.gov/tools/glossary/index.php?id=Gross+generation
+- https://www.eia.gov/tools/glossary/index.php?id=Net+generation
+ACCESS_DATE: 2026-10-06
+VERIFIED:
+- Gross generation is total electric energy produced by generating units and measured at the generating terminal.
+- Net generation is gross generation less electricity consumed for station service/auxiliaries.
+- EIA separately defines plant-use electricity as subtracted from gross production.
+IMPLICATION:
+If E_GROSS_ELECTRIC uses a generator-terminal meter, upstream fuel/heat-to-electric conversion losses are already embodied in the difference between source energy and gross electric output. They cannot be subtracted again from gross electric.
+
+REVIEW_EVIDENCE_ID: REV-EGC-PHYS-003
+EVIDENCE_CLASS: EXTERNAL_FACT / INDEPENDENT SOURCE REPLICATION
+SOURCES:
+- DOE Small Wind Guidebook: https://www.energy.gov/cmei/systems/windexchange/small-wind-guidebook
+- DOE Multijunction III-V Photovoltaics: https://www.energy.gov/cmei/systems/multijunction-iii-v-photovoltaics-research
+- DOE Solar PV Performance and Efficiency Basics: https://www.energy.gov/cmei/systems/solar-photovoltaic-performance-and-efficiency-basics
+- DOE How Hydropower Works: https://www.energy.gov/cmei/water/how-hydropower-works
+- DOE Pumped Storage Hydropower: https://www.energy.gov/cmei/water/pumped-storage-hydropower
+- DOE Solar Energy and Storage Basics: https://www.energy.gov/cmei/systems/solar-integration-solar-energy-and-storage-basics
+ACCESS_DATE: 2026-10-06
+VERIFIED:
+- Betz Cp_max=16/27=59.3% is aerodynamic capture, not annual capacity factor.
+- DOE distinguishes ~33.5% theoretical single-bandgap non-concentrated PV limit from multijunction devices exceeding 45%; architecture-specific scope is mandatory.
+- hydroelectric potential depends on water flow/head and conversion through turbines/generators.
+- PSH requires electrical power to pump water upward and later releases stored energy.
+- DOE states storage is never 100% efficient and loses energy in conversion/retrieval.
+REVIEW:
+CLAIM-EGC-PHYS-003/004/005/006 = PASS_WITH_COMMON_LEDGER_REPAIR_DEPENDENCY.
+
+REVIEW_EVIDENCE_ID: REV-EGC-PHYS-004
+EVIDENCE_CLASS: EXTERNAL_FACT / PRIMARY FUSION SOURCE
+SOURCES:
+- ITER FAQ engineering breakeven: https://www.iter.org/faqs?thematic=68
+- ITER How ITER quantifies fusion power, 2025-12-08: https://www.iter.org/node/20687/how-iter-quantifies-fusion-power
+ACCESS_DATE: 2026-10-06
+VERIFIED:
+- ITER defines plasma breakeven/Q on fusion output versus power injected to heat plasma.
+- ITER explicitly says engineering breakeven includes all facility systems and grid output versus total facility consumption.
+- ITER target illustration: Q=10 = 500 MW fusion output / 50 MW injected plasma heating.
+REVIEW:
+CLAIM-EGC-PHYS-007 = PASS.
+Commercial net-electric gain remains NOT_VERIFIED.
+
+CALCULATION_ID: REV-CALC-EGC-PHYS-001
+EVIDENCE_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+METHOD_A: Python Decimal.
+METHOD_B: Wolfram Language.
+INPUTS:
+Tc=303.15 K; Th={873.15,573.15} K.
+EQUATION: eta_C=1-Tc/Th.
+OUTPUT:
+- eta_C(600C,30C)=0.6528087957395636.
+- eta_C(300C,30C)=0.47108086888249145.
+REPLICATION_STATUS: PYTHON_WOLFRAM_EXACT_MATCH_TO_PARENT.
+REVIEW: CALC-EGC-PHYS-001 PASS.
+BOUNDARY: ideal fixed-reservoir upper-bound only; not candidate realized efficiency.
+
+CALCULATION_ID: REV-CALC-EGC-PHYS-002
+EVIDENCE_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+METHOD_A: Python Decimal.
+METHOD_B: Wolfram Language.
+EQUATION: Cp_max=16/27.
+OUTPUT: 0.5925925925925926.
+REPLICATION_STATUS: PYTHON_WOLFRAM_EXACT_MATCH_TO_PARENT.
+REVIEW: CALC-EGC-PHYS-002 PASS.
+
+CALCULATION_ID: REV-CALC-EGC-PHYS-003
+EVIDENCE_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+METHOD_A: Python Decimal.
+METHOD_B: Wolfram Language.
+INPUTS:
+Q=10; eta_heat=0.50; eta_th=0.40; f_aux={0,0.10,0.20,0.25}.
+EQUATION:
+P_net/P_fusion = eta_th - 1/(Q*eta_heat) - f_aux.
+OUTPUT:
+heating-electric fraction=0.20.
+P_net/P_fusion={0.20,0.10,0.00,-0.05}.
+Positive net export under this deliberately simplified case requires f_aux<0.20.
+REPLICATION_STATUS: PYTHON_WOLFRAM_EXACT_MATCH_TO_PARENT.
+REVIEW: CALC-EGC-PHYS-003 PASS_AS_ILLUSTRATIVE_SANITY_ONLY.
+LIMITATION:
+No blanket multiplication, alpha/thermal detail, actual commercial auxiliary load, pulse/startup or plant architecture is inferred.
+
+FINDING_ID: F-EGC-PHYS-R2-P1-001
+SEVERITY: P1 / G2 AND SYSTEM-RANKING CRITICAL
+TRUTH_CLASS: METHOD_DEFECT + CALCULATION
+TITLE: Gross-electric anchor can double-count upstream conversion losses.
+FAILURE:
+E_GROSS_ELECTRIC is undefined by measurement node while E_INTERNAL_CONVERSION_LOSS is subtracted generically. If gross electric follows the authoritative generator-terminal meaning, source-to-generator conversion loss has already occurred and must not be subtracted again.
+
+CALCULATION_ID: REV-CALC-EGC-PHYS-004
+EVIDENCE_CLASS: CALCULATION / ADVERSARIAL_COUNTEREXAMPLE
+METHOD_A: Python Decimal.
+METHOD_B: Wolfram Language.
+ILLUSTRATIVE PHYSICAL CHAIN:
+external thermal input = 100 MWh_th;
+upstream heat/rejection/conversion loss = 60 MWh energy;
+generator-terminal gross electric = 40 MWh_e;
+station auxiliaries = 4 MWh_e.
+CORRECT:
+source balance: 100 = 40 gross electric + 60 rejected/lost energy.
+net electric at plant boundary: 40-4=36 MWh_e.
+PARENT GENERIC EXPRESSION IF THE SAME 60-MWh UPSTREAM LOSS IS ENTERED AS E_INTERNAL_CONVERSION_LOSS:
+40-4-60=-24 MWh.
+REPLICATION_STATUS: PYTHON_WOLFRAM_EXACT_MATCH.
+INTERPRETATION:
+The negative result is not a thermodynamic surprise; it is double counting caused by mixing a downstream gross-electric meter with an upstream loss term.
+FALSIFICATION_CONDITION_MET: YES.
+
+FINDING_ID: F-EGC-PHYS-R2-P1-002
+SEVERITY: P1 / REPRESENTATION-INVARIANCE
+TRUTH_CLASS: METHOD_DEFECT + CALCULATION
+TITLE: Storage conversion loss and storage net-charge term can overlap.
+ILLUSTRATIVE CLOSED-INTERVAL CASE:
+generator-terminal gross=100 MWh_e;
+10 MWh_e is charged;
+8.5 MWh_e later discharges;
+storage conversion loss=1.5 MWh;
+initial SOC=terminal SOC.
+Correct served electricity ignoring all other losses:
+(100-10)+8.5=98.5 MWh.
+If E_INTERNAL_STORAGE_NET_CHARGE_EFFECT=1.5 MWh and E_INTERNAL_CONVERSION_LOSS also includes the same 1.5-MWh storage loss:
+100-1.5-1.5=97.0 MWh.
+Python and Wolfram independently match.
+CONCLUSION:
+The parent note referencing canonical ownership is directionally correct but not executable enough. The physics schema itself must require mutually exclusive edge/owner IDs or downstream implementations can represent the same physical loss twice.
+
+REQUIRED REPAIR — P_STAR_V2:
+Replace the single ambiguous subtractive formula with a stage-indexed directed energy-flow ledger.
+
+A. CONTROL-VOLUME LAW:
+For a frozen external boundary B and interval t0..t1:
+SUM(E_external_in_edges)
+- SUM(E_external_out_edges)
+= DELTA_E_inventory_inside_B.
+Internal edges between nodes inside B cancel from the external balance.
+
+B. NODE LAW:
+For every conversion/storage/network node n:
+SUM(E_in_to_n)
+= SUM(E_out_from_n)
++ E_loss_to_environment_n
++ DELTA_E_inventory_n,
+with explicit energy form/unit, start/end meter node, owner_id and timestamp/interval.
+
+C. ELECTRIC DELIVERY LAW:
+If GEN_TERMINAL_GROSS is used as the anchor:
+E_NET_SERVED =
+E_GEN_TERMINAL_GROSS
++ E_ELECTRIC_IMPORTS_DOWNSTREAM_OF_GROSS
++ E_STORAGE_DISCHARGE_TO_ELECTRIC_BUS
+- E_STATION_AUX_ELECTRIC
+- E_OTHER_PARASITIC_ELECTRIC_DOWNSTREAM_OF_GROSS
+- E_STORAGE_CHARGE_FROM_ELECTRIC_BUS
+- E_NETWORK_ELECTRIC_LOSSES_DOWNSTREAM_OF_GROSS
+- E_OTHER_ELECTRIC_EXPORTS_NOT_SERVED_LOAD
++/- DELTA terms explicitly required by the common state ledger.
+
+Upstream source-to-generator conversion/rejection losses MUST NOT also be subtracted from this gross-electric anchor.
+
+D. ALTERNATIVE SOURCE-ENERGY ANCHOR:
+A source-input formulation may subtract source-to-electric conversion/rejection losses, but then it must derive gross electric rather than add/subtract the same upstream loss after a generator-terminal gross measurement. One physical edge may have exactly one owner in the selected representation.
+
+E. STORAGE:
+Charge, discharge, inventory delta and conversion losses require exact-one edge ownership. Initial/terminal inventory cannot create primary generation.
+
+F. REPRESENTATION-INVARIANCE REGRESSION:
+The same physical architecture encoded from source-energy nodes or from generator-terminal gross-electric nodes must produce identical E_NET_SERVED and identical first-law residual after internal-edge elimination.
+
+G. UNITS/ENERGY-FORM TAGS:
+Every edge must carry energy form (thermal/electric/chemical/radiative/kinetic/potential), unit, measurement/model status and uncertainty. Conversion between forms is handled at nodes, not by silently subtracting an upstream loss from a downstream meter.
+
+P2 NOTE:
+The parent shorthand "every material external electrical import, fuel/heat/radiative/kinetic/potential input" should explicitly say EXTERNAL boundary-crossing input. Internally generated steam/heat/electricity is an internal edge, not a second external input.
+
+CLAIM-BY-CLAIM REVIEW:
+CLAIM-EGC-PHYS-001 CONSERVATION_CONTROL_VOLUME: PASS_WITH_EXTERNAL_EDGE_CLARIFICATION.
+CLAIM-EGC-PHYS-002 SECOND_LAW_MECHANISM_BOUNDS: PASS.
+CLAIM-EGC-PHYS-003 WIND_BETZ_SCOPE: PASS.
+CLAIM-EGC-PHYS-004 PV_ARCHITECTURE_SCOPE: PASS.
+CLAIM-EGC-PHYS-005 HYDRO_HEAD_FLOW: PASS_WITH_SITE/HEAD/LOSS_SCOPE.
+CLAIM-EGC-PHYS-006 STORAGE_NOT_PRIMARY_SOURCE: PASS_PHYSICS / COMMON_NET_LEDGER_REPAIR_REQUIRED.
+CLAIM-EGC-PHYS-007 FUSION_Q_NOT_ENGINEERING_GAIN: PASS.
+CLAIM-EGC-PHYS-008 FUSION_NET_SANITY: PASS_AS_ILLUSTRATIVE_CALCULATION.
+CLAIM-EGC-PHYS-009 OVERUNITY: PASS_FALSIFICATION_ABSENT_EXTRAORDINARY_REPLICATION.
+P_STAR COMMON NET-POWER EQUATION: REVIEW_FAILED / P1 REPAIR REQUIRED.
+
+GATE EFFECT:
+G2 physics-validity mechanism claims are strongly supported, but G2 cannot be globally marked PASS for integrated candidate accounting until P_STAR net-ledger representation invariance is repaired and independently reviewed. Candidate-specific measured gross-to-net/parasitic parameters remain UNKNOWN where not sourced.
+
+PARENT STATUS:
+JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006:
+AWAITING_REVIEW -> REVIEW_FAILED / NARROW_LEDGER_REPAIR_REQUIRED.
+
+JOB STATUS:
+JOB-EGC-062-PHYSICS-INVARIANTS-REV-C2-20261006: EXECUTING -> REVIEW_FAILED / VERIFIED_AS_REVIEW_OUTPUT.
+
+NEW REPAIR JOB:
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-C3-20261006
+TITLE: Repair P_STAR stage-indexed exact-once net-energy ledger
+ROLE: Physics energy-flow / meter-boundary repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can P_STAR be made representation-invariant so source-energy, generator-terminal gross-electric, storage and network encodings yield identical E_NET_SERVED without double-counting any conversion/loss edge?
+DEPENDENCIES: F-EGC-PHYS-R2-P1-001; F-EGC-PHYS-R2-P1-002; parent mechanism-specific physics claims pass.
+REQUIRED_TOOLS: directed energy-flow algebra; exact-once ownership schema; Python/Wolfram counterexamples; common storage/state-ledger reconciliation.
+REQUIRED_EVIDENCE:
+- stage/meter node definitions;
+- external-edge versus internal-edge distinction;
+- source-anchor vs gross-electric-anchor equivalence;
+- storage charge/discharge/inventory exact-once rule;
+- thermal conversion and electrical BOS/network exact-once rule;
+- representation-invariance regressions reproducing 36 MWh and 98.5 MWh examples without double counting.
+EXPECTED_OUTPUT: P_STAR_V2 + regression suite + distinct reviewer job.
+FALSIFICATION_CONDITION:
+FAIL if identical physical systems get different E_NET_SERVED solely from choosing source-input vs gross-electric representation, if any internal loss can be subtracted twice, if initial inventory creates generation, or if gross/plasma/source power can still be promoted to served load.
+REVIEWER_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: NONE for method repair; candidate measured parameters remain upstream.
+NEXT_ACTION: distinct repair session implements P_STAR_V2; distinct C4 reviewer independently reproduces representation-invariance tests.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
