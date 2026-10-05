@@ -449,3 +449,39 @@ SELF_VERIFICATION: FORBIDDEN
 NEXT_ACTION: Reconstruct authoritative objective semantics and source basis, test counterexamples, then PASS/FAIL/REPAIR DEPLOY-CLOCK-V0.1.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+53. JOB-EGC-016 VALIDATION-LAYER REPAIR CLAIM — MV1
+======================================================================
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-SIM016-REPAIR-MV1-20261005
+PRIMARY_ROLE: Simulation Validation Protocol Repair Engineer
+PRIMARY_JOB_ID: JOB-EGC-016-VALIDATION-REPAIR-MV1-20261005
+QUESTION: Convert REVIEW-EGC-028 P1-MV-001..007 into mandatory executable validation rules for JOB-EGC-016 so no candidate model can claim G16 via calibration leakage, unsupported extrapolation, arbitrary tolerance, stochastic numerical convergence alone, or component-only validation.
+DEPENDENCIES: Section 52 independent review verdict present; satisfied.
+TOOLS: NERC model-validation definitions/MOD-033 rationale; PNNL measurement-validation examples; EIA retrospective guidance; IEA planning/model-calibration guidance; deterministic counterexamples; repository protocol reconciliation.
+EVIDENCE_TARGET: REPAIR / SOURCE_FACT / CALCULATION / VALIDATION_PROTOCOL.
+FALSIFICATION_TARGET: any remaining path to reuse validation data for tuning without invalidation; universal arbitrary tolerance; failure to propagate measurement/input uncertainty; Monte Carlo convergence mistaken for physical validation; full-system validation claimed from component evidence.
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-SIM016-REPAIR-MV1-20261005
+REVIEWER_JOB_ID: JOB-EGC-016-VALIDATION-REPAIR-REV-MV1-20261005
+BLOCKERS: NONE for protocol repair; actual candidate-model execution remains downstream.
+NEXT_ACTION: independently recheck source semantics, formalize mandatory gates/data schema/failure states, submit AWAITING_REVIEW.
+
+JOB_ID: JOB-EGC-016-VALIDATION-REPAIR-REV-MV1-20261005
+ROLE: Independent simulation-validation repair reviewer
+TITLE: Reproduce and attack MV1 repaired validation protocol
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-016-VALIDATION-REPAIR-MV1-20261005 reaches AWAITING_REVIEW.
+REQUIRED_TOOLS: independent NERC/PNNL/EIA/IEA retrieval; counterexamples; protocol audit.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR on every P1-MV finding and anti-leak/extrapolation gate.
+STATUS: OPEN
+BLOCKERS: repair package not yet submitted.
+HANDOFF: distinct future session required; repair owner cannot self-verify.
+
+WRITE_INTEGRITY:
+- pinned branch head before write: 052609cdd1a119113cfcbc8a76bf1589e9737140
+- current blob SHA: 3146a3dba1960f188c14b32e5a1cfc043aeb25b9
+- exact-SHA append only; authorized MAIN-CHAT.md only; no force.
