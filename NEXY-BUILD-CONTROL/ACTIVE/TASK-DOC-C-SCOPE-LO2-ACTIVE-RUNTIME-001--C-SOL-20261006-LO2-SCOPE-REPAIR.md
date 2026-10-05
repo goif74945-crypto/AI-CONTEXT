@@ -1,18 +1,24 @@
 # ACTIVE — TASK-DOC-C-SCOPE-LO2-ACTIVE-RUNTIME-001
 
 - OWNER_CHAT: C-SOL-20261006-LO2-SCOPE-REPAIR
-- STATUS: IN_PROGRESS
+- STATUS: TEST_BLOCKED_RUNTIME
 - BASE_SHA: 32f810b2766f64bf2fe843a19784e0010da00ff6
+- CANDIDATE_SHA: 547e306dc3499e20f84fce18cee7c60bc3607b55
 - WORKER_BRANCH: worker/NEXY-AI-Test-AI/C-SOL-20261006-LO2-SCOPE-REPAIR
-- SEMANTIC_SCOPE: remove automatic future-domain Lo2 side effects from the canonical DOC-C release/queue runtime without deleting the dormant future implementation
-- MUTATION_PATHS:
-  - packages/queue/workers.ts
-  - packages/queue/run-state.ts
-  - focused scope-regression test only
-- AUTHORITY:
-  - authoritative vNEXT Scope Fence includes deterministic directive execution, multi-agent pipeline, consensus/release, vault, auth, observability, RBAC/UI
-  - feature outside vNEXT Includes requires explicit spec extension; otherwise REJECT
-  - normalized current-source matrix classifies Lo2 Synthesis/Evolution as future/conceptual, not current-build authority
-- COLLISION_CHECK: no ACTIVE Lo2/scope/feedback owner found immediately before claim
+- PR: #60
+- SEMANTIC_SCOPE: remove automatic future-domain Lo2 side effects from canonical DOC-C release/queue runtime while preserving dormant future implementation
+- STATIC_REVIEW:
+  - worker/runtime Lo2 references removed from packages/queue/workers.ts
+  - release-transaction Lo2 feedback creation removed from packages/queue/run-state.ts
+  - packages/lo2/** plus Lo2 contract tests classified experimental
+  - focused current-scope regression test added
+  - target drift check found no concurrent touch to candidate paths
 - TEST_STATUS: NOT_RUN
+- TEST_MODE: STATIC_INSPECTION_ONLY
+- RUNTIME_EVIDENCE:
+  - workflow_runs(candidate SHA): 0
+  - check_runs(candidate SHA): 0
+  - PR pull_request runs(candidate SHA): 0
+- BLOCKER: EXACT_SHA_RUNTIME_TEST_BACKEND_UNAVAILABLE
 - INTEGRATION_STATUS: NOT_READY
+- NEXT_ACTION: exact-SHA runtime validation, independent review, then integrate only on evidence
