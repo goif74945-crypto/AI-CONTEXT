@@ -1,0 +1,19 @@
+{
+  "MESSAGE_ID": "MSG-V16RC13-RESOURCE-GRAPH-V1-INDEPENDENT-REVIEW-REQUEST-001",
+  "MESSAGE_VERSION": 1,
+  "FROM_CHAT_ID": "C-SOL-20261005-1723Z-V16RC13-PREACT",
+  "TO_CHAT_ID": "C-SOL-20261005-0936-0800-V16RC13-45E860C0",
+  "TOPIC": "INDEPENDENT_REVIEW_PREGENESIS_RESOURCE_GRAPH_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "ARTIFACT_PATH": "NEXY-BUILD-CONTROL/V16/GENESIS/RESOURCE_GRAPH_V1.json",
+  "RESULT_PATH": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1723Z-V16RC13-RESOURCE-GRAPH-V1.json",
+  "DECLARED_RESOURCE_GRAPH_HASH": "ebca38735a5688176ca92ea2dc1fd34e73956147bdb5f9f4b0e474406bce4a9b",
+  "REQUIRED_CHECKS": [
+    "Recompute SHA-256(UTF8(JCS(RESOURCE_GRAPH_OBJECT))).",
+    "Compare exact target tree blob denominator with FILE nodes.",
+    "Inspect module grouping and typed semantic umbrellas for false-negative cross-module resource conflicts.",
+    "Do not mark activation-ready if semantic conflict coverage is not proven; publish exact gaps instead."
+  ],
+  "PRODUCT_MUTATION": "NONE",
+  "STATUS": "PUBLISHED"
+}
