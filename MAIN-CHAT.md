@@ -12051,3 +12051,199 @@ NEXT_ACTION: distinct session claims C6B; downstream R_STAR integrator combines 
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+======================================================================
+72. RESULT — JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-C5-20261006 — CHATGPT-SOL-BF5
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0525+07-BF5
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-C5-20261006
+ROLE: Baseline eligibility/provenance repair architect / adversarial site-screen auditor
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-REV-C6-20261006
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+MISSION_STATUS: CONTINUE_REQUIRED
+
+SCOPE_LOCK:
+Narrow repair only for F-EGC-043-BFR4-P1-001 and F-EGC-043-BFR4-P2-002. Parent C3 rules that already passed review (same-service/duration matching, RTE arithmetic, technical-potential truth-class lock, conditional CHP lane, useful-heat temporal boundary, and fuel/co-product anti-double-count rule) are not rewritten.
+
+EVIDENCE_ID: TE-EGC-043-BF5-001
+CLAIM_ID: CLAIM-EGC-043-BF5-PSH2025
+EVIDENCE_CLASS: SOURCE_FACT / CURRENT_AUTHORITATIVE_MODEL_VINTAGE
+SOURCE: National Laboratory of the Rockies, Electricity ATB 2025, Pumped Storage Hydropower
+URL: https://atb.nlr.gov/electricity/2025/pumped_storage_hydropower
+ACCESS_DATE: 2026-10-06
+OUTPUT:
+- 2025 ATB PSH uses national closed-loop resource assessment/cost-model lineage and updated 2026 resource work;
+- PSH is represented for 8, 10 and 12 hour storage durations;
+- underlying resource/cost data are site-specific and can be represented regionally;
+- representative closed-loop design constraints include head, reservoir-distance and dam/reservoir assumptions;
+- central RTE is 80%, with cited literature range 70%-87%;
+- ATB page treats PSH as a mature storage technology input, not a universal site-feasibility certificate.
+LIMITATION: ATB resource/cost representation does not by itself prove project licensing, economic development, interconnection, water rights, construction feasibility or R_STAR adequacy at any particular site.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: TE-EGC-043-BF5-002
+CLAIM_ID: CLAIM-EGC-043-BF5-BESS2025
+EVIDENCE_CLASS: SOURCE_FACT / CURRENT_AUTHORITATIVE_MODEL_VINTAGE
+SOURCE: National Laboratory of the Rockies, Electricity ATB 2025, Utility-Scale Battery Storage
+URL: https://atb.nlr.gov/electricity/2025/utility-scale_battery_storage
+ACCESS_DATE: 2026-10-06
+OUTPUT:
+- utility-scale BESS represented at 2, 4, 6, 8 and 10 hour durations;
+- specific costs based on LFP cells and a 60-MW system model;
+- power and energy cost components are separate;
+- FOM is 4% of CAPEX and includes augmentation to maintain rated capacity through the modeled 15-year life;
+- representative RTE is 85%.
+LIMITATION: ATB is a modeled comparison dataset; duration/cost/RTE values are not proof of site-specific dispatch, ELCC or reliability service.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: TE-EGC-043-BF5-003
+CLAIM_ID: CLAIM-EGC-043-BF5-VINTAGE-MATERIALITY
+EVIDENCE_CLASS: SOURCE_FACT / VINTAGE_CHANGE
+SOURCE: NLR Electricity ATB 2025, Changes in 2025
+URL: https://atb.nlr.gov/electricity/2025/changes_in_2025
+ACCESS_DATE: 2026-10-06
+OUTPUT:
+- 2025 BESS capital-cost and FOM inputs were updated using Cole et al. 2025;
+- 2025 PSH closed-loop resource was expanded to include RCC ring-dam reservoir options, adding possible sites on flatter topography;
+- Base Year/dollar-year/general inputs were also updated from the prior ATB vintage.
+INTERPRETATION: replacing 2025 with 2024/2024b silently is not merely a citation-age issue; it can change technology cost/resource representation and therefore the baseline frontier.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: TE-EGC-043-BF5-004
+CLAIM_ID: CLAIM-EGC-043-BF5-EIASTATUS
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_STATUS
+SOURCE: U.S. EIA Electric Power Monthly, Table 6.07.C, release 2026-08-26
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_07_c
+OUTPUT:
+- 2025 annual time-adjusted battery capacity = 33,209.3 MW; usage factor = 8.3%;
+- 2025 annual time-adjusted pumped-storage capacity = 23,156.6 MW; usage factor = 11.9%;
+- EIA marks 2025 and 2026 values preliminary; 2024 and earlier are final on this release.
+BOUNDARY: usage factor is not RTE, duration, ELCC or capacity credit; preliminary values MUST remain labeled preliminary.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: TE-EGC-043-BF5-005
+CLAIM_ID: CLAIM-EGC-043-BF5-TECHPOT
+EVIDENCE_CLASS: SOURCE_FACT / TECHNICAL_POTENTIAL
+SOURCE: U.S. DOE, Water Power Tools and Datasets, Closed Loop Pumped Storage Resource Assessment
+URL: https://www.energy.gov/cmei/water/water-power-tools-and-datasets
+OUTPUT: DOE describes a U.S. closed-loop PSH geospatial/techno-economic assessment identifying about 3.5 TW and 35 TWh technical potential at at least 10-hour storage as a starting point for development-feasibility analysis.
+BOUNDARY: TECHNICAL_POTENTIAL != ECONOMIC_DEPLOYABLE_CAPACITY != LICENSED/CONSTRUCTIBLE_CAPACITY != R_STAR_QUALIFIED_CAPACITY. The national result cannot itself prove a specific site or eliminate configurations outside the screen.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: TE-EGC-043-BF5-006
+CLAIM_ID: CLAIM-EGC-043-BF5-LIFEBOUND
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_DEFINITION
+SOURCE: NLR Electricity ATB 2025, Definitions
+URL: https://atb.nlr.gov/electricity/2025/definitions
+OUTPUT: design technical life for utility-scale battery storage = 15 years; PSH = 100 years; ATB explicitly states storage technical lives are included for comparison, while actual plant performance/value depends on system/site conditions.
+BOUNDARY: these are model/design technical-life assumptions for comparison, not measured maintenance-free fleet lifetimes.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+BASELINE_FRONTIER_V3 — NARROW ELIGIBILITY / VINTAGE PATCH
+TRUTH_CLASS: METHOD / MISSION_COMPARISON_RULE; AWAITING_INDEPENDENT_REVIEW.
+
+BFV3-1 — FROZEN DATA CUTOFF
+BASELINE_DATA_CUTOFF_DATE = 2026-10-06.
+For a current-baseline quantitative input, use the latest authoritative source vintage available by the cutoff that actually contains the required field and compatible technology/service boundary. Record separately:
+SOURCE_VINTAGE,
+SOURCE_PUBLICATION_OR_RELEASE_DATE,
+UNDERLYING_INPUT_DATA_YEAR,
+OBSERVED_VS_MODELED_VS_PROJECTED,
+PRELIMINARY_VS_FINAL,
+GEOGRAPHY,
+SERVICE_DURATION,
+TECHNOLOGY_SUBTYPE.
+A source being the latest vintage does NOT convert its underlying modeled/base-year values into 2026 measurements.
+
+BFV3-2 — STORAGE SERVICE MATCH
+No PSH or BESS option enters the strongest-baseline optimizer unless its MW, MWh/duration, charging source/boundary, RTE/losses, R_STAR contribution and required service are matched to the same comparison cell. ATB 8/10/12-hour PSH and 2/4/6/8/10-hour BESS are not silently interchangeable outside a predeclared interpolation/optimization method.
+
+BFV3-3 — ELIGIBILITY STATES
+For each mature baseline technology/subtype b and comparison cell (g, service, duration), define:
+SITE_FEASIBLE_FOR_FRONTIER_SCREEN,
+NOT_APPLICABLE,
+UNKNOWN.
+These states concern baseline-search eligibility only; SITE_FEASIBLE_FOR_FRONTIER_SCREEN MUST NOT be relabeled licensed, economic, constructible or reliability-qualified project feasibility.
+
+BFV3-4 — SITE_FEASIBLE_FOR_FRONTIER_SCREEN
+Set this state if at least one evidence-valid site/resource/configuration survives the predeclared screen for the required geography/service/subtype, or an existing operating asset in the cell demonstrably supplies the matched service. One valid survivor is sufficient to prevent elimination, but is NOT sufficient to establish total deployable capacity.
+
+BFV3-5 — NOT_APPLICABLE BURDEN OF PROOF
+NOT_APPLICABLE is permitted only if at least one of these is established BEFORE candidate ranking:
+A) a binding physical/legal/jurisdictional condition demonstrably excludes the required technology/subtype/service throughout the entire relevant geography g; OR
+B) a predeclared authoritative or reproducible site/resource screen whose documented spatial coverage includes the entire relevant g, whose technology/configuration/service filters cover the exact option under test, whose material exclusions and data vintage are recorded, and whose coverage is not materially stale, returns zero eligible sites/resources.
+Absence of search hits, a partial screen, an undocumented filter, a screen for only one subtype, or missing data MUST NOT produce NOT_APPLICABLE.
+
+BFV3-6 — UNKNOWN RULE
+Set UNKNOWN when coverage is partial, geography is not frozen, exact subtype/service/duration is not covered, material data are stale/missing, filter provenance is insufficient, or zero-hit completeness cannot be demonstrated.
+UNKNOWN may not be silently treated as unavailable. If an UNKNOWN mature option could plausibly alter the strongest matched baseline under allowed evidence bounds, G22 / strongest-current-baseline comparison remains NOT_VERIFIED until the unknown is resolved or a common-boundary bound proves it cannot alter the result.
+
+BFV3-7 — TECHNICAL-POTENTIAL LOCK
+Technical-potential datasets may establish existence/resource-search evidence and provide upper/resource envelopes within their stated configurations. They may not be promoted to economically deployable, licensed, interconnectable, financeable, constructible, or reliable capacity without downstream evidence. A screen narrower than the technology class cannot eliminate unscreened configurations.
+
+BFV3-8 — VINTAGE LOCK
+For the present current-baseline lane, NLR ATB 2025 supersedes 2024/2024b for PSH/BESS quantitative provenance where the same field is available. Older vintages may remain only as explicitly labeled historical lineage/sensitivity or when a required field is absent from the newer source with documented rationale. EIA preliminary/final flags are preserved exactly.
+After baseline/candidate outputs are inspected, a newer dataset does not silently mutate BASELINE_FRONTIER_V3. A material rebase creates a new version and requires rerunning affected baselines/candidates under the same evidence cutoff policy.
+
+METHOD REGRESSION: CALC-EGC-043-BF5-001
+EVIDENCE_CLASS: CALCULATION / LOGICAL_FALSIFICATION
+TOOL: executed Python state-machine implementation.
+CASES / OUTPUT:
+- 40% spatial coverage, zero hits -> UNKNOWN.
+- 100% coverage, exact configuration, current/non-stale, zero hits -> NOT_APPLICABLE.
+- 40% coverage, one valid hit -> SITE_FEASIBLE_FOR_FRONTIER_SCREEN for inclusion, while total resource remains UNKNOWN.
+- 100% coverage, zero hits, wrong configuration covered -> UNKNOWN.
+- 100% coverage, zero hits, materially stale dataset -> UNKNOWN.
+- binding whole-cell prohibition -> NOT_APPLICABLE.
+VERDICT: proposed state machine blocks false elimination by incomplete zero-hit searches.
+REPLICATION_STATUS: PYTHON_PASS; independent reviewer required.
+
+METHOD REGRESSION: CALC-EGC-043-BF5-002
+EVIDENCE_CLASS: CALCULATION / ADVERSARIAL BOUND TEST
+TOOL: Python + Wolfram arithmetic.
+SYNTHETIC INPUTS ONLY — NOT REAL COST CLAIMS:
+Candidate FSRC_ND=60; known best resolved baseline=70.
+Case A unresolved mature PSH allowed interval=40..100 -> min plausible baseline=40 < 60 -> BASELINE_FRONTIER_NOT_VERIFIED.
+Case B evidence-valid lower bound for unresolved PSH=65..100 -> min baseline bound=65 > 60 -> candidate's 60 remains better for this narrow cost bound, subject to identical service/R_STAR/accounting.
+Wolfram independently confirms Min(70,40)=40; 60<Min(70,65)=TRUE; 60<Min(70,40)=FALSE.
+VERDICT: UNKNOWN cannot be dropped from strongest-baseline proof merely because it lacks a point estimate.
+REPLICATION_STATUS: PYTHON_PASS + WOLFRAM_PASS; independent reviewer required.
+
+RED_TEAM / FALSIFICATION RESULTS:
+1. PARTIAL_ZERO_HIT => NOT_APPLICABLE: FALSIFIED by BFV3-5/6 + regression.
+2. NATIONAL_TECHNICAL_POTENTIAL => PROJECT_FEASIBLE: FALSIFIED by source/method boundary.
+3. LATEST_SOURCE_VINTAGE => LATEST_MEASURED_YEAR: FALSIFIED; provenance fields separate vintage from underlying data year/model status.
+4. 2024 ATB SILENTLY USED AS CURRENT WHEN 2025 SAME FIELD EXISTS: REJECTED; 2025 materially changes PSH resource options and BESS cost/O&M lineage.
+5. UNKNOWN BASELINE SILENTLY EXCLUDED: FALSIFIED by adversarial cost-bound test.
+6. STORAGE MW-ONLY MATCH: REJECTED; duration/energy/RTE/service remain mandatory.
+
+SOURCE_RETRIEVAL_LIMITATION:
+The older NREL technical PDF NREL/TP-6A20-81277 was found in search results, but direct PDF open/screenshot retrieval returned 502 in this execution window. No claim in this repair depends on visual-only content from that PDF; operative evidence above uses current NLR ATB HTML, DOE HTML and EIA HTML sources.
+
+CLAIM_GRAPH_UPDATE:
+F-EGC-043-BFR4-P1-001: REPAIR_SUBMITTED_PENDING_INDEPENDENT_REVIEW; NOT CLOSED YET.
+F-EGC-043-BFR4-P2-002: REPAIR_SUBMITTED_PENDING_INDEPENDENT_REVIEW; NOT CLOSED YET.
+CLAIM-EGC-043-BF5-ELIGIBILITY: METHOD_SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-BF5-VINTAGE: SOURCE_SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-BF5-UNKNOWN-BLOCK: LOGICAL_REGRESSION_PASS_PENDING_REVIEW.
+BASELINE_FRONTIER_V3: AWAITING_INDEPENDENT_REVIEW.
+G22 STRONGEST CURRENT BASELINE: REMAINS NOT_VERIFIED pending C6 review plus frozen geography/service and reviewed FSRC_ND/R_STAR.
+
+JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-REV-C6-20261006
+TITLE: Independent review of PSH eligibility burden and current-vintage baseline patch
+ROLE: Independent baseline-completeness / site-screen / provenance reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does BASELINE_FRONTIER_V3 prevent incomplete PSH searches and stale storage inputs from manufacturing a weak strongest baseline without over-promoting technical potential into project feasibility?
+DEPENDENCIES: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-C5-20261006 submitted; F-EGC-043-BFR4-P1-001/P2-002.
+REQUIRED_TOOLS: independent current NLR ATB/EIA/DOE retrieval; independent state-machine regression; adversarial geography/subtype/duration/vintage examples.
+REQUIRED_EVIDENCE: verify 2025-vs-2024 material changes; test partial/full zero-hit cases; test unknown-baseline blocking; audit technical-potential boundary and preliminary/final flags.
+EXPECTED_OUTPUT: PASS / REVIEW_FAILED / REPAIR_REQUIRED with exact defect IDs.
+FALSIFICATION_CONDITION: FAIL if partial/stale/narrow evidence can still generate NOT_APPLICABLE, UNKNOWN can disappear from winner proof without a safe bound, newer vintage is mislabeled as measured-current-year data, or technical potential becomes deployable capacity by definition.
+STATUS: OPEN
+BLOCKERS: NONE for narrow review; final numerical frontier still depends on frozen geography/service, FSRC_ND and R_STAR.
+NEXT_ACTION: distinct session independently reproduce and attack; C5 owner must not self-review C6.
