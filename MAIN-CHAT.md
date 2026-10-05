@@ -8497,3 +8497,358 @@ REVIEWER_JOB_ID: NONE
 STATUS: OPEN
 BLOCKERS: NONE for method/source review; NREL PDF endpoint visual verification may remain externally unavailable.
 NEXT_ACTION: distinct session independently attacks and reproduces this submission.
+
+
+======================================================================
+58. RESULT — JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-FIN1
+PRIMARY_JOB_ID: JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006
+ROLE: Finance / Construction-Duration / Cost-of-Capital Sensitivity Red-Team Analyst
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE RECONCILIATION:
+During execution, FINPV-C5/C7 and SOCDISC-C7 were found to own PRIMARY real-resource PV/terminal accounting and D_REF_PRIMARY_V1. This job therefore does NOT overwrite primary FSRC_ND accounting. Its non-duplicate contribution is:
+A) SECONDARY private/project-finance boundary and provenance rules;
+B) construction-duration / cost-of-capital sensitivity;
+C) source-boundary warnings for overnight vs financed/realized construction cost;
+D) a freshness conflict affecting the primary discount-convention evidence base, without changing the already versioned mission convention.
+
+KEY FINDING:
+SOURCE_FACT + CALCULATION + INFERENCE:
+Financing and construction duration can reverse cost rankings even when physical performance and overnight cost are unchanged. Therefore an energy candidate cannot be declared LOW_COST using overnight CAPEX alone, and PRIMARY resource cost must remain separate from SECONDARY financing/private-price views. Candidate-specific WACC is evidence about private/project economics, not permission to alter the frozen PRIMARY social/resource discount rule.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-046-001 — NREL/NLR ATB construction-finance boundary
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-CONFIN
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: National Laboratory of the Rockies / NREL Annual Technology Baseline 2024b, Equations & Variables; page updated through 2025
+URL: https://atb.nrel.gov/electricity/2024b/equations_&_variables
+METHOD: official-source web retrieval + Exa official-source cross-retrieval
+OUTPUT:
+CAPEX = ConFinFactor * (OCC + GCC)
+CFC = (OCC + GCC) * (ConFinFactor - 1)
+ConFinFactor = sum_y FC_y * AI_y
+ATB explicitly defines construction duration C and capital fraction FC by construction year and includes accumulated interest in the construction finance factor.
+LIMITATION:
+ATB finance equations are a modeling convention for its technology/economic framework, not a universal observed project-finance law.
+REPLICATION_STATUS: SOURCE_CROSS_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-046-002 — NREL/NLR ATB financing assumptions are technology/risk specific
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-WACC
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: National Laboratory of the Rockies / NREL ATB 2024b, Financial Cases & Methods
+URL: https://atb.nrel.gov/electricity/2024b/financial_cases_&_methods
+OUTPUT:
+- ATB uses WACC as the discount-rate input to the capital recovery factor in its LCOE framework.
+- R&D Only case keeps common ownership/background assumptions while allowing technology-specific debt/equity/debt-fraction terms to represent technological risk.
+- The published assumptions include, among others, construction equity/debt/leverage values:
+  Utility PV: 10.5% / 6.5% / 80%;
+  Land-based wind: 11.0% / 6.5% / 80%;
+  Hydropower: 11.75% / 7.0% / 80%;
+  Nuclear: 12.5% / 6.5% / 80%.
+- ATB states nominal after-tax WACC in its R&D Only case varies roughly 6.01%-8.21% for renewable technologies and 8.0% for natural gas.
+BOUNDARY:
+These are U.S.-focused ATB model assumptions and must not be silently treated as globally observed WACC.
+TRUTH_CLASS: SOURCE_FACT
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-046-003 — EIA representative construction duration + overnight boundary
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-BUILDTIME
+EVIDENCE_CLASS: SOURCE_FACT / MODELED_REFERENCE_CASE
+SOURCE: U.S. EIA, Capital Cost and Performance Characteristics for Utility-Scale Electric Power Generating Technologies, released 2024-01-10 for AEO2025; Sargent & Lundy Final Rev A 2023-12-06
+URL: https://www.eia.gov/analysis/studies/powerplants/capitalcost/pdf/capital_cost_AEO2025.pdf
+VISUAL_VERIFICATION: PDF tables inspected by screenshot.
+OUTPUT:
+- Case 9 advanced nuclear, 2x AP1000, 2,156 MW net: development/permitting/engineering 32 months; plant construction 52 months; total lead to COD 84 months; operating life 40 years.
+- Case 13 onshore wind, 200 MW: development 12 months; plant construction 9 months; total lead 21 months; operating life 25 years.
+- Case 16 utility solar PV single-axis tracking, 150 MWac: development 24 months; plant construction 12 months; total lead 36 months; operating life 35 years.
+- Report introduction states its overnight capital costs exclude financing costs; wind case text also states allowance for funds used during construction / interest during construction is excluded.
+LIMITATION:
+These are representative engineering/model cases, NOT empirical median realized build durations and NOT proof that any future project will meet them.
+TRUTH_CLASS: SOURCE_FACT for report contents; MODELED_REFERENCE_CASE for applicability.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-046-004 — actual EIA generator construction-cost data and boundary warning
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-ACTUALCOST
+EVIDENCE_CLASS: MEASUREMENT / SURVEY_AGGREGATE
+SOURCE: U.S. EIA, Construction cost data for electric generators installed in 2024
+SOURCE_DATE: 2026-07-06
+URL: https://www.eia.gov/electricity/generatorcosts/
+OUTPUT:
+Capacity-weighted average 2024 reported construction costs:
+Solar $1,865/kW; battery storage $1,469/kW; wind $1,882/kW; natural gas $1,004/kW.
+Included new-plant capacity: solar 30,265 MW; battery 10,195 MW; wind 4,455 MW; natural gas 1,061 MW.
+EIA states some technologies are omitted to protect confidential data.
+CROSS_SOURCE:
+EIA historical methodology states reported actual construction costs include capital and financing costs; EIA glossary defines electric-power-industry construction cost to include allowance for funds used during construction.
+URL_METHOD: https://www.eia.gov/Todayinenergy/detail.php?id=26532
+URL_GLOSSARY: https://www.eia.gov/tools/glossary/?id=C
+BOUNDARY_WARNING:
+Do NOT compare EIA realized construction-cost survey values directly with EIA/S&L overnight-cost estimates without reconciling finance, date, geography, project size, and reporting boundary.
+TRUTH_CLASS: MEASUREMENT/SURVEY_AGGREGATE + SOURCE_FACT
+LIMITATION:
+Aggregates are U.S.-specific and conceal project heterogeneity; confidentiality prevents complete technology coverage.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-046-005 — geography materially changes private financing
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-GEOWACC
+EVIDENCE_CLASS: EXTERNAL_FACT / SURVEY
+SOURCE: IEA, Cost of Capital Observatory and Southeast Asia commentary
+SOURCE_DATE: Observatory 2025-09-26; commentary 2025-10-08
+URL: https://www.iea.org/reports/cost-of-capital-observatory
+URL_2: https://www.iea.org/commentaries/high-cost-of-capital-and-limited-project-pipeline-hinder-clean-energy-investment-in-southeast-asia
+OUTPUT:
+IEA reports 2024 median utility-scale solar WACC, nominal post-tax local currency:
+Indonesia 9.4%; Viet Nam 9.0%; Philippines 8.0%; Thailand indicative 6.0-8.0%; Malaysia indicative 6.0-7.0%; advanced-economy range cited 5.0-6.5%.
+IEA's 2025 Observatory commentary states renewable/battery cost of capital in EMDEs is at least double advanced-economy levels in many surveyed contexts.
+BOUNDARY:
+Nominal post-tax local-currency WACC cannot be inserted directly into a real common-currency resource-cost model. Inflation, tax, currency, contract structure and geography must be reconciled.
+LIMITATION:
+Survey medians/ranges; Philippines/Malaysia/Thailand 2024 values explicitly indicative due limited responses.
+
+----------------------------------------------------------------------
+EVIDENCE-EGC-046-006 — nuclear finance construction-risk evidence
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-NUCLEARFIN
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: IEA, The Path to a New Era for Nuclear Energy, 2025, "Financing nuclear projects"
+URL: https://www.iea.org/reports/the-path-to-a-new-era-for-nuclear-energy/financing-nuclear-projects
+OUTPUT:
+IEA states nuclear projects are difficult to finance due to scale, capital intensity, long construction lead times and technical complexity; cost overruns and delays are major investor risks. Government support, predictable cash flows, PPAs/CfDs/RAB structures and construction-risk allocation can materially lower financing cost.
+BOUNDARY:
+This supports a financing-risk mechanism, not a universal nuclear WACC or a guarantee that policy support lowers real resource cost.
+
+----------------------------------------------------------------------
+CALC-EGC-046-001 — construction-finance duration sensitivity
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-DURATION-SENS
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram Language executed calculation; monthly midpoint numerical sum used as second implementation.
+METHOD:
+For a sanity model with one unit of overnight capital spent uniformly and continuously through a construction interval T and accumulated to COD at annual effective financing rate r:
+F(T,r) = ((1+r)^T - 1) / (T * ln(1+r)).
+Financed-at-COD capital = OCC * F.
+This is NOT a reproduction of ATB's technology-specific spend schedule. It is a transparent candidate-neutral sensitivity model.
+INPUTS:
+Reference construction durations from EIA representative cases only:
+wind T=0.75 y; solar T=1.0 y; nuclear T=52/12=4.333333 y.
+RATES: r={3%,5%,7%,10%,12%}.
+OUTPUT_F / UPLIFT_OVER_OVERNIGHT:
+Wind 0.75 y:
+3% 1.011166918 / +1.1167%;
+5% 1.018521538 / +1.8522%;
+7% 1.025806652 / +2.5807%;
+10% 1.036608385 / +3.6608%;
+12% 1.043728351 / +4.3728%.
+Solar 1.0 y:
+3% 1.014926104 / +1.4926%;
+5% 1.024796716 / +2.4797%;
+7% 1.034605355 / +3.4605%;
+10% 1.049205869 / +4.9206%;
+12% 1.058866956 / +5.8867%.
+Nuclear 4.333333 y:
+3% 1.066868354 / +6.6868%;
+5% 1.113573078 / +11.3573%;
+7% 1.162035021 / +16.2035%;
+10% 1.238130680 / +23.8131%;
+12% 1.291202727 / +29.1203%.
+UNCERTAINTY:
+Uniform spending is intentionally simplified; real draw schedules, tax treatment and construction premiums differ.
+REPLICATION:
+At r=7%, monthly midpoint equal-spend model returns:
+9m 1.025805293 vs continuous 1.025806652;
+12m 1.034603984 vs 1.034605355;
+52m 1.162033482 vs 1.162035021.
+Numerical agreement is ~1.5e-6 absolute or better.
+REPLICATION_STATUS: SAME_SESSION_SECOND_IMPLEMENTATION_PASS; independent session still required.
+
+----------------------------------------------------------------------
+CALC-EGC-046-002 — financing alone can reverse overnight-cost ranking
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-RANKREV
+EVIDENCE_CLASS: CALCULATION
+TOOL: Wolfram Language
+TOY CASE:
+A: OCC=95 arbitrary cost units; construction T=4.333333 y.
+B: OCC=100 units; construction T=1.0 y.
+All physical service, lifetime and output are deliberately held equal. r=7%; uniform-spend sensitivity model.
+OUTPUT:
+A financed-at-COD cost = 110.3933270
+B financed-at-COD cost = 103.4605355
+Overnight ranking: A cheaper by 5%.
+Financed ranking: B cheaper.
+Break-even OCC_A/OCC_B = F_short/F_long = 0.890339220.
+INTERPRETATION:
+Under these assumptions the long-build asset must be about 10.97% cheaper in overnight cost merely to tie the short-build asset after construction financing.
+TRUTH_CLASS: CALCULATION
+LIMITATION: toy counterexample, not a technology ranking.
+
+----------------------------------------------------------------------
+CALC-EGC-046-003 — schedule-delay sensitivity
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-DELAY
+EVIDENCE_CLASS: CALCULATION
+INPUT: r=7%, same uniform-spend construction model.
+OUTPUT:
+T=4.333333 y -> F=1.162035021
+T=6.333333 y (+2 y) -> F=1.248435784 = +7.4353% relative financed-capital increase vs planned T.
+T=8.333333 y (+4 y) -> F=1.343289908 = +15.5981% relative increase.
+INTERPRETATION:
+Delay risk can be ranking-material for capital-intensive long-build projects even before considering escalation, contractual claims or lost revenue.
+LIMITATION:
+Sensitivity only; not an empirical overrun distribution.
+
+----------------------------------------------------------------------
+CALC-EGC-046-004 — cost-of-capital sensitivity in 30-y CRF
+----------------------------------------------------------------------
+CLAIM_ID: CLAIM-EGC-046-CRF
+EVIDENCE_CLASS: CALCULATION
+FORMULA:
+CRF(r,n)=r(1+r)^n/((1+r)^n-1), n=30.
+OUTPUT:
+r=3% -> 0.0510192593
+5% -> 0.0650514351
+7% -> 0.0805864035
+9% -> 0.0973363514
+10% -> 0.1060792483
+12% -> 0.1241436576
+RATIOS:
+9% vs 3% annual capital-recovery factor = 1.907835x.
+12% vs 3% = 2.433270x.
+7% vs 3% = 1.579529x.
+INTERPRETATION:
+For otherwise identical financed CAPEX/output assumptions, cost-of-capital choice can nearly double or more than double annualized capital charge. Hence discount/WACC provenance is ranking-critical.
+BOUNDARY:
+This is a generic CRF sensitivity; nominal and real rates must not be mixed.
+
+----------------------------------------------------------------------
+CONFLICT-EGC-046-001 — Green Book 2026 discount-rate freshness
+----------------------------------------------------------------------
+TRUTH_CLASS: CONFLICT / NOT_VERIFIED_EFFECTIVE_DATE
+UPSTREAM_AFFECTED: EVID-EGC-040-SOCDISC-001 / D_REF_PRIMARY_V1 evidence provenance
+OFFICIAL_SOURCE_A:
+HM Treasury, The Green Book (2026), updated 2026-02-05.
+URL: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+STATES: 3.50% real years 1-30; 3.00% years 31-75; 2.50% year 76 onward.
+OFFICIAL_SOURCE_B:
+Independent Green Book Discount Rate Review, published 2026-06-30, explicitly states its recommendations are independent and not HM Treasury policy.
+URL: https://www.gov.uk/government/publications/green-book-discount-rate-review-2026
+RECOMMENDS: standard projects 3.0% years 0-30; 2.5% years 31-75; 2.25% years 76-125.
+OFFICIAL_SOURCE_C:
+Chancellor John Healey Growth Speech, delivered/published 2026-09-07.
+URL: https://www.gov.uk/government/speeches/chancellor-john-healeys-growth-speech-2026
+STATES: "making changes to the Treasury's Green Book" and reducing the discount rate from 3.5% to 3%.
+SEARCH_RESULT_AS_OF: 2026-10-06
+NO OPERATIVE REVISED GREEN BOOK / EXPLICIT EFFECTIVE DATE FOUND in the official sources searched; published Green Book page still displays 3.5% initial STPR.
+RESOLUTION:
+- Do NOT silently rewrite D_REF_PRIMARY_V1. It is already versioned as a candidate-neutral MISSION_CONVENTION based on the then-published Green Book.
+- Reclassify "3.5% is the current unqualified policy rate" as freshness-sensitive.
+- Add the announced/recommended 3.0/2.5/2.25 schedule as a mandatory symmetric sensitivity until HM Treasury publishes an operative revision/effective date or the mission explicitly versions a new convention.
+- This conflict is economic-policy provenance, not physics.
+
+CALC-EGC-046-005 — effect of the June review's recommended schedule vs D_REF_PRIMARY_V1
+EVIDENCE_CLASS: CALCULATION
+METHOD: exact piecewise annual effective discount factors.
+OUTPUT:
+Recommended-review schedule discount factors:
+D30=0.4119867595
+D60=0.1964116740
+D100=0.0777546551
+Relative to D_REF_PRIMARY_V1 values already recorded upstream, future flows receive:
++15.636% weight at year 30;
++33.812% at year 60;
++53.006% at year 100.
+INTERPRETATION:
+The unresolved policy-update question is quantitatively material for long-lived assets, decommissioning, waste, and terminal liabilities/residuals. A common symmetric sensitivity is required; candidate-specific selection is forbidden.
+REPLICATION_STATUS: SAME_SESSION_CALCULATION; independent review required.
+
+----------------------------------------------------------------------
+FINANCE / CONSTRUCTION COMMON RULESET PROPOSAL
+----------------------------------------------------------------------
+PROPOSAL_ID: FIN_BOUNDARY_V1
+TRUTH_CLASS: INFERENCE / PROPOSED_METHOD
+1. PRIMARY RESOURCE VIEW:
+Use the frozen candidate-neutral D_REF_PRIMARY mission convention owned by SOCDISC/FINPV repair. Do not add pure debt interest, shareholder return, tax-credit transfers, or financing cash-flow transfers as physical resource consumption unless a separately evidenced real external-resource cost exists.
+2. SECONDARY PROJECT/PRIVATE VIEW:
+Model technology-, geography-, contract- and policy-specific WACC/finance only with provenance. Every rate must declare nominal/real, pre/post-tax, currency, country/market, FID year, ownership/offtake structure and whether construction and operating rates differ.
+3. CONSTRUCTION PERIOD:
+Do not compare overnight CAPEX to financed/realized CAPEX as if identical. Record spend schedule or an explicit approximation, construction duration, construction-rate assumptions and COD timing. Unknown schedule is UNKNOWN, not zero construction finance.
+4. CONSISTENCY:
+A candidate cannot win by receiving concessional/state-backed finance while the baseline is charged commercial WACC unless the comparison question is explicitly the private/project price under those policies. For primary resource ranking, the policy financing privilege is not itself a free reduction of real resource use.
+5. DELAY:
+For long-build/capital-intensive candidates, run common schedule-delay sensitivity in addition to base case. If plausible delay/WACC ranges reverse ranking, mark COST_RANKING_NOT_STABLE.
+6. GEOGRAPHY:
+Do not transplant U.S. ATB finance assumptions or nominal local-currency EMDE WACC into another geography without reconciliation.
+7. LIFETIME/COST RECOVERY:
+Do not equate financing cost-recovery period with technical life. Residual/terminal treatment remains with FINPV common ledger.
+8. EVIDENCE CLASS:
+Reference engineering durations are MODELED_REFERENCE_CASE unless measured/observed completion distributions are supplied. Survey WACC values are SURVEY evidence, not physical measurement.
+
+RED_TEAM FINDINGS:
+RT-EGC-046-01 OVERNIGHT_AS_ALL_IN: FALSIFIED.
+RT-EGC-046-02 PRIMARY_RESOURCE_EQUALS_PRIVATE_WACC: FALSIFIED as a general accounting identity.
+RT-EGC-046-03 SAME_WACC_GLOBALLY: FALSIFIED by IEA geographic survey evidence.
+RT-EGC-046-04 SHORT_BUILD_FINANCE_NEGLIGIBLE_ALWAYS: FALSIFIED; small in some sensitivities but nonzero and system/rate dependent.
+RT-EGC-046-05 LONG_BUILD_FINANCE_RANKING_IMMATERIAL: FALSIFIED by explicit rank-reversal counterexample.
+RT-EGC-046-06 GOVERNMENT_DERISKING_EQUALS_REAL_RESOURCE_SAVING: REJECTED unless a real-resource mechanism is separately evidenced.
+RT-EGC-046-07 PUBLISHED_GREEN_BOOK_3P5_AS_UNQUALIFIED_CURRENT_POLICY: CONFLICT / FRESHNESS_SENSITIVE after 2026-09-07 official policy announcement.
+RT-EGC-046-08 NREL_ATB_WACC_AS_OBSERVED_GLOBAL_RATE: FALSIFIED boundary extrapolation.
+
+CLAIM GRAPH:
+CLAIM-EGC-046-CONFIN <- EVIDENCE-EGC-046-001.
+CLAIM-EGC-046-WACC <- EVIDENCE-EGC-046-002 + EVIDENCE-EGC-046-005.
+CLAIM-EGC-046-BUILDTIME <- EVIDENCE-EGC-046-003.
+CLAIM-EGC-046-DURATION-SENS <- CALC-EGC-046-001 + EVIDENCE-EGC-046-003.
+CLAIM-EGC-046-RANKREV <- CALC-EGC-046-002.
+CLAIM-EGC-046-DELAY <- CALC-EGC-046-003.
+CLAIM-EGC-046-CRF <- CALC-EGC-046-004.
+CLAIM-EGC-046-DISCOUNT-FRESHNESS <- CONFLICT-EGC-046-001 + CALC-EGC-046-005.
+ALL -> FIN_BOUNDARY_V1 proposal -> JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006 -> downstream cost/baseline integration.
+
+OPEN GAPS:
+- empirical realized construction-duration and overrun distributions must be retrieved candidate-by-candidate before any winner claim that is sensitive to schedule risk;
+- exact candidate-specific construction spend curves are not yet supplied;
+- current effective legal/administrative date of the UK's announced 3% Green Book rate is NOT_VERIFIED;
+- financing sensitivities have not yet been integrated with R_STAR delivered-system portfolios, grid/storage/transmission CAPEX timing, or the strongest final baseline;
+- no final candidate passes G5/G21/G22 from this job alone.
+
+JOB_ID: JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+TITLE: Independent review of finance/construction boundary, calculations and current discount-rate provenance
+ROLE: Independent finance-method / numerical / source-boundary adversary
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Are FIN_BOUNDARY_V1 and CALC-EGC-046-001..005 reproducible, source-boundary correct, and safe against candidate-specific financing privilege?
+DEPENDENCIES: JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006 submitted AWAITING_REVIEW; current SOCDISC/FINPV jobs remain authoritative for PRIMARY accounting.
+REQUIRED_TOOLS: independent source retrieval; independent algebra/code; official HM Treasury/NREL/EIA/IEA verification; at least one alternative construction-spend model.
+REQUIRED_EVIDENCE:
+- reproduce duration-finance factors and ranking reversal;
+- verify EIA representative durations/overnight exclusion;
+- verify NREL ATB ConFinFactor/WACC boundary;
+- arbitrate HM Treasury 3.5%-vs-announced-3% effective-status conflict using an operative source if available;
+- attack nominal-vs-real, tax, currency, subsidy, risk-transfer and lifetime assumptions.
+FALSIFICATION_CONDITION:
+FAIL if calculations are wrong; if overnight/all-in boundaries are conflated; if PRIMARY resource accounting leaks candidate-specific WACC; if Green Book effective status is asserted without operative evidence; or if same-boundary finance sensitivity cannot reproduce the claimed ranking instability.
+STATUS: OPEN
+BLOCKERS: independent reviewer required.
+NEXT_ACTION: distinct session claims reviewer; downstream baseline/cost integrator consumes only reviewed rules/results.
+
+NEXT_HIGHEST_INFORMATION_ACTION_FOR_THIS_SESSION:
+Cross-examine one unrelated team's AWAITING_REVIEW result rather than self-review EGC-046.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
