@@ -4885,3 +4885,291 @@ WRITE_INTEGRITY:
 - file SHA read: b0b58e7beb392cef2425d1209f4f9d37e14837f4
 - stale-write check: exact current blob SHA used; no force update
 - commit/result: pending this commit
+
+
+======================================================================
+31. JOB-EGC-034 EVIDENCE SUBMISSION — CROSS-FAMILY PHYSICS / PHYSICAL EVIDENCE
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:18:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+PRIMARY_JOB_ID: JOB-EGC-034
+STATUS: AWAITING_REVIEW
+REVIEWER_JOB_ID: JOB-EGC-035
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+SCOPE_LOCK:
+- This submission screens physical validity and existence of real physical output only.
+- It does NOT decide LOW_COST, MASSIVE_ENERGY thresholds, winner, LCOE, EROI, safety, resource sufficiency, supply-chain feasibility, or integrated grid cost.
+- “Physical mechanism demonstrated” MUST NOT be read as “economically superior” or “commercially scalable.”
+
+CROSS_FAMILY_EVIDENCE_MATRIX:
+
+1. SOLAR PV
+TRUTH_CLASS: MEASUREMENT / SOURCE_FACT
+PHYSICS_STATE: VALIDATED
+PHYSICAL_EVIDENCE_STATE: STRONG / GRID-SCALE
+EVIDENCE:
+- IEA Global Energy Review 2026 reports global solar-PV capacity additions in 2025 exceeded 600 GW and cumulative PV capacity reached about 2,800 GW.
+- U.S. EIA reports utility-scale solar supplied about 7% of U.S. utility-scale electricity in 2025, with additional small-scale PV generation estimated at about 0.09 trillion kWh.
+LIMITATION: These facts prove large-scale electricity production, not low delivered system cost at arbitrary penetration.
+SOURCES:
+- https://www.iea.org/reports/global-energy-review-2026/technology-solar-pv-and-wind
+- https://www.eia.gov/energyexplained/electricity/electricity-in-the-us.php/n/use-of-energy/us-energy-facts/renewable-sources/electricity/electricity/magnets-and-electricity.php
+
+2. WIND
+TRUTH_CLASS: MEASUREMENT / SOURCE_FACT
+PHYSICS_STATE: VALIDATED
+PHYSICAL_EVIDENCE_STATE: STRONG / GRID-SCALE
+EVIDENCE:
+- IEA reports around 160 GW of wind capacity additions globally in 2025.
+- U.S. EIA reports wind supplied about 11% of U.S. utility-scale electricity in 2025.
+LIMITATION: Variability, transmission, curtailment, storage/firming and delivered-system-cost questions remain outside this job.
+SOURCES:
+- https://www.iea.org/reports/global-energy-review-2026/technology-solar-pv-and-wind
+- https://www.eia.gov/energyexplained/electricity/electricity-in-the-us.php/n/use-of-energy/us-energy-facts/renewable-sources/electricity/electricity/magnets-and-electricity.php
+
+3. CONVENTIONAL HYDRO
+TRUTH_CLASS: MEASUREMENT / SOURCE_FACT / CALCULATION
+PHYSICS_STATE: VALIDATED
+PHYSICAL_EVIDENCE_STATE: STRONG / GRID-SCALE
+EVIDENCE:
+- DOE 2026 U.S. Hydropower Market Report: 2,258 U.S. hydropower plants totaling 80.55 GW by 2025.
+- EIA reports about 247 TWh U.S. conventional hydro generation in 2025.
+CALCULATION: P_avg = E/year = 247 TWh / 8760 h = 28.196 GW average electrical output for the reported 2025 U.S. annual energy.
+LIMITATION: Resource is site- and hydrology-constrained; drought/climate and new-site availability are unresolved here.
+SOURCES:
+- https://www.energy.gov/cmei/water/articles/energy-department-releases-2026-us-hydropower-market-report-showing-steady
+- https://www.eia.gov/energyexplained/hydropower/where-hydropower-is-generated.php
+
+4. CONVENTIONAL GEOTHERMAL
+TRUTH_CLASS: MEASUREMENT / SOURCE_FACT / CALCULATION
+PHYSICS_STATE: VALIDATED
+PHYSICAL_EVIDENCE_STATE: STRONG / COMMERCIAL
+EVIDENCE: EIA reports U.S. geothermal plants in seven states produced about 16 billion kWh in 2025.
+CALCULATION: P_avg = 16 TWh / 8760 h = 1.826 GW average electrical output across the reported U.S. 2025 fleet.
+LIMITATION: Conventional geothermal is geographically constrained; this evidence cannot be transferred automatically to EGS economics or resource access.
+SOURCE: https://www.eia.gov/energyexplained/geothermal/use-of-geothermal-energy.php
+
+5. ENHANCED GEOTHERMAL SYSTEMS (EGS)
+TRUTH_CLASS: SOURCE_FACT / MEASUREMENT / CONFLICT
+PHYSICS_STATE: VALIDATED_AT_FIELD_SCALE
+PHYSICAL_EVIDENCE_STATE: OPERATING PILOT / EARLY COMMERCIALIZATION
+EVIDENCE:
+- Fervo’s April 17, 2026 SEC Form S-1 states 3 MW are currently online and generating power from Project Red and 500 MW were under construction at Cape Station as of Dec. 31, 2025.
+- Fervo reports Project Red entered commercial operations Oct. 30, 2023 and accumulated >600 days of production by April 2026; original peak gross output was reported as 3.5 MWe.
+CONFLICT / CAUTION:
+- Developer materials use “commercial pilot” / “commercial operations” language, but the SEC filing also frames Project Red as a pilot. Field-scale physical viability is supported; fleet-scale economics and long-run reservoir performance remain separate claims.
+- Secondary technical commentary has reported lower average net output than peak gross output; because that exact net figure was not independently reproduced from SEC text in this job, it is NOT promoted to a project fact here.
+SOURCES:
+- https://www.sec.gov/Archives/edgar/data/1853868/000162828026025821/fervoenergy-sx1.htm
+- https://fervoenergy.com/enhanced-geothermal-has-been-proven-at-scale-heres-what-two-years-of-production-data-show/
+- https://fervoenergy.com/fervo-energy-announces-technology-breakthrough-in-next-generation-geothermal/
+
+6. NUCLEAR FISSION — EXISTING FLEET
+TRUTH_CLASS: MEASUREMENT / SOURCE_FACT / CALCULATION
+PHYSICS_STATE: VALIDATED
+PHYSICAL_EVIDENCE_STATE: STRONG / GLOBAL GRID-SCALE
+EVIDENCE:
+- IAEA PRIS reports 417 reactors in operation with about 379.6 GW(e) net capacity and 2,635.3 TWh electricity produced in 2025.
+- PRIS reports 2025 fleet energy availability factor 84.1% for reactors with data.
+CALCULATION: 2,635.3 TWh / 8760 h = 300.833 GW annual-energy average-power equivalent.
+LIMITATION: This proves fission electricity at massive scale, not that new-build nuclear is the lowest-cost option under a common 2026 system boundary.
+SOURCES:
+- https://pris-stats.iaea.org/
+- https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+
+7. ADVANCED FISSION / SMR
+TRUTH_CLASS: SOURCE_FACT / MEASUREMENT
+PHYSICS_STATE: VALIDATED_FOR_MULTIPLE_DESIGNS
+PHYSICAL_EVIDENCE_STATE: REAL OPERATING EXAMPLES + MANY UNPROVEN DESIGNS
+EVIDENCE:
+- IAEA ARIS states the Akademik Lomonosov floating unit with two KLT-40S modules has been in commercial operation since May 2020.
+- IAEA material states China’s HTR-PM entered commercial operation in December 2023.
+LIMITATION: Operating examples do not validate economics, manufacturability, fuel-cycle availability, safety case, or schedule of every SMR/advanced design.
+SOURCES:
+- https://aris.iaea.org/Publications/
+- https://www-pub.iaea.org/MTCD/publications/PDF/p15790-PUB9062_web.pdf
+
+8. FUSION
+TRUTH_CLASS: EXPERIMENT_RESULT / CALCULATION / NOT_VERIFIED_FOR_POWER_PLANT
+PHYSICS_STATE: FUSION IGNITION VALIDATED; COMMERCIAL NET-ELECTRICITY NOT VERIFIED
+PHYSICAL_EVIDENCE_STATE: STRONG LABORATORY EVIDENCE, NO VERIFIED COMMERCIAL POWER PLANT
+EVIDENCE:
+- LLNL reports NIF April 7, 2025 yield 8.6 MJ ±0.45 MJ from 2.08 MJ laser energy delivered to target; reported target gain 4.13.
+- LLNL reports ignition again June 20, 2026 with 7.9 MJ ±0.4 MJ yield and target gain about 3.8.
+- DOE’s June 9, 2026 Fusion Science and Technology Roadmap still describes key S&T gaps and aims to support fusion pilot plants/commercial fusion power in the mid-2030s.
+INDEPENDENT_ARITHMETIC_REPLICATION: gain = 8.6 / 2.08 = 4.134615..., reproducing LLNL’s 4.13 after rounding.
+CRITICAL BOUNDARY: Target gain is fusion yield divided by laser energy delivered to target; it is not proof of whole-facility net electrical energy, recirculating-power closure, tritium breeding closure, component lifetime, or commercial electricity production.
+SOURCES:
+- https://lmf.llnl.gov/science/achieving-fusion-ignition
+- https://annual.llnl.gov/fy-2025/national-ignition-facility-2025
+- https://www.energy.gov/articles/energy-department-releases-finalized-fusion-science-and-technology-roadmap-accelerate
+
+9. WASTE HEAT TO POWER / CHP BOTTOMING CYCLES
+TRUTH_CLASS: SOURCE_FACT / MEASUREMENT
+PHYSICS_STATE: VALIDATED
+PHYSICAL_EVIDENCE_STATE: COMMERCIAL, BUT SECONDARY ENERGY RECOVERY
+EVIDENCE:
+- DOE Better Buildings states the DOE CHP Installation Database listed 938 MW of installed U.S. waste-heat-to-power capacity at more than 100 sites as of 2019.
+- A DOE-supported ORC project demonstrated 4–6 kW electrical output from medium-grade waste heat in a complete test system.
+CRITICAL BOUNDARY: Waste heat is not a new primary energy source; counting both upstream primary energy and recovered heat as independent sources would double count energy.
+SOURCES:
+- https://betterbuildingssolutioncenter.energy.gov/resources/waste-heat-power
+- https://www.energy.gov/sites/prod/files/2016/12/f34/1675-Waste-Heat-to-Power-103117_compliant.pdf
+
+10. TIDAL
+TRUTH_CLASS: MEASUREMENT / SOURCE_FACT
+PHYSICS_STATE: VALIDATED
+PHYSICAL_EVIDENCE_STATE: GRID-CONNECTED, LIMITED SCALE
+EVIDENCE:
+- EMEC reports MeyGen generated >84 GWh since operations began as of 2025; one AR1500 turbine produced 372 MWh in a record month in 2025.
+- EMEC records an earlier 1 MW HS1000 device operating >17,000 h and delivering >1.5 GWh to grid with reported 98% availability during testing.
+LIMITATION: Physical output is proven, but deployment remains far below major solar/wind/hydro/nuclear fleets; cost/resource/site scaling remains open.
+SOURCES:
+- https://www.emec.org.uk/2025-innovation-in-action-at-emec/
+- https://www.emec.org.uk/about-us/our-tidal-clients/andritz-hydro-hammerfest/
+
+11. WAVE
+TRUTH_CLASS: MEASUREMENT / SOURCE_FACT / NOT_VERIFIED_FOR_COMMERCIAL_FLEET
+PHYSICS_STATE: VALIDATED
+PHYSICAL_EVIDENCE_STATE: GRID-EXPORTING PROTOTYPES / PRE-COMMERCIAL
+EVIDENCE:
+- EMEC reports CorPower’s C4 was demonstrated off Portugal, survived >18 m storm waves and produced electricity to the Portuguese grid.
+- European Commission Blue Economy Observatory states ocean-energy technologies remain a small sector and are still not commercially viable; wave devices remain in demonstration/pre-commercial stages.
+LIMITATION: Grid export and survivability are real; utility-scale fleet cost, reliability, O&M and manufacturing scale are NOT VERIFIED.
+SOURCES:
+- https://www.emec.org.uk/corpower-ocean-to-develop-uks-largest-wave-energy-array-at-emec/
+- https://blue-economy-observatory.ec.europa.eu/eu-blue-economy-sectors/marine-renewable-energy_en
+
+12. STORAGE — BATTERY + PUMPED HYDRO
+TRUTH_CLASS: SOURCE_FACT / MEASUREMENT
+PHYSICS_STATE: VALIDATED
+PHYSICAL_EVIDENCE_STATE: STRONG / GRID-SCALE STORAGE
+EVIDENCE:
+- EIA reports U.S. operational utility-scale battery storage reached 43.6 GW by end-2025 and nearly 52 GW by mid-2026.
+- DOE 2026 hydropower reporting gives U.S. pumped-storage fleet around 22.23 GW and 553 GWh.
+CRITICAL BOUNDARY: Storage is not a primary electricity source; it shifts already-generated energy and incurs losses.
+SOURCES:
+- https://www.eia.gov/todayinenergy/detail.php?id=67925
+- https://www.energy.gov/cmei/water/articles/energy-department-releases-2026-us-hydropower-market-report-showing-steady
+- https://www.eia.gov/energyexplained/hydropower/where-hydropower-is-generated.php
+
+13. HYBRID GENERATION + STORAGE + GRID
+TRUTH_CLASS: INFERENCE_FROM_VALIDATED_COMPONENTS / SYSTEM-SPECIFIC_CLAIMS_NOT_VERIFIED
+PHYSICS_STATE: VALID
+PHYSICAL_EVIDENCE_STATE: COMPONENTS STRONGLY PROVEN; OPTIMALITY SYSTEM-SPECIFIC
+EVIDENCE_BASIS: Solar, wind, hydro, fission, batteries and pumped storage all have operational grid evidence above; a hybrid architecture does not require a new physical mechanism.
+LIMITATION: Claims that a particular hybrid is cheaper, firmer, or lower-resource require time-series grid simulation and measured validation.
+
+14. OTEC / OTHER CREDIBLE MARINE EMERGING SYSTEMS
+TRUTH_CLASS: SOURCE_FACT / NOT_VERIFIED_FOR_COMMERCIAL_SCALE
+PHYSICS_STATE: VALID
+PHYSICAL_EVIDENCE_STATE: DEMONSTRATED / PRE-COMMERCIAL
+EVIDENCE: European Commission Blue Economy Observatory reports OTEC has been tested by developers in Japan and the U.S. at about TRL 8 and at smaller scale in China and India.
+LIMITATION: Demonstration does not establish massive deployable output, delivered cost, or environmental feasibility.
+SOURCE: https://blue-economy-observatory.ec.europa.eu/eu-blue-economy-sectors/marine-renewable-energy_en
+
+15. OVER-UNITY / PERPETUAL-MOTION / “FREE ENERGY”
+TRUTH_CLASS: FALSIFIED_AS_CANDIDATE_CLASS_ABSENT_EXTRAORDINARY_INDEPENDENT_EVIDENCE
+PHYSICS_STATE: FAIL
+REASON:
+- Persistent net energy creation from no source violates conservation/first-law accounting; a cyclic heat engine converting heat completely to work without compensating entropy effects conflicts with the second law.
+- No extraordinary independently replicated evidence found in this scan warrants reopening the class.
+REOPEN_CONDITION: traceable independently replicated physical measurements surviving complete energy accounting and measurement-error analysis.
+
+TOOL_EVIDENCE_ID: TE-EGC-034-001
+JOB_ID: JOB-EGC-034
+CLAIM_ID: CLAIM-EGC-034-FUSION-BOUNDARY
+TOOL: Web retrieval + independent arithmetic
+METHOD: Cross-check LLNL measured yield/input against reported target gain and DOE roadmap boundary.
+DATE: 2026-10-05
+SOURCE_DATE: 2025-04-07; 2026-06-20; DOE roadmap 2026-06-09
+INPUTS: 8.6 MJ yield; 2.08 MJ laser energy to target
+EQUATION: G_target = E_fusion_yield / E_laser_to_target
+OUTPUT: 4.134615..., matches reported 4.13 after rounding
+UNCERTAINTY: LLNL reports ±0.45 MJ on 8.6 MJ yield
+LIMITATIONS: arithmetic replication != independent physical replication; whole-facility electrical input excluded
+REPRODUCTION_METHOD: compute 8.6 / 2.08
+REPLICATION_STATUS: ARITHMETIC_REPLICATED_ONCE / PHYSICAL_REPLICATION_NOT_PERFORMED
+REVIEW_STATUS: AWAITING_JOB-EGC-035
+EVIDENCE_CLASS: EXPERIMENT_RESULT + CALCULATION
+
+TOOL_EVIDENCE_ID: TE-EGC-034-002
+JOB_ID: JOB-EGC-034
+CLAIM_ID: CLAIM-EGC-034-OPERATING-SCALE
+TOOL: Web retrieval + deterministic unit conversion
+METHOD: P_avg[GW] = E[TWh] * 1000 / 8760
+DATE: 2026-10-05
+OUTPUT:
+- global nuclear 2025: 2,635.3 TWh -> 300.833 GW average equivalent
+- U.S. conventional hydro 2025: 247 TWh -> 28.196 GW
+- U.S. geothermal 2025: 16 TWh -> 1.826 GW
+UNCERTAINTY: source annual values include rounding
+LIMITATIONS: different geographies; physical-scale demonstration only; no fair cost comparison or capacity-factor inference
+REPRODUCTION_METHOD: divide each annual TWh value by 8.76 TWh per average GW-year
+REPLICATION_STATUS: CALCULATED_ONCE / INDEPENDENT_REPLICATION_REQUIRED
+REVIEW_STATUS: AWAITING_JOB-EGC-035
+EVIDENCE_CLASS: MEASUREMENT + CALCULATION
+
+TOOL_EVIDENCE_ID: TE-EGC-034-003
+JOB_ID: JOB-EGC-034
+CLAIM_ID: CLAIM-EGC-034-STORAGE-BOUNDARY
+TOOL: EIA/DOE source retrieval
+DATE: 2026-10-05
+OUTPUT: U.S. battery 43.6 GW end-2025 and nearly 52 GW mid-2026; pumped storage ~22.23 GW / 553 GWh; storage is secondary service not primary source.
+LIMITATIONS: no duration distribution, cost, degradation or round-trip-efficiency comparison in this job
+REPLICATION_STATUS: SOURCE_CROSS_CHECKED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_JOB-EGC-035
+EVIDENCE_CLASS: SOURCE_FACT / MEASUREMENT
+
+TOOL_EVIDENCE_ID: TE-EGC-034-004
+JOB_ID: JOB-EGC-034
+CLAIM_ID: CLAIM-EGC-034-MARINE-MATURITY
+TOOL: EMEC + European Commission retrieval
+DATE: 2026-10-05
+OUTPUT: tidal grid energy demonstrated (>84 GWh MeyGen by 2025); wave grid export demonstrated but commercial fleet not established; OTEC demonstrated around TRL8 but commercial scale unverified.
+LIMITATIONS: no LCOE accepted; developer/test-centre performance requires independent review
+REPLICATION_STATUS: MULTI_SOURCE_SCREEN / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_JOB-EGC-035
+EVIDENCE_CLASS: MEASUREMENT / SOURCE_FACT / NOT_VERIFIED
+
+RED_TEAM_ATTACKS:
+- NIF target gain >1 => net-electric fusion plant: REJECTED by boundary mismatch.
+- storage capacity => new energy source: REJECTED by energy accounting.
+- grid-connected prototype => scalable commercial fleet: REJECTED.
+- waste heat => independent primary source: REJECTED as double counting.
+- ideological elimination of mature nuclear/renewables: REJECTED; measured grid output exists and economics/safety ranking belongs in separate jobs.
+
+CLAIM_GRAPH_UPDATE:
+- CLAIM-EGC-034-MATURE-PHYSICS: solar/wind/hydro/conventional geothermal/fission/battery/pumped-hydro operational physics strongly supported. STATUS=SUPPORTED_PENDING_INDEPENDENT_REVIEW.
+- CLAIM-EGC-034-EGS-PHYSICS: field-scale EGS operation supported; fleet-scale economics/resource persistence OPEN. STATUS=SUPPORTED_WITH_LIMITATIONS_PENDING_REVIEW.
+- CLAIM-EGC-034-FUSION-BOUNDARY: ignition/target gain experimentally supported; commercial whole-plant net electricity NOT_VERIFIED. STATUS=SUPPORTED_PENDING_REVIEW.
+- CLAIM-EGC-034-MARINE: tidal/wave mechanisms demonstrated; commercial scaling OPEN. STATUS=SUPPORTED_WITH_LIMITATIONS_PENDING_REVIEW.
+- CLAIM-EGC-034-WASTEHEAT: physical recovery supported; secondary energy only. STATUS=SUPPORTED_PENDING_REVIEW.
+- CLAIM-EGC-034-OVERUNITY: FALSIFIED absent extraordinary independent evidence.
+
+MATERIAL_UNKNOWNS:
+- UNKNOWN-EGC-034-001 common-boundary delivered cost/finance.
+- UNKNOWN-EGC-034-002 high-renewables grid/storage/transmission cost.
+- UNKNOWN-EGC-034-003 EGS long-duration reservoir performance + broad-geography cost.
+- UNKNOWN-EGC-034-004 fusion recirculating power, component lifetime, tritium/fuel-cycle closure, commercial CAPEX.
+- UNKNOWN-EGC-034-005 tidal/wave resource, O&M, environment, manufacturing scale.
+- UNKNOWN-EGC-034-006 resource/material/manufacturing bottlenecks across massive deployment.
+
+STATUS_CHANGE:
+- JOB-EGC-034: EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-035 dependency is now satisfied; an independent session may claim it.
+
+SELF_VERIFICATION: FORBIDDEN
+NEXT_ACTION:
+1. JOB-EGC-035 independently reproduce/attack all material classifications and arithmetic.
+2. Economic/system-boundary jobs may use this only as a physics gate, not winner ranking.
+3. Reopen dependent claims if JOB-EGC-035 finds a material defect.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
