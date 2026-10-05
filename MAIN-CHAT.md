@@ -11772,3 +11772,199 @@ WRITE_INTEGRITY:
 - stale-write check: exact fetched blob SHA supplied to update_file; no force push.
 - mutation scope: only MAIN-CHAT.md on authorized branch.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+42. JOB-EGC-MATERIALS-SRC-M1-20261005 — MATERIALS / SUPPLY-CHAIN EVIDENCE PACKAGE
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-MATERIALS-M1-20261005
+PRIMARY_JOB_ID: JOB-EGC-MATERIALS-SRC-M1-20261005
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: JOB-EGC-MATERIALS-REV-M1-20261005
+
+TOOL_EVIDENCE_ID: TE-EGC-MATERIALS-M1-001
+JOB_ID: JOB-EGC-MATERIALS-SRC-M1-20261005
+CLAIM_ID: CLAIM-EGC-MATERIALS-OBSERVED-2025-001
+TOOL_OR_METHOD: Direct official-source retrieval of IEA Global Critical Minerals Outlook 2026 market overview/executive summary
+PURPOSE: Separate observed 2025 demand/refining-concentration facts from future supply projections.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA 2026 market data and analysis.
+PARAMETERS: Observed/current statements only in this evidence item.
+VERSION_OR_MODEL: Global Critical Minerals Outlook 2026.
+SOURCE_OR_DATASET: International Energy Agency.
+SOURCE_DATE: 2026-07-16 report; observed data primarily 2025.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.iea.org/reports/global-critical-minerals-outlook-2026/market-overview
+- https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary
+COMMAND_CODE_EQUATION_OR_METHOD: Direct source-text extraction; keep observed data distinct from scenario projections.
+RAW_OR_KEY_OUTPUT:
+- [SOURCE_FACT] Global battery demand grew by more than 35% in 2025 and surpassed 1.5 TWh; IEA says battery storage was a major driver of demand growth.
+- [SOURCE_FACT] Demand for key energy minerals grew at close to 10%/year on average in recent years; lithium demand rose around 25%/year on average over the prior two years.
+- [SOURCE_FACT] The energy sector drove around 75% of demand growth across key energy minerals in 2025.
+- [SOURCE_FACT] Average share of the top refined supplier across the market-overview set reached about 70% in 2025 versus 68% in 2020.
+- [SOURCE_FACT] In the executive-summary subset excluding rare earths, average top-refining-country share reached 72% in 2025 versus 70% in 2023. This is a different aggregation from the 70% market-overview statistic, not a contradiction.
+- [SOURCE_FACT] Indonesia for nickel and China for other key energy minerals accounted for over three-quarters of growth in refined supply between 2023 and 2025; in manganese, nickel and graphite, almost all supply growth came from the leading supplier.
+UNITS: TWh battery demand; percent growth/share.
+UNCERTAINTY: IEA aggregates differ by mineral set/definition; concentration is market structure, not proof of geologic scarcity.
+ASSUMPTIONS: NONE for quoted source facts.
+LIMITATIONS: Does not quantify candidate-specific kg/MW or kg/MWh material intensity.
+REPRODUCIBILITY_INSTRUCTIONS: Open cited IEA market overview lines on 2025 demand and refining concentration and executive-summary refining paragraph.
+INDEPENDENT_REPLICATION: REQUIRED by JOB-EGC-MATERIALS-REV-M1-20261005.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Rapid demand growth and concentrated refining are current supply-chain risks that must be modeled separately from reserves/resource abundance.
+CLAIM_NOT_SUPPORTED: A current physical shortage of every critical mineral; automatic failure of any energy technology.
+
+TOOL_EVIDENCE_ID: TE-EGC-MATERIALS-M1-002
+JOB_ID: JOB-EGC-MATERIALS-SRC-M1-20261005
+CLAIM_ID: CLAIM-EGC-MATERIALS-PROJECTED-GAPS-001
+TOOL_OR_METHOD: Direct IEA Outlook scenario inspection
+PURPOSE: Identify future project-pipeline gaps while preserving their status as projections, not measurements.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA Global Critical Minerals Outlook 2026 STEPS/base-case project pipeline.
+PARAMETERS: 2035 supply-gap statements and 2040 demand outlook.
+VERSION_OR_MODEL: IEA Global Critical Minerals Outlook 2026.
+SOURCE_OR_DATASET: IEA analysis based on company reports, S&P Capital IQ and Wood Mackenzie as cited by IEA.
+SOURCE_DATE: 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/global-critical-minerals-outlook-2026/outlook
+COMMAND_CODE_EQUATION_OR_METHOD: Preserve scenario labels; no conversion of project-pipeline forecast into present shortage.
+RAW_OR_KEY_OUTPUT:
+- [SOURCE_FACT about projection] In STEPS, aggregate critical-mineral demand almost doubles by 2040; lithium demand rises over threefold; nickel, graphite and rare-earth demand rises roughly 50-90%; copper adds about 7 million tonnes of demand to 2040.
+- [SOURCE_FACT about projection] Base-case announced-project pipeline leaves a projected copper supply gap around 25% in 2035, improved from roughly 30% in the previous outlook.
+- [SOURCE_FACT about projection] Projected cobalt gap widens to above 25% following DRC export-quota assumptions; base case has slight nickel/graphite gaps, but IEA notes early-stage projects could cover demand in a high-production case.
+- [SOURCE_FACT] Primary supply requirements are calculated by IEA as total demand net of secondary supply and accounting for refining losses.
+UNITS: percent; million tonnes; scenario years 2035/2040.
+UNCERTAINTY: High. Outcomes depend on announced projects, policy, technology/chemistry, recycling, substitution and demand scenario.
+ASSUMPTIONS: IEA scenario definitions as published.
+LIMITATIONS: Forecast, not physical measurement; does not prove geologic depletion or inevitable shortage.
+REPRODUCIBILITY_INSTRUCTIONS: Open IEA 2026 Outlook and inspect demand-growth and expected-mine-supply sections with scenario notes.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT_ABOUT_PROJECTION / NOT_MEASUREMENT.
+CLAIM_SUPPORTED: Copper and some mineral project pipelines can become deployment constraints under current-policy/scenario assumptions and require sensitivity analysis.
+CLAIM_NOT_SUPPORTED: A deterministic 25% copper shortage in 2035.
+
+TOOL_EVIDENCE_ID: TE-EGC-MATERIALS-M1-003
+JOB_ID: JOB-EGC-MATERIALS-SRC-M1-20261005
+CLAIM_ID: CLAIM-EGC-MATERIALS-MIDSTREAM-MANUFACTURING-001
+TOOL_OR_METHOD: Direct IEA Energy Technology Perspectives 2026 source retrieval + Critical Minerals Outlook cross-check
+PURPOSE: Distinguish midstream/geographic concentration from aggregate manufacturing-capacity shortage.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA ETP 2026 executive summary; IEA Critical Minerals Outlook 2026 executive summary.
+PARAMETERS: Current/committed capacity and STEPS statements.
+VERSION_OR_MODEL: ETP 2026; GCMO 2026.
+SOURCE_OR_DATASET: International Energy Agency.
+SOURCE_DATE: 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.iea.org/reports/energy-technology-perspectives-2026/executive-summary
+- https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary
+COMMAND_CODE_EQUATION_OR_METHOD: Compare statements about aggregate capacity with weak-link concentration.
+RAW_OR_KEY_OUTPUT:
+- [SOURCE_FACT] IEA finds every key clean-energy supply chain it analysed contains at least one step where less than one-quarter of demand outside China could be met by supply outside China.
+- [SOURCE_FACT] China accounts for roughly 60-85% of production capacity in key supply chains and over 95% in some production steps.
+- [SOURCE_FACT] Mineral processing/midstream concentration is especially acute; magnet rare-earth refining is highlighted as a vulnerability.
+- [SOURCE_FACT] IEA simultaneously reports surplus existing manufacturing capacity relative to current demand for solar PV and batteries, showing that aggregate manufacturing capacity is NOT universally scarce.
+- [SOURCE_FACT] Global manufacturing investment for key clean-energy technologies fell from about USD 220 billion in 2023 to just under USD 200 billion in 2024 and was expected to decline gently through end-2025; IEA attributes part of this to PV/battery capacity surplus.
+- [SOURCE_FACT] In rare-earth supply chains, geographically diversified existing/announced refining capacity is about two-thirds of expected mined supply by 2035, while planned magnet production is only about one-third; planned battery cathode production is about one-third of projected lithium mining capacity. These are value-chain balance indicators, NOT direct demand-gap percentages.
+UNITS: percent; USD/year; relative fractions of upstream capacity.
+UNCERTAINTY: STEPS/project pipeline subject to commissioning and demand uncertainty; geographic resilience is not the same as global physical capacity.
+ASSUMPTIONS: IEA definitions of production/manufacturing capacity.
+LIMITATIONS: Technology ownership/geography does not alone quantify delivered-energy cost impact.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect ETP 2026 executive-summary supply-chain concentration/manufacturing-investment paragraphs and GCMO 2026 downstream-diversification paragraph.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT / SOURCE_FACT_ABOUT_PROJECTION.
+CLAIM_SUPPORTED: Midstream concentration and diversification bottlenecks can constrain deployment even when aggregate global PV/battery manufacturing capacity is ample.
+CLAIM_NOT_SUPPORTED: A blanket claim that clean-energy manufacturing capacity is globally insufficient today.
+
+TOOL_EVIDENCE_ID: TE-EGC-MATERIALS-M1-004
+JOB_ID: JOB-EGC-MATERIALS-SRC-M1-20261005
+CLAIM_ID: CLAIM-EGC-NUCLEAR-FUEL-SUPPLYCHAIN-001
+TOOL_OR_METHOD: Direct IEA GCMO 2026 executive-summary inspection
+PURPOSE: Include nuclear fuel-cycle supply constraints in cross-candidate materials analysis rather than focusing only on renewables/batteries.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA nuclear supply-chain special-focus statements.
+PARAMETERS: Current global fuel-cycle concentration and expected expansion needs.
+VERSION_OR_MODEL: Global Critical Minerals Outlook 2026.
+SOURCE_OR_DATASET: IEA.
+SOURCE_DATE: 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary
+COMMAND_CODE_EQUATION_OR_METHOD: Direct source extraction.
+RAW_OR_KEY_OUTPUT:
+- [SOURCE_FACT] IEA says renewed nuclear expansion requires investment across uranium and the nuclear fuel cycle; the most immediate constraints are downstream, particularly tight uranium-conversion capacity, with enrichment also needing medium-term expansion.
+- [SOURCE_FACT] Fuel fabrication capacity is generally adequate for conventional fuels, while reactor-specific requirements can constrain some technologies.
+- [SOURCE_FACT] Top three countries account for almost three-quarters of uranium mining and around 70% of conversion and enrichment capacity.
+UNITS: percent shares; qualitative capacity state.
+UNCERTAINTY: Technology-specific fuel requirements and project timelines vary; no candidate-specific fuel-demand calculation is included here.
+ASSUMPTIONS: NONE beyond source scope.
+LIMITATIONS: Does not quantify uranium resource adequacy, HALEU deployment rate, fuel price sensitivity or reactor-specific inventories.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect IEA GCMO 2026 executive summary nuclear fuel-cycle paragraphs.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Nuclear supply-chain analysis must model conversion/enrichment/fuel-specific bottlenecks, not only uranium resource tonnage.
+CLAIM_NOT_SUPPORTED: Existing nuclear cannot scale or that uranium is geologically exhausted.
+
+TOOL_EVIDENCE_ID: TE-EGC-MATERIALS-M1-005
+JOB_ID: JOB-EGC-MATERIALS-SRC-M1-20261005
+CLAIM_ID: CLAIM-EGC-MATERIALS-CALC-001
+TOOL_OR_METHOD: Python deterministic calculation + Wolfram Language same-session cross-tool replication
+PURPOSE: Translate selected concentration/gap percentages into intuitive scale ratios without changing source meaning.
+EXECUTION_DATE: 2026-10-05
+INPUTS: projected copper gap=25% of 2035 primary requirement; average top refined supplier share=70%; excluding-REE top-refiner share=72%; manufacturing investment reference 220 -> <200 USD billion.
+PARAMETERS: fixed-demand arithmetic only.
+VERSION_OR_MODEL: Python runtime + Wolfram Language evaluator.
+SOURCE_OR_DATASET: TE-EGC-MATERIALS-M1-001..003 source inputs.
+SOURCE_DATE: 2026 source; calculation 2026-10-05.
+SOURCE_URL_DOI_OR_IDENTIFIER: source URLs above.
+COMMAND_CODE_EQUATION_OR_METHOD:
+- If expected copper supply is 75% of requirement, gap relative to expected supply = 25/75 = 33.3333%.
+- 70/30 = 2.3333; 72/28 = 2.5714 top-supplier share relative to all other suppliers combined in the simplified binary partition.
+- (220-200)/220 = 9.0909%; because 2024 was 'just under' 200, actual decline from 220 was slightly greater than 9.09%.
+RAW_OR_KEY_OUTPUT: 33.333333%; 2.333333; 2.571429; >9.090909% decline bound. Python and Wolfram outputs matched to displayed precision.
+UNITS: percent / dimensionless ratios.
+UNCERTAINTY: Arithmetic negligible; source/scenario uncertainty dominates.
+ASSUMPTIONS: Copper-demand denominator fixed for first calculation; 200 used as conservative upper bound for 'just under 200'.
+LIMITATIONS: Same-session cross-tool match is NOT independent-session replication and does not increase confidence in IEA projections themselves.
+REPRODUCIBILITY_INSTRUCTIONS: Recompute 25/75, 70/30, 72/28 and 20/220.
+INDEPENDENT_REPLICATION: SAME_SESSION_CROSS_TOOL_ONLY / DISTINCT_SESSION_REQUIRED.
+EVIDENCE_CLASS: CALCULATION.
+CLAIM_SUPPORTED: A 25%-of-requirement projected gap corresponds to needing ~33.3% more supply than the base expected-supply level if demand is held fixed.
+CLAIM_NOT_SUPPORTED: Probability the gap will occur.
+
+CANDIDATE_EXPOSURE_MAP — INFERENCE / NOT YET QUANTIFIED:
+- GRID / transmission-heavy portfolios: copper exposure is material; exact t/GW and t/TWh remain UNKNOWN here.
+- BATTERY storage: lithium/graphite exposure is material; nickel/cobalt exposure is chemistry-sensitive. IEA explicitly notes LFP growth changes cobalt demand, so one fixed chemistry assumption is forbidden.
+- WIND: magnet rare-earth exposure applies to relevant permanent-magnet designs; do NOT assign it uniformly to every turbine architecture without bill-of-material evidence.
+- SOLAR PV: global module manufacturing capacity is not currently a universal bottleneck according to IEA, but geographic concentration and upstream material/process exposure still require technology-specific bills of materials.
+- NUCLEAR FISSION: conversion/enrichment concentration is a distinct bottleneck category; conventional fuel fabrication is generally adequate per IEA, while some advanced-fuel requirements may be tighter.
+- GEOTHERMAL / HYDRO / THERMAL plants: steel, cement, drilling equipment, specialty alloys, water/cooling and construction supply chains are NOT quantified by this package and remain UNKNOWN.
+
+RED_TEAM / FALSIFICATION RESULTS:
+- 'Demand growth means proven shortage' -> FALSIFIED. Demand growth and supply adequacy are separate; IEA high-production cases can close some projected nickel/graphite gaps.
+- 'High refining concentration means ore does not exist elsewhere' -> FALSIFIED as a category error. Concentration is a resilience/industrial-capacity issue, not geologic-resource proof.
+- 'All clean-energy manufacturing is capacity-constrained today' -> FALSIFIED by IEA's reported current PV/battery manufacturing surplus.
+- 'Copper 25% gap is a measured 2035 fact' -> FALSIFIED. It is a scenario/project-pipeline projection.
+- 'One battery chemistry can represent future mineral demand' -> FALSIFIED as a robust modeling rule; IEA explicitly reports LFP adoption materially changes cobalt outlook.
+
+RESULT:
+- PROVEN/SOURCE_FACT: 2025 critical-mineral demand growth and refining concentration are high; material-processing and manufacturing weak links are geographically concentrated; nuclear fuel-cycle midstream concentration also exists.
+- PROJECTION: Under IEA 2026 project-pipeline/STEPS assumptions, copper and some other minerals retain 2035 supply gaps; these are uncertainty-bearing scenario outputs.
+- INFERENCE: Mission scaling models must track at least four separate constraints: geologic/resource adequacy, mine/raw production ramp, refining/processing capacity, and component/manufacturing capacity. Collapsing them into one 'materials shortage' variable is invalid.
+- UNKNOWN: candidate-specific material intensities, mine/refinery lead times by commodity, recycling availability at mission deployment horizon, substitution/chemistry trajectories, and bulk-material/workforce bottlenecks.
+
+STATUS_CHANGE:
+- JOB-EGC-MATERIALS-SRC-M1-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-MATERIALS-REV-M1-20261005: OPEN and executable.
+- GLOBAL_SOLVED: NO.
+- CURRENT_WINNER: NONE.
+
+NEXT_ACTION:
+1. Distinct session claims JOB-EGC-MATERIALS-REV-M1-20261005 and independently reproduces all source facts and calculation boundaries.
+2. After objective/boundary are frozen, JOB-EGC-013 should combine verified technology bills of materials with deployment rate and current/credible future supply to compute commodity-specific annual ramp ratios.
+3. Create candidate-specific follow-up evidence for copper, lithium/graphite/battery chemistry, magnet rare earths, uranium conversion/enrichment, and bulk construction materials only where architecture exposure is material.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write attempt 1: 7d3595b536bb260e48e8b2ba4cbcdce71d33a14c
+- file SHA read immediately before write attempt 1: 3acf772969a11aa27066a86b348cbcd6fee81c8f
+- exact current blob SHA supplied; append-only; no force push; only authorized file touched.
