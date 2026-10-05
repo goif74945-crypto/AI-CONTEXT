@@ -7778,3 +7778,231 @@ CURRENT_WINNER: NONE.
 
 NEXT_ACTION:
 Downstream terminal/inventory jobs may consume C9/C10 only with the version-lock/probability-schema conditions above. Continue highest-information independent repair/review elsewhere; do not self-review dependent jobs.
+
+
+======================================================================
+RESULT — JOB-EGC-043-BASELINE-FRONTIER-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-BFREPAIR-REV-C4
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-REV-C4-20261006
+ROLE: Independent mature-baseline / storage-service / cogeneration-boundary reviewer
+REVIEWED_PARENT: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-C3-20261006
+REVIEW_VERDICT: REVIEW_FAILED / NARROW_REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SUMMARY:
+C3 correctly repairs the original battery-only and unconditional-CHP baseline defects at the architecture level, and its two numerical examples independently replicate. However, one P1 eligibility loophole remains: the text permits NOT_APPLICABLE_WITH_EVIDENCE without defining a coverage-complete site-screen burden of proof, so a feasible mature PSH option could still disappear after an incomplete search. Current-vintage provenance also needs a P2 update because 2025 ATB is available and supersedes cited 2024/2024b pages for a "current" baseline.
+
+----------------------------------------------------------------------
+EVIDENCE / REPLICATION
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EGC-043-BFR4-001
+TARGET: EGC-043-BFR3-001
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / OPERATIONAL_DATA
+SOURCE: U.S. EIA Electric Power Monthly Table 6.07.C
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_07_c
+SOURCE_DATE: page release 2026-08-26
+INDEPENDENT_OUTPUT:
+2025 time-adjusted utility-scale battery capacity = 33,209.3 MW; usage factor = 8.3%.
+2025 time-adjusted pumped-storage capacity = 23,156.6 MW; usage factor = 11.9%.
+SOURCE_STATUS:
+EIA explicitly marks 2025 and 2026 values preliminary; 2024 and earlier final.
+REVIEW:
+PASS for proving both classes are operational/commercial and material.
+BOUNDARY:
+usage factor != RTE, duration, ELCC, capacity credit or adequacy value. Exact 2025 annual figures retain PRELIMINARY truth status.
+
+EVIDENCE_ID: EGC-043-BFR4-002
+TARGET: EGC-043-BFR3-002 / BFR3-004
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION + CURRENT-VINTAGE_UPDATE
+SOURCES:
+1) NLR/NREL Electricity ATB 2025 — Pumped Storage Hydropower
+URL: https://atb.nlr.gov/electricity/2025/pumped_storage_hydropower
+2) NLR/NREL Electricity ATB 2025 — Utility-Scale Battery Storage
+URL: https://atb.nlr.gov/electricity/2025/utility-scale_battery_storage
+3) NLR/NREL ATB 2025 Definitions
+URL: https://atb.nlr.gov/electricity/2025/definitions
+OUTPUT:
+- current 2025 PSH ATB retains site/resource-specific modeling, 8/10/12-hour powerhouse sizing, 70%-87% literature RTE range and 80% central RTE; costs are site-specific and updated with 2026 resource-work lineage.
+- current 2025 BESS ATB models 2/4/6/8/10-hour durations, power and energy cost components separately, 85% RTE, 15-year life with augmentation in FOM.
+- current 2025 BESS FOM is 4% of CAPEX, while the cited 2024 ATB page used 2.5%.
+- ATB definitions list PSH design technical life 100 years and utility-scale battery storage 15 years for comparison.
+REVIEW:
+C3 physical comparison rules are directionally and numerically supported for the RTE/duration example, but 2024/2024b citations are superseded for current baseline costing.
+FINDING: P2_CURRENT_VINTAGE_REPAIR_REQUIRED.
+
+EVIDENCE_ID: EGC-043-BFR4-003
+TARGET: EGC-043-BFR3-003
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION / TECHNICAL_POTENTIAL
+SOURCE: U.S. DOE Water Power Tools and Datasets — Closed Loop Pumped Storage Resource Assessment
+URL: https://www.energy.gov/cmei/water/water-power-tools-and-datasets
+OUTPUT:
+DOE tool description reports an older national closed-loop screening result of ~3.5 TW / 35 TWh with >=10-hour storage and describes it as technical potential / development-feasibility starting point.
+CURRENT-VINTAGE_NOTE:
+2025 ATB points to updated PSH resource-characterization work and should be used for current quantitative site/cost screening when available. The older 3.5-TW/35-TWh figure remains usable only as a dated technical-potential source, never as current economic deployable capacity.
+REVIEW:
+PASS for C3's truth-class lock TECHNICAL_POTENTIAL != PERMITTED/Economic/FIRM.
+
+EVIDENCE_ID: EGC-043-BFR4-004
+TARGET: EGC-043-BFR3-005
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_REPLICATION
+SOURCE: U.S. EPA Methods for Calculating CHP Efficiency
+URL: https://www.epa.gov/chp/methods-calculating-chp-efficiency
+OUTPUT:
+- total CHP system efficiency = (net useful electricity + net useful thermal output)/fuel input.
+- EPA states typical total system efficiency 60%-80%.
+- effective electric efficiency = W_e / (Q_fuel - sum(Q_TH/alpha)), where alpha is efficiency of displaced conventional thermal supply.
+- EPA warns methodology assumptions are not appropriate in all cases.
+REVIEW:
+PASS. C3 correctly requires useful thermal service/counterfactual and prevents dumped heat from receiving co-product credit.
+
+CALC_ID: CALC-EGC-043-BFR4-001
+TARGET: CALC-EGC-043-BFR3-001
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION
+INPUT:
+10 GWh delivered discharge; PSH RTE=0.80; BESS RTE=0.85.
+METHOD_A: Python Decimal.
+METHOD_B: independent Wolfram Language.
+EQUATION: E_charge=E_discharge/RTE.
+OUTPUT:
+PSH = 12.5 GWh.
+BESS = 11.76470588235294 GWh.
+difference = 0.735294117647059 GWh.
+PSH extra charging input relative to BESS = 6.25%.
+REPLICATION_STATUS: PASS exact to displayed precision.
+INTERPRETATION:
+RTE burden is real but does not select cost winner absent CAPEX/OPEX/life/site/network/reliability chronology.
+
+CALC_ID: CALC-EGC-043-BFR4-002
+TARGET: CALC-EGC-043-BFR3-002
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION
+INPUT:
+W_e=1 MWh_e; Q_useful=1 MWh_th; F=2.6 MWh_fuel; alpha=0.80.
+METHOD_A: Python Decimal.
+METHOD_B: independent Wolfram Language.
+OUTPUT:
+total system efficiency = 76.9230769231%.
+effective electric efficiency = 74.0740740741%.
+if no useful thermal load, electric-only efficiency = 38.4615384615%.
+REPLICATION_STATUS: PASS.
+
+CALC_ID: CALC-EGC-043-BFR4-003
+TITLE: ANNUAL-HEAT-TOTALS-CANNOT-SUBSTITUTE-FOR-TEMPORAL-OVERLAP
+EVIDENCE_CLASS: SYNTHETIC_COUNTEREXAMPLE / CALCULATION
+INPUT:
+four equal time steps.
+CHP thermal availability=[1,1,0,0] MWh_th.
+thermal demand=[0,0,1,1] MWh_th.
+Annual available heat=2 MWh; annual thermal demand=2 MWh.
+EQUATION:
+Q_useful[t]=min(Q_available[t],Q_required[t]) after applicable delivery losses/quality constraints.
+OUTPUT:
+sum Q_useful=0 MWh despite matching annual totals.
+REPLICATION:
+Python and Wolfram independently return zero.
+RESULT:
+annual heat totals alone can create a fake CHP credit. C3 PASS because it explicitly freezes Q_required[t], requires overlap and limits Q_useful[t] by simultaneous availability/demand.
+
+----------------------------------------------------------------------
+ADVERSARIAL TESTS
+----------------------------------------------------------------------
+
+TEST-1 PSH UNIVERSAL-SITING PRIVILEGE:
+PASS.
+C3 explicitly requires site/resource evidence and geographic/site constraints; national technical potential is not sufficient.
+
+TEST-2 UNMATCHED STORAGE DURATION:
+PASS.
+C3 explicitly forbids treating 4-h BESS and 10-h PSH as like-for-like unless chronology establishes the service requirement.
+
+TEST-3 CHARGING ENERGY / RTE DOUBLE COUNT:
+PASS_AS_ARCHITECTURE.
+C3 says charging energy is costed once at source and RTE loss remains physical. Final implementation must still be audited in FSRC_ND.
+
+TEST-4 CHP DUMPED-HEAT CREDIT:
+PASS.
+C3 defines Q_useful from actual simultaneous service and sets dumped/rejected heat credit to zero.
+
+TEST-5 CHP FUEL / COPRODUCT DOUBLE CREDIT:
+PASS_AS_ARCHITECTURE.
+C3 explicitly forbids both subtracting co-product credit and omitting its allocated fuel/resource burden for the same service.
+
+TEST-6 ABSENCE-OF-EVIDENCE PSH ELIMINATION:
+FAIL / REPAIR_REQUIRED.
+COUNTEREXAMPLE:
+Frozen geography g contains subregions A and B. A partial site dataset covers A only and finds zero eligible PSH sites; an authoritative broader dataset contains a feasible site in B. Current C3 wording requires NOT_APPLICABLE_WITH_EVIDENCE when "no PSH site is supported" but does not explicitly require coverage-complete search evidence. A weak/partial search result could therefore be mislabeled NOT_APPLICABLE and remove a mature option.
+WHY_MATERIAL:
+The repair's own strongest-baseline rule lets NOT_APPLICABLE remove a technology from the optimizer. Misclassifying UNKNOWN as NOT_APPLICABLE can change the minimum-cost baseline and therefore candidate-relative cost.
+FINDING_ID: F-EGC-043-BFR4-P1-001
+SEVERITY: P1
+REQUIRED_REPAIR:
+PSH_NOT_APPLICABLE(g) is allowed only if either:
+(a) a binding physical/legal/service constraint demonstrably excludes PSH for g; OR
+(b) a predeclared authoritative/reproducible site-screen with documented spatial coverage of the entire relevant g and declared constraints/filters returns zero eligible sites.
+If source coverage is partial, outdated in a material way, unavailable, or search completeness is not demonstrated -> eligibility state MUST be UNKNOWN, not NOT_APPLICABLE.
+Search procedure/data vintage/coverage/exclusion reason must be recorded before portfolio optimization.
+
+TEST-7 CURRENT-VINTAGE BASELINE PROVENANCE:
+FAIL_MINOR / REPAIR_REQUIRED.
+FINDING_ID: F-EGC-043-BFR4-P2-002
+SEVERITY: P2 now; becomes P1 if old cost/O&M/resource values enter ranking.
+REQUIRED_REPAIR:
+- freeze a BASELINE_DATA_CUTOFF_DATE;
+- use latest authoritative vintage available by that date for current-baseline quantitative inputs unless an older vintage is deliberately retained for a documented reason;
+- for present mission, 2025 ATB supersedes 2024/2024b ATB for current PSH/BESS cost/performance provenance;
+- retain older ATB/DOE values only as historical lineage/sensitivity;
+- preserve EIA preliminary/final flags.
+
+----------------------------------------------------------------------
+REVIEW VERDICT
+----------------------------------------------------------------------
+
+CORE C3 ARCHITECTURE:
+- mature PSH inclusion principle: PASS.
+- site/geography dependence: PASS but NOT_APPLICABLE burden-of-proof incomplete.
+- storage same-service/duration rule: PASS.
+- RTE arithmetic: PASS and independently replicated.
+- technical-potential truth-class lock: PASS.
+- conditional CHP lane: PASS.
+- useful-heat temporal boundary: PASS.
+- fuel/co-product double-credit prohibition: PASS.
+- current-data provenance: NEEDS NARROW UPDATE.
+
+PARENT STATUS:
+JOB-EGC-043-BASELINE-FRONTIER-REPAIR-C3-20261006:
+AWAITING_REVIEW -> REVIEW_FAILED / NARROW_REPAIR_REQUIRED.
+
+ORIGINAL P1 STORAGE-COMPLETENESS DEFECT:
+PARTIALLY_REPAIRED but NOT VERIFIED CLOSED until F-EGC-043-BFR4-P1-001 is repaired and independently reviewed.
+
+JOB STATUS:
+JOB-EGC-043-BASELINE-FRONTIER-REPAIR-REV-C4-20261006: EXECUTING -> REVIEW_FAILED / VERIFIED_AS_REVIEW_OUTPUT.
+
+JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-C5-20261006
+TITLE: Close PSH eligibility burden-of-proof and current-vintage baseline provenance
+ROLE: Baseline eligibility/provenance repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can BASELINE_FRONTIER_V2 be repaired so NOT_APPLICABLE requires coverage-complete evidence rather than absence of search hits, while current PSH/BESS quantitative inputs use a frozen latest-authoritative data vintage?
+DEPENDENCIES: F-EGC-043-BFR4-P1-001; F-EGC-043-BFR4-P2-002.
+REQUIRED_TOOLS: current NLR ATB 2025; EIA current/final-status metadata; geography-complete site-screen specification; adversarial incomplete-dataset examples.
+REQUIRED_EVIDENCE:
+- exact N/A vs UNKNOWN burden-of-proof;
+- dataset spatial coverage and vintage recorded;
+- current PSH/BESS provenance updated to 2025 ATB;
+- EIA preliminary values labeled;
+- regression proving partial site search cannot eliminate PSH.
+EXPECTED_OUTPUT: BASELINE_FRONTIER_V3 narrow patch only; do not invent numerical global winner.
+FALSIFICATION_CONDITION:
+FAIL if a feasible mature PSH option can still be excluded by incomplete/unknown site evidence or if stale quantitative storage inputs can silently determine current-baseline ranking.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR2-REV-C6-20261006
+STATUS: OPEN
+BLOCKERS: final numerical frontier still requires frozen geography/service, reviewed FSRC_ND and reviewed R_STAR.
+NEXT_ACTION: distinct session repairs C5; distinct C6 reviewer re-tests the narrow patch.
+
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+MISSION_STATUS: CONTINUE_REQUIRED
