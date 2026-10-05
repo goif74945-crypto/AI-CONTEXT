@@ -1,0 +1,22 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1913-V8-DIRECTIVE-CONTENT-TYPE",
+  "CHAT_ID": "C-SOL-20261005-1913-V8-DIRECTIVE-CT",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SCOPE": [
+    "Final DOC-C POST /api/directives explicit error matrix",
+    "packages/api/directives.ts Content-Type rejection",
+    "tests/coverage/directive-create-branches.test.ts Content-Type oracle"
+  ],
+  "FILES_SCANNED": 2,
+  "NEW_ACTIONABLE_GAPS": 1,
+  "NEW_FINDING_ID": "FINDING-DOC-C4-DIRECTIVE-CONTENT-TYPE-STATUS-001",
+  "GAP_CLASS": [
+    "CONTRACT_DRIFT",
+    "INVALID_ERROR_PATH",
+    "TEST_ORACLE_DEFECT"
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "CLOSURE_ELIGIBLE": false
+}
