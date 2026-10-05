@@ -6,7 +6,7 @@
 - INTEGRATION_BRANCH: NEXY.AI-Test-AI
 - BASE_SHA: 07dd617109fd4730582f3615cdaf2bbbe277b585
 - WORKER_BRANCH: work/NEXY-AI-Test-AI/T-S8-LATESTCANON-9F2A61D4
-- STATUS: AWAITING_VALIDATION
+- STATUS: FROZEN_FOR_SINGLE_BRANCH_MIGRATION
 - MUTATION_SCOPE:
   - packages/api/canonical.ts
   - packages/api/artifact-list-projection.ts
@@ -38,3 +38,7 @@
 - VALIDATION_STATUS: BLOCKED_INFRA; exact candidate has 0 workflow runs and 0 commit statuses.
 - TEST_CLAIM: NONE. Test source exists but has not executed on an available runner.
 - INTEGRATION_DECISION: FAIL_CLOSED until exact-candidate executable evidence exists.
+
+- MIGRATION_PROPOSAL: NEXY-BUILD-CONTROL/PRODUCT-PROPOSALS/S8-ARTIFACT-LIST/C-SOL-20261006-S8-LATESTCANON-9F2A61D4/PROPOSAL-S8-LATESTCANON-9F2A61D4.json
+- SOURCE_BRANCH_WRITE_ALLOWED: FALSE
+- NEXT_PRODUCT_PATH: proposal review/discussion/vote/lease only
