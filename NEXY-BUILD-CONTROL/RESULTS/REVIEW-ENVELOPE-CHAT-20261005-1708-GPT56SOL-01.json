@@ -14,7 +14,11 @@
       234,
       235
     ],
-    "paragraphs": "9995-10013",
+    "paragraphs": {
+      "non_empty": "8453-8471",
+      "raw_w_p_including_empty": "9995-10013",
+      "note": "Rendered PDF pages 234-235 are the stable primary anchor."
+    },
     "canonical_shape": [
       "status:SystemStatus",
       "state:SystemState",
