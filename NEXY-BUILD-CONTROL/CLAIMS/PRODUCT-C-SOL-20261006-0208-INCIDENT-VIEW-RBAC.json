@@ -1,7 +1,7 @@
 {
   "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
   "chat_id": "C-SOL-20261006-0208-INCIDENT-VIEW-RBAC",
-  "status": "COMPLETED_INTEGRATED_CI_QUEUED",
+  "status": "COMPLETED_INTEGRATED_CI_INFRA_BLOCKED",
   "objective": "Align S7 incident detail UI with canonical incident-read RBAC and truth-copy semantics.",
   "requirement_gap": "DOC-C GET /api/incidents/:id permits OWNER/AUDITOR only. Current S7 fetches incident truth before any role gate and grants OPERATOR a read-only explanation, causing OPERATOR direct visits to convert a deterministic 403 permission denial into 'Incident truth UNKNOWN'.",
   "target_repository": "goif74945-crypto/NEXY.AI-",
@@ -46,10 +46,10 @@
     "Merge commit is ancestor of observed live integration head"
   ],
   "ci": {
-    "status": "QUEUED",
+    "status": "INFRASTRUCTURE_BLOCKED",
     "exact_head_run_id": 37361068477,
     "six_system_run_id": 37361068495,
-    "note": "No CI pass/fail is claimed until jobs execute."
+    "observation": "Both post-merge jobs completed failure before any step materialized; jobs returned steps=null and logs_url=null. No Vitest/typecheck result is claimed."
   },
   "completed_at": "2026-10-06T02:12:00+07:00"
 }
