@@ -1,0 +1,109 @@
+{
+  "RESULT_ID": "RESULT-C-SOL-V16RC13-DRAIN-97E912A7-LEGACY-AUTHORITY-INVENTORY",
+  "RESULT_TYPE": "V16_RC1_3_LEGACY_AUTHORITY_INVENTORY",
+  "OWNER_CHAT": "C-SOL-V16RC13-DRAIN-97E912A7",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 2,
+  "BOOTSTRAP_STATE_OBSERVED": "LEGACY_FREEZE_REQUESTED",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_HEAD_OBSERVED": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "TARGET_TREE_OBSERVED": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c",
+  "PROTECTED_UPSTREAM_HEAD_OBSERVED": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "PROTECTED_UPSTREAM_TREE_OBSERVED": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c",
+  "PRODUCT_BRANCHES_OBSERVED": [
+    "NEXY.AI-Test-AI",
+    "NEXY.ai"
+  ],
+  "WORKER_BRANCH_COUNT_OBSERVED": 0,
+  "ACTIVE_INTEGRATION_RECORD_COUNT_OBSERVED": 0,
+  "INTEGRATION_DIRECTORY_NONAUTHORITY_FILES_ONLY": [
+    ".gitkeep",
+    "00_INDEX.md",
+    "README.md"
+  ],
+  "LEGACY_LEASE_RECORD_COUNT": 22,
+  "LEGACY_LEASE_ACTIVE_COUNT": 7,
+  "LEGACY_ACTIVE_SOURCE_MUTATION_LEASE_COUNT": 6,
+  "LEGACY_ACTIVE_EXTERNAL_VALIDATION_ONLY_LEASE_COUNT": 1,
+  "ACTIVE_SOURCE_MUTATION_LEASES": [
+    {
+      "task_id": "T-5A04C0D1",
+      "owner_chat": "C-5A04C046",
+      "expected_parent_sha": "a363fdb7b8ced513303f3e67ba4520dfcc1e9903",
+      "current_target_match": false
+    },
+    {
+      "task_id": "T-6C3F12A9",
+      "owner_chat": "C-7A2D91F4",
+      "expected_parent_sha": "87ba5f0a07ec1d57f7bb50270aa9c03d85e0153d",
+      "current_target_match": false
+    },
+    {
+      "task_id": "T-6F42C9E2",
+      "owner_chat": "C-6F42A9D1",
+      "expected_parent_sha": "57795b7ab17372a9d531fd143c2dbcf5978f2b08",
+      "current_target_match": false
+    },
+    {
+      "task_id": "T-768BB2A7",
+      "owner_chat": "C-4BFCBF5A",
+      "expected_parent_sha": "cd13d2cf56382dc84e340b266d0db5c353414802",
+      "current_target_match": false
+    },
+    {
+      "task_id": "T-8A3C1D72",
+      "owner_chat": "C-8E4C12A7",
+      "expected_parent_sha": "3fd63e496023247d1eb1854b6a6a835cd45bb78b",
+      "current_target_match": false
+    },
+    {
+      "task_id": "T-D4A71C2E",
+      "owner_chat": "C-7C4F2A91",
+      "expected_parent_sha": "1adfc1c3782f63c32eaa535c05a975bd932a7015",
+      "current_target_match": false
+    }
+  ],
+  "ACTIVE_EXTERNAL_VALIDATION_ONLY_LEASE": {
+    "task_id": "T-6F42B8E1",
+    "owner_chat": "C-6F42A9D1",
+    "lease_scope": "EXTERNAL_VALIDATION_ONLY",
+    "repository_source_mutation_permitted_by_record": false,
+    "source_pin_sha": "7297bbbff42ce8c5236c2fc551a4b29893be2a73"
+  },
+  "LEGACY_CLAIM_RECORD_COUNT_AT_PREACTIVATION_DISCOVERY": 8,
+  "LEGACY_CLAIMED_COUNT": 6,
+  "LEGACY_COMPLETED_CLAIM_COUNT": 2,
+  "LEGACY_CLAIMED_READ_ONLY_OR_CONTROL_ONLY_COUNT": 4,
+  "LEGACY_CLAIMED_PRODUCT_MUTATION_SCOPE_COUNT": 2,
+  "CLAIMED_PRODUCT_MUTATION_SCOPES_WITHOUT_MATCHING_CURRENT_LEASE_FILE": [
+    {
+      "task_id": "T-V11-BOOTSTRAP-FAIL-CLOSED-001",
+      "owner_chat": "C-SOL-20261005-0540-V11",
+      "base_sha": "608426cb30398b1f3461866f7079d2a435c96b96",
+      "suspension_record_present": true,
+      "suspension_record_source_mutation_performed": false,
+      "worker_branch_created": false
+    },
+    {
+      "task_id": "TASK-API-OTAC-ERROR-CONTRACT-20261005-0609",
+      "owner_chat": "chat-gpt56sol-20261005-0609",
+      "base_sha": "608426cb30398b1f3461866f7079d2a435c96b96",
+      "suspension_record_present": true,
+      "suspension_record_branch": null,
+      "worker_branch_created": false
+    }
+  ],
+  "AUTHORITY_ASSESSMENT": {
+    "legacy_integration_authority": "NO_ACTIVE_INTEGRATION_RECORD_DISCOVERED",
+    "legacy_worker_ref_authority": "NO_WORKER_BRANCH_REFS_DISCOVERED",
+    "legacy_source_mutation_authority": "NOT_DRAINED",
+    "reason": "Six durable legacy lease records remain STATUS ACTIVE with source mutation scopes, even though every recorded expected parent differs from the current target HEAD. They require canonical release/suspension/revocation reconciliation before zero legacy mutation authority may be claimed.",
+    "external_validation_authority": "NOT_DRAINED",
+    "external_validation_reason": "One ACTIVE legacy lease permits external validation-state mutation and should be reconciled during legacy drain even though it explicitly forbids repository source mutation."
+  },
+  "PRODUCT_MUTATION_PERFORMED_BY_THIS_CHAT": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED_BY_THIS_CHAT": false,
+  "PASS_LEGACY_DRAIN": false,
+  "NEXT_REQUIRED_CONTROL_ACTION": "Canonically suspend/revoke/release the seven remaining ACTIVE legacy leases under the published V16-RC1.3 legacy-admission freeze, preserving original lease records and provenance; then rescan claims, leases, integration records, and product refs before any Bootstrap Fence advance.",
+  "FAIL_CLOSED": true
+}
