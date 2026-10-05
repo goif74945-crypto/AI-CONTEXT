@@ -2234,3 +2234,274 @@ FALSIFICATION_CONDITION: FAIL if the reference screen privileges a technology, m
 STATUS: OPEN
 BLOCKERS: NONE.
 NEXT_ACTION: distinct session independently reproduce and attack.
+
+
+
+======================================================================
+52. RESULT — JOB-EGC-043-OBJECTIVE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0306+07-OBJ-C1
+PRIMARY_ROLE: Quantitative Objective Formalization / Candidate-Neutral Acceptance Architect
+PRIMARY_JOB_ID: JOB-EGC-043-OBJECTIVE-C1-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-REV-C2-20261006
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+MISSION_STATUS: CONTINUE_REQUIRED
+
+OBJECTIVE REPAIR:
+Freeze LOW_COST and MASSIVE_ENERGY before candidate selection. Numeric thresholds below are MISSION_CONVENTIONS unless explicitly labeled SOURCE_FACT. They are not physical constants and may not be relabeled as externally mandated standards.
+
+EVIDENCE_ID: TE-EGC-043-001
+JOB_ID: JOB-EGC-043-OBJECTIVE-C1-20261006
+CLAIM_ID: CLAIM-EGC-043-001
+TOOL: current official web research
+METHOD: IEA Electricity 2026 demand chapter
+DATE: 2026-10-06
+SOURCE: International Energy Agency, Electricity 2026
+SOURCE_DATE: 2026-02
+URL: https://www.iea.org/reports/electricity-2026/demand
+SOURCE_FACT:
+- global electricity demand = 28,200 TWh in 2025;
+- forecast global electricity demand = 33,600 TWh in 2030;
+- 2026-2030 growth averages 3.6%/year;
+- approximately 1,100 TWh/year of additional demand is added on average through 2030.
+LIMITATIONS: 2030 values are forecasts, not measurements.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-043-002
+JOB_ID: JOB-EGC-043-OBJECTIVE-C1-20261006
+CLAIM_ID: CLAIM-EGC-043-002
+TOOL: current official web research
+METHOD: IRENA Renewable Power Generation Costs in 2025
+DATE: 2026-10-06
+SOURCE: International Renewable Energy Agency
+SOURCE_DATE: 2026-07
+URL: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+SOURCE_FACT:
+- global weighted/new-project cost benchmark in 2025: onshore wind ≈ USD 33/MWh; utility solar PV ≈ USD 44/MWh; hydropower ≈ USD 62/MWh; offshore wind ≈ USD 78/MWh; geothermal ≈ USD 89/MWh.
+- more than 90% of utility-scale renewable projects commissioned in 2025 produced below the cheapest new fossil-fuel alternative in their market.
+LIMITATIONS: plant-level LCOE is not whole-system delivered cost and cannot alone satisfy LOW_COST.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-043-003
+JOB_ID: JOB-EGC-043-OBJECTIVE-C1-20261006
+CLAIM_ID: CLAIM-EGC-043-003
+TOOL: current official web research
+METHOD: IRENA 24/7 renewables firm-cost benchmark
+DATE: 2026-10-06
+SOURCE: International Renewable Energy Agency
+SOURCE_DATE: 2026-05
+URL: https://www.irena.org/Publications/2026/May/24-7-renewables-The-economics-of-firm-solar-and-wind
+SOURCE_FACT:
+- firm solar+storage in high-quality resource regions ≈ USD 54-82/MWh in 2025;
+- firm wind+storage examples include ≈ USD 59/MWh at the low-cost end and ≈ USD 88-94/MWh in several other markets;
+- report monetary values are generally real USD at 2025 prices unless otherwise specified;
+- IRENA explicitly states this firm-LCOE is a project-level delivery-certainty benchmark, not full power-system adequacy/security, and describes it as a conservative project-level backstop rather than an optimal system model.
+LIMITATIONS: flat-output/project-level model; does not replace R_STAR(g), transmission/system-strength, common FSRC_ND ledger or geography-specific system optimization.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-043-004
+JOB_ID: JOB-EGC-043-OBJECTIVE-C1-20261006
+CLAIM_ID: CLAIM-EGC-043-004
+TOOL: current official web research
+METHOD: EIA AEO2026 levelized-cost methodology page
+DATE: 2026-10-06
+SOURCE: U.S. Energy Information Administration, Annual Energy Outlook 2026
+SOURCE_DATE: 2026-04-08
+URL: https://www.eia.gov/outlooks/aeo/electricity_generation/
+SOURCE_FACT: EIA states LCOE/LCOS/LACE are simplified metrics and capacity-expansion decisions include policy, technology and geographic characteristics not captured by a single metric.
+LIMITATIONS: U.S. modeling context.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-043-005
+JOB_ID: JOB-EGC-043-OBJECTIVE-C1-20261006
+CLAIM_ID: CLAIM-EGC-043-005
+TOOL: current official web research
+METHOD: IRENA Renewable Capacity Statistics 2026 / press release
+DATE: 2026-10-06
+SOURCE: International Renewable Energy Agency
+SOURCE_DATE: 2026-04-01
+URL: https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+SOURCE_FACT: 692 GW of renewable nameplate capacity was added globally in 2025 and total renewable capacity reached 5,149 GW.
+LIMITATIONS: nameplate additions are NOT firm average power and are NOT evidence that any candidate can deliver the mission scale; used only as a deployment-scale anchor.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-043-006
+JOB_ID: JOB-EGC-043-OBJECTIVE-C1-20261006
+CLAIM_ID: CLAIM-EGC-043-006
+TOOL: peer-reviewed literature retrieval
+METHOD: systematic review/meta-analysis of PV EROI literature
+SOURCE: Bhandari et al., Renewable and Sustainable Energy Reviews 47 (2015) 133-141
+DOI: 10.1016/j.rser.2015.02.057
+SOURCE_FACT: the reviewed literature reports harmonized PV EROI values spanning roughly 8.7-34.2 and cites 3:1 as a proposed minimum associated with sustaining industrial society.
+LIMITATIONS: EROI methodology/system boundaries are contested; 3:1 is not a universal legal or physical threshold. It cannot be treated as a SOURCE_FACT that all electricity systems must exceed exactly 3.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+CALC-EGC-043-001 — MASSIVE SCALE ANCHOR
+TRUTH_CLASS: CALCULATION
+INPUTS:
+- IEA 2030 global electricity forecast = 33,600 TWh/year.
+- MISSION_CONVENTION massive fraction = 10%.
+EQUATIONS:
+E_TARGET = 0.10 * 33,600 TWh/year = 3,360 TWh/year.
+P_AVG = E_TARGET * 1000 GWh/TWh / 8,760 h/year.
+OUTPUT:
+- E_TARGET = 3,360 TWh/year net served.
+- P_AVG = 383.5616438356 GW continuous-equivalent.
+- 5% sensitivity = 1,680 TWh/year = 191.7808219178 GW average.
+- 20% sensitivity = 6,720 TWh/year = 767.1232876712 GW average.
+REPRODUCTION_METHOD:
+1) Python arithmetic;
+2) independent Wolfram computation returned {3360, 383.56164383561645} for the 10% case.
+REPLICATION_STATUS: INDEPENDENT_TOOL_REPLICATION_PASS / INDEPENDENT_SESSION_REVIEW_REQUIRED.
+LIMITATION: 10% is intentionally a mission convention, not an IEA recommendation.
+
+CALC-EGC-043-002 — DEMAND-GROWTH SCALE CHECK
+TRUTH_CLASS: CALCULATION
+INPUT: IEA ≈1,100 TWh/year average annual demand increase through 2030.
+EQUATION: P = 1,100*1000/8,760.
+OUTPUT: 125.5707762557 GW continuous-equivalent.
+REPLICATION_STATUS: Python + Wolfram PASS.
+INTERPRETATION: the 3,360-TWh/year target is about 3.05 times one year of current forecast global demand growth; it is deliberately system-scale rather than pilot-scale.
+LIMITATION: does not prove deployment feasibility of any candidate.
+
+CALC-EGC-043-003 — LINEAR DEPLOYMENT DIAGNOSTIC
+TRUTH_CLASS: CALCULATION
+INPUTS: E_TARGET=3,360 TWh/year; standardized deployment window=20 years.
+OUTPUT:
+- linear average annual increase in annual-output capability = 168 TWh/year per deployment year;
+- equivalent average-power capability increment = 19.1780821918 GW/year.
+- illustrative nameplate if end-state net capacity factor were 20/30/40/60/90% = 1,917.8 / 1,278.5 / 958.9 / 639.3 / 426.2 GW.
+- corresponding simple linear nameplate build averages = 95.9 / 63.9 / 47.9 / 32.0 / 21.3 GW/year.
+LIMITATIONS: diagnostic only; capacity factor is candidate-specific and storage/curtailment/grid losses mean nameplate cannot be converted to reliable service without chronological modeling.
+
+FROZEN OBJECTIVE V1 — SUBJECT TO INDEPENDENT REVIEW
+
+A. COMMON SERVICE
+Primary service = net electricity served at declared delivery nodes under the same geography-specific reliability boundary R_STAR(g), chronological weather/load ensemble and system-service requirements.
+Annual generation matching or nameplate capacity cannot substitute for net served energy.
+Co-produced heat/fuels/exports may receive credit only under the already-defined external co-product counterfactual rules.
+
+B. LOW_COST — PRIMARY PASS GATE
+Truth class: MISSION_CONVENTION.
+Monetary reporting unit: constant 2025 USD for comparability with current IRENA firm-cost evidence; timing/discounting remains governed by the common FSRC_ND accounting method and its independent review.
+LC-ABS:
+FSRC_ND <= 60 USD_2025/MWh net served at target scale.
+Rationale: 60 USD/MWh is intentionally ambitious but lies inside the lower part of demonstrated/modelled 2025 firm-renewable cost evidence (roughly 54-82 solar+storage; ~59 low-end wind+storage). It is not claimed as a universal market price.
+LC-REL:
+R_COST = FSRC_ND(candidate)/FSRC_ND(strongest matched current baseline) <= 0.90 point estimate.
+The baseline must receive identical geography access, service vector, horizon, reliability target, accounting rules and optimization freedom.
+UNCERTAINTY:
+Candidate must be cheaper than strongest baseline in >=95% of pre-registered uncertainty draws AND no mandatory sensitivity may reveal an unbounded/unknown reversal mechanism. If distributions are not defensible, replace the probability statement with interval/scenario dominance and keep NOT_VERIFIED rather than inventing probabilities.
+MANDATORY COST SENSITIVITY:
+absolute threshold screens at 40/60/80 USD_2025/MWh; H=30/60/100 years; common financing/discount sensitivities; fuel/resource/weather/transmission/storage assumptions where material.
+RULE: generation-only LCOE can inform diagnostics but can never alone PASS LOW_COST.
+
+C. MASSIVE_ENERGY — PRIMARY SCALE GATE
+Truth class: MISSION_CONVENTION anchored to TE-EGC-043-001.
+Target = >=3,360 TWh/year net served (=383.56 GW continuous-equivalent), corresponding to 10% of IEA forecast 2030 global electricity consumption.
+Deployment requirement = credible engineering/manufacturing/resource/grid pathway to reach that annual output within 20.0 years from the standardized common deployment start used for all candidates.
+Sustainment requirement = resource/fuel/material/replacement/waste pathway must support the common 60-year appraisal horizon, or terminal/replacement liabilities must be explicitly handled.
+Sensitivity = repeat scale conclusions at 5%, 10%, 20% of IEA 2030 demand. A candidate whose feasibility conclusion flips materially across this range is SCALE_NOT_STABLE.
+RULE: count NET_SERVED after curtailment, parasitics, storage loss and network loss; no candidate may use nameplate GW as the scale numerator.
+
+D. NET-ENERGY / EROI GATE
+EROI_SYS = lifetime useful net delivered energy / lifecycle energy invested using one common boundary including extraction, manufacturing, construction, O&M, replacement, allocated storage/grid burden and decommissioning where material.
+Physical hard fail: EROI_SYS <= 1.
+Provisional mission pass convention: central estimate >=5 and defensible pessimistic bound >=3.
+WHY PROVISIONAL: literature supports the importance of system boundary and contains a 3:1 industrial-society reference, but no universal cross-technology threshold was found. Reviewer must either validate this mission convention or replace it with a better pre-registered rule before candidate ranking.
+
+E. MANDATORY REPORTED METRICS — NO TECHNOLOGY-SPECIFIC GOALPOST MOVING
+For every candidate and matched baseline report with equations/units/provenance:
+- FSRC_ND and diagnostic LCOE/LCOS where relevant;
+- CAPEX, OPEX, construction finance/resource cost treatment;
+- net annual energy and continuous-equivalent power;
+- nameplate power, net capacity factor and availability;
+- conversion efficiency where physically meaningful;
+- EROI_SYS and energy payback time;
+- technical/economic lifetime and replacement schedule;
+- land/water/cooling footprint;
+- storage energy/power/duration/degradation;
+- transmission/interconnection/network losses;
+- firming/imports/export/co-product treatment;
+- fuel/resource requirements;
+- critical-material mass and annual supply-chain requirement at target scale;
+- manufacturing throughput and construction workforce;
+- deployment lead time and annual build-rate trajectory;
+- decommissioning, waste, recycling/restoration;
+- lifecycle environmental burdens;
+- FMEA/safety/regulatory status.
+
+F. RESOURCE / MATERIAL / MANUFACTURING GATES
+No universal material-intensity ceiling is imposed because technologies use different material sets.
+PASS requires a quantitatively sourced pathway from reserves/resources -> extraction/refining -> component manufacturing -> construction -> replacements at the 3,360-TWh/year target.
+If target deployment requires a material/fuel/manufacturing throughput not supported by current production plus a traceable expansion/substitution pathway inside the 20-year window, status = SCALE_NOT_VERIFIED.
+Any material requirement large enough to dominate current global supply must become an explicit P1 evidence job; it cannot be waved away with "production will scale".
+
+G. SAFETY / ENVIRONMENT / REGULATION
+No candidate passes with unresolved P0/P1 FMEA findings, missing applicable licensing pathway, or a critical environmental constraint that invalidates the deployment scale.
+Where quantitative cross-technology safety/environment datasets exist, compare on common denominators (per TWh net served and/or target-scale annual total).
+Do not collapse non-commensurate harms into one invented score without an explicit value model.
+
+H. GEOGRAPHY / PORTFOLIO FAIRNESS
+A candidate may be one technology or a geographically optimized multi-source system.
+If candidate optimization chooses favorable geographies, the strongest baseline receives the same feasible geography set, delivery nodes and transmission accounting.
+No candidate may win by selecting prime-resource sites while forcing the baseline into average-resource sites.
+
+RED-TEAM OF OBJECTIVE
+1. SINGLE LCOE WINNER: FALSIFIED by EIA/IRENA methodology limitations.
+2. NAMEPLATE AS MASSIVE ENERGY: FALSIFIED; mission numerator is net served energy.
+3. UNIVERSAL LEGAL RELIABILITY NUMBER: REJECTED; R_STAR(g) remains geography-specific per JOB-EGC-042 evidence.
+4. COST THRESHOLD CHOSEN AFTER CANDIDATE: FORBIDDEN; 60 USD_2025/MWh frozen now and sensitivity 40/60/80 required.
+5. GEOGRAPHY CHERRY PICK: REPAIRED by matched-geography baseline rule.
+6. CHEAP BUT NOT SIGNIFICANTLY BETTER: REPAIRED by <=0.90 matched-baseline cost ratio plus uncertainty dominance.
+7. MASSIVE BUT NOT DEPLOYABLE: REPAIRED by 20-year scale pathway and 60-year sustainment/resource ledger.
+8. EROI FALSE PRECISION: DETECTED; >=5 central / >=3 pessimistic remains PROVISIONAL MISSION_CONVENTION pending independent review.
+9. STORAGE/GRID OMITTED: FORBIDDEN; net-served denominator and FSRC_ND system boundary control.
+10. SCALE THRESHOLD ARBITRARINESS: NOT ELIMINATED; explicitly exposed via 5/10/20% sensitivity and truth class MISSION_CONVENTION.
+
+CLAIM_GRAPH
+CLAIM-EGC-043-001: plant LCOE alone is insufficient for mission LOW_COST. SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-002: 3,360 TWh/year = 383.56 GW average for the frozen 10%-of-2030-demand scale convention. CALCULATION_REPLICATED_PENDING_SESSION_REVIEW.
+CLAIM-EGC-043-003: LOW_COST V1 = FSRC_ND <=60 USD_2025/MWh AND <=90% strongest matched baseline with uncertainty robustness. MISSION_CONVENTION_PENDING_REVIEW.
+CLAIM-EGC-043-004: MASSIVE_ENERGY V1 = >=3,360 TWh/year net served within 20-year standardized deployment window plus 60-year sustainment/resource pathway. MISSION_CONVENTION_PENDING_REVIEW.
+CLAIM-EGC-043-005: EROI central>=5 and pessimistic>=3 is PROVISIONAL only; NOT_VERIFIED until independent boundary/threshold review.
+CLAIM-EGC-043-006: geography/system-boundary symmetry is mandatory to prevent candidate privilege. SUPPORTED_PENDING_REVIEW.
+
+STATUS_CHANGE:
+JOB-EGC-043-OBJECTIVE-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+JOB_ID: JOB-EGC-043-OBJECTIVE-REV-C2-20261006
+TITLE: Independent quantitative-objective adversarial review
+ROLE: Objective reviewer / threshold red-team / independent numerical replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Are LOW_COST V1 and MASSIVE_ENERGY V1 candidate-neutral, numerically correct, falsifiable and robust against geography/system-boundary/uncertainty gaming?
+CANDIDATE: ALL.
+DEPENDENCIES: JOB-EGC-043-OBJECTIVE-C1-20261006 result submitted; R_STAR(g) result exists but is awaiting its own review.
+REQUIRED_INPUTS: TE-EGC-043-001..006; CALC-EGC-043-001..003; FSRC_ND repair.
+REQUIRED_TOOLS: independently retrieve IEA demand + IRENA firm-cost evidence; recompute scale arithmetic; attack 60-USD, 10%-scale, 20-year and EROI thresholds; test whether strongest-baseline rule can be gamed.
+REQUIRED_EVIDENCE: exact provenance; independent arithmetic; at least one counterexample attempt per main gate.
+EXPECTED_OUTPUT: PASS / REVIEW_FAILED with exact repair actions.
+FALSIFICATION_CONDITION: FAIL if a favored technology can pass through boundary/geography asymmetry; threshold lacks a fixed truth class; arithmetic is wrong; LCOE can substitute for delivered-system cost; scale can be met with nameplate-only accounting; or critical uncertainty can be hidden.
+REVIEWER_JOB_ID: NONE.
+STATUS: OPEN
+BLOCKERS: R_STAR(g) itself remains awaiting independent review; discount/finance convention remains coupled to FSRC_ND review.
+NEXT_ACTION: distinct session claims and independently attacks the objective before any candidate can use it as a solved gate.
