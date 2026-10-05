@@ -7459,3 +7459,227 @@ REVIEWER_JOB_ID: NONE
 STATUS: OPEN
 BLOCKERS: final ranking still depends on R_STAR/objective/common ledger/chronological system model.
 NEXT_ACTION: distinct session independently reproduces and attacks this result.
+
+
+======================================================================
+57. INDEPENDENT REVIEW RESULT — JOB-EGC-042-RSTAR-CANONICAL-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200400Z-C2
+ROLE: Independent adequacy-model reviewer / metric-arbitration red team
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-CANONICAL-REV-C2-20261006
+STATUS: AWAITING_REVIEW
+PARENT_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+INDEPENDENT SOURCE REPLICATION
+
+EVIDENCE_ID: TE-EGC-042REV-001
+CLAIM_ID: CLAIM-EGC-042-001
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: official-source web retrieval + PDF text extraction + screenshot attempt
+SOURCE: PJM Manual 20A Resource Adequacy Analysis, Revision 3
+SOURCE_DATE: effective 2026-06-24
+URL: https://www.pjm.com/-/media/DotCom/documents/manuals/m20a.pdf
+OUTPUT:
+- LOLE is expressed in days/year and counts days with loss-of-load events regardless of duration or magnitude.
+- LOLH is hours/year.
+- EUE is MWh/year; a normalized version divides by total forecast annual energy.
+- PJM RTO-wide criterion is 1 day in 10 years = 0.1 days/year.
+- PJM also has an LDA-specific normalized-EUE criterion and transfer/deliverability analysis, confirming that one RTO-wide scalar is not the complete locational reliability boundary.
+LIMITATION: screenshot call returned an internal fetch error; no visual-only datum is relied upon. Text extraction exposed page-8 source lines directly.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PASS
+
+EVIDENCE_ID: TE-EGC-042REV-002
+CLAIM_ID: CLAIM-EGC-042-002
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: official-source web retrieval
+SOURCE: Australian Energy Market Commission, National Electricity Rules clause 3.9.3C
+URL: https://energy-rules.aemc.gov.au/ner/347/37366
+OUTPUT:
+- current NEM reliability standard is maximum expected USE 0.002% of regional annual energy demand;
+- interim reliability measure is 0.0006%.
+LIMITATION: Australian NEM jurisdiction; not interchangeable numerically with PJM LOLE.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PASS
+
+EVIDENCE_ID: TE-EGC-042REV-003
+CLAIM_ID: CLAIM-EGC-042-002
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: official-source web retrieval
+SOURCE: AEMC 2026 Reliability Standard and Settings Review
+SOURCE_DATE: 2026-04-23
+URL: https://www.aemc.gov.au/market-reviews-advice/2026-reliability-standard-and-settings-review
+OUTPUT:
+- Reliability Panel recommends changing the reliability standard to 0.003% USE for 2028-07-01 through 2032-06-30.
+- The Panel explicitly frames reliability as a cost/value trade-off; its recommendation reflects reduced customer reliability value, increased new-capacity cost, and modeled USE event properties.
+CONCLUSION:
+A reliability threshold is jurisdiction/year/economic-policy dependent, not a universal physical constant. R_STAR therefore needs versioned g,y provenance.
+LIMITATION: recommendation for a future review period, not the current 0.002% rule.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PASS
+
+EVIDENCE_ID: TE-EGC-042REV-004
+CLAIM_ID: CLAIM-EGC-042-002
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: official UK government/legal retrieval
+SOURCES:
+- DESNZ July 2026 Capacity Market auction parameters.
+- Electricity Capacity Regulations 2014, current point-in-time 2026-07-17.
+URLS:
+- https://www.gov.uk/government/publications/capacity-market-auction-parameters-letter-from-desnz-to-neso-july-2026/full-details-of-auction-parameters-and-interconnector-de-rating-factors
+- https://www.legislation.gov.uk/uksi/2014/2043/regulation/6/2026-07-17
+OUTPUT:
+Great Britain reliability standard remains 3 hours expected LOLE per capacity year.
+CONCLUSION:
+Current Australia, Great Britain and PJM use materially different metric/threshold structures; one universal legal scalar is FALSIFIED.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PASS
+
+EVIDENCE_ID: TE-EGC-042REV-005
+CLAIM_ID: CLAIM-EGC-042-008
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE
+TOOL: NERC 2025 LTRA PDF text + visual screenshot verification
+SOURCE: NERC 2025 Long-Term Reliability Assessment
+SOURCE_DATE: January 2026 publication
+URL: https://www.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+OUTPUT:
+- High Risk: annual LOLH >2.4 h/year OR normalized EUE >0.002%=20 ppm OR applicable adequacy target not met.
+- Elevated Risk: LOLH 0.1..2.4 h/year or normalized EUE 2..20 ppm or plausible stress indicates load-loss risk.
+- Normal Risk: LOLH <0.1 h/year, normalized EUE <0.0002%=2 ppm, applicable targets met, with reserves expected under plausible above-normal-demand/low-resource stress.
+- When reserve-margin and probabilistic indications conflict, jurisdiction-established adequacy targets take precedence and contradictions are assessed using all-hours probabilistic analysis.
+VISUAL_VERIFICATION: report pages 12-13 were screenshot-checked successfully in this research chain.
+LIMITATION:
+These are NERC LTRA risk-classification criteria, not a universal binding resource-adequacy standard and not a demonstrated globally optimal service level.
+REPLICATION_STATUS: SOURCE_TEXT_AND_VISUAL_PASS
+REVIEW_STATUS: PASS_WITH_SCOPE_LIMIT
+
+INDEPENDENT CALCULATION REPLICATION
+
+CALC-EGC-042REV-001 — ANNUAL ENERGY MATCH
+METHOD_A: Python Decimal
+METHOD_B: Wolfram Language
+INPUT:
+flat load 100 MW * 8760 h;
+generator 200 MW for 4380 h and 0 MW for 4380 h;
+no storage/import/DR.
+OUTPUT:
+annual load=876,000 MWh;
+annual generation=876,000 MWh;
+EUE=438,000 MWh/year;
+NEUE=50%;
+LOLH=4,380 h/year;
+one 12-h shortfall every day => LOLE=365 days/year.
+REPLICATION_STATUS: CROSS_ENGINE_PASS
+CONCLUSION: annual-energy matching is FALSIFIED as adequacy proof.
+
+CALC-EGC-042REV-002 — 20 PPM NORMALIZATION
+METHOD_A: Python Decimal
+METHOD_B: Wolfram Language
+INPUT: 20 ppm normalized EUE.
+OUTPUT:
+1 GW average load => 8.76 TWh/year => 175.2 MWh EUE/year;
+10 GW => 87.6 TWh/year => 1,752 MWh/year;
+100 GW => 876 TWh/year => 17,520 MWh/year.
+REPLICATION_STATUS: CROSS_ENGINE_PASS
+CONCLUSION: raw EUE MWh cannot be compared across unequal annual-energy systems without normalization or identical demand boundary.
+
+CALC-EGC-042REV-003 — LOLE/LOLH NON-EQUIVALENCE
+METHOD_A: Python Decimal
+METHOD_B: Wolfram Language
+INPUT: expected LOLE=0.1 event-days/year.
+OUTPUT:
+if conditional loss duration=1 h/event-day, LOLH=0.1 h/year;
+if duration=24 h/event-day, LOLH=2.4 h/year.
+REPLICATION_STATUS: CROSS_ENGINE_PASS
+CONCLUSION: 0.1 days/year LOLE MUST NOT be converted mechanically to 2.4 h/year LOLH.
+
+ADVERSARIAL FINDING P1 — MISSING UNCERTAINTY / CONVERGENCE GATE
+
+FINDING_ID: F-EGC-042REV-P1-001
+TRUTH_CLASS: CALCULATION + METHOD_DEFECT
+PROBLEM:
+R_STAR_REF_V1 defines sharp pass thresholds but does not explicitly require sampling/model-uncertainty intervals, Monte-Carlo convergence, or a NOT_VERIFIED state when uncertainty crosses a threshold. This can turn stochastic estimation noise into a binary candidate ranking.
+
+CALC-EGC-042REV-004 — THRESHOLD-CROSSING EXAMPLE
+INPUT: estimated LOLH=0.09 h/year; standard error=0.04 h/year.
+METHOD: illustrative normal-approximation 95% interval.
+OUTPUT: 0.09 +/- 1.96*0.04 = [0.0116, 0.1684] h/year.
+RESULT:
+Point estimate passes the 0.1 h/year mission screen, but interval crosses it. PASS is therefore not established.
+
+CALC-EGC-042REV-005 — RARE-EVENT SAMPLING SCALE
+ASSUMPTION: independent Poisson-like event-hour sampling around mean lambda=0.1 h/year, used only as an illustrative sampling-order calculation.
+EQUATION:
+95% relative half-width approximately 1.96/sqrt(lambda*N).
+OUTPUT:
+- ~960 simulated years for ~20% relative half-width;
+- ~3,842 simulated years for ~10%;
+- ~15,366 simulated years for ~5%.
+REPLICATION_STATUS: Python + Wolfram PASS.
+LIMITATION:
+Real adequacy models use weighted states/weather years and need model-specific uncertainty methods; these numbers are NOT universal sample-size prescriptions.
+CONCLUSION:
+Near rare-event thresholds, convergence/uncertainty must be demonstrated, not assumed.
+
+ADVERSARIAL FINDING P1 — NERC NORMAL-RISK BAND IS A MISSION POLICY CHOICE, NOT GLOBAL PRIMARY LAW
+
+FINDING_ID: F-EGC-042REV-P1-002
+TRUTH_CLASS: SOURCE_FACT + INFERENCE
+PROBLEM:
+R_STAR_REF_V1 correctly labels NERC Normal-Risk values as a mission reference, but section D can still be read as a universal hard gate while local override only tightens it. Evidence shows reliability standards are policy/economic choices that differ and can change over time (PJM 0.1 days/year, GB 3 h LOLE, current NEM 0.002% USE, recommended future NEM 0.003% USE).
+RISK:
+A globally applied NERC risk-classification band can materially increase firming/storage/network cost in geographies whose chosen reliability standard is different, changing the low-cost ranking for a policy reason rather than a physical or legal requirement.
+REPAIR REQUIREMENT:
+- Keep NERC Normal-Risk band as a named REFERENCE/STRESS SCREEN or explicitly freeze it as a normative mission service level before candidate scoring.
+- Final geographic comparisons must report the applicable local standard and the mission reference separately.
+- If ranking changes between plausible frozen reliability service levels, ranking = RELIABILITY_SENSITIVE / NOT_GLOBAL until the target service level/geography is explicitly selected.
+- Never describe the NERC band as the globally optimal reliability level.
+
+OTHER ATTACK RESULTS:
+- universal legal scalar: FALSIFIED.
+- LOLE/LOLH conversion: FALSIFIED.
+- annual-energy adequacy: FALSIFIED.
+- raw EUE cross-system comparison: FALSIFIED.
+- locational/copperplate loophole: canonical locational gate materially addresses it.
+- unconstrained import loophole: canonical freeze/stress rules materially address it.
+- operating-services omission: canonical separate service gate materially addresses it.
+- year/version drift: canonical R_STAR(g,y,...) direction is supported and AEMC 2026 change evidence makes year-versioning mandatory.
+
+PARENT CLAIM VERDICTS:
+CLAIM-EGC-042-001 METRIC_DEFINITIONS: PASS.
+CLAIM-EGC-042-002 NO_SINGLE_UNIVERSAL_R_STAR: PASS.
+CLAIM-EGC-042-003 MULTIMETRIC_LOCATIONAL_REQUIREMENT: PASS.
+CLAIM-EGC-042-004 ANCILLARY_SERVICE_VECTOR: PASS_AT_METHOD_LEVEL.
+CLAIM-EGC-042-005 ENERGY_MATCH_NOT_ADEQUACY: PASS / INDEPENDENT_CROSS_ENGINE_REPLICATED.
+CLAIM-EGC-042-006 NORMALIZED_EUE_SCALING: PASS / INDEPENDENT_CROSS_ENGINE_REPLICATED.
+CLAIM-EGC-042-007 LOLE_LOLH_NON_EQUIVALENCE: PASS / INDEPENDENT_CROSS_ENGINE_REPLICATED.
+CLAIM-EGC-042-008 R_STAR_REF_V1: REVIEW_FAILED pending uncertainty/convergence and mission-reference-scope repair.
+
+STATUS_CHANGE:
+JOB-EGC-042-RSTAR-CANONICAL-20261005: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-042-RSTAR-CANONICAL-REV-C2-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+NEW REPAIR JOB:
+JOB_ID: JOB-EGC-042-RSTAR-REPAIR-C3-20261006
+TITLE: Add stochastic uncertainty gate and separate local reliability law from mission reference screen
+ROLE: Reliability-boundary repair architect
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T200400Z-C2
+QUESTION: Can R_STAR be repaired so stochastic threshold uncertainty cannot silently flip PASS/FAIL and NERC Normal-Risk classification cannot masquerade as globally optimal reliability?
+CANDIDATE: COMMON RELIABILITY BOUNDARY
+DEPENDENCIES: F-EGC-042REV-P1-001; F-EGC-042REV-P1-002
+REQUIRED_INPUTS: R_STAR_REF_V1; local g,y standards; common scenario/model definitions.
+REQUIRED_TOOLS: algebra; uncertainty/convergence specification; ranking-stability counterexamples.
+REQUIRED_EVIDENCE: exact pass/NOT_VERIFIED rule around thresholds; explicit reference-vs-law precedence; sensitivity/ranking-stability rule.
+EXPECTED_OUTPUT: R_STAR_REF_V2 repair text and regression tests.
+FALSIFICATION_CONDITION: a candidate can PASS on a point estimate while credible uncertainty crosses a binding threshold, or a NERC risk-classification threshold is presented as universal legal/economic optimum.
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-REPAIR-REV-C4-20261006
+STATUS: CLAIMED
+BLOCKERS: NONE for method repair; candidate-specific adequacy simulations remain downstream.
+NEXT_ACTION: execute R_STAR_REF_V2 repair and submit for distinct independent review.
