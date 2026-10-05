@@ -1,0 +1,43 @@
+{
+  "REVIEW_ID": "REVIEW-DOC-C3-API-HANDLER-STATE-INTEGRITY-C-SOL-20261005-1923",
+  "TASK_ID": "TASK-DOC-C3-API-HANDLER-STATE-INTEGRITY-001",
+  "FINDING_ID": "FIND-DOC-C3-API-HANDLER-FALSE-FREEZE-001",
+  "REVIEWER_CHAT": "C-SOL-20261005-1923-INCIDENT-AUTH",
+  "REVIEW_KIND": "INDEPENDENT_SPEC_SOURCE_REVIEW",
+  "VERDICT": "CONFIRMED",
+  "RISK": "HIGH",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_EVIDENCE": [
+    "Final DOC-C paragraphs 9995-10013 define SystemEnvelope.state as required SystemState.",
+    "Final DOC-C paragraphs 10368-10452 define the legal state transitions to FREEZE/STOP.",
+    "Final DOC-C paragraphs 10494-10499 require every legal transition to emit EventLog and FREEZE/STOP transitions to create a primary incident."
+  ],
+  "SOURCE_EVIDENCE": [
+    "apps/web/lib/api-handler.ts blob d1dbc74827d6fa2deb2ee4c27831bd898e3fa5c7 catches arbitrary handler exceptions and serializes state='FREEZE' without invoking the FSM or consulting currentSystemState.",
+    "tests/contract/api-handler.test.ts blob f0cb1160d801d1df962bc6f3feb63af5f831b643 explicitly asserts the fabricated state='FREEZE' fallback."
+  ],
+  "ANALYSIS": [
+    "The generic catch is a transport/error fallback, not a legal state transition.",
+    "Serializing FREEZE without durable/authoritative state change creates a wire-level false claim about SystemState.",
+    "Fail-closed 500 behavior and redaction are useful and should be preserved; the defect is fabricated canonical state, not the existence of a generic error fallback.",
+    "A repair must not automatically transition the whole system to FREEZE merely to make the response self-consistent; state should reflect authoritative runtime truth unless a separately authorized transition actually occurs."
+  ],
+  "ACCEPTANCE_REVIEW": {
+    "generic_wrapper_never_invents_state": "REQUIRED",
+    "unhandled_exception_redacted_non_success": "REQUIRED",
+    "route_specific_error_authority_preserved": "REQUIRED",
+    "mutation_proof_for_hardcoded_false_freeze": "REQUIRED"
+  },
+  "EXECUTION_EVIDENCE": {
+    "EXACT_SHA_TEST_RUN": "NOT_EXECUTED_BY_REVIEWER",
+    "REASON": "Git-valid worker isolation is blocked by INC-BRANCH-NAMESPACE-001; this review is source/spec evidence only.",
+    "CURRENT_COMBINED_STATUS_AT_SOURCE_SHA": "failure",
+    "GITHUB_ACTIONS_RUNS_AT_SOURCE_SHA": 0
+  },
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "SOURCE_MUTATION": "NONE",
+  "NEXY_AI_MUTATION": "NONE"
+}
