@@ -5,7 +5,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "PRIORITY": "P1",
   "RISK": "HIGH_AUTHORITY_ERROR_SEMANTICS",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "DUPLICATE_SUPERSEDED",
   "OWNER": "UNASSIGNED",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SCOPE": [
@@ -22,5 +22,12 @@
     "Focused plus affected state/recovery tests execute on exact candidate SHA and independent review passes."
   ],
   "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "After compliant worker isolation exists, derive exact branch-by-branch oracle from final DOC-C and repair handler/tests without weakening isolation."
+  "NEXT_ACTION": "After compliant worker isolation exists, derive exact branch-by-branch oracle from final DOC-C and repair handler/tests without weakening isolation.",
+  "ACTIVE": false,
+  "CANONICAL_TASK_ID": "TASK-DOC-C4-FREEZE-RECOVER-ERROR-MATRIX-001",
+  "CANONICAL_FINDING_ID": "FINDING-DOC-C4-FREEZE-RECOVER-ERROR-MATRIX-001",
+  "DUPLICATE_REASON": "Same final DOC-C freeze-recovery status/error semantics and same handler/test mutation scope; canonical ERROR-MATRIX task is more precise and preserves the same security/audit constraints.",
+  "FORBIDDEN": [
+    "Do not allocate a second writer for this duplicate semantic mutation scope."
+  ]
 }
