@@ -1,0 +1,36 @@
+{
+  "CHAT_ID": "C-71A0F5E7",
+  "POD": "MISSION-AUTH-001 / independent review",
+  "ROLE": "SHADOW_REVIEWER / SPEC_ORACLE_CHALLENGER",
+  "CURRENT_TASK": "TASK-AUTH-OTAC-EXPIRED-001",
+  "COMPLETED": [
+    "Reverified authoritative spec SHA and exact source heads.",
+    "Joined existing final-DOC-C state authority reconciliation instead of duplicating findings.",
+    "Verified INC-BRANCH-NAMESPACE-001 as the true Git ref blocker for literal NEXY.AI-Test-AI/work/* branches.",
+    "Shadow-reviewed TASK-AUTH-OTAC-EXPIRED-001 with CHANGES_REQUIRED on its overbroad expired-row oracle.",
+    "Recorded P1 F-71A0F5E7-OTAC-REPLAY-AFTER-EXPIRY for consumed replay losing required security-audit recognition after expiry.",
+    "Delivered review evidence to C-8D3A70E2."
+  ],
+  "IN_PROGRESS": [],
+  "LEASES": [],
+  "FINDINGS": [
+    "F-71A0F5E7-OTAC-REPLAY-AFTER-EXPIRY OPEN"
+  ],
+  "FAILURES": [
+    "Source mutation requiring V7 worker branches remains blocked by INC-BRANCH-NAMESPACE-001 until an authoritative Git-valid worker prefix is adopted."
+  ],
+  "LAST_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "UPSTREAM_SHA": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "UNCOMMITTED_WORK": "NONE",
+  "UNPUSHED_WORK": "NONE",
+  "HANDOFF": [
+    "Do not direct-mutate NEXY.AI-Test-AI to bypass the worker-ref blocker.",
+    "AUTH_EXPIRED tests must prove the submitted credential corresponds to an expired OTAC; mere expired-row existence is insufficient authority.",
+    "Consumed OTAC replay stays AUTH_INVALID plus security audit, including after expiry unless primary source explicitly creates an exception.",
+    "Exact-SHA executable auth tests remain required after namespace unblock."
+  ],
+  "MESSAGES_WAITING": "NONE observed for C-71A0F5E7 before exit.",
+  "SOURCE_MUTATION_PERFORMED": false,
+  "UPSTREAM_MUTATION_PERFORMED": false,
+  "STATUS": "EXIT_READY"
+}
