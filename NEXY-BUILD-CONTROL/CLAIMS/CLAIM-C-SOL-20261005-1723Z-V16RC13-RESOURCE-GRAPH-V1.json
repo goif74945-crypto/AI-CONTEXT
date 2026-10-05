@@ -17,6 +17,11 @@
   ],
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "TARGET_INTEGRATION": "NONE",
-  "STATUS": "ACTIVE",
-  "SAFETY_POLICY": "No inferred semantic conflict may be claimed without evidence; structural parent/umbrella relations may be conservative. Artifact is not activation-ready until independently verified."
+  "STATUS": "BLOCKED",
+  "SAFETY_POLICY": "No inferred semantic conflict may be claimed without evidence; structural parent/umbrella relations may be conservative. Artifact is not activation-ready until independently verified.",
+  "BLOCK_REASON": "ACTIVE_BUILD_AUTHORITY_FILTER_NOT_READY",
+  "RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1723Z-V16RC13-RESOURCE-GRAPH-V1.json",
+  "INTERMEDIATE_ARTIFACT": "NEXY-BUILD-CONTROL/V16/GENESIS/RESOURCE_GRAPH_V1.json",
+  "INTERMEDIATE_ARTIFACT_DISPOSITION": "STRUCTURAL_INVENTORY_ONLY",
+  "NEXT_DEPENDENCY": "Authority-filtered ACTIVE_BUILD requirement manifest/root and mapping to current implementation resources."
 }
