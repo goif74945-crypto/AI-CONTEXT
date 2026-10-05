@@ -1,0 +1,19 @@
+{
+  "SCHEMA_VERSION": "NEXY_PRODUCT_BUILD_CLAIM_V1",
+  "TASK_ID": "TASK-DOC-C-LOGOUT-IDEMPOTENCY-001",
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0202-0700-LOGOUT-IDEMPOTENCY",
+  "OWNER_CHAT": "C-SOL-20261006-0202-0700-LOGOUT-IDEMPOTENCY",
+  "STATUS": "IN_PROGRESS",
+  "PRODUCT_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "59b4d88e482d965e2a5554a0645dada5b827fa36",
+  "WORKER_BRANCH": "work/C-SOL-20261006-0202-0700-logout-idempotency",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": "DOC_C_4_2_LOGOUT_IDEMPOTENCY_SESSION_ACTION_BINDING",
+  "DUPLICATE_SEARCH": "AI-CONTEXT search for logout idempotency/session binding/cross-principal replay returned no matching ownership record.",
+  "MUTATION_SCOPE": [
+    "packages/api/auth.ts",
+    "tests/integration/auth/logout.spec.ts"
+  ],
+  "KNOWN_TEST_INFRA_BLOCKER": "GitHub Actions jobs currently fail before workflow steps execute; implementation/review may proceed on worker branch but integration remains fail-closed."
+}
