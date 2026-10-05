@@ -5,7 +5,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-AUDIT-ACTOR-ARTIFACT-RESTORE",
   "FINDING_ID": "FIND-DOC-C-ARTIFACT-RESTORE-AUDIT-ACTOR-001",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "RESOLVED_EXISTING_IMPLEMENTATION",
   "PRIORITY": "P1",
   "RISK": "HIGH",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -21,5 +21,11 @@
     "Tests assert exact actor identity and reject role-as-actor collapse.",
     "No mutation to NEXY.ai; exact candidate SHA tests and independent review required."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001"
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "RESOLVED_AT_SOURCE_SHA": "0440c47f14dadb1a4fb4bcdd3fd53d7bb9fce6c9",
+  "EVIDENCE": [
+    "packages/api/artifact-restore.ts computes audit chain with auth.userId and writes AuditLog.actor=auth.userId, role=OWNER",
+    "tests/coverage/api-owner-artifact-control-plane.test.ts asserts actor=owner-1, role=OWNER and replay emits no duplicate audit"
+  ],
+  "SOURCE_MUTATION_BY_RECONCILER": "NONE"
 }
