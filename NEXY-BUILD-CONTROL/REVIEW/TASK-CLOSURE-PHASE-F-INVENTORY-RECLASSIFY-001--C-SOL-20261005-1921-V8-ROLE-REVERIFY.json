@@ -1,0 +1,70 @@
+{
+  "REVIEW_ID": "RV-PHASEF-INVENTORY-C-SOL-20261005-1921-V8",
+  "CHAT_ID": "C-SOL-20261005-1921-V8-ROLE-REVERIFY",
+  "TASK_ID": "TASK-CLOSURE-PHASE-F-INVENTORY-RECLASSIFY-001",
+  "FINDING_ID": "FINDING-CLOSURE-PHASE-F-EXPERIMENTAL-CLASSIFICATION-001",
+  "REVIEWED_OVERLAY": "INV-608426CB-C-SOL-20261005-1913-EXPLICIT-EXPERIMENTAL-OVERLAY-002",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "RESULT": "PASS_INDEPENDENT_REVERIFY",
+  "FACTS": {
+    "historical_inventory_records": 885,
+    "phase_f_records": 126,
+    "prior_phase_f_classes": {
+      "AUTHORITATIVE_RUNTIME": 123,
+      "CONTRACT": 1,
+      "BUILD_SUPPORT": 1,
+      "CONFIG": 1
+    },
+    "reviewed_phase_f_overlay_records": 126,
+    "missing_records": 0,
+    "record_identity_mismatches": 0,
+    "corrected_class": "EXPERIMENTAL",
+    "corrected_status": "UNSCANNED",
+    "phase_f_active_doc_c_scope": false,
+    "primary_execution_membership": {
+      "main_typescript": 0,
+      "web_typescript": 0,
+      "rust_workspace": 0,
+      "active_primary_tests": 0,
+      "migrations": 0,
+      "critical_script_candidates": 0,
+      "workflows": 0,
+      "explicitly_experimental_sources": 126
+    },
+    "recomputed_global_class_counts": {
+      "CONFIG": 40,
+      "BUILD_SUPPORT": 42,
+      "OUT_OF_SCOPE": 15,
+      "DOCUMENTATION": 54,
+      "GENERATED": 2,
+      "AUTHORITATIVE_RUNTIME": 248,
+      "EXPERIMENTAL": 149,
+      "TEST": 252,
+      "CONTRACT": 19,
+      "INTEGRATION": 8,
+      "MIGRATION": 56
+    },
+    "global_class_count_diff_against_overlay": 0
+  },
+  "SOURCE_SCOPE_BINDING": {
+    "experimental_scope_blob": "850e0918de501ad0413b61a81be0a3b86152c263",
+    "tsconfig_blob": "4f878346b620f042392958f4490f0e086576f3cb",
+    "vitest_default_blob": "6665df37ca5f5709d7ff320d89a437e499047245",
+    "vitest_experimental_blob": "9dadfe5d9ddf2a0f4ec1c48035c4254eab8000f9",
+    "package_json_blob": "972cd03ed7878ff6eb0cb4813e459cb0c29cd1e7"
+  },
+  "ACCEPTANCE_REVIEW": {
+    "historical_inventory_preserved": true,
+    "phase_f_reclassification_supported": true,
+    "exception_count": 0,
+    "corrected_counts_reproducible": true,
+    "phase_f_active_required_scan_contribution": 0,
+    "experimental_status_not_falsely_promoted_to_verified_clean": true,
+    "source_mutation": false,
+    "protected_upstream_mutation": false
+  },
+  "CLOSURE_NOTE": "Validates only Phase-F classification correction; does not establish global required-scan denominator, zero-gap closure, or CODE_CLOSURE_VERIFIED.",
+  "SOURCE_MUTATION": "NONE"
+}
