@@ -1,13 +1,13 @@
 {
   "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
   "chat_id": "C-SOL-20261006-0152-AUDIT-NAV-RBAC",
-  "status": "CLAIMED",
+  "status": "COMPLETED_INTEGRATED",
   "objective": "Align the global navigation with canonical audit-view RBAC so OPERATOR sessions are not offered the S10 Audit Viewer path that the backend must reject.",
   "requirement_gap": "DOC-C GET /api/audit-logs permits OWNER/AUDITOR, while NavBar currently renders AUDIT for every authenticated role. Backend enforcement is correct; UI permission truth is not.",
   "target_repository": "goif74945-crypto/NEXY.AI-",
   "target_branch": "NEXY.AI-Test-AI",
   "analyzed_head": "1c962618155e4e4ce1a81eb8c9ad6fe595c8dd28",
-  "worker_branch": "work/C-SOL-20261006-0152-audit-nav-rbac",
+  "worker_branch": "work/C-SOL-20261006-0152-audit-nav-rbac-v2",
   "scope": [
     "apps/web/components/NavBar.tsx",
     "tests/contract/ui-navigation-rbac.test.ts"
@@ -35,5 +35,25 @@
     "typecheck or broader exact-head CI when available",
     "final diff inspection"
   ],
-  "note": "Using work/... namespace because refs/heads/NEXY.AI-Test-AI already exists, so Git cannot also create refs/heads/NEXY.AI-Test-AI/work/..."
+  "note": "Using work/... namespace because refs/heads/NEXY.AI-Test-AI already exists, so Git cannot also create refs/heads/NEXY.AI-Test-AI/work/...",
+  "superseded_worker_branch": "work/C-SOL-20261006-0152-audit-nav-rbac",
+  "pr_number": 52,
+  "pr_head_sha": "9a8115f339a082c748b1065f38bbcaeb4c13fbd6",
+  "merge_sha": "48915e75faf68722c3244f17366d5bf1e4456c2c",
+  "post_merge_observed_head": "2c3486979fc7038d9686f8f89d9163b18192976f",
+  "evidence": [
+    "Exact integration NavBar contains AUDIT roles OWNER/AUDITOR and role-scoped filter",
+    "Exact integration test tests/contract/ui-navigation-rbac.test.ts exists",
+    "Focused contract assertions executed against worker and integration file contents: PASS",
+    "Base-to-worker diff contained only NavBar.tsx and ui-navigation-rbac.test.ts",
+    "PR #52 merged with expected head SHA guard",
+    "Merge commit is ancestor of observed live integration head"
+  ],
+  "ci": {
+    "status": "INFRASTRUCTURE_BLOCKED",
+    "exact_head_run_id": 37360388226,
+    "six_system_run_id": 37360388408,
+    "observation": "Both post-merge jobs concluded failure before any step materialized; jobs returned steps=null and logs_url=null. No Vitest/typecheck pass is claimed."
+  },
+  "completed_at": "2026-10-06T02:03:00+07:00"
 }
