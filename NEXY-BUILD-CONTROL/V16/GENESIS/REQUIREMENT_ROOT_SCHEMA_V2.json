@@ -1,0 +1,351 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_REQUIREMENT_ROOT_SCHEMA_CONTRACT_V2",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SUPERSEDES": {
+    "PATH": "NEXY-BUILD-CONTROL/V16/GENESIS/REQUIREMENT_ROOT_SCHEMA_V1.json",
+    "BLOB_SHA": "925e7733a7aa7424e8f9cb815cafbaa5cb59df1d",
+    "REASON": "Independent review requires authority, negative-obligation, reconciliation-binding, canonicalization and stability repairs."
+  },
+  "REVIEW_REPAIRS": {
+    "RR1_DOC_C_ONLY_BUILD_AUTHORITY_VIOLATION": "REPAIRED_FINAL_DOC_C_NORMATIVE_REF_REQUIRED_FOR_EVERY_ACTIVE_BUILD_ENTRY",
+    "RR2_NEGATIVE_BUILD_OBLIGATIONS_DROPPED": "REPAIRED_FINAL_DOC_C_MUST_NOT_ENTRIES_ARE_ACTIVE_PROHIBIT_OBLIGATIONS",
+    "RR3_RECONCILIATION_COMPLETENESS_NOT_HASH_BOUND": "REPAIRED_ACTIVE_ROOT_BINDS_SOURCE_ENUMERATION_AND_COMPLETE_AUTHORITY_RECONCILIATION_ROOTS",
+    "RR4_DOC_D_SUPPORT_SEMANTICS_TOO_WEAK": "REPAIRED_DOC_D_IS_SUPPORT_ONLY_AND_CANNOT_ENTER_WITHOUT_FINAL_DOC_C_NORMATIVE_INCORPORATION",
+    "RR5_ROOT_FIELD_TYPES_AND_NORMALIZATION_UNDEFINED": "REPAIRED_EXACT_TYPES_NULL_RULES_NFC_CSV_MAPPING_AND_SORTS_DEFINED",
+    "RR6_MUTABLE_ACCOUNTING_IN_DENOMINATOR_ROOT": "REPAIRED_MUTABLE_ACCOUNTING_REMOVED_FROM_DENOMINATOR_ROOTS",
+    "RR7_773_COUNT_LABEL_AMBIGUITY": "REPAIRED_773_NAMED_LEGACY_CURRENT_ISH_AGGREGATE_NOT_LITERAL_CURRENT_BUILD"
+  },
+  "SOURCE_ARTIFACTS": {
+    "PRIMARY_SPEC": {
+      "LOGICAL_FILENAME": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+      "SHA256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+    },
+    "MATRIX_EXPORT": {
+      "PATH": "REFERENCES/NEXY/2026-10-04/NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.txt",
+      "GIT_BLOB_SHA": "e7aa7b52ad6080030c7278eb428bef75f83309c4",
+      "FORMAT": "UTF-8 parsed-text export containing CSV sheets",
+      "BUILD_MATRIX_ROW_COUNT": 837
+    },
+    "WORKBOOK_PROVENANCE": {
+      "LOGICAL_FILENAME": "NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.xlsx",
+      "DECLARED_SHA256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+      "HASH_ROLE": "PROVENANCE_ONLY_UNTIL_EXACT_WORKBOOK_BYTES_OR_VERIFIED_DETERMINISTIC_EXTRACTION_BINDING_IS_AVAILABLE"
+    },
+    "FINAL_DOC_C_PRIMARY_INDEX": {
+      "PATH": "NEXY-BUILD-CONTROL/AUTHORITY/FINAL_DOC_C_PRIMARY_INDEX.json",
+      "GIT_BLOB_SHA": "71bd5bc30ecc795c565d2bf94eb4ad988c9c1639"
+    }
+  },
+  "PARAGRAPH_INDEX_CONTRACT": {
+    "MATRIX_Source_Doc_Paragraph_BASE": 0,
+    "PRIMARY_DOCX_PARAGRAPH_BASE": 1,
+    "TRANSFORM": "primary_docx_paragraph_1_based = source_doc_paragraph_0_based + 1",
+    "FINAL_DOC_C_PRIMARY_RANGE_1_BASED": {
+      "START": 9886,
+      "END": 10499
+    },
+    "DOC_D_PRIMARY_START_1_BASED": 10500,
+    "DOC_E_PRIMARY_START_1_BASED": 10917,
+    "AUTHORITY_COMPARISON_RULE": "All temporal/authority comparisons use transformed one-based primary DOCX paragraph numbers, never raw matrix paragraph numbers."
+  },
+  "NORMALIZATION_CONTRACT": {
+    "TEXT_ENCODING": "UTF-8",
+    "UNICODE": "NFC",
+    "LINE_ENDINGS": "LF",
+    "CSV_PARSER": "RFC4180-compatible quoting for comma-separated rows; doubled quote escapes; quoted commas/newlines preserved",
+    "BUILD_MATRIX_EXTRACTION": "Read only the first sheet named Build Matrix from MATRIX_EXPORT, from its exact header through the row before the next <PARSED TEXT FOR SHEET marker.",
+    "HEADER_MATCH": "Exact case-sensitive header names required.",
+    "STRING_RULE": "Decode CSV cell, normalize Unicode NFC, preserve non-empty content exactly including leading/trailing whitespace; do not semantic-trim.",
+    "EMPTY_CELL_RULE": "An empty decoded CSV cell becomes JSON null. Nullable fields are always present with null; keys are never omitted.",
+    "INTEGER_RULE": "index, Source_Doc_Paragraph and Source_Extraction_Seq are base-10 JSON integers; non-integer or missing values are invalid.",
+    "BOOLEAN_RULE": "Schema booleans are JSON true/false only.",
+    "SET_ARRAY_RULE": "Set-like arrays are deduplicated then sorted by UTF-8 byte ordering of their canonical string representation.",
+    "REFERENCE_ARRAY_RULE": "Primary-source reference arrays sort by paragraph_1_based ascending, then anchor UTF-8 bytes.",
+    "ENTRY_SORT_RULE": "Root entries sort by source_entry_id UTF-8 bytes; duplicate source_entry_id is invalid.",
+    "JCS_RULE": "Apply RFC8785/JCS only after this normalization contract.",
+    "HASH_RULE": "SHA-256(UTF8(JCS(ROOT_OBJECT)))",
+    "HASH_FORMAT": "lowercase 64-character hexadecimal",
+    "SELF_REFERENCE_RULE": "ROOT_HASH is stored outside ROOT_OBJECT and never hashed into itself."
+  },
+  "MATRIX_COLUMN_MAPPING": {
+    "index": {
+      "target": "source_matrix_index",
+      "type": "integer"
+    },
+    "ID": {
+      "target": "source_entry_id",
+      "type": "string"
+    },
+    "Parent_System": {
+      "target": "parent_system",
+      "type": "string"
+    },
+    "Feature_or_Requirement": {
+      "target": "feature_or_requirement",
+      "type": "string"
+    },
+    "Entity_Type": {
+      "target": "entity_type",
+      "type": "string"
+    },
+    "Requirement": {
+      "target": "requirement",
+      "type": "string"
+    },
+    "Authority": {
+      "target": "matrix_authority_label",
+      "type": "string"
+    },
+    "Build_Scope": {
+      "target": "matrix_build_scope",
+      "type": "string"
+    },
+    "Strength": {
+      "target": "strength",
+      "type": "string"
+    },
+    "Source_Doc_Paragraph": {
+      "target": "source_doc_paragraph_0_based",
+      "type": "integer"
+    },
+    "Source_Extraction_Seq": {
+      "target": "source_extraction_seq",
+      "type": "integer"
+    },
+    "Source_Section": {
+      "target": "source_section",
+      "type": "nullable_string"
+    },
+    "Source_Anchor": {
+      "target": "source_anchor",
+      "type": "nullable_string"
+    },
+    "Dependencies": {
+      "target": "dependencies_source_text",
+      "type": "nullable_string"
+    },
+    "Validation_Evidence": {
+      "target": "validation_evidence_source_text",
+      "type": "nullable_string"
+    },
+    "Implementation_Status": {
+      "target": "implementation_status_source_text",
+      "type": "nullable_string"
+    },
+    "Notes": {
+      "target": "notes_source_text",
+      "type": "nullable_string"
+    }
+  },
+  "SOURCE_ENUMERATION_ROOT_HASH": {
+    "ROOT_DOMAIN": "NEXY_SOURCE_ENUMERATION_ROOT_V2",
+    "PURPOSE": "Exhaustive normalized source-material identity; never the active-build denominator.",
+    "ROOT_OBJECT_FIELDS": [
+      "domain",
+      "target_authority_key",
+      "spec_artifact_hash",
+      "matrix_export_git_blob_sha",
+      "workbook_declared_sha256_provenance",
+      "normalization_contract_version",
+      "matrix_entry_count",
+      "primary_omission_entry_count",
+      "entry_count",
+      "entries",
+      "primary_final_doc_c_coverage_unmatched_count"
+    ],
+    "MATRIX_ENTRY_REQUIRED_FIELDS": [
+      "source_kind",
+      "source_matrix_index",
+      "source_entry_id",
+      "parent_system",
+      "feature_or_requirement",
+      "entity_type",
+      "requirement",
+      "matrix_authority_label",
+      "matrix_build_scope",
+      "strength",
+      "source_doc_paragraph_0_based",
+      "primary_docx_paragraph_1_based",
+      "source_extraction_seq",
+      "source_section",
+      "source_anchor",
+      "dependencies_source_text",
+      "validation_evidence_source_text",
+      "implementation_status_source_text",
+      "notes_source_text"
+    ],
+    "PRIMARY_OMISSION_ENTRY_REQUIRED_FIELDS": [
+      "source_kind",
+      "source_entry_id",
+      "requirement",
+      "entity_type",
+      "strength",
+      "primary_docx_refs_1_based",
+      "normalization_evidence_refs"
+    ],
+    "SOURCE_KIND_VALUES": [
+      "MATRIX_BUILD_ROW",
+      "PRIMARY_FINAL_DOC_C_OMISSION"
+    ],
+    "MATRIX_ROW_INCLUSION": "All 837 Build Matrix rows must appear exactly once.",
+    "PRIMARY_OMISSION_RULE": "Any normative final DOC-C obligation not represented by a matrix row must be normalized as PRIMARY_FINAL_DOC_C_OMISSION before this root can be activation-ready.",
+    "COVERAGE_GATE": "primary_final_doc_c_coverage_unmatched_count MUST equal 0 before SOURCE_ENUMERATION_ROOT_HASH is activation-ready.",
+    "FORBIDDEN_SHORTCUTS": [
+      "837 structurally valid matrix rows do not prove exhaustive final DOC-C coverage when known primary omissions exist.",
+      "Do not treat workbook declared SHA256 as the byte hash of MATRIX_EXPORT.",
+      "Do not use source enumeration as active-build authority or implementation proof."
+    ]
+  },
+  "AUTHORITY_RECONCILIATION_ROOT_HASH": {
+    "ROOT_DOMAIN": "NEXY_REQUIREMENT_AUTHORITY_RECONCILIATION_ROOT_V1",
+    "PURPOSE": "Complete authority decision manifest covering every source-enumeration entry exactly once.",
+    "ROOT_OBJECT_FIELDS": [
+      "domain",
+      "target_authority_key",
+      "spec_artifact_hash",
+      "source_enumeration_root_hash",
+      "reconciliation_generation",
+      "entry_count",
+      "unresolved_count",
+      "entries"
+    ],
+    "ENTRY_REQUIRED_FIELDS": [
+      "source_entry_id",
+      "decision",
+      "polarity",
+      "final_doc_c_normative_refs_1_based",
+      "supporting_doc_b_refs_1_based",
+      "supporting_doc_d_refs_1_based",
+      "deployment_doc_e_refs_1_based",
+      "authority_evidence_refs"
+    ],
+    "DECISIONS": [
+      "ACTIVE_FINAL_DOC_C_POSITIVE",
+      "ACTIVE_FINAL_DOC_C_NEGATIVE",
+      "GOVERNING_CONSTRAINT_ONLY",
+      "SUPPORTING_DESIGN_ONLY",
+      "DEPLOYMENT_EVIDENCE_ONLY",
+      "DEFERRED_OR_FUTURE",
+      "SOURCE_ONLY_NOT_CURRENT",
+      "CONFLICT",
+      "UNKNOWN"
+    ],
+    "POLARITY_VALUES": [
+      "REQUIRE",
+      "PROHIBIT",
+      "NOT_APPLICABLE"
+    ],
+    "ACTIVE_DECISIONS": [
+      "ACTIVE_FINAL_DOC_C_POSITIVE",
+      "ACTIVE_FINAL_DOC_C_NEGATIVE"
+    ],
+    "ACTIVE_AUTHORITY_RULE": "Every ACTIVE decision MUST contain at least one final_doc_c_normative_refs_1_based reference within primary paragraphs 9886..10499. Document class labels alone never confer build authority.",
+    "NEGATIVE_OBLIGATION_RULE": "Final DOC-C MUST_NOT/non-goal requirements are ACTIVE_FINAL_DOC_C_NEGATIVE with polarity PROHIBIT and remain in the active-build denominator.",
+    "DOC_B_RULE": "DOC-B may constrain interpretation but cannot independently create an active-build obligation without a final DOC-C normative incorporation reference.",
+    "DOC_D_RULE": "DOC-D may provide supporting design detail but cannot independently create an active-build obligation; active use requires explicit final DOC-C normative incorporation.",
+    "HISTORICAL_RULE": "Pre-FINAL historical rows cannot become ACTIVE without explicit final DOC-C normative incorporation evidence.",
+    "COMPLETENESS_RULE": "entry_count MUST equal SOURCE_ENUMERATION entry_count, source_entry_id sets MUST be identical, and unresolved_count MUST equal count(CONFLICT|UNKNOWN).",
+    "ACTIVATION_GATE": "unresolved_count MUST equal 0."
+  },
+  "ACTIVE_BUILD_REQUIREMENT_ROOT_HASH": {
+    "ROOT_DOMAIN": "NEXY_ACTIVE_BUILD_REQUIREMENT_ROOT_V2",
+    "PURPOSE": "Stable immutable denominator of current positive and negative build obligations.",
+    "ROOT_OBJECT_FIELDS": [
+      "domain",
+      "target_authority_key",
+      "spec_artifact_hash",
+      "source_enumeration_root_hash",
+      "authority_reconciliation_root_hash",
+      "reconciliation_generation",
+      "obligation_count",
+      "entries"
+    ],
+    "ENTRY_REQUIRED_FIELDS": [
+      "obligation_id",
+      "source_entry_id",
+      "polarity",
+      "requirement",
+      "entity_type",
+      "strength",
+      "final_doc_c_normative_refs_1_based",
+      "supporting_refs",
+      "dependencies_identity",
+      "validation_acceptance_criteria"
+    ],
+    "ENTRY_TYPE_CONTRACT": {
+      "obligation_id": "string",
+      "source_entry_id": "string",
+      "polarity": "REQUIRE|PROHIBIT",
+      "requirement": "string",
+      "entity_type": "string",
+      "strength": "string",
+      "final_doc_c_normative_refs_1_based": "nonempty array of {paragraph_1_based: integer, anchor: string}",
+      "supporting_refs": "array of canonical reference objects; empty array allowed",
+      "dependencies_identity": "array of source_entry_id strings; empty array allowed",
+      "validation_acceptance_criteria": "array of immutable acceptance-criterion strings; nonempty"
+    },
+    "INCLUSION_RULE": "Include exactly reconciliation entries with ACTIVE_FINAL_DOC_C_POSITIVE or ACTIVE_FINAL_DOC_C_NEGATIVE.",
+    "AUTHORITY_RULE": "Each entry must retain the same final DOC-C normative refs and polarity proven by the bound reconciliation root.",
+    "STABILITY_RULE": "Mutable implementation/accounting states are forbidden from this denominator root.",
+    "MUTABLE_ACCOUNTING_LOCATION": "Requirement accounting is maintained in separate versioned ledgers/evidence and is evaluated against this stable denominator during closure.",
+    "MUST_NOT_VERIFICATION_RULE": "PROHIBIT obligations require positive evidence that forbidden capability/behavior is absent or unreachable; omission from implementation is not self-proving.",
+    "FORBIDDEN_SHORTCUTS": [
+      "Do not include DOC-B, DOC-D, supplements, or historical rows solely from their source labels.",
+      "Do not omit final DOC-C negative obligations.",
+      "Do not materialize if bound reconciliation unresolved_count is nonzero.",
+      "Do not use the legacy current-ish aggregate of 773 rows as this denominator."
+    ]
+  },
+  "DEPLOYMENT_EVIDENCE_REQUIREMENT_ROOT_HASH": {
+    "ROOT_DOMAIN": "NEXY_DEPLOYMENT_EVIDENCE_REQUIREMENT_ROOT_V2",
+    "PURPOSE": "Stable denominator of DOC-E deployment/runtime proof obligations, separate from implementation.",
+    "ROOT_OBJECT_FIELDS": [
+      "domain",
+      "target_authority_key",
+      "spec_artifact_hash",
+      "source_enumeration_root_hash",
+      "authority_reconciliation_root_hash",
+      "reconciliation_generation",
+      "obligation_count",
+      "entries"
+    ],
+    "ENTRY_REQUIRED_FIELDS": [
+      "obligation_id",
+      "source_entry_id",
+      "requirement",
+      "entity_type",
+      "strength",
+      "doc_e_normative_refs_1_based",
+      "validation_acceptance_criteria"
+    ],
+    "INCLUSION_RULE": "Include exactly reconciliation entries classified DEPLOYMENT_EVIDENCE_ONLY with valid DOC-E primary refs.",
+    "SEPARATION_RULE": "Deployment evidence cannot satisfy, replace, or increase ACTIVE_BUILD_REQUIREMENT_ROOT obligations.",
+    "STABILITY_RULE": "Mutable evidence status is forbidden from this denominator root and is tracked separately."
+  },
+  "CURRENT_MATRIX_SCOPE_COUNTS": {
+    "CURRENT_GOVERNING_LAW": 12,
+    "CURRENT_BUILD": 547,
+    "CURRENT_BUILD_SUPPLEMENT": 127,
+    "SUPPORTED_PRODUCT_DESIGN": 87,
+    "DEPLOYMENT_EVIDENCE": 52,
+    "EXCLUDED_CURRENT": 8,
+    "DEFERRED_FUTURE": 4,
+    "TOTAL_MATRIX_ROWS": 837,
+    "LEGACY_CURRENT_ISH_AGGREGATE_773": "12 + 547 + 127 + 87; this is not the literal CURRENT_BUILD count and is not an authority denominator."
+  },
+  "GLOBAL_VALIDATION_GATES": [
+    "Exact spec hash must match.",
+    "Source enumeration coverage gate must be zero unmatched.",
+    "Source enumeration and reconciliation source_entry_id sets must be identical.",
+    "Reconciliation unresolved_count must be zero.",
+    "Every active-build entry must bind final DOC-C normative authority.",
+    "Every final DOC-C MUST_NOT/non-goal is represented as a PROHIBIT obligation.",
+    "No mutable accounting/evidence status appears in denominator roots.",
+    "Deployment denominator remains separate.",
+    "All root objects pass normalization and independent JCS/SHA-256 recomputation."
+  ],
+  "STATUS": "V2_SCHEMA_MATERIALIZED_ROOTS_NOT_COMPUTED",
+  "PRODUCT_SOURCE_MUTATION": false,
+  "TARGET_INTEGRATION": false
+}
