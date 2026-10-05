@@ -5878,3 +5878,45 @@ WRITE_INTEGRITY:
 - append-only update guarded by exact blob SHA.
 - no other file, branch, issue, PR, workflow, release, tag, settings or repository touched.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+37. JOB CLAIM — INDEPENDENT PHYSICS / PHYSICAL-EVIDENCE REPLICATION
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:16:00Z
+SESSION_ID: SESSION-GPT56SOL-EGC-PHYSREV035-P2-20261005
+PRIMARY_ROLE: R03 First-Principles Physics Reviewer + R23 Independent Replication + R24 Red Team
+PRIMARY_JOB_ID: JOB-EGC-035
+QUESTION: Do JOB-EGC-034's cross-family physics and physical-evidence classifications survive independent source retrieval, first-principles checks, and boundary attacks?
+DEPENDENCIES: JOB-EGC-034 is AWAITING_REVIEW; dependency satisfied.
+TOOLS: Acumen current-state brief; authoritative web research; government/lab/operator sources; independent arithmetic; source-provenance audit.
+EVIDENCE_TARGET: SOURCE_FACT / MEASUREMENT / EXPERIMENT_RESULT / CALCULATION / REPLICATION.
+FALSIFICATION_TARGET: Any family classification that confuses physical mechanism proof with commercial viability, target/plasma gain with net-electric plant gain, storage with primary generation, gross with net output, or aspirational deployment with operational evidence.
+REVIEWER: This session is the independent reviewer of JOB-EGC-034 and will not self-verify any new replacement claims it creates.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-035
+ROLE: Independent physics/evidence replication
+TITLE: Independently reproduce and red-team JOB-EGC-034
+QUESTION_TO_RESOLVE: Reproduce the physics/evidence classification, search for counterexamples, and fail any family classification supported only by weak or non-independent evidence.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-034 AWAITING_REVIEW
+REQUIRED_INPUTS: JOB-EGC-034 evidence records/classifications and original sources.
+REQUIRED_TOOLS: Independent source retrieval; first-principles recalculation; provenance audit.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / MEASUREMENT / EXPERIMENT_RESULT / CALCULATION / REPLICATION
+EXPECTED_OUTPUT: PASS/FAIL per material family classification, corrections/conflicts, and repair jobs.
+FALSIFICATION_CRITERIA: FAIL if a material physics classification or evidence-level claim is unreproducible, boundary-mismatched, or contradicted by stronger evidence.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-PHYSREV035-P2-20261005
+CLAIMED_AT: 2026-10-05T19:16:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:16:00Z
+BLOCKERS: NONE
+HANDOFF: Independently verify high-impact families first; do not use economics to alter pure physics classifications.
+
+WRITE_INTEGRITY:
+- branch head read: 77263f29e1cfe24ba2023507ba785b026e5d1c65
+- file SHA read: 2760ba074eddb302a6478fbb3c31dc73115c1f50
+- stale-write check: exact latest blob SHA supplied; abort/reconcile on mismatch.
+- commit/result: PENDING_THIS_COMMIT
