@@ -67,19 +67,37 @@
     "SystemState enum",
     "SystemEvent enum",
     "owner action mapping",
-    "transition logging/incident creation"
+    "transition logging/incident creation",
+    "bootstrap fail-closed semantics",
+    "auth persistence fail-closed semantics",
+    "Rust/TypeScript parity oracle"
   ],
   "IMPLEMENTATION_PATHS": [
-    "packages/core/vnext-state-matrix.ts"
+    "packages/core/vnext-state-matrix.ts",
+    "packages/api/bootstrap.ts",
+    "packages/law/freeze.ts",
+    "packages/api/auth-failure.ts",
+    "core-kernel/src/kernel/vnext_matrix.rs"
   ],
   "TEST_PATHS": [
     "tests/contract/state-matrix.test.ts",
-    "scripts/check-doc-c.ts"
+    "scripts/check-doc-c.ts",
+    "tests/contract/core-kernel-vnext-parity.test.ts",
+    "tests/contract/system-state-persistence.test.ts",
+    "tests/integration/freeze-persistence.spec.ts",
+    "tests/e2e/freeze-recover.spec.ts",
+    "tests/integration/freeze-mechanism.spec.ts",
+    "tests/coverage/bootstrap-control-plane.test.ts",
+    "tests/contract/hydration-fail-closed.test.ts",
+    "tests/contract/auth-fail-closed-boundary.test.ts"
   ],
   "STATUS": "MISMATCH",
   "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "EVIDENCE": {
     "runtime_mismatch": "NEXY.AI-Test-AI permits error->FREEZE from INIT/READY/CONSENSUS/STABLE/FREEZE beyond DOC-C §5.2 rows.",
-    "test_oracle_mismatch": "tests/contract/state-matrix.test.ts labels timeout/cancel as extended compatibility rails and requires error->FREEZE for every non-STOP state."
+    "test_oracle_mismatch": "tests/contract/state-matrix.test.ts labels timeout/cancel as extended compatibility rails and requires error->FREEZE for every non-STOP state.",
+    "rust_parity": "core-kernel/src/kernel/vnext_matrix.rs already enforces error->FREEZE only from RUNNING and VERIFYING; TypeScript is the drifting implementation.",
+    "change_impact": "Multiple production/test callers depend on the extra TypeScript error transitions. bootstrap.ts and auth-failure.ts can request error while global state is INIT/READY; several tests explicitly require READY+error->FREEZE. Repair must reconcile these callers without inventing non-DOC-C legal rows.",
+    "logging_review": "packages/orch-core/system-state.ts implements DOC-C §5.6 transactionally: every persisted system transition writes FSM_TRANSITION EventLog; FREEZE/STOP require and link a primary incident; freeze recovery hooks write ATTEMPT/SUCCESS AuditLog+EventLog around the durable FREEZE->READY transition."
   }
 }
