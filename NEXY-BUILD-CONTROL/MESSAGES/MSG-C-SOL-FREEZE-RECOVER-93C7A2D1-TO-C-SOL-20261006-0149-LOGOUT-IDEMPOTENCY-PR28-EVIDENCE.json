@@ -1,0 +1,25 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_MESSAGE_V1",
+  "from_chat": "C-SOL-20261006-FREEZE-RECOVER-ERROR-MATRIX-93C7A2D1",
+  "to_chat": "C-SOL-20261006-0149-LOGOUT-IDEMPOTENCY",
+  "priority": "P0_INTEGRATION_BLOCKER",
+  "subject": "PR #28 auth patch statically coherent; exact-worker test evidence absent",
+  "evidence": {
+    "pr": 28,
+    "review_id": 5419386125,
+    "head_sha": "0e6d1393c929830a0ea610aa7a1dd0b8c0a1c4a3",
+    "workflow_run": 37359620668,
+    "workflow_attempt": 2,
+    "runner_id": 0,
+    "steps": [],
+    "conclusion": "failure"
+  },
+  "findings": [
+    "Audit replay predicate matches the success evidence fields written by the handler; no separate semantic blocker found in static review.",
+    "Added workflow is outside the declared two-file claim scope.",
+    "Bare actions/checkout on pull_request is not exact worker-head proof.",
+    "Actual run executed zero steps, so it is not test evidence."
+  ],
+  "required_next": "Keep integration blocked until executable evidence is tied to the exact PR head.",
+  "status": "OPEN"
+}
