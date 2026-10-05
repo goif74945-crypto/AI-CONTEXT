@@ -6703,3 +6703,158 @@ RED_TEAM:
 REVIEW IMPACT:
 JOB-EGC-044-EMERGING-FALSIFICATION-REV-C2-20261006 must review the repaired EGS state, not the stale C1 Cape classification.
 NEXT_ACTION: independent reviewer should seek meter/operator/PPA/offtaker or later audited operating evidence for the 33-MW net value and long-run availability; all other emerging-candidate classifications remain open to counterexample search.
+
+
+======================================================================
+56. INDEPENDENT REVIEW RESULT — JOB-EGC-040-REPAIR-C3-REV-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-C3-REV-20261006
+ROLE: Independent physical-ledger / intertemporal-boundary adversarial reviewer
+STATUS: REVIEW_FAILED
+REVIEWED_JOB: JOB-EGC-040-REPAIR-C3-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REVIEW VERDICT:
+LEDGER-P1/P2/P3 and the P5 meter anti-double-count rule pass independent algebraic/property checks for their intended instantaneous definitions. P4 correctly represents intra-storage conversion/self-discharge bookkeeping at an AC-side charge/discharge convention. However, C3 as a whole FAILS because it does not freeze or settle initial/terminal intertemporal inventory. A stateful candidate can begin the modeled horizon with stored energy, discharge it into Served, and end with lower inventory while P1 and P4 both close exactly. Unless initial-stock provenance/opportunity cost and terminal inventory are normalized, this imports pre-horizon energy into the delivered-energy denominator without a common resource boundary.
+
+EVIDENCE_ID: CALC-EGC-040C3REV-001
+CLAIM_ID: CLAIM-EGC-040C3REV-001
+TOOL: Python independent randomized property test
+METHOD:
+Generate 200,000 random nonnegative G_bus, Imports_bus, Dch_bus, Ch_bus, Exports_bus, NetworkLoss and Aux_grid samples; solve Served from P1; retain nonnegative Served cases; independently generate Unserved and Curtailment and construct P2/P3.
+OUTPUT:
+- feasible cases retained = 187,305;
+- P1 maximum absolute closure residual = 2.2737367544323206e-13 MWh;
+- P2 maximum absolute closure residual = 5.684341886080802e-14 MWh;
+- P3 maximum absolute closure residual = 5.684341886080802e-14 MWh;
+- old combined-ledger closure fraction within 1e-9 = 0;
+- old combined-ledger mean residual = -124.89331345302097 MWh for independent Unserved~U(0,100), Curtail~U(0,150), consistent with expected approximately -125 MWh.
+EVIDENCE_CLASS: CALCULATION / MODEL_TEST
+LIMITATION: algebraic property test, not a physical grid simulation.
+REPLICATION_STATUS: INDEPENDENT_SESSION_PASS for instantaneous ledger split.
+
+EVIDENCE_ID: CALC-EGC-040C3REV-002
+CLAIM_ID: CLAIM-EGC-040C3REV-002
+TOOL: Python + Wolfram Language independent arithmetic
+METHOD: adversarial initial-inventory counterexample.
+INPUTS:
+- no generator injection, imports, charging, exports, network loss or auxiliary withdrawal;
+- eta_d = 0.9;
+- initial SOC_0 = 111.11111111111111 MWh stored-energy-equivalent;
+- Dch_bus = 100 MWh;
+- Served = 100 MWh;
+- terminal SOC_T = 0.
+EQUATIONS:
+P1: 0 + 0 + 100 = 100 + 0 + 0 + 0 + 0.
+P4 for the one-step discharge: SOC_T = SOC_0 - Dch_bus/eta_d.
+OUTPUT:
+- P1 residual = 0;
+- P4 residual = 0;
+- SOC_T - SOC_0 = -111.11111111111111 MWh;
+- within-horizon charge/import/generation supplying this initial inventory = 0.
+WOLFRAM REPLICATION OUTPUT:
+{SOC_0, SOC_T, P1 residual, SOC_T-SOC_0}
+= {111.11111111111111, 0, 0, -111.11111111111111}.
+CONCLUSION:
+P1+P4 can pass while the horizon mines pre-existing stored energy. This is physically possible only if that initial inventory exists, but common-system comparison is biased unless its provenance/opportunity/resource value and terminal settlement are explicitly normalized.
+EVIDENCE_CLASS: CALCULATION / FALSIFICATION COUNTEREXAMPLE
+REPLICATION_STATUS: CROSS_ENGINE_PASS (Python + Wolfram).
+
+EVIDENCE_ID: TE-EGC-040C3REV-001
+CLAIM_ID: CLAIM-EGC-040C3REV-003
+TOOL: web research
+METHOD: peer-reviewed NREL-hosted research record.
+SOURCE: Stephen, Joswig-Jones, Awara, Kirschen (2022), "Impact of Storage Dispatch Assumptions on Resource Adequacy and Capacity Credit", NREL/CP-6A40-81825.
+URL: https://research-hub.nrel.gov/en/publications/impact-of-storage-dispatch-assumptions-on-resource-adequacy-and-c-2
+DOI: 10.1109/PMAPS53380.2022.9810584
+SOURCE_FACT:
+Energy-limited resources have multi-period operating objectives/constraints addressed through rolling intertemporal optimization; simplifying storage-dispatch assumptions can distort assessed value/contribution.
+LIMITATION:
+This source supports materiality of intertemporal storage assumptions; the exact state-boundary repair below is an engineering/accounting specification derived from the counterexample, not a quoted NREL rule.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: SOURCE_RETRIEVED.
+
+PASSED SUBTESTS:
+1. UNSERVED_SPLIT:
+P1 excludes Unserved and P2 carries service shortfall. PASS.
+2. CURTAILMENT_SPLIT:
+P1 excludes ordinary pre-generation Curtailment and P3 carries available-potential accounting. PASS.
+3. STORAGE_INTERNAL_LOSS:
+For Ch_bus=100 MWh, eta_c=0.9 and eta_d=0.9, a complete charge/discharge cycle permits Dch_bus=81 MWh; conversion losses remain in the state equation and are not duplicated as bus withdrawals. PASS in principle under the declared AC-side convention.
+4. GROSS_TO_NET_AUXILIARY:
+If G_gross=110 MWh and behind-meter auxiliary=10 MWh, G_bus=100 MWh. Adding the same 10 MWh again to Aux_grid breaks P1 by 10 MWh, so P5's explicit prohibition correctly catches the double count. PASS.
+5. MIXED_IMPORT_EXPORT:
+Example G=50, Import=30, Dch=10, Ch=5, Export=20, NetworkLoss=3, Aux=2 gives Served=60 and exact P1 closure. PASS as a physical-flow identity; economic/arbitrage restrictions remain outside this physical subtest.
+
+FINDING_ID: F-EGC-040C3REV-P1-001
+SEVERITY: P1
+TITLE: Unsettled initial/terminal intertemporal inventory permits hidden pre-horizon energy
+STATUS: OPEN / REPAIR_REQUIRED
+AFFECTED:
+LEDGER-P4; common delivered-service boundary; storage/hydro/thermal-storage/hydrogen/other energy-inventory candidates; any candidate ranking using P1-P5.
+FAILURE MODE:
+SOC_0 is unconstrained by provenance/common initialization and SOC_T is unconstrained by cyclic/terminal settlement. A candidate can increase E_NET_SERVED by depleting initial inventory without charging/replacing that inventory inside the common boundary.
+WHY MATERIAL:
+The defect can directly alter served-energy, adequacy, required generation/firming and FSRC_ND. Its magnitude scales with usable initial inventory and can therefore reverse comparisons for energy-limited resources.
+NOT DUPLICATE OF FINPV TERMINAL-ASSET WORK:
+This finding concerns physical energy/state inventory across the model horizon. Residual asset value/decommissioning bookkeeping does not by itself settle stored electrical/chemical/potential/thermal energy.
+
+REQUIRED REPAIR — TECHNOLOGY-NEUTRAL STATE-BOUNDARY SETTLEMENT:
+For every material intertemporal energy inventory k, add:
+1. INITIAL_STATE_PROTOCOL:
+SOC_k,0 / inventory_0 must be fixed by a candidate-neutral method: propagated warm-up/prior chronology, observed brownfield state with explicit opportunity/resource treatment, or a common cyclic/steady-state initialization. Candidate-chosen free initialization is forbidden.
+2. TERMINAL_STATE_PROTOCOL:
+For repeated/cyclic comparison horizons, require terminal inventory to equal the corresponding initial inventory within stated tolerance unless a different terminal state is physically required and explicitly settled.
+For noncyclic/seasonal/multiyear horizons, equality is not mandatory, but any net depletion/accumulation must be propagated beyond the horizon or assigned a common transparent physical/resource/opportunity settlement so candidates cannot mine or hoard boundary inventory for ranking advantage.
+3. TELESCOPING CHECK:
+For P4, verify over the whole horizon:
+SOC_T - SOC_0 = SUM_t[eta_c*Ch_bus[t] - Dch_bus[t]/eta_d - self_discharge_term[t]]
+using the exact implemented self-discharge convention.
+4. PROVENANCE:
+Any pre-horizon stored energy that is consumed inside the horizon must have provenance and treatment consistent with the greenfield/brownfield case. UNKNOWN provenance that can reverse ranking => NOT_VERIFIED / COST_RANKING_NOT_STABLE.
+5. CROSS-TECHNOLOGY GENERALIZATION:
+Apply equivalent state-boundary rules to reservoirs, thermal stores, hydrogen/fuel buffers and other material inventories, with units/mappings appropriate to each technology.
+6. R_STAR LINK:
+Adequacy simulations must not grant one candidate a favorable initial state unavailable to baselines under the same stress chronology.
+
+CLAIM_GRAPH UPDATE:
+- CLAIM-EGC-040R-001 STORAGE_PRECEDENCE: instantaneous anti-double-counting logic SUPPORTED, but common state-boundary treatment REVIEW_FAILED / REPAIR_REQUIRED.
+- LEDGER-P1/P2/P3/P5 instantaneous split: INDEPENDENT_REPLICATION_PASS, not sufficient to verify the integrated common ledger.
+- LEDGER-P4: EQUATION_SUPPORTED / HORIZON_BOUNDARY_INCOMPLETE.
+- JOB-EGC-040-REPAIR-C3-20261006: AWAITING_REVIEW -> REVIEW_FAILED.
+- JOB-EGC-040: remains REVIEW_FAILED / REPAIR_REQUIRED.
+- Any dependent candidate cost ranking using common ledger: REOPEN / NOT_VERIFIED until repair passes independent review.
+
+REPAIR JOB:
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+TITLE: Repair intertemporal initial/terminal state boundary
+ROLE: Intertemporal inventory boundary architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can the common ledger be extended so every stateful candidate has symmetric initial-state provenance and terminal-state settlement without imposing an invalid universal SOC_T=SOC_0 rule on genuinely noncyclic systems?
+CANDIDATE: common accounting/reliability framework
+DEPENDENCIES: F-EGC-040C3REV-P1-001.
+REQUIRED_INPUTS: P1-P5; greenfield/brownfield cases; H_COST; R_STAR chronology; candidate inventory semantics.
+REQUIRED_TOOLS: algebra; chronological test cases; storage/hydro/other inventory source evidence; independent numerical regression tests.
+REQUIRED_EVIDENCE:
+- free-initial-SOC counterexample must fail after repair;
+- cyclic storage case must close exactly;
+- seasonal/noncyclic case must settle net inventory without artificial forced equality;
+- brownfield observed initial inventory must not be silently treated as zero-cost universal resource;
+- at least one non-battery stateful technology test.
+EXPECTED_OUTPUT: repaired equations/schema, owner/provenance states, regression tests and explicit coupling to FSRC_ND/R_STAR.
+FALSIFICATION_CONDITION:
+Any candidate can increase delivered service or reduce system cost by consuming unmatched initial inventory or by choosing a favorable terminal state/boundary unavailable to the matched baseline.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session claims C4, repairs state-boundary settlement, then submits to C5 independent reviewer.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-C3-REV-20261006: EXECUTING -> REVIEW_FAILED.
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
