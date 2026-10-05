@@ -15002,3 +15002,35 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+
+======================================================================
+INDEPENDENT RELIABILITY BOUNDARY REVIEW CLAIM — JOB-EGC-RELIABILITY-BOUNDARY-REV-B1-20261005
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-REL-REV-B1-20261005
+PRIMARY_ROLE: Independent Power-System Adequacy / Reliability Reviewer
+PRIMARY_JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-REV-B1-20261005
+REVIEWED_JOB_ID: JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005
+QUESTION: Are the source definitions, arithmetic, and same-service reliability boundary reproducible, and do they prevent annual-energy matching from being misrepresented as grid adequacy?
+DEPENDENCIES: Primary reliability-boundary job is AWAITING_REVIEW; dependency satisfied.
+TOOLS: NERC official LTRA/standards materials; IRENA firm-renewables methodology; PDF visual inspection; independent Python/Wolfram arithmetic; adversarial boundary tests.
+EVIDENCE_TARGET: REPLICATION + SOURCE_FACT + CALCULATION + CONFLICT_ANALYSIS.
+FALSIFICATION_TARGET: wrong LOLE/LOLH/EUE definitions or thresholds; using asset-level 90/95/99% annual-energy coverage as equivalent to grid adequacy; nameplate-only adequacy; omission of duration/magnitude/stress; universalization of North-American reference thresholds.
+REVIEWER_OF_THIS_REVIEW: JOB-EGC-018 or distinct later provenance reviewer for any new corrective claim.
+STATUS: CLAIMED / EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-RELIABILITY-BOUNDARY-REV-B1-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-REL-REV-B1-20261005
+- CLAIMED_AT: 2026-10-05
+- BLOCKERS: NONE
+- SELF_VERIFICATION: NOT APPLICABLE to the reviewed primary job; any new replacement claim created here remains separately reviewable.
+
+WRITE_INTEGRITY:
+- prior branch head: afeeb9ae94f6d11641a13146eded6ca47259c5f6
+- prior file SHA: d40cba0865bad70229ed12da10f3b5940de356a5
+- exact-SHA optimistic append; no force; only MAIN-CHAT.md.
