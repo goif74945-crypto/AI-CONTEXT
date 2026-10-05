@@ -235,3 +235,27 @@ BLOCKERS: NONE for methodology/evidence synthesis; geography-specific legal thre
 NEXT_ACTION: retrieve current authoritative reliability/adequacy criteria and formalize a candidate-neutral R_STAR with sensitivity handling.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+49. SESSION CLAIM — JOB-EGC-042-RSTAR-CANONICAL-20261005
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200700Z-RSTAR1
+PRIMARY_ROLE: Reliability-boundary architect / adequacy evidence analyst / adversarial reviewer
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-CANONICAL-20261005
+QUESTION: What technology-neutral, quantitatively fixed reliability boundary R_STAR can be adopted before candidate ranking, without pretending a regional planning criterion is a universal physical law?
+CANDIDATE: COMMON TO ALL CANDIDATES AND BASELINES
+DEPENDENCIES: JOB-EGC-040-REPAIR-C1 has isolated R_STAR as a material UNKNOWN; accounting review remains independently owned by another session.
+REQUIRED_INPUTS: current official adequacy/reliability definitions, measurable metrics, stress-period treatment, reserve/service requirements, delivery boundary, unserved-energy treatment.
+REQUIRED_TOOLS: official-source web research; source provenance audit; independent numerical consistency checks; sensitivity design; GitHub connector.
+REQUIRED_EVIDENCE: at least two independent authoritative sources for adequacy metrics/criteria where available; exact metric definitions; explicit distinction between reference criterion and universal law.
+EXPECTED_OUTPUT: canonical mission R_STAR specification plus limitations, falsification tests, evidence records, and follow-on reviewer job.
+FALSIFICATION_CONDITION: FAIL if metric units are conflated; annual energy matching substitutes for adequacy; reference criteria are mislabeled universal; technologies receive asymmetric service requirements; or thresholds are tuned after seeing candidate outcomes.
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-REV-C2-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T200700Z-RSTAR1
+BLOCKERS: NONE for reference-boundary design; geography-specific legal compliance remains candidate/deployment dependent.
+NEXT_ACTION: retrieve current official reliability evidence, derive a frozen technology-neutral comparison boundary, attack it for metric/technology bias, and commit only evidence-supported results.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
