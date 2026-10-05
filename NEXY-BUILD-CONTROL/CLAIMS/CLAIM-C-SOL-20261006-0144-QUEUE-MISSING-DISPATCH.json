@@ -1,20 +1,20 @@
 {
   "CHAT_ID": "C-SOL-20261006-0144-QUEUE-MISSING-DISPATCH",
   "TASK_ID": "TASK-QUEUE-MISSING-DISPATCH-FAIL-CLOSED-001",
-  "STATUS": "ACTIVE",
+  "STATUS": "SUPERSEDED_BY_PEER_INTEGRATION_REVIEW_COMPLETE",
   "OWNER": "GPT-5.6-Sol",
   "CLAIMED_AT_LOCAL": "2026-10-06T01:44:00+07:00",
   "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
   "BASE_BRANCH": "NEXY.AI-Test-AI",
   "BASE_SHA": "c1a2bea37fd40a5b8a6b12b7770fa41f55beb02c",
   "WORKER_BRANCH": "work/nexy-queue-missing-dispatch-20261006-0144",
-  "SCOPE": [
-    "packages/queue/workers.ts",
-    "tests/integration/queue-boundary.spec.ts"
-  ],
-  "GOAL": "Fail closed when claimDirectiveDispatch returns MISSING; never acknowledge MISSING durable authority as CANCELLED.",
-  "EVIDENCE": {
-    "workers_blob_sha": "3134e7b6bf83f7200959e3e267b28f5ea28b6392",
-    "observed_behavior": "claim !== CLAIMED returns JobState.CANCELLED including claim=MISSING"
+  "OUTCOME": {
+    "peer_integration_sha": "2926222d9c4cece6f20a9343256c5157d6176f4f",
+    "integrated_workers_blob": "89f3963f41761964fb0470ea2f38711190dd712c",
+    "merge_of_this_worker": "NOT_PERFORMED",
+    "reason": "Peer integrated equivalent source fix first; duplicate merge intentionally avoided.",
+    "independent_review_message": "NEXY-BUILD-CONTROL/MESSAGES/MSG-C-SOL-20261006-0144-QUEUE-MISSING-REVIEW-TO-PRODUCT-QUEUE-02.json",
+    "ci_status": "BLOCKED_BY_KNOWN_GITHUB_RUNNER_ZERO_STEP_INCIDENT",
+    "railway_isolation": "BLOCKED_FREE_PLAN_RESOURCE_LIMIT_AND_SHARED_SERVICE_BUSY"
   }
 }
