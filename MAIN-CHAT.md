@@ -14687,3 +14687,318 @@ WRITE_INTEGRITY:
 - file SHA read: 706c7c113df484a8d38daa400fa89720f3b7a220
 - stale-write check: exact SHA, attempt 1.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+44. JOB-EGC-EROI-METHOD-K1-20261005 EVIDENCE PACKAGE — SUBMITTED FOR INDEPENDENT REVIEW
+======================================================================
+
+EVENT_TIME: 2026-10-05T20:01:00Z
+SESSION_ID: GPT56SOL-EGC-EROI-K1-20261005
+PRIMARY_JOB_ID: JOB-EGC-EROI-METHOD-K1-20261005
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: JOB-EGC-EROI-REV-K1-20261005
+RESEARCH_COVERAGE: Acumen recency scan + Exa literature sweep (36 search results across 3 distinct academic workstreams) + direct authoritative-source retrieval. Search results were treated as discovery only; decision claims below are tied to inspected source pages.
+
+EVIDENCE_ID: EVID-EGC-EROI-K1-001
+JOB_ID: JOB-EGC-EROI-METHOD-K1-20261005
+CLAIM_ID: CLAIM-EGC-EROI-HARMONIZATION-001
+TOOL: peer-reviewed source retrieval
+METHOD: Inspect 2022 review/harmonization of EROI literature and its system-boundary methodology.
+DATE: 2026-10-05
+SOURCE: Murphy, Raugei, Carbajales-Dale, Rubio Estrada, "Energy Return on Investment of Major Energy Carriers: Review and Harmonization"
+SOURCE_DATE: 2022-06-09
+URL/DOI/IDENTIFIER:
+- https://www.mdpi.com/2071-1050/14/12/7098
+- DOI 10.3390/su14127098
+INPUTS: Review of 113 EROI-related papers; 31 used in final harmonization after screening.
+PARAMETERS: point-of-use harmonization; electricity primary-energy-equivalent sensitivity.
+EQUATION/CODE/METHOD:
+- operational definition: EROI = Gross Energy Output / Sum(Energy Investments)
+- harmonization to comparable points in the process chain
+- electricity values normalized using declared primary-energy-equivalent conventions and sensitivity to grid conversion efficiency.
+OUTPUT:
+- [SOURCE_FACT] Authors identify inconsistent system boundaries and energy-quality conventions as a major reason published EROI values are not directly comparable.
+- [SOURCE_FACT] They argue point-of-use comparisons are more meaningful than mixing point-of-extraction and point-of-use values.
+- [SOURCE_FACT] Their harmonization separates thermal fuels at point of use from electricity at point of use and explicitly exposes sensitivity to the primary-energy-equivalent conversion convention.
+- [SOURCE_FACT] In their harmonized study, PV, wind and hydropower are at or above EROI 10, while many thermal fuels fall below 10 at point of use.
+UNITS: dimensionless EROI
+UNCERTAINTY: Literature ranges remain wide; result depends on LCA inventory, lifetime, geography, supply chain and energy-quality convention.
+ASSUMPTIONS: NONE for source description.
+LIMITATIONS:
+- This paper does NOT establish EROI=10 as a universal physical or social law.
+- Its harmonized technology values are not automatically the mission's delivered-system EROI because mission boundary additionally includes adequacy-linked storage/grid/firming where attributable.
+REPRODUCTION_METHOD: inspect Sections 2.1, 2.6 and results/discussion of the cited paper.
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: EVID-EGC-EROI-K1-002
+JOB_ID: JOB-EGC-EROI-METHOD-K1-20261005
+CLAIM_ID: CLAIM-EGC-LCA-FRAMEWORK-001
+TOOL: ISO official standard pages
+METHOD: Verify current LCA framework and required methodological phases.
+DATE: 2026-10-05
+SOURCE:
+- ISO 14040:2006, Environmental management — Life cycle assessment — Principles and framework
+- ISO 14044:2006, Environmental management — Life cycle assessment — Requirements and guidelines
+SOURCE_DATE: 2006 editions; both last reviewed/confirmed 2022 and remain current on ISO site as accessed 2026-10-05.
+URL/DOI/IDENTIFIER:
+- https://www.iso.org/standard/37456.html
+- https://www.iso.org/standard/38498.html
+INPUTS: official ISO abstracts/standard status.
+PARAMETERS: LCA methodological structure.
+OUTPUT:
+- [SOURCE_FACT] ISO 14040 describes goal/scope definition, life-cycle inventory, impact assessment, interpretation, reporting, critical review, limitations and relationships among LCA phases.
+- [SOURCE_FACT] ISO 14044 specifies requirements/guidelines for the same phases and reporting/critical review.
+UNITS: not applicable
+UNCERTAINTY: Public ISO abstracts do not expose every detailed clause of the paid standards.
+ASSUMPTIONS: NONE
+LIMITATIONS: EROI is a net-energy metric, not itself an ISO LCIA impact category; the mission uses ISO/LCA structure as inventory/boundary discipline rather than claiming ISO prescribes a universal EROI formula.
+REPRODUCTION_METHOD: inspect official ISO 14040/14044 standard pages.
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: EVID-EGC-EROI-K1-003
+JOB_ID: JOB-EGC-EROI-METHOD-K1-20261005
+CLAIM_ID: CLAIM-EGC-NET-ENERGY-REPORTING-001
+TOOL: IEA PVPS Task 12 methodology pages
+METHOD: Inspect current methodological guidance for net-energy analysis and lifecycle reporting.
+DATE: 2026-10-05
+SOURCE:
+- IEA PVPS, Methodological Guidelines on Net Energy Analysis of Photovoltaic Electricity, 2nd Edition
+- IEA PVPS, Methodology Guidelines on Life Cycle Assessment of Photovoltaic Electricity, 3rd Edition
+SOURCE_DATE: current IEA PVPS pages accessed 2026-10-05
+URL/DOI/IDENTIFIER:
+- https://iea-pvps.org/key-topics/methodological-guidelines-on-net-energy-analysis-of-photovoltaic-electricity-2nd-edition/
+- https://iea-pvps.org/key-topics/task-12-methodology-guidelines-on-life-cycle-assessment-of-photovoltaic-electricity-3rd-edition/
+INPUTS: IEA PVPS methodology summaries.
+PARAMETERS: reporting, functional unit, system boundary, lifetime, degradation, location, performance, primary-energy convention.
+OUTPUT:
+- [SOURCE_FACT] IEA PVPS distinguishes EROI from LCA cumulative-energy-demand metrics and states that modeling choices/system boundaries can materially affect conclusions.
+- [SOURCE_FACT] Its mandatory reporting list includes technology/system type, efficiency/degradation, module/BOS lifetime, location, irradiation/performance, production location/timeframe, EROI_el versus EROI_PE-eq, goal, system boundary, inventory approach/database/software, primary-energy factors, and major input-material assumptions.
+- [SOURCE_FACT] The LCA guideline emphasizes consistent functional units, system boundaries, allocation and transparent reporting for balanced comparisons.
+UNITS: methodology/reporting fields
+UNCERTAINTY: Technology-specific PV guidance must be generalized cautiously to other technologies.
+ASSUMPTIONS: NONE
+LIMITATIONS: PV-specific details are not directly imposed on nuclear/geothermal/hydro; only cross-cutting transparency/boundary principles are transferred.
+REPRODUCTION_METHOD: inspect the two IEA PVPS methodology pages.
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE_FOR_GENERALIZATION
+
+EVIDENCE_ID: EVID-EGC-EROI-K1-004
+JOB_ID: JOB-EGC-EROI-METHOD-K1-20261005
+CLAIM_ID: CLAIM-EGC-STORAGE-DYNAMIC-NETENERGY-001
+TOOL: peer-reviewed open-access source retrieval
+METHOD: Inspect dynamic net-energy analysis of renewable generation with storage and isolate what static EROI can miss.
+DATE: 2026-10-05
+SOURCE: Carbajales-Dale, Barnhart, Benson, "Can we afford storage? A dynamic net energy analysis of renewable electricity generation supported by energy storage"
+SOURCE_DATE: 2014-02-05
+URL/DOI/IDENTIFIER:
+- https://pubs.rsc.org/en/content/articlehtml/2014/ee/c3ee42125b
+- DOI 10.1039/C3EE42125B
+INPUTS: published dynamic industry-level energy-investment model.
+PARAMETERS: wind/PV growth, storage deployment, technology-specific embodied energy.
+OUTPUT:
+- [SOURCE_FACT] The study shows that energetic cost of storage and rapid capacity growth can materially change the fraction of output available to society during deployment.
+- [SOURCE_FACT] The paper explicitly notes storage results depend strongly on generation/storage type and that its own analysis did not include all round-trip losses, depth-of-discharge effects or all replacement burdens.
+- [SOURCE_FACT] It identifies other flexibility options including curtailment, flexible backup and demand response, so storage cannot be assigned as a universal fixed burden independent of system design.
+UNITS: study-specific energy and storage-hour metrics
+UNCERTAINTY: 2014 technology data are stale for current technology ranking.
+ASSUMPTIONS: NONE for methodological observation.
+LIMITATIONS:
+- Do NOT use the paper's old technology-specific storage-hour limits as 2026 candidate performance values.
+- Use it only as evidence that timing/growth and attributable storage embodied energy are distinct from a static lifetime ratio.
+REPRODUCTION_METHOD: inspect Abstract, Methodology and Discussion of RSC article.
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / METHOD
+
+EVIDENCE_ID: EVID-EGC-EROI-K1-005
+JOB_ID: JOB-EGC-EROI-METHOD-K1-20261005
+CLAIM_ID: CLAIM-EGC-STORAGE-METHOD-UNCERTAINTY-001
+TOOL: peer-reviewed literature cross-check
+METHOD: Compare storage-EROI literature to test whether one universal storage penalty is defensible.
+DATE: 2026-10-05
+SOURCE:
+- Palmer, "A Framework for Incorporating EROI into Electrical Storage" (2017)
+- Diesendorf & Wiedmann, "Implications of Trends in Energy Return on Energy Invested (EROI) for Transitioning to Renewable Electricity" (2020)
+SOURCE_DATE: 2017; 2020
+URL/DOI/IDENTIFIER:
+- DOI 10.1007/s41247-017-0022-3
+- https://www.sciencedirect.com/science/article/abs/pii/S0921800919320543
+- DOI 10.1016/j.ecolecon.2020.106726
+INPUTS: published abstracts/methodological conclusions.
+PARAMETERS: storage quantity/type/operation and system penetration.
+OUTPUT:
+- [SOURCE_FACT] Palmer states there is no generally agreed methodology for incorporating electrical storage into EROI.
+- [SOURCE_FACT] Diesendorf & Wiedmann state storage impact on system EROI depends on storage quantity, type and operation; they reject blanket low-EROI conclusions based on outdated data/overestimated storage needs for the regions studied.
+INFERENCE:
+- A mission-wide fixed "storage EROI penalty" is methodologically unjustified; storage/grid energy burden must come from the same chronological system architecture used for reliability/adequacy.
+UNITS: not applicable
+UNCERTAINTY: Literature contains methodological disagreement; these sources do not close all disputes.
+ASSUMPTIONS: NONE
+LIMITATIONS: This evidence supports a modeling rule, not a renewable-technology winner.
+REPRODUCTION_METHOD: inspect cited abstracts and methods/conclusions where available.
+REPLICATION_STATUS: CROSS_SOURCE_SUPPORT / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE
+
+EVIDENCE_ID: EVID-EGC-EROI-K1-006
+JOB_ID: JOB-EGC-EROI-METHOD-K1-20261005
+CLAIM_ID: CLAIM-EGC-NET-FRACTION-MATH-001
+TOOL: Python deterministic calculation
+METHOD: Translate EROI into gross-output energy-investment fraction and net fraction on an internally consistent energy basis.
+DATE: 2026-10-05
+SOURCE: algebra from EROI = E_out / E_in
+SOURCE_DATE: 2026-10-05 calculation
+URL/DOI/IDENTIFIER: equation supported by EVID-EGC-EROI-K1-001
+INPUTS: EROI = [2,3,5,10,20,50]
+PARAMETERS: same energy-quality/boundary units for numerator and denominator.
+EQUATION/CODE/METHOD:
+- investment_fraction_of_gross = E_in/E_out = 1/EROI
+- net_fraction_of_gross_after_energy_investment = (E_out-E_in)/E_out = 1 - 1/EROI
+- net_energy_per_unit_invested = EROI - 1
+OUTPUT:
+- EROI 2 -> invested 50.0%, net 50.0%, net/invested=1
+- EROI 3 -> invested 33.33%, net 66.67%, net/invested=2
+- EROI 5 -> invested 20.0%, net 80.0%, net/invested=4
+- EROI 10 -> invested 10.0%, net 90.0%, net/invested=9
+- EROI 20 -> invested 5.0%, net 95.0%, net/invested=19
+- EROI 50 -> invested 2.0%, net 98.0%, net/invested=49
+UNITS: dimensionless ratios / percent
+UNCERTAINTY: exact arithmetic; conceptual validity requires consistent boundary/energy normalization.
+ASSUMPTIONS: no temporal discounting; lifetime aggregate.
+LIMITATIONS: The table does not establish which EROI threshold society requires and does not capture timing of investment.
+REPRODUCTION_METHOD: evaluate formulas above.
+REPLICATION_STATUS: ONE_EXECUTION / INDEPENDENT_RECOMPUTATION_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: CALCULATION
+
+PROPOSED_HARMONIZED_EROI_ARCHITECTURE:
+TRUTH_CLASS: INFERENCE / METHOD — NOT_VERIFIED
+
+LAYER_0_RAW_ENERGY_INVENTORY:
+- Preserve lifecycle energy inputs by carrier before collapsing them:
+  electricity; heat/steam; liquid/gaseous/solid fuels; upstream embodied energy.
+- Preserve time, geography, data vintage and source.
+- Do not count ambient solar/wind/geothermal heat/water-flow resource itself as "invested energy"; count human-controlled energy required to harvest, convert, construct, operate and deliver it.
+- For fuel-based systems, include extraction/mining, upgrading/refining/enrichment/processing, transport and other energy investments, while keeping the resource's energy content conceptually distinct from investment energy.
+
+LAYER_1_PLANT_LIFECYCLE_EROI:
+EROI_plant = Lifetime_Gross_Useful_Electricity_at_declared_plant_boundary /
+             Lifecycle_Energy_Invested_in_source_plant_and_fuel_cycle
+Required denominator categories where material:
+- resource extraction/processing energy;
+- material production;
+- component manufacturing;
+- transport and construction/installation;
+- plant operation/maintenance energy external to gross output accounting;
+- scheduled replacements/degradation-related rebuild;
+- fuel-cycle energy;
+- decommissioning/end-of-life/recycling energy net of explicitly justified credits.
+
+LAYER_2_POINT_OF_USE_EROI:
+EROI_POU = Lifetime_Electricity_at_common_point_of_use /
+           Lifecycle_Energy_Invested_through_delivery_to_that_point
+Adds:
+- attributable transmission/distribution/interconnection lifecycle energy;
+- network losses represented consistently in numerator or denominator, never both without accounting identity.
+
+LAYER_3_DELIVERED_SYSTEM_EROI — MISSION DECISION LAYER:
+EROI_system = Lifetime_Reliability_Adjusted_Delivered_Electricity /
+              Lifecycle_Energy_Invested_in_generation_plus_attributable_system_assets
+Adds only assets/services actually required by the modeled architecture:
+- storage manufacturing/replacement and operating energy;
+- firming/backup energy investment not already inside generation accounting;
+- incremental transmission/grid reinforcement;
+- balancing/control infrastructure where material;
+- curtailment and storage round-trip losses through reduced delivered numerator;
+- replacements caused by lifetime mismatch.
+Reliability-adjusted delivered electricity MUST use the same adequacy/service target as the financial delivered-cost boundary.
+
+ENERGY_QUALITY_RULE:
+- Never compare straight electrical EROI for one candidate against primary-energy-equivalent EROI for another.
+- Preserve raw carrier-resolved inventory and publish at least:
+  A. a common direct-energy normalization;
+  B. a common primary-energy-equivalent normalization with explicit conversion factors.
+- If candidate ordering reverses under defensible conversion conventions, classify EROI conclusion NOT_STABLE.
+- Never silently multiply only renewable electricity output by a primary-energy factor while leaving competing electricity outputs unweighted.
+
+CO-PRODUCT / RECYCLING RULE:
+- Avoid allocation where feasible using system subdivision/system expansion.
+- Where allocation is unavoidable, document physical/exergy/economic allocation and test decision sensitivity.
+- Recycling/end-of-life credits must not exceed the modeled recovered material/energy and must use a declared cut-off/substitution convention.
+- No double credit between lower embodied energy and separate recycling benefit.
+
+TEMPORAL / DEPLOYMENT RULE:
+Static lifetime EROI is necessary but not sufficient at the mission's M1/M2 deployment scale.
+Define a dynamic net-energy trajectory:
+Net_Energy_to_Society(t)
+= Gross_Delivered_Output(t)
+- Energy_Invested_in_New_Capacity(t)
+- Energy_Invested_in_Replacements(t)
+- Energy_Invested_in_Storage_Grid_Firming(t)
+- Other_Attributable_Lifecycle_Energy(t)
+Required outputs:
+- annual reinvestment fraction;
+- minimum net-energy surplus during build-out;
+- cumulative net energy by M1/M2 horizon;
+- energy payback time for the deployed portfolio.
+If a high static EROI portfolio produces an unacceptable temporary energy deficit under the required deployment rate, mark DEPLOYMENT_NET_ENERGY_FAIL/NOT_STABLE until repaired.
+
+THRESHOLD_STATUS_AUDIT:
+- FACT: EROI > 1 means lifetime gross output exceeds measured invested energy under the chosen boundary.
+- FACT: literature does not provide a universally agreed single EROI threshold for all societies/energy systems.
+- SOURCE_FACT: the 2022 harmonization reports proposed minimum acceptable values in the literature broadly around 3–10 and finds harmonized PV/wind/hydro >=10 under its methodology.
+- MISSION_ASSUMPTION: current project proposal EROI_system >=10 is a conservative precommitted decision threshold, not a law of physics.
+- CALCULATION: EROI=10 corresponds to energy investment equal to 10% of gross output and 90% net-of-investment on a consistent lifetime aggregate basis.
+- UNKNOWN: Whether the >=10 delivered-system threshold remains accepted after the already-running objective review/repair.
+- REQUIREMENT: Do not use plant EROI >=10 to infer delivered-system EROI >=10 without integrating storage/grid/firming/lifecycle energy on the common service boundary.
+
+RED_TEAM_ATTACKS:
+1. Attack: "EROI=10 is scientifically proven as the minimum for civilization."
+   RESULT: REJECTED. Literature contains multiple proposed thresholds; mission value is a conservative assumption pending objective review.
+2. Attack: "High plant EROI automatically means high system EROI."
+   RESULT: REJECTED. Delivery, storage, grid, curtailment, replacements and adequacy can change numerator/denominator.
+3. Attack: "Assign a fixed battery penalty to all solar/wind."
+   RESULT: REJECTED. Storage requirement is architecture-, geography-, penetration- and operation-dependent.
+4. Attack: "Use static lifetime EROI only."
+   RESULT: REJECTED for massive deployment. Up-front energy timing can matter during rapid build-out.
+5. Attack: "Convert electricity to primary energy only for one technology family."
+   RESULT: REJECTED as asymmetric energy-quality accounting.
+6. Attack: "Older storage studies prove current technology-specific EROI."
+   RESULT: REJECTED due stale technology data; retained only as methodological evidence.
+7. Attack: "Monetary cost can substitute for embodied-energy inventory."
+   RESULT: REJECTED as default; environmentally extended input-output/hybrid methods may estimate missing energy inputs, but assumptions must be explicit and not silently converted into direct measurements.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-EGC-EROI-HARMONIZATION-001 <- EVID-EGC-EROI-K1-001
+- CLAIM-EGC-LCA-FRAMEWORK-001 <- EVID-EGC-EROI-K1-002
+- CLAIM-EGC-NET-ENERGY-REPORTING-001 <- EVID-EGC-EROI-K1-003
+- CLAIM-EGC-STORAGE-DYNAMIC-NETENERGY-001 <- EVID-EGC-EROI-K1-004
+- CLAIM-EGC-STORAGE-METHOD-UNCERTAINTY-001 <- EVID-EGC-EROI-K1-005
+- CLAIM-EGC-NET-FRACTION-MATH-001 <- EVID-EGC-EROI-K1-006
+- PROPOSED_HARMONIZED_EROI_ARCHITECTURE depends on all six.
+- Feeds canonical JOB-EGC-012, JOB-EGC-016 integrated simulation, JOB-EGC-022 deployment, JOB-EGC-025 uncertainty, candidate proof package CP15, and solved gate G8.
+
+STATUS_CHANGE:
+- JOB-EGC-EROI-METHOD-K1-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-EROI-REV-K1-20261005 remains OPEN and is now executable.
+- Canonical JOB-EGC-012 remains separate; it may consume only reviewer-passed portions.
+
+NEXT_ACTION:
+1. Independent reviewer reopens all sources and recomputes EVID-EGC-EROI-K1-006.
+2. Reviewer specifically attacks primary-energy-equivalent normalization and co-product allocation because both can reverse rankings.
+3. Canonical JOB-EGC-012 adopts/repairs method only after review and after common-system-boundary repair settles the reliability/delivery boundary.
+4. Candidate jobs must supply carrier-resolved lifecycle inventories rather than a naked EROI number.
+5. JOB-EGC-022/JOB-EGC-016 must add dynamic net-energy trajectory for massive deployment; static lifetime EROI alone cannot close G8.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
