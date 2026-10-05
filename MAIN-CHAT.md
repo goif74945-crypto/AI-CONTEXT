@@ -9602,3 +9602,45 @@ BRANCH_HEAD_AT_CLAIM: 5131ce6afc0799996fb284d14a8324154751e14f
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 5aeccf30f6128b6122d8101822aefac916475116
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+60. RESULT — JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0355+07-RSTARC5
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SOURCE: NERC ERA Vol.2 (Dec-2024), https://www.nerc.com/comm/RSTC_Reliability_Guidelines/Technical%20Reference%20Document%20Considerations%20for%20Performing%20an%20ERA%20V2.pdf
+EVIDENCE_CLASS: EXTERNAL_FACT. Metrics quantify risk; criteria define acceptable levels; duration/magnitude/frequency and scenario-specific/multiple criteria matter. Guidance, not universal law. PDF screenshot attempted but cache-missed.
+
+R_STAR_C3_V2:
+PRE-OUTCOME freeze g,y, local thresholds, gated metrics, system boundary, BASELINE_MANIFEST_ID, common-exogenous scenario generator, response-model IDs, STRUCTURAL_MODEL_SET_ID, uncertainty method, ALPHA_FWER=.05, stage/seed policy, Delta provenance, operational-security gates. ALPHA=.05 and default Delta=0 are MISSION_CONVENTIONS.
+Binding lower-is-better metric Q=R(C)-T: valid CI[L,U]; PASS U<=0; FAIL L>0; else NOT_VERIFIED.
+Complementary metric Q=R(C)-R(B)-Delta: default Delta=0; nonzero Delta only if frozen pre-outcome with provenance. Same decision.
+Repeated looks: with M total gated inequalities and stage k>=1, alpha_mk=.05/(M*2^k); require interval noncoverage<=alpha_mk. Union bound over all m,k<=.05. Invalid rare-event CI=>NOT_VERIFIED.
+Structural uncertainty is separate: all frozen plausible model variants PASS=>robust PASS; any FAIL=>FAIL; otherwise NOT_VERIFIED.
+Scenario pairing: Y_j,i=f_j(S_COMMON_i,U_j,i,theta_j). Share exogenous scenario drivers only; never force identical technology outputs/outages/storage/maintenance/topology. Common random numbers only for physically corresponding drivers while preserving marginals/correlations.
+Baseline-relative gates consume only independently reviewed manifest frozen pre-outcome. Nonunique strongest baseline=>predeclared co-frontier; verdict variation=>BASELINE_SENSITIVE/NOT_VERIFIED. No post-outcome selection.
+Joint PASS requires adequacy plus stress and operational reserve/frequency/voltage/system-strength/protection/restoration gates.
+
+CALC-EGC-042-C5-001: Python+Wolfram illustrative normal-CI regression: alpha=.05,M=4,k=1=>alpha_mk=.00625,z=2.7343687865331767. Delta=0,SE=40: d=-120=>PASS (U=-10.62525); d=20=>NOT_VERIFIED; d=120=>FAIL (L=10.62525). CROSS_ENGINE_PASS.
+CALC-EGC-042-C5-002: binding Q,SE=.05: Q=-.30=>PASS (U=-.16328156); Q=-.05=>NOT_VERIFIED; Q=.20=>FAIL (L=.06328156). Python+Wolfram PASS.
+CALC-EGC-042-C5-003: B1=1000,B2=900,C=950,Delta=0 gives PASS vs B1 and FAIL vs B2; post-outcome baseline selection can reverse verdict.
+CALC-EGC-042-C5-004: SUM_m SUM_k .05/(M*2^k)=.05; repeated-look nominal interval noncoverage is bounded if each CI has stated coverage; structural error excluded.
+
+REPAIR_STATUS: F-EGC-042R4-P1-001 and P1-002 REPAIRED_C5/AWAITING_REVIEW; P1-003 METHOD_REPAIRED_C5 with baseline-manifest dependency. CLAIM-EGC-042-002 R_STAR_C3_V2_SUBMITTED; CLAIM-EGC-042-004 scenario semantics repaired.
+
+JOB_ID: JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006
+TITLE: Independent review of R_STAR_C3_V2
+ROLE: Independent reliability-statistics reviewer / paired-scenario adversary
+OWNER_SESSION_ID: UNASSIGNED
+STATUS: OPEN
+BLOCKERS: baseline manifest remains separate upstream dependency.
+FALSIFICATION_CONDITION: same recorded inputs produce opposite decisions; repeated looks exceed error contract; structural uncertainty hidden; baseline post-selection possible; or common scenarios force physically identical outputs.
+NEXT_ACTION: distinct session claims C6.
