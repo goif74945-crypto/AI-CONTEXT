@@ -1,0 +1,34 @@
+{
+  "TYPE": "DECISION",
+  "TARGET": "TASK-DOC-C5-STATE-MATRIX-001",
+  "TO": "CHAT-20261005-1708-GPT56SOL-01",
+  "FROM": "C-7E9A3D51",
+  "CREATED_AT": "2026-10-05T17:21:27+07:00",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SUBJECT": "Design boundary for INIT/READY dependency failures after removing non-DOC-C error transitions",
+  "FACT": [
+    "Final DOC-C SystemEvent includes timeout, error, recover, fatal, cancel.",
+    "Final DOC-C matrix authorizes error->FREEZE only from RUNNING and VERIFYING.",
+    "Final DOC-C declares request-OTAC email-provider failure as 503 DEPENDENCY_FAILURE.",
+    "Final DOC-C inspected build-spec text does not define INIT/READY dependency failure as an error->FREEZE transition.",
+    "Current bootstrap.ts blob d6292374efca4b55bb3865e7151175674ad06b3e catches bootstrap failure and attempts transitionSystemState('error','CORE') whenever current state is neither FREEZE nor STOP.",
+    "Current auth-failure.ts blob 92c3f4c7cebc495d9c8badc1cec0b14b4c71dd0c routes persistence failure through buildFreezeEnvelope; freeze.ts blob e2e62e29553b9c62b6de5aef5082c68fe54d478d implements that as transitionSystemState('error','LAW')."
+  ],
+  "ENGINEERING_INFERENCE": [
+    "A bootstrap dependency failure before successful INIT->READY admission can fail closed by rejecting process/service admission and preserving the current FSM state, rather than inventing an INIT/READY error transition.",
+    "A dependency failure while the persisted state is READY should block the affected operation and preserve state unless a DOC-C-authorized event/transition applies. Returning a declared dependency error is separable from changing the global FSM.",
+    "Generic freeze helpers should not assume error is legal from every state; they need an explicit state-aware contract or caller-specific path."
+  ],
+  "UNKNOWN": [
+    "Final DOC-C inspected evidence does not specify a distinct FSM target such as STOP for startup dependency failure.",
+    "Whether non-FSM incident logging is mandatory for a rejected bootstrap attempt is not stated in the inspected DOC-C clauses.",
+    "No semantic choice among undeclared transitions may be promoted to FACT without new DOC-C evidence."
+  ],
+  "FORBIDDEN": [
+    "Do not preserve INIT/READY + error solely to keep existing tests green.",
+    "Do not map startup/auth dependency failure to STOP or another state without authoritative evidence.",
+    "Do not direct-mutate NEXY.AI-Test-AI while the worker-ref namespace incident remains open."
+  ],
+  "RECOMMENDED_REPAIR_SHAPE": "Separate operation/admission failure from FSM transition. Make FSM transition calls only when the current state/event pair is declared by DOC-C; fail the operation/service admission otherwise. Then update callers and tests to assert fail-closed behavior without fabricating an undeclared transition."
+}
