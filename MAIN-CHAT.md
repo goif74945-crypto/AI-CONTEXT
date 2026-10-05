@@ -11816,3 +11816,23 @@ FALSIFICATION_TARGET: representation changes FSRC_ND, inventory enters twice or 
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REPAIR-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0425+07-COSTBASE-R1
+PRIMARY_ROLE: Objective cost-unit / uncertainty / deployment-acceptance repair architect
+PRIMARY_JOB_ID: JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REPAIR-20261006
+QUESTION: Can LOW_COST and deployment acceptance be made dimensionally common and non-gameable while the separately owned scale-anchor arbitration proceeds?
+CANDIDATE: ALL; objective method only
+DEPENDENCIES: F-EGC-043-OBJR6-P1-001/P1-002/P2-004; current SOCDISC/FSRC_ND interface; concurrent JOB-EGC-043-OBJECTIVE-REPAIR-C3 overlaps uncertainty/T0 and will be treated as independent upstream/downstream reconciliation, not overwritten.
+TOOLS: latest GitHub state; official price-index methodology; uncertainty algebra; counterexample regression; unit audit.
+EVIDENCE_TARGET: frozen price-level base and index method; joint uncertainty decision rule with robust fallback; deployment milestone/sustained-service acceptance event; regression tests proving analyst choice cannot manufacture PASS.
+FALSIFICATION_TARGET: FAIL if candidate/baseline/threshold use different real-price bases, uncertainty aggregation is analyst-selectable, or partial/transient commissioned output can satisfy MASSIVE_MIN.
+REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REV-20261006
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
