@@ -479,3 +479,26 @@ BRANCH_HEAD_AT_CLAIM: 5d2d66aa8e3d8cda4bbe0c3b5c7322880edecdc7
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: e3fa57b243ae1fb3b31be1d96894db9437574db9
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+52. SESSION CLAIM — JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0315+07-GS1
+PRIMARY_ROLE: Grid / Storage / Transmission Scaling Evidence Analyst
+PRIMARY_JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+QUESTION: For candidate systems seeking low delivered cost at massive scale, what empirically grounded storage, transmission, interconnection, curtailment and grid-service requirements can materially reverse plant-level cost rankings?
+CANDIDATE: Cross-candidate system layer for solar, wind, hydro, geothermal, nuclear fission, gas/firming references, storage-coupled portfolios and hybrid grids.
+DEPENDENCIES: common cost-ledger repair, R_STAR reliability boundary, objective thresholds and baseline screen are concurrently owned. This job supplies measured/system evidence and parameterized calculations without declaring a global winner.
+REQUIRED_INPUTS: measured grid-scale battery performance/cost/deployment; transmission/interconnection build data; curtailment evidence; storage duration/round-trip efficiency; system adequacy/stability needs; historical high-VRE system performance where available.
+REQUIRED_TOOLS: current official-source web research; regulator/ISO/RTO/national-lab/IGO reports; executed dimensional calculations; sensitivity analysis; provenance audit.
+REQUIRED_EVIDENCE: source/date/geography/units/system boundary; measured-vs-projected distinction; explicit charging-energy and RTE-loss accounting; no assumption that storage or grid expansion is free.
+EXPECTED_OUTPUT: empirical grid/storage evidence records; common formulas and reproducible calculations; break-even/sensitivity cases showing when integration costs can reverse ranking; red-team findings; independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if plant LCOE is equated with delivered-system cost, storage losses/cycling are double counted or omitted, transmission/interconnection needs are assumed zero, reliability services are ignored, or one technology is charged for common grid services while another receives them for free.
+REVIEWER_JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: exact universal storage requirement is expected to be system/geography dependent; results must therefore remain scenario-parameterized until R_STAR and objective are frozen.
+NEXT_ACTION: retrieve current official measured grid-storage/transmission/curtailment evidence, calculate system-layer cost/energy sensitivities, attempt ranking-reversal counterexamples, and submit for independent review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
