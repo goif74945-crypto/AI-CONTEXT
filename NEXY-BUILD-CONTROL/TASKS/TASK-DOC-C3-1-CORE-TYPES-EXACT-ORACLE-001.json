@@ -6,7 +6,7 @@
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "PRIORITY": "P1",
   "RISK": "MEDIUM_CONTRACT",
-  "STATUS": "BLOCKED",
+  "STATUS": "DUPLICATE_SUPERSEDED",
   "OWNER": "UNASSIGNED",
   "BLOCKERS": [
     "INC-BRANCH-NAMESPACE-001"
@@ -31,5 +31,11 @@
   ],
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "UNBLOCK_CONDITION": "Resolve INC-BRANCH-NAMESPACE-001 with an authoritative Git-valid worker namespace or explicitly authorized isolation mechanism.",
-  "CREATED_BY": "C-V8-SOL-OTAC-7C31"
+  "CREATED_BY": "C-V8-SOL-OTAC-7C31",
+  "ACTIVE": false,
+  "CANONICAL_TASK_ID": "TASK-DOC-C3-1-CLOSED-ENUM-ORACLE-001",
+  "DUPLICATE_REASON": "Same requirement, same exact SystemStatus/SystemState closed-enum oracle, same test paths; canonical task has narrower test-only mutation scope and explicit mutation-proof acceptance.",
+  "FORBIDDEN": [
+    "Do not allocate a second writer for this duplicate semantic mutation scope."
+  ]
 }
