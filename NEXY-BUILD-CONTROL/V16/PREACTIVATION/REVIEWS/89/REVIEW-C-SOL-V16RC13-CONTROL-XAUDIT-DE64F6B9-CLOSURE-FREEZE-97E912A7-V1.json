@@ -1,0 +1,42 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_INDEPENDENT_CLOSURE_REPAIR_REVIEW_V1",
+  "REVIEW_ID": "REVIEW-C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9-CLOSURE-FREEZE-97E912A7-V1",
+  "REVIEWER_CHAT_ID": "C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "REPAIR_ID": "V16RC13-CLOSURE-MEMBERSHIP-FREEZE-REPAIR-97E912A7-V1",
+  "AFFECTED_FINDING": "FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593",
+  "VERDICT": "CHANGES_REQUIRED",
+  "PASS_POINTS": [
+    "The repair correctly introduces a closure-time membership freeze before materializing MEMBERSHIP_ROOT_HASH and DRAIN_MANIFEST_ROOT_HASH.",
+    "The repair correctly requires every shard including empty shards to participate in freeze evidence.",
+    "The repair correctly treats any frozen-namespace write or root mismatch as REOPEN_REQUIRED."
+  ],
+  "BLOCKING_REVIEW_FINDINGS": [
+    {
+      "ID": "R1-OBSERVER-NAMESPACE-LAW-CONFLICT",
+      "SEVERITY": "P0_CONTROL_PROTOCOL",
+      "ISSUE": "POST_PIN_JOIN_RULE creates CLOSURE_OBSERVER_READ_ONLY records that are explicitly not normal MEMBERSHIP_RECORDs.",
+      "LAW_CONFLICT": "Clause [217] states EVERY CHAT starts by reserving CHAT_ID and CREATE/RENEW SHARDED MEMBERSHIP. Clause [197] permits post-barrier joins but does not waive [217].",
+      "IMPACT": "The candidate cannot claim LAW_TEXT_CHANGE_REQUIRED=false while allowing a participating Chat to bypass the mandatory membership-record startup invariant."
+    },
+    {
+      "ID": "R2-PINNED-MEMBERSHIP-ACCOUNTING",
+      "SEVERITY": "P0_CONTROL_PROTOCOL",
+      "ISSUE": "If post-pin observers are instead represented as ordinary current-epoch membership records to satisfy [217], clause [200] requires every current-epoch membership record in the closure membership manifest, so the pinned MEMBERSHIP_ROOT_HASH changes and the original race returns unless the closure is invalidated.",
+      "IMPACT": "A law-preserving repair must define an authoritative invalidation/REOPEN linearization for every post-pin membership create/update."
+    }
+  ],
+  "LAW_PRESERVING_REPAIR_PATH": [
+    "Keep [217]: every post-barrier Chat still creates or renews a real sharded membership record.",
+    "After CLOSURE_MEMBERSHIP_FROZEN or PINNED_WORLD_READY, any membership create/update request must first atomically CAS the Mission Fence from the active closure substate to REOPEN_REQUIRED (or equivalent non-COMPLETE state) before the membership write is admitted.",
+    "The reopen CAS must change authoritative fence state/version so an in-flight COMPLETE expected-version CAS fails.",
+    "After the membership write, rebuild the closure membership/drain manifests and roots before re-entering pinned-world sweeps.",
+    "No post-pin membership write may commit while the fence still permits COMPLETE against the old pinned tuple."
+  ],
+  "ALTERNATIVE_REQUIRING_LAW_CHANGE": "If the design prefers a non-membership observer namespace excluded from clause [200], explicitly amend/supersede [197], [200], and [217] to authorize that class and define its identity, sharding, authority, and exclusion from closure membership roots.",
+  "DISPOSITION": "Do not resolve FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593 from this V1 candidate. Either revise the control repair to the law-preserving REOPEN path and independently verify it, or obtain explicit successor-law authority for the observer exception.",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "REVIEW_SCOPE_COMPLETE": true
+}
