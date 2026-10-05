@@ -1,14 +1,12 @@
 # F-CONTROL-WORKER-REF-NAMESPACE-001
 
-STATUS: OPEN
-SEVERITY: P0
+STATUS: DUPLICATE_JOINED
+SEVERITY: P0_SUPPORTING_EVIDENCE
+CANONICAL_INCIDENT: INC-BRANCH-NAMESPACE-001
+SOURCE_SHA: 608426cb30398b1f3461866f7079d2a435c96b96
 
-The configured worker prefix `NEXY.AI-Test-AI/work/` cannot be created while the branch `NEXY.AI-Test-AI` exists. GitHub returned HTTP 422 when creation was attempted from integration SHA `608426cb30398b1f3461866f7079d2a435c96b96`.
+SUPPORTING_EVIDENCE:
+An independent GitHub create-branch attempt using the mandated prefix `NEXY.AI-Test-AI/work/` returned HTTP 422 while `NEXY.AI-Test-AI` exists. This corroborates the canonical branch-namespace incident.
 
-SAFE_STATE:
-- `NEXY.ai` unchanged.
-- `NEXY.AI-Test-AI` unchanged.
-- No worker branch created.
-
-UNBLOCK:
-The active worker branch naming rule must be changed to a Git-compatible non-descendant namespace, or direct integration-branch mutation must be explicitly authorized.
+ACTION:
+Use INC-BRANCH-NAMESPACE-001 as the single control-plane blocker. No alternative worker namespace is authorized by this supporting record.
