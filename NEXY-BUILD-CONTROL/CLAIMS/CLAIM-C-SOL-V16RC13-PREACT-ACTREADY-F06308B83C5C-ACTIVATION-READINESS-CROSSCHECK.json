@@ -12,6 +12,9 @@
   "TARGET_INTEGRATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_AUDIT_EVIDENCE",
   "DUPLICATION_MODE": "INDEPENDENT_CROSSCHECK_NO_ROW_RECLASSIFICATION_NO_SCHEMA_OWNERSHIP",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Bind current activation prerequisites to fresh evidence without competing with active P0 manifest, denominator, projection-schema, static-protocol, or law-byte owners."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Bind current activation prerequisites to fresh evidence without competing with active P0 manifest, denominator, projection-schema, static-protocol, or law-byte owners.",
+  "RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-V16RC13-PREACT-ACTREADY-F06308B83C5C-ACTIVATION-READINESS-CROSSCHECK.json",
+  "VERDICT": "NOT_ACTIVATION_READY_FAIL_CLOSED",
+  "COMPLETION_RESULT_COMMIT": "9df5488b088e822df8331eb321e63e43fb640b8a"
 }
