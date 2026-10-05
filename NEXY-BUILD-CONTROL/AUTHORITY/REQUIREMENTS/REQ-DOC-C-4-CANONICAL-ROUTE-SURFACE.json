@@ -1,0 +1,70 @@
+{
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": [
+    236,
+    237,
+    238,
+    239,
+    240,
+    241
+  ],
+  "SPEC_LINES": {
+    "non_empty_paragraphs": "8496-8810",
+    "raw_docx_w_p_indexes": "10038-10352",
+    "extraction_note": "Final DOC-C §4.2 Route Matrix; rendered PDF pages are primary anchors."
+  },
+  "SPEC_TEXT": {
+    "canonical_routes": [
+      "POST /api/auth/request-otac",
+      "POST /api/auth/verify-otac",
+      "GET /api/session/me",
+      "POST /api/auth/logout",
+      "POST /api/directives",
+      "GET /api/directives/:id",
+      "GET /api/runs/:id",
+      "POST /api/freeze/recover",
+      "POST /api/vault/commit",
+      "GET /api/artifacts/:id/revisions",
+      "GET /api/incidents/:id",
+      "GET /api/audit-logs"
+    ]
+  },
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC / FULL CANONICAL API PACK",
+  "EXPECTED_BEHAVIOR": [
+    "DOC-C compliance checks validate the twelve routes declared by final §4.2 against their auth/RBAC/retry/audit/error/shape contracts.",
+    "Additional product/internal endpoints may only be retained outside the canonical DOC-C attribution unless active build authority is located."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not call an undeclared endpoint DOC-C canonical merely because it exists.",
+    "Do not reduce route compliance to adapter-existence checks while ignoring route semantics."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "API",
+    "VALIDATION",
+    "CONTRACTS",
+    "INTEGRATION"
+  ],
+  "DEPENDENCIES": [
+    "route adapters",
+    "route handlers",
+    "DOC-C static checker"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "scripts/check-doc-c.ts"
+  ],
+  "TEST_PATHS": [
+    "scripts/check-doc-c.ts"
+  ],
+  "STATUS": "MISMATCH",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "checker_blob": "5d60b3b8bcce8d11988fd971679eb9685177cc43",
+    "checker_extra_routes": [
+      "GET /api/directives",
+      "GET /api/runs",
+      "GET /api/artifacts"
+    ],
+    "checker_scope_gap": "scripts/check-doc-c.ts requires adapter existence for routes but does not prove each §4.2 route's complete response/error/retry/idempotency semantics."
+  }
+}
