@@ -9576,3 +9576,29 @@ Distinct reviewer must independently:
 6) require quantitative Ni/Cu metallization intensity if low-Ag plating is promoted beyond sensitivity;
 7) attack the disjunctive closure for hidden free levers;
 8) reconcile this PV-only material gate with separately owned grid/storage material burden before any candidate ranking.
+
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0420+07-MFG1
+PRIMARY_ROLE: Cross-Candidate Manufacturing Throughput / Factory-Scale / Industrial Ramp Analyst
+PRIMARY_JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006
+QUESTION: Even where physical resources are sufficient, can the leading energy candidates be manufactured, constructed and supplied at the annual throughput needed for MASSIVE_ENERGY without hidden factory, equipment, skilled-labor, long-lead-component or learning-curve bottlenecks that reverse cost/deployment conclusions?
+CANDIDATE: solar PV; wind; batteries/storage; hydro/PSH; geothermal/EGS; nuclear fission/advanced fission; gas/thermal firming; emerging systems if they survive maturity screen.
+DEPENDENCIES: objective-scale, construction-risk, resource/material, grid-material and nuclear fuel-cycle jobs are independently owned. This job separates manufacturing flow from geological/resource stock and from site construction schedule.
+REQUIRED_INPUTS: current annual factory/output capacity or production where available; observed annual installations as lower-bound flow evidence; major long-lead equipment; factory utilization; regional concentration; scale-up time; skilled labor and specialized tooling; architecture-specific manufacturing requirements.
+REQUIRED_TOOLS: current IEA/IRENA/IEA-PVPS/DOE/NREL/IAEA/official industry statistics; parametric throughput calculations; cross-source provenance audit; sensitivity.
+REQUIRED_EVIDENCE: dated annual flow/capacity with units; distinguish factory nameplate, actual production, shipments and installations; geography; no stock-to-flow conversion without explicit schedule.
+EXPECTED_OUTPUT: MFG_STAR ledger; mission-scale annual throughput equations; candidate bottleneck states; evidence gaps; independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if resource reserves are treated as manufacturing capacity, annual installations are treated as factory nameplate without qualification, global factory capacity is granted to one geography without trade/logistics, announced plants are counted as operating production, or learning curves are assumed without observed/validated basis.
+REVIEWER_JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final MASSIVE_ENERGY deployment horizon is under upstream objective review; use parameterized build-window equations and do not choose a favorable horizon post hoc.
+NEXT_ACTION: gather current PV/wind/battery/nuclear/geothermal/hydro manufacturing/deployment throughput evidence; compute capacity-per-year requirements over explicit build windows; identify bottleneck versus expansion-needed versus unknown states.
+BRANCH_HEAD_AT_CLAIM: 5131ce6afc0799996fb284d14a8324154751e14f
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 5aeccf30f6128b6122d8101822aefac916475116
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
