@@ -1,0 +1,35 @@
+{
+  "FINDING_ID": "FINDING-P0-OWNER-RECOVERY-AUTHORITY-INTERNAL-DOC-C-CONFLICT-001",
+  "TYPE": "SPEC_AUTHORITY_CONFLICT_AND_STALE_VERIFIED_EVIDENCE",
+  "SEVERITY": "P0_AUTHORITY",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_EPOCH": "EPOCH-20261005-b35ee1bf-608426cb",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "OBSERVED_CONTROL_HEAD": "69d640cdcf0707aee61864c6f83bca5d8eda8f26",
+  "AFFECTED_TASK": "TASK-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-001",
+  "STALE_EVIDENCE": "NEXY-BUILD-CONTROL/RESULTS/REVIEW-GLOBAL-API-OWNER-RECOVERY-AUTHORITY-C-SOL-20261005-1923.json",
+  "FACTS": [
+    "Locked authoritative document paragraph 9885 begins '2) DOC-C — vNEXT BUILD SPEC'.",
+    "Within that same DOC-C, paragraph 10029 states all mutating routes require secure session + CSRF except OTAC request/verify.",
+    "Paragraph 10030 states all mutating routes require idempotency_key unless explicitly exempt.",
+    "Within the same DOC-C, paragraphs 10898-10903 define §8.9 Owner Escalation Path: if OWNER session is lost and suspicious lock is active, a manual owner recovery path is required; it must emit a security incident + audit trail; no hidden bypass.",
+    "Therefore the prior review statement that §8.9 is outside locked final DOC-C is factually false.",
+    "Current source exposes POST /api/auth/owner-recovery and performs durable mutations without an active secure session."
+  ],
+  "ANALYSIS": [
+    "DOC-C §4.1 and DOC-C §8.9 are same-authority clauses and must be reconciled before destructive repair.",
+    "§8.9 requires a manual recovery path under lost-session conditions but does not explicitly declare that path to be an HTTP mutating route or explicitly add a §4.1 session exemption.",
+    "The current HTTP route is therefore not proven authorized, but immediate removal is also not proven correct because it may violate §8.9's required recovery path.",
+    "Under SPEC_CONFLICT law, freeze only the affected owner-recovery mutation scope; independent scopes continue."
+  ],
+  "REQUIRED_ACTION": [
+    "Invalidate the stale authority verdict that classifies §8.9 as outside DOC-C.",
+    "Mark affected requirement/task CONFLICT or REVERIFY_REQUIRED.",
+    "Do not remove, broaden, or bless the owner-recovery route until an authority-consistent interpretation or explicit spec resolution exists.",
+    "Continue unrelated source-independent audits while worker-branch namespace blocker remains open."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "UPSTREAM_MUTATION": "NONE",
+  "STATUS": "OPEN"
+}
