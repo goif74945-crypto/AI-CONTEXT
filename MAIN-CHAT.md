@@ -12650,3 +12650,153 @@ BLOCKERS: final geography-specific numeric reliability thresholds remain jurisdi
 BRANCH_BLOB_SHA_AT_CLAIM: dad5c31c790518b828b0732052ed47d0209465eb
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+63. REPAIR RESULT — JOB-EGC-043-BASELINE-SCREEN-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-BASELINE-REPAIR-C3
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REPAIR-C3-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REPAIR-REV-C4-20261006
+BRANCH_HEAD_BEFORE_WRITE: 08497704645190824dd97906c677da25bf911243
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 5adc08f7a1f5322aab767cb3a1779d571324ac98
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REPAIR OBJECTIVE:
+Remove four-hour-Li-ion privilege from the strongest-current portfolio baseline while preventing the opposite error of granting pumped storage universal siting or free long life.
+
+EVIDENCE_ID: EVID-EGC-043-BLREP-001
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: NLR 2025 Annual Technology Baseline, Utility-Scale Battery Storage
+URL: https://atb.nlr.gov/electricity/2025/utility-scale_battery_storage
+SOURCE_DATE: 2025 ATB; retrieved 2026-10-06
+OUTPUT:
+- utility-scale LFP BESS represented at 2, 4, 6, 8 and 10 hours;
+- duration cost identity: Total System Cost ($/kW) = Battery Pack Cost ($/kWh) * Storage Duration (h) + BOS Cost ($/kW);
+- representative RTE = 85%;
+- technical/model life = 15 years;
+- FOM = 4% of capital cost in $/kW and includes augmentation intended to maintain rated capacity through that life;
+- default 4-hour CF assumption is based on about one cycle/day and is a modeling convention, not a reliability requirement.
+REPAIR: 4 h is no longer a mandatory baseline duration. Chronological optimization must be allowed to select 2/4/6/8/10 h BESS or an interpolated duration only where the same sourced power/energy cost decomposition remains valid.
+
+EVIDENCE_ID: EVID-EGC-043-BLREP-002
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: NLR 2025 ATB, Pumped Storage Hydropower
+URL: https://atb.nlr.gov/electricity/2025/pumped_storage_hydropower
+OUTPUT:
+- PSH represented at 8, 10 and 12 hours;
+- central RTE = 80%; cited literature range = 70%-87%;
+- technical life = 100 years per 2025 ATB Definitions;
+- resource/cost representation is site-specific and includes closed-loop sites and sites pairing a new off-river reservoir with an existing reservoir;
+- 2025 ATB uses national resource assessment/cost classes rather than one universal PSH cost.
+URL_DEFINITIONS: https://atb.nlr.gov/electricity/2025/definitions
+REPAIR: PSH is a selectable storage baseline only for geographies with eligible sites under the frozen resource/siting screen. No universal PSH build option.
+
+EVIDENCE_ID: EVID-EGC-043-BLREP-003
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: NLR Pumped Storage Hydropower Supply Curves
+URL: https://www.nlr.gov/gis/psh-supply-curves
+OUTPUT:
+Technical-potential filtering removes candidate reservoirs intersecting existing water bodies/waterways, glaciers/ice, protected federal lands, urban areas, critical habitats, or within 1,000 ft of wetlands; optional scenarios can further exclude roads/farmland. Supply curves retain site-specific duration, reservoir volume, capacity, head, reservoir separation, transmission spurline distance/cost and total cost.
+REPAIR: PSH resource access is endogenous to geography/resource class. Transmission/spurline ownership may not disappear merely because storage is classified as PSH.
+
+CALC-EGC-043-BLREP-001 — STORAGE LOSS NORMALIZATION
+METHOD: independent Decimal arithmetic.
+EQUATION: charging input per 1 MWh discharged = 1/RTE; conversion loss per 1 MWh discharged = 1/RTE - 1.
+OUTPUT:
+- BESS at 85% RTE: 1.176470588 MWh input; 0.176470588 MWh conversion loss per MWh discharged.
+- PSH central 80%: 1.25 MWh input; 0.25 MWh loss.
+- PSH 70%-87% sensitivity: 1.428571429 to 1.149425287 MWh input per MWh discharged.
+RULE: these losses are represented physically through the common storage/SOC ledger. They are NOT a second monetized RTE-loss line. Charging energy remains owned by source/import ledger.
+
+CALC-EGC-043-BLREP-002 — 60-YEAR LIFECYCLE TOPOLOGY
+INPUTS: common H_COST=60 y from accounting repair; BESS technical life=15 y; PSH technical life=100 y.
+OUTPUT:
+- continuous BESS service over 60 y requires four 15-y cohorts absent a separately evidenced longer-life case: initial asset + replacements at approximately y15/y30/y45.
+- a 100-y PSH asset has 40 y technical life remaining at y60.
+BOUNDARY: this is a replacement/residual topology, NOT a completed cost ranking. BESS replacement cost timing, PSH refurbishment, residual opportunity value, decommissioning and terminal liabilities must follow the reviewed common terminal/PV rule. Until that upstream accounting repair is verified, lifecycle-cost ranking remains NOT_VERIFIED.
+
+EVIDENCE_ID: EVID-EGC-043-BLREP-004
+EVIDENCE_CLASS: SOURCE_FACT / BASELINE-COVERAGE EVIDENCE
+SOURCE: U.S. DOE 2022 Grid Energy Storage Technology Cost and Performance Assessment
+URL: https://www.energy.gov/cmei/2022-grid-energy-storage-technology-cost-and-performance-assessment
+OUTPUT:
+DOE standardized assessment covers Li-ion, lead-acid, vanadium-redox-flow, PSH, compressed-air and hydrogen storage and adds zinc, thermal and gravitational storage; it analyzes additional 24-h and 100-h durations and explicitly includes storage-specific charging cost, augmentation/replacement and decommissioning concepts.
+CROSS_SOURCE: DOE Storage Innovations 2030 / 2024 LDES summary covers multiple electrochemical, chemical, mechanical and thermal LDES families.
+URL_2: https://www.energy.gov/oe/storage-innovations-2030
+URL_3: https://www.energy.gov/oe/articles/new-report-showcases-how-innovation-can-fast-track-affordable-energy-storage
+LIMITATION: inclusion in DOE assessment/RD&D portfolio does NOT prove current commercial dominance, bankability or a lower cost than BESS/PSH.
+
+BASELINE STORAGE ADMISSION RULE — REPAIRED:
+For each frozen geography g and R_STAR chronology:
+1. CORE_STORAGE_SET must include current 2025-ATB utility BESS durations 2/4/6/8/10 h and PSH 8/10/12 h wherever PSH site/resource constraints permit.
+2. SUPPLEMENTAL_STORAGE_CHALLENGER must admit any other storage technology if current physical/commercial evidence supports the required duration/power/energy service and common-boundary CAPEX/OPEX/life/RTE/degradation/replacement/site constraints can be sourced.
+3. RD&D/demo status alone cannot enter as a current baseline. Projection cannot be substituted for measured commercial operation.
+4. Optimizer chooses the portfolio; analyst may not hard-code one storage technology/duration because it makes another candidate look better.
+5. Every storage option uses explicit P_MW, E_MWh and D_h=E/P; $/kW and $/kWh are never merged without the duration equation.
+6. Same charging energy, SOC, network, curtailment and RTE accounting applies to every storage technology.
+
+STRONGEST-CURRENT BASELINE SET — REPAIRED:
+A. VRE_COST_FLOOR: site-appropriate utility PV + onshore wind.
+B. FIRM_LOW_CARBON_REFERENCE: mature nuclear + geothermal + hydro where site/resource feasible.
+C. FLEXIBLE_REFERENCE: modern NGCC/CT with explicit fuel/emissions/regulatory boundary.
+D. FLEXIBILITY_LAYER:
+   - BESS duration set 2/4/6/8/10 h using 2025 ATB provenance;
+   - PSH 8/10/12 h where site-screen permits;
+   - demand response, transmission/interconnection and ancillary/system-strength services;
+   - supplemental storage challengers admitted by the rule above.
+E. HYBRID_REFERENCE: geographically optimized portfolio over A-D.
+NO FINAL WINNER until the SAME geography, chronology, R_STAR, FSRC_ND, terminal/lifecycle rule and delivered-load service are frozen.
+
+ADVERSARIAL REGRESSIONS:
+R1 — FORCE_4H_BESS: FALSIFIED. 2025 ATB itself represents 2-10 h; hardcoding 4 h is analyst privilege.
+R2 — FREE_PSH_ANYWHERE: FALSIFIED. NLR geospatial screen proves site/resource/exclusion and spurline cost dependencies.
+R3 — COMPARE_BESS_$/KW_TO_PSH_$/KW_WITHOUT_DURATION: FALSIFIED. storage service is jointly power+energy; BESS ATB cost identity explicitly depends on hours.
+R4 — IGNORE_15Y_VS_100Y_LIFE: FALSIFIED. common 60-y service requires materially different replacement/residual treatment.
+R5 — MONETIZE_RTE_LOSS_TWICE: FALSIFIED by common physical ledger.
+R6 — EXCLUDE_NON-BESS_PSH_BY_LABEL: REJECTED. Supplemental-admission rule prevents a credible commercial storage technology from being barred a priori.
+R7 — PROMOTE_DOE_RD&D_TECH_TO_CURRENT_BASELINE: REJECTED. DOE portfolio inclusion is not commercial proof.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-043-PLANT-COST-FRONTIER: unchanged PASS_WITH_BOUNDARY.
+CLAIM-EGC-043-MEASURED-CF: unchanged PASS.
+CLAIM-EGC-043-LCOE-NOT-SYSTEM-COST: unchanged PASS.
+CLAIM-EGC-043-PORTFOLIO-BASELINE-REQUIRED: REPAIRED_PENDING_REVIEW.
+CLAIM-EGC-043-STORAGE-TECH-NEUTRALITY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-PSH-GEOGRAPHY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-043-FINAL-WINNER: NOT_VERIFIED / NONE.
+
+RESIDUAL UNKNOWN / NON-BLOCKING FOR THIS REPAIR:
+- exact common-boundary cost ranking BESS vs PSH vs supplemental storage remains downstream of reviewed FSRC_ND, terminal PV and R_STAR chronology;
+- supplemental technologies beyond BESS/PSH require technology-specific commercial/maturity evidence before they can enter a current optimizer case;
+- PSH site feasibility is geography-dependent and cannot be frozen until deployment geography is frozen.
+
+STATUS_CHANGE:
+JOB-EGC-043-BASELINE-SCREEN-REPAIR-C3-20261006: CLAIMED -> AWAITING_REVIEW.
+JOB-EGC-043-BASELINE-SCREEN-C1-20261006 remains REVIEW_FAILED / REPAIR_SUBMITTED until C4 review.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+REVIEW JOB:
+JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REPAIR-REV-C4-20261006
+TITLE: Independent storage-neutral baseline repair review
+ROLE: independent baseline/storage boundary reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does C3 remove four-hour-Li-ion privilege without granting PSH or other LDES technologies free siting, maturity, lifecycle or accounting advantages?
+DEPENDENCIES: C3 AWAITING_REVIEW.
+REQUIRED_TOOLS: independent NLR 2025 ATB retrieval; PSH geospatial/source audit; arithmetic replication; omitted-commercial-storage adversarial search; lifecycle/terminal-boundary audit.
+REQUIRED_EVIDENCE:
+- reproduce BESS 2/4/6/8/10 h, RTE 85%, life 15 y and power/energy cost identity;
+- reproduce PSH 8/10/12 h, RTE central/range, life 100 y and site exclusions;
+- independently reproduce CALC-EGC-043-BLREP-001/002;
+- attack supplemental-admission rule for loopholes;
+- verify no current commercial storage technology is excluded by construction.
+FALSIFICATION_CONDITION: FAIL if storage ranking can still be changed solely by hard-coded duration/technology, PSH geography is universalized, DOE RD&D candidates gain commercial status, replacement/residual asymmetry remains hidden, or charge/RTE losses can be double counted.
+STATUS: OPEN
+BLOCKERS: final cost comparison still depends on reviewed accounting/reliability/geography; method review is executable now.
+NEXT_ACTION: distinct session independently attacks C3.
