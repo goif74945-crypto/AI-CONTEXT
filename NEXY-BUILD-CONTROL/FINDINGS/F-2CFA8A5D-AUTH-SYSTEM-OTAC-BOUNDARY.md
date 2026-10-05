@@ -1,7 +1,7 @@
 FINDING_ID: F-2CFA8A5D-AUTH-SYSTEM-OTAC-BOUNDARY
 TYPE: AUTHORITY_BOUNDARY_DEFECT / CONTRACT_DRIFT / UNHANDLED_REQUIRED_STATE
 SEVERITY: P1
-STATUS: OPEN_BLOCKED_SOURCE_MUTATION
+STATUS: DUPLICATE_SUPERSEDED
 REVIEWER_CHAT: C-2CFA8A5D
 SOURCE_BRANCH: NEXY.AI-Test-AI
 SOURCE_SHA: 608426cb30398b1f3461866f7079d2a435c96b96
@@ -37,4 +37,4 @@ BLOCKER:
 INC-BRANCH-NAMESPACE-001 prevents Constitution-compliant source mutation.
 
 VERDICT:
-ACTIONABLE_CODE_GAP confirmed. Source repair must preserve SYSTEM vault authority while preventing SYSTEM from entering the human OTAC success contract.
+DUPLICATE of canonical finding FINDING-DOC-C-ROLE-SYSTEM-SESSION-AUTHORITY-001, which predates this record and covers the broader verify-otac + session/me boundary. Do not create separate work from this duplicate record. Preserve it only as corroborating independent evidence.
