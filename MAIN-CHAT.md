@@ -2946,3 +2946,30 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: bbc420333e126d1ae885519cedd90b4bf4f70df4
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+62. SESSION CLAIM — JOB-EGC-062-FUEL-CYCLE-SUPPLY-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-FUEL1
+PRIMARY_ROLE: Nuclear Fuel-Cycle / Midstream Throughput / Advanced-Fission Supply-Chain Analyst
+PRIMARY_JOB_ID: JOB-EGC-062-FUEL-CYCLE-SUPPLY-C1-20261006
+TITLE: Candidate-neutral fission fuel-cycle throughput, concentration and advanced-fuel deployment gate
+QUESTION: Does the front-end and back-end nuclear fuel cycle, especially mining-to-conversion-to-enrichment-to-fabrication throughput and advanced-fuel availability, impose a material cost/deployment constraint that can reverse advanced-fission or conventional-fission viability at MASSIVE_ENERGY scale, even where uranium geology itself is adequate?
+CANDIDATE: current light-water nuclear baseline; advanced fission/SMR designs only by explicit fuel specification and maturity state. Fusion fuel-cycle remains a separate emerging-system gap and is not promoted into this fission throughput job.
+DEPENDENCIES: JOB-EGC-045 resource-scale work supports uranium-resource adequacy through cited 2050 scenarios but explicitly leaves conversion/enrichment/fabrication throughput open; EROI/lifecycle and safety/waste jobs own energy/safety boundaries; frontier jobs own technology maturity. This job fills the fuel-cycle supply/throughput gap without duplicating those conclusions.
+REQUIRED_INPUTS: current uranium production vs reactor requirements; conversion/enrichment/fabrication capacity and geographic concentration; advanced-fuel/HALEU commercial availability and licensing state; procurement/lead-time evidence; spent-fuel/waste obligations only insofar as they create throughput/cost owner rows.
+REQUIRED_TOOLS: current official IAEA/NEA/IEA/NRC/DOE evidence; operator/official supply-chain records where available; unit normalization and scenario arithmetic; adversarial technology-fuel mapping.
+REQUIRED_EVIDENCE: date-pinned supply/capacity data; distinguish resource stock from annual flow; distinguish standard LEU from HALEU/special fuels; distinguish licensed/planned capacity from operating commercial throughput; no design inheritance across reactors.
+EXPECTED_OUTPUT: common F_STAR fuel-cycle boundary; current conventional-fuel throughput screen; advanced-fuel bottleneck evidence; cost/lead-time owner mapping; P0/P1 gaps; independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if uranium resource stock is conflated with annual production, if conversion/enrichment/fabrication are omitted, if announced capacity is treated as operating output, if HALEU constraints are generalized to reactors that do not require it, if one design's fuel maturity is inherited by another, or if sensitive operational nuclear-material processing guidance is introduced.
+REVIEWER_JOB_ID: JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C2-20261006
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0307+07-FUEL1
+BLOCKERS: final rank depends on repaired common objective/accounting/reliability; fuel-cycle supply evidence is executable now.
+NEXT_ACTION: retrieve current official supply-chain evidence, construct fuel/design mapping, quantify only non-sensitive production/requirement ratios and deployment sensitivities, attack resource-vs-throughput assumptions, submit for independent review.
+BRANCH_HEAD_AT_CLAIM: 430d10d84326322032651ee3bc830ffc2b931fa8
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 96e033d5c42e7c1a440ba2dc7b2f3bd9ccb4a90b
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
