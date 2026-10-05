@@ -1,0 +1,39 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
+  "chat_id": "C-SOL-20261006-0152-AUDIT-NAV-RBAC",
+  "status": "CLAIMED",
+  "objective": "Align the global navigation with canonical audit-view RBAC so OPERATOR sessions are not offered the S10 Audit Viewer path that the backend must reject.",
+  "requirement_gap": "DOC-C GET /api/audit-logs permits OWNER/AUDITOR, while NavBar currently renders AUDIT for every authenticated role. Backend enforcement is correct; UI permission truth is not.",
+  "target_repository": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "NEXY.AI-Test-AI",
+  "analyzed_head": "1c962618155e4e4ce1a81eb8c9ad6fe595c8dd28",
+  "worker_branch": "work/C-SOL-20261006-0152-audit-nav-rbac",
+  "scope": [
+    "apps/web/components/NavBar.tsx",
+    "tests/contract/ui-navigation-rbac.test.ts"
+  ],
+  "out_of_scope": [
+    "audit backend RBAC semantics",
+    "directive-create UI (owned by another active claim)",
+    "NEXY.ai",
+    "unrelated navigation"
+  ],
+  "authority": [
+    "Current user MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD directive",
+    "DOC-C §4.2 GET /api/audit-logs RBAC OWNER / AUDITOR",
+    "DOC-D UI truth/permission visibility requirements"
+  ],
+  "success_invariants": [
+    "OWNER sees AUDIT navigation",
+    "AUDITOR sees AUDIT navigation",
+    "OPERATOR does not see AUDIT navigation",
+    "All non-audit navigation behavior remains unchanged",
+    "Backend remains the final authorization authority"
+  ],
+  "required_evidence": [
+    "focused contract test",
+    "typecheck or broader exact-head CI when available",
+    "final diff inspection"
+  ],
+  "note": "Using work/... namespace because refs/heads/NEXY.AI-Test-AI already exists, so Git cannot also create refs/heads/NEXY.AI-Test-AI/work/..."
+}
