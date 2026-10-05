@@ -6572,3 +6572,23 @@ REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-GLOBALCARD-REV-C14-20261006
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+78. SESSION CLAIM — JOB-EGC-064-MANUFACTURING-THROUGHPUT-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0750+07-MFGREV2
+PRIMARY_ROLE: Independent manufacturing-throughput / stock-flow / supply-chain boundary reviewer
+PRIMARY_JOB_ID: JOB-EGC-064-MANUFACTURING-THROUGHPUT-REV-C2-20261006
+QUESTION: Are JOB-EGC-064 manufacturing/deployment claims source-correct, unit-correct, stock/flow-correct, geography-correct and sufficient to support or falsify mission-scale manufacturing feasibility?
+DEPENDENCIES: JOB-EGC-064-MANUFACTURING-THROUGHPUT-C1-20261006 submitted; final architecture/objective/R_STAR quantities remain upstream and must stay explicit blockers.
+TOOLS: latest live/checkpoint evidence; independent IEA/IRENA/SEMI/DOE/USGS/manufacturer-source retrieval; Wolfram arithmetic; stock-flow dimensional audit; forecast-vs-measurement and factory-capacity-vs-installation red team.
+EVIDENCE_TARGET: reproduce each ranking-critical production/deployment calculation; verify source vintages/status; distinguish manufacturing nameplate, actual production, annual installations, cumulative stock and project pipeline; expose shared enabling-equipment constraints.
+FALSIFICATION_TARGET: stock becomes flow; annual installations become factory output; forecast becomes measurement; global data becomes local supply without evidence; MW becomes MWh or vice versa; candidate equipment/supply chain silently excludes grid/storage shared hardware.
+REVIEWER: distinct from C1 owner.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 04057b06ffb6bb8bee7141fdbab64e065a2fd4a4
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 13308e0a3bcf28302dfc16c001dba1aeeb2ce134
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
