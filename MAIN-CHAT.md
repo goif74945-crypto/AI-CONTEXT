@@ -1381,3 +1381,644 @@ These V1.1 rules may not be weakened without explicit user authority:
 - prohibition on touching NEXY.AI or any other repository.
 
 END OF AMENDMENT V1.1
+
+
+======================================================================
+27. LIVE JOB BOARD — INSTANTIATED 2026-10-05
+======================================================================
+
+JOB_BOARD_VERSION: 1
+GLOBAL_SOLVED: NO
+MISSION_STATUS: ACTIVE_RESEARCH / CONTINUE_REQUIRED
+CURRENT_PRIMARY_SESSION: CHATGPT-SOL-20261005T190600Z-A1
+PRIMARY_JOB_ID: JOB-EGC-001
+PRIMARY_ROLE: Objective / Metric Formalization
+QUESTION: What fixed quantitative thresholds define LOW_COST and MASSIVE_ENERGY without post-result gaming?
+DEPENDENCIES: NONE
+TOOLS: GitHub connector; authoritative web research; calculator/Python as needed.
+EVIDENCE_TARGET: Current authoritative cost/performance/scale data and fixed system-boundary metrics.
+FALSIFICATION_TARGET: Any threshold definition that is arbitrary, candidate-tailored, dimensionally invalid, or impossible to compare consistently.
+REVIEWER: Independent session required.
+STATUS: EXECUTING
+
+#### JOB-EGC-001
+ROLE: Objective / metric formalization
+TITLE: Formalize quantitative objective thresholds
+QUESTION_TO_RESOLVE: Formalize quantitative objective thresholds; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+CLAIMED_AT: 2026-10-05T19:06:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:06:00Z
+BLOCKERS: NONE
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-002
+ROLE: Baseline benchmark research
+TITLE: Build current baseline energy-cost dataset
+QUESTION_TO_RESOLVE: Build current baseline energy-cost dataset; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-003
+ROLE: Baseline scale/reliability
+TITLE: Build current scale/capacity-factor/reliability baseline
+QUESTION_TO_RESOLVE: Build current scale/capacity-factor/reliability baseline; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-004
+ROLE: System-boundary architecture
+TITLE: Define common system boundary for fair comparison
+QUESTION_TO_RESOLVE: Define common system boundary for fair comparison; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-005
+ROLE: First-principles physics
+TITLE: Physics-screen candidate families
+QUESTION_TO_RESOLVE: Physics-screen candidate families; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-006
+ROLE: Renewables systems
+TITLE: Renewables + storage/grid candidate package
+QUESTION_TO_RESOLVE: Renewables + storage/grid candidate package; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-007
+ROLE: Geothermal / geoscience
+TITLE: Geothermal candidate package
+QUESTION_TO_RESOLVE: Geothermal candidate package; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-008
+ROLE: Nuclear fission
+TITLE: Fission candidate package
+QUESTION_TO_RESOLVE: Fission candidate package; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-009
+ROLE: Fusion / plasma
+TITLE: Fusion evidence/status package
+QUESTION_TO_RESOLVE: Fusion evidence/status package; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-010
+ROLE: Other energy families
+TITLE: Hydro/ocean/waste-heat and other credible families
+QUESTION_TO_RESOLVE: Hydro/ocean/waste-heat and other credible families; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-011
+ROLE: Systems architecture
+TITLE: Hybrid-system architecture search
+QUESTION_TO_RESOLVE: Hybrid-system architecture search; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-012
+ROLE: Lifecycle / EROI
+TITLE: EROI/lifecycle methodology
+QUESTION_TO_RESOLVE: EROI/lifecycle methodology; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-013
+ROLE: Materials / supply chain
+TITLE: Materials/supply-chain scaling methodology
+QUESTION_TO_RESOLVE: Materials/supply-chain scaling methodology; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-014
+ROLE: Safety / reliability
+TITLE: Safety/FMEA framework
+QUESTION_TO_RESOLVE: Safety/FMEA framework; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-015
+ROLE: Techno-economics / finance
+TITLE: Cost/finance sensitivity framework
+QUESTION_TO_RESOLVE: Cost/finance sensitivity framework; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-016
+ROLE: Simulation / numerical
+TITLE: Integrated simulation strategy
+QUESTION_TO_RESOLVE: Integrated simulation strategy; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-017
+ROLE: Measurement evidence
+TITLE: Physical-evidence inventory
+QUESTION_TO_RESOLVE: Physical-evidence inventory; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-018
+ROLE: Evidence audit
+TITLE: Evidence provenance audit
+QUESTION_TO_RESOLVE: Evidence provenance audit; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-019
+ROLE: Replication
+TITLE: Independent replication protocol
+QUESTION_TO_RESOLVE: Independent replication protocol; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-020
+ROLE: Adversarial red team
+TITLE: Adversarial anti-overunity / extraordinary-claim screen
+QUESTION_TO_RESOLVE: Adversarial anti-overunity / extraordinary-claim screen; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-021
+ROLE: Grid / storage
+TITLE: Grid/transmission/firming system-cost analysis
+QUESTION_TO_RESOLVE: Grid/transmission/firming system-cost analysis; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-022
+ROLE: Manufacturing / deployment
+TITLE: Deployment-rate/manufacturing bottleneck analysis
+QUESTION_TO_RESOLVE: Deployment-rate/manufacturing bottleneck analysis; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-023
+ROLE: Environment / lifecycle
+TITLE: Environmental lifecycle comparison
+QUESTION_TO_RESOLVE: Environmental lifecycle comparison; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-024
+ROLE: Regulatory / siting
+TITLE: Regulatory/siting constraints
+QUESTION_TO_RESOLVE: Regulatory/siting constraints; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-025
+ROLE: Uncertainty analysis
+TITLE: Uncertainty and sensitivity framework
+QUESTION_TO_RESOLVE: Uncertainty and sensitivity framework; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-026
+ROLE: Multi-objective integration
+TITLE: Candidate Pareto frontier
+QUESTION_TO_RESOLVE: Candidate Pareto frontier; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-027
+ROLE: Competing-baseline challenge
+TITLE: Competing-baseline red team
+QUESTION_TO_RESOLVE: Competing-baseline red team; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-028
+ROLE: Model validation
+TITLE: Model-to-measurement validation
+QUESTION_TO_RESOLVE: Model-to-measurement validation; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-029
+ROLE: Experiment/test design
+TITLE: Build-readiness gate design
+QUESTION_TO_RESOLVE: Build-readiness gate design; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+#### JOB-EGC-030
+ROLE: Final integration
+TITLE: Final-gate integration audit
+QUESTION_TO_RESOLVE: Final-gate integration audit; determine evidence strong enough to change mission decision.
+TARGET_CANDIDATE: CROSS-CANDIDATE / AS_APPLICABLE
+DEPENDENCIES: JOB-EGC-001 and any candidate-specific upstream evidence as applicable
+REQUIRED_INPUTS: Authoritative current data, project constitution, relevant measured/operational evidence.
+REQUIRED_TOOLS: Web/source retrieval; calculation/simulation tools as applicable; independent recomputation where material.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT as applicable.
+EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
+FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
+HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
+
+
+======================================================================
+28. SESSION CLAIM EVENT
+======================================================================
+
+### EVENT 2026-10-05T19:06:00Z / CHATGPT-SOL-20261005T190600Z-A1
+
+ROLE: Objective / Metric Formalization + Mission Integrator
+OBJECTIVE: Instantiate the required Job Board and claim the highest-information-gain executable job.
+TARGET_CANDIDATE_OR_QUESTION: Cross-candidate objective definition before any winner selection.
+
+INPUTS:
+- Latest MAIN-CHAT.md on authorized research branch.
+- User's current Continuous-Evidence Swarm Constitution V2.
+- Existing V1/V1.1 immutable mission constraints.
+
+SOURCE/EVIDENCE:
+- [REPO_FACT] MAIN-CHAT.md had bootstrap job names but no instantiated live Job Board before this event.
+- [REPO_FACT] Objective quantification is a P0 blocker and current winner is NONE.
+
+WORK:
+- Instantiated JOB-EGC-001 through JOB-EGC-030 in this sole authorized file.
+- Claimed JOB-EGC-001 for session CHATGPT-SOL-20261005T190600Z-A1.
+- No candidate technology was selected or privileged.
+
+RESULT:
+- FACT: Live logical Job Board now exists in MAIN-CHAT.md.
+- INFERENCE: JOB-EGC-001 has highest information gain because all economic/scale comparisons depend on fixed success metrics.
+- ASSUMPTION: NONE.
+- UNKNOWN: Quantitative thresholds remain to be established from evidence.
+- CONFLICT: NONE.
+- FALSIFIED: NONE.
+
+RED_TEAM_CHECK:
+- strongest attack attempted: avoid defining thresholds using a favored technology's observed performance.
+- outcome: thresholds deferred until authoritative baseline evidence is collected.
+
+STATUS_CHANGE:
+- JOB BOARD: NOT_INSTANTIATED -> INSTANTIATED
+- JOB-EGC-001: OPEN -> CLAIMED/EXECUTING
+- justification: explicit constitution ordering and P0 blocker.
+
+NEXT_ACTION:
+- Gather current authoritative cost, output-scale, capacity-factor/reliability, and system-cost benchmark evidence.
+- Lock objective thresholds before comparing candidates.
+
+WRITE_INTEGRITY:
+- branch head read: through authorized branch ref
+- file SHA read: 95f7423b2c1ebd0e568980ff43e6dc95bfe405f0
+- stale-write check: latest SHA fetched immediately before this write
+- commit/result: pending this commit
