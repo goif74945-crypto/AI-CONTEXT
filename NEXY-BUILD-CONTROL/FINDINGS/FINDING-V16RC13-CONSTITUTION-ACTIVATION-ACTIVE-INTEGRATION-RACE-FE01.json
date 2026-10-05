@@ -1,0 +1,30 @@
+{
+  "FINDING_ID": "FINDING-V16RC13-CONSTITUTION-ACTIVATION-ACTIVE-INTEGRATION-RACE-FE01",
+  "TYPE": "STATIC_PROTOCOL_CONSTITUTION_ACTIVATION_ACTIVE_INTEGRATION_RACE",
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
+  "DISCOVERED_BY_CHAT_ID": "C-SOL-20261005-1735Z-V16RC13-P0MANIFEST-AUDIT",
+  "DISCOVERY_RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-1735Z-V16RC13-CONSTITUTION-ACTIVATION-INTEGRATION-RACE-FE.json",
+  "AFFECTED_CLAUSES": [
+    "[119]",
+    "[132]-[145]",
+    "[153]-[156]",
+    "[238]",
+    "[243]-[245]"
+  ],
+  "OBSERVED_GAP": "CONSTITUTION_ACTIVATION lacks an explicit ACTIVE_INTEGRATION==null / INTEGRATION_HEALTH==HEALTHY entry/cutover precondition and lacks a mandatory old-law active-integration drain/reconciliation before new-law identity becomes active.",
+  "CONCRETE_RACE": "An old-law integration already at REF_UPDATE_IN_PROGRESS can have an external Git CAS in flight while CONSTITUTION_ACTIVATION closes gates and rotates epochs. Epoch invalidation prevents future old-law authorization but does not atomically stop an already-issued Git ref side effect, so target movement can cross the law cutover boundary.",
+  "IMPACT": "Atomic law activation and [238] old-law/new-law authority exclusivity cannot be statically proven. Phase-3 activation must remain fail-closed until repaired and independently reviewed.",
+  "REQUIRED_REPAIR": [
+    "Require ACTIVE_INTEGRATION == null and INTEGRATION_HEALTH == HEALTHY before Constitution cutover, or deterministically drain/reconcile existing integration under old law before installing the new law.",
+    "Reconcile actual target HEAD for REF_UPDATE_IN_PROGRESS or ambiguous external state using the Git-truth rules in [144]-[145].",
+    "Do not activate new EFFECTIVE_CONSTITUTION_HASH/generation or reopen gates until old-law integration is terminal and ACTIVE_INTEGRATION is cleared.",
+    "Torture-test Constitution activation against every ACTIVE_INTEGRATION phase and Git-CAS crash boundary."
+  ],
+  "RELATED_DISTINCT_FINDING": "FINDING-V16RC13-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-3C632ADD",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "FAIL_CLOSED": true
+}
