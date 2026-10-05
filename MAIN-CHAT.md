@@ -379,3 +379,30 @@ BRANCH_HEAD_AT_CLAIM: 5b0ba78cbf86874290c8e3d37602c81fee598bb8
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 6f8c23ae43cdfe450153e21ee31cc3b60975f6a6
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+51. SESSION CLAIM — JOB-EGC-044-EMERGING-FALSIFICATION-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0305+07-EM1
+PRIMARY_ROLE: Emerging-Energy Candidate Falsifier / Physical-Evidence & Scale Analyst
+PRIMARY_JOB_ID: JOB-EGC-044-EMERGING-FALSIFICATION-C1-20261006
+TITLE: Emerging-system physical-evidence triage and adversarial feasibility screen
+QUESTION: Which credible emerging energy systems should remain in the mission candidate set after an evidence-first attack on demonstrated net energy, engineering maturity, cost boundary, materials/resources, scalability and deployment timing?
+CANDIDATE: fusion; advanced fission/SMR; enhanced/deep/superhot geothermal; tidal; wave; industrial/waste-heat recovery; other emerging mechanisms only if supported by traceable physical evidence.
+DEPENDENCIES: strongest-current-baseline screen is independently owned; quantitative objective and R_STAR are independently owned. This job does not declare a winner and will report maturity/evidence classes separately from future projections.
+REQUIRED_INPUTS: latest official/lab/peer-reviewed physical measurements; operational/demo outputs; parasitic loads; construction/project records; materials/resource constraints; published cost evidence where actual rather than aspirational.
+REQUIRED_TOOLS: official-source web research; scientific/lab reports; executed calculations; cross-source validation; adversarial scaling checks.
+REQUIRED_EVIDENCE: for each emerging class, at least one traceable physical-system datum where available; explicit NET-vs-GROSS power distinction; exact project status/date; no conversion of roadmap targets into measured facts.
+EXPECTED_OUTPUT: candidate survival matrix {RETAIN_FOR_DEEPER_ANALYSIS, CURRENT_BASELINE_ELIGIBLE, NOT_YET_BASELINE, FALSIFIED_FOR_CURRENT_MISSION}; evidence records; dominant blockers; independent-review job.
+FALSIFICATION_CONDITION: reject current-baseline eligibility if no demonstrated net electric output exists where required, if claimed economics rely only on vendor targets, if parasitic/heat-rejection/material/resource requirements erase the claimed advantage, or if scale/deployment timing cannot meet the frozen mission target.
+REVIEWER_JOB_ID: JOB-EGC-044-EMERGING-FALSIFICATION-REV-C2-20261006
+STATUS: CLAIMED
+BLOCKERS: final mission thresholds are being formalized independently; where eligibility depends on them, record PARAMETERIZED rather than tune thresholds post hoc.
+NEXT_ACTION: retrieve latest physical evidence and project status for each emerging class, separate measured facts from projections, calculate screening net-output/scale quantities where possible, and attack the strongest surviving class.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+BRANCH_HEAD_AT_CLAIM: 031c1e19d13f6197c33745ddbb7d22bddc655cc5
+MAIN_CHAT_SHA_AT_CLAIM: 16385bdad31af6dc4c539105d818ddd5aa2f3168
