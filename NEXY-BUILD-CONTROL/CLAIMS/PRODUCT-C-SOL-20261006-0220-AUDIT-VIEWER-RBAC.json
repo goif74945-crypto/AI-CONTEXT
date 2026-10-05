@@ -1,0 +1,33 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
+  "chat_id": "C-SOL-20261006-0220-AUDIT-VIEWER-RBAC",
+  "status": "CLAIMED",
+  "objective": "Enforce canonical OWNER/AUDITOR S10 view permission before the audit page issues privileged audit-log reads.",
+  "requirement_gap": "DOC-C GET /api/audit-logs is OWNER/AUDITOR-only. Nav now hides S10 from OPERATOR, but a direct /audit visit still mounts the fetch and converts a deterministic permission denial into a request-level error instead of canonical Permission denied copy.",
+  "target_repository": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "NEXY.AI-Test-AI",
+  "analyzed_head": "a483b2247bd10ed26bf3f6d289ebd00cea2cabdb",
+  "worker_branch": "work/C-SOL-20261006-0220-audit-viewer-rbac",
+  "scope": [
+    "apps/web/app/audit/page.tsx",
+    "tests/contract/audit-viewer-rbac.test.ts"
+  ],
+  "out_of_scope": [
+    "packages/api/canonical.ts audit actor binding/read logic",
+    "audit export backend",
+    "NavBar",
+    "NEXY.ai"
+  ],
+  "authority": [
+    "Current user NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD",
+    "DOC-C §4.2 GET /api/audit-logs RBAC OWNER / AUDITOR",
+    "DOC-D S10 Audit Viewer",
+    "DOC-D direct permission-denied copy"
+  ],
+  "success_invariants": [
+    "OPERATOR direct /audit visits do not issue /api/audit-logs reads",
+    "OPERATOR sees Permission denied",
+    "OWNER/AUDITOR retain S10 filter/export behavior",
+    "backend remains final authorization authority"
+  ]
+}
