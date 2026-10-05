@@ -6,13 +6,11 @@
   "GOAL": "Treat a BullMQ job with no durable DirectiveDispatch authority as a fail-closed data-integrity/dependency failure instead of acknowledging it as CANCELLED.",
   "PRIORITY": "P1",
   "RISK": "HIGH_DURABLE_AUTHORITY_LOSS",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
-  "OWNER": "UNASSIGNED",
+  "STATUS": "SATISFIED_IN_INTEGRATION_SOURCE",
+  "OWNER": "INTEGRATED_SOURCE",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
-  "BLOCKERS": [
-    "INC-BRANCH-NAMESPACE-001"
-  ],
+  "BLOCKERS": [],
   "SCOPE": [
     "packages/queue/workers.ts",
     "packages/queue/dispatch.ts only if claim result taxonomy needs tightening",
@@ -41,5 +39,17 @@
     "Failure evidence reaches the selected canonical incident/alarm/error boundary without fabricating state.",
     "Independent review and exact-SHA post-integration reverify complete."
   ],
-  "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker branch namespace or explicitly authorizes an equivalent isolation mechanism."
+  "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker branch namespace or explicitly authorizes an equivalent isolation mechanism.",
+  "VERIFIED_AT_HEAD": "132b695abceac01c4448d6c806db1294e0a1cac9",
+  "VERIFIED_SOURCE": {
+    "worker_blob": "89f3963f41761964fb0470ea2f38711190dd712c",
+    "test_blob": "a3a99ce767142beb4d68ff8aee3f50f55644609a",
+    "evidence": [
+      "processJob throws DEPENDENCY_FAILURE when claimDirectiveDispatch returns MISSING.",
+      "SWARM is not executed on the missing-authority path.",
+      "failed handler emits CRITICAL DB_FAILURE alarm without fabricating a run-state transition or recreating dispatch authority.",
+      "queue-boundary integration test covers MISSING rejection and terminal/duplicate semantics."
+    ]
+  },
+  "NEXT_ACTION": "No duplicate implementation. Preserve behavior in future queue changes and execute regression suite when runner infrastructure is available."
 }
