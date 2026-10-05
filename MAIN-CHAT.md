@@ -211,3 +211,27 @@ REVIEWER: THIS SESSION IS DISTINCT FROM REPAIR OWNER SESSION CHATGPT-SOL-2026100
 STATUS: CLAIMED
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+49. SESSION CLAIM — JOB-EGC-042-RSTAR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T2005Z-RSTAR-C3
+PRIMARY_ROLE: Reliability Boundary Architect / Adequacy & Essential-Reliability-Services Evidence Analyst
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-C3-20261006
+QUESTION: What quantitative, source-grounded R_STAR reliability boundary can be applied symmetrically to all candidate and baseline energy systems without inventing a false universal reliability number?
+CANDIDATE: COMMON SYSTEM BOUNDARY (candidate-neutral)
+DEPENDENCIES: CLAIM-EGC-040R-006 RELIABILITY_INTEGRATION is METHOD_REPAIRED but NUMERIC_R_STAR_UNKNOWN; independent accounting review C2 may proceed concurrently.
+REQUIRED_INPUTS: official adequacy/reliability criteria; resource-adequacy metrics; operating reserve/stability requirements; geographically scoped standards; common delivery-point and unserved-energy definitions.
+REQUIRED_TOOLS: official-source web research; public reliability standards/reports; numerical consistency checks; sensitivity design; independent source cross-validation.
+REQUIRED_EVIDENCE: traceable official or primary technical sources for adequacy metrics and applicability; explicit separation of universal methodology from regional numeric thresholds; falsification tests against arbitrary global hardcoding.
+EXPECTED_OUTPUT: R_STAR schema + frozen comparison rule + threshold/provenance matrix + UNKNOWN fields that remain geography-dependent + new reviewer job.
+FALSIFICATION_CONDITION: FAIL if a numeric threshold is asserted universally without jurisdiction/source support; annual energy matching substitutes for adequacy; stability/essential services are omitted where material; candidate-specific reliability privilege enters the comparison; or the rule cannot be applied symmetrically.
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-REV-C4-20261006
+STATUS: EXECUTING
+BLOCKERS: NONE for methodology/evidence synthesis; geography-specific legal thresholds may remain scoped UNKNOWN until deployment geography is frozen.
+NEXT_ACTION: retrieve current authoritative reliability/adequacy criteria and formalize a candidate-neutral R_STAR with sensitivity handling.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
