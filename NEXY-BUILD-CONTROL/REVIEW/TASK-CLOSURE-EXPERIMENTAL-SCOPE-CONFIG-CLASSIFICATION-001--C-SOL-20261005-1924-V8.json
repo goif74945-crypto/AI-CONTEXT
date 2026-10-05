@@ -1,0 +1,59 @@
+{
+  "REVIEW_ID": "REVIEW-CLOSURE-EXPERIMENTAL-SCOPE-CONFIG-CLASSIFICATION-001-C-SOL-20261005-1924-V8",
+  "REVIEWER_CHAT": "C-SOL-20261005-1924-V8-EXPERIMENTAL-REVERIFY",
+  "TASK_ID": "TASK-CLOSURE-EXPERIMENTAL-SCOPE-CONFIG-CLASSIFICATION-001",
+  "FINDING_ID": "FINDING-CLOSURE-EXPERIMENTAL-SCOPE-CONFIG-CLASSIFICATION-001",
+  "RESULT_ID": "RESULT-CLOSURE-EXPERIMENTAL-SCOPE-CONFIG-CLASSIFICATION-001",
+  "ROLE": "INDEPENDENT_REVIEWER_RED_TEAM",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "REVIEWED_OVERLAY": "INV-608426CB-C-SOL-20261005-1923-SCOPE-CONFIG-OVERLAY-004",
+  "EXACT_BLOBS": {
+    "experimental_scope": "850e0918de501ad0413b61a81be0a3b86152c263",
+    "canonical_vitest": "6665df37ca5f5709d7ff320d89a437e499047245",
+    "experimental_vitest": "9dadfe5d9ddf2a0f4ec1c48035c4254eab8000f9",
+    "overlay004": "73de52431769121716afdd6d17fb2d35cc719a43"
+  },
+  "RECOMPUTATION": {
+    "base_file_class": "EXPERIMENTAL",
+    "base_file_status": "UNSCANNED",
+    "corrected_file_class": "CONFIG",
+    "corrected_file_status": "UNSCANNED",
+    "total_files": 885,
+    "effective_class_counts": {
+      "CONFIG": 41,
+      "BUILD_SUPPORT": 42,
+      "OUT_OF_SCOPE": 15,
+      "DOCUMENTATION": 54,
+      "GENERATED": 2,
+      "AUTHORITATIVE_RUNTIME": 247,
+      "EXPERIMENTAL": 232,
+      "TEST": 169,
+      "CONTRACT": 19,
+      "INTEGRATION": 8,
+      "MIGRATION": 56
+    },
+    "effective_class_count_mismatches": 0,
+    "explicit_experimental_sources": 146,
+    "explicit_experimental_tests": 83,
+    "explicit_experimental_unique_paths": 229,
+    "governance_file_in_explicit_experimental_set": false,
+    "promoted_declared_experimental_paths": 0,
+    "explicit_experimental_adjusted_required_candidates": 587,
+    "denominator_delta_from_config_reclassification": 0
+  },
+  "VERIFIED_PASS": [
+    "Historical inventory shards are preserved; the repair is superseding classification evidence only.",
+    "config/experimental-scope.ts is correctly reclassified CONFIG and remains UNSCANNED.",
+    "The file is canonical scope-governance evidence because default vitest configuration imports and applies its experimental source/test declarations and PRIMARY-EXECUTION-SETS binds the same blob as CONFIG_EVIDENCE.experimental_scope.",
+    "The 229 verified explicit-experimental source/test paths remain experimental; none is promoted by the governance-file reclassification.",
+    "Recomputed effective class counts exactly match overlay 004 and sum to 885.",
+    "The explicit-experimental adjusted required-scan denominator remains 587 because config/experimental-scope.ts is not one of the 229 excluded paths and remains a required UNSCANNED CONFIG record.",
+    "No source mutation or protected-upstream mutation occurred."
+  ],
+  "VERDICT": "VERIFIED_PASS",
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "PROJECT_CLOSURE": "NOT_ESTABLISHED"
+}
