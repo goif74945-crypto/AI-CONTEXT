@@ -4,10 +4,17 @@
   "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "SEVERITY": "P1",
-  "TYPE": ["CONTRACT_DRIFT", "TEST_ORACLE_DEFECT"],
+  "TYPE": [
+    "CONTRACT_DRIFT",
+    "TEST_ORACLE_DEFECT"
+  ],
   "OBSERVED": "GET /api/runs/:id emits null for DOC-C members that are declared optional non-null scalar values. The integration test explicitly expects primary_incident_id to be null while calling the response exact DOC-C canonical shape.",
   "EXPECTED": "At final DOC-C paragraphs 10222-10242, optional run-detail members are boolean, number, or string when present; unavailable members are omitted rather than serialized as null.",
   "SOURCE_EVIDENCE": "packages/api/directives.ts blob 8cd214c87e5aa55561e52347802ec8172feadc36 lines 207-210 and 1195-1209; tests/integration/directives/read-auth.spec.ts blob 560bc7a5bdc99211395faf5fd46c826e6312fd5e lines 175-207.",
-  "STATUS": "REPRODUCED",
-  "MUTATION_STATUS": "BLOCKED_BY_INC-BRANCH-NAMESPACE-001"
+  "STATUS": "DUPLICATE_JOINED",
+  "MUTATION_STATUS": "BLOCKED_BY_INC-BRANCH-NAMESPACE-001",
+  "ACTIVE": false,
+  "DUPLICATE_OF": "FINDING-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "CANONICAL_TASK": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "RECONCILIATION_NOTE": "Same exact primary_incident_id null-versus-omission defect; route-specific canonical finding/task owns repair."
 }
