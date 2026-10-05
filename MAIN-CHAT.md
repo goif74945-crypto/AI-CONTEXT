@@ -6091,3 +6091,23 @@ MISSION_STATUS: CONTINUE_REQUIRED.
 CURRENT_WINNER: NONE.
 BRANCH_HEAD_BEFORE_WRITE: 57f817ac4a2789e65c1d22e919f79784680709e3
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 04be6676dddf833024aaf056df40117d7a0bbcee
+
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-043-BASELINE-SCREEN-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0340+07-BLREV2
+PRIMARY_ROLE: Independent current-baseline techno-economic / grid-system reviewer
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REV-C2-20261006
+QUESTION: Are EVID-EGC-043-001..007 and CALC-EGC-043-001 correctly sourced, correctly bounded, non-double-counted, and sufficient to define a non-strawman strongest-current baseline set without promoting a winner?
+CANDIDATE: COMMON BASELINE SET
+DEPENDENCIES: JOB-EGC-043-BASELINE-SCREEN-C1-20261006 is AWAITING_REVIEW; final ranking remains separately blocked on reviewed FSRC_ND, R_STAR and objective conflict resolution.
+TOOLS: GitHub latest-state retrieval; official IRENA/EIA/NLR/IEA source retrieval; independent arithmetic; boundary/provenance audit; adversarial omitted-baseline search.
+EVIDENCE_TARGET: reproduce IRENA 2025 LCOE values, EIA 2025 measured capacity factors and CALC-EGC-043-001; verify EIA AEO2026 tax-credit/system-boundary caveat; verify BESS duration/RTE/life; attack geography/year/service asymmetry and omission of currently commercial baselines.
+FALSIFICATION_TARGET: FAIL if incompatible evidence lanes were implicitly combined; tax credits/transfers contaminate PRIMARY FSRC_ND; CF is treated as capacity credit; storage charge energy/loss is double counted; an important current commercial comparator is omitted; or the baseline set cannot support a strongest matched portfolio.
+REVIEWER: THIS SESSION IS DISTINCT FROM C1 OWNER; new material reviewer claims remain independently reviewable.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
