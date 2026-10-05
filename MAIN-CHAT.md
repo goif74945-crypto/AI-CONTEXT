@@ -4278,3 +4278,115 @@ FALSIFICATION_CONDITION: FAIL if thresholds materially privilege a candidate, us
 STATUS: OPEN
 BLOCKERS: NONE for review; R_STAR remains a downstream common dependency.
 NEXT_ACTION: distinct session independently attacks and either accepts, repairs or supersedes these objective gates.
+
+
+======================================================================
+REPAIR RESULT — JOB-EGC-040-REPAIR-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0304+07-REV-C2
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-REV-C3-20261006
+BRANCH_HEAD_BEFORE_WRITE: 1afe4ca20e2adee2f8a5ae4ec7fba1e37a0fcf1e
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 5fd5e90002a1b0d86f4d1e0568fd009fa97f8152
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+COORDINATION:
+Concurrent C3 physical-ledger repair exists. This C2 result is an INDEPENDENT_REPAIR_VARIANT and must be reconciled by review, not voted on.
+
+SOURCE_EVIDENCE:
+1) HM Treasury Green Book 2026, https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+SOURCE_FACT: future monetisable costs/benefits are expressed in real present-value terms; STPR is 3.5% real years 1-30, 3.0% years 31-75, 2.5% thereafter; economic and financial cases are distinct and transfers are not automatically social resource costs.
+2) NREL SAM Help LCOE, https://sam.nrel.gov/images/web_page_files/sam-help-2024-12-12.pdf
+SOURCE_FACT: LCOE may be written as discounted costs divided by similarly levelized energy; denominator discounting is an algebraic levelization convention, not physical energy decay.
+
+REPAIR_A_PHYSICAL_BALANCE:
+Freeze one common metering boundary. For interval t:
+J_GEN[t]+J_IMPORT[t]+J_STORAGE_DISCHARGE[t]
+=
+E_SERVED[t]+J_STORAGE_CHARGE[t]+J_EXPORT[t]+E_NETWORK_LOSS[t]+E_BUS_AUX[t].
+E_UNSERVED and CURTAILMENT are NOT physical sinks here.
+Storage conversion loss is represented by SOC dynamics; do not also add a second RTE-loss term.
+Generator parasitics are either netted into J_GEN or shown in E_BUS_AUX, never both.
+
+REPAIR_B_ADEQUACY:
+DEMAND_REQUIRED_AFTER_VOLUNTARY_DR[t]=E_SERVED[t]+E_UNSERVED[t].
+Voluntary DR must be explicit; rebound/shifted demand reappears in destination intervals; E_UNSERVED rules remain part of candidate-neutral R_STAR.
+
+REPAIR_C_CURTAILMENT:
+E_CURTAIL[t]=max(0,E_AVAILABLE_INJECTABLE[t]-E_ACTUAL_ACCEPTED_FROM_SOURCE[t]) under one frozen source/meter definition.
+Curtailment affects cost/yield but is not inserted into physical conservation.
+
+REPAIR_D_STORAGE:
+SOC[t+1]=SOC[t]*(1-sigma[t])+eta_c*E_CHARGE[t]-E_DISCHARGE[t]/eta_d.
+0<=SOC[t]<=SOC_MAX[t].
+Cyclic representative horizon: SOC[T]=SOC[0].
+Linked seasonal horizon: states explicitly link periods.
+Finite non-cyclic horizon: initial inventory needs provenance/opportunity cost and terminal inventory receives symmetric residual value; DeltaSOC is never free energy.
+Apply analogously to batteries, pumped storage, thermal stores and stored fuels/hydrogen.
+
+REPAIR_E_PRIMARY_DISCOUNT:
+MISSION_CONVENTION_NOT_PHYSICS:
+r_k=.035 years 1..30; .030 years 31..75; .025 years 76+.
+D(0)=1; D(t)=product(k=1..t)[1/(1+r_k)].
+PV_0[X]=sum_t X[t]*D(t).
+Same D(t), real price base and base date for every candidate/baseline in primary resource view.
+Candidate-specific WACC/debt/equity/tax structure stays in a separately labeled financial view unless a reviewed rule proves a real-resource component.
+
+REGRESSION_1_UNSERVED:
+Demand=100; physical supply=90; served=90; unserved=10.
+Old form: 90=90+10 FAIL.
+Repaired physical balance: 90=90 PASS.
+Adequacy identity: 100=90+10 PASS.
+
+REGRESSION_2_FREE_SOC:
+SOC0=10 MWh; eta_d=.8; no charge; attempted discharge=8 MWh -> SOC1=10-8/.8=0.
+Cyclic SOC1=SOC0 rejects this path; non-cyclic use requires explicit initial-inventory provenance/cost.
+Python and Wolfram independently returned SOC1=0.
+
+REGRESSION_3_DISCOUNT:
+A=100 at t0. B=40 at t0 +200 at y30.
+At primary 3.5% for y1..30: PV_B=111.25568212046046>A.
+At flat 7%: PV_B=66.27342343091792<A.
+Python/Wolfram agree. Therefore candidate-specific primary discount choice can reverse ranking and is forbidden.
+
+CLAIM_UPDATE:
+CLAIM-EGC-040R-001: REPAIRED_VARIANT_SUBMITTED; double-charge invariant preserved; physical balance + inventory closure corrected.
+CLAIM-EGC-040R-002: PARTIAL_REPAIR; primary PV operator frozen; terminal gross/net and terminal timing still OPEN.
+CLAIM-EGC-040R-006: UNKNOWN preserved; unserved energy separated from conservation; numeric R_STAR still OPEN.
+
+FALSIFICATION_STATUS:
+unserved-as-physical-sink CLOSED in this variant;
+free-initial-storage CLOSED;
+undefined-primary-discount CLOSED;
+terminal RV/TL gross-vs-net OPEN;
+terminal PV timing OPEN;
+financing/resource decomposition OPEN;
+numeric R_STAR OPEN.
+
+CONFLICT_ID: CONFLICT-EGC-040-JOBID-C3-20261006
+FACT: a pre-existing claimed JOB-EGC-040-REPAIR-C3-20261006 covers physical-ledger repair; a later contribution reused the same ID for terminal/finance work.
+RESOLUTION: preserve the pre-existing C3 job. The later terminal/finance C3 declaration is SUPERSEDED_AS_IDENTIFIER_COLLISION only and is reissued below.
+
+JOB_ID: JOB-EGC-040-TERMFIN-REPAIR-C4-20261006
+TITLE: Terminal PV/gross-net + financing/resource-view repair
+ROLE: Common-boundary terminal/finance accounting repair
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can FSRC_ND put residual/liability terms on one base-date PV basis, define gross-vs-net terminal value, and prevent financing cash-flow conventions from contaminating primary real-resource cost?
+DEPENDENCIES: terminal-PV ambiguity; residual gross/net ambiguity; finance/resource-view mix.
+REQUIRED_TOOLS: source audit; numerical counterexamples; independent recomputation.
+EXPECTED_OUTPUT: corrected FSRC_ND + terminal ledger + finance/resource owner states + regression tests.
+FALSIFICATION_CONDITION: equal physical systems change primary ranking solely from terminal convention, undiscounted terminal amounts, candidate-specific primary WACC/discount choice, or financing-transfer relabeling.
+REVIEWER_JOB_ID: JOB-EGC-040-TERMFIN-REPAIR-REV-C5-20261006
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: distinct session claims C4; independent reviewer attacks it.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-C2-20261006: CLAIMED -> AWAITING_REVIEW.
+JOB-EGC-040: remains REVIEW_FAILED / REPAIR_REQUIRED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
