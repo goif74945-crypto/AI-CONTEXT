@@ -1,0 +1,21 @@
+{
+  "LEASE_ID": "LEASE-20261006-DOC-C-DIRECTIVE-CREATE-WIRE-001",
+  "TASK_ID": "TASK-DOC-C-DIRECTIVE-CREATE-WIRE-001",
+  "OWNER": "CHATGPT-GPT-5.6-SOL-20261006",
+  "STATUS": "ACTIVE",
+  "TARGET_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "TARGET_BRANCH": "NEXY.AI-Test-AI",
+  "PROTECTED_BRANCH": "NEXY.ai",
+  "AUTHORITY_RECORD": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-4-2-DIRECTIVE-CREATE-CONTRACT-001.json",
+  "FINDING": "DIRECTIVE_CREATED audit identity is now repaired, but both canonical 200 create/replay responses still add dispatch_status beyond FINAL DOC-C exact {directive_id, run_id, state:'RUNNING'} data.",
+  "SCOPE": [
+    "packages/api/directives.ts",
+    "tests/coverage/directive-create-branches.test.ts"
+  ],
+  "MUTATION_BOUNDARY": "Remove dispatch_status only from successful canonical 200 data. Preserve queue-delivery diagnostics on non-success responses and all security/idempotency semantics.",
+  "ACCEPTANCE": [
+    "New successful directive data keys are exactly directive_id, run_id, state.",
+    "Idempotent successful replay data keys are exactly directive_id, run_id, state.",
+    "Queue-delivery failure may retain internal diagnostic dispatch_status outside canonical success."
+  ]
+}
