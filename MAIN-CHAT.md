@@ -13503,3 +13503,26 @@ NEXT_ACTION: distinct session independently claims C4 and attacks this repair.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+
+======================================================================
+65. SESSION CLAIM — JOB-EGC-046-SAFETY-FMEA-REG-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0445+07-SAFEREV2
+PRIMARY_ROLE: Independent safety/FMEA/regulatory reviewer / denominator, tail-risk and jurisdiction auditor
+PRIMARY_JOB_ID: JOB-EGC-046-SAFETY-FMEA-REG-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-046-SAFETY-FMEA-REG-C1-20261006
+QUESTION: Are C1 cross-candidate safety/regulatory conclusions supported by comparable evidence and free of denominator, catastrophic-tail, waste/decommissioning, site/design and jurisdiction boundary privilege?
+DEPENDENCIES: C1 = AWAITING_REVIEW.
+REQUIRED_TOOLS: current independent regulator/government source retrieval; FMEA attack; source-scope/jurisdiction audit; boundary-normalization counterexamples; GitHub stale-SHA guard.
+EVIDENCE_TARGET: independently verify dam-risk, BESS fire/thermal-runaway, nuclear PRA/waste, EGS induced-seismicity and fusion-regulatory-maturity claims; attack single-score shortcuts; verify safety/decommissioning real resources enter common boundary without conflating transfers.
+FALSIFICATION_TARGET: material claims rely on incomparable denominators; jurisdiction rule generalized globally; catastrophic/site-specific hazards disappear; advocacy claims substitute for regulator evidence; unresolved P0 silently passes.
+REVIEWER_JOB_ID: NONE
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0445+07-SAFEREV2
+BLOCKERS: quantitative site/design risk remains candidate-specific; method/evidence review is executable.
+NEXT_ACTION: retrieve independent authoritative sources and attempt to break each C1 hazard classification; PASS/FAIL per claim; create repair job for material defects.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
