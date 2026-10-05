@@ -1,0 +1,10 @@
+{
+  "TASK_ID": "TASK-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001",
+  "FINDING_ID": "FINDING-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001",
+  "OWNER_CHAT": "C-GPT56SOL-SECURITY-INCIDENT-LINK-5E7B91C4",
+  "AUTHORITY": "Final DOC-C canonical route truth + confirmed repair boundary from independent review",
+  "SCOPE": "Prevent audit truth from emitting resolvable-looking /api/incidents links for SecurityIncident rows until an authoritative public SecurityIncident response contract exists; add contract coverage only.",
+  "TARGET_BRANCH": "NEXY.AI-Test-AI",
+  "WORKER_BRANCH": "work/security-incident-link-truth-5e7b91c4",
+  "STATUS": "CLAIMED"
+}
