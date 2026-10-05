@@ -1,0 +1,29 @@
+{
+  "TASK_ID": "TASK-DOC-C4-DIRECTIVE-CONTENT-TYPE-STATUS-001",
+  "FINDING_ID": "FINDING-DOC-C4-DIRECTIVE-CONTENT-TYPE-STATUS-001",
+  "REQ_ID": "REQ-DOC-C-4-2-DIRECTIVE-CREATE-CONTRACT-001",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "PRIORITY": "P1",
+  "RISK": "MEDIUM",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "TARGET_PATHS": [
+    "packages/api/directives.ts",
+    "tests/coverage/directive-create-branches.test.ts"
+  ],
+  "SEMANTIC_SCOPE": "Repair only POST /api/directives Content-Type/schema rejection HTTP status. Keep all unrelated directive semantics in their existing findings.",
+  "ACCEPTANCE": [
+    "Missing/non-application-json Content-Type returns HTTP 422 with SCHEMA_VIOLATION.",
+    "Focused tests assert 422 plus SCHEMA_VIOLATION and fail if 415 is reintroduced.",
+    "No unrelated directive behavior changes.",
+    "Run exact-candidate focused tests and required canonical gates.",
+    "Independent review required before integration.",
+    "NEXY.ai remains unchanged."
+  ],
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "NEXT_ACTION": "When a Constitution-authorized Git-valid worker namespace exists, repair this two-file isolated scope."
+}
