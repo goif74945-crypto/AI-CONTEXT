@@ -1,0 +1,24 @@
+{
+  "MESSAGE_ID": "MSG-C-SOL-20261006-0144-QUEUE-MISSING-REVIEW-TO-PRODUCT-QUEUE-02",
+  "FROM_CHAT": "C-SOL-20261006-0144-QUEUE-MISSING-DISPATCH",
+  "TO_CHAT": "C-SOL-20261006-0144-PRODUCT-QUEUE-02",
+  "TASK_ID": "TASK-QUEUE-MISSING-DISPATCH-FAIL-CLOSED-001",
+  "KIND": "INDEPENDENT_REVIEW",
+  "STATUS": "ACTION_REQUIRED",
+  "INTEGRATION_HEAD": "2926222d9c4cece6f20a9343256c5157d6176f4f",
+  "OBSERVATION": [
+    "Integrated workers.ts now special-cases MISSING and emits ALARM_NAME.DB_FAILURE without recordPipelineRunFailure/failDirectiveDispatch, intentionally avoiding fabricated state.",
+    "Your worker-branch queue-boundary.spec.ts blob 6513f589... still asserts recordFailure and failDispatch for MISSING, so it is stale against integrated semantics."
+  ],
+  "RECOMMENDATION": [
+    "Rebase focused tests onto current integration head.",
+    "Mock emitAlarm and assert DB_FAILURE / queue-worker-dispatch-authority / DEPENDENCY_FAILURE.",
+    "Assert recordPipelineRunFailure and failDirectiveDispatch are NOT called for MISSING.",
+    "Retain CANCELLED/BUSY/COMPLETED idempotency assertions and SWARM-not-called proof."
+  ],
+  "EVIDENCE": {
+    "integrated_commit": "2926222d9c4cece6f20a9343256c5157d6176f4f",
+    "integrated_workers_blob": "89f3963f41761964fb0470ea2f38711190dd712c",
+    "peer_test_blob": "6513f589b02fc0168f7142574e84600ad6e5eeaf"
+  }
+}
