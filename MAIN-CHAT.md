@@ -5920,3 +5920,335 @@ WRITE_INTEGRITY:
 - file SHA read: 2760ba074eddb302a6478fbb3c31dc73115c1f50
 - stale-write check: exact latest blob SHA supplied; abort/reconcile on mismatch.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+30. JOB-EGC-031 EVIDENCE PACKAGE — CURRENT OBJECTIVE ANCHORS
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+PRIMARY_JOB_ID: JOB-EGC-031
+STATUS: AWAITING_REVIEW
+DATE_UTC: 2026-10-05T19:15:03Z
+
+### CLAIM CL-EGC-031-A — LCOE IS AN ANCHOR, NOT THE FINAL SYSTEM-COST METRIC
+
+TRUTH_CLASS: SOURCE_FACT + INFERENCE
+CLAIM:
+- IRENA reports 2025 global weighted-average utility-scale LCOE of USD 44/MWh for solar PV, USD 33/MWh for onshore wind, USD 78/MWh for offshore wind, USD 62/MWh for hydropower, and USD 89/MWh for geothermal.
+- IRENA also explicitly warns that plant-level LCOE does not include costs beyond the plant/busbar such as transmission and distribution.
+- Therefore JOB-EGC-001/004 MUST NOT define LOW_COST solely as generator LCOE. The mission's decisive cost metric must be full-system delivered cost under a common reliability and system boundary.
+
+### CLAIM CL-EGC-031-B — 1 TW NET-AVERAGE IS A NONTRIVIAL MASSIVE-ENERGY ANCHOR
+
+TRUTH_CLASS: CALCULATION + INFERENCE
+PROPOSED_MASSIVE_ENERGY_THRESHOLD_FOR_REVIEW:
+- P_NET_DELIVERED_AVERAGE >= 1.000 TW sustained on an annual basis.
+- E_NET_DELIVERED >= 8,760 TWh/year = 31.536 EJ/year.
+- Boundary: measured/modelled after source parasitics, curtailment, storage conversion losses, and attributable transmission losses up to the defined delivery bus/load boundary. Nameplate capacity does NOT count as delivered power.
+
+RATIONALE_FROM_CURRENT_SCALE:
+- IEA Electricity 2026: global electricity consumption was 28,200 TWh in 2025 and is forecast at 33,600 TWh in 2030; average annual increment through 2030 is about 1,100 TWh/year.
+- 8,760 TWh/year equals 31.0638% of 2025 global consumption, 26.0714% of projected 2030 consumption, and 7.9636 times the projected annual demand increment. A system meeting this threshold is unambiguously civilization-scale rather than a laboratory or niche source.
+
+### CLAIM CL-EGC-031-C — LOW_COST SHOULD BE LOCKED AGAINST THE STRONGEST SAME-SERVICE BASELINE
+
+TRUTH_CLASS: INFERENCE + ASSUMPTION
+PROPOSED_LOW_COST_RULE_FOR_INDEPENDENT_REVIEW:
+- Primary metric: C_DELIVERED_ALL_IN in real 2025 USD/MWh actually served to the defined load boundary.
+- Include: annualised CAPEX, financing, fixed O&M, variable O&M, fuel, replacements/degradation, decommissioning, waste handling, insurance/regulatory costs, grid interconnection, attributable transmission, storage/firming, backup/redundancy, and curtailment effects.
+- Compare candidate and baseline with the SAME geography/resource class, service/reliability target, lifetime convention, real-dollar year, financing convention, and treatment of taxes/subsidies.
+- Proposed mission PASS threshold: candidate full-system delivered cost must be at least 10% lower than the cheapest current defensible same-service baseline AND the claimed advantage must survive the combined uncertainty/sensitivity envelope. Formally, point-estimate screen C_candidate <= 0.90 * C_best_baseline; final PASS additionally requires plausible uncertainty not to reverse the ranking.
+- Generator-only LCOE is retained as a diagnostic field, never as the final LOW_COST gate.
+
+ASSUMPTION DISCLOSURE:
+- The 10% material-improvement margin is a normative anti-noise threshold, not a measured physical constant. It is PROPOSED, NOT VERIFIED, and must be independently reviewed before JOB-EGC-001 locks the mission objective. It must not be changed later merely to make a candidate pass.
+
+### CLAIM CL-EGC-031-D — OBSERVED DEPLOYMENT RATES SHOW TERAWATT-SCALE NAMEPLATE BUILDOUT IS NOT AN ORDER-OF-MAGNITUDE FANTASY, BUT OUTPUT SCALING REMAINS TECHNOLOGY-SPECIFIC
+
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + INFERENCE
+SOURCE_ANCHOR:
+- IRENA Renewable Capacity Statistics 2026 reports 692 GW of renewable capacity added globally in 2025, bringing renewable capacity to 5,149 GW; renewable additions were 85.6% of all net power-capacity additions. The report breakdown records about 510 GW solar and 159 GW wind additions in 2025.
+- U.S. EIA final 2024 utility-scale capacity factors: solar PV 23.2%, wind 34.3%, nuclear 90.8%, geothermal 64.6%, hydro 34.6%.
+
+DIMENSIONAL_SCALE_CHECK_FOR_1_TW_AVERAGE:
+Equation: P_nameplate = P_average / capacity_factor.
+- Solar PV at CF=0.232 -> 4.3103 TW nameplate.
+- Wind at CF=0.343 -> 2.9155 TW nameplate.
+- Nuclear at CF=0.908 -> 1.1013 TW nameplate.
+- Geothermal at CF=0.646 -> 1.5480 TW nameplate.
+- Hydro at CF=0.346 -> 2.8902 TW nameplate.
+
+ROUGH_DEPLOYMENT_RATE_CONTEXT_ONLY:
+- 4.3103 TW solar / 0.510 TW/year solar additions = 8.4517 years at a constant 2025 global solar nameplate-addition rate.
+- 2.9155 TW wind / 0.159 TW/year wind additions = 18.3362 years at a constant 2025 global wind nameplate-addition rate.
+LIMITATION: These are NOT deployment forecasts and MUST NOT be used as candidate PASS evidence. Capacity-factor values are U.S. 2024 fleet values, while addition rates are global 2025 values; site quality, degradation, grid constraints, storage, material throughput, permitting, and regional resource distributions are omitted. This calculation only rejects the naive claim that terawatt nameplate buildout is automatically many orders of magnitude beyond demonstrated annual manufacturing/deployment throughput.
+
+---------------------------------------------------------------------
+TOOL EVIDENCE RECORDS
+---------------------------------------------------------------------
+
+TOOL_EVIDENCE_ID: EV-EGC-031-001
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CL-EGC-031-A
+TOOL_OR_METHOD: Authoritative web retrieval
+PURPOSE: Current generator-level cost anchor.
+EXECUTION_DATE: 2026-10-05
+SOURCE: IRENA, Renewable power generation costs in 2025
+SOURCE_DATE: July 2026
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025 ; ISBN 978-92-9260-749-4
+INPUTS: Published 2025 global weighted-average LCOE values.
+PARAMETERS: Real-world projects commissioned in 2025; IRENA methodology/database.
+EQUATION/CODE/METHOD: Direct extraction from IRENA publication page/report.
+OUTPUT: Solar PV 44; onshore wind 33; offshore wind 78; hydropower 62; geothermal 89 USD/MWh.
+UNITS: 2025 report USD/MWh as published.
+UNCERTAINTY: Technology/geography/finance distributions not represented by the global averages.
+ASSUMPTIONS: None added to source values.
+LIMITATIONS: Plant-level LCOE is not delivered system cost.
+REPRODUCTION_METHOD: Open source URL and verify published LCOE summary and annex methodology.
+INDEPENDENT_REPLICATION: SOURCE TRIANGULATION REQUIRED FOR WINNER-SELECTION USE.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+TOOL_EVIDENCE_ID: EV-EGC-031-002
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CL-EGC-031-B
+TOOL_OR_METHOD: Authoritative web retrieval
+PURPOSE: Scale anchor for global electricity service.
+EXECUTION_DATE: 2026-10-05
+SOURCE: IEA, Electricity 2026 — Demand
+SOURCE_DATE: 2026
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/electricity-2026/demand
+INPUTS: 2025 global electricity consumption and 2030 forecast.
+PARAMETERS: 28,200 TWh in 2025; 33,600 TWh forecast in 2030; about 1,100 TWh/year average increment through 2030.
+EQUATION/CODE/METHOD: Direct source extraction.
+OUTPUT: Current and forecast global electricity-scale denominators.
+UNITS: TWh/year.
+UNCERTAINTY: 2030 value is a forecast; 2025 is current estimate in the IEA report.
+ASSUMPTIONS: None added.
+LIMITATIONS: Electricity only, not total primary/final energy across all sectors.
+REPRODUCTION_METHOD: Open IEA Electricity 2026 demand page and verify values.
+INDEPENDENT_REPLICATION: External source corroboration still desirable.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+TOOL_EVIDENCE_ID: EV-EGC-031-003
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CL-EGC-031-D
+TOOL_OR_METHOD: Authoritative report + press release retrieval; PDF visual inspection performed.
+PURPOSE: Observed global renewable deployment-rate anchor.
+EXECUTION_DATE: 2026-10-05
+SOURCE: IRENA, Renewable Capacity Statistics 2026 / 1 Apr 2026 press release.
+SOURCE_DATE: April 2026
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+INPUTS: 2025 renewable additions and total stock.
+PARAMETERS: 692 GW added; 5,149 GW total renewable capacity; 85.6% of total capacity additions; report breakdown about 510 GW solar and 159 GW wind.
+EQUATION/CODE/METHOD: Direct extraction from IRENA report/press release.
+OUTPUT: Observed annual deployment-scale benchmark.
+UNITS: GW, %.
+UNCERTAINTY: Reported statistics; technology-specific definitions follow IRENA capacity accounting.
+ASSUMPTIONS: None for source values.
+LIMITATIONS: Capacity is nameplate; does not equal net delivered average power.
+REPRODUCTION_METHOD: Open 2026 statistics report/press release and verify 2025 entries.
+INDEPENDENT_REPLICATION: AWAITING independent reviewer.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+TOOL_EVIDENCE_ID: EV-EGC-031-004
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CL-EGC-031-D
+TOOL_OR_METHOD: Authoritative operational-data retrieval
+PURPOSE: Capacity-factor reference for dimensional scale check.
+EXECUTION_DATE: 2026-10-05
+SOURCE: U.S. Energy Information Administration, Electric Power Annual Table 4.08.B
+SOURCE_DATE: 2025-10-16 release containing final 2024 data
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.eia.gov/electricity/Annual/table.php?t=epa_04_08_b.html
+INPUTS: 2024 U.S. utility-scale capacity factors.
+PARAMETERS: Geothermal 64.6%; hydro 34.6%; nuclear 90.8%; solar PV 23.2%; wind 34.3%.
+EQUATION/CODE/METHOD: Direct extraction from EIA table.
+OUTPUT: Fleet-level CF anchors used only for scale illustration.
+UNITS: percent.
+UNCERTAINTY: Geographic/year dependence; U.S. fleet data are not global technology constants.
+ASSUMPTIONS: None in extracted values.
+LIMITATIONS: Not transferable as universal CF values.
+REPRODUCTION_METHOD: Open EIA Table 4.08.B and read annual 2024 row.
+INDEPENDENT_REPLICATION: AWAITING independent reviewer.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: MEASUREMENT / SOURCE_FACT operational statistics.
+
+TOOL_EVIDENCE_ID: EV-EGC-031-005
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CL-EGC-031-A
+TOOL_OR_METHOD: Authoritative report retrieval + PDF screenshot inspection
+PURPOSE: Demonstrate firming cost/reliability sensitivity and reject bare-LCOE comparisons.
+EXECUTION_DATE: 2026-10-05
+SOURCE: IRENA, 24/7 renewables: The economics of firm solar and wind
+SOURCE_DATE: May 2026
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf ; ISBN 978-92-9260-736-4
+INPUTS: 2025 cost assumptions and project-level firm-LCOE modelling.
+PARAMETERS: 95% reliability examples; high-quality solar+storage sites about USD 54-82/MWh in 2025; Nevada reference figure shows 113 USD/MWh firm LCOE at 95% reliability vs 43 USD/MWh base LCOE; wind+storage 2025 examples about USD 59/MWh China to USD 88-94/MWh Brazil/Germany/Australia.
+EQUATION/CODE/METHOD: IRENA firm-LCOE optimisation/model; this session visually inspected relevant PDF pages.
+OUTPUT: Firming premium is large and reliability/site dependent; hybridisation can lower firming cost.
+UNITS: real 2025 USD/MWh as report labels.
+UNCERTAINTY: Model assumptions and site-specific resource profiles; not an end-to-end national-grid reliability model.
+ASSUMPTIONS: Source model assumptions, not independently re-estimated here.
+LIMITATIONS: 95% project-level firm target is NOT equivalent to a universal grid adequacy standard.
+REPRODUCTION_METHOD: Inspect report Figures 4 and 9 and annex methodology.
+INDEPENDENT_REPLICATION: NOT_YET.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT + SIMULATION_RESULT_FROM_EXTERNAL_SOURCE.
+
+TOOL_EVIDENCE_ID: EV-EGC-031-006
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CL-EGC-031-B, CL-EGC-031-D
+TOOL_OR_METHOD: Python deterministic calculation
+PURPOSE: Dimensional calculations and scale ratios.
+EXECUTION_DATE: 2026-10-05
+INPUTS: 1 TW average target; 8,760 h/year; IEA denominators; EIA CFs; IRENA annual additions.
+PARAMETERS: Exactly as recorded in claims.
+EQUATION/CODE/METHOD: E=P*t; share=E_target/E_global; P_nameplate=P_avg/CF; years=P_nameplate/addition_rate.
+RAW_OR_KEY_OUTPUT: 8,760 TWh/y; 31.536 EJ/y; 31.0638298%; 26.0714286%; CF-derived nameplate capacities 4.3103448, 2.9154519, 1.1013216, 1.5479876, 2.8901734 TW; solar-rate 8.4516565 y; wind-rate 18.3361754 y.
+UNITS: TWh/y, EJ/y, %, TW, years.
+UNCERTAINTY: Arithmetic exact for inputs; dominant uncertainty is external input applicability, not floating-point rounding.
+ASSUMPTIONS: One calendar year = 8,760 h for screening; ignores leap year.
+LIMITATIONS: Scale-check does not model grid/storage/material/resource constraints.
+REPRODUCTION_METHOD: Substitute listed values into equations in any calculator/Python environment.
+INDEPENDENT_REPLICATION: Cross-tool replication EV-EGC-031-007 PASS; independent-session review still REQUIRED.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: CALCULATION.
+
+TOOL_EVIDENCE_ID: EV-EGC-031-007
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CL-EGC-031-B, CL-EGC-031-D
+TOOL_OR_METHOD: Wolfram Language independent computational engine
+PURPOSE: Cross-tool numerical recomputation of critical arithmetic.
+EXECUTION_DATE: 2026-10-05
+INPUTS: Same numeric source inputs, independently evaluated in Wolfram kernel.
+PARAMETERS: 1 TW, 8,760 h, global consumption denominators, CFs, annual addition rates.
+EQUATION/CODE/METHOD: Quantity unit conversion plus direct ratios 1/CF and nameplate/addition-rate calculations.
+RAW_OR_KEY_OUTPUT: 8,760 TWh-equivalent; 31.536 EJ; 31.063829787%; 26.071428571%; nameplate multipliers/capacities and deployment-rate ratios match Python to displayed precision.
+UNITS: TWh, EJ, %, TW, years.
+UNCERTAINTY: Same input applicability limitations as EV-EGC-031-006.
+ASSUMPTIONS: Same source inputs.
+LIMITATIONS: Cross-tool replication is NOT a substitute for independent reviewer/session or independent source validation.
+REPRODUCTION_METHOD: Re-evaluate Quantity[1,"Terawatts"]*Quantity[8760,"Hours"] and listed ratios in Wolfram Language.
+INDEPENDENT_REPLICATION: CROSS_TOOL_PASS; INDEPENDENT_SESSION_NOT_YET.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: CALCULATION.
+
+TOOL_EVIDENCE_ID: EV-EGC-031-008
+JOB_ID: JOB-EGC-031
+CLAIM_ID: CL-EGC-031-A
+TOOL_OR_METHOD: Authoritative methodology retrieval
+PURPOSE: Verify plant-LCOE system-boundary limitation.
+EXECUTION_DATE: 2026-10-05
+SOURCE: IRENA, Renewable Power Generation Costs in 2024 digital report methodology discussion
+SOURCE_DATE: July 2025
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/Digital-Report/Renewable-Power-Generation-Costs-in-2024
+INPUTS: IRENA's explicit LCOE limitations.
+PARAMETERS: LCOE assumes maximum load factor and plant-level boundary; excludes transmission/distribution beyond busbar.
+EQUATION/CODE/METHOD: Direct source extraction.
+OUTPUT: Confirms bare LCOE is insufficient for this mission's delivered-energy comparison.
+UNITS: N/A.
+UNCERTAINTY: None material for the methodological statement.
+ASSUMPTIONS: NONE.
+LIMITATIONS: Does not itself prescribe a universal full-system cost metric.
+REPRODUCTION_METHOD: Open source and inspect LCOE limitations section.
+INDEPENDENT_REPLICATION: Corroborated conceptually by U.S. ATB/EIA methodology; formal reviewer pending.
+REVIEW_STATUS: AWAITING_REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT.
+
+---------------------------------------------------------------------
+RED TEAM / FALSIFICATION ATTEMPTS
+---------------------------------------------------------------------
+
+ATTACK-031-1: "Use USD 33-44/MWh as LOW_COST because wind/solar already reach it."
+RESULT: REJECTED. Those are plant-level LCOE values and omit storage/firming/transmission/reliability costs that can be decision-changing.
+
+ATTACK-031-2: "Use nameplate terawatts as MASSIVE_ENERGY."
+RESULT: REJECTED. A 1 TW nameplate solar fleet at a 23.2% reference CF supplies only ~0.232 TW average before additional system losses. MASSIVE_ENERGY threshold must be net delivered average power/energy.
+
+ATTACK-031-3: "Set a universal absolute USD/MWh threshold immediately."
+RESULT: NOT ROBUST. Geography, reliability target, financing and grid/storage boundary can move delivered cost materially. A fixed relative improvement rule against the strongest same-service baseline is harder to game; absolute values remain reported as evidence anchors.
+
+ATTACK-031-4: "A 1 TW target is arbitrary."
+RESULT: PARTIALLY VALID. 1 TW is a normative mission threshold, not a physical constant. Its strength is that it is fixed before candidate selection and corresponds to ~31% of current global electricity consumption, making it clearly 'massive'. It requires independent objective-review before lock.
+
+---------------------------------------------------------------------
+JOB STATUS / REVIEW REQUEST
+---------------------------------------------------------------------
+
+JOB-EGC-031: CLAIMED/EXECUTING -> AWAITING_REVIEW
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+SELF_VERIFIED: NO
+CROSS_TOOL_NUMERICAL_CHECK: PASS
+INDEPENDENT_SESSION_REVIEW: REQUIRED
+
+#### JOB-EGC-032
+JOB_ID: JOB-EGC-032
+TITLE: Independent review of objective-anchor evidence and threshold proposal
+ROLE: Independent Objective / Evidence Reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Independently reproduce EV-EGC-031-001 through 008, attack the 1 TW net-delivered threshold and the 10%-below-best-baseline LOW_COST rule, and determine whether they can support JOB-EGC-001 without gaming or boundary mismatch.
+CANDIDATE: CROSS-CANDIDATE / NONE
+DEPENDENCIES: JOB-EGC-031 AWAITING_REVIEW
+REQUIRED_INPUTS: Original authoritative sources, equations, current MAIN-CHAT state.
+REQUIRED_TOOLS: Independent source retrieval and calculator/model distinct from owner-session reasoning where feasible.
+REQUIRED_EVIDENCE: Independent reproduction of decisive source values and calculations; explicit boundary audit.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR decision with conflicts and corrected values if needed.
+FALSIFICATION_CONDITION: Any source mismatch, unit error, circular/candidate-tailored threshold, hidden system-boundary term, or threshold whose plausible ambiguity defeats objective comparison.
+REVIEWER_JOB_ID: N/A — this is the reviewer job; material reviewer conclusions should be evidence-audited later.
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: Different session claims and reviews; owner CHATGPT-SOL-20261005T190800Z-B1 MUST NOT verify it.
+
+### EVENT 2026-10-05T19:15:03Z / CHATGPT-SOL-20261005T190800Z-B1
+
+ROLE: Baseline Evidence Scout / Objective Support
+OBJECTIVE: Produce current authoritative anchors and quantitative checks for objective formalization without stealing JOB-EGC-001.
+TARGET_CANDIDATE_OR_QUESTION: LOW_COST and MASSIVE_ENERGY mission metrics.
+
+INPUTS:
+- IRENA 2025 generation-cost evidence.
+- IEA 2026 electricity-demand evidence.
+- IRENA 2026 capacity/deployment evidence.
+- EIA final 2024 fleet capacity-factor evidence.
+- IRENA 2026 firm-renewables modelling evidence.
+- Python and Wolfram computations.
+
+SOURCE/EVIDENCE:
+- [SOURCE_FACT] EV-EGC-031-001..005,008.
+- [CALCULATION] EV-EGC-031-006..007.
+
+WORK:
+- Built source-grounded scale/cost anchors.
+- Defined a candidate-independent net-delivered energy boundary.
+- Recomputed all decisive arithmetic with two different computational engines.
+- Red-teamed LCOE-only, nameplate-only, and arbitrary absolute-cost definitions.
+
+RESULT:
+- FACT: Current plant LCOE and firming evidence differ materially; bare LCOE is insufficient for the mission.
+- CALCULATION: 1 TW average = 8,760 TWh/year = 31.536 EJ/year and ~31.06% of 2025 global electricity consumption.
+- INFERENCE: A baseline-relative all-in delivered-cost rule is more robust than a universal generator LCOE threshold.
+- ASSUMPTION: 10% is proposed as a material-improvement margin; not a physical fact.
+- UNKNOWN: Final fixed LOW_COST rule remains owned by JOB-EGC-001 and cannot be declared VERIFIED by this session.
+- CONFLICT: NONE discovered in arithmetic; source-boundary mismatch remains intentionally exposed rather than averaged away.
+- FALSIFIED: Generator-only/nameplate-only objective definitions are insufficient.
+
+RED_TEAM_CHECK:
+- strongest attack attempted: threshold arbitrariness and system-boundary mismatch.
+- outcome: 1 TW threshold remains defensible but normative; LOW_COST absolute USD/MWh threshold intentionally not fabricated. Independent review required.
+
+STATUS_CHANGE:
+- JOB-EGC-031: CLAIMED -> AWAITING_REVIEW.
+- JOB-EGC-032: NEW -> OPEN.
+
+NEXT_ACTION:
+- Independent session reviews JOB-EGC-031 via JOB-EGC-032.
+- In parallel, other sessions may continue source acquisition jobs that do not depend on unverified objective thresholds.
+
+WRITE_INTEGRITY:
+- branch head read: 84ee10f0d4877c7d440f46abb331b53b96983890
+- file SHA read: cd85b9ef9dea37eba5375decaab98635856d4a50
+- stale-write check: update is conditioned on current blob SHA; stale update must fail rather than overwrite concurrent work
+- commit/result: PENDING
