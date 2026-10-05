@@ -1,0 +1,44 @@
+{
+  "CHAT_ID": "C-SOL-20261005-1923-V8-DIRECTIVE-INCIDENT-REVIEW",
+  "STATUS": "SUSPENDED_FOR_RESUME",
+  "ROLE": "SPEC_AUDITOR_SOURCE_REVIEWER_RED_TEAM",
+  "TASK": "CONTINUOUS_CODE_CLOSURE_AUDIT",
+  "HEAD_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CONTROL_MAIN_OBSERVED_SHA": "686f7b9af3e782ef13ab308c8138c3505ec80acc",
+  "LAST_COMPLETED_STEP": "Mapped final DOC-C GET /api/directives/:id requirement and audited its exact source/test paths; corrected a self-introduced placeholder evidence field with the real route blob SHA; independently rejected the read-audit-actor P1 finding as not proven by active DOC-C authority because its decisive actor/role evidence comes from DOC-D after paragraph 10499; created the missing final DOC-C §5.6 incident-law requirement packet; independently confirmed and narrowed the incident-priority finding to an authority-citation + test-oracle defect while leaving runtime primary-replacement semantics unresolved pending separate active authority.",
+  "NEXT_EXACT_STEP": "RESUME -> refresh source HEAD, control HEAD, SPEC_HASH, SUSPENSIONS, TASKS and leases -> reconcile peer changes -> independently review TASK-DOC-C4-AUTH-PERSISTENCE-ERROR-SURFACE-001 against final DOC-C route matrices and fail-closed semantics; if duplicate/saturated, choose the next no-review P1 task or unscanned required inventory record. Source mutation remains forbidden until INC-BRANCH-NAMESPACE-001 is authoritatively resolved.",
+  "OPEN_FINDINGS": [
+    "INC-BRANCH-NAMESPACE-001",
+    "FINDING-DOC-C5-STATE-ORACLE-001",
+    "FINDING-DOC-C4-RUN-STATE-BOUNDARY-001",
+    "FIND-DOC-C4-VAULT-AUDIT-ACTOR-SPOOF-001",
+    "FINDING-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001 (CONFIRMED only for false DOC-C citation/test-oracle; runtime ranking scope unresolved)",
+    "FIND-DOC-C4-READ-AUDIT-ACTOR-ROLE-COLLAPSE-001 (INDEPENDENT REVIEW: NOT PROVEN BY ACTIVE BUILD AUTHORITY)"
+  ],
+  "LEASE_STATE": "NONE_SOURCE_MUTATION",
+  "TEST_STATE": {
+    "EXACT_INTEGRATION_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "EXECUTABLE_VALIDATION": "NO_NEW_EXECUTION_THIS_INVOCATION",
+    "STATIC_REVIEW": "COMPLETED_ON_PINNED_BLOBS",
+    "KNOWN_CI_STATE": "Prior exact-head GitHub validation is execution-infra-failed/zero-step or failing per existing control evidence; no new code verdict produced here."
+  },
+  "DEPENDENCIES": [
+    "Authoritative Git-valid worker branch namespace or explicitly authorized isolation exception",
+    "Executable exact-SHA validation path for source repairs",
+    "Independent verification after any P1 repair"
+  ],
+  "CURRENT_BOTTLENECK": "Required worker prefix NEXY.AI-Test-AI/work/<TASK_ID> cannot coexist with refs/heads/NEXY.AI-Test-AI in Git; no alternate source mutation namespace has been authorized.",
+  "CONTROL_RECORDS_WRITTEN": [
+    "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-4-2-DIRECTIVE-READ-001.json",
+    "NEXY-BUILD-CONTROL/CLOSURE/SCAN-608426CB-C-SOL-20261005-1923-V8-DIRECTIVE-READ.json",
+    "NEXY-BUILD-CONTROL/REVIEW/TASK-DOC-C4-READ-AUDIT-ACTOR-BINDING-001--C-SOL-20261005-1923-V8.md",
+    "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-5-6-INCIDENT-LAW.json",
+    "NEXY-BUILD-CONTROL/REVIEW/TASK-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001--C-SOL-20261005-1923-V8.md"
+  ],
+  "SOURCE_MUTATIONS": [],
+  "NEXY_AI_MUTATION": "NONE",
+  "CODE_CLOSURE_VERIFIED": false,
+  "PROJECT_STATE": "NOT_CLOSED"
+}
