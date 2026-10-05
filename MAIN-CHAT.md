@@ -301,3 +301,213 @@ BRANCH_HEAD_AT_CLAIM: 70a9ace41f45fc66943cbf376cba7cd95ab9c7f3
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: c8bf6f8ac6a48a237e21a1172142b93cfba8c503
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+49. INDEPENDENT REVIEW RESULT — JOB-EGC-040-REPAIR-REV-C2-20261005
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0304+07-REV-C2
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+ROLE: Independent common-boundary accounting reviewer / adversarial replicator
+STATUS: REVIEW_FAILED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REVIEW_SCOPE:
+Independent source retrieval, numerical replication, adversarial accounting counterexamples, and physics-ledger audit of JOB-EGC-040-REPAIR-C1-20261005.
+
+EVIDENCE_ID: EVID-EGC-040REV-C2-001
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-002
+TOOL: Official web retrieval
+METHOD: HM Treasury Green Book 2026 HTML verification
+DATE: 2026-10-06
+SOURCE: HM Treasury, The Green Book (2026)
+SOURCE_DATE: 2026-02-05
+URL: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+OUTPUT:
+- Infrastructure standard appraisal horizon = 60 years, with whole-lifetime appraisal including construction/development, operation/delivery, and winding-down/decommissioning.
+- Sunk costs should not affect forward decisions, while opportunity cost of already-paid resources remains relevant.
+- Economic transfers do not by themselves create/destroy social value.
+- Residual asset value or liability at the end of the appraisal period should be included.
+- Published Green Book 2026 discount schedule is real STPR 3.5% years 1-30, 3.0% years 31-75, 2.5% thereafter.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: SOURCE_DIRECT
+REVIEW_STATUS: VERIFIED
+LIMITATION: UK public-appraisal convention; acceptable as a transparent mission convention only if explicitly frozen, not a universal physical law.
+
+EVIDENCE_ID: EVID-EGC-040REV-C2-002
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-002
+TOOL: Official web retrieval
+METHOD: NREL/NLR ATB 2024b Definitions verification
+DATE: 2026-10-06
+SOURCE: NREL/NLR Annual Technology Baseline 2024b Definitions
+URL: https://atb.nrel.gov/electricity/2024b/definitions
+OUTPUT:
+- Cost recovery period is an explicit LCOE assumption distinct from technical life.
+- Technical life can exceed cost recovery period, leaving residual value.
+- Representative technical lives differ materially by technology.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: SOURCE_DIRECT
+REVIEW_STATUS: VERIFIED
+
+EVIDENCE_ID: EVID-EGC-040REV-C2-003
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-004
+TOOL: Official web retrieval
+METHOD: FERC demand-response guidance verification
+DATE: 2026-10-06
+SOURCE: FERC National Assessment and Action Plan on Demand Response
+URL: https://www.ferc.gov/electric/industry-activity/demand-response/national-assessment-and-action-plan-demand-response
+OUTPUT:
+- FERC defines DR as changes in customer electric usage in response to prices/incentives, including when reliability is jeopardized.
+- FERC explicitly maintains workstreams for DR cost-effectiveness, measurement and verification, program design/implementation, and analytical tools.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: SOURCE_DIRECT
+REVIEW_STATUS: VERIFIED
+
+EVIDENCE_ID: EVID-EGC-040REV-C2-004
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-005
+TOOL: Official web retrieval
+METHOD: FERC ancillary-services guidance verification
+DATE: 2026-10-06
+SOURCE: Federal Energy Regulatory Commission, Ancillary Services
+URL: https://www.ferc.gov/ancillary-services
+OUTPUT:
+FERC identifies frequency regulation, operating reserves, voltage support, black start capability, and reactive power as ancillary/reliability services; multiple resource types can provide subsets of these services.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: SOURCE_DIRECT
+REVIEW_STATUS: VERIFIED
+
+EVIDENCE_ID: EVID-EGC-040REV-C2-005
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-005
+TOOL: Official PDF text extraction; screenshot attempt
+METHOD: NERC GFM-BESS report audit
+DATE: 2026-10-06
+SOURCE: NERC, The Need for Widespread Implementation of Grid Forming Technology in All Future Registered Battery Energy Storage Resources
+SOURCE_DATE: 2023-09
+URL: https://www.nerc.com/comm/RSTC/Documents/Need_for_Widespread_Implementation_of_GFM_BESS.pdf
+OUTPUT:
+- NERC states future high-IBR systems require additional stability attributes, including low-system-strength operation and sub-cycle inertial support.
+- NERC states GFM need/amount is system- and location-dependent.
+- NERC distinguishes GFM capability from additional hardware needed for fault-current or black-start features.
+SCREENSHOT_STATUS: FAILED_CACHE_MISS; no visual-only datum used.
+EVIDENCE_CLASS: EXTERNAL_FACT
+REPLICATION_STATUS: SOURCE_TEXT_DIRECT
+REVIEW_STATUS: VERIFIED_WITH_SCREENSHOT_LIMITATION
+
+EVIDENCE_ID: EVID-EGC-040REV-C2-006
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-002
+TOOL: Python + Wolfram Language independent recomputation
+METHOD:
+CRF(r,n)=r(1+r)^n/((1+r)^n-1), r=0.07.
+A CAPEX=100, life=30 y; B CAPEX=110, life=60 y.
+60-y A replacement at y=30.
+OUTPUT:
+- EAC_A=8.058640351111118/y
+- EAC_B=7.835214805002139/y
+- PV_A_60=113.13671171545896
+- PV_B_60=110
+Python and Wolfram outputs agree to displayed precision.
+EVIDENCE_CLASS: CALCULATION
+REPLICATION_STATUS: INDEPENDENT_SESSION_AND_CROSS_TOOL_PASS
+REVIEW_STATUS: VERIFIED
+LIMITATION: r=7% is a toy counterexample assumption, not the Green Book 2026 primary STPR.
+
+EVIDENCE_ID: EVID-EGC-040REV-C2-007
+JOB_ID: JOB-EGC-040-REPAIR-REV-C2-20261005
+CLAIM_ID: CLAIM-EGC-040R-001
+TOOL: Python + Wolfram Language independent recomputation
+METHOD:
+100 MWh gross at 30 USD/MWh; 20 MWh charged; RTE=0.8; 16 MWh discharged; storage service=10 USD/MWh discharged.
+OUTPUT:
+- delivered=96 MWh
+- correct cost=3160 USD
+- correct levelized cost=32.9166666667 USD/MWh
+- double-charged cost=3760 USD
+- double-charged levelized cost=39.1666666667 USD/MWh
+- artificial increase=18.9873417722%
+Python and Wolfram outputs agree to displayed precision.
+EVIDENCE_CLASS: CALCULATION
+REPLICATION_STATUS: INDEPENDENT_SESSION_AND_CROSS_TOOL_PASS
+REVIEW_STATUS: VERIFIED
+
+ADVERSARIAL_FINDING_ID: FIND-EGC-040REV-C2-P0-001
+TITLE: Unserved energy is incorrectly placed inside the physical conservation equality.
+SEVERITY: P0
+TRUTH_CLASS: CALCULATION / PHYSICS_CONSTRAINT
+EXISTING_TEXT:
+G_internal+Imports+E_discharge =
+E_net_served+E_charge+Curtailment+Parasitics+Network_losses+Exports+Unserved_energy.
+COUNTEREXAMPLE:
+Demand=100 MWh; generation=90 MWh; served=90 MWh; unserved=10 MWh; all other terms zero.
+Existing equation requires 90 = 100, violating conservation.
+REQUIRED_REPAIR:
+- Physical balance must contain only physical energy flows/losses.
+- Adequacy identity must be separate, e.g. Demand_after_voluntary_DR = E_net_served + Unserved_energy.
+FALSIFICATION_STATUS: EXISTING_CANONICAL_BALANCE_FALSIFIED_AS_WRITTEN.
+
+ADVERSARIAL_FINDING_ID: FIND-EGC-040REV-C2-P1-002
+TITLE: Storage inventory boundary condition is missing.
+SEVERITY: P1
+TRUTH_CLASS: INFERENCE_FROM_EQUATIONS
+PROBLEM:
+SOC dynamics are defined, but no mandatory SOC_initial/SOC_terminal condition or inventory opportunity valuation is defined.
+COUNTEREXAMPLE:
+A finite-horizon model can begin with positive SOC, discharge it to serve load, never recharge, and appear to create lower-cost delivered energy unless initial inventory is costed or terminal inventory is symmetrically valued.
+REQUIRED_REPAIR:
+- For cyclic representative-horizon simulation: enforce SOC_T = SOC_0 for each storage inventory unless a justified seasonal linking model is used.
+- For finite non-cyclic appraisal: value initial inventory and terminal inventory on the same opportunity-cost basis, or explicitly account for DeltaSOC energy and cost.
+- Extend inventory rule to batteries, pumped storage, thermal stores, hydrogen/fuels where modeled as storage.
+
+ADVERSARIAL_FINDING_ID: FIND-EGC-040REV-C2-P1-003
+TITLE: Primary PV discount schedule is undefined, so timing alone can reverse ranking.
+SEVERITY: P1
+TRUTH_CLASS: CALCULATION
+COUNTEREXAMPLE:
+Candidate A: 100 cost at t=0.
+Candidate B: 40 at t=0 + 200 at year 30; equal service.
+At flat real 3.5%: PV_B=111.2556821205 > A=100.
+At flat real 7%: PV_B=66.2734234309 < A=100.
+Therefore undefined discounting can reverse the winner without any physical change.
+REQUIRED_REPAIR:
+Freeze one primary real resource-discount convention before candidate ranking, state denominator discounting convention, and separate this social/resource view from candidate-specific private WACC/financing view.
+SOURCE_NOTE:
+Published Green Book 2026 gives 3.5% real years 1-30, 3.0% years 31-75, 2.5% thereafter; if adopted, label it a mission convention.
+
+REVIEW_DISPOSITION:
+- CLAIM-EGC-040R-001 STORAGE_PRECEDENCE: REVIEW_FAILED_AS_WRITTEN. Double-charge prevention invariant replicated, but physical balance contains Unserved_energy incorrectly and lacks storage inventory boundary treatment.
+- CLAIM-EGC-040R-002 HORIZON_TERMINAL: PARTIALLY_SUPPORTED_BUT_INCOMPLETE. Horizon/replacement/residual logic is supported; primary PV discount convention remains undefined.
+- CLAIM-EGC-040R-003 GREENFIELD_BROWNFIELD: SUPPORTED_BY_REVIEW, subject to common counterfactual application.
+- CLAIM-EGC-040R-004 DEMAND_FLEX: SUPPORTED_BY_REVIEW as accounting method; no numeric DR credit is validated here.
+- CLAIM-EGC-040R-005 ANCILLARY_STRENGTH: SUPPORTED_QUALITATIVELY; no generic numeric surcharge/credit validated.
+- CLAIM-EGC-040R-006 RELIABILITY_INTEGRATION: METHOD_SUPPORTED / NUMERIC_R_STAR_REMAINS_UNKNOWN.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-REV-C2-20261005: CLAIMED -> REVIEW_FAILED.
+JOB-EGC-040: remains REVIEW_FAILED.
+GLOBAL_SOLVED: NO.
+
+NEW_JOB:
+JOB_ID: JOB-EGC-040-REPAIR-C2-20261006
+TITLE: Repair physical energy balance, storage inventory boundary, and canonical PV discounting
+ROLE: Common-boundary accounting repair
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can the common system boundary be made physically conservative and ranking-invariant to bookkeeping by separating unserved energy from physical flow, closing storage inventories, and freezing a primary discount convention?
+CANDIDATE: COMMON_ACCOUNTING_METHOD
+DEPENDENCIES: FIND-EGC-040REV-C2-P0-001; FIND-EGC-040REV-C2-P1-002; FIND-EGC-040REV-C2-P1-003
+REQUIRED_INPUTS: existing FSRC_ND ledger; Green Book 2026; ATB technical-life definitions
+REQUIRED_TOOLS: equation audit; numerical counterexamples; source verification
+REQUIRED_EVIDENCE: corrected conservation identities; storage boundary invariant; explicit real discount schedule; counterexample regression tests
+EXPECTED_OUTPUT: repair text plus regression tests
+FALSIFICATION_CONDITION: any free-energy/inventory exploit remains; unserved energy still appears as physical sink; discount timing can change ranking because primary convention remains unspecified.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-REV-C3-20261006
+STATUS: OPEN
+BLOCKERS: NONE
+NEXT_ACTION: claim and execute smallest safe repair, then submit to distinct reviewer.
