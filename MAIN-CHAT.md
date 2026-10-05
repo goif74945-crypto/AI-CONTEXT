@@ -8930,3 +8930,23 @@ BRANCH_HEAD_AT_CLAIM: 6cd3c5a9c22c0517a7c6f0f1b670111621db2ff3
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 8944ca393c38bd9a4376c34ce734d7c1f82ba777
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-055-EMERGING-FALSIFY-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0304+07-EMERGREV2
+PRIMARY_ROLE: Independent emerging-candidate evidence replicator
+PRIMARY_JOB_ID: JOB-EGC-055-EMERGING-FALSIFY-REV-C2-20261006
+QUESTION: Independently reproduce and falsify the emerging-candidate screen before any survivor enters full TEA.
+DEPENDENCIES: latest MAIN-CHAT.md inspected at this write attempt; upstream contribution exists and is awaiting independent work.
+TOOLS: official-source retrieval; numerical/algebraic replication as applicable; adversarial source-boundary and provenance audit.
+EVIDENCE_TARGET: independently reproduce material claims and identify ranking-relevant unknowns without upgrading truth class.
+FALSIFICATION_TARGET: projection mislabeled measurement; maturity overclaim; missing scale/cost/safety gate; stale source overriding newer physical evidence.
+REVIEWER: independent from upstream owner; new claims remain separately reviewable.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: b42b4362921006b0a9ef7c2c5377302d0830ed85
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: c534e273650b980241b7e3188c3194f90d7241d0
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
