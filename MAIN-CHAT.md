@@ -9695,3 +9695,100 @@ NEXT_ACTION: distinct session reviews 044A. Parent JOB-EGC-044 remains EXECUTING
 
 BRANCH_HEAD_BEFORE_WRITE: 0df3ee184232144de370e110685337f0d638bb97
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 27395f222ac9fa7323f59ba47aba000b1a752bfc
+
+
+======================================================================
+58. INDEPENDENT REVIEW RESULT — JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0340+07-FINPVC8
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-FINPV-C7-20261006
+STATUS: REVIEW_FAILED
+PARENT_STATUS_REQUIRED: REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SOURCE_AUDIT:
+EVIDENCE_ID: EGC-040-FINPV-C8-E01
+SOURCE: HM Treasury, The Green Book (2026), updated 2026-02-05
+URL: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+EVIDENCE_CLASS: EXTERNAL_FACT + INFERENCE
+OUTPUT: future monetisable social costs/benefits are placed on a consistent real present-value basis; residual value/liability is relevant. The source does not establish whether a particular terminal quote is gross or net of named future obligations, so a provenance/normalization rule is still required.
+
+REPLICATION:
+EVIDENCE_ID: EGC-040-FINPV-C8-C01
+METHOD: independent Python + Wolfram; illustrative r=7%, t=60, gross=50, liability=10, equivalent net=40.
+OUTPUT: T0_NET gross=0.6902927787803067; net=0.6902927787803068; cost=99.3097072212197 both ways.
+RESULT: C7 same-date invariance PASS.
+
+EVIDENCE_ID: EGC-040-FINPV-C8-C02
+METHOD: independent same-date double-count test.
+OUTPUT: correct cost=99.3097072212197; erroneous re-entry=99.48228041591477; error=0.17257319469507593.
+RESULT: C7 exact-once owner-state rule fixes the original same-date overlap.
+
+FINDING_ID: F-EGC-040-FINPV-C8-P1-001
+SEVERITY: P1
+TRUTH_CLASS: CALCULATION + METHOD_INFERENCE
+TITLE: NET_COMPOSITE lacks mandatory time-consistent normalization of embedded effects.
+DEFECT: C7 defines T0_NET=N*D_REF(t_N) and records embedded set S, but does not require N(t_N) to reconcile each embedded effect at its own expected date with common D_REF. Membership does not prove valuation-date equivalence.
+
+EVIDENCE_ID: EGC-040-FINPV-C8-C03
+METHOD: mixed-date counterexample, Python + independent Wolfram.
+INPUTS: r=7% illustrative; gross residual=50 at t60; liability=10 at t70; pre-terminal PV cost=100; baseline cost=99.26.
+ATOMIC: T0_NET=50/(1.07)^60-10/(1.07)^70=0.7751385121107144; candidate cost=99.22486148788929 -> candidate wins.
+NAIVE COMPOSITE: N=40 at t60 -> T0_NET=0.6902927787803068; candidate cost=99.3097072212197 -> baseline wins.
+TIME-CONSISTENT COMPOSITE: N60=50-10/(1.07)^10=44.91650707865283; N60/(1.07)^60=0.7751385121107145.
+WOLFRAM: {0.775138512110716,0.6902927787803083,0.775138512110716}.
+RESULT: winner reverses solely from representation. FALSIFICATION_CONDITION_MET=YES.
+
+EVIDENCE_ID: EGC-040-FINPV-C8-C04
+METHOD: partial-embedding mixed-date test, Python + Wolfram.
+INPUTS: gross=100 t60; embedded L1=20 t65; separate L2=30 t70.
+ATOMIC=1.2164649573228918.
+PROPER N60=100-20/(1.07)^5=85.74027641032663; with L2 =>1.2164649573228918.
+NAIVE N60=80 plus L2 =>1.1174031734666066; error=0.09906178385628528.
+RESULT: embedded IDs alone are insufficient when timing differs.
+
+RULE_AUDIT:
+- exact-once ownership: PASS.
+- same-date documented embedding: PASS.
+- UNKNOWN no-favorable-guess rule: PASS directionally.
+- signed negative NET_COMPOSITE: PASS algebraically.
+- mixed-date/partial-net normalization: FAIL P1.
+
+REQUIRED_REPAIR:
+1. Add COMPOSITE_VALUATION_DATE t_N and dated schedule for embedded effects.
+2. For internally normalized composites require:
+N(t_N)=SUM_i[s_i*V_i(t_i)*D_REF(t_i)/D_REF(t_N)]
+over exactly embedded set S; hence N(t_N)D_REF(t_N)=SUM atomic PV0(S).
+3. Record embedded effect ID, sign, expected time/probability schedule, real value at own date, applied D_REF, provenance.
+4. Source-provided net market/appraisal values are single atomic valuations only if valuation date and obligation scope are established; if disaggregated equivalence is ranking-sensitive but cannot be reconciled, keep NOT_VERIFIED.
+5. Test same-date, mixed-date, partial-embedding, negative-net and UNKNOWN cases.
+6. Preserve C7 exact-once and no-candidate-favorable UNKNOWN rules.
+
+CLAIM_GRAPH_UPDATE:
+CLAIM-EGC-040-FINPV-003: REVIEW_FAILED / REPAIR_REQUIRED.
+F-EGC-040-FINPV-R6-P1-001: REPAIRED at same-date owner-state level.
+F-EGC-040-FINPV-C8-P1-001: OPEN P1.
+JOB-EGC-040-REPAIR-FINPV-C7-20261006: REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-040-REPAIR-FINPV-REV-C8-20261006: AWAITING_REVIEW.
+
+JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-C9-20261006
+TITLE: Enforce time-consistent normalization for embedded terminal effects
+ROLE: Terminal valuation-date repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can NET_COMPOSITE be representation-invariant across mixed dates and partial embedding?
+DEPENDENCIES: F-EGC-040-FINPV-C8-P1-001
+REQUIRED_TOOLS: accounting algebra; Python/Wolfram; provenance audit.
+REQUIRED_EVIDENCE: N(t_N)D_REF(t_N)=atomic PV0(S); mixed-date/partial regressions; UNKNOWN handling.
+FALSIFICATION_CONDITION: semantically identical atomic/composite representations change T0_NET, FSRC_ND, or winner due solely to embedded dates.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-FINPV-TIMEBASIS-REV-C10-20261006
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct repair session claims C9.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
