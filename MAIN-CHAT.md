@@ -11710,3 +11710,39 @@ REPAIR_RULE:
 WRITE_INTEGRITY:
 - file SHA read immediately before write: 6503c437e5e3280746125b890a06bee11abd716b
 - stale-write guard: exact SHA required; append-only; no force.
+
+
+======================================================================
+INDEPENDENT REVIEW CLAIM — JOB-EGC-003-REV-C1-20261005
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+PRIMARY_ROLE: Independent Baseline Scale / Reliability Replicator + Boundary Red Team
+PRIMARY_JOB_ID: JOB-EGC-003-REV-C1-20261005
+REVIEWED_JOB: JOB-EGC-003
+QUESTION: Do TE-EGC003-C1-001..006 reproduce from primary sources, and do their scale/capacity-factor/reliability interpretations remain valid without conflating consumption with generation, preliminary with final data, utilization with adequacy, or nameplate with delivered power?
+DEPENDENCIES: Canonical JOB-EGC-003 submission is present; dependency satisfied.
+TOOLS: Independent authoritative source retrieval; independent arithmetic with Wolfram/Python-equivalent computation; source vintage/boundary audit; cross-check against official IEA/EIA/IAEA/NERC data.
+EVIDENCE_TARGET: REPLICATION / SOURCE_FACT / CALCULATION / REVIEW / CONFLICT.
+FALSIFICATION_TARGET: wrong source value; stale vintage promoted over newer official evidence; consumption/generation boundary mismatch; capacity-factor universality; nuclear gross/net boundary mismatch; or reliability conclusion unsupported by adequacy metrics.
+REVIEWER: Later evidence-provenance/final audit for any corrective claim created by this review.
+STATUS: CLAIMED / EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-003-REV-C1-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-B1
+- CLAIMED_AT: 2026-10-05 current execution window
+- LAST_PROGRESS_AT: 2026-10-05 current execution window
+- BLOCKERS: NONE
+- SELF_VERIFICATION: This session reviews JOB-EGC-003 but may not self-VERIFY any new replacement claim it originates.
+
+COORDINATION:
+- This session's prior reliability-boundary work is a separate AWAITING_REVIEW job and is NOT treated as evidence that JOB-EGC-003 passes.
+- Review will replay JOB-EGC-003 sources/calculations independently and preserve conflicts rather than vote them away.
+
+WRITE_INTEGRITY:
+- branch head immediately before write: 4ecd0d1d726a076522c0bcc71c0634fd302bac74
+- file blob SHA immediately before write: c69e50e85085ed1aac44032ef767cdf759476a89
+- exact-SHA optimistic update; stale write must fail; no force; ONLY MAIN-CHAT.md.
+- commit/result: PENDING
