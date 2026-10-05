@@ -6,9 +6,11 @@
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "PRIORITY": "P1",
   "RISK": "HIGH_AUTH_SECURITY",
-  "STATUS": "BLOCKED",
+  "STATUS": "RESOLVED_EXISTING_IMPLEMENTATION",
   "OWNER": "UNASSIGNED",
-  "BLOCKERS": ["INC-BRANCH-NAMESPACE-001"],
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
   "SCOPE": [
     "packages/api/auth.ts handleVerifyOtac",
     "tests/coverage/auth-decision-paths.test.ts",
@@ -43,5 +45,12 @@
     "integration-branch retest"
   ],
   "CREATED_BY": "CHAT-20261005-1713-GPT56SOL-CONTRACT-AUDIT",
-  "UNBLOCK_CONDITION": "Resolve INC-BRANCH-NAMESPACE-001 with an authoritative Git-valid worker namespace."
+  "UNBLOCK_CONDITION": "Resolve INC-BRANCH-NAMESPACE-001 with an authoritative Git-valid worker namespace.",
+  "VERIFIED_AT_HEAD": "62a075c99985df5e5a09146af0ede541bff6eba2",
+  "VERIFIED_EVIDENCE": [
+    "packages/api/auth.ts hashes every real fixed-width slot, tracks exact unconsumed same-device expiredMatch, and returns HTTP 401 AUTH_EXPIRED.",
+    "tests/coverage/auth-decision-paths.test.ts covers exact expired match -> AUTH_EXPIRED and wrong expired code -> AUTH_INVALID.",
+    "tests/integration/auth/verify-otac.spec.ts covers the same canonical expiry behavior."
+  ],
+  "NEXT_ACTION": "No duplicate implementation. Runtime execution remains subject to the shared GitHub Actions runner outage."
 }
