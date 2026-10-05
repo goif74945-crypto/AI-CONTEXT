@@ -6787,3 +6787,35 @@ REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-QUANTITY-REV-C8-20261006
 STATUS: OPEN
 BLOCKERS: final numerical frontier still additionally depends on frozen geography/service, FSRC_ND and R_STAR.
 NEXT_ACTION: distinct repair session claims C7; C6 reviewer must not self-repair.
+
+
+
+======================================================================
+NEW JOB + CLAIM — JOB-EGC-072-CANDIDATE-ARCHITECTURE-REGISTRY-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0825+07-CANDREG1
+PRIMARY_ROLE: Candidate-architecture search-space / dominance-pruning / anti-cherry-pick architect
+PRIMARY_JOB_ID: JOB-EGC-072-CANDIDATE-ARCHITECTURE-REGISTRY-C1-20261006
+QUESTION: Can the mission freeze a complete-enough candidate architecture registry before integrated ranking so no plausible current/emerging source+storage+grid/hybrid competitor disappears by analyst choice, while physically or evidence-invalid architectures are pruned only by explicit reviewed rules?
+CANDIDATE: ALL mission-required source classes and credible system combinations; registry/search-space layer only, no winner selection.
+DEPENDENCIES: existing frontier/baseline/evidence jobs; R_STAR, FSRC_ND, objective, P_STAR, state/accounting, materials, scale, safety, environment and integrated-model gates remain independent dependencies.
+REQUIRED_INPUTS: latest candidate/frontier states; baseline challenger registry; technology maturity/evidence classes; common service/geography/objective version when frozen.
+REQUIRED_TOOLS: latest MAIN-CHAT state; systematic architecture enumeration; explicit dominance and infeasibility rules; counterexample testing; current authoritative-source retrieval only where a registry inclusion/exclusion fact is missing.
+REQUIRED_EVIDENCE:
+- mandatory inclusion coverage for solar, wind, hydro, geothermal/EGS, fission, advanced fission, fusion, tidal, wave, waste heat/CHP, storage-coupled systems and hybrid grids;
+- distinguish SOURCE_CLASS from SYSTEM_ARCHITECTURE and maturity from eligibility;
+- architecture components include generation, storage, firming, transmission/grid, curtailment/overbuild, demand flexibility where allowed, and shared infrastructure;
+- every exclusion/prune has a reason, evidence IDs, version/date and reopen trigger;
+- missing cost/reliability data produce DATA_GAP/NOT_VERIFIED, not silent deletion;
+- dominance pruning may occur only under same service/geography/objective/system boundary and with uncertainty unable to reverse dominance.
+EXPECTED_OUTPUT: CANDIDATE_ARCHITECTURE_REGISTRY_V1 + prune-state machine + anti-omission regressions + independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if an analyst can remove a plausible competitor because data are missing; variable generation is compared to firm supply without required support architecture; storage is treated as a primary source; mature/experimental labels silently substitute for whole-system eligibility; or dominance is declared across mismatched service/geography/version/boundaries.
+REVIEWER_JOB_ID: JOB-EGC-072-CANDIDATE-ARCHITECTURE-REGISTRY-REV-C2-20261006
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0825+07-CANDREG1
+BLOCKERS: numerical winner ranking remains blocked by unresolved upstream versions/gates; registry/method construction is executable.
+NEXT_ACTION: instantiate source/system taxonomy from latest evidence, define inclusion/prune/reopen rules, enumerate minimum architecture families and execute omission/dominance counterexamples.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
