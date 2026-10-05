@@ -1,0 +1,33 @@
+{
+  "INVENTORY_ID": "INV-608426CB-C-3B5E71A2",
+  "CHAT_ID": "C-3B5E71A2",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "COMMIT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "TREE_TRUNCATED": false,
+  "TOTAL_FILES": 885,
+  "TOTAL_INITIAL_REQUIRED_SCAN_CANDIDATES": 816,
+  "CLASS_COUNTS": {
+    "CONFIG": 41,
+    "BUILD_SUPPORT": 43,
+    "OUT_OF_SCOPE": 15,
+    "DOCUMENTATION": 54,
+    "GENERATED": 2,
+    "AUTHORITATIVE_RUNTIME": 371,
+    "EXPERIMENTAL": 23,
+    "TEST": 252,
+    "CONTRACT": 20,
+    "INTEGRATION": 8,
+    "MIGRATION": 56
+  },
+  "STATUS_COUNTS": {
+    "UNSCANNED": 816,
+    "OUT_OF_SCOPE": 69
+  },
+  "SHARD_SIZE": 120,
+  "EXPECTED_SHARDS": 8,
+  "CLOSURE_ELIGIBLE": false,
+  "NOTE": "Fail-closed bootstrap inventory. Shards hold exact path/blob/class/status records. UNSCANNED means not yet verified against active DOC-C and relevant active law; it does not imply a defect."
+}
