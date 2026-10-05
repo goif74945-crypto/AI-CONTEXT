@@ -1,0 +1,32 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
+  "chat_id": "C-SOL-20261006-0143-API-ENVELOPE-FAILCLOSED",
+  "status": "CLAIMED",
+  "objective": "Make the shared Next.js API adapter fail closed with a canonical SystemEnvelope when a route handler returns without emitting a response body.",
+  "requirement_gap": "Final DOC-C §4.1 requires all API responses to use SystemEnvelope<T>; runApiHandler currently returns HTTP 200 with {} when a handler completes without calling res.json().",
+  "target_repository": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "NEXY.AI-Test-AI",
+  "analyzed_head": "92aff2f532d30d81e74b8d2292a583edb77b5de8",
+  "worker_branch": "work/C-SOL-20261006-0143-api-envelope-failclosed",
+  "scope": [
+    "apps/web/lib/api-handler.ts",
+    "tests/contract/api-handler.test.ts"
+  ],
+  "out_of_scope": [
+    "FSM/state-transition semantics",
+    "auth/OTAC behavior",
+    "queue behavior",
+    "protected branch NEXY.ai",
+    "unrelated route handlers"
+  ],
+  "evidence": [
+    "Authoritative final DOC-C §4.1: all responses use SystemEnvelope<T>.",
+    "Current runApiHandler initializes responseBody={} and statusCode=200; a normal handler return without res.json() preserves that non-envelope response.",
+    "No active AI-CONTEXT claim found for apps/web/lib/api-handler.ts."
+  ],
+  "stop_conditions": [
+    "Focused contract test proves canonical fail-closed fallback.",
+    "Diff contains only the two claimed paths.",
+    "Do not integrate without exact-worker test/CI evidence or equivalent executable proof."
+  ]
+}
