@@ -7934,3 +7934,21 @@ MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: b9d7d77d598a24879819429b20d98a7a8c13ad3d
 NEXT_ACTION: add NGCC operational baseline and storage-duration boundary evidence; then independent review.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+57. JOB CLAIM — JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_ROLE: Intertemporal inventory boundary repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006
+QUESTION: Repair initial/terminal state settlement so stateful candidates cannot gain free pre-horizon inventory while preserving valid noncyclic seasonal operation.
+DEPENDENCIES: F-EGC-040C3REV-P1-001.
+TOOLS: GitHub connector; Python and symbolic arithmetic; storage-model evidence; battery and reservoir adversarial tests.
+EVIDENCE_TARGET: cyclic/noncyclic state-boundary equations, initial-state provenance, terminal settlement, FSRC_ND/R_STAR coupling, regression tests including non-battery inventory.
+FALSIFICATION_TARGET: reject if unmatched initial-stock depletion remains possible or if repair incorrectly forces equal end-state for every legitimate finite/seasonal horizon.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-REV-C5-20261006
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
