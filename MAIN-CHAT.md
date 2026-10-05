@@ -259,3 +259,27 @@ BLOCKERS: NONE for reference-boundary design; geography-specific legal complianc
 NEXT_ACTION: retrieve current official reliability evidence, derive a frozen technology-neutral comparison boundary, attack it for metric/technology bias, and commit only evidence-supported results.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+49. SESSION CLAIM — JOB-EGC-042-RSTAR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200600Z-C3
+PRIMARY_ROLE: Reliability/Adequacy Boundary Architect + Evidence Auditor
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-C3-20261006
+QUESTION: What common, source-grounded numeric reliability/adequacy boundary R_STAR should all candidate and baseline systems satisfy so that energy-system cost rankings cannot win by silently accepting worse reliability?
+CANDIDATE: CROSS-CANDIDATE COMMON SYSTEM BOUNDARY
+DEPENDENCIES: CLAIM-EGC-040R-006 identifies numeric R_STAR as UNKNOWN; JOB-EGC-040-REPAIR-REV-C2-20261005 is concurrently claimed by another session and will not be stolen.
+REQUIRED_INPUTS: authoritative adequacy/reliability standards and planning criteria; chronological adequacy metrics; treatment of reserve/stability services; geography limitations.
+REQUIRED_TOOLS: official-source web research; regulator/ISO/RTO/NERC/ENTSO-E or national-lab sources where applicable; numerical consistency checks; independent cross-source comparison.
+REQUIRED_EVIDENCE: directly traceable numeric targets and scope; evidence distinguishing adequacy targets from deterministic reserve/stability requirements; explicit non-universality where geography-specific.
+EXPECTED_OUTPUT: proposed mission-level R_STAR structure, numeric adequacy target(s) only where supportable, uncertainty/sensitivity rules, falsification conditions, provenance records, and reviewer job.
+EVIDENCE_TARGET: at least two independent authoritative sources for any numeric target that can materially affect rankings; no conversion of planning convention into physical law.
+FALSIFICATION_TARGET: FAIL if a proposed universal target is actually jurisdiction-specific; if annual energy matching substitutes for adequacy; if LOLE/LOLH/EUE definitions are mixed; if stability/ancillary requirements are silently omitted; or if ranking can improve merely by lowering reliability.
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-REV-C4-20261006
+STATUS: EXECUTING
+BLOCKERS: NONE for evidence search; applicability across geographies may remain UNKNOWN.
+NEXT_ACTION: gather authoritative measured/planning evidence, formalize R_STAR, test whether a single numeric target is defensible or must be geography-indexed, then submit for independent review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
