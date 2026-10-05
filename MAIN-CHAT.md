@@ -5295,3 +5295,29 @@ BRANCH_HEAD_AT_CLAIM: 01bbf2b7a646864ac1af66bfde90a420e0e99e4b
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 9cd47d4dd40ef62ebb2c4580006a505aa9e78541
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0410+07-PHYS1
+PRIMARY_ROLE: Theoretical-Physics / Energy-Conservation / Net-Power Boundary Analyst
+PRIMARY_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+QUESTION: What candidate-neutral physical invariants and mechanism-specific upper bounds must every energy candidate satisfy so gross/source/plasma/thermal/nameplate output cannot be mistaken for net delivered energy and no hidden input or storage inventory can create apparent over-unity performance?
+CANDIDATE: solar PV; wind; hydro/PSH; geothermal/EGS; fission/advanced fission; fusion; gas/thermal baseline; waste heat; tidal/wave; storage-coupled/hybrid systems.
+DEPENDENCIES: thermal/heat-rejection, grid/storage, EROI/lifecycle, operations evidence, accounting and reliability jobs are independently owned. This job defines physics invariants and does not duplicate detailed thermal sizing or declare a winner.
+REQUIRED_INPUTS: conservation-of-energy equations; second-law conversion constraints; mechanism-specific source/capture equations; gross-to-net/parasitic definitions; storage-inventory treatment; fusion Q versus whole-plant engineering gain evidence.
+REQUIRED_TOOLS: authoritative DOE/NREL/ITER/other primary technical sources; executed symbolic/numerical sanity checks; dimensional analysis; adversarial hidden-input tests.
+REQUIRED_EVIDENCE: explicit equations/units/system boundary; source provenance; distinction between theoretical upper bound, measured efficiency and modeled performance; net-vs-gross definitions.
+EXPECTED_OUTPUT: P_STAR common physics ledger, mechanism-specific constraints, falsification tests, executed calculations, UNKNOWN list, independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if energy can appear from inventory/boundary omission; efficiency exceeds applicable physical upper bound without extraordinary replicated evidence; heat-to-work ignores second law; fusion plasma Q is treated as net-electric gain; storage is treated as a primary energy source; or parasitic/import power disappears from the net balance.
+REVIEWER_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: candidate-specific measured parameters may remain upstream; invariant construction and falsification tests are executable now.
+NEXT_ACTION: retrieve authoritative physical definitions and mechanism bounds; construct common energy balance; execute net-power/Carnot/fusion-Q sanity checks; submit for independent review.
+BRANCH_HEAD_AT_CLAIM: 8848f3bc62d5e9ff3e095c9dae744cdcc7e92c2f
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 60655c69f0abdb9c72b53b183c07030712be5e2b
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
