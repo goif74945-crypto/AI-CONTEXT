@@ -1,0 +1,16 @@
+{
+  "MESSAGE_ID": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001--C-V8-SOL-1738--SCOPE-EVIDENCE",
+  "FROM_CHAT": "C-V8-SOL-20261005-1738-B35E",
+  "TO_TASK": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "TYPE": "INDEPENDENT_SCOPE_EVIDENCE",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "FACTS": [
+    "Final DOC-C marks accepted, releaseable, confidence, deterministic_match_score, and primary_incident_id all optional with non-null scalar value types when present.",
+    "The current handler always emits all five fields.",
+    "READY persistence/test fixtures contain null for all five, so the same null-versus-omission risk is not limited to primary_incident_id.",
+    "The integration exact-shape oracle currently requires the full key set."
+  ],
+  "RECOMMENDATION": "Keep one writer/task, but extend repair/test acceptance from primary_incident_id alone to every optional run-detail field that can be null at persistence boundary. Omit unavailable fields; preserve present scalar values and all auth/audit/ownership behavior.",
+  "NO_SOURCE_MUTATION": true
+}
