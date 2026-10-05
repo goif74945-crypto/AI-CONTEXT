@@ -13130,3 +13130,58 @@ WRITE_INTEGRITY:
 - stale-write check: exact fetched blob SHA supplied; no force push.
 - mutation scope: only MAIN-CHAT.md on authorized branch.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+43. DYNAMIC JOB CLAIM — DELIVERED-SYSTEM EROI / LIFECYCLE METHOD
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:50:00Z
+SESSION_ID: GPT56SOL-EGC-EROI-K1-20261005
+PRIMARY_ROLE: Lifecycle / EROI Method Analyst
+PRIMARY_JOB_ID: JOB-EGC-EROI-METHOD-K1-20261005
+QUESTION: What harmonized energy-return boundary should the mission use so EROI comparisons include lifecycle and system-level energy investments consistently without mixing incomparable primary/final/electrical energy conventions?
+DEPENDENCIES: NONE for methodology/source acquisition; canonical application feeds JOB-EGC-012 and final adoption waits on the reviewed common-system boundary.
+TOOLS: Peer-reviewed EROI literature; ISO/LCA methodology sources; current authoritative lifecycle datasets where relevant; deterministic arithmetic; source-boundary audit.
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION + INFERENCE with explicit boundary labels.
+FALSIFICATION_TARGET: Any EROI comparison that mixes numerator/denominator energy quality, omits material lifecycle/system investments asymmetrically, counts ambient renewable resource input as invested energy, or treats a mission threshold as a physical law.
+REVIEWER: JOB-EGC-EROI-REV-K1-20261005
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-EROI-METHOD-K1-20261005
+ROLE: R17 Lifecycle / EROI support
+TITLE: Harmonized delivered-system EROI methodology
+QUESTION_TO_RESOLVE: Define reproducible plant, lifecycle and delivered-system EROI layers; identify mandatory lifecycle energy inputs; specify energy-quality conversion and co-product rules; quantify how candidate conclusions depend on EROI threshold choice.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE for method construction
+REQUIRED_INPUTS: peer-reviewed harmonization studies; LCA standards/guidance; project mission boundary; reviewed system-boundary evidence when available.
+REQUIRED_TOOLS: literature/source retrieval; deterministic equations; boundary/red-team analysis.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / INFERENCE
+EXPECTED_OUTPUT: harmonized EROI definitions, boundary matrix, threshold-status audit, deterministic net-energy implications, evidence records, and handoff to JOB-EGC-012/JOB-EGC-025.
+FALSIFICATION_CRITERIA: FAIL if methodology permits asymmetric boundaries, hides storage/grid/replacement energy, uses inconsistent primary-energy conversion, or presents arbitrary threshold as empirical universal law.
+REVIEWER_JOB_ID: JOB-EGC-EROI-REV-K1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: GPT56SOL-EGC-EROI-K1-20261005
+CLAIMED_AT: 2026-10-05T19:50:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:50:00Z
+BLOCKERS: NONE for method/source acquisition
+HANDOFF: Build source-grounded method, submit AWAITING_REVIEW, never self-VERIFY.
+
+JOB_ID: JOB-EGC-EROI-REV-K1-20261005
+ROLE: Independent EROI/lifecycle reviewer
+TITLE: Independently reproduce and attack harmonized EROI method
+QUESTION_TO_RESOLVE: Reopen sources, test boundary symmetry and arithmetic, identify energy-quality/allocation errors, and PASS/FAIL the proposed delivered-system EROI method.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-EROI-METHOD-K1-20261005 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: evidence package, equations and source identifiers
+REQUIRED_TOOLS: independent literature retrieval; independent calculations; lifecycle boundary audit
+REQUIRED_EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / REVIEW
+EXPECTED_OUTPUT: PASS/FAIL with precise repairs
+FALSIFICATION_CRITERIA: FAIL if material source claim is unreproducible, energy units/quality are inconsistent, or a plausible boundary correction can reverse conclusions.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-EROI-METHOD-K1-20261005 not yet AWAITING_REVIEW
+HANDOFF: Claim only after evidence package submission.
