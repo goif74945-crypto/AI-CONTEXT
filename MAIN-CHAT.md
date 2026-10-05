@@ -12104,3 +12104,188 @@ WRITE_INTEGRITY:
 - file SHA read immediately before write: 70e1e1d294f1376a0d255463a95f3d7bd9e633d6
 - attempt: 3
 - append-only exact-SHA mutation; no force; no other file/repository touched.
+
+
+======================================================================
+44. REPAIR SUBMISSION — JOB-EGC-003-REPAIR-C1-20261005
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:56:00Z
+SESSION_ID: CHATGPT-SOL-20261005T195000Z-A1R003
+PRIMARY_JOB_ID: JOB-EGC-003-REPAIR-C1-20261005
+REPAIRED_JOB: JOB-EGC-003
+STATUS: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+TOOL_EVIDENCE_ID: TE-EGC003-REPAIR-C1-001
+JOB_ID: JOB-EGC-003-REPAIR-C1-20261005
+CLAIM_ID: CLAIM-EGC003-GROWTH-SEMANTICS-REPAIR
+TOOL_OR_METHOD: Independent IEA source comparison + provenance correction
+PURPOSE: Separate observed 2025 electricity-demand growth from forecast-average 2026-2030 growth.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- IEA Electricity 2026 Demand page.
+- IEA Electricity Mid-Year Update 2026 Executive Summary.
+PARAMETERS: observed year 2025; forecast years 2026-2030 and 2026-2027.
+VERSION_OR_MODEL: IEA February 2026 and July 2026 publications.
+SOURCE_OR_DATASET: International Energy Agency.
+SOURCE_DATE: 2026-02 and 2026-07.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.iea.org/reports/electricity-2026/demand
+- https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+COMMAND_CODE_EQUATION_OR_METHOD: Direct source-text comparison.
+RAW_OR_KEY_OUTPUT:
+- February report: 2025 electricity demand grew 3%; 2026-2030 forecast average growth 3.6%; this forecast corresponds to approximately 1,100 TWh added on average EACH YEAR THROUGH 2030; 2025 total 28,200 TWh.
+- July Mid-Year Update: 2025 growth remains reported at 3%; 2025 total revised/updated to 28,600 TWh; 2026 and 2027 are forecast at 3.6% and 3.8%.
+UNITS: percent/year; TWh/year.
+UNCERTAINTY: 3% is rounded; exact methodological cause of February-to-July +400 TWh 2025 total revision remains UNKNOWN.
+ASSUMPTIONS: NONE for quoted classification of observed vs forecast.
+LIMITATIONS: This record does not equate IEA consumption boundary with Ember gross/demand-style boundary.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect IEA wording and notes showing 2026-2030 or 2026-2027 values are forecasts.
+INDEPENDENT_REPLICATION: This repair follows verified reviewer finding TE-EGC003-REV-C1-001; fresh source retrieval independently confirms it.
+EVIDENCE_CLASS: SOURCE_FACT / CORRECTION.
+CLAIM_SUPPORTED: ~1,100 TWh/year is a forecast-average 2026-2030 increment, not observed 2025 annual growth.
+CLAIM_NOT_SUPPORTED: Exact observed 2025 TWh increment from the rounded IEA 3% statement.
+
+TOOL_EVIDENCE_ID: TE-EGC003-REPAIR-C1-002
+JOB_ID: JOB-EGC-003-REPAIR-C1-20261005
+CLAIM_ID: CLAIM-EGC003-OBSERVED-GROWTH-CROSSCHECK
+TOOL_OR_METHOD: Independent external dataset cross-check
+PURPOSE: Supply an observed 2025 annual-growth quantity on an explicitly labeled alternative boundary.
+EXECUTION_DATE: 2026-10-05
+INPUTS: Ember Global Electricity Review 2026.
+PARAMETERS: 2025 global electricity demand/generation-style accounting.
+VERSION_OR_MODEL: Ember GER 2026.
+SOURCE_OR_DATASET: Ember.
+SOURCE_DATE: 2026-04-21.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+COMMAND_CODE_EQUATION_OR_METHOD: Direct source extraction; 849 TWh / 8.76 = 96.9178 GW average-equivalent.
+RAW_OR_KEY_OUTPUT: 2025 global electricity demand increased 2.8%, +849 TWh, to 31,779 TWh; +849 TWh/y equals 96.92 GW average-equivalent.
+UNITS: TWh/year; percent; GW average-equivalent.
+UNCERTAINTY: Ember coverage/estimation uncertainty not quantified on inspected page; accounting boundary differs from IEA final-consumption-style values.
+ASSUMPTIONS: 8,760 h/year for normalization.
+LIMITATIONS: 849 TWh must not silently replace IEA values in a mixed boundary.
+REPRODUCIBILITY_INSTRUCTIONS: Retrieve Ember 2026 demand section; compute 849/8.76.
+INDEPENDENT_REPLICATION: SOURCE_RETRIEVED_AND_ARITHMETIC_RECOMPUTED; further independent reviewer still required for job closure.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+CLAIM_SUPPORTED: A directly reported observed-2025 growth anchor is ~0.85 PWh/year on Ember's boundary.
+CLAIM_NOT_SUPPORTED: 1.0 PWh/year is an observed source fact.
+
+TOOL_EVIDENCE_ID: TE-EGC003-REPAIR-C1-003
+JOB_ID: JOB-EGC-003-REPAIR-C1-20261005
+CLAIM_ID: CLAIM-EGC003-1PWH-SEMANTICS
+TOOL_OR_METHOD: Deterministic dimensional calculation + truth-class repair
+PURPOSE: Preserve useful 1 PWh scale convention without mislabeling it as measured history.
+EXECUTION_DATE: 2026-10-05
+INPUTS: 1,000 TWh/year normative round scale.
+PARAMETERS: 8,760 h/year.
+VERSION_OR_MODEL: deterministic arithmetic.
+SOURCE_OR_DATASET: mission design criterion only; not an external measurement.
+SOURCE_DATE: 2026-10-05.
+SOURCE_URL_DOI_OR_IDENTIFIER: INTERNAL_NORMATIVE_ANCHOR.
+COMMAND_CODE_EQUATION_OR_METHOD: 1000 TWh/y / 8.76 = 114.1553 GW average.
+RAW_OR_KEY_OUTPUT: 1 PWh/year = 114.16 GW average-equivalent.
+UNITS: TWh/year; GW.
+UNCERTAINTY: Arithmetic negligible; selection of 1 PWh is normative and therefore not empirical uncertainty.
+ASSUMPTIONS: 365-day normalization.
+LIMITATIONS: Does not establish firmness, capacity factor, losses, or why exactly 1 PWh rather than another mission threshold.
+REPRODUCIBILITY_INSTRUCTIONS: Repeat dimensional conversion.
+INDEPENDENT_REPLICATION: REQUIRED for final threshold adoption.
+EVIDENCE_CLASS: CALCULATION + ASSUMPTION/INFERENCE.
+CLAIM_SUPPORTED: 1 PWh/year can be retained only as an explicitly precommitted mission-scale convention.
+CLAIM_NOT_SUPPORTED: It is current measured annual demand growth.
+
+REPAIR_ACTIONS:
+1. Replace every JOB-EGC-003 phrase equivalent to "current annual growth ~1,100 TWh/year" with:
+   "IEA February 2026 forecast average increment for 2026-2030 is ~1,100 TWh/year; it is NOT observed 2025 growth."
+2. Where an observed 2025 growth comparator is needed:
+   - use Ember +849 TWh (+2.8%) ONLY with Ember's explicit boundary label; OR
+   - use IEA's observed ~3% growth without inventing an exact TWh increment from the rounded percentage.
+3. Preserve 1 PWh/year only as ASSUMPTION/INFERENCE / normative round mission anchor if the objective owner adopts it ex ante.
+4. Mark EIA 2025 capacity-factor values PRELIMINARY wherever JOB-EGC-003 uses them.
+5. Timestamp PRIS live capacity values and do not treat a few-MW dashboard change as contradiction.
+6. Preserve the non-nameplate rule: annual delivered energy and reliability/service constraints remain controlling.
+
+CONFLICT_RECONCILIATION:
+CONFLICT_ID: CONFLICT-EGC003-D1-001
+STATUS: PARTIALLY_RESOLVED / BOUNDARY-METHOD CAUSE STILL UNKNOWN
+FACT:
+- IEA February 2026: 2025 total 28,200 TWh.
+- IEA July 2026 Mid-Year Update: 2025 total 28,600 TWh.
+INFERENCE:
+- July is the fresher IEA snapshot and should be preferred for current IEA scale anchoring when the same boundary is required.
+UNKNOWN:
+- Exact decomposition/methodological cause of the +400 TWh revision.
+RULE:
+- Do not average the two values; timestamp and identify vintage.
+
+RED_TEAM_CHECK:
+- Attack: "1,100 TWh is close to 1,000 TWh, so call it current growth anyway."
+  Outcome: REJECTED. Source semantics distinguish forecast from observed history.
+- Attack: "Use Ember +849 TWh to prove IEA grew by +849 TWh."
+  Outcome: REJECTED. Boundaries differ.
+- Attack: "Because 1 PWh is near recent growth, promote it to FACT."
+  Outcome: REJECTED. Threshold selection remains normative.
+- Attack: "Update 28,200 -> 28,600 everywhere and erase history."
+  Outcome: REJECTED. February and July values are both source facts tied to different publication vintages.
+
+RESULT:
+FACT:
+- The reviewer-identified semantic defect is reproduced and repaired.
+- ~1,100 TWh/year is forecast-average growth through 2030, not observed 2025 growth.
+- Ember reports observed 2025 +849 TWh on its boundary.
+CALCULATION:
+- +849 TWh/year = 96.92 GW average-equivalent.
+- 1 PWh/year = 114.16 GW average-equivalent.
+ASSUMPTION:
+- 1 PWh/year only if objective owner chooses it as a frozen normative mission anchor.
+UNKNOWN:
+- Exact methodology behind IEA's 28.2 -> 28.6 PWh 2025 revision.
+CONFLICT:
+- Dataset/vintage/boundary differences remain explicit, not averaged.
+FALSIFIED:
+- "Observed current global demand growth is ~1,100 TWh/year" as a 2025 source fact.
+
+CLAIM_GRAPH_DELTA:
+- CLAIM-EGC003-GROWTH-ANCHOR: REPAIRED -> forecast classification.
+- CLAIM-EGC003-1PWH-ANCHOR: remains NOT_VERIFIED / normative only.
+- CLAIM-EGC003-WORLD-SCALE: supported with source-vintage labels.
+- DEPENDENT claims that treat 1.1 PWh as observed must remain REOPENED until corrected.
+
+STATUS_CHANGE:
+- JOB-EGC-003-REPAIR-C1-20261005: EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-003 remains REPAIR_REQUIRED until a distinct reviewer passes this repair.
+- GLOBAL_SOLVED remains NO.
+- CURRENT_WINNER remains NONE.
+- USER_SUCCESS_RESPONSE remains DENIED.
+
+REVIEW_JOB_CREATED:
+JOB_ID: JOB-EGC-003-REPAIR-REV-C1-20261005
+ROLE: Independent repair reviewer
+TITLE: Re-review JOB-EGC-003 growth-anchor/provenance repair
+QUESTION_TO_RESOLVE: Does the repair correctly classify IEA forecast vs observed growth, preserve boundary/vintage caveats, and keep 1 PWh normative rather than factual?
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-003-REPAIR-C1-20261005 AWAITING_REVIEW
+REQUIRED_INPUTS: TE-EGC003-REPAIR-C1-001..003 and prior review.
+REQUIRED_TOOLS: Independent IEA/Ember source retrieval and arithmetic.
+REQUIRED_EVIDENCE_CLASS: REPLICATION / REVIEW / SOURCE_FACT.
+EXPECTED_OUTPUT: PASS/FAIL and exact remaining corrections.
+FALSIFICATION_CRITERIA: FAIL if forecast/observed semantics, boundary labels, source vintages, or truth classes are wrong.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE
+HANDOFF: Must be a distinct session.
+
+NEXT_ACTION:
+- Distinct reviewer claims JOB-EGC-003-REPAIR-REV-C1-20261005.
+- Objective owner may separately decide whether to adopt 1 PWh as a normative mission threshold; repair does not force adoption.
+
+WRITE_INTEGRITY:
+- branch head read: d81679b4b8af7719626356f9398f7c3af7f07c06
+- file SHA read: 6d0d12a8834ec53a592aae3ed48d02840392ef18
+- stale-write check: exact SHA guarded update attempt 1.
+- commit/result: PENDING_THIS_COMMIT
