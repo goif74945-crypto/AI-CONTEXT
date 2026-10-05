@@ -1,0 +1,50 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_DEPLOYMENT_EVIDENCE_AUDIT_V1",
+  "RESULT_ID": "RESULT-C-SOL-V16RC13-B11E0417-E03-DEPLOYMENT-EVIDENCE-AUDIT-3231AEAD",
+  "RESULT_TYPE": "DEPLOYMENT_EVIDENCE_SOURCE_BINDING_AUDIT",
+  "CHAT_ID": "C-SOL-20261005-0949-0800-V16RC13-ORPHAN-AUTH-SESSION-B11E",
+  "MEMBERSHIP_ID": "PRE-36bac94487ad2be2ad958325f3aebcfc",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "TARGET_HEAD_SHA": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "AUTHORITY_CLASSIFICATION": {
+    "BUILD_OBLIGATION_AUTHORITY": "FINAL_DOC_C",
+    "DEPLOYMENT_APPROVAL_AUTHORITY": "DOC_E",
+    "AUDIT_SCOPE": "DEPLOYMENT_EVIDENCE_ONLY"
+  },
+  "SPEC_REQUIREMENT": "DOC-C §8.3: max concurrent sessions per user 5; oldest non-OWNER revoked first; OWNER sessions require explicit confirmation if cap exceeded.",
+  "PRODUCT_SOURCE_CROSSCHECK": {
+    "VERDICT": "CANONICAL_API_PATH_SATISFIES_EXPLICIT_OWNER_CONFIRMATION_REQUIREMENT",
+    "PRODUCT_GAP_FOUND": false,
+    "EVIDENCE": [
+      "packages/contracts/auth.ts includes confirm_owner_session_eviction default false.",
+      "packages/api/auth.ts requires OWNER role plus explicit confirmation before OWNER eviction.",
+      "packages/api/auth.ts returns recoverable 409 when confirmation is absent.",
+      "packages/api/auth.ts records AUTH_OWNER_SESSION_CAP_CONFIRMED on confirmed OWNER eviction."
+    ]
+  },
+  "STALE_EVIDENCE_CROSSCHECK": {
+    "EVIDENCE_FILE": "evidence/E03-session-security.md",
+    "EVIDENCE_BLOB_SHA": "af0c649bc9044e38b9a06edc9a4db51af9dc239b",
+    "CLAIMED_STATUS": "PASS",
+    "CITED_SOURCE": "packages/auth/session.ts",
+    "CURRENT_SOURCE_BLOB_SHA": "285d2bea32a66420333357cfde51e0728834951e",
+    "MISMATCH": "E03 quotes concurrent-session logic that is not the current packages/auth/session.ts implementation.",
+    "REACHABILITY": "Repository code search found no callers/imports of the exported session helpers outside packages/auth/session.ts.",
+    "TYPECHECK_INCLUSION": "tsconfig.json includes packages/**/*.ts."
+  },
+  "SEAL_CROSSCHECK": {
+    "FILE": "evidence/.seal.json",
+    "STATUS": "NON_DEPLOYABLE",
+    "SEALED_COMMIT": "8946d72",
+    "SEALED_BRANCH": "claude/fix-constraint-handling-iC5K4",
+    "E03_DECLARED_SOURCE_SHA256": "bf7cd312927aa73adeb19fd4bb18dc07f9ade8a14727e24b7b09f3a24664139a",
+    "VERDICT": "NOT_CURRENT_TARGET_DEPLOYMENT_EVIDENCE"
+  },
+  "VERDICT": "PRODUCT_REQUIREMENT_SATISFIED_BUT_E03_DEPLOYMENT_EVIDENCE_IS_STALE_MISBOUND",
+  "FINDING_ID": "FINDING-V16RC13-E03-STALE-SESSION-EVIDENCE-3231AEAD",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
