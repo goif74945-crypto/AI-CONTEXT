@@ -5641,3 +5641,180 @@ JOB-EGC-044-EMERGING-FALSIFICATION-C1-20261006: CLAIMED -> AWAITING_REVIEW.
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
 CURRENT_WINNER: NONE.
+
+
+======================================================================
+55. PROGRESS RESULT — JOB-EGC-044-OPERATIONS-EVIDENCE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0310+07-OPS1
+PRIMARY_JOB_ID: JOB-EGC-044-OPERATIONS-EVIDENCE-C1-20261006
+STATUS: EXECUTING
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-044-OPERATIONS-EVIDENCE-REV-C2-20261006
+BRANCH_HEAD_BEFORE_WRITE: cda9a5cba3750d8ef39a8ab48b0c81497b5ea833
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 210db8e43ccaebb2468019bf5de351cbcb9b4220
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE OF THIS PROGRESS:
+Candidate-neutral operational/physical evidence anchors. This is NOT a cost ranking and NOT a final winner. Where evidence is company-reported rather than independently measured, truth class remains EXTERNAL_FACT/COMPANY_REPORTED, not MEASUREMENT.
+
+EVIDENCE_ID: E-EGC-044-001
+CLAIM_ID: CLAIM-EGC-044-MATURE-FLEET-CF
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: web retrieval of U.S. EIA Electric Power Monthly Table 6.07.B
+DATE: 2026-10-06
+SOURCE: U.S. Energy Information Administration, Electric Power Monthly, Table 6.07.B
+SOURCE_DATE: release with July 2026 data, September 24 2026
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_07_b
+METHOD: direct table extraction; 2025 values are preliminary.
+OUTPUT:
+- geothermal: time-adjusted capacity 2,695.5 MW; capacity factor 65.9%
+- conventional hydro: 79,890.5 MW; 35.3%
+- nuclear: 98,436.4 MW; 91.0%
+- utility-scale solar PV: 133,940.2 MW; 24.4%
+- solar thermal: 1,392.0 MW; 23.6%
+- wind: 154,574.1 MW; 34.2%
+LIMITATIONS:
+2025/2026 are preliminary. EIA states month time-adjusted capacity includes generators operating the entire month and excludes units starting/retiring during that month; annual capacity is a time-weighted average. Capacity factor compares net generation with available capacity. National fleet average is not a site-specific design value.
+REPRODUCTION_METHOD: retrieve table and recompute derived TWh/GW-year = 8.76*CF only as a normalized fleet-intensity diagnostic.
+REPLICATION_STATUS: SAME_SESSION_CALCULATION_ONLY; INDEPENDENT_SESSION_REQUIRED.
+REVIEW_STATUS: PENDING.
+
+CALC-EGC-044-001 — NORMALIZED FLEET ENERGY INTENSITY
+EQUATION: TWh_per_GW_nameplate_year = 8.76 * CF.
+INPUTS: E-EGC-044-001 rounded EIA 2025 capacity factors.
+OUTPUT:
+- nuclear 7.9716 TWh/GW-y; nameplate required for 1 GW annual-average output = 1/0.910 = 1.0989 GW
+- geothermal 5.77284 TWh/GW-y; 1/0.659 = 1.51745 GW
+- hydro 3.09228 TWh/GW-y; 1/0.353 = 2.83286 GW
+- wind 2.99592 TWh/GW-y; 1/0.342 = 2.92398 GW
+- solar PV 2.13744 TWh/GW-y; 1/0.244 = 4.09836 GW
+UNITS: TWh per GW-nameplate-year; GW-nameplate per GW annual-average.
+ASSUMPTIONS: rounded annual fleet CF treated as diagnostic only.
+LIMITATION: DOES NOT represent firm capacity, adequacy credit, site-specific output, storage need, curtailment, lifecycle cost or future build performance.
+TRUTH_CLASS: CALCULATION.
+
+EVIDENCE_ID: E-EGC-044-002
+CLAIM_ID: CLAIM-EGC-044-DIRECT-GENERATION
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: U.S. EIA Electric Power Monthly Table 1.1
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_1_01
+SOURCE_DATE: current 2026 Electric Power Monthly; 2025 preliminary
+OUTPUT_2025_UTILITY_SCALE:
+- nuclear 784,781 thousand MWh
+- conventional hydro 247,023 thousand MWh
+- solar 295,671 thousand MWh
+- total utility-scale generation 4,429,502 thousand MWh
+- estimated small-scale PV 93,148 thousand MWh; estimated total solar 388,820 thousand MWh including PV/thermal aggregation per table.
+LIMITATION: table aggregates renewable sources excluding hydro/solar in a combined row, so wind is not independently recoverable from this row alone.
+
+REPLICATION / BOUNDARY ATTACK:
+Using rounded annual CF*time-adjusted-capacity*8760 reproduces:
+- nuclear 784.696 TWh vs direct 784.781 TWh: -0.0109%
+- hydro 247.044 TWh vs direct 247.023 TWh: +0.00842%
+For rapidly expanding solar, PV+thermal diagnostic gives 289.167 TWh vs direct utility-scale solar 295.671 TWh: -2.1998%.
+INTERPRETATION: DO NOT label this an EIA contradiction. EIA's CF denominator uses time-adjusted capacity and excludes generators beginning/retiring within a month; CF values are rounded. Rapid fleet additions can make naive annual CF*annual-average-capacity reconstruction non-identical to direct generation. Therefore direct generation and official CF are authoritative for their own definitions; naive reverse reconstruction is NOT_VERIFIED for fast-growing fleets.
+CONFLICT_ID: CONFLICT-EGC-044-001
+STATUS: METHOD/BOUNDARY_MISMATCH_IDENTIFIED; NOT DATA_FALSIFICATION.
+NEXT_ARBITRATION: independent reviewer should reproduce from generator/month EIA-923/860M data if exact closure is material.
+
+EVIDENCE_ID: E-EGC-044-003
+CLAIM_ID: CLAIM-EGC-044-NUCLEAR-AVAILABILITY
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: IAEA PRIS Energy Availability Factor Trend
+SOURCE_DATE: last update 2026-07-27
+URL: https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+OUTPUT_2025: 362 GW(e) net electrical capacity; 402 commercially operated reactors with data; weighted Energy Availability Factor 84.1%.
+LIMITATION: EAF is an availability metric, not identical to capacity factor or delivered system reliability; global reactor set differs from U.S. EIA fleet. Do not substitute EAF for adequacy.
+
+EVIDENCE_ID: E-EGC-044-004
+CLAIM_ID: CLAIM-EGC-044-OFFSHORE-WIND-OPERABILITY
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. Department of Energy Offshore Wind Market Report 2024 Edition
+URL: https://www.energy.gov/cmei/systems/offshore-wind-market-report-2024-edition
+OUTPUT: South Fork Wind, 132 MW, began delivering power November 2023 and was fully commissioned March 14 2024; DOE described three fully operational U.S. offshore projects as of May 31 2024.
+CROSS_SOURCE: EIA reports that at end-2024 South Fork had about 130 MW and Vineyard Wind 1 had 174 MW operating capacity.
+URL_2: https://www.eia.gov/energyexplained/wind/where-wind-power-is-harnessed.php
+LIMITATION: establishes physical commercial operation, not a mature U.S. offshore-wind fleet CF, lifetime, delivered cost or scale proof. Large 2025/2026 project schedules are not operational evidence until commissioned.
+TRUTH_CLASS: SOURCE_FACT/EXTERNAL_FACT for operating status; long-run performance UNKNOWN.
+
+EVIDENCE_ID: E-EGC-044-005
+CLAIM_ID: CLAIM-EGC-044-BATTERY-DEPLOYMENT
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: U.S. EIA, August 7 2026
+URL: https://www.eia.gov/todayinenergy/detail.php?id=67925
+OUTPUT: operational U.S. utility-scale battery power capacity 43.6 GW at end-2025; +8.3 GW in first half 2026; nearly 52 GW nameplate by June 2026.
+CROSS_SOURCE: EIA Table 6.07.C reports 2025 time-adjusted battery capacity 33,209.3 MW and usage factor 8.3%.
+URL_2: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_07_c
+LIMITATION: MW power capacity and usage factor do NOT specify MWh duration, round-trip efficiency, degradation, cycle life or ability to bridge multi-day/seasonal deficits. Battery net generation can be near zero because storage consumes charging energy. Storage is not a primary energy source.
+TRUTH_CLASS: SOURCE_FACT.
+
+EVIDENCE_ID: E-EGC-044-006
+CLAIM_ID: CLAIM-EGC-044-CALIFORNIA-INTEGRATION
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: California Energy Commission
+URL: https://www.energy.ca.gov/data-reports/clean-energy-serving-california/tracking-progress-toward-100-clean-energy
+OUTPUT: in 2025, clean generation equaled/exceeded published CAISO demand for 1,856.08 total hours, on 279 days; maximum daily duration 11.3 h.
+BOUNDARY_RED_TEAM: CEC explicitly says this informational metric uses 5-minute CAISO data; published demand does NOT include pumping loads or electricity used to charge batteries and may not represent actual retail sales. Therefore it CANNOT prove 100% clean delivered retail service, annual adequacy, zero fossil dependence, or low system cost.
+CROSS_SOURCE: CEC reports 21,112 MW of battery storage resources serving Californians as of Aug 7 2026; nearly 16,000 MW from 310 in-state utility systems, ~2,000 MW utility batteries in NV/AZ serving CAISO, and ~3,000 MW behind-the-meter.
+URL_2: https://www.energy.ca.gov/news/2026-08/california-surpasses-21000-megawatts-battery-resources-supporting-states
+BOUNDARY_NOTE: CEC survey states beginning June 2026 statewide displayed total includes neighboring-state utility batteries serving CAISO; totals can change with data verification.
+URL_3: https://www.energy.ca.gov/data-reports/energy-almanac/california-electricity-data/california-energy-storage-system-survey
+
+EVIDENCE_ID: E-EGC-044-007
+CLAIM_ID: CLAIM-EGC-044-EGS-COMMERCIAL-OPERATION
+EVIDENCE_CLASS: EXTERNAL_FACT / COMPANY_REPORTED_OPERATION
+SOURCE: Fervo Energy 8-K furnished press-release exhibit hosted by U.S. SEC
+SOURCE_DATE: 2026-10-01; claimed COD 2026-09-30
+URL: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/exhibit991pressrelease10126.htm
+SEC_CONTEXT: https://www.sec.gov/Archives/edgar/data/1853868/000162828026064103/frvo-20261001.htm
+OUTPUT: company states first Cape Station GeoBlock reached contractual commercial operation and achieved 33 MW net power; synchronized September 24 2026 and declared COD September 30 2026.
+PROVENANCE_ATTACK: SEC Form 8-K says the press release is furnished, not deemed filed for Section 18 purposes. Earlier June 30 2026 company filing explicitly stated it had not yet commenced large-scale commercial operations and had not yet demonstrated consistent, reliable and economic performance at scale.
+EARLIER_RISK_SOURCE: https://www.sec.gov/Archives/edgar/data/1853868/000162828026056457/frvo-20260630.htm
+CONCLUSION: commercial-operation status and company-reported 33 MW net output materially upgrade EGS maturity evidence, but do NOT validate long-run capacity factor, reservoir thermal durability, O&M, lifecycle cost, or multi-GW scalability.
+TRUTH_CLASS: EXTERNAL_FACT/COMPANY_REPORTED; NOT independent MEASUREMENT.
+LONG_RUN_PERFORMANCE: UNKNOWN.
+
+ADVERSARIAL VALIDATION MATRIX:
+- Mature U.S. nuclear: fleet CF strongly evidenced; global availability independently evidenced; cost/new-build schedule still separate.
+- Mature geothermal: fleet CF evidenced; conventional fleet evidence must not be silently transferred to EGS economics/resource scaling.
+- Hydro: fleet output evidenced; site/resource/geographic expansion limits remain candidate-specific.
+- Onshore-dominated U.S. wind fleet: fleet CF evidenced; offshore long-run U.S. fleet evidence remains immature.
+- Utility PV: fleet CF/direct generation evidenced; rapid growth exposes naive CF*capacity reconstruction boundary issue.
+- Battery: deployment at tens-of-GW scale evidenced; energy-duration/long-duration adequacy inference from MW alone FALSIFIED.
+- Solar/wind/storage portfolio: California demonstrates many hours of high clean-generation matching at grid scale, but the metric's excluded charging/pumping load prevents using it as full delivered-system proof.
+- EGS: 33 MW company-reported commercial operation exists; extrapolation to 100s MW/GW, 24/7 lifetime performance or low cost remains NOT_VERIFIED.
+
+RED_TEAM RESULTS:
+1. NAMEPLATE_MW_AS_ENERGY: FALSIFIED.
+2. BATTERY_MW_AS_MWH_OR_DURATION: FALSIFIED.
+3. CAPACITY_FACTOR_AS_FIRM_CAPACITY: FALSIFIED.
+4. CALIFORNIA_CLEAN_MATCHING_HOURS_AS_FULL_RETAIL_100_PERCENT: FALSIFIED by source boundary.
+5. CONVENTIONAL_GEOTHERMAL_CF_AS_EGS_LONG_RUN_CF: REJECTED.
+6. 33_MW_EGS_COD_AS_LONG_RUN_ECONOMIC_SCALE_PROOF: REJECTED.
+7. PLANNED_OFFSHORE_CAPACITY_AS_OPERATING_EVIDENCE: REJECTED.
+8. NAIVE_ROUNDED_CF_TIMES_ANNUAL_AVERAGE_CAPACITY_AS_EXACT_GENERATION_FOR_FAST_GROWTH: REJECTED.
+
+CLAIM_GRAPH:
+CLAIM-EGC-044-MATURE-FLEET-CF: SUPPORTED / 2025_PRELIMINARY.
+CLAIM-EGC-044-NUCLEAR-AVAILABILITY: SUPPORTED.
+CLAIM-EGC-044-OFFSHORE-WIND-OPERABILITY: SUPPORTED; LONG_RUN_US_FLEET_PERFORMANCE UNKNOWN.
+CLAIM-EGC-044-BATTERY-DEPLOYMENT: SUPPORTED; DURATION/SEASONAL_ADEQUACY UNKNOWN.
+CLAIM-EGC-044-CALIFORNIA-INTEGRATION: SUPPORTED_ONLY_WITH_STATED_BOUNDARY.
+CLAIM-EGC-044-EGS-COMMERCIAL-OPERATION: COMPANY_REPORTED_SUPPORTED; LONG_RUN_INDEPENDENT_VALIDATION UNKNOWN.
+CLAIM-EGC-044-SOLAR-RECONSTRUCTION: METHOD_BOUNDARY_MISMATCH; exact generator-level arbitration OPEN.
+
+OPEN GAPS / NEXT HIGHEST-INFORMATION ACTION:
+- retrieve operational battery MWh/duration/throughput/efficiency evidence, not just MW;
+- retrieve technology-specific 2025 natural-gas combined-cycle fleet CF as dispatchable baseline anchor;
+- seek independent/operator-level long-run EGS measurements as they become available; current Cape commercial duration is days, not years;
+- seek U.S./global offshore wind measured fleet CF/availability with comparable operational boundary;
+- independent reviewer reproduces CALC-EGC-044-001 and audits source/boundary classifications.
+
+STATUS:
+JOB-EGC-044-OPERATIONS-EVIDENCE-C1-20261006 remains EXECUTING.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
