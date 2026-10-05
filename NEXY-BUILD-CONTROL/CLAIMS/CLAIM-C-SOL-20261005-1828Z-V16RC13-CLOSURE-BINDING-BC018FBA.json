@@ -16,6 +16,12 @@
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "TARGET_INTEGRATION": "NONE",
   "CONTROL_MUTATION": "APPEND_ONLY_REVIEW_AND_FINDING_EVIDENCE",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Independently verify whether the declared canonical closure binding is actually tree-reachable canonical control state and whether its exact identities/composition satisfy the prior review handoff."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Independently verify whether the declared canonical closure binding is actually tree-reachable canonical control state and whether its exact identities/composition satisfy the prior review handoff.",
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-1828Z-V16RC13-CLOSURE-BINDING-BC018FBA",
+  "REVIEW_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REVIEWS/90/REVIEW-C-SOL-20261005-1828Z-V16RC13-CLOSURE-BINDING-BC018FBA.json",
+  "VERDICT": "CHANGES_REQUIRED_CANONICAL_REACHABILITY_FAILED",
+  "FINDING_ID": "FINDING-V16RC13-CLOSURE-CANONICAL-BINDING-UNREACHABLE-BC018FBA",
+  "REVIEW_COMMIT": "0c1fee1b60d83326a31a27e1d05814f4f0073632",
+  "FINDING_COMMIT": "3028d7cbd8ee270118f542df67ff7f2f2d62bdf4"
 }
