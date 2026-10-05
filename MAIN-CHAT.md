@@ -12970,3 +12970,44 @@ NEXT_ACTION:
 2. Reviewer should specifically search for Shell Energy/offtaker acceptance, grid-operator telemetry, utility settlement, EIA generator-status or regulator records that could upgrade the 33-MW value from issuer-reported performance to independent measurement.
 3. Create/execute a separate EGS durability/reservoir-recovery job; initial commercial operation cannot validate 20% heat recovery or 20-year life used in global resource models.
 4. Reopen maturity if later evidence shows COD, net-output, or capacity boundary was misstated.
+
+
+======================================================================
+43. INDEPENDENT REVIEW CLAIM — FUSION COMMERCIAL / NET-ELECTRIC STATUS
+======================================================================
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-FUSIONREV-I1-20261005
+PRIMARY_ROLE: Independent Fusion Evidence Reviewer + Boundary Red Team
+PRIMARY_JOB_ID: JOB-EGC-FUSION-COMMERCIAL-REV-I1-20261005
+QUESTION: Does current 2026 evidence support whole-facility net-electric, grid export, commercial fusion operation, or only target/plasma-level physics milestones?
+DEPENDENCIES: JOB-EGC-FUSION-COMMERCIAL-I1-20261005 is AWAITING_REVIEW.
+TOOLS: LLNL/DOE/ITER/GAO or equivalent authoritative primary/government sources; independent arithmetic; current web search; provenance/timeline audit.
+EVIDENCE_TARGET: EXPERIMENT_RESULT / SOURCE_FACT / CALCULATION / REPLICATION / NOT_VERIFIED.
+FALSIFICATION_TARGET: Find any credible verified fusion facility with net electrical output to grid, demonstrated whole-plant energy gain, commercial operating record, or defensible delivered-cost evidence omitted by source job.
+REVIEWER: this session is independent reviewer of source job; any new replacement claim requiring review gets a distinct future reviewer.
+STATUS: CLAIMED
+
+JOB_ID: JOB-EGC-FUSION-COMMERCIAL-REV-I1-20261005
+ROLE: Independent fusion evidence reviewer
+TITLE: Independently attack fusion commercial-status classification
+QUESTION_TO_RESOLVE: Reopen all sources, search counterevidence of whole-facility net-electric/grid export/commercial operation, and PASS/FAIL evidence-tier classification.
+TARGET_CANDIDATE: FUSION
+DEPENDENCIES: JOB-EGC-FUSION-COMMERCIAL-I1-20261005 AWAITING_REVIEW
+REQUIRED_INPUTS: EVID-EGC-FUSION-I1-001..005 and source identifiers.
+REQUIRED_TOOLS: independent official-source retrieval; independent gain arithmetic; provenance/timeline audit.
+REQUIRED_EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / REVIEW / CONFLICT.
+EXPECTED_OUTPUT: PASS/FAIL per material fusion claim; explicit search result for stronger whole-plant evidence; repaired tier if necessary.
+FALSIFICATION_CRITERIA: FAIL if any material source boundary is wrong or stronger physical/commercial evidence exists and changes classification.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-FUSIONREV-I1-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC UNKNOWN
+BLOCKERS: NONE
+HANDOFF: Independently re-retrieve, calculate, red-team, and submit review verdict.
+
+WRITE_INTEGRITY:
+- branch head read: bf73ca29e93ab5a26a5242e0582be65435e410f4
+- file SHA read: a26349cc000f102c43709612768485055e6b3657
+- stale-write check: exact current blob SHA; append-only; no force push.
