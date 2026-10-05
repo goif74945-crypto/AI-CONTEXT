@@ -1523,3 +1523,194 @@ BRANCH_HEAD_AT_CLAIM: a1253f5061f17892dae1d06ceb4ce1ea6fa3a3f2
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 5733c16c18281c5a6d1d0bb769922749b596af7c
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+52. RESOURCE / MATERIAL / SUPPLY-CHAIN SCALING — INTERIM EVIDENCE
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0310+07-RSC1
+PRIMARY_JOB_ID: JOB-EGC-044-RESOURCE-SCALE-C1-20261006
+STATUS: EXECUTING
+SELF_VERIFICATION: FORBIDDEN
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+SCOPE OF THIS EVIDENCE DROP:
+First-pass scaling screen for observed deployment throughput plus high-risk material/fuel-cycle bottlenecks. This is NOT a final scalability verdict and does NOT rank a winner. Land/site potential, full technology-specific material-intensity matrices, grid/storage build rates and manufacturing-capacity decomposition remain open work.
+
+EVIDENCE_ID: EGC-044-E01
+CLAIM_ID: CLAIM-EGC-044-DEPLOY-THROUGHPUT
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: IRENA, Renewable Capacity Statistics 2026 / 1 Apr 2026 release
+SOURCE_DATE: 2026-04-01
+URL: https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+METHOD: official statistical release, cross-checked against IRENA publication methodology.
+OUTPUT:
+- 2025 renewable additions = 692 GW.
+- Solar additions = 511.2 GW total solar, 510.3 GW PV.
+- Wind additions = 158.7 GW.
+- Renewable hydro excluding pumped hydro additions = 18.4 GW.
+- Geothermal additions = 0.3 GW.
+- IRENA capacity metric = maximum net generating capacity; generally installed and connected at year end.
+LIMITATION: observed 2025 additions are a throughput datum, not a forecast or proof of economically sustainable future growth.
+REPLICATION_STATUS: SOURCE_CROSS_CHECK_PASS; independent session review pending.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: EGC-044-E02
+CLAIM_ID: CLAIM-EGC-044-CAPACITY-BOUNDARY
+EVIDENCE_CLASS: CONFLICT_RESOLVED_BY_BOUNDARY
+SOURCES:
+1) IRENA Renewable Capacity Statistics 2026
+URL: https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026
+2) IEA-PVPS Trends in Photovoltaic Applications 2026
+URL: https://iea-pvps.org/trends_reports/trends-2026/
+3) IEA-PVPS Trends 2025 methodology text
+URL: https://www.iea-pvps.org/wp-content/uploads/2025/10/IEA-PVPS_Trends_2025-.pdf
+OUTPUT:
+- IRENA reports ~510.3 GW PV additions in 2025 under maximum-net-generating-capacity statistics.
+- IEA-PVPS reports ~690 GW PV installed in 2025 and 2.96 TW cumulative at end-2025.
+- PVPS methodology reports nominal PV capacity in W/Wp/Wdc and converts AC-reported capacity to DC where necessary; DC/AC differences can be material.
+CONFLICT_ID: CONFLICT-EGC-044-CAPACITY-2026-01.
+ARBITRATION: values use different capacity conventions/system boundaries; DO NOT average or combine them. Cross-technology throughput normalization in this job uses IRENA's consistent maximum-net-capacity series; PV-specific manufacturing/material calculations may use PVPS DC units only if intensity units are DC-consistent.
+REVIEW_STATUS: PENDING independent review.
+
+EVIDENCE_ID: EGC-044-E03
+CLAIM_ID: CLAIM-EGC-044-MINERAL-SUPPLY-RISK
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: IEA Global Critical Minerals Outlook 2026
+SOURCE_DATE: 2026-07-16
+URL: https://www.iea.org/reports/global-critical-minerals-outlook-2026
+URL_OUTLOOK: https://www.iea.org/reports/global-critical-minerals-outlook-2026/outlook
+METHOD: latest IEA project-pipeline supply/demand outlook.
+OUTPUT:
+- Critical-mineral demand almost doubles to 2040 in STEPS; lithium grows >3x, nickel/graphite/rare-earth demand +50-90%; copper has the largest absolute growth, +~7 Mt by 2040.
+- Base-case announced-project pipeline still implies ~25% copper supply gap in 2035 in STEPS.
+- Midstream/downstream diversification lags mining; outside dominant suppliers, rare-earth refining/separation and magnet manufacturing are materially below announced mined capacity.
+- 2025 refining concentration reached record levels for many minerals; dominant suppliers accounted for >3/4 of refined-supply growth over 2023-2025.
+LIMITATION: scenario/project-pipeline evidence; not a physical-reserve exhaustion claim.
+CONCLUSION: annual production/refining/manufacturing throughput and concentration are candidate-neutral scaling risks distinct from geological resource totals.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: EGC-044-E04
+CLAIM_ID: CLAIM-EGC-044-LITHIUM-RESERVE-VS-THROUGHPUT
+EVIDENCE_CLASS: EXTERNAL_FACT + CALCULATION
+SOURCE: USGS Mineral Commodity Summaries 2026, Lithium
+SOURCE_DATE: 2026-02
+URL: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-lithium.pdf
+INPUTS:
+- 2025 world mine production = 290,000 t Li (excluding withheld US production in rounded world total per USGS note).
+- world reserves = 37,000,000 t Li.
+- measured+indicated world resources ~150,000,000 t Li.
+CALCULATION:
+reserve_to_2025_production_ratio = 37,000,000 / 290,000 = 127.586.
+resource_to_2025_production_ratio = 150,000,000 / 290,000 = 517.241.
+OUTPUT: simple no-growth ratios ~128 y reserves/current-production and ~517 y resources/current-production.
+LIMITATION: these ratios are NOT forecasts of depletion time; they ignore demand growth, price, grade, project lead times, processing, recycling and reserve reclassification. They demonstrate why 'resources exist' cannot substitute for throughput analysis.
+REPLICATION_STATUS: SAME_SESSION_NUMERICAL_CHECK_PASS / INDEPENDENT_SESSION_REQUIRED.
+
+EVIDENCE_ID: EGC-044-E05
+CLAIM_ID: CLAIM-EGC-044-PV-SILVER-STRESS
+EVIDENCE_CLASS: EXTERNAL_FACT + CALCULATION
+SOURCES:
+1) IEA-PVPS Trends in Photovoltaic Applications 2025
+URL: https://iea-pvps.org/trends_reports/trends-2025/
+2) USGS Mineral Commodity Summaries 2026, Silver
+URL: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-silver.pdf
+3) IEA-PVPS Primary and Secondary Material Flows for Future Global Silicon-PV Deployment, Sep 2026
+URL: https://iea-pvps.org/key-topics/t12-material-flows-global-deployment-silicon-systems-2026/
+SOURCE_FACTS:
+- IEA-PVPS reports 2024 PV silver use ~197.6 million troy oz, ~17% of total global silver demand.
+- 2024 PV cell silver intensity examples: PERC 7-8 mg/W, TOPCon 12-16 mg/W, HJT 17-20 mg/W.
+- USGS world silver mine production 2024 = 25,300 t; 2025 = 26,000 t; world reserves = 610,000 t.
+- IEA-PVPS 2026 material-flow study models 29-75 TWp PV by 2050; copper metallization substitution can materially reduce silver pressure; cumulative PV tin demand could equal 30-64% of estimated global tin reserves under modeled cases; EOL PV silver recovery could potentially supply 30-45% of cumulative PV-sector silver demand 2025-2050.
+CALCULATION:
+197.6e6 troy_oz * 31.1034768 g/oz = 6,146.05 t silver.
+6,146.05 / 25,300 = 24.29% of 2024 mine production.
+OUTPUT: PV silver use is already large relative to annual primary mine flow, but silver is NOT yet proven as an unrecoverable hard ceiling because intensity reduction, copper substitution and recycling are evidenced mitigation pathways.
+FALSIFICATION_RESULT: 'PV can scale to tens of TW with unchanged present silver intensity and no substitution/recycling analysis' = REJECTED.
+REPLICATION_STATUS: SAME_SESSION_RECOMPUTATION_PASS / INDEPENDENT_SESSION_REQUIRED.
+
+EVIDENCE_ID: EGC-044-E06
+CLAIM_ID: CLAIM-EGC-044-WIND-RARE-EARTH-DESIGN-DEPENDENCE
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: US DOE, Rare Earth Permanent Magnets Supply Chain Deep Dive Assessment
+URL: https://www.energy.gov/sites/default/files/2024-12/Neodymium%2520Magnets%2520Supply%2520Chain%2520Report%2520-%2520Final%5B1%5D.pdf
+OUTPUT:
+- Permanent-magnet synchronous generators are used in some wind designs, especially direct drive/offshore.
+- DOE source reports typical permanent-magnet mass ~2.7-3.2 t/MW for those systems.
+- Common DFIG/geared and other generator architectures can avoid rare-earth permanent magnets.
+CONCLUSION: rare-earth exposure is design-dependent, not an inherent per-MW requirement of all wind. Any wind scaling model that applies permanent-magnet intensity to 100% of wind without drivetrain market-share evidence is FALSIFIED.
+LIMITATION: magnet-intensity source is not 2026 market-share evidence; current architecture shares remain an OPEN input.
+REVIEW_STATUS: PENDING.
+
+EVIDENCE_ID: EGC-044-E07
+CLAIM_ID: CLAIM-EGC-044-NUCLEAR-FUEL-CYCLE
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCES:
+1) OECD-NEA/IAEA Uranium 2026 release
+URL: https://www.oecd-nea.org/jcms/pl_121582/adequate-uranium-resources-available-but-sustained-investment-essential-to-support-global-nuclear-capacity-growth
+2) IEA Global Critical Minerals Outlook 2026 executive summary
+URL: https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary
+3) IEA Global Energy Review 2026 nuclear
+URL: https://www.iea.org/reports/global-energy-review-2026/technology-nuclear
+SOURCE_FACTS:
+- NEA/IAEA: as of 1 Jan 2025, 378 GWe operating commercial reactors required ~64,500 tU/y; projected 2050 requirements ~84,800-143,900 tU/y.
+- identified uranium resources recoverable below USD 260/kgU exceed 8.1 MtU and are assessed sufficient even for the high projected uranium demand through 2050.
+- new uranium mine development commonly requires ~15-20 years.
+- IEA 2026 identifies tighter near-term bottlenecks in conversion and future enrichment, with top three countries accounting for ~3/4 uranium mining and ~70% conversion/enrichment capacity.
+- 2025 nuclear additions were 3 GW gross and 3 GW retirements; 12.2 GW of construction starts.
+CONCLUSION: geological uranium resource quantity is NOT presently the leading physical ceiling through 2050 under official projections; mine lead time, conversion/enrichment concentration, financing/construction throughput and reactor build rate are higher-priority scaling constraints.
+REVIEW_STATUS: PENDING.
+
+CALC_ID: CALC-EGC-044-DEPLOY-01
+EVIDENCE_CLASS: CALCULATION / STRESS_TEST_ONLY
+QUESTION: At observed 2025 annual additions, how long would linear continuation take to add enough nameplate capacity for 1 TW average output under explicit illustrative capacity-factor ranges?
+FORMULA:
+years = 1000 GW_average / (annual_addition_GW_per_y * CF).
+INPUTS:
+IRENA additions: PV 510.3; wind 158.7; hydro 18.4; geothermal 0.3 GW/y.
+IEA nuclear gross commissioning: 3.0 GW/y.
+ASSUMPTION CF RANGES (illustrative, NOT source facts for final ranking):
+PV 0.20-0.30; wind 0.35-0.50; hydro 0.40-0.60; geothermal 0.80-0.95; nuclear 0.85-0.95.
+OUTPUT (best-to-worst within stated CF range):
+PV 6.53-9.80 y;
+wind 12.60-18.00 y;
+hydro 90.58-135.87 y;
+geothermal 3508.77-4166.67 y;
+nuclear 350.88-392.16 y.
+INTERPRETATION: this is a historical-throughput stress test, not a forecast and not a technology merit ranking. Rates can accelerate/decline; capacity factors are geography/fleet dependent; grid/storage/construction supply chains are omitted.
+FALSIFICATION_TARGET: any claim that 2025 deployment throughput alone proves future mission scalability = FALSIFIED.
+REPLICATION_STATUS: SAME_SESSION_PYTHON_PASS / INDEPENDENT_SESSION_REQUIRED.
+
+INTERIM SCALING STATES:
+- SOLAR_PV: HIGH observed manufacturing/deployment throughput; MATERIAL_RISK = silver/tin/copper processing and substitution/recycling path; GRID/STORAGE/LAND not yet resolved.
+- WIND: HIGH but materially lower observed additions than PV; RARE_EARTH_RISK = architecture-dependent, not universal; offshore/logistics/material throughput open.
+- HYDRO: mature but much lower current additions; SITE/ENVIRONMENT/GEOGRAPHY likely material and remains OPEN.
+- GEOTHERMAL: current global addition rate tiny relative to TW-scale target; technical resource may be large but deployment/manufacturing/drilling/site-rate evidence remains OPEN.
+- NUCLEAR_FISSION: uranium resource base through 2050 is not the primary official-resource blocker; conversion/enrichment concentration + long mining/project/reactor lead times + low current commissioning rate are material.
+- STORAGE_COUPLED_SYSTEMS: critical-mineral exposure is material, especially lithium/graphite/copper supply chains, but chemistry-specific intensity and non-lithium alternatives are OPEN.
+- PORTFOLIO: likely mitigates single-material and single-site bottlenecks but must be demonstrated under common R_STAR and FSRC_ND, not assumed.
+
+NEW_OPEN_JOBS:
+JOB-EGC-044A-PV-MATERIALS-20261006
+QUESTION: build current technology-specific PV material intensity matrix (Ag/Cu/Al/Si/Sn where evidenced), 29-75 TWp scenarios, substitution and recycling sensitivities; determine if any material becomes unrecoverably binding.
+STATUS: OPEN
+REVIEWER_JOB_ID: JOB-EGC-044A-PV-MATERIALS-REV-20261006
+
+JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006
+QUESTION: normalize grid + storage mineral/material requirements per delivered TWh and reliability service under chemistry alternatives; separate energy-duration from power-capacity materials.
+STATUS: OPEN
+REVIEWER_JOB_ID: JOB-EGC-044B-GRID-STORAGE-MATERIALS-REV-20261006
+
+JOB-EGC-044C-SITE-LAND-WATER-20261006
+QUESTION: quantify hydro/geothermal/solar/wind site, land and water constraints under common delivered-energy boundary and distinguish technical/theoretical/economic potential.
+STATUS: OPEN
+REVIEWER_JOB_ID: JOB-EGC-044C-SITE-LAND-WATER-REV-20261006
+
+PRIMARY_JOB_STATUS:
+JOB-EGC-044-RESOURCE-SCALE-C1-20261006 remains EXECUTING.
+REASON: first-pass evidence narrows key bottlenecks but does not close candidate-specific material intensities, site constraints or storage/grid scaling.
+NEXT_HIGHEST_VALUE_ACTION: JOB-EGC-044A-PV-MATERIALS-20261006 because PV is the highest observed deployment-throughput baseline and silver/tin scaling sensitivity is already quantitatively material.
+BRANCH_HEAD_BEFORE_WRITE: 9e0817fbe438b6e6f8f92dfad75c7b1d4052071a
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 83b3d7545db7588450edbf7127f810d3a6bf2080
