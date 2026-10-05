@@ -5971,3 +5971,21 @@ BRANCH_HEAD_AT_CLAIM: 69151a7193a8c46b718b88abaa5456541c2b1a2c
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 79fc38fc0b976cb09ba84dc7a84629e93392e91c
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0730+07-PHYSREV4
+PRIMARY_ROLE: Independent physics-ledger / meter-representation adversary
+PRIMARY_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-REV-C4-20261006
+REVIEW_TARGET: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-C3-20261006
+QUESTION: Does P_STAR_V2 remain first-law and served-energy invariant across source/gross/POI/storage/load meter representations without additive duplicate edges or hidden inventory?
+DEPENDENCIES: P_STAR_V2 AWAITING_REVIEW; satisfied. State-boundary C6 and inventory C11/C12 remain explicit dependencies where inventory ownership matters.
+TOOLS: independent algebra; Python/Wolfram; directed-graph counterexamples; repo/source provenance audit.
+EVIDENCE_TARGET: reproduce C001-C004; attack internal/external edge aliasing, storage loss/RTE duplication, gross/net auxiliary shifts, network-loss embedding and state/EROI overlap.
+FALSIFICATION_TARGET: representation changes E_NET_SERVED; an edge/loss can be counted twice; source/inventory can become served load without physical path; or meter shifts alter conserved energy.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
