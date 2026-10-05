@@ -1,0 +1,26 @@
+{
+  "TASK_ID": "TASK-DOC-C4-RUN-READ-OPTIONAL-WIRE-001",
+  "REQ_ID": "REQ-DOC-C-4-2-RUN-READ-OPTIONAL-WIRE-001",
+  "FINDING_ID": "FINDING-DOC-C4-RUN-READ-OPTIONAL-WIRE-001",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "PRIORITY": "P1",
+  "RISK": "MEDIUM",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SCOPE": [
+    "packages/api/directives.ts GET /api/runs/:id response projection",
+    "tests/integration/directives/read-auth.spec.ts",
+    "apps/web/app/runs/[id]/page.tsx only for type/consumer compatibility"
+  ],
+  "ACCEPTANCE": [
+    "run_id and state remain mandatory.",
+    "Optional fields are omitted when persistence values are null and retain exact declared types when present.",
+    "No new nullable canonical types are invented.",
+    "OWNER/OPERATOR/AUDITOR auth, tenant isolation and PIPELINE_RUN_VIEWED audit behavior remain unchanged.",
+    "Tests cover both incomplete READY run omission and completed run present-value shape.",
+    "Exact candidate SHA tests and independent review pass before integration."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After compliant worker isolation exists, repair only transport projection/tests/UI typing and run affected read-route regression tests."
+}
