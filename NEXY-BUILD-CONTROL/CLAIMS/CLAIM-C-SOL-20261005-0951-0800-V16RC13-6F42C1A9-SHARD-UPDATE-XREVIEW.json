@@ -1,0 +1,39 @@
+{
+  "TASK_ID": "CTRL-V16RC13-SHARD-UNIVERSE-UPDATE-INDEPENDENT-XREVIEW-6F42C1A9",
+  "TASK_KEY": "f3f970bd0f1fa840ce077c6456a1c46291852d0f45b40aedadd03bf345073172",
+  "TASK_IDENTITY": {
+    "failure_signature": "U1_U2_SHARD_SPLIT_BRAIN_STALE_WRITER_AND_CLOSURE_OMISSION",
+    "intent": "INDEPENDENT_CROSS_VALIDATION",
+    "mission_generation": "PREGENESIS_V16_RC1_3",
+    "requirements": [
+      "STATIC_PROTOCOL_P0_SHARD_UNIVERSE_UPDATE_SAFETY"
+    ],
+    "semantic_scope": "FINDING-V16RC13-SHARD-UNIVERSE-UPDATE-SPLIT-BRAIN-DE64F6B9",
+    "systems": [
+      "CONTROL_PLANE",
+      "SHARD_UNIVERSE",
+      "MEMBERSHIP",
+      "LEASES",
+      "CLOSURE"
+    ],
+    "target_authority_key": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93"
+  },
+  "CLAIM_ID": "CLAIM-C-SOL-20261005-0951-0800-V16RC13-6F42C1A9-SHARD-UPDATE-XREVIEW",
+  "SCOPE": "INDEPENDENT_CROSS_VALIDATION_STATIC_PROTOCOL_P0_SHARD_UNIVERSE_UPDATE",
+  "OWNER_CHAT": "C-SOL-20261005-0951-0800-V16RC13-6F42C1A9",
+  "MEMBERSHIP_ID": "PRE-b0b3df0a14b90114a13e8996451cc36e",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "REVIEWED_FINDING_ID": "FINDING-V16RC13-SHARD-UNIVERSE-UPDATE-SPLIT-BRAIN-DE64F6B9",
+  "REVIEW_OBJECTIVES": [
+    "reproduce or disprove U1-to-U2 split-brain counterexample from V16-RC1.3 normative clauses",
+    "search canonical control state for a post-activation SHARD_UNIVERSE_UPDATE protocol that closes the gap",
+    "verify whether membership/lease/revalidation bindings invalidate stale shard routing authority",
+    "verify closure cannot omit records stranded in an old shard universe",
+    "publish a fail-closed independent verdict with no product mutation"
+  ],
+  "DUPLICATION_MODE": "INTENTIONAL_INDEPENDENT_CROSS_VALIDATION_ALLOWED_BY_EXCLUSIVE_TASK_EXCEPTION",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "ACTIVE"
+}
