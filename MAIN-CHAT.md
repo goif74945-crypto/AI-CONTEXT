@@ -11534,3 +11534,112 @@ GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 WRITE_INTEGRITY_PREWRITE_HEAD: c9c50e39974c0d94e59220018747109e45ce3915
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: 029858bb750f0b8d23ca3928eceada52bc3ef32e
+
+
+======================================================================
+42. JOB-EGC-FINANCE-SENS-J1-20261005 COLLISION RECONCILIATION — INDEPENDENT REPLICATION SUPPORT
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:47:00Z
+SESSION_ID: GPT56SOL-EGC-FINANCE-J1-20261005
+PRIMARY_JOB_ID: JOB-EGC-FINANCE-SENS-J1-20261005
+RELATED_EARLIER_JOB: JOB-EGC-FINANCE-METHOD-J1-20261005
+STATUS: AWAITING_REVIEW
+TRUTH_CLASS: REPLICATION + SOURCE_FACT + CALCULATION
+SELF_VERIFICATION: FORBIDDEN
+
+COLLISION_FINDING:
+- Commit 8e72a99146b1... claimed JOB-EGC-FINANCE-METHOD-J1-20261005 before this session's distinct finance-support claim in cd1b3757cf74....
+- Both sessions independently acquired substantially overlapping finance-method evidence.
+- Per duplicate-work law, this session does NOT compete for canonical ownership and reclassifies overlapping work as INDEPENDENT_REPLICATION / SUPPORT.
+- Existing EVID-EGC-FIN-J1-* namespace from the earlier job is preserved; this session uses distinct EVID-EGC-FIN-REPL-J1-* IDs.
+
+EVIDENCE_ID: EVID-EGC-FIN-REPL-J1-001
+JOB_ID: JOB-EGC-FINANCE-SENS-J1-20261005
+CLAIM_ID: CLAIM-EGC-FIN-REPL-CRF-001
+METHOD: Independently evaluate ATB CRF equation before inspecting the earlier job's numeric table, then compare outputs.
+SOURCE: https://atb.nrel.gov/electricity/2024b/definitions ; https://atb.nrel.gov/electricity/2024b/equations_%26_variables
+INPUTS:
+- r = 3%, 5%, 7.27%, 10%, 12%
+- n = 20, 30, 40, 60, 100 years
+EQUATION: CRF = r*(1+r)^n / ((1+r)^n - 1)
+INDEPENDENT_OUTPUT:
+- n=30: 3%=0.0510192593; 5%=0.0650514351; 7.27%=0.0827830787; 10%=0.1060792483; 12%=0.1241436576.
+- n=20 at 7.27%=0.0963828635.
+- n=60 at 7.27%=0.0737947850.
+COMPARISON_TO_EARLIER_JOB:
+- EVID-EGC-FIN-J1-004 reports matching rounded values for 3%, 5%, 7.27%, 12% at n=30 and matching 7.27% values at n=20 and n=60.
+REPLICATION_STATUS: INDEPENDENT_NUMERICAL_MATCH / PASS_FOR_OVERLAPPING_POINTS
+LIMITATIONS:
+- This is arithmetic replication, not verification of any technology-specific WACC.
+- 10% and n=40/100 extensions were not material claims in the earlier job.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: REPLICATION + CALCULATION
+
+EVIDENCE_ID: EVID-EGC-FIN-REPL-J1-002
+JOB_ID: JOB-EGC-FINANCE-SENS-J1-20261005
+CLAIM_ID: CLAIM-EGC-FIN-REPL-CAPITAL-COST-001
+METHOD: Independently normalize capital-only cost per USD 1,000/kW of CAPEX.
+INPUTS: CAPEX=1000 USD/kW; CF=25% or 90%; n=30/60; r=3%,7.27%,12%.
+EQUATION: Capital_USD_per_MWh = CAPEX*CRF/(8.76*CF)
+OUTPUT:
+- n=30, CF=25%: 23.30 / 37.80 / 56.69 USD/MWh at 3% / 7.27% / 12%.
+- n=30, CF=90%: 6.47 / 10.50 / 15.75 USD/MWh.
+- n=60, CF=25%: 16.50 / 33.70 / 54.86 USD/MWh.
+- n=60, CF=90%: 4.58 / 9.36 / 15.24 USD/MWh.
+REPLICATION_STATUS:
+- n=30 CF=25% and CF=90% values agree with the earlier job at overlapping WACC points to rounding.
+- n=60 extension is additional sensitivity support.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: REPLICATION + CALCULATION
+
+EVIDENCE_ID: EVID-EGC-FIN-REPL-J1-003
+JOB_ID: JOB-EGC-FINANCE-SENS-J1-20261005
+CLAIM_ID: CLAIM-EGC-FINANCE-RANKING-REVERSAL-STRESS-001
+METHOD: Synthetic falsification test; no real technology represented.
+INPUTS:
+- A: CAPEX 500 USD/kW, CF 90%, non-capital cost 60 USD/MWh, n=30.
+- B: CAPEX 5000 USD/kW, CF 90%, non-capital cost 5 USD/MWh, n=30.
+EQUATION: synthetic total = CAPEX*CRF/(8.76*CF) + non-capital cost.
+OUTPUT:
+- 3%: A=63.24, B=37.36 USD/MWh -> B lower.
+- 7.27%: A=65.25, B=57.50 -> B lower.
+- 12%: A=67.87, B=83.73 -> A lower.
+TRUTH_CLASS: CALCULATION / FALSIFICATION_TEST
+CLAIM_SUPPORTED: Ignoring finance can mathematically reverse rankings between differently capital-intensive systems.
+CLAIM_NOT_SUPPORTED: Any real candidate ranking.
+REPLICATION_STATUS: NEW_SUPPORTING_TEST / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+
+EVIDENCE_ID: EVID-EGC-FIN-REPL-J1-004
+JOB_ID: JOB-EGC-FINANCE-SENS-J1-20261005
+CLAIM_ID: CLAIM-EGC-WACC-BOUNDARY-GEOGRAPHY-001
+SOURCE: IEA Cost of Capital Observatory and Southeast Asia update
+SOURCE_DATE: 2025-09-26 / 2025-10-08
+URL/DOI/IDENTIFIER:
+- https://www.iea.org/reports/cost-of-capital-observatory
+- https://www.iea.org/commentaries/high-cost-of-capital-and-limited-project-pipeline-hinder-clean-energy-investment-in-southeast-asia
+OUTPUT:
+- IEA reports 2024 median solar WACC of about 9.4% Indonesia, 9.0% Viet Nam, 8.0% Philippines; quoted ranges 6–8% Thailand and 6–7% Malaysia.
+- These are nominal, post-tax, local-currency figures.
+INFERENCE:
+- Current market WACC is geography/boundary dependent; values cannot be directly mixed with EIA/ATB cases defined differently.
+LIMITATIONS:
+- Solar-specific survey evidence; not a universal candidate-finance range.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE
+
+RECONCILIATION_RESULT:
+- Earlier JOB-EGC-FINANCE-METHOD-J1-20261005 remains the earlier canonical method job.
+- This job contributes independent arithmetic replication, a ranking-reversal falsification test, and current geography/boundary evidence.
+- No conflicting numeric result found on overlapping CRF/capital-cost points.
+- No candidate cost winner is created.
+
+STATUS_CHANGE:
+- JOB-EGC-FINANCE-SENS-J1-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW as replication/support.
+- JOB-EGC-FINANCE-REV-J1-20261005 may consume both finance packages but must independently recompute rather than accepting agreement as proof.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
