@@ -1,0 +1,133 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_FINDING_UNIVERSE_CONTRACT_V2",
+  "SUPERSEDES": "NEXY_V16_RC1_3_CANONICAL_FINDING_UNIVERSE_CONTRACT_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SNAPSHOT_BINDING": [
+    "CONTROL_COMMIT_SHA",
+    "CONTROL_TREE_SHA",
+    "PRIMARY_FINDINGS_TREE_SHA"
+  ],
+  "PRIMARY_ROOT": "NEXY-BUILD-CONTROL/FINDINGS",
+  "PRIMARY_RULES": {
+    "ENUMERATE_ALL_TRACKED_BLOBS": true,
+    "ACCOUNT_EVERY_BLOB": true,
+    "INFRA_BASENAMES": [
+      ".gitkeep",
+      "00_INDEX.md",
+      "README.md"
+    ],
+    "CLASSES": [
+      "FINDING_DEFINITION",
+      "NON_FINDING_INFRA",
+      "PARSE_ERROR",
+      "UNSUPPORTED_CANDIDATE"
+    ]
+  },
+  "EXTERNAL_SWEEP": {
+    "ROOT": "NEXY-BUILD-CONTROL",
+    "EXCLUDE": "NEXY-BUILD-CONTROL/FINDINGS",
+    "BASENAME_REGEX": "^(?:FINDING-|F-|FD-).+\\.(?:json|md)$",
+    "REQUIRE_BASENAME_STEM_EQUALS_FINDING_ID": true,
+    "INCLUDE_UNREFERENCED_MATCHES": true,
+    "CONFLICT_BLOCKS_COMPLETENESS": true
+  },
+  "RAW_EXTRACTION": {
+    "JSON": {
+      "FINDING_ID": "/FINDING_ID",
+      "TYPE_RAW": "/TYPE or null",
+      "SEVERITY_RAW": "/SEVERITY or null",
+      "STATUS_RAW": "/STATUS or null"
+    },
+    "MARKDOWN": {
+      "REGION": "leading metadata before first blank line",
+      "GRAMMAR": "^([A-Z][A-Z0-9_]*)[ ]*:[ ]*(.*)$",
+      "FINDING_ID": "FINDING_ID; exactly one non-empty value",
+      "TYPE_RAW": "TYPE or null",
+      "SEVERITY_RAW": "SEVERITY or null",
+      "STATUS_RAW": "STATUS or null"
+    },
+    "NO_ALIAS_SUBSTITUTION": [
+      "ORIGINAL_SEVERITY",
+      "CURRENT_SEVERITY",
+      "PRIOR_STATUS",
+      "CONTROL_STATUS",
+      "resolved-like strings",
+      "textual P0 mentions"
+    ]
+  },
+  "NORMALIZED_ROW_FIELDS": [
+    "FINDING_ID",
+    "DEFINITION_PATH",
+    "DEFINITION_BLOB_SHA",
+    "SOURCE_CLASS",
+    "MEDIA_TYPE",
+    "TYPE_RAW",
+    "SEVERITY_RAW",
+    "STATUS_RAW",
+    "RAW_FIELD_CONFLICT",
+    "AUTHORITY_REFERENCE_PATHS"
+  ],
+  "AUTHORITY_REFERENCE_POINTER_REGISTRY": {
+    "VERSION": 1,
+    "BOOTSTRAP_SCHEMA": "NEXY_BOOTSTRAP_FENCE_V16_RC1_3_V1",
+    "POINTERS": [
+      "/KNOWN_BLOCKING_CONTROL_FINDINGS/*",
+      "/BLOCKING_FINDING_ID",
+      "/ADDITIONAL_BLOCKING_FINDINGS/*",
+      "/SUPERSEDED_FREEZE_REQUEST/DEFECT_FINDING_ID"
+    ],
+    "ARRAY_WILDCARD": "* means every array element in index order",
+    "FREEFORM_RECURSIVE_KEY_SEARCH": false,
+    "UNKNOWN_ACTIVE_SCHEMA": "FAIL_CLOSED_UNTIL_POINTER_REGISTRY_VERSIONED"
+  },
+  "EXTERNAL_LOCATOR_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_EXTERNAL_LOCATORS_V2.json",
+  "IDENTITY_RULES": {
+    "KEY": "FINDING_ID",
+    "SAME_PATH_MULTI_DISCOVERY": "DEDUPE_AND_UNION_REFERENCES",
+    "DISTINCT_PATH_SAME_ID": "DUPLICATE_FINDING_ID_CONFLICT",
+    "REQUIRE_FINDING_ID_ALREADY_NFC": true
+  },
+  "ORDERING": {
+    "SOURCE_ROWS": "UTF8(repository_path)",
+    "AUTHORITY_REFERENCE_ROWS": "UTF8(authority_path,json_pointer,finding_id)",
+    "FINDING_ROWS": "UTF8(finding_id,definition_path)"
+  },
+  "COMPLETE_FINDING_MANIFEST_ROOT_HASH": {
+    "DOMAIN": "NEXY_V16_RC1_3_COMPLETE_FINDING_MANIFEST_ROOT_V1",
+    "ROOT_OBJECT_FIELDS": [
+      "domain",
+      "target_authority_key",
+      "control_commit_sha",
+      "control_tree_sha",
+      "primary_findings_tree_sha",
+      "contract_blob_sha",
+      "external_locator_blob_sha",
+      "reference_pointer_registry_version",
+      "primary_source_accounting_rows",
+      "external_sweep_candidate_rows",
+      "authority_reference_rows",
+      "normalized_finding_rows",
+      "validation_summary"
+    ],
+    "CANONICALIZATION": "RFC8785_JCS",
+    "HASH": "sha256_utf8_jcs_lowerhex",
+    "SELF_EXCLUDED": true
+  },
+  "COMPLETENESS_REQUIRES": [
+    "primary root fully accounted",
+    "external sweep completed on same pinned tree",
+    "zero parse/candidate conflicts",
+    "all explicit reference pointers evaluated",
+    "every authority-referenced finding resolves exactly once",
+    "zero duplicate finding identities",
+    "root hash recomputes exactly"
+  ],
+  "PROJECTION_BINDING": [
+    "CONTROL_P0 projection must bind COMPLETE_FINDING_MANIFEST_ROOT_HASH",
+    "CONTROL_P0 projection must bind same CONTROL_COMMIT_SHA and CONTROL_TREE_SHA",
+    "universe layer does not classify control-vs-product or terminal semantics"
+  ],
+  "STATUS": "CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE"
+}
