@@ -4430,3 +4430,278 @@ REVIEWER_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-REV-C4-20261006
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+63. INDEPENDENT REVIEW RESULT — JOB-EGC-044A-PV-MATERIALS-REV-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0350+07-PVREV
+PRIMARY_JOB_REVIEWED: JOB-EGC-044A-PV-MATERIALS-20261006
+ROLE: Independent PV material-flow reviewer / numerical replicator / supply-chain red team
+REVIEW_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+PROVENANCE_CONTINUITY:
+- Reviewer claim was committed before COMPACT_CHECKPOINT_PROTOCOL_V2 and is preserved in immutable ACTIVE_CHECKPOINT_V2 referenced by the live ledger.
+- V2 pre-compaction snapshot commit: 25767a427ee60b175e66b45913960289df78f531
+- V2 pre-compaction blob SHA: c675dfc38105c8bd86eb68bf12bd3da181d72dca
+- Claim commit originally: dbd329a4b0fed5d00909b4c33e06c177de88004c
+- No claim is inferred from memory alone; this result follows that archived claim.
+
+REVIEW_SUMMARY:
+The primary material-flow architecture is directionally strong and most arithmetic independently reproduces. It correctly distinguishes annual mine flow from reserves, treats recycling as time-dependent potential rather than instant feed, avoids claiming a geological silver ceiling, and keeps Al/Si/Pb/Au/Zn quantitative closure UNKNOWN. However, the integrated silver mitigation statement is too strong and the TOPCon stress baseline is no longer current-best evidence. April-2026 Fraunhofer ISE physical pilot evidence shows TOPCon Ag use can fall from a current average 10-12 mg/Wp to 1.1 mg/Wp using Ni/Cu/Ag plating while maintaining 24% cell efficiency. This does not prove commercial scale, lifetime, yield, cost or Cu/Ni supply sufficiency, but it falsifies any universal claim that high PV deployment necessarily requires the conjunction of silver thrifting/substitution PLUS circularity/new silver supply. The correct condition is disjunctive and evidence-dependent: one or more validated pathways must close the material-flow gap.
+
+EVIDENCE_ID: REV-EGC-044A-001
+CLAIM: IEA-PVPS 2026 multi-TW material-flow scenario and material-specific constraints
+TRUTH_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: IEA PVPS Task 12, Primary and Secondary Material Flows for the Future Global Deployment of Silicon-based Photovoltaic Systems
+SOURCE_DATE: 2026-09
+URL: https://iea-pvps.org/key-topics/t12-material-flows-global-deployment-silicon-systems-2026/
+VERIFIED_FACTS:
+- scenarios span 29-75 TWp silicon PV by 2050;
+- nine materials are modeled: Al, Cu, In, Pb, Si, Ag, Au, Sn, Zn;
+- technology choice, material efficiency, substitution and circularity materially affect demand;
+- Cu-based metallization can substantially reduce Ag demand;
+- In-based technology share must remain well below 20% for TW/year silicon-PV production under current resource constraints;
+- cumulative PV Sn demand 2025-2050 can equal 30-64% of estimated global tin reserves;
+- EOL-PV Ag could potentially supply 30-45% of cumulative PV-sector Ag demand over 2025-2050.
+SCOPE_LOCK:
+- scenarios are not forecasts;
+- cumulative EOL potential is not contemporaneous annual secondary supply;
+- report does not prove a hard geological ceiling for silicon PV.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-044A-002
+CLAIM: PV recycling is physically/industrially real but multi-TW circular closure is not established
+TRUTH_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: IEA PVPS Task 12, Advances in Photovoltaic Module Recycling: Third Update to Empirical Life Cycle Inventory Data
+SOURCE_DATE: 2026-04
+URL: https://iea-pvps.org/key-topics/t12-advances-module-recycling-3rd-edition-2026/
+VERIFIED_FACTS:
+- commercial and pilot recycler data from US/Europe exist;
+- mechanical recycling remains dominant commercial c-Si route;
+- thermal/chemical combinations can improve recovery/purity for Si, Ag and other metals;
+- data gaps remain for electricity use, material quality and harmonized boundaries.
+CONCLUSION: primary rule forbidding instantaneous credit of the 30-45% cumulative EOL-Ag potential is SUPPORTED.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-044A-003
+CLAIM: current silver mine production/reserve stress denominators
+TRUTH_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: USGS Mineral Commodity Summaries 2026, Silver
+SOURCE_DATE: 2026-02
+URL: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf
+VERIFIED_FACTS:
+- world mine production 2024 = 25,300 t;
+- estimated 2025 world mine production = 26,000 t;
+- world reserves = 610,000 t.
+LIMITATIONS:
+- mine production is not total refined/secondary availability;
+- reserves are economic/dynamic, not a fixed geological resource ceiling;
+- direct prior PDF visual retrieval was blocked by HTTP403; official indexed report text/table independently exposes the figures, so VISUAL_REPLICATION=NOT_VERIFIED while SOURCE_TEXT_REPLICATION=PASS.
+REVIEW_STATUS: PASS_WITH_VISUAL_LIMITATION.
+
+EVIDENCE_ID: REV-EGC-044A-004
+CLAIM: 2025 PV capacity/addition anchor
+TRUTH_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: IEA PVPS, Trends in Photovoltaic Applications 2026
+SOURCE_DATE: 2026-09
+URL: https://iea-pvps.org/trends_reports/trends-2026/
+VERIFIED_FACTS:
+- cumulative global PV capacity end-2025 = 2.96 TW;
+- about 690 GW new PV capacity installed during 2025.
+CONCLUSION: CALC-EGC-044A-001 inputs are source-supported by the later detailed Trends 2026 report.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-044A-005
+CLAIM: current and experimentally demonstrated TOPCon silver intensity
+TRUTH_CLASS: MEASUREMENT/PHYSICAL-PILOT-EVIDENCE + SOURCE_FACT
+SOURCE: Fraunhofer ISE, Silver Consumption in TOPCon Solar Cells Reduced by Factor 10
+SOURCE_DATE: 2026-04-08
+URL: https://www.ise.fraunhofer.de/en/press-media/news/2026/silver-consumption-in-topcon-solar-cells-reduced-by-factor-ten.html
+VERIFIED_FACTS:
+- Fraunhofer states current TOPCon cells average about 10-12 mg Ag/Wp;
+- pilot inline electroplating process using Ni/Cu/Ag achieved 1.1 mg Ag/Wp;
+- M10 TOPCon cells from the process reached 24% efficiency.
+LIMITATIONS:
+- physical pilot result != mass-manufacturing proof;
+- commercial yield, throughput, equipment CAPEX/OPEX, long-term reliability, Ni/Cu burden, paste/plating supply chain and bankability remain NOT_VERIFIED at mission scale.
+REVIEW_STATUS: PASS_WITH_SCALE_LIMITATION.
+
+EVIDENCE_ID: REV-EGC-044A-006
+CLAIM: Cu substitution transfers some pressure into a broader constrained copper market but is not itself a PV ceiling
+TRUTH_CLASS: SOURCE_FACT + INFERENCE
+SOURCE: IEA, Global Critical Minerals Outlook 2026
+SOURCE_DATE: 2026
+URL: https://www.iea.org/reports/global-critical-minerals-outlook-2026/outlook
+VERIFIED_FACTS:
+- copper demand adds about 7 Mt to 2040 in IEA outlook;
+- base announced-project pipeline leaves an approximately 25% copper supply gap in 2035 under the cited STEPS primary-supply comparison.
+SCOPE_LOCK:
+- this is economy-wide copper supply/demand evidence, not a PV-only material balance;
+- it supports treating Cu as a material system constraint requiring accounting, but does not falsify Cu-metallized PV by itself.
+REVIEW_STATUS: PASS_WITH_SCOPE_LOCK.
+
+CALC_ID: REV-CALC-EGC-044A-001
+TRUTH_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+TOOL: Wolfram Language
+INPUTS: end-2025 stock=2.96 TW; 2050 scenarios=29,75 TW; horizon=25 y.
+EQUATION: avg_net_add=(target-2.96)/25.
+OUTPUT:
+- 29 TW: 1.0416 TW/y average net stock addition.
+- 75 TW: 2.8816 TW/y.
+RESULT: primary CALC-EGC-044A-001 arithmetic PASS.
+LIMITATION: lower bound on gross manufacturing because retirements/replacements are omitted.
+
+CALC_ID: REV-CALC-EGC-044A-002
+TRUTH_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+TOOL: Wolfram Language
+IDENTITY: 1 mg/W * 1 TW = 1,000 metric tonnes.
+DENOMINATOR: 26,000 t/y 2025 world mine production.
+OUTPUT — frozen older intensity stress:
+29-TW path:
+- PERC 7-8 mg/W: 7,291.2-8,332.8 t/y = 28.043-32.049% of 2025 mine production.
+- TOPCon 12-16 mg/W: 12,499.2-16,665.6 t/y = 48.074-64.098%.
+- HJT 17-20 mg/W: 17,707.2-20,832.0 t/y = 68.105-80.123%.
+75-TW path:
+- PERC: 20,171.2-23,052.8 t/y = 77.582-88.665%.
+- TOPCon: 34,579.2-46,105.6 t/y = 132.997-177.329%.
+- HJT: 48,987.2-57,632.0 t/y = 188.412-221.662%.
+RESULT: primary CALC-EGC-044A-002 independently PASS as a frozen-intensity stress test.
+REPAIR_SCOPE: 12-16 mg/W must not be presented as the latest 2026 average TOPCon intensity; current Fraunhofer source says 10-12 mg/W average.
+
+CALC_ID: REV-CALC-EGC-044A-003
+TRUTH_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+TOOL: Wolfram Language
+DENOMINATOR: 610,000 t current USGS reserve estimate.
+OUTPUT — cumulative net-new stock only, no recycling/substitution/replacements:
+29-TW path:
+- PERC: 182,280-208,320 t = 29.882-34.151% reserves.
+- TOPCon 12-16: 312,480-416,640 t = 51.226-68.302%.
+- HJT: 442,680-520,800 t = 72.570-85.377%.
+75-TW path:
+- PERC: 504,280-576,320 t = 82.669-94.479%.
+- TOPCon: 864,480-1,152,640 t = 141.718-188.957%.
+- HJT: 1,224,680-1,440,800 t = 200.767-236.197%.
+RESULT: primary CALC-EGC-044A-003 arithmetic independently PASS; interpretation as stress test rather than geology ceiling is correct.
+
+CALC_ID: REV-CALC-EGC-044A-004
+TRUTH_CLASS: CALCULATION / SENSITIVITY
+TOOL: Wolfram Language
+PURPOSE: test whether April-2026 physical Ag-thrifting evidence can materially reverse the silver constraint classification.
+CURRENT_AVERAGE_TOPCON=10-12 mg/Wp:
+- 29-TW path: 10,416-12,499.2 t/y = 40.062-48.074% of 2025 mine output.
+- 75-TW path: 28,816-34,579.2 t/y = 110.831-132.997%.
+FRAUNHOFER_PILOT=1.1 mg/Wp:
+- 29-TW path: 1,145.76 t/y = 4.407% of 2025 mine output.
+- 75-TW path: 3,169.76 t/y = 12.191%.
+- cumulative net-new-stock silver: 28,644 t / 79,244 t = 4.696% / 12.991% of current USGS reserves.
+INTERPRETATION:
+- current-average TOPCon still creates severe silver-flow pressure in the 75-TW path if frozen;
+- the physically demonstrated 1.1 mg/Wp case changes silver stress by about one order of magnitude and therefore can reverse whether Ag is the dominant material bottleneck;
+- pilot performance cannot be promoted to a deployable global pathway without manufacturing/reliability/cost and Cu/Ni material validation.
+
+FINDING_ID: F-EGC-044A-REV-P1-001
+SEVERITY: P1
+TITLE: Integrated mitigation requirement is conjunctive and stronger than evidence permits
+TRUTH_CLASS: REVIEW / FALSIFICATION
+PRIMARY_WORDING_ATTACKED: "Ag thrifting/substitution plus circularity/new supply is necessary in high-deployment pathways."
+DEFECT:
+Independent physical evidence demonstrates a low-Ag pathway whose silver demand can be dramatically lower without assuming an immediate recycling credit or expanded silver mine supply. Therefore the conjunction is not established as universally necessary.
+REQUIRED_REPAIR:
+Replace with: "At current-average Ag intensity, multi-TW/y deployment creates material silver-flow stress. A credible high-deployment pathway must close the gap using one or more independently validated levers such as lower Ag intensity/substitution, secondary recovery, primary supply expansion, technology-mix change, or lower silver-dependent share. No single lever is assumed free or sufficient without scale evidence."
+VERDICT: REPAIR_REQUIRED.
+
+FINDING_ID: F-EGC-044A-REV-P1-002
+SEVERITY: P1
+TITLE: 2024-era TOPCon 12-16 mg/W stress input is no longer an adequate current-reference value
+TRUTH_CLASS: SOURCE_CONFLICT_RESOLVED_BY_DATE/SCOPE
+DEFECT:
+The older 12-16 mg/W range remains valid as a frozen historical stress case, but April-2026 Fraunhofer identifies 10-12 mg/W as the current average and 1.1 mg/W as physically demonstrated pilot sensitivity. A 2026 scale gate must show both rather than silently treating the older range as current best available evidence.
+REQUIRED_REPAIR:
+Retain 12-16 as HISTORICAL_FROZEN_STRESS; add CURRENT_AVERAGE_2026=10-12 and PILOT_PHYSICAL_SENSITIVITY=1.1 with explicit maturity labels.
+VERDICT: REPAIR_REQUIRED.
+
+FINDING_ID: F-EGC-044A-REV-P2-003
+SEVERITY: P2
+TITLE: Low-Ag pilot cannot be credited as commercial-scale supply closure
+TRUTH_CLASS: UNKNOWN / SCALE_EVIDENCE_GAP
+OPEN ITEMS:
+- mass-manufacturing yield/throughput and equipment cost;
+- lifetime/reliability of plated metallization;
+- Ni/Cu intensity and global material-flow burden;
+- replacement cohorts and gross manufacturing above net stock addition;
+- technology-market-share trajectory.
+RULE: these remain UNKNOWN; do not credit 1.1 mg/W as guaranteed future fleet intensity.
+
+RED_TEAM_RESULTS:
+1. 29/75-TW net-addition arithmetic -> PASS independently.
+2. frozen PERC/TOPCon/HJT Ag arithmetic -> PASS independently.
+3. reserve-vs-flow distinction -> PASS.
+4. current reserves as hard geology ceiling -> correctly REJECTED by primary.
+5. cumulative 30-45% EOL Ag as immediate annual feed -> correctly REJECTED by primary.
+6. all silicon PV constrained by indium -> correctly REJECTED; design-share dependent.
+7. Cu substitution is free/unlimited -> correctly REJECTED; economy-wide copper supply remains material.
+8. older TOPCon intensity is current 2026 best evidence -> FALSIFIED by Fraunhofer 2026.
+9. recycling + new Ag supply necessarily required even if deep thrifting scales -> FALSIFIED as universal conjunction.
+10. Fraunhofer 1.1 mg/W proves global commercial sufficiency -> FALSIFIED as maturity overreach.
+
+CLAIM-BY-CLAIM REVIEW:
+- CLAIM-EGC-044A-2050-MATERIAL-FLOWS: PASS.
+- CLAIM-EGC-044A-SILVER-CURRENT: PASS_WITH_2026_UPDATE_REQUIRED.
+- CLAIM-EGC-044A-SILVER-FLOW-STRESS: CALCULATION_PASS / CURRENT-REFERENCE_SCOPE_REPAIR_REQUIRED.
+- CLAIM-EGC-044A-SILVER-RESERVE-STRESS: CALCULATION_PASS / INTERPRETATION_PASS_AS_STRESS_ONLY.
+- CLAIM-EGC-044A-INDIUM-TIN: PASS_WITH_REPORT-SCENARIO_SCOPE.
+- CLAIM-EGC-044A-COPPER-TRADEOFF: PASS_AS_INFERENCE_ONLY; PV-specific quantitative closure remains UNKNOWN.
+- CLAIM-EGC-044A-RECYCLING: PASS; high-scale secondary-feed trajectory remains NOT_VERIFIED.
+- INTEGRATED SILVER MITIGATION NECESSITY: REVIEW_FAILED / REPAIR_REQUIRED.
+
+PRIMARY_JOB_STATUS_CHANGE:
+JOB-EGC-044A-PV-MATERIALS-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-044A-PV-MATERIALS-REV-20261006: EXECUTING -> AWAITING_REVIEW.
+G9 resources available: NOT_VERIFIED.
+G10 materials feasible: NOT_VERIFIED.
+G11 manufacturing feasible: NOT_VERIFIED.
+G21 uncertainty cannot plausibly reverse conclusion: NOT_VERIFIED because technology mix/material intensity is ranking-relevant.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+REPAIR_JOB:
+JOB_ID: JOB-EGC-044A-PV-MATERIALS-REPAIR-C3-20261006
+TITLE: Repair PV silver pathway with 2026 physical intensity evidence and disjunctive material closure
+ROLE: PV material-pathway repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can multi-TW silicon-PV material feasibility be stated without treating outdated Ag intensity as current, without requiring unnecessary mitigation levers jointly, and without crediting pilot thrifting before scale validation?
+DEPENDENCIES: F-EGC-044A-REV-P1-001; F-EGC-044A-REV-P1-002; F-EGC-044A-REV-P2-003.
+REQUIRED_INPUTS: IEA-PVPS 2026 material-flow scenarios; USGS 2026 silver; Fraunhofer ISE 2026 TOPCon plating evidence; replacement/recycling timing evidence.
+REQUIRED_TOOLS: source-date arbitration; cohort-aware mass balance; technology-mix sensitivity; manufacturing-maturity evidence; independent calculation engine.
+REQUIRED_EVIDENCE:
+- historical 12-16 mg/W stress vs current-average 10-12 vs physical-pilot 1.1 separated by maturity class;
+- gross manufacturing including replacement cohorts before claiming material sufficiency;
+- explicit Ni/Cu burden for low-Ag pathway when evidence is available;
+- no instantaneous recycling; no reserve-as-geology error;
+- disjunctive closure rule identifying which validated lever(s) actually close each scenario.
+EXPECTED_OUTPUT: PV_MATERIAL_GATE_V2 with PASS/NOT_VERIFIED/FALSIFIED by scenario and technology mix.
+FALSIFICATION_CONDITION: FAIL if pilot intensity is treated as guaranteed fleet average, current-average silver stress is omitted, replacement/recycling timing is hidden, or one mitigation lever is assumed free/unlimited.
+REVIEWER_JOB_ID: JOB-EGC-044A-PV-MATERIALS-REPAIR-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: NONE for method/source repair; whole-system grid/storage material coupling remains separate.
+NEXT_ACTION: distinct author repairs V2, then distinct reviewer reproduces material balances and attacks maturity assumptions.
+
+JOB_ID: JOB-EGC-044A-PV-MATERIALS-REPAIR-REV-C4-20261006
+TITLE: Independent review of PV_MATERIAL_GATE_V2
+ROLE: Independent PV material-flow reviewer / maturity auditor
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-044A-PV-MATERIALS-REPAIR-C3-20261006 AWAITING_REVIEW.
+EXPECTED_OUTPUT: PASS / REVIEW_FAILED with independent source retrieval and mass-balance replication.
+STATUS: BLOCKED
+BLOCKERS: repair not yet submitted.
+
+REVIEW_JOB_STATE:
+- JOB-EGC-044A-PV-MATERIALS-REV-20261006: AWAITING_REVIEW.
+- SELF_VERIFICATION: FORBIDDEN.
+- NEXT_HIGHEST_VALUE_ACTION: refresh job graph; do not self-author C3; claim a distinct executable review/repair not owned by this session.
