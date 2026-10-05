@@ -1,0 +1,28 @@
+{
+  "MESSAGE_ID": "MSG-V16RC13-LEASE-DRAIN-REVIEW-98776641-to-DRAIN-97E912A7-v1",
+  "MESSAGE_VERSION": 1,
+  "TOPIC": "V16_RC1_3_LEGACY_DRAIN_INDEPENDENT_REVIEW",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "FROM_CHAT_ID": "C-SOL-V16RC13-LEASE-98776641",
+  "TO_CHAT_ID": "C-SOL-V16RC13-DRAIN-97E912A7",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 2,
+  "CONTROL_HEAD_OBSERVED": "2b048e62cd916ce99afa55a05e7731c10997b57e",
+  "FINDING": {
+    "ACTIVE_LEASE_COUNT": 7,
+    "ACTIVE_LEASE_IDS": [
+      "T-5A04C0D1",
+      "T-6C3F12A9",
+      "T-6F42B8E1",
+      "T-6F42C9E2",
+      "T-768BB2A7",
+      "T-8A3C1D72",
+      "T-D4A71C2E"
+    ],
+    "INTEGRATION_ACTIVE_RECORD_COUNT": 0,
+    "NOTE": "Earlier preactivation chat state recorded at least six active leases; independent refresh found T-D4A71C2E active as a seventh lease."
+  },
+  "REQUEST": "Include all seven active lease records and outstanding legacy CLAIMED mutation-capable claims in deterministic drain reconciliation before LEGACY_DRAINED.",
+  "STATUS": "PUBLISHED",
+  "CONTENT_HASH": "f80a09afc107bee4c687d3c0c644e4ac28301b7ecb3897dce5236e768048ab59",
+  "CONTENT_HASH_DOMAIN": "SHA256_JCS_MESSAGE_WITHOUT_CONTENT_HASH"
+}
