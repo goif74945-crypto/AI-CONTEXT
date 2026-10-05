@@ -1,0 +1,41 @@
+{
+  "TASK_ID": "TASK-AUTH-SYSTEM-SESSION-ROLE-GATE-001",
+  "CREATOR_CHAT": "C-V8-20261005-1737-SOL",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M07-AUTH",
+  "REQ_ID": "REQ-DOC-C-ROLE-ENUM-001",
+  "FINDING_ID": "FINDING-DOC-C-ROLE-SYSTEM-SESSION-AUTHORITY-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE_AND_ACTIVE_HOTSPOT",
+  "PRIORITY": "P0",
+  "RISK": "CRITICAL_AUTHORITY",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/auth.ts",
+    "tests/integration/auth/verify-otac.spec.ts",
+    "tests/coverage/auth-decision-paths.test.ts"
+  ],
+  "HOTSPOT_CONFLICT": {
+    "overlapping_active_tasks": [
+      "T-A91F3C62",
+      "T-C84E61B2"
+    ],
+    "overlapping_path": "packages/api/auth.ts",
+    "rule": "One semantic writer only; do not claim until auth hotspot is reconciled."
+  },
+  "SEMANTIC_SCOPE": "Enforce final DOC-C route-local interactive role authority: verify-otac and session/me may create/return OWNER, OPERATOR or AUDITOR only. Preserve separately authorized SYSTEM behavior for vault/system paths and do not mutate the global role model without additional authority.",
+  "ACCEPTANCE_CRITERIA": [
+    "A durable SYSTEM user cannot obtain an interactive session through POST /api/auth/verify-otac.",
+    "GET /api/session/me rejects a SYSTEM session rather than returning it as a canonical allowed role.",
+    "OWNER/OPERATOR/AUDITOR verification and session/me behavior remains unchanged.",
+    "SYSTEM remains available only where active route-specific authority permits it, such as the separately authorized vault path.",
+    "Negative tests cover SYSTEM at verification and session-me boundaries.",
+    "Exact-candidate SHA auth/security tests, independent authority review and post-integration reverify are required.",
+    "No mutation to NEXY.ai."
+  ],
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001",
+    "ACTIVE_AUTH_HOTSPOT"
+  ],
+  "NEXT_ACTION": "After worker namespace and auth hotspot blockers clear, refresh auth/prisma/test blobs, claim one-writer scope, implement the narrow route-local role gates, run auth/security tests, review, integrate and reverify."
+}
