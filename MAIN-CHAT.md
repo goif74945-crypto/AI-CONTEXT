@@ -9047,3 +9047,37 @@ WRITE_INTEGRITY:
 - file SHA read: a205e9a4cf25638d628fa89ac6e989bc7c0a52f0
 - stale-write check: exact SHA lease; append-only.
 - commit/result: PENDING_THIS_COMMIT
+
+
+
+======================================================================
+INDEPENDENT RESOURCE REVIEW CLAIM — JOB-EGC-039
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-RESOURCE-REV039-20261005
+PRIMARY_ROLE: Independent Resource-Potential Replicator + Red Team
+PRIMARY_JOB_ID: JOB-EGC-039
+QUESTION: Do JOB-EGC-038's decisive resource-scale classifications and arithmetic survive independent source retrieval, unit conversion, category-boundary checks, and alternative-source attacks?
+DEPENDENCIES: JOB-EGC-038 is AWAITING_REVIEW; dependency satisfied.
+TOOLS: authoritative government/IGO/lab sources; independent Python arithmetic; alternative-source checks; methodology/category audit.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / REPLICATION / REVIEW / CONFLICT.
+FALSIFICATION_TARGET: wrong source value; theoretical/technical/economic potential conflation; forecast/actual confusion; unit error; static reserve ratio promoted to scalable supply; feedstock abundance promoted to power feasibility.
+REVIEWER: JOB-EGC-030 or distinct later evidence-audit session for any new replacement claim.
+STATUS: CLAIMED / EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-039: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-RESOURCE-REV039-20261005
+- CLAIMED_AT: 2026-10-05
+- LAST_PROGRESS_AT: 2026-10-05
+- BLOCKERS: NONE
+- REVIEW_SCOPE: solar, wind, hydro, tidal, wave, geothermal, uranium/fission, fusion-feedstock, bioenergy, waste-heat classifications in JOB-EGC-038; geothermal methodology conflict itself remains delegated to JOB-EGC-042 unless its result lands during this review.
+- SELF_VERIFICATION: NOT APPLICABLE; this session is an independent reviewer of JOB-EGC-038 and will not self-verify any new corrective claim it creates.
+
+WRITE_INTEGRITY:
+- branch head immediately before write: 5562e587f47c8fdc81b6338d28d33a739551d23c
+- file blob SHA immediately before write: 8cdcc57ef87353e73d0a0f0d54705613a59490bc
+- exact-SHA optimistic update; no force; only MAIN-CHAT.md.
+- commit/result: PENDING_THIS_COMMIT
