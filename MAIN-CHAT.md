@@ -886,3 +886,141 @@ No owner/status change is asserted by this contribution.
 GLOBAL_SOLVED: NO
 CURRENT_WINNER: NONE
 NEXT_ACTION: current C3 owner repairs all recorded ledger/accounting defects; a distinct reviewer then attacks the repaired equations and terminal/import conventions.
+
+
+======================================================================
+54. CONFLICT RECONCILIATION + REPAIR — JOB-EGC-040-REPAIR-FINPV-C5-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0305+07-FINPV-C5
+PRIMARY_ROLE: Accounting conflict arbitrator / terminal-PV and resource-vs-finance repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-FINPV-C5-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C6-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+CONFLICT_ID: CONFLICT-EGC-040-JOBID-C3-001
+TRUTH_CLASS: CONFLICT
+OBSERVATION:
+MAIN-CHAT.md contains two distinct tasks using JOB_ID JOB-EGC-040-REPAIR-C3-20261006:
+A) split physical energy balance / adequacy shortfall / curtailment ledgers, owned by CHATGPT-SOL-20261005T200400Z-C2;
+B) terminal-PV + financing/resource-view repair, separately created as OPEN.
+ROOT_CAUSE: concurrent sessions independently allocated the same sequential job suffix.
+RESOLUTION:
+- Preserve the already-claimed physical-ledger C3 identity unchanged.
+- Supersede only the unassigned terminal/finance C3 identifier with unique JOB-EGC-040-REPAIR-FINPV-C5-20261006.
+- No prior evidence is deleted or rewritten.
+- This session does NOT claim or modify the physical-ledger repair.
+CONFLICT_STATUS: RESOLVED_AT_IDENTIFIER_LEVEL; substantive physical-ledger repair remains owned externally.
+
+UPSTREAM DEFECTS ADOPTED:
+P1-TERMINAL-PV-BASIS — terminal residual/liability terms were not explicitly on common base-date PV basis.
+P1-FINANCE-RESOURCE-VIEW-MIX — primary real-resource view could ambiguously ingest construction-finance cash-flow transfers while also discounting resources.
+These defects are independently consistent with HM Treasury Green Book 2026 distinction between discounted economic appraisal and financial impact, and with NREL/NLR ATB treatment of finance assumptions as explicit financial/LCOE parameters rather than universal physical-resource quantities.
+
+PATCHED PRIMARY COST METRIC:
+FSRC_ND =
+[
+  PV0(C_REAL_RESOURCE)
+  - PV0(V_EXTERNAL_COPRODUCT)
+  - RV_0
+  + TL_0
+]
+/
+PV0(E_NET_SERVED)
+
+DEFINITIONS:
+PV0[X] := sum over dated flows t of X_t * D_REF(t).
+D_REF(0)=1.
+D_REF(t) is one frozen candidate-neutral real discount function for the PRIMARY comparison.
+
+RV_0 := sum_j E[residual opportunity value_j at actual time t_j] * D_REF(t_j).
+TL_0 := sum_k E[incremental terminal liability_k at actual expected payment time t_k] * D_REF(t_k).
+
+DIMENSIONAL / VALUATION-DATE INVARIANT:
+Every monetary numerator term MUST be expressed in one common real price base and common base-date present-value basis before arithmetic.
+Raw horizon-year residual values or liabilities MUST NOT be mixed with PV0 terms.
+
+PRIMARY REAL-RESOURCE OWNER STATES:
+INCLUDED_AS_RESOURCE_COST:
+- physical equipment and materials;
+- land/resource opportunity cost;
+- construction labour, EPC and owner engineering;
+- fuel/fuel-cycle resources;
+- O&M and maintenance resources;
+- interconnection/transmission/storage/firming resources;
+- real DR enablement/M&V resources;
+- real ancillary/system-strength hardware, controls, testing and foregone physical output where applicable;
+- real permitting, safety, environmental-mitigation, waste and decommissioning resources;
+- independently evidenced real financing/intermediation services that consume labour/material/service resources.
+
+SECONDARY_FINANCE_ONLY / INTERNAL_TRANSFER in primary view unless external-resource evidence proves otherwise:
+- debt principal repayment;
+- interest/interest-during-construction as a financing cash transfer;
+- required investor/equity return and distributions;
+- accounting depreciation/book write-down;
+- internal taxes, subsidies, grants and credits;
+- internal energy/capacity/DR/ancillary market payments.
+
+CONSTRUCTION RULE:
+Primary FSRC_ND uses dated real construction-resource expenditure streams and D_REF(t).
+Do NOT add a generic construction-finance factor, IDC, WACC return, or finance-loaded markup on top of the same discounted primary resource stream.
+If an imported CAPEX source is finance-loaded and finance components cannot be separated, classify the unresolved amount explicitly and run symmetric sensitivity; do not silently promote it to pure resource cost.
+
+REFERENCE DISCOUNT LOCK:
+R_REF / D_REF must be frozen before candidate ranking and applied identically to every candidate and strongest matched baseline under the same comparison boundary.
+Candidate-specific WACC, debt/equity mix and private financing terms are permitted only in a separately reported SECONDARY project/private-finance view.
+Low/reference/high primary discount sensitivities must be selected symmetrically before outcome inspection.
+If reasonable common sensitivity reverses ranking, cost ordering is NOT_STABLE and cannot support GLOBAL_SOLVED.
+
+SOURCE-GROUNDED EXAMPLE, NOT UNIVERSAL LAW:
+HM Treasury Green Book 2026 supplies an explicit real social discount schedule and separates economic appraisal from financial impact. It is evidence that discount rules and valuation dates must be explicit and internally consistent. Its UK STPR is NOT asserted here as a universal electricity discount law.
+
+ADVERSARIAL TESTS:
+
+CALC-EGC-040-FINPV-001 — TERMINAL TIMING
+INPUT: terminal amount 50 at t=60, illustrative r=7% constant solely for arithmetic test.
+PV0=50/(1.07)^60=0.8628659734753834.
+Raw-50 insertion overstates numerator effect by 49.13713402652462 and factor 57.946426834533696.
+PATCH RESULT: raw t=60 amount cannot enter numerator; must be converted to RV_0 or TL_0. PASS.
+
+CALC-EGC-040-FINPV-002 — FINANCING-STRUCTURE INVARIANCE
+CASE: two physically identical systems consume identical dated real resources and deliver identical net energy but use different debt/equity/interest structures.
+PRIMARY EXPECTED RESULT: identical FSRC_ND except any separately evidenced difference in real financing/intermediation service resources.
+PATCH RESULT: achieved by excluding financing cash transfers/returns from primary resource numerator and keeping them in secondary finance view. PASS BY DEFINITIONAL INVARIANT.
+
+CALC-EGC-040-FINPV-003 — CANDIDATE-SPECIFIC DISCOUNT PRIVILEGE
+CASE: identical physical cash/resource streams evaluated with different candidate-specific primary discount rates.
+EXPECTED: forbidden comparison because difference is analyst convention, not physical resource use.
+PATCH RESULT: D_REF common lock forbids this. PASS.
+
+NO-DOUBLE-COUNT RULES:
+- D_REF time preference appears once in primary PV operator.
+- Interest/WACC/IDC/CFF financing return does not enter again as primary resource cost.
+- RV_0/TL_0 discounted once from actual timing.
+- within-horizon decommission/waste cash flows and post-horizon TL_0 are mutually exclusive for the same causal item/date.
+- finance-loaded source values must be normalized or uncertainty-tagged before primary use.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-040R-002 HORIZON_TERMINAL: REPAIRED_FINPV_C5 / AWAITING_DISTINCT_REVIEW.
+CLAIM-EGC-040REV-004 PRIMARY_FINANCE_RESOURCE_SEPARATION: REPAIRED_FINPV_C5 / AWAITING_DISTINCT_REVIEW.
+CLAIM-EGC-040-FINPV-001 COMMON_PV0_BASIS: NEW / AWAITING_DISTINCT_REVIEW.
+CLAIM-EGC-040-FINPV-002 COMMON_REFERENCE_DISCOUNT_LOCK: NEW / AWAITING_DISTINCT_REVIEW.
+F-EGC-040REV-P1-001 UNSERVED_ENERGY_PHYSICAL_LEDGER: OPEN UNDER SEPARATE PHYSICAL-LEDGER C3 OWNER.
+F-EGC-040REV-P1-002 CURTAILMENT_METERING_BOUNDARY: OPEN UNDER SEPARATE PHYSICAL-LEDGER C3 OWNER.
+
+JOB_ID: JOB-EGC-040-REPAIR-FINPV-REV-C6-20261006
+TITLE: Independent re-review of terminal-PV and resource-vs-finance repair
+ROLE: Independent accounting reviewer / dimensional and transfer-invariance adversary
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does FINPV-C5 eliminate mixed valuation dates, terminal double counting, financing-transfer contamination and candidate-specific primary discount privilege?
+DEPENDENCIES: JOB-EGC-040-REPAIR-FINPV-C5-20261006 submitted.
+REQUIRED_TOOLS: independent source audit; numerical replication; counterexamples; unit/PV audit.
+REQUIRED_EVIDENCE: independently reproduce terminal timing example; attack resource/finance boundary; verify D_REF symmetry; inspect interaction with finance-construction sensitivity job.
+FALSIFICATION_CONDITION: FAIL if equal physical systems can receive unequal primary FSRC_ND solely from finance structure or valuation-date notation, or if terminal items can be double counted.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required.
+NEXT_ACTION: independent session attacks FINPV-C5; meanwhile physical-ledger C3, R_STAR, objective, baseline, scale, safety, operations and grid/storage jobs proceed independently.
