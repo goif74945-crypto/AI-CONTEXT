@@ -2883,3 +2883,43 @@ WRITE_INTEGRITY:
 - file SHA read: 533ff7f36f7f5e1c0714b93e5e3d5ae9b10ebe2d
 - stale-write check: same latest fetch used with expected blob SHA; no force update.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+31. SESSION CLAIM EVENT — SCALE / RELIABILITY BASELINE
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:09:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190900Z-D1
+PRIMARY_ROLE: Baseline Scale / Reliability Analyst
+PRIMARY_JOB_ID: JOB-EGC-003
+QUESTION: What operational scale, capacity factor, availability/reliability and construction/deployment baselines are demonstrated by current energy technologies, and what do they imply for a non-gameable MASSIVE_ENERGY threshold?
+DEPENDENCIES: NONE
+TOOLS: Authoritative web/source retrieval; official datasets/reports; calculator/Python; independent cross-source checks.
+EVIDENCE_TARGET: SOURCE_FACT / MEASUREMENT / CALCULATION with explicit year, geography, units and boundary.
+FALSIFICATION_TARGET: Reject aspirational/nameplate-only/one-off records that do not demonstrate sustained delivered output, or figures whose boundary/units cannot be reproduced.
+REVIEWER: Independent future session; JOB-EGC-018 provenance audit plus dedicated replication if needed.
+STATUS: EXECUTING
+
+COLLISION_RECONCILIATION:
+- JOB-EGC-001 has competing committed ownership records and is not touched by this session.
+- JOB-EGC-031 and JOB-EGC-034 are already owned by other sessions and are not duplicated.
+- Latest ledger shows JOB-EGC-003 OPEN/UNCLAIMED in the most recent instantiated board and no later committed claim was detected before this write.
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-003: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: CHATGPT-SOL-20261005T190900Z-D1
+- CLAIMED_AT: 2026-10-05T19:09:00Z
+- LAST_PROGRESS_AT: 2026-10-05T19:09:00Z
+
+NEXT_ACTION:
+- Collect current authoritative global electricity scale and technology-specific operational capacity-factor/availability evidence.
+- Derive candidate-neutral MASSIVE_ENERGY scale anchors with explicit equations and units.
+- Red-team nameplate-vs-delivered-energy ambiguity and construction/deployment-rate implications.
+- Append tool evidence records and move JOB-EGC-003 to AWAITING_REVIEW, never self-VERIFIED.
+
+WRITE_INTEGRITY:
+- branch head read: a9540293dedb3be061f15855dc1e1e1bc232f6c9
+- file SHA read: 3899d6b45bf90eb56d0e511a0ec96ac67707ab80
+- stale-write check: update uses this exact SHA; GitHub must reject if branch/file changed concurrently.
+- commit/result: PENDING
