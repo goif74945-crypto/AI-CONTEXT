@@ -301,3 +301,210 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+43. INDEPENDENT REVIEW VERDICT — MASSIVE-ENERGY SCALE ANCHOR C1
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+REVIEW_JOB_ID: JOB-EGC-SCALE-ANCHOR-REV-C1-20261005
+REVIEWED_JOB_ID: JOB-EGC-SCALE-ANCHOR-C1-20261005
+DATE: 2026-10-06
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+REVIEW_METHOD:
+- Re-read EVIDENCE-EGC-SCALE-C1-001..005 and CONFLICT-EGC-SCALE-BOUNDARY-C1-001.
+- Independently retrieved Ember 2026 global-demand page and Ember methodology material.
+- Independently retrieved both IEA Electricity 2026 and the later Electricity Mid-Year Update 2026.
+- Independently retrieved U.S. EIA 2025 net-generation record and Energy Institute Statistical Review evidence.
+- Recomputed all decision-relevant TWh->GW, revision, and boundary-gap arithmetic in an independent Python runtime.
+- Attacked source vintage, gross/demand-vs-consumption boundary, threshold arbitrariness, and annual-average-vs-firm-power semantics.
+
+### REVIEW-EGC-SCALE-C1-001 — EMBER 2025 GLOBAL DEMAND
+TARGET: EVIDENCE-EGC-SCALE-C1-001
+VERDICT: PASS_WITH_BOUNDARY_SCOPE
+EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION
+INDEPENDENT_SOURCE:
+- Ember Global Electricity Review 2026, Electricity demand and supply trends.
+- Ember methodology materials describing demand as generation + net imports and gross-generation basis in annual methodology.
+REPRODUCED:
+- 2025 global electricity demand = 31,779 TWh.
+- 2025 increase = 849 TWh = 2.8%.
+- 31,779 / 8.76 = 3,627.739726 GW = 3.627740 TW annual-average equivalent.
+- 849 / 8.76 = 96.917808 GW annual-average growth equivalent.
+BOUNDARY_FINDING:
+- Ember's demand metric is not interchangeable with end-user final consumption. Methodology materials define demand from generation plus net imports and annual generation on a gross-generation basis.
+- The 31,779 TWh quantity is therefore valid as an Ember demand/gross-service-style anchor, not as a universal delivered-to-end-user denominator.
+LIMITATION:
+- Current Global Electricity Review 2026 page does not by itself decompose every country estimate, own-use item, network loss, or statistical adjustment.
+REPRODUCTION_STATUS: PASS_WITH_BOUNDARY_SCOPE.
+
+### REVIEW-EGC-SCALE-C1-002 — IEA 2025 ELECTRICITY CONSUMPTION
+TARGET: EVIDENCE-EGC-SCALE-C1-002
+VERDICT: HISTORIC_SOURCE_PASS / CURRENT_ANCHOR_REPAIR_REQUIRED
+EVIDENCE_CLASS: SOURCE_FACT / VERSION_CONFLICT / CALCULATION
+INDEPENDENT_SOURCES:
+- IEA Electricity 2026, Demand: 28,200 TWh in 2025.
+- IEA Electricity Mid-Year Update 2026, Executive Summary: 28,600 TWh in 2025.
+- IEA event page states the July 2026 update presents the latest available data for 2025, building on the February Electricity 2026 report.
+VERSION_RESULT:
+- 28,200 TWh is a valid earlier 2026 vintage.
+- For a mission executed in October 2026, 28,600 TWh is the later IEA 2025 estimate and MUST replace 28,200 TWh as the current IEA consumption anchor unless a future revision supersedes it.
+REVISION:
+- +400 TWh.
+- +1.418439716% relative to 28,200 TWh.
+UPDATED_ARITHMETIC:
+- 28,600 / 8.76 = 3,264.840183 GW = 3.264840 TW annual-average equivalent.
+BOUNDARY_CAUTION:
+- IEA Global Energy Review methodology states total final electricity consumption excludes power-plant/industry own use and T&D losses.
+- The Mid-Year Update page calls the 28,600 TWh figure global electricity consumption but does not, on the inspected page, restate the full statistical accounting definition. Therefore label it "IEA electricity consumption, July-2026 vintage"; do not silently promote exact TFC accounting details beyond sourced methodology.
+REPRODUCTION_STATUS: EARLIER_VALUE_REPRODUCED_BUT_SUPERSEDED.
+
+### REVIEW-EGC-SCALE-C1-003 — BOUNDARY GAP
+TARGET: EVIDENCE-EGC-SCALE-C1-003
+VERDICT: ARITHMETIC_PASS_ON_OLD_INPUTS / CURRENT_RESULT_REPAIR_REQUIRED
+EVIDENCE_CLASS: CALCULATION / CONFLICT / REPLICATION
+OLD_PAIR_REPRODUCTION:
+- 31,779 - 28,200 = 3,579 TWh.
+- 3,579 / 31,779 = 11.2621543%.
+- 3,579 / 28,200 = 12.6914894%.
+- Submitted displayed values reproduce.
+UPDATED_PAIR:
+- 31,779 - 28,600 = 3,179 TWh.
+- 3,179 / 31,779 = 10.0034614% of Ember total.
+- 3,179 / 28,600 = 11.1153846% of latest IEA consumption.
+CONFLICT_STATUS:
+- The central qualitative conclusion survives: silently mixing these boundaries changes scale thresholds by about 10% and is decision-relevant.
+- The old 3,579-TWh value is stale as a current-vintage gap.
+- Exact causal decomposition remains NOT_VERIFIED. It MUST NOT be called "T&D losses"; own-use, statistical methods, gross-vs-net conventions, import/accounting differences, and dataset estimation may contribute.
+REPRODUCTION_STATUS: PASS_OLD_ARITHMETIC + REPAIR_CURRENT_VALUE.
+
+### REVIEW-EGC-SCALE-C1-004 — U.S. NATIONAL-SCALE COMPARATOR
+TARGET: EVIDENCE-EGC-SCALE-C1-004
+VERDICT: PASS
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATA / CALCULATION / REPLICATION
+INDEPENDENT_SOURCE:
+- U.S. EIA Today in Energy, 2026-03-05, corrected source record.
+REPRODUCED:
+- 2025 U.S. net generation = 4.43 thousand TWh = approximately 4,430 TWh.
+- 4,430 / 8.76 = 505.707763 GW annual-average equivalent.
+CROSS_CHECK:
+- EIA Electric Power Monthly Table 1.1 reports 4,429,502 thousand MWh for 2025, consistent with rounded 4.43 thousand TWh.
+LIMITATION:
+- This is net generation, not end-use consumption and not firm capacity.
+REPRODUCTION_STATUS: PASS.
+
+### REVIEW-EGC-SCALE-C1-005 — ENERGY INSTITUTE ORDER-OF-MAGNITUDE CROSS-CHECK
+TARGET: EVIDENCE-EGC-SCALE-C1-005
+VERDICT: PASS_AS_ORDER_OF_MAGNITUDE_ONLY
+EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION
+INDEPENDENT_SOURCE:
+- Energy Institute Statistical Review evidence.
+REPRODUCED_SOURCE_INPUTS:
+- Asia Pacific 2024 = 16,132 TWh = 52% of global electricity production.
+- North America + Europe = 9,514 TWh = 30%.
+INDEPENDENT_ARITHMETIC:
+- 16,132 / 0.52 = 31,023.076923 TWh.
+- 9,514 / 0.30 = 31,713.333333 TWh.
+STRONGER_CROSS_CHECK:
+- Energy Institute 2025 report directly reports 2024 global electricity generation = 31,256 TWh, which lies inside the rounded-share implied interval.
+LIMITATION:
+- Rounded shares make the inferred numbers unsuitable as exact 2025 denominators.
+REPRODUCTION_STATUS: PASS_AS_OOM.
+
+### REVIEW-EGC-SCALE-C1-006 — UPDATED SCALE TIERS
+TARGET: source job's proposed 1%/10% IEA-side tiers
+VERDICT: REPAIR_REQUIRED_FOR_CURRENT_VINTAGE
+TRUTH_CLASS: CALCULATION + MISSION_INFERENCE
+UPDATED_CURRENT_IEA_CONSUMPTION_ANCHOR:
+- 1% = 286 TWh/year = 32.6484018 GW annual-average.
+- 10% = 2,860 TWh/year = 326.4840183 GW annual-average.
+OLD_VALUES_SUPERSEDED:
+- 282 TWh / 32.1918 GW and 2,820 TWh / 321.9178 GW correspond to the earlier 28,200-TWh vintage.
+EMBER_DIAGNOSTIC_TIER:
+- 1% Ember demand = 317.79 TWh/year = 36.2773973 GW average.
+- 10% Ember demand = 3,177.9 TWh/year = 362.773973 GW average.
+REVIEW_FINDING:
+- Keeping both boundaries as diagnostic telemetry is defensible.
+- A final mission acceptance threshold MUST choose/freeze one service boundary and cannot switch between Ember and IEA denominators after seeing candidate performance.
+- Canonical JOB-EGC-001's 10%-of-latest-IEA criterion at 2,860 TWh/year / 326.484 GW average is numerically consistent with the latest IEA 28,600-TWh anchor.
+
+### REVIEW-EGC-SCALE-C1-007 — M1/M2/M3 THRESHOLD LOGIC
+TARGET:
+- M1 >=1% of 2025 world electricity.
+- M2 >=one year of world electricity demand growth.
+- M3 >=10% of 2025 world electricity.
+VERDICT: PASS_AS_PRE_REGISTERED_SCALE_TELEMETRY / NOT_VERIFIED_AS_FINAL_MISSION_GATE
+TRUTH_CLASS: INFERENCE / MISSION_CRITERION
+RATIONALE:
+- Fractions of a frozen world-scale baseline are candidate-neutral and resistant to post-result gaming.
+- 1%, one-year-growth, and 10% are not laws of physics or source-derived optimal cutoffs.
+- Source evidence supports their magnitude/context, not the proposition that one specific tier is objectively "the" definition of massive.
+- The user's controlling objective job must pre-register the final tier before candidate ranking.
+- Annual-average GW is only a dimensional conversion and MUST NOT satisfy firmness/adequacy by itself.
+REPAIR:
+- Keep M1/M2/M3 as reporting bands.
+- Use the canonical pre-registered 10% latest-IEA delivered/consumption-side criterion if that remains the controlling mission convention after independent objective review.
+- Apply separate common adequacy/reliability gate before any candidate passes MASSIVE_ENERGY.
+
+CONFLICT-EGC-SCALE-BOUNDARY-C1-001 REVIEW:
+STATUS: PARTIALLY_RESOLVED / REMAINS_OPEN_FOR_DECOMPOSITION
+RESOLVED:
+- The two headline totals are not required to agree because they are not proven identical boundaries.
+- Ember methodology supports generation+net-import/gross-service interpretation.
+- IEA methodology distinguishes final-consumption-style quantities from own-use/T&D losses.
+- Latest IEA vintage is 28,600 TWh, not 28,200 TWh.
+UNRESOLVED:
+- Exact decomposition of current 3,179-TWh Ember-vs-IEA gap into gross/net generation differences, own-use, T&D loss, imports, statistical coverage/estimation and classification.
+MISSION_IMPACT:
+- Exact decomposition is not required merely to freeze a single candidate-neutral final-energy baseline, but it IS required before using one dataset to infer loss fractions of the other.
+
+RED_TEAM_CHECK:
+- Attack: one source must be wrong because totals differ. RESULT: REJECTED; boundary/method differences are real and material.
+- Attack: preserve 28,200 because original arithmetic is internally consistent. RESULT: REJECTED for current October-2026 mission; later IEA update supersedes the older estimate.
+- Attack: choose whichever denominator lets a candidate pass 10%. RESULT: FALSIFIED by pre-registration requirement.
+- Attack: use 326.484 GW average as proof of 326.484 GW firm capacity. RESULT: FALSIFIED; adequacy requires chronological/probabilistic service proof.
+- Attack: attribute all 3,179 TWh to T&D losses. RESULT: NOT_SUPPORTED / REJECTED.
+
+REVIEW_SUMMARY:
+- EVIDENCE-EGC-SCALE-C1-001: PASS_WITH_BOUNDARY_SCOPE.
+- EVIDENCE-EGC-SCALE-C1-002: HISTORIC_PASS but CURRENT_ANCHOR_REPAIR_REQUIRED.
+- EVIDENCE-EGC-SCALE-C1-003: OLD_ARITHMETIC_PASS; CURRENT_GAP_REPAIR_REQUIRED.
+- EVIDENCE-EGC-SCALE-C1-004: PASS.
+- EVIDENCE-EGC-SCALE-C1-005: PASS_AS_OOM.
+- M1/M2/M3 structure: PASS as telemetry, NOT_VERIFIED as final acceptance rule.
+- Current latest-IEA 10% anchor: 2,860 TWh/year = 326.484018 GW average.
+- Annual-average power != firmness/adequacy.
+
+STATUS_CHANGE:
+- JOB-EGC-SCALE-ANCHOR-C1-20261005: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED for source vintage and threshold finality; core scale/boundary conclusions survive.
+- JOB-EGC-SCALE-ANCHOR-REV-C1-20261005: EXECUTING -> AWAITING_REVIEW; this reviewer does not self-VERIFY its own review record.
+- GLOBAL_SOLVED: NO.
+- MISSION_STATUS: CONTINUE_REQUIRED.
+
+REPAIR_JOB:
+JOB_ID: JOB-EGC-SCALE-ANCHOR-REPAIR-C1-20261005
+TITLE: Update MASSIVE_ENERGY scale anchors to latest IEA vintage and freeze final denominator
+ROLE: Objective/scale repair
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Replace stale 28,200-TWh-derived scale values with the latest 28,600-TWh IEA anchor, preserve Ember as a separately labeled gross/demand diagnostic, and align final MASSIVE_ENERGY pass/fail with one pre-registered delivered-service boundary plus independent adequacy gate.
+DEPENDENCIES: this review verdict; canonical objective/boundary work.
+REQUIRED_INPUTS: IEA Mid-Year Update 2026; Ember 2026; reviewed boundary methodology; canonical JOB-EGC-001 objective.
+REQUIRED_TOOLS: source reconciliation; deterministic arithmetic.
+EXPECTED_OUTPUT: updated non-gamed scale table and exact mapping to canonical mission criterion.
+FALSIFICATION_CONDITION: FAIL if a candidate may choose between 28,600 and 31,779 TWh denominators after results are known, or if annual-average power is accepted as firmness.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+BLOCKERS: NONE for numeric update; final canonical adoption remains objective-review dependent.
+NEXT_ACTION: Distinct session/source owner repairs; objective integration must preserve latest-vintage + fixed-boundary rule.
+
+EVIDENCE_GRAPH_DELTA:
+- Ember 2026 + methodology -> REVIEW-EGC-SCALE-C1-001 [PASS_SCOPE].
+- IEA Electricity 2026 -> earlier 28,200 vintage.
+- IEA Mid-Year Update 2026 -> updated 28,600 vintage -> REVIEW-EGC-SCALE-C1-002 [REPAIR_CURRENT].
+- Updated pair -> 3,179-TWh boundary conflict -> REVIEW-EGC-SCALE-C1-003.
+- U.S. EIA -> REVIEW-EGC-SCALE-C1-004 [PASS].
+- Energy Institute -> REVIEW-EGC-SCALE-C1-005 [PASS_OOM].
+- Latest IEA 28,600 -> 10% = 2,860 TWh/y = 326.484 GW avg -> canonical objective consistency.
