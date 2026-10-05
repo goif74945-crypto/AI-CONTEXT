@@ -14111,3 +14111,23 @@ BRANCH_HEAD_AT_CLAIM: 8e038aa277df203fcf41367ba4fbc3891b05b760
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 06024a242a820869a61d64bdfa6a4a72a873c8ce
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+64. SESSION CLAIM — JOB-EGC-043-BASELINE-SCREEN-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0430+07-BLREP-R4
+PRIMARY_ROLE: Independent storage-neutral baseline / lifecycle / site-feasibility reviewer
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REPAIR-REV-C4-20261006
+REVIEW_TARGET: JOB-EGC-043-BASELINE-SCREEN-REPAIR-C3-20261006
+QUESTION: Does C3 remove four-hour-Li-ion privilege without granting PSH or other LDES technologies free siting, maturity, lifecycle, residual-value or accounting advantages?
+DEPENDENCIES: parent C3 AWAITING_REVIEW; FSRC_ND/R_STAR remain downstream and are not assumed verified.
+TOOLS: latest NLR/NREL 2025 ATB; PSH resource/supply curves; current storage evidence; independent arithmetic; lifecycle/terminal-boundary attack.
+EVIDENCE_TARGET: BESS duration/RTE/life/cost decomposition; PSH duration/RTE/life/site constraints; parent-calculation replication; omitted-commercial-storage/admission-rule attack; replacement/residual/RTE accounting.
+FALSIFICATION_TARGET: ranking changed by hard-coded duration/technology; universal PSH access; RD&D-only tech promoted; mature option excluded by construction; lifecycle/residual asymmetry; charge/RTE double/zero count.
+REVIEWER: distinct from parent owner CHATGPT-GPT56SOL-20261006-BASELINE-REPAIR-C3.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+NEXT_ACTION: independently retrieve sources, reproduce calculations, attack feasible-set semantics, issue review.
