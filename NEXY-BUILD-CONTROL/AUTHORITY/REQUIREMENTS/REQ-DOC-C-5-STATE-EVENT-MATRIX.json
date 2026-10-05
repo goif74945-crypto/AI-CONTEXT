@@ -96,12 +96,58 @@
     "tests/contract/auth-fail-closed-boundary.test.ts"
   ],
   "STATUS": "MISMATCH",
-  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "LAST_VERIFIED_SHA": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
   "EVIDENCE": {
-    "runtime_mismatch": "NEXY.AI-Test-AI permits error->FREEZE from INIT/READY/CONSENSUS/STABLE/FREEZE beyond DOC-C §5.2 rows.",
-    "test_oracle_mismatch": "tests/contract/state-matrix.test.ts labels timeout/cancel as extended compatibility rails and requires error->FREEZE for every non-STOP state.",
-    "rust_parity": "core-kernel/src/kernel/vnext_matrix.rs already enforces error->FREEZE only from RUNNING and VERIFYING; TypeScript is the drifting implementation.",
-    "change_impact": "Multiple production/test callers depend on the extra TypeScript error transitions. bootstrap.ts and auth-failure.ts can request error while global state is INIT/READY; several tests explicitly require READY+error->FREEZE. Repair must reconcile these callers without inventing non-DOC-C legal rows.",
+    "runtime_mismatch": "At current target 9e615b04..., both TypeScript and Rust contain five extra error->FREEZE transitions from INIT, READY, CONSENSUS, STABLE, and FREEZE beyond final DOC-C.",
+    "test_oracle_mismatch": "Current tests/contract/state-matrix.test.ts is not an exact-set oracle and does not fail on the five extra error rows.",
+    "rust_parity": "Current Rust and TypeScript are mutually aligned on the same 26-row relation, but that parity is spec-wrong; parity does not establish DOC-C compliance.",
+    "change_impact": "Both runtime implementations plus bootstrap/auth fail-closed callers must be reconciled after V16 activation without inventing non-DOC-C legal transitions.",
     "logging_review": "packages/orch-core/system-state.ts implements DOC-C §5.6 transactionally: every persisted system transition writes FSM_TRANSITION EventLog; FREEZE/STOP require and link a primary incident; freeze recovery hooks write ATTEMPT/SUCCESS AuditLog+EventLog around the durable FREEZE->READY transition."
+  },
+  "CURRENT_SOURCE_EVIDENCE": {
+    "TARGET_REF": "refs/heads/NEXY.AI-Test-AI",
+    "TARGET_HEAD_SHA": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "TYPESCRIPT": {
+      "PATH": "packages/core/vnext-state-matrix.ts",
+      "BLOB_SHA": "27e1281fba330784cc3bf2c30e9e1e82f951479b",
+      "TRANSITION_ROW_COUNT": 26,
+      "EXTRA_NON_DOC_C_ERROR_TO_FREEZE_STATES": [
+        "INIT",
+        "READY",
+        "CONSENSUS",
+        "STABLE",
+        "FREEZE"
+      ]
+    },
+    "RUST": {
+      "PATH": "core-kernel/src/kernel/vnext_matrix.rs",
+      "BLOB_SHA": "c55e13839f2bed01a29749f226edef82d1929a4a",
+      "TRANSITION_ROW_COUNT": 26,
+      "EXTRA_NON_DOC_C_ERROR_TO_FREEZE_STATES": [
+        "INIT",
+        "READY",
+        "CONSENSUS",
+        "STABLE",
+        "FREEZE"
+      ]
+    },
+    "TEST_ORACLE": {
+      "PATH": "tests/contract/state-matrix.test.ts",
+      "BLOB_SHA": "9459dbee70b75631b1d0204110116aa2e4be6239",
+      "VERDICT": "NON_EXACT_ORACLE",
+      "DETAIL": "Current test asserts selected required rows/event membership but does not assert the exact final-DOC-C transition relation or reject the five extra error->FREEZE rows."
+    },
+    "CROSS_RUNTIME_VERDICT": "TYPESCRIPT_AND_RUST_CURRENTLY_AGREE_ON_26_ROWS_BUT_BOTH_DRIFT_FROM_FINAL_DOC_C",
+    "EXPECTED_FINAL_DOC_C_RELATION_SIZE": 21
+  },
+  "PRIOR_VERIFICATION_SNAPSHOT": {
+    "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "NOTE": "Preserved as historical evidence only; current source evidence above supersedes source-state assertions from the older target snapshot."
+  },
+  "EVIDENCE_REFRESH": {
+    "CHAT_ID": "C-SOL-V16RC13-LEASE-98776641",
+    "PRODUCT_SOURCE_MUTATION": "NONE",
+    "TARGET_INTEGRATION": "NONE",
+    "METHOD": "Read-only exact target-ref source inspection and deterministic transition-row enumeration."
   }
 }
