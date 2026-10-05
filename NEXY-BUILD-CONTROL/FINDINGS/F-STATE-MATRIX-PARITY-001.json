@@ -1,26 +1,11 @@
 {
   "FINDING_ID": "F-STATE-MATRIX-PARITY-001",
-  "REQ_ID": "REQ-DOC-C-STATE-MATRIX-ERROR-001",
-  "TASK_ID": "TASK-STATE-ERROR-MATRIX-001",
-  "FROM": "CHAT-20261005-GPT56SOL-STATE01",
-  "TO": "MISSION-STATE-001",
+  "RECORD_STATE": "SUPERSEDED_DUPLICATE",
+  "CANONICAL_FINDING_ID": "FINDING-DOC-C5-STATE-ORACLE-001",
+  "CANONICAL_REQ_ID": "REQ-DOC-C-5-STATE-EVENT-MATRIX",
+  "CANONICAL_TASK_ID": "TASK-DOC-C5-STATE-MATRIX-001",
   "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
-  "SEVERITY": "P1",
-  "OBSERVED": [
-    "packages/core/vnext-state-matrix.ts allows error->FREEZE from INIT, READY, RUNNING, VERIFYING, CONSENSUS, STABLE, FREEZE.",
-    "core-kernel/src/kernel/vnext_matrix.rs allows error->FREEZE only from RUNNING and VERIFYING.",
-    "tests/contract/state-matrix.test.ts calls timeout/cancel non-DOC-C compatibility rails and expects error->FREEZE from every non-STOP state.",
-    "tests/contract/core-kernel-vnext-parity.test.ts requires exact Rust/TypeScript transition parity, so current sources are internally contradictory."
-  ],
-  "EXPECTED": "Final DOC-C matrix and both language implementations/tests agree exactly on final event semantics.",
-  "SPEC_EVIDENCE": [
-    "FINAL VERDICT / authority: lines 9844-9854",
-    "Final DOC-C state/event matrix: lines 10363-10467"
-  ],
-  "REPRODUCTION": [
-    "Read Test-AI packages/core/vnext-state-matrix.ts at blob a5ac7d5e97c9fca19b68557fa7012b607cb1ec0e.",
-    "Read Test-AI core-kernel/src/kernel/vnext_matrix.rs at blob 2e5a0a1f9109175ede8884e76bddab2f46c79f77.",
-    "Compare transition triples; TypeScript contains five extra error transitions absent in Rust."
-  ],
-  "STATUS": "REPRODUCED"
+  "STATUS": "RESOLVED",
+  "RESOLUTION": "Duplicate discovered during reconciliation. Canonical finding independently reproduces the same TypeScript/Rust/test-oracle drift. Keep this record only as append-oriented audit history.",
+  "EVIDENCE_ARTIFACT": "NEXY-BUILD-CONTROL/RESULTS/TASK-STATE-ERROR-MATRIX-001-DESIGN.md"
 }
