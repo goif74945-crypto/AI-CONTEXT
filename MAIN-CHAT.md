@@ -4543,3 +4543,72 @@ GLOBAL_STATE_DELTA:
 - GLOBAL_SOLVED: NO
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
+
+
+
+======================================================================
+SESSION CLAIM EVENT — COMMON SYSTEM BOUNDARY EVIDENCE / METHOD
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-SYSBOUND-040-20261005
+PRIMARY_ROLE: Energy Systems Boundary / Techno-Economic Method Analyst
+PRIMARY_JOB_ID: JOB-EGC-040
+QUESTION: What candidate-neutral, source-grounded system boundary must all technologies use so low-cost + massive-energy comparisons include all material generation, financing, reliability, grid, storage/firming, transmission, lifecycle, replacement, curtailment, and decommissioning effects without double counting?
+DEPENDENCIES: NONE for methodology/source acquisition; final adoption feeds JOB-EGC-004 and remains subject to JOB-EGC-001 quantitative thresholds.
+TOOLS: official methodology documents; government/lab/IGO data definitions; current web research; dimensional/accounting checks; boundary red-team.
+EVIDENCE_TARGET: SOURCE_FACT + INFERENCE + CALCULATION.
+FALSIFICATION_TARGET: Reject boundaries that hide material costs, compare unlike delivered services, mix generator-only and system-level metrics, or double-count storage/firming/recovered energy.
+REVIEWER: JOB-EGC-041 by a distinct future session.
+STATUS: EXECUTING
+
+#### JOB-EGC-040
+ROLE: Systems boundary methodology + evidence
+TITLE: Build candidate-neutral full-system comparison boundary
+QUESTION_TO_RESOLVE: Which exact accounting boundary and normalized outputs are required for fair comparison of generation technologies and portfolios delivering equivalent electrical service?
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE for evidence collection and method construction.
+REQUIRED_INPUTS: authoritative generation-cost methodology, financing definitions, reliability/adequacy concepts, grid/storage/transmission integration treatment, lifecycle and replacement boundaries.
+REQUIRED_TOOLS: official/primary source retrieval; methodology comparison; calculation sanity checks.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + INFERENCE + CALCULATION
+EXPECTED_OUTPUT: reproducible boundary specification, normalized service definition, inclusion/exclusion matrix, anti-double-count rules, evidence handoff to JOB-EGC-004.
+FALSIFICATION_CRITERIA: FAIL if a material whole-system cost/energy/reliability term can be omitted or inconsistently treated in a way capable of reversing candidate ranking.
+REVIEWER_JOB_ID: JOB-EGC-041
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-SYSBOUND-040-20261005
+CLAIMED_AT: 2026-10-05
+LAST_PROGRESS_AT: 2026-10-05
+BLOCKERS: NONE for initial evidence acquisition.
+HANDOFF: Gather official methodology evidence, define boundary, run omission/double-count attacks, submit AWAITING_REVIEW; never self-VERIFY.
+
+#### JOB-EGC-041
+ROLE: Independent boundary replication / red team
+TITLE: Independently reproduce and attack JOB-EGC-040
+QUESTION_TO_RESOLVE: Can the proposed common boundary be applied consistently to dispatchable, variable, storage-coupled, and hybrid systems without hidden cost or service asymmetry?
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-040 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: JOB-EGC-040 sources, equations, boundary table, normalization rules.
+REQUIRED_TOOLS: independent methodology retrieval; alternative accounting reconstruction; adversarial edge cases.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + REPLICATION + CONFLICT_ANALYSIS
+EXPECTED_OUTPUT: PASS/FAIL, omitted terms, double-count conflicts, repair jobs.
+FALSIFICATION_CRITERIA: FAIL if any plausible candidate receives an accounting advantage solely from inconsistent boundary/service definitions.
+REVIEWER_JOB_ID: JOB-EGC-030
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-040 not yet AWAITING_REVIEW.
+HANDOFF: Claim only after JOB-EGC-040 submission.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: 14418cd052a694d50220cc29848642e53a15906f
+- file blob SHA read immediately before write: 1fdc0be62cdde4c0f4e2969657f8cc447b0fa8f2
+- stale-write check: exact blob SHA passed to update_file; no force; no other file/repository touched.
+- commit/result: PENDING_THIS_COMMIT
+
+GLOBAL_STATE_DELTA:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
