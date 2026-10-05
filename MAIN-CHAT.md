@@ -4412,3 +4412,21 @@ NEXT_ACTION: distinct session independently reproduce and attack this result.
 
 BRANCH_HEAD_BEFORE_WRITE: 6f6a822ca0cf1e4d9b57af772862371d2bac4fda
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 37d61bbeff63f2fa09f77fe11238cee6ade94327
+
+
+======================================================================
+66. JOB CLAIM — JOB-EGC-047-EROI-LIFECYCLE-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_ROLE: Dynamic lifecycle net-energy / meter-boundary repair architect
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-C3-20261006
+QUESTION: Repair EROI_GATE so front-loaded deployment energy debt, exact output/investment meters, source-resource energy ownership, storage/curtailment losses and diagnostic-only NREPBT cannot create false cross-technology pass/rank results.
+DEPENDENCIES: F-EGC-047REV-P1-001/P1-002/P2-003/P2-004; objective EROI acceptance rule remains separate and may not be invented here.
+TOOLS: latest repo state; peer-reviewed/authoritative source audit; Python/Wolfram time-indexed energy calculations; counterexamples and unit/meter invariants.
+EVIDENCE_TARGET: EROI_GATE_V2 equations/schema; dynamic deployment trajectory; source-vs-investment separation; storage owner rules; regression suite.
+FALSIFICATION_TARGET: same physical system changes EROI solely from meter naming; same lifetime EROI hides radically different deployment debt; source resource is counted asymmetrically; NREPBT/untagged EROI passes as candidate ranking.
+REVIEWER_JOB_ID: JOB-EGC-047-EROI-LIFECYCLE-REPAIR-REV-C4-20261006
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
