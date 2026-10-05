@@ -7972,3 +7972,252 @@ BRANCH_HEAD_AT_CLAIM: 01a6d4cbe4352d0a9f9def052f21df415f1ae82f
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: ae2f0dd9e3c2b697a2b5ed9a7cc1628774665e13
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+57. INDEPENDENT REVIEW RESULT — JOB-EGC-048-FRONTIER-SCREEN-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0325+07-FRONTREV2
+PRIMARY_ROLE: Independent frontier-candidate adversarial reviewer / numerical and source-boundary replicator
+PRIMARY_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REV-C2-20261006
+REVIEWED_JOB: JOB-EGC-048-FRONTIER-SCREEN-C1-20261006
+VERDICT: PARTIAL_FAIL_REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SUMMARY:
+C1 is materially correct on EGS promotion-to-deep-review, fusion deferral, marine non-promotion, waste-heat upper-bound logic, and hybrid whole-system treatment. One material taxonomy defect requires repair: the broad "advanced fission/microreactors" conclusion can be read as saying commercial electric operation is absent globally, but current IAEA evidence shows commercial SMR electricity exists. The U.S. 2026 zero-power criticality evidence remains valid for those specific designs. Candidate class must be split by design/maturity before downstream scoring.
+
+----------------------------------------------------------------------
+REV-EGC-048-001 — EGS COMMERCIAL OPERATION
+----------------------------------------------------------------------
+CLAIM_REVIEWED: CLAIM-EGC-048-EGS-COMMERCIAL-PHYSICAL
+METHOD: independent current-source retrieval.
+SOURCES:
+1) Fervo Energy investor release, 2026-10-01
+https://ir.fervoenergy.com/news-releases/news-release-details/fervo-energy-declares-commercial-operation-cape-station-ahead
+2) Fervo first-power release, 2026-09-24
+https://fervoenergy.com/fervo-energy-achieves-first-power-at-cape-station-a-landmark-moment-for-the-future-of-enhanced-geothermal-systems/
+FINDING:
+- first Cape Station GeoBlock reached contractual COD on 2026-09-30.
+- operator reports 33 MW net power, meeting PPA production threshold, with revenue under PPA.
+- remaining Phase-I GeoBlocks were still commissioning at source date.
+TRUTH_CLASS: EXTERNAL_FACT / OPERATOR_DISCLOSURE
+LIMITATION: no independent public meter dataset or full PPA price reviewed.
+VERDICT: PASS.
+C1 correctly did NOT convert operator commercial-operation disclosure into verified all-in delivered cost.
+
+----------------------------------------------------------------------
+REV-EGC-048-002 — EGS CAPEX FRESHNESS / BOUNDARY
+----------------------------------------------------------------------
+CLAIM_REVIEWED: CLAIM-EGC-048-EGS-CAPEX
+SOURCES:
+1) SEC Form 424B4 filed 2026-05-14
+https://www.sec.gov/Archives/edgar/data/1853868/000162828026034849/fervoenergy-424b4.htm
+2) Fervo Q2 2026 results, 2026-08-12
+https://ir.fervoenergy.com/news-releases/news-release-details/fervo-energy-reports-second-quarter-2026-results
+SOURCE_FACT:
+- SEC prospectus states approximate $7,000/kW estimate as of 2025-12-31 for one standardized 50-MW GeoBlock, inclusive of wellfield, surface facilities and plant equipment.
+- newer Q2 disclosure says Fervo EXPECTS Cape Phase II to achieve an all-in $5,500/kW, toward a $3,000/kW long-term target.
+CALCULATION:
+- historical 50-MW GeoBlock arithmetic: 50,000 kW * $7,000/kW = $350,000,000.
+- illustrative Phase-II 400 MW * $5,500/kW = $2.2 billion if the guidance applies uniformly.
+- 7,000 -> 5,500 is a 21.4286% reduction in $/kW, but this is NOT a measured realized reduction because boundaries/project phases differ and $5,500/kW is guidance.
+REPLICATION: Python Decimal + direct arithmetic PASS.
+TRUTH_CLASS:
+- $7,000/kW: SOURCE_FACT about historical company estimate.
+- $5,500/kW: SOURCE_FACT about current company EXPECTATION / PROJECTION.
+VERDICT: PASS_WITH_FRESHNESS_ANNOTATION.
+REPAIR_NEEDED: downstream models must not treat $7,000 as the latest Phase-II expected cost, nor $5,500 as realized audited plant CAPEX.
+CURRENT_LOW_COST: NOT_VERIFIED.
+
+----------------------------------------------------------------------
+REV-EGC-048-003 — EGS RESOURCE / SCALE
+----------------------------------------------------------------------
+CLAIMS_REVIEWED: CLAIM-EGC-048-EGS-SCALE
+SOURCES:
+1) NREL, Geothermal Resources and Technologies
+https://www.nrel.gov/geothermal/technologies.html
+2) DOE, Pathways to Commercial Liftoff: Next-Generation Geothermal Power
+https://www.energy.gov/sites/default/files/2025-07/LIFTOFF_DOE_Next-Generation-Geothermal%20Power.pdf
+FINDING:
+- NREL model reports total U.S. geothermal installed capacity could reach ~90 GWe by 2050 under updated assumptions.
+- DOE Liftoff reports next-generation geothermal resource potential on the order of 5,500 GW; it is resource/model potential, not deployed economic capacity.
+TRUTH_CLASS: MODEL_RESULT / SOURCE_FACT ABOUT MODEL.
+VERDICT: PASS.
+RED_TEAM: using 5,500 GW as deployable low-cost capacity would be FALSIFIED boundary logic.
+
+----------------------------------------------------------------------
+REV-EGC-048-004 — EGS RESERVOIR LONGEVITY
+----------------------------------------------------------------------
+CLAIM_REVIEWED: CLAIM-EGC-048-EGS-RESERVOIR-RISK
+SOURCES:
+1) Communications Engineering 2025
+https://www.nature.com/articles/s44172-025-00458-7
+2) Stanford Geothermal Workshop database, Project Red reservoir modelling
+https://pangea.stanford.edu/ERE/db/IGAstandard/record_detail.php?id=38003
+3) Fervo operator production-data update, 2026-04-13
+https://fervoenergy.com/enhanced-geothermal-has-been-proven-at-scale-heres-what-two-years-of-production-data-show/
+FINDING:
+- peer-reviewed article reports no thermal decline over a 6,200 h (~258 day) Project Red period cited there.
+- Stanford model record projects thermal-breakthrough behaviour around ~5 years under simplifying assumptions at 40 L/s; model explicitly excludes some effects and is not a universal reservoir law.
+- later operator disclosure reports >600 production days, >500 days with no observable decline, followed by ~2.5 F slight temperature decrease consistent with its model.
+TRUTH_CLASS: MIXED SOURCE_FACT + OPERATOR_MEASUREMENT_CLAIM + MODEL_RESULT.
+VERDICT: PASS_WITH_UPDATE.
+INTERPRETATION:
+C1 correctly leaves multi-decade reservoir/replacement economics OPEN. Newer >600-day data reduces uncertainty relative to short tests but does not validate 20-60 year commercial lifecycle performance.
+
+----------------------------------------------------------------------
+REV-EGC-048-005 — WASTE-HEAT UPPER-BOUND REPLICATION
+----------------------------------------------------------------------
+CLAIM_REVIEWED: CLAIM-EGC-048-WASTE-HEAT-UPPER-BOUND
+SOURCES:
+1) ORNL 2019: ~900 trillion Btu/year unrecovered low-temperature U.S. manufacturing waste heat
+https://info.ornl.gov/sites/publications/Files/Pub136225.pdf
+2) EIA: 2025 U.S. utility-scale net generation ~4,429 billion kWh
+https://www.eia.gov/energyexplained/electricity/electricity-in-the-us-generation-capacity-and-sales.php
+METHOD_A:
+900e12 Btu * 0.29307107 Wh/Btu / 1e12 = 263.763963 TWh_th/year.
+METHOD_B:
+900e12 Btu * 1055.05585262 J/Btu / 3.6e15 = 263.763963155 TWh_th/year.
+DIFFERENCE: 1.55e-7 TWh.
+100%-CONVERSION IMPOSSIBLE UPPER-BOUND SHARE:
+263.763963 / 4429 * 100 = 5.955384%.
+REPLICATION_STATUS: INDEPENDENT_SESSION_DUAL_FORMULATION_PASS.
+VERDICT: PASS.
+LIMITATION:
+bounds only cited low-temperature U.S. manufacturing segment; actual electric output is below thermal ceiling and other waste-heat streams are outside scope.
+C1's "supplemental, not standalone massive source for this quantified segment" conclusion survives review.
+
+----------------------------------------------------------------------
+REV-EGC-048-006 — FUSION BOUNDARY
+----------------------------------------------------------------------
+CLAIM_REVIEWED: CLAIM-EGC-048-FUSION-STATUS
+INDEPENDENT_SOURCES:
+- LLNL 2025 NIF record: 8.6 MJ fusion yield from 2.08 MJ on-target laser energy.
+  https://lmf.llnl.gov/science/achieving-fusion-ignition
+- LLNL NIF power conditioning: ~400 MJ stored electrical energy per shot.
+  https://lmf.llnl.gov/about/how-nif-works/power-conditioning-system
+- LLNL IFE driver requirements: order-10-Hz, >=10% wall-plug target, >1 billion shots.
+  https://lift.llnl.gov/research-areas/ife/driver-technology
+- ITER: planned Q=10 plasma gain, explicitly no electricity production.
+  https://www.iter.org/fusion-energy/what-will-iter-do
+INDEPENDENT_CALCULATION:
+8.6/400 = 2.15% optimistic fusion-yield/stored-electrical ratio before thermal-to-electric conversion and other facility loads.
+TRUTH_CLASS: CALCULATION + SOURCE_FACT.
+VERDICT: PASS.
+C1's current-winner deferral is reinforced; scientific/plasma/target gain is not whole-system net delivered electricity.
+
+----------------------------------------------------------------------
+REV-EGC-048-007 — ADVANCED FISSION TAXONOMY CONFLICT
+----------------------------------------------------------------------
+CLAIM_REVIEWED: CLAIM-EGC-048-ADVANCED-FISSION-STATUS
+C1 SOURCE CLAIM:
+2026 U.S. advanced-reactor zero-power criticality experiments do not prove net electricity/cost/reliability.
+VERDICT_ON_THAT_SPECIFIC_CLAIM: PASS.
+
+CONFLICT_ID: CONFLICT-EGC-048-ADV-001
+INDEPENDENT_SOURCE:
+IAEA 2025 programme/status evidence
+https://www.iaea.org/sites/default/files/gc/gov-inf-2025-8-gc69-inf-4.pdf
+FINDING:
+- Akademik Lomonosov SMR units have operated commercially since 2020, supplying 70 MW for electricity/district heat.
+- HTR-PM entered commercial operation in Dec 2023, generating 200 MW electricity.
+ADDITIONAL IAEA STATUS:
+https://aris.iaea.org/Publications/
+TRUTH_CLASS: SOURCE_FACT / OPERATIONAL EVIDENCE.
+
+CONFLICT:
+C1 candidate class is "advanced fission/microreactors" but its evidence set is specific to 2026 U.S. zero-power demonstrations. A broad downstream statement that commercial electricity evidence for the whole class is pending is false if SMRs/advanced fission globally are included.
+
+VERDICT: FAIL_AS_BROADLY_WORDED / REPAIR_REQUIRED.
+REPAIR:
+split at minimum into:
+A) U.S._2026_ZERO_POWER_ADVANCED_REACTOR_EXPERIMENTS -> physics demonstration only; net-electric evidence absent for those devices.
+B) GLOBAL_OPERATIONAL_SMRS -> physical commercial electric generation demonstrated; low-cost mass-scale economics still NOT_VERIFIED.
+C) OTHER_ADVANCED_DESIGNS -> design-specific evidence required; no inheritance of evidence across reactor types.
+IMPACT_ON_FRONT_RUNNER:
+does NOT promote SMR/advanced fission to mission winner. It prevents an incorrect physical-evidence demotion.
+
+----------------------------------------------------------------------
+REV-EGC-048-008 — MARINE EVIDENCE
+----------------------------------------------------------------------
+CLAIM_REVIEWED: CLAIM-EGC-048-MARINE-SCALE-COST
+INDEPENDENT_SOURCES:
+1) DOE resource taxonomy
+https://www.energy.gov/cmei/water/marine-energy-resource-assessment-and-characterization
+- wave technical resource 1,400 TWh/year; tidal 220 TWh/year.
+- technical != practical/economic potential.
+2) DOE Verdant RITE operational evidence
+https://www.energy.gov/cmei/water/articles/milestone-tidal-energy-verdant-power-successfully-retrieves-test-turbine-after
+- 210 MWh over six months; >99% availability; grid-connected.
+3) DOE PacWave opening, 2026-09-01
+https://www.energy.gov/cmei/water/articles/does-office-critical-minerals-and-energy-innovation-announces-testing-facility
+- first fully operational, pre-permitted grid-connected wave test facility in continental U.S.; inaugural tests still being prepared.
+VERDICT: PASS_WITH_PHYSICAL-EVIDENCE_ANNOTATION.
+Marine physical/grid generation is proven at demonstration scale; broad LOW_COST + MASSIVE commercial deployment remains NOT_VERIFIED.
+
+----------------------------------------------------------------------
+REV-EGC-048-009 — HYBRID BOUNDARY
+----------------------------------------------------------------------
+CLAIM_REVIEWED: CLAIM-EGC-048-HYBRID
+VERDICT: PASS.
+Reason:
+generation+storage+grid hybrids change timing, curtailment, reliability and shared-infrastructure economics but do not create primary energy. Component LCOE alone cannot decide the whole-system winner; common chronological R_STAR + FSRC_ND accounting remains required.
+
+----------------------------------------------------------------------
+CLAIM-BY-CLAIM REVIEW MATRIX
+----------------------------------------------------------------------
+CLAIM-EGC-048-EGS-COMMERCIAL-PHYSICAL: PASS.
+CLAIM-EGC-048-EGS-CAPEX: PASS_WITH_FRESHNESS_ANNOTATION.
+CLAIM-EGC-048-EGS-COST-TARGET: PASS_AS_MODEL_TARGET_NOT_MEASUREMENT.
+CLAIM-EGC-048-EGS-SCALE: PASS_AS_MODEL_RESULT_NOT_DEPLOYED_CAPACITY.
+CLAIM-EGC-048-EGS-RESERVOIR-RISK: PASS_WITH_600DAY_UPDATE; MULTI_DECADE_UNKNOWN.
+CLAIM-EGC-048-FUSION-STATUS: PASS.
+CLAIM-EGC-048-ADVANCED-FISSION-STATUS: PARTIAL_FAIL / TAXONOMY_REPAIR_REQUIRED.
+CLAIM-EGC-048-MARINE-SCALE-COST: PASS.
+CLAIM-EGC-048-WASTE-HEAT-UPPER-BOUND: PASS / INDEPENDENT_REPLICATION_COMPLETE.
+CLAIM-EGC-048-HYBRID: PASS.
+
+OVERALL C1 CANDIDATE-STATE REVIEW:
+- EGS PROMOTE_TO_DEEP_INTEGRATED_REVIEW: PASS.
+- FUSION CURRENT_WINNER_DEFER: PASS.
+- ADVANCED_FISSION/MICROREACTORS: REPAIR REQUIRED; split demonstrated global SMR electricity from U.S. zero-power devices.
+- MARINE current broad low-cost winner NOT_VERIFIED: PASS.
+- LOW-TEMP MANUFACTURING WASTE HEAT supplemental for quantified segment: PASS.
+- HYBRIDS retain for whole-system optimization: PASS.
+
+STATUS_CHANGE:
+JOB-EGC-048-FRONTIER-SCREEN-REV-C2-20261006: EXECUTING -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-048-FRONTIER-SCREEN-C1-20261006: AWAITING_REVIEW -> REVIEW_FAILED_PENDING_TARGETED_REPAIR.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006
+TITLE: Repair advanced-fission maturity taxonomy and frontier evidence freshness
+ROLE: Frontier-screen repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can the C1 frontier screen be repaired without changing valid candidate states by separating design-specific advanced-fission evidence and updating EGS current cost/longevity annotations?
+CANDIDATE: EGS; U.S. zero-power advanced reactors; global operational SMRs; other advanced fission; fusion; marine; waste heat; hybrids.
+DEPENDENCIES: JOB-EGC-048-FRONTIER-SCREEN-REV-C2-20261006 review result.
+REQUIRED_INPUTS: C1 evidence; REV-EGC-048-001..009; current IAEA/Fervo evidence.
+REQUIRED_TOOLS: latest primary-source retrieval; explicit taxonomy table; source-date audit.
+REQUIRED_EVIDENCE:
+- preserve $7,000/kW as historical 2025 Fervo estimate, add $5,500/kW Phase-II expected guidance as projection;
+- preserve 33-MW Cape operator COD evidence;
+- add >600-day Project Red operator longevity update without treating it as multi-decade proof;
+- split zero-power U.S. advanced experiments from global operational SMR evidence;
+- preserve all passing C1 conclusions unless new evidence independently falsifies them.
+EXPECTED_OUTPUT: repaired candidate-state table and evidence graph with no cross-design inheritance.
+FALSIFICATION_CONDITION:
+FAIL if commercial SMR electricity is erased, if zero-power criticality is promoted to net electric output, if projected $5,500/kW is treated as realized CAPEX, or if EGS 600-day history is generalized to 20-60 years.
+REVIEWER_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session performs narrow repair, then another distinct session reviews the repaired frontier screen.
+
+BRANCH_HEAD_AT_RESULT_PRECHECK: 2e2e9f9aa529f54c9532422990cd103e980e1715
+MAIN_CHAT_BLOB_SHA_AT_RESULT_PRECHECK: b4e0f53cfa57b4adcef1a299f331dcb18c60ef5c
