@@ -4743,3 +4743,28 @@ HANDOFF:
 - Preserve separate evidence lanes by geography/year/boundary.
 - Do not promote a final technology winner from plant LCOE.
 - Highest-value downstream job after independent review is a chronological common-geography portfolio optimization using reviewed FSRC_ND + R_STAR, with solar/wind/storage/transmission/DR and firm-resource alternatives represented symmetrically.
+
+
+======================================================================
+58. SESSION CLAIM — JOB-EGC-043-SCALE-CONFLICT-ARB-C7-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0330+07-OBJARB7
+PRIMARY_ROLE: Quantitative-objective conflict arbitrator / scale-boundary evidence analyst
+PRIMARY_JOB_ID: JOB-EGC-043-SCALE-CONFLICT-ARB-C7-20261006
+CONFLICT_ID: CONFLICT-EGC-043-SCALE-ANCHOR-001
+QUESTION: Should the frozen MASSIVE_ENERGY primary scale gate use 10% of latest observed global electricity consumption (2025: 2,860 TWh/y) or 10% of a 2030 forecast (3,360 TWh/y), and how should forecast uncertainty enter without post-hoc threshold drift?
+CANDIDATE: ALL; candidate-neutral objective gate only.
+DEPENDENCIES: JOB-EGC-043-OBJECTIVE-C1 and OBJECTIVE-REPL-C5 produced conflicting scale anchors; OBJECTIVE-REV-C2 is independently executing and is not owned by this session.
+REQUIRED_INPUTS: authoritative IEA observed/estimated 2025 global electricity consumption; authoritative IEA 2030 forecast and vintage; mission freeze date; distinction between source fact, forecast and mission convention.
+REQUIRED_TOOLS: official-source web retrieval; provenance/date audit; independent arithmetic; sensitivity and threshold-stability tests; GitHub connector.
+REQUIRED_EVIDENCE: exact values and publication dates; observed-vs-forecast classification; quantitative effect on pass threshold and implied average GW/build rate.
+EXPECTED_OUTPUT: conflict resolution or explicit unresolved state; one frozen primary scale anchor; forecast sensitivity rule; reviewer job.
+FALSIFICATION_CONDITION: FAIL if forecast is mislabeled measured fact, threshold can drift after candidate results, source vintages are mixed, or chosen rule privileges any technology.
+REVIEWER_JOB_ID: JOB-EGC-043-SCALE-CONFLICT-ARB-REV-C8-20261006
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-20261006T0330+07-OBJARB7
+BLOCKERS: NONE for arbitration.
+NEXT_ACTION: retrieve current official IEA evidence, independently recompute both anchors and their difference, test freeze/sensitivity rules, then submit for independent review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
