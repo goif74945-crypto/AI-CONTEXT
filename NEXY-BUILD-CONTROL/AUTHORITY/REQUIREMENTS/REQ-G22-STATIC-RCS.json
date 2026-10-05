@@ -1,0 +1,63 @@
+{
+  "REQ_ID": "REQ-G22-STATIC-RCS",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "UNKNOWN",
+  "SPEC_LINES": "DOCX extracted paragraph order 7702-7739; G21 related checks 7616-7626 and strict syscall rule 7657-7664",
+  "SPEC_TEXT": "G22 defines a deterministic, versioned static rejection reason taxonomy R001-R010 and requires rejection reason_codes to be non-empty, lexicographically sorted, and immutable after anchor.",
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC",
+  "EXPECTED_BEHAVIOR": {
+    "static_reason_codes": [
+      "R001_DEPENDENCY_CYCLE",
+      "R002_PERMISSION_ESCALATION",
+      "R003_RESOURCE_CAP_VIOLATION",
+      "R004_DETERMINISM_CLASS_VIOLATION",
+      "R005_UNDECLARED_NETWORK_SCOPE",
+      "R006_DYNAMIC_CODE_LOADING",
+      "R007_NONDET_SYSCALL",
+      "R008_SCHEMA_NONCANONICAL",
+      "R009_CONTAINER_DIGEST_MISMATCH",
+      "R010_SPEC_HASH_DRIFT"
+    ],
+    "ordering": "reason_codes are deduplicated and lexicographically sorted before consumption by canonical rejection records",
+    "identity_constraints": [
+      "permission escalation maps to R002_PERMISSION_ESCALATION",
+      "nondeterministic syscall evidence maps to R007_NONDET_SYSCALL",
+      "R007 must not be repurposed for permission escalation"
+    ]
+  },
+  "FORBIDDEN_BEHAVIOR": [
+    "emit legacy/noncanonical static reason identities as canonical G22 outcomes",
+    "repurpose R007_NONDET_SYSCALL for authority or permission escalation",
+    "return nondeterministically ordered reason-code sets in a canonical rejection path",
+    "invent nondeterministic-syscall evidence from a mere syscall-scope mismatch"
+  ],
+  "AFFECTED_SYSTEMS": [
+    "packages/phase-f/game/ncf-governance.ts",
+    "packages/phase-f/universe/capability-node.ts",
+    "tests covering CapabilityNode/G21/G22 rejection identity"
+  ],
+  "DEPENDENCIES": [
+    "G21 Gate A static verifier checks",
+    "G20 CapabilityNode canonical structure and permission_scope"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "packages/phase-f/game/ncf-governance.ts",
+    "packages/phase-f/universe/capability-node.ts"
+  ],
+  "TEST_PATHS": [
+    "tests/integration/capability-node.spec.ts",
+    "focused G21/G22 reason-code contract tests"
+  ],
+  "STATUS": "PARTIAL",
+  "STATUS_REASON": "GovernedCapabilityRegistry on current integration SHA uses the canonical G22 identities and sorted uniqueness; CapabilityNode verifier still exposes legacy/noncanonical identities.",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": [
+    "attached authoritative DOCX SHA-256 b35ee1bf...d26b7, extracted paragraphs 7616-7626, 7657-7664, 7702-7739",
+    "packages/phase-f/game/ncf-governance.ts blob 563f60f78c7c2390a91f6b3b1364e92ddb8c19b0",
+    "packages/phase-f/universe/capability-node.ts blob 25d26bf233b1d7b446027aad391688b7e91b09a0",
+    "tests/integration/capability-node.spec.ts blob a04597422ebfa57f2bff8e7d72885e361b492b9b"
+  ],
+  "OPEN_INTERPRETATION": [
+    "Legacy syscall-scope mismatch is not equivalent to G22 R007_NONDET_SYSCALL. If retained as a fail-closed check in CapabilityNode, its canonical reason mapping must not be guessed; R008_SCHEMA_NONCANONICAL is an engineering candidate only when the condition is explicitly treated as noncanonical permission_scope schema."
+  ]
+}
