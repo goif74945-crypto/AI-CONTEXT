@@ -1,0 +1,56 @@
+{
+  "OVERLAY_ID": "INV-608426CB-C-SOL-20261005-1923-SCOPE-CONFIG-OVERLAY-004",
+  "SUPERSEDES_CLASSIFICATION_ONLY": "INV-608426CB-C-3B5E71A2",
+  "COMPOSES": [
+    "INV-608426CB-C-SOL-20261005-1913-EXPLICIT-EXPERIMENTAL-OVERLAY-002",
+    "CLOSURE-CLASSIFICATION-OVERRIDE-608426CB-EXPERIMENTAL-TESTS-001",
+    "INV-608426CB-C-SOL-20261005-1920-EXPLICIT-EXPERIMENTAL-ACCOUNTING-003"
+  ],
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "COMMIT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CORRECTION": {
+    "path": "config/experimental-scope.ts",
+    "blob_sha": "850e0918de501ad0413b61a81be0a3b86152c263",
+    "prior_class": "EXPERIMENTAL",
+    "corrected_class": "CONFIG",
+    "prior_status": "UNSCANNED",
+    "corrected_status": "UNSCANNED",
+    "active_doc_c_scope": true,
+    "required_scan": true,
+    "rationale": [
+      "The file declares canonical experimental source/test scope governance.",
+      "Canonical/default vitest.config.ts imports its EXPERIMENTAL_TEST_FILES and EXPERIMENTAL_SOURCE_GLOBS.",
+      "PRIMARY execution-set evidence records the same blob as CONFIG_EVIDENCE.experimental_scope."
+    ]
+  },
+  "EFFECTIVE_CLASS_COUNTS_AFTER_KNOWN_EXPERIMENTAL_OVERRIDES": {
+    "CONFIG": 41,
+    "BUILD_SUPPORT": 42,
+    "OUT_OF_SCOPE": 15,
+    "DOCUMENTATION": 54,
+    "GENERATED": 2,
+    "AUTHORITATIVE_RUNTIME": 247,
+    "EXPERIMENTAL": 232,
+    "TEST": 169,
+    "CONTRACT": 19,
+    "INTEGRATION": 8,
+    "MIGRATION": 56
+  },
+  "TOTAL_FILES": 885,
+  "REQUIRED_SCAN_ACCOUNTING": {
+    "explicit_experimental_adjusted_required_candidates": 587,
+    "delta_from_config_reclassification": 0,
+    "reason": "config/experimental-scope.ts was never part of the 229 verified explicit-experimental path set; it remains an UNSCANNED active required CONFIG record."
+  },
+  "STATUS_SEMANTICS": {
+    "historical_inventory_mutated": false,
+    "scan_status_mutated": false,
+    "verified_clean_claimed": false
+  },
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "STATUS": "CONTROL_PLANE_REPAIR_APPLIED_REVERIFY_REQUIRED"
+}
