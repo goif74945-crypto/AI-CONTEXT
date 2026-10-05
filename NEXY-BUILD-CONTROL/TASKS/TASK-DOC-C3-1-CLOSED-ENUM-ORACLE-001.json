@@ -1,13 +1,13 @@
 {
   "TASK_ID": "TASK-DOC-C3-1-CLOSED-ENUM-ORACLE-001",
   "CREATOR_CHAT": "C-6D91A4F2",
-  "OWNER_CHAT": "UNASSIGNED",
+  "OWNER_CHAT": "C-SOL-20261006-0142-CLOSED-ENUM",
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-3-1-CORE-TYPES",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "ACTIVE",
   "PRIORITY": "P1",
   "RISK": "LOW",
-  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "BASE_SHA": "ebb549055594295cd276e7c3a3ebfa8f6539362d",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "GAP_CLASS": "MISSING_REQUIRED_TEST / TEST_ORACLE_DEFECT",
   "TARGET_PATHS": [
@@ -37,6 +37,12 @@
     "Independent review confirms the new oracle fails on an injected unsupported enum member or an equivalent mutation-test proof.",
     "No mutation to NEXY.ai."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "After a Git-valid Constitution-authorized worker namespace exists, claim an isolated test-only worker branch, add exact closed-enum oracles, run focused and contract tests, mutation-check an extra enum member, review, integrate, and reverify."
+  "BLOCKER": null,
+  "NEXT_ACTION": "After a Git-valid Constitution-authorized worker namespace exists, claim an isolated test-only worker branch, add exact closed-enum oracles, run focused and contract tests, mutation-check an extra enum member, review, integrate, and reverify.",
+  "ACTUAL_WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C3-1-CLOSED-ENUM-ORACLE-001",
+  "CLAIMED_AT": "2026-10-06T01:42:00+07:00",
+  "UNBLOCKED_BY": "Current explicit user instruction authorizes isolated worker branches; Git-valid prefix NEXY.AI-Test-AI-work/* avoids ref collision with integration branch.",
+  "CHOSEN_MUTATION_SCOPE": [
+    "tests/contract/core-types.test.ts (new file only)"
+  ]
 }
