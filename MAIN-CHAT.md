@@ -9183,3 +9183,396 @@ NEXT_ACTION: a distinct session claims the reviewer; downstream integration cons
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+
+======================================================================
+REPAIR RESULT — JOB-EGC-044A-PV-MATERIALS-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0455+07-PVMAT-R3
+PRIMARY_ROLE: PV material-pathway repair architect / cohort mass-balance analyst
+PRIMARY_JOB_ID: JOB-EGC-044A-PV-MATERIALS-REPAIR-C3-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-044A-PV-MATERIALS-REPAIR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair the PV material gate so that:
+- 2024-era TOPCon silver intensity is not mislabeled as current 2026 evidence;
+- Fraunhofer's 1.1 mg/W physical pilot is not promoted to a guaranteed fleet value;
+- replacement cohorts and end-of-life timing are inside the material ledger;
+- recycling never appears before recoverable end-of-life material exists;
+- high-deployment closure is disjunctive: one or more validated levers may close a gap, but no specific conjunction is declared universally necessary;
+- low-Ag substitution pays its Ni/Cu/manufacturing/supply-chain burdens rather than treating copper as free.
+
+----------------------------------------------------------------------
+A. SOURCE / MATURITY ARBITRATION
+----------------------------------------------------------------------
+
+EVIDENCE_ID: PV-R3-001
+CLAIM_ID: CLAIM-EGC-044A-AG-INTENSITY-2026
+EVIDENCE_CLASS: MEASUREMENT / PHYSICAL_PILOT_EVIDENCE + SOURCE_FACT
+SOURCE: Fraunhofer ISE
+SOURCE_DATE: 2026-04-08
+URL:
+https://www.ise.fraunhofer.de/en/press-media/news/2026/silver-consumption-in-topcon-solar-cells-reduced-by-factor-ten.html
+CURRENT_SOURCE_FACT:
+- current-average TOPCon silver intensity ~=10-12 mg Ag/Wp;
+- inline Ni/Cu/Ag pilot metallization achieved 1.1 mg Ag/Wp;
+- M10 TOPCon cells reached 24% efficiency.
+ADDITIONAL CURRENT FRAUNHOFER PAGE:
+https://www.ise.fraunhofer.de/en/business-areas/photovoltaics-materials-cells-and-modules/silicon-solar-cells-and-modules/copper-metallized-silicon-solar-cells.html
+SOURCE_FACT:
+- pilot TOPCon demonstrations around 1 mg Ag/W;
+- batch size 186 M10 cells with fill factor (82.1 +/- 0.3)%;
+- small-scale module accelerated-aging tests reported as DH2000 and TC400.
+MATURITY_CLASS:
+PHYSICAL_PILOT / INDUSTRIALLY_RELEVANT_PROCESS_EVIDENCE, NOT fleet-scale manufacturing proof.
+NOT_VERIFIED:
+mass-production yield at multi-GW/TW scale; equipment fleet CAPEX/OPEX; chemical/water burden; cell-to-module bankability over field lifetime; exact Ni/Cu mass per W; global supply-chain capacity.
+
+EVIDENCE_ID: PV-R3-002
+CLAIM_ID: CLAIM-EGC-044A-MATERIAL-DMFA-2026
+EVIDENCE_CLASS: SIMULATION_RESULT / PUBLISHED_DYNAMIC_MATERIAL_FLOW_MODEL
+SOURCE: IEA PVPS Task 12, Report T12-34:2026
+TITLE: Primary and Secondary Material Flows for the Future Global Deployment of Silicon-based Photovoltaic Systems
+SOURCE_DATE: 2026-09
+DOI: 10.69766/WQPE7074
+URLs:
+https://iea-pvps.org/key-topics/t12-material-flows-global-deployment-silicon-systems-2026/
+https://repository.tudelft.nl/record/uuid%3Afe43ea97-4758-43af-a0b0-9f6acfc198fb
+MODEL_SCOPE:
+dynamic material-flow analysis for silicon PV, 29-75 TWp global installed-capacity scenarios by 2050; tracks material demand, in-use stock and end-of-life flows; includes technology evolution, material-efficiency change and substitution.
+PUBLISHED_OUTPUTS:
+- cumulative copper demand 2025-2050 ~=145-280 Mt;
+- annual copper demand may peak mid-2040s around 7-15 Mt/y, approximately 30-65% of current global copper mine production in the report's comparison;
+- cumulative silver demand ~=100,000-200,000 t;
+- secondary material from decommissioned systems supplies only about 15-20% of total material demand over 2025-2050 across materials in the report model;
+- silver is an exception: future PV waste potentially supplies about 30-45% of cumulative PV silver demand;
+- even hypothetical 100% closed-loop recycling only partially reduces resource impacts.
+INTERPRETATION:
+This dMFA lane is stronger than a net-stock-addition-only calculation for material sufficiency because it explicitly tracks in-use stock/end-of-life and technology evolution. It remains a model, not measured future material flow.
+LIMITATION:
+The exact lifetime-distribution/cohort parameters are not reproduced in this job's extracted evidence; therefore this session does not invent them. Candidate-specific cohort implementation remains independently reviewable.
+
+EVIDENCE_ID: PV-R3-003
+CLAIM_ID: CLAIM-EGC-044A-AG-SUPPLY-REFERENCE
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: U.S. Geological Survey, Mineral Commodity Summaries 2026 / Silver
+SOURCE_DATE: 2026-02-06
+DOI: 10.3133/mcs2026
+URLs:
+https://www.usgs.gov/publications/mineral-commodity-summaries-2026
+https://www.usgs.gov/centers/national-minerals-information-center/silver-statistics-and-information
+SOURCE_FACT:
+- 2025 world silver mine production estimate = 26,000 metric t;
+- current reported world silver reserves = 610,000 metric t.
+BOUNDARY:
+Mine production is an annual-flow comparator; reserves are an economic/geological stock estimate that can change with price, exploration and technology. Neither is a PV-only available-supply allocation.
+
+EVIDENCE_ID: PV-R3-004
+CLAIM_ID: CLAIM-EGC-044A-COPPER-NOT-FREE
+EVIDENCE_CLASS: SOURCE_FACT + SYSTEM_INFERENCE
+SOURCE: IEA Global Critical Minerals Outlook 2026
+SOURCE_DATE: 2026-07-16
+URL:
+https://www.iea.org/reports/global-critical-minerals-outlook-2026/outlook
+SOURCE_FACT:
+- copper has the largest absolute demand growth among covered minerals, adding about 7 Mt to 2040 in STEPS;
+- base announced-project pipeline leaves about a 25% copper primary-supply gap in 2035 under the cited STEPS comparison.
+SCOPE:
+economy-wide copper balance, not a PV-only forecast.
+IMPLICATION:
+Ag-to-Cu substitution cannot be assigned zero opportunity/resource cost. Candidate-specific incremental cell-metallization Cu intensity remains UNKNOWN unless directly evidenced.
+
+----------------------------------------------------------------------
+B. COHORT-AWARE MATERIAL LEDGER — PV_MATERIAL_GATE_V2
+----------------------------------------------------------------------
+
+For each technology k, material m and year t:
+
+P_STOCK[k,t] =
+operating PV capacity by technology.
+
+SURVIVAL_k(a) =
+evidence-backed probability/fraction of a cohort remaining in service at age a.
+
+P_RETIRE[k,t] =
+sum over prior cohorts of commissioned capacity times retirement probability in year t.
+
+P_GROSS_INSTALL[k,t] =
+P_NET_STOCK_CHANGE[k,t] + P_RETIRE_REPLACEMENT[k,t]
+plus any explicitly required repowering/replacement cohort.
+
+RULE:
+P_GROSS_INSTALL must never be replaced by positive net stock addition when making material-sufficiency claims.
+
+Gross material input:
+D_GROSS[m,t] =
+sum_k P_GROSS_INSTALL[k,t] * I_MATERIAL[m,k,t]
++ BOS_MATERIAL[m,t].
+
+Eligible end-of-life material:
+EOL_AVAILABLE[m,t] =
+sum over historical cohorts of retiring material mass that actually reaches collection at t.
+
+Secondary material:
+D_SECONDARY[m,t] <=
+EOL_AVAILABLE[m,t]
+* COLLECTION_RATE[m,t]
+* RECOVERY_YIELD[m,t]
+* QUALITY_YIELD[m,t],
+and must also respect evidenced recycling-process capacity.
+
+Primary material requirement:
+D_PRIMARY[m,t] =
+max(0, D_GROSS[m,t] - D_SECONDARY[m,t]).
+
+NO_INSTANT_RECYCLING:
+Material installed at t cannot be credited as secondary feed at t unless an independently evidenced manufacturing-scrap loop exists with its own yield/process boundary.
+Future module EOL cannot be moved earlier to close a present supply gap.
+
+NO_RESERVE_AS-GEOLOGY-CEILING:
+RESERVE_SHARE is a stress indicator only. A reserve comparison cannot by itself prove physical exhaustion or prove deployability.
+
+SUPPLY CLOSURE:
+For every ranking-material m and t, define an evidence-backed:
+S_AVAILABLE_TO_PV[m,t | scenario]
+that includes primary supply, qualifying secondary supply, competing non-PV demand, refining/manufacturing bottlenecks and trade/geographic constraints where material.
+
+MATERIAL_PASS requires:
+D_PRIMARY[m,t] <= S_AVAILABLE_TO_PV[m,t]
+for every binding year/material under the frozen candidate scenario,
+with uncertainty handled by the common joint-state rule.
+
+If only world mine production or reserve figures are known and PV allocation/competing demand is unresolved:
+STATUS=STRESS_IDENTIFIED / NOT_VERIFIED, never PASS.
+
+----------------------------------------------------------------------
+C. SILVER INTENSITY CLASSES — SOURCE-DATE + MATURITY LOCK
+----------------------------------------------------------------------
+
+AG_INTENSITY_CLASS_HISTORICAL_STRESS:
+12-16 mg/W TOPCon.
+STATUS:
+retained only as historical/frozen stress sensitivity from earlier source vintage.
+FORBIDDEN:
+labeling it "current 2026 average."
+
+AG_INTENSITY_CLASS_CURRENT_2026:
+10-12 mg/W TOPCon.
+SOURCE:
+Fraunhofer ISE 2026.
+STATUS:
+CURRENT_SOURCE_REFERENCE.
+
+AG_INTENSITY_CLASS_PILOT_2026:
+1.1 mg/W (approximately 1 mg/W on current Fraunhofer technology page).
+SOURCE:
+Fraunhofer ISE physical pilot.
+STATUS:
+PHYSICAL_PILOT_SENSITIVITY.
+FORBIDDEN:
+using 1.1 mg/W as default fleet intensity until manufacturing maturity, reliability, cost, Ni/Cu intensity and supply-chain throughput are independently validated.
+
+MATERIAL_INTENSITY_TIME RULE:
+I_MATERIAL[m,k,t] may improve over time only from pre-registered evidence-backed trajectories.
+No retroactive use of a future/pilot intensity for current installed cohorts.
+
+----------------------------------------------------------------------
+D. DISJUNCTIVE CLOSURE RULE
+----------------------------------------------------------------------
+
+The previous universal wording:
+"Ag thrifting/substitution plus circularity/new supply is necessary"
+is FALSIFIED_AS_UNIVERSAL_CONJUNCTION.
+
+REPAIRED RULE:
+A high-deployment PV pathway must demonstrate at least one EVIDENCE-BACKED LEVER SET L whose integrated material flows close every binding material gap.
+
+Permitted lever families include:
+L1 material-intensity reduction / thrifting;
+L2 substitution (e.g., Cu-based cell metallization);
+L3 technology-mix change;
+L4 secondary recovery after eligible EOL with real collection/recovery/quality/process-capacity limits;
+L5 primary supply/refining expansion with evidenced project/deployment pathway;
+L6 architecture/BOS redesign reducing material intensity;
+L7 lower share of a material-intensive PV technology where the complete energy-system objective still passes.
+
+LOGIC:
+EXISTS validated lever set L
+such that
+ALL ranking-material annual/cumulative/manufacturing/resource constraints pass.
+
+FORBIDDEN:
+- assuming every lever is required;
+- assuming any single lever is free;
+- assuming one pilot result closes all supply-chain constraints;
+- counting same recovered material twice;
+- using a reserve stock as annual mine flow.
+
+----------------------------------------------------------------------
+E. EXECUTED QUANTITATIVE REPLICATIONS
+----------------------------------------------------------------------
+
+CALC_ID: PV-R3-CALC-001
+EVIDENCE_CLASS: CALCULATION / MODEL-OUTPUT NORMALIZATION
+INPUT:
+IEA-PVPS dMFA cumulative silver demand ~=100,000-200,000 t from 2025-2050.
+USGS current silver mine production=26,000 t/y.
+USGS current reserves=610,000 t.
+HORIZON=25 y for simple average normalization only.
+
+OUTPUT:
+average modeled silver material demand =
+4,000-8,000 t/y.
+
+Relative to current mine production:
+15.384615%-30.769231%.
+
+Cumulative relative to current reported reserves:
+16.393443%-32.786885%.
+
+TOOLS:
+Python Decimal + Wolfram Language.
+REPLICATION_STATUS:
+CROSS_TOOL_PASS.
+
+LIMITATION:
+Average annual demand hides time profile and peak flow; reserve share is stress only. This calculation does not replace the dMFA chronology.
+
+CALC_ID: PV-R3-CALC-002
+EVIDENCE_CLASS: CALCULATION / THEORETICAL-SECONDARY-BRACKET
+INPUT:
+IEA-PVPS report says future PV waste could potentially supply ~30-45% of cumulative PV-sector silver demand.
+
+OUTPUT:
+If applied to the model endpoints solely as a theoretical bracket:
+100,000 t cumulative with 45% secondary potential -> 55,000 t primary remainder.
+200,000 t cumulative with 30% secondary potential -> 140,000 t primary remainder.
+
+TOOLS:
+Python Decimal + Wolfram.
+REPLICATION_STATUS:
+CROSS_TOOL_PASS.
+
+TRUTH_CLASS:
+CALCULATION BASED ON SIMULATION POTENTIAL, NOT guaranteed recovered supply.
+FORBIDDEN:
+treating 55-140 kt as a forecasted achieved primary requirement without actual collection/recovery/process-capacity evidence.
+
+CALC_ID: PV-R3-CALC-003
+EVIDENCE_CLASS: CALCULATION / MATERIAL-SYSTEM SCALE
+INPUT:
+IEA-PVPS dMFA cumulative copper demand ~=145-280 Mt over 2025-2050.
+
+OUTPUT:
+simple 25-year average = 5.8-11.2 Mt/y.
+
+TOOLS:
+Python + Wolfram.
+REPLICATION_STATUS:
+CROSS_TOOL_PASS.
+
+INTERPRETATION:
+Copper burden is system-scale and is not erased by solving cell silver intensity. Published IEA-PVPS model further reports annual copper peaks of about 7-15 Mt/y.
+
+----------------------------------------------------------------------
+F. SCENARIO / MATURITY VERDICTS
+----------------------------------------------------------------------
+
+SCENARIO S1 — HISTORICAL 12-16 mg/W FROZEN TOPCON:
+STATUS:
+VALID HISTORICAL STRESS / NOT CURRENT REFERENCE.
+It remains useful to expose what happens if thrifting stalls, but cannot define current 2026 best evidence.
+
+SCENARIO S2 — CURRENT-AVERAGE 10-12 mg/W FROZEN AT MULTI-TW/Y:
+STATUS:
+SEVERE SILVER-FLOW STRESS / NOT_VERIFIED AS DEPLOYABLE CLOSED PATH.
+Earlier independently reviewed arithmetic remains valid as a frozen-current-intensity stress: at high annual additions, silver use can consume a very large share of current mine flow.
+This is not proof of impossibility because supply, substitution, technology mix and recycling may change.
+
+SCENARIO S3 — 1.1 mg/W FRAUNHOFER PILOT:
+PHYSICAL_CELL_PROCESS: SUPPORTED.
+MODULE_ACCELERATED_TEST_EVIDENCE: SUPPORTED_AT_SMALL_SCALE.
+GLOBAL_COMMERCIAL_FLEET_INTENSITY: NOT_VERIFIED.
+Ni/Cu mass-per-W + full manufacturing/material-flow closure: UNKNOWN.
+Therefore this pathway may be used as a sensitivity / repair lever candidate, not as guaranteed future fleet evidence.
+
+SCENARIO S4 — IEA-PVPS EVOLVING TECHNOLOGY MIX / 29-75 TWp:
+MODEL_EVIDENCE:
+material pressure remains material even with technological evolution and circularity.
+Silver demand becomes substantially lower than a naive frozen-current-intensity extrapolation, while copper/indium/tin and broader material flows remain binding concerns.
+STATUS:
+PV_AT_MULTI_TW_SCALE is NOT_FALSIFIED_BY_SILVER_ALONE.
+Whole material feasibility remains NOT_VERIFIED until candidate-specific gross capacity cohorts, technology mix, supply allocation, Cu/other materials, manufacturing and grid/storage material coupling pass.
+
+----------------------------------------------------------------------
+G. REPAIRED CLAIMS
+----------------------------------------------------------------------
+
+CLAIM-EGC-044A-SILVER-CURRENT:
+REPAIRED.
+Current-average 2026 = 10-12 mg/W; 12-16 preserved as historical stress.
+
+CLAIM-EGC-044A-LOW-AG-PATH:
+PHYSICAL_PILOT_SUPPORTED / COMMERCIAL_SCALE_NOT_VERIFIED.
+
+CLAIM-EGC-044A-INTEGRATED-MITIGATION:
+REPAIRED_TO_DISJUNCTIVE_CLOSURE.
+No universal thrifting+recycling+new-mine conjunction.
+
+CLAIM-EGC-044A-RECYCLING:
+TIMING_REPAIRED.
+Secondary feed bounded by eligible EOL x collection x recovery x quality x process capacity.
+No instantaneous future-EOL credit.
+
+CLAIM-EGC-044A-COPPER:
+STRENGTHENED.
+Low-Ag substitution transfers burden into an already supply-constrained economy-wide copper system; PV dMFA itself identifies very large copper demand. Incremental plated-cell Cu/Ni intensity remains NOT_VERIFIED.
+
+CLAIM-EGC-044A-PV-MATERIAL-SUFFICIENCY:
+NOT_VERIFIED.
+No global PASS until candidate-specific cohort/material/supply ledger closes.
+
+----------------------------------------------------------------------
+H. SOLVED-GATE EFFECT
+----------------------------------------------------------------------
+
+G9 RESOURCES AVAILABLE:
+NOT_VERIFIED.
+
+G10 MATERIALS FEASIBLE:
+METHOD_REPAIRED / CANDIDATE RESULT NOT_VERIFIED.
+
+G11 MANUFACTURING FEASIBLE:
+NOT_VERIFIED because low-Ag pilot scale-up and full PV manufacturing throughput/material supply remain unresolved.
+
+G21 UNCERTAINTY CANNOT PLAUSIBLY REVERSE CONCLUSION:
+NOT_VERIFIED because technology mix, intensity trajectories, collection/recovery, Cu allocation and manufacturing maturity are ranking-relevant.
+
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+STATUS_CHANGE:
+JOB-EGC-044A-PV-MATERIALS-REPAIR-C3-20261006:
+EXECUTING -> AWAITING_REVIEW.
+
+JOB-EGC-044A-PV-MATERIALS-REPAIR-REV-C4-20261006:
+BLOCKED -> OPEN.
+
+REVIEW HANDOFF:
+Distinct reviewer must independently:
+1) source-check IEA-PVPS dMFA scope and cumulative Ag/Cu outputs;
+2) source-check Fraunhofer current 10-12 mg/W versus 1.1 mg/W pilot classification;
+3) independently reproduce PV-R3-CALC-001..003;
+4) attack whether dMFA already embeds cohort replacement sufficiently for this gate;
+5) test recycling timing and double-count loopholes;
+6) require quantitative Ni/Cu metallization intensity if low-Ag plating is promoted beyond sensitivity;
+7) attack the disjunctive closure for hidden free levers;
+8) reconcile this PV-only material gate with separately owned grid/storage material burden before any candidate ranking.
