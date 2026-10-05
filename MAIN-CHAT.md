@@ -7447,3 +7447,250 @@ WRITE_INTEGRITY:
 - file SHA read: 374602f954636f8be443c0cecd9f188b2d7a3012
 - stale-write check: exact fetched blob SHA supplied to update_file; no force push.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+39. JOB-EGC-001 OBJECTIVE-CONFLICT ARBITRATION / REPAIR PROPOSAL V1.1
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:17:46Z
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+PRIMARY_ROLE: Objective / Metric Formalization + Mission Integrator
+PRIMARY_JOB_ID: JOB-EGC-001
+STATUS: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+USER_SUCCESS_RESPONSE: DENIED
+
+CONFLICT_ID: CONFLICT-EGC-OBJTHRESH-001
+TRUTH_CLASS: CONFLICT
+QUESTION:
+Two durable objective packages attributed to the controlling JOB-EGC-001 session contain materially different thresholds. Which criteria should be treated as the repaired candidate-neutral proposal before independent review?
+MATERIAL_DIFFERENCES_FOUND:
+- plant/busbar screen: USD 65/MWh hard preliminary screen vs <=USD 50/MWh reference-only;
+- full-system absolute ceiling: none vs USD 100/MWh;
+- material cost improvement: >=10% vs >=20%;
+- MASSIVE_ENERGY hard floor: 10% world electricity vs 1% milestone plus 10% pathway;
+- 2025 IEA denominator: February 2026 estimate 28,200 TWh vs July 2026 updated value 28,600 TWh;
+- reliability, EROI and deployment-time thresholds: open in checkpoint V0.1 vs explicit values in OBJ-EGC-V1.
+IMPACT:
+These differences can change candidate PASS/FAIL and therefore cannot be silently reconciled.
+
+PROVENANCE:
+- [REPO_FACT / VERIFIED FOR COORDINATION SCOPE] TE-EGC-018-001 and its independent review establish CHATGPT-SOL-20261005T190600Z-A1 as controlling first valid JOB-EGC-001 lease by Git commit ancestry/order.
+- Historical conflicting objective sections are preserved; this event does not delete or rewrite them.
+- Independent objective reviewer JOB-EGC-OBJ-REV-H1-20261005 is already CLAIMED/EXECUTING and is the designated external challenge path for this repair proposal.
+
+NEW EXTERNAL EVIDENCE:
+
+TOOL_EVIDENCE_ID: TE-EGC-001-003
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-FIRM-COST-BOUNDARY
+TOOL_OR_METHOD: Authoritative web retrieval / IRENA
+PURPOSE: Test whether USD 100/MWh can be defended as a universal hard full-system LOW_COST ceiling.
+EXECUTION_DATE: 2026-10-05
+SOURCE: IRENA, 24/7 renewables: The economics of firm solar and wind
+SOURCE_DATE: May 2026
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/Publications/2026/May/24-7-renewables-The-economics-of-firm-solar-and-wind
+RAW_OR_KEY_OUTPUT:
+- IRENA reports firm solar-plus-storage costs around USD 54-82/MWh in high-quality resource regions.
+- IRENA press material compares these project-level firm costs with roughly USD 70-85/MWh new coal in China and >USD 100/MWh new gas globally.
+- The analysis is not a universal full-system grid cost and is resource/configuration dependent.
+UNITS: USD/MWh.
+UNCERTAINTY: high across geography/resource/financing/configuration; exact distribution not extracted here.
+ASSUMPTIONS: NONE for reported range; extrapolation beyond stated context is forbidden.
+LIMITATIONS: This evidence does not include every transmission, adequacy, system-strength, policy or economy-wide grid cost.
+REPRODUCIBILITY_INSTRUCTIONS: inspect IRENA publication page and 2026 press release; verify firm-cost scope and stated high-resource-region range.
+INDEPENDENT_REPLICATION: objective reviewer pending.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: A sub-USD100/MWh firm project cost is physically/economically demonstrated in some high-quality regions.
+CLAIM_NOT_SUPPORTED: USD100/MWh is a universal hard ceiling for full-system delivered electricity across technologies/geographies.
+
+TOOL_EVIDENCE_ID: TE-EGC-001-004
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-LCOE-NOT-DECISION
+TOOL_OR_METHOD: Authoritative web retrieval / U.S. EIA AEO2026
+PURPOSE: Test whether generator-level cost metrics can control the final mission decision.
+EXECUTION_DATE: 2026-10-05
+SOURCE: U.S. Energy Information Administration, Levelized Costs of New Generation Resources in AEO2026
+SOURCE_DATE: 2026-04-08
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.eia.gov/outlooks/aeo/electricity_generation/
+RAW_OR_KEY_OUTPUT:
+- EIA defines LCOE as generator revenue requirement and LACE as revenue available.
+- EIA states capacity-expansion decisions include policy, technology and geographic characteristics not easily captured in one metric.
+- EIA states real/modelled build decisions are more complex than a simple LACE-to-LCOE/S comparison.
+UNITS: methodological.
+UNCERTAINTY: U.S.-model context, but metric limitation is directly relevant to boundary design.
+ASSUMPTIONS: NONE for source statement.
+LIMITATIONS: Does not itself provide a global delivered-system baseline.
+REPRODUCIBILITY_INSTRUCTIONS: inspect AEO2026 electricity-generation levelized-cost page.
+INDEPENDENT_REPLICATION: pending objective review.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Plant-level cost is insufficient as sole final winner metric.
+CLAIM_NOT_SUPPORTED: Any fixed global delivered-cost threshold.
+
+TOOL_EVIDENCE_ID: TE-EGC-001-005
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-RELIABILITY-MULTIMETRIC
+TOOL_OR_METHOD: NERC/NAE report text extraction plus rendered-PDF page inspection.
+PURPOSE: Determine whether LOLE 1-day-in-10 years can be the sole reliability gate.
+EXECUTION_DATE: 2026-10-05
+SOURCE: NERC/NAE Section 6, Evolving Planning Criteria for a Sustainable Power Grid
+SOURCE_DATE: July 2024
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.nerc.com/globalassets/programs/rapa/ra/evolving_planning_criteria_for_a_sustainable_power_grid.pdf
+RAW_OR_KEY_OUTPUT:
+- Traditional resource-adequacy practice is rooted in LOLE 1-day-in-10 years.
+- The report says LOLE alone does not adequately capture growing all-hour variability/uncertainty.
+- It recommends supplementing LOLE with EUE/LOLH and stressed-scenario/chronological analysis.
+- The report notes example energy-adequacy thresholds, including normalized EUE, but explicitly says such thresholds do not by themselves establish universal resource-adequacy criteria.
+UNITS: LOLE convention often represented as 0.1 days/year; EUE/LOLH use different units.
+UNCERTAINTY: regional risk tolerance and planning methods differ.
+ASSUMPTIONS: Using 1-day-in-10 as a default comparator is a mission convention, not a universal law.
+LIMITATIONS: North American planning context; not a global mandate.
+REPRODUCIBILITY_INSTRUCTIONS: inspect PDF executive summary pages v-vi and Chapter 2 LOLE discussion.
+INDEPENDENT_REPLICATION: pending objective review.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: LOLE 1-day-in-10 is a defensible historical reference but must not be the sole adequacy metric.
+CLAIM_NOT_SUPPORTED: LOLE <=0.1 days/year alone proves equal reliability.
+
+TOOL_EVIDENCE_ID: TE-EGC-001-006
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-EROI-THRESHOLD
+TOOL_OR_METHOD: Peer-reviewed review inspection
+PURPOSE: Test whether EROI=10 is an evidence-proven universal hard minimum.
+EXECUTION_DATE: 2026-10-05
+SOURCE: Murphy et al., "Energy Return on Investment of Major Energy Carriers: Review and Harmonization", Sustainability 2022, 14(12), 7098.
+SOURCE_DATE: 2022
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.mdpi.com/2071-1050/14/12/7098
+RAW_OR_KEY_OUTPUT:
+- Literature-proposed minimum acceptable EROI values generally span roughly 3-10.
+- Authors explicitly state choosing one exact minimum is intrinsically difficult.
+- The review emphasizes point-of-use/harmonized boundaries and warns against apples-to-oranges EROI comparisons.
+- Harmonized PV, wind and hydropower results are at or above 10 in the review.
+UNITS: dimensionless energy-return ratio.
+UNCERTAINTY: substantial methodology/boundary sensitivity.
+ASSUMPTIONS: A target of >=10 is a conservative mission target, not an external physical law.
+LIMITATIONS: storage/transmission/system extensions must be boundary-consistent when applied to this mission.
+REPRODUCIBILITY_INSTRUCTIONS: inspect the review discussion of minimum acceptable EROI and harmonization.
+INDEPENDENT_REPLICATION: pending objective review.
+EVIDENCE_CLASS: SOURCE_FACT + ASSUMPTION for mission target.
+CLAIM_SUPPORTED: >=10 is defensible as a conservative objective target if harmonized consistently.
+CLAIM_NOT_SUPPORTED: EROI exactly 10 is a universal physical feasibility threshold.
+
+CALCULATION_ID: CALC-EGC-001-002
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-SCALE-UPDATED
+METHOD: deterministic arithmetic
+INPUTS: latest retrieved IEA 2025 electricity consumption = 28,600 TWh/year; 8,760 h/year.
+EQUATIONS:
+- M1_1pct = 0.01 * 28,600 = 286 TWh/year.
+- Pavg_M1 = 286*1000/8760 = 32.6484 GW average.
+- M2_10pct = 0.10 * 28,600 = 2,860 TWh/year.
+- Pavg_M2 = 2,860*1000/8760 = 326.4840 GW average.
+- 1 TW average = 8,760 TWh/year = 30.6294% of 28,600 TWh/year.
+UNITS: TWh/year, GW average, percent.
+UNCERTAINTY: source denominator revision dominates arithmetic uncertainty.
+ASSUMPTIONS: 365-day 2025 / 8,760 h normalization.
+REPLICATION_STATUS: arithmetic in resource job EVIDENCE-EGC-038-001 independently reached 3.26484 TW for the same 28,600 TWh/year global anchor using Python + Wolfram; direct 1%/10% calculations still require formal independent objective review.
+EVIDENCE_CLASS: CALCULATION.
+
+CONFLICT_ARBITRATION / REPAIR PROPOSAL:
+OBJECTIVE_SPEC_ID: OBJ-EGC-V1.1-REPAIR
+STATUS: PROPOSED / AWAITING_INDEPENDENT_REVIEW
+AUTHORITY: replaces neither historical evidence nor review; it is the controlling-session repair proposal resolving internal inconsistencies for reviewer attack.
+
+1. SERVICE / SYSTEM BOUNDARY
+- Net AC electricity delivered at the declared high-voltage delivery node.
+- Count output net of plant parasitics, modeled curtailment, storage round-trip losses used by the architecture, and in-boundary transmission losses.
+- Final cost must use the service-based full-system boundary being independently developed/reviewed by JOB-EGC-040 and JOB-EGC-BOUNDARY-SRC-20261005-F1; generator LCOE alone cannot pass G5/G22/G23.
+
+2. LOW_COST — GENERATOR REFERENCE, NOT A STANDALONE HARD FAIL
+- [SOURCE-ANCHORED REFERENCE] Current IRENA 2025 global weighted-average LCOEs include onshore wind 33, PV 44 and hydro 62 USD/MWh.
+- Use approximately USD 33-65/MWh as a contemporary low-cost plant-level reference band.
+- Do NOT eliminate dispatchable/high-value candidates solely because plant LCOE exceeds this band; system costs and delivered service control the final decision.
+- The prior <=USD50 and <=USD65 plant-level proposals are therefore reconciled as REFERENCE BAND information, not competing hard gates.
+
+3. LOW_COST — FINAL HARD COMPARISON
+- [MISSION_CRITERION / ASSUMPTION] C_delivered must be <= C_best_verified_baseline for the SAME delivered service, geography class, reliability target, real-dollar year, financing convention and system boundary.
+- [MISSION_CRITERION / ASSUMPTION] To claim "material cost improvement", median/base C_delivered must be <=0.90 * C_best_verified_baseline AND the advantage must survive documented plausible uncertainty/sensitivity; if plausible uncertainty reverses the advantage, status is NOT_STABLE.
+- The previous >=20% improvement proposal is not retained as a hard gate because no retrieved evidence establishes 20% as a uniquely defensible materiality threshold; 10% remains an explicit frozen mission convention plus uncertainty-robustness requirement.
+- The previous absolute C_delivered <=USD100/MWh criterion is DOWNGRADED to CONTEXTUAL_REFERENCE / NOT_A_HARD_GATE pending verified common-boundary baseline work. TE-EGC-001-003 shows some firm projects below this level but does not justify a universal full-system ceiling.
+
+4. MASSIVE_ENERGY
+- [MISSION_CRITERION / ASSUMPTION] M1 consequential deployment milestone = >=1% of latest retrieved 2025 IEA electricity consumption = >=286 TWh/year net delivered = >=32.6484 GW annual-average equivalent.
+- M1 is NOT sufficient for MASSIVE_ENERGY PASS.
+- [MISSION_CRITERION / ASSUMPTION] M2 MASSIVE_ENERGY hard floor = credible net-delivered scalability to >=10% = >=2,860 TWh/year = >=326.4840 GW annual-average equivalent.
+- Stretch target remains 1.000 TW average = 8,760 TWh/year ~=30.6294% of the latest 2025 baseline.
+- The February 28,200 TWh denominator is superseded for current normalization by the July 2026 IEA update at 28,600 TWh; historical calculations remain preserved.
+
+5. DEPLOYMENT TIME
+- [PROVISIONAL MISSION_CRITERION / ASSUMPTION] Demonstrate a non-speculative path to M1 within <=15 years and M2 within <=30 years from a clearly defined standardized commercial-scale deployment start.
+- This temporal criterion is retained provisionally because "scalable" without a time dimension is incomplete, but it is NOT externally proven and must be attacked against JOB-EGC-022 deployment/manufacturing evidence before verification.
+- If baseline deployment evidence shows these horizons are structurally unreasonable across all credible technologies, reviewer must open a conflict rather than silently loosen them.
+
+6. RELIABILITY / ADEQUACY
+- Use LOLE 1-day-in-10 years (often represented as 0.1 days/year) only as a DEFAULT COMPARISON REFERENCE where applicable, not a sole universal pass condition.
+- A final firm-service comparison must additionally quantify EUE/NEUE or equivalent magnitude metric, LOLH/duration where available, and stressed correlated events; chronological modeling is required where storage/curtailment/weather coupling is material.
+- Candidate and baseline must use the same reliability service requirement.
+
+7. EROI / LIFECYCLE ENERGY
+- [MISSION_CRITERION / ASSUMPTION] Target harmonized delivered-system/point-of-use EROI >=10.
+- EROI <=1 is a net-energy failure by definition.
+- 1<EROI<10 is not automatically a violation of physics, but it fails the conservative mission target unless an independent reviewer demonstrates that boundary/methodology correction or equivalent lifecycle evidence justifies a different classification.
+- Do not compare extraction-stage EROI for one candidate with delivered-system EROI for another.
+
+8. REQUIRED SECONDARY METRICS
+CAPEX, OPEX, WACC/financing sensitivity, capacity factor, availability, efficiency, parasitic load, lifetime, replacement, construction time, land/volume, resource/fuel/material throughput, storage power/energy/duration, transmission, supply chain, safety/FMEA, environment, waste, regulation and deployment rate remain mandatory. No candidate may hide a failure in these dimensions behind low LCOE.
+
+9. NO-GAMING / CHANGE CONTROL
+- Numeric source anchors may change only through dated evidence revision/conflict events.
+- Normative thresholds may not be relaxed after candidate results merely to make a preferred candidate pass.
+- Reviewer may reject/strengthen a criterion only with explicit falsification reasoning and must preserve this conflict history.
+
+RED_TEAM_CHECK:
+- Attack: hard USD100/MWh creates false universality from high-resource project examples.
+  OUTCOME: attack survives; USD100 hard gate downgraded pending same-boundary baseline.
+- Attack: 1% is too small to satisfy ordinary meaning of "massive" at world scale.
+  OUTCOME: accepted; 1% becomes milestone only, 10% remains hard MASSIVE floor.
+- Attack: 10% material cost margin is arbitrary.
+  OUTCOME: true as a normative threshold; retained transparently as ASSUMPTION and strengthened by requirement that plausible uncertainty cannot reverse the advantage.
+- Attack: LOLE alone ignores event severity/duration and evolving-grid risks.
+  OUTCOME: accepted from NERC evidence; multi-metric adequacy required.
+- Attack: EROI=10 is a physical law.
+  OUTCOME: falsified; >=10 retained only as conservative mission target under harmonized boundary.
+- Attack: 15/30-year deployment horizons lack external proof.
+  OUTCOME: accepted; retained as PROVISIONAL ASSUMPTION pending JOB-EGC-022 attack, not SOURCE_FACT.
+
+STATUS_CHANGE:
+- CONFLICT-EGC-OBJTHRESH-001: NEW -> REPAIR_PROPOSED / AWAITING_INDEPENDENT_REVIEW.
+- JOB-EGC-001: EXECUTING -> AWAITING_REVIEW.
+- OBJECTIVE_QUANTIFICATION: OPEN -> PROPOSED / NOT_VERIFIED.
+- G1: NOT_VERIFIED.
+- GLOBAL_SOLVED: NO -> NO.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-EGC-OBJ-FIRM-COST-BOUNDARY <- TE-EGC-001-003.
+- CLAIM-EGC-OBJ-LCOE-NOT-DECISION <- TE-EGC-001-004 + existing boundary jobs.
+- CLAIM-EGC-OBJ-RELIABILITY-MULTIMETRIC <- TE-EGC-001-005.
+- CLAIM-EGC-OBJ-EROI-THRESHOLD <- TE-EGC-001-006.
+- CLAIM-EGC-OBJ-SCALE-UPDATED <- TE-EGC-001-002 + CALC-EGC-001-002 + EVIDENCE-EGC-038-001.
+- OBJ-EGC-V1.1-REPAIR <- above claims + explicit mission assumptions.
+- OBJ-EGC-V1.1-REPAIR -> G1/G5/G6/G8/G12/G21/G22/G23.
+- All remain OPEN until independent review.
+
+REVIEW_HANDOFF:
+- Active independent reviewer JOB-EGC-OBJ-REV-H1-20261005 must include OBJ-EGC-V1.1-REPAIR and CONFLICT-EGC-OBJTHRESH-001 in its review, not review the older OBJ-EGC-V1 in isolation.
+- Reviewer must independently reproduce latest IEA denominator, 1%/10% arithmetic, source scope for IRENA firm-cost evidence, NERC reliability limitations, and EROI methodology warning.
+- Reviewer must PASS/FAIL separately: cost boundary, 10% improvement convention, M1/M2 scale, 15/30-year horizons, reliability multi-metric rule, and EROI>=10 target.
+- Any reviewer-found material defect creates a repair job; JOB-EGC-001 cannot become VERIFIED while this conflict is unresolved.
+
+NEXT_ACTION:
+- Wait only for the already-claimed independent objective review with respect to JOB-EGC-001; do not duplicate that review.
+- In parallel, technical mission work continues in independent active jobs (boundary, baseline, scale/reliability, resource, physics/red-team, grid, candidate evidence).
+- Re-read latest MAIN-CHAT before any subsequent write.
+
+WRITE_INTEGRITY:
+- branch head read before reconciliation: 6eb511daa0d8bf49c75f801a30e69a7f8bbc5304
+- file SHA read before reconciliation: c068fd29f89a4ac05b1d7bf7872eb684e9779e43
+- stale-write check: re-fetch immediately before mutation and require exact SHA lease.
+- commit/result: PENDING_THIS_COMMIT.
