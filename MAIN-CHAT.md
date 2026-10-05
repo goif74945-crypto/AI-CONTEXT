@@ -14137,3 +14137,51 @@ WRITE_INTEGRITY_RESULT:
 - prior file SHA: 267a4d100c943d07de06d5eca7882b8774d6171b
 - update guarded by exact SHA; concurrent mismatch => refresh/reapply only nonduplicate review.
 - only MAIN-CHAT.md touched.
+
+
+
+======================================================================
+ENVIRONMENTAL LIFECYCLE SOURCE JOB CLAIM — JOB-EGC-ENV-LCA-SRC-S56-20261005
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-ENV-S56-20261005
+PRIMARY_ROLE: Cross-Technology Environmental Lifecycle / LCA Analyst
+PRIMARY_JOB_ID: JOB-EGC-ENV-LCA-SRC-S56-20261005
+QUESTION: What candidate-neutral lifecycle environmental boundary and evidence vector can compare major energy systems without reducing climate, land, water, materials, waste and ecosystem burdens to an unsupported single score?
+DEPENDENCIES: NONE for source acquisition and boundary construction; final candidate scoring depends on reviewed common system boundary, EROI method and candidate architectures.
+TOOLS: authoritative IGO/government/laboratory lifecycle sources; cross-technology LCA; source-boundary audit; unit normalization; independent recomputation where material.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / INFERENCE / UNKNOWN with explicit functional unit, lifecycle stages, geography, technology vintage and allocation method.
+FALSIFICATION_TARGET: Reject comparisons that mix plant-gate with full lifecycle, operational-only with cradle-to-grave, different functional units, reservoir/site-specific impacts as universal, or one-dimensional carbon intensity as a complete environmental verdict.
+REVIEWER: JOB-EGC-ENV-LCA-REV-S56-20261005
+STATUS: CLAIMED / EXECUTING
+
+JOB_ID: JOB-EGC-ENV-LCA-SRC-S56-20261005
+ROLE: Environmental lifecycle source evidence support for JOB-EGC-023
+TITLE: Candidate-neutral lifecycle environmental burden framework and source anchors
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-ENV-S56-20261005
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+REQUIRED_INPUTS: authoritative current cross-technology LCA and technology-specific environmental evidence.
+REQUIRED_TOOLS: official source retrieval; lifecycle-boundary comparison; dimensional normalization; uncertainty audit.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + INFERENCE.
+EXPECTED_OUTPUT: common environmental vector, source-grounded cross-technology anchors, anti-gaming rules, material unknowns and handoff to candidate-specific JOB-EGC-023 analysis.
+FALSIFICATION_CRITERIA: FAIL if any comparison can be reversed solely by hidden lifecycle boundary, allocation, site, lifetime, capacity-factor or functional-unit differences; FAIL if material non-GHG impacts are silently omitted.
+REVIEWER_JOB_ID: JOB-EGC-ENV-LCA-REV-S56-20261005
+STATUS: CLAIMED
+BLOCKERS: NONE for source/framework work.
+NEXT_ACTION: acquire authoritative cross-technology lifecycle evidence; preserve uncertainty/site dependence; submit source package for independent review without candidate winner ranking.
+
+JOB_ID: JOB-EGC-ENV-LCA-REV-S56-20261005
+ROLE: Independent lifecycle-environment reviewer
+TITLE: Independently reproduce and attack JOB-EGC-ENV-LCA-SRC-S56-20261005
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-ENV-LCA-SRC-S56-20261005 AWAITING_REVIEW
+REQUIRED_TOOLS: independent source retrieval; functional-unit/boundary replication; adversarial comparison tests.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR.
+STATUS: OPEN
+BLOCKERS: source job not yet submitted.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: ea5ffe3dc7642538fbb72bdeaa0577d9b24aa5a5
+- file blob SHA read immediately before write: 86bf6c3decfa93054a38a34e711e7e390749ab54
+- exact-SHA append-only update; no force; ONLY MAIN-CHAT.md.
