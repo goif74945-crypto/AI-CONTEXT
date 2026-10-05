@@ -9139,3 +9139,214 @@ GLOBAL_STATE:
 - GLOBAL_SOLVED: NO
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
+
+
+======================================================================
+40. INDEPENDENT SYSTEM-BOUNDARY REVIEW RESULT — REPAIR REQUIRED
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-BOUNDREV-F1-20261005
+PRIMARY_JOB_ID: JOB-EGC-BOUNDARY-REV-20261005-F1
+REVIEWED_JOB: JOB-EGC-BOUNDARY-SRC-20261005-F1
+REVIEWED_EVIDENCE: TE-EGC-BOUNDARY-001..004 + PROPOSED_COMMON_SYSTEM_BOUNDARY
+REVIEW_SCOPE: source reproduction, accounting symmetry, omission/double-count attack
+SELF_NEW_METHODOLOGY_VERIFICATION: FORBIDDEN
+
+TOOL_EVIDENCE_ID: TE-EGC-BOUNDARY-REV-001
+JOB_ID: JOB-EGC-BOUNDARY-REV-20261005-F1
+CLAIM_ID: CLAIM-EGC-BOUNDARY-SOURCE-REPLICATION-001
+TOOL_OR_METHOD: Independent direct retrieval of the four cited official sources
+PURPOSE: Reproduce the source claims without relying on the prior session's paraphrases.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- U.S. EIA AEO2026 LCOE/LACE/LCOS methodology page.
+- OECD-NEA System Cost Analysis page.
+- IEA Electricity 2026 Grids chapter.
+- IEA Electricity 2026 Flexibility chapter.
+PARAMETERS: Direct official-source inspection; source claims checked separately from the proposed inference/framework.
+VERSION_OR_MODEL: public source state accessed 2026-10-05.
+SOURCE_OR_DATASET: EIA / OECD-NEA / IEA official publications.
+SOURCE_DATE: EIA 2026-04-08; IEA Electricity 2026; NEA current public methodology page (page publication date UNKNOWN).
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.eia.gov/outlooks/aeo/electricity_generation/
+- https://www.oecd-nea.org/jcms/pl_36755/system-cost-analysis
+- https://www.iea.org/reports/electricity-2026/grids
+- https://www.iea.org/reports/electricity-2026/flexibility
+COMMAND_CODE_EQUATION_OR_METHOD:
+1. Reopen each official source directly.
+2. Match every material prior SOURCE_FACT to source text.
+3. Separate categorical system-boundary evidence from numerical technology rankings.
+RAW_OR_KEY_OUTPUT:
+- TE-EGC-BOUNDARY-001: PASS. EIA defines LCOE as revenue required to build/operate a generator over a recovery period; LACE is revenue available; EIA says policy/technology/geography and real/modelled build decisions are not fully captured by a single simple LCOE/LACE comparison.
+- TE-EGC-BOUNDARY-002: PASS. NEA explicitly says plant-level LCOE omits broader system effects; system-cost analysis includes balancing variability, grid reinforcement, flexibility and security of supply. POSY includes dispatchable/variable generation, storage/DR/hydrogen, grid/interconnections, ramping/minimum-operating constraints and hourly demand satisfaction.
+- TE-EGC-BOUNDARY-003: PASS WITH LIMITATION. IEA reports >2,500 GW of renewable/large-load/storage projects stalled in grid queues, roughly USD 400 billion/year current grid investment with ~50% increase needed by 2030, and 5-15 year new-grid lead times versus 1-5 years for wind/solar. IEA explicitly labels queue data indicative for 2025; queue GW must not be treated as built capacity or a direct per-MWh cost adder.
+- TE-EGC-BOUNDARY-004: PASS. IEA states batteries provide balancing/grid support/capacity/energy shifting and can defer some network upgrades; IEA explicitly warns actual peak-event discharge may be below nameplate because of temperature derating, charge state, duration and ancillary-service commitments.
+UNITS: categorical findings; GW, USD/year, years where cited by IEA.
+UNCERTAINTY: numerical grid constraints are global aggregate indicators and not technology-specific universal adders.
+ASSUMPTIONS: NONE for source reproduction.
+LIMITATIONS: This replication validates the cited source statements, not the completeness of the proposed accounting framework or any candidate ranking.
+REPRODUCIBILITY_INSTRUCTIONS: Open the four URLs and inspect EIA AEO2026 overview; NEA overview/POSY sections; IEA Grids queue/investment/lead-time section; IEA Flexibility battery/nameplate notes.
+INDEPENDENT_REPLICATION: COMPLETED / PASS for TE-EGC-BOUNDARY-001..004 source statements.
+EVIDENCE_CLASS: SOURCE_FACT / REPLICATION / REVIEW.
+CLAIM_SUPPORTED: Source package correctly establishes that plant LCOE is not sufficient for whole-system delivered-service comparison, and that grid/flexibility/adequacy interactions can be material.
+CLAIM_NOT_SUPPORTED: The proposed boundary is complete as written; a universal technology-specific integration surcharge; any candidate is cheapest.
+
+TOOL_EVIDENCE_ID: TE-EGC-BOUNDARY-REV-002
+JOB_ID: JOB-EGC-BOUNDARY-REV-20261005-F1
+CLAIM_ID: CLAIM-EGC-BOUNDARY-COMPLETENESS-DEFECT-001
+TOOL_OR_METHOD: Repository-authority requirements audit against Section 15 COST LAW
+PURPOSE: Test whether the proposed common boundary explicitly contains all mission-mandated cost classes that may affect the winner.
+EXECUTION_DATE: 2026-10-05
+INPUTS: MAIN-CHAT.md Section 15 COST LAW and proposed Boundary Layers A/B.
+PARAMETERS: Treat repository constitution as higher authority than reviewer preference.
+VERSION_OR_MODEL: latest authorized branch read during review.
+SOURCE_OR_DATASET: MAIN-CHAT.md.
+SOURCE_DATE: mission constitution current branch.
+SOURCE_URL_DOI_OR_IDENTIFIER: goif74945-crypto/AI-CONTEXT @ research/energy-grand-challenge-swarm-20261006 / MAIN-CHAT.md
+COMMAND_CODE_EQUATION_OR_METHOD: Set-difference audit between constitution's explicit cost classes and proposed explicit boundary line items.
+RAW_OR_KEY_OUTPUT:
+- Constitution explicitly requires, as applicable: plant/source, balance of plant, land/site, grid connection, storage/firming, fuel, maintenance, labor, financing, replacement cycles, decommissioning, waste handling, transmission, redundancy/reliability, insurance/regulatory burden, supply-chain scaling effects.
+- Proposed boundary explicitly covers most generation/grid/firming/fuel/O&M/finance/replacement/decommissioning/waste/reliability categories, but does NOT explicitly enumerate land/site, labor, insurance/regulatory burden, and supply-chain scaling effects; relying on an 'Other_Material_System_Costs' catch-all is insufficient for an audit-grade mandatory boundary because a decisive term can disappear without a named check.
+- Cooling/water/heat-rejection infrastructure is not explicitly named either; for thermal candidates it must be included under BOP/site/O&M or an explicit line item when material, consistent with the mission's physics/cost requirements.
+UNITS: category audit.
+UNCERTAINTY: Some omitted terms can be embedded inside CAPEX/OPEX in a source dataset, but then provenance must explicitly show inclusion to prevent double counting or omission.
+ASSUMPTIONS: NONE beyond constitution authority.
+LIMITATIONS: Does not assign numerical magnitude to omitted categories.
+REPRODUCIBILITY_INSTRUCTIONS: Compare Section 15 COST LAW list to proposed Layer A/B list item-by-item.
+INDEPENDENT_REPLICATION: DISTINCT_SESSION audit desirable for repaired framework.
+EVIDENCE_CLASS: REPO_FACT / REVIEW.
+CLAIM_SUPPORTED: Proposed framework is materially incomplete as an explicit audit checklist and requires repair before canonical JOB-EGC-004 adoption.
+CLAIM_NOT_SUPPORTED: Any omitted term necessarily dominates every candidate.
+
+TOOL_EVIDENCE_ID: TE-EGC-BOUNDARY-REV-003
+JOB_ID: JOB-EGC-BOUNDARY-REV-20261005-F1
+CLAIM_ID: CLAIM-EGC-SERVICE-CREDIT-TRANSFER-DEFECT-001
+TOOL_OR_METHOD: Deterministic accounting counterexample executed in Python
+PURPOSE: Test whether subtracting 'Explicit_NonDoubleCounted_Service_Credits' from whole-system cost is safe without defining whether the credit is an external avoided resource cost or merely an internal market payment/revenue transfer.
+EXECUTION_DATE: 2026-10-05
+INPUTS: resource cost=USD 100 million/year; internal ancillary/capacity-service payment=USD 20 million/year; delivered energy=1,000,000 MWh/year.
+PARAMETERS: System boundary contains both payer and recipient; payment itself does not change physical resource use.
+VERSION_OR_MODEL: Python deterministic arithmetic.
+SOURCE_OR_DATASET: reviewer-constructed accounting counterexample; no empirical claim.
+SOURCE_DATE: 2026-10-05.
+SOURCE_URL_DOI_OR_IDENTIFIER: NONE / executable arithmetic.
+COMMAND_CODE_EQUATION_OR_METHOD:
+- True system resource cost = 100,000,000 USD/year / 1,000,000 MWh/year = 100 USD/MWh.
+- Naively netting an internal 20,000,000 USD/year service payment as a 'credit' gives (100,000,000-20,000,000)/1,000,000 = 80 USD/MWh.
+RAW_OR_KEY_OUTPUT: true resource-cost result 100 USD/MWh; naïve net-of-internal-payment result 80 USD/MWh; artificial difference 20 USD/MWh.
+UNITS: USD/MWh.
+UNCERTAINTY: none in arithmetic; example is intentionally schematic.
+ASSUMPTIONS: payment is internal to the whole-system accounting boundary and not an independently quantified avoided resource cost.
+LIMITATIONS: Example does not say all service credits are invalid; externally realized co-product value or explicitly modeled avoided physical/system cost may be valid if boundary-consistent and not double counted.
+REPRODUCIBILITY_INSTRUCTIONS: Repeat the two divisions above in any calculator.
+INDEPENDENT_REPLICATION: NOT_YET distinct-session replicated.
+EVIDENCE_CLASS: CALCULATION / ACCOUNTING_FALSIFICATION.
+CLAIM_SUPPORTED: The proposed subtraction term is unsafe unless credit taxonomy and counterparty treatment are fixed; market revenue is not automatically a reduction in whole-system resource cost.
+CLAIM_NOT_SUPPORTED: All ancillary/capacity value should be ignored.
+
+TOOL_EVIDENCE_ID: TE-EGC-BOUNDARY-REV-004
+JOB_ID: JOB-EGC-BOUNDARY-REV-20261005-F1
+CLAIM_ID: CLAIM-EGC-BOUNDARY-DIMENSIONAL-CHECK-001
+TOOL_OR_METHOD: Independent dimensional/accounting check
+PURPOSE: Verify the proposed basic cost-per-delivered-energy dimensional structure.
+EXECUTION_DATE: 2026-10-05
+INPUTS: numerator currency/year; denominator delivered MWh/year.
+PARAMETERS: same annual accounting period.
+VERSION_OR_MODEL: dimensional analysis.
+SOURCE_OR_DATASET: proposed accounting identity.
+SOURCE_DATE: 2026-10-05.
+SOURCE_URL_DOI_OR_IDENTIFIER: PROPOSED_ACCOUNTING_IDENTITY in MAIN-CHAT.md.
+COMMAND_CODE_EQUATION_OR_METHOD: (currency/year)/(MWh/year)=currency/MWh.
+RAW_OR_KEY_OUTPUT: dimensional structure PASS.
+UNITS: currency/MWh_delivered.
+UNCERTAINTY: none dimensionally; economic-boundary correctness is separate.
+ASSUMPTIONS: all annualized terms use consistent currency-year/real-dollar convention and financing treatment.
+LIMITATIONS: Dimensional consistency does not prove no omitted/double-counted terms.
+REPRODUCIBILITY_INSTRUCTIONS: cancel the common '/year' dimension.
+INDEPENDENT_REPLICATION: COMPLETED by reviewer.
+EVIDENCE_CLASS: CALCULATION / REVIEW.
+CLAIM_SUPPORTED: Basic numerator/denominator dimensions are valid.
+CLAIM_NOT_SUPPORTED: Framework completeness.
+
+REVIEW_VERDICT:
+- TE-EGC-BOUNDARY-001: PASS.
+- TE-EGC-BOUNDARY-002: PASS.
+- TE-EGC-BOUNDARY-003: PASS WITH explicit queue-data limitation.
+- TE-EGC-BOUNDARY-004: PASS.
+- PROPOSED_COMMON_SYSTEM_BOUNDARY: REVIEW_FAILED / REPAIR_REQUIRED before canonical adoption.
+
+P1_FINDINGS:
+- BOUNDARY-P1-001 — Mandatory cost classes are not all explicit. Add named checks for land/site, labor, insurance/regulatory burden, supply-chain scaling effects, and material cooling/water/heat-rejection infrastructure or prove each is embedded in another term without double counting.
+- BOUNDARY-P1-002 — 'Explicit_NonDoubleCounted_Service_Credits' is under-specified and can mix market/private revenue with whole-system resource cost. Repair by defining the primary mission cost metric as total system resource cost under a fixed policy/tax boundary. Internal market transfers must not reduce that metric. Subtract only a boundary-consistent externally realized co-product value or explicitly quantified avoided resource cost, with the counterfactual cost present and no double counting.
+- BOUNDARY-P1-003 — Reliability/adequacy target and delivery point remain UNKNOWN. The proposal correctly says they must be common; canonical JOB-EGC-004 must freeze them before numeric cross-candidate ranking.
+
+RED_TEAM_CHECK:
+- Attack: plant LCOE alone. REJECTED by replicated EIA/NEA evidence.
+- Attack: universal VRE integration surcharge. REJECTED; NEA/IEA require system-specific chronological context.
+- Attack: charge grid/storage only to VRE. REJECTED; service-based candidate-neutral boundary is conceptually correct.
+- Attack: use queue GW as generation delivered. REJECTED; IEA itself labels queue data indicative and queues include generation, storage and large loads.
+- Attack: use market service revenue to lower societal/system resource cost without counterparty. FALSIFIES the current credit term as written.
+
+STATUS_CHANGE:
+- JOB-EGC-BOUNDARY-SRC-20261005-F1: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED for framework completeness; its four source evidence items are independently replicated and remain valid.
+- JOB-EGC-BOUNDARY-REV-20261005-F1: CLAIMED/EXECUTING -> AWAITING_REVIEW (review work complete; no self-VERIFIED claim).
+- GLOBAL_SOLVED: remains NO.
+- CURRENT_WINNER: remains NONE.
+
+JOB_ID: JOB-EGC-BOUNDARY-REPAIR-F1-20261005
+ROLE: Systems architect / cost-boundary repair
+TITLE: Repair common delivered-system accounting boundary after independent review
+QUESTION_TO_RESOLVE: Produce a candidate-neutral canonical boundary that explicitly satisfies mission Cost Law, separates total system resource cost from private-market revenues/transfers, fixes delivery/reliability conventions, and prevents omission/double counting.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: TE-EGC-BOUNDARY-REV-001..004 review result present.
+REQUIRED_INPUTS: original boundary package, BOUNDARY-P1-001..003, Section 15 COST LAW, EIA/NEA/IEA source evidence.
+REQUIRED_TOOLS: accounting reconciliation; authoritative methodology sources as needed; dimensional checks.
+REQUIRED_EVIDENCE_CLASS: REPO_FACT / SOURCE_FACT / INFERENCE / CALCULATION.
+EXPECTED_OUTPUT: repaired explicit boundary matrix, resource-cost vs market-transfer rule, frozen delivery-point/adequacy placeholders or dependency links, anti-double-count rules, and mapping of every mandatory Cost Law term.
+FALSIFICATION_CRITERIA: FAIL if any mandatory material cost can disappear unnamed, if internal transfers can reduce whole-system resource cost, if candidate classes face asymmetric accounting, or if reliability/service boundary is inconsistent.
+REVIEWER_JOB_ID: JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE.
+HANDOFF: Distinct session should repair; original reviewer must not self-repair and self-verify.
+
+JOB_ID: JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005
+ROLE: Independent accounting/boundary reviewer
+TITLE: Verify repaired common delivered-system accounting boundary
+QUESTION_TO_RESOLVE: Independently reproduce repaired term mapping, transfer treatment, service boundary and anti-double-count protections.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-BOUNDARY-REPAIR-F1-20261005 reaches AWAITING_REVIEW.
+REQUIRED_INPUTS: repaired boundary package.
+REQUIRED_TOOLS: independent accounting audit; source recheck; counterexamples.
+REQUIRED_EVIDENCE_CLASS: REPLICATION / REVIEW / REPO_FACT.
+EXPECTED_OUTPUT: PASS/FAIL and exact residual findings.
+FALSIFICATION_CRITERIA: FAIL if any BOUNDARY-P1 finding remains open or a new material asymmetry/omission appears.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-BOUNDARY-REPAIR-F1-20261005 not yet AWAITING_REVIEW.
+HANDOFF: Must be a distinct future session.
+
+CLAIM_GRAPH_UPDATE:
+- CLAIM-EGC-LCOE-NOT-SYSTEM-COST-001 <- TE-EGC-BOUNDARY-001 <- independently replicated by TE-EGC-BOUNDARY-REV-001: SOURCE CLAIM PASS.
+- CLAIM-EGC-SYSTEM-COST-CATEGORIES-001 <- TE-EGC-BOUNDARY-002 <- independently replicated: PASS.
+- CLAIM-EGC-GRID-NONOPTIONAL-001 <- TE-EGC-BOUNDARY-003 <- independently replicated: PASS WITH LIMITATION.
+- CLAIM-EGC-FLEXIBILITY-STORAGE-SERVICE-001 <- TE-EGC-BOUNDARY-004 <- independently replicated: PASS.
+- PROPOSED_COMMON_SYSTEM_BOUNDARY -> REVIEW_FAILED because BOUNDARY-P1-001..003 remain open.
+- Downstream canonical JOB-EGC-004 must not treat this boundary as VERIFIED until repair + independent review pass.
+
+NEXT_ACTION:
+1. Claim JOB-EGC-BOUNDARY-REPAIR-F1-20261005 in a distinct session and repair BOUNDARY-P1-001..003.
+2. Independently review the repaired boundary via JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005.
+3. Only then let canonical JOB-EGC-004 freeze the comparison boundary and unblock full normalized cost ranking.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write attempt 2: 8e72a99146b14337208d073ad363a411e696b8cc
+- file SHA read immediately before write attempt 2: dbe967c5beab2e0fef1a1275a53032e6c2356635
+- stale-write check: exact current blob SHA supplied; append-only; no force push.
