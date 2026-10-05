@@ -1,0 +1,59 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_RESULT_V1",
+  "RESULT_ID": "RESULT-C-SOL-20261006-0132-0700-V16RC13-UNIVERSEV4-REPAIR-A01E11D8",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "OWNER_CHAT_ID": "C-SOL-20261006-0132-0700-V16RC13-UNIVERSEV3-XREVIEW-A01E11D8",
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0132-0700-V16RC13-UNIVERSEV4-REPAIR-A01E11D8",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "BOOTSTRAP_STATE_OBSERVED": "BLOCKED",
+  "MUTATION_GATE_OBSERVED": "CLOSED",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "CONTROL_ARTIFACTS": [
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V4.json",
+      "blob_sha": "240ae8a1aeb7da69497e59dd097122270a4fa6cb",
+      "status": "CANDIDATE_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_EXTERNAL_LOCATORS_V4.json",
+      "blob_sha": "2b9eabb2ed277b1a6042667450fcdeaf3eb26743",
+      "status": "CANDIDATE_PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "path": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/TEST-VECTORS/FINDING_UNIVERSE_V4_DETERMINISM_VECTORS.json",
+      "blob_sha": "0c9322d5b0db5ddeb78df4b0e27e1d992d0bb163",
+      "status": "CANDIDATE_TEST_EVIDENCE",
+      "vector_count": 21
+    }
+  ],
+  "REPAIRS": [
+    "Reject duplicate JSON object member names after escape decoding at every nesting depth.",
+    "Reject unpaired JSON surrogate escapes and pin decoded strings to Unicode scalar sequences.",
+    "Define UTF-8 BOM policy and exact LF/CRLF/bare-CR Markdown line semantics.",
+    "Replace regex-engine dependency with an exact left-to-right ASCII metadata parse algorithm.",
+    "Pin NFC to Unicode 15.1.0 / UAX #15 and fail closed if compatible normalization cannot be established.",
+    "Define the exact identifier boundary-whitespace code-point set independent of runtime trim/strip behavior.",
+    "Define deterministic case-sensitive media_type derivation for primary and external candidates.",
+    "Define validation detail_hash as SHA-256 over an RFC8785 JCS diagnostic object with no free-form implementation text."
+  ],
+  "SELF_CHECK": {
+    "type": "STRUCTURAL_NONINDEPENDENT",
+    "verdict": "PASS",
+    "contract_locator_binding": "PASS",
+    "test_vector_binding": "PASS",
+    "required_rule_presence": "PASS",
+    "stale_ambiguous_phrase_count": 0,
+    "limitation": "Builder self-check is not independent review and does not authorize canonical adoption."
+  },
+  "CANONICAL_ADOPTION": false,
+  "ACTIVATION_AUTHORITY": false,
+  "NEXT_REQUIRED_EVIDENCE": [
+    "Independent blob-bound review of V4 contract, locator and all 21 test vectors.",
+    "Independent attempt to reproduce diagnostic hashes and parsing outcomes with at least two implementations.",
+    "Projection/adapter rebinding review only after V4 universe is independently accepted or superseded by a stronger accepted generation."
+  ],
+  "STATUS": "IMPLEMENTED_CANDIDATE_AWAITING_INDEPENDENT_REVIEW"
+}
