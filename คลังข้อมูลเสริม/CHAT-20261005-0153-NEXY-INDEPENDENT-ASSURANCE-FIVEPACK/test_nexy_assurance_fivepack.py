@@ -38,8 +38,29 @@ def test_iaq_empty_freezes():
 
 
 def test_iaq_duplicate_agent_rejected():
-    v=AgentVote("a","PASS","p","f",frozenset(),"t")
+    v=AgentVote("a","PASS","p","f",frozenset({"s"}),"t")
     with pytest.raises(ValueError): evaluate_quorum([v,v])
+
+
+@pytest.mark.parametrize(("field", "value"), [
+    ("provider", ""),
+    ("model_family", "  "),
+    ("data_lineage", frozenset()),
+    ("data_lineage", frozenset({""})),
+    ("toolchain_fingerprint", ""),
+])
+def test_iaq_missing_independence_metadata_rejected(field, value):
+    values = {
+        "agent_id": "a",
+        "verdict": "PASS",
+        "provider": "p",
+        "model_family": "f",
+        "data_lineage": frozenset({"source"}),
+        "toolchain_fingerprint": "t",
+    }
+    values[field] = value
+    with pytest.raises(ValueError, match="independence metadata"):
+        AgentVote(**values)
 
 
 def test_iaq_order_invariant():

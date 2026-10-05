@@ -16,6 +16,7 @@ Each vote carries `provider`, `model_family`, `data_lineage`, `toolchain_fingerp
 
 ### Invariants
 - duplicate agent identity is invalid;
+- provider, model-family, data-lineage and toolchain correlation metadata must be complete and nonblank; unknown metadata cannot be counted as independent evidence;
 - correlated replicas cannot increase independent-cluster count;
 - an independent FAIL cannot be hidden by a large correlated PASS population under the default policy;
 - vote ordering does not change the result;

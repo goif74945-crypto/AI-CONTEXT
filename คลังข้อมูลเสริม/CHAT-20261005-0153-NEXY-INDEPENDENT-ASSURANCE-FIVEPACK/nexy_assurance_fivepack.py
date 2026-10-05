@@ -31,6 +31,13 @@ class AgentVote:
             raise ValueError("agent_id must be non-empty")
         if self.verdict not in {"PASS", "FAIL", "FREEZE"}:
             raise ValueError(f"unsupported verdict: {self.verdict}")
+        if any(
+            not isinstance(value, str) or not value.strip()
+            for value in (self.provider, self.model_family, self.toolchain_fingerprint)
+        ) or not self.data_lineage or any(
+            not isinstance(source, str) or not source.strip() for source in self.data_lineage
+        ):
+            raise ValueError("independence metadata must be complete and nonblank")
         if self.weight <= 0:
             raise ValueError("weight must be > 0")
 

@@ -18,7 +18,9 @@
 - Larger development package reached 35 passing tests after TDD repair cycles.
 - Continuation RED proof reproduced an AIG defect where noncritical-to-CRITICAL escalation was suppressed as an exact duplicate.
 - The minimal ordering repair preserves exact CRITICAL duplicate suppression while guaranteeing delivery for LOW/MEDIUM/HIGH-to-CRITICAL escalation.
-- Exact compact persisted code/test bundle: 35/35 tests PASS after repair.
+- IAQ continuation RED proof reproduced acceptance of five incomplete/blank correlation-metadata variants.
+- The minimal validation repair rejects incomplete provider/model-family/data-lineage/toolchain metadata before clustering.
+- Exact compact persisted code/test bundle: 40/40 tests PASS after repair.
 - Exact compact persisted code/test bundle: compileall exit 0.
 - SHA-256 manifest verification passed before remote publication.
 - False-green zero-test run was rejected and is not counted as evidence.
