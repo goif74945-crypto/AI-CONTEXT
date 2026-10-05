@@ -1,16 +1,16 @@
 {
   "TASK_ID": "TASK-DOC-C2-3-QUEUE-FUTURE-TSA-001",
   "CREATOR_CHAT": "C-SOL-20261005-1923-V8",
-  "OWNER_CHAT": "UNASSIGNED",
+  "OWNER_CHAT": "C-SOL-20261006-QUEUE-FUTURE-TSA",
   "MISSION_ID": "M05-QUEUE-IDEMPOTENCY",
   "REQ_ID": "REQ-DOC-C-2-3-VNEXT-DEFAULTS",
   "FINDING_ID": "FINDING-DOC-C2-3-QUEUE-FUTURE-TSA-001",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "IMPLEMENTING",
   "PRIORITY": "P1",
   "RISK": "HIGH",
-  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "BASE_SHA": "c1f94b2c59b787a7761079362a82aefbbfca9855",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
-  "WORK_BRANCH": "NEXY.AI-Test-AI/work/TASK-DOC-C2-3-QUEUE-FUTURE-TSA-001",
+  "WORK_BRANCH": "NEXY.AI-Test-AI-work-queue-future-tsa-4f2a91c7",
   "TARGET_PATHS": [
     "packages/queue/payload.ts",
     "tests/contract/queue-payload.test.ts",
@@ -26,6 +26,27 @@
     "Mutation test or equivalent negative proof fails if the future-timestamp guard is removed.",
     "NEXY.ai remains unchanged."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "UNBLOCK_CONDITION": "Authorize or establish an isolation branch/ref mechanism that does not collide with refs/heads/NEXY.AI-Test-AI while preserving the required one-writer rule."
+  "BLOCKER": null,
+  "UNBLOCK_CONDITION": "Authorize or establish an isolation branch/ref mechanism that does not collide with refs/heads/NEXY.AI-Test-AI while preserving the required one-writer rule.",
+  "CLAIMED_AT": "2026-10-06T02:04:00+07:00",
+  "NAMESPACE_RESOLUTION": {
+    "invalid_requested_prefix": "NEXY.AI-Test-AI/work/*",
+    "reason": "Git ref namespace collision with existing refs/heads/NEXY.AI-Test-AI",
+    "git_valid_worker": "NEXY.AI-Test-AI-work-queue-future-tsa-4f2a91c7"
+  },
+  "OVERLAP_CHECK": {
+    "TASK-QUEUE-FAILED-STATE-CAS-001": [
+      "packages/queue/dispatch.ts",
+      "tests/contract/dispatch-reconciliation-cas.test.ts"
+    ],
+    "TASK-QUEUE-RETRY-CAP-001": [
+      "packages/queue/jobs.ts",
+      "tests/contract/queue-retry-cap.test.ts"
+    ],
+    "T-QUEUE-PROCESSING-MONOTONICITY-0202": [
+      "packages/queue/dispatch.ts",
+      "tests/contract/queue-processing-monotonicity.test.ts"
+    ],
+    "result": "NO_TARGET_PATH_OVERLAP"
+  }
 }
