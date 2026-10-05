@@ -5,7 +5,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-4-2-RUN-DETAIL",
   "FINDING_ID": "FINDING-DOC-C4-RUN-OPTIONAL-NULL-001",
-  "STATUS": "IMPLEMENTING",
+  "STATUS": "RUNTIME_VALIDATION_BLOCKED",
   "PRIORITY": "P1",
   "RISK": "LOW",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -23,8 +23,24 @@
     "Exact-SHA targeted tests and independent review are required.",
     "No mutation to NEXY.ai."
   ],
-  "BLOCKER": null,
-  "NEXT_ACTION": "Repair serialization/test oracle on isolated worker branch; run targeted tests; review diff; integrate only with evidence.",
-  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/run-optional-null-6E21A4B9",
-  "REFRESHED_AT": "2026-10-06T01:44:00+07:00"
+  "BLOCKER": "EXECUTION_PLANE_NO_SAFE_EXACT_HEAD_TRIGGER",
+  "NEXT_ACTION": "Do not merge until exact-head runtime evidence is available. Meanwhile release mutation scope and continue another non-overlapping product task.",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/run-optional-null-6E21A4B9-r2",
+  "REFRESHED_AT": "2026-10-06T01:44:00+07:00",
+  "WORKER_HEAD": "c6542e274d2b66966c4a53d108b4d7092385a1ab",
+  "PULL_REQUEST": 27,
+  "STATIC_REVIEW": {
+    "status": "PASS",
+    "changed_files": [
+      "packages/api/directives.ts",
+      "tests/integration/directives/read-auth.spec.ts"
+    ],
+    "source_patch": "one-line optional-field omission in GET /api/runs/:id only",
+    "oracle_patch": "absent and present-string cases covered"
+  },
+  "RUNTIME_VALIDATION": {
+    "status": "BLOCKED",
+    "reason": "PR #27 triggered no GitHub Actions workflows/statuses; available GitHub connector exposes rerun/read but no workflow_dispatch action. Authorized Desktop Commander device is offline. Existing Railway validation service is concurrently tracking NEXY.AI-Test-AI and mutating it would collide with other validation work.",
+    "evidence_sha": "c6542e274d2b66966c4a53d108b4d7092385a1ab"
+  }
 }
