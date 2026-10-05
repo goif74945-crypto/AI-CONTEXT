@@ -13635,3 +13635,22 @@ FALSIFICATION_TARGET: nonzero depletable stock passes with no accepted owner; sa
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-GREENSTATE-REV-C7
+PRIMARY_ROLE: Independent intertemporal physical-state / terminal-accounting adversarial reviewer
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006
+QUESTION: Does GREENSTATE_V2 actually prevent free commissioning inventory and candidate-selected tail timing without letting a physically greenfield asset escape through the PERIODIC_COMPUTATIONAL label?
+DEPENDENCIES: C6 submitted; FINPV C9/C10 VERIFIED for timing scope; C11/C12 remains explicit external dependency.
+TOOLS: latest GitHub state; independent Python Decimal + Wolfram; battery/thermal/reservoir counterexamples; state-provenance taxonomy audit; owner-interface audit.
+EVIDENCE_TARGET: reproduce C01-C06 independently; attack category exclusivity, greenfield-periodic overlap, future borrowing, brownfield/natural treatment, common settlement with self-discharge and tail denominator/double ownership.
+FALSIFICATION_TARGET: FAIL if a physically nonzero greenfield stock can serve before causal creation; equal terminal quantity can erase initialization; computational periodicity can override physical provenance; candidate-selected tail time changes PV absent physics; or one causal terminal state enters twice.
+STATUS: EXECUTING
+BLOCKERS: NONE for method review; integrated common ledger remains separately blocked on C11/C12 and other open gates.
+BRANCH_BLOB_SHA_AT_CLAIM: 803f5cd4ccc54e7e8159e01842fffc5f1305d15d
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
