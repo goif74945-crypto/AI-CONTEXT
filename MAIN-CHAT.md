@@ -11777,3 +11777,27 @@ NEXT_ACTION: distinct reviewer attacks this narrow statistical-execution layer a
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-063-WASTE-HEAT-EXERGY-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0605+07-WHEX1
+PRIMARY_ROLE: Waste-heat exergy / recoverable-power / counterfactual-ownership analyst
+PRIMARY_JOB_ID: JOB-EGC-063-WASTE-HEAT-EXERGY-C1-20261006
+QUESTION: Can waste heat contribute material low-cost net electricity at massive scale once source temperature, sink temperature, second-law/exergy limits, conversion parasitics, spatial/temporal availability, and counterfactual host-process ownership are enforced?
+CANDIDATE: WASTE_HEAT / INDUSTRIAL_HEAT_RECOVERY / HYBRID COGENERATION
+DEPENDENCIES: CLAIM-EGC-PHYS-002 second-law mechanism scope passes review; P_STAR common net ledger needs separate repair; final accounting/R_STAR remain dependencies for integrated ranking.
+REQUIRED_INPUTS: authoritative industrial waste-heat resource evidence; temperature-grade distribution; existing physical recovery systems; thermodynamic exergy equations; ORC/steam/thermoelectric realized performance where authoritative evidence exists.
+REQUIRED_TOOLS: official DOE/EPA/lab/peer-reviewed source retrieval; Python/Wolfram exergy calculations; sensitivity; counterfactual ownership/red-team.
+REQUIRED_EVIDENCE: distinguish heat quantity from maximum useful work; source/sink temperatures; existing measured recovery; parasitics; host process boundary; resource-scale and deployability limits.
+EXPECTED_OUTPUT: WASTE_HEAT_GATE_V1 + quantitative exergy stress tests + candidate status + independent reviewer job.
+FALSIFICATION_CONDITION: FAIL candidate-as-primary-source if recoverable net work is overstated by counting heat as electricity, violating second law, double-counting host fuel/heat, omitting parasitics, or treating site-specific recoverable heat as globally dispatchable massive supply.
+REVIEWER_JOB_ID: JOB-EGC-063-WASTE-HEAT-EXERGY-REV-C2-20261006
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-20261006T0605+07-WHEX1
+BLOCKERS: none for mechanism/resource-boundary analysis; final cost/ranking remains upstream.
+NEXT_ACTION: retrieve authoritative waste-heat resource/temperature and operating-recovery evidence; quantify Carnot/exergy bounds; red-team massive-energy claim.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
