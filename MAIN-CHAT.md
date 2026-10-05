@@ -6847,3 +6847,206 @@ REVIEWER_JOB_ID: JOB-EGC-044A-PV-MATERIALS-REPAIR-REV-C4-20261006
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+65. INDEPENDENT REVIEW RESULT — JOB-EGC-043-BASELINE-SCREEN-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0430+07-BLREP-R4
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REPAIR-REV-C4-20261006
+REVIEW_TARGET: JOB-EGC-043-BASELINE-SCREEN-REPAIR-C3-20261006
+ROLE: Independent storage-neutral baseline / lifecycle / site-feasibility reviewer
+STATUS: REVIEW_FAILED / NARROW_REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REVIEW VERDICT:
+C3 successfully removes the specific four-hour-LFP hardcoding defect and correctly prevents universal PSH siting, duration-free $/kW comparisons, free RTE losses, and naive 15-y-vs-100-y lifecycle equivalence. Its source claims and submitted arithmetic independently replicate.
+However, C3 is not yet sufficient to certify a "strongest current baseline" because SUPPLEMENTAL_STORAGE_CHALLENGER has no explicit fail-closed completeness state. A current commercial/operating storage option can be omitted whenever one or more common-boundary parameters cannot yet be sourced, without forcing BASELINE_NOT_VERIFIED. That data-availability exclusion can raise C_BASE_STAR and manufacture an apparent candidate advantage. This is ranking-critical under G22.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-BLREP-001
+EVIDENCE_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: NLR 2025 Annual Technology Baseline, Utility-Scale Battery Storage
+URL: https://atb.nlr.gov/electricity/2025/utility-scale_battery_storage
+ACCESS_DATE: 2026-10-06
+INDEPENDENTLY VERIFIED:
+- utility-scale LFP BESS durations = 2, 4, 6, 8, 10 h;
+- energy/power cost separation is explicit:
+  Total System Cost ($/kW) = Battery Pack Cost ($/kWh) * Storage Duration (h) + BOS Cost ($/kW);
+- FOM includes augmentation to maintain rated capacity over the 15-y life and is 4% of capital cost in the 2025 ATB case;
+- representative RTE = 85%;
+- one-cycle/day and 4-h default CF are modeling assumptions, not reliability mandates.
+VERDICT: PASS.
+LIMITATION: ATB parameters are reference-model assumptions, not universal project performance.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-BLREP-002
+EVIDENCE_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: NLR 2025 ATB, Pumped Storage Hydropower + 2025 ATB Definitions
+URLS:
+- https://atb.nlr.gov/electricity/2025/pumped_storage_hydropower
+- https://atb.nlr.gov/electricity/2025/definitions
+ACCESS_DATE: 2026-10-06
+INDEPENDENTLY VERIFIED:
+- ATB PSH design durations = 8, 10, 12 h;
+- RTE literature range = 70%-87%, central estimate = 80%;
+- design technical life = 100 y;
+- resource/cost representation is site-specific rather than one universal cost/site.
+VERDICT: PASS.
+LIMITATION: U.S. ATB/site evidence cannot be promoted to a universal non-U.S. siting rule.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-BLREP-003
+EVIDENCE_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: NLR Pumped Storage Hydropower Supply Curves
+URL: https://www.nlr.gov/gis/psh-supply-curves
+ACCESS_DATE: 2026-10-06
+INDEPENDENTLY VERIFIED:
+- technical-potential filters exclude intersecting water bodies/waterways for the closed-loop candidate-reservoir screen, glaciers/ice, protected federal land, urban areas, critical habitat and sites within 1,000 ft of wetlands; optional screens include roads/farmland;
+- separate site classes may pair new off-river reservoirs with existing reservoirs or open-pit mines;
+- data retain duration, reservoir volume, MW, head, reservoir distance, transmission spurline distance/cost and total cost;
+- 8/10/12-h supply curves are spatial/site dependent.
+VERDICT: PASS.
+SCOPE LOCK:
+This source is a U.S. geospatial assessment. For geography g outside its validated coverage, PSH eligibility/cost needs jurisdiction-appropriate site evidence; absent that evidence PSH_SITE_FEASIBILITY(g)=UNKNOWN, not automatically TRUE or FALSE.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-BLREP-004
+EVIDENCE_CLASS: SOURCE_FACT
+SOURCE: U.S. DOE, 2022 Grid Energy Storage Technology Cost and Performance Assessment
+URL: https://www.energy.gov/cmei/2022-grid-energy-storage-technology-cost-and-performance-assessment
+INDEPENDENTLY VERIFIED:
+- standardized assessment covers Li-ion, lead-acid, vanadium redox flow, PSH, CAES and hydrogen, and adds zinc, thermal and gravitational storage;
+- 2022 methodology includes charge cost, augmentation/replacement, decommissioning and 24/100-h cases;
+- DOE explicitly states not all storage technologies are addressed because of breadth and differing development states.
+VERDICT: PASS for C3's claim that a supplemental challenger layer is necessary.
+LIMITATION: assessment inclusion alone is not proof of current commercial maturity or lowest cost.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-BLREP-005
+EVIDENCE_CLASS: SOURCE_FACT + VISUAL_PDF_VALIDATION
+SOURCE: U.S. DOE, Storage Innovations 2030 — Flow Batteries Technology Strategy Assessment
+SOURCE_DATE: 2023-07
+URL: https://www.energy.gov/sites/default/files/2023-07/Technology%20Strategy%20Assessment%20-%20Flow%20Batteries.pdf
+VISUAL_CHECK: PDF page 1 commercial-deployments section and page 4 cost/performance table inspected.
+INDEPENDENTLY VERIFIED:
+- DOE describes VFB/zinc-bromine RFBs as relatively mature and actively deployed;
+- DOE reports a 100-MW/400-MWh VFB system put into operation in Dalian in 2023;
+- DOE records multiple other commercial accomplishments and 14 commercial flow-battery-related companies participating in its industry process;
+- DOE also provides technology-specific cost/performance parameterization, although some values are projections and therefore cannot be mislabeled realized current cost.
+VERDICT:
+Commercial/operating non-Li-ion storage exists as a real challenger class; a strongest-current baseline cannot assume the supplemental set is empty merely because ATB core coverage is BESS+PSH.
+
+CALCULATION_ID: CALC-EGC-043-BLREP-R4-001
+EVIDENCE_CLASS: CALCULATION / INDEPENDENT_REPLICATION
+METHOD_A: Python Decimal.
+METHOD_B: Wolfram Language.
+INPUTS: RTE_BESS=0.85; RTE_PSH=0.80; sensitivity 0.70/0.87; H=60 y; life_BESS=15 y; life_PSH=100 y.
+EQUATIONS:
+input_per_MWh_out=1/RTE.
+loss_per_MWh_out=1/RTE-1.
+cohorts=H/life_BESS.
+remaining_life_PSH=life_PSH-H.
+OUTPUT:
+- BESS 85%: input=1.176470588235... MWh/MWh_out; loss=0.176470588235...
+- PSH 80%: input=1.25; loss=0.25.
+- PSH 70%: input=1.428571428571...
+- PSH 87%: input=1.149425287356...
+- 60/15=4 BESS service cohorts (initial plus replacements near y15/y30/y45 under continuous 60-y service).
+- 100-60=40 y nominal PSH technical life remaining at H=60.
+REPLICATION_STATUS: PYTHON_WOLFRAM_MATCH.
+VERDICT: parent CALC-EGC-043-BLREP-001/002 PASS.
+BOUNDARY:
+No proportional residual-value formula is implied. Replacement, refurbishment, salvage/residual and terminal liabilities remain owned by common terminal/PV accounting.
+
+FINDING_ID: F-EGC-043-BLREP-R4-P1-001
+TRUTH_CLASS: METHOD_DEFECT
+SEVERITY: P1 / G22 ranking-critical
+TITLE: Supplemental-storage admission lacks a fail-closed strongest-baseline completeness rule.
+PROBLEM:
+C3 says a supplemental technology enters only if current physical/commercial evidence supports service and common-boundary CAPEX/OPEX/life/RTE/degradation/replacement/site constraints "can be sourced." It does not specify the verdict when:
+A) commercial/operating evidence exists;
+B) the technology is plausibly capable of the required storage service;
+C) one ranking-critical common-boundary parameter is currently UNKNOWN or weakly sourced.
+Silently excluding such a challenger can make the optimized current baseline more expensive than the true strongest feasible baseline and can manufacture candidate relative-cost superiority.
+
+CALCULATION_ID: CALC-EGC-043-BLREP-R4-002
+EVIDENCE_CLASS: CALCULATION / ADVERSARIAL_METHOD_COUNTEREXAMPLE
+METHOD_A: Python Decimal.
+METHOD_B: Wolfram Language.
+ILLUSTRATIVE_INPUTS_ONLY:
+- source-complete core baseline cost = 70 common units/MWh;
+- candidate cost = 63;
+- plausible current commercial supplemental challenger true/evaluated cost if completed = 60.
+OUTPUT:
+- if challenger is silently excluded: 63/70=0.90, appearing 10% below the core baseline;
+- if challenger is admitted: 63/60=1.05, candidate is 5% more expensive.
+REPLICATION_STATUS: PYTHON_WOLFRAM_EXACT_MATCH.
+LIMITATION:
+Numbers are deliberately illustrative, not empirical technology cost claims. The counterexample proves decision sensitivity to the admission rule itself. The defect remains even if the mission's final relative-cost threshold changes, because C_BASE_STAR changes from 70 to 60.
+
+REPAIR_REQUIREMENT:
+Add a versioned STORAGE_CHALLENGER_REGISTRY(g,y,R_STAR) with evidence/maturity/service tags for every discovered current commercial/operating storage family plausibly capable of the frozen service.
+For each challenger state:
+- ELIGIBLE_QUANTIFIED: all ranking-critical common-boundary inputs evidence-grounded -> enters optimizer.
+- INELIGIBLE_PHYSICAL/SERVICE/SITE: excluded only with recorded falsification evidence.
+- NOT_CURRENT_COMMERCIAL: excluded from current baseline with maturity evidence; may remain future sensitivity.
+- DATA_GAP_MATERIAL: current/plausible service evidence exists but ranking-critical parameter missing.
+If any DATA_GAP_MATERIAL challenger can plausibly beat or materially alter C_BASE_STAR over an evidence-supported allowed range, then:
+BASELINE_COMPLETENESS = NOT_VERIFIED
+and G22 cannot PASS.
+Do not impute a favorable or unfavorable point value solely to force inclusion/exclusion.
+
+FINDING_ID: F-EGC-043-BLREP-R4-P2-002
+TRUTH_CLASS: SOURCE_SCOPE_GUARD
+SEVERITY: P2
+TITLE: U.S. PSH geospatial evidence must not decide non-U.S. PSH eligibility.
+VERDICT:
+C3's text is directionally safe because it parameterizes geography, but downstream use needs an explicit source-coverage guard: NLR U.S. supply curves establish the existence and importance of site/exclusion/spurline constraints, not site eligibility in every geography.
+REPAIR: outside evidence coverage use local authoritative site data or PSH_SITE_FEASIBILITY=UNKNOWN.
+
+CLAIM-BY-CLAIM REVIEW:
+- CLAIM-EGC-043-STORAGE-TECH-NEUTRALITY: PASS_FOR_CORE_DURATION_NEUTRALITY / REPAIR_REQUIRED_FOR_SUPPLEMENTAL_COMPLETENESS.
+- CLAIM-EGC-043-PSH-GEOGRAPHY: PASS_WITH_SOURCE_COVERAGE_LOCK.
+- BESS 2/4/6/8/10 h evidence: PASS.
+- BESS 85% RTE / 15-y life / 4% FOM augmentation case: PASS.
+- PSH 8/10/12 h / 70-87% RTE / 80% central / 100-y life: PASS.
+- CALC-EGC-043-BLREP-001: PASS / INDEPENDENTLY_REPLICATED.
+- CALC-EGC-043-BLREP-002: PASS / INDEPENDENTLY_REPLICATED.
+- FORCE_4H_BESS regression: PASS as FALSIFIED.
+- FREE_PSH_ANYWHERE regression: PASS as FALSIFIED.
+- $/kW-vs-$/kWh duration omission: PASS as FALSIFIED.
+- lifecycle equivalence: PASS as FALSIFIED; final monetary valuation remains upstream NOT_VERIFIED.
+- RTE monetization twice: PASS as forbidden by common physical-ledger ownership.
+- DOE RD&D automatically equals current baseline: PASS as forbidden.
+- "No current commercial storage excluded by construction": REVIEW_FAILED until fail-closed DATA_GAP_MATERIAL state exists and current challenger registry is executed.
+
+PARENT STATUS:
+JOB-EGC-043-BASELINE-SCREEN-REPAIR-C3-20261006: AWAITING_REVIEW -> REVIEW_FAILED / NARROW_REPAIR_REQUIRED.
+JOB-EGC-043-BASELINE-SCREEN-C1-20261006: remains REVIEW_FAILED.
+FINAL_STRONGEST_CURRENT_BASELINE: NOT_VERIFIED.
+G22 strongest-current-baseline comparison: NOT PASSED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+NEW REPAIR JOB:
+JOB_ID: JOB-EGC-043-BASELINE-SCREEN-COMPLETE-C5-20261006
+TITLE: Fail-closed commercial-storage challenger completeness repair
+ROLE: Strongest-current-baseline completeness architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can the storage baseline remain technology-neutral when a current commercial/operating challenger has incomplete public common-boundary data?
+CANDIDATE: current baseline optimizer
+DEPENDENCIES: F-EGC-043-BLREP-R4-P1-001; C3 reviewed core BESS/PSH rules; current common accounting/R_STAR outputs when verified.
+REQUIRED_INPUTS: current commercial/operating storage discovery set; maturity tags; service capability; CAPEX/OPEX/life/RTE/degradation/replacement/site inputs or allowed evidence-bounded ranges.
+REQUIRED_TOOLS: current official/primary commercial-deployment evidence; DOE/NLR/PNNL/other authoritative cost-performance evidence; challenger registry; interval/robustness analysis.
+REQUIRED_EVIDENCE:
+- instantiate a versioned current storage challenger registry, not only an abstract admission rule;
+- include at least independently evidenced current non-Li-ion operating/commercial families discovered by search, with technology-specific maturity;
+- define ELIGIBLE_QUANTIFIED / INELIGIBLE_WITH_EVIDENCE / NOT_CURRENT_COMMERCIAL / DATA_GAP_MATERIAL states;
+- if a DATA_GAP_MATERIAL challenger could change C_BASE_STAR, force BASELINE_COMPLETENESS=NOT_VERIFIED;
+- preserve geography/site and lifecycle/terminal boundaries.
+EXPECTED_OUTPUT: STORAGE_CHALLENGER_REGISTRY_V1 + fail-closed completeness rule + regression tests + distinct reviewer job.
+FALSIFICATION_CONDITION: FAIL if missing public data can make a real current challenger disappear while the remaining set is still called "strongest"; if projection becomes realized cost; if one project makes an entire chemistry universally mature; or if geography/lifecycle asymmetry returns.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-COMPLETE-REV-C6-20261006
+STATUS: OPEN
+BLOCKERS: none for registry/method repair; final optimized cost remains dependent on common accounting/reliability/geography.
+NEXT_ACTION: distinct repair session instantiates challenger registry and fail-closed completeness; distinct C6 reviewer attacks it.
