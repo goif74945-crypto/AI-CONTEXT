@@ -1,0 +1,139 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_REVIEW_RESULT_V1",
+  "RESULT_ID": "RESULT-C-SOL-20261005-0934-0800-V16RC13-AUDIT-012C-837-OVERLAY-REVIEW",
+  "RESULT_TYPE": "INDEPENDENT_837_TEMPORAL_AUTHORITY_OVERLAY_REVIEW",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-0934-0800-V16RC13-AUDIT-012C",
+  "TASK_ID": "CTRL-V16RC13-837-TEMPORAL-OVERLAY-INDEPENDENT-REVIEW-012C",
+  "REVIEWED_TASK_ID": "TASK-CLOSURE-837-AUTHORITY-RECLASSIFICATION-001",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "EVIDENCE_PINS": {
+    "MATRIX_EXPORT_PATH": "REFERENCES/NEXY/2026-10-04/NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.txt",
+    "MATRIX_EXPORT_BLOB_SHA": "e7aa7b52ad6080030c7278eb428bef75f83309c4",
+    "MATRIX_DECLARED_SHA256": "7685d962f0f3cd3453faba7853eb571c0e265177f8825d83f4f01a0672657622",
+    "NORMALIZATION_SUMMARY_BLOB_SHA": "a322fc1f106286b5e65df190de8924cf184384f2",
+    "OVERLAY_BLOB_SHA": "c8e1aec7045acae4c7bbdf6bdb24738cd54d536f",
+    "FINAL_DOC_C_PRIMARY_INDEX_BLOB_SHA": "71bd5bc30ecc795c565d2bf94eb4ad988c9c1639",
+    "PRIMARY_DOCX_SHA256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+  },
+  "INDEPENDENT_MATRIX_PARSE": {
+    "BUILD_MATRIX_ROWS": 837,
+    "SCOPE_COUNTS": {
+      "CURRENT_GOVERNING_LAW": 12,
+      "CURRENT_BUILD": 547,
+      "EXCLUDED_CURRENT": 8,
+      "CURRENT_BUILD_SUPPLEMENT": 127,
+      "SUPPORTED_PRODUCT_DESIGN": 87,
+      "DEFERRED_FUTURE": 4,
+      "DEPLOYMENT_EVIDENCE": 52
+    },
+    "OVERLAY_RULE_COUNTS": {
+      "T01": 12,
+      "T02": 82,
+      "T03": 8,
+      "T04": 465,
+      "T05": 4,
+      "T06": 87,
+      "T07": 127,
+      "T08": 52
+    },
+    "UNMATCHED_ROWS": 0,
+    "OVERLAP_ROWS": 0,
+    "ARITHMETIC_VERDICT": "PASS"
+  },
+  "PRIMARY_DOCX_DIRECT_CHECKS_1_BASED": [
+    {
+      "paragraph": 9834,
+      "text": "FINAL VERDICT"
+    },
+    {
+      "paragraph": 9839,
+      "text": "DOC-C = BUILD SPEC"
+    },
+    {
+      "paragraph": 9844,
+      "text": "Build obligation comes from DOC-C only."
+    },
+    {
+      "paragraph": 9886,
+      "text": "2) DOC-C — vNEXT BUILD SPEC"
+    },
+    {
+      "paragraph": 10500,
+      "text": "6) DOC-D — FINAL PRODUCT DESIGN PACK"
+    },
+    {
+      "paragraph": 10723,
+      "text": "7) STORAGE LAW — MIGRATION-READY PACK"
+    },
+    {
+      "paragraph": 10836,
+      "text": "8) AUTH HARDENING PACK"
+    },
+    {
+      "paragraph": 10917,
+      "text": "9) DOC-E — DEPLOYMENT EVIDENCE PACK"
+    },
+    {
+      "paragraph": 11016,
+      "text": "DOC-E = evidence artifact pack"
+    }
+  ],
+  "PARAGRAPH_INDEX_CONTRACT": {
+    "OBSERVED_MATRIX_INDEX_BASE": "ZERO_BASED",
+    "PRIMARY_INDEX_DECLARED_BASE": "ONE_BASED_PYTHON_DOCX_PARAGRAPH_ORDER",
+    "TRANSFORM": "PRIMARY_DOCX_1_BASED = MATRIX_SOURCE_DOC_PARAGRAPH + 1",
+    "CROSS_CHECKS": [
+      {
+        "matrix_id": "REQ-0001",
+        "matrix_p": 9848,
+        "anchor": "NEXY = deterministic AI control hub",
+        "docx_1_based_p": 9849
+      },
+      {
+        "matrix_id": "REQ-0013",
+        "matrix_p": 9888,
+        "anchor": "directive execution",
+        "docx_1_based_p": 9889
+      },
+      {
+        "matrix_id": "REQ-0672",
+        "matrix_p": 10721,
+        "anchor": "Explain what happens next after a blocked action",
+        "docx_1_based_p": 10722
+      },
+      {
+        "matrix_id": "REQ-0351",
+        "matrix_p": 10915,
+        "anchor": "- optionally force revoke all active sessions for user",
+        "docx_1_based_p": 10916
+      },
+      {
+        "matrix_id": "REQ-0772",
+        "matrix_p": 10924,
+        "anchor": "E1",
+        "docx_1_based_p": 10925
+      }
+    ],
+    "VERDICT": "PASS_WITH_UNDECLARED_INDEXING_METADATA"
+  },
+  "SEMANTIC_VERDICTS": {
+    "SOURCE_ENUMERATION_837_PRESERVED": "PASS",
+    "RULE_PARTITION_EXHAUSTIVE_AND_DISJOINT": "PASS",
+    "DOC_E_SEPARATED_FROM_BUILD_IMPLEMENTATION": "PASS",
+    "HISTORICAL_PRE_FINAL_ROWS_NOT_DIRECTLY_PROMOTED": "PASS",
+    "DOC_D_CONDITIONAL_BINDING_RULE": "PASS",
+    "ROW_LEVEL_REBINDING_COMPLETE": "NO",
+    "ACTIVE_BUILD_ROOT_READY": "NO"
+  },
+  "REQUIRED_CORRECTION": [
+    "Declare Source_Doc_Paragraph indexing as zero-based in the overlay or bind an explicit +1 transform to the one-based FINAL_DOC_C_PRIMARY_INDEX convention before this artifact is used as canonical root/closure evidence.",
+    "Continue the owner's stated row-level T04 rebinding/supersession/unresolved work and primary omission identities for final §4.1 and §5."
+  ],
+  "REVIEW_VERDICT": "PASS_PARTITION_AND_TEMPORAL_MAPPING_WITH_METADATA_CORRECTION_REQUIRED",
+  "NEW_P0_CREATED": false,
+  "EXISTING_P0_CLOSED": false,
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "NOTE": "This review validates the current partial overlay; it does not convert the partial overlay into an ACTIVE_BUILD_REQUIREMENT_ROOT and does not authorize phase advancement."
+}
