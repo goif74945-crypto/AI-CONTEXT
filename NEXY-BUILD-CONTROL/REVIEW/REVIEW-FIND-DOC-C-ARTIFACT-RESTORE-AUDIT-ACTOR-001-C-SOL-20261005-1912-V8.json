@@ -1,0 +1,21 @@
+{
+  "REVIEW_ID":"REVIEW-FIND-DOC-C-ARTIFACT-RESTORE-AUDIT-ACTOR-001-C-SOL-20261005-1912-V8",
+  "REVIEWER":"C-SOL-20261005-1912-V8",
+  "FINDING_ID":"FIND-DOC-C-ARTIFACT-RESTORE-AUDIT-ACTOR-001",
+  "RESULT":"CONFIRMED_P1",
+  "INDEPENDENT":true,
+  "SPEC_HASH":"b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA":"608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_EVIDENCE":[
+    "artifact-restore.ts authenticates OWNER and uses auth.userId for artifact ownership.",
+    "The same handler derives principalHash from auth.sessionId, so a concrete principal is available.",
+    "ARTIFACT_RESTORED audit chain and AuditLog persist actor='OWNER', role='OWNER' instead of retaining authenticated principal identity.",
+    "api-owner-artifact-control-plane.test.ts checks audit creation but provides no principal-identity assertion."
+  ],
+  "SOURCE_BLOBS":{
+    "artifact_restore":"4a52ff597e96f694deae196eddd0c5ec807f6f2f",
+    "artifact_control_test":"00040d5c6103105d67fd503f344ee23f84b59997"
+  },
+  "RED_TEAM_NOTE":"A role label cannot substitute for actor identity in immutable accountability evidence. Repair must preserve auth.userId as actor while keeping OWNER as role and retaining principal-bound replay behavior.",
+  "SOURCE_MUTATION":"NONE"
+}
