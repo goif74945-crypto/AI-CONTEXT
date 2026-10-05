@@ -10313,3 +10313,266 @@ CHATGPT-SOL-20261005T201700Z-C3REV C4 claim: SUPERSEDED_BY_CONFLICT_RECONCILIATI
 JOB-EGC-040-REPAIR-STATEBOUND-C4-20261006 primary owner: CHATGPT-GPT56SOL-20261006T0345+07-STATE-C4.
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+RESULT — JOB-EGC-043-BASELINE-FRONTIER-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-BFREV-C2
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REV-C2-20261006
+ROLE: Independent techno-economic baseline reviewer / adversarial replicator
+REVIEWED_PARENT: JOB-EGC-043-BASELINE-FRONTIER-C1-20261006
+REVIEW_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+SEVERITY_SUMMARY: individual core evidence largely PASS; baseline-completeness P1 defect found because mature pumped-storage hydropower is omitted from the storage/flexibility frontier. CHP/cogeneration is a conditional P2 completeness repair for thermal-demand cases.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+EVIDENCE_ID: EGC-043-BFREV-001
+CLAIM_ID: CLAIM-EGC-043-BF-RENEWABLE-COST
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / SOURCE_FACT
+TOOL: official IRENA web retrieval
+SOURCE: IRENA, Renewable Power Generation Costs in 2025
+SOURCE_DATE: 2026-07
+URL: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+OUTPUT:
+- onshore wind 33 USD/MWh;
+- utility solar PV 44 USD/MWh;
+- offshore wind 78 USD/MWh;
+- hydropower 62 USD/MWh;
+- geothermal 89 USD/MWh;
+- CSP 115 USD/MWh;
+- bioenergy 86 USD/MWh;
+- >90% of commissioned utility-scale renewable projects below cheapest new fossil alternative in their market.
+BOUNDARY_AUDIT: confirms project/plant LCOE only; does not include common mission reliability/grid/storage boundary.
+REPLICATION_STATUS: PASS.
+REVIEW_STATUS: PASS for source values and boundary label.
+
+EVIDENCE_ID: EGC-043-BFREV-002
+CLAIM_ID: CLAIM-EGC-043-BF-DEPLOYMENT
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / SOURCE_FACT + CALCULATION
+SOURCE: IRENA, Renewable Capacity Statistics 2026 / 2026-04-01 release
+URL: https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+SOURCE_FACT:
+- renewable capacity end-2025 = 5,149 GW;
+- 2025 net additions = 692 GW;
+- solar additions = 511.2 GW total, of which PV = 510.3 GW;
+- wind additions = 158.7 GW.
+INDEPENDENT_CALCULATION:
+(511.2+158.7)/692*100 = 96.8063583815%.
+SOURCE_REPORTED_ROUNDED_VALUE: solar+wind = 96.8% of net renewable additions.
+REPLICATION_STATUS: PASS.
+LIMITATION: nameplate addition throughput != firm delivered-power throughput.
+
+EVIDENCE_ID: EGC-043-BFREV-003
+CLAIM_ID: CLAIM-EGC-043-BF-US-ASBUILT-CAPEX
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / REPORTED_AS_BUILT_COST
+SOURCE: U.S. EIA, Construction cost data for electric generators installed in 2024
+SOURCE_DATE: 2026-07-06
+URL: https://www.eia.gov/electricity/generatorcosts/
+OUTPUT:
+- solar 1,865 USD/kW;
+- battery storage 1,469 USD/kW;
+- wind 1,882 USD/kW;
+- natural gas aggregate 1,004 USD/kW;
+- new-plant included capacity: solar 30,265 MW, battery 10,195 MW, wind 4,455 MW, gas 1,061 MW.
+BOUNDARY_ATTACK:
+- 2024 gas observations are combustion turbines/internal-combustion in the displayed EIA technology split; no observed 2024 NGCC CAPEX may be inferred from the 1,004 USD/kW aggregate.
+- battery USD/kW alone lacks energy-duration information.
+REPLICATION_STATUS: PASS with boundary warning preserved.
+
+EVIDENCE_ID: EGC-043-BFREV-004
+CLAIM_ID: CLAIM-EGC-043-BF-NUCLEAR-SCALE
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / OPERATIONAL_DATABASE
+SOURCES:
+1) IAEA PRIS In Operation & Suspended Operation
+URL: https://pris.iaea.org/pris/WorldStatistics/WorldStatisticsLandingPage.aspx
+2) IAEA PRIS Energy Availability Factor Trend
+URL: https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+OUTPUT:
+- in operation: 417 reactors; 379,700 MW net electrical capacity (database update 2026-06-29).
+- 2025 fleet EAF: 84.1% over 402 commercially operated reactors with available data; 362 GW(e) represented in the annual EAF table (database update 2026-07-27).
+BOUNDARY:
+EAF != capacity factor and neither alone proves adequacy/capacity credit or new-build economics.
+REPLICATION_STATUS: PASS.
+
+EVIDENCE_ID: EGC-043-BFREV-005
+CLAIM_ID: CLAIM-EGC-043-BF-NAMEPLATE-NOT-ENERGY
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / CALCULATION
+SOURCE: U.S. EIA SEDS, Table N3, 2023 U.S. row
+URL: https://www.eia.gov/state/seds/sep_indicators/indicator_print.pdf
+PDF_VISUAL_CHECK: executed; Table N3 visually confirmed U.S. values nuclear 93.0%, natural-gas combined-cycle 59.7%, hydro 35.0%, geothermal 69.4%, solar PV 23.2%, wind 33.2%.
+METHOD_A: Decimal calculation 1/(CF as fraction).
+METHOD_B: independently equivalent 100/(CF in percent).
+OUTPUT_A_EQUALS_B:
+- nuclear = 1.075268817204301 GW nameplate / 1 GW average;
+- CCGT = 1.675041876046901;
+- hydro = 2.857142857142857;
+- geothermal = 1.440922190201729;
+- solar PV = 4.310344827586207;
+- wind = 3.012048192771084.
+DIFFERENCE_BETWEEN_METHODS: zero at computed Decimal precision.
+REPLICATION_STATUS: PASS.
+INTERPRETATION: dimensional annual-energy check only; cannot substitute for R_STAR or capacity credit.
+
+EVIDENCE_ID: EGC-043-BFREV-006
+CLAIM_ID: CLAIM-EGC-043-BF-LCOE-BOUNDARY-ATTACK
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / SOURCE_FACT + PDF_VISUAL_CHECK
+SOURCE: U.S. EIA, Levelized Costs of New Generation Resources in AEO2026
+SOURCE_DATE: 2026-04-08
+URL: https://www.eia.gov/outlooks/aeo/electricity_generation/pdf/LCOE_report.pdf
+VISUAL_CHECK: pages containing direct-comparison warning and average LCOE/LCOS chart were independently inspected.
+SOURCE_FACT:
+- EIA explicitly states direct LCOE/LCOS comparisons across technologies are misleading for economic competitiveness.
+- common online year = 2031; 30-year recovery; after-tax WACC 7.27%.
+- stated eligible-technology values include levelized tax-credit components; CCS also has captured-carbon-credit treatment.
+- independently matched BF1 values: advanced nuclear 87.81; biomass 84.54; combined-cycle 77.46; combined-cycle+CCS 58.47; geothermal 40.38; offshore wind 118.79; hydro 64.77; PV-battery 94.20; solar PV 58.33; onshore wind 56.75; CT 172.57; battery 152.61 USD_2025/MWh.
+REPLICATION_STATUS: PASS.
+PRIMARY_LEDGER_RULE: these values cannot be promoted directly to FSRC_ND because policy transfers/credits and reliability-value boundaries differ.
+
+EVIDENCE_ID: EGC-043-BFREV-007
+CLAIM_ID: CLAIM-EGC-043-BF-NEW-NUCLEAR-COST
+EVIDENCE_CLASS: INDEPENDENT_SOURCE_BOUNDARY_AUDIT
+SOURCE: U.S. DOE Pathways to Commercial Liftoff: Advanced Nuclear 2025 Update
+SOURCE_DATE: 2025-07
+URL: https://www.energy.gov/sites/default/files/2025-07/LIFTOFF_DOE_Advanced-Nuclear-Update.pdf
+RETRIEVAL_NOTE:
+- official search-index text was available; direct PDF endpoint returned 404 to the web fetcher during this review, so no new screenshot could be produced.
+SOURCE_TEXT_SUPPORT:
+- Vogtle Units 3&4 OCC ~11,000 USD/kW historical project basis; ~15,000 2024-USD/kW after inflation.
+- ~8,300 USD/kW for the next two-unit AP1000 is DOE-estimated after removing identified Vogtle-specific/FOAK effects; it is not measured construction cost.
+REVIEW_STATUS: PASS for BF1 truth-class separation; visual re-check unavailable in this reviewer due source endpoint failure.
+
+EVIDENCE_ID: EGC-043-BFREV-008
+CLAIM_ID: CLAIM-EGC-043-BF-FUSION-REPLICATION
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION / EXPERIMENT_RESULT
+SOURCE: LLNL FY2025 National Ignition Facility annual report
+URL: https://annual.llnl.gov/fy-2025/national-ignition-facility-2025
+SOURCE_FACT:
+2025-04-07 NIF yield 8.6 MJ from 2.08 MJ laser energy delivered to target; target gain 4.13.
+INTERPRETATION:
+target gain does not establish commercial plant net-electric output, delivered cost, duty cycle or grid availability.
+REVIEW_STATUS: PASS for exclusion from CURRENT mature baseline.
+
+EVIDENCE_ID: EGC-043-BFREV-009
+CLAIM_ID: CLAIM-EGC-043-BF-STORAGE-COMPLETENESS
+EVIDENCE_CLASS: EXTERNAL_FACT + MODEL_INPUT + ADVERSARIAL_FINDING
+SOURCES:
+1) U.S. EIA, 2025 pumped-storage capacity
+URL: https://www.eia.gov/energyexplained/hydropower/where-hydropower-is-generated.php
+2) EIA EPM Table 6.07.C
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_07_c
+3) NLR/NREL 2024 ATB, Pumped Storage Hydropower
+URL: https://atb.nrel.gov/electricity/2024/pumped_storage_hydropower
+4) DOE, How Pumped Storage Hydropower Works
+URL: https://www.energy.gov/cmei/water/how-pumped-storage-hydropower-works
+SOURCE_FACT:
+- U.S. 2025 pumped-storage power capacity ~23,156 MW.
+- EIA 2025 time-adjusted PSH capacity 23,156.6 MW with 11.9% usage factor.
+- NLR ATB models mature PSH with 8/10/12-hour durations; representative RTE 80% (literature range 70-87%); 10-h closed-loop class-1 modeled capital cost average ~3,029 2021-USD/kW, with large site-specific technical resource.
+- DOE describes PSH as well-established and the dominant commercialized long-duration storage technology.
+IMPORTANT RECENCY_CORRECTION:
+DOE's page also carries an older "88% of U.S. utility-scale storage capacity" statement. Do NOT use that percentage as a 2026 current fact because EIA shows rapid battery growth; current EIA power-capacity data supersede that stale share statement.
+ADVERSARIAL_RESULT:
+BF1 explicitly carries battery/source+storage but omits PSH from the mature storage baseline. This is material: for geographies with feasible PSH, a battery-only storage frontier can overstate storage/firming cost or understate feasible duration and can therefore bias portfolio ranking.
+FINDING_ID: F-EGC-043-BFREV-P1-001
+SEVERITY: P1
+STATUS: REPAIR_REQUIRED.
+
+EVIDENCE_ID: EGC-043-BFREV-010
+CLAIM_ID: CLAIM-EGC-043-BF-CHP-COMPLETENESS
+EVIDENCE_CLASS: SOURCE_FACT + BOUNDARY_INFERENCE
+SOURCES:
+1) DOE Combined Heat and Power Basics
+URL: https://www.energy.gov/cmei/ito/combined-heat-and-power-basics
+2) EPA Methods for Calculating CHP Efficiency
+URL: https://www.epa.gov/chp/methods-calculating-chp-efficiency
+3) DOE Onsite Energy Installation Database
+URL: https://betterbuildingssolutioncenter.energy.gov/onsite-energy/onsite-energy-installation-database
+SOURCE_FACT:
+- CHP is commercially used for industrial/commercial/institutional applications and produces electricity plus useful thermal energy concurrently.
+- typical total-system efficiency is roughly 60-80% (DOE pages often describe ~65-75/80% depending source/application).
+BOUNDARY:
+- CHP is NOT a primary energy source; fuel/process energy remains costed.
+- CHP may be a strong matched comparator only where a real useful-heat/cooling service exists.
+- any heat credit must use the frozen external co-product counterfactual; otherwise electricity-only ranking is biased by free coproduct credit.
+ADVERSARIAL_RESULT:
+CHP omission does not falsify the electricity-only component frontier, but it can make a site/industrial multi-service baseline incomplete.
+FINDING_ID: F-EGC-043-BFREV-P2-002
+SEVERITY: P2
+STATUS: CONDITIONAL_REPAIR_REQUIRED.
+
+PARENT CLAIM REVIEW:
+CLAIM-EGC-043-BF-RENEWABLE-COST: PASS.
+CLAIM-EGC-043-BF-DEPLOYMENT: PASS.
+CLAIM-EGC-043-BF-US-ASBUILT-CAPEX: PASS_WITH_GAS_TECHNOLOGY_BOUNDARY_WARNING.
+CLAIM-EGC-043-BF-LCOE-BOUNDARY-ATTACK: PASS.
+CLAIM-EGC-043-BF-NUCLEAR-SCALE: PASS.
+CLAIM-EGC-043-BF-NEW-NUCLEAR-COST: PASS truth-class separation; PDF visual replication NOT_VERIFIED in this reviewer because official endpoint failed.
+CLAIM-EGC-043-BF-FUSION-REPLICATION: PASS baseline-category conclusion.
+CLAIM-EGC-043-BF-NAMEPLATE-NOT-ENERGY: PASS, independently reproduced exactly.
+CLAIM-EGC-043-BF-001 SOLAR_WIND_COMPONENT_FRONTIER: PASS only as PLANT-COST+DEPLOYMENT component statement; NOT a system-cost claim.
+CLAIM-EGC-043-BF-002 FIRM_BASELINE_SET: REVIEW_FAILED for completeness until PSH storage/flexibility baseline is explicit and CHP is conditionally handled by service boundary.
+CLAIM-EGC-043-BF-003 NEW_NUCLEAR_LOW_COST: remains NOT_VERIFIED.
+CLAIM-EGC-043-BF-004 FUSION_CURRENT_BASELINE: PASS as FALSIFIED.
+CLAIM-EGC-043-BF-005 BATTERY_PRIMARY_SOURCE: PASS as FALSIFIED.
+CLAIM-EGC-043-BF-006 GLOBAL_SYSTEM_WINNER: remains UNKNOWN.
+CLAIM-EGC-043-BF-007 NAMEPLATE_EQ_DELIVERED: PASS as FALSIFIED.
+
+FINDING_ID: F-EGC-043-BFREV-P1-001
+TITLE: Mature storage baseline omits pumped-storage hydropower
+SEVERITY: P1
+WHY_MATERIAL:
+Final matched portfolio must minimize delivered cost under R_STAR. A battery-only storage/flexibility representation can exclude a mature 8-12h, site-constrained storage class with ~23.16 GW current U.S. fleet and materially different duration/cost/lifetime/resource characteristics.
+REQUIRED_REPAIR:
+- add PSH as an explicit mature storage comparator wherever geography has eligible sites;
+- use site/geography-specific CAPEX, duration, RTE, lifetime, network/environmental/resource constraints;
+- preserve charging energy and losses in physical ledger; PSH cannot create energy;
+- where PSH is unavailable, mark NOT_APPLICABLE_WITH_EVIDENCE rather than silently omit it;
+- do not use stale DOE "88%" share as a current 2026 power-capacity fact.
+FALSIFICATION_TEST:
+If adding feasible PSH changes the minimum-cost matched portfolio or candidate ordering, prior baseline ranking was not robust.
+
+FINDING_ID: F-EGC-043-BFREV-P2-002
+TITLE: CHP/cogeneration requires conditional matched-baseline lane
+SEVERITY: P2
+REQUIRED_REPAIR:
+- when the frozen service case includes useful thermal demand, include CHP/cogeneration as a baseline option;
+- cost source fuel and emissions/mitigation once;
+- credit useful heat/cooling only against a frozen displaced-service counterfactual with provenance;
+- for electricity-only bulk-delivery cases with no external useful-heat demand, mark CHP coproduct credit NOT_APPLICABLE rather than inventing a heat sink.
+
+REVIEW_OUTCOME:
+CORE_EVIDENCE_REPLICATION = PASS.
+BOUNDARY_DISCIPLINE = PASS.
+BASELINE_COMPLETENESS = FAIL due P1 PSH omission.
+PARENT_STATUS_CHANGE:
+JOB-EGC-043-BASELINE-FRONTIER-C1-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-043-BASELINE-FRONTIER-REV-C2-20261006: EXECUTING -> REVIEW_FAILED / VERIFIED_AS_REVIEW_OUTPUT.
+No final winner is promoted.
+
+JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-C3-20261006
+TITLE: Repair mature storage/cogeneration baseline completeness
+ROLE: Baseline frontier repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does adding site-feasible pumped-storage hydropower and service-appropriate CHP/cogeneration to the matched mature baseline change the minimum-cost/reference frontier under the common FSRC_ND and R_STAR boundaries?
+CANDIDATE: PSH; BESS; generation+storage portfolios; CHP where useful thermal demand exists.
+DEPENDENCIES: F-EGC-043-BFREV-P1-001; F-EGC-043-BFREV-P2-002; common-ledger/R_STAR reviews may proceed in parallel.
+REQUIRED_INPUTS: current EIA PSH fleet data; NLR PSH site/cost/duration/RTE data; DOE/EPA CHP evidence; frozen geography/service cases; common accounting.
+REQUIRED_TOOLS: chronological portfolio optimization or at minimum symmetric storage-cost/service comparison; site feasibility filter; co-product counterfactual audit.
+REQUIRED_EVIDENCE:
+- PSH/BESS comparison on same delivered-service duration and geography;
+- demonstrate PSH availability/unavailability with evidence;
+- CHP only in cases with verified useful thermal load/counterfactual;
+- no storage charging-energy creation and no coproduct double credit.
+EXPECTED_OUTPUT: repaired baseline set plus evidence whether component/system frontier changes.
+FALSIFICATION_CONDITION: any supposedly strongest baseline excludes a feasible mature PSH/CHP option that lowers common-boundary cost or reliability burden.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: final system ranking still requires reviewed FSRC_ND, R_STAR and frozen geography/service.
+NEXT_ACTION: distinct session claims C3 repair; distinct C4 reviewer attacks it.
+
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+MISSION_STATUS: CONTINUE_REQUIRED
