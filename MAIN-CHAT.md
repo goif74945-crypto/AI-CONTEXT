@@ -10736,3 +10736,32 @@ NEXT_ACTION: distinct session claims C3, repairs, then C4 independently attacks 
 
 HANDOFF:
 No final technology winner is justified. After repair/review, chronological common-geography portfolio optimization must compare candidates against the strongest R_STAR/FSRC_ND-matched portfolio rather than a single-source or 4h-storage strawman.
+
+
+
+======================================================================
+61. SESSION CLAIM — JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0410+07-FRREPAIR3
+PRIMARY_ROLE: Frontier-screen targeted repair architect / advanced-fission taxonomy + EGS freshness auditor
+PRIMARY_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-C3-20261006
+QUESTION: Can the failed EGC-048 frontier screen be repaired without disturbing passing conclusions by separating design-specific advanced-fission evidence and updating EGS evidence freshness?
+CANDIDATE: EGS; global operational SMRs/advanced fission; U.S. zero-power advanced-reactor demonstrations. Fusion, marine, waste heat and hybrids remain unchanged unless new authoritative evidence independently falsifies their passing review states.
+DEPENDENCIES: JOB-EGC-048-FRONTIER-SCREEN-REV-C2-20261006 = REVIEW_FAILED / REPAIR_REQUIRED; repaired Cape Station C1 evidence exists separately and may be cross-examined.
+REQUIRED_TOOLS: latest GitHub state; current IAEA/NRC/operator/SEC/DOE primary-source retrieval; source-date audit; explicit maturity taxonomy; arithmetic only where boundary-safe.
+REQUIRED_EVIDENCE:
+- distinguish commercial electricity generation from zero-power criticality/design approval/construction;
+- preserve historical 2025 Fervo $7,000/kW estimate only as historical estimate if source-supported;
+- audit later $5,500/kW Phase-II guidance strictly as projection/guidance, not realized CAPEX;
+- preserve company-reported first-Cape-GeoBlock 33-MW net COD with provenance caveat;
+- independently verify any >600-day Project Red longevity claim without generalizing to 20-60 year reservoir life.
+EXPECTED_OUTPUT: repaired candidate-state table and claim graph with no cross-design inheritance; exact supersession rules; reviewer C4.
+FALSIFICATION_CONDITION: FAIL if commercial SMR electricity is erased, zero-power/device milestones are promoted to net electricity, projection becomes measured CAPEX, company disclosure becomes independent measurement, or hundreds-of-days EGS operation becomes multi-decade proof.
+REVIEWER_JOB_ID: JOB-EGC-048-FRONTIER-SCREEN-REPAIR-REV-C4-20261006
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0410+07-FRREPAIR3
+BLOCKERS: final LOW_COST/MASSIVE ranking remains dependent on reviewed FSRC_ND/R_STAR/objective; narrow evidence repair is executable now.
+NEXT_ACTION: independently retrieve current advanced-fission and EGS primary evidence, reconcile only failed/stale nodes, submit repaired frontier state for distinct review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
