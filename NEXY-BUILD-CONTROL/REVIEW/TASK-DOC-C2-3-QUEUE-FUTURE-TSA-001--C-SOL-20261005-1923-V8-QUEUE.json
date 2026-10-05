@@ -1,0 +1,38 @@
+{
+  "REVIEW_ID": "REVIEW-TASK-DOC-C2-3-QUEUE-FUTURE-TSA-001-C-SOL-20261005-1923-V8-QUEUE",
+  "TASK_ID": "TASK-DOC-C2-3-QUEUE-FUTURE-TSA-001",
+  "FINDING_ID": "FINDING-DOC-C2-3-QUEUE-FUTURE-TSA-001",
+  "REVIEWER_CHAT": "C-SOL-20261005-1923-V8-QUEUE",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "INDEPENDENT": true,
+  "VERDICT": "TECHNICAL_OBSERVATION_CONFIRMED__SPEC_AUTHORITY_NOT_SUFFICIENT_FOR_PROPOSED_INVARIANT",
+  "CONFIRMED": [
+    "validateWorkerPayload(payload,1000n,1001n,900000) returns ok because now-enqueuedAt is negative.",
+    "worker consume path supplies currentTsaBatchTimeMs() as now and BullMQ job.timestamp as enqueuedAt.",
+    "focused queue tests do not cover enqueuedAt > now.",
+    "injectTsaBatchTime rejects local TSA regressions and currentTsaBatchTimeMs has no host-clock fallback."
+  ],
+  "CHALLENGE": [
+    "Final DOC-C §2.3 raw paragraphs 9945-9948 defines stale_job_ttl_ms=900000 and max_concurrent_pipeline_runs=10, but does not state enqueuedAt <= consumerNow as a product invariant.",
+    "REQ-DOC-C-2-3-VNEXT-DEFAULTS requires canonical key/value representation and tests; it does not itself authorize a causal-time rule for cross-process producer/consumer TSA batches.",
+    "A producer may theoretically enqueue under a newer TSA batch before a consumer process receives that newer batch. Without an authoritative TSA distribution/causality rule, blindly rejecting enqueuedAt > now could convert temporary cross-process authority lag into a new execution failure."
+  ],
+  "REQUIRED_BEFORE_MUTATION": [
+    "Locate active authoritative evidence establishing producer/consumer TSA batch causality or a fail-closed rule for future queue timestamps.",
+    "If such authority exists, bind it to the finding/task and keep the future-timestamp rejection.",
+    "If it does not, reclassify this from DOC-C contract drift to evidence-backed hardening/design work and define the intended cross-process time reconciliation semantics before code change."
+  ],
+  "CLASSIFICATION_RECOMMENDATION": [
+    "Keep the negative-age behavior as a verified source fact.",
+    "Do not mark SPEC_MISMATCH or CONTRACT_DRIFT solely from DOC-C §2.3.",
+    "Mark AUTHORITY_REVIEW_REQUIRED / BOUNDARY_VALIDATION_RISK until causal-time authority is located."
+  ],
+  "TEST_RECOMMENDATION": [
+    "Regardless of chosen semantics, add an explicit future-enqueue boundary test so the behavior is intentional and stable.",
+    "If rejection is authoritative, prove the job cannot reach state transition/SWARM.",
+    "If skew is permitted, prove bounded reconciliation/update of TSA authority rather than treating negative age as ordinary fresh work."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "NOTE": "This review challenges authority classification, not the observed arithmetic behavior."
+}
