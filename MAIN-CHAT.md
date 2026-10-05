@@ -11836,3 +11836,29 @@ REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REV-20261006
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0400+07-MECH1
+PRIMARY_ROLE: Mechanical Reliability / Maintenance / Replacement Boundary Analyst
+PRIMARY_JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+QUESTION: Which mechanical wear, rotating-equipment, pressure-boundary, fatigue, corrosion, pumping, turbine/gearbox and maintenance constraints materially change availability, lifecycle cost or replacement burden across the leading energy candidates, and which are non-binding under measured operating evidence?
+CANDIDATE: wind; hydro/pumped storage; geothermal/EGS; nuclear fission; gas/thermal firming where baseline-relevant; solar PV and electrochemical storage as low-moving-part comparators; emerging systems only where measured mechanical evidence exists.
+DEPENDENCIES: finance/construction, EROI/lifecycle, grid/storage, thermal/heat-rejection, operations evidence, safety/FMEA and candidate-frontier jobs are independently owned. This job isolates mechanical reliability/replacement and must not duplicate their conclusions or declare a global winner.
+REQUIRED_INPUTS: measured fleet/component reliability/availability where available; maintenance intervals; failure/repair modes; replacement lifetimes; parasitic pumping/mechanical loads; corrosion/fatigue/erosion constraints; downtime implications.
+REQUIRED_TOOLS: current official/national-lab/regulator/operational-source research; executed lifetime/replacement arithmetic; source-boundary audit; adversarial comparison.
+REQUIRED_EVIDENCE: source/date/geography/technology/component; measured vs modeled distinction; failure/maintenance denominator; uncertainty; no extrapolation from one component to whole-system availability without evidence.
+EXPECTED_OUTPUT: candidate-neutral mechanical reliability ledger; lifecycle replacement/availability implications; mechanical P0/P1 gaps; falsification tests; independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if nameplate lifetime is treated as maintenance-free life; component failure rate is silently converted to plant availability; planned and forced outages are mixed; technology classes get asymmetric replacement accounting; or vendor design targets are promoted to measured fleet reliability.
+REVIEWER_JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: final candidate architecture and R_STAR remain upstream; evidence collection and replacement-boundary analysis are executable.
+NEXT_ACTION: retrieve measured/authoritative mechanical reliability evidence for wind drivetrains, hydro equipment, geothermal wells/pumps, nuclear/thermal rotating equipment and low-moving-part comparators; quantify lifecycle replacement sensitivity and submit for independent review.
+BRANCH_HEAD_AT_CLAIM: 69f231967ae6e58963ddee8dc4c64780f1889c4b
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: c336c3b6bc8499e90f79385e0d94c65e85f11427
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
