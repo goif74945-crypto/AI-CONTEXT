@@ -1,0 +1,23 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CONTROL_REPAIR_RESULT_V1",
+  "RESULT_ID": "RESULT-C-SOL-20261005-0951-0800-V16RC13-6F42C1A9-MISSION-ROTATION-DRAIN-REPAIR-V1",
+  "CHAT_ID": "C-SOL-20261005-0951-0800-V16RC13-6F42C1A9",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "AFFECTED_FINDING": "FINDING-V16RC13-MISSION-ROTATION-ACTIVE-INTEGRATION-DRAIN-AMBIGUITY-6F42C1A9",
+  "REPAIR_ID": "V16RC13-MISSION-ROTATION-ACTIVE-INTEGRATION-DRAIN-6F42C1A9-V1",
+  "REPAIR_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REPAIRS/MISSION_ROTATION_ACTIVE_INTEGRATION_DRAIN_6F42C1A9_V1.json",
+  "REPAIR_COMMIT": "64fba49743b0871d4df67c0eaa275b604b877fe1",
+  "REPAIR_PROPERTIES": [
+    "Entry barrier closes gates and invalidates normal old authority but deliberately keeps G1 mission generation canonical during drain.",
+    "Drain explicitly includes pre-existing ACTIVE_INTEGRATION and actual Git-ref reconciliation, including in-flight CAS quiescence.",
+    "G2 cutover requires ACTIVE_INTEGRATION null, HEALTHY state, and post-drain target HEAD/TREE evidence.",
+    "A single Mission Fence CAS changes G→G+1 only after drain proof; gates stay closed through namespace/member rebind.",
+    "Crash recovery retains Git truth and fails closed on ambiguity."
+  ],
+  "REVIEW_REQUIRED": true,
+  "SELF_CERTIFIED": false,
+  "FINDING_STATUS_CHANGE_PERFORMED": false,
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "VERDICT": "CANDIDATE_READY_FOR_INDEPENDENT_REVIEW"
+}
