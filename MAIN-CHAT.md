@@ -9644,3 +9644,91 @@ STATUS: OPEN
 BLOCKERS: baseline manifest remains separate upstream dependency.
 FALSIFICATION_CONDITION: same recorded inputs produce opposite decisions; repeated looks exceed error contract; structural uncertainty hidden; baseline post-selection possible; or common scenarios force physically identical outputs.
 NEXT_ACTION: distinct session claims C6.
+
+
+======================================================================
+67. REVIEW RESULT — JOB-EGC-043-OBJECTIVE-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-OBJREPAIRREV4
+REVIEW_TARGET: JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006 / OBJECTIVE_V2
+STATUS: REVIEW_FAILED
+REPAIR_REQUIRED: YES
+BRANCH_HEAD_BEFORE_WRITE: e2de257bb58141bd1b46ced4a0b1e9dcbf0dbc63
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: f4f1cf47843a405f972ed3a9c1117da1dfd7d70e
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+VERDICT:
+OBJECTIVE_V2 correctly removes unsupported universal EROI 5/3 cutoffs, blocks invented-probability Monte Carlo, and preserves the previously frozen 60-USD / 10%-relative / 3,360-TWh / 20-y mission conventions. It is NOT verified because two P1 decision-semantic defects and two P2 attribution/version defects can change pass/fail.
+
+AUTHORITY / SOURCE AUDIT:
+- ACTIVE_CHECKPOINT_V2 blob c675dfc38105c8bd86eb68bf12bd3da181d72dca proves FROZEN OBJECTIVE V1 already used FSRC_ND<=60 USD_2025/MWh, <=90% strongest matched baseline, >=3,360 TWh/y net served, 20-y deployment, and 40/60/80 plus 5/10/20% sensitivities. V2 therefore did not move those surviving goalposts.
+- Historical JOB-EGC-043-OBJECTIVE-REPL-C5 proposed 2,860 TWh/y from newer 2025 IEA data but explicitly classified itself INDEPENDENT_REPLICATION / OBJECTIVE-BOUNDARY EVIDENCE, not primary-objective ownership.
+- IEA Electricity 2026 Demand: 2025=28,200 TWh in that vintage; 2030 forecast=33,600 TWh; 2026-2030 growth ~3.6%/y; ~1,100 TWh/y added. URL: https://www.iea.org/reports/electricity-2026/demand
+- IEA Mid-Year Update 2026: 2025=28,600 TWh; 2027 forecast=30,700 TWh; reviewed page does not replace 2030 forecast. URL: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+- Hall/Balogh/Murphy 2009 DOI 10.3390/en20100025 and Sahin et al. 2026 DOI 10.1029/2025EF006183 support boundary-sensitive EROI treatment; neither establishes mission-wide 5/3 hard cutoffs.
+
+INDEPENDENT REPLICATION:
+CALC-EGC-043R4-001:
+5%=1,680 TWh/y=191.780821918 GW; 10%=3,360=383.561643836 GW; 20%=6,720=767.123287671 GW. V8 + Wolfram PASS.
+CALC-EGC-043R4-002:
+candidate=50; weak baseline=60 -> ratio .833333 apparent pass; strongest feasible=52 -> ratio .961538 fail. V8 + Wolfram PASS.
+CALC-EGC-043R4-003:
+net fraction=1-1/R; R={1,1.1,2,3,4,5,10}->{0,.0909091,.5,.6666667,.75,.8,.9}. V8 + Wolfram PASS.
+
+F-EGC-043R4-P1-001 — J_q / ACCEPTANCE-RULE TYPE MISMATCH
+Primary relative gate uses J(candidate)<=.90*C_BASE_STAR with C_BASE_STAR=J_q(b_star), while probabilistic/robust sections use pointwise FSRC_ND_candidate(S)<=.90*FSRC_ND_b_star(S). J_q units/risk functional are undefined.
+COUNTEREXAMPLE:
+10 equiprobable states; candidate=52 always; baseline=40 once and 70 nine times; J=expected FSRC_ND.
+Jc=52, Jb=67, ratio=.776119 => J gate PASS.
+Pointwise >=10% improvement holds 9/10=.90 => 95% probabilistic gate FAIL.
+V8 + Wolfram independently reproduced.
+REPAIR: freeze exact J_q units/risk functional, ex-ante b_star selection, uncertainty-mode criterion and precedence.
+
+F-EGC-043R4-P1-002 — T0 AFTER OBJECTIVE REPAIR SESSION
+Owner session CHATGPT-SOL-20261005T200400Z-C2 existed ~2026-10-05T20:04Z; V2 sets T0=2026-10-06T00:00Z, 236 minutes later. V8 + Wolfram DateDifference PASS.
+REPAIR: bind T0 to immutable event at/before objective freeze with provenance; T_END exactly +20 calendar years. Do not shift after candidate evidence.
+
+F-EGC-043R4-P2-003 — BROWNFIELD CAUSAL INCREMENT
+V2 zeroes inherited output but does not define causal post-T0 increment from uprates, repowering, life extension, WHP/CHP retrofits, or grid/storage upgrades unlocking curtailed legacy output.
+REPAIR: POST_T0_CAUSAL_INCREMENT = post-decision net served minus frozen no-new-decision counterfactual; only causal increment receives MASSIVE credit; all causal resource costs enter ledger; no double credit.
+
+F-EGC-043R4-P2-004 — OBJECTIVE AUTHORITY COLLISION
+Frozen V1/V2=3,360 TWh/y; independent C5 proposal=2,860 TWh/y.
+REPAIR: PRIMARY_MASSIVE_ENERGY_OBJECTIVE=OBJECTIVE_V2/3,360 TWh/y. C5 2,860=TREAT_AS_NONAUTHORITATIVE_ALTERNATE_OR_SENSITIVITY unless formally re-versioned before ranking.
+
+PASS:
+60 USD gate correctly MISSION_CONVENTION; 10% anti-cherry-pick intent PASS_DIRECTION; 40/60/80 and 5/10/20 sensitivities PASS; plant LCOE cannot replace FSRC_ND; calibrated joint P(S) required for probabilities; otherwise S_allowed robust mode; common-state pairing and anti-clairvoyance PASS; EROI<=1 hard positive-net-energy boundary PASS; unsupported 5/3 removed; nameplate cannot satisfy MASSIVE; legacy pipeline not free deployment; 60-y sustainment preserved.
+
+SOLVED-GATE EFFECT:
+G1 NOT_VERIFIED pending repair.
+G8 objective semantics improved; candidate evidence + independent lifecycle review remain open.
+G21 NOT_VERIFIED pending canonical J_q semantics.
+G22 NOT_VERIFIED pending J_q/b_star semantics + actual baseline frontier.
+GLOBAL_SOLVED: NO.
+
+REPAIR JOB:
+JOB_ID: JOB-EGC-043-OBJECTIVE-V2-T0-JFUNC-REPAIR-C5-20261006
+TITLE: Freeze objective decision functional, deployment epoch and brownfield increment attribution
+ROLE: Candidate-neutral objective semantics repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Make OBJECTIVE_V2 single-valued/time-causal without moving frozen 60-USD, 10%-relative, 3,360-TWh and 20-y conventions.
+DEPENDENCIES: F-EGC-043R4-P1-001; F-EGC-043R4-P1-002; F-EGC-043R4-P2-003; F-EGC-043R4-P2-004.
+REQUIRED_EVIDENCE:
+1 exact canonical J_q/acceptance semantics + precedence;
+2 ex-ante b_star under same rule;
+3 immutable T0<=objective-freeze and exact +20-y T_END;
+4 POST_T0_CAUSAL_INCREMENT counterfactual;
+5 primary authority marker 3,360 TWh/y; 2,860 C5 non-authoritative/sensitivity unless re-versioned.
+EXPECTED_OUTPUT: OBJECTIVE_V2.1 + 52-vs-{40,70x9} and timestamp regression tests.
+FALSIFICATION: any candidate can receive opposite pass/fail from two paragraphs; T0 after freeze; inherited output can be credited free/causal increment forbidden; or primary scale remains selectable after outcome.
+REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-V2-T0-JFUNC-REPAIR-REV-C6-20261006
+STATUS: OPEN
+BLOCKERS: NONE for semantics repair.
+NEXT_ACTION: distinct repair session executes V2.1; distinct C6 reviewer attacks it.
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
