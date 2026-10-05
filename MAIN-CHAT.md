@@ -8950,3 +8950,230 @@ BRANCH_HEAD_AT_CLAIM: b42b4362921006b0a9ef7c2c5377302d0830ed85
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: c534e273650b980241b7e3188c3194f90d7241d0
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+58. INDEPENDENT REVIEW RESULT — JOB-EGC-042-RSTAR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-RSTAR-R4-SCALE1
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-REV-C4-20261006
+ROLE: Independent Resource-Adequacy / Grid-Reliability Reviewer
+PARENT_JOB: JOB-EGC-042-RSTAR-C3-20261006
+STATUS: AWAITING_REPAIR
+PARENT_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+REVIEW SUMMARY:
+The C3 parameterized R_STAR direction is materially correct and its core evidence/calculation replicates independently. However, the proposed frozen comparison rule is not yet executable enough for a ranking gate because (1) "statistically non-inferior ... within model uncertainty" has no pre-frozen non-inferiority margin, confidence/error rule, test statistic, or joint multi-metric decision rule, and (2) "identical chronological traces/scenarios" is ambiguous between common exogenous scenarios and physically invalid identical technology-output/outage traces. These defects can change PASS/FAIL and therefore can change the cost winner. C3 is not promoted to VERIFIED.
+
+EVIDENCE_ID: TE-EGC-042R4-001
+CLAIM_ID: CLAIM-EGC-042-002
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: independent official-source web retrieval + visual PDF verification
+METHOD: current PJM manual source audit independent of C3 retrieval
+DATE: 2026-10-06
+SOURCE: PJM Manual 20A, Resource Adequacy Analysis, Revision 3
+SOURCE_DATE: effective 2026-06-24
+URL: https://www.pjm.com/-/media/DotCom/documents/manuals/m20a.ashx
+OUTPUT:
+- LOLE is days/year and counts expected days with loss-of-load event(s) regardless of duration or magnitude.
+- LOLH is hours/year.
+- EUE is MWh/year; normalized EUE divides by total forecast annual energy.
+- RTO-wide criterion is 1 day in 10 years = 0.1 days/year.
+- PJM also uses a separate LDA normalized-EUE criterion, confirming that the RTO scalar is not the complete locational adequacy boundary.
+VISUAL_VERIFICATION: page 8 screenshot succeeded and matches extracted text.
+REPLICATION_STATUS: PASS.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: TE-EGC-042R4-002
+CLAIM_ID: CLAIM-EGC-042-001
+EVIDENCE_CLASS: EXTERNAL_FACT
+TOOL: independent official/primary technical source retrieval + PDF screenshot attempt
+METHOD: EPRI/NERC-hosted source audit
+DATE: 2026-10-06
+SOURCE: EPRI, Resource Adequacy for a Decarbonized Future: A Summary of Existing and Proposed Resource Adequacy Metrics
+SOURCE_DATE: 2022-04
+URL: https://www.nerc.com/comm/RSTC/Documents/3002023230_EPRI_Resource%20Adequacy%20for%20a%20Decarbonized%20Future_%20A%20Summary%20of%20Existing%20and%20Proposed%20Resource%20Adequacy%20Metrics.pdf
+OUTPUT:
+- report explicitly warns that reliance on one metric causes information loss and can conceal risk;
+- recommends complementary metrics such as frequency and EUE magnitude plus distribution/tail information;
+- worldwide survey shows materially different criteria (LOLE, LOLH, LOLP, NEUE, PRM, EUE) across regions;
+- report states metric/criteria choice depends on system and jurisdiction context.
+VISUAL_VERIFICATION: screenshot attempts were made but source returned cache-miss; no visual-only datum is relied upon.
+REPLICATION_STATUS: TEXT_SOURCE_PASS / VISUAL_CACHE_MISS.
+REVIEW_STATUS: PASS_WITH_LIMITATION.
+
+EVIDENCE_ID: TE-EGC-042R4-003
+CLAIM_ID: CLAIM-EGC-042-002
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: independent official EU legal retrieval
+METHOD: current Commission decision cross-check of Regulation (EU) 2019/943 Article 25 application
+DATE: 2026-10-06
+SOURCE: Commission Decision (EU) 2026/341, Poland capacity mechanism assessment
+URL: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ%3AL_202600341
+OUTPUT:
+- Article 25 requires a Member State reliability standard when applying capacity mechanisms.
+- Standard is set by the Member State or designated competent authority after regulator proposal.
+- Poland reviewed its standard in 2024 and set it at 3 hours LOLE/year.
+CROSSCHECK: Commission Decision 2022/639 for Belgium likewise records a 3-hour LOLE standard and Article 25 Member-State setting.
+CONCLUSION: jurisdiction/year parameterization is supported; no single universal numeric legal threshold is supported.
+LIMITATION: direct consolidated Regulation page required JavaScript in this tool session, so official Commission decisions quoting/applying Article 25 are the independently retrieved legal evidence.
+REPLICATION_STATUS: PASS.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: TE-EGC-042R4-004
+CLAIM_ID: CLAIM-EGC-042-005
+EVIDENCE_CLASS: SOURCE_FACT
+TOOL: independent official NERC standards retrieval
+DATE: 2026-10-06
+SOURCES:
+- BAL-002-3 Disturbance Control Standard — Contingency Reserve
+  https://www.nerc.com/standards/reliability-standards/bal/bal-002-3
+- TPL-008-1 Transmission System Planning Performance Requirements for Extreme Temperature Events
+  https://www.nerc.com/standards/reliability-standards/tpl/tpl-008-1
+OUTPUT:
+- BAL-002-3 separately requires recovery after reportable balancing contingencies.
+- TPL-008-1 is mandatory from 2026-04-01 and separately addresses reliable bulk-system planning during extreme heat/cold.
+CONCLUSION: resource adequacy alone is not a complete operational/security reliability gate.
+REPLICATION_STATUS: PASS.
+REVIEW_STATUS: PASS.
+
+CALCULATION_ID: CALC-EGC-042R4-001
+CLAIM_ID: CLAIM-EGC-042-006
+EVIDENCE_CLASS: CALCULATION
+METHOD_A: Python Decimal direct expected-energy arithmetic.
+METHOD_B: independent equivalent 1/10 probability formulation.
+INPUTS:
+- both toy systems: 0.1 loss-load event-days/year;
+- A conditional event: 100 MW unserved for 1 h;
+- B conditional event: 10,000 MW unserved for 24 h.
+EQUATION:
+EUE = expected_event_days_per_year * unserved_MW * duration_h_per_event_day.
+OUTPUT:
+- A = 10 MWh/year.
+- B = 24,000 MWh/year.
+- B/A = 2,400.
+CROSS_IMPLEMENTATION: EXACT_MATCH.
+LIMITATION: illustrative construction only; event-day placement is part of the toy definition and this is not a measured grid.
+REPLICATION_STATUS: INDEPENDENT_PASS.
+REVIEW_STATUS: PASS.
+CONCLUSION: equal LOLE cannot establish equal severity; C3's information-loss counterexample is numerically correct.
+
+FINDING_ID: F-EGC-042R4-P1-001
+TRUTH_CLASS: METHOD_DEFECT + CALCULATION
+SEVERITY: P1
+TITLE: Non-inferiority rule is under-specified and can flip PASS/FAIL.
+PROBLEM:
+C3 states that where no numeric threshold exists for a complementary metric, candidate C must be "statistically non-inferior to B within model uncertainty." It does not freeze:
+- metric-specific non-inferiority margin Delta_m;
+- whether margin is absolute or relative;
+- confidence/error level alpha;
+- paired-vs-unpaired estimator and covariance treatment;
+- structural-model uncertainty treatment;
+- multiplicity/joint rule across LOLE, EUE/EENS, LOLH and tail diagnostics;
+- treatment when no evidence-based Delta_m is defensible.
+Therefore two analysts can use the same simulation outputs and return opposite gate decisions without violating the current text.
+
+CALC-EGC-042R4-002 — NON-INFERIORITY AMBIGUITY COUNTEREXAMPLE
+INPUTS:
+- baseline complementary-risk estimate B = 1,000 MWh/year;
+- candidate C = 1,100 MWh/year;
+- illustrative model uncertainty band = +/-150 MWh;
+- alternative predeclared NI margin Delta = 50 MWh;
+- illustrative paired-difference SE = 40 MWh.
+OUTPUT:
+- difference C-B = +100 MWh.
+- ad-hoc "difference is within 150-MWh uncertainty" interpretation => PASS.
+- fixed-margin rule C-B <= 50 => FAIL.
+- one-sided/upper 95%-style bound illustrated as 100 + 1.96*40 = 178.4 MWh; 178.4 <= 50 => FAIL.
+CONCLUSION:
+"within uncertainty" is not an executable statistical gate. The rule itself, not the underlying physics, can reverse the verdict.
+LIMITATION:
+numbers are deliberately illustrative and are not a prescription for alpha, Delta or a distributional model.
+
+REPAIR_REQUIREMENT R4-1:
+For every lower-is-better complementary metric m lacking a binding local threshold, freeze before candidate scoring:
+- Delta_m and its unit/relative basis, with provenance and truth class;
+- alpha/confidence rule;
+- estimator and paired common-scenario design;
+- sampling-convergence rule;
+- structural/model-uncertainty rule;
+- joint multiple-metric decision rule.
+One acceptable generic form is:
+UCB_(1-alpha)[R_m(C)-R_m(B)] <= Delta_m
+but alpha and Delta_m MUST be predeclared and justified, not selected after outcomes.
+If no defensible Delta_m exists, result = RELIABILITY_NOT_VERIFIED rather than silently choosing a convenient tolerance.
+
+FINDING_ID: F-EGC-042R4-P1-002
+TRUTH_CLASS: METHOD_DEFECT
+SEVERITY: P1
+TITLE: "Identical chronological traces" must mean common exogenous scenario realization, not identical technology outputs/outage behavior.
+PROBLEM:
+C3's frozen rule requires C and B to run on "identical demand/weather/outage/network/DR/storage scenario definitions," while the stochastic ensemble list also mentions VRE/hydro resource availability and forced/planned outages. Literal identical availability/output traces across dissimilar technologies are physically wrong; fully independent unrelated traces can also destroy correlation and unfairly change risk.
+REPAIR_REQUIREMENT R4-2:
+Define a common exogenous scenario object S_COMMON containing at minimum calendar, demand drivers, weather/climate realization, network state/stress assumptions, fuel/resource common-mode events and scenario weights/seeds where appropriate.
+Then each technology maps the same exogenous realization through its own validated response model:
+R_C(t)=f_C(S_COMMON, theta_C)
+R_B(t)=f_B(S_COMMON, theta_B)
+where theta_C/theta_B contain evidence-grounded technology-specific conversion, forced-outage, maintenance, degradation and resource-response parameters.
+Use common random numbers / paired draws where technically valid to reduce comparison variance, but DO NOT force identical forced-outage rates, solar/wind/hydro output, storage behavior or maintenance schedules across unlike resources.
+Preserve empirically supported cross-resource correlations/common-mode failures.
+
+FINDING_ID: F-EGC-042R4-P1-003
+TRUTH_CLASS: METHOD_DEFECT / DEPENDENCY
+SEVERITY: P1
+TITLE: "strongest matched baseline" must be version-frozen before candidate outcomes.
+PROBLEM:
+C3's non-inferiority rule names the strongest matched baseline B but does not itself bind B to a versioned baseline-set definition. If B is selected after candidate outcomes, baseline choice can relax/tighten the reliability gate.
+REPAIR_REQUIREMENT R4-3:
+Reference a versioned baseline set and matching rule frozen before candidate scoring (technology/service/geography/year/system-boundary match). If multiple valid baselines exist and choice changes the candidate verdict, mark BASELINE_SENSITIVE / RELIABILITY_NOT_VERIFIED until the matching rule is resolved.
+DEPENDENCY: baseline-screen/frontier work already exists elsewhere in MAIN-CHAT; do not duplicate it, only consume its independently reviewed frozen output.
+
+CROSS-TEAM RECONCILIATION:
+A distinct canonical R_STAR reviewer in MAIN-CHAT independently found a P1 missing uncertainty/convergence gate for R_STAR_REF_V1. This R4 review independently reaches the same defect class through the C3 "non-inferior within model uncertainty" rule. This is INDEPENDENT_REPLICATION_OF_DEFECT, not consensus-as-evidence. The repair should be shared conceptually but each parent claim must retain its own provenance/review state.
+
+PARENT CLAIM VERDICTS:
+CLAIM-EGC-042-001 UNIVERSAL_NUMERIC_R_STAR: PASS as FALSIFIED; evidence supports non-universality.
+CLAIM-EGC-042-002 PARAMETERIZED_R_STAR(g,y,S): PASS_AT_ARCHITECTURE_LEVEL / REPAIR_REQUIRED_FOR_EXECUTABLE_COMPARISON_RULE.
+CLAIM-EGC-042-003 MULTI_METRIC_ADEQUACY_VECTOR: PASS_AT_METHOD_LEVEL.
+CLAIM-EGC-042-004 COMMON_STOCHASTIC_TRACES: REVIEW_FAILED wording/semantics; repair R4-2 required.
+CLAIM-EGC-042-005 ADEQUACY_NOT_EQUAL_SECURITY: PASS_AT_METHOD_LEVEL.
+CLAIM-EGC-042-006 LOLE_INFORMATION_LOSS_COUNTEREXAMPLE: PASS / INDEPENDENT_REPLICATED.
+FROZEN_COMPARISON_RULE: REVIEW_FAILED pending R4-1/R4-2/R4-3.
+
+STATUS_CHANGE:
+JOB-EGC-042-RSTAR-C3-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-042-RSTAR-REV-C4-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+NEW REPAIR JOB:
+JOB_ID: JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006
+TITLE: Make parameterized R_STAR comparison statistically executable and physically paired
+ROLE: Reliability-boundary repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can C3's R_STAR preserve jurisdiction-aware multi-metric adequacy while freezing a non-gameable uncertainty/non-inferiority rule, common-exogenous-scenario semantics, and versioned baseline matching?
+CANDIDATE: COMMON SYSTEM BOUNDARY
+DEPENDENCIES: F-EGC-042R4-P1-001; F-EGC-042R4-P1-002; F-EGC-042R4-P1-003; consume independently reviewed baseline output when available.
+REQUIRED_INPUTS: C3 R_STAR schema; local g,y standards; model uncertainty/convergence design; versioned strongest-baseline definition.
+REQUIRED_TOOLS: statistical decision-rule specification; adversarial numerical tests; scenario-pairing validation; source/provenance audit.
+REQUIRED_EVIDENCE:
+- explicit metric-specific Delta/alpha/convergence/joint-rule semantics or explicit NOT_VERIFIED fallback;
+- common exogenous scenario definition plus candidate-specific validated transfer/outage models;
+- frozen/versioned baseline matching rule;
+- regression cases proving analyst choice cannot reverse PASS/FAIL without changing a recorded input.
+EXPECTED_OUTPUT: R_STAR_C3_V2 + regression tests + exact provenance + distinct reviewer job.
+FALSIFICATION_CONDITION: FAIL if identical numeric outputs can still be made PASS or FAIL by an unrecorded analyst choice, if unlike technologies are forced to share physically identical output/outage traces, or if baseline selection can occur after seeing candidate outcomes.
+REVIEWER_JOB_ID: JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006
+STATUS: OPEN
+BLOCKERS: baseline version may remain an upstream dependency; statistical/scenario semantics are repairable now.
+NEXT_ACTION: distinct repair session patches C3; distinct C6 reviewer must reproduce decision-invariance regression tests.
+
+WRITE_CONCURRENCY:
+BRANCH_HEAD_BEFORE_WRITE: 4b4e097a4aa2c4d59b9bca4467eddc491977e7d7
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 0456155e24a89ccab5f3473c01d716a3a27c38de
+STALE_WRITE_GUARD: update_file blob-SHA precondition; abort/reconcile on concurrent mutation.
