@@ -1,0 +1,27 @@
+{
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0144-0700-RUN-OPTIONAL-SCALARS-CLOSURE",
+  "CHAT_ID": "C-SOL-20261006-0144-0700",
+  "CREATED_AT": "2026-10-06T01:44:00+07:00",
+  "STATUS": "ACTIVE",
+  "PRIORITY": "P1",
+  "REQUIREMENT": "REQ-DOC-C-4-2-RUN-READ-OPTIONAL-WIRE-001",
+  "CANONICAL_TASK_ID": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "SUPPORTING_FINDING_ID": "FINDING-DOC-C4-RUN-READ-OPTIONAL-WIRE-001",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "c99d9f644d8e2544afee52881af1c03a027fe631",
+  "WORKER_BRANCH": "work/NEXY-AI-Test-AI/C-SOL-20261006-0144-RUN-OPTIONAL-SCALARS",
+  "SEMANTIC_SCOPE": [
+    "packages/api/directives.ts GET /api/runs/:id response projection only",
+    "tests/integration/directives/read-auth.spec.ts optional-field wire oracle only"
+  ],
+  "REASON": "Current integration omits absent primary_incident_id but still serializes null accepted/releaseable/confidence/deterministic_match_score despite final DOC-C declaring all five result fields optional non-null scalar types.",
+  "ACCEPTANCE": [
+    "Always return run_id and state.",
+    "Omit accepted/releaseable/confidence/deterministic_match_score/primary_incident_id when the persisted value is null.",
+    "Serialize each optional field with its declared boolean/number/string type when present.",
+    "Preserve auth, ownership, AUDITOR evidence, state validation and error behavior.",
+    "No mutation to NEXY.ai."
+  ],
+  "TEST_REQUIREMENT": "Focused integration test plus affected regression test execution required before integration; do not fabricate PASS."
+}
