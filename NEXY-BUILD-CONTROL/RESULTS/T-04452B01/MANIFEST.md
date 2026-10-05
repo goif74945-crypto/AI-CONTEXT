@@ -16,3 +16,9 @@ SEMANTIC_RULE:
 - non-G22 legacy conditions keep rejection behavior but use INTERNAL_* identities
 - results are deduplicated and sorted with compareCanonicalText
 SOURCE_MUTATION: NONE
+
+CANDIDATE_REVISION:
+- source control commit: 45b272b1d16c0b3df19868c8757ac47d86f12510
+- test control commit: 68409b5d6ab49d3465f3ade953e145cae821253c
+- R001-R010 repurposing scan: PASS; only authoritative G22 identities remain under those prefixes
+- duplicate-node rejection identity changed to INTERNAL_DUPLICATE_NODE
