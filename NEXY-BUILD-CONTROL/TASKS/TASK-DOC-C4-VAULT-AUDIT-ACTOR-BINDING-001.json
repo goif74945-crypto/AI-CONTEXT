@@ -5,7 +5,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-4-2-VAULT-COMMIT-AUDIT-ACTOR",
   "FINDING_ID": "FIND-DOC-C4-VAULT-AUDIT-ACTOR-SPOOF-001",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "CURRENT_HEAD_CONFORMS",
   "PRIORITY": "P1",
   "RISK": "HIGH",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -27,6 +27,21 @@
     "No mutation to NEXY.ai.",
     "Exact candidate SHA tests and independent review required."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "After worker-ref law is made Git-valid by explicit authority, refresh integration HEAD and implement the smallest actor-binding repair on an isolated worker branch."
+  "BLOCKER": null,
+  "NEXT_ACTION": "No implementation allocation unless a future rescan proves actor-binding regression.",
+  "LAST_VERIFIED_BRANCH": "NEXY.AI-Test-AI",
+  "LAST_VERIFIED_SOURCE": {
+    "canonical_blob": "61728ee97e7722f22ee7c06458d249969c55e867",
+    "vault_repository_blob": "197698c5514da02af251640aa51ad80597710c8f"
+  },
+  "LAST_VERIFIED_TESTS": {
+    "canonical_api_blob": "7af11b7d17eb213fb6ccfaecd57f4b311b91569c",
+    "vault_commit_blob": "138e026e9496c2b169b3d7f81a19d0ff6d6922fb"
+  },
+  "CURRENT_EVIDENCE": [
+    "handleVaultCommit derives authorId from auth.userId and authorRole from authenticated role; client metadata.created_by is not used as immutable actor authority.",
+    "commitVault persists AuditLog.actor=req.authorId and role=req.authorRole and binds authorId into idempotent replay semantics.",
+    "Canonical API test asserts authenticated USER...001 is passed as authorId despite request metadata.created_by='owner'; cross-user OWNER commit is rejected.",
+    "Vault repository test rejects same idempotency key when authorId semantics differ."
+  ]
 }
