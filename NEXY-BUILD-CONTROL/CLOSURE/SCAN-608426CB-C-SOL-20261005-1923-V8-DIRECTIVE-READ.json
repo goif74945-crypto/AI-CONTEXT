@@ -1,0 +1,28 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1923-V8-DIRECTIVE-READ",
+  "CHAT_ID": "C-SOL-20261005-1923-V8",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SCOPE": [
+    "apps/web/app/api/directives/[id]/route.ts",
+    "packages/api/directives.ts",
+    "packages/queue/run-state.ts",
+    "tests/integration/directives/read-auth.spec.ts"
+  ],
+  "SPEC_ANCHOR": "Final DOC-C raw paragraphs 10203-10221; emission-related paragraphs 10483-10484 and timeout paragraph 10493.",
+  "RESULT": "SCANNED_NO_CONFIRMED_ACTIONABLE_GAP_WITH_UNRESOLVED_AUTHORITY_MAPPING",
+  "CONFIRMED": [
+    "session-first read authorization",
+    "OWNER/OPERATOR/AUDITOR RBAC",
+    "project ownership privacy boundary",
+    "AUDITOR-only DIRECTIVE_VIEWED fail-closed evidence",
+    "canonical read envelope structure"
+  ],
+  "UNRESOLVED": [
+    "Exact authoritative placement of output emission is not stated in final DOC-C. Current GET path performs first-emission persistence. Do not classify it as compliant or defective by inference alone."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "CLOSURE_ELIGIBLE_FOR_THIS_SCOPE": false,
+  "WHY_NOT_CLOSED": "Emission-placement authority remains unresolved and executable test evidence at exact integration SHA is unavailable."
+}
