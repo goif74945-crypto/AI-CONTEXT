@@ -1,0 +1,28 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PRODUCT_BUILD_CLAIM_V1",
+  "TASK_ID": "PRODUCT-L1O-13-UNIT-TEST-PLAN-CANONICALIZATION-7A31D4E2",
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0155-0700-L1O13-CANON-7A31D4E2",
+  "OWNER_CHAT": "C-SOL-20261006-0155-0700-L1O13-CANON-7A31D4E2",
+  "REQUIREMENT_ID": "L1O.13",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": "L1O13_UNIT_TEST_PLAN_FIXTURE_ORDER_CANONICALIZATION_ONLY",
+  "GAP": "generateUnitTestPlan sorts fixtures for emitted rows but hashes the pre-sort contract arrays, so semantically identical fixture sets in different input order produce different contractHash/testId values.",
+  "PRODUCT_SOURCE_MUTATION": [
+    "packages/phase-f/l1o/l600-support.ts",
+    "tests/integration/l1o-l600-support.spec.ts"
+  ],
+  "WORKER_BRANCH": "worker/l1o13-unit-test-plan-canonical-7a31d4e2",
+  "TARGET_INTEGRATION": "NEXY.AI-Test-AI",
+  "INTEGRATION_HEAD_OBSERVED": "2926222d9c4cece6f20a9343256c5157d6176f4f",
+  "PROTECTED_UPSTREAM": "NEXY.ai",
+  "PROTECTED_UPSTREAM_MUTATION": "FORBIDDEN",
+  "DUPLICATE_SEARCH": "AI-CONTEXT CLAIMS directory checked immediately before claim; no L1O/L600/UNIT-TEST/CODE-BRAIN product claim filenames present.",
+  "FORBIDDEN": [
+    "NEXY.ai mutation",
+    "changing fixture semantics",
+    "inventing fixture contents",
+    "changing side-effect policy",
+    "unrelated L1O behavior changes"
+  ],
+  "STATUS": "ACTIVE"
+}
