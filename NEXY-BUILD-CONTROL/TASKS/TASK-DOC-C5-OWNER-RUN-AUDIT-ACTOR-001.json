@@ -5,7 +5,7 @@
   "MISSION_ID": "M05-OWNER-CONTROL",
   "REQ_ID": "REQ-DOC-C-5-4-OWNER-ACTION-AUDIT-ACTOR",
   "FINDING_ID": "FIND-DOC-C5-OWNER-RUN-AUDIT-ACTOR-001",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "RESOLVED_EXISTING_IMPLEMENTATION",
   "PRIORITY": "P1",
   "RISK": "HIGH",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -25,5 +25,12 @@
     "Cancel test oracle no longer expects role-as-actor; revoke has explicit identity test.",
     "No mutation to NEXY.ai; exact candidate SHA tests and independent review required."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001"
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "RESOLVED_AT_SOURCE_SHA": "0440c47f14dadb1a4fb4bcdd3fd53d7bb9fce6c9",
+  "EVIDENCE": [
+    "packages/api/owner-cancel.ts passes authenticated auth.userId as actorId to cancelPipelineRun",
+    "packages/api/owner-revoke-release.ts passes authenticated auth.userId as actorId to revokeStableRelease",
+    "packages/queue/run-state.ts forwards options.actorId as durable audit actor with auditRole=OWNER"
+  ],
+  "SOURCE_MUTATION_BY_RECONCILER": "NONE"
 }
