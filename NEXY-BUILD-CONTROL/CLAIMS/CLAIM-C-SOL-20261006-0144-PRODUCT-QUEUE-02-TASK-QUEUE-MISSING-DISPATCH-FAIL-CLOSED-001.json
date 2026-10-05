@@ -1,0 +1,17 @@
+{
+  "CLAIM_ID": "CLAIM-C-SOL-20261006-0144-PRODUCT-QUEUE-02-TASK-QUEUE-MISSING-DISPATCH-FAIL-CLOSED-001",
+  "CHAT_ID": "C-SOL-20261006-0144-PRODUCT-QUEUE-02",
+  "TASK_ID": "TASK-QUEUE-MISSING-DISPATCH-FAIL-CLOSED-001",
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BASE_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "22d00a274cd63365df3b0e3b69e7cd4f4b4e6e5f",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-QUEUE-MISSING-DISPATCH-FAIL-CLOSED-001/C-SOL-20261006-0144-PRODUCT-QUEUE-02",
+  "STATUS": "ACTIVE",
+  "SCOPE": [
+    "packages/queue/workers.ts",
+    "focused worker claim/error-path tests"
+  ],
+  "GOAL": "Fail closed when BullMQ delivery has no durable DirectiveDispatch authority; never normalize MISSING into CANCELLED.",
+  "AUTHORITY": "User directive NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD; isolated worker branches explicitly authorized and legacy invalid worker-prefix blocker superseded by Git-valid NEXY.AI-Test-AI-work namespace.",
+  "STARTED_AT": "2026-10-06T01:44:00+07:00"
+}
