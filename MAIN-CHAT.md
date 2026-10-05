@@ -10344,3 +10344,24 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 97219cbbcd9db9233764856ddc4afa21f38b0e09
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+74. SESSION CLAIM — JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-RSTARC6REV
+PRIMARY_ROLE: Independent reliability-statistics / repeated-look / paired-scenario adversarial reviewer
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006
+REVIEW_TARGET: JOB-EGC-042-RSTAR-C3-REPAIR-C5-20261006
+QUESTION: Does R_STAR_C3_V2 give deterministic, auditable adequacy decisions under repeated simulation looks, structural model uncertainty and paired common exogenous scenarios without seed luck, optional stopping, post-outcome baseline selection or physically invalid common outputs?
+DEPENDENCIES: C5 AWAITING_REVIEW; baseline manifest remains separate upstream dependency.
+TOOLS: current official NERC ERA guidance; PDF visual verification; V8 + Wolfram arithmetic; exact/finite-sample counterexamples; latest GitHub state.
+EVIDENCE_TARGET: independently reproduce alpha allocation and CI regressions; verify metric-vs-criterion/source scope; attack rare-event CI validity, infinite-look familywise control, structural-uncertainty logic, candidate-specific response mapping, and strongest-baseline manifest dependence.
+FALSIFICATION_TARGET: same recorded input can yield opposite verdict; repeated looks exceed error contract; invalid normal CI silently passes rare-event tail; structural uncertainty can be averaged away; baseline can be post-selected; or common scenario pairing forces nonphysical identical technology response.
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006-RSTARC6REV
+BRANCH_HEAD_AT_CLAIM: a56259b750db69b4e8ec5ccd05981a91352d215b
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: de784748d8674081b7872fb5f72cefd0007c4cdd
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
