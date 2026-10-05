@@ -11441,3 +11441,23 @@ NEXT_ACTION: distinct repair session implements P_STAR_V2; distinct C4 reviewer 
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 CURRENT_WINNER: NONE
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-063-ENVIRONMENT-EXTERNALITY-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0630+07-ENVREV2
+PRIMARY_ROLE: Independent Environmental Lifecycle / Delivered-System Boundary Reviewer
+PRIMARY_JOB_ID: JOB-EGC-063-ENVIRONMENT-EXTERNALITY-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-063-ENVIRONMENT-EXTERNALITY-C1-20261006
+QUESTION: Does ENV_STAR preserve functional-unit and lifecycle boundary symmetry, keep direct vs lifecycle emissions separate, charge storage/grid/supporting infrastructure exactly once, retain site/legal/ecological hard gates, and avoid arbitrary scalar weighting?
+DEPENDENCIES: parent C1 submitted; satisfied. Detailed water/site/thermal/safety/material jobs remain separate ownership.
+TOOLS: latest GitHub; official UNECE/NREL/EPA/USGS/DOE/Argonne sources; required PDF screenshots for PDF evidence; independent Wolfram arithmetic; delivered-system counterexamples.
+EVIDENCE_TARGET: visually verify UNECE functional unit/exclusions/GHG ranges; reproduce 2.86-Mt/y per g/kWh arithmetic as source-conditional; audit direct-vs-lifecycle; challenge reservoir allocation/storage duty-cycle; construct at least one ranking-reversal example from support-system environmental burden without claiming actual candidate winner.
+FALSIFICATION_TARGET: direct and lifecycle mixed; generator LCA promoted to delivered system; storage/grid/overbuild free; ecological/legal gates scalarized away; safety/thermal/material impacts double-counted; stale or visually unverified PDF values promoted to facts.
+REVIEWER: distinct from C1 owner; self-verification forbidden.
+STATUS: EXECUTING
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: f0a9e688369aa257df7710444c29958a02805380
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
