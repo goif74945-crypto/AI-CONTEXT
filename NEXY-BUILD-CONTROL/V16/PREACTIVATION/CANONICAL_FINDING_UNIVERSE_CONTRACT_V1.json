@@ -1,0 +1,110 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_FINDING_UNIVERSE_CONTRACT_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "PURPOSE": "Define a deterministic, snapshot-bound source universe for canonical finding manifests so active authority-bound findings cannot be omitted merely because their definition is outside NEXY-BUILD-CONTROL/FINDINGS/**.",
+  "AUTHORITY_CLAUSES": [
+    "[062] CURRENT_CONTROL_P0 must be derived from a complete canonical finding manifest.",
+    "[063] Only exact terminal non-blocking states defined by authority may be treated as non-blocking.",
+    "[064] Activation requires OPEN_CONTROL_P0_COUNT == 0."
+  ],
+  "SNAPSHOT_BINDING": {
+    "REQUIRED": true,
+    "FIELDS": [
+      "CONTROL_COMMIT_SHA",
+      "CONTROL_TREE_SHA",
+      "PRIMARY_FINDINGS_TREE_SHA"
+    ],
+    "RULE": "Every generated universe manifest MUST be derived entirely from one pinned control commit/tree. Mixing rows from different control commits is invalid."
+  },
+  "PRIMARY_SOURCE": {
+    "ROOT": "NEXY-BUILD-CONTROL/FINDINGS",
+    "ENUMERATION": "Recursively enumerate every tracked regular file under ROOT at the pinned control tree.",
+    "ACCOUNTING": "Every enumerated file MUST receive exactly one SOURCE_CLASSIFICATION row; no silent filename or extension omission is allowed.",
+    "SOURCE_CLASSIFICATIONS": [
+      "FINDING_DEFINITION",
+      "NON_FINDING_INFRA",
+      "PARSE_ERROR"
+    ],
+    "JSON_DEFINITION_RULE": "A JSON file is a FINDING_DEFINITION only when the parsed top-level object contains non-empty string FINDING_ID.",
+    "MARKDOWN_DEFINITION_RULE": "A Markdown file is a FINDING_DEFINITION only when its leading metadata header before the first blank line contains exactly one non-empty FINDING_ID: <id> field.",
+    "PARSE_ERROR_RULE": "Any file intended or detected as a finding definition whose identifier cannot be parsed deterministically is PARSE_ERROR and blocks completeness."
+  },
+  "AUTHORITY_REFERENCE_SOURCES": {
+    "ACTIVE_BOOTSTRAP_FENCE": "The active BOOTSTRAP_FENCE_STATE when Mission Fence does not yet exist.",
+    "ACTIVE_MISSION_FENCE": "The active MISSION_FENCE_STATE after genesis.",
+    "ACTIVE_GLOBAL_TRANSITION": "Any active immutable global-transition intent/state that canonically binds finding identifiers.",
+    "REFERENCE_FIELDS": [
+      "KNOWN_BLOCKING_CONTROL_FINDINGS",
+      "BLOCKING_FINDING_ID",
+      "ADDITIONAL_BLOCKING_FINDINGS",
+      "DEFECT_FINDING_ID",
+      "schema-defined finding-id fields in active global-transition authority records"
+    ]
+  },
+  "EXTERNAL_FINDING_LOCATORS": {
+    "REQUIRED_WHEN": "An authority-referenced FINDING_ID is not defined by PRIMARY_SOURCE.",
+    "LOCATOR_MANIFEST": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_EXTERNAL_LOCATORS_V1.json",
+    "LOCATOR_ROW_FIELDS": [
+      "FINDING_ID",
+      "DEFINITION_PATH",
+      "EXPECTED_ARTIFACT_KIND"
+    ],
+    "RESOLUTION_RULE": "At the pinned control snapshot, DEFINITION_PATH MUST exist and its parsed definition identifier MUST equal FINDING_ID exactly. A locator is not authority to change severity or status.",
+    "STALE_LOCATOR_RULE": "Observed blob/tree evidence may aid audit, but generation MUST resolve the locator against the pinned control snapshot rather than trusting an older blob SHA."
+  },
+  "NORMALIZED_FINDING_ROW": {
+    "REQUIRED_FIELDS": [
+      "FINDING_ID",
+      "DEFINITION_PATH",
+      "DEFINITION_BLOB_SHA",
+      "SOURCE_CLASS",
+      "MEDIA_TYPE",
+      "SEVERITY_RAW",
+      "STATUS_RAW",
+      "AUTHORITY_REFERENCE_PATHS"
+    ],
+    "SOURCE_CLASS_VALUES": [
+      "PRIMARY_FINDINGS_ROOT",
+      "AUTHORITY_REFERENCED_EXTERNAL"
+    ],
+    "RAW_FIELD_RULE": "SEVERITY_RAW and STATUS_RAW preserve source spelling/value exactly; this universe layer performs no semantic control-vs-product classification and no resolved-like status normalization."
+  },
+  "IDENTITY_AND_DUPLICATES": {
+    "IDENTITY": "FINDING_ID",
+    "SAME_PATH_MULTI_SOURCE": "If one definition path is reached through primary enumeration and an authority reference, emit one normalized finding row and union its authority-reference paths.",
+    "DISTINCT_PATH_DUPLICATE_ID": "If the same FINDING_ID resolves to more than one distinct definition path, completeness FAILS with DUPLICATE_FINDING_ID_CONFLICT. Do not pick one silently."
+  },
+  "ORDERING": {
+    "SOURCE_FILE_ROWS": "UTF-8 byte ordering by canonical repository path.",
+    "NORMALIZED_FINDING_ROWS": "UTF-8 byte ordering by FINDING_ID, then DEFINITION_PATH.",
+    "AUTHORITY_REFERENCE_PATHS": "UTF-8 byte ordering with exact duplicates removed."
+  },
+  "COMPLETENESS_PASS_REQUIRES": [
+    "all files under PRIMARY_SOURCE.ROOT at the pinned snapshot are source-accounted",
+    "zero PARSE_ERROR source rows",
+    "every authority-referenced FINDING_ID resolves to exactly one finding definition",
+    "every external resolution is backed by an exact locator path valid at the pinned snapshot",
+    "zero DISTINCT_PATH_DUPLICATE_ID conflicts",
+    "manifest rows are normalized and sorted exactly by this contract",
+    "manifest records the exact pinned control commit/tree identities used for enumeration"
+  ],
+  "FORBIDDEN": [
+    "treating NEXY-BUILD-CONTROL/FINDINGS/** alone as proof of universe completeness when active authority references an external finding",
+    "dropping an authority-bound finding because its file is outside the primary root",
+    "classifying control-vs-product relevance in this universe layer",
+    "changing finding status or severity while normalizing",
+    "prefix-normalizing RESOLVED_* or another status into a terminal state",
+    "computing CONTROL_P0_SET_ROOT_HASH from a universe that has not passed all completeness conditions"
+  ],
+  "OUTPUT_SEPARATION": {
+    "FINDING_UNIVERSE_MANIFEST": "inventory and identity completeness only",
+    "CONTROL_P0_PROJECTION": "separate downstream semantic projection",
+    "CONTROL_P0_SET_ROOT_HASH": "computed only after universe completeness and projection validity are independently established"
+  },
+  "CURRENT_REPAIR_SCOPE": {
+    "FIXES_FINDING": "F-V16RC13-CANONICAL-FINDING-UNIVERSE-OMISSION-31B7",
+    "DOES_NOT_SELF_RESOLVE_FINDING": true,
+    "REQUIRES_INDEPENDENT_REVIEW": true,
+    "REQUIRES_P0_SHARD_REGENERATION_AFTER_ACCEPTANCE": true
+  }
+}
