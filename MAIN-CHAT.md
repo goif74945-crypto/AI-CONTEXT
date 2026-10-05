@@ -7086,3 +7086,25 @@ JOB_STATE_OVERRIDE:
 WRITE_INTEGRITY:
 - file SHA read immediately before write: 25727b651f3ad5482aff7c95cf65857ee850bef8
 - stale-write guard: exact SHA required; re-fetch on conflict.
+
+
+======================================================================
+38. SESSION CLAIM EVENT — GEOTHERMAL POTENTIAL CONFLICT ARBITRATION
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-GEO42-D1-20261005
+PRIMARY_ROLE: Conflict arbitrator / geothermal resource-methodology reviewer
+PRIMARY_JOB_ID: JOB-EGC-042
+QUESTION: Are the IEA next-generation geothermal/EGS ~4,000 PWh/year resource statements and IPCC AR6 geothermal ~30-300 PWh/year technical-potential range actually contradictory after harmonizing technology scope, depth, temperature, cost screen, recoverable fraction and resource lifetime?
+DEPENDENCIES: EVIDENCE-EGC-038-004 present; no blocker for source-method audit.
+TOOLS: IEA/IPCC/underlying-study retrieval; methodology extraction; dimensional normalization; independent calculations; source-provenance red team.
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION + REPLICATION + CONFLICT_ANALYSIS.
+FALSIFICATION_TARGET: Any reconciliation that averages incomparable quantities, confuses theoretical/resource-in-place with technical/economic potential, or omits depth/cost/lifetime assumptions capable of changing scale by orders of magnitude.
+REVIEWER: JOB-EGC-039 or distinct future session after submission.
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-GEO42-D1-20261005
+BLOCKERS: NONE
+NEXT_ACTION: Retrieve IEA 2024 geothermal methodology, IPCC AR6 cited geothermal potential basis and underlying studies; normalize units/scope; resolve or preserve conflict with explicit boundaries.
+WRITE_INTEGRITY:
+- file SHA before claim: 5e7deda3dd02212ebb1076814b5a1ebecd8b87e6
+- append-only exact-SHA update; no force; no other file/repository touched.
