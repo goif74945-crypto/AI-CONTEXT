@@ -12800,3 +12800,23 @@ FALSIFICATION_CONDITION: FAIL if storage ranking can still be changed solely by 
 STATUS: OPEN
 BLOCKERS: final cost comparison still depends on reviewed accounting/reliability/geography; method review is executable now.
 NEXT_ACTION: distinct session independently attacks C3.
+
+
+======================================================================
+61. SESSION CLAIM — JOB-EGC-044B-GRID-STORAGE-MATERIALS-REV-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0350+07-GSMREV2
+PRIMARY_ROLE: Independent grid/storage material-flow reviewer / arithmetic replicator / boundary adversary
+PRIMARY_JOB_ID: JOB-EGC-044B-GRID-STORAGE-MATERIALS-REV-20261006
+REVIEW_TARGET: JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006
+QUESTION: Do TE-EGC-044B-001..006 and CALC-EGC-044B-001..004 correctly separate energy, power, network and lifecycle material burdens without converting scenario BOMs or current mine flow into universal physical limits?
+DEPENDENCIES: parent JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006 is AWAITING_REVIEW; satisfied.
+TOOLS: latest GitHub state; official Argonne/USGS/IEA/NLR/DOE retrieval; PDF screenshot verification; independent Python arithmetic; chemistry/topology/recycling counterexamples.
+EVIDENCE_TARGET: independently reproduce 1/4 TWh Li+graphite stress, 4-100h duration scaling, 1GW*1000km conductor normalization and conditional lifetime-throughput calculation; audit BOM transferability, graphite supply boundary, recycling cohort timing, augmentation, MW-km topology and adequacy-vs-throughput semantics.
+FALSIFICATION_TARGET: power/energy conflation; BatPaC LFP case universalized; natural graphite mislabeled total graphite supply; recycling credited before physical scrap; annual mine flow conflated with reserves/resources; conductor-only BOM treated full grid; throughput kg/MWh used to erase rarely-cycled adequacy capacity.
+REVIEWER: distinct from parent owner CHATGPT-SOL-20261005T2010Z-GSM1.
+STATUS: CLAIMED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+NEXT_ACTION: independently retrieve primary sources, reproduce arithmetic, attack lifecycle ledger and issue claim-by-claim review.
