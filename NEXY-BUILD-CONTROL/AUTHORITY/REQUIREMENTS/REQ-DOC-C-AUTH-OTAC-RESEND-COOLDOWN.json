@@ -1,0 +1,36 @@
+{
+  "REQ_ID": "REQ-DOC-C-AUTH-OTAC-RESEND-COOLDOWN",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "UNKNOWN",
+  "SPEC_LINES": [
+    "8444",
+    "9007-9013",
+    "9931-9935",
+    "10039-10068"
+  ],
+  "SPEC_TEXT": "DOC-C fixes auth.otac_resend_cooldown_ms at 60000 ms, states resend cooldown = 60s, permits request-otac retry only after cooldown, returns cooldown_seconds, and defines 429 RATE_LIMIT_EXCEEDED for the rate-limit rejection path.",
+  "AUTHORITY_CLASS": "DOC-C_BUILD_SPEC",
+  "EXPECTED_BEHAVIOR": "POST /api/auth/request-otac enforces a 60-second resend cooldown and does not admit a retry before the cooldown expires; the canonical rate-limit rejection is HTTP 429 RATE_LIMIT_EXCEEDED.",
+  "FORBIDDEN_BEHAVIOR": "Accepting a resend before the 60-second cooldown expires.",
+  "AFFECTED_SYSTEMS": [
+    "AUTH",
+    "API",
+    "RATE_LIMIT"
+  ],
+  "DEPENDENCIES": [
+    "request identity bucket",
+    "rate-limit backend",
+    "DOC-C auth defaults"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "packages/api/middleware/rate-limit.ts",
+    "packages/api/auth.ts"
+  ],
+  "TEST_PATHS": [
+    "tests/integration/rate-limit-redis.spec.ts",
+    "tests/coverage/rate-limit-branches.test.ts"
+  ],
+  "STATUS": "PARTIAL",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "NOTE": "DOC-C establishes the cooldown semantics but does not prescribe a particular email canonicalization algorithm. Task T-C84E61B2 independently requires that email case variants cannot bypass the cooldown bucket."
+}
