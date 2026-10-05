@@ -1,0 +1,102 @@
+{
+  "REQ_ID": "REQ-DOC-C-3-1-CORE-TYPES",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "UNKNOWN",
+  "SPEC_LINES": "paragraphs 9951-9994",
+  "SPEC_TEXT": {
+    "section": "DOC-C §3.1 Core Types",
+    "SystemStatus": [
+      "OK",
+      "DEGRADED",
+      "FREEZE",
+      "STOP"
+    ],
+    "SystemState": [
+      "INIT",
+      "READY",
+      "RUNNING",
+      "VERIFYING",
+      "CONSENSUS",
+      "STABLE",
+      "FREEZE",
+      "STOP"
+    ],
+    "ErrorCode": [
+      "INVALID_DIRECTIVE",
+      "EMPTY_INPUT",
+      "AMBIGUOUS_INPUT",
+      "UNVERIFIED_OUTPUT",
+      "CONSENSUS_FAILED",
+      "EVIDENCE_MISSING",
+      "SCHEMA_VIOLATION",
+      "STATE_TRANSITION_DENIED",
+      "INVALID_STATE",
+      "AUTH_INVALID",
+      "AUTH_EXPIRED",
+      "UNAUTHORIZED",
+      "FORBIDDEN",
+      "SESSION_REVOKED",
+      "DEVICE_MISMATCH",
+      "CSRF_INVALID",
+      "OTAC_LOCKED",
+      "RATE_LIMIT_EXCEEDED",
+      "SECURITY_BREACH_DETECTED",
+      "SYSTEM_IN_FREEZE",
+      "DEPENDENCY_FAILURE",
+      "DEPENDENCY_UNHEALTHY",
+      "TIMEOUT",
+      "AGENT_TIMEOUT",
+      "AGENT_SCHEMA_INVALID",
+      "FREEZE_RECOVERY_DENIED",
+      "VAULT_COMMIT_CONFLICT",
+      "REVISION_NOT_FOUND",
+      "RELEASE_POLICY_FAILED"
+    ]
+  },
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC / FINAL VERDICT",
+  "EXPECTED_BEHAVIOR": [
+    "Canonical SystemStatus is exactly the four final DOC-C values.",
+    "Canonical SystemState is exactly the eight final DOC-C values.",
+    "Canonical ErrorCode is exactly the 29 final DOC-C values.",
+    "Runtime schemas and contract tests reject unsupported enum additions as well as omissions."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not add implementation-only values to these canonical enums and still label them exact DOC-C.",
+    "Do not use presence-only tests as the sole oracle for an exact closed enum."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "CONTRACTS",
+    "CORE",
+    "API",
+    "UI",
+    "OBSERVABILITY",
+    "AUTH",
+    "VAULT"
+  ],
+  "DEPENDENCIES": [],
+  "IMPLEMENTATION_PATHS": [
+    "packages/contracts/state.ts",
+    "packages/contracts/errors.ts"
+  ],
+  "TEST_PATHS": [
+    "tests/contract/error-codes.test.ts",
+    "tests/contract/state-matrix.test.ts",
+    "tests/contract/envelope.test.ts"
+  ],
+  "STATUS": "PARTIAL",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": {
+    "primary_spec": "Attached DOCX final DOC-C paragraphs 9951-9994.",
+    "source_state_blob": "04efcc7161c5415922e11e16174013d1d4ea40a3",
+    "source_errors_blob": "b6a1737688399cf0571236f23c0b5ce0f7de5847",
+    "source_result": "MATCH: SystemStatus, SystemState, ErrorCode sets match final DOC-C exactly.",
+    "error_code_test_blob": "1a433e7a3e6e1825bcaaabf3e2c4aa5be66b3670",
+    "state_matrix_test_blob": "2c1c4e1a1ffc62993b6774f5dafcf4f8fafa56ba",
+    "verification_gap": [
+      "ErrorCode test proves exact set equality.",
+      "SystemState test proves only required-value presence and does not reject extras.",
+      "No direct exact-set SystemStatus contract oracle was found in the searched contract tests."
+    ],
+    "execution": "NOT_EXECUTED_BY_THIS_CHAT: source mutation/test execution lane is globally blocked by INC-BRANCH-NAMESPACE-001 and local container cannot resolve github.com for repository checkout."
+  }
+}
