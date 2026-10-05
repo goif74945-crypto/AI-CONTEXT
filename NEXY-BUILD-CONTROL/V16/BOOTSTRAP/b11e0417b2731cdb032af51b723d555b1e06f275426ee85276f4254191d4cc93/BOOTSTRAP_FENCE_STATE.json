@@ -6,8 +6,8 @@
     "repository": "goif74945-crypto/NEXY.AI-",
     "target_ref": "refs/heads/NEXY.AI-Test-AI"
   },
-  "STATE": "DISCOVERED",
-  "STATE_VERSION": 1,
+  "STATE": "LEGACY_FREEZE_REQUESTED",
+  "STATE_VERSION": 2,
   "REQUESTED_CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
   "LEGACY_CONSTITUTION": "NEXY::TERMINAL-EFFICIENT-CONTINUOUS-CLOSURE-CONSTITUTION-V11",
   "LEGACY_EPOCH": "EPOCH-20261005-b35ee1bf-608426cb",
@@ -25,5 +25,10 @@
   "OBSERVER_CHAT_ID": "C-SOL-V16RC13-494F2209A725",
   "SOURCE_MUTATION_PERFORMED": false,
   "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
-  "NOTE": "Bootstrap discovery fence only. V16-RC1.3 is not yet activated. Product mutation and target integration remain forbidden until activation gates pass."
+  "NOTE": "Legacy admission freeze requested globally. Product mutation and integration remain closed. Do not advance to LEGACY_DRAINING until stable freeze evidence and complete legacy authority inventory are proven.",
+  "EXPECTED_PRIOR_STATE_VERSION": 1,
+  "FREEZE_REQUEST_MESSAGE_ID": "GLOBAL-V16RC13-LEGACY-FREEZE-REQUEST-b11e0417-v1",
+  "FREEZE_REQUEST_MESSAGE_VERSION": 1,
+  "FREEZE_REQUEST_CONTENT_HASH": "29b889eaeb8575dc055eaa6dae84f0cac02168141ce710a8a5ef73cce6b80331",
+  "LEGACY_ADMISSION_FREEZE_EVIDENCE_STATUS": "REQUEST_PUBLISHED_NOT_YET_PROVEN_STABLE"
 }
