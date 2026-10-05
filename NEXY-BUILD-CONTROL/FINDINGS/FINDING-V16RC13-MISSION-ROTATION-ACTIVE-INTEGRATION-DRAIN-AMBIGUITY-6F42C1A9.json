@@ -1,0 +1,31 @@
+{
+  "FINDING_ID": "FINDING-V16RC13-MISSION-ROTATION-ACTIVE-INTEGRATION-DRAIN-AMBIGUITY-6F42C1A9",
+  "TYPE": "STATIC_PROTOCOL_MISSION_ROTATION_ACTIVE_INTEGRATION_DRAIN_AMBIGUITY",
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "DISCOVERED_BY_CHAT_ID": "C-SOL-20261005-0951-0800-V16RC13-6F42C1A9",
+  "DISCOVERY_RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-0951-0800-V16RC13-6F42C1A9-MISSION-ROTATION-INTEGRATION-RACE.json",
+  "AFFECTED_CLAUSES": [
+    "[016]",
+    "[028]-[029]",
+    "[132]-[145]",
+    "[161]-[163]",
+    "[236]",
+    "[243]-[245]"
+  ],
+  "OBSERVED_GAP": "MISSION_ROTATION says 'drain old authority' but does not canonically specify that ACTIVE_INTEGRATION must be terminally reconciled and cleared before new mission-generation installation, despite integration being capable of an already-issued external Git CAS.",
+  "SAFE_INTERPRETATION_REQUIRED": "Drain includes all ACTIVE_INTEGRATION phases and Git-truth reconciliation to ACTIVE_INTEGRATION == null / INTEGRATION_HEALTH == HEALTHY before G2 install.",
+  "IMPACT": "Without this binding, a G1 integration may physically move the target across the G1→G2 cutover, undermining single-generation target authority and stale-intent safety.",
+  "REQUIRED_RESOLUTION": [
+    "Canonically define MISSION_ROTATION drain to include ACTIVE_INTEGRATION, not only memberships/leases/tasks.",
+    "Before installing ACTIVE_MISSION_ID / ACTIVE_MISSION_GENERATION for G2, require ACTIVE_INTEGRATION == null and INTEGRATION_HEALTH == HEALTHY.",
+    "If ACTIVE_INTEGRATION is REF_UPDATE_IN_PROGRESS, COMMITTED_PENDING_VERIFICATION, REGRESSION, recovery-pending, or UNKNOWN_REQUIRES_RECONCILIATION, reconcile actual target HEAD and durable Git truth under G1 before generation cutover.",
+    "Bind the reconciled target HEAD/TREE into the mission-rotation intent/cutover preconditions so a G1 side effect cannot land after the G2 descriptor snapshot.",
+    "Add torture tests for MISSION_ROTATION racing every ACTIVE_INTEGRATION phase and crashes immediately before/after Git CAS."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "FAIL_CLOSED": true,
+  "DISCOVERY_RESULT_COMMIT": "2f40bee1f481cd83d7dffa10dd1eaf1bccfee469"
+}
