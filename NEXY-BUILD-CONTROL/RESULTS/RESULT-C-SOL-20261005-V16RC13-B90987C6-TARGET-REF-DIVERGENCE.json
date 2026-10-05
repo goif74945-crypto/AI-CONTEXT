@@ -1,0 +1,53 @@
+{
+  "RESULT_ID": "RESULT-C-SOL-20261005-V16RC13-B90987C6-TARGET-REF-DIVERGENCE",
+  "RESULT_TYPE": "V16_RC1_3_TARGET_REF_DIVERGENCE_RECONCILIATION",
+  "OWNER_CHAT": "C-SOL-20261005-V16RC13-B90987C6",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 2,
+  "BOOTSTRAP_STATE_OBSERVED": "LEGACY_FREEZE_REQUESTED",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CURRENT_TARGET": {
+    "branch": "NEXY.AI-Test-AI",
+    "head_sha": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "tree_sha": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c"
+  },
+  "PROTECTED_UPSTREAM": {
+    "branch": "NEXY.ai",
+    "head_sha": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "tree_sha": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c"
+  },
+  "LEGACY_V11_INTEGRATION_LINEAGE": {
+    "recorded_head_sha": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "recorded_tree_sha": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+    "compare_base_sha": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "compare_status": "ahead",
+    "ahead_by": 57,
+    "behind_by": 0,
+    "commit_object_still_resolvable": true,
+    "branch_heads_pointing_to_recorded_head": [],
+    "classification": "HISTORICAL_UNREFERENCED_CANDIDATE_LINEAGE_NOT_CANONICAL_TARGET_AUTHORITY"
+  },
+  "FACTS": [
+    "The current NEXY.AI-Test-AI ref and protected NEXY.ai ref both resolve to 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43.",
+    "Git comparison proves 608426cb30398b1f3461866f7079d2a435c96b96 is 57 commits ahead of 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43.",
+    "The 608426cb commit object remains retrievable, but no current branch head points to it.",
+    "The active Bootstrap Fence already records current target 9e615b04 and legacy integration head 608426cb while keeping mutation and integration gates closed."
+  ],
+  "UNKNOWN": [
+    "The actor, mechanism, and exact wall-clock time that moved NEXY.AI-Test-AI from the legacy 608426cb lineage back to 9e615b04 are not established by available Git commit/ref evidence.",
+    "Whether all, some, or none of the 57 historical commits should eventually be reintroduced cannot be decided from lineage alone; each needed change must be revalidated against active DOC-C and current evidence."
+  ],
+  "AUTHORITY_CONCLUSION": {
+    "canonical_product_truth_now": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "legacy_608426_authority": "NON_CANONICAL_HISTORICAL_CANDIDATE_ONLY",
+    "blind_target_restore": "FORBIDDEN",
+    "evidence_bound_to_608426_for_current_target": "STALE_REVALIDATION_REQUIRED",
+    "migration_handling": "Preserve 608426 lineage as salvage/review evidence only. Genesis or later activation state must pin the actual target ref. Any desired historical changes must return through legal post-activation worker, test, review, and serialized integration flow."
+  },
+  "LEGACY_DRAIN_IMPACT": "The ref divergence is reconciled as a migration fact and does not itself grant legacy mutation authority. Legacy drain still fails until durable legacy claims/leases and other authorities are canonically suspended, revoked, released, or otherwise reconciled.",
+  "PRODUCT_MUTATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "TARGET_REF_MOVED_BY_THIS_CHAT": false,
+  "STATUS": "PASS_WITH_UNKNOWN_RESET_CAUSE",
+  "FAIL_CLOSED": true
+}
