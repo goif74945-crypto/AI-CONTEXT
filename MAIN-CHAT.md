@@ -12097,3 +12097,23 @@ JOB-EGC-048-FRONTIER-SCREEN-C1-20261006: remains REVIEW_FAILED_PENDING_TARGETED_
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
 CURRENT_WINNER: NONE.
+
+
+======================================================================
+60. SESSION CLAIM — JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-SCALEREPAIR3
+PRIMARY_ROLE: Scale evidence provenance repair / dimensional-arbitration analyst
+PRIMARY_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006
+QUESTION: Can the scale ledger pin mutable IAEA fleet data to a dated state and reconcile the IEA EGS 300,000-EJ / ~600-TW / 20-vs-25-year statements without overstating precision?
+DEPENDENCIES: JOB-EGC-045-SCALE-RESOURCE-REV-C2-20261006 REVIEW_FAILED with P1-A/P1-B defects.
+TOOLS: current IAEA official source; official IEA HTML + official report PDF with screenshot verification; V8 dimensional recomputation; Wolfram independent recomputation; GitHub stale-write guard.
+EVIDENCE_TARGET: dated PRIS/CNPP state; exact IEA methodology assumptions for power lifetime and capacity factor; repaired EGS conversion; regenerated nuclear scale diagnostic; retained explicit executive-summary conflict where applicable.
+FALSIFICATION_TARGET: repair fails if mutable data remain unpinned, 300,000 EJ cannot reconcile to ~600 TW under documented assumptions, 25-year wording is silently treated as equivalent to 20-year methodology, or technical potential is promoted to economic deployability.
+REVIEWER_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REPAIR-REV-C4-20261006
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 6d191c63d5763da34e3def79374d901c299c8d2d
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 47294e2e62ad4c1e4ef7ea7acfcd2ae54826c8a2
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
