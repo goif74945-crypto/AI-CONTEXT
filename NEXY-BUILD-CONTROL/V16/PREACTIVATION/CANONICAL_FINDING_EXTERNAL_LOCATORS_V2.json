@@ -1,0 +1,22 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_CANONICAL_FINDING_EXTERNAL_LOCATORS_V2",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "CONTRACT_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V2.json",
+  "LOCATORS": [
+    {
+      "FINDING_ID": "FINDING-PREMATURE-LEGACY-DRAIN-ENTRY-001",
+      "DEFINITION_PATH": "NEXY-BUILD-CONTROL/V16/BOOTSTRAP/b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93/FINDING-PREMATURE-LEGACY-DRAIN-ENTRY-001.json",
+      "EXPECTED_MEDIA_TYPE": "application/json",
+      "OBSERVED_BLOB_SHA": "6902a6b64d75da3152d63833e4caff344fd8b7d5",
+      "NOTE": "Generation must re-resolve against the pinned control snapshot; this observed blob is audit evidence, not a timeless binding."
+    }
+  ],
+  "VALIDATION": [
+    "locator FINDING_ID unique",
+    "definition path exists at pinned snapshot",
+    "parsed definition FINDING_ID equals locator FINDING_ID exactly",
+    "locator never changes severity/status/domain semantics"
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE"
+}
