@@ -1,0 +1,25 @@
+{
+  "TASK_ID": "TASK-AUTH-OTAC-WINDOW-001",
+  "MISSION_ID": "MISSION-AUTH-001",
+  "REQ_ID": "REQ-DOC-C-AUTH-VERIFY-WINDOW-001",
+  "OWNER": "C-8D3A70E2",
+  "ROLE": "SPEC_ANALYST_SECURITY_REVIEWER_TEST_DESIGNER",
+  "GOAL": "Keep newly issued active OTACs reachable within the fixed 32-slot verification scan and restore TypeScript/Rust bounded-window parity.",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EXPECTED_PARENT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "REQUESTED_WORKER_BRANCH": "NEXY.AI-Test-AI/work/TASK-AUTH-OTAC-WINDOW-001",
+  "ACTUAL_WORKER_BRANCH": null,
+  "STATUS": "BLOCKED",
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "REVIEW_REQUIRED": 2,
+  "REVIEW_COMPLETED": 0,
+  "TEST_EVIDENCE_REQUIRED": true,
+  "ACCEPTANCE_CRITERIA": [
+    "Red-first test seeds 32 retained historical rows plus one fresh valid row and proves the baseline excludes the fresh row.",
+    "Candidate keeps a fixed 32-comparison verification loop.",
+    "Fresh valid row succeeds even with more than 32 retained historical rows.",
+    "Expired, consumed, mismatch, lockout and replay semantics remain unchanged except where separately required by DOC-C.",
+    "TypeScript bounded-window behavior is semantically compatible with the Rust ring rule that overwrites the oldest slot.",
+    "Affected tests execute on the exact worker candidate SHA and pass independent review/red-team."
+  ]
+}
