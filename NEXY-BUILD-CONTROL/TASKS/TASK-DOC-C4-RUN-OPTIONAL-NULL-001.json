@@ -1,0 +1,28 @@
+{
+  "TASK_ID": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "CREATOR_CHAT": "C-V8-20261005-1737-SOL",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-4-2-RUN-DETAIL",
+  "FINDING_ID": "FINDING-DOC-C4-RUN-OPTIONAL-NULL-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "LOW",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/directives.ts",
+    "tests/integration/directives/read-auth.spec.ts"
+  ],
+  "SEMANTIC_SCOPE": "Correct only GET /api/runs/:id optional primary_incident_id wire semantics and its exact-shape oracle. Preserve ownership, RBAC, audit, run-state and scoring behavior.",
+  "ACCEPTANCE_CRITERIA": [
+    "When primaryIncidentId is null/absent, response data omits primary_incident_id.",
+    "When primaryIncidentId exists, response includes primary_incident_id as string.",
+    "Exact-shape tests cover both absent and present cases.",
+    "PIPELINE_RUN_VIEWED audit behavior remains unchanged.",
+    "Exact-SHA targeted tests and independent review are required.",
+    "No mutation to NEXY.ai."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After worker isolation is unblocked, refresh target blobs, claim one-writer scope, repair serialization/test oracle, run targeted contract/integration tests, integrate and reverify."
+}
