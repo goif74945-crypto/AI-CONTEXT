@@ -29,3 +29,8 @@ NOT_VERIFIED:
 - PR 78 mergeability was still GitHub state=unknown at latest check
 VERDICT: PARTIAL_IMPLEMENTATION / NOT_RUNTIME_VERIFIED
 NEXT_ACTION: when exact-head runner produces steps, validate PR 78; if pass, re-fetch current base and mergeability before integration.
+
+PR_UPDATE:
+- PR 78 now also carries child task T-HG-NICKNAME-DIGEST-3E9A41C7 because it touches the exact same DIALOG source/test pair.
+- current PR head 0c9dbd6a218a46c86241e7706696b0b1b9c8b4c0
+- GitHub reported mergeable=true at metadata update, but merge remains forbidden until runtime validation.
