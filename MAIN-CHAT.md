@@ -4331,3 +4331,36 @@ ROLE: Independent material-flow repair reviewer
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+INDEPENDENT_REPLICATION_INPUT — P_STAR_V2
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-PSTAR-REPL
+TARGET_JOB: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-C3-20261006
+ROLE: independent numerical replication input; not reviewer/self-verification
+TRUTH_CLASS: CALCULATION
+TOOLS: Python Decimal + Wolfram Language
+
+R1: source=100, upstream loss=60, gross=40, aux=4 MWh.
+source-anchor=36; gross-anchor=36; difference=0; Wolfram=True.
+
+R2: gross=100, charge=10, discharge=8.5, storage loss=1.5 MWh, cyclic inventory.
+served exact-once=98.5; storage-node residual=0.
+double-subtracting the same 1.5-MWh loss gives 97.0, proving representation error.
+Wolfram={98.5,0}.
+
+R3: source=250, upstream loss=150, gross=100, aux=4, network loss=5.
+source-anchor=91; gross-anchor=91; Wolfram=True.
+
+R4: gross=60, import=50, storage discharge=17, charge=20, aux=3, network loss=5, non-load export=2 MWh.
+served=97; storage loss=3; external-balance residual=(60+50)-(97+2+3+5+3)=0.
+Wolfram={97,0}.
+
+VERDICT:
+P1 representation defect independently reproduces. Stage-indexed frozen meter nodes and exact-one edge ownership are necessary. This input does not verify the C3 repair before distinct review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+BRANCH_HEAD_BEFORE_WRITE: 3c9d1090bf93b49606ab3289b8794424e3d33fd5
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 660d6e7c74e23aa6008e9d9b7b8bfaf46cbc54b8
