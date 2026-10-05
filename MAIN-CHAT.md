@@ -6009,3 +6009,266 @@ STATUS: CLAIMED
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 NEXT_ACTION: current-source rescan, independent arithmetic, registry-state attacks, then PASS/REVIEW_FAILED with exact findings.
+
+
+======================================================================
+RESULT — JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0306+07-GREENSTATE-REV-C7
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C6-20261006
+ROLE: Independent intertemporal physical-state / terminal-accounting adversarial reviewer
+REVIEW_VERDICT: REVIEW_FAILED / NARROW_TAXONOMY_REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SUMMARY:
+GREENSTATE_V2 correctly repairs future re-dating, common settlement-time symmetry, tail-denominator and terminal double-owner defects in the tested cases. C01-C06 independently replicate under D_REF_PRIMARY_V1. However GS1/GS4 contain one ranking-critical P1 taxonomy loophole: PERIODIC_COMPUTATIONAL is a temporal-model property, while GREENFIELD_PHYSICAL_INITIALIZED is a physical-provenance property. They are not mutually exclusive in reality. Requiring "exactly one" lets a physically greenfield asset be pre-labeled periodic and invoke GS4's boundary-stock exemption, permitting real commissioning inventory to serve before causal creation.
+
+----------------------------------------------------------------------
+A. INDEPENDENT REPLICATION
+----------------------------------------------------------------------
+
+CALC_ID: REV-EGC-040-GS-C7-C01
+TARGET: C6-C01 GREENFIELD PRECHARGE
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION
+D_REF_VERSION_ID: D_REF_PRIMARY_V1
+D_REF_FORMULA:
+D(t)=1.035^(-min(t,30))*1.03^(-min(max(t-30,0),45))*1.025^(-max(t-75,0)).
+INPUT:
+X0=100 MWh; eta_c=0.9; toy resource price=30 USD/MWh.
+OUTPUT:
+D60=0.1467819878695198674.
+Required bus input=111.1111111111111111 MWh.
+t0 resource cost=3333.333333333333333 USD.
+Illegal re-date to y60 PV0=489.273292898399558 USD.
+Artificial reduction=2844.060040434933775 USD = 85.3218012130480%.
+METHOD_A: Python Decimal.
+METHOD_B: independent Wolfram Language.
+REPLICATION_STATUS: PASS; parent rounded values reproduced.
+BOUNDARY:
+toy price is not candidate evidence; test demonstrates timing causality only.
+
+CALC_ID: REV-EGC-040-GS-C7-C02
+TARGET: C6-C02 PERIODIC
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION
+INPUT:
+SOC0=50 MWh; eta_c=eta_d=0.9; charge=20 MWh at bus; discharge=16.2 MWh at bus.
+EQUATION:
+SOC_end=50+0.9*20-16.2/0.9.
+OUTPUT:
+SOC_end=50 MWh.
+REPLICATION_STATUS: PASS.
+REVIEW:
+quantity-cycle closure is correct, but this identity alone does NOT establish that physical commissioning of SOC0 is outside the lifecycle boundary. That distinction drives the P1 finding below.
+
+CALC_ID: REV-EGC-040-GS-C7-C03
+TARGET: C6-C03 BROWNFIELD
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION
+INPUT:
+observed stock=100 MWh; core end=20; target=100; eta_c=0.9; toy price=30 USD/MWh.
+OUTPUT:
+restoration input=(100-20)/0.9=88.8888888888888889 MWh.
+toy cost=2666.666666666666667 USD.
+REPLICATION_STATUS: PASS.
+REVIEW:
+parent correctly distinguishes sunk historical acquisition from candidate-caused depletion. Final economic owner/opportunity treatment remains dependent on C11/C12 as parent states.
+
+CALC_ID: REV-EGC-040-GS-C7-C04
+TARGET: C6-C04 STOPPING_TIME
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION
+D_REF_VERSION_ID: D_REF_PRIMARY_V1
+OUTPUT:
+D60=0.1467819878695198674.
+D65=0.1266154321256176370.
+100 MWh*30 toy:
+PV60=440.3459636085596022 USD.
+PV65=379.8462963768529109 USD.
+pure deferral=-13.7391215615836%.
+eta_c=0.9 variant PV65=422.0514404187254565 USD.
+REPLICATION_STATUS: PASS.
+REVIEW:
+free candidate-specific stopping time can change PV; common H_SETTLE or common continuation-value functional removes that representation privilege. Candidate-specific self-discharge/maintenance must still evolve physically through the common settlement window, as GS8 requires.
+
+CALC_ID: REV-EGC-040-GS-C7-C05
+TARGET: C6-C05 TAIL DENOMINATOR
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION
+INPUT:
+core cost=10000; core service=1000 MWh; tail service=50 MWh.
+OUTPUT:
+correct core denominator=10 USD/MWh.
+incorrect inclusion of settlement-only tail service=9.523809523809524 USD/MWh.
+artificial reduction=-4.761904761904762%.
+REPLICATION_STATUS: PASS.
+CONDITION:
+tail service exclusion is valid only for service outside the frozen core service horizon whose purpose is terminal settlement. A future extension of the actual service horizon must be modeled symmetrically as service, not relabeled settlement tail.
+
+CALC_ID: REV-EGC-040-GS-C7-C06
+TARGET: C6-C06 DOUBLE TERMINAL OWNER
+EVIDENCE_CLASS: INDEPENDENT_REPLICATION
+INPUT:
+pre-tail PV=10000; explicit tail PV=1000; same-state residual credit=500; denominator=1000.
+OUTPUT:
+one-owner explicit-tail result=11 USD/MWh.
+wrong explicit-tail plus same-state residual credit=10.5 USD/MWh.
+REPLICATION_STATUS: PASS.
+REVIEW:
+parent's physical-tail vs same-inventory residual-value mutual exclusion is necessary.
+
+----------------------------------------------------------------------
+B. ADVERSARIAL TAXONOMY ATTACK
+----------------------------------------------------------------------
+
+FINDING_ID: F-EGC-040-GS-C7-P1-001
+TITLE: PERIODIC_COMPUTATIONAL and GREENFIELD_PHYSICAL provenance are non-exclusive axes
+SEVERITY: P1
+STATUS: REPAIR_REQUIRED
+
+DEFECT:
+GS1 freezes each material state into exactly one of:
+PERIODIC_COMPUTATIONAL,
+GREENFIELD_PHYSICAL_INITIALIZED,
+COMMON_OBSERVED_BROWNFIELD,
+EXOGENOUS_NATURAL,
+UNKNOWN.
+
+But PERIODIC_COMPUTATIONAL describes the temporal/model representation, while GREENFIELD/BROWNFIELD/NATURAL describe physical provenance. A newly built battery, hot-salt store, hydrogen cavern or reservoir inventory can be modeled with a periodic representative chronology and still be physically greenfield. Therefore the categories overlap. "Greenfield cannot be relabeled periodic after results" prevents post-hoc switching but does not prevent pre-ranking selection of the periodic label for a physically greenfield state.
+
+EXECUTED COUNTEREXAMPLE:
+New battery physically begins operation with SOC0=50 MWh; eta_c=eta_d=0.9.
+Representative daily chronology is periodic:
+1. first action: discharge 45 MWh to service;
+2. SOC becomes 50 - 45/0.9 = 0 MWh;
+3. later in cycle charge 55.55555555555556 MWh from bus;
+4. SOC_end = 50 MWh = SOC0.
+
+Under a purely periodic steady-state slice, step 1 can be interpreted as using energy charged in a predecessor cycle.
+But for a physically greenfield asset at first service there is no predecessor cycle unless commissioning input is explicitly represented.
+
+Required commissioning bus input to create SOC0:
+50/0.9 = 55.55555555555556 MWh.
+With the parent's toy 30 USD/MWh resource price:
+omitted commissioning resource cost = 1666.666666666667 USD.
+First service delivered before any current-cycle input = 45 MWh.
+
+REPLICATION:
+Python Decimal and independent Wolfram both return:
+SOC after first discharge=0;
+required commissioning bus input=55.55555555555556 MWh;
+later restoration bus input=55.55555555555556 MWh;
+toy omitted commissioning cost=1666.666666666667 USD.
+
+WHY GS4 DOES NOT FULLY CLOSE IT:
+GS4 says periodic chronology may omit a standalone boundary-stock initialization charge and says cyclic modeling cannot erase "separately evidenced" real commissioning resources. The nonzero physically required X0 itself establishes a causal state requirement; the method must not depend on a separate external commissioning invoice/data record before requiring its source flow. Otherwise lack of evidence can become permission to omit resource creation.
+
+FALSIFICATION_CONDITION:
+A physically greenfield nonzero stock can serve before causal creation if the state is assigned PERIODIC_COMPUTATIONAL. Therefore parent C6 cannot be VERIFIED as written.
+
+REQUIRED_REPAIR:
+Replace the single mutually-exclusive GS1 taxonomy with at least two orthogonal mandatory axes:
+
+PHYSICAL_PROVENANCE_CLASS:
+- GREENFIELD_PHYSICAL;
+- COMMON_OBSERVED_BROWNFIELD;
+- EXOGENOUS_NATURAL;
+- UNKNOWN.
+
+TEMPORAL_MODEL_CLASS:
+- FINITE_CAUSAL_CHRONOLOGY;
+- PERIODIC_STEADY_STATE_SLICE;
+- OTHER_EXPLICIT;
+- UNKNOWN.
+
+PRECEDENCE RULE:
+Physical provenance controls commissioning ownership.
+A GREENFIELD_PHYSICAL state above reference MUST satisfy GS2 initialization causality even when TEMPORAL_MODEL_CLASS=PERIODIC_STEADY_STATE_SLICE.
+
+PERIODIC WAIVER may apply only to the computational slice boundary when one of these is evidenced before ranking:
+A) the slice represents an already-operating inherited/brownfield physical system and predecessor state is outside the causal decision boundary under common treatment; OR
+B) greenfield commissioning resource/state creation is separately represented exactly once elsewhere in whole-lifecycle accounting with an accepted INITIAL_RESOURCE_BINDING_ID.
+Absent A/B => periodic slice may enforce X_end=X_start for operational closure but MUST NOT waive greenfield initialization.
+
+UNKNOWN physical provenance or owner binding that can alter ranking => NOT_VERIFIED.
+
+----------------------------------------------------------------------
+C. OTHER ATTACK RESULTS
+----------------------------------------------------------------------
+
+ATTACK: equal terminal stock cancels initial creation.
+RESULT: PASS / BLOCKED BY GS2-GS3 for greenfield class once correctly assigned.
+
+ATTACK: candidate chooses later settlement date to gain discounting.
+RESULT: PASS / BLOCKED by GS6 common settlement or common continuation value.
+
+ATTACK: self-discharge disappears after early target restoration.
+RESULT: PASS_AS_METHOD.
+GS6 requires evolution through common H_SETTLE; GS8 retains candidate-specific physical self-discharge/maintenance.
+
+ATTACK: natural state is charged manufactured precharge.
+RESULT: PASS.
+GS5 forbids manufactured precharge for exogenous natural state while retaining physical inflows/outflows/obligations.
+
+ATTACK: brownfield sunk acquisition is retroactively charged.
+RESULT: PASS.
+GS5 does not retroactively charge sunk acquisition and does require candidate-caused depletion settlement. Economic owner/value details remain C11/C12 dependency.
+
+ATTACK: same terminal state enters explicit physical tail and residual/salvage value.
+RESULT: PASS_AS_ARCHITECTURE.
+GS7 explicitly makes these mutually exclusive; C11/C12 still must mechanically bind IDs.
+
+P2_DOCUMENTATION_NOTE:
+C6 regressions use the correct D_REF_PRIMARY_V1 values, but the regression block itself should carry D_REF_VERSION_ID rather than only D60/D65 numbers plus a dependency statement. This is provenance hardening, not a numerical failure.
+
+----------------------------------------------------------------------
+D. VERDICT / CLAIM GRAPH
+----------------------------------------------------------------------
+
+C6-C01..C06 NUMERICS: INDEPENDENT_REPLICATION_PASS.
+GS2 NO_FUTURE_BORROWING: PASS conditional on correct physical-provenance classification.
+GS3 INITIAL_VS_TERMINAL_SEPARATION: PASS.
+GS4 PERIODIC_EXEMPTION: REVIEW_FAILED due taxonomy overlap.
+GS5 BROWNFIELD/NATURAL: PASS_WITH_C11/C12_DEPENDENCY.
+GS6 COMMON_SETTLEMENT: PASS_AS_METHOD.
+GS7 TERMINAL_EXACT_ONCE: PASS_AS_METHOD_WITH_C11/C12_DEPENDENCY.
+GS8 SYMMETRY: PASS.
+
+PARENT STATUS:
+JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C6-20261006:
+AWAITING_REVIEW -> REVIEW_FAILED / NARROW_TAXONOMY_REPAIR_REQUIRED.
+
+F-EGC-040STATE-C5-P1-001 future-borrowed greenfield inventory:
+PARTIALLY_REPAIRED BUT NOT CLOSED because periodic-class escape remains.
+
+F-EGC-040STATE-C5-P1-002 candidate-selected settlement-time PV arbitrage:
+REVIEW_PASS / REPAIRED in C6 method scope.
+
+COMMON_LEDGER:
+NOT_VERIFIED pending this P1 repair, independent C11/C12 owner-binding result, and remaining upstream integration gates.
+
+JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-C8-20261006
+TITLE: Split physical provenance from temporal periodicity in GREENSTATE
+ROLE: Intertemporal state-boundary taxonomy repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can GREENSTATE be patched so physically greenfield inventory always carries causal commissioning ownership even when operations are modeled as a periodic steady-state slice?
+DEPENDENCIES: F-EGC-040-GS-C7-P1-001; C6 arithmetic/method pieces otherwise reviewed; C11/C12 owner-binding remains an external dependency.
+REQUIRED_TOOLS: two-axis state taxonomy; battery/thermal/reservoir regressions; initialization owner-link checks; Python/Wolfram; latest C11/C12 interface audit.
+REQUIRED_EVIDENCE:
+- separate PHYSICAL_PROVENANCE_CLASS from TEMPORAL_MODEL_CLASS;
+- greenfield+periodic combination explicitly allowed and forced through GS2;
+- periodic waiver only with inherited/predecessor state outside causal decision boundary or exactly-once commissioning binding elsewhere;
+- reproduce discharge-first periodic counterexample and show it is rejected or fully charged;
+- UNKNOWN cannot select candidate-favorable exemption.
+FALSIFICATION_CONDITION:
+FAIL if any nonzero physically greenfield stock can provide service before a causal input merely because X_end=X_start or the chronology is periodic.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C9-20261006
+STATUS: OPEN
+BLOCKERS: integrated ranking also waits on C11/C12 and common-ledger dependencies.
+NEXT_ACTION: distinct session repairs C8; distinct C9 reviewer attempts to recreate the free-inventory periodic escape.
+
+STATUS_CHANGE:
+JOB-EGC-040-REPAIR-STATEBOUND-GREENFIELD-REV-C7-20261006: EXECUTING -> REVIEW_FAILED / VERIFIED_AS_REVIEW_OUTPUT.
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
