@@ -13591,3 +13591,29 @@ Downstream advanced-fission evaluation may use:
 - TRISO-X license as LICENSE_ISSUED evidence;
 - TX-1 as UNDER_CONSTRUCTION with future fabrication start, not present operating throughput.
 No downstream job may promote these states to design-specific MASSIVE_ENERGY fuel sufficiency without a dated, quantity-matched delivered-supply pathway.
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-071-MODEL-MEASUREMENT-VALIDATION-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-MODELVAL1
+PRIMARY_ROLE: Model-vs-Measurement Validation / Out-of-Sample Evidence / G16 Gate Architect
+PRIMARY_JOB_ID: JOB-EGC-071-MODEL-MEASUREMENT-VALIDATION-C1-20261006
+QUESTION: What evidence and acceptance protocol are required to promote ranking-critical energy-system model outputs from SIMULATION_RESULT to measurement-validated use, without circular calibration, cherry-picked comparators, hidden extrapolation or candidate-specific validation privilege?
+CANDIDATE: ALL surviving candidates/baselines; protocol and evidence-interface layer, not winner selection.
+DEPENDENCIES: JOB-EGC-070 integrated-model contract is concurrently owned and consumes MODEL_VALIDATION state. R_STAR statistical repair explicitly requires candidate response distributions/correlations and model outputs to pass G16 model-vs-measurement validation. Physics/thermal/mechanical/electrical/EROI/frontier jobs own technology-specific evidence.
+SCOPE_PARTITION:
+- OWN validation protocol, measurement mapping, train/calibration-vs-test separation, uncertainty/residual diagnostics, domain-of-validity and pass/fail/NOT_VERIFIED rules.
+- DO NOT replace subsystem physics models, economic accounting, R_STAR thresholds, or integrated-model dependency graph.
+- Technology-specific owners retain raw measurements; this job defines how reviewed measurements validate models and creates a readiness matrix.
+REQUIRED_INPUTS: existing measured/operational evidence in MAIN-CHAT; official/peer-reviewed validation guidance and datasets; model outputs/interfaces; measurement uncertainty; decision sensitivity.
+REQUIRED_TOOLS: latest GitHub state; NREL/DOE/NIST/ASME-like official V&V guidance where openly retrievable; official operational datasets; executed regression/counterexample calculations; cross-source validation.
+REQUIRED_EVIDENCE: explicit model-output-to-measurement mapping; independent/held-out comparator where feasible; no calibration/test reuse; unit/system-boundary match; measurement uncertainty; residual/bias/coverage; out-of-domain extrapolation marker; acceptance criterion frozen before outcome.
+EXPECTED_OUTPUT: MODEL_VALIDATION_PROTOCOL_V1 + MODEL_VALIDATION_RECORD schema + readiness/gap matrix + falsification regressions + independent reviewer job.
+FALSIFICATION_CONDITION: FAIL if simulation can become VERIFIED merely by fitting its calibration data; mismatched units/boundaries count as validation; one technology requires field data while another receives simulation-only privilege; measurement uncertainty is ignored; future scale/lifetime extrapolation is called measured; or pass thresholds are chosen after observing errors.
+REVIEWER_JOB_ID: JOB-EGC-071-MODEL-MEASUREMENT-VALIDATION-REV-C2-20261006
+STATUS: EXECUTING
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 2d60b86d42789483a02cd596fcd4836eac087da8
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
