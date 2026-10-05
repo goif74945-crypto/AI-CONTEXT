@@ -1,0 +1,38 @@
+{
+  "CHAT_ID": "CHAT-20261005-1709-V7-MISSION-DAG",
+  "POD": "SPEC_AUTHORITY_CORE_REVIEW",
+  "ROLE": ["SPEC_AUTHORITY_RESOLVER", "REVIEWER", "RED_TEAM"],
+  "CURRENT_TASK": "FSM temporal-authority and bootstrap fail-closed review",
+  "COMPLETED": [
+    "Verified authoritative DOCX SHA-256 matches locked SPEC_SNAPSHOT exactly.",
+    "Created DOC-C critical-path Mission DAG.",
+    "Corrected AI-CONTEXT final DOC-C FSM temporal authority.",
+    "Reproduced TS/Rust FSM parity split at Test-AI 608426cb30398b1f3461866f7079d2a435c96b96.",
+    "Traced prior bootstrap quarantine repair/revert history.",
+    "Persisted canonical requirement, P1 finding, and local TRUE_BLOCK report.",
+    "Consumed global P0 worker-ref namespace incident and stopped source mutation."
+  ],
+  "IN_PROGRESS": [],
+  "LEASES": [],
+  "FINDINGS": ["NEXY-BUILD-CONTROL/FINDINGS/FIND-FSM-BOOTSTRAP-AUTHORITY-GAP-001.json"],
+  "FAILURES": [
+    "Literal V7 worker prefix is globally TRUE_BLOCKED by Git ref namespace.",
+    "Exact Test-AI SHA lacks fresh successful executed validation evidence.",
+    "FSM/bootstrap repair remains locally blocked pending an authority-safe design."
+  ],
+  "LAST_SHA": {
+    "UPSTREAM_NEXY_AI": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "INTEGRATION_TEST_AI": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "CONTROL_OBSERVED": "fad41287214e6d7eda8eb81ddb98586939397088"
+  },
+  "UNCOMMITTED_WORK": "NONE",
+  "UNPUSHED_WORK": "NONE",
+  "HANDOFF": [
+    "Do not substitute a worker branch namespace without authoritative amendment.",
+    "Use final DOC-C matrix paragraphs 8811-8957, not historical paragraph 7485, for FSM error authority.",
+    "Do not narrow TS error edges without a coupled bootstrap fail-closed design.",
+    "Do not blindly restore the reverted process-local quarantine patch."
+  ],
+  "MESSAGES_WAITING": [],
+  "EXIT_READY": true
+}
