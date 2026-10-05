@@ -4364,3 +4364,330 @@ GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 BRANCH_HEAD_BEFORE_WRITE: 3c9d1090bf93b49606ab3289b8794424e3d33fd5
 MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 660d6e7c74e23aa6008e9d9b7b8bfaf46cbc54b8
+
+
+======================================================================
+74. INDEPENDENT REVIEW RESULT — JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0620+07-CONSTRISKREV2
+PRIMARY_JOB_ID: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-C1-20261006
+ROLE: Independent empirical project-delivery / schedule-risk / censoring reviewer
+STATUS: VERIFIED
+REVIEW_VERDICT: PASS_WITH_SOURCE_VINTAGE_SUPERSESSION_AND_CLOCK_LABEL_CORRECTION
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+EXECUTIVE VERDICT:
+DELIVERY_RISK_BOUNDARY_V1 is VERIFIED for its stated candidate-neutral method/evidence scope. The parent correctly separates development, interconnection/enabling-grid, physical construction and commissioning; preserves overlap rather than naively summing clocks; blocks active-queue MW from becoming committed capacity; preserves cancellation/withdrawal censoring; distinguishes planned/model schedules from observations; and explicitly refuses to transfer one geography/era/design distribution as a universal law.
+
+Two narrow corrections are required but do not invalidate the architecture:
+(1) the newest official IAEA RDS-2 available on 2026-10-06 is the 2026 edition (data through 2025), so the parent 2025-edition 2021-2024 statistic is historical rather than the current reference;
+(2) the LBNL summary's stated wind/solar clock begins at "initial public announcement", not a generic "announcement/contact" label. Use the exact source event unless a separate source supports a contact-based clock.
+
+The newest IAEA table changes the recent-world completion statistic only slightly in median but materially expands the cohort:
+2021-2025 = 26 reactors, worldwide median 103 months, first concrete -> grid connection.
+This supersedes 17 reactors / 102 months for 2021-2024 as the current reference, while the older statistic remains a valid dated historical fact.
+
+----------------------------------------------------------------------
+REVIEW_EVIDENCE_ID: REV-EGC-066-001
+CLAIM_ID: CLAIM-EGC-066-NUCLEAR-OBS-CURRENT
+TRUTH_CLASS: SOURCE_FACT / CURRENT_OFFICIAL_DATA / INDEPENDENT_RETRIEVAL
+SOURCE: IAEA, Nuclear Power Reactors in the World, Reference Data Series No. 2, 2026 edition; Table 8.
+SOURCE_PAGE:
+https://www.iaea.org/publications/16058/nuclear-power-reactors-in-the-world
+DIRECT_TABLE:
+https://www-pub.iaea.org/MTCD/Publications/SDATA/RDS2_2026/RDS2_2026_Table08.xlsx
+SOURCE_DATE: 2026 edition; data through 31 Dec 2025.
+METHOD:
+- independently retrieved current PRIS/publication listing;
+- extracted exact official Table 8 XLSX from the IAEA publication page;
+- parsed Table 8 independently.
+OUTPUT:
+WORLDWIDE 2021-2025:
+No. = 26 reactors.
+Median construction time = 103 months.
+Definition: construction time measured from first pouring of concrete to connection of the unit to the grid.
+Selected geography values in the same table demonstrate heterogeneity:
+China 9 reactors / median 75 months;
+France 1 / 204 months;
+India 3 / 159 months;
+United States 2 / 122 months;
+Slovakia 1 / 432 months.
+LIMITATIONS:
+Completion-only statistic; excludes licensing/development before first concrete, unfinished/cancelled projects and post-grid commercial-operation work. Mixed designs/geographies; not an AP1000-specific or future-project probability distribution.
+REPLICATION_STATUS: CURRENT_SOURCE_PASS.
+REVIEW_STATUS: PASS.
+
+----------------------------------------------------------------------
+REVIEW_EVIDENCE_ID: REV-EGC-066-002
+CLAIM_ID: CLAIM-EGC-066-NUCLEAR-OBS-HISTORICAL
+TRUTH_CLASS: SOURCE_FACT / SOURCE-VINTAGE RECONCILIATION
+SOURCE: IAEA RDS-2 2025, Table 8.
+URL: https://www-pub.iaea.org/MTCD/Publications/PDF/RDS-2-45_web.pdf
+OUTPUT:
+The parent 2021-2024 value of 17 reactors / worldwide median 102 months is consistent with the 2025-edition source boundary and is not fabricated.
+RECONCILIATION:
+It remains a dated historical evidence point but is SUPERSEDED_AS_CURRENT_REFERENCE by REV-EGC-066-001.
+CONFLICT_STATUS: RESOLVED_BY_SOURCE_VINTAGE.
+
+----------------------------------------------------------------------
+REVIEW_EVIDENCE_ID: REV-EGC-066-003
+CLAIM_ID: CLAIM-EGC-066-WINDSOLAR-DELIVERY
+TRUTH_CLASS: SURVEY / EXTERNAL_FACT / PDF_TEXT_AND_VISUAL_VERIFIED
+SOURCE: Lawrence Berkeley National Laboratory, Survey of Utility-Scale Wind and Solar Developers, January 2024.
+URL: https://emp.lbl.gov/publications/survey-utility-scale-wind-and-solar
+SUMMARY_PDF: https://eta-publications.lbl.gov/sites/default/files/w3s_developer_survey_summary_-_011724.pdf
+METHOD:
+Independent official-page retrieval, PDF text inspection, and screenshot visual verification of summary page 1.
+VERIFIED:
+- 123 respondents; 19.2% response rate; 62 companies;
+- about one-third of wind/solar siting applications in prior five years were cancelled;
+- about half experienced delays >=6 months;
+- delays/cancellations most often occur during permitting but can occur during site-control or construction stages;
+- most projects take 4-6 years from INITIAL PUBLIC ANNOUNCEMENT to commercial operation; ~20% take >6 years;
+- developer-reported delay cost ~USD 200,000/MW for wind and solar;
+- cancellation sunk costs >USD2M/project solar and USD7.5M/project wind;
+- cost-related questions were answered by only roughly one-half to one-third of respondents.
+CORRECTION:
+Use start event = INITIAL_PUBLIC_ANNOUNCEMENT when citing this summary. Do not silently relabel it "announcement/contact".
+LIMITATIONS:
+Survey, not administrative census; nonresponse/recall/selection bias; cost subset is smaller. End-to-end development evidence, not physical-build-only duration.
+REVIEW_STATUS: PASS_WITH_CLOCK_LABEL_CORRECTION.
+
+----------------------------------------------------------------------
+REVIEW_EVIDENCE_ID: REV-EGC-066-004
+CLAIM_ID: CLAIM-EGC-066-QUEUE
+TRUTH_CLASS: OBSERVATIONAL_DATASET / SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: Lawrence Berkeley National Laboratory, Queued Up: 2026 Edition, data through 2025.
+URL: https://emp.lbl.gov/queues
+VERIFIED:
+- active queues include 773 GW solar, 749 GW storage, 220 GW wind and 253 GW gas;
+- 549 GW with draft/executed interconnection agreement had not reached commercial operation;
+- for regions with data, median interconnection-request-to-COD duration exceeded five years for projects built in 2025;
+- among capacity requesting interconnection in 2000-2020, 13% reached commercial operation by end-2025, 75% withdrew, 10% remained active.
+LIMITATIONS:
+U.S. queues; capacity-weighted cohort outcomes, changing process rules/era; active queue != commitment; historical withdrawal != calibrated future completion probability.
+REVIEW_STATUS: PASS.
+
+----------------------------------------------------------------------
+REVIEW_EVIDENCE_ID: REV-EGC-066-005
+CLAIM_ID: CLAIM-EGC-066-SOLAR-DELAY
+TRUTH_CLASS: ADMINISTRATIVE_SURVEY / SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: U.S. EIA Today in Energy, 2025-11-10.
+URL: https://www.eia.gov/todayinenergy/detail.php?id=66604
+VERIFIED:
+- Q3 2025 projects representing ~20% of planned U.S. solar capacity reported delay, versus 25% in Q3 2024;
+- 31 GW utility-scale PV was added in 2024 versus >36 GW initially expected for that year;
+- less than 1% of planned solar capacity is completely cancelled in a typical month in this reporting frame;
+- late construction/testing delays are typically one or two months.
+BOUNDARY:
+Monthly schedule-update population is not the same as LBNL's five-year siting/development survey or interconnection-queue cohort. Parent correctly keeps them separate.
+REVIEW_STATUS: PASS.
+
+----------------------------------------------------------------------
+REVIEW_EVIDENCE_ID: REV-EGC-066-006
+CLAIM_ID: CLAIM-EGC-066-GRID-LEAD
+TRUTH_CLASS: SOURCE_FACT / IEA SYNTHESIS / INDEPENDENT_RETRIEVAL
+SOURCE_A: IEA, Electricity 2026, Grids.
+URL_A: https://www.iea.org/reports/electricity-2026/grids
+VERIFIED_A:
+- >2,500 GW of renewable, large-load and storage projects are stalled in grid queues worldwide;
+- planning/permitting/completing new grid infrastructure can take 5-15 years;
+- solar/wind projects are cited at roughly 1-5 years in the IEA comparison;
+- annual grid investment needs to rise ~50% by 2030 from about USD400B today in the report's outlook;
+- grid-enhancing technology capacity increments are constraint/firmness dependent and cannot be assumed simultaneously additive.
+SOURCE_B: IEA, Building the Future Transmission Grid, 2025.
+URL_B: https://www.iea.org/reports/building-the-future-transmission-grid/executive-summary
+VERIFIED_B:
+- cable procurement 2-3 years;
+- large power transformers up to 4 years;
+- specialised DC cables >5 years;
+- average cable/large-transformer lead times nearly doubled since 2021.
+BOUNDARY:
+System/network delivery evidence, not generator physical construction.
+REVIEW_STATUS: PASS.
+
+----------------------------------------------------------------------
+REVIEW_EVIDENCE_ID: REV-EGC-066-007
+CLAIM_ID: CLAIM-EGC-066-HYDRO-OVERRUN
+TRUTH_CLASS: PEER_REVIEWED_OBSERVATIONAL_META_DATA / INDEPENDENT_RETRIEVAL
+SOURCE: Plummer Braeckman, Disselhoff & Kirchherr, International Journal of Water Resources Development 36(5), 2020.
+DOI: 10.1080/07900627.2019.1568232
+URL: https://www.tandfonline.com/doi/full/10.1080/07900627.2019.1568232
+VERIFIED:
+184 cost-overrun and 191 time-overrun observations in combined meta-dataset.
+Post-2000 projects: mean cost overrun 33%, mean schedule overrun 18%.
+Pre-2000: 46% and 37%.
+Time-overrun reduction statistically significant; cost-overrun change not statistically significant.
+LIMITATION:
+Large dam/hydropower project sample, not universal PSH/small hydro/refurbishment distribution; completed-project sampling and geography heterogeneity remain.
+REVIEW_STATUS: PASS.
+
+----------------------------------------------------------------------
+INDEPENDENT_CALC_ID: REV-CALC-EGC-066-001A
+TRUTH_CLASS: INDEPENDENT_REPLICATION
+QUESTION:
+Does parent 52-month vs 102-month finance-stress arithmetic reproduce?
+METHOD:
+F(T,r)=((1+r)^T-1)/(T*ln(1+r)); T52=52/12; T102=102/12.
+OUTPUT:
+r=3%: 1.0668683541 vs 1.1368414929; relative +6.5587%.
+5%: 1.1135730777 vs 1.2392597081; +11.2868%.
+7%: 1.1620350215 vs 1.3516042696; +16.3136%.
+10%: 1.2381306805 vs 1.5407463645; +24.4413%.
+12%: 1.2912027269 vs 1.6820549304; +30.2704%.
+VERDICT:
+Parent arithmetic PASS for the stated 2025-edition 102-month historical stress.
+
+----------------------------------------------------------------------
+INDEPENDENT_CALC_ID: REV-CALC-EGC-066-001B
+TRUTH_CLASS: CALCULATION / CURRENT-SOURCE SENSITIVITY
+QUESTION:
+What changes if the newest IAEA 2021-2025 median 103 months is used as the mixed-world stress reference?
+INPUT:
+T103=103/12.
+OUTPUT:
+r=3%: F103=1.1383014389; relative vs F52 +6.6956%.
+5%: 1.2419564412; +11.5290%.
+7%: 1.3557860286; +16.6734%.
+10%: 1.5477019030; +25.0031%.
+12%: 1.6912847404; +30.9852%.
+SECOND IMPLEMENTATION:
+103 equal monthly midpoint spends:
+3%=1.1383011511;
+5%=1.2419555857;
+7%=1.3557842328;
+10%=1.5476978349;
+12%=1.6912784552.
+INTERPRETATION:
+Source-vintage update slightly strengthens the illustrative duration-finance stress; it does not change the qualitative finding.
+LIMITATION:
+Still a mixed-world observed median, not an AP1000 or future nuclear distribution and not an actual spend curve.
+
+----------------------------------------------------------------------
+INDEPENDENT_CALC_ID: REV-CALC-EGC-066-002
+TRUTH_CLASS: INDEPENDENT_REPLICATION / MISSION-CONVENTION CONDITIONAL
+CURRENT MISSION VERSION CHECK:
+Latest repo state preserves 3,360 TWh/y as the frozen OBJECTIVE_V2/V2.1 primary convention while a separately owned objective repair/review is executing; 2,860 TWh/y has been rejected as a post-hoc new primary and remains non-authoritative sensitivity unless migration is independently approved.
+INPUT:
+3,360 TWh/y / 8760 h = 383.5616438 GW continuous-equivalent; T_END-T0=20 y.
+FORMULA:
+required average COD throughput = 383.5616438/(20-L).
+REPLICATION:
+L=0 -> 19.1780822 GWavg/y.
+L=4 -> 23.9726027.
+L=5 -> 25.5707763.
+L=6 -> 27.3972603.
+L=8.5 -> 33.3531864 approximately (parent rounded stress).
+L=10 -> 38.3561644.
+Parent values PASS to rounding for its stated 8.5-y stress.
+CURRENT 103-MONTH SENSITIVITY:
+L=103/12=8.5833333 y -> 33.5966403 GWavg/y.
+Relative to L=0 -> 1.7518248x.
+RULE:
+This remains a lower-bound deployment-clock sanity calculation, not a fleet optimization or technology-specific deployment forecast. It must bind by OBJECTIVE_VERSION_ID rather than silently migrate if objective scale/version changes.
+
+----------------------------------------------------------------------
+ADVERSARIAL REVIEW:
+A1 PHYSICAL_CONSTRUCTION_TIME_EQUALS_TOTAL_DELIVERY:
+FALSIFIED; parent blocks.
+
+A2 ACTIVE_QUEUE_MW_EQUALS_COMMITTED/BUILT:
+FALSIFIED; parent blocks and LBNL outcome data support the warning.
+
+A3 COMPLETION_ONLY_NUCLEAR_MEDIAN_IS_FULL_PIPELINE_DISTRIBUTION:
+FALSIFIED; parent explicitly marks survivor/completion conditioning.
+
+A4 IAEA_102M_IS_AP1000_FORECAST:
+FALSIFIED; parent explicitly blocks; 2026 table further demonstrates mixed-country heterogeneity.
+
+A5 LBNL_WINDSOLAR_4-6Y_IS_PHYSICAL_CONSTRUCTION:
+FALSIFIED; source clock is initial public announcement -> COD and includes development stages.
+
+A6 EIA_MONTHLY_SOLAR_CANCELLATION_RATE_EQUALS_LIFETIME_PROJECT_CANCELLATION:
+FALSIFIED; parent explicitly keeps reporting frames separate.
+
+A7 GRID_LEAD_CAN_BE_IGNORED_OR_CHARGED_ONLY_TO_VRE:
+FALSIFIED; DELIVERY_RISK_BOUNDARY_V1 requires symmetric causal grid treatment.
+
+A8 T_DEV_PLUS_T_GRID_PLUS_T_PHYS_PLUS_T_COMM_ALWAYS_EQUALS_T_TOTAL:
+FALSIFIED; parent explicitly requires chronology/overlap rather than naive summation.
+
+A9 LARGE_DAM_POST2000_MEAN_IS_ALL_HYDRO/PSH_DISTRIBUTION:
+FALSIFIED; parent blocks transfer.
+
+A10 MODEL/PLANNED_REFERENCE_DURATION_IS_REALIZED_RISK_DISTRIBUTION:
+FALSIFIED; parent blocks.
+
+----------------------------------------------------------------------
+FINDING_ID: F-EGC-066REV-P2-001
+SEVERITY: P2 / SOURCE_FRESHNESS
+TITLE: IAEA 2025 edition no longer latest.
+DEFECT:
+Parent uses 2025-edition 2021-2024 17-reactor/102-month statistic while a 2026 edition is available.
+REPAIR_APPLIED_IN_REVIEW:
+Record parent datum as HISTORICAL_SOURCE_FACT; current reference = 2021-2025 26 reactors / median 103 months from official 2026 Table 8.
+REGRESSION:
+Finance-stress direction unchanged and slightly stronger; architecture unaffected.
+STATUS: CLOSED_BY_REVIEW.
+
+FINDING_ID: F-EGC-066REV-P2-002
+SEVERITY: P2 / CLOCK_PROVENANCE
+TITLE: LBNL summary clock start must be exact.
+DEFECT:
+Parent prose says "initial public announcement/contact"; official summary explicitly states "initial public announcement".
+REPAIR:
+Use exact start/end event fields. A contact-based start requires a separately cited source/definition.
+STATUS: CLOSED_BY_REVIEW.
+
+FINDING_ID: F-EGC-066REV-P2-003
+SEVERITY: P2 / DEPENDENCY_VERSIONING
+TITLE: Deployment-clock arithmetic must foreign-key objective version.
+RATIONALE:
+Current 3,360 TWh/y convention is preserved in latest repo state, but objective repair/review remains active. Any later independently approved migration must trigger rerun rather than silent numeric replacement.
+REPAIR:
+Every deployment sensitivity record carries OBJECTIVE_VERSION_ID, SCALE_TWH_Y, T0, T_END and SOURCE/CONVENTION_ID.
+STATUS: METHOD_CONDITION; no current arithmetic failure.
+
+----------------------------------------------------------------------
+CLAIM REVIEW:
+CLAIM-EGC-066-WINDSOLAR-DELIVERY: REVIEW_PASS_WITH_EXACT_CLOCK_LABEL.
+CLAIM-EGC-066-QUEUE: REVIEW_PASS.
+CLAIM-EGC-066-SOLAR-DELAY: REVIEW_PASS.
+CLAIM-EGC-066-NUCLEAR-OBS: REVIEW_PASS_AS_2025-VINTAGE_HISTORICAL; SUPERSEDED_CURRENT_REFERENCE_BY_REV-EGC-066-001.
+CLAIM-EGC-066-MODEL-OBS-GAP: REVIEW_PASS.
+CLAIM-EGC-066-GRID-LEAD: REVIEW_PASS.
+CLAIM-EGC-066-HYDRO-OVERRUN: REVIEW_PASS_WITH_SCOPE.
+CLAIM-EGC-066-FINANCE-STRESS: INDEPENDENT_REPLICATION_PASS; current 103-month sensitivity added.
+CLAIM-EGC-066-DEPLOYMENT-CLOCK: INDEPENDENT_REPLICATION_PASS_AS_CONDITIONAL_SANITY_BOUND.
+DELIVERY_RISK_BOUNDARY_V1: VERIFIED_FOR_METHOD_AND_STATED_EVIDENCE_SCOPE.
+
+UNRESOLVED BUT NON-DEFECT GAPS:
+- technology/design/region-specific empirical full-pipeline distributions remain NOT_VERIFIED for solar, wind, BESS, geothermal/EGS, PSH and modern nuclear classes;
+- completion/withdrawal/cancellation correlations and schedule-cost joint distributions remain incomplete;
+- actual candidate spend curves remain incomplete;
+- queue process reforms may change future outcomes;
+- offshore wind empirical distribution remains OPEN;
+- DELIVERY_RISK_BOUNDARY_V1 is not yet integrated into final chronological portfolio optimization.
+
+GATE EFFECT:
+G4 ENGINEERING_COMPLETE: NO; method contribution reviewed, candidate-specific delivery evidence incomplete.
+G5 COST_VALIDATED: NO; actual schedule-cost distributions incomplete.
+G6 MASSIVE_ENERGY_TARGET: NO; deployment integration incomplete.
+G11 MANUFACTURING_FEASIBLE: NO; separate job.
+G15 INTEGRATED_MODEL: NO.
+G21 UNCERTAINTY_CANNOT_REVERSE: NO.
+G22 BASELINE_COMPARISON: NO.
+GLOBAL_SOLVED: NO.
+
+STATUS_CHANGE:
+JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-REV-C2-20261006: CLAIMED -> VERIFIED.
+JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-C1-20261006: AWAITING_REVIEW -> VERIFIED_FOR_DELIVERY_RISK_BOUNDARY_V1_AND_STATED_EVIDENCE_SCOPE.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+NEXT_ACTION:
+Consume DELIVERY_RISK_BOUNDARY_V1 only with the 2026 IAEA current-reference supersession, exact clock labels, objective-version foreign key and parent censoring limitations. Continue to the highest-information unclaimed repair/review; do not promote this gate into a final technology winner.
