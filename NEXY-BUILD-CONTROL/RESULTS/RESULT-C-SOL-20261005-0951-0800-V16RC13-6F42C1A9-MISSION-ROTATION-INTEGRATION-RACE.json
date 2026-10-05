@@ -1,0 +1,59 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_STATIC_PROTOCOL_AUDIT_RESULT_V1",
+  "RESULT_ID": "RESULT-C-SOL-20261005-0951-0800-V16RC13-6F42C1A9-MISSION-ROTATION-INTEGRATION-RACE",
+  "RESULT_TYPE": "MISSION_ROTATION_ACTIVE_INTEGRATION_DRAIN_AUDIT",
+  "CHAT_ID": "C-SOL-20261005-0951-0800-V16RC13-6F42C1A9",
+  "MEMBERSHIP_ID": "PRE-b0b3df0a14b90114a13e8996451cc36e",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "PHASE_ASSESSED": "PHASE_1_STATIC_CONTROL_REPAIR",
+  "SEARCH_BEFORE_CREATE": {
+    "QUERIES": [
+      "mission rotation active integration",
+      "MISSION_ROTATION ACTIVE_INTEGRATION",
+      "rotation integration race",
+      "mission rotation REF_UPDATE_IN_PROGRESS",
+      "mission rotation Git CAS",
+      "ACTIVE_INTEGRATION mission generation rotation",
+      "old authority drain integration"
+    ],
+    "MATCHING_CURRENT_FINDING_OR_CANONICAL_INTERPRETATION_OBSERVED": false
+  },
+  "STATIC_PROTOCOL_EVIDENCE": {
+    "TARGET_AUTHORITY_SINGLE_MISSION": "[028]-[029] require exactly one active mission generation for the target authority and rotate state rather than create a competing writer universe.",
+    "INTEGRATION_BINDING": "[133] binds MISSION_ID and MISSION_GENERATION into immutable integration intent.",
+    "EXTERNAL_SIDE_EFFECT": "[142]-[145] allow ACTIVE_INTEGRATION to reach REF_UPDATE_IN_PROGRESS before an external Git ref CAS and require actual Git ref truth to be reconciled after crash.",
+    "ROTATION_TEXT": "[161]-[163] close gates, increment engineering/membership epochs, drain old authority, install the new mission descriptor, rebind namespaces, and reopen, but do not define whether 'drain old authority' necessarily includes ACTIVE_INTEGRATION nor how REF_UPDATE_IN_PROGRESS is reconciled before mission-generation cutover.",
+    "AMBIGUITY_RULE": "[016] requires material ambiguity to freeze the affected scope while independent work continues.",
+    "SAFETY_INVARIANTS": [
+      "[236] NEVER CREATE TWO ACTIVE MISSIONS FOR ONE TARGET AUTHORITY.",
+      "[243] NEVER INTEGRATE STALE INTENT.",
+      "[244]-[245] NEVER MOVE TARGET BLINDLY OR ERASE AMBIGUOUS GIT TRUTH."
+    ]
+  },
+  "COUNTEREXAMPLE_IF_DRAIN_IS_INTERPRETED_AS_MEMBERSHIP_LEASE_ONLY": [
+    "Mission generation G1 has ACTIVE_INTEGRATION I1 bound to G1 and I1 reaches REF_UPDATE_IN_PROGRESS.",
+    "MISSION_ROTATION enters, closes gates, increments ENGINEERING_EPOCH and MEMBERSHIP_EPOCH, and treats old membership/lease authority as drained.",
+    "Because the text does not explicitly require I1 to be terminally reconciled and cleared before installing G2, the new mission descriptor can be installed while I1's already-issued external Git CAS remains in flight.",
+    "I1 then moves refs/heads/NEXY.AI-Test-AI after the G2 cutover. The intent is stale by generation, but the physical ref side effect has already occurred.",
+    "G2 can therefore observe a target changed by a G1 integration across the generation boundary unless rotation is forced to reconcile actual target HEAD before descriptor install/reopen."
+  ],
+  "AMBIGUITY_ANALYSIS": {
+    "SAFE_INTERPRETATION": "'drain old authority' includes ACTIVE_INTEGRATION and requires deterministic Git-truth reconciliation to ACTIVE_INTEGRATION == null with healthy integration state before installing G2.",
+    "UNSAFE_BUT_TEXTUALLY_PLAUSIBLE_INTERPRETATION": "'drain old authority' means epoch/membership/lease invalidation only; an already-running integration is preserved for later reconciliation while G2 is installed.",
+    "WHY_BLOCKING": "Both interpretations fit the unexpanded phrase in [163], but only the first preserves mission-cutover atomicity. Under [016], mission rotation must fail closed until one canonical meaning/protocol is bound."
+  },
+  "VERDICT": "P0_CONTROL_MATERIAL_PROTOCOL_AMBIGUITY_FAIL_CLOSED",
+  "FINDING_ID": "FINDING-V16RC13-MISSION-ROTATION-ACTIVE-INTEGRATION-DRAIN-AMBIGUITY-6F42C1A9",
+  "REQUIRED_REPAIR": [
+    "Canonically define MISSION_ROTATION drain to include ACTIVE_INTEGRATION, not only memberships/leases/tasks.",
+    "Before installing ACTIVE_MISSION_ID / ACTIVE_MISSION_GENERATION for G2, require ACTIVE_INTEGRATION == null and INTEGRATION_HEALTH == HEALTHY.",
+    "If ACTIVE_INTEGRATION is REF_UPDATE_IN_PROGRESS, COMMITTED_PENDING_VERIFICATION, REGRESSION, recovery-pending, or UNKNOWN_REQUIRES_RECONCILIATION, reconcile actual target HEAD and durable Git truth under G1 before generation cutover.",
+    "Bind the reconciled target HEAD/TREE into the mission-rotation intent/cutover preconditions so a G1 side effect cannot land after the G2 descriptor snapshot.",
+    "Add torture tests for MISSION_ROTATION racing every ACTIVE_INTEGRATION phase and crashes immediately before/after Git CAS."
+  ],
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "FAIL_CLOSED": true
+}
