@@ -7,6 +7,12 @@
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 2,
   "PRODUCT_SOURCE_MUTATION": "NONE",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Independently enumerate canonical FINDINGS records assigned to deterministic path-hash shard 80-ff, extract P0/status evidence, and publish append-only manifest evidence for V16 activation gating."
+  "STATUS": "SUSPENDED",
+  "PURPOSE": "Independently enumerate canonical FINDINGS records assigned to deterministic path-hash shard 80-ff, extract P0/status evidence, and publish append-only manifest evidence for V16 activation gating.",
+  "SUSPEND_REASON": "Targeted V16_RC1_3_CONTROL_P0_MANIFEST_INVALIDATION after worker-namespace supersession/genesis finding changes; pre-supersession shard evidence is historical only.",
+  "SUSPENDED_BY": "C-SOL-20261005-0925-0800-V16RC13-9D3C9FD9",
+  "INVALIDATION_MESSAGE_ID": "MSG-V16RC13-WORKER-NS-SUPERSESSION-98776641-to-9D3C9FD9-v1",
+  "INVALIDATION_MESSAGE_VERSION": 1,
+  "INVALIDATION_CONTENT_HASH": "a2b2ea6ac0c70f927c14d7034878c82220e1d988bc66d629afb7ba7bd590e473",
+  "BOOTSTRAP_FENCE_STATE_VERSION_AT_SUSPEND": 6
 }
