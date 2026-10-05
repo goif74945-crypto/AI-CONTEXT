@@ -6328,3 +6328,64 @@ WRITE_INTEGRITY:
 - file SHA read: 262585af276cabf6d1733ebe5432068cc14cb47b
 - stale-write check: exact expected blob SHA used; concurrent mutation must reject this write.
 - commit/result: PENDING
+
+
+======================================================================
+38. DYNAMIC SOURCE JOB CLAIM — GRID / TRANSMISSION / FIRMING EVIDENCE
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-GRID-G1-20261005
+PRIMARY_ROLE: Grid integration / transmission / flexibility evidence analyst
+PRIMARY_JOB_ID: JOB-EGC-GRID-SRC-G1-20261005
+QUESTION: What measured/current authoritative evidence constrains incremental grid, transmission, interconnection, curtailment, adequacy, flexibility, storage/firming, and queue bottlenecks before JOB-EGC-021 can compute all-in system costs?
+DEPENDENCIES: NONE for source acquisition; quantitative integration-cost envelopes depend on verified common boundary and candidate penetrations.
+TOOLS: authoritative current agency/lab/ISO/IGO sources; operational datasets; dimensional calculations; cross-source comparison.
+EVIDENCE_TARGET: SOURCE_FACT / OPERATIONAL_DATA / CALCULATION / INFERENCE.
+FALSIFICATION_TARGET: universal integration surcharges, nameplate-only adequacy claims, queue-capacity-as-built-capacity claims, or system-cost assertions that omit transmission/interconnection/curtailment.
+REVIEWER: JOB-EGC-GRID-REV-G1-20261005 by a distinct session.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-GRID-SRC-G1-20261005
+ROLE: Grid/system integration source package
+TITLE: Authoritative grid, transmission, interconnection, flexibility and firming evidence anchors
+QUESTION_TO_RESOLVE: Build candidate-neutral empirical anchors for downstream JOB-EGC-021 without assigning all system costs to one technology class.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE for evidence acquisition.
+REQUIRED_INPUTS: current grid queue, transmission, adequacy, storage/flexibility and system-integration evidence.
+REQUIRED_TOOLS: official/primary source retrieval; deterministic normalization; provenance audit.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATA / CALCULATION.
+EXPECTED_OUTPUT: evidence records, boundary warnings, scale/queue constraints, and handoff to JOB-EGC-021/JOB-EGC-040.
+FALSIFICATION_CRITERIA: reject values that are aspirational, double-counted, boundary-incompatible, or unsupported by inspectable authoritative sources.
+REVIEWER_JOB_ID: JOB-EGC-GRID-REV-G1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-GRID-G1-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC UNKNOWN
+BLOCKERS: NONE for source acquisition.
+HANDOFF: Gather current authoritative evidence; distinguish queue proposals from built capacity and project-level firming from grid adequacy; submit AWAITING_REVIEW.
+
+JOB_ID: JOB-EGC-GRID-REV-G1-20261005
+ROLE: Independent grid evidence replication/red team
+TITLE: Reproduce and attack grid/system-integration evidence anchors
+QUESTION_TO_RESOLVE: Are source values, boundaries and system-service interpretations correct?
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-GRID-SRC-G1-20261005 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: submitted grid evidence records
+REQUIRED_TOOLS: independent official-source retrieval and recomputation
+REQUIRED_EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / CONFLICT
+EXPECTED_OUTPUT: PASS/FAIL per material evidence item; repairs
+FALSIFICATION_CRITERIA: fail if queue/projection/installed data are confused or if service/cost boundary is invalid
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: source job not yet submitted
+HANDOFF: distinct session required.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
