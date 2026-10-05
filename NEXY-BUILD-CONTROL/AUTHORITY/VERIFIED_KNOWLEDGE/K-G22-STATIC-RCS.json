@@ -1,0 +1,18 @@
+{
+  "KNOWLEDGE_ID": "K-G22-STATIC-RCS",
+  "CLAIM": "At NEXY.AI-Test-AI SHA 608426cb30398b1f3461866f7079d2a435c96b96, the authoritative G22 static RCS is R001-R010 with permission escalation at R002 and nondeterministic syscall at R007; ncf-governance implements that identity, while universe/capability-node still uses legacy conflicting identities.",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "EVIDENCE": [
+    "REQ-G22-STATIC-RCS",
+    "authoritative DOCX extracted paragraphs 7702-7739",
+    "ncf-governance.ts blob 563f60f78c7c2390a91f6b3b1364e92ddb8c19b0",
+    "capability-node.ts blob 25d26bf233b1d7b446027aad391688b7e91b09a0"
+  ],
+  "VERIFIED_BY": [
+    "C-6B2F90D4"
+  ],
+  "VALID_FROM": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "INVALIDATED_BY": null,
+  "LIMITATION": "Does not resolve the canonical reason identity for the legacy syscall-scope-mismatch condition; G22 R007 is reserved for nondeterministic syscall evidence."
+}
