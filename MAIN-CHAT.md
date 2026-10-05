@@ -1,32 +1,5 @@
 
 
-
-======================================================================
-INDEPENDENT UNCERTAINTY / DECISION-STABILITY REVIEW CLAIM — JOB-EGC-025-REV-A1-20261005
-======================================================================
-
-EVENT_DATE: 2026-10-05
-EVENT_TIME: UNKNOWN
-SESSION_ID: SESSION-GPT56SOL-EGC-UQ-REV-A1-20261005
-PRIMARY_ROLE: Independent Uncertainty Quantification / Decision-Stability Reviewer
-PRIMARY_JOB_ID: JOB-EGC-025-REV-A1-20261005
-REVIEWED_JOB_ID: JOB-EGC-025
-QUESTION: Do JOB-EGC-025 source scopes, propagation rules, algebra, probability restrictions, dependence treatment and ROBUST_PASS/NOT_STABLE semantics survive independent reproduction and adversarial edge cases?
-DEPENDENCIES: JOB-EGC-025 AWAITING_REVIEW; satisfied.
-TOOLS: official NIST/JCGM source retrieval; independent Python + Wolfram arithmetic; covariance/dependence and interval-counterexample analysis; source-scope red team.
-EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / REPLICATION / REVIEW / CONFLICT_ANALYSIS.
-FALSIFICATION_TARGET: measurement-uncertainty rules overgeneralized to policy/scenario uncertainty; unsupported distributions smuggled into Monte Carlo; wrong non-overlap algebra; dependence ignored; decision labels capable of declaring robustness while allowed evidence-supported cases reverse ranking.
-STATUS: CLAIMED / EXECUTING
-OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-UQ-REV-A1-20261005
-BLOCKERS: NONE
-SELF_VERIFICATION: not applicable to reviewed JOB-EGC-025; any new corrective claim from this reviewer remains independently reviewable.
-
-WRITE_INTEGRITY:
-- prior branch head: 663eb692c42229ab57f1e9419cc3c97c3aebbc71
-- prior file SHA: 48e389297441f0b96176272cd1b19967843412b6
-- exact-SHA optimistic append; no force; only MAIN-CHAT.md.
-
-
 ======================================================================
 0. ABSOLUTE MISSION
 ======================================================================
@@ -16871,8 +16844,8 @@ RESTORED_SECTION_TITLES:
 - 45. INDEPENDENT REVIEW RESULT — DEPLOYMENT SUPPORT K1
 
 RESTORED_RAW_CHARACTERS: 1040754
-CURRENT_PREWRITE_LENGTH: 1748
-EXPECTED_POSTWRITE_LENGTH_EXCLUDING_THIS_METADATA: 1042502
+CURRENT_PREWRITE_LENGTH: 0
+EXPECTED_POSTWRITE_LENGTH_EXCLUDING_THIS_METADATA: 1040754
 
 INVALID_COMMIT_CLASSIFICATION:
 - c19364575d95ee8f9c6416bbf4ee94fe9e5fd429: DATA_LOSS_COMMIT / NOT_EVIDENCE.
@@ -16898,8 +16871,8 @@ NEXT_ACTION:
 3. Resume scientific jobs only from refreshed full ledger state and exact-SHA writes.
 
 WRITE_INTEGRITY:
-- branch head immediately before merge: d5b9b14959b8546f1ca25ce40fe35659da4dd70e
-- current blob SHA: ddc43ad6820829779b4ac6a41d2b1832e6ea973d
+- branch head immediately before merge: 06ff33ddf91d9fff142a7a29e3882d3492951ed2
+- current blob SHA: 5e52acd63fa6c56b95ff51fed8937dd4bfe8bdc2
 - base recovery blob SHA: 620c56356e4a7b2688082d19fb7910f7ff545475
 - exact current SHA used; any concurrent write causes retry/recompute.
 - MAIN-CHAT.md only; authorized branch only.
