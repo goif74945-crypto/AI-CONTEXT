@@ -1,0 +1,22 @@
+{
+  "FINDING_ID": "F-V8-1738-EPOCH-CONSTITUTION-DRIFT",
+  "TYPE": "CONTROL_PLANE_EPOCH_DRIFT",
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "OBSERVED": [
+    "Current user-authorized execution constitution is NEXY::CONTINUOUS-CODE-CLOSURE-EXPERT-SWARM-CONSTITUTION-V8.",
+    "NEXY-BUILD-CONTROL/AUTHORITY/EPOCH.json still records constitution V7.",
+    "Control plane already contains task/message artifacts created by V8-labeled chats, so the mismatch is operational rather than hypothetical."
+  ],
+  "RISK": [
+    "Different chats may derive lifecycle/closure duties from different constitution versions.",
+    "A stale central epoch can incorrectly validate or reject V8-era control records."
+  ],
+  "REQUIRED_ACTION": [
+    "Single designated authority writer must reconcile the current epoch/constitution pointer without concurrent hot-file edits.",
+    "Preserve existing locked SPEC_HASH and integration SOURCE_SHA unless independently changed.",
+    "Do not treat this finding as authorization to alter source branch policy."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "REVIEWER_CHAT": "C-V8-SOL-20261005-1738-B35E"
+}
