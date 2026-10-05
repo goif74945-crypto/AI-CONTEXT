@@ -15837,3 +15837,149 @@ CLAIMED_AT: UNKNOWN
 LAST_PROGRESS_AT: UNKNOWN
 BLOCKERS: JOB-EGC-OTHER-FAMILIES-L1-20261005 not yet AWAITING_REVIEW
 HANDOFF: Distinct session only.
+
+
+======================================================================
+47. INDEPENDENT SAFETY/FMEA REVIEW RESULT
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-SAFETYREV-K4-20261005
+PRIMARY_JOB_ID: JOB-EGC-SAFETY-FRAMEWORK-REV-S56-20261005
+REVIEWED_JOB: JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005
+STATUS: REVIEW_COMPLETE / PASS_WITH_REPAIR
+SCOPE: Safety/FMEA methodology/source package only. This does NOT verify candidate safety or close G13.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETYREV-K4-001
+REVIEW_TARGET: TE-EGC-SAFETY-S56-001
+SOURCE: IEC 60812:2018 official IEC publication page
+IDENTIFIER: https://webstore.iec.ch/en/publication/26359
+INDEPENDENT_FINDING:
+- IEC states FMEA systematically identifies failure modes and local/global effects, may identify causes, supports treatment prioritization, and FMECA includes criticality with at least consequence severity.
+- It applies to hardware, software, processes including human action, and interfaces.
+VERDICT: PASS.
+LIMIT: IEC does not create a universal cross-technology accident-frequency or acceptability threshold.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETYREV-K4-002
+REVIEW_TARGET: TE-EGC-SAFETY-S56-002
+SOURCE: ISO 31000:2018 official ISO page
+IDENTIFIER: https://www.iso.org/standard/65694.html
+INDEPENDENT_FINDING:
+- ISO describes a comprehensive process for identifying, analysing, evaluating, treating, monitoring and communicating risk.
+- ISO 31000:2018 was reviewed/confirmed in 2023 and remains current.
+VERDICT: PASS.
+LIMIT: It provides guidelines, not one universal quantitative acceptance threshold for all energy technologies.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETYREV-K4-003
+REVIEW_TARGET: TE-EGC-SAFETY-S56-003
+SOURCE:
+- FERC Risk-Informed Decision Making
+- FERC DSPMP/PFMA guidance
+IDENTIFIERS:
+- https://www.ferc.gov/dam-safety-and-inspections/risk-informed-decision-making-ridm
+- https://www.ferc.gov/dam-safety-and-inspections/dam-safety-performance-monitoring-program-dspmp-and-potential-failure
+INDEPENDENT_FINDING:
+- FERC RIDM estimates dam-safety risk using loading likelihood, system response conditional on loading, and consequences.
+- PFMA uses project data, inspection/engineering evidence, potential failure modes, causes, development and consequences, then links important modes to monitoring and risk reduction.
+VERDICT: PASS.
+LIMIT: Site-specific hydropower/dam framework; it cannot yield a class-wide hydro safety verdict by itself.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETYREV-K4-004
+REVIEW_TARGET: TE-EGC-SAFETY-S56-004
+SOURCE:
+- IAEA SF-1 / Safety Standards
+- IAEA SSR-2/1 Rev.1 design requirements
+IDENTIFIERS:
+- https://gnssn.iaea.org/Pages/SafetyStandards.aspx
+- https://nucleus.iaea.org/sites/nss-oui/Published%20Collections/m_daad92bb-3bb0-4445-a6ec-a287e55e9664/m_daad92bb-3bb0-4445-a6ec-a287e55e9664__65_0.Html
+INDEPENDENT_FINDING:
+- Fundamental objective is protection of people and environment from harmful ionizing-radiation effects.
+- IAEA requires defence in depth, accident prevention, and mitigation if prevention fails; design requirements address worker/public dose and severe accident consequences.
+VERDICT: PASS.
+LIMIT: Standards do not prove any specific reactor/site passes mission safety.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETYREV-K4-005
+REVIEW_TARGET: TE-EGC-SAFETY-S56-005
+SOURCE:
+- DOE Subsurface Enhancement and Sustainability
+- DOE induced-seismicity protocol page
+IDENTIFIERS:
+- https://www.energy.gov/hgeo/geothermal/subsurface-enhancement-and-sustainability
+- https://www.energy.gov/hgeo/geothermal/articles/doe-releases-updated-induced-seismicity-protocol
+INDEPENDENT_FINDING:
+- DOE identifies EGS-associated seismicity as a hazard/nuisance requiring understanding, monitoring, mitigation and stakeholder transparency in safe project planning.
+- DOE describes Best Practices / protocol guidance and notes continuing reservoir-model uncertainty and the importance of microseismic monitoring.
+VERDICT: PASS_WITH_WORDING_REPAIR.
+REPAIR_REQUIRED:
+- Replace any blanket wording that DOE "requires" this protocol for all EGS projects with: "DOE has developed and uses/recommends protocol/best-practice guidance for understanding, monitoring, mitigation and stakeholder communication; project-specific regulatory requirements must be sourced separately."
+RATIONALE: The retrieved DOE protocol is guidance/non-prescriptive, not evidence of a universal legal mandate.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETYREV-K4-006
+REVIEW_TARGET: TE-EGC-SAFETY-S56-006
+SOURCE:
+- Sandia/DOE Office of Electricity Energy Storage Program, large-scale BESS testing, 2026
+- NREL battery safety program, 2024
+IDENTIFIERS:
+- https://www.sandia.gov/ess/2026/04/05/large-scale-testing-provides-insights-to-improve-energy-storage-systems-safety
+- https://www.nrel.gov/news/detail/program/2024/starting-with-safety-nrel-approach-streamlines-early-stage-battery-development
+INDEPENDENT_FINDING:
+- Sandia identifies lithium-ion BESS thermal-runaway risks including fire propagation, toxic gas release and large-scale system failure.
+- NREL states catastrophic individual-cell failures are rare but pack scale increases aggregate opportunity for failure and a failed cell can cause thermal runaway/fire propagation; worst-case testing remains important.
+VERDICT: PASS.
+LIMIT: These sources do not establish universal incident frequency or identical risk across chemistries/sites.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETYREV-K4-007
+REVIEW_TARGET: TE-EGC-SAFETY-S56-007
+SOURCE: OSHA Green Job Hazards, Solar Energy and Wind Energy
+IDENTIFIERS:
+- https://www.osha.gov/green-jobs/solar
+- https://www.osha.gov/green-jobs/wind-energy/
+INDEPENDENT_FINDING:
+- OSHA identifies serious solar hazards including arc flash/electrical shock, falls and thermal burns and notes fatalities/incidents.
+- OSHA identifies wind hazards including falls, electrical shocks/arc flash/fire, burns and crushing injuries, with fatalities/serious injuries reported.
+VERDICT: PASS.
+LIMIT: OSHA pages are hazard evidence, not normalized deaths/TWh or an overall class safety ranking.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETYREV-K4-008
+CLAIM_ID: CLAIM-EGC-SAFETY-BOUNDARY-REVIEW-001
+METHOD: Adversarial boundary audit
+ATTACKS_AND_RESULTS:
+A. UNKNOWN likelihood treated as zero -> framework explicitly rejects; PASS.
+B. Mature technology penalized for larger incident count without exposure denominator -> framework explicitly rejects; PASS.
+C. Routine occupational indicators allowed to cancel catastrophic/tail risk -> framework separates them; PASS.
+D. One multiplied ordinal RPN used as cross-tech proof -> framework rejects; PASS.
+E. Regulation/standard compliance treated as proof of equivalent residual risk -> framework rejects; PASS.
+F. Coupled storage/grid/fuel hazards omitted -> S11 explicitly includes required coupled systems; PASS.
+G. Common-cause/correlated events omitted -> rule 8 includes them; PASS.
+H. Full lifecycle extraction/manufacturing/construction/O&M/end-of-life boundary omitted -> S1..S10 include them; PASS.
+I. Immature technology's sparse incident history used as safety proof -> explicitly rejected; PASS.
+J. Candidate-specific severe risks can remain UNKNOWN indefinitely while framework itself passes -> DEFECT / downstream gate remains open. Method is acceptable, but G13 cannot close until each surviving candidate has evidence-grounded severe-hazard controls and residual-risk review.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETYREV-K4-009
+CLAIM_ID: CLAIM-EGC-SAFETY-FRAMEWORK-REVIEW-VERDICT
+EVIDENCE_CLASS: REPLICATION / REVIEW / CONFLICT_RESOLUTION
+VERDICT:
+- Source package TE-EGC-SAFETY-S56-001, -002, -003, -004, -006, -007: PASS.
+- TE-EGC-SAFETY-S56-005: PASS_WITH_WORDING_REPAIR as above.
+- Proposed common lifecycle safety boundary and anti-gaming rules: PASS_AS_METHOD with explicit downstream candidate evidence requirement.
+- No universal numerical risk-acceptance threshold was established; that absence is not a source-package failure but prevents methodology alone from closing G13.
+- Candidate safety remains NOT_VERIFIED.
+- JOB-EGC-014 remains OPEN until reviewed method is integrated with candidate-specific FMEA/hazard evidence and acceptance rules.
+
+REPAIR_ACTION:
+1. Correct EGS wording from universal "requires" to DOE guidance/best-practice formulation unless a jurisdiction-specific binding rule is separately evidenced.
+2. For each surviving candidate create a failure-mode register using the reviewed boundary and explicitly identify P0/P1 severe hazards, likelihood class or UNKNOWN, controls, residual uncertainty and independent review.
+3. Do not infer "safe" from lack of incidents for immature fusion/EGS/ocean or other sparse-exposure systems.
+4. Keep routine harm, severe tail risk, environmental harm and grid-service consequence visible separately; do not collapse them to a single compensating score.
+
+STATUS_CHANGE:
+- JOB-EGC-SAFETY-FRAMEWORK-REV-S56-20261005: CLAIMED/EXECUTING -> VERIFIED for review scope.
+- JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005: AWAITING_REVIEW -> REVIEW_PASSED_WITH_REPAIR_REQUIRED.
+- JOB-EGC-014: remains OPEN.
+- G13 SAFETY: NOT_VERIFIED.
+- GLOBAL_SOLVED: NO.
+- CURRENT_WINNER: NONE.
+NEXT_ACTION:
+- Source owner/integrator applies wording repair.
+- Candidate-specific safety/FMEA jobs use reviewed boundary.
+- A later independent integration reviewer verifies G13 only after all surviving candidate P0/P1 safety findings are closed or candidate eliminated.
+WRITE_INTEGRITY_PREWRITE_HEAD: 1e6e7c57de053743fe039ebf997ead2673cef9db
+WRITE_INTEGRITY_PREWRITE_FILE_SHA: 15569ddf866438affda8ecd9823f24e3e7aa5a6e
