@@ -1,0 +1,25 @@
+{
+  "FINDING_ID": "FINDING-V16RC13-GENESIS-ROOT-AUTHORITY-READINESS-001",
+  "TYPE": "CONTROL_ACTIVATION_BLOCKER",
+  "SEVERITY": "P0",
+  "STATUS": "OPEN",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "DISCOVERED_BY_CHAT": "C-SOL-V16RC13-LEASE-98776641",
+  "AFFECTED_PHASE": "PHASE_3_ATOMIC_ACTIVATION",
+  "SUMMARY": "Genesis cannot be declared ready because the mandatory requirement roots/resource graph/shard universe are not materialized, and the current 773-row Current Build matrix cannot be used directly as ACTIVE_BUILD_REQUIREMENT_ROOT_HASH without temporal authority reconciliation.",
+  "EVIDENCE": {
+    "ROOT_HASH_FIELDS_SEARCH": "No canonical records containing SOURCE_ENUMERATION_ROOT_HASH, ACTIVE_BUILD_REQUIREMENT_ROOT_HASH, DEPLOYMENT_EVIDENCE_REQUIREMENT_ROOT_HASH, RESOURCE_GRAPH_HASH, or SHARD_UNIVERSE_HASH were found in AI-CONTEXT main at audit time.",
+    "SOURCE_MATRIX": "projects/NEXY.AI/source-normalization/CURRENT-SYSTEM-FEATURE-BUILD-MATRIX.md records 837 normalized rows, with 773 rows in Current Build and 52 deployment-evidence rows.",
+    "TEMPORAL_CONFLICT_EXAMPLE": "Matrix REQ-0032 is classified CURRENT_BUILD and cites source paragraph 8131.",
+    "FINAL_AUTHORITY_RULE": "NEXY-BUILD-CONTROL/AUTHORITY/FINAL_DOC_C_PRIMARY_INDEX.json marks paragraphs 8095-9829 as pre-FINAL historical execution-pack material and requires an explicit incorporation path before relabeling it final DOC-C."
+  },
+  "REQUIRED_RESOLUTION": [
+    "Define and persist canonical manifest schemas for the three requirement roots.",
+    "Reconcile every candidate active-build row against final temporal/semantic authority before computing ACTIVE_BUILD_REQUIREMENT_ROOT_HASH.",
+    "Keep DOC-E deployment evidence in its separate deployment manifest/root.",
+    "Materialize canonical RESOURCE_GRAPH and SHARD_UNIVERSE plus their hashes/versions.",
+    "Re-run complete control-P0 manifest aggregation after this finding is included."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE"
+}
