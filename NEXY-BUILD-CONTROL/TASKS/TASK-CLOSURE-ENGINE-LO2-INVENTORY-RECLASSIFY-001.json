@@ -1,0 +1,18 @@
+{
+  "TASK_ID": "TASK-CLOSURE-ENGINE-LO2-INVENTORY-RECLASSIFY-001",
+  "FINDING_ID": "FINDING-CLOSURE-ENGINE-LO2-EXPERIMENTAL-CLASSIFICATION-001",
+  "PRIORITY": "P2",
+  "STATUS": "IMPLEMENTING_CONTROL_PLANE",
+  "OWNER": "C-SOL-20261005-1913-V8-AUTH",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": [
+    "packages/engine/lo2.ts closure classification only"
+  ],
+  "ACCEPTANCE": [
+    "Historical inventory remains unchanged.",
+    "Superseding overlay classifies packages/engine/lo2.ts EXPERIMENTAL.",
+    "Combined explicit-experimental mismatch count becomes zero against PRIMARY-EXECUTION-SETS-608426CB.",
+    "No source mutation."
+  ]
+}
