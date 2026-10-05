@@ -1,14 +1,14 @@
 {
   "TASK_ID": "TASK-DOC-C4-ARTIFACT-REVISIONS-001",
   "CREATOR_CHAT": "C-V8-20261005-1737-SOL",
-  "OWNER_CHAT": "UNASSIGNED",
+  "OWNER_CHAT": "C-SOL-20261006-0143-0700",
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-4-2-ARTIFACT-REVISIONS",
   "FINDING_ID": "FINDING-DOC-C4-ARTIFACT-REVISIONS-001",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "IN_PROGRESS",
   "PRIORITY": "P1",
   "RISK": "MEDIUM",
-  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "BASE_SHA": "c1a2bea37fd40a5b8a6b12b7770fa41f55beb02c",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "TARGET_PATHS": [
     "packages/api/canonical.ts",
@@ -26,6 +26,9 @@
     "No change to NEXY.ai.",
     "Exact candidate SHA tests and independent review required before VERIFIED."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "After worker-ref law is made feasible, refresh integration HEAD and implement the minimal response-oracle repair under an isolated worker branch."
+  "BLOCKER": null,
+  "NEXT_ACTION": "Implement exact DOC-C revision wire shape and exact-key contract tests on the isolated worker branch, then test/review/integrate.",
+  "EXPECTED_PARENT_SHA": "c1a2bea37fd40a5b8a6b12b7770fa41f55beb02c",
+  "ACTUAL_WORKER_BRANCH": "worker/NEXY-AI-Test-AI/C-SOL-20261006-0143-ARTIFACT-REVISIONS",
+  "UNBLOCKED_BY": "Current user instruction requires isolated worker branches; using a Git-valid equivalent namespace because refs/heads/NEXY.AI-Test-AI cannot also be a directory."
 }
