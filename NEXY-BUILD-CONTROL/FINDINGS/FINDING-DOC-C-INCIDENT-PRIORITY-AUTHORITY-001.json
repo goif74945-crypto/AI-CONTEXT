@@ -1,0 +1,63 @@
+{
+  "FINDING_ID": "FINDING-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001",
+  "CREATED_BY": "C-SOL-20261005-1923-INCIDENT-AUTH",
+  "EPOCH_ID": "EPOCH-20261005-b35ee1bf-608426cb",
+  "SPEC_ID": "NEXY-IGNIS-b35ee1bf82125792",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SEVERITY": "P1",
+  "GAP_CLASS": [
+    "AUTHORITY_VIOLATION",
+    "CONTRACT_DRIFT",
+    "TEST_ORACLE_DEFECT",
+    "UNVERIFIED_CRITICAL_CODE"
+  ],
+  "STATUS": "OPEN_BLOCKED_FOR_SOURCE_REPAIR",
+  "OBSERVED": [
+    "packages/obs/incident-priority.ts blob 12689c38239fc49f83c6dc23d0c73a6f7c667717 line 1 attributes deterministic multiple-failure arbitration to final DOC-C §5.8 / §11.4, but the locked final DOC-C ends at §5.6.",
+    "packages/obs/incident-priority.ts lines 4-10 hardcode an incident error priority ranking that is not present in locked final DOC-C.",
+    "packages/queue/run-state.ts blob e162efc8b2a45014bcefbd60dc67a95d8a1e1003 lines 476-488 uses arbitrateIncidentCodes and may replace an existing persisted primaryErrorCode when a later incident has a higher implementation-defined rank.",
+    "packages/orch-core/system-state.ts blob 1883414a3d8b2034d06ef30e039b537319e2e0f1 lines 207-219 applies the same rank-based replacement on global terminal transitions.",
+    "tests/contract/incident-semantics.test.ts blob 7dc8d552cf407e4b83dff4a23cdb16112c350db3 line 50 names this implementation-defined order the fixed DOC-C primary priority order.",
+    "packages/contracts/incidents.ts blob d28c07650d924564c4b127a89f66a9015935e38d line 1 cites DOC-C §10, and packages/obs/incidents.ts blob ee047ebf74639cda28b7129c095f356d5085f3ad cites DOC-C §10/§11, which are outside final DOC-C authority."
+  ],
+  "EXPECTED": [
+    "Final DOC-C §5.6 requires: every legal transition emits EventLog; transitions to FREEZE or STOP create primary incident; secondary failures attach as secondary incident links; recover emits AuditLog + EventLog.",
+    "Final DOC-C must not be cited for sections or semantics outside its locked §2-§5.6 range.",
+    "Any incident-priority replacement policy that changes persisted primary incident truth must have explicit active authority or be treated as non-canonical implementation policy and proven non-conflicting with final DOC-C."
+  ],
+  "PRIMARY_SPEC_EVIDENCE": {
+    "FINAL_DOC_C_RANGE": "raw DOCX paragraphs 9886-10499",
+    "INCIDENT_LAW": "paragraphs 10494-10499",
+    "INCIDENT_LAW_TEXT": [
+      "5.6 Log / Incident Law",
+      "Every legal transition emits EventLog",
+      "Transitions to FREEZE or STOP create primary incident",
+      "Secondary failures attach as secondary incident links",
+      "Recover emits AuditLog + EventLog"
+    ],
+    "NEGATIVE_AUTHORITY_CHECK": "Exact scan of final DOC-C paragraphs 9886-10499 found no incident failure priority/rank law; occurrences of priority in final DOC-C concern directive priority."
+  },
+  "IMPACT": [
+    "Persisted primary incident cause may be changed by runtime semantics not present in active build authority.",
+    "Contract tests currently protect that unsupported semantic as if it were a final DOC-C requirement, making the test oracle capable of rejecting a spec-correct implementation.",
+    "False section citations can mislead later auditors into promoting historical/non-final material to build authority."
+  ],
+  "DUPLICATE_SUPPRESSION": {
+    "CONTROL_SEARCH_TERMS": [
+      "arbitrateIncidentCodes",
+      "primary priority order",
+      "DOC-C §5.8",
+      "DOC-C §11.4",
+      "incident-priority"
+    ],
+    "RESULT": "No existing semantically named finding/task for this incident-priority authority gap was located before creation; generic global API and state tasks have different semantic scope."
+  },
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "BLOCKER_DETAIL": "Existing refs/heads/NEXY.AI-Test-AI conflicts with Constitution worker prefix refs/heads/NEXY.AI-Test-AI/work/<TASK>; no alternate source mutation namespace was authorized.",
+  "REQUIRED_NEXT": "Create/execute TASK-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001 after a Git-valid authorized isolation path exists; independently resolve whether the ranking has separate active authority before retaining any primary-replacement behavior.",
+  "NEXY_AI_MUTATION": "NONE"
+}
