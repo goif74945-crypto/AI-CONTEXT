@@ -4612,3 +4612,276 @@ GLOBAL_STATE_DELTA:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+33. TOOL EVIDENCE PACKAGE — JOB-EGC-SCALE-ANCHOR-C1-20261005
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-SCALE-C1-20261005
+JOB_ID: JOB-EGC-SCALE-ANCHOR-C1-20261005
+STATUS_TARGET: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+
+CONFLICT_ID: CONFLICT-EGC-SCALE-BOUNDARY-C1-001
+TRUTH_CLASS: CONFLICT
+QUESTION: Why do current world electricity totals differ materially across authoritative sources, and how must MASSIVE_ENERGY thresholds avoid mixing system boundaries?
+
+TOOL_EVIDENCE_ID: EVIDENCE-EGC-SCALE-C1-001
+TOOL_OR_METHOD: Authoritative web-source retrieval + deterministic unit conversion
+PURPOSE: Anchor world-scale electricity magnitude on a gross-generation/demand-style boundary.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- Ember Global Electricity Review 2026, 2025 world electricity demand: 31,779 TWh.
+- Ember reported 2025 annual increase: 849 TWh (+2.8%).
+PARAMETERS:
+- 8760 hours/year for average-power conversion.
+VERSION_OR_MODEL: Deterministic arithmetic; no simulation model.
+SOURCE_OR_DATASET: Ember Global Electricity Review 2026, Electricity demand and supply trends.
+SOURCE_DATE: 2026-04-21 report edition / 2025 data.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+COMMAND_CODE_EQUATION_OR_METHOD:
+- P_avg[GW] = E[TWh/year] * 1000[GWh/TWh] / 8760[h/year].
+- 31,779 * 1000 / 8760 = 3,627.7397 GW = 3.62774 TW average.
+- 849 * 1000 / 8760 = 96.9178 GW average annual-growth equivalent.
+RAW_OR_KEY_OUTPUT:
+- 2025 gross/demand-style world scale = 31,779 TWh/year.
+- Average continuous equivalent = 3.62774 TW.
+- 2025 growth increment = 849 TWh/year equivalent = 96.9178 GW average.
+UNITS: TWh/year; GW; TW.
+UNCERTAINTY: Source statistical/estimation uncertainty not numerically published in inspected page; UNKNOWN. Arithmetic rounding <0.01%.
+ASSUMPTIONS:
+- 365-day year = 8760 h for annual-average conversion.
+- Ember boundary interpreted using Ember methodology precedent: demand = gross generation + net imports; this is not final end-user consumption.
+LIMITATIONS:
+- Country/world figures include reported data plus estimation for incomplete countries/months.
+- This boundary is intentionally not treated as identical to IEA final-consumption electricity.
+REPRODUCIBILITY_INSTRUCTIONS: Divide 31,779 TWh and 849 TWh by 8.76 TWh per average GW-year.
+INDEPENDENT_REPLICATION: REQUIRED / JOB-EGC-SCALE-ANCHOR-C1-20261005 MAY NOT SELF-VERIFY.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+CLAIM_SUPPORTED: World electricity on Ember gross/demand-style boundary is order 31.8 PWh/year, equivalent to about 3.63 TW average, with one-year growth near 0.85 PWh/year.
+CLAIM_NOT_SUPPORTED: This does not establish end-user delivered electricity, candidate cost, or any candidate's ability to supply this scale.
+
+TOOL_EVIDENCE_ID: EVIDENCE-EGC-SCALE-C1-002
+TOOL_OR_METHOD: IEA source retrieval + deterministic unit conversion
+PURPOSE: Anchor end-use/final-consumption electricity scale on an independent authoritative boundary.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- IEA Electricity 2026: global electricity consumption 28,200 TWh in 2025.
+- IEA 2025 methodology note: total final consumption excludes power-plant/industry own use and transmission/distribution losses.
+PARAMETERS:
+- 8760 h/year.
+VERSION_OR_MODEL: Deterministic arithmetic.
+SOURCE_OR_DATASET:
+- IEA Electricity 2026, Demand.
+- IEA Global Energy Review 2025, Electricity methodology note for total final consumption.
+SOURCE_DATE: 2026 and 2025 publications.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://www.iea.org/reports/electricity-2026/demand
+- https://www.iea.org/reports/global-energy-review-2025/electricity
+COMMAND_CODE_EQUATION_OR_METHOD:
+- 28,200 * 1000 / 8760 = 3,219.1781 GW = 3.21918 TW average.
+RAW_OR_KEY_OUTPUT:
+- IEA 2025 electricity consumption = 28,200 TWh/year.
+- Average continuous equivalent = 3.21918 TW.
+UNITS: TWh/year; GW; TW.
+UNCERTAINTY: IEA text does not provide numeric uncertainty in inspected page; UNKNOWN.
+ASSUMPTIONS:
+- IEA Electricity 2026 consumption figure is treated as a final-use/consumption boundary consistent with the cited IEA final-consumption methodology; reviewer must confirm exact boundary wording for this edition.
+LIMITATIONS:
+- IEA and Ember boundaries differ and cannot be substituted without reconciliation.
+REPRODUCIBILITY_INSTRUCTIONS: 28,200 / 8.76 = 3,219.178 GW.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+CLAIM_SUPPORTED: World final-consumption-style electricity scale is about 28.2 PWh/year or 3.22 TW average on the IEA basis.
+CLAIM_NOT_SUPPORTED: Does not equal gross generation and does not quantify grid losses by itself.
+
+TOOL_EVIDENCE_ID: EVIDENCE-EGC-SCALE-C1-003
+TOOL_OR_METHOD: Boundary-difference calculation
+PURPOSE: Quantify the material mismatch and prevent silent system-boundary mixing.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- Ember-style world total 31,779 TWh/year.
+- IEA consumption total 28,200 TWh/year.
+PARAMETERS: None beyond arithmetic.
+SOURCE_OR_DATASET: EVIDENCE-EGC-SCALE-C1-001 and -002.
+SOURCE_DATE: 2025 underlying year.
+COMMAND_CODE_EQUATION_OR_METHOD:
+- Difference = 31,779 - 28,200 = 3,579 TWh/year.
+- Difference / 31,779 = 11.2622%.
+- Difference / 28,200 = 12.6915%.
+RAW_OR_KEY_OUTPUT:
+- Boundary gap = 3,579 TWh/year.
+- Gap = 11.26% of Ember-style total; 12.69% of IEA-style total.
+UNITS: TWh/year; percent.
+UNCERTAINTY: Dominated by dataset definitions/statistical estimates, not arithmetic.
+ASSUMPTIONS: None beyond comparing the two published aggregates to expose, not erase, the boundary mismatch.
+LIMITATIONS: Difference is NOT claimed to equal transmission/distribution losses alone; it can also include own-use and methodological/statistical differences.
+REPRODUCIBILITY_INSTRUCTIONS: Simple subtraction and division using records -001/-002.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: CALCULATION + CONFLICT
+CLAIM_SUPPORTED: Mixing these totals without boundary labels can move world-scale thresholds by >10%, enough to matter for fixed acceptance gates.
+CLAIM_NOT_SUPPORTED: No causal decomposition of the full 3,579 TWh difference is proven.
+
+TOOL_EVIDENCE_ID: EVIDENCE-EGC-SCALE-C1-004
+TOOL_OR_METHOD: U.S. EIA operational-statistics retrieval + conversion
+PURPOSE: Provide a real national-scale comparator independent of the world aggregates.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- U.S. EIA: 2025 U.S. net generation = 4.43 thousand TWh = 4,430 TWh.
+PARAMETERS: 8760 h/year.
+SOURCE_OR_DATASET: U.S. Energy Information Administration, Today in Energy, 2026-03-05, based on Electricity Data Browser / Monthly Energy Review.
+SOURCE_DATE: 2026-03-05; underlying 2025 generation.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.eia.gov/todayinenergy/detail.php?id=67284
+COMMAND_CODE_EQUATION_OR_METHOD:
+- 4,430 * 1000 / 8760 = 505.7078 GW average.
+RAW_OR_KEY_OUTPUT:
+- U.S. 2025 net generation = 4,430 TWh/year.
+- Average equivalent = 505.71 GW.
+UNITS: TWh/year; GW.
+UNCERTAINTY: Source revisions possible; numerical uncertainty not stated in inspected article.
+ASSUMPTIONS: Annual-average conversion only.
+LIMITATIONS: U.S. national net-generation boundary differs from world final-consumption boundary; used as scale comparator, not direct denominator.
+REPRODUCIBILITY_INSTRUCTIONS: 4,430 / 8.76 = 505.708 GW.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+CLAIM_SUPPORTED: A single very large national power system is order 0.5 TW average generation.
+CLAIM_NOT_SUPPORTED: No technology-specific conclusion.
+
+TOOL_EVIDENCE_ID: EVIDENCE-EGC-SCALE-C1-005
+TOOL_OR_METHOD: Independent world-scale order-of-magnitude cross-check using Energy Institute 2024 regional shares
+PURPOSE: Check that ~31 PWh/year world generation magnitude is not unique to Ember.
+EXECUTION_DATE: 2026-10-05
+INPUTS:
+- Energy Institute: Asia Pacific 2024 electricity production 16,132 TWh = 52% of global.
+- Energy Institute: North America + Europe 2024 = 9,514 TWh = 30% of global.
+PARAMETERS: Published shares are rounded.
+SOURCE_OR_DATASET: Energy Institute Statistical Review insights by source and country.
+SOURCE_DATE: 2025/2026 web publication describing 2024 data.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.energyinst.org/statistical-review/insights-by-source
+COMMAND_CODE_EQUATION_OR_METHOD:
+- Implied world from APAC share = 16,132 / 0.52 = 31,023 TWh.
+- Implied world from NA+Europe share = 9,514 / 0.30 = 31,713 TWh.
+RAW_OR_KEY_OUTPUT:
+- Rounded-share implied world range ≈31.0-31.7 PWh/year for 2024.
+UNITS: TWh/year.
+UNCERTAINTY: High enough for only an order-of-magnitude check because 52% and 30% are rounded shares.
+ASSUMPTIONS: Shares refer to same global-generation denominator.
+LIMITATIONS: Not suitable as an exact 2025 denominator.
+REPRODUCIBILITY_INSTRUCTIONS: Divide the two regional totals by their rounded world shares.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION
+CLAIM_SUPPORTED: Independent Energy Institute data are consistent with a world gross-generation magnitude near 31 PWh/year.
+CLAIM_NOT_SUPPORTED: Exact equality with Ember 2025 is not claimed.
+
+THRESHOLD PROPOSAL — TRUTH_CLASS: INFERENCE / NOT_VERIFIED
+METHOD:
+- Do not define MASSIVE_ENERGY with one unlabeled TWh number.
+- Freeze reference-year 2025 and maintain TWO boundaries:
+  A) GRID/GROSS-SERVICE anchor: Ember-style gross generation + net imports.
+  B) END-USE-SERVICE anchor: IEA total final electricity consumption.
+- Define scale tiers as fractions of each fixed world reference, not candidate output:
+  * 1% world scale:
+    - gross-style: 317.79 TWh/year = 36.277 GW average.
+    - final-use-style: 282.00 TWh/year = 32.192 GW average.
+  * 10% world scale:
+    - gross-style: 3,177.9 TWh/year = 362.773 GW average.
+    - final-use-style: 2,820.0 TWh/year = 321.918 GW average.
+- Define an additional GLOBAL-GROWTH-SIGNIFICANCE anchor:
+  * 2025 world growth ≈800-849 TWh/year depending source/boundary, equivalent to ≈91-97 GW average.
+  * A mature system that cannot plausibly scale near this magnitude cannot alone cover one current year of global electricity demand growth.
+
+PROPOSED USE BY JOB-EGC-001:
+- Freeze boundary and threshold BEFORE ranking technologies.
+- Candidate proof packages must report both generator-side/gross and end-user-delivered energy whenever losses materially differ.
+- For mission-level "massive" screening, use at minimum a tiered scale rather than a binary adjective:
+  M1 = >=1% of 2025 world electricity on the chosen boundary.
+  M2 = >=current one-year world electricity demand growth on the chosen boundary.
+  M3 = >=10% of 2025 world electricity on the chosen boundary.
+- Which tier is the final acceptance threshold remains NOT_VERIFIED and belongs to JOB-EGC-001 plus independent review.
+
+CONFLICT_EGC_SCALE_BOUNDARY_C1_001_STATUS: EXPLAINED_BUT_NOT_INDEPENDENTLY_VERIFIED
+CAUSE_HYPOTHESIS:
+- Ember methodology uses gross generation + net imports and therefore runs above final end-user consumption.
+- IEA total final consumption excludes own use and T&D losses.
+- The 3,579 TWh difference must NOT be attributed entirely to T&D losses without a separate decomposition job.
+
+RED_TEAM_CHECK:
+- Attack 1: "31,779 TWh and 28,200 TWh disagree, so one must be wrong."
+  Outcome: FALSIFIED as a necessary conclusion; inspected methodologies show materially different boundaries.
+- Attack 2: "Use 1% of world because it sounds objective."
+  Outcome: PARTIAL FAIL. The denominator is objective, but choosing 1% remains a policy/mission threshold, so it is labeled INFERENCE and tiered with growth and 10% anchors instead of promoted to FACT.
+- Attack 3: "Average power alone proves firm capacity."
+  Outcome: FALSIFIED. Annual-average GW does not prove hourly firmness, capacity factor, storage, grid adequacy, or reliability.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-SCALE-001 <- EVIDENCE-EGC-SCALE-C1-001,-002,-003,-005
+  Claim: World electricity scale is multi-PWh/year and multi-TW average, but exact value depends materially on boundary.
+- CLAIM-SCALE-002 <- EVIDENCE-EGC-SCALE-C1-004
+  Claim: Large national systems operate at hundreds-of-GW annual-average generation scale.
+- CLAIM-SCALE-003 <- EVIDENCE-EGC-SCALE-C1-001,-002,-003
+  Claim: MASSIVE_ENERGY thresholds must explicitly freeze system boundary or >10% denominator drift can be introduced.
+- DEPENDENT: JOB-EGC-001 quantitative objective formalization.
+- SOLVED_GATES: Supports G1/G6/G7 only; does NOT close them.
+
+STATUS_CHANGE:
+- JOB-EGC-SCALE-ANCHOR-C1-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW
+- GLOBAL_SOLVED: remains NO
+- USER_SUCCESS_RESPONSE: remains DENIED
+
+NEXT_ACTION:
+- Distinct session claims JOB-EGC-SCALE-ANCHOR-REV-C1-20261005.
+- Reviewer must independently retrieve Ember, IEA, EIA, and Energy Institute values; recompute all conversions; confirm IEA 2025 boundary; and either PASS, FAIL, or create repair jobs.
+- If reviewer passes the arithmetic but boundary decomposition remains material, create a separate loss/own-use/statistical-reconciliation job before using a single delivered-energy denominator.
+
+### EVENT 2026-10-05T19:08:00Z / CHATGPT-SOL-SCALE-C1-20261005 — EVIDENCE SUBMISSION
+
+ROLE: Objective / Scale Metric Calibration
+OBJECTIVE: Produce candidate-neutral, source-grounded MASSIVE_ENERGY scale anchors and expose boundary mismatch.
+TARGET_CANDIDATE_OR_QUESTION: Mission-wide quantitative objective.
+
+INPUTS:
+- Ember 2026 global electricity review.
+- IEA Electricity 2026 and IEA consumption methodology.
+- U.S. EIA 2025 net generation.
+- Energy Institute world/regional electricity statistics.
+
+SOURCE/EVIDENCE:
+- [SOURCE_FACT] Ember 2025 world demand = 31,779 TWh; growth = 849 TWh.
+- [SOURCE_FACT] IEA 2025 global electricity consumption = 28,200 TWh.
+- [SOURCE_FACT] IEA total final consumption excludes own use and T&D losses.
+- [SOURCE_FACT] U.S. EIA 2025 net generation = 4,430 TWh.
+- [SOURCE_FACT] Energy Institute 2024 rounded regional shares imply world generation around 31 PWh/year.
+- [CALCULATION] Conversions and boundary gap recorded above.
+
+WORK:
+- Retrieved independent authoritative/statistical sources.
+- Performed explicit annual-energy-to-average-power conversions.
+- Identified and quantified a >10% system-boundary mismatch.
+- Rejected silent mixing of gross/demand and final-consumption denominators.
+- Proposed tiered candidate-neutral scale anchors, explicitly NOT_VERIFIED pending independent review.
+
+RESULT:
+- FACT: Current world electricity is multi-PWh/year and multi-TW average on both inspected boundaries.
+- INFERENCE: Thresholds should be defined as fixed fractions/growth-equivalents of a frozen reference boundary.
+- ASSUMPTION: IEA 28,200 TWh text uses final-consumption-style boundary consistent with cited IEA methodology; exact edition-specific boundary awaits reviewer confirmation.
+- UNKNOWN: Final mission acceptance tier (M1/M2/M3); exact decomposition of 3,579 TWh dataset gap.
+- CONFLICT: CONFLICT-EGC-SCALE-BOUNDARY-C1-001 remains open to independent verification/decomposition.
+- FALSIFIED: Any claim that annual-average GW alone establishes firmness/reliability.
+
+RED_TEAM_CHECK:
+- strongest attack attempted: source-boundary mismatch, arbitrary percent threshold, and average-power/firm-power conflation.
+- outcome: mismatch preserved as CONFLICT; threshold kept as INFERENCE; firmness claim explicitly rejected.
+
+STATUS_CHANGE:
+- JOB-EGC-SCALE-ANCHOR-C1-20261005: EXECUTING -> AWAITING_REVIEW
+- justification: evidence package produced; owner cannot self-VERIFY.
+
+NEXT_ACTION:
+- Independent reviewer job JOB-EGC-SCALE-ANCHOR-REV-C1-20261005.
+
+WRITE_INTEGRITY:
+- branch head read: e4ce91933c710818ce10018819ba505653331e3b
+- file SHA read: b0b58e7beb392cef2425d1209f4f9d37e14837f4
+- stale-write check: exact current blob SHA used; no force update
+- commit/result: pending this commit
