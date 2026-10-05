@@ -1,0 +1,40 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_STATIC_PROTOCOL_REVIEW_V1",
+  "REVIEW_ID": "REVIEW-C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9-USER-STOP-TOCTOU-E3D47B8C",
+  "REVIEWER_CHAT_ID": "C-SOL-V16RC13-CONTROL-XAUDIT-DE64F6B9",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "FINDING_ID": "FINDING-V16RC13-USER-STOP-LEASE-GATE-TOCTOU-E3D47B8C",
+  "VERDICT": "CONFIRMED_P0_CONTROL_REPAIR_REQUIRED",
+  "REPRODUCTION": [
+    "Clause [121] lease bindings do not include Mission Fence STATE_VERSION, mission stop state, or gate state.",
+    "Clause [166] requires USER_STOP through Mission Fence CAS but does not state that STOP entry changes ENGINEERING_EPOCH or MEMBERSHIP_EPOCH.",
+    "Clause [220] revalidates mission/law/spec/resource/membership/task/lease generations, but it does not include USER_STOP, MISSION_STATUS, WORK_ADMISSION_GATE, MUTATION_GATE, or Mission Fence STATE_VERSION in the final revalidation set immediately before IMPLEMENT.",
+    "Therefore a STOP CAS that only changes stop/transition/gate state can leave every explicit [121]/[220] lease binding unchanged while a worker proceeds from a prior successful revalidation."
+  ],
+  "CONTROL_REPAIR_PATH_WITHOUT_PRODUCT_MUTATION": {
+    "STOP_LINEARIZATION_CAS": [
+      "Atomically set mission/Bootstrap stop state to STOPPING.",
+      "Atomically close WORK_ADMISSION_GATE, MUTATION_GATE, and INTEGRATION_GATE.",
+      "Increment ENGINEERING_EPOCH exactly once.",
+      "Increment MEMBERSHIP_EPOCH exactly once.",
+      "Increment or create a monotonic STOP_GENERATION bound to the stop transition."
+    ],
+    "AUTHORITY_EFFECT": [
+      "All pre-stop leases become stale at the STOP CAS linearization point.",
+      "All pre-stop ACTIVE memberships lose mutation eligibility through the membership-epoch change.",
+      "Any worker-branch write physically produced after the stop linearization point from stale local state is an unauthorized/noncanonical stale artifact and can never enter integration-ready or ACTIVE_INTEGRATION state.",
+      "Recovery/audit must preserve such durable writes as evidence rather than treating them as authorized progress."
+    ],
+    "VALIDATOR_HARDENING": [
+      "Add Mission Fence STATE_VERSION or STOP_GENERATION plus MISSION_STATUS/EXECUTION_PHASE and MUTATION_GATE to mutation-admission validation.",
+      "Immediately before any mutation operation, reject STOPPING/STOPPED, MUTATION_GATE != OPEN, stale ENGINEERING_EPOCH, stale MEMBERSHIP_EPOCH, or stale STOP_GENERATION.",
+      "Integration intent must also bind STOP_GENERATION or equivalent fence generation so pre-stop candidates cannot become newly authoritative after STOP."
+    ]
+  },
+  "LAW_INTERPRETATION": "The epoch/gate invalidation is a control implementation of existing [164] immediate/preemptive stop semantics and [122]-[123] stale-authority rules. If the system instead requires a guarantee that no physical worker-branch Git write can occur after the STOP linearization point, that stronger sink-level atomicity is not established by V16-RC1.3 and requires an explicit successor-law contract or a mutation sink capable of atomic fence enforcement.",
+  "DISPOSITION": "Keep STATIC_PROTOCOL_P0 blocking until canonical STOP transition semantics are repaired, independently tested under race, and the finding is resolved or superseded.",
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE"
+}
