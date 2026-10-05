@@ -1,0 +1,127 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1913-V8-LO2-DEPENDENCY-IMPACT-001",
+  "CHAT_ID": "C-SOL-20261005-1913-V8",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "RELATED_FINDING": "FINDING-DOC-C-SCOPE-LO2-ACTIVE-RUNTIME-001",
+  "SCOPE": "Dependency-impact audit of Lo2 future-domain activation from canonical queue/release runtime.",
+  "AUTHORITY_FACTS": [
+    "Final verdict states DOC-C is the build spec and build obligation comes from DOC-C only.",
+    "The current normalized source matrix classifies Lo2 Synthesis / Evolution as future/conceptual unless explicitly promoted.",
+    "No Lo2/Trinity/USL/logic-quantum term occurs in the final DOC-C body before DOC-D."
+  ],
+  "ACTIVE_RUNTIME_GRAPH": [
+    {
+      "path": "packages/queue/workers.ts",
+      "role": "canonical DOC-C queue worker",
+      "effect": "imports Lo2 feedback processor; invokes it after every successful release; starts Lo2 reconciler at worker startup"
+    },
+    {
+      "path": "packages/queue/run-state.ts",
+      "blob": "e162efc8b2a45014bcefbd60dc67a95d8a1e1003",
+      "role": "canonical release transaction",
+      "effect": "creates/recreates Lo2FeedbackDispatch inside commitAuthorizedPipelineRelease transaction, including safe STABLE replay"
+    },
+    {
+      "path": "packages/lo2/feedback-dispatch.ts",
+      "blob": "46ff8712c7b903d4bfdd4710559d9aceefdc6224",
+      "role": "future-domain durable feedback processor",
+      "effect": "reads STABLE release/audit proof; mutates Lo2 feedback status and calls Lo2 engine"
+    },
+    {
+      "path": "packages/lo2/engine.ts",
+      "blob": "11f684dde210c0956a53f466b2d137021b134f86",
+      "role": "future-domain Lo2 learning engine",
+      "effect": "persists LogicQuantumRecord and Lo2LedgerAnchor state"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "blob": "0c557a1bb9b02859bb479655575c3566e201eb6f",
+      "role": "shared canonical database schema",
+      "effect": "PipelineRun has Lo2FeedbackDispatch relation; schema contains Lo2FeedbackDispatch, LogicQuantumRecord and Lo2LedgerAnchor"
+    }
+  ],
+  "LO2_NAMED_PATH_INVENTORY": {
+    "count": 25,
+    "paths": [
+      "evidence/E14-lo2-completion.md",
+      "packages/engine/lo2.ts",
+      "packages/lo2/engine.ts",
+      "packages/lo2/feedback-dispatch.ts",
+      "packages/phase-f/lo2/federation.ts",
+      "packages/phase-f/lo2/feedback-dispatch.ts",
+      "packages/phase-f/lo2/refinement.ts",
+      "packages/phase-f/lo2/runtime-coordinator.ts",
+      "prisma/migrations/20260925004000_logic_quantum_provenance/migration.down.sql",
+      "prisma/migrations/20260925004000_logic_quantum_provenance/migration.sql",
+      "prisma/migrations/20261003112000_lo2_feedback_dispatch/migration.down.sql",
+      "prisma/migrations/20261003112000_lo2_feedback_dispatch/migration.sql",
+      "prisma/migrations/20261003131000_lo2_ledger_anchor/migration.down.sql",
+      "prisma/migrations/20261003131000_lo2_ledger_anchor/migration.sql",
+      "prisma/migrations/20261003150000_logic_quantum_rule_unique/migration.down.sql",
+      "prisma/migrations/20261003150000_logic_quantum_rule_unique/migration.sql",
+      "prisma/migrations/20261003160000_logic_quantum_confidence_numeric/migration.down.sql",
+      "prisma/migrations/20261003160000_logic_quantum_confidence_numeric/migration.sql",
+      "tests/contract/lo2-durable-anchor.test.ts",
+      "tests/contract/lo2-feedback-dispatch.test.ts",
+      "tests/contract/lo2-governance.test.ts",
+      "tests/integration/lo2-durable-ledger.spec.ts",
+      "tests/integration/lo2-federation.spec.ts",
+      "tests/integration/lo2-refinement.spec.ts",
+      "tests/integration/lo2-runtime-coordinator.spec.ts"
+    ]
+  },
+  "TEST_LANE_FACTS": [
+    "Four Lo2 integration tests are explicitly in EXPERIMENTAL_TEST_FILES and therefore excluded from default canonical Vitest.",
+    "Three tests/contract/lo2-*.test.ts files are not in EXPERIMENTAL_TEST_FILES and therefore remain in the default canonical test lane.",
+    "release-atomicity and owner-cancel-race canonical tests also mock/use lo2FeedbackDispatch because canonical release transaction currently depends on it."
+  ],
+  "CRITICAL_PATH_EFFECT": [
+    "Lo2FeedbackDispatch creation occurs before LAW audit/event transaction completion and is part of the same SERIALIZABLE release transaction.",
+    "A Lo2 feedback table/persistence failure can therefore abort canonical release, even though Lo2 is not a verified final-DOC-C obligation.",
+    "Safe replay of an already-STABLE exact output also attempts to create missing Lo2 feedback before returning."
+  ],
+  "ACTIONABLE_GAPS": [
+    "FINDING-DOC-C-SCOPE-LO2-ACTIVE-RUNTIME-001"
+  ],
+  "NEW_FINDINGS": 0,
+  "FILE_STATUS": [
+    {
+      "path": "packages/queue/workers.ts",
+      "status": "GAP_FOUND"
+    },
+    {
+      "path": "packages/queue/run-state.ts",
+      "status": "GAP_FOUND"
+    },
+    {
+      "path": "packages/lo2/feedback-dispatch.ts",
+      "status": "GAP_FOUND"
+    },
+    {
+      "path": "packages/lo2/engine.ts",
+      "status": "GAP_FOUND"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "status": "REVERIFY_REQUIRED"
+    },
+    {
+      "path": "tests/contract/lo2-durable-anchor.test.ts",
+      "status": "REVERIFY_REQUIRED"
+    },
+    {
+      "path": "tests/contract/lo2-feedback-dispatch.test.ts",
+      "status": "REVERIFY_REQUIRED"
+    },
+    {
+      "path": "tests/contract/lo2-governance.test.ts",
+      "status": "REVERIFY_REQUIRED"
+    }
+  ],
+  "EXECUTED_TEST_EVIDENCE": "NONE_READ_ONLY_AUDIT",
+  "SOURCE_MUTATION": "NONE",
+  "SOURCE_MUTATION_BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "REVIEW_REQUIRED": true
+}
