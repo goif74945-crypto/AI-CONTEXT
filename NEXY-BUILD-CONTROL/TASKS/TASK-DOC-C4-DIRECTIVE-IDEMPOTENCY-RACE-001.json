@@ -1,0 +1,47 @@
+{
+  "TASK_ID": "TASK-DOC-C4-DIRECTIVE-IDEMPOTENCY-RACE-001",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "FINDING_ID": "FINDING-DOC-C4-DIRECTIVE-IDEMPOTENCY-RACE-001",
+  "GOAL": "Make concurrent identical POST /api/directives retries converge to the already accepted run required by final DOC-C without weakening session/request fingerprint isolation.",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_CONCURRENCY_IDEMPOTENCY",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "HOTSPOT_WITH": [
+    "TASK-DOC-C4-DIRECTIVE-CREATE-CONTRACT-001"
+  ],
+  "SCOPE": [
+    "packages/api/directives.ts",
+    "tests/coverage/directive-create-branches.test.ts",
+    "tests/integration/directives/create.spec.ts"
+  ],
+  "REQUIRED_BEHAVIOR": [
+    "If a P2002 is caused by a concurrent winner for the same idempotency key, re-resolve the durable idempotency record.",
+    "Return the original accepted run only when sessionId and exact requestHash match the authenticated request.",
+    "Preserve conflict/fail-closed behavior for a different session, different request fingerprint, conflicting directive identity, or unresolved persistence state.",
+    "Concurrent retries must not create a second PipelineRun, DirectiveRecord, DirectiveDispatch, EventLog, or AuditLog for the duplicate request."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not turn all P2002 errors into idempotent success.",
+    "Do not drop sessionId/requestHash binding.",
+    "Do not weaken SERIALIZABLE acceptance or unique constraints.",
+    "Do not mutate NEXY.ai.",
+    "Do not mutate NEXY.AI-Test-AI directly while isolated worker branch law remains blocked."
+  ],
+  "ACCEPTANCE": [
+    "A deterministic concurrency/race test forces both requests past the initial idempotency lookup before one transaction wins.",
+    "Winner returns the canonical accepted run.",
+    "Equivalent loser converges to the same directive_id/run_id rather than 409.",
+    "Same key plus different payload/session remains rejected.",
+    "No duplicate durable accepted records are created.",
+    "Existing directive contract/security/queue-failure tests remain green.",
+    "Independent exact-SHA review and post-integration reverify complete."
+  ],
+  "UNBLOCK_CONDITION": "Authoritative policy establishes a Git-valid isolated worker branch namespace or explicitly authorizes an equivalent isolation mechanism."
+}
