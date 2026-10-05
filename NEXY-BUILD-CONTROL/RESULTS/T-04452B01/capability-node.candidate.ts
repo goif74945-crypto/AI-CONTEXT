@@ -214,7 +214,7 @@ export class CapabilityNodeRegistry {
   register(node: CapabilityNode): CapabilityNode {
     if (this.sealed) throw new Error("Capability node registry is sealed");
     const key = capabilityNodeKey(node);
-    if (this.nodesByKey.has(key)) throw new Error("R009_DUPLICATE_NODE:" + key);
+    if (this.nodesByKey.has(key)) throw new Error("INTERNAL_DUPLICATE_NODE:" + key);
     const failures = validateCapabilityNode(node, Array.from(this.nodesByKey.values()));
     if (failures.length > 0) throw new Error("CapabilityNode rejected:" + failures.join(","));
     const frozen: CapabilityNode = Object.freeze({
@@ -229,7 +229,7 @@ export class CapabilityNodeRegistry {
     return frozen;
   }
 
-  validate(node: CapabilityNode): readonly string[] {
+  validate(node: CapabilityNode): readonly CapabilityNodeValidationCode[] {
     return validateCapabilityNode(node, Array.from(this.nodesByKey.values()));
   }
 
