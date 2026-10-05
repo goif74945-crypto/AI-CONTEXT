@@ -1,14 +1,19 @@
 TASK_ID: TASK-DOC-C-ROLE-ENUM-001
 REQ_ID: REQ-DOC-C-ROLE-ENUM-001
-GOAL: align canonical RoleSchema with final DOC-C and storage role vocabulary.
-SCOPE: packages/contracts/envelope.ts; tests/contract/envelope.test.ts; tests/integration/directives/read-auth.spec.ts
-ACCEPTANCE: RoleSchema exact set OWNER, OPERATOR, AUDITOR, SYSTEM; PUBLIC_USER rejected; Prisma remains unchanged unless new primary evidence requires a change; affected tests execute at exact worker SHA.
-EVIDENCE_TARGET: source diff; exact RoleSchema assertion; envelope contract test; directive authorization test; exact SHA metadata.
-PRIORITY: P1
-RISK: HIGH
-STATUS: BLOCKED
+GOAL: Reverify active final-DOC-C role enforcement and determine whether PUBLIC_USER acceptance in the shared RoleSchema creates a real route-level authority gap.
+SCOPE: packages/contracts/envelope.ts; active role consumers; tests/contract/envelope.test.ts; tests/integration/directives/read-auth.spec.ts; final-DOC-C role-bearing routes only
+ACCEPTANCE:
+- No source mutation is justified solely by the non-DOC-C storage enum at paragraph 10726.
+- Inventory active consumers of RoleSchema on NEXY.AI-Test-AI exact HEAD.
+- For every final-DOC-C protected route, prove that accepted roles match that route's explicit RBAC/response contract.
+- If PUBLIC_USER is accepted by any final-DOC-C path that forbids it, create a narrowly scoped source repair task with direct spec evidence.
+- If no such active path exists, close the prior exact-global-enum repair premise as unsupported rather than deleting PUBLIC_USER speculatively.
+EVIDENCE_TARGET: exact consumer paths; exact branch/SHA; route-local spec clauses; targeted authorization tests; no inference from DOC-D/storage-law enum
+PRIORITY: P1_REVERIFY
+RISK: HIGH_AUTHORITY_ORACLE
+STATUS: REVERIFY_REQUIRED
 OWNER: UNASSIGNED
 MUTATION_LEASE: NONE
 BASE_SHA: 608426cb30398b1f3461866f7079d2a435c96b96
-BLOCKER: INCIDENT-WORKER-REF-PREFIX-COLLISION-001
-UNBLOCK_CONDITION: coordinated non-colliding worker isolation mechanism authorized for V7 source mutation.
+SOURCE_MUTATION_BLOCKER: INC-BRANCH-NAMESPACE-001
+BLOCKER_NOTE: V8 retains worker prefix NEXY.AI-Test-AI/work/<TASK_ID>, which is structurally incompatible with the existing refs/heads/NEXY.AI-Test-AI branch. Read-only revalidation remains lawful.
