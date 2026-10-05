@@ -4768,3 +4768,369 @@ BLOCKERS: NONE for arbitration.
 NEXT_ACTION: retrieve current official IEA evidence, independently recompute both anchors and their difference, test freeze/sensitivity rules, then submit for independent review.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+55. RECONCILED CLAIM + RESEARCH RESULT — JOB-EGC-055-EMERGING-FALSIFY-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0310+07-EM1
+PRIMARY_ROLE: Emerging-candidate physical-evidence falsification / maturity-scale auditor
+PRIMARY_JOB_ID: JOB-EGC-055-EMERGING-FALSIFY-C1-20261006
+RENAMED_FROM: JOB-EGC-044-EMERGING-FALSIFY-C1-20261006
+RECONCILIATION_REASON:
+- Original claim was committed at 5d2d66aa8e3d8cda4bbe0c3b5c7322880edecdc7 and is an ancestor of current branch HEAD.
+- Later canonical MAIN-CHAT.md no longer contained that section, while EGC-044 was independently allocated to RESOURCE-SCALE work.
+- No force-push or noncanonical mutation was used. This contribution is re-applied under unique JOB-EGC-055 after latest-state refresh.
+QUESTION: Which emerging/non-baseline energy mechanisms survive a candidate-neutral physical-evidence, net-electricity, maturity, scale and cost-evidence screen before they may challenge the strongest current baseline?
+CANDIDATES_SCREENED: inertial/magnetic fusion; wave; tidal; waste-heat-to-power; cogeneration/CHP; SMR/advanced fission.
+DEPENDENCIES: quantitative objective, mature baseline, reliability boundary, accounting, safety, finance, EROI/LCA and resource-scaling work remain separate concurrent jobs.
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-055-EMERGING-FALSIFY-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+----------------------------------------------------------------------
+A. FUSION — SCIENTIFIC GAIN != NET-ELECTRIC GAIN
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EVID-EGC-055-FUS-001
+CLAIM_ID: CLAIM-EGC-055-FUS-TARGET-GAIN
+TOOL: official-source web retrieval
+METHOD: LLNL NIF measured-shot record
+DATE: 2026-10-06
+SOURCE: Lawrence Livermore National Laboratory, "Achieving Fusion Ignition"
+SOURCE_DATE: page current; cited event 2025-04-07
+URL: https://lmf.llnl.gov/science/achieving-fusion-ignition
+OUTPUT:
+- 2025-04-07 NIF shot: fusion yield 8.6 MJ +/-0.45 MJ.
+- laser energy delivered to target: 2.08 MJ.
+- target gain: 4.13.
+EVIDENCE_CLASS: MEASUREMENT / SOURCE_FACT
+LIMITATION: target gain denominator is laser energy on target, not total facility electrical input and not delivered electricity.
+
+EVIDENCE_ID: EVID-EGC-055-FUS-002
+CLAIM_ID: CLAIM-EGC-055-FUS-WALLBOUND
+TOOL: official-source web retrieval
+METHOD: NIF power-conditioning architecture
+DATE: 2026-10-06
+SOURCE: LLNL, "Power Conditioning System"
+SOURCE_DATE: UNKNOWN
+URL: https://lmf.llnl.gov/about/how-nif-works/power-conditioning-system
+OUTPUT:
+- approximately 400 MJ electrical energy stored for each NIF shot.
+- nearly 330 MJ electrical energy delivered to 7,680 flashlamps each shot.
+EVIDENCE_CLASS: SOURCE_FACT
+LIMITATION: 400 MJ stored energy is not full facility wall-plug consumption; using it therefore gives an optimistic upper-bound comparison, not a complete plant-energy audit.
+
+CALC_ID: CALC-EGC-055-FUS-001
+CLAIM_ID: CLAIM-EGC-055-FUS-NOT-NET-ELECTRIC-DEMO
+TOOL: Python float arithmetic + independent Decimal implementation
+METHOD:
+- upper-bound fusion-yield/stored-electrical ratio = 8.6 MJ / 400 MJ.
+- downstream comparison = 8.6 MJ / 330 MJ.
+INPUTS: EVID-EGC-055-FUS-001, EVID-EGC-055-FUS-002.
+OUTPUT:
+- 8.6/400 = 0.0215 = 2.15%.
+- 8.6/330 = 0.026060606... = 2.6061%.
+- both implementations matched exactly to shown precision.
+UNITS: dimensionless energy ratio.
+UNCERTAINTY: fusion yield +/-0.45 MJ; denominator source reports approximate values.
+ASSUMPTIONS: same NIF power-conditioning architecture applies to cited NIF shot; excludes additional facility loads and thermal-to-electric conversion.
+LIMITATION: this is not a commercial reactor efficiency estimate. It only proves that NIF target gain >1 is not evidence of whole-facility net-electric gain.
+REPLICATION_STATUS: SAME_SESSION_CROSS_IMPLEMENTATION_PASS / INDEPENDENT_SESSION_REQUIRED
+EVIDENCE_CLASS: CALCULATION
+
+EVIDENCE_ID: EVID-EGC-055-FUS-003
+CLAIM_ID: CLAIM-EGC-055-FUS-IFE-GAPS
+TOOL: official-source web retrieval
+METHOD: LLNL inertial-fusion-energy engineering requirements
+DATE: 2026-10-06
+SOURCE: Livermore Institute for Fusion Technology, "Driver Technology"
+SOURCE_DATE: UNKNOWN
+URL: https://lift.llnl.gov/research-areas/ife/driver-technology
+OUTPUT:
+- IFE power plants are expected to require multi-MJ UV laser pulses at order-of-10-Hz repetition.
+- driver goals include >=10% wall-plug efficiency, >1 billion-shot lifetime, manufacturing/supply-chain and commercially attractive cost.
+EVIDENCE_CLASS: SOURCE_FACT about engineering targets / NOT an achieved commercial performance claim.
+
+EVIDENCE_ID: EVID-EGC-055-FUS-004
+CLAIM_ID: CLAIM-EGC-055-FUS-COMMERCIAL-GAP
+TOOL: official-source web retrieval
+METHOD: LLNL engineering gap statement
+DATE: 2026-10-06
+SOURCE: LLNL, "Fusion Ignition and the Path to Inertial Fusion Energy"
+URL: https://lmf.llnl.gov/news/fusion-ignition-and-the-path-to-inertial-fusion-energy
+OUTPUT:
+Commercial IFE still requires efficient drivers capable of net-energy operation, >=10 Hz repetition, targets with roughly 50-100x input gain, nearly one million inexpensive targets/day, and lithium blanket/tritium-breeding systems.
+EVIDENCE_CLASS: SOURCE_FACT about identified requirements
+LIMITATION: requirements/roadmap are not proof they will be met.
+
+EVIDENCE_ID: EVID-EGC-055-FUS-005
+CLAIM_ID: CLAIM-EGC-055-FUS-MAGNETIC-BOUNDARY
+TOOL: official-source web retrieval
+METHOD: ITER mission/baseline audit
+DATE: 2026-10-06
+SOURCE:
+- ITER Organization, "What will ITER do?"
+  https://www.iter.org/fusion-energy/what-will-iter-do
+- ITER Organization, "New baseline to prioritize robust start to exploitation"
+  https://www.iter.org/node/20687/new-baseline-prioritize-robust-start-exploitation
+OUTPUT:
+- ITER design target is 500 MW fusion power from 50 MW plasma-heating input, Q=10.
+- ITER explicitly will not convert its fusion heat to electricity.
+- current baseline schedules full magnetic energy for 2036 and D-T operation beginning 2039.
+EVIDENCE_CLASS: SOURCE_FACT / DESIGN_TARGET
+LIMITATION: Q=10 is plasma-process gain, not whole-plant electric gain; future ITER targets are not measurements.
+
+FUSION RED-TEAM VERDICT:
+- "NIF gain 4.13 proves a net-electric power plant": FALSIFIED.
+- "ITER Q=10 proves grid-electric gain": FALSIFIED.
+- Fundamental fusion physics as a future energy source: NOT_FALSIFIED.
+- CURRENT_FRONT_RUNNER eligibility for mission LOW_COST + MASSIVE delivered electricity: FAIL / DEFER, because whole-system net-electric demonstration, power-plant duty cycle, plant availability, validated delivered cost and mass-deployment evidence are not yet established.
+TRUTH_CLASS: EVIDENCE-SUPPORTED ELIMINATION FROM CURRENT FRONT-RUNNER, NOT elimination as future technology.
+
+----------------------------------------------------------------------
+B. WAVE + TIDAL — PHYSICAL GENERATION PROVEN; RESOURCE LARGE; COMMERCIAL SCALE/COST NOT YET PROVEN
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EVID-EGC-055-MAR-001
+CLAIM_ID: CLAIM-EGC-055-MAR-RESOURCE
+TOOL: official-source web retrieval
+METHOD: DOE marine-resource assessment
+DATE: 2026-10-06
+SOURCE: U.S. DOE Hydropower and Hydrokinetic Office, "Marine Energy Resource Assessment and Characterization"
+URL: https://www.energy.gov/cmei/water/marine-energy-resource-assessment-and-characterization
+OUTPUT:
+- DOE distinguishes theoretical, technical and practical resource potential.
+- U.S. wave technical resource: 1,400 TWh/year.
+- U.S. tidal technical resource: 220 TWh/year.
+- reference U.S. electricity generation on the page: 4,126.7 TWh/year.
+EVIDENCE_CLASS: SOURCE_FACT / MODELLED TECHNICAL RESOURCE
+LIMITATION: technical resource is not practical/economic deployable output; DOE explicitly defines practical potential as after economic/environmental/regulatory considerations.
+CONFLICT_NOTE:
+An older DOE/NREL PDF surfaced a materially different ocean-thermal/aggregate marine total than the current DOE webpage. This job therefore does NOT use aggregate marine total or ocean-thermal number for ranking; wave and tidal values above are the values used.
+
+EVIDENCE_ID: EVID-EGC-055-MAR-002
+CLAIM_ID: CLAIM-EGC-055-TIDAL-PHYSICAL
+TOOL: official-source web retrieval
+METHOD: DOE operational test record
+DATE: 2026-10-06
+SOURCE: DOE, "A Milestone for Tidal Energy: Verdant Power..."
+SOURCE_DATE: 2021-06-24
+URL: https://www.energy.gov/cmei/water/articles/milestone-tidal-energy-verdant-power-successfully-retrieves-test-turbine-after
+OUTPUT:
+- three-turbine RITE tidal system operated continuously for six months.
+- >99% availability reported.
+- 210 MWh generated and supplied to Con Edison's distribution grid.
+EVIDENCE_CLASS: OPERATIONAL / SOURCE_FACT
+LIMITATION: demonstration array, not utility-scale fleet economics.
+
+EVIDENCE_ID: EVID-EGC-055-MAR-003
+CLAIM_ID: CLAIM-EGC-055-WAVE-MATURITY
+TOOL: official-source web retrieval
+METHOD: current DOE grid-connected test-infrastructure status
+DATE: 2026-10-06
+SOURCE: DOE, PacWave South opening
+SOURCE_DATE: 2026-09-01
+URL: https://www.energy.gov/cmei/water/articles/does-office-critical-minerals-and-energy-innovation-announces-testing-facility
+OUTPUT:
+- PacWave South opened 2026-08-27 as the first fully operational, pre-permitted, grid-connected wave-energy test facility in the continental U.S.
+- inaugural device tests were still in preparation at source date.
+EVIDENCE_CLASS: SOURCE_FACT
+LIMITATION: test-facility readiness is not commercial-farm cost/performance evidence.
+
+EVIDENCE_ID: EVID-EGC-055-MAR-004
+CLAIM_ID: CLAIM-EGC-055-WAVE-COMMERCIALIZATION
+TOOL: official-source web retrieval
+METHOD: DOE facility purpose audit
+DATE: 2026-10-06
+SOURCE: DOE, "PacWave: Offshore Wave Energy Test Site"
+URL: https://www.energy.gov/cmei/water/pacwave-offshore-wave-energy-test-site
+OUTPUT:
+- PacWave is configured for up to 20 WECs and maximum 20 MW total test output.
+- DOE states the site is for proving performance, long-duration reliability/O&M, cost reduction and commercial readiness.
+EVIDENCE_CLASS: SOURCE_FACT
+LIMITATION: design/test capacity, not measured sustained 20 MW fleet output.
+
+MARINE RED-TEAM VERDICT:
+- "Wave/tidal is unphysical or lacks grid-connected proof": FALSIFIED by operational tidal evidence.
+- "Technical resource equals economically deployable generation": FALSIFIED by DOE's own resource taxonomy.
+- "Current wave/tidal already meets massive-low-cost commercial gate": NOT_VERIFIED.
+- Candidate state: SURVIVES_PHYSICS_AND_RESOURCE_SCREEN; CURRENT_COST_SCALE_NOT_VERIFIED; retain for future/deployment-specific TEA, but do not promote to FRONT_RUNNER yet.
+
+----------------------------------------------------------------------
+C. WASTE HEAT + CHP — USEFUL SYSTEM-EFFICIENCY LAYER, NOT A FREE PRIMARY ENERGY SOURCE
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EVID-EGC-055-WHP-001
+CLAIM_ID: CLAIM-EGC-055-WHP-OPERATING
+TOOL: official-source web retrieval
+METHOD: DOE Better Buildings WHP fact-sheet landing page
+DATE: 2026-10-06
+SOURCE: U.S. DOE Better Buildings, "Waste Heat to Power"
+SOURCE_DATE: 2021-05-20
+URL: https://betterbuildingssolutioncenter.energy.gov/resources/waste-heat-power
+OUTPUT:
+- DOE CHP Installation Database listed 938 MW installed WHP capacity at >100 U.S. sites as of 2019.
+- WHP generates power from thermal energy otherwise wasted, without additional fuel for the recovered-electricity step.
+EVIDENCE_CLASS: OPERATIONAL SCALE / SOURCE_FACT
+LIMITATION: 2019 installed-capacity snapshot; not current global potential.
+
+EVIDENCE_ID: EVID-EGC-055-WHP-002
+CLAIM_ID: CLAIM-EGC-055-WHP-TECHPOT
+TOOL: official-source web retrieval
+METHOD: historical DOE federal-facility CHP technical-potential presentation
+DATE: 2026-10-06
+SOURCE: U.S. DOE Federal Energy Management Program, "Combined Heat and Power for Federal Facilities and the DOE CHP Technical Assistance Partnerships"
+SOURCE_DATE: 2014-05
+URL: https://www.energy.gov/documents/fupwgmay2014chp3doetapdf
+OUTPUT:
+- presentation reported 0.5 GW existing and 10.6 GW additional U.S. WHP technical potential in its cited estimate.
+EVIDENCE_CLASS: SOURCE_FACT / HISTORICAL TECHNICAL-POTENTIAL ESTIMATE
+LIMITATION: old estimate; technical potential is not economic potential and should not be treated as a current national inventory.
+
+CALC_ID: CALC-EGC-055-WHP-001
+CLAIM_ID: CLAIM-EGC-055-WHP-NOT-STANDALONE-NATIONAL
+TOOL: Python float arithmetic + independent Decimal implementation
+METHOD: generous energy upper bound from historical technical-potential capacity
+INPUTS:
+- 10.6 GW technical-potential capacity.
+- 8,760 h/year.
+- 4,126.7 TWh/year reference generation from EVID-EGC-055-MAR-001.
+EQUATION:
+E_max = P * 8760; fraction = E_max / 4,126.7 TWh.
+OUTPUT:
+- 10.6 GW * 8,760 h = 92.856 TWh/year at impossible-to-exceed 100% capacity factor for that nameplate.
+- 92.856 / 4,126.7 = 2.2501% of reference U.S. generation.
+REPLICATION_STATUS: SAME_SESSION_CROSS_IMPLEMENTATION_PASS / INDEPENDENT_SESSION_REQUIRED
+EVIDENCE_CLASS: CALCULATION
+LIMITATIONS:
+- uses an old U.S. technical-potential estimate and 100% CF, therefore is a screen, not a current economic forecast.
+- does not bound every global waste-heat opportunity.
+- WHP depends on an upstream heat-generating process; it cannot be counted as independent primary energy in addition to that source.
+
+CHP ACCOUNTING INFERENCE:
+- CHP can materially improve total useful-energy utilization where simultaneous heat/electric demand exists.
+- It is not a new primary energy source: source fuel/process energy and useful heat must remain in the common ledger.
+- Heat credit must use the frozen co-product counterfactual already required by FSRC_ND; otherwise double counting can manufacture a false energy/cost gain.
+TRUTH_CLASS: INFERENCE consistent with common-boundary accounting; requires site-specific heat-demand/counterfactual evidence for ranking.
+
+WHP/CHP VERDICT:
+- WHP survives as a credible efficiency/hybrid component with real installed operation.
+- U.S. industrial WHP, under cited technical-potential scale, is not a standalone "massive national source."
+- CHP remains a portfolio/hybrid candidate, not a free-energy candidate.
+
+----------------------------------------------------------------------
+D. SMR / ADVANCED FISSION — REAL COMMERCIAL OPERATION EXISTS; LOW-COST SCALE CLAIM STILL UNVERIFIED
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EVID-EGC-055-SMR-001
+CLAIM_ID: CLAIM-EGC-055-SMR-PHYSICAL
+TOOL: official-source web retrieval
+METHOD: IAEA current deployment-status audit
+DATE: 2026-10-06
+SOURCE: IAEA 2025 report / SMR programme status
+URL: https://www.iaea.org/sites/default/files/gc/gov-inf-2025-8-gc69-inf-4.pdf
+OUTPUT:
+- Akademik Lomonosov commercial SMR units operational since 2020, 70 MW used for electricity/district heat.
+- China's HTR-PM entered commercial operation December 2023, generating 200 MW electricity.
+- around 70 SMR designs/technology-development activities in >20 countries; >15 progressing toward deployment by 2035.
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL EVIDENCE
+LIMITATION: two operating designs do not validate the economics, reliability or supply chain of all advanced-reactor designs.
+
+EVIDENCE_ID: EVID-EGC-055-SMR-002
+CLAIM_ID: CLAIM-EGC-055-SMR-COST-PROJECTION
+TOOL: official-source web retrieval
+METHOD: DOE Advanced Nuclear Liftoff cost-pathway audit
+DATE: 2026-10-06
+SOURCE: U.S. DOE, "Pathways to Commercial Liftoff: Advanced Nuclear" (2025 update)
+URL: https://www.energy.gov/sites/default/files/2025-07/LIFTOFF_DOE_Advanced-Nuclear.pdf
+OUTPUT:
+- report describes well-executed FOAK overnight cost around $6,200/kW and a possible NOAK pathway around $3,600/kW.
+- recent U.S. nuclear projects exceeded $10,000/kW in the cited comparison.
+EVIDENCE_CLASS: MODEL / PROJECTION / SOURCE_FACT ABOUT DOE ESTIMATE
+LIMITATION: projected learning/NOAK cost is not measured future cost; cannot be promoted to FACT or used alone to prove LOW_COST.
+
+SMR/ADVANCED-FISSION RED-TEAM VERDICT:
+- "Advanced fission/SMR has no real commercial physical evidence": FALSIFIED.
+- "SMR is already proven low-cost at mass scale": NOT_VERIFIED.
+- Candidate state: SURVIVES_PHYSICS_AND_ENGINEERING_EXISTENCE; RETAIN for full candidate TEA, fuel-cycle, supply-chain, finance, safety/regulatory and reliability comparison.
+- Economic promotion must use actual delivered-system evidence or validated model with uncertainty; vendor/roadmap projections alone are insufficient.
+
+----------------------------------------------------------------------
+E. CROSS-CANDIDATE SCREEN + CLAIM GRAPH
+----------------------------------------------------------------------
+
+CLAIM-EGC-055-001:
+Scientific/device gain != whole-system net delivered electricity.
+STATUS: SUPPORTED_PENDING_REVIEW.
+PARENTS: EVID-EGC-055-FUS-001..005, CALC-EGC-055-FUS-001.
+
+CLAIM-EGC-055-002:
+Wave/tidal physical generation and large technical resource are real, but technical potential does not prove practical economic deployment.
+STATUS: SUPPORTED_PENDING_REVIEW.
+PARENTS: EVID-EGC-055-MAR-001..004.
+
+CLAIM-EGC-055-003:
+Waste-heat recovery is operational and valuable, but must be treated as recovered energy from an upstream process; it is not independent primary energy.
+STATUS: SUPPORTED_PENDING_REVIEW.
+PARENTS: EVID-EGC-055-WHP-001..002, CALC-EGC-055-WHP-001, common FSRC_ND ledger.
+
+CLAIM-EGC-055-004:
+At least two SMR designs have commercial operation evidence; advanced-fission mass-scale low-cost economics are not established by this fact.
+STATUS: SUPPORTED_PENDING_REVIEW.
+PARENTS: EVID-EGC-055-SMR-001..002.
+
+CANDIDATE_STATE:
+- FUSION: CURRENT_FRONT_RUNNER_INELIGIBLE / FUTURE_CANDIDATE_NOT_FALSIFIED.
+- WAVE: PHYSICS_AND_RESOURCE_SURVIVES / COST_SCALE_NOT_VERIFIED / DEFER_FRONT_RUNNER.
+- TIDAL: GRID_PHYSICAL_EVIDENCE_PASS / COST_SCALE_NOT_VERIFIED / DEFER_FRONT_RUNNER.
+- WASTE_HEAT_TO_POWER: ACCEPT_AS_EFFICIENCY_OR_HYBRID_COMPONENT / NOT_STANDALONE_MASSIVE_PRIMARY_SOURCE under cited U.S. evidence.
+- CHP: ACCEPT_AS_HYBRID_USEFUL-ENERGY ARCHITECTURE / SOURCE-FUEL + HEAT-CREDIT accounting mandatory.
+- SMR/ADVANCED_FISSION: SURVIVES / MASS-SCALE_LOW_COST_NOT_VERIFIED / DEEP_TEA_REQUIRED.
+
+CRITICAL UNKNOWNS REMAIN:
+- current geographically comparable whole-system delivered cost for wave/tidal at large deployment;
+- fleet-scale marine O&M/survivability/availability and network cost;
+- fusion whole-plant electric balance, tritium self-sufficiency, duty cycle, component lifetime, availability, cost and deployment rate;
+- SMR/advanced-reactor actual FOAK/NOAK realized cost, schedule, fuel-cycle throughput and fleet availability across designs;
+- current global and geography-specific WHP/CHP practical/economic potential under a common service boundary.
+
+RED_TEAM GLOBAL RESULT FOR THIS JOB:
+No screened emerging candidate currently has sufficient evidence in this job to displace the mature-baseline set as a proven LOW_COST + MASSIVE whole-system winner.
+This is NOT proof that mature baselines have passed the mission gate. It only blocks premature promotion of emerging candidates.
+
+STATUS_CHANGE:
+JOB-EGC-055-EMERGING-FALSIFY-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+JOB_ID: JOB-EGC-055-EMERGING-FALSIFY-REV-C2-20261006
+TITLE: Independent Emerging-Candidate Evidence Replication and Falsification Review
+ROLE: independent reviewer / adversarial replicator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do the EGC-055 candidate states follow from the cited physical evidence without confusing target gain, technical resource, installed demonstration, or projected cost with whole-system proof?
+CANDIDATE: fusion; wave; tidal; WHP/CHP; SMR/advanced fission.
+DEPENDENCIES: JOB-EGC-055-EMERGING-FALSIFY-C1-20261006 AWAITING_REVIEW.
+REQUIRED_INPUTS: EVID-EGC-055-FUS-001..005; CALC-EGC-055-FUS-001; EVID-EGC-055-MAR-001..004; EVID-EGC-055-WHP-001..002; CALC-EGC-055-WHP-001; EVID-EGC-055-SMR-001..002.
+REQUIRED_TOOLS: independent primary-source retrieval; independent arithmetic replication; source-date/applicability audit; adversarial counterexamples.
+REQUIRED_EVIDENCE:
+- independently recompute NIF energy-boundary ratios;
+- verify LLNL/ITER boundary definitions;
+- verify marine technical-vs-practical taxonomy and operational evidence;
+- attack WHP scale inference for stale/too-narrow potential data;
+- verify actual commercial SMR operation and distinguish measurements from DOE future-cost projections.
+EXPECTED_OUTPUT: PASS/FAIL per claim; corrections; reopened candidates if evidence invalidates elimination; explicit unresolved fields.
+FALSIFICATION_CONDITION:
+FAIL if any candidate was excluded because of a stale or mismatched boundary, if a design target/projection was promoted to measurement, if technical resource was treated as practical deployment, or if the screen hides a demonstrated net-electric/current-scale result.
+REVIEWER_JOB_ID: TBD_BY_DISTINCT_SESSION
+STATUS: OPEN
+BLOCKERS: NONE for review; final mission ranking remains blocked by upstream integrated gates.
+NEXT_ACTION: distinct session independently reproduce and attack this screen; if passed, send surviving SMR/advanced-fission and mature marine candidates into full common-boundary TEA rather than promote them directly.
+
+BRANCH_HEAD_AT_RESULT_WRITE_PRECHECK: 431508ced28539c59e4ededd468ac8f6ad9c1cbd
+MAIN_CHAT_BLOB_SHA_AT_RESULT_WRITE_PRECHECK: 0949d20fcb3170f137e126b474eda3c8279694a2
