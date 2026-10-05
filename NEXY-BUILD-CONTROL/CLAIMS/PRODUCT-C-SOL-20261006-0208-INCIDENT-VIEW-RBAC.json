@@ -1,0 +1,34 @@
+{
+  "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
+  "chat_id": "C-SOL-20261006-0208-INCIDENT-VIEW-RBAC",
+  "status": "CLAIMED",
+  "objective": "Align S7 incident detail UI with canonical incident-read RBAC and truth-copy semantics.",
+  "requirement_gap": "DOC-C GET /api/incidents/:id permits OWNER/AUDITOR only. Current S7 fetches incident truth before any role gate and grants OPERATOR a read-only explanation, causing OPERATOR direct visits to convert a deterministic 403 permission denial into 'Incident truth UNKNOWN'.",
+  "target_repository": "goif74945-crypto/NEXY.AI-",
+  "target_branch": "NEXY.AI-Test-AI",
+  "analyzed_head": "c1f94b2c59b787a7761079362a82aefbbfca9855",
+  "worker_branch": "work/C-SOL-20261006-0208-incident-view-rbac",
+  "scope": [
+    "apps/web/app/incidents/[id]/page.tsx",
+    "tests/contract/doc-d-permission-visibility.test.ts"
+  ],
+  "out_of_scope": [
+    "packages/api/canonical.ts incident backend RBAC",
+    "incident audit emission",
+    "NEXY.ai",
+    "unrelated S7 layout"
+  ],
+  "authority": [
+    "Current user NEXY::MULTI-CHAT-CONTINUOUS-PRODUCT-BUILD",
+    "DOC-C §4.2 GET /api/incidents/:id RBAC OWNER / AUDITOR",
+    "DOC-D §6.2 S7 OWNER sees Recover CTA; others with incident-view authority see read-only explanation",
+    "DOC-D §6.6 direct permission-denied copy"
+  ],
+  "success_invariants": [
+    "OPERATOR does not issue incident-detail fetch from S7 and sees Permission denied",
+    "OWNER and AUDITOR can render canonical incident truth",
+    "Only OWNER sees recovery CTA",
+    "AUDITOR sees read-only recovery explanation",
+    "Backend remains final authorization authority"
+  ]
+}
