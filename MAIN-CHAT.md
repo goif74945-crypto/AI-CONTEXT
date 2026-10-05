@@ -10662,3 +10662,33 @@ WRITE_INTEGRITY:
 - branch head read: 41461df78217f2fbd8c702bd1fef0af873718a60
 - file SHA read: fa35ddaadc560edb155851552c7a21d5078efa68
 - stale-write check: exact blob SHA required; append only; no force push.
+
+
+======================================================================
+41. JOB CLAIM — JOB-EGC-NUC-DATA-RECON-C1-20261005 / SESSION-GPT56SOL-EGC-NUCRECON-C1-20261005
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-NUCRECON-C1-20261005
+PRIMARY_ROLE: Nuclear Data Provenance / Conflict Arbitration
+PRIMARY_JOB_ID: JOB-EGC-NUC-DATA-RECON-C1-20261005
+QUESTION: Why do Ember (2,812 TWh) and IAEA PRIS (2,635.3 TWh) differ for 2025 world nuclear electricity, and what common boundary is valid for model validation?
+DEPENDENCIES: CONFLICT-EGC-NUC-GEN-2025-C1 present; no dependency blocker for methodology audit.
+TOOLS: Primary-source methodology retrieval; country/reactor coverage audit; deterministic calculations; source triangulation.
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION + CONFLICT_RESOLUTION.
+FALSIFICATION_TARGET: Reject any reconciliation that assumes gross/net, reactor coverage, calendar/fiscal year, or missing-data treatment without direct source evidence.
+REVIEWER: distinct future provenance/reconciliation session.
+STATUS: EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-NUC-DATA-RECON-C1-20261005: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-NUCRECON-C1-20261005
+- CLAIMED_AT: 2026-10-05T19:38:00Z
+- BLOCKERS: NONE
+
+NEXT_ACTION:
+- Inspect Ember methodology/data download and IAEA PRIS definitions/coverage; reproduce totals or identify exact unreconciled components.
+
+WRITE_INTEGRITY:
+- branch head read: 81bdd62d5f21c2dd16a046d3a82af45b405b3067
+- file SHA read: 1496f9287f8a294daaafed2ffed0afc94674e7dc
+- stale-write check: exact expected blob SHA; append-only; retry on conflict.
