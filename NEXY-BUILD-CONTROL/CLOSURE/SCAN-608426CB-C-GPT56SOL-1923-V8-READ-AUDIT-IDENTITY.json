@@ -1,0 +1,27 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-GPT56SOL-1923-V8-READ-AUDIT-IDENTITY",
+  "CHAT_ID": "C-GPT56SOL-20261005-1923-V8",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": [
+    "packages/api/directives.ts",
+    "packages/api/canonical.ts",
+    "packages/api/artifact-export.ts",
+    "prisma/schema.prisma",
+    "tests/contract/canonical-api.test.ts",
+    "tests/coverage/api-owner-artifact-control-plane.test.ts",
+    "tests/coverage/canonical-export.test.ts"
+  ],
+  "FILES_SCANNED": 7,
+  "STATUS_COUNTS": {
+    "GAP_FOUND": 4,
+    "TEST_ORACLE_GAP": 3,
+    "VERIFIED_CLEAN": 0
+  },
+  "NEW_ACTIONABLE_GAPS": 1,
+  "NEW_FINDING_ID": "FIND-DOC-C4-READ-AUDIT-ACTOR-ROLE-COLLAPSE-001",
+  "SOURCE_MUTATION": "NONE",
+  "SOURCE_MUTATION_BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "CLOSURE_ELIGIBLE": false
+}
