@@ -8833,3 +8833,23 @@ BRANCH_HEAD_AT_CLAIM: b3a8c950c0cd59289baeeb1c0f717d51648a51eb
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 7ec1d6b517673d5a800010cce1a47de20713d68e
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+SESSION CLAIM — JOB-EGC-062-PHYSICS-INVARIANTS-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0540+07-PHYSREV2
+PRIMARY_ROLE: Independent physics-invariant / thermodynamic-boundary / net-power reviewer
+PRIMARY_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-062-PHYSICS-INVARIANTS-C1-20261006
+QUESTION: Do the proposed physics and net-power invariants prevent conservation-law violations, heat/input double counting, gross-to-net promotion, omitted parasitics and technology-specific boundary privilege across candidate energy systems?
+DEPENDENCIES: parent physics-invariant result submitted; candidate-specific measured parameters may remain upstream.
+TOOLS: latest GitHub state; independent algebra; Python/Wolfram dimensional replication; authoritative thermodynamic/plant-balance sources where needed; adversarial counterexamples.
+EVIDENCE_TARGET: reproduce all parent invariant equations and numerical regressions; attack heat-engine efficiency/Carnot semantics; verify gross/net/parasitic accounting; verify stored/imported energy ownership; test candidate symmetry.
+FALSIFICATION_TARGET: any feasible ledger creates energy; parasitic or charging input disappears; gross output is promoted to net; heat-source/input energy is double-counted or omitted asymmetrically; conversion efficiency exceeds physically applicable bounds without evidence.
+REVIEWER: distinct from parent owner.
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+NEXT_ACTION: retrieve full parent result, independently reproduce equations/calculations, then adversarially attack invariant completeness.
