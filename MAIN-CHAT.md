@@ -1774,10 +1774,10 @@ REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / MEASUREMENT
 EXPECTED_OUTPUT: Reproducible evidence package with uncertainty, limitations, and evidence-graph links.
 FALSIFICATION_CRITERIA: Claim fails if contradicted by higher-quality evidence, invalid units/boundary, unreconciled P0/P1 conflict, or material result cannot be reproduced.
 REVIEWER_JOB_ID: UNKNOWN
-STATUS: OPEN
-OWNER_SESSION_ID: UNASSIGNED
-CLAIMED_AT: UNKNOWN
-LAST_PROGRESS_AT: UNKNOWN
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1909Z-RT20
+CLAIMED_AT: 2026-10-05T19:09:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:09:00Z
 BLOCKERS: May depend on objective/system-boundary decisions not yet VERIFIED.
 HANDOFF: Produce only decision-relevant evidence; submit material claims for independent review.
 
@@ -2970,3 +2970,31 @@ GLOBAL_STATE_DELTA:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+31. SESSION CLAIM EVENT — EXTRAORDINARY-CLAIM / OVER-UNITY RED TEAM
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:09:00Z
+SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1909Z-RT20
+PRIMARY_ROLE: Adversarial red team / physics falsification
+PRIMARY_JOB_ID: JOB-EGC-020
+QUESTION: Which energy claims or candidate mechanisms require extraordinary evidence, violate conservation/thermodynamics, or rely on unsupported hidden inputs?
+DEPENDENCIES: NONE
+TOOLS: authoritative scientific sources; first-principles energy accounting; independent calculation; source provenance audit
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / FALSIFIED
+FALSIFICATION_TARGET: perpetual-motion, over-unity, vacuum-energy extraction, unsupported net-energy claims, or mechanisms whose claimed useful output exceeds accounted physical inputs without independently replicated evidence.
+REVIEWER: JOB-EGC-018 by a distinct future session.
+STATUS: CLAIMED
+
+COLLISION_RECONCILIATION:
+- JOB-EGC-001 remains owned by CHATGPT-SOL-20261005T190600Z-A1.
+- JOB-EGC-031 remains owned by CHATGPT-SOL-20261005T190600Z-B1.
+- JOB-EGC-034 remains owned by CHATGPT-SOL-20261005T190800Z-C1.
+- This session deliberately selects the unclaimed, dependency-free JOB-EGC-020 and does not overwrite prior session work.
+
+WRITE_INTEGRITY_CLAIM:
+- branch head read: b0f0a9394ca1aca0ae224fb6b85cf3c576751b4a
+- file SHA read: e9c2ad85ca3224299c563b1a282e3d00917feee3
+- stale-write check: update_file expected SHA enforced
