@@ -17646,3 +17646,49 @@ WRITE_INTEGRITY:
 - raw blob retrieved via Git object, not empty large-file path response.
 - exact-SHA update only; no force; only MAIN-CHAT.md on authorized branch.
 
+
+
+======================================================================
+RENEWABLES CANDIDATE CLAIM — JOB-EGC-006
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-RENEW006-N1-20261005
+PRIMARY_ROLE: Renewables + Storage/Grid Candidate Analyst / Adversarial System Integrator
+PRIMARY_JOB_ID: JOB-EGC-006
+QUESTION: Can a mature solar/wind-led portfolio with explicitly modeled storage, transmission, curtailment, flexibility and reliability satisfy the mission's quantitative cost/scale/engineering gates under the same delivered-service boundary as competing candidates?
+DEPENDENCIES:
+- Evidence acquisition and falsification: executable now.
+- Final normalized cost/ranking: depends on reviewed JOB-EGC-004 boundary, JOB-EGC-021 grid/system cost, JOB-EGC-025 uncertainty, and JOB-EGC-016/028 model-validation protocol.
+TOOLS: current official/primary sources; operating-system evidence; project datasets; deterministic calculations; chronological-model requirements; independent reviewer.
+EVIDENCE_TARGET: SOURCE_FACT / OPERATIONAL_DATA / CALCULATION / SIMULATION_RESULT / INFERENCE / FALSIFIED / UNKNOWN.
+FALSIFICATION_TARGET:
+- generator LCOE mislabeled delivered cost;
+- 95% annual energy matching mislabeled grid adequacy;
+- battery nameplate mislabeled firm capacity;
+- queue/pipeline mislabeled deployed capacity;
+- curtailment, transmission, replacement and storage losses omitted;
+- one favorable geography generalized globally;
+- model output not validated against measured operation.
+REVIEWER: JOB-EGC-006-REV-N1-20261005 by distinct session.
+STATUS: CLAIMED / EXECUTING
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-RENEW006-N1-20261005
+BLOCKERS: NONE for source/evidence acquisition; final mission PASS blocked by cross-job dependencies above.
+NEXT_ACTION: build measured/current evidence anchors, define falsifiable candidate architectures, run first-order scale/cost/energy-balance diagnostics, and submit for independent review.
+
+JOB_ID: JOB-EGC-006-REV-N1-20261005
+ROLE: Independent renewables candidate red-team / numerical replicator
+TITLE: Reproduce and attack JOB-EGC-006 candidate package
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-006 reaches AWAITING_REVIEW
+REQUIRED_TOOLS: independent primary-source retrieval; independent calculations; chronological/reliability boundary attack.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR per decision-controlling claim.
+FALSIFICATION_CRITERIA: any decisive source/number/boundary cannot be reproduced, or candidate claims depend on hidden system costs/unequal reliability.
+STATUS: OPEN
+BLOCKERS: source candidate package not yet submitted.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
