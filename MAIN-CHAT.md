@@ -6641,3 +6641,189 @@ MISSION_STATUS: CONTINUE_REQUIRED.
 
 REVIEWER_JOB_NOTE:
 JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C12-20261006 already exists in the job graph; do not duplicate it.
+
+
+======================================================================
+69. INDEPENDENT REVIEW RESULT — JOB-EGC-045-SCALE-RESOURCE-REPAIR-REV-C4-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0500+07-SCALEREV4
+PRIMARY_JOB_ID: JOB-EGC-045-SCALE-RESOURCE-REPAIR-REV-C4-20261006
+REVIEW_TARGET: JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006
+PRIMARY_ROLE: Independent Scale / Resource-Provenance / Dimensional-Consistency Reviewer
+REVIEW_VERDICT: PASS_WITH_PRESERVED_SOURCE_CONFLICT
+REVIEW_TARGET_STATUS: VERIFIED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SUMMARY:
+The C3 repair survives independent provenance, dimensional, cross-tool and source-internal-conflict attack. The IAEA mutable/current-vs-dated distinction is correctly handled. The IEA geothermal 300,000-EJ -> almost-600-TW normalization is mathematically consistent only with the detailed-method assumption of 20 years and 80% electricity capacity factor. The executive summary's 25-year wording is genuinely inconsistent with the detailed method and remains explicitly preserved rather than silently harmonized.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-045-PRIS-001
+CLAIM_ID: CLAIM-EGC-045-006
+TRUTH_CLASS: EXTERNAL_FACT / DATE-PINNED_OPERATIONAL_DATABASE_SNAPSHOT
+TOOL/METHOD: independent current web retrieval
+SOURCE: International Atomic Energy Agency, Country Nuclear Power Profiles
+URL: https://cnpp.iaea.org/
+SOURCE_DATA_DATE: 2026-10-04
+ACCESS_DATE: 2026-10-06
+OUTPUT:
+- reactors in operation: 417;
+- total capacity in operation: 379,700 MWe;
+- reactors under construction: 78;
+- under-construction capacity: 81,349 MWe;
+- CNPP explicitly states data are as of 2026-10-04 from IAEA PRIS.
+REPLICATION_STATUS: PASS.
+REVIEW_RESULT:
+C3's date-pinned CURRENT_FLEET_STATE values are independently reproduced.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-045-PRIS-002
+CLAIM_ID: CLAIM-EGC-045-006
+TRUTH_CLASS: EXTERNAL_FACT / MUTABLE_LIVE_DATABASE
+TOOL/METHOD: independent current web retrieval
+SOURCE: IAEA PRIS Analytics
+URL: https://pris-stats.iaea.org/
+ACCESS_DATE: 2026-10-06
+OUTPUT:
+- in operation: 417 reactors, 379,611 MWe net;
+- under construction: 78 reactors, 81,349 MWe net;
+- electricity produced 2025: 2,635.3 TWh.
+SOURCE_DESCRIPTION:
+PRIS Analytics describes PRIS as the IAEA's authoritative official data/statistics source populated through Member-State-nominated data providers.
+REPLICATION_STATUS: PASS.
+REVIEW_RESULT:
+C3 correctly distinguishes access-dated mutable PRIS values from frozen CNPP snapshot values and does not treat 2025 production as a 2026 stock variable.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-045-GEO-001
+CLAIM_ID: CLAIM-EGC-045-007
+TRUTH_CLASS: SIMULATION/MODELLING_ASSUMPTION
+TOOL/METHOD: official IEA HTML + PDF text extraction + mandatory PDF visual screenshots
+SOURCE: IEA, The Future of Geothermal Energy, Chapter 2
+URL_HTML: https://www.iea.org/reports/the-future-of-geothermal-energy/global-geothermal-potential-for-electricity-generation-using-egs-technologies
+URL_PDF: https://iea.blob.core.windows.net/assets/cbe6ad3a-eb3e-463f-8b2a-5d1fa4ce39bf/TheFutureofGeothermal.pdf
+SOURCE_DATE: 2024
+VISUAL_VALIDATION: PASS on report pages 43-44.
+OUTPUT:
+- technical power potential derives from usable heat after a 20% recovery factor and temperature/exergy-dependent heat-to-power conversion;
+- power capacity is translated assuming 20 years operation at 80% electricity capacity factor;
+- heat uses 25 years at 90% capacity factor;
+- parameter table repeats production lifetime 20 years for power / 25 years for heat and CF 80% electricity / 90% heat;
+- IEA chapter states ~300,000 EJ electricity technical potential below 8 km and <USD300/MWh corresponds to almost 600 TW operating for 20 years;
+- transmission-line and grid-connection costs are explicitly excluded from this technical-potential cost calculation.
+REPLICATION_STATUS: PASS.
+REVIEW_RESULT:
+C3 source extraction and boundary tags are correct.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-EGC-045-GEO-002
+CLAIM_ID: CONFLICT-EGC-045-GEOTHERMAL-UNIT-001
+TRUTH_CLASS: CONFLICT / SOURCE_INTERNAL_CONFLICT
+TOOL/METHOD: official IEA executive-summary HTML + visual PDF screenshot versus detailed Chapter 2 methodology
+SOURCE: IEA, The Future of Geothermal Energy executive summary
+URL: https://www.iea.org/reports/the-future-of-geothermal-energy/executive-summary
+OUTPUT:
+Executive summary states thermal resources below 8 km can deliver almost 600 TW with an operating lifespan of 25 years.
+CONFLICT:
+Detailed chapter states almost 600 TW operating for 20 years and independently specifies 20-y power lifetime + 80% electricity CF.
+REPLICATION_STATUS: PASS; conflict exists in the source itself.
+REVIEW_RESULT:
+C3 arbitration is defensible: use the detailed methodology for numerical normalization while preserving the executive-summary 25-y wording as unresolved source-internal conflict. Do not rewrite or erase either statement.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-CALC-EGC-045-GEO-001
+CLAIM_ID: CLAIM-EGC-045-007
+TRUTH_CLASS: CALCULATION
+TOOLS: Python independent calculation + Wolfram Language independent calculation
+EQUATION:
+P_TW = E_EJ / [31.536 EJ/(TW-year) * L_years * CF].
+INPUTS:
+E=300,000 EJ; L=20 y; CF=0.80.
+OUTPUT:
+P=594.5585996956 TW.
+ROUNDING_CHECK:
+600 TW * 0.80 * 20 * 31.536 = 302,745.6 EJ, +0.9152% versus 300,000 EJ.
+ANNUAL_OUTPUT_CHECK:
+594.5585996956 TW * 0.8 * 8760 h/y = 4,166.666667 PWh/y;
+300,000 EJ / 20 y = 15,000 EJ/y = 4,166.666667 PWh/y.
+REPLICATION_STATUS: INDEPENDENT_CROSS_TOOL_PASS.
+REVIEW_RESULT:
+C3 dimensional normalization reproduced.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-CALC-EGC-045-GEO-002
+CLAIM_ID: CONFLICT-EGC-045-GEOTHERMAL-UNIT-001
+TRUTH_CLASS: CALCULATION / COUNTERFACTUAL_SOURCE_CHECK
+TOOLS: Python + Wolfram Language
+INPUTS:
+Same 300,000 EJ but executive-summary L=25 y, retaining detailed-method CF=0.80.
+OUTPUT:
+P=475.6468797565 TW.
+INTERPRETATION:
+25y/80% cannot produce approximately 600 TW from 300,000 EJ; therefore the 25-y executive wording cannot be silently substituted into the detailed power calculation.
+REPLICATION_STATUS: INDEPENDENT_CROSS_TOOL_PASS.
+REVIEW_RESULT:
+C3 correctly retains rather than hides this source conflict.
+
+----------------------------------------------------------------------
+EVIDENCE_ID: REV-CALC-EGC-045-NUC-001
+CLAIM_ID: CLAIM-EGC-045-010
+TRUTH_CLASS: CALCULATION / CROSS_TIME_SCALE_PROXY
+TOOLS: Python independent calculation + Wolfram Language independent calculation
+INPUTS:
+E_2025=2,635.3 TWh/y;
+P_CNPP_2026-10-04=379.700 GW;
+P_UC_CNPP_2026-10-04=81.349 GW.
+OUTPUT:
+P_avg_2025=300.8333333333 GW.
+CF_proxy_cross_time=0.792292160478 = 79.2292160%.
+Nameplate proxy for 1 TW average=1,262.160664820 GW.
+Current under-construction stock / stress-nameplate proxy=6.445217496%.
+REPLICATION_STATUS: INDEPENDENT_CROSS_TOOL_PASS.
+REVIEW_RESULT:
+Arithmetic reproduced exactly.
+CLASSIFICATION:
+This MUST remain CROSS_TIME_SCALE_PROXY, not a 2025 fleet capacity factor, because numerator is a calendar-2025 energy flow and denominator is a 2026-10-04 stock snapshot.
+INDEPENDENT_SANITY_CHECK:
+IAEA PRIS separately reports a 2025 energy-availability-factor trend of 84.1% for 402 commercially operated reactors with available data. That is a different metric/population and must not be used to relabel or 'correct' this cross-time proxy.
+
+----------------------------------------------------------------------
+ADVERSARIAL FINDINGS:
+1. MUTABLE_LIVE_PRIS_AS_FROZEN_SNAPSHOT -> BLOCKED by C3's date/access provenance rule.
+2. 2025_GENERATION / 2026_STOCK_AS_TRUE_2025_CF -> BLOCKED by explicit CROSS_TIME_SCALE_PROXY label.
+3. 300000_EJ / 20Y WITHOUT_CF -> FALSIFIED; 80% CF is required and explicitly sourced.
+4. 25Y_EXECUTIVE_WORDING_EQUIVALENT_TO_20Y_METHOD -> FALSIFIED numerically.
+5. TECHNICAL_RESOURCE_POTENTIAL_AS_DEPLOYABLE_LOW_COST_CAPACITY -> FALSIFIED; C3 explicitly prohibits this promotion.
+6. USD300/MWh_TECHNICAL_SCREEN_AS_DELIVERED_SYSTEM_COST -> FALSIFIED; source explicitly excludes transmission/grid connection and C3 preserves that boundary.
+7. APPROX_600TW_AS_EXACT -> FALSIFIED; exact normalization under stated detailed assumptions is 594.5586 TW, consistent with source rounding.
+8. CNPP_ROUNDED_379700_AND_PRIS_LIVE_379611_AS_DATA_ERROR -> NOT SUPPORTED; they are different presentation/update lanes. C3 correctly records provenance rather than forcing equality.
+
+REVIEW_VERDICT:
+PASS_WITH_PRESERVED_SOURCE_CONFLICT.
+No P0/P1 repair defect found in C3.
+The remaining 20y-versus-25y IEA wording conflict is a documented upstream-source inconsistency, not a blocker to reproducing the detailed-method calculation so long as it remains visible and 20y/80% is used only for that model's power normalization.
+
+CLAIM_GRAPH_UPDATE:
+CLAIM-EGC-045-006 PRIS_LIVE_STATE: INDEPENDENT_REVIEW_PASS.
+CLAIM-EGC-045-007 EGS_TECHNICAL_POTENTIAL_NOT_COST_PROOF: INDEPENDENT_REVIEW_PASS.
+CLAIM-EGC-045-010 NUCLEAR_SCALE_STRESS_DIAGNOSTIC: INDEPENDENT_REVIEW_PASS_AS_CROSS_TIME_PROXY.
+CONFLICT-EGC-045-GEOTHERMAL-UNIT-001: DIMENSIONAL_COMPONENT_RESOLVED; SOURCE_20Y_VS_25Y_CONFLICT_PRESERVED.
+JOB-EGC-045-SCALE-RESOURCE-REPAIR-C3-20261006: AWAITING_REVIEW -> VERIFIED.
+JOB-EGC-045-SCALE-RESOURCE-REPAIR-REV-C4-20261006: REVIEW_COMPLETE / PASS_WITH_PRESERVED_SOURCE_CONFLICT.
+
+SOLVED_GATE_EFFECT:
+- G7 scalability validated: NOT CLOSED; technical-resource normalization is now reviewed, but build rate and deployability remain candidate/system dependent.
+- G9 resources available: NOT CLOSED globally; this review verifies selected geothermal/nuclear scale evidence boundaries only.
+- G11 manufacturing feasible: NOT CLOSED.
+- G21 uncertainty cannot reverse conclusion: NOT CLOSED.
+- G22 strongest baseline comparison: NOT CLOSED.
+GLOBAL_SOLVED remains NO.
+
+NEXT_HIGHEST_VALUE_ACTION:
+Refresh latest state and select the highest-information unclaimed common-boundary or independent-review job. Prefer defects capable of changing rankings over candidate polishing.
+
+BRANCH_HEAD_BEFORE_WRITE: 82f9aa1083e41c7893d410fc44270dbc71bc1662
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 1d25b764a0c5f845760787ea72d7d32dfc43bccf
