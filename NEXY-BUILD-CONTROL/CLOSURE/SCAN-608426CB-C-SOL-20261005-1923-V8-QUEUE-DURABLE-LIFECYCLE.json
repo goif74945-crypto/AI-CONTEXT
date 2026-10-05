@@ -1,0 +1,39 @@
+{
+  "SCAN_ID": "SCAN-608426CB-C-SOL-20261005-1923-V8-QUEUE-DURABLE-LIFECYCLE",
+  "CHAT_ID": "C-SOL-20261005-1923-V8",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SCOPE": [
+    "packages/queue/dispatch.ts",
+    "packages/queue/jobs.ts",
+    "packages/queue/workers.ts",
+    "packages/queue/retry-policy.ts",
+    "packages/api/directives.ts idempotent replay path",
+    "tests/contract/failed-dispatch-retry.test.ts",
+    "tests/integration/queue-boundary.spec.ts",
+    "tests/coverage/directive-create-branches.test.ts"
+  ],
+  "FILES_SCANNED": 8,
+  "ACTIONABLE_GAPS_CONFIRMED": [
+    "FINDING-QUEUE-FAILED-STATE-RESURRECTION-001",
+    "FINDING-QUEUE-MISSING-DISPATCH-ACK-001",
+    "FINDING-QUEUE-AUTHORIZED-RETRY-CLAIM-RACE-001",
+    "FINDING-QUEUE-PROCESSING-REGRESSION-001",
+    "FINDING-DOC-C4-DIRECTIVE-IDEMPOTENCY-RACE-001"
+  ],
+  "NEW_ACTIONABLE_GAPS_BY_THIS_CHAT": [
+    "FINDING-QUEUE-MISSING-DISPATCH-ACK-001",
+    "FINDING-QUEUE-AUTHORIZED-RETRY-CLAIM-RACE-001",
+    "FINDING-QUEUE-PROCESSING-REGRESSION-001"
+  ],
+  "DUPLICATE_SUPPRESSION": [
+    "FINDING-QUEUE-FAILED-STATE-RESURRECTION-001 was independently present before this scan and was not duplicated.",
+    "FINDING-DOC-C4-DIRECTIVE-IDEMPOTENCY-RACE-001 was independently present before this scan and was not duplicated.",
+    "Hardcoded data.state='RUNNING' on POST /api/directives replay was reviewed and rejected as a finding because final DOC-C §4.2 explicitly requires state:'RUNNING' in the success data shape."
+  ],
+  "EXECUTED_TEST_EVIDENCE": "NONE_THIS_SCAN_READ_ONLY",
+  "SOURCE_MUTATION": "NONE",
+  "SOURCE_MUTATION_BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "CLOSURE_ELIGIBLE": false
+}
