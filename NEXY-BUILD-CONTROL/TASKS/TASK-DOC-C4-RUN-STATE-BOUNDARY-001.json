@@ -3,7 +3,7 @@
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-4-2-RUN-STATE-BOUNDARY-001",
   "FINDING_ID": "FINDING-DOC-C4-RUN-STATE-BOUNDARY-001",
-  "OWNER": "UNASSIGNED",
+  "OWNER": "INTEGRATED_SOURCE",
   "ROLE": "BUILDER_TESTER_REVIEWER",
   "PRIORITY": "P1",
   "RISK": "HIGH_CANONICAL_API_BOUNDARY",
@@ -11,8 +11,8 @@
   "EXPECTED_PARENT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "REQUESTED_WORKER_BRANCH": "NEXY.AI-Test-AI/work/TASK-DOC-C4-RUN-STATE-BOUNDARY-001",
   "ACTUAL_WORKER_BRANCH": null,
-  "STATUS": "BLOCKED",
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "STATUS": "SATISFIED_IN_INTEGRATION_SOURCE",
+  "BLOCKER": null,
   "SCOPE": [
     "packages/api/directives.ts handleGetRun",
     "tests/integration/directives/read-auth.spec.ts"
@@ -26,5 +26,16 @@
     "Re-run run-read authorization, ownership, auditor-evidence, exact-shape, and malformed-state tests on the exact worker candidate SHA and again after integration.",
     "Independent review required because state validation touches canonical API semantics."
   ],
-  "SOURCE_MUTATION_BY_CREATOR": "NONE"
+  "SOURCE_MUTATION_BY_CREATOR": "NONE",
+  "VERIFIED_AT_HEAD": "235de26be580929855044a0f3c0d92cc131a527d",
+  "VERIFIED_SOURCE": {
+    "directives_blob": "e9736708777cb421352e3520d653a81eb191c9e8",
+    "test_blob": "97cbcd16d886563dad6adf073b8fd6228c073dac",
+    "evidence": [
+      "handleGetRun validates persisted runState with a closed-state schema before the success envelope.",
+      "Invalid persisted state returns HTTP 500 with INVALID_STATE and never returns a malformed 200 data.state.",
+      "read-auth integration coverage contains a malformed persisted-state rejection case."
+    ]
+  },
+  "NEXT_ACTION": "No duplicate implementation. Preserve the malformed-state oracle in future run-read changes; execute exact-SHA regression when runner infrastructure is available."
 }
