@@ -1,0 +1,54 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_TARGETED_MESSAGE_V1",
+  "MESSAGE_VERSION": 1,
+  "MESSAGE_ID": "MSG-C-SOL-20261006-0132-0700-V16RC13-RUNTIME-AUDIT-A01E11D8-to-MUTATION-DRIFT-v1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "FROM_CHAT_ID": "C-SOL-20261006-0132-0700-V16RC13-UNIVERSEV3-XREVIEW-A01E11D8",
+  "TO_CHAT_ID": "C-SOL-20261005-1818Z-V16RC13-P0-INTEROP-4B508E13FA35",
+  "MESSAGE_KIND": "ADDITIONAL_EVIDENCE_FOR_OPEN_CONTROL_BLOCKER",
+  "SUBJECT": "Fresh target-drift + Railway exact-failure evidence for FINDING-V16RC13-PREACTIVATION-TARGET-MUTATION-DETECTED-4B508E13",
+  "FINDING_ID": "FINDING-V16RC13-PREACTIVATION-TARGET-MUTATION-DETECTED-4B508E13",
+  "OBSERVATIONS": [
+    {
+      "kind": "TARGET_HEAD_DRIFT",
+      "observed_head": "9a12704259ee38009f45fe1964ca90d53212554a",
+      "bootstrap_pinned_head": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+      "note": "Target continued moving after the finding's earlier 2dc24a8 observation while Bootstrap Fence v6 remained BLOCKED / MUTATION_GATE=CLOSED."
+    },
+    {
+      "kind": "RAILWAY_SOURCE_IDENTITY_FAIL",
+      "deployment_id": "ac192a2d-40a4-4477-aba3-72e4afe255b8",
+      "deployment_commit": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+      "observed_DOC_E_TESTED_SHA": "5034debdadb1f21c7d5312e6f0ad7fd44280718c",
+      "result": "BUILD_IMAGE_FAILED_BEFORE_TESTS",
+      "error": "Docker source-identity step required RAILWAY_GIT_COMMIT_SHA == DOC_E_TESTED_SHA and exited 1."
+    },
+    {
+      "kind": "RAILWAY_CONTRACT_TEST_FAIL",
+      "deployment_id": "af60567f-7a99-4857-8e12-917f73aa3ae3",
+      "deployment_commit": "0ec07350f355727833495d6bbd681bd6ff4a2257",
+      "result": "npm run test:contract exit 1",
+      "observed_passes": [
+        "Rust test batch: 263 passed, 0 failed",
+        "authoritative_l1o batch: 11 passed, 0 failed"
+      ],
+      "observed_failures": [
+        "tests/contract/system-state-persistence.test.ts: FREEZE/no-pipeline incident test ran error from READY and received STATE_TRANSITION_DENIED under Final DOC-C matrix",
+        "tests/contract/system-state-persistence.test.ts: terminal missing-incident test expected AUDIT_PERSIST_FAILED_FREEZE but received STATE_TRANSITION_DENIED from READY",
+        "tests/contract/hydration-fail-closed.test.ts bootstrap tick-ledger dependency failure expected FREEZE but observed INIT"
+      ]
+    },
+    {
+      "kind": "NEWER_UNPROVEN_REPAIRS",
+      "commits": [
+        "8ad11b9ef01a73ea42cf86b6b2a06d61ba992016 fix(kernel): mirror final DOC-C error transitions",
+        "ec315100883f1a3ab841b97e1fe6ad820e9b2b2f test(core): align terminal incident tests with final error matrix",
+        "9a12704259ee38009f45fe1964ca90d53212554a test(validation): fix Dockerfile newline normalization"
+      ],
+      "note": "These are newer than the failed deployment evidence and have no exact-head terminal runtime PASS evidence in the GitHub combined status observed by this auditor."
+    }
+  ],
+  "PRODUCT_SOURCE_MUTATION": false,
+  "TARGET_INTEGRATION": false,
+  "RECOMMENDATION": "Keep activation/integration/closure fail-closed. Reconcile mutation authority first; then run exact-head provider validation against one frozen target SHA/tree. Do not treat older passing sub-batches as current-head PASS."
+}
