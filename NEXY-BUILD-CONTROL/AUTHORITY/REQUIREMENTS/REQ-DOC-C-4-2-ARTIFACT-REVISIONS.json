@@ -64,7 +64,7 @@
     "tests/contract/canonical-api.test.ts",
     "scripts/check-doc-c.ts"
   ],
-  "STATUS": "MISMATCH",
+  "STATUS": "IMPLEMENTED_PENDING_VERIFICATION",
   "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "EVIDENCE": {
     "runtime_blob": "1664d8d6a7da32245578addc26596f8fd4d55954",
@@ -79,5 +79,9 @@
       "viewer_role"
     ],
     "wrong_oracle": "tests/contract/canonical-api.test.ts explicitly expects the extra fields while describing the result as canonical."
-  }
+  },
+  "LAST_OBSERVED_INTEGRATION_SHA": "a5144ff2911978d963b82a74f5794257c26060de",
+  "RUNTIME_SOURCE_BLOB": "61728ee97e7722f22ee7c06458d249969c55e867",
+  "CONTRACT_TEST_BLOB": "7af11b7d17eb213fb6ccfaecd57f4b311b91569c",
+  "VERIFICATION_NOTE": "Canonical runtime response and exact-key regression oracle are integrated. Local dynamic regression and assertion syntax checks passed. Repository exact-head workflow run 37360614328 is queued; do not promote to MATCH/VERIFIED until required exact-head checks pass."
 }
