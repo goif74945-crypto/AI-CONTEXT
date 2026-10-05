@@ -1,0 +1,53 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_STATIC_PROTOCOL_AUDIT_RESULT_V1",
+  "RESULT_ID": "RESULT-C-SOL-20261005-1756Z-V16RC13-SPEC-ACTIVATION-RACE-91B7D2E4-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-AUDIT",
+  "RESULT_TYPE": "SPEC_ACTIVATION_ACTIVE_INTEGRATION_RACE_AUDIT",
+  "CHAT_ID": "C-SOL-20261005-1756Z-V16RC13-SPEC-ACTIVATION-RACE-91B7D2E4",
+  "MEMBERSHIP_ID": "PRE-21aa1f29d801acebea647f9683939e06",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "PHASE_ASSESSED": "PHASE_1_STATIC_CONTROL_REPAIR",
+  "PRODUCT_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false,
+  "SEARCH_BEFORE_CREATE": {
+    "QUERIES": [
+      "SPEC_ACTIVATION ACTIVE_INTEGRATION",
+      "spec activation integration race",
+      "old spec integration race",
+      "spec transition active integration"
+    ],
+    "MATCHING_CURRENT_V16_FINDING_OR_CLAIM_OBSERVED": false
+  },
+  "STATIC_PROTOCOL_EVIDENCE": {
+    "RESOURCE_GRAPH_UPDATE_PRECONDITION": "Clause [119] explicitly requires ACTIVE_INTEGRATION == null, INTEGRATION_HEALTH == HEALTHY, and TRANSITION_KIND == NONE before RESOURCE_GRAPH_UPDATE entry.",
+    "SPEC_ACTIVATION_TEXT": "Clauses [157]-[160] define a global fenced transition, close gates, increment ENGINEERING_EPOCH and MEMBERSHIP_EPOCH, rebuild roots/tasks/evidence validity, and invalidate old-Spec memberships, but do not state an ACTIVE_INTEGRATION == null precondition or an explicit active-integration drain/reconciliation step before installing the new Spec.",
+    "INTEGRATION_EXTERNAL_SIDE_EFFECT": "Clauses [142]-[145] permit ACTIVE_INTEGRATION to reach REF_UPDATE_IN_PROGRESS before Git CAS and establish that actual Git ref truth can survive control-process crash; therefore a gate close or epoch bump alone does not prove an already-started ref update cannot complete.",
+    "STALE_BINDING_LIMIT": "Clause [133] binds Spec/epoch/membership values into integration intent, but staleness checks prevent new/stale authorization; they do not by themselves reverse or serialize an external Git ref CAS already in progress.",
+    "SAFETY_INVARIANTS": [
+      "[237] NEVER RUN OLD-SPEC AND NEW-SPEC WRITERS CONCURRENTLY.",
+      "[243] NEVER INTEGRATE STALE INTENT.",
+      "[244] NEVER MOVE TARGET BLINDLY."
+    ]
+  },
+  "COUNTEREXAMPLE_TRACE": [
+    "Old Spec S1 is active and an integration intent I1 bound to S1 reaches ACTIVE_INTEGRATION.PHASE=REF_UPDATE_IN_PROGRESS.",
+    "SPEC_ACTIVATION for S2 enters because the Spec-transition clauses contain no explicit ACTIVE_INTEGRATION==null precondition.",
+    "The transition closes gates and increments ENGINEERING_EPOCH/MEMBERSHIP_EPOCH, invalidating future old authority, but I1's Git CAS may already be executing externally.",
+    "S2 roots/tasks/evidence validity may be rebuilt or installed while I1 can still move refs/heads/NEXY.AI-Test-AI to its S1 candidate.",
+    "The system then requires reconciliation after the fact; static text does not guarantee S2 activation waits for that reconciliation, so atomic Spec cutover cannot be proven."
+  ],
+  "VERDICT": "P0_CONTROL_STATIC_PROTOCOL_GAP_FAIL_CLOSED",
+  "FINDING_ID": "FINDING-V16RC13-SPEC-ACTIVATION-ACTIVE-INTEGRATION-RACE-3C632ADD",
+  "REQUIRED_REPAIR": [
+    "Add a SPEC_ACTIVATION entry precondition equivalent to ACTIVE_INTEGRATION == null and INTEGRATION_HEALTH == HEALTHY before Spec identity/generation or engineering/membership epoch cutover is allowed.",
+    "If an integration exists, first close new admission/integration creation, then deterministically drain or reconcile the existing ACTIVE_INTEGRATION under the old Spec. For REF_UPDATE_IN_PROGRESS or ambiguous external state, use clauses [144]-[145] against the actual target ref.",
+    "Do not install the new SPEC_ARTIFACT_HASH, SPEC_ACTIVATION_GENERATION, rebuilt requirement roots, or reopen gates until old-Spec integration reaches a reconciled terminal state and ACTIVE_INTEGRATION is cleared.",
+    "Add torture tests for SPEC_ACTIVATION racing RESERVED, REF_UPDATE_PENDING, REF_UPDATE_IN_PROGRESS, COMMITTED_PENDING_VERIFICATION, REGRESSION, ROLLBACK_PENDING, FORWARD_FIX_PENDING, and UNKNOWN_REQUIRES_RECONCILIATION."
+  ],
+  "NON_SCOPE": [
+    "No product-source defect is asserted.",
+    "No claim is made that Constitution activation or mission rotation are safe or unsafe; those transitions need separate targeted review.",
+    "No product mutation or target integration is authorized by this result."
+  ]
+}
