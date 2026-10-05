@@ -429,5 +429,19 @@
       "sha": "3f96988e6cbbe23a9fc47d2bddf19affb0535dc8"
     }
   ],
-  "NOTE": "จำนวน 625 แชทเป็นจำนวนที่ผู้ใช้ระบุสำหรับการทดลองนี้; branch inventory เป็นค่าที่ตรวจจาก GitHub จริงก่อน cleanup."
+  "NOTE": "จำนวน 625 แชทเป็นจำนวนที่ผู้ใช้ระบุสำหรับการทดลองนี้; branch inventory เป็นค่าที่ตรวจจาก GitHub จริงก่อน cleanup.",
+  "CLEANUP": {
+    "REQUESTED": true,
+    "KEEP_BRANCHES_ONLY": [
+      "NEXY.ai",
+      "NEXY.AI-Test-AI"
+    ],
+    "EXTRA_BRANCHES_BEFORE_CLEANUP": 100,
+    "CLEANUP_MECHANISM": "GitHub Actions workflow on NEXY.AI-Test-AI",
+    "CLEANUP_WORKFLOW_COMMIT": "a50bb513de7505ff5dc6efecf3057e13f71ad0f9",
+    "CLEANUP_RUN_ID": 37366479731,
+    "CLEANUP_STATUS": "QUEUED_NOT_YET_PROVEN_COMPLETE",
+    "VERIFIED_BRANCH_COUNT_AT_LAST_CHECK": 102,
+    "VERIFIED_EXTRA_BRANCH_COUNT_AT_LAST_CHECK": 100
+  }
 }
