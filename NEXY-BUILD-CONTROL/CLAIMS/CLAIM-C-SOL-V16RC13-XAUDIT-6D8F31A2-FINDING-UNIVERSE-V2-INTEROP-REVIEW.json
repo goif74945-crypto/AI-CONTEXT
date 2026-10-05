@@ -22,6 +22,11 @@
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "TARGET_INTEGRATION": "NONE",
   "FINDING_STATUS_MUTATION": "NONE",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Independently determine whether finding-universe V2 is internally deterministic and whether it can feed CONTROL_P0 projection V1 without an extra-protocol adapter; publish evidence only."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Independently determine whether finding-universe V2 is internally deterministic and whether it can feed CONTROL_P0 projection V1 without an extra-protocol adapter; publish evidence only.",
+  "RESULT_ID": "RESULT-C-SOL-V16RC13-XAUDIT-6D8F31A2-FINDING-UNIVERSE-V2-INTEROP",
+  "REVIEW_ID": "REVIEW-C-SOL-V16RC13-XAUDIT-6D8F31A2-FINDING-UNIVERSE-V2-INTEROP",
+  "COMPLETION_VERDICT": "CHANGES_REQUIRED_BEFORE_CANONICAL_ADOPTION",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false
 }
