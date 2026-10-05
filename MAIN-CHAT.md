@@ -5169,3 +5169,457 @@ REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-GLOBALCARD-REV-C14-20261006
 STATUS: OPEN
 BLOCKERS: final integration also waits for distinct GREENSTATE-C7 review.
 NEXT_ACTION: distinct repair session claims C13; distinct reviewer C14 follows.
+
+
+======================================================================
+69. REPAIR RESULT — JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-C3-20261006
+ROLE: Stage-indexed energy-flow / meter-boundary repair architect
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Replace ambiguous subtractive net-energy shorthand with an exact-once directed energy-flow graph so source-input, generator-terminal gross, point-of-interconnection net, storage and load-delivery representations of the same physical system yield identical served energy and first-law closure.
+
+CURRENT SOURCE REPLICATION
+
+EVIDENCE_ID: EGC-062-PSTAR-C3-E01
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. Energy Information Administration glossary, Gross generation.
+URL: https://www.eia.gov/tools/glossary/index.php?id=Gross+generation
+ACCESS_DATE: 2026-10-06
+SOURCE_FACT:
+Gross generation is total electric energy produced by generating units and measured at the generating terminal.
+USE:
+GEN_TERMINAL_GROSS is a downstream electrical meter. Source-to-electric conversion/rejection losses upstream of this terminal are already embodied in the source-input-to-gross difference and cannot be subtracted again from GEN_TERMINAL_GROSS.
+
+EVIDENCE_ID: EGC-062-PSTAR-C3-E02
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. Energy Information Administration glossary, Net generation.
+URL: https://www.eia.gov/tools/glossary/index.php?id=Net+generation
+ACCESS_DATE: 2026-10-06
+SOURCE_FACT:
+Net generation is gross generation less electrical energy consumed at generating stations for station service/auxiliaries; EIA notes pumping at pumped-storage plants is treated as station service in that statistical definition.
+USE:
+Gross/net meter semantics must be declared; auxiliaries already embedded in a net meter cannot be subtracted again.
+
+EVIDENCE_ID: EGC-062-PSTAR-C3-E03
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. Department of Energy, Pumped Storage Hydropower.
+URL: https://www.energy.gov/cmei/water/pumped-storage-hydropower
+ACCESS_DATE: 2026-10-06
+SOURCE_FACT:
+PSH stores energy by using power to pump water to an upper reservoir and later generates power during discharge; it is an energy-storage configuration rather than a primary source.
+USE:
+Charge/discharge/state edges require exact-once ownership; pumping cannot create energy and storage loss cannot be counted twice.
+
+P_STAR_V2 — CANONICAL DIRECTED ENERGY GRAPH
+
+Define a directed graph G=(V,E) for each modeled interval.
+
+NODE CLASSES:
+SOURCE_RESOURCE_NODE
+CONVERSION_NODE
+GENERATOR_TERMINAL_NODE
+PLANT_AUX_NODE
+POI_NODE
+STORAGE_NODE
+NETWORK_NODE
+LOAD_DELIVERY_NODE
+EXPORT_BOUNDARY_NODE
+ENVIRONMENT_SINK_NODE
+EXTERNAL_IMPORT_NODE
+INVENTORY_STATE_NODE
+
+Every material physical flow is one PHYSICAL_EDGE_ID with:
+FROM_NODE
+TO_NODE
+ENERGY_FORM
+QUANTITY
+UNIT
+INTERVAL
+START_METER
+END_METER
+OWNER_ID
+EVIDENCE_CLASS
+MEASURED_OR_MODELED
+UNCERTAINTY
+SOURCE_ID
+STATUS
+
+Every loss is either:
+- an explicit unique physical edge to ENVIRONMENT_SINK_NODE; or
+- an inventory/state change under a declared state equation.
+A loss represented this way MUST NOT also be re-entered as a generic subtractive scalar.
+
+EXACT-ONE EDGE LAW:
+Each physical energy quantity has one additive owner in the selected physical representation.
+Derived efficiencies, RTE, heat rates, gross-to-net ratios and aggregate loss diagnostics MUST reference their underlying edge IDs and carry ADDITIVE=false unless explicitly chosen as the sole mutually exclusive aggregate representation.
+
+CONTROL-VOLUME LAW
+
+For any frozen control volume B over interval [t0,t1]:
+
+SUM(E_edges entering B from outside)
+-
+SUM(E_edges leaving B to outside)
+=
+DELTA_E_inventory_inside_B.
+
+Loss to the environment is an edge leaving B.
+An edge whose FROM_NODE and TO_NODE are both inside B is internal and cancels from the external balance.
+
+NODE LAW
+
+For every non-source conversion/network/storage node n:
+
+SUM(E_in,n)
+=
+SUM(E_out,n)
++
+DELTA_E_inventory,n,
+
+where loss-to-environment edges are included in SUM(E_out,n).
+
+No hidden conversion-loss term exists outside these physical edges/state changes.
+
+ANCHOR / INTERFACE MODES
+
+The same physical graph may be evaluated through different validated interfaces, but each interface is a cut through the SAME graph:
+
+A. FULL_SOURCE_GRAPH
+Includes external source-resource edges, conversion nodes, generator terminal, auxiliaries, storage/network and load delivery.
+
+B. GEN_TERMINAL_INTERFACE
+Collapses all upstream source/conversion detail into the measured/modeled GEN_TERMINAL_GROSS interface edge. Upstream conversion/rejection losses become non-additive provenance of that interface and are forbidden from the downstream served-electricity equation.
+
+C. POI_NET_INTERFACE
+Collapses generator-terminal and behind-meter station service into a net point-of-interconnection edge. Behind-meter auxiliary electricity is already embedded and cannot be subtracted again.
+
+D. LOAD_DELIVERED_INTERFACE
+Uses the delivered-load meter directly for physical output; network/aux/storage losses upstream of that meter are explanatory/diagnostic and cannot be subtracted again from delivered energy.
+
+ANCHOR INVARIANT:
+Collapsing or expanding a subgraph must preserve the interface-edge quantity and downstream E_NET_SERVED. If two representations of identical physics produce different E_NET_SERVED, the representation is invalid.
+
+CANONICAL DOWNSTREAM ELECTRICAL LAW
+
+When GEN_TERMINAL_GROSS is the declared upstream interface:
+
+E_NET_SERVED =
+E_GEN_TERMINAL_GROSS
++ E_IMPORT_AT_OR_DOWNSTREAM_OF_INTERFACE
++ E_STORAGE_DISCHARGE_TO_BUS
+- E_STATION_AUX_FROM_GROSS_OR_BUS
+- E_OTHER_DOWNSTREAM_PARASITIC
+- E_STORAGE_CHARGE_FROM_BUS
+- E_NETWORK_LOSS_BETWEEN_INTERFACE_AND_LOAD
+- E_EXPORT_NOT_SERVED_LOAD
++/- explicitly bound other downstream physical edges.
+
+PROHIBITED:
+Subtracting source-to-generator heat rejection, aerodynamic uncaptured resource, PV conversion loss, reactor thermal rejection, or other upstream conversion loss from a downstream GEN_TERMINAL_GROSS measurement.
+
+POI NET FORM
+
+If G_POI_NET is already after behind-meter station auxiliary:
+E_NET_SERVED =
+G_POI_NET
++ imports
++ storage_discharge
+- storage_charge
+- downstream_network_loss
+- exports
+- downstream_aux_not_embedded.
+
+The embedded station auxiliary is not re-entered.
+
+STORAGE EXACT-ONCE BINDING
+
+Canonical bus representation uses explicit:
+CHARGE_EDGE: bus -> storage
+DISCHARGE_EDGE: storage -> bus
+STATE_CHANGE: inventory equation
+STORAGE_LOSS_EDGE/STATE_TERM: storage -> environment where needed for node audit.
+
+At the electrical bus:
+only charge and discharge edges enter the bus balance.
+Do NOT additionally subtract:
+- RTE loss;
+- storage conversion loss;
+- "storage net-charge effect";
+if those quantities are already implied by charge/discharge plus state equation.
+
+For storage s:
+I_s(t+1)-I_s(t)
+=
+eta_c,s * E_charge_bus
+-
+E_discharge_bus/eta_d,s
+-
+E_self_discharge_state,s
+
+under the chosen convention.
+
+Equivalent explicit-loss decomposition is allowed only if mutually exclusive with the aggregate efficiency terms.
+Initial/terminal inventory ownership must reference the separately reviewed state-boundary protocol; nonzero unmatched initial inventory cannot be called primary generation.
+
+NETWORK EXACT-ONCE BINDING
+
+For network segment n:
+E_in,n = E_out,n + E_network_loss,n + DELTA_E_inventory,n.
+
+If a downstream delivered/load meter is used, upstream network loss is already reflected and is non-additive.
+If an upstream injection meter is used, the unique network-loss edge may be subtracted exactly once to reach the load meter.
+
+THERMAL / SOURCE CONVERSION
+
+For a thermal source node:
+E_SOURCE_INPUT
+=
+E_GEN_TERMINAL_GROSS
++ E_REJECTED_OR_CONVERSION_LOSS
++ other physical source-stage outputs/state change.
+
+After GEN_TERMINAL_GROSS is established, E_REJECTED_OR_CONVERSION_LOSS cannot reappear in the downstream electrical equation.
+
+The same principle applies to:
+- wind resource -> aerodynamic/mechanical/electrical conversion;
+- solar resource -> converted electric output + uncaptured/rejected energy;
+- hydro potential -> turbine/generator output + hydraulic/electrical losses;
+- fusion/nuclear/combustion heat -> generator electric output + heat rejection/parasitic paths.
+
+Plasma Q, source heat, incident resource flux or nameplate conversion-stage power is never automatically E_NET_SERVED.
+
+P_STAR_V2 REQUIRED SCHEMA
+
+PSTAR_SYSTEM_ID
+BOUNDARY_VERSION_ID
+ANCHOR_MODE
+SERVICE_METER_ID
+STATE_BOUNDARY_VERSION_ID
+TIME_RESOLUTION
+EDGE_SET_VERSION
+NODE_SET_VERSION
+UNCERTAINTY_RULE
+STATUS
+
+PSTAR_EDGE_RECORD:
+PHYSICAL_EDGE_ID
+FROM_NODE_ID
+TO_NODE_ID
+ENERGY_FORM
+QUANTITY
+UNIT
+INTERVAL
+START_METER_ID
+END_METER_ID
+OWNER_ID
+SOURCE_ID
+EVIDENCE_CLASS
+MEASURED_MODELED_DERIVED
+UNCERTAINTY
+ADDITIVE=true
+
+PSTAR_DIAGNOSTIC_RECORD:
+DIAGNOSTIC_ID
+TYPE
+UNDERLYING_EDGE_IDS
+VALUE
+UNIT
+ADDITIVE=false
+SOURCE_ID
+LIMITATIONS
+
+PSTAR_NODE_RECORD:
+NODE_ID
+NODE_CLASS
+IN_EDGE_IDS
+OUT_EDGE_IDS
+STATE_ITEM_ID_IF_ANY
+NODE_CLOSURE_RESIDUAL
+TOLERANCE
+STATUS
+
+MANDATORY VALIDATION
+
+1. NODE_CLOSURE:
+all material node residuals within declared numerical/measurement uncertainty.
+
+2. CONTROL_VOLUME_CLOSURE:
+external-edge residual equals inventory delta.
+
+3. UNIQUE_EDGE_OWNER:
+no PHYSICAL_EDGE_ID additive in two places.
+
+4. METER_TRANSFORM:
+every gross/net/POI/load representation has a traceable transformation.
+
+5. INTERFACE_COLLAPSE_INVARIANCE:
+expanding/collapsing upstream subgraphs leaves interface and served energy unchanged.
+
+6. STATE_BINDING:
+storage/hydro/fuel/thermal inventory references reviewed state-boundary protocol.
+
+7. DIAGNOSTIC_NONADDITIVITY:
+RTE/efficiency/aggregate-loss diagnostics cannot enter balances if constituent edges already do.
+
+8. SERVICE_BINDING:
+only energy arriving at the common service meter may populate E_NET_SERVED.
+
+REGRESSION TESTS
+
+EVIDENCE_ID: CALC-EGC-062-PSTAR-C3-001
+TRUTH_CLASS: CALCULATION
+TITLE: THERMAL SOURCE-vs-GROSS REPRESENTATION INVARIANCE
+TOOL: Python Decimal + independent Wolfram
+INPUT:
+source thermal input=100 MWh_th;
+upstream conversion/rejection loss=60 MWh;
+GEN_TERMINAL_GROSS=40 MWh_e;
+station auxiliary=4 MWh_e.
+FULL_SOURCE:
+100 - 60 - 4 = 36 MWh net served.
+GEN_TERMINAL:
+40 - 4 = 36 MWh net served.
+NODE CHECK:
+100 = 40 + 60.
+WRONG DOUBLE-COUNT:
+40 - 4 - 60 = -24 MWh.
+RESULT:
+source and gross representations agree at 36; generic loss subtraction is falsified.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: CALC-EGC-062-PSTAR-C3-002
+TRUTH_CLASS: CALCULATION
+TITLE: STORAGE EXACT-ONCE REPRESENTATION
+INPUT:
+generator gross=100 MWh_e;
+charge edge=10 MWh;
+discharge edge=8.5 MWh;
+closed-interval storage conversion loss=1.5 MWh;
+initial=terminal state.
+EXPLICIT BUS EDGES:
+served=(100-10)+8.5=98.5 MWh.
+COLLAPSED LOSS DIAGNOSTIC:
+100-1.5=98.5 MWh, allowed only as an alternative mutually exclusive aggregate representation.
+FORBIDDEN DOUBLE ADD:
+100-1.5-1.5=97.0 MWh.
+CONTROL VOLUME:
+100=98.5+1.5.
+RESULT:
+exact-one edge ownership restores representation invariance.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: CALC-EGC-062-PSTAR-C3-003
+TRUTH_CLASS: CALCULATION
+TITLE: GENERATOR-GROSS / POI-NET / LOAD-METER INVARIANCE
+INPUT:
+GEN_TERMINAL_GROSS=100;
+behind-meter station auxiliary=4;
+POI_NET=96;
+downstream network loss=5;
+LOAD_DELIVERED=91 MWh.
+GROSS FORM:
+100-4-5=91.
+POI FORM:
+96-5=91.
+LOAD FORM:
+91.
+FORBIDDEN AUX DOUBLE COUNT FROM POI:
+96-4-5=87.
+RESULT:
+all valid interface representations agree; meter-semantic double count is detected.
+REPLICATION_STATUS: PYTHON_WOLFRAM_PASS.
+
+EVIDENCE_ID: CALC-EGC-062-PSTAR-C3-004
+TRUTH_CLASS: LOGICAL / GRAPH REGRESSION
+TITLE: INTERNAL EDGE CANCELLATION
+GRAPH:
+external source S -> conversion A -> electrical bus B -> load L,
+with A->environment loss edge and B->environment/network loss edge.
+RESULT:
+for a full boundary containing A and B, edge A->B is internal and cancels; for a boundary beginning at B, A->B becomes the interface input and A-stage source/loss edges are outside. Adding both A->B and S->A as external inputs to the same boundary is invalid.
+CONCLUSION:
+boundary expansion/collapse cannot manufacture additional input or output.
+
+BINDING TO COMMON P1-P5 LEDGER
+
+P_STAR_V2 does not replace the repaired common electricity/state ledger; it supplies physical provenance/meter semantics:
+
+- G_bus = sum generator injection edges at the declared grid interface meter.
+- Imports_bus = external electrical boundary edges.
+- Dch_bus / Ch_bus = storage discharge/charge edges.
+- Served = load-delivery edge at common M_LOAD.
+- NetworkLoss = unique network loss edges not already embedded in meters.
+- Aux_grid = grid-withdrawn auxiliary edges not already netted from G_bus.
+- Unserved remains a service-obligation variable, not a physical energy outflow.
+- Curtailment remains available-potential accounting unless a real dump-load edge physically consumes generated electricity.
+- SOC/state equations bind storage inventory, with separate initial/terminal state protocol.
+
+ADVERSARIAL STATUS
+
+GROSS_PLUS_UPSTREAM_LOSS: FALSIFIED.
+POI_NET_PLUS_BEHIND_METER_AUX: FALSIFIED.
+EXPLICIT_STORAGE_EDGES_PLUS_RTE_LOSS: FALSIFIED.
+INTERNAL_EDGE_AS_EXTERNAL_INPUT: FALSIFIED.
+PLASMA_Q_OR_SOURCE_HEAT_AS_NET_SERVED: FALSIFIED.
+UNMATCHED_INITIAL_STORAGE_AS_GENERATION: BLOCKED by state-binding dependency.
+SOURCE_ANCHOR_VS_GROSS_ANCHOR: REPAIRED at method level.
+NETWORK_METER_SHIFT: REPAIRED at method level.
+CANDIDATE_MEASURED_PARAMETERS: remain candidate-specific UNKNOWN until sourced.
+
+CLAIM_GRAPH UPDATE
+
+P_STAR common net-power equation:
+REPAIRED_V2 / AWAITING_INDEPENDENT_REVIEW.
+
+CLAIM-EGC-PHYS-001 CONSERVATION_CONTROL_VOLUME:
+METHOD_REPAIRED / AWAITING_REVIEW.
+
+CLAIM-EGC-PHYS-006 STORAGE_NOT_PRIMARY_SOURCE:
+PHYSICS_PASS; EXACT_ONCE_LEDGER_REPAIRED_PENDING_REVIEW.
+
+F-EGC-PHYS-R2-P1-001:
+REPAIR_SUBMITTED / AWAITING_REVIEW.
+
+F-EGC-PHYS-R2-P1-002:
+REPAIR_SUBMITTED / AWAITING_REVIEW.
+
+G2:
+NOT_VERIFIED globally until distinct C4 passes P_STAR_V2 and candidate-specific measurements/models are bound.
+
+STATUS_CHANGE:
+JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-C3-20261006: EXECUTING -> AWAITING_REVIEW.
+
+REVIEW JOB:
+JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-REV-C4-20261006
+TITLE: Independent review of P_STAR_V2 stage-indexed energy-flow ledger
+ROLE: Independent physics-ledger / meter-representation adversary
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does P_STAR_V2 guarantee exact first-law/served-energy invariance across source, gross-terminal, POI-net, storage and load-delivered representations without double-counting any edge/loss/state?
+DEPENDENCIES: P_STAR_V2 submitted.
+REQUIRED_TOOLS: independent algebra/Python/Wolfram or equivalent; current EIA/DOE source retrieval; directed-graph counterexamples; common state-ledger reconciliation.
+REQUIRED_EVIDENCE:
+- independently reproduce C001-C004;
+- attempt internal/external edge aliasing;
+- test storage state-loss decomposition;
+- test gross/net auxiliary meter shifts;
+- test network loss embedding;
+- verify state-boundary and EROI integration do not create duplicate ownership.
+FALSIFICATION_CONDITION:
+identical physical systems yield different E_NET_SERVED by representation; any edge can be additive twice; any inventory/source-stage quantity can become served load without physical path; or meter movement silently changes result.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required.
+NEXT_ACTION: distinct session claims C4 and attacks P_STAR_V2.
+
+GLOBAL_SOLVED: NO.
+CURRENT_WINNER: NONE.
+MISSION_STATUS: CONTINUE_REQUIRED.
