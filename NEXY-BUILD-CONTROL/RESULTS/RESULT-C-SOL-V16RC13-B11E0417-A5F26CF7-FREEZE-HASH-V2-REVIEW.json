@@ -1,0 +1,32 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_BOOTSTRAP_HASH_REPAIR_REVIEW_V1",
+  "RESULT_ID": "RESULT-C-SOL-V16RC13-B11E0417-A5F26CF7-FREEZE-HASH-V2-REVIEW",
+  "REVIEWER_CHAT": "C-SOL-V16RC13-B11E0417-A5F26CF7",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_REVIEWED": 5,
+  "MESSAGE_PATH": "NEXY-BUILD-CONTROL/MESSAGES/GLOBAL-V16RC13-LEGACY-FREEZE-REQUEST-b11e0417-v2.json",
+  "MESSAGE_BLOB_SHA": "02d613d29acd809eefeb414436bb5e93dbb64c9b",
+  "DECLARED_HASH_DOMAIN": "SHA256_JCS_MESSAGE_WITHOUT_CONTENT_HASH",
+  "DECLARED_CONTENT_HASH": "ecfade2870042036266a6f984975e03a342e3221b7b5dda8df5f87a6791d1486",
+  "RECOMPUTED_CONTENT_HASH": "ecfade2870042036266a6f984975e03a342e3221b7b5dda8df5f87a6791d1486",
+  "RECOMPUTATION_RULE": "Recursively lexicographic object-key ordering; UTF-8 compact JSON; omit CONTENT_HASH field; payload contains only JCS-safe strings, integers and objects.",
+  "MESSAGE_HASH_MATCH": true,
+  "FENCE_BINDING_CHECK": {
+    "message_id_matches": true,
+    "message_version_matches": true,
+    "content_hash_matches": true,
+    "blob_sha_matches": true,
+    "repair_intent_id_matches": "V16RC13-BOOTSTRAP-FREEZE-HASH-REPAIR-002"
+  },
+  "GATE_INVARIANTS_CHECK": {
+    "WORK_ADMISSION_GATE": "READ_ONLY_PREACTIVATION",
+    "MUTATION_GATE": "CLOSED",
+    "INTEGRATION_GATE": "CLOSED",
+    "PASS": true
+  },
+  "VERDICT": "PASS_INDEPENDENT_RECOMPUTATION_AND_FENCE_BINDING",
+  "LIMIT": "This review resolves only the freeze-message exact-content integrity defect. It does not resolve the phase-gate P0, target-ref provenance, control-P0 denominator, static-protocol P0, law identity, genesis roots, activation, or closure.",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
