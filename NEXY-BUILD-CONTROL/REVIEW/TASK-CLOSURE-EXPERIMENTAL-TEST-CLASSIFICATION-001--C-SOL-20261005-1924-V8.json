@@ -1,0 +1,55 @@
+{
+  "REVIEW_ID": "REVIEW-TASK-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001-C-SOL-20261005-1924-V8",
+  "TASK_ID": "TASK-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001",
+  "FINDING_ID": "FINDING-CLOSURE-EXPERIMENTAL-TEST-CLASSIFICATION-001",
+  "REVIEWER_CHAT": "C-SOL-20261005-1924-V8",
+  "ROLE": "INDEPENDENT_CLOSURE_CLASSIFICATION_REVIEWER",
+  "STATUS": "VERIFIED_FOR_CLOSURE_ACCOUNTING",
+  "CONTROL_HEAD_OBSERVED": "744e2818977c09f943c9b5ddb03d98e73f065564",
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_FILE_HASH_RECOMPUTED_LOCAL": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "AUTHORITY_VERIFICATION": {
+    "final_verdict_paragraph": 9834,
+    "doc_c_build_spec_paragraph": 9839,
+    "build_obligation_doc_c_only_paragraph": 9844,
+    "final_doc_c_start": 9886,
+    "included": "9889-9899",
+    "excluded": "9902-9909"
+  },
+  "SOURCE_EVIDENCE": {
+    "experimental_scope_blob": "850e0918de501ad0413b61a81be0a3b86152c263",
+    "vitest_config_blob": "6665df37ca5f5709d7ff320d89a437e499047245",
+    "vitest_experimental_config_blob": "9dadfe5d9ddf2a0f4ec1c48035c4254eab8000f9",
+    "inventory": "INV-608426CB-C-3B5E71A2",
+    "execution_sets": "PRIMARY-EXECUTION-SETS-608426CB",
+    "override": "CLOSURE-CLASSIFICATION-OVERRIDE-608426CB-EXPERIMENTAL-TESTS-001"
+  },
+  "RECOMPUTATION": {
+    "source_exact_paths": 83,
+    "source_unique_paths": 83,
+    "inventory_intersection": 83,
+    "inventory_missing": 0,
+    "prior_class_TEST": 83,
+    "prior_status_UNSCANNED": 83,
+    "override_exact_paths": 83,
+    "override_unique_paths": 83,
+    "source_missing_from_override": 0,
+    "override_extra_vs_source": 0,
+    "active_primary_tests": 165,
+    "experimental_active_primary_intersection": 0,
+    "default_vitest_excludes_EXPERIMENTAL_TEST_FILES": true,
+    "experimental_vitest_includes_EXPERIMENTAL_TEST_FILES": true
+  },
+  "VERDICT": "CONFIRMED: append-only override is internally consistent and may be used to remove these 83 exact files from the active DOC-C required-test scan denominator for this exact source SHA/spec hash.",
+  "LIMITS": [
+    "This review verifies classification/accounting only; it does not mark the 83 files VERIFIED_CLEAN.",
+    "This review does not establish CODE_CLOSURE_VERIFIED.",
+    "Invalidate if source declaration blob, source SHA, spec hash, or explicit promotion authority changes."
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "CONTROL_MUTATION": "APPEND_ONLY_REVIEW"
+}
