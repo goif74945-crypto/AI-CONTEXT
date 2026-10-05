@@ -1,0 +1,69 @@
+{
+  "FINDING_ID": "F-CLOSURE-NORMALIZED-MATRIX-TEMPORAL-FSM-001",
+  "FROM": "C-V8-SOL-API-DENOM-9F42",
+  "TYPE": [
+    "TEMPORAL_AUTHORITY_DEFECT",
+    "NORMALIZATION_DEFECT",
+    "REQUIREMENT_ORACLE_DEFECT"
+  ],
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "SPEC_ID": "NEXY-IGNIS-b35ee1bf82125792",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "EPOCH_ID": "EPOCH-20261005-b35ee1bf-608426cb",
+  "NORMALIZED_MATRIX": {
+    "path": "REFERENCES/NEXY/2026-10-04/NEXY_IGNIS_FULL_SYSTEM_FEATURE_BUILD_MATRIX.txt",
+    "blob_sha": "e7aa7b52ad6080030c7278eb428bef75f83309c4",
+    "parsed_build_matrix_rows": 837
+  },
+  "AUTHORITATIVE_FINAL_FSM": {
+    "packet": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-5-STATE-EVENT-MATRIX.json",
+    "final_doc_c_non_empty_paragraphs": "8811-8957",
+    "final_doc_c_raw_docx_w_p_indexes": "10353-10499",
+    "temporal_rule": "The final DOC-C executable matrix supersedes conflicting earlier vNEXT.1 transition claims.",
+    "error_rows": [
+      "RUNNING + error -> FREEZE",
+      "VERIFYING + error -> FREEZE"
+    ],
+    "forbidden_inference": "Do not promote earlier ANY except STOP + error -> FREEZE into final DOC-C authority."
+  },
+  "OBSERVED": {
+    "final_fsm_raw_paragraph_rows_in_837_matrix_10353_10499": 0,
+    "stale_conflicting_row": {
+      "ID": "REQ-0186",
+      "Parent_System": "Execution FSM",
+      "Requirement": "Legal transition: ANY except STOP\terror\tFREEZE\talways.",
+      "Authority": "DOC-C BUILD SPEC",
+      "Build_Scope": "CURRENT_BUILD",
+      "Strength": "MUST",
+      "Source_Doc_Paragraph": 8610,
+      "Source_Extraction_Seq": 7485,
+      "Source_Section": "5.4 Transition Table",
+      "Source_Anchor": "ANY except STOP\terror\tFREEZE\talways"
+    },
+    "related_stale_execution_fsm_range": "REQ-0156..REQ-0203 derives from the earlier FSM section at raw paragraphs 8567..8633; temporal validity must be resolved row-by-row against final DOC-C."
+  },
+  "EXPECTED": [
+    "The 837-row matrix remains a traceability denominator, but each row must carry temporal authority resolution before it can count as an active build obligation.",
+    "Superseded rows must not remain CURRENT_BUILD/MUST without an explicit superseded status/link to the final authoritative replacement.",
+    "Final authoritative clauses absent from the normalized rows must be represented or deterministically linked before requirement closure is computed."
+  ],
+  "IMPACT": [
+    "Using the raw 837 rows as active obligations would incorrectly require a transition explicitly rejected by final DOC-C.",
+    "Requirement counts and mission REMAINING_COUNT are unsafe until temporal normalization is resolved.",
+    "M02 CORE/FSM closure cannot use the current normalized matrix as its test oracle without a supersession layer."
+  ],
+  "REQUIRED_ACTION": [
+    "Create a row-level temporal-authority map for the 837-row denominator.",
+    "Mark REQ-0186 superseded by final DOC-C error-transition authority; do not delete it because traceability requires preserving historical source.",
+    "Route final DOC-C FSM rows from raw paragraphs 10353-10499 into canonical active requirement records or explicit replacement links.",
+    "Re-evaluate REQ-0156..REQ-0203 and other pre-final DOC-C rows for semantic conflicts with later clauses.",
+    "Compute active build counts only after supersession/conflict resolution."
+  ],
+  "RELATED_FINDINGS": [
+    "F-CLOSURE-REQ-DENOMINATOR-837-ROUTING-001"
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "CONTROL_MUTATION": "APPEND_ONLY_FINDING",
+  "BLOCKS_CODE_CLOSURE_VERIFIED": true
+}
