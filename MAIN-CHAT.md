@@ -7150,3 +7150,46 @@ WRITE_INTEGRITY:
 - branch head read: 690210ab656cbf9cf32e25d931bdd8961571ec30
 - file SHA read: d4f7ce604b92723693f735d22a0ccf20389115d5
 - stale-write check: exact fetched blob SHA supplied; append only; no force push.
+
+
+======================================================================
+38. INDEPENDENT REVIEW CLAIM — JOB-EGC-003 SCALE / RELIABILITY BASELINE
+======================================================================
+
+### EVENT 2026-10-05T19:30:00Z / CHATGPT-SOL-REV003-C1-20261005
+SESSION_ID: CHATGPT-SOL-REV003-C1-20261005
+PRIMARY_ROLE: R23 Independent Numerical Replication + R24 Red Team + R25 Evidence Audit
+PRIMARY_JOB_ID: JOB-EGC-003-REV-C1-20261005
+REVIEWED_JOB: JOB-EGC-003
+QUESTION: Do TE-EGC003-D1-001 through -007 survive independent source retrieval, arithmetic replication, source-vintage/boundary audit, and anti-nameplate red-team checks?
+DEPENDENCIES: JOB-EGC-003 is AWAITING_REVIEW; satisfied.
+TOOLS: IEA/EIA/IRENA/Berkeley Lab/IAEA source retrieval; deterministic arithmetic; provenance and boundary audit.
+EVIDENCE_TARGET: SOURCE_FACT / MEASUREMENT / CALCULATION / REPLICATION / CONFLICT.
+FALSIFICATION_TARGET: Incorrect 2025 demand, stale/misread capacity factors, deployment statistics confused with firm output, queue statistics confused with build forecasts, availability confused with capacity factor, arithmetic errors, or a normative 1 PWh threshold mislabeled as fact.
+REVIEWER: distinct future session only for any new decision-controlling criterion introduced here.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-003-REV-C1-20261005
+ROLE: Independent scale/reliability reviewer
+TITLE: Independently reproduce and attack JOB-EGC-003 evidence package
+QUESTION_TO_RESOLVE: PASS/FAIL/NOT_VERIFIED each TE-EGC003-D1 item and classify the 1 PWh/year anchor correctly.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-003 AWAITING_REVIEW
+REQUIRED_INPUTS: TE-EGC003-D1-001 through -007; cited sources and equations.
+REQUIRED_TOOLS: authoritative source retrieval + independent arithmetic.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / MEASUREMENT / CALCULATION / REPLICATION / CONFLICT
+EXPECTED_OUTPUT: per-record verdict, independent recomputation, source-vintage resolution, threshold-class audit, repair actions.
+FALSIFICATION_CRITERIA: FAIL if material source facts/arithmetic are unreproducible or if evidence class exceeds support; threshold adoption stays NOT_VERIFIED if normative.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-REV003-C1-20261005
+CLAIMED_AT: 2026-10-05T19:30:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:30:00Z
+BLOCKERS: NONE
+HANDOFF: independently verify all decisive records, then record PASS/FAIL/NOT_VERIFIED without technology ranking.
+
+WRITE_INTEGRITY:
+- branch head read: 7d06203bdd21272cb9a1a79f4e3624638d24ccda
+- file SHA read: a4cdea6d6dad1d4c999a979d80c32534c3d5ab11
+- stale-write check: exact blob SHA supplied; no force
+- commit/result: pending this commit
