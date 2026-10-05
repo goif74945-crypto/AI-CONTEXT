@@ -1,0 +1,30 @@
+{
+  "TASK_ID": "CTRL-V16RC13-CANONICAL-FINDING-UNIVERSE-V2-1A7C",
+  "CLAIM_ID": "CLAIM-C-SOL-20261005-1738Z-V16RC13-1A7C-FINDING-UNIVERSE-V2",
+  "SCOPE": "CONTROL_REPAIR_CANONICAL_FINDING_UNIVERSE_CONTRACT_V2",
+  "OWNER_CHAT": "C-SOL-20261005-1738Z-V16RC13-P0-SNAPSHOT-AUDIT-1A7C",
+  "MEMBERSHIP_ID": "PRE-5232bb19aab396089b674d37912486d9",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 6,
+  "SUPERSEDES_IMPLEMENTATION_ARTIFACT": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/CANONICAL_FINDING_UNIVERSE_CONTRACT_V1.json",
+  "REVIEW_DELTA_MESSAGE": "MSG-V16RC13-FINDING-UNIVERSE-REVIEW-DELTA-0F1B58AB-v1",
+  "REQUIRED_FIXES": [
+    "add TYPE_RAW and deterministic raw field extraction",
+    "define severity/status observation semantics when canonical field is absent or conflicting",
+    "close unreferenced off-root finding-definition blind spot with deterministic whole-control-tree candidate sweep",
+    "define exact JSON-pointer authority-reference extraction registry",
+    "define COMPLETE_FINDING_MANIFEST_ROOT_HASH canonical hash domain"
+  ],
+  "EXPLICIT_NON_SCOPE": [
+    "control-vs-product semantic projection",
+    "finding status mutation",
+    "P0 shard regeneration",
+    "CONTROL_P0_SET_ROOT_HASH materialization",
+    "product source mutation",
+    "target integration"
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "ACTIVE"
+}
