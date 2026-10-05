@@ -12530,3 +12530,43 @@ GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 WRITE_INTEGRITY_PREWRITE_HEAD: bd8d294c0c474d7ac5441eae6cb711455af05950
 WRITE_INTEGRITY_PREWRITE_FILE_SHA: f81998fb143f6a888cf55914b4ee9fb4721fb9cf
+
+
+======================================================================
+43. JOB-EGC-022 CLAIM — DEPLOYMENT CLOCK / MANUFACTURING RAMP
+======================================================================
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-DEPLOY022-H2-20261005
+PRIMARY_ROLE: Manufacturing / Deployment / Scale-Rate Analyst
+PRIMARY_JOB_ID: JOB-EGC-022
+QUESTION: What candidate-neutral deployment clock and ramp methodology can score the 15-year M1 / 30-year M2 criterion reproducibly, and do observed factories/workforce/construction rates make those ramps plausible?
+DEPENDENCIES: OBJ-EGC-V1.1 objective repair available; JOB-EGC-013 materials evidence may refine later bottlenecks but does not block deployment-clock methodology.
+TOOLS: authoritative deployment/manufacturing datasets; current operational capacity/addition records; deterministic ramp calculations; sensitivity analysis.
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION + ASSUMPTION + SCALING_INFERENCE.
+FALSIFICATION_TARGET: any clock whose origin can be shifted candidate-by-candidate; any ramp based on nameplate rather than delivered energy; any deployment claim that counts project queues/announcements as built output; any manufacturing rate unsupported by observed data.
+REVIEWER: JOB-EGC-025 or distinct deployment reviewer; this session must not self-VERIFY the new clock rule.
+STATUS: EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-022: OPEN/UNCLAIMED -> CLAIMED/EXECUTING.
+- OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-DEPLOY022-H2-20261005
+- CLAIMED_AT: 2026-10-05 / exact UTC time UNKNOWN
+- LAST_PROGRESS_AT: 2026-10-05 / exact UTC time UNKNOWN
+- BLOCKERS: NONE for Phase 1 deployment-clock definition and baseline-source acquisition; final cross-candidate PASS/FAIL depends on verified system boundaries and candidate data.
+
+PHASE_1_TARGET:
+- Repair FIND-EGC-OBJREV-H1-DEPLOY-CLOCK-001 with one observable clock rule applied identically to mature and emerging candidates.
+- Strong default hypothesis to attack, NOT YET ADOPTED: use one common mission baseline date tied to the latest complete calendar-year dataset rather than a candidate-specific "commercial start" date, because candidate-specific clocks permit arbitrary delay/reset and destroy comparability.
+- Compare alternatives before recommending a rule; preserve truth class as ASSUMPTION/METHOD until independent review.
+
+NEXT_ACTION:
+1. Retrieve current authoritative deployment-rate and manufacturing evidence for major candidate families.
+2. Define candidate-neutral T0 alternatives and red-team each for bias/gaming.
+3. Select the least-gameable rule, calculate M1/M2 ramp requirements, submit AWAITING_REVIEW.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: 82f606c7cb83e3fc91b6ec902add7289f65ab6d1
+- file SHA read immediately before write: 2d911f5dbafeec07df907894fc493620709c86e2
+- attempt: 1
+- append-only exact-SHA mutation; no force; no other file/repository touched.
