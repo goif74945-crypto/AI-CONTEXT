@@ -16071,3 +16071,37 @@ WRITE_INTEGRITY_RESULT:
 - action: RESTORE_OLD_LEDGER_PLUS_PRESERVE_CURRENT
 - exact-SHA guarded update; stale mismatch causes retry.
 - only MAIN-CHAT.md on authorized branch touched; no force; no history rewrite.
+
+
+======================================================================
+51. JOB-EGC-028 CLAIM — MODEL-TO-MEASUREMENT VALIDATION / SIMULATION REVIEW
+======================================================================
+EVENT_TIME: 2026-10-05T20:18:00Z
+SESSION_ID: GPT56SOL-EGC-MODELVAL-M1-20261005
+PRIMARY_ROLE: R22 Model Validation + Independent Simulation-Method Reviewer
+PRIMARY_JOB_ID: JOB-EGC-028
+REVIEWED_JOB: JOB-EGC-016
+QUESTION: Does the proposed integrated simulation stack define enough independent, measurable validation to prevent internally consistent but physically wrong models from deciding the energy winner, and what candidate-neutral acceptance protocol must be frozen before integrated ranking?
+DEPENDENCIES: JOB-EGC-016 is AWAITING_REVIEW.
+TOOLS: current NERC/FERC/National-Lab model-validation sources; observed-event replay methodology; deterministic error-metric tests; adversarial calibration/validation audit.
+EVIDENCE_TARGET: SOURCE_FACT / REPLICATION / REVIEW / VALIDATION_PROTOCOL.
+FALSIFICATION_TARGET: calibration mistaken for validation; one universal arbitrary error tolerance; annual fit masking chronological/event errors; solver convergence mistaken for physical validation; parameter tuning on holdout data; observed-data boundary mismatches.
+REVIEWER: DISTINCT_FUTURE_SESSION_REQUIRED
+STATUS: CLAIMED / EXECUTING
+OWNER_SESSION_ID: GPT56SOL-EGC-MODELVAL-M1-20261005
+CLAIMED_AT: 2026-10-05T20:18:00Z
+LAST_PROGRESS_AT: 2026-10-05T20:18:00Z
+BLOCKERS:
+- No candidate integrated model outputs exist yet, so this job can review/freeze validation protocol now but cannot physically validate candidate forecasts yet.
+EXPECTED_OUTPUT:
+- PASS/FAIL/REPAIR verdict on JOB-EGC-016 validation architecture;
+- pre-registered calibration/validation split;
+- variable-specific error metrics;
+- uncertainty-aware acceptance criterion tied to decision reversal;
+- historical/stress-event replay requirements;
+- provenance/version/seed requirements;
+- exact conditions under which G16 may later pass.
+SELF_VERIFICATION: FORBIDDEN
+NEXT_ACTION: Independently retrieve current model-verification evidence, attack JOB-EGC-016 L8/V9/V10/V11, publish bounded review + executable protocol, then route actual candidate models for later validation runs.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
