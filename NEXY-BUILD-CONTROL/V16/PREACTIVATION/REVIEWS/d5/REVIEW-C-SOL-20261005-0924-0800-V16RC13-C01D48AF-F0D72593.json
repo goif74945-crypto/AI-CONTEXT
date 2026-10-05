@@ -1,0 +1,33 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_STATIC_PROTOCOL_REVIEW_V1",
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-0924-0800-V16RC13-C01D48AF-F0D72593",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-0924-0800-V16RC13-C01D48AF",
+  "REVIEWED_FINDING_ID": "FINDING-V16RC13-CLOSURE-PINNED-WORLD-MEMBERSHIP-RACE-F0D72593",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 4,
+  "REVIEW_TYPE": "INDEPENDENT_STATIC_PROTOCOL_COUNTEREXAMPLE_REPRODUCTION",
+  "CLAUSES_REVIEWED": [
+    "[016]",
+    "[196]",
+    "[197]",
+    "[200]",
+    "[209]",
+    "[214]",
+    "[215]",
+    "[216]"
+  ],
+  "VERDICT": "CONFIRMED_P0",
+  "REASONING": [
+    "[197] permits post-barrier joins for closure/review/audit/read-only work.",
+    "[200] covers every current-epoch membership record, but closure entry defines no immutable membership cutoff.",
+    "[209] pins membership and drain roots.",
+    "[214] omits equality checks for current membership and drain roots against those pins.",
+    "[215] CASes Mission Fence STATE_VERSION only; sharded membership writes can change the membership universe without changing that version.",
+    "[216] cannot make the race atomic because a join may occur after the closer's last read and before COMPLETE CAS while the fence version stays unchanged."
+  ],
+  "COUNTEREXAMPLE_RESULT": "VALID",
+  "REQUIRED_DISPOSITION": "STATIC_PROTOCOL_P0_REMAINS_BLOCKING",
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
