@@ -3,7 +3,7 @@
   "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
   "CONSTITUTION": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3",
   "SEVERITY": "P0",
-  "STATUS": "OPEN",
+  "STATUS": "SUPERSEDED",
   "CATEGORY": "CONTROL_PROTOCOL_PHASE_GATE_VIOLATION",
   "AFFECTED_TRANSITION_COMMIT": "6794e471a66b3bc8e67c9426c1a3d874b9767658",
   "AFFECTED_BOOTSTRAP_STATE_VERSION": 3,
@@ -25,14 +25,14 @@
     "EARLIER_SCAN_FOUND_EXPLICIT_OPEN_P0_ROWS": true
   },
   "VERDICT": "PHASE_2_ENTRY_NOT_PROVEN_VALID_FAIL_CLOSED",
-  "REQUIRED_ACTION": [
-    "block further bootstrap phase advancement",
-    "complete canonical control-P0 manifest",
-    "prove STATIC_PROTOCOL_P0 == 0",
-    "prove OPEN_CONTROL_P0_COUNT == 0",
-    "only then re-enter or confirm LEGACY_DRAINING using expected-version CAS"
-  ],
+  "SUPERSEDED_BY": {
+    "FINDING_ID": "FINDING-PREMATURE-LEGACY-DRAIN-ENTRY-001",
+    "PATH": "NEXY-BUILD-CONTROL/V16/BOOTSTRAP/b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93/FINDING-PREMATURE-LEGACY-DRAIN-ENTRY-001.json",
+    "CREATION_COMMIT": "5eb574dbdcc9847b5ca4e47e7b963aa0c28e4fcb",
+    "BOUND_BY_BOOTSTRAP_FENCE_COMMIT": "6fc03d552a7dcb9b82b5571549810a448dc1549b",
+    "REASON": "Same semantic incident and transition; canonical blocker is explicitly bound by Bootstrap Fence STATE_VERSION 4."
+  },
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "TARGET_REF_MUTATION": "NONE",
-  "NOTE": "Existing legacy drain evidence and lease suspensions remain durable truth; this finding blocks authority advancement, not evidence retention."
+  "NOTE": "This record remains durable independent supporting evidence and is non-blocking as SUPERSEDED; canonical blocker remains OPEN."
 }
