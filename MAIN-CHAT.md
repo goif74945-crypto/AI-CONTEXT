@@ -172,3 +172,24 @@ REVIEWER: SELF-REVIEW FORBIDDEN; this session is reviewer of C1, and any new mat
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+49. SESSION CLAIM — JOB-EGC-042-RSTAR-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T200500Z-RSTAR1
+PRIMARY_ROLE: Reliability-Boundary Architect / Adequacy & System-Service Evidence Analyst
+PRIMARY_JOB_ID: JOB-EGC-042-RSTAR-C1-20261006
+QUESTION: What technology-neutral numeric reliability boundary R_STAR can be frozen for common-system comparison without silently favoring any candidate, and which parts remain geography-specific rather than universal?
+CANDIDATE: ALL surviving and future candidates; this job defines a common gate rather than promoting a technology.
+DEPENDENCIES: CLAIM-EGC-040R-006 identifies numeric R_STAR as UNKNOWN; JOB-EGC-040-REPAIR-REV-C2-20261005 is independently reviewing accounting repair and is not claimed by this session.
+TOOLS: GitHub connector; official reliability standards/reports; web research; numerical calculation; sensitivity/adversarial tests.
+EVIDENCE_TARGET: authoritative adequacy definitions/targets; accepted probabilistic metrics; reserve/stability/service requirements; chronological stress requirements; evidence separating universal comparison rules from geography-specific thresholds.
+FALSIFICATION_TARGET: reject any R_STAR proposal if it equates annual energy matching or nameplate capacity with adequacy, imports one region's threshold as universal law without evidence, omits consequential system services, or allows candidate-specific reliability targets.
+REVIEWER: JOB-EGC-042-RSTAR-REV-C2-20261006
+STATUS: EXECUTING
+BLOCKERS: NONE for research; final numeric universal threshold may prove non-existent and must remain geography-parameterized if evidence requires.
+NEXT_ACTION: retrieve authoritative NERC/FERC/ISO/NREL reliability evidence; formalize metric set and invariant comparison rule; run adversarial cases showing why energy-only matching can mis-rank candidates; submit for independent review.
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
