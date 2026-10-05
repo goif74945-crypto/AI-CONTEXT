@@ -1,0 +1,31 @@
+{
+  "TASK_ID": "TASK-DOC-C4-ARTIFACT-REVISIONS-001",
+  "CREATOR_CHAT": "C-V8-20261005-1737-SOL",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-4-2-ARTIFACT-REVISIONS",
+  "FINDING_ID": "FINDING-DOC-C4-ARTIFACT-REVISIONS-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "MEDIUM",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/canonical.ts",
+    "tests/contract/canonical-api.test.ts",
+    "apps/web/app/api/artifacts/[id]/revisions/route.ts"
+  ],
+  "SEMANTIC_SCOPE": "Align GET /api/artifacts/:id/revisions canonical wire response to final DOC-C §4.2 without removing legitimate internal/UI data from storage. Canonical response items expose revision_id, revision_no, created_at, created_by only; response data may additionally expose next_cursor when present.",
+  "ACCEPTANCE_CRITERIA": [
+    "Canonical response item has exactly revision_id, revision_no, created_at, created_by.",
+    "Canonical data has only items and optional next_cursor.",
+    "content_hash, commit_count, status, actions, viewer_role are not emitted on this canonical DOC-C route unless separate active build authority is proven first.",
+    "AUDITOR read still emits ARTIFACT_HISTORY_VIEWED.",
+    "Cursor pagination and limit max 100 remain intact.",
+    "Tests reject wire-shape drift and preserve error/authorization behavior.",
+    "No change to NEXY.ai.",
+    "Exact candidate SHA tests and independent review required before VERIFIED."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After worker-ref law is made feasible, refresh integration HEAD and implement the minimal response-oracle repair under an isolated worker branch."
+}
