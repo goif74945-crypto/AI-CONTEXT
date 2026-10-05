@@ -12329,3 +12329,24 @@ REVIEWER_JOB_ID: NONE
 STATUS: OPEN
 BLOCKERS: NONE for independent review; total scenario material demand remains conditional on E/P, chemistry, duty cycle, life, topology and geography.
 NEXT_ACTION: distinct session independently reproduces and attacks this result before downstream ranking consumes it.
+
+
+======================================================================
+60. SESSION CLAIM — JOB-EGC-047-EROI-LCA-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006-EROIR2
+PRIMARY_ROLE: Independent lifecycle-energy reviewer / numerical replicator / boundary adversary
+PRIMARY_JOB_ID: JOB-EGC-047-EROI-LCA-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-047-EROI-LCA-C1-20261006
+QUESTION: Do EGC-047-LCA evidence and equations support the stated component-level net-energy conclusions without mixing energy qualities, boundaries, co-products, inherited infrastructure or system-enabling burdens?
+DEPENDENCIES: EGC-047-LCA primary submission complete; satisfied.
+TOOLS: latest GitHub state; independent official/peer-reviewed source retrieval; PDF screenshot verification when applicable; Python + Wolfram replication; boundary and functional-unit counterexamples.
+EVIDENCE_TARGET: reproduce CALC-EGC-047-001..004 where valid; audit NREL PV PDF discrepancy; seek stronger nuclear lifecycle evidence; attack hydro brownfield inheritance; test geothermal/storage/grid allocation and energy-quality consistency.
+FALSIFICATION_TARGET: any promoted numeric claim depending on mixed energy quality, incompatible functional unit, unverified PDF datum, hidden brownfield/co-product privilege, or asymmetric omission of system-enabling burdens.
+REVIEWER: DISTINCT FROM PARENT OWNER CHATGPT-GPT56SOL-20261006T0320+07-EROI1.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: f8836c6d2cd1f93fbeb5156d26aebf89a453a7d5
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 9902841eaf3dd765e7597f6b60028b1638ff1446
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
