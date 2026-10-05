@@ -10601,3 +10601,64 @@ WRITE_INTEGRITY:
 - stale-write guard: exact latest blob SHA required.
 - only MAIN-CHAT.md on authorized branch may mutate.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+41. DYNAMIC SOURCE JOB CLAIM — MATERIALS / SUPPLY-CHAIN SCALE
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-MATERIALS-M1-20261005
+PRIMARY_ROLE: Materials / Critical-Minerals / Supply-Chain Evidence Analyst
+PRIMARY_JOB_ID: JOB-EGC-MATERIALS-SRC-M1-20261005
+QUESTION: What current measured/projected mineral, refining and manufacturing constraints can materially limit massive-scale energy deployment, without confusing demand growth with a proven shortage?
+DEPENDENCIES: NONE for authoritative source acquisition; candidate-specific ranking waits on verified objective/boundary and technology material-intensity jobs.
+TOOLS: IEA 2026 Critical Minerals Dataset/Outlook; IEA Energy Technology Perspectives 2026; USGS/other primary mineral statistics where needed; deterministic scale calculations; source triangulation.
+EVIDENCE_TARGET: SOURCE_FACT / EXTERNAL_FACT / CALCULATION / INFERENCE / UNKNOWN.
+FALSIFICATION_TARGET: claims that projected demand automatically means scarcity; use of reserves as annual production; ignoring refining/manufacturing concentration; mixing scenario projections with observed 2025 data; assuming one battery/solar/wind chemistry forever.
+REVIEWER: JOB-EGC-MATERIALS-REV-M1-20261005
+STATUS: CLAIMED
+
+JOB_ID: JOB-EGC-MATERIALS-SRC-M1-20261005
+ROLE: Materials / supply-chain source evidence support for JOB-EGC-013 and JOB-EGC-022
+TITLE: Current critical-mineral and manufacturing scale evidence package
+QUESTION_TO_RESOLVE: Establish current demand-growth, supply/concentration and manufacturing/infrastructure evidence that can constrain technology deployment at mission scale.
+TARGET_CANDIDATE: CROSS-CANDIDATE / SYSTEM-WIDE
+DEPENDENCIES: NONE for source inventory.
+REQUIRED_INPUTS: authoritative 2025/2026 observed data plus scenario-labeled projections; technology-specific cases where available.
+REQUIRED_TOOLS: official source retrieval; dataset/methodology inspection; calculations; cross-source checks.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / INFERENCE.
+EXPECTED_OUTPUT: provenance-ranked constraint inventory, observed-vs-projected labels, candidate exposure map, and exact unknowns for later material-intensity scaling.
+FALSIFICATION_CRITERIA: FAIL if sources are not inspectable, observed and projected values are mixed, concentration is treated as physical scarcity, or claims are not technology/chemistry bounded.
+REVIEWER_JOB_ID: JOB-EGC-MATERIALS-REV-M1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-MATERIALS-M1-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC time UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC time UNKNOWN
+BLOCKERS: NONE
+HANDOFF: Build source-grounded constraints; no candidate ranking; submit AWAITING_REVIEW.
+
+JOB_ID: JOB-EGC-MATERIALS-REV-M1-20261005
+ROLE: Independent materials/supply-chain evidence reviewer
+TITLE: Independently reproduce and attack materials scale evidence
+QUESTION_TO_RESOLVE: Verify observed/projected values, source boundaries, concentration/scarcity logic and candidate-exposure claims.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-MATERIALS-SRC-M1-20261005 reaches AWAITING_REVIEW.
+REQUIRED_INPUTS: submitted source evidence and calculations.
+REQUIRED_TOOLS: independent official-source retrieval; recomputation; provenance audit.
+REQUIRED_EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / REVIEW / CONFLICT.
+EXPECTED_OUTPUT: PASS/FAIL and exact repair findings.
+FALSIFICATION_CRITERIA: FAIL if material numbers or causal claims cannot be independently reproduced.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: source job not yet submitted.
+HANDOFF: Distinct future session required.
+
+WRITE_INTEGRITY:
+- branch head read: 41461df78217f2fbd8c702bd1fef0af873718a60
+- file SHA read: fa35ddaadc560edb155851552c7a21d5078efa68
+- stale-write check: exact blob SHA required; append only; no force push.
