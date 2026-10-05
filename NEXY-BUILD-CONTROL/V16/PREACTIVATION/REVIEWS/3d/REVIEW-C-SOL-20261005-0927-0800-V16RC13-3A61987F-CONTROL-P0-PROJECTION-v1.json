@@ -1,0 +1,43 @@
+{
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-0927-0800-V16RC13-3A61987F-CONTROL-P0-PROJECTION-v1",
+  "REVIEW_TYPE": "V16_RC1_3_CONTROL_P0_PROJECTION_SCHEMA_REVIEW",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-0927-0800-V16RC13-3A61987F",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REVIEWED_MESSAGE_ID": "MSG-V16RC13-CONTROL-P0-PROJECTION-CANDIDATE-7C2A91D4-v1",
+  "RELATED_FINDING": "FINDING-V16RC13-CONTROL-P0-DOMAIN-CONFLATION-3A61987F",
+  "CONSTITUTION_BASIS": [
+    "[024]",
+    "[062]",
+    "[063]",
+    "[064]",
+    "[065]",
+    "[184]",
+    "[239]"
+  ],
+  "VERDICT": "ACCEPT_WITH_REQUIRED_REFINEMENTS",
+  "ACCEPTED_PROPERTIES": [
+    "Projection input must be the complete canonical FINDINGS manifest, not a prefiltered control-only subset.",
+    "Pure PRODUCT_IMPLEMENTATION or DEPLOYMENT_EVIDENCE P0 rows with independently established no preactivation control-authority impact are excluded from CURRENT_CONTROL_P0 without changing their source finding status.",
+    "UNKNOWN/conflicting applicability, domain, or control impact remains blocking pending classification.",
+    "Only RESOLVED, CLOSED, SUPERSEDED are terminal nonblocking unless a canonical schema explicitly adds another terminal nonblocking state.",
+    "Explicit active-law supersession may project an old-law finding to effective SUPERSEDED while preserving original historical evidence.",
+    "OPEN_CONTROL_P0_COUNT must derive only after projection of every finding row."
+  ],
+  "REQUIRED_REFINEMENTS": [
+    "Pin every projection generation to an exact CONTROL_COMMIT and CONTROL_TREE; a projection over a moving FINDINGS directory is not a complete manifest proof.",
+    "Persist a COMPLETE_FINDING_MANIFEST_ROOT_HASH over every projection source row, in addition to CONTROL_P0_SET_ROOT_HASH over eligible control-P0 rows, so denominator completeness and selected control-P0 set are independently bound.",
+    "Normalize P0 class only from explicit canonical severity/priority fields or an authoritative schema mapping. Mere textual 'P0' mentions are not severity evidence; conflicting/missing severity remains UNKNOWN.",
+    "Define CONTROL_P0_ELIGIBILITY values explicitly, e.g. ELIGIBLE_CONTROL_P0, NOT_CONTROL_P0, BLOCKING_PENDING_CLASSIFICATION, and count the pending state as blocking for zero proof.",
+    "For domain=MIXED, require explicit evidence of whether the control component is a PREACTIVATION_AUTHORITY_BLOCKER. Unknown control impact remains blocking.",
+    "Supersession evidence must be applicable to the active law and temporally valid at the pinned projection snapshot; a historical or candidate supersession record is insufficient.",
+    "Immediately before any Phase-1 zero proof, rescan the current control tree. If FINDINGS path/blob membership differs from the pinned projection denominator, invalidate the zero proof and rebuild/rebase."
+  ],
+  "EVIDENCE": [
+    "80-ff baseline summary at e1db98e... counted product state-matrix P0 rows as control blockers, demonstrating severity-only conflation.",
+    "Independent denominator crosscheck RESULT-C-SOL-20261005-0927-0800-V16RC13-3A61987F-P0-DENOMINATOR shows the manifest source snapshot grew from 200 rows to 209 rows by control head 4e427d86199d2fc605e993150dfce1432fcdca32.",
+    "FINDING-DOC-C5-STATE-ORACLE-001 and F-3F8A1C72-01 explicitly require product-source/test repairs, so they cannot be assumed to be preactivation control blockers merely because SEVERITY=P0."
+  ],
+  "PRODUCT_SOURCE_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "FAIL_CLOSED": true
+}
