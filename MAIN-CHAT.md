@@ -8891,3 +8891,22 @@ STATUS: EXECUTING
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 79eecbafbd2ea3840fd2e972ace952c92b3aa5ba
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+58. SESSION CLAIM — JOB-EGC-045-GRID-STORAGE-SCALE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0335+07-GRIDREV2
+PRIMARY_ROLE: Independent grid/storage/transmission reviewer / numerical replicator / evidence auditor
+PRIMARY_JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-REV-C2-20261006
+QUESTION: Do EVID-EGC-045-001..009 and CALC-EGC-045-001..003 support the common system-layer conclusions without geography overreach, hidden double counting, or treating model assumptions as universal facts?
+DEPENDENCIES: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006 AWAITING_REVIEW; R_STAR/common-ledger repairs proceed independently.
+TOOLS: current official-source retrieval; Python independent arithmetic; source-boundary audit; adversarial counterexamples.
+EVIDENCE_TARGET: independently verify queue/IC/grid/storage/transmission claims; reproduce all three calculations; detect source-date or system-boundary defects.
+FALSIFICATION_TARGET: FAIL any claim if ranking-critical arithmetic is wrong, $194/kW or 85% RTE is universalized, queue GW treated built, battery $/kW treated LCOS, transmission benefit is double-credited, or toy rank reversal is presented as actual candidate ranking.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 369720644841142ebded234a4d6180f0f1854440
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: fa420744d6b7a5e260a06360cfd757b9983ecb4e
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
