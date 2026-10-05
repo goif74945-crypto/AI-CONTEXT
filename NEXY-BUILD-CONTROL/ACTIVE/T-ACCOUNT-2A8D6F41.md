@@ -1,7 +1,7 @@
 TASK_ID: T-ACCOUNT-2A8D6F41
 CREATOR_CHAT: C-SOL-20261006-ACCOUNT-2A8D6F41
 OWNER_CHAT: C-SOL-20261006-ACCOUNT-2A8D6F41
-STATUS: INTEGRATED_STATIC_VERIFIED
+STATUS: REPAIRING_POST_INTEGRATION
 PRIORITY: P2
 RISK: LOW
 BASE_SHA: 88afb720868754b9c9058868192da1237e545a59
@@ -30,5 +30,8 @@ RUNTIME:
 - Exact-head GitHub Actions run 37361046612 completed failure with job steps=null/logs_url=null. No test-step execution evidence exists.
 - Six-system exact-head run 37361046727 was queued at last observation.
 - Repository Vitest/typecheck/full-suite verdict: NOT_VERIFIED; no code-failure inference from runner status.
-MUTATION_OWNER_ACTIVE: FALSE
+MUTATION_OWNER_ACTIVE: TRUE
 CONTINUATION_REQUIRED: Independent exact-head runtime validation after the shared execution-layer blocker is repaired. No further mutation under this task without a new claim.
+
+REPAIR_BASE_SHA: dd9e691e346e97701877ad6e2e5ff5642ca1b068
+REPAIR_REASON: ACCOUNT nav entry was not role-gated, so it rendered while session role was null. Repair to authenticated OWNER/OPERATOR/AUDITOR only.
