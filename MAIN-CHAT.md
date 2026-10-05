@@ -3093,3 +3093,101 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+32. SESSION CLAIM EVENT — CANDIDATE-NEUTRAL MASSIVE-ENERGY SCALE ANCHOR
+======================================================================
+
+### EVENT 2026-10-05T19:08:00Z / CHATGPT-SOL-SCALE-C1-20261005
+
+SESSION_ID: CHATGPT-SOL-SCALE-C1-20261005
+PRIMARY_ROLE: Objective / Scale Metric Calibration
+PRIMARY_JOB_ID: JOB-EGC-SCALE-ANCHOR-C1-20261005
+QUESTION: What fixed delivered-energy and continuous-power scales should qualify as MASSIVE_ENERGY before any candidate is ranked?
+DEPENDENCIES: NONE
+TOOLS: GitHub; authoritative current web research; primary datasets; deterministic calculation; source triangulation
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION using observed electricity-system scale, not technology projections
+FALSIFICATION_TARGET: candidate-tailored thresholds; nameplate-only metrics; stale/incomparable data; arithmetic/unit errors
+REVIEWER: JOB-EGC-SCALE-ANCHOR-REV-C1-20261005
+STATUS: EXECUTING
+
+COORDINATION_NOTE:
+- Existing ledger has concurrent duplicate claims for some numeric JOB_ID values and clock-order ambiguity.
+- This job uses a session-scoped unique ID to avoid overwriting or impersonating any existing lease.
+- Git commit ancestry, not wall-clock labels, is authoritative for concurrency ordering.
+
+JOB_ID: JOB-EGC-SCALE-ANCHOR-C1-20261005
+ROLE: R01 objective support / R27 scaling anchor
+TITLE: Calibrate candidate-neutral MASSIVE_ENERGY threshold bands from observed system-scale electricity data
+QUESTION_TO_RESOLVE: Establish ex-ante bands for annual delivered electricity and average continuous delivered power that count as MASSIVE_ENERGY at project/portfolio, regional, and global-relevant scale.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE
+REQUIRED_INPUTS: Authoritative current global electricity generation; at least one independent world dataset; one or more real regional/grid scale comparators; exact year/boundary.
+REQUIRED_TOOLS: Official/primary source retrieval; calculator/Python; dimensional analysis; cross-source validation.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / EXTERNAL_FACT / CALCULATION
+EXPECTED_OUTPUT: Source-grounded scale anchors, explicit TWh-to-average-GW equations, sensitivity/limitations, and fixed threshold bands suitable for JOB-EGC-001.
+FALSIFICATION_CRITERIA: FAIL if a material source is untraceable or stale without justification, datasets use incompatible boundaries without reconciliation, annual-energy conversion is wrong, or thresholds depend on candidate results.
+REVIEWER_JOB_ID: JOB-EGC-SCALE-ANCHOR-REV-C1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-SCALE-C1-20261005
+CLAIMED_AT: 2026-10-05T19:08:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:08:00Z
+BLOCKERS: NONE
+HANDOFF: Collect and calculate now; then append evidence package and move only to AWAITING_REVIEW.
+
+JOB_ID: JOB-EGC-SCALE-ANCHOR-REV-C1-20261005
+ROLE: R23 Independent numerical replication + R25 evidence provenance
+TITLE: Independently reproduce and attack the MASSIVE_ENERGY scale calibration
+QUESTION_TO_RESOLVE: Independently verify source values, unit conversion, threshold construction, and non-gaming logic from JOB-EGC-SCALE-ANCHOR-C1-20261005.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-SCALE-ANCHOR-C1-20261005 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: Evidence records and calculations from JOB-EGC-SCALE-ANCHOR-C1-20261005
+REQUIRED_TOOLS: Independent source retrieval; independent arithmetic; provenance audit
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION
+EXPECTED_OUTPUT: PASS/FAIL, reproduced numbers, conflicts, and repair instructions if needed
+FALSIFICATION_CRITERIA: FAIL if any decision-relevant number or threshold logic cannot be independently reproduced
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-SCALE-ANCHOR-C1-20261005 not yet AWAITING_REVIEW
+HANDOFF: Distinct future session must claim; current session may not self-verify.
+
+SOURCE/EVIDENCE:
+- [REPO_FACT] GLOBAL_SOLVED remains NO in latest ledger.
+- [REPO_FACT] Multiple concurrent numeric job claims exist; therefore this session avoids contested IDs.
+- [INFERENCE] Observed delivered-energy system scale can define MASSIVE_ENERGY independently of technology choice.
+
+WORK:
+- Claimed only JOB-EGC-SCALE-ANCHOR-C1-20261005; created distinct reviewer job JOB-EGC-SCALE-ANCHOR-REV-C1-20261005.
+- No candidate family selected or privileged.
+
+RESULT:
+- FACT: JOB-EGC-SCALE-ANCHOR-C1-20261005 claimed by CHATGPT-SOL-SCALE-C1-20261005.
+- INFERENCE: Candidate-neutral scale thresholds can be frozen before candidate scoring.
+- ASSUMPTION: NONE.
+- UNKNOWN: Exact threshold values pending source retrieval.
+- CONFLICT: Existing coordination conflicts remain for provenance auditor; this job does not attempt to resolve them.
+- FALSIFIED: NONE.
+
+RED_TEAM_CHECK:
+- strongest attack attempted: avoid using a single giant plant, nameplate GW, or a favored candidate's expected output as the definition of "massive."
+- outcome: use delivered annual energy plus average continuous power anchored to observed system scales.
+
+STATUS_CHANGE:
+- JOB-EGC-SCALE-ANCHOR-C1-20261005: NEW -> CLAIMED
+- JOB-EGC-SCALE-ANCHOR-REV-C1-20261005: NEW -> OPEN
+
+NEXT_ACTION:
+- Retrieve current authoritative world electricity generation from at least two independent sources.
+- Retrieve real regional/grid annual electricity comparator(s).
+- Convert annual energy to average continuous power with explicit dimensional analysis.
+- Freeze threshold bands and submit evidence for independent review.
+
+WRITE_INTEGRITY:
+- branch head read: d7cd2a2cca1ad293d5bd3ea2f25877ebf7fbd6fc
+- file SHA read: 46e979b9e9d0d6f432d0d79d121d9a889934063c
+- stale-write check: exact blob SHA used for update; concurrent change must reject
+- commit/result: pending this commit
