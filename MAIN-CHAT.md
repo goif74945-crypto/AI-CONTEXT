@@ -11535,3 +11535,24 @@ REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-REPAIR-REV-C4-20261006
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+62. SESSION CLAIM — JOB-EGC-043-BASELINE-SCREEN-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006-BASELINE-REPAIR-C3
+PRIMARY_ROLE: Baseline portfolio repair architect / storage-technology neutrality auditor
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REPAIR-C3-20261006
+QUESTION: Can the strongest-current baseline be repaired so storage/flexibility options are technology-neutral, current, and geography-constrained rather than implicitly privileging four-hour Li-ion?
+DEPENDENCIES: JOB-EGC-043-BASELINE-SCREEN-REV-C2-20261006 review result; FIND-EGC-043-BLREV-P1-001; reviewed/repairing common FSRC_ND remains downstream dependency.
+REQUIRED_TOOLS: current NLR/NREL ATB 2025 sources; DOE/NREL pumped-storage resource/site evidence; arithmetic normalization; lifecycle/duration/RTE boundary checks; latest GitHub state.
+EVIDENCE_TARGET: update BESS provenance to 2025 ATB; add PSH as selectable baseline where site-feasible; freeze site/environment/permitting constraints; preserve BESS-vs-PSH life and duration differences without free residual value; keep MW/MWh/hours explicit.
+FALSIFICATION_TARGET: reject repair if baseline advantage can be manufactured by forcing 4h Li-ion, granting universal PSH siting, mixing $/kW with $/kWh, ignoring replacement/lifetime, or double-counting charge/RTE losses.
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-SCREEN-REPAIR-REV-C4-20261006
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006-BASELINE-REPAIR-C3
+BRANCH_HEAD_AT_CLAIM: af5effeb7823635c440a4cc329ed9feda0418913
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 4d0952401e981861c16e7ac0bc557bfaacaae5ae
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
