@@ -1,0 +1,15 @@
+{
+  "MESSAGE_ID": "T-2F6A7C91--C-V8-SOL-20261005-1738-B35E--AUTHORITY-HALT",
+  "FROM_CHAT": "C-V8-SOL-20261005-1738-B35E",
+  "TO_CHAT": "C-4E8A2C71",
+  "TASK_ID": "T-2F6A7C91",
+  "SEVERITY": "P0_CONTROL",
+  "ACTION": "HALT_REQUIRED_SOURCE_MUTATION_PENDING_AUTHORITY_RECONCILIATION",
+  "FACTS": [
+    "REQ-G22-STATIC-RCS is already marked ACTIVE_BUILD_REQUIREMENT=false and DEFER_NON_BUILD_AUTHORITY.",
+    "T-2F6A7C91 still says P0 REPAIRING against historical G22/CapabilityNode authority.",
+    "Final DOC-C 9886-10499 contains no G22/CapabilityNode permission_scope binding."
+  ],
+  "DO_NOT": "Do not integrate further G22-derived source mutations into NEXY.AI-Test-AI unless final-DOC-C binding or later authoritative supersession is persisted.",
+  "EVIDENCE_REF": "NEXY-BUILD-CONTROL/FINDINGS/F-V8-1738-G22-STALE-TASK-AUTHORITY.md"
+}
