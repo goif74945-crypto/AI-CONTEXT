@@ -1,0 +1,48 @@
+{
+  "CHAT_ID": "C-SOL-20261005-1924-V8",
+  "STATUS": "SUSPENDED_FOR_RESUME",
+  "ROLE": [
+    "SPEC_AUDITOR",
+    "RED_TEAM",
+    "CONTROL_TASK_QUEUER"
+  ],
+  "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "SOURCE_BRANCH": "NEXY.AI-Test-AI",
+  "HEAD_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CONTROL_REPOSITORY": "goif74945-crypto/AI-CONTEXT",
+  "CONTROL_PARENT_OBSERVED": "229390b5dac69618afbb350aafcd4f1c6c2a1b54",
+  "LAST_COMPLETED_STEP": "Queued two independent P1 verify-otac authority/contract repair tasks after evidence-backed findings; source mutation remained fail-closed.",
+  "TASKS": [
+    "TASK-DOC-C4-VERIFY-OTAC-OWNER-CAP-AUTHORITY-001",
+    "TASK-DOC-C4-VERIFY-OTAC-ADMISSION-CONTRACT-001"
+  ],
+  "OPEN_FINDINGS": [
+    "FIND-DOC-C4-VERIFY-OTAC-OWNER-EVICTION-AUTHORITY-001",
+    "FIND-DOC-C4-VERIFY-OTAC-ADMISSION-AUDIT-ERROR-MATRIX-001",
+    "FINDING-GLOBAL-API-OWNER-RECOVERY-SESSION-001",
+    "FIND-DOC-C4-VAULT-AUDIT-ACTOR-SPOOF-001",
+    "FIND-DOC-C3-API-HANDLER-FALSE-FREEZE-001",
+    "FINDING-DOC-C5-STATE-ORACLE-001",
+    "F-PARITY-VNEXT-ERROR-TRANSITIONS-001"
+  ],
+  "LEASE_STATE": "NONE",
+  "TEST_STATE": {
+    "GITHUB_CI": "EXECUTION_INFRA_FAILURE_ZERO_STEP_AT_EXACT_SHA",
+    "LAST_KNOWN_SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "LOCAL_FALLBACK": "UNAVAILABLE_IN_THIS_RUNTIME_DNS_COULD_NOT_RESOLVE_GITHUB_COM",
+    "CODE_VERDICT": "NOT_VERIFIED"
+  },
+  "DEPENDENCIES": [
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "CURRENT_BOTTLENECK": "Required worker prefix NEXY.AI-Test-AI/work/<TASK_ID> is structurally incompatible with existing branch ref NEXY.AI-Test-AI; CI also produces zero-step infrastructure failures.",
+  "NEXT_EXACT_STEP": [
+    "Refresh SPEC_HASH, source HEAD, control HEAD, leases and task ownership.",
+    "If INC-BRANCH-NAMESPACE-001 is still unresolved, continue independent DOC-C/source/test audits and append evidence only.",
+    "If branch policy is authoritatively resolved, claim the highest-priority unowned P0 repair first; otherwise claim TASK-DOC-C4-VERIFY-OTAC-OWNER-CAP-AUTHORITY-001 or TASK-DOC-C4-VERIFY-OTAC-ADMISSION-CONTRACT-001 on a compliant isolated worker branch.",
+    "Run red-first targeted tests, independent review, integration, exact-SHA revalidation, then rescan affected auth/session/rate-limit dependency graph."
+  ],
+  "PROJECT_CLOSURE": false,
+  "CODE_CLOSURE_VERIFIED": false
+}
