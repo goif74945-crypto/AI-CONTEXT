@@ -12442,3 +12442,61 @@ NEXT_ACTION: Reopen each source independently, reproduce scale calculations, sea
 WRITE_INTEGRITY:
 - latest MAIN-CHAT.md SHA before claim: 0088aac73755382f838558ded5734f61795c4b9c
 - exact-SHA append only; no force; no other file/repository touched.
+
+
+======================================================================
+43. DYNAMIC SOURCE/METHOD JOB CLAIM — DEPLOYMENT RATE / MANUFACTURING SCALE
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-DEPLOY-K1-20261005
+PRIMARY_ROLE: Deployment-rate / construction-scale analyst
+PRIMARY_JOB_ID: JOB-EGC-DEPLOY-RATE-K1-20261005
+QUESTION: What observed deployment rates and candidate-neutral scaling equations constrain whether a source/system can reach the mission's provisional M1/M2 net-delivered-energy milestones within the provisional 15/30-year horizons?
+DEPENDENCIES: NONE for generic equations/source acquisition; candidate verdicts depend on objective/boundary/material reviews.
+TOOLS: authoritative IEA/IRENA/IAEA/EIA/lab datasets; deterministic calculations; capacity-factor and retirement sensitivity; provenance checks.
+EVIDENCE_TARGET: SOURCE_FACT + OPERATIONAL_DATA + CALCULATION + INFERENCE.
+FALSIFICATION_TARGET: pipeline/nameplate/manufacturing capacity mislabeled as commissioned capacity; average historical additions extrapolated as guaranteed future additions; ignoring retirements, CF, transmission, storage, construction lead-time or supply-chain ramp.
+REVIEWER: JOB-EGC-DEPLOY-REV-K1-20261005 by distinct session.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-DEPLOY-RATE-K1-20261005
+ROLE: Deployment-rate source/method support for JOB-EGC-022
+TITLE: Observed deployment-rate anchors and scale equations
+QUESTION_TO_RESOLVE: Establish generic required-nameplate/annual-addition equations and current observed addition anchors without ranking candidates.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: NONE for method/source acquisition.
+REQUIRED_INPUTS: current operational additions, installed fleet, capacity-factor ranges, provisional objective thresholds.
+REQUIRED_TOOLS: official source retrieval; deterministic arithmetic; sensitivity.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+EXPECTED_OUTPUT: deployment rate matrix, scale formulas, anti-extrapolation warnings, and handoff to JOB-EGC-022.
+FALSIFICATION_CRITERIA: fail if values use proposed/pipeline capacity as built, ignore commissioning/retirement distinction, or normalize technologies on incompatible energy/output boundaries.
+REVIEWER_JOB_ID: JOB-EGC-DEPLOY-REV-K1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-DEPLOY-K1-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC UNKNOWN
+BLOCKERS: NONE for generic evidence/method.
+HANDOFF: Gather current observed additions, derive scalable formulas, submit AWAITING_REVIEW; do not self-verify.
+
+JOB_ID: JOB-EGC-DEPLOY-REV-K1-20261005
+ROLE: Independent deployment-rate replication/red team
+TITLE: Reproduce deployment calculations and attack extrapolation assumptions
+QUESTION_TO_RESOLVE: Are observed addition anchors, units, formulas and scale inferences reproducible?
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-DEPLOY-RATE-K1-20261005 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: submitted evidence/calculations
+REQUIRED_TOOLS: independent official-source retrieval + recomputation
+REQUIRED_EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / CALCULATION
+EXPECTED_OUTPUT: PASS/FAIL and repair items
+FALSIFICATION_CRITERIA: fail on pipeline-vs-operational confusion, unit error, or unjustified linear/exponential extrapolation
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+BLOCKERS: source job not submitted
+HANDOFF: distinct session required.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
