@@ -1,0 +1,45 @@
+{
+  "FINDING_ID": "FINDING-DOC-C2-3-QUEUE-FUTURE-TSA-001",
+  "REQ_ID": "REQ-DOC-C-2-3-VNEXT-DEFAULTS",
+  "TASK_ID": "TASK-DOC-C2-3-QUEUE-FUTURE-TSA-001",
+  "FROM": "C-SOL-20261005-1923-V8",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SEVERITY": "P1",
+  "CLASS": [
+    "CONTRACT_DRIFT",
+    "UNHANDLED_REQUIRED_STATE",
+    "MISSING_REQUIRED_TEST"
+  ],
+  "OBSERVED": [
+    "packages/queue/payload.ts validateWorkerPayload() returns expired only when now - enqueuedAt >= staleJobTtlMs and does not reject enqueuedAt > now.",
+    "packages/queue/workers.ts obtains now from currentTsaBatchTimeMs() and enqueuedAt from BullMQ job.timestamp before calling validateWorkerPayload().",
+    "packages/core/tick.ts makes TSA batch time monotonic and rejects TSA regression; therefore a queue enqueue timestamp greater than the currently injected TSA batch is not a valid same-authority elapsed-time state.",
+    "tests/contract/queue-payload.test.ts covers malformed payloads and the exact stale boundary but has no future-enqueue timestamp case.",
+    "tests/integration/queue-boundary.spec.ts covers missing and stale timestamps but has no future-enqueue timestamp case."
+  ],
+  "EXPECTED": [
+    "The queue consume boundary must fail closed when enqueuedAt is greater than the current authoritative TSA batch time.",
+    "A malformed future queue timestamp must not extend or bypass stale_job_ttl_ms=900000.",
+    "The contract/integration oracle must include the future timestamp boundary."
+  ],
+  "SPEC_EVIDENCE": {
+    "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+    "QUEUE_DEFAULTS": "final DOC-C raw paragraphs 9945-9948: stale_job_ttl_ms=900000; max_concurrent_pipeline_runs=10",
+    "CLOSURE_BOUNDARY_LAW": "V8 §106 requires validation of provider outputs and serialized payloads at boundaries."
+  },
+  "VERIFIED_SOURCE_EVIDENCE": {
+    "payload_blob": "f46513b1123d2a4bef277c6ce08a72656e5d9306",
+    "workers_blob": "3134e7b6bf83f7200959e3e267b28f5ea28b6392",
+    "tick_blob": "packages/core/tick.ts exact integration SHA inspected",
+    "queue_payload_test_blob": "8db0a207da39d60f422386b2896fc05ddba902c1",
+    "queue_boundary_test_blob": "0b7f955db18bb97e0bfd62f061a320db9637322e"
+  },
+  "REPRODUCTION": [
+    "Use a schema-valid DirectiveJobPayload.",
+    "Call validateWorkerPayload(payload, 1000n, 1001n, 900000).",
+    "The current expression computes age=-1 and returns 'ok' instead of rejecting a future authoritative enqueue timestamp.",
+    "No source mutation was performed because mandated worker branch namespace remains blocked."
+  ],
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "SOURCE_MUTATION": "NONE"
+}
