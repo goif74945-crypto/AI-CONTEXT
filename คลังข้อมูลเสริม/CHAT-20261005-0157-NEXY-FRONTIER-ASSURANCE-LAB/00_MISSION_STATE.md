@@ -128,3 +128,29 @@ Build exact reference implementation and test suite in an isolated local workspa
 - protected_repository_write_actions: `NONE`
 - current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
 - next_resume_rule: inspect current artifacts and deepen another unverified dimension only if materially distinct and non-duplicate; never add a sixth concept under the current mission acceptance contract
+
+## Checkpoint CP-GHOSTEDGE-CAMPAIGN-SUFFICIENCY-03
+
+- timestamp_local: `2026-10-05T20:36:45+07:00`
+- continuation_type: `DEEPEN_EXISTING_CONCEPT`
+- concept_count_after: `5` (unchanged)
+- deepened_concept: `GHOSTEDGE`
+- verified_gap_1: original detector returns `CLEAN` for zero experiments
+- verified_gap_2: original detector can emit a candidate without sham/control evidence
+- delivered_design: `GHOSTEDGE_CAMPAIGN_DESIGN.md`
+- delivered_code: `ghostedge_campaign_assurance.py`
+- delivered_tests: `test_ghostedge_campaign_assurance.py`
+- delivered_evidence: `GHOSTEDGE_CAMPAIGN_EVIDENCE.md`
+- persisted_code_commit: `8c7e5c6ef4058e07981bf770c302ee3a402ed0da`
+- design_blob: `3819b9625b2ecac80d71c5cf37208f1cfa01b292`
+- implementation_blob: `60e4a7ce1fb11ae96bc56dae24c728b08d10d22c`
+- test_blob: `815a8705f5935d19553a53926d805cbde09f5af7`
+- compile: `PASS`
+- tests: `76/76 PASS` (`18` new + `58` regression)
+- positive_negative_adversarial_integration: `PASS`
+- persistence_readback: `EXACT_MATCH`
+- post_persistence_detached_worktree_verification: `PASS`
+- self_audit_repairs: `2` (non-string ID fail-closed; string collection rejection)
+- protected_repository_write_actions: `NONE`
+- current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
+- next_resume_rule: inspect current artifacts and deepen another unverified dimension only if materially distinct and non-duplicate; never add a sixth concept under the current mission acceptance contract
