@@ -10036,3 +10036,220 @@ REVIEWER: JOB-EGC-042-RSTAR-C3-REPAIR-REV-C6-20261006
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+58. INDEPENDENT REVIEW RESULT — JOB-EGC-043-OBJECTIVE-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0320+07-OBJREV2
+PRIMARY_JOB_REVIEWED: JOB-EGC-043-OBJECTIVE-C1-20261006
+ROLE: Independent quantitative-objective adversarial reviewer / threshold and arithmetic replicator
+REVIEW_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+EXECUTIVE_REVIEW:
+The objective architecture is substantially stronger than a plant-LCOE contest: net served energy, matched reliability/geography, whole-system cost, material/resource pathways, safety and explicit sensitivity are correctly required. The scale arithmetic independently reproduces. However, two ranking-critical rules remain methodologically unsafe: (1) the EROI_SYS >=5 central / >=3 pessimistic binary gate imports unsupported numeric cutoffs across incompatible EROI boundaries; and (2) the >=95% uncertainty-draw rule is valid only if an evidence-supported joint probability distribution exists. The current fallback wording must explicitly inherit the mission's already-recorded allowed-joint-set robustness rule. A third repair is required to make "strongest matched current baseline" an explicit optimizer rather than a selectable comparator.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-OBJ-001
+CLAIM: IEA demand anchor provenance and version scope
+TRUTH_CLASS: SOURCE_FACT + REVIEW
+SOURCE: IEA, Electricity 2026, Demand
+SOURCE_DATE: 2026-02
+URL: https://www.iea.org/reports/electricity-2026/demand
+VERIFIED_FACTS:
+- Electricity 2026 reports 28,200 TWh global electricity consumption in 2025 and forecasts 33,600 TWh in 2030.
+- 2026-2030 average growth is 3.6%/year and about 1,100 TWh/year is added on average.
+SOURCE_VERSION_CAVEAT:
+- IEA Electricity Mid-Year Update 2026 later reports latest 2025 consumption as 28,600 TWh and forecasts 30,700 TWh for 2027.
+- URL: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+- The mid-year update does not in the reviewed source replace the 2030 value with a new 2030 forecast; therefore 33,600 TWh remains usable as a VERSIONED Electricity-2026 mission anchor, but must not be described as an immutable measurement.
+REVIEW_STATUS: PASS_WITH_VERSION_LOCK.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-OBJ-002
+CLAIM: renewable cost anchors
+TRUTH_CLASS: SOURCE_FACT + REVIEW
+SOURCE: IRENA, Renewable power generation costs in 2025
+SOURCE_DATE: 2026-07
+URL: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+VERIFIED_FACTS:
+- solar PV 44 USD/MWh; onshore wind 33; offshore wind 78; hydropower 62; geothermal 89 for the cited 2025 global/new-project LCOE framing;
+- more than 90% of utility-scale renewable projects commissioned in 2025 were below the cheapest new fossil alternative in their market.
+LIMITATION: these are generation-project LCOE values, not mission FSRC_ND delivered-system cost.
+REVIEW_STATUS: PASS_WITH_SCOPE_LOCK.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-OBJ-003
+CLAIM: firm-LCOE evidence does not establish full-system reliability cost
+TRUTH_CLASS: SOURCE_FACT + VISUAL_PDF_VALIDATION + REVIEW
+SOURCE: IRENA, 24/7 renewables: The economics of firm solar and wind
+SOURCE_DATE: 2026-05
+URL: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf
+VISUAL_CHECK: page 8 inspected with PDF screenshot tool.
+VERIFIED_FACTS:
+- report defines firm LCOE as a PROJECT-LEVEL benchmark;
+- its default reliability concept is a simplified asset-level energy-demand share, explicitly different from power-system adequacy/security;
+- solar+storage firm cost examples in high-quality regions are about 54-82 USD/MWh; wind+storage examples span about 59-94 USD/MWh depending on market/resource.
+CONCLUSION:
+- 60 USD_2025/MWh may remain a pre-registered MISSION_CONVENTION, but the IRENA project benchmark does not prove that <=60 is a universal whole-system low-cost threshold.
+REVIEW_STATUS: PASS_WITH_SCOPE_LOCK.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-OBJ-004
+CLAIM: independent scale arithmetic replication
+TRUTH_CLASS: CALCULATION
+TOOL: Wolfram Language evaluator; direct dimensional recomputation
+INPUTS: Electricity-2026 forecast anchor 33,600 TWh/year; mission fractions 5%,10%,20%; 8,760 h/year; 20-year linear diagnostic.
+EQUATIONS:
+E_f=f*33,600 TWh/y.
+P_avg=E_f*1000/8760 GW.
+Annual capability increment=E_10%/20 and P_10%/20.
+OUTPUT:
+- 5%: 1,680 TWh/y = 191.780821917808 GW average.
+- 10%: 3,360 TWh/y = 383.561643835616 GW average.
+- 20%: 6,720 TWh/y = 767.123287671233 GW average.
+- 20-year linear diagnostic: 168 TWh/y of end-state annual-output capability added per deployment year = 19.178082191781 GW-average capability/year.
+- illustrative end-state nameplate at CF 20/30/40/60/90%: 1917.808 / 1278.539 / 958.904 / 639.269 / 426.180 GW.
+- corresponding simple 20-year nameplate additions: 95.890 / 63.927 / 47.945 / 31.963 / 21.309 GW/year.
+- 1,100 TWh/y = 125.570776255708 GW average; 3,360/1,100 = 3.05454545.
+PYTHON_REPLICATION_ATTEMPT: NOT_EXECUTED; platform returned TooManyActiveSessionsError. No Python result is claimed.
+REPLICATION_STATUS: INDEPENDENT_SESSION_WOLFRAM_PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-OBJ-005
+CLAIM: fixed EROI_SYS 5/3 gate lacks boundary-compatible evidentiary basis
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + REVIEW
+SOURCE_A: Hall, Balogh & Murphy (2009), What is the Minimum EROI that a Sustainable Society Must Have?, Energies 2(1):25-47.
+DOI: 10.3390/en20100025
+URL: https://www.mdpi.com/1996-1073/2/1/25
+SOURCE_A_SCOPE:
+- paper gives about 3:1 for oil/corn ethanol at mine-mouth/farm-gate in its preliminary minimum analysis;
+- it separately states roughly 5:1 for main fuels to maintain something like civilization as an educated guess, with the detailed calculation beyond the paper's scope;
+- it explicitly distinguishes mine-mouth, point-of-use and extended EROI boundaries.
+SOURCE_B: Lambert et al. (2014), Energy, EROI and quality of life, Energy Policy 64:153-167.
+DOI: 10.1016/j.enpol.2013.07.001
+URL: https://www.sciencedirect.com/science/article/pii/S0301421513006447
+SOURCE_B_SCOPE:
+- societal EROI_SOC framing reports well-being associations around 20-30:1, showing numeric interpretation is boundary/objective dependent rather than a universal technology cutoff.
+SOURCE_C: Bhandari et al. (2015), PV systematic review/meta-analysis.
+DOI: 10.1016/j.rser.2015.02.057
+URL: https://www.sciencedirect.com/science/article/pii/S136403211500146X
+SOURCE_C_FACT: mean harmonized PV EROI across reviewed technology cases spans 8.7-34.2 under harmonized assumptions; this is descriptive evidence, not a universal pass threshold.
+CALCULATION:
+net-energy fraction if EROI=R is 1-1/R: R=3 -> 0.6667; R=4 -> 0.75; R=5 -> 0.8; R=10 -> 0.9.
+COUNTEREXAMPLE:
+Candidate A can have FSRC_ND=50 USD/MWh, EROI_SYS=4, all other gates pass; Candidate B can cost 55 USD/MWh, EROI_SYS=10. Current binary EROI>=5 rule eliminates A despite A having positive net energy and lower whole-system resource cost. No reviewed source establishes that mission-boundary EROI_SYS=4 is physically or societally invalid.
+FINDING: F-EGC-043-OBJREV-P1-001.
+SEVERITY: P1 / ranking-changing normative threshold.
+VERDICT: REPAIR_REQUIRED.
+REPAIR:
+- retain physical hard fail EROI_SYS <=1 (zero/non-positive net energy at identical boundary);
+- report EROI_SYS and net-energy fraction continuously on one frozen lifecycle boundary;
+- do NOT use >=5 central / >=3 pessimistic as an evidence-derived binary elimination gate;
+- if the mission deliberately adopts a normative EROI threshold, label it MISSION_CONVENTION, pre-register it, sensitivity-test it, and require separate independent justification before it can eliminate a candidate.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-OBJ-006
+CLAIM: uncertainty probability rule must inherit joint-state constraint
+TRUTH_CLASS: REPO_FACT + REVIEW
+ARCHIVE_BLOB_SHA: 041fd00ad05506ed133fc9fd1d5e8adb64397347
+UPSTREAM_RECORD: REVIEW-EGC-025-A1-007 / JOB-EGC-025-REPAIR-A1-20261005
+UPSTREAM_RULE:
+ROBUSTLY_CHEAPER iff sup_{s in S_allowed}[C_candidate(s)-C_baseline(s)] < 0 on the same service boundary.
+Probability claims require a calibrated/evidence-supported JOINT distribution; repeated Monte Carlo draws do not validate invented distributions or independence assumptions.
+CURRENT_OBJECTIVE_DEFECT:
+"cheaper in >=95% of pre-registered uncertainty draws" is not valid merely because draws are pre-registered. Draw generation must come from an evidence-supported joint distribution including material dependence/correlation. Otherwise the mission must use allowed-joint-state/scenario robustness; if S_allowed is materially incomplete, status remains NOT_VERIFIED.
+FINDING: F-EGC-043-OBJREV-P1-002.
+SEVERITY: P1 / ranking stability.
+VERDICT: REPAIR_REQUIRED.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-OBJ-007
+CLAIM: strongest-current-baseline must be mathematically non-selectable
+TRUTH_CLASS: INFERENCE / METHOD_REVIEW
+DEFECT:
+The phrase "strongest matched current baseline" is directionally correct but permits ambiguity over which baseline portfolio is selected.
+REQUIRED_DEFINITION:
+C_BASE_STAR(g,R_STAR,B)=min_{b in B_current_feasible(g,R_STAR,B)} FSRC_ND(b),
+where B is the frozen system boundary/constraint set and every b receives the same geography set, delivery nodes, reliability/service vector, horizon, financing/accounting rules and optimization freedom as the candidate where physically applicable.
+The candidate relative-cost gate is then FSRC_ND(candidate)/C_BASE_STAR <=0.90.
+FINDING: F-EGC-043-OBJREV-P1-003.
+SEVERITY: P1 / anti-strawman baseline.
+VERDICT: REPAIR_REQUIRED.
+
+REVIEW_EVIDENCE_ID: REV-EGC-043-OBJ-008
+CLAIM: deployment scale convention and observed deployment anchor
+TRUTH_CLASS: SOURCE_FACT + REVIEW
+SOURCE: IRENA Renewable Capacity Statistics 2026 / 1 Apr 2026 release
+URL: https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience
+SOURCE_FACT: 692 GW of renewable nameplate capacity was added globally in 2025; total renewable capacity reached 5,149 GW.
+INTERPRETATION:
+The mission's 20-year linear nameplate diagnostics (about 21-96 GW/y depending on illustrative CF) are not obviously absurd compared with aggregate global annual renewable nameplate deployment, but this DOES NOT establish that any one candidate can deliver 3,360 TWh/y net served, nor does it resolve grid/storage/material/manufacturing constraints.
+DEPLOYMENT-T0 DEFECT:
+"within 20 years from standardized common deployment start" needs one exact frozen T0 before candidate ranking; otherwise calendar/pipeline treatment can move the gate.
+FINDING: F-EGC-043-OBJREV-P2-004.
+SEVERITY: P2 / definition completeness.
+REPAIR: freeze one candidate-neutral decision/deployment T0 and define treatment of already-committed pipeline at T0.
+
+RED_TEAM_RESULTS:
+1. Plant LCOE as LOW_COST proof -> FALSIFIED / correctly forbidden by primary.
+2. IRENA firm-LCOE as full-system adequacy cost -> FALSIFIED / primary limitation direction correct; PDF visual check confirms project-level scope.
+3. Scale arithmetic error -> NOT FOUND; independent arithmetic PASS.
+4. 10% scale target disguised as IEA recommendation -> NOT FOUND; primary correctly labels it MISSION_CONVENTION.
+5. 60 USD/MWh disguised as universal market fact -> scope risk; acceptable only as MISSION_CONVENTION plus 40/60/80 sensitivity.
+6. EROI>=5/>=3 as universal science-derived system gate -> FALSIFIED.
+7. 95% Monte Carlo as robustness without validated joint distribution -> FALSIFIED.
+8. weak baseline selected as comparator -> loophole remains until C_BASE_STAR optimizer definition is adopted.
+9. favorable geography only for candidate -> primary repair is directionally PASS, provided feasible-set symmetry is explicit in C_BASE_STAR.
+10. nameplate satisfies MASSIVE target -> correctly forbidden.
+
+CLAIM-BY-CLAIM REVIEW:
+- CLAIM-EGC-043-001 plant LCOE insufficient: PASS.
+- CLAIM-EGC-043-002 3,360 TWh/y = 383.5616 GW average arithmetic: PASS / independently replicated.
+- CLAIM-EGC-043-003 LOW_COST V1: REVIEW_FAILED_PENDING_REPAIR because uncertainty and exact strongest-baseline definitions are incomplete; absolute 60 threshold remains allowable only as MISSION_CONVENTION.
+- CLAIM-EGC-043-004 MASSIVE_ENERGY V1: PASS_WITH_REPAIR; scale definition and arithmetic are valid as mission convention, but exact T0/pipeline rule must be frozen.
+- CLAIM-EGC-043-005 EROI central>=5/pessimistic>=3: FALSIFIED_AS_EVIDENCE_DERIVED_BINARY_GATE; physical EROI<=1 hard fail survives.
+- CLAIM-EGC-043-006 geography/system-boundary symmetry: PASS_DIRECTION / integrate into explicit baseline feasible-set optimizer.
+
+PRIMARY_JOB_STATUS_CHANGE:
+JOB-EGC-043-OBJECTIVE-C1-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+G1 quantitative objective defined: NOT_VERIFIED until repair is independently reviewed.
+G21 uncertainty cannot plausibly reverse conclusion: NOT_VERIFIED; upstream uncertainty repair remains relevant.
+G22 strongest current baseline comparison: NOT_VERIFIED until C_BASE_STAR is explicit and baseline frontier is completed.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+REPAIR_JOB:
+JOB_ID: JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006
+TITLE: Repair objective EROI, uncertainty, strongest-baseline and deployment-T0 gates
+ROLE: Candidate-neutral objective repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can LOW_COST/MASSIVE_ENERGY be frozen without unsupported EROI cutoffs, uncalibrated Monte Carlo, selectable baselines, or movable deployment starts?
+CANDIDATE: ALL candidates and baselines.
+DEPENDENCIES: F-EGC-043-OBJREV-P1-001/002/003 and P2-004; archive REVIEW-EGC-025-A1-007.
+REQUIRED_INPUTS: JOB-EGC-043 objective V1; EROI boundary literature; current baseline frontier; common accounting/R_STAR outputs as they mature.
+REQUIRED_TOOLS: algebra; source-boundary audit; adversarial counterexamples; direct source retrieval; exact arithmetic.
+REQUIRED_EVIDENCE:
+- EROI_SYS boundary and hard/diagnostic rule;
+- evidence-supported joint-distribution condition plus S_allowed fallback;
+- explicit C_BASE_STAR optimizer;
+- exact candidate-neutral deployment T0/pipeline rule;
+- preservation of 40/60/80 and 5/10/20 sensitivity conventions.
+EXPECTED_OUTPUT: OBJECTIVE_V2 with no ranking-changing unsupported thresholds and explicit truth classes.
+FALSIFICATION_CONDITION: FAIL if an arbitrary EROI cutoff can still eliminate a positive-net-energy candidate; a Monte Carlo result can pass with invented probabilities/dependence; baseline comparator can be cherry-picked; or deployment start can shift by candidate.
+REVIEWER_JOB_ID: JOB-EGC-043-OBJECTIVE-REPAIR-REV-C4-20261006
+STATUS: OPEN
+BLOCKERS: NONE for method repair; final numerical candidate ranking still depends on R_STAR/common-ledger/baseline completion.
+NEXT_ACTION: distinct author repairs objective, then independent reviewer attacks V2.
+
+JOB_ID: JOB-EGC-043-OBJECTIVE-REPAIR-REV-C4-20261006
+TITLE: Independent review of OBJECTIVE_V2 repair
+ROLE: Independent objective-gate auditor / numerical replicator
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006 AWAITING_REVIEW.
+EXPECTED_OUTPUT: PASS / REVIEW_FAILED with independent counterexamples and arithmetic replication.
+STATUS: BLOCKED
+BLOCKERS: repair not yet submitted.
+
+REVIEW_JOB_STATE:
+JOB-EGC-043-OBJECTIVE-REV-C2-20261006: EXECUTING -> AWAITING_REVIEW.
+SELF_VERIFICATION: FORBIDDEN.
+NEXT_HIGHEST_VALUE_ACTION: execute JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006 if still unclaimed after state refresh, because G1/G21/G22 remain ranking-critical.
