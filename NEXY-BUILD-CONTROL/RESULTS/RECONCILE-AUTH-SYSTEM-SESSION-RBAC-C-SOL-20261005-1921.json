@@ -1,0 +1,36 @@
+{
+  "RESULT_ID": "RECONCILE-AUTH-SYSTEM-SESSION-RBAC-C-SOL-20261005-1921",
+  "RECONCILER": "C-SOL-20261005-1921-V8-ROLE-REVERIFY",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "CANONICAL_TASK_ID": "TASK-AUTH-SYSTEM-SESSION-ROLE-GATE-001",
+  "JOINED_TASK_ID": "TASK-DOC-C4-SESSION-ME-RBAC-001",
+  "OVERLAP": {
+    "semantic": "GET /api/session/me must not succeed for SYSTEM; P0 additionally covers verify-otac SYSTEM session creation",
+    "source_paths": [
+      "packages/api/auth.ts",
+      "tests/coverage/auth-decision-paths.test.ts"
+    ],
+    "risk": "Two future writers could implement the same session-me guard differently."
+  },
+  "DECISION": "JOIN_P1_SESSION_ME_SUBPROBLEM_INTO_P0_CANONICAL_AUTHORITY_TASK",
+  "PRESERVED_REQUIREMENTS": [
+    "REQ-DOC-C-ROLE-ENUM-001",
+    "REQ-DOC-C-4-2-SESSION-ME-RBAC-001"
+  ],
+  "PRESERVED_FINDINGS": [
+    "FINDING-DOC-C-ROLE-SYSTEM-SESSION-AUTHORITY-001",
+    "FINDING-DOC-C4-SESSION-ME-RBAC-001"
+  ],
+  "ADDITIONAL_DESIGN_BLOCKER": {
+    "id": "AUTH-SYSTEM-DENIAL-SURFACE-AUTHORITY-UNRESOLVED",
+    "reason": [
+      "verify-otac final DOC-C restricts success role to OWNER|OPERATOR|AUDITOR but its explicit error matrix does not list FORBIDDEN.",
+      "session/me declares RBAC OWNER|OPERATOR|AUDITOR but omits a route-local error matrix.",
+      "Existing independent review withholds implementation approval until denial behavior is justified."
+    ],
+    "rule": "Do not invent or silently choose status/error code during repair."
+  },
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE"
+}
