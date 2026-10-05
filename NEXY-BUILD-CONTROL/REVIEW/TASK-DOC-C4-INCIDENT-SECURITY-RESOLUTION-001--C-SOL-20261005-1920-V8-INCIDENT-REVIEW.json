@@ -1,0 +1,44 @@
+{
+  "REVIEW_ID": "REVIEW-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001-C-SOL-20261005-1920-V8",
+  "REVIEWER_CHAT": "C-SOL-20261005-1920-V8-INCIDENT-REVIEW",
+  "TASK_ID": "TASK-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001",
+  "FINDING_ID": "FINDING-DOC-C4-INCIDENT-SECURITY-RESOLUTION-001",
+  "ROLE": "INDEPENDENT_INTEGRATION_REVIEWER_RED_TEAM",
+  "PRIORITY": "P1",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SOURCE_TREE": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "AUTHORITY_EVIDENCE": {
+    "canonical_route_surface": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE includes GET /api/incidents/:id among the twelve final DOC-C canonical routes.",
+    "global_api_law": "REQ-DOC-C-4-1-GLOBAL-API-LAW requires route semantic verification rather than adapter-existence-only checks.",
+    "authority_gap": "Current authority packets do not define a SecurityIncident public response schema/tenancy mapping, so repair shape must remain frozen until authoritative resolution."
+  },
+  "SOURCE_RECOMPUTATION": [
+    "packages/auth/security-incident.ts blob 942473739aa3dfe04d0dc595f3e92f8e8f665e45 creates SecurityIncident and writes AuditLog.incidentId to that SecurityIncident id.",
+    "packages/orch-core/system-state.ts blob 1883414a3d8b2034d06ef30e039b537319e2e0f1 creates SecurityIncident as a primary terminal incident for terminal paths without a pipeline-run FreezeIncident path.",
+    "packages/api/canonical.ts blob 1664d8d6a7da32245578addc26596f8fd4d55954 maps every non-null AuditLog.incidentId to /api/incidents/<id>.",
+    "The same canonical handler resolves GET /api/incidents/:id only with prisma.freezeIncident.findUnique; no SecurityIncident lookup is present.",
+    "packages/api/health.ts blob bdd0ebf9c1a2a0009be46761a46707607d05494c reads both FreezeIncident and SecurityIncident as active incident evidence.",
+    "prisma/schema.prisma blob 0c557a1bb9b02859bb479655575c3566e201eb6f defines FreezeIncident and SecurityIncident as distinct active models."
+  ],
+  "COUNTEREXAMPLE": {
+    "producer": "recordAuthSecurityIncidentTx",
+    "emitted_audit_link": "/api/incidents/<SecurityIncident.id>",
+    "resolver_behavior": "handleIncident queries FreezeIncident only",
+    "consequence": "A valid canonical audit incident_link can resolve to not-found for an active SecurityIncident id."
+  },
+  "VERDICT": "CONFIRMED_ACTIONABLE_INTEGRATION_DEFECT",
+  "REPAIR_BOUNDARY": [
+    "Either every canonical incident_link emitted for an active incident resolves through the canonical detail route, or the link must not be emitted as resolvable canonical truth.",
+    "Preserve OWNER/AUDITOR authorization and fail-closed behavior.",
+    "Do not invent SecurityIncident public response fields, retry semantics, error matrix, or tenancy/project scoping while final authority is incomplete.",
+    "Source implementation remains blocked until both worker-ref isolation and route-authority dimensions are valid."
+  ],
+  "BLOCKERS": [
+    "F-C-SOL-V8-1737-GLOBAL-API-ROUTE-DENOMINATOR",
+    "INC-BRANCH-NAMESPACE-001"
+  ],
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "STATUS": "REVIEW_CONFIRMS_GAP_BLOCKED"
+}
