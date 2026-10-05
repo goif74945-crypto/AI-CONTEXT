@@ -1,0 +1,67 @@
+{
+  "SCHEMA_VERSION": "NEXY_V16_RC1_3_PREACTIVATION_REVIEW_V1",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "REVIEW_ID": "REVIEW-C-SOL-20261005-1731Z-V16RC13-LEGACYLEASE-AUDIT-31B7",
+  "REVIEWER_CHAT_ID": "C-SOL-20261005-1731Z-V16RC13-LEGACYLEASE-AUDIT-31B7",
+  "REVIEW_KIND": "INDEPENDENT_LEGACY_AUTHORITY_CROSS_VALIDATION",
+  "REVIEWED_TASK_ID": "CTRL-V16RC13-LEGACY-AUTHORITY-INVENTORY-LEASES-CLAIMS-INTEGRATION",
+  "REVIEWED_OWNER_CHAT": "C-SOL-V16RC13-DRAIN-97E912A7",
+  "PINNED_CONTROL_REF": "8e49566c60b1f93a0b1ab71f1117481238184dff",
+  "CONTROL_HEAD_BEFORE_PUBLICATION": "530fe014951835ce75ee2fb182aec90cc599a5b3",
+  "BOOTSTRAP_FENCE_STATE_VERSION_OBSERVED": 2,
+  "BOOTSTRAP_STATE_OBSERVED": "LEGACY_FREEZE_REQUESTED",
+  "SPEC_ARTIFACT_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_HEAD_OBSERVED": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "TARGET_TREE_OBSERVED": "a809bc5f4cc2d8f806e500d1d3a09a4e66450c7c",
+  "PROTECTED_UPSTREAM_HEAD_OBSERVED": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "LEGACY_EPOCH_INTEGRATION_HEAD": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TARGET_RELATION_TO_LEGACY_EPOCH_START": {
+    "COMPARE_BASE": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "COMPARE_HEAD": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "STATUS": "behind",
+    "BEHIND_BY": 57,
+    "MERGE_BASE": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+    "INTERPRETATION": "Current target is an ancestor of the legacy epoch integration-start commit by 57 commits."
+  },
+  "LEASE_INVENTORY": {
+    "TOTAL_NON_GITKEEP_RECORDS": 22,
+    "ACTIVE_COUNT": 7,
+    "ACTIVE_RECORDS": [
+      "T-5A04C0D1",
+      "T-6C3F12A9",
+      "T-6F42B8E1",
+      "T-6F42C9E2",
+      "T-768BB2A7",
+      "T-8A3C1D72",
+      "T-D4A71C2E"
+    ],
+    "NOTE": "T-6F42B8E1 is EXTERNAL_VALIDATION_ONLY and forbids repository source mutation, but remains an active legacy lease/control authority requiring reconciliation for deterministic drain."
+  },
+  "LEGACY_CLAIM_INVENTORY": {
+    "UNRESOLVED_SOURCE_MUTATION_CLAIMS": [
+      "T-V11-BOOTSTRAP-FAIL-CLOSED-001",
+      "TASK-API-OTAC-ERROR-CONTRACT-20261005-0609"
+    ],
+    "CLAIMED_READ_ONLY_OR_CONTROL_ONLY": [
+      "AUDIT-V11-AUTHORITY-DOC-C-0541",
+      "AUDIT-V11-WORKER-NAMESPACE-LIVENESS-0545",
+      "AUDIT-V11-BRANCH-LIVENESS-SHADOW-0606",
+      "AUDIT-DOC-C3-RELEASE-POLICY-CONTRACT-SHADOW-0612"
+    ]
+  },
+  "INTEGRATION_DIRECTORY_OBSERVATION": "No active integration record observed in NEXY-BUILD-CONTROL/INTEGRATION at inspected state; this does not by itself prove global legacy integration authority is zero.",
+  "FREEZE_EVIDENCE_OBSERVATION": "Global freeze request is published, but bootstrap fence explicitly records REQUEST_PUBLISHED_NOT_YET_PROVEN_STABLE.",
+  "EVIDENCE_STATUS": "PASS",
+  "LEGACY_DRAIN_STATUS": "BLOCKED",
+  "ACTIVATION_ELIGIBILITY": "NOT_ELIGIBLE",
+  "BLOCKERS": [
+    "Legacy admission freeze stability is not yet proven.",
+    "Seven legacy lease records remain ACTIVE at the pinned control ref.",
+    "At least two legacy source-mutation claims remain CLAIMED.",
+    "Complete canonical control-P0 manifest and zero-count proof are not yet complete.",
+    "Static protocol P0 zero has not been proven."
+  ],
+  "PRODUCT_SOURCE_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "PROTECTED_UPSTREAM_MUTATION_PERFORMED": false
+}
