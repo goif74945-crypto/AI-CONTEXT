@@ -4,7 +4,7 @@
   "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "SEVERITY": "P1",
-  "STATUS": "OPEN_BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "DUPLICATE_JOINED",
   "OBSERVED": [
     "packages/api/directives.ts adds dispatch_status to the HTTP 200 data object on both successful idempotent replay and successful new submission.",
     "The same source persists EventLog.eventKind and AuditLog.action as DIRECTIVE_RECEIVED for creation.",
@@ -22,5 +22,9 @@
   ],
   "REPRODUCTION": "Static exact-SHA source/spec comparison. No runtime claim beyond the explicit returned object and persisted audit literals.",
   "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "REVIEWER_CHAT": "C-V8-SOL-20261005-1738-B35E"
+  "REVIEWER_CHAT": "C-V8-SOL-20261005-1738-B35E",
+  "ACTIVE": false,
+  "DUPLICATE_OF": "FINDING-DOC-C4-DIRECTIVE-CREATE-CONTRACT-001",
+  "CANONICAL_TASK": "TASK-DOC-C4-DIRECTIVE-CREATE-CONTRACT-001",
+  "RECONCILIATION_NOTE": "Independent same-SHA evidence reproduced concurrently. Do not schedule a second repair; use the canonical finding/task and this record only as corroborating evidence."
 }
