@@ -32,5 +32,14 @@
   ],
   "STATUS": "PARTIAL",
   "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
-  "NOTE": "DOC-C establishes the cooldown semantics but does not prescribe a particular email canonicalization algorithm. Task T-C84E61B2 independently requires that email case variants cannot bypass the cooldown bucket."
+  "NOTE": "DOC-C establishes 60-second cooldown semantics but does not prescribe email case normalization. The prior T-C84E61B2 case-fold acceptance criterion is not canonical DOC-C authority and does not block this requirement absent a separate active identity-normalization requirement.",
+  "EVIDENCE": {
+    "source_sha": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "implementation_commit": "775f4ffeef5246ce177650dc55fb85bda8bbdd0a",
+    "rate_limit_blob": "d6c99adcbb17365a505032acbb8da4da16537ff9",
+    "integration_test_blob": "a0d8e13325383c1e1aa9fefa9973ef794ff1ad81",
+    "coverage_test_blob": "51e96eb3242d378f03e6a1720b3ae6fd0b774a4f",
+    "static_result": "MATCH: dedicated max=1 cooldown uses VNEXT_DEFAULTS.auth.otac_resend_cooldown_ms and same-string retry test expects 429 RATE_LIMIT_EXCEEDED.",
+    "execution_result": "REVERIFY_REQUIRED: no fresh exact-head executed PASS attached in this reconciliation."
+  }
 }
