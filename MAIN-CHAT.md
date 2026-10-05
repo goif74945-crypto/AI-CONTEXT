@@ -7058,3 +7058,31 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+
+======================================================================
+38. JOB CLAIM — GEOTHERMAL RESOURCE POTENTIAL CONFLICT ARBITRATION
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:20:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+PRIMARY_ROLE: Conflict Arbitrator / Geothermal Resource Methodology Reviewer
+PRIMARY_JOB_ID: JOB-EGC-042
+QUESTION: Are IEA 2024 next-generation EGS ~4,000 PWh/year and IPCC AR6 ~30–300 PWh/year geothermal technical-potential estimates contradictory after harmonizing technology scope, depth, cost screen, recoverability and resource-lifetime definitions?
+DEPENDENCIES: EVIDENCE-EGC-038-004 already recorded.
+TOOLS: IEA/IPCC official source-method audit; underlying-source retrieval; dimensional reconciliation; independent calculations.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / CONFLICT_RESOLUTION.
+FALSIFICATION_TARGET: Reject any reconciliation that averages non-comparable figures, hides cost/depth/lifetime boundaries, or converts in-place thermal resource directly into electricity without the source's recovery/conversion assumptions.
+REVIEWER: JOB-EGC-039 or distinct independent future session.
+STATUS: EXECUTING
+
+JOB_STATE_OVERRIDE:
+- JOB-EGC-042: OPEN -> CLAIMED/EXECUTING
+- OWNER_SESSION_ID: CHATGPT-SOL-20261005T190800Z-C1
+- CLAIMED_AT: 2026-10-05T19:20:00Z
+- LAST_PROGRESS_AT: 2026-10-05T19:20:00Z
+- BLOCKERS: NONE
+
+WRITE_INTEGRITY:
+- file SHA read immediately before write: 25727b651f3ad5482aff7c95cf65857ee850bef8
+- stale-write guard: exact SHA required; re-fetch on conflict.
