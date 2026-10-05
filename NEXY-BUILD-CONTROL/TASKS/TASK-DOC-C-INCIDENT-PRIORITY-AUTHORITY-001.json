@@ -2,13 +2,13 @@
   "TASK_ID": "TASK-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001",
   "FINDING_ID": "FINDING-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001",
   "CREATOR_CHAT": "C-SOL-20261005-1923-INCIDENT-AUTH",
-  "OWNER_CHAT": "UNASSIGNED",
+  "OWNER_CHAT": "C-SOL-20261006-0143-PRODUCT-QUEUE-01",
   "MISSION_ID": "M05-OBSERVABILITY-AUDITABILITY",
   "REQ_ID": "REQ-DOC-C-5-6-INCIDENT-LAW",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "ACTIVE",
   "PRIORITY": "P1",
   "RISK": "HIGH_INCIDENT_TRUTH_AUTHORITY",
-  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "BASE_SHA": "77519350b839fe9371d2f80655495ab13d3b90a7",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "GAP_CLASS": [
     "AUTHORITY_VIOLATION",
@@ -42,6 +42,9 @@
     "Focused incident tests and affected state/run-state tests execute on the exact candidate SHA, followed by independent review/red-team and integration reverify.",
     "No mutation to NEXY.ai."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "When an authoritative Git-valid worker isolation mechanism exists, refresh source HEAD, claim one-writer scope, resolve authority first, then repair tests/runtime narrowly and reverify."
+  "BLOCKER": null,
+  "NEXT_ACTION": "When an authoritative Git-valid worker isolation mechanism exists, refresh source HEAD, claim one-writer scope, resolve authority first, then repair tests/runtime narrowly and reverify.",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/TASK-DOC-C-INCIDENT-PRIORITY-AUTHORITY-001/C-SOL-20261006-0143-PRODUCT-QUEUE-01",
+  "UNBLOCKED_BY": "Current user instruction explicitly authorizes Git-valid isolated worker branches; legacy slash-child namespace blocker is superseded.",
+  "CLAIMED_AT": "2026-10-06T02:00:00+07:00"
 }
