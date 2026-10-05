@@ -7135,3 +7135,327 @@ REVIEWER_JOB_ID: JOB-EGC-045-SAFETY-FMEA-REV-C3-20261006 if repair creates new m
 STATUS: OPEN
 BLOCKERS: NONE for method/evidence review; candidate-specific final safety pass may remain blocked by missing design/site data.
 NEXT_ACTION: independent session must reproduce, attack, and either verify or fail this result.
+
+
+======================================================================
+RESULT — JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0315+07-GS1
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SCOPE_COMPLETED:
+Empirical grid/storage/transmission/interconnection evidence slice plus candidate-neutral sensitivities. This does NOT freeze R_STAR, MASSIVE_ENERGY, or a technology winner.
+
+EVIDENCE_ID: EVID-EGC-045-001
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-QUEUE
+TOOL: official web retrieval
+METHOD: Berkeley Lab Queued Up 2026 HTML review
+DATE: 2026-10-06
+SOURCE: Lawrence Berkeley National Laboratory, Backlog of power plants seeking transmission grid connection eased somewhat in 2025 amidst high withdrawals
+SOURCE_DATE: 2026-07-01
+URL/DOI/IDENTIFIER: https://emp.lbl.gov/news/backlog-power-plants-seeking-transmission-grid-connection-eased-somewhat-2025-amidst
+INPUTS: official queue compilation covering ~98% of installed U.S. generation
+PARAMETERS: end-2025 active queues; historical requests 2000-2020
+EQUATION/CODE/METHOD: source extraction only
+OUTPUT: 2,061 GW active generation+storage; only 13% of historical requested capacity online by end-2025, 75% withdrawn; median request-to-COD exceeds 5 years where data available.
+UNITS: GW; %; years
+UNCERTAINTY: recent requests have unresolved outcomes; timeline availability differs by region.
+ASSUMPTIONS: NONE beyond source definitions.
+LIMITATIONS: U.S.-specific; queue MW is proposed, not committed future build.
+REPRODUCTION_METHOD: inspect source paragraphs describing active capacity and historical completion/timelines.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT
+
+EVIDENCE_ID: EVID-EGC-045-002
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-INTERCONNECTION-COST
+TOOL: official web retrieval
+METHOD: Berkeley Lab 2026 publication abstract review
+DATE: 2026-10-06
+SOURCE: Lawrence Berkeley National Laboratory, Generator Interconnection Costs to the Transmission System in non-ISO Balancing Authorities
+SOURCE_DATE: 2026-02
+URL/DOI/IDENTIFIER: https://eta.lbl.gov/publications/generator-interconnection-costs-0
+INPUTS: 2,104 interconnection studies from five non-ISO balancing authorities, 2000-2024
+PARAMETERS: complete/active/withdrawn taxonomy
+EQUATION/CODE/METHOD: source aggregation
+OUTPUT: recent complete-project mean $194/kW (2018-2024); active/withdrawn higher; network upgrades primary driver; technology differences narrow when focusing on non-withdrawn/completed projects.
+UNITS: $/kW; study count
+UNCERTAINTY: strong project/site dispersion.
+ASSUMPTIONS: source taxonomy.
+LIMITATIONS: non-ISO sample mean is NOT universal.
+REPRODUCTION_METHOD: inspect official abstract/data description.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT
+
+EVIDENCE_ID: EVID-EGC-045-003
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-GLOBAL-GRID-BOTTLENECK
+TOOL: official web retrieval
+METHOD: IEA Electricity 2026 Grids HTML review
+DATE: 2026-10-06
+SOURCE: International Energy Agency, Electricity 2026 — Grids
+SOURCE_DATE: 2026
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/electricity-2026/grids
+INPUTS: global grid/queue evidence and IEA modeling
+PARAMETERS: 2025/2030 framing
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: >2,500 GW renewables/large-load/storage stalled in queues; grid investment needs ≈+50% from ≈USD400B/y by 2030; new grids can take 5-15y; existing-grid optimization/non-firm/grid-enhancing measures estimated to unlock 1,200-1,600 GW, with 450-700 GW from technology-upgrade subset.
+UNITS: GW; USD/year; years
+UNCERTAINTY: hosting-capacity estimates are high-level and project-specific constraints can differ.
+ASSUMPTIONS: IEA methodology.
+LIMITATIONS: estimates not additive and not guaranteed realizations.
+REPRODUCTION_METHOD: inspect bottleneck/grid-enhancing sections and notes.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT
+
+EVIDENCE_ID: EVID-EGC-045-004
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-BATTERY-CAPEX
+TOOL: official web retrieval
+METHOD: EIA 2024 installed-generator construction-cost table
+DATE: 2026-10-06
+SOURCE: U.S. Energy Information Administration, Construction cost data for electric generators
+SOURCE_DATE: 2026 page using 2024 installations
+URL/DOI/IDENTIFIER: https://www.eia.gov/electricity/generatorcosts/
+INPUTS: EIA reported generator construction costs
+PARAMETERS: battery storage installations in 2024
+EQUATION/CODE/METHOD: source table extraction
+OUTPUT: capacity-weighted average battery construction cost $1,469/kW; 10,195 MW battery capacity at new plants; table total battery cost $16.3B.
+UNITS: $/kW; MW; USD billion
+UNCERTAINTY: duration/chemistry/project mix aggregated.
+ASSUMPTIONS: EIA reporting boundary.
+LIMITATIONS: $/kW alone cannot produce LCOS; energy duration, cycles, RTE, degradation, lifetime, charge cost required.
+REPRODUCTION_METHOD: inspect EIA generator-cost table.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: MEASUREMENT/REPORTED_SURVEY_DATA
+
+EVIDENCE_ID: EVID-EGC-045-005
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-STORAGE-SCALE
+TOOL: official web retrieval
+METHOD: EIA current battery-capacity article
+DATE: 2026-10-06
+SOURCE: U.S. Energy Information Administration, Battery storage capacity averaged 70% growth over the last three years
+SOURCE_DATE: 2026-08-07
+URL/DOI/IDENTIFIER: https://www.eia.gov/todayinenergy/detail.php?id=67925
+INPUTS: Preliminary Monthly Electric Generator Inventory
+PARAMETERS: end-2025 and H1-2026
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: 43.6 GW operational utility-scale battery power at end-2025; +8.3 GW in H1-2026 to nearly 52 GW; 54 GW additional operator-reported plans over next 2.5y.
+UNITS: GW
+UNCERTAINTY: future plans may not complete.
+ASSUMPTIONS: NONE.
+LIMITATIONS: GW power does not establish MWh duration or multi-day adequacy.
+REPRODUCTION_METHOD: inspect EIA article/inventory.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: MEASUREMENT/REPORTED_SURVEY_DATA
+
+EVIDENCE_ID: EVID-EGC-045-006
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-STORAGE-RTE
+TOOL: official web retrieval
+METHOD: 2024b ATB storage assumption audit
+DATE: 2026-10-06
+SOURCE: NLR/NREL Electricity ATB 2024b Utility-Scale Battery Storage
+SOURCE_DATE: 2024b
+URL/DOI/IDENTIFIER: https://atb.nrel.gov/electricity/2024b/utility-scale_battery_storage
+INPUTS: ATB Li-ion model
+PARAMETERS: 2/4/6/8/10-hour storage
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: representative RTE assumption 85%; FOM includes augmentation at 2.5% of capital cost; modeled lifetime 15y.
+UNITS: hours; %; years
+UNCERTAINTY: model assumptions, not universal fleet measurements.
+ASSUMPTIONS: ATB Li-ion configuration.
+LIMITATIONS: 85% is not a physical constant.
+REPRODUCTION_METHOD: inspect ATB performance/O&M sections.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_ASSUMPTION
+
+EVIDENCE_ID: EVID-EGC-045-007
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-STORAGE-NET-ENERGY
+TOOL: official web retrieval
+METHOD: EIA storage-accounting/physical fleet review
+DATE: 2026-10-06
+SOURCE: U.S. Energy Information Administration, Energy storage for electricity generation
+URL/DOI/IDENTIFIER: https://www.eia.gov/energyexplained/electricity/energy-storage-for-electricity-generation.php
+INPUTS: EIA storage survey/accounting
+PARAMETERS: 2022 observed fleet example
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: storage is secondary, not primary generation; charging exceeds discharge; EIA reports storage net generation negative to avoid double counting. 2022 batteries: 8,842 MW power, 11,105 MWh energy, 2,913,805 MWh gross generation, -539,294 MWh net generation.
+UNITS: MW; MWh
+UNCERTAINTY: historical fleet not representative of all current systems.
+ASSUMPTIONS: EIA accounting definition.
+LIMITATIONS: does not set current candidate-specific RTE/cost.
+REPRODUCTION_METHOD: inspect EIA Energy Explained storage page.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: MEASUREMENT + SOURCE_FACT
+
+EVIDENCE_ID: EVID-EGC-045-008
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-CURTAILMENT-RAMP
+TOOL: official web retrieval
+METHOD: CAISO operational evidence review
+DATE: 2026-10-06
+SOURCE: California ISO, Managing the evolving grid
+URL/DOI/IDENTIFIER: https://www.caiso.com/about/our-business/managing-the-evolving-grid
+INPUTS: CAISO operational experience
+PARAMETERS: curtailment/ramping/multi-day reliability
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: midday oversupply causes continuing curtailment; sunset solar decline creates steep ramps now largely met by gas/imports; storage shifts midday energy; CAISO says multi-day cloudy/smoky/low-wind risks require longer-duration capability in addition to short-duration storage.
+UNITS: qualitative operational evidence
+UNCERTAINTY: California-specific.
+ASSUMPTIONS: NONE.
+LIMITATIONS: does not set universal numeric storage duration.
+REPRODUCTION_METHOD: inspect CAISO curtailment/ramping/reliability sections.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT / OPERATIONAL_EVIDENCE
+
+EVIDENCE_ID: EVID-EGC-045-009
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-TRANSMISSION-VALUE
+TOOL: official web retrieval
+METHOD: Berkeley Lab empirical interregional-transfer summary
+DATE: 2026-10-06
+SOURCE: Lawrence Berkeley National Laboratory, Interregional transmission creates net savings of $680 million per year, but could save $790 million more
+SOURCE_DATE: 2026-01-28
+URL/DOI/IDENTIFIER: https://emp.lbl.gov/news/interregional-transmission-creates-net-savings-680-million-year-could-save-790-million
+INPUTS: actual hourly transfers/prices across 32 interfaces, 2014-2023
+PARAMETERS: ~50 GW transfer capacity, ~60% national transfer capacity in sample
+EQUATION/CODE/METHOD: empirical price/flow comparison by source study
+OUTPUT: ≈$1.2B/y gross savings from lower-to-higher-price transfers; uneconomic trades reduced realized net to ≈$680M/y; improved use/coordination could add up to ≈$790M/y in source framing.
+UNITS: USD/year
+UNCERTAINTY: coordination-solution costs not estimated.
+ASSUMPTIONS: source economic-transfer definition.
+LIMITATIONS: cannot credit benefits to a candidate without causal allocation; proves transmission is not universally only a surcharge.
+REPRODUCTION_METHOD: inspect official study summary.
+REPLICATION_STATUS: SOURCE_CROSSCHECKED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: EXTERNAL_FACT / EMPIRICAL_OPERATIONAL_ANALYSIS
+
+EVIDENCE_ID: CALC-EGC-045-001
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-RTE-CALC
+TOOL: Wolfram Language evaluator. Python attempt failed with TooManyActiveSessionsError; no Python result claimed.
+METHOD: G_required/E_served=(1-f)+f/eta=1+f*(1/eta-1).
+DATE: 2026-10-06
+SOURCE: eta input from EVID-EGC-045-006
+SOURCE_DATE: 2024b
+URL/DOI/IDENTIFIER: https://atb.nrel.gov/electricity/2024b/utility-scale_battery_storage
+INPUTS: eta=0.85; f={0.25,0.50,1.00}; illustrative C_source=$30/MWh.
+PARAMETERS: fraction f of final served energy discharged from storage.
+EQUATION/CODE/METHOD: direct Wolfram evaluation.
+OUTPUT: multipliers {1.0441176471,1.0882352941,1.1764705882}; generation penalties {4.4118%,8.8235%,17.6471%}; loss-only cost adders at $30/MWh {$1.323529,$2.647059,$5.294118}/MWh served.
+UNITS: dimensionless; %; USD/MWh
+UNCERTAINTY: eta is representative assumption; f is scenario input.
+ASSUMPTIONS: charging energy costed once at source ledger; RTE loss not separately monetized again.
+LIMITATIONS: excludes battery CAPEX/O&M/degradation/replacement, chronology, network loss, curtailment, reliability value.
+REPRODUCTION_METHOD: independently evaluate formula with same eta/f.
+REPLICATION_STATUS: SAME_SESSION_EXECUTED / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+EVIDENCE_ID: CALC-EGC-045-002
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-IC-CALC
+TOOL: Wolfram Language evaluator
+METHOD: CRF=r(1+r)^n/[(1+r)^n-1]; IC_EAC=IC*CRF; adder=IC_EAC/(8.76*CF).
+DATE: 2026-10-06
+SOURCE: IC input from EVID-EGC-045-002
+SOURCE_DATE: 2026-02
+URL/DOI/IDENTIFIER: https://eta.lbl.gov/publications/generator-interconnection-costs-0
+INPUTS: IC=$194/kW; illustrative r=7% real; n=30y; CF={0.20,0.35,0.50,0.90}.
+PARAMETERS: constant annual CF; identical IC input only to isolate denominator effect.
+EQUATION/CODE/METHOD: Wolfram CRF plus independent equivalent-annuity PVAF=(1-(1+r)^-n)/r cross-implementation.
+OUTPUT: CRF=0.0805864035111; EAC=$15.6337622812/kW-y; adders {$8.923380,$5.099074,$3.569352,$1.982973}/MWh respectively. Cross-implementation max difference 1.78e-15. Toy A=$25/MWh at CF20% => $33.92338 after adder; Toy B=$30/MWh at CF90% => $31.98297. Connection-adder difference=$6.940407/MWh, reversing the hypothetical $5/MWh plant-only advantage.
+UNITS: $/kW; $/kW-y; $/MWh
+UNCERTAINTY: actual IC, finance, life, CF differ.
+ASSUMPTIONS: r/n are ILLUSTRATIVE mission sensitivity, not source facts; no transmission benefit/credit.
+LIMITATIONS: toy counterexample only, NOT actual candidate ranking; $194/kW is non-ISO complete-project mean.
+REPRODUCTION_METHOD: reproduce CRF and PVAF implementations independently.
+REPLICATION_STATUS: SAME_SESSION_CROSS_IMPLEMENTATION_PASS / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+EVIDENCE_ID: CALC-EGC-045-003
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006
+CLAIM_ID: CLAIM-EGC-045-GRID-INVESTMENT-SCALE
+TOOL: direct arithmetic
+METHOD: 400*(1+0.50)
+DATE: 2026-10-06
+SOURCE: EVID-EGC-045-003
+SOURCE_DATE: 2026
+URL/DOI/IDENTIFIER: https://www.iea.org/reports/electricity-2026/grids
+INPUTS: ≈USD400B/y current; ≈50% increase by 2030
+PARAMETERS: source approximations
+EQUATION/CODE/METHOD: 400*1.5=600
+OUTPUT: implied ≈USD600B/y grid-investment scale by 2030.
+UNITS: USD billion/year
+UNCERTAINTY: inherits approximate source values.
+ASSUMPTIONS: no currency-year normalization beyond source.
+LIMITATIONS: not LCOE and not assignable to one candidate.
+REPRODUCTION_METHOD: direct multiplication.
+REPLICATION_STATUS: TRIVIAL_ARITHMETIC / INDEPENDENT_SESSION_REVIEW_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+RED_TEAM:
+- "Queue GW = future built GW": FALSIFIED by 13% historical completion / 75% withdrawal evidence.
+- "Battery is a primary energy source": FALSIFIED by EIA storage accounting.
+- "85% RTE means +15% source generation when all energy is stored": FALSIFIED; input multiplier 1/0.85=1.17647 => +17.647%.
+- "Plant LCOE ordering is invariant to grid connection": FALSIFIED as a universal statement by CALC-EGC-045-002; actual ranking remains NOT_VERIFIED.
+- "Transmission is only a penalty": FALSIFIED as universal statement by empirical realized savings; costs and causal benefits both belong in system model without double credit.
+- "Short-duration battery closes all high-VRE reliability gaps": NOT_SUPPORTED; CAISO explicitly identifies multi-day reliability need.
+- "EIA battery $/kW directly gives LCOS": FALSIFIED; duration/cycling/RTE/degradation/life/charge energy are required.
+- "Zero congestion is always optimal": REJECTED; system optimization must compare network investment with operational/flexibility alternatives.
+
+CLAIM_GRAPH:
+CLAIM-EGC-045-QUEUE: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-INTERCONNECTION-COST: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-GLOBAL-GRID-BOTTLENECK: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-STORAGE-RTE: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-STORAGE-NET-ENERGY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-CURTAILMENT-RAMP: SUPPORTED_PENDING_REVIEW / GEOGRAPHY_SCOPED.
+CLAIM-EGC-045-TRANSMISSION-VALUE: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-045-INTEGRATION-RANKING: POSSIBLE_RANK_REVERSAL_DEMONSTRATED / ACTUAL_RANKING_NOT_VERIFIED.
+
+JOB_RESULT:
+Grid/storage/transmission layer is materially non-zero and can alter delivered-cost ranking. No universal scalar integration adder is justified; chronology, geography, topology, CF, storage fraction/duration, resource mix and R_STAR must be modeled. Current battery deployment is real and fast-growing, but GW power does not establish duration or multi-day adequacy. Existing-grid optimization must be tested before assuming only new-line construction.
+
+STATUS_CHANGE:
+JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+JOB_ID: JOB-EGC-045-GRID-STORAGE-SCALE-REV-C2-20261006
+TITLE: Independent grid/storage/transmission replication and adversarial review
+ROLE: Independent reviewer / numerical replicator / evidence auditor
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do EVID-EGC-045-001..009 and CALC-EGC-045-001..003 support the system-layer conclusions without geography overreach or double counting?
+CANDIDATE: COMMON SYSTEM LAYER
+DEPENDENCIES: JOB-EGC-045-GRID-STORAGE-SCALE-C1-20261006 submitted.
+REQUIRED_INPUTS: cited sources/equations plus latest R_STAR/common-ledger definitions.
+REQUIRED_TOOLS: independent source retrieval; independent numerical implementation; adversarial counterexamples.
+REQUIRED_EVIDENCE: reproduce calculations; verify source claims/boundaries; test transmission benefit/cost and storage RTE precedence.
+EXPECTED_OUTPUT: PASS/FAIL per claim, corrections, scope limits.
+FALSIFICATION_CONDITION: fail if ranking-critical math is unreproducible; $194/kW or 85% RTE is universalized; queue MW treated built; battery $/kW treated LCOS; transmission value double-credited; toy reversal mislabeled actual ranking.
+REVIEWER_JOB_ID: NONE
+STATUS: OPEN
+BLOCKERS: final ranking still depends on R_STAR/objective/common ledger/chronological system model.
+NEXT_ACTION: distinct session independently reproduces and attacks this result.
