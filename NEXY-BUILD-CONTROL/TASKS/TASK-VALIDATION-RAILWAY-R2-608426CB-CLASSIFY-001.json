@@ -1,0 +1,26 @@
+{
+  "TASK_ID": "TASK-VALIDATION-RAILWAY-R2-608426CB-CLASSIFY-001",
+  "CREATOR_CHAT": "C-GPT56SOL-20261005-1923-V8",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M-VALIDATION-CLOSURE",
+  "STATUS": "BLOCKED_EXTERNAL_EVIDENCE_CAPABILITY",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_VALIDATION_CLOSURE",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "DEPENDS_ON": "VAL-RAILWAY-R2-608426CB-STATUS-001",
+  "SEMANTIC_SCOPE": "Classify the exact Test-AI Railway R2 deployment failure using executed build/runtime evidence. Do not infer source failure from the red GitHub status alone.",
+  "ACCEPTANCE_CRITERIA": [
+    "Evidence is pinned to deployment f1391868-cac3-493c-98e0-4cbbf4b8e254 and source SHA 608426cb30398b1f3461866f7079d2a435c96b96.",
+    "Record build/deploy command or phase, logs sufficient to identify the failure boundary, and exit/result metadata.",
+    "Classify as CODE_FAIL only when an executed source/build/test command demonstrates a code/config defect.",
+    "Classify as EXECUTION_INFRA_FAILURE only when execution infrastructure/provider failure is evidenced.",
+    "If code defect is proven, create a source repair task subject to worker-namespace isolation law.",
+    "If infra failure is proven, record retry/unblock evidence and do not alter source merely to turn the badge green."
+  ],
+  "BLOCKERS": [
+    "No authorized Railway plugin/capability invocation in this mission context; public deployment URL is not accessible via current web retrieval."
+  ],
+  "UNBLOCK_CONDITION": "User/mission authorizes Railway evidence access, or equivalent exact-deployment logs become available through already-authorized evidence channels.",
+  "SOURCE_MUTATION": "NONE"
+}
