@@ -11371,3 +11371,149 @@ BRANCH_HEAD_AT_CLAIM: 96a1815bbad1a6d7a012db1dd4f584e5ea2c6a0f
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: f633bfe47b9a3342f45b69d45e7b56dbd474ec99
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+60. INDEPENDENT REVIEW RESULT — JOB-EGC-042-RSTAR-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0340+07-RSTARREV2
+REVIEW_TARGET: JOB-EGC-042-RSTAR-C1-20261006
+ROLE: Independent adequacy/stability boundary reviewer / adversarial replicator
+STATUS: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+VERDICT:
+The core R_STAR(g) architecture is materially sound: geography-specific mandatory criteria, all-hours probabilistic adequacy, chronological stress testing, and separate operational/stability gates are supported. Both submitted toy calculations independently replicate.
+However, C1 is NOT VERIFIED because its "NERC Normal Risk mission reference screen" has an unresolved pass/fail semantics defect. If that screen is allowed to eliminate candidates outside NERC jurisdiction, it becomes a de-facto universal reliability threshold despite evidence that jurisdictions deliberately use different standards and metrics. It must be repaired to a non-eliminating diagnostic/sensitivity layer outside its native jurisdiction unless the mission separately pre-registers and justifies a universal mission threshold.
+
+REVIEW EVIDENCE — REV-EGC-042-001
+EVIDENCE_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: NERC, 2025 Long-Term Reliability Assessment, January 2026.
+URL: https://prod.nerc.com/globalassets/our-work/assessments/nerc_ltra_2025.pdf
+METHOD: independent PDF retrieval + text audit + screenshots of pp.12-13 and reserve-margin table p.175.
+OUTPUT:
+- High Risk includes LOLH >2.4 h/y or normalized EUE >0.002%=20 ppm, or failure of established local adequacy targets.
+- Elevated Risk includes LOLH 0.1-2.4 h/y or normalized EUE 2-20 ppm or stress-case load-loss risk despite local target compliance.
+- Normal Risk includes LOLH <0.1 h/y, normalized EUE <0.0002%=2 ppm, local adequacy targets met, and plausible once-per-decade stress conditions showing low load-loss risk.
+- NERC explicitly states local regulatory/resource-adequacy targets take precedence when reserve-margin/probabilistic indications conflict.
+- NERC reserve-margin table shows materially different reference margins among areas using similar 0.1 day/y LOLE methodologies.
+LIMITATION: NERC risk categories are North-American assessment criteria, not a universal legal reliability standard.
+REPLICATION_STATUS: PASS.
+
+REVIEW EVIDENCE — REV-EGC-042-002
+EVIDENCE_CLASS: SOURCE_FACT / INDEPENDENT_NON_NORTH_AMERICAN_RETRIEVAL
+SOURCE: ACER, ERAA methodology amendment, 2026-03-17.
+URL: https://www.acer.europa.eu/news/acer-amends-european-resource-adequacy-assessment-methodology-support-streamlined-capacity-mechanisms-approval
+OUTPUT: ACER states EU Member States define their own reliability standards; ERAA is a common assessment framework against those national standards.
+LIMITATION: EU scope.
+REPLICATION_STATUS: PASS.
+IMPLICATION: one global legal threshold is unsupported.
+
+REVIEW EVIDENCE — REV-EGC-042-003
+EVIDENCE_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: UK DESNZ Capacity Market auction parameters, 2026-07-21.
+URL: https://www.gov.uk/government/publications/capacity-market-auction-parameters-letter-from-desnz-to-neso-july-2026/full-details-of-auction-parameters-and-interconnector-de-rating-factors
+OUTPUT: Great Britain uses a 3 hours LOLE reliability standard for the referenced capacity-market auctions.
+LIMITATION: GB context and definition; do not algebraically equate with NERC LOLH without harmonized model definitions.
+
+REVIEW EVIDENCE — REV-EGC-042-004
+EVIDENCE_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCE: Australian Energy Market Commission, National Electricity Rules 3.9.3C.
+URL: https://energy-rules.aemc.gov.au/ner/347/37366
+OUTPUT: NEM reliability standard is maximum expected USE = 0.002% of regional annual energy demand; interim reliability measure = 0.0006%. The rule also defines event inclusions/exclusions, so even equal-looking normalized energy numbers can have different causal boundaries.
+UNITS: percent of annual regional demand; 0.002%=20 ppm.
+LIMITATION: Australia NEM only.
+
+REVIEW EVIDENCE — REV-EGC-042-005
+EVIDENCE_CLASS: SOURCE_FACT / INDEPENDENT_RETRIEVAL
+SOURCES:
+- NERC BAL-002-3, https://www.nerc.com/standards/reliability-standards/bal/bal-002-3
+- NERC VAR-001-5, https://www.nerc.com/standards/reliability-standards/var/var-001-5
+OUTPUT: enforceable contingency-reserve recovery and real-time voltage/reactive-control obligations exist separately from long-term adequacy assessment.
+IMPLICATION: adequacy pass alone is not complete operational reliability.
+LIMITATION: North-American jurisdiction; local equivalents required elsewhere.
+
+CALCULATION — REV-CALC-EGC-042-001
+TRUTH_CLASS: INDEPENDENT_REPLICATION
+INPUTS: 1 MW constant load for 8760 h; zero generation for 10 h; generation = 8760/8750 MW during remaining hours; no imports/storage/DR.
+RESULT:
+P_other = 1.001142857142857 MW.
+Annual generation = 8760 MWh = annual demand.
+EUE = 10 MWh.
+NEUE = 10/8760*1e6 = 1141.552511415525 ppm.
+LOLH = 10 h/y.
+10/2.4 = 4.1666666667.
+1141.5525114/20 = 57.07762557.
+VERDICT: original CALC-EGC-042-001 arithmetic PASS. 100% annual energy matching is not adequacy.
+
+CALCULATION — REV-CALC-EGC-042-002
+TRUTH_CLASS: INDEPENDENT_REPLICATION
+INPUTS:
+A = 1 MW shortfall * 2 h = 2 MWh; LOLH 2 h.
+B = 0.1 MW shortfall * 20 h = 2 MWh; LOLH 20 h.
+RESULT: equal EUE, 10x LOLH difference.
+VERDICT: original CALC-EGC-042-002 arithmetic PASS. EUE alone is insufficient.
+
+CALCULATION — REV-CALC-EGC-042-003 — DE-FACTO UNIVERSAL SCREEN COUNTEREXAMPLE
+TRUTH_CLASS: CALCULATION / ADVERSARIAL COUNTEREXAMPLE
+INPUTS:
+Hypothetical system normalized expected unserved energy = 10 ppm = 0.001%.
+AEMC current reliability standard = 0.002%=20 ppm.
+NERC 2025 Normal-Risk NEUE threshold = below 0.0002%=2 ppm.
+RESULT:
+10 ppm passes the AEMC 20-ppm energy adequacy limit but does not meet the NERC Normal-Risk 2-ppm threshold.
+LIMITATION: event definitions and models also differ, strengthening rather than weakening the non-transferability warning.
+CONCLUSION: if NERC Normal-Risk thresholds are a mandatory elimination gate outside NERC jurisdiction, R_STAR contradicts its own geography-specific principle and can reject a locally compliant system by importing a foreign stricter benchmark.
+REPRODUCTION_STATUS: Python independent arithmetic PASS.
+
+ADVERSARIAL FINDINGS:
+F-EGC-042REV-001 SOURCE_VINTAGE_NERC: PASS.
+F-EGC-042REV-002 NON_NORTH_AMERICAN_AUTHORITY: PASS; ACER independently confirms national standards.
+F-EGC-042REV-003 ANNUAL_ENERGY_MATCH: PASS; falsified as adequacy.
+F-EGC-042REV-004 EUE_ONLY: PASS; falsified as sufficient.
+F-EGC-042REV-005 FIXED_GLOBAL_PRM: PASS; NERC table supports system dependence.
+F-EGC-042REV-P1-001 NERC_REFERENCE_SCREEN_SEMANTICS: FAIL / REPAIR_REQUIRED.
+Reason: "cross-candidate screening" is not explicitly declared non-eliminating outside native jurisdiction. A diagnostic risk label is allowed; a universal eligibility gate is not supported.
+F-EGC-042REV-P1-002 SAME_MODEL_WORDING: FAIL / REPAIR_REQUIRED.
+Reason: fairness requires SAME EXOGENOUS scenario ensemble, demand/service boundary, weather/fuel/import assumptions and stochastic weights, but not identical simplified component physics. Candidate-specific validated constraints (storage SOC, hydro inflows, unit outages, thermal limits, inverter capability, fuel limits) must be represented symmetrically. "Same model" must not force a technology into an invalid abstraction.
+F-EGC-042REV-006 OPERATIONAL_RELIABILITY: PASS AS ARCHITECTURE, NOT VERIFIED NUMERICALLY. Separate reserve/voltage/stability/protection/restoration gates are necessary, but final deployment geography must supply enforceable/local numerical criteria and model tests.
+
+REPAIR SPECIFICATION:
+R_STAR_REPAIRED(g) must separate three layers:
+L1 MANDATORY_LOCAL: pass every applicable statutory/regulator/system-operator adequacy and operating-reliability requirement for geography g.
+L2 COMMON_COMPARISON: run every candidate/baseline on identical exogenous chronology/scenario weights, load/service boundary, weather correlations, import/transmission assumptions and stress ensemble while preserving candidate-specific validated physical constraints. Report at least EUE/NEUE + LOLH or jurisdiction-equivalent frequency/duration metric; keep definitions explicit.
+L3 REFERENCE_DIAGNOSTICS: external benchmarks such as NERC Normal/Elevated/High risk thresholds may be reported as sensitivity/diagnostic classifications outside their jurisdiction, but MUST NOT eliminate a locally compliant candidate unless a separately reviewed mission convention explicitly adopts that threshold before candidate ranking.
+OPERATIONAL_GATE: adequacy success cannot waive contingency reserve, frequency, voltage/reactive, stability, protection, restoration or extreme-event requirements applicable in g.
+
+CLAIM REVIEW:
+CLAIM-EGC-042-001 fixed universal reserve margin invalid: REVIEW_PASS.
+CLAIM-EGC-042-002 geography-specific mandatory adequacy constraints: REVIEW_PASS.
+CLAIM-EGC-042-003 same all-hours probabilistic boundary: REVIEW_PASS_WITH_REPAIR_TO_EXOGENOUS-SYMMETRY wording.
+CLAIM-EGC-042-004 annual energy matching not adequacy: REVIEW_PASS + independently replicated.
+CLAIM-EGC-042-005 multiple adequacy metrics required: REVIEW_PASS + independently replicated.
+CLAIM-EGC-042-006 operational reliability separate: REVIEW_PASS_AS_METHOD; local numeric implementation remains open.
+MISSION_REFERENCE_SCREEN: REVIEW_FAILED until non-eliminating semantics are explicit.
+
+STATUS_CHANGE:
+JOB-EGC-042-RSTAR-REV-C2-20261006: CLAIMED -> REVIEW_FAILED / REPAIR_REQUIRED.
+JOB-EGC-042-RSTAR-C1-20261006: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+FOLLOW-UP JOB:
+JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-C1-20261006
+TITLE: Repair NERC reference-screen semantics and exogenous-scenario symmetry
+ROLE: Reliability-boundary repair architect
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Can R_STAR be rewritten so local requirements are mandatory, cross-candidate scenarios are physically symmetric without forcing identical component abstractions, and foreign reference thresholds are non-eliminating diagnostics unless separately pre-registered?
+DEPENDENCIES: F-EGC-042REV-P1-001 and F-EGC-042REV-P1-002.
+REQUIRED_TOOLS: source audit; equation/model-boundary audit; adversarial Australia/GB/NERC counterexamples.
+EXPECTED_OUTPUT: repaired R_STAR wording + explicit pass/fail semantics + regression tests.
+FALSIFICATION_CONDITION: FAIL if a foreign reference threshold can silently eliminate a locally compliant candidate, or if "same model" suppresses candidate-specific physical constraints.
+REVIEWER_JOB_ID: JOB-EGC-060-RSTAR-GATE-REPAIR-REV-C2-20261006
+STATUS: OPEN
+BLOCKERS: NONE.
+NEXT_ACTION: distinct session claims repair; independent reviewer then re-tests all three layers.
