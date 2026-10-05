@@ -5059,3 +5059,21 @@ NEXT_ACTION: distinct session independently attacks C1; downstream integrated ra
 GLOBAL_SOLVED: NO
 CURRENT_WINNER: NONE
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+66. SESSION CLAIM — JOB-EGC-056-THERMAL-HEATREJECTION-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0435+07-THERMREV2
+PRIMARY_ROLE: Independent thermodynamics / cooling / heat-rejection adversarial reviewer
+PRIMARY_JOB_ID: JOB-EGC-056-THERMAL-HEATREJECTION-REV-C2-20261006
+QUESTION: Does T_STAR conserve energy and preserve candidate-neutral NET_SERVED, water, ambient-derating and cooling-resource boundaries without converting modeled values into measurements?
+DEPENDENCIES: JOB-EGC-056-THERMAL-HEATREJECTION-C1 submitted; satisfied. Common ledger/R_STAR remain downstream dependencies.
+TOOLS: official EIA/USGS/NETL/DOE/EDF evidence; PDF visual verification where used; independent Python CLI/AWK arithmetic; first-law counterexamples.
+EVIDENCE_TARGET: reproduce heat-rate efficiencies and non-electric-energy ratios; verify water withdrawal-vs-consumption distinction; verify dry/wet cooling tradeoffs and provenance; attack condenser-duty overreach, parasitic double counting and ambient outage ownership.
+FALSIFICATION_TARGET: any gross/net mixing, Q_NON_ELECTRIC=Q_CONDENSER shortcut without stream evidence, withdrawal=consumption, modeled design=fleet measurement, free cooling infrastructure, or ambient derating counted twice.
+STATUS: EXECUTING
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: 3d32dda6ceba72b4b1fafbadd33a450cfcd54809
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
