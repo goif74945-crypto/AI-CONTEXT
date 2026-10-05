@@ -1,0 +1,52 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-DIRECTIVE-CREATE-CONTRACT-001",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "TASK_ID": "TASK-DOC-C4-DIRECTIVE-CREATE-CONTRACT-001",
+  "TYPE": "CANONICAL_ROUTE_CONTRACT_DRIFT",
+  "SEVERITY": "P1",
+  "STATUS": "REPRODUCED",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "OBSERVED": [
+    "POST /api/directives persists EventLog eventKind DIRECTIVE_RECEIVED and AuditLog action DIRECTIVE_RECEIVED on accepted creation.",
+    "Final DOC-C §4.2 requires route audit DIRECTIVE_CREATED.",
+    "Successful POST /api/directives response data includes dispatch_status in addition to directive_id, run_id, and state.",
+    "Final DOC-C §4.2 declares success data exactly as directive_id, run_id, state:\"RUNNING\"; dispatch_status is not part of that canonical route response.",
+    "Repository search found no DIRECTIVE_CREATED source occurrence at the inspected integration snapshot; DIRECTIVE_RECEIVED is present in packages/api/directives.ts and tests."
+  ],
+  "EXPECTED": [
+    "Accepted directive creation emits canonical DIRECTIVE_CREATED audit evidence required by final DOC-C.",
+    "Canonical success response data contains directive_id, run_id, state and does not expose implementation-only dispatch_status on this DOC-C route.",
+    "Idempotent same-key replay preserves the same canonical response shape.",
+    "Queue-delivery failure may remain a failure response with diagnostic data only if separately allowed by the canonical error contract; it must not redefine the success schema."
+  ],
+  "SPEC_EVIDENCE": {
+    "FINAL_VERDICT": "DOC-C is the sole build obligation.",
+    "PARAGRAPHS": "10152-10202",
+    "ROUTE": "POST /api/directives",
+    "AUDIT": "DIRECTIVE_CREATED",
+    "RESPONSE": "SystemEnvelope<{ directive_id: string; run_id: string; state: \"RUNNING\" }>"
+  },
+  "SOURCE_EVIDENCE": {
+    "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+    "BRANCH": "NEXY.AI-Test-AI",
+    "COMMIT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "FILE": "packages/api/directives.ts",
+    "BLOB_SHA": "8cd214c87e5aa55561e52347802ec8172feadc36",
+    "AUDIT_REGION": "approximately lines 857-890",
+    "RESPONSE_REGION": "approximately lines 938-950"
+  },
+  "REPRODUCTION": [
+    "Read final DOC-C POST /api/directives route contract at paragraphs 10152-10202.",
+    "Inspect packages/api/directives.ts at exact integration SHA.",
+    "Observe EventLog/AuditLog use DIRECTIVE_RECEIVED.",
+    "Observe successful response data includes dispatch_status.",
+    "Search repository source for DIRECTIVE_CREATED and observe no matching implementation at the inspected snapshot."
+  ],
+  "DUPLICATE_CHECK": [
+    "Existing TASK-DOC-C4-CANONICAL-ROUTE-ORACLE-001 is restricted to repairing the route oracle/checker and explicitly does not cover this source handler mutation.",
+    "AI-CONTEXT code search returned no DIRECTIVE_CREATED, DIRECTIVE_RECEIVED, or dispatch_status finding/task record before creation."
+  ],
+  "MUTATION_STATUS": "BLOCKED_BY_INC-BRANCH-NAMESPACE-001"
+}
