@@ -1,0 +1,29 @@
+{
+  "FINDING_ID": "FINDING-PREMATURE-LEGACY-DRAIN-ENTRY-001",
+  "TYPE": "V16_RC1_3_PHASE_GATE_VIOLATION",
+  "SEVERITY": "P0_CONTROL",
+  "STATUS": "OPEN",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "CONSTITUTION_CLAUSES": [
+    "[184] PHASE_1 → PHASE_2 requires STATIC_PROTOCOL_P0 == 0 AND OPEN_CONTROL_P0_COUNT == 0",
+    "[257] drain legacy authority only after STATIC_PROTOCOL_P0 == 0 AND OPEN_CONTROL_P0_COUNT == 0"
+  ],
+  "OBSERVED_PREMATURE_TRANSITION": {
+    "FROM_STATE": "LEGACY_FREEZE_REQUESTED",
+    "FROM_STATE_VERSION": 2,
+    "TO_STATE": "LEGACY_DRAINING",
+    "TO_STATE_VERSION": 3,
+    "COMMIT": "6794e471a66b3bc8e67c9426c1a3d874b9767658"
+  },
+  "FACTS": [
+    "STATIC_PROTOCOL_P0 zero has not been proven.",
+    "OPEN_CONTROL_P0_COUNT zero has not been proven.",
+    "At least one canonical legacy P0 blocker exists and a V16 preactivation P0-control finding is OPEN.",
+    "Legacy admission freeze itself remains fail-closed and must not be undone.",
+    "Authority-reducing suspensions already written must not be reversed merely to restore phase labeling."
+  ],
+  "REQUIRED_REPAIR": "Move Bootstrap Fence to BLOCKED with monotonically increased STATE_VERSION, retain closed mutation/integration gates and legacy admission freeze, resolve/manifest P0s, then resume lawful phase advancement.",
+  "PRODUCT_MUTATION_PERFORMED": false,
+  "TARGET_INTEGRATION_PERFORMED": false,
+  "CREATED_BY_CHAT_ID": "C-SOL-V16RC13-494F2209A725"
+}
