@@ -1,0 +1,41 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-GLOBAL-API-ROUTE-DECLARATION-GAPS-001",
+  "REQ_ID": "REQ-DOC-C-4-1-GLOBAL-API-LAW",
+  "TASK_ID": "TASK-DOC-C4-GLOBAL-API-DECLARATION-AUDIT-001",
+  "FROM": "C-SOL-20261005-1912-V8",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SEVERITY": "P0_CONTROL",
+  "TYPE": "SPEC_CONFLICT",
+  "STATUS": "OPEN_LOCAL_SCOPE_FREEZE",
+  "OBSERVED": [
+    "Final DOC-C §4.1 requires every route to declare auth policy, RBAC owner, retry policy, audit emission, and error matrix.",
+    "GET /api/directives/:id declares Auth/RBAC/Audit but does not declare Retry or Errors.",
+    "GET /api/runs/:id declares Auth/RBAC/Audit but does not declare Retry or Errors.",
+    "GET /api/artifacts/:id/revisions declares Auth/RBAC/Audit/Pagination/Query/Response but does not declare Retry or Errors.",
+    "GET /api/incidents/:id declares Auth/RBAC/Audit but does not declare Retry or Errors.",
+    "GET /api/audit-logs declares Auth/RBAC/Pagination/Audit but does not declare Retry or Errors.",
+    "GET /api/session/me also lacks Errors, but that exact omission is already tracked independently by F-C-SOL-V8-1737-SESSION-ME-ERROR-MATRIX-CONFLICT and is not duplicated here."
+  ],
+  "SPEC_EVIDENCE": {
+    "GLOBAL_API_LAW": "DOCX paragraphs 10026-10037",
+    "DIRECTIVE_READ": "10203-10221",
+    "RUN_READ": "10222-10242",
+    "ARTIFACT_REVISIONS": "10302-10330",
+    "INCIDENT_READ": "10331-10340",
+    "AUDIT_LOG_READ": "10341-10352"
+  },
+  "EXPECTED": [
+    "Each listed route must have an authoritative retry policy and error matrix because DOC-C §4.1 explicitly requires them.",
+    "Until those declarations exist, implementations and tests must not invent canonical retry/error behavior and label it final DOC-C truth."
+  ],
+  "EFFECT": [
+    "Freeze only the missing retry/error-oracle dimensions for the listed routes.",
+    "Continue verification of fields that DOC-C does define, including Auth, RBAC, Audit, Pagination, Query, and Response where present.",
+    "Do not widen the freeze to unrelated routes with complete declarations."
+  ],
+  "DUPLICATE_CHECK": "GitHub code search over AI-CONTEXT returned no existing finding for these route declarations; session/me was explicitly excluded because it is already tracked.",
+  "SOURCE_MUTATION": "NONE",
+  "UNBLOCK_CONDITION": "Authoritative clarification adds the missing retry/error declarations or a higher-priority active authority defines them without contradicting final DOC-C."
+}
