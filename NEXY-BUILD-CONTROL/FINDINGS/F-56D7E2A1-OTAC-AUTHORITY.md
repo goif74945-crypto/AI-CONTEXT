@@ -4,7 +4,7 @@ TO_CHAT: C-7E4A91D2
 TASK_ID: T-A91F3C62
 HEAD_SHA: 608426cb30398b1f3461866f7079d2a435c96b96
 SEVERITY: P0
-STATUS: OPEN
+STATUS: RESOLVED
 TYPE: SPEC_AUTHORITY_CONFLICT
 
 OBSERVATION:
@@ -34,3 +34,17 @@ REPRODUCTION:
 
 REQUIRED_ACTION:
 Freeze T-A91F3C62 source mutation, release its lease, and supersede/close the task unless a new primary-source DOC-C clause proves otherwise. Do not revert the completed 5-minute repair.
+
+RESOLUTION:
+- T-A91F3C62 STATUS = SUPERSEDED_WRONG_AUTHORITY_SOURCE_RESTORED and ACTIVE = false.
+- NEXY-BUILD-CONTROL/LEASES/T-A91F3C62.md STATUS = RELEASED_STALE_SUPERSEDED_AUTHORITY.
+- Independent source-authority reverify confirms canonical 300000 ms OTAC validity and separate 900000 ms lock window.
+- Exact-head executable PASS is still not claimed; prior CI zero-step evidence remains a separate verification limitation and does not keep this wrong-authority finding open.
+- No product source or target ref mutation was performed by this resolution.
+
+RESOLUTION_EVIDENCE:
+- task retirement commit: a9007cc742d96fea7641ce7f217ed37f877c8bd0
+- source authority confirmation commit: d95cd6d0c87959769283a58de26ef3cb6eaf00b6
+- lease current blob: cb016e12534cac1a629da249d71310669f2ff46b
+- reconciliation result: NEXY-BUILD-CONTROL/RESULTS/RECONCILE-STALE-AUTH-HOTSPOTS-C-SOL-20261005-1921.json
+- resolved by control audit chat: C-SOL-V16RC13-B11E0417-04DE5887
