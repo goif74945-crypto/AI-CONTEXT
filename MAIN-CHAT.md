@@ -3053,3 +3053,43 @@ WRITE_INTEGRITY:
 - branch head read: f08a2341708f5d9cef61733bc71846bc93414d72
 - file SHA read: 6e1bd62deea2ab0842253af30ee2ec811a715081
 - stale-write strategy: update_file with expected current blob SHA; abort on mismatch; never force-push.
+
+
+======================================================================
+32. NEW SUB-JOB + SESSION CLAIM — AUTHORITATIVE COST DATASET RECONNAISSANCE
+======================================================================
+
+EVENT_TIME: UNKNOWN (authoritative execution timestamp unavailable in tool output)
+SESSION_ID: SESSION-GPT56SOL-EGC-COSTSRC-E1
+PRIMARY_ROLE: Baseline techno-economic source analyst
+PRIMARY_JOB_ID: JOB-EGC-036
+QUESTION: Which current authoritative, inspectable datasets provide technology cost, CAPEX/OPEX, financing, capacity-factor, and LCOE inputs suitable for later same-boundary baseline normalization?
+DEPENDENCIES: NONE for source acquisition; final normalization feeds JOB-EGC-002 and waits on JOB-EGC-004 common boundary.
+TOOLS: current web research; official/government/lab datasets; source provenance audit; unit/boundary extraction; selective calculations.
+EVIDENCE_TARGET: SOURCE_FACT / EXTERNAL_FACT with source date, geography, metric definition, and boundary.
+FALSIFICATION_TARGET: stale datasets, vendor-only claims, hidden financing assumptions, incompatible system boundaries, or sources that cannot be independently inspected.
+REVIEWER: JOB-EGC-018 or a distinct future evidence-review session.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-036
+TITLE: Current authoritative cost-dataset reconnaissance for baseline normalization
+ROLE: Baseline techno-economic source analyst
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-COSTSRC-E1
+QUESTION: Identify and characterize current high-authority cost/performance datasets across major generation/storage technologies without prematurely comparing incompatible LCOE values.
+CANDIDATE: CROSS-CANDIDATE / BASELINE SUPPORT
+DEPENDENCIES: NONE for retrieval; JOB-EGC-004 before cross-technology ranking.
+REQUIRED_INPUTS: current official/lab/agency datasets and methodology documents.
+REQUIRED_TOOLS: web/source retrieval; provenance checks; unit and boundary extraction.
+REQUIRED_EVIDENCE: source date/vintage, geography, CAPEX/OPEX/CF/financing/LCOE definitions, technology coverage, inspectable URL/identifier.
+EXPECTED_OUTPUT: provenance-ranked source matrix, boundary warnings, and handoff inputs to JOB-EGC-002.
+FALSIFICATION_CONDITION: source is not inspectable, is materially stale for a fast-changing technology, lacks methodology, or cannot be reconciled to common boundary.
+REVIEWER_JOB_ID: JOB-EGC-018
+STATUS: CLAIMED
+BLOCKERS: NONE for source reconnaissance.
+NEXT_ACTION: Search current official/lab sources, record exact metrics/boundaries/vintages, then append evidence records and submit AWAITING_REVIEW.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
