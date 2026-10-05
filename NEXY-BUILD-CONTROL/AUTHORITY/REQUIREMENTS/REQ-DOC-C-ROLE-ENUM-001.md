@@ -18,8 +18,8 @@ AFFECTED_SYSTEMS: API contracts; route RBAC; envelope actor metadata
 DEPENDENCIES: final DOC-C route contracts; SystemEnvelope actor metadata
 IMPLEMENTATION_PATHS: packages/contracts/envelope.ts; route-specific auth modules
 TEST_PATHS: tests/contract/envelope.test.ts; tests/integration/directives/read-auth.spec.ts; route-specific auth tests
-STATUS: REVERIFY_REQUIRED
-STATUS_REASON: Current source RoleSchema accepts PUBLIC_USER, but final DOC-C does not declare an exact global Role union. The inspected directive read path explicitly denies PUBLIC_USER. A source mutation is not authorized until an active final-DOC-C path is proven to treat PUBLIC_USER as valid where the route contract forbids it.
+STATUS: PARTIAL
+STATUS_REASON: PUBLIC_USER-in-shared-RoleSchema is not a proven final-DOC-C authorization defect after exact active-consumer revalidation; however verify-otac/session-me still permit SYSTEM across interactive route boundaries contrary to their final-DOC-C role contracts, tracked by TASK-AUTH-SYSTEM-SESSION-ROLE-GATE-001.
 LAST_VERIFIED_SHA: 608426cb30398b1f3461866f7079d2a435c96b96
 EVIDENCE:
 - authoritative DOCX SHA-256 b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7.
@@ -27,4 +27,9 @@ EVIDENCE:
 - exact global Role declaration appears at paragraph 10726 outside final DOC-C.
 - packages/contracts/envelope.ts blob daf1156b3431150e667b5e18727d8abe9bdc9b75 includes PUBLIC_USER in RoleSchema.
 - tests/integration/directives/read-auth.spec.ts blob 560bc7a5bdc99211395faf5fd46c826e6312fd5e denies PUBLIC_USER on protected directive/run reads.
-OPEN_QUESTION: Does any active final-DOC-C runtime path consume RoleSchema directly such that PUBLIC_USER is accepted as an authorized role contrary to a route-local contract? If not, no DOC-C source gap is established by RoleSchema membership alone.
+OPEN_QUESTION: Exact canonical denial/error surface for SYSTEM at verify-otac/session-me remains unresolved by the route-local final-DOC-C text; do not invent it. Source repair remains blocked by INC-BRANCH-NAMESPACE-001 and auth hotspot ownership.
+
+REVERIFY_RESULT: NEXY-BUILD-CONTROL/RESULTS/TASK-DOC-C-ROLE-ENUM-001--C-SOL-20261005-1921-V8-ROLE-REVERIFY.json
+PUBLIC_USER_ROUTE_AUTHORITY_GAP: NOT_PROVEN
+SYSTEM_INTERACTIVE_SESSION_GAP: MISMATCH_OPEN
+SYSTEM_GAP_TASK: TASK-AUTH-SYSTEM-SESSION-ROLE-GATE-001
