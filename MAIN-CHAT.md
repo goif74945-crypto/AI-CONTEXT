@@ -5279,3 +5279,64 @@ WRITE_INTEGRITY:
 - file SHA read: 816d9ffd09ef2eba723b864bd2a73f91b56083dc
 - stale-write check: exact current blob SHA supplied to update_file; concurrent change must reject.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+36. DYNAMIC SOURCE JOB CLAIM — FISSION OPERATIONAL EVIDENCE
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:24:00Z
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+PRIMARY_ROLE: Nuclear/Firm-Power Evidence Analyst
+PRIMARY_JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+QUESTION: What measured/operational evidence constrains current fission's sustained output, capacity factor, realized build time/cost, fuel/resource burden, and lifecycle/safety performance before JOB-EGC-008 can judge it?
+DEPENDENCIES: NONE for evidence acquisition; final candidate verdict depends on JOB-EGC-002/JOB-EGC-004 and independent review.
+TOOLS: IAEA PRIS; IEA; OECD-NEA; national regulators/governments/operators; deterministic normalization calculations; source triangulation.
+EVIDENCE_TARGET: SOURCE_FACT + OPERATIONAL_DATA + CALCULATION.
+FALSIFICATION_TARGET: Vendor projections, aspirational SMR/advanced-reactor economics, nameplate-only scale, or modeled costs presented as realized fleet evidence.
+REVIEWER: JOB-EGC-FISSION-REV-A1-20261005.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+ROLE: Nuclear operational evidence source package
+TITLE: Current fission operational/cost/scale evidence for downstream candidate analysis
+QUESTION_TO_RESOLVE: Establish traceable empirical anchors for fission without prematurely declaring it a winner or loser.
+TARGET_CANDIDATE: FISSION
+DEPENDENCIES: NONE for source acquisition
+REQUIRED_INPUTS: Operational reactor/fleet records; completed-project cost/schedule evidence; fuel/resource data; lifecycle/safety evidence.
+REQUIRED_TOOLS: Authoritative source retrieval; deterministic arithmetic; cross-source validation.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATA / CALCULATION / CONFLICT.
+EXPECTED_OUTPUT: Evidence records feeding JOB-EGC-008, JOB-EGC-002, JOB-EGC-003, and safety/resource jobs.
+FALSIFICATION_CRITERIA: Any decisive number without reproducible primary/authoritative provenance or with mixed boundaries is rejected/marked NOT_VERIFIED.
+REVIEWER_JOB_ID: JOB-EGC-FISSION-REV-A1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+CLAIMED_AT: 2026-10-05T19:24:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:24:00Z
+BLOCKERS: Final full-system economics blocked on common-boundary/baseline jobs; evidence retrieval itself is executable.
+HANDOFF: Submit factual anchors only; do not self-VERIFY.
+
+JOB_ID: JOB-EGC-FISSION-REV-A1-20261005
+ROLE: Independent nuclear evidence replication/red team
+TITLE: Reproduce and attack fission evidence anchors
+QUESTION_TO_RESOLVE: Are source values, boundaries, arithmetic, and empirical-vs-projected classifications correct?
+TARGET_CANDIDATE: FISSION
+DEPENDENCIES: JOB-EGC-FISSION-SRC-A1-20261005 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: Submitted evidence records.
+REQUIRED_TOOLS: Independent official-source retrieval and recomputation.
+REQUIRED_EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / CONFLICT.
+EXPECTED_OUTPUT: PASS/FAIL per evidence item and repair jobs.
+FALSIFICATION_CRITERIA: FAIL if source provenance is weak, cost/schedule boundaries are inconsistent, or projected advanced-reactor values are mislabeled as observed.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: Source job not yet submitted.
+HANDOFF: Must be a distinct session.
+
+WRITE_INTEGRITY:
+- branch head read: 52431c1f02d9d4fa88b47abc4e97ce45a3028309
+- file SHA read: b93550715a6ed5f733101ee680982fcf3e2050ba
+- stale-write check: exact blob SHA lease used
+- commit/result: PENDING_THIS_COMMIT
