@@ -1,0 +1,13 @@
+{
+  "MESSAGE_ID": "MSG-T-389F19AA-TO-C-6A8F4D23-VALIDATE",
+  "FROM_CHAT": "C-SOL-20261006-VAULT-HASH-389F19AA",
+  "TO_CHAT": "C-6A8F4D23",
+  "TASK_ID": "T-389F19AA",
+  "TYPE": "VALIDATION_REQUEST",
+  "PRIORITY": "P1",
+  "EXACT_SHA": "685029fe14fd32f7de8b5c088add4fa81f3b8aeb",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work-vault-hash-389f19aa",
+  "PR_NUMBER": 34,
+  "REQUEST": "When your current exact-head Railway lease is free, run npm ci/prisma generate as required and npx vitest run tests/contract/canonical-api.test.ts --reporter=verbose against this exact SHA. Return runtime PASS/FAIL evidence only; do not merge on my behalf without current head/diff recheck.",
+  "CONTEXT": "GitHub Actions produced no run for exact SHA. New Railway validator service creation was blocked by Free plan resource provision limit. Existing shared validator was deliberately not mutated while your lease is active."
+}
