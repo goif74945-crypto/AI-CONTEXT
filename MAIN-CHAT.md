@@ -10850,3 +10850,174 @@ WRITE_INTEGRITY:
 - file SHA read immediately before submission: e5c2cdde54d585c39e823ee0c3cfb02256e89860
 - stale-write check: exact fetched blob SHA supplied to update_file; no force push.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+41. JOB-EGC-FINANCE-METHOD-J1-20261005 — EVIDENCE + SENSITIVITY PASS 1
+======================================================================
+
+SESSION_ID: SESSION-GPT56SOL-EGC-FINANCE-J1-20261005
+JOB_ID: JOB-EGC-FINANCE-METHOD-J1-20261005
+STATUS: EXECUTING
+
+### EVIDENCE_ID: EVID-EGC-FIN-J1-001
+CLAIM_ID: CLAIM-EGC-FINANCE-FORMULA
+TOOL: authoritative methodology retrieval
+METHOD: National Laboratory of the Rockies/NREL Electricity ATB 2024b financial methods + equations
+DATE: 2026-10-05 mission date
+SOURCE: Electricity ATB 2024b, Financial Cases & Methods and Equations & Variables
+SOURCE_DATE: 2024b dataset; finance page updated December 2025
+URL/DOI/IDENTIFIER: https://atb.nrel.gov/electricity/2024b/financial_cases_%26_methods ; https://atb.nrel.gov/electricity/2024b/equations_%26_variables
+INPUTS: published ATB project-finance methodology
+PARAMETERS: WACC, cost recovery period t, construction finance factor, project finance factor, capacity factor, CAPEX, FOM, VOM, fuel
+EQUATIONS:
+- CRF = WACC / [1 - (1+WACC)^(-t)]
+- CAPEX = ConFinFactor * (OCC + GCC)
+- FCR = CRF * ProFinFactor
+- LCOE = [FCR*CAPEX + FOM]/[CF*8760] + VOM + FUEL - PTC
+OUTPUT:
+- ATB explicitly uses WACC as discount-rate input to CRF.
+- ATB explicitly models construction financing and project-finance/tax effects rather than treating overnight cost as fully financed installed cost.
+- ATB finance assumptions vary by technology/risk and distinguish market/policy vs R&D-only cases.
+UNITS: dimensionless rates/factors; currency/kW; currency/MWh
+UNCERTAINTY: ATB 2024b cost vintage is older than 2026 market conditions; equations remain methodological evidence
+ASSUMPTIONS: NONE for source equations
+LIMITATIONS: tax/policy cases are U.S.-specific; final mission comparison needs explicit real/nominal and policy convention
+REPRODUCTION_METHOD: use ATB equations page and source workbook
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / METHOD
+
+### EVIDENCE_ID: EVID-EGC-FIN-J1-002
+CLAIM_ID: CLAIM-EGC-EIA-FINANCE-ANCHOR
+TOOL: official PDF retrieval + rendered screenshot inspection
+METHOD: EIA AEO2026 LCOE methodology page 3 visually inspected
+DATE: 2026-10-05 mission date
+SOURCE: U.S. Energy Information Administration, Levelized Costs of New Generation Resources in AEO2026
+SOURCE_DATE: April 2026
+URL/DOI/IDENTIFIER: https://www.eia.gov/outlooks/aeo/electricity_generation/pdf/LCOE_report.pdf
+INPUTS: AEO2026 NEMS Counterfactual Baseline
+PARAMETERS: common online year 2031; cost recovery 30 years; after-tax WACC
+OUTPUT:
+- EIA uses a 30-year cost-recovery period and 7.27% after-tax WACC for the 2031 online year.
+- EIA explicitly cautions that LCOE/LCOS alone do not capture all capacity-expansion factors.
+UNITS: years; percent
+UNCERTAINTY: scenario/method assumption, not universal market WACC
+ASSUMPTIONS: NONE for source-reported values
+LIMITATIONS: U.S. AEO modeling assumption; policy/region/technology finance can differ
+REPRODUCTION_METHOD: open AEO2026 LCOE PDF and inspect rendered General assumptions page
+REPLICATION_STATUS: VISUALLY_VERIFIED_SOURCE / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT / MODEL_ASSUMPTION
+
+### EVIDENCE_ID: EVID-EGC-FIN-J1-003
+CLAIM_ID: CLAIM-EGC-OVERNIGHT-NOT-FINANCED-CAPEX
+TOOL: EIA AEO2026 assumptions + ATB methodology cross-source check
+METHOD: compare EIA overnight-cost definition with ATB construction-finance treatment
+DATE: 2026-10-05 mission date
+SOURCE: EIA Electricity Market Module assumptions 2026 + ATB 2024b equations
+SOURCE_DATE: April 2026 / December 2025 page update
+URL/DOI/IDENTIFIER: https://www.eia.gov/outlooks/aeo/assumptions/pdf/EMM_Assumptions.pdf ; https://atb.nrel.gov/electricity/2024b/equations_%26_variables
+OUTPUT:
+- EIA states overnight capital costs exclude interest expenses during plant construction and development.
+- ATB defines a Construction Finance Factor and CFC explicitly.
+INFERENCE: Using overnight CAPEX directly as fully financed CAPEX without an explicit construction-finance convention biases capital-intensive/long-construction comparisons.
+UNITS: conceptual/accounting boundary
+UNCERTAINTY: exact bias depends on draw schedule, duration, debt/equity/tax assumptions
+LIMITATIONS: this pass does not estimate technology-specific IDC
+REPRODUCTION_METHOD: inspect source definitions; later apply common draw schedules or technology-specific observed schedules
+REPLICATION_STATUS: CROSS_SOURCE_METHOD_CHECK / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE
+
+### EVIDENCE_ID: EVID-EGC-FIN-J1-004
+CLAIM_ID: CLAIM-EGC-WACC-SENSITIVITY
+TOOL: Python deterministic calculation
+METHOD: candidate-neutral capital-recovery sensitivity; excludes taxes/project-finance factor, O&M, fuel, grid and construction finance so result isolates WACC/CF/lifetime mechanics
+DATE: 2026-10-05
+INPUTS:
+- CAPEX = USD 1,000/kW
+- cost recovery n = 30 years
+- WACC = 3%, 5%, 7.27%, 9%, 12%
+- CF = 25%, 50%, 90%
+EQUATION:
+- CRF = r/[1-(1+r)^(-n)]
+- capital-only LCOE = CAPEX*CRF*1000/(8760*CF), USD/MWh
+OUTPUT:
+30-year CRF:
+- 3%: 0.051019
+- 5%: 0.065051
+- 7.27%: 0.082783
+- 9%: 0.097336
+- 12%: 0.124144
+Capital-only USD/MWh per USD 1,000/kW CAPEX:
+- CF 25%: 23.296, 29.704, 37.800, 44.446, 56.687
+- CF 50%: 11.648, 14.852, 18.900, 22.223, 28.343
+- CF 90%: 6.471, 8.251, 10.500, 12.346, 15.746
+SENSITIVITY:
+- CRF at 12% is ~2.433x CRF at 3% for a 30-year recovery period.
+- At 7.27% WACC, CRF is 0.096383 for 20 years, 0.082783 for 30 years, and 0.073795 for 60 years.
+UNITS: dimensionless CRF; USD/MWh
+UNCERTAINTY: deterministic arithmetic; input range is a sensitivity grid, not a probability distribution
+ASSUMPTIONS:
+- rates treated consistently as real or nominal only within a chosen case; this isolated table does not mix inflation
+- constant annual output represented by CF
+- no taxes, incentives, construction finance, degradation, O&M, fuel or system cost
+LIMITATIONS: not a technology LCOE and not a winner comparison
+REPRODUCTION_METHOD: evaluate equations above in any calculator/Python
+REPLICATION_STATUS: CALCULATED_ONCE / INDEPENDENT_REPLICATION_REQUIRED
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW
+EVIDENCE_CLASS: CALCULATION
+
+### PROPOSED FINANCE NORMALIZATION METHOD
+TRUTH_CLASS: INFERENCE / PROPOSED_METHOD — NOT_VERIFIED
+1. Report all costs in one declared real currency-year; never mix nominal WACC with real cash flows.
+2. Run COMMON_FINANCE case with identical WACC/tax-policy convention to isolate engineering/capital/operating differences.
+3. Run MARKET_FINANCE case with evidence-based technology/project risk financing to capture real deployability.
+4. Separate overnight cost from construction-financed CAPEX; model construction duration/draw schedule explicitly when material.
+5. Report sensitivity at minimum across WACC, lifetime/cost-recovery period, CAPEX, CF/availability, OPEX/fuel and construction duration.
+6. If winner reverses under plausible finance cases, mark NOT_STABLE and pass to JOB-EGC-025 uncertainty analysis.
+7. Policies/subsidies/tax credits must be either excluded consistently in a pre-policy comparison or reported as a separate post-policy case; never apply asymmetrically without declaration.
+8. Full delivered-cost ranking still requires system-boundary/grid/storage terms from JOB-EGC-004/JOB-EGC-021.
+
+### CLAIM_ID: CLAIM-EGC-FIN-J1-A
+TRUTH_CLASS: CALCULATION + INFERENCE
+CLAIM: WACC differences alone can materially change capital-recovery cost and can reverse rankings between technologies with different CAPEX/CF profiles; finance assumptions therefore require explicit normalization and sensitivity.
+SUPPORTED_BY: EVID-EGC-FIN-J1-001,002,004
+STATUS: SUPPORTED_NOT_VERIFIED
+
+### CLAIM_ID: CLAIM-EGC-FIN-J1-B
+TRUTH_CLASS: INFERENCE
+CLAIM: A single finance case is insufficient for this mission; a common-finance engineering comparison and an evidence-based market-finance deployment comparison should both be reported.
+SUPPORTED_BY: EVID-EGC-FIN-J1-001,002,003
+STATUS: PROPOSED_NOT_VERIFIED
+
+### RED_TEAM ATTACKS
+- ATTACK: use each report's published LCOE directly even when WACC/cost-recovery/tax conventions differ.
+  RESULT: REJECTED; comparison can be finance-driven rather than technology-driven.
+- ATTACK: use overnight CAPEX as financed CAPEX.
+  RESULT: REJECTED by EIA definition + ATB construction-finance equations.
+- ATTACK: force one identical market WACC for all technologies and call it realistic.
+  RESULT: REJECTED as sole case; ATB documents technology/project-risk differences. Retain only as controlled engineering counterfactual.
+- ATTACK: use a technology-specific WACC only and call technology economics intrinsic.
+  RESULT: REJECTED as sole case; finance environment can dominate capital-intensive cost. Report both controlled and market cases.
+
+### JOB PROGRESS DECISION
+RESULT:
+- Reproducible finance equations and sensitivity anchors produced.
+- Finance is confirmed as a potentially ranking-reversing variable.
+- No candidate ranking was performed.
+STATUS_CHANGE: JOB-EGC-FINANCE-METHOD-J1-20261005 CLAIMED/EXECUTING -> AWAITING_REVIEW
+REVIEWER_REQUIRED: JOB-EGC-FINANCE-REV-J1-20261005
+BLOCKERS:
+- independent numerical replication
+- common system boundary and objective thresholds still under review
+NEXT_ACTION:
+- independent finance reviewer recomputes CRF/LCOE table and audits real/nominal/tax/construction-finance conventions;
+- feed verified method into JOB-EGC-015 then JOB-EGC-025.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
+- USER_SUCCESS_RESPONSE: DENIED
