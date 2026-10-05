@@ -8561,3 +8561,254 @@ BLOCKERS: final numerical frontier still needs frozen geography/service, reviewe
 NEXT_ACTION: source current ATB/EIA and coverage-complete PSH screening evidence; formulate V3; run adversarial regressions; submit review.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+71. REVIEW RESULT — JOB-EGC-043-SCALE-CONFLICT-ARB-REV-C8-20261006 — CHATGPT-GPT56SOL-20261006T0515+07-OBJSCALEREV8
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0515+07-OBJSCALEREV8
+PRIMARY_JOB_ID: JOB-EGC-043-SCALE-CONFLICT-ARB-REV-C8-20261006
+REVIEW_TARGET: JOB-EGC-043-SCALE-CONFLICT-ARB-C7-20261006
+REVIEW_VERDICT: REVIEW_FAILED / REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+EXECUTIVE REVIEW:
+C7 correctly separates 2025 data/estimate from 2027/2030 forecasts, correctly reproduces all scale arithmetic, correctly refuses to equate IEA consumption with mission E_NET_SERVED as a physical accounting identity, and a common scalar scale floor does not by itself privilege a technology. However, C7 attempts to make 2,860 TWh/y the new PRIMARY after an existing OBJECTIVE_V2 already declared 3,360 TWh/y as PRIMARY. The repository already contains downstream work using both values. C7 itself says any rebase requires a new version plus full rerun, but does not apply that migration rule to its own 3,360 -> 2,860 primary rebase. This is a ranking-changing objective-version defect.
+
+EVIDENCE_ID: REV-EGC-043-ARB-C8-001
+TRUTH_CLASS: EXTERNAL_FACT
+SOURCE: IEA Electricity Mid-Year Update 2026, Executive Summary + report launch
+SOURCE_DATE: 2026-07-23
+URL_1: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+URL_2: https://www.iea.org/events/electricity-mid-year-update-2026
+VERIFIED_FACT:
+- global electricity consumption = 28,600 TWh in 2025;
+- 2027 = 30,700 TWh;
+- IEA marks 2026-2027 values as forecasts;
+- launch page says the update uses latest available 2025 data plus updated 2026-2027 forecasts.
+REVIEW_RESULT: PASS.
+LIMITATION: 2025 is current report data/estimate and remains revision-capable; it is not an immutable physical constant.
+
+EVIDENCE_ID: REV-EGC-043-ARB-C8-002
+TRUTH_CLASS: EXTERNAL_FACT / FORECAST
+SOURCE: IEA Electricity 2026, Demand
+SOURCE_DATE: 2026-02-06 report vintage
+URL: https://www.iea.org/reports/electricity-2026/demand
+VERIFIED_FACT:
+- report-vintage 2025 global electricity consumption = 28,200 TWh;
+- forecast 2030 global electricity consumption = 33,600 TWh;
+- 2026-2030 are forecast years and the report describes about 1,100 TWh/y average additions.
+REVIEW_RESULT: PASS.
+BOUNDARY: 33,600 is a versioned forecast, not measurement.
+
+EVIDENCE_ID: REV-EGC-043-ARB-C8-003
+TRUTH_CLASS: EXTERNAL_FACT / BOUNDARY
+SOURCE: IEA Electricity Information July 2026 + IEA total-final-consumption note
+URL_1: https://www.iea.org/data-and-statistics/data-product/electricity-information
+URL_2: https://www.iea.org/data-and-statistics/charts/change-in-total-final-consumption-of-electricity-for-selected-regions-2012-2024
+VERIFIED_FACT:
+- Electricity Information maintains supply/demand balances separately from generation and end-use consumption.
+- IEA's total-final-consumption note excludes own use and transmission/distribution losses.
+CONCLUSION:
+The numeric IEA global-consumption anchor may be used as a mission-scale reference, but equality with the mission's E_NET_SERVED load-bus ledger is NOT_VERIFIED and must not be asserted.
+REVIEW_RESULT: PASS_WITH_BOUNDARY.
+
+EVIDENCE_ID: CALC-EGC-043-ARB-C8-001
+TRUTH_CLASS: CALCULATION
+TOOL: Python Decimal independent replication
+EQUATIONS:
+P_avg_GW = E_TWh_per_year * 1000 / 8760.
+OUTPUT:
+1,430 TWh/y = 163.242009132420 GW.
+2,860 TWh/y = 326.484018264840 GW.
+3,070 TWh/y = 350.456621004566 GW.
+3,360 TWh/y = 383.561643835616 GW.
+5,720 TWh/y = 652.968036529680 GW.
+3,360-2,860 = 500 TWh/y = 57.077625570776 GW.
+Relative increase 2,860 -> 3,360 = 17.4825174825%.
+28,200 -> 28,600 = +1.41843971631%.
+2,860 -> 3,070 = +7.34265734266%.
+REPLICATION_STATUS: INDEPENDENT_SESSION_PASS.
+
+EVIDENCE_ID: CALC-EGC-043-ARB-C8-002
+TRUTH_CLASS: LOGICAL_COUNTEREXAMPLE
+TITLE: eligibility flips solely from unresolved scale version
+CASE:
+Generic candidate X validated maximum NET_SERVED = 3,000 TWh/y under the same physical/service boundary.
+Generic candidate Y = 3,400 TWh/y.
+RESULT:
+- under 2,860 primary: X PASS, Y PASS;
+- under 3,360 primary: X FAIL, Y PASS.
+No technology property changed.
+CONCLUSION:
+Two active PRIMARY anchors can reverse gate eligibility solely by objective bookkeeping. A version lock is mandatory.
+
+EVIDENCE_ID: CALC-EGC-043-ARB-C8-003
+TRUTH_CLASS: CALCULATION / DOWNSTREAM-IMPACT DIAGNOSTIC
+METHOD:
+Reuse parent thermal ratios only to demonstrate objective-version propagation, not to validate thermal technology.
+INPUT:
+NGCC non-electric ratio = 1.212100437743 MWh_th/MWh_e.
+Nuclear non-electric ratio = 2.060541185923.
+OUTPUT:
+At 2,860 TWh/y:
+- NGCC = 3,466.60725194498 TWh_th/y.
+- nuclear = 5,893.14779173978 TWh_th/y.
+At 3,360 TWh/y:
+- NGCC = 4,072.65747081648 TWh_th/y.
+- nuclear = 6,923.41838470128 TWh_th/y.
+Version-only difference:
+- NGCC = +606.05021887150 TWh_th/y.
+- nuclear = +1,030.27059296150 TWh_th/y.
+CONCLUSION:
+Scale-anchor version is a material dependency for thermal, resource, material, grid and fuel-cycle stress jobs.
+
+REPO_CHRONOLOGY AUDIT:
+REPO_FACT:
+- existing OBJECTIVE_V2 text declares PRIMARY SCALE >=3,360 TWh/y and calls its 33,600-TWh source version-locked.
+- later thermal scale work uses P_NET_AVG=326.484 GWe / E_NET_SERVED=2,860 TWh/y as "mission" reference.
+- C7 then proposes 2,860 TWh/y as new PRIMARY while stating that future rebases require new version + provenance + independent review + full rerun.
+FINDING:
+The repository already contains conflicting primary-scale dependencies. C7's source facts are correct but its migration governance is incomplete.
+
+FINDING_ID: F-EGC-043-ARB-C8-P1-001
+SEVERITY: P1
+TRUTH_CLASS: REPO_FACT + CALCULATION
+TITLE: Silent PRIMARY scale migration violates objective-version consistency.
+FAILURE_MODE:
+A candidate or downstream scale stress can pass/fail or change material burden depending on whether a job consumed OBJECTIVE_V2=3,360 or proposed current-anchor=2,860.
+FALSIFICATION_CONDITION_MET: YES.
+REQUIRED_REPAIR:
+Every scale-dependent result must carry SCALE_OBJECTIVE_VERSION / SCALE_ANCHOR_ID. A primary-anchor change requires explicit new objective version, dependency invalidation, rerun of all scale-dependent candidates and strongest baselines, and independent review before the new version becomes canonical.
+
+FINDING_ID: F-EGC-043-ARB-C8-P2-002
+SEVERITY: P2
+TRUTH_CLASS: NOT_VERIFIED
+TITLE: IEA consumption anchor is not a demonstrated identity with mission E_NET_SERVED.
+REVIEW:
+C7 already labels this correctly. Preserve the distinction. Do not fail the anchor merely because the source ledger differs; the 10% value is a MISSION_CONVENTION reference magnitude, not a physical equation.
+REQUIRED_RULE:
+Write "anchor derived from IEA global electricity consumption" rather than "IEA consumption equals E_NET_SERVED."
+
+TECHNOLOGY/GEOGRAPHY NEUTRALITY:
+- No direct technology-specific privilege was found in applying one scalar threshold symmetrically.
+- Candidate-specific geography/resource feasibility must still be evaluated under scale/resource/grid jobs; a common global magnitude cannot grant universal siting.
+- The threshold magnitude itself can change which technologies pass; that is why its version/provenance must be frozen before a canonical ranking.
+
+C8 VERDICT MATRIX:
+- 28,600 TWh 2025 provenance: PASS.
+- 30,700 TWh 2027 forecast provenance: PASS.
+- 33,600 TWh 2030 forecast provenance: PASS.
+- arithmetic: PASS.
+- observed/current vs forecast truth classes: PASS.
+- E_NET_SERVED identity caution: PASS.
+- common-scalar technology neutrality at method level: PASS_WITH_SITE_DEPENDENCY.
+- 2,860 replacing already-declared 3,360 PRIMARY without immediate version migration/rerun: FAIL P1.
+- GLOBAL objective scale: NOT_VERIFIED.
+
+======================================================================
+72. REPAIR RESULT — JOB-EGC-043-SCALE-CONFLICT-MIGRATION-C9-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0515+07-OBJSCALEREV8
+PRIMARY_JOB_ID: JOB-EGC-043-SCALE-CONFLICT-MIGRATION-C9-20261006
+ROLE: Objective-scale version/migration repair architect
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-043-SCALE-CONFLICT-MIGRATION-REV-C10-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+OBJECTIVE:
+Repair only F-EGC-043-ARB-C8-P1-001 while preserving C7's independently passing provenance/arithmetic and keeping the 10% magnitude explicitly normative.
+
+VERSION CONTRACT:
+
+SCALE_OBJECTIVE_V2:
+ANCHOR_SOURCE = IEA Electricity 2026 Feb-2026 forecast 2030 = 33,600 TWh/y.
+MISSION_FRACTION = 10%.
+PRIMARY_SCALE = 3,360 TWh/y = 383.561643835616 GW average.
+STATE = EXISTING_DECLARED_PRIMARY / NOT_YET_GLOBALLY_VERIFIED.
+RULE:
+V2 remains the canonical inherited primary for any job explicitly tagged V2 until a reviewed migration activates V3.
+
+SCALE_OBJECTIVE_V3_PROPOSED:
+ANCHOR_RULE = latest available non-forecast annual global electricity-consumption value published on or before mission T0=2026-10-06, with source vintage frozen.
+ANCHOR_SOURCE = IEA Electricity Mid-Year Update 2026, latest available 2025 value = 28,600 TWh/y.
+MISSION_FRACTION = 10%.
+PROPOSED_PRIMARY_SCALE = 2,860 TWh/y = 326.484018264840 GW average.
+FORECAST_SENSITIVITY_2030 = 3,360 TWh/y = 383.561643835616 GW average.
+FORECAST_DIAGNOSTIC_2027 = 3,070 TWh/y = 350.456621004566 GW average.
+STATE = PROPOSED_MIGRATION / NOT_CANONICAL_UNTIL_RERUN_AND_REVIEW.
+
+WHY THIS RULE:
+It removes analyst choice among observed/current-vintage anchors at T0 by specifying a deterministic evidence-date rule. It does NOT claim that 28,600 is a physical E_NET_SERVED identity and does NOT claim that 10% is an IEA recommendation.
+
+MANDATORY SCALE FOREIGN KEY:
+Every scale-dependent evidence/calculation/candidate state SHALL record:
+SCALE_OBJECTIVE_VERSION
+SCALE_ANCHOR_ID
+ANCHOR_SOURCE_DATE_OR_VINTAGE
+PRIMARY_SCALE_TWH_PER_YEAR
+PRIMARY_SCALE_AVG_GW
+SERVICE_BOUNDARY_VERSION
+R_STAR_VERSION_IF_APPLICABLE
+
+MIGRATION GATE V2 -> V3:
+V3 cannot become canonical until:
+1. this migration method passes distinct independent review;
+2. all candidate and strongest-baseline scale PASS/FAIL results are rerun under V3;
+3. all material downstream scale-derived quantities are either rerun or explicitly version-tagged as V2 historical diagnostics;
+4. thermal/water/resource/material/fuel/grid/manufacturing/deployment jobs that used a numeric mission scale are dependency-audited;
+5. no mixed V2/V3 arithmetic is used in one integrated comparison;
+6. 3,360 forecast sensitivity is retained for robustness;
+7. any candidate whose conclusion flips between 2,860 and 3,360 is labeled SCALE_CONCLUSION_NOT_STABLE and cannot support a robustness claim until the instability is resolved at the global gate.
+
+NO_AUTO_REBASE:
+2027=30,700 or later data do not silently change V3.
+Any future anchor change requires V4+ with the same migration procedure and full affected rerun.
+
+DOWNSTREAM INVALIDATION NOW:
+- Any pre-review result using 2,860 as if already canonical is PROVISIONAL_V3_DIAGNOSTIC, not canonical mission-scale evidence.
+- Any result using 3,360 remains V2-tagged and cannot be mixed with proposed V3 outputs in one integrated model.
+- No candidate receives a scale PASS merely because it passes one version while the migration conflict remains open.
+
+REGRESSION:
+Generic X=3,000 TWh/y:
+V2 => FAIL.
+V3_PROPOSED => PASS.
+Therefore the migration is rank/gate material and full rerun is mandatory.
+Generic Y=3,400 TWh/y:
+V2/V3 => PASS, but all downstream burdens still require consistent versioning.
+
+CLAIM_GRAPH UPDATE:
+CONFLICT-EGC-043-SCALE-ANCHOR-001 = REVIEW_FAILED_AT_MIGRATION_GOVERNANCE / REPAIR_SUBMITTED_C9.
+CLAIM-EGC-043-SCALE-V2 = EXISTING_DECLARED_PRIMARY / OBJECTIVE_NOT_GLOBALLY_VERIFIED.
+CLAIM-EGC-043-SCALE-V3 = PROPOSED / AWAITING_DISTINCT_REVIEW_AND_RERUN.
+F-EGC-043-ARB-C8-P1-001 = REPAIR_SUBMITTED / AWAITING_REVIEW.
+F-EGC-043-ARB-C8-P2-002 = CONTROLLED_LIMITATION / anchor-only semantics preserved.
+G1 quantitative objective = NOT_VERIFIED.
+G6 massive energy target = NOT_VERIFIED.
+G7 scalability = NOT_VERIFIED.
+G21 uncertainty/robustness = NOT_VERIFIED where V2/V3 sensitivity can reverse conclusion.
+
+JOB_ID: JOB-EGC-043-SCALE-CONFLICT-MIGRATION-REV-C10-20261006
+TITLE: Independent review of objective-scale V2-to-V3 migration contract
+ROLE: Independent objective version-control / scale provenance reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does C9 eliminate mixed 2,860/3,360 primary-scale states without granting post-hoc scale credit, and is the T0 latest-nonforecast anchor rule deterministic and candidate-neutral?
+DEPENDENCIES: C9 submitted; C8 review evidence.
+REQUIRED_TOOLS: latest repo chronology; independent IEA source retrieval; arithmetic replication; downstream dependency scan; candidate counterexamples.
+REQUIRED_EVIDENCE:
+- verify V2 existing 3,360 primary declaration predates V3 proposal;
+- verify T0 source rule uniquely selects IEA 2025 28,600 TWh among cited mission sources;
+- identify every material downstream result using either 2,860 or 3,360;
+- test mixed-version rejection and full-rerun requirement.
+FALSIFICATION_CONDITION:
+FAIL if V3 can become canonical without rerun; any mixed V2/V3 integrated comparison passes; source-selection rule remains analyst-selectable; or a candidate gets scale credit from the easier version after a flip.
+STATUS: OPEN
+BLOCKERS: distinct reviewer + downstream rerun required before canonical migration.
+NEXT_ACTION: independent session reviews C9 and audits downstream scale-version dependencies.
