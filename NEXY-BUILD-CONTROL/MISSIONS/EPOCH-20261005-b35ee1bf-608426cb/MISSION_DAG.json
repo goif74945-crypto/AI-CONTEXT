@@ -7,7 +7,14 @@
     "SYSTEM_LAW_AUTHORITY": "DOC-B",
     "PRODUCT_DESIGN_AUTHORITY": "DOC-D_WHERE_SUPPORTED_BY_DOC-C",
     "DEPLOYMENT_EVIDENCE_AUTHORITY": "DOC-E",
-    "SOURCE": "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md §26 Build order"
+    "SOURCE": "projects/NEXY.AI/deep/doc-c-vnext-build-spec.md §26 Build order",
+    "PRIMARY_FINAL_VERDICT_PARAGRAPH": 9834,
+    "PRIMARY_BUILD_AUTHORITY_DECLARATION_PARAGRAPH": 9839,
+    "PRIMARY_BUILD_OBLIGATION_PARAGRAPH": 9844,
+    "PRIMARY_FINAL_DOC_C_RANGE": "9886-10499",
+    "PRIMARY_DOC_D_START_PARAGRAPH": 10500,
+    "LEGACY_DERIVED_SOURCE_STATUS": "HISTORICAL_NON_ROUTING_AUTHORITY",
+    "ROUTING_AUTHORITY": "NONE_UNTIL_FINAL_DOC_C_REEXTRACTION"
   },
   "SOURCE_BASELINE": {
     "UPSTREAM_BRANCH": "NEXY.ai",
@@ -15,141 +22,231 @@
     "INTEGRATION_BRANCH": "NEXY.AI-Test-AI",
     "INTEGRATION_SHA": "608426cb30398b1f3461866f7079d2a435c96b96"
   },
-  "MISSION_DAG_STATUS": "ACTIVE",
-  "ROUTING_NOTE": "The 837-row normalized source matrix remains the exhaustive source denominator. This DAG routes DOC-C build-order capability clusters only; it does not invent canonical REQ_ID assignments for matrix rows that have not yet been routed.",
+  "MISSION_DAG_STATUS": "REVERIFY_REQUIRED",
+  "ROUTING_NOTE": "Legacy V7-derived mission DAG retained as historical planning data only. Its DOC-C §6..§27 references originate from pre-FINAL Execution Pack material and MUST NOT route active V16 build obligations. Re-extract/reroute only from final DOC-C paragraphs 9886-10499 or verified requirement records bound to that range.",
   "NODES": [
     {
       "MISSION_ID": "M01-CONTRACT-LOCK",
       "GOAL": "Lock canonical contracts, schemas, state/error/envelope types, validation boundaries, and module dependency rules before dependent implementation.",
-      "REQUIREMENTS": ["DOC-C §3-§10", "DOC-C §11 dependency rules", "DOC-C §24 contract/API-schema/forbidden-dependency gates"],
+      "REQUIREMENTS": [
+        "DOC-C §3-§10",
+        "DOC-C §11 dependency rules",
+        "DOC-C §24 contract/API-schema/forbidden-dependency gates"
+      ],
       "DEPENDENCIES": [],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     },
     {
       "MISSION_ID": "M02-CORE",
       "GOAL": "Implement and verify CORE orchestration and the executable FSM, including fail-closed FREEZE/STOP behavior.",
-      "REQUIREMENTS": ["DOC-C §12 FSM", "DOC-C §13 FREEZE/STOP", "DOC-C §26 build order stage 2"],
-      "DEPENDENCIES": ["M01-CONTRACT-LOCK"],
+      "REQUIREMENTS": [
+        "DOC-C §12 FSM",
+        "DOC-C §13 FREEZE/STOP",
+        "DOC-C §26 build order stage 2"
+      ],
+      "DEPENDENCIES": [
+        "M01-CONTRACT-LOCK"
+      ],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     },
     {
       "MISSION_ID": "M03-LAW",
       "GOAL": "Implement and verify precheck, pre-release, freeze, release-policy, and authority enforcement rules.",
-      "REQUIREMENTS": ["DOC-C §8 release policy", "DOC-C §11 LAW boundaries", "DOC-C §26 build order stage 3"],
-      "DEPENDENCIES": ["M02-CORE"],
+      "REQUIREMENTS": [
+        "DOC-C §8 release policy",
+        "DOC-C §11 LAW boundaries",
+        "DOC-C §26 build order stage 3"
+      ],
+      "DEPENDENCIES": [
+        "M02-CORE"
+      ],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     },
     {
       "MISSION_ID": "M04-SWARM",
       "GOAL": "Implement and verify AgentAdapter contracts and the locked multi-agent execution pipeline without allowing worker authority to bypass CORE/LAW.",
-      "REQUIREMENTS": ["DOC-C §14 AgentAdapter", "DOC-C §15 locked multi-AI pipeline", "DOC-C §26 build order stage 4"],
-      "DEPENDENCIES": ["M03-LAW"],
+      "REQUIREMENTS": [
+        "DOC-C §14 AgentAdapter",
+        "DOC-C §15 locked multi-AI pipeline",
+        "DOC-C §26 build order stage 4"
+      ],
+      "DEPENDENCIES": [
+        "M03-LAW"
+      ],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     },
     {
       "MISSION_ID": "M05-JUDGE",
       "GOAL": "Implement and verify deterministic consensus, quorum, evidence, threshold, and release adjudication.",
-      "REQUIREMENTS": ["DOC-C §8 consensus/release policy", "DOC-C §15 consensus evaluation", "DOC-C §26 build order stage 5"],
-      "DEPENDENCIES": ["M04-SWARM"],
+      "REQUIREMENTS": [
+        "DOC-C §8 consensus/release policy",
+        "DOC-C §15 consensus evaluation",
+        "DOC-C §26 build order stage 5"
+      ],
+      "DEPENDENCIES": [
+        "M04-SWARM"
+      ],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     },
     {
       "MISSION_ID": "M06-VAULT",
       "GOAL": "Implement and verify append-only revision lineage, optimistic concurrency, storage integrity, deletion/restore law, and persistence contracts.",
-      "REQUIREMENTS": ["DOC-C §18 Storage/Vault", "DOC-C §22 Queue law where persistence intersects dispatch", "DOC-C §23 retention/redaction", "DOC-C §26 build order stage 6"],
-      "DEPENDENCIES": ["M05-JUDGE"],
+      "REQUIREMENTS": [
+        "DOC-C §18 Storage/Vault",
+        "DOC-C §22 Queue law where persistence intersects dispatch",
+        "DOC-C §23 retention/redaction",
+        "DOC-C §26 build order stage 6"
+      ],
+      "DEPENDENCIES": [
+        "M05-JUDGE"
+      ],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     },
     {
       "MISSION_ID": "M07-AUTH",
       "GOAL": "Implement and verify OTAC/session/device-binding/CSRF/RBAC/session-revocation controls with canonical defaults and abuse handling.",
-      "REQUIREMENTS": ["DOC-C §9 Auth defaults", "DOC-C §17 Auth", "DOC-C §19 RBAC", "DOC-C §26 build order stage 7"],
-      "DEPENDENCIES": ["M06-VAULT"],
+      "REQUIREMENTS": [
+        "DOC-C §9 Auth defaults",
+        "DOC-C §17 Auth",
+        "DOC-C §19 RBAC",
+        "DOC-C §26 build order stage 7"
+      ],
+      "DEPENDENCIES": [
+        "M06-VAULT"
+      ],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     },
     {
       "MISSION_ID": "M08-OBS",
       "GOAL": "Implement and verify structured logs, incident graph, auditability, trace/request linkage, and retention evidence.",
-      "REQUIREMENTS": ["DOC-C §20 Observability/incident graph", "DOC-C §23 retention/redaction", "DOC-C §26 build order stage 8"],
-      "DEPENDENCIES": ["M07-AUTH"],
+      "REQUIREMENTS": [
+        "DOC-C §20 Observability/incident graph",
+        "DOC-C §23 retention/redaction",
+        "DOC-C §26 build order stage 8"
+      ],
+      "DEPENDENCIES": [
+        "M07-AUTH"
+      ],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     },
     {
       "MISSION_ID": "M09-API",
       "GOAL": "Implement and verify API envelope, runtime validation, auth/RBAC/CSRF/idempotency/rate boundaries, routing, and canonical error semantics.",
-      "REQUIREMENTS": ["DOC-C §5 SystemEnvelope", "DOC-C §10 runtime validation", "DOC-C §16 API law", "DOC-C §26 build order stage 9"],
-      "DEPENDENCIES": ["M08-OBS"],
+      "REQUIREMENTS": [
+        "DOC-C §5 SystemEnvelope",
+        "DOC-C §10 runtime validation",
+        "DOC-C §16 API law",
+        "DOC-C §26 build order stage 9"
+      ],
+      "DEPENDENCIES": [
+        "M08-OBS"
+      ],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     },
     {
       "MISSION_ID": "M10-UI",
       "GOAL": "Implement and verify the UI Truth Contract without inventing state, masking FREEZE, or fabricating optimistic success.",
-      "REQUIREMENTS": ["DOC-C §25 UI Truth Contract", "DOC-C §26 build order stage 10"],
-      "DEPENDENCIES": ["M09-API"],
+      "REQUIREMENTS": [
+        "DOC-C §25 UI Truth Contract",
+        "DOC-C §26 build order stage 10"
+      ],
+      "DEPENDENCIES": [
+        "M09-API"
+      ],
       "CRITICAL_PATH": true,
-      "STATUS": "UNINSPECTED",
+      "STATUS": "REVERIFY_REQUIRED",
       "BLOCKERS": [],
       "VERIFIED_COUNT": 0,
-      "REMAINING_COUNT": null
+      "REMAINING_COUNT": null,
+      "REQUIREMENT_AUTHORITY_STATUS": "REVERIFY_REQUIRED_FINAL_DOC_C_PRIMARY_SOURCE"
     }
   ],
   "PROCESS_OVERLAYS": [
     {
       "OVERLAY_ID": "SECURITY",
-      "SOURCE": ["DOC-C §17", "DOC-C §19", "DOC-C §24"],
+      "SOURCE": [
+        "DOC-C §17",
+        "DOC-C §19",
+        "DOC-C §24"
+      ],
       "RULE": "Run risk-based security review and abuse tests across affected missions; this overlay is not a substitute for the product build DAG."
     },
     {
       "OVERLAY_ID": "DETERMINISM",
-      "SOURCE": ["DOC-B system law", "DOC-C §8", "DOC-C §12-§15", "DOC-C §24"],
+      "SOURCE": [
+        "DOC-B system law",
+        "DOC-C §8",
+        "DOC-C §12-§15",
+        "DOC-C §24"
+      ],
       "RULE": "Audit RNG, time, ordering, serialization, concurrency, and parity wherever they affect canonical outcomes."
     },
     {
       "OVERLAY_ID": "INTEGRATION",
-      "SOURCE": ["NEXY::EQUAL-PEER-EXPERT-SWARM-CONSTITUTION-V7"],
+      "SOURCE": [
+        "NEXY::EQUAL-PEER-EXPERT-SWARM-CONSTITUTION-V7"
+      ],
       "RULE": "Worker PASS is not final; integration-branch retest and fresh SHA evidence are required."
     }
   ],
   "NEXT_ROUTING_WORK": [
-    "Route the 837-row normalized matrix into canonical REQ_ID records without changing its denominator or authority classes.",
-    "Compare each mission against NEXY.ai and NEXY.AI-Test-AI separately.",
-    "Populate VERIFIED_COUNT and REMAINING_COUNT only from requirement records backed by executed evidence.",
-    "Prioritize M01/M02 integrity gaps and validation deficits before downstream optional work."
-  ]
+    "Do not schedule from this legacy DAG as active build authority.",
+    "Reconcile normalized source rows against FINAL VERDICT and final DOC-C paragraphs 9886-10499.",
+    "Build the V16 ACTIVE_BUILD_REQUIREMENT_ROOT only from temporally reconciled final-authority requirement records.",
+    "Keep deployment evidence obligations separate under the deployment evidence root.",
+    "Preserve this DAG only as historical planning context until superseded by a verified V16 mission/resource routing artifact."
+  ],
+  "V16_AUTHORITY_REPAIR": {
+    "STATUS": "APPLIED",
+    "REPAIR_KIND": "AUTHORITY_REDUCTION_ONLY",
+    "FINDING_ID": "F-0DC2D7E4-02",
+    "REPAIRED_BY": "C-SOL-20261005-V16RC13-B90987C6",
+    "BOOTSTRAP_FENCE_STATE_VERSION": 4,
+    "PRODUCT_SOURCE_MUTATION": "NONE"
+  }
 }
