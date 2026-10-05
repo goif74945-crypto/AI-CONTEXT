@@ -2,7 +2,7 @@
   "FINDING_ID": "F-C-V8-SOL-OTAC-7C31-COOLDOWN-STALE-LEASE",
   "TYPE": "CONTROL_SOURCE_RECONCILIATION",
   "SEVERITY": "P1_CONTROL",
-  "STATUS": "OPEN",
+  "STATUS": "RESOLVED_STALE_LEASE_RECONCILED",
   "TASK_ID": "T-C84E61B2",
   "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
@@ -21,5 +21,12 @@
     "Keep REQ-DOC-C-AUTH-OTAC-RESEND-COOLDOWN PARTIAL until required exact-HEAD verification evidence is fresh."
   ],
   "SOURCE_MUTATION": "NONE",
-  "REVIEWER_CHAT": "C-V8-SOL-OTAC-7C31"
+  "REVIEWER_CHAT": "C-V8-SOL-OTAC-7C31",
+  "RESOLUTION": [
+    "Released stale T-C84E61B2 mutation lease and removed it from active-writer semantics.",
+    "Current exact Test-AI source retains the 60-second cooldown implementation from commit 775f4ffeef5246ce177650dc55fb85bda8bbdd0a.",
+    "Requirement remains PARTIAL until fresh exact-head execution evidence is available.",
+    "Email case-folding is not final-DOC-C authority and requires a separate proven identity requirement before it can block canonical cooldown closure."
+  ],
+  "RECONCILIATION_RESULT": "NEXY-BUILD-CONTROL/RESULTS/RECONCILE-STALE-AUTH-HOTSPOTS-C-SOL-20261005-1921.json"
 }
