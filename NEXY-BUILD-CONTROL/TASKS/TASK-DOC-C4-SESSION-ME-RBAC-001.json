@@ -8,10 +8,11 @@
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "PRIORITY": "P1",
   "RISK": "HIGH_AUTHORITY_RBAC",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "DUPLICATE_JOINED",
   "OWNER": "UNASSIGNED",
   "BLOCKERS": [
-    "INC-BRANCH-NAMESPACE-001"
+    "INC-BRANCH-NAMESPACE-001",
+    "AUTH-SYSTEM-DENIAL-SURFACE-AUTHORITY-UNRESOLVED"
   ],
   "SCOPE": [
     "packages/api/auth.ts handleSessionMe",
@@ -43,6 +44,10 @@
     "independent RBAC/authority review",
     "post-integration exact-head revalidation on NEXY.AI-Test-AI"
   ],
-  "NEXT_ACTION": "After an authoritative Git-valid worker isolation mechanism is established, refresh NEXY.AI-Test-AI HEAD, claim a single-writer lease, implement the smallest endpoint RBAC guard plus negative-role oracle, run focused/regression evidence, shadow-review, then integrate and reverify.",
-  "CREATED_BY": "GPT-5.6-SOL-CURRENT-INVOCATION"
+  "NEXT_ACTION": "Do not allocate a separate writer. Carry REQ-DOC-C-4-2-SESSION-ME-RBAC-001 and FINDING-DOC-C4-SESSION-ME-RBAC-001 as evidence/acceptance under TASK-AUTH-SYSTEM-SESSION-ROLE-GATE-001.",
+  "CREATED_BY": "GPT-5.6-SOL-CURRENT-INVOCATION",
+  "ACTIVE": false,
+  "CANONICAL_TASK_ID": "TASK-AUTH-SYSTEM-SESSION-ROLE-GATE-001",
+  "DUPLICATE_REASON": "The session/me SYSTEM-role denial is a strict subproblem of the P0 interactive SYSTEM session authority repair and overlaps packages/api/auth.ts plus auth decision tests. Use one writer under the canonical P0 task.",
+  "RECONCILIATION_RESULT": "NEXY-BUILD-CONTROL/RESULTS/RECONCILE-AUTH-SYSTEM-SESSION-RBAC-C-SOL-20261005-1921.json"
 }
