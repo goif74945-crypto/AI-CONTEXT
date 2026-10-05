@@ -770,3 +770,24 @@ BRANCH_HEAD_AT_CLAIM: f1bfcdc45fba23277bc3b03171d0b9292d1b2743
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 639326c5013d03aae9476ceb3dbbdfee5b84bb58
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+54. JOB CLAIM — JOB-EGC-040-REPAIR-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0304+07-REV-C2
+PRIMARY_ROLE: Common-boundary accounting repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-C2-20261006
+QUESTION: Can the common system boundary be made physically conservative and ranking-invariant to bookkeeping by separating unserved energy from physical flow, closing storage inventories, and freezing a primary discount convention?
+DEPENDENCIES: FIND-EGC-040REV-C2-P0-001; FIND-EGC-040REV-C2-P1-002; FIND-EGC-040REV-C2-P1-003 satisfied.
+SCOPE_LOCK:
+- IN_SCOPE: physical energy-balance correction; adequacy identity; storage inventory boundary; candidate-neutral primary discount convention and regression tests.
+- OUT_OF_SCOPE: terminal-PV timing and financing/resource decomposition assigned separately to JOB-EGC-040-REPAIR-C3-20261006; numeric R_STAR; candidate-specific ranking.
+TOOLS: source evidence already retrieved; Python/Wolfram regression calculations; equation audit.
+EVIDENCE_TARGET: corrected identities that close all three findings without conflicting with C3.
+FALSIFICATION_TARGET: any remaining free-inventory energy, unserved-energy conservation violation, or unspecified primary discounting.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-REV-C3-20261006
+STATUS: CLAIMED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
