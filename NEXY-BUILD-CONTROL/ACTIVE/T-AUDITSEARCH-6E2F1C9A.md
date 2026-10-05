@@ -8,7 +8,7 @@
 - PREVIOUS_BASE_SHA: 4621493feac1457098c51386f8f017313be5b3b3
 - WORKER_BRANCH: work/NEXY-AI-Test-AI/T-AUDITSEARCH-6E2F1C9A-v3
 - PREVIOUS_WORKER_BRANCH: work/NEXY-AI-Test-AI/T-AUDITSEARCH-6E2F1C9A-v2
-- STATUS: ACTIVE
+- STATUS: AWAITING_VALIDATION
 - MUTATION_SCOPE:
   - packages/api/canonical.ts
   - tests/contract/canonical-api.test.ts
@@ -32,3 +32,17 @@
   - No mutation of NEXY.AI-Test-AI directly.
   - No weakening of RBAC, audit attribution, cursor validation, or fail-closed behavior.
   - No fabricated test/runtime evidence.
+
+
+## Candidate evidence — 2026-10-06
+- PR: https://github.com/goif74945-crypto/NEXY.AI-/pull/69
+- CANDIDATE_SHA: 78972243c5cd09fa1f26f1c95ba215a187ebe25c
+- LATEST_COMPAT_CHECK_INTEGRATION_SHA: 235de26be580929855044a0f3c0d92cc131a527d
+- COMPATIBILITY: all four claimed target-file blobs are unchanged from worker base 5fff467be07fd45993b2e3cfa07cc319dc4fa755 through the latest checked integration SHA.
+- STATIC_DIFF: four intended files only; backend filter-before-pagination, canonical tests, server-backed S10 filter UI, DOC-D action oracle.
+- VALIDATION_STATUS: BLOCKED_INFRA; exact candidate has 0 pull-request workflow runs and 0 commit statuses.
+- WORKFLOW_FACT: deploy.yml pull_request targets protected NEXY.ai only; exact-head-evidence.yml is workflow_dispatch-only.
+- CONNECTOR_LIMIT: no workflow-dispatch action is available in the connected GitHub toolset.
+- REMOTE_TEST_PLANE: connected Desktop Commander device DESKTOP-FOB7IK8 is offline (last seen 83h before check), so no authorized remote local test execution was possible.
+- GLOBAL_CONTEXT: AI-CONTEXT already records exact-head pre-step CI blocker (commit 0a446d66612a151dd5425e7f22aa7a4cea89ddaa); do not create duplicate CI-repair implementation.
+- INTEGRATION_DECISION: FAIL_CLOSED. Do not merge until real exact-candidate test evidence is available.
