@@ -1,0 +1,37 @@
+{
+  "REQ_ID": "REQ-DOC-C-4-2-DIRECTIVE-CREATE-CONTRACT-001",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "UNAVAILABLE_IN_DOCX_EXTRACTION",
+  "SPEC_LINES": "primary DOCX paragraphs 10153-10202",
+  "SPEC_TEXT": "POST /api/directives creates a directive + pipeline run; session required; RBAC OWNER/OPERATOR; idempotency required; retry with same key returns same accepted run; audit DIRECTIVE_CREATED; success data is exactly directive_id, run_id, state:'RUNNING'.",
+  "AUTHORITY_CLASS": "DOC-C_BUILD_SPEC_FINAL",
+  "EXPECTED_BEHAVIOR": [
+    "Successful new submission returns canonical data {directive_id, run_id, state:'RUNNING'}.",
+    "Successful idempotent replay returns the same canonical accepted-run shape.",
+    "The route emits required audit identity DIRECTIVE_CREATED for accepted creation semantics.",
+    "Internal dispatch state may exist but is not silently added to the canonical success wire without separate active build authority."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Expose dispatch_status as an additional field in the canonical 200 success data unless active final authority is proven.",
+    "Substitute DIRECTIVE_RECEIVED for the final-DOC-C-required DIRECTIVE_CREATED audit identity and still claim exact §4.2 conformance."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "Directives API",
+    "audit/event evidence",
+    "contract tests"
+  ],
+  "DEPENDENCIES": [
+    "final DOC-C §4.1 global API law",
+    "final DOC-C §4.2 POST /api/directives"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "packages/api/directives.ts"
+  ],
+  "TEST_PATHS": [
+    "tests/coverage/directive-create-branches.test.ts",
+    "tests/integration/directives/create.spec.ts",
+    "scripts/check-doc-c.ts"
+  ],
+  "STATUS": "MISMATCH",
+  "LAST_VERIFIED_SHA": "608426cb30398b1f3461866f7079d2a435c96b96"
+}
