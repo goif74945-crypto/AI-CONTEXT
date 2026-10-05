@@ -10,9 +10,9 @@
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "PRIORITY": "P1",
   "RISK": "LOW",
-  "STATUS": "BLOCKED",
+  "STATUS": "CURRENT_HEAD_CONFORMS",
   "OWNER": "UNASSIGNED",
-  "BLOCKERS": ["INC-BRANCH-NAMESPACE-001"],
+  "BLOCKERS": [],
   "FACTS": [
     "Final DOC-C paragraphs 9910-9949 define the complete canonical defaults.",
     "packages/api/vnext-config.ts blob a3141a649be7e40ec79f417f53bba9b73081232b contains every required DOC-C §2.3 value with the correct value.",
@@ -33,5 +33,13 @@
     "diff review"
   ],
   "CREATED_BY": "CHAT-20261005-1713-GPT56SOL-CONTRACT-AUDIT",
-  "UNBLOCK_CONDITION": "Resolve INC-BRANCH-NAMESPACE-001 with an authoritative Git-valid worker namespace."
+  "UNBLOCK_CONDITION": "Resolve INC-BRANCH-NAMESPACE-001 with an authoritative Git-valid worker namespace.",
+  "LAST_VERIFIED_BRANCH": "NEXY.AI-Test-AI",
+  "LAST_VERIFIED_TEST_BLOB": "c5ca55886434cad3c48f4bba599d63c7647c6dcb",
+  "CURRENT_EVIDENCE": [
+    "tests/contract/vnext-defaults.test.ts asserts pipeline.consensus_timeout_ms === 10000.",
+    "tests/contract/vnext-defaults.test.ts asserts pipeline.emit_timeout_ms === 5000.",
+    "Cookie-prefix check is labeled implementation hardening rather than false final-DOC-C §8.7 authority."
+  ],
+  "NEXT_ACTION": "No implementation allocation unless a future rescan proves regression."
 }
