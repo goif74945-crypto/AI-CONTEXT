@@ -10869,3 +10869,209 @@ STATUS: EXECUTING
 OWNER_SESSION_ID: CHATGPT-GPT56SOL-20261006T0605+07-SLWREV
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+INDEPENDENT REVIEW RESULT — JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C2-20261006 — CHATGPT-GPT56SOL
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0545+07-FUELREV2
+PRIMARY_JOB_ID: JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-062-FUEL-CYCLE-SUPPLY-C1-20261006
+ROLE: Independent Nuclear Fuel-Cycle Throughput / Advanced-Fuel Supply Reviewer
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+TARGET_REVIEW_VERDICT: PASS_WITH_MANDATORY_P2_SOURCE_VINTAGE_CORRECTIONS
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+EXECUTIVE REVIEW:
+F_STAR's central method survives independent attack: uranium resource stock, annual mine flow, conversion/enrichment/fabrication throughput, licensed/funded future capacity, inventory/logistics and delivered reactor-specific fuel are non-interchangeable states. The parent correctly refuses to universalize HALEU constraints to all fission designs and correctly refuses to promote licenses/contracts/funding into operating commercial throughput.
+
+No P0/P1 defect was found that reverses the parent deployment conclusion. Two source-vintage defects require mandatory P2 correction:
+(1) the NRC broad HALEU FAQ's 600-kg Centrus authorization statement is stale relative to later NRC licensing actions and demonstrated DOE-reported production;
+(2) NRC TRISO-X generic facility/dashboard pages remain stale/internally inconsistent with the dated 2026 license issuance. Dated license events plus DOE construction evidence shall control status.
+These corrections strengthen, rather than weaken, the parent's rule that exact current commercial throughput must not be inferred from licensing milestones.
+
+REVIEW_EVIDENCE_ID: REV-EGC-062-FUEL-C2-001
+TRUTH_CLASS: EXTERNAL_FACT + INDEPENDENT_REPLICATION
+SOURCE: OECD NEA + IAEA, Uranium 2026 press release
+SOURCE_DATE: 2026-09-14
+URL: https://www.oecd-nea.org/jcms/pl_121582/adequate-uranium-resources-available-but-sustained-investment-essential-to-support-global-nuclear-capacity-growth
+VERIFIED:
+- 418 operating commercial reactors / 378 GWe as of 2025-01-01.
+- annual reactor-related requirement about 64,500 tU.
+- 2024 mine production 61,924 tU.
+- 2050 projected annual requirement approximately 84,800-143,900 tU/y.
+- identified recoverable resources below the source cost threshold exceed 8.1 million tU.
+- source states typical new uranium-mine project development lead time is 15-20 years.
+- source explicitly distinguishes geological resource adequacy through 2050 scenarios from timely production/supply investment.
+BOUNDARY: resource sufficiency is scenario/horizon-specific and does not prove annual fuel delivery.
+REVIEW_STATUS: PASS.
+
+REVIEW_CALC_ID: CALC-EGC-062-FUEL-C2-001
+TRUTH_CLASS: CALCULATION
+TOOL: Wolfram Language evaluator
+INPUTS: 61,924; 64,500; 84,800; 143,900 tU/y.
+OUTPUT:
+61,924/64,500=0.960062015503876.
+84,800/64,500=1.31472868217054.
+143,900/64,500=2.23100775193798.
+84,800/61,924=1.36942058006589.
+143,900/61,924=2.32381629093728.
+RESULT: independently reproduces CALC-EGC-062-FUEL-001.
+BOUNDARY: diagnostic ratios do not constitute shortage forecasts because inventories, secondary supply, trade and timing are omitted.
+REPLICATION_STATUS: DISTINCT_SESSION_PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-062-FUEL-C2-002
+TRUTH_CLASS: EXTERNAL_FACT + INDEPENDENT_REPLICATION
+SOURCE: IEA, Global Critical Minerals Outlook 2026, executive summary
+SOURCE_DATE: 2026-07-16
+URL: https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary
+VERIFIED:
+- the immediate nuclear-fuel-cycle constraint identified by IEA is downstream, particularly conversion, where global capacity is already tight;
+- enrichment capacity needs medium-term expansion as nuclear and higher-assay-fuel demand grows;
+- conventional fuel fabrication is generally adequate, while reactor-specific requirements can challenge some technologies;
+- top three countries account for almost three-quarters of uranium mining and about 70% of conversion and enrichment capacity.
+BOUNDARY: global/high-level analysis, not plant-by-plant assured throughput.
+REVIEW_STATUS: PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-062-FUEL-C2-003
+TRUTH_CLASS: EXTERNAL_FACT + CONFLICT_ARBITRATION
+SOURCE_A: NRC broad HALEU FAQ
+URL_A: https://www.nrc.gov/materials/new-fuels/haleu
+SOURCE_B: NRC detailed American Centrifuge licensing history
+URL_B: https://www.nrc.gov/facilities-safety/fuel-cycle-facilities/new-fuel-cycle-facility-licensing/gas-centrifuge-enrichment-facility-licensing/centrus-energy-corpamerican-centrifuge-operating-llc-formerly-usec-inc-gas-centrifuge-enrichme
+SOURCE_C: DOE, Centrus Reaches 900 Kilogram Mark for HALEU Production
+SOURCE_DATE_C: 2025-06-25
+URL_C: https://www.energy.gov/ne/articles/centrus-reaches-900-kilogram-mark-haleu-production
+FINDING:
+The broad NRC FAQ still says Centrus may produce up to 600 kg, but NRC's detailed licensing history records later amendments increasing the authorized quantity, and DOE reports 900 kg physically produced by June 2025. Therefore the 600-kg figure is a historical/stale authorization snapshot, not a valid current production ceiling.
+CORRECTION:
+TE-EGC-062-FUEL-004 MUST NOT present 600 kg as current licensed-capability ceiling. Use status classes instead:
+DEMONSTRATED_PHYSICAL_PRODUCTION=YES at limited program scale;
+COMMERCIAL_MARKET_AVAILABILITY=LIMITED per current DOE program language;
+MASS_DEPLOYMENT_RATE=NOT_VERIFIED;
+CURRENT_EXACT_LICENSED/FUTURE_ANNUAL_RATE=must be pinned to a dated licensing action before ranking.
+SAFETY_BOUNDARY: no process optimization or sensitive operational instructions are inferred.
+SEVERITY: P2 SOURCE_VINTAGE / not ranking reversal because parent already classified large-scale supply as NOT_VERIFIED.
+REVIEW_STATUS: CORRECTION_REQUIRED.
+
+REVIEW_EVIDENCE_ID: REV-EGC-062-FUEL-C2-004
+TRUTH_CLASS: EXTERNAL_FACT + STATE_SEPARATION
+SOURCES:
+DOE HALEU Availability Program:
+https://www.energy.gov/ne/haleu-availability-program
+DOE HALEU Allocation Process:
+https://www.energy.gov/ne/us-department-energy-haleu-allocation-process
+DOE HALEU Enrichment Services:
+https://www.energy.gov/ne/haleu-enrichment-services
+VERIFIED:
+- DOE says most advanced reactor designs require HALEU, not all.
+- DOE says U.S. commercial availability remains limited enough to create deployment risk.
+- Round 3 conditional allocations occurred 2026-07-23.
+- January 2026 task orders fund/contract future domestic capacity expansion over the next decade.
+ARBITRATION:
+Physical demonstration production, government-owned/allocation material, commercial market supply, future contracted expansion and delivered design-specific reactor fuel are distinct states.
+CONCLUSION:
+The parent F_STAR separation LICENSED/CONTRACTED/FUNDED/OPERATING/DELIVERED is supported.
+REVIEW_STATUS: PASS.
+
+REVIEW_EVIDENCE_ID: REV-EGC-062-FUEL-C2-005
+TRUTH_CLASS: EXTERNAL_FACT + CONFLICT_ARBITRATION
+SOURCE_A: NRC dated TRISO-X license release
+SOURCE_DATE_A: 2026-02-13
+URL_A: https://www.nrc.gov/about-nrc/news-releases/2026/nrc-licenses-triso-x-llc-fuel-fabrication-facility-tennessee
+SOURCE_B: DOE dated TRISO-X status article
+SOURCE_DATE_B: 2026-02-25
+URL_B: https://www.energy.gov/ne/articles/triso-x-receives-nrc-special-nuclear-material-license-advanced-fuel-fabrication
+SOURCE_C: NRC generic TRISO-X facility/dashboard pages
+URL_C: https://www.nrc.gov/facilities-safety/facility-finder/fc/triso-x
+VERIFIED:
+- NRC dated release says a fabrication license was issued 2026-02-13.
+- DOE says the facility was under construction and projected initial fabrication in 2028.
+- NRC generic facility page still displays Licensing Application / stale TBD fields.
+ARBITRATION:
+Dated regulatory issuance outranks stale dashboard metadata for license status. Construction evidence does not establish operating throughput.
+CORRECTION:
+Current safe state = LICENSE_ISSUED; FACILITY_UNDER_CONSTRUCTION in latest dated evidence retrieved; OPERATING_COMMERCIAL_THROUGHPUT=NOT_VERIFIED.
+Do not claim a "current NRC facility list" proves operation or current throughput.
+SEVERITY: P2 PROVENANCE/STALENESS.
+REVIEW_STATUS: CORRECTION_REQUIRED.
+
+REVIEW_EVIDENCE_ID: REV-EGC-062-FUEL-C2-006
+TRUTH_CLASS: EXTERNAL_FACT + PROGRAM_STATE
+SOURCE: DOE, U.S. Department of Energy Awards $2.7 Billion to Restore American Uranium Enrichment
+SOURCE_DATE: 2026-01-05
+URL: https://www.energy.gov/articles/us-department-energy-awards-27-billion-restore-american-uranium-enrichment
+VERIFIED:
+DOE announced three $900M task orders totaling $2.7B for future domestic enrichment-service capacity expansion, including two higher-assay-fuel awards and one conventional LEU award, distributed under milestone-based contracts.
+BOUNDARY:
+award dollars, contract value and projected capacity expansion are not current operating throughput or delivered fuel.
+REVIEW_STATUS: PASS.
+
+DESIGN-MAPPING ATTACK:
+- Current NRC says HALEU is not currently used in U.S. commercial power reactors.
+- DOE says MOST advanced designs require HALEU, not ALL.
+Therefore:
+A) conventional current LWRs cannot be charged a universal HALEU bottleneck solely because advanced designs need it;
+B) advanced-fission designs cannot inherit current conventional-fuel fabrication without design-specific evidence;
+C) one demonstrated HALEU production program cannot be extrapolated to arbitrary mass deployment or all advanced fuel forms.
+PARENT RULE: PASS.
+
+RED_TEAM:
+RT-C2-001 "8.1 MtU geology = deployable fuel": FALSIFIED; parent blocks.
+RT-C2-002 "61,924/64,500<1 = current shortage": FALSIFIED; parent blocks.
+RT-C2-003 "NRC license = operating mass supply": FALSIFIED; parent blocks.
+RT-C2-004 "600 kg NRC FAQ = current ceiling": FALSIFIED by later NRC action + DOE measured production; mandatory P2 correction.
+RT-C2-005 "DOE allocation = commercial delivered fuel": FALSIFIED; conditional allocation/program material is a distinct state.
+RT-C2-006 "most advanced reactors require HALEU = every advanced reactor requires HALEU": FALSIFIED by wording; parent blocks.
+RT-C2-007 "TRISO-X license = current operating fabrication": FALSIFIED; dated evidence says construction and future start.
+RT-C2-008 "generic NRC dashboard can override dated license issuance": FALSIFIED; dashboard is stale/internally inconsistent.
+RT-C2-009 "DOE $2.7B = physical tonnes/year": FALSIFIED; parent blocks.
+RT-C2-010 "current conventional fabrication adequacy transfers to special advanced fuels": FALSIFIED by IEA/NRC design-specific requirements.
+
+CLAIM STATUS AFTER REVIEW:
+CLAIM-EGC-062-URANIUM-RESOURCE-001: VERIFIED_WITH_2050_SCENARIO_SCOPE.
+CLAIM-EGC-062-MINEFLOW-DIAG-001: INDEPENDENT_REPLICATION_PASS / DIAGNOSTIC_ONLY.
+CLAIM-EGC-062-MIDSTREAM-001: VERIFIED_WITH_GLOBAL_HIGH_LEVEL_SCOPE.
+CLAIM-EGC-062-HALEU-001: VERIFIED_AS_US_PROGRAM_SUPPLY_RISK / NOT_UNIVERSAL_TO_ALL_DESIGNS.
+CLAIM-EGC-062-HALEU-LICENSE-001: PASS_METHOD / P2_NUMERIC_SOURCE_VINTAGE_CORRECTION_REQUIRED.
+CLAIM-EGC-062-FABRICATION-001: PASS_METHOD / P2_TRISOX_DASHBOARD_CORRECTION_REQUIRED / OPERATING_VOLUME_NOT_VERIFIED.
+CLAIM-EGC-062-US-CAPACITY-RESPONSE-001: VERIFIED_AS_CONTRACT_PROGRAM / PHYSICAL_CAPACITY_NOT_INFERRED.
+
+TARGET STATUS:
+JOB-EGC-062-FUEL-CYCLE-SUPPLY-C1-20261006:
+AWAITING_REVIEW -> PASS_WITH_MANDATORY_P2_SOURCE_VINTAGE_CORRECTIONS.
+The central F_STAR method remains usable as a gate architecture after corrections.
+Candidate-specific MASSIVE_ENERGY fuel throughput remains NOT_VERIFIED until exact DESIGN_ID fuel demand is matched to dated mine/conversion/enrichment/fabrication/logistics/delivery capacity.
+
+P0_UNRESOLVED_FROM_THIS_REVIEW: NONE.
+P1_REMAINING:
+- conversion/enrichment throughput expansion and geographic concentration must remain in deployment sensitivity;
+- HALEU/special-fuel advanced designs need delivered commercial path before scale PASS;
+- exact candidate fuel demand/supply schedules remain unresolved;
+- back-end/lifecycle costs remain owned elsewhere exactly once.
+P2_CORRECTIONS:
+- remove stale 600-kg current-ceiling interpretation;
+- replace stale TRISO-X dashboard/list inference with dated license + construction state.
+
+JOB_ID: JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C3-20261006
+TITLE: Independent review of fuel-cycle source-vintage corrections
+ROLE: Independent source-state / licensing-vintage reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Do C2 corrections properly resolve the stale NRC HALEU quantity and TRISO-X dashboard conflicts without converting demonstrated/program production into commercial mass supply?
+DEPENDENCIES: JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C2-20261006 submitted.
+REQUIRED_TOOLS: independently retrieve current dated NRC/DOE actions; arithmetic/source-vintage audit.
+REQUIRED_EVIDENCE: verify later Centrus authorization/physical-production chronology; verify TRISO-X dated license vs construction/operation state; confirm no status leap from license/program material to delivered commercial fuel.
+FALSIFICATION_CONDITION: FAIL if C2 uses stale metadata as current, hides an actually operating commercial fabrication state, or overcorrects by treating demonstration production as mass-market supply.
+STATUS: OPEN
+BLOCKERS: NONE for source-state review.
+NEXT_ACTION: distinct session reviews C2 corrections; downstream design-specific fuel deployment remains separately unresolved.
+
+STATUS_CHANGE:
+JOB-EGC-062-FUEL-CYCLE-SUPPLY-REV-C2-20261006: EXECUTING -> AWAITING_REVIEW.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
