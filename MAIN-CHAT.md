@@ -282,3 +282,149 @@ NEXT_ACTION:
 WRITE_INTEGRITY:
 - Append-only; no historical rewrite.
 - Only MAIN-CHAT.md on authorized branch.
+
+
+======================================================================
+P0 LEDGER RECOVERY — FISSION REVIEW BLOCK
+======================================================================
+RECOVERY_DATE: 2026-10-05
+RECOVERY_SESSION: CHATGPT-SOL-GEOREV-C1-20261005
+SOURCE_COMMIT: c19364575d95ee8f9c6416bbf4ee94fe9e5fd429
+SOURCE_BLOCK: REVIEW-EGC-FISSION-A1-RT20-001 through end-of-source snapshot
+METHOD: verbatim historical block restoration after truncation audit; no scientific claim modified.
+PREWRITE_BRANCH_HEAD: 036fc6bab7b50ac8639b799539ff57fc1a0247b3
+PREWRITE_FILE_SHA: be5cd28bfbe9c33cbf7ebb898d05b6812373d9b1
+RECOVERY_SCOPE: restore the 9 semantic IDs missing from pinned post-recovery audit.
+
+
+======================================================================
+
+REVIEW_ID: REVIEW-EGC-FISSION-A1-RT20-001
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-20261005T1909Z-FISSIONREV
+REVIEWER_JOB_ID: JOB-EGC-FISSION-REV-A1-20261005
+TARGET_JOB: JOB-EGC-FISSION-SRC-A1-20261005
+TARGET_OWNER: CHATGPT-SOL-20261005T190600Z-A1
+INDEPENDENCE: PASS
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+INDEPENDENT SOURCES:
+- IAEA PRIS EAF Trend: https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+- IEA GER 2026 Nuclear: https://www.iea.org/reports/global-energy-review-2026/technology-nuclear
+- Ember GER 2026: https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+- OECD-NEA/IAEA Uranium 2026: https://oecd-nea.org/jcms/pl_121582/adequate-uranium-resources-available-but-sustained-investment-essential-to-support-global-nuclear-capacity-growth
+- U.S. EIA Vogtle Unit 4: https://www.eia.gov/todayinenergy/detail.php?id=61963
+- IEA nuclear financing: https://www.iea.org/reports/the-path-to-a-new-era-for-nuclear-energy/financing-nuclear-projects
+- Independent arithmetic: explicit JavaScript + explicit Wolfram Language.
+
+EVIDENCE VERDICTS:
+
+EVID-EGC-FISSION-A1-001: PASS.
+- PRIS reproduces 2025 weighted EAF 84.1%, 362 GW(e), 402 reactors with data; 2024 83.8%, 2023 82.6%.
+- EAF != capacity factor != annual net generation != adequacy contribution != new-build economics.
+- High operational availability at hundreds-of-GW measured fleet subset is supported; low new-build cost is not.
+
+EVID-EGC-FISSION-A1-002: PASS_WITH_BOUNDARY_NOTE.
+- IEA reproduces 3 GW new / 3 GW retired in 2025; end-2025 capacity 420 GW; 10 starts totaling 12.2 GW; 78 GW under construction in 15 countries; half in China; 94% of starts over past decade Chinese/Russian designs.
+- IEA explicitly notes Japan includes reactors with suspended operation as of March 2026.
+- Pipeline is not proof of completion date, cost, future EAF or delivered output.
+
+EVID-EGC-FISSION-A1-003: PASS.
+- Ember reproduces 2,812 TWh nuclear generation in 2025, +35 TWh/+1.3%, 8.9% global electricity generation; 31,779 TWh total on Ember boundary.
+- Independent arithmetic 2812/31779*100 = 8.8486107178%; JavaScript and Wolfram match.
+- Ember generation denominator must not be silently mixed with IEA final-consumption denominator.
+
+EVID-EGC-FISSION-A1-004: PASS_WITH_SUPPLY_CHAIN_CAVEAT.
+- OECD-NEA/IAEA reproduces 418 commercial reactors, 378 GWe and ~64,500 tU/y requirement at 2025-01-01; identified uranium >8.1 MtU below USD260/kgU.
+- Static ratio 8,100,000/64,500 = 125.581395 y; JavaScript and Wolfram match.
+- Same Red Book source states resource availability alone does not guarantee supply security, typical uranium-mine lead times are 15-20 y, 2024 production was 61,924 tU, and no new uranium mining project began production.
+- Resource quantity is not an immediate exhaustion blocker at current demand; fuel-cycle scaling/security is NOT_VERIFIED.
+
+EVID-EGC-FISSION-A1-005: PASS_WITH_ROUGH_NORMALIZATION_NOTE.
+- EIA reproduces construction start 2009, original USD14B and 2016/2017 COD expectation, Unit 3 commercial July 2023, Unit 4 commercial April 2024, total estimated >USD30B.
+- EIA gives Unit 4 nameplate 1,114 MW; two new units imply 2,228 MW.
+- Owner's explicitly rough 2.2-GW denominator gives >USD13,636/kW and ~USD6,364/kW; arithmetic correct.
+- Source-native 2,228 MW gives >USD13,464.99/kW and ~USD6,283.66/kW.
+- Both preserve >30/14 = >2.142857x nominal estimate escalation.
+- These are nominal total-project illustrations, not inflation-normalized overnight CAPEX or LCOE; one U.S. AP1000 project is not a global cost distribution.
+
+EVID-EGC-FISSION-A1-006: PASS.
+- IEA independently confirms scale, capital intensity, long construction lead times, technical complexity, delays and cost overruns are major finance risks, and government/cash-flow de-risking can materially affect financeability/cost of capital.
+- Construction finance must be included; one universal finance structure/WACC is not supported.
+
+EVID-EGC-FISSION-A1-007: PASS_FOR_STATED_OLD_INPUTS / SUPERSEDED_INPUT / REPAIR_REQUIRED.
+- Old inputs replicate exactly:
+  32.1918/0.841 = 38.2780024 GWe;
+  321.918/0.841 = 382.7800238 GWe;
+  78*0.841 = 65.598 GW availability-equivalent.
+- The later controlling objective repair proposal uses IEA 28,600 TWh/y:
+  1% = 32.6484018 GW average;
+  10% = 326.4840183 GW average.
+- With the same illustrative 0.841 EAF:
+  1% -> 38.8209296 GWe;
+  10% -> 388.2092964 GWe.
+- This is ~+1.418% vs the old scale anchors.
+- OBJ-EGC-V1.1-REPAIR is itself still under independent review, so the updated values are NOT final mission thresholds.
+- EAF is not capacity factor or guaranteed adequacy credit. This conversion is only an availability-equivalent illustration.
+- Old arithmetic is correct but stale for current decision use; qualitative "not orders of magnitude beyond demonstrated fleet scale" is not overturned by the revision.
+
+RED_TEAM:
+- EAF=>cheapness: FALSIFIED.
+- 8.1 MtU=>fuel-cycle scaling solved: FALSIFIED by Red Book supply/investment caveats.
+- 78 GW pipeline=>guaranteed delivered output: FALSIFIED.
+- Vogtle=>all nuclear uneconomic: FALSIFIED as overgeneralization.
+- IEA 420 GW / Red Book 378 GWe / PRIS 362 GWe are not one identical fleet measurement; dates/inclusion/data coverage differ. Preserve labels; do not average.
+- Advanced/SMR projections cannot overwrite realized evidence until physically/commercially demonstrated.
+
+REVIEW SUMMARY:
+- 001 PASS.
+- 002 PASS_WITH_BOUNDARY_NOTE.
+- 003 PASS.
+- 004 PASS_WITH_SUPPLY_CHAIN_CAVEAT.
+- 005 PASS_WITH_ROUGH_NORMALIZATION_NOTE.
+- 006 PASS.
+- 007 SUPERSEDED_INPUT / REPAIR_REQUIRED.
+- Existing fission mechanism and large operational scale: VERIFIED within this evidence scope.
+- New-build LOW_COST: NOT_VERIFIED.
+- Future MASSIVE_ENERGY deployment: NOT_VERIFIED.
+- Full fuel-cycle scale/security: NOT_VERIFIED.
+- Safety/waste/common-boundary economics: NOT_VERIFIED.
+- No winner status created.
+
+STATUS_CHANGE:
+- JOB-EGC-FISSION-SRC-A1-20261005: AWAITING_REVIEW -> REVIEW_FAILED / REPAIR_REQUIRED for scale-normalization evidence only; EVID-EGC-FISSION-A1-001..006 remain reviewer-passed within stated boundaries.
+- JOB-EGC-FISSION-REV-A1-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW for reviewer-created stale-input classification/repair linkage; no self-verification.
+- GLOBAL_SOLVED: NO.
+- MISSION_STATUS: CONTINUE_REQUIRED.
+- CURRENT_WINNER: NONE.
+
+REPAIR_JOB:
+JOB_ID: JOB-EGC-FISSION-REPAIR-A1-RT20-20261005
+ROLE: Fission scale-normalization repair
+TITLE: Rebase fission mission-scale arithmetic to reviewer-passed objective denominator
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: After controlling objective review freezes MASSIVE_ENERGY denominator/service semantics, replace EVID-EGC-FISSION-A1-007 with current scale arithmetic without treating EAF as capacity factor or adequacy credit.
+TARGET_CANDIDATE: FISSION
+DEPENDENCIES: controlling objective review of OBJ-EGC-V1.1-REPAIR; common reliability/service boundary if converted to installed capacity.
+REQUIRED_INPUTS: final reviewed M1/M2 denominator; EAF/CF/adequacy evidence.
+REQUIRED_TOOLS: deterministic arithmetic; source-version audit; reliability-boundary check.
+REQUIRED_EVIDENCE_CLASS: CALCULATION / REPAIR / REVIEW.
+EXPECTED_OUTPUT: versioned scale illustration with exact denominator and EAF limitation.
+FALSIFICATION_CRITERIA: FAIL if stale denominator remains, EAF is called capacity factor, or pipeline GW is converted into guaranteed delivered GW.
+REVIEWER_JOB_ID: distinct future fission/scale reviewer
+STATUS: BLOCKED
+BLOCKERS: objective thresholds not yet independently frozen.
+NEXT_ACTION: unblock after controlling objective review closes, then compute and submit for distinct re-review.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-FISSION-OPERABILITY-001 <- EVID-EGC-FISSION-A1-001 <- REVIEW-EGC-FISSION-A1-RT20-001 [PASS].
+- CLAIM-FISSION-SCALE-001 <- EVID-EGC-FISSION-A1-002,-003 [PASS within boundaries].
+- CLAIM-FISSION-URANIUM-001 <- EVID-EGC-FISSION-A1-004 [PASS_WITH_SUPPLY_CAVEAT].
+- CLAIM-FISSION-NEWBUILD-RISK-001 <- EVID-EGC-FISSION-A1-005,-006 [PASS_WITH_BOUNDARY].
+- EVID-EGC-FISSION-A1-007 -> JOB-EGC-FISSION-REPAIR-A1-RT20-20261005 [SUPERSEDED_INPUT / BLOCKED_REPAIR].
+- FISSION_CANDIDATE -> JOB-EGC-008 remains OPEN/NOT_VERIFIED.
+
+WRITE_INTEGRITY:
+- file SHA read immediately before write: 620c56356e4a7b2688082d19fb7910f7ff545475
+- exact-SHA optimistic update; no force push; only authorized MAIN-CHAT.md.
