@@ -1,0 +1,134 @@
+{
+  "INDEX_ID": "FINAL-DOC-C-PRIMARY-INDEX-B35EE1BF",
+  "SPEC_ID": "NEXY-IGNIS",
+  "SPEC_FILENAME": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "SPEC_HASH_SHA256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "INDEX_KIND": "PRIMARY_SOURCE_NAVIGATION",
+  "AUTHORITY_NOTE": "This file is a navigation index only. Critical verdicts must resolve back to the locked primary DOCX or a verified requirement record bound to it.",
+  "RAW_DOCX_PARAGRAPH_INDEXING": "1-based python-docx paragraph order including empty paragraphs",
+  "TEMPORAL_AUTHORITY": {
+    "FINAL_VERDICT": 9834,
+    "DOC_C_BUILD_SPEC_DECLARATION": 9839,
+    "BUILD_OBLIGATION_DOC_C_ONLY": 9844,
+    "FINAL_DOC_C_START": 9886,
+    "FINAL_DOC_C_END": 10499,
+    "DOC_D_START": 10500,
+    "HISTORICAL_EXECUTION_PACK_START": 8095,
+    "HISTORICAL_EXECUTION_PACK_LAST_SUBSTANTIVE_SECTION": 9829
+  },
+  "FINAL_DOC_C_HEADINGS": [
+    {
+      "heading": "2) DOC-C — vNEXT BUILD SPEC",
+      "paragraph": 9886
+    },
+    {
+      "heading": "2.1 Included",
+      "paragraph": 9887
+    },
+    {
+      "heading": "2.2 Excluded",
+      "paragraph": 9900
+    },
+    {
+      "heading": "2.3 Canonical Defaults",
+      "paragraph": 9910
+    },
+    {
+      "heading": "3) CANONICAL CONTRACT BASELINE",
+      "paragraph": 9950
+    },
+    {
+      "heading": "3.1 Core Types",
+      "paragraph": 9951
+    },
+    {
+      "heading": "3.2 Envelope",
+      "paragraph": 9995
+    },
+    {
+      "heading": "3.3 Release Policy Result",
+      "paragraph": 10014
+    },
+    {
+      "heading": "4) FULL CANONICAL API PACK",
+      "paragraph": 10026
+    },
+    {
+      "heading": "4.1 Global API Law",
+      "paragraph": 10027
+    },
+    {
+      "heading": "4.2 Route Matrix",
+      "paragraph": 10038
+    },
+    {
+      "heading": "5) EXECUTABLE STATE / EVENT MATRIX",
+      "paragraph": 10353
+    },
+    {
+      "heading": "5.1 Events",
+      "paragraph": 10354
+    },
+    {
+      "heading": "5.2 Matrix",
+      "paragraph": 10368
+    },
+    {
+      "heading": "5.3 Illegal Events",
+      "paragraph": 10453
+    },
+    {
+      "heading": "5.4 Owner Actions",
+      "paragraph": 10470
+    },
+    {
+      "heading": "5.5 Timeout Law",
+      "paragraph": 10486
+    },
+    {
+      "heading": "5.6 Log / Incident Law",
+      "paragraph": 10494
+    }
+  ],
+  "FINAL_DOC_C_INCLUDED": {
+    "paragraph_range": "9889-9899",
+    "items": [
+      "directive execution",
+      "multi-agent debate / verify / consensus",
+      "release policy",
+      "vault revisioning",
+      "temporary OTAC auth",
+      "RBAC",
+      "observability",
+      "queue + idempotency",
+      "UI truth layer",
+      "owner controls",
+      "auditability"
+    ]
+  },
+  "FINAL_DOC_C_EXCLUDED": {
+    "paragraph_range": "9902-9909",
+    "items": [
+      "voice orchestration",
+      "AR / VR / XR",
+      "holographic UI",
+      "blockchain",
+      "IoT",
+      "quantum-safe cryptography layer",
+      "self-patch / auto-heal runtime",
+      "public anonymous write access"
+    ]
+  },
+  "IMPORTANT_NON_FINAL_MATERIAL": {
+    "range": "8095-9829",
+    "label": "NEXY — EXECUTION PACK vNEXT.1",
+    "note": "Pre-FINAL-VERDICT material. It may support historical context but must not be relabeled as final DOC-C without an explicit incorporation path."
+  },
+  "INVALID_SHORTCUTS": [
+    "Do not cite final DOC-C section numbers above 5.6.",
+    "Do not treat projects/NEXY.AI/deep/doc-c-vnext-build-spec.md section numbering as primary source numbering.",
+    "Do not classify raw DOCX paragraphs >=10500 as final DOC-C merely because content is implementation-oriented."
+  ],
+  "CREATED_BY": "C-0DC2D7E4",
+  "SOURCE_SHA_AT_CREATION": "608426cb30398b1f3461866f7079d2a435c96b96"
+}
