@@ -9081,3 +9081,61 @@ WRITE_INTEGRITY:
 - file blob SHA immediately before write: 8cdcc57ef87353e73d0a0f0d54705613a59490bc
 - exact-SHA optimistic update; no force; only MAIN-CHAT.md.
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+40. DYNAMIC SOURCE/METHOD JOB CLAIM — FINANCE SENSITIVITY
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-FINANCE-J1-20261005
+PRIMARY_ROLE: Techno-economic finance/sensitivity analyst
+PRIMARY_JOB_ID: JOB-EGC-FINANCE-METHOD-J1-20261005
+QUESTION: What candidate-neutral finance equations and current authoritative assumptions are required to propagate WACC, lifetime, capacity factor, construction time and financing boundary into delivered cost before JOB-EGC-015?
+DEPENDENCIES: NONE for method/evidence acquisition; final normalization depends on common boundary/objective review.
+TOOLS: authoritative EIA/national-lab finance methodology; deterministic Python calculations; dimensional checks; sensitivity analysis.
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION + INFERENCE.
+FALSIFICATION_TARGET: hidden financing, inconsistent real/nominal rates, comparing overnight CAPEX to financed CAPEX, lifetime mismatches, or cost rankings unstable under plausible WACC ranges.
+REVIEWER: JOB-EGC-FINANCE-REV-J1-20261005 by distinct session.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-FINANCE-METHOD-J1-20261005
+ROLE: Finance methodology/source support
+TITLE: Candidate-neutral WACC/lifetime/capacity-factor sensitivity framework
+QUESTION_TO_RESOLVE: Establish reproducible equations and sensitivity anchors without assuming a winner.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: NONE for method construction.
+REQUIRED_INPUTS: published finance definitions, cost-recovery equations, current source assumptions.
+REQUIRED_TOOLS: official source retrieval; Python; unit checks.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+EXPECTED_OUTPUT: equations, reproducible sensitivity table, finance-boundary warnings, and handoff to JOB-EGC-015/JOB-EGC-025.
+FALSIFICATION_CRITERIA: fail if method mixes nominal/real quantities, omits material construction finance, or plausible rate/lifetime variations can reverse candidate ordering without being propagated.
+REVIEWER_JOB_ID: JOB-EGC-FINANCE-REV-J1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-FINANCE-J1-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC UNKNOWN
+BLOCKERS: NONE for method/evidence acquisition.
+HANDOFF: Gather official assumptions, calculate sensitivity, submit AWAITING_REVIEW.
+
+JOB_ID: JOB-EGC-FINANCE-REV-J1-20261005
+ROLE: Independent finance replication
+TITLE: Recompute and attack finance sensitivity framework
+QUESTION_TO_RESOLVE: Are equations, units, rate conventions and sensitivity conclusions reproducible?
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-FINANCE-METHOD-J1-20261005 AWAITING_REVIEW
+REQUIRED_INPUTS: submitted finance evidence/method
+REQUIRED_TOOLS: independent recomputation and source retrieval
+REQUIRED_EVIDENCE_CLASS: REPLICATION / CALCULATION / SOURCE_FACT
+EXPECTED_OUTPUT: PASS/FAIL and repair items
+FALSIFICATION_CRITERIA: arithmetic, rate convention or boundary mismatch
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+BLOCKERS: source job not submitted
+HANDOFF: distinct session required.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
