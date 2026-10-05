@@ -42,3 +42,28 @@ REVIEW_SATURATION:
 
 CONTROL_PLANE_NOTE:
 C-5A1712D6 independently reproduced GitHub HTTP 422 for the mandated worker branch prefix at SOURCE_SHA, corroborating INC-BRANCH-NAMESPACE-001. No duplicate incident/broadcast created.
+
+
+BOOTSTRAP ROOT-CAUSE EXTENSION:
+FACT:
+- packages/api/bootstrap.ts at 608426cb30398b1f3461866f7079d2a435c96b96 handles a persisted-tick dependency failure by calling transitionSystemState("error", "CORE", ...).
+- With the final DOC-C matrix, INIT + error is illegal. transitionSystemState preflight therefore throws VNextStateTransitionDeniedError before any persistence path can force FREEZE.
+- bootstrap() catches and suppresses that nested transition error, then throws BOOTSTRAP_FAILED_FREEZE. The runtime state can therefore remain INIT even though the exception text claims FREEZE.
+- tests/coverage/bootstrap-control-plane.test.ts mocks transitionSystemState and only asserts that "error" was requested; it does not execute the real state-machine semantics or assert actual runtime FREEZE.
+- Commit 27af7f93893c7589e516c269fae41aa467c2cdb9 previously reduced the TypeScript matrix to the final DOC-C error rows but left bootstrap.ts/system-state.ts unchanged, so matrix parity alone did not repair bootstrap fail-closed behavior.
+- Commit 51e39a4b110736992d58c01550b57de653539610 broadened TypeScript error transitions to every non-STOP state, which restored a bootstrap path at the cost of violating the later final-verdict DOC-C matrix.
+
+ENGINEERING INFERENCE / REPAIR BOUNDARY:
+- Bootstrap dependency quarantine must not be represented by inventing a legal lifecycle error transition from INIT.
+- The least-semantic-change repair is a dedicated fail-safe quarantine boundary in system-state, analogous to the existing direct in-memory FREEZE used on hydration/persistence integrity failure: force runtime state to FREEZE without adding an unauthorized VNEXT_TRANSITIONS row, preserve STOP/FREEZE if already terminal, and throw the bootstrap failure.
+- Any durable incident/evidence behavior for this non-lifecycle quarantine must be implemented only where storage is available; a dependency outage must not prevent the in-memory fail-safe FREEZE.
+- Do not call such a quarantine a normal DOC-C transition and do not emit a fabricated FSM_TRANSITION row for an event that is illegal from INIT.
+
+REQUIRED ACCEPTANCE TEST EXTENSION:
+- run bootstrap with the real state-machine/system-state semantics (do not mock the transition oracle) from INIT
+- force readMaxPersistedTick/database failure
+- assert bootstrap rejects
+- assert currentSystemState() === FREEZE
+- assert INIT + error remains illegal in the canonical matrix
+- assert no fake legal INIT + error transition is introduced
+- retain separate persistence/hydration failure tests
