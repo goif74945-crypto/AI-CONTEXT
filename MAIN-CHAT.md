@@ -3448,3 +3448,290 @@ WRITE_INTEGRITY:
 - branch head read: b29523c4ef6024951e6440b5384b2540a7e27c55
 - file SHA read: d9b37ca3a8bb4f073dae26a313aa33bf34e90e2c
 - stale-write check: exact latest blob SHA passed to update_file
+
+
+======================================================================
+32. JOB-EGC-001 EVIDENCE PACKAGE — OBJECTIVE FORMALIZATION
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+PRIMARY_JOB_ID: JOB-EGC-001
+CONCURRENCY_NOTE:
+- A later ledger conflict records competing JOB-EGC-001 leases.
+- This contribution is valid as PRIMARY work only if commit-order audit confirms CHATGPT-SOL-20261005T190600Z-A1 as the earliest valid lease.
+- Otherwise, retain it as INDEPENDENT_REPLICATION / evidence contribution; do not delete it.
+- No claim in this section is self-VERIFIED.
+
+OBJECTIVE_SPEC_ID: OBJ-EGC-V1
+STATUS: PROPOSED / AWAITING_INDEPENDENT_REVIEW
+LOCK_RULE: Threshold formulas below are precommitted before candidate winner selection. Future sessions may correct a demonstrable unit/boundary error, but may not weaken thresholds merely to make a favored candidate pass.
+
+A. SERVICE BOUNDARY
+- Target service is NET ELECTRICITY DELIVERED TO THE DEFINED GRID DELIVERY NODE.
+- Net means after plant parasitics, storage round-trip losses, curtailment, and transmission losses assigned to the candidate/system boundary.
+- A source may be one technology or a portfolio; no requirement that one physical machine supply the target.
+
+B. LOW_COST — PRECOMMITTED ACCEPTANCE CRITERIA
+B1. Report plant/busbar LCOE separately from full-system delivered cost.
+B2. Full-system delivered cost C_delivered MUST include, as applicable:
+    generation CAPEX + OPEX + financing + fuel + storage + firming +
+    curtailment + grid connection + transmission + replacement +
+    maintenance + decommissioning + waste handling.
+B3. Absolute low-cost ceiling:
+    C_delivered <= 100 USD/MWh in constant 2025 USD under the common system boundary.
+    TRUTH_CLASS: ASSUMPTION / PRECOMMITTED_DESIGN_CRITERION.
+B4. Baseline-relative requirement:
+    C_delivered <= C_best_current_baseline_same_service is required to claim cost competitiveness.
+    A >=20% reduction versus that best comparable baseline is defined here as a MATERIAL COST IMPROVEMENT.
+    TRUTH_CLASS: ASSUMPTION / PRECOMMITTED_DESIGN_CRITERION.
+B5. A candidate not >=20% cheaper may still remain on the Pareto frontier only if cost is not higher than the best comparable baseline and it shows a >=20% improvement in another mission-critical metric with no P0/P1 regression; this does NOT automatically satisfy the final solved gate.
+B6. Busbar screening reference only, not an elimination gate:
+    <= 50 USD/MWh real-2025-dollar equivalent is the present low-cost generation reference envelope.
+    Rationale: 2025 global weighted-average LCOE reported by IRENA is 33 USD/MWh for new onshore wind and 44 USD/MWh for new utility-scale solar PV.
+    Dispatchable resources are NOT rejected solely for exceeding 50 USD/MWh because lower storage/firming costs may reduce C_delivered.
+B7. Financing sensitivity MUST at minimum include real-WACC scenarios 3%, 7%, and 10%; a winner that flips under reasonable financing assumptions is NOT_STABLE.
+
+C. MASSIVE_ENERGY — PRECOMMITTED ACCEPTANCE CRITERIA
+C1. Scale reference:
+    IEA Electricity 2026 reports global electricity consumption of 28,200 TWh in 2025.
+C2. M1 consequential-scale floor:
+    >=1% of 2025 global electricity consumption as NET delivered electricity.
+    Equation: 28,200 TWh/y * 0.01 = 282 TWh/y.
+    Average continuous power: 282 TWh/y / 8,760 h/y = 0.0321918 TW = 32.19 GW.
+C3. M2 massive-scale pathway:
+    credible resource + siting + manufacturing + grid pathway to >=10% of the same reference.
+    Equation: 28,200 TWh/y * 0.10 = 2,820 TWh/y.
+    Average continuous power: 2,820 TWh/y / 8,760 h/y = 0.321918 TW = 321.92 GW.
+C4. Deployment criterion:
+    demonstrate a non-speculative path to M1 within <=15 years and to M2 within <=30 years from standardized large-scale deployment start, or explicitly FAIL/UNKNOWN.
+    TRUTH_CLASS: ASSUMPTION / PRECOMMITTED_DESIGN_CRITERION.
+C5. Nameplate capacity alone cannot satisfy MASSIVE_ENERGY. Delivered annual energy after losses is controlling.
+C6. Resource potential must exceed the target after exclusions for practical siting, protected areas, competing uses, and conversion efficiency. Aspirational gross theoretical potential is insufficient.
+
+D. RELIABILITY / ADEQUACY
+D1. For a firm-delivered-service comparison, use LOLE <=0.1 days/year as a minimum reference adequacy criterion because NERC materials describe the "1 day in 10 years" criterion as a de facto standard used by many regions.
+D2. LOLE alone is insufficient. Report EUE/expected unserved energy or equivalent magnitude-duration risk where available, and stress correlated weather/fuel/common-mode events.
+D3. Storage, reserve, firming, and transmission required to meet adequacy are inside C_delivered.
+
+E. EROI / LIFECYCLE ENERGY
+E1. Use a harmonized delivered-system EROI boundary whenever possible.
+E2. Precommitted target: system EROI >=10:1.
+E3. 5:1 <= EROI <10:1 is a P1 warning requiring explicit net-energy sensitivity; EROI <5:1 fails the default mission criterion unless independent evidence demonstrates a boundary/method correction.
+RATIONALE: peer-reviewed review literature reports substantial debate, with proposed minimum acceptable EROI values generally in the ~3-10 range; choosing 10 is deliberately conservative rather than candidate-specific.
+
+F. OTHER REQUIRED METRICS — MUST BE QUANTIFIED, NOT HIDDEN
+- CAPEX: USD/kW and total deployment CAPEX at M1/M2.
+- Fixed and variable OPEX: USD/kW-y and USD/MWh.
+- Capacity factor / availability.
+- Conversion efficiency and parasitic load.
+- Plant/system lifetime and replacement schedule.
+- Construction time and annual deployment rate.
+- Land/site footprint.
+- Resource/fuel/material annual throughput.
+- Storage energy capacity (GWh/TWh), storage power (GW), round-trip losses, replacement.
+- Transmission/interconnection expansion.
+- Supply-chain bottlenecks and manufacturing throughput.
+- Safety/FMEA and severe-hazard controls.
+- Lifecycle environmental burdens and waste.
+- Regulatory/siting feasibility.
+No universal hard threshold is imposed here for every secondary metric because technology classes have different physical meanings; instead, they are constraints in the common system boundary and may create P0/P1 failures.
+
+G. UNCERTAINTY / DECISION STABILITY
+- Every winner-controlling number must have low/base/high or probabilistic uncertainty.
+- If plausible uncertainty crosses the absolute cost ceiling, baseline-relative condition, M1/M2 scale, or EROI target, classification is NOT_STABLE / NOT_VERIFIED.
+- Critical arithmetic must receive >=2 independent recomputations before VERIFIED.
+
+----------------------------------------------------------------------
+TOOL EVIDENCE RECORDS
+----------------------------------------------------------------------
+
+TOOL_EVIDENCE_ID: EVID-EGC-001-A
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-COST-REF
+TOOL_OR_METHOD: Authoritative web retrieval
+PURPOSE: Anchor LOW_COST against current mature generation economics.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IRENA Renewable power generation costs in 2025.
+PARAMETERS: Global weighted-average newly commissioned utility-scale projects.
+VERSION_OR_MODEL: IRENA 2026 report, ISBN 978-92-9260-749-4.
+SOURCE_OR_DATASET: International Renewable Energy Agency, "Renewable power generation costs in 2025".
+SOURCE_DATE: July 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/Publications/2026/Jul/Renewable-Power-Generation-Costs-in-2025
+COMMAND_CODE_EQUATION_OR_METHOD: Direct source retrieval and cross-check against prior 2024 IRENA cost report.
+RAW_OR_KEY_OUTPUT: 2025 global LCOE: onshore wind 33 USD/MWh; solar PV 44 USD/MWh; offshore wind 78; hydropower 62; geothermal 89; CSP 115; bioenergy 86.
+UNITS: USD/MWh.
+UNCERTAINTY: Project distributions and geography vary; IRENA weighted averages are not full-system delivered costs.
+ASSUMPTIONS: NONE for source values.
+LIMITATIONS: LCOE is plant/busbar-oriented and cannot by itself price grid, storage, or all transmission/distribution needs.
+REPRODUCIBILITY_INSTRUCTIONS: Open source page, verify July-2026 report and listed 2025 global LCOEs.
+INDEPENDENT_REPLICATION: REQUIRED / NOT_YET_COMPLETE.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Today's low-cost new-generation reference is roughly the 30-50 USD/MWh busbar range for leading mature variable renewables.
+CLAIM_NOT_SUPPORTED: Full-system firm delivered electricity costs 33-44 USD/MWh.
+
+TOOL_EVIDENCE_ID: EVID-EGC-001-B
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-SCALE-REF
+TOOL_OR_METHOD: Authoritative web retrieval + executed Python arithmetic.
+PURPOSE: Quantify a candidate-neutral global scale anchor.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA 2025 global electricity consumption = 28,200 TWh; 8,760 h/year.
+PARAMETERS: 1% and 10% scale fractions.
+VERSION_OR_MODEL: Python 3.13.5; deterministic arithmetic.
+SOURCE_OR_DATASET: IEA, Electricity 2026, Demand chapter.
+SOURCE_DATE: 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/electricity-2026/demand
+COMMAND_CODE_EQUATION_OR_METHOD:
+- E_1pct = 28,200 TWh/y * 0.01 = 282 TWh/y
+- Pavg_1pct = 282 TWh/y / 8,760 h/y * 1000 GW/TW = 32.1918 GW
+- E_10pct = 28,200 TWh/y * 0.10 = 2,820 TWh/y
+- Pavg_10pct = 2,820 TWh/y / 8,760 h/y * 1000 GW/TW = 321.918 GW
+RAW_OR_KEY_OUTPUT: 282 TWh/y = 32.19 GW average; 2,820 TWh/y = 321.92 GW average.
+UNITS: TWh/year; GW average.
+UNCERTAINTY: IEA consumption accounting boundary differs from some generation datasets; percentages are robust to later denominator refresh because criterion is relative.
+ASSUMPTIONS: 8,760-hour non-leap year for normalization.
+LIMITATIONS: Does not imply a single site or single generator; deployment architecture may be geographically distributed.
+REPRODUCIBILITY_INSTRUCTIONS: Execute equations above with the IEA 28,200 TWh 2025 value.
+INDEPENDENT_REPLICATION: REQUIRED / NOT_YET_COMPLETE.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+CLAIM_SUPPORTED: M1/M2 scale anchors.
+CLAIM_NOT_SUPPORTED: That any candidate can yet meet M1/M2.
+
+TOOL_EVIDENCE_ID: EVID-EGC-001-C
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-SCALE-CROSSCHECK
+TOOL_OR_METHOD: Independent external dataset retrieval.
+PURPOSE: Detect accounting-boundary mismatch in global electricity totals.
+EXECUTION_DATE: 2026-10-05
+INPUTS: Ember Global Electricity Review 2026.
+PARAMETERS: Global 2025 electricity demand/generation.
+VERSION_OR_MODEL: Global Electricity Review 2026.
+SOURCE_OR_DATASET: Ember.
+SOURCE_DATE: 21 April 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+COMMAND_CODE_EQUATION_OR_METHOD: Compare headline 2025 total with IEA consumption total.
+RAW_OR_KEY_OUTPUT: Ember reports global electricity demand/generation scale of 31,779 TWh in 2025 versus IEA consumption 28,200 TWh.
+UNITS: TWh/year.
+UNCERTAINTY: Boundary/methodology difference is material (~13%) and not yet fully reconciled.
+ASSUMPTIONS: NONE.
+LIMITATIONS: Do not mix the two denominators in one calculation.
+REPRODUCIBILITY_INSTRUCTIONS: Compare the two source definitions and methodology notes.
+INDEPENDENT_REPLICATION: NOT_APPLICABLE as this record identifies a source-boundary conflict.
+EVIDENCE_CLASS: CONFLICT / SOURCE_FACT.
+CLAIM_SUPPORTED: Global scale is order 3 TW average and dataset boundary must be fixed.
+CLAIM_NOT_SUPPORTED: That the IEA and Ember totals are directly interchangeable.
+CONFLICT_ID: CONFLICT-EGC-SCALE-BOUNDARY-001
+NEXT_ARBITRATION: JOB-EGC-004 common system boundary + JOB-EGC-003 scale baseline.
+
+TOOL_EVIDENCE_ID: EVID-EGC-001-D
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-RELIABILITY
+TOOL_OR_METHOD: NERC source retrieval.
+PURPOSE: Precommit a resource-adequacy comparison floor.
+EXECUTION_DATE: 2026-10-05
+INPUTS: NERC 2026 resource adequacy metrics presentation.
+PARAMETERS: LOLE criterion.
+VERSION_OR_MODEL: NERC presentation dated 2026-03-10.
+SOURCE_OR_DATASET: North American Electric Reliability Corporation.
+SOURCE_DATE: 10 March 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.nerc.com/globalassets/who-we-are/standing-committees/rstc/pawg/20260310_paf_forum_day_1_presentations.pdf
+COMMAND_CODE_EQUATION_OR_METHOD: Source extraction.
+RAW_OR_KEY_OUTPUT: NERC materials describe "1 day in 10 years" as a de facto criterion and list many regions using LOLE <=0.1 days/year.
+UNITS: days/year.
+UNCERTAINTY: LOLE does not capture event magnitude/duration or all correlated risks.
+ASSUMPTIONS: NONE for source statement.
+LIMITATIONS: Not universal; some regions use different metrics, and NERC/FERC discussions note shortcomings.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect NERC presentation RA Metrics and Criteria section.
+INDEPENDENT_REPLICATION: REQUIRED for final reliability framework.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: LOLE <=0.1 d/y is a defensible common reference, not a complete reliability model.
+CLAIM_NOT_SUPPORTED: That meeting LOLE alone proves resilience.
+
+TOOL_EVIDENCE_ID: EVID-EGC-001-E
+JOB_ID: JOB-EGC-001
+CLAIM_ID: CLAIM-EGC-OBJ-EROI
+TOOL_OR_METHOD: Peer-reviewed literature retrieval.
+PURPOSE: Set conservative net-energy screen.
+EXECUTION_DATE: 2026-10-05
+INPUTS: Review of EROI literature.
+PARAMETERS: Minimum acceptable EROI range and technology harmonization.
+VERSION_OR_MODEL: Sustainability 2022, 14(12), 7098.
+SOURCE_OR_DATASET: "Energy Return on Investment of Major Energy Carriers: Review and Harmonization".
+SOURCE_DATE: 2022.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.mdpi.com/2071-1050/14/12/7098
+COMMAND_CODE_EQUATION_OR_METHOD: Literature review comparison.
+RAW_OR_KEY_OUTPUT: Review states proposed minimum acceptable EROI values in literature generally range about 3-10 and reports PV/wind/hydropower at or above 10 under its harmonization.
+UNITS: dimensionless ratio.
+UNCERTAINTY: EROI is highly sensitive to boundary, storage, lifetime, and methodology.
+ASSUMPTIONS: Choosing >=10 as mission target is a conservative precommitment, not an externally proven universal minimum.
+LIMITATIONS: EROI comparisons require harmonized boundaries; not a substitute for monetary cost or reliability.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect the review's discussion of minimum acceptable EROI and harmonization.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT + ASSUMPTION for chosen threshold.
+CLAIM_SUPPORTED: >=10 is a defensible conservative target.
+CLAIM_NOT_SUPPORTED: A universal physical law requiring exactly EROI=10.
+
+----------------------------------------------------------------------
+JOB RESULT / RED TEAM / HANDOFF
+----------------------------------------------------------------------
+
+RESULT:
+- SOURCE_FACT: Current 2025 global average new onshore-wind and solar-PV busbar LCOEs are 33 and 44 USD/MWh in IRENA's dataset.
+- SOURCE_FACT: IEA reports 28,200 TWh global electricity consumption in 2025.
+- CALCULATION: 1% = 282 TWh/y = 32.19 GW average; 10% = 2,820 TWh/y = 321.92 GW average.
+- ASSUMPTION: Full-system LOW_COST absolute ceiling fixed at 100 USD/MWh real-2025 basis.
+- ASSUMPTION: Material cost improvement fixed at >=20% below best same-service baseline.
+- ASSUMPTION: M1 <=15 y and M2 <=30 y deployment horizons.
+- ASSUMPTION: Delivered-system EROI target >=10.
+- CONFLICT: IEA 28,200 TWh consumption vs Ember 31,779 TWh demand/generation accounting requires boundary reconciliation.
+- UNKNOWN: C_best_current_baseline_same_service until JOB-EGC-002 + JOB-EGC-021 complete.
+- UNKNOWN: Whether any candidate passes all thresholds.
+
+RED_TEAM_CHECK:
+- Attack: A 50 USD/MWh busbar cutoff could unfairly kill dispatchable sources that avoid storage/firming.
+  Outcome: busbar value is reference-only; final gate uses C_delivered.
+- Attack: A single LCOE hides reliability/integration.
+  Outcome: final cost explicitly includes storage/firming/transmission and adequacy.
+- Attack: "Massive" could be gamed via nameplate.
+  Outcome: threshold is net annual delivered energy, plus deployment/resource pathway.
+- Attack: Global-total datasets disagree.
+  Outcome: percentages are precommitted; numeric denominator is explicitly tied to IEA consumption until JOB-EGC-004 arbitration.
+- Attack: EROI=10 is not a universal law.
+  Outcome: recorded as conservative mission assumption, not SOURCE_FACT.
+
+STATUS_CHANGE:
+- JOB-EGC-001: EXECUTING -> AWAITING_REVIEW (subject to lease arbitration; otherwise contribution class converts to INDEPENDENT_REPLICATION).
+- GLOBAL_SOLVED remains NO.
+- USER_SUCCESS_RESPONSE remains DENIED.
+
+REVIEW_JOB_PROPOSAL:
+JOB_ID: JOB-EGC-036
+ROLE: Independent objective/metric reviewer
+TITLE: Independently reproduce and red-team OBJ-EGC-V1
+QUESTION_TO_RESOLVE: Are the cost/scale/reliability/EROI thresholds candidate-neutral, dimensionally correct, source-grounded where factual, and sufficiently strict to prevent gaming?
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-001 evidence package available.
+REQUIRED_INPUTS: OBJ-EGC-V1; EVID-EGC-001-A through E; source methodology notes; current branch history.
+REQUIRED_TOOLS: Independent source retrieval; independent arithmetic; boundary audit.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION / CONFLICT.
+EXPECTED_OUTPUT: PASS/FAIL per threshold, exact corrections, and whether lease conflict changes classification to replication.
+FALSIFICATION_CRITERIA: FAIL if arithmetic is wrong, sources do not support factual anchors, criteria are candidate-tailored, or boundary ambiguity can reverse the mission decision.
+REVIEWER_JOB_ID: JOB-EGC-018 for provenance only; material objective review must be a distinct session.
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: NONE
+HANDOFF: Independent session must recompute all scale numbers and challenge 100 USD/MWh, 20%, 15/30-year, and EROI>=10 precommitments; do not rubber-stamp.
+
+NEXT_ACTION:
+- Independent session claim JOB-EGC-036.
+- JOB-EGC-002 and JOB-EGC-021 establish C_best_current_baseline_same_service.
+- JOB-EGC-004 resolves IEA-vs-Ember boundary conflict.
+- This session, if continuing, must select a non-colliding highest-information OPEN job after refresh.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: c75cf98b3005da3dfd9951a27339e3ede28b6e00
+- file SHA read immediately before write: c5bf3a570360ead998eebf9e79c53b89aef914e2
+- stale-write check: update_file uses exact latest blob SHA and will reject a changed file.
+- commit/result: PENDING_THIS_COMMIT
