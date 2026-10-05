@@ -9969,3 +9969,331 @@ STATUS: CLAIMED
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
 NEXT_ACTION: retrieve parent evidence matrix and primary sources, reproduce arithmetic, then issue claim-by-claim PASS/FAIL with repairs if required.
+
+
+======================================================================
+70. REPAIR RESULT — JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0500+07-MATFLOW62
+PRIMARY_ROLE: Grid/storage lifecycle-material accounting repair
+PRIMARY_JOB_ID: JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-C1-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: f30800bea8607ceebecdaef51ae90f4ed71c7508
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: f2b7d032c301a5a4884e5cea351b180e50abb2db
+
+OBJECTIVE:
+Repair material accounting so manufacturing scrap and end-of-life recycling are causally distinct; secondary material can displace virgin feed only after it is physically available, qualified and actually used; deployment stock and annual flow are not conflated; and gross cycle-equivalent throughput is never mislabeled delivered service.
+
+UPSTREAM EVIDENCE PRESERVED:
+- REV-EGC-044B-001: Argonne/BatPaC modeled LFP-G(Energy) coefficients lithium 0.10 kg/kWh and graphite 1.09 kg/kWh; model-case coefficients only.
+- REV-EGC-044B-002: USGS 2026 lithium, 2025 world mine production ~290,000 t Li/y.
+- REV-EGC-044B-003: USGS 2026 natural graphite, 2025 world mine production ~1.8 Mt/y; synthetic/secondary synthetic graphite can compete in battery applications.
+- REV-EGC-044B-006: Argonne models BOTH manufacturing scrap and EOL feedstocks; with its cited 92% manufacturing-process yield assumption, manufacturing scrap can be available before retired cohorts and was a major recycling feedstock in the analyzed horizon.
+- REV-EGC-044B-005: NLR ATB BESS augmentation/cycle/RTE assumptions are model/scenario inputs; augmentation cost is not itself a material BOM.
+
+TRUTH-CLASS LOCK:
+ARGONNE/USGS/NLR values above are SOURCE_FACT or MODEL_INPUT in their stated scope.
+Any numerical recovery, requalification, collection, lag or substitution rate not explicitly sourced remains ASSUMPTION or UNKNOWN.
+No source here proves a universal hard material ceiling or a universal battery chemistry.
+
+----------------------------------------------------------------------
+MATERIAL_FLOW_V2 — CAUSAL COHORT LEDGER
+----------------------------------------------------------------------
+
+INDICES:
+m = material.
+c = manufacturing/build/replacement cohort.
+t = calendar/model time interval.
+
+REQUIRED COHORT FIELDS:
+COHORT_ID
+TECHNOLOGY_OR_SUBSYSTEM
+CHEMISTRY_OR_MATERIAL_SPEC
+COMMISSIONING_TIME
+REPLACEMENT_OR_AUGMENTATION_FLAG
+FEED_REQUIREMENT[m,c,t]
+FEED_REQUIREMENT_UNIT
+PRIMARY_INPUT[m,c,t]
+SECONDARY_USED_MANUF[m,c,t]
+SECONDARY_USED_EOL[m,c,t]
+SECONDARY_USED_OTHER[m,c,t]
+SOURCE_AND_MODEL_VERSION
+BOUNDARY_AND_GEOGRAPHY
+QUALITY_SPECIFICATION
+UNCERTAINTY_STATUS
+
+SECONDARY INVENTORY FIELDS:
+SEC_STOCK[m,t]
+R_MANUF_GENERATED[m,c,t]
+R_MANUF_AVAILABLE[m,t]
+R_EOL_GENERATED[m,c,t]
+R_EOL_AVAILABLE[m,t]
+R_OTHER_AVAILABLE[m,t]
+SEC_USED_TOTAL[m,t]
+SEC_EXPORT[m,t]
+SEC_DOWNGRADE[m,t]
+SEC_PROCESS_LOSS[m,t]
+AVAILABILITY_TIME
+RECOVERY_PROCESS
+REQUALIFICATION_STATUS
+QUALITY_GRADE
+OWNER/ALLOCATION_ID
+
+MF1 — PRIMARY INPUT IS COHORT-CAUSAL:
+For every material/cohort/time:
+PRIMARY_INPUT[m,c,t] =
+max(0,
+ FEED_REQUIREMENT[m,c,t]
+ - SECONDARY_USED_MANUF[m,c,t]
+ - SECONDARY_USED_EOL[m,c,t]
+ - SECONDARY_USED_OTHER[m,c,t]).
+
+SECONDARY_USED_MANUF + SECONDARY_USED_EOL + SECONDARY_USED_OTHER
+<= FEED_REQUIREMENT.
+
+Every SECONDARY_USED_* term MUST be linked to qualified physical secondary inventory available no later than the cohort's actual material-feed time.
+
+MF2 — QUALIFIED SECONDARY STOCK CONSERVATION:
+SEC_STOCK[m,t+1] =
+SEC_STOCK[m,t]
++ R_MANUF_AVAILABLE[m,t]
++ R_EOL_AVAILABLE[m,t]
++ R_OTHER_AVAILABLE[m,t]
+- SEC_USED_TOTAL[m,t]
+- SEC_EXPORT[m,t]
+- SEC_DOWNGRADE[m,t]
+- SEC_PROCESS_LOSS[m,t].
+
+Constraint:
+SEC_STOCK[m,t] >= 0.
+SEC_USED_TOTAL[m,t] <= SEC_STOCK[m,t] + same-period material that is physically/process-timing eligible before use.
+
+Same-period manufacturing-loop credit is allowed ONLY when the actual process sequence proves scrap generation, recovery/requalification and re-entry occur before the later feed event. An annual time bucket alone does not authorize instantaneous recursive recycling.
+
+MF3 — MANUFACTURING SCRAP AND EOL ARE DISTINCT:
+Manufacturing scrap:
+R_MANUF_AVAILABLE depends on manufacturing yield/scrap generation, collection, recovery, requalification and process lag.
+
+EOL material:
+R_EOL_AVAILABLE depends on an earlier in-service cohort reaching retirement/replacement, collection, recovery, requalification and lag.
+
+No EOL feed exists before its retirement path physically occurs.
+Manufacturing scrap is NOT forced to wait for retired cohorts.
+
+MF4 — NO RETROACTIVE VIRGIN ERASURE:
+M_PRIMARY_LIFECYCLE[m,T] =
+sum_{t<=T,c} PRIMARY_INPUT[m,c,t].
+
+Recovered material generated at or near T that is exported, stored for future use, downcycled or otherwise not consumed by an in-bound cohort inside the defined boundary does NOT subtract from historical PRIMARY_INPUT.
+
+Any permitted terminal inventory/avoided-burden value must enter the separate reviewed terminal/accounting layer with provenance, date and exact-once ownership. It may not rewrite the physical historical primary-material ledger.
+
+MF5 — REPLACEMENT/AUGMENTATION IS A REAL COHORT:
+Any augmentation, cell/module replacement, repowering or conductor/equipment replacement with material consequences is represented as its own cohort/feed event with date and BOM.
+A cost-only augmentation assumption cannot silently imply zero material.
+
+MF6 — BUILD-HORIZON FLOW:
+M_FEED_ANNUAL[m,t] =
+sum_{c commissioned/fed at t} FEED_REQUIREMENT[m,c,t].
+
+M_PRIMARY_ANNUAL[m,t] =
+sum_{c commissioned/fed at t} PRIMARY_INPUT[m,c,t].
+
+REFERENCE_FLOW[m,y_ref] is source/year/version locked.
+
+FLOW_STRESS_PRIMARY[m,t] =
+M_PRIMARY_ANNUAL[m,t] / REFERENCE_FLOW[m,y_ref].
+
+STOCK_FLOW_EQUIV_YEARS[m] =
+M_STOCK_BOM[m] / REFERENCE_FLOW[m,y_ref].
+
+STOCK_FLOW_EQUIV_YEARS is a stock-to-reference-flow diagnostic only.
+It MUST NOT be reported as an annual-demand share unless the corresponding stock is actually built within one year.
+
+MF7 — COMPETING DEMAND / CAPACITY GROWTH:
+FLOW_STRESS_PRIMARY is NOT a proof of infeasibility.
+Mine/refining expansion, competing sectors, inventory, trade, synthetic substitutes, process yield and recycling remain explicit scenario variables or UNKNOWN.
+Current annual mine flow is not reserves/resources and is not a hard physical ceiling.
+
+----------------------------------------------------------------------
+THROUGHPUT UNIT LOCK
+----------------------------------------------------------------------
+
+TG1 — GROSS NAMEPLATE-CYCLE EQUIVALENT:
+When a calculation uses nameplate energy capacity multiplied by an assumed/equivalent number of full cycles, label the denominator exactly:
+MWh_gross_nameplate_cycle_equivalent.
+
+I_GROSS[m] =
+M_PRIMARY_LIFECYCLE[m] /
+E_GROSS_NAMEPLATE_CYCLE_EQ.
+
+This is a scenario diagnostic, not delivered-energy material intensity.
+
+TG2 — DELIVERED SERVICE:
+E_DELIVERED_SERVICE is obtained only from the chronological physical/service model at the frozen delivery boundary, after actual charging/discharging, efficiency, degradation, augmentation, availability, curtailment and SOC constraints are applied.
+
+I_DELIVERED[m] =
+M_PRIMARY_LIFECYCLE[m] / E_DELIVERED_SERVICE.
+
+Do not convert I_GROSS into I_DELIVERED by simply renaming units.
+Do not apply one universal RTE/cycle-life factor unless the actual dispatch/degradation model justifies it.
+
+----------------------------------------------------------------------
+REGRESSION TESTS
+----------------------------------------------------------------------
+
+EVIDENCE_ID: EGC-062-MATFLOW-C01
+EVIDENCE_CLASS: CALCULATION / FALSIFICATION
+TITLE: Terminal recycled output cannot erase historical primary input.
+INPUT:
+Initial in-bound cohort consumes 100 kg virgin primary material.
+No later in-bound cohort uses secondary material.
+At end of horizon, 90 kg becomes recoverable/recycled output for external/future use.
+NAIVE INVALID:
+100 - 90 = 10 kg primary.
+REPAIRED:
+M_PRIMARY_LIFECYCLE = 100 kg.
+The 90 kg output is terminal/export/future secondary inventory, not retroactive substitution.
+REPLICATION_STATUS: Python + Wolfram PASS.
+
+EVIDENCE_ID: EGC-062-MATFLOW-C02
+EVIDENCE_CLASS: CALCULATION / CAUSAL SUBSTITUTION
+TITLE: Qualified secondary feed reduces only a later cohort it actually supplies.
+INPUT:
+Initial cohort primary = 100 kg.
+Later replacement cohort FEED_REQUIREMENT=50 kg.
+Qualified secondary inventory available before feed=30 kg.
+SECONDARY_USED=30 kg.
+OUTPUT:
+later PRIMARY_INPUT=20 kg.
+M_PRIMARY_LIFECYCLE=120 kg.
+REPLICATION_STATUS: Python + Wolfram PASS.
+
+EVIDENCE_ID: EGC-062-MATFLOW-C03
+EVIDENCE_CLASS: CALCULATION / ILLUSTRATIVE PROCESS-TIMING TEST
+TITLE: Manufacturing scrap can precede EOL, but recovery/requalification must be explicit.
+INPUT:
+gross manufacturing feed=100 kg;
+illustrative manufacturing process yield y=0.92, consistent with the upstream Argonne model assumption cited by the independent review;
+illustrative recovery+requalification fraction=0.75;
+next cohort FEED_REQUIREMENT=20 kg.
+OUTPUT:
+manufacturing scrap generated=8 kg.
+qualified secondary available under the illustrative 0.75 assumption=6 kg.
+next-cohort primary feed=14 kg.
+TRUTH_CLASS:
+y=0.92 is an upstream model input in the cited Argonne analysis.
+0.75 recovery+requalification is ASSUMPTION solely for arithmetic regression and is NOT promoted as an external fact.
+REPLICATION_STATUS: Python + Wolfram PASS.
+
+EVIDENCE_ID: EGC-062-MATFLOW-C04
+EVIDENCE_CLASS: CALCULATION / DEPLOYMENT-HORIZON SENSITIVITY
+TITLE: Same 4-TWh LFP stock gives radically different annual-flow stress under different build horizons.
+UPSTREAM INPUT:
+4 TWh unchanged-BOM diagnostic = 400,000 t Li and 4.36 Mt graphite-equivalent BOM.
+Reference current flows:
+Li 290,000 t/y;
+natural graphite 1.8 Mt/y.
+Uniform build over N years, no mine growth, competing demand, recycling, synthetic graphite, yield or inventory.
+OUTPUT:
+N=1:
+Li=137.9310345% of current annual flow;
+graphite-equivalent=242.2222222%.
+N=2:
+Li=68.9655172%;
+graphite=121.1111111%.
+N=5:
+Li=27.5862069%;
+graphite=48.4444444%.
+N=10:
+Li=13.7931034%;
+graphite=24.2222222%.
+N=20:
+Li=6.8965517%;
+graphite=12.1111111%.
+CONCLUSION:
+Stock/current-flow ratio is not annual manufacturing pressure without an explicit deployment schedule.
+REPLICATION_STATUS: Python + Wolfram PASS.
+LIMITATION:
+natural-graphite-equivalent BOM is not total graphite supply; synthetic/secondary sources are excluded from this stress diagnostic.
+
+EVIDENCE_ID: EGC-062-MATFLOW-C05
+EVIDENCE_CLASS: CALCULATION / UNIT-SEMANTIC FALSIFICATION
+TITLE: Gross cycle-equivalent intensity cannot be relabeled delivered intensity.
+ILLUSTRATIVE INPUT:
+primary material=1000 kg.
+gross nameplate-cycle-equivalent throughput=10,000 MWh.
+actual chronologically delivered service=8,000 MWh.
+OUTPUT:
+I_GROSS=0.100 kg/MWh_gross_nameplate_cycle_equivalent.
+I_DELIVERED=0.125 kg/MWh_delivered.
+Relabeling the gross denominator as delivered would understate the delivered material intensity by 20%.
+TRUTH_CLASS:
+Illustrative arithmetic only; 8,000 MWh is not a measured BESS result.
+REPLICATION_STATUS: Python + Wolfram PASS.
+
+----------------------------------------------------------------------
+RED TEAM
+----------------------------------------------------------------------
+
+ATTACK A:
+"Any recycling output reduces lifecycle primary material."
+FALSIFIED by C01. Only actual in-bound substitution can reduce cohort primary input.
+
+ATTACK B:
+"No recycling before EOL."
+FALSIFIED by manufacturing-scrap evidence and C03 process logic.
+
+ATTACK C:
+"Manufacturing scrap can be recycled instantly and infinitely within one annual time step."
+REJECTED. Process ordering, recovery, quality and lag must permit each use; no recursive free material.
+
+ATTACK D:
+"4 TWh stock equals 137.9% Li annual supply requirement."
+FALSIFIED unless built in one year and under the fixed reference-flow assumptions.
+
+ATTACK E:
+"Current mine production ratio proves geological impossibility."
+FALSIFIED. Mine flow is a current industrial flow, not reserves/resources.
+
+ATTACK F:
+"Gross nameplate-cycle throughput is delivered energy."
+FALSIFIED by C05 and physical-service boundary.
+
+ATTACK G:
+"Augmentation FOM contains material replacement automatically."
+FALSIFIED as a provenance claim. Cost and BOM are different ledgers; material augmentation requires its own cohort/BOM evidence.
+
+CLAIM_GRAPH_UPDATE:
+F-EGC-044BREV-P1-001 MANUFACTURING_SCRAP_TIMING:
+REPAIR_SUBMITTED / AWAITING_REVIEW.
+F-EGC-044BREV-P1-002 RETROACTIVE_RECYCLED_SUBTRACTION:
+REPAIR_SUBMITTED / AWAITING_REVIEW.
+F-EGC-044BREV-P2-001 BUILD_HORIZON_FLOW_SEMANTICS:
+REPAIR_SUBMITTED / AWAITING_REVIEW.
+F-EGC-044BREV-P2-002 GROSS_VS_DELIVERED_UNIT:
+REPAIR_SUBMITTED / AWAITING_REVIEW.
+CLAIM-EGC-044B-005 RECYCLING_COHORT_TIMING:
+SUPERSEDED_BY_MATERIAL_FLOW_V2 / AWAITING_REVIEW.
+HARD_GLOBAL_MATERIAL_CEILING:
+NOT_VERIFIED.
+SYSTEM_LEVEL_STORAGE_MATERIAL_REQUIREMENT:
+UNKNOWN pending actual optimized E/P mix, chemistry, duty cycle, lifetime/replacement and grid topology.
+
+STATUS_CHANGE:
+JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-C1-20261006:
+EXECUTING -> AWAITING_REVIEW.
+JOB-EGC-044B-GRID-STORAGE-MATERIALS-20261006:
+remains historical REVIEW_FAILED until distinct repair review passes.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+CURRENT_WINNER: NONE.
+
+REVIEWER_JOB_NOTE:
+JOB-EGC-062-GRID-STORAGE-MATERIALS-REPAIR-REV-C2-20261006 already exists in the job graph; do not duplicate it.
