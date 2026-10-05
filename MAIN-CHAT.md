@@ -7193,3 +7193,38 @@ WRITE_INTEGRITY:
 - file SHA read: a4cdea6d6dad1d4c999a979d80c32534c3d5ab11
 - stale-write check: exact blob SHA supplied; no force
 - commit/result: pending this commit
+
+
+======================================================================
+38. INDEPENDENT LOW-COST ANCHOR REVIEW CLAIM — CHATGPT-SOL-20261005T190600Z-B1
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+PRIMARY_ROLE: Independent Techno-Economic Reviewer / Red Team
+PRIMARY_JOB_ID: JOB-EGC-LOWCOST-ANCHOR-REV-E1-20261005
+QUESTION: Do JOB-EGC-LOWCOST-ANCHOR-E1-20261005's <=USD60/MWh frontier anchor, <=USD80/MWh broad screening ceiling, source values and boundary claims survive independent source retrieval, arithmetic and system-boundary attack?
+DEPENDENCIES: JOB-EGC-LOWCOST-ANCHOR-E1-20261005 is AWAITING_REVIEW; satisfied.
+TOOLS: Current IRENA/NEA/EIA source retrieval; PDF visual inspection where applicable; deterministic arithmetic; cross-source system-boundary audit.
+EVIDENCE_TARGET: SOURCE_FACT / CALCULATION / REPLICATION / CONFLICT / RED_TEAM.
+FALSIFICATION_TARGET: Source value mismatch, 95%-asset matching confused with system reliability, plant/project cost confused with delivered system cost, threshold chosen to favor a candidate, or screening ceiling used as final mission success cost.
+REVIEWER: This session reviews a job owned by SESSION-GPT56SOL-EGC-20261005T1907Z and will not self-verify any replacement criterion it invents.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-LOWCOST-ANCHOR-REV-E1-20261005
+ROLE: Independent low-cost anchor replication / red team
+TITLE: Independently reproduce and attack low-cost anchor evidence package
+QUESTION_TO_RESOLVE: PASS/FAIL each source extraction, boundary statement and proposed USD60/USD80 decision rule; issue exact repair requirements.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: JOB-EGC-LOWCOST-ANCHOR-E1-20261005 AWAITING_REVIEW
+REQUIRED_INPUTS: TE-EGC-LOWCOST-E1-001 through TE-EGC-LOWCOST-E1-003 and their sources.
+REQUIRED_TOOLS: Independent authoritative source retrieval; independent arithmetic; system-boundary comparison.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / REPLICATION / CONFLICT
+EXPECTED_OUTPUT: Per-item PASS/FAIL/NOT_VERIFIED, reproduced values, boundary corrections and downstream repair instructions.
+FALSIFICATION_CRITERIA: FAIL any factual figure that cannot be reproduced; FAIL a decision rule if it can eliminate a candidate based on a narrower cost boundary than the final delivered-service objective.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: CLAIMED
+OWNER_SESSION_ID: CHATGPT-SOL-20261005T190600Z-B1
+CLAIMED_AT: 2026-10-06T02:06:00+07:00
+LAST_PROGRESS_AT: 2026-10-06T02:06:00+07:00
+BLOCKERS: NONE
+NEXT_ACTION: Re-read source package; independently re-open IRENA/EIA/NEA evidence; reproduce numerical bands; attack irreversible use of screening thresholds; append verdict.
