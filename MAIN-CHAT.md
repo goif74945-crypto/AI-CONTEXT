@@ -9267,3 +9267,262 @@ JOB-EGC-056-OPERATIONS-EVIDENCE-C1-20261006: EXECUTING -> AWAITING_REVIEW.
 CURRENT_WINNER: NONE.
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+58. REVIEW RESULT — JOB-EGC-040-REPAIR-SOCDISC-REV-C8-20261006 — CHATGPT-GPT56SOL-20261006T0330+07-SOCDISC-R8
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0330+07-SOCDISC-R8
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-REV-C8-20261006
+REVIEW_TARGET: JOB-EGC-040-REPAIR-SOCDISC-C7-20261006
+STATUS: REVIEW_FAILED
+PARENT_STATUS_REQUIRED: REPAIR_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+SOURCE AUDIT:
+
+EVIDENCE_ID: EGC-040-SOCDISC-R8-E01
+CLAIM_ID: CLAIM-EGC-040-SOCDISC-002
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: HM Treasury, The Green Book (2026)
+SOURCE_DATE: updated 2026-02-05
+URL: https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026
+METHOD: independent current HTML retrieval on 2026-10-06.
+SOURCE_FACT:
+- discounting is used to express future social costs/benefits in present-value terms;
+- the Green Book's currently stated standard real STPR is 3.50% for years 1-30, 3.00% for years 31-75, and 2.50% from year 76 onward;
+- real discount rates must be applied to real values.
+LIMITATION:
+UK public-appraisal guidance; D_REF_PRIMARY_V1 is therefore a declared mission comparison convention, not a universal physical or private-finance law. HM Treasury also published an independent discount-rate review in June 2026; the current Green Book HTML retrieved for this review still states the schedule above.
+REVIEW_STATUS: PASS for provenance and explicit-convention use.
+
+EVIDENCE_ID: EGC-040-SOCDISC-R8-E02
+CLAIM_ID: CLAIM-EGC-040-SOCDISC-001
+EVIDENCE_CLASS: EXTERNAL_FACT / PEER_REVIEWED_MODELING_EVIDENCE
+SOURCE: Schleifer, Cohen, Cole, Denholm, Blair, "Exploring the Future Energy Value of Long-Duration Energy Storage", Energies 2025, 18(7), 1751.
+AUTHORS_AFFILIATION: National Renewable Energy Laboratory.
+DOI: 10.3390/en18071751
+URL: https://www.mdpi.com/1996-1073/18/7/1751
+SOURCE_DATE: 2025-03-31
+SOURCE_FACT:
+- the RODeO storage analysis predefines initial SOC and requires final SOC to equal initial SOC;
+- the authors state this is particularly important for very long duration storage because otherwise initial stored energy can be discharged without recharging, overstating arbitrage value.
+LIMITATION:
+This is evidence for the boundary-condition failure mode and one accepted modeling treatment, not proof that every genuinely finite non-repeating study must use cyclic SOC.
+REVIEW_STATUS: PASS.
+
+INDEPENDENT NUMERICAL REPLICATION:
+
+EVIDENCE_ID: EGC-040-SOCDISC-R8-C01
+TOOL: Python Decimal, 50-digit precision
+METHOD:
+D_REF(30)=1.035^-30
+D_REF(60)=1.035^-30 * 1.03^-30
+D_REF(100)=1.035^-30 * 1.03^-45 * 1.025^-25
+OUTPUT:
+D_REF(30)=0.35627841060230154047
+D_REF(60)=0.14678198786951986741
+D_REF(100)=0.05081802232438191085
+PARENT VALUES: agree to displayed floating-point precision.
+REPLICATION_STATUS: INDEPENDENT_REPLICATION_PASS.
+
+EVIDENCE_ID: EGC-040-SOCDISC-R8-C02
+TOOL: Python Decimal
+CASE:
+A cost=100 at t0.
+B cost=40 at t0 + 200 at t30.
+OUTPUT:
+Under D_REF_PRIMARY_V1:
+PV_A=100
+PV_B=111.2556821204603081
+=> A lower.
+Under flat 7%:
+PV_B=66.2734234309179661
+=> B lower.
+CONCLUSION:
+The rank reversal is reproduced; a frozen common primary discount convention is necessary to prevent analyst-choice privilege.
+REPLICATION_STATUS: INDEPENDENT_REPLICATION_PASS.
+
+EVIDENCE_ID: EGC-040-SOCDISC-R8-C03
+TOOL: Python
+TITLE: Free-initial-inventory exploit
+INPUT:
+SOC_0=100 MWh internal; eta_c=0.9; eta_d=0.9; in-horizon charge=0; discharge_bus=90 MWh.
+OUTPUT:
+SOC_T=100-90/0.9=0 MWh.
+Physical bus can serve 90 MWh with zero in-horizon source generation while P1/P4 still close.
+To restore SOC_T=SOC_0 under the same efficiencies requires 111.11111111111111 MWh AC charging.
+CONCLUSION:
+Without a terminal/initial inventory rule, a model can obtain free delivered energy from pre-horizon stock. MODE_A_CYCLIC closes this exploit. MODE_B must explicitly value/trace the stock.
+REPLICATION_STATUS: INDEPENDENT_REPLICATION_PASS.
+
+EVIDENCE_ID: EGC-040-SOCDISC-R8-C04
+TOOL: Python
+TITLE: Representative-period reset exploit
+CASE:
+Two independently weighted periods each reset to SOC_0=100 MWh; eta_d=1; no recharge.
+WRONG independent-reset result: 200 MWh can be served.
+Correct linked-inventory result: only 100 MWh can be served before depletion.
+Artificial extra service=100 MWh.
+CONCLUSION:
+C7's explicit ban on independent long-duration storage resets and requirement for inter-period state linking closes this exploit if enforced.
+REVIEW_STATUS: PASS.
+
+ADVERSARIAL FINDING:
+
+FINDING_ID: F-EGC-040-SOCDISC-R8-P1-001
+SEVERITY: P1
+TRUTH_CLASS: REPO_FACT + CALCULATION + INFERENCE
+TITLE: MODE_B_FINITE still depends on a terminal ledger already REVIEW_FAILED for ownership overlap.
+OBSERVATION:
+SOCDISC-C7 says terminal stored inventory in MODE_B_FINITE must receive symmetric residual/inventory treatment "through the FINPV-C5 common-PV terminal ledger" and must avoid double counting with storage-asset residual value.
+However JOB-EGC-040-REPAIR-FINPV-REV-C6-20261006 has since REVIEW_FAILED FINPV-C5 because PV-date consistency alone did not prevent gross-vs-net residual/liability overlap. FINPV-C7 now supplies a terminal T0_NET owner-state normalization but is itself AWAITING_REVIEW.
+PROBLEM:
+A prose instruction to "avoid double counting" does not yet bind terminal stored energy to the explicit terminal owner-state mechanism. An all-in storage-facility resale/appraisal value may embed the energy inventory; separately crediting terminal stored energy then counts the same value twice.
+
+EVIDENCE_ID: EGC-040-SOCDISC-R8-C05
+TOOL: Python
+METHOD: terminal-inventory representation counterexample; all numbers already PV0.
+INPUTS:
+A pre-terminal primary cost=100.
+A storage-hardware residual excluding inventory=50.
+A terminal stored-energy inventory value=20.
+Therefore all-in resale/appraisal value including inventory=70.
+B primary cost=20.
+CORRECT all-in representation:
+A=100-70=30; B=20 => B lower.
+DOUBLE-CREDIT representation:
+A=100-70-20=10; B=20 => A lower.
+OUTPUT:
+winner reverses solely from terminal inventory ownership classification.
+FALSIFICATION_CONDITION_MET: YES.
+
+REQUIRED_REPAIR:
+1. MODE_B_FINITE terminal inventory must be represented through the terminal-item owner-state schema of FINPV-C7 (or an equivalent independently verified schema), not a free-form residual line.
+2. Every material terminal inventory must have a unique INVENTORY_ITEM_ID and an explicit embedding state:
+   - SEPARATE_TERMINAL_INVENTORY_CREDIT, or
+   - EMBEDDED_IN_ASSET_NET_COMPOSITE_NO_SEPARATE_CREDIT, or
+   - UNKNOWN.
+3. If an all-in resale/appraisal value embeds stored-energy inventory, a separate inventory credit is forbidden.
+4. If source provenance cannot establish whether inventory is embedded and the ambiguity can change ranking, COST_RANKING_NOT_VERIFIED.
+5. Initial inventory requires a unique provenance/input record and may enter the primary resource view exactly once, either through traced prior in-scope charging/fuel/resource input or a frozen opportunity/resource-value treatment; it cannot also be separately charged as the same upstream input.
+6. Terminal stored-energy inventory and storage-hardware residual value must use declared boundaries/units and cannot be merged implicitly.
+
+PASS MATRIX:
+- current Green Book schedule retrieval and D_REF arithmetic: PASS.
+- D_REF_PRIMARY_V1 symmetric application rule: PASS as mission convention.
+- candidate-specific primary WACC/discount privilege: BLOCKED BY RULE / PASS.
+- economic PV(E_NET_SERVED) vs undiscounted physical MASSIVE_ENERGY/EROI separation: PASS.
+- MODE_A_CYCLIC SOC closure: PASS.
+- seasonal/representative-period state-link anti-reset rule: PASS.
+- MODE_B initial-inventory no-free-energy principle: PASS_AT_METHOD_LEVEL.
+- MODE_B terminal inventory owner-state closure: FAIL P1 pending FINPV terminal normalization integration.
+
+REVIEW VERDICT:
+JOB-EGC-040-REPAIR-SOCDISC-C7-20261006: REVIEW_FAILED / REPAIR_REQUIRED only for finite-horizon terminal-inventory ownership integration.
+CLAIM-EGC-040-SOCDISC-001 STORAGE_INVENTORY_CLOSURE:
+  CYCLIC_AND_REPRESENTATIVE_PERIOD_RULES = VERIFIED_BY_R8;
+  FINITE_TERMINAL_OWNER_STATE = REPAIR_REQUIRED.
+CLAIM-EGC-040-SOCDISC-002 D_REF_PRIMARY_V1: VERIFIED_BY_R8_AS_MISSION_CONVENTION, not universal law.
+CLAIM-EGC-040-SOCDISC-003 ECONOMIC_PV_VS_PHYSICAL_ENERGY_SEPARATION: VERIFIED_BY_R8.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+======================================================================
+59. REPAIR RESULT — JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C9-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0330+07-SOCDISC-R8
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-C9-20261006
+ROLE: Finite-horizon storage-inventory terminal-owner repair
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C10-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+OBJECTIVE:
+Repair only F-EGC-040-SOCDISC-R8-P1-001 without changing the independently passing D_REF, cyclic SOC, representative-period linking, or physical-energy separation rules.
+
+PATCH — MODE_B_FINITE OWNER-STATE BINDING:
+
+For every storage/fuel/thermal/hydraulic inventory s at a finite-horizon boundary create:
+
+INITIAL_INVENTORY_ITEM_ID
+TERMINAL_INVENTORY_ITEM_ID
+INVENTORY_TYPE
+STATE_UNIT
+STATE_BOUNDARY
+QUANTITY_INITIAL
+QUANTITY_TERMINAL
+PROVENANCE_SOURCE
+VALUATION_SOURCE
+VALUATION_BASIS
+EMBEDDED_IN_ASSET_TERMINAL_ITEM_ID
+OWNER_STATE
+PV0_VALUE
+UNCERTAINTY
+LIMITATIONS
+
+INITIAL OWNER STATES:
+- TRACED_PRIOR_IN_SCOPE_RESOURCE_INPUT
+- INCLUDED_INITIAL_OPPORTUNITY_RESOURCE_VALUE
+- EMBEDDED_IN_OTHER_INITIAL_RESOURCE_ITEM_NO_SEPARATE_ENTRY
+- UNKNOWN
+
+TERMINAL OWNER STATES:
+- INCLUDED_SEPARATE_TERMINAL_INVENTORY_CREDIT
+- EMBEDDED_IN_ASSET_NET_COMPOSITE_NO_SEPARATE_CREDIT
+- NO_MATERIAL_TERMINAL_VALUE_WITH_EVIDENCE
+- UNKNOWN
+
+INVARIANTS:
+A. The same initial inventory energy/resource may enter primary resource cost exactly once.
+B. The same terminal inventory value may reduce primary resource cost exactly once.
+C. If an asset NET_COMPOSITE terminal valuation includes stored inventory, TERMINAL_INVENTORY_ITEM OWNER_STATE MUST be EMBEDDED_IN_ASSET_NET_COMPOSITE_NO_SEPARATE_CREDIT and its separate T0_NET contribution is zero.
+D. If stored inventory is valued separately, asset terminal valuation must explicitly exclude that inventory.
+E. UNKNOWN embedding/provenance that can reverse ranking => COST_RANKING_NOT_VERIFIED.
+F. Inventory energy quantity and monetary value are separate ledgers. Dollar residual credits MUST NOT be converted into physical MASSIVE_ENERGY or EROI energy.
+G. If FINPV-C7 terminal schema is independently verified, these inventory records map directly into its TERMINAL_ITEM_ID / QUOTE_BASIS / OWNER_STATE / T0_NET mechanism. If FINPV-C7 is later falsified, this dependent mapping MUST REOPEN.
+
+REGRESSION:
+Using EGC-040-SOCDISC-R8-C05:
+- all-in asset valuation=70 includes energy inventory=20:
+  asset item=INCLUDED_NET_COMPOSITE;
+  inventory item=EMBEDDED_IN_ASSET_NET_COMPOSITE_NO_SEPARATE_CREDIT;
+  total terminal credit=70.
+- alternative explicit split:
+  asset gross credit=50 excluding inventory;
+  inventory separate credit=20;
+  total terminal credit=70.
+Both representations produce A primary cost=30.
+Representation invariance restored by owner-state rule.
+
+DEPENDENCY:
+FINPV-C7 is currently AWAITING_REVIEW. Therefore integrated finite-horizon terminal economics remain NOT_VERIFIED until both terminal-owner schemas pass independent review; no winner may rely on this repair before that gate closes.
+
+CLAIM_GRAPH UPDATE:
+CLAIM-EGC-040-SOCDISC-001 STORAGE_INVENTORY_CLOSURE:
+  CYCLIC = VERIFIED_BY_R8;
+  REPRESENTATIVE_PERIOD_LINKING = VERIFIED_BY_R8;
+  FINITE_INITIAL = SUPPORTED_BY_R8;
+  FINITE_TERMINAL = REPAIRED_TERMBIND_C9 / AWAITING_DISTINCT_REVIEW.
+CLAIM-EGC-040-SOCDISC-002 D_REF_PRIMARY_V1 = VERIFIED_BY_R8_AS_MISSION_CONVENTION.
+CLAIM-EGC-040-SOCDISC-003 ECONOMIC_PV_VS_PHYSICAL_ENERGY_SEPARATION = VERIFIED_BY_R8.
+F-EGC-040-SOCDISC-R8-P1-001 = REPAIR_SUBMITTED / AWAITING_DISTINCT_REVIEW.
+
+JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-REV-C10-20261006
+TITLE: Independent review of finite-horizon storage terminal-owner binding
+ROLE: Independent inventory-accounting representation-invariance reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does TERMBIND-C9 make finite-horizon initial/terminal storage accounting invariant to embedded-vs-separate inventory valuation without free energy or double credit?
+DEPENDENCIES: TERMBIND-C9 submitted; FINPV-C7 submitted and independently under review.
+REQUIRED_TOOLS: independent algebra/Python counterexamples; provenance attack; asset+inventory gross/net representations; physical-energy vs monetary-ledger audit.
+REQUIRED_EVIDENCE: reproduce C05 in both representations; attack UNKNOWN embedding; test initial inventory duplicate-input case; verify monetary inventory residual never enters physical energy gates.
+FALSIFICATION_CONDITION: any semantically identical terminal representation changes FSRC_ND; any inventory energy/value can enter twice; UNKNOWN embedding can silently pass; or physical energy is inferred from monetary residual.
+STATUS: OPEN
+BLOCKERS: distinct reviewer required; integrated use also depends on FINPV-C7 review.
+NEXT_ACTION: distinct session reviews TERMBIND-C9; then update physical-ledger/storage common-boundary integration if both terminal reviews pass.
