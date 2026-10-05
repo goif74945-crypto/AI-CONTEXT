@@ -15,8 +15,29 @@
   "BASE_SHA": "2dc24a8d8bee7294109cd3dab2b3b9fee1a76cbe",
   "AUTHORITY": "Current user directive + FINAL DOC-C paragraphs 10353-10499",
   "FINDING": "FINAL DOC-C allows error→FREEZE only from RUNNING and VERIFYING, but implementation also allows INIT/READY/CONSENSUS/STABLE/FREEZE.",
-  "STATUS": "ACTIVE",
+  "STATUS": "RELEASED_STATIC_CONVERGED",
   "MUTATION_BOUNDARY": "Only listed files; no NEXY.ai mutation.",
   "NOTE": "Extended after authority reconciliation: adapt bootstrap fail-closed caller to FINAL DOC-C matrix using the pre-admission quarantine helper; add regression proof. Rust transition table was independently repaired by another concurrent worker and is read-only here.",
-  "AUTHORITY_RECORD": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-5-STATE-EVENT-MATRIX.json"
+  "AUTHORITY_RECORD": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-DOC-C-5-STATE-EVENT-MATRIX.json",
+  "IMPLEMENTATION_COMMITS": [
+    "62f5bd0d53fca9241957669058e038388496f141",
+    "9fd44ab1904bb93a7e5ba03281bb2a6524176ca6",
+    "12eb5d2361c17bea901d735e8d1f8e2ee722f931"
+  ],
+  "CONCURRENT_REPAIR_EVIDENCE": {
+    "rust": "Current Rust transition table has error only from RUNNING and VERIFYING.",
+    "bootstrap": "Current bootstrap uses quarantineSystemStateForBootstrapFailure and no illegal transitionSystemState('error') path."
+  },
+  "STATIC_EVIDENCE": {
+    "ts_blob": "3c74297232eefd53f4f31d9918216c52f6a4cdf8",
+    "rust_blob": "bea5808c8a75d39e5529769d0abcd342fea2ae04",
+    "bootstrap_blob": "1f38f090da6e05dd2ca52279f58ed4aea6904456",
+    "test_blob": "71d934b7deeb246eb4968680b47d0705eb017bd1",
+    "checker_blob": "7dc46d7d2c6877adb3315b73ee92be6a552adfbb",
+    "evidence_level": "E1_STATIC"
+  },
+  "TEST_EVIDENCE": {
+    "classification": "EXECUTION_INFRA_FAILURE_OBSERVED_ON_EXACT_HEAD_WORKFLOWS",
+    "code_verdict": "NOT_VERIFIED_E2_PLUS"
+  }
 }
