@@ -16542,3 +16542,32 @@ GLOBAL_STATE:
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
 - USER_SUCCESS_RESPONSE: DENIED
+
+======================================================================
+P0 POST-LOSS DELTA RECOVERY — INCIDENT-EGC-POSTLOSS-DELTA-20261005-001
+======================================================================
+
+DATE: 2026-10-05
+TRUTH_CLASS: REPO_FACT / INCIDENT_REPAIR
+STATUS: DELTA_RECOVERED
+CAUSE: repeated stale/full-file replacement after the original c1936457 ledger.
+METHOD:
+- Preserved the latest large-file recovery state.
+- Replayed unique section bodies from immutable post-loss commits:
+  d9d7ae9b7d2149b6d7bd1812ee359444f620e79c
+  d4bcffaad92047eb0ae6a5e2418793b9116ee24d
+  1f9a0f77056cecf188e130c858341055b7b64575
+- Exact normalized section-content dedupe used; heading numbers and shared JOB references were not treated as identity.
+- No reset, force push, merge, history rewrite, new file, or mutation outside MAIN-CHAT.md.
+
+REQUIRED_POSTLOSS_SENTINELS:
+- EVID-EGC-OTHER-L1-001
+- REVIEW-EGC-SCALE-C1-001
+- JOB-EGC-SCALE-ANCHOR-REPAIR-C1-20261005
+- JOB-EGC-REG-SITING-SRC-R1-20261005
+- SESSION-GPT56SOL-EGC-NUCRECON-REV-D2-20261005
+- REVIEW-EGC-REL-B1-001
+
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
