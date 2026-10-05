@@ -1,0 +1,27 @@
+{
+  "TASK_ID": "TASK-DOC-C4-INCIDENT-AUDIT-VERIFICATION-001",
+  "FINDING_ID": "FINDING-DOC-C4-INCIDENT-AUDIT-BEHAVIOR-TEST-GAP-001",
+  "REQ_ID": "REQ-DOC-C-4-2-INCIDENT-READ",
+  "PRIORITY": "P1",
+  "STATUS": "ACTIVE",
+  "OWNER_CHAT": "C-SOL-20261006-0143-INCIDENT-AUDIT",
+  "BASE_SHA": "9a12704259ee38009f45fe1964ca90d53212554a",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "WORK_BRANCH": "NEXY.AI-Test-AI/work/incident-audit-verify-001",
+  "SEMANTIC_SCOPE": "Behavioral verification only for DOC-C GET /api/incidents/:id mandatory INCIDENT_VIEWED audit emission and audit-failure fail-closed behavior.",
+  "TARGET_PATHS": [
+    "tests/contract/canonical-api.test.ts"
+  ],
+  "PROTECTED_SCOPE": [
+    "NEXY.ai",
+    "packages/api/canonical.ts",
+    "incident authorization/ownership semantics"
+  ],
+  "ACCEPTANCE": [
+    "Successful authorized incident read asserts INCIDENT_VIEWED with actor role, FreezeIncident resource, incident id, request id, trace id.",
+    "Foreign/not-found resource emits no INCIDENT_VIEWED.",
+    "Audit persistence rejection prevents HTTP 200 and returns dependency failure.",
+    "Focused canonical API contract test passes at candidate SHA.",
+    "No NEXY.ai mutation."
+  ]
+}
