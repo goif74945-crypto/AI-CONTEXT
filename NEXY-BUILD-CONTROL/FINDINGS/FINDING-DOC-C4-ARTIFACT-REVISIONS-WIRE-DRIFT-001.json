@@ -1,0 +1,35 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-ARTIFACT-REVISIONS-WIRE-DRIFT-001",
+  "REQ_ID": "REQ-DOC-C-4-2-ARTIFACT-REVISIONS",
+  "TASK_ID": "TASK-DOC-C4-ARTIFACT-REVISIONS-WIRE-001",
+  "FROM": "C-SOL-20261005-1912-V8",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SEVERITY": "P1",
+  "CLASS": ["CONTRACT_DRIFT","TEST_ORACLE_DEFECT"],
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "OBSERVED": [
+    "Final DOC-C GET /api/artifacts/:id/revisions response defines item fields revision_id, revision_no, created_at, created_by and optional next_cursor.",
+    "packages/api/canonical.ts returns additional item fields content_hash, commit_count, status, actions and a data-level viewer_role.",
+    "tests/contract/canonical-api.test.ts explicitly expects these extra fields while describing the response as canonical.",
+    "The authoritative requirement packet is already STATUS=MISMATCH at the same exact source SHA and its recorded runtime/test blob SHAs still match the current exact-SHA files."
+  ],
+  "EXPECTED": [
+    "Canonical DOC-C response oracle must be locked to the declared response surface.",
+    "Implementation-only UI convenience data must not be promoted into the canonical DOC-C wire oracle."
+  ],
+  "SPEC_EVIDENCE": {
+    "ROUTE": "DOCX paragraphs 10302-10330",
+    "RESPONSE": "10320-10330"
+  },
+  "SOURCE_EVIDENCE": {
+    "RUNTIME": "packages/api/canonical.ts lines 196-289",
+    "RUNTIME_BLOB": "1664d8d6a7da32245578addc26596f8fd4d55954",
+    "TEST": "tests/contract/canonical-api.test.ts lines 322-378",
+    "TEST_BLOB": "edc26665c768f31f27bee89c8b8578ad5c59ee1a"
+  },
+  "CONTROL_EVIDENCE": "AUTHORITY/REQUIREMENTS/REQ-DOC-C-4-2-ARTIFACT-REVISIONS.json is MISMATCH and is fresh for the exact same source/test blobs.",
+  "SOURCE_MUTATION": "NONE",
+  "UNBLOCK_CONDITION": "Repair runtime/test oracle on a valid worker branch, then execute exact-SHA contract verification and independent review."
+}
