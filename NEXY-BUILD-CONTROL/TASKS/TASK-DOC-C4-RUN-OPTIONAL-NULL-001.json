@@ -1,11 +1,11 @@
 {
   "TASK_ID": "TASK-DOC-C4-RUN-OPTIONAL-NULL-001",
   "CREATOR_CHAT": "C-V8-20261005-1737-SOL",
-  "OWNER_CHAT": "UNASSIGNED",
+  "OWNER_CHAT": "C-SOL-20261006-0144-0700-RUNOPTION-6E21A4B9",
   "MISSION_ID": "M01-CONTRACT-LOCK",
   "REQ_ID": "REQ-DOC-C-4-2-RUN-DETAIL",
   "FINDING_ID": "FINDING-DOC-C4-RUN-OPTIONAL-NULL-001",
-  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "STATUS": "IMPLEMENTING",
   "PRIORITY": "P1",
   "RISK": "LOW",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -23,6 +23,8 @@
     "Exact-SHA targeted tests and independent review are required.",
     "No mutation to NEXY.ai."
   ],
-  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
-  "NEXT_ACTION": "After worker isolation is unblocked, refresh target blobs, claim one-writer scope, repair serialization/test oracle, run targeted contract/integration tests, integrate and reverify."
+  "BLOCKER": null,
+  "NEXT_ACTION": "Repair serialization/test oracle on isolated worker branch; run targeted tests; review diff; integrate only with evidence.",
+  "WORKER_BRANCH": "NEXY.AI-Test-AI-work/run-optional-null-6E21A4B9",
+  "REFRESHED_AT": "2026-10-06T01:44:00+07:00"
 }
