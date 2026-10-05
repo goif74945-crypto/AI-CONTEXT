@@ -10,6 +10,9 @@
   "AUTHORITATIVE_CONTROL_RECORD": "NEXY-BUILD-CONTROL/AUTHORITY/REQUIREMENTS/REQ-G22-STATIC-RCS.json",
   "PRODUCT_SOURCE_MUTATION": "NONE",
   "CONTROL_MUTATION": "FINDING_STATUS_AND_RESOLUTION_EVIDENCE_ONLY",
-  "STATUS": "ACTIVE",
-  "PURPOSE": "Close stale P0_CONTROL finding after its required authority correction is already present and verified in the canonical requirement record."
+  "STATUS": "COMPLETED",
+  "PURPOSE": "Close stale P0_CONTROL finding after its required authority correction is already present and verified in the canonical requirement record.",
+  "RESOLUTION_COMMIT": "19a8f177c8bd3da2df9b5dd88a3f84212811bbf0",
+  "RESOLUTION_FINDING_STATUS": "RESOLVED",
+  "RESULT": "NEXY-BUILD-CONTROL/FINDINGS/F-0DC2D7E4-03-G22-AUTHORITY.md"
 }
