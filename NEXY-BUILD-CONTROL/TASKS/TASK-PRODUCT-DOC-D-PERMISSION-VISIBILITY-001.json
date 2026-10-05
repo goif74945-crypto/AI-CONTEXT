@@ -1,0 +1,30 @@
+{
+  "SCHEMA_VERSION": "NEXY_PRODUCT_TASK_V1",
+  "TASK_ID": "TASK-PRODUCT-DOC-D-PERMISSION-VISIBILITY-001",
+  "OWNER_CHAT": "C-SOL-20261006-0143-DOC-D-PERMISSION",
+  "STATUS": "CLAIMED",
+  "PRIORITY": "PRODUCT_CORRECTNESS_TEST",
+  "AUTHORITY": "USER_CURRENT_NEXY_MULTI_CHAT_CONTINUOUS_PRODUCT_BUILD_2026-10-06",
+  "AUTHORITATIVE_SPEC": "แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx",
+  "SPEC_REQUIREMENT": "DOC-D §6.7 Permission Visibility Matrix: Recover OWNER only; Hard delete OWNER only; Config panel OWNER only; Audit export OWNER/AUDITOR only; Submit directive OWNER/OPERATOR only.",
+  "SCOPE": [
+    "tests/contract/doc-d-permission-visibility.test.ts"
+  ],
+  "OUT_OF_SCOPE": [
+    "NEXY.ai",
+    "runtime behavior changes",
+    "backend RBAC changes",
+    "NavBar/sidebar",
+    "auth implementation",
+    "state transitions"
+  ],
+  "TARGET_INTEGRATION_BRANCH": "NEXY.AI-Test-AI",
+  "BASE_SHA": "999cf6b6a64e1cb36a295f80af5cbbc3a97d5742",
+  "WORKER_BRANCH": "work/C-SOL-20261006-0143-doc-d-permission-visibility",
+  "ACCEPTANCE": [
+    "Focused contract test asserts existing UI source gates for all DOC-D §6.7 permission rows.",
+    "No production source mutation.",
+    "Targeted test passes on exact worker head.",
+    "Diff contains only the focused regression test."
+  ]
+}
