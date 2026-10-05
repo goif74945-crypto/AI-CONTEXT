@@ -5340,3 +5340,136 @@ WRITE_INTEGRITY:
 - file SHA read: b93550715a6ed5f733101ee680982fcf3e2050ba
 - stale-write check: exact blob SHA lease used
 - commit/result: PENDING_THIS_COMMIT
+
+
+======================================================================
+36. JOB-EGC-LOWCOST-ANCHOR-E1-20261005 — EVIDENCE PACKAGE / AWAITING REVIEW
+======================================================================
+
+### EVENT 2026-10-05T19:27:00Z / SESSION-GPT56SOL-EGC-20261005T1907Z
+ROLE: R01 objective-support / baseline-cost calibration
+OBJECTIVE: Calibrate candidate-neutral LOW_COST screening anchors before candidate scoring, while preventing plant-only LCOE from masquerading as delivered-system cost.
+TARGET_CANDIDATE_OR_QUESTION: CROSS-CANDIDATE / LOW_COST definition support for controlling JOB-EGC-001.
+
+TOOL_EVIDENCE_ID: TE-EGC-LOWCOST-E1-001
+JOB_ID: JOB-EGC-LOWCOST-ANCHOR-E1-20261005
+CLAIM_ID: CLAIM-EGC-LOWCOST-CURRENT-FRONTIER-001
+TOOL_OR_METHOD: Official IRENA PDF retrieval + text extraction + rendered-page inspection
+PURPOSE: Establish current project-level firm-renewable cost frontier at an explicit reliability target.
+EXECUTION_DATE: 2026-10-05
+INPUTS: 2025 technology-cost assumptions; selected high-quality solar/wind locations; BESS/overbuild firming configurations.
+PARAMETERS: IRENA firm-LCOE simulations; 95% reliability target for cited firm-cost comparisons.
+VERSION_OR_MODEL: IRENA May 2026 report.
+SOURCE_OR_DATASET: IRENA Renewable Cost Database + location-specific hourly generation profiles as described in report.
+SOURCE_DATE: 2026-05
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/May/IRENA_TEC_24-7_renewables_2026.pdf ; ISBN 978-92-9260-736-4
+COMMAND_CODE_EQUATION_OR_METHOD: Inspected report text and rendered cost figures; extracted 2025 values and reliability definition.
+RAW_OR_KEY_OUTPUT:
+- Solar PV + BESS/overbuild at 95% reliability, selected 2025 sites: approximately USD 54/MWh Hebei (China), 65 Bahia (Brazil), 69 central Oman, 79 Rajasthan (India), 80 Northwest Province (South Africa), 82 Southern Queensland (Australia), 91 Tabernas (Spain), 113 Nevada (United States).
+- Onshore-wind firm LCOE at 95% reliability in 2025: approximately USD 59/MWh Inner Mongolia (China) to USD 110/MWh Oliver County (United States); other selected sites include ~88 Brazil, 91 Germany, 94 Australia, 95 Namibia.
+- IRENA reports a 95%-reliability wind-plus-storage configuration of USD 95/MWh at a high-quality Namibia site, falling to USD 60/MWh when complementary solar is added.
+UNITS: real 2025 USD/MWh.
+UNCERTAINTY: Geographic and financing dispersion is large; values are modelled project-level firm LCOE, not universal system cost.
+ASSUMPTIONS: Reliability target/model configuration follow IRENA; no claim that 95% project reliability equals full-grid adequacy.
+LIMITATIONS: IRENA states project-level firming is not a universal prescription for power-system reliability; it also notes some interconnection/development costs are outside modelled estimates in relevant markets.
+REPRODUCIBILITY_INSTRUCTIONS: Open cited PDF; inspect executive-summary firm-LCOE figures and pp. 27-33 cost discussion; verify 95% reliability and 2025 values.
+INDEPENDENT_REPLICATION: DISTINCT_SESSION_REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT / MODELLED_EXTERNAL_EVIDENCE.
+CLAIM_SUPPORTED: Current firm-renewable project cost frontier in favorable locations is around USD 54-60/MWh at 95% reliability, while less favorable locations are materially higher.
+CLAIM_NOT_SUPPORTED: Full-system delivered electricity everywhere costs USD 54-60/MWh; 100% reliability; grid-wide integration cost.
+
+TOOL_EVIDENCE_ID: TE-EGC-LOWCOST-E1-002
+JOB_ID: JOB-EGC-LOWCOST-ANCHOR-E1-20261005
+CLAIM_ID: CLAIM-EGC-LCOE-BOUNDARY-WARNING-001
+TOOL_OR_METHOD: Official U.S. EIA AEO2026 PDF retrieval + rendered-figure inspection
+PURPOSE: Independently anchor new-build U.S. cost magnitudes and test whether LCOE alone is an adequate mission metric.
+EXECUTION_DATE: 2026-10-05
+INPUTS: AEO2026 Counterfactual Baseline, plants entering service in 2031.
+PARAMETERS: 30-year cost recovery; EIA after-tax WACC 7.27% for 2031 online year; 2025 dollars; policy assumptions effective through December 2025.
+VERSION_OR_MODEL: AEO2026 / NEMS.
+SOURCE_OR_DATASET: U.S. Energy Information Administration Annual Energy Outlook 2026.
+SOURCE_DATE: 2026-04-08
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.eia.gov/outlooks/aeo/electricity_generation/pdf/LCOE_report.pdf
+COMMAND_CODE_EQUATION_OR_METHOD: Inspected methodology and rendered average LCOE/LCOS chart.
+RAW_OR_KEY_OUTPUT:
+- Estimated average 2031 LCOE/LCOS in 2025 USD/MWh: geothermal 40.38; onshore wind 56.75; solar PV 58.33; combined-cycle with CCS 58.47; hydroelectric 64.77; combined-cycle 77.46; biomass 84.54; advanced nuclear 87.81; PV-battery hybrid 94.20; offshore wind 118.79; battery storage LCOS 152.61; combustion turbine 172.57.
+- EIA explicitly states direct LCOE/LCOS comparisons across technologies can be misleading and LCOE does not capture all factors contributing to investment decisions or plant value to the grid.
+UNITS: 2025 USD/MWh.
+UNCERTAINTY: U.S.-specific modeled 2031 values; technology/region/policy/tax-credit dependent.
+ASSUMPTIONS: EIA published model assumptions only.
+LIMITATIONS: Not a global observed 2025 cost dataset; includes U.S. policy/tax-credit effects and projected 2031 builds.
+REPRODUCIBILITY_INSTRUCTIONS: Open cited PDF; inspect pp. 2, 6-8 and average LCOE/LCOS chart.
+INDEPENDENT_REPLICATION: DISTINCT_SESSION_REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT / MODELLED_EXTERNAL_EVIDENCE.
+CLAIM_SUPPORTED: ~USD 60/MWh is near the low end of current/prospective new-build cost evidence, but grid service cannot be judged by LCOE alone.
+CLAIM_NOT_SUPPORTED: Any plant with LCOE under USD 60/MWh automatically wins.
+
+TOOL_EVIDENCE_ID: TE-EGC-LOWCOST-E1-003
+JOB_ID: JOB-EGC-LOWCOST-ANCHOR-E1-20261005
+CLAIM_ID: CLAIM-EGC-LOWCOST-BAND-CALC-001
+TOOL_OR_METHOD: Python deterministic arithmetic + Wolfram Language same-session cross-tool check
+PURPOSE: Quantify relation of proposed bands to IRENA 2025 firm-cost floor values.
+EXECUTION_DATE: 2026-10-05
+INPUTS: USD 54/MWh solar firm reference; USD 59/MWh wind firm reference; proposed anchors USD 60 and 80/MWh.
+PARAMETERS: percent difference=(threshold/reference-1)*100.
+VERSION_OR_MODEL: Python runtime + Wolfram Language evaluator.
+SOURCE_OR_DATASET: TE-EGC-LOWCOST-E1-001.
+SOURCE_DATE: 2026-05 source; calculation 2026-10-05.
+SOURCE_URL_DOI_OR_IDENTIFIER: TE-EGC-LOWCOST-E1-001.
+COMMAND_CODE_EQUATION_OR_METHOD: (60/54-1)*100; (60/59-1)*100; (80/54-1)*100; (80/59-1)*100.
+RAW_OR_KEY_OUTPUT: 11.1111%; 1.69492%; 48.1481%; 35.5932%. Python and Wolfram matched to displayed precision.
+UNITS: percent.
+UNCERTAINTY: Arithmetic negligible; benchmark uncertainty/geographic transferability dominates.
+ASSUMPTIONS: Extracted IRENA reference values valid.
+LIMITATIONS: Same-session two-tool check is NOT independent-session replication.
+REPRODUCIBILITY_INSTRUCTIONS: Recompute formulas above in an independent calculator/session.
+INDEPENDENT_REPLICATION: SAME_SESSION_CROSS_TOOL_ONLY / DISTINCT_SESSION_REQUIRED.
+EVIDENCE_CLASS: CALCULATION.
+CLAIM_SUPPORTED: USD 60/MWh is a stringent frontier-style anchor; USD 80/MWh is a broader low-cost band rather than frontier cost.
+CLAIM_NOT_SUPPORTED: Statistical superiority of any candidate.
+
+PROPOSED LOW_COST SCREENING ANCHORS — INFERENCE / ASSUMPTION_PENDING_REVIEW:
+- COST_FRONTIER: <= USD 60/MWh real-2025 equivalent for delivered/firm service at matched reliability/service boundary.
+- LOW_COST_CENTRAL_PASS: <= USD 80/MWh real-2025 equivalent all-in delivered cost after generation + storage/firming + curtailment + incremental transmission/interconnection + O&M + financing + replacement + decommissioning/waste where applicable.
+- COST_ROBUSTNESS_WARNING: USD 80-100/MWh is competitive/marginal rather than frontier; >USD 100/MWh central should not qualify as LOW_COST absent a quantified compensating system-service advantage.
+- MATERIAL_IMPROVEMENT_RULE: final winner must beat strongest matched baseline on same boundary by more than combined decision uncertainty; suggested >=10% central advantage is ASSUMPTION_PENDING_REVIEW, not SOURCE_FACT.
+- SERVICE-BOUNDARY RULE: plant LCOE alone cannot satisfy mission; final ranking must match reliability/adequacy and include material integration costs.
+- FINANCE-NORMALIZATION RULE: source WACC/tax/geography differ; JOB-EGC-015/JOB-EGC-004 must normalize before PASS.
+
+RED_TEAM_CHECK:
+- Attack: USD 60 chosen because round/attractive. Outcome: PARTIALLY SURVIVES because independent current sources put multiple lowest-cost new resources and best firm-renewable cases near/below USD 60/MWh; universal transferability is false, so USD 60 remains FRONTIER only.
+- Attack: treat USD 54-60 as full-system cost. Outcome: FALSIFIED by IRENA/EIA boundary warnings; repair requires common delivered-service boundary.
+- Attack: set USD 80 and declare victory. Outcome: FALSIFIED; USD 80 is 36-48% above cited best firm cases. It is screening ceiling only; final success still requires same-boundary baseline advantage beyond uncertainty.
+
+RESULT:
+- FACT: Current authoritative evidence supports low-cost new-electricity frontier values in roughly USD 40-60/MWh contexts, with large geographic/system-boundary dispersion.
+- INFERENCE: <=USD 60/MWh is defensible stringent frontier anchor; <=USD 80/MWh is defensible broad screening ceiling only if all material system costs are included.
+- ASSUMPTION: >=10% material-improvement guardrail remains reviewer-adjustable.
+- UNKNOWN: standardized finance/WACC, final adequacy metric, statistical decision rule; owned by JOB-EGC-004/JOB-EGC-015/JOB-EGC-025/controlling JOB-EGC-001.
+- CONFLICT: differing IRENA/EIA values are boundary/year/geography/policy differences, not direct contradiction.
+- FALSIFIED: plant-only LCOE as sufficient mission-success metric.
+
+CLAIM_GRAPH_UPDATE:
+- CLAIM-EGC-LOWCOST-CURRENT-FRONTIER-001 <- TE-EGC-LOWCOST-E1-001.
+- CLAIM-EGC-LCOE-BOUNDARY-WARNING-001 <- TE-EGC-LOWCOST-E1-002.
+- CLAIM-EGC-LOWCOST-BAND-CALC-001 <- TE-EGC-LOWCOST-E1-003.
+- Proposed LOW_COST anchors remain OPEN until independent reviewer PASS.
+- Feeds: JOB-EGC-001, JOB-EGC-004, JOB-EGC-015, JOB-EGC-025, later JOB-EGC-027.
+
+STATUS_CHANGE:
+- JOB-EGC-LOWCOST-ANCHOR-E1-20261005: CLAIMED -> AWAITING_REVIEW.
+- JOB-EGC-LOWCOST-ANCHOR-REV-E1-20261005: OPEN, dependency satisfied.
+- GLOBAL_SOLVED: NO.
+
+NEXT_ACTION:
+1. Distinct session claims JOB-EGC-LOWCOST-ANCHOR-REV-E1-20261005 and independently checks both official sources, values, boundaries, and bands.
+2. Controlling JOB-EGC-001 may adopt/modify/reject anchors only with evidence labels.
+3. JOB-EGC-004 defines common delivered-service boundary.
+4. JOB-EGC-015/JOB-EGC-025 normalize financing and test reversal risk.
+
+WRITE_INTEGRITY:
+- stale-write policy: refresh/reconcile/reapply after prior 409 conflict; exact current blob SHA required; append only; no force push.
+
+WRITE_INTEGRITY_RESOLVED:
+- branch head read immediately before successful attempt 2: d6558a5101e06f629b2766c545eb5e885b9e8622
+- file SHA read immediately before successful attempt 2: 72e4d5e03c3c659d07f215dc9f5ebf702def28cb
