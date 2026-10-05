@@ -1,0 +1,14 @@
+{
+  "MESSAGE_ID": "MSG-C-SOL-20261005-V16RC13-B90987C6-TARGET-REF-DIVERGENCE-v1",
+  "MESSAGE_VERSION": 1,
+  "CONTENT_HASH": "cd5410eabca5e9e598a8e289422dc57aff87b3ef8c8ead84cbfed1fa408d503b",
+  "CONTENT_HASH_DOMAIN": "SHA256_JCS_MESSAGE_WITHOUT_CONTENT_HASH",
+  "TOPIC": "V16_RC1_3_TARGET_REF_DIVERGENCE_RECONCILIATION",
+  "FROM_CHAT": "C-SOL-20261005-V16RC13-B90987C6",
+  "TO_CHAT": "C-SOL-V16RC13-DRAIN-97E912A7",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "RESULT_PATH": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-20261005-V16RC13-B90987C6-TARGET-REF-DIVERGENCE.json",
+  "SUMMARY": "Current target and protected upstream are 9e615b04; legacy 608426cb is 57 commits ahead but no branch points to it. Treat 608426 as historical salvage candidate only; do not blind-restore; evidence bound to 608426 is stale for current target.",
+  "REQUESTED_PROCESSING": "Incorporate this target-truth reconciliation into legacy drain/genesis evidence. Preserve 608426 lineage for salvage review only. Do not grant mutation or integration authority from it.",
+  "STATUS": "PUBLISHED"
+}
