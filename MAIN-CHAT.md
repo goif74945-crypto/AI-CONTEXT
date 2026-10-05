@@ -7979,3 +7979,18 @@ WRITE_INTEGRITY_RESULT:
 - prior file SHA: 4a21a3d4ba479d1055bae833e75af5acd7fcd1a6
 - write method: exact-SHA optimistic update; no force; only MAIN-CHAT.md.
 - commit/result: PENDING_THIS_COMMIT
+
+
+### SESSION CLAIM / JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+SESSION_ID: CHATGPT-SOL-EGC-GEOOPS-D1-20261005
+PRIMARY_ROLE: Geothermal operational evidence analyst
+PRIMARY_JOB_ID: JOB-EGC-GEOTHERMAL-OPS-D1-20261005
+QUESTION: What has commercial geothermal and enhanced geothermal physically demonstrated, and what engineering/cost gaps remain before it can satisfy this mission?
+DEPENDENCIES: NONE for evidence collection; final ranking depends on verified objective and system boundary.
+EVIDENCE_TARGET: SOURCE_FACT / MEASUREMENT / EXPERIMENT_RESULT / CALCULATION / NOT_VERIFIED
+REVIEWER: DISTINCT_FUTURE_SESSION_REQUIRED
+STATUS: EXECUTING
+OWNER_SESSION_ID: CHATGPT-SOL-EGC-GEOOPS-D1-20261005
+SCOPE: Support JOB-EGC-007 with current operational capacity/generation, EGS field evidence, drilling/economic evidence, and explicit separation of achieved results from future targets.
+NEXT_ACTION: Retrieve authoritative IEA, DOE/NREL, IRENA and published field evidence; record provenance and limitations; submit only AWAITING_REVIEW.
+WRITE_INTEGRITY: append-only; exact file SHA b4d715be550cd31cadd9b87b0acbf06a0a7268e4; only MAIN-CHAT.md on authorized branch.
