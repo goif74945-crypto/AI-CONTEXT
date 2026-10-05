@@ -16700,3 +16700,923 @@ SELF_VERIFICATION: FORBIDDEN
 NEXT_ACTION: Reconstruct authoritative objective semantics and source basis, test counterexamples, then PASS/FAIL/REPAIR DEPLOY-CLOCK-V0.1.
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+======================================================================
+49. JOB-EGC-015-REPAIR-RT20-20261005 — REPAIRED FINANCE STABILITY TAXONOMY
+======================================================================
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-FIN015-REPAIR-R1-20261005
+PRIMARY_JOB_ID: JOB-EGC-015-REPAIR-RT20-20261005
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEW_REQUIRED_BY: JOB-EGC-015-REPAIR-REV-RT20-20261005
+
+TOOL_EVIDENCE_ID: TE-EGC-FIN015-REPAIR-001
+JOB_ID: JOB-EGC-015-REPAIR-RT20-20261005
+CLAIM_ID: CLAIM-EGC-FINANCE-TWO-LANE-001
+TOOL_OR_METHOD: Narrow repair of independently reviewed finance method + authoritative NREL/IEA source recheck
+PURPOSE: Close FIN-FINDING-RT20-001 by preventing mission counterfactual WACC stresses from being interpreted as empirical market distributions/probabilities.
+EXECUTION_DATE: 2026-10-05
+INPUTS: REVIEW-EGC-015-RT20-001; original JOB-EGC-015 rules; JOB-EGC-025 uncertainty taxonomy; NREL ATB 2024b finance methodology; IEA GEC Model 2025 finance assumptions; IEA Cost of Capital Observatory / Southeast Asia commentary.
+PARAMETERS: Candidate-neutral finance treatment; same delivered-service boundary.
+VERSION_OR_MODEL: repaired framework v2.
+SOURCE_OR_DATASET:
+- NREL/NLR ATB 2024b Financial Cases & Methods + Equations & Variables.
+- IEA GEC Model 2025 techno-economic inputs.
+- IEA Cost of Capital Observatory / 2025 Southeast Asia finance commentary.
+SOURCE_DATE: 2025-2026 source state.
+SOURCE_URL_DOI_OR_IDENTIFIER:
+- https://atb.nrel.gov/electricity/2024b/financial_cases_%26_methods
+- https://atb.nrel.gov/electricity/2024b/equations_%26_variables
+- https://www.iea.org/reports/global-energy-and-climate-model/techno-economic-inputs
+- https://www.iea.org/reports/cost-of-capital-observatory
+- https://www.iea.org/commentaries/high-cost-of-capital-and-limited-project-pipeline-hinder-clean-energy-investment-in-southeast-asia
+COMMAND_CODE_EQUATION_OR_METHOD: source-boundary reconciliation; no new candidate ranking.
+RAW_OR_KEY_OUTPUT:
+- NREL ATB explicitly describes technology-specific finance assumptions, nominal after-tax WACC, tax/inflation assumptions, construction-period financing, and project-finance factors. Therefore a WACC number cannot be safely detached from its finance convention.
+- IEA GEC uses differentiated WACC assumptions by technology; current GEC source states roughly 4-7% for utility PV/onshore wind, 5-8% offshore wind, and standard 8-9% for nuclear/coal/gas depending on development stage.
+- IEA Cost of Capital Observatory evidence is geography/technology/project specific. Southeast Asia 2024 solar survey values are explicitly nominal, post-tax, local currency and have limited-response caveats in some countries.
+UNITS: percent WACC; categorical finance metadata.
+UNCERTAINTY: source WACC ranges are not universal probability distributions; coverage differs by geography/technology.
+ASSUMPTIONS: mission common 3/7/10% real-WACC grid remains a pre-registered analytical stress set.
+LIMITATIONS: this repair does not create missing market-finance evidence for candidates/geographies.
+REPRODUCIBILITY_INSTRUCTIONS: reopen source pages; verify finance-basis labels and technology/geography variation; compare rules below to FIN-FINDING-RT20-001/002.
+INDEPENDENT_REPLICATION: REQUIRED by repair reviewer.
+EVIDENCE_CLASS: SOURCE_FACT / REPAIR / INFERENCE.
+
+### REPAIRED FINANCE NORMALIZATION RULES V2
+TRUTH_CLASS: MISSION_METHOD / INFERENCE_PENDING_REVIEW
+
+F1 SOURCE-NATIVE RECORD LOCK
+Before normalization, retain all available source-native finance metadata:
+- finance source + date/vintage;
+- WACC/discount-rate value;
+- NOMINAL / REAL / UNKNOWN basis;
+- PRE-TAX / AFTER-TAX / UNKNOWN basis;
+- currency and constant/current-dollar convention;
+- geography/country/region;
+- technology and project stage/maturity;
+- contract/offtake structure (PPA, regulated, merchant, quasi-merchant, UNKNOWN);
+- debt/equity/leverage and construction-finance assumptions where supplied;
+- inflation assumption/source;
+- tax credits/subsidies/depreciation/policy treatment;
+- construction duration/spend profile and COD timing.
+UNKNOWN MUST remain UNKNOWN; no inferred basis from a nearby source.
+
+F2 REAL/NOMINAL CONSISTENCY
+- Constant-dollar cash flows pair only with real discount/WACC assumptions.
+- Nominal cash flows pair only with nominal discount/WACC assumptions.
+- If a source supports conversion and inflation is basis-compatible, Fisher relation may be used: r_real=(1+r_nominal)/(1+inflation)-1.
+- Inflation used for conversion MUST match the relevant currency/geography/time convention as closely as evidence permits and be recorded.
+- If taxes, tax shields, depreciation, construction finance or source-specific project-finance factors make a simple WACC conversion insufficient to reproduce source economics, rerun the cash-flow/project-finance model rather than pretending a single Fisher conversion normalizes the full source result.
+- EIA AEO2026 after-tax 7.27% remains basis=UNKNOWN for real/nominal unless a separate authoritative methodology source resolves it.
+
+F3 LANE A — COMMON-FINANCE COUNTERFACTUAL STRESS
+Purpose: isolate capital-intensity/engineering sensitivity under identical finance assumptions, not estimate market probability.
+- Apply identical mission real-WACC scenarios 3%, 7%, 10% to every candidate on the same constant-dollar delivered-service boundary.
+- Hold other finance/policy conventions common where possible and explicitly list any term that cannot be equalized.
+- These three values are ASSUMPTION / STRESS_SCENARIO. No frequency, probability or likelihood may be assigned from their mere inclusion.
+- Allowed labels:
+  COMMON_STRESS_ORDER_INVARIANT — candidate ordering does not reverse across 3/7/10% under otherwise matched stress assumptions.
+  COMMON_STRESS_ORDER_REVERSAL — ordering reverses somewhere in the common stress grid.
+  COMMON_STRESS_NOT_COMPARABLE — equalization cannot be performed without material boundary distortion.
+- COMMON_STRESS_ORDER_REVERSAL is an engineering/finance-sensitivity warning. By itself it is NOT evidence of probable market reversal.
+
+F4 LANE B — EVIDENCED MARKET-FINANCE CASE
+Purpose: assess deployability/cost robustness under finance conditions actually evidenced for a defined candidate/geography/project structure.
+- Use source-grounded finance ranges/cases only, preserving technology, geography, currency, tax, policy, contract/merchant exposure, construction finance and maturity labels.
+- If evidence provides intervals/scenarios but no calibrated distribution, propagate as intervals/scenarios with NO invented probabilities per JOB-EGC-025.
+- If an evidence-supported distribution exists, record source, population, vintage, dependencies and calibration before probability propagation.
+- Allowed labels:
+  MARKET_FINANCE_STABLE — candidate's claimed superiority/acceptance does not reverse across the allowed evidence-supported joint finance cases on the same service boundary.
+  MARKET_FINANCE_NOT_STABLE — at least one allowed evidence-supported joint case reverses the claimed superiority/acceptance.
+  MARKET_FINANCE_NOT_VERIFIED — evidence is insufficient to construct a defensible candidate/geography/project finance case.
+  MARKET_FINANCE_CONDITIONAL — superiority holds only under explicitly named finance/contract/policy regime; claim must carry that condition.
+
+F5 CORRELATION / JOINT-CASE LOCK
+- Market WACC, inflation, currency risk, technology risk, development stage, construction duration, policy, leverage and contract structure are NOT presumed independent.
+- Prefer source-observed/source-defined joint cases as atomic scenario tuples.
+- Constructed joint cases must document why the combination is physically/economically plausible.
+- JOB-EGC-025 Monte Carlo must not independently sample marginals that create impossible or unsupported combinations.
+- Common stress Lane A may deliberately vary WACC counterfactually while holding other terms fixed; that artificial independence is permitted ONLY because Lane A is explicitly not a market distribution.
+
+F6 CONSTRUCTION-FINANCE LOCK
+For long-build assets, record overnight CAPEX separately from all-in financed CAPEX and include construction duration, spend profile/ConFinFactor or equivalent and interest/equity during construction. Do not double count source CAPEX that already embeds financing.
+
+F7 POLICY / TRANSFER LOCK
+Tax credits, subsidies, depreciation benefits and carbon-policy transfers must be separately traceable. Report policy-inclusive investor/project economics separately from the mission's resource/system-cost accounting where the common boundary requires transfer-neutral comparison.
+
+F8 REPLACEMENT / LIFETIME LOCK
+Replacement cycles and residual value use the same real/nominal convention as the main analysis; lifetime extension cannot be assumed without technology evidence. Finance and physical lifetime uncertainty remain distinct inputs even when coupled.
+
+F9 TWO-STABILITY REPORTING REQUIREMENT
+Every decision-relevant candidate cost comparison must report BOTH:
+- COMMON_FINANCE_STATUS = one F3 label; and
+- MARKET_FINANCE_STATUS = one F4 label.
+No single generic 'finance stable' label is allowed.
+
+F10 FINAL-CLAIM PRECEDENCE RULE
+For empirical mission claims about present/credible delivered cost:
+- MARKET_FINANCE_STATUS + JOB-EGC-025 evidence-supported decision stability is controlling.
+- A Lane-A reversal alone does NOT falsify empirical cost superiority unless the reversing condition is also inside the evidence-supported market/uncertainty set.
+- A Lane-A invariant ordering does NOT rescue a candidate with MARKET_FINANCE_NOT_STABLE or MARKET_FINANCE_NOT_VERIFIED.
+- MARKET_FINANCE_NOT_VERIFIED blocks a robust final LOW_COST/winner claim; it does not prove the candidate is expensive.
+- A final conclusion may be explicitly conditional on a finance regime only if labeled MARKET_FINANCE_CONDITIONAL and the regime is evidence-grounded.
+
+F11 NO PROBABILITY FROM STRESS GRID
+Never compute or imply statements such as '2 of 3 WACC cases pass, therefore 67% chance' or assign equal probability to 3/7/10% without external calibration. Stress-grid frequency is not probability.
+
+F12 SAME-SERVICE / SYSTEM-BOUNDARY PRECEDENCE
+Finance normalization cannot repair an incomparable physical service boundary. All final finance labels inherit the common delivered-service, adequacy, grid/storage and resource-cost boundary; generator LCOE remains a component metric.
+
+TOOL_EVIDENCE_ID: TE-EGC-FIN015-REPAIR-002
+JOB_ID: JOB-EGC-015-REPAIR-RT20-20261005
+CLAIM_ID: CLAIM-EGC-FINANCE-COUNTEREXAMPLES-001
+TOOL_OR_METHOD: Deterministic edge-case/red-team audit
+PURPOSE: Attempt to break V2 rules with category errors identified in independent review.
+EXECUTION_DATE: 2026-10-05
+RAW_OR_KEY_OUTPUT:
+- Case A: candidate flips only at common 10% real stress, while evidence-supported market finance never approaches that case. V2 => COMMON_STRESS_ORDER_REVERSAL + market status evaluated independently; no empirical probability/failure inferred from 10% stress alone. PASS repair target.
+- Case B: source gives 9% nominal post-tax local-currency WACC but inflation is missing. V2 => source basis retained, normalized real WACC UNKNOWN until compatible inflation/method evidence appears. PASS.
+- Case C: source provides PPA finance terms for one technology and merchant terms for another. V2 => no silent equal-probability mixing; Lane B retains contract structure; Lane A can normalize counterfactually but cannot be reported as observed market economics. PASS.
+- Case D: Monte Carlo independently samples low WACC with high construction-risk duration combinations never observed/supported. V2 F5 rejects unless joint plausibility is documented. PASS.
+- Case E: all 3 common stresses preserve order but candidate-specific market-finance evidence is absent. V2 => COMMON_STRESS_ORDER_INVARIANT + MARKET_FINANCE_NOT_VERIFIED; robust final cost claim blocked. PASS.
+UNITS: categorical decision labels.
+UNCERTAINTY: logic audit only; independent reviewer must attempt stronger counterexamples.
+ASSUMPTIONS: conditions as stated.
+LIMITATIONS: does not replace candidate-specific TEA.
+REPRODUCIBILITY_INSTRUCTIONS: apply F3-F11 mechanically to each edge case.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: CALCULATION/LOGIC_AUDIT / REPAIR.
+
+FIN-FINDING CLOSURE CLAIMS — PENDING INDEPENDENT REVIEW:
+- FIN-FINDING-RT20-001: REPAIRED by F3/F4/F5/F9/F10/F11.
+- FIN-FINDING-RT20-002: REPAIRED by F1/F2 source-native metadata lock and UNKNOWN rule.
+- Original JOB-EGC-015 rules 1-7/9 are retained only insofar as consistent with V2; V2 supersedes original Rule 8 and clarifies Rules 1-4.
+
+RED_TEAM:
+- 'Common 3/7/10 stress cases represent empirical market probabilities' -> FALSIFIED by method/source boundaries.
+- 'Stable under common finance means proven market-robust' -> FALSIFIED by F10.
+- 'Market finance can be represented by one universal WACC' -> FALSIFIED by IEA/NREL source heterogeneity.
+- 'Unknown nominal/real basis can be guessed during normalization' -> FORBIDDEN.
+- 'More Monte Carlo samples fix unsupported correlation/distribution assumptions' -> FALSIFIED; JOB-EGC-025/F5 require evidence-supported dependency model.
+
+STATUS_CHANGE:
+- JOB-EGC-015-REPAIR-RT20-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-015-REPAIR-REV-RT20-20261005: OPEN and dependency now satisfied.
+- JOB-EGC-015 remains REVIEW_FAILED/REPAIR_REQUIRED until the repair reviewer passes V2 and canonical integration is recorded.
+- GLOBAL_SOLVED: NO.
+- CURRENT_WINNER: NONE.
+
+CLAIM_GRAPH_UPDATE:
+- REVIEW-EGC-015-RT20-001 -> JOB-EGC-015-REPAIR-RT20-20261005 -> TE-EGC-FIN015-REPAIR-001/002 -> JOB-EGC-015-REPAIR-REV-RT20-20261005.
+- V2 feeds JOB-EGC-025 uncertainty propagation, JOB-EGC-004/common-boundary integration, candidate TEA and G21/G22.
+
+NEXT_ACTION:
+1. Distinct session independently reviews JOB-EGC-015-REPAIR-RT20-20261005 using stronger counterexamples and source-boundary checks.
+2. If PASS, canonical JOB-EGC-015 adopts V2 and closes FIN-FINDING-RT20-001/002.
+3. Candidate TEA jobs then report separate common-stress and market-finance stability labels.
+
+WRITE_INTEGRITY:
+- branch head read immediately before attempt 3: 0259d0f43e0227aa5822a805da1968c63ddaa463
+- file SHA read immediately before attempt 3: 23bc872c6b14496cbc1db8ec4918355f3cab1326
+- exact fetched blob SHA supplied; append-only; no force; only authorized file touched.
+
+======================================================================
+48. INDEPENDENT GRID REVIEW RESULT — JOB-EGC-GRID-REV-G1-20261005
+======================================================================
+
+EVENT_TIME: 2026-10-05T20:38:00Z
+SESSION_ID: CHATGPT-SOL-20261005T203000Z-A1RGRID
+PRIMARY_JOB_ID: JOB-EGC-GRID-REV-G1-20261005
+REVIEWED_JOB: JOB-EGC-GRID-SRC-G1-20261005
+REVIEW_SCOPE: source facts, arithmetic, empirical-vs-model classification, and anti-gaming interpretations for interconnection queues, grid investment, battery nameplate/firmness, adequacy stressors and transmission system value.
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+SELF_VERIFICATION: FORBIDDEN; this reviewer job remains AWAITING_REVIEW after issuing the source-job verdict.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-001
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-001 / CLAIM-EGC-GRID-QUEUE-IS-NOT-BUILT
+TRUTH_CLASS: SOURCE_FACT + REPLICATION
+INDEPENDENT_SOURCE: Lawrence Berkeley National Laboratory, Queued Up 2026.
+SOURCE_URL: https://emp.lbl.gov/queues
+SOURCE_DATE: June 2026 report, data through end-2025.
+INDEPENDENT_RESULT:
+- ~8,200 active U.S. projects;
+- 1,312 GW generation + ~749 GW storage = 2,061 GW active queue capacity;
+- 549 GW has draft/executed IA but is not yet commercial;
+- median IR-to-COD >5 years for projects built in 2025 in regions with available data;
+- of 2000-2020 requested capacity, 13% reached commercial operation, 75% withdrew, 10% remained active by end-2025.
+INDEPENDENT_ARITHMETIC:
+- 1,312 + 749 = 2,061 GW, consistent with source headline "over 2,060 GW";
+- 549 / 2,061 = 26.64% of the simple generation+storage aggregate, but this ratio is diagnostic only because queue/hybrid accounting can overlap.
+LIMITATION:
+- queue data are administrative pipeline evidence, not forecast installed output;
+- observed completion statistics are U.S.-specific and cannot be blindly globalised.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-002
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-002 / CLAIM-EGC-GRID-GLOBAL-BOTTLENECK
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + MODEL_RESULT + REPLICATION
+INDEPENDENT_SOURCE: IEA Electricity 2026, Grids / Executive Summary.
+SOURCE_URLS:
+- https://www.iea.org/reports/electricity-2026/grids
+- https://www.iea.org/reports/electricity-2026/executive-summary
+SOURCE_DATE: February 2026.
+INDEPENDENT_RESULT:
+- >2,500 GW renewable, large-load and storage projects stalled in grid queues worldwide;
+- annual grid investment needs to rise ~50% by 2030 from ~USD400B/year;
+- modeled regulatory/grid-enhancing measures could unlock ~1,200-1,600 GW of advanced-stage queued projects;
+- 750-900 GW of that modeled range is attributed to conditional non-firm connections, remainder to grid-enhancing/upgrading measures.
+INDEPENDENT_ARITHMETIC:
+- 400 * 1.50 = ~USD600B/year;
+- approximate increment = ~USD200B/year.
+LIMITATION:
+- USD400B and 50% are rounded source values, so 600/200 are approximate, not precision estimates;
+- 1,200-1,600 GW is modeled hosting/connection potential, not realized generation or firm capacity.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS_WITH_MODEL_SCOPE_LOCK.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-003
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-003 / CLAIM-EGC-STORAGE-NAMEPLATE-NOT-FIRM
+TRUTH_CLASS: SOURCE_FACT + REPLICATION
+INDEPENDENT_SOURCE: IEA Electricity 2026, Flexibility.
+SOURCE_URL: https://www.iea.org/reports/electricity-2026/flexibility
+SOURCE_DATE: February 2026.
+INDEPENDENT_RESULT:
+- 2024 utility-scale battery additions ~63 GW; cumulative ~124 GW;
+- 2024 project costs ~USD150/kWh after ~40% decline that year;
+- IEA explicitly states actual discharge during peak can be materially below nameplate due to temperature derating, incomplete charge, event duration exceeding battery duration, and ancillary-service commitments;
+- around 100 GW of demand response was utilised globally as of 2024.
+LIMITATION:
+- installed MW is not ELCC, firm capacity, usable MWh or full-system delivered-cost evidence.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-004
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-004 / CLAIM-EGC-US-BATTERY-OPERATING-SCALE
+TRUTH_CLASS: SOURCE_FACT + OPERATIONAL_DATA + CALCULATION + REPLICATION
+INDEPENDENT_SOURCE: U.S. EIA Today in Energy, 2026-08-07.
+SOURCE_URL: https://www.eia.gov/todayinenergy/detail.php?id=67925
+INDEPENDENT_RESULT:
+- 43.6 GW operational utility-scale battery storage at end-2025;
+- +8.3 GW in first six months of 2026;
+- nearly 52 GW nameplate by June 2026;
+- source identifies underlying inventory as Preliminary Monthly Electric Generator Inventory.
+INDEPENDENT_ARITHMETIC:
+- 43.6 + 8.3 = 51.9 GW, consistent with "nearly 52 GW".
+LIMITATION:
+- preliminary nameplate power, not duration/energy/ELCC or realized availability.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS_WITH_PRELIMINARY_NAMEPLATE_CAVEAT.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-005
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-005 / CLAIM-EGC-ADEQUACY-MULTI-FACTOR
+TRUTH_CLASS: SOURCE_FACT + CALCULATION + VISUAL_PDF_REPLICATION
+INDEPENDENT_SOURCE: NERC 2026 Summer Reliability Assessment Snapshot.
+SOURCE_URL: https://www.nerc.com/globalassets/our-work/assessments/2026-summer-reliability-assessment-snapshot.pdf
+SOURCE_DATE: 2026.
+METHOD:
+- PDF text retrieval AND mandatory rendered-page screenshot inspection.
+INDEPENDENT_RESULT:
+- 2025 SRA anticipated resources 1,115 GW;
+- 2026 SRA anticipated resources 1,173 GW;
+- chart labels include +16 GW solar, +15 GW battery, +7 GW natural gas;
+- elevated-risk areas under abnormal summer conditions move from six regions in 2025 to three regions + one locality in 2026;
+- snapshot identifies accelerated demand, large-load growth, low wind, early-summer heat/maintenance overlap, heat and drought as reliability stressors.
+INDEPENDENT_ARITHMETIC:
+- 1,173 - 1,115 = 58 GW.
+LIMITATION:
+- seasonal anticipated-resource assessment, not realized annual reliability or technology-specific capacity credit.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS.
+
+REVIEW_EVIDENCE_ID: REVIEW-EGC-GRID-G1-006
+CLAIM_REVIEWED: EVID-EGC-GRID-G1-006 / CLAIM-EGC-TRANSMISSION-CAN-REDUCE-SYSTEM-COST
+TRUTH_CLASS: SOURCE_FACT + MODEL_RESULT + REPLICATION
+INDEPENDENT_SOURCES:
+- U.S. DOE National Transmission Planning Study (final 2024);
+- U.S. DOE 2026 Draft National Transmission Needs Study.
+SOURCE_URLS:
+- https://www.energy.gov/oe/national-transmission-planning-study-0
+- https://www.energy.gov/oe/national-transmission-needs-study
+- https://www.energy.gov/oe/articles/does-office-electricity-publishes-2026-draft-national-transmission-needs-study
+INDEPENDENT_RESULT:
+- NTP Study reports modeled accelerated transmission expansion saving USD270-490B in national electricity system cost through 2050 in specified U.S. low-carbon scenarios;
+- study says incremental transmission is more than compensated by lower fuel/generation/storage and other costs, with ~USD1.60-1.80 saved per transmission dollar in core scenarios;
+- 2026 Draft Needs Study independently reports pressing additional-transmission need driven by load growth, generation/load interconnection, congestion and reliability.
+PDF_VISUAL_CHECK:
+- NTP Executive Summary rendered page was inspected; USD270-490B result and its low-carbon-scenario boundary are visible.
+LIMITATION:
+- USD270-490B is scenario-model output, U.S.-specific and dependent on demand/decarbonization assumptions; it is not observed historical savings and not a universal per-MWh transmission credit.
+REPLICATION_STATUS: PASS.
+VERDICT: PASS_WITH_SCENARIO_SCOPE_LOCK.
+
+CROSS_CLAIM_REVIEW:
+A. CLAIM-EGC-GRID-G1-A — "large queue volume plus low historic completion/long timelines means interconnection must be modeled as deployment bottleneck, not demonstrated capacity."
+VERDICT: PASS.
+WHY: direct U.S. queue history plus global IEA queue evidence; claim appropriately avoids treating queue GW as built.
+
+B. CLAIM-EGC-GRID-G1-B — "fair massive-energy comparison requires chronological adequacy/flexibility modeling OR another validated effective-capacity method; battery/generator nameplate alone insufficient."
+VERDICT: PASS_AS_INFERENCE_WITH_SCOPE_LOCK.
+WHY: IEA and NERC independently falsify nameplate-only adequacy. The exact modeling method remains downstream JOB-EGC-021/common-reliability-boundary work; this review does not mandate one universal chronology model.
+
+C. CLAIM-EGC-GRID-G1-C — "grid/transmission is candidate-neutral system asset with costs and benefits; assigning it only as VRE surcharge is invalid."
+VERDICT: PASS_AS_SYSTEM_BOUNDARY_INFERENCE.
+WHY: IEA documents cross-system connection/flexibility needs; DOE modeled transmission reducing total system cost through generation/storage/fuel/resource-sharing effects. Allocation remains candidate/system-specific.
+
+RED_TEAM:
+1. QUEUE=BUILD ATTACK: FALSIFIED by Berkeley Lab historical outcomes.
+2. BATTERY_MW=FIRM_GW ATTACK: FALSIFIED by IEA peak-discharge caveats.
+3. ANNUAL_ENERGY=ADEQUACY ATTACK: FALSIFIED by NERC multi-factor stress evidence.
+4. TRANSMISSION=ONLY_COST ATTACK: FALSIFIED as universal rule by DOE system modeling.
+5. TRANSMISSION=UNIVERSAL_CREDIT ATTACK: ALSO FALSIFIED; modeled savings are scenario/system-specific.
+6. GENERIC_INTEGRATION_ADDER ATTACK: NOT_SUPPORTED. No reviewed source establishes one universal USD/MWh surcharge applicable across geographies/penetrations/architectures.
+
+CONFLICTS / DEFECTS:
+- P0: NONE in reviewed source-anchor scope.
+- P1: NONE that invalidates the source package.
+- OPEN_DOWNSTREAM: exact candidate-specific transmission/storage/firming capacity and USD/MWh system cost remain UNKNOWN until chronological/geographic system modeling under the reviewed common service boundary.
+
+REVIEW_VERDICT:
+- JOB-EGC-GRID-SRC-G1-20261005: VERIFIED for SOURCE-ANCHOR / ANTI-GAMING scope only.
+- JOB-EGC-GRID-REV-G1-20261005: REVIEW_COMPLETE -> AWAITING_REVIEW/PROVENANCE_AUDIT; reviewer does not self-VERIFY.
+- GRID/STORAGE SOLVED GATE G12: NOT_VERIFIED globally; this review provides inputs but no candidate-specific integrated system model.
+- No candidate winner promoted.
+
+EVIDENCE_GRAPH_DELTA:
+- EVID-EGC-GRID-G1-001 <- REVIEW-EGC-GRID-G1-001 -> PASS
+- EVID-EGC-GRID-G1-002 <- REVIEW-EGC-GRID-G1-002 -> PASS_WITH_MODEL_SCOPE_LOCK
+- EVID-EGC-GRID-G1-003 <- REVIEW-EGC-GRID-G1-003 -> PASS
+- EVID-EGC-GRID-G1-004 <- REVIEW-EGC-GRID-G1-004 -> PASS_WITH_PRELIMINARY_NAMEPLATE_CAVEAT
+- EVID-EGC-GRID-G1-005 <- REVIEW-EGC-GRID-G1-005 -> PASS
+- EVID-EGC-GRID-G1-006 <- REVIEW-EGC-GRID-G1-006 -> PASS_WITH_SCENARIO_SCOPE_LOCK
+- JOB-EGC-021 may consume these anchors only as inputs; it still must compute technology/geography/penetration-specific integration requirements.
+
+STATUS_CHANGE:
+- JOB-EGC-GRID-SRC-G1-20261005: AWAITING_REVIEW -> VERIFIED_SOURCE_SCOPE.
+- JOB-EGC-GRID-REV-G1-20261005: EXECUTING -> AWAITING_REVIEW / provenance audit.
+- GLOBAL_SOLVED remains NO.
+- MISSION_STATUS remains CONTINUE_REQUIRED.
+- CURRENT_WINNER remains NONE.
+- USER_SUCCESS_RESPONSE remains DENIED.
+
+NEXT_ACTION:
+- Feed reviewed grid anchors into JOB-EGC-021 and common-boundary integration.
+- Highest information gain is candidate-specific chronological adequacy + transmission/storage optimization on the same delivered-service boundary, not another universal integration-adder lookup.
+- Preserve geographic sensitivity and effective-capacity uncertainty.
+
+WRITE_INTEGRITY:
+- branch head read: 25068720d2c32cd81645bba5dcaa4bff41004f11
+- file SHA read: 7f059f75928df308dc029dd200d45c1f8196a3f3
+- stale-write check: exact SHA guarded update attempt 5; append-only.
+- commit/result: PENDING_THIS_COMMIT
+
+======================================================================
+45. INDEPENDENT REVIEW RESULT — DEPLOYMENT SUPPORT K1
+======================================================================
+REVIEW_ID: REVIEW-EGC-DEPLOY-K1-H2-001
+SESSION_ID: SESSION-GPT56SOL-EGC-DEPLOY022-H2-20261005
+PRIMARY_JOB_ID: JOB-EGC-022
+SECONDARY_JOB_ID: JOB-EGC-DEPLOY-REV-K1-20261005
+REVIEWED_JOB: JOB-EGC-DEPLOY-RATE-K1-20261005
+STATUS: VERIFIED_AS_SUPPORT_EVIDENCE_WITH_OPEN_SOURCE_BOUNDARY_CONFLICT
+GLOBAL_SOLVED: NO
+
+OVERALL_VERDICT:
+- EVID-EGC-DEPLOY-K1-001: PASS_WITH_STOCK_CHANGE_CAVEAT.
+- EVID-EGC-DEPLOY-K1-002: PASS.
+- EVID-EGC-DEPLOY-K1-003: PASS_WITH_DURATION_CAVEAT.
+- EVID-EGC-DEPLOY-K1-004: PASS_AS_ILLUSTRATIVE_US_FLEET_ANCHORS_ONLY.
+- EVID-EGC-DEPLOY-K1-005 arithmetic: PASS; interpretation remains SCREENING_ONLY, NOT forecast or candidate PASS.
+- CONFLICT-EGC-DEPLOY-K1-001: CONFIRMED OPEN; do not average IEA/IRENA additions.
+- CLAIM-EGC-DEPLOY-K1-A/B/C: PASS only at their narrow stated inference strength; none proves delivered-system deployment feasibility.
+
+INDEPENDENT_SOURCE_REPLICATION:
+1. IRENA Renewable Capacity Statistics 2026 visually inspected rendered source pages and tables.
+   URL: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Mar/IRENA_DAT_RE_capacity_statistics_2026.pdf
+   - Notes define capacity as maximum net generating capacity and state that for most countries/technologies it reflects installed-and-connected capacity at calendar year-end.
+   - World solar PV: 1,872,813 MW (2024) -> 2,383,162 MW (2025); delta 510,349 MW.
+   - World wind: 1,132,690 -> 1,291,368 MW; delta 158,678 MW.
+   - World geothermal: 15,415 -> 15,674 MW; delta 259 MW.
+   - Foreword independently reports 692 GW total renewable additions, ~510 GW solar and 159 GW wind.
+   - Caveat retained: end-year stock delta can embed revisions/retirements and is not identical to gross project commissioning in all cases.
+2. IEA Global Energy Review 2026 — Nuclear.
+   URL: https://www.iea.org/reports/global-energy-review-2026/technology-nuclear
+   - 3 GW new nuclear came online in 2025; 3 GW retired; ~420 GW end-2025 capacity; 12.2 GW construction starts; 78 GW under construction.
+   - Pipeline is not operational output.
+3. IEA Global Energy Review 2026 — Battery storage.
+   URL: https://www.iea.org/reports/global-energy-review-2026/technology-battery-storage
+   - 108 GW battery-storage power capacity deployed in 2025, ~40% above 2024; most projects cluster around ~2 h while more 4 h+ projects are appearing.
+   - GW power cannot be converted to firm TWh or adequacy credit without GWh/duration/SOC/loss data.
+4. U.S. EIA Electric Power Monthly Table 6.07.B independently reproduces 2025 utility-scale fleet CF: geothermal 65.9%, nuclear 91.0%, solar PV 24.4%, wind 34.2%.
+   URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b
+   - These are U.S. fleet operational anchors, not global or future constants.
+
+INDEPENDENT_CALCULATION_REPLICATION:
+INPUTS: M1=286 TWh/y; M2=2,860 TWh/y; provisional horizons 15/30 y; CF solar=.244, wind=.342, geothermal=.659, nuclear=.910.
+FORMULAS:
+- P_avg_GW = E_TWh/y / 8.76.
+- P_nameplate = P_avg / CF.
+- linear-average greenfield addition = P_nameplate / horizon.
+RESULTS:
+- M1 solar 133.804926 GW -> 8.920328 GW/y; wind 95.463163 -> 6.364211; geothermal 49.542340 -> 3.302823; nuclear 35.877365 -> 2.391824.
+- M2 solar 1,338.049255 GW -> 44.601642 GW/y; wind 954.631632 -> 31.821054; geothermal 495.423396 -> 16.514113; nuclear 358.773646 -> 11.959122.
+- Observed-2025 anchor / simple M2 linear requirement: solar 11.442381x; wind 4.986573x; geothermal 0.015684x (required/observed 63.761055x); nuclear gross 0.250855x (required/observed 3.986374x).
+REPLICATION_STATUS: PASS to displayed precision.
+
+SOURCE-BOUNDARY RED TEAM:
+- IEA 2026 reports ~800 GW renewable additions, >600 GW solar and ~160 GW wind, but explicitly notes 2025 values mix actual and estimated additions where full-year data were unavailable.
+- IRENA reports 692 GW total and 510/159 GW solar/wind on a calendar-year installed/connected maximum-net-capacity dataset.
+- Ember reports 647 GW(DC) solar and 167 GW wind for 2025, explicitly surfacing at least one capacity-definition difference (solar DC).
+- Therefore CONFLICT-EGC-DEPLOY-K1-001 is real and at least partly attributable to vintage/coverage/capacity-definition differences; exact decomposition is NOT_VERIFIED.
+- RULE CONFIRMED: do not average these values. For end-2025 connected-stock clock anchoring, IRENA is the least ambiguous of these retrieved sources; preserve IEA/Ember separately.
+
+RED_TEAM_VERDICT:
+- Solar/wind current global nameplate pace exceeds the simple greenfield nameplate rate required by large factors, but this says nothing decisive about transmission, curtailment, storage, firming, land, materials, retirement or full-system delivered energy. No candidate PASS.
+- Geothermal observed stock growth is far below the simple M2 greenfield rate; a large acceleration remains required for standalone M2.
+- Nuclear 2025 gross commissioning is below simple M2 annual new-build requirement and was offset by retirements; starts/under-construction cannot be counted as delivered capacity.
+- Battery deployment is a system-enabler metric, not a primary-generation scale metric.
+
+STATUS_CHANGE:
+- JOB-EGC-DEPLOY-REV-K1-20261005: CLAIMED/EXECUTING -> VERIFIED.
+- JOB-EGC-DEPLOY-RATE-K1-20261005: AWAITING_REVIEW -> VERIFIED_AS_SUPPORT_EVIDENCE_WITH_CAVEATS.
+- Parent JOB-EGC-022 may integrate these records, preserving all caveats and open conflict.
+- GLOBAL_SOLVED remains NO.
+
+NEXT_ACTION:
+- Parent JOB-EGC-022 define/falsify candidate-neutral deployment clock, separate total-scale from incremental-deployment accounting, then incorporate retirements/full-system overbuild/material/manufacturing constraints.
+
+WRITE_INTEGRITY:
+- branch head immediately before write: be2a0c4c34e69d7b5360b8d5f79b0b1ab6e5bd92
+- file SHA immediately before write: 02ac8623cb7c5d2a8f9fa8bd4a7fb6be2de35948
+- attempt: 1
+- exact-SHA append only; no force; only authorized file touched.
+
+======================================================================
+52. P0 RECOVERY MERGE — MISSING PRE-TRUNCATION SECTIONS FROM 632866E0
+======================================================================
+
+RECOVERY_SESSION_ID: SESSION-GPT56SOL-EGC-LEDGERRECOVERY-C2-20261005
+DATE: 2026-10-05
+SEVERITY: P0
+TRUTH_CLASS: REPO_FACT
+STATUS: RECOVERY_MERGE_APPLIED / INDEPENDENT_AUDIT_REQUIRED
+
+INCIDENT_CHAIN:
+- Last complete pre-loss file verified at commit 632866e0c2228ef5ee93ad824feae6d3330536d7, blob 620c56356e4a7b2688082d19fb7910f7ff545475, length 1041130 characters.
+- Direct child c19364575d95ee8f9c6416bbf4ee94fe9e5fd429 has MAIN-CHAT.md length 0 characters.
+- A separate recovery session restored an earlier checkpoint and preserved post-truncation contributions, but audit against 632866e0c2228ef5ee93ad824feae6d3330536d7 found 172 top-level pre-loss sections still absent.
+- This event restores ONLY those missing sections, by exact text from 632866e0c2228ef5ee93ad824feae6d3330536d7; it does not delete or rewrite any current/post-loss content.
+
+RESTORED_SECTION_COUNT: 172
+RESTORED_SECTION_TITLES:
+- 0. ABSOLUTE MISSION
+- 1. AUTHORITY
+- 2. HARD REPOSITORY FENCE
+- 3. SINGLE-FILE LAW
+- 4. CONTINUITY MODEL
+- 5. CONCURRENCY / WRITE-INTEGRITY LAW
+- 6. TRUTH CLASSES
+- 7. PROBLEM FORMALIZATION
+- 8. PHYSICS FLOOR
+- 9. CANDIDATE SPACE
+- 10. SAFETY BOUNDARY
+- 11. TEAM MODEL
+- 12. REQUIRED TEAM BEHAVIOR
+- 13. RESEARCH METHOD
+- 14. CALCULATION LAW
+- 15. COST LAW
+- 16. SCALE LAW
+- 17. CANDIDATE STATUS
+- 18. EVIDENCE LEVELS
+- 19. SOLVED GATE
+- 20. STOP CONDITIONS
+- 21. FORBIDDEN FAILURE MODES
+- 22. REQUIRED CONTRIBUTION FORMAT
+- 23. LIVE STATE — INITIAL
+- 24. FIRST TEAM INSTRUCTION
+- 25. IMMUTABLE CORE
+- 26. AMENDMENT V1.1 — TOOL-GROUNDED PROOF / ASSIGNED-WORK / USER-RETURN GATE
+- 26.1 EVIDENCE MUST BE CREATED OR VERIFIED WITH REAL TOOLS
+- 26.2 TOOL EVIDENCE RECORD
+- 26.3 SOURCE TRIANGULATION LAW
+- 26.4 REAL TEST HIERARCHY
+- 26.5 NO-FAKE-PHYSICAL-TEST LAW
+- 26.6 NEW PHYSICAL BUILD READINESS GATE
+- 26.7 EVERY CHAT MUST HAVE A JOB
+- 26.8 JOB CLAIM / LEASE / COLLISION LAW
+- 26.9 MANDATORY ROLE COVERAGE
+- 26.10 DYNAMIC JOB GENERATION
+- 26.11 EVIDENCE GRAPH
+- 26.12 CANDIDATE PROOF PACKAGE
+- 26.13 BASELINE-FIRST LAW
+- 26.14 SEARCH FOR A SOLUTION, NOT NECESSARILY ONE MACHINE
+- 26.15 USER-RETURN / COMPLETION GATE
+- 26.16 CONTINUE-UNTIL-CLOSURE LOOP
+- 26.17 PROOF QUALITY ESCALATION
+- 26.18 ANTI-GAMING RULES
+- 26.19 REQUIRED FINAL ANSWER PACKAGE
+- 26.20 INITIAL JOB BOARD BOOTSTRAP
+- 26.21 LIVE STATE UPDATE — V1.1
+- 26.22 V1.1 IMMUTABLE ADDITIONS
+- 27. LIVE JOB BOARD — INSTANTIATED 2026-10-05
+- 28. SESSION CLAIM EVENT
+- 29. SESSION CLAIM EVENT — BASELINE ENVELOPE SUPPORT
+- 29. DYNAMIC JOB CLAIM — CURRENT BASELINE ANCHORS
+- 27. LOGICAL JOB BOARD — BOOTSTRAP SESSION-GPT56SOL-EGC-20261005T1907Z
+- 30. SESSION CLAIM EVENT — PHYSICS / PHYSICAL-EVIDENCE PRE-SCREEN
+- 28. CONCURRENCY RECONCILIATION + JOB LEASE — SESSION-GPT56SOL-EGC-20261005T1912Z-C1
+- 31. SESSION CLAIM EVENT — SCALE / RELIABILITY BASELINE
+- 31. SESSION CLAIM EVENT — EVIDENCE / COORDINATION PROVENANCE AUDIT
+- 31. SESSION CLAIM EVENT — EXTRAORDINARY-CLAIM / OVER-UNITY RED TEAM
+- 31. SESSION CLAIM EVENT — EVIDENCE / CONCURRENCY PROVENANCE AUDIT
+- 32. NEW SUB-JOB + SESSION CLAIM — AUTHORITATIVE COST DATASET RECONNAISSANCE
+- 32. SESSION CLAIM EVENT — CANDIDATE-NEUTRAL MASSIVE-ENERGY SCALE ANCHOR
+- 32. JOB-EGC-018 PROVENANCE AUDIT RESULT — SUBMITTED FOR REVIEW
+- 32. SESSION CLAIM EVENT — RESOURCE AVAILABILITY / TECHNICAL-POTENTIAL BOUNDS
+- 33. CONCURRENCY CORRECTION + NON-COLLIDING SUPPORT JOB CLAIM
+- 32. JOB-EGC-001 EVIDENCE PACKAGE — OBJECTIVE FORMALIZATION
+- 33. DYNAMIC JOB CLAIM — COMMON SYSTEM-BOUNDARY SOURCE FRAMEWORK
+- 34. INDEPENDENT REVIEW CLAIM — JOB-EGC-018 PROVENANCE AUDIT
+- 32. JOB-EGC-003 EVIDENCE PACKAGE — SCALE / RELIABILITY BASELINE
+- 29. OBJECTIVE FORMALIZATION — EVIDENCE CHECKPOINT V0.1
+- 33. JOB-EGC-036 EVIDENCE PASS 1 — CURRENT COST/SYSTEM-COST SOURCE MATRIX
+- 35. INDEPENDENT OBJECTIVE REVIEW CLAIM — OBJ-EGC-V1
+- SESSION CLAIM EVENT — COMMON SYSTEM BOUNDARY EVIDENCE / METHOD
+- 33. TOOL EVIDENCE PACKAGE — JOB-EGC-SCALE-ANCHOR-C1-20261005
+- 31. JOB-EGC-034 EVIDENCE SUBMISSION — CROSS-FAMILY PHYSICS / PHYSICAL EVIDENCE
+- 35. INDEPENDENT REVIEW RESULT — TE-EGC-018-001
+- 36. DYNAMIC SOURCE JOB CLAIM — FISSION OPERATIONAL EVIDENCE
+- 36. JOB-EGC-LOWCOST-ANCHOR-E1-20261005 — EVIDENCE PACKAGE / AWAITING REVIEW
+- 34. JOB-EGC-BOUNDARY-SRC-20261005-F1 EVIDENCE PACKAGE — SUBMITTED FOR INDEPENDENT REVIEW
+- 33. PROGRESS EVENT — JOB-EGC-038 RESOURCE-POTENTIAL EVIDENCE PASS 1
+- 37. JOB CLAIM — INDEPENDENT PHYSICS / PHYSICAL-EVIDENCE REPLICATION
+- 30. JOB-EGC-031 EVIDENCE PACKAGE — CURRENT OBJECTIVE ANCHORS
+- 33. CORRECTION EVENT — JOB-EGC-003 COLLISION RECLASSIFICATION
+- 38. DYNAMIC SOURCE JOB CLAIM — GRID / TRANSMISSION / FIRMING EVIDENCE
+- 35. DYNAMIC JOB CLAIM — FUSION COMMERCIAL/NET-ELECTRIC STATUS
+- 37. CANONICAL JOB-EGC-031 EVIDENCE SUBMISSION — INDEPENDENT BASELINE REPLICATION
+- 37. JOB-EGC-020 EVIDENCE SUBMISSION — EXTRAORDINARY-CLAIM RED TEAM
+- 34. CONCURRENCY CORRECTION — DUPLICATE JOB-EGC-031 LEASE FROM SESSION 190800Z-B1
+- 38. JOB CLAIM — GEOTHERMAL RESOURCE POTENTIAL CONFLICT ARBITRATION
+- 38. SESSION CLAIM EVENT — GEOTHERMAL POTENTIAL CONFLICT ARBITRATION
+- 39. INDEPENDENT REVIEW CLAIM — JOB-EGC-BOUNDARY-REV-20261005-F1
+- 38. INDEPENDENT REVIEW CLAIM — JOB-EGC-003 SCALE / RELIABILITY BASELINE
+- 38. INDEPENDENT LOW-COST ANCHOR REVIEW CLAIM — CHATGPT-SOL-20261005T190600Z-B1
+- 35. NON-COLLIDING SUPPORT JOB CLAIM — COMMON RELIABILITY/SERVICE BOUNDARY
+- 34. PROGRESS EVENT — JOB-EGC-038 RESOURCE-POTENTIAL EVIDENCE PASS 2 / SUBMISSION
+- 39. INDEPENDENT REVIEW CLAIM — CANONICAL BASELINE ENVELOPE JOB-EGC-031
+- 39. JOB-EGC-001 OBJECTIVE-CONFLICT ARBITRATION / REPAIR PROPOSAL V1.1
+- JOB-EGC-040 RESULT — FULL-SYSTEM COMPARISON BOUNDARY SUBMITTED FOR REVIEW
+- 36. JOB-EGC-FUSION-COMMERCIAL-I1-20261005 EVIDENCE PACKAGE — SUBMITTED FOR INDEPENDENT REVIEW
+- 39. JOB-EGC-GRID-SRC-G1-20261005 — EVIDENCE PASS 1
+- 39. INDEPENDENT REVIEW RESULT — JOB-EGC-003
+- 40. JOB-EGC-015 CLAIM — FINANCE / WACC SENSITIVITY FRAMEWORK
+- 39. JOB-EGC-042 EVIDENCE PACKAGE — GEOTHERMAL POTENTIAL CONFLICT ARBITRATION
+- 37. TOOL EVIDENCE PACKAGE — JOB-EGC-FISSION-SRC-A1-20261005
+- INDEPENDENT RESOURCE REVIEW CLAIM — JOB-EGC-039
+- 40. DYNAMIC SOURCE/METHOD JOB CLAIM — FINANCE SENSITIVITY
+- 40. INDEPENDENT SYSTEM-BOUNDARY REVIEW RESULT — REPAIR REQUIRED
+- 39. INDEPENDENT REVIEW VERDICT — LOW-COST ANCHOR E1
+- 37. DYNAMIC JOB CLAIM — FINANCE / COST-OF-CAPITAL SENSITIVITY
+- 38. JOB-EGC-035 REVIEW SUBMISSION — CROSS-FAMILY PHYSICS / PHYSICAL EVIDENCE
+- 39. JOB-EGC-042 RESULT — GEOTHERMAL POTENTIAL CONFLICT RECONCILIATION
+- 36. JOB-EGC-RELIABILITY-BOUNDARY-B1-20261005 EVIDENCE PACKAGE
+- 40. CANONICAL JOB-EGC-003 SUBMISSION — SESSION-GPT56SOL-EGC-20261005T1912Z-C1
+- 40. INDEPENDENT SYSTEM-BOUNDARY REVIEW CLAIM — JOB-EGC-041
+- 39. JOB CLAIM — INDEPENDENT FULL-SYSTEM BOUNDARY REVIEW
+- 41. DYNAMIC SOURCE JOB CLAIM — MATERIALS / SUPPLY-CHAIN SCALE
+- 41. JOB CLAIM — JOB-EGC-NUC-DATA-RECON-C1-20261005 / SESSION-GPT56SOL-EGC-NUCRECON-C1-20261005
+- 40. JOB-EGC-032 INDEPENDENT REVIEW RESULT — CANONICAL JOB-EGC-031
+- 41. JOB-EGC-FINANCE-METHOD-J1-20261005 — EVIDENCE + SENSITIVITY PASS 1
+- 41. SESSION CLAIM — JOB-EGC-025 UNCERTAINTY / SENSITIVITY FRAMEWORK
+- 41. JOB-EGC-015 EVIDENCE PACKAGE — FINANCE / WACC SENSITIVITY
+- SAFETY / FMEA SOURCE JOB CLAIM — JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005
+- 43. REPAIR JOB CLAIM — JOB-EGC-003-REPAIR-C1-20261005
+- 41. JOB-EGC-GEOTHERMAL-OPS-D1-20261005 — OPERATIONAL / ENGINEERING EVIDENCE PACKAGE
+- 42. JOB-EGC-013 CLAIM — MATERIALS / SUPPLY-CHAIN SCALING
+- 42. JOB-EGC-FINANCE-SENS-J1-20261005 COLLISION RECONCILIATION — INDEPENDENT REPLICATION SUPPORT
+- 40. BOUNDARY REPAIR CLAIM — CHATGPT-SOL-20261005T190600Z-B1
+- 44. REPAIR JOB CLAIM — JOB-EGC-034-REPAIR-EGS-P2-20261005
+- INDEPENDENT REVIEW CLAIM — JOB-EGC-003-REV-C1-20261005
+- 44. INDEPENDENT FINANCE REVIEW CLAIM — JOB-EGC-015
+- 42. JOB-EGC-MATERIALS-SRC-M1-20261005 — MATERIALS / SUPPLY-CHAIN EVIDENCE PACKAGE
+- 42. INDEPENDENT OBJECTIVE REVIEW — OBJ-EGC-V1.1-REPAIR
+- 44. REPAIR SUBMISSION — JOB-EGC-003-REPAIR-C1-20261005
+- 43. JOB-EGC-013 EVIDENCE PACKAGE — MATERIAL/SUPPLY-CHAIN SCALE METHOD
+- 46. INDEPENDENT REVIEW CLAIM — GEOTHERMAL OPERATIONAL/ECONOMIC EVIDENCE D1
+- 43. DYNAMIC SOURCE/METHOD JOB CLAIM — DEPLOYMENT RATE / MANUFACTURING SCALE
+- 44. JOB-EGC-012 CLAIM — EROI / LIFECYCLE METHOD
+- 43. JOB-EGC-022 CLAIM — DEPLOYMENT CLOCK / MANUFACTURING RAMP
+- SAFETY / FMEA SOURCE PACKAGE SUBMISSION — JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005
+- 41. INDEPENDENT SYSTEM-BOUNDARY REVIEW RESULT — JOB-EGC-041
+- 45. REPAIR RESULT — JOB-EGC-034-REPAIR-EGS-P2-20261005
+- 43. INDEPENDENT REVIEW CLAIM — FUSION COMMERCIAL / NET-ELECTRIC STATUS
+- 45. JOB-EGC-015 INDEPENDENT FINANCE REVIEW RESULT
+- 43. DYNAMIC JOB CLAIM — DELIVERED-SYSTEM EROI / LIFECYCLE METHOD
+- 45. JOB-EGC-012 EVIDENCE PACKAGE — HARMONIZED EROI / LIFECYCLE METHOD
+- INDEPENDENT REVIEW RESULT — JOB-EGC-003-REV-C1-20261005
+- 41. BOUNDARY REPAIR EVIDENCE PACKAGE — F1
+- 46. REPAIR JOB CLAIM — JOB-EGC-040-REPAIR-C1-20261005
+- JOB-EGC-039 INDEPENDENT REVIEW RESULT — JOB-EGC-038 RESOURCE SCREEN
+- ENVIRONMENTAL LIFECYCLE SOURCE JOB CLAIM — JOB-EGC-ENV-LCA-SRC-S56-20261005
+- 47. INDEPENDENT FISSION EVIDENCE REVIEW CLAIM
+- 42. JOB-EGC-025 EVIDENCE PACKAGE — UNCERTAINTY / DECISION-STABILITY FRAMEWORK V1
+- 44. INDEPENDENT FUSION COMMERCIAL/NET-ELECTRIC REVIEW — PASS WITH CURRENT-EVIDENCE UPDATE
+- 42. SCALE ANCHOR INDEPENDENT REVIEW CLAIM — CHATGPT-SOL-20261005T190600Z-B1
+- 47. INDEPENDENT GRID REVIEW CLAIM — JOB-EGC-GRID-REV-G1-20261005
+- 44. JOB-EGC-EROI-METHOD-K1-20261005 EVIDENCE PACKAGE — SUBMITTED FOR INDEPENDENT REVIEW
+- INDEPENDENT RELIABILITY BOUNDARY REVIEW CLAIM — JOB-EGC-RELIABILITY-BOUNDARY-REV-B1-20261005
+- 43. SESSION CLAIM — JOB-EGC-017 PHYSICAL-EVIDENCE INVENTORY
+- INDEPENDENT REVIEW CLAIM — JOB-EGC-BOUNDARY-REPAIR-REV-F1-20261005
+- 46. INDEPENDENT SAFETY/FMEA REVIEW CLAIM
+- BOUNDARY REPAIR INDEPENDENT REVIEW CLAIM — F1
+- 42. NUC-DATA-RECON-C1 RESOLUTION PACKAGE
+- 48. FINANCE FRAMEWORK REPAIR CLAIM — COMMON STRESS VS EVIDENCED MARKET FINANCE
+- 45. JOB-EGC-DEPLOY-RATE-K1-20261005 — OBSERVED DEPLOYMENT + GREENFIELD SCALE PASS 1
+- 45. DYNAMIC JOB CLAIM — HYDRO / MARINE / WASTE-HEAT DECISION SCREEN
+- 47. INDEPENDENT SAFETY/FMEA REVIEW RESULT
+- 48. JOB-EGC-016 CLAIM — INTEGRATED SIMULATION STRATEGY
+- 47. INDEPENDENT REVIEW RESULT — GEOTHERMAL OPERATIONAL / ECONOMIC EVIDENCE D1
+- 44. SECONDARY INDEPENDENT REVIEW CLAIM — DEPLOYMENT SUPPORT K1
+- 49. JOB-EGC-015-REPAIR-RT20-20261005 — REPAIRED FINANCE STABILITY TAXONOMY
+- 48. INDEPENDENT GRID REVIEW RESULT — JOB-EGC-GRID-REV-G1-20261005
+- 45. INDEPENDENT REVIEW RESULT — DEPLOYMENT SUPPORT K1
+
+RESTORED_RAW_CHARACTERS: 1040754
+CURRENT_PREWRITE_LENGTH: 0
+EXPECTED_POSTWRITE_LENGTH_EXCLUDING_THIS_METADATA: 1040754
+
+INVALID_COMMIT_CLASSIFICATION:
+- c19364575d95ee8f9c6416bbf4ee94fe9e5fd429: DATA_LOSS_COMMIT / NOT_EVIDENCE.
+- Commit message alone MUST NOT be treated as recovered fission-review evidence.
+- If its intended fission review is decision-relevant and not independently replicated elsewhere, create a new review job from primary evidence.
+
+MERGE_RULE:
+- A pre-loss section is restored only if its exact top-level title was absent from latest current MAIN-CHAT.md at write time.
+- Existing current sections are preserved verbatim.
+- Duplicated scientific subject matter, if any, remains distinguishable by job/evidence IDs and must be classified as replication rather than silently deduplicated.
+- No source truth status is upgraded by this repository recovery.
+
+QUALITY_GATE:
+- Required full-ledger top fingerprint remains present: FAIL.
+- Pre-loss canonical JOB-EGC-003 marker currently present before merge: FAIL.
+- TE-EGC-018-001 currently present before merge: FAIL.
+- NUC-DATA-RECON-C1 marker restored in this merge: YES.
+- Independent audit still required because a recovery operation cannot self-certify ledger completeness.
+
+NEXT_ACTION:
+1. Independent session compares current ledger to commit 632866e0c2228ef5ee93ad824feae6d3330536d7 plus all post-loss commits after c19364575d95ee8f9c6416bbf4ee94fe9e5fd429.
+2. Reopen any intended work from c19364575d95ee8f9c6416bbf4ee94fe9e5fd429; no fabricated reconstruction.
+3. Resume scientific jobs only from refreshed full ledger state and exact-SHA writes.
+
+WRITE_INTEGRITY:
+- branch head immediately before merge: 09619fba56d41f55cc79759ee7e37b37145c8f1f
+- current blob SHA: 950e7adfda3508412a33baf90818ce40b4457eec
+- base recovery blob SHA: 620c56356e4a7b2688082d19fb7910f7ff545475
+- exact current SHA used; any concurrent write causes retry/recompute.
+- MAIN-CHAT.md only; authorized branch only.
+- no force push; no reset; no rewrite history.
+
+======================================================================
+48. JOB-EGC-022 PHASE 1 — CANDIDATE-NEUTRAL DEPLOYMENT CLOCK PROPOSAL
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-DEPLOY022-H2-20261005
+PRIMARY_JOB_ID: JOB-EGC-022
+PHASE: 1 / DEPLOYMENT CLOCK + SCALE ACCOUNTING
+STATUS: EXECUTING / CLOCK_METHOD_AWAITING_INDEPENDENT_REVIEW
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+OBJECTIVE:
+Repair FIND-EGC-OBJREV-H1-DEPLOY-CLOCK-001 without allowing mature or emerging candidates to reset the 15/30-year clock technology-by-technology.
+
+ALTERNATIVES ATTACKED:
+A. T0 = each candidate's first historical commercial COD -> REJECT.
+   Mature technologies are penalized for existing longer; architecture lineage disputes change clock origin; it measures history rather than current forward deployability.
+B. T0 = each candidate's future "standardized commercial-scale deployment start" -> REJECT AS CONTROLLING CLOCK.
+   Emerging technologies can defer/reset T0 by declaring readiness later; the event is candidate-specific and remains gameable.
+C. T0 = first candidate fleet size threshold such as 1 GW -> REJECT.
+   Adds a new arbitrary technology-biased threshold and different origins.
+D. T0 = exact chat/review timestamp -> REJECT FOR ANNUAL-DATA ACCOUNTING.
+   Reproducible but misaligned with complete annual generation/capacity/manufacturing datasets.
+E. T0 = one COMMON EVIDENCE BASELINE, frozen for all candidates at the latest complete shared calendar-year snapshot used by the objective version -> PROPOSED / least-gameable reviewed option.
+
+PROPOSED_CLOCK_METHOD: DEPLOY-CLOCK-V0.1
+TRUTH_CLASS: MISSION_METHOD / ASSUMPTION / PROPOSED, NOT SOURCE_FACT.
+CURRENT_MISSION_T0_DATA: 2025-12-31 calendar-year end.
+CLOCK_START: 2026-01-01 00:00.
+M1_DEADLINE_IF_15Y_SURVIVES_REVIEW: 2040-12-31.
+M2_DEADLINE_IF_30Y_SURVIVES_REVIEW: 2055-12-31.
+WHY_2025:
+- latest complete calendar year shared by current authoritative global deployment/generation datasets retrieved in mission;
+- IRENA Renewable Capacity Statistics 2026 explicitly states most capacity data reflect installed-and-connected capacity at end of calendar year;
+- one date applies to all candidates and cannot be shifted after candidate results are known.
+CHANGE_CONTROL:
+- T0 is frozen with the objective version.
+- Later data refresh may create a NEW objective/version baseline, but cannot move T0 for only one candidate or retroactively rescue a failing candidate.
+
+CANDIDATE_IDENTITY_RULE:
+- Freeze candidate architecture before scoring: source(s), storage, firming, grid/transmission scope, delivery node, reliability service and other required components.
+- Baseline E0 counts only 2025 annual net-delivered energy from assets/systems that actually satisfy that frozen architecture and service boundary.
+- Existing source generation may NOT be relabeled as firm/hybrid output unless storage/firming/transmission/service actually existed and is evidenced at T0.
+- Demo/pilot/pipeline/announced/under-construction capacity does not count as baseline delivered output.
+
+TWO-SEPARATE-SCALE-TEST RULE:
+1. TOTAL_SCALE_TEST:
+   Does the frozen candidate architecture deliver >=M1/M2 annual net energy by the common deadlines?
+   If verified architecture-consistent 2025 output already exceeds a threshold, time-to-threshold = 0 for TOTAL_SCALE_TEST only.
+2. DEPLOYMENT_AND_SUSTAINMENT_TEST:
+   Can the industrial system commission, replace and maintain enough boundary-consistent assets after T0 while accounting for retirements, degradation, replacements, construction lead-time, manufacturing, materials, workforce and grid/storage/firming build?
+   Existing fleet scale does not waive this test.
+RATIONALE: a legacy fleet must not "pass deployment" without replacement/scalability evidence, while a new architecture must not gain a later private clock.
+
+ANNUAL_ENERGY_RULE:
+- M1/M2 are annual-energy thresholds, not instantaneous nameplate thresholds.
+- PASS requires a complete calendar-year net-delivered-energy record/model on the declared boundary; reliability/service is evaluated separately and consistently.
+- One annual threshold crossing alone does not prove lifecycle sustainability; retirement/replacement/lifetime evidence remains required by other gates.
+
+RAMP_ACCOUNTING:
+- C_net_c(y)=C_surviving_preT0_c(y)+C_commissioned_postT0_c(y)-C_retired_c(y), with technology-appropriate units.
+- E_delivered_c(y) must come from the actual architecture/system boundary, not nameplate alone.
+- Required new build includes replacements needed when pre-T0 assets retire.
+- If E0>0, descriptive CAGR=(Target/E0)^(1/T)-1 may be reported but is not a forecast.
+- If E0=0, CAGR is undefined and MUST NOT be fabricated; use explicit annual commissioning/ramp trajectory.
+- Linear-average build rate may be used only as a screening statistic, never schedule proof.
+
+TOOL_EVIDENCE_ID: TE-EGC-DEPLOY022-H2-CLOCK-001
+JOB_ID: JOB-EGC-022
+CLAIM_ID: CLAIM-EGC-DEPLOY-COMMON-T0
+TOOL_OR_METHOD: IRENA PDF method inspection + alternative-clock red team + deterministic calendar mapping
+EXECUTION_DATE: 2026-10-05
+SOURCE: IRENA Renewable Capacity Statistics 2026
+SOURCE_URL: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2026/Mar/IRENA_DAT_RE_capacity_statistics_2026.pdf
+SOURCE_FACT:
+- IRENA capacity is maximum net generating capacity; for most countries/technologies data reflect capacity installed and connected at calendar year-end.
+- 2025 tables provide a common end-year snapshot for renewable candidate families.
+CALCULATION:
+- end-2025 + 15 complete calendar years -> end-2040.
+- end-2025 + 30 complete calendar years -> end-2055.
+ASSUMPTION: latest-complete-year common T0 is a mission method choice, not a scientific law.
+LIMITATIONS:
+- non-renewable datasets may have different publication timing; quantities must still be harmonized to calendar-year 2025 and candidate boundary;
+- exact 15/30-year horizons remain normative/provisional; Phase 1 fixes clock origin, not scientific uniqueness of durations.
+REPRODUCTION_METHOD: inspect IRENA notes and apply same date to every candidate.
+REPLICATION_STATUS: SOURCE FACTS REPRODUCED; CLOCK METHOD REQUIRES DISTINCT REVIEW.
+EVIDENCE_CLASS: SOURCE_FACT + ASSUMPTION + METHOD.
+
+DIAGNOSTIC_EVIDENCE_ID: CALC-EGC-DEPLOY022-H2-001
+PURPOSE: show why TOTAL_SCALE and DEPLOYMENT must be separated.
+SOURCE: Ember Global Electricity Review 2026.
+URL: https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+INPUTS: M2=2,860 TWh/y; Ember 2025 generation solar 2,778, wind 2,715, nuclear 2,812, hydro 4,437 TWh; 2025 growth solar +636, wind +205, nuclear +35 TWh.
+OUTPUT:
+- solar =97.1329% of M2; gap 82 TWh.
+- wind =94.9301%; gap 145 TWh.
+- nuclear =98.3217%; gap 48 TWh.
+- hydro =155.1399% of M2.
+- gap / 2025 absolute-growth diagnostic: solar 0.1289, wind 0.7073, nuclear 1.3714 year-equivalents; NOT forecasts.
+BOUNDARY_WARNING:
+- Ember generation cannot be silently substituted for IEA consumption or mission net-delivered firm-service output; CONFLICT-EGC-SCALE-BOUNDARY-001 remains open.
+- Values do NOT grant M2 PASS; they prove existing-fleet TOTAL_SCALE and forward DEPLOYMENT answer different questions.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION + DIAGNOSTIC_INFERENCE.
+
+RED_TEAM:
+1. Common 2025 T0 gives mature technologies legacy credit -> PARTLY TRUE but bounded: legacy counts only TOTAL_SCALE on same service; DEPLOYMENT_AND_SUSTAINMENT still tests post-T0 replacement/scale. Erasing real existing capacity would also bias a mission asking what can supply massive energy now.
+2. Common T0 gives emerging candidates less time than future commercialization clock -> ACCEPTED AS INTENTIONAL. A future reset asks "30 years after eventually ready", not "can solve the current mission within 30 years". If objective authority intended the former, it must explicitly override this proposal.
+3. Count existing solar toward firm solar+storage -> REJECTED by architecture-consistent E0 rule.
+4. CAGR from zero baseline -> FALSIFIED mathematically; explicit commissioning trajectory required.
+5. Annual-average nameplate screen proves feasibility -> REJECTED; retirements, supply chain, construction, grid/storage/firming and system boundary remain open.
+
+FINDING_UPDATE:
+- FIND-EGC-OBJREV-H1-DEPLOY-CLOCK-001: REPAIR_PROPOSED, NOT CLOSED.
+- Proposal removes candidate-specific clock reset and makes T0 observable/reproducible.
+- Closure requires distinct review and objective-owner adoption because it changes earlier "commercial-scale deployment start" wording into a common mission evaluation epoch.
+
+JOB_ID: JOB-EGC-022-CLOCK-REV-H2-20261005
+ROLE: Independent deployment-clock method reviewer
+TITLE: Attack common-T0 deployment clock and scale-accounting split
+QUESTION_TO_RESOLVE: Is DEPLOY-CLOCK-V0.1 candidate-neutral, reproducible and less gameable than technology-specific T0 without changing mission intent in a decision-reversing way?
+DEPENDENCIES: Phase-1 package present.
+REQUIRED_INPUTS: OBJ-EGC-V1.1 section 5; objective-review finding; IRENA calendar-year method; candidate identity rules.
+REQUIRED_TOOLS: independent method/source review; mature-vs-emerging counterexamples; calendar arithmetic.
+REQUIRED_EVIDENCE_CLASS: REVIEW / REPLICATION / ASSUMPTION_AUDIT.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR on common epoch, architecture-consistent E0 and total-scale/deployment split.
+FALSIFICATION_CRITERIA: fail if clock can still shift candidate-by-candidate, existing fleet is double-counted across service boundaries, zero-baseline math is abused, or common T0 materially contradicts mission intent without authority.
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+BLOCKERS: NONE.
+
+JOB-EGC-022 STATUS:
+- remains EXECUTING.
+- Phase 1 clock method -> AWAITING_INDEPENDENT_REVIEW.
+- Phase 2 manufacturing/retirement/grid-coupled ramp integration -> IN PROGRESS.
+
+NEXT_ACTION:
+1. Integrate VERIFIED support evidence from REVIEW-EGC-DEPLOY-K1-H2-001.
+2. Build retirement/replacement-aware ramp cases and integrate candidate-specific materials/manufacturing evidence.
+3. Keep storage energy-duration and grid build distinct from primary-generation GW.
+4. Distinct session reviews DEPLOY-CLOCK-V0.1; this owner cannot self-verify.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: 2f4dab95e409fce47720366f1e26af076b9b9e85
+- file SHA read at exact head: 314eee4265f4523c8c5a00325288c3730c8d8d52
+- full-ledger sanity length: 1053642 chars; critical markers present.
+- attempt: 1; exact-SHA append only; no force; only authorized file.
+
+======================================================================
+53. JOB-EGC-016 VALIDATION-LAYER REPAIR CLAIM — MV1
+======================================================================
+EVENT_DATE: 2026-10-05
+EVENT_TIME_UTC: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-SIM016-REPAIR-MV1-20261005
+PRIMARY_ROLE: Simulation Validation Protocol Repair Engineer
+PRIMARY_JOB_ID: JOB-EGC-016-VALIDATION-REPAIR-MV1-20261005
+QUESTION: Convert REVIEW-EGC-028 P1-MV-001..007 into mandatory executable validation rules for JOB-EGC-016 so no candidate model can claim G16 via calibration leakage, unsupported extrapolation, arbitrary tolerance, stochastic numerical convergence alone, or component-only validation.
+DEPENDENCIES: Section 52 independent review verdict present; satisfied.
+TOOLS: NERC model-validation definitions/MOD-033 rationale; PNNL measurement-validation examples; EIA retrospective guidance; IEA planning/model-calibration guidance; deterministic counterexamples; repository protocol reconciliation.
+EVIDENCE_TARGET: REPAIR / SOURCE_FACT / CALCULATION / VALIDATION_PROTOCOL.
+FALSIFICATION_TARGET: any remaining path to reuse validation data for tuning without invalidation; universal arbitrary tolerance; failure to propagate measurement/input uncertainty; Monte Carlo convergence mistaken for physical validation; full-system validation claimed from component evidence.
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-SIM016-REPAIR-MV1-20261005
+REVIEWER_JOB_ID: JOB-EGC-016-VALIDATION-REPAIR-REV-MV1-20261005
+BLOCKERS: NONE for protocol repair; actual candidate-model execution remains downstream.
+NEXT_ACTION: independently recheck source semantics, formalize mandatory gates/data schema/failure states, submit AWAITING_REVIEW.
+
+JOB_ID: JOB-EGC-016-VALIDATION-REPAIR-REV-MV1-20261005
+ROLE: Independent simulation-validation repair reviewer
+TITLE: Reproduce and attack MV1 repaired validation protocol
+OWNER_SESSION_ID: UNASSIGNED
+DEPENDENCIES: JOB-EGC-016-VALIDATION-REPAIR-MV1-20261005 reaches AWAITING_REVIEW.
+REQUIRED_TOOLS: independent NERC/PNNL/EIA/IEA retrieval; counterexamples; protocol audit.
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR on every P1-MV finding and anti-leak/extrapolation gate.
+STATUS: OPEN
+BLOCKERS: repair package not yet submitted.
+HANDOFF: distinct future session required; repair owner cannot self-verify.
+
+WRITE_INTEGRITY:
+- pinned branch head before write: 052609cdd1a119113cfcbc8a76bf1589e9737140
+- current blob SHA: 3146a3dba1960f188c14b32e5a1cfc043aeb25b9
+- exact-SHA append only; authorized MAIN-CHAT.md only; no force.
+
+======================================================================
+55. P0 LEDGER SECTION AUDIT + EXACT RECOVERY — K6
+======================================================================
+RECOVERY_SESSION_ID: SESSION-GPT56SOL-EGC-LEDGER-AUDIT-REPAIR-K6-20261005
+EVENT_DATE: 2026-10-05
+TRUTH_CLASS: REPO_FACT / REPLICATION / REPAIR
+STATUS: RECOVERY_APPLIED / INDEPENDENT_AUDIT_REQUIRED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+AUTHORITATIVE_RECOVERY_INPUTS:
+- full pre-truncation blob: dd5d3ebbc7924b35ac1d1fff7bf59011fe0742da, 1064222 characters.
+- preserved post-base tail blob: 8575109b116db64a85576faf48f9a4048f3c9758, 30536 characters.
+- prewrite branch head: 132671ac3d3ed3cc0e38b5ad5814909a234c5139
+- prewrite current blob: fde928e1bf3be96b6aa770d737df567eabe58857, 1051769 characters.
+
+METHOD:
+- Read all three blobs with GitHub fetch_blob, avoiding large-file truncation in fetch_file/raw display.
+- Parse top-level sections only by exact separator/title/separator boundaries.
+- Preserve current ledger verbatim.
+- Restore ONLY sections whose exact title is absent from current ledger.
+- Restore section bodies verbatim from immutable source blobs; no reconstruction, summary or scientific editing.
+- Do not restore SESSION-GPT56SOL-EGC-PHYS017-K6-20261005 as JOB-EGC-017 owner because full ledger proves an earlier valid canonical owner claim by CHATGPT-SOL-20261005T190600Z-A1.
+- Recovery changes repository completeness only; it upgrades no claim/review/scientific truth class.
+
+RESTORED_FROM_FULL_BASE_COUNT: 5
+RESTORED_FROM_FULL_BASE_TITLES:
+- 49. JOB-EGC-015-REPAIR-RT20-20261005 — REPAIRED FINANCE STABILITY TAXONOMY
+- 48. INDEPENDENT GRID REVIEW RESULT — JOB-EGC-GRID-REV-G1-20261005
+- 45. INDEPENDENT REVIEW RESULT — DEPLOYMENT SUPPORT K1
+- 52. P0 RECOVERY MERGE — MISSING PRE-TRUNCATION SECTIONS FROM 632866E0
+- 48. JOB-EGC-022 PHASE 1 — CANDIDATE-NEUTRAL DEPLOYMENT CLOCK PROPOSAL
+
+RESTORED_FROM_POST_BASE_TAIL_COUNT: 1
+RESTORED_FROM_POST_BASE_TAIL_TITLES:
+- 53. JOB-EGC-016 VALIDATION-LAYER REPAIR CLAIM — MV1
+
+QUALITY_CHECKS:
+- mission header retained: YES
+- finance evidence sentinel retained: YES
+- materials evidence sentinel retained: YES
+- EROI evidence sentinel retained: YES
+- simulation evidence sentinel retained: NO
+- earlier canonical JOB-EGC-017 claim restored in this event if absent: ALREADY_PRESENT
+
+REVIEW_JOB:
+JOB_ID: JOB-EGC-LEDGERRECOVERY-REV-K6-20261005
+ROLE: Independent ledger/provenance auditor
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does the resulting MAIN-CHAT.md contain every top-level section from dd5d3ebbc7924b35ac1d1fff7bf59011fe0742da plus every unique top-level section from 8575109b116db64a85576faf48f9a4048f3c9758, with no unintended deletions or duplicate-title recovery artifacts?
+REQUIRED_TOOLS: fetch_blob; exact title/body hashing; commit ancestry comparison.
+FALSIFICATION_CONDITION: Any source section absent, altered, duplicated by this recovery, or current prewrite section lost.
+STATUS: OPEN
+NEXT_ACTION: independent reviewer performs exact section/hash audit before repository-integrity gate can close.
+
+WRITE_INTEGRITY:
+- expected prewrite file SHA: fde928e1bf3be96b6aa770d737df567eabe58857
+- no force push, no rewrite, no branch/file outside authorized target.
