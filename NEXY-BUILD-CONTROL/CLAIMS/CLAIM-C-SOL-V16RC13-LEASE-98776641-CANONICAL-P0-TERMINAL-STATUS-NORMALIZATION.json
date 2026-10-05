@@ -13,5 +13,7 @@
   ],
   "VALIDATION_RULE": "Normalize only where finding content itself records completed control resolution and explicitly separates any remaining follow-up/source verification from the resolved finding.",
   "PRODUCT_SOURCE_MUTATION": "NONE",
-  "STATUS": "ACTIVE"
+  "STATUS": "COMPLETED",
+  "RESULT": "NEXY-BUILD-CONTROL/RESULTS/RESULT-C-SOL-V16RC13-LEASE-98776641-CANONICAL-P0-TERMINAL-STATUS-NORMALIZATION.json",
+  "VERDICT": "3_CANONICAL_TERMINAL_NORMALIZATIONS_1_FAIL_CLOSED"
 }
