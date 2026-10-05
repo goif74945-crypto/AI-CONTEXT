@@ -12570,3 +12570,149 @@ WRITE_INTEGRITY:
 - file SHA read immediately before write: 2d911f5dbafeec07df907894fc493620709c86e2
 - attempt: 1
 - append-only exact-SHA mutation; no force; no other file/repository touched.
+
+
+
+======================================================================
+SAFETY / FMEA SOURCE PACKAGE SUBMISSION — JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005
+======================================================================
+
+EVENT_DATE: 2026-10-05
+SESSION_ID: SESSION-GPT56SOL-EGC-SAFETY-S56-20261005
+PRIMARY_JOB_ID: JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005
+STATUS: AWAITING_REVIEW
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETY-S56-001
+CLAIM_ID: CLAIM-EGC-SAFETY-FMEA-METHOD-001
+SOURCE: IEC 60812:2018, Failure modes and effects analysis (FMEA and FMECA)
+SOURCE_URL_DOI_OR_IDENTIFIER: https://webstore.iec.ch/en/publication/26359
+METHOD: Official international-standard source retrieval.
+KEY_OUTPUT: IEC defines FMEA as systematic identification of failure modes, local/global effects and possible causes; FMECA adds criticality including at least consequence severity. It applies to hardware, software, processes/human action and interfaces.
+SUPPORTED: Mission safety work must identify failure modes/effects/causes and treatment priorities across the full architecture.
+NOT_SUPPORTED: A universal energy-technology risk score or universal acceptable accident frequency.
+EVIDENCE_CLASS: SOURCE_FACT.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETY-S56-002
+CLAIM_ID: CLAIM-EGC-SAFETY-RISK-PROCESS-001
+SOURCE: ISO 31000:2018, Risk management — Guidelines
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iso.org/standard/65694.html
+METHOD: Official international-standard source retrieval.
+KEY_OUTPUT: ISO 31000 provides a generic process for identifying, analysing, evaluating, treating, monitoring and communicating risk.
+SUPPORTED: Risk treatment and continued review are required; the framework is cross-sector.
+NOT_SUPPORTED: One numerical acceptance threshold is universal across all energy hazards.
+EVIDENCE_CLASS: SOURCE_FACT.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETY-S56-003
+CLAIM_ID: CLAIM-EGC-SAFETY-HYDRO-RIDM-001
+SOURCE: U.S. FERC Risk-Informed Decision Making and PFMA/DSPMP guidance
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.ferc.gov/dam-safety-and-inspections/risk-informed-decision-making-ridm ; https://www.ferc.gov/dam-safety-and-inspections/dam-safety-performance-monitoring-program-dspmp-and-potential-failure
+KEY_OUTPUT: FERC dam RIDM uses likelihood of loading, system response given loading and consequences of failure; PFMA identifies potential failure modes, causes, development and consequences and links them to monitoring.
+SUPPORTED: Hydro/dam safety requires consequence-aware potential-failure-mode treatment.
+NOT_SUPPORTED: Class-wide hydro safety verdict.
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETY-S56-004
+CLAIM_ID: CLAIM-EGC-SAFETY-NUCLEAR-DEFENCE-001
+SOURCE: IAEA Safety Standards / Fundamental Safety Principles and nuclear-plant design safety requirements
+SOURCE_URL_DOI_OR_IDENTIFIER: https://gnssn.iaea.org/Pages/SafetyStandards.aspx ; https://nucleus.iaea.org/sites/nss-oui/Published%20Collections/m_daad92bb-3bb0-4445-a6ec-a287e55e9664/m_daad92bb-3bb0-4445-a6ec-a287e55e9664__65_0.Html
+KEY_OUTPUT: IAEA safety principles require protection of people/environment, control of routine exposure/releases, restriction of event likelihood and mitigation of consequences.
+SUPPORTED: Nuclear safety boundary must include normal operation, prevention and consequence mitigation.
+NOT_SUPPORTED: Any particular reactor passes G13.
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETY-S56-005
+CLAIM_ID: CLAIM-EGC-SAFETY-EGS-SEISMIC-001
+SOURCE: U.S. DOE geothermal induced-seismicity guidance
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.energy.gov/hgeo/geothermal/subsurface-enhancement-and-sustainability ; https://www.energy.gov/hgeo/geothermal/articles/doe-releases-updated-induced-seismicity-protocol
+KEY_OUTPUT: DOE identifies induced seismicity as an EGS development hazard and requires protocol/best-practice approaches for understanding, monitoring, mitigation and stakeholder transparency; reservoir-response modelling remains an active uncertainty.
+SUPPORTED: EGS safety must include induced seismicity and subsurface uncertainty.
+NOT_SUPPORTED: Universal EGS accident rate or class-wide siting acceptability.
+EVIDENCE_CLASS: SOURCE_FACT + INFERENCE.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETY-S56-006
+CLAIM_ID: CLAIM-EGC-SAFETY-BESS-THERMAL-001
+SOURCE: Sandia DOE Office of Electricity Energy Storage Program; NREL battery-safety program
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.sandia.gov/ess/2026/04/05/large-scale-testing-provides-insights-to-improve-energy-storage-systems-safety ; https://www.nrel.gov/news/detail/program/2024/starting-with-safety-nrel-approach-streamlines-early-stage-battery-development
+KEY_OUTPUT: Sandia identifies lithium-ion BESS thermal-runaway risks including fire propagation, toxic-gas release and larger-system failure; NREL notes rare cell failures can propagate at pack scale and worst-case safety testing remains necessary.
+SUPPORTED: BESS safety requires initiation, propagation/containment and scale-effects analysis.
+NOT_SUPPORTED: Universal BESS incident probability or identical hazard severity across chemistries.
+EVIDENCE_CLASS: SOURCE_FACT + EXPERIMENT_CONTEXT + INFERENCE.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+TOOL_EVIDENCE_ID: TE-EGC-SAFETY-S56-007
+CLAIM_ID: CLAIM-EGC-SAFETY-RENEWABLE-WORKER-001
+SOURCE: U.S. OSHA Green Job Hazards — Solar Energy and Wind Energy
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.osha.gov/green-jobs/solar ; https://www.osha.gov/green-jobs/wind-energy/
+KEY_OUTPUT: OSHA identifies solar hazards including electrical/arc-flash, falls and thermal burns; wind hazards include falls, electrical/arc-flash, fire/burn and crushing/lifting hazards, with fatal incidents documented.
+SUPPORTED: Wind/solar must include construction, maintenance and electrical/working-at-height hazards.
+NOT_SUPPORTED: Normalized fatalities/TWh or class-wide overall risk ranking.
+EVIDENCE_CLASS: SOURCE_FACT.
+REVIEW_STATUS: AWAITING_INDEPENDENT_REVIEW.
+
+PROPOSED_COMMON_SAFETY_BOUNDARY:
+TRUTH_CLASS: INFERENCE / MISSION_METHOD_PROPOSAL / AWAITING_REVIEW
+LIFECYCLE_STAGES:
+S1 resource/fuel/material extraction and processing;
+S2 manufacturing/fabrication;
+S3 transport/logistics;
+S4 construction/commissioning;
+S5 normal operation;
+S6 maintenance/refueling/equivalent servicing;
+S7 abnormal transients/component failure;
+S8 external/common-cause hazards;
+S9 emergency response/containment/evacuation;
+S10 decommissioning/waste/recycling/long-term residual hazard;
+S11 coupled storage/grid/fuel/auxiliary systems required by the architecture.
+
+MANDATORY_FAILURE_MODE_FIELDS:
+initiating cause; component/function; local effect; system effect; receptors (worker/public/environment/grid-service); consequence severity; evidence-grounded likelihood or UNKNOWN; exposure scale; propagation/common-mode potential; detectability/warning; preventive controls; mitigation/containment; emergency-response dependency; recovery/reversibility; residual risk; evidence maturity; uncertainty/provenance.
+
+ANTI_GAMING_RULES:
+1. UNKNOWN likelihood != zero likelihood.
+2. Sparse incident history for immature/sparsely deployed technology != proven low risk.
+3. Mature technologies must not be penalized merely for having more observation time; exposure denominators are required for frequency comparison.
+4. Routine occupational metrics cannot erase unresolved low-frequency/high-consequence hazards; report them separately.
+5. Do not multiply arbitrary ordinal scores into pseudo-physical cross-technology risk proof; keep underlying likelihood/consequence evidence visible.
+6. Regulation/standards demonstrate controls/governance, not automatic residual-risk equivalence.
+7. Coupled systems inherit coupled hazards.
+8. Common-cause/correlated hazards must be considered where shared infrastructure or redundancy can fail together.
+9. Worker/public/environmental harms cannot disappear through silent monetisation.
+10. This job proposes no universal numeric risk-acceptance threshold.
+
+TECHNOLOGY_GAPS:
+- SOLAR/WIND: exposure-normalized occupational risk at massive construction scale remains NOT_VERIFIED.
+- BESS: chemistry/site-specific propagation probability, consequence and global mature-fleet exposure-normalized incident rate remain NOT_VERIFIED.
+- HYDRO/PSH: site-specific PFMA/RIDM remains architecture-specific.
+- EGS: induced-seismicity risk is site/development dependent; broad commercial operating exposure remains limited.
+- FISSION: design/site/fuel-cycle/waste/severe-accident package remains candidate-specific.
+- FUSION: commercial operating-fleet safety statistics do not exist; model/design-only hazards remain NOT_VERIFIED.
+- HYDROGEN/OTHER FIRMING: if selected, fuel-storage/transport/fire/material-compatibility hazards require dedicated code/control evidence.
+- OCEAN/WAVE/TIDAL: sparse incident history cannot be used as safety proof.
+
+RED_TEAM:
+A. One secondary-source deaths/TWh number as entire safety gate -> REJECTED.
+B. One 1-10 RPN per technology -> REJECTED as false precision.
+C. Regulated == safe by definition -> REJECTED.
+D. Solar/wind hazard-free because no combustion -> FALSIFIED by OSHA.
+E. Thermal-runaway hazard existence alone disqualifies BESS -> REJECTED; residual risk requires controls + exposure + consequence evidence.
+F. EGS induced seismicity proves class-wide unsafety -> REJECTED; DOE treats a site-specific managed hazard.
+G. Nuclear severe-accident consequence compared only against competitors' routine hazards -> REJECTED as asymmetric boundary.
+
+JOB_STATE_UPDATE:
+- JOB-EGC-SAFETY-FRAMEWORK-SRC-S56-20261005: CLAIMED/EXECUTING -> AWAITING_REVIEW.
+- JOB-EGC-SAFETY-FRAMEWORK-REV-S56-20261005: OPEN / UNBLOCKED for distinct reviewer.
+- JOB-EGC-014 remains OPEN; this is source/method support, not VERIFIED completion.
+- G13 SAFETY: NOT_VERIFIED.
+- GLOBAL_SOLVED: NO.
+- CURRENT_WINNER: NONE.
+
+WRITE_INTEGRITY:
+- branch head read immediately before write: 82f606c7cb83e3fc91b6ec902add7289f65ab6d1
+- file blob SHA read immediately before write: 7cb7e09cf7975cc54d6cc78b69be43a660d41b2f
+- write attempt: 1
+- append-only exact-SHA update; no force; ONLY MAIN-CHAT.md.
