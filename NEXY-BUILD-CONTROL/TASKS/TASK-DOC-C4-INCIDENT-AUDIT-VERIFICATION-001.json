@@ -3,11 +3,11 @@
   "FINDING_ID": "FINDING-DOC-C4-INCIDENT-AUDIT-BEHAVIOR-TEST-GAP-001",
   "REQ_ID": "REQ-DOC-C-4-2-INCIDENT-READ",
   "PRIORITY": "P1",
-  "STATUS": "IMPLEMENTED_PENDING_INTEGRATION_GATE",
+  "STATUS": "INTEGRATED_VALIDATION_BLOCKED_GITHUB_ACTIONS_RUNNER",
   "OWNER_CHAT": "C-SOL-20261006-0143-INCIDENT-AUDIT",
   "BASE_SHA": "92aff2f532d30d81e74b8d2292a583edb77b5de8",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
-  "WORK_BRANCH": "work/NEXY.AI-Test-AI/incident-audit-verify-001-r2",
+  "WORK_BRANCH": "work/NEXY.AI-Test-AI/incident-audit-verify-001-r3",
   "SEMANTIC_SCOPE": "Behavioral verification only for DOC-C GET /api/incidents/:id mandatory INCIDENT_VIEWED audit emission and audit-failure fail-closed behavior.",
   "TARGET_PATHS": [
     "tests/contract/canonical-api.test.ts"
@@ -30,6 +30,38 @@
     "cause": "Git ref namespace conflict with existing NEXY.AI-Test-AI branch",
     "authority": "legacy literal descendant prefix is superseded; isolated worker branch remains required"
   },
-  "CANDIDATE_SHA": "87405fbba5f6f1856429ddce4bc99ddae6bd659c",
-  "RACE_RECONCILIATION": "Original base advanced by 40 unrelated commits; target test blob remained identical, so patch was reapplied on refreshed exact head."
+  "CANDIDATE_SHA": "80b409a59271624dd7e1eec49db4a062444c5aaf",
+  "RACE_RECONCILIATION": "Original base advanced by 40 unrelated commits; target test blob remained identical, so patch was reapplied on refreshed exact head.",
+  "INTEGRATION_COMMIT": "6cfb3590223382bb26abaa7e5b2d9ee97807596d",
+  "INTEGRATED_BLOB": "a97480ae1eef22039d18379df168123773c95393",
+  "CURRENT_HEAD_OBSERVED": "755a1f107a5378de3b565bd6c7d58a580f8551d9",
+  "CURRENT_HEAD_DESCENDS_FROM_INTEGRATION": true,
+  "VALIDATION": {
+    "verdict": "NOT_EXECUTED_INFRA_BLOCKED",
+    "workflow_runs": [
+      {
+        "id": 37360022941,
+        "name": "Six-system exact HEAD evidence",
+        "attempts": [
+          1,
+          2
+        ],
+        "conclusion": "failure",
+        "steps_started": 0
+      },
+      {
+        "id": 37360022988,
+        "name": "Exact HEAD test evidence",
+        "attempts": [
+          1,
+          2
+        ],
+        "conclusion": "failure",
+        "steps_started": 0
+      }
+    ],
+    "evidence": "Both workflows failed before any job step; latest job step arrays are empty. No Vitest/typecheck command executed, so this is not a code-test failure."
+  },
+  "MUTATION_OWNER_ACTIVE": false,
+  "CONTINUATION_REQUIRED": "Rerun exact-SHA validation when GitHub Actions runner provisioning is available."
 }
