@@ -4129,3 +4129,286 @@ BRANCH_HEAD_AT_CLAIM: 1d0f80e4698fdd2f98772aaa5d7f113ac41c6105
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: b7d841e26060b795d355e0c7a4c14b03848e2107
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+
+======================================================================
+RESULT — JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0400+07-MECH1
+PRIMARY_ROLE: Mechanical Reliability / Maintenance / Replacement Boundary Analyst
+PRIMARY_JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-REV-C2-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+OBJECTIVE:
+Establish a candidate-neutral mechanical reliability and replacement boundary so project/plant lifetime cannot be mistaken for component lifetime or maintenance-free life, and mechanical/BOS replacement burdens cannot disappear from availability or FSRC_ND.
+
+MECHANICAL LEDGER M_STAR — PROPOSED:
+For each candidate and matched baseline record, when material:
+- project/civil asset life;
+- component design life and measured service-life evidence;
+- planned maintenance/refurbishment intervals;
+- forced failure/repair evidence with correct denominator;
+- scheduled vs forced outage contribution;
+- replacement CAPEX, labour, crane/vessel/workover/logistics and downtime;
+- corrosion, erosion, fatigue, scaling, bearing/gear/pump/valve/seal/well-integrity mechanisms;
+- parasitic mechanical loads (pumping/compression/cooling) without double counting the energy ledger;
+- spares/supply-chain constraints and lead times;
+- condition monitoring/inspection;
+- decommissioning/removal/recycling obligations;
+- technology-architecture exceptions such as direct-drive wind turbines or inverter topology differences.
+
+INVARIANT:
+ASSET_LIFE != COMPONENT_LIFE != MAINTENANCE_FREE_LIFE.
+A long-lived dam, reactor site, geothermal resource, PV array or wind project does not permit all subordinate components to inherit that lifetime without evidence.
+
+AVAILABILITY RULE:
+Do not infer mechanical availability from capacity factor alone. Resource availability, dispatch, curtailment, planned outages, forced outages and mechanical derates must remain separable where the data permit.
+
+EVIDENCE_ID: TE-EGC-MECH-001
+JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+CLAIM_ID: CLAIM-EGC-MECH-WIND-DAMAGE
+TOOL: current official/national-lab web retrieval
+METHOD: NREL Gearbox Reliability Database provenance and denominator audit
+DATE: 2026-10-06
+SOURCE: National Renewable Energy Laboratory, Gearbox Reliability Database
+SOURCE_DATE: database current page; exact update date UNKNOWN
+URL/DOI/IDENTIFIER: https://grd.nrel.gov/ ; https://grd.nrel.gov/stats/2016
+INPUTS: reported gearbox incident/damage records
+PARAMETERS: 1,938 incidents; 84 wind plants; 21 years spanned; 2016 subset about 1,050 confirmable damage records from 2009-August 2016; owner/operator participants >40% U.S. wind capacity in 2016 statistics
+EQUATION/CODE/METHOD: source extraction + denominator audit
+OUTPUT: NREL database records substantial gearbox damage evidence. In the 2016 damage-record subset, bearings were 76.2%, gears 17.3%, other 6.6%.
+UNITS: incidents / damage records / plants / years
+UNCERTAINTY: turbine-year exposure denominator, turbine architecture mix and reporting completeness are not supplied by the cited summary pages.
+ASSUMPTIONS: none.
+LIMITATIONS: 76.2% is a share of confirmable gearbox damage records, NOT a claim that 76.2% of turbines fail; 1,938 incidents/84 plants/21 years cannot be converted into a fleet annual failure rate without turbine-exposure and censoring data.
+REPRODUCTION_METHOD: retrieve GRD landing and 2016 statistics pages; verify counts and denominator limitations.
+REPLICATION_STATUS: SOURCE_RETRIEVED / INDEPENDENT_REVIEW_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-MECH-002
+JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+CLAIM_ID: CLAIM-EGC-MECH-WIND-TEMPORAL
+TOOL: DOE/NREL official web retrieval
+METHOD: historical-to-modern reliability drift check
+DATE: 2026-10-06
+SOURCE: U.S. DOE, Blade and Drivetrain Testing Advance Wind Turbine Efficiency and Reliability; DOE On-Site Research to Determine Causes of Premature Drivetrain Gearbox Failure
+SOURCE_DATE: recent DOE retrospective page; exact publication date in retrieval approximately 2024; second source 2018-05-08
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/systems/articles/blade-and-drivetrain-testing-advance-wind-turbine-efficiency-and-reliability ; https://www.energy.gov/cmei/systems/articles/site-research-determine-causes-premature-drivetrain-gearbox-failure
+INPUTS: dynamometer/field research and industry design changes
+PARAMETERS: complete drivetrain testing; bearing axial cracking; main-bearing wear
+EQUATION/CODE/METHOD: source synthesis
+OUTPUT: DOE reports NREL test findings led to design changes and gearbox failure frequency declined substantially, with many remaining failures associated with bearings; premature drivetrain failures can still raise O&M costs.
+UNITS: qualitative reliability trend
+UNCERTAINTY: cited page does not provide a modern fleet-wide annual failure probability.
+ASSUMPTIONS: none beyond source scope.
+LIMITATIONS: historical GRD damage distributions must not be frozen as current fleet failure rates; modern architectures and direct-drive designs differ.
+REPRODUCTION_METHOD: retrieve both DOE pages and compare historical-failure and improvement statements.
+REPLICATION_STATUS: TWO_SOURCE_CROSSCHECK
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-MECH-003
+JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+CLAIM_ID: CLAIM-EGC-MECH-HYDRO
+TOOL: official DOE web retrieval
+METHOD: long-asset-life versus component-refurbishment audit
+DATE: 2026-10-06
+SOURCE: U.S. DOE, Fleet Modernization, Maintenance, and Cybersecurity
+SOURCE_DATE: page published approximately 2020; exact page date not material to quoted historical interval
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/water/fleet-modernization-maintenance-and-cybersecurity
+INPUTS: U.S. hydropower fleet age and refurbishment expenditure
+PARAMETERS: most U.S. hydropower plants >50 years old; approximately USD 9 billion spent 2007-2017 upgrading/refurbishing turbines and generators
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: routine maintenance extends life, but components eventually require refurbishment/replacement; long hydro civil/project life does not imply maintenance-free turbine/generator life.
+UNITS: years; nominal historical USD as reported by DOE
+UNCERTAINTY: source does not normalize expenditure per MW/TWh, inflation-adjust it, or separate all project-specific drivers.
+ASSUMPTIONS: none.
+LIMITATIONS: the USD 9B value is evidence of material refurbishment activity, not a universal hydro O&M adder.
+REPRODUCTION_METHOD: retrieve DOE page and verify age/refurbishment statements.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-MECH-004
+JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+CLAIM_ID: CLAIM-EGC-MECH-GEOTHERMAL
+TOOL: current DOE official web retrieval
+METHOD: wellbore/scaling lifecycle constraint audit
+DATE: 2026-10-06
+SOURCE: U.S. DOE Geothermal Technologies Office, Wellbore Construction and Evaluation; Subsurface Enhancement and Sustainability
+SOURCE_DATE: current pages; first page published approximately 2024; second approximately 2022
+URL/DOI/IDENTIFIER: https://www.energy.gov/hgeo/geothermal/wellbore-construction-and-evaluation ; https://www.energy.gov/hgeo/geothermal/subsurface-enhancement-and-sustainability
+INPUTS: high-temperature cement/casing evaluation needs and mineral scaling
+PARAMETERS: hostile/high-temperature wellbores; amorphous-silica scaling particularly in systems above 200 C
+EQUATION/CODE/METHOD: source synthesis
+OUTPUT: DOE identifies wellbore durability/evaluation and mineral scaling as long-term operating issues; scaling can affect wells/reservoir/surface equipment and requires engineered control/modeling.
+UNITS: temperature threshold in degrees C; qualitative lifecycle constraint
+UNCERTAINTY: fluid chemistry, formation mineralogy, temperature, well design and site determine severity.
+ASSUMPTIONS: no universal workover interval inferred.
+LIMITATIONS: does not establish a fleet-wide geothermal component replacement rate or cost.
+REPRODUCTION_METHOD: retrieve both DOE pages and verify long-term operating/well-integrity statements.
+REPLICATION_STATUS: TWO_SOURCE_CROSSCHECK
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: TE-EGC-MECH-005
+JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+CLAIM_ID: CLAIM-EGC-MECH-NUCLEAR
+TOOL: NRC + EIA official web retrieval
+METHOD: maintenance obligation and operational-outage boundary audit
+DATE: 2026-10-06
+SOURCE: U.S. NRC Operating Reactor Maintenance Effectiveness / Regulations and Guidance; U.S. EIA 2024 summer nuclear outages
+SOURCE_DATE: NRC current pages accessed 2026-10-06; EIA 2024-11-05
+URL/DOI/IDENTIFIER: https://www.nrc.gov/facilities-safety/operating-reactors/reactor-safety-information-topics/operating-reactor-maintenance-effectiveness ; https://www.nrc.gov/facilities-safety/operating-reactors/reactor-safety-information-topics/operating-reactor-maintenance-effectiveness/regulations-and-guidance ; https://www.eia.gov/todayinEnergy/detail.php?id=63624
+INPUTS: Maintenance Rule scope; planned/unplanned outage observations
+PARAMETERS: summer-2024 average U.S. nuclear capacity outage about 2.6 GW/day vs 3.1 GW/day in 2023; 2024 refueling outages averaged 34 days as of July 31
+EQUATION/CODE/METHOD: source synthesis
+OUTPUT: NRC requires monitoring continuing maintenance effectiveness of relevant structures/systems/components. EIA separates planned refueling/maintenance outages from unplanned technical/weather disruptions.
+UNITS: GW/day; days
+UNCERTAINTY: outage data are operational-system observations, not component-specific mechanical failure rates.
+ASSUMPTIONS: none.
+LIMITATIONS: no component replacement-cost distribution or mechanical-only forced-outage probability derived; nuclear capacity factor cannot be equated to mechanical availability.
+REPRODUCTION_METHOD: retrieve NRC and EIA pages.
+REPLICATION_STATUS: MULTI_AGENCY_CROSSCHECK
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_EVIDENCE
+
+EVIDENCE_ID: TE-EGC-MECH-006
+JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+CLAIM_ID: CLAIM-EGC-MECH-PV
+TOOL: official DOE web retrieval
+METHOD: low-moving-part comparator / BOS reliability audit
+DATE: 2026-10-06
+SOURCE: U.S. DOE, Optimizing Solar Photovoltaic Performance for Longevity
+SOURCE_DATE: page published approximately 2020
+URL/DOI/IDENTIFIER: https://www.energy.gov/cmei/femp/optimizing-solar-photovoltaic-performance-longevity
+INPUTS: PV module and inverter maintenance description
+PARAMETERS: module faults; inverter replacement/repair; wiring faults
+EQUATION/CODE/METHOD: source extraction
+OUTPUT: PV modules have no moving parts and require little maintenance, but DOE states the majority of downtime and maintenance is associated with inverters; small/string inverters are generally replaced and large central units repaired by component replacement.
+UNITS: qualitative O&M evidence
+UNCERTAINTY: topology, size, climate and fleet age change rates/costs.
+ASSUMPTIONS: no specific inverter replacement interval inferred.
+LIMITATIONS: page does not provide a universal utility-scale failure rate or replacement cost.
+REPRODUCTION_METHOD: retrieve DOE page and verify module/inverter sections.
+REPLICATION_STATUS: SOURCE_RETRIEVED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: SOURCE_FACT
+
+EVIDENCE_ID: CALC-EGC-MECH-001
+JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006
+CLAIM_ID: CLAIM-EGC-MECH-REPLACEMENT-TIMING
+TOOL: Wolfram Context + Wolfram Language Evaluator
+METHOD: finite-horizon parametric replacement-cost sensitivity
+DATE: 2026-10-06
+SOURCE: executed calculation; 60-year appraisal convention inherited from common accounting job; no technology lifetime assumed
+SOURCE_DATE: calculation 2026-10-06
+URL/DOI/IDENTIFIER: executed Wolfram session
+INPUTS: real discount rate r=7%; horizon H=60 years; component replacement cost normalized to 1.0 of that component's initial cost; deterministic component life L in {10,20,30,40,50} years
+PARAMETERS: replace at t=kL only for 0<t<60; exclude t=60 terminal replacement because terminal-state accounting remains under separate active review
+EQUATION/CODE/METHOD: PV_factor(L)=SUM[(1.07)^(-kL)] for positive integer k with kL<60. Clean evaluator: N[{10->Total[(1.07)^(-{10,20,30,40,50})],20->Total[(1.07)^(-{20,40})],30->(1.07)^(-30),40->(1.07)^(-40),50->(1.07)^(-50)},16]
+OUTPUT: L10=0.998863552536112; L20=0.32519938382918284; L30=0.13136711715458974; L40=0.06678038101531424; L50=0.03394775941762175
+UNITS: PV replacement cost / initial component cost
+UNCERTAINTY: no arithmetic uncertainty material; economic/design uncertainty dominates.
+ASSUMPTIONS: deterministic replacement timing, constant normalized replacement cost, 7% real rate, no salvage, no downtime cost, no learning/escalation, no year-60 terminal event.
+LIMITATIONS: parametric accounting sensitivity only; NOT measured lifetimes or candidate ranking.
+REPRODUCTION_METHOD: execute equation/code above independently.
+REPLICATION_STATUS: EXECUTED_TOOL_PASS / INDEPENDENT_SESSION_REQUIRED
+REVIEW_STATUS: PENDING
+EVIDENCE_CLASS: CALCULATION
+
+FIRST_PASS_MECHANICAL_STATES:
+WIND:
+- RETAIN.
+- Mechanical P1: architecture-specific drivetrain/bearing/gear replacement/O&M and downtime.
+- Historical gearbox damage evidence is real, but current fleet annual failure rate remains UNKNOWN from retrieved sources.
+- Direct-drive and modern drivetrain improvements prevent assigning old gearbox statistics universally.
+
+HYDRO_AND_PSH:
+- RETAIN.
+- Mechanical P1: turbine/generator/gates/conduits refurbishment and long-cycle supply/logistics.
+- Long civil/project life cannot be assigned automatically to rotating/electromechanical components.
+
+GEOTHERMAL_AND_EGS:
+- RETAIN_WITH_SITE/FLUID_SPECIFIC_P1.
+- Wellbore integrity, scaling, corrosion/material compatibility, pumps/circulation and workovers can affect availability and lifecycle cost.
+- Universal interval/cost remains UNKNOWN.
+
+NUCLEAR_FISSION:
+- RETAIN.
+- Maintenance is a regulated continuing function and outage scheduling matters.
+- Component-specific mechanical failure/replacement cost remains NOT_VERIFIED by this job.
+- High capacity factor or low summer outage averages must not be treated as proof of maintenance-free mechanical reliability.
+
+SOLAR_PV:
+- RETAIN.
+- Module low-maintenance property does not make the complete plant maintenance-free; inverter/electrical BOS repair/replacement is material.
+- Universal inverter interval/cost remains UNKNOWN.
+
+BESS:
+- MECHANICAL/BOS lifecycle reliability NOT_VERIFIED in this job; safety/thermal/storage jobs hold other dimensions. HVAC, pumps where present, contactors/power electronics/enclosures require architecture-specific treatment if finalist.
+
+NATURAL_GAS_OR_OTHER_THERMAL_FIRMING:
+- COMPONENT-SPECIFIC MECHANICAL RELIABILITY NOT_VERIFIED in this job; no free reliability credit allowed. Turbomachinery/boiler/compressor/valve maintenance must be sourced if these systems remain in matched baseline/frontier.
+
+FUSION/TIDAL/WAVE/OTHER_EMERGING:
+- COMMERCIAL-SCALE MECHANICAL RELIABILITY NOT_VERIFIED unless operational evidence jobs provide component/fleet data. Design targets cannot substitute for measured service evidence.
+
+RED_TEAM:
+RT-MECH-001: "76.2% of wind turbines suffer bearing failures" -> FALSIFIED. 76.2% is a share of a gearbox damage-record subset.
+RT-MECH-002: "1,938 gearbox incidents / 84 plants / 21 years is an annual turbine failure rate" -> FALSIFIED. Turbine-year exposure/censoring/reporting denominator absent.
+RT-MECH-003: "hydro plants older than 50 years prove turbines/generators require no replacement" -> FALSIFIED. DOE explicitly records major turbine/generator refurbishment expenditure.
+RT-MECH-004: "PV modules have no moving parts, therefore PV plant replacement/O&M is negligible or zero" -> FALSIFIED. DOE says majority of downtime/maintenance is inverter-associated.
+RT-MECH-005: "nuclear planned+unplanned outages may be interpreted as mechanical forced outages" -> FALSIFIED. EIA explicitly separates planned refueling/maintenance and unplanned technical/weather causes.
+RT-MECH-006: "geothermal resource longevity makes scaling/well integrity irrelevant" -> FALSIFIED. DOE treats wellbore durability and scale control as long-term operating challenges.
+RT-MECH-007: "project lifetime can be reused as every component lifetime" -> FALSIFIED by source evidence and CALC-EGC-MECH-001 sensitivity.
+
+CLAIM_GRAPH:
+CLAIM-EGC-MECH-001 ASSET_COMPONENT_LIFE_SEPARATION: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MECH-002 WIND_DAMAGE_DENOMINATOR: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MECH-003 HYDRO_REFURBISHMENT: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MECH-004 GEOTHERMAL_DURABILITY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MECH-005 NUCLEAR_MAINTENANCE_BOUNDARY: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MECH-006 PV_BOS_REPLACEMENT: SUPPORTED_PENDING_REVIEW.
+CLAIM-EGC-MECH-007 REPLACEMENT_TIMING_COST: CALCULATION_SUPPORTED_PENDING_REPLICATION.
+
+MATERIAL_UNKNOWNS:
+- modern architecture-specific wind drivetrain annual failure/repair rate and downtime distribution;
+- hydro/PSH component-specific refurbishment schedules and normalized cost by plant class;
+- geothermal/EGS field-specific workover/scaling/corrosion rates and lifetime cost;
+- nuclear component-level mechanical forced-outage/replacement cost distribution;
+- PV utility-scale inverter lifetime/cost distribution under consistent fleet boundaries;
+- BESS and gas/thermal mechanical lifecycle evidence if they remain finalists;
+- common stochastic reliability model linking component failures to R_STAR remains a separate integration job.
+
+STATUS_CHANGE:
+JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006: EXECUTING -> AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+
+JOB_ID: JOB-EGC-061-MECHANICAL-RELIABILITY-REV-C2-20261006
+TITLE: Independent mechanical reliability and replacement-boundary review
+ROLE: Independent mechanical evidence auditor / numerical replicator / lifecycle red team
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does M_STAR prevent project-life/component-life conflation, preserve denominators, and account for maintenance/replacement symmetrically without converting component evidence into unsupported system availability?
+CANDIDATE: ALL surviving candidates and strongest baselines
+DEPENDENCIES: JOB-EGC-061-MECHANICAL-RELIABILITY-C1-20261006 submitted.
+REQUIRED_INPUTS: TE-EGC-MECH-001..006; CALC-EGC-MECH-001; latest candidate frontier and FSRC_ND/R_STAR states.
+REQUIRED_TOOLS: independent official-source retrieval; independent reproduction of replacement PV factors; denominator audit; architecture-specific counterexamples.
+REQUIRED_EVIDENCE: provenance, exact denominator interpretation, replicated arithmetic and check for ranking-reversing omitted replacement costs.
+EXPECTED_OUTPUT: PASS/FAIL per claim; corrections; P0/P1 list; repair job if material defects found.
+FALSIFICATION_CONDITION: FAIL if damage-record shares become fleet failure rates, project life becomes component life, capacity factor becomes mechanical availability, replacements disappear asymmetrically, or vendor/model lifetimes are promoted to measured fleet evidence.
+REVIEWER_JOB_ID: SELF_REVIEW_FORBIDDEN
+STATUS: OPEN
+BLOCKERS: NONE for method/evidence review; candidate-specific final reliability/cost requires architecture and geography.
+NEXT_ACTION: distinct session independently reproduce and attack this result.
+
+BRANCH_HEAD_BEFORE_WRITE: 6f6a822ca0cf1e4d9b57af772862371d2bac4fda
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: 37d61bbeff63f2fa09f77fe11238cee6ade94327
