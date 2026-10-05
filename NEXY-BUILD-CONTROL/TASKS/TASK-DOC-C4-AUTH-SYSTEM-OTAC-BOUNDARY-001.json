@@ -1,0 +1,28 @@
+{
+  "TASK_ID": "TASK-DOC-C4-AUTH-SYSTEM-OTAC-BOUNDARY-001",
+  "REQ_ID": "REQ-DOC-C-4-2-AUTH-VERIFY-SUCCESS-WIRE-001",
+  "FINDING_ID": "F-2CFA8A5D-AUTH-SYSTEM-OTAC-BOUNDARY",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "PRIORITY": "P1",
+  "RISK": "HIGH_AUTHORITY_SECURITY",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "OWNER": "UNASSIGNED",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SCOPE": [
+    "packages/api/auth.ts verify-otac human/service role boundary",
+    "tests/coverage/auth-decision-paths.test.ts",
+    "tests/integration/auth/verify-otac.spec.ts",
+    "SYSTEM vault authority regression coverage"
+  ],
+  "ACCEPTANCE": [
+    "POST /api/auth/verify-otac can never return a successful role outside OWNER/OPERATOR/AUDITOR.",
+    "A persisted SYSTEM principal cannot be admitted through the human OTAC success path.",
+    "Required SYSTEM authority for POST /api/vault/commit remains intact through an explicitly authorized system/service boundary.",
+    "No new auth role or error code is invented outside final DOC-C.",
+    "Negative test covers SYSTEM durable role on verify-otac.",
+    "Vault SYSTEM authorization regression test remains green.",
+    "Exact candidate SHA tests and independent auth/security review required before integration."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After a Constitution-compliant worker namespace exists, refresh Test-AI HEAD, choose the smallest fail-closed human/service boundary repair supported by active authority, add negative/regression tests, and reverify exact candidate SHA."
+}
