@@ -1,0 +1,23 @@
+{
+  "RESULT_ID": "RESULT-C-SOL-20261005-0550-V11-STATIC-GAP-SWEEP",
+  "TASK_ID": "T-V11-STATIC-GAP-SWEEP-0550",
+  "OWNER_CHAT": "C-SOL-20261005-0550-V11",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_EPOCH": "EPOCH-20261005-b35ee1bf-608426cb",
+  "SOURCE_HEAD": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "CONTROL_HEAD_BEFORE_RESULT": "075625db2b265431eaa5304ce2120d2ca75e196c",
+  "VERDICT": "NOT_CLOSURE_ELIGIBLE",
+  "NEW_ACTIONABLE_GAPS": 0,
+  "CONFIRMED_OPEN_BLOCKERS": [
+    "INC-BRANCH-NAMESPACE-001: V11 required worker prefix NEXY.AI-Test-AI/work/ is structurally incompatible with existing integration branch ref NEXY.AI-Test-AI.",
+    "F-V11-STATIC-CODE-TAXONOMY-REVIEW-001: P0 canonical G22 CapabilityNode reason-code identity mismatch remains on exact integration HEAD."
+  ],
+  "INVENTORY": {
+    "TOTAL_FILES": 885,
+    "INITIAL_REQUIRED_SCAN_CANDIDATES": 816,
+    "CLOSURE_ELIGIBLE": false
+  },
+  "SOURCE_MUTATION": "NONE",
+  "NEXT_EXACT_STEP": "Continue non-mutating independent audit/review until worker namespace authority is changed; then highest-priority source repair is T-04452B01 under a valid isolated worker branch."
+}
