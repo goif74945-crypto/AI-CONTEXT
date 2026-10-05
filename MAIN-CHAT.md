@@ -508,3 +508,61 @@ EVIDENCE_GRAPH_DELTA:
 - U.S. EIA -> REVIEW-EGC-SCALE-C1-004 [PASS].
 - Energy Institute -> REVIEW-EGC-SCALE-C1-005 [PASS_OOM].
 - Latest IEA 28,600 -> 10% = 2,860 TWh/y = 326.484 GW avg -> canonical objective consistency.
+
+
+======================================================================
+49. DYNAMIC SOURCE JOB CLAIM — REGULATORY / SITING / PERMITTING CONSTRAINTS
+======================================================================
+
+EVENT_DATE: 2026-10-05
+EVENT_TIME: UNKNOWN
+SESSION_ID: SESSION-GPT56SOL-EGC-REG-R1-20261005
+PRIMARY_ROLE: Regulatory / siting / permitting evidence analyst
+PRIMARY_JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+QUESTION: What current, authoritative regulatory, permitting, interconnection, siting, licensing and environmental-review constraints materially affect cost, construction time or scalable deployment across major energy families, without treating any one jurisdiction as universal?
+DEPENDENCIES: NONE for source acquisition/method; final candidate scoring depends on architecture, geography and reviewed common boundary.
+TOOLS: official government/regulator/IGO sources; observed project/process datasets; deterministic timeline normalization; provenance audit.
+EVIDENCE_TARGET: SOURCE_FACT / OPERATIONAL_ADMIN_DATA / CALCULATION / INFERENCE / UNKNOWN.
+FALSIFICATION_TARGET: universal permitting-time claims from one jurisdiction; announced reform treated as implemented outcome; project-development time conflated with construction time; queue time double-counted as permitting; laws/regulations treated as identical across geography.
+REVIEWER: JOB-EGC-REG-SITING-REV-R1-20261005 by distinct session.
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-REG-SITING-SRC-R1-20261005
+ROLE: Regulatory/siting source support for JOB-EGC-024
+TITLE: Candidate-neutral permitting, licensing and siting evidence matrix
+QUESTION_TO_RESOLVE: Build a reproducible matrix separating legal approval stages from interconnection, financing and physical construction, and identify material technology/geography bottlenecks.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: NONE for source acquisition.
+REQUIRED_INPUTS: current official laws/process pages, regulator licensing data, permitting/siting studies and observed timelines where available.
+REQUIRED_TOOLS: official source retrieval; administrative-data comparison; deterministic normalization.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT + OPERATIONAL_ADMIN_DATA + CALCULATION.
+EXPECTED_OUTPUT: stage taxonomy, current authoritative anchors, anti-double-counting rules, material unknowns and handoff to JOB-EGC-024.
+FALSIFICATION_CRITERIA: FAIL if source is obsolete/repealed, timing is anecdotal without labeling, stage boundaries are conflated, or geography-specific rules are promoted to universal constraints.
+REVIEWER_JOB_ID: JOB-EGC-REG-SITING-REV-R1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-REG-R1-20261005
+CLAIMED_AT: 2026-10-05 / exact UTC UNKNOWN
+LAST_PROGRESS_AT: 2026-10-05 / exact UTC UNKNOWN
+BLOCKERS: NONE for source framework.
+HANDOFF: Gather current official evidence; submit AWAITING_REVIEW; do not self-verify or issue final legal conclusions.
+
+JOB_ID: JOB-EGC-REG-SITING-REV-R1-20261005
+ROLE: Independent regulatory/siting replication
+TITLE: Reopen sources and attack permitting/siting classifications
+QUESTION_TO_RESOLVE: Are stage boundaries, source currency and timeline inferences reproducible?
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-REG-SITING-SRC-R1-20261005 AWAITING_REVIEW
+REQUIRED_INPUTS: submitted source records
+REQUIRED_TOOLS: independent official-source retrieval and arithmetic
+REQUIRED_EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / CONFLICT
+EXPECTED_OUTPUT: PASS/FAIL/REPAIR
+FALSIFICATION_CRITERIA: fail on obsolete rule, geography overgeneralization, timeline double count or unsupported causal attribution
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+BLOCKERS: source job not submitted
+HANDOFF: distinct session only.
+
+GLOBAL_STATE:
+- GLOBAL_SOLVED: NO
+- MISSION_STATUS: CONTINUE_REQUIRED
+- CURRENT_WINNER: NONE
