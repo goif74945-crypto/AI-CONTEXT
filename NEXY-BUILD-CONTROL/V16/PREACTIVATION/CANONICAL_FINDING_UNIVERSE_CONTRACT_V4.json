@@ -20,7 +20,7 @@
   },
   "PATH_NORMALIZATION": {
     "ENCODING": "UTF-8",
-    "UNICODE": "NFC",
+    "UNICODE": "NFC under UNICODE_PROFILE",
     "SEPARATOR": "/",
     "FORBIDDEN": [
       "leading /",
@@ -87,7 +87,7 @@
       "TYPE_RAW": "exact top-level /TYPE or null when absent",
       "SEVERITY_RAW": "exact top-level /SEVERITY or null when absent",
       "STATUS_RAW": "exact top-level /STATUS or null when absent",
-      "RULE": "No alias, recursive search, coercion, case folding, trimming, or inferred value.",
+      "RULE": "No alias, recursive search, coercion, case folding, trimming, inferred value, ambient Unicode normalization, duplicate-member acceptance, or unpaired-surrogate acceptance.",
       "DUPLICATE_MEMBER_RULE": "Apply TEXT_DECODING.JSON_MEMBER_UNIQUENESS before extraction. Any duplicate object member name anywhere in the parsed JSON object is PARSE_ERROR; last-wins/first-wins behavior is forbidden.",
       "BOM_RULE": "Apply TEXT_DECODING.BOM_POLICY before JSON parsing.",
       "IDENTIFIER_BOUNDARY_RULE": "Validate FINDING_ID using IDENTIFIER_WHITESPACE.BOUNDARY_RULE; do not use runtime trim/strip."
@@ -96,14 +96,15 @@
       "BYTE_DECODING": "Validate UTF-8 and reject file-leading EF BB BF BOM bytes before line parsing.",
       "LINE_TERMINATORS": "Recognize LF (0A) and CRLF (0D 0A). A CR byte not immediately followed by LF is PARSE_ERROR. LF and CRLF may coexist; each recognized terminator delimits exactly one logical line.",
       "REGION": "Logical lines from file start through the line immediately before the first zero-length logical line. If no zero-length logical line occurs, REGION is all logical lines. Line terminator bytes are never part of a logical line.",
-      "LINE_GRAMMAR": "^([A-Z][A-Z0-9_]*)[ ]*:[ ]*(.*)$",
+      "LINE_GRAMMAR": "ASCII structural grammar: KEY SP* ':' SP* VALUE, where KEY = [A-Z][A-Z0-9_]*, SP = U+0020 only, and VALUE is the remaining Unicode scalar sequence of the logical line, possibly empty.",
       "DUPLICATE_KEY_RULE": "Any duplicate metadata key in REGION by exact case-sensitive key equality => PARSE_ERROR",
       "FINDING_ID": "exact FINDING_ID metadata key or ABSENT",
       "TYPE_RAW": "TYPE value or null when absent",
       "SEVERITY_RAW": "SEVERITY value or null when absent",
       "STATUS_RAW": "STATUS value or null when absent",
-      "VALUE_RULE": "Captured values are the exact UTF-8-decoded Unicode scalar sequence of group 2 after removal only of the grammar's syntactic separator spaces. No semantic trimming, case folding, newline normalization, or inference.",
-      "BOUNDARY_WHITESPACE_RULE": "Validate FINDING_ID using IDENTIFIER_WHITESPACE.BOUNDARY_RULE; do not use runtime trim/strip."
+      "VALUE_RULE": "VALUE is preserved exactly as returned by LINE_PARSE_ALGORITHM. No semantic trimming, case folding, normalization, newline conversion, or inference is applied to VALUE.",
+      "BOUNDARY_WHITESPACE_RULE": "Validate FINDING_ID using IDENTIFIER_WHITESPACE.BOUNDARY_RULE; do not use runtime trim/strip.",
+      "LINE_PARSE_ALGORITHM": "Parse the logical line left-to-right without locale or regex-engine semantics: consume one ASCII A-Z, then zero or more ASCII A-Z/0-9/underscore as KEY; consume zero or more U+0020; require one ':'; consume zero or more U+0020; the exact remaining scalar sequence is VALUE. Any line not matching this algorithm is not a metadata line."
     },
     "NO_ALIAS_SUBSTITUTION": [
       "ORIGINAL_SEVERITY",
@@ -266,7 +267,7 @@
     "KEY": "FINDING_ID",
     "SAME_PATH_MULTI_DISCOVERY": "DEDUPE_AND_UNION_REFERENCES",
     "DISTINCT_PATH_SAME_ID": "DUPLICATE_FINDING_ID_CONFLICT",
-    "REQUIRE_FINDING_ID_ALREADY_NFC": true,
+    "REQUIRE_FINDING_ID_ALREADY_NFC": "NFC under UNICODE_PROFILE",
     "REQUIRE_NO_SURROUNDING_UNICODE_WHITESPACE": "IDENTIFIER_WHITESPACE.BOUNDARY_RULE"
   },
   "ORDERING": {
@@ -340,9 +341,10 @@
     "ENCODING": "UTF-8",
     "BOM_POLICY": "UTF-8 BOM bytes EF BB BF at file start are forbidden for JSON and Markdown candidates; occurrence makes the candidate PARSE_ERROR.",
     "INVALID_UTF8": "PARSE_ERROR",
-    "JSON_MEMBER_UNIQUENESS": "After JSON string escape decoding, every object at every nesting depth MUST have unique member names by exact Unicode scalar sequence, case-sensitive, before any semantic extraction. Any duplicate member name is PARSE_ERROR.",
+    "JSON_MEMBER_UNIQUENESS": "After JSON string escape decoding under JSON_STRING_ESCAPE_POLICY, every object at every nesting depth MUST have unique member names by exact Unicode scalar sequence, case-sensitive, before any semantic extraction. Any duplicate member name is PARSE_ERROR.",
     "JSON_TOP_LEVEL": "Top-level value MUST be an object for a finding candidate; otherwise PARSE_ERROR.",
-    "JSON_NUMBER_SEMANTICS": "Authority extraction reads only the named string-bearing authority fields; number representation never supplies or coerces FINDING_ID, TYPE, SEVERITY, or STATUS."
+    "JSON_NUMBER_SEMANTICS": "Authority extraction reads only the named string-bearing authority fields; number representation never supplies or coerces FINDING_ID, TYPE, SEVERITY, or STATUS.",
+    "JSON_STRING_ESCAPE_POLICY": "Every JSON string, including object member names, MUST decode to a sequence of Unicode scalar values. A \\u escape encoding an unpaired UTF-16 surrogate is PARSE_ERROR. A valid high+low surrogate pair decodes to its single supplementary scalar value before member-name equality is evaluated."
   },
   "IDENTIFIER_WHITESPACE": {
     "POLICY_VERSION": "NEXY_IDENTIFIER_BOUNDARY_WHITESPACE_V1",
@@ -405,5 +407,11 @@
     "HASH": "detail_hash = SHA-256(UTF8(JCS({domain:DOMAIN,code,path_or_null,finding_id_or_null}))) lowercase 64-hex",
     "FREEFORM_TEXT_EXCLUDED": true,
     "RULE": "No implementation-generated message text, stack trace, locale text, map iteration order, or hidden diagnostic payload participates in detail_hash."
+  },
+  "UNICODE_PROFILE": {
+    "VERSION": "Unicode 15.1.0",
+    "NORMALIZATION_STANDARD": "Unicode Standard Annex #15 for Unicode 15.1.0",
+    "NORMAL_FORM": "NFC",
+    "RULE": "Every requirement that says NFC refers only to this pinned profile. Implementations whose normalization library cannot establish Unicode 15.1.0-compatible NFC for an input MUST fail closed rather than substitute an ambient-version result."
   }
 }
