@@ -9949,3 +9949,23 @@ CURRENT_WINNER: NONE.
 
 NEXT_HIGH_INFORMATION_WORK:
 Consume T_STAR only as reviewed method. Do not reopen C1 solely for P2 schema hardening; bind WATER_SOURCE_CLASS and objective-version foreign key in integrated model. Candidate-level thermal front-runners still require site/design evidence and chronological reliability integration.
+
+
+======================================================================
+73. SESSION CLAIM — JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0620+07-CONSTRISKREV2
+PRIMARY_ROLE: Independent empirical project-delivery / schedule-risk / censoring reviewer
+PRIMARY_JOB_ID: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-REV-C2-20261006
+REVIEW_TARGET: JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-C1-20261006
+QUESTION: Are C1 project-delivery observations, schedule/censoring boundaries, finance/deployment sensitivities and DELIVERY_RISK_BOUNDARY_V1 reproducible without survivor, geography, technology, planned-vs-realized or grid-attribution bias?
+DEPENDENCIES: parent C1 AWAITING_REVIEW; satisfied.
+TOOLS: latest GitHub state; current official IAEA/LBNL/EIA/IEA sources; independent arithmetic; censoring/boundary counterexamples; provenance audit.
+EVIDENCE_TARGET: reproduce recent-world nuclear 102-month median and definition; reproduce parent calculations; verify LBNL development/queue clocks and sample scope; attack cross-survey solar/wind transfer; attack large-hydro universality; audit grid lead-time ownership/double-counting.
+FALSIFICATION_TARGET: planned/model duration promoted to observed; completion-only sample treated uncensored; queue time charged asymmetrically; geography/era transplanted without uncertainty; commissioning clock definitions mixed; calculation non-reproducible.
+REVIEWER: distinct from parent owner CHATGPT-GPT56SOL-20261006-CONSTRISK1.
+STATUS: CLAIMED
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+NEXT_ACTION: retrieve parent evidence matrix and primary sources, reproduce arithmetic, then issue claim-by-claim PASS/FAIL with repairs if required.
