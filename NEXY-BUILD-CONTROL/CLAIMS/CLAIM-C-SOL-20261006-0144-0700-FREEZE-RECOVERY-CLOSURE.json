@@ -2,12 +2,12 @@
   "CLAIM_ID": "CLAIM-C-SOL-20261006-0144-0700-FREEZE-RECOVERY-CLOSURE",
   "CHAT_ID": "C-SOL-20261006-0144-0700",
   "CREATED_AT": "2026-10-06T01:44:00+07:00",
-  "STATUS": "ACTIVE",
+  "STATUS": "IMPLEMENTED_WORKER_AWAITING_EXECUTABLE_TEST_AND_BASE_REFRESH",
   "PRIORITY": "P1",
   "SOURCE_REPOSITORY": "goif74945-crypto/NEXY.AI-",
   "BASE_BRANCH": "NEXY.AI-Test-AI",
   "BASE_SHA": "c992805ab59195d50d8dd8fd0dd5ce1b3cc9d317",
-  "WORKER_BRANCH": "work/NEXY-AI-Test-AI/C-SOL-20261006-0144-FREEZE-RECOVERY-CLOSURE",
+  "WORKER_BRANCH": "work/NEXY-AI-Test-AI/C-SOL-20261006-0144-FREEZE-RECOVERY-CLOSURE-r2",
   "TASK_IDS": [
     "TASK-DOC-C5-6-RECOVER-AUDIT-BEHAVIOR-001",
     "TASK-DOC-C4-FREEZE-RECOVER-AUDIT-ACTOR-001",
@@ -48,5 +48,35 @@
     "Event or audit persistence failure cannot produce successful recovery response or replay-token commit.",
     "Idempotent replay does not duplicate transition evidence.",
     "NEXY.ai remains untouched."
-  ]
+  ],
+  "CANDIDATE_BASE_SHA": "50146362680f138c6e2cbbbe1fe90f6a01157c60",
+  "CANDIDATE_HEAD_SHA": "56e9d4ddc2af2f17c4441f15fb8b630d728ba6dd",
+  "PULL_REQUEST": {
+    "number": 80,
+    "state": "DRAFT",
+    "merged": false,
+    "merge_authorized": false
+  },
+  "VERIFICATION": {
+    "static_diff_review": "PASS: exactly packages/api/directives.ts and tests/integration/freeze/recover.spec.ts",
+    "static_invariants": {
+      "recovery_success_service_actor_rows": 0,
+      "recovery_success_service_chain_inputs": 0,
+      "recovery_423_paths_using_SYSTEM_IN_FREEZE": 2,
+      "authenticated_denied_calls_with_session_user_id": 5
+    },
+    "exact_sha_attempt": {
+      "candidate_sha": "34fd01a10dbd26098abdff49a51c5ce49d10b241",
+      "workflow_run_id": 37361434042,
+      "workflow_job_id": 111936737266,
+      "conclusion": "INFRA_FAILURE_BEFORE_CHECKOUT",
+      "runner_id": 0,
+      "steps": [],
+      "repository_tests_executed": false
+    },
+    "refreshed_r2_repository_vitest": "NOT_EXECUTED",
+    "refreshed_r2_typecheck": "NOT_EXECUTED"
+  },
+  "INTEGRATION_STATUS": "BLOCKED_FAIL_CLOSED_PENDING_REAL_REPOSITORY_TESTS_INDEPENDENT_REVIEW_AND_REFRESH",
+  "LATEST_OBSERVED_INTEGRATION_SHA_AT_PR_OPEN": "0828481b36b6f252146b07ace40dd4cd0d759ad4"
 }
