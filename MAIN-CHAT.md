@@ -6554,3 +6554,21 @@ F-EGC-044C-REV-P2-001 = CONTROLLED_LIMITATION / DOWNSTREAM_SCHEMA_REQUIRED.
 F-EGC-044C-REV-P2-002 = CONTROLLED_LIMITATION / DOWNSTREAM_SCHEMA_REQUIRED.
 GLOBAL_SOLVED = NO.
 MISSION_STATUS = CONTINUE_REQUIRED.
+
+
+======================================================================
+70. JOB CLAIM — JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-GLOBALCARD-C13-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261005T201700Z-C3REV
+PRIMARY_ROLE: Global causal-resource cardinality / initialization-owner repair architect
+PRIMARY_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-GLOBALCARD-C13-20261006
+QUESTION: Repair inventory/resource ownership so every material initialization has an accepted causal owner regardless of depletability, and one resource ledger item cannot satisfy multiple timed physical effects without explicit globally reconciled allocation.
+DEPENDENCIES: F-EGC-040-SOCBIND-C12-P1-001/P1-002/P2-003; FINPV time-basis verified for its scope; GREENSTATE_V2 C6 is under distinct C7 review and must be version/status gated.
+TOOLS: latest repo state; provenance graph algebra; Python/Wolfram cardinality/date counterexamples; GREENSTATE interface audit.
+EVIDENCE_TARGET: nondepletable greenfield initialization; global initial+terminal cardinality; allocation reconciliation; no-future-resource ownership; physical-state dependency gating; prior C11 regressions preserved.
+FALSIFICATION_TARGET: ownerless material initialization; one atomic resource item owns two causal effects without allocation; future item owns earlier stock; cyclic exemption consumes unverified state protocol; local owner counts pass while global resource cardinality fails.
+REVIEWER_JOB_ID: JOB-EGC-040-REPAIR-SOCDISC-TERMBIND-GLOBALCARD-REV-C14-20261006
+STATUS: EXECUTING
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
