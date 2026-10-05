@@ -12,7 +12,7 @@
     "TEST_ORACLE_DEFECT",
     "VERIFICATION_GAP"
   ],
-  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "STATUS": "IMPLEMENTED_PENDING_RUNTIME_VERIFICATION",
   "OBSERVED": [
     "Final DOC-C GET /api/incidents/:id explicitly requires Audit: INCIDENT_VIEWED.",
     "packages/api/canonical.ts currently calls recordCanonicalRead(..., \"INCIDENT_VIEWED\") for authorized OWNER/AUDITOR reads.",
@@ -36,5 +36,9 @@
   },
   "MUTATION_ARGUMENT": "A mutant that removes the executed recordCanonicalRead call while retaining an inert INCIDENT_VIEWED literal could satisfy the static checker and the current incident behavior test, demonstrating that the required audit side effect is not behaviorally locked.",
   "SOURCE_MUTATION": "NONE",
-  "UNBLOCK_CONDITION": "Create and execute exact-SHA behavioral tests that kill the incident-audit omission mutant; source mutation remains subject to a valid worker-branch namespace."
+  "UNBLOCK_CONDITION": "Create and execute exact-SHA behavioral tests that kill the incident-audit omission mutant; source mutation remains subject to a valid worker-branch namespace.",
+  "IMPLEMENTATION_COMMIT": "6cfb3590223382bb26abaa7e5b2d9ee97807596d",
+  "IMPLEMENTED_TEST_BLOB": "a97480ae1eef22039d18379df168123773c95393",
+  "RUNTIME_VERDICT": "NOT_EXECUTED_INFRA_BLOCKED",
+  "VALIDATION_BLOCKER": "GitHub Actions jobs for exact-SHA commit failed before any step on attempts 1 and 2; no test command executed."
 }
