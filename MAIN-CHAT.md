@@ -3817,3 +3817,218 @@ CLAIM-EGC-047-SYSTEMWIDE: VERIFIED_AS_SIMULATION_SUPPORT_ONLY.
 CLAIM-EGC-047-USEFUL-STAGE: VERIFIED_AS_MODEL/LITERATURE_SYNTHESIS.
 GLOBAL_SOLVED: NO.
 MISSION_STATUS: CONTINUE_REQUIRED.
+
+
+======================================================================
+66. REPAIR RESULT — JOB-EGC-043-BASELINE-FRONTIER-REPAIR-C3-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0440+07-BLREPAIR3
+PRIMARY_ROLE: Mature-baseline completeness repair / common-boundary comparator
+PRIMARY_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-C3-20261006
+STATUS: AWAITING_REVIEW
+SELF_VERIFICATION: FORBIDDEN
+REVIEWER_JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-REV-C4-20261006
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+BRANCH_HEAD_BEFORE_WRITE: c7a76d771af46d037aa0737c6586709d905d500c
+MAIN_CHAT_BLOB_SHA_BEFORE_WRITE: ea47002021d4536d5c8198ac337174899da2d134
+
+OBJECTIVE:
+Repair the mature baseline so storage/flexibility and joint heat-power service are not biased by omission of commercial PSH or by invented CHP co-product value. This repair defines eligibility/comparison rules; it does NOT claim PSH, BESS or CHP is the global winner.
+
+EVIDENCE_ID: EGC-043-BFR3-001
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCE: U.S. EIA Electric Power Monthly Table 6.07.C
+SOURCE_DATE: current page release 2026-08-26; annual row 2025
+URL: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_07_c
+SOURCE_FACT:
+- 2025 time-adjusted utility-scale battery power capacity = 33,209.3 MW; usage factor = 8.3%.
+- 2025 time-adjusted pumped-storage power capacity = 23,156.6 MW; usage factor = 11.9%.
+INTERPRETATION:
+PSH is an operational commercial storage class and cannot be omitted from a strongest-current storage baseline solely because battery deployment is growing faster.
+LIMITATION:
+EIA usage factor is not round-trip efficiency, storage duration, ELCC or adequacy credit. It is NOT used as any of those quantities.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: EGC-043-BFR3-002
+EVIDENCE_CLASS: EXTERNAL_FACT / MODEL_INPUT
+SOURCE: NLR/NREL Electricity ATB 2024b — Pumped Storage Hydropower
+URL: https://atb.nrel.gov/electricity/2024b/pumped_storage_hydropower
+SOURCE_FACT:
+- ATB models PSH using site-level reservoir/powerhouse/conveyance/BOP inputs and adds grid-connection cost based on distance to high-voltage network.
+- representative PSH storage durations are 8, 10 and 12 hours.
+- reported RTE literature range is 70%-87%; ATB central value is 80%.
+- cost/resource values are site-specific and resource-class/geography dependent.
+BOUNDARY:
+PSH is mature but geographically/site constrained. A national-average or technical-potential number may not be assigned to an arbitrary candidate location.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: EGC-043-BFR3-003
+EVIDENCE_CLASS: EXTERNAL_FACT / TECHNICAL_POTENTIAL
+SOURCE: U.S. DOE Water Power Tools and Datasets — Closed Loop Pumped Storage Resource Assessment
+URL: https://www.energy.gov/cmei/water/water-power-tools-and-datasets
+SOURCE_FACT:
+DOE/NLR closed-loop assessment identifies >=10-hour candidate reservoir systems and reports approximately 3.5 TW / 35 TWh U.S. technical potential after geospatial/technical screening.
+TRUTH_CLASS_LOCK:
+TECHNICAL_POTENTIAL != PERMITTED_PROJECT != ECONOMIC_DEPLOYABLE_CAPACITY != FIRM_CAPACITY.
+USE:
+The dataset may support a site-feasibility screen; it may NOT be used as proof that every geography has cheap PSH.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: EGC-043-BFR3-004
+EVIDENCE_CLASS: EXTERNAL_FACT / MODEL_INPUT
+SOURCE: NLR/NREL Electricity ATB 2024b — Utility-Scale Battery Storage
+URL: https://atb.nrel.gov/electricity/2024b/utility-scale_battery_storage
+SOURCE_FACT:
+- utility BESS is represented at 2, 4, 6, 8 and 10 hour durations.
+- base-year installed cost is decomposed into energy ($/kWh) and power/BOS ($/kW) terms, so duration must be explicitly matched.
+- representative RTE = 85%.
+- FOM includes augmentation to sustain rated capacity over a 15-year modeled life.
+BOUNDARY:
+A 4-hour BESS is not an equivalent comparator to a 10-hour PSH service unless chronology/model proves four hours is sufficient. For a 10-hour service test, use a 10-hour BESS representation or an explicitly optimized alternative portfolio.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+EVIDENCE_ID: EGC-043-BFR3-005
+EVIDENCE_CLASS: EXTERNAL_FACT
+SOURCES:
+DOE Combined Heat and Power Basics
+https://www.energy.gov/cmei/ito/combined-heat-and-power-basics
+EPA Methods for Calculating CHP Efficiency
+https://www.epa.gov/chp/methods-calculating-chp-efficiency
+SOURCE_FACT:
+- CHP simultaneously produces electricity/mechanical power and USEFUL thermal energy from one fuel source and is commercially used in industrial/commercial/institutional settings.
+- DOE gives typical total CHP efficiency about 65%-75% (EPA describes typical 60%-80%).
+- EPA total-system efficiency uses net useful electricity + net useful thermal output over fuel input.
+- EPA effective-electric-efficiency method subtracts the counterfactual fuel that would have supplied the useful thermal output, using an explicit displaced-thermal-system efficiency alpha.
+BOUNDARY:
+Only thermal output actually put to a useful service is Q_USE. Dumped/rejected heat receives zero co-product credit.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CALC_ID: CALC-EGC-043-BFR3-001
+EVIDENCE_CLASS: CALCULATION
+TITLE: Same-service 10-hour storage RTE normalization
+INPUT:
+P_discharge=1 GW; duration=10 h; delivered discharge event=10 GWh.
+ATB representative RTE_PSH=0.80; RTE_BESS=0.85.
+EQUATIONS:
+E_charge=E_discharge/RTE.
+OUTPUT:
+PSH charge input=12.5 GWh.
+BESS charge input=11.764705882352942 GWh.
+PSH requires 0.735294117647058 GWh more charging energy for this event, +6.25% relative to BESS charge input.
+REPLICATION:
+Python and Wolfram independently agree to displayed precision.
+INTERPRETATION:
+RTE materially changes charging burden but does NOT alone determine cost winner; CAPEX/O&M/lifetime/replacement/site/network/reliability services still enter common FSRC_ND.
+REVIEW_STATUS: PENDING_INDEPENDENT_REVIEW.
+
+CALC_ID: CALC-EGC-043-BFR3-002
+EVIDENCE_CLASS: CALCULATION / ILLUSTRATIVE_COUNTEREXAMPLE
+TITLE: CHP useful-heat requirement changes valid efficiency credit
+METHOD: EPA equations; values are illustrative, NOT a plant-cost claim.
+INPUT:
+net electricity W_e=1 MWh_e;
+potential recovered useful heat Q=1 MWh_th;
+fuel input F=2.6 MWh_fuel;
+illustrative displaced-boiler efficiency alpha=0.80.
+IF Q is genuinely useful:
+total efficiency=(1+1)/2.6=76.9230769231%.
+effective electric efficiency=1/(2.6-1/0.8)=74.0740740741%.
+IF there is no thermal load and recovered heat is rejected:
+Q_USE=0; electric-only efficiency=1/2.6=38.4615384615%.
+REPLICATION:
+Python and Wolfram independently agree.
+FALSIFICATION:
+Any baseline that credits 1 MWh_th despite no verified simultaneous thermal demand can manufacture an artificial CHP advantage.
+LIMITATION:
+alpha=0.80 and F=2.6 are toy inputs for boundary testing only; actual site/fuel/counterfactual values require evidence.
+
+BASELINE_FRONTIER_V2 — STORAGE ELIGIBILITY
+For each frozen geography g, delivery boundary b, chronology omega and reliability service R_STAR:
+1. Candidate storage set MUST include all mature, service-capable options with evidence, including BESS and PSH where applicable.
+2. PSH eligibility state is one of:
+   SITE_FEASIBLE_WITH_EVIDENCE;
+   NOT_APPLICABLE_WITH_EVIDENCE;
+   UNKNOWN.
+3. SITE_FEASIBLE requires a traceable site/resource candidate plus site-specific or regionally valid treatment of:
+   power MW;
+   energy MWh/duration;
+   hydraulic/site constraints;
+   CAPEX/O&M;
+   RTE;
+   lifetime/refurbishment;
+   water/land/environmental constraints;
+   construction/permitting;
+   interconnection/transmission;
+   initial/terminal storage-state accounting.
+4. National technical potential cannot substitute for item 3.
+5. Compare storage at the same required service: identical delivery point, discharge-power requirement, chronological adequacy/stress set, ancillary-service vector and SOC boundary.
+6. Duration is optimized or matched. Never compare 10-h PSH against 4-h BESS and call it a technology ranking unless R_STAR chronology establishes 4 h is the needed service.
+7. Charging energy is costed once at source; RTE loss remains physical, not a second cost line.
+8. If no PSH site is supported for g, mark NOT_APPLICABLE_WITH_EVIDENCE rather than silently giving PSH a national-average site.
+
+BASELINE_FRONTIER_V2 — CHP ELIGIBILITY
+For service case s:
+1. Define ex ante whether useful thermal/cooling demand exists and its time series Q_required[t], delivery conditions and counterfactual supply.
+2. CHP co-product lane is eligible only if measured/contracted/model-evidenced Q_required overlaps CHP thermal output.
+3. Q_useful[t] <= min(Q_CHP_available[t], Q_required[t]) after thermal distribution losses.
+4. Fuel input, fuel-cycle burden, emissions/compliance, CAPEX/O&M, auxiliaries, interconnection and decommissioning are counted once.
+5. Useful-heat/cooling credit is allowed only against the frozen displaced-service counterfactual and only for actually useful output. Dumped heat credit=0.
+6. Do not both subtract a heat co-product credit and separately omit its allocated fuel/resource burden in a way that double-credits the same service.
+7. Electricity-only bulk-delivery case with no useful thermal sink:
+   CHP_HEAT_CREDIT=NOT_APPLICABLE;
+   CHP may still be evaluated as a power generator if otherwise relevant, but receives no cogeneration bonus.
+8. Multi-service industrial/campus/district case:
+   matched baseline MUST include separate heat+power supply and feasible CHP as competing service architectures.
+
+STRONGEST_BASELINE_RULE_V2:
+BASELINE*(g,s,b,R_STAR) =
+minimum-FSRC_ND portfolio among all EVIDENCE-ELIGIBLE mature architectures that deliver the SAME frozen service vector.
+Eligibility is determined before candidate result inspection.
+A technology absent because NOT_APPLICABLE_WITH_EVIDENCE is not an omission defect.
+A technology absent because UNKNOWN is a material evidence gap if it could plausibly change the frontier.
+
+REPAIR VERDICT:
+- BASELINE SET COMPLETENESS: REPAIRED_PENDING_REVIEW by adding site-feasible PSH and conditional CHP lanes.
+- COMPONENT FRONTIER: CHANGED as a set of admissible mature alternatives; prior battery-only flexibility set is superseded.
+- ACTUAL MINIMUM-COST SYSTEM FRONTIER / CANDIDATE ORDERING: UNKNOWN / NOT_VERIFIED.
+REASON:
+No frozen geography, storage-duration requirement, load/renewable chronology, thermal-demand chronology, reviewed FSRC_ND or fully reviewed R_STAR is yet available. Evidence therefore supports inclusion rules, not a numerical claim that PSH or CHP lowers total system cost in every case.
+
+RED_TEAM:
+- PSH is mature -> universally available: FALSIFIED.
+- 3.5 TW technical potential -> 3.5 TW economic deployable: FALSIFIED.
+- 2025 usage factor -> adequacy credit or RTE: FALSIFIED.
+- 4-h BESS vs 10-h PSH as like-for-like: FALSIFIED unless service requirement is 4 h.
+- higher BESS RTE -> BESS is system-cost winner: FALSIFIED.
+- CHP total efficiency -> free thermal co-product credit: FALSIFIED.
+- no thermal load but recovered heat exists -> useful heat: FALSIFIED.
+- CHP is a primary energy source: FALSIFIED; fuel/process-energy source remains explicit.
+
+CLAIM_GRAPH_UPDATE:
+CLAIM-EGC-043-BF-STORAGE-COMPLETENESS: REPAIRED_PENDING_REVIEW.
+CLAIM-EGC-043-BF-CHP-COMPLETENESS: REPAIRED_PENDING_REVIEW.
+CLAIM-EGC-043-BF-002 FIRM_BASELINE_SET: REPAIR_SUBMITTED / AWAITING_INDEPENDENT_REVIEW.
+CLAIM-EGC-043-BF-006 GLOBAL_SYSTEM_WINNER: UNKNOWN.
+CURRENT_WINNER: NONE.
+
+STATUS_CHANGE:
+JOB-EGC-043-BASELINE-FRONTIER-REPAIR-C3-20261006: EXECUTING -> AWAITING_REVIEW.
+JOB-EGC-043-BASELINE-FRONTIER-C1-20261006: remains REVIEW_FAILED until distinct C4 repair review passes.
+GLOBAL_SOLVED: NO.
+MISSION_STATUS: CONTINUE_REQUIRED.
+
+JOB_ID: JOB-EGC-043-BASELINE-FRONTIER-REPAIR-REV-C4-20261006
+TITLE: Independent review of PSH/CHP baseline-completeness repair
+ROLE: Independent mature-baseline / service-boundary reviewer
+OWNER_SESSION_ID: UNASSIGNED
+QUESTION: Does BASELINE_FRONTIER_V2 include mature PSH and conditional CHP without granting site/geography or co-product privilege, and do its same-service rules prevent PSH/BESS/CHP bookkeeping from biasing the strongest baseline?
+DEPENDENCIES: EGC-043-BFR3-001..005; CALC-EGC-043-BFR3-001..002; BASELINE_FRONTIER_V2 submitted.
+REQUIRED_TOOLS: independent EIA/NLR/DOE/EPA retrieval; independent arithmetic; site/duration/coproduct counterexamples.
+REQUIRED_EVIDENCE: verify PSH maturity/site dependence; reproduce 10-h RTE normalization; attack NOT_APPLICABLE/UNKNOWN distinction; reproduce CHP useful-heat boundary; test double-credit loopholes.
+FALSIFICATION_CONDITION: repair FAILS if a non-feasible PSH site can enter, a feasible mature PSH option can disappear, services/durations are unmatched, dumped heat receives credit, or thermal counterfactual/fuel burden can be double-counted.
+STATUS: OPEN
+BLOCKERS: final numerical system frontier still depends on frozen geography/service, reviewed FSRC_ND and reviewed R_STAR.
+NEXT_ACTION: distinct session independently reviews C4 before baseline completeness is promoted.
