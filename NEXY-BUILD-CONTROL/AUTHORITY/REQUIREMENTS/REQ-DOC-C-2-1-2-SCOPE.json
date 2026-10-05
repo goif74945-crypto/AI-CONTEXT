@@ -1,0 +1,66 @@
+{
+  "REQ_ID": "REQ-DOC-C-2-1-2-SCOPE",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "FINAL_DOC_C",
+  "SPEC_LINES": "raw DOCX paragraphs 9886-9908",
+  "SPEC_TEXT": {
+    "INCLUDED": [
+      "directive execution",
+      "multi-agent debate / verify / consensus",
+      "release policy",
+      "vault revisioning",
+      "temporary OTAC auth",
+      "RBAC",
+      "observability",
+      "queue + idempotency",
+      "UI truth layer",
+      "owner controls",
+      "auditability"
+    ],
+    "EXCLUDED": [
+      "voice orchestration",
+      "AR / VR / XR",
+      "holographic UI",
+      "blockchain",
+      "IoT",
+      "quantum-safe cryptography layer",
+      "self-patch / auto-heal runtime",
+      "public anonymous write access"
+    ]
+  },
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC / ACTIVE SCOPE BOUNDARY",
+  "EXPECTED_BEHAVIOR": [
+    "Required build verification covers each included capability that is further specified by final DOC-C.",
+    "Excluded capabilities are not promoted into required DOC-C build obligations or given authority over active canonical behavior.",
+    "Existing experimental/historical code for excluded capabilities may remain only when it does not alter active DOC-C runtime semantics or authority."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not require excluded capabilities for DOC-C closure.",
+    "Do not allow excluded/experimental surfaces to bypass canonical auth, RBAC, state, release, vault or audit authority.",
+    "Do not delete unrelated historical/experimental code solely because it is excluded from active DOC-C."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "SCOPE",
+    "MISSIONS",
+    "API",
+    "AUTH",
+    "CORE",
+    "SWARM",
+    "RELEASE",
+    "VAULT",
+    "OBSERVABILITY",
+    "QUEUE",
+    "UI",
+    "OWNER_CONTROL",
+    "AUDIT"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "repository-wide active-runtime classification"
+  ],
+  "TEST_PATHS": [
+    "scope audit / authority audit"
+  ],
+  "STATUS": "UNINSPECTED",
+  "LAST_VERIFIED_SHA": null,
+  "CREATED_FROM": "Direct final DOC-C §2.1-§2.2 primary-source mapping; no prior dedicated requirement packet was present."
+}
