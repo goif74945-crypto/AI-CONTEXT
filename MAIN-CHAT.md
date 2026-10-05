@@ -9813,3 +9813,24 @@ BRANCH_HEAD_AT_CLAIM: 0baa44ebbd025ae06f21f8cd6aff497d4fbc9c2d
 MAIN_CHAT_BLOB_SHA_AT_CLAIM: 48bfc816011fc20384b4634004a68bb9c2fd5055
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+59. REVIEW CLAIM — JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-GPT56SOL-20261006T0410+07-FINREV2
+PRIMARY_ROLE: Independent finance/construction boundary reviewer / numerical replicator / source-provenance adversary
+PRIMARY_JOB_ID: JOB-EGC-046-FINANCE-CONSTRUCTION-REV-C2-20261006
+REVIEWED_JOB: JOB-EGC-046-FINANCE-CONSTRUCTION-C1-20261006
+QUESTION: Are FIN_BOUNDARY_V1 and CALC-EGC-046-001..005 reproducible, source-boundary correct, and safe against candidate-specific financing privilege or overnight/all-in CAPEX conflation?
+DEPENDENCIES: primary finance job AWAITING_REVIEW; satisfied. SOCDISC/FINPV common-ledger repairs remain independently authoritative for primary accounting.
+REQUIRED_TOOLS: current official-source retrieval; independent arithmetic implementation; EIA/NREL/NLR/HM Treasury provenance audit; alternative construction-spend timing model.
+EVIDENCE_TARGET: reproduce duration-finance factors and ranking reversal; verify EIA representative durations and overnight-cost exclusion; verify ATB ConFinFactor/WACC treatment; arbitrate HM Treasury 3.5%-vs-announced-3% status if possible; attack real/nominal, tax, subsidy, currency, risk-transfer, residual-value and lifetime assumptions.
+FALSIFICATION_TARGET: any arithmetic error; candidate-specific primary discount privilege; comparison of overnight CAPEX against financed CAPEX; financing transfers counted as real resources; claimed current legal discount rate without operative evidence; ranking stability that disappears under same-boundary construction timing.
+REVIEWER: THIS SESSION IS DISTINCT FROM PRIMARY OWNER.
+STATUS: EXECUTING
+BRANCH_HEAD_AT_CLAIM: 40bdfcf81f7b8945321ccffd3cec7b6268e5c363
+MAIN_CHAT_BLOB_SHA_AT_CLAIM: b0cc8091d0ff3b4411b2930512936ba64f7027c3
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
