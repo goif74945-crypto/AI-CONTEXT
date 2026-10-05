@@ -1,0 +1,29 @@
+{
+  "TASK_ID": "TASK-DOC-C4-FREEZE-RECOVER-ERROR-SURFACE-001",
+  "CREATOR_CHAT": "C-V8-SOL-20261005-1741-B35E",
+  "OWNER_CHAT": "UNASSIGNED",
+  "MISSION_ID": "M01-CONTRACT-LOCK",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "FINDING_ID": "FINDING-DOC-C4-FREEZE-RECOVER-ERROR-SURFACE-001",
+  "STATUS": "BLOCKED_GLOBAL_WORKER_REF_NAMESPACE",
+  "PRIORITY": "P1",
+  "RISK": "HIGH",
+  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "TARGET_PATHS": [
+    "packages/api/directives.ts",
+    "tests/integration/freeze/recover.spec.ts",
+    "scripts/check-doc-c.ts"
+  ],
+  "SEMANTIC_SCOPE": "Align POST /api/freeze/recover canonical error/status behavior and its test oracle to final DOC-C section 4.2 without weakening ownership confidentiality.",
+  "ACCEPTANCE_CRITERIA": [
+    "Canonical route uses only declared 403 FORBIDDEN, 409 FREEZE_RECOVERY_DENIED, and 423 SYSTEM_IN_FREEZE error pairs unless separate active build authority is proven.",
+    "Missing and unowned incidents remain non-enumerating.",
+    "Malformed input behavior is reconciled with final DOC-C authority.",
+    "Tests reject undeclared route error/status drift.",
+    "Exact candidate SHA tests and independent review are required before VERIFIED.",
+    "NEXY.ai remains unchanged."
+  ],
+  "BLOCKER": "INC-BRANCH-NAMESPACE-001",
+  "NEXT_ACTION": "After a compliant isolated worker ref is possible, refresh integration HEAD, claim the target paths, implement the minimal route and oracle repair, test exact SHA, review, integrate, and reverify."
+}
