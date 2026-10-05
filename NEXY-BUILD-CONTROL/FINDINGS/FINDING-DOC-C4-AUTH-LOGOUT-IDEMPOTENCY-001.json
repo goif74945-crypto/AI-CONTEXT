@@ -1,28 +1,25 @@
 {
   "FINDING_ID": "FINDING-DOC-C4-AUTH-LOGOUT-IDEMPOTENCY-001",
   "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
-  "TASK_ID": "TASK-DOC-C4-AUTH-LOGOUT-IDEMPOTENCY-001",
+  "TASK_ID": "TASK-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001",
   "TYPE": "SECURITY_DATA_INTEGRITY_IDEMPOTENCY_DEFECT",
   "SEVERITY": "P1",
-  "STATUS": "REPRODUCED_STATIC_CONTROL_FLOW",
+  "STATUS": "CORROBORATING_DUPLICATE_EVIDENCE",
   "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "CANONICAL_FINDING_ID": "FINDING-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001",
   "OBSERVED": [
-    "handleLogout looks up prior success by auditLog.requestId=idempotency_key and action IN [AUTH_LOGOUT, AUTH_LOGOUT_ALL], without binding the replay to the current action, session, principal, or request fingerprint.",
-    "The prior-success branch executes after current session/device binding lookup but before revoked/expired/role checks and before any revocation mutation.",
-    "Therefore a valid session that reuses an idempotency key previously accepted for another session/principal can receive HTTP 200 {revoked:true} while its own session remains unrevoked.",
-    "The same key can also replay across revoke_all=false versus revoke_all=true because the prior lookup accepts either logout action rather than the current action.",
-    "Existing focused tests prove only that any prior audit row plus a valid bound session returns 200; they do not bind the prior audit row to the current session/principal/action."
+    "handleLogout looks up prior success by auditLog.requestId=idempotency_key and action IN [AUTH_LOGOUT, AUTH_LOGOUT_ALL], without binding replay to current action, session or principal.",
+    "A colliding prior row can return HTTP 200 revoked=true without applying the current requested server-side revocation.",
+    "The same key can alias revoke_all=false and revoke_all=true."
   ],
   "EXPECTED": [
-    "DOC-C says POST /api/auth/logout is idempotent and retry-safe with the same idempotency key; replay must represent the same logical logout request, not an unrelated accepted operation.",
-    "A replay must be bound at minimum to the authenticated principal/session and the current logout action (revoke_all semantics), or to an equivalent exact request fingerprint.",
-    "A mismatched replay key must not return false-success and must not leave a requested session revocation unapplied."
+    "Retry replay must represent the same authenticated logout operation.",
+    "Same key with a different session/principal or revoke_all semantics must not replay as prior success."
   ],
   "SPEC_EVIDENCE": {
-    "FINAL_VERDICT": "DOC-C is the sole build obligation.",
-    "PARAGRAPHS": "10127-10151",
+    "PARAGRAPHS": "10128-10152",
     "ROUTE": "POST /api/auth/logout",
     "IDEMPOTENCY": "required",
     "RETRY": "safe if same idempotency key",
@@ -31,18 +28,13 @@
   "SOURCE_EVIDENCE": {
     "FILE": "packages/api/auth.ts",
     "BLOB_SHA": "0f8c8e21ce39f36b850c0db93ceadaa886088e6b",
-    "PRIOR_LOOKUP": "auditLog.findFirst where requestId=idempotency_key and action in both logout actions",
-    "PRIOR_BRANCH": "if (prior) clears cookies and returns revoked:true without DB mutation",
-    "TESTS": [
-      "tests/coverage/auth-decision-paths.test.ts",
-      "tests/integration/auth/logout.spec.ts"
-    ]
+    "PRIOR_LOOKUP": "requestId=idempotency_key with either logout action",
+    "PRIOR_BRANCH": "returns success without current revocation mutation"
   },
   "STATIC_COUNTEREXAMPLES": [
-    "A logs out current session with key K, producing accepted AUTH_LOGOUT audit row. B with another valid bound session submits key K. Global prior lookup finds A's row; B receives revoked:true; B's DB session is not revoked.",
-    "The same authenticated session first uses key K with revoke_all=false, then submits revoke_all=true with K. The lookup accepts prior AUTH_LOGOUT and returns success without performing revoke-all."
+    "Same key from another live session/principal can false-replay.",
+    "Same key can cross-replay single logout and revoke-all."
   ],
-  "EXECUTION_EVIDENCE": "Targeted runtime execution unavailable: GitHub Actions exact-SHA jobs are zero-step and local fallback clone is blocked by runtime DNS. Static branch-level control flow is exact-SHA evidence; executable regression remains required.",
-  "DUPLICATE_CHECK": "AI-CONTEXT search returned no logout idempotency finding/task record before creation.",
+  "DEDUPLICATION": "Retained as corroborating evidence only. Source repair is owned exclusively by TASK-AUTH-LOGOUT-IDEMPOTENCY-PRINCIPAL-BINDING-001.",
   "MUTATION_STATUS": "BLOCKED_BY_INC-BRANCH-NAMESPACE-001"
 }
