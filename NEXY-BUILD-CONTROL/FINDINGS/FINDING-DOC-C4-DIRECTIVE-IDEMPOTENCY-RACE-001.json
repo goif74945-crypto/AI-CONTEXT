@@ -1,0 +1,73 @@
+{
+  "FINDING_ID": "FINDING-DOC-C4-DIRECTIVE-IDEMPOTENCY-RACE-001",
+  "REQ_ID": "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE",
+  "TASK_ID": "TASK-DOC-C4-DIRECTIVE-IDEMPOTENCY-RACE-001",
+  "CHAT_ID": "C-SOL-20261005-1923-V8-QUEUE",
+  "TYPE": "IDEMPOTENCY_CONCURRENCY_DEFECT",
+  "SEVERITY": "P1",
+  "STATUS": "OPEN_BLOCKED_BY_WORKER_NAMESPACE",
+  "SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "OBSERVED": [
+    "POST /api/directives performs prisma.directiveIdempotency.findUnique({idempotencyKey}) before entering the SERIALIZABLE acceptance transaction.",
+    "Two concurrent identical retries can both observe no idempotency row before either transaction commits.",
+    "The first transaction can commit PipelineRun + DirectiveRecord + DirectiveIdempotency + DirectiveDispatch; the second then collides with a unique constraint and surfaces Prisma P2002.",
+    "The P2002 catch unconditionally returns HTTP 409 INVALID_DIRECTIVE instead of re-reading the now-committed idempotency record and returning the already accepted run.",
+    "Existing focused tests exercise sequential idempotent replay but do not cover the concurrent same-key unique-collision path."
+  ],
+  "EXPECTED": [
+    "Final DOC-C POST /api/directives retry law is: same key returns same accepted run.",
+    "A concurrent duplicate with the same authenticated session and exact canonical request fingerprint must converge to the original accepted run rather than become a conflict solely because another equivalent request won the race.",
+    "A same key used by a different session or different request fingerprint must remain rejected."
+  ],
+  "SPEC_EVIDENCE": {
+    "PRIMARY_DOCX_RAW_PARAGRAPHS": "10153-10202",
+    "IDEMPOTENCY": "10161-10164: required; same key returns same accepted run",
+    "SUCCESS_SHAPE": "10190-10196",
+    "ERROR_MATRIX": "10197-10202",
+    "AUTHORITY": "Final DOC-C is sole build obligation"
+  },
+  "SOURCE_EVIDENCE": {
+    "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+    "BRANCH": "NEXY.AI-Test-AI",
+    "COMMIT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+    "FILE": "packages/api/directives.ts",
+    "BLOB_SHA": "8cd214c87e5aa55561e52347802ec8172feadc36",
+    "SEQUENCE": [
+      "pre-transaction directiveIdempotency.findUnique",
+      "SERIALIZABLE transaction creates directiveIdempotency and other accepted records",
+      "catch P2002 -> HTTP 409 INVALID_DIRECTIVE"
+    ],
+    "SCHEMA_FILE": "prisma/schema.prisma",
+    "SCHEMA_BLOB_SHA": "0c557a1bb9b02859bb479655575c3566e201eb6f",
+    "UNIQUE_BOUNDARIES": [
+      "DirectiveIdempotency.idempotencyKey @unique",
+      "DirectiveRecord.idempotencyKey @unique",
+      "DirectiveDispatch.idempotencyKey @unique"
+    ]
+  },
+  "TEST_EVIDENCE": {
+    "FOCUSED_COVERAGE_TEST": "tests/coverage/directive-create-branches.test.ts",
+    "BLOB_SHA": "6828546ac8ef13ef924d6cca7be56edd2af08c7c",
+    "OBSERVED": "Sequential existing-idempotency replay is covered; no concurrent/P2002-to-replay convergence oracle was found in the inspected directive tests.",
+    "EXECUTED_TEST_EVIDENCE": "NONE_READ_ONLY_SCAN"
+  },
+  "REPRODUCTION": [
+    "Start two POST /api/directives requests A and B with the same authenticated session, same canonical body, and same idempotency key.",
+    "Allow both pre-transaction findUnique calls to return null before either acceptance transaction commits.",
+    "Let A commit first.",
+    "B then reaches its create transaction and receives a unique-constraint P2002.",
+    "Current handler maps B to 409 INVALID_DIRECTIVE rather than resolving the winning idempotency record and returning A's accepted run."
+  ],
+  "CLASSIFICATION": [
+    "CONCURRENCY_DEFECT",
+    "IDEMPOTENCY_DEFECT",
+    "SPEC_MISMATCH",
+    "MISSING_REQUIRED_TEST"
+  ],
+  "HOTSPOT_WITH": [
+    "TASK-DOC-C4-DIRECTIVE-CREATE-CONTRACT-001"
+  ],
+  "MUTATION_STATUS": "BLOCKED_BY_INC-BRANCH-NAMESPACE-001"
+}
