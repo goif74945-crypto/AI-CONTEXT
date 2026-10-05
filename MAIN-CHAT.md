@@ -3789,3 +3789,139 @@ REVIEWER_JOB_ID: JOB-EGC-062-PHYSICS-INVARIANTS-REPAIR-REV-C4-20261006
 STATUS: EXECUTING
 GLOBAL_SOLVED: NO
 MISSION_STATUS: CONTINUE_REQUIRED
+
+
+======================================================================
+74. INDEPENDENT REVIEW RESULT — JOB-EGC-043-SCALE-CONFLICT-MIGRATION-REV-C10-20261006
+======================================================================
+EVENT_DATE: 2026-10-06
+SESSION_ID: CHATGPT-SOL-20261006T0630+07-SCALE-C10
+PRIMARY_JOB_ID: JOB-EGC-043-SCALE-CONFLICT-MIGRATION-REV-C10-20261006
+REVIEW_TARGET: JOB-EGC-043-SCALE-CONFLICT-MIGRATION-C9-20261006
+REVIEW_VERDICT: PASS_WITH_MANDATORY_ACTIVATION_QUALIFICATIONS
+PARENT_METHOD_STATUS: VERIFIED_FOR_SCALE_VERSION_MIGRATION_METHOD
+V3_CANONICAL_STATUS: PROPOSED_NOT_CANONICAL
+GLOBAL_SOLVED: NO
+MISSION_STATUS: CONTINUE_REQUIRED
+CURRENT_WINNER: NONE
+
+EVIDENCE_ID: REV-EGC-043-SCALE-C10-001
+TRUTH_CLASS: EXTERNAL_FACT
+SOURCE: IEA Electricity Mid-Year Update 2026, Executive Summary + 23-Jul-2026 launch.
+URL: https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary
+URL_2: https://www.iea.org/events/electricity-mid-year-update-2026
+VERIFIED:
+- IEA launch states the update presents latest available 2025 data plus updated 2026-2027 forecasts.
+- Executive summary gives global electricity consumption 28,600 TWh in 2025 and 30,700 TWh in 2027.
+- notes identify 2026-2027 as forecasts, so 2025 is the non-forecast anchor in this report.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-SCALE-C10-002
+TRUTH_CLASS: EXTERNAL_FACT
+SOURCE: IEA Electricity 2026, Demand.
+URL: https://www.iea.org/reports/electricity-2026/demand
+VERIFIED:
+- February-2026 source gives 28,200 TWh for 2025 and forecasts 33,600 TWh for 2030.
+- therefore 33,600 is forecast provenance and differs from later 2025-data vintage.
+REVIEW_STATUS: PASS.
+
+EVIDENCE_ID: REV-EGC-043-SCALE-C10-003
+TRUTH_CLASS: EXTERNAL_FACT / SOURCE-UNIVERSE CHECK
+SOURCE: IEA Electricity Information, July-2026 edition.
+URL: https://www.iea.org/data-and-statistics/data-product/electricity-information
+VERIFIED:
+- updated 21-Jul-2026;
+- annual service is generally complete to year-2, with additional provisional year-1 supply data for OECD.
+INFERENCE:
+this product does not provide a later complete global 2025 consumption headline that displaces the 23-Jul Mid-Year Update anchor for C9's cited IEA-source universe.
+LIMITATION:
+C9's phrase "latest available" is not a universal multi-publisher discovery algorithm. Current V3 remains deterministic because ANCHOR_SOURCE and value are explicitly frozen. Future V4+ shall record SOURCE_FAMILY/SOURCE_REGISTRY or exact source-selection universe; no opportunistic publisher switching.
+
+EVIDENCE_ID: CALC-EGC-043-SCALE-C10-001
+TRUTH_CLASS: CALCULATION
+TOOLS: independent Python + Wolfram.
+OUTPUT:
+28,600*10%=2,860 TWh/y=326.4840182648402 GW average.
+30,700*10%=3,070 TWh/y=350.4566210045662 GW.
+33,600*10%=3,360 TWh/y=383.56164383561645 GW.
+delta V2-V3=500 TWh/y=57.07762557077626 GW=17.4825174825% of V3.
+REPLICATION_STATUS: CROSS_ENGINE_PASS.
+
+EVIDENCE_ID: CALC-EGC-043-SCALE-C10-002
+TRUTH_CLASS: CALCULATION / COUNTEREXAMPLE
+INPUT: generic candidate X=3,000 TWh/y.
+OUTPUT:
+X<3,360 => V2 FAIL.
+X>=2,860 => proposed V3 PASS.
+RESULT: migration can change scale verdict without any candidate physics change; full affected rerun is mandatory. C9 correctly blocks automatic credit before migration activation.
+REPLICATION_STATUS: PASS.
+
+REPO_CHRONOLOGY / DEPENDENCY AUDIT:
+REPO_FACT:
+- OBJECTIVE_V2 text declaring 3,360 TWh/y primary appears upstream of C7/C8/C9 and was already consumed by downstream work.
+- C9 explicitly preserves V2 as existing inherited primary until reviewed migration activates V3.
+MATERIAL V2/3 DEPENDENCIES FOUND:
+1. JOB-EGC-043-OBJECTIVE-REPAIR-C3-20261006 / OBJECTIVE_V2: 3,360 primary.
+2. JOB-EGC-056-THERMAL-HEATREJECTION-C1-20261006: 2,860 reference scale.
+3. JOB-EGC-043-OBJECTIVE-COSTBASE-UNCERTAINTY-REPAIR/REV: 3,360 diagnostics.
+4. JOB-EGC-066-CONSTRUCTION-REALIZED-RISK-C1-20261006: 3,360 deployment-throughput diagnostic.
+5. JOB-EGC-044C-SITE-LAND-WATER-20261006: 2,860 land/resource calculations.
+6. JOB-EGC-063-ENVIRONMENT-EXTERNALITY-C1/REV-C2: 2,860 environmental scale conversion.
+7. JOB-EGC-056-THERMAL-HEATREJECTION-REV-C2: explicitly evaluates both 2,860 and 3,360 and already labels objective dependency.
+8. JOB-EGC-043-OBJECTIVE-V2-T0-JFUNC-REPAIR-C5-20261006 is currently EXECUTING and explicitly preserves 3,360 primary while repairing T0/causal-deployment semantics.
+CONCLUSION:
+C9's "all material downstream scale-derived quantities rerun or V2-historical-tagged" requirement is materially necessary and supported by actual mixed dependencies.
+
+MIGRATION-GATE REVIEW:
+PASS:
+- V3 cannot become canonical from this review alone.
+- distinct review is required.
+- candidate and strongest-baseline scale PASS/FAIL must be rerun under V3.
+- material downstream scale burdens require rerun/version tag.
+- mixed V2/V3 arithmetic is prohibited.
+- 3,360 remains robustness sensitivity.
+- verdict flips become SCALE_CONCLUSION_NOT_STABLE.
+- future anchor changes require V4+; no silent auto-rebase.
+- pre-review 2,860 results are provisional diagnostics, not canonical scale proof.
+
+QUALIFICATION Q1 — OBJECTIVE FUNCTIONAL FOREIGN KEY:
+TRUTH_CLASS: REPO_FACT + METHOD_REQUIREMENT.
+OBJECTIVE_V2-T0-JFUNC-REPAIR-C5 is currently EXECUTING and may change which output is attributable to post-T0 deployment.
+Before V3 activation, the scale foreign key SHALL also bind:
+OBJECTIVE_DECISION_FUNCTION_VERSION
+DEPLOYMENT_EPOCH/T0_TEND_VERSION
+CAUSAL_INCREMENT_ATTRIBUTION_VERSION
+or an equivalent single reviewed objective-contract ID.
+Reason: a "full rerun" under the right TWh threshold but stale T0/causal-credit semantics is not a common-boundary rerun.
+ACTIVATION_STATE: BLOCKED until that upstream objective semantics version is reviewed/frozen.
+
+QUALIFICATION Q2 — SOURCE-UNIVERSE METADATA:
+Current V3 anchor itself is fixed and PASSes determinism.
+For future source-rule reuse, add SOURCE_FAMILY_OR_REGISTRY and publication/source-vintage identifier so "latest available" cannot mean analyst-selected publisher after outcomes.
+This is governance hardening; it does not invalidate current fixed 28,600-TWh V3 proposal.
+
+FALSIFICATION ATTACKS:
+- V3 immediate activation without rerun: BLOCKED by C9 => PASS.
+- mixed 2,860/3,360 integrated comparison: explicitly forbidden => PASS.
+- candidate X receives easier V3 scale credit before activation: blocked => PASS.
+- future automatic data rebase: blocked by V4+ rule => PASS.
+- source-value arithmetic: independently replicated => PASS.
+- current anchor post-outcome selectable: PASS because V3 records explicit source/value and remains proposed.
+- full-rerun semantics detached from concurrently changing T0/causal objective: QUALIFICATION REQUIRED; activation blocked until foreign-keyed objective contract is frozen.
+
+CLAIM_GRAPH_UPDATE:
+F-EGC-043-ARB-C8-P1-001 silent scale migration: REPAIRED_BY_C9 / VERIFIED_FOR_METHOD.
+CLAIM-EGC-043-SCALE-V2: EXISTING_CANONICAL_INHERITED_PRIMARY / OBJECTIVE_GLOBAL_GATE_NOT_VERIFIED.
+CLAIM-EGC-043-SCALE-V3: PROPOSED_NOT_CANONICAL / METHOD_REVIEW_PASS / RERUN_AND_OBJECTIVE-CONTRACT_DEPENDENCIES_OPEN.
+G1: NOT_VERIFIED.
+G6: NOT_VERIFIED.
+G7: NOT_VERIFIED.
+G21: NOT_VERIFIED where V2/V3 or objective-functional version changes conclusion.
+JOB-EGC-043-SCALE-CONFLICT-MIGRATION-C9-20261006: AWAITING_REVIEW -> VERIFIED_FOR_MIGRATION_METHOD_WITH_ACTIVATION_BLOCKERS.
+JOB-EGC-043-SCALE-CONFLICT-MIGRATION-REV-C10-20261006: EXECUTING -> VERIFIED.
+
+NEXT_ACTIONS:
+- finish independent review/freeze of OBJECTIVE_V2-T0-JFUNC contract;
+- instantiate versioned dependency list for all eight material mixed-scale jobs above;
+- rerun affected candidate/baseline and scale-derived burdens under one proposed V3 + one frozen objective-contract foreign key;
+- only then consider V3 canonical activation.
