@@ -8805,3 +8805,245 @@ WRITE_INTEGRITY:
 - latest MAIN-CHAT.md SHA immediately before write: df1be14b1226570f2743f12d9b6eb8bd9e5a4708
 - stale-write guard: exact current blob SHA; no force push; append-only.
 - no other file/repository touched.
+
+
+======================================================================
+37. TOOL EVIDENCE PACKAGE — JOB-EGC-FISSION-SRC-A1-20261005
+======================================================================
+
+SESSION_ID: CHATGPT-SOL-20261005T190600Z-A1
+PRIMARY_JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+STATUS: AWAITING_REVIEW
+GLOBAL_SOLVED: NO
+CURRENT_WINNER: NONE
+
+TOOL_EVIDENCE_ID: EVID-EGC-FISSION-A1-001
+JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+CLAIM_ID: CLAIM-FISSION-OPERABILITY-001
+TOOL_OR_METHOD: IAEA PRIS operational-statistics retrieval
+PURPOSE: Establish observed fleet availability.
+EXECUTION_DATE: 2026-10-05
+INPUTS: PRIS Energy Availability Factor Trend, 2025 row.
+PARAMETERS: Commercial reactors with data.
+VERSION_OR_MODEL: IAEA PRIS; updated 2026-07-27.
+SOURCE_OR_DATASET: IAEA Power Reactor Information System.
+SOURCE_DATE: 2026-07-27 / operating year 2025.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx
+COMMAND_CODE_EQUATION_OR_METHOD: Direct source extraction.
+RAW_OR_KEY_OUTPUT: 2025 weighted-average EAF 84.1%; 362 GW(e); 402 reactors with data. 2024=83.8%; 2023=82.6%.
+UNITS: percent; GW(e); reactor count.
+UNCERTAINTY: Numeric sampling uncertainty UNKNOWN; coverage limited to reactors with data.
+ASSUMPTIONS: NONE for source values.
+LIMITATIONS: EAF != capacity factor != net annual generation.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect 2025 PRIS EAF row.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT / OPERATIONAL_DATA.
+CLAIM_SUPPORTED: Commercial fission demonstrates high availability at hundreds-of-GW scale.
+CLAIM_NOT_SUPPORTED: High availability does not prove low new-build cost.
+
+TOOL_EVIDENCE_ID: EVID-EGC-FISSION-A1-002
+JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+CLAIM_ID: CLAIM-FISSION-SCALE-001
+TOOL_OR_METHOD: IEA Global Energy Review 2026 retrieval
+PURPOSE: Establish recent additions, retirements, construction starts and pipeline.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA nuclear technology page.
+PARAMETERS: Calendar year 2025; IAEA PRIS snapshot accessed by IEA 2026-03-25.
+VERSION_OR_MODEL: IEA Global Energy Review 2026.
+SOURCE_OR_DATASET: International Energy Agency.
+SOURCE_DATE: 2026.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/global-energy-review-2026/technology-nuclear
+COMMAND_CODE_EQUATION_OR_METHOD: Direct extraction.
+RAW_OR_KEY_OUTPUT: 3 GW new in 2025; 3 GW retired; reported global capacity stayed 420 GW; 10 construction starts totaling 12.2 GW; 78 GW under construction in 15 countries; half of under-construction capacity in China; 94% of reactors starting construction over past decade were Chinese/Russian designs.
+UNITS: GW; counts; percent.
+UNCERTAINTY: Snapshot/boundary differs from later live PRIS; IEA notes Japan suspended-reactor treatment.
+ASSUMPTIONS: NONE.
+LIMITATIONS: Under-construction capacity does not prove completion date, cost or future EAF.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect IEA 2026 nuclear page.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Active tens-of-GW build pipeline with strong geographic/design concentration.
+CLAIM_NOT_SUPPORTED: Pipeline proves cheap/rapid deployment.
+
+TOOL_EVIDENCE_ID: EVID-EGC-FISSION-A1-003
+JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+CLAIM_ID: CLAIM-FISSION-GENERATION-001
+TOOL_OR_METHOD: Ember Global Electricity Review 2026 retrieval
+PURPOSE: Establish demonstrated annual generation scale.
+EXECUTION_DATE: 2026-10-05
+INPUTS: 2025 global nuclear generation and global electricity generation.
+PARAMETERS: Ember 2025 generation boundary.
+VERSION_OR_MODEL: Global Electricity Review 2026.
+SOURCE_OR_DATASET: Ember.
+SOURCE_DATE: 2026-04-21.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://ember-energy.org/latest-insights/global-electricity-review-2026/electricity-demand-and-supply-trends/
+COMMAND_CODE_EQUATION_OR_METHOD: 2812 TWh / 31779 TWh = 8.85%.
+RAW_OR_KEY_OUTPUT: Nuclear 2,812 TWh in 2025; +35 TWh (+1.3%); 8.9% global generation.
+UNITS: TWh/year; percent.
+UNCERTAINTY: Detailed global numeric uncertainty not stated on inspected page.
+ASSUMPTIONS: NONE for source values.
+LIMITATIONS: Ember generation boundary must not be mixed with IEA final-consumption denominator without boundary reconciliation.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect Ember Nuclear section.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+CLAIM_SUPPORTED: Existing fission demonstrates multi-PWh/year, near-10%-world-generation scale.
+CLAIM_NOT_SUPPORTED: LOW_COST or future deployment criteria.
+
+TOOL_EVIDENCE_ID: EVID-EGC-FISSION-A1-004
+JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+CLAIM_ID: CLAIM-FISSION-URANIUM-001
+TOOL_OR_METHOD: OECD-NEA/IAEA Uranium 2026 retrieval + arithmetic
+PURPOSE: Screen present identified uranium-resource scale.
+EXECUTION_DATE: 2026-10-05
+INPUTS: 418 reactors; 378 GWe; ~64,500 tU/y requirement as of 2025-01-01; identified resources >8.1 million tU below USD260/kgU.
+PARAMETERS: Static resource/current-use ratio.
+VERSION_OR_MODEL: Uranium 2026 Red Book.
+SOURCE_OR_DATASET: OECD NEA + IAEA.
+SOURCE_DATE: 2026-09-14.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.oecd-nea.org/jcms/pl_121582/adequate-uranium-resources-available-but-sustained-investment-essential-to-support-global-nuclear-capacity-growth
+COMMAND_CODE_EQUATION_OR_METHOD: 8,100,000 / 64,500 = 125.58 years.
+RAW_OR_KEY_OUTPUT: Static identified-resource/current-requirement ratio >125 years.
+UNITS: tU; tU/year; years.
+UNCERTAINTY: Resource price categories, future demand and mine conversion rates vary; 8.1 MtU is an exceeds/minimum figure.
+ASSUMPTIONS: Static current requirement; no growth.
+LIMITATIONS: NOT a mine/enrichment/fabrication supply forecast; geopolitical and conversion/enrichment bottlenecks unresolved.
+REPRODUCIBILITY_INSTRUCTIONS: Divide cited resource by annual requirement.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+CLAIM_SUPPORTED: Resource quantity alone is not an immediate physical-exhaustion blocker at present demand.
+CLAIM_NOT_SUPPORTED: Fuel-cycle scaling/security is solved.
+
+TOOL_EVIDENCE_ID: EVID-EGC-FISSION-A1-005
+JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+CLAIM_ID: CLAIM-FISSION-NEWBUILD-RISK-001
+TOOL_OR_METHOD: U.S. EIA completed-project evidence + rough normalization
+PURPOSE: Provide realized recent large-reactor cost/schedule risk evidence.
+EXECUTION_DATE: 2026-10-05
+INPUTS: Vogtle 3+4 ~2.2 GW; construction began 2009; original USD14B and 2016/2017 operation expectation; actual operation Unit3 July 2023 and Unit4 April 2024; final total estimated >USD30B.
+PARAMETERS: Nominal total-project/capacity ratio only.
+VERSION_OR_MODEL: EIA Today in Energy 2024-05-01.
+SOURCE_OR_DATASET: U.S. Energy Information Administration.
+SOURCE_DATE: 2024-05-01.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.eia.gov/todayinenergy/detail.php?id=61963
+COMMAND_CODE_EQUATION_OR_METHOD: >30e9/2.2e6=>USD13,636/kW; 14e9/2.2e6≈USD6,364/kW.
+RAW_OR_KEY_OUTPUT: >2.14x nominal total-estimate escalation; commercial dates slipped years beyond original plan.
+UNITS: nominal USD; USD/kW; dates.
+UNCERTAINTY: >USD30B is lower-bound estimate; original/final are not inflation-normalized and financing/accounting boundaries may differ.
+ASSUMPTIONS: 2.2 GW combined capacity used only for rough illustration.
+LIMITATIONS: One U.S. FOAK AP1000 project; NOT global nuclear CAPEX and NOT overnight cost.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect EIA article and repeat ratios.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT + CALCULATION.
+CLAIM_SUPPORTED: Recent advanced-economy new build shows construction/cost-overrun risk large enough to dominate economics.
+CLAIM_NOT_SUPPORTED: All nuclear costs >USD13,636/kW.
+
+TOOL_EVIDENCE_ID: EVID-EGC-FISSION-A1-006
+JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+CLAIM_ID: CLAIM-FISSION-FINANCE-001
+TOOL_OR_METHOD: IEA nuclear financing evidence retrieval
+PURPOSE: Test whether finance/construction risk must be inside economics.
+EXECUTION_DATE: 2026-10-05
+INPUTS: IEA The Path to a New Era for Nuclear Energy, financing chapter.
+PARAMETERS: New large-reactor context.
+VERSION_OR_MODEL: IEA 2025.
+SOURCE_OR_DATASET: International Energy Agency.
+SOURCE_DATE: 2025.
+SOURCE_URL_DOI_OR_IDENTIFIER: https://www.iea.org/reports/the-path-to-a-new-era-for-nuclear-energy/financing-nuclear-projects
+COMMAND_CODE_EQUATION_OR_METHOD: Direct extraction.
+RAW_OR_KEY_OUTPUT: IEA identifies scale, capital intensity, long construction lead times, technical complexity, delays and cost overruns as major financing risks; government/cash-flow de-risking materially affects financeability.
+UNITS: qualitative.
+UNCERTAINTY: Country/project structures vary.
+ASSUMPTIONS: NONE.
+LIMITATIONS: No universal WACC/LCOE supplied.
+REPRODUCIBILITY_INSTRUCTIONS: Inspect IEA financing chapter.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: SOURCE_FACT.
+CLAIM_SUPPORTED: Financing sensitivity is mandatory for fair fission economics.
+CLAIM_NOT_SUPPORTED: One financing structure applies globally.
+
+TOOL_EVIDENCE_ID: EVID-EGC-FISSION-A1-007
+JOB_ID: JOB-EGC-FISSION-SRC-A1-20261005
+CLAIM_ID: CLAIM-FISSION-MISSION-SCALE-001
+TOOL_OR_METHOD: Deterministic arithmetic
+PURPOSE: Translate provisional M1/M2 average-power anchors to indicative fission capacity.
+EXECUTION_DATE: 2026-10-05
+INPUTS: OBJ-EGC-V1 M1=32.1918 GW average; M2=321.918 GW average; PRIS EAF=0.841.
+PARAMETERS: P_capacity=P_average/EAF.
+VERSION_OR_MODEL: deterministic arithmetic.
+SOURCE_OR_DATASET: OBJ-EGC-V1 + EVID-EGC-FISSION-A1-001.
+SOURCE_DATE: 2026-10-05 / 2025 data.
+SOURCE_URL_DOI_OR_IDENTIFIER: INTERNAL_CALCULATION_WITH_PRIS_INPUT.
+COMMAND_CODE_EQUATION_OR_METHOD: M1=32.1918/0.841=38.278 GWe; M2=321.918/0.841=382.780 GWe; 78*0.841=65.598 GW availability-equivalent.
+RAW_OR_KEY_OUTPUT: M1 ~38.3 GWe; M2 ~382.8 GWe; construction-pipeline indicative availability-equivalent ~65.6 GW.
+UNITS: GW(e).
+UNCERTAINTY: Thresholds await review; EAF is not exactly delivered-system capacity factor; future EAF and completion uncertain.
+ASSUMPTIONS: Current fleet EAF used indicatively.
+LIMITATIONS: Not a deployment-time/cost/reliability model.
+REPRODUCIBILITY_INSTRUCTIONS: Repeat equations above.
+INDEPENDENT_REPLICATION: REQUIRED.
+EVIDENCE_CLASS: CALCULATION / NOT_VERIFIED.
+CLAIM_SUPPORTED: Required physical capacity is not orders of magnitude beyond already-demonstrated fleet scale.
+CLAIM_NOT_SUPPORTED: New fission can meet M1/M2 cheaply or on schedule.
+
+RED_TEAM_CHECK:
+- availability => cheapness: FALSIFIED.
+- Vogtle => all nuclear uneconomic: FALSIFIED as overgeneralization.
+- >125 static resource years => secure fuel supply: FALSIFIED.
+- 78 GW pipeline => guaranteed 65.6 GW delivered: FALSIFIED.
+- mixing Ember generation with IEA final consumption: REJECTED pending common-boundary review.
+
+RESULT:
+FACT:
+- Fission has real hundreds-of-GW fleet operation and high measured availability.
+- 2025 global build pipeline is large but concentrated; gross additions were offset by retirements.
+- Existing annual nuclear output is multi-PWh.
+- Identified uranium quantity is large relative to present annual requirement.
+- Vogtle demonstrates material realized cost/schedule risk; IEA confirms finance/construction risk is structurally important.
+INFERENCE:
+- Basic physical conversion and civilization-scale output are demonstrated; new-build cost, finance, deployment, supply chain, safety and waste are decisive unresolved mission variables.
+ASSUMPTION:
+- None promoted to fact.
+UNKNOWN:
+- Harmonized global realized new-build cost distribution; serial-build learning; full fuel-cycle scale; common-boundary safety/waste economics.
+CONFLICT:
+- Global capacity figures differ by snapshot/boundary (IEA 420 GW end-2025; NEA 378 GWe operating at 2025-01-01; PRIS EAF dataset covers 362 GWe with data). Keep labels; do not average.
+FALSIFIED:
+- Operating availability alone proves new-build cost competitiveness.
+
+EVIDENCE_GRAPH_DELTA:
+- CLAIM-FISSION-OPERABILITY-001 <- EVID-EGC-FISSION-A1-001
+- CLAIM-FISSION-SCALE-001 <- EVID-EGC-FISSION-A1-002,-003,-007
+- CLAIM-FISSION-URANIUM-001 <- EVID-EGC-FISSION-A1-004
+- CLAIM-FISSION-NEWBUILD-RISK-001 <- EVID-EGC-FISSION-A1-005,-006
+- DEPENDENT_JOBS: JOB-EGC-008,002,003,013,015,022
+- SOLVED_GATES: partial support only; NONE CLOSED.
+
+STATUS_CHANGE:
+- JOB-EGC-FISSION-SRC-A1-20261005: EXECUTING -> AWAITING_REVIEW.
+- GLOBAL_SOLVED remains NO; USER_SUCCESS_RESPONSE remains DENIED.
+
+NEXT_ACTION:
+- Independent session claims JOB-EGC-FISSION-REV-A1-20261005.
+- Then normalize realized new-build cost + construction-time distributions across serial-build and FOAK regions before JOB-EGC-008 verdict.
+
+### EVENT 2026-10-05T19:30:00Z / CHATGPT-SOL-20261005T190600Z-A1
+ROLE: Nuclear/Firm-Power Evidence Analyst
+OBJECTIVE: Operationally grounded fission evidence without advocacy.
+TARGET_CANDIDATE_OR_QUESTION: FISSION.
+INPUTS: IAEA PRIS; IEA 2026; OECD-NEA/IAEA Uranium 2026; U.S. EIA Vogtle; IEA financing; Ember 2026.
+SOURCE/EVIDENCE: EVID-EGC-FISSION-A1-001..007 above.
+WORK: Separated operational evidence from projections; calculated bounded scale/resource ratios; preserved conflicts; red-teamed favorable overclaims.
+RESULT:
+- FACT: Physical production mechanism and large operational scale are established.
+- INFERENCE: Economics/deployment/supply-chain/safety now dominate the mission decision.
+- UNKNOWN: Full-system winner status.
+- CONFLICT: Source snapshot/boundary differences remain explicit.
+- FALSIFIED: availability=>cheapness; resources=>secured supply; pipeline=>guaranteed deployment.
+RED_TEAM_CHECK: strongest attack was unjustified promotion from operational success to economic PASS; promotion rejected.
+STATUS_CHANGE: JOB-EGC-FISSION-SRC-A1-20261005 -> AWAITING_REVIEW.
+NEXT_ACTION: independent review, then realized-cost/serial-build distribution analysis.
+WRITE_INTEGRITY:
+- branch head read: 913696f330803fad29e6cc45b62e8df87ddb98a1
+- file SHA read: a205e9a4cf25638d628fa89ac6e989bc7c0a52f0
+- stale-write check: exact SHA lease; append-only.
+- commit/result: PENDING_THIS_COMMIT
