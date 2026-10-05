@@ -1,0 +1,61 @@
+{
+  "ACCOUNTING_ID": "INV-608426CB-C-SOL-20261005-1920-EXPLICIT-EXPERIMENTAL-ACCOUNTING-003",
+  "COMPOSES": [
+    "INV-608426CB-C-3B5E71A2",
+    "INV-608426CB-C-SOL-20261005-1913-EXPLICIT-EXPERIMENTAL-OVERLAY-002",
+    "PRIMARY-EXECUTION-SETS-608426CB"
+  ],
+  "REPOSITORY": "goif74945-crypto/NEXY.AI-",
+  "BRANCH": "NEXY.AI-Test-AI",
+  "COMMIT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
+  "TREE_SHA": "e7f603d06db6475a4d72f5d0aed752213d17eb16",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "PURPOSE": "Complete numeric active required-scan accounting for the verified explicit-experimental set without asserting final global DOC-C closure.",
+  "VERIFIED_INPUTS": {
+    "inventory_records": 885,
+    "base_unscanned_required_candidates": 816,
+    "explicit_experimental_sources": 146,
+    "explicit_experimental_tests": 83,
+    "explicit_experimental_unique_paths": 229,
+    "explicit_experimental_missing_from_base_inventory": 0,
+    "explicit_experimental_non_unscanned_paths": 0,
+    "explicit_experimental_overlap_with_active_primary_sets": 0,
+    "phase_f_explicit_experimental_paths": 126
+  },
+  "ACCOUNTING": {
+    "base_unscanned_required_candidates": 816,
+    "explicit_experimental_excluded_candidates": 229,
+    "explicit_experimental_adjusted_required_candidates": 587,
+    "arithmetic": "816 - 229 = 587",
+    "phase_f_only_adjusted_required_candidates": 690,
+    "phase_f_arithmetic": "816 - 126 = 690"
+  },
+  "CLASS_COUNTS_AFTER_OVERLAY_002": {
+    "CONFIG": 40,
+    "BUILD_SUPPORT": 42,
+    "OUT_OF_SCOPE": 15,
+    "DOCUMENTATION": 54,
+    "GENERATED": 2,
+    "AUTHORITATIVE_RUNTIME": 247,
+    "EXPERIMENTAL": 150,
+    "TEST": 252,
+    "CONTRACT": 19,
+    "INTEGRATION": 8,
+    "MIGRATION": 56
+  },
+  "STATUS_SEMANTICS": {
+    "source_inventory_status_mutated": false,
+    "explicit_experimental_paths_remain": "UNSCANNED",
+    "verified_clean_claimed": false,
+    "explanation": "UNSCANNED remains truthful historical scan status; active required-scan accounting excludes verified explicit-experimental paths by scope without rewriting scan outcome."
+  },
+  "FINAL_GLOBAL_DENOMINATOR": {
+    "value": null,
+    "status": "NOT_ASSERTED",
+    "reason": "Other authority-aware scope overlays may still change global canonical membership. The numeric 587 value is exact only for the verified explicit-experimental exclusion applied to the base UNSCANNED set."
+  },
+  "HISTORICAL_INVENTORY_MUTATED": false,
+  "SOURCE_MUTATION": "NONE",
+  "PROTECTED_UPSTREAM_MUTATION": "NONE",
+  "STATUS": "ACCOUNTING_REPAIR_IMPLEMENTED_REVERIFY_REQUIRED"
+}
