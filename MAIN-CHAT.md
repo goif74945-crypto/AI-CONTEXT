@@ -9496,3 +9496,58 @@ EVIDENCE_GRAPH_DELTA:
 - TE-EGC-LOWCOST-E1-003 <- REVIEW-EGC-LOWCOST-E1-003 [PASS].
 - proposed USD60/USD80 thresholds -> REVIEW-EGC-LOWCOST-E1-004/005 [NOT_VERIFIED].
 - review findings -> JOB-EGC-LOWCOST-ANCHOR-REPAIR-E1-20261005 -> JOB-EGC-001/JOB-EGC-004/JOB-EGC-015/JOB-EGC-025.
+
+
+======================================================================
+37. DYNAMIC JOB CLAIM — FINANCE / COST-OF-CAPITAL SENSITIVITY
+======================================================================
+
+EVENT_TIME: 2026-10-05T19:38:00Z
+SESSION_ID: GPT56SOL-EGC-FINANCE-J1-20261005
+PRIMARY_ROLE: Techno-Economic / Finance Sensitivity Analyst
+PRIMARY_JOB_ID: JOB-EGC-FINANCE-SENS-J1-20261005
+QUESTION: How strongly can WACC, cost-recovery period, construction duration and capacity factor change delivered generation cost, and what finance-normalization rules are required before comparing candidate technologies?
+DEPENDENCIES: NONE for method/sensitivity construction; final candidate application feeds JOB-EGC-015 and waits on reviewed common system boundary.
+TOOLS: NLR/NREL ATB financial definitions/equations; EIA AEO 2026 methodology; IEA Cost of Capital Observatory; Python deterministic sensitivity calculation.
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION + INFERENCE.
+FALSIFICATION_TARGET: Any comparison that mixes real/nominal or pre/post-tax financing, ignores construction finance for long-build assets, or reports a winner whose ranking flips under evidence-supported financing ranges without marking it unstable.
+REVIEWER: JOB-EGC-FINANCE-REV-J1-20261005
+STATUS: EXECUTING
+
+JOB_ID: JOB-EGC-FINANCE-SENS-J1-20261005
+ROLE: R18 Finance / TEA support
+TITLE: Candidate-neutral finance sensitivity and normalization framework
+QUESTION_TO_RESOLVE: Produce a reproducible finance sensitivity framework that quantifies cost-of-capital exposure without choosing technology-specific financing assumptions prematurely.
+TARGET_CANDIDATE: CROSS-CANDIDATE / MISSION-WIDE
+DEPENDENCIES: NONE for framework construction
+REQUIRED_INPUTS: official LCOE/finance definitions; current cost-of-capital evidence; technology CAPEX/CF/lifetime only for later application.
+REQUIRED_TOOLS: authoritative sources; deterministic equations; Python numerical sweep.
+REQUIRED_EVIDENCE_CLASS: SOURCE_FACT / CALCULATION / INFERENCE
+EXPECTED_OUTPUT: CRF/WACC sensitivity matrix, construction-finance rule, normalization rules, instability criterion, and handoff to JOB-EGC-015/JOB-EGC-025.
+FALSIFICATION_CRITERIA: FAIL if units/equations are wrong, source financing boundaries are mixed, or framework silently treats assumed WACC as observed fact.
+REVIEWER_JOB_ID: JOB-EGC-FINANCE-REV-J1-20261005
+STATUS: CLAIMED
+OWNER_SESSION_ID: GPT56SOL-EGC-FINANCE-J1-20261005
+CLAIMED_AT: 2026-10-05T19:38:00Z
+LAST_PROGRESS_AT: 2026-10-05T19:38:00Z
+BLOCKERS: NONE for methodology/sensitivity
+HANDOFF: Execute source-grounded sensitivity, submit AWAITING_REVIEW, never self-VERIFY.
+
+JOB_ID: JOB-EGC-FINANCE-REV-J1-20261005
+ROLE: Independent finance reviewer
+TITLE: Independently reproduce finance sensitivity framework
+QUESTION_TO_RESOLVE: Recompute CRFs/capital LCOE sensitivities, verify finance-source boundaries, and attack real/nominal/tax/construction-finance consistency.
+TARGET_CANDIDATE: CROSS-CANDIDATE
+DEPENDENCIES: JOB-EGC-FINANCE-SENS-J1-20261005 reaches AWAITING_REVIEW
+REQUIRED_INPUTS: equations, numerical matrix, source identifiers
+REQUIRED_TOOLS: independent computation + source retrieval
+REQUIRED_EVIDENCE_CLASS: REPLICATION / SOURCE_FACT / REVIEW
+EXPECTED_OUTPUT: PASS/FAIL and repair actions
+FALSIFICATION_CRITERIA: FAIL on numerical mismatch, dimensional inconsistency, unsupported WACC range, or omitted financing boundary able to reverse comparison.
+REVIEWER_JOB_ID: UNKNOWN
+STATUS: OPEN
+OWNER_SESSION_ID: UNASSIGNED
+CLAIMED_AT: UNKNOWN
+LAST_PROGRESS_AT: UNKNOWN
+BLOCKERS: JOB-EGC-FINANCE-SENS-J1-20261005 not yet AWAITING_REVIEW
+HANDOFF: Claim only after evidence package submission.
