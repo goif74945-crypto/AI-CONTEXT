@@ -1,7 +1,7 @@
 {
   "schema_version": "NEXY_MULTI_CHAT_PRODUCT_CLAIM_V1",
   "chat_id": "C-SOL-20261006-0208-INCIDENT-VIEW-RBAC",
-  "status": "CLAIMED",
+  "status": "COMPLETED_INTEGRATED_CI_QUEUED",
   "objective": "Align S7 incident detail UI with canonical incident-read RBAC and truth-copy semantics.",
   "requirement_gap": "DOC-C GET /api/incidents/:id permits OWNER/AUDITOR only. Current S7 fetches incident truth before any role gate and grants OPERATOR a read-only explanation, causing OPERATOR direct visits to convert a deterministic 403 permission denial into 'Incident truth UNKNOWN'.",
   "target_repository": "goif74945-crypto/NEXY.AI-",
@@ -30,5 +30,26 @@
     "Only OWNER sees recovery CTA",
     "AUDITOR sees read-only recovery explanation",
     "Backend remains final authorization authority"
-  ]
+  ],
+  "pr_number": 67,
+  "pr_head_sha": "2f76a6a6aabbf4b1aa9515730af7bba778347100",
+  "merge_sha": "a61c677b686c6017868e9ee222725d3e3eb44183",
+  "post_merge_observed_head": "132b695abceac01c4448d6c806db1294e0a1cac9",
+  "evidence": [
+    "Exact integration S7 checks role before mounting IncidentDetailContent",
+    "Exact integration S7 uses direct Permission denied copy for unauthorized roles",
+    "Exact integration S7 keeps RECOVER OWNER-only and read-only explanation AUDITOR-only",
+    "Corrected DOC-D permission contract is integrated",
+    "Focused structural verification against exact worker contents: PASS",
+    "Both touched integration files were unchanged from worker base before guarded merge",
+    "PR #67 merged with expected head SHA guard",
+    "Merge commit is ancestor of observed live integration head"
+  ],
+  "ci": {
+    "status": "QUEUED",
+    "exact_head_run_id": 37361068477,
+    "six_system_run_id": 37361068495,
+    "note": "No CI pass/fail is claimed until jobs execute."
+  },
+  "completed_at": "2026-10-06T02:12:00+07:00"
 }
