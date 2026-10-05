@@ -566,3 +566,25 @@ GLOBAL_STATE:
 - GLOBAL_SOLVED: NO
 - MISSION_STATUS: CONTINUE_REQUIRED
 - CURRENT_WINNER: NONE
+
+
+======================================================================
+48. INDEPENDENT REVIEW CLAIM — NUCLEAR GROSS/NET DATA RECONCILIATION C1
+======================================================================
+SESSION_ID: SESSION-GPT56SOL-EGC-NUCRECON-REV-D2-20261005
+PRIMARY_ROLE: Independent nuclear-data provenance replicator / conflict arbitrator
+PRIMARY_JOB_ID: JOB-EGC-NUC-DATA-RECON-C1-REV-20261005
+REVIEWED_JOB: JOB-EGC-NUC-DATA-RECON-C1-20261005
+QUESTION: Does independent source inspection support the claim that Ember annual nuclear generation and IAEA PRIS electricity-supplied totals use materially different gross/net boundaries, and is that sufficient to close CONFLICT-EGC-NUC-GEN-2025-C1 for common-boundary modeling without inventing a universal conversion factor?
+DEPENDENCIES: JOB-EGC-NUC-DATA-RECON-C1-20261005 is AWAITING_REVIEW.
+TOOLS: independent Ember methodology retrieval; IAEA PRIS/OPEX definitions; annual-data replay; Python arithmetic; adversarial coverage/vintage audit.
+EVIDENCE_TARGET: SOURCE_FACT + CALCULATION + REPLICATION + CONFLICT_ARBITRATION.
+FALSIFICATION_TARGET: Ember not gross-oriented; PRIS not net/supplied-oriented; annual pairs not reproducible; or coverage/revision evidence explaining enough of the gap to overturn the proposed boundary conclusion.
+STATUS: CLAIMED
+OWNER_SESSION_ID: SESSION-GPT56SOL-EGC-NUCRECON-REV-D2-20261005
+BLOCKERS: NONE.
+NEXT_ACTION: Retrieve both current methodologies independently, reproduce 2023-2025 totals/gaps, test alternative explanations, and PASS/FAIL the proposed resolution while preserving residual UNKNOWN.
+WRITE_INTEGRITY:
+- file SHA before claim: 16c5da33363c7c83dbef99c8e528a78155f7427e
+- claim attempt: 1
+- exact-SHA append only; no force; no other file/repository touched.
