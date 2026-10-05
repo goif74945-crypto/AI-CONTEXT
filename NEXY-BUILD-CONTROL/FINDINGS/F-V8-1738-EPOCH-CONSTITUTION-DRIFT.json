@@ -2,7 +2,7 @@
   "FINDING_ID": "F-V8-1738-EPOCH-CONSTITUTION-DRIFT",
   "TYPE": "CONTROL_PLANE_EPOCH_DRIFT",
   "SEVERITY": "P0_CONTROL",
-  "STATUS": "OPEN",
+  "STATUS": "SUPERSEDED",
   "OBSERVED": [
     "Current user-authorized execution constitution is NEXY::CONTINUOUS-CODE-CLOSURE-EXPERT-SWARM-CONSTITUTION-V8.",
     "NEXY-BUILD-CONTROL/AUTHORITY/EPOCH.json still records constitution V7.",
@@ -18,5 +18,11 @@
     "Do not treat this finding as authorization to alter source branch policy."
   ],
   "SOURCE_MUTATION": "NONE",
-  "REVIEWER_CHAT": "C-V8-SOL-20261005-1738-B35E"
+  "REVIEWER_CHAT": "C-V8-SOL-20261005-1738-B35E",
+  "PRIOR_STATUS": "OPEN",
+  "SUPERSEDED_BY": "NEXY::EQUAL-PEER-FENCED-ATOMIC-DYNAMIC-SCALE-ENGINEERING-CONSTITUTION-V16-RC1.3 migration control state",
+  "SUPERSESSION_REASON": "This finding described a V8-authorized/V7-central-epoch mismatch. The canonical epoch was subsequently advanced to V11 and is now durably FROZEN_FOR_V16_RC1_3_MIGRATION with a V16 Bootstrap Fence. The specific V8-vs-V7 mismatch is no longer current authority.",
+  "CURRENT_EPOCH_STATUS_AT_SUPERSESSION": "FROZEN_FOR_V16_RC1_3_MIGRATION",
+  "CURRENT_LEGACY_CONSTITUTION_AT_SUPERSESSION": "NEXY::TERMINAL-EFFICIENT-CONTINUOUS-CLOSURE-CONSTITUTION-V11",
+  "PRODUCT_MUTATION_AUTHORIZED": false
 }
