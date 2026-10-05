@@ -1,0 +1,51 @@
+{
+  "REQ_ID": "REQ-DOC-C-4-1-GLOBAL-API-LAW",
+  "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "SPEC_PAGE": "FINAL_DOC_C",
+  "SPEC_LINES": "raw DOCX paragraphs 10026-10036",
+  "SPEC_TEXT": [
+    "All responses use SystemEnvelope<T>.",
+    "All mutating routes require secure session + CSRF, except OTAC request/verify.",
+    "All mutating routes require idempotency_key unless explicitly exempt.",
+    "All routes declare auth policy, RBAC owner, retry policy, audit emission, and error matrix."
+  ],
+  "AUTHORITY_CLASS": "DOC-C BUILD SPEC / GLOBAL API LAW",
+  "EXPECTED_BEHAVIOR": [
+    "Every final DOC-C canonical route is checked against the global response-envelope law.",
+    "Every mutating canonical route other than request-otac/verify-otac requires secure session and CSRF.",
+    "Every mutating canonical route requires idempotency_key unless final DOC-C explicitly exempts it.",
+    "Route verification covers auth, RBAC, retry, audit and error semantics rather than adapter existence only."
+  ],
+  "FORBIDDEN_BEHAVIOR": [
+    "Do not infer an exemption that final DOC-C does not state.",
+    "Do not treat an HTTP adapter export as proof of route-law compliance.",
+    "Do not bypass secure session/CSRF/idempotency through helper or internal adapter paths that serve a canonical mutating route."
+  ],
+  "AFFECTED_SYSTEMS": [
+    "API",
+    "AUTH",
+    "CSRF",
+    "IDEMPOTENCY",
+    "AUDIT",
+    "ERRORS",
+    "CONTRACTS",
+    "VALIDATION"
+  ],
+  "DEPENDENCIES": [
+    "REQ-DOC-C-3-2-SYSTEM-ENVELOPE",
+    "REQ-DOC-C-4-CANONICAL-ROUTE-SURFACE"
+  ],
+  "IMPLEMENTATION_PATHS": [
+    "apps/web/app/api/**/route.ts",
+    "packages/api/**/*.ts",
+    "packages/contracts/**/*.ts"
+  ],
+  "TEST_PATHS": [
+    "scripts/check-doc-c.ts",
+    "tests/contract/**",
+    "tests/integration/**"
+  ],
+  "STATUS": "PARTIAL",
+  "STATUS_REASON": "Existing route-surface and envelope requirements cover parts of §4.1, but no dedicated denominator previously mapped all four global API laws across all twelve canonical routes.",
+  "LAST_VERIFIED_SHA": null
+}
