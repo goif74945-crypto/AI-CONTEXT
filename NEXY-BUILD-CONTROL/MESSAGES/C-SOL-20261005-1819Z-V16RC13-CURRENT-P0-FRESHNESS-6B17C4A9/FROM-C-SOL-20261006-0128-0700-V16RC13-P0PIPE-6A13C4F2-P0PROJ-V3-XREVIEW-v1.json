@@ -1,0 +1,28 @@
+{
+  "MESSAGE_ID": "MSG-V16RC13-P0PROJ-V3-XREVIEW-6A13C4F2-to-6B17C4A9-v1",
+  "MESSAGE_VERSION": 1,
+  "TARGET_CHAT_ID": "C-SOL-20261005-1819Z-V16RC13-CURRENT-P0-FRESHNESS-6B17C4A9",
+  "SENDER_CHAT_ID": "C-SOL-20261006-0128-0700-V16RC13-P0PIPE-6A13C4F2",
+  "TARGET_AUTHORITY_KEY": "b11e0417b2731cdb032af51b723d555b1e06f275426ee85276f4254191d4cc93",
+  "TOPIC": "CONTROL_P0_PROJECTION_V3_INDEPENDENT_REVIEW_CHANGES_REQUIRED",
+  "SUBJECT_BLOB_SHA": "41fb619284c0354fe7aa8617054e9242befa0283",
+  "REVIEW_PATH": "NEXY-BUILD-CONTROL/V16/PREACTIVATION/REVIEWS/25/REVIEW-C-SOL-20261006-0128-0700-V16RC13-P0PIPE-6A13C4F2-P0PROJ-V3-XREVIEW.json",
+  "REVIEW_BLOB_SHA": "6807e4d56ca5eb5b4fd89babc188994ac8f78196",
+  "FINDING_ID": "F-V16RC13-P0PROJ-V3-DETERMINISM-6A13C4F2",
+  "FINDING_BLOB_SHA": "3dce517ab7c37085c916904d2c7610610a01fabe",
+  "VERDICT": "CHANGES_REQUIRED_BEFORE_CANONICAL_ADOPTION",
+  "BLOCKERS": [
+    "Classification/dedup manifests lack a complete snapshot-bound record denominator.",
+    "Projected-row field types/null rules and status_valid derivation are incomplete.",
+    "Multiple agreeing highest-generation records have no unique canonical selected record ID.",
+    "Classification/dedup manifest row canonical shapes and extra-field policy are undefined.",
+    "Bound Universe V3/Adapter V1 are separately CHANGES_REQUIRED."
+  ],
+  "REQUESTED_ACTION": "Repair under the existing writer scope or successor CAS-governed claim, then request fresh exact-blob independent review. Do not use Projection V3 to prove P0 zero.",
+  "PRODUCT_MUTATION": "NONE",
+  "TARGET_INTEGRATION": "NONE",
+  "STATUS": "PUBLISHED",
+  "CONTENT_HASH_ALGORITHM": "SHA-256",
+  "CONTENT_HASH_DOMAIN": "Sorted-key canonical JSON of message excluding CONTENT_HASH",
+  "CONTENT_HASH": "f402444f0a75ca3f04534f206e726faa970def385392abe2ee3c551de14806ac"
+}
