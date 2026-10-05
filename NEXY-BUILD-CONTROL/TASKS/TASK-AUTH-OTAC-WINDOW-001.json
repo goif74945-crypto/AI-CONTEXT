@@ -4,7 +4,7 @@
   "REQ_ID": "REQ-DOC-C-AUTH-VERIFY-WINDOW-001",
   "OWNER": "C-8D3A70E2",
   "ROLE": "SPEC_ANALYST_SECURITY_REVIEWER_TEST_DESIGNER",
-  "GOAL": "Keep newly issued active OTACs reachable within the fixed 32-slot verification scan and restore TypeScript/Rust bounded-window parity.",
+  "GOAL": "Guarantee that a newly issued valid active OTAC remains reachable for verification despite retained historical rows, while preserving justified constant-width security hardening.",
   "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "EXPECTED_PARENT_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
   "REQUESTED_WORKER_BRANCH": "NEXY.AI-Test-AI/work/TASK-AUTH-OTAC-WINDOW-001",
@@ -14,12 +14,13 @@
   "REVIEW_REQUIRED": 2,
   "REVIEW_COMPLETED": 0,
   "TEST_EVIDENCE_REQUIRED": true,
+  "AUTHORITY_CORRECTION": "Final DOC-C requires valid one-time-code verification/session creation but does not define session_slots=32 or a 32-slot algorithm. TypeScript/Rust parity is conditional on proving both implement the same active contract.",
   "ACCEPTANCE_CRITERIA": [
-    "Red-first test seeds 32 retained historical rows plus one fresh valid row and proves the baseline excludes the fresh row.",
-    "Candidate keeps a fixed 32-comparison verification loop.",
-    "Fresh valid row succeeds even with more than 32 retained historical rows.",
-    "Expired, consumed, mismatch, lockout and replay semantics remain unchanged except where separately required by DOC-C.",
-    "TypeScript bounded-window behavior is semantically compatible with the Rust ring rule that overwrites the oldest slot.",
-    "Affected tests execute on the exact worker candidate SHA and pass independent review/red-team."
+    "Red-first regression reproduces the current source defect with enough retained historical rows to exclude a fresh valid OTAC from the existing bounded query; the current session_slots=32 value may be used as source-specific fixture evidence, not as a DOC-C oracle.",
+    "Candidate guarantees that the newest valid active OTAC remains semantically reachable under retained history.",
+    "Preserve the existing constant-width/no-early-return comparison hardening unless separate evidence justifies changing it; do not claim its width is DOC-C-mandated.",
+    "Expired, consumed, mismatch, lockout and replay semantics remain unchanged except where separately required by an independently verified requirement.",
+    "Cross-runtime parity is required only after evidence proves the TypeScript route and Rust gate mirror the same active auth contract; do not infer parity authority from similar implementation names.",
+    "Affected tests execute on the exact worker candidate SHA and again after integration, with independent review/red-team."
   ]
 }
