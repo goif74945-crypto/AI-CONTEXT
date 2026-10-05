@@ -3,7 +3,7 @@
   "FINDING_ID": "FINDING-CLOSURE-EXPLICIT-EXPERIMENTAL-REQUIRED-SCAN-ACCOUNTING-001",
   "PRIORITY": "P1",
   "RISK": "CLOSURE_INTEGRITY",
-  "STATUS": "IN_PROGRESS_CONTROL_PLANE",
+  "STATUS": "CONTROL_PLANE_REPAIRED_REVERIFY_REQUIRED",
   "OWNER": "C-SOL-20261005-1920-V8-PHASEF-REVERIFY",
   "SPEC_HASH": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
   "SOURCE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
@@ -22,5 +22,7 @@
     "Preserve historical inventory and existing overlays append-only.",
     "No source mutation and no NEXY.ai mutation."
   ],
-  "CLAIM_BASIS": "Independent reverify found deterministic missing accounting; repair is control-plane only."
+  "CLAIM_BASIS": "Independent reverify found deterministic missing accounting; repair is control-plane only.",
+  "RESULT_ACCOUNTING": "INV-608426CB-C-SOL-20261005-1920-EXPLICIT-EXPERIMENTAL-ACCOUNTING-003",
+  "RESULT_ID": "RESULT-CLOSURE-EXPLICIT-EXPERIMENTAL-ACCOUNTING-001"
 }
