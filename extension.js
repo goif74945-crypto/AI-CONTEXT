@@ -34,8 +34,7 @@ function pkg(name, output) {
       '@types/react-dom': '18.3.1',
       typescript: '5.7.2'
     }
-  }, null, 2) + '
-';
+  }, null, 2) + '\n';
 }
 
 function tsconfig() {
@@ -51,8 +50,7 @@ function tsconfig() {
       noEmit: true
     },
     include: ['src']
-  }, null, 2) + '
-';
+  }, null, 2) + '\n';
 }
 
 function indexTs() {
@@ -62,8 +60,7 @@ function indexTs() {
     '',
     'registerRoot(Root);',
     ''
-  ].join('
-');
+  ].join('\n');
 }
 
 function rootTsx() {
@@ -83,8 +80,7 @@ function rootTsx() {
     '  />',
     ');',
     ''
-  ].join('
-');
+  ].join('\n');
 }
 
 function videoTsx(title, subtitle, accent) {
@@ -127,7 +123,7 @@ function videoTsx(title, subtitle, accent) {
     '  return <div style={{transform:"translateX(" + interpolate(reveal,[0,1],[190,0]) + "px)",opacity:reveal,width:820,padding:"34px 42px",border:"2px solid " + ACCENT + "80",borderRadius:30,background:"rgba(8,12,20,.76)",boxShadow:"0 0 34px " + ACCENT + "20"}}><div style={{fontFamily:"Arial Black,Arial,sans-serif",fontSize:54,color:"#fff"}}>{h}</div><div style={{marginTop:10,fontFamily:"Arial,sans-serif",fontSize:30,fontWeight:700,color:"#bac7d9"}}>{d}</div></div>;',
     '};',
     '',
-    'const Core: React.FC = () => <AbsoluteFill style={{alignItems:"center",justifyContent:"center",gap:30}}><Card i={0} h="HOOK FAST" d="0.0–1.0s: stop the scroll."/><Card i={1} h="MOTION HARD" d="Punch zoom + kinetic typography."/><Card i={2} h="EXPORT CLEAN" d="1080×1920 • 60 FPS • H.264"/></AbsoluteFill>;',
+    'const Core: React.FC = () => <AbsoluteFill style={{alignItems:"center",justifyContent:"center",gap:30}}><Card i={0} h="HOOK FAST" d="0.0\u20131.0s: stop the scroll."/><Card i={1} h="MOTION HARD" d="Punch zoom + kinetic typography."/><Card i={2} h="EXPORT CLEAN" d="1080\u00d71920 \u2022 60 FPS \u2022 H.264"/></AbsoluteFill>;',
     '',
     'const Finale: React.FC = () => {',
     '  const frame = useCurrentFrame();',
@@ -142,8 +138,7 @@ function videoTsx(title, subtitle, accent) {
     '  return <AbsoluteFill style={{overflow:"hidden",background:"radial-gradient(circle at 50% 22%,#17233a 0%,#070a10 38%,#020305 100%)"}}><AbsoluteFill style={{opacity:glow,background:"radial-gradient(circle at 50% 45%," + ACCENT + " 0%,transparent 48%)"}}/>{particles.map((_,i)=><Particle key={i} i={i}/>)}<Sequence from={0} durationInFrames={250}><Hook/></Sequence><Sequence from={220} durationInFrames={420}><Core/></Sequence><Sequence from={650} durationInFrames={250}><Finale/></Sequence></AbsoluteFill>;',
     '};',
     ''
-  ].join('
-');
+  ].join('\n');
 }
 
 async function ensureTarget(dir) {
@@ -166,13 +161,8 @@ async function writeProject(dir, config) {
   await fs.writeFile(path.join(dir, 'src', 'index.ts'), indexTs());
   await fs.writeFile(path.join(dir, 'src', 'Root.tsx'), rootTsx());
   await fs.writeFile(path.join(dir, 'src', 'ViralShort.tsx'), videoTsx(config.title, config.subtitle, config.accent));
-  await fs.writeFile(path.join(dir, '.gitignore'), 'node_modules/
-out/
-');
-  await fs.writeFile(path.join(dir, 'README.md'), '# ViralForge Short
-
-Run npm install, then npm run dev. Render with npm run render.
-');
+  await fs.writeFile(path.join(dir, '.gitignore'), 'node_modules/\nout/\n');
+  await fs.writeFile(path.join(dir, 'README.md'), '# ViralForge Short\n\nRun npm install, then npm run dev. Render with npm run render.\n');
 }
 
 function rootFolder() {
@@ -200,7 +190,7 @@ async function createProject() {
 
   const title = await vscode.window.showInputBox({prompt:'Main hook',value:'THIS WAS BUILT BY AI',ignoreFocusOut:true});
   if (!title) return;
-  const subtitle = await vscode.window.showInputBox({prompt:'Subtitle',value:'CODE → MOTION → VIDEO',ignoreFocusOut:true});
+  const subtitle = await vscode.window.showInputBox({prompt:'Subtitle',value:'CODE \u2192 MOTION \u2192 VIDEO',ignoreFocusOut:true});
   if (!subtitle) return;
   const accent = await vscode.window.showInputBox({prompt:'Accent hex',value:'#00E5FF',validateInput:v=>/^#[0-9A-Fa-f]{6}$/.test(v)?null:'Use #RRGGBB',ignoreFocusOut:true});
   if (!accent) return;
