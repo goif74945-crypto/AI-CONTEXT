@@ -39,9 +39,9 @@
   },
   "scripts": {
     "package": "npx @vscode/vsce package",
-    "lint": "node --check extension.js && node --check scripts/demo.js",
-    "start": "node scripts/demo.js",
-    "demo": "node scripts/demo.js",
+    "lint": "node --check extension.js && node --check scripts/demo.cjs",
+    "start": "node scripts/demo.cjs",
+    "demo": "node scripts/demo.cjs",
     "postinstall": "node -e \"console.log('\\n🔥 ViralForge ready. Run: npm run demo\\n')\""
   },
   "devDependencies": {
