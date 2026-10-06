@@ -241,3 +241,43 @@ Build exact reference implementation and test suite in an isolated local workspa
 - protected_repository_write_actions: `NONE`
 - current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
 - exact_next_legal_action: re-scan current mission and supplemental artifacts for another materially distinct unverified dimension; if none is demonstrably non-duplicate, record the exact blocker rather than extending the concept set or repeating existing assurance
+
+## Checkpoint CP-OBSURE-TRACE-COHESION-07
+
+- timestamp_local: `2026-10-06T11:25:59+07:00`
+- parent_checkpoint: `CP-FRONTIER-COMPOSED-ASSURANCE-06`
+- continuation_type: `DEEPEN_EXISTING_CONCEPT_AND_COMPOSED_INTEGRATION`
+- concept_count_after: `5` (unchanged)
+- deepened_concept: `OBSURE`
+- verified_gap_1: prior runtime assurance correlates events within each effect but certifies a multi-effect witness spliced from different trace/action identities
+- verified_gap_2: prior runtime assurance has no declared cross-effect causal dependency contract
+- role_court_repair_1: a failed parent requiring compensation completes at `COMPENSATION_RESULT`, not its earlier `FAILURE` terminal
+- role_court_repair_2: snapshot the validated dependency dictionary so caller mutation cannot change the admitted graph
+- delivered_design: `OBSURE_TRACE_COHESION_DESIGN.md`
+- delivered_code: `obsure_trace_cohesion.py`
+- delivered_tests: `test_obsure_trace_cohesion.py`
+- integrated_code: `frontier_composed_assurance.py`
+- integrated_tests: `test_frontier_composed_assurance.py`
+- delivered_evidence: `OBSURE_TRACE_COHESION_EVIDENCE.md`
+- persisted_code_commit: `d5a36fc8151fbbe5e05e48a55cb7bae47a318b77`
+- persisted_evidence_commit: `735d7264e54db21cba6cc6b139b70459ad64bd23`
+- tested_tree: `4271432023cbdc68382a729af325d7743545c124`
+- design_blob: `3f9a8e7025d80ae90a706a02fdbf77deef1e5e32`
+- implementation_blob: `5da0b3e77f9a38b4f8f078bced3c985e2ea1fcd2`
+- test_blob: `b835802631a57c7bfbccb376cfead164ce555f06`
+- composed_implementation_blob: `74ae71c50b66bef83823fe7259d06efe2958ec16`
+- composed_test_blob: `b2f77e4f1b549d612e2fce7342ee2dd418539505`
+- evidence_blob: `a0b7218fcab32e373a5ba615898b2c33ee7b8267`
+- compile: `PASS`
+- tests: `152/152 PASS` (`18` new + `134` regression)
+- focused_tests: `35/35 PASS`
+- positive_negative_adversarial_determinism_integration: `PASS`
+- tdd_red_observed: `14 standalone errors before implementation; 19 composed errors before integration; compensation test observed incorrect CERTIFIED; mutable-contract test observed KeyError`
+- role_court_mode: `LOGICAL_ISOLATION`
+- self_audit_repairs: `2` (compensation-aware completion; immutable validated graph snapshot)
+- persistence_readback: `EXACT_BASE64_MATCH` for Design, both Code files, both Test files, and Evidence
+- post_persistence_detached_worktree_verification: `PASS` at exact code commit
+- verification_path_corrections: `2` (collision scan working directory; targeted unittest class selector), both recorded in Evidence
+- protected_repository_write_actions: `NONE`
+- current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
+- exact_next_legal_action: re-scan current mission and supplemental artifacts for another materially distinct unverified dimension; if none is demonstrably non-duplicate, record the exact blocker rather than extending the concept set or repeating existing assurance
