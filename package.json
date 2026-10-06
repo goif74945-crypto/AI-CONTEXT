@@ -2,7 +2,7 @@
   "name": "viralforge-studio",
   "displayName": "ViralForge Studio",
   "description": "One-click live-code social video studio with instant 9:16 viral previews and Remotion rendering for TikTok, Reels, and Shorts.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "goif74945-crypto",
   "engines": {
     "vscode": "^1.95.0"
@@ -39,7 +39,9 @@
   },
   "scripts": {
     "package": "npx @vscode/vsce package",
-    "lint": "node --check extension.js"
+    "lint": "node --check extension.js && node --check scripts/demo.js",
+    "start": "node scripts/demo.js",
+    "demo": "node scripts/demo.js"
   },
   "devDependencies": {
     "@vscode/vsce": "4.0.0"
