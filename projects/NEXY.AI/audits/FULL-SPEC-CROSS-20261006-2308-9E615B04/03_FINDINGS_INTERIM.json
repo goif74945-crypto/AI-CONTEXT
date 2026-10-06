@@ -61,6 +61,67 @@
         "prisma/schema.prisma",
         "prisma/migrations"
       ]
+    },
+    {
+      "finding_id": "FIND-P1-0001",
+      "severity": "P1",
+      "status": "PARTIAL_VERIFIED",
+      "req_ids": [
+        "REQ-0164",
+        "REQ-0165",
+        "REQ-0166",
+        "REQ-0167",
+        "REQ-0168",
+        "REQ-0169",
+        "REQ-0170",
+        "REQ-0171",
+        "REQ-0172"
+      ],
+      "claim": "FSM implements event names and guards, but not the DOC-C typed event payload contracts required for lifecycle events.",
+      "evidence_paths": [
+        "packages/core/vnext-state-matrix.ts",
+        "packages/orch-core/system-state.ts"
+      ],
+      "proof": [
+        "VNextEvent is a string union/object of event names.",
+        "Broad exact-repo searches found no current discriminated event union requiring directive/results_count/evidence_count/confidence/deterministic_match_score/reason/freeze_reason/actor_id payload fields.",
+        "transitionSystemState accepts event string plus independent SetStateContext/boolean guards."
+      ],
+      "root_cause": "Spec-defined typed event payloads were collapsed into event-name plus caller-supplied context/guards.",
+      "blast_radius": "FSM boundary validation, guard provenance, event trace semantics, misuse resistance.",
+      "acceptance_evidence": [
+        "Authoritative discriminated event schema covers REQ-0164..0172.",
+        "FSM boundary runtime-validates payload and derives required guards from validated event/state evidence.",
+        "Negative tests reject missing/malformed fields and actor/payload mismatches."
+      ]
+    },
+    {
+      "finding_id": "FIND-P0-0003",
+      "severity": "P0",
+      "status": "FAIL_VERIFIED",
+      "req_ids": [
+        "REQ-0207"
+      ],
+      "claim": "Global FREEZE does not itself close the canonical output-emission boundary for already STABLE/releaseable pipeline runs.",
+      "evidence_paths": [
+        "packages/orch-core/system-state.ts",
+        "packages/queue/run-state.ts",
+        "packages/api/directives.ts",
+        "scripts/doc-e/e9-incident-lifecycle.ts"
+      ],
+      "proof": [
+        "Global transitionSystemState(error) persists global FREEZE and incident linkage but does not set PipelineRun accepted/releaseable/output fields.",
+        "emitAuthorizedPipelineOutput validates only per-run STABLE/accepted/releaseable/output/hash and does not validate current global SystemState.",
+        "GET /api/directives/:id invokes emitAuthorizedPipelineOutput when the per-run flags pass, without first rejecting global FREEZE/STOP.",
+        "DOC-E E9 forceCanonicalFreeze is followed by a separate recordPipelineRunFailure call before asserting runState=FREEZE and releaseable=false, confirming global FREEZE alone does not perform the per-run revocation."
+      ],
+      "root_cause": "Global availability/freeze authority and per-run release authority are not atomically coupled at the output emission boundary.",
+      "blast_radius": "FREEZE integrity, output release, API truth, incident handling, any previously STABLE unreleased output.",
+      "acceptance_evidence": [
+        "Emission boundary fail-closes whenever durable/current global state is FREEZE or STOP.",
+        "Global FREEZE atomically prevents all pending output emission, including races with concurrent reads.",
+        "Negative race test proves STABLE output cannot emit after or concurrently with a committed global FREEZE."
+      ]
     }
   ],
   "blockers": [
