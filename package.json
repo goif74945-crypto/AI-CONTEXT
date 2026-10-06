@@ -1,8 +1,8 @@
 {
   "name": "viralforge-studio",
   "displayName": "ViralForge Studio",
-  "description": "Generate and render high-impact vertical videos for TikTok, Instagram Reels, and YouTube Shorts directly from VS Code.",
-  "version": "0.1.0",
+  "description": "One-click live-code social video studio with instant 9:16 viral previews and Remotion rendering for TikTok, Reels, and Shorts.",
+  "version": "0.2.0",
   "publisher": "goif74945-crypto",
   "engines": {
     "vscode": "^1.95.0"
@@ -13,11 +13,16 @@
   "activationEvents": [
     "onCommand:viralForge.createShortProject",
     "onCommand:viralForge.openStudio",
-    "onCommand:viralForge.renderShort"
+    "onCommand:viralForge.renderShort",
+    "onCommand:viralForge.runTrendingCatDemo"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
+      {
+        "command": "viralForge.runTrendingCatDemo",
+        "title": "ViralForge: RUN Viral Black Cat Demo"
+      },
       {
         "command": "viralForge.createShortProject",
         "title": "ViralForge: Create Short Video Project"
