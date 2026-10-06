@@ -1,0 +1,5 @@
+.github/**
+.gitignore
+CHANGELOG.md
+node_modules/**
+*.vsix
