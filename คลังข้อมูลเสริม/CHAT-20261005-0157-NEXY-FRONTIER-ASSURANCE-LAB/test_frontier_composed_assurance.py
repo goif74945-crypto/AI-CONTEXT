@@ -15,6 +15,7 @@ from frontier_assurance_lab import (
 from ghostedge_campaign_assurance import CampaignExperiment, PerturbationCampaignContract
 from muscle_input_assurance import MuscleSearchBudget
 from obsure_runtime_assurance import EffectRunExpectation, RuntimeEvent
+from obsure_trace_cohesion import TraceCohesionContract
 from parex_metric_integrity import AttestedPlan, MetricAxis, ParexMetricContract
 from recert_path_integrity import PointerRecoveryPolicy
 
@@ -60,10 +61,10 @@ def telemetry_schemas():
     ]
 
 
-def runtime_events(phases=("INTENT", "START", "SUCCESS")):
+def runtime_events(phases=("INTENT", "START", "SUCCESS"), action="action-1"):
     values = {
         "trace_id": "trace-1",
-        "action_id": "action-1",
+        "action_id": action,
         "effect_id": "write",
         "timestamp": "logical-time",
     }
@@ -102,6 +103,9 @@ def base_request():
         "telemetry_schemas": telemetry_schemas(),
         "runtime_expectations": [EffectRunExpectation("write", "SUCCESS")],
         "runtime_events": runtime_events(),
+        "trace_contract": TraceCohesionContract(
+            "trace-1", "action-1", {"write": ()}
+        ),
     }
 
 
@@ -259,6 +263,19 @@ class ComposedAssuranceAdversarialTests(unittest.TestCase):
 
 
 class ComposedAssuranceIntegrationTests(unittest.TestCase):
+    def test_ready_result_includes_trace_cohesion_binding(self):
+        result = api(self).ComposedFrontierAssurancePipeline().assess(**base_request())
+        self.assertEqual(result["status"], "READY")
+        self.assertEqual(result["gates"]["obsure"]["reason"], "TRACE_COHESIVE")
+        self.assertRegex(result["gates"]["obsure"]["contract_hash"], r"^[0-9a-f]{64}$")
+
+    def test_spliced_action_identity_freezes_composed_pipeline(self):
+        request = base_request()
+        request["runtime_events"] = runtime_events(action="action-2")
+        result = api(self).ComposedFrontierAssurancePipeline().assess(**request)
+        self.assertEqual(result["status"], "FREEZE")
+        self.assertEqual(result["reasons"], ["TRACE_COHESION_INVALID"])
+
     def test_short_circuit_does_not_claim_unexecuted_gates(self):
         request = base_request()
         request["constraints"] = [Constraint("bad", "mode", "NEQ", ("typo",))]

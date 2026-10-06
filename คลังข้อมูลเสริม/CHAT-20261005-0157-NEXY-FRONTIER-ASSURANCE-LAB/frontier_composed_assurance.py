@@ -23,8 +23,11 @@ from ghostedge_campaign_assurance import (
 from muscle_input_assurance import MuscleInputAssurance, MuscleSearchBudget
 from obsure_runtime_assurance import (
     EffectRunExpectation,
-    ObsureRuntimeAssurance,
     RuntimeEvent,
+)
+from obsure_trace_cohesion import (
+    ObsureTraceCohesionAssurance,
+    TraceCohesionContract,
 )
 from parex_metric_integrity import (
     AttestedPlan,
@@ -42,7 +45,7 @@ class ComposedFrontierAssurancePipeline:
         self.parex = MetricIntegrityPruner()
         self.ghostedge = GhostedgeCampaignAssurance()
         self.recert = RecertPathIntegrityAssurance()
-        self.obsure = ObsureRuntimeAssurance()
+        self.obsure = ObsureTraceCohesionAssurance()
 
     @staticmethod
     def _result(
@@ -100,6 +103,7 @@ class ComposedFrontierAssurancePipeline:
         after_state: Mapping[str, Any],
         recovery_policy: RecoveryPolicy,
         pointer_policy: PointerRecoveryPolicy,
+        trace_contract: TraceCohesionContract,
         effects: Iterable[EffectSpec],
         telemetry_schemas: Iterable[TelemetryEventSpec],
         runtime_expectations: Iterable[EffectRunExpectation],
@@ -177,7 +181,11 @@ class ComposedFrontierAssurancePipeline:
                 "runtime_events", runtime_events, RuntimeEvent
             )
             gates["obsure"] = self.obsure.assess(
-                effect_items, schema_items, expectation_items, runtime_items
+                trace_contract,
+                effect_items,
+                schema_items,
+                expectation_items,
+                runtime_items,
             )
         except FreezeError as error:
             gates["obsure"] = self._rejection(error)
@@ -185,6 +193,9 @@ class ComposedFrontierAssurancePipeline:
             return self._freeze("OBSURE_INPUT_REJECTED", completed, gates)
         completed.append("OBSURE")
         if gates["obsure"]["status"] != "CERTIFIED":
-            return self._freeze(gates["obsure"]["reason"], completed, gates)
+            reason = gates["obsure"]["reason"]
+            if reason == "BASE_RUNTIME_INVALID":
+                reason = gates["obsure"]["base"]["reason"]
+            return self._freeze(reason, completed, gates)
 
         return self._result("READY", [], completed, gates)
