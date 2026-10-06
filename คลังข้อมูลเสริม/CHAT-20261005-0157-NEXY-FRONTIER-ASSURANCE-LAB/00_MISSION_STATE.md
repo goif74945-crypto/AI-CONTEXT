@@ -181,3 +181,32 @@ Build exact reference implementation and test suite in an isolated local workspa
 - protected_repository_write_actions: `NONE`
 - current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
 - next_resume_rule: inspect current artifacts and deepen the remaining unverified concept/dimension only if materially distinct and non-duplicate; never add a sixth concept under the current mission acceptance contract
+
+## Checkpoint CP-MUSCLE-INPUT-BUDGET-05
+
+- timestamp_local: `2026-10-06T07:31:18+07:00`
+- continuation_type: `DEEPEN_EXISTING_CONCEPT`
+- concept_count_after: `5` (unchanged)
+- deepened_concept: `MUSCLE`
+- verified_gap_1: original solver accepts unknown constraint literals, including a no-op `NEQ` typo, and returns `SAT`
+- verified_gap_2: original result hash does not bind submitted constraint definitions
+- verified_gap_3: original 22-constraint bound permits a theoretical 4,194,303 subset checks without a caller work budget
+- delivered_design: `MUSCLE_INPUT_BUDGET_DESIGN.md`
+- delivered_code: `muscle_input_assurance.py`
+- delivered_tests: `test_muscle_input_assurance.py`
+- delivered_evidence: `MUSCLE_INPUT_BUDGET_EVIDENCE.md`
+- persisted_code_commit: `dd52f6a8668b402272d585528e0ea3dda25c2942`
+- design_blob: `eb1495536ed57156660109e352a0d1c827b87d33`
+- implementation_blob: `6440d97ef733fce6ad62e223e96bb1372550c504`
+- test_blob: `93a7c4d3c899ec86a8d88be7d8f7ab0f1465f7b6`
+- compile: `PASS`
+- tests: `117/117 PASS` (`21` new + `96` regression)
+- positive_negative_adversarial_integration: `PASS`
+- persistence_readback: `EXACT_MATCH`
+- post_persistence_detached_worktree_verification: `PASS`
+- tdd_red_observed: `20/20 FAIL before implementation`
+- role_court_mode: `LOGICAL_ISOLATION`
+- self_audit_repairs: `1` (reject arbitrary/generator constraint collections before materialization)
+- protected_repository_write_actions: `NONE`
+- current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
+- next_resume_rule: all five concepts now have one verified continuation slice; future work must re-scan for a materially distinct unverified dimension and record a blocker rather than duplicate if none exists
