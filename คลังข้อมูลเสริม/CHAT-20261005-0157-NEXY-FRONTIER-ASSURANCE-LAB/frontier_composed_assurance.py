@@ -20,7 +20,11 @@ from ghostedge_campaign_assurance import (
     GhostedgeCampaignAssurance,
     PerturbationCampaignContract,
 )
-from muscle_input_assurance import MuscleInputAssurance, MuscleSearchBudget
+from muscle_input_assurance import MuscleSearchBudget
+from muscle_conflict_coverage import (
+    ConflictCoverageContract,
+    MuscleConflictCoverageAssurance,
+)
 from obsure_runtime_assurance import (
     EffectRunExpectation,
     RuntimeEvent,
@@ -45,7 +49,7 @@ class ComposedFrontierAssurancePipeline:
     """Admit a proposal only after every hardened adapter passes in fixed order."""
 
     def __init__(self) -> None:
-        self.muscle = MuscleInputAssurance()
+        self.muscle = MuscleConflictCoverageAssurance()
         self.parex = MetricIntegrityPruner()
         self.ghostedge = GhostedgeCampaignAssurance()
         self.recert = RecertAttestationBindingAssurance()
@@ -98,6 +102,7 @@ class ComposedFrontierAssurancePipeline:
         domains: Mapping[str, tuple[str, ...]],
         constraints: list[Constraint] | tuple[Constraint, ...],
         muscle_budget: MuscleSearchBudget,
+        conflict_coverage_contract: ConflictCoverageContract,
         metric_contract: ParexMetricContract,
         plans: Iterable[AttestedPlan],
         campaign_contract: PerturbationCampaignContract,
@@ -118,7 +123,12 @@ class ComposedFrontierAssurancePipeline:
         completed: list[str] = []
 
         try:
-            gates["muscle"] = self.muscle.solve(domains, constraints, muscle_budget)
+            gates["muscle"] = self.muscle.assess(
+                domains,
+                constraints,
+                muscle_budget,
+                conflict_coverage_contract,
+            )
         except FreezeError as error:
             gates["muscle"] = self._rejection(error)
             completed.append("MUSCLE")
@@ -127,7 +137,12 @@ class ComposedFrontierAssurancePipeline:
         if gates["muscle"]["status"] == "UNSAT":
             return self._freeze("UNSAT_CONSTRAINTS", completed, gates)
         if gates["muscle"]["status"] != "SAT":
-            return self._freeze("MUSCLE_BUDGET_EXCEEDED", completed, gates)
+            reason = (
+                "MUSCLE_CONFLICT_COVERAGE_BUDGET_EXCEEDED"
+                if gates["muscle"]["reason"] == "CONFLICT_COVERAGE_BUDGET_EXCEEDED"
+                else "MUSCLE_BUDGET_EXCEEDED"
+            )
+            return self._freeze(reason, completed, gates)
 
         try:
             plan_items = self._finite_sequence("plans", plans, AttestedPlan)

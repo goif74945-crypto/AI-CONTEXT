@@ -14,6 +14,7 @@ from frontier_assurance_lab import (
 )
 from ghostedge_campaign_assurance import CampaignExperiment, PerturbationCampaignContract
 from muscle_input_assurance import MuscleSearchBudget
+from muscle_conflict_coverage import ConflictCoverageContract
 from obsure_runtime_assurance import EffectRunExpectation, RuntimeEvent
 from obsure_trace_cohesion import TraceCohesionContract
 from parex_metric_integrity import AttestedPlan, MetricAxis, ParexMetricContract
@@ -81,6 +82,7 @@ def base_request():
         "domains": {"mode": ("safe", "fast")},
         "constraints": [Constraint("c1", "mode", "EQ", ("safe",))],
         "muscle_budget": MuscleSearchBudget(),
+        "conflict_coverage_contract": ConflictCoverageContract(),
         "metric_contract": contract,
         "plans": [
             attested_plan(contract),
@@ -152,7 +154,42 @@ class ComposedAssuranceNegativeTests(unittest.TestCase):
             Constraint("a", "mode", "EQ", ("safe",)),
             Constraint("b", "mode", "EQ", ("fast",)),
         ]
-        self.assert_freeze(request, "UNSAT_CONSTRAINTS", "MUSCLE")
+        result = self.assert_freeze(request, "UNSAT_CONSTRAINTS", "MUSCLE")
+        self.assertEqual(
+            result["gates"]["muscle"]["reason"],
+            "EXHAUSTIVE_MINIMUM_CONFLICT_COVERAGE",
+        )
+
+    def test_independent_unsat_variables_are_all_covered_at_muscle(self):
+        request = base_request()
+        request["domains"] = {"a": ("safe", "fast"), "b": ("on", "off")}
+        request["constraints"] = [
+            Constraint("a-fast", "a", "EQ", ("fast",)),
+            Constraint("a-safe", "a", "EQ", ("safe",)),
+            Constraint("b-off", "b", "EQ", ("off",)),
+            Constraint("b-on", "b", "EQ", ("on",)),
+        ]
+        result = self.assert_freeze(request, "UNSAT_CONSTRAINTS", "MUSCLE")
+        self.assertEqual(result["gates"]["muscle"]["unsat_variables"], ["a", "b"])
+        self.assertEqual(set(result["gates"]["muscle"]["conflict_families"]), {"a", "b"})
+
+    def test_conflict_coverage_budget_freezes_at_muscle(self):
+        request = base_request()
+        request["constraints"] = [
+            Constraint("deny-fast", "mode", "DENY", ("fast",)),
+            Constraint("deny-safe", "mode", "DENY", ("safe",)),
+            Constraint("eq-fast", "mode", "EQ", ("fast",)),
+            Constraint("eq-safe", "mode", "EQ", ("safe",)),
+        ]
+        request["conflict_coverage_contract"] = ConflictCoverageContract(
+            max_cores_per_variable=3,
+            max_total_cores=128,
+        )
+        self.assert_freeze(
+            request,
+            "MUSCLE_CONFLICT_COVERAGE_BUDGET_EXCEEDED",
+            "MUSCLE",
+        )
 
     def test_no_eligible_plan_freezes_at_parex(self):
         request = base_request()
