@@ -7,7 +7,9 @@
   "engines": {
     "vscode": "^1.95.0"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "activationEvents": [
     "onCommand:viralForge.createShortProject",
     "onCommand:viralForge.openStudio",
@@ -35,7 +37,7 @@
     "lint": "node --check extension.js"
   },
   "devDependencies": {
-    "@vscode/vsce": "^3.6.0"
+    "@vscode/vsce": "4.0.0"
   },
   "license": "MIT"
 }
