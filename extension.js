@@ -141,6 +141,140 @@ function videoTsx(title, subtitle, accent) {
   ].join('\n');
 }
 
+function catDemoHtml() {
+  return [
+    '<!doctype html>',
+    '<html lang="en">',
+    '<head>',
+    '<meta charset="utf-8">',
+    '<meta name="viewport" content="width=device-width,initial-scale=1">',
+    '<title>ViralForge Black Cat Clapping</title>',
+    '<style>',
+    '*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020305;color:#fff;font-family:Arial,Helvetica,sans-serif}',
+    'body{display:grid;place-items:center;background:radial-gradient(circle at 50% 20%,#17233a 0,#080a10 42%,#020305 100%)}',
+    '.frame{position:relative;height:min(96vh,960px);aspect-ratio:9/16;overflow:hidden;border-radius:28px;background:radial-gradient(circle at 50% 46%,rgba(0,229,255,.22),transparent 40%),linear-gradient(180deg,#070a10,#020305);box-shadow:0 0 90px rgba(0,229,255,.18),0 30px 100px #000}',
+    '.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.06) 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(to bottom,transparent,#000 24%,#000 80%,transparent)}',
+    '.rain{position:absolute;inset:-25% 0 0;opacity:.18;filter:blur(.2px);font:700 12px/1.65 Consolas,monospace;color:#00e5ff;white-space:pre;transform:rotate(-5deg) scale(1.25);animation:rain 4s linear infinite}',
+    '@keyframes rain{to{transform:translateY(180px) rotate(-5deg) scale(1.25)}}',
+    '.badge{position:absolute;top:4.5%;left:6%;padding:10px 16px;border:1px solid rgba(0,229,255,.65);border-radius:999px;background:rgba(0,0,0,.48);font-weight:900;font-size:14px;letter-spacing:2px;color:#72f6ff;box-shadow:0 0 24px rgba(0,229,255,.14)}',
+    '.title{position:absolute;z-index:5;top:10%;left:7%;right:7%;font:900 clamp(28px,5.2vh,64px)/.9 "Arial Black",Arial,sans-serif;letter-spacing:-2px;text-transform:uppercase;text-shadow:0 0 22px #00e5ff,0 8px 28px #000;animation:titlePunch .7s cubic-bezier(.18,.85,.2,1.15) both}',
+    '.title span{color:#00e5ff}',
+    '@keyframes titlePunch{0%{transform:scale(1.55) rotate(-4deg);opacity:0}60%{transform:scale(.96) rotate(1deg)}100%{transform:scale(1);opacity:1}}',
+    '.catWrap{position:absolute;left:50%;top:54%;width:82%;transform:translate(-50%,-50%);filter:drop-shadow(0 35px 35px rgba(0,0,0,.8));animation:catIn .55s .35s cubic-bezier(.2,.9,.25,1.25) both}',
+    '@keyframes catIn{from{transform:translate(-50%,-42%) scale(.6);opacity:0}to{transform:translate(-50%,-50%) scale(1);opacity:1}}',
+    'svg{display:block;width:100%;height:auto;overflow:visible}',
+    '#leftArm{transform-box:view-box;transform-origin:168px 455px;animation:leftClap .34s ease-in-out infinite alternate}',
+    '#rightArm{transform-box:view-box;transform-origin:332px 455px;animation:rightClap .34s ease-in-out infinite alternate}',
+    '@keyframes leftClap{0%{transform:rotate(-22deg) translate(-18px,14px)}100%{transform:rotate(18deg) translate(38px,-5px)}}',
+    '@keyframes rightClap{0%{transform:rotate(22deg) translate(18px,14px)}100%{transform:rotate(-18deg) translate(-38px,-5px)}}',
+    '#clapFlash{transform-box:fill-box;transform-origin:center;animation:flash .34s ease-in-out infinite alternate}',
+    '@keyframes flash{0%,52%{opacity:0;transform:scale(.3)}100%{opacity:.95;transform:scale(1.7)}}',
+    '#head{transform-box:fill-box;transform-origin:center;animation:headBob .68s ease-in-out infinite alternate}',
+    '@keyframes headBob{to{transform:translateY(5px) rotate(1.7deg)}}',
+    '.caption{position:absolute;z-index:6;left:5%;right:5%;bottom:7%;text-align:center;font:900 clamp(19px,3.2vh,38px)/1.04 "Arial Black",Arial,sans-serif;text-transform:uppercase;letter-spacing:-.5px;text-shadow:0 4px 18px #000,0 0 14px #000}',
+    '.caption b{display:inline-block;color:#00e5ff;animation:pulse .68s ease-in-out infinite alternate}',
+    '@keyframes pulse{to{transform:scale(1.08);text-shadow:0 0 18px #00e5ff}}',
+    '.scan{position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 0 48%,rgba(255,255,255,.035) 50%,transparent 52%);background-size:100% 8px;mix-blend-mode:screen;opacity:.45}',
+    '.flashScreen{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;animation:screenFlash .68s ease-in-out infinite}',
+    '@keyframes screenFlash{0%,42%,100%{opacity:0}50%{opacity:.055}}',
+    '</style>',
+    '</head>',
+    '<body>',
+    '<main class="frame">',
+    '<div class="grid"></div>',
+    '<div class="rain">const viral = true;\\nrender(frame);\\nCAT.clap();\\nwhile(hype){ship();}\\n010101101010\\nAI → CODE → MOTION\\nconst fps = 60;\\nrender(frame);\\nCAT.clap();\\nwhile(hype){ship();}\\n010101101010\\nAI → CODE → MOTION</div>',
+    '<div class="badge">VIRALFORGE // LIVE</div>',
+    '<div class="title">WHEN THE CODE<br><span>FINALLY RUNS</span></div>',
+    '<div class="catWrap">',
+    '<svg viewBox="0 0 500 760" role="img" aria-label="Original animated black cat clapping">',
+    '<defs><radialGradient id="fur" cx="45%" cy="30%"><stop offset="0" stop-color="#30343a"/><stop offset=".55" stop-color="#111318"/><stop offset="1" stop-color="#050607"/></radialGradient><radialGradient id="palm"><stop offset="0" stop-color="#d7b69d"/><stop offset="1" stop-color="#9f7b67"/></radialGradient></defs>',
+    '<ellipse cx="250" cy="720" rx="150" ry="25" fill="#000" opacity=".65"/>',
+    '<ellipse cx="250" cy="505" rx="128" ry="176" fill="url(#fur)"/>',
+    '<g id="head"><path d="M145 228 L168 120 L226 184 Z" fill="#0a0b0e"/><path d="M355 228 L332 120 L274 184 Z" fill="#0a0b0e"/><path d="M167 170 L178 136 L204 180 Z" fill="#5d3447" opacity=".7"/><path d="M333 170 L322 136 L296 180 Z" fill="#5d3447" opacity=".7"/><ellipse cx="250" cy="257" rx="122" ry="108" fill="url(#fur)"/><ellipse cx="207" cy="241" rx="24" ry="15" fill="#91ff90"/><ellipse cx="293" cy="241" rx="24" ry="15" fill="#91ff90"/><ellipse cx="207" cy="241" rx="6" ry="14" fill="#090b0c"/><ellipse cx="293" cy="241" rx="6" ry="14" fill="#090b0c"/><path d="M242 277 Q250 285 258 277 Q250 295 242 277" fill="#c4888f"/><path d="M188 296 Q250 350 312 296 Q303 365 250 369 Q197 365 188 296Z" fill="#efe9df"/><path d="M202 315 Q250 346 298 315" fill="none" stroke="#34343a" stroke-width="5" stroke-linecap="round"/><path d="M206 329 L211 345 M229 338 L232 354 M271 338 L268 354 M294 329 L289 345" stroke="#aaa39a" stroke-width="3"/></g>',
+    '<path d="M142 410 Q95 480 132 610" fill="none" stroke="#0a0c10" stroke-width="58" stroke-linecap="round"/>',
+    '<path d="M358 410 Q405 480 368 610" fill="none" stroke="#0a0c10" stroke-width="58" stroke-linecap="round"/>',
+    '<g id="leftArm"><path d="M168 430 Q120 498 188 550" fill="none" stroke="#11141a" stroke-width="54" stroke-linecap="round"/><g transform="translate(184 548) rotate(-18)"><ellipse cx="0" cy="0" rx="44" ry="52" fill="url(#palm)"/><rect x="-47" y="-62" width="17" height="65" rx="9" fill="#c8a58e"/><rect x="-27" y="-72" width="17" height="70" rx="9" fill="#d2af96"/><rect x="-6" y="-75" width="17" height="72" rx="9" fill="#d8b69c"/><rect x="15" y="-66" width="17" height="64" rx="9" fill="#caa58e"/></g></g>',
+    '<g id="rightArm"><path d="M332 430 Q380 498 312 550" fill="none" stroke="#11141a" stroke-width="54" stroke-linecap="round"/><g transform="translate(316 548) rotate(18)"><ellipse cx="0" cy="0" rx="44" ry="52" fill="url(#palm)"/><rect x="30" y="-62" width="17" height="65" rx="9" fill="#c8a58e"/><rect x="10" y="-72" width="17" height="70" rx="9" fill="#d2af96"/><rect x="-11" y="-75" width="17" height="72" rx="9" fill="#d8b69c"/><rect x="-32" y="-66" width="17" height="64" rx="9" fill="#caa58e"/></g></g>',
+    '<circle id="clapFlash" cx="250" cy="542" r="20" fill="#fff"/><circle cx="250" cy="542" r="48" fill="none" stroke="#00e5ff" stroke-width="4" opacity=".35"/>',
+    '</svg>',
+    '</div>',
+    '<div class="caption">AI AFTER ONE SUCCESSFUL BUILD<br><b>👏 CLAP. CLAP. CLAP.</b></div>',
+    '<div class="scan"></div><div class="flashScreen"></div>',
+    '</main>',
+    '</body>',
+    '</html>'
+  ].join('\\n');
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function streamCodeIntoEditor(filePath, source) {
+  await fs.writeFile(filePath, '', 'utf8');
+  const uri = vscode.Uri.file(filePath);
+  const document = await vscode.workspace.openTextDocument(uri);
+  const editor = await vscode.window.showTextDocument(document, {
+    viewColumn: vscode.ViewColumn.One,
+    preview: false,
+    preserveFocus: false
+  });
+
+  const chunkSize = 180;
+  for (let i = 0; i < source.length; i += chunkSize) {
+    const chunk = source.slice(i, i + chunkSize);
+    const lastLine = document.lineAt(document.lineCount - 1);
+    const end = lastLine.range.end;
+    const edit = new vscode.WorkspaceEdit();
+    edit.insert(uri, end, chunk);
+    const ok = await vscode.workspace.applyEdit(edit);
+    if (!ok) throw new Error('VS Code rejected a live-code edit.');
+    const nowLast = document.lineAt(document.lineCount - 1);
+    editor.revealRange(new vscode.Range(nowLast.range.end, nowLast.range.end), vscode.TextEditorRevealType.InCenterIfOutsideViewport);
+    await delay(5);
+  }
+  await document.save();
+  return document;
+}
+
+function openCatPreview(source) {
+  const panel = vscode.window.createWebviewPanel(
+    'viralForgeBlackCat',
+    'ViralForge • Black Cat Clapping',
+    vscode.ViewColumn.Beside,
+    {enableScripts: false, retainContextWhenHidden: true}
+  );
+  panel.webview.html = source;
+  return panel;
+}
+
+async function runTrendingCatDemo() {
+  const root = rootFolder();
+  if (!root) {
+    return vscode.window.showErrorMessage('ViralForge: Open any folder first, then run the cat demo.');
+  }
+
+  const target = path.join(root, 'viralforge-black-cat-demo.html');
+  const source = catDemoHtml();
+
+  await vscode.window.withProgress(
+    {
+      location: vscode.ProgressLocation.Notification,
+      title: 'ViralForge: firing live code → viral cat',
+      cancellable: false
+    },
+    async progress => {
+      progress.report({message: 'opening file and streaming code…'});
+      await streamCodeIntoEditor(target, source);
+      progress.report({message: 'launching 9:16 preview…'});
+      await delay(120);
+      openCatPreview(source);
+    }
+  );
+
+  vscode.window.setStatusBarMessage('$(flame) ViralForge: Black Cat Clapping is live', 5000);
+}
+
 async function ensureTarget(dir) {
   try {
     const entries = await fs.readdir(dir);
@@ -168,6 +302,10 @@ async function writeProject(dir, config) {
 function rootFolder() {
   const folders = vscode.workspace.workspaceFolders;
   return folders && folders[0] ? folders[0].uri.fsPath : null;
+}
+
+function npmCommand() {
+  return process.platform === 'win32' ? 'npm.cmd' : 'npm';
 }
 
 function terminal(cwd, command, name) {
@@ -200,8 +338,8 @@ async function createProject() {
     await ensureTarget(dir);
     await writeProject(dir,{name,output:PRESETS[platform],title,subtitle,accent});
     const action = await vscode.window.showInformationMessage('ViralForge created ' + name + ' for ' + platform + '.', 'Install + Studio', 'Render Now');
-    if (action === 'Install + Studio') terminal(dir,'npm install && npm run dev','ViralForge Studio');
-    if (action === 'Render Now') terminal(dir,'npm install && npm run render','ViralForge Render');
+    if (action === 'Install + Studio') terminal(dir,npmCommand() + ' install && ' + npmCommand() + ' run dev','ViralForge Studio');
+    if (action === 'Render Now') terminal(dir,npmCommand() + ' install && ' + npmCommand() + ' run render','ViralForge Render');
   } catch (error) {
     vscode.window.showErrorMessage('ViralForge failed: ' + (error instanceof Error ? error.message : String(error)));
   }
@@ -213,7 +351,7 @@ async function run(script,name) {
   try {
     const data = JSON.parse(await fs.readFile(path.join(root,'package.json'),'utf8'));
     if (!data.scripts || !data.scripts[script]) return vscode.window.showErrorMessage('ViralForge: Missing npm script ' + script + '.');
-    terminal(root,'npm run ' + script,name);
+    terminal(root,npmCommand() + ' run ' + script,name);
   } catch (error) {
     vscode.window.showErrorMessage('ViralForge: ' + (error instanceof Error ? error.message : String(error)));
   }
@@ -223,7 +361,8 @@ function activate(context) {
   context.subscriptions.push(
     vscode.commands.registerCommand('viralForge.createShortProject',createProject),
     vscode.commands.registerCommand('viralForge.openStudio',()=>run('dev','ViralForge Studio')),
-    vscode.commands.registerCommand('viralForge.renderShort',()=>run('render','ViralForge Render'))
+    vscode.commands.registerCommand('viralForge.renderShort',()=>run('render','ViralForge Render')),
+    vscode.commands.registerCommand('viralForge.runTrendingCatDemo',runTrendingCatDemo)
   );
 }
 
