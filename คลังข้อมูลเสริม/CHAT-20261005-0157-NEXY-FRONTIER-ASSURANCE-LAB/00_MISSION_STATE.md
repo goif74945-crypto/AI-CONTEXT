@@ -281,3 +281,43 @@ Build exact reference implementation and test suite in an isolated local workspa
 - protected_repository_write_actions: `NONE`
 - current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
 - exact_next_legal_action: re-scan current mission and supplemental artifacts for another materially distinct unverified dimension; if none is demonstrably non-duplicate, record the exact blocker rather than extending the concept set or repeating existing assurance
+
+## Checkpoint CP-RECERT-ATTESTATION-BINDING-08
+
+- timestamp_local: `2026-10-06T12:24:19+07:00`
+- parent_checkpoint: `CP-OBSURE-TRACE-COHESION-07`
+- continuation_type: `DEEPEN_EXISTING_CONCEPT_AND_COMPOSED_INTEGRATION`
+- concept_count_after: `5` (unchanged)
+- deepened_concept: `RECERT`
+- verified_gap_1: different passing recovery state pairs receive the same prior RECERT result hash
+- verified_gap_2: different passing original/pointer recovery policies receive the same prior RECERT result hash
+- confirmed_original_hash_collision: `3492f3c1c847157c2eace3c188ea0b40fe43978c263f282fcf95bc3e9c5f4e31`
+- role_court_repair: generic canonicalization collapsed list and tuple state commitments; type-tagged state records now keep them distinct
+- delivered_design: `RECERT_ATTESTATION_BINDING_DESIGN.md`
+- delivered_code: `recert_attestation_binding.py`
+- delivered_tests: `test_recert_attestation_binding.py`
+- integrated_code: `frontier_composed_assurance.py`
+- integrated_tests: `test_frontier_composed_assurance.py`
+- delivered_evidence: `RECERT_ATTESTATION_BINDING_EVIDENCE.md`
+- persisted_code_commit: `9cdef2dd5f51cd2da647ce912399ef5f1313fece`
+- persisted_evidence_commit: `460b439ec025997c4e143a7a351f374eb8776fb2`
+- tested_tree: `e6a736ce10197cb7a57404888600e1ff7e7a893a`
+- design_blob: `156746f8d45fb82b8d5786f4b96502b7a03d50f7`
+- implementation_blob: `9414d390619e84c1409366f0c3c7c48b3d5f431f`
+- test_blob: `a6e93bd563602ccacec5bd32de4b646c34ca9aeb`
+- composed_implementation_blob: `63cabf7b0be089f84721358b8f403fe54ae977ed`
+- composed_test_blob: `44664784642509aa4eb661c56fe16d20785c599e`
+- evidence_blob: `c5dcb6cd8ecb5ac508d9dbf2eee39fcfe055fece`
+- compile: `PASS`
+- tests: `170/170 PASS` (`18` new + `152` regression)
+- focused_tests: `37/37 PASS`
+- positive_negative_adversarial_determinism_integration: `PASS`
+- tdd_red_observed: `standalone module import error; 21/21 composed errors before integration; list/tuple binding collision failure before Role Court repair`
+- role_court_mode: `LOGICAL_ISOLATION`
+- self_audit_repairs: `1` (type-tagged state commitments preserve list/tuple identity)
+- persistence_readback: `EXACT_BASE64_MATCH` for Design, both Code files, both Test files, and Evidence
+- post_persistence_detached_worktree_verification: `PASS` at exact code commit
+- persistence_correction: `RECORDED_AND_REPAIRED` (one batch blob response lacked a SHA; explicit retry succeeded before ref advance)
+- protected_repository_write_actions: `NONE`
+- current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
+- exact_next_legal_action: re-scan current mission and supplemental artifacts for another materially distinct unverified dimension; if none is demonstrably non-duplicate, record the exact blocker rather than extending the concept set or repeating existing assurance
