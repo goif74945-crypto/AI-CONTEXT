@@ -210,3 +210,34 @@ Build exact reference implementation and test suite in an isolated local workspa
 - protected_repository_write_actions: `NONE`
 - current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
 - next_resume_rule: all five concepts now have one verified continuation slice; future work must re-scan for a materially distinct unverified dimension and record a blocker rather than duplicate if none exists
+
+## Checkpoint CP-FRONTIER-COMPOSED-ASSURANCE-06
+
+- timestamp_local: `2026-10-06T08:22:28+07:00`
+- parent_checkpoint: `CP-MUSCLE-INPUT-BUDGET-05`
+- continuation_type: `DEEPEN_CROSS_CONCEPT_INTEGRATION`
+- concept_count_after: `5` (unchanged)
+- verified_gap: original integrated pipeline invokes first-generation engines and can return `READY` while bypassing later hardened adapter checks
+- confirmed_original_result: `READY` for an out-of-domain `NEQ("saef")` constraint
+- delivered_design: `FRONTIER_COMPOSED_ASSURANCE_DESIGN.md`
+- delivered_code: `frontier_composed_assurance.py`
+- delivered_tests: `test_frontier_composed_assurance.py`
+- delivered_evidence: `FRONTIER_COMPOSED_ASSURANCE_EVIDENCE.md`
+- persisted_code_commit: `ad3cb7efe4458eb02812a0494ac3d93e9becbc5e`
+- persisted_evidence_commit: `ac0bfe0ab5877436c00c725db254e16c5e11a93f`
+- design_blob: `589e869859385f7b8fb22e72b348ff2855431685`
+- implementation_blob: `63dd77cd1b6cf70a2a42e41a94a6d988e455ef3a`
+- test_blob: `ff6c957f88814e784cf61d77a8b6430f3a92a05c`
+- evidence_blob: `7dc40c6bf804e8816f18e45cac45fb8150c991ac`
+- compile: `PASS`
+- tests: `134/134 PASS` (`17` new + `117` regression)
+- positive_negative_adversarial_determinism_integration: `PASS`
+- tdd_red_observed: `14/14 FAIL before initial implementation; 3/3 non-PASS before boundary remediation`
+- role_court_mode: `LOGICAL_ISOLATION`
+- self_audit_repairs: `1` (finite built-in sequence and member-type admission before adapter materialization)
+- persistence_readback: `EXACT_MATCH` for Design, Code, and Test at tested code commit
+- post_persistence_detached_worktree_verification: `PASS`
+- verification_path_failure: `RECORDED_AND_REPAIRED` (initial compile command used worktree root rather than mission root)
+- protected_repository_write_actions: `NONE`
+- current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
+- exact_next_legal_action: re-scan current mission and supplemental artifacts for another materially distinct unverified dimension; if none is demonstrably non-duplicate, record the exact blocker rather than extending the concept set or repeating existing assurance
