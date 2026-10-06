@@ -26,3 +26,10 @@ DEFERRED_FUTURE_ROWS: 4
 - Current Build sheet parsed as 773 unique requirement IDs.
 - Runtime/workflow evidence not yet established.
 - Audit remains IN_PROGRESS.
+
+## Checkpoint 01
+- FIND-P0-0001: current SWARM reaches future/conceptual intelligence layers without a verified current DOC-C promotion record.
+- FIND-P0-0002: exact-head critical workflows remain failed after fresh rerun; assertion-level root cause remains unknown because logs/steps/artifacts are unavailable.
+- FIND-P3-0001: canonical /db path/group is absent; persistence exists at packages/core/db.ts and prisma/.
+- tests/e2e exists; no missing claim there.
+- Product HEAD rechecked unchanged: 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43.
