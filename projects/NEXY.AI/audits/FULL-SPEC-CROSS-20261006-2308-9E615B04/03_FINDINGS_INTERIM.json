@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "snapshot_head": "9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43",
+  "findings": [
+    {
+      "finding_id": "FIND-P0-0001",
+      "severity": "P0",
+      "status": "SCOPE_VIOLATION",
+      "req_ids": [
+        "REQ-0677",
+        "REQ-0678",
+        "REQ-0679",
+        "REQ-0680",
+        "REQ-0681",
+        "REQ-0682",
+        "REQ-0768"
+      ],
+      "claim": "Current SWARM execution reaches intelligence layers classified by the normalization as future/conceptual, and no current DOC-C promotion record was verified.",
+      "evidence_paths": [
+        "packages/swarm/pipeline.ts",
+        "packages/intelligence/irl.ts",
+        "packages/intelligence/cirl.ts",
+        "packages/intelligence/cle.ts",
+        "packages/intelligence/dsl.ts",
+        "packages/intelligence/rsel.ts",
+        "packages/intelligence/ecl.ts",
+        "packages/intelligence/trinity.ts",
+        "packages/lo3/prompt-law-filter.ts",
+        "config/experimental-scope.ts",
+        "scripts/check-static-determinism.ts"
+      ]
+    },
+    {
+      "finding_id": "FIND-P0-0002",
+      "severity": "P0",
+      "status": "FAIL_VERIFIED",
+      "req_ids": [
+        "REQ-0550",
+        "REQ-0769",
+        "REQ-0770",
+        "REQ-0771"
+      ],
+      "claim": "Exact current HEAD lacks passing critical test/release-gate evidence. Fresh reruns also failed, while retained job logs/steps/artifacts are unavailable.",
+      "workflow_runs": [
+        37222997743,
+        37222997798,
+        37222997784,
+        37222997736
+      ]
+    },
+    {
+      "finding_id": "FIND-P3-0001",
+      "severity": "P3",
+      "status": "MISSING_PROVEN",
+      "req_ids": [
+        "REQ-0734"
+      ],
+      "claim": "Canonical DOC-C /db repository group is absent. Persistence exists under packages/core/db.ts and prisma/, so the defect is structural drift rather than missing persistence.",
+      "evidence_paths": [
+        "packages/core/db.ts",
+        "prisma/schema.prisma",
+        "prisma/migrations"
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "id": "BLK-CI-0001",
+      "status": "BLOCKED",
+      "detail": "Current-head CI attempts fail without retained observable job logs/steps/artifacts."
+    },
+    {
+      "id": "BLK-LOCAL-0001",
+      "status": "ACTION_BLOCKED",
+      "detail": "Connected Desktop Commander device is offline; GitHub evidence path remains available."
+    }
+  ]
+}
