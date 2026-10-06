@@ -1,1 +1,0 @@
-{"allow_decision": "ALLOW", "allow_payload_keys": ["prompt", "source_code"], "freeze_codes": ["DESTINATION_CLASSIFICATION_LIMIT", "EXTERNAL_CLASSIFICATION_DENIED"], "freeze_decision": "FREEZE", "secret_literal_present": false}

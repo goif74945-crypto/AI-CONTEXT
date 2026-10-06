@@ -1,1 +1,0 @@
-import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{evaluateBackpressure}from"./CODE.ts";test("freezes severe pressure",()=>assert.equal(evaluateBackpressure({queue:Q.one(),errors:Q.one(),latency:Q.one()}).level,"FREEZE"));

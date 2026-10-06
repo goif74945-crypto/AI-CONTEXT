@@ -1,1 +1,0 @@
-{"details":{"quantum":"1/100","value":"1/3"},"message":"value is not an exact integer multiple of the fixed128 quantum","reason_code":"NOT_EXACTLY_REPRESENTABLE_FIXED128","schema_version":"1","verdict":"FREEZE"}

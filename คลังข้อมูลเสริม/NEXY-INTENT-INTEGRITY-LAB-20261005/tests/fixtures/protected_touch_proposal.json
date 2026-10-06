@@ -1,9 +1,0 @@
-{
-  "proposal_id":"proposal-block-protected",
-  "touch_paths":["NEXY.AI/src/core.ts"],
-  "covered_requirement_ids":["REQ-001","REQ-002","REQ-003"],
-  "evidence":{"AC-001":"unit","AC-002":"runtime"},
-  "resolved_unknowns":[],
-  "claims":[],
-  "target_repository":"goif74945-crypto/AI-CONTEXT"
-}

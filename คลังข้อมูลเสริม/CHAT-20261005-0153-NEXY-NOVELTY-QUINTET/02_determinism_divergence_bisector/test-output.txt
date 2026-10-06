@@ -1,9 +1,0 @@
-test_finds_first_real_divergence_and_dependency_frontier (test_src.DeterminismDivergenceBisectorTests.test_finds_first_real_divergence_and_dependency_frontier) ... ok
-test_identical_traces_pass (test_src.DeterminismDivergenceBisectorTests.test_identical_traces_pass) ... ok
-test_length_divergence_is_reported (test_src.DeterminismDivergenceBisectorTests.test_length_divergence_is_reported) ... ok
-test_volatile_keys_do_not_create_false_divergence (test_src.DeterminismDivergenceBisectorTests.test_volatile_keys_do_not_create_false_divergence) ... ok
-
-----------------------------------------------------------------------
-Ran 4 tests in 0.000s
-
-OK

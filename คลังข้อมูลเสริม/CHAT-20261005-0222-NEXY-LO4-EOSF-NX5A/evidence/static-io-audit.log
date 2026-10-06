@@ -1,3 +1,0 @@
-Static prohibited-I/O token audit
-Scope: src concepts/*/src integration/src
-RESULT: PASS no prohibited I/O/runtime escape token observed

@@ -1,1 +1,0 @@
-import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{choosePrecision}from"./CODE.ts";test("important uncertain task gets deep",()=>assert.equal(choosePrecision(Q.one(),Q.zero(),Q.zero(),Q.one()).tier,"DEEP"));

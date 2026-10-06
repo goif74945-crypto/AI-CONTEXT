@@ -1,9 +1,0 @@
-{
-  "target": "repo/NEXY.AI",
-  "subject": "mutation.allowed",
-  "requireDecision": true,
-  "directives": [
-    {"id":"user-protect-nexy","authorityRank":0,"sourceClass":"USER_DIRECTIVE","scope":"repo/NEXY.AI","subject":"mutation.allowed","value":false,"provenance":"explicit-current-user-directive"},
-    {"id":"model-convenience","authorityRank":8,"sourceClass":"MODEL_INFERENCE","scope":"repo/NEXY.AI","subject":"mutation.allowed","value":true,"provenance":"hypothetical-model-suggestion"}
-  ]
-}

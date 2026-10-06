@@ -1,8 +1,0 @@
-{
-  "classification": "AI_PROPOSED_REFERENCE_PIPELINE_NOT_NEXY_AUTHORITY",
-  "consensus": {"status":"CONSENSUS","winner":"ADOPT","fingerprint":"257c6e51e76ca14bdd35440675d0797deb63b753e58cf11764b85e6604efe04a"},
-  "schema_evolution": {"classification":"MIGRATION_REQUIRED","fingerprint":"e3a8d3cee3ac48340689888a278b8ac415cca4f883400b0fef4eabb80488c0dd"},
-  "fault_containment": {"status":"DEGRADED","fingerprint":"d674cc3da613b24adcc956797067ef6850e29c409cae4bb6a3428c7413b7270f"},
-  "evidence_schedule": {"status":"PLAN_READY","makespan_ms":18,"fingerprint":"bde6f25e7952417a329ff0e546ed43f6e2f6a6130415b939774ad7fd5e796462"},
-  "disclosure": {"status":"ALLOW","receipt_hash":"30820acb84dc7e86ae9d3507e75e55a3dafca5fef5b8275bc46cc0140e31484b"}
-}

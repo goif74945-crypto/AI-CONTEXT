@@ -1,6 +1,0 @@
-schema_check=PASS
-valid-noncritical.json: expected_valid=True observed_valid=True errors=0
-valid-critical.json: expected_valid=True observed_valid=True errors=0
-invalid-critical-timeout.json: expected_valid=False observed_valid=False errors=1
-invalid-authority-escalation.json: expected_valid=False observed_valid=False errors=12
-fixture_expectations=PASS

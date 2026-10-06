@@ -1,6 +1,0 @@
-{
-  "source": "The OWNER must not release FREEZE incident 42 without verification. Keep {incident_id} and https://example.com/run/42 unchanged.",
-  "target": "OWNER ต้องไม่เผยแพร่เหตุการณ์ FREEZE หมายเลข 42 โดยไม่มีการตรวจสอบ คง {incident_id} และ https://example.com/run/42 ไว้เหมือนเดิม",
-  "sourceLanguage": "en",
-  "targetLanguage": "th"
-}

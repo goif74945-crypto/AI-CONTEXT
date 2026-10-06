@@ -1,9 +1,0 @@
-{
-  "proposal_id":"proposal-block-evidence",
-  "touch_paths":["คลังข้อมูลเสริม/NEXY-INTENT-INTEGRITY-LAB-20261005/README.md"],
-  "covered_requirement_ids":["REQ-001","REQ-002","REQ-003"],
-  "evidence":{"AC-001":"inspection","AC-002":"static"},
-  "resolved_unknowns":[],
-  "claims":[],
-  "target_repository":"goif74945-crypto/AI-CONTEXT"
-}
