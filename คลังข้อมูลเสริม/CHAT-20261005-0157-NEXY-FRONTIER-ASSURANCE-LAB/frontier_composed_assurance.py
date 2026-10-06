@@ -34,7 +34,11 @@ from parex_metric_integrity import (
     MetricIntegrityPruner,
     ParexMetricContract,
 )
-from recert_path_integrity import PointerRecoveryPolicy, RecertPathIntegrityAssurance
+from recert_attestation_binding import (
+    RecertAttestationBindingAssurance,
+    RecoveryAttestationContract,
+)
+from recert_path_integrity import PointerRecoveryPolicy
 
 
 class ComposedFrontierAssurancePipeline:
@@ -44,7 +48,7 @@ class ComposedFrontierAssurancePipeline:
         self.muscle = MuscleInputAssurance()
         self.parex = MetricIntegrityPruner()
         self.ghostedge = GhostedgeCampaignAssurance()
-        self.recert = RecertPathIntegrityAssurance()
+        self.recert = RecertAttestationBindingAssurance()
         self.obsure = ObsureTraceCohesionAssurance()
 
     @staticmethod
@@ -103,6 +107,7 @@ class ComposedFrontierAssurancePipeline:
         after_state: Mapping[str, Any],
         recovery_policy: RecoveryPolicy,
         pointer_policy: PointerRecoveryPolicy,
+        recovery_attestation: RecoveryAttestationContract,
         trace_contract: TraceCohesionContract,
         effects: Iterable[EffectSpec],
         telemetry_schemas: Iterable[TelemetryEventSpec],
@@ -159,7 +164,11 @@ class ComposedFrontierAssurancePipeline:
 
         try:
             gates["recert"] = self.recert.assess(
-                before_state, after_state, recovery_policy, pointer_policy
+                recovery_attestation,
+                before_state,
+                after_state,
+                recovery_policy,
+                pointer_policy,
             )
         except FreezeError as error:
             gates["recert"] = self._rejection(error)

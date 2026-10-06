@@ -17,6 +17,7 @@ from muscle_input_assurance import MuscleSearchBudget
 from obsure_runtime_assurance import EffectRunExpectation, RuntimeEvent
 from obsure_trace_cohesion import TraceCohesionContract
 from parex_metric_integrity import AttestedPlan, MetricAxis, ParexMetricContract
+from recert_attestation_binding import RecoveryAttestationContract
 from recert_path_integrity import PointerRecoveryPolicy
 
 
@@ -99,6 +100,9 @@ def base_request():
         "after_state": {"law": {"epoch": 7}},
         "recovery_policy": RecoveryPolicy(),
         "pointer_policy": PointerRecoveryPolicy(),
+        "recovery_attestation": RecoveryAttestationContract(
+            "attestation-1", "incident-1", "before-rev", "after-rev"
+        ),
         "effects": [EffectSpec("write", "LOW", False)],
         "telemetry_schemas": telemetry_schemas(),
         "runtime_expectations": [EffectRunExpectation("write", "SUCCESS")],
@@ -268,6 +272,32 @@ class ComposedAssuranceIntegrationTests(unittest.TestCase):
         self.assertEqual(result["status"], "READY")
         self.assertEqual(result["gates"]["obsure"]["reason"], "TRACE_COHESIVE")
         self.assertRegex(result["gates"]["obsure"]["contract_hash"], r"^[0-9a-f]{64}$")
+
+    def test_ready_result_includes_recovery_attestation_binding(self):
+        result = api(self).ComposedFrontierAssurancePipeline().assess(**base_request())
+        self.assertEqual(result["status"], "READY")
+        self.assertRegex(result["gates"]["recert"]["binding_hash"], r"^[0-9a-f]{64}$")
+        self.assertRegex(result["gates"]["recert"]["before_state_hash"], r"^[0-9a-f]{64}$")
+        self.assertRegex(result["gates"]["recert"]["pointer_policy_hash"], r"^[0-9a-f]{64}$")
+
+    def test_passing_recovery_state_change_changes_pipeline_certificate(self):
+        first_request = base_request()
+        second_request = base_request()
+        second_request["before_state"] = {"law": {"epoch": 8}}
+        second_request["after_state"] = {"law": {"epoch": 8}}
+        first = api(self).ComposedFrontierAssurancePipeline().assess(**first_request)
+        second = api(self).ComposedFrontierAssurancePipeline().assess(**second_request)
+        self.assertEqual(first["status"], "READY")
+        self.assertEqual(second["status"], "READY")
+        self.assertEqual(
+            first["gates"]["recert"]["base_result_hash"],
+            second["gates"]["recert"]["base_result_hash"],
+        )
+        self.assertNotEqual(
+            first["gates"]["recert"]["binding_hash"],
+            second["gates"]["recert"]["binding_hash"],
+        )
+        self.assertNotEqual(first["result_hash"], second["result_hash"])
 
     def test_spliced_action_identity_freezes_composed_pipeline(self):
         request = base_request()
