@@ -62,6 +62,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 function launchCode(args) {
   try {
     const child = spawn('code', args, {stdio:'ignore', detached:true});
+    child.on('error', () => {});
     child.unref();
     return true;
   } catch {
@@ -79,7 +80,7 @@ function publicUrl(port) {
 async function streamFile() {
   await fsp.mkdir(DEMO_DIR, {recursive:true});
   await fsp.writeFile(DEMO_FILE, '', 'utf8');
-  launchCode(['--reuse-window', DEMO_FILE]);
+  if (!process.argv.includes('--smoke')) launchCode(['--reuse-window', DEMO_FILE]);
 
   process.stdout.write('\x1b[2J\x1b[H🔥 ViralForge live-code boot\\n\\n');
   const chunks = html.match(/.{1,140}/gs) || [];
