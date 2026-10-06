@@ -321,3 +321,44 @@ Build exact reference implementation and test suite in an isolated local workspa
 - protected_repository_write_actions: `NONE`
 - current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
 - exact_next_legal_action: re-scan current mission and supplemental artifacts for another materially distinct unverified dimension; if none is demonstrably non-duplicate, record the exact blocker rather than extending the concept set or repeating existing assurance
+
+## Checkpoint CP-MUSCLE-CONFLICT-COVERAGE-09
+
+- timestamp_local: `2026-10-06T13:22:34+07:00`
+- parent_checkpoint: `CP-RECERT-ATTESTATION-BINDING-08`
+- continuation_type: `DEEPEN_EXISTING_CONCEPT_AND_COMPOSED_INTEGRATION`
+- concept_count_after: `5` (unchanged)
+- deepened_concept: `MUSCLE`
+- verified_gap: the prior exact UNSAT certificate reports one globally selected minimum core even when another variable is independently UNSAT; alternate same-variable minimum cores are also not certified
+- reproduced_prior_result: both `a` and `b` final domains empty while only variable `a` and core `a-fast,a-safe` were reported
+- assurance_boundary: exhaustive minimum-cardinality cores for every UNSAT variable, not every larger inclusion-minimal core
+- role_court_repair: core-output bounds freeze with an empty family rather than silently truncating a result labeled exhaustive
+- delivered_design: `MUSCLE_CONFLICT_COVERAGE_DESIGN.md`
+- delivered_code: `muscle_conflict_coverage.py`
+- delivered_tests: `test_muscle_conflict_coverage.py`
+- integrated_code: `frontier_composed_assurance.py`
+- integrated_tests: `test_frontier_composed_assurance.py`
+- delivered_evidence: `MUSCLE_CONFLICT_COVERAGE_EVIDENCE.md`
+- persisted_code_commit: `f32d52397571644017789f7207f1a83c944afd39`
+- persisted_evidence_commit: `7caa57383109d715a80629789a6ba35d5dbe3983`
+- tested_tree: `0ebee6f9ea80b512bd91b35418a058b1a944a614`
+- design_blob: `7b9c332ac12cbf19304519d5703db53d711bf92f`
+- implementation_blob: `7d2185ac82bf0447f10a4bcd67578870a76c2e16`
+- test_blob: `340fe2a5c22a316b9ff3b809f02044eb408d54ef`
+- composed_implementation_blob: `ce0f7482e6114241c235766b1e07c6dfd9c96bc8`
+- composed_test_blob: `456d1f59be7d8c035d9321ee57775dd3a164193d`
+- evidence_blob: `80208e0fc45d0f7a6aec188169dd1cbd850cd699`
+- compile: `PASS`
+- tests: `185/185 PASS` (`15` new + `170` regression)
+- focused_tests: `36/36 PASS`
+- positive_negative_adversarial_determinism_integration: `PASS`
+- tdd_red_observed: `standalone missing-module failures and composed import error before implementation`
+- exact_probe: `UNSAT`, variables `a,b`, one minimum core each, `6` subset checks, result hash `febb6738c2db47f2f85beec2bcb38d3e045fd271aa201f50de25663d85ed46a7`
+- role_court_mode: `LOGICAL_ISOLATION`
+- self_audit_repairs: `1` (distinct composed freeze reason for conflict-certificate budget exhaustion)
+- persistence_readback: `EXACT_GIT_BLOB_MATCH` for Design, both Code files, both Test files, and Evidence
+- post_persistence_detached_worktree_verification: `PASS` at exact code commit
+- verification_scope_correction: repository-wide compile exposed unrelated pre-existing supplemental syntax errors; generated caches were removed and authoritative verification was confined to this mission root
+- protected_repository_write_actions: `NONE`
+- current_status: `COMPLETE_VERIFIED_CONTINUATION_SLICE`
+- exact_next_legal_action: re-scan current mission and supplemental artifacts for another materially distinct unverified dimension; if none is demonstrably non-duplicate, record the exact blocker rather than extending the concept set or repeating existing assurance
