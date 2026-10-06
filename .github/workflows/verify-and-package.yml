@@ -1,0 +1,41 @@
+name: Verify and package ViralForge
+
+on:
+  push:
+    branches:
+      - social-video-studio
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm install
+
+      - name: Syntax check
+        run: npm run lint
+
+      - name: Package VSIX
+        run: npm run package
+
+      - name: Upload VSIX
+        uses: actions/upload-artifact@v4
+        with:
+          name: viralforge-studio-vsix
+          path: "*.vsix"
+          if-no-files-found: error
