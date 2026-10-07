@@ -1,0 +1,2 @@
+# CASE 20261007-REPO-CODE-BRIDGE-CAPABILITY-CHECK-001
+Repo Code Bridge was callable. runtime_status reported GitHub connectivity CONNECTED and read/write/CI backends READY. repo_status verified AI-CONTEXT main at dd971b15cf4d74de86949361d0d0212bc5ea131f. repo_status for goif74945-crypto/NEXY.AI- branch NEXY.ai failed closed with REPOSITORY_NOT_ALLOWED. Do not infer that similarly named allowlisted repositories represent NEXY.AI-.
