@@ -1,8 +1,0 @@
-{
-  "id": "provider-alpha",
-  "boundary": "EXTERNAL",
-  "allowed_purposes": ["code_review", "summarize"],
-  "max_classification": "SENSITIVE",
-  "max_retention_seconds": 600,
-  "can_retain": true
-}

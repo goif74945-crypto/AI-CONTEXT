@@ -1,5 +1,0 @@
-typescript=5.8.3
-command=tsc -p tsconfig.json
-exit_code=0
-diagnostics=none
-exact_nexy_declared_typescript_6.0.3=NOT_VERIFIED_FETCH_TIMEOUT

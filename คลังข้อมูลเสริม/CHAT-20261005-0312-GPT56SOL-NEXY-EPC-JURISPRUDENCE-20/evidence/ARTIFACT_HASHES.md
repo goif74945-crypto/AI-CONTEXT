@@ -1,9 +1,0 @@
-# Artifact Hashes
-
-SPEC_SHA256: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
-BASE64_TEXT_SHA256: 946af23416682cecb0a543b47db75d30aa66bc64ff4fe66d9212730d621f8dc2
-ARCHIVE_SHA256: b71547f52482c8d633a2b953b70124ee8e33e425f9ab134a1d7561d03a070440
-CANDIDATE_TESTED_BYTES_DIGEST: b21bbae4f08fc2e0a595ab1e7ac4554a55539c912af4b16746cce52863d320a9
-ARTIFACT_MANIFEST_SHA256: 9f07fce0668cfb26c3cacee8d067ffe3339f87adf68d922382d563dbdde0ca6e
-UNREACHABLE_BINARY_GIT_OBJECT_SHA: 92caf6a54bd04235d395d8a2820f61f7d36d5ccf
-NOTE: The binary Git object was created during an atomic-publication attempt but concurrent main-branch writes prevented safe ref movement. The canonical reachable package is the .tar.gz.b64 artifact committed via Contents API.

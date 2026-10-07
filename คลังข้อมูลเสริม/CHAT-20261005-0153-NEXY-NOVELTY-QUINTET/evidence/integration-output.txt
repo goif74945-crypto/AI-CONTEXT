@@ -1,6 +1,0 @@
-test_release_evolution_guard_pipeline (test_integration.NoveltyQuintetIntegrationTests.test_release_evolution_guard_pipeline) ... ok
-
-----------------------------------------------------------------------
-Ran 1 test in 0.000s
-
-OK

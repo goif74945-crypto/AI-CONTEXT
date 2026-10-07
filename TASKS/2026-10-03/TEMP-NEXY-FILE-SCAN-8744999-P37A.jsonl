@@ -1,8 +1,0 @@
-{"path":"tests/contract/error-codes.test.ts","tree_sha":"1a433e7a3e6e1825bcaaabf3e2c4aa5be66b3670","blob_sha":"1a433e7a3e6e1825bcaaabf3e2c4aa5be66b3670","read":"OK","cat":"TEST","lines":28,"chars":1174,"flags":[]}
-{"path":"tests/contract/evidence-contract.test.ts","tree_sha":"cec54eb83c10cee917c13ed62a303459d3eb5def","blob_sha":"cec54eb83c10cee917c13ed62a303459d3eb5def","read":"OK","cat":"TEST","lines":75,"chars":2724,"flags":[]}
-{"path":"tests/contract/failed-dispatch-retry.test.ts","tree_sha":"e555aa85cc90dc80d4b8670317f39c90ba15715d","blob_sha":"e555aa85cc90dc80d4b8670317f39c90ba15715d","read":"OK","cat":"TEST","lines":51,"chars":1676,"flags":[]}
-{"path":"tests/contract/fatal-state-law.test.ts","tree_sha":"04a1b683e84b66b99d960247f99bc82e47b3f7cc","blob_sha":"04a1b683e84b66b99d960247f99bc82e47b3f7cc","read":"OK","cat":"TEST","lines":21,"chars":1120,"flags":[]}
-{"path":"tests/contract/fixed128-overflow-scope-law.test.ts","tree_sha":"83ff7cbe53988c4fb49f2ff2f251928955cf1abb","blob_sha":"83ff7cbe53988c4fb49f2ff2f251928955cf1abb","read":"OK","cat":"TEST","lines":46,"chars":1448,"flags":[]}
-{"path":"tests/contract/freeze-only-via-builder.spec.ts","tree_sha":"c81599aea770cb48173b054c83bb9ffc03b2018f","blob_sha":"c81599aea770cb48173b054c83bb9ffc03b2018f","read":"OK","cat":"TEST","lines":48,"chars":1616,"flags":[]}
-{"path":"tests/contract/freeze-recovery-audit.test.ts","tree_sha":"08f76b954ae3f46c439082ea8f2740e93e950afe","blob_sha":"08f76b954ae3f46c439082ea8f2740e93e950afe","read":"OK","cat":"TEST","lines":33,"chars":1380,"flags":[]}
-{"path":"tests/contract/http-alarm-sink.test.ts","tree_sha":"3d2059ae1906b4c69c990fc98d19678fba27d63d","blob_sha":"3d2059ae1906b4c69c990fc98d19678fba27d63d","read":"OK","cat":"TEST","lines":67,"chars":2180,"flags":[]}

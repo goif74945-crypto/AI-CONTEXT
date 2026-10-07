@@ -1,7 +1,0 @@
-
-> nexy-lo4-veritas-mesh@0.1.0 bench
-> node --experimental-strip-types bench.ts
-
-(node:1253) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-{"runs":10000,"elapsedMs":276.903,"decisionsPerSecond":36113.74,"finalDigest":"4fa8904e73a0dbf0f33a0f94506474b0a7f0fb4d2f4a07abdd57cd0d12f7f18f"}

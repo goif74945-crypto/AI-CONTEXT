@@ -1,1 +1,0 @@
-import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{chooseRunnable}from"./CODE.ts";test("highest credit deterministic",()=>assert.equal(chooseRunnable([{id:"b",credit:Q.fromInt(2n),cost:Q.one()},{id:"a",credit:Q.fromInt(2n),cost:Q.one()}]).id,"a"));

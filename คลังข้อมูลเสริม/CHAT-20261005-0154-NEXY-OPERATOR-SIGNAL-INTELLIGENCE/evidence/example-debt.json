@@ -1,1 +1,0 @@
-{"result":{"all_clear":false,"current_sequence":12,"fingerprint":"5049e54e926e6c519fdee3a6698dbc0ed159fdcbd476bc8b18797bc7cc34718a","items":[{"acknowledged_sequence":null,"due_sequence":11,"opened_sequence":10,"severity":"CRITICAL","signal_id":"security-001","state":"OVERDUE"}]},"status":"PASS"}

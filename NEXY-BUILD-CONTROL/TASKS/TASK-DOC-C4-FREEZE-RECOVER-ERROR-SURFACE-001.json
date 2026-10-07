@@ -1,8 +1,0 @@
-{
-  "TASK_ID": "TASK-DOC-C4-FREEZE-RECOVER-ERROR-SURFACE-001",
-  "STATUS": "SUPERSEDED_DUPLICATE",
-  "CANONICAL_TASK_ID": "TASK-DOC-C4-FREEZE-RECOVER-ERROR-MATRIX-001",
-  "CANONICAL_FINDING_ID": "FINDING-DOC-C4-FREEZE-RECOVER-ERROR-MATRIX-001",
-  "BASE_SHA": "608426cb30398b1f3461866f7079d2a435c96b96",
-  "RESOLUTION": "Do not schedule duplicate source mutation. Join evidence to the canonical freeze-recover error-matrix repair task."
-}

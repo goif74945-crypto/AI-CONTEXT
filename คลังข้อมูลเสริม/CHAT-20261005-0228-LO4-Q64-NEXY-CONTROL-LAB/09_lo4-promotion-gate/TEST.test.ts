@@ -1,1 +1,0 @@
-import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{promotionGate}from"./CODE.ts";test("never self-promotes",()=>{const d=promotionGate({evidence:Q.one(),determinism:Q.one(),security:Q.one(),regression:Q.one(),integration:Q.one()});assert.equal(d.status,"ELIGIBLE_FOR_FORMAL_PROMOTION_REVIEW")});

@@ -1,1 +1,0 @@
-import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{severity}from"./CODE.ts";test("catastrophic incident is S4",()=>assert.equal(severity({impact:Q.one(),reach:Q.one(),exploitability:Q.one(),irreversibility:Q.one(),spread:Q.one()}).level,"S4"));

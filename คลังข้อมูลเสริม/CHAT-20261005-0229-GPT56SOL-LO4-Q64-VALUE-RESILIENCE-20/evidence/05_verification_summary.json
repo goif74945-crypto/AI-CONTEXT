@@ -1,9 +1,0 @@
-{
-  "compileall": "PASS",
-  "concept_count": 20,
-  "manifest_files": 29,
-  "q_format": "signed checked Q64.64",
-  "replay_determinism": "PASS",
-  "status": "PASS",
-  "unit_integration_tests": "PASS"
-}

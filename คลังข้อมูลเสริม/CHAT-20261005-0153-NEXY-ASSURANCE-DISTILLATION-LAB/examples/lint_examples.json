@@ -1,1 +1,0 @@
-{"rules":[{"id":"verified","op":"eq","path":"/verified","value":true}],"examples":[{"id":"good","expected":"PASS","data":{"verified":true}},{"id":"bad-doc","expected":"PASS","data":{"verified":false}}]}

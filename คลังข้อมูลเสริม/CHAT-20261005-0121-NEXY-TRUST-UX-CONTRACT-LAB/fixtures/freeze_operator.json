@@ -1,1 +1,0 @@
-{"status":"FREEZE","state":"FREEZE","request_id":"req-freeze-002","trace_id":"trace-freeze-002","data":{},"error":{"code":"RELEASE_POLICY_FAILED"},"freeze":{"incident_code":"RELEASE_POLICY_FAILED","trigger":"Release policy rejected candidate output","blocking_layer":"JUDGE_LAW_BOUNDARY","recoverable":true}}

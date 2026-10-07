@@ -1,3 +1,0 @@
-# REVIEW
-
-Independent review queue.

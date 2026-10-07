@@ -1,3 +1,0 @@
-# DEPENDENCIES
-
-Dependency graph records.

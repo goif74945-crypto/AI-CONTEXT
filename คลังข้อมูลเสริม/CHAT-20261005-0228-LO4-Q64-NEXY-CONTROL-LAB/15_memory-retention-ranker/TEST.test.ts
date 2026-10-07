@@ -1,1 +1,0 @@
-import test from"node:test";import assert from"node:assert/strict";import{Q64 as Q}from"../shared/q64.ts";import{rankMemory}from"./CODE.ts";test("privacy suppresses retention",()=>{const a={id:"a",futureUtility:Q.one(),authority:Q.one(),uniqueness:Q.one(),freshness:Q.one(),privacyCost:Q.zero()};assert.equal(rankMemory([{...a,id:"b",privacyCost:Q.one()},a])[0].id,"a")});

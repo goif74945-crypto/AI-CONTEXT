@@ -1,8 +1,0 @@
-{"path":"tests/contract/queue-taxonomy.test.ts","tree_sha":"79c7d6e320abf748b77ae44e31d939ffa6fe1193","blob_sha":"79c7d6e320abf748b77ae44e31d939ffa6fe1193","read":"OK","lines":36,"chars":1252,"flags":[]}
-{"path":"tests/contract/raw-sql-schema-alignment.test.ts","tree_sha":"4c1bba30e78da0e7a7568df46e75299082d281d7","blob_sha":"4c1bba30e78da0e7a7568df46e75299082d281d7","read":"OK","lines":17,"chars":576,"flags":[]}
-{"path":"tests/contract/release-atomicity.test.ts","tree_sha":"0e4b2b5549beb43e0b0d25f816d85f7f2926fe48","blob_sha":"0e4b2b5549beb43e0b0d25f816d85f7f2926fe48","read":"OK","lines":245,"chars":7793,"flags":["MOCK_FIXTURE"]}
-{"path":"tests/contract/release-attestation.test.ts","tree_sha":"0e7c513524b4b1abb373faf8e3de9115c74af53c","blob_sha":"0e7c513524b4b1abb373faf8e3de9115c74af53c","read":"OK","lines":283,"chars":12951,"flags":["MOCK_FIXTURE"]}
-{"path":"tests/contract/release-spine.test.ts","tree_sha":"0ece4427927f138a4e0e003671fcdd6c46ebe29c","blob_sha":"0ece4427927f138a4e0e003671fcdd6c46ebe29c","read":"OK","lines":164,"chars":6804,"flags":[]}
-{"path":"tests/contract/reproducible-build-envelope.test.ts","tree_sha":"f463e2e015596075fab4b8ac141b3e1c6fd00c09","blob_sha":"f463e2e015596075fab4b8ac141b3e1c6fd00c09","read":"OK","lines":89,"chars":3251,"flags":[]}
-{"path":"tests/contract/root-of-trust-durable-anchor.test.ts","tree_sha":"3fd4efa3bb73bb1a5a8a4e8c450b7d3c6992b25e","blob_sha":"3fd4efa3bb73bb1a5a8a4e8c450b7d3c6992b25e","read":"OK","lines":69,"chars":2486,"flags":[]}
-{"path":"tests/contract/runtime-config-consumers.test.ts","tree_sha":"980199b773f04c2f2b17558d0b8b5ef1c4790f67","blob_sha":"980199b773f04c2f2b17558d0b8b5ef1c4790f67","read":"OK","lines":43,"chars":1488,"flags":["PROCESS_ENV"]}

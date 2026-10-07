@@ -1,9 +1,0 @@
-qcp/__init__.py PASS no float constants
-qcp/budget.py PASS no float constants
-qcp/expectation.py PASS no float constants
-qcp/fixed.py PASS no float constants
-qcp/pipeline.py PASS no float constants
-qcp/reversibility.py PASS no float constants
-qcp/robustness.py PASS no float constants
-qcp/uncertainty.py PASS no float constants
-TOTAL_FLOAT_CONSTANTS 0

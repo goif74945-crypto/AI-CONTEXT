@@ -1,1 +1,0 @@
-{"critical_timeout":"FREEZE","invalid_authority_escalation":"FAIL","invalid_critical_timeout":"FAIL","noncritical_timeout_no_quorum":"FREEZE","noncritical_timeout_quorum":"EXCLUDE_AGENT_AND_CONTINUE","noncritical_timeout_unknown":"FREEZE","schema_invalid":"FREEZE","valid_critical":"PASS","valid_noncritical":"PASS","valid_result":"CONTINUE_TO_CROSS_VERIFY"}

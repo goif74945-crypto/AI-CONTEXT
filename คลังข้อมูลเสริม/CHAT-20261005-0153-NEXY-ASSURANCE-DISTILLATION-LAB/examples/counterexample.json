@@ -1,1 +1,0 @@
-{"case":{"status":"FAIL","trace":{"id":"t-1"},"noise":[1,2,3]},"interesting_when":[{"id":"failure","op":"eq","path":"/status","value":"FAIL"}],"protected_paths":["/status","/trace/id"]}

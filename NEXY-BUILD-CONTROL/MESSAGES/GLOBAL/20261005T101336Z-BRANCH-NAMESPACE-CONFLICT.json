@@ -1,8 +1,0 @@
-{
-  "TYPE": "INCIDENT",
-  "SCOPE": "GLOBAL",
-  "INCIDENT_ID": "INC-BRANCH-NAMESPACE-001",
-  "CLAIM": "The configured worker prefix NEXY.AI-Test-AI/work/ is not representable while the integration branch NEXY.AI-Test-AI exists.",
-  "EVIDENCE": "GitHub create-reference attempt returned HTTP 422 before mutation.",
-  "REQUIRED_ACTION": "Do not silently substitute a worker prefix. Continue safe read/review work and await an authoritative branch-prefix amendment for source mutation."
-}

@@ -1,1 +1,0 @@
-28 evidence/local-sha256-manifest.txt

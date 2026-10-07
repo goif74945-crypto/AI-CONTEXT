@@ -1,2 +1,0 @@
-import { Q64, unit } from "../shared/q64.js";
-export function severity(i) { const score = Q64.weightedMean([unit(i.impact), unit(i.reach), unit(i.exploitability), unit(i.irreversibility), unit(i.spread)], [Q64.fromInt(5n), Q64.fromInt(4n), Q64.fromInt(4n), Q64.fromInt(5n), Q64.fromInt(5n)]); return { score, level: score.compare(Q64.parse('0.85')) >= 0 ? 'S4' : score.compare(Q64.parse('0.65')) >= 0 ? 'S3' : score.compare(Q64.parse('0.35')) >= 0 ? 'S2' : 'S1' }; }
