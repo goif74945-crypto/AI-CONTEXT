@@ -27,7 +27,7 @@ The user instructed execution through GitHub VS Code and Railway to run tests an
 ## Railway evidence
 
 - Project ID: `01537473-6a6d-42a0-856f-40d8a4e6a712`.
-- `nexy-validation` is connected to `NEXY.ai), but its latest failed deployment `a4e4f0a2-982c-47cd-b1cf-12ba1b120ef0` used commit `6769b725e46753ce5af58a972c005894065f38da`, not the current target HEAD.
+- `nexy-validation` is connected to `NEXY.ai`, but its latest failed deployment `a4e4f0a2-982c-47cd-b1cf-12ba1b120ef0` used commit `6769b725e46753ce5af58a972c005894065f38da`, not the current target HEAD.
 - That deployment failed at image build during `npm run test:contract`: 2 test files failed and 112 passed; the reported contract failure was `tests/integration/game-canonical-order.spec.ts imports Phase F but is not isolated`.
 - `nexy-validation-branch` is connected to the old `NEXY.AI-Test-AI` branch. Its latest failed deployment used commit `dd9e691e346e97701877ad6e2e5ff5642ca1b068`; coverage reported 3 failed tests, 179/180 files passed, and 1232/1235 tests passed.
 
