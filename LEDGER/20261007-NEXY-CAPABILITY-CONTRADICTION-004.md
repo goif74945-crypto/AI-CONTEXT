@@ -1,0 +1,30 @@
+# Ledger — NEXY Capability Contradiction
+
+LEDGER_ID: LEDGER-20261007-NEXY-CAPABILITY-CONTRADICTION-004
+TASK_ID: 20261007-NEXY-CAPABILITY-CONTRADICTION-004
+TIMESTAMP_UTC: 2026-10-07T16:04:52Z
+PARENT_AI_CONTEXT_HEAD: ee9ad9a561d64241fc93f3da37709b76cd070489
+
+| Seq | Action | Evidence | Result |
+|---:|---|---|---|
+| 1 | Read latest command and blocked evidence | AI-CONTEXT/ee9ad9a561d64241fc93f3da37709b76cd070489 | Read; exact-head fail-closed rules apply |
+| 2 | Re-query runtime | Repo Code Bridge runtime status | Runtime says no read-only repositories; backend READY |
+| 3 | Re-query product | `NEXY.ai` | Snapshot says read_only=false, gateway ALLOW |
+| 4 | Test actual CI capability | `ci_dispatch(omega-runner-diagnostic.yml, 9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43)` | 403 REPOSITORY_READ_ONLY; dispatch denied |
+| 5 | Resolve contradiction | Locked command | Treat actual denial as blocker; no product edit |
+| 6 | Persist records | AI-CONTEXT/main | Pending commit and read-back |
+
+## Ruling
+
+Ruling: actual operation denial overrides a permissive status snapshot — the cost if wrong is a delayed repair, which is safer than mutating a repository while CI/evidence capability is unproven.
+
+## Gate
+
+- Product branch exact: YES
+- Product HEAD unambiguous: YES
+- Authority hash exact: YES
+- Product write capability: NOT PROVEN
+- CI dispatch capability: NO
+- Product mutation: NO
+- PASS_100: NO
+- Status: BLOCKED_WITH_RESUME
