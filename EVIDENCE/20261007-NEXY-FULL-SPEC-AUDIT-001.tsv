@@ -1,0 +1,99 @@
+ID	SYSTEM	STATUS	PROOF	SOURCE	NOTE
+AUTH-01	Authority	VERIFIED	S	DOCX SHA-256	Uploaded DOCX hash verified; source is fixed.
+AUTH-02	Authority	VERIFIED	S	DOC-C §§0-20	DOCX itself names DOC-C as build obligation and DOC-E as deploy approval.
+AUTH-03	Authority	MISMATCH	M	DOCX early auth vs DOC-C §2.3/§8	Early prose says 10–15m OTAC and 1–6h session; final build pack says 5m OTAC and 6h session.
+AUTH-04	Authority	VERIFIED	S	NEXY.AI- AGENTS.md + frozen refs	Canonical product branch/HEAD and read-only boundary were respected.
+CON-01	Contracts	VERIFIED	S	packages/contracts/state.ts	SystemStatus and 8 SystemState values exist with Zod schemas.
+CON-02	Contracts	VERIFIED	S	packages/contracts/envelope.ts	SystemEnvelope base fields, roles, actors, errors, freeze reason and integrity exist.
+CON-03	Contracts	VERIFIED	S	packages/contracts/directive.ts	ULID, directive, constraints, metadata and idempotency schema exist.
+CON-04	Contracts	VERIFIED	S	packages/contracts/consensus.ts	ConsensusResult, threshold snapshot, evidence and conflict report schema exist.
+CON-05	Contracts	VERIFIED	S	packages/contracts/release-policy.ts	ReleasePolicyResult and threshold snapshot schema exist.
+CON-06	Contracts	VERIFIED	S	packages/contracts/errors.ts + incidents.ts	Canonical error/incident contract paths are present and referenced by API/law code.
+CFG-01	Configuration	VERIFIED	S	packages/api/vnext-config.ts	Release thresholds match DOC-C: .85/.90/quorum 2/evidence 2.
+CFG-02	Configuration	VERIFIED	S	packages/api/vnext-config.ts	Pipeline timeouts/cap and queue limits match final DOC-C pack.
+CFG-03	Configuration	VERIFIED	S	packages/api/vnext-config.ts	OTAC 10/300000/5, lock 900000, session 21600000, max sessions 5 match final DOC-C.
+CFG-04	Configuration	PARTIAL	P	CI run 37222997743 + exact-head runs	Config source is present, but exact-head contract/typecheck/release gates failed.
+VAL-01	Validation	VERIFIED	S	packages/contracts + packages/validation	Zod schemas are present for API, directive, auth, envelope and runtime config.
+VAL-02	Validation	VERIFIED	S	packages/api handlers	Handlers parse/validate before main operations in the inspected paths.
+VAL-03	Validation	VERIFIED	S	packages/queue/payload.ts + workers.ts	Queue payload validation hooks exist before enqueue/consume.
+VAL-04	Validation	PARTIAL	P	CI run 37222997743	Current-head execution proof for validation is unavailable because critical jobs failed.
+ARCH-01	Architecture	VERIFIED	S	packages/* module layout	Core/law/judge/swarm/vault/auth/obs/queue/package separation exists.
+ARCH-02	Architecture	VERIFIED	S	package.json + scripts/check-module-boundaries.ts	Boundary/static checks are wired into project scripts.
+ARCH-03	Architecture	PARTIAL	P	CI run 37222997743	Boundary enforcement is not execution-verified at this HEAD; main CI failed.
+ARCH-04	Architecture	VERIFIED	S	tsconfig.json + packages-experimental inventory	Experimental packages are excluded from the main TypeScript config per scope fence.
+FSM-01	State machine	VERIFIED	S	packages/contracts/state.ts	Eight DOC-C states are encoded.
+FSM-02	State machine	VERIFIED	S	packages/core/vnext-state-matrix.ts	Required transitions and guards are encoded.
+FSM-03	State machine	VERIFIED	S	packages/core/vnext-state-matrix.ts	Event ownership and actor checks are encoded.
+FSM-04	State machine	VERIFIED	S	packages/core/vnext-state-matrix.ts + packages/law/freeze.ts	Freeze/recover/fatal/timeout paths are encoded with deny-by-default transitions.
+FSM-05	State machine	PARTIAL	P	CI run 37222997743	State tests are present in tree, but exact-head CI result is failure.
+PIPE-01	Multi-AI pipeline	VERIFIED	S	packages/queue/workers.ts	Worker path includes dispatch, candidate verification, law pre-release, consensus and release.
+PIPE-02	Multi-AI pipeline	VERIFIED	S	packages/judge/consensus.ts + scoring.ts	Consensus/scoring implementation paths and deterministic match fields exist.
+PIPE-03	Multi-AI pipeline	VERIFIED	S	packages/law/prerelease.ts	Release thresholds and rejection reasons are enforced in source.
+PIPE-04	Multi-AI pipeline	VERIFIED	S	packages/queue/workers.ts	Timeout and critical/non-critical agent failure branches are represented.
+PIPE-05	Multi-AI pipeline	VERIFIED	S	packages/queue/dispatch.ts	No implicit failed-job replay; explicit retry policy and idempotency are present.
+PIPE-06	Multi-AI pipeline	VERIFIED	S	packages/queue/workers.ts + API release commit path	Durable release is attempted only after law/consensus checks.
+PIPE-07	Multi-AI pipeline	PARTIAL	P	CI run 37222997743 + run 37222997798	End-to-end pipeline execution and exact-head evidence are not proven; runs failed.
+API-01	API	VERIFIED	S	apps/web/app/api/auth/request-otac/route.ts + packages/api/auth.ts	OTAC request route/handler exists.
+API-02	API	VERIFIED	S	apps/web/app/api/auth/verify-otac/route.ts + packages/api/auth.ts	OTAC verify route/handler exists.
+API-03	API	VERIFIED	S	apps/web/app/api/session/me/route.ts + auth handlers	Session read route exists.
+API-04	API	VERIFIED	S	apps/web/app/api/auth/logout/route.ts + packages/api/auth.ts	Logout/revocation route exists.
+API-05	API	VERIFIED	S	apps/web/app/api/directives/route.ts and [id] routes	Directive create/read/list routes exist.
+API-06	API	VERIFIED	S	apps/web/app/api/runs + freeze/recover routes	Run detail/cancel/revoke and freeze recovery routes exist.
+API-07	API	VERIFIED	S	apps/web/app/api/artifacts + audit/incidents routes	Vault, revisions, audit logs and incidents route families exist.
+API-08	API	PARTIAL	P	CI run 37222997743	Canonical response/auth/error behavior is not execution-verified at frozen HEAD.
+AUTH-05	Authentication	VERIFIED	S	packages/auth/otac.ts + packages/contracts/auth.ts	10-char A-Z0-9 OTAC, CSPRNG, salt/hash primitives exist.
+AUTH-06	Authentication	VERIFIED	S	packages/api/vnext-config.ts + packages/api/middleware/rate-limit.ts	Attempt/cooldown/lock configuration and rate-limit middleware exist.
+AUTH-07	Authentication	VERIFIED	S	packages/auth/session.ts + csrf.ts	Secure cookie/session/CSRF primitives exist in source.
+AUTH-08	Authentication	VERIFIED	S	packages/auth/device-binding.ts + security-incident.ts	Device binding and security-incident vocabulary exist.
+AUTH-09	Authentication	VERIFIED	S	packages/auth/email.ts	Missing secure email provider fails closed rather than silently succeeding.
+AUTH-10	Authentication	PARTIAL	P	CI run 37222997743	Auth abuse/integration execution is not proven at frozen HEAD.
+AUTH-11	Authentication	MISMATCH	M	current-head-attestation.json vs frozen HEAD	Current attestation claims head 7eb83..., dirty tree and old validation; it is not evidence for 9e615....
+STORE-01	Storage	VERIFIED	S	packages/storage/query-patterns.ts	Canonical artifact/revision/directive/run/incident/audit query shapes exist.
+STORE-02	Storage	VERIFIED	S	packages/api/storage-control.ts + soft-delete.ts	Soft-delete/restore/hard-delete control paths exist in source.
+STORE-03	Storage	VERIFIED	S	packages/api/canonical.ts + cold-snapshot.ts	Content/hash/revision/archive control paths exist in source.
+STORE-04	Storage	VERIFIED	S	packages/core/ulid.ts + API contracts	ULID strategy is encoded in directive and core utility paths.
+STORE-05	Storage	VERIFIED	S	packages/api + packages/obs	Transactional EventLog/AuditLog writes are used in inspected mutation paths.
+STORE-06	Storage	PARTIAL	P	CI run 37222997743 + cargo run 37222997736	Migration/storage execution and Rust lock proof failed at frozen HEAD.
+STORE-07	Storage	NOT_VERIFIED	U	No current runtime DB evidence	Production migration apply/rollback and blob/object-store behavior are not proven.
+RBAC-01	RBAC	VERIFIED	S	packages/contracts/envelope.ts + API owner handlers	OWNER/OPERATOR/AUDITOR/SYSTEM/PUBLIC_USER vocabulary exists.
+RBAC-02	RBAC	VERIFIED	S	packages/api/owner-*.ts + auth.ts	Backend owner/operator/auditor checks are represented in handlers.
+RBAC-03	RBAC	VERIFIED	S	apps/web components/pages	Owner/action/read-only UI split components/routes are present.
+RBAC-04	RBAC	PARTIAL	P	CI run 37222997743	RBAC enforcement tests are not passed/proven at frozen HEAD.
+OBS-01	Observability	VERIFIED	S	packages/obs + packages/api	EventLog/AuditLog/SecurityIncident/FreezeIncident separation exists.
+OBS-02	Observability	VERIFIED	S	packages/contracts/incidents.ts + API paths	Incident linkage/primary error/freeze paths are encoded.
+OBS-03	Observability	VERIFIED	S	packages/obs/alarms.ts + queue/api callers	Alarm names and worker/queue/auth failure emission hooks exist.
+OBS-04	Observability	VERIFIED	S	packages/api envelopes	request/trace/correlation IDs are carried in response/source paths.
+OBS-05	Observability	PARTIAL	P	CI run 37222997743 + release gates skipped	Alarm firing and operational monitoring are not execution-proven.
+QUEUE-01	Queue/retention	VERIFIED	S	packages/queue/jobs.ts + workers.ts	BullMQ queue/worker and pipeline job processing exist.
+QUEUE-02	Queue/retention	VERIFIED	S	packages/queue/dispatch.ts	Durable dispatch status/idempotency/reconciliation exists.
+QUEUE-03	Queue/retention	VERIFIED	S	packages/queue/dispatch.ts + retry-policy.ts	Explicit retry allowlist and stale/reconcile behavior exist.
+QUEUE-04	Queue/retention	VERIFIED	S	packages/api/vnext-config.ts	Retention and stale-job canonical defaults exist.
+QUEUE-05	Queue/retention	VERIFIED	S	packages/queue/jobs.ts + workers.ts	Failure/cancellation/freeze recording paths exist.
+QUEUE-06	Queue/retention	PARTIAL	P	CI run 37222997743 + run 37222997784	Queue readiness/worker exact-head evidence is not proven.
+UI-01	UI/UX	VERIFIED	S	apps/web/app/login + components/OtacLoginForm.tsx	Login/OTAC screen exists.
+UI-02	UI/UX	VERIFIED	S	apps/web/app/page.tsx + dialog/page.tsx	Front/dialog and VIEW/RUN/FORGE entry paths exist.
+UI-03	UI/UX	VERIFIED	S	apps/web/app/directives + components	Directive create/detail/list and constraint controls exist.
+UI-04	UI/UX	VERIFIED	S	apps/web/components/FreezeBanner.tsx + status page	Visible freeze status/banner exists.
+UI-05	UI/UX	VERIFIED	S	apps/web/app/runs, vault, audit, incidents	Run/vault/audit/incident views exist.
+UI-06	UI/UX	PARTIAL	P	CI run 37222997743	UI truth/pending/error behavior lacks passing browser E2E at frozen HEAD.
+UI-07	UI/UX	NOT_VERIFIED	U	No exact-head visual/E2E proof	Mobile responsive, low-RAM performance and full screen fidelity are not proven.
+GATE-01	Test/deploy	VERIFIED	S	package.json + .github/workflows	Contract/integration/full/typecheck/lint/build/coverage/determinism gates are wired.
+GATE-02	Test/deploy	VERIFIED	S	tests/ tree + evidence inventory	Required contract/API/state/auth/vault/RBAC test families are represented in tree.
+GATE-03	Test/deploy	PARTIAL	P	GitHub check-runs for frozen SHA	All major frozen-SHA CI jobs reported failure.
+GATE-04	Test/deploy	NOT_VERIFIED	U	GitHub check-runs	DOC-C static gate was skipped; no current-head release attestation was produced.
+GATE-05	Test/deploy	NOT_VERIFIED	U	GitHub check-runs/statuses	Deploy job was skipped and external deployment statuses include failure/pending records.
+GATE-06	Test/deploy	NOT_VERIFIED	U	No exact-head signoff artifact	Migration/security/rollback/monitoring signoff is not proven.
+SCOPE-01	Scope fence	VERIFIED	S	DOCX DOC-C §17 + repo inventory	vNEXT in-scope/out-of-scope categories are explicitly defined.
+SCOPE-02	Scope fence	VERIFIED	S	tsconfig.json + packages-experimental	Voice/AR/VR/XR/IoT/blockchain/quantum-safe and other excluded code is isolated from main TS build.
+SCOPE-03	Scope fence	VERIFIED	S	apps/web API auth paths	Public anonymous write access is not the intended route contract.
+SCOPE-04	Scope fence	PARTIAL	P	CI run 37222997743	Static scope gate cannot be promoted to current-head execution proof.
+EXP-01	Experimental systems	VERIFIED	S	packages/phase-f/l1o and lo3 inventory	L1o/Lo3/Lo2-oriented implementation files exist.
+EXP-02	Experimental systems	VERIFIED	S	packages/phase-f/game inventory	AAAA/game fabric modules exist in repository inventory.
+EXP-03	Experimental systems	VERIFIED	S	packages/phase-f/resilience + universe inventory	Resilience/host-survival/universe modules exist in source inventory.
+EXP-04	Experimental systems	VERIFIED	S	packages-experimental/robotics inventory	Robotics/firmware experimental files exist but are not vNEXT build obligations.
+EXP-05	Experimental systems	PARTIAL	P	GitHub run 37222997784	Six-system exact-head evidence failed.
+EXP-06	Experimental systems	NOT_VERIFIED	U	No deployment/signoff proof	Experimental systems have no current deploy authorization evidence.
+EVID-01	Evidence hygiene	MISMATCH	M	current-head-attestation.json	Attestation embedded in product points to an older SHA and dirty tree.
+EVID-02	Evidence hygiene	MISMATCH	M	E01-E12 source hashes vs frozen HEAD	Several evidence documents cite source blob hashes that differ from current frozen blobs.
+EVID-03	Evidence hygiene	MISMATCH	M	E07/E12 validation claims	Evidence claims pass on older heads/dates while frozen-head CI fails.
+EVID-04	Evidence hygiene	NOT_VERIFIED	U	DOC-E §§9.2-9.5	Required deploy evidence artifacts/signoffs are not complete for frozen HEAD.
