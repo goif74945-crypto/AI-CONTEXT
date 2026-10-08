@@ -1,0 +1,23 @@
+name: nexy-ex010-isolated
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.6-pg16
+    environment:
+      POSTGRES_USER: ex010
+      POSTGRES_PASSWORD: ex010_local_fixture_only
+      POSTGRES_DB: nexy_ex010
+    ports: ["127.0.0.1:5440:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ex010 -d nexy_ex010"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "always"]
+    ports: ["127.0.0.1:6390:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
