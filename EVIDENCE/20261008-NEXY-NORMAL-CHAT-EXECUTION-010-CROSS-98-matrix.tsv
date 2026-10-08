@@ -1,0 +1,99 @@
+ID	SYSTEM	PRODUCT_HEAD	EX010_EVIDENCE_STATUS	EX010_EVIDENCE_SCOPE	EX009_STATUS_PROVENANCE_ONLY
+AUTH-01	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	SHA_VERIFIED_PREVIOUS
+AUTH-02	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+AUTH-03	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+AUTH-04	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	HEAD_VERIFIED	Live NEXY.ai commit 44bcb851... rechecked; product source blob 002eef...	GITHUB_HEAD_VERIFIED
+CON-01	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+CON-02	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+CON-03	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+CON-04	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+CON-05	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+CON-06	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+CFG-01	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+CFG-02	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+CFG-03	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+CFG-04	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+VAL-01	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+VAL-02	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+VAL-03	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+VAL-04	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+ARCH-01	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+ARCH-02	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+ARCH-03	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+ARCH-04	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+FSM-01	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+FSM-02	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+FSM-03	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+FSM-04	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+FSM-05	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+PIPE-01	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_ONLY	Production worker source prior observed; full service integration NOT_RUN	NOT_REASSESSED_009
+PIPE-02	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+PIPE-03	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+PIPE-04	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+PIPE-05	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_COMPILE_ONLY	dispatchDirective actual import and tested candidate A strict TypeScript exit0; real DB/Redis NOT_RUN	NOT_REASSESSED_009
+PIPE-06	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	RELEASE_RACE_RISK_UNVERIFIED	run-state.ts advisory lock + in-transaction CANCELLED check; cancelDirectiveDispatch standalone updateMany no shared lock; output emit no recheck	NOT_REASSESSED_009
+PIPE-07	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+API-01	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+API-02	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+API-03	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+API-04	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+API-05	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+API-06	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+API-07	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+API-08	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+AUTH-05	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+AUTH-06	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+AUTH-07	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+AUTH-08	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+AUTH-09	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+AUTH-10	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+AUTH-11	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+STORE-01	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+STORE-02	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+STORE-03	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+STORE-04	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+STORE-05	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+STORE-06	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+STORE-07	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+RBAC-01	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+RBAC-02	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+RBAC-03	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+RBAC-04	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+OBS-01	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+OBS-02	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+OBS-03	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+OBS-04	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+OBS-05	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+QUEUE-01	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_ONLY	jobs.ts uses real BullMQ enqueue, helper import in EX010 script, not service-run	SOURCE_ONLY
+QUEUE-02	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	HARNESS_READY_NOT_RUN	EX010 actual production dispatch call paths source-linked, no real PG/Redis execution	SOURCE_PLUS_MOCK_CANDIDATES
+QUEUE-03	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_PARTIAL	retry-policy safe code QUEUE_UNAVAILABLE, actual BullMQ retry NOT_RUN	SOURCE_AND_POLICY_CONTRACT
+QUEUE-04	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	STATIC_ONLY	TTL 900000 and concurrency 10 source; signed TSA TTL E2E NOT_RUN	DOC_C_STATIC
+QUEUE-05	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_TEST_PLAN	Probe Worker intended for claims only; production Worker E2E NOT_RUN	SOURCE_AND_TEST_PROBE
+QUEUE-06	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	TEST_ONLY_TSA_UNVERIFIED	injectTsaBatchTime fixed integer in isolated test harness is UNSIGNED, not genuine authority	TSA_FROZEN
+UI-01	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+UI-02	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+UI-03	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+UI-04	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+UI-05	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+UI-06	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+UI-07	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+GATE-01	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	STRICT_COMPILE_PASS	EX010 standalone TypeScript compile exit0 with candidate A; not product build pass	LOCAL_CHECKS_LIMITED
+GATE-02	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	HARNESS_READY_PARTIAL	EX009 and EX010 test source imported, runtime service NOT_RUN	NOT_REASSESSED_009
+GATE-03	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	CI_FAILURE_UNKNOWN_CAUSE	Exact-head evidence workflow 37741650349 failure; no job assertion proof	INFRA_FAILURE_UNDIAGNOSED
+GATE-04	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	CI_FAILURE_UNKNOWN_CAUSE	NEXY CI/Deploy 37741650343 failure; no root cause verified	INFRA_FAILURE_UNDIAGNOSED
+GATE-05	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	CI_FAILURE_UNKNOWN_CAUSE	E7 37741650376 attempt2 fail, steps empty, causes unknown	INFRA_FAILURE_UNDIAGNOSED
+GATE-06	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	RELEASE_BLOCKED	DOC-E final signed release and rollback still not evidenced	DOC_E_NOT_AUTHORIZED
+SCOPE-01	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+SCOPE-02	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+SCOPE-03	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+SCOPE-04	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+EXP-01	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+EXP-02	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+EXP-03	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+EXP-04	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+EXP-05	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	CAGE_RISK_SOURCE_ONLY	bwrap unavailable direct spawn, seccomp JSON without enforcement proof, Linux NOT_RUN	SOURCE_PLUS_NEGATIVE_REGRESSION
+EXP-06	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+EVID-01	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+EVID-02	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+EVID-03	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_010	No new normative comparison in Execution010; prior is history, not current audit.	NOT_REASSESSED_009
+EVID-04	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SIGNOFF_NOT_VERIFIED	DOC-E security/migration/monitoring/release signoffs not verified	RELEASE_NOT_AUTHORIZED
