@@ -1,0 +1,99 @@
+ID	SYSTEM	HEAD	ASSESSMENT_STATUS	ORIGINAL_SOURCE_LOCATOR_HISTORICAL	CURRENT_EVIDENCE	TEST_KIND
+AUTH-01	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_VERIFIED	DOCX SHA-256	Actual DOCX SHA256 equal required hash 20261008, no product runtime claim	SOURCE_REVIEW_ONLY
+AUTH-02	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	PARTIAL	DOC-C §§0-20	DOC-C build precedence observed P09844, full 20 sections not assessed	SOURCE_REVIEW_ONLY
+AUTH-03	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	DOCX early auth vs DOC-C §2.3/§8	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+AUTH-04	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	NEXY.AI- AGENTS.md + frozen refs	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CON-01	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts/state.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CON-02	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts/envelope.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CON-03	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts/directive.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CON-04	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts/consensus.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CON-05	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts/release-policy.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CON-06	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts/errors.ts + incidents.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CFG-01	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api/vnext-config.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CFG-02	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api/vnext-config.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CFG-03	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api/vnext-config.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+CFG-04	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743 + exact-head runs	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+VAL-01	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts + packages/validation	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+VAL-02	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api handlers	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+VAL-03	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/queue/payload.ts + workers.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+VAL-04	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+ARCH-01	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/* module layout	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+ARCH-02	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	package.json + scripts/check-module-boundaries.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+ARCH-03	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+ARCH-04	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	tsconfig.json + packages-experimental inventory	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+FSM-01	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts/state.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+FSM-02	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/core/vnext-state-matrix.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+FSM-03	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/core/vnext-state-matrix.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+FSM-04	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/core/vnext-state-matrix.ts + packages/law/freeze.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+FSM-05	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+PIPE-01	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/queue/workers.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+PIPE-02	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/judge/consensus.ts + scoring.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+PIPE-03	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/law/prerelease.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+PIPE-04	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/queue/workers.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+PIPE-05	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	PARTIAL_SOURCE	packages/queue/dispatch.ts	producer-worker two-store publication/claim gap inspected	SOURCE_REVIEW_ONLY
+PIPE-06	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/queue/workers.ts + API release commit path	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+PIPE-07	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743 + run 37222997798	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+API-01	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/api/auth/request-otac/route.ts + packages/api/auth.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+API-02	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/api/auth/verify-otac/route.ts + packages/api/auth.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+API-03	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/api/session/me/route.ts + auth handlers	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+API-04	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/api/auth/logout/route.ts + packages/api/auth.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+API-05	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/api/directives/route.ts and [id] routes	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+API-06	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/api/runs + freeze/recover routes	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+API-07	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/api/artifacts + audit/incidents routes	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+API-08	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+AUTH-05	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/auth/otac.ts + packages/contracts/auth.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+AUTH-06	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api/vnext-config.ts + packages/api/middleware/rate-limit.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+AUTH-07	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/auth/session.ts + csrf.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+AUTH-08	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/auth/device-binding.ts + security-incident.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+AUTH-09	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/auth/email.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+AUTH-10	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+AUTH-11	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	current-head-attestation.json vs frozen HEAD	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+STORE-01	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/storage/query-patterns.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+STORE-02	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api/storage-control.ts + soft-delete.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+STORE-03	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api/canonical.ts + cold-snapshot.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+STORE-04	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/core/ulid.ts + API contracts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+STORE-05	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api + packages/obs	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+STORE-06	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743 + cargo run 37222997736	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+STORE-07	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	No current runtime DB evidence	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+RBAC-01	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts/envelope.ts + API owner handlers	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+RBAC-02	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api/owner-*.ts + auth.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+RBAC-03	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web components/pages	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+RBAC-04	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+OBS-01	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/obs + packages/api	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+OBS-02	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/contracts/incidents.ts + API paths	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+OBS-03	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/obs/alarms.ts + queue/api callers	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+OBS-04	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/api envelopes	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+OBS-05	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743 + release gates skipped	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+QUEUE-01	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/queue/jobs.ts + workers.ts	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+QUEUE-02	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	MISMATCH_SOURCE	packages/queue/dispatch.ts	dispatch.ts id-only unconditional update can overwrite CANCELLED; integrated test candidate NOT_RUN	SOURCE_REVIEW_ONLY
+QUEUE-03	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	PARTIAL_SOURCE	packages/queue/dispatch.ts + retry-policy.ts	retry-policy.ts safeErrorCodes=QUEUE_UNAVAILABLE + explicit maxAttempts; live race untested	SOURCE_REVIEW_ONLY
+QUEUE-04	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_VERIFIED	packages/api/vnext-config.ts	DOC-C P09946/47 defaults inspected in vnext-config.ts; runtime NOT_RUN	SOURCE_REVIEW_ONLY
+QUEUE-05	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	PARTIAL_SOURCE	packages/queue/jobs.ts + workers.ts	jobs BullMQ idempotencyKey jobId + worker guarded claim; Redis not executed	SOURCE_REVIEW_ONLY
+QUEUE-06	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	BLOCKED_INFRA	CI run 37222997743 + run 37222997784	E7 rerun requested; signed TSA runtime call graph unresolved	SOURCE_REVIEW_ONLY
+UI-01	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/login + components/OtacLoginForm.tsx	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+UI-02	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/page.tsx + dialog/page.tsx	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+UI-03	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/directives + components	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+UI-04	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/components/FreezeBanner.tsx + status page	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+UI-05	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web/app/runs, vault, audit, incidents	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+UI-06	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+UI-07	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	No exact-head visual/E2E proof	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+GATE-01	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	PARTIAL_SOURCE	package.json + .github/workflows	package.json scripts and e7-queue.yml workflow inspected	SOURCE_REVIEW_ONLY
+GATE-02	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	tests/ tree + evidence inventory	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+GATE-03	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	CI_FAILURE	GitHub check-runs for frozen SHA	exact-head run 37741650349 current product SHA, failed before steps	SOURCE_REVIEW_ONLY
+GATE-04	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	CI_FAILURE	GitHub check-runs	NEXY CI run 37741650343 current product SHA, failed before steps	SOURCE_REVIEW_ONLY
+GATE-05	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	CI_FAILURE	GitHub check-runs/statuses	E7 run 37741650376 current product SHA, failed before steps	SOURCE_REVIEW_ONLY
+GATE-06	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	No exact-head signoff artifact	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+SCOPE-01	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	DOCX DOC-C §17 + repo inventory	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+SCOPE-02	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	tsconfig.json + packages-experimental	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+SCOPE-03	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	apps/web API auth paths	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+SCOPE-04	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	CI run 37222997743	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+EXP-01	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/phase-f/l1o and lo3 inventory	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+EXP-02	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/phase-f/game inventory	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+EXP-03	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages/phase-f/resilience + universe inventory	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+EXP-04	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	packages-experimental/robotics inventory	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+EXP-05	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	MISMATCH_SOURCE	GitHub run 37222997784	cage.ts bwrap=false direct spawn; isolation negative test NOT_RUN	SOURCE_REVIEW_ONLY
+EXP-06	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	No deployment/signoff proof	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+EVID-01	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	current-head-attestation.json	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+EVID-02	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	E01-E12 source hashes vs frozen HEAD	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+EVID-03	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	E07/E12 validation claims	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN
+EVID-04	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED	DOC-E §§9.2-9.5	No current HEAD spec+source+test row-level re-evaluation	NOT_RUN

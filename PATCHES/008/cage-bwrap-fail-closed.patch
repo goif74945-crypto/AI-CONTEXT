@@ -1,0 +1,13 @@
+diff --git a/packages/phase-f/lo3/cage.ts b/packages/phase-f/lo3/cage.ts
+--- a/packages/phase-f/lo3/cage.ts
++++ b/packages/phase-f/lo3/cage.ts
+@@ -531,3 +531,6 @@
+-  const useBwrap    = await bwrapAvailable();
+-
+-  try {
++  const useBwrap    = await bwrapAvailable();
++  if (!useBwrap) {
++    throw new CageError(id, "SPAWN_FAILED", "CAGE_OS_ISOLATION_UNAVAILABLE");
++  }
++
++  try {

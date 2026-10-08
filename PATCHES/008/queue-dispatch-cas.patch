@@ -1,0 +1,217 @@
+diff --git a/packages/queue/dispatch.ts b/packages/queue/dispatch.ts
+--- a/packages/queue/dispatch.ts
++++ b/packages/queue/dispatch.ts
+@@ -106,79 +106,134 @@
+-export async function dispatchDirective(
+-  pipelineRunId: string,
+-  retryPolicy: FailedDispatchRetryPolicy = FAILED_RETRY_DISABLED,
+-): Promise<DispatchAttemptResult> {
+-  const row = await prisma.directiveDispatch.findUnique({
+-    where: { pipelineRunId },
+-    include: { directive: true },
+-  });
+-  if (!row) return { status: "MISSING", delivered: false, idempotent: false };
+-  if (row.status === DISPATCH_STATUS.COMPLETED) {
+-    return { status: DISPATCH_STATUS.COMPLETED, delivered: true, idempotent: true };
+-  }
+-  if (row.status === DISPATCH_STATUS.CANCELLED) {
+-    return { status: DISPATCH_STATUS.CANCELLED, delivered: false, idempotent: true };
+-  }
+-  if (
+-    row.status === DISPATCH_STATUS.FAILED
+-    && !isFailedDispatchRetryAllowed(
+-      { status: row.status, attempts: row.attempts, lastError: row.lastError },
+-      retryPolicy,
+-    )
+-  ) {
+-    return {
+-      status: DISPATCH_STATUS.FAILED,
+-      delivered: false,
+-      idempotent: true,
+-      errorCode: row.lastError ?? "QUEUE_FAILED_RETRY_DISABLED",
+-    };
+-  }
+-
+-  try {
+-    const enqueuedAtMs = requireQueueAuthorityTimeMs();
+-    const result = await enqueueDirective(jobData(row), {
+-      idempotencyKey: row.idempotencyKey,
+-      enqueuedAtMs,
+-      ...(row.status === DISPATCH_STATUS.FAILED
+-        ? {
+-            retryAuthorization: {
+-              row: {
+-                status: row.status,
+-                attempts: row.attempts,
+-                lastError: row.lastError,
+-              },
+-              policy: retryPolicy,
+-            },
+-          }
+-        : {}),
+-    });
+-    const tick = currentTick();
+-    await prisma.directiveDispatch.update({
+-      where: { id: row.id },
+-      data: {
+-        status: DISPATCH_STATUS.ENQUEUED,
+-        attempts: { increment: 1 },
+-        updatedTick: tick,
+-        // Elapsed-time authority is TSA milliseconds, not the logical event counter.
+-        enqueuedTick: enqueuedAtMs,
+-        lastError: null,
+-      },
+-    });
+-    return {
+-      status: DISPATCH_STATUS.ENQUEUED,
+-      delivered: true,
+-      idempotent: result.idempotent,
+-    };
+-  } catch (error) {
+-    const errorCode = dispatchErrorCode(error);
+-    await prisma.directiveDispatch.update({
+-      where: { id: row.id },
+-      data: {
+-        status: DISPATCH_STATUS.FAILED,
+-        attempts: { increment: 1 },
+-        updatedTick: currentTick(),
+-        lastError: errorCode,
+-      },
+-    });
+-    return { status: DISPATCH_STATUS.FAILED, delivered: false, idempotent: false, errorCode };
+-  }
+-}
++export async function dispatchDirective(
++  pipelineRunId: string,
++  retryPolicy: FailedDispatchRetryPolicy = FAILED_RETRY_DISABLED,
++): Promise<DispatchAttemptResult> {
++  const row = await prisma.directiveDispatch.findUnique({
++    where: { pipelineRunId },
++    include: { directive: true },
++  });
++  if (!row) return { status: "MISSING", delivered: false, idempotent: false };
++  if (row.status === DISPATCH_STATUS.COMPLETED) {
++    return { status: DISPATCH_STATUS.COMPLETED, delivered: true, idempotent: true };
++  }
++  if (row.status === DISPATCH_STATUS.CANCELLED) {
++    return { status: DISPATCH_STATUS.CANCELLED, delivered: false, idempotent: true };
++  }
++  if (row.status === DISPATCH_STATUS.PROCESSING) {
++    return { status: DISPATCH_STATUS.PROCESSING, delivered: true, idempotent: true };
++  }
++  if (
++    row.status === DISPATCH_STATUS.FAILED
++    && !isFailedDispatchRetryAllowed(
++      { status: row.status, attempts: row.attempts, lastError: row.lastError },
++      retryPolicy,
++    )
++  ) {
++    return {
++      status: DISPATCH_STATUS.FAILED,
++      delivered: false,
++      idempotent: true,
++      errorCode: row.lastError ?? "QUEUE_FAILED_RETRY_DISABLED",
++    };
++  }
++  if (
++    row.status !== DISPATCH_STATUS.PENDING
++    && row.status !== DISPATCH_STATUS.ENQUEUED
++    && row.status !== DISPATCH_STATUS.FAILED
++  ) {
++    throw new Error("QUEUE_DISPATCH_STATUS_INVALID");
++  }
++
++  // An external Redis enqueue is not atomic with the database transition.
++  // Re-read durable state after any losing CAS; terminal states are immutable.
++  const resultAfterConflict = async (): Promise<DispatchAttemptResult> => {
++    const current = await prisma.directiveDispatch.findUnique({
++      where: { id: row.id },
++      select: { status: true, lastError: true },
++    });
++    if (!current) return { status: "MISSING", delivered: false, idempotent: false };
++    switch (current.status) {
++      case DISPATCH_STATUS.CANCELLED:
++        return { status: DISPATCH_STATUS.CANCELLED, delivered: false, idempotent: true };
++      case DISPATCH_STATUS.COMPLETED:
++      case DISPATCH_STATUS.PROCESSING:
++      case DISPATCH_STATUS.ENQUEUED:
++        return { status: current.status, delivered: true, idempotent: true };
++      case DISPATCH_STATUS.FAILED:
++        return {
++          status: DISPATCH_STATUS.FAILED,
++          delivered: false,
++          idempotent: true,
++          errorCode: current.lastError ?? "QUEUE_FAILED_RETRY_DISABLED",
++        };
++      case DISPATCH_STATUS.PENDING:
++        return {
++          status: DISPATCH_STATUS.PENDING,
++          delivered: false,
++          idempotent: true,
++          errorCode: "QUEUE_DISPATCH_STATE_CONFLICT",
++        };
++      default:
++        throw new Error("QUEUE_DISPATCH_STATUS_INVALID");
++    }
++  };
++
++  const expected = {
++    id: row.id,
++    status: row.status,
++    attempts: row.attempts,
++    lastError: row.lastError,
++  };
++  let enqueuedAtMs: bigint;
++  let enqueueResult: Awaited<ReturnType<typeof enqueueDirective>>;
++  try {
++    enqueuedAtMs = requireQueueAuthorityTimeMs();
++    enqueueResult = await enqueueDirective(jobData(row), {
++      idempotencyKey: row.idempotencyKey,
++      enqueuedAtMs,
++      ...(row.status === DISPATCH_STATUS.FAILED
++        ? {
++            retryAuthorization: {
++              row: {
++                status: row.status,
++                attempts: row.attempts,
++                lastError: row.lastError,
++              },
++              policy: retryPolicy,
++            },
++          }
++        : {}),
++    });
++  } catch (error) {
++    // Only time-authority/enqueue errors are delivery failures. A database
++    // CAS exception must propagate, never be converted into a second write.
++    const errorCode = dispatchErrorCode(error);
++    const changed = await prisma.directiveDispatch.updateMany({
++      where: expected,
++      data: {
++        status: DISPATCH_STATUS.FAILED,
++        attempts: { increment: 1 },
++        updatedTick: currentTick(),
++        lastError: errorCode,
++      },
++    });
++    if (changed.count !== 1) return resultAfterConflict();
++    return { status: DISPATCH_STATUS.FAILED, delivered: false, idempotent: false, errorCode };
++  }
++
++  const changed = await prisma.directiveDispatch.updateMany({
++    where: expected,
++    data: {
++      status: DISPATCH_STATUS.ENQUEUED,
++      attempts: { increment: 1 },
++      updatedTick: currentTick(),
++      enqueuedTick: enqueuedAtMs,
++      lastError: null,
++    },
++  });
++  if (changed.count !== 1) return resultAfterConflict();
++  return {
++    status: DISPATCH_STATUS.ENQUEUED,
++    delivered: true,
++    idempotent: enqueueResult.idempotent,
++  };
++}
