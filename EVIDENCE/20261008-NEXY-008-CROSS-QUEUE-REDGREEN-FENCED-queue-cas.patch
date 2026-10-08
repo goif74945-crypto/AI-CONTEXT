@@ -1,0 +1,124 @@
+diff --git a/packages/queue/dispatch.ts b/packages/queue/dispatch.ts
+index 002eef2..94340b7 100644
+--- a/packages/queue/dispatch.ts
++++ b/packages/queue/dispatch.ts
+@@ -98,6 +98,35 @@ export interface DispatchAttemptResult {
+   errorCode?: string;
+ }
+ 
++/**
++ * Report the durable truth after an optimistic producer CAS loses.
++ * Redis publication may have succeeded: do not rewrite a later terminal state.
++ */
++async function readCurrentDispatchOutcome(rowId: string): Promise<DispatchAttemptResult> {
++  const fresh = await prisma.directiveDispatch.findUnique({
++    where: { id: rowId },
++    select: { status: true, lastError: true },
++  });
++  if (!fresh) return { status: "MISSING", delivered: false, idempotent: false };
++  switch (fresh.status) {
++    case DISPATCH_STATUS.COMPLETED:
++    case DISPATCH_STATUS.PROCESSING:
++    case DISPATCH_STATUS.ENQUEUED:
++      return { status: fresh.status, delivered: true, idempotent: true };
++    case DISPATCH_STATUS.CANCELLED:
++      return { status: DISPATCH_STATUS.CANCELLED, delivered: false, idempotent: true };
++    case DISPATCH_STATUS.FAILED:
++      return {
++        status: DISPATCH_STATUS.FAILED, delivered: false, idempotent: true,
++        errorCode: fresh.lastError ?? "QUEUE_UNAVAILABLE",
++      };
++    case DISPATCH_STATUS.PENDING:
++      return { status: DISPATCH_STATUS.PENDING, delivered: false, idempotent: true };
++    default:
++      throw new Error("QUEUE_DISPATCH_STATE_INVALID");
++  }
++}
++
+ /**
+  * Enqueue one durable dispatch row and advance its delivery state. This is
+  * safe to call repeatedly, including when Redis was unavailable after the DB
+@@ -118,6 +147,9 @@ export async function dispatchDirective(
+   if (row.status === DISPATCH_STATUS.CANCELLED) {
+     return { status: DISPATCH_STATUS.CANCELLED, delivered: false, idempotent: true };
+   }
++  if (row.status === DISPATCH_STATUS.PROCESSING) {
++    return { status: DISPATCH_STATUS.PROCESSING, delivered: true, idempotent: true };
++  }
+   if (
+     row.status === DISPATCH_STATUS.FAILED
+     && !isFailedDispatchRetryAllowed(
+@@ -133,9 +165,11 @@ export async function dispatchDirective(
+     };
+   }
+ 
++  let enqueuedAtMs: bigint;
++  let enqueueResult: Awaited<ReturnType<typeof enqueueDirective>>;
+   try {
+-    const enqueuedAtMs = requireQueueAuthorityTimeMs();
+-    const result = await enqueueDirective(jobData(row), {
++    enqueuedAtMs = requireQueueAuthorityTimeMs();
++    enqueueResult = await enqueueDirective(jobData(row), {
+       idempotencyKey: row.idempotencyKey,
+       enqueuedAtMs,
+       ...(row.status === DISPATCH_STATUS.FAILED
+@@ -151,27 +185,11 @@ export async function dispatchDirective(
+           }
+         : {}),
+     });
+-    const tick = currentTick();
+-    await prisma.directiveDispatch.update({
+-      where: { id: row.id },
+-      data: {
+-        status: DISPATCH_STATUS.ENQUEUED,
+-        attempts: { increment: 1 },
+-        updatedTick: tick,
+-        // Elapsed-time authority is TSA milliseconds, not the logical event counter.
+-        enqueuedTick: enqueuedAtMs,
+-        lastError: null,
+-      },
+-    });
+-    return {
+-      status: DISPATCH_STATUS.ENQUEUED,
+-      delivered: true,
+-      idempotent: result.idempotent,
+-    };
+   } catch (error) {
++    // The catch encloses ONLY queue/time production, never a DB CAS or read.
+     const errorCode = dispatchErrorCode(error);
+-    await prisma.directiveDispatch.update({
+-      where: { id: row.id },
++    const failed = await prisma.directiveDispatch.updateMany({
++      where: { id: row.id, status: row.status, attempts: row.attempts },
+       data: {
+         status: DISPATCH_STATUS.FAILED,
+         attempts: { increment: 1 },
+@@ -179,8 +197,28 @@ export async function dispatchDirective(
+         lastError: errorCode,
+       },
+     });
++    if (failed.count !== 1) return readCurrentDispatchOutcome(row.id);
+     return { status: DISPATCH_STATUS.FAILED, delivered: false, idempotent: false, errorCode };
+   }
++
++  // Conditional DB transition: a cancellation/claim/completion beats this
++  // producer acknowledgement, even if the Redis job is already published.
++  const saved = await prisma.directiveDispatch.updateMany({
++    where: { id: row.id, status: row.status, attempts: row.attempts },
++    data: {
++      status: DISPATCH_STATUS.ENQUEUED,
++      attempts: { increment: 1 },
++      updatedTick: currentTick(),
++      enqueuedTick: enqueuedAtMs,
++      lastError: null,
++    },
++  });
++  if (saved.count !== 1) return readCurrentDispatchOutcome(row.id);
++  return {
++    status: DISPATCH_STATUS.ENQUEUED,
++    delivered: true,
++    idempotent: enqueueResult.idempotent,
++  };
+ }
+ 
+ /**

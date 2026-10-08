@@ -1,0 +1,26 @@
+PATCHED_SOURCE_BLOB=94340b7a591e2961b03591780668352ade165394
+
+> nexy.ai-@1.0.0 test
+> vitest run tests/integration/queue-cancel-race-008.spec.ts --reporter=verbose
+
+
+ RUN  v4.1.11 <ISOLATED_CHECKOUT>
+
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not resurrect CANCELLED after successful enqueue 9ms
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not resurrect CANCELLED as FAILED after Redis throws 2ms
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not rewind PROCESSING when BullMQ claims PENDING before producer CAS 1ms
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not rewind COMPLETED on delayed producer acknowledgement 1ms
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > a Redis-published job cannot claim a CANCELLED row 1ms
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > preserves CANCELLED during explicitly authorized FAILED retry 1ms
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not retry when attempts exhausted 1ms
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not retry an unsafe FAILED error 1ms
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > counts a duplicate reconcile race at most once 1ms
+
+ Test Files  1 passed (1)
+      Tests  9 passed (9)
+   Start at  20:09:22
+   Duration  843ms (transform 195ms, setup 159ms, import 135ms, tests 22ms, environment 0ms)
+
+CANDIDATE_TEST_EXIT=0
+
+✅ Process completed with exit code 0 (runtime: 3.77s)

@@ -1,0 +1,159 @@
+TEST_SOURCE_BLOB=002eef253ce836e2cd0e200f5d15cb5042cdeb29
+
+> nexy.ai-@1.0.0 test
+> vitest run tests/integration/queue-cancel-race-008.spec.ts --reporter=verbose
+
+
+ RUN  v4.1.11 <ISOLATED_CHECKOUT>
+
+ × tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not resurrect CANCELLED after successful enqueue 31ms
+   → expected 'ENQUEUED' to be 'CANCELLED' // Object.is equality
+ × tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not resurrect CANCELLED as FAILED after Redis throws 4ms
+   → expected 'FAILED' to be 'CANCELLED' // Object.is equality
+ × tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not rewind PROCESSING when BullMQ claims PENDING before producer CAS 17ms
+   → expected { status: 'ENQUEUED', …(2) } to match object { status: 'PROCESSING', …(1) }
+(1 matching property omitted from actual)
+ × tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not rewind COMPLETED on delayed producer acknowledgement 5ms
+   → expected { status: 'ENQUEUED', …(2) } to match object { Object (status, delivered) }
+(1 matching property omitted from actual)
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > a Redis-published job cannot claim a CANCELLED row 2ms
+ × tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > preserves CANCELLED during explicitly authorized FAILED retry 4ms
+   → expected { status: 'ENQUEUED', …(2) } to match object { status: 'CANCELLED', …(1) }
+(1 matching property omitted from actual)
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not retry when attempts exhausted 2ms
+ ✓ tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not retry an unsafe FAILED error 1ms
+ × tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > counts a duplicate reconcile race at most once 2ms
+   → expected 2 to be 1 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not resurrect CANCELLED after successful enqueue
+AssertionError: expected 'ENQUEUED' to be 'CANCELLED' // Object.is equality
+
+Expected: "CANCELLED"
+Received: "ENQUEUED"
+
+ ❯ tests/integration/queue-cancel-race-008.spec.ts:108:32
+    106|     released.resolve({ jobId: "idem-1", idempotent: false });
+    107|     const result = await delivery;
+    108|     expect(fixture.row.status).toBe("CANCELLED");
+       |                                ^
+    109|     expect(fixture.row.attempts).toBe(0);
+    110|     expect(fixture.row.lastError).toBe("OWNER_CANCEL");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not resurrect CANCELLED as FAILED after Redis throws
+AssertionError: expected 'FAILED' to be 'CANCELLED' // Object.is equality
+
+Expected: "CANCELLED"
+Received: "FAILED"
+
+ ❯ tests/integration/queue-cancel-race-008.spec.ts:123:32
+    121|     released.reject(Object.assign(new Error("isolated Redis failed"), …
+    122|     const result = await delivery;
+    123|     expect(fixture.row.status).toBe("CANCELLED");
+       |                                ^
+    124|     expect(fixture.row.attempts).toBe(0);
+    125|     expect(fixture.row.lastError).toBe("OWNER_CANCEL");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not rewind PROCESSING when BullMQ claims PENDING before producer CAS
+AssertionError: expected { status: 'ENQUEUED', …(2) } to match object { status: 'PROCESSING', …(1) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "delivered": true,
+-   "status": "PROCESSING",
++   "status": "ENQUEUED",
+  }
+
+ ❯ tests/integration/queue-cancel-race-008.spec.ts:137:28
+    135|     expect(await claimDirectiveDispatch("run-1")).toBe("CLAIMED");
+    136|     released.resolve({ jobId: "idem-1", idempotent: false });
+    137|     expect(await delivery).toMatchObject({ status: "PROCESSING", deliv…
+       |                            ^
+    138|     expect(fixture.row.status).toBe("PROCESSING");
+    139|     expect(fixture.row.attempts).toBe(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > does not rewind COMPLETED on delayed producer acknowledgement
+AssertionError: expected { status: 'ENQUEUED', …(2) } to match object { Object (status, delivered) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "delivered": true,
+-   "status": "COMPLETED",
++   "status": "ENQUEUED",
+  }
+
+ ❯ tests/integration/queue-cancel-race-008.spec.ts:151:28
+    149|     await completeDirectiveDispatch("run-1");
+    150|     released.resolve({ jobId: "idem-1", idempotent: false });
+    151|     expect(await delivery).toMatchObject({ status: "COMPLETED", delive…
+       |                            ^
+    152|     expect(fixture.row.status).toBe("COMPLETED");
+    153|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > preserves CANCELLED during explicitly authorized FAILED retry
+AssertionError: expected { status: 'ENQUEUED', …(2) } to match object { status: 'CANCELLED', …(1) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "delivered": false,
+-   "status": "CANCELLED",
++   "delivered": true,
++   "status": "ENQUEUED",
+  }
+
+ ❯ tests/integration/queue-cancel-race-008.spec.ts:172:28
+    170|     await cancelDirectiveDispatch("run-1");
+    171|     released.resolve({ jobId: "idem-1", idempotent: false });
+    172|     expect(await delivery).toMatchObject({ status: "CANCELLED", delive…
+       |                            ^
+    173|     expect(fixture.row.status).toBe("CANCELLED");
+    174|     expect(fixture.row.attempts).toBe(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/integration/queue-cancel-race-008.spec.ts > real dispatch.ts: CANCELLED is terminal across Redis await > counts a duplicate reconcile race at most once
+AssertionError: expected 2 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ tests/integration/queue-cancel-race-008.spec.ts:211:34
+    209|     const both = await Promise.all([a, b]);
+    210|     expect(fixture.row.status).toBe("ENQUEUED");
+    211|     expect(fixture.row.attempts).toBe(1);
+       |                                  ^
+    212|     expect(both.every(v => v.delivered)).toBe(true);
+    213|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 3 passed (9)
+   Start at  20:06:53
+   Duration  1.10s (transform 350ms, setup 204ms, import 278ms, tests 72ms, environment 0ms)
+
+BASELINE_TEST_EXIT=1
+
+✅ Process completed with exit code 1 (runtime: 4.30s)
