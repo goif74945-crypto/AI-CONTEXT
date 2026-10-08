@@ -1,0 +1,179 @@
+{
+  "task_id": "20261008-NEXY-CONTINUOUS-REPAIR-EXECUTION-003",
+  "kind": "NEXY_LOCAL_EXACT_HEAD_EXECUTION_RECORD",
+  "scope": "LOCAL_VALIDATION_NOT_RELEASE_OR_DEPLOYMENT_AUTHORIZATION",
+  "repository": "goif74945-crypto/NEXY.AI-",
+  "authorized_branch": "NEXY.ai",
+  "tested_head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+  "tested_tree": "908faae5a8cef413e512ec25b94067f7f7659657",
+  "source_snapshot": {
+    "schema_version": 2,
+    "kind": "NEXY_CURRENT_HEAD_SOURCE_SNAPSHOT",
+    "repository": "goif74945-crypto/NEXY.AI-",
+    "branch": null,
+    "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+    "generated_at": "2026-10-08T05:46:34.179Z",
+    "working_tree_dirty": false,
+    "working_tree_files": [],
+    "validation_status": "NOT_EXECUTED",
+    "validation": [],
+    "release_authorized": false,
+    "deploy_authorized": false
+  },
+  "gate_results": [
+    {
+      "command": "npm test -- --reporter=dot",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:44:04.263548+00:00",
+      "ended_at": "2026-10-08T05:44:31.768959+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/00.log",
+      "log_sha256": "55f3fd61ff5696502efe01a03644d295892952c4adda54775e3d6c1169ce9097",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run test:contract",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:44:31.771039+00:00",
+      "ended_at": "2026-10-08T05:44:57.429597+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/01.log",
+      "log_sha256": "e11e6d4abfc583a9538e5c563f5a1cfac644c69d5a0c96ed4d47721262826c8b",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run test:integration",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:44:57.431662+00:00",
+      "ended_at": "2026-10-08T05:45:02.221773+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/02.log",
+      "log_sha256": "40a20f2228ae0a196b2302b186cbb4fede7569562e2e1fa103ca3309f1c7784b",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run typecheck",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:02.223833+00:00",
+      "ended_at": "2026-10-08T05:45:10.420754+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/03.log",
+      "log_sha256": "0b9c37a7282df5b1a8ff80b7cf4875570706fdebe2982ce75ba1637cd890eabf",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run typecheck:six-system",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:10.422532+00:00",
+      "ended_at": "2026-10-08T05:45:12.693752+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/04.log",
+      "log_sha256": "ca50887b35d93891ec78238e1f69b7b17063cfd39cdc4bfdb2567b754db981cc",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run lint",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:12.696227+00:00",
+      "ended_at": "2026-10-08T05:45:17.576030+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/05.log",
+      "log_sha256": "4259161adf79cc6782f27e72cdc52fed35892432f144c26c39f5d0d98ade713a",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run check:doc-c",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:17.578350+00:00",
+      "ended_at": "2026-10-08T05:45:17.974074+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/06.log",
+      "log_sha256": "5d74a1a4b891c3ae5216ba10a7a80d889c0844459e77be7a6d6c0abdd1655fc2",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run check:static-determinism",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:17.976322+00:00",
+      "ended_at": "2026-10-08T05:45:18.885527+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/07.log",
+      "log_sha256": "ef14874dcea23d0ac6d5d69edd79b7a2414ca4968719e559725ebe52d3bf8c77",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run check:six-system-spec",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:18.887393+00:00",
+      "ended_at": "2026-10-08T05:45:19.064324+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/08.log",
+      "log_sha256": "4929451378f1001446e7ffdbc29273f72eacf3882f475b01489f2e1db53ca59d",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run check:canon-source",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:19.066253+00:00",
+      "ended_at": "2026-10-08T05:45:19.231822+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/09.log",
+      "log_sha256": "ad5d7ae9be49a029bc5c46b1fb5f3fac37de7b271a4d4604863bba077dbba7e1",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run test:coverage",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:19.233750+00:00",
+      "ended_at": "2026-10-08T05:45:50.740316+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/10.log",
+      "log_sha256": "9672ab1fb5f7d95ec7c0251d296044a8eb912f3a9c08d407328225683dc5e275",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run check:coverage",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:50.742313+00:00",
+      "ended_at": "2026-10-08T05:45:50.950449+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/11.log",
+      "log_sha256": "ec55270aec7ab7483180870c9459a04e8e0e1ee96bce01a1082acc858d4e4692",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    },
+    {
+      "command": "npm run check:experimental",
+      "head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+      "started_at": "2026-10-08T05:45:50.952435+00:00",
+      "ended_at": "2026-10-08T05:45:51.278608+00:00",
+      "exit_code": 0,
+      "log": "/workspace/work/final-gates/12.log",
+      "log_sha256": "a5fa4a9590ea0ed9ba70903bee73cdb8b33b7e6979a2ce90969b47ee452c506f",
+      "scope": "LOCAL_VALIDATION_NOT_RELEASE_PROOF"
+    }
+  ],
+  "matrix_total": 98,
+  "duplicate_ids": 0,
+  "classifications": {
+    "SPEC_SOURCE_ACCESS_BLOCKED": 4,
+    "CURRENT_VERIFIED": 14,
+    "CURRENT_NOT_VERIFIED": 62,
+    "CURRENT_PARTIAL": 9,
+    "INFRA_BLOCKED": 5,
+    "CURRENT_MISMATCH": 4
+  },
+  "classification_coverage_percent": 100,
+  "semantic_rows_reviewed": 39,
+  "semantic_review_coverage_percent": 39.795918367346935,
+  "completion_percent_on_classified_denominator": 51.851851851851855,
+  "completion_caveat": "Conservative subset assessment; excluded unknown/source/infrastructure rows prevent a project-wide completion claim.",
+  "release_authorized": false,
+  "deploy_authorized": false,
+  "external_results": {
+    "web_build": "PASS with optional @valkey/valkey-glide unresolved warning",
+    "browser": "9 passed / 2 failed; TSA authority missing",
+    "experimental": "781 passed / 10 failed; sandbox runtime path incompatible",
+    "migration": "28 applied; latest post-baseline down/up succeeds; schema up-to-date",
+    "ci": "4 final-head runs failure before steps; release/deploy/static dependent jobs skipped; cause unknown"
+  }
+}
