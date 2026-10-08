@@ -20,3 +20,10 @@ SOURCE BLOBS: dispatch.ts 002eef253ce836e2cd0e200f5d15cb5042cdeb29; cage.ts 5afd
 | DOC-E | NOT_AUTHORIZED | human signoffs/rollback/incident evidence absent |
 AUDIT INVENTORY=98/98; SOURCE_TRIAGE=13/98; FULL SUBSTANTIVE AUDIT COVERAGE=NOT_COMPUTABLE (separate from inventory); ASSESSED COMPLETION=NOT_COMPUTABLE.
 No mass status promotion; do not call source risk verified exploit.
+
+## POST-COMMIT CI ATTEMPT-2 & PATCH REVIEW (append only)
+- GitHub rerun_workflow_job returned success=true for old job 113193487979, E7 run 37741650376.
+- GET run 37741650376 now reports attempt=2, status=completed, conclusion=**failure**, tested product SHA 44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08.
+- Attempt-2 NEW job 113320413296 (Real Redis/BullMQ E7 gate) ended **failure**, steps=[].
+- Attempt-2 job log fetch returned 404 Azure BlobNotFound, root cause STILL UNKNOWN; no Postgres/Redis test PASS.
+- Reviewer identified original zero-context .patch hunks and fixed with three context lines; queue patch and full candidate source now generated from same source-line replacement. NOT_RUN: git apply --check and Vitest, pending actual runner.

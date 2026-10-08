@@ -13,3 +13,10 @@ CAGE REVIEW: DOCX paragraphs P04137-P04149 namespace/syscall/memory isolation, P
 CI: workflow YAML exact-head-evidence.yml blob 04fdc310d7c698ea9d695bc158f0d3b8955c62f8; e7-queue.yml blob 32c3cfa6e9daee311c9a801ec81bd08cda298ce3. Current HEAD failure runs 37741650355, 37741650349, 37741650343, 37741650376, 37741650318; 404 BlobNotFound fetching job 113193487317 logs. Github rerun_workflow_job 113193487979 returned true; require independent new run outcome read. Do not infer YAML invalid or billing cause.
 CANDIDATE integrity: dispatch original full source at blob 002eef253ce836e2cd0e200f5d15cb5042cdeb29, old function begins line 106, old length 79 lines; replacement 134 lines. CAGE anchor starts line 531. Candidate not product commit.
 TSA/RELEASE: DOC-C P09945-48 stale_job_ttl_ms 900000, max_concurrent 10. No direct normative TTL-signature link proven. Core time unaffected. DOC-E approval absent.
+
+## POST-COMMIT CI ATTEMPT-2 & PATCH REVIEW (append only)
+- GitHub rerun_workflow_job returned success=true for old job 113193487979, E7 run 37741650376.
+- GET run 37741650376 now reports attempt=2, status=completed, conclusion=**failure**, tested product SHA 44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08.
+- Attempt-2 NEW job 113320413296 (Real Redis/BullMQ E7 gate) ended **failure**, steps=[].
+- Attempt-2 job log fetch returned 404 Azure BlobNotFound, root cause STILL UNKNOWN; no Postgres/Redis test PASS.
+- Reviewer identified original zero-context .patch hunks and fixed with three context lines; queue patch and full candidate source now generated from same source-line replacement. NOT_RUN: git apply --check and Vitest, pending actual runner.

@@ -18,3 +18,10 @@ SOURCE BLOBS: dispatch.ts 002eef253ce836e2cd0e200f5d15cb5042cdeb29; cage.ts 5afd
 - [ ] Enforce full cgroup/seccomp/namespace isolation and negative test
 - [ ] DOC-E signed release gate, rollback drill, monitoring; RELEASE_BLOCKED
 NEXT_READY: Recheck E7 run state; obtain authorized isolated runner; stage candidate in clone and run RED/GREEN and DB/Redis proof, then decide on minimal product commit using fresh HEAD + blob fencing.
+
+## POST-COMMIT CI ATTEMPT-2 & PATCH REVIEW (append only)
+- GitHub rerun_workflow_job returned success=true for old job 113193487979, E7 run 37741650376.
+- GET run 37741650376 now reports attempt=2, status=completed, conclusion=**failure**, tested product SHA 44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08.
+- Attempt-2 NEW job 113320413296 (Real Redis/BullMQ E7 gate) ended **failure**, steps=[].
+- Attempt-2 job log fetch returned 404 Azure BlobNotFound, root cause STILL UNKNOWN; no Postgres/Redis test PASS.
+- Reviewer identified original zero-context .patch hunks and fixed with three context lines; queue patch and full candidate source now generated from same source-line replacement. NOT_RUN: git apply --check and Vitest, pending actual runner.

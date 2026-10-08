@@ -237,6 +237,7 @@ export async function dispatchDirective(
     idempotent: enqueueResult.idempotent,
   };
 }
+
 /**
  * Reconcile every durable row that has not reached the worker. ENQUEUED rows
  * are included because Redis may have lost the job after the DB update.

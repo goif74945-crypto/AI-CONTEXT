@@ -1,7 +1,10 @@
 diff --git a/packages/queue/dispatch.ts b/packages/queue/dispatch.ts
 --- a/packages/queue/dispatch.ts
 +++ b/packages/queue/dispatch.ts
-@@ -106,79 +106,134 @@
+@@ -103,85 +103,140 @@
+  * safe to call repeatedly, including when Redis was unavailable after the DB
+  * transaction committed.
+  */
 -export async function dispatchDirective(
 -  pipelineRunId: string,
 -  retryPolicy: FailedDispatchRetryPolicy = FAILED_RETRY_DISABLED,
@@ -215,3 +218,6 @@ diff --git a/packages/queue/dispatch.ts b/packages/queue/dispatch.ts
 +    idempotent: enqueueResult.idempotent,
 +  };
 +}
+ 
+ /**
+  * Reconcile every durable row that has not reached the worker. ENQUEUED rows
