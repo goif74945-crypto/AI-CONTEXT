@@ -1,0 +1,99 @@
+ID	SYSTEM	PRODUCT_HEAD	EX012_CURRENT_HEAD_EVIDENCE_STATUS	EX012_CURRENT_HEAD_SCOPE	EX011_HISTORICAL_STATUS_ONLY
+AUTH-01	Authority	90fac4835788e867559858fc92d093ded3dcb1eb	SPEC_DOCX_SHA256_MATCH	Official DOCX file hashed in local container: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7; DOC-C release quorum_min=2, evidence_min=2. Not full spec verification.	SOURCE_HASH_VERIFIED
+AUTH-02	Authority	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+AUTH-03	Authority	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+AUTH-04	Authority	90fac4835788e867559858fc92d093ded3dcb1eb	PRODUCT_HEAD_VERIFIED	Live GitHub NEXY.ai HEAD 90fac4835788e867559858fc92d093ded3dcb1eb; two changed files and Git read-back blobs match.	BRANCH_HEAD_VERIFIED
+CON-01	Contracts	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+CON-02	Contracts	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+CON-03	Contracts	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+CON-04	Contracts	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+CON-05	Contracts	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+CON-06	Contracts	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+CFG-01	Configuration	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+CFG-02	Configuration	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+CFG-03	Configuration	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+CFG-04	Configuration	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+VAL-01	Validation	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+VAL-02	Validation	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+VAL-03	Validation	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+VAL-04	Validation	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+ARCH-01	Architecture	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+ARCH-02	Architecture	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+ARCH-03	Architecture	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+ARCH-04	Architecture	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+FSM-01	State machine	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+FSM-02	State machine	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+FSM-03	State machine	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+FSM-04	State machine	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+FSM-05	State machine	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+PIPE-01	Multi-AI pipeline	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+PIPE-02	Multi-AI pipeline	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	SOURCE_ONLY_JUDGE_DERIVATION
+PIPE-03	Multi-AI pipeline	90fac4835788e867559858fc92d093ded3dcb1eb	EXECUTED_LAW_RED_GREEN_COMMITTED	Original LAW source blob f0ae1b... RED 2 fail, 3 pass; local CAS-independent LAW guard source blob 696acae... GREEN related 58/58 pass. Product atomic commit 90fac483... and readback.	EXECUTED_RED_GREEN_LAW_BOUNDARY
+PIPE-04	Multi-AI pipeline	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+PIPE-05	Multi-AI pipeline	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+PIPE-06	Multi-AI pipeline	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+PIPE-07	Multi-AI pipeline	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+API-01	API	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+API-02	API	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+API-03	API	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+API-04	API	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+API-05	API	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+API-06	API	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+API-07	API	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+API-08	API	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+AUTH-05	Authentication	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+AUTH-06	Authentication	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+AUTH-07	Authentication	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+AUTH-08	Authentication	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+AUTH-09	Authentication	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+AUTH-10	Authentication	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+AUTH-11	Authentication	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+STORE-01	Storage	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+STORE-02	Storage	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+STORE-03	Storage	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+STORE-04	Storage	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+STORE-05	Storage	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+STORE-06	Storage	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+STORE-07	Storage	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+RBAC-01	RBAC	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+RBAC-02	RBAC	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+RBAC-03	RBAC	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+RBAC-04	RBAC	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+OBS-01	Observability	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+OBS-02	Observability	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+OBS-03	Observability	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+OBS-04	Observability	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+OBS-05	Observability	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+QUEUE-01	Queue/retention	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+QUEUE-02	Queue/retention	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+QUEUE-03	Queue/retention	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+QUEUE-04	Queue/retention	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+QUEUE-05	Queue/retention	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+QUEUE-06	Queue/retention	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+UI-01	UI/UX	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+UI-02	UI/UX	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+UI-03	UI/UX	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+UI-04	UI/UX	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+UI-05	UI/UX	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+UI-06	UI/UX	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+UI-07	UI/UX	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+GATE-01	Test/deploy	90fac4835788e867559858fc92d093ded3dcb1eb	BACKEND_TYPECHECK_EXIT0	Local isolated Windows Node24 checkout with generated Prisma client; tsc --noEmit -p tsconfig.json exit0 after patch.	LOCAL_BACKEND_TYPECHECK_VERIFIED
+GATE-02	Test/deploy	90fac4835788e867559858fc92d093ded3dcb1eb	BROAD_REGRESSION_6_FAILURES	Vitest tests/contract tests/coverage JSON: 905/911 pass, 6 fail: 2 cargo ENOENT, 2 tier-depth compile, 2 current-head attestation. No broad gate pass.	BROAD_REGRESSION_NOT_GREEN
+GATE-03	Test/deploy	90fac4835788e867559858fc92d093ded3dcb1eb	GITHUB_CURRENT_HEAD_CI_FAILED	Four GitHub Actions workflow runs on 90fac483... conclusion=failure; exact-head-evidence job 113430495465 has steps=[], runner empty; cause unknown.	GITHUB_CI_FAILURE_UNATTRIBUTED
+GATE-04	Test/deploy	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+GATE-05	Test/deploy	90fac4835788e867559858fc92d093ded3dcb1eb	PG_REDIS_G3_NOT_RUN	No real PG/Redis service integration executed in EX012; past G3 blocker persists, release not authorized.	REAL_G3_NOT_RUN
+GATE-06	Test/deploy	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+SCOPE-01	Scope fence	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+SCOPE-02	Scope fence	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+SCOPE-03	Scope fence	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+SCOPE-04	Scope fence	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EXP-01	Experimental systems	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EXP-02	Experimental systems	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EXP-03	Experimental systems	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EXP-04	Experimental systems	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EXP-05	Experimental systems	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EXP-06	Experimental systems	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EVID-01	Evidence hygiene	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EVID-02	Evidence hygiene	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EVID-03	Evidence hygiene	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
+EVID-04	Evidence hygiene	90fac4835788e867559858fc92d093ded3dcb1eb	NOT_REASSESSED_012	No new current-head verification of normative semantics in EX012.	NOT_REASSESSED_011
