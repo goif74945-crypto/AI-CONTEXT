@@ -1,0 +1,12 @@
+# CASES — QUEUE-CANCEL-RACE-006 and CAGE-ISOLATION-006
+REPO: goif74945-crypto/NEXY.AI- | HEAD: 44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08
+## QUEUE-CANCEL-RACE-006 — source reachable
+dispatch.ts: read status=PENDING; await enqueueDirective(); concurrent cancelDirectiveDispatch() writes CANCELLED; unconditional prisma.directiveDispatch.update({where:{id:row.id},data:{status:'ENQUEUED'}}) writes ENQUEUED. Similarly unconditional catch update may overwrite CANCELLED with FAILED.
+Negative model-only reproduction (Node 22): id-only update leads ENQUEUED; conditional write guarded by id+status+attempts preserves CANCELLED. This is not an integration-test PASS.
+Minimal patch contract: update success and failure through updateMany with WHERE id=row.id, status=row.status, attempts=row.attempts; if updated count=0 fetch latest durable status, return CANCELLED/COMPLETED/PROCESSING/FAILED as appropriate without resurrecting terminal transitions. Do not turn cancelled into delivered=true. Treat concurrent FAILED retry authorization carefully. Consider BullMQ enqueue-before-DB-update cancellation and worker claim guard. Reject an unhandled race by fail-closed.
+Required regression: controlled pause after dispatch row read and enqueue, cancel before DB transition, assert durable CANCELLED stays terminal, no provider execution, audit entry persists; repeat failure path and duplicate reconciler, PROCESSING, FAILED allowlist, retry attempt exhaustion. Run against real PostgreSQL + Redis, not only mocks. Verify worker initial claim/abort plus entire STOP state.
+Patch not applied: no runner; single-writer overlap with other chats; do not claim source repair until committed and tested.
+## CAGE-ISOLATION-006 — source reachable
+cage.ts detects Linux cgroup backend regardless sandbox provisioning; bwrapAvailable() false falls through to spawn(trustedCommand.executable) with process.env and no namespace. A seccomp JSON is generated but no Linux process seccomp apply verified. Source tests for mounting /opt-hosted trusted parent alone cannot establish isolation.
+Required next: fail closed in production if namespace/syscall isolation unavailable, preserve explicitly authorized development-only route if DOC-C permits, implement actual BPF enforcement or amend advertised guarantees, and run negative real bwrap tests for traversal, symlink, host secrets, executable dependencies, nonroot users, missing namespace.
+Do not mount arbitrary /opt tree or host root; do not disable bwrap for passing tests.
