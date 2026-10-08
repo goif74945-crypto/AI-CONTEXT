@@ -1,0 +1,2 @@
+# EX V3 CASES
+ORIGINAL RED: 10 of 14 negative/positive cases failed; V2 RED: 4 of 14 failed. V3 GREEN 14 of 14 passed in local native Node. Cases: sparse, Date/Map/Set/class, cycle, symbol object, getter record, getter array, extra array prop, symbol array prop, array prototype, hidden nonenumerable, escaped object keys, stable order, null-prototype record, undefined/Nan rejection. Vitest candidate authored but NOT_RUN.

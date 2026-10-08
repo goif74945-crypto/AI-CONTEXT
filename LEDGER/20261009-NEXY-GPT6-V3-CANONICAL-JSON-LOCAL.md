@@ -1,0 +1,2 @@
+# EX V3 LEDGER
+GitHub V3 command V3 loaded. Original DOCX SHA256 verified, Product source git blob389438 verified; npm/githost network inaccessible local, DesktopCommander offline. Native RED4/14, V2RED10/14, V3GREEN14/14; standalone tsc0; git apply check0 apply0. GitHub Actions exact-head run37819115716 attempt2 conclusion failure, job steps=[]; logs BlobNotFound. No mutation to Product, Railway or secrets.

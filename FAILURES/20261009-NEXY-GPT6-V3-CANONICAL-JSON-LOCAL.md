@@ -1,0 +1,2 @@
+# EX V3 FAILURES
+No authorized runner with exact Product full dependencies for native Vitest in this session. Local git clone DNS failure; npm view timeout; RemoteDesktop device offline. GitHub CI contract rerun failed before steps: steps=[], logs 404 BlobNotFound, root cause UNKNOWN. Canonical V3 local candidate not committed to Product; DOC-E gate absent; G3 production resources unapproved for test mutation. Do not invent pass.
