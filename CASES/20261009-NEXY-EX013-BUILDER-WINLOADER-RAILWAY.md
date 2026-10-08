@@ -1,0 +1,2 @@
+# EX013 CASES
+ATT-RED-A: Windows Node24 --import C:\\...\\tsx\\dist\\loader.mjs C:\\...\\scripts\\current-head-attestation.ts --output ... => child status1 ERR_UNSUPPORTED_ESM_URL_SCHEME (actual stderr). ATT-RED-B: same with both as file:// URLs => child status1 ERR_MODULE_NOT_FOUND (actual stderr). ATT-CURRENT-HEAD: peer source now uses tsx/dist/cli.mjs, exact SHA7dc56deef21feef48a273d38bb2ab5c858379454; fresh runner test outcome UNKNOWN due remote timeout. RUST: cargo 2 ENOENT and rustc tier tests no runnable subprocess; retain original assertions; no fake GREEN.

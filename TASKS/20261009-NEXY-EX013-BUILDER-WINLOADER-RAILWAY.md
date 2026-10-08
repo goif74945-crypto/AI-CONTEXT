@@ -1,0 +1,2 @@
+# EX013 TASKS
+DONE: Full command V13 + supplement read, live heads checked, DOCX hash recomputed, 90fac fixture's actual Windows ESM loader failure diagnosed by stderr; current 8ed9 peer commit respected; Railway live configuration and historic logs inspected read-only; exact HEAD GitHub CI current attempts checked. READY: retrieve PID12512 and verify 8ed9 test; run Rust on authorized toolchain, verify requirements. PRODUCT_WRITE=NONE. 
