@@ -1,0 +1,38 @@
+[
+  {
+    "tested_head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+    "log": "frozen-build.log",
+    "scope": "LOCAL_VALIDATION_ONLY",
+    "excerpt": "\u26a0 Compiled with warnings in 3.0s\nModule not found: Can't resolve '@valkey/valkey-glide' in '/workspace/NEXY.AI-/node_modules/bullmq/dist/esm/classes'\n  Generating static pages using 2 workers (0/25) ...\n  Generating static pages using 2 workers (6/25) \n  Generating static pages using 2 workers (12/25) \n  Generating static pages using 2 workers (18/25) \n\u2713 Generating static pages using 2 workers (25/25) in 227ms"
+  },
+  {
+    "tested_head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+    "log": "frozen-browser-e2e.log",
+    "scope": "LOCAL_VALIDATION_ONLY",
+    "excerpt": "[6/11] tests/browser/critical-flows.spec.mjs:186:1 \u203a OWNER submits and reads the canonical pipeline run detail\n  1) tests/browser/critical-flows.spec.mjs:186:1 \u203a OWNER submits and reads the canonical pipeline run detail \n[11/11] tests/browser/directive-submit.spec.mjs:11:1 \u203a OWNER submits a directive through the production UI/API boundary\n  2) tests/browser/directive-submit.spec.mjs:11:1 \u203a OWNER submits a directive through the production UI/API boundary \n  2 failed\n    tests/browser/critical-flows.spec.mjs:186:1 \u203a OWNER submits and reads the canonical pipeline run detail \n    tests/browser/directive-submit.spec.mjs:11:1 \u203a OWNER submits a directive through the production UI/API boundary \n  9 passed (13.8s)"
+  },
+  {
+    "tested_head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+    "log": "frozen-experimental.log",
+    "scope": "LOCAL_VALIDATION_ONLY",
+    "excerpt": "   \u2192 expected 'bwrap: execvp /opt/codex/runtimes/cod\u2026' to be 'a warning' // Object.is equality\n\u23af\u23af\u23af\u23af\u23af\u23af Failed Tests 10 \u23af\u23af\u23af\u23af\u23af\u23af\u23af\nAssertionError: expected 'bwrap: execvp /opt/codex/runtimes/cod\u2026' to be 'a warning' // Object.is equality\n+ bwrap: execvp /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node: No such file or directory\n Test Files  1 failed | 81 passed (82)\n      Tests  10 failed | 781 passed (791)"
+  },
+  {
+    "tested_head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+    "log": "migration-rollback.log",
+    "scope": "LOCAL_VALIDATION_ONLY",
+    "excerpt": "ALTER TABLE\nUPDATE 1"
+  },
+  {
+    "tested_head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+    "log": "migration-reapply.log",
+    "scope": "LOCAL_VALIDATION_ONLY",
+    "excerpt": "Prisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"nexy\", schema \"public\" at \"127.0.0.1:5432\"\n\n28 migrations found in prisma/migrations\n\nApplying migration `20261003160000_logic_quantum_confidence_numeric`\n\nThe following migration(s) have been applied:\n\nmigrations/\n  \u2514\u2500 20261003160000_logic_quantum_confidence_numeric/\n    \u2514\u2500 migration.sql\n      \nAll migrations have been successfully applied."
+  },
+  {
+    "tested_head": "8b406a63f10aa1424225a80453393af2e4cb78b5",
+    "log": "migration-status.log",
+    "scope": "LOCAL_VALIDATION_ONLY",
+    "excerpt": "Prisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"nexy\", schema \"public\" at \"127.0.0.1:5432\"\n\n28 migrations found in prisma/migrations\n\nDatabase schema is up to date!"
+  }
+]

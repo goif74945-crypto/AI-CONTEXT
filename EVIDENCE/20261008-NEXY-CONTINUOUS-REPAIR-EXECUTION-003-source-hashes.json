@@ -1,0 +1,93 @@
+[
+  {
+    "evidence": "evidence/E01-csprng-audit.md",
+    "path": "packages/auth/otac.ts",
+    "claimed_sha256": "4cc90fcef7bfce55188b1c26a5208ac20cd651fd74ccb0e11df897ab5927d979",
+    "actual_sha256": "9252a2479fb4b4ca41089a90aedf63e44a42828f960063f9009d9a6ad0efa6c3",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E01-csprng-audit.md",
+    "path": "packages/api/auth.ts",
+    "claimed_sha256": "fee0b2538f0f1fa9c9f8557b097eb2a1e313266b208460db50ed1cd0afdb576e",
+    "actual_sha256": "eeee301b7fff35b0458f4c255c17c325bcf19ec4cfad3eda70c783d95893e08b",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E02-csrf-protection.md",
+    "path": "packages/auth/csrf.ts",
+    "claimed_sha256": "08e06a3c4342b2ed58bb95c5d8270940423a85f2cbf497f76372763bb4f55c86",
+    "actual_sha256": "08e06a3c4342b2ed58bb95c5d8270940423a85f2cbf497f76372763bb4f55c86",
+    "matches": true
+  },
+  {
+    "evidence": "evidence/E03-session-security.md",
+    "path": "packages/auth/session.ts",
+    "claimed_sha256": "bf7cd312927aa73adeb19fd4bb18dc07f9ade8a14727e24b7b09f3a24664139a",
+    "actual_sha256": "1e4b248ca320fb98c5bc6b9c286f3cb512ef819c1681a1ac95743f4c61ecc929",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E04-otac-no-leak.md",
+    "path": "packages/api/auth.ts",
+    "claimed_sha256": "fee0b2538f0f1fa9c9f8557b097eb2a1e313266b208460db50ed1cd0afdb576e",
+    "actual_sha256": "eeee301b7fff35b0458f4c255c17c325bcf19ec4cfad3eda70c783d95893e08b",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E04-otac-no-leak.md",
+    "path": "packages/auth/email.ts",
+    "claimed_sha256": "b4072a834710d3fa502d5cf83fdead32a1f954aa82faf43bf81a47065594d2df",
+    "actual_sha256": "9c54553b7768a4f524a26428bb9cf685d523b9e4e0a112194c6323ab0f3e530d",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E04-otac-no-leak.md",
+    "path": "packages/auth/otac.ts",
+    "claimed_sha256": "4cc90fcef7bfce55188b1c26a5208ac20cd651fd74ccb0e11df897ab5927d979",
+    "actual_sha256": "9252a2479fb4b4ca41089a90aedf63e44a42828f960063f9009d9a6ad0efa6c3",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E05-api-schema-validation.md",
+    "path": "packages/validation/api.schema.ts",
+    "claimed_sha256": "893454ab241b8eb3a6a04009739a87200bdc94d92245656a4d20d9e0d99e0ea5",
+    "actual_sha256": "dcd626563b4a1cb6e2c54936dab35898832ebbd808774dbe505e7b7a95405e6b",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E05-api-schema-validation.md",
+    "path": "packages/contracts/directive.ts",
+    "claimed_sha256": "fc54a396651c9452e67aca4d661a00b8f608727f9c07f3e7db9c9b2b93c69072",
+    "actual_sha256": "d5b362b7699f858e319128845293b1db587235c09c0ba58f00c28e2ed953ea38",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E06-state-machine.md",
+    "path": "packages/core/vnext-state-matrix.ts",
+    "claimed_sha256": "7010a5809a965e14775dd6e993e5149aef6d326221b9877c628b6f5138b98fcf",
+    "actual_sha256": "8d28515f1783b517d20c8b68c19fecf3f908e27b230060c6ca3a3506c295ec12",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E08-error-codes.md",
+    "path": "packages/contracts/errors.ts",
+    "claimed_sha256": "4a28be53f66c944aea8dbd3658b1b2abeef1760c05ce976fc0bc7449487bc8d5",
+    "actual_sha256": "709fa99537b57d435aee55431a97f4ad5d0f65a01442e7e3fb8f7e74932a4bab",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E09-system-envelope.md",
+    "path": "packages/contracts/envelope.ts",
+    "claimed_sha256": "b151e18ede6a48b8d97a6177beabd0059cba94505f4c0f7fa616b06a2a028fd1",
+    "actual_sha256": "177054a32d25a30b2eb26bc44882c7c3f6370c460f111d8d8653e1e3be136e22",
+    "matches": false
+  },
+  {
+    "evidence": "evidence/E10-binary-wire-format-removed.md",
+    "path": "packages/api/directives.ts",
+    "claimed_sha256": "0a6a06f631ddcdfd486ecca5b3a8003cc8855b765ef94fc5b7e6341d380df118",
+    "actual_sha256": "cb0642e175614bf5c126a10f05b0b2a369753a3acc3637ca876dab1f2f03423b",
+    "matches": false
+  }
+]
