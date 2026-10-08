@@ -1,7 +1,7 @@
 # EVIDENCE 20261009-NEXY-GPT6-SOL-RAILWAY-LOOP-V1: COMMAND AUTHOR REVIEW
 COMMAND_PATH: COMMANDS/20261009-NEXY-GPT6-SOL-RAILWAY-LOOP-V1.md
-COMMAND_BLOB_SHA: ee41a975962c5066d03be02c946e628a4fc87dce
-COMMAND_CHARS: 17545
+COMMAND_BLOB_SHA: 06f2bb82625bbaadd073effea3bd7415a92fc9f4
+COMMAND_CHARS: 18341
 SELF_AUDIT: 26/26 structural requirements met. Read-back completed before records.
 TOPICS: exact HEADs, exact spec SHA, only NEXY.ai Product, no other branch, Railway project, non-ephemeral environment, old pinned SHA detection, isolated DB guard, quota evidence, logs, current-head testing, plugin alternatives, permissions and costs, active-session loop, RESUME_HANDOFF, real RED/GREEN, atomic commit/head fence, control GitHub readback, full atomic spec extraction, per-system/feature tables, metric truth, DOC-E, E1-E12, no test weakening, no false background operation.
 PRESTATE_PRODUCT_HEAD: 90fac4835788e867559858fc92d093ded3dcb1eb.
@@ -17,3 +17,6 @@ SOURCE_PROOF: GitHub Product Dockerfile blob 4d7069f32ba2058b541025fa5d90b35e879
 TESTS_THIS_AUTHOR: NOT_RUN against current HEAD; actual Railway historical build logs RETRIEVED; no new deployment, no service mutation, no Product code edit.
 RELEASE: NOT_AUTHORIZED by this command alone; builder instructed to search existing approvals and use accurate scope.
 VERDICT: VERIFIED_WITH_LIMITS_FOR_HANDOFF, PRODUCT_AND_RAILWAY_G3_UNVERIFIED.
+
+POST_COMMAND_GITHUB_HEAD_OBSERVED: 8ed9af89f68fb82f60d4a4f5ccbc06005ce91992; parent 90fac4835788e867559858fc92d093ded3dcb1eb.
+CONCURRENT_CHANGE: tests/contract/current-head-attestation.test.ts only, message "test(evidence): use tsx CLI for portable current-head subprocess fixture". Not authored by this command-author; no test against new HEAD yet. Command amended to require immediate requery and no stale result promotion.
