@@ -1,0 +1,5 @@
+# Execution 009 CROSS
+Product start/frozen source HEAD: 44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08
+Control initial HEAD: 11123ddb31c674db720812904f84b03cae4b93a4
+Canonical DOCX SHA previously established: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7.
+QUEUE: three individually tested mock variants still have Redis-publication/DB-CAS atomicity and worker claim ambiguity. Harness asserts Redis publish pre-CAS, CANCELLED CAS loser, BullMQ worker product claim CANCELLED and zero probe provider, double-publish idempotency, failed retry predicate and LAW release tx fence, if isolated live services become available. It will self-reject any remote host, non-ex009 DB or Redis port, missing opt-in, non-AOF appendfsync. It is a test harness not product worker.ts. CAGE: source-only fail-closed negative test RED 1/2 GREEN 2/2, seccomp+cgroup real enforcement unverified.

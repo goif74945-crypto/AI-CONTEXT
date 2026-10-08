@@ -1,0 +1,99 @@
+ID	SYSTEM	PRODUCT_HEAD	EX009_SCOPE_STATUS	EVIDENCE	OLD_PROVENANCE_ONLY
+AUTH-01	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SHA_VERIFIED_PREVIOUS	Canonical DOCX SHA b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7 computed in 006/008, not rehashed this turn.	SPEC_SOURCE_ACCESS_BLOCKED
+AUTH-02	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	SPEC_SOURCE_ACCESS_BLOCKED
+AUTH-03	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	SPEC_SOURCE_ACCESS_BLOCKED
+AUTH-04	Authority	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	GITHUB_HEAD_VERIFIED	Product HEAD live 44bcb851... rechecked before writing control.	CURRENT_VERIFIED
+CON-01	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+CON-02	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+CON-03	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+CON-04	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+CON-05	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+CON-06	Contracts	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+CFG-01	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+CFG-02	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_PARTIAL
+CFG-03	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+CFG-04	Configuration	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_PARTIAL
+VAL-01	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+VAL-02	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+VAL-03	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+VAL-04	Validation	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+ARCH-01	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+ARCH-02	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+ARCH-03	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+ARCH-04	Architecture	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+FSM-01	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+FSM-02	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+FSM-03	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+FSM-04	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+FSM-05	State machine	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+PIPE-01	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+PIPE-02	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+PIPE-03	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+PIPE-04	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+PIPE-05	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+PIPE-06	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+PIPE-07	Multi-AI pipeline	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	INFRA_BLOCKED
+API-01	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+API-02	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+API-03	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+API-04	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+API-05	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+API-06	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+API-07	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+API-08	API	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_PARTIAL
+AUTH-05	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+AUTH-06	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+AUTH-07	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+AUTH-08	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+AUTH-09	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+AUTH-10	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+AUTH-11	Authentication	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_MISMATCH
+STORE-01	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+STORE-02	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+STORE-03	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+STORE-04	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+STORE-05	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+STORE-06	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_PARTIAL
+STORE-07	Storage	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_PARTIAL
+RBAC-01	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+RBAC-02	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+RBAC-03	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+RBAC-04	RBAC	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+OBS-01	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+OBS-02	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+OBS-03	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+OBS-04	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+OBS-05	Observability	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_PARTIAL
+QUEUE-01	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_ONLY	BullMQ jobs.ts e90ac64... and workers.ts 3134e7b... checked; production worker service NOT_RUN.	CURRENT_NOT_VERIFIED
+QUEUE-02	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_PLUS_MOCK_CANDIDATES	A 9/9, B 9/9, C 10/10 tests respectively on independent patched source blobs; real postgres dispatch test NOT_RUN.	CURRENT_NOT_VERIFIED
+QUEUE-03	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_AND_POLICY_CONTRACT	Failed retry allowlist QUEUE_UNAVAILABLE, maxAttempts; real BullMQ failed-job retry NOT_RUN.	CURRENT_NOT_VERIFIED
+QUEUE-04	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	DOC_C_STATIC	TTL 900000 and concurrency 10 source checked; signed TTL end-to-end NOT_RUN.	CURRENT_NOT_VERIFIED
+QUEUE-05	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_AND_TEST_PROBE	Worker guarded claim source checked; real worker process packages/queue/workers.ts NOT_RUN.	CURRENT_NOT_VERIFIED
+QUEUE-06	Queue/retention	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	TSA_FROZEN	No verified TSA production injection, no fake time.	INFRA_BLOCKED
+UI-01	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+UI-02	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+UI-03	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+UI-04	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+UI-05	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+UI-06	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_PARTIAL
+UI-07	UI/UX	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_PARTIAL
+GATE-01	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	LOCAL_CHECKS_LIMITED	Isolated Node v24.21, Vitest candidates GREEN, preflight harness compile in tsconfig.	CURRENT_VERIFIED
+GATE-02	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+GATE-03	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	INFRA_FAILURE_UNDIAGNOSED	Exact-head GitHub 37741650349 failed with jobs[]/logs missing; no inferred root cause.	INFRA_BLOCKED
+GATE-04	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	INFRA_FAILURE_UNDIAGNOSED	CI/Deploy 37741650343 current head failed; root cause not established.	INFRA_BLOCKED
+GATE-05	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	INFRA_FAILURE_UNDIAGNOSED	E7 37741650376 current head failed; no PG+Redis action pass.	INFRA_BLOCKED
+GATE-06	Test/deploy	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	DOC_E_NOT_AUTHORIZED	No human signoffs/rollback/monitoring release evidence.	CURRENT_NOT_VERIFIED
+SCOPE-01	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	SPEC_SOURCE_ACCESS_BLOCKED
+SCOPE-02	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+SCOPE-03	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+SCOPE-04	Scope fence	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_VERIFIED
+EXP-01	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+EXP-02	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+EXP-03	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+EXP-04	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+EXP-05	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	SOURCE_PLUS_NEGATIVE_REGRESSION	Cage source-contract test RED 1/2 vs existing patch 2/2; seccomp non-enforcement still visible; Linux runtime NOT_RUN.	CURRENT_PARTIAL
+EXP-06	Experimental systems	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_NOT_VERIFIED
+EVID-01	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_MISMATCH
+EVID-02	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_MISMATCH
+EVID-03	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	NOT_REASSESSED_009	No current-head normative assessment for this ID	CURRENT_MISMATCH
+EVID-04	Evidence hygiene	44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08	RELEASE_NOT_AUTHORIZED	No exact-head production proof or DOC-E signoff.	CURRENT_NOT_VERIFIED
