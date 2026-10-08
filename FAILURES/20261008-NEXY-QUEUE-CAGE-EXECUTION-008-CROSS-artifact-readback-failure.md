@@ -1,0 +1,2 @@
+# Artifact integration correction — Execution 008
+Original first-commit patch EVIDENCE/20261008-NEXY-QUEUE-CAGE-EXECUTION-008-CROSS-queue-cas.patch is known corrupt upon GitHub read-back because it lacks terminating LF, Git apply exit=128 at line140. This is a real validation failure, not a PASS. Superseded by 20261008-NEXY-QUEUE-CAGE-EXECUTION-008-CROSS-queue-cas-FIXED.patch; complete reverse/forward round-trip confirmed Git original and candidate blobs. No product mutation.

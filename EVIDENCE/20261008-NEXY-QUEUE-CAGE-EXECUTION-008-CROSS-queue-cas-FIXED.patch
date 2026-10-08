@@ -1,0 +1,140 @@
+diff --git a/packages/queue/dispatch.ts b/packages/queue/dispatch.ts
+--- a/packages/queue/dispatch.ts
++++ b/packages/queue/dispatch.ts
+@@ -133,54 +133,88 @@
+     };
+   }
+ 
+-  try {
+-    const enqueuedAtMs = requireQueueAuthorityTimeMs();
+-    const result = await enqueueDirective(jobData(row), {
+-      idempotencyKey: row.idempotencyKey,
+-      enqueuedAtMs,
+-      ...(row.status === DISPATCH_STATUS.FAILED
+-        ? {
+-            retryAuthorization: {
+-              row: {
+-                status: row.status,
+-                attempts: row.attempts,
+-                lastError: row.lastError,
+-              },
+-              policy: retryPolicy,
+-            },
+-          }
+-        : {}),
+-    });
+-    const tick = currentTick();
+-    await prisma.directiveDispatch.update({
+-      where: { id: row.id },
+-      data: {
+-        status: DISPATCH_STATUS.ENQUEUED,
+-        attempts: { increment: 1 },
+-        updatedTick: tick,
+-        // Elapsed-time authority is TSA milliseconds, not the logical event counter.
+-        enqueuedTick: enqueuedAtMs,
+-        lastError: null,
+-      },
+-    });
+-    return {
+-      status: DISPATCH_STATUS.ENQUEUED,
+-      delivered: true,
+-      idempotent: result.idempotent,
+-    };
+-  } catch (error) {
+-    const errorCode = dispatchErrorCode(error);
+-    await prisma.directiveDispatch.update({
+-      where: { id: row.id },
+-      data: {
+-        status: DISPATCH_STATUS.FAILED,
+-        attempts: { increment: 1 },
+-        updatedTick: currentTick(),
+-        lastError: errorCode,
+-      },
+-    });
+-    return { status: DISPATCH_STATUS.FAILED, delivered: false, idempotent: false, errorCode };
+-  }
++  // The producer's earlier snapshot is not authority after awaiting Redis.
++  // A losing producer must never revive a terminal/claimed durable state.
++  const expected = { id: row.id, status: row.status, attempts: row.attempts };
++  const observedAfterConflict = async (): Promise<DispatchAttemptResult> => {
++    const observed = await prisma.directiveDispatch.findUnique({
++      where: { id: row.id },
++      select: { status: true, lastError: true },
++    });
++    if (!observed) return { status: "MISSING", delivered: false, idempotent: true };
++    switch (observed.status) {
++      case DISPATCH_STATUS.COMPLETED:
++      case DISPATCH_STATUS.PROCESSING:
++      case DISPATCH_STATUS.ENQUEUED:
++        return { status: observed.status, delivered: true, idempotent: true };
++      case DISPATCH_STATUS.CANCELLED:
++      case DISPATCH_STATUS.PENDING:
++        return { status: observed.status, delivered: false, idempotent: true };
++      case DISPATCH_STATUS.FAILED:
++        return {
++          status: DISPATCH_STATUS.FAILED,
++          delivered: false,
++          idempotent: true,
++          ...(observed.lastError !== null ? { errorCode: observed.lastError } : {}),
++        };
++      default:
++        throw new Error("STATE_TRANSITION_DENIED: unknown dispatch status");
++    }
++  };
++
++  let enqueuedAtMs: bigint;
++  let enqueueResult: Awaited<ReturnType<typeof enqueueDirective>>;
++  // Catch only TSA/Redis publication failures, never database CAS failures.
++  try {
++    enqueuedAtMs = requireQueueAuthorityTimeMs();
++    enqueueResult = await enqueueDirective(jobData(row), {
++      idempotencyKey: row.idempotencyKey,
++      enqueuedAtMs,
++      ...(row.status === DISPATCH_STATUS.FAILED
++        ? {
++            retryAuthorization: {
++              row: {
++                status: row.status,
++                attempts: row.attempts,
++                lastError: row.lastError,
++              },
++              policy: retryPolicy,
++            },
++          }
++        : {}),
++    });
++  } catch (error) {
++    const errorCode = dispatchErrorCode(error);
++    const marked = await prisma.directiveDispatch.updateMany({
++      where: expected,
++      data: {
++        status: DISPATCH_STATUS.FAILED,
++        attempts: { increment: 1 },
++        updatedTick: currentTick(),
++        lastError: errorCode,
++      },
++    });
++    if (marked.count !== 1) return observedAfterConflict();
++    return { status: DISPATCH_STATUS.FAILED, delivered: false, idempotent: false, errorCode };
++  }
++
++  const marked = await prisma.directiveDispatch.updateMany({
++    where: expected,
++    data: {
++      status: DISPATCH_STATUS.ENQUEUED,
++      attempts: { increment: 1 },
++      updatedTick: currentTick(),
++      // Elapsed-time authority is TSA milliseconds, not the logical event counter.
++      enqueuedTick: enqueuedAtMs,
++      lastError: null,
++    },
++  });
++  if (marked.count !== 1) return observedAfterConflict();
++  return {
++    status: DISPATCH_STATUS.ENQUEUED,
++    delivered: true,
++    idempotent: enqueueResult.idempotent,
++  };
+ }
+ 
+ /**
