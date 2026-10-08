@@ -9,7 +9,7 @@ Product repository: goif74945-crypto/NEXY.AI- , ONLY branch NEXY.ai.
 Directly observed HEAD on command authoring: 44bcb8517b5a2ab26f43d52eeeb8e0bc19ca9b08.
 Coordination: goif74945-crypto/AI-CONTEXT, ONLY main.
 Directly observed EX010 control HEAD: d71d52f4d384f82c5e27a4edf7593f958c120c1a.
-These are NOT unconditional write bases: requery fresh HEAD, blob SHA, diff and access before each mutation and at final gate. Concurrent chats exist; no force push, branch creation/deletion, reset, settings/protection/secret changes or hidden conflict resolution.
+These are NOT unconditional write bases: REQUERY current branch heads, blob SHA, diff and access before each mutation and at final gate. Concurrent chats exist; no force push, branch creation/deletion, reset, settings/protection/secret changes or hidden conflict resolution.
 Authoritative DOCX: แอป [NEXY-IGNIS] ที่กำลังพัฒนา.docx, required SHA256 b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7. DOC-C P9844 controls build, DOC-E P9845 release approval. Do not claim to rehash DOCX in THIS chat unless bytes directly available. Earlier hash report is evidence provenance, not automatic current file access.
 
 READ THESE EXACT CONTROL SOURCES before work:
