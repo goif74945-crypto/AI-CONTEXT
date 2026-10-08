@@ -1,0 +1,15 @@
+diff --git a/packages/law/prerelease.ts b/packages/law/prerelease.ts
+index f0ae1b0..696acae 100644
+--- a/packages/law/prerelease.ts
++++ b/packages/law/prerelease.ts
+@@ -55,7 +55,9 @@ export function isReleaseCandidate(value: unknown): value is ReleaseCandidate {
+     && candidate["agentIds"].every(
+       (agentId) => typeof agentId === "string" && agentId.length > 0 && agentId.trim() === agentId,
+     )
+-    && new Set(candidate["agentIds"] as string[]).size === candidate["agentIds"].length;
++    && new Set(candidate["agentIds"] as string[]).size === candidate["agentIds"].length
++    // A claimed quorum cannot exceed the number of distinct identified agents.
++    && (candidate["quorumCount"] as number) <= candidate["agentIds"].length;
+ }
+ 
+ export function isReleaseThresholds(value: unknown): value is ReleaseThresholds {
