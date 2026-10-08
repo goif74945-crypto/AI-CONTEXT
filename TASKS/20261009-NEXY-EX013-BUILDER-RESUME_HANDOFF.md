@@ -1,0 +1,17 @@
+# EX013 RESUME_HANDOFF / BUILDER, not independent audit approval
+TASK: 20261009-NEXY-EX013-BUILDER-WINLOADER-RAILWAY
+PRODUCT HEAD last directly verified: 8ed9af89f68fb82f60d4a4f5ccbc06005ce91992, branch NEXY.ai ONLY.
+CONTROL HEAD previous evidence commit: 74d14f1b1eca017d1269edc5e5622de0b547f9cb; re-fetch control main before any mutation.
+DOCX SHA-256 current original bytes verified: b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7. Source has 12537 paragraphs, zero tables. DOC-C P9886, DOC-D P10500, DOC-E P10917. These are source locators, NOT completed atomic acceptance.
+CURRENT KNOWN PRODUCT TEST CHANGE: tests/contract/current-head-attestation.test.ts blob 7dc56deef21feef48a273d38bb2ab5c858379454, committed by another peer at Product HEAD8ed9. It switched from Windows --import tsx/loader.mjs to node tsx/dist/cli.mjs <script>, preserving tests.
+BASELINE PROOF: on HEAD90fac Windows Node24 subprocess status1, stderr ERR_UNSUPPORTED_ESM_URL_SCHEME for absolute Windows loader path. Naive file URL loader substitution also status1 ERR_MODULE_NOT_FOUND; so do not reuse that attempted patch.
+CURRENT HEAD PROOF: fresh HEAD8ed9 checkout, attestation test source blob confirmed; Node Vitest focused test and backend tsc started as process PID12512 on DESKTOP-FOB7IK8, but Desktop Commander became UNRESPONSIVE. Latest ping returned explicit No Desktop Commander device currently online, last seen 18m. Outcome UNKNOWN. Do not infer PASS or FAIL.
+NEXT ACTION AFTER RUNNER RESTORED:
+1. Re-query Product and Control HEAD, compare diff from8ed9 and source blobs. Never reset branches or overwrite peer changes.
+2. Re-read PID12512 process result first if persisted; only rerun exact HEAD tests if no reliable result: node node_modules/vitest/vitest.mjs run tests/contract/current-head-attestation.test.ts tests/contract/ex011-law-quorum-cardinality.test.ts --reporter=verbose ; then node node_modules/typescript/bin/tsc --noEmit -p tsconfig.json. Record exit and stderr.
+3. Rust gate remains independently blocked: Windows cargo/rustc/rustup absent, isolated Linux no cargo. Find an existing authorized Rust toolchain or ephemeral CI runner; run cargo check --locked -p nexy-daemon, cargo test --locked -p core-kernel --lib, rustc Tier5 positive and Tier6 negative. Do NOT alter MAX_DEPTH or test expectations. A command typed into an unavailable runner is not TESTED.
+4. Railway NEXY Validation R2 project01537473-6a6d-42a0-856f-40d8a4e6a712 has only non-ephemeral production environment776c1d3d-20f2-4b9f-9f07-8387ea9e63b8. Validation service is pinned to old9e615, build logs old npm test:contract exit1. No mutations made; do not redeploy against production scope or existing DB.
+5. GitHub current-head8ed9 CI four runs failed, sample jobs have steps=[]; root cause UNKNOWN. Don't repeat blind workflow dispatch.
+6. Genuine full DOCX paragraph atlas (12537 rows) was created as downloadable conversation artifact NEXY_EX013_authoritative_DOCX_source_atlas.xlsx. It is **not** in GitHub and is **not** an atomic requirement inventory; every row labelled UNASSESSED_SOURCE_ONLY. Another session must obtain bytes explicitly; do not assume access to the sandbox file.
+7. Independently assess only after confirmed current-head code/tests, exact source/spec mapping and all required runtime proofs. No DOC-E approval, no G3 and Cage runtime proof.
+BUILDER_VERDICT=PARTIAL / DIAGNOSTIC_VERIFIED / PRODUCT_FIX_THIS_SESSION_NONE / NO_AUDITOR_SELF_APPROVAL.
