@@ -1,0 +1,20 @@
+--- a/packages/queue/retry-policy.ts
++++ b/packages/queue/retry-policy.ts
+@@ -37,7 +37,7 @@
+   if (
+     typeof candidate.enabled !== "boolean"
+     || typeof candidate.maxAttempts !== "number"
+-    || !Number.isInteger(candidate.maxAttempts)
++    || !Number.isSafeInteger(candidate.maxAttempts)
+     || candidate.maxAttempts < 0
+     || !Array.isArray(candidate.safeErrorCodes)
+     || new Set(candidate.safeErrorCodes).size !== candidate.safeErrorCodes.length
+@@ -68,7 +68,7 @@
+     return false;
+   }
+   return row.status === "FAILED"
+-    && Number.isInteger(row.attempts)
++    && Number.isSafeInteger(row.attempts)
+     && row.attempts >= 0
+     && row.attempts < policy.maxAttempts
+     && typeof row.lastError === "string"
