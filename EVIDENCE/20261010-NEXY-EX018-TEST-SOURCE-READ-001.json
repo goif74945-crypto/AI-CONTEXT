@@ -1,0 +1,194 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    0,
+    12
+  ],
+  "total": 248,
+  "scope": "exact git SHA full test source read / metadata only, NOT Vitest execution",
+  "rows": [
+    {
+      "path": "tests/browser/critical-flows.spec.mjs",
+      "blob": "f68c70c82576a5a93b99a11f0be7f1fa393818fc",
+      "verified": true,
+      "lines": 276,
+      "bytes": 13166,
+      "caseDefinitions": 10,
+      "describeBlocks": 0,
+      "explicitMocks": 0,
+      "skips": 0,
+      "imports": [
+        "@playwright/test"
+      ]
+    },
+    {
+      "path": "tests/browser/directive-submit.spec.mjs",
+      "blob": "77a5cc015bc53e9aa50371a5f23c81d1f5aaba51",
+      "verified": true,
+      "lines": 64,
+      "bytes": 2006,
+      "caseDefinitions": 1,
+      "describeBlocks": 0,
+      "explicitMocks": 0,
+      "skips": 0,
+      "imports": [
+        "@playwright/test"
+      ]
+    },
+    {
+      "path": "tests/contract/agent-adapter-contract.test.ts",
+      "blob": "134ed435bf6867cf632617c489fc28dfce304b1b",
+      "verified": true,
+      "lines": 163,
+      "bytes": 5620,
+      "caseDefinitions": 4,
+      "describeBlocks": 1,
+      "explicitMocks": 5,
+      "skips": 0,
+      "imports": [
+        "vitest",
+        "../../packages/swarm/adapters/index.js",
+        "../../packages/api/vnext-config.js"
+      ]
+    },
+    {
+      "path": "tests/contract/agent-response-fail-closed.test.ts",
+      "blob": "05c7b2ccbe61a28e13c18f84b52137ccd972ccff",
+      "verified": true,
+      "lines": 60,
+      "bytes": 2155,
+      "caseDefinitions": 2,
+      "describeBlocks": 1,
+      "explicitMocks": 0,
+      "skips": 0,
+      "imports": [
+        "vitest",
+        "../../packages/swarm/agent-response.js"
+      ]
+    },
+    {
+      "path": "tests/contract/alarms.test.ts",
+      "blob": "e15d2848ad56e453a8feb69fcbcb1e7d44e636d5",
+      "verified": true,
+      "lines": 56,
+      "bytes": 1761,
+      "caseDefinitions": 3,
+      "describeBlocks": 1,
+      "explicitMocks": 1,
+      "skips": 0,
+      "imports": [
+        "vitest",
+        "../../packages/obs/alarms.js"
+      ]
+    },
+    {
+      "path": "tests/contract/api-handler.test.ts",
+      "blob": "f0cb1160d801d1df962bc6f3feb63af5f831b643",
+      "verified": true,
+      "lines": 45,
+      "bytes": 1484,
+      "caseDefinitions": 1,
+      "describeBlocks": 1,
+      "explicitMocks": 1,
+      "skips": 0,
+      "imports": [
+        "vitest",
+        "next/server",
+        "../../apps/web/lib/api-handler"
+      ]
+    },
+    {
+      "path": "tests/contract/api-hostile-input-boundary.test.ts",
+      "blob": "bd4acd56ce9c50d753a4455ee5d2c406f7e5563c",
+      "verified": true,
+      "lines": 71,
+      "bytes": 3695,
+      "caseDefinitions": 5,
+      "describeBlocks": 1,
+      "explicitMocks": 0,
+      "skips": 0,
+      "imports": [
+        "vitest",
+        "next/server",
+        "../../apps/web/lib/api-handler.js",
+        "../../packages/contracts/auth.js",
+        "../../packages/contracts/directive.js"
+      ]
+    },
+    {
+      "path": "tests/contract/api-shapes.test.ts",
+      "blob": "14e566822f05eb00e769e73a56b3518e6d285eb6",
+      "verified": true,
+      "lines": 161,
+      "bytes": 6321,
+      "caseDefinitions": 19,
+      "describeBlocks": 10,
+      "explicitMocks": 0,
+      "skips": 0,
+      "imports": [
+        "vitest",
+        "../../packages/validation/api.schema.js",
+        "../../packages/contracts/directive.js"
+      ]
+    },
+    {
+      "path": "tests/contract/artifact-export-trust.test.ts",
+      "blob": "09e1a1844c0455fb675da248ca3432d525a50ec2",
+      "verified": true,
+      "lines": 22,
+      "bytes": 942,
+      "caseDefinitions": 2,
+      "describeBlocks": 1,
+      "explicitMocks": 0,
+      "skips": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/audit-chain-serialization.test.ts",
+      "blob": "8219f7fb171b780f1178eeb6d42df0fdbd909334",
+      "verified": true,
+      "lines": 47,
+      "bytes": 1921,
+      "caseDefinitions": 3,
+      "describeBlocks": 1,
+      "explicitMocks": 0,
+      "skips": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/audit-role-filter-contract.test.ts",
+      "blob": "3a252cebf6e2d2081bba05cc3029eb00d03b0d21",
+      "verified": true,
+      "lines": 13,
+      "bytes": 482,
+      "caseDefinitions": 1,
+      "describeBlocks": 1,
+      "explicitMocks": 0,
+      "skips": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/auth-email-provider.test.ts",
+      "blob": "38c53f547417f937a421e7e3e72a9aef4ddcd346",
+      "verified": true,
+      "lines": 158,
+      "bytes": 5011,
+      "caseDefinitions": 3,
+      "describeBlocks": 1,
+      "explicitMocks": 5,
+      "skips": 0,
+      "imports": [
+        "vitest"
+      ]
+    }
+  ]
+}
