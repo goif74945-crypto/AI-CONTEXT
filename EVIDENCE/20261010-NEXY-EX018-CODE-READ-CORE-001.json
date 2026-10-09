@@ -1,0 +1,341 @@
+{
+  "mode": "complete GitHub source read + automated static index; NOT spec acceptance or runtime",
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "all_core_files": 103,
+  "indices": [
+    0,
+    12
+  ],
+  "results": [
+    {
+      "path": "packages/api/artifact-export.ts",
+      "blob": "a778091f5880f2d5a31ec3522e7f6897a55abf00",
+      "expected": "a778091f5880f2d5a31ec3522e7f6897a55abf00",
+      "verified": true,
+      "bytes": 4495,
+      "lines": 156,
+      "imports": [
+        "node:crypto",
+        "../core/db.js",
+        "../contracts/envelope.js",
+        "../orch-core/system-state.js",
+        "./vnext-config.js",
+        "./directives.js"
+      ],
+      "exports": [
+        "handleArtifactExport"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/artifact-restore.ts",
+      "blob": "4a52ff597e96f694deae196eddd0c5ec807f6f2f",
+      "expected": "4a52ff597e96f694deae196eddd0c5ec807f6f2f",
+      "verified": true,
+      "bytes": 7363,
+      "lines": 148,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/db.js",
+        "../core/tick.js",
+        "../core/ulid.js",
+        "../contracts/envelope.js",
+        "../validation/api.schema.js",
+        "./vnext-config.js",
+        "../orch-core/system-state.js",
+        "../auth/csrf.js",
+        "./directives.js",
+        "../vault/integrity.js",
+        "../obs/audit-log.js"
+      ],
+      "exports": [
+        "handleArtifactRestore"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/auth-failure.ts",
+      "blob": "92c3f4c7cebc495d9c8badc1cec0b14b4c71dd0c",
+      "expected": "92c3f4c7cebc495d9c8badc1cec0b14b4c71dd0c",
+      "verified": true,
+      "bytes": 1636,
+      "lines": 56,
+      "imports": [
+        "../contracts/envelope.js",
+        "../law/freeze.js",
+        "../orch-core/system-state.js",
+        "./vnext-config.js"
+      ],
+      "exports": [
+        "AuthFailureResponse",
+        "AuthPersistenceFailure",
+        "respondAuthPersistenceFailure"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/auth.ts",
+      "blob": "e1c8c3edbb219d8d584682983cc0996b8f834934",
+      "expected": "e1c8c3edbb219d8d584682983cc0996b8f834934",
+      "verified": true,
+      "bytes": 54102,
+      "lines": 1438,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "./vnext-config.js",
+        "../core/tick.js",
+        "../obs/audit-log.js",
+        "../core/db.js",
+        "../contracts/envelope.js",
+        "../orch-core/system-state.js",
+        "../law/freeze.js",
+        "./auth-failure.js",
+        "../contracts/auth.js",
+        "../auth/otac.js",
+        "../auth/csrf.js",
+        "../auth/device-binding.js",
+        "../auth/client-ip.js",
+        "../auth/security-incident.js",
+        "../auth/email.js",
+        "../core/ulid.js",
+        "./middleware/rate-limit.js"
+      ],
+      "exports": [
+        "handleRequestOtac",
+        "handleVerifyOtac",
+        "handleSessionMe",
+        "handleLogout"
+      ],
+      "hits": {
+        "DateNow": [
+          835
+        ]
+      }
+    },
+    {
+      "path": "packages/api/bootstrap.ts",
+      "blob": "d6292374efca4b55bb3865e7151175674ad06b3e",
+      "expected": "d6292374efca4b55bb3865e7151175674ad06b3e",
+      "verified": true,
+      "bytes": 6361,
+      "lines": 171,
+      "imports": [
+        "../orch-core/system-state.js",
+        "../core/db.js",
+        "../core/tick.js",
+        "../core/vnext-state-matrix.js",
+        "../secrets/provider.js",
+        "../storage/blob-provider.js",
+        "../storage/http-provider.js",
+        "../obs/alarms.js",
+        "../obs/http-alarm-sink.js",
+        "../obs/provider-log-alarm-sink.js",
+        "../intelligence/master-key.js"
+      ],
+      "exports": [
+        "bindConfiguredAlarmSink",
+        "bindConfiguredMasterKeyProvider",
+        "bindConfiguredBlobStorageProvider",
+        "readMaxPersistedTick",
+        "bootstrap"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/canonical.ts",
+      "blob": "250048e369a96c930b0cb87212ae9ba188fdcf42",
+      "expected": "250048e369a96c930b0cb87212ae9ba188fdcf42",
+      "verified": true,
+      "bytes": 24483,
+      "lines": 681,
+      "imports": [
+        "node:crypto",
+        "zod",
+        "../../vault/repository.js",
+        "../validation/api.schema.js",
+        "../core/db.js",
+        "./vnext-config.js",
+        "../orch-core/system-state.js",
+        "../core/vnext-state-matrix.js",
+        "../contracts/envelope.js",
+        "../auth/csrf.js",
+        "./directives.js"
+      ],
+      "exports": [
+        "handleVaultCommit",
+        "handleArtifactRevisions",
+        "handleArtifacts",
+        "handleIncident",
+        "handleAuditLogs",
+        "handleAuditExport",
+        "handleListRuns",
+        "handleListDirectives"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/cold-snapshot.ts",
+      "blob": "21cd1d12d3db04ad7775144adddb2cd05cf56c86",
+      "expected": "21cd1d12d3db04ad7775144adddb2cd05cf56c86",
+      "verified": true,
+      "bytes": 17058,
+      "lines": 451,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/db.js",
+        "../core/canonical-json.js",
+        "../core/tick.js",
+        "../core/ulid.js",
+        "../contracts/envelope.js",
+        "../validation/api.schema.js",
+        "../obs/audit-log.js",
+        "../orch-core/system-state.js",
+        "./vnext-config.js",
+        "../auth/csrf.js",
+        "./directives.js",
+        "../storage/blob-provider.js"
+      ],
+      "exports": [
+        "executeColdSnapshotOperation",
+        "handleColdArchiveSnapshot"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/dialog.ts",
+      "blob": "93efdf4eb6e587de6a2d089f6a167a1daf57228f",
+      "expected": "93efdf4eb6e587de6a2d089f6a167a1daf57228f",
+      "verified": true,
+      "bytes": 3592,
+      "lines": 130,
+      "imports": [
+        "node:crypto",
+        "../auth/csrf.js",
+        "../contracts/envelope.js",
+        "../orch-core/system-state.js",
+        "../human/dialog-sandbox.js",
+        "./directives.js",
+        "./vnext-config.js"
+      ],
+      "exports": [
+        "handleDialog"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/directives.ts",
+      "blob": "8cd214c87e5aa55561e52347802ec8172feadc36",
+      "expected": "8cd214c87e5aa55561e52347802ec8172feadc36",
+      "verified": true,
+      "bytes": 64594,
+      "lines": 1778,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "./vnext-config.js",
+        "../core/tick.js",
+        "../core/canonical-json.js",
+        "../contracts/envelope.js",
+        "../core/db.js",
+        "../auth/csrf.js",
+        "../queue/dispatch.js",
+        "../contracts/directive.js",
+        "../validation/api.schema.js",
+        "../core/ulid.js",
+        "../orch-core/system-state.js",
+        "../core/vnext-state-matrix.js",
+        "../auth/device-binding.js",
+        "../obs/audit-log.js",
+        "../queue/run-state.js"
+      ],
+      "exports": [
+        "CanonicalReadAuditEvent",
+        "recordCanonicalRead",
+        "recordAuditorRead",
+        "Req",
+        "Res",
+        "AuthorizedReadContext",
+        "authorizeReadContext",
+        "authorizeRead",
+        "handleCreateDirective",
+        "handleGetDirective",
+        "handleGetRun",
+        "handleFreezeRecover"
+      ],
+      "hits": {
+        "DateNow": [
+          7
+        ]
+      }
+    },
+    {
+      "path": "packages/api/health.ts",
+      "blob": "bdd0ebf9c1a2a0009be46761a46707607d05494c",
+      "expected": "bdd0ebf9c1a2a0009be46761a46707607d05494c",
+      "verified": true,
+      "bytes": 6472,
+      "lines": 228,
+      "imports": [
+        "../core/db.js",
+        "./vnext-config.js",
+        "../contracts/envelope.js",
+        "node:crypto",
+        "../orch-core/system-state.js"
+      ],
+      "exports": [
+        "handleLiveness",
+        "handleReadiness",
+        "handleFreezeStatus"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/live-config.ts",
+      "blob": "2801bba4644a71b2eedc2a9ddc64e561eb31a33f",
+      "expected": "2801bba4644a71b2eedc2a9ddc64e561eb31a33f",
+      "verified": true,
+      "bytes": 15259,
+      "lines": 466,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/db.js",
+        "../core/canonical-json.js",
+        "../core/tick.js",
+        "../core/ulid.js",
+        "../contracts/envelope.js",
+        "../contracts/runtime-config.js",
+        "../config/runtime-config.js",
+        "../obs/audit-log.js",
+        "../auth/csrf.js",
+        "../orch-core/system-state.js",
+        "./vnext-config.js",
+        "./directives.js"
+      ],
+      "exports": [
+        "handleGetRuntimeConfig",
+        "handleUpdateRuntimeConfig",
+        "handleRollbackRuntimeConfig"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/middleware/cors.ts",
+      "blob": "176007c2bd0765908d84971e2c8700ca838150c3",
+      "expected": "176007c2bd0765908d84971e2c8700ca838150c3",
+      "verified": true,
+      "bytes": 1978,
+      "lines": 61,
+      "imports": [],
+      "exports": [
+        "getAllowedOrigins",
+        "corsHeadersForOrigin",
+        "corsMiddleware"
+      ],
+      "hits": {}
+    }
+  ]
+}
