@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#070c14" />
+  <title>AI.AI | Local Agent</title>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><div class="orb orb-a"></div><div class="orb orb-b"></div><div class="grid-lines"></div></div>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">✦</span><div><div class="brand-name">AI<span>.AI</span></div><div class="brand-caption">LOCAL AUTONOMY ENGINE</div></div></div>
+      <div class="nav-label">CONTROL CENTER</div>
+      <div class="nav-item active"><span>◉</span> Agent Console</div>
+      <div class="nav-item"><span>▦</span> Device Bridge <small>LOCAL</small></div>
+      <div class="nav-item"><span>⌁</span> Execution Policy <small>LOCKED</small></div>
+      <div class="sidebar-bottom"><span class="online-dot"></span> RUNNING ON THIS DEVICE <p>No cloud remote control</p></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><span class="crumb">SYSTEM</span><span class="separator">/</span><span>COMMAND INTERFACE</span></div><span class="secure">🔒 LOCAL ONLY</span></header>
+      <div class="content">
+        <div class="eyebrow"><span class="pulse-dot"></span> INTERACTIVE WORKSPACE / v0.1.0</div>
+        <h1>Your device.<br><span>Your command.</span></h1>
+        <p class="hero-copy">พิมพ์คำสั่ง พูดผ่านไมโครโฟน หรือตบมือเพื่อเรียกใช้แผนที่อนุมัติแล้ว ระบบควบคุมอุปกรณ์จากเครื่องของคุณโดยตรง</p>
+        <div class="metrics">
+          <div class="metric"><strong>03</strong><span>INPUT CHANNELS</span></div><div class="metric"><strong>12</strong><span>TOOL CONTRACTS</span></div><div class="metric"><strong>01</strong><span>ACTIVE DEVICE HOST</span></div>
+        </div>
+        <section class="panel command-panel">
+          <div class="panel-head"><span class="number">01</span><h2>Instruction input</h2><span class="micro-label">TEXT / VOICE</span></div>
+          <label for="command">YOUR COMMAND</label>
+          <textarea id="command" spellcheck="false" placeholder="พิมพ์ สวัสดี\nคลิก 500 300\nกด ctrl+s"></textarea>
+          <div class="toolbar">
+            <label class="toggle-wrap"><input type="checkbox" id="aiMode"><span class="toggle"></span> AI interpretation <small>(needs API key)</small></label>
+            <div class="toolbar-actions"><button id="voice" class="icon-btn" type="button" title="พูดคำสั่ง">🎙 <span>Speak</span></button><button id="plan" class="primary" type="button">Generate plan <span>↗</span></button></div>
+          </div>
+        </section>
+        <section class="panel plan-panel" id="planBox" hidden>
+          <div class="panel-head"><span class="number">02</span><h2>Review execution plan</h2><span class="micro-label">EXPLICIT APPROVAL</span></div>
+          <p class="subtext">อ่านทุกขั้นตอนก่อนอนุญาต ระบบไม่รันคำสั่งจากข้อความโดยอัตโนมัติ</p>
+          <ol id="steps"></ol>
+          <div id="warnings" class="warnings"></div>
+          <div class="action-row"><button id="execute" class="primary" type="button">Approve &amp; execute</button><button id="arm" class="outline" type="button">👏 Arm double-clap</button><button id="discard" class="ghost" type="button">Discard</button></div>
+          <div class="armed-note" id="armedNote" hidden>Clap armed for 30 seconds. Double clap to run the reviewed plan. Keep this page open.</div>
+        </section>
+        <section class="panel output-panel"><div class="panel-head"><span class="number">03</span><h2>Execution output</h2><button id="stop" class="stop" type="button">■ EMERGENCY STOP</button></div><pre id="output" aria-live="polite">No task executed yet.</pre></section>
+        <div class="footnote">Keyboard/mouse permissions are provided by your operating system. Android actions require a connected, authorized ADB device. AI.AI is not a hidden remote-access service.</div>
+      </div>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
