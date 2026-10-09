@@ -33,3 +33,15 @@ User requested a premium UI with animated background and an evidence-first expan
 
 ## State at record creation
 `UI_PROJECT_CREATED; BUILD_IN_PROGRESS; GATEWAY_READ_VERIFIED; GATEWAY_WRITE_NOT_VERIFIED; GATEWAY_CI_NOT_VERIFIED; NO_PRODUCT_REPO_MUTATION`.
+
+## Subsequent Lovable build results and blocker (2026-10-09)
+- Agent finished initial generation, Lovable project latest commit `bb40fb4deb4f2e9f691dc37ae3a582853a8cfcc2`, edit `edt-d9d8e612-4f75-4e1b-a42f-c40f2c8e56a4`.
+- Agent reported responsive eight-view premium deck, persistent background/motion control, auth-gated adapter, demo workflows, RLS-backed evidence, source attribution, and 15 safety tests **reported passing by Lovable agent**; independent reproduction not available in this session.
+- Files `src/lib/bridge/contracts.ts`, `src/lib/bridge/gateway.functions.ts`, and `src/integrations/supabase/auth-middleware.ts` were directly read from project. The gateway server function has a protected-repo write gate and owner check; no actual credential or Site wire contract configured.
+- The agent explicitly reported application build/typecheck FAILURE in `src/lib/bridge/gateway.functions.ts`. Exact compiler diagnostics not independently retrieved. Hence preview functionality is NOT VERIFIED and application is NOT complete.
+- Follow-up `send_message` to fix, build and retest returned `workspace is out of credits` from Lovable; further edits through Lovable are BLOCKED by billing/credits. Account billing link: https://lovable.dev/settings/billing.
+- No verified live Site gateway integration; demo-only functions may exist but should not be called production-ready. Do not construe the agent claim of tests passing as successful build.
+- No additional changes to NEXY.AI- or the live Site-hosted Repo Code Bridge gateway.
+
+## Final session state
+`LOVABLE_IMPLEMENTATION_GENERATED; FIFTEEN_TESTS_REPORTED_PASS; APP_BUILD_FAIL; LIVE_INTEGRATION_SETUP_REQUIRED; LOVABLE_CREDITS_EXHAUSTED; PRODUCT_REPO_UNTOUCHED`.
