@@ -1,0 +1,221 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    48,
+    60
+  ],
+  "total": 103,
+  "mode": "GitHub full content read + static index not runtime certification",
+  "rows": [
+    {
+      "p": "packages/core/canonical-json.ts",
+      "sha": "c0c14ca5a6fa16e2ebc9da191774d3306fc6c1ee",
+      "verified": true,
+      "size": 3652,
+      "lines": 74,
+      "imports": [],
+      "exports": [
+        "canonicalJson"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/core/canonical-order.ts",
+      "sha": "3c8c1031d5354e2092e01192a0fa2d6c8a6041dc",
+      "verified": true,
+      "size": 1053,
+      "lines": 32,
+      "imports": [],
+      "exports": [
+        "compareCanonicalText",
+        "canonicalTextOrder"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/core/database-url.ts",
+      "sha": "5e989edee13862a919a68aea99f379f9ff272d62",
+      "verified": true,
+      "size": 228,
+      "lines": 6,
+      "imports": [],
+      "exports": [
+        "databaseUrlWithConnectionLimit"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/core/db.ts",
+      "sha": "3f6f1060243e358a24be804d4c3593f3c11fcddf",
+      "verified": true,
+      "size": 668,
+      "lines": 22,
+      "imports": [
+        "@prisma/client",
+        "./database-url.js"
+      ],
+      "exports": [
+        "prisma"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/core/tick.ts",
+      "sha": "517614809c8cefa3e516348b1268f6dca4a744e5",
+      "verified": true,
+      "size": 4822,
+      "lines": 145,
+      "imports": [],
+      "exports": [
+        "injectTsaBatchTime",
+        "currentTick",
+        "setEpochBase",
+        "isEpochSealed",
+        "hasInjectedTsaBatchTime",
+        "currentTsaBatchTimeMs",
+        "_resetEpochForTesting",
+        "_internals"
+      ],
+      "hits": {
+        "DateNow": [
+          7
+        ]
+      }
+    },
+    {
+      "p": "packages/core/ulid.ts",
+      "sha": "aa379e7fa8a4139df7de922f2f6e3feabd724ee9",
+      "verified": true,
+      "size": 1048,
+      "lines": 32,
+      "imports": [
+        "node:crypto",
+        "./tick.js"
+      ],
+      "exports": [
+        "generateUlid"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/core/vnext-state-matrix.ts",
+      "sha": "27e1281fba330784cc3bf2c30e9e1e82f951479b",
+      "verified": true,
+      "size": 13751,
+      "lines": 301,
+      "imports": [
+        "zod"
+      ],
+      "exports": [
+        "VNEXT_STATE",
+        "VNextState",
+        "VNextStateSchema",
+        "VNextGuardContext",
+        "VNextGuardContextSchema",
+        "VNextGuardName",
+        "VNEXT_EVENT",
+        "VNextEvent",
+        "VNEXT_ACTOR",
+        "VNextActor",
+        "EVENT_OWNERSHIP",
+        "VNEXT_TRANSITIONS",
+        "VNextStateTransitionDeniedError",
+        "VNextStateGuardDeniedError",
+        "vnextTransition",
+        "VNEXT_ERROR_CODE",
+        "VNextErrorCode",
+        "FreezeReasonRecord",
+        "FREEZE_REASON_CATALOG",
+        "validateFreezeRecovery"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/judge/candidate.ts",
+      "sha": "eb9e261006c6496c78256d0ad1b287425cd2a8e8",
+      "verified": true,
+      "size": 2437,
+      "lines": 64,
+      "imports": [
+        "node:crypto",
+        "../swarm/pipeline.js",
+        "../swarm/pipeline.js"
+      ],
+      "exports": [
+        "verifySwarmCandidate"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/judge/consensus.ts",
+      "sha": "d4ab4821182ab896b2c76941253d35111eb1f77c",
+      "verified": true,
+      "size": 10889,
+      "lines": 312,
+      "imports": [
+        "node:crypto",
+        "../api/vnext-config.js",
+        "../contracts/evidence.js",
+        "../contracts/consensus.js",
+        "../contracts/release-policy.js",
+        "../law/prerelease.js",
+        "../swarm/pipeline.js",
+        "./scoring.js"
+      ],
+      "exports": [
+        "ConsensusProposal",
+        "ConsensusThresholds",
+        "ConsensusEvaluationContext",
+        "reachConsensus",
+        "buildConsensusResult"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/judge/index.ts",
+      "sha": "c0e35ccf055ddd4bc81bbd29a7229dd72e32c4b1",
+      "verified": true,
+      "size": 123,
+      "lines": 5,
+      "imports": [
+        "./scoring.js",
+        "./quorum.js",
+        "./consensus.js",
+        "./candidate.js"
+      ],
+      "exports": [],
+      "hits": {}
+    },
+    {
+      "p": "packages/judge/quorum.ts",
+      "sha": "6b7c55673dcdf0a0ba1210df6fcd30fc9e2bee49",
+      "verified": true,
+      "size": 733,
+      "lines": 25,
+      "imports": [
+        "../api/vnext-config.js"
+      ],
+      "exports": [
+        "AgentVote",
+        "tallyQuorum"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/judge/scoring.ts",
+      "sha": "88560285f74c82549aeafdd9a96b16559e3c9918",
+      "verified": true,
+      "size": 922,
+      "lines": 28,
+      "imports": [
+        "../api/vnext-config.js"
+      ],
+      "exports": [
+        "scoreDeterministicMatch",
+        "scoreQuorum",
+        "scoreCriticalAgentFailure"
+      ],
+      "hits": {}
+    }
+  ]
+}
