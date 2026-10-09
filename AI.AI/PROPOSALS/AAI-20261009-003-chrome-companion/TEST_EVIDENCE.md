@@ -1,0 +1,14 @@
+# TEST_EVIDENCE | AAI-20261009-003 | 2026-10-09
+- Source product v0.4.0 local ZIP SHA-256: `5e47a9cb11f52be3c8c13be86a4551246d30d601091b6919b5dbbe6a3d9dd733`. Embedded source HEAD: `95741bede86405685a022633df03a2c39ce7fc4c`.
+- Complete source patch SHA256 `7ff3a856b1eba7dac7d745c04463fc8c4ac5934d85eb30f4271e29ac20ae3234`, 50,999 bytes. Gzip SHA256 `e9437539cae40246b49c39e0b04ca83e6aa5f0be02cc81f02776da3e21e00eb2`. Base64 character count 23,260.
+- Fresh v0.4.0 ZIP extraction, `git apply --check`, then `git apply`: exit 0.
+- Exact patched replay: `python -m pytest -q -o addopts=''`: **216 passed in 5.82s**.
+- Exact patched replay: `node --test tests-js/*.test.mjs`: **14 tests PASS, 0 FAIL** (2 preexisting + 12 extension).
+- Exact patched replay: `python tests-chrome/dom_smoke.py`: **13 PASS**, real Chromium 144 with injected test HTML (DOM only).
+- `node --check`, `python -m compileall`, `python -m json.tool manifest.json`, `git diff --check`: exit 0.
+- Attempt at actual Chrome MV3 runtime via `launch_persistent_context` with `--load-extension`: background worker not observed; `chrome://extensions` returned `net::ERR_BLOCKED_BY_ADMINISTRATOR`. **BLOCKED**, not PASS.
+- No full-day or seven-day soak, real user Chrome install, secure AI connector, mobile Chrome, or OS-wide automation E2E: **NOT_RUN**.
+- Chrome browser must remain running and machine awake; alarms may be delayed. The 7-day duration is only a bounded plan setting.
+- Site permissions are user-approved; form submissions, sensitive fields, known destructive labels blocked. Same-origin JS side effects remain residual risk, explicit approvals still necessary. Not a substitute for user supervision.
+- Version archive under `AI.AI/versions/v0.4.0/source/tree/` remains unchanged. NEXY.AI-, AI-CONTEXT protected folders and Product GitHub repo unchanged.
+- Note: canonical `AI.AI/tools/validate_catalog.py` expects raw `integration.patch` and therefore cannot validate this transport format directly until an independently authorized validator version handles the archive; this proposal's decode script ensures exact raw patch SHA verification. Do not claim catalog validator PASS.

@@ -1,0 +1,21 @@
+{
+  "id": "AAI-20261009-003",
+  "title": "Google Chrome MV3 persistent scoped workflow companion",
+  "critique_signature": "F-03/browser.adapter/browser profile isolation & 180-second plan TTL prevent user-Chrome tab tasks with restartable long-running checkpoints",
+  "fingerprint": "chrome-mv3/sidepanel/optional-origin/strict-step-engine/alarms-checkpoints/manual-uncertain-resolution",
+  "target_version": "v0.4.0",
+  "target_revision": "95741bede86405685a022633df03a2c39ce7fc4c",
+  "target_zip_sha256": "5e47a9cb11f52be3c8c13be86a4551246d30d601091b6919b5dbbe6a3d9dd733",
+  "patch_sha256": "7ff3a856b1eba7dac7d745c04463fc8c4ac5934d85eb30f4271e29ac20ae3234",
+  "status": "TESTED_ON_PINNED_REVISION",
+  "format": "complete gzip+Base64 encoded integration patch (decode with unpack_patch.py; do not treat markdown as raw patch)",
+  "observed_tests": {
+    "python": "216 PASS / 0 FAIL",
+    "node": "14 PASS / 0 FAIL",
+    "chromium_dom": "13 PASS / 0 FAIL injected HTML",
+    "chrome_installation": "BLOCKED ERR_BLOCKED_BY_ADMINISTRATOR",
+    "long_run_days": "NOT_RUN",
+    "static_catalog_validator": "NOT_RUN: canonical validator only accepts raw integration.patch"
+  },
+  "scope": "AI-CONTEXT/AI.AI/** only; no live product or protected folder modified"
+}
