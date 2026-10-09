@@ -1,0 +1,5 @@
+# EX017 V4 correction of acceptance register source locators
+Authoritative bytes sha256 b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7; 12537 paragraphs. The GitHub EX016 143-ID register is internally UNIQUE by ID but its text location references are systematically shifted, often by one paragraph.
+Examples: Defaults/confidence_min P9913 -> actual P9914; Status/OK P9951 -> P9953; API/5 P10152 -> P10153; UI Screens/S1 P10505 -> P10506; Storage unique/1 P10731 -> P10732; DOC-E/E1 P10924 -> P10925. DOCX matrix begins FSM row INIT/boot/READY at P10375, and a general fatal ANY except STOP row at P10447-P10452, not one separate direct fatal paragraph for every state.
+Corrected 143 locator rows provided. For FSM/13..19 use general group locator and treat individual fatal transitions as derived validations, not literal separate DOCX rows. **SEMANTIC DUPLICATES:** [{"id":"FSM/19","duplicateOf":"FSM/12","semantic":"FREEZE → fatal → STOP"}]. Don't claim 143 unique requirements merely because IDs unique. All remain acceptance NOT_VERIFIED.
+Source finding does not prove implementation defect. Do not mutate already-correct live enums or numeric defaults.
