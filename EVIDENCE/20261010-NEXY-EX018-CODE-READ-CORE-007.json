@@ -1,0 +1,292 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    72,
+    84
+  ],
+  "total": 103,
+  "mode": "GitHub full content read + static index not runtime certification",
+  "rows": [
+    {
+      "p": "packages/queue/dispatch.ts",
+      "sha": "002eef253ce836e2cd0e200f5d15cb5042cdeb29",
+      "verified": true,
+      "size": 9939,
+      "lines": 321,
+      "imports": [
+        "@prisma/client",
+        "../core/tick.js",
+        "../core/ulid.js",
+        "../core/db.js",
+        "./jobs.js",
+        "../obs/alarms.js",
+        "./retry-policy.js"
+      ],
+      "exports": [
+        "DISPATCH_STATUS",
+        "DispatchStatus",
+        "NewDispatchRecord",
+        "createDirectiveDispatch",
+        "DispatchAttemptResult",
+        "dispatchDirective",
+        "reconcilePendingDispatches",
+        "startDispatchReconciler",
+        "claimDirectiveDispatch",
+        "completeDirectiveDispatch",
+        "failDirectiveDispatch",
+        "cancelDirectiveDispatch"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/queue/jobs.ts",
+      "sha": "e90ac64acc446c5bbd24a710e0208fc76bce9089",
+      "verified": true,
+      "size": 4780,
+      "lines": 145,
+      "imports": [
+        "bullmq",
+        "./retry-policy.js",
+        "./payload.js",
+        "../api/vnext-config.js"
+      ],
+      "exports": [
+        "closePipelineQueue",
+        "DirectiveJobData",
+        "EnqueueResult",
+        "FailedRetryAuthorization",
+        "enqueueDirective"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/queue/payload.ts",
+      "sha": "f46513b1123d2a4bef277c6ce08a72656e5d9306",
+      "verified": true,
+      "size": 2099,
+      "lines": 51,
+      "imports": [
+        "zod",
+        "../contracts/directive.js",
+        "../api/vnext-config.js"
+      ],
+      "exports": [
+        "DirectiveJobSchema",
+        "DirectiveJobPayload",
+        "WorkerDirectiveJobSchema",
+        "SchemaViolationError",
+        "validateProducerPayload",
+        "validateWorkerPayload"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/queue/retry-policy.ts",
+      "sha": "9eb00e4cad9c5a284e64dccf8a8a2f4753f7882f",
+      "verified": true,
+      "size": 2399,
+      "lines": 77,
+      "imports": [],
+      "exports": [
+        "FailedDispatchRetryPolicy",
+        "SAFE_FAILED_RETRY_ERROR_CODES",
+        "FAILED_RETRY_DISABLED",
+        "isFailedDispatchRetryPolicy",
+        "isFailedDispatchRetryAllowed"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/queue/run-state.ts",
+      "sha": "e162efc8b2a45014bcefbd60dc67a95d8a1e1003",
+      "verified": true,
+      "size": 27833,
+      "lines": 859,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/db.js",
+        "../core/tick.js",
+        "../core/ulid.js",
+        "../law/prerelease.js",
+        "../obs/alarms.js",
+        "../obs/audit-log.js",
+        "./dispatch.js",
+        "../contracts/errors.js",
+        "../obs/incident-priority.js",
+        "../obs/incidents.js"
+      ],
+      "exports": [
+        "RUN_STATE",
+        "RunState",
+        "toQ64",
+        "RunMetrics",
+        "AuthorizedReleaseMetrics",
+        "setPipelineRunState",
+        "commitAuthorizedPipelineRelease",
+        "RunFailure",
+        "recordPipelineRunFailure",
+        "emitAuthorizedPipelineOutput",
+        "RevokeStableReleaseOptions",
+        "revokeStableRelease",
+        "CancelPipelineRunOptions",
+        "cancelPipelineRun"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/queue/states.ts",
+      "sha": "9fc7e100cdeb7e1ed3ac4a1bc935f7188a4c7fa8",
+      "verified": true,
+      "size": 1142,
+      "lines": 41,
+      "imports": [],
+      "exports": [
+        "JOB_STATES",
+        "JobStateValue",
+        "JobState",
+        "LAW_REJECTION_JOB_STATE",
+        "STALE_JOB_REASON",
+        "isJobState",
+        "requireJobState",
+        "classifyStaleQueueFailure"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/queue/workers.ts",
+      "sha": "3134e7b6bf83f7200959e3e267b28f5ea28b6392",
+      "verified": true,
+      "size": 16831,
+      "lines": 502,
+      "imports": [
+        "bullmq",
+        "../intelligence/irl.js",
+        "ioredis",
+        "../core/tick.js",
+        "../core/db.js",
+        "../law/prerelease.js",
+        "../law/freeze.js",
+        "../swarm/pipeline.js",
+        "../judge/candidate.js",
+        "../judge/consensus.js",
+        "../lo2/feedback-dispatch.js",
+        "../obs/alarms.js",
+        "../config/runtime-config.js",
+        "../contracts/errors.js",
+        "./dispatch.js",
+        "./states.js",
+        "./run-state.js",
+        "./payload.js",
+        "./payload.js"
+      ],
+      "exports": [
+        "WorkerDirectiveJobData",
+        "buildCiFixtureRsel",
+        "DirectiveJobResult",
+        "redis"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/storage/blob-provider.ts",
+      "sha": "1d754dd9c48f826fbf2d6b1ee2e506f9b3442534",
+      "verified": true,
+      "size": 3199,
+      "lines": 104,
+      "imports": [],
+      "exports": [
+        "ArchiveTier",
+        "BlobResolution",
+        "BlobProviderReceipt",
+        "BlobStorageProvider",
+        "BlobStorageProviderUnavailableError",
+        "bindBlobStorageProvider",
+        "getBlobStorageProvider",
+        "blobStorageProviderStatus"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/storage/http-provider.ts",
+      "sha": "d5d28a7fdc2aaa7f969ba51462f6035ea55f858b",
+      "verified": true,
+      "size": 6043,
+      "lines": 181,
+      "imports": [
+        "./blob-provider.js"
+      ],
+      "exports": [
+        "HttpBlobStorageProvider"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/storage/lifecycle.ts",
+      "sha": "efbba775f08f8175dad34e7a5cc79e5ecaaceb78",
+      "verified": true,
+      "size": 7740,
+      "lines": 206,
+      "imports": [
+        "zod",
+        "@prisma/client",
+        "../core/tick.js",
+        "../vault/integrity.js",
+        "./blob-provider.js"
+      ],
+      "exports": [
+        "BlobManifestSchema",
+        "BlobManifest",
+        "STORAGE_LIFECYCLE",
+        "StorageEligibility",
+        "buildBlobManifest",
+        "evaluateStorageEligibility"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/storage/query-patterns.ts",
+      "sha": "59136573fcec778977f7902f043413362d08896b",
+      "verified": true,
+      "size": 2688,
+      "lines": 80,
+      "imports": [
+        "../core/db.js"
+      ],
+      "exports": [
+        "TickWindow",
+        "AuditSearch",
+        "listArtifactsByProject",
+        "listRevisionsByArtifact",
+        "getDirectiveById",
+        "getPipelineRunById",
+        "getIncidentById",
+        "searchAuditLogs",
+        "searchSecurityIncidents"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/storage/soft-delete.ts",
+      "sha": "0ba532f1efb01cfa7d0cde599a37468339c234cb",
+      "verified": true,
+      "size": 5228,
+      "lines": 156,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/db.js",
+        "../core/tick.js",
+        "../obs/audit-log.js",
+        "./lifecycle.js"
+      ],
+      "exports": [
+        "SoftDeleteContext",
+        "SoftDeleteResult",
+        "softDeleteArtifact",
+        "softDeleteProject"
+      ],
+      "hits": {}
+    }
+  ]
+}
