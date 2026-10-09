@@ -1,0 +1,268 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    60,
+    72
+  ],
+  "total": 99,
+  "scope": "web source content read/index; not interactive acceptance",
+  "rows": [
+    {
+      "path": "apps/web/components/CommandMatrix.tsx",
+      "blob": "b4762bcf0cca0664b3212bdffc0bdf2cd666f1df",
+      "verified": true,
+      "bytes": 5766,
+      "lines": 175,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "CommandMatrix"
+      ],
+      "hits": {
+        "useClient": [
+          1
+        ],
+        "aria": [
+          68,
+          81,
+          95,
+          110,
+          126,
+          138,
+          149
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/ConstraintPanel.tsx",
+      "blob": "897878624f2476d019a7f699caecaf6e4bb66494",
+      "verified": true,
+      "bytes": 2508,
+      "lines": 80,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "ConstraintPanel"
+      ],
+      "hits": {
+        "useClient": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/DirectiveCard.tsx",
+      "blob": "2890e312001653defff69a6c64a713bfe7a98959",
+      "verified": true,
+      "bytes": 1232,
+      "lines": 38,
+      "imports": [
+        "react",
+        "next/link",
+        "./StatusBadge"
+      ],
+      "handlers": [
+        "DirectiveCard"
+      ],
+      "hits": {
+        "href": [
+          21
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/DirectiveInput.tsx",
+      "blob": "a93f3f3cc35cbaabd863ca79f3a0fa48cc50a14a",
+      "verified": true,
+      "bytes": 1079,
+      "lines": 53,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "DirectiveInput"
+      ],
+      "hits": {
+        "useClient": [
+          1
+        ],
+        "placeholder": [
+          10,
+          22,
+          38
+        ],
+        "aria": [
+          31
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/EmptyStateCard.tsx",
+      "blob": "15357f67a97bdccd479636d1e5678ea2f0331cb8",
+      "verified": true,
+      "bytes": 479,
+      "lines": 21,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "EmptyStateCard"
+      ],
+      "hits": {
+        "role": [
+          16
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/ErrorBoundary.tsx",
+      "blob": "2dd79cffcca19e5dead971bf066cfb96bc4e4a22",
+      "verified": true,
+      "bytes": 1275,
+      "lines": 45,
+      "imports": [
+        "react"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          34
+        ],
+        "useClient": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/FreezeBanner.tsx",
+      "blob": "1376d9a12c24226728a02dec4881f9a545185dc3",
+      "verified": true,
+      "bytes": 1292,
+      "lines": 35,
+      "imports": [
+        "react",
+        "./SystemStateProvider"
+      ],
+      "handlers": [
+        "FreezeBanner"
+      ],
+      "hits": {
+        "role": [
+          11,
+          19,
+          27
+        ],
+        "aria": [
+          11,
+          19,
+          27
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/FreezeRecoverModal.tsx",
+      "blob": "dfd2010144e8a56e6858f8448844ca99c4f37288",
+      "verified": true,
+      "bytes": 3231,
+      "lines": 90,
+      "imports": [
+        "react",
+        "./LoadingSpinner",
+        "../lib/csrf"
+      ],
+      "handlers": [
+        "FreezeRecoverModal"
+      ],
+      "hits": {
+        "fetch": [
+          28
+        ],
+        "useClient": [
+          1
+        ],
+        "placeholder": [
+          59,
+          73
+        ],
+        "role": [
+          48
+        ],
+        "aria": [
+          48
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/FreezeStatusBar.tsx",
+      "blob": "d484f7556c0e1d0463750afedc98a23a233281e2",
+      "verified": true,
+      "bytes": 147,
+      "lines": 3,
+      "imports": [
+        "./FreezeBanner",
+        "./FreezeBanner"
+      ],
+      "handlers": [],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/components/IncidentCard.tsx",
+      "blob": "077468a06a2c33fbec823ae077fe9238f377fb87",
+      "verified": true,
+      "bytes": 868,
+      "lines": 28,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "IncidentCard"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/components/LayoutInner.tsx",
+      "blob": "54058f6703476345c6e4be4ed25fdaec582ef110",
+      "verified": true,
+      "bytes": 542,
+      "lines": 17,
+      "imports": [
+        "react",
+        "./NavBar",
+        "./FreezeBanner",
+        "./SystemStateProvider"
+      ],
+      "handlers": [
+        "LayoutInner"
+      ],
+      "hits": {
+        "useClient": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/LoadingSkeleton.tsx",
+      "blob": "bd5b6dcdc6cf73fe8e4b4bdc78b17e45c94ce474",
+      "verified": true,
+      "bytes": 401,
+      "lines": 18,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "LoadingSkeleton"
+      ],
+      "hits": {
+        "role": [
+          13
+        ],
+        "aria": [
+          12,
+          14
+        ]
+      }
+    }
+  ]
+}
