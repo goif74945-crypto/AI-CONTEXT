@@ -1,0 +1,285 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    72,
+    84
+  ],
+  "total": 99,
+  "scope": "web source content read/index; not interactive acceptance",
+  "rows": [
+    {
+      "path": "apps/web/components/LoadingSpinner.tsx",
+      "blob": "2cc3dfe2cc07aebaf155854ce851bac806a7ce7d",
+      "verified": true,
+      "bytes": 464,
+      "lines": 22,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "LoadingSpinner"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/components/ModeGuardPanel.tsx",
+      "blob": "bd77b0f305ed6eec85e22c070c6f18b4ddbee4c6",
+      "verified": true,
+      "bytes": 1877,
+      "lines": 59,
+      "imports": [
+        "react",
+        "../lib/mode-guard"
+      ],
+      "handlers": [
+        "ModeGuardPanel"
+      ],
+      "hits": {
+        "onClick": [
+          40
+        ],
+        "useClient": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/ModeTabs.tsx",
+      "blob": "7ace6062dd635b5cd296289f624292f65e7a6404",
+      "verified": true,
+      "bytes": 903,
+      "lines": 34,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "ModeTabs"
+      ],
+      "hits": {
+        "onClick": [
+          26
+        ],
+        "useClient": [
+          1
+        ],
+        "role": [
+          15
+        ],
+        "aria": [
+          15,
+          20
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/NavBar.tsx",
+      "blob": "a590d1aaffd9afe12f58a3a04b57abf86194247c",
+      "verified": true,
+      "bytes": 1727,
+      "lines": 45,
+      "imports": [
+        "react",
+        "next/link",
+        "./SystemStateProvider",
+        "./PermissionGate"
+      ],
+      "handlers": [
+        "NavBar"
+      ],
+      "hits": {
+        "useClient": [
+          1
+        ],
+        "href": [
+          24,
+          28,
+          36,
+          39
+        ],
+        "role": [
+          35,
+          38
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/OtacLoginForm.tsx",
+      "blob": "8fc42e167469e82e33a0831de3cf602c023d7b7c",
+      "verified": true,
+      "bytes": 6371,
+      "lines": 162,
+      "imports": [
+        "react",
+        "next/navigation"
+      ],
+      "handlers": [
+        "OtacLoginForm"
+      ],
+      "hits": {
+        "onClick": [
+          125,
+          128,
+          151
+        ],
+        "fetch": [
+          22,
+          44,
+          64
+        ],
+        "useClient": [
+          1
+        ],
+        "placeholder": [
+          113,
+          140
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/OwnerActionBar.tsx",
+      "blob": "97d740eea5873c49f3e0be47d7873fd14b4eb0fb",
+      "verified": true,
+      "bytes": 309,
+      "lines": 14,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "OwnerActionBar"
+      ],
+      "hits": {
+        "aria": [
+          9
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/PermissionGate.tsx",
+      "blob": "240813a4c76f58312b1199825ae22faca3f70bfa",
+      "verified": true,
+      "bytes": 1850,
+      "lines": 63,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "SessionProvider",
+        "useSessionRole",
+        "PermissionGate"
+      ],
+      "hits": {
+        "fetch": [
+          33
+        ],
+        "useClient": [
+          1
+        ],
+        "role": [
+          22,
+          60
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/PipelineRunCard.tsx",
+      "blob": "7dc0aaede7aeec29d8dd81bc9f893bf1a0da1bd5",
+      "verified": true,
+      "bytes": 1037,
+      "lines": 34,
+      "imports": [
+        "react",
+        "./StatusBadge",
+        "next/link"
+      ],
+      "handlers": [
+        "PipelineRunCard"
+      ],
+      "hits": {
+        "href": [
+          20
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/PwaRegistrar.tsx",
+      "blob": "26c973d41371c175cf2e4d4a66088b0e19daca18",
+      "verified": true,
+      "bytes": 742,
+      "lines": 33,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "PwaRegistrar"
+      ],
+      "hits": {
+        "useClient": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/RevisionTable.tsx",
+      "blob": "99be2a98a7bd4e9ccaa7fd627a6fcdf2a02ec0ac",
+      "verified": true,
+      "bytes": 3338,
+      "lines": 100,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "RevisionTable"
+      ],
+      "hits": {
+        "onClick": [
+          38
+        ],
+        "useClient": [
+          1
+        ],
+        "aria": [
+          84
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/StatusBadge.tsx",
+      "blob": "e0408ce51a12bd0261f6a97b4c40049e2d39bbe8",
+      "verified": true,
+      "bytes": 239,
+      "lines": 9,
+      "imports": [
+        "react",
+        "./StatusChip"
+      ],
+      "handlers": [
+        "StatusBadge"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/components/StatusChip.tsx",
+      "blob": "76d59895f4d510d7d05ae254e7fe4cdd264e039e",
+      "verified": true,
+      "bytes": 763,
+      "lines": 29,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "StatusChip"
+      ],
+      "hits": {
+        "useClient": [
+          1
+        ],
+        "role": [
+          21
+        ],
+        "aria": [
+          22
+        ]
+      }
+    }
+  ]
+}
