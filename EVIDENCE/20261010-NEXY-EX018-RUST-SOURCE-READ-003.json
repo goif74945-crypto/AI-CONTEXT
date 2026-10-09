@@ -1,0 +1,239 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "total": 41,
+  "range": [
+    20,
+    30
+  ],
+  "mode": "read original Rust code, no cargo execution",
+  "rows": [
+    {
+      "p": "core-kernel/src/engine/rsel.rs",
+      "sha": "7ca54585a5a7b33b4f4172f48d549b9b801eaa56",
+      "verified": true,
+      "bytes": 3911,
+      "lines": 136,
+      "pub": [
+        "RiskIntelligenceState",
+        "RiskFaultReason",
+        "RiskDecision",
+        "is_allowed",
+        "risk",
+        "threshold",
+        "intelligence_state",
+        "RiskFault",
+        "RiskEvaluator",
+        "evaluate",
+        "evaluate_with_threshold"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/engine/runtime_executor.rs",
+      "sha": "a61d49e87694cecb6e83db0ea0779e36c08a7cf8",
+      "verified": true,
+      "bytes": 11254,
+      "lines": 348,
+      "pub": [
+        "RuntimeFault",
+        "RuntimeEvent",
+        "new",
+        "payload",
+        "CanonicalRuntimeState",
+        "new",
+        "bytes",
+        "hash",
+        "replace",
+        "DeterministicTransition",
+        "DeterministicRuntimeExecutor",
+        "new",
+        "state",
+        "state_hash",
+        "queued_len",
+        "expected_next_counter",
+        "try_enqueue",
+        "enqueue_or_freeze",
+        "try_process_next",
+        "process_next_or_freeze",
+        "verify_state_hash",
+        "verify_state_hash_or_freeze"
+      ],
+      "hits": {
+        "unwrap": [
+          279,
+          280,
+          281,
+          283,
+          291,
+          299,
+          312,
+          313,
+          315,
+          316,
+          319,
+          320,
+          340,
+          342
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/engine/v_swarm.rs",
+      "sha": "ee7646d65153c506f6834381007f32c849f4046a",
+      "verified": true,
+      "bytes": 27451,
+      "lines": 665,
+      "pub": [
+        "VSwarmNode",
+        "VSwarmResult",
+        "VSwarmEvaluator",
+        "T10Arbitrator",
+        "evaluate",
+        "AdversarialMetrics",
+        "AdversarialEngine",
+        "run",
+        "run_with_metrics"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/icl.rs",
+      "sha": "ba222c802b267a80d01413361f1b50422a7effc9",
+      "verified": true,
+      "bytes": 20507,
+      "lines": 517,
+      "pub": [
+        "CanonicalPayload",
+        "normalized_text",
+        "intent_tags",
+        "original_text",
+        "ambiguity_score",
+        "wait_for_data_clarity",
+        "InputCanonicalizer",
+        "new",
+        "process_input"
+      ],
+      "hits": {
+        "unwrap": [
+          329,
+          335,
+          342,
+          350,
+          368,
+          386,
+          397,
+          408,
+          415,
+          422,
+          429,
+          438,
+          457,
+          464,
+          497,
+          500
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/kernel/command.rs",
+      "sha": "b5df8cbe72c855e20953540c72e59c2576e0cbcb",
+      "verified": true,
+      "bytes": 11539,
+      "lines": 281,
+      "pub": [
+        "KernelCommand",
+        "CommandResult",
+        "CommandGate",
+        "dispatch",
+        "state"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/kernel/fsm_state.rs",
+      "sha": "9712c95c34b9762c885d5fec31228bbeae634bc6",
+      "verified": true,
+      "bytes": 13792,
+      "lines": 340,
+      "pub": [
+        "SystemState",
+        "from_raw",
+        "FailureMode",
+        "FsmState",
+        "load",
+        "transition",
+        "force_failsafe",
+        "on_failure",
+        "verify_integrity",
+        "freeze",
+        "freeze_state"
+      ],
+      "hits": {
+        "unsafe": [
+          199
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/kernel/incident_playbook.rs",
+      "sha": "5c0c05578fa3e742d05104cbb39415fc25112c62",
+      "verified": true,
+      "bytes": 11588,
+      "lines": 277,
+      "pub": [
+        "InvariantBreach",
+        "IncidentResponse"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/kernel/mod.rs",
+      "sha": "767edb38a365a8dae054064534fec5ab3ea09516",
+      "verified": true,
+      "bytes": 128,
+      "lines": 7,
+      "pub": [],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/kernel/nexy_equation.rs",
+      "sha": "c97704a31d5c7067126198d11ec1aeed72714280",
+      "verified": true,
+      "bytes": 5433,
+      "lines": 158,
+      "pub": [
+        "Intelligence",
+        "raw",
+        "percent_integer",
+        "is_maximal",
+        "is_zero",
+        "NexyEquation",
+        "compute"
+      ],
+      "hits": {
+        "unwrap": [
+          113,
+          123,
+          132
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/kernel/tier_depth.rs",
+      "sha": "c09efa24fdb73a048740492a3b2847edbe887844",
+      "verified": true,
+      "bytes": 3419,
+      "lines": 116,
+      "pub": [
+        "TierLevel"
+      ],
+      "hits": {
+        "panic": [
+          52,
+          58,
+          69
+        ]
+      }
+    }
+  ]
+}
