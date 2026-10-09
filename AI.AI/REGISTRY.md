@@ -5,7 +5,6 @@ Every chat must check the entire directory, not merely this table, before propos
 | ID | Critique signature | Idea fingerprint | Source pinned | Status |
 |---|---|---|---|---|
 | [AAI-20261009-001](PROPOSALS/AAI-20261009-001-file-read-integrity/) | F-01 / executor.file.read / silent truncation of output at 20,000 chars | read-integrity/file-read/fail-closed-on-result-truncation | v0.2.0 zip / 0b226669d5635339c00c3836d91dca9bfbf63cea | TESTED_ON_PINNED_REVISION, v0.3 NOT_VERIFIED |
-
 | [AAI-20261009-002](PROPOSALS/AAI-20261009-002-adaptive-ocr-click/) | F-02 / executor._desktop_text / initial OCR center used for click after <=8px target drift | desktop/ocr-click/third-frame-recheck-when-offset-and-click-latest-confirmed-center | v0.4.0 zip / 95741bede86405685a022633df03a2c39ce7fc4c | TESTED_ON_PINNED_REVISION, 224 local Python PASS, physical E2E NOT_RUN |
 
-Future AI chats MUST NOT resubmit the same critique or equivalent truncation remedy as new. If no unique proposal is verifiable, stop with BLOCKED_UNIQUE_IDEA. The historical PROJECTS/AI.AI v0.3 release record does not prove this v0.2-specific patch works on v0.3.
+Future AI chats MUST NOT resubmit AAI-001's file-read truncation critique or AAI-002's adaptive OCR click-stability critique or semantically equivalent fixes as new. If no unique proposal is verifiable, stop with BLOCKED_UNIQUE_IDEA. The historical PROJECTS/AI.AI v0.3 release record does not prove this v0.2-specific patch works on v0.3.
