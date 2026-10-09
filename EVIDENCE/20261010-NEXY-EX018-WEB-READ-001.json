@@ -1,0 +1,203 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    0,
+    12
+  ],
+  "total": 99,
+  "scope": "web source content read/index; not interactive acceptance",
+  "rows": [
+    {
+      "path": "apps/web/app/api/artifacts/[id]/archive-snapshot/route.ts",
+      "blob": "037d17b4957610e3909b0f80cb9bdb7abe3a1f20",
+      "verified": true,
+      "bytes": 387,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/cold-snapshot",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/archive/restore/route.ts",
+      "blob": "676acd111dfd7469cca49d0874570f67cfb5ec6a",
+      "verified": true,
+      "bytes": 385,
+      "lines": 8,
+      "imports": [
+        "../../../../../../lib/api-handler",
+        "../../../../../../../../packages/api/storage-control",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/archive/route.ts",
+      "blob": "63830c4b8ba9e299690f53e20556083c1d03b083",
+      "verified": true,
+      "bytes": 365,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/storage-control",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/export/route.ts",
+      "blob": "1886ddce6575dc96e92fcb5dceca5d59b1a32aaf",
+      "verified": true,
+      "bytes": 378,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/artifact-export",
+        "next/server"
+      ],
+      "handlers": [
+        "GET"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/hard-delete/route.ts",
+      "blob": "e5c784d352ed7ea5e5d9e931f6a77cef2764f577",
+      "verified": true,
+      "bytes": 371,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/storage-control",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/restore/route.ts",
+      "blob": "f456e851f33ee0fe7e8f927e0feb880b6e212704",
+      "verified": true,
+      "bytes": 382,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/artifact-restore",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/retention/route.ts",
+      "blob": "98a5854129d5c15bdc58dae7ee20a22dd411d013",
+      "verified": true,
+      "bytes": 381,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/storage-control",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/revisions/route.ts",
+      "blob": "33cf0474c573bff081992fa426832962c2239040",
+      "verified": true,
+      "bytes": 378,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "handlers": [
+        "GET"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/storage-status/route.ts",
+      "blob": "529f926a3c559b16d6f8f50de0d7546022fe0502",
+      "verified": true,
+      "bytes": 376,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/storage-control",
+        "next/server"
+      ],
+      "handlers": [
+        "GET"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/artifacts/route.ts",
+      "blob": "2676eb3fb392773c341ba44345608f6f1402574a",
+      "verified": true,
+      "bytes": 282,
+      "lines": 8,
+      "imports": [
+        "../../../lib/api-handler",
+        "../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "handlers": [
+        "GET"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/audit-logs/export/route.ts",
+      "blob": "a940657c9f34c8734563996b223a0c30d1bdd013",
+      "verified": true,
+      "bytes": 292,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "handlers": [
+        "GET"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/audit-logs/route.ts",
+      "blob": "a3345d844dfff6822b604da5d53f2348a0ab9be8",
+      "verified": true,
+      "bytes": 282,
+      "lines": 8,
+      "imports": [
+        "../../../lib/api-handler",
+        "../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "handlers": [
+        "GET"
+      ],
+      "hits": {}
+    }
+  ]
+}
