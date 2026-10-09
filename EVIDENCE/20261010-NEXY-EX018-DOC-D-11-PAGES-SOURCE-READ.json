@@ -1,0 +1,283 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "source_spec": "DOC-D P10505–P10552 screen identifiers and CTAs",
+  "scope": "11 page TSX modules, S1/S3 same page",
+  "method": "full page fetch + static callable and JSX inventory, NOT browser E2E",
+  "rows": [
+    {
+      "screen": "S1/S3",
+      "path": "apps/web/app/page.tsx",
+      "sha": "a307266a408c46d009b739afa6af684cd911e314",
+      "bytes": 2480,
+      "lines": 69,
+      "import_refs": [
+        "react",
+        "next/navigation",
+        "../components/StatusChip",
+        "../components/DirectiveInput",
+        "../components/ModeTabs",
+        "../components/SystemStateProvider",
+        "../components/TrustExplainer"
+      ],
+      "button_count": 2,
+      "onclick_count": 2,
+      "href_count": 0,
+      "api_endpoints": [],
+      "has_permission_gate": false,
+      "has_loading": false,
+      "has_error": false,
+      "has_freeze": false,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S2",
+      "path": "apps/web/app/login/page.tsx",
+      "sha": "597a6539473e161b4a7217f09c1345270f290719",
+      "bytes": 521,
+      "lines": 16,
+      "import_refs": [
+        "react",
+        "../../components/OtacLoginForm"
+      ],
+      "button_count": 0,
+      "onclick_count": 0,
+      "href_count": 0,
+      "api_endpoints": [],
+      "has_permission_gate": false,
+      "has_loading": false,
+      "has_error": false,
+      "has_freeze": false,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S4",
+      "path": "apps/web/app/directives/new/page.tsx",
+      "sha": "c5131bd3616f6d8aba7fb022570b9b11e848554b",
+      "bytes": 13160,
+      "lines": 256,
+      "import_refs": [
+        "react",
+        "next/navigation",
+        "../../../components/DirectiveInput",
+        "../../../components/LoadingSkeleton",
+        "../../../components/SubmitButton",
+        "../../../lib/csrf",
+        "../../../components/SystemStateProvider",
+        "../../../lib/directive-draft"
+      ],
+      "button_count": 2,
+      "onclick_count": 3,
+      "href_count": 0,
+      "api_endpoints": [
+        "/api/session/me",
+        "/api/artifacts",
+        "/api/directives"
+      ],
+      "has_permission_gate": true,
+      "has_loading": true,
+      "has_error": true,
+      "has_freeze": true,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S5",
+      "path": "apps/web/app/directives/[id]/page.tsx",
+      "sha": "08ab4756adb7ecc2c42fab3882d2560b946c8e8c",
+      "bytes": 6796,
+      "lines": 140,
+      "import_refs": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "../../../components/LoadingSkeleton"
+      ],
+      "button_count": 1,
+      "onclick_count": 1,
+      "href_count": 4,
+      "api_endpoints": [
+        "/api/directives/"
+      ],
+      "has_permission_gate": false,
+      "has_loading": true,
+      "has_error": true,
+      "has_freeze": false,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S6",
+      "path": "apps/web/app/runs/[id]/page.tsx",
+      "sha": "6f954de45fa8f6543f83b6f4d8d0ce5d543849db",
+      "bytes": 4923,
+      "lines": 115,
+      "import_refs": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "../../../components/StatusChip",
+        "../../../components/LoadingSkeleton",
+        "../../../components/PermissionGate"
+      ],
+      "button_count": 0,
+      "onclick_count": 0,
+      "href_count": 3,
+      "api_endpoints": [
+        "/api/runs/",
+        "/api/incidents/"
+      ],
+      "has_permission_gate": true,
+      "has_loading": true,
+      "has_error": true,
+      "has_freeze": true,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S7",
+      "path": "apps/web/app/incidents/[id]/page.tsx",
+      "sha": "d2d23f97cc9400e99d1ed3c5f4fa6e336e594262",
+      "bytes": 2887,
+      "lines": 71,
+      "import_refs": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "../../../components/PermissionGate",
+        "../../../components/IncidentCard",
+        "../../../components/LoadingSkeleton"
+      ],
+      "button_count": 0,
+      "onclick_count": 0,
+      "href_count": 2,
+      "api_endpoints": [
+        "/api/incidents/"
+      ],
+      "has_permission_gate": true,
+      "has_loading": true,
+      "has_error": true,
+      "has_freeze": true,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S8",
+      "path": "apps/web/app/vault/page.tsx",
+      "sha": "ce6eb1133f5692e5c8fee764499227a727b704be",
+      "bytes": 2195,
+      "lines": 55,
+      "import_refs": [
+        "react",
+        "next/link",
+        "../../components/VaultArtifactCard",
+        "../../components/LoadingSkeleton"
+      ],
+      "button_count": 0,
+      "onclick_count": 0,
+      "href_count": 2,
+      "api_endpoints": [
+        "/api/artifacts"
+      ],
+      "has_permission_gate": false,
+      "has_loading": true,
+      "has_error": true,
+      "has_freeze": false,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S9",
+      "path": "apps/web/app/vault/[id]/page.tsx",
+      "sha": "b041b4dca1ebb088a0a84c198bda432c2ed635a5",
+      "bytes": 5549,
+      "lines": 142,
+      "import_refs": [
+        "react",
+        "next/navigation",
+        "../../../lib/csrf",
+        "../../../components/LoadingSkeleton",
+        "../../../components/RevisionTable",
+        "../../../components/EmptyStateCard"
+      ],
+      "button_count": 2,
+      "onclick_count": 2,
+      "href_count": 2,
+      "api_endpoints": [
+        "/api/artifacts/"
+      ],
+      "has_permission_gate": false,
+      "has_loading": true,
+      "has_error": true,
+      "has_freeze": false,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S10",
+      "path": "apps/web/app/audit/page.tsx",
+      "sha": "506f58e6e0ee01667ff09926be4958705f65d92e",
+      "bytes": 4716,
+      "lines": 141,
+      "import_refs": [
+        "react",
+        "../../components/AuditTable",
+        "../../components/LoadingSkeleton"
+      ],
+      "button_count": 1,
+      "onclick_count": 1,
+      "href_count": 2,
+      "api_endpoints": [
+        "/api/audit-logs",
+        "/api/audit-logs/export?limit"
+      ],
+      "has_permission_gate": false,
+      "has_loading": true,
+      "has_error": true,
+      "has_freeze": false,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S11",
+      "path": "apps/web/app/owner/page.tsx",
+      "sha": "0e21af99beaec63b5e5f87fbc7f6fc5db0dfcdb9",
+      "bytes": 20101,
+      "lines": 571,
+      "import_refs": [
+        "react",
+        "next/link",
+        "../../components/PermissionGate",
+        "../../components/OwnerActionBar",
+        "../../lib/csrf"
+      ],
+      "button_count": 7,
+      "onclick_count": 7,
+      "href_count": 4,
+      "api_endpoints": [
+        "/api/runs/",
+        "/api/auth/logout",
+        "/api/audit-logs/export?limit",
+        "/api/users/",
+        "/api/artifacts/"
+      ],
+      "has_permission_gate": true,
+      "has_loading": false,
+      "has_error": true,
+      "has_freeze": true,
+      "has_unimplemented": false
+    },
+    {
+      "screen": "S12",
+      "path": "apps/web/app/unknown/page.tsx",
+      "sha": "3b0bbe3afe24340f73c6603386322dec4fb413b5",
+      "bytes": 2192,
+      "lines": 61,
+      "import_refs": [
+        "react",
+        "../../components/SystemStateProvider"
+      ],
+      "button_count": 2,
+      "onclick_count": 2,
+      "href_count": 0,
+      "api_endpoints": [],
+      "has_permission_gate": false,
+      "has_loading": false,
+      "has_error": false,
+      "has_freeze": false,
+      "has_unimplemented": false
+    }
+  ]
+}
