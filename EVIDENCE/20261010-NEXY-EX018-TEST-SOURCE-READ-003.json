@@ -1,0 +1,195 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    24,
+    36
+  ],
+  "total": 248,
+  "scope": "complete file reads, static test metadata only, NOT execution",
+  "rows": [
+    {
+      "path": "tests/contract/core-kernel-rust.test.ts",
+      "sha": "db615351a8d128b65d3184d0e2acc16ae0f2ae5b",
+      "verified": true,
+      "lines": 43,
+      "size": 1094,
+      "tests": 1,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:child_process",
+        "node:url",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/core-kernel-tier-depth-compile.test.ts",
+      "sha": "f7e38f02d835ed851e8947601348ede68c36c25e",
+      "verified": true,
+      "lines": 98,
+      "size": 2654,
+      "tests": 4,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:child_process",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/core-kernel-vnext-parity.test.ts",
+      "sha": "a391b2029fc13c3e38a9037c8adf3f10638f0086",
+      "verified": true,
+      "lines": 126,
+      "size": 3583,
+      "tests": 5,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "vitest",
+        "../../packages/core/vnext-state-matrix.js"
+      ]
+    },
+    {
+      "path": "tests/contract/current-head-attestation.test.ts",
+      "sha": "7dc56deef21feef48a273d38bb2ab5c858379454",
+      "verified": true,
+      "lines": 70,
+      "size": 3376,
+      "tests": 5,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:child_process",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/determinism-boundary.test.ts",
+      "sha": "85c1012b940a0ec75dd9f1fb62440be4da436092",
+      "verified": true,
+      "lines": 72,
+      "size": 2662,
+      "tests": 10,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "node:path",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/directive-draft.test.ts",
+      "sha": "d69839860cf720d13e66ca7d102f2846460e890e",
+      "verified": true,
+      "lines": 63,
+      "size": 1794,
+      "tests": 3,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "vitest",
+        "../../apps/web/lib/directive-draft"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-d-actions.test.ts",
+      "sha": "0f14af6be521d2fc3ac86a57af1c5614300d8d76",
+      "verified": true,
+      "lines": 44,
+      "size": 2158,
+      "tests": 1,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-d-component-inventory.test.ts",
+      "sha": "ca5e90045b94662641624a846055be842cec2454",
+      "verified": true,
+      "lines": 72,
+      "size": 2375,
+      "tests": 3,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-d-validation-copy.test.ts",
+      "sha": "d71b0bd83db2906a0502abbb1bf21ca588988998",
+      "verified": true,
+      "lines": 25,
+      "size": 1030,
+      "tests": 2,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-api-schema-snapshot.test.ts",
+      "sha": "c2be0c77f3de7a4cdb11f9d18ba4941539c7859d",
+      "verified": true,
+      "lines": 96,
+      "size": 3305,
+      "tests": 8,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "vitest",
+        "../../packages/validation/api.schema.js",
+        "../../packages/contracts/directive.js",
+        "../../scripts/doc-e/api-schema-snapshot.js",
+        "zod"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-campaign-runner.test.ts",
+      "sha": "7e9b35cbcc80b444482a1ac591c4c28e8068dd24",
+      "verified": true,
+      "lines": 153,
+      "size": 6539,
+      "tests": 14,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "../../scripts/doc-e/run-campaign.js",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-e1-aggregate.test.ts",
+      "sha": "3f89b21bbfb4d755ea03ad7fcf20f5c12dfd5e6a",
+      "verified": true,
+      "lines": 166,
+      "size": 5278,
+      "tests": 6,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "../../packages/contracts/doc-e-evidence.js",
+        "../../scripts/doc-e/aggregate-evidence.js"
+      ]
+    }
+  ]
+}
