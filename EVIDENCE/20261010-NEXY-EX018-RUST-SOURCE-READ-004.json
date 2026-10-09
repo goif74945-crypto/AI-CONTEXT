@@ -1,0 +1,305 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "total": 41,
+  "range": [
+    30,
+    41
+  ],
+  "mode": "read original Rust code, no cargo execution",
+  "rows": [
+    {
+      "p": "core-kernel/src/kernel/vnext_matrix.rs",
+      "sha": "c55e13839f2bed01a29749f226edef82d1929a4a",
+      "verified": true,
+      "bytes": 30183,
+      "lines": 793,
+      "pub": [
+        "VNextState",
+        "VNextEvent",
+        "VNextActor",
+        "TransitionError",
+        "vnext_transition",
+        "VNextErrorCode",
+        "RecoveryDecision",
+        "RecoveryMandate",
+        "validate_freeze_recovery",
+        "ReleaseCandidate",
+        "ReleaseVerdict",
+        "evaluate_release"
+      ],
+      "hits": {
+        "panic": [
+          719
+        ],
+        "unwrap": [
+          510,
+          511,
+          512,
+          513,
+          514
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/lib.rs",
+      "sha": "eb427f860b43edb784231efd9b349558959ee106",
+      "verified": true,
+      "bytes": 1959,
+      "lines": 53,
+      "pub": [],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/memory.rs",
+      "sha": "313f529d255153554f4a194e239c936c8af9ceff",
+      "verified": true,
+      "bytes": 17093,
+      "lines": 531,
+      "pub": [
+        "MemoryFault",
+        "MemEntry",
+        "as_str",
+        "StmView",
+        "len",
+        "is_empty",
+        "ShortTermMemory",
+        "new",
+        "add_memory",
+        "get_all",
+        "WorkingMemory",
+        "new",
+        "set_context",
+        "context_value_hash",
+        "replace_context_with_proof",
+        "get_context",
+        "VerifiedMemoryEntry",
+        "key",
+        "value",
+        "VerifiedMemory",
+        "new",
+        "append_verified",
+        "latest_entry",
+        "len",
+        "ExperimentalMemoryEntry",
+        "key",
+        "value",
+        "ExperimentalMemory",
+        "new",
+        "append",
+        "decay_all",
+        "get",
+        "len"
+      ],
+      "hits": {
+        "unwrap": [
+          450,
+          460,
+          465,
+          468,
+          475,
+          488,
+          495,
+          497,
+          498,
+          512,
+          514,
+          515
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/storage/durable_integrity.rs",
+      "sha": "11ea196b2dc1d70ddd945328d22818e7706a49cf",
+      "verified": true,
+      "bytes": 29360,
+      "lines": 710,
+      "pub": [
+        "StorageError",
+        "IntegrityError",
+        "sha256",
+        "hash_hex",
+        "WalRecord",
+        "new",
+        "canonical_bytes",
+        "validate",
+        "state_hash",
+        "frame",
+        "decode_frame",
+        "decode_wal_frames",
+        "WalDecodePrefix",
+        "decode_wal_frames_recoverable_tail",
+        "WalSink",
+        "DurableWal",
+        "new",
+        "tail_hash",
+        "sink",
+        "append",
+        "into_sink",
+        "segment_filename",
+        "replay_wal_ordered",
+        "SnapshotManifest",
+        "new",
+        "validate",
+        "encoded_hash",
+        "SnapshotBackend",
+        "SnapshotStore",
+        "new",
+        "commit",
+        "load_active",
+        "into_backend",
+        "CompactionAnchor",
+        "authorize",
+        "is_valid",
+        "authorize_compaction"
+      ],
+      "hits": {
+        "unwrap": [
+          598,
+          599,
+          601,
+          702,
+          703,
+          704,
+          705
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/storage/io_law.rs",
+      "sha": "2c7491996f5698800cec98d49c163ee9f706ab33",
+      "verified": true,
+      "bytes": 7926,
+      "lines": 210,
+      "pub": [
+        "IoVerdict",
+        "classify_read",
+        "IoErrorLatch",
+        "is_faulted",
+        "trip",
+        "enforce_read",
+        "guard_mutation"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/storage/mod.rs",
+      "sha": "f2551818ef510d6edcf36c129f9ebea6afbe01ce",
+      "verified": true,
+      "bytes": 63,
+      "lines": 4,
+      "pub": [],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/storage/shadow_wal.rs",
+      "sha": "9b139e19d3685db00a35dcc05d81941ad3ada1a7",
+      "verified": true,
+      "bytes": 34018,
+      "lines": 859,
+      "pub": [
+        "ShadowWal",
+        "open",
+        "open_with_sequence",
+        "append",
+        "scrub_buffer",
+        "WalScanSummary",
+        "WalScanError",
+        "WalPhysicalRecovery",
+        "scan_wal_bytes",
+        "recoverable_wal_physical_prefix",
+        "physical_len_for_payload_prefix",
+        "extract_wal_payload_stream"
+      ],
+      "hits": {
+        "unsafe": [
+          117,
+          123,
+          129,
+          174,
+          186,
+          189,
+          195,
+          207,
+          233,
+          267,
+          273,
+          298,
+          305,
+          834,
+          836,
+          842,
+          844,
+          850
+        ],
+        "panic": [
+          139
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/tests/l1o_authoritative.rs",
+      "sha": "38276957d2cbce446c5b8ddaf2c8ea1a95ac16f4",
+      "verified": true,
+      "bytes": 7033,
+      "lines": 240,
+      "pub": [],
+      "hits": {
+        "unwrap": [
+          60,
+          63,
+          154
+        ]
+      }
+    },
+    {
+      "p": "nexy-daemon/src/main.rs",
+      "sha": "2a965339e215d2ee9c93e98048927ef431d78804",
+      "verified": true,
+      "bytes": 53371,
+      "lines": 1306,
+      "pub": [
+        "AttestationAnchor",
+        "AttestationVerdict",
+        "probe_tpm_hint",
+        "compute_microcode_hash",
+        "compute_firmware_hash",
+        "read_attestation_anchor",
+        "verify_attestation"
+      ],
+      "hits": {
+        "panic": [
+          1116
+        ],
+        "unwrap": [
+          908,
+          909,
+          910
+        ]
+      }
+    },
+    {
+      "p": "packages/core-binding/build.rs",
+      "sha": "9fc236788932b315126703962085b45ee88c802a",
+      "verified": true,
+      "bytes": 65,
+      "lines": 6,
+      "pub": [],
+      "hits": {}
+    },
+    {
+      "p": "packages/core-binding/src/lib.rs",
+      "sha": "414373277b877f76217c794c9fbc4bdb0b8a76ab",
+      "verified": true,
+      "bytes": 8916,
+      "lines": 223,
+      "pub": [
+        "ParseResult",
+        "AtomicParseResult",
+        "parse_and_enforce",
+        "parse_and_enforce_atomic",
+        "query_fsm_state"
+      ],
+      "hits": {}
+    }
+  ]
+}
