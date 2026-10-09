@@ -1,0 +1,158 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "total": 41,
+  "range": [
+    0,
+    10
+  ],
+  "mode": "full Rust source reading+static scan, cargo unavailable, NOT Rust test",
+  "rows": [
+    {
+      "p": "core-kernel/build.rs",
+      "sha": "63fc3061acf0a82dd52d5dcc88837a23567fc30d",
+      "verified": true,
+      "bytes": 3855,
+      "lines": 113,
+      "pub_symbols": [],
+      "hits": {
+        "panic": [
+          25,
+          45,
+          57,
+          68
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/allocator_identity.rs",
+      "sha": "bc2bdcc513e691d68b92b13f9352daf5725545aa",
+      "verified": true,
+      "bytes": 190,
+      "lines": 5,
+      "pub_symbols": [],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/allocator.rs",
+      "sha": "97e42811668962f86657024a0a17fe03cae170a2",
+      "verified": true,
+      "bytes": 3204,
+      "lines": 82,
+      "pub_symbols": [
+        "BumpAllocator"
+      ],
+      "hits": {
+        "unsafe": [
+          54
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/api/mod.rs",
+      "sha": "18af1f05323068d091852f9b43dbb1d718565b4f",
+      "verified": true,
+      "bytes": 732,
+      "lines": 18,
+      "pub_symbols": [],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/api/payload_parser.rs",
+      "sha": "10593ea2cd6506b934656baaf07118d83387c1e0",
+      "verified": true,
+      "bytes": 36097,
+      "lines": 917,
+      "pub_symbols": [
+        "T10Accumulator",
+        "update",
+        "ParseError",
+        "ParsedDirective",
+        "PayloadParser",
+        "enforcer_mut",
+        "parse_and_enforce",
+        "build_frame"
+      ],
+      "hits": {
+        "unsafe": [
+          246
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/arch_lock.rs",
+      "sha": "ebad421916f7e6280490a024aa4e61f2f08adc7b",
+      "verified": true,
+      "bytes": 2432,
+      "lines": 63,
+      "pub_symbols": [
+        "check_target"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/auth/email_gate.rs",
+      "sha": "a8099f5a21c5cc483c8d04e98f050cff5184749c",
+      "verified": true,
+      "bytes": 20245,
+      "lines": 529,
+      "pub_symbols": [
+        "AuthResult",
+        "ZeroTrustGate",
+        "request_otac",
+        "verify"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/auth/gatekeeper.rs",
+      "sha": "1a50ac5c37ba903ee94e63e8aee59108c561f0af",
+      "verified": true,
+      "bytes": 14863,
+      "lines": 439,
+      "pub_symbols": [
+        "advance_tick",
+        "current_tick",
+        "Otac",
+        "is_expired",
+        "Gatekeeper",
+        "issue",
+        "validate"
+      ],
+      "hits": {
+        "unsafe": [
+          170
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/auth/mod.rs",
+      "sha": "6fe54218dfe4229b155bf2323f2b34dcf4469ed5",
+      "verified": true,
+      "bytes": 40,
+      "lines": 3,
+      "pub_symbols": [],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/engine/cirl.rs",
+      "sha": "b3a2e2116226e450a2d8741e779d41ede82da1ca",
+      "verified": true,
+      "bytes": 7031,
+      "lines": 228,
+      "pub_symbols": [
+        "ContextIntent",
+        "ContextRiskLevel",
+        "ContextResolution",
+        "ContextIntentResolution",
+        "ContextIntentResolver",
+        "resolve"
+      ],
+      "hits": {
+        "unwrap": [
+          213,
+          222
+        ]
+      }
+    }
+  ]
+}
