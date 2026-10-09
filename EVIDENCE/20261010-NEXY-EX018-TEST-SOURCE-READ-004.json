@@ -1,0 +1,190 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    36,
+    48
+  ],
+  "total": 248,
+  "scope": "complete file reads, static test metadata only, NOT execution",
+  "rows": [
+    {
+      "path": "tests/contract/doc-e-e10-e12-external-gates.test.ts",
+      "sha": "717fc2e6472749eaa7b80fbef99be45eb801f224",
+      "verified": true,
+      "lines": 174,
+      "size": 5995,
+      "tests": 9,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "vitest",
+        "../../scripts/doc-e/e10-runbook-validate.js",
+        "../../scripts/doc-e/e11-signoff-verify.js",
+        "../../scripts/doc-e/e12-rollback-verify.js"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-e2-evidence.test.ts",
+      "sha": "0edd1f973f01ba87948e2cfcd365a24b7e462e42",
+      "verified": true,
+      "lines": 36,
+      "size": 1132,
+      "tests": 2,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "vitest",
+        "../../scripts/doc-e/e2-api-schema-evidence.js"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-e3-migration-roundtrip.test.ts",
+      "sha": "ea83d33c0d67c1a1982cb870d9c2a3fa4e7f3f26",
+      "verified": true,
+      "lines": 50,
+      "size": 1860,
+      "tests": 3,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "vitest",
+        "../../scripts/doc-e/e3-migration-roundtrip.js"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-e7-e8-evidence.test.ts",
+      "sha": "c06f20e688fd3b8709eaf2e333d1f772b26283d1",
+      "verified": true,
+      "lines": 96,
+      "size": 3005,
+      "tests": 5,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "vitest",
+        "../../scripts/doc-e/e7-queue-evidence.js",
+        "../../scripts/doc-e/e8-observability-evidence.js"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-e7-fixture.test.ts",
+      "sha": "a98b97b6284544bccb8e5843741a23d6ea97c687",
+      "verified": true,
+      "lines": 37,
+      "size": 1760,
+      "tests": 4,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "vitest",
+        "../packages/core/ulid.ts"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-e8-provider-log-drill.test.ts",
+      "sha": "d8295ce7eecb013271c7340c7a437c9d9cf4c7db",
+      "verified": true,
+      "lines": 16,
+      "size": 701,
+      "tests": 1,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-e9-diagnostics.test.ts",
+      "sha": "2ea5cb390154191341b457e6c1ada01c1485508c",
+      "verified": true,
+      "lines": 25,
+      "size": 809,
+      "tests": 2,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-e9-evidence.test.ts",
+      "sha": "e24db2a934413784f662c930b6883808f3972da3",
+      "verified": true,
+      "lines": 35,
+      "size": 1106,
+      "tests": 2,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "vitest",
+        "../../scripts/doc-e/e9-incident-evidence.js"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-e9-incident-lifecycle.test.ts",
+      "sha": "114972c7d87f3693ef5a493e55c68ba6300a22d1",
+      "verified": true,
+      "lines": 50,
+      "size": 1854,
+      "tests": 5,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-evidence.test.ts",
+      "sha": "542c4b3fdb5e454ea1b18edc7ff970b091ae8f96",
+      "verified": true,
+      "lines": 233,
+      "size": 8671,
+      "tests": 9,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "node:os",
+        "node:path",
+        "../../scripts/doc-e/aggregate-evidence.js",
+        "vitest",
+        "../../packages/contracts/doc-e-evidence.js"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-external-blockers.test.ts",
+      "sha": "4590da539418479a8be6d1e35d35f9a36a039572",
+      "verified": true,
+      "lines": 41,
+      "size": 1475,
+      "tests": 2,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "vitest",
+        "../../scripts/doc-e/e11-signoff-verify.js",
+        "../../scripts/doc-e/e12-rollback-verify.js"
+      ]
+    },
+    {
+      "path": "tests/contract/doc-e-railway-runtime-entrypoint.test.ts",
+      "sha": "eaffdb852d4c9bbbe5b997eb6c1aa4d6b9c764d2",
+      "verified": true,
+      "lines": 75,
+      "size": 3213,
+      "tests": 8,
+      "mocks": 0,
+      "skip": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    }
+  ]
+}
