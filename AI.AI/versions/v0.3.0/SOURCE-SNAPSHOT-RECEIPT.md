@@ -1,0 +1,12 @@
+# AI.AI v0.3.0 | FULL SOURCE SNAPSHOT RECEIPT
+- Storage: `AI.AI/versions/v0.3.0/source/FULL-SOURCE-ARCHIVE.md`
+- Storage format: Base64-encoded ZIP containing exact tracked source tree (excluding .git history).
+- Complete source files in archive: **31**.
+- Decoded ZIP SHA256: `0d3d2af7788d3bb509fed804ff8133739ec21c4e0ee98b4e9f16d673c22ce0ea`
+- Verified remote Git blob SHA: `f0cbc92cdde3f1fa8fdb43bcd73e8459c55033a5`.
+- Verification: downloaded read-back text from GitHub matched the entire original Base64 payload exactly; decoded local source-only ZIP passed ZIP CRC and SHA256 checks.
+- Restorer: [../../tools/decode_snapshots.py](../../tools/decode_snapshots.py). The tool verifies SHA256 and file paths, creates a new directory only, rejects overwrites and protected folders.
+- Truth: **REMOTE_ARCHIVED_SOURCE_COMPLETE**. This means all source files are present inside the archive blob stored on GitHub, not that each source file is separately browsable or that product deployments work.
+- Original version README may still say INCOMPLETE, reflecting its pre-upload timestamp. This new receipt supersedes only that availability flag.
+- NEVER mutate any directory named `โค้ดโปรเจคปัจจุบัน` (authoritative constitution).
+- Add new version proposals as separate append-only files without modifying others.
