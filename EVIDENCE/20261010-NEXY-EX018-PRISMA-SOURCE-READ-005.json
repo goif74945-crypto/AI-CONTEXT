@@ -1,0 +1,181 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "total": 57,
+  "range": [
+    48,
+    57
+  ],
+  "method": "full SQL/Prisma source reads; flags require context; NOT migration runtime rollback validation",
+  "rows": [
+    {
+      "path": "prisma/migrations/20261003131000_lo2_ledger_anchor/migration.down.sql",
+      "sha": "79d8546048b28ccb88eb8965d99bc46456b9981b",
+      "verified": true,
+      "bytes": 261,
+      "lines": 6,
+      "hits": {
+        "drop_table": [
+          5
+        ]
+      },
+      "noncommentLines": 4
+    },
+    {
+      "path": "prisma/migrations/20261003131000_lo2_ledger_anchor/migration.sql",
+      "sha": "a287e75a712b0f2e982118ec16bbc5840f790d8d",
+      "verified": true,
+      "bytes": 757,
+      "lines": 24,
+      "hits": {
+        "unique": [
+          16
+        ],
+        "index": [
+          16,
+          19,
+          22
+        ]
+      },
+      "noncommentLines": 15
+    },
+    {
+      "path": "prisma/migrations/20261003132500_observability_role_incident_link/migration.down.sql",
+      "sha": "c1462e56c22d53851d08631cd5928ce384058147",
+      "verified": true,
+      "bytes": 363,
+      "lines": 12,
+      "hits": {
+        "drop_column": [
+          7,
+          10,
+          11
+        ]
+      },
+      "noncommentLines": 8
+    },
+    {
+      "path": "prisma/migrations/20261003132500_observability_role_incident_link/migration.sql",
+      "sha": "3887a52487cb42c50b30a4831f2541f1a4f7e646",
+      "verified": true,
+      "bytes": 583,
+      "lines": 9,
+      "hits": {
+        "index": [
+          6,
+          7,
+          8
+        ]
+      },
+      "noncommentLines": 6
+    },
+    {
+      "path": "prisma/migrations/20261003150000_logic_quantum_rule_unique/migration.down.sql",
+      "sha": "2dee2b874139acc390411d64ae7075aa243cef25",
+      "verified": true,
+      "bytes": 109,
+      "lines": 3,
+      "hits": {
+        "unique": [
+          1
+        ]
+      },
+      "noncommentLines": 1
+    },
+    {
+      "path": "prisma/migrations/20261003150000_logic_quantum_rule_unique/migration.sql",
+      "sha": "928bb448c7bb984d2709821fa404b66fb9c9e930",
+      "verified": true,
+      "bytes": 1601,
+      "lines": 53,
+      "hits": {
+        "unique": [
+          1,
+          3,
+          4,
+          46,
+          49
+        ],
+        "index": [
+          4,
+          49
+        ],
+        "transaction": [
+          14
+        ]
+      },
+      "noncommentLines": 46
+    },
+    {
+      "path": "prisma/migrations/20261003160000_logic_quantum_confidence_numeric/migration.down.sql",
+      "sha": "9bc713aaa8762dca6270c75a45c33a830d857305",
+      "verified": true,
+      "bytes": 248,
+      "lines": 6,
+      "hits": {},
+      "noncommentLines": 3
+    },
+    {
+      "path": "prisma/migrations/20261003160000_logic_quantum_confidence_numeric/migration.sql",
+      "sha": "10a59d6eb608675f497e87b59aa9c6ec9124535f",
+      "verified": true,
+      "bytes": 312,
+      "lines": 7,
+      "hits": {},
+      "noncommentLines": 3
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha": "be1cbe1481829a2c95b6599929abc86829f37667",
+      "verified": true,
+      "bytes": 51223,
+      "lines": 1304,
+      "hits": {
+        "unique": [
+          107,
+          124,
+          159,
+          180,
+          210,
+          231,
+          288,
+          477,
+          498,
+          514,
+          523,
+          602,
+          636,
+          837,
+          854,
+          855,
+          905,
+          906,
+          1067,
+          1076,
+          1079,
+          1107,
+          1119,
+          1142,
+          1161,
+          1250,
+          1255,
+          1266,
+          1267,
+          1268,
+          1289
+        ],
+        "transaction": [
+          330,
+          416,
+          421,
+          426,
+          495,
+          505,
+          507,
+          517,
+          530
+        ]
+      },
+      "noncommentLines": 1112
+    }
+  ]
+}
