@@ -1,0 +1,206 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    12,
+    24
+  ],
+  "total": 99,
+  "scope": "web source content read/index; not interactive acceptance",
+  "rows": [
+    {
+      "path": "apps/web/app/api/auth/logout/route.ts",
+      "blob": "b154cdcf5b4bc56ffbc38fb7cb7047b1745eada9",
+      "verified": true,
+      "bytes": 278,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/auth",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/auth/me/route.ts",
+      "blob": "7cd33f322e185485e386e431e5bd5a970f3374c0",
+      "verified": true,
+      "bytes": 283,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/auth",
+        "next/server"
+      ],
+      "handlers": [
+        "GET"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/auth/owner-recovery/csrf/route.ts",
+      "blob": "05697140f9c942f4ad45ee0c4333cf34daffd36d",
+      "verified": true,
+      "bytes": 315,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/owner-recovery",
+        "next/server"
+      ],
+      "handlers": [
+        "GET"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/auth/owner-recovery/route.ts",
+      "blob": "b4ed89b7cadba43dc5a765fe6d20354ca15e3f65",
+      "verified": true,
+      "bytes": 316,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/owner-recovery",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/auth/request-otac/route.ts",
+      "blob": "ef7cbefc3cf339ab0b387a6ccf1f8de77038e5be",
+      "verified": true,
+      "bytes": 288,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/auth",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/auth/verify-otac/route.ts",
+      "blob": "ca62df87060264c279316c9e06b340d9a8ee6aa3",
+      "verified": true,
+      "bytes": 286,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/auth",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/config/rollback/route.ts",
+      "blob": "f64b98f34d343e8e8590436585f7632b9aef1a20",
+      "verified": true,
+      "bytes": 315,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/live-config",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/config/route.ts",
+      "blob": "2ce97d0ee3f13b00ea51b759b5462578c86ddbc3",
+      "verified": true,
+      "bytes": 444,
+      "lines": 15,
+      "imports": [
+        "../../../lib/api-handler",
+        "../../../../../packages/api/live-config",
+        "next/server"
+      ],
+      "handlers": [
+        "GET",
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/dialog/route.ts",
+      "blob": "fb92c9b449e3cc73663cf78936615e9374c34746",
+      "verified": true,
+      "bytes": 274,
+      "lines": 8,
+      "imports": [
+        "next/server",
+        "../../../../../packages/api/dialog",
+        "../../../lib/api-handler"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/directives/[id]/route.ts",
+      "blob": "e81c14e0f38f6d94b4dc91f84dfd4336e10ce087",
+      "verified": true,
+      "bytes": 363,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/directives",
+        "next/server"
+      ],
+      "handlers": [
+        "GET"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/directives/route.ts",
+      "blob": "ba3fd8432902ad7c707767b97998b42b0db3d339",
+      "verified": true,
+      "bytes": 482,
+      "lines": 13,
+      "imports": [
+        "../../../lib/api-handler",
+        "../../../../../packages/api/directives",
+        "../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "handlers": [
+        "POST",
+        "GET"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/freeze/recover/route.ts",
+      "blob": "9496923925bec9270706fe86cf7095926931a7ee",
+      "verified": true,
+      "bytes": 298,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/directives",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    }
+  ]
+}
