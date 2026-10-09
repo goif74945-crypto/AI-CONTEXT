@@ -1,0 +1,256 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    84,
+    96
+  ],
+  "total": 103,
+  "mode": "GitHub full content read + static index not runtime certification",
+  "rows": [
+    {
+      "p": "packages/swarm/__tests__/adapters-use-canonical-keys.test.ts",
+      "sha": "368422ba8e8ef6581f3c057cda95728c75b780a2",
+      "verified": true,
+      "size": 1259,
+      "lines": 35,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "node:path",
+        "node:url"
+      ],
+      "exports": [],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/adapters/anthropic.ts",
+      "sha": "7bf6a5191ce8f79f9b94701e36359acbc75731f6",
+      "verified": true,
+      "size": 1601,
+      "lines": 47,
+      "imports": [
+        "./types.js",
+        "./base.js",
+        "../agent-response.js"
+      ],
+      "exports": [
+        "createAnthropicAdapter"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/adapters/base.ts",
+      "sha": "d9d0e341a7d276ce2ee573073ded7799cb757f81",
+      "verified": true,
+      "size": 4046,
+      "lines": 126,
+      "imports": [
+        "../../api/vnext-config.js",
+        "../../contracts/directive.js",
+        "../pipeline.js",
+        "../agent-response.js",
+        "./types.js"
+      ],
+      "exports": [
+        "NEXY_AGENT_MAX_CONTEXT",
+        "NEXY_AGENT_MODES",
+        "ProviderDefinition",
+        "createCanonicalAgentAdapter"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/adapters/contract.ts",
+      "sha": "c5a99e1012097298c8d174f656d53fa661bab424",
+      "verified": true,
+      "size": 2195,
+      "lines": 65,
+      "imports": [
+        "./types.js"
+      ],
+      "exports": [
+        "assertAgentAdapter",
+        "assertRuntimeAgentAdapter"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/adapters/gemini.ts",
+      "sha": "80524c8a69d6a0ecc5a4a7bbba51a8d55eeda6f4",
+      "verified": true,
+      "size": 1584,
+      "lines": 44,
+      "imports": [
+        "./types.js",
+        "./base.js",
+        "../agent-response.js"
+      ],
+      "exports": [
+        "createGeminiAdapter"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/adapters/index.ts",
+      "sha": "2d844906ab07d77218abbe5fb66bc62da33b8c8f",
+      "verified": true,
+      "size": 555,
+      "lines": 16,
+      "imports": [
+        "./types.js",
+        "./contract.js",
+        "./base.js",
+        "./openai.js",
+        "./anthropic.js",
+        "./gemini.js"
+      ],
+      "exports": [],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/adapters/openai.ts",
+      "sha": "ad9bf286402f9b3fa942e316cff28d56e6563c17",
+      "verified": true,
+      "size": 1530,
+      "lines": 43,
+      "imports": [
+        "./types.js",
+        "./base.js",
+        "../agent-response.js"
+      ],
+      "exports": [
+        "createOpenAIAdapter"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/adapters/operational-clock.ts",
+      "sha": "a625a6d0e35dbdf6beaace4f28c0d3b18488a2ea",
+      "verified": true,
+      "size": 417,
+      "lines": 11,
+      "imports": [],
+      "exports": [
+        "MonotonicNowMs",
+        "systemMonotonicNowMs"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/adapters/types.ts",
+      "sha": "30e5129a0b8ec2674f75ff3056ea0bf848814c82",
+      "verified": true,
+      "size": 1957,
+      "lines": 62,
+      "imports": [
+        "../../contracts/directive.js",
+        "../../contracts/evidence.js",
+        "../pipeline.js"
+      ],
+      "exports": [
+        "AgentMode",
+        "AgentHealthClassification",
+        "AgentHealth",
+        "AgentExecuteResult",
+        "AgentAdapter",
+        "RuntimeAgentAdapter",
+        "AgentAdapterOptions"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/agent-response.ts",
+      "sha": "19e0c479981e524389a974a8f4493925bd3122f3",
+      "verified": true,
+      "size": 3657,
+      "lines": 111,
+      "imports": [
+        "node:crypto",
+        "../contracts/evidence.js",
+        "./pipeline.js"
+      ],
+      "exports": [
+        "parseAgentResponse",
+        "structuredResponseInstruction"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/swarm/pipeline.ts",
+      "sha": "b6bfadfb473b675928fa8df476b2180ac749e335",
+      "verified": true,
+      "size": 54930,
+      "lines": 1393,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/tick.js",
+        "../api/vnext-config.js",
+        "../contracts/evidence.js",
+        "../contracts/errors.js",
+        "../core/db.js",
+        "../secrets/provider.js",
+        "../core/ulid.js",
+        "./adapters/index.js",
+        "./adapters/contract.js",
+        "../intelligence/irl.js",
+        "../intelligence/cirl.js",
+        "../intelligence/dsl.js",
+        "../intelligence/rsel.js",
+        "../intelligence/ecl.js",
+        "../intelligence/cle.js",
+        "../intelligence/trinity.js",
+        "../intelligence/certainty.js",
+        "../config/runtime-config.js",
+        "../contracts/runtime-config.js",
+        "../lo3/prompt-law-filter.js",
+        "./adapters/operational-clock.js",
+        "./adapters/operational-clock.js"
+      ],
+      "exports": [
+        "TRUST_DECAY",
+        "AgentProposal",
+        "assertAgentProposal",
+        "SwarmInput",
+        "SwarmReleaseMetrics",
+        "SwarmOutput",
+        "SwarmAgent",
+        "SwarmFreezeError",
+        "SecuredSwarmInput",
+        "secureSwarmInput",
+        "SwarmCancellationError",
+        "TrustLedger",
+        "ContextShardingEngine",
+        "withTimeout",
+        "DeadlineBudget",
+        "withAbortableTimeout",
+        "decayTrust",
+        "decompose",
+        "parallelDebate",
+        "ADVERSARIAL_MIN_ROUNDS",
+        "ADVERSARIAL_MAX_ROUNDS",
+        "adversarialReview",
+        "crossVerify",
+        "consensusEvaluation",
+        "emitOrFreeze",
+        "createLawPassTestAgents",
+        "runSwarmPipeline"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/validation/__tests__/contract.test.ts",
+      "sha": "000dad934030b53359f4bfe3e9ae864d663d0499",
+      "verified": true,
+      "size": 3307,
+      "lines": 82,
+      "imports": [
+        "vitest",
+        "../api.schema.js",
+        "../../contracts/directive.js"
+      ],
+      "exports": [],
+      "hits": {}
+    }
+  ]
+}
