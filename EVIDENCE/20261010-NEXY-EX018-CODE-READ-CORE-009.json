@@ -1,0 +1,141 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    96,
+    103
+  ],
+  "total": 103,
+  "mode": "GitHub full content read + static index not runtime certification",
+  "rows": [
+    {
+      "p": "packages/validation/api.schema.ts",
+      "sha": "80f84302ae07746a7d56b92dbcf0e19cc99118c7",
+      "verified": true,
+      "size": 3825,
+      "lines": 113,
+      "imports": [
+        "zod",
+        "../contracts/auth.js",
+        "../contracts/auth.js",
+        "../contracts/runtime-config.js",
+        "../contracts/runtime-config.js",
+        "../contracts/owner.js",
+        "../contracts/owner.js"
+      ],
+      "exports": [
+        "FreezeRecoverBodySchema",
+        "ArtifactRestoreBodySchema",
+        "ArtifactRetentionBodySchema",
+        "ArtifactArchiveBodySchema",
+        "ArtifactArchiveRestoreBodySchema",
+        "ArtifactColdSnapshotBodySchema",
+        "ArtifactHardDeleteBodySchema",
+        "StorageReconcileBodySchema",
+        "ManageUserRoleBodySchema",
+        "VaultCommitBodySchema",
+        "FreezeRecoverBody",
+        "ArtifactRestoreBody",
+        "ArtifactRetentionBody",
+        "ArtifactArchiveBody",
+        "ArtifactArchiveRestoreBody",
+        "ArtifactColdSnapshotBody",
+        "ArtifactHardDeleteBody",
+        "StorageReconcileBody",
+        "ManageUserRoleBody",
+        "VaultCommitBody"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/validation/directive.schema.ts",
+      "sha": "163484bc698865acddc4f8f0e45f74c80f6d41ac",
+      "verified": true,
+      "size": 851,
+      "lines": 23,
+      "imports": [
+        "../contracts/directive.js",
+        "../contracts/directive.js"
+      ],
+      "exports": [
+        "SchemaViolationError",
+        "assertDirectiveAccepted"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/validation/evidence.schema.ts",
+      "sha": "622cb7aeeabae1f6d79633728bfdeed0e190a5cf",
+      "verified": true,
+      "size": 679,
+      "lines": 17,
+      "imports": [
+        "../contracts/evidence.js",
+        "../api/vnext-config.js"
+      ],
+      "exports": [
+        "assertEvidenceBundle"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/validation/index.ts",
+      "sha": "a851156957c38912db76fc4221d2d60fe7edc986",
+      "verified": true,
+      "size": 154,
+      "lines": 5,
+      "imports": [
+        "./api.schema.js",
+        "./directive.schema.js",
+        "./evidence.schema.js",
+        "./release-policy.schema.js"
+      ],
+      "exports": [],
+      "hits": {}
+    },
+    {
+      "p": "packages/validation/release-policy.schema.ts",
+      "sha": "2f5d735f7f7925b22716877bed5986bf581eec5e",
+      "verified": true,
+      "size": 280,
+      "lines": 7,
+      "imports": [
+        "../contracts/release-policy.js",
+        "../contracts/release-policy.js"
+      ],
+      "exports": [],
+      "hits": {}
+    },
+    {
+      "p": "packages/vault/integrity.ts",
+      "sha": "ef19ee7c71a24825208ad6e40d210868437b3671",
+      "verified": true,
+      "size": 1223,
+      "lines": 34,
+      "imports": [
+        "node:crypto",
+        "@prisma/client"
+      ],
+      "exports": [
+        "verifyContentHash",
+        "verifyChain"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "packages/vault/versioning.ts",
+      "sha": "92f5ec38c3076e4fac084e1c28780d5738f86758",
+      "verified": true,
+      "size": 1974,
+      "lines": 62,
+      "imports": [
+        "@prisma/client"
+      ],
+      "exports": [
+        "RevisionArgs",
+        "createRevision",
+        "lockRevision"
+      ],
+      "hits": {}
+    }
+  ]
+}
