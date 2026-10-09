@@ -1,0 +1,342 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    36,
+    48
+  ],
+  "total": 99,
+  "scope": "web source content read/index; not interactive acceptance",
+  "rows": [
+    {
+      "path": "apps/web/app/api/users/[id]/role/route.ts",
+      "blob": "db2eb814b4005dcb7afdd330846aa0c064e61fef",
+      "verified": true,
+      "bytes": 375,
+      "lines": 8,
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/owner-roles",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/api/vault/commit/route.ts",
+      "blob": "ed304f1a26f68b036a5fdd8a3f54c73cb7c9b7ac",
+      "verified": true,
+      "bytes": 293,
+      "lines": 8,
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "handlers": [
+        "POST"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/audit/page.tsx",
+      "blob": "506f58e6e0ee01667ff09926be4958705f65d92e",
+      "verified": true,
+      "bytes": 4718,
+      "lines": 141,
+      "imports": [
+        "react",
+        "../../components/AuditTable",
+        "../../components/LoadingSkeleton"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          115
+        ],
+        "fetch": [
+          64,
+          79
+        ],
+        "useClient": [
+          1
+        ],
+        "href": [
+          94,
+          96
+        ],
+        "placeholder": [
+          127
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/dialog/page.tsx",
+      "blob": "5a74d7a3ebb41ec26ead773a72be0fce5ba5ae37",
+      "verified": true,
+      "bytes": 7142,
+      "lines": 201,
+      "imports": [
+        "react",
+        "next/navigation",
+        "../../lib/csrf"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          143,
+          151,
+          156
+        ],
+        "fetch": [
+          83
+        ],
+        "useClient": [
+          1
+        ],
+        "placeholder": [
+          189
+        ],
+        "role": [
+          43,
+          177,
+          193
+        ],
+        "aria": [
+          128,
+          144,
+          152,
+          165
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/directives/[id]/page.tsx",
+      "blob": "08ab4756adb7ecc2c42fab3882d2560b946c8e8c",
+      "verified": true,
+      "bytes": 6802,
+      "lines": 140,
+      "imports": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "../../../components/LoadingSkeleton"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          86
+        ],
+        "fetch": [
+          47
+        ],
+        "useClient": [
+          1
+        ],
+        "href": [
+          70,
+          85,
+          113,
+          126
+        ],
+        "role": [
+          91
+        ],
+        "aria": [
+          78,
+          110
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/directives/new/page.tsx",
+      "blob": "c5131bd3616f6d8aba7fb022570b9b11e848554b",
+      "verified": true,
+      "bytes": 13166,
+      "lines": 256,
+      "imports": [
+        "react",
+        "next/navigation",
+        "../../../components/DirectiveInput",
+        "../../../components/LoadingSkeleton",
+        "../../../components/SubmitButton",
+        "../../../lib/csrf",
+        "../../../components/SystemStateProvider",
+        "../../../lib/directive-draft"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          207,
+          242,
+          248
+        ],
+        "fetch": [
+          92,
+          93,
+          167
+        ],
+        "useClient": [
+          1
+        ],
+        "placeholder": [
+          220,
+          236
+        ],
+        "role": [
+          105,
+          124,
+          210,
+          213,
+          215,
+          216,
+          251
+        ],
+        "aria": [
+          200,
+          218
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/directives/page.tsx",
+      "blob": "d4599c6bbc269f4aa65a5ab24c74420ad6e68987",
+      "verified": true,
+      "bytes": 3568,
+      "lines": 91,
+      "imports": [
+        "react",
+        "next/link",
+        "../../components/LoadingSkeleton"
+      ],
+      "handlers": [],
+      "hits": {
+        "fetch": [
+          29
+        ],
+        "useClient": [
+          1
+        ],
+        "href": [
+          57,
+          69
+        ],
+        "role": [
+          61,
+          63
+        ],
+        "aria": [
+          50,
+          67
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/freeze/recover/page.tsx",
+      "blob": "c53e9d224ec3acb3fe0dfb6426fe86754b93fe83",
+      "verified": true,
+      "bytes": 2332,
+      "lines": 56,
+      "imports": [
+        "react",
+        "../../../components/FreezeRecoverModal",
+        "../../../components/LoadingSkeleton",
+        "../../../components/SystemStateProvider",
+        "../../../components/PermissionGate",
+        "next/navigation"
+      ],
+      "handlers": [],
+      "hits": {
+        "fetch": [
+          32
+        ],
+        "useClient": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "blob": "45ad9ec80ad8e25e6e9c23401deaa2c2b87e5b6f",
+      "verified": true,
+      "bytes": 6753,
+      "lines": 346,
+      "imports": [],
+      "handlers": [],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/incidents/[id]/page.tsx",
+      "blob": "d2d23f97cc9400e99d1ed3c5f4fa6e336e594262",
+      "verified": true,
+      "bytes": 2889,
+      "lines": 71,
+      "imports": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "../../../components/PermissionGate",
+        "../../../components/IncidentCard",
+        "../../../components/LoadingSkeleton"
+      ],
+      "handlers": [],
+      "hits": {
+        "fetch": [
+          27
+        ],
+        "useClient": [
+          1
+        ],
+        "href": [
+          57,
+          60
+        ],
+        "role": [
+          61
+        ],
+        "aria": [
+          41
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/layout.tsx",
+      "blob": "198705dd179a4df5b01aace4ae926ca36ccefbc2",
+      "verified": true,
+      "bytes": 1232,
+      "lines": 49,
+      "imports": [
+        "next",
+        "react",
+        "../components/LayoutInner",
+        "../components/PermissionGate",
+        "../components/SystemStateProvider",
+        "../components/PwaRegistrar"
+      ],
+      "handlers": [
+        "dynamic",
+        "metadata",
+        "viewport"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/login/page.tsx",
+      "blob": "597a6539473e161b4a7217f09c1345270f290719",
+      "verified": true,
+      "bytes": 521,
+      "lines": 16,
+      "imports": [
+        "react",
+        "../../components/OtacLoginForm"
+      ],
+      "handlers": [],
+      "hits": {
+        "useClient": [
+          1
+        ]
+      }
+    }
+  ]
+}
