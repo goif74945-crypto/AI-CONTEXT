@@ -55,3 +55,11 @@ DO NOT mark Repo Code Bridge PRODUCTION COMPLETE until all of:
 - measured performance/correctness benchmark rather than unverified '10x/20x' improvements.
 
 STATUS: IMPLEMENTED_AND_VERIFIED_IN_TEST_HARNESS; PRODUCTION_NOT_DEPLOYED; LARGE_REPO_FULL_TEXT_COVERAGE_BLOCKED_BY_2_SKIPS; CI_PRE_STEP_FAILURE.
+
+
+## Positive-hit search: independent live verification at same product SHA
+- repo_search(goif74945-crypto/NEXY.AI-, exact revision 8ed9af89f68fb82f60d4a4f5ccbc06005ce91992, query=NEXY, max_results=5).
+- candidate_files=884; inspected_files=884; searched_files=882; skipped_files=2; failed_files=0; matched_files=303.
+- coverage_complete=true for candidate inspection; coverage_scope=ELIGIBLE_UTF8_TEXT_BLOBS.
+- results_truncated=true; warnings=[RESULTS_TRUNCATED]. Five result paths: .cargo/config.toml, .github/workflows/deploy.yml, .github/workflows/doc-e-exact-head.yml, .github/workflows/e7-queue.yml, .github/workflows/exact-head-evidence.yml.
+- This is a bounded five-result view, NOT exhaustive display of all 303 matching files. Both no-hit and positive-hit calls inspected 884/884 candidates and text-searched 882/884; 2 skips remain without identified paths/reasons.
