@@ -53,3 +53,12 @@ MODE: EXECUTE_NOW / EVIDENCE_FIRST / FAIL_CLOSED / EXACT_HEAD / NO_FAKE_PASS
 TEST_HARNESS_REPAIR=VERIFIED; INDEPENDENT_TESTS=49/49_PASS; LIVE_LARGE_REPO_FULL_TEXT_COVERAGE=BLOCKED_2_SKIPS; GITHUB_ACTIONS=BLOCKED_PRE_STEP; PRODUCTION_SITE_DEPLOYMENT=NOT_DONE; FULL_COMPLETION=NOT_VERIFIED.
 
 No writes to goif74945-crypto/NEXY.AI-.
+
+
+## Additional independent combined-suite validation
+- Retrieved four exact-head source/test blobs from goif74945-crypto/repo-code-bridge-e2e-test at 114a53fa9a54f12f538ad19c59c9f8157a3b18e2.
+- Blob SHAs: scripts/classify-search-coverage.mjs = de6207a2611c60a32110dcdd5c4064fdecaf5707; tests/classify-search-coverage.test.mjs = aac97a9419aa9008c6d6316642333460c04acf43; scripts/classify-github-run.mjs = f991f7984f92cde8deed4ca224e171bccd88dc16; tests/classify-github-run.test.mjs = 95559df02d9d53ce38d5102cd450e6234e167182.
+- Executed both module test suites together on independent Floot Node VM: **63 tests / 63 pass / 0 fail / exit 0** (47 Search Coverage + 16 CI Evidence).
+- Verified the Search Coverage v3 local bundle matches the GitHub blob SHA byte-for-byte, retested 47/47 on local Node 22, and verified artifact archive integrity.
+- Downloadable artifact (ChatGPT conversation): rcb-search-coverage-v3-20261009.zip; NOT a production Backend deployment.
+- The two earlier live-result integration assertions (positive pathname match and zero-hit query) passed separately, producing 49/49 in their run; they are NOT included in the 63 combined synthetic test count. A separately run large-repo live-result assertion passed for BLOCKED / SEARCH_NOT_FULLY_PROVEN (2 skipped text files).
