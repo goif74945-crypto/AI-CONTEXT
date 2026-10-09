@@ -1,0 +1,183 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "requirement": "DOC-E E01-E12 actual current head receipts",
+  "scope": "only these 12 Product files; another evidence location may exist and must be searched before claiming none",
+  "rows": [
+    {
+      "path": "docs/evidence/current/E01-contract-test-report.md",
+      "blob": "2db804e9af32313a91334439434b2ad9fd9f9eb6",
+      "bytes": 858,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E02-api-schema-snapshot.md",
+      "blob": "99019c22e899866fcd0e2a5f1e527b74ca373b38",
+      "bytes": 853,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E03-migration-roundtrip.md",
+      "blob": "337f5acaab8ab57bc88905d9b3e31606fc00b3d4",
+      "bytes": 889,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E04-state-machine.md",
+      "blob": "28f76e7161ec020c9c8e68d391e71cc85c4e22ab",
+      "bytes": 862,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- required proof: `state machine tests pass`",
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E05-rbac-tests.md",
+      "blob": "b7e1f91695591eb36a4ac0b98f6b8fea14700db7",
+      "bytes": 826,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- required proof: `RBAC tests pass`",
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E06-auth-abuse.md",
+      "blob": "58cd783406758ecf492415ceca1ec442c499bd70",
+      "bytes": 851,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E07-queue-worker-readiness.md",
+      "blob": "3a71d811ec15559e86a46413aad3bc565996bf63",
+      "bytes": 887,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E08-observability-alarm.md",
+      "blob": "003e624daae4b5275a9bd8dcdc02199861c830c2",
+      "bytes": 909,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E09-incident-drill.md",
+      "blob": "356682bc10af25dccb5cd607d9365fb42375ffbb",
+      "bytes": 840,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E10-deploy-runbook.md",
+      "blob": "5bf27b0bcc8fab3d40d73d23b458fdba897ac1c7",
+      "bytes": 861,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E11-release-signoff.md",
+      "blob": "096b354dc493d4526f8f4770b61c555a594b3ac8",
+      "bytes": 761,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "# DOC-E-E11-release-signoff",
+        "- artifact_name: `DOC-E-E11-release-signoff`",
+        "- operator: `NONE — authorized signoff not supplied`",
+        "- command or test id: `external engineering/security/migration signoff`",
+        "- required proof: `release signoff record`",
+        "- result: `BLOCKED_EXTERNAL`",
+        "- screenshot or output excerpt: `No authorized signoff artifact exists for this exact revision.`",
+        "- pass/fail: `BLOCKED_EXTERNAL`",
+        "No engineering, security, or migration approver has supplied an authorized signoff. An AI-generated approval is forbidden."
+      ]
+    },
+    {
+      "path": "docs/evidence/current/E12-rollback-execution.md",
+      "blob": "19849642e6898e232f99d6c03e2f9fae77a65c93",
+      "bytes": 875,
+      "full_head_present": false,
+      "reference_shas": [
+        "0d0d82bdc7d04ef8248f310d106cf5e4c1dd7a3d"
+      ],
+      "status_fields": [
+        "- result: `BLOCKED_ENVIRONMENT`",
+        "- screenshot or output excerpt: `Exact-head workflow run completed with job conclusions marked failure, but every executable job reports step_count=0; no test/build command execution is proven.`",
+        "- pass/fail: `BLOCKED`"
+      ]
+    }
+  ]
+}
