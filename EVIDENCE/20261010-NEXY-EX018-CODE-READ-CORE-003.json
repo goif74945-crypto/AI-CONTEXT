@@ -1,0 +1,276 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    24,
+    36
+  ],
+  "total": 103,
+  "read_note": "actual full content read; NOT semantically accepted",
+  "rows": [
+    {
+      "path": "packages/auth/email.ts",
+      "sha": "2a9142fa85e7ea7f30ea248edb16da5d13d5e4d3",
+      "verified": true,
+      "bytes": 3733,
+      "lines": 131,
+      "imports": [
+        "nodemailer",
+        "../secrets/provider.js"
+      ],
+      "exports": [
+        "EmailProvider",
+        "emailProvider"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/auth/otac.ts",
+      "sha": "bb6134ab1946c8cfa8f130eb7eea5a777d02c58e",
+      "verified": true,
+      "bytes": 3437,
+      "lines": 89,
+      "imports": [
+        "node:crypto"
+      ],
+      "exports": [
+        "generateOtacCode",
+        "generateOtacSalt",
+        "generateSessionToken",
+        "generateRequestId",
+        "computeOtacCodeHash",
+        "hashEmail",
+        "computeDeviceId",
+        "safeEqual"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/auth/security-incident.ts",
+      "sha": "942473739aa3dfe04d0dc595f3e92f8e8f665e45",
+      "verified": true,
+      "bytes": 4413,
+      "lines": 147,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../obs/audit-log.js",
+        "./security-runtime.js"
+      ],
+      "exports": [
+        "AUTH_SECURITY_SIGNAL",
+        "AuthSecuritySignal",
+        "AuthSecurityPrimitives",
+        "AuthSecurityRuntime",
+        "AuthSecurityIncidentInput",
+        "recordAuthSecurityIncidentTx",
+        "recordAuthSecurityIncident"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/auth/security-runtime.ts",
+      "sha": "57190744bdc72ac841e6e2980376c70a66186745",
+      "verified": true,
+      "bytes": 437,
+      "lines": 17,
+      "imports": [
+        "./security-incident.js"
+      ],
+      "exports": [
+        "configureAuthSecurityRuntime",
+        "getAuthSecurityRuntime"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/auth/session.ts",
+      "sha": "285d2bea32a66420333357cfde51e0728834951e",
+      "verified": true,
+      "bytes": 5982,
+      "lines": 184,
+      "imports": [
+        "@prisma/client",
+        "./otac.js",
+        "./device-binding.js",
+        "../api/vnext-config.js"
+      ],
+      "exports": [
+        "SessionCreateArgs",
+        "SessionRecord",
+        "AuthSessionRuntime",
+        "createSession",
+        "loadSession",
+        "setSessionCookie",
+        "clearSessionCookie"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/config/runtime-config.ts",
+      "sha": "43be034d5938137d8d29a5506ba25d356d79e66a",
+      "verified": true,
+      "bytes": 4546,
+      "lines": 161,
+      "imports": [
+        "../core/db.js",
+        "../core/canonical-json.js",
+        "../contracts/runtime-config.js",
+        "../api/vnext-config.js"
+      ],
+      "exports": [
+        "IMMUTABLE_RUNTIME_CONFIG",
+        "BOOTSTRAP_RUNTIME_CONFIG",
+        "RuntimeConfigUnavailableError",
+        "RuntimeConfigSnapshot",
+        "resolveRuntimeConfigVersion",
+        "resolveRuntimeConfig",
+        "computeRuntimeConfigDiff"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/contracts/auth.ts",
+      "sha": "bb93f0b30a0a5117d159e4989ec5c2895bc33403",
+      "verified": true,
+      "bytes": 1589,
+      "lines": 42,
+      "imports": [
+        "zod"
+      ],
+      "exports": [
+        "RequestOtacBodySchema",
+        "VerifyOtacBodySchema",
+        "LogoutBodySchema",
+        "SessionRefreshBodySchema",
+        "OwnerRecoveryRequestSchema",
+        "RequestOtacBody",
+        "VerifyOtacBody",
+        "LogoutBody",
+        "SessionRefreshBody",
+        "OwnerRecoveryRequest"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/contracts/consensus.ts",
+      "sha": "9d1bac309fb734d99883cb571a69022c62a49aee",
+      "verified": true,
+      "bytes": 1043,
+      "lines": 31,
+      "imports": [
+        "zod",
+        "./evidence.js"
+      ],
+      "exports": [
+        "ConsensusResultSchema",
+        "ConsensusResult"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/contracts/directive.ts",
+      "sha": "29cc017aeff76ebaf5a253dc6831ebcf3f7c86c4",
+      "verified": true,
+      "bytes": 1405,
+      "lines": 38,
+      "imports": [
+        "zod"
+      ],
+      "exports": [
+        "UlidSchema",
+        "CreateDirectiveRequestSchema",
+        "CreateDirectiveRequest",
+        "FreezeRecoverRequestSchema",
+        "FreezeRecoverRequest"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/contracts/doc-e-evidence.ts",
+      "sha": "04310bf6f516d27304347bbcee4bc2bc83ffbc2f",
+      "verified": true,
+      "bytes": 8668,
+      "lines": 237,
+      "imports": [
+        "zod"
+      ],
+      "exports": [
+        "DOC_E_SCHEMA_VERSION",
+        "DOC_E_ATTESTATION_KIND",
+        "DOC_E_IDS",
+        "DocEEvidenceId",
+        "DOC_E_SOURCE_RANGES",
+        "DOC_E_EXECUTION_ID_REGEX",
+        "DocEEvidenceStatusSchema",
+        "DocEEvidenceStatus",
+        "DocEApprovalSchema",
+        "DocEApproval",
+        "DocEReleaseSignoffSchema",
+        "DocEReleaseSignoff",
+        "DocEEvidenceRecordSchema",
+        "DocEEvidenceRecord",
+        "DocE11EvidenceRecordSchema",
+        "DocE11EvidenceRecord",
+        "DocEEvidenceItemsSchema",
+        "DocEEvidenceItems",
+        "DocEDeploymentProviderSchema",
+        "DocEDeploymentProvider",
+        "DocEAttestationSchema",
+        "DocEAttestation",
+        "parseDocEAttestation"
+      ],
+      "hits": {
+        "TODO": [
+          29
+        ]
+      }
+    },
+    {
+      "path": "packages/contracts/envelope.ts",
+      "sha": "daf1156b3431150e667b5e18727d8abe9bdc9b75",
+      "verified": true,
+      "bytes": 3692,
+      "lines": 121,
+      "imports": [
+        "zod",
+        "./state.js",
+        "./errors.js"
+      ],
+      "exports": [
+        "ActorTypeSchema",
+        "ActorType",
+        "RoleSchema",
+        "Role",
+        "BlockingLayerSchema",
+        "FreezeReasonSchema",
+        "FreezeReason",
+        "EnvelopeWarningSchema",
+        "EnvelopeIntegritySchema",
+        "EnvelopeBaseSchema",
+        "buildEnvelopeSchema",
+        "EnvelopeBase",
+        "BuildEnvelopeOpts",
+        "buildEnvelope"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/contracts/errors.ts",
+      "sha": "b6a1737688399cf0571236f23c0b5ce0f7de5847",
+      "verified": true,
+      "bytes": 1042,
+      "lines": 24,
+      "imports": [
+        "zod"
+      ],
+      "exports": [
+        "ERROR_CODE",
+        "ErrorCode",
+        "ErrorCodeSchema",
+        "ErrorPayloadSchema",
+        "ErrorPayload"
+      ],
+      "hits": {}
+    }
+  ]
+}
