@@ -1,0 +1,2 @@
+# NEXY-EX017-V4-SPEC-143-REPAIR / FAILURES
+Npm registry failed EAI_AGAIN; no local Vitest, remote desktop offline, Railway-only production DB no verified isolation. Canonical patch not checked into Product; consumer tests unexecuted. Auth email case normalization inconsistency source confirmed, live DB/migrations and migration/backward compatibility missing; do not change identity data without proofs. DOC-E and independent auditor remain open. 143 registered IDs do not equal full DOC-C mandatory inventory.

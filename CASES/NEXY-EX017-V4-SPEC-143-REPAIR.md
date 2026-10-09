@@ -1,0 +1,2 @@
+# NEXY-EX017-V4-SPEC-143-REPAIR / CASES
+CASE_CANON_SPARSE: current source outputs invalid JSON from sparse array, V3 candidate fails closed. CASE_CANON_DATE_MAP: current source hashes Date/Map as {}, V3 candidate rejects. CASE_AUTH_NORMALIZE: Node crypto for mixed-case and lowercase inputs diverges using raw SHA-256 but converges with lower(trim), source API raw hash vs helper normalized hash. CASE_LOCATOR: DOCX P9914 vs register P9913. CASE_DUP_FSM: FSM/12 and FSM/19 both FREEZE fatal STOP. None prove full Product E2E success.

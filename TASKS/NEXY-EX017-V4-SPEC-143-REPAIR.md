@@ -1,0 +1,2 @@
+# NEXY-EX017-V4-SPEC-143-REPAIR / TASKS
+ACTIVE: 143 register current-head static review plus 8 candidates; all acceptance NOT_VERIFIED. Completed real source hash, node RED/GREEN, registry locator correction. NEXT_READY: test auth email identity inconsistency, canonical JSON full Vitest and consumer regressions on isolated real runner, inspect DOC-C log-and-incident durable requirements. Do not commit Product without requisite source-linked full tests.

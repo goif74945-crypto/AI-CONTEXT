@@ -1,0 +1,2 @@
+# NEXY-EX017-V4-SPEC-143-REPAIR / LEDGER
+Product head 8ed9af89f68fb82f60d4a4f5ccbc06005ce91992, Control before 3f211bdeaded22178b44168d1a3afd31f9658df6. DOCX hash verified. V4 register143 IDs unique, one semantic duplicate FSM/12=FSM/19; static matrix151 rows and corrected locators143 rows committed/read-back in prior control commits. Canonical node RED4 pass10 fail exit1, GREEN14 pass0 fail exit0, standalone tsc0, original-equivalent subset0. GitHub source references for auth email mismatch fetched. No Product mutation.
