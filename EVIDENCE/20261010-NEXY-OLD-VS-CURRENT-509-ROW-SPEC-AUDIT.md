@@ -74,3 +74,13 @@ These artifacts were created in the current chat working container. The remote A
 - Current exact-head CI: FAIL reported; causal interpretation UNKNOWN.
 - Production operational status/security signoff: NOT_VERIFIED.
 - No Product branch, files, commits, workflows or settings mutated by this audit.
+
+## Fair old-HEAD GitHub CI comparison (supplement)
+
+The same workflow query on old SHA `9e615b04ecd1e9b8b5afcd5f812ea17bd78d4a43` independently returned four completed FAIL runs:
+- Six-system evidence: 37222997784 FAIL.
+- Exact-head evidence: 37222997798 FAIL.
+- Layer8 Cargo lock: 37222997736 FAIL.
+- NEXY CI / Deploy Gate: 37222997743 FAIL.
+
+Old SHA also has 15 check runs, 12 FAIL and 3 SKIPPED. Both old and current have 0/4 successful workflow runs in their observed exact-head queries; this is a CI *outcome rate*, **not a functional completion rate**. Root causes remain UNKNOWN without logs. No claim that new code is fully production ready.
