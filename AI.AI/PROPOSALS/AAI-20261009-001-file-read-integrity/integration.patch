@@ -1,0 +1,51 @@
+diff --git a/ai_ai/executor.py b/ai_ai/executor.py
+--- a/ai_ai/executor.py
++++ b/ai_ai/executor.py
+@@ -246,7 +246,13 @@
+             p = self.safe_path(step.path)
+             if not p.is_file() or p.stat().st_size > 200000:
+                 raise ActionError("Readable file not found or exceeds 200 KB")
+-            return p.read_text(encoding="utf-8")[:20000]
++            # Never report a successful partial read as a complete result.
++            # server.py also caps the returned action message at 20,000 chars.
++            with p.open("r", encoding="utf-8") as stream:
++                content = stream.read(20_001)
++            if len(content) > 20_000:
++                raise ActionError("Readable file exceeds 20,000-character result limit")
++            return content
+         if t == "file.write":
+             p = self.safe_path(step.path)
+             p.parent.mkdir(parents=True, exist_ok=True)
+diff --git a/tests/test_executor.py b/tests/test_executor.py
+--- a/tests/test_executor.py
++++ b/tests/test_executor.py
+@@ -33,6 +33,29 @@
+     e=Executor(tmp_path)
+     (tmp_path/"large.txt").write_text("a"*200001)
+     with pytest.raises(ActionError):e.perform(step(tool="file.read",path="large.txt"),threading.Event())
++
++def test_read_exact_result_limit_not_truncated(tmp_path):
++    e = Executor(tmp_path)
++    (tmp_path / "boundary.txt").write_text("a" * 20_000, encoding="utf-8")
++    result = e.perform(step(tool="file.read", path="boundary.txt"), threading.Event())
++    assert result == "a" * 20_000
++
++
++def test_read_over_result_limit_fails_closed(tmp_path):
++    e = Executor(tmp_path)
++    (tmp_path / "oversize.txt").write_text("b" * 20_001, encoding="utf-8")
++    with pytest.raises(ActionError, match="20,000-character"):
++        e.perform(step(tool="file.read", path="oversize.txt"), threading.Event())
++
++
++def test_read_unicode_character_limit(tmp_path):
++    e = Executor(tmp_path)
++    (tmp_path / "unicode.txt").write_text("ก" * 20_000, encoding="utf-8")
++    assert e.perform(step(tool="file.read", path="unicode.txt"), threading.Event()) == "ก" * 20_000
++    (tmp_path / "unicode.txt").write_text("ก" * 20_001, encoding="utf-8")
++    with pytest.raises(ActionError, match="20,000-character"):
++        e.perform(step(tool="file.read", path="unicode.txt"), threading.Event())
++
+ 
+ def test_code_run_disabled(tmp_path):
+     e=Executor(tmp_path)

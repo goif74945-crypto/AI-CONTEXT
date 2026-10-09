@@ -1,0 +1,18 @@
+{
+  "id": "AAI-20261009-001",
+  "title": "File Read Result-Integrity Gate",
+  "critique_signature": "F-01/executor.file.read/silent-truncation-20000-chars",
+  "fingerprint": "read-integrity/file-read/fail-closed-on-result-truncation",
+  "target_revision": "0b226669d5635339c00c3836d91dca9bfbf63cea",
+  "target_zip_sha256": "5dd451976a03b404f508f296c4489319e945a65d0de782005c56b9841130d720",
+  "patch_sha256": "d05c180adb45640d79f7128bbbe1b7272889c10c2bc666ef347340578ebe7fa9",
+  "status": "TESTED_ON_PINNED_REVISION",
+  "observed_tests": {
+    "original": 114,
+    "focused_passed": 14,
+    "total_passed": 117,
+    "failed": 0,
+    "skipped": 0,
+    "environment": "isolated local Python test run; not target device"
+  }
+}

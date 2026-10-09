@@ -1,0 +1,9 @@
+# AI.AI Criticism and System Idea Registry
+
+Every chat must check the entire directory, not merely this table, before proposing new work. IDs/fingerprints are a mechanical collision check; semantic equivalence is judged from code and behavior. Recheck at newest AI-CONTEXT/main HEAD immediately before publication.
+
+| ID | Critique signature | Idea fingerprint | Source pinned | Status |
+|---|---|---|---|---|
+| [AAI-20261009-001](PROPOSALS/AAI-20261009-001-file-read-integrity/) | F-01 / executor.file.read / silent truncation of output at 20,000 chars | read-integrity/file-read/fail-closed-on-result-truncation | v0.2.0 zip / 0b226669d5635339c00c3836d91dca9bfbf63cea | TESTED_ON_PINNED_REVISION, v0.3 NOT_VERIFIED |
+
+Future AI chats MUST NOT resubmit the same critique or equivalent truncation remedy as new. If no unique proposal is verifiable, stop with BLOCKED_UNIQUE_IDEA. The historical PROJECTS/AI.AI v0.3 release record does not prove this v0.2-specific patch works on v0.3.
