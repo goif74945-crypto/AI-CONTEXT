@@ -1,0 +1,301 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    12,
+    24
+  ],
+  "total": 103,
+  "mode": "full source reads, static index, NOT runtime or requirements certification",
+  "rows": [
+    {
+      "path": "packages/api/middleware/csp.ts",
+      "sha": "a00f2465ba1aa717c206fffa73e34135d73ee1b1",
+      "verified": true,
+      "bytes": 1842,
+      "lines": 63,
+      "imports": [
+        "node:crypto"
+      ],
+      "exports": [
+        "CspPolicy",
+        "createCspPolicy",
+        "securityHeaders",
+        "cspMiddleware"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/middleware/rate-limit.ts",
+      "sha": "ce16bc2746e9d360b410f598d5cd0c9af7fe9826",
+      "verified": true,
+      "bytes": 11135,
+      "lines": 318,
+      "imports": [
+        "node:crypto",
+        "../../contracts/envelope.js",
+        "../vnext-config.js",
+        "../../orch-core/system-state.js",
+        "ioredis",
+        "../../obs/alarms.js",
+        "../../auth/client-ip.js",
+        "../../auth/security-incident.js",
+        "../../config/runtime-config.js",
+        "../../auth/security-runtime.js",
+        "../../core/db.js",
+        "../../core/tick.js",
+        "../../core/ulid.js"
+      ],
+      "exports": [
+        "RateLimitRequest",
+        "RateLimitResponse",
+        "RateLimitNext",
+        "authIpRateLimitKey",
+        "requestOtacRateLimitKey",
+        "authenticatedRateLimitKey",
+        "RuntimeRateLimitProfile",
+        "RateLimitOpts",
+        "rateLimitMiddleware",
+        "defaultAuthLimiter",
+        "requestOtacLimiter",
+        "authenticatedLimiter"
+      ],
+      "hits": {
+        "DateNow": [
+          112,
+          169
+        ],
+        "eval": [
+          91
+        ]
+      }
+    },
+    {
+      "path": "packages/api/owner-cancel.ts",
+      "sha": "9e635aaa36b35bc08118e40f34fb8e190a014381",
+      "verified": true,
+      "bytes": 7576,
+      "lines": 296,
+      "imports": [
+        "node:crypto",
+        "../core/db.js",
+        "../contracts/envelope.js",
+        "../contracts/owner.js",
+        "./vnext-config.js",
+        "../orch-core/system-state.js",
+        "../auth/csrf.js",
+        "./directives.js",
+        "./middleware/rate-limit.js",
+        "../queue/run-state.js"
+      ],
+      "exports": [
+        "handleOwnerCancel"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/owner-recovery.ts",
+      "sha": "1d9cbd839673197870f6ec3d5252ed924ac157a6",
+      "verified": true,
+      "bytes": 13375,
+      "lines": 471,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/db.js",
+        "../core/tick.js",
+        "../core/ulid.js",
+        "../contracts/envelope.js",
+        "../contracts/auth.js",
+        "./vnext-config.js",
+        "../orch-core/system-state.js",
+        "./auth-failure.js",
+        "../auth/csrf.js",
+        "../auth/client-ip.js",
+        "../auth/security-incident.js",
+        "../auth/security-runtime.js",
+        "../obs/audit-log.js",
+        "./middleware/rate-limit.js"
+      ],
+      "exports": [
+        "handleOwnerRecoveryCsrf",
+        "handleOwnerRecoveryRequest"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/owner-revoke-release.ts",
+      "sha": "fbe71032721b1b84b20f2f87151331d8131bd770",
+      "verified": true,
+      "bytes": 5132,
+      "lines": 181,
+      "imports": [
+        "node:crypto",
+        "../core/db.js",
+        "../contracts/envelope.js",
+        "../contracts/owner.js",
+        "./vnext-config.js",
+        "../orch-core/system-state.js",
+        "../auth/csrf.js",
+        "./directives.js",
+        "../queue/run-state.js"
+      ],
+      "exports": [
+        "handleOwnerRevokeRelease"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/owner-roles.ts",
+      "sha": "964d335b3934bfbf7c1802e631da015b2e302cd1",
+      "verified": true,
+      "bytes": 7340,
+      "lines": 237,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/db.js",
+        "../core/tick.js",
+        "../core/ulid.js",
+        "../core/canonical-json.js",
+        "../contracts/envelope.js",
+        "../validation/api.schema.js",
+        "../obs/audit-log.js",
+        "../auth/csrf.js",
+        "../orch-core/system-state.js",
+        "./vnext-config.js",
+        "./directives.js"
+      ],
+      "exports": [
+        "handleManageUserRole"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/session-refresh.ts",
+      "sha": "e425e840b0e9e44febfd3aa6bb56ca7bd633e595",
+      "verified": true,
+      "bytes": 14260,
+      "lines": 456,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/db.js",
+        "../core/tick.js",
+        "../core/ulid.js",
+        "../contracts/envelope.js",
+        "../contracts/auth.js",
+        "./vnext-config.js",
+        "../orch-core/system-state.js",
+        "./auth-failure.js",
+        "../auth/csrf.js",
+        "../auth/otac.js",
+        "../auth/device-binding.js",
+        "../auth/security-incident.js",
+        "../obs/audit-log.js",
+        "./middleware/rate-limit.js"
+      ],
+      "exports": [
+        "handleSessionRefresh"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/storage-control.ts",
+      "sha": "a590ccf73511e6aeccb47a9080e0403583ea7a49",
+      "verified": true,
+      "bytes": 51214,
+      "lines": 1622,
+      "imports": [
+        "node:crypto",
+        "@prisma/client",
+        "../core/db.js",
+        "../core/tick.js",
+        "../core/ulid.js",
+        "../core/canonical-json.js",
+        "../contracts/envelope.js",
+        "../validation/api.schema.js",
+        "./vnext-config.js",
+        "../orch-core/system-state.js",
+        "../auth/csrf.js",
+        "./directives.js",
+        "../obs/audit-log.js",
+        "../storage/blob-provider.js",
+        "./cold-snapshot.js",
+        "../storage/lifecycle.js"
+      ],
+      "exports": [
+        "providerBlobOperationId",
+        "handleStorageStatus",
+        "handleRetentionUpdate",
+        "handleArchive",
+        "handleArchiveRestore",
+        "handleHardDelete",
+        "handleStorageReconcile"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/api/vnext-config.ts",
+      "sha": "a3141a649be7e40ec79f417f53bba9b73081232b",
+      "verified": true,
+      "bytes": 3131,
+      "lines": 74,
+      "imports": [],
+      "exports": [
+        "VNEXT_DEFAULTS",
+        "VnextAuthConfig",
+        "SYSTEM_VERSION"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/auth/client-ip.ts",
+      "sha": "d5e8f552024dc2ccd26ca9cbaf089a5c1b24b57a",
+      "verified": true,
+      "bytes": 2518,
+      "lines": 70,
+      "imports": [
+        "node:crypto",
+        "node:net"
+      ],
+      "exports": [
+        "UNKNOWN_CLIENT_IP",
+        "ClientNetworkRequest",
+        "resolveClientIp",
+        "hashAbuseBucket"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/auth/csrf.ts",
+      "sha": "3444b32561d8b5a11951822810381da66c3c8f92",
+      "verified": true,
+      "bytes": 1987,
+      "lines": 57,
+      "imports": [
+        "node:crypto"
+      ],
+      "exports": [
+        "issueCsrfToken",
+        "validateCsrf",
+        "clearCsrfCookie"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "packages/auth/device-binding.ts",
+      "sha": "04b6e9b0b63b4ff9cc61bd65000f0b316a6d9bf4",
+      "verified": true,
+      "bytes": 1197,
+      "lines": 32,
+      "imports": [
+        "node:crypto"
+      ],
+      "exports": [
+        "hashDeviceBindingToken",
+        "matchesDeviceBindingToken"
+      ],
+      "hits": {}
+    }
+  ]
+}
