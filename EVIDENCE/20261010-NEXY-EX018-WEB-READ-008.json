@@ -1,0 +1,204 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    84,
+    96
+  ],
+  "total": 99,
+  "scope": "web source content read/index; not interactive acceptance",
+  "rows": [
+    {
+      "path": "apps/web/components/SubmitButton.tsx",
+      "blob": "796a7f70e15e6e4098357286bf2eadc78e6bc4bc",
+      "verified": true,
+      "bytes": 618,
+      "lines": 31,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "SubmitButton"
+      ],
+      "hits": {
+        "onClick": [
+          25
+        ],
+        "useClient": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/SystemStateProvider.tsx",
+      "blob": "9370ac1620c40592c472cdc916d8e116ede9120c",
+      "verified": true,
+      "bytes": 2329,
+      "lines": 70,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "SystemStateProvider",
+        "useSystemState"
+      ],
+      "hits": {
+        "fetch": [
+          37
+        ],
+        "useClient": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/TrustExplainer.tsx",
+      "blob": "3e2e5f4030096aab7feae5c1f4da6a9e4430b697",
+      "verified": true,
+      "bytes": 1494,
+      "lines": 44,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "TrustExplainer"
+      ],
+      "hits": {
+        "onClick": [
+          34
+        ],
+        "useClient": [
+          1
+        ],
+        "aria": [
+          23
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/VaultArtifactCard.tsx",
+      "blob": "963fc991c26a1431c9cf685765c9117a1fbde787",
+      "verified": true,
+      "bytes": 1508,
+      "lines": 40,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "VaultArtifactCard"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/instrumentation.ts",
+      "blob": "51c9ac4edddf3e9d978d35159c84c126b16df965",
+      "verified": true,
+      "bytes": 556,
+      "lines": 14,
+      "imports": [],
+      "handlers": [
+        "register"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/lib/api-handler.ts",
+      "blob": "d1dbc74827d6fa2deb2ee4c27831bd898e3fa5c7",
+      "verified": true,
+      "bytes": 3757,
+      "lines": 112,
+      "imports": [
+        "next/server",
+        "node:crypto",
+        "../../../packages/contracts/envelope.js",
+        "../../../packages/api/vnext-config.js"
+      ],
+      "handlers": [
+        "runApiHandler"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/lib/csrf.ts",
+      "blob": "2e9974a1e99db18f7c51057906094ec1ff975dd6",
+      "verified": true,
+      "bytes": 704,
+      "lines": 23,
+      "imports": [],
+      "handlers": [
+        "readCsrfToken",
+        "csrfHeaders"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/lib/directive-draft.ts",
+      "blob": "f5694c27faac28df914052f9e177801133c4325b",
+      "verified": true,
+      "bytes": 1704,
+      "lines": 58,
+      "imports": [
+        "zod"
+      ],
+      "handlers": [
+        "DIRECTIVE_DRAFT_STORAGE_KEY",
+        "DirectiveDraftSchema",
+        "readDirectiveDraft",
+        "saveDirectiveDraft",
+        "clearDirectiveDraft"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/lib/mode-guard.ts",
+      "blob": "3391a429c9e80ee2c7fe174aea7ee1444cc08e7d",
+      "verified": true,
+      "bytes": 5904,
+      "lines": 191,
+      "imports": [],
+      "handlers": [
+        "BLOCKED_MUTATIONS",
+        "createModeGuard",
+        "emitIntent"
+      ],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/next-env.d.ts",
+      "blob": "ce4e94a6b10f160ee021fe18939af160d2927dcf",
+      "verified": true,
+      "bytes": 288,
+      "lines": 8,
+      "imports": [],
+      "handlers": [],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/next.config.js",
+      "blob": "8d54a6af01ab1fe23d4a97212001b3491ade6bfa",
+      "verified": true,
+      "bytes": 634,
+      "lines": 28,
+      "imports": [],
+      "handlers": [],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/proxy.ts",
+      "blob": "0f2354e3381204aa02442486cb605bcee16a5e6d",
+      "verified": true,
+      "bytes": 1651,
+      "lines": 49,
+      "imports": [
+        "next/server",
+        "next/server",
+        "../../packages/api/middleware/cors",
+        "../../packages/api/middleware/csp"
+      ],
+      "handlers": [
+        "proxy",
+        "config"
+      ],
+      "hits": {}
+    }
+  ]
+}
