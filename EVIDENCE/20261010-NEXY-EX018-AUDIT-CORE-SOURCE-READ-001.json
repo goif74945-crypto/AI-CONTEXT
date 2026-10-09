@@ -1,0 +1,102 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "type": "DIRECT_FULL_SOURCE_READ_METADATA_NO_RUNTIME",
+  "candidate_core_files": 101,
+  "start": 0,
+  "records": [
+    {
+      "path": "packages/api/artifact-export.ts",
+      "blob": "a778091f5880f2d5a31ec3522e7f6897a55abf00",
+      "lines": 156,
+      "sha_ok": true,
+      "signals": {},
+      "imports": 6,
+      "exports": 2
+    },
+    {
+      "path": "packages/api/artifact-restore.ts",
+      "blob": "4a52ff597e96f694deae196eddd0c5ec807f6f2f",
+      "lines": 148,
+      "sha_ok": true,
+      "signals": {},
+      "imports": 13,
+      "exports": 1
+    },
+    {
+      "path": "packages/api/auth-failure.ts",
+      "blob": "92c3f4c7cebc495d9c8badc1cec0b14b4c71dd0c",
+      "lines": 56,
+      "sha_ok": true,
+      "signals": {},
+      "imports": 4,
+      "exports": 3
+    },
+    {
+      "path": "packages/api/auth.ts",
+      "blob": "e1c8c3edbb219d8d584682983cc0996b8f834934",
+      "lines": 1438,
+      "sha_ok": true,
+      "signals": {
+        "DateNow": 1
+      },
+      "imports": 19,
+      "exports": 4
+    },
+    {
+      "path": "packages/api/bootstrap.ts",
+      "blob": "d6292374efca4b55bb3865e7151175674ad06b3e",
+      "lines": 171,
+      "sha_ok": true,
+      "signals": {},
+      "imports": 11,
+      "exports": 5
+    },
+    {
+      "path": "packages/api/canonical.ts",
+      "blob": "250048e369a96c930b0cb87212ae9ba188fdcf42",
+      "lines": 681,
+      "sha_ok": true,
+      "signals": {},
+      "imports": 11,
+      "exports": 12
+    },
+    {
+      "path": "packages/api/cold-snapshot.ts",
+      "blob": "21cd1d12d3db04ad7775144adddb2cd05cf56c86",
+      "lines": 451,
+      "sha_ok": true,
+      "signals": {},
+      "imports": 14,
+      "exports": 4
+    },
+    {
+      "path": "packages/api/dialog.ts",
+      "blob": "93efdf4eb6e587de6a2d089f6a167a1daf57228f",
+      "lines": 130,
+      "sha_ok": true,
+      "signals": {},
+      "imports": 7,
+      "exports": 1
+    },
+    {
+      "path": "packages/api/directives.ts",
+      "blob": "8cd214c87e5aa55561e52347802ec8172feadc36",
+      "lines": 1778,
+      "sha_ok": true,
+      "signals": {
+        "DateNow": 1
+      },
+      "imports": 17,
+      "exports": 12
+    },
+    {
+      "path": "packages/api/health.ts",
+      "blob": "bdd0ebf9c1a2a0009be46761a46707607d05494c",
+      "lines": 228,
+      "sha_ok": true,
+      "signals": {},
+      "imports": 5,
+      "exports": 3
+    }
+  ]
+}
