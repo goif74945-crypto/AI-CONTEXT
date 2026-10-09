@@ -1,0 +1,319 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "total": 57,
+  "range": [
+    0,
+    12
+  ],
+  "method": "full SQL/Prisma source reads; flags require context; NOT migration runtime rollback validation",
+  "rows": [
+    {
+      "path": "prisma/migrations/20260921000000_current_schema_baseline/migration.down.sql",
+      "sha": "c6a1a41987aa0a87dbeae20ef0e4fa1bbc4f6295",
+      "verified": true,
+      "bytes": 2384,
+      "lines": 55,
+      "hits": {
+        "drop_table": [
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51
+        ]
+      },
+      "noncommentLines": 49
+    },
+    {
+      "path": "prisma/migrations/20260921000000_current_schema_baseline/migration.sql",
+      "sha": "553a55f4409261cca0dbbc6d78c8e06709b456b5",
+      "verified": true,
+      "bytes": 21025,
+      "lines": 666,
+      "hits": {
+        "unique": [
+          410,
+          416,
+          449,
+          497,
+          500,
+          506,
+          545,
+          566,
+          602,
+          605,
+          608,
+          632
+        ],
+        "index": [
+          398,
+          401,
+          404,
+          407,
+          410,
+          413,
+          416,
+          419,
+          422,
+          425,
+          428,
+          431,
+          434,
+          437,
+          440,
+          443,
+          446,
+          449,
+          452,
+          455,
+          458,
+          461,
+          464,
+          467,
+          470,
+          473,
+          476,
+          479,
+          482,
+          485,
+          488,
+          491,
+          494,
+          497,
+          500,
+          503,
+          506,
+          509,
+          512,
+          515,
+          518,
+          521,
+          524,
+          527,
+          530,
+          533,
+          536,
+          539,
+          542,
+          545,
+          548,
+          551,
+          554,
+          557,
+          560,
+          563,
+          566,
+          569,
+          572,
+          575
+        ],
+        "foreign": [
+          641,
+          644,
+          647,
+          650,
+          653,
+          656,
+          659,
+          662,
+          665
+        ]
+      },
+      "noncommentLines": 395
+    },
+    {
+      "path": "prisma/migrations/20260921000001_runtime_invariants/migration.down.sql",
+      "sha": "aae0e3e7759c83633f67fea1aba0861853f5d1e0",
+      "verified": true,
+      "bytes": 1449,
+      "lines": 26,
+      "hits": {
+        "drop_table": [
+          21
+        ]
+      },
+      "noncommentLines": 19
+    },
+    {
+      "path": "prisma/migrations/20260921000001_runtime_invariants/migration.sql",
+      "sha": "11eb61a9b69c53e780d98c2c1b330425bade1a52",
+      "verified": true,
+      "bytes": 4772,
+      "lines": 146,
+      "hits": {
+        "unique": [
+          138
+        ],
+        "index": [
+          141,
+          142,
+          143
+        ],
+        "transaction": [
+          23,
+          66
+        ]
+      },
+      "noncommentLines": 117
+    },
+    {
+      "path": "prisma/migrations/20260921000002_per_run_dispatch/migration.down.sql",
+      "sha": "258d6ebd069404805547bef9efef0858f4b94647",
+      "verified": true,
+      "bytes": 822,
+      "lines": 20,
+      "hits": {
+        "drop_table": [
+          7
+        ],
+        "drop_column": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      "noncommentLines": 16
+    },
+    {
+      "path": "prisma/migrations/20260921000002_per_run_dispatch/migration.sql",
+      "sha": "43e43a7d4e723616dec7bf27954c77f2912d7dc6",
+      "verified": true,
+      "bytes": 2054,
+      "lines": 49,
+      "hits": {
+        "unique": [
+          13,
+          39,
+          41,
+          43
+        ],
+        "index": [
+          39,
+          41,
+          43,
+          45,
+          47
+        ],
+        "foreign": [
+          15,
+          32,
+          35
+        ]
+      },
+      "noncommentLines": 41
+    },
+    {
+      "path": "prisma/migrations/20260921000003_atomic_release/migration.down.sql",
+      "sha": "298c5eab975869bef10e0c7298c063435015659f",
+      "verified": true,
+      "bytes": 703,
+      "lines": 15,
+      "hits": {
+        "drop_column": [
+          11,
+          12
+        ],
+        "transaction": [
+          2
+        ]
+      },
+      "noncommentLines": 13
+    },
+    {
+      "path": "prisma/migrations/20260921000003_atomic_release/migration.sql",
+      "sha": "fb7d9edae6f9107bd88ff527a87d32b60591c0b6",
+      "verified": true,
+      "bytes": 686,
+      "lines": 13,
+      "hits": {},
+      "noncommentLines": 8
+    },
+    {
+      "path": "prisma/migrations/20260922190000_canonical_vault_revision_metadata/migration.down.sql",
+      "sha": "5a63a0907df9a718fd10c7f47e54ae7bd6b79256",
+      "verified": true,
+      "bytes": 245,
+      "lines": 7,
+      "hits": {
+        "drop_column": [
+          4,
+          5,
+          6
+        ],
+        "transaction": [
+          2
+        ]
+      },
+      "noncommentLines": 4
+    },
+    {
+      "path": "prisma/migrations/20260922190000_canonical_vault_revision_metadata/migration.sql",
+      "sha": "13e719acb4cbc41b914aa6a39ece30b11960107f",
+      "verified": true,
+      "bytes": 1109,
+      "lines": 43,
+      "hits": {
+        "transaction": [
+          2,
+          26
+        ]
+      },
+      "noncommentLines": 37
+    },
+    {
+      "path": "prisma/migrations/20260922192000_recovery_idempotency/migration.down.sql",
+      "sha": "e6f99b00ed66b29be0372cfbbaa1c4e30e2a9b5f",
+      "verified": true,
+      "bytes": 45,
+      "lines": 2,
+      "hits": {
+        "drop_table": [
+          1
+        ]
+      },
+      "noncommentLines": 1
+    },
+    {
+      "path": "prisma/migrations/20260922192000_recovery_idempotency/migration.sql",
+      "sha": "4751b0ea7f54ef62307b8ce7a370837c92e9b3be",
+      "verified": true,
+      "bytes": 966,
+      "lines": 25,
+      "hits": {
+        "unique": [
+          17
+        ],
+        "index": [
+          17,
+          19
+        ]
+      },
+      "noncommentLines": 22
+    }
+  ]
+}
