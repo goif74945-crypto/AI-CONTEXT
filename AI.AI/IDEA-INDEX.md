@@ -1,10 +1,7 @@
-# AI.AI Idea Registry (append-only)
-Canonical scope: AI-CONTEXT/AI.AI/**. Check all proposals and reviews in current and prior version folders before asserting novelty.
+# AI.AI Idea Index (non-authoritative pointer)
 
-| ID | Version | Chat | Idea fingerprint | Status |
-|---|---|---|---|---|
-| AI-AI-STABILITY-001 | v0.4.0 | CHAT-20261009-V04-001 | multi-observation OCR coordinate stability and ambiguity rejection | TEST_PENDING |
+Canonical source of truth is [REGISTRY.md](REGISTRY.md) and the independent [PROPOSALS/](PROPOSALS/) packages. Do NOT rely on this file to claim semantic uniqueness.
 
-**Collision policy:** do not edit this registered row. Reserve new IDs using unique create-only proposal file paths; when simultaneous writes or semantic overlap are detected, freeze that idea and record a collision report in a new file. Files with distinct IDs can still duplicate concepts; humans/agents must check semantics across revisions.
+This auxiliary document was created while other chats were working in parallel. It is not a replacement registry. On cross-chat collisions, follow CONSTITUTION.md, run validate_catalog.py and inspect the real code/test behavior of all existing proposals.
 
-No verification of novelty across unknown private chats is implied.
+See [versions/v0.4.0/](versions/v0.4.0/) for version-specific work. Any ID previously mentioned here was only an unverified candidate, not a reserved canonical AAI proposal.
