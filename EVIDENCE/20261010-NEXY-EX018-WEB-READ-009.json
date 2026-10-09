@@ -1,0 +1,45 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    96,
+    99
+  ],
+  "total": 99,
+  "scope": "web source content read/index; not interactive acceptance",
+  "rows": [
+    {
+      "path": "apps/web/public/sw.js",
+      "blob": "409eddd1aa826ee7b26e55e7a31c8effc77195b0",
+      "verified": true,
+      "bytes": 1637,
+      "lines": 52,
+      "imports": [],
+      "handlers": [],
+      "hits": {
+        "fetch": [
+          40
+        ]
+      }
+    },
+    {
+      "path": "apps/web/styles.d.ts",
+      "blob": "43fb82419019b75ce2ed1dcfc77711a98d9881c9",
+      "verified": true,
+      "bytes": 177,
+      "lines": 4,
+      "imports": [],
+      "handlers": [],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/tailwind.config.js",
+      "blob": "93b7470b6470ce55bf90f3838387fb6105ae005c",
+      "verified": true,
+      "bytes": 750,
+      "lines": 37,
+      "imports": [],
+      "handlers": [],
+      "hits": {}
+    }
+  ]
+}
