@@ -1,0 +1,263 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "total": 41,
+  "range": [
+    10,
+    20
+  ],
+  "mode": "read original Rust code, no cargo execution",
+  "rows": [
+    {
+      "p": "core-kernel/src/engine/cle.rs",
+      "sha": "00a4522df7f7159ce72f0dedf710e3ca035a15f3",
+      "verified": true,
+      "bytes": 3964,
+      "lines": 136,
+      "pub": [
+        "CleViolation",
+        "ConstraintLawAuthority",
+        "CleEvaluation",
+        "passed",
+        "violations",
+        "ConstraintLawEngine",
+        "evaluate"
+      ],
+      "hits": {
+        "unwrap": [
+          122
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/engine/dag_engine.rs",
+      "sha": "f54bbfbff8a22c159b21438f2aa855c47a95bb67",
+      "verified": true,
+      "bytes": 17060,
+      "lines": 486,
+      "pub": [
+        "NodeId",
+        "AgentAction",
+        "new",
+        "as_bytes",
+        "DependencyProof",
+        "new",
+        "DagError",
+        "AtomicExpansion",
+        "children",
+        "child_count",
+        "DagEngine",
+        "add_node",
+        "add_edge",
+        "expand_atomic_node",
+        "get_action",
+        "node_count",
+        "edge_count",
+        "has_edge",
+        "verify_acyclic"
+      ],
+      "hits": {
+        "unwrap": [
+          377,
+          378,
+          379,
+          380,
+          404,
+          425,
+          439,
+          455
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/engine/debate_arena.rs",
+      "sha": "3281274257afb3814d6d073dfd948186b8a6675a",
+      "verified": true,
+      "bytes": 24643,
+      "lines": 555,
+      "pub": [
+        "Claim",
+        "new",
+        "payload",
+        "ConsensusResult",
+        "DebateArena",
+        "run"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/engine/dsl.rs",
+      "sha": "7278a78e987177bbcdccac0cfd886b55bdb31da9",
+      "verified": true,
+      "bytes": 3411,
+      "lines": 109,
+      "pub": [
+        "ScoredAction",
+        "FusedDecision",
+        "actions",
+        "with_risk_clearance",
+        "DecisionSynthesizer",
+        "synthesize"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/engine/ecl.rs",
+      "sha": "27ce4548d99f63eaba2a9e7c31ff9c485e781766",
+      "verified": true,
+      "bytes": 3684,
+      "lines": 113,
+      "pub": [
+        "EclFault",
+        "ExecutionMode",
+        "ExecutionContext",
+        "ExecutionAuthorization",
+        "ExecutionGate",
+        "select_execution_mode",
+        "authorize",
+        "authorize_with_context"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/engine/fixed128_math.rs",
+      "sha": "e0e1d4b3fa47d40ac9b30ae14ea8b7ae0ac58313",
+      "verified": true,
+      "bytes": 15969,
+      "lines": 470,
+      "pub": [
+        "Fixed128",
+        "from_i64",
+        "to_i64_truncated",
+        "neg",
+        "add",
+        "sub",
+        "mul",
+        "div",
+        "abs"
+      ],
+      "hits": {}
+    },
+    {
+      "p": "core-kernel/src/engine/irl.rs",
+      "sha": "e07cef9d369957c4338fae0f153e311da0d36ee3",
+      "verified": true,
+      "bytes": 7270,
+      "lines": 240,
+      "pub": [
+        "ConfidenceBasis",
+        "ConfidenceEstimate",
+        "IRLProvenance",
+        "SensorInterface",
+        "new",
+        "capture",
+        "DataNormalizer",
+        "new",
+        "normalize",
+        "NoiseFilter",
+        "new",
+        "filter",
+        "ConfidenceEstimator",
+        "new",
+        "estimate",
+        "InputRealityResult",
+        "normalized_state",
+        "intent_tags",
+        "semantic_truth_authority_present",
+        "InputRealityLayer",
+        "new",
+        "ingest"
+      ],
+      "hits": {
+        "unwrap": [
+          225
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/engine/l10_cognition.rs",
+      "sha": "d3e91b3bc83536762be44b20c68bebaadd911369",
+      "verified": true,
+      "bytes": 62147,
+      "lines": 1826,
+      "pub": [
+        "CertaintyTier",
+        "semantic_name",
+        "lower_bound_with_policy",
+        "classify",
+        "CertaintyPolicy",
+        "OutputSelectionPolicy",
+        "is_valid",
+        "ConstraintClass",
+        "ConstraintMarker",
+        "ConstraintSet",
+        "as_slice",
+        "count_of",
+        "hard_count",
+        "soft_count",
+        "derived_count",
+        "L10SynthesisMode",
+        "L10ReasoningState",
+        "L10Output",
+        "canonical_output",
+        "EpeSignals",
+        "L10Fault",
+        "Token",
+        "L10Engine",
+        "cognize",
+        "cognize_with_policy",
+        "cognize_authoritative",
+        "cognize_or_freeze",
+        "RsaAuditResult",
+        "passed"
+      ],
+      "hits": {
+        "unwrap": [
+          1791,
+          1801,
+          1802
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/engine/law_enforcer.rs",
+      "sha": "593c00b374bc0c2291c23c036b27ec2e4e697855",
+      "verified": true,
+      "bytes": 50065,
+      "lines": 1156,
+      "pub": [
+        "LawProof",
+        "intelligence_threshold",
+        "Intent",
+        "classify_intent",
+        "CanonicalLawKind",
+        "CanonicalLaw",
+        "ConstraintLaws",
+        "AgentWeight",
+        "LawInput",
+        "LawEnforcer",
+        "register_agent",
+        "decay_agent_trust",
+        "recover_agent_trust",
+        "enforce",
+        "proof"
+      ],
+      "hits": {
+        "unwrap": [
+          945,
+          946,
+          947,
+          948
+        ]
+      }
+    },
+    {
+      "p": "core-kernel/src/engine/mod.rs",
+      "sha": "b1cf9e1f56199f836e749adc7227aa8d90f561ea",
+      "verified": true,
+      "bytes": 629,
+      "lines": 24,
+      "pub": [],
+      "hits": {}
+    }
+  ]
+}
