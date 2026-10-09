@@ -1,0 +1,201 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "source": "Original DOC-C P10025-P10351",
+  "coverage": "Full route wrapper contents only; delegated handler semantics E2E NOT_VERIFIED",
+  "rows": [
+    {
+      "method": "POST",
+      "route": "auth/request-otac",
+      "path": "apps/web/app/api/auth/request-otac/route.ts",
+      "sha": "ef7cbefc3cf339ab0b387a6ccf1f8de77038e5be",
+      "bytes": 288,
+      "exports": [
+        "POST"
+      ],
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/auth",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../lib/api-handler\";\nimport { handleRequestOtac } from \"../../../../../../packages/api/auth\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function POST(request: NextRequest) {\n  return runApiHandler(request, handleRequestOtac);\n}\n"
+    },
+    {
+      "method": "POST",
+      "route": "auth/verify-otac",
+      "path": "apps/web/app/api/auth/verify-otac/route.ts",
+      "sha": "ca62df87060264c279316c9e06b340d9a8ee6aa3",
+      "bytes": 286,
+      "exports": [
+        "POST"
+      ],
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/auth",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../lib/api-handler\";\nimport { handleVerifyOtac } from \"../../../../../../packages/api/auth\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function POST(request: NextRequest) {\n  return runApiHandler(request, handleVerifyOtac);\n}\n"
+    },
+    {
+      "method": "GET",
+      "route": "session/me",
+      "path": "apps/web/app/api/session/me/route.ts",
+      "sha": "7cd33f322e185485e386e431e5bd5a970f3374c0",
+      "bytes": 283,
+      "exports": [
+        "GET"
+      ],
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/auth",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../lib/api-handler\";\nimport { handleSessionMe } from \"../../../../../../packages/api/auth\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function GET(request: NextRequest) {\n  return runApiHandler(request, handleSessionMe);\n}\n"
+    },
+    {
+      "method": "POST",
+      "route": "auth/logout",
+      "path": "apps/web/app/api/auth/logout/route.ts",
+      "sha": "b154cdcf5b4bc56ffbc38fb7cb7047b1745eada9",
+      "bytes": 278,
+      "exports": [
+        "POST"
+      ],
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/auth",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../lib/api-handler\";\nimport { handleLogout } from \"../../../../../../packages/api/auth\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function POST(request: NextRequest) {\n  return runApiHandler(request, handleLogout);\n}\n"
+    },
+    {
+      "method": "POST",
+      "route": "directives",
+      "path": "apps/web/app/api/directives/route.ts",
+      "sha": "ba3fd8432902ad7c707767b97998b42b0db3d339",
+      "bytes": 482,
+      "exports": [
+        "POST",
+        "GET"
+      ],
+      "imports": [
+        "../../../lib/api-handler",
+        "../../../../../packages/api/directives",
+        "../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../lib/api-handler\";\nimport { handleCreateDirective } from \"../../../../../packages/api/directives\";\nimport { handleListDirectives } from \"../../../../../packages/api/canonical\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function POST(request: NextRequest) {\n  return runApiHandler(request, handleCreateDirective);\n}\n\nexport async function GET(request: NextRequest) {\n  return runApiHandler(request, handleListDirectives);\n}\n"
+    },
+    {
+      "method": "GET",
+      "route": "directives/[id]",
+      "path": "apps/web/app/api/directives/[id]/route.ts",
+      "sha": "e81c14e0f38f6d94b4dc91f84dfd4336e10ce087",
+      "bytes": 363,
+      "exports": [
+        "GET"
+      ],
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/directives",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../lib/api-handler\";\nimport { handleGetDirective } from \"../../../../../../packages/api/directives\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {\n  return runApiHandler(request, handleGetDirective, await context.params);\n}\n"
+    },
+    {
+      "method": "GET",
+      "route": "runs/[id]",
+      "path": "apps/web/app/api/runs/[id]/route.ts",
+      "sha": "3c18601e4d2b57d0eab650e13990dd06785bdc72",
+      "bytes": 351,
+      "exports": [
+        "GET"
+      ],
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/directives",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../lib/api-handler\";\nimport { handleGetRun } from \"../../../../../../packages/api/directives\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {\n  return runApiHandler(request, handleGetRun, await context.params);\n}\n"
+    },
+    {
+      "method": "POST",
+      "route": "freeze/recover",
+      "path": "apps/web/app/api/freeze/recover/route.ts",
+      "sha": "9496923925bec9270706fe86cf7095926931a7ee",
+      "bytes": 298,
+      "exports": [
+        "POST"
+      ],
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/directives",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../lib/api-handler\";\nimport { handleFreezeRecover } from \"../../../../../../packages/api/directives\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function POST(request: NextRequest) {\n  return runApiHandler(request, handleFreezeRecover);\n}\n"
+    },
+    {
+      "method": "POST",
+      "route": "vault/commit",
+      "path": "apps/web/app/api/vault/commit/route.ts",
+      "sha": "ed304f1a26f68b036a5fdd8a3f54c73cb7c9b7ac",
+      "bytes": 293,
+      "exports": [
+        "POST"
+      ],
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../lib/api-handler\";\nimport { handleVaultCommit } from \"../../../../../../packages/api/canonical\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function POST(request: NextRequest) {\n  return runApiHandler(request, handleVaultCommit);\n}\n"
+    },
+    {
+      "method": "GET",
+      "route": "artifacts/[id]/revisions",
+      "path": "apps/web/app/api/artifacts/[id]/revisions/route.ts",
+      "sha": "33cf0474c573bff081992fa426832962c2239040",
+      "bytes": 378,
+      "exports": [
+        "GET"
+      ],
+      "imports": [
+        "../../../../../lib/api-handler",
+        "../../../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../../lib/api-handler\";\nimport { handleArtifactRevisions } from \"../../../../../../../packages/api/canonical\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {\n  return runApiHandler(request, handleArtifactRevisions, await context.params);\n}\n"
+    },
+    {
+      "method": "GET",
+      "route": "incidents/[id]",
+      "path": "apps/web/app/api/incidents/[id]/route.ts",
+      "sha": "91d32f66dbab72708de80b57e9162bd17a0980e4",
+      "bytes": 354,
+      "exports": [
+        "GET"
+      ],
+      "imports": [
+        "../../../../lib/api-handler",
+        "../../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../../lib/api-handler\";\nimport { handleIncident } from \"../../../../../../packages/api/canonical\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {\n  return runApiHandler(request, handleIncident, await context.params);\n}\n"
+    },
+    {
+      "method": "GET",
+      "route": "audit-logs",
+      "path": "apps/web/app/api/audit-logs/route.ts",
+      "sha": "a3345d844dfff6822b604da5d53f2348a0ab9be8",
+      "bytes": 282,
+      "exports": [
+        "GET"
+      ],
+      "imports": [
+        "../../../lib/api-handler",
+        "../../../../../packages/api/canonical",
+        "next/server"
+      ],
+      "source": "import { runApiHandler } from \"../../../lib/api-handler\";\nimport { handleAuditLogs } from \"../../../../../packages/api/canonical\";\nimport type { NextRequest } from \"next/server\";\n\nexport async function GET(request: NextRequest) {\n  return runApiHandler(request, handleAuditLogs);\n}\n"
+    }
+  ]
+}
