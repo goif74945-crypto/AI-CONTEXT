@@ -1,0 +1,345 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    48,
+    60
+  ],
+  "total": 99,
+  "scope": "web source content read/index; not interactive acceptance",
+  "rows": [
+    {
+      "path": "apps/web/app/manifest.ts",
+      "blob": "2da3e6f7ae51b9bc7034ea4d9af437882b1d1d17",
+      "verified": true,
+      "bytes": 712,
+      "lines": 32,
+      "imports": [
+        "next"
+      ],
+      "handlers": [],
+      "hits": {}
+    },
+    {
+      "path": "apps/web/app/owner/page.tsx",
+      "blob": "0e21af99beaec63b5e5f87fbc7f6fc5db0dfcdb9",
+      "verified": true,
+      "bytes": 20119,
+      "lines": 571,
+      "imports": [
+        "react",
+        "next/link",
+        "../../components/PermissionGate",
+        "../../components/OwnerActionBar",
+        "../../lib/csrf"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          390,
+          398,
+          414,
+          429,
+          444,
+          491,
+          556
+        ],
+        "fetch": [
+          45,
+          89,
+          126,
+          162,
+          204,
+          239,
+          274
+        ],
+        "useClient": [
+          1
+        ],
+        "href": [
+          184,
+          366,
+          452,
+          465
+        ],
+        "placeholder": [
+          439,
+          443
+        ],
+        "aria": [
+          327
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/page.tsx",
+      "blob": "a307266a408c46d009b739afa6af684cd911e314",
+      "verified": true,
+      "bytes": 2480,
+      "lines": 69,
+      "imports": [
+        "react",
+        "next/navigation",
+        "../components/StatusChip",
+        "../components/DirectiveInput",
+        "../components/ModeTabs",
+        "../components/SystemStateProvider",
+        "../components/TrustExplainer"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          58,
+          61
+        ],
+        "useClient": [
+          1
+        ],
+        "placeholder": [
+          48
+        ],
+        "aria": [
+          32
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/runs/[id]/page.tsx",
+      "blob": "6f954de45fa8f6543f83b6f4d8d0ce5d543849db",
+      "verified": true,
+      "bytes": 4935,
+      "lines": 115,
+      "imports": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "../../../components/StatusChip",
+        "../../../components/LoadingSkeleton",
+        "../../../components/PermissionGate"
+      ],
+      "handlers": [],
+      "hits": {
+        "fetch": [
+          35,
+          45
+        ],
+        "useClient": [
+          1
+        ],
+        "href": [
+          73,
+          75,
+          87
+        ],
+        "aria": [
+          63
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/runs/page.tsx",
+      "blob": "a72baea1d88253f2a3b6b74733913485f7312207",
+      "verified": true,
+      "bytes": 1942,
+      "lines": 49,
+      "imports": [
+        "react",
+        "../../components/PipelineRunCard",
+        "../../components/LoadingSpinner"
+      ],
+      "handlers": [],
+      "hits": {
+        "fetch": [
+          12
+        ],
+        "useClient": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/settings/page.tsx",
+      "blob": "9426826fd6cb0108caca5f69bff4c46ead460132",
+      "verified": true,
+      "bytes": 9661,
+      "lines": 300,
+      "imports": [
+        "react",
+        "../../components/PermissionGate",
+        "../../lib/csrf"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          252,
+          288
+        ],
+        "fetch": [
+          36,
+          86,
+          133
+        ],
+        "useClient": [
+          1
+        ],
+        "placeholder": [
+          246,
+          272,
+          278
+        ],
+        "aria": [
+          186
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/status/page.tsx",
+      "blob": "61270ccda6750f2c786b40519fe99cedf58301c1",
+      "verified": true,
+      "bytes": 2649,
+      "lines": 60,
+      "imports": [
+        "react",
+        "../../components/StatusChip",
+        "../../components/SystemStateProvider",
+        "next/link"
+      ],
+      "handlers": [],
+      "hits": {
+        "useClient": [
+          1
+        ],
+        "href": [
+          49
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/unknown/page.tsx",
+      "blob": "3b0bbe3afe24340f73c6603386322dec4fb413b5",
+      "verified": true,
+      "bytes": 2192,
+      "lines": 61,
+      "imports": [
+        "react",
+        "../../components/SystemStateProvider"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          30,
+          37
+        ],
+        "useClient": [
+          1
+        ],
+        "aria": [
+          12,
+          44,
+          53
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/vault/[id]/page.tsx",
+      "blob": "b041b4dca1ebb088a0a84c198bda432c2ed635a5",
+      "verified": true,
+      "bytes": 5561,
+      "lines": 142,
+      "imports": [
+        "react",
+        "next/navigation",
+        "../../../lib/csrf",
+        "../../../components/LoadingSkeleton",
+        "../../../components/RevisionTable",
+        "../../../components/EmptyStateCard"
+      ],
+      "handlers": [],
+      "hits": {
+        "onClick": [
+          108,
+          112
+        ],
+        "fetch": [
+          34,
+          50,
+          78
+        ],
+        "useClient": [
+          1
+        ],
+        "href": [
+          63,
+          65
+        ],
+        "aria": [
+          97
+        ]
+      }
+    },
+    {
+      "path": "apps/web/app/vault/page.tsx",
+      "blob": "ce6eb1133f5692e5c8fee764499227a727b704be",
+      "verified": true,
+      "bytes": 2195,
+      "lines": 55,
+      "imports": [
+        "react",
+        "next/link",
+        "../../components/VaultArtifactCard",
+        "../../components/LoadingSkeleton"
+      ],
+      "handlers": [],
+      "hits": {
+        "fetch": [
+          13
+        ],
+        "useClient": [
+          1
+        ],
+        "href": [
+          30,
+          47
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/AuditLogTable.tsx",
+      "blob": "2605a2cc21dbb5c7a16c1f5cd4ddcc998daaaaf1",
+      "verified": true,
+      "bytes": 4144,
+      "lines": 99,
+      "imports": [
+        "react"
+      ],
+      "handlers": [
+        "AuditLogTable"
+      ],
+      "hits": {
+        "href": [
+          55,
+          87
+        ],
+        "role": [
+          66,
+          91
+        ],
+        "aria": [
+          75
+        ]
+      }
+    },
+    {
+      "path": "apps/web/components/AuditTable.tsx",
+      "blob": "c88df96305e075aeabd92e81526e14473bff65be",
+      "verified": true,
+      "bytes": 114,
+      "lines": 3,
+      "imports": [
+        "./AuditLogTable",
+        "./AuditLogTable"
+      ],
+      "handlers": [],
+      "hits": {}
+    }
+  ]
+}
