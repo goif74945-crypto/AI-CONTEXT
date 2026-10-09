@@ -1,0 +1,142 @@
+diff --git a/ai_ai/executor.py b/ai_ai/executor.py
+--- a/ai_ai/executor.py
++++ b/ai_ai/executor.py
+@@ -131,14 +131,22 @@
+             confirmed = locate_unique(read_screen(self.gui()), label)
+             if abs(confirmed.center[0] - hit.center[0]) > 8 or abs(confirmed.center[1] - hit.center[1]) > 8:
+                 raise ActionError("Visible target moved during OCR; refusing stale click")
++            # Adaptive third observation ONLY when the OCR center shifts.
++            # A small drift is still a change in evidence; reject instability
++            # rather than clicking the stale location from the first frame.
++            if confirmed.center != hit.center:
++                third = locate_unique(read_screen(self.gui()), label)
++                if third.center != confirmed.center:
++                    raise ActionError("Visible target remained unstable across OCR observations")
++                confirmed = third
+             # OCR may take seconds; check the target window again immediately
+             # before injecting the actual pointer event.
+             if expected_window is not None:
+                 self._assert_window(expected_window)
+             if cancel is not None and cancel.is_set():
+                 raise ActionError("Stopped by user")
+-            self.gui().click(*hit.center)
+-            return f"Clicked unique visible text {label!r} at {hit.center} (OCR confidence {hit.confidence:.0f})"
++            self.gui().click(*confirmed.center)
++            return f"Clicked unique visible text {label!r} at {confirmed.center} (OCR confidence {confirmed.confidence:.0f})"
+         return f"Verified visible text {label!r} (OCR confidence {hit.confidence:.0f})"
+ 
+     def _assert_window(self, title: str) -> str:
+diff --git a/tests/test_adaptive_click.py b/tests/test_adaptive_click.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_adaptive_click.py
+@@ -0,0 +1,109 @@
++"""AAI-20261009-002: adaptive screen target verification regressions."""
++import threading
++from unittest.mock import Mock
++import pytest
++from ai_ai.executor import Executor, ActionError
++from ai_ai.contracts import ProposedPlan
++from ai_ai.vision import TextHit, VisionError
++
++
++def typed(**kw):
++    return ProposedPlan.model_validate({"steps":[kw]}).steps[0]
++
++
++def hit(x=10, y=20, text="Save"):
++    return [TextHit(text, x, y, 40, 20, 95)]
++
++
++def run(monkeypatch, tmp_path, frames, *, cancel=None, title=None):
++    gui = Mock()
++    if title is not None:
++        gui.getActiveWindow.return_value.title = title
++    monkeypatch.setattr(Executor, "gui", staticmethod(lambda: gui))
++    scans = iter(frames)
++    monkeypatch.setattr("ai_ai.executor.read_screen", lambda _: next(scans))
++    step = typed(**{"tool": "desktop.click_text", "text": "Save", **({"window_title": title} if title else {})})
++    result = Executor(tmp_path).perform(step, cancel or threading.Event())
++    return gui, result
++
++
++def test_stable_target_uses_two_observations(monkeypatch, tmp_path):
++    gui, value = run(monkeypatch, tmp_path, [hit(), hit()])
++    gui.click.assert_called_once_with(30, 30)
++    assert "Clicked" in value
++
++
++def test_small_drift_requires_third_and_uses_latest_center(monkeypatch, tmp_path):
++    gui, _ = run(monkeypatch, tmp_path, [hit(10), hit(14), hit(14)])
++    gui.click.assert_called_once_with(34, 30)
++
++
++def test_slight_drift_then_more_movement_refuses_click(monkeypatch, tmp_path):
++    gui = Mock()
++    monkeypatch.setattr(Executor, "gui", staticmethod(lambda: gui))
++    seq = iter([hit(10), hit(14), hit(18)])
++    monkeypatch.setattr("ai_ai.executor.read_screen", lambda _: next(seq))
++    with pytest.raises(ActionError, match="unstable"):
++        Executor(tmp_path).perform(typed(**{"tool":"desktop.click_text", "text":"Save"}),threading.Event())
++    gui.click.assert_not_called()
++
++
++def test_larger_drift_refuses_without_third_capture(monkeypatch, tmp_path):
++    gui=Mock()
++    monkeypatch.setattr(Executor, "gui", staticmethod(lambda: gui))
++    seq=iter([hit(10),hit(19)])
++    monkeypatch.setattr("ai_ai.executor.read_screen",lambda _:next(seq))
++    with pytest.raises(ActionError, match="moved"):
++        Executor(tmp_path).perform(typed(**{"tool":"desktop.click_text","text":"Save"}),threading.Event())
++    gui.click.assert_not_called()
++
++
++def test_third_observation_ambiguous_blocks_click(monkeypatch, tmp_path):
++    gui=Mock()
++    monkeypatch.setattr(Executor, "gui", staticmethod(lambda: gui))
++    seq=iter([hit(10),hit(14),hit(14)+hit(500)])
++    monkeypatch.setattr("ai_ai.executor.read_screen",lambda _:next(seq))
++    with pytest.raises(VisionError, match="ambiguous"):
++        Executor(tmp_path).perform(typed(**{"tool":"desktop.click_text","text":"Save"}),threading.Event())
++    gui.click.assert_not_called()
++
++
++def test_final_window_check_after_third_capture(monkeypatch, tmp_path):
++    gui=Mock()
++    gui.getActiveWindow.return_value.title = "Editor"
++    monkeypatch.setattr(Executor,"gui",staticmethod(lambda:gui))
++    seq=iter([hit(10),hit(14),hit(14)])
++    def read(_):
++        frame=next(seq)
++        if frame[0].x==14:
++            gui.getActiveWindow.return_value.title="Other App"
++        return frame
++    monkeypatch.setattr("ai_ai.executor.read_screen",read)
++    with pytest.raises(ActionError, match="Active window"):
++        Executor(tmp_path).perform(typed(**{"tool":"desktop.click_text","text":"Save","window_title":"Editor"}),threading.Event())
++    gui.click.assert_not_called()
++
++
++def test_emergency_stop_after_third_capture(monkeypatch, tmp_path):
++    gui=Mock()
++    event=threading.Event()
++    monkeypatch.setattr(Executor,"gui",staticmethod(lambda:gui))
++    seq=iter([hit(10),hit(14),hit(14)])
++    def read(_):
++        frame=next(seq)
++        if frame[0].x == 14: event.set()
++        return frame
++    monkeypatch.setattr("ai_ai.executor.read_screen",read)
++    with pytest.raises(ActionError, match="Stopped"):
++        Executor(tmp_path).perform(typed(**{"tool":"desktop.click_text","text":"Save"}),event)
++    gui.click.assert_not_called()
++
++
++def test_no_click_if_target_disappears_third_scan(monkeypatch, tmp_path):
++    gui=Mock()
++    monkeypatch.setattr(Executor,"gui",staticmethod(lambda:gui))
++    seq=iter([hit(10),hit(14),[]])
++    monkeypatch.setattr("ai_ai.executor.read_screen",lambda _:next(seq))
++    with pytest.raises(VisionError, match="not found"):
++        Executor(tmp_path).perform(typed(**{"tool":"desktop.click_text","text":"Save"}),threading.Event())
++    gui.click.assert_not_called()
