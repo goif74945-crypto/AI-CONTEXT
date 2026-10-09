@@ -1,0 +1,163 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "source": "DOC-D P10580-P10595 component names",
+  "status": "Original 14 component full source files read; not rendered/browser E2E",
+  "rows": [
+    {
+      "name": "StatusChip",
+      "path": "apps/web/components/StatusChip.tsx",
+      "sha": "76d59895f4d510d7d05ae254e7fe4cdd264e039e",
+      "chars": 763,
+      "export_mentions": [],
+      "uses_role": true,
+      "uses_state": true,
+      "interactive": false,
+      "first_300_chars": "\"use client\";\n\nimport React from \"react\";\n\nconst STATE_STYLES: Record<string, string> = {\n  READY: \"border-neon-cyan text-neon-cyan\",\n  RUNNING: \"border-amber-gold text-amber-gold\",\n  STABLE: \"border-green-600 text-green-400\",\n  FREEZE: \"border-failsafe-red text-red-400\",\n  STOP: \"border-red-900 tex"
+    },
+    {
+      "name": "ModeTabs",
+      "path": "apps/web/components/ModeTabs.tsx",
+      "sha": "7ace6062dd635b5cd296289f624292f65e7a6404",
+      "chars": 903,
+      "export_mentions": [],
+      "uses_role": true,
+      "uses_state": false,
+      "interactive": true,
+      "first_300_chars": "\"use client\";\n\nimport React from \"react\";\n\nexport type FrontDoorMode = \"VIEW\" | \"RUN\" | \"FORGE\";\n\nexport interface ModeTabsProps {\n  readonly value: FrontDoorMode;\n  readonly onChange: (value: FrontDoorMode) => void;\n  readonly disabled?: boolean;\n}\n\nexport function ModeTabs({ value, onChange, disab"
+    },
+    {
+      "name": "DirectiveInput",
+      "path": "apps/web/components/DirectiveInput.tsx",
+      "sha": "a93f3f3cc35cbaabd863ca79f3a0fa48cc50a14a",
+      "chars": 1079,
+      "export_mentions": [],
+      "uses_role": false,
+      "uses_state": false,
+      "interactive": true,
+      "first_300_chars": "\"use client\";\n\nimport React from \"react\";\n\nexport interface DirectiveInputProps {\n  readonly id: string;\n  readonly value: string;\n  readonly onChange: (value: string) => void;\n  readonly label?: string;\n  readonly placeholder?: string;\n  readonly rows?: number;\n  readonly required?: boolean;\n  read"
+    },
+    {
+      "name": "ConstraintPanel",
+      "path": "apps/web/components/ConstraintPanel.tsx",
+      "sha": "897878624f2476d019a7f699caecaf6e4bb66494",
+      "chars": 2508,
+      "export_mentions": [],
+      "uses_role": false,
+      "uses_state": false,
+      "interactive": true,
+      "first_300_chars": "\"use client\";\n\nimport React from \"react\";\n\nexport type DirectiveMode = \"fast\" | \"strict\" | \"audit\";\nexport type DirectivePriority = \"LOW\" | \"NORMAL\" | \"HIGH\" | \"CRITICAL\";\n\nexport interface ConstraintPanelProps {\n  readonly mode: DirectiveMode;\n  readonly priority: DirectivePriority;\n  readonly allo"
+    },
+    {
+      "name": "SubmitButton",
+      "path": "apps/web/components/SubmitButton.tsx",
+      "sha": "796a7f70e15e6e4098357286bf2eadc78e6bc4bc",
+      "chars": 616,
+      "export_mentions": [],
+      "uses_role": false,
+      "uses_state": false,
+      "interactive": true,
+      "first_300_chars": "\"use client\";\n\nimport React from \"react\";\n\nexport interface SubmitButtonProps {\n  readonly disabled: boolean;\n  readonly pending?: boolean;\n  readonly label?: string;\n  readonly pendingLabel?: string;\n  readonly onClick?: () => void;\n}\n\nexport function SubmitButton({\n  disabled,\n  pending = false,\n "
+    },
+    {
+      "name": "FreezeBanner",
+      "path": "apps/web/components/FreezeBanner.tsx",
+      "sha": "1376d9a12c24226728a02dec4881f9a545185dc3",
+      "chars": 1292,
+      "export_mentions": [],
+      "uses_role": true,
+      "uses_state": true,
+      "interactive": false,
+      "first_300_chars": "import React from \"react\";\nimport type { DisplayState } from \"./SystemStateProvider\";\n\nexport interface FreezeBannerProps {\n  readonly systemState: DisplayState;\n}\n\nexport function FreezeBanner({ systemState }: FreezeBannerProps): React.ReactElement | null {\n  if (systemState === \"FREEZE\") {\n    ret"
+    },
+    {
+      "name": "IncidentCard",
+      "path": "apps/web/components/IncidentCard.tsx",
+      "sha": "077468a06a2c33fbec823ae077fe9238f377fb87",
+      "chars": 868,
+      "export_mentions": [],
+      "uses_role": false,
+      "uses_state": false,
+      "interactive": false,
+      "first_300_chars": "import React from \"react\";\n\nexport interface IncidentCardData {\n  readonly primary_error_code: string;\n  readonly trigger: string;\n  readonly blocking_layer: string;\n  readonly recoverable: boolean;\n  readonly trace_id: string;\n}\n\nexport interface IncidentCardProps {\n  readonly incident: IncidentCar"
+    },
+    {
+      "name": "RevisionTable",
+      "path": "apps/web/components/RevisionTable.tsx",
+      "sha": "99be2a98a7bd4e9ccaa7fd627a6fcdf2a02ec0ac",
+      "chars": 3334,
+      "export_mentions": [],
+      "uses_role": false,
+      "uses_state": true,
+      "interactive": true,
+      "first_300_chars": "\"use client\";\n\nimport React from \"react\";\n\nexport interface RevisionTableRow {\n  readonly revision_id: string;\n  readonly revision_no: number;\n  readonly created_at: string;\n  readonly created_by: string;\n  readonly content_hash: string;\n  readonly commit_count: number;\n  readonly status: \"ACTIVE\" |"
+    },
+    {
+      "name": "AuditTable",
+      "path": "apps/web/components/AuditTable.tsx",
+      "sha": "c88df96305e075aeabd92e81526e14473bff65be",
+      "chars": 114,
+      "export_mentions": [
+        "AuditLogTable"
+      ],
+      "uses_role": false,
+      "uses_state": false,
+      "interactive": false,
+      "first_300_chars": "export { AuditLogTable as AuditTable } from \"./AuditLogTable\";\nexport type { AuditEntry } from \"./AuditLogTable\";\n"
+    },
+    {
+      "name": "EmptyStateCard",
+      "path": "apps/web/components/EmptyStateCard.tsx",
+      "sha": "15357f67a97bdccd479636d1e5678ea2f0331cb8",
+      "chars": 479,
+      "export_mentions": [],
+      "uses_role": true,
+      "uses_state": true,
+      "interactive": false,
+      "first_300_chars": "import React from \"react\";\n\nexport type EmptyStateMessage =\n  | \"No directive yet\"\n  | \"No revisions yet\"\n  | \"No incidents recorded\"\n  | \"No active run\"\n  | \"You can start in VIEW, RUN, or FORGE\";\n\nexport interface EmptyStateCardProps {\n  readonly message: EmptyStateMessage;\n}\n\nexport function Empt"
+    },
+    {
+      "name": "PermissionGate",
+      "path": "apps/web/components/PermissionGate.tsx",
+      "sha": "240813a4c76f58312b1199825ae22faca3f70bfa",
+      "chars": 1850,
+      "export_mentions": [],
+      "uses_role": true,
+      "uses_state": true,
+      "interactive": false,
+      "first_300_chars": "\"use client\";\n\nimport React, { createContext, useContext, useEffect, useState } from \"react\";\n\nexport type AppRole = \"OWNER\" | \"OPERATOR\" | \"AUDITOR\";\n\ninterface SessionContextValue {\n  role: AppRole | null;\n  loading: boolean;\n  refresh: () => void;\n}\n\nconst SessionContext = createContext<SessionCo"
+    },
+    {
+      "name": "OwnerActionBar",
+      "path": "apps/web/components/OwnerActionBar.tsx",
+      "sha": "97d740eea5873c49f3e0be47d7873fd14b4eb0fb",
+      "chars": 309,
+      "export_mentions": [],
+      "uses_role": false,
+      "uses_state": false,
+      "interactive": false,
+      "first_300_chars": "import React from \"react\";\n\nexport interface OwnerActionBarProps {\n  readonly children: React.ReactNode;\n}\n\nexport function OwnerActionBar({ children }: OwnerActionBarProps): React.ReactElement {\n  return (\n    <div className=\"owner-action-bar\" aria-label=\"Owner controls\">\n      {children}\n    </div"
+    },
+    {
+      "name": "LoadingSkeleton",
+      "path": "apps/web/components/LoadingSkeleton.tsx",
+      "sha": "bd5b6dcdc6cf73fe8e4b4bdc78b17e45c94ce474",
+      "chars": 401,
+      "export_mentions": [],
+      "uses_role": true,
+      "uses_state": true,
+      "interactive": false,
+      "first_300_chars": "import React from \"react\";\n\nexport interface LoadingSkeletonProps {\n  readonly label: string;\n  readonly className?: string;\n}\n\nexport function LoadingSkeleton({ label, className }: LoadingSkeletonProps): React.ReactElement {\n  return (\n    <div\n      className={[\"skeleton-panel\", className ?? \"\"].j"
+    },
+    {
+      "name": "TrustExplainer",
+      "path": "apps/web/components/TrustExplainer.tsx",
+      "sha": "3e2e5f4030096aab7feae5c1f4da6a9e4430b697",
+      "chars": 1494,
+      "export_mentions": [],
+      "uses_role": false,
+      "uses_state": true,
+      "interactive": true,
+      "first_300_chars": "\"use client\";\n\nimport React, { useEffect, useState } from \"react\";\n\nconst STEPS = [\n  \"One-output rule: NEXY releases one canonical answer, not hidden partial variants.\",\n  \"FREEZE protects integrity: blocked evidence is shown instead of guessed success.\",\n  \"Choose VIEW, RUN, or FORGE based on what"
+    }
+  ]
+}
