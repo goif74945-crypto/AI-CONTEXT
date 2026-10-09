@@ -1,0 +1,227 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    12,
+    24
+  ],
+  "total": 57,
+  "scope": "full schema/migration source reads, exact SHA and DDL scan; not an applied migration or rollback runtime",
+  "rows": [
+    {
+      "path": "prisma/migrations/20260922193000_otac_tuple_lock/migration.down.sql",
+      "sha": "99ec66e3cf1e9df943f52cba2dbf12e6eef1b443",
+      "verified": true,
+      "lines": 2,
+      "size": 43,
+      "hits": {
+        "DROP": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922193000_otac_tuple_lock/migration.sql",
+      "sha": "33892bad4ca2c12d4dc902a9f409f8457c6aa8db",
+      "verified": true,
+      "lines": 46,
+      "size": 1698,
+      "hits": {
+        "UNIQUE": [
+          40
+        ],
+        "CREATE": [
+          22
+        ],
+        "TRANSACTION": [
+          6
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922201000_canonical_user_ownership/migration.down.sql",
+      "sha": "53e6c450cdcee67cdde11a57b58372f9c2cfe642",
+      "verified": true,
+      "lines": 15,
+      "size": 487,
+      "hits": {
+        "DROP": [
+          1,
+          3,
+          4,
+          7
+        ],
+        "CASCADE": [
+          14
+        ],
+        "ALTER": [
+          2,
+          6,
+          8,
+          11
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922201000_canonical_user_ownership/migration.sql",
+      "sha": "ba1e85a5ca9b8dd585ce789c1af39df3e3c693e1",
+      "verified": true,
+      "lines": 68,
+      "size": 2131,
+      "hits": {
+        "DROP": [
+          22
+        ],
+        "CASCADE": [
+          29,
+          66
+        ],
+        "UNIQUE": [
+          5
+        ],
+        "ALTER": [
+          21,
+          23,
+          26,
+          34,
+          61,
+          63
+        ],
+        "TRANSACTION": [
+          13,
+          53
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922204000_auth_privacy_metadata/migration.down.sql",
+      "sha": "2edfb6dee1bd7294f559597b9bb33ee8452e5acc",
+      "verified": true,
+      "lines": 16,
+      "size": 623,
+      "hits": {
+        "TRANSACTION": [
+          6,
+          8,
+          11,
+          13
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922204000_auth_privacy_metadata/migration.sql",
+      "sha": "cee7bd7c9f5317e64949e80e7edf714e1da371c3",
+      "verified": true,
+      "lines": 41,
+      "size": 1128,
+      "hits": {
+        "DROP": [
+          23,
+          40
+        ],
+        "ALTER": [
+          8,
+          16,
+          22,
+          25,
+          33,
+          39
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922210000_directive_idempotency_fingerprint/migration.down.sql",
+      "sha": "c7642bd031a05aeeedc148a50f6d37bc4ac49115",
+      "verified": true,
+      "lines": 3,
+      "size": 75,
+      "hits": {
+        "DROP": [
+          2
+        ],
+        "ALTER": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922210000_directive_idempotency_fingerprint/migration.sql",
+      "sha": "9c3e2c8fe999f6e5644a4dc14e952d3bae599cbf",
+      "verified": true,
+      "lines": 30,
+      "size": 863,
+      "hits": {
+        "ALTER": [
+          5,
+          28
+        ],
+        "TRANSACTION": [
+          16
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922222000_audit_chain_head/migration.down.sql",
+      "sha": "4f5e9d6880dc074dd3569ca414c50e46a990da1e",
+      "verified": true,
+      "lines": 42,
+      "size": 800,
+      "hits": {
+        "DROP": [
+          41
+        ],
+        "TRANSACTION": [
+          10
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922222000_audit_chain_head/migration.sql",
+      "sha": "b3309de0e3e7d14cb8aaf61620fe957b3ffbcb03",
+      "verified": true,
+      "lines": 121,
+      "size": 2865,
+      "hits": {
+        "CREATE": [
+          5
+        ],
+        "TRANSACTION": [
+          17,
+          76
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922224500_session_device_binding/migration.down.sql",
+      "sha": "95281e05603f0f34ab27b282c7d0e47eda86e361",
+      "verified": true,
+      "lines": 8,
+      "size": 373,
+      "hits": {
+        "DROP": [
+          5,
+          7
+        ],
+        "ALTER": [
+          4,
+          6
+        ],
+        "TRANSACTION": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260922224500_session_device_binding/migration.sql",
+      "sha": "cc8d6fe1c8809572b680eb85709115b25eb8b19d",
+      "verified": true,
+      "lines": 18,
+      "size": 538,
+      "hits": {
+        "ALTER": [
+          5,
+          12
+        ]
+      }
+    }
+  ]
+}
