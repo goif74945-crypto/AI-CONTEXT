@@ -1,0 +1,10 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "source_blob": "bb6134ab1946c8cfa8f130eb7eea5a777d02c58e",
+  "target": "packages/auth/otac.ts",
+  "old_exact": "  if (a.length !== b.length) return false;\n  return timingSafeEqual(Buffer.from(a, \"utf8\"), Buffer.from(b, \"utf8\"));",
+  "new_exact": "  const left = Buffer.from(a, \"utf8\");\n  const right = Buffer.from(b, \"utf8\");\n  if (left.length !== right.length) return false;\n  return timingSafeEqual(left, right);",
+  "runner": "Floot Node22 isolated VM",
+  "result": "{\"red\":{\"exit\":1,\"pass\":2,\"fail\":1},\"green\":{\"exit\":0,\"pass\":3,\"fail\":0},\"sourceMatchedBefore\":true,\"patchApplied\":true}\n[exit code 0]",
+  "scope": "isolated proof-of-fix only; Product NOT mutated or broad repo tested"
+}
