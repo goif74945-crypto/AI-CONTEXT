@@ -1,0 +1,318 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "source read, separate experimental build scope; NOT execution or DOC-C certification",
+  "all": 126,
+  "range": [
+    12,
+    24
+  ],
+  "rows": [
+    {
+      "path": "packages/phase-f/game/g15-simulation-law.ts",
+      "sha": "de20edfb4369a0a0c64165a596f6efc979407784",
+      "verified": true,
+      "lines": 442,
+      "imports": [
+        "node:crypto",
+        "./numeric-law.js"
+      ],
+      "exports": [
+        "canonicalBroadphasePairs",
+        "deterministicSatCollision",
+        "canonicalFeaturePairs",
+        "canonicalContactManifold",
+        "runFixedConstraintSolver",
+        "sequentialAccumulate",
+        "validateSimdPolicy",
+        "canonicalAiQueue",
+        "xorshift128plusCounterV1",
+        "authoritativePhysicsMesh",
+        "verifyCompilerNumericEvidence",
+        "finalNumericInvariantHash"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/g19-hardware-admission.ts",
+      "sha": "deab693e0dc101530e0e73452060f24ce0d11615",
+      "verified": true,
+      "lines": 289,
+      "imports": [
+        "node:crypto"
+      ],
+      "exports": [
+        "cpuModelHash",
+        "computeNodeBootHash",
+        "evaluateG19Admission"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/g4-g10-guardrails.ts",
+      "sha": "127b05cbd0db5509b4491e6cba35f2dc03e5708a",
+      "verified": true,
+      "lines": 418,
+      "imports": [
+        "node:crypto",
+        "../universe/sandbox-guard.js",
+        "./spec/game-spec.js"
+      ],
+      "exports": [
+        "validateCreatorBuild",
+        "validateAaaaPerformanceEvidence",
+        "classifyCheatSignal",
+        "conversionFormulaHash",
+        "convertLocalToCsuExact",
+        "createCsuConversionLedger",
+        "verifyPublicGameDeployment",
+        "validateGameUpdate",
+        "validateGameHardLimits"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/mesh-canon.ts",
+      "sha": "7455c9930b6abf6e4a0116dc61de4b080036f3ae",
+      "verified": true,
+      "lines": 288,
+      "imports": [
+        "node:crypto",
+        "./numeric-law.js"
+      ],
+      "exports": [
+        "computeTriangleTangentQ64",
+        "validateMesh",
+        "meshBounds",
+        "canonicalizeMesh",
+        "canonicalizeMeshWithMetadata",
+        "meshFingerprint"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/ncf-chaos.ts",
+      "sha": "c6c2dc04ff815adac1cff5bac50de1aa2e2d90e0",
+      "verified": true,
+      "lines": 327,
+      "imports": [
+        "node:crypto",
+        "../../core/canonical-order.js",
+        "./ncf-governance.js"
+      ],
+      "exports": [
+        "ATTACK_VECTORS",
+        "CHAOS_INVARIANTS",
+        "createAttackScenario",
+        "runChaosSimulation",
+        "publicChaosReport",
+        "applyChaosFailure",
+        "requiredChaosRuns",
+        "applyAnchoredChaosFailure"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/ncf-governance.ts",
+      "sha": "563f60f78c7c2390a91f6b3b1364e92ddb8c19b0",
+      "verified": true,
+      "lines": 688,
+      "imports": [
+        "node:crypto",
+        "../../core/canonical-order.js"
+      ],
+      "exports": [
+        "STATIC_CODES",
+        "HUMAN_CODES",
+        "GovernedCapabilityRegistry",
+        "computeEnvelopeHash",
+        "buildPublicRegistrySnapshot"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/ncf-publication.ts",
+      "sha": "b8eeff11bf2eae36f6146cc47b7b848297844fdd",
+      "verified": true,
+      "lines": 112,
+      "imports": [
+        "node:crypto",
+        "./ncf-governance.js"
+      ],
+      "exports": [
+        "createRegistryForkEvent",
+        "publicRegistrySnapshotDigest",
+        "verifyPublicRegistryPublication"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/ncf-registry.ts",
+      "sha": "20f158a0b212915ec7fcc1cb3c8fac83e986fd4f",
+      "verified": true,
+      "lines": 79,
+      "imports": [
+        "./ncf-governance.js",
+        "./ncf-chaos.js",
+        "./ncf-publication.js"
+      ],
+      "exports": [
+        "NCF_CANONICAL_MODULES"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/netcode.ts",
+      "sha": "fa598be05be2bb03ba1925e6538f4cea3814a1aa",
+      "verified": true,
+      "lines": 447,
+      "imports": [
+        "./canonical-order.js",
+        "node:crypto",
+        "zod",
+        "./spec/game-spec.js"
+      ],
+      "exports": [
+        "PacketSchema",
+        "computeShardStateHash",
+        "encodeCanonicalPacket",
+        "packetDigest",
+        "canonicalPacketKey",
+        "packetAge",
+        "targetInputTick",
+        "inputMerkleRoot",
+        "processPacket",
+        "createNetworkAuthority",
+        "createStateBroadcast",
+        "verifyStateBroadcast",
+        "clientPrediction",
+        "authoritativeCorrection",
+        "regionRelayPayload",
+        "createRegionRelayEnvelope",
+        "verifyRegionRelayEnvelope",
+        "canonicalRegionRelayOrder",
+        "protocolAdmission"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/numeric-law.ts",
+      "sha": "62ec68ae19ec5554c7c357d5f9cae2838d1dba01",
+      "verified": true,
+      "lines": 121,
+      "imports": [],
+      "exports": [
+        "NumericOverflowError",
+        "Q64_SHIFT",
+        "Q64_ONE",
+        "I128_MAX",
+        "I128_MIN",
+        "fromRaw",
+        "fromInt",
+        "fromRatio",
+        "add",
+        "sub",
+        "mul",
+        "div",
+        "neg",
+        "abs",
+        "eq",
+        "lt",
+        "lte",
+        "gt",
+        "gte",
+        "min",
+        "max",
+        "toIntTrunc",
+        "toDecimalString"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/runtime/cycle-bridge.ts",
+      "sha": "6d5c6fec32bfbb2ebb98617310e45c529a2ddf67",
+      "verified": true,
+      "lines": 88,
+      "imports": [
+        "../../../core/tick.js",
+        "../../../core/ulid.js",
+        "./wasm.js",
+        "./webgpu.js"
+      ],
+      "exports": [
+        "createCycleBridge"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/runtime/hybrid-bridge.ts",
+      "sha": "2dc8248dfcb90ccd788522527a58683e4527c44e",
+      "verified": true,
+      "lines": 285,
+      "imports": [
+        "node:crypto",
+        "../../../core/ulid.js",
+        "./wasm-runtime.js",
+        "./webgpu-runtime.js"
+      ],
+      "exports": [
+        "TICK_HZ",
+        "TICK_INTERVAL_MS",
+        "deriveTickSeed",
+        "createHybridBridge",
+        "_internals"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [
+          94,
+          104
+        ],
+        "nondeterminism": []
+      }
+    }
+  ]
+}
