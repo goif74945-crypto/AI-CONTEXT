@@ -1,0 +1,177 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index; NOT execution",
+  "all_tests": 122,
+  "range": [
+    72,
+    84
+  ],
+  "rows": [
+    {
+      "path": "tests/contract/migration-rollback-contract.test.ts",
+      "sha": "a9753b002c92579f1d45087b0da51a2f0b871592",
+      "verified": true,
+      "lines": 50,
+      "tests": 3,
+      "assertions": 10,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/module-boundaries.test.ts",
+      "sha": "b5db76d5ce6621c51f9216b52636b20e660a1956",
+      "verified": true,
+      "lines": 73,
+      "tests": 3,
+      "assertions": 3,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "../../scripts/check-module-boundaries.js",
+        "../../packages/core/state.js",
+        "../../apps/web/presentation.js"
+      ]
+    },
+    {
+      "path": "tests/contract/next-security-boundary.test.ts",
+      "sha": "a4f438252c08f66417eb09feacf334c8bd40bc44",
+      "verified": true,
+      "lines": 69,
+      "tests": 4,
+      "assertions": 21,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "next/server",
+        "../../packages/api/middleware/csp.js",
+        "../../packages/api/middleware/cors.js",
+        "../../apps/web/proxy.js"
+      ]
+    },
+    {
+      "path": "tests/contract/observability-alarm-wiring.test.ts",
+      "sha": "a36e0b0565ffad860164f4cde6209a7a20501d96",
+      "verified": true,
+      "lines": 60,
+      "tests": 6,
+      "assertions": 8,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "node:path"
+      ]
+    },
+    {
+      "path": "tests/contract/otac-alphabet.test.ts",
+      "sha": "f1b6f028ea9ba8e66053ca06143ad36bb19fd95f",
+      "verified": true,
+      "lines": 67,
+      "tests": 3,
+      "assertions": 9,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/auth/otac.js"
+      ]
+    },
+    {
+      "path": "tests/contract/owner-cancel-race.test.ts",
+      "sha": "cc9f7d51a648ba42e214995b97fa433dd567b34f",
+      "verified": true,
+      "lines": 290,
+      "tests": 3,
+      "assertions": 15,
+      "mocks": 7,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../packages/queue/run-state.js"
+      ]
+    },
+    {
+      "path": "tests/contract/owner-recovery-csrf.test.ts",
+      "sha": "70a5ec158f7c6dbcd5328f461e3851ad6e0f1cf9",
+      "verified": true,
+      "lines": 26,
+      "tests": 1,
+      "assertions": 3,
+      "mocks": 1,
+      "imports": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/owner-release-revoke.test.ts",
+      "sha": "ccc72c3c2187296955c6ac67618ca15fe0aa6b95",
+      "verified": true,
+      "lines": 35,
+      "tests": 4,
+      "assertions": 11,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/contracts/owner.js",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/owner-role-management.test.ts",
+      "sha": "2dc0dc67e6744e08fd4cf654080129f98678c589",
+      "verified": true,
+      "lines": 26,
+      "tests": 2,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/validation/api.schema.js",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/owner-session-cap-confirmation.test.ts",
+      "sha": "3e254036b146209fb787e2bcba2b586a0e7e08ab",
+      "verified": true,
+      "lines": 19,
+      "tests": 2,
+      "assertions": 6,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/pgcrypto-resolution.test.ts",
+      "sha": "24d8e50d826f25411ecac00cce0a7b215cbb5b6c",
+      "verified": true,
+      "lines": 16,
+      "tests": 0,
+      "assertions": 2,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/pipeline-failure-incident-linkage.test.ts",
+      "sha": "975bc2323577ae7c3eb52b3d4f73d48f14cf0b4f",
+      "verified": true,
+      "lines": 270,
+      "tests": 7,
+      "assertions": 17,
+      "mocks": 6,
+      "imports": [
+        "vitest"
+      ]
+    }
+  ]
+}
