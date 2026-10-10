@@ -12,6 +12,7 @@
     "product_head",
     "spec_sha256",
     "source_inventory",
+    "spec_inventory",
     "atoms",
     "doc_e",
     "overall_status"
@@ -61,6 +62,10 @@
           "minimum": 0
         },
         "unread_or_error_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "binary_classified": {
           "type": "integer",
           "minimum": 0
         }
@@ -114,6 +119,42 @@
         },
         "evidence_locator": {
           "type": "string"
+        }
+      }
+    },
+    "spec_inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "normalized_atomic_count",
+        "in_scope_atomic_count",
+        "excluded_atomic_count",
+        "unresolved_authority_conflicts",
+        "all_clauses_enumerated",
+        "source_register_sha256"
+      ],
+      "properties": {
+        "normalized_atomic_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "in_scope_atomic_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "excluded_atomic_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved_authority_conflicts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "all_clauses_enumerated": {
+          "type": "boolean"
+        },
+        "source_register_sha256": {
+          "$ref": "#/$defs/sha256"
         }
       }
     }
@@ -505,9 +546,236 @@
                 ]
               }
             }
+          },
+          "spec_inventory": {
+            "properties": {
+              "all_clauses_enumerated": {
+                "const": true
+              },
+              "unresolved_authority_conflicts": {
+                "const": 0
+              }
+            }
           }
         }
       }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E1"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E2"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E3"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E4"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E5"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E6"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E7"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E8"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E9"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E10"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E11"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "doc_e": {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "E12"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
     }
-  ]
+  ],
+  "$comment": "JSON Schema is a structural gate, not proof that referenced tool logs exist; use the separate V8 evidence verifier + independent log/HEAD readback."
 }
