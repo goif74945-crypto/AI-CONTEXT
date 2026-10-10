@@ -1,0 +1,181 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index; NOT execution",
+  "all_tests": 122,
+  "range": [
+    96,
+    108
+  ],
+  "rows": [
+    {
+      "path": "tests/contract/runtime-config-judge.test.ts",
+      "sha": "3eaa6362acc898e05536c3be2ef1f5326557f8fc",
+      "verified": true,
+      "lines": 37,
+      "tests": 2,
+      "assertions": 3,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/judge/consensus.js",
+        "../../packages/orch-core/orchestrator.js"
+      ]
+    },
+    {
+      "path": "tests/contract/runtime-config-release-atomicity.test.ts",
+      "sha": "14b9ad5b8fa798bfc1fa035e7ed4a6b48da68d11",
+      "verified": true,
+      "lines": 14,
+      "tests": 1,
+      "assertions": 3,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/runtime-config.test.ts",
+      "sha": "3999fa98ecc896e90c12a97c93eb75301d42ecdb",
+      "verified": true,
+      "lines": 88,
+      "tests": 7,
+      "assertions": 10,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "../../packages/contracts/runtime-config.js",
+        "../../packages/config/runtime-config.js"
+      ]
+    },
+    {
+      "path": "tests/contract/sandbox-depth-buildtime-law.test.ts",
+      "sha": "13c52ab19edb8def28e34217298c4452ffa4f5c5",
+      "verified": true,
+      "lines": 157,
+      "tests": 7,
+      "assertions": 25,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:url",
+        "node:path",
+        "node:child_process",
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-guard.js",
+        "../../packages/phase-f/universe/sandbox-guard.js",
+        "../../packages/phase-f/universe/sandbox-guard.js"
+      ]
+    },
+    {
+      "path": "tests/contract/scope-boundary.test.ts",
+      "sha": "ef793fbcf01e00fb06610950737309ce4cb56cdd",
+      "verified": true,
+      "lines": 74,
+      "tests": 3,
+      "assertions": 11,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:path",
+        "vitest",
+        "../../config/experimental-scope.js"
+      ]
+    },
+    {
+      "path": "tests/contract/secrets-provider-boundary.test.ts",
+      "sha": "f644da3922e252363dbba7e818d50181c6566d15",
+      "verified": true,
+      "lines": 66,
+      "tests": 3,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/secrets/provider.js"
+      ]
+    },
+    {
+      "path": "tests/contract/state-matrix.test.ts",
+      "sha": "9459dbee70b75631b1d0204110116aa2e4be6239",
+      "verified": true,
+      "lines": 110,
+      "tests": 9,
+      "assertions": 22,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/core/vnext-state-matrix.js"
+      ]
+    },
+    {
+      "path": "tests/contract/static-determinism-gate.test.ts",
+      "sha": "366f648543828cb719073abc4dd039c6b809f1a4",
+      "verified": true,
+      "lines": 246,
+      "tests": 10,
+      "assertions": 25,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:os",
+        "node:path",
+        "vitest",
+        "../../scripts/check-static-determinism.js"
+      ]
+    },
+    {
+      "path": "tests/contract/storage-fk-contract.test.ts",
+      "sha": "0f08c026b2fa22a7673d3094f6326125a296c5ee",
+      "verified": true,
+      "lines": 54,
+      "tests": 4,
+      "assertions": 21,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/storage-hard-delete-integrity.test.ts",
+      "sha": "1640a3c8a4524cd1aff1c3216cbc14e82f5f870a",
+      "verified": true,
+      "lines": 17,
+      "tests": 1,
+      "assertions": 4,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/storage-provider-integrity.test.ts",
+      "sha": "9bc19bd353c97397bd0f055e1fcd7dca24a36d0f",
+      "verified": true,
+      "lines": 12,
+      "tests": 1,
+      "assertions": 2,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/storage-provider-lineage.test.ts",
+      "sha": "8ff4545e34979764f6a3425b0cb5ead54343404b",
+      "verified": true,
+      "lines": 23,
+      "tests": 2,
+      "assertions": 7,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    }
+  ]
+}
