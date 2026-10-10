@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/goif74945-crypto/AI-CONTEXT/blob/main/EXECUTION/20261011-NEXY-V8-ATOMIC-EVIDENCE-SCHEMA.json",
+  "title": "NEXY-IGNIS V8 exact-head atomic evidence record (format guard only)",
+  "description": "Format validation is NOT factual verification; implementation must corroborate all hashes, commands, proof logs and approval with actual source and tooling.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "product",
+    "branch",
+    "product_head",
+    "spec_sha256",
+    "source_inventory",
+    "atoms",
+    "doc_e",
+    "overall_status"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "product": {
+      "const": "goif74945-crypto/NEXY.AI-"
+    },
+    "branch": {
+      "const": "NEXY.ai"
+    },
+    "product_head": {
+      "$ref": "#/$defs/sha40"
+    },
+    "spec_sha256": {
+      "const": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7"
+    },
+    "source_inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tracked_files",
+        "eligible_text_files",
+        "full_text_reads",
+        "semantic_reviews",
+        "unread_or_error_files"
+      ],
+      "properties": {
+        "tracked_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "eligible_text_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "full_text_reads": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "semantic_reviews": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unread_or_error_files": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "atoms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/atom"
+      }
+    },
+    "doc_e": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "$ref": "#/$defs/docE"
+      }
+    },
+    "overall_status": {
+      "enum": [
+        "PARTIAL",
+        "BLOCKED",
+        "FAILED",
+        "ACCEPTED"
+      ]
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "status",
+        "evidence_locator"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "authorized_human",
+            "explicit_authority",
+            "not_required"
+          ]
+        },
+        "status": {
+          "enum": [
+            "PENDING",
+            "VERIFIED",
+            "NOT_REQUIRED"
+          ]
+        },
+        "evidence_locator": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha40": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "git_blob_sha",
+        "review_status"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "git_blob_sha": {
+          "$ref": "#/$defs/sha40"
+        },
+        "review_status": {
+          "enum": [
+            "PATH_ONLY",
+            "READ_FULL",
+            "SEMANTICALLY_REVIEWED"
+          ]
+        }
+      }
+    },
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "command_or_test",
+        "exit_code",
+        "log_sha256",
+        "source_head",
+        "environment"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "POSITIVE",
+            "NEGATIVE",
+            "ADVERSARIAL",
+            "PROPERTY",
+            "MUTATION",
+            "MODEL",
+            "INTEGRATION",
+            "E2E",
+            "BUILD",
+            "CI",
+            "REVIEW",
+            "OTHER"
+          ]
+        },
+        "command_or_test": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exit_code": {
+          "type": "integer"
+        },
+        "log_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_head": {
+          "$ref": "#/$defs/sha40"
+        },
+        "environment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_locator": {
+          "type": "string"
+        }
+      }
+    },
+    "atom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "spec_locator",
+        "applicability",
+        "verdict",
+        "source_refs",
+        "runtime_proofs"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "spec_locator": {
+          "type": "string",
+          "pattern": "^P[0-9]{4,5}(:[A-Za-z0-9._-]+)?$"
+        },
+        "applicability": {
+          "enum": [
+            "APPLICABLE",
+            "EXCLUDED",
+            "AMBIGUOUS"
+          ]
+        },
+        "verdict": {
+          "enum": [
+            "NOT_VERIFIED",
+            "VERIFIED_COMPLIANT",
+            "FIXED_AND_VERIFIED",
+            "FAILED",
+            "BLOCKED",
+            "EXCLUDED"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "runtime_proofs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/proof"
+          }
+        },
+        "commit_sha": {
+          "$ref": "#/$defs/sha40"
+        },
+        "remote_readback_sha": {
+          "$ref": "#/$defs/sha40"
+        },
+        "finding": {
+          "type": "string"
+        },
+        "blocker": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verdict": {
+                "enum": [
+                  "VERIFIED_COMPLIANT",
+                  "FIXED_AND_VERIFIED"
+                ]
+              }
+            },
+            "required": [
+              "verdict"
+            ]
+          },
+          "then": {
+            "properties": {
+              "source_refs": {
+                "minItems": 1
+              },
+              "runtime_proofs": {
+                "minItems": 2,
+                "allOf": [
+                  {
+                    "contains": {
+                      "properties": {
+                        "kind": {
+                          "const": "POSITIVE"
+                        },
+                        "exit_code": {
+                          "const": 0
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "exit_code"
+                      ]
+                    }
+                  },
+                  {
+                    "contains": {
+                      "properties": {
+                        "kind": {
+                          "enum": [
+                            "NEGATIVE",
+                            "ADVERSARIAL",
+                            "PROPERTY",
+                            "MODEL"
+                          ]
+                        },
+                        "exit_code": {
+                          "const": 0
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "exit_code"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "verdict": {
+                "const": "FIXED_AND_VERIFIED"
+              }
+            },
+            "required": [
+              "verdict"
+            ]
+          },
+          "then": {
+            "required": [
+              "commit_sha",
+              "remote_readback_sha"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "verdict": {
+                "const": "EXCLUDED"
+              }
+            },
+            "required": [
+              "verdict"
+            ]
+          },
+          "then": {
+            "properties": {
+              "applicability": {
+                "const": "EXCLUDED"
+              }
+            },
+            "required": [
+              "finding"
+            ]
+          }
+        }
+      ]
+    },
+    "docE": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "source_head"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "status": {
+          "enum": [
+            "NOT_VERIFIED",
+            "PASSED",
+            "FAILED",
+            "BLOCKED"
+          ]
+        },
+        "source_head": {
+          "$ref": "#/$defs/sha40"
+        },
+        "proof_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "artifact_locator": {
+          "type": "string"
+        },
+        "approval_ref": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "PASSED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "proof_sha256",
+              "artifact_locator"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "overall_status": {
+            "const": "ACCEPTED"
+          }
+        },
+        "required": [
+          "overall_status"
+        ]
+      },
+      "then": {
+        "required": [
+          "approval"
+        ],
+        "properties": {
+          "approval": {
+            "properties": {
+              "status": {
+                "const": "VERIFIED"
+              }
+            }
+          },
+          "source_inventory": {
+            "properties": {
+              "unread_or_error_files": {
+                "const": 0
+              }
+            }
+          },
+          "atoms": {
+            "not": {
+              "contains": {
+                "properties": {
+                  "verdict": {
+                    "enum": [
+                      "NOT_VERIFIED",
+                      "FAILED",
+                      "BLOCKED"
+                    ]
+                  }
+                },
+                "required": [
+                  "verdict"
+                ]
+              }
+            }
+          },
+          "doc_e": {
+            "not": {
+              "contains": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "NOT_VERIFIED",
+                      "FAILED",
+                      "BLOCKED"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
