@@ -1,0 +1,257 @@
+{
+  "type": "DOC_C_26_DEFAULTS_STATIC_SOURCE_LITERAL_CHECK",
+  "spec_sha256": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "spec_p_anchors": "P9912-P9949",
+  "product_head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "source_path": "packages/api/vnext-config.ts",
+  "source_blob_sha": "a3141a649be7e40ec79f417f53bba9b73081232b",
+  "source_bytes": 3131,
+  "comparison_method": "Bounded section-scoped literal regex against 26 numeric fields manually read from hash-verified DOCX; no code runtime executed",
+  "count": 26,
+  "static_values_matching": 26,
+  "mismatches": [],
+  "rows": [
+    {
+      "id": "DOC-C:P9913:confidence_min",
+      "section": "release",
+      "field": "confidence_min",
+      "expected": 0.85,
+      "source_value": 0.85,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9913:deterministic_match_min",
+      "section": "release",
+      "field": "deterministic_match_min",
+      "expected": 0.9,
+      "source_value": 0.9,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9913:quorum_min",
+      "section": "release",
+      "field": "quorum_min",
+      "expected": 2,
+      "source_value": 2,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9913:evidence_min",
+      "section": "release",
+      "field": "evidence_min",
+      "expected": 2,
+      "source_value": 2,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9919:decompose_timeout_ms",
+      "section": "pipeline",
+      "field": "decompose_timeout_ms",
+      "expected": 5000,
+      "source_value": 5000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9919:agent_timeout_default_ms",
+      "section": "pipeline",
+      "field": "agent_timeout_default_ms",
+      "expected": 30000,
+      "source_value": 30000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9919:agent_timeout_min_ms",
+      "section": "pipeline",
+      "field": "agent_timeout_min_ms",
+      "expected": 10000,
+      "source_value": 10000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9919:agent_timeout_max_ms",
+      "section": "pipeline",
+      "field": "agent_timeout_max_ms",
+      "expected": 60000,
+      "source_value": 60000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9919:critical_agent_timeout_ms",
+      "section": "pipeline",
+      "field": "critical_agent_timeout_ms",
+      "expected": 30000,
+      "source_value": 30000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9919:cross_verify_timeout_ms",
+      "section": "pipeline",
+      "field": "cross_verify_timeout_ms",
+      "expected": 15000,
+      "source_value": 15000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9919:consensus_timeout_ms",
+      "section": "pipeline",
+      "field": "consensus_timeout_ms",
+      "expected": 10000,
+      "source_value": 10000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9919:emit_timeout_ms",
+      "section": "pipeline",
+      "field": "emit_timeout_ms",
+      "expected": 5000,
+      "source_value": 5000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9919:pipeline_cap_ms",
+      "section": "pipeline",
+      "field": "pipeline_cap_ms",
+      "expected": 120000,
+      "source_value": 120000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9930:otac_length",
+      "section": "auth",
+      "field": "otac_length",
+      "expected": 10,
+      "source_value": 10,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9930:otac_ttl_ms",
+      "section": "auth",
+      "field": "otac_ttl_ms",
+      "expected": 300000,
+      "source_value": 300000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9930:otac_max_attempts",
+      "section": "auth",
+      "field": "otac_max_attempts",
+      "expected": 5,
+      "source_value": 5,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9930:otac_resend_cooldown_ms",
+      "section": "auth",
+      "field": "otac_resend_cooldown_ms",
+      "expected": 60000,
+      "source_value": 60000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9930:otac_lock_window_ms",
+      "section": "auth",
+      "field": "otac_lock_window_ms",
+      "expected": 900000,
+      "source_value": 900000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9930:session_ttl_ms",
+      "section": "auth",
+      "field": "session_ttl_ms",
+      "expected": 21600000,
+      "source_value": 21600000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9930:concurrent_sessions_per_user",
+      "section": "auth",
+      "field": "concurrent_sessions_per_user",
+      "expected": 5,
+      "source_value": 5,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9939:event_log_days",
+      "section": "retention",
+      "field": "event_log_days",
+      "expected": 90,
+      "source_value": 90,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9939:audit_log_days",
+      "section": "retention",
+      "field": "audit_log_days",
+      "expected": 365,
+      "source_value": 365,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9939:security_incident_days",
+      "section": "retention",
+      "field": "security_incident_days",
+      "expected": 365,
+      "source_value": 365,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9939:freeze_incident_days",
+      "section": "retention",
+      "field": "freeze_incident_days",
+      "expected": 365,
+      "source_value": 365,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9945:stale_job_ttl_ms",
+      "section": "queue",
+      "field": "stale_job_ttl_ms",
+      "expected": 900000,
+      "source_value": 900000,
+      "match": true,
+      "unique_lexical_binding": true
+    },
+    {
+      "id": "DOC-C:P9945:max_concurrent_pipeline_runs",
+      "section": "queue",
+      "field": "max_concurrent_pipeline_runs",
+      "expected": 10,
+      "source_value": 10,
+      "match": true,
+      "unique_lexical_binding": true
+    }
+  ],
+  "limitations": [
+    "Only static exported values checked",
+    "Callers/consumers not exhaustively traced",
+    "Source native Vitest/typecheck/integration not run",
+    "No independent reviewer, no PROTECTED claim"
+  ],
+  "protected": false,
+  "verdict": "SOURCE_STATIC_VALUES_CORRESPOND__NOT_BEHAVIOR_VERIFIED"
+}
