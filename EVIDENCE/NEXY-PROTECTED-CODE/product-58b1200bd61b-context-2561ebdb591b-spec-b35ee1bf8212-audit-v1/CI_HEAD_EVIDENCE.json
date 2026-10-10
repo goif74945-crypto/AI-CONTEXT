@@ -1,0 +1,43 @@
+{
+  "product_head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "source": "GitHub Actions get workflow runs filtered by exact head SHA",
+  "workflow_runs": [
+    {
+      "id": 37899764374,
+      "conclusion": "failure",
+      "name": "NEXY CI / Deploy Gate"
+    },
+    {
+      "id": 37899764452,
+      "conclusion": "failure",
+      "name": "Layer8 Cargo lock evidence"
+    },
+    {
+      "id": 37899764383,
+      "conclusion": "failure",
+      "name": "Exact HEAD test evidence"
+    },
+    {
+      "id": 37899764371,
+      "conclusion": "failure",
+      "name": "Six-system exact HEAD evidence"
+    }
+  ],
+  "code_root_cause": "UNVERIFIED",
+  "infrastructure_root_cause": "UNVERIFIED",
+  "doc_e_gate_status": {
+    "E1": "NOT_VERIFIED",
+    "E2": "NOT_VERIFIED",
+    "E3": "NOT_VERIFIED",
+    "E4": "NOT_VERIFIED",
+    "E5": "NOT_VERIFIED",
+    "E6": "NOT_VERIFIED",
+    "E7": "NOT_VERIFIED",
+    "E8": "NOT_VERIFIED",
+    "E9": "NOT_VERIFIED",
+    "E10": "NOT_VERIFIED",
+    "E11": "NOT_VERIFIED",
+    "E12": "NOT_VERIFIED"
+  },
+  "owner_signoff": "NOT_VERIFIED"
+}
