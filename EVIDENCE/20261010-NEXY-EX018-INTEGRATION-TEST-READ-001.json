@@ -1,0 +1,167 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index, not test execution",
+  "all_tests": 103,
+  "range": [
+    0,
+    12
+  ],
+  "rows": [
+    {
+      "path": "tests/integration/auth/auto-owner-blocked.spec.ts",
+      "sha": "0fbfd4c4d68e02178396d46a83d6697a7528a692",
+      "verified": true,
+      "lines": 96,
+      "tests": 2,
+      "assertions": 3,
+      "mocks": 4,
+      "imports": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/auth/logout.spec.ts",
+      "sha": "e4abbce30cd4d76c7eac96ec9e9d382a18a286d6",
+      "verified": true,
+      "lines": 173,
+      "tests": 6,
+      "assertions": 18,
+      "mocks": 4,
+      "imports": [
+        "node:crypto",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/auth/rapid-retry-abuse.spec.ts",
+      "sha": "ed09b2bb58f670e2fe7436ac821cf9d021017601",
+      "verified": true,
+      "lines": 82,
+      "tests": 2,
+      "assertions": 6,
+      "mocks": 2,
+      "imports": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/auth/rate-limit-abuse.spec.ts",
+      "sha": "34d630b44f24f4c8acce70a537d5ee673c87ebb8",
+      "verified": true,
+      "lines": 35,
+      "tests": 1,
+      "assertions": 3,
+      "mocks": 0,
+      "imports": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/auth/request-otac.spec.ts",
+      "sha": "72096e2ee60658f712213c0f670d81557febf971",
+      "verified": true,
+      "lines": 180,
+      "tests": 7,
+      "assertions": 22,
+      "mocks": 3,
+      "imports": [
+        "vitest",
+        "zod"
+      ]
+    },
+    {
+      "path": "tests/integration/auth/session-refresh.spec.ts",
+      "sha": "dad590341f25031d58e8528c460486c7a067ec8c",
+      "verified": true,
+      "lines": 337,
+      "tests": 10,
+      "assertions": 46,
+      "mocks": 5,
+      "imports": [
+        "node:crypto",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/auth/single-use-and-logout-replay.spec.ts",
+      "sha": "33660427806d9b8bf8c29e69e549444d246be29a",
+      "verified": true,
+      "lines": 184,
+      "tests": 9,
+      "assertions": 24,
+      "mocks": 4,
+      "imports": [
+        "node:crypto",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/auth/verify-otac.spec.ts",
+      "sha": "b81b1a963c932aa942d19cca8b9b776d0aeb6031",
+      "verified": true,
+      "lines": 320,
+      "tests": 9,
+      "assertions": 27,
+      "mocks": 4,
+      "imports": [
+        "vitest",
+        "node:crypto"
+      ]
+    },
+    {
+      "path": "tests/integration/authority-time.spec.ts",
+      "sha": "12cbb04ed53ab1d2fafe79f99b0abdfbc044ccf7",
+      "verified": true,
+      "lines": 145,
+      "tests": 7,
+      "assertions": 23,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/authority-time.js"
+      ]
+    },
+    {
+      "path": "tests/integration/auto-recovery-controller.spec.ts",
+      "sha": "18a352dc5b8dbcebe6e463910c79285040b1960f",
+      "verified": true,
+      "lines": 86,
+      "tests": 5,
+      "assertions": 10,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/auto-recovery-controller.js",
+        "../../packages/core/tick.js"
+      ]
+    },
+    {
+      "path": "tests/integration/auto-recovery-escalation.spec.ts",
+      "sha": "e09312089342ee33b0a40b8c8232f78f8027ab44",
+      "verified": true,
+      "lines": 71,
+      "tests": 3,
+      "assertions": 6,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/auto-recovery-controller.js",
+        "../../packages/core/tick.js"
+      ]
+    },
+    {
+      "path": "tests/integration/auto-recovery-memory-leak.spec.ts",
+      "sha": "d480ad00c641e25b7543cc625b44cd7af1067c85",
+      "verified": true,
+      "lines": 41,
+      "tests": 5,
+      "assertions": 9,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/auto-recovery-controller.js",
+        "../../packages/phase-f/resilience/playbooks/playbook-002-memory-leak.js"
+      ]
+    }
+  ]
+}
