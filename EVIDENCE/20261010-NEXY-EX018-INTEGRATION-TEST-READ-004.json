@@ -1,0 +1,186 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index, not test execution",
+  "all_tests": 103,
+  "range": [
+    36,
+    48
+  ],
+  "rows": [
+    {
+      "path": "tests/integration/g15-numeric-law.spec.ts",
+      "sha": "eb7e87a775aa42db7ccb6334ea5b2c8ef8072e36",
+      "verified": true,
+      "lines": 130,
+      "tests": 20,
+      "assertions": 29,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/numeric-law.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g15-simulation-law.spec.ts",
+      "sha": "153ab4be7e43fc1422623a6447196a538e444f43",
+      "verified": true,
+      "lines": 294,
+      "tests": 19,
+      "assertions": 37,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/g15-simulation-law.js",
+        "../../packages/phase-f/game/numeric-law.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g16-crowd-budget.spec.ts",
+      "sha": "fa301b172d442246997c9f4cfbbe5ac35139dec3",
+      "verified": true,
+      "lines": 42,
+      "tests": 4,
+      "assertions": 4,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/crowd-budget.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g16-world-partition.spec.ts",
+      "sha": "9a86756e230edbb83d31cc9c001047a9b0044cf1",
+      "verified": true,
+      "lines": 171,
+      "tests": 14,
+      "assertions": 35,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/world-partition.js",
+        "../../packages/phase-f/game/spec/game-spec.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g17-ai-crowd.spec.ts",
+      "sha": "6d34276ff1a452f4c7b17a637586276ed09e3e8b",
+      "verified": true,
+      "lines": 125,
+      "tests": 10,
+      "assertions": 17,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/ai-crowd-determinism.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g18-netcode.spec.ts",
+      "sha": "cf8de06e447aa3d17b35d18acebdfb3f7838cf27",
+      "verified": true,
+      "lines": 196,
+      "tests": 13,
+      "assertions": 38,
+      "mocks": 0,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../packages/phase-f/game/netcode.js",
+        "../../packages/phase-f/game/spec/game-spec.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g19-hardware-admission.spec.ts",
+      "sha": "69f7ae1dfe299883dd198c709866e0c67c94bd48",
+      "verified": true,
+      "lines": 173,
+      "tests": 10,
+      "assertions": 20,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/g19-hardware-admission.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g20-ncf-registry.spec.ts",
+      "sha": "e7e37543e80caf89d639e1db3e76dac065c673b6",
+      "verified": true,
+      "lines": 442,
+      "tests": 20,
+      "assertions": 60,
+      "mocks": 0,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../packages/phase-f/game/ncf-registry.js"
+      ]
+    },
+    {
+      "path": "tests/integration/game-canonical-order.spec.ts",
+      "sha": "354ffd765125dcf2d0d486259eae8550b0127438",
+      "verified": true,
+      "lines": 37,
+      "tests": 2,
+      "assertions": 8,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/canonical-order.js",
+        "../../packages/phase-f/game/world-partition.js"
+      ]
+    },
+    {
+      "path": "tests/integration/game-fabric-split.spec.ts",
+      "sha": "0f84c72bf634c290b83bcf2dbd8d496d63aff127",
+      "verified": true,
+      "lines": 203,
+      "tests": 21,
+      "assertions": 34,
+      "mocks": 0,
+      "imports": [
+        "../../packages/phase-f/game/numeric-law.js",
+        "vitest",
+        "../../packages/phase-f/game/spec/game-spec.js",
+        "../../packages/phase-f/game/spec/spec-hash.js",
+        "../../packages/phase-f/game/spec/spec-registry.js",
+        "../../packages/phase-f/game/state/gameplay.js",
+        "../../packages/phase-f/game/state/sovereign.js",
+        "../../packages/phase-f/game/state/firewall.js",
+        "../../packages/phase-f/game/runtime/webgpu.js"
+      ]
+    },
+    {
+      "path": "tests/integration/game-runtime-deterministic.spec.ts",
+      "sha": "a29273f8f56edd090abaf5c1051fa13e8277b062",
+      "verified": true,
+      "lines": 688,
+      "tests": 29,
+      "assertions": 62,
+      "mocks": 1,
+      "imports": [
+        "vitest",
+        "node:crypto",
+        "../../packages/phase-f/game/runtime/wasm-runtime.js",
+        "../../packages/phase-f/game/state/gameplay-state.js",
+        "../../packages/phase-f/game/state/sovereign-state.js",
+        "../../packages/phase-f/game/state/state-firewall.js",
+        "../../packages/phase-f/game/runtime/hybrid-bridge.js",
+        "../../packages/phase-f/game/runtime/webgpu-runtime.js"
+      ]
+    },
+    {
+      "path": "tests/integration/global-anchor.spec.ts",
+      "sha": "f1d9dff0b7b7347758cf0e0a4c325b207f8a626b",
+      "verified": true,
+      "lines": 242,
+      "tests": 10,
+      "assertions": 27,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/global-anchor.js"
+      ]
+    }
+  ]
+}
