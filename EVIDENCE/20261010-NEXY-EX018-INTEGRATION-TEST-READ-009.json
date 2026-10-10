@@ -1,0 +1,109 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index, not test execution",
+  "all_tests": 103,
+  "range": [
+    96,
+    103
+  ],
+  "rows": [
+    {
+      "path": "tests/integration/sandbox-tier2-gvisor.spec.ts",
+      "sha": "c8d3ae93805dfcf88a401c8ccd23cc535a7d887a",
+      "verified": true,
+      "lines": 70,
+      "tests": 6,
+      "assertions": 23,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-stack/tier2-gvisor.js"
+      ]
+    },
+    {
+      "path": "tests/integration/sandbox-tier3-hard-containment.spec.ts",
+      "sha": "1baa9fe9fd379045f719b17353bee84a389da10c",
+      "verified": true,
+      "lines": 89,
+      "tests": 5,
+      "assertions": 8,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-stack/tier3-wasm.js"
+      ]
+    },
+    {
+      "path": "tests/integration/sandbox-tier3-wasm.spec.ts",
+      "sha": "5a81a89235d3b5d814e613d7e92838f34133e157",
+      "verified": true,
+      "lines": 40,
+      "tests": 3,
+      "assertions": 9,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-stack/tier3-wasm.js"
+      ]
+    },
+    {
+      "path": "tests/integration/universe-extensions.spec.ts",
+      "sha": "3a176c954ac84776942b45e59048dfd970650c12",
+      "verified": true,
+      "lines": 425,
+      "tests": 18,
+      "assertions": 65,
+      "mocks": 0,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../packages/phase-f/universe/appspec.js",
+        "../../packages/phase-f/universe/cross-app.js",
+        "../../packages/phase-f/universe/capability-declaration.js",
+        "../../packages/phase-f/game/ncf-registry.js",
+        "../../packages/phase-f/universe/creator-fabric.js",
+        "../../packages/phase-f/universe/template-sdk-registry.js"
+      ]
+    },
+    {
+      "path": "tests/integration/universe-tier-capability.spec.ts",
+      "sha": "5661e7b5a8a7ada67639bb90fa35007ee82cd274",
+      "verified": true,
+      "lines": 54,
+      "tests": 6,
+      "assertions": 10,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/tier-capability.js",
+        "../../packages/phase-f/universe/user-universe.js"
+      ]
+    },
+    {
+      "path": "tests/integration/vault/commit.spec.ts",
+      "sha": "138e026e9496c2b169b3d7f81a19d0ff6d6922fb",
+      "verified": true,
+      "lines": 137,
+      "tests": 5,
+      "assertions": 10,
+      "mocks": 2,
+      "imports": [
+        "vitest",
+        "node:crypto"
+      ]
+    },
+    {
+      "path": "tests/integration/web-app-spec.spec.ts",
+      "sha": "ec1b46b3f58d1ce6b9626f751d9c5480e084562f",
+      "verified": true,
+      "lines": 89,
+      "tests": 5,
+      "assertions": 17,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/web-app-spec.js"
+      ]
+    }
+  ]
+}
