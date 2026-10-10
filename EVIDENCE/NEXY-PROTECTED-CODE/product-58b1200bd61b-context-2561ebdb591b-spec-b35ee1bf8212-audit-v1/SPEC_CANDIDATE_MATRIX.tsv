@@ -1,0 +1,20 @@
+candidate_id	paragraph_anchor	candidate_obligation	source_path	blob_sha	observation	acceptance_verdict	unmet_evidence
+C:P10039:POST-REQUEST-OTAC	10039-10070	route request OTAC	apps/web/app/api/auth/request-otac/route.ts	ef7cbefc3cf339ab0b387a6ccf1f8de77038e5be	SOURCE_ROUTE_WRAPPER_READ	NOT_VERIFIED	handler/DB/abuse/E2E pending
+C:P10071:POST-VERIFY-OTAC	10071-10105	route verify OTAC	apps/web/app/api/auth/verify-otac/route.ts	ca62df87060264c279316c9e06b340d9a8ee6aa3	SOURCE_ROUTE_WRAPPER_READ	NOT_VERIFIED	service/session/cookie tests pending
+C:P10368:FSM-MATRIX	10368-10452	state transition matrix	packages/core/vnext-state-matrix.ts	27e1281fba330784cc3bf2c30e9e1e82f951479b	SOURCE_READ	NOT_VERIFIED	authoritative row-by-row matching + runtime guards pending
+C:P9910:DEFAULTS	9910-9949	26 canonical defaults	packages/api/vnext-config.ts		NOT_READ	NOT_VERIFIED	all consumers and runtime tests pending
+C:P10494:EVENT-INCIDENT	10494-10499	event and incident linkage	packages/obs/incidents.ts		NOT_READ	NOT_VERIFIED	event/incident integration and negative tests pending
+STORAGE:P10820:DEVICE-ID	10820	session device binding	packages/auth/device-binding.ts	04b6e9b0b63b4ff9cc61bd65000f0b316a6d9bf4	SOURCE_READ	NOT_VERIFIED	session DB/OTAC integration pending
+AUTH:P10853:OTAC-REPLAY	10853-10860	one-time OTAC anti-replay	packages/auth/otac.ts	bb6134ab1946c8cfa8f130eb7eea5a777d02c58e	SOURCE_READ_WITH_ISOLATED_NEGATIVE_WITNESS	NOT_VERIFIED	helper witness not reachability; spec behavior untested
+DOC-E:E1	10925	E1 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E2	10927	E2 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E3	10929	E3 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E4	10931	E4 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E5	10933	E5 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E6	10935	E6 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E7	10937	E7 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E8	10939	E8 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E9	10941	E9 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E10	10943	E10 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E11	10945	E11 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
+DOC-E:E12	10947	E12 release evidence			NO_SAME_HEAD_PASS_EVIDENCE	NOT_VERIFIED	requires actual signed/executed receipt
