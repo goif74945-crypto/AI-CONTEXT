@@ -1,0 +1,184 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index; NOT execution",
+  "all_tests": 122,
+  "range": [
+    60,
+    72
+  ],
+  "rows": [
+    {
+      "path": "tests/contract/fixed128-overflow-scope-law.test.ts",
+      "sha": "83ff7cbe53988c4fb49f2ff2f251928955cf1abb",
+      "verified": true,
+      "lines": 46,
+      "tests": 2,
+      "assertions": 7,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest",
+        "../../packages/phase-f/game/numeric-law.js"
+      ]
+    },
+    {
+      "path": "tests/contract/freeze-only-via-builder.spec.ts",
+      "sha": "c81599aea770cb48173b054c83bb9ffc03b2018f",
+      "verified": true,
+      "lines": 48,
+      "tests": 1,
+      "assertions": 1,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "node:path",
+        "node:url"
+      ]
+    },
+    {
+      "path": "tests/contract/freeze-recovery-audit.test.ts",
+      "sha": "08f76b954ae3f46c439082ea8f2740e93e950afe",
+      "verified": true,
+      "lines": 33,
+      "tests": 2,
+      "assertions": 7,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/http-alarm-sink.test.ts",
+      "sha": "3d2059ae1906b4c69c990fc98d19678fba27d63d",
+      "verified": true,
+      "lines": 67,
+      "tests": 2,
+      "assertions": 4,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/obs/alarms.js",
+        "../../packages/obs/http-alarm-sink.js"
+      ]
+    },
+    {
+      "path": "tests/contract/hydration-fail-closed.test.ts",
+      "sha": "3b71d4647edc1b452539527767245f48e4917cfb",
+      "verified": true,
+      "lines": 210,
+      "tests": 11,
+      "assertions": 38,
+      "mocks": 1,
+      "imports": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/incident-semantics.test.ts",
+      "sha": "7dc8d552cf407e4b83dff4a23cdb16112c350db3",
+      "verified": true,
+      "lines": 93,
+      "tests": 5,
+      "assertions": 11,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/contracts/incidents.js",
+        "../../packages/obs/incident-priority.js"
+      ]
+    },
+    {
+      "path": "tests/contract/intelligence-layer-contract.test.ts",
+      "sha": "01dfe245c6a88f7d9cf0ed64f74fb23f7430fa5d",
+      "verified": true,
+      "lines": 534,
+      "tests": 25,
+      "assertions": 74,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/intelligence/certainty.js",
+        "../../packages/intelligence/epe.js",
+        "../../packages/intelligence/mpg.js",
+        "../../packages/intelligence/cirl.js",
+        "../../packages/intelligence/cle.js",
+        "../../packages/intelligence/ecl.js",
+        "../../packages/intelligence/irl.js",
+        "../../packages/intelligence/dsl.js",
+        "../../packages/intelligence/rsel.js",
+        "../../packages/intelligence/trinity.js"
+      ]
+    },
+    {
+      "path": "tests/contract/l1o-master-key-provider.test.ts",
+      "sha": "b89ff813e7893af43be14e091fb40c6bca8ccfe0",
+      "verified": true,
+      "lines": 116,
+      "tests": 4,
+      "assertions": 18,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/intelligence/master-key.js",
+        "../../packages/secrets/provider.js"
+      ]
+    },
+    {
+      "path": "tests/contract/l1o-mpg-epe.test.ts",
+      "sha": "704fed6330b1d7329882c6e8bd8e804dee53038a",
+      "verified": true,
+      "lines": 126,
+      "tests": 5,
+      "assertions": 14,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/intelligence/epe.js",
+        "../../packages/intelligence/irl.js",
+        "../../packages/intelligence/mpg.js"
+      ]
+    },
+    {
+      "path": "tests/contract/lo2-durable-anchor.test.ts",
+      "sha": "9a91b22bba97088e9947c0543c9343f71bf1d14a",
+      "verified": true,
+      "lines": 103,
+      "tests": 7,
+      "assertions": 42,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/lo2-feedback-dispatch.test.ts",
+      "sha": "2ad19e81dcc937a1f16675d9912aca52cc020703",
+      "verified": true,
+      "lines": 364,
+      "tests": 11,
+      "assertions": 33,
+      "mocks": 3,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../packages/lo2/feedback-dispatch.js"
+      ]
+    },
+    {
+      "path": "tests/contract/lo2-governance.test.ts",
+      "sha": "4190b04e9f9210750284012d5389128bb442b73e",
+      "verified": true,
+      "lines": 107,
+      "tests": 4,
+      "assertions": 16,
+      "mocks": 2,
+      "imports": [
+        "vitest",
+        "../../packages/engine/lo2.js"
+      ]
+    }
+  ]
+}
