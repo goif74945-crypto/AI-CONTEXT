@@ -1,0 +1,1083 @@
+{
+  "type": "SOURCE_FULL_BYTE_RESPONSE_RECEIPTS_RECONCILIATION_NO_SEMANTIC_PASS",
+  "source": "exact-head Git tree vs append-only per-file read receipts",
+  "product_head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "live_head_at_check": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "git_tree_entries": 1092,
+  "git_blobs": 889,
+  "git_tree_not_truncated": true,
+  "evidence_sources": [
+    "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_LEDGER.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_02_CORRECTION.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_03.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04_CORRECTION.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-002-scanner-skips.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+    "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-009-config-runtime.jsonl"
+  ],
+  "validated_unique_blob_contents_returned": 119,
+  "source_uninspected_directly": 770,
+  "other_skipped_rows": 2,
+  "duplicate_receipts": 0,
+  "unverified_or_invalid_records": [
+    {
+      "path": "apps/web/app/lib/api-handler.ts",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04.jsonl",
+      "read_receipt": false,
+      "blob_sha_match": false,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/lib/api-handler.ts",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04_CORRECTION.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "tests/contract/api-handler.test.ts",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04_CORRECTION.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/login/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/directives/new/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/directives/[id]/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/runs/[id]/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/incidents/[id]/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/vault/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/vault/[id]/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/audit/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/owner/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "apps/web/app/unknown/page.tsx",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "tests/browser/critical-flows.spec.mjs",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-003-doc-d-screens.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E01-contract-test-report.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E02-api-schema-snapshot.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E03-migration-roundtrip.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E04-state-machine.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E05-rbac-tests.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E06-auth-abuse.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E07-queue-worker-readiness.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E08-observability-alarm.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E09-incident-drill.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E10-deploy-runbook.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E11-release-signoff.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    },
+    {
+      "path": "docs/evidence/current/E12-rollback-execution.md",
+      "file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/doc-e-current-pack-read.jsonl",
+      "read_receipt": true,
+      "blob_sha_match": true,
+      "revision_match": false
+    }
+  ],
+  "per_ledger_counts": {
+    "SOURCE_READ_LEDGER.jsonl": 8,
+    "SOURCE_READ_BATCH_02_CORRECTION.jsonl": 6,
+    "SOURCE_READ_BATCH_03.jsonl": 6,
+    "SOURCE_READ_BATCH_04.jsonl": 5,
+    "SOURCE_READ_BATCH_04_CORRECTION.jsonl": 0,
+    "spec-code-read-batch-001.jsonl": 14,
+    "source-read-batch-002-scanner-skips.jsonl": 2,
+    "spec-code-read-batch-003-doc-d-screens.jsonl": 0,
+    "spec-code-read-batch-004-doc-d-components.jsonl": 14,
+    "doc-e-current-pack-read.jsonl": 0,
+    "source-read-batch-005-tests.jsonl": 16,
+    "source-read-batch-006-critical-engine.jsonl": 16,
+    "source-read-batch-007-extra-api.jsonl": 13,
+    "source-read-batch-008-extra-api.jsonl": 13,
+    "source-read-batch-009-config-runtime.jsonl": 6
+  },
+  "complete_registry": [
+    {
+      "path": "AGENTS.md",
+      "sha": "25dfa28ebdd684bed67d80cab1a938139e9d1be3",
+      "size_bytes": 2523,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_LEDGER.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/archive-snapshot/route.ts",
+      "sha": "037d17b4957610e3909b0f80cb9bdb7abe3a1f20",
+      "size_bytes": 387,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/archive/restore/route.ts",
+      "sha": "676acd111dfd7469cca49d0874570f67cfb5ec6a",
+      "size_bytes": 385,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/archive/route.ts",
+      "sha": "63830c4b8ba9e299690f53e20556083c1d03b083",
+      "size_bytes": 365,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/export/route.ts",
+      "sha": "1886ddce6575dc96e92fcb5dceca5d59b1a32aaf",
+      "size_bytes": 378,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/hard-delete/route.ts",
+      "sha": "e5c784d352ed7ea5e5d9e931f6a77cef2764f577",
+      "size_bytes": 371,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/restore/route.ts",
+      "sha": "f456e851f33ee0fe7e8f927e0feb880b6e212704",
+      "size_bytes": 382,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/retention/route.ts",
+      "sha": "98a5854129d5c15bdc58dae7ee20a22dd411d013",
+      "size_bytes": 381,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/revisions/route.ts",
+      "sha": "33cf0474c573bff081992fa426832962c2239040",
+      "size_bytes": 378,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/[id]/storage-status/route.ts",
+      "sha": "529f926a3c559b16d6f8f50de0d7546022fe0502",
+      "size_bytes": 376,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/artifacts/route.ts",
+      "sha": "2676eb3fb392773c341ba44345608f6f1402574a",
+      "size_bytes": 282,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/audit-logs/export/route.ts",
+      "sha": "a940657c9f34c8734563996b223a0c30d1bdd013",
+      "size_bytes": 292,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/audit-logs/route.ts",
+      "sha": "a3345d844dfff6822b604da5d53f2348a0ab9be8",
+      "size_bytes": 282,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/auth/logout/route.ts",
+      "sha": "b154cdcf5b4bc56ffbc38fb7cb7047b1745eada9",
+      "size_bytes": 278,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/auth/me/route.ts",
+      "sha": "7cd33f322e185485e386e431e5bd5a970f3374c0",
+      "size_bytes": 283,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/auth/owner-recovery/csrf/route.ts",
+      "sha": "05697140f9c942f4ad45ee0c4333cf34daffd36d",
+      "size_bytes": 315,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/auth/owner-recovery/route.ts",
+      "sha": "b4ed89b7cadba43dc5a765fe6d20354ca15e3f65",
+      "size_bytes": 316,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-007-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/auth/request-otac/route.ts",
+      "sha": "ef7cbefc3cf339ab0b387a6ccf1f8de77038e5be",
+      "size_bytes": 288,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_LEDGER.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/auth/verify-otac/route.ts",
+      "sha": "ca62df87060264c279316c9e06b340d9a8ee6aa3",
+      "size_bytes": 286,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_LEDGER.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/config/rollback/route.ts",
+      "sha": "f64b98f34d343e8e8590436585f7632b9aef1a20",
+      "size_bytes": 315,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/config/route.ts",
+      "sha": "2ce97d0ee3f13b00ea51b759b5462578c86ddbc3",
+      "size_bytes": 444,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/dialog/route.ts",
+      "sha": "fb92c9b449e3cc73663cf78936615e9374c34746",
+      "size_bytes": 274,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/directives/[id]/route.ts",
+      "sha": "e81c14e0f38f6d94b4dc91f84dfd4336e10ce087",
+      "size_bytes": 363,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/directives/route.ts",
+      "sha": "ba3fd8432902ad7c707767b97998b42b0db3d339",
+      "size_bytes": 482,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/freeze/recover/route.ts",
+      "sha": "9496923925bec9270706fe86cf7095926931a7ee",
+      "size_bytes": 298,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/health/freeze/route.ts",
+      "sha": "83b19849da01595eec9996884ca6b58311c6395d",
+      "size_bytes": 291,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/health/liveness/route.ts",
+      "sha": "a6369d48c3568c7c3630f784f35688f04d18df66",
+      "size_bytes": 283,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/health/readiness/route.ts",
+      "sha": "c4fcbfe0fba6fd0c9b9562f66815e8f86beca770",
+      "size_bytes": 285,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/health/route.ts",
+      "sha": "2625cea1ed01466773e74a250d52f841a7dfda4a",
+      "size_bytes": 279,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/incidents/[id]/route.ts",
+      "sha": "91d32f66dbab72708de80b57e9162bd17a0980e4",
+      "size_bytes": 354,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/runs/[id]/cancel/route.ts",
+      "sha": "b8ddfa8028daf33c1d49d2252563737b1cb6848f",
+      "size_bytes": 377,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/runs/[id]/revoke-release/route.ts",
+      "sha": "4fc14ce874b7085b2874e0b89af75e1e606f976c",
+      "size_bytes": 399,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/runs/[id]/route.ts",
+      "sha": "3c18601e4d2b57d0eab650e13990dd06785bdc72",
+      "size_bytes": 351,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/runs/route.ts",
+      "sha": "11488d84c9171495bd3bf9e44b3f697ff51adab6",
+      "size_bytes": 280,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/session/me/route.ts",
+      "sha": "7cd33f322e185485e386e431e5bd5a970f3374c0",
+      "size_bytes": 283,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/session/refresh/route.ts",
+      "sha": "88801c872d6946c7a6849e4d416e34e3c561d3ea",
+      "size_bytes": 305,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/storage/reconcile/route.ts",
+      "sha": "b6e9c9c13dce3405dbfba985a522a010f25189a8",
+      "size_bytes": 309,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/users/[id]/role/route.ts",
+      "sha": "db2eb814b4005dcb7afdd330846aa0c064e61fef",
+      "size_bytes": 375,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-008-extra-api.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/app/api/vault/commit/route.ts",
+      "sha": "ed304f1a26f68b036a5fdd8a3f54c73cb7c9b7ac",
+      "size_bytes": 293,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/AuditTable.tsx",
+      "sha": "c88df96305e075aeabd92e81526e14473bff65be",
+      "size_bytes": 114,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/ConstraintPanel.tsx",
+      "sha": "897878624f2476d019a7f699caecaf6e4bb66494",
+      "size_bytes": 2508,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/DirectiveInput.tsx",
+      "sha": "a93f3f3cc35cbaabd863ca79f3a0fa48cc50a14a",
+      "size_bytes": 1079,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/EmptyStateCard.tsx",
+      "sha": "15357f67a97bdccd479636d1e5678ea2f0331cb8",
+      "size_bytes": 479,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/FreezeBanner.tsx",
+      "sha": "1376d9a12c24226728a02dec4881f9a545185dc3",
+      "size_bytes": 1292,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/IncidentCard.tsx",
+      "sha": "077468a06a2c33fbec823ae077fe9238f377fb87",
+      "size_bytes": 868,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/LoadingSkeleton.tsx",
+      "sha": "bd5b6dcdc6cf73fe8e4b4bdc78b17e45c94ce474",
+      "size_bytes": 401,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/ModeTabs.tsx",
+      "sha": "7ace6062dd635b5cd296289f624292f65e7a6404",
+      "size_bytes": 903,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/OwnerActionBar.tsx",
+      "sha": "97d740eea5873c49f3e0be47d7873fd14b4eb0fb",
+      "size_bytes": 309,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/PermissionGate.tsx",
+      "sha": "240813a4c76f58312b1199825ae22faca3f70bfa",
+      "size_bytes": 1850,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/RevisionTable.tsx",
+      "sha": "99be2a98a7bd4e9ccaa7fd627a6fcdf2a02ec0ac",
+      "size_bytes": 3338,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/StatusChip.tsx",
+      "sha": "76d59895f4d510d7d05ae254e7fe4cdd264e039e",
+      "size_bytes": 763,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/SubmitButton.tsx",
+      "sha": "796a7f70e15e6e4098357286bf2eadc78e6bc4bc",
+      "size_bytes": 618,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "apps/web/components/TrustExplainer.tsx",
+      "sha": "3e2e5f4030096aab7feae5c1f4da6a9e4430b697",
+      "size_bytes": 1494,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-004-doc-d-components.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "core-kernel/src/auth/email_gate.rs",
+      "sha": "a8099f5a21c5cc483c8d04e98f050cff5184749c",
+      "size_bytes": 20333,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "core-kernel/src/auth/gatekeeper.rs",
+      "sha": "1a50ac5c37ba903ee94e63e8aee59108c561f0af",
+      "size_bytes": 14910,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "core-kernel/src/kernel/fsm_state.rs",
+      "sha": "9712c95c34b9762c885d5fec31228bbeae634bc6",
+      "size_bytes": 13792,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "core-kernel/src/kernel/incident_playbook.rs",
+      "sha": "5c0c05578fa3e742d05104cbb39415fc25112c62",
+      "size_bytes": 11588,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "6fffbbc8e7f5f45f22ef94c9b359757aee00a359",
+      "size_bytes": 271147,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-002-scanner-skips.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "package.json",
+      "sha": "972cd03ed7878ff6eb0cb4813e459cb0c29cd1e7",
+      "size_bytes": 2774,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_LEDGER.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/api/auth.ts",
+      "sha": "e1c8c3edbb219d8d584682983cc0996b8f834934",
+      "size_bytes": 54102,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_02_CORRECTION.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/api/canonical.ts",
+      "sha": "250048e369a96c930b0cb87212ae9ba188fdcf42",
+      "size_bytes": 24483,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/api/directives.ts",
+      "sha": "8cd214c87e5aa55561e52347802ec8172feadc36",
+      "size_bytes": 64594,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/api/owner-cancel.ts",
+      "sha": "9e635aaa36b35bc08118e40f34fb8e190a014381",
+      "size_bytes": 7576,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/api/owner-recovery.ts",
+      "sha": "1d9cbd839673197870f6ec3d5252ed924ac157a6",
+      "size_bytes": 13375,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/api/owner-revoke-release.ts",
+      "sha": "fbe71032721b1b84b20f2f87151331d8131bd770",
+      "size_bytes": 5132,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/api/owner-roles.ts",
+      "sha": "964d335b3934bfbf7c1802e631da015b2e302cd1",
+      "size_bytes": 7340,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/api/session-refresh.ts",
+      "sha": "e425e840b0e9e44febfd3aa6bb56ca7bd633e595",
+      "size_bytes": 14260,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_02_CORRECTION.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/api/vnext-config.ts",
+      "sha": "a3141a649be7e40ec79f417f53bba9b73081232b",
+      "size_bytes": 3131,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_03.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/auth/client-ip.ts",
+      "sha": "d5e8f552024dc2ccd26ca9cbaf089a5c1b24b57a",
+      "size_bytes": 2518,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/auth/csrf.ts",
+      "sha": "3444b32561d8b5a11951822810381da66c3c8f92",
+      "size_bytes": 1987,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_02_CORRECTION.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/auth/device-binding.ts",
+      "sha": "04b6e9b0b63b4ff9cc61bd65000f0b316a6d9bf4",
+      "size_bytes": 1197,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_LEDGER.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/auth/email.ts",
+      "sha": "2a9142fa85e7ea7f30ea248edb16da5d13d5e4d3",
+      "size_bytes": 3733,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-009-config-runtime.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/auth/otac.ts",
+      "sha": "bb6134ab1946c8cfa8f130eb7eea5a777d02c58e",
+      "size_bytes": 3437,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_LEDGER.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/auth/security-incident.ts",
+      "sha": "942473739aa3dfe04d0dc595f3e92f8e8f665e45",
+      "size_bytes": 4413,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/auth/security-runtime.ts",
+      "sha": "57190744bdc72ac841e6e2980376c70a66186745",
+      "size_bytes": 437,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-009-config-runtime.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/auth/session.ts",
+      "sha": "285d2bea32a66420333357cfde51e0728834951e",
+      "size_bytes": 5982,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_02_CORRECTION.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/config/runtime-config.ts",
+      "sha": "43be034d5938137d8d29a5506ba25d356d79e66a",
+      "size_bytes": 4546,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-009-config-runtime.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/contracts/envelope.ts",
+      "sha": "daf1156b3431150e667b5e18727d8abe9bdc9b75",
+      "size_bytes": 3692,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/contracts/release-policy.ts",
+      "sha": "a52354b950c268f2c8fd07d95475d72e7fa26191",
+      "size_bytes": 521,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/contracts/runtime-config.ts",
+      "sha": "52408add44c6cb8fd86f24e308cc7cbdc49e8883",
+      "size_bytes": 3880,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-009-config-runtime.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/contracts/state.ts",
+      "sha": "04efcc7161c5415922e11e16174013d1d4ea40a3",
+      "size_bytes": 585,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/core/canonical-json.ts",
+      "sha": "c0c14ca5a6fa16e2ebc9da191774d3306fc6c1ee",
+      "size_bytes": 3652,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/core/db.ts",
+      "sha": "3f6f1060243e358a24be804d4c3593f3c11fcddf",
+      "size_bytes": 668,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-009-config-runtime.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/core/tick.ts",
+      "sha": "517614809c8cefa3e516348b1268f6dca4a744e5",
+      "size_bytes": 4822,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-009-config-runtime.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/core/vnext-state-matrix.ts",
+      "sha": "27e1281fba330784cc3bf2c30e9e1e82f951479b",
+      "size_bytes": 13751,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_LEDGER.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/law/freeze.ts",
+      "sha": "e2e62e29553b9c62b6de5aef5082c68fe54d478d",
+      "size_bytes": 1967,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_03.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/lo2/engine.ts",
+      "sha": "11f684dde210c0956a53f466b2d137021b134f86",
+      "size_bytes": 61018,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-002-scanner-skips.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/obs/audit-log.ts",
+      "sha": "f1cae86b9b3f9c58a603b763d2ec079dd92aa1d7",
+      "size_bytes": 2722,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/obs/event-log.ts",
+      "sha": "673a69620a978082be21cc77dce2aabaad30bd87",
+      "size_bytes": 1574,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_03.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/obs/incidents.ts",
+      "sha": "ee047ebf74639cda28b7129c095f356d5085f3ad",
+      "size_bytes": 3662,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_03.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/orch-core/release-policy.ts",
+      "sha": "96153ca97b78f018e27239940a6304ef1926206e",
+      "size_bytes": 934,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_03.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/orch-core/system-state.ts",
+      "sha": "1883414a3d8b2034d06ef30e039b537319e2e0f1",
+      "size_bytes": 16991,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/queue/dispatch.ts",
+      "sha": "002eef253ce836e2cd0e200f5d15cb5042cdeb29",
+      "size_bytes": 9939,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/queue/retry-policy.ts",
+      "sha": "9eb00e4cad9c5a284e64dccf8a8a2f4753f7882f",
+      "size_bytes": 2399,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/queue/run-state.ts",
+      "sha": "e162efc8b2a45014bcefbd60dc67a95d8a1e1003",
+      "size_bytes": 27833,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/queue/states.ts",
+      "sha": "9fc7e100cdeb7e1ed3ac4a1bc935f7188a4c7fa8",
+      "size_bytes": 1142,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-006-critical-engine.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/queue/workers.ts",
+      "sha": "3134e7b6bf83f7200959e3e267b28f5ea28b6392",
+      "size_bytes": 16831,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_03.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/swarm/pipeline.ts",
+      "sha": "b6bfadfb473b675928fa8df476b2180ac749e335",
+      "size_bytes": 54930,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "packages/validation/api.schema.ts",
+      "sha": "80f84302ae07746a7d56b92dbcf0e19cc99118c7",
+      "size_bytes": 3825,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_04.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha": "be1cbe1481829a2c95b6599929abc86829f37667",
+      "size_bytes": 51223,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/spec-code-read-batch-001.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/canonical-api.test.ts",
+      "sha": "1d90692030c4b8ccd0e089150cec21e9d7d803ba",
+      "size_bytes": 24693,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/doc-d-component-inventory.test.ts",
+      "sha": "ca5e90045b94662641624a846055be842cec2454",
+      "size_bytes": 2375,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/doc-e-e10-e12-external-gates.test.ts",
+      "sha": "717fc2e6472749eaa7b80fbef99be45eb801f224",
+      "size_bytes": 5995,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/doc-e-e3-migration-roundtrip.test.ts",
+      "sha": "ea83d33c0d67c1a1982cb870d9c2a3fa4e7f3f26",
+      "size_bytes": 1860,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/doc-e-e7-e8-evidence.test.ts",
+      "sha": "c06f20e688fd3b8709eaf2e333d1f772b26283d1",
+      "size_bytes": 3005,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/doc-e-e9-incident-lifecycle.test.ts",
+      "sha": "114972c7d87f3693ef5a493e55c68ba6300a22d1",
+      "size_bytes": 1854,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/doc-e-evidence.test.ts",
+      "sha": "542c4b3fdb5e454ea1b18edc7ff970b091ae8f96",
+      "size_bytes": 8671,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/ex017-wire-vocabulary.test.ts",
+      "sha": "9bb39848df32348fb64d0334878dc1345157b270",
+      "size_bytes": 3019,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/observability-alarm-wiring.test.ts",
+      "sha": "a36e0b0565ffad860164f4cde6209a7a20501d96",
+      "size_bytes": 2092,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/scope-boundary.test.ts",
+      "sha": "ef793fbcf01e00fb06610950737309ce4cb56cdd",
+      "size_bytes": 3099,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/state-matrix.test.ts",
+      "sha": "9459dbee70b75631b1d0204110116aa2e4be6239",
+      "size_bytes": 4528,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_LEDGER.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/contract/vnext-defaults.test.ts",
+      "sha": "9853215fa86392662aa602d095138a7c6b46c2fd",
+      "size_bytes": 3554,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/integration/auth/logout.spec.ts",
+      "sha": "e4abbce30cd4d76c7eac96ec9e9d382a18a286d6",
+      "size_bytes": 7433,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/integration/auth/rapid-retry-abuse.spec.ts",
+      "sha": "ed09b2bb58f670e2fe7436ac821cf9d021017601",
+      "size_bytes": 2741,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/integration/auth/request-otac.spec.ts",
+      "sha": "72096e2ee60658f712213c0f670d81557febf971",
+      "size_bytes": 8196,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/integration/auth/single-use-and-logout-replay.spec.ts",
+      "sha": "33660427806d9b8bf8c29e69e549444d246be29a",
+      "size_bytes": 11494,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_02_CORRECTION.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/integration/auth/verify-otac.spec.ts",
+      "sha": "b81b1a963c932aa942d19cca8b9b776d0aeb6031",
+      "size_bytes": 13589,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/product-58b1200bd61b-context-2561ebdb591b-spec-b35ee1bf8212-audit-v1/SOURCE_READ_BATCH_02_CORRECTION.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/integration/freeze/recover.spec.ts",
+      "sha": "d197936bc15b92ce5be4e5119457f2c687c314c6",
+      "size_bytes": 33548,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/integration/vault/commit.spec.ts",
+      "sha": "138e026e9496c2b169b3d7f81a19d0ff6d6922fb",
+      "size_bytes": 4897,
+      "first_evidence_file": "EVIDENCE/NEXY-PROTECTED-CODE/audit-continuation-20261011-p58b1200b-c2efd7af6/source-read-batch-005-tests.jsonl",
+      "mode": "100644"
+    }
+  ],
+  "semantic_reviews_complete": false,
+  "behavior_verified": false,
+  "product_test_suite_run": false,
+  "protected_units": 0,
+  "stated_limits": [
+    "Receipt confirms whole source text arrived and matches expected Git blob SHA reported by source service; does not prove semantics were reviewed",
+    "No exhaustive atomic requirement denominator",
+    "No authentic product tests in runner",
+    "Some DOCX clauses and deployed paths remain uninspected"
+  ]
+}
