@@ -1,0 +1,179 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index, not test execution",
+  "all_tests": 103,
+  "range": [
+    48,
+    60
+  ],
+  "rows": [
+    {
+      "path": "tests/integration/guardian-d5-restart-backoff.spec.ts",
+      "sha": "fd32b41dd4690c0faa1e872ddcd67e2d5715366a",
+      "verified": true,
+      "lines": 107,
+      "tests": 5,
+      "assertions": 16,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "node:url",
+        "node:path",
+        "../../packages/phase-f/resilience/guardian.js"
+      ]
+    },
+    {
+      "path": "tests/integration/guardian-d6-pre-death-seal.spec.ts",
+      "sha": "2d30413ecdc9e16dba776bba5be2d763ec814260",
+      "verified": true,
+      "lines": 109,
+      "tests": 5,
+      "assertions": 23,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/guardian.js"
+      ]
+    },
+    {
+      "path": "tests/integration/guardian-e3-buildhash-env.spec.ts",
+      "sha": "5f5a926c8b0c55add55fa508fd612f80b1f18a29",
+      "verified": true,
+      "lines": 97,
+      "tests": 3,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/guardian.js"
+      ]
+    },
+    {
+      "path": "tests/integration/guardian.spec.ts",
+      "sha": "52394484cd1c3001aeb9ea122b66a58921e2f388",
+      "verified": true,
+      "lines": 97,
+      "tests": 9,
+      "assertions": 16,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/guardian.js",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/integration/hsp-guardian-cgroup.spec.ts",
+      "sha": "2091439acbc0281cbc186c2ab7ca15d411a135b3",
+      "verified": true,
+      "lines": 125,
+      "tests": 5,
+      "assertions": 8,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/guardian.js"
+      ]
+    },
+    {
+      "path": "tests/integration/l1o-l600-support.spec.ts",
+      "sha": "a75f2f626e03975423ac36b6e3f65e95583fb83d",
+      "verified": true,
+      "lines": 184,
+      "tests": 10,
+      "assertions": 24,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/l1o/l600-support.js"
+      ]
+    },
+    {
+      "path": "tests/integration/l1o-recall.spec.ts",
+      "sha": "5a986c71f0a00490f252e72f5f2796f320840fe9",
+      "verified": true,
+      "lines": 402,
+      "tests": 19,
+      "assertions": 36,
+      "mocks": 1,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/l1o/recall.js",
+        "../../packages/phase-f/l1o/void-architect.js"
+      ]
+    },
+    {
+      "path": "tests/integration/l1o-void-architect-full.spec.ts",
+      "sha": "a0de3169794738aaf6599e5cc4b675728ce7039b",
+      "verified": true,
+      "lines": 454,
+      "tests": 15,
+      "assertions": 37,
+      "mocks": 1,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/l1o/void-architect.js",
+        "../../packages/phase-f/l1o/success-schema.js",
+        "../../packages/phase-f/l1o/master-key.js"
+      ]
+    },
+    {
+      "path": "tests/integration/l1o-void-architect.spec.ts",
+      "sha": "80fb04cd5e2df278cd5863562d5a0761980135f2",
+      "verified": true,
+      "lines": 201,
+      "tests": 24,
+      "assertions": 34,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/l1o/void-architect.js",
+        "../../packages/phase-f/l1o/auto-learn.js"
+      ]
+    },
+    {
+      "path": "tests/integration/layer11-storage-admission.spec.ts",
+      "sha": "e120822d9bb9d85c2d5fded84eb9b0c2e0977188",
+      "verified": true,
+      "lines": 159,
+      "tests": 7,
+      "assertions": 13,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/storage-admission.js"
+      ]
+    },
+    {
+      "path": "tests/integration/layer11-storage-containment.spec.ts",
+      "sha": "7c93a74fb6800e1ac7e0c7835e080b5bef3101f5",
+      "verified": true,
+      "lines": 40,
+      "tests": 3,
+      "assertions": 7,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/storage-io-containment.js",
+        "../../packages/phase-f/sovereign/safe-write.js",
+        "node:fs",
+        "node:path",
+        "node:os"
+      ]
+    },
+    {
+      "path": "tests/integration/layer12-operational.spec.ts",
+      "sha": "e9e61347a3876301365136d009a96df36dad2542",
+      "verified": true,
+      "lines": 237,
+      "tests": 11,
+      "assertions": 37,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/operational-determinism.js"
+      ]
+    }
+  ]
+}
