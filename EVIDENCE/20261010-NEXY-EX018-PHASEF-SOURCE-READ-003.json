@@ -1,0 +1,297 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "source read, separate experimental build scope; NOT execution or DOC-C certification",
+  "all": 126,
+  "range": [
+    24,
+    36
+  ],
+  "rows": [
+    {
+      "path": "packages/phase-f/game/runtime/wasm-runtime.ts",
+      "sha": "b34a26bedeba545293199417b233bcff64eaebbc",
+      "verified": true,
+      "lines": 630,
+      "imports": [
+        "node:crypto",
+        "../../../core/tick.js",
+        "../../../core/ulid.js"
+      ],
+      "exports": [
+        "TICK_BUDGET_MS",
+        "WasmRuntimeError",
+        "encodeTickInput",
+        "decodeTickResult",
+        "createInProcessGameRuntime",
+        "loadWasmGameRuntime",
+        "deriveTickSeed",
+        "emptyGameTick",
+        "_internals"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/runtime/wasm.ts",
+      "sha": "56b443317867af30ec05a75b588bb96ac617a744",
+      "verified": true,
+      "lines": 128,
+      "imports": [
+        "../../../core/tick.js",
+        "../../../core/ulid.js"
+      ],
+      "exports": [
+        "WasmTickTimeoutError",
+        "createWasmShardRuntime"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/runtime/webgpu-runtime.ts",
+      "sha": "e036462d0b47dcd171a297d389ffe01123ba5664",
+      "verified": true,
+      "lines": 453,
+      "imports": [
+        "../../../core/ulid.js"
+      ],
+      "exports": [
+        "WebGPUUnavailableError",
+        "WebGPUNotInitialisedError",
+        "NEXY_BRAND_SHADER",
+        "createWebGPURuntime",
+        "createMockWebGPURuntime",
+        "FrameBudgetGuard",
+        "_internals",
+        "inspectWebGPUCapabilities",
+        "validateSceneData",
+        "createRenderLoop"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/runtime/webgpu.ts",
+      "sha": "73773fa3a309d5dae0240fbf1dcdce9cc88aefb6",
+      "verified": true,
+      "lines": 103,
+      "imports": [
+        "../../../core/tick.js",
+        "../../../core/ulid.js"
+      ],
+      "exports": [
+        "createWebGpuRenderer",
+        "FrameBudgetExceededError"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/spec/game-spec.ts",
+      "sha": "19e968d467c75fd47d3f5ae59d8f8a0e6bf8580d",
+      "verified": true,
+      "lines": 351,
+      "imports": [
+        "../../../core/tick.js",
+        "node:crypto"
+      ],
+      "exports": [
+        "recomputeGameSpecHash",
+        "verifyGameSpecIntegrity",
+        "verifyGameRuntimeBinding",
+        "createGameSpec",
+        "patchGameSpec",
+        "validateGameSpec"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/spec/spec-hash.ts",
+      "sha": "561c4ce008e816ce06d953e808ec04539aeba505",
+      "verified": true,
+      "lines": 71,
+      "imports": [
+        "node:crypto",
+        "../../../core/tick.js",
+        "../../../core/ulid.js"
+      ],
+      "exports": [
+        "computeStateHash",
+        "snapshotWorld",
+        "verifySnapshot",
+        "verifySnapshotChain"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/spec/spec-registry.ts",
+      "sha": "08bd86365ba10ba0ddc00a03e4392dd907b8725a",
+      "verified": true,
+      "lines": 69,
+      "imports": [
+        "../../../core/ulid.js",
+        "../../../core/tick.js",
+        "node:crypto",
+        "./game-spec.js"
+      ],
+      "exports": [
+        "createSpecRegistry"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/state/firewall.ts",
+      "sha": "ee0e1fe77e4da349715292ce9ddbe450d8f9d3c8",
+      "verified": true,
+      "lines": 111,
+      "imports": [
+        "../../../core/ulid.js",
+        "../../../core/tick.js",
+        "./gameplay.js",
+        "../spec/spec-hash.js"
+      ],
+      "exports": [
+        "issueChallenge",
+        "resolveChallenge",
+        "createChallengeLog",
+        "rollbackToSnapshot",
+        "createLifecycleAuditLog"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/state/gameplay-state.ts",
+      "sha": "d2fc9d3da360684ce39ff6e90f6dc15311bd0c8f",
+      "verified": true,
+      "lines": 359,
+      "imports": [
+        "node:crypto",
+        "../../../core/tick.js",
+        "../runtime/wasm-runtime.js"
+      ],
+      "exports": [
+        "assertVolatile",
+        "createMatchHandle",
+        "createGameplayStateRing",
+        "fingerprintMatch",
+        "verifyReplay",
+        "createPendingDeltaQueue",
+        "_internals",
+        "summarizeGameplayState",
+        "validateMatchHandle",
+        "createReplayWindow",
+        "assertSnapshotBelongsToMatch"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/state/gameplay.ts",
+      "sha": "372d10747029a2acac0fd2e3fc35e7b656c1b7d3",
+      "verified": true,
+      "lines": 124,
+      "imports": [
+        "../../../core/ulid.js",
+        "../../../core/tick.js",
+        "node:crypto"
+      ],
+      "exports": [
+        "createGameShard",
+        "transitionShard",
+        "playerJoin",
+        "playerLeave",
+        "createEventLog"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/state/sovereign-state.ts",
+      "sha": "f0a4371f2f65374187d3abe9ed4f26ef42ebfbf4",
+      "verified": true,
+      "lines": 325,
+      "imports": [
+        "../canonical-order.js",
+        "node:crypto",
+        "../../../core/tick.js",
+        "../../../core/db.js"
+      ],
+      "exports": [
+        "brandSovereign",
+        "unwrapSovereign",
+        "hashDeltas",
+        "noteHash",
+        "sovereignReader",
+        "persistMatchStart",
+        "_internals",
+        "canonicalizeSovereignAttributes",
+        "assetDigest",
+        "validateSovereignDelta",
+        "validateGameMatch",
+        "canonicalHashDeltas"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/state/sovereign.ts",
+      "sha": "0e21bf45f48b511aa23f5ff6f455198f33c77e3c",
+      "verified": true,
+      "lines": 124,
+      "imports": [
+        "../canonical-order.js",
+        "../../../core/ulid.js",
+        "../../../core/tick.js",
+        "../numeric-law.js"
+      ],
+      "exports": [
+        "resolveConsensus",
+        "approveDeployment",
+        "rejectDeployment",
+        "createDeploymentGateRegistry"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    }
+  ]
+}
