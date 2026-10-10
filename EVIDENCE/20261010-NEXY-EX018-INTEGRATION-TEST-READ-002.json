@@ -1,0 +1,176 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index, not test execution",
+  "all_tests": 103,
+  "range": [
+    12,
+    24
+  ],
+  "rows": [
+    {
+      "path": "tests/integration/auto-recovery-worker-deadlock.spec.ts",
+      "sha": "c015da6a91b8c1b6de32d3133187428f61c84be1",
+      "verified": true,
+      "lines": 36,
+      "tests": 4,
+      "assertions": 7,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/auto-recovery-controller.js",
+        "../../packages/phase-f/resilience/playbooks/playbook-001-worker-deadlock.js",
+        "../../packages/core/tick.js"
+      ]
+    },
+    {
+      "path": "tests/integration/b3-genesis-owner-anchor.spec.ts",
+      "sha": "e5d5966073b04aded15e79f8a4abf6c21c6eee5c",
+      "verified": true,
+      "lines": 183,
+      "tests": 6,
+      "assertions": 24,
+      "mocks": 1,
+      "imports": [
+        "vitest",
+        "node:crypto",
+        "../../packages/engine/lo2.js"
+      ]
+    },
+    {
+      "path": "tests/integration/canon-seal.spec.ts",
+      "sha": "5d791b2e0e8e0d3ac93553a77565be8e3e8ac515",
+      "verified": true,
+      "lines": 86,
+      "tests": 5,
+      "assertions": 19,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/canon-seal.js"
+      ]
+    },
+    {
+      "path": "tests/integration/capability-node.spec.ts",
+      "sha": "bcadcfb9e75a847b14cb3e87ba82e15c06319b09",
+      "verified": true,
+      "lines": 62,
+      "tests": 3,
+      "assertions": 12,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/capability-node.js"
+      ]
+    },
+    {
+      "path": "tests/integration/core-detection.spec.ts",
+      "sha": "03a9c06fa891be3380585050396fc454390826e7",
+      "verified": true,
+      "lines": 124,
+      "tests": 7,
+      "assertions": 14,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest",
+        "../../packages/phase-f/sovereign/core-detection.js"
+      ]
+    },
+    {
+      "path": "tests/integration/csu-ledger.spec.ts",
+      "sha": "20faa3c99e6b48582b787fb4c2a2cf7634494700",
+      "verified": true,
+      "lines": 99,
+      "tests": 10,
+      "assertions": 25,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/csu-ledger.js"
+      ]
+    },
+    {
+      "path": "tests/integration/deployment-provider-contract.spec.ts",
+      "sha": "35bc72943fb23c56c30c30cdf1fa05d091601ddf",
+      "verified": true,
+      "lines": 23,
+      "tests": 2,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../scripts/deployment-provider-contract.js"
+      ]
+    },
+    {
+      "path": "tests/integration/dialog-sandbox.spec.ts",
+      "sha": "529bf3f8f66e5e8b4e91ed0722568d6ef44ce8a6",
+      "verified": true,
+      "lines": 125,
+      "tests": 6,
+      "assertions": 16,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest",
+        "../../packages/swarm/adapters/types.js",
+        "../../packages/human/dialog-sandbox.js"
+      ]
+    },
+    {
+      "path": "tests/integration/directives/create.spec.ts",
+      "sha": "618430867512b4c040b24c54504820af37576b8c",
+      "verified": true,
+      "lines": 255,
+      "tests": 7,
+      "assertions": 29,
+      "mocks": 3,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../../packages/orch-core/system-state.js",
+        "../../../packages/core/vnext-state-matrix.js"
+      ]
+    },
+    {
+      "path": "tests/integration/directives/csrf-required.spec.ts",
+      "sha": "2d2812ad91c3b795e5d58868d04104d1848cf04b",
+      "verified": true,
+      "lines": 58,
+      "tests": 2,
+      "assertions": 4,
+      "mocks": 3,
+      "imports": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/directives/freeze-state-blocks.spec.ts",
+      "sha": "3afa3f1c07437bf6f71b8e6de28a94edcdcbd6f4",
+      "verified": true,
+      "lines": 47,
+      "tests": 1,
+      "assertions": 3,
+      "mocks": 3,
+      "imports": [
+        "vitest",
+        "../../../packages/orch-core/system-state.js",
+        "../../../packages/core/vnext-state-matrix.js"
+      ]
+    },
+    {
+      "path": "tests/integration/directives/read-auth.spec.ts",
+      "sha": "560bc7a5bdc99211395faf5fd46c826e6312fd5e",
+      "verified": true,
+      "lines": 246,
+      "tests": 13,
+      "assertions": 41,
+      "mocks": 2,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../../packages/api/directives.js"
+      ]
+    }
+  ]
+}
