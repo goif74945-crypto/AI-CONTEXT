@@ -1,0 +1,179 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index; NOT execution",
+  "all_tests": 122,
+  "range": [
+    12,
+    24
+  ],
+  "rows": [
+    {
+      "path": "tests/contract/auth-rate-limit-await.test.ts",
+      "sha": "282f582ab1535e97e63f80f0ad3123b6b8d64958",
+      "verified": true,
+      "lines": 18,
+      "tests": 1,
+      "assertions": 4,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs/promises",
+        "node:url"
+      ]
+    },
+    {
+      "path": "tests/contract/auth-security-incident.test.ts",
+      "sha": "3c911f5eb8919c9b677aaad148d0d652b24a06f4",
+      "verified": true,
+      "lines": 112,
+      "tests": 3,
+      "assertions": 17,
+      "mocks": 1,
+      "imports": [
+        "node:fs",
+        "node:path",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/blob-storage-provider.test.ts",
+      "sha": "1524da569ff6883bc57370c08062119c43f20ff9",
+      "verified": true,
+      "lines": 38,
+      "tests": 2,
+      "assertions": 6,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/storage/blob-provider.js",
+        "../../packages/api/storage-control.js"
+      ]
+    },
+    {
+      "path": "tests/contract/browser-auth-fixture.test.ts",
+      "sha": "a65605c6769e93c5b6d11e65dd03767afbd3ac01",
+      "verified": true,
+      "lines": 47,
+      "tests": 5,
+      "assertions": 16,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:path",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/canonical-api.test.ts",
+      "sha": "1d90692030c4b8ccd0e089150cec21e9d7d803ba",
+      "verified": true,
+      "lines": 638,
+      "tests": 20,
+      "assertions": 85,
+      "mocks": 5,
+      "imports": [
+        "vitest",
+        "../../packages/api/canonical.js",
+        "../../vault/repository.js"
+      ]
+    },
+    {
+      "path": "tests/contract/canonical-json.test.ts",
+      "sha": "688d317063ec7201c1a2ee7815685d3caeb3de18",
+      "verified": true,
+      "lines": 49,
+      "tests": 4,
+      "assertions": 13,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/core/canonical-json.js"
+      ]
+    },
+    {
+      "path": "tests/contract/canonical-system-state-envelope.test.ts",
+      "sha": "cc3228067cc929d1dc53af45a4a88276c731edf8",
+      "verified": true,
+      "lines": 41,
+      "tests": 3,
+      "assertions": 7,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/cold-archive-snapshot.test.ts",
+      "sha": "8a70e3260f4f194e055e17cb6acded547ec878f5",
+      "verified": true,
+      "lines": 27,
+      "tests": 3,
+      "assertions": 8,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/consensus-result-contract.test.ts",
+      "sha": "a5e46b35652b5f628aa4b39e8c80e103d3bb5038",
+      "verified": true,
+      "lines": 158,
+      "tests": 5,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../packages/contracts/consensus.js",
+        "../../packages/judge/consensus.js"
+      ]
+    },
+    {
+      "path": "tests/contract/core-kernel-no-authoritative-rng.test.ts",
+      "sha": "15c7aa81abefff26652ad6561981195764812b8a",
+      "verified": true,
+      "lines": 83,
+      "tests": 6,
+      "assertions": 11,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:child_process",
+        "node:url",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/core-kernel-rust.test.ts",
+      "sha": "db615351a8d128b65d3184d0e2acc16ae0f2ae5b",
+      "verified": true,
+      "lines": 43,
+      "tests": 1,
+      "assertions": 1,
+      "mocks": 0,
+      "imports": [
+        "node:child_process",
+        "node:url",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/core-kernel-tier-depth-compile.test.ts",
+      "sha": "f7e38f02d835ed851e8947601348ede68c36c25e",
+      "verified": true,
+      "lines": 98,
+      "tests": 4,
+      "assertions": 10,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:child_process",
+        "vitest"
+      ]
+    }
+  ]
+}
