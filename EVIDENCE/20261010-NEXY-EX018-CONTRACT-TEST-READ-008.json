@@ -1,0 +1,179 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index; NOT execution",
+  "all_tests": 122,
+  "range": [
+    84,
+    96
+  ],
+  "rows": [
+    {
+      "path": "tests/contract/provider-log-alarm-sink.test.ts",
+      "sha": "528632e612579efeee5593f470bf278272cdb034",
+      "verified": true,
+      "lines": 49,
+      "tests": 2,
+      "assertions": 4,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/obs/alarms.js",
+        "../../packages/obs/provider-log-alarm-sink.js"
+      ]
+    },
+    {
+      "path": "tests/contract/queue-active-cancellation-wiring.test.ts",
+      "sha": "4548eb05fff18a55ded69a1baba43ac724aefa9e",
+      "verified": true,
+      "lines": 21,
+      "tests": 1,
+      "assertions": 9,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/queue-payload.test.ts",
+      "sha": "8db0a207da39d60f422386b2896fc05ddba902c1",
+      "verified": true,
+      "lines": 59,
+      "tests": 6,
+      "assertions": 11,
+      "mocks": 1,
+      "imports": [
+        "vitest",
+        "../../packages/queue/payload.js"
+      ]
+    },
+    {
+      "path": "tests/contract/queue-taxonomy.test.ts",
+      "sha": "79c7d6e320abf748b77ae44e31d939ffa6fe1193",
+      "verified": true,
+      "lines": 36,
+      "tests": 4,
+      "assertions": 8,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/queue/states.js"
+      ]
+    },
+    {
+      "path": "tests/contract/railway-browser-e2e-gate.test.ts",
+      "sha": "9aa655907aab43ba0978747ca2c4d44b2447a9a6",
+      "verified": true,
+      "lines": 57,
+      "tests": 5,
+      "assertions": 22,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/raw-sql-schema-alignment.test.ts",
+      "sha": "4c1bba30e78da0e7a7568df46e75299082d281d7",
+      "verified": true,
+      "lines": 17,
+      "tests": 0,
+      "assertions": 2,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/release-atomicity.test.ts",
+      "sha": "e83a6db5105698ad28abdc474223c1fd689a3031",
+      "verified": true,
+      "lines": 273,
+      "tests": 9,
+      "assertions": 27,
+      "mocks": 2,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../packages/queue/run-state.js"
+      ]
+    },
+    {
+      "path": "tests/contract/release-attestation.test.ts",
+      "sha": "178827c55a290b66f39db2c36e7192c21dbd7f41",
+      "verified": true,
+      "lines": 290,
+      "tests": 20,
+      "assertions": 72,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "../../scripts/evidence-attestation.js"
+      ]
+    },
+    {
+      "path": "tests/contract/release-spine.test.ts",
+      "sha": "c5a739be651c96168ba96a469b8f8a222bd67014",
+      "verified": true,
+      "lines": 164,
+      "tests": 8,
+      "assertions": 38,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "node:path",
+        "../../packages/law/prerelease.js",
+        "../../packages/judge/candidate.js"
+      ]
+    },
+    {
+      "path": "tests/contract/reproducible-build-envelope.test.ts",
+      "sha": "f463e2e015596075fab4b8ac141b3e1c6fd00c09",
+      "verified": true,
+      "lines": 89,
+      "tests": 9,
+      "assertions": 23,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:url",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/root-of-trust-durable-anchor.test.ts",
+      "sha": "3fd4efa3bb73bb1a5a8a4e8c450b7d3c6992b25e",
+      "verified": true,
+      "lines": 69,
+      "tests": 6,
+      "assertions": 19,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:url",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/runtime-config-consumers.test.ts",
+      "sha": "980199b773f04c2f2b17558d0b8b5ef1c4790f67",
+      "verified": true,
+      "lines": 43,
+      "tests": 3,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/law/prerelease.js",
+        "../../packages/queue/payload.js",
+        "node:fs"
+      ]
+    }
+  ]
+}
