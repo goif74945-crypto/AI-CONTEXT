@@ -1,0 +1,173 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index; NOT execution",
+  "all_tests": 122,
+  "range": [
+    48,
+    60
+  ],
+  "rows": [
+    {
+      "path": "tests/contract/doc-e-verifier.test.ts",
+      "sha": "ca4bf106af9b94e6e604de66887a58edc756a42f",
+      "verified": true,
+      "lines": 182,
+      "tests": 6,
+      "assertions": 8,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/contracts/doc-e-evidence.js",
+        "../../scripts/doc-e/verify-doc-e.js"
+      ]
+    },
+    {
+      "path": "tests/contract/envelope.test.ts",
+      "sha": "c8caec95b430dfdd454691bdf68378f422c48785",
+      "verified": true,
+      "lines": 65,
+      "tests": 6,
+      "assertions": 13,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/contracts/envelope.js",
+        "../../packages/api/vnext-config.js"
+      ]
+    },
+    {
+      "path": "tests/contract/error-codes.test.ts",
+      "sha": "1a433e7a3e6e1825bcaaabf3e2c4aa5be66b3670",
+      "verified": true,
+      "lines": 28,
+      "tests": 2,
+      "assertions": 2,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/contracts/errors.js"
+      ]
+    },
+    {
+      "path": "tests/contract/evidence-contract.test.ts",
+      "sha": "cec54eb83c10cee917c13ed62a303459d3eb5def",
+      "verified": true,
+      "lines": 75,
+      "tests": 5,
+      "assertions": 12,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/contracts/evidence.js",
+        "../../packages/validation/evidence.schema.js"
+      ]
+    },
+    {
+      "path": "tests/contract/ex011-law-quorum-cardinality.test.ts",
+      "sha": "417f3932f3eaf649eb11e56963838727f3537f67",
+      "verified": true,
+      "lines": 47,
+      "tests": 5,
+      "assertions": 10,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/law/prerelease.js",
+        "../../packages/api/vnext-config.js"
+      ]
+    },
+    {
+      "path": "tests/contract/ex017-canonical-failclosed.test.ts",
+      "sha": "b6d8646b35780a13510025616593869ff940ab7b",
+      "verified": true,
+      "lines": 35,
+      "tests": 14,
+      "assertions": 27,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/core/canonical-json.ts"
+      ]
+    },
+    {
+      "path": "tests/contract/ex017-config-defaults.test.ts",
+      "sha": "0348ee2ba55b746dc97a23bd00e82168671f35dd",
+      "verified": true,
+      "lines": 30,
+      "tests": 2,
+      "assertions": 6,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/api/vnext-config.js"
+      ]
+    },
+    {
+      "path": "tests/contract/ex017-consumer-hash-shapes.test.ts",
+      "sha": "b974522c7ae60910f54094600b8e351e163f014c",
+      "verified": true,
+      "lines": 42,
+      "tests": 7,
+      "assertions": 13,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:crypto",
+        "../../packages/core/canonical-json.ts"
+      ]
+    },
+    {
+      "path": "tests/contract/ex017-queue-safe-integer.test.ts",
+      "sha": "b1d9f3b7f35a34a762f48da7fd3c26a2244f1a1d",
+      "verified": true,
+      "lines": 23,
+      "tests": 4,
+      "assertions": 8,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/queue/retry-policy.ts"
+      ]
+    },
+    {
+      "path": "tests/contract/ex017-wire-vocabulary.test.ts",
+      "sha": "9bb39848df32348fb64d0334878dc1345157b270",
+      "verified": true,
+      "lines": 42,
+      "tests": 3,
+      "assertions": 20,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/contracts/state.js",
+        "../../packages/contracts/errors.js"
+      ]
+    },
+    {
+      "path": "tests/contract/failed-dispatch-retry.test.ts",
+      "sha": "e555aa85cc90dc80d4b8670317f39c90ba15715d",
+      "verified": true,
+      "lines": 51,
+      "tests": 3,
+      "assertions": 9,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/queue/retry-policy.js"
+      ]
+    },
+    {
+      "path": "tests/contract/fatal-state-law.test.ts",
+      "sha": "04a1b683e84b66b99d960247f99bc82e47b3f7cc",
+      "verified": true,
+      "lines": 21,
+      "tests": 3,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/core/vnext-state-matrix.js"
+      ]
+    }
+  ]
+}
