@@ -1,0 +1,180 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index, not test execution",
+  "all_tests": 103,
+  "range": [
+    24,
+    36
+  ],
+  "rows": [
+    {
+      "path": "tests/integration/economy-lifecycle-product-expansion.spec.ts",
+      "sha": "3fd738c7d4836c4cc8877af4bb2b1736f4f8c78c",
+      "verified": true,
+      "lines": 470,
+      "tests": 22,
+      "assertions": 91,
+      "mocks": 0,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../packages/phase-f/game/numeric-law.js",
+        "../../packages/phase-f/economy/constitutional-economy.js",
+        "../../packages/phase-f/universe/app-lifecycle.js",
+        "../../packages/phase-f/universe/global-lifecycle.js",
+        "../../packages/phase-f/universe/creator-fabric.js",
+        "../../packages/phase-f/universe/template-sdk-registry.js"
+      ]
+    },
+    {
+      "path": "tests/integration/freeze-all-causes.spec.ts",
+      "sha": "b3996d6bc487f5d97dffa398dc8bd1d0f2a9eafe",
+      "verified": true,
+      "lines": 126,
+      "tests": 3,
+      "assertions": 6,
+      "mocks": 2,
+      "imports": [
+        "vitest",
+        "../../packages/swarm/pipeline.js",
+        "../../packages/orch-core/system-state.js",
+        "../../packages/core/vnext-state-matrix.js"
+      ]
+    },
+    {
+      "path": "tests/integration/freeze-mechanism.spec.ts",
+      "sha": "f1090096fe2c06f25ab0f158c4134da8397e8828",
+      "verified": true,
+      "lines": 86,
+      "tests": 6,
+      "assertions": 12,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/orch-core/system-state.js",
+        "../../packages/core/vnext-state-matrix.js",
+        "../../packages/law/freeze.js"
+      ]
+    },
+    {
+      "path": "tests/integration/freeze-persistence.spec.ts",
+      "sha": "c55430473b2d1434b8de59c826f03d00b040fd9d",
+      "verified": true,
+      "lines": 126,
+      "tests": 5,
+      "assertions": 13,
+      "mocks": 1,
+      "imports": [
+        "vitest",
+        "../../packages/core/vnext-state-matrix.js"
+      ]
+    },
+    {
+      "path": "tests/integration/freeze/recover.spec.ts",
+      "sha": "d197936bc15b92ce5be4e5119457f2c687c314c6",
+      "verified": true,
+      "lines": 701,
+      "tests": 25,
+      "assertions": 77,
+      "mocks": 3,
+      "imports": [
+        "node:crypto",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/g1-g10-aaaa-fabric.spec.ts",
+      "sha": "34ef6829cb851aef7a6f0c7e37bd193d402ae401",
+      "verified": true,
+      "lines": 308,
+      "tests": 10,
+      "assertions": 36,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/aaaa-fabric.js",
+        "../../packages/phase-f/game/state/sovereign-state.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g11-region-consensus.spec.ts",
+      "sha": "35242d7b0062a856718cf40f11daa0d731995f76",
+      "verified": true,
+      "lines": 130,
+      "tests": 9,
+      "assertions": 17,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/g11-region-consensus.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g12-cross-shard.spec.ts",
+      "sha": "a4c4e106417666fc6a0f1fefd5af74e62ad19534",
+      "verified": true,
+      "lines": 71,
+      "tests": 1,
+      "assertions": 4,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/cross-shard.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g12-transfer.spec.ts",
+      "sha": "889298293328c8521067ab173361c3426bfd9b19",
+      "verified": true,
+      "lines": 235,
+      "tests": 13,
+      "assertions": 44,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/g12-transfer.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g14-asset-bake.spec.ts",
+      "sha": "5b579cd76ce6f064d099d2d80d61ca86dfea4241",
+      "verified": true,
+      "lines": 186,
+      "tests": 9,
+      "assertions": 16,
+      "mocks": 0,
+      "imports": [
+        "node:crypto",
+        "vitest",
+        "../../packages/phase-f/game/g14-asset-bake.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g14-deterministic-toolchain.spec.ts",
+      "sha": "3fac5687161e50510f1d290bd281797256b3dc49",
+      "verified": true,
+      "lines": 133,
+      "tests": 8,
+      "assertions": 18,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/deterministic-toolchain.js"
+      ]
+    },
+    {
+      "path": "tests/integration/g14-mesh-canon.spec.ts",
+      "sha": "5778bf7b826d53ca5815baa03b431b4f07b8680f",
+      "verified": true,
+      "lines": 79,
+      "tests": 8,
+      "assertions": 16,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/game/mesh-canon.js",
+        "../../packages/phase-f/game/numeric-law.js"
+      ]
+    }
+  ]
+}
