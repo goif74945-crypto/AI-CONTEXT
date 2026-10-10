@@ -1,0 +1,175 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "FULL test source fetched and static indexed; not execution or quality certification",
+  "all_tests": 122,
+  "range": [
+    0,
+    12
+  ],
+  "rows": [
+    {
+      "path": "tests/contract/agent-adapter-contract.test.ts",
+      "sha": "134ed435bf6867cf632617c489fc28dfce304b1b",
+      "verified": true,
+      "lines": 163,
+      "tests": 4,
+      "assertions": 19,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "../../packages/swarm/adapters/index.js",
+        "../../packages/api/vnext-config.js"
+      ]
+    },
+    {
+      "path": "tests/contract/agent-response-fail-closed.test.ts",
+      "sha": "05c7b2ccbe61a28e13c18f84b52137ccd972ccff",
+      "verified": true,
+      "lines": 60,
+      "tests": 2,
+      "assertions": 5,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "../../packages/swarm/agent-response.js"
+      ]
+    },
+    {
+      "path": "tests/contract/alarms.test.ts",
+      "sha": "e15d2848ad56e453a8feb69fcbcb1e7d44e636d5",
+      "verified": true,
+      "lines": 56,
+      "tests": 3,
+      "assertions": 6,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "../../packages/obs/alarms.js"
+      ]
+    },
+    {
+      "path": "tests/contract/api-handler.test.ts",
+      "sha": "f0cb1160d801d1df962bc6f3feb63af5f831b643",
+      "verified": true,
+      "lines": 45,
+      "tests": 1,
+      "assertions": 6,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "next/server",
+        "../../apps/web/lib/api-handler"
+      ]
+    },
+    {
+      "path": "tests/contract/api-hostile-input-boundary.test.ts",
+      "sha": "bd4acd56ce9c50d753a4455ee5d2c406f7e5563c",
+      "verified": true,
+      "lines": 71,
+      "tests": 5,
+      "assertions": 11,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "next/server",
+        "../../apps/web/lib/api-handler.js",
+        "../../packages/contracts/auth.js",
+        "../../packages/contracts/directive.js"
+      ]
+    },
+    {
+      "path": "tests/contract/api-shapes.test.ts",
+      "sha": "14e566822f05eb00e769e73a56b3518e6d285eb6",
+      "verified": true,
+      "lines": 161,
+      "tests": 19,
+      "assertions": 33,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "../../packages/validation/api.schema.js",
+        "../../packages/contracts/directive.js"
+      ]
+    },
+    {
+      "path": "tests/contract/artifact-export-trust.test.ts",
+      "sha": "09e1a1844c0455fb675da248ca3432d525a50ec2",
+      "verified": true,
+      "lines": 22,
+      "tests": 2,
+      "assertions": 9,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/audit-chain-serialization.test.ts",
+      "sha": "8219f7fb171b780f1178eeb6d42df0fdbd909334",
+      "verified": true,
+      "lines": 47,
+      "tests": 3,
+      "assertions": 15,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/audit-role-filter-contract.test.ts",
+      "sha": "3a252cebf6e2d2081bba05cc3029eb00d03b0d21",
+      "verified": true,
+      "lines": 13,
+      "tests": 1,
+      "assertions": 2,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/auth-email-provider.test.ts",
+      "sha": "38c53f547417f937a421e7e3e72a9aef4ddcd346",
+      "verified": true,
+      "lines": 158,
+      "tests": 3,
+      "assertions": 13,
+      "mocks": 1,
+      "source_imports": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/auth-fail-closed-boundary.test.ts",
+      "sha": "1ac1e0f2eae6e92ae1b33f5a081f1bf4bb89b174",
+      "verified": true,
+      "lines": 37,
+      "tests": 2,
+      "assertions": 13,
+      "mocks": 0,
+      "source_imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/auth-ip-boundary.test.ts",
+      "sha": "11d74cc0a9d2e610a7d69fdae7b22d9dcc4186cc",
+      "verified": true,
+      "lines": 86,
+      "tests": 5,
+      "assertions": 12,
+      "mocks": 0,
+      "source_imports": [
+        "vitest",
+        "next/server",
+        "../../apps/web/lib/api-handler.js",
+        "../../packages/auth/client-ip.js",
+        "../../packages/api/middleware/rate-limit.js"
+      ]
+    }
+  ]
+}
