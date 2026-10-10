@@ -1,6 +1,6 @@
 # V8 map-to-work graph (all 88 V1 locator groups, revision-bound candidates, NOT verified defects)
 # source_product_revision=58b1200bd61b867e917057d0019eea78ea9f6b2a
-# source_tree_sha=58b1200bd61b867e917057d0019eea78ea9f6b2a
+# source_tree_sha=6fd81ae8150aecc341f8a49f65e3c050f559c51f
 # original_spec_sha256_expected=b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7
 # authority Pnnnn = one-based paragraph index, including empty DOCX paragraphs; verify original bytes
 # PRIORITY and dependencies are scheduling hints only, not authoritative source obligations
