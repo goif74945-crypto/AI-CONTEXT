@@ -1,0 +1,174 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index; NOT execution",
+  "all_tests": 122,
+  "range": [
+    108,
+    120
+  ],
+  "rows": [
+    {
+      "path": "tests/contract/storage-provider-recovery.test.ts",
+      "sha": "43faa1bae52ae78ef5bbb892cbee05ca230cb666",
+      "verified": true,
+      "lines": 20,
+      "tests": 2,
+      "assertions": 7,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/storage-query-patterns.test.ts",
+      "sha": "ab1c92a06c053f9c19a070f4f699416b06bccf19",
+      "verified": true,
+      "lines": 124,
+      "tests": 5,
+      "assertions": 9,
+      "mocks": 1,
+      "imports": [
+        "vitest",
+        "../../packages/storage/query-patterns.js"
+      ]
+    },
+    {
+      "path": "tests/contract/storage-shared-blob.test.ts",
+      "sha": "e4824bd19c6b54b3dff732bc4f5bd63336bda10e",
+      "verified": true,
+      "lines": 46,
+      "tests": 1,
+      "assertions": 3,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/storage/lifecycle.js"
+      ]
+    },
+    {
+      "path": "tests/contract/storage-soft-delete.test.ts",
+      "sha": "f6695affdf5d8fdce247084d9f1e57f622b2f010",
+      "verified": true,
+      "lines": 160,
+      "tests": 4,
+      "assertions": 17,
+      "mocks": 4,
+      "imports": [
+        "vitest",
+        "../../packages/storage/soft-delete.js"
+      ]
+    },
+    {
+      "path": "tests/contract/swarm-prompt-law-boundary.test.ts",
+      "sha": "bfb588b255c3949874638182bffc9be19e02250e",
+      "verified": true,
+      "lines": 30,
+      "tests": 3,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/intelligence/irl.js",
+        "../../packages/swarm/pipeline.js",
+        "../../packages/lo3/prompt-law-filter.js"
+      ]
+    },
+    {
+      "path": "tests/contract/swarm-timeouts.test.ts",
+      "sha": "ec9efd3ebecb6275544a005dfacfd94729c0e10a",
+      "verified": true,
+      "lines": 257,
+      "tests": 11,
+      "assertions": 26,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "../../packages/swarm/pipeline.js"
+      ]
+    },
+    {
+      "path": "tests/contract/system-state-persistence.test.ts",
+      "sha": "80edaaf8dccc40bba83d484decac5f31e64d4e7d",
+      "verified": true,
+      "lines": 427,
+      "tests": 14,
+      "assertions": 47,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/core/db.js",
+        "../../packages/orch-core/system-state.js",
+        "../../packages/core/vnext-state-matrix.js"
+      ]
+    },
+    {
+      "path": "tests/contract/ui-truth-boundary.test.ts",
+      "sha": "cbbfafe55ee7f9ada2991a695f2fcc62091dd18b",
+      "verified": true,
+      "lines": 41,
+      "tests": 4,
+      "assertions": 17,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/vault-integrity-chain.test.ts",
+      "sha": "a96b2575e92a07cf00cf64ad7495d32e7035b5f5",
+      "verified": true,
+      "lines": 25,
+      "tests": 2,
+      "assertions": 2,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/vault/integrity.js"
+      ]
+    },
+    {
+      "path": "tests/contract/vault-pending-blob-verification.test.ts",
+      "sha": "5f3fa131e1a4a3e66af82f42812312f3db66c1f2",
+      "verified": true,
+      "lines": 20,
+      "tests": 2,
+      "assertions": 4,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:fs"
+      ]
+    },
+    {
+      "path": "tests/contract/vault-revision-monotonic.test.ts",
+      "sha": "a23b9f09b7d51b45b5359735abfd59984c7e509e",
+      "verified": true,
+      "lines": 76,
+      "tests": 3,
+      "assertions": 7,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/vault/versioning.js"
+      ]
+    },
+    {
+      "path": "tests/contract/vnext-defaults.test.ts",
+      "sha": "9853215fa86392662aa602d095138a7c6b46c2fd",
+      "verified": true,
+      "lines": 74,
+      "tests": 9,
+      "assertions": 34,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:path",
+        "vitest",
+        "../../packages/api/vnext-config.js"
+      ]
+    }
+  ]
+}
