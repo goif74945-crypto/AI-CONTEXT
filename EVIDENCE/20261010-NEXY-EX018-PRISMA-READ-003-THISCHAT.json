@@ -1,0 +1,191 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "range": [
+    24,
+    36
+  ],
+  "total": 57,
+  "scope": "full source read and DDL risk index; NOT executed migration",
+  "rows": [
+    {
+      "path": "prisma/migrations/20260923153500_owner_control_idempotency/migration.down.sql",
+      "sha": "eed7ca4e0e65465209c88de985723b65d511f645",
+      "verified": true,
+      "lines": 3,
+      "size": 111,
+      "hits": {
+        "DROP": [
+          2
+        ],
+        "TRANSACTION": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260923153500_owner_control_idempotency/migration.sql",
+      "sha": "e817195e168f3fa0858f8c57df48ffadbde3c46b",
+      "verified": true,
+      "lines": 21,
+      "size": 815,
+      "hits": {
+        "UNIQUE": [
+          16
+        ],
+        "CREATE": [
+          3
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260923170000_artifact_hard_delete_marker/migration.down.sql",
+      "sha": "561ada60a75c9882b701f083523de72bdcc14c1c",
+      "verified": true,
+      "lines": 3,
+      "size": 123,
+      "hits": {
+        "DROP": [
+          1,
+          2
+        ],
+        "ALTER": [
+          2
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260923170000_artifact_hard_delete_marker/migration.sql",
+      "sha": "72b67f600b8ca364961816193e1709ac95b65438",
+      "verified": true,
+      "lines": 6,
+      "size": 148,
+      "hits": {
+        "ALTER": [
+          1
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260923194000_auth_security_incident_correlation/migration.down.sql",
+      "sha": "26082eeb641ae81e4a2ee65b001f646a133af7fb",
+      "verified": true,
+      "lines": 6,
+      "size": 172,
+      "hits": {
+        "DROP": [
+          1,
+          4,
+          5
+        ],
+        "ALTER": [
+          3
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260923194000_auth_security_incident_correlation/migration.sql",
+      "sha": "6366bab753fba0f232311119991e326b05b0859c",
+      "verified": true,
+      "lines": 8,
+      "size": 294,
+      "hits": {
+        "UNIQUE": [
+          6
+        ],
+        "ALTER": [
+          2
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260923233000_storage_control_plane/migration.down.sql",
+      "sha": "bace7cf53ae626630bc539e8fadfe0056bfc2872",
+      "verified": true,
+      "lines": 3,
+      "size": 90,
+      "hits": {
+        "DROP": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260923233000_storage_control_plane/migration.sql",
+      "sha": "ff938793626dc653222790eff5067e58d2431b5f",
+      "verified": true,
+      "lines": 82,
+      "size": 3017,
+      "hits": {
+        "CASCADE": [
+          15,
+          50
+        ],
+        "UNIQUE": [
+          53
+        ],
+        "CREATE": [
+          1,
+          29
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260923234000_runtime_config/migration.down.sql",
+      "sha": "a29817f3480f7c4ebadb943c0195d921e655d816",
+      "verified": true,
+      "lines": 3,
+      "size": 92,
+      "hits": {
+        "DROP": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260923234000_runtime_config/migration.sql",
+      "sha": "4d3edef33571dc30b0cf0c708ccb87748ddb6c1a",
+      "verified": true,
+      "lines": 81,
+      "size": 2465,
+      "hits": {
+        "UNIQUE": [
+          32
+        ],
+        "CREATE": [
+          1,
+          25
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260924001000_output_emission_gate/migration.down.sql",
+      "sha": "bf7c9d2006572fa6f607712ee556f3db62ec0503",
+      "verified": true,
+      "lines": 3,
+      "size": 131,
+      "hits": {
+        "DROP": [
+          1,
+          2
+        ],
+        "ALTER": [
+          2
+        ]
+      }
+    },
+    {
+      "path": "prisma/migrations/20260924001000_output_emission_gate/migration.sql",
+      "sha": "2d20f4fa5745144f75d5784662290e054b25422a",
+      "verified": true,
+      "lines": 6,
+      "size": 160,
+      "hits": {
+        "ALTER": [
+          1
+        ]
+      }
+    }
+  ]
+}
