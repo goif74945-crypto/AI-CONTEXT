@@ -1,0 +1,279 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "source read, separate experimental build scope; NOT execution or DOC-C certification",
+  "all": 126,
+  "range": [
+    0,
+    12
+  ],
+  "rows": [
+    {
+      "path": "packages/phase-f/economy/constitutional-economy.ts",
+      "sha": "ba12c2f32e5fd4ba5626de672fb881162af76122",
+      "verified": true,
+      "lines": 656,
+      "imports": [
+        "node:crypto",
+        "../../core/canonical-order.js",
+        "../game/numeric-law.js"
+      ],
+      "exports": [
+        "sealEconomicRules",
+        "economicRulesDigest",
+        "sealAppToAppMonetizationContract",
+        "createConstitutionalEconomy"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/eslint-plugin-nexy/no-nondeterminism.js",
+      "sha": "4a71e72bb280d49d91b5e02b7d304b7a5456929a",
+      "verified": true,
+      "lines": 45,
+      "imports": [],
+      "exports": [],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": [
+          7,
+          8
+        ]
+      }
+    },
+    {
+      "path": "packages/phase-f/game/aaaa-fabric.ts",
+      "sha": "2513c39cca93c02743f6b1aecbba9eca393805b6",
+      "verified": true,
+      "lines": 170,
+      "imports": [
+        "./spec/game-spec.js",
+        "./spec/spec-hash.js",
+        "./spec/spec-registry.js",
+        "./state/gameplay.js",
+        "./state/sovereign.js",
+        "./state/firewall.js",
+        "./runtime/wasm-runtime.js",
+        "./runtime/webgpu-runtime.js",
+        "./runtime/hybrid-bridge.js",
+        "./g11-region-consensus.js",
+        "./g4-g10-guardrails.js"
+      ],
+      "exports": [],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/ai-crowd-determinism.ts",
+      "sha": "67144da98ab4cf1e1d690e6617461a6c0651f642",
+      "verified": true,
+      "lines": 271,
+      "imports": [
+        "./canonical-order.js",
+        "node:crypto"
+      ],
+      "exports": [
+        "G17_Q64_ONE",
+        "floorDivFixed",
+        "perceptionCell",
+        "canonicalPerceptionScan",
+        "canonicalPathfind",
+        "canonicalAgentOrder",
+        "runSequentialAgentUpdate",
+        "selectBehaviorBranch",
+        "canonicalGoalOrder",
+        "accumulateInfluence",
+        "runFixedCrowdCollisionIterations",
+        "applyTickBoundaryAgentSet",
+        "scheduleWholeAgentsByBudget",
+        "aiStateHash",
+        "createAgentTransferSnapshot",
+        "importAgentTransferSnapshot"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/canonical-order.ts",
+      "sha": "57993fc60af129fe3f75dff06dbade08c76a27e2",
+      "verified": true,
+      "lines": 12,
+      "imports": [],
+      "exports": [
+        "compareCanonicalText"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/cross-shard.ts",
+      "sha": "7f636ca24306e16d4545d1ae00f0f11fc1a5533a",
+      "verified": true,
+      "lines": 22,
+      "imports": [
+        "./g12-transfer.js"
+      ],
+      "exports": [],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/crowd-budget.ts",
+      "sha": "cb5e8d068b00324c9ab2af64bc6f21267af97783",
+      "verified": true,
+      "lines": 115,
+      "imports": [
+        "../../core/tick.js",
+        "../../core/ulid.js"
+      ],
+      "exports": [
+        "MIN_PER_USER_QUOTA",
+        "createCrowdBudgetController"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/csu-ledger.ts",
+      "sha": "861fa70d48882c8b3e04bc5c7fe6699b7d0136a0",
+      "verified": true,
+      "lines": 129,
+      "imports": [
+        "node:crypto",
+        "../../core/tick.js"
+      ],
+      "exports": [
+        "CsuLedger",
+        "ledgerEntryDigest",
+        "verifyLedgerChain",
+        "ledgerBalances"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/deterministic-toolchain.ts",
+      "sha": "ec584626537033dcf188a815f8c1690a89ce7d1f",
+      "verified": true,
+      "lines": 296,
+      "imports": [
+        "./canonical-order.js",
+        "node:crypto"
+      ],
+      "exports": [
+        "normalizeBuildSpec",
+        "computeToolchainHash",
+        "computeSpecHash",
+        "buildArtifact",
+        "verifyReproducibilityProof",
+        "finalizeBuildArtifact",
+        "verifyReproducibility",
+        "createToolchainReceipt",
+        "verifyToolchainReceipt",
+        "computeAssetMerkleRoot",
+        "toolchainFingerprint",
+        "createToolchainRegistry",
+        "verifyRegistryConsistency"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [
+          4
+        ],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/g11-region-consensus.ts",
+      "sha": "14731879bddb9cda8f248b77e4ef456fe3c22a6a",
+      "verified": true,
+      "lines": 200,
+      "imports": [
+        "./canonical-order.js",
+        "node:crypto"
+      ],
+      "exports": [
+        "createShardTickCommit",
+        "computeRegionTickRoot",
+        "deterministicLeaderSlot",
+        "applyAuthoritativeClientDelta",
+        "verifyClientAuthorityClaim",
+        "detectShardDivergence",
+        "completeDeterministicReplay"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/g12-transfer.ts",
+      "sha": "349e8ed4212ec7910d295ebcb7b1214a74e36cbc",
+      "verified": true,
+      "lines": 434,
+      "imports": [
+        "./canonical-order.js",
+        "node:crypto",
+        "zod"
+      ],
+      "exports": [
+        "TransferRecordSchema",
+        "transferDigest",
+        "verifyTransferRecord",
+        "exportEntity",
+        "importEntity",
+        "createTransferLedger"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    },
+    {
+      "path": "packages/phase-f/game/g14-asset-bake.ts",
+      "sha": "86383928808726e84de749761396766f0ffb72af",
+      "verified": true,
+      "lines": 239,
+      "imports": [
+        "./canonical-order.js",
+        "node:crypto"
+      ],
+      "exports": [
+        "verifyPhysicsBake",
+        "canonicalNavMeshBlob",
+        "verifyNavMeshBake",
+        "verifyShaderBake",
+        "verifyTextureBake"
+      ],
+      "signals": {
+        "TODO": [],
+        "fallback": [],
+        "nondeterminism": []
+      }
+    }
+  ]
+}
