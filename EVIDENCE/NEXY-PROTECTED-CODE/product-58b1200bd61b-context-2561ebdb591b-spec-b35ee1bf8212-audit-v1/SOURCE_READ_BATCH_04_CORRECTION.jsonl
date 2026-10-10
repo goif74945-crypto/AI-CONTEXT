@@ -1,0 +1,3 @@
+{"event_type":"CORRECT_WRONG_PATH","wrong_path":"apps/web/app/lib/api-handler.ts","correct_path":"apps/web/lib/api-handler.ts","evidence":"RCB path_glob exact HEAD returned path; original wrong-path error was not a code defect.","source_head":"58b1200bd61b867e917057d0019eea78ea9f6b2a"}
+{"path":"apps/web/lib/api-handler.ts","sha":"d1dbc74827d6fa2deb2ee4c27831bd898e3fa5c7","expected_size":3757,"returned_bytes":3757,"full_read":true,"semantic":"NOT_VERIFIED","test":"NOT_RUN"}
+{"path":"tests/contract/api-handler.test.ts","sha":"f0cb1160d801d1df962bc6f3feb63af5f831b643","expected_size":1484,"returned_bytes":1484,"full_read":true,"semantic":"NOT_VERIFIED","test":"NOT_RUN"}
