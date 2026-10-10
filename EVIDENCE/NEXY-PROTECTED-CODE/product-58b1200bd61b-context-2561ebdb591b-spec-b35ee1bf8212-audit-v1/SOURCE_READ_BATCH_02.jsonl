@@ -1,0 +1,6 @@
+{"path":"packages/api/auth.ts","error":"SyntaxError: Unexpected token '/', \"/**\n * NEX\"... is not valid JSON","status":"READ_FAILED"}
+{"path":"packages/auth/session.ts","error":"SyntaxError: Unexpected token '/', \"// package\"... is not valid JSON","status":"READ_FAILED"}
+{"path":"packages/auth/csrf.ts","error":"SyntaxError: Unexpected token '/', \"// package\"... is not valid JSON","status":"READ_FAILED"}
+{"path":"packages/api/session-refresh.ts","error":"SyntaxError: Unexpected token '/', \"/**\n * DOC\"... is not valid JSON","status":"READ_FAILED"}
+{"path":"tests/integration/auth/verify-otac.spec.ts","error":"SyntaxError: Unexpected token '/', \"/**\n * Int\"... is not valid JSON","status":"READ_FAILED"}
+{"path":"tests/integration/auth/single-use-and-logout-replay.spec.ts","error":"SyntaxError: Unexpected token 'i', \"import { c\"... is not valid JSON","status":"READ_FAILED"}
