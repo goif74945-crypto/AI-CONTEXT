@@ -1,0 +1,180 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index, not test execution",
+  "all_tests": 103,
+  "range": [
+    60,
+    72
+  ],
+  "rows": [
+    {
+      "path": "tests/integration/layer4-catastrophic-law.spec.ts",
+      "sha": "add45ba31e24a770f16579710b38bab50cc7b7bc",
+      "verified": true,
+      "lines": 88,
+      "tests": 5,
+      "assertions": 12,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/catastrophic-law.js"
+      ]
+    },
+    {
+      "path": "tests/integration/layer4-continuity.spec.ts",
+      "sha": "5644a5784f0b7ec1bf4372c8f1a7409129ccf399",
+      "verified": true,
+      "lines": 44,
+      "tests": 4,
+      "assertions": 9,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/continuity.js"
+      ]
+    },
+    {
+      "path": "tests/integration/layer5-versioning.spec.ts",
+      "sha": "d7ff15f7e98dc355c44ec35a14f7462e5d2b79d4",
+      "verified": true,
+      "lines": 43,
+      "tests": 3,
+      "assertions": 9,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/versioning-law.js"
+      ]
+    },
+    {
+      "path": "tests/integration/layer8-impl-verify.spec.ts",
+      "sha": "4f1b6e795e72147a8f149efe12a4470649d3c85c",
+      "verified": true,
+      "lines": 221,
+      "tests": 9,
+      "assertions": 25,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/impl-verify.js",
+        "../../packages/phase-f/sovereign/readiness-gate.js"
+      ]
+    },
+    {
+      "path": "tests/integration/layer9-runtime-determinism.spec.ts",
+      "sha": "1370052bc4777f9d7032cecd5e201df0d9cdc490",
+      "verified": true,
+      "lines": 160,
+      "tests": 7,
+      "assertions": 20,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:path",
+        "../../packages/phase-f/sovereign/runtime-determinism.js"
+      ]
+    },
+    {
+      "path": "tests/integration/lo1-auto-learn.spec.ts",
+      "sha": "2f3849c40bf9c02b219dbcde0843af5977c7e49e",
+      "verified": true,
+      "lines": 158,
+      "tests": 15,
+      "assertions": 24,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/l1o/void-architect.js",
+        "../../packages/phase-f/l1o/auto-learn.js"
+      ]
+    },
+    {
+      "path": "tests/integration/lo2-durable-ledger.spec.ts",
+      "sha": "5024af02f6d6fe0d01b807e59fb336a2308867e5",
+      "verified": true,
+      "lines": 33,
+      "tests": 1,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/engine/lo2.js"
+      ]
+    },
+    {
+      "path": "tests/integration/lo2-federation.spec.ts",
+      "sha": "c5f35eeb7350b30f56176cc219eff6333d9be1e1",
+      "verified": true,
+      "lines": 297,
+      "tests": 23,
+      "assertions": 44,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/lo2/federation.js",
+        "../../packages/core/tick.js"
+      ]
+    },
+    {
+      "path": "tests/integration/lo2-refinement.spec.ts",
+      "sha": "66a022c2db4ec1266090393bcca406daaf0ae0a9",
+      "verified": true,
+      "lines": 186,
+      "tests": 12,
+      "assertions": 33,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/lo2/refinement.js"
+      ]
+    },
+    {
+      "path": "tests/integration/lo2-runtime-coordinator.spec.ts",
+      "sha": "2b7b589bd11c203cb56903fe0853b79ff308c3e5",
+      "verified": true,
+      "lines": 209,
+      "tests": 4,
+      "assertions": 20,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/lo2/runtime-coordinator.js",
+        "../../packages/phase-f/lo2/federation.js",
+        "../../packages/engine/lo2.js",
+        "../../packages/phase-f/lo2/refinement.js",
+        "../../packages/core/tick.js"
+      ]
+    },
+    {
+      "path": "tests/integration/lo3-cage-command.spec.ts",
+      "sha": "283adeb32fc301b9c6de76693a7fd6c5e4daa6b8",
+      "verified": true,
+      "lines": 390,
+      "tests": 22,
+      "assertions": 81,
+      "mocks": 1,
+      "imports": [
+        "vitest",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "node:child_process",
+        "node:util",
+        "../../packages/phase-f/lo3/cage.js"
+      ]
+    },
+    {
+      "path": "tests/integration/lo3-cage.spec.ts",
+      "sha": "8639a4ab98017d526124df97429492b68f9e232d",
+      "verified": true,
+      "lines": 178,
+      "tests": 24,
+      "assertions": 48,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/lo3/cage.js"
+      ]
+    }
+  ]
+}
