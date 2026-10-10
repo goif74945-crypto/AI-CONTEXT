@@ -1,0 +1,174 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index, not test execution",
+  "all_tests": 103,
+  "range": [
+    72,
+    84
+  ],
+  "rows": [
+    {
+      "path": "tests/integration/lo3-governor-l600.spec.ts",
+      "sha": "b015fcbc12cf3320ae91ac70120d5d27e5958928",
+      "verified": true,
+      "lines": 199,
+      "tests": 10,
+      "assertions": 27,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/lo3/governor.js"
+      ]
+    },
+    {
+      "path": "tests/integration/lo3-l600-support.spec.ts",
+      "sha": "02704358e922aac74d4d628d6098cb639bb1d69e",
+      "verified": true,
+      "lines": 131,
+      "tests": 7,
+      "assertions": 18,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/lo3/l600-support.js",
+        "../../packages/phase-f/lo3/governor.js"
+      ]
+    },
+    {
+      "path": "tests/integration/lo3-prompt-law-filter.spec.ts",
+      "sha": "4617f80e31edba0a9b0132ffd0bf6829b1f3d36c",
+      "verified": true,
+      "lines": 69,
+      "tests": 8,
+      "assertions": 22,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/lo3/prompt-law-filter.js"
+      ]
+    },
+    {
+      "path": "tests/integration/pre-death-seal.spec.ts",
+      "sha": "abae24ee3cc074eb2d61aae080a3669526ca003e",
+      "verified": true,
+      "lines": 31,
+      "tests": 3,
+      "assertions": 5,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/pre-death-seal.js"
+      ]
+    },
+    {
+      "path": "tests/integration/pwa-mobile-delivery.spec.ts",
+      "sha": "6251b1ae99c6bcc06f3f590113de7fa4c9138c94",
+      "verified": true,
+      "lines": 55,
+      "tests": 5,
+      "assertions": 29,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "vitest",
+        "../../apps/web/app/manifest.js"
+      ]
+    },
+    {
+      "path": "tests/integration/queue-boundary.spec.ts",
+      "sha": "0b7f955db18bb97e0bfd62f061a320db9637322e",
+      "verified": true,
+      "lines": 85,
+      "tests": 4,
+      "assertions": 15,
+      "mocks": 7,
+      "imports": [
+        "vitest",
+        "../../packages/intelligence/irl.js",
+        "../../packages/intelligence/rsel.js"
+      ]
+    },
+    {
+      "path": "tests/integration/rate-limit-fail-closed.spec.ts",
+      "sha": "1dde1c1a97b31bab8a1c2ddaca3094b557b0c048",
+      "verified": true,
+      "lines": 103,
+      "tests": 4,
+      "assertions": 11,
+      "mocks": 1,
+      "imports": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/rate-limit-redis.spec.ts",
+      "sha": "5d054f8d185c2dd2b9f14b02b1a71431ae2cb500",
+      "verified": true,
+      "lines": 146,
+      "tests": 5,
+      "assertions": 14,
+      "mocks": 2,
+      "imports": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/rcl-safety-kernel.spec.ts",
+      "sha": "f5a7efa7a2204b27ebe98fc9b0046e77beedf132",
+      "verified": true,
+      "lines": 67,
+      "tests": 7,
+      "assertions": 13,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/robotics/rcl.js"
+      ]
+    },
+    {
+      "path": "tests/integration/rcl-split.spec.ts",
+      "sha": "ac0e0e172e908961f5fcf8e3e65402bf89fc99e4",
+      "verified": true,
+      "lines": 261,
+      "tests": 24,
+      "assertions": 66,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/robotics/rcl.js"
+      ]
+    },
+    {
+      "path": "tests/integration/resilience-extensions.spec.ts",
+      "sha": "362f74daef4b4c1839f90c3fa2b7d099ab70f195",
+      "verified": true,
+      "lines": 234,
+      "tests": 25,
+      "assertions": 45,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/resilience/pre-kill-snapshot.js",
+        "../../packages/phase-f/resilience/crash-record.js",
+        "../../packages/phase-f/resilience/io-law.js",
+        "../../packages/core/tick.js"
+      ]
+    },
+    {
+      "path": "tests/integration/robotics-freertos.spec.ts",
+      "sha": "75d95e12bbc0fe8e951ef3d788deb04fc6480b90",
+      "verified": true,
+      "lines": 169,
+      "tests": 1,
+      "assertions": 22,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:os",
+        "node:path",
+        "node:child_process",
+        "vitest"
+      ]
+    }
+  ]
+}
