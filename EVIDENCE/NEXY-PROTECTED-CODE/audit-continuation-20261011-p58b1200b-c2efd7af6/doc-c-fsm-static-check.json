@@ -1,0 +1,141 @@
+{
+  "type": "DOC_C_FSM_LITERAL_SOURCE_ROW_CHECK",
+  "source_head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "source_blob_sha": "27e1281fba330784cc3bf2c30e9e1e82f951479b",
+  "source_path": "packages/core/vnext-state-matrix.ts",
+  "source_bytes": 13751,
+  "spec_hash": "b35ee1bf8212579251f24914e11aebe103ff697f549f7a5812f07c53361d26b7",
+  "spec_anchor": "DOC-C P10353-P10469",
+  "method": "simple static regex comparison, not executing VNext transitions",
+  "required_explicit_row_count": 12,
+  "found_required": 12,
+  "missing": [],
+  "required_fatal_except_stop": 7,
+  "missing_fatal_states": [],
+  "observed_transition_rows": 26,
+  "extra_rows": [
+    [
+      "RUNNING",
+      "cancel",
+      "FREEZE"
+    ],
+    [
+      "VERIFYING",
+      "cancel",
+      "FREEZE"
+    ],
+    [
+      "CONSENSUS",
+      "cancel",
+      "FREEZE"
+    ],
+    [
+      "INIT",
+      "error",
+      "FREEZE"
+    ],
+    [
+      "READY",
+      "error",
+      "FREEZE"
+    ],
+    [
+      "CONSENSUS",
+      "error",
+      "FREEZE"
+    ],
+    [
+      "STABLE",
+      "error",
+      "FREEZE"
+    ],
+    [
+      "FREEZE",
+      "error",
+      "FREEZE"
+    ],
+    [
+      "INIT",
+      "fatal",
+      "STOP"
+    ],
+    [
+      "VERIFYING",
+      "fatal",
+      "STOP"
+    ],
+    [
+      "CONSENSUS",
+      "fatal",
+      "STOP"
+    ],
+    [
+      "STABLE",
+      "fatal",
+      "STOP"
+    ],
+    [
+      "READY",
+      "fatal",
+      "STOP"
+    ],
+    [
+      "RUNNING",
+      "fatal",
+      "STOP"
+    ]
+  ],
+  "guards": [
+    {
+      "from": "INIT",
+      "event": "boot",
+      "guards": [
+        "\"system_valid\""
+      ]
+    },
+    {
+      "from": "READY",
+      "event": "execute",
+      "guards": [
+        "\"directive_valid\""
+      ]
+    },
+    {
+      "from": "RUNNING",
+      "event": "agents_done",
+      "guards": [
+        "\"results_exist\""
+      ]
+    },
+    {
+      "from": "VERIFYING",
+      "event": "verified",
+      "guards": [
+        "\"evidence_valid\""
+      ]
+    },
+    {
+      "from": "CONSENSUS",
+      "event": "accepted",
+      "guards": [
+        "\"quorum_satisfied\"",
+        "\"release_policy_passed\""
+      ]
+    },
+    {
+      "from": "FREEZE",
+      "event": "recover",
+      "guards": [
+        "\"freeze_recovery_allowed\""
+      ]
+    }
+  ],
+  "limitations": [
+    "Unspecified extra transitions require semantic/spec review",
+    "Runtime guard handling not tested",
+    "Persistence of EventLog and primary/secondary incidents not tested",
+    "No independent adversarial reviewer"
+  ],
+  "status": "STATIC_ROWS_FOUND_NOT_BEHAVIOR_VERIFIED",
+  "protected": false
+}
