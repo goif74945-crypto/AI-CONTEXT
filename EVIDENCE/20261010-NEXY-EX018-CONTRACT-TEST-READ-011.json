@@ -1,0 +1,39 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index; NOT execution",
+  "all_tests": 122,
+  "range": [
+    120,
+    122
+  ],
+  "rows": [
+    {
+      "path": "tests/contract/wal-boot-identity-law.test.ts",
+      "sha": "1c5c6b982c636698bcf12977958bdee462756065",
+      "verified": true,
+      "lines": 41,
+      "tests": 4,
+      "assertions": 7,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:url",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/contract/wal-canonical-mutation-routing.test.ts",
+      "sha": "96254f4f04c5b72f714e1a4b0b06fae5c63249e8",
+      "verified": true,
+      "lines": 61,
+      "tests": 5,
+      "assertions": 16,
+      "mocks": 0,
+      "imports": [
+        "node:fs",
+        "node:url",
+        "vitest"
+      ]
+    }
+  ]
+}
