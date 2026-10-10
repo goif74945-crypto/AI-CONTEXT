@@ -1,0 +1,180 @@
+{
+  "head": "58b1200bd61b867e917057d0019eea78ea9f6b2a",
+  "scope": "actual test source read/index, not test execution",
+  "all_tests": 103,
+  "range": [
+    84,
+    96
+  ],
+  "rows": [
+    {
+      "path": "tests/integration/robotics-full-stack.spec.ts",
+      "sha": "64924994b9a7106802f2422467d098f505d9faff",
+      "verified": true,
+      "lines": 685,
+      "tests": 35,
+      "assertions": 111,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:child_process",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "../../packages/phase-f/robotics/safe-brain/sensor-fusion.js",
+        "../../packages/phase-f/robotics/safe-brain/perception.js",
+        "../../packages/phase-f/robotics/safe-brain/planner.js",
+        "../../packages/phase-f/robotics/safe-brain/safety-verifier.js",
+        "../../packages/phase-f/robotics/zero-trust.js",
+        "../../packages/phase-f/robotics/decision-layer.js",
+        "../../packages/phase-f/robotics/self-debug.js"
+      ]
+    },
+    {
+      "path": "tests/integration/robotics-python-l1o.spec.ts",
+      "sha": "132b317ad08699a37189e0fbfdcaff64ab713bf2",
+      "verified": true,
+      "lines": 117,
+      "tests": 5,
+      "assertions": 11,
+      "mocks": 0,
+      "imports": [
+        "node:child_process",
+        "vitest"
+      ]
+    },
+    {
+      "path": "tests/integration/ros2-bridge.spec.ts",
+      "sha": "faec6ad63ea7105672b9dfbb8720c534365bfd2a",
+      "verified": true,
+      "lines": 71,
+      "tests": 8,
+      "assertions": 13,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/robotics/ros2-bridge.js"
+      ]
+    },
+    {
+      "path": "tests/integration/runtime-integrity.spec.ts",
+      "sha": "b396f94621af7333872a5ccbe72077d019e449bd",
+      "verified": true,
+      "lines": 105,
+      "tests": 6,
+      "assertions": 18,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/sovereign/runtime-integrity.js"
+      ]
+    },
+    {
+      "path": "tests/integration/safety-kernel-b4-hard.spec.ts",
+      "sha": "fc84bccd0eca7a9d956924d36f092548af886454",
+      "verified": true,
+      "lines": 155,
+      "tests": 4,
+      "assertions": 22,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:timers/promises",
+        "../../packages-experimental/robotics/safety-kernel.js"
+      ]
+    },
+    {
+      "path": "tests/integration/safety-kernel-b4.spec.ts",
+      "sha": "970bf49ef9013d421452ab2dc9a8d129f6ecdf3f",
+      "verified": true,
+      "lines": 126,
+      "tests": 3,
+      "assertions": 12,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "node:timers/promises",
+        "../../packages-experimental/robotics/safety-kernel.js"
+      ]
+    },
+    {
+      "path": "tests/integration/sandbox-escape-detection.spec.ts",
+      "sha": "034f8a92bd9d14e498b7001de1fc3ea5ff5a9252",
+      "verified": true,
+      "lines": 140,
+      "tests": 14,
+      "assertions": 25,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-stack/escape-detector.js",
+        "../../packages/phase-f/universe/sandbox-stack/router.js"
+      ]
+    },
+    {
+      "path": "tests/integration/sandbox-guard.spec.ts",
+      "sha": "6515a672a23c245aa7e45f95ec1a4c800ab7b395",
+      "verified": true,
+      "lines": 80,
+      "tests": 4,
+      "assertions": 21,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-guard.js"
+      ]
+    },
+    {
+      "path": "tests/integration/sandbox-runtime.spec.ts",
+      "sha": "42c0c6720fff5e225879ed85de598fb887b954c1",
+      "verified": true,
+      "lines": 102,
+      "tests": 7,
+      "assertions": 22,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-runtime.js"
+      ]
+    },
+    {
+      "path": "tests/integration/sandbox-tier0-firecracker.spec.ts",
+      "sha": "804d934ca2f8530859a128959c88b8a1e67660e2",
+      "verified": true,
+      "lines": 94,
+      "tests": 5,
+      "assertions": 20,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-stack/tier0-firecracker.js"
+      ]
+    },
+    {
+      "path": "tests/integration/sandbox-tier1-kata.spec.ts",
+      "sha": "174a3957d40515142d5006ea953dad65220b6cef",
+      "verified": true,
+      "lines": 119,
+      "tests": 8,
+      "assertions": 28,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-stack/tier1-kata.js"
+      ]
+    },
+    {
+      "path": "tests/integration/sandbox-tier1-runc.spec.ts",
+      "sha": "e559487d1a61569a98cd211049c5cd3dc9cd6223",
+      "verified": true,
+      "lines": 137,
+      "tests": 8,
+      "assertions": 29,
+      "mocks": 0,
+      "imports": [
+        "vitest",
+        "../../packages/phase-f/universe/sandbox-stack/tier1-runc.js"
+      ]
+    }
+  ]
+}
